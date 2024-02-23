@@ -13,24 +13,9 @@ const config = {
       },
     },
     extend: {
-      typography: {
-        DEFAULT: {
-          css: {
-            pre: {
-              paddingTop: '1.25rem',
-              paddingBottom: '1.25rem',
-              paddingRight: 0,
-              paddingLeft: 0,
-              fontSize: '0.75rem',
-              lineHeight: '1.6em',
-              // code: {
-              // display: 'block',
-              // paddingLeft: '1.5rem',
-              // paddingRight: '1.5rem',
-              // },
-            },
-          },
-        },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        mono: ['var(--font-geist-mono)'],
       },
       colors: {
         border: 'hsl(var(--border))',

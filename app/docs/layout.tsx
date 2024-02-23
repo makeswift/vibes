@@ -11,7 +11,7 @@ export default function MdxLayout({ children }: { children: React.ReactNode }) {
 
         <ModeToggle />
       </nav>
-      <div className="prose p-6 dark:prose-invert">{children}</div>
+      <div className="vibes-prose prose p-6 dark:prose-invert">{children}</div>
     </div>
   )
 }

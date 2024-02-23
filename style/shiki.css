@@ -1,44 +1,34 @@
-@tailwind base;
-@tailwind components;
-
-@layer base {
-  :root {
-    --shiki-line-highlight-color: hsl(0 0% 93%);
-    --shiki-highlight-error-color: hsl(0 100% 90%);
-    --shiki-highlight-warning-color: hsl(50 100% 90%);
-    --shiki-line-diff-remove-color: hsl(0 100% 90%);
-    --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
-    --shiki-line-diff-add-color: hsl(120 100% 90%);
-    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-    --shiki-line-padding: 20px;
-    --shiki-gutter-width: 16px;
-  }
-
-  .dark {
-    --shiki-highlight-color: rgba(101, 117, 133, 0.16);
-    --shiki-highlight-border-color: rgba(101, 117, 133, 0.5);
-    --shiki-highlight-error-color: hsl(0 100% 90%);
-    --shiki-highlight-warning-color: hsl(50 100% 90%);
-    --shiki-line-diff-remove-color: rgba(244, 63, 94, 0.16);
-    --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
-    --shiki-line-diff-add-color: rgba(16, 185, 129, 0.16);
-    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-
-    .shiki {
-      background-color: var(--shiki-dark-bg) !important;
-    }
-
-    .shiki span {
-      color: var(--shiki-dark) !important;
-    }
-  }
+:root {
+  --shiki-line-highlight-color: hsl(0 0% 93%);
+  --shiki-highlight-error-color: hsl(0 100% 90%);
+  --shiki-highlight-warning-color: hsl(50 100% 90%);
+  --shiki-line-diff-remove-color: hsl(0 100% 90%);
+  --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
+  --shiki-line-diff-add-color: hsl(120 100% 90%);
+  --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+  --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+  --shiki-line-padding: 20px;
+  --shiki-gutter-width: 16px;
 }
 
-.shiki code {
-  display: block;
-  padding: 0 var(--shiki-line-padding);
+.dark {
+  --shiki-highlight-color: rgba(101, 117, 133, 0.16);
+  --shiki-highlight-border-color: rgba(101, 117, 133, 0.5);
+  --shiki-highlight-error-color: hsl(0 100% 90%);
+  --shiki-highlight-warning-color: hsl(50 100% 90%);
+  --shiki-line-diff-remove-color: rgba(244, 63, 94, 0.16);
+  --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
+  --shiki-line-diff-add-color: rgba(16, 185, 129, 0.16);
+  --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+  --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+
+  .shiki {
+    background-color: var(--shiki-dark-bg) !important;
+  }
+
+  .shiki span {
+    color: var(--shiki-dark) !important;
+  }
 }
 
 .shiki .line {

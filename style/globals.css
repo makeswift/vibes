@@ -1,8 +1,8 @@
-@import url('./shiki.css');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('./shiki.css');
+@import url('./prose.css');
 
 @layer base {
   :root {
@@ -29,6 +29,8 @@
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
+
+    --code-border: 224 71.4% 4.1% / 0.1;
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
@@ -61,6 +63,8 @@
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 20% 98%;
+
+    --code-border: 210 20% 98% / 0.1;
 
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
