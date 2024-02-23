@@ -1,3 +1,6 @@
+import { CodeGroup } from '@/components/code-group'
+import { Button } from '@/components/ui/button'
+
 # Welcome to my MDX page!
 
 This is some **bold** and _italics_ text.
@@ -6,12 +9,59 @@ This is a list in markdown:
 
 - One
 - Two
-- Three
+- Three `const a = 1`
 
 Checkout my React component:
 
-![Background](/background.png)
+<CodeGroup>
 
+```ts
+export const test = new ReactRuntime({
+  breakpoints: {
+    mobile: { width: 575, viewport: 390, label: 'Mobile' },
+    tablet: { width: 768, viewport: 765, label: 'Tablet' },
+    laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
+    external: { width: 1280, label: 'External' },
+  },
+})
 ```
-hello
+
+```ts showLineNumbers
+import { ReactRuntime } from '@makeswift/runtime/react'
+
+// [!code word:runtime]
+export const runtime = new ReactRuntime({
+  breakpoints: {
+    mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code highlight]
+    tablet: { width: 768, viewport: 765, label: 'Tablet' },
+    laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
+    external: { width: 1280, label: 'External' },
+  },
+})
 ```
+
+```ts showLineNumbers
+export const test = new ReactRuntime({
+  breakpoints: {
+    mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code --]
+    tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code ++]
+    laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
+    external: { width: 1280, label: 'External' },
+  },
+})
+```
+
+```ts
+export const test = new ReactRuntime({
+  breakpoints: {
+    mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code --]
+    tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code ++]
+    laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
+    external: { width: 1280, label: 'External' },
+  },
+})
+```
+
+<Button>Test</Button>
+
+</CodeGroup>

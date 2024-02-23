@@ -22,12 +22,13 @@
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "rehype-highlight": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@shikijs/rehype": "^1.1.6",
+    "@shikijs/transformers": "^1.1.6",
     "@tailwindcss/typography": "^0.5.10",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
@@ -38,7 +39,9 @@
     "eslint-config-next": "14.1.0",
     "postcss": "^8",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "shiki": "^1.1.7",
     "tailwindcss": "^3.3.0",
+    "twoslash": "^0.2.4",
     "typescript": "^5"
   }
 }

@@ -1,3 +1,5 @@
+@import url('./shiki.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -69,7 +71,6 @@
 @layer base {
   * {
     @apply border-border;
-    text-wrap: balance;
   }
   body {
     @apply bg-background text-foreground;

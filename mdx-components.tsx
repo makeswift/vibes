@@ -9,6 +9,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     img: Img,
-    pre: Pre,
+    code: Pre,
   }
 }

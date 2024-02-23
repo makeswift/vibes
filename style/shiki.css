@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+
+@layer base {
+  :root {
+    --shiki-line-highlight-color: hsl(0 0% 93%);
+    --shiki-highlight-error-color: hsl(0 100% 90%);
+    --shiki-highlight-warning-color: hsl(50 100% 90%);
+    --shiki-line-diff-remove-color: hsl(0 100% 90%);
+    --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
+    --shiki-line-diff-add-color: hsl(120 100% 90%);
+    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+    --shiki-line-padding: 20px;
+    --shiki-gutter-width: 16px;
+  }
+
+  .dark {
+    --shiki-highlight-color: rgba(101, 117, 133, 0.16);
+    --shiki-highlight-border-color: rgba(101, 117, 133, 0.5);
+    --shiki-highlight-error-color: hsl(0 100% 90%);
+    --shiki-highlight-warning-color: hsl(50 100% 90%);
+    --shiki-line-diff-remove-color: rgba(244, 63, 94, 0.16);
+    --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
+    --shiki-line-diff-add-color: rgba(16, 185, 129, 0.16);
+    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+
+    .shiki {
+      background-color: var(--shiki-dark-bg) !important;
+    }
+
+    .shiki span {
+      color: var(--shiki-dark) !important;
+    }
+  }
+}
+
+.shiki code {
+  display: block;
+  padding: 0 var(--shiki-line-padding);
+}
+
+.shiki .line {
+  position: relative;
+  display: block;
+  padding: 0 var(--shiki-line-padding);
+  width: calc(100% + (var(--shiki-line-padding) * 2));
+  margin: 0 calc(-1 * var(--shiki-line-padding));
+}
+
+.shiki .line:last-child:empty {
+  display: none;
+}
+
+/* Line Numbers */
+
+.shiki.show-line-numbers {
+  counter-reset: line;
+}
+
+.shiki.show-line-numbers .line:before {
+  @apply inline-block shrink-0 select-none text-right text-foreground/30;
+  width: var(--shiki-gutter-width);
+  margin-right: var(--shiki-line-padding);
+  counter-increment: line;
+  content: counter(line);
+}
+
+@supports (content: 'visual text'/'alt text') {
+  .shiki.show-line-numbers .highlighted:before,
+  .shiki.show-line-numbers .line:before {
+    content: counter(line) / '';
+  }
+}
+
+@supports (alt: '') {
+  .shiki.show-line-numbers .highlighted:before,
+  .shiki.show-line-numbers .line:before {
+    content: counter(line);
+    alt: '';
+  }
+}
+
+/* Highlighting */
+
+.shiki .highlighted {
+  background-color: var(--shiki-highlight-color);
+}
+
+.shiki .highlighted.error {
+  background-color: var(--shiki-highlight-color);
+}
+
+.shiki .highlighted.warning {
+  background-color: var(--shiki-highlight-color);
+}
+
+.shiki .highlighted-word {
+  background-color: var(--shiki-highlight-color);
+  box-shadow: 0 0 0 1px var(--shiki-highlight-border-color);
+  padding: 1px 3px;
+  margin: -1px -3px;
+  border-radius: 4px;
+}
+
+/* Diffs */
+
+.shiki .diff:before {
+  @apply inline-block shrink-0 select-none text-right;
+  width: var(--shiki-gutter-width);
+  margin-left: calc(-1 * var(--shiki-gutter-width));
+}
+
+.shiki.shiki.show-line-numbers .diff:before {
+  margin-left: 0;
+  margin-right: var(--shiki-line-padding);
+}
+
+.shiki .diff.remove {
+  background-color: var(--shiki-line-diff-remove-color);
+  opacity: 0.7;
+}
+
+.shiki .diff.remove:before {
+  content: '-';
+  color: var(--shiki-line-diff-remove-symbol-color);
+}
+
+.shiki .diff.add {
+  background-color: var(--shiki-line-diff-add-color);
+}
+
+.shiki .diff.add:before {
+  content: '+';
+  color: var(--shiki-line-diff-add-symbol-color);
+}
+
+/* Focusing */
+
+.shiki.has-focused .line:not(.focused) {
+  filter: blur(0.095rem);
+  opacity: 0.4;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+}
+
+.shiki.has-focused .line:not(.focused) {
+  opacity: 0.7;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+}
+
+.shiki.has-focused:hover .line:not(.focused) {
+  filter: blur(0);
+  opacity: 1;
+}
