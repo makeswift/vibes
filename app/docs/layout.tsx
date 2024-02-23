@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { ModeToggle } from '@/components/mode-toggle'
+import { ModeToggle } from '@/components/ui/mode-toggle'
 
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   // Create any shared layout or styles here
