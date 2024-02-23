@@ -1,5 +1,7 @@
+import { CodeFrame } from '@/components/code-frame'
 import { CodeGroup } from '@/components/code-group'
 import { Button } from '@/components/ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 # Welcome to my MDX page!
 
@@ -13,55 +15,30 @@ This is a list in markdown:
 
 Checkout my React component:
 
-<CodeGroup>
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <Button>Test</Button>
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeFrame>
+    ```ts showLineNumbers
+      import { ReactRuntime } from '@makeswift/runtime/react'
 
-```ts
-export const test = new ReactRuntime({
-  breakpoints: {
-    mobile: { width: 575, viewport: 390, label: 'Mobile' },
-    tablet: { width: 768, viewport: 765, label: 'Tablet' },
-    laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
-    external: { width: 1280, label: 'External' },
-  },
-})
-```
+      // [!code word:viewport:4]
+      export const runtime = new ReactRuntime({
+        breakpoints: {
+          mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code highlight]
+          tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code ++]
+          laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
+          external: { width: 1280, label: 'External' },
+        },
+      })
+    ```
+    </CodeFrame>
 
-```ts showLineNumbers
-import { ReactRuntime } from '@makeswift/runtime/react'
-
-// [!code word:runtime]
-export const runtime = new ReactRuntime({
-  breakpoints: {
-    mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code highlight]
-    tablet: { width: 768, viewport: 765, label: 'Tablet' },
-    laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
-    external: { width: 1280, label: 'External' },
-  },
-})
-```
-
-```ts showLineNumbers
-export const test = new ReactRuntime({
-  breakpoints: {
-    mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code --]
-    tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code ++]
-    laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
-    external: { width: 1280, label: 'External' },
-  },
-})
-```
-
-```ts
-export const test = new ReactRuntime({
-  breakpoints: {
-    mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code --]
-    tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code ++]
-    laptop: { width: 1024, viewport: 1000, label: 'Laptop' },
-    external: { width: 1280, label: 'External' },
-  },
-})
-```
-
-<Button>Test</Button>
-
-</CodeGroup>
+  </TabsContent>
+</Tabs>
