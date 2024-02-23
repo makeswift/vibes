@@ -1,14 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 
 import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 
 import { cn } from '@/lib/utils'
 import '@/style/globals.css'
 
 import { Providers } from './providers'
-
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
 
 export const metadata: Metadata = {
   title: 'Vibes',
@@ -22,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.variable, GeistMono.variable, 'font-sans')}>
+      <body className={cn(GeistSans.variable, GeistMono.variable, 'font-sans')}>
         <Providers>{children}</Providers>
       </body>
     </html>
