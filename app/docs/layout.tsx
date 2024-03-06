@@ -3,9 +3,16 @@ import Link from 'next/link'
 
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Subnavigation } from '@/components/ui/subnavigation'
+import { readMeta } from '@/lib/read-meta'
 
-export default function MdxLayout({ children }: { children: React.ReactNode }) {
-  // Create any shared layout or styles here
+const nav = ['/', '/guides']
+
+export default async function MdxLayout({ children }: { children: React.ReactNode }) {
+  // ingest the nav json and fetch metadata to generate the navigation JSX
+  const meta = await readMeta('/app/docs/page.mdx')
+
+  console.log({ meta })
+
   return (
     <>
       <nav className="px-8 py-6">
