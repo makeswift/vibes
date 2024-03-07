@@ -10,8 +10,16 @@ const nav = ['/', '/guides']
 export default async function MdxLayout({ children }: { children: React.ReactNode }) {
   // ingest the nav json and fetch metadata to generate the navigation JSX
   const meta = await readMeta('/app/docs/page.mdx')
+  const navigation = parseJSON(await readFile('./navigation.json'))
+  const links = navigation.map(edition =>
+    edition.groups.map(group =>
+      group.pages.map(async page => {
+        const meta = await readMeta()
 
-  console.log({ meta })
+        return { title: meta.title, icon: meta.icon, href: page }
+      })
+    )
+  )
 
   return (
     <>
@@ -31,7 +39,8 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
       </nav>
       <div className="p-8">
         <div className="mx-auto flex max-w-7xl gap-x-12">
-          <Subnavigation name="Vibe name" />
+          <Subnavigation links={links} />
+
           <div className="vibes-prose prose flex-1 dark:prose-invert">{children}</div>
         </div>
       </div>
