@@ -31,7 +31,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
       </nav>
       <div className="p-8">
         <div className="mx-auto flex max-w-7xl gap-x-12">
-          <Subnavigation />
+          <Subnavigation name="Vibe name" />
           <div className="vibes-prose prose flex-1 dark:prose-invert">{children}</div>
         </div>
       </div>
