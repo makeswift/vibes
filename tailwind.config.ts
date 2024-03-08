@@ -66,10 +66,14 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'underline-hover': {
+          to: { backgroundPosition: '5px 0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'underline-hover': 'underline-hover 0.2s infinite linear',
       },
     },
   },
