@@ -1,0 +1,63 @@
+---
+title: 'Introduction'
+---
+
+import { CodeFromFile } from '@/components/code-from-file'
+import { Button } from '@/components/ui/button'
+import { Step, Steps } from '@/components/ui/steps'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+
+# Welcome to my MDX page!
+
+This is some **bold** and _italics_ text.
+
+<Steps>
+  <Step>
+    ## Hello
+
+    This is a step
+
+  </Step>
+  <Step>
+    ## Hello
+
+    This is a step
+
+  </Step>
+</Steps>
+
+This is a list in markdown:
+
+- One
+- Two
+- Three `const a = 1`
+
+Checkout my React component:
+
+<CodeFromFile pathname="/components/ui/button.tsx" />
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <Button>Test</Button>
+  </TabsContent>
+  <TabsContent value="code">
+    ```ts
+      import { ReactRuntime } from '@makeswift/runtime/react'
+
+      // [!code word:viewport]
+      export const runtime = new ReactRuntime({
+        breakpoints: {
+          mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code highlight]
+          tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code --]
+          laptop: { width: 1024, viewport: 1000, label: 'Laptop' }, // [!code ++]
+          external: { width: 1280, label: 'External' },
+        },
+      })
+    ```
+
+  </TabsContent>
+</Tabs>

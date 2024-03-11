@@ -5,7 +5,7 @@
       "groups": [
         {
           "name": "Components",
-          "pages": ["linearesque/button", "linearesque/carousel"]
+          "pages": ["linearesque/card", "linearesque/carousel"]
         }
       ]
     },
