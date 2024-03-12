@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import { Button } from '@/components/ui/button'
+
 export default function Home() {
   return (
     <main className="vibes-prose prose min-h-screen w-full p-16">
@@ -18,6 +20,16 @@ export default function Home() {
         mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
         leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
       </p>
+
+      <div className="flex gap-1">
+        <Button variant="default" size="default">
+          Testing
+        </Button>
+
+        <Button variant="ghost" size="default">
+          Testing
+        </Button>
+      </div>
 
       <h3>This is a smaller subheader</h3>
       <p>
