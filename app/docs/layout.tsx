@@ -2,10 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { promises } from 'fs'
+import { Table } from 'lucide-react'
 import path from 'path'
 
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Subnavigation } from '@/components/ui/subnavigation'
+import { TableOfContents } from '@/components/ui/table-of-contents'
 import { readMeta } from '@/lib/read-meta'
 
 export type Vibes = {
@@ -72,6 +74,8 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
           <Subnavigation allVibes={allVibes} />
 
           <div className="vibes-prose prose flex-1 dark:prose-invert">{children}</div>
+
+          <TableOfContents />
         </div>
       </div>
     </>
