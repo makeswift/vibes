@@ -8,35 +8,42 @@ import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Subnavigation } from '@/components/ui/subnavigation'
 import { readMeta } from '@/lib/read-meta'
 
-const nav = ['/', '/guides']
+export type Vibes = {
+  [key: string]: { name: string; icon: string; pages: { title: string; href: string }[] }[]
+}
 
 export default async function MdxLayout({ children }: { children: React.ReactNode }) {
-  // Read the file at navigation.json and parse the component paths to compose the subnavigation
+  // Read the file at navigation.json and parse the groups into paths to compose the subnavigation
   const filePath = path.join(process.cwd(), '/app/docs/navigation.json')
   const navigation = JSON.parse(await promises.readFile(filePath, 'utf-8')) as {
-    editions: { name: string; groups: { name: string; pages: string[] }[] }[]
+    vibes: { name: string; groups: { name: string; icon: string; pages: string[] }[] }[]
   }
   const parseComponents = async () => {
-    const vibeLinks = navigation.editions.map(async edition => {
-      const readPages = edition.groups.flatMap(group =>
-        group.pages.map(page =>
+    const vibePages = navigation.vibes.map(async vibe => {
+      const readPages = vibe.groups.map(group => {
+        const links = group.pages.map(page =>
           readMeta(page).then(meta => ({ title: meta.title, icon: meta.icon, href: page }))
         )
-      )
+        return { name: group.name, icon: group.icon, pages: links }
+      })
 
-      const links = await Promise.all(readPages)
-      return { name: edition.name, links }
+      const pages = await Promise.all(readPages)
+      return {
+        name: vibe.name,
+        groups: await Promise.all(
+          pages.map(async p => {
+            const resolvedLinks = await Promise.all(p.pages)
+            return { name: p.name, icon: p.icon, pages: resolvedLinks }
+          })
+        ),
+      }
     })
 
-    const vibes = await Promise.all(vibeLinks)
-
-    return vibes.reduce(
-      (acc, { name, links }) => {
-        acc[name] = links
-        return acc
-      },
-      {} as Record<string, { title: string; icon: string; href: string }[]>
-    )
+    const vibes = await Promise.all(vibePages)
+    return vibes.reduce((acc, { name, groups }) => {
+      acc[name.charAt(0).toLowerCase() + name.slice(1)] = groups
+      return acc
+    }, {} as Vibes)
   }
 
   const allVibes = await parseComponents()
