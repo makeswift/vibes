@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import * as React from 'react'
 
+import { Vibes } from '@/app/docs/layout'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -12,7 +13,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 type Props = {
-  allVibes: Record<string, { title: string; icon: string; href: string }[]>
+  allVibes: Vibes
 }
 
 export function VibeSelect({ allVibes }: Props) {
@@ -20,6 +21,11 @@ export function VibeSelect({ allVibes }: Props) {
 
   const [vibe, setVibe] = React.useState(vibeList[0])
   const router = useRouter()
+
+  // useEffect to redirect only when the vibe changes instead of onClick
+  React.useEffect(() => {
+    router.push(`/docs/${allVibes[vibe][0].pages[0].href}`)
+  }, [vibe])
 
   return (
     <DropdownMenu>
@@ -34,10 +40,9 @@ export function VibeSelect({ allVibes }: Props) {
             key={`${v}-${i}`}
             onClick={() => {
               setVibe(v)
-              router.push(`/docs/${v.toLocaleLowerCase()}/getting-started`)
             }}
           >
-            {v}
+            {v.charAt(0).toUpperCase() + v.slice(1)}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

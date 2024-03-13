@@ -6,6 +6,8 @@ import { useParams } from 'next/navigation'
 
 import clsx from 'clsx'
 
+import { Vibes } from '@/app/docs/layout'
+
 import { VibeSelect } from './vibe-select'
 
 function SubnavLink({
@@ -32,46 +34,26 @@ function SubnavLink({
   )
 }
 
-export function Subnavigation({
-  allVibes,
-}: {
-  allVibes: Record<string, { title: string; icon: string; href: string }[]>
-}) {
+export function Subnavigation({ allVibes }: { allVibes: Vibes }) {
   const { slug } = useParams()
-  const components = allVibes[slug[0].charAt(0).toUpperCase() + slug[0].slice(1)]
+  const navGroup = allVibes[slug[0]]
+  console.log({ allVibes })
 
-  const subnavGroup = [
-    {
-      icon: '/play.svg',
-      title: 'Getting started',
-      links: [
-        { title: 'Introduction', href: '/docs' },
-        { title: 'Installation', href: '/docs' },
-        { title: 'Usage', href: '/docs' },
-        { title: 'Contributing', href: '/docs' },
-      ],
-    },
-    {
-      icon: '/cube.svg',
-      title: 'Components',
-      links: [...components],
-    },
-  ]
   return (
     <div className="sticky w-48 overflow-y-auto">
       <div className="mb-4 text-xl font-bold leading-normal">
         <VibeSelect allVibes={allVibes} />
       </div>
 
-      {subnavGroup.map(group => (
-        <div key={group.title} className="mb-2">
+      {navGroup.map(group => (
+        <div key={group.name} className="mb-2">
           <div className="flex items-center gap-2 py-1.5 text-sm font-bold leading-normal">
             <Image src={group.icon} width={20} height={20} alt="Icon" priority />
-            {group.title}
+            {group.name}
           </div>
 
           <ul>
-            {group.links.map(link => (
+            {group.pages.map(link => (
               <SubnavLink key={link.title} href={link.href}>
                 {link.title}
               </SubnavLink>

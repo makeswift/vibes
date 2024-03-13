@@ -1,10 +1,21 @@
 {
-  "editions": [
+  "vibes": [
     {
       "name": "Linearesque",
       "groups": [
         {
+          "name": "Getting started",
+          "icon": "/play.svg",
+          "pages": [
+            "linearesque/introduction",
+            "linearesque/installation",
+            "linearesque/usage",
+            "linearesque/contributing"
+          ]
+        },
+        {
           "name": "Components",
+          "icon": "/cube.svg",
           "pages": ["linearesque/card", "linearesque/carousel"]
         }
       ]
@@ -13,7 +24,18 @@
       "name": "Brutalist",
       "groups": [
         {
+          "name": "Getting started",
+          "icon": "/play.svg",
+          "pages": [
+            "brutalist/introduction",
+            "brutalist/installation",
+            "brutalist/usage",
+            "brutalist/contributing"
+          ]
+        },
+        {
           "name": "Components",
+          "icon": "/cube.svg",
           "pages": ["brutalist/button", "brutalist/carousel"]
         }
       ]
