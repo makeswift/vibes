@@ -1,31 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 import clsx from 'clsx'
 
-const subnavGroup = [
-  {
-    icon: '/play.svg',
-    title: 'Getting started',
-    links: [
-      { title: 'Introduction', href: '/docs' },
-      { title: 'Installation', href: '/docs' },
-      { title: 'Usage', href: '/docs' },
-      { title: 'Contributing', href: '/docs' },
-    ],
-  },
-  {
-    icon: '/cube.svg',
-    title: 'Components',
-    links: [
-      { title: 'Accordions', href: '/docs' },
-      { title: 'Button', href: '/docs' },
-      { title: 'Button group', href: '/docs' },
-      { title: 'Card', href: '/docs' },
-      { title: 'Carousel', href: '/docs' },
-    ],
-  },
-]
+import { VibeSelect } from './vibe-select'
 
 function SubnavLink({
   children,
@@ -39,7 +20,7 @@ function SubnavLink({
   return (
     <li>
       <Link
-        href={href}
+        href={`/docs/${href}`}
         className={clsx(
           'block py-1 pl-7 text-sm leading-normal opacity-50 transition-colors hover:opacity-100',
           active && 'font-semibold opacity-100'
@@ -51,10 +32,36 @@ function SubnavLink({
   )
 }
 
-export function Subnavigation({ name = 'Vibe name' }: { name: string }) {
+export function Subnavigation({
+  allVibes,
+}: {
+  allVibes: Record<string, { title: string; icon: string; href: string }[]>
+}) {
+  const { slug } = useParams()
+  const components = allVibes[slug[0].charAt(0).toUpperCase() + slug[0].slice(1)]
+
+  const subnavGroup = [
+    {
+      icon: '/play.svg',
+      title: 'Getting started',
+      links: [
+        { title: 'Introduction', href: '/docs' },
+        { title: 'Installation', href: '/docs' },
+        { title: 'Usage', href: '/docs' },
+        { title: 'Contributing', href: '/docs' },
+      ],
+    },
+    {
+      icon: '/cube.svg',
+      title: 'Components',
+      links: [...components],
+    },
+  ]
   return (
     <div className="sticky w-48 overflow-y-auto">
-      <div className="mb-4 text-xl font-bold leading-normal">{name}</div>
+      <div className="mb-4 text-xl font-bold leading-normal">
+        <VibeSelect allVibes={allVibes} />
+      </div>
 
       {subnavGroup.map(group => (
         <div key={group.title} className="mb-2">

@@ -1,0 +1,22 @@
+{
+  "editions": [
+    {
+      "name": "Linearesque",
+      "groups": [
+        {
+          "name": "Components",
+          "pages": ["linearesque/card", "linearesque/carousel"]
+        }
+      ]
+    },
+    {
+      "name": "Brutalist",
+      "groups": [
+        {
+          "name": "Components",
+          "pages": ["brutalist/button", "brutalist/carousel"]
+        }
+      ]
+    }
+  ]
+}
