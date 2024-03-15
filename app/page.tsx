@@ -1,5 +1,11 @@
 import Image from 'next/image'
 
+import {
+  AccordionContent,
+  AccordionItem,
+  AccordionList,
+  AccordionTrigger,
+} from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { Heading, TableOfContents } from '@/components/ui/table-of-contents'
 
@@ -17,6 +23,23 @@ export default function Home() {
             sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse
             potenti.
           </p>
+
+          <AccordionList>
+            <AccordionItem value="1">
+              <AccordionTrigger>Accordion 1</AccordionTrigger>
+              <AccordionContent>This is the content for accordion 1</AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="2">
+              <AccordionTrigger>Accordion 1</AccordionTrigger>
+              <AccordionContent>This is the content for accordion 1</AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="3">
+              <AccordionTrigger>Accordion 1</AccordionTrigger>
+              <AccordionContent>This is the content for accordion 1</AccordionContent>
+            </AccordionItem>
+          </AccordionList>
 
           <Heading as="h2">This is a secondary header</Heading>
           <p>
