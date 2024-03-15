@@ -12,10 +12,7 @@ export function AccordionList({ children }: { children: React.ReactNode }) {
 
 export function AccordionItem({ children, value }: { children: React.ReactNode; value: string }) {
   return (
-    <Accordion.Item
-      className="group border border-black p-5 shadow-[-4px_4px_0_black]"
-      value={value}
-    >
+    <Accordion.Item className="group border border-black bg-white p-5 drop-shadow-md" value={value}>
       {children}
     </Accordion.Item>
   )
