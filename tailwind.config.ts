@@ -58,11 +58,11 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-        'accordion-down': {
+        expand: {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
         },
-        'accordion-up': {
+        collapse: {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
@@ -71,8 +71,8 @@ const config = {
         },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
+        collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
         'underline-hover': 'underline-hover 0.2s infinite linear',
       },
     },
