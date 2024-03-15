@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import { ComponentPreview } from '@/components/component-preview'
 import {
   AccordionContent,
   AccordionItem,
@@ -24,15 +25,29 @@ export default function Home() {
             potenti.
           </p>
 
+          <Heading as="h2">These are some faqs</Heading>
           <AccordionList>
             <AccordionItem value="1">
               <AccordionTrigger>Accordion 1</AccordionTrigger>
-              <AccordionContent>This is the content for accordion 1</AccordionContent>
+              <AccordionContent>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
+                Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
+                vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
+                leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="2">
-              <AccordionTrigger>Accordion 1</AccordionTrigger>
-              <AccordionContent>This is the content for accordion 1</AccordionContent>
+              <AccordionTrigger>
+                This is a really long piece of text that should wrap to another line when I type in
+                more words for this title
+              </AccordionTrigger>
+              <AccordionContent>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
+                Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
+                vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
+                leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="3">
@@ -49,6 +64,8 @@ export default function Home() {
             sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse
             potenti.
           </p>
+
+          <ComponentPreview color="#e6e6e6">Testing</ComponentPreview>
 
           <div className="flex gap-1">
             <Button variant="default" size="default">

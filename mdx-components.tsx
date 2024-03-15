@@ -13,5 +13,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     img: Img,
     code: Code,
     pre: Pre,
+    Step,
+    Steps,
   }
 }
