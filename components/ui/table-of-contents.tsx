@@ -75,7 +75,7 @@ export function TableOfContents() {
   return (
     <div className="hidden xl:block">
       <nav className="sticky top-24 w-full">
-        <h2 className="mb-3 text-sm font-bold">On this page</h2>
+        <div className="mb-3 text-sm font-bold">On this page</div>
         <ul>
           {headings.map(heading => (
             <li key={heading.id}>

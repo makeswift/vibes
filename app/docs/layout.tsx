@@ -5,6 +5,7 @@ import { promises } from 'fs'
 import path from 'path'
 
 import { ComponentPreview } from '@/components/component-preview'
+import { Content } from '@/components/ui/content'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Subnavigation } from '@/components/ui/subnavigation'
 import { TableOfContents } from '@/components/ui/table-of-contents'
@@ -74,12 +75,9 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
         <div className="mx-auto flex max-w-7xl gap-x-12 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
           <Subnavigation allVibes={allVibes} />
 
-          <div className="py-8">
+          <div className="vibes-prose prose max-w-max py-8 dark:prose-invert">
             <ComponentPreview color="#e6e6e6">Testing</ComponentPreview>
-            <div className="gap-x-12 md:grid md:grid-cols-[minmax(0,1fr)_220px] lg:grid-cols-[minmax(0,1fr)_240px]">
-              <div className="vibes-prose prose dark:prose-invert">{children}</div>
-              <TableOfContents />
-            </div>
+            <Content>{children}</Content>
           </div>
         </div>
       </div>
