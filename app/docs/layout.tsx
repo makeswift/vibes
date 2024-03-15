@@ -2,9 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { promises } from 'fs'
-import { Table } from 'lucide-react'
 import path from 'path'
 
+import { ComponentPreview } from '@/components/component-preview'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Subnavigation } from '@/components/ui/subnavigation'
 import { TableOfContents } from '@/components/ui/table-of-contents'
@@ -53,8 +53,8 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
   console.log({ allVibes })
   return (
     <>
-      <nav className="px-8 py-6">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
+      <header className="sticky top-0 z-20 border-b border-black bg-white px-6 md:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between pb-0.5">
           <div className="flex items-center gap-4">
             <Link href="/">
               <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
@@ -68,14 +68,19 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
             <ModeToggle />
           </div>
         </div>
-      </nav>
-      <div className="p-8">
-        <div className="mx-auto flex max-w-7xl gap-x-12">
+      </header>
+
+      <div className="px-6 md:px-8">
+        <div className="mx-auto flex max-w-7xl gap-x-12 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
           <Subnavigation allVibes={allVibes} />
 
-          <div className="vibes-prose prose flex-1 dark:prose-invert">{children}</div>
-
-          <TableOfContents />
+          <div className="py-8">
+            <ComponentPreview color="#e6e6e6">Testing</ComponentPreview>
+            <div className="gap-x-12 md:grid md:grid-cols-[minmax(0,1fr)_220px] lg:grid-cols-[minmax(0,1fr)_240px]">
+              <div className="vibes-prose prose dark:prose-invert">{children}</div>
+              <TableOfContents />
+            </div>
+          </div>
         </div>
       </div>
     </>
