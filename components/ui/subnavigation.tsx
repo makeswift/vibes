@@ -40,27 +40,29 @@ export function Subnavigation({ allVibes }: { allVibes: Vibes }) {
   console.log({ allVibes })
 
   return (
-    <div className="sticky w-48 overflow-y-auto">
-      <div className="mb-4 text-xl font-bold leading-normal">
-        <VibeSelect allVibes={allVibes} />
-      </div>
-
-      {navGroup.map(group => (
-        <div key={group.name} className="mb-2">
-          <div className="flex items-center gap-2 py-1.5 text-sm font-bold leading-normal">
-            <Image src={group.icon} width={20} height={20} alt="Icon" priority />
-            {group.name}
-          </div>
-
-          <ul>
-            {group.pages.map(link => (
-              <SubnavLink key={link.title} href={link.href}>
-                {link.title}
-              </SubnavLink>
-            ))}
-          </ul>
+    <aside className="fixed top-16 z-10 hidden h-[calc(100vh-4rem)] w-full md:sticky md:block">
+      <div className="h-full overflow-y-scroll py-6 lg:py-8">
+        <div className="mb-4 text-xl font-bold leading-normal">
+          <VibeSelect allVibes={allVibes} />
         </div>
-      ))}
-    </div>
+
+        {navGroup.map(group => (
+          <div key={group.name} className="mb-2">
+            <div className="flex items-center gap-2 py-1.5 text-sm font-bold leading-normal">
+              <Image src={group.icon} width={20} height={20} alt="Icon" priority />
+              {group.name}
+            </div>
+
+            <ul>
+              {group.pages.map(link => (
+                <SubnavLink key={link.title} href={link.href}>
+                  {link.title}
+                </SubnavLink>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </aside>
   )
 }

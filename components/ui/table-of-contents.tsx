@@ -1,6 +1,6 @@
 'use client'
 
-import React, { use } from 'react'
+import React from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -74,7 +74,7 @@ export function TableOfContents() {
   )
   return (
     <div className="hidden xl:block">
-      <nav className="sticky top-28 w-48">
+      <nav className="sticky top-24 w-full">
         <h2 className="mb-3 text-sm font-bold">On this page</h2>
         <ul>
           {headings.map(heading => (
