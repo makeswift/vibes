@@ -22,11 +22,6 @@ export function VibeSelect({ allVibes }: Props) {
   const [vibe, setVibe] = React.useState(vibeList[0])
   const router = useRouter()
 
-  // useEffect to redirect only when the vibe changes instead of onClick
-  React.useEffect(() => {
-    router.push(`/docs/${allVibes[vibe][0].pages[0].href}`)
-  }, [vibe])
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -40,6 +35,7 @@ export function VibeSelect({ allVibes }: Props) {
             key={`${v}-${i}`}
             onClick={() => {
               setVibe(v)
+              router.push(`/docs/${allVibes[vibe][0].pages[0].href}`)
             }}
           >
             {v.charAt(0).toUpperCase() + v.slice(1)}
