@@ -7,7 +7,7 @@ export function ComponentPreview({
 }) {
   return (
     <div
-      className="mb-12 flex min-h-80 w-full items-center justify-center overflow-y-auto border border-black p-10 drop-shadow-md"
+      className="dot-shadow dot-shadow-lg mb-12 flex min-h-80 w-full items-center justify-center border border-black p-10"
       style={{ background: color }}
     >
       {children}

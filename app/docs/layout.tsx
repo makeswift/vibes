@@ -7,8 +7,8 @@ import path from 'path'
 import { ComponentPreview } from '@/components/component-preview'
 import { Content } from '@/components/ui/content'
 import { ModeToggle } from '@/components/ui/mode-toggle'
+import { Select } from '@/components/ui/select'
 import { Subnavigation } from '@/components/ui/subnavigation'
-import { TableOfContents } from '@/components/ui/table-of-contents'
 import { readMeta } from '@/lib/read-meta'
 
 export type Vibes = {
@@ -54,12 +54,14 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
   console.log({ allVibes })
   return (
     <>
-      <header className="sticky top-0 z-20 border-b border-black bg-white px-6 md:px-8">
+      <header className="sticky top-0 z-20 bg-white px-6 ring-1 ring-black">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between pb-0.5">
           <div className="flex items-center gap-4">
-            <Link href="/">
+            <Link href="/" className="shrink-0">
               <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
             </Link>
+
+            <Select allVibes={allVibes} />
           </div>
 
           <div className="flex items-center gap-6">
@@ -75,7 +77,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
         <div className="mx-auto flex max-w-7xl gap-x-12 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
           <Subnavigation allVibes={allVibes} />
 
-          <div className="vibes-prose prose max-w-max py-8 dark:prose-invert">
+          <div className="vibes-prose prose max-w-max py-10 dark:prose-invert">
             <ComponentPreview color="#e6e6e6">Testing</ComponentPreview>
             <Content>{children}</Content>
           </div>

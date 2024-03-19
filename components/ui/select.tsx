@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 import * as React from 'react'
 
 import { Vibes } from '@/app/docs/layout'
-import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +15,7 @@ type Props = {
   allVibes: Vibes
 }
 
-export function VibeSelect({ allVibes }: Props) {
+export function Select({ allVibes }: Props) {
   const vibeList = Object.keys(allVibes)
 
   const [vibe, setVibe] = React.useState(vibeList[0])
@@ -25,11 +24,12 @@ export function VibeSelect({ allVibes }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          {vibe}
-        </Button>
+        <div className="flex cursor-pointer items-center gap-x-2 font-bold capitalize">{vibe}</div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent
+        align="start"
+        className="rounded-lg border border-black bg-white shadow-none drop-shadow-md"
+      >
         {vibeList.map((v, i) => (
           <DropdownMenuItem
             key={`${v}-${i}`}
@@ -37,8 +37,9 @@ export function VibeSelect({ allVibes }: Props) {
               setVibe(v)
               router.push(`/docs/${allVibes[vibe][0].pages[0].href}`)
             }}
+            asChild
           >
-            {v.charAt(0).toUpperCase() + v.slice(1)}
+            <div>{v.charAt(0).toUpperCase() + v.slice(1)}</div>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

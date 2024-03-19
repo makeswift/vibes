@@ -8,7 +8,7 @@ import clsx from 'clsx'
 
 import { Vibes } from '@/app/docs/layout'
 
-import { VibeSelect } from './vibe-select'
+import { Select } from './select'
 
 function SubnavLink({
   children,
@@ -41,10 +41,10 @@ export function Subnavigation({ allVibes }: { allVibes: Vibes }) {
 
   return (
     <aside className="fixed top-16 z-10 hidden h-[calc(100vh-4rem)] w-full md:sticky md:block">
-      <div className="h-full overflow-y-scroll py-6 lg:py-8">
-        <div className="mb-4 text-xl font-bold leading-normal">
-          <VibeSelect allVibes={allVibes} />
-        </div>
+      <div className="h-full overflow-y-scroll py-10">
+        {/* <div className="mb-4 text-xl font-bold leading-normal">
+          <Select allVibes={allVibes} />
+        </div> */}
 
         {navGroup.map(group => (
           <div key={group.name} className="mb-2">

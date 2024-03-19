@@ -79,4 +79,16 @@
   body {
     @apply bg-background;
   }
+  .dot-shadow {
+    @apply relative;
+  }
+  .dot-shadow-sm:after {
+    @apply left-[-7px] top-[7px];
+  }
+  .dot-shadow-lg:after {
+    @apply left-[-11px] top-[11px];
+  }
+  .dot-shadow:after {
+    @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''] [background:radial-gradient(_circle_at_2px_2px,black_1px,transparent_1px,transparent_0px_)_bottom_left_/_4px_4px_];
+  }
 }
