@@ -78,7 +78,9 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
           <Subnavigation allVibes={allVibes} />
 
           <div className="vibes-prose prose max-w-max py-10 dark:prose-invert">
-            <ComponentPreview color="#e6e6e6">Testing</ComponentPreview>
+            <ComponentPreview color="#e6e6e6" shadow="large">
+              Testing
+            </ComponentPreview>
             <Content>{children}</Content>
           </div>
         </div>

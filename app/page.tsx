@@ -65,7 +65,9 @@ export default function Home() {
             potenti.
           </p>
 
-          <ComponentPreview color="#e6e6e6">Testing</ComponentPreview>
+          <ComponentPreview color="#e6e6e6" shadow="small">
+            Testing
+          </ComponentPreview>
 
           <div className="flex gap-1">
             <Button variant="default" size="default">
