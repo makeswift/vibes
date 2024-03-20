@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('./shiki.css');
 @import url('./prose.css');
+@import url('./shiki.css');
 
 @layer base {
   :root {
@@ -83,10 +83,10 @@
     @apply relative;
   }
   .pattern-shadow-sm:after {
-    @apply left-[-6px] top-[6px];
+    @apply -left-1 top-1;
   }
   .pattern-shadow-lg:after {
-    @apply left-[-8px] top-[8px];
+    @apply -left-2 top-2;
   }
   .pattern-shadow:after {
     @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''] [background:linear-gradient(135deg,_black_20%,_transparent_20%,_transparent_50%,black_50%,_black_70%,_transparent_70%,_transparent_100%)_0_0/_5px_5px];
