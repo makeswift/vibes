@@ -13,7 +13,7 @@ function AccordionList({ children }: { children: React.ReactNode }) {
 function AccordionItem({ children, value }: { children: React.ReactNode; value: string }) {
   return (
     <Accordion.Item
-      className="dot-shadow dot-shadow-sm group border border-black bg-white p-5"
+      className="pattern-shadow pattern-shadow-sm group border border-black bg-white p-5"
       value={value}
     >
       {children}

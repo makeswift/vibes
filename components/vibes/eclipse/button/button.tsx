@@ -54,7 +54,7 @@ export const Button = forwardRef(function Button(
           }[size]
         )}
       >
-        <span className="shrink-0">{children}</span>
+        <span className="shrink-0 text-white">{children}</span>
       </div>
     </Link>
   )

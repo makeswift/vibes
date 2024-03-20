@@ -79,16 +79,16 @@
   body {
     @apply bg-background;
   }
-  .dot-shadow {
+  .pattern-shadow {
     @apply relative;
   }
-  .dot-shadow-sm:after {
+  .pattern-shadow-sm:after {
     @apply left-[-6px] top-[6px];
   }
-  .dot-shadow-lg:after {
+  .pattern-shadow-lg:after {
     @apply left-[-8px] top-[8px];
   }
-  .dot-shadow:after {
-    @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''] [background:radial-gradient(circle_at_1.5px_1.5px,black_1px,transparent_1px,transparent_0px_)_bottom_left_/_3px_3px];
+  .pattern-shadow:after {
+    @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''] [background:linear-gradient(135deg,_black_20%,_transparent_20%,_transparent_50%,black_50%,_black_70%,_transparent_70%,_transparent_100%)_0_0/_5px_5px];
   }
 }

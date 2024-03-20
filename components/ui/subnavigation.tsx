@@ -42,9 +42,9 @@ export function Subnavigation({ allVibes }: { allVibes: Vibes }) {
   return (
     <aside className="fixed top-16 z-10 hidden h-[calc(100vh-4rem)] w-full md:sticky md:block">
       <div className="h-full overflow-y-scroll py-10">
-        {/* <div className="mb-4 text-xl font-bold leading-normal">
+        <div className="mb-4 text-xl font-bold leading-normal lg:hidden">
           <Select allVibes={allVibes} />
-        </div> */}
+        </div>
 
         {navGroup.map(group => (
           <div key={group.name} className="mb-2">
