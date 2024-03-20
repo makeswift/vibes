@@ -13,7 +13,7 @@
 
 .vibes-prose p,
 .vibes-prose ul {
-  @apply font-light;
+  @apply font-light first:mt-0;
 }
 
 .vibes-prose ul {

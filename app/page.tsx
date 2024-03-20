@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-import { ComponentPreview } from '@/components/component-preview'
 import {
   AccordionContent,
   AccordionItem,
@@ -8,6 +7,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
+import { ComponentPreview } from '@/components/ui/component-preview'
 import { Heading, TableOfContents } from '@/components/ui/table-of-contents'
 
 export default function Home() {
@@ -65,7 +65,9 @@ export default function Home() {
             potenti.
           </p>
 
-          <ComponentPreview color="#e6e6e6">Testing</ComponentPreview>
+          <ComponentPreview color="#e6e6e6" shadow="small">
+            Testing
+          </ComponentPreview>
 
           <div className="flex gap-1">
             <Button variant="default" size="default">
