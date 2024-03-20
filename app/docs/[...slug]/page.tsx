@@ -32,7 +32,7 @@ import { Content } from '@/components/ui/content'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Step, Steps } from '@/components/ui/steps'
 import { Table, TableCell, TableRow } from '@/components/ui/table'
-import { TableOfContents } from '@/components/ui/table-of-contents'
+import { Heading, TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 // params { slug: '/controls/checkbox' }
@@ -83,6 +83,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       Button,
       ComponentPreview,
       Content,
+      Heading,
       Popover,
       PopoverContent,
       PopoverTrigger,

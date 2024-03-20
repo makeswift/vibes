@@ -8,30 +8,6 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. P
   <Button>Testing</Button>
 </ComponentPreview>
 
-```tsx showLineNumbers
-import { transformerRemoveLineBreak } from '@shikijs/transformers'
-import { readFile } from 'fs/promises'
-import { codeToHtml } from 'shiki'
-
-interface Props {
-  pathname: string
-}
-
-export async function CodeFromFile({ pathname }: Props) {
-  const file = await readFile(process.cwd() + pathname, 'utf8')
-  const code = await codeToHtml(file, {
-    lang: 'javascript',
-    themes: {
-      light: 'github-light',
-      dark: 'github-dark',
-    },
-    transformers: [transformerRemoveLineBreak()],
-  }) // [code:++]
-
-  return <div dangerouslySetInnerHTML={{ __html: code }} />
-}
-```
-
 <Content>
     Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus.
 
@@ -42,6 +18,32 @@ export async function CodeFromFile({ pathname }: Props) {
     - Testing
     - Hello
     - Hsagasgag
+
+    ```tsx
+
+        import { transformerRemoveLineBreak } from '@shikijs/transformers'
+        import { readFile } from 'fs/promises'
+        import { codeToHtml } from 'shiki'
+
+        interface Props {
+        pathname: string
+        }
+
+        export async function CodeFromFile({ pathname }: Props) {
+        const file = await readFile(process.cwd() + pathname, 'utf8')
+        const code = await codeToHtml(file, {
+            lang: 'javascript',
+            themes: {
+            light: 'github-light',
+            dark: 'github-dark',
+            },
+            transformers: [transformerRemoveLineBreak()],
+        }) // [code:++]
+
+        return <div dangerouslySetInnerHTML={{ __html: code }} />
+        }
+
+    ```
 
     <Steps>
         <Step>
@@ -97,4 +99,4 @@ export async function CodeFromFile({ pathname }: Props) {
     Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed augue. Integer eu magna sit amet metus fermentum posuere. Morbi sit amet nulla sed dolor elementum imperdiet. Quisque fermentum. Cum sociis natoque penatibus et magnis xdis parturient montes, nascetur ridiculus mus. Pellentesque adipiscing eros ut libero. Ut condimentum mi vel tellus. Suspendisse laoreet. Fusce ut est sed dolor gravida convallis. Morbi vitae ante. Vivamus ultrices luctus nunc. Suspendisse et dolor. Etiam dignissim. Proin malesuada adipiscing lacus. Donec metus. Curabitur gravida
 
 </Content>
-````
+```
