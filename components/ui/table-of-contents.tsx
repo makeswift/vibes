@@ -73,10 +73,10 @@ export function TableOfContents() {
     { rootMargin: '0% 0% -25% 0%' }
   )
   return (
-    <div className="hidden xl:block">
+    <div className="not-prose hidden xl:block">
       <nav className="sticky top-24 w-full">
         <div className="mb-3 text-sm font-bold">On this page</div>
-        <ul className="list-none !pl-0">
+        <ul>
           {headings.map(heading => (
             <li key={heading.id} className="m-0 p-0">
               <a

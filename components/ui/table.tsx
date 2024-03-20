@@ -11,9 +11,11 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(({ children }, ref)
   <div className="relative w-full overflow-auto">
     <table ref={ref} className="w-full border border-black text-sm">
       <thead className="border-b-2 border-black">
-        <th className="p-4 align-middle font-bold">Prop</th>
-        <th className="p-4 align-middle">Type</th>
-        <th className="p-4 align-middle">Default</th>
+        <tr>
+          <th className="p-4 align-middle font-bold">Prop</th>
+          <th className="p-4 align-middle">Type</th>
+          <th className="p-4 align-middle">Default</th>
+        </tr>
       </thead>
       <tbody>{children}</tbody>
     </table>
