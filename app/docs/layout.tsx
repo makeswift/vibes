@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { promises } from 'fs'
 import path from 'path'
 
-import { ComponentPreview } from '@/components/component-preview'
+import { ComponentPreview } from '@/components/ui/component-preview'
 import { Content } from '@/components/ui/content'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Select } from '@/components/ui/select'
@@ -77,12 +77,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
         <div className="mx-auto flex max-w-7xl gap-x-12 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
           <Subnavigation allVibes={allVibes} />
 
-          <div className="vibes-prose prose max-w-max py-10 dark:prose-invert">
-            <ComponentPreview color="#e6e6e6" shadow="large">
-              Testing
-            </ComponentPreview>
-            <Content>{children}</Content>
-          </div>
+          <div className="vibes-prose prose max-w-max py-10 dark:prose-invert">{children}</div>
         </div>
       </div>
     </>

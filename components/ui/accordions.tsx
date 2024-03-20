@@ -2,7 +2,7 @@
 
 import * as Accordion from '@radix-ui/react-accordion'
 
-export function AccordionList({ children }: { children: React.ReactNode }) {
+function AccordionList({ children }: { children: React.ReactNode }) {
   return (
     <Accordion.Root className="mt-5 w-full space-y-5" type="multiple">
       {children}
@@ -10,7 +10,7 @@ export function AccordionList({ children }: { children: React.ReactNode }) {
   )
 }
 
-export function AccordionItem({ children, value }: { children: React.ReactNode; value: string }) {
+function AccordionItem({ children, value }: { children: React.ReactNode; value: string }) {
   return (
     <Accordion.Item
       className="dot-shadow dot-shadow-sm group border border-black bg-white p-5"
@@ -21,7 +21,7 @@ export function AccordionItem({ children, value }: { children: React.ReactNode; 
   )
 }
 
-export function AccordionTrigger({ children }: { children: React.ReactNode }) {
+function AccordionTrigger({ children }: { children: React.ReactNode }) {
   return (
     <Accordion.Header asChild>
       <Accordion.Trigger asChild>
@@ -38,10 +38,12 @@ export function AccordionTrigger({ children }: { children: React.ReactNode }) {
   )
 }
 
-export function AccordionContent({ children }: { children: React.ReactNode }) {
+function AccordionContent({ children }: { children: React.ReactNode }) {
   return (
     <Accordion.Content className="data-[state=closed]:animate-collapse data-[state=open]:animate-expand w-full overflow-hidden">
       <div className="pt-3 font-light">{children}</div>
     </Accordion.Content>
   )
 }
+
+export { AccordionList, AccordionItem, AccordionTrigger, AccordionContent }

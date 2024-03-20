@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-import { ComponentPreview } from '@/components/component-preview'
 import {
   AccordionContent,
   AccordionItem,
@@ -8,6 +7,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
+import { ComponentPreview } from '@/components/ui/component-preview'
 import { Heading, TableOfContents } from '@/components/ui/table-of-contents'
 
 export default function Home() {

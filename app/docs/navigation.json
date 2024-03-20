@@ -1,22 +1,22 @@
 {
   "vibes": [
     {
-      "name": "Linearesque",
+      "name": "Eclipse",
       "groups": [
         {
           "name": "Getting started",
           "icon": "/play.svg",
           "pages": [
-            "linearesque/introduction",
-            "linearesque/installation",
-            "linearesque/usage",
-            "linearesque/contributing"
+            "eclipse/introduction",
+            "eclipse/installation",
+            "eclipse/usage",
+            "eclipse/contributing"
           ]
         },
         {
           "name": "Components",
           "icon": "/cube.svg",
-          "pages": ["linearesque/card", "linearesque/carousel"]
+          "pages": ["eclipse/button", "eclipse/card", "eclipse/carousel"]
         }
       ]
     },

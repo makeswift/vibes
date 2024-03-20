@@ -76,12 +76,12 @@ export function TableOfContents() {
     <div className="hidden xl:block">
       <nav className="sticky top-24 w-full">
         <div className="mb-3 text-sm font-bold">On this page</div>
-        <ul>
+        <ul className="list-none !pl-0">
           {headings.map(heading => (
-            <li key={heading.id}>
+            <li key={heading.id} className="m-0 p-0">
               <a
                 className={cn(
-                  'block py-1 text-sm font-light leading-normal text-black/50 transition-colors hover:text-black',
+                  'block py-1 text-sm !font-light leading-normal text-black/50 transition-colors before:hidden hover:text-black',
                   activeId === heading.id && 'text-black'
                 )}
                 style={{
