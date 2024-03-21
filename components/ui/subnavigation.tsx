@@ -25,8 +25,8 @@ function SubnavLink({
       <Link
         href={`/docs/${href}`}
         className={clsx(
-          'block py-1 pl-7 text-sm leading-normal opacity-50 transition-colors hover:opacity-100',
-          active && 'font-semibold opacity-100'
+          'block py-1 pl-7 text-sm leading-normal transition-opacity',
+          active ? 'font-semibold opacity-100' : 'opacity-50 hover:!opacity-100 dark:opacity-70'
         )}
       >
         {children}
@@ -42,10 +42,6 @@ export function Subnavigation({ className, allVibes }: { className?: string; all
 
   return (
     <div className={className}>
-      <div className="mb-4 text-xl font-bold leading-normal lg:hidden">
-        <Select allVibes={allVibes} />
-      </div>
-
       {navGroup.map(group => (
         <div key={group.name} className="mb-2">
           <div className="flex items-center gap-2 py-1.5 text-sm font-bold leading-normal">

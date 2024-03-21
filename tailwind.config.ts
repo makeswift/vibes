@@ -73,6 +73,9 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        stripes: {
+          to: { backgroundPosition: '0 5px' },
+        },
         'underline-hover': {
           to: { backgroundPosition: '5px 0' },
         },
@@ -80,7 +83,8 @@ const config = {
       animation: {
         expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
-        'underline-hover': 'underline-hover 0.2s infinite linear',
+        stripes: 'stripes 200ms infinite linear both',
+        'underline-hover': 'underline-hover 200ms infinite linear both',
       },
     },
   },

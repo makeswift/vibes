@@ -13,7 +13,7 @@ function AccordionList({ children }: { children: React.ReactNode }) {
 function AccordionItem({ children, value }: { children: React.ReactNode; value: string }) {
   return (
     <Accordion.Item
-      className="pattern-shadow pattern-shadow-sm group border border-black bg-white p-5"
+      className="pattern-shadow pattern-shadow-sm group border border-background bg-foreground p-5"
       value={value}
     >
       {children}
@@ -29,8 +29,8 @@ function AccordionTrigger({ children }: { children: React.ReactNode }) {
           <span className="flex-1 text-lg font-bold leading-normal">{children}</span>
 
           <div className="relative aspect-square w-[21px]">
-            <div className="absolute left-1/2 top-1/2 h-full w-[1px] -translate-x-1/2 -translate-y-1/2 bg-black transition-transform duration-300 group-data-[state=open]:rotate-90" />
-            <div className="absolute left-1/2 top-1/2 h-[1px] w-full -translate-x-1/2 -translate-y-1/2 bg-black" />
+            <div className="absolute left-1/2 top-1/2 h-full w-[1px] -translate-x-1/2 -translate-y-1/2 bg-background transition-transform duration-300 group-data-[state=open]:rotate-90" />
+            <div className="absolute left-1/2 top-1/2 h-[1px] w-full -translate-x-1/2 -translate-y-1/2 bg-background" />
           </div>
         </div>
       </Accordion.Trigger>
