@@ -1,7 +1,5 @@
-// vibes.site/docs/eclipse/button
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { compileMDX } from 'next-mdx-remote/rsc'
-import dynamic from 'next/dynamic'
 import { permanentRedirect } from 'next/navigation'
 import { Suspense } from 'react'
 import { lazy } from 'react'
@@ -15,10 +13,8 @@ import {
   transformerRemoveLineBreak,
 } from '@shikijs/transformers'
 import { readFile } from 'fs/promises'
-import { MDXComponents } from 'mdx/types'
-import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import { ShikiTransformer } from 'shiki'
 
 import {
   AccordionContent,
@@ -35,13 +31,12 @@ import { Table, TableCell, TableRow } from '@/components/ui/table'
 import { Heading, TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
-// params { slug: '/controls/checkbox' }
 export default async function Page({ params }: { params: { slug?: string[] } }) {
   const file = await readFile(process.cwd() + '/mdx/' + params.slug?.join('/') + '.mdx').catch(() =>
     permanentRedirect('/404')
   )
 
-  const { content, frontmatter } = await compileMDX<{ title: string }>({
+  const { content, frontmatter } = await compileMDX<{ title: string; component: string }>({
     source: file,
     options: {
       parseFrontmatter: true,
@@ -49,6 +44,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
         remarkPlugins: [remarkGfm],
         rehypePlugins: [
           [
+            // @ts-ignore: Rehype Shiki types are outdated
             rehypeShiki,
             {
               themes: {
@@ -68,7 +64,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
                       this.addClassToHast(node, 'show-line-numbers')
                     }
                   },
-                },
+                } as ShikiTransformer,
               ],
             },
           ],
@@ -100,10 +96,15 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
     },
   })
 
+  const Preview = lazy(() => import('@/components/vibes/' + frontmatter.component + '/preview'))
+
   return (
     <div>
       <h1>{frontmatter.title}</h1>
-      {content}
+      <Suspense fallback={<div>loading..</div>}>
+        <Preview path={frontmatter.component} />
+      </Suspense>
+      <Content>{content}</Content>
     </div>
   )
 }
