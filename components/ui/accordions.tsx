@@ -1,49 +1,47 @@
 'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import * as AccordionRadix from '@radix-ui/react-accordion'
 
-function AccordionList({ children }: { children: React.ReactNode }) {
+function AccordionGroup({ children }: { children: React.ReactNode }) {
   return (
-    <Accordion.Root className="mt-5 w-full space-y-5" type="multiple">
+    <AccordionRadix.Root className="my-8 w-full space-y-4" type="multiple">
       {children}
-    </Accordion.Root>
+    </AccordionRadix.Root>
   )
 }
 
-function AccordionItem({ children, value }: { children: React.ReactNode; value: string }) {
+function Accordion({
+  title,
+  children,
+  value,
+}: {
+  title: string
+  children: React.ReactNode
+  value: string
+}) {
   return (
-    <Accordion.Item
-      className="pattern-shadow pattern-shadow-sm group border border-background bg-foreground p-5"
+    <AccordionRadix.Item
+      className="pattern-shadow hover:pattern-shadow-hover pattern-shadow-sm group pointer-events-none border border-foreground bg-background"
       value={value}
     >
-      {children}
-    </Accordion.Item>
-  )
-}
+      <AccordionRadix.Header asChild>
+        <AccordionRadix.Trigger asChild>
+          <div className="pointer-events-auto flex w-full cursor-pointer items-center gap-x-8 p-5">
+            <span className="flex-1 text-lg font-bold leading-normal">{title}</span>
 
-function AccordionTrigger({ children }: { children: React.ReactNode }) {
-  return (
-    <Accordion.Header asChild>
-      <Accordion.Trigger asChild>
-        <div className="flex w-full cursor-pointer items-center gap-x-4">
-          <span className="flex-1 text-lg font-bold leading-normal">{children}</span>
-
-          <div className="relative aspect-square w-[21px]">
-            <div className="absolute left-1/2 top-1/2 h-full w-[1px] -translate-x-1/2 -translate-y-1/2 bg-background transition-transform duration-300 group-data-[state=open]:rotate-90" />
-            <div className="absolute left-1/2 top-1/2 h-[1px] w-full -translate-x-1/2 -translate-y-1/2 bg-background" />
+            <div className="relative aspect-square w-[17px]">
+              <div className="absolute left-1/2 top-1/2 h-full w-[1px] -translate-x-1/2 -translate-y-1/2 bg-foreground transition-transform duration-300 group-data-[state=open]:rotate-90" />
+              <div className="absolute left-1/2 top-1/2 h-[1px] w-full -translate-x-1/2 -translate-y-1/2 bg-foreground" />
+            </div>
           </div>
-        </div>
-      </Accordion.Trigger>
-    </Accordion.Header>
+        </AccordionRadix.Trigger>
+      </AccordionRadix.Header>
+
+      <AccordionRadix.Content className="data-[state=closed]:animate-collapse data-[state=open]:animate-expand w-full overflow-hidden">
+        <div className="not-prose -mt-1 px-5 pb-5 font-light">{children}</div>
+      </AccordionRadix.Content>
+    </AccordionRadix.Item>
   )
 }
 
-function AccordionContent({ children }: { children: React.ReactNode }) {
-  return (
-    <Accordion.Content className="data-[state=closed]:animate-collapse data-[state=open]:animate-expand w-full overflow-hidden">
-      <div className="pt-3 font-light">{children}</div>
-    </Accordion.Content>
-  )
-}
-
-export { AccordionList, AccordionItem, AccordionTrigger, AccordionContent }
+export { AccordionGroup, Accordion }

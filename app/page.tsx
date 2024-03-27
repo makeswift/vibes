@@ -1,11 +1,6 @@
 import Image from 'next/image'
 
-import {
-  AccordionContent,
-  AccordionItem,
-  AccordionList,
-  AccordionTrigger,
-} from '@/components/ui/accordions'
+import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ComponentPreview } from '@/components/ui/component-preview'
 import { Heading, TableOfContents } from '@/components/ui/table-of-contents'
@@ -26,35 +21,28 @@ export default function Home() {
           </p>
 
           <Heading as="h2">These are some faqs</Heading>
-          <AccordionList>
-            <AccordionItem value="1">
-              <AccordionTrigger>Accordion 1</AccordionTrigger>
-              <AccordionContent>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
-                Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
-                vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
-                leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
-              </AccordionContent>
-            </AccordionItem>
+          <AccordionGroup>
+            <Accordion value="1" title="Accordion 1">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
+              Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
+              vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
+              leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+            </Accordion>
 
-            <AccordionItem value="2">
-              <AccordionTrigger>
-                This is a really long piece of text that should wrap to another line when I type in
-                more words for this title
-              </AccordionTrigger>
-              <AccordionContent>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
-                Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
-                vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
-                leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
-              </AccordionContent>
-            </AccordionItem>
+            <Accordion
+              value="2"
+              title="This is a really long piece of text that should wrap to another line when I type in more words for this title"
+            >
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
+              Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
+              vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
+              leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+            </Accordion>
 
-            <AccordionItem value="3">
-              <AccordionTrigger>Accordion 1</AccordionTrigger>
-              <AccordionContent>This is the content for accordion 1</AccordionContent>
-            </AccordionItem>
-          </AccordionList>
+            <Accordion value="3" title="This is a question">
+              This is the content for accordion 1
+            </Accordion>
+          </AccordionGroup>
 
           <Heading as="h2">This is a secondary header</Heading>
           <p>

@@ -23,12 +23,7 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import { Code } from '@/components/mdx/code'
 import { Img } from '@/components/mdx/img'
 import { Pre } from '@/components/mdx/pre'
-import {
-  AccordionContent,
-  AccordionItem,
-  AccordionList,
-  AccordionTrigger,
-} from '@/components/ui/accordions'
+import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ComponentPreview } from '@/components/ui/component-preview'
 import { Content } from '@/components/ui/content'
@@ -79,10 +74,8 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       },
     },
     components: {
-      AccordionContent,
-      AccordionItem,
-      AccordionList,
-      AccordionTrigger,
+      Accordion,
+      AccordionGroup,
       Button,
       ComponentPreview,
       Content,
