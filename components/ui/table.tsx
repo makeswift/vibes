@@ -7,14 +7,20 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   children: React.ReactNode
 }
 
-const Table = React.forwardRef<HTMLTableElement, TableProps>(({ children }, ref) => (
+const Table = React.forwardRef<HTMLTableElement, TableProps>(({ children }) => (
   <div className="relative w-full overflow-auto">
-    <table ref={ref} className="w-full border border-black text-sm">
-      <thead className="border-b-2 border-black">
+    <table className="table w-full border border-foreground text-sm">
+      <thead>
         <tr>
-          <th className="p-4 align-middle font-bold">Prop</th>
-          <th className="p-4 align-middle">Type</th>
-          <th className="p-4 align-middle">Default</th>
+          <th className="border-b-2 border-foreground bg-foreground/5 p-3 align-middle dark:bg-foreground/20">
+            Prop
+          </th>
+          <th className="border-b-2 border-foreground bg-foreground/5 p-3 align-middle dark:bg-foreground/20">
+            Type
+          </th>
+          <th className="border-b-2 border-foreground bg-foreground/5 p-3 align-middle dark:bg-foreground/20">
+            Default
+          </th>
         </tr>
       </thead>
       <tbody>{children}</tbody>
@@ -27,22 +33,22 @@ export interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement>
   children: React.ReactNode
 }
 
-const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(({ children }, ref) => (
-  <tr ref={ref} className="border-b border-black/10 transition-colors last:border-b-0">
-    {children}
-  </tr>
-))
+const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
+  ({ children }: { children: React.ReactNode }) => <tr>{children}</tr>
+)
 TableRow.displayName = 'TableRow'
 
 export interface TableCellProps extends React.HTMLAttributes<HTMLTableCellElement> {
   children: React.ReactNode
 }
 
-const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(({ children }, ref) => (
-  <td ref={ref} className="p-4 align-middle font-light [&:has([role=checkbox])]:pr-0">
-    {children}
-  </td>
-))
+const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
+  ({ children }: { children: React.ReactNode }) => (
+    <td className="border-b border-foreground p-3 align-middle font-light [&:has([role=checkbox])]:pr-0">
+      {children}
+    </td>
+  )
+)
 TableCell.displayName = 'TableCell'
 
 export { Table, TableRow, TableCell }

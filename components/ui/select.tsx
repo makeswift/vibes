@@ -26,10 +26,7 @@ export function Select({ allVibes }: Props) {
       <DropdownMenuTrigger asChild>
         <div className="flex cursor-pointer items-center gap-x-2 font-bold capitalize">{vibe}</div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="start"
-        className="rounded-lg border border-black bg-white shadow-none drop-shadow-md"
-      >
+      <DropdownMenuContent align="start">
         {vibeList.map((v, i) => (
           <DropdownMenuItem
             key={`${v}-${i}`}

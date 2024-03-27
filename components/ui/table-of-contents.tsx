@@ -81,8 +81,10 @@ export function TableOfContents() {
             <li key={heading.id} className="m-0 p-0">
               <a
                 className={cn(
-                  'block py-1 text-sm !font-light leading-normal text-black/50 transition-colors before:hidden hover:text-black',
-                  activeId === heading.id && 'text-black'
+                  'block py-1 text-sm !font-light leading-normal transition-opacity before:hidden',
+                  activeId === heading.id
+                    ? 'opacity-100'
+                    : 'opacity-50 hover:!opacity-100 dark:opacity-70'
                 )}
                 style={{
                   marginLeft: `${heading.level - 2}em`,

@@ -18,7 +18,7 @@ const ComponentPreview = React.forwardRef<HTMLDivElement, Props>(
     return (
       <div
         className={cn(
-          'pattern-shadow not-prose mb-8 mt-6 flex min-h-80 w-full items-center justify-center border border-black p-10 first:mt-0',
+          'pattern-shadow not-prose mb-8 mt-6 flex min-h-80 w-full items-center justify-center border border-foreground p-10 first:mt-0',
           SHADOW[shadow]
         )}
         ref={ref}

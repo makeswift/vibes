@@ -20,6 +20,9 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 
+import { Code } from '@/components/mdx/code'
+import { Img } from '@/components/mdx/img'
+import { Pre } from '@/components/mdx/pre'
 import {
   AccordionContent,
   AccordionItem,
@@ -89,14 +92,14 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       PopoverTrigger,
       Step,
       Steps,
-      Table,
-      TableCell,
-      TableRow,
       TableOfContents,
       Tabs,
       TabsContent,
       TabsList,
       TabsTrigger,
+      img: Img,
+      code: Code,
+      pre: Pre,
     },
   })
 

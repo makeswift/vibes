@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('./prose.css');
+/* @import url('./prose.css'); */
 @import url('./shiki.css');
 
 @layer base {
@@ -74,7 +74,7 @@
 
 @layer base {
   * {
-    @apply text-black;
+    @apply text-foreground;
   }
   body {
     @apply bg-background;
@@ -85,10 +85,29 @@
   .pattern-shadow-sm:after {
     @apply -left-1 top-1;
   }
+  .pattern-shadow-md:after {
+    @apply -left-1.5 top-1.5;
+  }
   .pattern-shadow-lg:after {
     @apply -left-2 top-2;
   }
   .pattern-shadow:after {
-    @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''] [background:linear-gradient(135deg,_black_20%,_transparent_20%,_transparent_50%,black_50%,_black_70%,_transparent_70%,_transparent_100%)_0_0/_5px_5px];
+    @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''];
+    background: linear-gradient(
+        135deg,
+        hsl(var(--foreground)) 0%,
+        transparent 0%,
+        transparent 30%,
+        hsl(var(--foreground)) 30%,
+        hsl(var(--foreground)) 50%,
+        transparent 50%,
+        transparent 80%,
+        hsl(var(--foreground)) 80%,
+        hsl(var(--foreground)) 100%
+      )
+      0 0/ 5px 5px;
+  }
+  .pattern-shadow-hover:after {
+    @apply animate-stripes;
   }
 }
