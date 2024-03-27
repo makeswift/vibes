@@ -54,40 +54,33 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
   console.log({ allVibes })
   return (
     <>
-      <header className="sticky top-0 z-20 ring-1 ring-foreground">
-        <div className="pattern-shadow pattern-shadow-sm bg-background px-6">
-          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between pb-0.5">
-            <div className="flex items-center gap-4">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <button
-                    className="relative mt-0.5 block rounded-full px-1 py-1.5"
-                    role="button"
-                    aria-label="Open mobile navigation"
-                  >
-                    <div className="flex h-4 w-5 flex-col justify-between py-0.5 transition-transform">
-                      <div className="h-0.5 w-full bg-foreground transition-transform duration-200"></div>
-                      <div className="h-0.5 w-full bg-foreground transition-transform duration-200"></div>
-                    </div>
-                  </button>
-                </PopoverTrigger>
-                <PopoverContent align="start">
-                  <div className="mb-4 text-lg font-bold leading-normal">
-                    <Select allVibes={allVibes} />
+      <header className="bg-background px-6">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between pb-0.5">
+          <div className="flex items-center gap-4">
+            <Popover>
+              <PopoverTrigger asChild>
+                <button
+                  className="relative mt-0.5 block rounded-full px-1 py-1.5"
+                  role="button"
+                  aria-label="Open mobile navigation"
+                >
+                  <div className="flex h-4 w-5 flex-col justify-between py-0.5 transition-transform">
+                    <div className="h-0.5 w-full bg-foreground transition-transform duration-200"></div>
+                    <div className="h-0.5 w-full bg-foreground transition-transform duration-200"></div>
                   </div>
-                  <Subnavigation allVibes={allVibes} />
-                </PopoverContent>
-              </Popover>
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start">
+                <Subnavigation allVibes={allVibes} />
+              </PopoverContent>
+            </Popover>
 
-              <Link href="/" className="shrink-0">
-                <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
-              </Link>
-
-              <Select allVibes={allVibes} />
-            </div>
-
-            <ModeToggle />
+            <Link href="/" className="shrink-0">
+              <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
+            </Link>
           </div>
+
+          <ModeToggle />
         </div>
       </header>
 

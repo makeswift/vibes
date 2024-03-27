@@ -7,7 +7,6 @@ import { useParams } from 'next/navigation'
 import clsx from 'clsx'
 
 import { Vibes } from '@/app/docs/layout'
-import { cn } from '@/lib/utils'
 
 import { Select } from './select'
 
@@ -42,6 +41,10 @@ export function Subnavigation({ className, allVibes }: { className?: string; all
 
   return (
     <div className={className}>
+      <div className="mb-4 text-lg font-bold leading-normal">
+        <Select allVibes={allVibes} />
+      </div>
+
       {navGroup.map(group => (
         <div key={group.name} className="mb-2">
           <div className="flex items-center gap-2 py-1.5 text-sm font-bold leading-normal">

@@ -85,6 +85,9 @@
   .pattern-shadow-sm:after {
     @apply -left-1 top-1;
   }
+  .pattern-shadow-md:after {
+    @apply -left-1.5 top-1.5;
+  }
   .pattern-shadow-lg:after {
     @apply -left-2 top-2;
   }

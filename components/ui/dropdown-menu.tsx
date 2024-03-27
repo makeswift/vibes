@@ -69,7 +69,7 @@ const DropdownMenuContent = React.forwardRef<
       )}
       {...props}
     >
-      <div className="pattern-shadow pattern-shadow-lg border border-foreground bg-background py-1">
+      <div className="pattern-shadow pattern-shadow-md border border-foreground bg-background py-1">
         {children}
       </div>
     </DropdownMenuPrimitive.Content>
@@ -86,7 +86,7 @@ const DropdownMenuItem = React.forwardRef<
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center px-3 py-1.5 text-sm outline-none transition-colors focus:bg-foreground/5 focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex cursor-default select-none items-center px-3 py-1.5 text-sm outline-none transition-colors focus:bg-foreground focus:text-background data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       inset && 'pl-8',
       className
     )}
