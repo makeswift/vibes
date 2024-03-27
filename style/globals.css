@@ -107,6 +107,9 @@
       )
       0 0/ 5px 5px;
   }
+  .dark .pattern-shadow:after {
+    @apply opacity-70;
+  }
   .pattern-shadow-hover:after {
     @apply animate-stripes;
   }

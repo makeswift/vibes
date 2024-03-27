@@ -54,7 +54,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
   console.log({ allVibes })
   return (
     <>
-      <header className="bg-background px-6">
+      <header className="sticky top-0 z-20 h-16 border-b border-dashed border-foreground/25 bg-background px-6">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between pb-0.5">
           <div className="flex items-center gap-4">
             <Popover>
@@ -88,7 +88,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                   <svg
-                    className="h-4 w-4 text-foreground"
+                    className="h-4 w-4"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -99,6 +99,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
+                      className="stroke-foreground"
                       d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                     />
                   </svg>
@@ -106,7 +107,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
                 <input
                   type="search"
                   id="default-search"
-                  className="block w-full rounded-none border border-transparent bg-foreground/5 py-2.5 pr-3 ps-10 text-sm text-foreground placeholder-foreground/50 outline-none ring-0 transition-colors focus-within:border-foreground focus-within:bg-background"
+                  className="block w-full rounded-none border border-foreground/20 bg-background py-2 pr-3 ps-10 text-sm text-foreground placeholder-foreground/50 outline-none ring-0 transition-colors ease-linear hover:border-foreground"
                   placeholder="Search"
                   required
                 />
