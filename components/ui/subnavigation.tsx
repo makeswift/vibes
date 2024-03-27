@@ -48,7 +48,14 @@ export function Subnavigation({ className, allVibes }: { className?: string; all
       {navGroup.map(group => (
         <div key={group.name} className="mb-2">
           <div className="flex items-center gap-2 py-1.5 text-sm font-bold leading-normal">
-            <Image src={group.icon} width={20} height={20} alt="Icon" priority />
+            <Image
+              src={group.icon}
+              width={20}
+              height={20}
+              alt="Icon"
+              priority
+              className="stroke-foreground"
+            />
             {group.name}
           </div>
 
