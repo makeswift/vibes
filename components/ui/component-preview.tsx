@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { cn } from '@/lib/utils'
+import clsx from 'clsx'
 
 const SHADOW = {
   small: 'pattern-shadow-sm',
@@ -17,7 +17,7 @@ const ComponentPreview = React.forwardRef<HTMLDivElement, Props>(
   ({ children, color, shadow }, ref) => {
     return (
       <div
-        className={cn(
+        className={clsx(
           'pattern-shadow not-prose mb-8 mt-6 flex min-h-80 w-full items-center justify-center border border-foreground p-10 first:mt-0',
           SHADOW[shadow]
         )}

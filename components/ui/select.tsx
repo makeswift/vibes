@@ -1,7 +1,10 @@
 'use client'
 
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import * as React from 'react'
+
+import clsx from 'clsx'
 
 import { Vibes } from '@/app/docs/layout'
 import {
@@ -12,10 +15,11 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 type Props = {
+  className?: string
   allVibes: Vibes
 }
 
-export function Select({ allVibes }: Props) {
+export function Select({ className, allVibes }: Props) {
   const vibeList = Object.keys(allVibes)
 
   const [vibe, setVibe] = React.useState(vibeList[0])
@@ -24,7 +28,15 @@ export function Select({ allVibes }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="flex cursor-pointer items-center gap-x-2 font-bold capitalize">{vibe}</div>
+        <div
+          className={clsx(
+            'flex cursor-pointer items-center gap-x-1 font-bold capitalize',
+            className
+          )}
+        >
+          {vibe}
+          <Image src="/up-down-arrows.svg" alt="Up and down arrows" width={16} height={16} />
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         {vibeList.map((v, i) => (

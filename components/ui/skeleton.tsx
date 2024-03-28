@@ -1,15 +1,7 @@
-import { cn } from "@/lib/utils"
+import clsx from 'clsx'
 
-function Skeleton({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("animate-pulse rounded-md bg-muted", className)}
-      {...props}
-    />
-  )
+function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={clsx('animate-pulse rounded-md bg-muted', className)} {...props} />
 }
 
 export { Skeleton }
