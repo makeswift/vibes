@@ -3,12 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import { useState } from 'react'
 
 import clsx from 'clsx'
 
 import { Vibes } from '@/app/docs/layout'
-
-import { Select } from './select'
 
 function SubnavLink({
   children,
@@ -19,6 +18,7 @@ function SubnavLink({
   href: string
   active?: boolean
 }) {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
   return (
     <li>
       <Link
@@ -37,14 +37,9 @@ function SubnavLink({
 export function Subnavigation({ className, allVibes }: { className?: string; allVibes: Vibes }) {
   const { slug } = useParams()
   const navGroup = allVibes[slug[0]]
-  console.log({ allVibes })
 
   return (
     <div className={className}>
-      <div className="mb-4 text-lg font-bold leading-normal">
-        <Select allVibes={allVibes} />
-      </div>
-
       {navGroup.map(group => (
         <div key={group.name} className="mb-2">
           <div className="flex items-center gap-2 py-1.5 text-sm font-bold leading-normal">

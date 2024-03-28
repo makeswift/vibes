@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { cn } from '@/lib/utils'
+import clsx from 'clsx'
 
 type HeadingType = { id: string; text: string; level: number }
 function useHeadings() {
@@ -80,7 +80,7 @@ export function TableOfContents() {
           {headings.map(heading => (
             <li key={heading.id} className="m-0 p-0">
               <a
-                className={cn(
+                className={clsx(
                   'block py-1 text-sm !font-light leading-normal transition-opacity before:hidden',
                   activeId === heading.id
                     ? 'opacity-100'
