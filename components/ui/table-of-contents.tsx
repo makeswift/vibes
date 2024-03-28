@@ -83,8 +83,6 @@ export function TableOfContents({ offsetTop = 0 }: Props) {
                   e.preventDefault()
                   const element = document.querySelector(`#${heading.id}`)
 
-                  console.log({ element, scrollTop: element?.getBoundingClientRect().top })
-
                   window.scrollTo({
                     top: (element?.getBoundingClientRect().top ?? 0) + window.scrollY - offsetTop,
                     left: (element?.getBoundingClientRect().left ?? 0) + window.scrollY - offsetTop,
