@@ -67,7 +67,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
               'prose-p:font-light first:prose-p:mt-0',
               'prose-ul:pl-5 prose-ul:font-light',
               'prose-li:[&_::marker]:!text-foreground',
-              'hover:prose-a:before:animate-underline-hover prose-a:relative prose-a:font-medium prose-a:no-underline prose-a:before:absolute prose-a:before:left-0 prose-a:before:top-full prose-a:before:mt-0.5 prose-a:before:h-[2px] prose-a:before:w-full prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px]',
+              'prose-a:relative prose-a:font-medium prose-a:no-underline prose-a:before:absolute prose-a:before:left-0 prose-a:before:top-full prose-a:before:mt-0.5 prose-a:before:h-[2px] prose-a:before:w-full prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] hover:prose-a:before:animate-underline-hover',
               'prose-code:not(pre code):m-0 prose-code:not(pre code):inline-block prose-code:not(pre code):rounded prose-code:not(pre code):bg-gray-100 prose-code:not(pre code):px-1 prose-code:not(pre code):py-0.5 prose-code:not(pre code):font-normal prose-code:not(pre code):leading-5',
               'prose-code:not(pre code):before:content-none prose-code:not(pre code):after:content-none',
               'prose-pre:my-5 prose-pre:rounded-none prose-pre:!bg-foreground/5 prose-pre:py-5',

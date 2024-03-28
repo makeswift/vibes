@@ -1,0 +1,5 @@
+export { default as code } from './code'
+export { default as pre } from './pre'
+export { default as h1 } from './h1'
+export { default as h2 } from './h2'
+export { default as h3 } from './h3'

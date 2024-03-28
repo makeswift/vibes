@@ -16,19 +16,15 @@ import { readFile } from 'fs/promises'
 import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
-import { Code } from '@/components/mdx/code'
-import { Img } from '@/components/mdx/img'
-import { Pre } from '@/components/mdx/pre'
+import * as MDXComponents from '@/components/mdx'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ComponentPreview } from '@/components/ui/component-preview'
-import { Content } from '@/components/ui/content'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Step, Steps } from '@/components/ui/steps'
 import { Table, TableCell, TableRow } from '@/components/ui/table'
-import { Heading, TableOfContents } from '@/components/ui/table-of-contents'
+import { TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Button as EclipseButton } from '@/components/vibes/eclipse/button'
 
 // params { slug: '/controls/checkbox' }
 export default async function Page({ params }: { params: { slug?: string[] } }) {
@@ -72,13 +68,11 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       },
     },
     components: {
+      ...MDXComponents,
       Accordion,
       AccordionGroup,
       Button,
       ComponentPreview,
-      Content,
-      EclipseButton,
-      Heading,
       Popover,
       PopoverContent,
       PopoverTrigger,
@@ -89,13 +83,12 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       TabsContent,
       TabsList,
       TabsTrigger,
-      img: Img,
-      code: Code,
-      pre: Pre,
     },
   })
 
-  const Preview = lazy(() => import('@/components/vibes/' + frontmatter.path + '/preview'))
+  const Preview = frontmatter.path
+    ? lazy(() => import('@/components/vibes/' + frontmatter.path + '/preview'))
+    : () => null
 
   return (
     <div>
@@ -105,8 +98,10 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
           <Preview></Preview>
         </Suspense>
       </ErrorBoundary>
-
-      {content}
+      <div className="gap-x-16 pt-5 md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+        <div>{content}</div>
+        <TableOfContents offsetTop={104} />
+      </div>
     </div>
   )
 }

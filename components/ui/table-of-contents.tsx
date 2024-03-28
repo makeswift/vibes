@@ -1,88 +1,77 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
-type HeadingType = { id: string; text: string; level: number }
-function useHeadings() {
-  const [headings, setHeadings] = React.useState<HeadingType[]>([])
-  React.useEffect(() => {
+type Heading = { id: string; text: string; level: number; element: Element }
+
+interface Props {
+  offsetTop?: number
+}
+
+export function TableOfContents({ offsetTop = 0 }: Props) {
+  const [headings, setHeadings] = useState<Heading[]>([])
+  const [activeHeading, setActiveHeading] = useState<Heading | null>(null)
+  const visibleHeadings = useRef<Heading[]>([])
+
+  useEffect(() => {
     const elements = Array.from(document.querySelectorAll('h2, h3, h4, h5, h6'))
       .filter(element => element.id)
       .map(element => ({
         id: element.id,
         text: element.textContent ?? '',
         level: Number(element.tagName.substring(1)),
+        element,
       }))
+
     setHeadings(elements)
   }, [])
-  return headings
-}
 
-function getId(children: string) {
-  return children
-    .split(' ')
-    .map(word => word.toLowerCase())
-    .join('-')
-}
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const heading = headings.find(({ element }) => element === entry.target)
 
-type HeadingProps = {
-  children: string
-  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  id?: string
-}
+          if (!heading) return
 
-export function Heading({ children, id, as: Element, ...props }: HeadingProps) {
-  const theId = id ?? getId(children)
-  return (
-    <Element id={theId} {...props}>
-      {children}
-    </Element>
-  )
-}
+          if (entry.isIntersecting) {
+            visibleHeadings.current = [...visibleHeadings.current, heading]
+          } else {
+            visibleHeadings.current = visibleHeadings.current.filter(h => h !== heading)
+          }
 
-function useScrollSpy(ids: string[], options: IntersectionObserverInit) {
-  const [activeId, setActiveId] = React.useState<string>()
-  const observer = React.useRef<IntersectionObserver>()
-  React.useEffect(() => {
-    const elements = ids.map(id => document.getElementById(id))
-    observer.current?.disconnect()
-    observer.current = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry?.isIntersecting) {
-          setActiveId(entry.target.id)
-        }
-      })
-    }, options)
-    elements.forEach(el => {
-      if (el) {
-        observer.current?.observe(el)
-      }
-    })
-    return () => observer.current?.disconnect()
-  }, [ids, options])
-  return activeId
-}
+          if (visibleHeadings.current.length > 0) {
+            setActiveHeading(
+              visibleHeadings.current.reduce((a, b) =>
+                a.element.getBoundingClientRect().top < b.element.getBoundingClientRect().top
+                  ? a
+                  : b
+              )
+            )
+          }
+        })
+      },
+      { rootMargin: `-${offsetTop}px 0% 0% 0%`, threshold: 0 }
+    )
 
-// Now, the function that renders it all
-export function TableOfContents() {
-  const headings = useHeadings()
-  const activeId = useScrollSpy(
-    headings.map(({ id }) => id),
-    { rootMargin: '0% 0% -25% 0%' }
-  )
+    headings.forEach(({ element }) => observer.observe(element))
+
+    return () => observer.disconnect()
+  }, [headings, offsetTop])
+
   return (
     <div className="not-prose hidden xl:block">
       <nav className="sticky top-24 w-full">
         <div className="mb-3 text-sm font-bold">On this page</div>
         <ul>
-          {headings.map(heading => (
-            <li key={heading.id} className="m-0 p-0">
+          {headings.map((heading, index) => (
+            <li key={index} className="m-0 p-0">
               <a
                 className={clsx(
                   'block py-1 text-sm !font-light leading-normal transition-opacity before:hidden',
-                  activeId === heading.id
+                  heading === activeHeading
                     ? 'opacity-100'
                     : 'opacity-50 hover:!opacity-100 dark:opacity-70'
                 )}
@@ -90,6 +79,18 @@ export function TableOfContents() {
                   marginLeft: `${heading.level - 2}em`,
                 }}
                 href={`#${heading.id}`}
+                onClick={e => {
+                  e.preventDefault()
+                  const element = document.querySelector(`#${heading.id}`)
+
+                  console.log({ element, scrollTop: element?.getBoundingClientRect().top })
+
+                  window.scrollTo({
+                    top: (element?.getBoundingClientRect().top ?? 0) + window.scrollY - offsetTop,
+                    left: (element?.getBoundingClientRect().left ?? 0) + window.scrollY - offsetTop,
+                    behavior: 'smooth',
+                  })
+                }}
               >
                 {heading.text}
               </a>

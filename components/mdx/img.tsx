@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef, useState } from 'react'
 
 interface Props extends ComponentPropsWithoutRef<'img'> {}
 
-export function Img({ alt = 'An Image', src = 'https://placehold.it/1024x640' }: Props) {
+export default function Img({ alt = 'An Image', src = 'https://placehold.it/1024x640' }: Props) {
   const [zoomed, setZoomed] = useState(false)
 
   return (
