@@ -1,10 +1,8 @@
 // vibes.site/docs/eclipse/button
-import { MDXRemote } from 'next-mdx-remote/rsc'
 import { compileMDX } from 'next-mdx-remote/rsc'
-import dynamic from 'next/dynamic'
 import { permanentRedirect } from 'next/navigation'
-import { Suspense } from 'react'
-import { lazy } from 'react'
+import { Suspense, lazy } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 import rehypeShiki from '@shikijs/rehype'
 import {
@@ -15,10 +13,8 @@ import {
   transformerRemoveLineBreak,
 } from '@shikijs/transformers'
 import { readFile } from 'fs/promises'
-import { MDXComponents } from 'mdx/types'
-import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import { ShikiTransformer } from 'shiki'
 
 import { Code } from '@/components/mdx/code'
 import { Img } from '@/components/mdx/img'
@@ -32,6 +28,7 @@ import { Step, Steps } from '@/components/ui/steps'
 import { Table, TableCell, TableRow } from '@/components/ui/table'
 import { Heading, TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Button as EclipseButton } from '@/components/vibes/eclipse/button'
 
 // params { slug: '/controls/checkbox' }
 export default async function Page({ params }: { params: { slug?: string[] } }) {
@@ -39,7 +36,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
     permanentRedirect('/404')
   )
 
-  const { content, frontmatter } = await compileMDX<{ title: string }>({
+  const { content, frontmatter } = await compileMDX<{ title?: string; path?: string }>({
     source: file,
     options: {
       parseFrontmatter: true,
@@ -47,6 +44,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
         remarkPlugins: [remarkGfm],
         rehypePlugins: [
           [
+            // @ts-ignore-next-line
             rehypeShiki,
             {
               themes: {
@@ -66,7 +64,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
                       this.addClassToHast(node, 'show-line-numbers')
                     }
                   },
-                },
+                } as ShikiTransformer,
               ],
             },
           ],
@@ -79,6 +77,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       Button,
       ComponentPreview,
       Content,
+      EclipseButton,
       Heading,
       Popover,
       PopoverContent,
@@ -96,9 +95,17 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
     },
   })
 
+  const Preview = lazy(() => import('@/components/vibes/' + frontmatter.path + '/preview'))
+
   return (
     <div>
       <h1>{frontmatter.title}</h1>
+      <ErrorBoundary fallback={<div>Fallback!</div>}>
+        <Suspense>
+          <Preview></Preview>
+        </Suspense>
+      </ErrorBoundary>
+
       {content}
     </div>
   )
