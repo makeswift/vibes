@@ -10,15 +10,15 @@ const SHADOW = {
 export interface Props {
   children: React.ReactNode
   color: string
-  shadow: 'small' | 'large'
+  shadow?: 'small' | 'large'
 }
 
 const ComponentPreview = React.forwardRef<HTMLDivElement, Props>(
-  ({ children, color, shadow }, ref) => {
+  ({ children, color, shadow = 'large' }, ref) => {
     return (
       <div
         className={clsx(
-          'pattern-shadow not-prose mb-8 mt-6 flex min-h-80 w-full items-center justify-center border border-foreground p-10 first:mt-0',
+          'pattern-shadow not-prose mb-8 mt-6 flex min-h-48 w-full items-center justify-center border border-foreground p-10 first:mt-0 md:min-h-80',
           SHADOW[shadow]
         )}
         ref={ref}

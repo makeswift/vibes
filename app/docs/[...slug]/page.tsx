@@ -98,7 +98,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
           <Preview></Preview>
         </Suspense>
       </ErrorBoundary>
-      <div className="gap-x-16 pt-5 md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+      <div className="gap-x-20 pt-5 md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
         <div>{content}</div>
         <TableOfContents offsetTop={104} />
       </div>
