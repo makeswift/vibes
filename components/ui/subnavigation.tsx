@@ -2,30 +2,23 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
-import { useState } from 'react'
+import { useParams, usePathname } from 'next/navigation'
 
 import clsx from 'clsx'
 
 import { Vibes } from '@/app/docs/layout'
 
-function SubnavLink({
-  children,
-  href,
-  active,
-}: {
-  children: React.ReactNode
-  href: string
-  active?: boolean
-}) {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+function SubnavLink({ children, href }: { children: React.ReactNode; href: string }) {
+  const pathname = usePathname()
   return (
     <li>
       <Link
         href={`/docs/${href}`}
         className={clsx(
           'block py-1 pl-7 text-sm leading-normal transition-opacity',
-          active ? 'font-semibold opacity-100' : 'opacity-50 hover:!opacity-100 dark:opacity-70'
+          pathname === `/docs/${href}`
+            ? 'font-semibold opacity-100'
+            : 'opacity-50 hover:!opacity-100 dark:opacity-70'
         )}
       >
         {children}
