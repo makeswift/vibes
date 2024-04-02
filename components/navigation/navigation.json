@@ -1,7 +1,9 @@
 {
-  "vibes": [
+  "links": [],
+  "chapters": [
     {
       "name": "Eclipse",
+      "slug": "eclipse",
       "groups": [
         {
           "name": "Getting started",
@@ -40,6 +42,7 @@
     },
     {
       "name": "Brutalist",
+      "path": "eclipse",
       "groups": [
         {
           "name": "Getting started",
