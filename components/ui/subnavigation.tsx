@@ -18,7 +18,7 @@ function SubnavLink({ children, href }: { children: React.ReactNode; href: strin
           'block py-1 pl-7 text-sm leading-normal transition-opacity',
           pathname === `/docs/${href}`
             ? 'font-semibold opacity-100'
-            : 'opacity-50 hover:!opacity-100 dark:opacity-70'
+            : 'opacity-60 hover:!opacity-100 dark:opacity-70'
         )}
       >
         {children}
@@ -35,7 +35,7 @@ export function Subnavigation({ className, allVibes }: { className?: string; all
     <div className={className}>
       {navGroup.map(group => (
         <div key={group.name} className="mb-2">
-          <div className="flex items-center gap-2 py-1.5 text-sm font-bold leading-normal">
+          <div className="font-heading flex items-center gap-2 py-1.5 text-sm leading-normal">
             <Image
               src={group.icon}
               width={20}

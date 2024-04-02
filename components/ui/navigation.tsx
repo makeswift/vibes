@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import * as Portal from '@radix-ui/react-portal'
@@ -14,10 +15,15 @@ import { Subnavigation } from '@/components/ui/subnavigation'
 
 function Navigation({ allVibes }: { allVibes: Vibes }) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', mobileNavOpen)
   }, [mobileNavOpen])
+
+  useEffect(() => {
+    setMobileNavOpen(false)
+  }, [pathname])
 
   return (
     <header className="sticky top-0 z-30 h-14 border-b border-dashed border-foreground/25 bg-background px-4 md:h-16 md:px-6">

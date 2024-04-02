@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
+import { IBM_Plex_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
+import clsx from 'clsx'
 
-import { cn } from '@/lib/utils'
 import '@/style/globals.css'
 
 import { Providers } from './providers'
@@ -13,6 +13,36 @@ export const metadata: Metadata = {
   description: 'A composable theme library for React marketing sites',
 }
 
+const PolysansWide = localFont({
+  src: './fonts/PolySans-BulkyWide.woff2',
+  display: 'swap',
+  variable: '--font-heading',
+})
+
+const Polysans = localFont({
+  src: [
+    {
+      path: './fonts/PolySans-Slim.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/PolySans-Median.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-sans',
+})
+
+const IBMPlexMono = IBM_Plex_Mono({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +50,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(GeistSans.variable, GeistMono.variable, 'font-sans')}>
+      <body
+        className={clsx(
+          Polysans.variable,
+          PolysansWide.variable,
+          IBMPlexMono.variable,
+          'font-sans'
+        )}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -74,7 +74,7 @@
 
 @layer base {
   * {
-    @apply text-foreground;
+    @apply text-foreground antialiased;
   }
   body {
     @apply bg-background;
