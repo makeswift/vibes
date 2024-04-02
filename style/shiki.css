@@ -36,6 +36,7 @@
   padding: 0 var(--shiki-line-padding);
   width: calc(100% + (var(--shiki-line-padding) * 2));
   margin: 0 calc(-1 * var(--shiki-line-padding));
+  min-height: 20px;
 }
 
 .shiki .line:last-child:empty {

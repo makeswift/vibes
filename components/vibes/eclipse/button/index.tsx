@@ -12,7 +12,7 @@ export interface Props {
   borderGlow?: boolean
 }
 
-export const Button = forwardRef(function Button(
+const Button = forwardRef(function Button(
   {
     className,
     link,
@@ -29,7 +29,6 @@ export const Button = forwardRef(function Button(
       className={clsx(
         className,
         'group relative z-0 overflow-hidden rounded-xl p-[1px] text-center leading-normal text-white shadow-xl shadow-black/25',
-
         link?.href === '#' && 'pointer-events-none'
       )}
       href={link?.href ?? '#'}
@@ -59,3 +58,5 @@ export const Button = forwardRef(function Button(
     </Link>
   )
 })
+
+export default Button
