@@ -44,7 +44,6 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
         remarkPlugins: [remarkGfm],
         rehypePlugins: [
           [
-            // @ts-ignore-next-line
             rehypeShiki,
             {
               themes: {

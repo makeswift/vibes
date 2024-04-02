@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('./prose.css');
 @import url('./shiki.css');
 
 @layer base {

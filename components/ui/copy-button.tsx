@@ -8,20 +8,20 @@ import { Button } from './button'
 
 interface Props {
   className?: string
-  clipboard: ReactNode
+  selectorFromParent?: string
 }
 
-export function CopyButton({ className, clipboard }: Props) {
+export function CopyButton({ className, selectorFromParent = 'pre' }: Props) {
   const { toast } = useToast()
-
-  console.log({ clipboard: clipboard?.toString() })
 
   return (
     <Button
       className={className}
-      onClick={e => {
-        if (typeof clipboard === 'string') {
-          navigator.clipboard.writeText(clipboard)
+      onClick={({ currentTarget: { parentElement } }) => {
+        const textContent = parentElement?.querySelector(selectorFromParent)?.textContent
+
+        if (typeof textContent === 'string') {
+          navigator.clipboard.writeText(textContent)
 
           toast({ title: 'Copied to clipboard' })
         }
