@@ -30,17 +30,13 @@ const Button = ({ href, variant = 'default', size = 'default', children = 'Butto
     SIZE_STYLES[size]
   )
 
-  return href ? (
+  return (
     <Link
       className="not-prose relative z-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/30 focus-visible:ring-offset-1"
-      href={href}
+      href={href ?? '#'}
     >
       <div className={buttonClasses}>{children}</div>
     </Link>
-  ) : (
-    <button className="not-prose relative z-0 focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
-      <div className={buttonClasses}>{children}</div>
-    </button>
   )
 }
 
