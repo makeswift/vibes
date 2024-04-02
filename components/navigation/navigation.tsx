@@ -5,11 +5,16 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+import * as Portal from '@radix-ui/react-portal'
 import clsx from 'clsx'
 
 import { ModeToggle } from '@/components/ui/mode-toggle'
 
-function Navigation() {
+interface Props {
+  sidebar: React.ReactNode
+}
+
+export function Navigation({ sidebar }: Props) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const pathname = usePathname()
 
@@ -46,6 +51,14 @@ function Navigation() {
               ></div>
             </div>
           </button>
+
+          {mobileNavOpen && (
+            <Portal.Root asChild>
+              <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto bg-background p-4 md:p-6">
+                {sidebar}
+              </div>
+            </Portal.Root>
+          )}
 
           <Link href="/" className="shrink-0">
             <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
@@ -90,5 +103,3 @@ function Navigation() {
     </header>
   )
 }
-
-export { Navigation }

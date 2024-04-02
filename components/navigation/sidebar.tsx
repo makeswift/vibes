@@ -1,20 +1,19 @@
 import Image from 'next/image'
 
+import navigation from './navigation.json'
 import { PageLink } from './page-link'
 
 interface Props {
-  groups: {
-    name: string
-    icon: string
-    pages: string[]
-  }[]
+  slug: string[]
 }
 
-export function Sidebar({ groups }: Props) {
+export function Sidebar({ slug }: Props) {
+  const chapter = navigation.chapters.find(chapter => chapter.slug === slug[0])
+
   return (
-    <div className="h-full overflow-y-scroll py-8">
-      {groups.map(group => (
-        <div key={group.name} className="mb-2">
+    <div className="space-y-2">
+      {chapter?.groups.map(group => (
+        <div key={group.name}>
           <div className="font-heading flex items-center gap-2 py-1.5 text-sm leading-normal">
             <Image
               src={group.icon}
