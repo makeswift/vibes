@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 
 import clsx from 'clsx'
 
+import { Toaster } from '@/components/ui/toaster'
 import '@/style/globals.css'
 
 import { Providers } from './providers'
@@ -58,7 +59,10 @@ export default function RootLayout({
           'font-sans'
         )}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <main>{children}</main>
+        </Providers>
+        <Toaster />
       </body>
     </html>
   )

@@ -58,7 +58,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
 
           <div
             className={clsx(
-              'vibes-prose',
+              // 'vibes-prose',
               'prose max-w-full py-10 dark:prose-invert',
               'prose-headings:font-heading prose-headings:font-bold',
               'prose-h1:mb-4 prose-h1:text-3xl',
@@ -67,9 +67,9 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
               'prose-p:font-light first:prose-p:mt-0',
               'prose-ul:pl-5 prose-ul:font-light',
               'prose-li:[&_::marker]:!text-foreground',
-              'hover:prose-a:before:animate-underline-hover prose-a:relative prose-a:font-bold prose-a:no-underline prose-a:before:absolute prose-a:before:left-0 prose-a:before:top-full prose-a:before:mt-0.5 prose-a:before:h-[2px] prose-a:before:w-full prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px]',
-              'prose-code:not(pre code):m-0 prose-code:not(pre code):inline-block prose-code:not(pre code):rounded prose-code:not(pre code):bg-gray-100 prose-code:not(pre code):px-1 prose-code:not(pre code):py-0.5 prose-code:not(pre code):font-normal prose-code:not(pre code):leading-5',
-              'prose-code:not(pre code):before:content-none prose-code:not(pre code):after:content-none',
+              'prose-a:relative prose-a:font-bold prose-a:no-underline prose-a:before:absolute prose-a:before:left-0 prose-a:before:top-full prose-a:before:mt-0.5 prose-a:before:h-[2px] prose-a:before:w-full prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] hover:prose-a:before:animate-underline-hover',
+              '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-gray-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
+              '[&:not(pre_code)]:prose-code:before:content-none [&:not(pre_code)]:prose-code:after:content-none',
               'prose-pre:my-5 prose-pre:rounded-none prose-pre:!bg-foreground/5 prose-pre:py-5',
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5'
             )}

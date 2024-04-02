@@ -58,8 +58,10 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
                 transformerNotationFocus(),
                 transformerRemoveLineBreak(),
                 {
-                  name: 'transformers:show-line-numbers',
-                  pre(node: any) {
+                  name: 'transformers:pre',
+                  pre(node) {
+                    this.addClassToHast(node, 'relative')
+
                     if (this.options?.meta?.__raw?.includes('showLineNumbers')) {
                       this.addClassToHast(node, 'show-line-numbers')
                     }
