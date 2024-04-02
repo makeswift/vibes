@@ -1,6 +1,6 @@
 // vibes.site/docs/eclipse/button
 import { compileMDX } from 'next-mdx-remote/rsc'
-import { permanentRedirect } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import { Suspense, lazy } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -33,7 +33,7 @@ interface PageMeta {
 
 export default async function Page({ params }: { params: { slug?: string[] } }) {
   const file = await readFile(process.cwd() + '/mdx/' + params.slug?.join('/') + '.mdx').catch(() =>
-    permanentRedirect('/404')
+    notFound()
   )
 
   const { content, frontmatter } = await compileMDX<PageMeta>({

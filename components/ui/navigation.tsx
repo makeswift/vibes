@@ -5,15 +5,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import * as Portal from '@radix-ui/react-portal'
 import clsx from 'clsx'
 
-import { Vibes } from '@/app/docs/layout'
 import { ModeToggle } from '@/components/ui/mode-toggle'
-import { Select } from '@/components/ui/select'
-import { Subnavigation } from '@/components/ui/subnavigation'
 
-function Navigation({ allVibes }: { allVibes: Vibes }) {
+function Navigation() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const pathname = usePathname()
 
@@ -51,22 +47,9 @@ function Navigation({ allVibes }: { allVibes: Vibes }) {
             </div>
           </button>
 
-          {mobileNavOpen && (
-            <Portal.Root asChild>
-              <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto bg-background p-4 md:p-6">
-                <div className="mb-4 mt-2">
-                  <Select allVibes={allVibes} />
-                </div>
-                <Subnavigation allVibes={allVibes} />
-              </div>
-            </Portal.Root>
-          )}
-
           <Link href="/" className="shrink-0">
             <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
           </Link>
-
-          <Select allVibes={allVibes} className="mt-2 hidden md:flex" />
         </div>
 
         <div className="flex items-center gap-x-3">
