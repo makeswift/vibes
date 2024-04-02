@@ -26,13 +26,17 @@ import { Table, TableCell, TableRow } from '@/components/ui/table'
 import { TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
-// params { slug: '/controls/checkbox' }
+interface PageMeta {
+  title?: string
+  path?: string
+}
+
 export default async function Page({ params }: { params: { slug?: string[] } }) {
   const file = await readFile(process.cwd() + '/mdx/' + params.slug?.join('/') + '.mdx').catch(() =>
     permanentRedirect('/404')
   )
 
-  const { content, frontmatter } = await compileMDX<{ title?: string; path?: string }>({
+  const { content, frontmatter } = await compileMDX<PageMeta>({
     source: file,
     options: {
       parseFrontmatter: true,
@@ -40,7 +44,6 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
         remarkPlugins: [remarkGfm],
         rehypePlugins: [
           [
-            // @ts-ignore-next-line
             rehypeShiki,
             {
               themes: {
@@ -54,8 +57,10 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
                 transformerNotationFocus(),
                 transformerRemoveLineBreak(),
                 {
-                  name: 'transformers:show-line-numbers',
-                  pre(node: any) {
+                  name: 'transformers:pre',
+                  pre(node) {
+                    this.addClassToHast(node, 'relative')
+
                     if (this.options?.meta?.__raw?.includes('showLineNumbers')) {
                       this.addClassToHast(node, 'show-line-numbers')
                     }
@@ -100,7 +105,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       </ErrorBoundary>
       <div className="gap-x-20 pt-5 md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
         <div>{content}</div>
-        <TableOfContents offsetTop={104} />
+        <TableOfContents offsetTop={90} />
       </div>
     </div>
   )
