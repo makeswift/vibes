@@ -1,17 +1,14 @@
 'use client'
 
-import { ReactNode, useState } from 'react'
-
 import { useToast } from '@/components/ui/use-toast'
-
-import { Button } from './button'
 
 interface Props {
   className?: string
   selectorFromParent?: string
+  children?: React.ReactNode
 }
 
-export function CopyButton({ className, selectorFromParent = 'pre' }: Props) {
+export function CopyButton({ className, selectorFromParent = 'pre', children }: Props) {
   const { toast } = useToast()
 
   return (
@@ -27,7 +24,7 @@ export function CopyButton({ className, selectorFromParent = 'pre' }: Props) {
         }
       }}
     >
-      Copy
+      {children}
     </button>
   )
 }
