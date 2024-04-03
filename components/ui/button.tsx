@@ -21,7 +21,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       >
         <span
           className={clsx(
-            'ring-offset-docs-background inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none transition-colors before:hidden',
+            'ring-offset-docs-background inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none transition-colors',
             {
               default:
                 'pattern-shadow pattern-shadow-sm hover:pattern-shadow-hover border-docs-foreground bg-docs-background text-docs-foreground',
