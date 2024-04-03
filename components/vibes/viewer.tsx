@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function Viewer({ path }: Props) {
-  const Component = lazy(() => import('@/components/vibes/' + path + '/preview'))
+  const Component = lazy(() => import(`@/components/vibes/${path}/preview`))
 
   return (
     <Tabs defaultValue="preview">
@@ -20,7 +20,9 @@ export default function Viewer({ path }: Props) {
       </TabsList>
       <TabsContent value="preview">
         <Card>
-          <ErrorBoundary fallback={<div>Preview not found!</div>}>
+          <ErrorBoundary
+            fallback={<div className="flex justify-center p-5">Preview not found at {path}</div>}
+          >
             <Suspense>
               <Component />
             </Suspense>
@@ -29,7 +31,9 @@ export default function Viewer({ path }: Props) {
       </TabsContent>
       <TabsContent value="code">
         <Card>
-          <ErrorBoundary fallback={<div>Code not found!</div>}>
+          <ErrorBoundary
+            fallback={<div className="flex justify-center p-5">Code not found at {path}</div>}
+          >
             <CodeFromFile pathname={`/components/vibes/${path}/index.tsx`} />
           </ErrorBoundary>
         </Card>
