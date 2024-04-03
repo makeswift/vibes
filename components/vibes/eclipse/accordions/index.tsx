@@ -1,3 +1,5 @@
+'use client'
+
 import React, { ReactNode, Ref, forwardRef } from 'react'
 
 import * as Accordion from '@radix-ui/react-accordion'
@@ -11,10 +13,10 @@ type AccordionItem = {
 type Props = {
   className?: string
   accordions: AccordionItem[]
-  type: 'single' | 'multiple'
+  type?: 'single' | 'multiple'
 }
 
-export const Accordions = forwardRef(function Accordions(
+const Accordions = forwardRef(function Accordions(
   { className, accordions, type = 'multiple' }: Props,
   ref: Ref<HTMLDivElement>
 ) {
@@ -44,7 +46,7 @@ export const Accordions = forwardRef(function Accordions(
                 </Accordion.Trigger>
               </Accordion.Header>
 
-              <Accordion.Content className="data-[state=closed]:animate-collapse data-[state=open]:animate-expand w-full overflow-hidden">
+              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
                 <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
                   {accordion.body}
                 </div>
@@ -56,3 +58,5 @@ export const Accordions = forwardRef(function Accordions(
     </Accordion.Root>
   )
 })
+
+export default Accordions

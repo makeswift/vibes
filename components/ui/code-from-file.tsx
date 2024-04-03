@@ -1,4 +1,10 @@
-import { transformerRemoveLineBreak } from '@shikijs/transformers'
+import {
+  transformerNotationDiff,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+  transformerNotationWordHighlight,
+  transformerRemoveLineBreak,
+} from '@shikijs/transformers'
 import { readFile } from 'fs/promises'
 import { codeToHtml } from 'shiki'
 
@@ -17,5 +23,10 @@ export async function CodeFromFile({ pathname }: Props) {
     transformers: [transformerRemoveLineBreak()],
   })
 
-  return <div dangerouslySetInnerHTML={{ __html: code }} />
+  return (
+    <div
+      className="not-prose overflow-x-auto bg-white p-5"
+      dangerouslySetInnerHTML={{ __html: code }}
+    />
+  )
 }
