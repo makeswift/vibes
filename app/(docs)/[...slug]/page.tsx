@@ -10,6 +10,7 @@ import {
   transformerRemoveLineBreak,
 } from '@shikijs/transformers'
 import { readFile } from 'fs/promises'
+import path from 'path'
 import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
@@ -22,6 +23,7 @@ import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Viewer from '@/components/vibes/viewer'
+import { getPage } from '@/lib/getPage'
 
 interface PageMeta {
   title?: string
@@ -32,8 +34,7 @@ interface PageMeta {
 export default async function Page({ params }: { params: { slug?: string[] } }) {
   if (!params.slug) return redirect('/')
 
-  const path = params.slug?.join('/')
-  const file = await readFile(`${process.cwd()}/mdx/${path}.mdx`).catch(() => notFound())
+  const file = await getPage(params.slug?.join('/')).catch(() => notFound())
 
   const { content, frontmatter } = await compileMDX<PageMeta>({
     source: file,
