@@ -8,7 +8,7 @@ const SvgSearch = (props: SVGProps<SVGSVGElement>) => (
     height={20}
     fill="none"
     {...props}
-    className="stroke-foreground"
+    className="stroke-docs-foreground"
   >
     <circle cx={9} cy={9} r={6.5} stroke="currentColor" />
     <path stroke="currentColor" d="m18 18-4.5-4.5" />

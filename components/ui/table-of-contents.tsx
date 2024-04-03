@@ -64,13 +64,13 @@ export function TableOfContents({ offsetTop = 0 }: Props) {
   return (
     <div className="not-prose hidden xl:block">
       <nav className="sticky top-24 w-full">
-        <div className="font-heading mb-3 text-sm">On this page</div>
+        <div className="font-docs-heading mb-3 text-sm">On this page</div>
         <ul>
           {headings.map((heading, index) => (
             <li key={index} className="m-0 p-0">
               <a
                 className={clsx(
-                  'block py-1 text-sm !font-light leading-normal transition-opacity before:hidden',
+                  'font-docs-sans text-docs-foreground block py-1 text-sm !font-light leading-normal transition-opacity before:hidden',
                   heading === activeHeading
                     ? 'opacity-100'
                     : 'opacity-60 hover:!opacity-100 dark:opacity-70'

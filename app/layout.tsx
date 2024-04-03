@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const PolysansWide = localFont({
   src: './fonts/PolySans-BulkyWide.woff2',
   display: 'swap',
-  variable: '--font-heading',
+  variable: '--font-docs-heading',
 })
 
 const Polysans = localFont({
@@ -34,14 +34,14 @@ const Polysans = localFont({
     },
   ],
   display: 'swap',
-  variable: '--font-sans',
+  variable: '--font-docs-sans',
 })
 
 const IBMPlexMono = IBM_Plex_Mono({
   weight: '400',
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-mono',
+  variable: '--font-docs-mono',
 })
 
 export default function RootLayout({
@@ -51,14 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={clsx(
-          Polysans.variable,
-          PolysansWide.variable,
-          IBMPlexMono.variable,
-          'font-sans'
-        )}
-      >
+      <body className={clsx(Polysans.variable, PolysansWide.variable, IBMPlexMono.variable)}>
         <Providers>
           <main>{children}</main>
         </Providers>

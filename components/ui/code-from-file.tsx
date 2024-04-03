@@ -25,7 +25,7 @@ export async function CodeFromFile({ pathname }: Props) {
 
   return (
     <div
-      className="not-prose overflow-x-auto bg-white p-5"
+      className="not-prose bg-docs-background overflow-x-auto p-5"
       dangerouslySetInnerHTML={{ __html: code }}
     />
   )

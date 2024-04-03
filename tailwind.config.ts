@@ -12,7 +12,7 @@ const config = {
         '2xl': '1400px',
       },
     },
-    dropShadow: {
+    'docs-dropShadow': {
       sm: '-2px 2px 0 rgba(0,0,0,100)',
       DEFAULT: '-3px 3px 0 rgba(0,0,0,100)',
       md: '-4px 4px 0 rgba(0,0,0,100)',
@@ -21,45 +21,40 @@ const config = {
     },
     extend: {
       fontFamily: {
-        heading: ['var(--font-heading)'],
-        sans: ['var(--font-sans)'],
-        mono: ['var(--font-mono)'],
+        'docs-heading': ['var(--font-docs-heading)'],
+        'docs-sans': ['var(--font-docs-sans)'],
+        'docs-mono': ['var(--font-docs-mono)'],
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+        'docs-border': 'hsl(var(--docs-border))',
+        'docs-input': 'hsl(var(--docs-input))',
+        'docs-ring': 'hsl(var(--docs-ring))',
+        'docs-background': 'hsl(var(--docs-background))',
+        'docs-foreground': 'hsl(var(--docs-foreground))',
+        'docs-primary': {
+          DEFAULT: 'hsl(var(--docs-primary))',
+          foreground: 'hsl(var(--docs-primary-foreground))',
         },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+        'docs-secondary': {
+          DEFAULT: 'hsl(var(--docs-secondary))',
+          foreground: 'hsl(var(--docs-secondary-foreground))',
         },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+        'docs-muted': {
+          DEFAULT: 'hsl(var(--docs-muted))',
+          foreground: 'hsl(var(--docs-muted-foreground))',
         },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+        'docs-accent': {
+          DEFAULT: 'hsl(var(--docs-accent))',
+          foreground: 'hsl(var(--docs-accent-foreground))',
         },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+        'docs-popover': {
+          DEFAULT: 'hsl(var(--docs-popover))',
+          foreground: 'hsl(var(--docs-popover-foreground))',
         },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+        'docs-card': {
+          DEFAULT: 'hsl(var(--docs-card))',
+          foreground: 'hsl(var(--docs-card-foreground))',
         },
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         expand: {
@@ -70,18 +65,14 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
-        stripes: {
-          to: { backgroundPosition: '0 5px' },
-        },
-        'underline-hover': {
+        scroll: {
           to: { backgroundPosition: '5px 0' },
         },
       },
       animation: {
         expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
-        stripes: 'stripes 200ms infinite linear both',
-        'underline-hover': 'underline-hover 200ms infinite linear both',
+        scroll: 'scroll 200ms infinite linear both',
       },
     },
   },

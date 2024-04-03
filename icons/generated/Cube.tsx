@@ -8,7 +8,7 @@ const SvgCube = (props: SVGProps<SVGSVGElement>) => (
     height={20}
     fill="none"
     {...props}
-    className="stroke-foreground"
+    className="stroke-docs-foreground"
   >
     <path
       fill="#F5C6C6"
