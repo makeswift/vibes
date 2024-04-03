@@ -15,6 +15,7 @@ import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
 import * as MDXComponents from '@/components/mdx'
+import { navigation } from '@/components/navigation'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
@@ -29,6 +30,13 @@ interface PageMeta {
   title?: string
   preview?: string
   icon?: string
+}
+
+export async function generateStaticParams() {
+  return navigation.chapters.flatMap(chapter => [
+    chapter.slug,
+    ...chapter.groups.flatMap(group => group.pages),
+  ])
 }
 
 export default async function Page({ params }: { params: { slug?: string[] } }) {

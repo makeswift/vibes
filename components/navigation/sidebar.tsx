@@ -1,6 +1,6 @@
 import { Icon } from '@/components/ui/icon'
 
-import navigation from './navigation'
+import { navigation } from './navigation'
 import { PageLink } from './page-link'
 
 interface Props {
