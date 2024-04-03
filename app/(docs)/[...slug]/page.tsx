@@ -34,12 +34,17 @@ interface PageMeta {
 
 export async function generateStaticParams() {
   return navigation.chapters
-    .flatMap(chapter => [chapter.slug, ...chapter.groups.flatMap(group => group.pages)])
+    .flatMap(chapter => [
+      chapter.slug.split('/'),
+      ...chapter.groups.flatMap(group => group.pages.map(page => page.split('/'))),
+    ])
     .map(slug => ({ slug }))
 }
 
 export default async function Page({ params }: { params: { slug?: string[] } }) {
   if (!params.slug) return redirect('/')
+
+  console.log({ params })
 
   const file = await getPage(params.slug?.join('/')).catch(() => notFound())
 
