@@ -16,6 +16,7 @@ import { ShikiTransformer } from 'shiki'
 import * as MDXComponents from '@/components/mdx'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
+import { ButtonLink } from '@/components/ui/button-link'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents } from '@/components/ui/table-of-contents'
@@ -75,6 +76,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       Accordion,
       AccordionGroup,
       Button,
+      ButtonLink,
       Popover,
       PopoverContent,
       PopoverTrigger,

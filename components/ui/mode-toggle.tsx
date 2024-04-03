@@ -3,6 +3,7 @@
 import { useTheme } from 'next-themes'
 import * as React from 'react'
 
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,11 +18,11 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="inline-flex h-10 w-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-full border-transparent hover:bg-foreground/5">
+        <Button variant="ghost" size="icon">
           <Sun className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
-        </div>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={2}>
         <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
