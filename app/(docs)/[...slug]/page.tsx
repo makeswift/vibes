@@ -33,10 +33,9 @@ interface PageMeta {
 }
 
 export async function generateStaticParams() {
-  return navigation.chapters.flatMap(chapter => [
-    chapter.slug,
-    ...chapter.groups.flatMap(group => group.pages),
-  ])
+  return navigation.chapters
+    .flatMap(chapter => [chapter.slug, ...chapter.groups.flatMap(group => group.pages)])
+    .map(slug => ({ slug }))
 }
 
 export default async function Page({ params }: { params: { slug?: string[] } }) {
