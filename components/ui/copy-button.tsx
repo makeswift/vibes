@@ -15,7 +15,7 @@ export function CopyButton({ className, selectorFromParent = 'pre' }: Props) {
   const { toast } = useToast()
 
   return (
-    <Button
+    <button
       className={className}
       onClick={({ currentTarget: { parentElement } }) => {
         const textContent = parentElement?.querySelector(selectorFromParent)?.textContent
@@ -28,6 +28,6 @@ export function CopyButton({ className, selectorFromParent = 'pre' }: Props) {
       }}
     >
       Copy
-    </Button>
+    </button>
   )
 }
