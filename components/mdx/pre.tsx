@@ -7,7 +7,9 @@ export default function Pre(props: ComponentPropsWithoutRef<'pre'>) {
     <div className="relative">
       <pre {...props} />
 
-      <CopyButton className="absolute right-0 top-0" />
+      <div className="absolute right-3 top-3 z-20">
+        <CopyButton />
+      </div>
     </div>
   )
 }
