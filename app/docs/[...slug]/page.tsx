@@ -44,8 +44,6 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: { slug?: string[] } }) {
   if (!params.slug) return redirect('/')
 
-  console.log({ params })
-
   const file = await getPage(params.slug?.join('/')).catch(() => notFound())
 
   const { content, frontmatter } = await compileMDX<PageMeta>({
