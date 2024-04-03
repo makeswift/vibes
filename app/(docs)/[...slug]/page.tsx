@@ -18,7 +18,6 @@ import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Step, Steps } from '@/components/ui/steps'
-import { Table, TableCell, TableRow } from '@/components/ui/table'
 import { TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Viewer from '@/components/vibes/viewer'
@@ -81,9 +80,6 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
       PopoverTrigger,
       Step,
       Steps,
-      Table,
-      TableCell,
-      TableRow,
       TableOfContents,
       Tabs,
       TabsContent,
