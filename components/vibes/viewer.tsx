@@ -5,12 +5,18 @@ import Card from '@/components/ui/card'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
+import Components from '.'
+
 interface Props {
   path: string
 }
 
+function isValidPath(path: string): path is keyof typeof Components {
+  return Object.keys(Components).includes(path)
+}
+
 export default function Viewer({ path }: Props) {
-  const Component = lazy(() => import(`@/components/vibes/${path}/preview`))
+  const Component = isValidPath(path) && Components[path]
 
   return (
     <Tabs defaultValue="preview">
@@ -20,13 +26,19 @@ export default function Viewer({ path }: Props) {
       </TabsList>
       <TabsContent value="preview">
         <Card>
-          <ErrorBoundary
-            fallback={<div className="flex justify-center p-5">Preview not found at {path}</div>}
-          >
-            <Suspense>
-              <Component />
-            </Suspense>
-          </ErrorBoundary>
+          {Component ? (
+            <ErrorBoundary
+              fallback={
+                <div className="flex justify-center p-5">Component not found at {path}</div>
+              }
+            >
+              <Suspense>
+                <Component />
+              </Suspense>
+            </ErrorBoundary>
+          ) : (
+            <div className="flex justify-center p-5">Component not found at {path}</div>
+          )}
         </Card>
       </TabsContent>
       <TabsContent value="code">
