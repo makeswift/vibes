@@ -8,7 +8,6 @@ interface Props {
 }
 
 export function Sidebar({ slug }: Props) {
-  console.log(navigation)
   const chapter = navigation.chapters.find(chapter => chapter.slug === slug[0])
 
   return (
