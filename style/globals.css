@@ -5,78 +5,78 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --docs-background: 0 0% 100%;
+    --docs-foreground: 0 0% 0%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --docs-card: 0 0% 100%;
+    --docs-card-foreground: 224 71.4% 4.1%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
+    --docs-popover: 0 0% 100%;
+    --docs-popover-foreground: 224 71.4% 4.1%;
 
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
+    --docs-primary: 220.9 39.3% 11%;
+    --docs-primary-foreground: 210 20% 98%;
 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
+    --docs-secondary: 220 14.3% 95.9%;
+    --docs-secondary-foreground: 220.9 39.3% 11%;
 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
+    --docs-muted: 220 14.3% 95.9%;
+    --docs-muted-foreground: 220 8.9% 46.1%;
 
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
+    --docs-accent: 220 14.3% 95.9%;
+    --docs-accent-foreground: 220.9 39.3% 11%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
+    --docs-destructive: 0 84.2% 60.2%;
+    --docs-destructive-foreground: 210 20% 98%;
 
-    --code-border: 224 71.4% 4.1% / 0.1;
+    --docs-code-border: 224 71.4% 4.1% / 0.1;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
+    --docs-border: 0 0% 0%;
+    --docs-input: 0 0% 100%;
+    --docs-ring: 224 71.4% 4.1%;
 
-    --radius: 0.5rem;
+    --docs-radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --docs-background: 0 0% 0%;
+    --docs-foreground: 0 0% 100%;
 
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
+    --docs-card: 224 71.4% 4.1%;
+    --docs-card-foreground: 210 20% 98%;
 
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
+    --docs-popover: 224 71.4% 4.1%;
+    --docs-popover-foreground: 210 20% 98%;
 
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
+    --docs-primary: 210 20% 98%;
+    --docs-primary-foreground: 220.9 39.3% 11%;
 
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
+    --docs-secondary: 215 27.9% 16.9%;
+    --docs-secondary-foreground: 210 20% 98%;
 
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
+    --docs-muted: 215 27.9% 16.9%;
+    --docs-muted-foreground: 217.9 10.6% 64.9%;
 
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
+    --docs-accent: 215 27.9% 16.9%;
+    --docs-accent-foreground: 210 20% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
+    --docs-destructive: 0 62.8% 30.6%;
+    --docs-destructive-foreground: 210 20% 98%;
 
-    --code-border: 210 20% 98% / 0.1;
+    --docs-code-border: 210 20% 98% / 0.1;
 
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
+    --docs-border: 0 0% 100%;
+    --docs-input: 0 0% 0%;
+    --docs-ring: 216 12.2% 83.9%;
   }
 }
 
 @layer base {
   * {
-    @apply text-foreground antialiased;
+    @apply antialiased;
   }
   body {
-    @apply bg-background;
+    @apply bg-docs-background;
   }
   .pattern-shadow {
     @apply relative;
@@ -94,15 +94,15 @@
     @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''];
     background: linear-gradient(
         135deg,
-        hsl(var(--foreground)) 0%,
+        hsl(var(--docs-foreground)) 0%,
         transparent 0%,
         transparent 30%,
-        hsl(var(--foreground)) 30%,
-        hsl(var(--foreground)) 50%,
+        hsl(var(--docs-foreground)) 30%,
+        hsl(var(--docs-foreground)) 50%,
         transparent 50%,
         transparent 80%,
-        hsl(var(--foreground)) 80%,
-        hsl(var(--foreground)) 100%
+        hsl(var(--docs-foreground)) 80%,
+        hsl(var(--docs-foreground)) 100%
       )
       0 0/ 5px 5px;
   }
@@ -110,6 +110,6 @@
     @apply opacity-70;
   }
   .pattern-shadow-hover:after {
-    @apply animate-stripes;
+    @apply animate-scroll;
   }
 }

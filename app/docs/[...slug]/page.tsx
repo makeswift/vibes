@@ -105,7 +105,7 @@ export default async function Page({ params }: { params: { slug?: string[] } }) 
     <div>
       <h1>{frontmatter.title}</h1>
       {frontmatter.preview && <Viewer path={frontmatter.preview} />}
-      <div className="gap-x-20 pt-5 md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+      <div className="text-docs-foreground font-docs-sans gap-x-20 pt-5 md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
         <div>{content}</div>
         <TableOfContents offsetTop={90} />
       </div>

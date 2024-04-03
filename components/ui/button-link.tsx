@@ -5,9 +5,9 @@ import clsx from 'clsx'
 
 const VARIANT_STYLES = {
   default:
-    'bg-background text-foreground border-foreground pattern-shadow pattern-shadow-sm hover:pattern-shadow-hover',
-  ghost: 'hover:bg-foreground/5 border-transparent',
-  link: 'text-primary underline-offset-4 hover:underline',
+    'bg-docs-background text-docs-foreground border-docs-foreground pattern-shadow pattern-shadow-sm hover:pattern-shadow-hover',
+  ghost: 'hover:bg-docs-foreground/5 border-transparent',
+  link: 'text-docs-foreground underline-offset-4 hover:underline',
 }
 
 const SIZE_STYLES = {
@@ -30,7 +30,7 @@ const ButtonLink = ({
   children = 'Button',
 }: Props) => {
   const buttonClasses = clsx(
-    'inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none ring-offset-background transition-colors before:hidden',
+    'inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none ring-offset-docs-background transition-colors before:hidden',
     VARIANT_STYLES[variant],
     SIZE_STYLES[size]
   )

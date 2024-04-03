@@ -50,7 +50,7 @@
 }
 
 .shiki.show-line-numbers .line:before {
-  @apply inline-block shrink-0 select-none text-right text-foreground/30;
+  @apply text-docs-foreground/30 inline-block shrink-0 select-none text-right;
   width: var(--shiki-gutter-width);
   margin-right: var(--shiki-line-padding);
   counter-increment: line;

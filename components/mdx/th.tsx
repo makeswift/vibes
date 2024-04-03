@@ -1,6 +1,6 @@
 export default function TableHeaderCell({ children }: React.HTMLAttributes<HTMLTableCellElement>) {
   return (
-    <th className="border-b-2 border-foreground bg-foreground/5 p-3 align-middle dark:bg-foreground/20">
+    <th className="border-docs-foreground bg-docs-foreground/5 dark:bg-docs-foreground/20 border-b-2 p-3 align-middle">
       {children}
     </th>
   )
