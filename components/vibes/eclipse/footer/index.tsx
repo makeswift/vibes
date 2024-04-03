@@ -44,7 +44,7 @@ export const Accordions = forwardRef(function Accordions(
                 </Accordion.Trigger>
               </Accordion.Header>
 
-              <Accordion.Content className="data-[state=closed]:animate-collapse data-[state=open]:animate-expand w-full overflow-hidden">
+              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
                 <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
                   {accordion.body}
                 </div>

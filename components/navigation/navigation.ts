@@ -1,4 +1,4 @@
-const navigation = {
+export const navigation = {
   links: [],
   chapters: [
     {
@@ -40,28 +40,5 @@ const navigation = {
         },
       ],
     },
-    {
-      name: 'Vinyl',
-      slug: 'vinyl',
-      groups: [
-        {
-          name: 'Getting started',
-          icon: 'Cube',
-          pages: [
-            'brutalist/introduction',
-            'brutalist/installation',
-            'brutalist/usage',
-            'brutalist/contributing',
-          ],
-        },
-        {
-          name: 'Components',
-          icon: 'Cube',
-          pages: ['brutalist/button', 'brutalist/carousel'],
-        },
-      ],
-    },
   ],
 } as const
-
-export default navigation
