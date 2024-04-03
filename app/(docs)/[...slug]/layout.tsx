@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 
 import clsx from 'clsx'
 
-import { Navigation, Sidebar } from '@/components/navigation'
+import { Header, Sidebar } from '@/components/navigation'
 
 export default async function Layout({
   children,
@@ -15,7 +15,7 @@ export default async function Layout({
 
   return (
     <>
-      <Navigation sidebar={<Sidebar slug={params.slug} />} />
+      <Header sidebar={<Sidebar slug={params.slug} />} />
 
       <div className="px-6 md:px-8">
         <div className="mx-auto flex max-w-7xl gap-x-10 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">

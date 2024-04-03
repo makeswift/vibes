@@ -14,7 +14,7 @@ interface Props {
   sidebar: React.ReactNode
 }
 
-export function Navigation({ sidebar }: Props) {
+export function Header({ sidebar }: Props) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const pathname = usePathname()
 
