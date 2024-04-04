@@ -7,5 +7,5 @@ import { SidebarLink } from './sidebar-link'
 export async function PageLink({ path }: { path: string }) {
   const { data } = matter(await getPage(path))
 
-  return <SidebarLink href={`/${path}`}>{data.title}</SidebarLink>
+  return <SidebarLink href={`/docs/${path}`}>{data.title}</SidebarLink>
 }
