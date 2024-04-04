@@ -1,58 +1,63 @@
-import React, { ReactNode, Ref, forwardRef } from 'react'
+'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import { ReactNode, Ref, forwardRef } from 'react'
+
 import clsx from 'clsx'
 
-type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
-}
-
-type Props = {
+export type Props = {
   className?: string
-  accordions: AccordionItem[]
-  type: 'single' | 'multiple'
+  children: ReactNode
+  media?: ReactNode
+  mediaSize?: 'default' | 'large' | 'hidden'
+  mediaAlign?: 'top' | 'center' | 'bottom'
+  mediaOrder?: 'first' | 'last'
+  topGlow?: boolean
 }
 
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
+const Card = forwardRef(function Card(
+  {
+    className,
+    children,
+    media,
+    mediaSize = 'default',
+    mediaAlign = 'center',
+    mediaOrder = 'last',
+    topGlow = false,
+  }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)}>
-      <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="before:rounded-circle group relative [clip-path:inset(0px_0px)] before:absolute before:left-1/2 before:top-full before:-z-10 before:h-[80px] before:w-3/5 before:-translate-x-1/2 before:-translate-y-1/4 before:bg-primary before:opacity-0 before:blur-[100px] before:transition-all before:duration-1000 before:ease-out after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20 after:mix-blend-overlay after:transition-all after:duration-300 after:ease-linear hover:after:opacity-40 data-[state=open]:before:opacity-100 before:data-[state=open]:delay-200">
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-8 text-left text-lg font-medium leading-normal text-foreground md:text-2xl">
-                      {accordion.title}
-                    </div>
+    <div ref={ref} className={clsx(className, '@container relative self-stretch')}>
+      {topGlow && (
+        <div className="@4xl:block absolute inset-x-6 bottom-full hidden h-20 overflow-hidden before:mx-auto before:mt-14 before:block before:h-3/4 before:w-3/5 before:rounded-full before:bg-primary before:opacity-10 before:blur-xl after:absolute after:bottom-0 after:left-1/2 after:h-[1px] after:w-3/5 after:-translate-x-1/2 after:bg-gradient-to-r after:from-primary/0 after:via-primary after:to-primary/0 after:mix-blend-overlay" />
+      )}
+      <div className="card @2xl:flex-row flex h-full w-full flex-col items-stretch overflow-hidden shadow-[inset_0_0_400px_rgba(3,234,218,0.08)]">
+        <div className="flex-1 p-7 sm:p-8 md:p-12 lg:p-14 lg:pt-12">{children}</div>
 
-                    <button className="rounded-circle shrink-0 p-3 ring-1 ring-foreground/20 transition duration-300 ease-in-out group-hover:ring-foreground/40">
-                      <svg viewBox="0 0 16 16" className="h-4 w-4 fill-foreground">
-                        <rect
-                          x="7"
-                          className="h-4 w-0.5 origin-center transition-transform duration-300 group-data-[state=open]:rotate-90"
-                        />
-                        <rect y="7" className="h-0.5 w-4" />
-                      </svg>
-                    </button>
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
-
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
-                  {accordion.body}
-                </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
-        ))}
-      </ul>
-    </Accordion.Root>
+        {mediaSize !== 'hidden' && media && (
+          <div
+            className={clsx(
+              {
+                default: '@2xl:w-1/2 w-full',
+                large: '@2xl:w-3/5 w-full',
+              }[mediaSize],
+              {
+                top: 'self-start',
+                center: 'self-center',
+                bottom: 'self-end',
+              }[mediaAlign],
+              {
+                first: 'order-first',
+                last: 'order-last',
+              }[mediaOrder]
+            )}
+          >
+            {media}
+          </div>
+        )}
+      </div>
+    </div>
   )
 })
+
+export default Card

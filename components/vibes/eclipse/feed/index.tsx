@@ -1,58 +1,143 @@
-import React, { ReactNode, Ref, forwardRef } from 'react'
+'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Ref, forwardRef, useEffect, useState } from 'react'
+
 import clsx from 'clsx'
 
-type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
+type Item = {
+  link?: {
+    href: string
+    target?: '_self' | '_blank'
+  }
+  thumbnail?: { url: string; dimensions: { width: number; height: number } }
+  thumbnailAlt: string
+  category?: 'Changelog' | 'News' | 'Engineering' | 'Product'
+  title?: string
+  description?: string
+  author?: string
 }
 
 type Props = {
   className?: string
-  accordions: AccordionItem[]
-  type: 'single' | 'multiple'
+  items?: Item[]
+  paginate?: boolean
+  defaultShown?: number
+  paginationAmount?: number
+  paginateText?: string
 }
 
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
+const Feed = forwardRef(function Feed(
+  {
+    className,
+    items,
+    paginate = true,
+    defaultShown = 7,
+    paginationAmount = 9,
+    paginateText,
+  }: Props,
   ref: Ref<HTMLDivElement>
 ) {
+  const [page, setPage] = useState(defaultShown)
+
+  useEffect(() => {
+    setPage(defaultShown)
+  }, [defaultShown])
+
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)}>
-      <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="before:rounded-circle group relative [clip-path:inset(0px_0px)] before:absolute before:left-1/2 before:top-full before:-z-10 before:h-[80px] before:w-3/5 before:-translate-x-1/2 before:-translate-y-1/4 before:bg-primary before:opacity-0 before:blur-[100px] before:transition-all before:duration-1000 before:ease-out after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20 after:mix-blend-overlay after:transition-all after:duration-300 after:ease-linear hover:after:opacity-40 data-[state=open]:before:opacity-100 before:data-[state=open]:delay-200">
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-8 text-left text-lg font-medium leading-normal text-foreground md:text-2xl">
-                      {accordion.title}
-                    </div>
-
-                    <button className="rounded-circle shrink-0 p-3 ring-1 ring-foreground/20 transition duration-300 ease-in-out group-hover:ring-foreground/40">
-                      <svg viewBox="0 0 16 16" className="h-4 w-4 fill-foreground">
-                        <rect
-                          x="7"
-                          className="h-4 w-0.5 origin-center transition-transform duration-300 group-data-[state=open]:rotate-90"
-                        />
-                        <rect y="7" className="h-0.5 w-4" />
-                      </svg>
-                    </button>
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
-
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
-                  {accordion.body}
+    <div ref={ref} className={clsx(className, '@container flex flex-col items-center')}>
+      <div className="@sm:gap-x-8 @sm:gap-y-8 @3xl:gap-x-10 @3xl:gap-y-10 grid w-full grid-cols-12 gap-x-0 gap-y-6">
+        {items?.slice(0, Math.min(page, items.length)).map((item, index) => (
+          <Link
+            href={item.link?.href ?? ''}
+            target={item.link?.target}
+            key={index}
+            className={clsx(
+              'card group z-0 overflow-hidden transition duration-500 hover:bg-primary/10 hover:ring-primary/50',
+              index === 0
+                ? '@xl:flex-row col-span-12 flex flex-col'
+                : '@lg:col-span-6 @4xl:col-span-4 col-span-12'
+            )}
+          >
+            <div
+              className={clsx(
+                'relative aspect-video bg-background',
+                index === 0 ? '@lg:h-full @xl:w-1/2 @5xl:w-2/3 w-full' : 'w-full'
+              )}
+            >
+              {item.thumbnail && (
+                <Image
+                  src={item.thumbnail.url}
+                  alt={item.thumbnailAlt}
+                  fill
+                  className="object-cover"
+                />
+              )}
+            </div>
+            <div
+              className={clsx(
+                'before:rounded-circle before:duration-[400ms] relative flex flex-1 flex-col gap-y-6 p-5 text-foreground before:absolute before:left-1/2 before:top-full before:-z-10 before:aspect-square before:w-full before:-translate-x-1/2 before:scale-50 before:bg-primary before:opacity-0 before:transition-[opacity,transform] before:ease-linear group-hover:before:scale-100 group-hover:before:opacity-50',
+                index === 0
+                  ? '@xl:gap-y-10 @xl:p-10 @2xl:gap-y-12 @4xl:gap-y-16 @4xl:p-12 justify-between before:-translate-y-20 before:blur-[80px]'
+                  : '@xl:gap-y-8 @xl:p-7 @xl:pt-6 before:-translate-y-10 before:blur-3xl'
+              )}
+            >
+              <div>
+                <div
+                  className={clsx(
+                    'inline-block text-sm font-medium text-foreground/50',
+                    index === 0 ? 'mb-3' : 'mb-2'
+                  )}
+                >
+                  {item.category}
                 </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
+
+                {item.title && (
+                  <h2
+                    className={clsx(
+                      'text-xl font-medium',
+                      index === 0
+                        ? '@xl:text-2xl @2xl:text-3xl @4xl:text-4xl !leading-tight'
+                        : '@4xl:text-2xl leading-normal'
+                    )}
+                  >
+                    {item.title}
+                  </h2>
+                )}
+
+                {item.description && (
+                  <p
+                    className={clsx(
+                      'text @xl:line-clamp-4 @2xl:mt-5 @2xl:line-clamp-5 @2xl:text-lg mt-3 hidden font-light leading-normal opacity-70',
+                      index !== 0 && '!hidden'
+                    )}
+                  >
+                    {item.description}
+                  </p>
+                )}
+              </div>
+
+              {item.author && (
+                <p className={clsx('text font-medium opacity-50', index === 0 && '@2xl:text-lg')}>
+                  {item.author}
+                </p>
+              )}
+            </div>
+          </Link>
         ))}
-      </ul>
-    </Accordion.Root>
+      </div>
+
+      {paginate && page < items?.length && (
+        <button
+          className="button button-muted button-md @lg:mt-14 mt-10"
+          onClick={() => setPage(p => p + paginationAmount)}
+        >
+          {paginateText}
+        </button>
+      )}
+    </div>
   )
 })
+
+export default Feed
