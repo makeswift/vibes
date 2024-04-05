@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { CSSProperties, Ref, forwardRef, useEffect, useRef, useState } from 'react'
 import ReactHeadroom from 'react-headroom'
 
@@ -73,18 +73,14 @@ const Navigation = forwardRef(function Navigation(
   ref: Ref<HTMLDivElement>
 ) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const router = useRouter()
+  const pathname = usePathname()
   const container = useRef<HTMLDivElement>(null)
   const [activeItemLeft, setActiveItemLeft] = useState(0)
   const [activeItemWidth, setActiveItemWidth] = useState(0)
 
   useEffect(() => {
-    const handleRouteChange = () => setMobileNavOpen(false)
-
-    router.events.on('routeChangeStart', handleRouteChange)
-
-    return () => router.events.off('routeChangeStart', handleRouteChange)
-  }, [router])
+    setMobileNavOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', mobileNavOpen)
@@ -150,7 +146,7 @@ const Navigation = forwardRef(function Navigation(
                 target={link.link?.target}
                 className={clsx(
                   'after:rounded-circle group relative inline-flex items-center px-4 py-6 text-sm font-medium text-foreground transition duration-200 after:pointer-events-none after:absolute after:left-1/2 after:top-full after:-z-10 after:h-[8px] after:w-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-primary/70 after:opacity-0 after:blur-[12px] after:transition-all after:duration-500 after:ease-out hover:opacity-100',
-                  link.link?.href && router.asPath.startsWith(link.link?.href)
+                  link.link?.href && pathname.startsWith(link.link?.href)
                     ? 'active-link opacity-100 after:opacity-100 after:delay-300'
                     : 'opacity-70'
                 )}
