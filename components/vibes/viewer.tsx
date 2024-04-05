@@ -23,6 +23,7 @@ export default function Viewer({ path }: Props) {
       <TabsList>
         <TabsTrigger value="preview">Preview</TabsTrigger>
         <TabsTrigger value="code">Code</TabsTrigger>
+        <TabsTrigger value="usage">Usage</TabsTrigger>
       </TabsList>
       <TabsContent value="preview">
         <Card>
@@ -47,6 +48,15 @@ export default function Viewer({ path }: Props) {
             fallback={<div className="flex justify-center p-5">Code not found at {path}</div>}
           >
             <CodeFromFile pathname={`/components/vibes/${path}/index.tsx`} />
+          </ErrorBoundary>
+        </Card>
+      </TabsContent>
+      <TabsContent value="usage">
+        <Card>
+          <ErrorBoundary
+            fallback={<div className="flex justify-center p-5">Usage not found at {path}</div>}
+          >
+            <CodeFromFile pathname={`/components/vibes/${path}/preview.tsx`} />
           </ErrorBoundary>
         </Card>
       </TabsContent>
