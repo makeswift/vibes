@@ -36,6 +36,17 @@
     --docs-ring: 224 71.4% 4.1%;
 
     --docs-radius: 0.5rem;
+
+    --color-background: 222 39% 6%;
+    --color-foreground: 0 0% 100%;
+
+    --color-text: 180 20% 65%;
+
+    --color-muted-background: 220 17% 27%;
+    --color-muted-foreground: 194 16% 26%;
+
+    --color-primary: 176 97% 46%;
+    --color-primary-highlight: 323 81% 79%;
   }
 
   .dark {

@@ -1,58 +1,126 @@
-import React, { ReactNode, Ref, forwardRef } from 'react'
+'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import dynamic from 'next/dynamic'
+import Image from 'next/image'
+import { ComponentPropsWithoutRef, Ref, forwardRef, useState } from 'react'
+
+import * as Dialog from '@radix-ui/react-dialog'
 import clsx from 'clsx'
 
-type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
-}
+import { VimeoPlayer } from './components/VimeoPlayer'
 
-type Props = {
+export interface Props {
   className?: string
-  accordions: AccordionItem[]
-  type: 'single' | 'multiple'
+  aspectRatio?: '16:9' | '4:3' | '21:9'
+  thumbnail?: { url: string; dimensions: { width: number; height: number } }
+  altText?: string
+  priority?: boolean
+  videoUrl: string
+  options?: ComponentPropsWithoutRef<typeof VimeoPlayer>['options']
 }
 
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
+function parseVideoId(url: string = ''): number | undefined {
+  const match = /(?:https?:\/\/)?(?:www\.)?vimeo\.com\/(\d+)/.exec(url)
+
+  return match ? parseInt(match[1], 10) : undefined
+}
+
+export const Video = forwardRef(function Video(
+  { className, aspectRatio = '16:9', videoUrl, thumbnail, altText, options, priority }: Props,
   ref: Ref<HTMLDivElement>
 ) {
+  const [open, setOpen] = useState(false)
+
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)}>
-      <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="before:rounded-circle group relative [clip-path:inset(0px_0px)] before:absolute before:left-1/2 before:top-full before:-z-10 before:h-[80px] before:w-3/5 before:-translate-x-1/2 before:-translate-y-1/4 before:bg-primary before:opacity-0 before:blur-[100px] before:transition-all before:duration-1000 before:ease-out after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20 after:mix-blend-overlay after:transition-all after:duration-300 after:ease-linear hover:after:opacity-40 data-[state=open]:before:opacity-100 before:data-[state=open]:delay-200">
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-8 text-left text-lg font-medium leading-normal text-foreground md:text-2xl">
-                      {accordion.title}
-                    </div>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <div ref={ref} className={clsx(className, 'relative')}>
+        <Dialog.Trigger asChild>
+          <a className="group block w-full cursor-pointer" aria-label="Play video">
+            {thumbnail ? (
+              <Image
+                className={clsx(
+                  'w-full object-cover',
+                  {
+                    '4:3': 'aspect-[4/3]',
+                    '16:9': 'aspect-video',
+                    '21:9': 'aspect-[21/9]',
+                  }[aspectRatio]
+                )}
+                src={thumbnail.url}
+                alt={altText ?? 'Video'}
+                width={thumbnail.dimensions.width}
+                height={thumbnail.dimensions.height}
+                priority={priority}
+              />
+            ) : (
+              <div className="bg-muted-background/50 aspect-video w-full"></div>
+            )}
 
-                    <button className="rounded-circle shrink-0 p-3 ring-1 ring-foreground/20 transition duration-300 ease-in-out group-hover:ring-foreground/40">
-                      <svg viewBox="0 0 16 16" className="h-4 w-4 fill-foreground">
-                        <rect
-                          x="7"
-                          className="h-4 w-0.5 origin-center transition-transform duration-300 group-data-[state=open]:rotate-90"
-                        />
-                        <rect y="7" className="h-0.5 w-4" />
-                      </svg>
-                    </button>
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
-
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
-                  {accordion.body}
-                </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
-        ))}
-      </ul>
-    </Accordion.Root>
+            <div className="noise shadow-foreground/2 rounded-circle after:rounded-circle absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-background/60 ring-1 ring-border backdrop-blur-md transition duration-300 group-hover:bg-background/75 sm:h-36 sm:w-36">
+              <svg className="ml-2 w-10 sm:w-12" viewBox="0 0 46 52" fill="none">
+                <path
+                  d="M0 47.1755V4.8245C0 1.76856 3.2881 -0.158666 5.95442 1.33448L43.7678 22.51C46.4953 24.0373 46.4953 27.9627 43.7678 29.49L5.95441 50.6655C3.28809 52.1587 0 50.2314 0 47.1755Z"
+                  fill="url(#paint0_linear_133_22)"
+                  fillOpacity="0.75"
+                />
+                <path
+                  d="M0 47.1755V4.8245C0 1.76856 3.2881 -0.158666 5.95442 1.33448L43.7678 22.51C46.4953 24.0373 46.4953 27.9627 43.7678 29.49L5.95441 50.6655C3.28809 52.1587 0 50.2314 0 47.1755Z"
+                  fill="#EA3BA7"
+                  fillOpacity="0.2"
+                />
+                <path
+                  d="M0.5 47.1755V4.8245C0.5 2.15055 3.37708 0.464229 5.71012 1.77073L43.5235 22.9462C45.91 24.2827 45.91 27.7173 43.5235 29.0538L5.71011 50.2293C3.37708 51.5358 0.5 49.8494 0.5 47.1755Z"
+                  stroke="#F59DD3"
+                  strokeOpacity="0.5"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_133_22"
+                    x1="25"
+                    y1="-2"
+                    x2="25"
+                    y2="54"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#EA3BA7" stopOpacity="0" />
+                    <stop offset="1" stopColor="#EA3BA7" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </a>
+        </Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Overlay className="data-[state=open]:animate-fadeIn fixed inset-0 z-[40] bg-black/80 backdrop-blur-sm" />
+          <Dialog.Content className="data-[state=open]:animate-fadeIn fixed inset-0 z-[50] focus:outline-none">
+            <div className="absolute left-1/2 top-1/2 z-50 flex aspect-video h-[80vh] max-w-full -translate-x-1/2 -translate-y-1/2 items-center md:max-w-[80vw]">
+              <VimeoPlayer options={{ ...options, id: parseVideoId(videoUrl) }} />
+            </div>
+            <Dialog.Close asChild>
+              <button
+                aria-label="Close video"
+                className="noise bg-muted-background/10 before:rounded-circle fixed right-5 top-5 z-[60] inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full text-center font-medium text-foreground ring-1 ring-inset ring-foreground/20 backdrop-blur-lg transition duration-1000 before:absolute before:bottom-0 before:left-1/2 before:-z-10 before:h-10 before:w-[calc(100%-5px)] before:-translate-x-1/2 before:translate-y-1/2 before:scale-50 before:bg-foreground/20 before:opacity-0  before:blur-md before:transition-all before:duration-700 before:ease-in-out hover:ring-foreground/30 before:hover:scale-150 hover:before:opacity-100 focus:outline-none"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.05026 0.636039L0.636042 2.05025L5.58579 7L0.636042 11.9497L2.05026 13.364L7 8.41421L11.9498 13.364L13.364 11.9497L8.41422 7L13.364 2.05025L11.9498 0.636039L7 5.58579L2.05026 0.636039Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </Dialog.Close>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </div>
+    </Dialog.Root>
   )
 })
+export default Video

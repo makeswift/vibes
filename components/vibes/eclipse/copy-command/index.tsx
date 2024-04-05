@@ -34,7 +34,7 @@ const CopyCommand = forwardRef(function CopyCommand(
       ref={ref}
       className={clsx(
         className,
-        'group flex w-auto cursor-pointer items-center gap-x-3 rounded-full bg-background/50 py-3 pl-6 pr-5 font-mono text-sm text-white ring-1 ring-white/20 transition ease-linear hover:ring-white/40'
+        'group flex w-auto cursor-pointer items-center gap-x-3 rounded-full bg-background/50 py-3 pl-6 pr-5 font-mono text-sm text-foreground ring-1 ring-foreground/20 transition ease-linear hover:ring-foreground/40'
       )}
       onClick={() => {
         navigator.clipboard.writeText(buttonText)
@@ -51,7 +51,7 @@ const CopyCommand = forwardRef(function CopyCommand(
           })}
         >
           <div className="bg-text/70 absolute bottom-0 left-0 h-3 w-3 rounded"></div>
-          <div className="absolute right-0 top-0 h-3 w-3 rounded bg-white ring-1 ring-background transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></div>
+          <div className="absolute right-0 top-0 h-3 w-3 rounded bg-foreground ring-1 ring-background transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></div>
         </div>
 
         <svg
