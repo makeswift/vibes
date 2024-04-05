@@ -5,8 +5,6 @@ import { CSSProperties, ReactNode, Ref, forwardRef, useEffect, useRef, useState 
 import * as RadixTabs from '@radix-ui/react-tabs'
 import clsx from 'clsx'
 
-import { usePollAnimationFrame } from '@/lib/utils'
-
 type Tab = {
   title?: string
   children?: ReactNode
@@ -16,6 +14,24 @@ export type Props = {
   className?: string
   tabs?: Tab[]
   ariaLabel?: string
+}
+
+function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
+  useEffect(() => {
+    let requestId: number
+
+    function poll(timestamp: number) {
+      requestId = requestAnimationFrame(poll)
+
+      callback(timestamp)
+    }
+
+    requestId = requestAnimationFrame(poll)
+
+    return () => {
+      cancelAnimationFrame(requestId)
+    }
+  })
 }
 
 const Tabs = forwardRef(function Tabs(

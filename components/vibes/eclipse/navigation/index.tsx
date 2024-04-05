@@ -8,8 +8,6 @@ import ReactHeadroom from 'react-headroom'
 
 import clsx from 'clsx'
 
-import { usePollAnimationFrame } from '@/lib/utils'
-
 type MainLink = {
   text?: string
   link?: {
@@ -41,6 +39,24 @@ type Props = {
   mainLinks?: MainLink[]
   secondaryLinks?: SecondaryLink[]
   linkGap?: number
+}
+
+function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
+  useEffect(() => {
+    let requestId: number
+
+    function poll(timestamp: number) {
+      requestId = requestAnimationFrame(poll)
+
+      callback(timestamp)
+    }
+
+    requestId = requestAnimationFrame(poll)
+
+    return () => {
+      cancelAnimationFrame(requestId)
+    }
+  })
 }
 
 const Navigation = forwardRef(function Navigation(
@@ -99,12 +115,12 @@ const Navigation = forwardRef(function Navigation(
         ref={ref}
         className={clsx(
           className,
-          '@container w-full overflow-hidden border-b border-primary/30 bg-background/80 backdrop-blur-xl'
+          'w-full overflow-hidden border-b border-primary/30 bg-background/80 backdrop-blur-xl @container'
         )}
       >
-        <nav className="@4xl:justify-start @4xl:py-0 flex items-stretch justify-between gap-x-3 px-3 py-3">
+        <nav className="flex items-stretch justify-between gap-x-3 px-3 py-3 @4xl:justify-start @4xl:py-0">
           {logoImage && (
-            <div className="@4xl:flex-1 flex items-center">
+            <div className="flex items-center @4xl:flex-1">
               <Link href={logoLink?.href ?? ''} target={logoLink?.target}>
                 <Image
                   src={logoImage.url}
@@ -118,7 +134,7 @@ const Navigation = forwardRef(function Navigation(
           )}
 
           <div
-            className="@4xl:flex relative hidden items-stretch [clip-path:inset(0px_0px)] before:pointer-events-none before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-[var(--active-item-width)] before:translate-x-[var(--active-item-left)] before:bg-gradient-to-r before:from-primary/0 before:via-primary/100 before:to-primary/0 before:transition-all before:duration-300 before:ease-in-out"
+            className="relative hidden items-stretch [clip-path:inset(0px_0px)] before:pointer-events-none before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-[var(--active-item-width)] before:translate-x-[var(--active-item-left)] before:bg-gradient-to-r before:from-primary/0 before:via-primary/100 before:to-primary/0 before:transition-all before:duration-300 before:ease-in-out @4xl:flex"
             ref={container}
             style={
               {
@@ -167,7 +183,7 @@ const Navigation = forwardRef(function Navigation(
                 key={i}
                 href={link.link?.href ?? ''}
                 target={link.link?.target}
-                className="@4xl:block hidden transition duration-300 hover:drop-shadow-[0_0_4px_#03EADA]"
+                className="hidden transition duration-300 hover:drop-shadow-[0_0_4px_#03EADA] @4xl:block"
               >
                 {link.icon && (
                   <Image
@@ -183,7 +199,7 @@ const Navigation = forwardRef(function Navigation(
 
             <button
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="@sm:mr-0 @4xl:hidden relative mr-2 block rounded-full p-2.5"
+              className="relative mr-2 block rounded-full p-2.5 @sm:mr-0 @4xl:hidden"
               role="button"
               aria-label="Open mobile navigation"
             >
@@ -207,7 +223,7 @@ const Navigation = forwardRef(function Navigation(
 
         <div
           className={clsx(
-            '@4xl:hidden w-full overflow-hidden transition-all duration-300',
+            'w-full overflow-hidden transition-all duration-300 @4xl:hidden',
             mobileNavOpen ? 'max-h-96' : 'max-h-0'
           )}
         >
