@@ -1,58 +1,145 @@
-import React, { ReactNode, Ref, forwardRef } from 'react'
+'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ReactNode, Ref, forwardRef } from 'react'
+
 import clsx from 'clsx'
 
-type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
+type LegalLink = {
+  text?: string
+  link?: {
+    href: string
+    target?: '_self' | '_blank'
+  }
+}
+
+type FooterLink = {
+  text?: string
+  link?: {
+    href: string
+    target?: '_self' | '_blank'
+  }
+}
+
+type FooterGroup = {
+  heading?: string
+  icon?: { url: string; dimensions: { width: number; height: number } }
+  iconAlt: string
+  footerLinks?: FooterLink[]
 }
 
 type Props = {
   className?: string
-  accordions: AccordionItem[]
-  type: 'single' | 'multiple'
+  logoImage?: { url: string; dimensions: { width: number; height: number } }
+  logoWidth?: number
+  logoAlt?: string
+  logoLink?: {
+    href: string
+    target?: '_self' | '_blank'
+  }
+  footerGroups?: FooterGroup[]
+  copyright?: ReactNode
+  legalLinks?: LegalLink[]
 }
 
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
+const Footer = forwardRef(function Footer(
+  {
+    className,
+    footerGroups,
+    legalLinks,
+    logoImage,
+    logoAlt = 'Logo',
+    logoWidth = 120,
+    logoLink,
+    copyright,
+  }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)}>
-      <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="before:rounded-circle group relative [clip-path:inset(0px_0px)] before:absolute before:left-1/2 before:top-full before:-z-10 before:h-[80px] before:w-3/5 before:-translate-x-1/2 before:-translate-y-1/4 before:bg-primary before:opacity-0 before:blur-[100px] before:transition-all before:duration-1000 before:ease-out after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20 after:mix-blend-overlay after:transition-all after:duration-300 after:ease-linear hover:after:opacity-40 data-[state=open]:before:opacity-100 before:data-[state=open]:delay-200">
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-8 text-left text-lg font-medium leading-normal text-foreground md:text-2xl">
-                      {accordion.title}
-                    </div>
+    <footer ref={ref} className={clsx(className, '@container')}>
+      <div className="card @xl:flex-row @xl:gap-x-24 @xl:p-8 flex flex-col gap-x-16 gap-y-8 p-6">
+        {logoImage && (
+          <Link href={logoLink?.href ?? '#'} target={logoLink?.target}>
+            <Image
+              src={logoImage.url}
+              alt={logoAlt}
+              width={logoWidth}
+              height={logoWidth / (logoImage.dimensions.width / logoImage.dimensions.height)}
+              priority
+            />
+          </Link>
+        )}
 
-                    <button className="rounded-circle shrink-0 p-3 ring-1 ring-foreground/20 transition duration-300 ease-in-out group-hover:ring-foreground/40">
-                      <svg viewBox="0 0 16 16" className="h-4 w-4 fill-foreground">
-                        <rect
-                          x="7"
-                          className="h-4 w-0.5 origin-center transition-transform duration-300 group-data-[state=open]:rotate-90"
-                        />
-                        <rect y="7" className="h-0.5 w-4" />
-                      </svg>
-                    </button>
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
-
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
-                  {accordion.body}
+        <div className="@lg:gap-y-10 flex flex-1 flex-wrap gap-y-8">
+          {footerGroups?.map((group, groupIndex) => {
+            if (footerGroups.length === 0) {
+              return (
+                <div key={groupIndex} className="text-foreground">
+                  No footer groups added
                 </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
+              )
+            }
+
+            return (
+              <div
+                key={groupIndex}
+                className="@sm:basis-1/2 @2xl:px-5 @4xl:basis-auto flex-1 basis-full last:pr-0"
+              >
+                {group.heading && (
+                  <div className="mb-3 flex items-center pt-1 font-semibold text-foreground">
+                    {group.icon && (
+                      <Image
+                        src={group.icon.url}
+                        alt={group.iconAlt}
+                        width={16}
+                        height={16}
+                        className="mr-2"
+                        priority
+                      />
+                    )}
+
+                    {group.heading}
+                  </div>
+                )}
+                <ul className={clsx(group.icon && 'pl-6')}>
+                  {group.footerLinks?.map((footerLink, i) => {
+                    return (
+                      <li key={i}>
+                        <Link
+                          href={footerLink.link?.href ?? '#'}
+                          target={footerLink.link?.target}
+                          className="relative block py-1.5 text-sm font-medium text-foreground/50 transition duration-300 after:pointer-events-none after:absolute after:right-full after:top-1/2 after:mr-2.5 after:h-0.5 after:w-5 after:origin-right after:-translate-y-1/2 after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-transparent after:to-primary after:opacity-50 after:transition-all after:duration-300 hover:text-foreground/100 hover:after:scale-x-100 hover:after:opacity-100"
+                        >
+                          {footerLink.text}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      <div className="@xl:flex-row flex flex-col items-center justify-center gap-x-4 gap-y-3 py-8 text-center text-sm text-foreground">
+        <span className="opacity-50 [&_div]:inline">
+          © {new Date().getFullYear()}&nbsp;{copyright}
+        </span>
+
+        {legalLinks?.map((link, i) => (
+          <Link
+            key={i}
+            href={link.link?.href ?? '#'}
+            target={link.link?.target}
+            className="opacity-50 transition duration-200 hover:opacity-100"
+          >
+            {link.text}
+          </Link>
         ))}
-      </ul>
-    </Accordion.Root>
+      </div>
+    </footer>
   )
 })
+export default Footer

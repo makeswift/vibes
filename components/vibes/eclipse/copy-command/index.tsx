@@ -1,58 +1,71 @@
-import React, { ReactNode, Ref, forwardRef } from 'react'
+'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import { Ref, forwardRef } from 'react'
+import { useEffect, useState } from 'react'
+
 import clsx from 'clsx'
 
-type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
-}
-
 type Props = {
+  buttonText: string
   className?: string
-  accordions: AccordionItem[]
-  type: 'single' | 'multiple'
 }
 
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
-  ref: Ref<HTMLDivElement>
+const CopyCommand = forwardRef(function CopyCommand(
+  { className, buttonText }: Props,
+  ref: Ref<HTMLButtonElement>
 ) {
+  const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+
+    if (copied) {
+      timeoutId = setTimeout(() => {
+        setCopied(false)
+      }, 2500)
+    }
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [copied])
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)}>
-      <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="before:rounded-circle group relative [clip-path:inset(0px_0px)] before:absolute before:left-1/2 before:top-full before:-z-10 before:h-[80px] before:w-3/5 before:-translate-x-1/2 before:-translate-y-1/4 before:bg-primary before:opacity-0 before:blur-[100px] before:transition-all before:duration-1000 before:ease-out after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20 after:mix-blend-overlay after:transition-all after:duration-300 after:ease-linear hover:after:opacity-40 data-[state=open]:before:opacity-100 before:data-[state=open]:delay-200">
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-8 text-left text-lg font-medium leading-normal text-foreground md:text-2xl">
-                      {accordion.title}
-                    </div>
+    <button
+      ref={ref}
+      className={clsx(
+        className,
+        'group flex w-auto cursor-pointer items-center gap-x-3 rounded-full bg-background/50 py-3 pl-6 pr-5 font-mono text-sm text-foreground ring-1 ring-foreground/20 transition ease-linear hover:ring-foreground/40'
+      )}
+      onClick={() => {
+        navigator.clipboard.writeText(buttonText)
+        setCopied(true)
+      }}
+    >
+      <span className="opacity-70 transition group-hover:opacity-100">{buttonText}</span>
 
-                    <button className="rounded-circle shrink-0 p-3 ring-1 ring-foreground/20 transition duration-300 ease-in-out group-hover:ring-foreground/40">
-                      <svg viewBox="0 0 16 16" className="h-4 w-4 fill-foreground">
-                        <rect
-                          x="7"
-                          className="h-4 w-0.5 origin-center transition-transform duration-300 group-data-[state=open]:rotate-90"
-                        />
-                        <rect y="7" className="h-0.5 w-4" />
-                      </svg>
-                    </button>
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
+      <div className="relative h-4 w-4">
+        <div
+          className={clsx('relative h-full w-full transition', {
+            '-translate-y-0 opacity-100': !copied,
+            '-translate-y-full opacity-0': copied,
+          })}
+        >
+          <div className="bg-text/70 absolute bottom-0 left-0 h-3 w-3 rounded"></div>
+          <div className="absolute right-0 top-0 h-3 w-3 rounded bg-foreground ring-1 ring-background transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></div>
+        </div>
 
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
-                  {accordion.body}
-                </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
-        ))}
-      </ul>
-    </Accordion.Root>
+        <svg
+          viewBox="0 0 16 16"
+          className={clsx('absolute inset-0 h-4 w-4 transition', {
+            'translate-y-full opacity-0': !copied,
+            'translate-y-0 opacity-100': copied,
+          })}
+        >
+          <path d="M1.5 7.5L6 12L14.5 3.5" className="stroke-text" strokeWidth="2" />
+        </svg>
+      </div>
+    </button>
   )
 })
+
+export default CopyCommand

@@ -1,58 +1,114 @@
-import React, { ReactNode, Ref, forwardRef } from 'react'
+'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import { CSSProperties, ReactNode, Ref, forwardRef, useEffect, useRef, useState } from 'react'
+
+import * as RadixTabs from '@radix-ui/react-tabs'
 import clsx from 'clsx'
 
-type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
+import { usePollAnimationFrame } from '@/lib/utils'
+
+type Tab = {
+  title?: string
+  children?: ReactNode
 }
 
-type Props = {
+export type Props = {
   className?: string
-  accordions: AccordionItem[]
-  type: 'single' | 'multiple'
+  tabs?: Tab[]
+  ariaLabel?: string
 }
 
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
+const Tabs = forwardRef(function Tabs(
+  { className, ariaLabel = 'Tabs' }: Props,
   ref: Ref<HTMLDivElement>
 ) {
+  const container = useRef<HTMLDivElement>(null)
+  const [activeItemLeft, setActiveItemLeft] = useState(0)
+  const [activeItemWidth, setActiveItemWidth] = useState(0)
+  const [value, setValue] = useState('0')
+
+  usePollAnimationFrame(() => {
+    if (!container.current) return
+
+    const activeItem = container.current.querySelector(`[data-state="active"]`)
+
+    if (!activeItem) return
+
+    const activeItemRect = activeItem.getBoundingClientRect()
+    const containerRect = container.current.getBoundingClientRect()
+
+    setActiveItemLeft(activeItemRect.left - containerRect.left + container.current.scrollLeft)
+    setActiveItemWidth(activeItemRect.width)
+  })
+
+  useEffect(() => {
+    if (!container.current) return
+
+    const activeItem = container.current.querySelector(`[data-state="active"]`)
+
+    if (!activeItem) return
+
+    const activeItemRect = activeItem.getBoundingClientRect()
+    const containerRect = container.current.getBoundingClientRect()
+    const activeItemMid = activeItemRect.left + activeItemRect.width / 2
+    const containerMid = containerRect.left + containerRect.width / 2
+
+    container.current.scroll({
+      left: container.current.scrollLeft + (activeItemMid - containerMid),
+      behavior: 'smooth',
+    })
+  }, [value])
+
+  const tabs: Tab[] = [
+    {
+      title: 'Tab 1',
+      children: <p>Tab 1 content</p>,
+    },
+    {
+      title: 'Tab 2',
+      children: <p>Tab 2 content</p>,
+    },
+    {
+      title: 'Tab 3',
+      children: <p>Tab 3 content</p>,
+    },
+  ]
+
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)}>
-      <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="before:rounded-circle group relative [clip-path:inset(0px_0px)] before:absolute before:left-1/2 before:top-full before:-z-10 before:h-[80px] before:w-3/5 before:-translate-x-1/2 before:-translate-y-1/4 before:bg-primary before:opacity-0 before:blur-[100px] before:transition-all before:duration-1000 before:ease-out after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20 after:mix-blend-overlay after:transition-all after:duration-300 after:ease-linear hover:after:opacity-40 data-[state=open]:before:opacity-100 before:data-[state=open]:delay-200">
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-8 text-left text-lg font-medium leading-normal text-foreground md:text-2xl">
-                      {accordion.title}
-                    </div>
-
-                    <button className="rounded-circle shrink-0 p-3 ring-1 ring-foreground/20 transition duration-300 ease-in-out group-hover:ring-foreground/40">
-                      <svg viewBox="0 0 16 16" className="h-4 w-4 fill-foreground">
-                        <rect
-                          x="7"
-                          className="h-4 w-0.5 origin-center transition-transform duration-300 group-data-[state=open]:rotate-90"
-                        />
-                        <rect y="7" className="h-0.5 w-4" />
-                      </svg>
-                    </button>
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
-
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
-                  {accordion.body}
-                </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
-        ))}
-      </ul>
-    </Accordion.Root>
+    <RadixTabs.Root ref={ref} className={clsx(className)} value={value} onValueChange={setValue}>
+      <RadixTabs.List
+        className="fade-x relative flex shrink-0 justify-center"
+        aria-label={ariaLabel}
+      >
+        <div
+          className="no-scrollbar relative flex overflow-x-auto overflow-y-hidden px-6 before:pointer-events-none before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-[var(--active-item-width)] before:translate-x-[var(--active-item-left)] before:bg-gradient-to-r before:from-primary/0 before:via-primary/100 before:to-primary/0 before:transition-all before:duration-300 before:ease-in-out"
+          ref={container}
+          style={
+            {
+              '--active-item-left': `${activeItemLeft}px`,
+              '--active-item-width': `${activeItemWidth}px`,
+            } as CSSProperties
+          }
+        >
+          {tabs?.map((tab, index) => (
+            <RadixTabs.Trigger
+              key={index}
+              value={index.toString()}
+              className="relative shrink-0 select-none items-center px-3.5 py-4 text-lg font-medium text-foreground/50 outline-none [clip-path:inset(0px_0px)] after:pointer-events-none after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-[30px] after:w-1/2 after:-translate-x-1/2 after:translate-y-1/2 after:rounded-full after:bg-primary/50 after:opacity-0 after:blur-lg after:transition-all after:duration-500 after:ease-out hover:text-foreground/70 data-[state=active]:text-foreground data-[state=active]:after:opacity-100 data-[state=active]:after:delay-200 sm:px-5 [&_span]:data-[state=active]:-translate-y-1"
+            >
+              <span className="flex items-center gap-2 transition-all duration-300 ease-in-out">
+                {tab.title}
+              </span>
+            </RadixTabs.Trigger>
+          ))}
+        </div>
+      </RadixTabs.List>
+      {tabs.map((tab, index) => (
+        <RadixTabs.Content key={index} className="outline-none" value={index.toString()}>
+          {tab.children}
+        </RadixTabs.Content>
+      ))}
+    </RadixTabs.Root>
   )
 })
+export default Tabs

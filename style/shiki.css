@@ -23,7 +23,7 @@
   --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
 
   .shiki {
-    background-color: var(--shiki-dark-bg) !important;
+    background-color: var(--docs-background) !important;
   }
 
   .shiki span {

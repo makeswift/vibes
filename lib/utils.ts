@@ -1,3 +1,4 @@
+// import { useEffect } from 'react'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -11,3 +12,21 @@ export function slugify(text: string) {
     .replace(/ /g, '-')
     .replace(/[^\w-]+/g, '')
 }
+
+// export function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
+//   useEffect(() => {
+//     let requestId: number
+
+//     function poll(timestamp: number) {
+//       requestId = requestAnimationFrame(poll)
+
+//       callback(timestamp)
+//     }
+
+//     requestId = requestAnimationFrame(poll)
+
+//     return () => {
+//       cancelAnimationFrame(requestId)
+//     }
+//   })
+// }

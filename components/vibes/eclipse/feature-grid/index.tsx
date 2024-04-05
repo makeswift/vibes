@@ -1,58 +1,54 @@
-import React, { ReactNode, Ref, forwardRef } from 'react'
+'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import Image from 'next/image'
+import { Ref, forwardRef } from 'react'
+
 import clsx from 'clsx'
 
-type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
+type Feature = {
+  heading?: string
+  description?: string
+  icon?: { url: string; dimensions: { width: number; height: number } }
+  iconAlt: string
 }
 
 type Props = {
   className?: string
-  accordions: AccordionItem[]
-  type: 'single' | 'multiple'
+  features?: Feature[]
 }
 
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
+const FeatureGrid = forwardRef(function FeatureGrid(
+  { className, features }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)}>
-      <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="before:rounded-circle group relative [clip-path:inset(0px_0px)] before:absolute before:left-1/2 before:top-full before:-z-10 before:h-[80px] before:w-3/5 before:-translate-x-1/2 before:-translate-y-1/4 before:bg-primary before:opacity-0 before:blur-[100px] before:transition-all before:duration-1000 before:ease-out after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20 after:mix-blend-overlay after:transition-all after:duration-300 after:ease-linear hover:after:opacity-40 data-[state=open]:before:opacity-100 before:data-[state=open]:delay-200">
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-8 text-left text-lg font-medium leading-normal text-foreground md:text-2xl">
-                      {accordion.title}
-                    </div>
+    <div ref={ref} className={clsx(className, '@container')}>
+      <div className="@md:grid-cols-2 @lg:gap-y-16 @2xl:grid-cols-3 @4xl:grid-cols-[repeat(auto-fit,minmax(min(100%/3,max(100%/4)),1fr))] @4xl:gap-x-0 grid grid-cols-1 gap-x-16 gap-y-8">
+        {features?.map((feature, index) => (
+          <div
+            key={index}
+            className="@md:flex-col @4xl:pr-16 flex flex-row items-start gap-x-3 gap-y-4"
+          >
+            {feature.icon && (
+              <Image
+                src={feature.icon.url}
+                alt={feature.iconAlt}
+                width={20}
+                height={20}
+                priority
+                className="@md:mt-0 mt-1.5"
+              />
+            )}
 
-                    <button className="rounded-circle shrink-0 p-3 ring-1 ring-foreground/20 transition duration-300 ease-in-out group-hover:ring-foreground/40">
-                      <svg viewBox="0 0 16 16" className="h-4 w-4 fill-foreground">
-                        <rect
-                          x="7"
-                          className="h-4 w-0.5 origin-center transition-transform duration-300 group-data-[state=open]:rotate-90"
-                        />
-                        <rect y="7" className="h-0.5 w-4" />
-                      </svg>
-                    </button>
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
-
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
-                  {accordion.body}
-                </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
+            <p className="text-lg font-medium leading-relaxed text-foreground">
+              {feature.heading && <span>{feature.heading}&nbsp;</span>}
+              {feature.description && <span className="opacity-50">{feature.description}</span>}
+            </p>
+          </div>
         ))}
-      </ul>
-    </Accordion.Root>
+      </div>
+    </div>
   )
 })
+
+export default FeatureGrid
