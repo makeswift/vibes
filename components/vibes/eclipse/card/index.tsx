@@ -13,45 +13,16 @@ export type Props = {
 }
 
 const Card = forwardRef(function Card(
-  {
-    className,
-    children,
-    media,
-    mediaSize = 'default',
-    mediaAlign = 'center',
-    mediaOrder = 'last',
-    topGlow = false,
-  }: Props,
+  { className, children, topGlow = true }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
-    <div ref={ref} className={clsx(className, 'relative self-stretch @container')}>
-      {topGlow && (
-        <div className="absolute inset-x-6 bottom-full hidden h-20 overflow-hidden before:mx-auto before:mt-14 before:block before:h-3/4 before:w-3/5 before:rounded-full before:bg-primary before:opacity-10 before:blur-xl after:absolute after:bottom-0 after:left-1/2 after:h-[1px] after:w-3/5 after:-translate-x-1/2 after:bg-gradient-to-r after:from-primary/0 after:via-primary after:to-primary/0 after:mix-blend-overlay @4xl:block" />
-      )}
-      <div className="card flex h-full w-full flex-col items-stretch overflow-hidden shadow-[inset_0_0_400px_rgba(3,234,218,0.08)] @2xl:flex-row">
-        <div className="flex-1 p-7 sm:p-8 md:p-12 lg:p-14 lg:pt-12">{children}</div>
+    <div ref={ref} className={clsx(className, '@container relative')}>
+      <div className="@sm:rounded-3xl @2xl:flex-row bg-muted-background/50 w-full rounded-2xl text-foreground ring-1 ring-foreground/20">
+        <div>{children}</div>
 
-        {mediaSize !== 'hidden' && media && (
-          <div
-            className={clsx(
-              {
-                default: 'w-full @2xl:w-1/2',
-                large: 'w-full @2xl:w-3/5',
-              }[mediaSize],
-              {
-                top: 'self-start',
-                center: 'self-center',
-                bottom: 'self-end',
-              }[mediaAlign],
-              {
-                first: 'order-first',
-                last: 'order-last',
-              }[mediaOrder]
-            )}
-          >
-            {media}
-          </div>
+        {topGlow && (
+          <div className="absolute inset-x-6 bottom-full h-20 overflow-hidden before:mx-auto before:mt-14 before:block before:h-3/4 before:w-3/5 before:rounded-full before:bg-primary before:opacity-10 before:blur-xl after:absolute after:bottom-0 after:left-1/2 after:h-[1px] after:w-3/5 after:-translate-x-1/2 after:bg-gradient-to-r after:from-primary/0 after:via-primary after:to-primary/0 after:mix-blend-overlay" />
         )}
       </div>
     </div>
