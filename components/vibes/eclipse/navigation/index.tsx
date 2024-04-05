@@ -2,13 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { CSSProperties, Ref, forwardRef, useEffect, useRef, useState } from 'react'
 import ReactHeadroom from 'react-headroom'
 
 import clsx from 'clsx'
-
-import { usePollAnimationFrame } from '@/lib/utils'
 
 type MainLink = {
   text?: string
@@ -43,6 +41,24 @@ type Props = {
   linkGap?: number
 }
 
+function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
+  useEffect(() => {
+    let requestId: number
+
+    function poll(timestamp: number) {
+      requestId = requestAnimationFrame(poll)
+
+      callback(timestamp)
+    }
+
+    requestId = requestAnimationFrame(poll)
+
+    return () => {
+      cancelAnimationFrame(requestId)
+    }
+  })
+}
+
 const Navigation = forwardRef(function Navigation(
   {
     className,
@@ -57,18 +73,14 @@ const Navigation = forwardRef(function Navigation(
   ref: Ref<HTMLDivElement>
 ) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const router = useRouter()
+  const pathname = usePathname()
   const container = useRef<HTMLDivElement>(null)
   const [activeItemLeft, setActiveItemLeft] = useState(0)
   const [activeItemWidth, setActiveItemWidth] = useState(0)
 
   useEffect(() => {
-    const handleRouteChange = () => setMobileNavOpen(false)
-
-    router.events.on('routeChangeStart', handleRouteChange)
-
-    return () => router.events.off('routeChangeStart', handleRouteChange)
-  }, [router])
+    setMobileNavOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', mobileNavOpen)
@@ -99,12 +111,12 @@ const Navigation = forwardRef(function Navigation(
         ref={ref}
         className={clsx(
           className,
-          '@container w-full overflow-hidden border-b border-primary/30 bg-background/80 backdrop-blur-xl'
+          'w-full overflow-hidden border-b border-primary/30 bg-background/80 backdrop-blur-xl @container'
         )}
       >
-        <nav className="@4xl:justify-start @4xl:py-0 flex items-stretch justify-between gap-x-3 px-3 py-3">
+        <nav className="flex items-stretch justify-between gap-x-3 px-3 py-3 @4xl:justify-start @4xl:py-0">
           {logoImage && (
-            <div className="@4xl:flex-1 flex items-center">
+            <div className="flex items-center @4xl:flex-1">
               <Link href={logoLink?.href ?? ''} target={logoLink?.target}>
                 <Image
                   src={logoImage.url}
@@ -118,7 +130,7 @@ const Navigation = forwardRef(function Navigation(
           )}
 
           <div
-            className="@4xl:flex relative hidden items-stretch [clip-path:inset(0px_0px)] before:pointer-events-none before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-[var(--active-item-width)] before:translate-x-[var(--active-item-left)] before:bg-gradient-to-r before:from-primary/0 before:via-primary/100 before:to-primary/0 before:transition-all before:duration-300 before:ease-in-out"
+            className="relative hidden items-stretch [clip-path:inset(0px_0px)] before:pointer-events-none before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-[var(--active-item-width)] before:translate-x-[var(--active-item-left)] before:bg-gradient-to-r before:from-primary/0 before:via-primary/100 before:to-primary/0 before:transition-all before:duration-300 before:ease-in-out @4xl:flex"
             ref={container}
             style={
               {
@@ -134,7 +146,7 @@ const Navigation = forwardRef(function Navigation(
                 target={link.link?.target}
                 className={clsx(
                   'after:rounded-circle group relative inline-flex items-center px-4 py-6 text-sm font-medium text-foreground transition duration-200 after:pointer-events-none after:absolute after:left-1/2 after:top-full after:-z-10 after:h-[8px] after:w-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-primary/70 after:opacity-0 after:blur-[12px] after:transition-all after:duration-500 after:ease-out hover:opacity-100',
-                  link.link?.href && router.asPath.startsWith(link.link?.href)
+                  link.link?.href && pathname.startsWith(link.link?.href)
                     ? 'active-link opacity-100 after:opacity-100 after:delay-300'
                     : 'opacity-70'
                 )}
@@ -167,7 +179,7 @@ const Navigation = forwardRef(function Navigation(
                 key={i}
                 href={link.link?.href ?? ''}
                 target={link.link?.target}
-                className="@4xl:block hidden transition duration-300 hover:drop-shadow-[0_0_4px_#03EADA]"
+                className="hidden transition duration-300 hover:drop-shadow-[0_0_4px_#03EADA] @4xl:block"
               >
                 {link.icon && (
                   <Image
@@ -183,7 +195,7 @@ const Navigation = forwardRef(function Navigation(
 
             <button
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="@sm:mr-0 @4xl:hidden relative mr-2 block rounded-full p-2.5"
+              className="relative mr-2 block rounded-full p-2.5 @sm:mr-0 @4xl:hidden"
               role="button"
               aria-label="Open mobile navigation"
             >
@@ -207,7 +219,7 @@ const Navigation = forwardRef(function Navigation(
 
         <div
           className={clsx(
-            '@4xl:hidden w-full overflow-hidden transition-all duration-300',
+            'w-full overflow-hidden transition-all duration-300 @4xl:hidden',
             mobileNavOpen ? 'max-h-96' : 'max-h-0'
           )}
         >
