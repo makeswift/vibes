@@ -2,8 +2,54 @@ import Footer from '.'
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-[#07090D]">
-      <Footer />
+    <div className="flex min-h-48 items-center justify-center bg-[#07090D] p-16 sm:min-h-64 lg:min-h-80">
+      <Footer
+        className="w-full"
+        footerGroups={[
+          {
+            heading: 'Company',
+            icon: {
+              url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+              dimensions: { width: 20, height: 20 },
+            },
+            iconAlt: 'Company',
+            footerLinks: [
+              { text: 'About', link: { href: '/about' } },
+              { text: 'Careers', link: { href: '/careers' } },
+              { text: 'Contact', link: { href: '/contact' } },
+            ],
+          },
+          {
+            heading: 'Resources',
+            icon: {
+              url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+              dimensions: { width: 20, height: 20 },
+            },
+            iconAlt: 'Resources',
+            footerLinks: [
+              { text: 'Blog', link: { href: '/blog' } },
+              { text: 'Help Center', link: { href: '/help' } },
+              { text: 'Guides', link: { href: '/guides' } },
+            ],
+          },
+          {
+            heading: 'Legal',
+            icon: {
+              url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+              dimensions: { width: 20, height: 20 },
+            },
+            iconAlt: 'Legal',
+            footerLinks: [
+              { text: 'Privacy Policy', link: { href: '/privacy' } },
+              { text: 'Terms of Service', link: { href: '/terms' } },
+            ],
+          },
+        ]}
+        legalLinks={[
+          { text: 'Privacy Policy', link: { href: '/privacy' } },
+          { text: 'Terms of Service', link: { href: '/terms' } },
+        ]}
+      />
     </div>
   )
 }

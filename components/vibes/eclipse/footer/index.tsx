@@ -39,7 +39,6 @@ type Props = {
     target?: '_self' | '_blank'
   }
   footerGroups?: FooterGroup[]
-  copyright?: ReactNode
   legalLinks?: LegalLink[]
 }
 
@@ -52,7 +51,6 @@ const Footer = forwardRef(function Footer(
     logoAlt = 'Logo',
     logoWidth = 120,
     logoLink,
-    copyright,
   }: Props,
   ref: Ref<HTMLDivElement>
 ) {
@@ -125,7 +123,7 @@ const Footer = forwardRef(function Footer(
 
       <div className="@xl:flex-row flex flex-col items-center justify-center gap-x-4 gap-y-3 py-8 text-center text-sm text-foreground">
         <span className="opacity-50 [&_div]:inline">
-          © {new Date().getFullYear()}&nbsp;{copyright}
+          © {new Date().getFullYear()} Your Company. All rights reserved.
         </span>
 
         {legalLinks?.map((link, i) => (

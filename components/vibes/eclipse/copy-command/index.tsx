@@ -61,7 +61,7 @@ const CopyCommand = forwardRef(function CopyCommand(
             'translate-y-0 opacity-100': copied,
           })}
         >
-          <path d="M1.5 7.5L6 12L14.5 3.5" className="stroke-text" strokeWidth="2" />
+          <path d="M1.5 7.5L6 12L14.5 3.5" className="stroke-foreground" strokeWidth="2" />
         </svg>
       </div>
     </button>
