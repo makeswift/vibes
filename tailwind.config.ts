@@ -79,24 +79,9 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
-        rotatingGradient: {
+        rotate: {
           '0%': {
             transform: 'rotateZ(0deg) translate3d(-50%,-50%,0)',
-          },
-          '15%': {
-            transform: 'rotateZ(45deg) translate3d(-50%,-50%,0)',
-          },
-          '40': {
-            transform: 'rotateZ(135deg) translate3d(-50%,-50%,0)',
-          },
-          '50%': {
-            transform: 'rotateZ(180deg) translate3d(-50%,-50%,0)',
-          },
-          '60%': {
-            transform: 'rotateZ(225deg) translate3d(-50%,-50%,0)',
-          },
-          '85%': {
-            transform: 'rotateZ(270deg) translate3d(-50%,-50%,0)',
           },
           '100%': {
             transform: 'rotateZ(360deg) translate3d(-50%,-50%,0)',
@@ -109,7 +94,7 @@ const config = {
       animation: {
         expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
-        rotatingGradient: 'rotatingGradient 2000ms linear infinite',
+        rotate: 'rotate 2000ms linear infinite',
         scroll: 'scroll 200ms infinite linear both',
       },
     },

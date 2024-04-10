@@ -38,7 +38,7 @@ const Button = forwardRef(function Button(
     >
       <div
         className={clsx(
-          'animate-rotatingGradient absolute left-1/2 top-1/2 -z-10 aspect-square w-[200%] origin-top-left bg-[conic-gradient(var(--tw-gradient-stops))] from-transparent via-transparent to-primary transition-all',
+          'animate-rotate absolute left-1/2 top-1/2 -z-10 aspect-square w-[200%] origin-top-left bg-[conic-gradient(var(--tw-gradient-stops))] from-transparent via-transparent to-primary ease-linear',
           borderGlow ? 'opacity-100' : 'opacity-0'
         )}
       />
