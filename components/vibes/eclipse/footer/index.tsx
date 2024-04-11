@@ -56,7 +56,7 @@ const Footer = forwardRef(function Footer(
 ) {
   return (
     <footer ref={ref} className={clsx(className, '@container')}>
-      <div className="card @xl:flex-row @xl:gap-x-24 @xl:p-8 flex flex-col gap-x-16 gap-y-8 p-6">
+      <div className="flex w-full flex-col gap-x-16 gap-y-8 rounded-2xl bg-muted-background/50 p-6 ring-1 ring-foreground/20 @sm:rounded-3xl @xl:flex-row @xl:gap-x-24 @xl:p-8">
         {logoImage && (
           <Link href={logoLink?.href ?? '#'} target={logoLink?.target}>
             <Image
@@ -69,7 +69,7 @@ const Footer = forwardRef(function Footer(
           </Link>
         )}
 
-        <div className="@lg:gap-y-10 flex flex-1 flex-wrap gap-y-8">
+        <div className="flex flex-1 flex-wrap gap-y-8 @lg:gap-y-10">
           {footerGroups?.map((group, groupIndex) => {
             if (footerGroups.length === 0) {
               return (
@@ -82,7 +82,7 @@ const Footer = forwardRef(function Footer(
             return (
               <div
                 key={groupIndex}
-                className="@sm:basis-1/2 @2xl:px-5 @4xl:basis-auto flex-1 basis-full last:pr-0"
+                className="flex-1 basis-full pr-10 last:pr-0 @sm:basis-1/3 @2xl:pr-10 @4xl:basis-auto"
               >
                 {group.heading && (
                   <div className="mb-3 flex items-center pt-1 font-semibold text-foreground">
@@ -121,7 +121,7 @@ const Footer = forwardRef(function Footer(
         </div>
       </div>
 
-      <div className="@xl:flex-row flex flex-col items-center justify-center gap-x-4 gap-y-3 py-8 text-center text-sm text-foreground">
+      <div className="flex flex-col items-center justify-center gap-x-4 gap-y-3 py-8 text-center text-sm text-foreground @xl:flex-row">
         <span className="opacity-50 [&_div]:inline">
           © {new Date().getFullYear()} Your Company. All rights reserved.
         </span>

@@ -2,7 +2,7 @@ import Footer from '.'
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-[#07090D] p-16 sm:min-h-64 lg:min-h-80">
+    <div className="flex min-h-48 items-center justify-center bg-[#07090D] p-5 sm:min-h-64 sm:p-8 lg:min-h-80 lg:p-12">
       <Footer
         className="w-full"
         footerGroups={[
@@ -42,6 +42,19 @@ export default function Preview() {
             footerLinks: [
               { text: 'Privacy Policy', link: { href: '/privacy' } },
               { text: 'Terms of Service', link: { href: '/terms' } },
+            ],
+          },
+          {
+            heading: 'Social',
+            icon: {
+              url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+              dimensions: { width: 20, height: 20 },
+            },
+            iconAlt: 'Social',
+            footerLinks: [
+              { text: 'Twitter', link: { href: '/privacy' } },
+              { text: 'Facebook', link: { href: '/terms' } },
+              { text: 'LinkedIn', link: { href: '/terms' } },
             ],
           },
         ]}
