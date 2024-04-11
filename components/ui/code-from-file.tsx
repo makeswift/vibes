@@ -8,6 +8,8 @@ import {
 import { readFile } from 'fs/promises'
 import { codeToHtml } from 'shiki'
 
+import { CopyButton } from './copy-button'
+
 interface Props {
   pathname: string
 }
@@ -24,9 +26,13 @@ export async function CodeFromFile({ pathname }: Props) {
   })
 
   return (
-    <div
-      className="not-prose bg-docs-background overflow-x-auto p-5"
-      dangerouslySetInnerHTML={{ __html: code }}
-    />
+    <div className="relative">
+      <div
+        className="not-prose overflow-x-auto bg-docs-background p-5"
+        dangerouslySetInnerHTML={{ __html: code }}
+      />
+
+      <CopyButton className="absolute right-2 top-2" selectorFromParent="& > div > pre" />
+    </div>
   )
 }
