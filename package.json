@@ -38,6 +38,7 @@
     "react-dom": "^18",
     "react-error-boundary": "^4.0.13",
     "react-headroom": "^3.2.1",
+    "react-hook-form": "^7.51.3",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-mdx-frontmatter": "^4.0.0",

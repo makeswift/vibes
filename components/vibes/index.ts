@@ -17,6 +17,7 @@ const components = {
   'eclipse/pricing-cards': lazy(() => import('./eclipse/pricing-cards/preview')),
   'eclipse/table': lazy(() => import('./eclipse/table/preview')),
   'eclipse/tabs': lazy(() => import('./eclipse/tabs/preview')),
+  'eclipse/toast': lazy(() => import('./eclipse/toast/preview')),
   'eclipse/video': lazy(() => import('./eclipse/video/preview')),
 } as const
 
