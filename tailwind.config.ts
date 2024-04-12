@@ -79,11 +79,17 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        rotateFade: {
+          from: { opacity: '1', transform: 'rotateZ(0deg) translate3d(-50%,-50%,0)' },
+          '35%': { opacity: '0' },
+          '70%': { opacity: '0' },
+          to: { opacity: '1', transform: 'rotateZ(360deg) translate3d(-50%,-50%,0)' },
+        },
         rotate: {
-          '0%': {
+          from: {
             transform: 'rotateZ(0deg) translate3d(-50%,-50%,0)',
           },
-          '100%': {
+          to: {
             transform: 'rotateZ(360deg) translate3d(-50%,-50%,0)',
           },
         },
