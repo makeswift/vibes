@@ -20,7 +20,7 @@ type Props = {
 }
 
 const Marquee = forwardRef(function Marquee(
-  { className, logos, fadeEdges = true, duration = 120, gap = 64 }: Props,
+  { className, logos, fadeEdges = true, duration = 30, gap = 64 }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   const scrollingImages = (
@@ -58,7 +58,8 @@ const Marquee = forwardRef(function Marquee(
       ) : (
         <div
           className={clsx(
-            fadeEdges && 'fade-x',
+            fadeEdges &&
+              '[mask-image:linear-gradient(to_right,_transparent_0%,_black_15%,_black_85%,_transparent_100%)]',
             'relative flex w-full flex-row items-center overflow-hidden'
           )}
         >

@@ -96,12 +96,17 @@ const config = {
         scroll: {
           to: { backgroundPosition: '5px 0' },
         },
+        scrollLeft: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
       animation: {
         expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
         rotate: 'rotate 2000ms linear infinite',
         scroll: 'scroll 200ms infinite linear both',
+        scrollLeft: 'scrollLeft var(--marquee-duration) linear infinite',
       },
     },
   },

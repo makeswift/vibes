@@ -13,7 +13,7 @@ type Item = {
   }
   image?: { url: string; dimensions: { width: number; height: number } }
   imageAlt: string
-  category?: 'Changelog' | 'News' | 'Engineering' | 'Product' | undefined
+  category?: 'Changelog' | 'News' | 'Engineering' | 'Product'
   title?: string
   description?: string
   author?: string
