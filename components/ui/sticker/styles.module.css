@@ -1,0 +1,121 @@
+.sticker {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  width: var(--width);
+  height: var(--height);
+  cursor: grab;
+
+  * {
+    pointer-events: none;
+    backface-visibility: hidden;
+  }
+}
+
+.container {
+  position: relative;
+  transform-style: preserve-3d;
+  width: var(--size);
+  height: var(--size);
+  top: calc(var(--offset-top) * -1);
+  left: calc(var(--offset-left) * -1);
+  transform: rotate(var(--rotation));
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--size);
+  height: var(--size);
+  transform: rotate(var(--peel-angle));
+}
+
+.clip,
+.sclip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  overflow: hidden;
+  transition: 500ms ease-out transform;
+}
+
+.clip {
+  transform: translateX(var(--offset-diagonal-angle));
+}
+
+.sclip {
+  transform: translateX(calc(var(--offset-diagonal-angle) + var(--shadow-start-x)));
+}
+
+.front,
+.back,
+.shadow {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: all;
+  transition: 500ms ease-out transform;
+  left: var(--offset-left);
+  top: var(--offset-top);
+  width: var(--width);
+  height: var(--height);
+}
+
+.shadow {
+  transform: rotate(var(--front-rotation)) translateX(calc(var(--front-x)))
+    translateY(calc(var(--front-y) + var(--shadow-start-y)));
+  z-index: 1;
+}
+
+.front {
+  transform: rotate(var(--front-rotation)) translateX(var(--front-x)) translateY(var(--front-y))
+    scale(1);
+  z-index: 1;
+}
+
+.back {
+  transform: rotate(var(--back-rotation)) translateX(var(--back-x)) translateY(var(--back-y))
+    scaleY(-1);
+  z-index: 2;
+}
+
+.sticker:hover {
+  .sclip {
+    transform: translateX(calc(var(--offset-diagonal-angle) + var(--shadow-hover-x)));
+  }
+
+  .shadow {
+    transform: rotate(var(--front-rotation)) translateX(calc(var(--front-x)))
+      translateY(calc(var(--front-y) + var(--shadow-hover-y)));
+  }
+}
+
+.sticker:active {
+  cursor: grabbing;
+
+  .clip {
+    transform: translateX(calc(var(--offset-diagonal-angle) + var(--peel-translate)));
+  }
+
+  .sclip {
+    transform: translateX(
+      calc(var(--offset-diagonal-angle) + var(--peel-translate) + var(--shadow-hover-x))
+    );
+  }
+
+  .shadow {
+    transform: rotate(var(--front-rotation)) translateX(calc(var(--front-peeled-x)))
+      translateY(calc(var(--front-peeled-y) + var(--shadow-hover-y)));
+  }
+
+  .front {
+    transform: rotate(var(--front-rotation)) translateX(var(--front-peeled-x))
+      translateY(var(--front-peeled-y)) scale(1);
+  }
+
+  .back {
+    transform: rotate(var(--back-rotation)) translateX(var(--back-peeled-x))
+      translateY(var(--back-peeled-y)) scaleY(-1);
+  }
+}
