@@ -21,6 +21,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const toRads = (deg: number) => (deg * Math.PI) / 180.0
+const toDegrees = (rads: number) => (rads * 180.0) / Math.PI
 
 export default function Sticker({
   className,
@@ -28,8 +29,8 @@ export default function Sticker({
   front,
   back,
   shadow,
-  peel = 0.2,
-  peelAngle = 45,
+  peel = 0.3,
+  peelAngle = 10,
   width = 145,
   height = 205,
   rotation = 0,
@@ -51,10 +52,10 @@ export default function Sticker({
         : peelAngle < -90
           ? 270 - peelAngle
           : 90 - peelAngle
-  const diagonalAngle = Math.atan(height / width)
+  const diagonalAngle = toDegrees(Math.atan(height / width))
   const angleFix = rotationAngleFix + diagonalAngle
-  const angleFixBack = peelAngle - 180
-  const offsetDiagonalAngle = (size - Math.sin(angleFix) * size) / 2
+  const angleFixBack = peelAngle + 180
+  const offsetDiagonalAngle = (size - Math.sin(toRads(angleFix)) * size) / 2
   const offsetBack = offsetDiagonalAngle - size
   const peelTranslate = (size - offsetDiagonalAngle * 2) * peel
 
