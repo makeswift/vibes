@@ -2,7 +2,7 @@ import { CSSProperties } from 'react'
 
 import clsx from 'clsx'
 
-import styles from './styles.module.css'
+import styles from './sticker.module.css'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   front: React.ReactNode
@@ -22,7 +22,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 
 const toRads = (deg: number) => (deg * Math.PI) / 180.0
 
-export function Sticker({
+export default function Sticker({
   className,
   style,
   front,
@@ -33,11 +33,12 @@ export function Sticker({
   width = 145,
   height = 205,
   rotation = 0,
-  animationDuration = 500,
+  animationDuration = 350,
   shadowStartX = -4,
   shadowStartY = 4,
   shadowHoverX = -6,
   shadowHoverY = 10,
+  ...rest
 }: Props) {
   const size = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2))
   const offsetTop = (size - height) / 2
@@ -59,6 +60,7 @@ export function Sticker({
 
   return (
     <div
+      {...rest}
       className={clsx(styles.sticker, className)}
       style={
         {

@@ -1,9 +1,9 @@
-import { Sticker } from '@/components/ui/sticker'
+import { DraggableSticker } from '@/components/ui/sticker'
 
 export default function Home() {
   return (
     <div className="mx-auto my-20 flex max-w-5xl justify-center">
-      <Sticker
+      <DraggableSticker
         front={
           <svg
             width="145"
@@ -215,7 +215,7 @@ export default function Home() {
             </g>
           </svg>
         }
-      ></Sticker>
+      ></DraggableSticker>
     </div>
   )
 }
