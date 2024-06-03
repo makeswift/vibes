@@ -95,14 +95,16 @@ export default function Sticker({
         } as CSSProperties
       }
     >
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <div className={styles.sclip}>
-            <div className={styles.shadow}>{shadow}</div>
+      <div className={styles['container']}>
+        <div className={styles['shadow-wrapper']}>
+          <div className={styles['clip']}>
+            <div className={styles['shadow']}>{shadow}</div>
           </div>
-          <div className={styles.clip}>
-            <div className={styles.back}>{back}</div>
-            <div className={styles.front}>{front}</div>
+        </div>
+        <div className={styles['wrapper']}>
+          <div className={styles['clip']}>
+            <div className={styles['back']}>{back}</div>
+            <div className={styles['front']}>{front}</div>
           </div>
         </div>
       </div>

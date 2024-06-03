@@ -30,8 +30,16 @@
   transform: rotate(var(--peel-angle));
 }
 
-.clip,
-.sclip {
+.shadow-wrapper {
+  position: absolute;
+  top: var(--shadow-y);
+  left: var(--shadow-x);
+  width: calc(var(--size));
+  height: calc(var(--size));
+  transform: rotate(var(--peel-angle));
+}
+
+.clip {
   position: absolute;
   left: 0;
   top: 0;
@@ -39,14 +47,7 @@
   height: var(--size);
   overflow: hidden;
   transition: 500ms ease-out transform;
-}
-
-.clip {
   transform: translateX(var(--offset-diagonal-angle));
-}
-
-.sclip {
-  transform: translateX(calc(var(--offset-diagonal-angle) + var(--shadow-x)));
 }
 
 .front,
@@ -63,14 +64,12 @@
 }
 
 .shadow {
-  transform: rotate(var(--front-rotation)) translateX(calc(var(--front-x)))
-    translateY(calc(var(--front-y) + var(--shadow-y)));
-  z-index: 1;
+  transform: rotate(var(--front-rotation)) translateX(var(--front-x)) translateY(var(--front-y));
+  z-index: 0;
 }
 
 .front {
-  transform: rotate(var(--front-rotation)) translateX(var(--front-x)) translateY(var(--front-y))
-    scale(1);
+  transform: rotate(var(--front-rotation)) translateX(var(--front-x)) translateY(var(--front-y));
   z-index: 1;
 }
 
@@ -85,15 +84,9 @@
     transform: translateX(calc(var(--offset-diagonal-angle) + var(--hover-peel-translate)));
   }
 
-  .sclip {
-    transform: translateX(
-      calc(var(--offset-diagonal-angle) + var(--hover-peel-translate) + var(--shadow-x))
-    );
-  }
-
   .shadow {
-    transform: rotate(var(--front-rotation)) translateX(calc(var(--front-hover-x)))
-      translateY(calc(var(--front-hover-y) + var(--shadow-y)));
+    transform: rotate(var(--front-rotation)) translateX(var(--front-hover-x))
+      translateY(var(--front-hover-y));
   }
 
   .front {
@@ -114,15 +107,9 @@
     transform: translateX(calc(var(--offset-diagonal-angle) + var(--active-peel-translate)));
   }
 
-  .sclip {
-    transform: translateX(
-      calc(var(--offset-diagonal-angle) + var(--active-peel-translate) + var(--shadow-x))
-    );
-  }
-
   .shadow {
-    transform: rotate(var(--front-rotation)) translateX(calc(var(--front-active-x)))
-      translateY(calc(var(--front-active-y) + var(--shadow-y)));
+    transform: rotate(var(--front-rotation)) translateX(var(--front-active-x))
+      translateY(var(--front-active-y));
   }
 
   .front {
