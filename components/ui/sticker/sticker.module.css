@@ -46,7 +46,7 @@
 }
 
 .sclip {
-  transform: translateX(calc(var(--offset-diagonal-angle) + var(--shadow-start-x)));
+  transform: translateX(calc(var(--offset-diagonal-angle) + var(--shadow-x)));
 }
 
 .front,
@@ -64,7 +64,7 @@
 
 .shadow {
   transform: rotate(var(--front-rotation)) translateX(calc(var(--front-x)))
-    translateY(calc(var(--front-y) + var(--shadow-start-y)));
+    translateY(calc(var(--front-y) + var(--shadow-y)));
   z-index: 1;
 }
 
@@ -81,13 +81,29 @@
 }
 
 .sticker:hover {
+  .clip {
+    transform: translateX(calc(var(--offset-diagonal-angle) + var(--hover-peel-translate)));
+  }
+
   .sclip {
-    transform: translateX(calc(var(--offset-diagonal-angle) + var(--shadow-hover-x)));
+    transform: translateX(
+      calc(var(--offset-diagonal-angle) + var(--hover-peel-translate) + var(--shadow-x))
+    );
   }
 
   .shadow {
-    transform: rotate(var(--front-rotation)) translateX(calc(var(--front-x)))
-      translateY(calc(var(--front-y) + var(--shadow-hover-y)));
+    transform: rotate(var(--front-rotation)) translateX(calc(var(--front-hover-x)))
+      translateY(calc(var(--front-hover-y) + var(--shadow-y)));
+  }
+
+  .front {
+    transform: rotate(var(--front-rotation)) translateX(var(--front-hover-x))
+      translateY(var(--front-hover-y)) scale(1);
+  }
+
+  .back {
+    transform: rotate(var(--back-rotation)) translateX(var(--back-hover-x))
+      translateY(var(--back-hover-y)) scaleY(-1);
   }
 }
 
@@ -95,27 +111,27 @@
   cursor: grabbing;
 
   .clip {
-    transform: translateX(calc(var(--offset-diagonal-angle) + var(--peel-translate)));
+    transform: translateX(calc(var(--offset-diagonal-angle) + var(--active-peel-translate)));
   }
 
   .sclip {
     transform: translateX(
-      calc(var(--offset-diagonal-angle) + var(--peel-translate) + var(--shadow-hover-x))
+      calc(var(--offset-diagonal-angle) + var(--active-peel-translate) + var(--shadow-x))
     );
   }
 
   .shadow {
-    transform: rotate(var(--front-rotation)) translateX(calc(var(--front-peeled-x)))
-      translateY(calc(var(--front-peeled-y) + var(--shadow-hover-y)));
+    transform: rotate(var(--front-rotation)) translateX(calc(var(--front-active-x)))
+      translateY(calc(var(--front-active-y) + var(--shadow-y)));
   }
 
   .front {
-    transform: rotate(var(--front-rotation)) translateX(var(--front-peeled-x))
-      translateY(var(--front-peeled-y)) scale(1);
+    transform: rotate(var(--front-rotation)) translateX(var(--front-active-x))
+      translateY(var(--front-active-y)) scale(1);
   }
 
   .back {
-    transform: rotate(var(--back-rotation)) translateX(var(--back-peeled-x))
-      translateY(var(--back-peeled-y)) scaleY(-1);
+    transform: rotate(var(--back-rotation)) translateX(var(--back-active-x))
+      translateY(var(--back-active-y)) scaleY(-1);
   }
 }

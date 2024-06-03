@@ -8,16 +8,15 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   front: React.ReactNode
   back: React.ReactNode
   shadow: React.ReactNode
-  peel?: number
+  hoverPeel?: number
+  activePeel?: number
   peelAngle?: number
   width?: number
   height?: number
   rotation?: number
   animationDuration?: number
-  shadowStartX?: number
-  shadowStartY?: number
-  shadowHoverX?: number
-  shadowHoverY?: number
+  shadowX?: number
+  shadowY?: number
 }
 
 const toRads = (deg: number) => (deg * Math.PI) / 180.0
@@ -29,16 +28,15 @@ export default function Sticker({
   front,
   back,
   shadow,
-  peel = 0.3,
+  hoverPeel = 0.1,
+  activePeel = 0.3,
   peelAngle = -10,
   width = 145,
   height = 205,
   rotation = 0,
   animationDuration = 350,
-  shadowStartX = -4,
-  shadowStartY = 4,
-  shadowHoverX = -6,
-  shadowHoverY = 10,
+  shadowX = -4,
+  shadowY = 4,
   ...rest
 }: Props) {
   const size = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2))
@@ -57,7 +55,8 @@ export default function Sticker({
   const angleFixBack = peelAngle + 180
   const offsetDiagonalAngle = (size - Math.sin(toRads(angleFix)) * size) / 2
   const offsetBack = offsetDiagonalAngle - size
-  const peelTranslate = (size - offsetDiagonalAngle * 2) * peel
+  const hoverPeelTranslate = (size - offsetDiagonalAngle * 2) * hoverPeel
+  const activePeelTranslate = (size - offsetDiagonalAngle * 2) * activePeel
 
   return (
     <div
@@ -76,19 +75,22 @@ export default function Sticker({
           '--offset-diagonal-angle': `${offsetDiagonalAngle}px`,
           '--front-x': `${-offsetDiagonalAngle * Math.cos(toRads(peelAngle))}px`,
           '--front-y': `${-offsetDiagonalAngle * Math.sin(toRads(peelAngle))}px`,
-          '--front-peeled-x': `${(-offsetDiagonalAngle - peelTranslate) * Math.cos(toRads(peelAngle))}px`,
-          '--front-peeled-y': `${(-offsetDiagonalAngle - peelTranslate) * Math.sin(toRads(peelAngle))}px`,
+          '--front-hover-x': `${(-offsetDiagonalAngle - hoverPeelTranslate) * Math.cos(toRads(peelAngle))}px`,
+          '--front-hover-y': `${(-offsetDiagonalAngle - hoverPeelTranslate) * Math.sin(toRads(peelAngle))}px`,
+          '--front-active-x': `${(-offsetDiagonalAngle - activePeelTranslate) * Math.cos(toRads(peelAngle))}px`,
+          '--front-active-y': `${(-offsetDiagonalAngle - activePeelTranslate) * Math.sin(toRads(peelAngle))}px`,
           '--front-rotation': `${-peelAngle}deg`,
           '--back-x': `${offsetBack * Math.cos(toRads(angleFixBack))}px`,
           '--back-y': `${offsetBack * Math.sin(toRads(angleFixBack)) * -1}px`,
-          '--back-peeled-x': `${(offsetBack + peelTranslate) * Math.cos(toRads(angleFixBack))}px`,
-          '--back-peeled-y': `${(offsetBack + peelTranslate) * Math.sin(toRads(angleFixBack)) * -1}px`,
+          '--back-hover-x': `${(offsetBack + hoverPeelTranslate) * Math.cos(toRads(angleFixBack))}px`,
+          '--back-hover-y': `${(offsetBack + hoverPeelTranslate) * Math.sin(toRads(angleFixBack)) * -1}px`,
+          '--back-active-x': `${(offsetBack + activePeelTranslate) * Math.cos(toRads(angleFixBack))}px`,
+          '--back-active-y': `${(offsetBack + activePeelTranslate) * Math.sin(toRads(angleFixBack)) * -1}px`,
           '--back-rotation': `${angleFixBack}deg`,
-          '--peel-translate': `${peelTranslate}px`,
-          '--shadow-start-x': `${shadowStartX}px`,
-          '--shadow-start-y': `${shadowStartY}px`,
-          '--shadow-hover-x': `${shadowHoverX}px`,
-          '--shadow-hover-y': `${shadowHoverY}px`,
+          '--hover-peel-translate': `${hoverPeelTranslate}px`,
+          '--active-peel-translate': `${activePeelTranslate}px`,
+          '--shadow-x': `${shadowX}px`,
+          '--shadow-y': `${shadowY}px`,
           '--animation-duration': `${animationDuration}ms`,
         } as CSSProperties
       }
