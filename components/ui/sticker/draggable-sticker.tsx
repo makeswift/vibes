@@ -18,17 +18,20 @@ export default function DraggableSticker(props: ComponentPropsWithoutRef<typeof 
   }, [])
 
   return (
-    <Sticker
-      {...props}
+    <div
       style={{
         transform: `translate3d(${position[0]}px, ${position[1]}px, 0)`,
       }}
-      onPointerDown={e => {
-        pointerStart.current = [e.clientX, e.clientY]
-        positionStart.current = position
+    >
+      <Sticker
+        {...props}
+        onPointerDown={e => {
+          pointerStart.current = [e.clientX, e.clientY]
+          positionStart.current = position
 
-        window.addEventListener('pointermove', onMove)
-      }}
-    />
+          window.addEventListener('pointermove', onMove)
+        }}
+      />
+    </div>
   )
 }

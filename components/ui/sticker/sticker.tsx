@@ -30,7 +30,7 @@ export default function Sticker({
   back,
   shadow,
   peel = 0.3,
-  peelAngle = 10,
+  peelAngle = -10,
   width = 145,
   height = 205,
   rotation = 0,
@@ -47,10 +47,10 @@ export default function Sticker({
   const rotationAngleFix =
     peelAngle > 90
       ? peelAngle - 90
-      : peelAngle < 0
-        ? peelAngle + 90
-        : peelAngle < -90
-          ? 270 - peelAngle
+      : peelAngle < -90
+        ? 270 - peelAngle
+        : peelAngle < 0
+          ? peelAngle + 90
           : 90 - peelAngle
   const diagonalAngle = toDegrees(Math.atan(height / width))
   const angleFix = rotationAngleFix + diagonalAngle
@@ -78,11 +78,11 @@ export default function Sticker({
           '--front-y': `${-offsetDiagonalAngle * Math.sin(toRads(peelAngle))}px`,
           '--front-peeled-x': `${(-offsetDiagonalAngle - peelTranslate) * Math.cos(toRads(peelAngle))}px`,
           '--front-peeled-y': `${(-offsetDiagonalAngle - peelTranslate) * Math.sin(toRads(peelAngle))}px`,
-          '--front-rotation': `-${peelAngle}deg`,
+          '--front-rotation': `${-peelAngle}deg`,
           '--back-x': `${offsetBack * Math.cos(toRads(angleFixBack))}px`,
-          '--back-y': `-${offsetBack * Math.sin(toRads(angleFixBack))}px`,
+          '--back-y': `${offsetBack * Math.sin(toRads(angleFixBack)) * -1}px`,
           '--back-peeled-x': `${(offsetBack + peelTranslate) * Math.cos(toRads(angleFixBack))}px`,
-          '--back-peeled-y': `-${(offsetBack + peelTranslate) * Math.sin(toRads(angleFixBack))}px`,
+          '--back-peeled-y': `${(offsetBack + peelTranslate) * Math.sin(toRads(angleFixBack)) * -1}px`,
           '--back-rotation': `${angleFixBack}deg`,
           '--peel-translate': `${peelTranslate}px`,
           '--shadow-start-x': `${shadowStartX}px`,

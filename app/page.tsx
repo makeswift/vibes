@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <div className="mx-auto my-20 flex max-w-5xl justify-center">
       <DraggableSticker
+        className="absolute top-10 scale-125"
         front={
           <svg
             width="145"
