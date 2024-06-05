@@ -42,8 +42,7 @@ export default function Home() {
 
         <p className="mt-6 max-w-4xl text-center font-docs-sans text-xl !leading-normal sm:mt-8 md:mt-10 md:text-2xl md:!leading-snug lg:text-3xl">
           Vibes is a copy and paste component library built specifically for marketing sites. Lorem
-          ipsum dolor sit amet, consectetuer adipiscing elit. Quisque volutpat mattis eros. Nullam
-          malesuada erat ut turpis. Suspendisse urna nibh viverra non semper.
+          ipsum dolor sit amet adipiscing elit.
         </p>
 
         <form
