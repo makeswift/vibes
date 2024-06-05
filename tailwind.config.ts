@@ -96,6 +96,12 @@ const config = {
         scroll: {
           to: { backgroundPosition: '5px 0' },
         },
+        dotScrollSmall: {
+          to: { backgroundPosition: '-6px -6px, -12px -12px' },
+        },
+        dotScrollLarge: {
+          to: { backgroundPosition: '-8px -8px, -16px -16px' },
+        },
         scrollLeft: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-100%)' },

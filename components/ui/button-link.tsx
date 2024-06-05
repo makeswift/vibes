@@ -12,18 +12,20 @@ const VARIANT_STYLES = {
 
 const SIZE_STYLES = {
   default: 'h-10 px-4 py-2',
-  sm: 'h-9 rounded-md px-3',
+  small: 'h-8 py-1 text-xs px-3',
   icon: 'h-10 w-10',
 }
 
 export interface Props {
+  className?: string
   href?: string
   variant?: 'default' | 'ghost' | 'link'
-  size?: 'default' | 'sm' | 'icon'
+  size?: 'default' | 'small' | 'icon'
   children?: React.ReactNode
 }
 
 const ButtonLink = ({
+  className,
   href,
   variant = 'default',
   size = 'default',
@@ -37,7 +39,10 @@ const ButtonLink = ({
 
   return (
     <Link
-      className="not-prose relative z-0 inline-block focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+      className={clsx(
+        'not-prose relative z-0 focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500',
+        className
+      )}
       href={href ?? '#'}
     >
       <div className={buttonClasses}>{children}</div>
