@@ -1,58 +1,89 @@
-import React, { ReactNode, Ref, forwardRef } from 'react'
+'use client'
 
-import * as Accordion from '@radix-ui/react-accordion'
+import { Ref, forwardRef, useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+
 import clsx from 'clsx'
 
-type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
+import Toast from '../toast'
+
+type HiddenFields = {
+  name: string
+  value: string
 }
 
 type Props = {
   className?: string
-  accordions: AccordionItem[]
-  type: 'single' | 'multiple'
+  redirectURL?: { href: string; target?: '_blank' | '_self' }
+  fields: React.ReactNode
+  actionURL?: string
+  toastTitle?: string
+  toastDescription?: string
+  hiddenFields?: HiddenFields[]
 }
 
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
-  ref: Ref<HTMLDivElement>
+export const Form = forwardRef(function Form(
+  {
+    className,
+    fields,
+    actionURL = '',
+    hiddenFields,
+    toastTitle = 'Thank you for reaching out',
+    toastDescription = 'We will be in touch shortly.',
+  }: Props,
+  ref: Ref<HTMLFormElement>
 ) {
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(false)
+  const methods = useForm()
+
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)}>
-      <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="before:rounded-circle group relative [clip-path:inset(0px_0px)] before:absolute before:left-1/2 before:top-full before:-z-10 before:h-[80px] before:w-3/5 before:-translate-x-1/2 before:-translate-y-1/4 before:bg-primary before:opacity-0 before:blur-[100px] before:transition-all before:duration-1000 before:ease-out after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20 after:mix-blend-overlay after:transition-all after:duration-300 after:ease-linear hover:after:opacity-40 data-[state=open]:before:opacity-100 before:data-[state=open]:delay-200">
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-8 text-left text-lg font-medium leading-normal text-foreground md:text-2xl">
-                      {accordion.title}
-                    </div>
+    <>
+      <FormProvider {...methods}>
+        <form
+          ref={ref}
+          className={clsx(className, 'space-y-8 text-center')}
+          onSubmit={methods.handleSubmit(async data => {
+            try {
+              await fetch(actionURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+              })
 
-                    <button className="rounded-circle shrink-0 p-3 ring-1 ring-foreground/20 transition duration-300 ease-in-out group-hover:ring-foreground/40">
-                      <svg viewBox="0 0 16 16" className="h-4 w-4 fill-foreground">
-                        <rect
-                          x="7"
-                          className="h-4 w-0.5 origin-center transition-transform duration-300 group-data-[state=open]:rotate-90"
-                        />
-                        <rect y="7" className="h-0.5 w-4" />
-                      </svg>
-                    </button>
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
-
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div className="text-md px-6 pb-6 leading-relaxed text-foreground/60 md:pb-8">
-                  {accordion.body}
-                </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
-        ))}
-      </ul>
-    </Accordion.Root>
+              setSuccess(true)
+              methods.reset()
+            } catch (e) {
+              setError(true)
+            }
+          })}
+        >
+          {fields}
+          {hiddenFields?.map(field => (
+            <input
+              key={field.name}
+              type="hidden"
+              {...methods.register(field.name || 'Source')}
+              value={field.value}
+            />
+          ))}
+        </form>
+      </FormProvider>
+      <Toast
+        title={toastTitle}
+        description={toastDescription}
+        open={success}
+        onOpenChange={setSuccess}
+        duration={5000}
+      />
+      <Toast
+        title="An error occurred"
+        description="Please try again"
+        open={error}
+        onOpenChange={setError}
+        duration={5000}
+      />
+    </>
   )
 })
+
+export default Form

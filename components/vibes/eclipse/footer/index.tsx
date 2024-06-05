@@ -6,14 +6,6 @@ import { ReactNode, Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
-type LegalLink = {
-  text?: string
-  link?: {
-    href: string
-    target?: '_self' | '_blank'
-  }
-}
-
 type FooterLink = {
   text?: string
   link?: {
@@ -39,53 +31,28 @@ type Props = {
     target?: '_self' | '_blank'
   }
   footerGroups?: FooterGroup[]
-  legalLinks?: LegalLink[]
 }
 
 const Footer = forwardRef(function Footer(
-  {
-    className,
-    footerGroups,
-    legalLinks,
-    logoImage,
-    logoAlt = 'Logo',
-    logoWidth = 120,
-    logoLink,
-  }: Props,
+  { className, footerGroups }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
     <footer ref={ref} className={clsx(className, '@container')}>
-      <div className="card @xl:flex-row @xl:gap-x-24 @xl:p-8 flex flex-col gap-x-16 gap-y-8 p-6">
-        {logoImage && (
-          <Link href={logoLink?.href ?? '#'} target={logoLink?.target}>
-            <Image
-              src={logoImage.url}
-              alt={logoAlt}
-              width={logoWidth}
-              height={logoWidth / (logoImage.dimensions.width / logoImage.dimensions.height)}
-              priority
-            />
-          </Link>
-        )}
+      <div className="flex w-full flex-col gap-x-10 gap-y-8 rounded-2xl bg-muted-background/50 p-6 ring-1 ring-foreground/20 @sm:rounded-3xl @xl:flex-row @xl:gap-x-16 @xl:p-8">
+        <Link href="/">
+          <Image src="/logo-placeholder.svg" alt="Logo" width={100} height={38} priority />
+        </Link>
 
-        <div className="@lg:gap-y-10 flex flex-1 flex-wrap gap-y-8">
+        <div className="flex flex-1 flex-wrap gap-y-8 @lg:gap-y-10">
           {footerGroups?.map((group, groupIndex) => {
-            if (footerGroups.length === 0) {
-              return (
-                <div key={groupIndex} className="text-foreground">
-                  No footer groups added
-                </div>
-              )
-            }
-
             return (
               <div
                 key={groupIndex}
-                className="@sm:basis-1/2 @2xl:px-5 @4xl:basis-auto flex-1 basis-full last:pr-0"
+                className="flex-1 basis-full pr-10 last:pr-0 @sm:basis-1/3 @2xl:pr-10 @4xl:basis-auto"
               >
                 {group.heading && (
-                  <div className="mb-3 flex items-center pt-1 font-semibold text-foreground">
+                  <div className="mb-3 flex items-center font-semibold text-foreground">
                     {group.icon && (
                       <Image
                         src={group.icon.url}
@@ -121,21 +88,24 @@ const Footer = forwardRef(function Footer(
         </div>
       </div>
 
-      <div className="@xl:flex-row flex flex-col items-center justify-center gap-x-4 gap-y-3 py-8 text-center text-sm text-foreground">
+      <div className="flex flex-col items-center justify-center gap-x-4 gap-y-3 py-8 text-center text-sm text-foreground @xl:flex-row">
         <span className="opacity-50 [&_div]:inline">
           © {new Date().getFullYear()} Your Company. All rights reserved.
         </span>
 
-        {legalLinks?.map((link, i) => (
-          <Link
-            key={i}
-            href={link.link?.href ?? '#'}
-            target={link.link?.target}
-            className="opacity-50 transition duration-200 hover:opacity-100"
-          >
-            {link.text}
-          </Link>
-        ))}
+        <Link
+          href="/privacy-policy"
+          className="opacity-50 transition duration-200 hover:opacity-100"
+        >
+          Privacy Policy
+        </Link>
+
+        <Link
+          href="/terms-of-service"
+          className="opacity-50 transition duration-200 hover:opacity-100"
+        >
+          Terms of Service
+        </Link>
       </div>
     </footer>
   )

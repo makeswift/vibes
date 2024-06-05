@@ -79,16 +79,32 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        rotateFade: {
+          from: { opacity: '1', transform: 'rotateZ(0deg) translate3d(-50%,-50%,0)' },
+          '35%': { opacity: '0' },
+          '70%': { opacity: '0' },
+          to: { opacity: '1', transform: 'rotateZ(360deg) translate3d(-50%,-50%,0)' },
+        },
         rotate: {
-          '0%': {
+          from: {
             transform: 'rotateZ(0deg) translate3d(-50%,-50%,0)',
           },
-          '100%': {
+          to: {
             transform: 'rotateZ(360deg) translate3d(-50%,-50%,0)',
           },
         },
         scroll: {
           to: { backgroundPosition: '5px 0' },
+        },
+        dotScrollSmall: {
+          to: { backgroundPosition: '-6px -6px, -12px -12px' },
+        },
+        dotScrollLarge: {
+          to: { backgroundPosition: '-8px -8px, -16px -16px' },
+        },
+        scrollLeft: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
       },
       animation: {
@@ -96,6 +112,7 @@ const config = {
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
         rotate: 'rotate 2000ms linear infinite',
         scroll: 'scroll 200ms infinite linear both',
+        scrollLeft: 'scrollLeft var(--marquee-duration) linear infinite',
       },
     },
   },
