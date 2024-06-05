@@ -71,6 +71,12 @@ const config = {
         'docs-mono': ['var(--font-docs-mono)'],
       },
       keyframes: {
+        shake: {
+          '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+          '20%, 80%': { transform: 'translate3d(1px, 0, 0)' },
+          '30%, 50%, 70%': { transform: 'translate3d(-2px, 0, 0)' },
+          '40%, 60%': { transform: 'translate3d(2px, 0, 0)' },
+        },
         expand: {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -108,6 +114,7 @@ const config = {
         },
       },
       animation: {
+        shake: 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
         expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
         rotate: 'rotate 2000ms linear infinite',
