@@ -100,7 +100,7 @@
   }
 }
 
-.sticker:active {
+.sticker.active {
   cursor: grabbing;
 
   .clip {
