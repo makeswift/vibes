@@ -68,8 +68,9 @@ export default function Home() {
             </button>
           </form>
 
-          <div className="absolute left-20 top-10 -rotate-12">
+          <div className="absolute left-20 top-10">
             <DraggableSticker
+              className="-rotate-12"
               front={
                 <svg
                   width="145"

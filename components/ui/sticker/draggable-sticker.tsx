@@ -4,10 +4,14 @@ import { ComponentPropsWithoutRef, useCallback, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
+import { Portal } from '../portal'
 import Sticker from './sticker'
 import styles from './sticker.module.css'
 
-export default function DraggableSticker(props: ComponentPropsWithoutRef<typeof Sticker>) {
+export default function DraggableSticker({
+  className,
+  ...rest
+}: ComponentPropsWithoutRef<typeof Sticker>) {
   const pointerStart = useRef([0, 0])
   const positionStart = useRef([0, 0])
   const [position, setPosition] = useState([0, 0])
@@ -33,7 +37,12 @@ export default function DraggableSticker(props: ComponentPropsWithoutRef<typeof 
       }}
     >
       <Sticker
-        {...props}
+        {...rest}
+        className={clsx(
+          'scale-75 md:scale-100 xl:scale-125',
+          active && styles['active'],
+          className
+        )}
         onPointerDown={e => {
           pointerStart.current = [e.clientX, e.clientY]
           positionStart.current = position
@@ -60,8 +69,12 @@ export default function DraggableSticker(props: ComponentPropsWithoutRef<typeof 
             window.removeEventListener('touchmove', onTouchMove)
           })
         }}
-        className={clsx('scale-75 md:scale-100 xl:scale-125', active && styles['active'])}
       />
+      {active && (
+        <Portal>
+          <div className="fixed inset-0 z-50 cursor-grabbing"></div>
+        </Portal>
+      )}
     </div>
   )
 }

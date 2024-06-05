@@ -18,7 +18,6 @@
   height: var(--size);
   top: calc(var(--offset-top) * -1);
   left: calc(var(--offset-left) * -1);
-  transform: rotate(var(--rotation));
 }
 
 .wrapper {

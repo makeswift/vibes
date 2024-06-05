@@ -13,7 +13,6 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   peelAngle?: number
   width?: number
   height?: number
-  rotation?: number
   animationDuration?: number
   shadowX?: number
   shadowY?: number
@@ -33,7 +32,6 @@ export default function Sticker({
   peelAngle = -10,
   width = 145,
   height = 205,
-  rotation = 0,
   animationDuration = 350,
   shadowX = -4,
   shadowY = 4,
@@ -67,7 +65,6 @@ export default function Sticker({
           ...style,
           '--width': `${width}px`,
           '--height': `${height}px`,
-          '--rotation': `${rotation}deg`,
           '--size': `${size}px`,
           '--offset-top': `${offsetTop}px`,
           '--offset-left': `${offsetLeft}px`,
