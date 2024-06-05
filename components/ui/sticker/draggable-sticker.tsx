@@ -31,6 +31,7 @@ export default function DraggableSticker(props: ComponentPropsWithoutRef<typeof 
 
           window.addEventListener('pointermove', onMove)
         }}
+        className="scale-75 md:scale-100 xl:scale-125"
       />
     </div>
   )
