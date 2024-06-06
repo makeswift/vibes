@@ -39,7 +39,7 @@ export default function DraggableSticker({
       <Sticker
         {...rest}
         className={clsx(
-          'scale-75 md:scale-100 xl:scale-125',
+          'scale-75 md:scale-100 xl:scale-110',
           active && styles['active'],
           className
         )}
