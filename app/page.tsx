@@ -23,6 +23,8 @@ export default function Home() {
           <div className="absolute left-20 top-10">
             <DraggableSticker
               className="-rotate-12"
+              width={168}
+              height={268}
               front={<FigmaFront />}
               back={<FigmaBack />}
               shadow={<FigmaShadow />}
