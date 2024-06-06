@@ -47,7 +47,7 @@ export function Form() {
   return (
     <form
       className={clsx(
-        'relative mt-8 flex h-14 w-[480px] max-w-full gap-2 rounded-full border-2 border-black bg-white p-1.5 pl-5 shadow-[-4px_4px_black] sm:mt-10 md:mt-12 md:h-16 lg:h-[72px] lg:pl-6',
+        'relative mt-8 flex h-14 w-[480px] max-w-full gap-2 rounded-full border-2 border-black bg-white p-1.5 shadow-[-4px_4px_black] transition-all focus-within:shadow-[-0px_0px_black] sm:mt-10 md:mt-12 md:h-16 lg:h-[72px] lg:pl-6',
         errors.Email && 'animate-shake'
       )}
       onSubmit={handleSubmit(onSubmit)}
@@ -55,7 +55,7 @@ export function Form() {
       <input
         {...register('Email')}
         data-1p-ignore
-        className="flex-1 rounded-full pb-0.5 font-sans text-lg placeholder:text-black/50 focus:outline-none md:text-xl lg:text-2xl"
+        className="flex-1 rounded-full pb-0.5 pl-5 font-sans text-lg placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl"
         placeholder="Email address"
       />
       {success && (
@@ -70,8 +70,8 @@ export function Form() {
       <button
         type="submit"
         className={clsx(
-          'absolute top-1/2 flex aspect-square h-12 -translate-y-1/2 items-center justify-center rounded-full bg-black transition-all ease-in-out',
-          success ? 'left-2' : 'left-full -ml-14'
+          'absolute top-1/2 flex aspect-square h-11 -translate-y-1/2 items-center justify-center rounded-full bg-black transition-all ease-in-out md:h-12',
+          success ? 'left-2' : 'left-full -ml-12 md:-ml-14'
         )}
         disabled={success}
       >
