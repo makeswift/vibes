@@ -2,14 +2,7 @@ import * as React from 'react'
 import type { SVGProps } from 'react'
 
 const SvgSun = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    fill="none"
-    className="stroke-docs-foreground"
-    {...props}
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
     <circle cx={12} cy={12} r={6.5} fill="#FAD880" stroke="#07090D" />
     <path
       fill="#07090D"
