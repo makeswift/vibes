@@ -11,7 +11,7 @@ export default function Preview() {
       mainFeatures: [{ text: 'Feature 1' }, { text: 'Feature 2' }, { text: 'Feature 3' }],
       ctaLink: {
         href: '/subscribe/basic',
-        target: '_self',
+        target: '_self' as const,
       },
       ctaText: 'Subscribe',
       topGlow: false,
@@ -25,7 +25,7 @@ export default function Preview() {
       mainFeatures: [{ text: 'Feature 1' }, { text: 'Feature 2' }, { text: 'Feature 3' }],
       ctaLink: {
         href: '/subscribe/pro',
-        target: '_self',
+        target: '_self' as const,
       },
       ctaText: 'Subscribe',
       topGlow: true,
@@ -39,7 +39,7 @@ export default function Preview() {
       mainFeatures: [{ text: 'Feature 1' }, { text: 'Feature 2' }, { text: 'Feature 3' }],
       ctaLink: {
         href: '/subscribe/premium',
-        target: '_self',
+        target: '_self' as const,
       },
       ctaText: 'Subscribe',
       topGlow: false,
