@@ -47,27 +47,77 @@ export default function Home() {
     <div className="h-screen w-full bg-white p-3 md:p-4 lg:p-5">
       <main className="relative z-0 h-full w-full place-content-start overflow-hidden rounded-3xl border border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-8 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] md:p-8 lg:rounded-[40px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[64px]">
         <div className="relative mx-auto flex max-w-lg translate-y-0 flex-col items-center px-0 py-0 sm:-translate-y-28 md:max-w-xl md:justify-center md:px-8 lg:max-w-2xl xl:max-w-3xl xl:py-10 2xl:max-w-4xl">
-          <Transition
-            className="ease-[cubic-bezier(1,0,1,0)] transition-all duration-500 [transition-delay:100ms]"
-            from="translate-y-12 opacity-0"
-            to="translate-y-0 opacity-100"
-          >
-            <h1 className="mb-2 font-docs-heading text-4xl text-black sm:mb-4 sm:text-5xl md:mb-5 md:text-6xl xl:text-7xl">
-              Bring the <span className="sr-only">Vibes</span>
-            </h1>
-          </Transition>
+          <h1 className="mb-2 font-docs-heading text-4xl text-black sm:mb-4 sm:text-5xl md:mb-5 md:text-6xl xl:text-7xl">
+            <Transition
+              className="inline-block transition-all duration-500 [transition-delay:100ms] [transition-timing-function:cubic-bezier(0,1,0.25,1.5)]"
+              from="translate-y-14 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              B
+            </Transition>
+            <Transition
+              className="inline-block transition-all duration-500 [transition-timing-function:cubic-bezier(0,1,0.25,1.5)] [transition-delay:130ms]"
+              from="translate-y-14 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              r
+            </Transition>
+            <Transition
+              className="inline-block transition-all duration-500 [transition-timing-function:cubic-bezier(0,1,0.25,1.5)] [transition-delay:160ms]"
+              from="translate-y-14 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              i
+            </Transition>
+            <Transition
+              className="inline-block transition-all duration-500 [transition-timing-function:cubic-bezier(0,1,0.25,1.5)] [transition-delay:190ms]"
+              from="translate-y-14 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              n
+            </Transition>
+            <Transition
+              className="inline-block transition-all duration-500 [transition-timing-function:cubic-bezier(0,1,0.25,1.5)] [transition-delay:210ms]"
+              from="translate-y-14 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              g
+            </Transition>{' '}
+            <Transition
+              className="inline-block transition-all duration-500 [transition-timing-function:cubic-bezier(0,1,0.25,1.5)] [transition-delay:240ms]"
+              from="translate-y-14 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              t
+            </Transition>
+            <Transition
+              className="inline-block transition-all duration-500 [transition-timing-function:cubic-bezier(0,1,0.25,1.5)] [transition-delay:270ms]"
+              from="translate-y-14 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              h
+            </Transition>
+            <Transition
+              className="inline-block transition-all duration-500 [transition-timing-function:cubic-bezier(0,1,0.25,1.5)] [transition-delay:300ms]"
+              from="translate-y-14 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              e
+            </Transition>
+            <span className="sr-only"> Vibes</span>
+          </h1>
 
           <Transition
-            className="ease-[cubic-bezier(0.95,0.05,0.795,0.035)] transition-all duration-300 [transition-delay:500ms]"
-            from="translate-y-12 -translate-x-12 opacity-0 scale-.9"
+            className="transition-all duration-700 [transition-delay:500ms] [transition-timing-function:cubic-bezier(.5,0,0,1.5)]"
+            from="translate-y-20 -translate-x-20 opacity-0 scale-.8"
             to="translate-y-0 opacity-100 translate-x-0 scale-1"
           >
             <Vibes className="w-2/3 max-w-xl md:w-3/5 lg:w-[540px]" />
           </Transition>
 
           <Transition
-            className="ease-[cubic-bezier(1,0,1,0)] transition-all duration-500 [transition-delay:800ms]"
-            from="translate-y-12 opacity-0"
+            className="transition-all duration-700 [transition-delay:1300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+            from="translate-y-16 opacity-0"
             to="translate-y-0 opacity-100"
           >
             <p className="mt-4 max-w-4xl text-center font-docs-sans text-xl !leading-normal text-black sm:mt-6 md:text-2xl md:!leading-snug lg:mt-8 lg:text-3xl">
@@ -77,8 +127,8 @@ export default function Home() {
           </Transition>
 
           <Transition
-            className="ease-[cubic-bezier(1,0,1,0)] transition-all duration-500 [transition-delay:900ms]"
-            from="translate-y-12 opacity-0"
+            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:1400ms]"
+            from="translate-y-16 opacity-0"
             to="translate-y-0 opacity-100"
           >
             <Form />
