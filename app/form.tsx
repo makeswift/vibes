@@ -47,7 +47,7 @@ export function Form() {
   return (
     <form
       className={clsx(
-        'relative mt-8 flex h-14 w-[480px] max-w-full gap-2 rounded-full border-2 border-black bg-white p-1.5 shadow-[-4px_4px_black] transition-all focus-within:shadow-[-0px_0px_black] sm:mt-10 md:mt-12 md:h-16 lg:h-[72px] lg:pl-6',
+        'relative mt-6 flex h-14 w-[400px] max-w-full gap-2 rounded-full border-2 border-black bg-white p-1.5 pl-4 shadow-[-4px_4px_black] transition-all focus-within:shadow-[-0px_0px_black] sm:mt-8 md:h-16 lg:mt-12 lg:h-[72px] lg:w-[480px] lg:pl-6',
         errors.Email && 'animate-shake'
       )}
       onSubmit={handleSubmit(onSubmit)}
@@ -55,7 +55,7 @@ export function Form() {
       <input
         {...register('Email')}
         data-1p-ignore
-        className="flex-1 rounded-full pb-0.5 pl-5 font-sans text-lg placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl"
+        className="flex-1 bg-transparent pb-0.5 font-sans text-lg placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl"
         placeholder="Email address"
       />
       {success && (
@@ -102,7 +102,7 @@ export function Form() {
         )}
       </button>
       {(errors.Email || error) && (
-        <div className="absolute left-1/2 top-full mt-2 -translate-x-1/2 space-y-1 p-1 text-center text-sm">
+        <div className="absolute left-1/2 top-full mt-4 -translate-x-1/2 space-y-1 p-1 text-center text-base md:text-lg">
           {errors.Email && <div>{errors.Email.message}</div>}
           {error && <div>There was a server error</div>}
         </div>

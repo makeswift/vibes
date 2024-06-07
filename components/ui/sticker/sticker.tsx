@@ -28,11 +28,11 @@ export default function Sticker({
   back,
   shadow,
   hoverPeel = 0.1,
-  activePeel = 0.3,
+  activePeel = 0.25,
   peelAngle = -10,
   width = 145,
   height = 205,
-  animationDuration = 350,
+  animationDuration = 300,
   shadowX = -4,
   shadowY = 4,
   ...rest

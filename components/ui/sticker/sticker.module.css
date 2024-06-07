@@ -45,7 +45,7 @@
   width: var(--size);
   height: var(--size);
   overflow: hidden;
-  transition: 500ms ease-out transform;
+  transition: var(--animation-duration) ease-in-out transform;
   transform: translateX(var(--offset-diagonal-angle));
 }
 
@@ -55,7 +55,7 @@
   position: absolute;
   overflow: hidden;
   pointer-events: all;
-  transition: 500ms ease-out transform;
+  transition: var(--animation-duration) ease-in-out transform;
   left: var(--offset-left);
   top: var(--offset-top);
   width: var(--width);
