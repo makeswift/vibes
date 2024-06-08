@@ -47,31 +47,32 @@ export function Form() {
   return (
     <form
       className={clsx(
-        'relative mt-6 flex h-14 w-[400px] max-w-full gap-2 rounded-full border-2 border-black bg-white p-1.5 pl-4 shadow-[-4px_4px_black] transition-all focus-within:shadow-[-0px_0px_black] sm:mt-8 md:h-16 lg:mt-12 lg:h-[72px] lg:w-[480px] lg:pl-6',
+        'relative mt-6 flex h-14 w-[400px] max-w-full gap-2 gap-x-3 rounded-full border-2 border-black bg-white shadow-[-4px_4px_black] transition-all focus-within:shadow-[-0px_0px_black] sm:mt-8 md:h-16 lg:mt-12 lg:h-[72px] lg:w-[600px]',
         errors.Email && 'animate-shake'
       )}
       onSubmit={handleSubmit(onSubmit)}
     >
-      <input
-        {...register('Email')}
-        data-1p-ignore
-        className="flex-1 rounded-full bg-transparent pb-0.5 pl-5 font-sans text-lg text-black placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl"
-        placeholder="Email address"
-      />
-      {success && (
+      <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden p-1.5 pl-4 lg:pl-6">
+        <input
+          {...register('Email')}
+          data-1p-ignore
+          className="h-full w-full bg-transparent pb-0.5 font-sans text-lg placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl"
+          placeholder="Email address"
+        />
         <div
           className={clsx(
-            'absolute inset-0 flex items-center rounded-full bg-white pl-16 animate-in fade-in md:text-xl lg:text-2xl'
+            'pb.5 absolute inset-0 flex translate-y-full items-center pl-4 transition-transform [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-6 lg:text-2xl',
+            success && 'translate-y-0'
           )}
         >
           Success!
         </div>
-      )}
+      </div>
       <button
         type="submit"
         className={clsx(
-          'absolute top-1/2 flex aspect-square h-11 -translate-y-1/2 items-center justify-center rounded-full bg-black transition-all ease-in-out md:h-12',
-          success ? 'left-2' : 'left-full -ml-12 md:-ml-14'
+          'absolute inset-y-1.5 right-1.5 flex aspect-square items-center justify-center rounded-full transition-all ease-in-out',
+          success ? 'bg-green' : 'bg-black'
         )}
         disabled={success}
       >
@@ -102,9 +103,9 @@ export function Form() {
         )}
       </button>
       {(errors.Email || error) && (
-        <div className="absolute left-1/2 top-full mt-4 -translate-x-1/2 space-y-1 p-1 text-center text-base md:text-lg">
-          {errors.Email && <div>{errors.Email.message}</div>}
-          {error && <div>There was a server error</div>}
+        <div className="absolute left-1/2 top-full mt-4 -translate-x-1/2 space-y-1 p-1 text-center text-base md:text-xl">
+          {errors.Email && <>{errors.Email.message}</>}
+          {error && <>There was a server error</>}
         </div>
       )}
     </form>
