@@ -106,7 +106,7 @@ export default function Home() {
             </Draggable>
           </div> */}
 
-          <div className="absolute left-[-38%] top-[88%] sm:left-[-40%] sm:top-[96%] lg:left-[-35%] lg:top-[100%]">
+          <div className="pointer-events-none absolute left-[-38%] top-[88%] sm:left-[-40%] sm:top-[96%] lg:left-[-35%] lg:top-[100%]">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -129,7 +129,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="absolute left-[-20%] top-[125%] z-10 sm:left-[15%] sm:top-[110%] sm:z-auto md:left-[22%] md:top-[120%]">
+          <div className="pointer-events-none absolute left-[-20%] top-[125%] z-10 sm:left-[15%] sm:top-[110%] sm:z-auto md:left-[22%] md:top-[120%]">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -153,7 +153,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="absolute right-[12%] top-[116%] hidden sm:block">
+          <div className="pointer-events-none absolute right-[12%] top-[116%] hidden sm:block">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -177,7 +177,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="absolute right-[-28%] top-[88%] hidden sm:block lg:right-[-30%] lg:top-[94%]">
+          <div className="pointer-events-none absolute right-[-28%] top-[88%] hidden sm:block lg:right-[-30%] lg:top-[94%]">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -200,7 +200,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]">
+          <div className="pointer-events-none absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -223,7 +223,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="absolute left-[-15%] top-[130%] hidden sm:block">
+          <div className="pointer-events-none absolute left-[-15%] top-[130%] hidden sm:block">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -247,7 +247,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="-z-1 absolute left-[34%] top-[94%] sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto">
+          <div className="-z-1 pointer-events-none absolute left-[34%] top-[94%] sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -269,7 +269,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="absolute left-[10%] top-[112%] sm:left-[-24%] sm:top-[-32%] md:left-[-18%] md:top-[-24%]">
+          <div className="pointer-events-none absolute left-[10%] top-[112%] sm:left-[-24%] sm:top-[-32%] md:left-[-18%] md:top-[-24%]">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -293,7 +293,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="absolute right-[-22%] top-[125%] sm:right-[-38%] sm:top-[-25%] md:right-[-34%] md:top-[-16%]">
+          <div className="pointer-events-none absolute right-[-22%] top-[125%] sm:right-[-38%] sm:top-[-25%] md:right-[-34%] md:top-[-16%]">
             <Draggable>
               {({ active }) => (
                 <Transition
@@ -315,7 +315,7 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="absolute left-[100%] top-[42%] hidden sm:block md:left-[110%] md:top-[36%]">
+          <div className="pointer-events-none absolute left-[100%] top-[42%] hidden sm:block md:left-[110%] md:top-[36%]">
             <Draggable>
               {({ active }) => (
                 <Transition
