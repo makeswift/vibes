@@ -8,6 +8,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   front: React.ReactNode
   back: React.ReactNode
   shadow: React.ReactNode
+  active?: boolean
   hoverPeel?: number
   activePeel?: number
   peelAngle?: number
@@ -27,6 +28,7 @@ export default function Sticker({
   front,
   back,
   shadow,
+  active = false,
   hoverPeel = 0.1,
   activePeel = 0.25,
   peelAngle = -10,
@@ -59,7 +61,7 @@ export default function Sticker({
   return (
     <div
       {...rest}
-      className={clsx(styles.sticker, className)}
+      className={clsx(styles.sticker, active && styles.active, className)}
       style={
         {
           ...style,
