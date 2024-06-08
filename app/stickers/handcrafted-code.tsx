@@ -7,7 +7,7 @@ import { HandcraftedCodeBack, HandcraftedCodeFront, HandcraftedCodeShadow } from
 
 export function HandcraftedCode() {
   return (
-    <div className="-z-1 pointer-events-none absolute left-[34%] top-[94%] sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto">
+    <div className="pointer-events-none absolute left-[34%] top-[94%] sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto">
       <Draggable>
         {({ active }) => (
           <Transition

@@ -2,6 +2,8 @@
 
 import { ComponentPropsWithoutRef, ReactNode, useCallback, useRef, useState } from 'react'
 
+import clsx from 'clsx'
+
 import { Portal } from './portal'
 
 interface Props extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {
@@ -30,6 +32,7 @@ export default function Draggable({ className, children, style, ...rest }: Props
   return (
     <div
       {...rest}
+      className={clsx(className, 'relative hover:z-10', active && 'z-10')}
       style={{
         ...style,
         transform: `translate3d(${position[0]}px, ${position[1]}px, 0)`,

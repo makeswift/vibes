@@ -7,7 +7,7 @@ import { KeepIt100Back, KeepIt100Front, KeepIt100Shadow } from '@/icons/generate
 
 export function KeepIt100() {
   return (
-    <div className="pointer-events-none absolute left-[-20%] top-[125%] z-10 sm:left-[15%] sm:top-[110%] sm:z-auto md:left-[22%] md:top-[120%]">
+    <div className="pointer-events-none absolute left-[-20%] top-[125%] sm:left-[15%] sm:top-[110%] sm:z-auto md:left-[22%] md:top-[120%]">
       <Draggable>
         {({ active }) => (
           <Transition
