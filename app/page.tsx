@@ -45,7 +45,7 @@ import { Form } from './form'
 export default function Home() {
   return (
     <div className="h-screen w-full bg-white p-3 md:p-4 lg:p-5">
-      <main className="relative z-0 h-full w-full place-content-start overflow-hidden rounded-3xl border border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-8 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] md:p-8 lg:rounded-[40px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[64px]">
+      <main className="relative z-0 h-full w-full place-content-start overflow-hidden rounded-3xl border border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] md:p-8 lg:rounded-[40px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[64px]">
         <div className="relative mx-auto flex max-w-lg translate-y-0 flex-col items-center px-0 py-0 sm:-translate-y-28 md:max-w-xl md:justify-center md:px-8 lg:max-w-2xl xl:max-w-3xl xl:py-10 2xl:max-w-4xl">
           <h1 className="mb-2 font-docs-heading text-4xl text-black sm:mb-4 sm:text-5xl md:mb-5 md:text-6xl xl:text-7xl">
             <Transition
@@ -112,22 +112,22 @@ export default function Home() {
             from="translate-y-20 -translate-x-20 opacity-0 scale-.8"
             to="translate-y-0 opacity-100 translate-x-0 scale-1"
           >
-            <Vibes className="w-2/3 max-w-xl md:w-3/5 lg:w-[540px]" />
+            <Vibes className="mx-auto w-2/3 max-w-xl md:w-3/5 lg:w-[540px]" />
           </Transition>
 
           <Transition
-            className="transition-all duration-700 [transition-delay:1300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+            className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
             from="translate-y-16 opacity-0"
             to="translate-y-0 opacity-100"
           >
             <p className="mt-4 max-w-4xl text-center font-docs-sans text-xl !leading-normal text-black sm:mt-6 md:text-2xl md:!leading-snug lg:mt-8 lg:text-3xl">
-              Vibes is a copy and paste component library built specifically for marketing sites.
-              Lorem ipsum dolor sit amet adipiscing elit.
+              Make your website a vibe. Mix and match between sets of production-ready React
+              components, handcrafted to perfection. Coming August 2024.
             </p>
           </Transition>
 
           <Transition
-            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:1400ms]"
+            className="relative z-50 w-full transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:1350ms] sm:w-auto"
             from="translate-y-16 opacity-0"
             to="translate-y-0 opacity-100"
           >
@@ -227,11 +227,11 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute right-[-28%] top-[88%] sm:block lg:right-[-30%] lg:top-[94%]">
+          <div className="pointer-events-none absolute right-[-28%] top-[88%] hidden sm:block lg:right-[-30%] lg:top-[94%]">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="hidden transition-transform duration-1000 [transition-delay:1800ms]"
+                  className="transition-transform duration-1000 [transition-delay:1800ms]"
                   from="translate-x-[700px] translate-y-[700px] rotate-[20deg]"
                   to="translate-x-0 translate-y-0 rotate-[-16deg]"
                 >
@@ -369,8 +369,8 @@ export default function Home() {
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="transition-transform duration-1000 [transition-delay:2000ms]"
-                  from="translate-x-[1000px] translate-y-[20px] rotate-[180deg]"
+                  className="transition-transform duration-700 [transition-delay:2300ms]"
+                  from="translate-x-[1000px] translate-y-[-100px] translate-y-[20px] rotate-[180deg]"
                   to="translate-x-0 translate-y-0 rotate-[16deg]"
                 >
                   <Sticker
