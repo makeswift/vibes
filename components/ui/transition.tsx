@@ -23,7 +23,5 @@ export default function Transition({
     })
   }, [to])
 
-  return (
-    <div className={clsx(className, transitionClassName, 'pointer-events-none')}>{children}</div>
-  )
+  return <div className={clsx(className, transitionClassName)}>{children}</div>
 }
