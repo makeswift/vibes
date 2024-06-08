@@ -98,7 +98,7 @@ export function Form() {
         )} */}
       </button>
       {(errors.Email || error) && (
-        <div className="absolute left-1/2 top-full mt-4 -translate-x-1/2 space-y-1 p-1 text-center text-base md:text-xl">
+        <div className="absolute left-1/2 top-full mt-4 -translate-x-1/2 space-y-1 rounded-xl bg-black p-1 px-4 py-2.5 text-center text-base text-white md:text-lg">
           {errors.Email && <>{errors.Email.message}</>}
           {error && <>There was a server error</>}
         </div>
