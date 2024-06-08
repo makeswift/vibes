@@ -112,22 +112,22 @@ export default function Home() {
             from="translate-y-20 -translate-x-20 opacity-0 scale-.8"
             to="translate-y-0 opacity-100 translate-x-0 scale-1"
           >
-            <Vibes className="w-2/3 max-w-xl md:w-3/5 lg:w-[540px]" />
+            <Vibes className="mx-auto w-2/3 max-w-xl md:w-3/5 lg:w-[540px]" />
           </Transition>
 
           <Transition
-            className="transition-all duration-700 [transition-delay:1300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+            className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
             from="translate-y-16 opacity-0"
             to="translate-y-0 opacity-100"
           >
             <p className="mt-4 max-w-4xl text-center font-docs-sans text-xl !leading-normal text-black sm:mt-6 md:text-2xl md:!leading-snug lg:mt-8 lg:text-3xl">
-              Vibes is a copy and paste component library built specifically for marketing sites.
-              Lorem ipsum dolor sit amet adipiscing elit.
+              Make your website a vibe. Mix and match between sets of production-ready React
+              components, handcrafted to perfection. Coming August 2024.
             </p>
           </Transition>
 
           <Transition
-            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:1400ms]"
+            className="relative z-50 w-full transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:1350ms] sm:w-auto"
             from="translate-y-16 opacity-0"
             to="translate-y-0 opacity-100"
           >
@@ -231,7 +231,7 @@ export default function Home() {
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="hidden transition-transform duration-1000 [transition-delay:1800ms]"
+                  className="transition-transform duration-1000 [transition-delay:1800ms]"
                   from="translate-x-[700px] translate-y-[700px] rotate-[20deg]"
                   to="translate-x-0 translate-y-0 rotate-[-16deg]"
                 >
@@ -369,8 +369,8 @@ export default function Home() {
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="transition-transform duration-1000 [transition-delay:2000ms]"
-                  from="translate-x-[1000px] translate-y-[20px] rotate-[180deg]"
+                  className="transition-transform duration-700 [transition-delay:2300ms]"
+                  from="translate-x-[1000px] translate-y-[-100px] translate-y-[20px] rotate-[180deg]"
                   to="translate-x-0 translate-y-0 rotate-[16deg]"
                 >
                   <Sticker
