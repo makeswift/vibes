@@ -1,20 +1,15 @@
 'use client'
 
-import { startTransition, useEffect, useState } from 'react'
+import { ComponentPropsWithoutRef, startTransition, useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
-export default function Transition({
-  className,
-  from,
-  to,
-  children,
-}: {
-  className: string
+interface Props extends ComponentPropsWithoutRef<'div'> {
   from: string
   to: string
-  children: React.ReactNode
-}) {
+}
+
+export default function Transition({ className, style, from, to, children }: Props) {
   const [transitionClassName, setTransitionClassName] = useState(from)
 
   useEffect(() => {
@@ -23,5 +18,9 @@ export default function Transition({
     })
   }, [to])
 
-  return <div className={clsx(className, transitionClassName)}>{children}</div>
+  return (
+    <div className={clsx(className, transitionClassName)} style={style}>
+      {children}
+    </div>
+  )
 }
