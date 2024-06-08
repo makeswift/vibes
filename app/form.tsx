@@ -56,7 +56,7 @@ export function Form() {
         <input
           {...register('Email')}
           data-1p-ignore
-          className="h-full w-full bg-transparent pb-0.5 font-sans text-lg placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl"
+          className="flex-1 rounded-full bg-transparent pb-0.5 pl-5 font-sans text-lg text-black placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl"
           placeholder="Email address"
         />
         <div

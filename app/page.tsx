@@ -156,11 +156,11 @@ export default function Home() {
             </Draggable>
           </div> */}
 
-          <div className="pointer-events-none absolute left-[-38%] top-[88%] sm:left-[-40%] sm:top-[96%] lg:left-[-35%] lg:top-[100%]">
+          <div className="absolute left-[-38%] top-[88%] sm:left-[-40%] sm:top-[96%] lg:left-[-35%] lg:top-[100%]">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[4000ms] transition-transform duration-1000 "
+                  className="transition-transform duration-1000 [transition-delay:1700ms]"
                   from="translate-x-[-700px] translate-y-[700px] rotate-[-90deg]"
                   to="translate-x-0 translate-y-0 rotate-[8deg]"
                 >
@@ -179,11 +179,11 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute left-[-20%] top-[125%] z-10 sm:left-[15%] sm:top-[110%] sm:z-auto md:left-[22%] md:top-[120%]">
+          <div className="absolute left-[-20%] top-[125%] z-10 sm:left-[15%] sm:top-[110%] sm:z-auto md:left-[22%] md:top-[120%]">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[4000ms] transition-transform duration-1000"
+                  className="transition-transform duration-1000 [transition-delay:1800ms] "
                   from="translate-x-[-100px] translate-y-[700px] rotate-[-20deg]"
                   to="translate-x-0 translate-y-0 rotate-[-8deg]"
                 >
@@ -203,11 +203,11 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute right-[12%] top-[116%] hidden sm:block">
+          <div className="absolute right-[12%] top-[116%] hidden sm:block">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[4000ms] transition-transform duration-1000 "
+                  className="transition-transform duration-1000 [transition-delay:1700ms]"
                   from="translate-x-[200px] translate-y-[700px] rotate-[20deg]"
                   to="translate-x-0 translate-y-0 rotate-[20deg]"
                 >
@@ -227,11 +227,11 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute right-[-28%] top-[88%] hidden sm:block lg:right-[-30%] lg:top-[94%]">
+          <div className="absolute right-[-28%] top-[88%] sm:block lg:right-[-30%] lg:top-[94%]">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[4000ms] transition-transform duration-1000 "
+                  className="hidden transition-transform duration-1000 [transition-delay:1800ms]"
                   from="translate-x-[700px] translate-y-[700px] rotate-[20deg]"
                   to="translate-x-0 translate-y-0 rotate-[-16deg]"
                 >
@@ -250,12 +250,12 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]">
+          <div className="absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[4050ms] transition-transform duration-1000"
-                  from="translate-x-[-450px] translate-y-[700px] rotate-[-200deg]"
+                  className="transition-transform duration-1000 [transition-delay:1800ms]"
+                  from="translate-x-[450px] translate-y-[700px] rotate-[200deg]"
                   to="translate-x-0 translate-y-0 rotate-[-4deg]"
                 >
                   <Sticker
@@ -273,12 +273,12 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute left-[-15%] top-[130%] hidden sm:block">
+          <div className="absolute left-[-15%] top-[130%] hidden sm:block">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[4050ms] transition-transform duration-1000"
-                  from="translate-x-[450px] translate-y-[700px] rotate-[80deg]"
+                  className="transition-transform duration-1000 [transition-delay:1900ms]"
+                  from="translate-x-[-450px] translate-y-[700px] rotate-[-80deg]"
                   to="translate-x-0 translate-y-0 rotate-[12deg]"
                 >
                   <Sticker
@@ -297,11 +297,11 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="-z-1 pointer-events-none absolute left-[34%] top-[94%] sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto">
+          <div className="-z-1 absolute left-[34%] top-[94%] sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[4000ms] transition-transform duration-1000 sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto"
+                  className="transition-transform duration-1000 [transition-delay:1800ms]"
                   from="translate-x-[-1000px] translate-y-[-50px] rotate-[-100deg]"
                   to="translate-x-0 translate-y-0 rotate-[-12deg]"
                 >
@@ -319,11 +319,11 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute left-[10%] top-[112%] sm:left-[-24%] sm:top-[-32%] md:left-[-18%] md:top-[-24%]">
+          <div className="absolute left-[10%] top-[112%] sm:left-[-24%] sm:top-[-32%] md:left-[-18%] md:top-[-24%]">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="transition-transform duration-1000 [transition-delay:1000ms] "
+                  className="transition-transform duration-1000 [transition-delay:1700ms]"
                   from="translate-x-[-600px] translate-y-[-700px] rotate-[-120deg]"
                   to="translate-x-0 translate-y-0 rotate-[4deg] md:rotate-[20deg]"
                 >
@@ -343,11 +343,11 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute right-[-22%] top-[125%] sm:right-[-38%] sm:top-[-25%] md:right-[-34%] md:top-[-16%]">
+          <div className="absolute right-[-22%] top-[125%] sm:right-[-38%] sm:top-[-25%] md:right-[-34%] md:top-[-16%]">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[10000ms] transition-transform duration-1000"
+                  className="transition-transform duration-1000 [transition-delay:1800ms]"
                   from="translate-x-[600px] translate-y-[-700px] rotate-[120deg]"
                   to="translate-x-0 translate-y-0 rotate-0"
                 >
@@ -365,12 +365,12 @@ export default function Home() {
             </Draggable>
           </div>
 
-          <div className="pointer-events-none absolute left-[100%] top-[42%] hidden sm:block md:left-[110%] md:top-[36%]">
+          <div className="absolute left-[100%] top-[42%] hidden sm:block md:left-[110%] md:top-[36%]">
             <Draggable>
               {({ active }) => (
                 <Transition
-                  className="delay-[4000ms] transition-transform duration-1000 "
-                  from="translate-x-[1000px] translate-y-[20px] rotate-[100deg]"
+                  className="transition-transform duration-1000 [transition-delay:2000ms]"
+                  from="translate-x-[1000px] translate-y-[20px] rotate-[180deg]"
                   to="translate-x-0 translate-y-0 rotate-[16deg]"
                 >
                   <Sticker
