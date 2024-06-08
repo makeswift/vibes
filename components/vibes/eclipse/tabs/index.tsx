@@ -35,7 +35,7 @@ function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
 }
 
 const Tabs = forwardRef(function Tabs(
-  { className, ariaLabel = 'Tabs' }: Props,
+  { className, ariaLabel = 'Tabs', tabs }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   const container = useRef<HTMLDivElement>(null)
@@ -75,21 +75,6 @@ const Tabs = forwardRef(function Tabs(
     })
   }, [value])
 
-  const tabs: Tab[] = [
-    {
-      title: 'Tab 1',
-      children: <p>Tab 1 content</p>,
-    },
-    {
-      title: 'Tab 2',
-      children: <p>Tab 2 content</p>,
-    },
-    {
-      title: 'Tab 3',
-      children: <p>Tab 3 content</p>,
-    },
-  ]
-
   return (
     <RadixTabs.Root ref={ref} className={clsx(className)} value={value} onValueChange={setValue}>
       <RadixTabs.List
@@ -119,7 +104,7 @@ const Tabs = forwardRef(function Tabs(
           ))}
         </div>
       </RadixTabs.List>
-      {tabs.map((tab, index) => (
+      {tabs?.map((tab, index) => (
         <RadixTabs.Content key={index} className="outline-none" value={index.toString()}>
           {tab.children}
         </RadixTabs.Content>

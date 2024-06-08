@@ -13,12 +13,12 @@ export type Props = {
 }
 
 const Card = forwardRef(function Card(
-  { className, children, topGlow = true }: Props,
+  { className, children, topGlow = false }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
-    <div ref={ref} className={clsx(className, '@container relative')}>
-      <div className="@sm:rounded-3xl @2xl:flex-row bg-muted-background/50 w-full rounded-2xl text-foreground ring-1 ring-foreground/20">
+    <div ref={ref} className={clsx(className, 'relative @container')}>
+      <div className="w-full rounded-2xl bg-muted-background/50 text-foreground ring-1 ring-foreground/20 @sm:rounded-3xl @2xl:flex-row">
         <div>{children}</div>
 
         {topGlow && (

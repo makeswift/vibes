@@ -89,6 +89,32 @@ export async function CodeFromFile({ pathname }: Props) {
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
 
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <Button>Test</Button>
+  </TabsContent>
+  <TabsContent value="code">
+    ```ts
+      import { ReactRuntime } from '@makeswift/runtime/react'
+
+      // [!code word:viewport]
+      export const runtime = new ReactRuntime({
+        breakpoints: {
+          mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code highlight]
+          tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code --]
+          laptop: { width: 1024, viewport: 1000, label: 'Laptop' }, // [!code ++]
+          external: { width: 1280, label: 'External' },
+        },
+      })
+    ```
+
+  </TabsContent>
+</Tabs>
+
 ## Another headline
 
 Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante. Vivamus imperdiet nibh feugiat est.
@@ -100,3 +126,10 @@ Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec da
 | January                  | $250    | Prop                             |
 | February                 | $80     | [`hello`](https://makeswift.com) |
 | March asjhfkgasdj sadfas | $420    | `sup`                            |
+
+<div className="pattern-shadow pattern-shadow-sm mb-5 mt-5 aspect-[4/3] border border-docs-foreground bg-docs-background">
+  <iframe
+    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSs4o7sfbgqVr83CTXG7vRa%2FEclipse%3Ftype%3Ddesign%26node-id%3D23%253A36%26mode%3Ddesign%26t%3D3OZNQn2PpZT6AfPq-1"
+    className="h-full w-full bg-docs-background"
+  ></iframe>
+</div>
