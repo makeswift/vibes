@@ -66,7 +66,7 @@ export function Form() {
         />
         <div
           className={clsx(
-            'pb.5 absolute inset-0 flex items-center pl-5 transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-2xl',
+            'absolute inset-0 flex items-center pb-0.5 pl-5 transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-2xl',
             success ? 'translate-y-0' : 'translate-y-full'
           )}
         >
@@ -76,7 +76,7 @@ export function Form() {
       <button
         type="submit"
         className={clsx(
-          'absolute inset-y-1.5 right-1.5 flex aspect-square items-center justify-center overflow-hidden rounded-full transition-all',
+          'absolute right-1.5 top-1.5 flex aspect-square h-10  items-center justify-center overflow-hidden rounded-full transition-all md:h-12 lg:h-14',
           success ? 'bg-[#3FCF59]' : 'bg-black'
         )}
         disabled={success}
