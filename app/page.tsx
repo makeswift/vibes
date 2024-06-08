@@ -24,6 +24,7 @@ export default function Home() {
                 ' '
               ) : (
                 <Transition
+                  key={index}
                   className="inline-block transition-all duration-500"
                   style={{
                     transitionDelay: `${100 + index * 30}ms`,
