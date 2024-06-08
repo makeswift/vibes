@@ -55,7 +55,7 @@ export function Form() {
       )}
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-5 lg:pl-8">
+      <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-5 pr-14 lg:pl-8 lg:pr-16">
         <input
           {...register('Email')}
           data-1p-ignore
@@ -77,7 +77,7 @@ export function Form() {
       <button
         type="submit"
         className={clsx(
-          'absolute right-1.5 top-1.5 flex aspect-square h-10  items-center justify-center overflow-hidden rounded-full transition-all md:h-12 lg:h-14',
+          'absolute bottom-1.5 right-1.5 top-1.5 flex aspect-square h-10 items-center justify-center overflow-hidden rounded-full transition-all md:h-12 lg:h-14',
           success ? 'bg-[#3FCF59]' : 'bg-black'
         )}
         disabled={success}
