@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import { z } from 'zod'
 
+import { submitLead } from '@/actions/submit-lead'
 import Transition from '@/components/ui/transition'
 import { Arrow, Check, Loader } from '@/icons/generated'
 
@@ -14,29 +15,29 @@ const schema = z.object({
   Email: z.string().min(1, { message: 'Email is required' }).email('This is not a valid email'),
 })
 
+type Values = z.infer<typeof schema>
+
 export function Form() {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<z.infer<typeof schema>>({
+  } = useForm<Values>({
     resolver: zodResolver(schema),
   })
 
-  const onSubmit: SubmitHandler<z.infer<typeof schema>> = useCallback(async function (values) {
-    try {
-      setLoading(true)
+  const onSubmit: SubmitHandler<Values> = useCallback(async function (values) {
+    setLoading(true)
 
-      await fetch('/api/leads', {
-        method: 'POST',
-        body: JSON.stringify({ ...values, Source: 'Vibes' }),
-      })
+    try {
+      await submitLead(values)
 
       reset()
       setSuccess(true)
       setError(false)
     } catch (e) {
+      console.error(e)
       setError(true)
       setSuccess(false)
     } finally {
@@ -84,21 +85,13 @@ export function Form() {
       >
         <span className="sr-only">Subscribe</span>
         <div className="relative flex h-full w-full items-center justify-center transition-transform">
-          {!loading && !success && (
-            <Arrow
-              className={clsx('duration-300', !success ? 'translate-y-0' : '-translate-y-12')}
-            />
-          )}
+          {!loading && !success && <Arrow />}
           {success && (
             <Transition className="transition-transform" from="-translate-y-12" to="translate-y-0">
               <Check />
             </Transition>
           )}
-          {loading && (
-            <Transition className="transition-opacity" from="opacity-0" to="opacity-100">
-              <Loader className="animate-spin" />
-            </Transition>
-          )}
+          {loading && <Loader className="animate-spin" />}
         </div>
       </button>
       {(errors.Email || error) && (

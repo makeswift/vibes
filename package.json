@@ -24,6 +24,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
+    "@react-email/components": "^0.0.19",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/mdx": "^2.0.11",
     "@vimeo/player": "^2.22.0",
@@ -45,6 +46,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-mdx-frontmatter": "^4.0.0",
+    "resend": "^3.2.0",
     "tailwind-merge": "^2.2.1",
     "utils": "link:@/lib/utils",
     "zod": "^3.23.8"
