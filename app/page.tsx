@@ -15,7 +15,7 @@ import { Typescript } from './stickers/typescript'
 
 export default function Home() {
   return (
-    <div className="h-screen w-full bg-white p-3 md:p-4 lg:p-5">
+    <div className="h-dvh w-full bg-white p-3 md:p-4 lg:p-5">
       <main className="relative z-0 h-full w-full place-content-start overflow-hidden rounded-3xl border border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] md:p-8 lg:rounded-[40px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[64px]">
         <div className="relative mx-auto flex max-w-lg translate-y-0 flex-col items-center px-0 py-0 sm:-translate-y-28 md:max-w-xl md:justify-center md:px-8 lg:max-w-2xl xl:max-w-3xl xl:py-10 2xl:max-w-4xl">
           <h1 className="mb-2 font-docs-heading text-4xl text-black sm:mb-4 sm:text-5xl md:mb-5 lg:text-6xl xl:text-7xl">
