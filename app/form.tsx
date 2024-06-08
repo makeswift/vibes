@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import { z } from 'zod'
 
+import Transition from '@/components/ui/transition'
 import { Arrow, Check, Loader } from '@/icons/generated'
 
 const schema = z.object({
@@ -66,7 +67,7 @@ export function Form() {
         />
         <div
           className={clsx(
-            'absolute inset-0 flex items-center pb-0.5 pl-5 transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-2xl',
+            'absolute inset-0 flex items-center pb-0.5 pl-5 text-black transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-2xl',
             success ? 'translate-y-0' : 'translate-y-full'
           )}
         >
@@ -83,19 +84,22 @@ export function Form() {
       >
         <span className="sr-only">Subscribe</span>
         <div className="relative flex h-full w-full items-center justify-center transition-transform">
-          <Arrow className={clsx('duration-300', !success ? 'translate-y-0' : '-translate-y-12')} />
-          <Check
-            className={clsx(
-              'absolute left-1/2 top-1/2 -mt-[14px] -translate-x-1/2 transition-transform duration-300',
-              success ? 'translate-y-0' : 'translate-y-12'
-            )}
-          />
+          {!loading && !success && (
+            <Arrow
+              className={clsx('duration-300', !success ? 'translate-y-0' : '-translate-y-12')}
+            />
+          )}
+          {success && (
+            <Transition className="transition-transform" from="-translate-y-12" to="translate-y-0">
+              <Check />
+            </Transition>
+          )}
+          {loading && (
+            <Transition className="transition-opacity" from="opacity-0" to="opacity-100">
+              <Loader className="animate-spin" />
+            </Transition>
+          )}
         </div>
-        {/* {loading && (
-          <span className="animate-in animate-out fade-in fade-out spin-in spin-out">
-            <Loader className="animate-spin" />
-          </span>
-        )} */}
       </button>
       {(errors.Email || error) && (
         <div className="absolute left-1/2 top-full mt-4 -translate-x-1/2 space-y-1 rounded-xl bg-black p-1 px-4 py-2.5 text-center text-base text-white md:text-lg">
