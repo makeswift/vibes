@@ -34,21 +34,12 @@ export default function Draggable({ className, children, style, ...rest }: Props
       positionStart.current[1] + e.clientY - pointerStart.current[1],
     ])
   }, [])
-
   const onTouchMove = useCallback((e: TouchEvent) => {
     setPosition([
       positionStart.current[0] + e.touches[0].clientX - pointerStart.current[0],
       positionStart.current[1] + e.touches[0].clientY - pointerStart.current[1],
     ])
   }, [])
-  const onDragEnd = useCallback(() => {
-    setActive(false)
-
-    prevZIndex.current = stack + 1
-    setZIndex(stack + 1)
-
-    window.removeEventListener('pointermove', onPointerMove)
-  }, [stack])
 
   return (
     <div
@@ -75,7 +66,14 @@ export default function Draggable({ className, children, style, ...rest }: Props
         setStack(prev => prev + 1)
 
         window.addEventListener('pointermove', onPointerMove)
-        window.addEventListener('pointerup', onDragEnd)
+        window.addEventListener('pointerup', () => {
+          setActive(false)
+
+          prevZIndex.current = stack + 1
+          setZIndex(stack + 1)
+
+          window.removeEventListener('pointermove', onPointerMove)
+        })
       }}
       onTouchStart={e => {
         pointerStart.current = [e.touches[0].clientX, e.touches[0].clientY]
@@ -85,7 +83,14 @@ export default function Draggable({ className, children, style, ...rest }: Props
         setStack(prev => prev + 1)
 
         window.addEventListener('touchmove', onTouchMove)
-        window.addEventListener('touchend', onDragEnd)
+        window.addEventListener('touchend', () => {
+          setActive(false)
+
+          prevZIndex.current = stack + 1
+          setZIndex(stack + 1)
+
+          window.removeEventListener('touchmove', onTouchMove)
+        })
       }}
     >
       {children({ active })}
