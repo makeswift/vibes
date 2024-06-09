@@ -14,20 +14,22 @@ import {
   Text,
 } from '@react-email/components'
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ''
+import { env } from '@/lib/env'
+
+const baseUrl = env.VERCEL_URL ? `https://${env.VERCEL_URL}` : ''
 
 export const WaitlistEmail = () => (
   <Html>
     <Head />
-    <Preview>You're on the list!</Preview>
+    <Preview>You&apos;re on the list!</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
           <Img src={`${baseUrl}/logo.png`} width="149" height="59" alt="Vibes" />
           <Hr style={hr} />
-          <Heading style={heading}>You're on the list!</Heading>
+          <Heading style={heading}>You&apos;re on the list!</Heading>
           <Text style={paragraph}>
-            Thank you for the interest! We'll keep you in the loop as the project progresses.
+            Thank you for the interest! We&apos;ll keep you in the loop as the project progresses.
           </Text>
           <Button style={button} href="https://vibes.site">
             Back to Vibes

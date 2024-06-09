@@ -1,43 +1,45 @@
 'use server'
 
+import { SubmissionResult } from '@conform-to/react'
+import { parseWithZod } from '@conform-to/zod'
 import Airtable from 'airtable'
-import { strict } from 'assert'
 import { Resend } from 'resend'
 
 import WaitlistEmail from '@/components/emails/waitlist'
+import { env } from '@/lib/env'
+import { submitLeadSchema } from '@/lib/schema'
 
-strict(process.env.AIRTABLE_BASE_ID, 'AIRTABLE_BASE_ID is required')
-strict(process.env.AIRTABLE_ACCESS_TOKEN, 'AIRTABLE_ACCESS_TOKEN is required')
-strict(process.env.RESEND_API_KEY, 'RESEND_API_KEY is required')
+const base = new Airtable({ apiKey: env.AIRTABLE_ACCESS_TOKEN }).base(env.AIRTABLE_BASE_ID)
 
-var base = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN }).base(
-  process.env.AIRTABLE_BASE_ID
-)
+const resend = new Resend(env.RESEND_API_KEY)
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export async function submitLead(
+  prevState: unknown,
+  formData: FormData
+): Promise<SubmissionResult> {
+  const submission = parseWithZod(formData, { schema: submitLeadSchema })
 
-interface Props {
-  Email: string
-}
+  if (submission.status !== 'success') return submission.reply()
 
-export async function submitLead(body: Props) {
-  strict(process.env.AIRTABLE_LEADS_TABLE_ID, 'AIRTABLE_LEADS_TABLE_ID is required')
+  const email = submission.value.email
 
   try {
-    await base(process.env.AIRTABLE_LEADS_TABLE_ID).create(
-      { ...body, Source: 'Vibes' },
+    await base(env.AIRTABLE_LEADS_TABLE_ID).create(
+      { Source: 'Vibes', Email: email },
       { typecast: true }
     )
+
+    await resend.emails.send({
+      from: 'Vibes <hello@vibes.site>',
+      to: [email],
+      subject: `Welcome to Vibes!`,
+      react: WaitlistEmail(),
+    })
+
+    return submission.reply()
   } catch (e) {
     console.error(e)
 
-    throw new Error('Failed to submit lead')
+    return submission.reply({ formErrors: ['Failed to submit email'] })
   }
-
-  resend.emails.send({
-    from: 'Vibes <hello@vibes.site>',
-    to: [body.Email],
-    subject: `Welcome to Vibes!`,
-    react: WaitlistEmail(),
-  })
 }

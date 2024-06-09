@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import { IBM_Plex_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 
@@ -44,6 +45,8 @@ const IBMPlexMono = IBM_Plex_Mono({
   variable: '--font-docs-mono',
 })
 
+const PostHogPageView = dynamic(() => import('./PostHogPageView'), { ssr: false })
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,9 +56,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={clsx(Polysans.variable, PolysansWide.variable, IBMPlexMono.variable)}>
         <Providers>
+          <PostHogPageView />
           <main>{children}</main>
+          <Toaster />
         </Providers>
-        <Toaster />
       </body>
     </html>
   )
