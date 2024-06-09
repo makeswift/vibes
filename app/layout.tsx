@@ -12,7 +12,7 @@ import { Providers } from './providers'
 
 export const metadata: Metadata = {
   title: 'Vibes',
-  description: 'Composable themes for React marketing sites',
+  description: 'Libraries of stunning React components optimized for both fashion and function',
 }
 
 const PolysansWide = localFont({
