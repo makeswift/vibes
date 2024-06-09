@@ -1,33 +1,22 @@
 'use server'
 
 import Airtable from 'airtable'
-import { strict } from 'assert'
 import { Resend } from 'resend'
 
 import WaitlistEmail from '@/components/emails/waitlist'
+import { env } from '@/lib/env'
 
-strict(process.env.AIRTABLE_BASE_ID, 'AIRTABLE_BASE_ID is required')
-strict(process.env.AIRTABLE_ACCESS_TOKEN, 'AIRTABLE_ACCESS_TOKEN is required')
-strict(process.env.RESEND_API_KEY, 'RESEND_API_KEY is required')
+var base = new Airtable({ apiKey: env.AIRTABLE_ACCESS_TOKEN }).base(env.AIRTABLE_BASE_ID)
 
-var base = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN }).base(
-  process.env.AIRTABLE_BASE_ID
-)
-
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(env.RESEND_API_KEY)
 
 interface Props {
   Email: string
 }
 
 export async function submitLead(body: Props) {
-  strict(process.env.AIRTABLE_LEADS_TABLE_ID, 'AIRTABLE_LEADS_TABLE_ID is required')
-
   try {
-    await base(process.env.AIRTABLE_LEADS_TABLE_ID).create(
-      { ...body, Source: 'Vibes' },
-      { typecast: true }
-    )
+    await base(env.AIRTABLE_LEADS_TABLE_ID).create({ ...body, Source: 'Vibes' }, { typecast: true })
   } catch (e) {
     console.error(e)
 

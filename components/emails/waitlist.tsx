@@ -14,7 +14,9 @@ import {
   Text,
 } from '@react-email/components'
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ''
+import { env } from '@/lib/env'
+
+const baseUrl = env.VERCEL_URL ? `https://${env.VERCEL_URL}` : ''
 
 export const WaitlistEmail = () => (
   <Html>
