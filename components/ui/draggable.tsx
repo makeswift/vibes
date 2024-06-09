@@ -1,6 +1,16 @@
 'use client'
 
-import { ComponentPropsWithoutRef, ReactNode, useCallback, useRef, useState } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useCallback,
+  useContext,
+  useRef,
+  useState,
+} from 'react'
 
 import clsx from 'clsx'
 
@@ -11,6 +21,9 @@ interface Props extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {
 }
 
 export default function Draggable({ className, children, style, ...rest }: Props) {
+  const { stack, setStack } = useDraggable()
+  const [zIndex, setZIndex] = useState(stack)
+  const prevZIndex = useRef(0)
   const pointerStart = useRef([0, 0])
   const positionStart = useRef([0, 0])
   const [position, setPosition] = useState([0, 0])
@@ -28,40 +41,51 @@ export default function Draggable({ className, children, style, ...rest }: Props
       positionStart.current[1] + e.touches[0].clientY - pointerStart.current[1],
     ])
   }, [])
+  const onDragEnd = useCallback(() => {
+    setActive(false)
+
+    prevZIndex.current = stack + 1
+    setZIndex(stack + 1)
+
+    window.removeEventListener('pointermove', onPointerMove)
+  }, [stack])
 
   return (
     <div
       {...rest}
-      className={clsx(className, 'relative hover:z-10', active && 'z-10')}
+      className={clsx(className, 'relative')}
       style={{
         ...style,
         transform: `translate3d(${position[0]}px, ${position[1]}px, 0)`,
+        zIndex,
+      }}
+      onPointerEnter={() => {
+        prevZIndex.current = zIndex
+
+        setZIndex(stack + 1)
+      }}
+      onPointerLeave={() => {
+        setZIndex(prevZIndex.current)
       }}
       onPointerDown={e => {
         pointerStart.current = [e.clientX, e.clientY]
         positionStart.current = position
 
         setActive(true)
+        setStack(prev => prev + 1)
 
         window.addEventListener('pointermove', onPointerMove)
-        window.addEventListener('pointerup', () => {
-          setActive(false)
-
-          window.removeEventListener('pointermove', onPointerMove)
-        })
+        window.addEventListener('pointerup', onDragEnd)
       }}
       onTouchStart={e => {
         pointerStart.current = [e.touches[0].clientX, e.touches[0].clientY]
         positionStart.current = position
 
         setActive(true)
+        setStack(prev => prev + 1)
 
         window.addEventListener('touchmove', onTouchMove)
-        window.addEventListener('touchend', () => {
-          setActive(false)
-
-          window.removeEventListener('touchmove', onTouchMove)
-        })
+        window.addEventListener('touchend', onDragEnd)
       }}
     >
       {children({ active })}
@@ -71,5 +95,24 @@ export default function Draggable({ className, children, style, ...rest }: Props
         </Portal>
       )}
     </div>
+  )
+}
+
+interface Context {
+  stack: number
+  setStack: Dispatch<SetStateAction<number>>
+}
+
+const DraggableContext = createContext<Context>({ stack: 0, setStack: () => {} })
+
+export function useDraggable() {
+  return useContext(DraggableContext)
+}
+
+export function DraggableProvider({ children }: { children: ReactNode }) {
+  const [stack, setStack] = useState(0)
+
+  return (
+    <DraggableContext.Provider value={{ stack, setStack }}>{children}</DraggableContext.Provider>
   )
 }
