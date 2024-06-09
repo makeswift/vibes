@@ -60,7 +60,7 @@ export default function Home() {
           </Transition>
 
           <Transition
-            className="relative z-50 w-full transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:1350ms] sm:w-auto"
+            className="relative w-full transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:1350ms] sm:w-auto"
             from="translate-y-16 opacity-0"
             to="translate-y-0 opacity-100"
           >
