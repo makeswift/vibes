@@ -29,7 +29,7 @@ export async function submitLead(
       { typecast: true }
     )
 
-    resend.emails.send({
+    await resend.emails.send({
       from: 'Vibes <hello@vibes.site>',
       to: [email],
       subject: `Welcome to Vibes!`,
