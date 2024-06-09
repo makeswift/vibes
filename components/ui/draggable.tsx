@@ -17,7 +17,7 @@ import clsx from 'clsx'
 import { Portal } from './portal'
 
 interface Props extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {
-  children: (state: { active: boolean }) => ReactNode
+  children: (state: { active: boolean; hover: boolean }) => ReactNode
 }
 
 export default function Draggable({ className, children, style, ...rest }: Props) {
@@ -28,6 +28,7 @@ export default function Draggable({ className, children, style, ...rest }: Props
   const positionStart = useRef([0, 0])
   const [position, setPosition] = useState([0, 0])
   const [active, setActive] = useState(false)
+  const [hover, setHover] = useState(false)
   const onPointerMove = useCallback((e: PointerEvent) => {
     setPosition([
       positionStart.current[0] + e.clientX - pointerStart.current[0],
@@ -54,9 +55,11 @@ export default function Draggable({ className, children, style, ...rest }: Props
         prevZIndex.current = zIndex
 
         setZIndex(stack + 1)
+        setHover(true)
       }}
       onPointerLeave={() => {
         setZIndex(prevZIndex.current)
+        setHover(false)
       }}
       onPointerDown={e => {
         pointerStart.current = [e.clientX, e.clientY]
@@ -93,7 +96,7 @@ export default function Draggable({ className, children, style, ...rest }: Props
         })
       }}
     >
-      {children({ active })}
+      {children({ active, hover })}
       {active && (
         <Portal>
           <div className="fixed inset-0 z-50 cursor-grabbing"></div>

@@ -9,7 +9,7 @@ export function HandcraftedCode() {
   return (
     <div className="pointer-events-none absolute left-[34%] top-[94%] sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1800ms]"
             from="translate-x-[-1000px] translate-y-[-50px] rotate-[-100deg]"
@@ -17,6 +17,7 @@ export function HandcraftedCode() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={-100}
               width={278}
               height={296}

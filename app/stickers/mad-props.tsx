@@ -9,7 +9,7 @@ export function MadProps() {
   return (
     <div className="pointer-events-none absolute right-[12%] top-[116%] hidden sm:block">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1700ms]"
             from="translate-x-[200px] translate-y-[700px] rotate-[20deg]"
@@ -17,6 +17,7 @@ export function MadProps() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={20}
               hoverPeel={0.2}
               activePeel={0.3}

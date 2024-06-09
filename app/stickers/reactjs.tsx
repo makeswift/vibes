@@ -9,7 +9,7 @@ export function Reactjs() {
   return (
     <div className="pointer-events-none absolute left-[10%] top-[112%] sm:left-[-24%] sm:top-[-32%] md:left-[-18%] md:top-[-24%]">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1700ms]"
             from="translate-x-[-600px] translate-y-[-700px] rotate-[-120deg]"
@@ -17,6 +17,7 @@ export function Reactjs() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={-0}
               hoverPeel={0.25}
               activePeel={0.35}

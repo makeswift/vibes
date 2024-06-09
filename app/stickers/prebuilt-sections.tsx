@@ -13,7 +13,7 @@ export function PrebuiltSections() {
   return (
     <div className="pointer-events-none absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1800ms]"
             from="translate-x-[450px] translate-y-[700px] rotate-[200deg]"
@@ -21,6 +21,7 @@ export function PrebuiltSections() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={-100}
               hoverPeel={0.15}
               width={369}

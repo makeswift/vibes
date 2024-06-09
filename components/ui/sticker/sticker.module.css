@@ -78,7 +78,7 @@
   z-index: 2;
 }
 
-.sticker:hover {
+.sticker.hover {
   .clip {
     transform: translateX(calc(var(--offset-diagonal-angle) + var(--hover-peel-translate)));
   }

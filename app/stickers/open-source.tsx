@@ -9,7 +9,7 @@ export function OpenSource() {
   return (
     <div className="pointer-events-none absolute left-[-38%] top-[88%] sm:left-[-40%] sm:top-[96%] lg:left-[-35%] lg:top-[100%]">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1700ms]"
             from="translate-x-[-700px] translate-y-[700px] rotate-[-90deg]"
@@ -17,6 +17,7 @@ export function OpenSource() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={-15}
               hoverPeel={0.15}
               width={350}

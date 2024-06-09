@@ -9,7 +9,7 @@ export function EazyTheme() {
   return (
     <div className="pointer-events-none absolute right-[-28%] top-[88%] hidden sm:block lg:right-[-30%] lg:top-[94%]">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1800ms]"
             from="translate-x-[700px] translate-y-[700px] rotate-[20deg]"
@@ -17,6 +17,7 @@ export function EazyTheme() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={15}
               hoverPeel={0.2}
               width={168}

@@ -9,7 +9,7 @@ export function Typescript() {
   return (
     <div className="pointer-events-none absolute left-[100%] top-[42%] hidden sm:block md:left-[110%] md:top-[36%]">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="transition-transform duration-700 [transition-delay:2300ms]"
             from="translate-x-[1000px] translate-y-[-100px] translate-y-[20px] rotate-[180deg]"
@@ -17,6 +17,7 @@ export function Typescript() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={-100}
               hoverPeel={0.15}
               width={200}

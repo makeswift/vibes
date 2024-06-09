@@ -9,7 +9,7 @@ export function Figma() {
   return (
     <div className="absolute left-[8%] top-[115%]">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="delay-[4000ms] transition-transform duration-1000"
             from="translate-x-[-400px] translate-y-[700px] rotate-[-20deg]"
@@ -17,6 +17,7 @@ export function Figma() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={0}
               width={168}
               height={268}

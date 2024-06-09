@@ -9,6 +9,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   back: React.ReactNode
   shadow: React.ReactNode
   active?: boolean
+  hover?: boolean
   hoverPeel?: number
   activePeel?: number
   peelAngle?: number
@@ -29,6 +30,7 @@ export default function Sticker({
   back,
   shadow,
   active = false,
+  hover = false,
   hoverPeel = 0.1,
   activePeel = 0.25,
   peelAngle = -10,
@@ -37,6 +39,8 @@ export default function Sticker({
   animationDuration = 300,
   shadowX = -4,
   shadowY = 4,
+  onPointerEnter,
+  onPointerLeave,
   ...rest
 }: Props) {
   const size = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2))
@@ -64,6 +68,7 @@ export default function Sticker({
       className={clsx(
         styles.sticker,
         active && styles.active,
+        hover && styles.hover,
         className,
         'scale-[.6] sm:scale-[.8] lg:scale-100 xl:scale-110 2xl:scale-[1.2]'
       )}

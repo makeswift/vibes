@@ -9,7 +9,7 @@ export function KeepIt100() {
   return (
     <div className="pointer-events-none absolute left-[-20%] top-[125%] sm:left-[15%] sm:top-[110%] sm:z-auto md:left-[22%] md:top-[120%]">
       <Draggable>
-        {({ active }) => (
+        {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1800ms] "
             from="translate-x-[-100px] translate-y-[700px] rotate-[-20deg]"
@@ -17,6 +17,7 @@ export function KeepIt100() {
           >
             <Sticker
               active={active}
+              hover={hover}
               peelAngle={15}
               hoverPeel={0.2}
               activePeel={0.3}
