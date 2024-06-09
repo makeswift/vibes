@@ -54,8 +54,8 @@ export default function Home() {
             to="translate-y-0 opacity-100"
           >
             <p className="mt-4 max-w-4xl text-center font-docs-sans text-xl !leading-normal text-black sm:mt-6 md:text-2xl md:!leading-snug lg:mt-8 lg:text-3xl">
-              Make your site a vibe. Mix and match stylized sets of production-ready React
-              components, handcrafted to perfection. Coming August 2024.
+              A library of stunning React components optimized for both fashion and function, coming
+              August 2024.
             </p>
           </Transition>
 

@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
 
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
@@ -12,14 +13,22 @@ import { Arrow, Check, Loader } from '@/icons/generated'
 import { submitLeadSchema } from '@/lib/schema'
 
 export function Form() {
+  const [shake, setShake] = useState(false)
   const [lastResult, action] = useFormState(submitLead, undefined)
   const [form, fields] = useForm({
     lastResult,
-    shouldValidate: 'onBlur',
+    shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',
     constraint: getZodConstraint(submitLeadSchema),
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: submitLeadSchema })
+      const submission = parseWithZod(formData, { schema: submitLeadSchema })
+
+      if (submission.status === 'error') {
+        setShake(true)
+        setTimeout(() => setShake(false), 1000)
+      }
+
+      return submission
     },
   })
   const success = form.status === 'success'
@@ -30,7 +39,7 @@ export function Form() {
       action={action}
       className={clsx(
         'relative mt-6 flex h-14 w-full max-w-full gap-2 gap-x-3 rounded-full border-2 border-black bg-white shadow-[-4px_4px_black] transition-all focus-within:shadow-[-0px_0px_black] sm:mt-8 sm:w-[400px] md:h-16 lg:mt-12 lg:h-[72px] lg:w-[600px]',
-        !form.valid && 'animate-shake'
+        shake && 'animate-shake'
       )}
     >
       <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-5 pr-14 lg:pl-8 lg:pr-16">
@@ -54,7 +63,7 @@ export function Form() {
             success ? 'translate-y-0' : 'translate-y-full'
           )}
         >
-          Success!
+          Success! Check your email.
         </div>
       </div>
 

@@ -6,6 +6,7 @@ import * as React from 'react'
 import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 
+import { DraggableProvider } from '@/components/ui/draggable'
 import { env } from '@/lib/env'
 
 if (typeof window !== 'undefined') {
@@ -30,7 +31,9 @@ export function Providers({ children }: Props) {
       enableSystem
       disableTransitionOnChange
     >
-      <PostHogProvider client={posthog}>{children}</PostHogProvider>
+      <DraggableProvider>
+        <PostHogProvider client={posthog}>{children}</PostHogProvider>
+      </DraggableProvider>
     </NextThemesProvider>
   )
 }

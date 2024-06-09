@@ -45,7 +45,7 @@ const IBMPlexMono = IBM_Plex_Mono({
   variable: '--font-docs-mono',
 })
 
-const PostHogPageView = dynamic(() => import('./PostHogPageView'), { ssr: false })
+const PostHogPageView = dynamic(() => import('./post-hog-page-view'), { ssr: false })
 
 export default function RootLayout({
   children,
