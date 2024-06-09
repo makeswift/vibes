@@ -48,9 +48,9 @@ export function Form() {
         </label>
         <input
           {...getInputProps(fields.email, { type: 'email' })}
-          placeholder="Enter your email for updates"
+          placeholder="Enter your email to get notified."
           className={clsx(
-            'flex-1 bg-transparent pb-0.5 font-sans text-lg text-black transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl',
+            'flex-1 bg-transparent pb-0.5 font-sans text-lg text-black transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:font-light placeholder:text-black/50 focus:outline-none md:text-xl placeholder:md:text-xl lg:text-2xl placeholder:lg:text-2xl',
             success ? '-translate-y-full' : 'translate-y-0'
           )}
           data-1p-ignore
