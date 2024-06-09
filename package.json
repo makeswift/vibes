@@ -39,6 +39,7 @@
     "next": "14.1.0",
     "next-mdx-remote": "0.0.0-canary-20240321205249",
     "next-themes": "^0.2.1",
+    "posthog-js": "^1.138.1",
     "prismjs": "^1.29.0",
     "react": "^18",
     "react-dom": "^18",

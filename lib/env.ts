@@ -9,5 +9,10 @@ export const env = createEnv({
     AIRTABLE_LEADS_TABLE_ID: z.string(),
     VERCEL_URL: z.string().optional(),
   },
-  experimental__runtimeEnv: {},
+  client: {
+    NEXT_PUBLIC_POSTHOG_KEY: z.string(),
+  },
+  experimental__runtimeEnv: {
+    NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
+  },
 })
