@@ -89,7 +89,7 @@ function Submit({ success }: { success: boolean }) {
         'absolute bottom-1.5 right-1.5 top-1.5 flex aspect-square h-10 items-center justify-center overflow-hidden rounded-full transition-all md:h-12 lg:h-14',
         success ? 'bg-[#3FCF59]' : 'bg-black'
       )}
-      disabled={success}
+      disabled={pending || success}
     >
       <span className="sr-only">Subscribe</span>
       <div className="relative flex h-full w-full items-center justify-center transition-transform">
