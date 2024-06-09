@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@conform-to/react':
+    specifier: ^1.1.4
+    version: 1.1.4(react@18.2.0)
+  '@conform-to/zod':
+    specifier: ^1.1.4
+    version: 1.1.4(zod@3.23.8)
   '@hookform/resolvers':
     specifier: ^3.5.0
     version: 3.5.0(react-hook-form@7.51.3)
@@ -479,6 +485,28 @@ packages:
       '@babel/helper-string-parser': 7.23.4
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
+
+  /@conform-to/dom@1.1.4:
+    resolution: {integrity: sha512-NE763YdEs5nyiM3vBvC7c1mqyeTKRXRFsgS8Fni8DGvRwmbbLzgyF1jTwEmP5B8W0XXIvIPEPogyrm2LyVTFKQ==}
+    dev: false
+
+  /@conform-to/react@1.1.4(react@18.2.0):
+    resolution: {integrity: sha512-RQSat9xnrfu4W/xja9acMSKt/vJWwn2kwec6EausUTkG2WJeuKTcEaEdqA4VZH3PtEK2kK1y/OXzJQGUPwgweQ==}
+    peerDependencies:
+      react: '>=18'
+    dependencies:
+      '@conform-to/dom': 1.1.4
+      react: 18.2.0
+    dev: false
+
+  /@conform-to/zod@1.1.4(zod@3.23.8):
+    resolution: {integrity: sha512-YqV9wgDbePR++uvhGVWUgn+Ae3G7vcAgoSaSGo87MJTs5Eb6IRvBiQh8x6GghWtr+BUylFAEF7MhN/cejwDlGg==}
+    peerDependencies:
+      zod: ^3.21.0
+    dependencies:
+      '@conform-to/dom': 1.1.4
+      zod: 3.23.8
+    dev: false
 
   /@csstools/selector-resolve-nested@1.1.0(postcss-selector-parser@6.0.15):
     resolution: {integrity: sha512-uWvSaeRcHyeNenKg8tp17EVDRkpflmdyvbE0DHo6D/GdBb6PDnCYYU6gRpXhtICMGMcahQmj2zGxwFM/WC8hCg==}
