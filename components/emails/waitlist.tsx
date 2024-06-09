@@ -25,7 +25,7 @@ export const WaitlistEmail = () => (
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
-          <Img src={`${baseUrl}/logo.png`} width="149" height="59" alt="Vibes" />
+          <Img src="logo.png" width="150" height="40" alt="Vibes" />
           <Hr style={hr} />
           <Heading style={heading}>You&apos;re on the list!</Heading>
           <Text style={paragraph}>
