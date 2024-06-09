@@ -16,8 +16,6 @@ import {
 
 import { env } from '@/lib/env'
 
-const baseUrl = env.VERCEL_URL ? `https://${env.VERCEL_URL}` : ''
-
 export const WaitlistEmail = () => (
   <Html>
     <Head />
@@ -25,8 +23,6 @@ export const WaitlistEmail = () => (
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
-          <Img src="logo.png" width="150" height="40" alt="Vibes" />
-          <Hr style={hr} />
           <Heading style={heading}>You&apos;re on the list!</Heading>
           <Text style={paragraph}>
             Thank you for the interest! We&apos;ll keep you in the loop as the project progresses.
