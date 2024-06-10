@@ -24,10 +24,7 @@ export async function submitLead(
   const email = submission.value.email
 
   try {
-    await base(env.AIRTABLE_LEADS_TABLE_ID).create(
-      { Source: 'Vibes', Email: email },
-      { typecast: true }
-    )
+    await base(env.AIRTABLE_TABLE_ID).create({ Email: email }, { typecast: true })
 
     await resend.emails.send({
       from: 'Vibes <hello@vibes.site>',
