@@ -54,7 +54,7 @@ export default function Home() {
             to="translate-y-0 opacity-100"
           >
             <p className="mt-4 max-w-4xl text-center font-docs-sans text-xl !leading-normal text-black sm:mt-6 md:text-2xl md:!leading-snug lg:mt-8 lg:text-3xl">
-              Stunning React components for commerce and marketing. Optimized for fashion and
+              Stunning React components for commerce and marketing, optimized for fashion and
               function. Coming soon.
             </p>
           </Transition>
