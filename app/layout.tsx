@@ -11,8 +11,30 @@ import '@/style/globals.css'
 import { Providers } from './providers'
 
 export const metadata: Metadata = {
-  title: 'Vibes',
-  description: 'Libraries of stunning React components optimized for both fashion and function',
+  title: 'Vibes | Coming soon',
+  description:
+    'Stunning React components for commerce and marketing, optimized for fashion and function.',
+  openGraph: {
+    title: 'Vibes | Coming soon',
+    description:
+      'Stunning React components for commerce and marketing, optimized for fashion and function.',
+    url: 'https://vibes.site',
+    images: [
+      {
+        url: 'https://vibes.site/social-image.png',
+        width: 800,
+        height: 600,
+        alt: 'Vibes logo on gradient background with stickers',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vibes | Coming soon',
+    description:
+      'Stunning React components for commerce and marketing, optimized for fashion and function.',
+    images: ['https://vibes.site/social-image.png'],
+  },
 }
 
 const PolysansWide = localFont({
