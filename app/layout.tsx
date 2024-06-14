@@ -31,6 +31,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Vibes | Coming soon',
+    site: '@MakeswiftHQ',
+    creator: '@MakeswiftHQ',
     description:
       'Stunning React components for commerce and marketing, optimized for fashion and function.',
     images: ['https://vibes.site/social-image.png'],
