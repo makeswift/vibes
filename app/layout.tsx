@@ -10,14 +10,16 @@ import '@/style/globals.css'
 
 import { Providers } from './providers'
 
+const title = 'Vibes: Stunning React components for commerce & marketing | Coming soon'
+const description =
+  'Stunning React components for commerce and marketing, optimized for fashion and function.'
+
 export const metadata: Metadata = {
-  title: 'Vibes | Coming soon',
-  description:
-    'Stunning React components for commerce and marketing, optimized for fashion and function.',
+  title,
+  description,
   openGraph: {
-    title: 'Vibes | Coming soon',
-    description:
-      'Stunning React components for commerce and marketing, optimized for fashion and function.',
+    title,
+    description,
     url: 'https://vibes.site',
     images: [
       {
@@ -30,11 +32,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vibes | Coming soon',
+    title,
+    description,
     site: '@MakeswiftHQ',
     creator: '@MakeswiftHQ',
-    description:
-      'Stunning React components for commerce and marketing, optimized for fashion and function.',
     images: ['https://vibes.site/social-image.png'],
   },
 }
