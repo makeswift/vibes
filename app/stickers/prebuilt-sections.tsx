@@ -1,5 +1,7 @@
 'use client'
 
+import { useRef } from 'react'
+
 import Draggable from '@/components/ui/draggable'
 import { Sticker } from '@/components/ui/sticker'
 import Transition from '@/components/ui/transition'
@@ -10,8 +12,20 @@ import {
 } from '@/icons/generated'
 
 export function PrebuiltSections() {
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  const handleMouseEnter = () => {
+    if (audioRef.current) {
+      audioRef.current.play()
+    }
+  }
+
   return (
-    <div className="pointer-events-none absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]">
+    <div
+      className="pointer-events-none absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]"
+      onMouseEnter={handleMouseEnter}
+    >
+      <audio ref={audioRef} src="/cowabunga.mp3" />
       <Draggable>
         {({ active, hover }) => (
           <Transition

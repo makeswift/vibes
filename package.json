@@ -53,6 +53,7 @@
     "remark-mdx-frontmatter": "^4.0.0",
     "resend": "^3.2.0",
     "tailwind-merge": "^2.2.1",
+    "use-scramble": "^2.2.15",
     "utils": "link:@/lib/utils",
     "zod": "^3.23.8"
   },

@@ -131,6 +131,9 @@ dependencies:
   tailwind-merge:
     specifier: ^2.2.1
     version: 2.2.1
+  use-scramble:
+    specifier: ^2.2.15
+    version: 2.2.15(react-dom@18.3.1)(react@18.3.1)
   utils:
     specifier: link:@/lib/utils
     version: link:@/lib/utils
@@ -6705,6 +6708,17 @@ packages:
       '@types/react': 18.3.3
       react: 18.3.1
       tslib: 2.6.2
+    dev: false
+
+  /use-scramble@2.2.15(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-3+ngTV6OpkY9JT75FM4JYcspmpP7cd/h0/5KqsMU2jcdBD+SAuBMmLqLu0N3/7t8NsfdwJjD3BBeKtT+qZWKew==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /use-sidecar@1.1.2(@types/react@18.3.3)(react@18.3.1):

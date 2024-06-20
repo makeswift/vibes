@@ -82,6 +82,68 @@
   }
 }
 
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-155%);
+  }
+}
+
+@keyframes line {
+  from {
+    stroke-dashoffset: 0;
+  }
+  25% {
+    stroke-dashoffset: -800;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  75% {
+    stroke-dashoffset: -800;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes colorCycle {
+  0%,
+  10% {
+    fill: #fc8b5b;
+  }
+  20%,
+  30% {
+    fill: #7236e9;
+  }
+  40%,
+  50% {
+    fill: #a0e421;
+  }
+  60%,
+  70% {
+    fill: #fb70fd;
+  }
+  80%,
+  90% {
+    fill: #333;
+  }
+  100% {
+    fill: #fc8b5b;
+  }
+}
+
 @layer base {
   * {
     @apply antialiased;
@@ -126,4 +188,39 @@
   .pattern-shadow-hover:after {
     @apply animate-scroll;
   }
+}
+
+[class*='sticker_sticker'] .production-ready-land {
+  animation: scrollLeft 8s linear infinite forwards;
+  animation-play-state: paused;
+}
+[class*='sticker_sticker']:hover .production-ready-land {
+  animation-play-state: running;
+}
+[class*='sticker_sticker'] .production-ready-text {
+  transform-origin: center center;
+  transform-box: fill-box;
+}
+[class*='sticker_sticker'] .production-ready-text {
+  animation: rotate 24s linear infinite forwards;
+  animation-play-state: paused;
+}
+[class*='sticker_sticker']:hover .production-ready-text {
+  animation-play-state: running;
+}
+
+[class*='sticker_sticker'] .keepin-it-100-graph {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 0;
+}
+[class*='sticker_sticker']:hover .keepin-it-100-graph {
+  animation: line 6s ease-out infinite forwards;
+}
+
+[class*='sticker_sticker'] .spraypaint-color {
+  animation: colorCycle 6s linear infinite forwards;
+  animation-play-state: paused;
+}
+[class*='sticker_sticker']:hover .spraypaint-color {
+  animation-play-state: running;
 }

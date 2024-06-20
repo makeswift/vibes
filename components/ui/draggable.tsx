@@ -97,11 +97,11 @@ export default function Draggable({ className, children, style, ...rest }: Props
       }}
     >
       {children({ active, hover })}
-      {active && (
+      {/* {active && (
         <Portal>
           <div className="fixed inset-0 z-50 cursor-grabbing"></div>
         </Portal>
-      )}
+      )} */}
     </div>
   )
 }
