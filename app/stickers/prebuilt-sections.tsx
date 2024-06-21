@@ -25,7 +25,7 @@ export function PrebuiltSections() {
       className="pointer-events-none absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]"
       onMouseEnter={handleMouseEnter}
     >
-      <audio ref={audioRef} src="/cowabunga.mp3" />
+      <audio ref={audioRef} src="/cowabunga-2.mp3" />
       <Draggable>
         {({ active, hover }) => (
           <Transition

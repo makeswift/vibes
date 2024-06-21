@@ -144,6 +144,18 @@
   }
 }
 
+@keyframes jiggleLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 @layer base {
   * {
     @apply antialiased;
@@ -223,4 +235,12 @@
 }
 [class*='sticker_sticker']:hover .spraypaint-color {
   animation-play-state: running;
+}
+
+[class*='sticker_sticker'] .totally-lines path {
+  transform-origin: center center;
+  transform-box: fill-box;
+}
+[class*='sticker_sticker']:hover .totally-lines path:nth-child(odd) {
+  animation: jiggleLeft 2s steps(3) infinite forwards;
 }
