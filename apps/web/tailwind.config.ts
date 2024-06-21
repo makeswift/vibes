@@ -13,62 +13,87 @@ const config = {
       },
     },
     'docs-dropShadow': {
-      sm: '-2px 2px 0 rgba(0,0,0,100)',
-      DEFAULT: '-3px 3px 0 rgba(0,0,0,100)',
-      md: '-4px 4px 0 rgba(0,0,0,100)',
-      lg: '-6px 6px 0 rgba(0,0,0,100)',
-      xl: '-8px 8px 0 rgba(0,0,0,100)',
+      sm: '-2px 2px 0 #000',
+      DEFAULT: '-3px 3px 0 #000',
+      md: '-4px 4px 0 #000',
+      lg: '-6px 6px 0 #000',
+      xl: '-8px 8px 0 #000',
     },
     extend: {
       colors: {
-        'docs-border': 'hsl(var(--docs-border))',
-        'docs-input': 'hsl(var(--docs-input))',
         'docs-ring': 'hsl(var(--docs-ring))',
         'docs-background': 'hsl(var(--docs-background))',
         'docs-foreground': 'hsl(var(--docs-foreground))',
-        'docs-primary': {
-          DEFAULT: 'hsl(var(--docs-primary))',
-          foreground: 'hsl(var(--docs-primary-foreground))',
+        primary: 'hsl(var(--primary))',
+        accent: 'hsl(var(--accent))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        contrast: {
+          100: 'hsl(var(--contrast-100))',
+          200: 'hsl(var(--contrast-200))',
+          300: 'hsl(var(--contrast-300))',
+          400: 'hsl(var(--contrast-400))',
+          500: 'hsl(var(--contrast-500))',
         },
-        'docs-secondary': {
-          DEFAULT: 'hsl(var(--docs-secondary))',
-          foreground: 'hsl(var(--docs-secondary-foreground))',
-        },
-        'docs-muted': {
-          DEFAULT: 'hsl(var(--docs-muted))',
-          foreground: 'hsl(var(--docs-muted-foreground))',
-        },
-        'docs-accent': {
-          DEFAULT: 'hsl(var(--docs-accent))',
-          foreground: 'hsl(var(--docs-accent-foreground))',
-        },
-        'docs-popover': {
-          DEFAULT: 'hsl(var(--docs-popover))',
-          foreground: 'hsl(var(--docs-popover-foreground))',
-        },
-        'docs-card': {
-          DEFAULT: 'hsl(var(--docs-card))',
-          foreground: 'hsl(var(--docs-card-foreground))',
-        },
-        background: 'hsl(var(--color-background))',
-        foreground: 'hsl(var(--color-foreground))',
-        muted: {
-          background: 'hsl(var(--color-muted-background))',
-          foreground: 'hsl(var(--color-muted-foreground))',
-        },
-        primary: {
-          DEFAULT: 'hsl(var(--color-primary))',
-          highlight: 'hsl(var(--color-primary-highlight))',
-        },
-        text: {
-          DEFAULT: 'hsl(var(--color-text))',
-        },
-        border: 'hsl(var(--color-border-color))',
       },
       fontFamily: {
         'docs-heading': ['var(--font-docs-heading)'],
         'docs-sans': ['var(--font-docs-sans)'],
         'docs-mono': ['var(--font-docs-mono)'],
+        heading: ['var(--font-family-heading)'],
+        body: ['var(--font-family-body)'],
+        mono: ['var(--font-family-mono)'],
+      },
+      fontSize: {
+        xs: [
+          'var(--font-size-xs)',
+          {
+            lineHeight: 'var(--line-height-xs)',
+            letterSpacing: 'var(--letter-spacing-xs)',
+          },
+        ],
+        sm: [
+          'var(--font-size-sm)',
+          {
+            lineHeight: 'var(--line-height-sm)',
+            letterSpacing: 'var(--letter-spacing-sm)',
+          },
+        ],
+        base: [
+          'var(--font-size-base)',
+          {
+            lineHeight: 'var(--line-height-base)',
+            letterSpacing: 'var(--letter-spacing-base)',
+          },
+        ],
+        lg: [
+          'var(--font-size-lg)',
+          {
+            lineHeight: 'var(--line-height-lg)',
+            letterSpacing: 'var(--letter-spacing-lg)',
+          },
+        ],
+        xl: [
+          'var(--font-size-xl)',
+          {
+            lineHeight: 'var(--line-height-xl)',
+            letterSpacing: 'var(--letter-spacing-xl)',
+          },
+        ],
+        '2xl': [
+          'var(--font-size-2xl)',
+          {
+            lineHeight: 'var(--line-height-2xl)',
+            letterSpacing: 'var(--letter-spacing-2xl)',
+          },
+        ],
+      },
+      shadows: {
+        sm: 'var(--shadow-sm)',
+        DEFAULT: 'var(--shadow-base)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+        xl: 'var(--shadow-xl)',
       },
       keyframes: {
         shake: {
