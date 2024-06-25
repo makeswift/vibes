@@ -1,0 +1,15 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "env": [
+        "AIRTABLE_BASE_ID",
+        "AIRTABLE_ACCESS_TOKEN",
+        "RESEND_API_KEY",
+        "AIRTABLE_TABLE_ID",
+        "VERCEL_PROJECT_PRODUCTION_URL"
+      ]
+    }
+  }
+}
