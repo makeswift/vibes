@@ -53,7 +53,7 @@ export default function Draggable({ className, children, style, ...rest }: Props
       }}
       onPointerEnter={() => {
         prevZIndex.current = zIndex
-
+        setZIndex(stack + 1)
         setHover(true)
       }}
       onPointerLeave={() => {
