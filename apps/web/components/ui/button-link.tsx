@@ -32,7 +32,7 @@ const ButtonLink = ({
   children = 'Button',
 }: Props) => {
   const buttonClasses = clsx(
-    'inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none ring-offset-docs-background transition-colors before:hidden',
+    'inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none transition-colors before:hidden',
     VARIANT_STYLES[variant],
     SIZE_STYLES[size]
   )
@@ -40,7 +40,7 @@ const ButtonLink = ({
   return (
     <Link
       className={clsx(
-        'not-prose relative z-0 focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500',
+        'not-prose relative z-0 inline-block ring-offset-2 ring-offset-docs-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-docs-ring',
         className
       )}
       href={href ?? '#'}

@@ -7,78 +7,53 @@
   :root {
     --docs-background: 0 0% 100%;
     --docs-foreground: 0 0% 0%;
+    --docs-ring: 210 100% 70%;
 
-    --docs-card: 0 0% 100%;
-    --docs-card-foreground: 224 71.4% 4.1%;
+    --primary: 176 97% 46%;
+    --accent: 248 90% 62%;
+    --background: 220 30% 4%;
+    --foreground: 0 0% 100%;
+    --contrast-100: 220 20% 76%;
+    --contrast-200: 220 15% 60%;
+    --contrast-300: 220 12% 50%;
+    --contrast-400: 220 15% 36%;
+    --contrast-500: 220 20% 25%;
 
-    --docs-popover: 0 0% 100%;
-    --docs-popover-foreground: 224 71.4% 4.1%;
+    --font-family-heading: 'Spline Sans', system-ui, sans-serif;
+    --font-family-body: 'Spline Sans', system-ui, sans-serif;
+    --font-family-mono: 'Spline Sans Mono', system-ui, sans-serif;
 
-    --docs-primary: 220.9 39.3% 11%;
-    --docs-primary-foreground: 210 20% 98%;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
 
-    --docs-secondary: 220 14.3% 95.9%;
-    --docs-secondary-foreground: 220.9 39.3% 11%;
+    --line-height-xs: 1rem;
+    --line-height-sm: 1.25rem;
+    --line-height-base: 1.5rem;
+    --line-height-lg: 1.75rem;
+    --line-height-xl: 2rem;
+    --line-height-2xl: 2.25rem;
 
-    --docs-muted: 220 14.3% 95.9%;
-    --docs-muted-foreground: 220 8.9% 46.1%;
+    --letter-spacing-xs: 0em;
+    --letter-spacing-sm: 0em;
+    --letter-spacing-base: 0em;
+    --letter-spacing-lg: 0em;
+    --letter-spacing-xl: -0.01em;
+    --letter-spacing-2xl: -0.02em;
 
-    --docs-accent: 220 14.3% 95.9%;
-    --docs-accent-foreground: 220.9 39.3% 11%;
-
-    --docs-destructive: 0 84.2% 60.2%;
-    --docs-destructive-foreground: 210 20% 98%;
-
-    --docs-code-border: 224 71.4% 4.1% / 0.1;
-
-    --docs-border: 0 0% 0%;
-    --docs-input: 0 0% 100%;
-    --docs-ring: 224 71.4% 4.1%;
-
-    --docs-radius: 0.5rem;
-
-    --color-background: 222 39% 6%;
-    --color-foreground: 0 0% 100%;
-
-    --color-text: 180 20% 65%;
-
-    --color-muted-background: 220 17% 27%;
-    --color-muted-foreground: 194 16% 26%;
-
-    --color-primary: 176 97% 46%;
-    --color-primary-highlight: 323 81% 79%;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   .dark {
     --docs-background: 0 0% 0%;
     --docs-foreground: 0 0% 100%;
-
-    --docs-card: 224 71.4% 4.1%;
-    --docs-card-foreground: 210 20% 98%;
-
-    --docs-popover: 224 71.4% 4.1%;
-    --docs-popover-foreground: 210 20% 98%;
-
-    --docs-primary: 210 20% 98%;
-    --docs-primary-foreground: 220.9 39.3% 11%;
-
-    --docs-secondary: 215 27.9% 16.9%;
-    --docs-secondary-foreground: 210 20% 98%;
-
-    --docs-muted: 215 27.9% 16.9%;
-    --docs-muted-foreground: 217.9 10.6% 64.9%;
-
-    --docs-accent: 215 27.9% 16.9%;
-    --docs-accent-foreground: 210 20% 98%;
-
-    --docs-destructive: 0 62.8% 30.6%;
-    --docs-destructive-foreground: 210 20% 98%;
-
-    --docs-code-border: 210 20% 98% / 0.1;
-
-    --docs-border: 0 0% 100%;
-    --docs-input: 0 0% 0%;
-    --docs-ring: 216 12.2% 83.9%;
   }
 }
 

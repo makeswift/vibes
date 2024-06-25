@@ -39,12 +39,12 @@ pre[class*='language-'] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  @apply text-primary-highlight;
+  @apply text-primary;
 }
 
 .token.boolean,
 .token.number {
-  @apply text-primary-highlight;
+  @apply text-primary;
 }
 
 .token.selector,

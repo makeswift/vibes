@@ -13,7 +13,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         className={clsx(
-          'relative z-0 focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500',
+          'relative z-0 ring-offset-2 ring-offset-docs-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-docs-ring',
           className
         )}
         ref={ref}
@@ -21,11 +21,11 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       >
         <span
           className={clsx(
-            'ring-offset-docs-background inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none transition-colors',
+            'inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none ring-offset-docs-background transition-colors',
             {
               default:
                 'pattern-shadow pattern-shadow-sm hover:pattern-shadow-hover border-docs-foreground bg-docs-background text-docs-foreground',
-              ghost: 'hover:bg-docs-foreground/5 border-transparent',
+              ghost: 'border-transparent hover:bg-docs-foreground/5',
               link: 'text-primary underline-offset-4 hover:underline',
             }[variant],
             {
