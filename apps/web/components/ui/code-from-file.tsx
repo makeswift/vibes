@@ -6,16 +6,18 @@ import {
   transformerRemoveLineBreak,
 } from '@shikijs/transformers'
 import { readFile } from 'fs/promises'
+import path from 'path'
 import { codeToHtml } from 'shiki'
 
 import { CopyButton } from './copy-button'
 
 interface Props {
   pathname: string
+  basePath?: string
 }
 
-export async function CodeFromFile({ pathname }: Props) {
-  const file = await readFile(process.cwd() + pathname, 'utf8')
+export async function CodeFromFile({ pathname, basePath }: Props) {
+  const file = await readFile(path.join(basePath ?? process.cwd(), pathname), 'utf8')
   const code = await codeToHtml(file, {
     lang: 'javascript',
     themes: {
@@ -28,7 +30,7 @@ export async function CodeFromFile({ pathname }: Props) {
   return (
     <div className="relative">
       <div
-        className="not-prose overflow-x-auto bg-docs-background p-5"
+        className="not-prose max-w-full overflow-x-auto rounded-md bg-docs-background p-5 shadow-md"
         dangerouslySetInnerHTML={{ __html: code }}
       />
 

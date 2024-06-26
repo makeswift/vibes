@@ -2,7 +2,11 @@ import type { Config } from 'tailwindcss'
 
 const config = {
   darkMode: ['class'],
-  content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx,mdx}', './mdx-components.tsx'],
+  content: [
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx,mdx}',
+    './registry/**/*.{ts,tsx,mdx}',
+  ],
   prefix: '',
   theme: {
     container: {
@@ -37,9 +41,9 @@ const config = {
         },
       },
       fontFamily: {
-        'docs-heading': ['var(--font-docs-heading)'],
-        'docs-sans': ['var(--font-docs-sans)'],
-        'docs-mono': ['var(--font-docs-mono)'],
+        'docs-heading': ['var(--docs-font-family-heading)'],
+        'docs-body': ['var(--docs-font-family-body)'],
+        'docs-mono': ['var(--docs-font-family-mono)'],
         heading: ['var(--font-family-heading)'],
         body: ['var(--font-family-body)'],
         mono: ['var(--font-family-mono)'],

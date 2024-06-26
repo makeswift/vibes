@@ -1,28 +1,25 @@
-import { Icon } from '@/components/ui/icon'
-
 import { navigation } from './navigation'
-import { PageLink } from './page-link'
+import { SidebarLink } from './sidebar-link'
 
 interface Props {
-  slug: string[]
+  vibeSlug: string
 }
 
-export function Sidebar({ slug }: Props) {
-  const chapter = navigation.chapters.find(chapter => chapter.slug === slug[0])
+export function Sidebar({ vibeSlug }: Props) {
+  const vibe = navigation.vibes.find(vibe => vibe.slug === vibeSlug)
 
   return (
-    <div className="text-docs-foreground space-y-2">
-      {chapter?.groups.map(group => (
-        <div key={group.name}>
-          <div className="font-docs-heading flex items-center gap-2 py-1.5 text-sm leading-normal">
-            <Icon name={group.icon} />
-            {group.name}
+    <div className="space-y-2 text-docs-foreground">
+      {vibe?.groups.map(group => (
+        <div key={group.title}>
+          <div className="flex items-center gap-2 py-1.5 font-docs-heading text-sm leading-normal">
+            {group.title}
           </div>
 
           <ul>
-            {group.pages.map(path => (
-              <li key={path}>
-                <PageLink path={path} />
+            {group.pages.map(page => (
+              <li key={page.slug}>
+                <SidebarLink href={`/docs/${vibeSlug}/${page.slug}`}>{page.title}</SidebarLink>
               </li>
             ))}
           </ul>

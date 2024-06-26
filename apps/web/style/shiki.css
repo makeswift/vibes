@@ -31,6 +31,10 @@
   }
 }
 
+.shiki code {
+  font-family: var(--docs-font-family-mono);
+}
+
 .shiki .line {
   @apply relative block text-[12px];
   padding: 0 var(--shiki-line-padding);
@@ -50,7 +54,7 @@
 }
 
 .shiki.show-line-numbers .line:before {
-  @apply text-docs-foreground/30 inline-block shrink-0 select-none text-right;
+  @apply inline-block shrink-0 select-none text-right text-docs-foreground/30;
   width: var(--shiki-gutter-width);
   margin-right: var(--shiki-line-padding);
   counter-increment: line;
