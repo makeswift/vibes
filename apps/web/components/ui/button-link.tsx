@@ -5,9 +5,9 @@ import clsx from 'clsx'
 
 const VARIANT_STYLES = {
   default:
-    'bg-docs-background text-docs-foreground border-docs-foreground pattern-shadow pattern-shadow-sm hover:pattern-shadow-hover',
-  ghost: 'hover:bg-docs-foreground/5 border-transparent',
-  link: 'text-docs-foreground underline-offset-4 hover:underline',
+    'bg-background text-foreground border-foreground pattern-shadow pattern-shadow-sm hover:pattern-shadow-hover',
+  ghost: 'hover:bg-foreground/5 border-transparent',
+  link: 'text-foreground underline-offset-4 hover:underline',
 }
 
 const SIZE_STYLES = {
@@ -40,7 +40,7 @@ const ButtonLink = ({
   return (
     <Link
       className={clsx(
-        'not-prose relative z-0 inline-block ring-offset-2 ring-offset-docs-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-docs-ring',
+        'not-prose focus-visible:ring-accent relative z-0 inline-block ring-offset-2 ring-offset-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2',
         className
       )}
       href={href ?? '#'}

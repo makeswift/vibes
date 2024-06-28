@@ -24,7 +24,7 @@ const PopoverContent = React.forwardRef<
       )}
       {...props}
     >
-      <div className="pattern-shadow pattern-shadow-lg border-docs-foreground bg-docs-background w-72 border p-4">
+      <div className="pattern-shadow pattern-shadow-lg w-72 border border-foreground bg-background p-4">
         {children}
       </div>
     </PopoverPrimitive.Content>

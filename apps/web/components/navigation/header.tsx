@@ -27,7 +27,7 @@ export function Header({ sidebar }: Props) {
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-docs-foreground/25 bg-docs-background px-4 md:h-16 md:px-6">
+    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-foreground/25 bg-background px-4 md:h-16 md:px-6">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between pb-0.5">
         <div className="flex items-center gap-x-3 md:gap-x-4">
           <button
@@ -39,13 +39,13 @@ export function Header({ sidebar }: Props) {
             <div className="flex h-4 w-5 flex-col justify-between py-0.5 transition-transform">
               <div
                 className={clsx(
-                  'h-0.5 w-full bg-docs-foreground transition-transform duration-200',
+                  'h-0.5 w-full bg-foreground transition-transform duration-200',
                   mobileNavOpen ? 'translate-y-[5px] rotate-45' : 'translate-y-0 rotate-0'
                 )}
               ></div>
               <div
                 className={clsx(
-                  'h-0.5 w-full bg-docs-foreground transition-transform duration-200',
+                  'h-0.5 w-full bg-foreground transition-transform duration-200',
                   mobileNavOpen ? '-translate-y-[5px] -rotate-45' : 'translate-y-0 rotate-0'
                 )}
               ></div>
@@ -54,7 +54,7 @@ export function Header({ sidebar }: Props) {
 
           {mobileNavOpen && (
             <Portal.Root asChild>
-              <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto bg-docs-background p-4 md:p-6">
+              <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto bg-background p-4 md:p-6">
                 {sidebar}
               </div>
             </Portal.Root>
@@ -77,7 +77,7 @@ export function Header({ sidebar }: Props) {
                   height={20}
                   viewBox="0 0 20 20"
                   fill="none"
-                  className="stroke-docs-foreground"
+                  className="stroke-foreground"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <circle cx="9" cy="9" r="6.5" stroke="inherit" />
@@ -87,11 +87,11 @@ export function Header({ sidebar }: Props) {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full rounded-none border border-docs-foreground/20 bg-docs-background py-2 pr-3 ps-9 text-sm text-docs-foreground placeholder-docs-foreground/50 outline-none ring-0 transition-colors ease-linear hover:border-docs-foreground"
+                className="block w-full rounded-none border border-foreground/20 bg-background py-2 pr-3 ps-9 text-sm text-foreground placeholder-foreground/50 outline-none ring-0 transition-colors ease-linear hover:border-foreground"
                 placeholder="Search"
                 required
               />
-              <div className="absolute end-2.5 top-1/2 -translate-y-1/2 rounded-lg px-2 py-2 text-xs font-medium text-docs-foreground/50 focus:outline-none">
+              <div className="absolute end-2.5 top-1/2 -translate-y-1/2 rounded-lg px-2 py-2 text-xs font-medium text-foreground/50 focus:outline-none">
                 ⌘K
               </div>
             </div>

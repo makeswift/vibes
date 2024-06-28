@@ -30,7 +30,7 @@ export async function CodeFromFile({ pathname, basePath }: Props) {
   return (
     <div className="relative">
       <div
-        className="not-prose max-w-full overflow-x-auto rounded-md bg-docs-background p-5 shadow-md"
+        className="not-prose max-w-full overflow-x-auto rounded-md bg-background p-5 shadow-md"
         dangerouslySetInnerHTML={{ __html: code }}
       />
 

@@ -26,8 +26,6 @@ const config = {
     extend: {
       colors: {
         'docs-ring': 'hsl(var(--docs-ring))',
-        'docs-background': 'hsl(var(--docs-background))',
-        'docs-foreground': 'hsl(var(--docs-foreground))',
         primary: 'hsl(var(--primary))',
         accent: 'hsl(var(--accent))',
         background: 'hsl(var(--background))',
