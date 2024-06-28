@@ -9,7 +9,7 @@ export function Sidebar({ vibeSlug }: Props) {
   const vibe = navigation.vibes.find(vibe => vibe.slug === vibeSlug)
 
   return (
-    <div className="space-y-2 text-docs-foreground">
+    <div className="space-y-2 text-foreground">
       {vibe?.groups.map(group => (
         <div key={group.title}>
           <div className="flex items-center gap-2 py-1.5 font-docs-heading text-sm leading-normal">

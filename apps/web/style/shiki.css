@@ -23,7 +23,7 @@
   --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
 
   .shiki {
-    background-color: var(--docs-background) !important;
+    background-color: var(--background) !important;
   }
 
   .shiki span {
@@ -54,7 +54,7 @@
 }
 
 .shiki.show-line-numbers .line:before {
-  @apply inline-block shrink-0 select-none text-right text-docs-foreground/30;
+  @apply inline-block shrink-0 select-none text-right text-foreground/30;
   width: var(--shiki-gutter-width);
   margin-right: var(--shiki-line-padding);
   counter-increment: line;

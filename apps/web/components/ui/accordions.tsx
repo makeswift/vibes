@@ -21,17 +21,17 @@ function Accordion({
 }) {
   return (
     <AccordionRadix.Item
-      className="pattern-shadow hover:pattern-shadow-hover pattern-shadow-sm border-docs-foreground bg-docs-background group pointer-events-none border"
+      className="pattern-shadow hover:pattern-shadow-hover pattern-shadow-sm group pointer-events-none border border-foreground bg-background"
       value={value}
     >
       <AccordionRadix.Header asChild>
         <AccordionRadix.Trigger asChild>
           <div className="pointer-events-auto flex w-full cursor-pointer items-center gap-x-8 p-5">
-            <span className="flex-1 font-heading leading-normal">{title}</span>
+            <span className="font-heading flex-1 leading-normal">{title}</span>
 
             <div className="relative aspect-square w-[17px]">
-              <div className="bg-docs-foreground absolute left-1/2 top-1/2 h-full w-[1px] -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-data-[state=open]:rotate-90" />
-              <div className="bg-docs-foreground absolute left-1/2 top-1/2 h-[1px] w-full -translate-x-1/2 -translate-y-1/2" />
+              <div className="absolute left-1/2 top-1/2 h-full w-[1px] -translate-x-1/2 -translate-y-1/2 bg-foreground transition-transform duration-300 group-data-[state=open]:rotate-90" />
+              <div className="absolute left-1/2 top-1/2 h-[1px] w-full -translate-x-1/2 -translate-y-1/2 bg-foreground" />
             </div>
           </div>
         </AccordionRadix.Trigger>

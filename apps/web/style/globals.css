@@ -5,9 +5,17 @@
 
 @layer base {
   :root {
-    --docs-background: 0 0% 100%;
-    --docs-foreground: 0 0% 0%;
-    --docs-ring: 210 100% 70%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --primary: 210 100% 50%;
+    --accent: 210 100% 70%;
+
+    --contrast-100: 220 20% 76%;
+    --contrast-200: 220 15% 60%;
+    --contrast-300: 220 12% 50%;
+    --contrast-400: 220 15% 36%;
+    --contrast-500: 220 20% 25%;
 
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
@@ -38,8 +46,8 @@
   }
 
   .dark {
-    --docs-background: 0 0% 0%;
-    --docs-foreground: 0 0% 100%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
   }
 }
 
@@ -51,7 +59,7 @@
     touch-action: none;
   }
   body {
-    @apply bg-docs-background;
+    @apply bg-background;
   }
   .pattern-shadow {
     @apply relative;
@@ -69,15 +77,15 @@
     @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''];
     background: linear-gradient(
         135deg,
-        hsl(var(--docs-foreground)) 0%,
+        hsl(var(--foreground)) 0%,
         transparent 0%,
         transparent 30%,
-        hsl(var(--docs-foreground)) 30%,
-        hsl(var(--docs-foreground)) 50%,
+        hsl(var(--foreground)) 30%,
+        hsl(var(--foreground)) 50%,
         transparent 50%,
         transparent 80%,
-        hsl(var(--docs-foreground)) 80%,
-        hsl(var(--docs-foreground)) 100%
+        hsl(var(--foreground)) 80%,
+        hsl(var(--foreground)) 100%
       )
       0 0/ 5px 5px;
   }
