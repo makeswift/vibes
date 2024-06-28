@@ -27,7 +27,7 @@ export function Header({ sidebar }: Props) {
   }, [pathname])
 
   return (
-    <header className="border-docs-foreground/25 bg-docs-background sticky top-0 z-30 h-14 border-b border-dashed px-4 md:h-16 md:px-6">
+    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-docs-foreground/25 bg-docs-background px-4 md:h-16 md:px-6">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between pb-0.5">
         <div className="flex items-center gap-x-3 md:gap-x-4">
           <button
@@ -39,13 +39,13 @@ export function Header({ sidebar }: Props) {
             <div className="flex h-4 w-5 flex-col justify-between py-0.5 transition-transform">
               <div
                 className={clsx(
-                  'bg-docs-foreground h-0.5 w-full transition-transform duration-200',
+                  'h-0.5 w-full bg-docs-foreground transition-transform duration-200',
                   mobileNavOpen ? 'translate-y-[5px] rotate-45' : 'translate-y-0 rotate-0'
                 )}
               ></div>
               <div
                 className={clsx(
-                  'bg-docs-foreground h-0.5 w-full transition-transform duration-200',
+                  'h-0.5 w-full bg-docs-foreground transition-transform duration-200',
                   mobileNavOpen ? '-translate-y-[5px] -rotate-45' : 'translate-y-0 rotate-0'
                 )}
               ></div>
@@ -54,7 +54,7 @@ export function Header({ sidebar }: Props) {
 
           {mobileNavOpen && (
             <Portal.Root asChild>
-              <div className="bg-docs-background fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto p-4 md:p-6">
+              <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto bg-docs-background p-4 md:p-6">
                 {sidebar}
               </div>
             </Portal.Root>
@@ -87,11 +87,11 @@ export function Header({ sidebar }: Props) {
               <input
                 type="search"
                 id="default-search"
-                className="border-docs-foreground/20 text-docs-foreground placeholder-docs-foreground/50 hover:border-docs-foreground bg-docs-background block w-full rounded-none border py-2 pr-3 ps-9 text-sm outline-none ring-0 transition-colors ease-linear"
+                className="block w-full rounded-none border border-docs-foreground/20 bg-docs-background py-2 pr-3 ps-9 text-sm text-docs-foreground placeholder-docs-foreground/50 outline-none ring-0 transition-colors ease-linear hover:border-docs-foreground"
                 placeholder="Search"
                 required
               />
-              <div className="text-docs-foreground/50 absolute end-2.5 top-1/2 -translate-y-1/2 rounded-lg px-2 py-2 text-xs font-medium focus:outline-none">
+              <div className="absolute end-2.5 top-1/2 -translate-y-1/2 rounded-lg px-2 py-2 text-xs font-medium text-docs-foreground/50 focus:outline-none">
                 ⌘K
               </div>
             </div>
