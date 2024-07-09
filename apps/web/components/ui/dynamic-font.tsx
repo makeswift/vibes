@@ -1,32 +1,6 @@
-'use client'
-
-import { useEffect } from 'react'
+import ReactDOM from 'react-dom'
 
 import { Font } from '@/registry/schema'
-
-async function loadFont({
-  document,
-  name,
-  src,
-  style,
-  weight,
-}: {
-  document: Document
-  name: string
-  src: string
-  style?: string
-  weight?: string
-}) {
-  try {
-    const fontFace = new FontFace(name, `url(${src})`, { style, weight })
-
-    await fontFace.load()
-
-    document.fonts.add(fontFace)
-  } catch (e) {
-    console.error('Failed to load font', { name, src })
-  }
-}
 
 interface Props {
   name: string
@@ -34,17 +8,48 @@ interface Props {
 }
 
 export function DynamicFont({ name, src }: Props) {
-  useEffect(() => {
-    if (Array.from(document.fonts).some(font => font.family === name)) return
+  if (typeof src === 'string') {
+    ReactDOM.preload(src, { as: 'font', type: 'font/woff2' })
 
-    if (typeof src === 'string') {
-      loadFont({ document, name, src })
-    } else {
-      src.forEach(({ path, style, weight }) => {
-        loadFont({ document, name, src: path, style, weight })
-      })
-    }
-  }, [name, src])
+    return (
+      <style
+        // @ts-ignore React 18.3 doesn't include type definitions for style
+        href={src}
+        precedence="low"
+        dangerouslySetInnerHTML={{
+          __html: `
+          @font-face {
+            font-family: '${name}';
+            font-style: normal;
+            font-display: swap;
+            src: url(${src}) format('woff2');
+          }
+        `,
+        }}
+      />
+    )
+  } else {
+    src.forEach(({ path }) => {
+      ReactDOM.preload(path, { as: 'font', type: 'font/woff2' })
+    })
 
-  return null
+    return src.map(({ path, style, weight }) => (
+      <style
+        // @ts-ignore React 18.3 doesn't include type definitions for style
+        href={path}
+        precedence="low"
+        dangerouslySetInnerHTML={{
+          __html: `
+          @font-face {
+            font-family: '${name}';
+            font-style: ${style ?? 'normal'};
+            font-weight: ${weight ?? 'normal'};
+            font-display: swap;
+            src: url(${path}) format('woff2');
+          }
+        `,
+        }}
+      />
+    ))
+  }
 }

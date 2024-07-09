@@ -48,9 +48,6 @@ export function Preview({ slug, name, brand }: Props) {
                 }
               >
                 <Suspense fallback={<div>Loading...</div>}>
-                  {brand.fonts.map(font => (
-                    <DynamicFont src={font.src} name={font.name} />
-                  ))}
                   <Component />
                 </Suspense>
               </ErrorBoundary>

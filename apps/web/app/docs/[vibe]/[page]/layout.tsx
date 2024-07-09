@@ -1,6 +1,5 @@
-import ReactDOM from 'react-dom'
-
 import { Header, Sidebar } from '@/components/navigation'
+import { DynamicFont } from '@/components/ui/dynamic-font'
 import { getVibe } from '@/lib/registry'
 
 export default async function Layout({
@@ -13,17 +12,10 @@ export default async function Layout({
   const vibe = getVibe(params.vibe)
   const fonts = vibe?.brands.flatMap(brand => brand.fonts)
 
-  fonts?.forEach(({ src }) => {
-    if (typeof src === 'string') {
-      ReactDOM.preload(src, { as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' })
-    } else
-      src.forEach(({ path }) => {
-        ReactDOM.preload(path, { as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' })
-      })
-  })
-
   return (
     <>
+      {fonts?.map(font => <DynamicFont src={font.src} name={font.name} />)}
+
       <Header sidebar={<Sidebar vibeSlug={params.vibe} />} />
 
       <div className="px-5 md:px-8">
