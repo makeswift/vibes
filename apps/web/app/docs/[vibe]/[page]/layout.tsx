@@ -14,7 +14,9 @@ export default async function Layout({
 
   return (
     <>
-      {fonts?.map(font => <DynamicFont src={font.src} name={font.name} />)}
+      {fonts?.map(font => (
+        <DynamicFont key={`${font.name}:${font.src}`} src={font.src} name={font.name} />
+      ))}
 
       <Header sidebar={<Sidebar vibeSlug={params.vibe} />} />
 

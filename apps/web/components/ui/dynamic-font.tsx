@@ -35,6 +35,7 @@ export function DynamicFont({ name, src }: Props) {
 
     return src.map(({ path, style, weight }) => (
       <style
+        key={`${path}:${style}:${weight}`}
         // @ts-ignore React 18.3 doesn't include type definitions for style
         href={path}
         precedence="low"
