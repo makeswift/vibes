@@ -129,7 +129,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
           brand={brand}
         />
       )}
-      <div className="gap-x-20 pt-5 font-docs-sans text-foreground md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+      <div className="font-docs-sans gap-x-20 pt-5 text-foreground md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
         <div
           className={clsx(
             'prose w-full max-w-full py-10 dark:prose-invert',

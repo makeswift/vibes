@@ -12,8 +12,15 @@ export type Component = {
 
 export type Components = NonEmptyArray<Component>
 
+export type Font = {
+  name: string
+  src: string | { path: string; weight?: string; style?: string }[]
+}
+
 export type Brand = {
   name: string
+  logo: string
+  fonts: Font[]
   cssVars: {
     primary: string
     accent: string
@@ -28,7 +35,15 @@ export type Brand = {
 
     'font-family-heading': string
     'font-family-body': string
-    'font-family-mono': string
+    'font-family-mono'?: string
+
+    'font-feature-settings-heading'?: string
+    'font-feature-settings-body'?: string
+    'font-feature-settings-mono'?: string
+
+    'font-variation-settings-heading'?: string
+    'font-variation-settings-body'?: string
+    'font-variation-settings-mono'?: string
 
     'font-size-xs': string
     'font-size-sm': string
@@ -37,19 +52,26 @@ export type Brand = {
     'font-size-xl': string
     'font-size-2xl': string
 
-    'line-height-xs': string
-    'line-height-sm': string
-    'line-height-base': string
-    'line-height-lg': string
-    'line-height-xl': string
-    'line-height-2xl': string
+    'line-height-xs'?: string
+    'line-height-sm'?: string
+    'line-height-base'?: string
+    'line-height-lg'?: string
+    'line-height-xl'?: string
+    'line-height-2xl'?: string
 
-    'letter-spacing-xs': string
-    'letter-spacing-sm': string
-    'letter-spacing-base': string
-    'letter-spacing-lg': string
-    'letter-spacing-xl': string
-    'letter-spacing-2xl': string
+    'letter-spacing-xs'?: string
+    'letter-spacing-sm'?: string
+    'letter-spacing-base'?: string
+    'letter-spacing-lg'?: string
+    'letter-spacing-xl'?: string
+    'letter-spacing-2xl'?: string
+
+    'font-weight-xs'?: string
+    'font-weight-sm'?: string
+    'font-weight-base'?: string
+    'font-weight-lg'?: string
+    'font-weight-xl'?: string
+    'font-weight-2xl'?: string
 
     'shadow-sm': string
     'shadow-base': string

@@ -21,7 +21,7 @@ export const Accordions = forwardRef(function Accordions(
   ref: Ref<HTMLDivElement>
 ) {
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className)} asChild>
+    <Accordion.Root type={type} ref={ref} className={clsx(className, 'font-body')} asChild>
       <ul className="relative w-full after:absolute after:inset-x-0 after:top-0 after:h-[1px] after:bg-gradient-to-r after:from-foreground/0 after:via-foreground after:to-foreground/0 after:opacity-20">
         {accordions.map((accordion, i) => (
           <Accordion.Item key={i} value={`${i + 1}`} asChild>

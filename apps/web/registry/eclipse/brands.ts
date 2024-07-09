@@ -3,6 +3,13 @@ import { Brands } from '@/registry/schema'
 export const brands = [
   {
     name: 'Aquamarine',
+    logo: '',
+    fonts: [
+      {
+        name: 'Inter',
+        src: '/fonts/Inter-VariableFont_slnt,wght.woff2',
+      },
+    ],
     cssVars: {
       primary: '176 97% 46%',
       accent: '248 90% 62%',
@@ -15,9 +22,12 @@ export const brands = [
       'contrast-400': '220 15% 36%',
       'contrast-500': '220 20% 25%',
 
-      'font-family-heading': "'Spline Sans', system-ui, sans-serif",
-      'font-family-body': "'Spline Sans', system-ui, sans-serif",
-      'font-family-mono': "'Spline Sans Mono', system-ui, sans-serif",
+      'font-family-heading': "'Inter', system-ui, sans-serif",
+      'font-family-body': "'Inter', system-ui, sans-serif",
+      'font-family-mono': "'Inter', system-ui, sans-serif",
+
+      'font-variation-settings-body': '"slnt" -10',
+      'font-variation-settings-heading': '"slnt" 0',
 
       'font-size-xs': '0.75rem',
       'font-size-sm': '0.875rem',
@@ -40,6 +50,13 @@ export const brands = [
       'letter-spacing-xl': '-0.01em',
       'letter-spacing-2xl': '-0.02em',
 
+      'font-weight-xs': '400',
+      'font-weight-sm': '400',
+      'font-weight-base': '400',
+      'font-weight-lg': '500',
+      'font-weight-xl': '500',
+      'font-weight-2xl': '500',
+
       'shadow-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
       'shadow-base': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
       'shadow-md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
@@ -49,6 +66,22 @@ export const brands = [
   },
   {
     name: 'Magenta',
+    logo: '',
+    fonts: [
+      {
+        name: 'Epilogue',
+        src: [
+          {
+            path: '/fonts/Epilogue[wght].woff2',
+            style: 'normal',
+          },
+          {
+            path: '/fonts/Epilogue-Italic[wght].woff2',
+            style: 'italic',
+          },
+        ],
+      },
+    ],
     cssVars: {
       primary: '301, 100%, 50%',
       accent: '248 90% 62%',
@@ -61,9 +94,9 @@ export const brands = [
       'contrast-400': '220 15% 36%',
       'contrast-500': '220 20% 25%',
 
-      'font-family-heading': "'Spline Sans', system-ui, sans-serif",
-      'font-family-body': "'Spline Sans', system-ui, sans-serif",
-      'font-family-mono': "'Spline Sans Mono', system-ui, sans-serif",
+      'font-family-heading': "'Epilogue', system-ui, sans-serif",
+      'font-family-body': "'Epilogue', system-ui, sans-serif",
+      'font-family-mono': "'Epilogue', system-ui, sans-serif",
 
       'font-size-xs': '0.75rem',
       'font-size-sm': '0.875rem',
@@ -85,6 +118,13 @@ export const brands = [
       'letter-spacing-lg': '0em',
       'letter-spacing-xl': '-0.01em',
       'letter-spacing-2xl': '-0.02em',
+
+      'font-weight-xs': '400',
+      'font-weight-sm': '400',
+      'font-weight-base': '400',
+      'font-weight-lg': '500',
+      'font-weight-xl': '500',
+      'font-weight-2xl': '500',
 
       'shadow-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
       'shadow-base': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',

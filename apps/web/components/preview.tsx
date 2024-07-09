@@ -1,11 +1,15 @@
 import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
+import clsx from 'clsx'
+
 import Card from '@/components/ui/card'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { getCssVars, getVibe } from '@/lib/registry'
 import { Brand } from '@/registry/schema'
+
+import { DynamicFont } from './ui/dynamic-font'
 
 interface Props {
   slug: string
@@ -44,6 +48,9 @@ export function Preview({ slug, name, brand }: Props) {
                 }
               >
                 <Suspense fallback={<div>Loading...</div>}>
+                  {brand.fonts.map(font => (
+                    <DynamicFont src={font.src} name={font.name} />
+                  ))}
                   <Component />
                 </Suspense>
               </ErrorBoundary>
