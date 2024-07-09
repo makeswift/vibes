@@ -9,6 +9,7 @@ import * as Portal from '@radix-ui/react-portal'
 import clsx from 'clsx'
 
 import { ModeToggle } from '@/components/ui/mode-toggle'
+import { Search } from '@/icons/generated'
 
 interface Props {
   sidebar: React.ReactNode
@@ -66,36 +67,7 @@ export function Header({ sidebar }: Props) {
         </div>
 
         <div className="flex items-center gap-x-3">
-          <form className="hidden w-72 md:block">
-            <label htmlFor="default-search" className="sr-only">
-              Search
-            </label>
-            <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-2">
-                <svg
-                  width={20}
-                  height={20}
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="stroke-foreground"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="9" cy="9" r="6.5" stroke="inherit" />
-                  <path d="M18 18L13.5 13.5" stroke="inherit" />
-                </svg>
-              </div>
-              <input
-                type="search"
-                id="default-search"
-                className="block w-full rounded-none border border-foreground/20 bg-background py-2 pr-3 ps-9 text-sm text-foreground placeholder-foreground/50 outline-none ring-0 transition-colors ease-linear hover:border-foreground"
-                placeholder="Search"
-                required
-              />
-              <div className="absolute end-2.5 top-1/2 -translate-y-1/2 rounded-lg px-2 py-2 text-xs font-medium text-foreground/50 focus:outline-none">
-                ⌘K
-              </div>
-            </div>
-          </form>
+          <Search />
 
           <ModeToggle />
         </div>
