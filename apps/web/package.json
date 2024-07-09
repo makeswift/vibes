@@ -38,7 +38,7 @@
     "gray-matter": "^4.0.3",
     "jiti": "^1.21.3",
     "lucide-react": "^0.336.0",
-    "next": "14.2.3",
+    "next": "14.2.4",
     "next-mdx-remote": "0.0.0-canary-20240321205249",
     "next-themes": "^0.2.1",
     "posthog-js": "^1.138.1",

@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 const PolysansWide = localFont({
   src: './fonts/PolySans-BulkyWide.woff2',
   display: 'swap',
-  variable: '--docs-font-family-heading',
+  variable: '--font-family-heading',
 })
 
 const Polysans = localFont({
@@ -60,14 +60,14 @@ const Polysans = localFont({
     },
   ],
   display: 'swap',
-  variable: '--docs-font-family-body',
+  variable: '--font-family-body',
 })
 
 const IBMPlexMono = IBM_Plex_Mono({
   weight: '400',
   subsets: ['latin'],
   display: 'swap',
-  variable: '--docs-font-family-mono',
+  variable: '--font-family-mono',
 })
 
 const PostHogPageView = dynamic(() => import('./post-hog-page-view'), { ssr: false })

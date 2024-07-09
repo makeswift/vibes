@@ -23,6 +23,14 @@ export function getCssVars(brand: Brand): React.CSSProperties {
     '--font-family-body': cssVars['font-family-body'],
     '--font-family-mono': cssVars['font-family-mono'],
 
+    '--font-feature-settings-heading': cssVars['font-feature-settings-heading'],
+    '--font-feature-settings-body': cssVars['font-feature-settings-body'],
+    '--font-feature-settings-mono': cssVars['font-feature-settings-mono'],
+
+    '--font-variation-settings-heading': cssVars['font-variation-settings-heading'],
+    '--font-variation-settings-body': cssVars['font-variation-settings-body'],
+    '--font-variation-settings-mono': cssVars['font-variation-settings-mono'],
+
     '--font-size-xs': cssVars['font-size-xs'],
     '--font-size-sm': cssVars['font-size-sm'],
     '--font-size-base': cssVars['font-size-base'],
@@ -43,6 +51,13 @@ export function getCssVars(brand: Brand): React.CSSProperties {
     '--letter-spacing-lg': cssVars['letter-spacing-lg'],
     '--letter-spacing-xl': cssVars['letter-spacing-xl'],
     '--letter-spacing-2xl': cssVars['letter-spacing-2xl'],
+
+    '--font-weight-xs': cssVars['font-weight-xs'],
+    '--font-weight-sm': cssVars['font-weight-sm'],
+    '--font-weight-base': cssVars['font-weight-base'],
+    '--font-weight-lg': cssVars['font-weight-lg'],
+    '--font-weight-xl': cssVars['font-weight-xl'],
+    '--font-weight-2xl': cssVars['font-weight-2xl'],
 
     '--shadow-sm': cssVars['shadow-sm'],
     '--shadow-base': cssVars['shadow-base'],
