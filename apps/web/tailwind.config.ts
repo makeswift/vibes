@@ -9,20 +9,6 @@ const config = {
   ],
   prefix: '',
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
-    'docs-dropShadow': {
-      sm: '-2px 2px 0 #000',
-      DEFAULT: '-3px 3px 0 #000',
-      md: '-4px 4px 0 #000',
-      lg: '-6px 6px 0 #000',
-      xl: '-8px 8px 0 #000',
-    },
     extend: {
       colors: {
         primary: 'hsl(var(--primary))',
