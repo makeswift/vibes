@@ -1,4 +1,4 @@
-import { Header, Sidebar } from '@/components/navigation'
+import { Header } from '@/components/navigation'
 import { DynamicFont } from '@/components/ui/dynamic-font'
 import { getVibe } from '@/lib/registry'
 
@@ -18,19 +18,9 @@ export default async function Layout({
         <DynamicFont key={`${font.name}:${font.src}`} src={font.src} name={font.name} />
       ))}
 
-      <Header sidebar={<Sidebar vibeSlug={params.vibe} />} />
+      <Header vibeSlug={params.vibe} />
 
-      <div className="px-5 md:px-8">
-        <div className="mx-auto flex w-full max-w-7xl gap-x-10 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
-          <aside className="top-16 z-10 hidden h-[calc(100vh-4rem)] w-full md:sticky md:block">
-            <div className="h-full overflow-y-scroll py-8">
-              <Sidebar vibeSlug={params.vibe} />
-            </div>
-          </aside>
-
-          {children}
-        </div>
-      </div>
+      <div className="px-5 md:px-8">{children}</div>
     </>
   )
 }
