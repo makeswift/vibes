@@ -14,7 +14,7 @@ export function Sidebar({ vibeSlug }: Props) {
   return (
     <ul className="space-y-2 text-foreground">
       {vibe.groups.map(group => (
-        <div className="py-1">
+        <div key={group.title} className="py-1">
           <div className="mb-2 font-heading text-lg font-medium">{group.title}</div>
           {group.pages.map(page => (
             <li key={page.slug} className="py-1">
