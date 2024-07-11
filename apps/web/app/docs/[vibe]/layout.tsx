@@ -14,7 +14,7 @@ export default async function Layout({
   const fonts = vibe?.brands.flatMap(brand => brand.fonts)
 
   return (
-    <BrandProvider vibeSlug={params.vibe}>
+    <>
       {fonts?.map(font => (
         <DynamicFont key={`${font.name}:${font.src}`} src={font.src} name={font.name} />
       ))}
@@ -27,8 +27,10 @@ export default async function Layout({
             <Sidebar vibeSlug={params.vibe} />
           </div>
         </aside>
-        <div className="mx-auto w-full max-w-7xl px-5 md:px-8">{children}</div>
+        <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
+          <BrandProvider vibeSlug={params.vibe}>{children}</BrandProvider>
+        </div>
       </div>
-    </BrandProvider>
+    </>
   )
 }
