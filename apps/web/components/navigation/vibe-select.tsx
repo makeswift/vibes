@@ -28,7 +28,7 @@ export function VibeSelect({ vibeSlug }: Props) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={2}>
         {navigation.vibes.map(vibe => (
-          <Link href={`/docs/${vibe.slug}`}>
+          <Link key={vibe.slug} href={`/docs/${vibe.slug}`}>
             <DropdownMenuItem>{vibe.name}</DropdownMenuItem>
           </Link>
         ))}

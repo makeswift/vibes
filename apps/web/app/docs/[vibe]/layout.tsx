@@ -12,8 +12,6 @@ export default async function Layout({
   const vibe = getVibe(params.vibe)
   const fonts = vibe?.brands.flatMap(brand => brand.fonts)
 
-  console.log('remoutn')
-
   return (
     <>
       {fonts?.map(font => (
