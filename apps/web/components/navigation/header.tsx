@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -9,13 +8,21 @@ import * as Portal from '@radix-ui/react-portal'
 import clsx from 'clsx'
 
 import { ModeToggle } from '@/components/ui/mode-toggle'
+import { Search } from '@/icons/generated'
+
+import { GroupLink } from './group-link'
+import { Link } from './link'
+import { Group, Vibe, navigation } from './navigation'
+import { PageLink } from './page-link'
+import { VibeSelect } from './vibe-select'
 
 interface Props {
-  sidebar: React.ReactNode
+  vibeSlug: string
 }
 
-export function Header({ sidebar }: Props) {
+export function Header({ vibeSlug }: Props) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const vibe = navigation.vibes.find(vibe => vibe.slug === vibeSlug)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -51,55 +58,48 @@ export function Header({ sidebar }: Props) {
               ></div>
             </div>
           </button>
-
-          {mobileNavOpen && (
-            <Portal.Root asChild>
-              <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto bg-background p-4 md:p-6">
-                {sidebar}
-              </div>
-            </Portal.Root>
-          )}
-
           <Link href="/" className="shrink-0">
             <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
           </Link>
+          <VibeSelect vibeSlug={vibeSlug} />
         </div>
 
+        <nav className="hidden gap-x-4 md:flex">
+          {vibe?.groups.map(group => (
+            <GroupLink key={group.pages[0].slug} vibe={vibe} group={group} />
+          ))}
+        </nav>
+
         <div className="flex items-center gap-x-3">
-          <form className="hidden w-72 md:block">
-            <label htmlFor="default-search" className="sr-only">
-              Search
-            </label>
-            <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-2">
-                <svg
-                  width={20}
-                  height={20}
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="stroke-foreground"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="9" cy="9" r="6.5" stroke="inherit" />
-                  <path d="M18 18L13.5 13.5" stroke="inherit" />
-                </svg>
-              </div>
-              <input
-                type="search"
-                id="default-search"
-                className="block w-full rounded-none border border-foreground/20 bg-background py-2 pr-3 ps-9 text-sm text-foreground placeholder-foreground/50 outline-none ring-0 transition-colors ease-linear hover:border-foreground"
-                placeholder="Search"
-                required
-              />
-              <div className="absolute end-2.5 top-1/2 -translate-y-1/2 rounded-lg px-2 py-2 text-xs font-medium text-foreground/50 focus:outline-none">
-                ⌘K
-              </div>
-            </div>
-          </form>
+          <Search />
 
           <ModeToggle />
         </div>
       </div>
+
+      {mobileNavOpen && (
+        <Portal.Root asChild>
+          <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto bg-background p-4 md:p-6">
+            <div className="space-y-2 text-foreground">
+              {vibe?.groups.map(group => (
+                <div key={group.title}>
+                  <div className="font-docs-heading flex items-center gap-2 py-1.5 text-sm leading-normal">
+                    {group.title}
+                  </div>
+
+                  <ul>
+                    {group.pages.map(page => (
+                      <li key={page.slug}>
+                        <PageLink className="block py-1 pl-7" vibe={vibe} page={page} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Portal.Root>
+      )}
     </header>
   )
 }
