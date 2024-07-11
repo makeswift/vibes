@@ -1,4 +1,5 @@
 import { Header, Sidebar } from '@/components/navigation'
+import { BrandProvider } from '@/components/preview/useBrand'
 import { DynamicFont } from '@/components/ui/dynamic-font'
 import { getVibe } from '@/lib/registry'
 
@@ -13,7 +14,7 @@ export default async function Layout({
   const fonts = vibe?.brands.flatMap(brand => brand.fonts)
 
   return (
-    <>
+    <BrandProvider vibeSlug={params.vibe}>
       {fonts?.map(font => (
         <DynamicFont key={`${font.name}:${font.src}`} src={font.src} name={font.name} />
       ))}
@@ -28,6 +29,6 @@ export default async function Layout({
         </aside>
         <div className="mx-auto w-full max-w-7xl px-5 md:px-8">{children}</div>
       </div>
-    </>
+    </BrandProvider>
   )
 }

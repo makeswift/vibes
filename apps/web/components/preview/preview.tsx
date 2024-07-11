@@ -7,19 +7,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { getCssVars, getVibe } from '@/lib/registry'
 import { Brand } from '@/registry/schema'
 
+import { Frame } from './frame'
+
 interface Props {
   slug: string
   name: string
-  brand: Brand
 }
 
-export function Preview({ slug, name, brand }: Props) {
+export function Preview({ slug, name }: Props) {
   const vibe = getVibe(slug)
 
   if (!vibe) return <div>Could not find vibe: {slug}</div>
 
   const entry = vibe.components.find(component => component.name === name)
-  const style = getCssVars(brand)
 
   if (!entry) return <div>Could not find entry</div>
 
@@ -33,27 +33,25 @@ export function Preview({ slug, name, brand }: Props) {
         <TabsTrigger value="code">Code</TabsTrigger>
       </TabsList>
       <TabsContent value="preview">
-        <Card>
-          <div style={style}>
-            {Component ? (
-              <ErrorBoundary
-                fallback={
-                  <div className="flex justify-center p-5">
-                    Preview failed to load at {slug}:{name}
-                  </div>
-                }
-              >
-                <Suspense fallback={<div>Loading...</div>}>
-                  <Component />
-                </Suspense>
-              </ErrorBoundary>
-            ) : (
-              <div className="flex justify-center p-5">
-                Example not found at {slug}:{name}
-              </div>
-            )}
-          </div>
-        </Card>
+        <Frame>
+          {Component ? (
+            <ErrorBoundary
+              fallback={
+                <div className="flex justify-center p-5">
+                  Preview failed to load at {slug}:{name}
+                </div>
+              }
+            >
+              <Suspense fallback={<div>Loading...</div>}>
+                <Component />
+              </Suspense>
+            </ErrorBoundary>
+          ) : (
+            <div className="flex justify-center p-5">
+              Example not found at {slug}:{name}
+            </div>
+          )}
+        </Frame>
       </TabsContent>
       <TabsContent value="code">
         <Card>
