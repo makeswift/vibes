@@ -4,7 +4,6 @@ import { PageLink } from './page-link'
 
 interface Props {
   vibeSlug: string
-  pageSlug: string
 }
 
 export function Sidebar({ vibeSlug }: Props) {

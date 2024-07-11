@@ -14,6 +14,7 @@ import { GroupLink } from './group-link'
 import { Link } from './link'
 import { Group, Vibe, navigation } from './navigation'
 import { PageLink } from './page-link'
+import { VibeSelect } from './vibe-select'
 
 interface Props {
   vibeSlug: string
@@ -60,6 +61,7 @@ export function Header({ vibeSlug }: Props) {
           <Link href="/" className="shrink-0">
             <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
           </Link>
+          <VibeSelect vibeSlug={vibeSlug} />
         </div>
 
         <nav className="hidden gap-x-4 md:flex">
