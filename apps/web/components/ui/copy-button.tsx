@@ -6,11 +6,11 @@ import { useToast } from '@/components/ui/use-toast'
 
 interface Props {
   className?: string
-  selectorFromParent?: string
+  clipboard: string
   children?: React.ReactNode
 }
 
-export function CopyButton({ className, selectorFromParent = 'pre', children }: Props) {
+export function CopyButton({ className, clipboard, children }: Props) {
   const { toast } = useToast()
 
   return (
@@ -19,14 +19,10 @@ export function CopyButton({ className, selectorFromParent = 'pre', children }: 
         className,
         'group/button inline-flex cursor-pointer items-center justify-center gap-x-2 rounded-full border border-transparent p-2 text-sm font-semibold outline-none ring-offset-background transition-colors hover:bg-foreground/5 focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:hover:bg-foreground/15'
       )}
-      onClick={({ currentTarget: { parentElement } }) => {
-        const textContent = parentElement?.querySelector(selectorFromParent)?.textContent
+      onClick={() => {
+        navigator.clipboard.writeText(clipboard)
 
-        if (typeof textContent === 'string') {
-          navigator.clipboard.writeText(textContent)
-
-          toast({ title: 'Copied to clipboard' })
-        }
+        toast({ title: 'Copied to clipboard' })
       }}
     >
       {children}

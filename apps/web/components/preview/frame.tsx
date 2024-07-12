@@ -1,25 +1,38 @@
 'use client'
 
-import { ComponentPropsWithoutRef, useCallback, useEffect, useRef, useState } from 'react'
+import { ComponentPropsWithoutRef, useCallback, useEffect, useRef } from 'react'
 
 import { getCssVars } from '@/lib/registry'
 
-import { Button } from '../ui/button'
 import Card from '../ui/card'
 import { Portal } from '../ui/portal'
 import { useBrandContext } from './brand-context'
-import { BrandSelect } from './brand-select'
 import { usePreviewContext } from './preview-context'
 
 interface Props extends ComponentPropsWithoutRef<typeof Card> {}
 
 export function Frame({ children }: Props) {
   const { activeBrand } = useBrandContext()
-  const container = useRef<HTMLDivElement | null>(null)
-  const style = activeBrand ? getCssVars(activeBrand) : {}
+  const brandStyle = activeBrand ? getCssVars(activeBrand) : {}
+  const container = useRef<HTMLDivElement>(null)
+  const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
   const startX = useRef<number>(0)
-  const { width, zoom, resize, isDragging, setIsDragging } = usePreviewContext()
   const widthStart = useRef<number>(0)
+
+  useEffect(() => {
+    function handleResize() {
+      if (!container.current) return
+
+      setMaxWidth(container.current.clientWidth)
+      resize(null)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    handleResize()
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const onPointerMove = useCallback(
     (e: PointerEvent) => {
@@ -45,24 +58,9 @@ export function Frame({ children }: Props) {
 
   return (
     <div className="relative" ref={container}>
-      {/* <div className="pointer-events-none absolute bottom-full mb-1 flex w-full items-center">
-        <div className="flex-1" />
-        {width && isDragging && (
-          <div className="font-body text-sm">{`${Math.round(width / zoom)}px @ ${Math.round(zoom * 100)}%`}</div>
-        )}
-        <div className="pointer-events-auto flex flex-1 justify-end gap-x-2">
-          <div className="hidden gap-x-2 md:flex">
-            <Button onClick={() => resize(320)}>Mobile</Button>
-            <Button onClick={() => resize(768)}>Tablet</Button>
-            <Button onClick={() => resize(null)}>Desktop</Button>
-          </div>
-
-          <BrandSelect />
-        </div>
-      </div> */}
       <div className="relative mx-auto border border-white" style={{ width: width ?? '100%' }}>
         <div style={{ zoom }}>
-          <div style={style}>{children}</div>
+          <div style={brandStyle}>{children}</div>
         </div>
         <div
           className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-grab md:block"
