@@ -7,66 +7,86 @@ import path from 'path'
 import Card from '@/components/ui/card'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { getVibe } from '@/lib/registry'
+import { exists } from '@/lib/utils'
 
 import { Frame } from './frame'
 import { PreviewProvider } from './preview-context'
 import { PreviewTabs } from './preview-tabs'
 
 interface Props {
-  slug: string
-  name: string
+  vibeSlug: string
+  componentName: string | { [key: string]: string }
 }
 
-export async function Preview({ slug, name }: Props) {
-  const vibe = getVibe(slug)
+function findEntry({ vibeSlug, componentName }: { vibeSlug: string; componentName: string }) {
+  const vibe = getVibe(vibeSlug)
 
-  if (!vibe) return <div>Could not find vibe: {slug}</div>
+  if (!vibe) throw new Error(`Vibe not found in ${vibeSlug}`)
 
-  const entry = vibe.components.find(component => component.name === name)
+  const entry = vibe.components.find(component => component.name === componentName)
 
-  if (!entry) return <div>Could not find entry</div>
+  if (!entry) throw new Error(`Component not found in ${vibeSlug}:${componentName}`)
 
-  const Component = entry.component
+  return entry
+}
 
-  if (!Component) throw new Error(`Component not found in ${slug}:${name}`)
+export async function Preview({ vibeSlug, componentName }: Props) {
+  const vibe = getVibe(vibeSlug)
 
-  const pathname = `/registry/${slug}/${entry.files[0]}`
-  const file = await readFile(path.join(process.cwd(), pathname), 'utf8')
+  if (!vibe) return <div>Could not find vibe: {vibeSlug}</div>
+
+  const components =
+    typeof componentName === 'string'
+      ? [{ entry: findEntry({ vibeSlug, componentName }), brandName: null }]
+      : Object.entries(componentName).map(([brandName, componentName]) => ({
+          entry: findEntry({ vibeSlug, componentName }),
+          brandName,
+        }))
 
   return (
     <PreviewProvider>
       <PreviewTabs
-        clipboard={file}
-        preview={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Frame>
-              <ErrorBoundary
-                fallback={
-                  <div className="flex justify-center p-5">
-                    Preview failed to load at {slug}:{name}
-                  </div>
-                }
-              >
-                <Component />
-              </ErrorBoundary>
-            </Frame>
-          </Suspense>
-        }
-        code={
-          <Card>
-            <ErrorBoundary
-              fallback={
-                <div className="flex justify-center p-5">
-                  Code failed to load at {slug}:{name}
-                </div>
-              }
-            >
-              <Suspense fallback={<div>Loading...</div>}>
-                <CodeFromFile pathname={pathname} hideCopyButton />
-              </Suspense>
-            </ErrorBoundary>
-          </Card>
-        }
+        components={await Promise.all(
+          components.filter(exists).map(async ({ brandName, entry }) => {
+            const pathname = `/registry/${vibeSlug}/${entry.files[0]}`
+            const file = await readFile(path.join(process.cwd(), pathname), 'utf8')
+
+            return {
+              brandName,
+              clipboard: file,
+              preview: (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Frame>
+                    <ErrorBoundary
+                      fallback={
+                        <div className="flex justify-center p-5">
+                          Preview failed to load at {vibeSlug}:{entry.name}
+                        </div>
+                      }
+                    >
+                      <entry.component />
+                    </ErrorBoundary>
+                  </Frame>
+                </Suspense>
+              ),
+              code: (
+                <Card>
+                  <ErrorBoundary
+                    fallback={
+                      <div className="flex justify-center p-5">
+                        Code failed to load at {vibeSlug}:{entry.name}
+                      </div>
+                    }
+                  >
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <CodeFromFile pathname={pathname} hideCopyButton />
+                    </Suspense>
+                  </ErrorBoundary>
+                </Card>
+              ),
+            }
+          })
+        )}
       />
     </PreviewProvider>
   )

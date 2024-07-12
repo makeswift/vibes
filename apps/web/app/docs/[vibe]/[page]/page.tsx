@@ -116,18 +116,12 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
   const meta = pageMetaSchema(vibe).parse(frontmatter)
 
-  // TODO: replace with context
-  const brand = vibe.brands[0]
-
   return (
     <div className="">
       {meta.preview && (
         <div className="py-5">
           <h1 className="mb-4 text-3xl font-bold">{meta.title}</h1>
-          <Preview
-            slug={vibe.slug}
-            name={typeof meta.preview === 'string' ? meta.preview : meta.preview[brand.name]}
-          />
+          <Preview vibeSlug={vibe.slug} componentName={meta.preview} />
         </div>
       )}
       <div className="py-8">

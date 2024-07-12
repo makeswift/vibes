@@ -4,18 +4,27 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { Button } from '../ui/button'
 import { CopyButton } from '../ui/copy-button'
+import { useBrandContext } from './brand-context'
 import { BrandSelect } from './brand-select'
 import { PreviewProvider, usePreviewContext } from './preview-context'
 
 interface Props {
-  preview: React.ReactNode
-  code: React.ReactNode
-  clipboard: string
+  components: {
+    brandName: string | null
+    preview: React.ReactNode
+    code: React.ReactNode
+    clipboard: string
+  }[]
 }
 
-export function PreviewTabs({ preview, code, clipboard }: Props) {
+export function PreviewTabs({ components }: Props) {
+  const { activeBrand } = useBrandContext()
   const { width, isDragging, zoom, resize, tab, setTab } = usePreviewContext()
   const actualWidth = width && width / zoom
+
+  const { preview, code, clipboard } =
+    components.find(({ brandName }) => brandName === null || brandName === activeBrand?.name) ||
+    components[0]
 
   return (
     <Tabs defaultValue="preview" value={tab} onValueChange={setTab}>
