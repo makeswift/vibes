@@ -36,6 +36,6 @@ export function BrandProvider({ children, vibeSlug }: Props) {
   )
 }
 
-export function useBrand() {
+export function useBrandContext() {
   return useContext(BrandContext)
 }

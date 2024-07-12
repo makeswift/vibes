@@ -1,5 +1,7 @@
+import { useSearchParams } from 'next/navigation'
+
 import { Header, Sidebar } from '@/components/navigation'
-import { BrandProvider } from '@/components/preview/useBrand'
+import { BrandProvider } from '@/components/preview/brand-context'
 import { DynamicFont } from '@/components/ui/dynamic-font'
 import { getVibe } from '@/lib/registry'
 

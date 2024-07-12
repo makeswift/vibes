@@ -8,10 +8,10 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { Button } from '../ui/button'
-import { useBrand } from './useBrand'
+import { useBrandContext } from './brand-context'
 
 export function BrandSelect() {
-  const { brands, activeBrand, setActiveBrand } = useBrand()
+  const { brands, activeBrand, setActiveBrand } = useBrandContext()
 
   return (
     <DropdownMenu>
