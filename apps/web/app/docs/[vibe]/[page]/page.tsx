@@ -16,7 +16,7 @@ import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
 import * as MDXComponents from '@/components/mdx'
-import { Sidebar, navigation } from '@/components/navigation'
+import { navigation } from '@/components/navigation'
 import { Preview } from '@/components/preview'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
@@ -116,19 +116,12 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
   const meta = pageMetaSchema(vibe).parse(frontmatter)
 
-  // TODO: replace with context
-  const brand = vibe.brands[0]
-
   return (
     <div className="">
       {meta.preview && (
         <div className="py-5">
           <h1 className="mb-4 text-3xl font-bold">{meta.title}</h1>
-          <Preview
-            slug={vibe.slug}
-            name={typeof meta.preview === 'string' ? meta.preview : meta.preview[brand.name]}
-            brand={brand}
-          />
+          <Preview vibeSlug={vibe.slug} componentName={meta.preview} />
         </div>
       )}
       <div className="py-8">

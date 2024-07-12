@@ -12,3 +12,7 @@ export function slugify(text: string) {
     .replace(/ /g, '-')
     .replace(/[^\w-]+/g, '')
 }
+
+export function exists<T>(value: T | null | undefined): value is NonNullable<T> {
+  return value !== null && value !== undefined
+}

@@ -1,5 +1,10 @@
 import type { Config } from 'tailwindcss'
 
+const cursors = {
+  resizeX:
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAQCAYAAAAFzx/vAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHmSURBVHgBrZU9T8JQFIZLpbVqsTIAmjBoYoLWjwEW46juwEBiJMjk16+A38bCwgITm7JoogthgITw4fvKvaRAKTXhJC/n3ss55+k96e0NKMstIEQbCyk+40fKPy3QbDYTo9HoYzgctuLx+JajmGs8YgzGQ+/1ej2BNVXxY+VyWa3VaicEYTymYfkgl8tteKSppmlGGcucwWDQqlQqth9ooNFoTGGYS+Cxbdu6R55mGMYRdveXI6HVavVU8ejMAswBPINCLCzAWiqV0uB14XdCoVBCAp3QZTt1hUmgX3MCPaF8Kdxg65CEYrzNjZGqtttts9/va5PurddYE0C+cJbcJX+ihULhvtPp/JRKpbW1lLVQ8zufzz9gvg9N3vRYLLYDZ6fT6Zd5KE1V1TeMi9DjnArCFzVNe3UCJSybzT6xtmBMjGcvHA5buq5fzkNpwWDwDuML6FQKsbbwnF8g5lYCJYy1ML8U7Vw4x7LPM1Aaip5jfRfahAzhp4pEIiZiTgh0wriBZbAZKAMzmcwzod1u9wtrx5Drwcc5VJLJpGZZ1mGv1/skjLl8cHbNCza/Ux72G+haWf1p439R6Aq6E7l7it/vKQPZJviYKLS1IpmfL0PEH4jcjWWBXkWkeN34uZ5UR7zrFfULsjugIA30A0sAAAAASUVORK5CYII=',
+}
+
 const config = {
   darkMode: ['class'],
   content: [
@@ -10,6 +15,9 @@ const config = {
   prefix: '',
   theme: {
     extend: {
+      cursor: {
+        resizeX: `url("${cursors.resizeX}") 14 8, ew-resize`,
+      },
       colors: {
         primary: 'hsl(var(--primary))',
         accent: 'hsl(var(--accent))',

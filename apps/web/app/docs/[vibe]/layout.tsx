@@ -1,4 +1,7 @@
+import { useSearchParams } from 'next/navigation'
+
 import { Header, Sidebar } from '@/components/navigation'
+import { BrandProvider } from '@/components/preview/brand-context'
 import { DynamicFont } from '@/components/ui/dynamic-font'
 import { getVibe } from '@/lib/registry'
 
@@ -26,7 +29,9 @@ export default async function Layout({
             <Sidebar vibeSlug={params.vibe} />
           </div>
         </aside>
-        <div className="mx-auto w-full max-w-7xl px-5 md:px-8">{children}</div>
+        <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
+          <BrandProvider vibeSlug={params.vibe}>{children}</BrandProvider>
+        </div>
       </div>
     </>
   )
