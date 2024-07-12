@@ -1,7 +1,8 @@
 'use client'
 
-import { ComponentPropsWithoutRef, useCallback, useEffect, useRef } from 'react'
+import { ComponentPropsWithoutRef, useCallback, useEffect, useRef, useState } from 'react'
 
+import { ResizeX } from '@/icons/generated'
 import { getCssVars } from '@/lib/registry'
 
 import Card from '../ui/card'
@@ -16,8 +17,10 @@ export function Frame({ children }: Props) {
   const brandStyle = activeBrand ? getCssVars(activeBrand) : {}
   const container = useRef<HTMLDivElement>(null)
   const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
-  const startX = useRef<number>(0)
-  const widthStart = useRef<number>(0)
+  const startX = useRef(0)
+  const widthStart = useRef(0)
+  const cursorStart = useRef<readonly [number, number]>([0, 0])
+  const [cursor, setCursor] = useState<readonly [number, number] | null>(null)
 
   useEffect(() => {
     function handleResize() {
@@ -36,11 +39,23 @@ export function Frame({ children }: Props) {
 
   const onPointerMove = useCallback(
     (e: PointerEvent) => {
-      const nextWidth = widthStart.current + e.movementX
+      const windowWidth = e.view?.innerWidth ?? 0
+      const nextCursorX = cursorStart.current[0] + e.movementX
+      const nextWidth = widthStart.current + e.movementX * 2
+      const nextCursor = [
+        nextCursorX > windowWidth
+          ? nextCursorX % windowWidth
+          : nextCursorX < 0
+            ? windowWidth + nextCursorX
+            : nextCursorX,
+        cursorStart.current[1],
+      ] as const
 
       resize(nextWidth)
+      setCursor(nextCursor)
 
       widthStart.current = nextWidth
+      cursorStart.current = nextCursor
     },
     [resize]
   )
@@ -63,13 +78,18 @@ export function Frame({ children }: Props) {
           <div style={brandStyle}>{children}</div>
         </div>
         <div
-          className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-grab md:block"
+          className="cursor-resizeX group absolute bottom-0 left-full top-0 hidden w-4 md:block"
           onPointerDown={e => {
             if (!container.current) return
 
-            widthStart.current = width !== null ? width / zoom : container.current.clientWidth
-
             e.currentTarget.requestPointerLock()
+
+            const nextCursor = [e.clientX, e.clientY] as const
+
+            setCursor(nextCursor)
+
+            widthStart.current = width !== null ? width / zoom : container.current.clientWidth
+            cursorStart.current = nextCursor
 
             setIsDragging(true)
 
@@ -77,6 +97,7 @@ export function Frame({ children }: Props) {
             window.addEventListener('pointerup', () => {
               document.exitPointerLock()
               setIsDragging(false)
+              setCursor(null)
 
               window.removeEventListener('pointermove', onPointerMove)
             })
@@ -100,7 +121,17 @@ export function Frame({ children }: Props) {
           <div className="absolute top-1/2 ml-2 h-10 w-1 -translate-y-1/2 rounded-sm bg-foreground group-hover:scale-105"></div>
         </div>
       </div>
-      <Portal>{isDragging && <div className="fixed inset-0 z-50 cursor-grabbing" />}</Portal>
+      <Portal>
+        {isDragging && (
+          <div className="fixed inset-0 z-50">
+            {cursor && (
+              <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2">
+                <ResizeX style={{ transform: `translate3d(${cursor[0]}px, ${cursor[1]}px, 0)` }} />
+              </div>
+            )}
+          </div>
+        )}
+      </Portal>
     </div>
   )
 }
