@@ -55,9 +55,6 @@
   * {
     @apply antialiased;
   }
-  html {
-    touch-action: none;
-  }
   body {
     @apply bg-background;
   }
