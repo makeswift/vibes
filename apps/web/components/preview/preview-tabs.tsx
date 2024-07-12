@@ -6,7 +6,7 @@ import { Button } from '../ui/button'
 import { CopyButton } from '../ui/copy-button'
 import { useBrandContext } from './brand-context'
 import { BrandSelect } from './brand-select'
-import { PreviewProvider, usePreviewContext } from './preview-context'
+import { usePreviewContext } from './preview-context'
 
 interface Props {
   components: {
@@ -41,9 +41,15 @@ export function PreviewTabs({ components }: Props) {
         <div className="flex flex-1 justify-end gap-x-2">
           {tab !== 'code' && (
             <div className="flex gap-x-2">
-              <Button onClick={() => resize(320)}>Mobile</Button>
-              <Button onClick={() => resize(768)}>Tablet</Button>
-              <Button onClick={() => resize(null)}>Fill</Button>
+              <Button className="hidden md:flex" onClick={() => resize(320)}>
+                Mobile
+              </Button>
+              <Button className="hidden lg:flex" onClick={() => resize(768)}>
+                Tablet
+              </Button>
+              <Button className="hidden md:flex" onClick={() => resize(null)}>
+                Fill
+              </Button>
             </div>
           )}
 

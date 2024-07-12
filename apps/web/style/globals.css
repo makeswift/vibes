@@ -92,4 +92,9 @@
   .pattern-shadow-hover:after {
     @apply animate-scroll;
   }
+  @media (hover: none) {
+    .\@touch\:hide {
+      display: none;
+    }
+  }
 }
