@@ -20,7 +20,9 @@ export function BrandSelect() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={2}>
         {brands.map(brand => (
-          <DropdownMenuItem onClick={() => setActiveBrand(brand)}>{brand.name}</DropdownMenuItem>
+          <DropdownMenuItem key={brand.name} onClick={() => setActiveBrand(brand)}>
+            {brand.name}
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
