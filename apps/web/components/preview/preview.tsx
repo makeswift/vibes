@@ -6,12 +6,11 @@ import path from 'path'
 
 import Card from '@/components/ui/card'
 import { CodeFromFile } from '@/components/ui/code-from-file'
-import { Tabs, TabsContent } from '@/components/ui/tabs'
 import { getVibe } from '@/lib/registry'
 
 import { Frame } from './frame'
 import { PreviewProvider } from './preview-context'
-import { Toolbar } from './toolbar'
+import { PreviewTabs } from './preview-tabs'
 
 interface Props {
   slug: string
@@ -36,9 +35,9 @@ export async function Preview({ slug, name }: Props) {
 
   return (
     <PreviewProvider>
-      <Tabs defaultValue="preview">
-        <Toolbar clipboard={file} />
-        <TabsContent value="preview">
+      <PreviewTabs
+        clipboard={file}
+        preview={
           <Suspense fallback={<div>Loading...</div>}>
             <Frame>
               <ErrorBoundary
@@ -52,8 +51,8 @@ export async function Preview({ slug, name }: Props) {
               </ErrorBoundary>
             </Frame>
           </Suspense>
-        </TabsContent>
-        <TabsContent value="code">
+        }
+        code={
           <Card>
             <ErrorBoundary
               fallback={
@@ -67,8 +66,8 @@ export async function Preview({ slug, name }: Props) {
               </Suspense>
             </ErrorBoundary>
           </Card>
-        </TabsContent>
-      </Tabs>
+        }
+      />
     </PreviewProvider>
   )
 }

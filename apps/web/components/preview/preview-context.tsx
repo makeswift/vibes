@@ -3,7 +3,6 @@
 import { Dispatch, SetStateAction, createContext, useCallback, useContext, useState } from 'react'
 
 const MIN_WIDTH = 320
-const MAX_WIDTH = 1024
 
 type Context = {
   width: number | null
@@ -12,6 +11,8 @@ type Context = {
   setIsDragging: Dispatch<SetStateAction<boolean>>
   setMaxWidth: Dispatch<SetStateAction<number | null>>
   resize: (nextWidth: number | null) => void
+  tab: string | undefined
+  setTab: Dispatch<SetStateAction<string>>
 }
 
 const PreviewContext = createContext<Context>({
@@ -21,6 +22,8 @@ const PreviewContext = createContext<Context>({
   setIsDragging: () => {},
   setMaxWidth: () => {},
   resize: () => {},
+  tab: undefined,
+  setTab: () => {},
 })
 
 interface Props {
@@ -32,6 +35,7 @@ export function PreviewProvider({ children }: Props) {
   const [zoom, setZoom] = useState<number>(1)
   const [isDragging, setIsDragging] = useState<boolean>(false)
   const [maxWidth, setMaxWidth] = useState<number | null>(null)
+  const [tab, setTab] = useState<string>('preview')
 
   const resize = useCallback(
     (nextWidth: number | null) => {
@@ -51,8 +55,10 @@ export function PreviewProvider({ children }: Props) {
   return (
     <PreviewContext.Provider
       value={{
+        tab,
         width,
         zoom,
+        setTab,
         setMaxWidth,
         isDragging,
         setIsDragging,
