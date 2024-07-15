@@ -23,6 +23,8 @@ export function Frame({ children }: Props) {
   const [cursor, setCursor] = useState<readonly [number, number] | null>(null)
 
   useEffect(() => {
+    if (!container.current) return
+
     function handleResize() {
       if (!container.current) return
 
@@ -32,10 +34,10 @@ export function Frame({ children }: Props) {
 
     window.addEventListener('resize', handleResize)
 
-    handleResize()
+    setMaxWidth(container.current.clientWidth)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [resize, setMaxWidth])
 
   const onPointerMove = useCallback(
     (e: PointerEvent) => {
