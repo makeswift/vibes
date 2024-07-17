@@ -39,40 +39,6 @@ export function Frame({ children }: Props) {
     return () => window.removeEventListener('resize', handleResize)
   }, [resize, setMaxWidth])
 
-  const onPointerMove = useCallback(
-    (e: PointerEvent) => {
-      const windowWidth = e.view?.innerWidth ?? 0
-      const nextCursorX = cursorStart.current[0] + e.movementX
-      const nextWidth = widthStart.current + e.movementX * 2
-      const nextCursor = [
-        nextCursorX > windowWidth
-          ? nextCursorX % windowWidth
-          : nextCursorX < 0
-            ? windowWidth + nextCursorX
-            : nextCursorX,
-        cursorStart.current[1],
-      ] as const
-
-      resize(nextWidth)
-      setCursor(nextCursor)
-
-      widthStart.current = nextWidth
-      cursorStart.current = nextCursor
-    },
-    [resize]
-  )
-
-  const onTouchMove = useCallback(
-    (e: TouchEvent) => {
-      const nextWidth = widthStart.current + startX.current - e.touches[0].clientX
-
-      resize(nextWidth)
-
-      widthStart.current = nextWidth
-    },
-    [resize]
-  )
-
   return (
     <div className="relative" ref={container}>
       <div className="relative mx-auto border border-white" style={{ width: width ?? '100%' }}>
@@ -84,8 +50,6 @@ export function Frame({ children }: Props) {
           onPointerDown={e => {
             if (!container.current) return
 
-            e.currentTarget.requestPointerLock()
-
             const nextCursor = [e.clientX, e.clientY] as const
 
             setCursor(nextCursor)
@@ -95,29 +59,36 @@ export function Frame({ children }: Props) {
 
             setIsDragging(true)
 
-            window.addEventListener('pointermove', onPointerMove)
-            window.addEventListener('pointerup', () => {
-              document.exitPointerLock()
-              setIsDragging(false)
-              setCursor(null)
-
-              window.removeEventListener('pointermove', onPointerMove)
-            })
+            e.currentTarget.requestPointerLock()
           }}
-          onTouchStart={e => {
-            if (!container.current) return
+          onPointerMove={e => {
+            const { ownerDocument } = e.currentTarget
 
-            widthStart.current = width !== null ? width / zoom : container.current.clientWidth
-            startX.current = e.touches[0].clientX
+            if (ownerDocument.pointerLockElement !== e.currentTarget) return
 
-            setIsDragging(true)
+            const windowWidth = ownerDocument.defaultView?.innerWidth ?? 0
+            const nextCursorX = cursorStart.current[0] + e.movementX
+            const nextWidth = widthStart.current + e.movementX * 2
+            const nextCursor = [
+              nextCursorX > windowWidth
+                ? nextCursorX % windowWidth
+                : nextCursorX < 0
+                  ? windowWidth + nextCursorX
+                  : nextCursorX,
+              cursorStart.current[1],
+            ] as const
 
-            window.addEventListener('touchmove', onTouchMove)
-            window.addEventListener('touchend', () => {
-              setIsDragging(false)
+            resize(nextWidth)
+            setCursor(nextCursor)
 
-              window.removeEventListener('touchmove', onTouchMove)
-            })
+            widthStart.current = nextWidth
+            cursorStart.current = nextCursor
+          }}
+          onPointerUp={e => {
+            setIsDragging(false)
+            setCursor(null)
+
+            e.currentTarget.ownerDocument.exitPointerLock()
           }}
         >
           <div className="absolute top-1/2 ml-2 h-10 w-1 -translate-y-1/2 rounded-sm bg-foreground group-hover:scale-105"></div>
