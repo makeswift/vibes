@@ -107,7 +107,7 @@ export const Navigation = forwardRef(function Navigation(
         ref={ref}
         className={clsx(
           className,
-          'w-full overflow-hidden rounded-[28px] border border-foreground/20 bg-muted-foreground/50 text-foreground backdrop-blur-xl @container'
+          'bg-muted-contrast-1000 w-full overflow-hidden rounded-[28px] border border-foreground/20 text-foreground backdrop-blur-xl @container'
         )}
       >
         <nav className="flex items-stretch justify-between gap-x-3 @4xl:justify-start">

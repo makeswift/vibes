@@ -58,7 +58,7 @@ export const CodeBlock = forwardRef(function CodeBlock(
     <div className={clsx('group relative @container', className)}>
       <pre
         ref={ref}
-        className={`language-${language} overflow-auto rounded-2xl bg-muted-background/50 p-5 ring-1 ring-foreground/20 @md:p-6 @2xl:rounded-3xl`}
+        className={`language-${language} bg-muted-background/50 overflow-auto rounded-2xl p-5 ring-1 ring-foreground/20 @md:p-6 @2xl:rounded-3xl`}
         dangerouslySetInnerHTML={{ __html: html }}
         style={{ maxHeight }}
       />
@@ -75,7 +75,7 @@ export const CodeBlock = forwardRef(function CodeBlock(
                 '-translate-y-full opacity-0': copySuccess,
               })}
             >
-              <div className="absolute bottom-0 left-0 h-3 w-3 rounded bg-foreground/50"></div>
+              <div className="bg-contrast-1000 absolute bottom-0 left-0 h-3 w-3 rounded"></div>
               <div className="absolute right-0 top-0 h-3 w-3 rounded bg-foreground ring-1 ring-background transition-transform duration-150 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"></div>
             </div>
 

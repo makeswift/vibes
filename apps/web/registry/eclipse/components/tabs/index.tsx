@@ -95,7 +95,7 @@ export const Tabs = forwardRef(function Tabs(
             <RadixTabs.Trigger
               key={index}
               value={index.toString()}
-              className="relative shrink-0 select-none items-center px-3.5 py-4 text-lg font-medium text-foreground/50 outline-none [clip-path:inset(0px_0px)] after:pointer-events-none after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-[30px] after:w-1/2 after:-translate-x-1/2 after:translate-y-1/2 after:rounded-full after:bg-primary/50 after:opacity-0 after:blur-lg after:transition-all after:duration-500 after:ease-out hover:text-foreground/70 data-[state=active]:text-foreground data-[state=active]:after:opacity-100 data-[state=active]:after:delay-200 sm:px-5 [&_span]:data-[state=active]:-translate-y-1"
+              className="text-contrast-1000 relative shrink-0 select-none items-center px-3.5 py-4 text-lg font-medium outline-none [clip-path:inset(0px_0px)] after:pointer-events-none after:absolute after:left-1/2 after:top-1/2 after:-z-10 after:h-[30px] after:w-1/2 after:-translate-x-1/2 after:translate-y-1/2 after:rounded-full after:bg-primary/50 after:opacity-0 after:blur-lg after:transition-all after:duration-500 after:ease-out hover:text-foreground/70 data-[state=active]:text-foreground data-[state=active]:after:opacity-100 data-[state=active]:after:delay-200 sm:px-5 [&_span]:data-[state=active]:-translate-y-1"
             >
               <span className="flex items-center gap-2 transition-all duration-300 ease-in-out">
                 {tab.title}

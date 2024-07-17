@@ -10,6 +10,7 @@ import clsx from 'clsx'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Search } from '@/icons/generated'
 
+import { Button } from '../ui/button'
 import { GroupLink } from './group-link'
 import { Link } from './link'
 import { Group, Vibe, navigation } from './navigation'
@@ -34,8 +35,8 @@ export function Header({ vibeSlug }: Props) {
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-foreground/25 bg-background px-4 md:h-16 md:px-6">
-      <div className="mx-auto flex h-full max-w-7xl items-center justify-between pb-0.5">
+    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-contrast-400 bg-background md:h-16">
+      <div className="container mx-auto flex h-full items-center justify-between px-5 md:px-8">
         <div className="flex items-center gap-x-3 md:gap-x-4">
           <button
             className="relative mt-0.5 block rounded-full px-1 py-1.5 md:hidden"
@@ -58,10 +59,23 @@ export function Header({ vibeSlug }: Props) {
               ></div>
             </div>
           </button>
+
           <Link href="/" className="shrink-0">
-            <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
+            <Image
+              src="/logo.svg"
+              width={80}
+              height={22}
+              alt="Vibes logo"
+              priority
+              className="mb-0.5"
+            />
           </Link>
-          <VibeSelect vibeSlug={vibeSlug} />
+
+          <div className="flex items-center gap-x-1">
+            <div className="h-5 w-[1px] -skew-x-[20deg] bg-contrast-500" />
+
+            <VibeSelect vibeSlug={vibeSlug} />
+          </div>
         </div>
 
         <nav className="hidden gap-x-4 md:flex">
@@ -70,8 +84,10 @@ export function Header({ vibeSlug }: Props) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-x-3">
-          <Search />
+        <div className="flex items-center gap-x-1">
+          <Button variant="ghost" size="icon">
+            <Search />
+          </Button>
 
           <ModeToggle />
         </div>

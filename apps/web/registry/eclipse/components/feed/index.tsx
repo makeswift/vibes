@@ -46,7 +46,7 @@ export const Feed = forwardRef(function Feed(
             target={item.link?.target}
             key={index}
             className={clsx(
-              'group z-0 overflow-hidden rounded-2xl bg-muted-background/50 text-foreground ring-1 ring-foreground/20 transition duration-500 hover:bg-primary/10 hover:ring-primary/50 @sm:rounded-3xl',
+              'bg-muted-background/50 group z-0 overflow-hidden rounded-2xl text-foreground ring-1 ring-foreground/20 transition duration-500 hover:bg-primary/10 hover:ring-primary/50 @sm:rounded-3xl',
               index === 0
                 ? 'col-span-12 flex flex-col @xl:flex-row'
                 : 'col-span-12 @lg:col-span-6 @4xl:col-span-4'
@@ -73,7 +73,7 @@ export const Feed = forwardRef(function Feed(
               <div>
                 <div
                   className={clsx(
-                    'inline-block text-sm font-bold text-foreground/50',
+                    'text-contrast-1000 inline-block text-sm font-bold',
                     index === 0 ? 'mb-3' : 'mb-2'
                   )}
                 >

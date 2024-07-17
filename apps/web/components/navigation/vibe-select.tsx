@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import ChevronDown12 from '@/icons/generated/ChevronDown12'
 
 import { Button } from '../ui/button'
 import { navigation } from './navigation'
@@ -24,7 +25,10 @@ export function VibeSelect({ vibeSlug }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost">{vibe.name}</Button>
+        <Button variant="ghost" size="medium">
+          {vibe.name}
+          <ChevronDown12 />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={2}>
         {navigation.vibes.map(vibe => (

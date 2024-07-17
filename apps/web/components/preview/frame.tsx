@@ -74,13 +74,13 @@ export function Frame({ children }: Props) {
   )
 
   return (
-    <div className="relative" ref={container}>
+    <div className="relative bg-contrast-100" ref={container}>
       <div className="relative mx-auto border border-white" style={{ width: width ?? '100%' }}>
         <div style={{ zoom }}>
           <div style={brandStyle}>{children}</div>
         </div>
         <div
-          className="cursor-resizeX group absolute bottom-0 left-full top-0 hidden w-4 md:block"
+          className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-resizeX md:block"
           onPointerDown={e => {
             if (!container.current) return
 
@@ -120,7 +120,7 @@ export function Frame({ children }: Props) {
             })
           }}
         >
-          <div className="absolute top-1/2 ml-2 h-10 w-1 -translate-y-1/2 rounded-sm bg-foreground group-hover:scale-105"></div>
+          <div className="absolute top-1/2 ml-2 h-8 w-0.5 -translate-y-1/2 rounded-full bg-foreground transition-all group-hover:scale-x-125 group-hover:scale-y-150"></div>
         </div>
       </div>
       <Portal>

@@ -85,6 +85,7 @@ export type Brands = NonEmptyArray<Brand>
 
 export type Page = {
   title: string
+  description: string
   slug: string
   file: string
 }
@@ -107,6 +108,7 @@ export const pageMetaSchema = (vibe: Vibe) => {
 
   return z.object({
     title: z.string(),
+    description: z.string(),
     preview: z
       .union([
         z.object(
