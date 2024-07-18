@@ -51,4 +51,5 @@ const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
   }
 )
 
+ButtonLink.displayName = 'ButtonLink'
 export { ButtonLink }
