@@ -22,11 +22,7 @@ export default async function Layout({
       <Header vibeSlug={params.vibe} />
 
       <div className="container relative mx-auto flex items-start gap-x-4 px-5 md:px-8">
-        <aside className="top-16 hidden h-[calc(100vh-4rem)] w-56 xl:sticky xl:block">
-          <div className="h-full overflow-y-scroll py-8">
-            <Sidebar vibeSlug={params.vibe} />
-          </div>
-        </aside>
+        <Sidebar vibeSlug={params.vibe} />
         <div className="flex-1">
           <BrandProvider vibeSlug={params.vibe}>{children}</BrandProvider>
         </div>

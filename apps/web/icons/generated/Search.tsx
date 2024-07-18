@@ -10,8 +10,8 @@ const SvgSearch = (props: SVGProps<SVGSVGElement>) => (
     className="stroke-foreground"
     {...props}
   >
-    <circle cx="12" cy="12" r="7.25" stroke-width="1.5" />
-    <path d="M22 22L18 18" stroke-width="1.5" stroke-dasharray="3 3" />
+    <circle cx="11" cy="11" r="7.25" stroke-width="1.5" />
+    <path d="M21 21L17 17" stroke-width="1.5" stroke-dasharray="2 2" />
   </svg>
 )
 export default SvgSearch

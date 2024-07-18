@@ -63,17 +63,17 @@ export function TableOfContents({ offsetTop = 0 }: Props) {
 
   return (
     <div className="not-prose hidden xl:block">
-      <nav className="sticky top-24 w-full">
+      <nav className="sticky top-16 w-full py-10">
         <div className="mb-3 font-heading text-sm font-bold">On this page</div>
         <ul>
           {headings.map((heading, index) => (
             <li key={index} className="m-0 p-0">
               <a
                 className={clsx(
-                  'font-docs-sans block py-1 text-sm !font-light leading-normal text-foreground transition-opacity before:hidden',
+                  'block py-1 text-sm leading-normal transition-colors before:hidden',
                   heading === activeHeading
-                    ? 'opacity-100'
-                    : 'opacity-60 hover:!opacity-100 dark:opacity-70'
+                    ? 'text-foreground'
+                    : 'text-contrast-400 hover:!text-foreground'
                 )}
                 style={{
                   marginLeft: `${heading.level - 2}em`,

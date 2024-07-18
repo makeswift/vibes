@@ -68,7 +68,7 @@ const DropdownMenuContent = React.forwardRef<
       )}
       {...props}
     >
-      <div className="pattern-shadow pattern-shadow-md border border-foreground bg-background py-1">
+      <div className="pattern-shadow pattern-shadow-sm border border-foreground bg-background py-1">
         {children}
       </div>
     </DropdownMenuPrimitive.Content>

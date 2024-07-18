@@ -25,12 +25,13 @@ export function VibeSelect({ vibeSlug }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="medium">
-          {vibe.name}
+        <Button variant="ghost" size="small">
+          <span className="text-sm">{vibe.name}</span>
+
           <ChevronDown12 />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" sideOffset={2}>
+      <DropdownMenuContent align="start" sideOffset={2}>
         {navigation.vibes.map(vibe => (
           <Link key={vibe.slug} href={`/docs/${vibe.slug}`}>
             <DropdownMenuItem>{vibe.name}</DropdownMenuItem>
