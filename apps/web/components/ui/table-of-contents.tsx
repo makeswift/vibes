@@ -64,7 +64,7 @@ export function TableOfContents({ offsetTop = 0 }: Props) {
   }, [headings, offsetTop])
 
   return (
-    <div className="not-prose hidden xl:block">
+    <div className="not-prose hidden lg:block">
       <nav className="sticky top-24 w-full pb-10 pt-2">
         <div className="mb-3 text-sm font-bold">On this page</div>
         <ul className="pb-4">

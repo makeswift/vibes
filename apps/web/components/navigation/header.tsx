@@ -36,7 +36,7 @@ export function Header({ vibeSlug }: Props) {
 
   return (
     <header className="sticky top-0 z-30 h-14 border-b border-dashed border-contrast-400 bg-background md:h-16">
-      <div className="container mx-auto flex h-full items-center justify-between px-5 md:px-8">
+      <div className="mx-auto flex h-full items-center justify-between px-5 xl:container xl:px-8">
         <div className="flex flex-1 items-center gap-x-3 md:gap-x-4">
           <button
             className="relative mt-0.5 block rounded-full px-1 py-1.5 xl:hidden"

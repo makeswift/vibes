@@ -130,7 +130,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
         {meta.preview && <Preview vibeSlug={vibe.slug} componentName={meta.preview} />}
 
-        <div className="font-docs-sans gap-x-20 text-foreground md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+        <div className="gap-x-20 font-sans text-foreground md:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
           <div
             className={clsx(
               'prose w-full max-w-full dark:prose-invert',
@@ -144,7 +144,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:before:absolute prose-a:before:inset-x-0 prose-a:before:bottom-0 prose-a:before:h-[1px] prose-a:before:animate-scroll prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] prose-a:before:[animation-play-state:paused] hover:prose-a:before:[animation-play-state:running]',
               '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-contrast-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
               '[&:not(pre_code)]:prose-code:before:content-none [&:not(pre_code)]:prose-code:after:content-none',
-              'prose-pre:my-0 prose-pre:rounded-none prose-pre:!bg-contrast-100 prose-pre:p-4 dark:prose-pre:!bg-contrast-100',
+              'prose-pre:my-0 prose-pre:rounded-none prose-pre:!bg-contrast-100 prose-pre:p-4',
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5'
             )}
           >
