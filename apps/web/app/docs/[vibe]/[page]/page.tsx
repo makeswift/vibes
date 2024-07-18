@@ -26,6 +26,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getVibe } from '@/lib/registry'
 import { pageMetaSchema } from '@/registry/schema'
 
@@ -119,11 +120,11 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
   return (
     <>
-      <div className="py-10">
+      <div className="py-8 lg:py-10">
         <h1 className="-mt-1 mb-3 text-2xl font-bold text-foreground">{meta.title}</h1>
 
         {meta.description && (
-          <p className="mb-10 max-w-4xl text-lg font-light leading-relaxed text-contrast-500">
+          <p className="max-w-4xl text-base font-light leading-relaxed text-contrast-500 md:text-lg">
             {meta.description}
           </p>
         )}
@@ -149,6 +150,17 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             )}
           >
             {content}
+
+            <div className="flex w-full justify-between">
+              <ButtonLink href="#" variant="default">
+                <ChevronLeft16 className="-ml-1" />
+                Component
+              </ButtonLink>
+              <ButtonLink href="#" variant="default">
+                Component
+                <ChevronRight16 className="-mr-1" />
+              </ButtonLink>
+            </div>
           </div>
           <TableOfContents offsetTop={90} />
         </div>

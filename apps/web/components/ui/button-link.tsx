@@ -29,12 +29,12 @@ const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
       >
         <span
           className={clsx(
-            'inline-flex items-center justify-center whitespace-nowrap rounded-full border font-bold outline-none ring-offset-background transition-colors',
+            'inline-flex items-center justify-center whitespace-nowrap rounded-full border stroke-foreground font-bold text-foreground outline-none ring-offset-background transition-colors',
             {
               default:
-                'pattern-shadow pattern-shadow-sm pattern-shadow-hover border-foreground bg-background text-foreground',
+                'pattern-shadow pattern-shadow-sm pattern-shadow-hover border-foreground bg-background',
               ghost: 'border-transparent hover:bg-contrast-100',
-              link: 'text-primary underline-offset-4 hover:underline',
+              link: 'underline-offset-4 hover:underline',
             }[variant],
             {
               large: 'gap-x-2 px-4 py-2 text-base',
