@@ -27,7 +27,7 @@
     --line-height-xs: 1.125rem;
     --line-height-sm: 1.25rem;
     --line-height-base: 1.5rem;
-    --line-height-lg: 1.5rem;
+    --line-height-lg: 1.75rem;
     --line-height-xl: 1.75rem;
     --line-height-2xl: 2.25rem;
 
@@ -68,7 +68,7 @@
     @apply relative;
   }
   .pattern-shadow-sm:after {
-    @apply -left-1 top-1;
+    @apply -left-[3px] top-[3px];
   }
   .pattern-shadow-md:after {
     @apply -left-1.5 top-1.5;

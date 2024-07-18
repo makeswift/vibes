@@ -60,7 +60,6 @@ const config = {
           {
             lineHeight: 'var(--line-height-xs)',
             letterSpacing: 'var(--letter-spacing-xs)',
-            fontWeight: 'var(--font-weight-xs)',
           },
         ],
         sm: [
@@ -68,7 +67,6 @@ const config = {
           {
             lineHeight: 'var(--line-height-sm)',
             letterSpacing: 'var(--letter-spacing-sm)',
-            fontWeight: 'var(--font-weight-sm)',
           },
         ],
         base: [
@@ -76,7 +74,6 @@ const config = {
           {
             lineHeight: 'var(--line-height-base)',
             letterSpacing: 'var(--letter-spacing-base)',
-            fontWeight: 'var(--font-weight-base)',
           },
         ],
         lg: [
@@ -84,7 +81,6 @@ const config = {
           {
             lineHeight: 'var(--line-height-lg)',
             letterSpacing: 'var(--letter-spacing-lg)',
-            fontWeight: 'var(--font-weight-lg)',
           },
         ],
         xl: [
@@ -92,7 +88,6 @@ const config = {
           {
             lineHeight: 'var(--line-height-xl)',
             letterSpacing: 'var(--letter-spacing-xl)',
-            fontWeight: 'var(--font-weight-xl)',
           },
         ],
         '2xl': [
@@ -100,7 +95,6 @@ const config = {
           {
             lineHeight: 'var(--line-height-2xl)',
             letterSpacing: 'var(--letter-spacing-2xl)',
-            fontWeight: 'var(--font-weight-2xl)',
           },
         ],
       },
