@@ -10,6 +10,7 @@ import clsx from 'clsx'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Search } from '@/icons/generated'
 
+import { Button } from '../ui/button'
 import { GroupLink } from './group-link'
 import { Link } from './link'
 import { Group, Vibe, navigation } from './navigation'
@@ -34,11 +35,11 @@ export function Header({ vibeSlug }: Props) {
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-foreground/25 bg-background px-4 md:h-16 md:px-6">
-      <div className="mx-auto flex h-full max-w-7xl items-center justify-between pb-0.5">
-        <div className="flex items-center gap-x-3 md:gap-x-4">
+    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-contrast-400 bg-background md:h-16">
+      <div className="container mx-auto flex h-full items-center justify-between px-5 md:px-8">
+        <div className="flex flex-1 items-center gap-x-3 md:gap-x-4">
           <button
-            className="relative mt-0.5 block rounded-full px-1 py-1.5 md:hidden"
+            className="relative mt-0.5 block rounded-full px-1 py-1.5 xl:hidden"
             role="button"
             aria-label="Open mobile navigation"
             onClick={() => setMobileNavOpen(!mobileNavOpen)}
@@ -58,20 +59,42 @@ export function Header({ vibeSlug }: Props) {
               ></div>
             </div>
           </button>
+
           <Link href="/" className="shrink-0">
-            <Image src="/logo.svg" width={90} height={24} alt="Vibes logo" priority />
+            <Image
+              src="/logo.svg"
+              width={80}
+              height={22}
+              alt="Vibes logo"
+              priority
+              className="mb-0.5"
+            />
           </Link>
-          <VibeSelect vibeSlug={vibeSlug} />
+
+          <div className="flex items-center gap-x-0.5">
+            <div className="w-2">
+              <div className="mx-auto h-5 w-[1px] -skew-x-[20deg] bg-contrast-500" />
+            </div>
+
+            <VibeSelect vibeSlug={vibeSlug} />
+          </div>
         </div>
 
-        <nav className="hidden gap-x-4 md:flex">
+        <nav className="hidden h-full gap-x-4 xl:flex">
           {vibe?.groups.map(group => (
-            <GroupLink key={group.pages[0].slug} vibe={vibe} group={group} />
+            <GroupLink
+              key={group.pages[0].slug}
+              vibe={vibe}
+              group={group}
+              className="h-[calc(100%+1px)] place-content-center border-b-2 border-transparent"
+            />
           ))}
         </nav>
 
-        <div className="flex items-center gap-x-3">
-          <Search />
+        <div className="flex flex-1 items-center justify-end gap-x-1">
+          <Button variant="ghost" size="icon">
+            <Search />
+          </Button>
 
           <ModeToggle />
         </div>

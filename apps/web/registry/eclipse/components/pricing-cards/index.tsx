@@ -44,7 +44,7 @@ export const PricingCards = forwardRef(function PricingCards(
         {cards?.map((card, index) => (
           <div
             key={index}
-            className="relative flex w-full flex-1 flex-col items-start justify-between rounded-2xl bg-muted-background/50 p-8 text-foreground ring-1 ring-foreground/20 @sm:rounded-3xl @6xl:flex-row"
+            className="bg-muted-background/50 relative flex w-full flex-1 flex-col items-start justify-between rounded-2xl p-8 text-foreground ring-1 ring-foreground/20 @sm:rounded-3xl @6xl:flex-row"
           >
             {card.topGlow && (
               <div className="absolute inset-x-6 bottom-full hidden h-20 overflow-hidden before:mx-auto before:mt-14 before:block before:h-full before:w-3/5 before:rounded-full before:bg-primary before:opacity-25 before:blur-xl after:absolute after:bottom-0 after:h-[1px] after:w-full after:bg-gradient-to-r after:from-primary/0 after:via-primary after:to-primary/0 after:mix-blend-overlay @4xl:block" />
@@ -59,7 +59,7 @@ export const PricingCards = forwardRef(function PricingCards(
                 <div className="text-2xl font-medium tabular-nums tracking-tight text-foreground @2xl:text-3xl @3xl:text-4xl">
                   {isAnnual ? card.annualPrice : card.monthlyPrice}
                   {!card.hidePrice && (
-                    <span className="text-xl text-foreground/50 @5xl:text-2xl">/mo</span>
+                    <span className="text-contrast-1000 text-xl @5xl:text-2xl">/mo</span>
                   )}
                 </div>
 

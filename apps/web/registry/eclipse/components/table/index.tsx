@@ -79,7 +79,7 @@ export const Table = forwardRef(function Table(
             {section.rows?.map((row, index) => (
               <div
                 key={index}
-                className="flex items-center border-t border-foreground/10 text-muted-foreground transition hover:bg-foreground/5"
+                className="text-muted-foreground flex items-center border-t border-foreground/10 transition hover:bg-contrast-100"
               >
                 <div className="flex flex-1 flex-wrap items-center gap-x-2.5 gap-y-2 p-4 text-left font-medium leading-normal @lg:w-48 @3xl:w-80">
                   {row.feature}

@@ -34,7 +34,7 @@ export const CopyCommand = forwardRef(function CopyCommand(
       ref={ref}
       className={clsx(
         className,
-        'group flex w-auto cursor-pointer items-center gap-x-3 rounded-full bg-muted-background/50 py-3 pl-6 pr-5 font-mono text-sm text-foreground ring-1 ring-foreground/20 transition ease-linear hover:ring-foreground/40'
+        'bg-muted-background/50 group flex w-auto cursor-pointer items-center gap-x-3 rounded-full py-3 pl-6 pr-5 font-mono text-sm text-foreground ring-1 ring-foreground/20 transition ease-linear hover:ring-foreground/40'
       )}
       onClick={() => {
         navigator.clipboard.writeText(buttonText)
@@ -50,7 +50,7 @@ export const CopyCommand = forwardRef(function CopyCommand(
             '-translate-y-full opacity-0': copied,
           })}
         >
-          <div className="absolute bottom-0 left-0 h-3 w-3 rounded bg-foreground/50"></div>
+          <div className="bg-contrast-1000 absolute bottom-0 left-0 h-3 w-3 rounded"></div>
           <div className="absolute right-0 top-0 h-3 w-3 rounded bg-foreground ring-1 ring-background transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></div>
         </div>
 

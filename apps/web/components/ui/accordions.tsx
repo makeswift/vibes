@@ -4,7 +4,7 @@ import * as AccordionRadix from '@radix-ui/react-accordion'
 
 function AccordionGroup({ children }: { children: React.ReactNode }) {
   return (
-    <AccordionRadix.Root className="my-8 w-full space-y-4" type="multiple">
+    <AccordionRadix.Root className="my-10 w-full space-y-4" type="multiple">
       {children}
     </AccordionRadix.Root>
   )
@@ -21,17 +21,17 @@ function Accordion({
 }) {
   return (
     <AccordionRadix.Item
-      className="pattern-shadow hover:pattern-shadow-hover pattern-shadow-sm group pointer-events-none border border-foreground bg-background"
+      className="group pointer-events-none border border-dashed border-foreground bg-background transition-all hover:border-solid data-[state=open]:border-solid"
       value={value}
     >
       <AccordionRadix.Header asChild>
         <AccordionRadix.Trigger asChild>
           <div className="pointer-events-auto flex w-full cursor-pointer items-center gap-x-8 p-5">
-            <span className="font-heading flex-1 leading-normal">{title}</span>
+            <span className="flex-1 font-bold leading-normal">{title}</span>
 
-            <div className="relative aspect-square w-[17px]">
-              <div className="absolute left-1/2 top-1/2 h-full w-[1px] -translate-x-1/2 -translate-y-1/2 bg-foreground transition-transform duration-300 group-data-[state=open]:rotate-90" />
-              <div className="absolute left-1/2 top-1/2 h-[1px] w-full -translate-x-1/2 -translate-y-1/2 bg-foreground" />
+            <div className="relative aspect-square w-[16px]">
+              <div className="absolute left-1/2 top-1/2 h-full w-[1.5px] -translate-x-1/2 -translate-y-1/2 bg-foreground transition-transform duration-300 group-data-[state=open]:rotate-90" />
+              <div className="absolute left-1/2 top-1/2 h-[1.5px] w-full -translate-x-1/2 -translate-y-1/2 bg-foreground" />
             </div>
           </div>
         </AccordionRadix.Trigger>

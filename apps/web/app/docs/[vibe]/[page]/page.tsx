@@ -31,6 +31,7 @@ import { pageMetaSchema } from '@/registry/schema'
 
 interface PageMeta {
   title?: string
+  description?: string
   preview?: string
   icon?: string
 }
@@ -117,31 +118,33 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   const meta = pageMetaSchema(vibe).parse(frontmatter)
 
   return (
-    <div className="">
-      {meta.preview && (
-        <div className="py-5">
-          <h1 className="mb-4 text-3xl font-bold">{meta.title}</h1>
-          <Preview vibeSlug={vibe.slug} componentName={meta.preview} />
-        </div>
-      )}
-      <div className="py-8">
-        {!meta.preview && <h1 className="text-3xl font-bold">{meta.title}</h1>}
+    <>
+      <div className="py-10">
+        <h1 className="-mt-1 mb-3 text-2xl font-bold text-foreground">{meta.title}</h1>
 
-        <div className="font-docs-sans gap-x-20 pt-5 text-foreground md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+        {meta.description && (
+          <p className="mb-10 max-w-4xl text-lg font-light leading-relaxed text-contrast-500">
+            {meta.description}
+          </p>
+        )}
+
+        {meta.preview && <Preview vibeSlug={vibe.slug} componentName={meta.preview} />}
+
+        <div className="font-docs-sans gap-x-20 text-foreground md:grid xl:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
           <div
             className={clsx(
-              'prose w-full max-w-full py-10 dark:prose-invert',
-              'prose-headings:font-docs-heading prose-headings:text-foreground first:prose-headings:mt-0',
-              'prose-h1:mb-4 prose-h1:text-3xl',
-              'prose-h2:mb-3 prose-h2:mt-10 prose-h2:text-xl',
-              'prose-h3:mb-2 prose-h3:mt-8 prose-h3:text-base',
-              'prose-p:font-light first:prose-p:mt-0',
+              'prose w-full max-w-full dark:prose-invert',
+              'prose-headings:text-foreground first:prose-headings:mt-0',
+              'prose-h1:mb-4 prose-h1:text-2xl',
+              'prose-h2:mb-3 prose-h2:mt-10 prose-h2:text-xl prose-h2:font-bold',
+              'prose-h3:mb-2 prose-h3:mt-8 prose-h3:text-base prose-h3:font-bold',
+              'prose-p:font-light prose-p:text-foreground first:prose-p:mt-0',
               'prose-ul:pl-5 prose-ul:font-light',
               'prose-li:[&_::marker]:!text-foreground',
-              'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:before:absolute prose-a:before:left-0 prose-a:before:top-full prose-a:before:h-[2px] prose-a:before:w-full prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] hover:prose-a:before:animate-scroll',
-              '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-foreground/5 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
+              'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:before:absolute prose-a:before:inset-x-0 prose-a:before:bottom-0 prose-a:before:h-[1px] prose-a:before:animate-scroll prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] prose-a:before:[animation-play-state:paused] hover:prose-a:before:[animation-play-state:running]',
+              '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-contrast-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
               '[&:not(pre_code)]:prose-code:before:content-none [&:not(pre_code)]:prose-code:after:content-none',
-              'prose-pre:my-0 prose-pre:rounded-none prose-pre:!bg-background prose-pre:py-4',
+              'prose-pre:my-0 prose-pre:rounded-none prose-pre:!bg-contrast-100 prose-pre:p-4 dark:prose-pre:!bg-contrast-100',
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5'
             )}
           >
@@ -150,6 +153,6 @@ export default async function Page({ params }: { params: { vibe: string; page: s
           <TableOfContents offsetTop={90} />
         </div>
       </div>
-    </div>
+    </>
   )
 }

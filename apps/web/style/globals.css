@@ -11,24 +11,24 @@
     --primary: 210 100% 50%;
     --accent: 210 100% 70%;
 
-    --contrast-100: 220 20% 76%;
-    --contrast-200: 220 15% 60%;
-    --contrast-300: 220 12% 50%;
-    --contrast-400: 220 15% 36%;
-    --contrast-500: 220 20% 25%;
+    --contrast-100: 210 32% 96%;
+    --contrast-200: 216 21% 91%;
+    --contrast-300: 210 15% 73%;
+    --contrast-400: 210 10% 53%;
+    --contrast-500: 208 11% 25%;
 
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
     --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
+    --font-size-2xl: 1.875rem;
 
-    --line-height-xs: 1rem;
+    --line-height-xs: 1.125rem;
     --line-height-sm: 1.25rem;
     --line-height-base: 1.5rem;
-    --line-height-lg: 1.75rem;
-    --line-height-xl: 2rem;
+    --line-height-lg: 1.5rem;
+    --line-height-xl: 1.75rem;
     --line-height-2xl: 2.25rem;
 
     --letter-spacing-xs: 0em;
@@ -47,7 +47,13 @@
 
   .dark {
     --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --foreground: 210 30% 96%;
+
+    --contrast-100: 208 20% 15%;
+    --contrast-200: 208 11% 25%;
+    --contrast-300: 210 10% 53%;
+    --contrast-400: 210 15% 73%;
+    --contrast-500: 216 23% 91%;
   }
 }
 
@@ -90,7 +96,10 @@
     @apply opacity-70;
   }
   .pattern-shadow-hover:after {
-    @apply animate-scroll;
+    @apply animate-scroll [animation-play-state:paused];
+  }
+  .pattern-shadow-hover:hover:after {
+    @apply [animation-play-state:running];
   }
   @media (hover: none) {
     .\@touch\:hide {

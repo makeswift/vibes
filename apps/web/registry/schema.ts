@@ -107,6 +107,7 @@ export const pageMetaSchema = (vibe: Vibe) => {
 
   return z.object({
     title: z.string(),
+    description: z.string().optional(),
     preview: z
       .union([
         z.object(

@@ -12,17 +12,19 @@ export function Sidebar({ vibeSlug }: Props) {
   if (!vibe) return null
 
   return (
-    <ul className="space-y-2 text-foreground">
-      {vibe.groups.map(group => (
-        <div key={group.title} className="py-1">
-          <div className="mb-2 font-heading text-lg font-medium">{group.title}</div>
-          {group.pages.map(page => (
-            <li key={page.slug} className="py-1">
-              <PageLink vibe={vibe} page={page} />
-            </li>
-          ))}
-        </div>
-      ))}
-    </ul>
+    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-56 xl:block">
+      <ul className="h-full space-y-5 overflow-y-scroll py-10 text-foreground">
+        {vibe.groups.map(group => (
+          <div key={group.title}>
+            <div className="mb-2.5 text-sm font-bold">{group.title}</div>
+            {group.pages.map(page => (
+              <li key={page.slug} className="[&_a]:block [&_a]:py-1.5">
+                <PageLink vibe={vibe} page={page} />
+              </li>
+            ))}
+          </div>
+        ))}
+      </ul>
+    </aside>
   )
 }

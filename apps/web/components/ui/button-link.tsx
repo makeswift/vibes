@@ -3,51 +3,53 @@ import * as React from 'react'
 
 import clsx from 'clsx'
 
-const VARIANT_STYLES = {
-  default:
-    'bg-background text-foreground border-foreground pattern-shadow pattern-shadow-sm hover:pattern-shadow-hover',
-  ghost: 'hover:bg-foreground/5 border-transparent',
-  link: 'text-foreground underline-offset-4 hover:underline',
-}
-
-const SIZE_STYLES = {
-  default: 'h-10 px-4 py-2',
-  small: 'h-8 py-1 text-xs px-3',
-  icon: 'h-10 w-10',
+export interface Props extends React.ButtonHTMLAttributes<HTMLAnchorElement> {
+  children?: React.ReactNode
+  variant?: 'default' | 'ghost' | 'link'
+  size?: 'large' | 'medium' | 'small' | 'icon'
 }
 
 export interface Props {
   className?: string
   href?: string
-  variant?: 'default' | 'ghost' | 'link'
-  size?: 'default' | 'small' | 'icon'
   children?: React.ReactNode
+  variant?: 'default' | 'ghost' | 'link'
+  size?: 'large' | 'medium' | 'small' | 'icon'
 }
 
-const ButtonLink = ({
-  className,
-  href,
-  variant = 'default',
-  size = 'default',
-  children = 'Button',
-}: Props) => {
-  const buttonClasses = clsx(
-    'inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-semibold outline-none transition-colors before:hidden',
-    VARIANT_STYLES[variant],
-    SIZE_STYLES[size]
-  )
+const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
+  ({ className, href, variant = 'default', size = 'medium', children = 'Button' }) => {
+    return (
+      <Link
+        className={clsx(
+          'relative z-0 ring-offset-2 ring-offset-background before:hidden focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+          className
+        )}
+        href={href ?? '#'}
+      >
+        <span
+          className={clsx(
+            'inline-flex items-center justify-center whitespace-nowrap rounded-full border font-bold outline-none ring-offset-background transition-colors',
+            {
+              default:
+                'pattern-shadow pattern-shadow-sm pattern-shadow-hover border-foreground bg-background text-foreground',
+              ghost: 'border-transparent hover:bg-contrast-100',
+              link: 'text-primary underline-offset-4 hover:underline',
+            }[variant],
+            {
+              large: 'gap-x-2 px-4 py-2 text-base',
+              medium: 'h-10 gap-x-2 px-4 py-2 text-sm',
+              small: 'h-8 gap-x-1.5 px-3 py-1.5 text-xs',
+              icon: 'p-2',
+            }[size]
+          )}
+        >
+          {children}
+        </span>
+      </Link>
+    )
+  }
+)
 
-  return (
-    <Link
-      className={clsx(
-        'not-prose focus-visible:ring-accent relative z-0 inline-block ring-offset-2 ring-offset-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2',
-        className
-      )}
-      href={href ?? '#'}
-    >
-      <div className={buttonClasses}>{children}</div>
-    </Link>
-  )
-}
-
+ButtonLink.displayName = 'ButtonLink'
 export { ButtonLink }

@@ -1,6 +1,7 @@
 'use client'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ArrowsHorizontal16, Desktop16, Phone16, Tablet16 } from '@/icons/generated'
 
 import { Button } from '../ui/button'
 import { CopyButton } from '../ui/copy-button'
@@ -38,17 +39,48 @@ export function PreviewTabs({ components }: Props) {
             <div className="font-body text-sm">{`${Math.round(actualWidth)}px @ ${Math.round(zoom * 100)}%`}</div>
           )}
         </div>
-        <div className="flex flex-1 justify-end gap-x-2">
+        <div className="flex flex-1 items-center justify-end gap-x-2">
           {tab !== 'code' && (
-            <div className="flex gap-x-2">
-              <Button className="hidden md:flex" onClick={() => resize(320)}>
-                Mobile
+            <div className="flex">
+              <Button
+                className="hidden md:flex"
+                variant="ghost"
+                size="icon"
+                active={actualWidth === null}
+                onClick={() => resize(null)}
+              >
+                <span className="sr-only">Fill</span>
+                <ArrowsHorizontal16 />
               </Button>
-              <Button className="hidden lg:flex" onClick={() => resize(768)}>
-                Tablet
+              <Button
+                className="hidden lg:flex"
+                variant="ghost"
+                active={actualWidth !== null && actualWidth > 768 && actualWidth <= 1024}
+                size="icon"
+                onClick={() => resize(1024)}
+              >
+                <span className="sr-only">Desktop</span>
+                <Desktop16 />
               </Button>
-              <Button className="hidden md:flex" onClick={() => resize(null)}>
-                Fill
+              <Button
+                className="hidden lg:flex"
+                variant="ghost"
+                size="icon"
+                active={actualWidth !== null && actualWidth > 320 && actualWidth <= 768}
+                onClick={() => resize(768)}
+              >
+                <span className="sr-only">Tablet</span>
+                <Tablet16 />
+              </Button>
+              <Button
+                className="hidden md:flex"
+                variant="ghost"
+                size="icon"
+                active={actualWidth !== null && actualWidth <= 320}
+                onClick={() => resize(320)}
+              >
+                <span className="sr-only">Mobile</span>
+                <Phone16 />
               </Button>
             </div>
           )}
