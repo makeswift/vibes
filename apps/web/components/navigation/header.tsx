@@ -36,10 +36,10 @@ export function Header({ vibeSlug }: Props) {
 
   return (
     <header className="sticky top-0 z-30 h-14 border-b border-dashed border-contrast-400 bg-background md:h-16">
-      <div className="container mx-auto flex h-full items-center justify-between px-5 md:px-8">
-        <div className="flex flex-1 items-center gap-x-3 md:gap-x-4">
+      <div className="mx-auto flex h-full items-center justify-between px-3 xl:container md:px-5 xl:px-8">
+        <div className="flex flex-1 items-center gap-x-2 md:gap-x-3">
           <button
-            className="relative mt-0.5 block rounded-full px-1 py-1.5 xl:hidden"
+            className="relative mr-1 mt-0.5 block rounded-full px-1 py-1.5 xl:hidden"
             role="button"
             aria-label="Open mobile navigation"
             onClick={() => setMobileNavOpen(!mobileNavOpen)}
@@ -71,7 +71,7 @@ export function Header({ vibeSlug }: Props) {
             />
           </Link>
 
-          <div className="flex items-center gap-x-0.5">
+          <div className="flex items-center">
             <div className="w-2">
               <div className="mx-auto h-5 w-[1px] -skew-x-[20deg] bg-contrast-500" />
             </div>
@@ -91,7 +91,7 @@ export function Header({ vibeSlug }: Props) {
           ))}
         </nav>
 
-        <div className="flex flex-1 items-center justify-end gap-x-1">
+        <div className="flex flex-1 items-center justify-end gap-x-0 md:gap-x-1">
           <Button variant="ghost" size="icon">
             <Search />
           </Button>
@@ -102,18 +102,16 @@ export function Header({ vibeSlug }: Props) {
 
       {mobileNavOpen && (
         <Portal.Root asChild>
-          <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto bg-background p-4 md:p-6">
-            <div className="space-y-2 text-foreground">
+          <div className="animate-slideIn fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto border-r-0 border-dashed border-foreground bg-background p-6 sm:inset-x-auto sm:w-72 sm:border-r md:p-7 xl:hidden">
+            <div className="space-y-3 text-foreground">
               {vibe?.groups.map(group => (
                 <div key={group.title}>
-                  <div className="font-docs-heading flex items-center gap-2 py-1.5 text-sm leading-normal">
-                    {group.title}
-                  </div>
+                  <div className="py-1.5 text-base font-bold leading-normal">{group.title}</div>
 
                   <ul>
                     {group.pages.map(page => (
                       <li key={page.slug}>
-                        <PageLink className="block py-1 pl-7" vibe={vibe} page={page} />
+                        <PageLink className="block py-1.5" vibe={vibe} page={page} />
                       </li>
                     ))}
                   </ul>

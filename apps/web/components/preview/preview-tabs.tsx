@@ -29,7 +29,7 @@ export function PreviewTabs({ components }: Props) {
 
   return (
     <Tabs defaultValue="preview" value={tab} onValueChange={setTab}>
-      <div className="flex items-center">
+      <div className="flex items-center @container">
         <TabsList className="flex-1">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
@@ -43,7 +43,7 @@ export function PreviewTabs({ components }: Props) {
           {tab !== 'code' && (
             <div className="flex">
               <Button
-                className="hidden md:flex"
+                className="hidden @xl:flex"
                 variant="ghost"
                 size="icon"
                 active={actualWidth === null}
@@ -53,7 +53,7 @@ export function PreviewTabs({ components }: Props) {
                 <ArrowsHorizontal16 />
               </Button>
               <Button
-                className="hidden lg:flex"
+                className="hidden @5xl:flex"
                 variant="ghost"
                 active={actualWidth !== null && actualWidth > 768 && actualWidth <= 1024}
                 size="icon"
@@ -63,7 +63,7 @@ export function PreviewTabs({ components }: Props) {
                 <Desktop16 />
               </Button>
               <Button
-                className="hidden lg:flex"
+                className="hidden @3xl:flex"
                 variant="ghost"
                 size="icon"
                 active={actualWidth !== null && actualWidth > 320 && actualWidth <= 768}
@@ -73,7 +73,7 @@ export function PreviewTabs({ components }: Props) {
                 <Tablet16 />
               </Button>
               <Button
-                className="hidden md:flex"
+                className="hidden @xl:flex"
                 variant="ghost"
                 size="icon"
                 active={actualWidth !== null && actualWidth <= 320}

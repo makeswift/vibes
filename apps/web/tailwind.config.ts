@@ -153,6 +153,10 @@ const config = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-100%)' },
         },
+        slideIn: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
       },
       animation: {
         shake: 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
@@ -161,6 +165,7 @@ const config = {
         rotate: 'rotate 2000ms linear infinite',
         scroll: 'scroll 200ms infinite linear both',
         scrollLeft: 'scrollLeft var(--marquee-duration) linear infinite',
+        slideIn: 'slideIn 800ms cubic-bezier(0.25, 1, 0, 1)',
       },
     },
   },

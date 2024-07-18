@@ -36,7 +36,7 @@
 }
 
 .shiki .line {
-  @apply relative block text-[12px];
+  @apply relative block text-xs;
   padding: 0 var(--shiki-line-padding);
   width: calc(100% + (var(--shiki-line-padding) * 2));
   margin: 0 calc(-1 * var(--shiki-line-padding));
