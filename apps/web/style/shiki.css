@@ -7,7 +7,7 @@
   --shiki-line-diff-add-color: hsl(120 100% 90%);
   --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
   --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-  --shiki-line-padding: 20px;
+  --shiki-line-padding: 16px;
   --shiki-gutter-width: 16px;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .shiki code {
-  font-family: var(--docs-font-family-mono);
+  font-family: var(--font-mono);
 }
 
 .shiki .line {
