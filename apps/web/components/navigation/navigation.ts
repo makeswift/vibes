@@ -1,4 +1,4 @@
-import * as Index from '@/registry'
+import * as Index from '@/vibes'
 
 export type Link = {
   title: string

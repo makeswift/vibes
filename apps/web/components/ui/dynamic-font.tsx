@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 
-import { Font } from '@/registry/schema'
+import { Font } from '@/vibes/schema'
 
 interface Props {
   name: string

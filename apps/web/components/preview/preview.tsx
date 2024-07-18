@@ -6,8 +6,8 @@ import path from 'path'
 
 import Card from '@/components/ui/card'
 import { CodeFromFile } from '@/components/ui/code-from-file'
-import { getVibe } from '@/lib/registry'
 import { exists } from '@/lib/utils'
+import { getVibe } from '@/vibes/utils'
 
 import { Frame } from './frame'
 import { PreviewProvider } from './preview-context'
@@ -48,7 +48,7 @@ export async function Preview({ vibeSlug, componentName }: Props) {
       <PreviewTabs
         components={await Promise.all(
           components.filter(exists).map(async ({ brandName, entry }) => {
-            const pathname = `/registry/${vibeSlug}/${entry.files[0]}`
+            const pathname = `/vibes/${vibeSlug}/${entry.files[0]}`
             const file = await readFile(path.join(process.cwd(), pathname), 'utf8')
 
             return {

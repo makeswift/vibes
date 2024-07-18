@@ -1,9 +1,8 @@
 'use client'
 
-import { ComponentPropsWithoutRef, useCallback, useEffect, useRef, useState } from 'react'
+import { CSSProperties, ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
 
 import { ResizeX } from '@/icons/generated'
-import { getCssVars } from '@/lib/registry'
 
 import Card from '../ui/card'
 import { Portal } from '../ui/portal'
@@ -14,10 +13,8 @@ interface Props extends ComponentPropsWithoutRef<typeof Card> {}
 
 export function Frame({ children }: Props) {
   const { activeBrand } = useBrandContext()
-  const brandStyle = activeBrand ? getCssVars(activeBrand) : {}
   const container = useRef<HTMLDivElement>(null)
   const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
-  const startX = useRef(0)
   const widthStart = useRef(0)
   const cursorStart = useRef<readonly [number, number]>([0, 0])
   const [cursor, setCursor] = useState<readonly [number, number] | null>(null)
@@ -43,7 +40,7 @@ export function Frame({ children }: Props) {
     <div className="relative bg-contrast-100" ref={container}>
       <div className="relative mx-auto border border-white" style={{ width: width ?? '100%' }}>
         <div style={{ zoom }}>
-          <div style={brandStyle}>{children}</div>
+          <div style={(activeBrand?.cssVars ?? {}) as CSSProperties}>{children}</div>
         </div>
         <div
           className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-resizeX md:block"

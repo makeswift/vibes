@@ -2,8 +2,8 @@
 
 import { Dispatch, SetStateAction, createContext, useContext, useState } from 'react'
 
-import { getVibe } from '@/lib/registry'
-import { Brand } from '@/registry/schema'
+import { Brand } from '@/vibes/schema'
+import { getVibe } from '@/vibes/utils'
 
 type Context = {
   activeBrand?: Brand

@@ -27,8 +27,8 @@ import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ChevronLeft16, ChevronRight16 } from '@/icons/generated'
-import { getVibe } from '@/lib/registry'
-import { pageMetaSchema } from '@/registry/schema'
+import { pageMetaSchema } from '@/vibes/schema'
+import { getVibe } from '@/vibes/utils'
 
 interface PageMeta {
   title?: string
@@ -54,7 +54,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
   if (!file) return notFound()
 
-  const source = await readFile(path.resolve(path.join('registry', vibe.slug, file)), 'utf-8')
+  const source = await readFile(path.resolve(path.join('vibes', vibe.slug, file)), 'utf-8')
 
   const { content, frontmatter } = await compileMDX<PageMeta>({
     source,
@@ -99,9 +99,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       Button,
       ButtonLink,
       CodeFromFile: function CodeFromFileWithoutBasePath(props) {
-        return (
-          <CodeFromFile {...props} basePath={path.join(process.cwd(), 'registry', vibe.slug)} />
-        )
+        return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
       },
       Popover,
       PopoverContent,
