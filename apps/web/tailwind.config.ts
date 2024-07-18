@@ -7,11 +7,7 @@ const cursors = {
 
 const config = {
   darkMode: ['class'],
-  content: [
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx,mdx}',
-    './registry/**/*.{ts,tsx,mdx}',
-  ],
+  content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx,mdx}', './vibes/**/*.{ts,tsx,mdx}'],
   prefix: '',
   theme: {
     extend: {
