@@ -120,7 +120,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   return (
     <>
       <div className="py-10">
-        <h1 className="-mt-1 mb-3 font-heading text-2xl font-bold text-foreground">{meta.title}</h1>
+        <h1 className="-mt-1 mb-3 text-2xl font-bold text-foreground">{meta.title}</h1>
 
         {meta.description && (
           <p className="mb-10 max-w-4xl text-lg font-light leading-relaxed text-contrast-500">
@@ -134,9 +134,9 @@ export default async function Page({ params }: { params: { vibe: string; page: s
           <div
             className={clsx(
               'prose w-full max-w-full dark:prose-invert',
-              'prose-headings:font-bold prose-headings:text-foreground first:prose-headings:mt-0',
-              'prose-h1:mb-4 prose-h1:font-heading prose-h1:text-2xl',
-              'prose-h2:mb-3 prose-h2:mt-10 prose-h2:font-heading prose-h2:text-xl',
+              'prose-headings:text-foreground first:prose-headings:mt-0',
+              'prose-h1:mb-4 prose-h1:text-2xl',
+              'prose-h2:mb-3 prose-h2:mt-10 prose-h2:text-xl prose-h2:font-bold',
               'prose-h3:mb-2 prose-h3:mt-8 prose-h3:text-base prose-h3:font-bold',
               'prose-p:font-light prose-p:text-foreground first:prose-p:mt-0',
               'prose-ul:pl-5 prose-ul:font-light',

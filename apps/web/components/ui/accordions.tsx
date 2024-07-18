@@ -21,7 +21,7 @@ function Accordion({
 }) {
   return (
     <AccordionRadix.Item
-      className="pattern-shadow pattern-shadow-hover pattern-shadow-sm group pointer-events-none border border-foreground bg-background"
+      className="group pointer-events-none border border-dashed border-foreground bg-background transition-all hover:border-solid data-[state=open]:border-solid"
       value={value}
     >
       <AccordionRadix.Header asChild>

@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
+import { Popout12 } from '@/icons/generated'
+
 type Heading = { id: string; text: string; level: number; element: Element }
 
 interface Props {
@@ -63,9 +65,9 @@ export function TableOfContents({ offsetTop = 0 }: Props) {
 
   return (
     <div className="not-prose hidden xl:block">
-      <nav className="sticky top-16 w-full py-10">
-        <div className="mb-3 font-heading text-sm font-bold">On this page</div>
-        <ul>
+      <nav className="sticky top-24 w-full pb-10 pt-2">
+        <div className="mb-3 text-sm font-bold">On this page</div>
+        <ul className="pb-4">
           {headings.map((heading, index) => (
             <li key={index} className="m-0 p-0">
               <a
@@ -94,6 +96,72 @@ export function TableOfContents({ offsetTop = 0 }: Props) {
               </a>
             </li>
           ))}
+        </ul>
+
+        <div className="space-between flex w-full border-t border-dashed border-contrast-400 py-4 text-contrast-400">
+          <span className="flex-1 text-sm">Total bundle size</span>
+
+          <span className="bg-contrast-100 px-1 py-0.5 font-mono text-xs text-contrast-500">
+            5.6kB
+          </span>
+        </div>
+
+        <ul className="border-t border-dashed border-contrast-400 stroke-contrast-400 py-4 text-sm text-contrast-400">
+          <li>
+            <a
+              href="#"
+              className="flex items-center gap-x-1 py-1 transition-colors hover:stroke-foreground hover:text-foreground"
+            >
+              @vibes/eclipse/button
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="flex items-center gap-x-1 py-1 transition-colors hover:stroke-foreground hover:text-foreground"
+            >
+              @vibes/eclipse/card
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block py-1 transition-colors hover:stroke-foreground hover:text-foreground"
+            >
+              @bibbidiboppidiboo/react-navigation-menu
+              <Popout12 className="ml-1 inline shrink-0" />
+            </a>
+          </li>
+        </ul>
+
+        <ul className="border-t border-dashed border-contrast-400 stroke-contrast-400 py-4 text-sm text-contrast-400">
+          <li>
+            <a
+              href="#"
+              className="block py-1 transition-colors hover:stroke-foreground hover:text-foreground"
+            >
+              View source
+              <Popout12 className="ml-1 inline shrink-0" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block py-1 transition-colors hover:stroke-foreground hover:text-foreground"
+            >
+              View on npm
+              <Popout12 className="ml-1 inline shrink-0" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block py-1 transition-colors hover:stroke-foreground hover:text-foreground"
+            >
+              Report an issue
+              <Popout12 className="ml-1 inline shrink-0" />
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

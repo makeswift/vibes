@@ -46,6 +46,7 @@ export function PreviewTabs({ components }: Props) {
                 className="hidden md:flex"
                 variant="ghost"
                 size="icon"
+                active={actualWidth === null}
                 onClick={() => resize(null)}
               >
                 <span className="sr-only">Fill</span>
@@ -54,6 +55,7 @@ export function PreviewTabs({ components }: Props) {
               <Button
                 className="hidden lg:flex"
                 variant="ghost"
+                active={actualWidth !== null && actualWidth > 768 && actualWidth <= 1024}
                 size="icon"
                 onClick={() => resize(1024)}
               >
@@ -64,6 +66,7 @@ export function PreviewTabs({ components }: Props) {
                 className="hidden lg:flex"
                 variant="ghost"
                 size="icon"
+                active={actualWidth !== null && actualWidth > 320 && actualWidth <= 768}
                 onClick={() => resize(768)}
               >
                 <span className="sr-only">Tablet</span>
@@ -73,6 +76,7 @@ export function PreviewTabs({ components }: Props) {
                 className="hidden md:flex"
                 variant="ghost"
                 size="icon"
+                active={actualWidth !== null && actualWidth <= 320}
                 onClick={() => resize(320)}
               >
                 <span className="sr-only">Mobile</span>
