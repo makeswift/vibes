@@ -40,7 +40,7 @@ const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
               large: 'gap-x-2 px-4 py-2 text-base',
               medium: 'h-10 gap-x-2 px-4 py-2 text-sm',
               small: 'h-8 gap-x-1.5 px-3 py-1.5 text-xs',
-              icon: 'p-2',
+              icon: 'p-1.5',
             }[size]
           )}
         >

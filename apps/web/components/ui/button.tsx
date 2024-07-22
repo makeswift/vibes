@@ -14,7 +14,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         className={clsx(
-          'relative z-0 ring-offset-2 ring-offset-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+          'z-0 ring-offset-2 ring-offset-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
           className
         )}
         ref={ref}
@@ -33,7 +33,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
               large: 'gap-x-2 px-4 py-2 text-base',
               medium: 'gap-x-2 px-4 py-2 text-sm',
               small: 'gap-x-1.5 px-3 py-1.5 text-xs',
-              icon: 'p-2',
+              icon: 'p-1.5',
             }[size],
             active
               ? 'text-foreground'

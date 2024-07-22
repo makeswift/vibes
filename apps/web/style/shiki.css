@@ -31,6 +31,10 @@
   }
 }
 
+.shiki {
+  background-color: transparent !important;
+}
+
 .shiki code {
   font-family: var(--font-mono);
 }

@@ -29,7 +29,7 @@ export function CopyButton({ className, clipboard, children }: Props) {
       {children}
 
       <div className="relative h-4 w-4">
-        <div className="absolute bottom-0 left-0 h-3 w-3 rounded border-[1.5px] border-foreground bg-background"></div>
+        <div className="absolute bottom-0 left-0 h-3 w-3 rounded border-[1.5px] border-dashed border-foreground bg-background"></div>
         <div className="absolute right-0 top-0 h-3 w-3 rounded border-[1.5px] border-foreground bg-background transition-transform duration-150 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"></div>
       </div>
     </Button>

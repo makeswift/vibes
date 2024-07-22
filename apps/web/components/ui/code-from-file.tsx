@@ -31,7 +31,7 @@ export async function CodeFromFile({ pathname, basePath, hideCopyButton = false 
   return (
     <div className="relative">
       <div
-        className="not-prose max-w-full overflow-x-auto rounded-md bg-background p-5 shadow-md"
+        className="not-prose max-w-full overflow-x-auto bg-contrast-100 p-5"
         dangerouslySetInnerHTML={{ __html: code }}
       />
 
