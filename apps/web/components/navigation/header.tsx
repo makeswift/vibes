@@ -102,7 +102,7 @@ export function Header({ vibeSlug }: Props) {
 
       {mobileNavOpen && (
         <Portal.Root asChild>
-          <div className="animate-slideIn fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 flex-col overflow-auto border-r-0 border-dashed border-foreground bg-background p-6 sm:inset-x-auto sm:w-72 sm:border-r md:p-7 xl:hidden">
+          <div className="fixed inset-x-0 bottom-0 top-14 z-20 flex flex-1 animate-slideIn flex-col overflow-auto border-r-0 border-dashed border-foreground bg-background p-6 sm:inset-x-auto sm:w-72 sm:border-r md:p-7 xl:hidden">
             <div className="space-y-3 text-foreground">
               {vibe?.groups.map(group => (
                 <div key={group.title}>

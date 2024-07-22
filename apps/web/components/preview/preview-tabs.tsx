@@ -1,7 +1,7 @@
 'use client'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { ArrowsHorizontal16, Desktop16, Phone16, Tablet16 } from '@/icons/generated'
+import { ArrowsHorizontal16, Desktop16, Expand16, Phone16, Tablet16 } from '@/icons/generated'
 
 import { Button } from '../ui/button'
 import { CopyButton } from '../ui/copy-button'
@@ -36,13 +36,16 @@ export function PreviewTabs({ components }: Props) {
         </TabsList>
         <div className="flex flex-1 justify-center">
           {actualWidth && isDragging && (
-            <div className="font-body text-sm">{`${Math.round(actualWidth)}px @ ${Math.round(zoom * 100)}%`}</div>
+            <div className="text-xs font-bold">
+              <span className="mr-2 text-foreground">{`${Math.round(actualWidth)}px`}</span>
+              <span className="text-contrast-400">{`${Math.round(zoom * 100)}%`}</span>
+            </div>
           )}
         </div>
         <div className="flex flex-1 items-center justify-end gap-x-2">
           {tab !== 'code' && (
             <div className="flex">
-              <Button
+              {/* <Button
                 className="hidden @xl:flex"
                 variant="ghost"
                 size="icon"
@@ -51,13 +54,13 @@ export function PreviewTabs({ components }: Props) {
               >
                 <span className="sr-only">Fill</span>
                 <ArrowsHorizontal16 />
-              </Button>
+              </Button> */}
               <Button
                 className="hidden @5xl:flex"
                 variant="ghost"
-                active={actualWidth !== null && actualWidth > 768 && actualWidth <= 1024}
+                active={actualWidth === null}
                 size="icon"
-                onClick={() => resize(1024)}
+                onClick={() => resize(null)}
               >
                 <span className="sr-only">Desktop</span>
                 <Desktop16 />
@@ -86,7 +89,19 @@ export function PreviewTabs({ components }: Props) {
           )}
 
           <BrandSelect />
-          <CopyButton clipboard={clipboard} />
+
+          <div className="flex">
+            <CopyButton clipboard={clipboard} />
+            <Button
+              className="hidden @xl:flex"
+              variant="ghost"
+              size="icon"
+              onClick={() => resize(null)}
+            >
+              <span className="sr-only">Fullscreen</span>
+              <Expand16 />
+            </Button>
+          </div>
         </div>
       </div>
       <TabsContent value="preview">{preview}</TabsContent>
