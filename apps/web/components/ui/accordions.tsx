@@ -4,7 +4,7 @@ import * as AccordionRadix from '@radix-ui/react-accordion'
 
 function AccordionGroup({ children }: { children: React.ReactNode }) {
   return (
-    <AccordionRadix.Root className="my-10 w-full space-y-4" type="multiple">
+    <AccordionRadix.Root className="my-8 w-full space-y-4 md:my-10" type="multiple">
       {children}
     </AccordionRadix.Root>
   )

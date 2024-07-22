@@ -1,4 +1,3 @@
-import { Link } from './link'
 import { navigation } from './navigation'
 import { PageLink } from './page-link'
 
