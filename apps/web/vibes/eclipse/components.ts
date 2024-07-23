@@ -6,7 +6,7 @@ export const components = [
   {
     name: 'accordions',
     dependencies: ['@radix-ui/react-accordion'],
-    registryDependencies: [],
+    registryDependencies: ['button'],
     files: ['./components/accordions/index.tsx'],
     component: lazy(() => import('./components/accordions')),
   },

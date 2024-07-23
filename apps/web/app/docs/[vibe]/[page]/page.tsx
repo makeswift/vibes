@@ -117,6 +117,10 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   const meta = pageMetaSchema(vibe).parse(frontmatter)
   const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null
   const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null
+  const component = vibe.components.find(component => component.name === params.page)
+  const numDependencies = component
+    ? component.registryDependencies.length + component.dependencies.length
+    : 0
 
   return (
     <>
@@ -171,9 +175,9 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             </div>
           </div>
           <div className="not-prose hidden lg:block">
-            <nav className="sticky top-24 w-full pb-10 pt-2">
+            <nav className="sticky top-24 w-full divide-y divide-dashed divide-contrast-400 pb-10 pt-2">
               <TableOfContents className="pb-4" offsetTop={90} />
-              <div className="space-between flex w-full border-t border-dashed border-contrast-400 py-4 text-contrast-400">
+              <div className="space-between flex w-full py-4 text-contrast-400">
                 <span className="flex-1 text-sm">Total bundle size</span>
 
                 <span className="bg-contrast-100 px-1 py-0.5 font-mono text-xs text-contrast-500">
@@ -181,21 +185,29 @@ export default async function Page({ params }: { params: { vibe: string; page: s
                 </span>
               </div>
 
-              <ul className="border-t border-dashed border-contrast-400 py-4 text-sm">
-                <li>
-                  <TableOfContentsLink href="#">@vibes/eclipse/button</TableOfContentsLink>
-                </li>
-                <li>
-                  <TableOfContentsLink href="#">@vibes/eclipse/card</TableOfContentsLink>
-                </li>
-                <li>
-                  <TableOfContentsLink href="#" external>
-                    @bibbidiboppidiboo/react-navigation-menu
-                  </TableOfContentsLink>
-                </li>
-              </ul>
+              {component && numDependencies > 0 && (
+                <ul className="py-4">
+                  {component.registryDependencies.map(dependency => (
+                    <li key={dependency}>
+                      <TableOfContentsLink href={`/docs/${vibe.slug}/${dependency}`}>
+                        {`@/vibes/${vibe.slug}/${dependency}`}
+                      </TableOfContentsLink>
+                    </li>
+                  ))}
+                  {component.dependencies.map(dependency => (
+                    <li key={dependency}>
+                      <TableOfContentsLink
+                        href={`https://www.npmjs.com/package/${dependency}`}
+                        external
+                      >
+                        {dependency}
+                      </TableOfContentsLink>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-              <ul className="border-t border-dashed border-contrast-400 py-4">
+              <ul className="py-4">
                 <li>
                   <TableOfContentsLink href="#" external>
                     View source

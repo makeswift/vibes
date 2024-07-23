@@ -65,6 +65,8 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
     return () => observer.disconnect()
   }, [headings, offsetTop])
 
+  if (headings.length === 0) return null
+
   return (
     <ul className={className}>
       {headings.map((heading, index) => (
