@@ -24,9 +24,8 @@ import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Step, Steps } from '@/components/ui/steps'
-import { TableOfContents } from '@/components/ui/table-of-contents'
+import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Popout12 } from '@/icons/generated'
 import { ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { pageMetaSchema } from '@/vibes/schema'
 import { getVibe } from '@/vibes/utils'
@@ -182,61 +181,35 @@ export default async function Page({ params }: { params: { vibe: string; page: s
                 </span>
               </div>
 
-              <ul className="border-t border-dashed border-contrast-400 stroke-contrast-400 py-4 text-sm text-contrast-400">
+              <ul className="border-t border-dashed border-contrast-400 py-4 text-sm">
                 <li>
-                  <a
-                    href="#"
-                    className="flex items-center gap-x-1 py-1 transition-colors hover:stroke-foreground hover:text-foreground"
-                  >
-                    @vibes/eclipse/button
-                  </a>
+                  <TableOfContentsLink href="#">@vibes/eclipse/button</TableOfContentsLink>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="flex items-center gap-x-1 py-1 transition-colors hover:stroke-foreground hover:text-foreground"
-                  >
-                    @vibes/eclipse/card
-                  </a>
+                  <TableOfContentsLink href="#">@vibes/eclipse/card</TableOfContentsLink>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-1 transition-colors hover:stroke-foreground hover:text-foreground"
-                  >
+                  <TableOfContentsLink href="#" external>
                     @bibbidiboppidiboo/react-navigation-menu
-                    <Popout12 className="ml-1 inline shrink-0" />
-                  </a>
+                  </TableOfContentsLink>
                 </li>
               </ul>
 
-              <ul className="border-t border-dashed border-contrast-400 stroke-contrast-400 py-4 text-sm text-contrast-400">
+              <ul className="border-t border-dashed border-contrast-400 py-4">
                 <li>
-                  <a
-                    href="#"
-                    className="block py-1 transition-colors hover:stroke-foreground hover:text-foreground"
-                  >
+                  <TableOfContentsLink href="#" external>
                     View source
-                    <Popout12 className="ml-1 inline shrink-0" />
-                  </a>
+                  </TableOfContentsLink>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-1 transition-colors hover:stroke-foreground hover:text-foreground"
-                  >
+                  <TableOfContentsLink href="#" external>
                     View on npm
-                    <Popout12 className="ml-1 inline shrink-0" />
-                  </a>
+                  </TableOfContentsLink>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-1 transition-colors hover:stroke-foreground hover:text-foreground"
-                  >
+                  <TableOfContentsLink href="#" external>
                     Report an issue
-                    <Popout12 className="ml-1 inline shrink-0" />
-                  </a>
+                  </TableOfContentsLink>
                 </li>
               </ul>
             </nav>

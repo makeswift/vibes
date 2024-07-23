@@ -1,8 +1,11 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import React, { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
+
+import { Popout12 } from '@/icons/generated'
 
 type Heading = { id: string; text: string; level: number; element: Element }
 
@@ -66,16 +69,11 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
     <ul className={className}>
       {headings.map((heading, index) => (
         <li key={index} className="m-0 p-0">
-          <a
-            className={clsx(
-              'block py-1 text-sm leading-normal transition-colors before:hidden',
-              heading === activeHeading
-                ? 'text-foreground'
-                : 'text-contrast-400 hover:!text-foreground'
-            )}
+          <TableOfContentsLink
             style={{
               marginLeft: `${heading.level - 2}em`,
             }}
+            active={activeHeading?.id === heading.id}
             href={`#${heading.id}`}
             onClick={e => {
               e.preventDefault()
@@ -89,9 +87,30 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
             }}
           >
             {heading.text}
-          </a>
+          </TableOfContentsLink>
         </li>
       ))}
     </ul>
+  )
+}
+
+export function TableOfContentsLink({
+  active = false,
+  external = false,
+  className,
+  children,
+  ...rest
+}: ComponentPropsWithoutRef<typeof Link> & { active?: boolean; external?: boolean }) {
+  return (
+    <Link
+      {...rest}
+      className={clsx(
+        'flex items-center gap-x-1 stroke-contrast-400 py-1 text-sm transition-colors hover:stroke-current hover:text-foreground',
+        active ? 'text-foreground' : 'text-contrast-400 hover:!text-foreground'
+      )}
+    >
+      {children}
+      {external && <Popout12 className="ml-1 inline shrink-0" />}
+    </Link>
   )
 }
