@@ -9,10 +9,6 @@ export const brands = [
         name: 'Inter',
         src: '/fonts/Inter-VariableFont_slnt,wght.woff2',
       },
-      {
-        name: 'RobotoMono',
-        src: '/fonts/RobotoMono-VariableFont_wght.ttf',
-      },
     ],
     cssVars: {
       '--primary': '176 97% 46%',
@@ -26,7 +22,7 @@ export const brands = [
       '--contrast-500': '220 20% 25%',
       '--font-family-heading': "'Inter', system-ui, sans-serif",
       '--font-family-body': "'Inter', system-ui, sans-serif",
-      '--font-family-mono': "'RobotoMono', system-ui, sans-serif",
+      '--font-family-mono': "'Inter', system-ui, sans-serif",
       '--font-variation-settings-body': '"slnt" 0',
       '--font-variation-settings-heading': '"slnt" 0',
       '--font-size-xs': '0.75rem',
