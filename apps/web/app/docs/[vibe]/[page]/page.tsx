@@ -48,13 +48,13 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
   if (!vibe) return notFound()
 
-  const file = vibe.navigation
-    .flatMap(group => group.pages)
-    .find(page => page.slug === params.page)?.file
+  const allPages = vibe.navigation.flatMap(group => group.pages)
+  const pageIndex = allPages.findIndex(page => page.slug === params.page)
 
-  if (!file) return notFound()
+  if (pageIndex === -1) return notFound()
 
-  const source = await readFile(path.resolve(path.join('vibes', vibe.slug, file)), 'utf-8')
+  const page = allPages[pageIndex]
+  const source = await readFile(path.resolve(path.join('vibes', vibe.slug, page.file)), 'utf-8')
 
   const { content, frontmatter } = await compileMDX<PageMeta>({
     source,
@@ -115,6 +115,8 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   })
 
   const meta = pageMetaSchema(vibe).parse(frontmatter)
+  const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null
+  const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null
 
   return (
     <>
@@ -150,14 +152,22 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             {content}
 
             <div className="flex w-full justify-between">
-              <ButtonLink href="#" variant="default">
-                <ChevronLeft16 className="-ml-1" />
-                Component
-              </ButtonLink>
-              <ButtonLink href="#" variant="default">
-                Component
-                <ChevronRight16 className="-mr-1" />
-              </ButtonLink>
+              <div>
+                {prevPage && (
+                  <ButtonLink href={`/docs/${vibe.slug}/${prevPage.slug}`} variant="default">
+                    <ChevronLeft16 className="-ml-1" />
+                    {prevPage.title}
+                  </ButtonLink>
+                )}
+              </div>
+              <div>
+                {nextPage && (
+                  <ButtonLink href={`/docs/${vibe.slug}/${nextPage.slug}`} variant="default">
+                    {nextPage.title}
+                    <ChevronRight16 className="-mr-1" />
+                  </ButtonLink>
+                )}
+              </div>
             </div>
           </div>
           <TableOfContents offsetTop={90} />
