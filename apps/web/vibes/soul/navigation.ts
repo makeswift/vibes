@@ -10,6 +10,7 @@ export const navigation = [
     pages: [
       { title: 'Button', slug: 'button', file: 'docs/button.mdx' },
       { title: 'Accordions', slug: 'Accordions', file: 'docs/accordions.mdx' },
+      { title: 'Input', slug: 'input', file: 'docs/input.mdx' },
     ],
   },
 ] satisfies Navigation

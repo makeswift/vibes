@@ -38,7 +38,7 @@ export const Button = forwardRef(function Button(
       href={link?.href ?? '#'}
       target={link?.target}
     >
-      <span className="relative z-10">{children}</span>
+      <span className={clsx('relative z-10', { invert: variant !== 'primary' })}>{children}</span>
     </Link>
   )
 })

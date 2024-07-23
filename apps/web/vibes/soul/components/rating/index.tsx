@@ -1,5 +1,3 @@
-import React from 'react'
-
 export interface Props {
   rating: number
 }
@@ -54,7 +52,7 @@ const Star = ({ type }: { type: 'empty' | 'half' | 'full' }) => {
   )
 }
 
-export default function Rating({ rating }: Readonly<Props>) {
+const Rating = ({ rating }: Readonly<Props>) => {
   const adjustedRating = Math.min(rating, 5)
   const stars = Array(5)
     .fill('empty')
@@ -72,3 +70,5 @@ export default function Rating({ rating }: Readonly<Props>) {
     </div>
   )
 }
+
+export default Rating
