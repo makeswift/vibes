@@ -6,8 +6,8 @@ import { examples } from './examples'
 import { navigation } from './navigation'
 
 export default {
-  name: 'Eclipse',
-  slug: 'eclipse',
+  name: '2px',
+  slug: '2px',
   navigation,
   components: [...components, ...examples],
   brands,
