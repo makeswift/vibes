@@ -7,6 +7,9 @@ export const navigation = [
   },
   {
     title: 'Components',
-    pages: [{ title: 'Button', slug: 'button', file: 'docs/button.mdx' }],
+    pages: [
+      { title: 'Button', slug: 'button', file: 'docs/button.mdx' },
+      { title: 'Accordions', slug: 'Accordions', file: 'docs/accordions.mdx' },
+    ],
   },
 ] satisfies Navigation
