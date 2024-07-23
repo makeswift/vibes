@@ -23,7 +23,7 @@ export const Button = forwardRef(function Button(
       className={clsx(
         className,
         'group relative shrink-0 overflow-hidden rounded-full text-center font-medium leading-normal focus:outline-none focus:ring-1',
-        'before:absolute before:left-0 before:top-0 before:z-0 before:h-14 before:w-full before:-translate-x-[calc(100%-56px)] before:rounded-[28px] before:opacity-0 before:transition-[opacity,transform] before:duration-150 before:ease-in-out hover:before:translate-x-0 hover:before:opacity-100 hover:before:duration-300',
+        'before:absolute before:left-0 before:top-0 before:z-0 before:w-full before:rounded-full before:opacity-0 before:transition-[opacity,transform] before:duration-150 before:ease-in-out hover:before:translate-x-0 hover:before:opacity-100 hover:before:duration-300',
         link?.href === '#' && 'pointer-events-none opacity-20',
         {
           primary: 'bg-primary text-background before:bg-accent',
@@ -31,8 +31,8 @@ export const Button = forwardRef(function Button(
           tertiary: 'bg-background text-foreground before:bg-foreground hover:text-background',
         }[variant],
         {
-          default: 'px-6 py-4 text-base',
-          small: 'px-4 py-2 text-sm',
+          default: 'px-6 py-4 text-base before:h-14 before:-translate-x-[calc(100%-56px)]',
+          small: 'px-4 py-2 text-sm before:h-[37px] before:-translate-x-[calc(100%-37px)]',
         }[size]
       )}
       href={link?.href ?? '#'}
