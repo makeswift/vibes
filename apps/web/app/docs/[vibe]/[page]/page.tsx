@@ -131,7 +131,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
         {meta.preview && <Preview vibeSlug={vibe.slug} componentName={meta.preview} />}
 
-        <div className="gap-x-20 font-sans text-foreground md:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+        <div className="gap-x-20 font-sans text-foreground lg:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
           <div
             className={clsx(
               'prose w-full max-w-full dark:prose-invert',

@@ -30,10 +30,7 @@ export async function CodeFromFile({ pathname, basePath, hideCopyButton = false 
 
   return (
     <div className="relative mb-8 md:mb-10">
-      <div
-        className="not-prose max-w-full overflow-x-auto bg-contrast-100 p-5"
-        dangerouslySetInnerHTML={{ __html: code }}
-      />
+      <div className="" dangerouslySetInnerHTML={{ __html: code }} />
 
       {!hideCopyButton && <CopyButton className="absolute right-2 top-2" clipboard={file} />}
     </div>
