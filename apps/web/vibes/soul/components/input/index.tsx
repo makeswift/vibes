@@ -1,5 +1,3 @@
-'use client'
-
 import { Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
@@ -40,8 +38,8 @@ export const Input = forwardRef(function Input(
       />
 
       {variant === 'large' && (
-        <button className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-black text-white transition-transform duration-300 hover:scale-95 focus:outline-none focus:ring-1">
-          <Arrow />
+        <button className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-black text-white transition-transform focus:outline-none focus:ring-1">
+          <Arrow className="transition-transform group-hover:translate-x-0.5" />
         </button>
       )}
     </div>
