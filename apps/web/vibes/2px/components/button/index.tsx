@@ -1,5 +1,4 @@
-import { ElementRef, forwardRef } from 'react'
-
+import { Slot } from '@radix-ui/react-slot'
 import { cva } from 'class-variance-authority'
 
 import { cn } from '@/lib/utils'
@@ -27,41 +26,30 @@ export interface ButtonProps {
   variant?: 'primary' | 'secondary'
   loading?: boolean
   loadingText?: string
-  text?: string
-  size?: 'large' | 'small'
+  children: React.ReactNode
+  asChild?: boolean
 }
 
-const Button = forwardRef<ElementRef<'button'>, ButtonProps>(
-  ({ className, variant, loading, loadingText, text, size = 'large', ...props }, ref) => {
-    return (
-      <button
+const Button = ({ className, variant, loading, children, asChild = false }: ButtonProps) => {
+  const Component = asChild ? Slot : 'button'
+  return (
+    <div className="flex w-full items-center justify-center @container">
+      <Component
         className={cn(
           buttonVariants({ variant, className }),
-          {
-            'leading-lg tracking-lg h-20 w-full px-20 py-[0.625rem] text-lg': size === 'large',
-            'h-10 w-fit px-5 py-[0.625rem] text-sm': size === 'small',
-            '!leading-base': size === 'small',
-          },
-          loading && 'hover:'
+
+          'h-10 w-fit px-5 py-[0.625rem] text-sm !leading-[var(--line-height-base)] @lg:h-20 @lg:w-full @lg:px-20 @lg:py-[0.625rem] @lg:text-lg',
+          loading &&
+            variant === 'primary' &&
+            'hover:border-none hover:bg-foreground hover:text-background',
+          loading && variant === 'secondary' && 'hover:border-solid '
         )}
-        disabled={loading}
-        ref={ref}
-        {...props}
       >
-        {loading ? (
-          <LoadingIcon
-            className={cn({
-              'h-4 w-4': size === 'small',
-              'h-6 w-6': size === 'large',
-            })}
-          />
-        ) : (
-          text
-        )}
-      </button>
-    )
-  }
-)
+        {loading ? <LoadingIcon className="h-4 w-4 @lg:h-6 @lg:w-6" /> : children}
+      </Component>
+    </div>
+  )
+}
 
 Button.displayName = 'Button'
 export default Button
