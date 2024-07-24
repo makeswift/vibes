@@ -24,4 +24,11 @@ export const components = [
     files: ['./components/input/index.tsx'],
     component: lazy(() => import('./components/input')),
   },
+  {
+    name: 'navigation',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/navigation/index.tsx'],
+    component: lazy(() => import('./components/navigation')),
+  },
 ] satisfies Components

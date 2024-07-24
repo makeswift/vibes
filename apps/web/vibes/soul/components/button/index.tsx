@@ -23,7 +23,7 @@ export const Button = forwardRef(function Button(
       className={clsx(
         className,
         'group relative shrink-0 overflow-hidden rounded-full text-center font-medium leading-normal focus:outline-none focus:ring-1',
-        'before:absolute before:left-0 before:top-0 before:z-0 before:w-full before:rounded-full before:opacity-0 before:transition-[opacity,transform] before:duration-150 before:ease-in-out hover:before:translate-x-0 hover:before:opacity-100 hover:before:duration-300',
+        'before:absolute before:left-0 before:top-0 before:z-0 before:w-full before:rounded-full before:opacity-0 before:transition-[opacity,transform] before:duration-200 before:ease-in-out hover:before:translate-x-0 hover:before:opacity-100 hover:before:duration-300',
         link?.href === '#' && 'pointer-events-none opacity-20',
         {
           primary: 'bg-primary text-background before:bg-accent',

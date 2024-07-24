@@ -28,7 +28,7 @@ export const Input = forwardRef(function Input(
         ref={ref}
         {...rest}
         className={clsx(
-          'placeholder-contrast-gray-500 w-full bg-transparent placeholder:font-normal focus:outline-none',
+          'placeholder-contrast-gray-500 w-full bg-transparent text-black placeholder:font-normal focus:outline-none',
           {
             'px-6 py-3': variant === 'default',
             'py-3 pl-12 pr-6': variant === 'price',
@@ -38,7 +38,10 @@ export const Input = forwardRef(function Input(
       />
 
       {variant === 'large' && (
-        <button className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-black text-white transition-transform focus:outline-none focus:ring-1">
+        <button
+          type="submit"
+          className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-black text-white transition-transform focus:outline-none focus:ring-1"
+        >
           <Arrow className="transition-transform group-hover:translate-x-0.5" />
         </button>
       )}
