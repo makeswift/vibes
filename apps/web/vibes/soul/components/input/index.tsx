@@ -2,7 +2,7 @@ import { Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
-import Arrow from '@/vibes/soul/components/icon/Arrow'
+import Arrow from '@/vibes/soul/components/icons/Arrow'
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string
@@ -17,7 +17,7 @@ export const Input = forwardRef(function Input(
     <div
       className={clsx(
         className,
-        'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-foreground font-medium transition-colors duration-200 focus-within:border-black focus:outline-none'
+        'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-background font-medium transition-colors duration-200 focus-within:border-foreground focus:outline-none'
       )}
     >
       {variant === 'price' && (
@@ -28,7 +28,7 @@ export const Input = forwardRef(function Input(
         ref={ref}
         {...rest}
         className={clsx(
-          'placeholder-contrast-gray-500 w-full bg-transparent text-black placeholder:font-normal focus:outline-none',
+          'placeholder-contrast-gray-500 w-full bg-transparent text-foreground placeholder:font-normal focus:outline-none',
           {
             'px-6 py-3': variant === 'default',
             'py-3 pl-12 pr-6': variant === 'price',
@@ -40,7 +40,7 @@ export const Input = forwardRef(function Input(
       {variant === 'large' && (
         <button
           type="submit"
-          className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-black text-white transition-transform focus:outline-none focus:ring-1"
+          className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-foreground text-background transition-transform focus:outline-none focus:ring-1"
         >
           <Arrow className="transition-transform group-hover:translate-x-0.5" />
         </button>

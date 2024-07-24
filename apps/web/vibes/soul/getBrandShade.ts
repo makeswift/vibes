@@ -1,7 +1,5 @@
 import { brands } from '@/vibes/soul/brands'
 
-import { Brand } from '../schema'
-
 const colorMap: { [key: number]: number } = {
   100: 0.2,
   200: 0.15,

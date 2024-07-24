@@ -12,6 +12,7 @@ export const navigation = [
       { title: 'Accordions', slug: 'Accordions', file: 'docs/accordions.mdx' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx' },
       { title: 'Navigation', slug: 'navigation', file: 'docs/navigation.mdx' },
+      { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx' },
     ],
   },
 ] satisfies Navigation

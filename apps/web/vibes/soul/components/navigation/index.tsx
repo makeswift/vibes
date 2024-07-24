@@ -35,8 +35,8 @@ type Props = {
     href: string
     target?: '_self' | '_blank'
   }
-  mainLinks?: MainLink[]
-  secondaryLinks?: SecondaryLink[]
+  links?: MainLink[]
+  actions?: SecondaryLink[]
   linkGap?: number
   ctaLink?: {
     href: string
@@ -64,45 +64,76 @@ function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
 }
 
 export const Navigation = forwardRef(function Navigation(
-  { className, mainLinks, secondaryLinks, ctaText, ctaLink, ...rest }: Props,
+  { className, links, actions, ctaText, ctaLink, ...rest }: Props,
   ref: Ref<HTMLDivElement>
 ) {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [navOpen, setNavOpen] = useState(false)
   const pathname = usePathname()
   const container = useRef<HTMLDivElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const timeoutRef = useRef<number | null>(null)
 
   useEffect(() => {
-    setMobileNavOpen(false)
+    setNavOpen(false)
   }, [pathname])
 
   useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', mobileNavOpen)
-  }, [mobileNavOpen])
+    document.body.classList.toggle('overflow-hidden', navOpen)
+  }, [navOpen])
 
   usePollAnimationFrame(() => {
     if (!container.current) return
   })
 
+  useEffect(() => {
+    const handleMouseEnter = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+      setNavOpen(true)
+    }
+    const handleMouseLeave = () => {
+      timeoutRef.current = window.setTimeout(() => {
+        setNavOpen(false)
+      }, 100)
+    }
+    const handleClick = () => setNavOpen(!navOpen)
+
+    if (window.innerWidth >= 1536) {
+      container.current?.addEventListener('mouseenter', handleMouseEnter)
+      container.current?.addEventListener('mouseleave', handleMouseLeave)
+      menuRef.current?.addEventListener('mouseenter', handleMouseEnter)
+      menuRef.current?.addEventListener('mouseleave', handleMouseLeave)
+    } else {
+      container.current?.addEventListener('click', handleClick)
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+      container.current?.removeEventListener('mouseenter', handleMouseEnter)
+      container.current?.removeEventListener('mouseleave', handleMouseLeave)
+      container.current?.removeEventListener('click', handleClick)
+      menuRef.current?.removeEventListener('mouseenter', handleMouseEnter)
+      menuRef.current?.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [navOpen])
+
   return (
     <ReactHeadroom {...rest} className="!h-24 w-full [&>div]:px-5 [&>div]:pt-5">
       <header
         ref={ref}
-        className={clsx(
-          className,
-          'w-full overflow-hidden rounded-[24px] border border-foreground/20 bg-background text-foreground backdrop-blur-xl @container'
-        )}
+        className={clsx(className, 'w-full overflow-hidden text-foreground @container')}
       >
-        <nav className="flex items-stretch justify-between gap-x-3 @4xl:justify-start">
-          <div
-            className="relative hidden items-stretch px-5 [clip-path:inset(0px_0px)] before:pointer-events-none before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-[var(--active-item-width)] before:translate-x-[var(--active-item-left)] before:bg-gradient-to-r before:from-primary/0 before:via-primary/100 before:to-primary/0 before:transition-all before:duration-300 before:ease-in-out @4xl:flex"
-            ref={container}
-          >
-            {mainLinks?.map((link, i) => (
+        <nav className="flex items-stretch justify-between gap-x-3 rounded-[24px] bg-background @4xl:justify-start">
+          <div className="relative hidden items-stretch px-2.5 @4xl:flex" ref={container}>
+            {links?.map((link, i) => (
               <Link
                 key={i}
                 href={link.link?.href ?? ''}
                 target={link.link?.target}
-                className="relative inline-flex items-center px-3 text-sm font-medium transition duration-200"
+                className="relative mx-0.5 my-2.5 inline-flex items-center rounded-xl p-2.5 text-sm font-medium transition-colors duration-200 hover:bg-contrast-100"
               >
                 {link.text}
               </Link>
@@ -111,67 +142,52 @@ export const Navigation = forwardRef(function Navigation(
 
           <Link
             href="/"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-semibold text-foreground"
+            className="absolute left-1/2 -translate-x-1/2 py-3 text-2xl font-semibold text-foreground"
           >
             SOUL
           </Link>
 
-          <div className="flex flex-1 items-center justify-end p-2 pl-5">
-            {secondaryLinks?.map((link, i) => (
+          <div className="flex min-h-[60px] flex-1 items-center justify-end p-2 pl-5">
+            <button
+              onClick={() => setNavOpen(!navOpen)}
+              className="relative mr-2 rounded-full p-2.5 @sm:mr-0 @4xl:hidden"
+              role="button"
+              aria-label="Toggle navigation"
+            />
+
+            {actions?.map((item, i) => (
               <Link
                 key={i}
-                href={link.link?.href ?? ''}
-                target={link.link?.target}
-                className={clsx(
-                  'hidden px-3 text-sm font-medium opacity-70 transition duration-200 hover:opacity-100 @4xl:block',
-                  link.link?.href && pathname.startsWith(link.link?.href) && 'opacity-100'
-                )}
+                href={item.link?.href ?? '#'}
+                target={item.link?.target}
+                className="block py-2 text-lg font-medium"
               >
-                {link.text}
+                {item.text}
               </Link>
             ))}
-
-            <button
-              onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="relative mr-2 block rounded-full p-2.5 @sm:mr-0 @4xl:hidden"
-              role="button"
-              aria-label="Open mobile navigation"
-            />
           </div>
         </nav>
 
         <div
+          ref={menuRef}
           className={clsx(
-            'w-full transition-all duration-300 @4xl:hidden',
-            mobileNavOpen ? 'max-h-96' : 'max-h-0'
+            'mt-1.5 w-full overflow-y-auto rounded-[24px] transition-all duration-200 ease-in-out',
+            navOpen ? 'max-h-96 bg-background' : 'pointer-events-none max-h-0 bg-transparent'
           )}
         >
-          <div className="w-full border-t border-foreground/20 p-5 text-center text-foreground">
-            {mainLinks?.map((link, i) => (
-              <Link
-                key={i}
-                href={link.link?.href ?? '#'}
-                target={link.link?.target}
-                className="block py-2 text-lg font-medium"
-              >
-                {link.text}
-              </Link>
-            ))}
-
-            {secondaryLinks?.map((link, i) => (
-              <Link
-                key={i}
-                href={link.link?.href ?? '#'}
-                target={link.link?.target}
-                className="block py-2 text-lg font-medium"
-              >
-                {link.text}
-              </Link>
-            ))}
-
-            <Button link={ctaLink} className="ml-2 mt-3 @sm:hidden">
-              {ctaText}
-            </Button>
+          <div className="grid w-full divide-x divide-contrast-100 @xl:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 @7xl:grid-cols-5">
+            <div className="flex flex-col gap-1 p-5">
+              {links?.map((link, i) => (
+                <Link
+                  key={i}
+                  href={link.link?.href ?? '#'}
+                  target={link.link?.target}
+                  className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
+                >
+                  {link.text}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </header>

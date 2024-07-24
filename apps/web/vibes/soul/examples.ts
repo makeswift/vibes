@@ -31,4 +31,11 @@ export const examples = [
     files: ['examples/navigation.tsx'],
     component: lazy(() => import('./examples/navigation')),
   },
+  {
+    name: 'rating-example',
+    dependencies: [],
+    registryDependencies: ['rating'],
+    files: ['examples/rating.tsx'],
+    component: lazy(() => import('./examples/rating')),
+  },
 ] satisfies Components

@@ -31,4 +31,11 @@ export const components = [
     files: ['./components/navigation/index.tsx'],
     component: lazy(() => import('./components/navigation')),
   },
+  {
+    name: 'rating',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/rating/index.tsx'],
+    component: lazy(() => import('./components/rating')),
+  },
 ] satisfies Components
