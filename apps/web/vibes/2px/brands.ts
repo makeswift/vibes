@@ -11,7 +11,7 @@ export const brands = [
       },
       {
         name: 'Courier Prime',
-        src: '/fonts/CourierPrime-regular.ttf',
+        src: '/fonts/CourierPrime-Regular.woff2',
       },
     ],
     cssVars: {
@@ -77,7 +77,7 @@ export const brands = [
         name: 'Sporting Grotesque',
         src: [
           {
-            path: '/fonts/SportingGrotesque-Regular.otf',
+            path: '/fonts/SportingGrotesque-Regular.woff2',
             style: 'normal',
           },
         ],
