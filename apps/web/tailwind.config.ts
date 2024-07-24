@@ -52,45 +52,107 @@ const config = {
       },
       fontSize: {
         xs: [
-          'var(--font-size-xs)',
+          'var(--font-size-xs, 0.75rem)',
           {
-            lineHeight: 'var(--line-height-xs)',
+            lineHeight: 'var(--line-height-xs, 1rem)',
             letterSpacing: 'var(--letter-spacing-xs)',
+            fontWeight: 'var(--font-weight-xs)',
           },
         ],
         sm: [
-          'var(--font-size-sm)',
+          'var(--font-size-sm, 0.875rem)',
           {
-            lineHeight: 'var(--line-height-sm)',
+            lineHeight: 'var(--line-height-sm, 1.25rem)',
             letterSpacing: 'var(--letter-spacing-sm)',
+            fontWeight: 'var(--font-weight-sm)',
           },
         ],
         base: [
-          'var(--font-size-base)',
+          'var(--font-size-base, 1rem)',
           {
-            lineHeight: 'var(--line-height-base)',
+            lineHeight: 'var(--line-height-base, 1.5rem)',
             letterSpacing: 'var(--letter-spacing-base)',
+            fontWeight: 'var(--font-weight-base)',
           },
         ],
         lg: [
-          'var(--font-size-lg)',
+          'var(--font-size-lg, 1.125rem)',
           {
-            lineHeight: 'var(--line-height-lg)',
+            lineHeight: 'var(--line-height-lg, 1.75rem)',
             letterSpacing: 'var(--letter-spacing-lg)',
+            fontWeight: 'var(--font-weight-lg)',
           },
         ],
         xl: [
-          'var(--font-size-xl)',
+          'var(--font-size-xl, 1.25rem)',
           {
-            lineHeight: 'var(--line-height-xl)',
+            lineHeight: 'var(--line-height-xl, 1.75rem)',
             letterSpacing: 'var(--letter-spacing-xl)',
+            fontWeight: 'var(--font-weight-xl)',
           },
         ],
         '2xl': [
-          'var(--font-size-2xl)',
+          'var(--font-size-2xl, 1.5rem)',
           {
-            lineHeight: 'var(--line-height-2xl)',
+            lineHeight: 'var(--line-height-2xl, 2rem)',
             letterSpacing: 'var(--letter-spacing-2xl)',
+            fontWeight: 'var(--font-weight-2xl)',
+          },
+        ],
+        '3xl': [
+          'var(--font-size-3xl, 1.875rem)',
+          {
+            lineHeight: 'var(--line-height-3xl, 2.25rem)',
+            letterSpacing: 'var(--letter-spacing-3xl)',
+            fontWeight: 'var(--font-weight-3xl)',
+          },
+        ],
+        '4xl': [
+          'var(--font-size-4xl, 2.25rem)',
+          {
+            lineHeight: 'var(--line-height-4xl, 2.5rem)',
+            letterSpacing: 'var(--letter-spacing-4xl)',
+            fontWeight: 'var(--font-weight-4xl)',
+          },
+        ],
+        '5xl': [
+          'var(--font-size-5xl, 3rem)',
+          {
+            lineHeight: 'var(--line-height-5xl, 1)',
+            letterSpacing: 'var(--letter-spacing-5xl)',
+            fontWeight: 'var(--font-weight-5xl)',
+          },
+        ],
+        '6xl': [
+          'var(--font-size-6xl, 3.75rem)',
+          {
+            lineHeight: 'var(--line-height-6xl, 1)',
+            letterSpacing: 'var(--letter-spacing-6xl)',
+            fontWeight: 'var(--font-weight-6xl)',
+          },
+        ],
+        '7xl': [
+          'var(--font-size-7xl, 4.5rem)',
+          {
+            lineHeight: 'var(--line-height-7xl, 1)',
+            letterSpacing: 'var(--letter-spacing-7xl)',
+            fontWeight: 'var(--font-weight-7xl)',
+          },
+        ],
+        '8xl': [
+          'var(--font-size-8xl, 6rem)',
+          {
+            lineHeight: 'var(--line-height-8xl, 1)',
+            letterSpacing: 'var(--letter-spacing-8xl)',
+            fontWeight: 'var(--font-weight-8xl)',
+          },
+        ],
+        '9xl': [
+          'var(--font-size-9xl, 8rem)',
+          {
+            lineHeight: 'var(--line-height-9xl, 1)',
+            letterSpacing: 'var(--letter-spacing-9xl)',
+            fontWeight: 'var(--font-weight-9xl)',
           },
         ],
       },
