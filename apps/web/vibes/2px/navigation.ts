@@ -1,3 +1,8 @@
 import { Navigation } from '@/vibes/schema'
 
-export const navigation = [] satisfies Navigation
+export const navigation = [
+  {
+    title: 'Components',
+    pages: [{ title: 'Button', slug: 'button', file: 'docs/button.mdx' }],
+  },
+] satisfies Navigation
