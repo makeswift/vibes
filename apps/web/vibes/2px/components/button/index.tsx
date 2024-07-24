@@ -39,8 +39,8 @@ const Button = forwardRef<ElementRef<'button'>, ButtonProps>(
           buttonVariants({ variant, className }),
           {
             'leading-lg tracking-lg h-20 w-full px-20 py-[0.625rem] text-lg': size === 'large',
-            'h-10 w-[6.5625rem] px-5 py-[0.625rem] text-sm': size === 'small',
-            'leading-base': size === 'small',
+            'h-10 w-fit px-5 py-[0.625rem] text-sm': size === 'small',
+            '!leading-base': size === 'small',
           },
           loading && 'hover:'
         )}
