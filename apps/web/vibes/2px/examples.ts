@@ -10,4 +10,11 @@ export const examples = [
     files: ['examples/button.tsx'],
     component: lazy(() => import('./examples/button')),
   },
+  {
+    name: 'tabs-example',
+    dependencies: [],
+    registryDependencies: ['tabs'],
+    files: ['examples/tabs.tsx'],
+    component: lazy(() => import('./examples/tabs')),
+  },
 ] satisfies Components
