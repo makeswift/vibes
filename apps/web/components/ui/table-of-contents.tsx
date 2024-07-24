@@ -98,11 +98,11 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
 
 export function TableOfContentsLink({
   active = false,
-  external = false,
   className,
+  target,
   children,
   ...rest
-}: ComponentPropsWithoutRef<typeof Link> & { active?: boolean; external?: boolean }) {
+}: ComponentPropsWithoutRef<typeof Link> & { active?: boolean }) {
   return (
     <Link
       {...rest}
@@ -110,9 +110,10 @@ export function TableOfContentsLink({
         'flex items-center gap-x-1 stroke-contrast-400 py-1 text-sm transition-colors hover:stroke-current hover:text-foreground',
         active ? 'text-foreground' : 'text-contrast-400 hover:!text-foreground'
       )}
+      target={target}
     >
       {children}
-      {external && <Popout12 className="ml-1 inline shrink-0" />}
+      {target === '_blank' && <Popout12 className="ml-1 inline shrink-0" />}
     </Link>
   )
 }

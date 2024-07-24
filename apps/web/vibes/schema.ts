@@ -119,6 +119,7 @@ export type Page = {
   title: string
   slug: string
   file: string
+  component?: string
 }
 
 export type Navigation = {

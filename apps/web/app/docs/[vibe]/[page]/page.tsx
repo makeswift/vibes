@@ -117,7 +117,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   const meta = pageMetaSchema(vibe).parse(frontmatter)
   const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null
   const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null
-  const component = vibe.components.find(component => component.name === params.page)
+  const component = vibe.components.find(component => component.name === page.component)
   const numDependencies = component
     ? component.registryDependencies.length + component.dependencies.length
     : 0
@@ -187,18 +187,24 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
               {component && numDependencies > 0 && (
                 <ul className="py-4">
-                  {component.registryDependencies.map(dependency => (
-                    <li key={dependency}>
-                      <TableOfContentsLink href={`/docs/${vibe.slug}/${dependency}`}>
-                        {`@/vibes/${vibe.slug}/${dependency}`}
-                      </TableOfContentsLink>
-                    </li>
-                  ))}
+                  {component.registryDependencies.map(dependency => {
+                    const dependencyPage = allPages.find(page => page.component === dependency)
+
+                    if (!dependencyPage) return null
+
+                    return (
+                      <li key={dependency}>
+                        <TableOfContentsLink href={`/docs/${vibe.slug}/${dependencyPage.slug}`}>
+                          {`${vibe.slug}/${dependency}`}
+                        </TableOfContentsLink>
+                      </li>
+                    )
+                  })}
                   {component.dependencies.map(dependency => (
                     <li key={dependency}>
                       <TableOfContentsLink
                         href={`https://www.npmjs.com/package/${dependency}`}
-                        external
+                        target="_blank"
                       >
                         {dependency}
                       </TableOfContentsLink>
@@ -208,18 +214,21 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               )}
 
               <ul className="py-4">
+                {component && component.files[0] && (
+                  <li>
+                    <TableOfContentsLink
+                      href={`https://github.com/makeswift/vibes/tree/main/apps/web/vibes/${vibe.slug}/${component.files[0]}`}
+                      target="_blank"
+                    >
+                      View source
+                    </TableOfContentsLink>
+                  </li>
+                )}
                 <li>
-                  <TableOfContentsLink href="#" external>
-                    View source
-                  </TableOfContentsLink>
-                </li>
-                <li>
-                  <TableOfContentsLink href="#" external>
-                    View on npm
-                  </TableOfContentsLink>
-                </li>
-                <li>
-                  <TableOfContentsLink href="#" external>
+                  <TableOfContentsLink
+                    href="https://github.com/makeswift/vibes/issues/new"
+                    target="_blank"
+                  >
                     Report an issue
                   </TableOfContentsLink>
                 </li>
