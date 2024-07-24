@@ -8,7 +8,7 @@ export const StarHalfIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({ 
       stroke="none"
     >
       <path
-        className="fill-current"
+        className="fill-foreground"
         stroke="currentColor"
         d="M286.897 389.42V119.426l-51.471 111.586-122.029 14.469 90.219 83.431-23.949 120.529 107.23-60.021Z"
       />
@@ -35,13 +35,13 @@ export const StarFilledIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = (
       stroke="none"
     >
       <path
-        fill="#000"
+        className="fill-foreground"
         stroke="currentColor"
         d="M286.897 389.42V119.426l-51.471 111.586-122.029 14.469 90.219 83.431-23.949 120.529 107.23-60.021Z"
       />
 
       <path
-        fill="#000"
+        className="fill-foreground"
         stroke="currentColor"
         d="M286.897 389.42V119.426l51.471 111.586 122.029 14.469-90.219 83.431 23.949 120.529-107.23-60.021Z"
       />
