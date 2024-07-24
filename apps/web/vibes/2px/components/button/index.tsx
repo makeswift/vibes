@@ -33,7 +33,7 @@ export interface ButtonProps {
 const Button = ({ className, variant, loading, children, asChild = false }: ButtonProps) => {
   const Component = asChild ? Slot : 'button'
   return (
-    <div className="flex w-full items-center justify-center @container">
+    <div className="flex w-full items-center justify-center font-body @container">
       <Component
         className={cn(
           buttonVariants({ variant, className }),
