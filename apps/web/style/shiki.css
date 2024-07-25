@@ -32,7 +32,7 @@
 }
 
 .shiki {
-  @apply rounded-none !bg-contrast-100 p-4;
+  @apply !rounded-none !bg-contrast-100 p-4;
 }
 
 .shiki code {
