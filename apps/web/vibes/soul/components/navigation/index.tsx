@@ -2,12 +2,10 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { CSSProperties, Ref, forwardRef, useEffect, useRef, useState } from 'react'
+import { Ref, forwardRef, useEffect, useRef, useState } from 'react'
 import ReactHeadroom from 'react-headroom'
 
 import clsx from 'clsx'
-
-import Button from '../button'
 
 type MainLink = {
   text?: string

@@ -18,6 +18,13 @@ export const components = [
     component: lazy(() => import('./components/accordions')),
   },
   {
+    name: 'category-card',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/category-card/index.tsx'],
+    component: lazy(() => import('./components/category-card')),
+  },
+  {
     name: 'input',
     dependencies: [],
     registryDependencies: [],
