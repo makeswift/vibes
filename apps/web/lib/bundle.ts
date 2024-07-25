@@ -57,20 +57,21 @@ export async function getComponentSize({ component, vibe }: { component: Compone
 export async function getTotalSize({
   component,
   vibe,
-  size = 0,
 }: {
   component: Component
   vibe: Vibe
-  size?: number
 }): Promise<number> {
-  size += (await getDependencySize(component)) + (await getComponentSize({ component, vibe }))
+  let size = 0
+
+  size += await getDependencySize(component)
+  size += await getComponentSize({ component, vibe })
 
   for (const registryDependency of component.registryDependencies) {
     const registryComponent = vibe.components.find(c => c.name === registryDependency)
 
     if (!registryComponent) continue
 
-    return await getTotalSize({ component: registryComponent, vibe, size })
+    size += await getTotalSize({ component: registryComponent, vibe })
   }
 
   return size
