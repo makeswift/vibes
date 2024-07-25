@@ -23,9 +23,17 @@ type BundlephobiaResponse = {
 }
 
 export function fetchBundleSize(packageName: string): Promise<BundlephobiaResponse> {
-  return fetch(`https://bundlephobia.com/api/size?package=${packageName}&record=true`).then(r =>
-    r.json()
-  )
+  return fetch(`https://bundlephobia.com/api/size?package=${packageName}&record=true`)
+    .then(r => r.json())
+    .then(res => {
+      if (res.error) {
+        console.error(`Failed to fetch dependency: ${packageName}`)
+
+        return { gzip: 0 }
+      } else {
+        return res
+      }
+    })
 }
 
 export async function getDependencySize(component: Component): Promise<number> {
