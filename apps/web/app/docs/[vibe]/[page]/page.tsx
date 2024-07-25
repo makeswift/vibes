@@ -12,6 +12,7 @@ import {
 import clsx from 'clsx'
 import { readFile } from 'fs/promises'
 import path from 'path'
+import prettyBytes from 'pretty-bytes'
 import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
@@ -27,6 +28,7 @@ import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
+import { getTotalSize } from '@/lib/bundle'
 import { pageMetaSchema } from '@/vibes/schema'
 import { getVibe } from '@/vibes/utils'
 
@@ -121,6 +123,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   const numDependencies = component
     ? component.registryDependencies.length + component.dependencies.length
     : 0
+  const totalSize = component ? await getTotalSize({ component, vibe }) : null
 
   return (
     <>
@@ -203,63 +206,73 @@ export default async function Page({ params }: { params: { vibe: string; page: s
           </div>
           <div className="not-prose hidden lg:block">
             <nav className="sticky top-24 w-full divide-y divide-dashed divide-contrast-400 pb-10">
-              <TableOfContents className="pb-4" offsetTop={90} />
-              <div className="space-between flex w-full py-4 text-contrast-400">
-                <span className="flex-1 text-sm">Total bundle size</span>
+              <TableOfContents className="pb-5" offsetTop={90} />
+              <div className="space-y-5 py-5">
+                {totalSize && (
+                  <div className="flex w-full items-center gap-x-4">
+                    <span className="text-sm font-bold text-foreground">Total size</span>
 
-                <span className="bg-contrast-100 px-1 py-0.5 font-mono text-xs text-contrast-500">
-                  5.6kB
-                </span>
-              </div>
+                    <span className="bg-contrast-100 px-1.5 py-0.5 font-mono text-xs text-contrast-500">
+                      {prettyBytes(totalSize, { maximumFractionDigits: 1 })}
+                    </span>
+                  </div>
+                )}
 
-              {component && numDependencies > 0 && (
-                <ul className="py-4">
-                  {component.registryDependencies.map(dependency => {
-                    const dependencyPage = allPages.find(page => page.component === dependency)
+                {component && numDependencies > 0 && (
+                  <div className="space-y-1">
+                    <div className="text-sm font-bold text-foreground">Dependencies</div>
+                    <ul>
+                      {component.registryDependencies.map(dependency => {
+                        const dependencyPage = allPages.find(page => page.component === dependency)
 
-                    if (!dependencyPage) return null
+                        if (!dependencyPage) return null
 
-                    return (
-                      <li key={dependency}>
-                        <TableOfContentsLink href={`/docs/${vibe.slug}/${dependencyPage.slug}`}>
-                          {`${vibe.slug}/${dependency}`}
+                        return (
+                          <li key={dependency}>
+                            <TableOfContentsLink href={`/docs/${vibe.slug}/${dependencyPage.slug}`}>
+                              {`${vibe.slug}/${dependency}`}
+                            </TableOfContentsLink>
+                          </li>
+                        )
+                      })}
+                      {component.dependencies.map(dependency => (
+                        <li key={dependency}>
+                          <TableOfContentsLink
+                            href={`https://www.npmjs.com/package/${dependency}`}
+                            target="_blank"
+                          >
+                            {dependency}
+                          </TableOfContentsLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="space-y-1">
+                  <div className="text-sm font-bold text-foreground">Other links</div>
+                  <ul>
+                    {component && component.files[0] && (
+                      <li>
+                        <TableOfContentsLink
+                          href={`https://github.com/makeswift/vibes/tree/main/apps/web/vibes/${vibe.slug}/${component.files[0]}`}
+                          target="_blank"
+                        >
+                          View source
                         </TableOfContentsLink>
                       </li>
-                    )
-                  })}
-                  {component.dependencies.map(dependency => (
-                    <li key={dependency}>
+                    )}
+                    <li>
                       <TableOfContentsLink
-                        href={`https://www.npmjs.com/package/${dependency}`}
+                        href="https://github.com/makeswift/vibes/issues/new"
                         target="_blank"
                       >
-                        {dependency}
+                        Report an issue
                       </TableOfContentsLink>
                     </li>
-                  ))}
-                </ul>
-              )}
-
-              <ul className="py-4">
-                {component && component.files[0] && (
-                  <li>
-                    <TableOfContentsLink
-                      href={`https://github.com/makeswift/vibes/tree/main/apps/web/vibes/${vibe.slug}/${component.files[0]}`}
-                      target="_blank"
-                    >
-                      View source
-                    </TableOfContentsLink>
-                  </li>
-                )}
-                <li>
-                  <TableOfContentsLink
-                    href="https://github.com/makeswift/vibes/issues/new"
-                    target="_blank"
-                  >
-                    Report an issue
-                  </TableOfContentsLink>
-                </li>
-              </ul>
+                  </ul>
+                </div>
+              </div>
             </nav>
           </div>
         </div>

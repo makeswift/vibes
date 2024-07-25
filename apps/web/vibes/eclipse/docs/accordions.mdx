@@ -5,4 +5,138 @@ preview:
   Magenta: button-example
 ---
 
+## This is a Heading
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra.
+
+Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus.
+
+<Button>Regular button</Button>
+<ButtonLink href="https://google.com">Testing</ButtonLink>
+
 <CodeFromFile pathname="components/accordions/index.tsx" />
+
+Praesent elementum [hendrerit](https://makeswift.com) tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.
+
+- Testing
+- Hello
+- Hsagasgag
+
+## Examples
+
+### Example 1
+
+<CodeFromFile pathname="components/button/index.tsx" />
+
+```tsx
+import { transformerRemoveLineBreak } from '@shikijs/transformers'
+import { readFile } from 'fs/promises'
+import { codeToHtml } from 'shiki'
+
+interface Props {
+  pathname: string
+}
+
+export async function CodeFromFile({ pathname }: Props) {
+  const file = await readFile(process.cwd() + pathname, 'utf8')
+  const code = await codeToHtml(file, {
+    lang: 'javascript',
+    themes: {
+      light: 'github-light',
+      dark: 'github-dark',
+    },
+    transformers: [transformerRemoveLineBreak()],
+  }) // [!code ++]
+
+  return <div dangerouslySetInnerHTML={{ __html: code }} />
+}
+```
+
+<AccordionGroup>
+    <Accordion value="1" title="Accordion 1">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
+        Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
+        vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
+        leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+    </Accordion>
+
+    <Accordion
+        value="2"
+        title="This is a really long piece of text that should wrap to another line when I type in more words for this title"
+    >
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
+        Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
+        vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
+        leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+    </Accordion>
+
+    <Accordion value="3" title="This is a question">
+        This is the content for accordion 1
+    </Accordion>
+
+</AccordionGroup>
+
+<Steps>
+    <Step>
+        ### Step 1
+
+        This is a step
+
+    </Step>
+    <Step>
+        ### Step 2
+
+        This is a step
+
+    </Step>
+
+</Steps>
+
+## A headline
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <Button>Test</Button>
+  </TabsContent>
+  <TabsContent value="code">
+    ```ts
+      import { ReactRuntime } from '@makeswift/runtime/react'
+
+      // [!code word:viewport]
+      export const runtime = new ReactRuntime({
+        breakpoints: {
+          mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code highlight]
+          tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code --]
+          laptop: { width: 1024, viewport: 1000, label: 'Laptop' }, // [!code ++]
+          external: { width: 1280, label: 'External' },
+        },
+      })
+    ```
+
+  </TabsContent>
+</Tabs>
+
+## Another headline
+
+Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante. Vivamus imperdiet nibh feugiat est.
+
+Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed augue. Integer eu magna sit amet metus fermentum posuere. Morbi sit amet nulla sed dolor elementum imperdiet. Quisque fermentum. Cum sociis natoque penatibus et magnis xdis parturient montes, nascetur ridiculus mus. Pellentesque adipiscing eros ut libero. Ut condimentum mi vel tellus. Suspendisse laoreet. Fusce ut est sed dolor gravida convallis. Morbi vitae ante. Vivamus ultrices luctus nunc. Suspendisse et dolor. Etiam dignissim. Proin malesuada adipiscing lacus. Donec metus. Curabitur gravida
+
+| Prop       | Type     | Default                          |
+| ---------- | -------- | -------------------------------- |
+| `propName` | `string` | `false`                          |
+| `propName` | `string` | [`hello`](https://makeswift.com) |
+| `propName` | `string` | `sup`                            |
+
+<div className="my-10 aspect-[4/3] border border-dashed border-foreground bg-contrast-100">
+  <iframe
+    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSs4o7sfbgqVr83CTXG7vRa%2FEclipse%3Ftype%3Ddesign%26node-id%3D23%253A36%26mode%3Ddesign%26t%3D3OZNQn2PpZT6AfPq-1"
+    className="h-full w-full"
+  ></iframe>
+</div>
