@@ -19,6 +19,7 @@ import * as MDXComponents from '@/components/mdx'
 import { navigation } from '@/components/navigation'
 import { Preview } from '@/components/preview'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
+import { BundleSize } from '@/components/ui/bundle-size'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
@@ -204,13 +205,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
           <div className="not-prose hidden lg:block">
             <nav className="sticky top-24 w-full divide-y divide-dashed divide-contrast-400 pb-10">
               <TableOfContents className="pb-4" offsetTop={90} />
-              <div className="space-between flex w-full py-4 text-contrast-400">
-                <span className="flex-1 text-sm">Total bundle size</span>
-
-                <span className="bg-contrast-100 px-1 py-0.5 font-mono text-xs text-contrast-500">
-                  5.6kB
-                </span>
-              </div>
+              {component && <BundleSize vibeSlug={vibe.slug} componentName={component.name} />}
 
               {component && numDependencies > 0 && (
                 <ul className="py-4">
