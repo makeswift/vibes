@@ -10,6 +10,12 @@ export const navigation = [
         file: 'docs/button.mdx',
         component: 'button',
       },
+      {
+        title: 'Radio Button',
+        slug: 'radio-button',
+        file: 'docs/radio-button.mdx',
+        component: 'radio-button',
+      },
     ],
   },
 ] satisfies Navigation
