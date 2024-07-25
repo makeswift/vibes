@@ -24,6 +24,7 @@ import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Reveal } from '@/components/ui/reveal'
 import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -106,6 +107,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       Popover,
       PopoverContent,
       PopoverTrigger,
+      Reveal,
       Step,
       Steps,
       TableOfContents,
