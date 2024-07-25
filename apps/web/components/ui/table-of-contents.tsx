@@ -107,8 +107,8 @@ export function TableOfContentsLink({
     <Link
       {...rest}
       className={clsx(
-        'flex items-center gap-x-1 stroke-contrast-400 py-1 text-sm transition-colors hover:stroke-current hover:text-foreground',
-        active ? 'text-foreground' : 'text-contrast-400 hover:!text-foreground'
+        'flex items-center gap-x-1 stroke-contrast-400 py-1 text-sm outline-none transition-colors hover:stroke-current hover:text-foreground focus-visible:underline focus-visible:underline-offset-[6px]',
+        active ? 'font-medium text-foreground' : 'text-contrast-400 hover:!text-foreground'
       )}
       target={target}
     >
