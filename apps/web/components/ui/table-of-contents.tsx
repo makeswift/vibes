@@ -68,31 +68,34 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
   if (headings.length === 0) return null
 
   return (
-    <ul className={className}>
-      {headings.map((heading, index) => (
-        <li key={index} className="m-0 p-0">
-          <TableOfContentsLink
-            style={{
-              marginLeft: `${heading.level - 2}em`,
-            }}
-            active={activeHeading?.id === heading.id}
-            href={`#${heading.id}`}
-            onClick={e => {
-              e.preventDefault()
-              const element = document.querySelector(`#${heading.id}`)
+    <div className="space-y-2">
+      <div className="text-sm font-bold text-foreground">On this page</div>
+      <ul className={className}>
+        {headings.map((heading, index) => (
+          <li key={index}>
+            <TableOfContentsLink
+              style={{
+                marginLeft: `${heading.level - 2}em`,
+              }}
+              active={activeHeading?.id === heading.id}
+              href={`#${heading.id}`}
+              onClick={e => {
+                e.preventDefault()
+                const element = document.querySelector(`#${heading.id}`)
 
-              window.scrollTo({
-                top: (element?.getBoundingClientRect().top ?? 0) + window.scrollY - offsetTop,
-                left: (element?.getBoundingClientRect().left ?? 0) + window.scrollY - offsetTop,
-                behavior: 'smooth',
-              })
-            }}
-          >
-            {heading.text}
-          </TableOfContentsLink>
-        </li>
-      ))}
-    </ul>
+                window.scrollTo({
+                  top: (element?.getBoundingClientRect().top ?? 0) + window.scrollY - offsetTop,
+                  left: (element?.getBoundingClientRect().left ?? 0) + window.scrollY - offsetTop,
+                  behavior: 'smooth',
+                })
+              }}
+            >
+              {heading.text}
+            </TableOfContentsLink>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
