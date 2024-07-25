@@ -20,7 +20,6 @@ export default function DatePicker({ className, defaultDate }: Props) {
   const [defaultYear, defaultMonth, defaultDay] = defaultDate
     ? defaultDate.split('T')[0].split('-').map(Number)
     : [undefined, undefined, undefined]
-  console.log({ defaultYear, defaultMonth, defaultDay })
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
     defaultYear && defaultMonth && defaultDay
       ? new Date(defaultYear, defaultMonth - 1, defaultDay)
