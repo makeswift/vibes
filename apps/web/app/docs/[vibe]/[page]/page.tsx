@@ -156,33 +156,17 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5'
             )}
           >
-            <ul className="not-prose w-full columns-1 gap-x-8 space-y-2 sm:columns-2 md:gap-x-10">
-              <li className="flex items-start gap-x-3 text-foreground">
-                <Check className="mt-1.5 shrink-0" />
-                Perspiciatis nemo officiis necessitatibus debitis iure eum consequatur nisi
-                architecto excepturi
-              </li>
-              <li className="flex items-start gap-x-3 text-foreground">
-                <Check className="mt-1.5 shrink-0" />
-                Can be controlled or uncontrolled
-              </li>
-              <li className="flex items-start gap-x-3 text-foreground">
-                <Check className="mt-1.5 shrink-0" />
-                Can be controlled or uncontrolled
-              </li>
-              <li className="flex items-start gap-x-3 text-foreground">
-                <Check className="mt-1.5 shrink-0" />
-                Can be controlled or uncontrolled
-              </li>
-              <li className="flex items-start gap-x-3 text-foreground">
-                <Check className="mt-1.5 shrink-0" />
-                Can be controlled or uncontrolled
-              </li>
-              <li className="flex items-start gap-x-3 text-foreground">
-                <Check className="mt-1.5 shrink-0" />
-                Can be controlled or uncontrolled
-              </li>
-            </ul>
+            {meta.features && (
+              <ul className="not-prose w-full columns-1 gap-x-8 space-y-2 sm:columns-2 md:gap-x-10">
+                {meta.features.map((feature, index) => (
+                  <li className="flex items-start gap-x-3 text-foreground" key={index}>
+                    <Check className="mt-1.5 shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            )}
+
             {content}
 
             <div className="mt-8 flex w-full justify-between md:mt-10">
