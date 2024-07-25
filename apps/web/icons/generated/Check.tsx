@@ -1,19 +1,16 @@
 import * as React from 'react'
 import type { SVGProps } from 'react'
 
-import clsx from 'clsx'
-
-const SvgCheck = ({ className }: { className?: string }, props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
-    fill="none"
-    className={clsx('stroke-foreground', className)}
-    {...props}
-  >
-    <path d="M7 11.5L14.5 4" strokeWidth="1.5" strokeLinecap="square" strokeDasharray="1.5 3.25" />
-    <path d="M2 8.5L6 12.5" strokeWidth="1.5" strokeLinecap="square" />
+const SvgCheck = (props: SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" {...props}>
+    <path
+      stroke="currentColor"
+      strokeDasharray="3 3.25"
+      strokeLinecap="square"
+      strokeWidth={1.5}
+      d="M7 11.5 14.5 4"
+    />
+    <path stroke="currentColor" strokeLinecap="square" strokeWidth={1.5} d="m2 8.5 4 4" />
   </svg>
 )
 export default SvgCheck
