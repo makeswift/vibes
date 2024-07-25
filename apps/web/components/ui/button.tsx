@@ -13,16 +13,13 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
   ({ className, variant = 'default', size = 'medium', active = true, children, ...props }, ref) => {
     return (
       <button
-        className={clsx(
-          'z-0 ring-primary ring-offset-2 ring-offset-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2',
-          className
-        )}
+        className={clsx('group z-0 rounded-full outline-none', className)}
         ref={ref}
         {...props}
       >
         <span
           className={clsx(
-            'inline-flex items-center justify-center whitespace-nowrap rounded-full border font-bold outline-none ring-offset-background transition-colors',
+            'inline-flex items-center justify-center whitespace-nowrap rounded-full border font-bold ring-1 ring-inset ring-transparent ring-offset-0 transition-colors group-focus-visible:border-primary group-focus-visible:ring-primary',
             {
               default:
                 'pattern-shadow pattern-shadow-sm pattern-shadow-hover border-foreground bg-background',
