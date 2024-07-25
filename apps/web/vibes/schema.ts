@@ -24,6 +24,10 @@ export type CSSVars = {
   '--accent': string
   '--background': string
   '--foreground': string
+  '--success': string
+  '--error': string
+  '--warning': string
+  '--info': string
 
   '--contrast-100': string
   '--contrast-200': string
@@ -44,59 +48,16 @@ export type CSSVars = {
   '--font-variation-settings-mono'?: string
 
   '--font-size-xs'?: string
-  '--line-height-xs'?: string
-  '--letter-spacing-xs'?: string
-  '--font-weight-xs'?: string
-
   '--font-size-sm'?: string
-  '--line-height-sm'?: string
-  '--letter-spacing-sm'?: string
-  '--font-weight-sm'?: string
-
   '--font-size-base'?: string
-  '--line-height-base'?: string
-  '--letter-spacing-base'?: string
-  '--font-weight-base'?: string
-
   '--font-size-lg'?: string
-  '--line-height-lg'?: string
-  '--letter-spacing-lg'?: string
-  '--font-weight-lg'?: string
-
   '--font-size-xl'?: string
-  '--line-height-xl'?: string
-  '--letter-spacing-xl'?: string
-  '--font-weight-xl'?: string
-
   '--font-size-2xl'?: string
-  '--line-height-2xl'?: string
-  '--letter-spacing-2xl'?: string
-  '--font-weight-2xl'?: string
-
   '--font-size-3xl'?: string
-  '--line-height-3xl'?: string
-  '--letter-spacing-3xl'?: string
-  '--font-weight-3xl'?: string
-
   '--font-size-4xl'?: string
-  '--line-height-4xl'?: string
-  '--letter-spacing-4xl'?: string
-  '--font-weight-4xl'?: string
-
   '--font-size-5xl'?: string
-  '--line-height-5xl'?: string
-  '--letter-spacing-5xl'?: string
-  '--font-weight-5xl'?: string
-
   '--font-size-6xl'?: string
-  '--line-height-6xl'?: string
-  '--letter-spacing-6xl'?: string
-  '--font-weight-6xl'?: string
-
   '--font-size-7xl'?: string
-  '--line-height-7xl'?: string
-  '--letter-spacing-7xl'?: string
-  '--font-weight-7xl'?: string
 
   '--shadow-sm'?: string
   '--shadow-base'?: string
