@@ -10,7 +10,6 @@ export const components = [
     files: ['./components/rating/index.tsx'],
     component: lazy(() => import('./components/rating')),
   },
-
   {
     name: 'button',
     dependencies: [],

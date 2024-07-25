@@ -24,7 +24,7 @@ import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Step, Steps } from '@/components/ui/steps'
-import { TableOfContents } from '@/components/ui/table-of-contents'
+import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { pageMetaSchema } from '@/vibes/schema'
@@ -48,13 +48,13 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
   if (!vibe) return notFound()
 
-  const file = vibe.navigation
-    .flatMap(group => group.pages)
-    .find(page => page.slug === params.page)?.file
+  const allPages = vibe.navigation.flatMap(group => group.pages)
+  const pageIndex = allPages.findIndex(page => page.slug === params.page)
 
-  if (!file) return notFound()
+  if (pageIndex === -1) return notFound()
 
-  const source = await readFile(path.resolve(path.join('vibes', vibe.slug, file)), 'utf-8')
+  const page = allPages[pageIndex]
+  const source = await readFile(path.resolve(path.join('vibes', vibe.slug, page.file)), 'utf-8')
 
   const { content, frontmatter } = await compileMDX<PageMeta>({
     source,
@@ -115,6 +115,12 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   })
 
   const meta = pageMetaSchema(vibe).parse(frontmatter)
+  const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null
+  const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null
+  const component = vibe.components.find(component => component.name === page.component)
+  const numDependencies = component
+    ? component.registryDependencies.length + component.dependencies.length
+    : 0
 
   return (
     <>
@@ -129,7 +135,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
         {meta.preview && <Preview vibeSlug={vibe.slug} componentName={meta.preview} />}
 
-        <div className="gap-x-20 font-sans text-foreground md:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+        <div className="gap-x-20 font-sans text-foreground lg:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
           <div
             className={clsx(
               'prose w-full max-w-full dark:prose-invert',
@@ -150,17 +156,85 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             {content}
 
             <div className="flex w-full justify-between">
-              <ButtonLink href="#" variant="default">
-                <ChevronLeft16 className="-ml-1" />
-                Component
-              </ButtonLink>
-              <ButtonLink href="#" variant="default">
-                Component
-                <ChevronRight16 className="-mr-1" />
-              </ButtonLink>
+              <div>
+                {prevPage && (
+                  <ButtonLink href={`/docs/${vibe.slug}/${prevPage.slug}`} variant="default">
+                    <ChevronLeft16 className="-ml-1" />
+                    {prevPage.title}
+                  </ButtonLink>
+                )}
+              </div>
+              <div>
+                {nextPage && (
+                  <ButtonLink href={`/docs/${vibe.slug}/${nextPage.slug}`} variant="default">
+                    {nextPage.title}
+                    <ChevronRight16 className="-mr-1" />
+                  </ButtonLink>
+                )}
+              </div>
             </div>
           </div>
-          <TableOfContents offsetTop={90} />
+          <div className="not-prose hidden lg:block">
+            <nav className="sticky top-24 w-full divide-y divide-dashed divide-contrast-400 pb-10 pt-2">
+              <TableOfContents className="pb-4" offsetTop={90} />
+              <div className="space-between flex w-full py-4 text-contrast-400">
+                <span className="flex-1 text-sm">Total bundle size</span>
+
+                <span className="bg-contrast-100 px-1 py-0.5 font-mono text-xs text-contrast-500">
+                  5.6kB
+                </span>
+              </div>
+
+              {component && numDependencies > 0 && (
+                <ul className="py-4">
+                  {component.registryDependencies.map(dependency => {
+                    const dependencyPage = allPages.find(page => page.component === dependency)
+
+                    if (!dependencyPage) return null
+
+                    return (
+                      <li key={dependency}>
+                        <TableOfContentsLink href={`/docs/${vibe.slug}/${dependencyPage.slug}`}>
+                          {`${vibe.slug}/${dependency}`}
+                        </TableOfContentsLink>
+                      </li>
+                    )
+                  })}
+                  {component.dependencies.map(dependency => (
+                    <li key={dependency}>
+                      <TableOfContentsLink
+                        href={`https://www.npmjs.com/package/${dependency}`}
+                        target="_blank"
+                      >
+                        {dependency}
+                      </TableOfContentsLink>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <ul className="py-4">
+                {component && component.files[0] && (
+                  <li>
+                    <TableOfContentsLink
+                      href={`https://github.com/makeswift/vibes/tree/main/apps/web/vibes/${vibe.slug}/${component.files[0]}`}
+                      target="_blank"
+                    >
+                      View source
+                    </TableOfContentsLink>
+                  </li>
+                )}
+                <li>
+                  <TableOfContentsLink
+                    href="https://github.com/makeswift/vibes/issues/new"
+                    target="_blank"
+                  >
+                    Report an issue
+                  </TableOfContentsLink>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </>

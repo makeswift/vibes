@@ -10,7 +10,6 @@ export const examples = [
     files: ['examples/rating.tsx'],
     component: lazy(() => import('./examples/rating')),
   },
-
   {
     name: 'button-example',
     dependencies: [],
