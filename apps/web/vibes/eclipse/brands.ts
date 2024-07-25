@@ -15,6 +15,10 @@ export const brands = [
       '--accent': '248 90% 62%',
       '--background': '220 30% 4%',
       '--foreground': '0 0% 100%',
+      '--success': '142 50% 50%',
+      '--error': '357 69% 45%',
+      '--warning': '25 73% 45%',
+      '--info': '220 70% 45%',
 
       '--contrast-100': '220 20% 76%',
       '--contrast-200': '220 15% 60%',
@@ -65,11 +69,17 @@ export const brands = [
       '--accent': '248 90% 62%',
       '--background': '220 30% 4%',
       '--foreground': '0 0% 100%',
+      '--success': '142 50% 50%',
+      '--error': '357 69% 45%',
+      '--warning': '25 73% 45%',
+      '--info': '220 70% 45%',
+
       '--contrast-100': '220 20% 76%',
       '--contrast-200': '220 15% 60%',
       '--contrast-300': '220 12% 50%',
       '--contrast-400': '220 15% 36%',
       '--contrast-500': '220 20% 25%',
+
       '--font-family-heading': "'Epilogue', system-ui, sans-serif",
       '--font-family-body': "'Epilogue', system-ui, sans-serif",
       '--font-family-mono': "'Epilogue', system-ui, sans-serif",

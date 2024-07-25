@@ -24,6 +24,10 @@ export type CSSVars = {
   '--accent': string
   '--background': string
   '--foreground': string
+  '--success': string
+  '--error': string
+  '--warning': string
+  '--info': string
 
   '--contrast-100': string
   '--contrast-200': string

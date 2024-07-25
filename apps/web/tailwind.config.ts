@@ -19,6 +19,10 @@ const config = {
         accent: 'hsl(var(--accent))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        success: 'hsl(var(--success))',
+        error: 'hsl(var(--error))',
+        warning: 'hsl(var(--warning))',
+        info: 'hsl(var(--info))',
         contrast: {
           100: 'hsl(var(--contrast-100))',
           200: 'hsl(var(--contrast-200))',
