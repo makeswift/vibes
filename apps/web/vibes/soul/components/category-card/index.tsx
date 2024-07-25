@@ -28,7 +28,7 @@ const CategoryCard: React.FC<Props & React.HTMLAttributes<HTMLAnchorElement>> = 
       href={ctaLink?.href as Route}
       target={ctaLink?.target}
       className={clsx(
-        'group relative flex h-full min-w-[226px] flex-col gap-2 @md:min-w-[467px]',
+        'group relative flex h-full min-w-[226px] snap-start flex-col gap-2 @md:min-w-[467px]',
         theme === 'light' ? 'text-foreground' : 'text-background'
       )}
       {...props}
@@ -40,7 +40,7 @@ const CategoryCard: React.FC<Props & React.HTMLAttributes<HTMLAnchorElement>> = 
           height={600}
           width={467}
           alt="Category card image"
-          className="h-[291px] w-[226px] object-cover transition-transform duration-150 ease-linear group-hover:scale-[1.025] @md:h-[600px] @md:w-[467px]"
+          className="h-[291px] w-[226px] object-cover transition-transform duration-300 ease-in-out group-hover:scale-[1.025] @md:h-[600px] @md:w-[467px]"
         />
       </div>
       <span className="text-lg font-medium @md:absolute @md:bottom-5 @md:left-5">{label}</span>

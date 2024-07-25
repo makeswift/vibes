@@ -25,6 +25,13 @@ export const components = [
     component: lazy(() => import('./components/category-card')),
   },
   {
+    name: 'hero-category',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/hero-category/index.tsx'],
+    component: lazy(() => import('./components/hero-category')),
+  },
+  {
     name: 'input',
     dependencies: [],
     registryDependencies: [],
