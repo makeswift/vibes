@@ -164,19 +164,19 @@ const config = {
         xl: 'var(--shadow-xl)',
       },
       keyframes: {
-        shake: {
-          '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
-          '20%, 80%': { transform: 'translate3d(1px, 0, 0)' },
-          '30%, 50%, 70%': { transform: 'translate3d(-2px, 0, 0)' },
-          '40%, 60%': { transform: 'translate3d(2px, 0, 0)' },
+        collapse: {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
         expand: {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
         },
-        collapse: {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
+        'marching-ants': {
+          to: {
+            'background-position':
+              '0 0, 0 -1px, calc(100% + 1px) 0, 100% calc(100% + 1px), -1px 100%',
+          },
         },
         rotateFade: {
           from: { opacity: '1', transform: 'rotateZ(0deg) translate3d(-50%,-50%,0)' },
@@ -205,18 +205,25 @@ const config = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-100%)' },
         },
+        shake: {
+          '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+          '20%, 80%': { transform: 'translate3d(1px, 0, 0)' },
+          '30%, 50%, 70%': { transform: 'translate3d(-2px, 0, 0)' },
+          '40%, 60%': { transform: 'translate3d(2px, 0, 0)' },
+        },
         slideIn: {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(0%)' },
         },
       },
       animation: {
-        shake: 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
-        expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
+        expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
+        marching: 'marching-ants 10s linear infinite',
         rotate: 'rotate 2000ms linear infinite',
         scroll: 'scroll 200ms infinite linear both',
         scrollLeft: 'scrollLeft var(--marquee-duration) linear infinite',
+        shake: 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
         slideIn: 'slideIn 800ms cubic-bezier(0.25, 1, 0, 1)',
       },
     },

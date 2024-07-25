@@ -101,6 +101,53 @@
   .pattern-shadow-hover:hover:after {
     @apply [animation-play-state:running];
   }
+  .marching-ants {
+    --length: 6px;
+    --interval: 9px;
+    background: linear-gradient(white, white),
+      repeating-linear-gradient(
+        to right,
+        #000,
+        #000 var(--length),
+        #fff var(--length),
+        #fff var(--interval)
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        #000,
+        #000 var(--length),
+        #fff var(--length),
+        #fff var(--interval)
+      ),
+      repeating-linear-gradient(
+        to left,
+        #000,
+        #000 var(--length),
+        #fff var(--length),
+        #fff var(--interval)
+      ),
+      repeating-linear-gradient(
+        to top,
+        #000,
+        #000 var(--length),
+        #fff var(--length),
+        #fff var(--interval)
+      );
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size:
+      100% 100%,
+      200% 1px,
+      1px 200%,
+      200% 1px,
+      1px 200%;
+    background-position:
+      0 0,
+      100% -1px,
+      calc(100% + 1px) 100%,
+      0 calc(100% + 1px),
+      -1px 0;
+    @apply animate-marching;
+  }
   @media (hover: none) {
     .\@touch\:hide {
       display: none;

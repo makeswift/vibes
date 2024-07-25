@@ -14,7 +14,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         className={clsx(
-          'z-0 ring-offset-2 ring-offset-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+          'z-0 ring-primary ring-offset-2 ring-offset-background focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2',
           className
         )}
         ref={ref}
