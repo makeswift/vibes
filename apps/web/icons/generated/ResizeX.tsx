@@ -4,7 +4,7 @@ import type { SVGProps } from 'react'
 const SvgResizeX = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={28} height={16} fill="none" {...props}>
     <g filter="url(#resize-x_svg__a)">
-      <path fill="currentColor" d="M8 2v4h12V2l5 5-5 5V8H8v4L3 7z" />
+      <path fill="#000" d="M8 2v4h12V2l5 5-5 5V8H8v4L3 7z" />
       <path
         stroke="#fff"
         strokeLinejoin="round"
