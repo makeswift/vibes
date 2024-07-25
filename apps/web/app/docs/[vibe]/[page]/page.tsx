@@ -26,7 +26,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { ChevronLeft16, ChevronRight16 } from '@/icons/generated'
+import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { pageMetaSchema } from '@/vibes/schema'
 import { getVibe } from '@/vibes/utils'
 
@@ -135,7 +135,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
 
         {meta.preview && <Preview vibeSlug={vibe.slug} componentName={meta.preview} />}
 
-        <div className="gap-x-20 font-sans text-foreground lg:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+        <div className="mt-8 gap-x-20 font-sans text-foreground md:mt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
           <div
             className={clsx(
               'prose w-full max-w-full dark:prose-invert',
@@ -153,6 +153,35 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5'
             )}
           >
+            <h2 className="prose-h2 !mb-4">Features</h2>
+
+            <ul className="not-prose w-full columns-1 gap-x-8 space-y-2 sm:columns-2 md:gap-x-10">
+              <li className="flex items-start gap-x-3 text-foreground">
+                <Check className="mt-1.5 shrink-0" />
+                Perspiciatis nemo officiis necessitatibus debitis iure eum consequatur nisi
+                architecto excepturi
+              </li>
+              <li className="flex items-start gap-x-3 text-foreground">
+                <Check className="mt-1.5 shrink-0" />
+                Can be controlled or uncontrolled
+              </li>
+              <li className="flex items-start gap-x-3 text-foreground">
+                <Check className="mt-1.5 shrink-0" />
+                Can be controlled or uncontrolled
+              </li>
+              <li className="flex items-start gap-x-3 text-foreground">
+                <Check className="mt-1.5 shrink-0" />
+                Can be controlled or uncontrolled
+              </li>
+              <li className="flex items-start gap-x-3 text-foreground">
+                <Check className="mt-1.5 shrink-0" />
+                Can be controlled or uncontrolled
+              </li>
+              <li className="flex items-start gap-x-3 text-foreground">
+                <Check className="mt-1.5 shrink-0" />
+                Can be controlled or uncontrolled
+              </li>
+            </ul>
             {content}
 
             <div className="flex w-full justify-between">
@@ -175,7 +204,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             </div>
           </div>
           <div className="not-prose hidden lg:block">
-            <nav className="sticky top-24 w-full divide-y divide-dashed divide-contrast-400 pb-10 pt-2">
+            <nav className="sticky top-24 w-full divide-y divide-dashed divide-contrast-400 pb-10">
               <TableOfContents className="pb-4" offsetTop={90} />
               <div className="space-between flex w-full py-4 text-contrast-400">
                 <span className="flex-1 text-sm">Total bundle size</span>
