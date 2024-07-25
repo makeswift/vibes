@@ -205,7 +205,6 @@ export default async function Page({ params }: { params: { vibe: string; page: s
           <div className="not-prose hidden lg:block">
             <nav className="sticky top-24 w-full divide-y divide-dashed divide-contrast-400 pb-10">
               <TableOfContents className="pb-4" offsetTop={90} />
-              {component && <BundleSize vibeSlug={vibe.slug} componentName={component.name} />}
 
               {component && numDependencies > 0 && (
                 <ul className="py-4">
@@ -234,6 +233,8 @@ export default async function Page({ params }: { params: { vibe: string; page: s
                   ))}
                 </ul>
               )}
+
+              {component && <BundleSize vibeSlug={vibe.slug} componentName={component.name} />}
 
               <ul className="py-4">
                 {component && component.files[0] && (

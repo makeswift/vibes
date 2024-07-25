@@ -23,7 +23,7 @@ export async function BundleSize({ vibeSlug, componentName }: Props) {
     <div className="space-between flex w-full py-4 text-contrast-400">
       <span className="flex-1 text-sm">Total size</span>
 
-      <span className="bg-contrast-100 px-1 py-0.5 font-mono text-xs text-contrast-500">
+      <span className="bg-contrast-100 px-1.5 py-0.5 font-mono text-xs text-contrast-500">
         {prettyBytes(totalSize, { maximumFractionDigits: 1 })}
       </span>
     </div>
