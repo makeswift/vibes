@@ -10,4 +10,11 @@ export const examples = [
     files: ['examples/button.tsx'],
     component: lazy(() => import('./examples/button')),
   },
+  {
+    name: 'counter-example',
+    dependencies: [],
+    registryDependencies: ['counter'],
+    files: ['examples/counter.tsx'],
+    component: lazy(() => import('./examples/counter')),
+  },
 ] satisfies Components
