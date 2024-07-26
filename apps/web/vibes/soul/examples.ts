@@ -11,6 +11,13 @@ export const examples = [
     component: lazy(() => import('./examples/accordions')),
   },
   {
+    name: 'announcement-bar-example',
+    dependencies: [],
+    registryDependencies: ['announcement-bar'],
+    files: ['examples/announcement-bar.tsx'],
+    component: lazy(() => import('./examples/announcement-bar')),
+  },
+  {
     name: 'button-example',
     dependencies: [],
     registryDependencies: ['button'],
@@ -23,6 +30,20 @@ export const examples = [
     registryDependencies: ['category-card'],
     files: ['examples/category-card.tsx'],
     component: lazy(() => import('./examples/category-card')),
+  },
+  {
+    name: 'checkbox-example',
+    dependencies: [],
+    registryDependencies: ['checkbox'],
+    files: ['examples/checkbox.tsx'],
+    component: lazy(() => import('./examples/checkbox')),
+  },
+  {
+    name: 'compare-example',
+    dependencies: ['checkbox'],
+    registryDependencies: [],
+    files: ['examples/compare.tsx'],
+    component: lazy(() => import('./examples/compare')),
   },
   {
     name: 'hero-category-example',

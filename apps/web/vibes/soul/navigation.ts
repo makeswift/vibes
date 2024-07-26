@@ -9,8 +9,11 @@ export const navigation = [
     title: 'Components',
     pages: [
       { title: 'Accordions', slug: 'Accordions', file: 'docs/accordions.mdx' },
+      { title: 'Announcement Bar', slug: 'announcement-bar', file: 'docs/announcement-bar.mdx' },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx' },
+      { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx' },
       { title: 'Category Card', slug: 'category-card', file: 'docs/category-card.mdx' },
+      { title: 'Compare', slug: 'compare', file: 'docs/compare.mdx' },
       { title: 'Hero Category', slug: 'hero-category', file: 'docs/hero-category.mdx' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx' },
       { title: 'Navigation', slug: 'navigation', file: 'docs/navigation.mdx' },
