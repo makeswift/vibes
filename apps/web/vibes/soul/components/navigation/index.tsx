@@ -1,190 +1,158 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Ref, forwardRef, useEffect, useRef, useState } from 'react'
+import { ReactNode, Ref, forwardRef, useEffect, useRef, useState } from 'react'
 import ReactHeadroom from 'react-headroom'
 
 import clsx from 'clsx'
 
-type MainLink = {
-  text?: string
-  link?: {
+import Search from '@/vibes/soul/components/icons/Search'
+import ShoppingBag from '@/vibes/soul/components/icons/ShoppingBag'
+import User from '@/vibes/soul/components/icons/User'
+
+import HamburgerMenuButton from './HamburgerMenuButton'
+
+type NavItem = {
+  text: string
+  link: {
     href: string
     target?: '_self' | '_blank'
   }
 }
 
-type SecondaryLink = {
-  text?: string
-  link?: {
-    href: string
-    target?: '_self' | '_blank'
-  }
+type Action = {
+  text: string
+  icon: ReactNode
+}
+
+type Category = {
+  category: NavItem
+  links: NavItem[]
 }
 
 type Props = {
   className?: string
-  navWidth?: number
-  logoImage?: { url: string; dimensions: { width: number; height: number } }
-  logoWidth?: number
-  logoAlt?: string
-  logoLink?: {
-    href: string
-    target?: '_self' | '_blank'
+  logo?: {
+    image?: { url: string; dimensions: { width: number; height: number } }
+    alt?: string
+    link?: { href: string; target?: '_self' | '_blank' }
   }
-  links?: MainLink[]
-  actions?: SecondaryLink[]
-  linkGap?: number
-  ctaLink?: {
-    href: string
-    target?: '_self' | '_blank'
-  }
-  ctaText?: string
-}
-
-function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
-  useEffect(() => {
-    let requestId: number
-
-    function poll(timestamp: number) {
-      requestId = requestAnimationFrame(poll)
-
-      callback(timestamp)
-    }
-
-    requestId = requestAnimationFrame(poll)
-
-    return () => {
-      cancelAnimationFrame(requestId)
-    }
-  })
+  links?: Category[]
+  actions?: Action[]
 }
 
 export const Navigation = forwardRef(function Navigation(
-  { className, links, actions, ctaText, ctaLink, ...rest }: Props,
+  { className, logo, links, actions, ...rest }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   const [navOpen, setNavOpen] = useState(false)
   const pathname = usePathname()
   const container = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
-  const timeoutRef = useRef<number | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(0)
 
   useEffect(() => {
     setNavOpen(false)
   }, [pathname])
 
   useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', navOpen)
-  }, [navOpen])
-
-  usePollAnimationFrame(() => {
-    if (!container.current) return
-  })
+    if (selectedCategory === null) {
+      setNavOpen(false)
+    }
+  }, [selectedCategory])
 
   useEffect(() => {
-    const handleMouseEnter = () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
-      setNavOpen(true)
-    }
-    const handleMouseLeave = () => {
-      timeoutRef.current = window.setTimeout(() => {
-        setNavOpen(false)
-      }, 100)
-    }
-    const handleClick = () => setNavOpen(!navOpen)
-
-    if (window.innerWidth >= 1536) {
-      container.current?.addEventListener('mouseenter', handleMouseEnter)
-      container.current?.addEventListener('mouseleave', handleMouseLeave)
-      menuRef.current?.addEventListener('mouseenter', handleMouseEnter)
-      menuRef.current?.addEventListener('mouseleave', handleMouseLeave)
-    } else {
-      container.current?.addEventListener('click', handleClick)
-    }
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
-      container.current?.removeEventListener('mouseenter', handleMouseEnter)
-      container.current?.removeEventListener('mouseleave', handleMouseLeave)
-      container.current?.removeEventListener('click', handleClick)
-      menuRef.current?.removeEventListener('mouseenter', handleMouseEnter)
-      menuRef.current?.removeEventListener('mouseleave', handleMouseLeave)
-    }
+    document.body.classList.toggle('overflow-hidden', navOpen)
   }, [navOpen])
 
   return (
     <ReactHeadroom {...rest} className="!h-24 w-full [&>div]:px-5 [&>div]:pt-5">
       <header
         ref={ref}
+        onMouseLeave={() => setNavOpen(false)}
         className={clsx(className, 'w-full overflow-hidden text-foreground @container')}
       >
-        <nav className="flex items-stretch justify-between gap-x-3 rounded-[24px] bg-background @4xl:justify-start">
-          <div className="relative hidden items-stretch px-2.5 @4xl:flex" ref={container}>
-            {links?.map((link, i) => (
+        <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background @4xl:rounded-[24px]">
+          <div className="relative flex items-stretch px-2.5" ref={container}>
+            {links?.map((category, i) => (
               <Link
                 key={i}
-                href={link.link?.href ?? ''}
-                target={link.link?.target}
-                className="relative mx-0.5 my-2.5 inline-flex items-center rounded-xl p-2.5 text-sm font-medium transition-colors duration-200 hover:bg-contrast-100"
+                href={category.category.link.href}
+                target={category.category.link.target}
+                onMouseOver={() => {
+                  setSelectedCategory(i)
+                  setNavOpen(true)
+                }}
+                className="relative mx-0.5 my-2.5 hidden items-center rounded-xl p-2.5 text-sm font-medium transition-colors duration-200 hover:bg-contrast-100 @4xl:inline-flex"
               >
-                {link.text}
+                {category.category.text}
               </Link>
             ))}
           </div>
 
           <Link
-            href="/"
-            className="absolute left-1/2 -translate-x-1/2 py-3 text-2xl font-semibold text-foreground"
+            href={logo?.link?.href ?? '/'}
+            target={logo?.link?.target}
+            className="mx-auto py-3 text-2xl font-semibold text-foreground"
           >
-            SOUL
+            {logo?.image ? (
+              <Image src={logo.image.url} height={29} width={64} alt={logo.alt ?? 'Logo'} />
+            ) : (
+              logo?.alt
+            )}
           </Link>
 
-          <div className="flex min-h-[60px] flex-1 items-center justify-end p-2 pl-5">
-            <button
-              onClick={() => setNavOpen(!navOpen)}
-              className="relative mr-2 rounded-full p-2.5 @sm:mr-0 @4xl:hidden"
-              role="button"
-              aria-label="Toggle navigation"
-            />
-
-            {actions?.map((item, i) => (
-              <Link
-                key={i}
-                href={item.link?.href ?? '#'}
-                target={item.link?.target}
-                className="block py-2 text-lg font-medium"
+          <div className="ml-auto flex items-center gap-2 px-3.5 @4xl:px-6">
+            <div className="absolute left-5 flex items-center @4xl:relative @4xl:left-0">
+              <HamburgerMenuButton navOpen={navOpen} setNavOpen={setNavOpen} />
+              <button
+                role="button"
+                aria-label="Search"
+                className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
               >
-                {item.text}
-              </Link>
-            ))}
+                <Search />
+              </button>
+            </div>
+            <button
+              role="button"
+              aria-label="Profile"
+              className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
+            >
+              <User />
+            </button>
+            <button
+              role="button"
+              aria-label="Cart"
+              className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
+            >
+              <ShoppingBag />
+            </button>
           </div>
         </nav>
-
         <div
           ref={menuRef}
           className={clsx(
-            'mt-1.5 w-full overflow-y-auto rounded-[24px] transition-all duration-200 ease-in-out',
-            navOpen ? 'max-h-96 bg-background' : 'pointer-events-none max-h-0 bg-transparent'
+            'mt-1.5 h-full max-h-96 w-full overflow-y-auto rounded-[24px] transition-all duration-300 ease-in-out',
+            navOpen
+              ? 'scale-100 bg-background opacity-100'
+              : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
           )}
         >
           <div className="grid w-full divide-x divide-contrast-100 @xl:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 @7xl:grid-cols-5">
             <div className="flex flex-col gap-1 p-5">
-              {links?.map((link, i) => (
-                <Link
-                  key={i}
-                  href={link.link?.href ?? '#'}
-                  target={link.link?.target}
-                  className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
-                >
-                  {link.text}
-                </Link>
-              ))}
+              {selectedCategory !== null &&
+                links?.[selectedCategory]?.links?.map((link, i) => (
+                  <Link
+                    key={i}
+                    href={link.link.href}
+                    target={link.link.target}
+                    className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
+                  >
+                    {link.text}
+                  </Link>
+                ))}
             </div>
           </div>
         </div>
