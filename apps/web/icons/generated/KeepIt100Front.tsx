@@ -23,13 +23,13 @@ const SvgKeepIt100Front = (props: SVGProps<SVGSVGElement>) => (
     />
     <path
       fill="#07090D"
-      stroke="#000"
+      stroke="currentColor"
       strokeWidth={2}
       d="M245 157c0 62.96-51.04 114-114 114S17 219.96 17 157 68.04 43 131 43s114 51.04 114 114Z"
     />
     <path
       fill="url(#keep-it-100-front_svg__b)"
-      stroke="#000"
+      stroke="currentColor"
       strokeWidth={2}
       d="M245 155c0 62.96-51.04 114-114 114S17 217.96 17 155 68.04 41 131 41s114 51.04 114 114Z"
     />

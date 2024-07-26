@@ -1,7 +1,7 @@
 'use client'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { ArrowsHorizontal16, Desktop16, Expand16, Phone16, Tablet16 } from '@/icons/generated'
+import { ArrowsHorz16, Desktop16, Expand16, Phone16, Tablet16 } from '@/icons/generated'
 
 import { Button } from '../ui/button'
 import { CopyButton } from '../ui/copy-button'
@@ -53,7 +53,7 @@ export function PreviewTabs({ components }: Props) {
                 onClick={() => resize(null)}
               >
                 <span className="sr-only">Fill</span>
-                <ArrowsHorizontal16 />
+                <ArrowsHorz16 />
               </Button> */}
               <Button
                 className="hidden @5xl:flex"
