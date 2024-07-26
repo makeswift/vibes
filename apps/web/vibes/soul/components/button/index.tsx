@@ -21,6 +21,7 @@ export const Button = forwardRef(function Button(
   ref: Ref<HTMLAnchorElement>
 ) {
   const { activeBrand } = useBrandContext()
+  const lightness = 600
 
   return (
     <Link
@@ -30,7 +31,7 @@ export const Button = forwardRef(function Button(
         'group relative shrink-0 overflow-hidden rounded-full text-center font-medium leading-normal transition-colors focus:outline-none focus:ring-1',
         link?.href === '#' && 'pointer-events-none opacity-20',
         {
-          primary: 'bg-primary text-foreground',
+          primary: 'bg-primary',
           secondary: 'bg-foreground text-foreground hover:text-background',
           tertiary: 'bg-background text-background hover:text-foreground',
         }[variant],
@@ -43,9 +44,11 @@ export const Button = forwardRef(function Button(
       target={link?.target}
     >
       <div
-        style={{ background: variant === 'primary' ? getBrandShade(activeBrand?.name, 100) : '' }}
+        style={{
+          background: variant === 'primary' ? getBrandShade(activeBrand?.name, lightness) : '',
+        }}
         className={clsx(
-          'absolute left-0 top-0 z-0 w-full -translate-x-[100%] rounded-full transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0',
+          'absolute left-0 top-0 z-0 w-full -translate-x-[110%] rounded-full transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0',
           link?.href === '#' && 'pointer-events-none opacity-20',
           {
             primary: '',
@@ -58,7 +61,15 @@ export const Button = forwardRef(function Button(
           }[size]
         )}
       />
-      <span className={clsx('relative z-10', { invert: variant !== 'primary' })}>{children}</span>
+      <span
+        className={clsx('relative z-10 transition-colors', {
+          'group-hover:text-foreground': variant === 'primary' && lightness < 700,
+          'group-hover:text-background': variant === 'primary' && lightness >= 700,
+          invert: variant !== 'primary',
+        })}
+      >
+        {children}
+      </span>
     </Link>
   )
 })
