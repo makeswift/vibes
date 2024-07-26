@@ -12,6 +12,8 @@ import Search from '@/vibes/soul/components/icons/Search'
 import ShoppingBag from '@/vibes/soul/components/icons/ShoppingBag'
 import User from '@/vibes/soul/components/icons/User'
 
+import HamburgerMenuButton from './HamburgerMenuButton'
+
 type NavItem = {
   text: string
   link: {
@@ -104,16 +106,11 @@ export const Navigation = forwardRef(function Navigation(
 
           <div className="ml-auto flex items-center gap-2 px-3.5 @4xl:px-6">
             <div className="absolute left-5 flex items-center @4xl:relative @4xl:left-0">
-              <button
-                onClick={() => setNavOpen(!navOpen)}
-                role="button"
-                aria-label="Toggle navigation"
-                className="rounded-lg p-1.5 transition-colors hover:bg-contrast-100 @4xl:hidden"
-              />
+              <HamburgerMenuButton navOpen={navOpen} setNavOpen={setNavOpen} />
               <button
                 role="button"
                 aria-label="Search"
-                className="rounded-lg p-1.5 transition-colors hover:bg-contrast-100"
+                className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
               >
                 <Search />
               </button>
@@ -121,14 +118,14 @@ export const Navigation = forwardRef(function Navigation(
             <button
               role="button"
               aria-label="Profile"
-              className="rounded-lg p-1.5 transition-colors hover:bg-contrast-100"
+              className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
             >
               <User />
             </button>
             <button
               role="button"
               aria-label="Cart"
-              className="rounded-lg p-1.5 transition-colors hover:bg-contrast-100"
+              className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
             >
               <ShoppingBag />
             </button>
