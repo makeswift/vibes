@@ -6,7 +6,6 @@ import * as Accordion from '@radix-ui/react-accordion'
 import clsx from 'clsx'
 
 import Chevron from '../icons/Chevron'
-import './styles.css'
 
 type AccordionItem = {
   title: ReactNode
@@ -28,10 +27,10 @@ export const Accordions = forwardRef(function Accordions(
       <ul className="w-full @container ">
         {accordions.map((accordion, i) => (
           <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="accordion group">
+            <li className="group">
               <Accordion.Header>
                 <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6 py-5">
+                  <div className="flex w-full cursor-pointer items-center gap-x-8 px-6 py-3 @md:py-5">
                     <span className="flex-1 select-none font-mono text-[13px] uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
                       {accordion.title}
                     </span>
