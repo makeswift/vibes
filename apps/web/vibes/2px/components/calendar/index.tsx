@@ -44,7 +44,7 @@ export default function Calendar({ className, defaultDate }: Props) {
       month={displayedMonth}
       onSelect={setSelectedDate}
       className={cn(
-        'relative flex min-w-[19rem] flex-col gap-2 border-[2px] border-foreground bg-background p-3 text-center font-body text-xs !leading-[var(--line-height-sm)] text-foreground',
+        'relative flex min-w-[19rem] flex-col gap-2 border-[2px] border-foreground bg-background p-3 text-center font-body text-xs leading-[1.375rem] text-foreground',
         className
       )}
       modifiers={{
@@ -77,7 +77,7 @@ export default function Calendar({ className, defaultDate }: Props) {
         nav_button: 'h-4 w-4',
         outside: 'text-gray-400',
         weekdays: 'text-accent text-sm mt-2 mb-2 ',
-        weekday: '!font-[var(--font-weight-lg)] !leading-[var(--line-height-base)] h-10 w-10 ',
+        weekday: 'font-medium leading-6 h-10 w-10 ',
         weeks: 'w-full',
         day: 'p-1 h-10 w-10 hover:outline-[2px] hover:outline-dashed hover:outline-foreground focus:outline-foreground focus:outline-solid',
         day_disabled: 'text-contrast-300',
