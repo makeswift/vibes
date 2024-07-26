@@ -17,4 +17,11 @@ export const examples = [
     files: ['examples/button.tsx'],
     component: lazy(() => import('./examples/button')),
   },
+  {
+    name: 'size-list-example',
+    dependencies: [],
+    registryDependencies: ['size-list'],
+    files: ['examples/size-list.tsx'],
+    component: lazy(() => import('./examples/size-list')),
+  },
 ] satisfies Components
