@@ -31,8 +31,6 @@ export const brands = [
       '--font-family-heading': "'Inter', system-ui, sans-serif",
       '--font-family-body': "'Inter', system-ui, sans-serif",
       '--font-family-mono': "'Courier Prime', system-ui, sans-serif",
-      '--font-variation-settings-body': '"slnt" -10',
-      '--font-variation-settings-heading': '"slnt" 0',
       '--font-size-xs': '1rem',
       '--font-size-sm': '1.125rem',
       '--font-size-base': '1.25rem',
@@ -44,7 +42,6 @@ export const brands = [
       '--font-size-5xl': '3rem',
       '--font-size-6xl': '3.375rem',
       '--font-size-7xl': '5rem',
-
       '--shadow-sm': '0px 2px 5px rgba(0, 0, 0, 0.05)',
       '--shadow-base': '0px 2px 5px rgba(0, 0, 0, 0.1)',
       '--shadow-md': '0px 2px 5px rgba(0, 0, 0, 0.15)',
