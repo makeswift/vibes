@@ -16,7 +16,7 @@ export interface Props {
   children?: ReactNode
 }
 
-function Button(
+export const Button = forwardRef(function Button(
   { className, link, variant = 'primary', size = 'default', children = 'Button' }: Props,
   ref: Ref<HTMLAnchorElement>
 ) {
@@ -61,6 +61,6 @@ function Button(
       <span className={clsx('relative z-10', { invert: variant !== 'primary' })}>{children}</span>
     </Link>
   )
-}
+})
 
-export default forwardRef(Button)
+export default Button

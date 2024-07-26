@@ -9,7 +9,7 @@ type Props = {
   }
 }
 
-export default function HeroCategory({ heading, description, link }: Props) {
+export const HeroCategory = function HeroCategory({ heading, description, link }: Props) {
   return (
     <section className="relative h-[100dvh] @container">
       <video className="absolute inset-0 h-full w-full object-cover" autoPlay muted loop>
@@ -34,3 +34,5 @@ export default function HeroCategory({ heading, description, link }: Props) {
     </section>
   )
 }
+
+export default HeroCategory

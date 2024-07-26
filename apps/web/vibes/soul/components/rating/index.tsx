@@ -52,7 +52,7 @@ const Star = ({ type }: { type: 'empty' | 'half' | 'full' }) => {
   )
 }
 
-const Rating = ({ rating }: Readonly<Props>) => {
+export const Rating = function Rating({ rating }: Readonly<Props>) {
   const adjustedRating = Math.min(rating, 5)
   const stars = Array(5)
     .fill('empty')

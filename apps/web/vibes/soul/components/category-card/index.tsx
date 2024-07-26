@@ -16,13 +16,13 @@ type Props = {
   }
 }
 
-const CategoryCard: React.FC<Props & React.HTMLAttributes<HTMLAnchorElement>> = ({
+export const CategoryCard = function CategoryCard({
   label,
   image,
   theme = 'light',
   ctaLink,
   ...props
-}) => {
+}: Props & React.HTMLAttributes<HTMLAnchorElement>) {
   return (
     <Link
       href={ctaLink?.href as Route}
