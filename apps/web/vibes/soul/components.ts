@@ -4,18 +4,18 @@ import { Components } from '@/vibes/schema'
 
 export const components = [
   {
-    name: 'button',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['components/button/index.tsx'],
-    component: lazy(() => import('./components/button')),
-  },
-  {
     name: 'accordions',
     dependencies: [],
     registryDependencies: [],
     files: ['./components/accordions/index.tsx'],
     component: lazy(() => import('./components/accordions')),
+  },
+  {
+    name: 'button',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/button/index.tsx'],
+    component: lazy(() => import('./components/button')),
   },
   {
     name: 'category-card',
@@ -44,6 +44,13 @@ export const components = [
     registryDependencies: [],
     files: ['./components/navigation/index.tsx'],
     component: lazy(() => import('./components/navigation')),
+  },
+  {
+    name: 'product-description',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/product-description/index.tsx'],
+    component: lazy(() => import('./components/product-description')),
   },
   {
     name: 'rating',
