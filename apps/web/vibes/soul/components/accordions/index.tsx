@@ -31,7 +31,7 @@ export const Accordions = forwardRef(function Accordions(
               <Accordion.Header>
                 <Accordion.Trigger asChild>
                   <div className="flex w-full cursor-pointer items-center gap-x-8 px-6">
-                    <div className="flex-1 py-1 font-mono text-xs uppercase text-contrast-300 transition-colors duration-300 ease-out group-hover:text-foreground @md:text-sm">
+                    <div className="flex-1 py-1 font-mono text-xs uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground @md:text-sm">
                       {accordion.title}
                     </div>
 
