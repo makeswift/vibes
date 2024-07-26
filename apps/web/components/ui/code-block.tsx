@@ -39,13 +39,13 @@ export async function CodeBlock({
   })
 
   return (
-    <div className="my-5 bg-contrast-100 only:my-0 md:my-6">
+    <div className="my-4 only:my-0 md:my-5">
       {!hideCopyButton && (
         <div className="pointer-events-none sticky top-0 z-10 flex w-full justify-end p-2">
           <CopyButton className="pointer-events-auto" clipboard={children} />
         </div>
       )}
-      <div dangerouslySetInnerHTML={{ __html }} className={clsx(!hideCopyButton && '-mt-10')} />
+      <div dangerouslySetInnerHTML={{ __html }} className={clsx(!hideCopyButton && '-mt-[47px]')} />
     </div>
   )
 }
