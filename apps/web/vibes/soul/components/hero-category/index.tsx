@@ -11,7 +11,7 @@ type Props = {
 
 export const HeroCategory = function HeroCategory({ heading, description, link }: Props) {
   return (
-    <section className="relative h-[100dvh] @container">
+    <section className="relative h-[100dvh] max-h-[880px] @container">
       <video className="absolute inset-0 h-full w-full object-cover" autoPlay muted loop>
         <source
           src="https://videos.pexels.com/video-files/4957753/4957753-hd_1920_1080_25fps.mp4"
