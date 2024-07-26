@@ -45,7 +45,7 @@ export const Button = forwardRef(function Button(
       <div
         style={{ background: variant === 'primary' ? getBrandShade(activeBrand?.name, 100) : '' }}
         className={clsx(
-          'absolute left-0 top-0 z-0 w-full -translate-x-[105%] rounded-full transition-[opacity,transform] duration-200 ease-in-out group-hover:translate-x-0 group-hover:duration-300',
+          'absolute left-0 top-0 z-0 w-full -translate-x-[100%] rounded-full transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0',
           link?.href === '#' && 'pointer-events-none opacity-20',
           {
             primary: '',
