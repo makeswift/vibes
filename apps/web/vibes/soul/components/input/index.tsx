@@ -1,13 +1,10 @@
-'ues client'
-
 import { Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
 import { useBrandContext } from '@/components/preview/brand-context'
 import Arrow from '@/vibes/soul/components/icons/Arrow'
-
-import getBrandShade from '../../getBrandShade'
+import getBrandShade from '@/vibes/soul/getBrandShade'
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: 'default' | 'price' | 'large' | 'brand'
