@@ -2,13 +2,6 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 
 import rehypeShiki from '@shikijs/rehype'
-import {
-  transformerNotationDiff,
-  transformerNotationFocus,
-  transformerNotationHighlight,
-  transformerNotationWordHighlight,
-  transformerRemoveLineBreak,
-} from '@shikijs/transformers'
 import clsx from 'clsx'
 import { readFile } from 'fs/promises'
 import path from 'path'
@@ -23,6 +16,7 @@ import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
+import { Installation } from '@/components/ui/installation'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Reveal } from '@/components/ui/reveal'
 import { Step, Steps } from '@/components/ui/steps'
@@ -30,6 +24,7 @@ import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-c
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getTotalSize } from '@/lib/bundle'
+import { transformers } from '@/lib/shiki'
 import { pageMetaSchema } from '@/vibes/schema'
 import { getVibe } from '@/vibes/utils'
 
@@ -69,16 +64,9 @@ export default async function Page({ params }: { params: { vibe: string; page: s
           [
             rehypeShiki,
             {
-              themes: {
-                light: 'github-light',
-                dark: 'github-dark',
-              },
+              themes: { light: 'github-light', dark: 'github-dark' },
               transformers: [
-                transformerNotationDiff(),
-                transformerNotationHighlight(),
-                transformerNotationWordHighlight(),
-                transformerNotationFocus(),
-                transformerRemoveLineBreak(),
+                ...transformers,
                 {
                   name: 'transformers:pre',
                   pre(node) {
@@ -168,6 +156,8 @@ export default async function Page({ params }: { params: { vibe: string; page: s
                 ))}
               </ul>
             )}
+
+            {page.component && <Installation vibeSlug={vibe.slug} componentName={page.component} />}
 
             {content}
 
