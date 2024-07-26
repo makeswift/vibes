@@ -181,14 +181,14 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             </div>
           </div>
           <div className="not-prose hidden lg:block">
-            <nav className="sticky top-24 w-full divide-y divide-dashed divide-contrast-400 pb-10">
-              <TableOfContents className="pb-5" offsetTop={90} />
+            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-400 pb-10">
+              <TableOfContents offsetTop={90} />
               <div className="space-y-5 py-5">
                 {totalSize && (
-                  <div className="flex w-full items-center gap-x-4">
+                  <div className="flex w-full items-center gap-x-3">
                     <span className="text-sm font-bold text-foreground">Total size</span>
 
-                    <span className="bg-contrast-100 px-1.5 py-0.5 font-mono text-xs text-contrast-500">
+                    <span className="rounded bg-contrast-100 px-1.5 py-0.5 font-mono text-xs text-contrast-500">
                       {prettyBytes(totalSize, { maximumFractionDigits: 1 })}
                     </span>
                   </div>

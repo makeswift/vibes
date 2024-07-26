@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { CodeToHastOptions, ShikiTransformer, codeToHtml } from 'shiki'
 
 import { transformers } from '@/lib/shiki'
@@ -38,10 +39,13 @@ export async function CodeBlock({
   })
 
   return (
-    <div className="relative">
-      <div dangerouslySetInnerHTML={{ __html }} />
-
-      {!hideCopyButton && <CopyButton className="absolute right-2 top-2" clipboard={children} />}
+    <div className="my-4 only:my-0 md:my-5">
+      {!hideCopyButton && (
+        <div className="pointer-events-none sticky top-0 z-10 flex w-full justify-end p-2">
+          <CopyButton className="pointer-events-auto" clipboard={children} />
+        </div>
+      )}
+      <div dangerouslySetInnerHTML={{ __html }} className={clsx(!hideCopyButton && '-mt-[47px]')} />
     </div>
   )
 }
