@@ -40,7 +40,7 @@ export const CategoryCard = function CategoryCard({
           height={600}
           width={467}
           alt="Category card image"
-          className="h-[291px] w-[226px] object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03] @md:h-[600px] @md:w-[467px]"
+          className="h-[291px] w-[226px] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] @md:h-[600px] @md:w-[467px]"
         />
       </div>
       <span className="text-lg font-medium @md:absolute @md:bottom-5 @md:left-5">{label}</span>
