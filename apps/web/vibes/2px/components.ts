@@ -18,10 +18,10 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
-    name: 'datepicker',
+    name: 'calendar',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/datepicker/index.tsx'],
-    component: lazy(() => import('./components/datepicker')),
+    files: ['./components/calendar/index.tsx'],
+    component: lazy(() => import('./components/calendar')),
   },
 ] satisfies Components

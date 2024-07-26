@@ -16,7 +16,7 @@ interface Props {
   defaultDate?: string
 }
 
-export default function DatePicker({ className, defaultDate }: Props) {
+export default function Calendar({ className, defaultDate }: Props) {
   const [defaultYear, defaultMonth, defaultDay] = defaultDate
     ? defaultDate.split('T')[0].split('-').map(Number)
     : [undefined, undefined, undefined]
@@ -48,7 +48,7 @@ export default function DatePicker({ className, defaultDate }: Props) {
         className
       )}
       modifiers={{
-        previousMonth: day =>
+        previousMonth: (day: Date) =>
           day.getTime() <
           new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), 1).getTime(),
       }}
@@ -79,7 +79,7 @@ export default function DatePicker({ className, defaultDate }: Props) {
         weekdays: 'text-accent text-sm mt-2 mb-2 ',
         weekday: '!font-[var(--font-weight-lg)] !leading-[var(--line-height-base)] h-10 w-10 ',
         weeks: 'w-full',
-        day: 'p-1 h-10 w-10 border-transparent hover:border-[2px] hover:border-dashed hover:border-foreground focus:border-foreground focus:border-solid',
+        day: 'p-1 h-10 w-10 hover:outline-[2px] hover:outline-dashed hover:outline-foreground focus:outline-foreground focus:outline-solid',
         day_disabled: 'text-contrast-300',
         selected: 'bg-foreground text-background',
       }}

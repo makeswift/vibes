@@ -5,6 +5,7 @@ export const navigation = [
     title: 'Components',
 
     pages: [
+      { title: 'Calendar', slug: 'calendar', file: 'docs/calendar.mdx' },
       {
         title: 'Button',
         slug: 'button',
