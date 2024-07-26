@@ -14,13 +14,13 @@ export default function AlertBox({ message, type, onClose }: Props) {
   const Icon = type === 'success' ? CheckIcon : type === 'error' ? AlertIcon : InfoIcon
 
   const textColor =
-    type === 'success' ? 'text-[#00AD11]' : type === 'error' ? 'text-[#FF0000]' : 'text-foreground'
+    type === 'success' ? 'text-success' : type === 'error' ? 'text-error' : 'text-foreground'
 
   return (
     <div className="w-full @container">
       <div
         className={cn(
-          'relative mx-auto flex min-h-[3.75rem] w-full max-w-[30.3125rem] items-center gap-4 border-[2px] border-foreground p-4 font-body text-sm !leading-[var(--line-height-base)]',
+          'relative mx-auto flex min-h-[3.75rem] w-full max-w-[30.3125rem] items-center gap-4 border-[2px] border-foreground p-4 font-body text-sm leading-6',
           textColor
         )}
       >
