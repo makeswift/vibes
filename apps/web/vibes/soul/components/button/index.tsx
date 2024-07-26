@@ -16,7 +16,7 @@ export interface Props {
   children?: ReactNode
 }
 
-export const Button = forwardRef(function Button(
+function Button(
   { className, link, variant = 'primary', size = 'default', children = 'Button' }: Props,
   ref: Ref<HTMLAnchorElement>
 ) {
@@ -45,7 +45,7 @@ export const Button = forwardRef(function Button(
       <div
         style={{ background: variant === 'primary' ? getBrandShade(activeBrand?.name, 100) : '' }}
         className={clsx(
-          'absolute left-0 top-0 z-0 w-full rounded-full opacity-0 transition-[opacity,transform] duration-200 ease-in-out group-hover:translate-x-0 group-hover:opacity-100 group-hover:duration-300',
+          'absolute left-0 top-0 z-0 w-full -translate-x-[105%] rounded-full transition-[opacity,transform] duration-200 ease-in-out group-hover:translate-x-0 group-hover:duration-300',
           link?.href === '#' && 'pointer-events-none opacity-20',
           {
             primary: '',
@@ -53,14 +53,14 @@ export const Button = forwardRef(function Button(
             tertiary: 'bg-foreground',
           }[variant],
           {
-            default: 'h-14 -translate-x-[calc(100%-56px)]',
-            small: 'h-[37px] -translate-x-[calc(100%-37px)]',
+            default: 'h-14',
+            small: 'h-[37px]',
           }[size]
         )}
       />
       <span className={clsx('relative z-10', { invert: variant !== 'primary' })}>{children}</span>
     </Link>
   )
-})
+}
 
-export default Button
+export default forwardRef(Button)
