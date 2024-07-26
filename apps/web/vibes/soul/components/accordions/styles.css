@@ -1,6 +1,6 @@
 /* Chevron Animation*/
 .chevron-line {
-  @apply origin-center stroke-contrast-300 stroke-[1px] 
+  @apply origin-center stroke-contrast-300 
   transition duration-300 ease-out group-hover:stroke-foreground;
 }
 
