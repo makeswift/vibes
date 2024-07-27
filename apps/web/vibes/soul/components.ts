@@ -25,6 +25,13 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
+    name: 'categories',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/categories/index.tsx'],
+    component: lazy(() => import('./components/categories')),
+  },
+  {
     name: 'category-card',
     dependencies: [],
     registryDependencies: [],

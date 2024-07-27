@@ -13,7 +13,7 @@ type Props = {
   children?: ReactNode
 }
 
-export default function AnnouncementBar({ className, children }: Props) {
+export const AnnouncementBar = function AnnouncementBar({ className, children }: Props) {
   const [dismissed, setDismissed] = useState(false)
 
   return (
@@ -40,3 +40,5 @@ export default function AnnouncementBar({ className, children }: Props) {
     </Link>
   )
 }
+
+export default AnnouncementBar
