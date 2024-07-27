@@ -46,7 +46,7 @@ export const ProductDescription = function ProductDescription({
             className="object-cover"
           />
         ) : video ? (
-          <video className="object-cover" muted>
+          <video className="h-full object-cover" muted loop autoPlay>
             <source src={video} type="video/mp4" />
           </video>
         ) : null}
