@@ -26,7 +26,7 @@ function Accordion({
     >
       <AccordionRadix.Header asChild>
         <AccordionRadix.Trigger asChild>
-          <div className="pointer-events-auto flex w-full cursor-pointer items-center gap-x-8 p-5">
+          <div className="pointer-events-auto flex w-full cursor-pointer items-start gap-x-8 p-5">
             <span className="flex-1 font-bold leading-normal">{title}</span>
 
             <div className="relative aspect-square w-[16px]">

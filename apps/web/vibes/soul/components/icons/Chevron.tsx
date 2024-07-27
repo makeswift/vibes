@@ -3,7 +3,7 @@ export default function Chevron(props: JSX.IntrinsicAttributes & React.SVGProps<
     <svg
       viewBox="0 0 10 10"
       width="16"
-      className="shrink-0 [&>line]:origin-center [&>line]:stroke-contrast-300 [&>line]:transition [&>line]:duration-300 [&>line]:ease-out [&>line]:group-hover:stroke-foreground"
+      className="mt-1 shrink-0 [&>line]:origin-center [&>line]:stroke-contrast-300 [&>line]:transition [&>line]:duration-300 [&>line]:ease-out [&>line]:group-hover:stroke-foreground"
       {...props}
     >
       {/* Left Line of Chevron */}

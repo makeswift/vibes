@@ -15,25 +15,42 @@ export interface Props {
     }
     alt: string
   }
+  video?: string
 }
 
 export const ProductDescription = function ProductDescription({
   accordions,
   image,
+  video,
 }: Readonly<Props>) {
   return (
-    <div className="relative flex w-full flex-col-reverse items-start justify-between gap-x-4 gap-y-4 @md:py-24 @lg:flex-row @lg:px-10 @xl:gap-x-10 @6xl:px-44 @7xl:gap-x-32">
+    <div
+      className="relative flex w-full flex-col-reverse items-start justify-between gap-x-4 gap-y-4 
+      py-6 @lg:flex-row @lg:px-10 @lg:py-24 @xl:gap-x-10 @6xl:px-44 @7xl:gap-x-32"
+    >
+      {/* Accordions */}
       <Accordions accordions={accordions} />
 
-      {image && (
-        <Image
-          src={image.url}
-          height={image.dimensions.height}
-          width={image.dimensions.width}
-          alt={image.alt}
-          className="aspect-auto w-full object-cover  @lg:sticky @lg:top-20 @lg:w-1/3 @lg:rounded-2xl @7xl:h-[617px] @7xl:w-auto"
-        />
-      )}
+      {/* Image || Video Container */}
+      <div
+        className="relative aspect-square w-full overflow-hidden @lg:sticky
+        @lg:top-20 @lg:aspect-[9/12] @lg:rounded-2xl @4xl:min-w-96"
+      >
+        {image ? (
+          <Image
+            src={image.url}
+            // height={image.dimensions.height}
+            // width={image.dimensions.width}
+            fill
+            alt={image.alt}
+            className="object-cover"
+          />
+        ) : video ? (
+          <video className="object-cover" muted>
+            <source src={video} type="video/mp4" />
+          </video>
+        ) : null}
+      </div>
     </div>
   )
 }
