@@ -8,10 +8,7 @@ type Props = {
 
 export default function Compare({ label, checked, setChecked }: Props) {
   return (
-    <button
-      onClick={() => setChecked(!checked)}
-      className="flex items-center gap-2 focus:outline-none focus:ring-1"
-    >
+    <button onClick={() => setChecked(!checked)} className="flex items-center gap-2">
       {label}
       <Checkbox checked={checked} setChecked={setChecked} />
     </button>

@@ -7,6 +7,7 @@ export default function Preview() {
         heading="Pro-Team"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
+        video="https://rstr.in/monogram/vibes/YOD5DuBfoFM"
         link={{ href: '/', target: '_self' }}
       />
     </div>

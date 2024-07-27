@@ -20,9 +20,9 @@ export default function AnnouncementBar({ className, children }: Props) {
     <Link
       href="/"
       className={clsx(
-        'relative w-full bg-primary transition-all @container',
+        'relative w-full bg-primary transition-transform duration-300 @container',
         className,
-        dismissed ? 'scale-y-0' : 'scale-y-full'
+        dismissed ? 'pointer-events-none scale-y-0' : 'scale-y-full'
       )}
     >
       <p className="line-clamp-2 p-2.5 pr-14 @lg:pr-14 @lg:text-center">{children}</p>
