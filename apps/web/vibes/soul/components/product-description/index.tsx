@@ -29,12 +29,12 @@ export const ProductDescription = function ProductDescription({
       py-6 @lg:flex-row @lg:px-10 @lg:py-24 @xl:gap-x-10 @6xl:px-44 @7xl:gap-x-32"
     >
       {/* Accordions */}
-      <Accordions accordions={accordions} />
+      <Accordions accordions={accordions} className="@lg:sticky @lg:top-20" />
 
       {/* Image || Video Container */}
       <div
-        className="relative aspect-square w-full overflow-hidden @lg:sticky
-        @lg:top-20 @lg:aspect-[9/12] @lg:rounded-2xl @4xl:min-w-96"
+        className="relative aspect-square w-full overflow-hidden 
+        @lg:sticky @lg:top-20 @lg:aspect-[9/12] @lg:rounded-2xl @4xl:min-w-96"
       >
         {image ? (
           <Image
