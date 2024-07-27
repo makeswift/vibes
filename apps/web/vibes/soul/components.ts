@@ -11,6 +11,13 @@ export const components = [
     component: lazy(() => import('./components/accordions')),
   },
   {
+    name: 'announcement-bar',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/announcement-bar/index.tsx'],
+    component: lazy(() => import('./components/announcement-bar')),
+  },
+  {
     name: 'button',
     dependencies: [],
     registryDependencies: [],
@@ -23,6 +30,20 @@ export const components = [
     registryDependencies: [],
     files: ['./components/category-card/index.tsx'],
     component: lazy(() => import('./components/category-card')),
+  },
+  {
+    name: 'checkbox',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/checkbox/index.tsx'],
+    component: lazy(() => import('./components/checkbox')),
+  },
+  {
+    name: 'compare',
+    dependencies: ['checkbox'],
+    registryDependencies: [],
+    files: ['./components/compare/index.tsx'],
+    component: lazy(() => import('./components/compare')),
   },
   {
     name: 'hero-category',

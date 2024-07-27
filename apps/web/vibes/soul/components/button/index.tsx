@@ -21,7 +21,7 @@ export const Button = forwardRef(function Button(
   ref: Ref<HTMLAnchorElement>
 ) {
   const { activeBrand } = useBrandContext()
-  const lightness = 600
+  const lightness = 300
 
   return (
     <Link

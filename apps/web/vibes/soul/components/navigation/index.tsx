@@ -72,7 +72,7 @@ export const Navigation = forwardRef(function Navigation(
       <header
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className={clsx(className, 'w-full overflow-hidden text-foreground @container')}
+        className={clsx(className, 'w-full text-foreground @container')}
       >
         <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background @4xl:rounded-[24px]">
           <div className="relative flex items-stretch px-2.5" ref={container}>
@@ -134,7 +134,7 @@ export const Navigation = forwardRef(function Navigation(
         <div
           ref={menuRef}
           className={clsx(
-            'mt-1.5 h-full max-h-96 w-full overflow-y-auto rounded-[24px] transition-all duration-300 ease-in-out',
+            'mt-1.5 h-full max-h-96 w-full overflow-y-auto rounded-[24px] shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out',
             navOpen
               ? 'scale-100 bg-background opacity-100'
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
