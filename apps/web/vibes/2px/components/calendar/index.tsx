@@ -13,22 +13,13 @@ import {
 
 interface Props {
   className?: string
-  defaultDate?: string
+  selectedDate?: Date
+  setSelectedDate: (value: Date | undefined) => void
 }
 
-export default function Calendar({ className, defaultDate }: Props) {
-  const [defaultYear, defaultMonth, defaultDay] = defaultDate
-    ? defaultDate.split('T')[0].split('-').map(Number)
-    : [undefined, undefined, undefined]
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
-    defaultYear && defaultMonth && defaultDay
-      ? new Date(defaultYear, defaultMonth - 1, defaultDay)
-      : undefined
-  )
+export default function Calendar({ className, selectedDate, setSelectedDate }: Props) {
   const [displayedMonth, setDisplayedMonth] = React.useState<Date>(
-    defaultYear && defaultMonth && defaultDay
-      ? new Date(defaultYear, defaultMonth - 1, defaultDay)
-      : new Date()
+    selectedDate ? selectedDate : new Date()
   )
 
   return (
@@ -39,10 +30,11 @@ export default function Calendar({ className, defaultDate }: Props) {
       onPrevClick={() =>
         setDisplayedMonth(new Date(displayedMonth.getFullYear(), displayedMonth.getMonth() - 1))
       }
+      required={false}
       selected={selectedDate}
       mode="single"
       month={displayedMonth}
-      onSelect={setSelectedDate}
+      onSelect={selected => setSelectedDate(selected)}
       className={cn(
         'relative flex min-w-[19rem] flex-col gap-2 border-[2px] border-foreground bg-background p-3 text-center font-body text-xs leading-[1.375rem] text-foreground',
         className
