@@ -4,7 +4,7 @@ import Image from 'next/image'
 import clsx from 'clsx'
 
 import { Link } from '@/components/navigation/link'
-import ArrowUpRight from '@/vibes/soul/components/icons/ArrowUpRight'
+import Arrow from '@/vibes/soul/components/icons/Arrow'
 
 export type CategoryCard = {
   label: string
@@ -30,7 +30,7 @@ export const CategoryCard = function CategoryCard({
       className="group relative flex h-full min-w-[226px] snap-start flex-col gap-2 @4xl:min-w-[467px]"
       {...props}
     >
-      <ArrowUpRight
+      <Arrow
         className={clsx(
           'absolute right-2.5 top-2.5 z-10 transition-transform duration-300 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
           theme === 'dark' ? 'text-background' : 'text-foreground'

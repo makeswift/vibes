@@ -1,22 +1,42 @@
-export default function Arrow(props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
+import clsx from 'clsx'
+
+type Props = {
+  className?: string
+  size?: 'default' | 'small'
+  direction?: 'left' | 'right' | 'up' | 'down'
+}
+
+export default function Arrow(
+  { className, size = 'default', direction }: Props,
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={clsx(className, {
+        'scale-[0.833]': size === 'small',
+        '-rotate-45': direction === 'up',
+        'rotate-[135deg]': direction === 'down',
+        '-rotate-[135deg]': direction === 'left',
+        'rotate-45': direction === 'right',
+      })}
       {...props}
     >
       <path
-        d="M4.1665 10H15.8332"
+        d="M7 17L17 7"
         stroke="currentColor"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M10 4.16699L15.8333 10.0003L10 15.8337"
+        d="M7 7H17V17"
         stroke="currentColor"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
       />

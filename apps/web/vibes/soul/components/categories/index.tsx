@@ -1,6 +1,10 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+
 import { Link } from '@/components/navigation/link'
 import CategoryCard from '@/vibes/soul/components/category-card'
-import ArrowUpRight from '@/vibes/soul/components/icons/ArrowUpRight'
+import Arrow from '@/vibes/soul/components/icons/Arrow'
 
 import './style.css'
 
@@ -11,6 +15,29 @@ type Props = {
 }
 
 export const Categories = function Categories({ title, link, categories }: Props) {
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null)
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
+      const maxScrollLeft = scrollWidth - clientWidth
+      setScrollProgress((scrollLeft / maxScrollLeft) * 100)
+    }
+  }
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll)
+    }
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
+
   return (
     <section className="flex flex-col gap-10 @container">
       <div className="flex items-center justify-between px-3 pt-3 @4xl:px-20 @4xl:pt-20">
@@ -23,7 +50,10 @@ export const Categories = function Categories({ title, link, categories }: Props
       </div>
 
       {categories && (
-        <div className="no-scrollbar flex w-full snap-x snap-mandatory scroll-px-3 gap-5 overflow-x-scroll px-3 @4xl:scroll-px-20 @4xl:px-20">
+        <div
+          ref={scrollContainerRef}
+          className="no-scrollbar flex w-full snap-x snap-mandatory scroll-px-3 gap-5 overflow-x-scroll px-3 @4xl:scroll-px-20 @4xl:px-20"
+        >
           {categories.map((category, index) => (
             <CategoryCard
               key={index}
@@ -36,16 +66,32 @@ export const Categories = function Categories({ title, link, categories }: Props
         </div>
       )}
 
-      {/* TODO @cortez: add functionality */}
       <div className="flex items-center justify-between px-3 pb-3 @4xl:px-20 @4xl:pb-20">
-        <div className="h-1 w-1/2 max-w-56 rounded-full bg-contrast-100" />
+        <div className="relative h-1 w-1/2 max-w-56 overflow-hidden bg-contrast-100">
+          <div
+            className="absolute h-full bg-foreground"
+            style={{ width: '38%', left: `${Math.max(0, scrollProgress - 38)}%` }}
+          />
+        </div>
 
         <div className="flex gap-1.5">
-          <button role="button" className="transition-transform duration-300 hover:-translate-x-1">
-            <ArrowUpRight className="rotate-[225deg]" />
+          <button
+            role="button"
+            className="transition-transform duration-300 hover:-translate-x-1"
+            onClick={() => {
+              scrollContainerRef.current?.scrollBy({ left: -200, behavior: 'smooth' })
+            }}
+          >
+            <Arrow direction="left" />
           </button>
-          <button role="button" className="transition-transform duration-300 hover:translate-x-1">
-            <ArrowUpRight className="rotate-45" />
+          <button
+            role="button"
+            className="transition-transform duration-300 hover:translate-x-1"
+            onClick={() => {
+              scrollContainerRef.current?.scrollBy({ left: 200, behavior: 'smooth' })
+            }}
+          >
+            <Arrow direction="right" />
           </button>
         </div>
       </div>

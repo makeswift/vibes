@@ -49,7 +49,11 @@ export const Input = forwardRef(function Input(
           type="submit"
           className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-foreground text-background transition-transform focus:outline-none focus:ring-1"
         >
-          <Arrow className="transition-transform group-hover:translate-x-0.5" />
+          <Arrow
+            size="small"
+            direction="right"
+            className="transition-transform group-hover:translate-x-0.5"
+          />
         </button>
       )}
     </div>
