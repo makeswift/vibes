@@ -66,7 +66,7 @@ export const Feature = function Feature({ image, heading, description, list, lin
           <p className="max-w-xl pb-2">{description}</p>
 
           {list?.length && (
-            <ul className="@8xl/section:mx-0 mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2">
+            <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
               {list.map(({ title, description, icon }, idx) => {
                 return (
                   <li key={idx} className="flex gap-4 @sm/content:items-center">
