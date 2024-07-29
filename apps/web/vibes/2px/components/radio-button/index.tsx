@@ -12,6 +12,7 @@ export default function RadioButton({ className, label, ...inputProps }: RadioBu
         'cursor-not-allowed': inputProps.disabled,
       })}
       htmlFor={inputProps.id}
+      aria-label={label}
     >
       <span className="grid grid-cols-[1.5rem] grid-rows-[1.5rem]">
         <span
