@@ -29,7 +29,7 @@ type Action = {
 
 type Category = {
   category: NavItem
-  links: NavItem[]
+  links: NavItem[][]
 }
 
 type Props = {
@@ -140,12 +140,13 @@ export const Navigation = forwardRef(function Navigation(
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
           )}
         >
-          <div className="grid w-full divide-x divide-contrast-100 @xl:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4 @7xl:grid-cols-5">
-            <div className="flex flex-col gap-1 p-5">
-              {selectedCategory !== null &&
-                links?.[selectedCategory]?.links?.map((link, i) => (
+          <div className="flex flex-col @4xl:hidden">
+            {links?.map((category, i) => (
+              <div key={i} className="p-5">
+                <h2 className="pb-2 text-lg font-bold">{category.category.text}</h2>
+                {category.links.flat().map((link, j) => (
                   <Link
-                    key={i}
+                    key={j}
                     href={link.link.href}
                     target={link.link.target}
                     className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
@@ -153,7 +154,25 @@ export const Navigation = forwardRef(function Navigation(
                     {link.text}
                   </Link>
                 ))}
-            </div>
+              </div>
+            ))}
+          </div>
+          <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @5xl:grid-cols-4 @7xl:grid-cols-5">
+            {selectedCategory !== null &&
+              links?.[selectedCategory]?.links?.map((column, columnIndex) => (
+                <div key={columnIndex} className="flex flex-col gap-1 p-5">
+                  {column.map((link, i) => (
+                    <Link
+                      key={i}
+                      href={link.link.href}
+                      target={link.link.target}
+                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
+                    >
+                      {link.text}
+                    </Link>
+                  ))}
+                </div>
+              ))}
           </div>
         </div>
       </header>
