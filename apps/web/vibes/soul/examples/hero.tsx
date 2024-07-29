@@ -28,5 +28,10 @@ export default function Preview() {
     },
   ]
 
-  return <Hero heading="Pro Jerseys" images={images} />
+  return (
+    <>
+      <Hero heading="Pro Jerseys" images={images} />
+      <Hero heading="Pro Jerseys" images={images} containedMediaLayout />
+    </>
+  )
 }

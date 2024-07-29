@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { useBrandContext } from '@/components/preview/brand-context'
 import getBrandShade from '@/vibes/soul/getBrandShade'
 
-import HeroMediaContainedLayout from './HeroMediaContainedLayout'
 import MediaCarousel from './MediaCarousel'
 import ProgressSection from './ProgessSection'
 
@@ -19,11 +18,12 @@ type Props = {
     }
     alt: string
   }[]
-  containedMediaLayout?: boolean
 }
 
-// Hero Full Width Layout
-export const Hero = function Hero({ heading, images, containedMediaLayout }: Props) {
+export const HeroMediaContainedLayout = function HeroMediaContainedLayout({
+  heading,
+  images,
+}: Props) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const { activeBrand } = useBrandContext()
 
@@ -37,30 +37,31 @@ export const Hero = function Hero({ heading, images, containedMediaLayout }: Pro
     return () => clearTimeout(timer)
   }, [currentIndex, images.length, setCurrentIndex])
 
-  if (containedMediaLayout) {
-    return <HeroMediaContainedLayout heading={heading} images={images} />
-  }
-
   return (
     <header
-      className="relative h-[100dvh] max-h-[880px] @container"
+      className="relative flex   flex-col @container"
       style={{ background: getBrandShade(activeBrand?.name, 900) }}
     >
-      {/* Foreground Text Content */}
-      <div className="absolute bottom-0 left-0 z-10 w-full px-3 @lg:px-20">
-        {/* Heading */}
-        <h1 className="max-w-7xl text-5xl font-medium leading-none @2xl:text-[90px]">{heading}</h1>
-        <ProgressSection
-          currentIndex={currentIndex}
+      <div className="flex flex-grow flex-col-reverse gap-x-4 gap-y-10 @4xl:h-[100dvh] @4xl:max-h-[880px] @4xl:flex-row">
+        <h1 className="mt-auto max-w-7xl pl-3 text-5xl font-medium leading-none @lg:pl-20 @2xl:text-[90px] @4xl:w-1/2">
+          {heading}
+        </h1>
+
+        <MediaCarousel
           images={images}
-          setCurrentIndex={setCurrentIndex}
-          className="pb-2 pt-4 @lg:pb-8 @lg:pt-10"
+          className="relative mx-3 mt-[108px] aspect-square flex-grow pb-20 @lg:mx-20 @4xl:ml-0 @4xl:aspect-auto @4xl:w-1/2"
+          currentIndex={currentIndex}
         />
       </div>
 
-      <MediaCarousel images={images} className="h-full w-full" currentIndex={currentIndex} />
+      <ProgressSection
+        currentIndex={currentIndex}
+        images={images}
+        setCurrentIndex={setCurrentIndex}
+        className="mx-auto px-3 pb-2 pt-4 @lg:px-20 @lg:pb-8 @lg:pt-6"
+      />
     </header>
   )
 }
 
-export default Hero
+export default HeroMediaContainedLayout
