@@ -28,8 +28,8 @@ type Action = {
 }
 
 type Category = {
-  category: NavItem
-  links: NavItem[][]
+  item: NavItem
+  links?: NavItem[][]
 }
 
 type Props = {
@@ -76,18 +76,18 @@ export const Navigation = forwardRef(function Navigation(
       >
         <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background @4xl:rounded-[24px]">
           <div className="relative flex items-stretch px-2.5" ref={container}>
-            {links?.map((category, i) => (
+            {links?.map((item, i) => (
               <Link
                 key={i}
-                href={category.category.link.href}
-                target={category.category.link.target}
+                href={item.item.link.href}
+                target={item.item.link.target}
                 onMouseOver={() => {
                   setSelectedCategory(i)
                   setNavOpen(true)
                 }}
                 className="relative mx-0.5 my-2.5 hidden items-center rounded-xl p-2.5 text-sm font-medium transition-colors duration-200 hover:bg-contrast-100 @4xl:inline-flex"
               >
-                {category.category.text}
+                {item.item.text}
               </Link>
             ))}
           </div>
@@ -140,11 +140,17 @@ export const Navigation = forwardRef(function Navigation(
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
           )}
         >
-          <div className="flex flex-col @4xl:hidden">
-            {links?.map((category, i) => (
-              <div key={i} className="p-5">
-                <h2 className="pb-2 text-lg font-bold">{category.category.text}</h2>
-                {category.links.flat().map((link, j) => (
+          <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
+            {links?.map((item, i) => (
+              <div key={i} className="flex flex-col gap-2 p-5">
+                <Link
+                  href={item.item.link.href}
+                  target={item.item.link.target}
+                  className="rounded-lg px-3 py-4 font-semibold transition-colors hover:bg-contrast-100"
+                >
+                  {item.item.text}
+                </Link>
+                {item.links?.flat().map((link, j) => (
                   <Link
                     key={j}
                     href={link.link.href}

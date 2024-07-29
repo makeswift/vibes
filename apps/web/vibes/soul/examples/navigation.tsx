@@ -3,7 +3,7 @@ import Navigation from '@/vibes/soul/components/navigation'
 export default function Preview() {
   const links = [
     {
-      category: {
+      item: {
         text: 'Men',
         link: { href: '/men' },
       },
@@ -20,7 +20,7 @@ export default function Preview() {
       ],
     },
     {
-      category: {
+      item: {
         text: 'Women',
         link: { href: '/women' },
       },
@@ -37,7 +37,7 @@ export default function Preview() {
       ],
     },
     {
-      category: {
+      item: {
         text: 'Accessories',
         link: { href: '/accessories' },
       },
@@ -50,11 +50,17 @@ export default function Preview() {
       ],
     },
     {
-      category: {
+      item: {
         text: 'Stories',
         link: { href: '/stories' },
       },
       links: [[{ text: 'View All', link: { href: '/stories/view-all' } }]],
+    },
+    {
+      item: {
+        text: 'About',
+        link: { href: '/about' },
+      },
     },
   ]
 
