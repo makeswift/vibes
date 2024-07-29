@@ -3,6 +3,7 @@ import { Navigation } from '@/vibes/schema'
 export const navigation = [
   {
     title: 'Components',
+
     pages: [
       {
         title: 'Button',
@@ -16,6 +17,8 @@ export const navigation = [
         file: 'docs/radio-button.mdx',
         component: 'radio-button',
       },
+
+      { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx' },
     ],
   },
 ] satisfies Navigation

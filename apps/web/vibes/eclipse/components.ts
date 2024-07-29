@@ -6,7 +6,7 @@ export const components = [
   {
     name: 'accordions',
     dependencies: ['@radix-ui/react-accordion'],
-    registryDependencies: ['button'],
+    registryDependencies: [],
     files: ['components/accordions/index.tsx'],
     component: lazy(() => import('./components/accordions')),
   },
@@ -111,13 +111,13 @@ export const components = [
   {
     name: 'tabs',
     dependencies: ['@radix-ui/react-tabs'],
-    registryDependencies: [],
+    registryDependencies: ['card'],
     files: ['components/tabs/index.tsx'],
     component: lazy(() => import('./components/tabs')),
   },
   {
     name: 'toast',
-    dependencies: [],
+    dependencies: ['@radix-ui/react-toast'],
     registryDependencies: [],
     files: ['components/toast/index.tsx'],
     component: lazy(() => import('./components/toast')),

@@ -15,6 +15,10 @@ export const brands = [
       '--accent': '248 90% 62%',
       '--background': '220 30% 4%',
       '--foreground': '0 0% 100%',
+      '--success': '142 50% 50%',
+      '--error': '357 69% 45%',
+      '--warning': '25 73% 45%',
+      '--info': '220 70% 45%',
 
       '--contrast-100': '220 20% 76%',
       '--contrast-200': '220 15% 60%',
@@ -29,27 +33,11 @@ export const brands = [
       '--font-variation-settings-heading': '"slnt" 0',
 
       '--font-size-xs': '0.75rem',
-      '--line-height-xs': '1rem',
-
       '--font-size-sm': '0.875rem',
-      '--line-height-sm': '1.25rem',
-
       '--font-size-base': '1rem',
-      '--line-height-base': '1.5rem',
-
       '--font-size-lg': '1.125rem',
-      '--line-height-lg': '1.75rem',
-      '--font-weight-lg': '500',
-
       '--font-size-xl': '1.25rem',
-      '--line-height-xl': '2rem',
-      '--letter-spacing-xl': '-0.01em',
-      '--font-weight-xl': '500',
-
       '--font-size-2xl': '1.5rem',
-      '--line-height-2xl': '2.25rem',
-      '--letter-spacing-2xl': '-0.02em',
-      '--font-weight-2xl': '500',
 
       '--shadow-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
       '--shadow-base': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
@@ -81,37 +69,28 @@ export const brands = [
       '--accent': '248 90% 62%',
       '--background': '220 30% 4%',
       '--foreground': '0 0% 100%',
+      '--success': '142 50% 50%',
+      '--error': '357 69% 45%',
+      '--warning': '25 73% 45%',
+      '--info': '220 70% 45%',
+
       '--contrast-100': '220 20% 76%',
       '--contrast-200': '220 15% 60%',
       '--contrast-300': '220 12% 50%',
       '--contrast-400': '220 15% 36%',
       '--contrast-500': '220 20% 25%',
+
       '--font-family-heading': "'Epilogue', system-ui, sans-serif",
       '--font-family-body': "'Epilogue', system-ui, sans-serif",
       '--font-family-mono': "'Epilogue', system-ui, sans-serif",
 
       '--font-size-xs': '0.75rem',
-      '--line-height-xs': '1rem',
-
       '--font-size-sm': '0.875rem',
-      '--line-height-sm': '1.25rem',
-
       '--font-size-base': '1rem',
-      '--line-height-base': '1.5rem',
-
       '--font-size-lg': '1.125rem',
-      '--line-height-lg': '1.75rem',
-      '--font-weight-lg': '500',
-
       '--font-size-xl': '1.25rem',
-      '--line-height-xl': '2rem',
-      '--letter-spacing-xl': '-0.01em',
-      '--font-weight-xl': '500',
-
       '--font-size-2xl': '1.5rem',
-      '--line-height-2xl': '2.25rem',
-      '--letter-spacing-2xl': '-0.02em',
-      '--font-weight-2xl': '500',
+
       '--shadow-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
       '--shadow-base': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
       '--shadow-md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
