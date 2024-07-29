@@ -47,9 +47,9 @@
 
   .dark {
     --background: 0 0% 0%;
-    --foreground: 210 30% 96%;
+    --foreground: 210 32% 95%;
 
-    --contrast-100: 208 20% 15%;
+    --contrast-100: 208 18% 10%;
     --contrast-200: 208 11% 25%;
     --contrast-300: 210 10% 53%;
     --contrast-400: 210 15% 73%;
