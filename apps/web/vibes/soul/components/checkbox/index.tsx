@@ -9,7 +9,7 @@ interface Props {
   setChecked: (checked: boolean) => void
 }
 
-export default function Checkbox({ checked = false, setChecked }: Props) {
+export const Checkbox = function Checkbox({ checked = false, setChecked }: Props) {
   return (
     <label
       htmlFor="checkbox"
@@ -34,3 +34,5 @@ export default function Checkbox({ checked = false, setChecked }: Props) {
     </label>
   )
 }
+
+export default Checkbox

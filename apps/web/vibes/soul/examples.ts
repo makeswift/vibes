@@ -81,6 +81,20 @@ export const examples = [
     component: lazy(() => import('./examples/navigation')),
   },
   {
+    name: 'product-card-example',
+    dependencies: [],
+    registryDependencies: ['product-card'],
+    files: ['examples/product-card.tsx'],
+    component: lazy(() => import('./examples/product-card')),
+  },
+  {
+    name: 'product-list-example',
+    dependencies: [],
+    registryDependencies: ['product-list'],
+    files: ['examples/product-list.tsx'],
+    component: lazy(() => import('./examples/product-list')),
+  },
+  {
     name: 'product-description-example',
     dependencies: [],
     registryDependencies: ['product-description'],

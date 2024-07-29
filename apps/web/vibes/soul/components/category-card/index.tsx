@@ -27,7 +27,7 @@ export const CategoryCard = function CategoryCard({
     <Link
       href={ctaLink?.href as Route}
       target={ctaLink?.target}
-      className="group relative flex h-full min-w-[226px] snap-start flex-col gap-2 @4xl:min-w-[467px]"
+      className="group relative flex h-full w-full snap-start flex-col gap-2"
       {...props}
     >
       <Arrow
@@ -42,7 +42,7 @@ export const CategoryCard = function CategoryCard({
           height={600}
           width={467}
           alt="Category card image"
-          className="h-[291px] w-[226px] bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-105 @4xl:h-[600px] @4xl:w-[467px]"
+          className="h-full max-h-[291px] w-full max-w-[226px] bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-105 @4xl:max-h-[600px] @4xl:max-w-[467px]"
         />
       </div>
       <span
