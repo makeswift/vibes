@@ -36,8 +36,8 @@ export default function TextArea({
               'border-foreground/50 text-foreground/50': disabled,
               'border-foreground text-foreground hover:border-dashed ':
                 variant === 'default' && !disabled,
-              'text-error  !placeholder-error border-foreground': variant === 'error',
-              'text-success !placeholder-success border-foreground': variant === 'success',
+              'border-foreground  text-error !placeholder-error': variant === 'error',
+              'border-foreground text-success !placeholder-success': variant === 'success',
             }
           )}
           required={required}
@@ -45,14 +45,20 @@ export default function TextArea({
           onChange={e => setValue(e.target.value)}
           placeholder={placeholder || 'Placeholder...'}
         />
-        <span className="pointer-events-none absolute bottom-0.5 right-0.5 flex h-5 w-5 items-center justify-center bg-background bg-white">
-          <span className="shrink-0 -rotate-45">
-            <span className="mx-auto mb-1 block h-0.5 w-3 shrink-0 bg-foreground" />
-            <span className="mx-auto block h-0.5 w-2 shrink-0 bg-foreground" />
-          </span>
-        </span>
+        <div className="pointer-events-none absolute bottom-0.5 right-0.5 flex h-6 w-6 items-center justify-center bg-white text-foreground">
+          <ResizerIcon />
+        </div>
       </div>
-      {errorMessage && <div className="text-error mt-2 text-xs">{errorMessage}</div>}
+      {errorMessage && <div className="mt-2 text-xs text-error">{errorMessage}</div>}
     </div>
+  )
+}
+
+function ResizerIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+      <path d="M1 11L11 1" stroke="currentColor" />
+      <path d="M6 12L12 6" stroke="currentColor" />
+    </svg>
   )
 }
