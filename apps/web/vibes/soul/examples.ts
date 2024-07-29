@@ -95,6 +95,13 @@ export const examples = [
     component: lazy(() => import('./examples/product-card')),
   },
   {
+    name: 'product-chip-example',
+    dependencies: [],
+    registryDependencies: ['product-chip'],
+    files: ['examples/product-chip.tsx'],
+    component: lazy(() => import('./examples/product-chip')),
+  },
+  {
     name: 'product-list-example',
     dependencies: [],
     registryDependencies: ['product-list'],

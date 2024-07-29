@@ -21,6 +21,7 @@ export const navigation = [
       { title: 'Input', slug: 'input', file: 'docs/input.mdx' },
       { title: 'Navigation', slug: 'navigation', file: 'docs/navigation.mdx' },
       { title: 'Product Card', slug: 'product-card', file: 'docs/product-card.mdx' },
+      { title: 'Product Chip', slug: 'product-chip', file: 'docs/product-chip.mdx' },
       { title: 'Product List', slug: 'product-list', file: 'docs/product-list.mdx' },
       {
         title: 'Product Description',
