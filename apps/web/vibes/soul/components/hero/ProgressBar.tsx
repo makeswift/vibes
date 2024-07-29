@@ -25,7 +25,7 @@ export const ProgressBar = function ProgressBar({
             <div
               className={clsx(
                 'absolute h-0.5 w-[calc-(228_/_3)] bg-background opacity-100',
-                index === currentIndex ? 'translate-x-0' : '-translate-x-full'
+                index === currentIndex ? 'translate-x-0' : '-translate-x-[101%]'
               )}
               style={{
                 transitionDuration: `${index === currentIndex ? '5s' : '0s'}`,
