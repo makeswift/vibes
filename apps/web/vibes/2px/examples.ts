@@ -17,4 +17,11 @@ export const examples = [
     files: ['examples/button.tsx'],
     component: lazy(() => import('./examples/button')),
   },
+  {
+    name: 'swatch-example',
+    dependencies: [],
+    registryDependencies: ['swatch'],
+    files: ['examples/swatch.tsx'],
+    component: lazy(() => import('./examples/swatch')),
+  },
 ] satisfies Components
