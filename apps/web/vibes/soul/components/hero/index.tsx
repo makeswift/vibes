@@ -46,9 +46,7 @@ export const Hero = function Hero({ heading, images, containedMediaLayout }: Pro
       className="relative h-[100dvh] max-h-[880px] @container"
       style={{ background: getBrandShade(activeBrand?.name, 900) }}
     >
-      {/* Foreground Text Content */}
       <div className="absolute bottom-0 left-0 z-10 w-full px-3 @lg:px-20">
-        {/* Heading */}
         <h1 className="max-w-7xl text-5xl font-medium leading-none @2xl:text-[90px]">{heading}</h1>
         <ProgressSection
           currentIndex={currentIndex}
