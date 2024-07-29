@@ -4,7 +4,7 @@ interface RadioButtonProps extends Omit<React.HTMLProps<HTMLInputElement>, 'type
   label: string
 }
 
-const RadioButton = ({ className, label, ...inputProps }: RadioButtonProps) => {
+export default function RadioButton({ className, label, ...inputProps }: RadioButtonProps) {
   return (
     <label
       className={clsx('group inline-flex items-center gap-3', {
@@ -41,5 +41,3 @@ const RadioButton = ({ className, label, ...inputProps }: RadioButtonProps) => {
 }
 
 RadioButton.displayName = 'RadioButton'
-
-export default RadioButton
