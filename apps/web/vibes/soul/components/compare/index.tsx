@@ -1,16 +1,25 @@
 import Checkbox from '@/vibes/soul/components/checkbox'
 
 type Props = {
-  label: string
+  className?: string
+  label?: string
   checked: boolean
   setChecked: (checked: boolean) => void
 }
 
-export default function Compare({ label, checked, setChecked }: Props) {
+export const Compare = function Compare({ className, label, checked, setChecked }: Props) {
   return (
-    <button onClick={() => setChecked(!checked)} className="flex items-center gap-2">
-      {label}
+    <button
+      onClick={e => {
+        e.preventDefault()
+        setChecked(!checked)
+      }}
+      className={`flex cursor-default items-center gap-2 ${className}`}
+    >
+      {label && <span className="hidden @4xl:block">{label}</span>}
       <Checkbox checked={checked} setChecked={setChecked} />
     </button>
   )
 }
+
+export default Compare
