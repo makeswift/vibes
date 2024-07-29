@@ -1,6 +1,9 @@
+import { preload } from 'react-dom'
+
 import { Header, Sidebar } from '@/components/navigation'
 import { BrandProvider } from '@/components/preview/brand-context'
 import { DynamicFont } from '@/components/ui/dynamic-font'
+import * as Vibes from '@/vibes'
 import { getVibe } from '@/vibes/utils'
 
 export default async function Layout({
@@ -12,6 +15,8 @@ export default async function Layout({
 }) {
   const vibe = getVibe(params.vibe)
   const fonts = vibe?.brands.flatMap(brand => brand.fonts)
+
+  Object.values(Vibes).forEach(vibe => preload(vibe.thumbnail))
 
   return (
     <>
