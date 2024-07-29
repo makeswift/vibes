@@ -15,6 +15,7 @@ export const navigation = [
       { title: 'Categories', slug: 'categories', file: 'docs/categories.mdx' },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx' },
       { title: 'Compare', slug: 'compare', file: 'docs/compare.mdx' },
+      { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx' },
       { title: 'Hero', slug: 'hero', file: 'docs/hero.mdx' },
       { title: 'Hero Category', slug: 'hero-category', file: 'docs/hero-category.mdx' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx' },

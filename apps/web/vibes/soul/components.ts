@@ -53,6 +53,13 @@ export const components = [
     component: lazy(() => import('./components/compare')),
   },
   {
+    name: 'feature',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/feature/index.tsx'],
+    component: lazy(() => import('./components/feature')),
+  },
+  {
     name: 'hero',
     dependencies: ['./components/hero/ProgressBar.tsx'],
     registryDependencies: [],
