@@ -9,7 +9,7 @@ export const ProductList = function ProductList({ products }: Props) {
   return (
     <section className="flex flex-col gap-6 pb-10 @container">
       {products && (
-        <div className="@4xl grid grid-cols-2 gap-2 px-3 @3xl:grid-cols-3 @4xl:gap-5 @4xl:px-20">
+        <div className="grid grid-cols-2 gap-2 px-3 @xl:gap-5 @xl:px-20 @4xl:grid-cols-3">
           {products.map(product => (
             <ProductCard
               key={product.name}

@@ -8,7 +8,7 @@ const products: ProductCard[] = [
     tags: ['Blue', 'Black', 'Green'],
     label: 'New',
     price: 123.99,
-    image: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
+    image: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
     ctaLink: { href: '/' },
   },
   {
@@ -24,7 +24,7 @@ const products: ProductCard[] = [
     tags: ['Blue', 'Black', 'Green'],
     label: 'New',
     price: 123.99,
-    image: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
+    image: 'https://rstr.in/monogram/vibes/QluRjwypujv',
     ctaLink: { href: '/' },
   },
 ]

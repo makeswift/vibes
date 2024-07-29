@@ -44,9 +44,10 @@ export const ProductCard = function ProductCard({
     >
       <div className="relative overflow-hidden">
         {label && (
+          // TODO @cortez: apply monospace font
           <span
             style={{ background: getBrandShade(activeBrand?.name, 100) }}
-            className="absolute left-2.5 top-2.5 z-10 rounded-md bg-background px-2.5 py-1 text-sm @4xl:left-4 @4xl:top-4"
+            className="absolute left-2.5 top-2.5 z-10 rounded-md bg-background px-2.5 py-[3px] text-xs uppercase @4xl:left-4 @4xl:top-4"
           >
             {label}
           </span>
@@ -75,7 +76,7 @@ export const ProductCard = function ProductCard({
         {tags && <span className="font-normal text-contrast-400">{tags.join('/')}</span>}
       </h3>
 
-      <span className="text-sm font-semibold @4xl:text-lg @4xl:font-medium">${price}</span>
+      <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">${price}</span>
     </Link>
   )
 }
