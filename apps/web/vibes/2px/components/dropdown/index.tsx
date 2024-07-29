@@ -42,7 +42,7 @@ const Dropdown = ({
             'border-success': status === 'success',
             'border-foreground': status === 'normal',
             'cursor-not-allowed border-contrast-300 text-contrast-300': disabled,
-            'hover:border-dashed': !disabled,
+            'hover:border-dashed focus:border-dashed': !disabled,
             'border-dashed': isOpen,
           }
         )}
@@ -67,10 +67,13 @@ const Dropdown = ({
         {options.map((option, index) => (
           <button
             key={index}
-            className={clsx('border-b-2 outline-none hover:border-dashed hover:border-foreground', {
-              'border-b-foreground': value === option.value,
-              'border-b-transparent': value !== option.value,
-            })}
+            className={clsx(
+              'border-b-2 outline-none hover:border-dashed hover:border-foreground focus:border-dashed focus:border-foreground',
+              {
+                'border-b-foreground': value === option.value,
+                'border-b-transparent': value !== option.value,
+              }
+            )}
             onClick={() => {
               setValue(option.value)
               setIsOpen(false)
