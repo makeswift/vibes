@@ -53,6 +53,13 @@ export const examples = [
     component: lazy(() => import('./examples/compare')),
   },
   {
+    name: 'compare-bar-example',
+    dependencies: [],
+    registryDependencies: ['compare-bar'],
+    files: ['examples/compare-bar.tsx'],
+    component: lazy(() => import('./examples/compare-bar')),
+  },
+  {
     name: 'feature-example',
     dependencies: [],
     registryDependencies: [],

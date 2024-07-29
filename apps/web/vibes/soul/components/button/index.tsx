@@ -36,7 +36,7 @@ export const Button = forwardRef(function Button(
           tertiary: 'bg-background text-background hover:text-foreground',
         }[variant],
         {
-          default: 'px-6 py-4 text-base',
+          default: 'px-6 py-[13px] text-base',
           small: 'px-4 py-2 text-sm',
         }[size]
       )}
@@ -56,13 +56,13 @@ export const Button = forwardRef(function Button(
             tertiary: 'bg-foreground',
           }[variant],
           {
-            default: 'h-14',
+            default: 'h-[50px]',
             small: 'h-[37px]',
           }[size]
         )}
       />
       <span
-        className={clsx('relative z-10 transition-colors', {
+        className={clsx('relative z-10 flex transition-colors', {
           'group-hover:text-foreground': variant === 'primary' && lightness < 700,
           'group-hover:text-background': variant === 'primary' && lightness >= 700,
           invert: variant !== 'primary',

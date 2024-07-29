@@ -1,19 +1,39 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
 import XMark from '@/vibes/soul/components/icons/XMark'
-import ProductCard from '@/vibes/soul/components/product-card'
+
+type ProductCard = {
+  name: string
+  image: string
+}
 
 type Props = {
   product: ProductCard
+  onDismiss: () => void
 }
 
-const ProductChip = function ProductChip({ product }: Props) {
+const ProductChip = function ProductChip({ product, onDismiss }: Props) {
   const [dismissed, setDismissed] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  useEffect(() => {
+    if (dismissed) {
+      const timeoutId = setTimeout(() => {
+        setIsAnimating(true)
+        onDismiss()
+      }, 150)
+      return () => clearTimeout(timeoutId)
+    }
+  }, [dismissed, onDismiss])
+
+  if (isAnimating) {
+    return null
+  }
 
   return (
     <button
