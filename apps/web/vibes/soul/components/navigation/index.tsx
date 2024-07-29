@@ -163,7 +163,7 @@ export const Navigation = forwardRef(function Navigation(
               </div>
             ))}
           </div>
-          <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @5xl:grid-cols-4 @7xl:grid-cols-5">
+          <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-5">
             {selectedCategory !== null &&
               links?.[selectedCategory]?.links?.map((column, columnIndex) => (
                 <div key={columnIndex} className="flex flex-col gap-1 p-5">

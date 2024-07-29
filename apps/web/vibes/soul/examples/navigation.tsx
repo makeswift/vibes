@@ -56,12 +56,6 @@ export default function Preview() {
       },
       links: [[{ text: 'View All', link: { href: '/stories/view-all' } }]],
     },
-    {
-      item: {
-        text: 'About',
-        link: { href: '/about' },
-      },
-    },
   ]
 
   return (
