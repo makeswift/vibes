@@ -104,7 +104,7 @@
   .marching-ants {
     --length: 6px;
     --interval: 9px;
-    background: linear-gradient(white, white),
+    background: linear-gradient(transparent, transparent),
       repeating-linear-gradient(
         to right,
         #000,
@@ -147,6 +147,9 @@
       0 calc(100% + 1px),
       -1px 0;
     @apply animate-marching;
+  }
+  .marching-ants-link {
+    @apply relative inline-block no-underline outline-primary before:absolute before:inset-x-0 before:bottom-0 before:h-[1px] before:animate-scroll before:bg-gradient-to-r before:from-foreground before:from-50% before:to-transparent before:to-0% before:bg-[size:5px_2px] before:[animation-play-state:paused] hover:before:[animation-play-state:running];
   }
   @media (hover: none) {
     .\@touch\:hide {
