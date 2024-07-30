@@ -10,7 +10,7 @@ import getBrandShade from '@/vibes/soul/getBrandShade'
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string
-  variant?: 'default' | 'price' | 'large' | 'brand'
+  variant?: 'default' | 'price' | 'large' | 'brand' | 'button'
 }
 
 export const Input = forwardRef(function Input(
@@ -39,12 +39,12 @@ export const Input = forwardRef(function Input(
           {
             'px-6 py-3': variant === 'default',
             'py-3 pl-12 pr-6': variant === 'price',
-            'py-5 pl-5 pr-16': variant === 'large' || variant === 'brand',
+            'py-5 pl-5 pr-16': variant === 'large' || variant === 'button' || variant === 'brand',
           }
         )}
       />
 
-      {(variant === 'large' || variant === 'brand') && (
+      {(variant === 'button' || variant === 'brand') && (
         <button
           type="submit"
           className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-foreground text-background transition-transform focus:outline-none focus:ring-1"

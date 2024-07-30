@@ -14,8 +14,8 @@ export const Checkbox = function Checkbox({ checked = false, setChecked }: Props
     <label
       htmlFor="checkbox"
       className={clsx(
-        'flex h-6 w-6 items-center justify-center rounded-md transition-colors duration-150',
-        checked ? 'bg-foreground' : 'bg-background'
+        'flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-150',
+        checked ? 'border-foreground bg-foreground' : 'border-contrast-100 bg-background'
       )}
     >
       <input
