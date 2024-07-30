@@ -26,6 +26,7 @@ export const navigation = [
       { title: 'Hero Category', slug: 'hero-category', file: 'docs/hero-category.mdx' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx' },
       { title: 'Navigation', slug: 'navigation', file: 'docs/navigation.mdx' },
+      { title: 'Newsletter', slug: 'newsletter', file: 'docs/newsletter.mdx' },
       { title: 'Product Card', slug: 'product-card', file: 'docs/product-card.mdx' },
       { title: 'Product Chip', slug: 'product-chip', file: 'docs/product-chip.mdx' },
       { title: 'Product List', slug: 'product-list', file: 'docs/product-list.mdx' },

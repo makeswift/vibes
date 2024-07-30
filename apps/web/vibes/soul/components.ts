@@ -102,6 +102,13 @@ export const components = [
     component: lazy(() => import('./components/navigation')),
   },
   {
+    name: 'newsletter',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/newsletter/index.tsx'],
+    component: lazy(() => import('./components/newsletter')),
+  },
+  {
     name: 'product-card',
     dependencies: [],
     registryDependencies: [],

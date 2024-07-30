@@ -109,6 +109,13 @@ export const examples = [
     component: lazy(() => import('./examples/navigation')),
   },
   {
+    name: 'newsletter-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/newsletter.tsx'],
+    component: lazy(() => import('./examples/newsletter')),
+  },
+  {
     name: 'product-card-example',
     dependencies: [],
     registryDependencies: ['product-card'],
