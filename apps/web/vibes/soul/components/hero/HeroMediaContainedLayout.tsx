@@ -43,7 +43,7 @@ export const HeroMediaContainedLayout = function HeroMediaContainedLayout({
       style={{ background: getBrandShade(activeBrand?.name, 900) }}
     >
       <div className="flex flex-grow flex-col-reverse gap-x-4 gap-y-10 @4xl:h-[100dvh] @4xl:max-h-[880px] @4xl:flex-row">
-        <h1 className="mt-auto max-w-7xl pl-3 text-5xl font-medium leading-none @lg:pl-20 @2xl:text-[90px] @4xl:w-1/2">
+        <h1 className="mt-auto max-w-7xl pl-3 text-5xl font-medium leading-none text-background @lg:pl-20 @2xl:text-[90px] @4xl:w-1/2">
           {heading}
         </h1>
 
