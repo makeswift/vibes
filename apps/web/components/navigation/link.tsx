@@ -13,8 +13,8 @@ export function Link({ active, className, ...rest }: Props) {
       {...rest}
       className={clsx(
         className,
-        'text-sm leading-normal transition-colors',
-        active ? 'font-bold text-foreground' : 'text-contrast-400 hover:!text-foreground'
+        'text-sm leading-normal outline-none transition-colors focus-visible:underline focus-visible:underline-offset-[6px]',
+        active ? 'font-medium text-foreground' : 'text-contrast-400 hover:!text-foreground'
       )}
     />
   )

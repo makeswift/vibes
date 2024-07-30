@@ -7,7 +7,7 @@ export const components = [
     name: 'button',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/button/index.tsx'],
+    files: ['components/button/index.tsx'],
     component: lazy(() => import('./components/button')),
   },
 ] satisfies Components
