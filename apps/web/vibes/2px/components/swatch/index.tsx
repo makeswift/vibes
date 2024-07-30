@@ -3,57 +3,84 @@
 import { cn } from '@/lib/utils'
 
 interface Props {
+  id: string
   className?: string
   name: string
   disabled: boolean
   inStock: boolean
-  color: string
+  sample: string
   checked: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export default function Swatch({
+  id,
   className,
   name,
   disabled,
   inStock,
-  color,
+  sample,
   checked,
   onChange,
 }: Props) {
+  const hexColorRegex = /^#?([a-fA-F0-9]{3}|[a-fA-F0-9]{6})$/
+
+  const style = hexColorRegex.test(sample)
+    ? { backgroundColor: sample }
+    : {
+        backgroundImage: `url(${sample})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }
   return (
     <label
-      htmlFor={color}
-      className={cn(className, 'w-full', {
+      htmlFor={id}
+      className={cn(className, 'group inline-flex items-center gap-3', {
         'cursor-pointer': inStock && !disabled,
         'cursor-not-allowed': !inStock || disabled,
       })}
     >
-      <input
-        type="radio"
-        name={name}
-        className="hidden"
-        value={color}
-        id={color}
-        checked={checked}
-        disabled={disabled || !inStock}
-        onChange={onChange}
-      />
-      <div
-        className={cn(
-          'relative h-[2.25rem] w-[2.25rem] rounded-full border-foreground hover:border-[2px] hover:border-dashed focus:ring-[2px] focus:ring-accent @lg:h-[4.75rem] @lg:w-[4.75rem]',
-          checked && 'border-[2px] border-solid'
-        )}
-        style={{ backgroundColor: color }}
-      >
-        {' '}
+      <span className="relative grid grid-cols-[2.25rem] grid-rows-[2.25rem] @lg:grid-cols-[4.75rem] @lg:grid-rows-[4.75rem]">
+        <span
+          className={cn(
+            'absolute left-0 right-0 col-span-1 col-start-1 row-span-1 row-start-1 h-full w-full rounded-full ',
+            {
+              'group-hover:border-2 group-hover:border-dashed group-hover:border-foreground':
+                !disabled,
+            }
+          )}
+        />
+        <span
+          className={cn(
+            'invisible absolute left-0 right-0 col-span-1 col-start-1 row-span-1 row-start-1 box-content h-full w-full place-self-center rounded-full border-2 border-accent',
+            { 'group-focus-within:visible': !disabled }
+          )}
+        />
+        <input
+          type="radio"
+          name={name}
+          className="hidden"
+          value={sample}
+          id={id}
+          checked={checked}
+          disabled={disabled || !inStock}
+          onChange={onChange}
+        />
+        <span
+          className={cn(
+            'box-border h-[2.25rem] w-[2.25rem] rounded-full border-foreground  @lg:h-[4.75rem] @lg:w-[4.75rem]',
+            checked && 'border-[2px] border-solid'
+          )}
+          style={style}
+        />
         {disabled && (
-          <div className="absolute left-0 right-0 top-1/2 w-[2.75rem] -translate-x-1 -translate-y-1/2 rotate-45 border border-foreground @lg:w-[5.5rem]" />
+          <span className="absolute top-1/2 w-full rotate-45 scale-x-[120%] border-t-2 border-foreground" />
         )}
         {!inStock && (
-          <div className="absolute left-0 right-0 top-1/2 w-[2.75rem] -translate-x-1 -translate-y-1/2 rotate-45 border-t-[2px] border-dashed border-foreground @lg:w-[5.5rem] " />
+          <span className="absolute top-1/2 w-full rotate-45 scale-x-[120%] border-t-2 border-dashed border-foreground" />
         )}
-      </div>
+      </span>
     </label>
   )
 }
