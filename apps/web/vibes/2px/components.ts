@@ -4,11 +4,11 @@ import { Components } from '@/vibes/schema'
 
 export const components = [
   {
-    name: 'rating',
-    dependencies: [],
+    name: 'accordions',
+    dependencies: ['@radix-ui/react-accordion'],
     registryDependencies: [],
-    files: ['./components/rating/index.tsx'],
-    component: lazy(() => import('./components/rating')),
+    files: ['./components/accordions/index.tsx'],
+    component: lazy(() => import('./components/accordions')),
   },
   {
     name: 'button',
@@ -16,6 +16,20 @@ export const components = [
     registryDependencies: [],
     files: ['./components/button/index.tsx'],
     component: lazy(() => import('./components/button')),
+  },
+  {
+    name: 'badge',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/badge/index.tsx'],
+    component: lazy(() => import('./components/badge')),
+  },
+  {
+    name: 'rating',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/rating/index.tsx'],
+    component: lazy(() => import('./components/rating')),
   },
   {
     name: 'swatch',
