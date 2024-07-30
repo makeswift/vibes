@@ -36,7 +36,7 @@ export const Newsletter = function Newsletter({ image, heading, description, the
             : config.theme.extend.colors.contrast[100],
       }}
     >
-      <div className="flex flex-col items-center border @2xl:flex-row">
+      <div className="flex flex-col items-center @2xl:flex-row">
         {image && (
           <div className="relative aspect-square h-full w-full overflow-hidden @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
             <Image src={image.url} alt={image.alt} fill className="object-cover" />
