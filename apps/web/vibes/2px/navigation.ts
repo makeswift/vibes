@@ -4,12 +4,14 @@ export const navigation = [
   {
     title: 'Components',
 
-    pages: [{
+    pages: [
+      {
         title: 'Button',
         slug: 'button',
         file: 'docs/button.mdx',
         component: 'button',
-      }, { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx' }],
-
+      },
+      { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx' },
+    ],
   },
 ] satisfies Navigation
