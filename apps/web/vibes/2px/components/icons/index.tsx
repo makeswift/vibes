@@ -262,7 +262,7 @@ export const LoadingIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
       className={cn('animate-spin', className)}
       {...props}
     >
-      <circle cx="9" cy="9" r="8" stroke="black" strokeWidth="2" strokeDasharray="3 4" />
+      <circle cx="9" cy="9" r="8" strokeWidth="2" strokeDasharray="3 4" />
     </svg>
   )
 }
