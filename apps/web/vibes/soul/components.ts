@@ -88,6 +88,13 @@ export const components = [
     component: lazy(() => import('./components/featured-product-list')),
   },
   {
+    name: 'footer',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/footer/index.tsx'],
+    component: lazy(() => import('./components/footer')),
+  },
+  {
     name: 'hero',
     dependencies: ['./components/hero/ProgressBar.tsx'],
     registryDependencies: [],

@@ -88,6 +88,13 @@ export const examples = [
     component: lazy(() => import('./examples/featured-product-list')),
   },
   {
+    name: 'footer-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/footer.tsx'],
+    component: lazy(() => import('./examples/footer')),
+  },
+  {
     name: 'hero-category-example',
     dependencies: [],
     registryDependencies: [],
