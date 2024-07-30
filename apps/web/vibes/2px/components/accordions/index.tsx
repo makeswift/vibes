@@ -1,6 +1,4 @@
-'use client'
-
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 import * as Accordion from '@radix-ui/react-accordion'
 import clsx from 'clsx'
@@ -24,7 +22,7 @@ const Accordions = ({ className, accordions, type = 'multiple' }: Props) => {
       <ul className="relative w-full ">
         {accordions.map((accordion, i) => (
           <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="group relative px-2 pt-5 text-sm text-foreground @lg:pt-10 @lg:text-lg">
+            <li className="group relative px-2 pt-5 text-sm font-medium text-foreground @lg:pt-10 @lg:text-lg">
               <Accordion.Header>
                 <Accordion.Trigger asChild>
                   <div className="flex w-full cursor-pointer items-center justify-between @lg:pr-5">
