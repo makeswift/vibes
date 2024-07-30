@@ -67,6 +67,13 @@ export const components = [
     component: lazy(() => import('./components/feature')),
   },
   {
+    name: 'featured-product-list',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/featured-product-list/index.tsx'],
+    component: lazy(() => import('./components/featured-product-list')),
+  },
+  {
     name: 'hero',
     dependencies: ['./components/hero/ProgressBar.tsx'],
     registryDependencies: [],
@@ -114,6 +121,13 @@ export const components = [
     registryDependencies: [],
     files: ['./components/product-list/index.tsx'],
     component: lazy(() => import('./components/product-list')),
+  },
+  {
+    name: 'product-list-carousel',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/product-list-carousel/index.tsx'],
+    component: lazy(() => import('./components/product-list-carousel')),
   },
   {
     name: 'product-description',

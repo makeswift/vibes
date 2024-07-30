@@ -20,6 +20,7 @@ export type ProductCard = {
   }
   checked?: boolean
   setChecked?: (checked: boolean) => void
+  className?: string
 }
 
 export const ProductCard = function ProductCard({
@@ -31,6 +32,7 @@ export const ProductCard = function ProductCard({
   ctaLink,
   checked,
   setChecked,
+  className,
   ...props
 }: ProductCard & React.HTMLAttributes<HTMLAnchorElement>) {
   const { activeBrand } = useBrandContext()
@@ -42,7 +44,7 @@ export const ProductCard = function ProductCard({
       className="group relative flex h-full flex-col gap-2 text-foreground"
       {...props}
     >
-      <div className="relative overflow-hidden">
+      <div className="relative flex-grow overflow-hidden">
         {label && (
           // TODO @cortez: apply monospace font
           <span
@@ -58,7 +60,7 @@ export const ProductCard = function ProductCard({
           height={600}
           width={467}
           alt="Category card image"
-          className="h-auto w-full bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          className={`h-full w-full bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${className}`}
         />
 
         {checked !== undefined && setChecked && (

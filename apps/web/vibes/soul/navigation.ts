@@ -17,6 +17,11 @@ export const navigation = [
       { title: 'Compare', slug: 'compare', file: 'docs/compare.mdx' },
       { title: 'Compare Bar', slug: 'compare-bar', file: 'docs/compare-bar.mdx' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx' },
+      {
+        title: 'Featured Product List',
+        slug: 'featured-product-list',
+        file: 'docs/featured-product-list.mdx',
+      },
       { title: 'Hero', slug: 'hero', file: 'docs/hero.mdx' },
       { title: 'Hero Category', slug: 'hero-category', file: 'docs/hero-category.mdx' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx' },
@@ -24,6 +29,11 @@ export const navigation = [
       { title: 'Product Card', slug: 'product-card', file: 'docs/product-card.mdx' },
       { title: 'Product Chip', slug: 'product-chip', file: 'docs/product-chip.mdx' },
       { title: 'Product List', slug: 'product-list', file: 'docs/product-list.mdx' },
+      {
+        title: 'Product List Carousel',
+        slug: 'product-list-carousel',
+        file: 'docs/product-list-carousel.mdx',
+      },
       {
         title: 'Product Description',
         slug: 'product-description',

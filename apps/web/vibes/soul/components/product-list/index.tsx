@@ -23,7 +23,6 @@ export const ProductList = function ProductList({ products }: Props) {
           ))}
         </div>
       )}
-
       <Pagination pages={8} />
     </section>
   )

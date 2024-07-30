@@ -14,7 +14,7 @@ type ProductCard = {
 
 type Props = {
   product: ProductCard
-  onDismiss: () => void
+  onDismiss?: () => void
 }
 
 const ProductChip = function ProductChip({ product, onDismiss }: Props) {
@@ -25,7 +25,7 @@ const ProductChip = function ProductChip({ product, onDismiss }: Props) {
     if (dismissed) {
       const timeoutId = setTimeout(() => {
         setIsAnimating(true)
-        onDismiss()
+        onDismiss?.()
       }, 150)
       return () => clearTimeout(timeoutId)
     }

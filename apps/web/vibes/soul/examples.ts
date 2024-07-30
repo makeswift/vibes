@@ -67,6 +67,20 @@ export const examples = [
     component: lazy(() => import('./examples/feature')),
   },
   {
+    name: 'featured-product-list-example',
+    dependencies: [],
+    registryDependencies: ['featured-product-list'],
+    files: ['examples/featured-product-list.tsx'],
+    component: lazy(() => import('./examples/featured-product-list')),
+  },
+  {
+    name: 'hero-category-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/hero-category.tsx'],
+    component: lazy(() => import('./examples/hero-category')),
+  },
+  {
     name: 'hero-example',
     dependencies: [],
     registryDependencies: ['hero'],
@@ -114,6 +128,13 @@ export const examples = [
     registryDependencies: ['product-list'],
     files: ['examples/product-list.tsx'],
     component: lazy(() => import('./examples/product-list')),
+  },
+  {
+    name: 'product-list-carousel-example',
+    dependencies: [],
+    registryDependencies: ['product-list-carousel'],
+    files: ['examples/product-list-carousel.tsx'],
+    component: lazy(() => import('./examples/product-list-carousel')),
   },
   {
     name: 'product-description-example',

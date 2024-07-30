@@ -1,6 +1,5 @@
 import { Categories } from '@/vibes/soul/components/categories'
-
-import CategoryCard from '../components/category-card'
+import CategoryCard from '@/vibes/soul/components/category-card'
 
 const categories: CategoryCard[] = [
   {
