@@ -34,7 +34,7 @@ const SvgOpenSourceFront = (props: SVGProps<SVGSVGElement>) => (
       height={64}
       x={87}
       y={22}
-      fill="#000"
+      fill="currentColor"
       maskUnits="userSpaceOnUse"
     >
       <path fill="#fff" d="M87 22h184v64H87z" />
@@ -80,7 +80,7 @@ const SvgOpenSourceFront = (props: SVGProps<SVGSVGElement>) => (
       height={36}
       x={89}
       y={75.032}
-      fill="#000"
+      fill="currentColor"
       maskUnits="userSpaceOnUse"
     >
       <path fill="#fff" d="M89 75.032h169v36H89z" />

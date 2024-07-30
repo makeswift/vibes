@@ -23,6 +23,8 @@ export const SearchIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   )
 }
 
+SearchIcon.displayName = 'SearchIcon'
+
 export const ChevronDownIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
   ...props
@@ -41,6 +43,9 @@ export const ChevronDownIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = 
     </svg>
   )
 }
+
+ChevronDownIcon.displayName = 'ChevronDownIcon'
+
 export const ChevronUpIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
   ...props
@@ -59,6 +64,8 @@ export const ChevronUpIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
     </svg>
   )
 }
+
+ChevronUpIcon.displayName = 'ChevronUpIcon'
 
 export const ChevronLeftIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
@@ -79,6 +86,8 @@ export const ChevronLeftIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = 
   )
 }
 
+ChevronLeftIcon.displayName = 'ChevronLeftIcon'
+
 export const ChevronRightIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
   ...props
@@ -98,6 +107,8 @@ export const ChevronRightIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> =
   )
 }
 
+ChevronRightIcon.displayName = 'ChevronRightIcon'
+
 export const CheckIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
   ...props
@@ -116,6 +127,8 @@ export const CheckIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
     </svg>
   )
 }
+
+CheckIcon.displayName = 'CheckIcon'
 
 export const CrossIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
@@ -141,6 +154,8 @@ export const CrossIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   )
 }
 
+CrossIcon.displayName = 'CrossIcon'
+
 export const PauseIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
   ...props
@@ -160,6 +175,8 @@ export const PauseIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   )
 }
 
+PauseIcon.displayName = 'PauseIcon'
+
 export const PlayIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
   ...props
@@ -178,6 +195,8 @@ export const PlayIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
     </svg>
   )
 }
+
+PlayIcon.displayName = 'PlayIcon'
 
 export const AlertIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
@@ -202,6 +221,8 @@ export const AlertIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   )
 }
 
+AlertIcon.displayName = 'AlertIcon'
+
 export const InfoIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
   ...props
@@ -225,6 +246,8 @@ export const InfoIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   )
 }
 
+InfoIcon.displayName = 'InfoIcon'
+
 export const LoadingIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
   ...props
@@ -243,6 +266,8 @@ export const LoadingIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
     </svg>
   )
 }
+
+LoadingIcon.displayName = 'LoadingIcon'
 
 export const CalendarIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   className,
@@ -263,6 +288,8 @@ export const CalendarIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
   )
 }
 
+CalendarIcon.displayName = 'CalendarIcon'
+
 export const StarHalfIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({ ...props }) => {
   return (
     <svg
@@ -281,7 +308,7 @@ export const StarHalfIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({ 
       {/* Star stroke */}
       <path
         stroke={props.stroke || 'currentColor'}
-        stroke-width="50.324"
+        strokeWidth="50.324"
         d="m299.454 424.917-12.29-6.879-12.29 6.879-129.877 72.699 29.007-145.985 2.745-13.815-10.341-9.562L57.134 227.2l147.803-17.524 13.987-1.658 5.899-12.79 62.341-135.154 62.34 135.154 5.899 12.789 13.986 1.659L517.192 227.2 407.919 328.254l-10.34 9.562 2.745 13.815 29.006 145.985-129.876-72.699Z"
       />
     </svg>
@@ -314,7 +341,7 @@ export const StarFilledIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = (
       {/* Star stroke */}
       <path
         stroke={props.stroke || 'currentColor'}
-        stroke-width="50.324"
+        strokeWidth="50.324"
         d="m299.454 424.917-12.29-6.879-12.29 6.879-129.877 72.699 29.007-145.985 2.745-13.815-10.341-9.562L57.134 227.2l147.803-17.524 13.987-1.658 5.899-12.79 62.341-135.154 62.34 135.154 5.899 12.789 13.986 1.659L517.192 227.2 407.919 328.254l-10.34 9.562 2.745 13.815 29.006 145.985-129.876-72.699Z"
       />
     </svg>
@@ -335,7 +362,7 @@ export const StarEmptyIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
       {/* Star stroke */}
       <path
         stroke={props.stroke || 'currentColor'}
-        stroke-width="50.324"
+        strokeWidth="50.324"
         d="m299.454 424.917-12.29-6.879-12.29 6.879-129.877 72.699 29.007-145.985 2.745-13.815-10.341-9.562L57.134 227.2l147.803-17.524 13.987-1.658 5.899-12.79 62.341-135.154 62.34 135.154 5.899 12.789 13.986 1.659L517.192 227.2 407.919 328.254l-10.34 9.562 2.745 13.815 29.006 145.985-129.876-72.699Z"
       />
     </svg>

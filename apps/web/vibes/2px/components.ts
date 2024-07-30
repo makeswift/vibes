@@ -4,6 +4,13 @@ import { Components } from '@/vibes/schema'
 
 export const components = [
   {
+    name: 'rating',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/rating/index.tsx'],
+    component: lazy(() => import('./components/rating')),
+  },
+  {
     name: 'button',
     dependencies: [],
     registryDependencies: [],
