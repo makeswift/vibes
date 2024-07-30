@@ -19,6 +19,10 @@ const config = {
         accent: 'hsl(var(--accent))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        success: 'hsl(var(--success))',
+        error: 'hsl(var(--error))',
+        warning: 'hsl(var(--warning))',
+        info: 'hsl(var(--info))',
         contrast: {
           100: 'hsl(var(--contrast-100))',
           200: 'hsl(var(--contrast-200))',
@@ -51,110 +55,19 @@ const config = {
         ],
       },
       fontSize: {
-        xs: [
-          'var(--font-size-xs, 0.75rem)',
-          {
-            lineHeight: 'var(--line-height-xs, 1rem)',
-            letterSpacing: 'var(--letter-spacing-xs)',
-            fontWeight: 'var(--font-weight-xs)',
-          },
-        ],
-        sm: [
-          'var(--font-size-sm, 0.875rem)',
-          {
-            lineHeight: 'var(--line-height-sm, 1.25rem)',
-            letterSpacing: 'var(--letter-spacing-sm)',
-            fontWeight: 'var(--font-weight-sm)',
-          },
-        ],
-        base: [
-          'var(--font-size-base, 1rem)',
-          {
-            lineHeight: 'var(--line-height-base, 1.5rem)',
-            letterSpacing: 'var(--letter-spacing-base)',
-            fontWeight: 'var(--font-weight-base)',
-          },
-        ],
-        lg: [
-          'var(--font-size-lg, 1.125rem)',
-          {
-            lineHeight: 'var(--line-height-lg, 1.75rem)',
-            letterSpacing: 'var(--letter-spacing-lg)',
-            fontWeight: 'var(--font-weight-lg)',
-          },
-        ],
-        xl: [
-          'var(--font-size-xl, 1.25rem)',
-          {
-            lineHeight: 'var(--line-height-xl, 1.75rem)',
-            letterSpacing: 'var(--letter-spacing-xl)',
-            fontWeight: 'var(--font-weight-xl)',
-          },
-        ],
-        '2xl': [
-          'var(--font-size-2xl, 1.5rem)',
-          {
-            lineHeight: 'var(--line-height-2xl, 2rem)',
-            letterSpacing: 'var(--letter-spacing-2xl)',
-            fontWeight: 'var(--font-weight-2xl)',
-          },
-        ],
-        '3xl': [
-          'var(--font-size-3xl, 1.875rem)',
-          {
-            lineHeight: 'var(--line-height-3xl, 2.25rem)',
-            letterSpacing: 'var(--letter-spacing-3xl)',
-            fontWeight: 'var(--font-weight-3xl)',
-          },
-        ],
-        '4xl': [
-          'var(--font-size-4xl, 2.25rem)',
-          {
-            lineHeight: 'var(--line-height-4xl, 2.5rem)',
-            letterSpacing: 'var(--letter-spacing-4xl)',
-            fontWeight: 'var(--font-weight-4xl)',
-          },
-        ],
-        '5xl': [
-          'var(--font-size-5xl, 3rem)',
-          {
-            lineHeight: 'var(--line-height-5xl, 1)',
-            letterSpacing: 'var(--letter-spacing-5xl)',
-            fontWeight: 'var(--font-weight-5xl)',
-          },
-        ],
-        '6xl': [
-          'var(--font-size-6xl, 3.75rem)',
-          {
-            lineHeight: 'var(--line-height-6xl, 1)',
-            letterSpacing: 'var(--letter-spacing-6xl)',
-            fontWeight: 'var(--font-weight-6xl)',
-          },
-        ],
-        '7xl': [
-          'var(--font-size-7xl, 4.5rem)',
-          {
-            lineHeight: 'var(--line-height-7xl, 1)',
-            letterSpacing: 'var(--letter-spacing-7xl)',
-            fontWeight: 'var(--font-weight-7xl)',
-          },
-        ],
-        '8xl': [
-          'var(--font-size-8xl, 6rem)',
-          {
-            lineHeight: 'var(--line-height-8xl, 1)',
-            letterSpacing: 'var(--letter-spacing-8xl)',
-            fontWeight: 'var(--font-weight-8xl)',
-          },
-        ],
-        '9xl': [
-          'var(--font-size-9xl, 8rem)',
-          {
-            lineHeight: 'var(--line-height-9xl, 1)',
-            letterSpacing: 'var(--letter-spacing-9xl)',
-            fontWeight: 'var(--font-weight-9xl)',
-          },
-        ],
+        xs: 'var(--font-size-xs, 0.75rem)',
+        sm: 'var(--font-size-sm, 0.875rem)',
+        base: 'var(--font-size-base, 1rem)',
+        lg: 'var(--font-size-lg, 1.125rem)',
+        xl: 'var(--font-size-xl, 1.25rem)',
+        '2xl': 'var(--font-size-2xl, 1.5rem)',
+        '3xl': 'var(--font-size-3xl, 1.875rem)',
+        '4xl': 'var(--font-size-4xl, 2.25rem)',
+        '5xl': 'var(--font-size-5xl, 3rem)',
+        '6xl': 'var(--font-size-6xl, 3.75rem)',
+        '7xl': 'var(--font-size-7xl, 4.5rem)',
+        '8xl': 'var(--font-size-8xl, 6rem)',
+        '9xl': 'var(--font-size-9xl, 8rem)',
       },
       shadows: {
         sm: 'var(--shadow-sm)',
@@ -164,19 +77,19 @@ const config = {
         xl: 'var(--shadow-xl)',
       },
       keyframes: {
-        shake: {
-          '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
-          '20%, 80%': { transform: 'translate3d(1px, 0, 0)' },
-          '30%, 50%, 70%': { transform: 'translate3d(-2px, 0, 0)' },
-          '40%, 60%': { transform: 'translate3d(2px, 0, 0)' },
+        collapse: {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
         expand: {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
         },
-        collapse: {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
+        'marching-ants': {
+          to: {
+            'background-position':
+              '0 0, 0 -1px, calc(100% + 1px) 0, 100% calc(100% + 1px), -1px 100%',
+          },
         },
         rotateFade: {
           from: { opacity: '1', transform: 'rotateZ(0deg) translate3d(-50%,-50%,0)' },
@@ -205,18 +118,25 @@ const config = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-100%)' },
         },
+        shake: {
+          '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+          '20%, 80%': { transform: 'translate3d(1px, 0, 0)' },
+          '30%, 50%, 70%': { transform: 'translate3d(-2px, 0, 0)' },
+          '40%, 60%': { transform: 'translate3d(2px, 0, 0)' },
+        },
         slideIn: {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(0%)' },
         },
       },
       animation: {
-        shake: 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
-        expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
+        expand: 'expand 400ms cubic-bezier(1, 0, 0.25, 1)',
+        marching: 'marching-ants 10s linear infinite',
         rotate: 'rotate 2000ms linear infinite',
         scroll: 'scroll 200ms infinite linear both',
         scrollLeft: 'scrollLeft var(--marquee-duration) linear infinite',
+        shake: 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
         slideIn: 'slideIn 800ms cubic-bezier(0.25, 1, 0, 1)',
       },
     },
