@@ -27,10 +27,10 @@ export const BlogPostCard = function BlogPostCard({
       <div className="overflow-hidden">
         <Image
           src={image}
-          height={600}
-          width={467}
+          height={349}
+          width={466}
           alt={title}
-          className="scale-105 bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-100"
+          className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </div>
 
