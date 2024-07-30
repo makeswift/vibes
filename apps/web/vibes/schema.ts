@@ -1,5 +1,3 @@
-import { CSSProperties } from 'react'
-
 import { z } from 'zod'
 
 export type NonEmptyArray<T> = [T, ...T[]]
