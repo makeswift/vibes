@@ -29,9 +29,9 @@ export default function Preview() {
   ]
 
   return (
-    <>
+    <div className="flex flex-col gap-3">
       <Hero heading="Pro Jerseys" images={images} />
       <Hero heading="Pro Jerseys" images={images} containedMediaLayout />
-    </>
+    </div>
   )
 }
