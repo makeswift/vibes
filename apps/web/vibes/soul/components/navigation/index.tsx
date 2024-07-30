@@ -72,7 +72,7 @@ export const Navigation = forwardRef(function Navigation(
       <header
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className={clsx(className, 'w-full text-foreground @container')}
+        className={clsx(className, 'mx-auto w-full max-w-7xl text-foreground @container')}
       >
         <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background @4xl:rounded-[24px]">
           <div className="relative flex items-stretch px-2.5" ref={container}>

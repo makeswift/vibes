@@ -24,10 +24,10 @@ export const Accordions = forwardRef(function Accordions(
 ) {
   return (
     <Accordion.Root type={type} ref={ref} className={clsx(className, 'font-body')} asChild>
-      <ul className="w-full @container">
+      <ul className="mx-auto w-full max-w-7xl @container">
         {accordions.map((accordion, i) => (
           <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="group px-5">
+            <li className="group px-5 @4xl:px-20">
               <Accordion.Header>
                 <Accordion.Trigger asChild>
                   <div className="flex w-full cursor-pointer items-start py-3 @md:gap-8 @md:py-5">

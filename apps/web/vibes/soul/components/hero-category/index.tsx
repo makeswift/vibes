@@ -27,7 +27,10 @@ export const HeroCategory = function HeroCategory({
   const { activeBrand } = useBrandContext()
 
   return (
-    <section className="relative h-[100dvh] max-h-[880px] @container">
+    <section
+      style={{ background: mediaAlign ? getBrandShade(activeBrand?.name, 900) : '' }}
+      className="relative h-[100dvh] max-h-[880px] @container"
+    >
       <div className="flex h-full flex-col @3xl:flex-row">
         <video
           className={clsx(
@@ -42,7 +45,6 @@ export const HeroCategory = function HeroCategory({
           <source src={video} type="video/mp4" />
         </video>
         <div
-          style={{ background: mediaAlign ? getBrandShade(activeBrand?.name, 900) : '' }}
           className={clsx(
             'z-10 mx-auto flex max-w-7xl flex-col items-start gap-4 px-3 py-10 text-background @5xl:p-20',
             mediaAlign

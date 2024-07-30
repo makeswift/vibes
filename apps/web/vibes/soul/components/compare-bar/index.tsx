@@ -37,7 +37,7 @@ export const CompareBar = function CompareBar({ products }: Props) {
     products &&
     products.length > 0 && (
       <section className="w-full @container">
-        <div className="flex flex-wrap items-end justify-end gap-5 px-3 py-5 @4xl:px-20">
+        <div className="mx-auto flex w-full max-w-7xl flex-wrap items-end justify-end gap-5 px-3 py-5 @4xl:px-20">
           {products.map((product, index) => (
             <ProductChip
               key={product.name}
