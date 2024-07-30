@@ -57,8 +57,8 @@ const SvgThemesFront = (props: SVGProps<SVGSVGElement>) => (
       d="M76 77h1V47h-1zM79 77h1V47h-1zM82 77h1V47h-1zM85 77h1V47h-1zM88 77h1V47h-1zM91 77h1V47h-1zM94 77h1V47h-1z"
       opacity={0.2}
     />
-    <path fill="#000" d="M83 85h5v-8h-5z" />
-    <path fill="#000" fillOpacity={0.1} d="M21 146h130v2H21z" />
+    <path fill="currentColor" d="M83 85h5v-8h-5z" />
+    <path fill="currentColor" fillOpacity={0.1} d="M21 146h130v2H21z" />
     <ellipse cx={93} cy={62} fill="#07090D" rx={3} ry={5} />
     <path
       fill="#FC8B5B"
