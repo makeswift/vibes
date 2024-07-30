@@ -63,7 +63,7 @@ export const ProductListCarousel = function ProductListCarousel({ title, link, p
               price={product.price}
               image={product.image}
               ctaLink={product.ctaLink}
-              className="h-[218px] min-w-[179px] @4xl:min-h-[568px] @4xl:min-w-[466px]"
+              className="h-[218px] min-w-[179px] @4xl:max-h-[568px] @4xl:min-w-[466px]"
             />
           ))}
         </div>
