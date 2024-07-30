@@ -60,7 +60,7 @@ export const ProductCard = function ProductCard({
           height={600}
           width={467}
           alt="Category card image"
-          className={`h-full w-full bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-105 ${className}`}
+          className={`h-full w-full scale-105 bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-100 ${className}`}
         />
 
         {checked !== undefined && setChecked && (
@@ -73,12 +73,13 @@ export const ProductCard = function ProductCard({
         )}
       </div>
 
-      <h3 className="flex flex-col justify-between pt-3 text-sm font-semibold @4xl:flex-row @4xl:text-base">
-        {name}
-        {tags && <span className="font-normal text-contrast-400">{tags.join('/')}</span>}
-      </h3>
-
-      <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">${price}</span>
+      <div className="flex h-full max-h-32 flex-col gap-1">
+        <h3 className="flex flex-col flex-wrap justify-between gap-2 pt-3 text-sm font-semibold @4xl:flex-row @4xl:text-base">
+          {name && <span className="line-clamp-2">{name}</span>}
+          {tags && <span className="font-normal text-contrast-400">{tags.join('/')}</span>}
+        </h3>
+        <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">${price}</span>
+      </div>
     </Link>
   )
 }
