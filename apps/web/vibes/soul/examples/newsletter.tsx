@@ -34,6 +34,11 @@ export default function Preview() {
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="light"
       />
+      <Newsletter
+        heading="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        theme="brand"
+      />
     </div>
   )
 }

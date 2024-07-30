@@ -20,20 +20,30 @@ type Props = {
   }
   heading: string
   description: string
-  theme?: 'light' | 'dark'
+  theme?: 'light' | 'dark' | 'brand'
 }
 
 export const Newsletter = function Newsletter({ image, heading, description, theme }: Props) {
   const { activeBrand } = useBrandContext()
 
+  const getBackground = (theme: Props['theme']) => {
+    switch (theme) {
+      case 'dark':
+        return getBrandShade(activeBrand?.name, 900)
+      case 'light':
+        return config.theme.extend.colors.contrast[100]
+      case 'brand':
+        return config.theme.extend.colors.background
+      default:
+        return config.theme.extend.colors.contrast[100]
+    }
+  }
+
   return (
     <section
       className="@container"
       style={{
-        background:
-          theme === 'dark'
-            ? getBrandShade(activeBrand?.name, 900)
-            : config.theme.extend.colors.contrast[100],
+        background: getBackground(theme),
       }}
     >
       <div className="flex flex-col items-center @2xl:flex-row">
@@ -56,7 +66,7 @@ export const Newsletter = function Newsletter({ image, heading, description, the
           </div>
           <form className="w-full">
             <Input
-              variant="large"
+              variant={theme == 'brand' ? 'brand' : 'large'}
               placeholder="Join our Newsletter"
               type="email"
               className="max-w-5xl"
