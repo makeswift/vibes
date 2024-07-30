@@ -8,7 +8,7 @@ export default function Preview() {
   const [checked, setChecked] = useState(false)
 
   return (
-    <div className="flex min-h-48 items-center justify-center p-5 @container">
+    <div className="flex min-h-48 items-center justify-center bg-background p-5 @container">
       <ProductCard
         name="Product Name"
         tags={['Blue', 'Black', 'Green']}

@@ -20,14 +20,12 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
     <Link
       href="/"
       className={clsx(
-        'relative w-full bg-primary transition-transform duration-300 @container',
+        'relative w-full overflow-hidden bg-primary transition-all duration-300 ease-out @container',
         className,
-        dismissed ? 'pointer-events-none scale-y-0' : 'scale-y-full'
+        dismissed ? 'pointer-events-none max-h-0' : 'max-h-32'
       )}
     >
-      <p className="line-clamp-2 p-2.5 pr-14 text-foreground @lg:pr-14 @lg:text-center">
-        {children}
-      </p>
+      <p className="p-2.5 pr-14 text-foreground @lg:text-center">{children}</p>
       <button
         role="button"
         aria-label="Dismiss banner"
