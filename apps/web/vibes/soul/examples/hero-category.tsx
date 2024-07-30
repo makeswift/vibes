@@ -2,7 +2,7 @@ import HeroCategory from '@/vibes/soul/components/hero-category'
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 flex-col gap-2 bg-background">
+    <div className="flex min-h-48 flex-col gap-2">
       <HeroCategory
         heading="Pro-Team"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt

@@ -32,7 +32,7 @@ export default function Preview() {
   const video = 'https://videos.pexels.com/video-files/4957753/4957753-hd_1920_1080_25fps.mp4'
 
   return (
-    <div className="bg-background @container">
+    <div className="@container">
       <ProductDescription accordions={accordions} image={image} />
       <ProductDescription accordions={accordions} video={video} />
     </div>

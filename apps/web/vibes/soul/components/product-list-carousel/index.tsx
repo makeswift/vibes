@@ -39,7 +39,7 @@ export const ProductListCarousel = function ProductListCarousel({ title, link, p
   }, [])
 
   return (
-    <section className="flex flex-col gap-10 @container">
+    <section className="flex flex-col gap-10 bg-background @container">
       <div className="flex items-center justify-between px-3 pt-3 text-foreground @4xl:px-20 @4xl:pt-20">
         {title && <h2 className="text-2xl font-medium">{title}</h2>}
         {link && (

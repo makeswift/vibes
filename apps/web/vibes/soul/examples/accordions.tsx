@@ -21,7 +21,7 @@ export default function Preview() {
   ]
 
   return (
-    <div className="flex min-h-48 items-center justify-center bg-background  sm:min-h-64 sm:py-8 lg:min-h-80 lg:py-12">
+    <div className="flex min-h-48 items-center justify-center bg-background sm:min-h-64 sm:py-8 lg:min-h-80 lg:py-12">
       <Accordions accordions={accordions} />
     </div>
   )

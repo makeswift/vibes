@@ -60,6 +60,13 @@ export const examples = [
     component: lazy(() => import('./examples/compare-bar')),
   },
   {
+    name: 'favorite-example',
+    dependencies: [],
+    registryDependencies: ['favorite'],
+    files: ['examples/favorite.tsx'],
+    component: lazy(() => import('./examples/favorite')),
+  },
+  {
     name: 'feature-example',
     dependencies: [],
     registryDependencies: [],

@@ -30,7 +30,7 @@ const products: ProductCard[] = [
 
 export default function Preview() {
   return (
-    <div className="min-h-48 bg-background">
+    <div className="min-h-48">
       <ProductList products={products} />
     </div>
   )

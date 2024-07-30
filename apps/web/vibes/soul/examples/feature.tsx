@@ -1,7 +1,7 @@
 import Feature from '@/vibes/soul/components/feature'
 
 export default function Preview() {
-  const image = {
+  const image: Feature['image'] = {
     url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
     dimensions: {
       width: 932,
@@ -10,13 +10,13 @@ export default function Preview() {
     alt: 'Biker in Mountains',
   }
 
-  const link = {
+  const link: Feature['link'] = {
     label: 'Shop Now',
     href: '/shop',
     target: '_self',
   }
 
-  const list = [
+  const list: Feature['list'] = [
     {
       icon: {
         url: 'https://rstr.in/monogram/vibes/7W7rHzIpxH_',

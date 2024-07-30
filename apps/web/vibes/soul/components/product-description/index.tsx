@@ -24,7 +24,7 @@ export const ProductDescription = function ProductDescription({
   video,
 }: Readonly<Props>) {
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col-reverse items-start justify-between gap-x-4 gap-y-4 py-6 @lg:flex-row @lg:px-10 @lg:py-24 @xl:gap-x-10 @6xl:px-44 @7xl:gap-x-32">
+    <div className="relative mx-auto flex w-full max-w-7xl flex-col-reverse items-start justify-between gap-x-4 gap-y-4 bg-background py-6 @lg:flex-row @lg:px-10 @lg:py-24 @xl:gap-x-10 @6xl:px-44 @7xl:gap-x-32">
       {/* Accordions */}
       <Accordions accordions={accordions} className="@lg:sticky @lg:top-20" />
 

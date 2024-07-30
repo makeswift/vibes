@@ -26,7 +26,7 @@ const categories: CategoryCard[] = [
 
 export default function Preview() {
   return (
-    <div className="min-h-48 bg-background">
+    <div className="min-h-48">
       <Categories title="Category" link={{ href: '/' }} categories={categories} />
     </div>
   )

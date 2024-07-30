@@ -34,7 +34,7 @@ export const HeroCategory = function HeroCategory({
       <div className="flex h-full flex-col @3xl:flex-row">
         <video
           className={clsx(
-            'h-full object-cover',
+            'h-full w-full object-cover',
             mediaAlign ? '@3xl:w-1/2 @5xl:w-3/5' : 'absolute inset-0',
             { '@3xl:order-2': mediaAlign === 'right' }
           )}
@@ -53,7 +53,7 @@ export const HeroCategory = function HeroCategory({
             { '@3xl:order-1': mediaAlign === 'right' }
           )}
         >
-          <h1 className="text-[40px] font-medium">{heading}</h1>
+          <h1 className="max-w-xl text-[40px] font-medium">{heading}</h1>
           <p className="max-w-xl pb-2">{description}</p>
           <Button
             variant={mediaAlign ? 'primary' : 'tertiary'}

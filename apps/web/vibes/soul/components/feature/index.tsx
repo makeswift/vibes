@@ -8,7 +8,7 @@ import { useBrandContext } from '@/components/preview/brand-context'
 import { Button } from '@/vibes/soul/components/button'
 import getBrandShade from '@/vibes/soul/getBrandShade'
 
-type Props = {
+export interface Feature {
   image: {
     url: string
     dimensions: {
@@ -19,7 +19,6 @@ type Props = {
   }
   heading?: string
   description?: string
-
   list?: {
     icon: {
       url: string
@@ -39,7 +38,7 @@ type Props = {
   }
 }
 
-export const Feature = function Feature({ image, heading, description, list, link }: Props) {
+export const Feature = function Feature({ image, heading, description, list, link }: Feature) {
   const { activeBrand } = useBrandContext()
 
   return (

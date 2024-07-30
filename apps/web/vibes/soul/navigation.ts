@@ -16,6 +16,7 @@ export const navigation = [
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx' },
       { title: 'Compare', slug: 'compare', file: 'docs/compare.mdx' },
       { title: 'Compare Bar', slug: 'compare-bar', file: 'docs/compare-bar.mdx' },
+      { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx' },
       {
         title: 'Featured Product List',

@@ -17,7 +17,7 @@ export const FeaturedProductList = function FeaturedProductList({
   products,
 }: Props) {
   return (
-    <section className="@container">
+    <section className="bg-background @container">
       <div className="container relative mx-auto flex flex-col gap-6 px-3 py-10 @4xl:flex-row @4xl:px-20 @4xl:py-24">
         <div className="top-28 flex w-full items-end justify-between gap-4 self-start @4xl:sticky @4xl:max-w-md @4xl:flex-col @4xl:items-start @4xl:justify-start">
           {title && (

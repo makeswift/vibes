@@ -38,7 +38,7 @@ const products: ProductCard[] = [
 
 export default function Preview() {
   return (
-    <div className="min-h-48 bg-background">
+    <div className="min-h-48">
       <FeaturedProductList
         title="Off-Race"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
