@@ -18,6 +18,13 @@ export const components = [
     component: lazy(() => import('./components/announcement-bar')),
   },
   {
+    name: 'blog-post-card',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/blog-post-card/index.tsx'],
+    component: lazy(() => import('./components/blog-post-card')),
+  },
+  {
     name: 'button',
     dependencies: [],
     registryDependencies: [],

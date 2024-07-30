@@ -1,8 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
-import { Link } from '@/components/navigation/link'
 import CategoryCard from '@/vibes/soul/components/category-card'
 import Arrow from '@/vibes/soul/components/icons/Arrow'
 

@@ -2,8 +2,8 @@
 
 import { Route } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { Link } from '@/components/navigation/link'
 import { useBrandContext } from '@/components/preview/brand-context'
 import Compare from '@/vibes/soul/components/compare'
 import getBrandShade from '@/vibes/soul/getBrandShade'

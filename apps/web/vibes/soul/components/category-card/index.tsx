@@ -1,9 +1,9 @@
 import { Route } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import clsx from 'clsx'
 
-import { Link } from '@/components/navigation/link'
 import Arrow from '@/vibes/soul/components/icons/Arrow'
 
 export type CategoryCard = {
