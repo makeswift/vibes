@@ -31,7 +31,7 @@ export default function TextArea({
         <textarea
           className={cn(
             className,
-            'min-h-[8rem] min-w-[25rem] border-2 bg-background px-4 py-2 placeholder-foreground outline-none focus:border-l-transparent focus:border-r-transparent focus:border-t-transparent ',
+            'min-h-[8rem] min-w-[25rem] border-2 bg-background px-4 py-2 placeholder-foreground outline-none focus:border-l-transparent focus:border-r-transparent focus:border-t-transparent focus:placeholder-transparent',
             {
               'border-foreground/50 text-foreground/50': disabled,
               'border-foreground text-foreground hover:border-dashed ':
@@ -45,7 +45,7 @@ export default function TextArea({
           onChange={e => setValue(e.target.value)}
           placeholder={placeholder || 'Placeholder...'}
         />
-        <div className="pointer-events-none absolute bottom-0.5 right-0.5 flex h-6 w-6 items-center justify-center bg-white text-foreground">
+        <div className="pointer-events-none absolute bottom-0.5 right-0.5 flex h-6 w-6 items-center justify-center bg-background text-foreground">
           <ResizerIcon />
         </div>
       </div>
