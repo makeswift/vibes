@@ -17,4 +17,11 @@ export const examples = [
     files: ['examples/button.tsx'],
     component: lazy(() => import('./examples/button')),
   },
+  {
+    name: 'badge-example',
+    dependencies: [],
+    registryDependencies: ['badge'],
+    files: ['examples/badge.tsx'],
+    component: lazy(() => import('./examples/badge')),
+  },
 ] satisfies Components
