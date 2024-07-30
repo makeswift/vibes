@@ -22,14 +22,14 @@ const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <Link
         className={clsx(
-          'relative z-0 ring-offset-2 ring-offset-background before:hidden focus-visible:rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+          'not-prose group relative z-0 rounded-full outline-none before:hidden',
           className
         )}
         href={href ?? '#'}
       >
         <span
           className={clsx(
-            'inline-flex items-center justify-center whitespace-nowrap rounded-full border stroke-foreground font-bold text-foreground outline-none ring-offset-background transition-colors',
+            'inline-flex items-center justify-center whitespace-nowrap rounded-full border stroke-foreground font-bold text-foreground ring-1 ring-inset ring-transparent ring-offset-0 transition-colors group-focus-visible:border-primary group-focus-visible:ring-primary',
             {
               default:
                 'pattern-shadow pattern-shadow-sm pattern-shadow-hover border-foreground bg-background',
@@ -38,8 +38,8 @@ const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
             }[variant],
             {
               large: 'gap-x-2 px-4 py-2 text-base',
-              medium: 'h-10 gap-x-2 px-4 py-2 text-sm',
-              small: 'h-8 gap-x-1.5 px-3 py-1.5 text-xs',
+              medium: 'gap-x-2 px-4 py-2 text-sm',
+              small: 'gap-x-1.5 px-3 py-1.5 text-xs',
               icon: 'p-1.5',
             }[size]
           )}

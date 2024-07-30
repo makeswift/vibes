@@ -1,4 +1,4 @@
-import Button from '../components/button'
+import Button from '@/vibes/2px/components/button'
 
 export default function Preview() {
   return (

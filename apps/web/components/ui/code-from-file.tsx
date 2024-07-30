@@ -29,8 +29,8 @@ export async function CodeFromFile({ pathname, basePath, hideCopyButton = false 
   })
 
   return (
-    <div className="relative mb-8 md:mb-10">
-      <div className="" dangerouslySetInnerHTML={{ __html: code }} />
+    <div className="relative mb-8 only:mb-0 md:mb-10">
+      <div dangerouslySetInnerHTML={{ __html: code }} />
 
       {!hideCopyButton && <CopyButton className="absolute right-2 top-2" clipboard={file} />}
     </div>

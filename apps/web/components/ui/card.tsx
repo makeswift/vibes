@@ -11,10 +11,7 @@ export default function Card({ children, className, ...rest }: Props) {
   return (
     <div
       {...rest}
-      className={clsx(
-        'pattern-shadow not-prose pattern-shadow-lg w-full border border-foreground bg-background',
-        className
-      )}
+      className={clsx('not-prose w-full border border-foreground bg-background', className)}
     >
       {children}
     </div>
