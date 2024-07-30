@@ -47,7 +47,7 @@ export const Feature = function Feature({ image, heading, description, list, lin
       className="relative @container/section"
       style={{ background: getBrandShade(activeBrand?.name, 900) }}
     >
-      <div className="flex flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
         {/* Image Side */}
         <div
           className="relative aspect-square w-full  
