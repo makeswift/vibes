@@ -4,6 +4,13 @@ import { Components } from '@/vibes/schema'
 
 export const components = [
   {
+    name: 'accordions',
+    dependencies: ['@radix-ui/react-accordion'],
+    registryDependencies: [],
+    files: ['./components/accordions/index.tsx'],
+    component: lazy(() => import('./components/accordions')),
+  },
+  {
     name: 'rating',
     dependencies: [],
     registryDependencies: [],

@@ -11,8 +11,14 @@ export const navigation = [
         file: 'docs/button.mdx',
         component: 'button',
       },
-      { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx' },
-      { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx' },
+      { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
+      { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
+      {
+        title: 'Accordions',
+        slug: 'accordions',
+        file: 'docs/accordions.mdx',
+        component: 'accordions',
+      },
     ],
   },
 ] satisfies Navigation

@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'accordions-example',
+    dependencies: [],
+    registryDependencies: ['accordions'],
+    files: ['examples/accordions.tsx'],
+    component: lazy(() => import('./examples/accordions')),
+  },
+  {
     name: 'badge-example',
     dependencies: [],
     registryDependencies: ['badge'],

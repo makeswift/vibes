@@ -39,7 +39,7 @@ export const ChevronDownIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = 
       className={className}
       {...props}
     >
-      <path d="M1 4L9 12L17 4" stroke="black" strokeWidth="2" />
+      <path d="M1 4L9 12L17 4" stroke="currentColor" strokeWidth="2" />
     </svg>
   )
 }
