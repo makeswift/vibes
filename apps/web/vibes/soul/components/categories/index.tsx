@@ -40,7 +40,7 @@ export const Categories = function Categories({ title, link, categories }: Props
 
   return (
     <section className="flex flex-col gap-10 @container">
-      <div className="flex items-center justify-between px-3 pt-3 @4xl:px-20 @4xl:pt-20">
+      <div className="flex items-center justify-between px-3 pt-3 text-foreground @4xl:px-20 @4xl:pt-20">
         {title && <h2 className="text-2xl font-medium">{title}</h2>}
         {link && (
           <Link href={link.href} target={link.target} className="font-semibold text-foreground">

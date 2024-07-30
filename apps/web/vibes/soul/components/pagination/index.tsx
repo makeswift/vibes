@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
-const Pagination = ({ pages: totalPages }: { pages: number }) => {
+export const Pagination = function Pagination({ pages: totalPages }: { pages: number }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const initialPage = parseInt(searchParams.get('page') ?? '1')
@@ -65,7 +65,7 @@ const Pagination = ({ pages: totalPages }: { pages: number }) => {
           typeof page === 'string' ? (
             <span
               key={index}
-              className="hidden h-[50px] w-[50px] items-center justify-center @lg:flex"
+              className="hidden h-[50px] w-[50px] items-center justify-center text-foreground @lg:flex"
             >
               ...
             </span>
@@ -78,7 +78,7 @@ const Pagination = ({ pages: totalPages }: { pages: number }) => {
                 'flex h-[50px] w-[50px] items-center justify-center rounded-full border transition-colors duration-300',
                 page === currentPage
                   ? 'border-foreground bg-foreground text-background'
-                  : 'border-contrast-100 hover:bg-contrast-100'
+                  : 'border-contrast-100 text-foreground hover:bg-contrast-100'
               )}
             >
               {page}

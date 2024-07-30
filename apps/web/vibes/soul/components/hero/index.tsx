@@ -46,8 +46,8 @@ export const Hero = function Hero({ heading, images, containedMediaLayout }: Pro
       className="relative h-[100dvh] max-h-[880px] @container"
       style={{ background: getBrandShade(activeBrand?.name, 900) }}
     >
-      <div className="absolute bottom-0 left-0 z-10 w-full px-3 @lg:px-20">
-        <h1 className="max-w-7xl text-5xl font-medium leading-none text-background @2xl:text-[90px]">
+      <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-7xl -translate-x-1/2 px-3 @lg:px-20">
+        <h1 className="text-5xl font-medium leading-none text-background @2xl:text-[90px]">
           {heading}
         </h1>
         <ProgressSection

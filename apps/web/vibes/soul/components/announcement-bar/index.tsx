@@ -25,7 +25,9 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
         dismissed ? 'pointer-events-none scale-y-0' : 'scale-y-full'
       )}
     >
-      <p className="line-clamp-2 p-2.5 pr-14 @lg:pr-14 @lg:text-center">{children}</p>
+      <p className="line-clamp-2 p-2.5 pr-14 text-foreground @lg:pr-14 @lg:text-center">
+        {children}
+      </p>
       <button
         role="button"
         aria-label="Dismiss banner"

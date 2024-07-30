@@ -16,7 +16,7 @@ export const Compare = function Compare({ className, label, checked, setChecked 
       }}
       className={`flex cursor-default items-center gap-2 ${className}`}
     >
-      {label && <span className="hidden @4xl:block">{label}</span>}
+      {label && <span className="hidden text-foreground @4xl:block">{label}</span>}
       <Checkbox checked={checked} setChecked={setChecked} />
     </button>
   )
