@@ -70,7 +70,7 @@ export async function Preview({ vibeSlug, componentName }: Props) {
                 </Suspense>
               ),
               code: (
-                <Card>
+                <>
                   <ErrorBoundary
                     fallback={
                       <div className="flex justify-center p-5">
@@ -82,7 +82,7 @@ export async function Preview({ vibeSlug, componentName }: Props) {
                       <CodeFromFile pathname={pathname} hideCopyButton />
                     </Suspense>
                   </ErrorBoundary>
-                </Card>
+                </>
               ),
             }
           })
