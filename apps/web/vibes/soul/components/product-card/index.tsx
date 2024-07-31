@@ -60,7 +60,7 @@ export const ProductCard = function ProductCard({
           height={600}
           width={467}
           alt="Category card image"
-          className={`h-full w-full scale-105 bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-100 ${className}`}
+          className={`h-full w-full bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 ${className}`}
         />
 
         {checked !== undefined && setChecked && (
