@@ -28,7 +28,7 @@ export const components = [
     name: 'button',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/button/index.tsx'],
+    files: ['components/button/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/button')),
   },
   {

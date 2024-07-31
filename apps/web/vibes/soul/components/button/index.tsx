@@ -5,8 +5,7 @@ import { ReactNode, Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
-import { useBrandContext } from '@/components/preview/brand-context'
-import getBrandShade from '@/vibes/soul/getBrandShade'
+import '@/vibes/soul/styles.css'
 
 export interface Props {
   className?: string
@@ -20,7 +19,6 @@ export const Button = forwardRef(function Button(
   { className, link, variant = 'primary', size = 'default', children = 'Button' }: Props,
   ref: Ref<HTMLAnchorElement>
 ) {
-  const { activeBrand } = useBrandContext()
   const lightness = 300
 
   return (
@@ -44,14 +42,11 @@ export const Button = forwardRef(function Button(
       target={link?.target}
     >
       <div
-        style={{
-          background: variant === 'primary' ? getBrandShade(activeBrand?.name, lightness) : '',
-        }}
         className={clsx(
           'absolute left-0 top-0 z-0 w-full -translate-x-[110%] rounded-full transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0',
           link?.href === '#' && 'pointer-events-none opacity-20',
           {
-            primary: '',
+            primary: 'bg-primary-300',
             secondary: 'bg-background',
             tertiary: 'bg-foreground',
           }[variant],
