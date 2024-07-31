@@ -42,7 +42,7 @@ export const CategoryCard = function CategoryCard({
           height={600}
           width={467}
           alt="Category card image"
-          className="h-full min-h-[291px] w-full min-w-[226px] scale-105 bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-100 @4xl:min-h-[600px] @4xl:min-w-[467px]"
+          className="h-full min-h-[291px] w-full min-w-[226px] bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 @4xl:min-h-[600px] @4xl:min-w-[467px]"
         />
       </div>
       <span
