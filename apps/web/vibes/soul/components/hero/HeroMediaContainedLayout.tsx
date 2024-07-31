@@ -3,10 +3,9 @@
 import { useEffect, useState } from 'react'
 
 import { useBrandContext } from '@/components/preview/brand-context'
+import MediaCarousel from '@/vibes/soul/components/hero/MediaCarousel'
+import ProgressSection from '@/vibes/soul/components/hero/ProgessSection'
 import getBrandShade from '@/vibes/soul/getBrandShade'
-
-import MediaCarousel from './MediaCarousel'
-import ProgressSection from './ProgessSection'
 
 type Props = {
   heading: string
