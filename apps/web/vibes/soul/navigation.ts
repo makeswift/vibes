@@ -8,7 +8,7 @@ export const navigation = [
   {
     title: 'Components',
     pages: [
-      { title: 'Accordions', slug: 'Accordions', file: 'docs/accordions.mdx' },
+      { title: 'Accordions', slug: 'accordions', file: 'docs/accordions.mdx' },
       { title: 'Announcement Bar', slug: 'announcement-bar', file: 'docs/announcement-bar.mdx' },
       { title: 'Blog Post Card', slug: 'blog-post-card', file: 'docs/blog-post-card.mdx' },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx' },
