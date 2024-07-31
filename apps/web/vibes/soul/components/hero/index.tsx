@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from 'react'
 
-import { useBrandContext } from '@/components/preview/brand-context'
 import HeroMediaContainedLayout from '@/vibes/soul/components/hero/HeroMediaContainedLayout'
 import MediaCarousel from '@/vibes/soul/components/hero/MediaCarousel'
 import ProgressSection from '@/vibes/soul/components/hero/ProgessSection'
-import getBrandShade from '@/vibes/soul/getBrandShade'
+import '@/vibes/soul/styles.css'
 
 type Props = {
   heading: string
@@ -24,7 +23,6 @@ type Props = {
 // Hero Full Width Layout
 export const Hero = function Hero({ heading, images, containedMediaLayout }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const { activeBrand } = useBrandContext()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -41,10 +39,7 @@ export const Hero = function Hero({ heading, images, containedMediaLayout }: Pro
   }
 
   return (
-    <header
-      className="relative h-[100dvh] max-h-[880px] @container"
-      style={{ background: getBrandShade(activeBrand?.name, 900) }}
-    >
+    <header className="bg-primary-900 relative h-[100dvh] max-h-[880px] @container">
       <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-7xl -translate-x-1/2 px-3 @lg:px-20">
         <h1 className="text-5xl font-medium leading-none text-background @2xl:text-[90px]">
           {heading}

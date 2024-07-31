@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react'
 
-import { useBrandContext } from '@/components/preview/brand-context'
 import MediaCarousel from '@/vibes/soul/components/hero/MediaCarousel'
 import ProgressSection from '@/vibes/soul/components/hero/ProgessSection'
-import getBrandShade from '@/vibes/soul/getBrandShade'
+import '@/vibes/soul/styles.css'
 
 type Props = {
   heading: string
@@ -24,7 +23,6 @@ export const HeroMediaContainedLayout = function HeroMediaContainedLayout({
   images,
 }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const { activeBrand } = useBrandContext()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,10 +35,7 @@ export const HeroMediaContainedLayout = function HeroMediaContainedLayout({
   }, [currentIndex, images.length, setCurrentIndex])
 
   return (
-    <header
-      className="relative flex flex-col @container"
-      style={{ background: getBrandShade(activeBrand?.name, 900) }}
-    >
+    <header className="bg-primary-900 relative flex flex-col @container">
       <div className="mx-auto flex w-full max-w-7xl flex-grow flex-col-reverse gap-x-4 gap-y-10 @4xl:h-[100dvh] @4xl:max-h-[880px] @4xl:flex-row">
         <h1 className="mt-auto pl-3 text-5xl font-medium leading-none @lg:pl-20 @2xl:text-[90px] @4xl:w-1/2">
           {heading}

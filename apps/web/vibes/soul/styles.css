@@ -1,0 +1,33 @@
+/* Light */
+.bg-primary-50 {
+  background: color-mix(in srgb, hsl(var(--primary)), white 81%);
+}
+.bg-primary-100 {
+  background: color-mix(in srgb, hsl(var(--primary)), white 69%);
+}
+.bg-primary-200 {
+  background: color-mix(in srgb, hsl(var(--primary)), white 51%);
+}
+.bg-primary-300 {
+  background: color-mix(in srgb, hsl(var(--primary)), white 34%);
+}
+.bg-primary-400 {
+  background: color-mix(in srgb, hsl(var(--primary)), white 16%);
+}
+
+/* Dark */
+.bg-primary-500 {
+  background: color-mix(in srgb, hsl(var(--primary)), black 16%);
+}
+.bg-primary-600 {
+  background: color-mix(in srgb, hsl(var(--primary)), black 34%);
+}
+.bg-primary-700 {
+  background: color-mix(in srgb, hsl(var(--primary)), black 51%);
+}
+.bg-primary-800 {
+  background: color-mix(in srgb, hsl(var(--primary)), black 69%);
+}
+.bg-primary-900 {
+  background: color-mix(in srgb, hsl(var(--primary)), black 81%);
+}
