@@ -27,6 +27,7 @@ export const navigation = [
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx' },
       { title: 'Hero', slug: 'hero', file: 'docs/hero.mdx' },
       { title: 'Hero Category', slug: 'hero-category', file: 'docs/hero-category.mdx' },
+      { title: 'Icon Block', slug: 'icon-block', file: 'docs/icon-block.mdx' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx' },
       { title: 'Navigation', slug: 'navigation', file: 'docs/navigation.mdx' },
       { title: 'Newsletter', slug: 'newsletter', file: 'docs/newsletter.mdx' },

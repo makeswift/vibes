@@ -109,6 +109,13 @@ export const components = [
     component: lazy(() => import('./components/hero-category')),
   },
   {
+    name: 'icon-block',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/icon-block/index.tsx'],
+    component: lazy(() => import('./components/icon-block')),
+  },
+  {
     name: 'input',
     dependencies: [],
     registryDependencies: [],

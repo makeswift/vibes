@@ -116,6 +116,13 @@ export const examples = [
     component: lazy(() => import('./examples/hero-category')),
   },
   {
+    name: 'icon-block-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/icon-block.tsx'],
+    component: lazy(() => import('./examples/icon-block')),
+  },
+  {
     name: 'input-example',
     dependencies: [],
     registryDependencies: ['input'],
