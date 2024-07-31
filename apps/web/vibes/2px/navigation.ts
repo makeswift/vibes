@@ -19,6 +19,7 @@ export const navigation = [
         file: 'docs/accordions.mdx',
         component: 'accordions',
       },
+      { title: 'Tabs', slug: 'tabs', file: 'docs/tabs.mdx', component: 'tabs' },
     ],
   },
 ] satisfies Navigation
