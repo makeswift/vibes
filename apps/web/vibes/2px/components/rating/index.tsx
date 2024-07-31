@@ -3,8 +3,9 @@ import { ComponentPropsWithoutRef, FC, ReactElement } from 'react'
 import { LucideIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-
-import { StarEmptyIcon, StarFilledIcon, StarHalfIcon } from '../icons'
+import { StarEmptyIcon } from '@/vibes/2px/components/icons/StarEmptyIcon'
+import { StarFilledIcon } from '@/vibes/2px/components/icons/StarFilledIcon'
+import { StarHalfIcon } from '@/vibes/2px/components/icons/StarHalfIcon'
 
 const MAX_RATING = 5
 const roundHalf = (num: number) => {

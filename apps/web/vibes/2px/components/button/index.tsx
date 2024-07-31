@@ -1,8 +1,7 @@
 import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '@/lib/utils'
-
-import { LoadingIcon } from '../icons'
+import { LoadingIcon } from '@/vibes/2px/components/icons/LoadingIcon'
 
 export interface ButtonProps {
   className?: string

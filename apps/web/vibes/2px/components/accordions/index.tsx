@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import * as Accordion from '@radix-ui/react-accordion'
 import clsx from 'clsx'
 
-import { ChevronDownIcon } from '../icons'
+import { ChevronDownIcon } from '@/vibes/2px/components/icons/ChevronDownIcon'
 
 type AccordionItem = {
   title: ReactNode

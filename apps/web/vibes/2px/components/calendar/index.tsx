@@ -4,12 +4,10 @@ import * as React from 'react'
 import { DayPicker } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronUpIcon,
-} from '@/vibes/2px/components/icons'
+import { ChevronDownIcon } from '@/vibes/2px/components/icons/ChevronDownIcon'
+import { ChevronLeftIcon } from '@/vibes/2px/components/icons/ChevronLeftIcon'
+import { ChevronRightIcon } from '@/vibes/2px/components/icons/ChevronRightIcon'
+import { ChevronUpIcon } from '@/vibes/2px/components/icons/ChevronUpIcon'
 
 interface Props {
   className?: string

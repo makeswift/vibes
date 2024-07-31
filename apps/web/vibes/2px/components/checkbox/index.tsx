@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { CheckIcon } from '@/vibes/2px/components/icons'
+import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
 
 interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'className'> {
   checked: boolean
