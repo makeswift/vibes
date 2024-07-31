@@ -21,6 +21,12 @@ export const navigation = [
         component: 'accordions',
       },
       { title: 'Tabs', slug: 'tabs', file: 'docs/tabs.mdx', component: 'tabs' },
+      {
+        title: 'Product Card',
+        slug: 'product-card',
+        file: 'docs/product-card.mdx',
+        component: 'product-card',
+      },
     ],
   },
 ] satisfies Navigation

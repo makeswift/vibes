@@ -45,4 +45,11 @@ export const components = [
     files: ['./components/badge/index.tsx'],
     component: lazy(() => import('./components/badge')),
   },
+  {
+    name: 'product-card',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/product-card/index.tsx'],
+    component: lazy(() => import('./components/product-card')),
+  },
 ] satisfies Components
