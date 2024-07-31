@@ -65,7 +65,7 @@ export const Feature = function Feature({ image, heading, description, list, lin
                   <li key={idx} className="flex gap-4 @sm/content:items-center">
                     <Icon
                       icon={icon}
-                      className=" h-8 w-8 @xs/content:h-5 @xs/content:w-5 @lg/content:h-10 @lg/content:w-10"
+                      className="h-8 w-8 @xs/content:h-5 @xs/content:w-5 @lg/content:h-10 @lg/content:w-10"
                     />
                     <div className="flex flex-col">
                       <span className="-mt-1.5 text-lg font-medium @sm/content:-mt-1 @md/content:text-xl">
