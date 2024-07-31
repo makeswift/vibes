@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { cn } from '@/lib/utils'
 
 export type Breadcrumb = {
@@ -19,15 +21,15 @@ export default function Breadcrumbs({ className, crumb }: Props) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="font-body text-xs !leading-[var(--line-height-sm)] text-foreground"
+      className="font-body text-xs font-medium leading-[var(--line-height-sm)] text-foreground"
     >
-      <ul className={cn('flex flex-wrap items-center gap-4 ', className)}>
+      <ul className={cn('flex flex-wrap items-center gap-4', className)}>
         {crumb.map((item, index) => {
           return (
             <>
-              {index !== 0 && <div className="h-4 w-[2px] bg-foreground" />}
+              {index !== 0 && <div className="h-4 w-0.5 bg-foreground" />}
               <li key={index} className="flex h-4 items-center">
-                <a href={item.link.href}>{item.label}</a>
+                <Link href={item.link.href}>{item.label}</Link>
               </li>
             </>
           )
