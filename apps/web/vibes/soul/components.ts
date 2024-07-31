@@ -67,6 +67,13 @@ export const components = [
     component: lazy(() => import('./components/compare-bar')),
   },
   {
+    name: 'dropdown',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/dropdown/index.tsx'],
+    component: lazy(() => import('./components/dropdown')),
+  },
+  {
     name: 'favorite',
     dependencies: [],
     registryDependencies: [],
