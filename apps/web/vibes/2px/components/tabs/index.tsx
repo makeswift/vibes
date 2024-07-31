@@ -15,43 +15,9 @@ export type Props = {
   tabs?: Tab[]
 }
 
-function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
-  useEffect(() => {
-    let requestId: number
-
-    function poll(timestamp: number) {
-      requestId = requestAnimationFrame(poll)
-
-      callback(timestamp)
-    }
-
-    requestId = requestAnimationFrame(poll)
-
-    return () => {
-      cancelAnimationFrame(requestId)
-    }
-  })
-}
-
-const Tabs = ({ className, tabs }: Props) => {
+export default function Tabs({ className, tabs }: Props) {
   const [value, setValue] = useState('0')
   const container = useRef<HTMLDivElement>(null)
-  const [activeItemLeft, setActiveItemLeft] = useState(0)
-  const [activeItemWidth, setActiveItemWidth] = useState(0)
-
-  usePollAnimationFrame(() => {
-    if (!container.current) return
-
-    const activeItem = container.current.querySelector(`[data-state="active"]`)
-
-    if (!activeItem) return
-
-    const activeItemRect = activeItem.getBoundingClientRect()
-    const containerRect = container.current.getBoundingClientRect()
-
-    setActiveItemLeft(activeItemRect.left - containerRect.left + container.current.scrollLeft)
-    setActiveItemWidth(activeItemRect.width)
-  })
 
   useEffect(() => {
     if (!container.current) return
@@ -86,8 +52,6 @@ const Tabs = ({ className, tabs }: Props) => {
           ref={container}
           style={
             {
-              '--active-item-left': `${activeItemLeft}px`,
-              '--active-item-width': `${activeItemWidth}px`,
               'scrollbar-width': 'none',
             } as CSSProperties
           }
@@ -114,5 +78,3 @@ const Tabs = ({ className, tabs }: Props) => {
     </RadixTabs.Root>
   )
 }
-
-export default Tabs
