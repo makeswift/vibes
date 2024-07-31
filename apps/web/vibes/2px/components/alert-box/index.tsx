@@ -20,7 +20,7 @@ export default function AlertBox({ message, type, onClose }: Props) {
     <div className="w-full @container">
       <div
         className={cn(
-          'relative mx-auto flex min-h-[3.75rem] w-full max-w-[30.3125rem] items-center gap-4 border-[2px] border-foreground p-4 font-body text-sm leading-6',
+          'relative mx-auto flex min-h-[3.75rem] w-full max-w-[30.3125rem] items-center gap-4 border-2 border-foreground p-4 font-body text-sm font-medium leading-6',
           textColor
         )}
       >
@@ -28,7 +28,7 @@ export default function AlertBox({ message, type, onClose }: Props) {
           <Icon className="h-4 w-4" />
         </div>
         <div className="max-w-[24.3125rem]">{message}</div>
-        <button className="absolute right-4 top-4 h-4 w-4 text-foreground" onClick={onClose}>
+        <button className="ml-auto h-4 w-4 text-foreground" onClick={onClose}>
           <CrossIcon />
         </button>
       </div>
