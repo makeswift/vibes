@@ -18,6 +18,12 @@ export const navigation = [
         component: 'button',
       },
       {
+        title: 'Alert Box',
+        slug: 'alert-box',
+        file: 'docs/alert-box.mdx',
+        component: 'alert-box',
+      },
+      {
         title: 'Counter',
         slug: 'counter',
         file: 'docs/counter.mdx',

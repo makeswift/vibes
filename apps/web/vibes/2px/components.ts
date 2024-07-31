@@ -25,6 +25,13 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
+    name: 'alert-box',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/alert-box/index.tsx'],
+    component: lazy(() => import('./components/alert-box')),
+  },
+  {
     name: 'counter',
     dependencies: [],
     registryDependencies: [],
