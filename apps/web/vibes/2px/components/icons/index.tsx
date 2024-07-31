@@ -60,7 +60,7 @@ export const ChevronUpIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
       className={className}
       {...props}
     >
-      <path d="M1 12L9 4L17 12" stroke="black" strokeWidth="2" />
+      <path d="M1 12L9 4L17 12" stroke="currentColor" strokeWidth="2" />
     </svg>
   )
 }
@@ -81,7 +81,7 @@ export const ChevronLeftIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = 
       className={className}
       {...props}
     >
-      <path d="M12 1L4 9L12 17" stroke="black" strokeWidth="2" />
+      <path d="M12 1L4 9L12 17" stroke="currentColor" strokeWidth="2" />
     </svg>
   )
 }
@@ -102,7 +102,7 @@ export const ChevronRightIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> =
       className={className}
       {...props}
     >
-      <path d="M4 1L12 9L4 17" stroke="black" strokeWidth="2" />
+      <path d="M4 1L12 9L4 17" stroke="currentColor" strokeWidth="2" />
     </svg>
   )
 }

@@ -5,13 +5,19 @@ export const navigation = [
     title: 'Components',
 
     pages: [
-      { title: 'Breadcrumbs', slug: 'breadcrumbs', file: 'docs/breadcrumbs.mdx' },
+      {
+        title: 'Breadcrumbs',
+        slug: 'breadcrumbs',
+        file: 'docs/breadcrumbs.mdx',
+        component: 'breadcrumbs',
+      },
       {
         title: 'Button',
         slug: 'button',
         file: 'docs/button.mdx',
         component: 'button',
       },
+      { title: 'Calendar', slug: 'calendar', file: 'docs/calendar.mdx', component: 'calendar' },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
       { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
       {

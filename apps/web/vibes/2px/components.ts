@@ -25,6 +25,13 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
+    name: 'calendar',
+    dependencies: [],
+    registryDependencies: ['react-day-picker'],
+    files: ['./components/calendar/index.tsx'],
+    component: lazy(() => import('./components/calendar')),
+  },
+  {
     name: 'breadcrumbs',
     dependencies: [],
     registryDependencies: [],

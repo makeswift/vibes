@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'calendar-example',
+    dependencies: ['react-day-picker', '@/vibes/2px/components/icons'],
+    registryDependencies: ['calendar'],
+    files: ['examples/calendar.tsx'],
+    component: lazy(() => import('./examples/calendar')),
+  },
+  {
     name: 'breadcrumbs-example',
     dependencies: [],
     registryDependencies: ['breadcrumbs'],
