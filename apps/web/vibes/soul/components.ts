@@ -84,7 +84,7 @@ export const components = [
     name: 'feature',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/feature/index.tsx'],
+    files: ['components/feature/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/feature')),
   },
   {

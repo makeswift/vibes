@@ -4,10 +4,9 @@ import Image from 'next/image'
 
 import clsx from 'clsx'
 
-import { useBrandContext } from '@/components/preview/brand-context'
 import { Button } from '@/vibes/soul/components/button'
 import { Icon } from '@/vibes/soul/components/icon'
-import getBrandShade from '@/vibes/soul/getBrandShade'
+import '@/vibes/soul/styles.css'
 
 export interface Feature {
   image: {
@@ -33,12 +32,9 @@ export interface Feature {
 }
 
 export const Feature = function Feature({ image, heading, description, list, link }: Feature) {
-  const { activeBrand } = useBrandContext()
-
   return (
     <section
-      className="relative @container/section"
-      style={{ background: getBrandShade(activeBrand?.name, 900) }}
+      className="bg-primary-900 relative @container/section"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
         {/* Image Side */}
