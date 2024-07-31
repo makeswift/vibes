@@ -28,7 +28,7 @@ export const Button = forwardRef(function Button(
       ref={ref}
       className={clsx(
         className,
-        'group relative shrink-0 overflow-hidden rounded-full text-center font-medium leading-normal transition-colors focus:outline-none focus:ring-1',
+        'group relative w-fit shrink-0 overflow-hidden rounded-full text-center font-medium leading-normal transition-colors focus:outline-none focus:ring-1',
         link?.href === '#' && 'pointer-events-none opacity-20',
         {
           primary: 'bg-primary text-foreground',
