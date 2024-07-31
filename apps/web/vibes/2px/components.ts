@@ -25,6 +25,13 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
+    name: 'breadcrumbs',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/breadcrumbs/index.tsx'],
+    component: lazy(() => import('./components/breadcrumbs')),
+  },
+  {
     name: 'tabs',
     dependencies: [],
     registryDependencies: [],

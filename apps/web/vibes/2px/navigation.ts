@@ -5,6 +5,7 @@ export const navigation = [
     title: 'Components',
 
     pages: [
+      { title: 'Breadcrumbs', slug: 'breadcrumbs', file: 'docs/breadcrumbs.mdx' },
       {
         title: 'Button',
         slug: 'button',
