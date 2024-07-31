@@ -6,6 +6,7 @@ import clsx from 'clsx'
 
 import { useBrandContext } from '@/components/preview/brand-context'
 import { Button } from '@/vibes/soul/components/button'
+import { Icon } from '@/vibes/soul/components/icon'
 import getBrandShade from '@/vibes/soul/getBrandShade'
 
 export interface Feature {
@@ -20,14 +21,7 @@ export interface Feature {
   heading?: string
   description?: string
   list?: {
-    icon: {
-      url: string
-      dimensions: {
-        width: number
-        height: number
-      }
-      alt: string
-    }
+    icon: string
     title: string
     description: string
   }[]
@@ -69,10 +63,10 @@ export const Feature = function Feature({ image, heading, description, list, lin
               {list.map(({ title, description, icon }, idx) => {
                 return (
                   <li key={idx} className="flex gap-4 @sm/content:items-center">
-                    {/* Icon */}
-                    <div className="relative h-8 w-8 @xs/content:h-5 @xs/content:w-5 @lg/content:h-10 @lg/content:w-10">
-                      <Image className="object-contain" fill src={icon.url} alt={icon.alt} />
-                    </div>
+                    <Icon
+                      icon={icon}
+                      className=" h-8 w-8 @xs/content:h-5 @xs/content:w-5 @lg/content:h-10 @lg/content:w-10"
+                    />
                     <div className="flex flex-col">
                       <span className="-mt-1.5 text-lg font-medium @sm/content:-mt-1 @md/content:text-xl">
                         {title}

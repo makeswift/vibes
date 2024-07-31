@@ -18,74 +18,32 @@ export default function Preview() {
 
   const list: Feature['list'] = [
     {
-      icon: {
-        url: 'https://rstr.in/monogram/vibes/7W7rHzIpxH_',
-        dimensions: {
-          width: 40,
-          height: 40,
-        },
-        alt: 'Truck icon',
-      },
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: {
-        url: 'https://rstr.in/monogram/vibes/R_5m6jx6goY',
-        dimensions: {
-          width: 40,
-          height: 40,
-        },
-        alt: 'Rotate icon',
-      },
+      icon: 'rotate',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: {
-        url: 'https://rstr.in/monogram/vibes/XsGywtgXa0I',
-        dimensions: {
-          width: 40,
-          height: 40,
-        },
-        alt: 'Star icon',
-      },
+      icon: 'star',
       title: '2 Year Warranty',
       description: 'As standard',
     },
     {
-      icon: {
-        url: 'https://rstr.in/monogram/vibes/7W7rHzIpxH_',
-        dimensions: {
-          width: 40,
-          height: 40,
-        },
-        alt: 'Truck icon',
-      },
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: {
-        url: 'https://rstr.in/monogram/vibes/R_5m6jx6goY',
-        dimensions: {
-          width: 40,
-          height: 40,
-        },
-        alt: 'Rotate icon',
-      },
+      icon: 'rotate',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: {
-        url: 'https://rstr.in/monogram/vibes/XsGywtgXa0I',
-        dimensions: {
-          width: 40,
-          height: 40,
-        },
-        alt: 'Star icon',
-      },
+      icon: 'star',
       title: '2 Year Warranty',
       description: 'As standard',
     },

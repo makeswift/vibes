@@ -2,9 +2,7 @@
 
 import clsx from 'clsx'
 
-import Rotate from '../icons/Rotate'
-import Star from '../icons/Star'
-import Truck from '../icons/Truck'
+import { Icon } from '@/vibes/soul/components/icon'
 
 export interface IconBlock {
   list?: {
@@ -29,9 +27,7 @@ export const IconBlock = function IconBlock({ list }: IconBlock) {
                 )}
               >
                 {/* Icon */}
-                {icon === 'truck' && <Truck />}
-                {icon === 'rotate' && <Rotate />}
-                {icon === 'star' && <Star />}
+                <Icon icon={icon} />
                 {/* Text */}
                 <div className="flex flex-col items-center text-center text-[15px]">
                   <span>{title}</span>
