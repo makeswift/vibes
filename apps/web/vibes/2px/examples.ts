@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'counter-example',
+    dependencies: [],
+    registryDependencies: ['counter'],
+    files: ['examples/counter.tsx'],
+    component: lazy(() => import('./examples/counter')),
+  },
+  {
     name: 'calendar-example',
     dependencies: ['react-day-picker', '@/vibes/2px/components/icons'],
     registryDependencies: ['calendar'],

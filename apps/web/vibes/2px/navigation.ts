@@ -17,6 +17,12 @@ export const navigation = [
         file: 'docs/button.mdx',
         component: 'button',
       },
+      {
+        title: 'Counter',
+        slug: 'counter',
+        file: 'docs/counter.mdx',
+        component: 'counter',
+      },
       { title: 'Calendar', slug: 'calendar', file: 'docs/calendar.mdx', component: 'calendar' },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
       { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
