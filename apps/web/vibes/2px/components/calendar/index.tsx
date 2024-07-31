@@ -36,7 +36,7 @@ export default function Calendar({ className, selectedDate, setSelectedDate }: P
       month={displayedMonth}
       onSelect={selected => setSelectedDate(selected)}
       className={cn(
-        'relative flex min-w-[19rem] flex-col gap-2 border-[2px] border-foreground bg-background p-3 text-center font-body text-xs leading-[1.375rem] text-foreground',
+        'relative flex min-w-[19rem] flex-col gap-2 border-2 border-foreground bg-background p-3 text-center font-body text-xs leading-[1.375rem] text-foreground',
         className
       )}
       modifiers={{
@@ -69,9 +69,10 @@ export default function Calendar({ className, selectedDate, setSelectedDate }: P
         nav_button: 'h-4 w-4',
         outside: 'text-gray-400',
         weekdays: 'text-accent text-sm mt-2 mb-2 ',
-        weekday: 'font-medium leading-6 h-10 w-10 ',
+        weekday: 'font-medium leading-6',
+        day_button: 'h-10 w-10',
         weeks: 'w-full',
-        day: 'p-1 h-10 w-10 hover:outline-[2px] hover:outline-dashed hover:outline-foreground focus:outline-foreground focus:outline-solid',
+        day: 'hover:outline-2 hover:outline-dashed hover:outline-foreground focus:outline-foreground focus:outline-solid',
         day_disabled: 'text-contrast-300',
         selected: 'bg-foreground text-background',
       }}
