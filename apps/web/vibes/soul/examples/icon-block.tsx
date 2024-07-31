@@ -82,7 +82,6 @@ export default function Preview() {
       description: 'On orders over $250',
     },
   ]
-
   const listOf3 = [
     {
       icon: 'truck',
