@@ -66,7 +66,7 @@ export const Newsletter = function Newsletter({ image, heading, description, the
           </div>
           <form className="w-full">
             <Input
-              variant={theme == 'brand' ? 'brand' : 'large'}
+              variant={theme == 'brand' ? 'brand' : 'button'}
               placeholder="Join our Newsletter"
               type="email"
               className="max-w-5xl"
