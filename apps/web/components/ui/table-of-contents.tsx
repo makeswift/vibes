@@ -68,9 +68,9 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
   if (headings.length === 0) return null
 
   return (
-    <div className="space-y-2">
+    <div className={clsx(className, 'space-y-2')}>
       <div className="text-sm font-bold text-foreground">On this page</div>
-      <ul className={className}>
+      <ul className="pb-5">
         {headings.map((heading, index) => (
           <li key={index}>
             <TableOfContentsLink
