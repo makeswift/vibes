@@ -4,10 +4,7 @@ import Image from 'next/image'
 
 import clsx from 'clsx'
 
-import { useBrandContext } from '@/components/preview/brand-context'
-import config from '@/tailwind.config'
 import Input from '@/vibes/soul/components/input'
-import getBrandShade from '@/vibes/soul/getBrandShade'
 
 type Props = {
   image?: {
@@ -24,27 +21,13 @@ type Props = {
 }
 
 export const Newsletter = function Newsletter({ image, heading, description, theme }: Props) {
-  const { activeBrand } = useBrandContext()
-
-  const getBackground = (theme: Props['theme']) => {
-    switch (theme) {
-      case 'dark':
-        return getBrandShade(activeBrand?.name, 900)
-      case 'light':
-        return config.theme.extend.colors.contrast[100]
-      case 'brand':
-        return config.theme.extend.colors.background
-      default:
-        return config.theme.extend.colors.contrast[100]
-    }
-  }
-
   return (
     <section
-      className="@container"
-      style={{
-        background: getBackground(theme),
-      }}
+      className={clsx('@container', {
+        ['bg-primary-900']: theme === 'dark',
+        ['bg-contrast-100']: theme === 'light',
+        ['bg-background']: theme === 'brand',
+      })}
     >
       <div className="flex flex-col items-center @2xl:flex-row">
         {image && (

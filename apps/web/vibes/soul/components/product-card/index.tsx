@@ -4,9 +4,8 @@ import { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { useBrandContext } from '@/components/preview/brand-context'
 import Compare from '@/vibes/soul/components/compare'
-import getBrandShade from '@/vibes/soul/getBrandShade'
+import '@/vibes/soul/styles.css'
 
 export type ProductCard = {
   name: string
@@ -35,8 +34,6 @@ export const ProductCard = function ProductCard({
   className,
   ...props
 }: ProductCard & React.HTMLAttributes<HTMLAnchorElement>) {
-  const { activeBrand } = useBrandContext()
-
   return (
     <Link
       href={ctaLink?.href as Route}
@@ -46,11 +43,7 @@ export const ProductCard = function ProductCard({
     >
       <div className="relative flex-grow overflow-hidden">
         {label && (
-          // TODO @cortez: apply monospace font
-          <span
-            style={{ background: getBrandShade(activeBrand?.name, 100) }}
-            className="absolute left-2.5 top-2.5 z-10 rounded-md bg-background px-2.5 py-[3px] text-xs uppercase @4xl:left-4 @4xl:top-4"
-          >
+          <span className="bg-primary-100 absolute left-2.5 top-2.5 z-10 rounded-md px-2.5 py-[3px] font-mono text-xs uppercase @4xl:left-4 @4xl:top-4">
             {label}
           </span>
         )}

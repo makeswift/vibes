@@ -4,9 +4,8 @@ import { Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
-import { useBrandContext } from '@/components/preview/brand-context'
 import Arrow from '@/vibes/soul/components/icons/Arrow'
-import getBrandShade from '@/vibes/soul/getBrandShade'
+import '@/vibes/soul/styles.css'
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string
@@ -17,14 +16,12 @@ export const Input = forwardRef(function Input(
   { className, variant = 'default', ...rest }: Props,
   ref: Ref<HTMLInputElement>
 ) {
-  const { activeBrand } = useBrandContext()
-
   return (
     <div
-      style={{ background: variant === 'brand' ? getBrandShade(activeBrand?.name, 100) : '' }}
       className={clsx(
-        className,
-        'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-background font-medium transition-colors duration-200 focus-within:border-foreground focus:outline-none'
+        variant === 'brand' ? 'bg-primary-100' : '',
+        'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-background font-medium transition-colors duration-200 focus-within:border-foreground focus:outline-none',
+        className
       )}
     >
       {variant === 'price' && (

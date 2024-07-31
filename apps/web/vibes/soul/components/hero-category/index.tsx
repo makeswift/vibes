@@ -2,9 +2,8 @@
 
 import clsx from 'clsx'
 
-import { useBrandContext } from '@/components/preview/brand-context'
 import { Button } from '@/vibes/soul/components/button'
-import getBrandShade from '@/vibes/soul/getBrandShade'
+import '@/vibes/soul/styles.css'
 
 type Props = {
   heading: string
@@ -24,12 +23,12 @@ export const HeroCategory = function HeroCategory({
   link,
   mediaAlign,
 }: Props) {
-  const { activeBrand } = useBrandContext()
-
   return (
     <section
-      style={{ background: mediaAlign ? getBrandShade(activeBrand?.name, 900) : '' }}
-      className="relative h-[100dvh] max-h-[880px] @container"
+      className={clsx(
+        'relative h-[100dvh] max-h-[880px] @container',
+        mediaAlign ? 'bg-primary-900' : ''
+      )}
     >
       <div className="flex h-full flex-col @3xl:flex-row">
         <video

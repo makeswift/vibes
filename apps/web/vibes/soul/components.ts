@@ -112,7 +112,7 @@ export const components = [
     name: 'hero-category',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/hero-category/index.tsx'],
+    files: ['components/hero-category/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/hero-category')),
   },
   {
@@ -126,7 +126,7 @@ export const components = [
     name: 'input',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/input/index.tsx'],
+    files: ['components/input/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/input')),
   },
   {
@@ -140,14 +140,14 @@ export const components = [
     name: 'newsletter',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/newsletter/index.tsx'],
+    files: ['components/newsletter/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/newsletter')),
   },
   {
     name: 'product-card',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/product-card/index.tsx'],
+    files: ['components/product-card/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/product-card')),
   },
   {
