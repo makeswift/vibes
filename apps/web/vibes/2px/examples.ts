@@ -24,4 +24,32 @@ export const examples = [
     files: ['examples/calendar.tsx'],
     component: lazy(() => import('./examples/calendar')),
   },
+  {
+    name: 'breadcrumbs-example',
+    dependencies: [],
+    registryDependencies: ['breadcrumbs'],
+    files: ['examples/breadcrumbs.tsx'],
+    component: lazy(() => import('./examples/breadcrumbs')),
+  },
+  {
+    name: 'tabs-example',
+    dependencies: [],
+    registryDependencies: ['tabs'],
+    files: ['examples/tabs.tsx'],
+    component: lazy(() => import('./examples/tabs')),
+  },
+  {
+    name: 'accordions-example',
+    dependencies: [],
+    registryDependencies: ['accordions'],
+    files: ['examples/accordions.tsx'],
+    component: lazy(() => import('./examples/accordions')),
+  },
+  {
+    name: 'badge-example',
+    dependencies: [],
+    registryDependencies: ['badge'],
+    files: ['examples/badge.tsx'],
+    component: lazy(() => import('./examples/badge')),
+  },
 ] satisfies Components
