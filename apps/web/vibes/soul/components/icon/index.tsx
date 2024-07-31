@@ -1,29 +1,16 @@
-'use client'
-
-import Rotate from '@/vibes/soul/components/icons/Rotate'
-import Star from '@/vibes/soul/components/icons/Star'
-import Truck from '@/vibes/soul/components/icons/Truck'
+import { icons } from 'lucide-react'
 
 export interface Icon {
-  icon: string
+  name: string
+  color?: string
+  size?: number
   className?: string
 }
 
-export const Icon = function Icon({ icon, className = '' }: Icon) {
-  const renderIcon = () => {
-    switch (icon) {
-      case 'truck':
-        return <Truck className={className} />
-      case 'rotate':
-        return <Rotate className={className} />
-      case 'star':
-        return <Star className={className} />
-      default:
-        return null
-    }
-  }
+export const Icon = function Icon({ name, color, size, className = '' }: Icon) {
+  const LucideIcon = icons[name as keyof typeof icons]
 
-  return <>{renderIcon()}</>
+  return <LucideIcon color={color} size={size} strokeWidth={1} className={className} />
 }
 
 export default Icon

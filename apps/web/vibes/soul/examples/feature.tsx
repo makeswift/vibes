@@ -18,32 +18,32 @@ export default function Preview() {
 
   const list: Feature['list'] = [
     {
-      icon: 'truck',
+      icon: 'Truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: 'rotate',
+      icon: 'RotateCcw',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: 'star',
+      icon: 'Star',
       title: '2 Year Warranty',
       description: 'As standard',
     },
     {
-      icon: 'truck',
+      icon: 'Truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: 'rotate',
+      icon: 'RotateCcw',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: 'star',
+      icon: 'Star',
       title: '2 Year Warranty',
       description: 'As standard',
     },

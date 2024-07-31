@@ -33,9 +33,7 @@ export interface Feature {
 
 export const Feature = function Feature({ image, heading, description, list, link }: Feature) {
   return (
-    <section
-      className="bg-primary-900 relative @container/section"
-    >
+    <section className="bg-primary-900 relative @container/section">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
         {/* Image Side */}
         <div
@@ -60,7 +58,7 @@ export const Feature = function Feature({ image, heading, description, list, lin
                 return (
                   <li key={idx} className="flex gap-4 @sm/content:items-center">
                     <Icon
-                      icon={icon}
+                      name={icon}
                       className="h-8 w-8 @xs/content:h-5 @xs/content:w-5 @lg/content:h-10 @lg/content:w-10"
                     />
                     <div className="flex flex-col">

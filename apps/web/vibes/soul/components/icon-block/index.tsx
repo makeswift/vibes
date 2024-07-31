@@ -27,7 +27,8 @@ export const IconBlock = function IconBlock({ list }: IconBlock) {
                 )}
               >
                 {/* Icon */}
-                <Icon icon={icon} />
+                <Icon name={icon} />
+
                 {/* Text */}
                 <div className="flex flex-col items-center text-center text-[15px]">
                   <span>{title}</span>
