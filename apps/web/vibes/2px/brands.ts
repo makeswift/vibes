@@ -42,7 +42,6 @@ export const brands = [
       '--font-size-5xl': '3rem',
       '--font-size-6xl': '3.375rem',
       '--font-size-7xl': '5rem',
-
       '--shadow-sm': '0px 2px 5px rgba(0, 0, 0, 0.05)',
       '--shadow-base': '0px 2px 5px rgba(0, 0, 0, 0.1)',
       '--shadow-md': '0px 2px 5px rgba(0, 0, 0, 0.15)',
