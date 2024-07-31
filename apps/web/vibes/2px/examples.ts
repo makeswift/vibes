@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'checkbox-example',
+    dependencies: [],
+    registryDependencies: ['checkbox'],
+    files: ['examples/checkbox.tsx'],
+    component: lazy(() => import('./examples/checkbox')),
+  },
+  {
     name: 'alert-box-example',
     dependencies: [],
     registryDependencies: ['alert-box'],

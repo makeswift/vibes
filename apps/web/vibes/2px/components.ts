@@ -25,6 +25,13 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
+    name: 'checkbox',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/checkbox/index.tsx'],
+    component: lazy(() => import('./components/checkbox')),
+  },
+  {
     name: 'alert-box',
     dependencies: [],
     registryDependencies: [],

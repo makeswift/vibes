@@ -17,6 +17,7 @@ export const navigation = [
         file: 'docs/button.mdx',
         component: 'button',
       },
+      { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       {
         title: 'Alert Box',
         slug: 'alert-box',
