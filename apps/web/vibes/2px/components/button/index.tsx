@@ -1,64 +1,57 @@
-'use client'
+import { Slot } from '@radix-ui/react-slot'
 
-import Link from 'next/link'
-import { ReactNode, Ref, forwardRef } from 'react'
+import { cn } from '@/lib/utils'
 
-import clsx from 'clsx'
+import { LoadingIcon } from '../icons'
 
-export interface Props {
+export interface ButtonProps {
   className?: string
-  link?: { href: string; target?: string }
   variant?: 'primary' | 'secondary'
-  size?: 'default' | 'small'
-  children?: ReactNode
-  borderGlow?: boolean
+  loading?: boolean
+  loadingText?: string
+  children: React.ReactNode
+  asChild?: boolean
 }
 
-export const Button = forwardRef(function Button(
-  {
-    className,
-    link,
-    variant = 'primary',
-    size = 'default',
-    children = 'Button',
-    borderGlow = true,
-  }: Props,
-  ref: Ref<HTMLAnchorElement>
-) {
+const Button = ({
+  className,
+  variant = 'primary',
+  loading,
+  children,
+  asChild = false,
+}: ButtonProps) => {
+  const Component = asChild ? Slot : 'button'
   return (
-    <Link
-      ref={ref}
-      className={clsx(
-        className,
-        'group relative z-0 overflow-hidden rounded-full p-[1px] text-center leading-normal text-foreground shadow-xl shadow-black/25',
-        link?.href === '#' && 'pointer-events-none'
-      )}
-      href={link?.href ?? '#'}
-      target={link?.target}
-    >
-      <div
-        className={clsx(
-          'absolute left-1/2 top-1/2 -z-10 aspect-square w-[200%] origin-top-left animate-rotate bg-[conic-gradient(var(--tw-gradient-stops))] from-transparent via-transparent to-primary ease-linear',
-          borderGlow ? 'opacity-100' : 'opacity-0'
-        )}
-      />
-      <div
-        className={clsx(
-          'inline-flex items-center justify-center gap-x-3 overflow-hidden rounded-full bg-black leading-normal text-foreground ring-1 ring-foreground/20 transition duration-700 before:absolute before:bottom-0 before:left-1/2 before:-z-0 before:h-full before:w-full before:-translate-x-1/2 before:translate-y-1/2 before:rounded-full before:blur-lg before:transition-all before:duration-700 before:ease-in-out hover:ring-foreground/40 before:hover:scale-110 hover:before:opacity-40',
+    <div className="flex w-full items-center justify-center font-body @container">
+      <Component
+        className={cn(
+          className,
+          'group mx-auto flex items-center justify-center whitespace-nowrap rounded-[2.5rem]',
+          'h-10 w-fit px-5 py-[0.625rem] text-sm !leading-[var(--line-height-base)] @lg:h-20 @lg:w-full @lg:px-20 @lg:py-[0.625rem] @lg:text-lg',
+          loading && variant === 'primary' && 'hover:bg-foreground hover:text-background',
+          loading && variant === 'secondary' && 'hover:border-solid',
           {
-            primary: 'before:bg-primary before:opacity-25',
-            secondary: 'before:opacity-0',
-          }[variant],
-          {
-            default: 'px-6 py-3 text-sm',
-            small: 'px-4 py-2 text-sm',
-          }[size]
+            primary:
+              'bg-foreground text-background hover:border-2 hover:border-foreground hover:bg-background hover:text-foreground',
+            secondary:
+              'border-2 border-foreground bg-background text-foreground hover:border-dashed',
+          }[variant]
         )}
       >
-        <span className="shrink-0 text-foreground">{children}</span>
-      </div>
-    </Link>
+        {loading ? (
+          <LoadingIcon
+            className={cn('h-4 w-4 @lg:h-6 @lg:w-6', {
+              'stroke-background group-hover:stroke-foreground': variant === 'primary',
+              'stroke-foreground': variant === 'secondary',
+            })}
+          />
+        ) : (
+          children
+        )}
+      </Component>
+    </div>
   )
-})
+}
 
+Button.displayName = 'Button'
 export default Button
