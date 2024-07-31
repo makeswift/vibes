@@ -34,8 +34,8 @@ export const IconBlock = function IconBlock({ list }: IconBlock) {
                 {icon === 'star' && <Star />}
                 {/* Text */}
                 <div className="flex flex-col items-center text-center text-[15px]">
-                  <span className="font-medium">{title}</span>
-                  <span className="opacity-50">{description}</span>
+                  <span>{title}</span>
+                  <span className="opacity-40">{description}</span>
                 </div>
               </li>
             )
