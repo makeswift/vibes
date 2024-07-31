@@ -1,16 +1,12 @@
-'use client'
-
-import { useState } from 'react'
-
 import { cn } from '@/lib/utils'
 import { CheckIcon } from '@/vibes/2px/components/icons'
 
-interface Props {
+interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'className'> {
   checked: boolean
   setChecked: (checked: boolean) => void
 }
 
-export default function Checkbox({ checked = false, setChecked }: Props) {
+export default function Checkbox({ checked = false, setChecked, ...props }: Props) {
   return (
     <label
       htmlFor="checkbox-element"
@@ -26,8 +22,9 @@ export default function Checkbox({ checked = false, setChecked }: Props) {
         type="checkbox"
         className="hidden"
         id="checkbox-element"
-        onClick={() => setChecked(!checked)}
+        onChange={e => setChecked(e.target.checked)}
         checked={checked}
+        {...props}
       />
       {checked && <CheckIcon className=" h-4 w-4 text-background" />}
     </label>
