@@ -144,13 +144,6 @@ export const components = [
     component: lazy(() => import('./components/product-card')),
   },
   {
-    name: 'product-chip',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['components/product-chip/index.tsx'],
-    component: lazy(() => import('./components/product-chip')),
-  },
-  {
     name: 'product-list',
     dependencies: [],
     registryDependencies: [],

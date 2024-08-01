@@ -113,12 +113,6 @@ export const navigation = [
         component: 'product-card',
       },
       {
-        title: 'Product Chip',
-        slug: 'product-chip',
-        file: 'docs/product-chip.mdx',
-        component: 'product-chip',
-      },
-      {
         title: 'Product List',
         slug: 'product-list',
         file: 'docs/product-list.mdx',

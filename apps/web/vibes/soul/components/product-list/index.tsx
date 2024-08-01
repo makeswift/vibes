@@ -3,9 +3,10 @@ import ProductCard from '@/vibes/soul/components/product-card'
 
 type Props = {
   products: ProductCard[]
+  pages: number
 }
 
-export const ProductList = function ProductList({ products }: Props) {
+export const ProductList = function ProductList({ products, pages }: Props) {
   return (
     <section className="flex flex-col gap-6 bg-background pb-10 @container">
       {products && (
@@ -23,7 +24,7 @@ export const ProductList = function ProductList({ products }: Props) {
           ))}
         </div>
       )}
-      <Pagination pages={8} />
+      <Pagination pages={pages} />
     </section>
   )
 }

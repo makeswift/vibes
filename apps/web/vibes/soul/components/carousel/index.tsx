@@ -4,24 +4,18 @@ import Link from 'next/link'
 
 import useEmblaCarousel from 'embla-carousel-react'
 
-import CategoryCard from '@/vibes/soul/components/category-card'
 import Arrow from '@/vibes/soul/components/icons/Arrow'
-import ProductCard from '@/vibes/soul/components/product-card'
 
 import ScrollBar from './scrollbar'
 
 type Props = {
   title: string
   link: { label: string; href: string; target?: string }
-  cards: CategoryCard[] | ProductCard[]
+  children: React.ReactNode
 }
 
-export const Carousel = ({ title, link, cards }: Props) => {
+export const Carousel = ({ title, link, children }: Props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
-
-  const isProductCard = (card: CategoryCard | ProductCard): card is ProductCard => {
-    return (card as ProductCard).name !== undefined
-  }
 
   return (
     <section className="flex flex-col gap-10 bg-background @container">
@@ -34,21 +28,9 @@ export const Carousel = ({ title, link, cards }: Props) => {
         )}
       </div>
 
-      {cards && (
+      {children && (
         <div className="no-scrollbar w-full overflow-hidden px-3 @4xl:px-20" ref={emblaRef}>
-          <div className="flex gap-5">
-            {cards.map((card, index) =>
-              isProductCard(card) ? (
-                <ProductCard
-                  key={index}
-                  {...card}
-                  className="max-h-[218px] min-w-[179px] @4xl:max-h-[568px] @4xl:min-w-[466px]"
-                />
-              ) : (
-                <CategoryCard key={index} {...card} />
-              )
-            )}
-          </div>
+          <div className="flex gap-5">{children}</div>
         </div>
       )}
 

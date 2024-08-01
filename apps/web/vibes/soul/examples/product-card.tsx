@@ -13,7 +13,10 @@ export default function Preview() {
         name="Product Name"
         tags={['Blue', 'Black', 'Green']}
         label="New"
-        price={123.99}
+        price={{
+          type: 'static',
+          value: 123.99,
+        }}
         image="https://rstr.in/monogram/vibes/tJ-FPKUBiSp"
         ctaLink={{ href: '/' }}
         checked={checked}

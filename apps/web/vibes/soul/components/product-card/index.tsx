@@ -2,14 +2,35 @@ import { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import clsx from 'clsx'
+
 import Compare from '@/vibes/soul/components/product-card/compare'
 import '@/vibes/soul/styles.css'
+
+import Price from './price'
+
+export interface PriceRange {
+  type: 'range'
+  min: number
+  max: number
+}
+
+export interface PriceCompare {
+  type: 'compare'
+  prev: number
+  current: number
+}
+
+export interface PriceStatic {
+  type: 'static'
+  value: number
+}
 
 export type ProductCard = {
   name: string
   tags?: string[]
   label?: string
-  price?: number
+  price?: PriceRange | PriceCompare | PriceStatic
   image: string
   ctaLink?: {
     href: string
@@ -17,10 +38,10 @@ export type ProductCard = {
   }
   checked?: boolean
   setChecked?: (checked: boolean) => void
-  className?: string
+  carousel?: boolean
 }
 
-export const ProductCard = function ProductCard({
+export const ProductCard: React.FC<ProductCard & React.HTMLAttributes<HTMLAnchorElement>> = ({
   name,
   tags,
   label,
@@ -29,9 +50,9 @@ export const ProductCard = function ProductCard({
   ctaLink,
   checked,
   setChecked,
-  className,
+  carousel,
   ...props
-}: ProductCard & React.HTMLAttributes<HTMLAnchorElement>) {
+}) => {
   return (
     <Link
       href={ctaLink?.href as Route}
@@ -51,7 +72,10 @@ export const ProductCard = function ProductCard({
           height={600}
           width={467}
           alt="Category card image"
-          className={`h-full w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 ${className}`}
+          className={clsx(
+            'h-full w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105',
+            { 'max-h-[218px] min-w-[179px] @4xl:max-h-[568px] @4xl:min-w-[466px]': carousel }
+          )}
         />
 
         {checked !== undefined && setChecked && (
@@ -64,7 +88,7 @@ export const ProductCard = function ProductCard({
           {name && <span className="line-clamp-2">{name}</span>}
           {tags && <span className="font-normal text-contrast-400">{tags.join('/')}</span>}
         </h3>
-        <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">${price}</span>
+        {price && <Price price={price} />}
       </div>
     </Link>
   )
