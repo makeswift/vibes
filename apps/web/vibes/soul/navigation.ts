@@ -48,7 +48,13 @@ export const navigation = [
       },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
-      { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature' },
+      { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
+      {
+        title: 'Feature (Grid)',
+        slug: 'feature-grid',
+        file: 'docs/feature-grid.mdx',
+        component: 'feature',
+      },
       {
         title: 'Featured Product List',
         slug: 'featured-product-list',
@@ -71,13 +77,13 @@ export const navigation = [
         component: 'media-section',
       },
       {
-        title: 'Media Section (left)',
+        title: 'Media Section (Left)',
         slug: 'media-section-left',
         file: 'docs/media-section-left.mdx',
         component: 'media-section-left',
       },
       {
-        title: 'Media Section (right)',
+        title: 'Media Section (Right)',
         slug: 'media-section-right',
         file: 'docs/media-section-right.mdx',
         component: 'media-section-right',

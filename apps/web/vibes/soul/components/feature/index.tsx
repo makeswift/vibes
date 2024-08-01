@@ -17,7 +17,7 @@ export interface Feature {
   }
   heading?: string
   description?: string
-  list?: {
+  grid?: {
     icon: string
     title: string
     description: string
@@ -29,7 +29,7 @@ export interface Feature {
   }
 }
 
-export const Feature = function Feature({ image, heading, description, list, link }: Feature) {
+export const Feature = function Feature({ image, heading, description, grid, link }: Feature) {
   return (
     <section className="bg-primary-900 relative @container/section">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
@@ -50,9 +50,9 @@ export const Feature = function Feature({ image, heading, description, list, lin
           <h2 className="text-[40px] font-medium">{heading}</h2>
           <p className="max-w-xl pb-2">{description}</p>
 
-          {list?.length && (
+          {grid?.length && (
             <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
-              {list.map(({ title, description, icon }, idx) => {
+              {grid.map(({ title, description, icon }, idx) => {
                 return (
                   <li key={idx} className="flex gap-4 @sm/content:items-center">
                     <Icon
@@ -74,10 +74,9 @@ export const Feature = function Feature({ image, heading, description, list, lin
           <Button
             variant="primary"
             link={{ href: link.href, target: link.target }}
-            className={clsx(
-              'text-foreground',
-              list?.length && 'self-center @xs/content:self-start'
-            )}
+            className={clsx('text-foreground', {
+              'self-center @xs/content:self-start': grid?.length,
+            })}
           >
             {link.label}
           </Button>

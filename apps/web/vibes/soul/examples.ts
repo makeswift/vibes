@@ -81,6 +81,13 @@ export const examples = [
     component: lazy(() => import('./examples/feature')),
   },
   {
+    name: 'feature-grid-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/feature.tsx'],
+    component: lazy(() => import('./examples/feature-grid')),
+  },
+  {
     name: 'featured-product-list-example',
     dependencies: [],
     registryDependencies: ['featured-product-list'],
