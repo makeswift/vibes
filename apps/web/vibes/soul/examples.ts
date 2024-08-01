@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/footer')),
   },
   {
+    name: 'header-example',
+    dependencies: [],
+    registryDependencies: ['header'],
+    files: ['examples/header.tsx'],
+    component: lazy(() => import('./examples/header')),
+  },
+  {
     name: 'hero-example',
     dependencies: [],
     registryDependencies: ['hero'],
@@ -149,13 +156,6 @@ export const examples = [
     registryDependencies: [],
     files: ['examples/media-section.tsx'],
     component: lazy(() => import('./examples/media-section-right')),
-  },
-  {
-    name: 'navigation-example',
-    dependencies: [],
-    registryDependencies: ['navigation'],
-    files: ['examples/navigation.tsx'],
-    component: lazy(() => import('./examples/navigation')),
   },
   {
     name: 'newsletter-example',

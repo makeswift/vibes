@@ -95,6 +95,13 @@ export const components = [
     component: lazy(() => import('./components/footer')),
   },
   {
+    name: 'header',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/header/index.tsx'],
+    component: lazy(() => import('./components/header')),
+  },
+  {
     name: 'hero',
     dependencies: ['./components/hero/ProgressBar.tsx'],
     registryDependencies: [],
@@ -121,13 +128,6 @@ export const components = [
     registryDependencies: [],
     files: ['components/input/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/input')),
-  },
-  {
-    name: 'navigation',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['components/navigation/index.tsx'],
-    component: lazy(() => import('./components/navigation')),
   },
   {
     name: 'newsletter',

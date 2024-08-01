@@ -62,6 +62,12 @@ export const navigation = [
         component: 'featured-product-list',
       },
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
+      {
+        title: 'Header',
+        slug: 'header',
+        file: 'docs/header.mdx',
+        component: 'header',
+      },
       { title: 'Hero', slug: 'hero', file: 'docs/hero.mdx', component: 'hero' },
       {
         title: 'Hero (Contained)',
@@ -93,12 +99,6 @@ export const navigation = [
         slug: 'media-section-right',
         file: 'docs/media-section-right.mdx',
         component: 'media-section-right',
-      },
-      {
-        title: 'Navigation',
-        slug: 'navigation',
-        file: 'docs/navigation.mdx',
-        component: 'navigation',
       },
       {
         title: 'Newsletter',
