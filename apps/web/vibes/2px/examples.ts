@@ -25,6 +25,13 @@ export const examples = [
     component: lazy(() => import('./examples/rating')),
   },
   {
+    name: 'text-area-example',
+    dependencies: [],
+    registryDependencies: ['text-area'],
+    files: ['examples/text-area.tsx'],
+    component: lazy(() => import('./examples/text-area')),
+  },
+  {
     name: 'skeleton-example',
     dependencies: [],
     registryDependencies: ['skeleton'],

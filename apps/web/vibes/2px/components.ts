@@ -32,6 +32,13 @@ export const components = [
     component: lazy(() => import('./components/rating')),
   },
   {
+    name: 'text-area',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/text-area/index.tsx'],
+    component: lazy(() => import('./components/text-area')),
+  },
+  {
     name: 'skeleton',
     dependencies: [],
     registryDependencies: [],
