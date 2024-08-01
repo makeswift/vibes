@@ -60,6 +60,13 @@ export const components = [
     component: lazy(() => import('./components/breadcrumbs')),
   },
   {
+    name: 'blog-post-card',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/blog-post-card/index.tsx'],
+    component: lazy(() => import('./components/blog-post-card')),
+  },
+  {
     name: 'tabs',
     dependencies: [],
     registryDependencies: [],

@@ -4,10 +4,10 @@ interface Props {
   href: string
   image?: string
   title: string
-  children: React.ReactNode
+  blogPost: React.ReactNode
 }
 
-export default function BlogPostCard({ publishedAt, author, href, image, title, children }: Props) {
+export default function BlogPostCard({ publishedAt, author, href, image, title, blogPost }: Props) {
   return (
     <section className="flex h-fit flex-col overflow-hidden bg-primary p-2 font-medium text-foreground @lg:h-[38.5rem] @lg:flex-row">
       <div className="flex min-h-[25rem] w-full flex-col items-center justify-center gap-6 px-2 py-10 text-center @lg:h-[37.5rem] @lg:max-w-[90rem]">
@@ -35,7 +35,7 @@ export default function BlogPostCard({ publishedAt, author, href, image, title, 
         </a>
       </div>
       <div className="flex max-h-[400px] flex-col items-center overflow-hidden text-ellipsis font-body text-lg leading-[1.875rem] -tracking-[0.015] @lg:h-[37.5rem] @lg:max-h-full @lg:max-w-[44.5rem] @lg:items-center @lg:text-2xl @lg:leading-[2.25rem] @lg:-tracking-[0.0175rem]">
-        {children}
+        {blogPost}
       </div>
     </section>
   )

@@ -6,6 +6,12 @@ export const navigation = [
 
     pages: [
       {
+        title: 'Blog Post Card',
+        slug: 'blog-post-card',
+        file: 'docs/blog-post-card.mdx',
+        component: 'blog-post-card',
+      },
+      {
         title: 'Breadcrumbs',
         slug: 'breadcrumbs',
         file: 'docs/breadcrumbs.mdx',
