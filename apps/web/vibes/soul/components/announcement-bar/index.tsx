@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
 import { ReactNode } from 'react'
 
@@ -17,8 +16,7 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
   const [dismissed, setDismissed] = useState(false)
 
   return (
-    <Link
-      href="/"
+    <div
       className={clsx(
         'relative w-full overflow-hidden bg-primary transition-all duration-300 ease-out @container',
         dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
@@ -37,7 +35,7 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
       >
         <XMark />
       </button>
-    </Link>
+    </div>
   )
 }
 
