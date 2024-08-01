@@ -59,12 +59,7 @@ export const ProductCard = function ProductCard({
           but we may have to forego that in order to move the button outside of the link 
           but still position it in the corner of the image. */}
         {checked !== undefined && setChecked && (
-          <Compare
-            label="Compare"
-            checked={checked}
-            setChecked={setChecked}
-            className="absolute right-2.5 top-2.5 z-10 @4xl:bottom-4 @4xl:right-4 @4xl:top-auto"
-          />
+          <Compare label="Compare" checked={checked} setChecked={setChecked} />
         )}
       </div>
 
