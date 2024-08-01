@@ -10,7 +10,7 @@ import ScrollBar from './scrollbar'
 
 type Props = {
   title: string
-  link: { label: string; href: string; target?: string }
+  link?: { label: string; href: string; target?: string }
   children: React.ReactNode
 }
 
