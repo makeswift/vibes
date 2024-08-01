@@ -67,6 +67,13 @@ export const components = [
     component: lazy(() => import('./components/tabs')),
   },
   {
+    name: 'text-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/text-section/index.tsx'],
+    component: lazy(() => import('./components/text-section')),
+  },
+  {
     name: 'badge',
     dependencies: [],
     registryDependencies: [],
