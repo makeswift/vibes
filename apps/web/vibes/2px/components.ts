@@ -25,6 +25,13 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
+    name: 'option-selector',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/option-selector/index.tsx'],
+    component: lazy(() => import('./components/option-selector')),
+  },
+  {
     name: 'checkbox',
     dependencies: [],
     registryDependencies: [],

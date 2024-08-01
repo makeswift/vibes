@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'option-selector-example',
+    dependencies: [],
+    registryDependencies: ['option-selector'],
+    files: ['examples/option-selector.tsx'],
+    component: lazy(() => import('./examples/option-selector')),
+  },
+  {
     name: 'checkbox-example',
     dependencies: [],
     registryDependencies: ['checkbox'],
