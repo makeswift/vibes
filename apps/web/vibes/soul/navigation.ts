@@ -62,6 +62,12 @@ export const navigation = [
         component: 'featured-product-list',
       },
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
+      {
+        title: 'Header',
+        slug: 'header',
+        file: 'docs/header.mdx',
+        component: 'header',
+      },
       { title: 'Hero', slug: 'hero', file: 'docs/hero.mdx', component: 'hero' },
       {
         title: 'Hero (Contained)',
@@ -95,12 +101,6 @@ export const navigation = [
         component: 'media-section-right',
       },
       {
-        title: 'Navigation',
-        slug: 'navigation',
-        file: 'docs/navigation.mdx',
-        component: 'navigation',
-      },
-      {
         title: 'Newsletter',
         slug: 'newsletter',
         file: 'docs/newsletter.mdx',
@@ -111,12 +111,6 @@ export const navigation = [
         slug: 'product-card',
         file: 'docs/product-card.mdx',
         component: 'product-card',
-      },
-      {
-        title: 'Product Chip',
-        slug: 'product-chip',
-        file: 'docs/product-chip.mdx',
-        component: 'product-chip',
       },
       {
         title: 'Product List',

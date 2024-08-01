@@ -6,7 +6,11 @@ const products: ProductCard[] = [
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
     label: 'New',
-    price: 123.99,
+    price: {
+      type: 'range',
+      min: 123.99,
+      max: 123.99,
+    },
     image: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
     ctaLink: { href: '/' },
   },
@@ -14,7 +18,11 @@ const products: ProductCard[] = [
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
     label: 'New',
-    price: 123.99,
+    price: {
+      type: 'compare',
+      prev: 123.99,
+      current: 123.99,
+    },
     image: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
     ctaLink: { href: '/' },
   },
@@ -22,7 +30,10 @@ const products: ProductCard[] = [
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
     label: 'New',
-    price: 123.99,
+    price: {
+      type: 'static',
+      value: 123.99,
+    },
     image: 'https://rstr.in/monogram/vibes/QluRjwypujv',
     ctaLink: { href: '/' },
   },
@@ -31,7 +42,7 @@ const products: ProductCard[] = [
 export default function Preview() {
   return (
     <div className="min-h-48">
-      <ProductList products={products} />
+      <ProductList products={products} pages={8} />
     </div>
   )
 }

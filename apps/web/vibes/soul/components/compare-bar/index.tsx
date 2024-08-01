@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 
 import Button from '@/vibes/soul/components/button'
-import ProductChip from '@/vibes/soul/components/product-chip'
+
+import ProductChip from './ProductChip'
 
 type ProductCard = {
   name: string

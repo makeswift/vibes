@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/footer')),
   },
   {
+    name: 'header-example',
+    dependencies: [],
+    registryDependencies: ['header'],
+    files: ['examples/header.tsx'],
+    component: lazy(() => import('./examples/header')),
+  },
+  {
     name: 'hero-example',
     dependencies: [],
     registryDependencies: ['hero'],
@@ -151,13 +158,6 @@ export const examples = [
     component: lazy(() => import('./examples/media-section-right')),
   },
   {
-    name: 'navigation-example',
-    dependencies: [],
-    registryDependencies: ['navigation'],
-    files: ['examples/navigation.tsx'],
-    component: lazy(() => import('./examples/navigation')),
-  },
-  {
     name: 'newsletter-example',
     dependencies: [],
     registryDependencies: [],
@@ -170,13 +170,6 @@ export const examples = [
     registryDependencies: ['product-card'],
     files: ['examples/product-card.tsx'],
     component: lazy(() => import('./examples/product-card')),
-  },
-  {
-    name: 'product-chip-example',
-    dependencies: [],
-    registryDependencies: ['product-chip'],
-    files: ['examples/product-chip.tsx'],
-    component: lazy(() => import('./examples/product-chip')),
   },
   {
     name: 'product-list-example',
