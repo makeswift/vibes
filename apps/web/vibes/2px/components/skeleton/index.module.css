@@ -1,6 +1,4 @@
 .skeleton {
-  height: 100%;
-  width: 100%;
   background: linear-gradient(90deg, hsl(var(--foreground)) 50%, transparent 50%),
     linear-gradient(90deg, hsl(var(--foreground)) 50%, transparent 50%),
     linear-gradient(0deg, hsl(var(--foreground)) 50%, transparent 50%),

@@ -1,5 +1,11 @@
-import './index.css'
+import { cn } from '@/lib/utils'
 
-export default function Skeleton() {
-  return <div className="skeleton h-full w-full " />
+import style from './index.module.css'
+
+interface Props {
+  className?: string
+}
+
+export default function Skeleton({ className }: Props) {
+  return <div className={cn(style.skeleton, 'h-full w-full', className)} />
 }
