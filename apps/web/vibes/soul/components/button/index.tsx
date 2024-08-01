@@ -10,7 +10,7 @@ import '@/vibes/soul/styles.css'
 export interface Props {
   className?: string
   link?: { href: string; target?: string }
-  variant?: 'primary' | 'secondary' | 'tertiary'
+  variant?: 'primary' | 'dark' | 'light'
   size?: 'default' | 'small'
   children?: ReactNode
 }
@@ -30,8 +30,8 @@ export const Button = forwardRef(function Button(
         link?.href === '#' && 'pointer-events-none opacity-20',
         {
           primary: 'bg-primary text-foreground',
-          secondary: 'bg-foreground text-foreground hover:text-background',
-          tertiary: 'bg-background text-background hover:text-foreground',
+          dark: 'bg-foreground text-foreground hover:text-background',
+          light: 'bg-background text-background hover:text-foreground',
         }[variant],
         {
           default: 'px-6 py-[13px] text-base',
@@ -47,8 +47,8 @@ export const Button = forwardRef(function Button(
           link?.href === '#' && 'pointer-events-none opacity-20',
           {
             primary: 'bg-primary-300',
-            secondary: 'bg-background',
-            tertiary: 'bg-foreground',
+            dark: 'bg-background',
+            light: 'bg-foreground',
           }[variant],
           {
             default: 'h-[50px]',

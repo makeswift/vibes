@@ -53,7 +53,7 @@ export const HeroCategory = function HeroCategory({
           <h1 className="max-w-xl text-[40px] font-medium">{heading}</h1>
           <p className="max-w-xl pb-2">{description}</p>
           <Button
-            variant={mediaAlign ? 'primary' : 'tertiary'}
+            variant={mediaAlign ? 'primary' : 'light'}
             link={{ href: link.href, target: link.target }}
             className={clsx(mediaAlign ? 'text-foreground' : 'text-background')}
           >

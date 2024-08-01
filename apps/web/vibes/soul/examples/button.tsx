@@ -6,10 +6,10 @@ export default function Preview() {
       <Button variant="primary" size="default">
         Shop Now
       </Button>
-      <Button variant="secondary" size="default">
+      <Button variant="dark" size="default">
         Shop Now
       </Button>
-      <Button variant="tertiary" size="default">
+      <Button variant="light" size="default">
         Shop Now
       </Button>
     </div>
