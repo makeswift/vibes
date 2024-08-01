@@ -14,7 +14,7 @@ type Props = {
   mediaAlign?: 'left' | 'right'
 }
 
-export const HeroCategory = function HeroCategory({
+export const MediaSection = function MediaSection({
   heading,
   description,
   video,
@@ -65,4 +65,4 @@ export const HeroCategory = function HeroCategory({
   )
 }
 
-export default HeroCategory
+export default MediaSection

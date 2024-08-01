@@ -58,18 +58,30 @@ export const navigation = [
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
       { title: 'Hero', slug: 'hero', file: 'docs/hero.mdx', component: 'hero' },
       {
-        title: 'Hero Category',
-        slug: 'hero-category',
-        file: 'docs/hero-category.mdx',
-        component: 'hero-category',
-      },
-      {
         title: 'Icon Block',
         slug: 'icon-block',
         file: 'docs/icon-block.mdx',
         component: 'icon-block',
       },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
+      {
+        title: 'Media Section',
+        slug: 'media-section',
+        file: 'docs/media-section.mdx',
+        component: 'media-section',
+      },
+      {
+        title: 'Media Section (left)',
+        slug: 'media-section-left',
+        file: 'docs/media-section-left.mdx',
+        component: 'media-section-left',
+      },
+      {
+        title: 'Media Section (right)',
+        slug: 'media-section-right',
+        file: 'docs/media-section-right.mdx',
+        component: 'media-section-right',
+      },
       {
         title: 'Navigation',
         slug: 'navigation',

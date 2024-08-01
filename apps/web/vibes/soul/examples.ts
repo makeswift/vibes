@@ -95,26 +95,13 @@ export const examples = [
     component: lazy(() => import('./examples/footer')),
   },
   {
-    name: 'hero-category-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/hero-category.tsx'],
-    component: lazy(() => import('./examples/hero-category')),
-  },
-  {
     name: 'hero-example',
     dependencies: [],
     registryDependencies: ['hero'],
     files: ['examples/hero.tsx'],
     component: lazy(() => import('./examples/hero')),
   },
-  {
-    name: 'hero-category-example',
-    dependencies: [],
-    registryDependencies: ['hero-category'],
-    files: ['examples/hero-category.tsx'],
-    component: lazy(() => import('./examples/hero-category')),
-  },
+
   {
     name: 'icon-block-example',
     dependencies: [],
@@ -128,6 +115,27 @@ export const examples = [
     registryDependencies: ['input'],
     files: ['examples/input.tsx'],
     component: lazy(() => import('./examples/input')),
+  },
+  {
+    name: 'media-section-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/media-section.tsx'],
+    component: lazy(() => import('./examples/media-section')),
+  },
+  {
+    name: 'media-section-left-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/media-section.tsx'],
+    component: lazy(() => import('./examples/media-section-left')),
+  },
+  {
+    name: 'media-section-right-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/media-section.tsx'],
+    component: lazy(() => import('./examples/media-section-right')),
   },
   {
     name: 'navigation-example',

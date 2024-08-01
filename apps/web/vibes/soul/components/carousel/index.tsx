@@ -7,8 +7,6 @@ import CategoryCard from '@/vibes/soul/components/category-card'
 import Arrow from '@/vibes/soul/components/icons/Arrow'
 import ProductCard from '@/vibes/soul/components/product-card'
 
-import './style.css'
-
 type Props = {
   title: string
   link: { href: string; target?: string }

@@ -1,3 +1,7 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Light */
 .bg-primary-50 {
   background: color-mix(in srgb, hsl(var(--primary)), white 81%);
@@ -30,4 +34,12 @@
 }
 .bg-primary-900 {
   background: color-mix(in srgb, hsl(var(--primary)), black 81%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

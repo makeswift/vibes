@@ -35,7 +35,7 @@ export const components = [
     name: 'carousel',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/carousel/index.tsx'],
+    files: ['components/carousel/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/carousel')),
   },
   {
@@ -102,11 +102,11 @@ export const components = [
     component: lazy(() => import('./components/hero')),
   },
   {
-    name: 'hero-category',
+    name: 'media-section',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/hero-category/index.tsx', 'styles.css'],
-    component: lazy(() => import('./components/hero-category')),
+    files: ['components/media-section/index.tsx', 'styles.css'],
+    component: lazy(() => import('./components/media-section')),
   },
   {
     name: 'icon-block',
