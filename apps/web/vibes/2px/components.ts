@@ -4,6 +4,13 @@ import { Components } from '@/vibes/schema'
 
 export const components = [
   {
+    name: 'button',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/button/index.tsx'],
+    component: lazy(() => import('./components/button')),
+  },
+  {
     name: 'radio-button',
     dependencies: [],
     registryDependencies: [],
@@ -25,11 +32,11 @@ export const components = [
     component: lazy(() => import('./components/rating')),
   },
   {
-    name: 'button',
+    name: 'skeleton',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/button/index.tsx'],
-    component: lazy(() => import('./components/button')),
+    files: ['./components/skeleton/index.tsx'],
+    component: lazy(() => import('./components/skeleton')),
   },
   {
     name: 'option-selector',
