@@ -58,7 +58,7 @@ const Dropdown = ({
 
       <div
         className={clsx(
-          'fixed left-0 top-full z-10 mt-2 flex w-full flex-col items-start gap-1 border-2 border-foreground bg-background px-8 py-6 text-base font-medium leading-6 @lg:text-xl @lg:leading-9',
+          'fixed left-0 top-full z-10 mt-2 flex w-full flex-col items-start gap-1 border-2 border-foreground bg-background px-8 py-6 text-sm font-medium leading-6 @lg:text-2xl @lg:leading-9 @lg:tracking-[-0.0175rem]',
           {
             hidden: !isOpen,
           }

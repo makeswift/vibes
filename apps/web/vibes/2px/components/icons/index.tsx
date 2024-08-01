@@ -467,10 +467,3 @@ export const StarEmptyIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
 }
 
 StarEmptyIcon.displayName = 'StarEmptyIcon'
-
-export const ChevronDownIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({ ...props }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={26} height={24} fill="none" {...props}>
-    <path strokeWidth={2} d="m1 6 12 12L25 6" />
-  </svg>
-)
-ChevronDownIcon.displayName = 'ChevronDownIcon'
