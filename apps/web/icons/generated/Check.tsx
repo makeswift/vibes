@@ -5,7 +5,7 @@ const SvgCheck = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" {...props}>
     <path
       stroke="currentColor"
-      strokeDasharray="3 3.25"
+      strokeDasharray="1.5 3"
       strokeLinecap="square"
       strokeWidth={1.5}
       d="M7 11.5 14.5 4"

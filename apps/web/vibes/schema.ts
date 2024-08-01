@@ -1,5 +1,3 @@
-import { CSSProperties } from 'react'
-
 import { z } from 'zod'
 
 export type NonEmptyArray<T> = [T, ...T[]]
@@ -91,6 +89,13 @@ export type Navigation = {
 export type Vibe = {
   name: string
   slug: string
+  description: string
+  tags: string[]
+  thumbnail: string
+  author: {
+    name: string
+    url: string
+  }
   navigation: Navigation
   components: Components
   brands: Brands

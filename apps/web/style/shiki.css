@@ -22,10 +22,6 @@
   --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
   --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
 
-  .shiki {
-    background-color: var(--contrast-100) !important;
-  }
-
   .shiki span {
     color: var(--shiki-dark) !important;
   }

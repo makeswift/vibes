@@ -5,7 +5,7 @@ const SvgExpand16 = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" {...props}>
     <path
       stroke="currentColor"
-      strokeDasharray="2 3"
+      strokeDasharray="1.5 3"
       strokeLinecap="square"
       strokeWidth={1.5}
       d="m4.5 11.5 7-7"
