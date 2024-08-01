@@ -21,7 +21,7 @@ interface DropdownProps {
   className?: string
 }
 
-const Dropdown = ({
+export default function Dropdown({
   placeholder,
   options,
   status = 'normal',
@@ -29,7 +29,7 @@ const Dropdown = ({
   setValue,
   value,
   className,
-}: DropdownProps) => {
+}: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -88,7 +88,3 @@ const Dropdown = ({
     </div>
   )
 }
-
-Dropdown.displayName = 'Dropdown'
-
-export default Dropdown
