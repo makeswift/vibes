@@ -18,6 +18,13 @@ export const navigation = [
         component: 'button',
       },
       {
+        title: 'Radio Button',
+        slug: 'radio-button',
+        file: 'docs/radio-button.mdx',
+        component: 'radio-button',
+      },
+
+      {
         title: 'Option selector',
         slug: 'option-selector',
         file: 'docs/option-selector.mdx',

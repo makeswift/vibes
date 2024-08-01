@@ -4,6 +4,13 @@ import { Components } from '@/vibes/schema'
 
 export const components = [
   {
+    name: 'radio-button',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/radio-button/index.tsx'],
+    component: lazy(() => import('./components/radio-button')),
+  },
+  {
     name: 'accordions',
     dependencies: ['@radix-ui/react-accordion'],
     registryDependencies: [],

@@ -4,6 +4,13 @@ import { Components } from '@/vibes/schema'
 
 export const examples = [
   {
+    name: 'radio-button-example',
+    dependencies: [],
+    registryDependencies: ['radio-button'],
+    files: ['examples/radio-button.tsx'],
+    component: lazy(() => import('./examples/radio-button')),
+  },
+  {
     name: 'rating-example',
     dependencies: [],
     registryDependencies: ['rating'],
