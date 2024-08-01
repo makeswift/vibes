@@ -21,8 +21,8 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
       href="/"
       className={clsx(
         'relative w-full overflow-hidden bg-primary transition-all duration-300 ease-out @container',
-        className,
-        dismissed ? 'pointer-events-none max-h-0' : 'max-h-32'
+        dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
+        className
       )}
     >
       <p className="p-2.5 pr-14 text-foreground @lg:text-center">{children}</p>
