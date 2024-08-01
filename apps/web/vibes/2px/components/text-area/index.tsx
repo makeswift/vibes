@@ -4,46 +4,33 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface Props {
-  className?: string
-  required: boolean
-  value: string
-  setValue: React.Dispatch<React.SetStateAction<string>>
+interface Props extends React.HTMLProps<HTMLTextAreaElement> {
   variant: 'default' | 'success' | 'error'
   errorMessage?: string
-  disabled?: boolean
-  placeholder?: string
 }
 
 export default function TextArea({
   className,
-  required,
-  value,
-  setValue,
   variant = 'default',
   errorMessage,
   disabled = false,
-  placeholder,
+  ...props
 }: Props) {
   return (
     <div className="font-body text-sm font-medium leading-6">
-      <div className="relative flex">
+      <div className={cn('relative flex', className)}>
         <textarea
           className={cn(
-            className,
-            'min-h-[8rem] min-w-[25rem] border-2 bg-background px-4 py-2 placeholder-foreground outline-none focus:border-l-transparent focus:border-r-transparent focus:border-t-transparent focus:placeholder-transparent',
+            'min-h-[8rem] w-full border-2 bg-background px-4 py-2 placeholder-foreground outline-none focus:border-l-transparent focus:border-r-transparent focus:border-t-transparent focus:placeholder-transparent',
             {
               'border-foreground/50 text-foreground/50': disabled,
-              'border-foreground text-foreground hover:border-dashed ':
-                variant === 'default' && !disabled,
-              'border-foreground  text-error !placeholder-error': variant === 'error',
-              'border-foreground text-success !placeholder-success': variant === 'success',
+              'border-foreground text-foreground hover:border-dashed ': !disabled,
+              'border-foreground text-error placeholder-error': variant === 'error',
+              'border-foreground text-success placeholder-success': variant === 'success',
             }
           )}
-          required={required}
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          placeholder={placeholder || 'Placeholder...'}
+          disabled={disabled}
+          {...props}
         />
         <div className="pointer-events-none absolute bottom-0.5 right-0.5 flex h-6 w-6 items-center justify-center bg-background text-foreground">
           <ResizerIcon />
