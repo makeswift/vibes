@@ -67,6 +67,13 @@ export const components = [
     component: lazy(() => import('./components/alert-box')),
   },
   {
+    name: 'callout-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/callout-section/index.tsx'],
+    component: lazy(() => import('./components/callout-section')),
+  },
+  {
     name: 'counter',
     dependencies: [],
     registryDependencies: [],

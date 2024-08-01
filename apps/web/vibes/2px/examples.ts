@@ -60,6 +60,13 @@ export const examples = [
     component: lazy(() => import('./examples/alert-box')),
   },
   {
+    name: 'callout-section-example',
+    dependencies: [],
+    registryDependencies: ['callout-section'],
+    files: ['examples/callout-section.tsx'],
+    component: lazy(() => import('./examples/callout-section')),
+  },
+  {
     name: 'counter-example',
     dependencies: [],
     registryDependencies: ['counter'],

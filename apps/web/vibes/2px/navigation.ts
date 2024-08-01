@@ -40,6 +40,12 @@ export const navigation = [
         component: 'alert-box',
       },
       {
+        title: 'Callout Section',
+        slug: 'callout-section',
+        file: 'docs/callout-section.mdx',
+        component: 'callout-section',
+      },
+      {
         title: 'Counter',
         slug: 'counter',
         file: 'docs/counter.mdx',
