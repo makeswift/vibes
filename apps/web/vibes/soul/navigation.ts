@@ -34,10 +34,10 @@ export const navigation = [
         component: 'category-card',
       },
       {
-        title: 'Categories',
-        slug: 'categories',
-        file: 'docs/categories.mdx',
-        component: 'categories',
+        title: 'Carousel',
+        slug: 'carousel',
+        file: 'docs/carousel.mdx',
+        component: 'carousel',
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       { title: 'Compare', slug: 'compare', file: 'docs/compare.mdx', component: 'compare' },
@@ -100,12 +100,6 @@ export const navigation = [
         slug: 'product-list',
         file: 'docs/product-list.mdx',
         component: 'product-list',
-      },
-      {
-        title: 'Product List Carousel',
-        slug: 'product-list-carousel',
-        file: 'docs/product-list-carousel.mdx',
-        component: 'product-list-carousel',
       },
       {
         title: 'Product Description',

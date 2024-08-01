@@ -32,11 +32,11 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
-    name: 'categories',
+    name: 'carousel',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/categories/index.tsx'],
-    component: lazy(() => import('./components/categories')),
+    files: ['components/carousel/index.tsx'],
+    component: lazy(() => import('./components/carousel')),
   },
   {
     name: 'category-card',
@@ -163,13 +163,6 @@ export const components = [
     registryDependencies: [],
     files: ['components/product-list/index.tsx'],
     component: lazy(() => import('./components/product-list')),
-  },
-  {
-    name: 'product-list-carousel',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['components/product-list-carousel/index.tsx'],
-    component: lazy(() => import('./components/product-list-carousel')),
   },
   {
     name: 'product-description',
