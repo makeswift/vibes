@@ -67,6 +67,13 @@ export const examples = [
     component: lazy(() => import('./examples/accordions')),
   },
   {
+    name: 'faq-section-example',
+    dependencies: ['@/vibes/2px/components/accordions'],
+    registryDependencies: ['faq-section'],
+    files: ['examples/faq-section.tsx'],
+    component: lazy(() => import('./examples/faq-section')),
+  },
+  {
     name: 'badge-example',
     dependencies: [],
     registryDependencies: ['badge'],

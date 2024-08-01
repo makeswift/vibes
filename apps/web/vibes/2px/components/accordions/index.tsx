@@ -18,7 +18,7 @@ interface Props {
 
 const Accordions = ({ className, accordions, type = 'multiple' }: Props) => {
   return (
-    <Accordion.Root type={type} className={clsx(className, 'font-body @container')} asChild>
+    <Accordion.Root type={type} className={clsx(className, 'w-full font-body')} asChild>
       <ul className="relative w-full ">
         {accordions.map((accordion, i) => (
           <div key={i}>
