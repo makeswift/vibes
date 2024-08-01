@@ -9,7 +9,7 @@ interface Props {
 
 export default function BlogPostCard({ publishedAt, author, href, image, title, children }: Props) {
   return (
-    <section className="flex h-fit flex-col overflow-hidden text-ellipsis bg-primary p-2 font-medium  text-foreground @lg:h-[38.5rem] @lg:flex-row">
+    <section className="flex h-fit flex-col overflow-hidden bg-primary p-2 font-medium text-foreground @lg:h-[38.5rem] @lg:flex-row">
       <div className="flex min-h-[25rem] w-full flex-col items-center justify-center gap-6 px-2 py-10 text-center @lg:h-[37.5rem] @lg:max-w-[90rem]">
         <span className="font-mono text-xs uppercase leading-[1.125rem] @lg:text-sm @lg:leading-[1.375rem] @lg:tracking-[0.0225rem]">
           {publishedAt} BY{' '}
@@ -34,7 +34,7 @@ export default function BlogPostCard({ publishedAt, author, href, image, title, 
           READ MORE
         </a>
       </div>
-      <div className="flex max-h-[400px] flex-col items-center overflow-hidden text-ellipsis whitespace-pre-wrap font-body text-lg leading-[1.875rem] -tracking-[0.015] @lg:max-h-full @lg:max-w-[44.5rem] @lg:items-center @lg:text-2xl @lg:leading-[2.25rem] @lg:-tracking-[0.0175rem]">
+      <div className="flex max-h-[400px] flex-col items-center overflow-hidden text-ellipsis font-body text-lg leading-[1.875rem] -tracking-[0.015] @lg:h-[37.5rem] @lg:max-h-full @lg:max-w-[44.5rem] @lg:items-center @lg:text-2xl @lg:leading-[2.25rem] @lg:-tracking-[0.0175rem]">
         {children}
       </div>
     </section>
