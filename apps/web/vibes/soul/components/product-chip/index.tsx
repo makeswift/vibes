@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
-import XMark from '@/vibes/soul/components/icons/XMark'
+import Icon from '@/vibes/soul/components/icon'
 
 type ProductCard = {
   name: string
@@ -54,7 +54,7 @@ const ProductChip = function ProductChip({ product, onDismiss }: Props) {
       />
       <span className="hidden text-foreground @4xl:block">{product.name}</span>
       <div className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-contrast-100 bg-background text-contrast-400 transition-[colors,transform] duration-150 group-hover:scale-110 group-hover:text-foreground @4xl:relative @4xl:right-auto @4xl:top-auto @4xl:mr-2.5 @4xl:border-none @4xl:bg-transparent">
-        <XMark className="hidden @4xl:block " />
+        <Icon name="X" className="hidden @4xl:block" />
         <div className="h-px w-2.5 bg-foreground @4xl:hidden" />
       </div>
     </button>

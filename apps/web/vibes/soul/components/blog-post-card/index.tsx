@@ -24,7 +24,7 @@ export const BlogPostCard = function BlogPostCard({
       target={link.target}
       className="group flex max-w-[466px] flex-col gap-2 text-foreground"
     >
-      <div className="overflow-hidden">
+      <div className="overflow-hidden rounded-xl">
         <Image
           src={image}
           height={349}

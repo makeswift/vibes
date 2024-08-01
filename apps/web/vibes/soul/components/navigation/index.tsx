@@ -8,9 +8,7 @@ import ReactHeadroom from 'react-headroom'
 
 import clsx from 'clsx'
 
-import Search from '@/vibes/soul/components/icons/Search'
-import ShoppingBag from '@/vibes/soul/components/icons/ShoppingBag'
-import User from '@/vibes/soul/components/icons/User'
+import Icon from '@/vibes/soul/components/icon'
 
 import HamburgerMenuButton from './HamburgerMenuButton'
 
@@ -112,7 +110,7 @@ export const Navigation = forwardRef(function Navigation(
                 aria-label="Search"
                 className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
               >
-                <Search />
+                <Icon name="Search" className="h-5 w-5" />
               </button>
             </div>
             <button
@@ -120,14 +118,14 @@ export const Navigation = forwardRef(function Navigation(
               aria-label="Profile"
               className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
             >
-              <User />
+              <Icon name="User" className="h-5 w-5" />
             </button>
             <button
               role="button"
               aria-label="Cart"
               className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
             >
-              <ShoppingBag />
+              <Icon name="ShoppingBag" className="h-5 w-5" />
             </button>
           </div>
         </nav>

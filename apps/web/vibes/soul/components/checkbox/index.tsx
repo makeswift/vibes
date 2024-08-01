@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import Check from '@/vibes/soul/components/icons/Check'
+import Icon from '@/vibes/soul/components/icon'
 
 interface Props {
   checked: boolean
@@ -23,7 +23,8 @@ export const Checkbox = function Checkbox({ checked = false, setChecked }: Props
         checked={checked}
         className="hidden"
       />
-      <Check
+      <Icon
+        name="Check"
         className={clsx(
           'h-4 w-4 text-background transition-[opacity,transform] duration-150',
           checked ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
