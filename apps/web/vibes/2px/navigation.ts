@@ -25,6 +25,19 @@ export const navigation = [
       },
 
       {
+        title: 'Option selector',
+        slug: 'option-selector',
+        file: 'docs/option-selector.mdx',
+        component: 'option-selector',
+      },
+      { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
+      {
+        title: 'Alert Box',
+        slug: 'alert-box',
+        file: 'docs/alert-box.mdx',
+        component: 'alert-box',
+      },
+      {
         title: 'Counter',
         slug: 'counter',
         file: 'docs/counter.mdx',

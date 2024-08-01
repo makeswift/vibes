@@ -25,6 +25,27 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'option-selector-example',
+    dependencies: [],
+    registryDependencies: ['option-selector'],
+    files: ['examples/option-selector.tsx'],
+    component: lazy(() => import('./examples/option-selector')),
+  },
+  {
+    name: 'checkbox-example',
+    dependencies: [],
+    registryDependencies: ['checkbox'],
+    files: ['examples/checkbox.tsx'],
+    component: lazy(() => import('./examples/checkbox')),
+  },
+  {
+    name: 'alert-box-example',
+    dependencies: [],
+    registryDependencies: ['alert-box'],
+    files: ['examples/alert-box.tsx'],
+    component: lazy(() => import('./examples/alert-box')),
+  },
+  {
     name: 'counter-example',
     dependencies: [],
     registryDependencies: ['counter'],

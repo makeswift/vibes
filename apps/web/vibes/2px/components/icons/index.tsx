@@ -197,7 +197,12 @@ export const CheckIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
       className={className}
       {...props}
     >
-      <path d="M16 3L6.375 13L2 8.45455" stroke="black" strokeWidth="2" strokeLinecap="square" />
+      <path
+        d="M16 3L6.375 13L2 8.45455"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="square"
+      />
     </svg>
   )
 }
@@ -220,7 +225,7 @@ export const CrossIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
     >
       <path
         d="M15.8588 2.14288L2.14453 15.8572M2.14453 2.14288L15.8588 15.8572"
-        stroke="black"
+        stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="square"
       />
@@ -306,7 +311,7 @@ export const AlertIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
     >
       <path
         d="M9 4V9M9 11V13M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
-        stroke="black"
+        stroke="currentColor"
         strokeWidth="2"
       />
     </svg>
@@ -331,7 +336,7 @@ export const InfoIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
     >
       <path
         d="M9 5V7M9 8V13M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
-        stroke="black"
+        stroke="currentColor"
         strokeWidth="2"
       />
     </svg>
