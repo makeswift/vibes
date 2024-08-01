@@ -40,7 +40,6 @@ export const navigation = [
         component: 'categories',
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
-      { title: 'Compare', slug: 'compare', file: 'docs/compare.mdx', component: 'compare' },
       {
         title: 'Compare Bar',
         slug: 'compare-bar',

@@ -2,7 +2,7 @@ import { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Compare from '@/vibes/soul/components/compare'
+import Compare from '@/vibes/soul/components/product-card/compare'
 import '@/vibes/soul/styles.css'
 
 export type ProductCard = {
@@ -54,6 +54,10 @@ export const ProductCard = function ProductCard({
           className={`h-full w-full bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 ${className}`}
         />
 
+        {/* TODO: This compare button inside of the link is causing a hydration error. 
+          It's nice to be able to hover over the text content to click on the link 
+          but we may have to forego that in order to move the button outside of the link 
+          but still position it in the corner of the image. */}
         {checked !== undefined && setChecked && (
           <Compare
             label="Compare"

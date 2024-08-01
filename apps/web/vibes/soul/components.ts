@@ -53,13 +53,6 @@ export const components = [
     component: lazy(() => import('./components/checkbox')),
   },
   {
-    name: 'compare',
-    dependencies: ['checkbox'],
-    registryDependencies: [],
-    files: ['components/compare/index.tsx'],
-    component: lazy(() => import('./components/compare')),
-  },
-  {
     name: 'compare-bar',
     dependencies: [],
     registryDependencies: [],
