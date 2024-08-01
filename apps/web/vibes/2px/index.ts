@@ -11,4 +11,11 @@ export default {
   navigation,
   components: [...components, ...examples],
   brands,
+  author: {
+    name: 'Tinloof',
+    url: 'https://tinloof.com',
+  },
+  description: 'A 2px vibe',
+  thumbnail: '/2px/thumbnail.png',
+  tags: ['Ecommerce'],
 } satisfies Vibe

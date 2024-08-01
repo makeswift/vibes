@@ -1,38 +1,48 @@
-import {
-  transformerNotationDiff,
-  transformerNotationFocus,
-  transformerNotationHighlight,
-  transformerNotationWordHighlight,
-  transformerRemoveLineBreak,
-} from '@shikijs/transformers'
+import { ComponentPropsWithoutRef } from 'react'
+
 import { readFile } from 'fs/promises'
 import path from 'path'
-import { codeToHtml } from 'shiki'
 
-import { CopyButton } from './copy-button'
+import { CodeBlock } from './code-block'
 
-interface Props {
-  pathname: string
-  basePath?: string
-  hideCopyButton?: boolean
+type CodeBlockProps = ComponentPropsWithoutRef<typeof CodeBlock>
+
+function detectLang(pathname: string): CodeBlockProps['lang'] {
+  const ext = path.extname(pathname)
+
+  switch (ext) {
+    case '.ts':
+    case '.tsx':
+      return 'typescript'
+    case '.js':
+    case '.jsx':
+      return 'javascript'
+    case '.json':
+      return 'json'
+    case '.yml':
+    case '.yaml':
+      return 'yaml'
+    case '.md':
+    case '.mdx':
+      return 'markdown'
+    case '.css':
+      return 'css'
+    default:
+      return ext.slice(1)
+  }
 }
 
-export async function CodeFromFile({ pathname, basePath, hideCopyButton = false }: Props) {
+interface Props extends Omit<CodeBlockProps, 'children' | 'lang'> {
+  pathname: string
+  basePath?: string
+}
+
+export async function CodeFromFile({ pathname, basePath, ...rest }: Props) {
   const file = await readFile(path.join(basePath ?? process.cwd(), pathname), 'utf8')
-  const code = await codeToHtml(file, {
-    lang: 'javascript',
-    themes: {
-      light: 'github-light',
-      dark: 'github-dark',
-    },
-    transformers: [transformerRemoveLineBreak()],
-  })
 
   return (
-    <div className="relative mb-8 only:mb-0 md:mb-10">
-      <div dangerouslySetInnerHTML={{ __html: code }} />
-
-      {!hideCopyButton && <CopyButton className="absolute right-2 top-2" clipboard={file} />}
-    </div>
+    <CodeBlock {...rest} lang={detectLang(pathname)}>
+      {file}
+    </CodeBlock>
   )
 }
