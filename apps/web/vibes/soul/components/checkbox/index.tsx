@@ -1,5 +1,3 @@
-'use client'
-
 import clsx from 'clsx'
 
 import Check from '@/vibes/soul/components/icons/Check'

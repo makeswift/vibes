@@ -1,5 +1,3 @@
-'use client'
-
 import clsx from 'clsx'
 
 import { Icon } from '@/vibes/soul/components/icon'

@@ -1,5 +1,3 @@
-'use client'
-
 import clsx from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
