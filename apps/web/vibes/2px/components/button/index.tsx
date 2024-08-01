@@ -22,12 +22,12 @@ const Button = ({
 }: ButtonProps) => {
   const Component = asChild ? Slot : 'button'
   return (
-    <div className="flex w-full items-center justify-center font-body @container">
+    <div className="flex w-full items-center justify-center font-body">
       <Component
         className={cn(
-          className,
           'group mx-auto flex items-center justify-center whitespace-nowrap rounded-[2.5rem]',
           'h-10 w-fit px-5 py-[0.625rem] text-sm !leading-[var(--line-height-base)] @lg:h-20 @lg:w-full @lg:px-20 @lg:py-[0.625rem] @lg:text-lg',
+          className,
           loading && variant === 'primary' && 'hover:bg-foreground hover:text-background',
           loading && variant === 'secondary' && 'hover:border-solid',
           {

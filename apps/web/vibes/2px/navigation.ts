@@ -46,6 +46,12 @@ export const navigation = [
         file: 'docs/section-header.mdx',
         component: 'section-header',
       },
+      {
+        title: 'Hero Header',
+        slug: 'hero-header',
+        file: 'docs/hero-header.mdx',
+        component: 'hero-header',
+      },
       { title: 'Tabs', slug: 'tabs', file: 'docs/tabs.mdx', component: 'tabs' },
     ],
   },

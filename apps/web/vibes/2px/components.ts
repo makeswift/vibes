@@ -67,6 +67,13 @@ export const components = [
     component: lazy(() => import('./components/section-header')),
   },
   {
+    name: 'hero-header',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/hero-header/index.tsx'],
+    component: lazy(() => import('./components/hero-header')),
+  },
+  {
     name: 'tabs',
     dependencies: [],
     registryDependencies: [],
