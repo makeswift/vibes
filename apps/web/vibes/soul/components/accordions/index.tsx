@@ -9,7 +9,7 @@ import Chevron from '@/vibes/soul/components/icons/Chevron'
 
 type AccordionItem = {
   title: ReactNode
-  body: ReactNode
+  content: ReactNode
 }
 
 type Props = {
@@ -51,7 +51,7 @@ export const Accordions = forwardRef(function Accordions(
                   className="py-4 text-xl font-medium leading-tight text-foreground 
                   @sm:w-5/6 @md:text-2xl"
                 >
-                  {accordion.body}
+                  {accordion.content}
                 </p>
               </Accordion.Content>
             </li>
