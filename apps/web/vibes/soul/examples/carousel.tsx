@@ -27,7 +27,7 @@ const categories: CategoryCard[] = [
 export default function Preview() {
   return (
     <div className="min-h-48">
-      <Carousel title="Category" link={{ href: '/' }} cards={categories} />
+      <Carousel title="Category" link={{ label: 'See All', href: '/' }} cards={categories} />
     </div>
   )
 }

@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
 
 import useEmblaCarousel from 'embla-carousel-react'
 
@@ -13,13 +12,12 @@ import ScrollBar from './scrollbar'
 
 type Props = {
   title: string
-  link: { href: string; target?: string }
+  link: { label: string; href: string; target?: string }
   cards: CategoryCard[] | ProductCard[]
 }
 
 export const Carousel = ({ title, link, cards }: Props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
-  const [progress, setProgress] = useState(0)
 
   const isProductCard = (card: CategoryCard | ProductCard): card is ProductCard => {
     return (card as ProductCard).name !== undefined
@@ -31,7 +29,7 @@ export const Carousel = ({ title, link, cards }: Props) => {
         {title && <h2 className="text-2xl font-medium">{title}</h2>}
         {link && (
           <Link href={link.href} target={link.target} className="font-semibold text-foreground">
-            See All
+            {link.label}
           </Link>
         )}
       </div>
