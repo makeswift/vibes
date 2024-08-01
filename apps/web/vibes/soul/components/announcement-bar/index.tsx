@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 
 import clsx from 'clsx'
 
-import XMark from '@/vibes/soul/components/icons/XMark'
+import Icon from '@/vibes/soul/components/icon'
 
 type Props = {
   className?: string
@@ -33,7 +33,7 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
         }}
         className="absolute right-2.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-foreground transition-transform duration-300 hover:scale-125"
       >
-        <XMark />
+        <Icon name="X" />
       </button>
     </div>
   )
