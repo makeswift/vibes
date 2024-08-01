@@ -17,7 +17,12 @@ export const navigation = [
         file: 'docs/button.mdx',
         component: 'button',
       },
-      { title: 'Size List', slug: 'size-list', file: 'docs/size-list.mdx', component: 'size-list' },
+      {
+        title: 'Option selector',
+        slug: 'option-selector',
+        file: 'docs/option-selector.mdx',
+        component: 'option-selector',
+      },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       {
         title: 'Alert Box',
