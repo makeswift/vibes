@@ -39,6 +39,13 @@ export const navigation = [
         file: 'docs/accordions.mdx',
         component: 'accordions',
       },
+
+      {
+        title: 'Section Header',
+        slug: 'section-header',
+        file: 'docs/section-header.mdx',
+        component: 'section-header',
+      },
       { title: 'Tabs', slug: 'tabs', file: 'docs/tabs.mdx', component: 'tabs' },
     ],
   },

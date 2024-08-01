@@ -53,6 +53,13 @@ export const examples = [
     component: lazy(() => import('./examples/breadcrumbs')),
   },
   {
+    name: 'section-header-example',
+    dependencies: [],
+    registryDependencies: ['section-header'],
+    files: ['examples/section-header.tsx'],
+    component: lazy(() => import('./examples/section-header')),
+  },
+  {
     name: 'tabs-example',
     dependencies: [],
     registryDependencies: ['tabs'],
