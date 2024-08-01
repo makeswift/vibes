@@ -64,6 +64,12 @@ export const navigation = [
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
       { title: 'Hero', slug: 'hero', file: 'docs/hero.mdx', component: 'hero' },
       {
+        title: 'Hero (Contained)',
+        slug: 'hero-contained',
+        file: 'docs/hero-contained.mdx',
+        component: 'hero',
+      },
+      {
         title: 'Icon Block',
         slug: 'icon-block',
         file: 'docs/icon-block.mdx',

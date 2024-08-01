@@ -108,7 +108,13 @@ export const examples = [
     files: ['examples/hero.tsx'],
     component: lazy(() => import('./examples/hero')),
   },
-
+  {
+    name: 'hero-contained-example',
+    dependencies: [],
+    registryDependencies: ['hero'],
+    files: ['examples/hero.tsx'],
+    component: lazy(() => import('./examples/hero-contained')),
+  },
   {
     name: 'icon-block-example',
     dependencies: [],
