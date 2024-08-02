@@ -1,36 +1,54 @@
 import Hero from '@/vibes/soul/components/hero'
 
 export default function Preview() {
-  const images = [
+  const slides = [
     {
-      url: 'https://rstr.in/monogram/vibes/vgdjHDINE6V',
-      dimensions: {
-        width: 3200,
-        height: 1840,
+      image: {
+        url: 'https://rstr.in/monogram/vibes/vgdjHDINE6V',
+        dimensions: {
+          width: 3200,
+          height: 1840,
+        },
+        alt: 'alt',
       },
-      alt: 'alt',
+      link: {
+        href: '/',
+        target: '_self',
+      },
     },
     {
-      url: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
-      dimensions: {
-        width: 701,
-        height: 900,
+      image: {
+        url: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
+        dimensions: {
+          width: 701,
+          height: 900,
+        },
+        alt: 'alt',
       },
-      alt: 'alt',
+      link: {
+        href: '/',
+        target: '_self',
+      },
     },
     {
-      url: 'https://rstr.in/monogram/vibes/6GmqnHGoquY',
-      dimensions: {
-        width: 1600,
-        height: 880,
+      image: {
+        url: 'https://rstr.in/monogram/vibes/6GmqnHGoquY',
+        dimensions: {
+          width: 1600,
+          height: 880,
+        },
+        alt: 'alt',
       },
-      alt: 'alt',
+      link: {
+        href: '/',
+        target: '_self',
+      },
     },
   ]
 
   return (
     <div className="flex flex-col gap-3">
-      <Hero heading="Pro Jerseys" images={images} containedMediaLayout />
+      <Hero heading="Pro Jerseys" slides={slides} containedMediaLayout />
     </div>
   )
 }
