@@ -1,4 +1,4 @@
-import IconBlock from '../components/icon-block'
+import IconBlock from '@/vibes/soul/components/icon-block'
 
 export default function Preview() {
   const listOf6 = [
