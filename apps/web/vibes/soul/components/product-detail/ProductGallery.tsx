@@ -30,12 +30,11 @@ const ProductGallery = ({ images }: ProductGallery) => {
   }, [emblaApi, onSelect])
 
   return (
-    <div className="relative w-full overflow-hidden bg-contrast-200">
+    <div className="relative flex w-full items-center overflow-hidden bg-contrast-200">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex items-center">
           {images.map((image, index) => (
             <Image
-              key={index}
               src={image}
               alt={`Product ${index + 1}`}
               height={1000}
