@@ -4,11 +4,32 @@ import { Components } from '@/vibes/schema'
 
 export const components = [
   {
+    name: 'dropdown',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/dropdown/index.tsx'],
+    component: lazy(() => import('./components/dropdown')),
+  },
+  {
     name: 'button',
     dependencies: [],
     registryDependencies: [],
     files: ['./components/button/index.tsx'],
     component: lazy(() => import('./components/button')),
+  },
+  {
+    name: 'file-uploader',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/file-uploader/index.tsx'],
+    component: lazy(() => import('./components/file-uploader')),
+  },
+  {
+    name: 'input',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/input/index.tsx'],
+    component: lazy(() => import('./components/input')),
   },
   {
     name: 'radio-button',

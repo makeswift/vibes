@@ -18,6 +18,13 @@ export const navigation = [
         component: 'button',
       },
       {
+        title: 'File Uploader',
+        slug: 'file-uploader',
+        file: 'docs/file-uploader.mdx',
+        component: 'file-uploader',
+      },
+      { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
+      {
         title: 'Fullscreen Product Card Section',
         slug: 'fullscreen-product-card-section',
         file: 'docs/fullscreen-product-card-section.mdx',
@@ -25,6 +32,12 @@ export const navigation = [
       },
       { title: 'Text Area', slug: 'text-area', file: 'docs/text-area.mdx', component: 'text-area' },
       { title: 'Skeleton', slug: 'skeleton', file: 'docs/skeleton.mdx', component: 'skeleton' },
+      {
+        title: 'Dropdown',
+        slug: 'dropdown',
+        file: 'docs/dropdown.mdx',
+        component: 'dropdown',
+      },
       {
         title: 'Radio Button',
         slug: 'radio-button',
