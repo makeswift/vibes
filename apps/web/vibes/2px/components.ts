@@ -122,4 +122,11 @@ export const components = [
     files: ['./components/badge/index.tsx'],
     component: lazy(() => import('./components/badge')),
   },
+  {
+    name: 'swatch',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/swatch/index.tsx'],
+    component: lazy(() => import('./components/swatch')),
+  },
 ] satisfies Components

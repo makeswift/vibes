@@ -60,6 +60,7 @@ export const navigation = [
       },
       { title: 'Calendar', slug: 'calendar', file: 'docs/calendar.mdx', component: 'calendar' },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
+      { title: 'Swatch', slug: 'swatch', file: 'docs/swatch.mdx', component: 'swatch' },
       { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
       {
         title: 'Accordions',
