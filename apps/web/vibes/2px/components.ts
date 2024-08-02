@@ -109,6 +109,13 @@ export const components = [
     component: lazy(() => import('./components/breadcrumbs')),
   },
   {
+    name: 'footer-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/footer-section/index.tsx'],
+    component: lazy(() => import('./components/footer-section')),
+  },
+  {
     name: 'tabs',
     dependencies: [],
     registryDependencies: [],

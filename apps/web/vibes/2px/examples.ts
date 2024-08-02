@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/breadcrumbs')),
   },
   {
+    name: 'footer-section-example',
+    dependencies: [],
+    registryDependencies: ['footer-section'],
+    files: ['examples/footer-section.tsx'],
+    component: lazy(() => import('./examples/footer-section')),
+  },
+  {
     name: 'tabs-example',
     dependencies: [],
     registryDependencies: ['tabs'],

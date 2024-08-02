@@ -12,6 +12,12 @@ export const navigation = [
         component: 'breadcrumbs',
       },
       {
+        title: 'Footer Section',
+        slug: 'footer-section',
+        file: 'docs/footer-section.mdx',
+        component: 'footer-section',
+      },
+      {
         title: 'Button',
         slug: 'button',
         file: 'docs/button.mdx',
