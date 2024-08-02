@@ -41,7 +41,7 @@ type Props = {
   actions?: Action[]
 }
 
-export const Navigation = forwardRef(function Navigation(
+export const Header = forwardRef(function Header(
   { className, logo, links, actions, ...rest }: Props,
   ref: Ref<HTMLDivElement>
 ) {
@@ -184,4 +184,4 @@ export const Navigation = forwardRef(function Navigation(
   )
 })
 
-export default Navigation
+export default Header
