@@ -1,7 +1,7 @@
 import FeaturedProductList from '@/vibes/soul/components/featured-product-list'
 import ProductCard from '@/vibes/soul/components/product-card'
 
-const products: ProductCard[] = [
+export const featuredProducts: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
@@ -38,13 +38,11 @@ const products: ProductCard[] = [
 
 export default function Preview() {
   return (
-    <div className="min-h-48">
-      <FeaturedProductList
-        title="Off-Race"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-        link={{ label: 'Shop Now', href: '/new-arrivals' }}
-        products={products}
-      />
-    </div>
+    <FeaturedProductList
+      title="Off-Race"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+      link={{ label: 'Shop Now', href: '/new-arrivals' }}
+      products={featuredProducts}
+    />
   )
 }

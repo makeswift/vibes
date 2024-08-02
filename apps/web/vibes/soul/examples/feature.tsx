@@ -17,13 +17,11 @@ export default function Preview() {
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <Feature
-        image={image}
-        heading="A global community"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-        link={link}
-      />
-    </div>
+    <Feature
+      image={image}
+      heading="A global community"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+      link={link}
+    />
   )
 }
