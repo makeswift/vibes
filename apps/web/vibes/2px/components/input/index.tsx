@@ -17,14 +17,14 @@ export default function Input({ className, variant = 'default', errorMessage, ..
         <input
           type="text"
           className={cn(
-            className,
-            'custom-caret h-[3.75rem] w-[25rem] border-2 border-foreground bg-background px-4 py-2 text-foreground placeholder-foreground outline-none focus:border-solid focus:border-l-transparent focus:border-r-transparent focus:border-t-transparent focus:placeholder-transparent',
+            'h-[3.75rem] w-[25rem] border-2 border-foreground bg-background px-4 py-2 text-foreground placeholder-foreground outline-none focus:border-solid focus:border-l-transparent focus:border-r-transparent focus:border-t-transparent focus:placeholder-transparent',
             {
               'border-contrast-300 text-contrast-300 placeholder-contrast-300': props.disabled,
               'hover:border-dashed': !props.disabled,
               'text-error placeholder-error': variant === 'error',
               'border-foreground': variant === 'success',
-            }
+            },
+            className
           )}
           {...props}
         />
