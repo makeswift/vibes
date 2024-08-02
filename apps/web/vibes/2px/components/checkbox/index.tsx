@@ -9,7 +9,6 @@ interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'classN
 export default function Checkbox({ checked = false, setChecked, ...props }: Props) {
   return (
     <label
-      htmlFor="checkbox-element"
       className={cn(
         'flex h-6 w-6 items-center justify-center border-[2px] border-foreground  hover:border-dashed',
         {
@@ -21,7 +20,6 @@ export default function Checkbox({ checked = false, setChecked, ...props }: Prop
       <input
         type="checkbox"
         className="hidden"
-        id="checkbox-element"
         onChange={e => setChecked(e.target.checked)}
         checked={checked}
         {...props}
