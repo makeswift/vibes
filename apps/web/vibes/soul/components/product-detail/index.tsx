@@ -6,13 +6,13 @@ import clsx from 'clsx'
 
 import Button from '@/vibes/soul/components/button'
 import Favorite from '@/vibes/soul/components/favorite'
-import ProductCard from '@/vibes/soul/components/product-card'
+import { ProductCard } from '@/vibes/soul/components/product-card'
 import Price from '@/vibes/soul/components/product-card/price'
 import Rating from '@/vibes/soul/components/rating'
 
 import ProductGallery from './ProductGallery'
 
-export interface ProductDetail {
+export interface ProductDetailProps {
   product: ProductCard
   images: string[]
   content?: ReactNode
@@ -26,7 +26,7 @@ export const ProductDetail = function ProductDetail({
   content,
   rating,
   options,
-}: ProductDetail) {
+}: ProductDetailProps) {
   const [favorited, setFavorited] = useState(false)
   const [selectedOption, setSelectedOption] = useState(options?.[0] ?? null)
 

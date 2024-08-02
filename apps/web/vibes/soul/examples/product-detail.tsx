@@ -1,4 +1,4 @@
-import ProductCard from '@/vibes/soul/components/product-card'
+import { ProductCard } from '@/vibes/soul/components/product-card'
 import ProductDetail from '@/vibes/soul/components/product-detail'
 
 const product = {

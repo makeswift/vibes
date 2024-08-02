@@ -75,12 +75,7 @@ export const navigation = [
         file: 'docs/hero-contained.mdx',
         component: 'hero',
       },
-      {
-        title: 'Home (Page)',
-        slug: 'home',
-        file: 'docs/home.mdx',
-        component: 'home',
-      },
+
       {
         title: 'Icon Block',
         slug: 'icon-block',
@@ -112,6 +107,7 @@ export const navigation = [
         file: 'docs/newsletter.mdx',
         component: 'newsletter',
       },
+
       {
         title: 'Pagination',
         slug: 'pagination',
@@ -143,6 +139,20 @@ export const navigation = [
         component: 'product-description',
       },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
+
+      // Page Components
+      {
+        title: 'Page - Home',
+        slug: 'page-home',
+        file: 'docs/page-home.mdx',
+        component: 'page-home',
+      },
+      {
+        title: 'Page - Products',
+        slug: 'page-products',
+        file: 'docs/page-products.mdx',
+        component: 'page-products',
+      },
     ],
   },
 ] satisfies Navigation

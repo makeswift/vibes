@@ -128,13 +128,7 @@ export const examples = [
     files: ['examples/hero-contained.tsx'],
     component: lazy(() => import('./examples/hero-contained')),
   },
-  {
-    name: 'home-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/home.tsx'],
-    component: lazy(() => import('./examples/home')),
-  },
+
   {
     name: 'icon-block-example',
     dependencies: [],
@@ -176,6 +170,20 @@ export const examples = [
     registryDependencies: [],
     files: ['examples/newsletter.tsx'],
     component: lazy(() => import('./examples/newsletter')),
+  },
+  {
+    name: 'page-home-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-home.tsx'],
+    component: lazy(() => import('./examples/page-home')),
+  },
+  {
+    name: 'page-products-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-products.tsx'],
+    component: lazy(() => import('./examples/page-products')),
   },
   {
     name: 'pagination-example',
