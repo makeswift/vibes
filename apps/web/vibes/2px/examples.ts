@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/breadcrumbs')),
   },
   {
+    name: 'media-and-text-section-example',
+    dependencies: [],
+    registryDependencies: ['media-and-text-section'],
+    files: ['examples/media-and-text-section.tsx'],
+    component: lazy(() => import('./examples/media-and-text-section')),
+  },
+  {
     name: 'tabs-example',
     dependencies: [],
     registryDependencies: ['tabs'],
