@@ -1,6 +1,7 @@
 import { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ComponentPropsWithoutRef } from 'react'
 
 import clsx from 'clsx'
 
@@ -9,28 +10,25 @@ import '@/vibes/soul/styles.css'
 
 import Price from './price'
 
-export interface PriceRange {
-  type: 'range'
-  min: number
-  max: number
-}
-
-export interface PriceCompare {
-  type: 'compare'
-  prev: number
-  current: number
-}
-
-export interface PriceStatic {
-  type: 'static'
-  value: number
-}
-
 export type ProductCard = {
   name: string
   tags?: string[]
   label?: string
-  price?: PriceRange | PriceCompare | PriceStatic
+  price?:
+    | {
+        type: 'range'
+        min: number
+        max: number
+      }
+    | {
+        type: 'compare'
+        prev: number
+        current: number
+      }
+    | {
+        type: 'static'
+        value: number
+      }
   image: string
   ctaLink?: {
     href: string
@@ -41,7 +39,7 @@ export type ProductCard = {
   carousel?: boolean
 }
 
-export const ProductCard: React.FC<ProductCard & React.HTMLAttributes<HTMLAnchorElement>> = ({
+export const ProductCard = function ProductCard({
   name,
   tags,
   label,
@@ -52,7 +50,7 @@ export const ProductCard: React.FC<ProductCard & React.HTMLAttributes<HTMLAnchor
   setChecked,
   carousel,
   ...props
-}) => {
+}: ProductCard & ComponentPropsWithoutRef<'a'>) {
   return (
     <Link
       href={ctaLink?.href as Route}

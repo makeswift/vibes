@@ -1,13 +1,13 @@
 'use client'
 
-import { Ref, forwardRef } from 'react'
+import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
 import Arrow from '@/vibes/soul/components/icons/Arrow'
 import '@/vibes/soul/styles.css'
 
-export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface Props extends ComponentPropsWithRef<'input'> {
   className?: string
   variant?: 'default' | 'price' | 'large' | 'brand' | 'button'
 }

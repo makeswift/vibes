@@ -1,6 +1,7 @@
 import { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ComponentPropsWithoutRef } from 'react'
 
 import clsx from 'clsx'
 
@@ -22,7 +23,7 @@ export const CategoryCard = function CategoryCard({
   theme = 'light',
   ctaLink,
   ...props
-}: CategoryCard & React.HTMLAttributes<HTMLAnchorElement>) {
+}: CategoryCard & ComponentPropsWithoutRef<'a'>) {
   return (
     <Link
       href={ctaLink?.href as Route}
