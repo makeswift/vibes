@@ -88,6 +88,13 @@ export const components = [
     component: lazy(() => import('./components/breadcrumbs')),
   },
   {
+    name: 'fullscreen-product-card-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/fullscreen-product-card-section/index.tsx'],
+    component: lazy(() => import('./components/fullscreen-product-card-section')),
+  },
+  {
     name: 'tabs',
     dependencies: [],
     registryDependencies: [],

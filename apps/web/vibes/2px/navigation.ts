@@ -17,6 +17,12 @@ export const navigation = [
         file: 'docs/button.mdx',
         component: 'button',
       },
+      {
+        title: 'Fullscreen Product Card Section',
+        slug: 'fullscreen-product-card-section',
+        file: 'docs/fullscreen-product-card-section.mdx',
+        component: 'fullscreen-product-card-section',
+      },
       { title: 'Text Area', slug: 'text-area', file: 'docs/text-area.mdx', component: 'text-area' },
       { title: 'Skeleton', slug: 'skeleton', file: 'docs/skeleton.mdx', component: 'skeleton' },
       {
