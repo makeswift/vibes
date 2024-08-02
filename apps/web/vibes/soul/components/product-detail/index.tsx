@@ -5,11 +5,11 @@ import { useState } from 'react'
 import clsx from 'clsx'
 
 import Button from '@/vibes/soul/components/button'
+import Favorite from '@/vibes/soul/components/favorite'
 import ProductCard from '@/vibes/soul/components/product-card'
 import Price from '@/vibes/soul/components/product-card/price'
 import Rating from '@/vibes/soul/components/rating'
 
-import Favorite from '../favorite'
 import ProductGallery from './ProductGallery'
 
 export interface ProductDetail {
@@ -41,7 +41,7 @@ export const ProductDetail = function ProductDetail({
 
           {content && <p>{content}</p>}
 
-          <Price price={product.price} />
+          <Price price={product.price} className="!text-2xl" />
 
           <div className="flex max-w-sm flex-wrap gap-2.5 pt-16">
             {sizes &&

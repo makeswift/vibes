@@ -158,6 +158,13 @@ export const components = [
     component: lazy(() => import('./components/newsletter')),
   },
   {
+    name: 'pagination',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/pagination/index.tsx', 'styles.css'],
+    component: lazy(() => import('./components/pagination')),
+  },
+  {
     name: 'product-card',
     dependencies: [],
     registryDependencies: [],

@@ -113,6 +113,12 @@ export const navigation = [
         component: 'newsletter',
       },
       {
+        title: 'Pagination',
+        slug: 'pagination',
+        file: 'docs/pagination.mdx',
+        component: 'pagination',
+      },
+      {
         title: 'Product Card',
         slug: 'product-card',
         file: 'docs/product-card.mdx',

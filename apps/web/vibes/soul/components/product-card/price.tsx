@@ -1,3 +1,7 @@
+import { ComponentPropsWithoutRef } from 'react'
+
+import clsx from 'clsx'
+
 export type RangePrice = {
   type: 'range'
   min: number
@@ -17,17 +21,20 @@ export type StaticPrice = {
 
 export type Price = RangePrice | ComparePrice | StaticPrice | undefined
 
-export default function Price({ price }: { price: Price }) {
+export default function Price({
+  price,
+  className = '',
+}: { price: Price; className?: string } & ComponentPropsWithoutRef<'span'>) {
   switch (price?.type) {
     case 'range':
       return (
-        <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">
+        <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
           ${price.min} - ${price.max}
         </span>
       )
     case 'compare':
       return (
-        <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">
+        <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
           <span className="font-normal text-contrast-400 line-through @4xl:text-lg">
             ${price.prev}
           </span>{' '}
@@ -36,7 +43,9 @@ export default function Price({ price }: { price: Price }) {
       )
     case 'static':
       return (
-        <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">${price.value}</span>
+        <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
+          ${price.value}
+        </span>
       )
     default:
       return null

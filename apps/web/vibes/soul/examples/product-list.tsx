@@ -42,7 +42,7 @@ const products: ProductCard[] = [
 export default function Preview() {
   return (
     <div className="min-h-48">
-      <ProductList products={products} pages={8} />
+      <ProductList products={products} />
     </div>
   )
 }

@@ -59,7 +59,7 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
   }
 
   return (
-    <div className="flex justify-center py-10 text-xs">
+    <div className="flex w-full max-w-7xl justify-center bg-background py-10 text-xs">
       <div className="flex gap-2">
         {renderPagination().map((page, index) =>
           typeof page === 'string' ? (
