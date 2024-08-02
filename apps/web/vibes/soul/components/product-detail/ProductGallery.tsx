@@ -16,8 +16,10 @@ const ProductGallery = ({ images }: ProductGallery) => {
 
   useEffect(() => {
     if (!emblaApi) return
+
     const onSelect = () => setPreviewImage(emblaApi.selectedScrollSnap())
     emblaApi.on('select', onSelect)
+
     return () => {
       emblaApi.off('select', onSelect)
     }

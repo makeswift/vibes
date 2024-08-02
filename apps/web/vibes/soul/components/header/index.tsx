@@ -20,11 +20,6 @@ type NavItem = {
   }
 }
 
-type Action = {
-  text: string
-  icon: ReactNode
-}
-
 type Category = {
   item: NavItem
   links?: NavItem[][]
@@ -38,11 +33,10 @@ type Props = {
     link?: { href: string; target?: '_self' | '_blank' }
   }
   links?: Category[]
-  actions?: Action[]
 }
 
 export const Header = forwardRef(function Header(
-  { className, logo, links, actions, ...rest }: Props,
+  { className, logo, links, ...rest }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   const [navOpen, setNavOpen] = useState(false)
@@ -66,13 +60,17 @@ export const Header = forwardRef(function Header(
   }, [navOpen])
 
   return (
-    <ReactHeadroom {...rest} className="!h-24 w-full [&>div]:px-5 [&>div]:pt-5">
+    <ReactHeadroom {...rest} className="absolute top-0 z-30 !h-24 w-full [&>div]:px-5 [&>div]:pt-5">
       <header
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className={clsx(className, 'mx-auto w-full max-w-7xl text-foreground @container')}
+        className={clsx(
+          'mx-auto w-full max-w-7xl text-foreground @container',
+          navOpen ? 'h-full' : '!h-24',
+          className
+        )}
       >
-        <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background @4xl:rounded-[24px]">
+        <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background shadow-[2px_4px_24px_#00000010] @4xl:rounded-[24px]">
           <div className="relative flex items-stretch px-2.5" ref={container}>
             {links?.map((item, i) => (
               <Link

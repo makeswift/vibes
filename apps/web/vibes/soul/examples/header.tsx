@@ -58,5 +58,9 @@ export const headerLinks = [
 ]
 
 export default function Preview() {
-  return <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+  return (
+    <div className="relative min-h-48">
+      <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+    </div>
+  )
 }

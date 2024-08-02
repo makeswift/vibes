@@ -28,7 +28,7 @@ export default function Preview() {
         images={images}
         rating={4.5}
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-        sizes={['XS', 'S', 'M', 'L', 'XL', 'XXL']}
+        options={['XS', 'S', 'M', 'L', 'XL', 'XXL']}
       />
     </div>
   )
