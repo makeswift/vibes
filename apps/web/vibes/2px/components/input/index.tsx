@@ -13,7 +13,7 @@ interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
 export default function Input({ className, variant = 'default', errorMessage, ...props }: Props) {
   return (
     <div className="font-body text-sm font-medium leading-6">
-      <div className="relative flex items-center justify-between">
+      <div className="relative inline-block">
         <input
           type="text"
           className={cn(
@@ -28,8 +28,12 @@ export default function Input({ className, variant = 'default', errorMessage, ..
           )}
           {...props}
         />
-        {variant === 'success' && <CheckIcon className="absolute right-4 h-6 w-6 text-success" />}
-        {variant === 'error' && <CrossIcon className="absolute right-4 h-6 w-6 text-error" />}
+        {variant === 'success' && (
+          <CheckIcon className="absolute right-4 top-1/2 h-6 w-6 -translate-y-1/2 text-success" />
+        )}
+        {variant === 'error' && (
+          <CrossIcon className="absolute right-4 top-1/2 h-6 w-6 -translate-y-1/2 text-error" />
+        )}
       </div>
       {errorMessage && <div className="mt-2 text-xs text-error">{errorMessage}</div>}
     </div>
