@@ -18,6 +18,13 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
+    name: 'input',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/input/index.tsx'],
+    component: lazy(() => import('./components/input')),
+  },
+  {
     name: 'radio-button',
     dependencies: [],
     registryDependencies: [],

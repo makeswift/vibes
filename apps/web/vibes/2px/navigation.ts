@@ -17,6 +17,7 @@ export const navigation = [
         file: 'docs/button.mdx',
         component: 'button',
       },
+      { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       { title: 'Text Area', slug: 'text-area', file: 'docs/text-area.mdx', component: 'text-area' },
       { title: 'Skeleton', slug: 'skeleton', file: 'docs/skeleton.mdx', component: 'skeleton' },
       {
