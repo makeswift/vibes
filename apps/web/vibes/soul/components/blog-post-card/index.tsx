@@ -2,41 +2,37 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 type Props = {
+  author?: string | null
+  content: string
+  date: string
+  link: { href: string }
+  thumbnail?: { altText: string; url: string } | null
   title: string
-  image: string
-  description?: string
-  link: { href: string; target?: string }
-  date?: string
-  author?: string
 }
 
 export const BlogPostCard = function BlogPostCard({
   title,
-  image,
-  description,
+  thumbnail,
+  content,
   link,
   date,
   author,
 }: Props) {
   return (
-    <Link
-      href={link.href}
-      target={link.target}
-      className="group flex max-w-[466px] flex-col gap-2 text-foreground"
-    >
+    <Link href={link.href} className="group flex max-w-[466px] flex-col gap-2 text-foreground">
       <div className="overflow-hidden rounded-xl">
         <Image
-          src={image}
+          src={thumbnail?.url ?? ''}
           height={349}
           width={466}
-          alt={title}
+          alt={thumbnail?.altText ?? ''}
           className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </div>
 
       <h3 className="pb-1 pt-3 text-lg font-medium">{title}</h3>
 
-      {description && <p className="line-clamp-3 text-contrast-400">{description}</p>}
+      {content && <p className="line-clamp-3 text-contrast-400">{content}</p>}
 
       <div className="flex flex-wrap items-center">
         {date && (
