@@ -76,6 +76,12 @@ export const navigation = [
         component: 'hero',
       },
       {
+        title: 'Home (Page)',
+        slug: 'home',
+        file: 'docs/home.mdx',
+        component: 'home',
+      },
+      {
         title: 'Icon Block',
         slug: 'icon-block',
         file: 'docs/icon-block.mdx',

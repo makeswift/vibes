@@ -103,10 +103,24 @@ export const components = [
   },
   {
     name: 'hero',
-    dependencies: ['./components/hero/ProgressBar.tsx'],
+    dependencies: [
+      './components/hero/EmblaCarousel.tsx',
+      './components/hero/EmblaCarouselProgressButton.tsx',
+    ],
     registryDependencies: [],
     files: ['components/hero/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/hero')),
+  },
+  {
+    name: 'home',
+    dependencies: [
+      './components/announcement-bar/index.tsx',
+      './components/header/index.tsx',
+      './components/hero/index.tsx',
+    ],
+    registryDependencies: [],
+    files: ['components/home/index.tsx'],
+    component: lazy(() => import('./components/home')),
   },
   {
     name: 'media-section',
