@@ -19,8 +19,6 @@ export const Button = forwardRef(function Button(
   { className, link, variant = 'primary', size = 'default', children = 'Button' }: Props,
   ref: Ref<HTMLAnchorElement>
 ) {
-  const lightness = 300
-
   return (
     <Link
       ref={ref}
@@ -30,8 +28,8 @@ export const Button = forwardRef(function Button(
         link?.href === '#' && 'pointer-events-none opacity-20',
         {
           primary: 'bg-primary text-foreground',
-          dark: 'bg-foreground text-foreground hover:text-background',
-          light: 'bg-background text-background hover:text-foreground',
+          dark: 'bg-foreground text-foreground hover:bg-transparent hover:text-background',
+          light: 'bg-background text-background hover:bg-transparent hover:text-foreground',
         }[variant],
         {
           default: 'px-6 py-[13px] text-base',
@@ -46,7 +44,7 @@ export const Button = forwardRef(function Button(
           'absolute left-0 top-0 z-0 w-full -translate-x-[110%] rounded-full transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0',
           link?.href === '#' && 'pointer-events-none opacity-20',
           {
-            primary: 'bg-white/10',
+            primary: 'bg-white/40',
             dark: 'bg-background',
             light: 'bg-foreground',
           }[variant],
@@ -58,8 +56,6 @@ export const Button = forwardRef(function Button(
       />
       <span
         className={clsx('relative z-10 flex justify-center transition-colors', {
-          'group-hover:text-foreground': variant === 'primary' && lightness < 700,
-          'group-hover:text-background': variant === 'primary' && lightness >= 700,
           invert: variant !== 'primary',
         })}
       >

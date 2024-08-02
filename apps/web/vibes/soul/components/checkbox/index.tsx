@@ -29,14 +29,7 @@ export const Checkbox = function Checkbox({
         onCheckedChange={setChecked}
       >
         <RadixCheckbox.Indicator>
-          <Icon
-            name="Check"
-            color="white"
-            className={clsx(
-              'h-4 w-4 text-white transition-[opacity,transform] duration-150',
-              checked ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-            )}
-          />
+          <Icon name="Check" color="white" className="h-4 w-4" />
         </RadixCheckbox.Indicator>
       </RadixCheckbox.Root>
 
