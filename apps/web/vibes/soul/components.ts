@@ -177,6 +177,7 @@ export const components = [
       './components/category-card/index.tsx',
       './components/footer/index.tsx',
       './components/header/index.tsx',
+      './components/icon-block/index.tsx',
       './components/newsletter/index.tsx',
       './components/product-description/index.tsx',
       './components/product-detail/index.tsx',

@@ -5,6 +5,7 @@ import Carousel from '@/vibes/soul/components/carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
+import IconBlock from '@/vibes/soul/components/icon-block'
 import Newsletter from '@/vibes/soul/components/newsletter'
 import { ProductCard } from '@/vibes/soul/components/product-card'
 import ProductDescription from '@/vibes/soul/components/product-description'
@@ -53,7 +54,7 @@ export const Products = function Products() {
           options={['XS', 'S', 'M', 'L', 'XL', 'XXL']}
         />
 
-        {/* TODO: Add Review / Returns */}
+        {/* TODO: Add Review / Returns Here */}
 
         <ProductDescription
           accordions={[
@@ -86,6 +87,26 @@ export const Products = function Products() {
             },
             alt: 'Plants',
           }}
+        />
+
+        <IconBlock
+          list={[
+            {
+              icon: 'Truck',
+              title: 'Free Shipping',
+              description: 'On orders over $250',
+            },
+            {
+              icon: 'RotateCcw',
+              title: 'Free Returns',
+              description: 'On full priced items only',
+            },
+            {
+              icon: 'Star',
+              title: '2 Year Warranty',
+              description: 'As standard',
+            },
+          ]}
         />
 
         <Carousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
