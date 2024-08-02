@@ -25,80 +25,82 @@ export const Home = function Home({}: HomeProps) {
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
-      <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
-      <Hero slides={heroSlides} />
-      <Carousel title="Category" link={{ label: 'See All', href: '/' }}>
-        {categories.map(category => (
-          <CategoryCard key={category.label} {...category} />
-        ))}
-      </Carousel>
-      <MediaSection
-        heading="Pro-Team"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      <div className="relative flex flex-col">
+        <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+        <Hero slides={heroSlides} />
+        <Carousel title="Category" link={{ label: 'See All', href: '/' }}>
+          {categories.map(category => (
+            <CategoryCard key={category.label} {...category} />
+          ))}
+        </Carousel>
+        <MediaSection
+          heading="Pro-Team"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-        video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-        link={{ href: '/', target: '_self' }}
-      />
-      <FeaturedProductList
-        title="Off-Race"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-        link={{ label: 'Shop Now', href: '/new-arrivals' }}
-        products={featuredProducts}
-      />
-      <MediaSection
-        heading="Pro-Team"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
+          link={{ href: '/', target: '_self' }}
+        />
+        <FeaturedProductList
+          title="Off-Race"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+          link={{ label: 'Shop Now', href: '/new-arrivals' }}
+          products={featuredProducts}
+        />
+        <MediaSection
+          heading="Pro-Team"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-        video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-        link={{ href: '/', target: '_self' }}
-        mediaAlign="right"
-      />
-      <Newsletter
-        heading="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="brand-highlight"
-      />
-      <Carousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
-        {categories.map(category => (
-          <CategoryCard key={category.label} {...category} />
-        ))}
-      </Carousel>
-      <Feature
-        image={{
-          url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
-          dimensions: {
-            width: 932,
-            height: 1200,
-          },
-          alt: 'Biker in Mountains',
-        }}
-        heading="A global community"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-        link={{
-          label: 'Shop Now',
-          href: '/shop',
-          target: '_self',
-        }}
-      />
-      <Carousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
-        {categories.map(category => (
-          <CategoryCard key={category.label} {...category} />
-        ))}
-      </Carousel>
-      <MediaSection
-        heading="Pro-Team"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
+          link={{ href: '/', target: '_self' }}
+          mediaAlign="right"
+        />
+        <Newsletter
+          heading="Sign up for our newsletter"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+          theme="brand-highlight"
+        />
+        <Carousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
+          {categories.map(category => (
+            <CategoryCard key={category.label} {...category} />
+          ))}
+        </Carousel>
+        <Feature
+          image={{
+            url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
+            dimensions: {
+              width: 932,
+              height: 1200,
+            },
+            alt: 'Biker in Mountains',
+          }}
+          heading="A global community"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+          link={{
+            label: 'Shop Now',
+            href: '/shop',
+            target: '_self',
+          }}
+        />
+        <Carousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
+          {categories.map(category => (
+            <CategoryCard key={category.label} {...category} />
+          ))}
+        </Carousel>
+        <MediaSection
+          heading="Pro-Team"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-        video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-        link={{ href: '/', target: '_self' }}
-        mediaAlign="left"
-      />
-      <Newsletter
-        heading="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="light"
-      />
-      <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
+          video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
+          link={{ href: '/', target: '_self' }}
+          mediaAlign="left"
+        />
+        <Newsletter
+          heading="Sign up for our newsletter"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+          theme="light"
+        />
+        <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
+      </div>
     </>
   )
 }

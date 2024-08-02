@@ -17,7 +17,7 @@ export interface ProductDetail {
   images: string[]
   content?: string
   rating?: number
-  sizes?: string[]
+  options?: string[]
 }
 
 export const ProductDetail = function ProductDetail({
@@ -25,10 +25,10 @@ export const ProductDetail = function ProductDetail({
   images,
   content,
   rating,
-  sizes,
+  options,
 }: ProductDetail) {
   const [favorited, setFavorited] = useState(false)
-  const [selectedSize, setSelectedSize] = useState(sizes?.[0] ?? null)
+  const [selectedOption, setSelectedOption] = useState(options?.[0] ?? null)
 
   return (
     <section className="w-full bg-background @container">
@@ -44,17 +44,17 @@ export const ProductDetail = function ProductDetail({
           <Price price={product.price} className="!text-2xl" />
 
           <div className="flex max-w-sm flex-wrap gap-2.5 pt-16">
-            {sizes &&
-              sizes.map((size, index) => (
+            {options &&
+              options.map((option, index) => (
                 <button
                   key={index}
-                  onClick={() => setSelectedSize(size)}
+                  onClick={() => setSelectedOption(option)}
                   className={clsx(
                     'flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full text-xs font-medium transition-colors duration-300',
-                    selectedSize === size ? 'bg-foreground text-background' : 'bg-contrast-100'
+                    option === selectedOption ? 'bg-foreground text-background' : 'bg-contrast-100'
                   )}
                 >
-                  {size}
+                  {option}
                 </button>
               ))}
           </div>
