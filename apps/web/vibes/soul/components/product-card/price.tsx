@@ -1,9 +1,24 @@
-import { PriceCompare, PriceRange, PriceStatic } from '.'
+export type RangePrice = {
+  type: 'range'
+  min: number
+  max: number
+}
 
-export default function Price({ price }: { price: PriceRange | PriceCompare | PriceStatic }) {
-  // TOOD: format price values
+export type ComparePrice = {
+  type: 'compare'
+  prev: number
+  current: number
+}
 
-  switch (price.type) {
+export type StaticPrice = {
+  type: 'static'
+  value: number
+}
+
+export type Price = RangePrice | ComparePrice | StaticPrice | undefined
+
+export default function Price({ price }: { price: Price }) {
+  switch (price?.type) {
     case 'range':
       return (
         <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">
@@ -23,5 +38,7 @@ export default function Price({ price }: { price: PriceRange | PriceCompare | Pr
       return (
         <span className="text-sm font-semibold @4xl:text-xl @4xl:font-medium">${price.value}</span>
       )
+    default:
+      return null
   }
 }

@@ -50,7 +50,7 @@ export const heroSlides = [
 
 export default function Preview() {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="min-h-48">
       <Hero slides={heroSlides} />
     </div>
   )

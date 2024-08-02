@@ -2,7 +2,7 @@ import MediaSection from '@/vibes/soul/components/media-section'
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 flex-col gap-2">
+    <div className="min-h-48">
       <MediaSection
         heading="Pro-Team"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt

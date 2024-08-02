@@ -6,7 +6,10 @@ const products: ProductCard[] = [
     name: 'Men’s Long Sleeve Jersey',
     tags: ['Blue', 'Black', 'Green'],
     label: 'New',
-    price: 123.99,
+    price: {
+      type: 'static',
+      value: 123.99,
+    },
     image: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
     ctaLink: { href: '/' },
   },
@@ -14,7 +17,10 @@ const products: ProductCard[] = [
     name: 'Men’s Long Sleeve Jersey',
     tags: ['Blue', 'Black', 'Green'],
     label: 'New',
-    price: 123.99,
+    price: {
+      type: 'static',
+      value: 123.99,
+    },
     image: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
     ctaLink: { href: '/' },
   },
