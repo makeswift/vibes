@@ -1,8 +1,9 @@
-import Hero from '@/vibes/soul/components/hero'
+import HeroContained from '@/vibes/soul/components/hero-contained'
 
 export default function Preview() {
   const slides = [
     {
+      heading: 'Slide 1',
       image: {
         url: 'https://rstr.in/monogram/vibes/vgdjHDINE6V',
         dimensions: {
@@ -17,6 +18,7 @@ export default function Preview() {
       },
     },
     {
+      heading: 'Slide 2',
       image: {
         url: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
         dimensions: {
@@ -31,6 +33,7 @@ export default function Preview() {
       },
     },
     {
+      heading: 'Slide 3',
       image: {
         url: 'https://rstr.in/monogram/vibes/6GmqnHGoquY',
         dimensions: {
@@ -46,9 +49,5 @@ export default function Preview() {
     },
   ]
 
-  return (
-    <div className="min-h-48">
-      <Hero heading="Pro Jerseys" slides={slides} containedMediaLayout />
-    </div>
-  )
+  return <HeroContained slides={slides} />
 }

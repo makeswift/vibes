@@ -111,15 +111,21 @@ export const examples = [
   {
     name: 'hero-example',
     dependencies: [],
-    registryDependencies: ['hero'],
+    registryDependencies: [
+      './components/hero/ProgressSection.tsx',
+      './components/hero/Slideshow.tsx',
+    ],
     files: ['examples/hero.tsx'],
     component: lazy(() => import('./examples/hero')),
   },
   {
     name: 'hero-contained-example',
     dependencies: [],
-    registryDependencies: ['hero'],
-    files: ['examples/hero.tsx'],
+    registryDependencies: [
+      './components/hero/ProgressSection.tsx',
+      './components/hero/Slideshow.tsx',
+    ],
+    files: ['examples/hero-contained.tsx'],
     component: lazy(() => import('./examples/hero-contained')),
   },
   {

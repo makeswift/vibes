@@ -1,49 +1,44 @@
 'use client'
 
-import EmblaCarousel from '@/vibes/soul/components/hero/EmblaCarousel'
-import '@/vibes/soul/styles.css'
+import { useEffect, useState } from 'react'
 
-// TODO: what is the best way to organize and type these hero variants components?
-// Full width hero currently has a heading per slide
-// while contained hero has one heading only - same on each slide
-export type HeroProps = {
-  heading?: string
+import Slideshow from '@/vibes/soul/components/hero/Slideshow'
+
+import ProgressSection from './ProgressSection'
+
+type Props = {
   slides: {
-    heading?: string
+    heading: string
     image: {
       url: string
-      dimensions: {
-        width: number
-        height: number
-      }
       alt: string
     }
-    link: {
-      href: string
-      target: string
-    }
   }[]
-  containedMediaLayout?: boolean
 }
 
-export const Hero = function Hero({ heading, slides, containedMediaLayout }: HeroProps) {
+// Hero Full Width Layout
+export const Hero = function Hero({ slides }: Props) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Calculate the next index, wrapping back to 0 if at the end
+      const nextIndex = (currentIndex + 1) % slides.length
+      setCurrentIndex(nextIndex)
+    }, 5000)
+
+    return () => clearTimeout(timer)
+  }, [currentIndex, slides.length, setCurrentIndex])
+
   return (
     <header className="bg-primary-900 relative h-[100dvh] max-h-[880px] @container">
-      {/* Contained Hero Layout */}
-      {containedMediaLayout ? (
-        <div className="mx-auto flex w-full max-w-7xl flex-grow flex-col-reverse gap-x-4 gap-y-10 @4xl:h-[100dvh] @4xl:max-h-[880px] @4xl:flex-row">
-          <h1 className="mb-10 mt-auto pl-3 text-5xl font-medium leading-none text-background @lg:mb-24 @lg:pl-20 @2xl:text-[90px] @4xl:w-1/2">
-            {heading}
-          </h1>
-          <EmblaCarousel
-            slides={slides}
-            className="mx-3 mt-[108px] aspect-square flex-grow pb-20 @lg:mx-20 @4xl:ml-0 @4xl:aspect-auto @4xl:w-1/2"
-          />
-        </div>
-      ) : (
-        // Full Width Hero Layout
-        <EmblaCarousel slides={slides} className="h-full" />
-      )}
+      <Slideshow slides={slides} className="h-full w-full" currentIndex={currentIndex} />
+      <ProgressSection
+        currentIndex={currentIndex}
+        slides={slides}
+        setCurrentIndex={setCurrentIndex}
+        className="absolute bottom-0 left-0 z-10 w-full px-3 pb-2 pt-4 @lg:px-20 @lg:pb-8 @lg:pt-10"
+      />
     </header>
   )
 }

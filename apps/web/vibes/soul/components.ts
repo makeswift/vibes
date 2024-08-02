@@ -103,17 +103,28 @@ export const components = [
   },
   {
     name: 'hero',
-    dependencies: [
-      './components/hero/EmblaCarousel.tsx',
-      './components/hero/EmblaCarouselProgressButton.tsx',
+    dependencies: [],
+    registryDependencies: [
+      './components/hero/ProgressSection.tsx',
+      './components/hero/Slideshow.tsx',
     ],
-    registryDependencies: [],
+    files: ['components/hero/index.tsx', 'styles.css'],
+    component: lazy(() => import('./components/hero')),
+  },
+  {
+    name: 'hero-contained',
+    dependencies: [],
+    registryDependencies: [
+      './components/hero/ProgressSection.tsx',
+      './components/hero/Slideshow.tsx',
+    ],
     files: ['components/hero/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/hero')),
   },
   {
     name: 'home',
-    dependencies: [
+    dependencies: [],
+    registryDependencies: [
       './components/announcement-bar/index.tsx',
       './components/carousel/index.tsx',
       './components/category-card/index.tsx',
@@ -125,7 +136,6 @@ export const components = [
       './components/media-section/index.tsx',
       './components/newsletter/index.tsx',
     ],
-    registryDependencies: [],
     files: ['components/home/index.tsx'],
     component: lazy(() => import('./components/home')),
   },
