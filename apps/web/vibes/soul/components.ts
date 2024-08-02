@@ -70,7 +70,7 @@ export const components = [
     name: 'favorite',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/favorite/index.tsx'],
+    files: ['components/favorite/index.tsx', 'components/icons/styles.css'],
     component: lazy(() => import('./components/favorite')),
   },
   {
