@@ -15,16 +15,17 @@ type Props = {
   }
   heading: string
   description: string
-  theme?: 'light' | 'dark' | 'brand'
+  theme?: 'brand-highlight' | 'brand-shadow' | 'light' | 'neutral'
 }
 
 export const Newsletter = function Newsletter({ image, heading, description, theme }: Props) {
   return (
     <section
       className={clsx('@container', {
-        ['bg-primary-900']: theme === 'dark',
-        ['bg-contrast-100']: theme === 'light',
-        ['bg-background']: theme === 'brand',
+        ['bg-primary-900']: theme === 'brand-shadow',
+        ['bg-primary-100']: theme === 'brand-highlight',
+        ['bg-contrast-100']: theme === 'neutral',
+        ['bg-background']: theme === 'light',
       })}
     >
       <div className="flex flex-col items-center @2xl:flex-row">
@@ -38,7 +39,7 @@ export const Newsletter = function Newsletter({ image, heading, description, the
           className={clsx(
             'flex w-full items-center gap-y-12 px-3 @xl:px-20',
             !image ? 'flex-col gap-x-10 py-20 @2xl:flex-row' : 'flex-col py-10 @3xl:gap-y-16',
-            theme == 'dark' ? 'text-background' : 'text-foreground'
+            theme == 'brand-shadow' ? 'text-background' : 'text-foreground'
           )}
         >
           <div className="w-full">
@@ -47,7 +48,7 @@ export const Newsletter = function Newsletter({ image, heading, description, the
           </div>
           <form className="w-full">
             <Input
-              variant={theme == 'brand' ? 'brand' : 'button'}
+              variant={theme == 'light' ? 'brand' : 'button'}
               placeholder="Join our Newsletter"
               type="email"
               className="max-w-5xl"

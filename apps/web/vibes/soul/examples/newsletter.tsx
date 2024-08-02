@@ -16,28 +16,33 @@ export default function Preview() {
         image={image}
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="dark"
+        theme="brand-shadow"
       />
       <Newsletter
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="dark"
+        theme="brand-shadow"
+      />
+      <Newsletter
+        heading="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        theme="brand-highlight"
       />
       <Newsletter
         image={image}
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="light"
+        theme="neutral"
+      />
+      <Newsletter
+        heading="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        theme="neutral"
       />
       <Newsletter
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="light"
-      />
-      <Newsletter
-        heading="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="brand"
       />
     </div>
   )

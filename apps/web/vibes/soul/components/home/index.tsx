@@ -56,7 +56,7 @@ export const Home = function Home({}: HomeProps) {
       <Newsletter
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="light"
+        theme="brand-highlight"
       />
       <Carousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
         {categories.map(category => (
