@@ -8,10 +8,10 @@ import Header from '@/vibes/soul/components/header'
 import Newsletter from '@/vibes/soul/components/newsletter'
 import { ProductCard } from '@/vibes/soul/components/product-card'
 import ProductDescription from '@/vibes/soul/components/product-description'
+import ProductDetail from '@/vibes/soul/components/product-detail'
 import { categories } from '@/vibes/soul/examples/carousel'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
-import ProductDetail from '@/vibes/soul/examples/product-detail'
 
 export const Products = function Products() {
   return (
