@@ -1,9 +1,11 @@
 'use client'
 
 import EmblaCarousel from '@/vibes/soul/components/hero/EmblaCarousel'
-import HeroMediaContainedLayout from '@/vibes/soul/components/hero/HeroMediaContainedLayout'
 import '@/vibes/soul/styles.css'
 
+// TODO: what is the best way to organize and type these hero variants components?
+// Full width hero currently has a heading per slide
+// while contained hero has one heading only - same on each slide
 export type HeroProps = {
   heading?: string
   slides: {
@@ -24,16 +26,24 @@ export type HeroProps = {
   containedMediaLayout?: boolean
 }
 
-// Hero Full Width Layout
 export const Hero = function Hero({ heading, slides, containedMediaLayout }: HeroProps) {
-  // TODO: what is the best way to organize and type these hero variants components?
-  if (containedMediaLayout) {
-    return <HeroMediaContainedLayout heading={heading || ''} slides={slides} />
-  }
-
   return (
     <header className="bg-primary-900 relative h-[100dvh] max-h-[880px] @container">
-      <EmblaCarousel slides={slides} className="h-full" />
+      {/* Contained Hero Layout */}
+      {containedMediaLayout ? (
+        <div className="mx-auto flex w-full max-w-7xl flex-grow flex-col-reverse gap-x-4 gap-y-10 @4xl:h-[100dvh] @4xl:max-h-[880px] @4xl:flex-row">
+          <h1 className="mb-10 mt-auto pl-3 text-5xl font-medium leading-none text-background @lg:mb-24 @lg:pl-20 @2xl:text-[90px] @4xl:w-1/2">
+            {heading}
+          </h1>
+          <EmblaCarousel
+            slides={slides}
+            className="mx-3 mt-[108px] aspect-square flex-grow pb-20 @lg:mx-20 @4xl:ml-0 @4xl:aspect-auto @4xl:w-1/2"
+          />
+        </div>
+      ) : (
+        // Full Width Hero Layout
+        <EmblaCarousel slides={slides} className="h-full" />
+      )}
     </header>
   )
 }
