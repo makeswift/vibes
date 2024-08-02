@@ -8,20 +8,18 @@ import Arrow from '@/vibes/soul/components/icons/Arrow'
 import '@/vibes/soul/styles.css'
 
 export interface Props extends ComponentPropsWithRef<'input'> {
-  className?: string
   variant?: 'default' | 'price' | 'large' | 'brand' | 'button'
 }
 
 export const Input = forwardRef(function Input(
-  { className, variant = 'default', ...rest }: Props,
+  { variant = 'default', ...rest }: Props,
   ref: Ref<HTMLInputElement>
 ) {
   return (
     <div
       className={clsx(
-        variant === 'brand' ? 'bg-primary-100' : '',
-        'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-background font-medium transition-colors duration-200 focus-within:border-foreground focus:outline-none',
-        className
+        { 'bg-primary-100': variant === 'brand' },
+        'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-background font-medium transition-colors duration-200 focus-within:border-foreground focus:outline-none'
       )}
     >
       {variant === 'price' && (
