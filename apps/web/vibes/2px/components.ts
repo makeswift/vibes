@@ -11,6 +11,13 @@ export const components = [
     component: lazy(() => import('./components/dropdown')),
   },
   {
+    name: 'button',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/button/index.tsx'],
+    component: lazy(() => import('./components/button')),
+  },
+  {
     name: 'radio-button',
     dependencies: [],
     registryDependencies: [],
@@ -32,11 +39,18 @@ export const components = [
     component: lazy(() => import('./components/rating')),
   },
   {
-    name: 'button',
+    name: 'text-area',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/button/index.tsx'],
-    component: lazy(() => import('./components/button')),
+    files: ['./components/text-area/index.tsx'],
+    component: lazy(() => import('./components/text-area')),
+  },
+  {
+    name: 'skeleton',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/skeleton/index.tsx'],
+    component: lazy(() => import('./components/skeleton')),
   },
   {
     name: 'option-selector',
