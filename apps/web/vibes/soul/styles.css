@@ -36,6 +36,7 @@
   background: color-mix(in srgb, hsl(var(--primary)), black 81%);
 }
 
+/* Scroll Bar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
