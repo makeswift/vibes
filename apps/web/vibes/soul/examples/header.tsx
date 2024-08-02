@@ -58,9 +58,5 @@ export const headerLinks = [
 ]
 
 export default function Preview() {
-  return (
-    <div className="flex min-h-48 items-center justify-center p-5 sm:min-h-64 sm:p-8 lg:min-h-80 lg:p-12">
-      <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
-    </div>
-  )
+  return <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
 }
