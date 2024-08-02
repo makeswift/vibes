@@ -15,14 +15,38 @@ const config = {
         resizeX: `url("${cursors.resizeX}") 14 8, ew-resize`,
       },
       colors: {
-        primary: 'hsl(var(--primary))',
-        accent: 'hsl(var(--accent))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          highlight: 'color-mix(in oklab, hsl(var(--primary)), white 60%)',
+          shadow: 'color-mix(in oklab, hsl(var(--primary)), black 60%)',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          highlight: 'color-mix(in oklab, hsl(var(--accent)), white 60%)',
+          shadow: 'color-mix(in oklab, hsl(var(--accent)), black 60%)',
+        },
+        success: {
+          DEFAULT: 'hsl(var(--success))',
+          highlight: 'color-mix(in oklab, hsl(var(--success)), white 60%)',
+          shadow: 'color-mix(in oklab, hsl(var(--success)), black 60%)',
+        },
+        error: {
+          DEFAULT: 'hsl(var(--error))',
+          highlight: 'color-mix(in oklab, hsl(var(--error)), white 60%)',
+          shadow: 'color-mix(in oklab, hsl(var(--error)), black 60%)',
+        },
+        warning: {
+          DEFAULT: 'hsl(var(--warning))',
+          highlight: 'color-mix(in oklab, hsl(var(--warning)), white 60%)',
+          shadow: 'color-mix(in oklab, hsl(var(--warning)), black 60%)',
+        },
+        info: {
+          DEFAULT: 'hsl(var(--info))',
+          highlight: 'color-mix(in oklab, hsl(var(--info)), white 60%)',
+          shadow: 'color-mix(in oklab, hsl(var(--info)), black 60%)',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        success: 'hsl(var(--success))',
-        error: 'hsl(var(--error))',
-        warning: 'hsl(var(--warning))',
-        info: 'hsl(var(--info))',
         contrast: {
           100: 'hsl(var(--contrast-100))',
           200: 'hsl(var(--contrast-200))',

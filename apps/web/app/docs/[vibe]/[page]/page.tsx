@@ -137,6 +137,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               'prose-h2:mb-3 prose-h2:mt-10 prose-h2:text-xl prose-h2:font-bold',
               'prose-h3:mb-2 prose-h3:mt-8 prose-h3:text-base prose-h3:font-bold',
               'prose-p:font-light prose-p:text-foreground first:prose-p:mt-0',
+              'prose-li:font-light prose-li:text-foreground',
               'prose-ul:pl-5 prose-ul:font-light',
               'prose-li:[&_::marker]:!text-foreground',
               'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:outline-primary prose-a:before:absolute prose-a:before:inset-x-0 prose-a:before:bottom-0 prose-a:before:h-[1px] prose-a:before:animate-scroll prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] prose-a:before:[animation-play-state:paused] hover:prose-a:before:[animation-play-state:running]',
