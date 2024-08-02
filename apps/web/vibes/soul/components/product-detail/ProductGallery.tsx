@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
@@ -14,20 +14,19 @@ const ProductGallery = ({ images }: ProductGallery) => {
   const [previewImage, setPreviewImage] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
+  useEffect(() => {
+    if (!emblaApi) return
+    const onSelect = () => setPreviewImage(emblaApi.selectedScrollSnap())
+    emblaApi.on('select', onSelect)
+    return () => {
+      emblaApi.off('select', onSelect)
+    }
+  }, [emblaApi])
+
   const selectImage = (index: number) => {
     setPreviewImage(index)
     if (emblaApi) emblaApi.scrollTo(index)
   }
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return
-    setPreviewImage(emblaApi.selectedScrollSnap())
-  }, [emblaApi])
-
-  useEffect(() => {
-    if (!emblaApi) return
-    emblaApi.on('select', onSelect)
-  }, [emblaApi, onSelect])
 
   return (
     <div className="relative flex w-full items-center overflow-hidden bg-contrast-200">
@@ -35,6 +34,7 @@ const ProductGallery = ({ images }: ProductGallery) => {
         <div className="flex items-center">
           {images.map((image, index) => (
             <Image
+              key={index}
               src={image}
               alt={`Product ${index + 1}`}
               height={1000}
