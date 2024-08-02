@@ -27,7 +27,12 @@ export default function Preview() {
         product={product as ProductCard}
         images={images}
         rating={4.5}
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+        content={
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore.
+          </p>
+        }
         options={['XS', 'S', 'M', 'L', 'XL', 'XXL']}
       />
     </div>

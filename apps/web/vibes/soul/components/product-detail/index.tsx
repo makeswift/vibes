@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 
 import clsx from 'clsx'
 
@@ -15,7 +15,7 @@ import ProductGallery from './ProductGallery'
 export interface ProductDetail {
   product: ProductCard
   images: string[]
-  content?: string
+  content?: ReactNode
   rating?: number
   options?: string[]
 }
@@ -39,7 +39,7 @@ export const ProductDetail = function ProductDetail({
 
           <Rating rating={rating ?? 0} />
 
-          {content && <p>{content}</p>}
+          {content && content}
 
           <Price price={product.price} className="!text-2xl" />
 
@@ -51,7 +51,9 @@ export const ProductDetail = function ProductDetail({
                   onClick={() => setSelectedOption(option)}
                   className={clsx(
                     'flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full text-xs font-medium transition-colors duration-300',
-                    option === selectedOption ? 'bg-foreground text-background' : 'bg-contrast-100'
+                    option === selectedOption
+                      ? 'bg-foreground text-background'
+                      : 'bg-contrast-100 hover:bg-contrast-200'
                   )}
                 >
                   {option}

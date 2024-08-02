@@ -31,7 +31,7 @@ const ProductGallery = ({ images }: ProductGallery) => {
   }
 
   return (
-    <div className="relative flex w-full items-center overflow-hidden bg-contrast-200">
+    <div className="relative flex h-[80dvh] max-h-[800px] w-full items-center overflow-hidden bg-contrast-200 @3xl:sticky @3xl:top-24">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex items-center">
           {images.map((image, index) => (
@@ -47,12 +47,12 @@ const ProductGallery = ({ images }: ProductGallery) => {
         </div>
       </div>
 
-      <div className="absolute bottom-[10%] left-1/2 flex -translate-x-1/2 gap-3">
+      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-1.5 @3xl:gap-3 @4xl:bottom-16">
         {images.map((image, index) => (
           <button
             key={index}
             className={clsx(
-              'h-14 w-14 overflow-hidden rounded-lg border transition-colors duration-300',
+              'h-10 w-10 overflow-hidden rounded-lg border transition-colors duration-300 @4xl:h-14 @4xl:w-14',
               index === previewImage ? 'border-foreground' : 'border-transparent'
             )}
             onClick={() => selectImage(index)}
