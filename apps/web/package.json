@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "icons": "npx @svgr/cli --no-runtime-config --typescript --replace-attr-values \"#000=currentColor\" --out-dir icons/generated -- icons/svg && npx prettier icons/generated --write --ignore-existing",
+    "icons": "npx @svgr/cli --no-runtime-config --typescript --replace-attr-values \"#64de21=currentColor\" --out-dir icons/generated -- icons/svg && npx prettier icons/generated --write --ignore-existing",
     "vibes": "node scripts/build-preview-index.js ./components/vibes"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
     "pretty-bytes": "^6.1.1",
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
+    "react-day-picker": "^9.0.4",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
     "react-headroom": "^3.2.1",

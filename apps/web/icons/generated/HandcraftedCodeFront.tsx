@@ -32,7 +32,7 @@ const SvgHandcraftedCodeFront = (props: SVGProps<SVGSVGElement>) => (
     <path fill="url(#handcrafted-code-front_svg__t)" d="M156.2 248.6h1.9v22.8h-1.9z" />
     <path fill="url(#handcrafted-code-front_svg__u)" d="M161.9 248.6h1.9v22.8h-1.9z" />
     <path fill="url(#handcrafted-code-front_svg__v)" d="M167.6 248.6h1.9v22.8h-1.9z" />
-    <path fill="currentColor" fillOpacity={0.1} d="M57.4 241h188.1v11.4H57.4z" />
+    <path fill="#000" fillOpacity={0.1} d="M57.4 241h188.1v11.4H57.4z" />
     <g clipPath="url(#handcrafted-code-front_svg__w)">
       <mask
         id="handcrafted-code-front_svg__x"
