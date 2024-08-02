@@ -179,11 +179,11 @@ export const examples = [
     component: lazy(() => import('./examples/page-home')),
   },
   {
-    name: 'page-products-example',
+    name: 'page-product-example',
     dependencies: [],
     registryDependencies: [],
-    files: ['examples/page-products.tsx'],
-    component: lazy(() => import('./examples/page-products')),
+    files: ['examples/page-product.tsx'],
+    component: lazy(() => import('./examples/page-product')),
   },
   {
     name: 'pagination-example',

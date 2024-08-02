@@ -169,7 +169,7 @@ export const components = [
     component: lazy(() => import('./components/page-home')),
   },
   {
-    name: 'page-products',
+    name: 'page-product',
     dependencies: [],
     registryDependencies: [
       './components/announcement-bar/index.tsx',
@@ -178,9 +178,10 @@ export const components = [
       './components/footer/index.tsx',
       './components/header/index.tsx',
       './components/newsletter/index.tsx',
+      './components/product-detail/index.tsx',
     ],
-    files: ['components/page-products/index.tsx'],
-    component: lazy(() => import('./components/page-products')),
+    files: ['components/page-product/index.tsx'],
+    component: lazy(() => import('./components/page-product')),
   },
   {
     name: 'pagination',
