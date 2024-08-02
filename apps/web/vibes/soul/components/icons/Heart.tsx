@@ -22,6 +22,10 @@ export default function Heart(
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className={clsx({
+          '-translate-x-px -translate-y-px scale-110 opacity-0 transition-[opacity,transform] delay-100':
+            filled,
+        })}
       />
 
       {/* Inner Filler Heart */}
