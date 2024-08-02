@@ -6,7 +6,7 @@ const SvgChevronRight16 = (props: SVGProps<SVGSVGElement>) => (
     <path stroke="currentColor" strokeLinecap="square" strokeWidth={1.5} d="m10 7 1 1-1 1" />
     <path
       stroke="currentColor"
-      strokeDasharray="3 3.25"
+      strokeDasharray="1.5 3.5"
       strokeLinecap="square"
       strokeWidth={1.5}
       d="M10.5 8.5 6 13M6 3l4.5 4.5"
