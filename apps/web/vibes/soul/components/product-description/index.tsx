@@ -5,7 +5,7 @@ import { Accordions } from '@/vibes/soul/components/accordions'
 export interface Props {
   accordions: {
     title: string
-    body: string
+    content: string
   }[]
   image?: {
     url: string
