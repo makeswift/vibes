@@ -1,28 +1,11 @@
-'use client'
-
 import { cn } from '@/lib/utils'
 
-interface Props {
-  id: string
-  className?: string
-  name: string
-  disabled: boolean
+interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
   inStock: boolean
   sample: string
-  checked: boolean
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export default function Swatch({
-  id,
-  className,
-  name,
-  disabled,
-  inStock,
-  sample,
-  checked,
-  onChange,
-}: Props) {
+export default function Swatch({ className, disabled, inStock, sample, ...props }: Props) {
   const hexColorRegex = /^#?([a-fA-F0-9]{3}|[a-fA-F0-9]{6})$/
 
   const style = hexColorRegex.test(sample)
@@ -35,10 +18,8 @@ export default function Swatch({
       }
   return (
     <label
-      htmlFor={id}
-      className={cn(className, 'group inline-flex items-center gap-3', {
-        'cursor-pointer': inStock && !disabled,
-        'cursor-not-allowed': !inStock || disabled,
+      className={cn(className, 'group inline-flex cursor-pointer items-center gap-3', {
+        'cursor-not-allowed': disabled,
       })}
     >
       <span className="relative grid grid-cols-[2.25rem] grid-rows-[2.25rem] @lg:grid-cols-[4.75rem] @lg:grid-rows-[4.75rem]">
@@ -57,29 +38,21 @@ export default function Swatch({
             { 'group-focus-within:visible': !disabled }
           )}
         />
-        <input
-          type="radio"
-          name={name}
-          className="hidden"
-          value={sample}
-          id={id}
-          checked={checked}
-          disabled={disabled || !inStock}
-          onChange={onChange}
-        />
+        <input type="radio" className="peer hidden" disabled={disabled} {...props} />
         <span
-          className={cn(
-            'box-border h-[2.25rem] w-[2.25rem] rounded-full border-foreground  @lg:h-[4.75rem] @lg:w-[4.75rem]',
-            checked && 'border-[2px] border-solid'
-          )}
+          className="box-border h-9 w-9 rounded-full border-2 border-transparent peer-checked:border-foreground @lg:h-[4.75rem] @lg:w-[4.75rem]"
           style={style}
         />
-        {disabled && (
-          <span className="absolute top-1/2 w-full rotate-45 scale-x-[120%] border-t-2 border-foreground" />
-        )}
-        {!inStock && (
-          <span className="absolute top-1/2 w-full rotate-45 scale-x-[120%] border-t-2 border-dashed border-foreground" />
-        )}
+        {disabled || !inStock ? (
+          <span
+            className={cn(
+              'absolute top-1/2 w-full rotate-45 scale-x-[120%] border-t-2 border-foreground',
+              {
+                'border-dashed': !inStock,
+              }
+            )}
+          />
+        ) : null}
       </span>
     </label>
   )
