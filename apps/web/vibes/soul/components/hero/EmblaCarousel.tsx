@@ -28,7 +28,7 @@ export const EmblaCarousel = function EmblaCarousel({ slides, className = '' }: 
               <div key={idx} className="relative shrink-0 grow-0 basis-full">
                 <Image src={image.url} alt={image.alt} fill className="object-cover" />
                 {heading && (
-                  <h1 className="@2xl:text-[90px]absolute bottom-10 left-1/2 z-10 w-full max-w-7xl -translate-x-1/2 px-3 text-5xl font-medium leading-none text-background @lg:bottom-24 @lg:px-20">
+                  <h1 className="absolute bottom-10 left-1/2 z-10 w-full max-w-7xl -translate-x-1/2 px-3 text-5xl font-medium leading-none text-background @lg:bottom-24 @lg:px-20 @2xl:text-[90px]">
                     {heading}
                   </h1>
                 )}
@@ -40,7 +40,7 @@ export const EmblaCarousel = function EmblaCarousel({ slides, className = '' }: 
 
       <div className="absolute inset-x-3 bottom-0 flex justify-between pb-2 pt-4 @lg:inset-x-20 @lg:pb-8 @lg:pt-10">
         {/* Progress Buttons  */}
-        <div className="">
+        <div>
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
