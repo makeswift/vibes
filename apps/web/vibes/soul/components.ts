@@ -178,6 +178,7 @@ export const components = [
       './components/footer/index.tsx',
       './components/header/index.tsx',
       './components/newsletter/index.tsx',
+      './components/product-description/index.tsx',
       './components/product-detail/index.tsx',
     ],
     files: ['components/page-product/index.tsx'],

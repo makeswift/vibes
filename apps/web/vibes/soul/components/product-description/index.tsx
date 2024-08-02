@@ -24,29 +24,31 @@ export const ProductDescription = function ProductDescription({
   video,
 }: Readonly<Props>) {
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col-reverse items-start justify-between gap-x-4 gap-y-4 bg-background py-6 @lg:flex-row @lg:px-10 @lg:py-24 @xl:gap-x-10 @6xl:px-44 @7xl:gap-x-32">
-      {/* Accordions */}
-      <Accordions accordions={accordions} className="@lg:sticky @lg:top-20" />
+    <div className="@container">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col-reverse items-start justify-between gap-x-4 gap-y-4 bg-background py-6 @lg:flex-row @lg:px-10 @lg:py-24 @xl:gap-x-10 @6xl:px-44 @7xl:gap-x-32">
+        {/* Accordions */}
+        <Accordions accordions={accordions} className="@lg:sticky @lg:top-20" />
 
-      {/* Image || Video Container */}
-      <div
-        className="relative aspect-square w-full overflow-hidden 
+        {/* Image || Video Container */}
+        <div
+          className="relative aspect-square w-full overflow-hidden 
         @lg:sticky @lg:top-20 @lg:aspect-[9/12] @lg:rounded-2xl @4xl:min-w-96"
-      >
-        {image ? (
-          <Image
-            src={image.url}
-            // height={image.dimensions.height}
-            // width={image.dimensions.width}
-            fill
-            alt={image.alt}
-            className="object-cover"
-          />
-        ) : video ? (
-          <video className="h-full object-cover" muted loop autoPlay>
-            <source src={video} type="video/mp4" />
-          </video>
-        ) : null}
+        >
+          {image ? (
+            <Image
+              src={image.url}
+              // height={image.dimensions.height}
+              // width={image.dimensions.width}
+              fill
+              alt={image.alt}
+              className="object-cover"
+            />
+          ) : video ? (
+            <video className="h-full object-cover" muted loop autoPlay>
+              <source src={video} type="video/mp4" />
+            </video>
+          ) : null}
+        </div>
       </div>
     </div>
   )
