@@ -22,8 +22,8 @@ export const Newsletter = function Newsletter({ image, heading, description, the
   return (
     <section
       className={clsx('@container', {
-        ['bg-primary-900']: theme === 'brand-shadow',
-        ['bg-primary-100']: theme === 'brand-highlight',
+        ['bg-primary-shadow']: theme === 'brand-shadow',
+        ['bg-primary-highlight']: theme === 'brand-highlight',
         ['bg-contrast-100']: theme === 'neutral',
         ['bg-background']: theme === 'light',
       })}

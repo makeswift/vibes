@@ -31,7 +31,7 @@ export const Hero = function Hero({ slides }: Props) {
   }, [currentIndex, slides.length, setCurrentIndex])
 
   return (
-    <header className="bg-primary-900 relative h-[100dvh] max-h-[880px] @container">
+    <header className="relative h-[100dvh] max-h-[880px] bg-primary-shadow @container">
       <Slideshow slides={slides} className="h-full w-full" currentIndex={currentIndex} />
       <ProgressSection
         currentIndex={currentIndex}

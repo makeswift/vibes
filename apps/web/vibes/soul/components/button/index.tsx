@@ -46,7 +46,7 @@ export const Button = forwardRef(function Button(
           'absolute left-0 top-0 z-0 w-full -translate-x-[110%] rounded-full transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0',
           link?.href === '#' && 'pointer-events-none opacity-20',
           {
-            primary: 'bg-primary-300',
+            primary: 'bg-white/10',
             dark: 'bg-background',
             light: 'bg-foreground',
           }[variant],

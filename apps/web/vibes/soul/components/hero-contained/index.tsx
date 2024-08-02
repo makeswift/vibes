@@ -30,7 +30,7 @@ export const HeroContained = function HeroContained({ slides }: Props) {
   }, [currentIndex, slides.length, setCurrentIndex])
 
   return (
-    <header className="bg-primary-900 relative flex flex-col @container">
+    <header className="relative flex flex-col bg-primary-shadow @container">
       <div className="flex flex-grow flex-col-reverse gap-x-4 gap-y-10 @4xl:h-[100dvh] @4xl:max-h-[880px] @4xl:flex-row">
         {/* Heading */}
         {slides?.map(({ heading }, idx) => {

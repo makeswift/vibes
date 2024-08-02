@@ -25,7 +25,7 @@ export const MediaSection = function MediaSection({
     <section
       className={clsx(
         'relative h-[100dvh] max-h-[880px] @container',
-        mediaAlign ? 'bg-primary-900' : ''
+        mediaAlign ? 'bg-primary-shadow' : ''
       )}
     >
       <div className="flex h-full flex-col @3xl:flex-row">

@@ -18,7 +18,7 @@ export const Input = forwardRef(function Input(
   return (
     <div
       className={clsx(
-        { 'bg-primary-100': variant === 'brand' },
+        { 'bg-primary-highlight': variant === 'brand' },
         'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-background font-medium transition-colors duration-200 focus-within:border-foreground focus:outline-none'
       )}
     >

@@ -46,7 +46,7 @@ export const ProductCard = function ProductCard({
     >
       <div className="relative flex-grow overflow-hidden rounded-xl">
         {label && (
-          <span className="bg-primary-100 absolute left-2.5 top-2.5 z-10 rounded-md px-2.5 py-[3px] font-mono text-xs uppercase @4xl:left-4 @4xl:top-4">
+          <span className="absolute left-2.5 top-2.5 z-10 rounded-md bg-primary-highlight px-2.5 py-[3px] font-mono text-xs uppercase @4xl:left-4 @4xl:top-4">
             {label}
           </span>
         )}

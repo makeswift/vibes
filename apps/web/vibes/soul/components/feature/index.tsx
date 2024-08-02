@@ -31,7 +31,7 @@ export interface Feature {
 
 export const Feature = function Feature({ image, heading, description, grid, link }: Feature) {
   return (
-    <section className="bg-primary-900 relative @container/section">
+    <section className="relative bg-primary-shadow @container/section">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
         {/* Image Side */}
         <div
