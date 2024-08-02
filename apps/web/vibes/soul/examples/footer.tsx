@@ -31,20 +31,5 @@ export const footerLinks = [
 ]
 
 export default function Preview() {
-  const newsletter = {
-    heading: 'Sign up for our newsletter',
-    description: 'Lorem ipsum dolor sit amet consectetur adipiscing sed do eiusmod tempor.',
-  }
-
-  return (
-    <div className="flex flex-col gap-3">
-      <Footer
-        links={footerLinks}
-        logo={{ alt: 'SOUL' }}
-        companyName="Soul"
-        newsletter={newsletter}
-      />
-      <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
-    </div>
-  )
+  return <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
 }

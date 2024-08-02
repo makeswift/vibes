@@ -3,8 +3,6 @@ import Link from 'next/link'
 
 import clsx from 'clsx'
 
-import Newsletter from '@/vibes/soul/components/newsletter'
-
 type FooterColumn = {
   category: string
   categoryLinks?: { text: string; href: string }[]
@@ -18,30 +16,13 @@ type Props = {
     link?: { href: string; target?: '_self' | '_blank' }
   }
   links?: FooterColumn[]
-  newsletter?: {
-    heading: string
-    description: string
-  }
   companyName: string
 }
 
-export const Footer = function Footer({ links, logo, newsletter, companyName }: Props) {
+export const Footer = function Footer({ links, logo, companyName }: Props) {
   return (
-    <footer className="border-b-[4px] border-primary bg-background text-foreground @container">
-      {newsletter && (
-        <Newsletter
-          heading={newsletter.heading}
-          description={newsletter.description}
-          theme="brand"
-        />
-      )}
-
-      <div
-        className={clsx(
-          'mx-3 flex flex-col justify-between gap-10 @xl:mx-20 @xl:py-20 @2xl:flex-row',
-          newsletter && '@xl:border-t @xl:border-contrast-100'
-        )}
-      >
+    <footer className="border-b-[4px] border-primary bg-background text-foreground @container @xl:border-t @xl:border-contrast-100">
+      <div className="mx-3 flex flex-col justify-between gap-10 @xl:mx-20 @xl:py-20 @2xl:flex-row">
         {/* Logo */}
         <Link
           href={logo?.link?.href ?? '/'}
