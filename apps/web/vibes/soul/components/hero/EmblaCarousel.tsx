@@ -38,7 +38,7 @@ export const EmblaCarousel = function EmblaCarousel({ slides, className = '' }: 
         </div>
       </div>
 
-      <div className="absolute inset-x-3 bottom-0 flex justify-between border pb-2 pt-4 @lg:inset-x-20 @lg:pb-8 @lg:pt-10">
+      <div className="absolute inset-x-3 bottom-0 flex justify-between pb-2 pt-4 @lg:inset-x-20 @lg:pb-8 @lg:pt-10">
         {/* Progress Buttons  */}
         <div className="">
           {scrollSnaps.map((_, index) => (

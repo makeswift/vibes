@@ -23,7 +23,7 @@ export const HeroMediaContainedLayout = function HeroMediaContainedLayout({
 }: Props) {
   return (
     <header className="bg-primary-900 relative flex flex-col @container">
-      <div className="mx-auto  flex w-full max-w-7xl flex-grow flex-col-reverse gap-x-4 gap-y-10 @4xl:h-[100dvh] @4xl:max-h-[880px] @4xl:flex-row">
+      <div className="mx-auto flex w-full max-w-7xl flex-grow flex-col-reverse gap-x-4 gap-y-10 @4xl:h-[100dvh] @4xl:max-h-[880px] @4xl:flex-row">
         <h1 className="mb-10 mt-auto pl-3 text-5xl font-medium leading-none text-background @lg:mb-24 @lg:pl-20 @2xl:text-[90px] @4xl:w-1/2">
           {heading}
         </h1>
