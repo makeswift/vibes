@@ -21,8 +21,8 @@ type Props = {
 
 export const Footer = function Footer({ links, logo, companyName }: Props) {
   return (
-    <footer className="border-b-[4px] border-primary bg-background text-foreground @container @xl:border-t @xl:border-contrast-100">
-      <div className="mx-3 flex flex-col justify-between gap-10 @xl:mx-20 @xl:py-20 @2xl:flex-row">
+    <footer className="border-b-[4px] border-primary bg-background text-foreground @container ">
+      <div className="mx-3 flex flex-col justify-between gap-10 @xl:mx-20 @xl:border-t @xl:border-contrast-100 @xl:py-20 @2xl:flex-row">
         {/* Logo */}
         <Link
           href={logo?.link?.href ?? '/'}
