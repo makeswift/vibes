@@ -53,7 +53,7 @@ export default function Dropdown({
       >
         {options.find(option => option.value === value)?.label || placeholder}
 
-        <ChevronDownIcon className="stroke-foreground" />
+        <ChevronDownIcon className="h-4 w-4 stroke-foreground @lg:h-6 @lg:w-6" />
       </button>
 
       <div
