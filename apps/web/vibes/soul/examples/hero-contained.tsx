@@ -47,7 +47,7 @@ export default function Preview() {
   ]
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="min-h-48">
       <Hero heading="Pro Jerseys" slides={slides} containedMediaLayout />
     </div>
   )

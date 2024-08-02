@@ -57,7 +57,7 @@ export const Button = forwardRef(function Button(
         )}
       />
       <span
-        className={clsx('relative z-10 flex transition-colors', {
+        className={clsx('relative z-10 flex justify-center transition-colors', {
           'group-hover:text-foreground': variant === 'primary' && lightness < 700,
           'group-hover:text-background': variant === 'primary' && lightness >= 700,
           invert: variant !== 'primary',

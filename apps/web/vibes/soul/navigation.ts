@@ -119,6 +119,12 @@ export const navigation = [
         component: 'product-card',
       },
       {
+        title: 'Product Detail',
+        slug: 'product-detail',
+        file: 'docs/product-detail.mdx',
+        component: 'product-detail',
+      },
+      {
         title: 'Product List',
         slug: 'product-list',
         file: 'docs/product-list.mdx',

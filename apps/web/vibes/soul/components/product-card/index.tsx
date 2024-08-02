@@ -8,27 +8,13 @@ import clsx from 'clsx'
 import Compare from '@/vibes/soul/components/product-card/compare'
 import '@/vibes/soul/styles.css'
 
-import Price from './price'
+import Price, { ComparePrice, RangePrice, StaticPrice } from './price'
 
 export type ProductCard = {
   name: string
   tags?: string[]
   label?: string
-  price?:
-    | {
-        type: 'range'
-        min: number
-        max: number
-      }
-    | {
-        type: 'compare'
-        prev: number
-        current: number
-      }
-    | {
-        type: 'static'
-        value: number
-      }
+  price?: RangePrice | ComparePrice | StaticPrice
   image: string
   ctaLink?: {
     href: string
