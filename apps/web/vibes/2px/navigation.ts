@@ -20,6 +20,12 @@ export const navigation = [
       { title: 'Text Area', slug: 'text-area', file: 'docs/text-area.mdx', component: 'text-area' },
       { title: 'Skeleton', slug: 'skeleton', file: 'docs/skeleton.mdx', component: 'skeleton' },
       {
+        title: 'Dropdown',
+        slug: 'dropdown',
+        file: 'docs/dropdown.mdx',
+        component: 'dropdown',
+      },
+      {
         title: 'Radio Button',
         slug: 'radio-button',
         file: 'docs/radio-button.mdx',

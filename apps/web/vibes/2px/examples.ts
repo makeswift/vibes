@@ -4,6 +4,13 @@ import { Components } from '@/vibes/schema'
 
 export const examples = [
   {
+    name: 'dropdown-example',
+    dependencies: [],
+    registryDependencies: ['dropdown'],
+    files: ['examples/dropdown.tsx'],
+    component: lazy(() => import('./examples/dropdown')),
+  },
+  {
     name: 'button-example',
     dependencies: [],
     registryDependencies: ['button'],
