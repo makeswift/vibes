@@ -123,20 +123,6 @@ export const examples = [
     component: lazy(() => import('./examples/badge')),
   },
   {
-    name: 'button-example',
-    dependencies: [],
-    registryDependencies: ['button'],
-    files: ['examples/button.tsx'],
-    component: lazy(() => import('./examples/button')),
-  },
-  {
-    name: 'rating-example',
-    dependencies: [],
-    registryDependencies: ['rating'],
-    files: ['examples/rating.tsx'],
-    component: lazy(() => import('./examples/rating')),
-  },
-  {
     name: 'swatch-example',
     dependencies: [],
     registryDependencies: ['swatch'],

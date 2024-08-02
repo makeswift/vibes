@@ -46,6 +46,13 @@ export const components = [
     component: lazy(() => import('./components/accordions')),
   },
   {
+    name: 'rating',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/rating/index.tsx'],
+    component: lazy(() => import('./components/rating')),
+  },
+  {
     name: 'text-area',
     dependencies: [],
     registryDependencies: [],
@@ -114,13 +121,6 @@ export const components = [
     registryDependencies: [],
     files: ['./components/badge/index.tsx'],
     component: lazy(() => import('./components/badge')),
-  },
-  {
-    name: 'rating',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['./components/rating/index.tsx'],
-    component: lazy(() => import('./components/rating')),
   },
   {
     name: 'swatch',
