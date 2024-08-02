@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'file-uploader-example',
+    dependencies: [],
+    registryDependencies: ['file-uploader'],
+    files: ['examples/file-uploader.tsx'],
+    component: lazy(() => import('./examples/file-uploader')),
+  },
+  {
     name: 'input-example',
     dependencies: [],
     registryDependencies: ['input'],
