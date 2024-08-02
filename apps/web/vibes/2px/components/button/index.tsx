@@ -1,10 +1,12 @@
+import { ComponentProps } from 'react'
+
 import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '@/lib/utils'
 
 import { LoadingIcon } from '../icons'
 
-export interface ButtonProps {
+export interface ButtonProps extends ComponentProps<'button'> {
   className?: string
   variant?: 'primary' | 'secondary'
   loading?: boolean
@@ -19,14 +21,14 @@ const Button = ({
   loading,
   children,
   asChild = false,
+  ...props
 }: ButtonProps) => {
   const Component = asChild ? Slot : 'button'
   return (
-    <div className="flex w-full items-center justify-center font-body @container">
+    <div className="flex w-full items-center justify-center font-body">
       <Component
         className={cn(
-          className,
-          'group mx-auto flex items-center justify-center whitespace-nowrap rounded-[2.5rem]',
+          'group flex items-center justify-center whitespace-nowrap rounded-[2.5rem]',
           'h-10 w-fit px-5 py-[0.625rem] text-sm !leading-[var(--line-height-base)] @lg:h-20 @lg:w-full @lg:px-20 @lg:py-[0.625rem] @lg:text-lg',
           loading && variant === 'primary' && 'hover:bg-foreground hover:text-background',
           loading && variant === 'secondary' && 'hover:border-solid',
@@ -35,8 +37,10 @@ const Button = ({
               'bg-foreground text-background hover:border-2 hover:border-foreground hover:bg-background hover:text-foreground',
             secondary:
               'border-2 border-foreground bg-background text-foreground hover:border-dashed',
-          }[variant]
+          }[variant],
+          className
         )}
+        {...props}
       >
         {loading ? (
           <LoadingIcon
