@@ -28,7 +28,7 @@ export const CategoryCard = function CategoryCard({
     <Link
       href={ctaLink?.href as Route}
       target={ctaLink?.target}
-      className="group relative flex h-full w-fit snap-start flex-col gap-2"
+      className="group relative flex aspect-[3/4] w-full min-w-[226px] flex-col gap-2 @4xl:min-w-[33%]"
       {...props}
     >
       <Arrow
@@ -37,13 +37,12 @@ export const CategoryCard = function CategoryCard({
           theme === 'dark' ? 'text-background' : 'text-foreground'
         )}
       />
-      <div className="relative overflow-hidden rounded-lg @4xl:rounded-2xl">
+      <div className="relative h-full w-full overflow-hidden rounded-lg @4xl:rounded-2xl">
         <Image
           src={image}
-          height={600}
-          width={467}
+          fill
           alt="Category card image"
-          className="h-full min-h-[291px] w-full min-w-[226px] select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 @4xl:min-h-[600px] @4xl:min-w-[467px]"
+          className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>
       <span
