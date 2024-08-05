@@ -129,4 +129,11 @@ export const examples = [
     files: ['examples/swatch.tsx'],
     component: lazy(() => import('./examples/swatch')),
   },
+  {
+    name: 'product-card-example',
+    dependencies: [],
+    registryDependencies: ['product-card'],
+    files: ['examples/product-card.tsx'],
+    component: lazy(() => import('./examples/product-card')),
+  },
 ] satisfies Components
