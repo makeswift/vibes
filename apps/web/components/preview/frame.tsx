@@ -38,7 +38,10 @@ export function Frame({ children }: Props) {
 
   return (
     <div className="relative bg-contrast-100" ref={container}>
-      <div className="relative mx-auto border border-white" style={{ width: width ?? '100%' }}>
+      <div
+        className="relative mx-auto border border-dashed border-contrast-200"
+        style={{ width: width ?? '100%' }}
+      >
         <div style={{ zoom }}>
           <div style={(activeBrand?.cssVars ?? {}) as CSSProperties}>{children}</div>
         </div>
