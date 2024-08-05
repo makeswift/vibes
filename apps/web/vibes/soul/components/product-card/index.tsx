@@ -68,7 +68,7 @@ export const ProductCard = function ProductCard({
       </div>
 
       <div className="flex h-full max-h-32 flex-col gap-1">
-        <h3 className="flex flex-col flex-wrap justify-between gap-2 pt-3 text-sm font-semibold @4xl:flex-row @4xl:text-base">
+        <h3 className="flex flex-col flex-wrap justify-between gap-1 pt-3 text-sm font-semibold @4xl:flex-row">
           {name && <span className="line-clamp-2">{name}</span>}
           {tags && <span className="font-normal text-contrast-400">{tags.join('/')}</span>}
         </h3>

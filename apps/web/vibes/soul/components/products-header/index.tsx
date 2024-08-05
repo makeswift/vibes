@@ -10,13 +10,13 @@ type Props = {
 export const ProductsHeader = function ProductsHeader({ title, numberOfProducts }: Props) {
   return (
     <div className="z-10 flex items-center justify-between bg-background pb-10 pt-28 text-foreground @container @lg:pt-44">
-      <h1 className="pl-3 text-xl font-medium @lg:pl-20 @lg:text-[40px]">
+      <h1 className="pl-3 text-xl font-medium @xl:pl-20 @2xl:text-[40px]">
         {title} <span className="text-contrast-200">{numberOfProducts}</span>
       </h1>
 
-      <div className="flex gap-2 pr-3 @lg:pr-20">
+      <div className="flex gap-2 pr-3 @xl:pr-20">
         <Button variant="dark" size="small">
-          <span className="hidden @lg:block">Filter</span>
+          <span className="hidden @xl:block">Filter</span>
           <Icon name="Sliders" size={18} />
         </Button>
         <Dropdown
