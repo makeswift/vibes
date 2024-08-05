@@ -71,6 +71,8 @@ Copy and paste the following variables into your CSS file.
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.
 
+### Brand colors
+
 <Colors
   colors={[
     { name: 'primary', value: '#0080FF' },
@@ -79,6 +81,9 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. P
     { name: 'foreground', value: '#000000' },
   ]}
 />
+
+### Neutral colors
+
 <Colors
   colors={[
     { name: 'contrast-100', value: '#F2F5F8' },
@@ -97,10 +102,30 @@ Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi 
 
 <FontFamily
   fonts={[
-    { name: 'Polysans Wide', variable: '--font-family-heading', value: 'font-heading' },
-    { name: 'Polysans', variable: '--font-family-body', value: 'font-body' },
-    { name: 'IBM Plex Mono', variable: '--font-family-mono', value: 'font-mono' },
+    { name: 'Polysans Wide', variable: '--font-family-heading', class: 'font-heading' },
+    { name: 'Polysans', variable: '--font-family-body', class: 'font-body' },
+    { name: 'IBM Plex Mono', variable: '--font-family-mono', class: 'font-mono' },
   ]}
 />
 
 ### Font Sizes
+
+<FontSize
+  sizes={[
+    { variable: '--font-size-xs', class: 'text-xs', value: '12/160' },
+    { variable: '--font-size-sm', class: 'text-sm', value: '14/160' },
+    { variable: '--font-size-base', class: 'text-base', value: '16/160' },
+    { variable: '--font-size-lg', class: 'text-lg', value: '18/150' },
+    { variable: '--font-size-xl', class: 'text-xl', value: '20/150' },
+    { variable: '--font-size-2xl', class: 'text-2xl', value: '30/140' },
+    { variable: '--font-size-3xl', class: 'text-3xl', value: '44/140' },
+  ]}
+/>
+
+## Images
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.
+
+## Icons
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.

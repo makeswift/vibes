@@ -1,9 +1,7 @@
-import clsx from 'clsx'
-
 interface Font {
   name: string
   variable: string
-  value: string
+  class: string
 }
 
 function FontFamily({ fonts }: { fonts: Font[] }) {
@@ -18,7 +16,7 @@ function FontFamily({ fonts }: { fonts: Font[] }) {
             >
               {font.name}
             </div>
-            <div className="font-mono text-sm text-contrast-500">{font.value}</div>
+            <div className="font-mono text-[13px] text-contrast-500">{font.class}</div>
           </div>
         )
       })}

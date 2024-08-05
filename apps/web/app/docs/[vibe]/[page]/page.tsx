@@ -18,6 +18,7 @@ import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { Colors } from '@/components/ui/colors'
 import { FontFamily } from '@/components/ui/font-family'
+import { FontSize } from '@/components/ui/font-size'
 import { Installation } from '@/components/ui/installation'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Reveal } from '@/components/ui/reveal'
@@ -96,6 +97,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
         return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
       },
       FontFamily,
+      FontSize,
       Popover,
       PopoverContent,
       PopoverTrigger,
