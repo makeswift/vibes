@@ -4,6 +4,41 @@ import { Components } from '@/vibes/schema'
 
 export const components = [
   {
+    name: 'dropdown',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/dropdown/index.tsx'],
+    component: lazy(() => import('./components/dropdown')),
+  },
+  {
+    name: 'button',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/button/index.tsx'],
+    component: lazy(() => import('./components/button')),
+  },
+  {
+    name: 'file-uploader',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/file-uploader/index.tsx'],
+    component: lazy(() => import('./components/file-uploader')),
+  },
+  {
+    name: 'input',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/input/index.tsx'],
+    component: lazy(() => import('./components/input')),
+  },
+  {
+    name: 'radio-button',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/radio-button/index.tsx'],
+    component: lazy(() => import('./components/radio-button')),
+  },
+  {
     name: 'accordions',
     dependencies: ['@radix-ui/react-accordion'],
     registryDependencies: [],
@@ -18,11 +53,25 @@ export const components = [
     component: lazy(() => import('./components/rating')),
   },
   {
-    name: 'button',
+    name: 'text-area',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/button/index.tsx'],
-    component: lazy(() => import('./components/button')),
+    files: ['./components/text-area/index.tsx'],
+    component: lazy(() => import('./components/text-area')),
+  },
+  {
+    name: 'skeleton',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/skeleton/index.tsx'],
+    component: lazy(() => import('./components/skeleton')),
+  },
+  {
+    name: 'option-selector',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/option-selector/index.tsx'],
+    component: lazy(() => import('./components/option-selector')),
   },
   {
     name: 'checkbox',
@@ -72,6 +121,13 @@ export const components = [
     registryDependencies: [],
     files: ['./components/badge/index.tsx'],
     component: lazy(() => import('./components/badge')),
+  },
+  {
+    name: 'swatch',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/swatch/index.tsx'],
+    component: lazy(() => import('./components/swatch')),
   },
   {
     name: 'product-card',
