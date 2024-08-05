@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 
-import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 
-import { ChevronDownIcon } from '../icons'
+import { ChevronDownIcon } from '../icons/ChevronDownIcon'
 
 interface OptionProps {
   label: string
@@ -33,9 +33,9 @@ export default function Dropdown({
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className={clsx('relative w-full font-body text-foreground @container', className)}>
+    <div className={cn('relative w-full font-body text-foreground @container', className)}>
       <button
-        className={clsx(
+        className={cn(
           'relative z-0 flex w-full items-center justify-between border-2 px-4 py-[1.125rem] text-base font-medium leading-6 outline-none @lg:px-5 @lg:py-[1.375rem] @lg:text-xl @lg:leading-9',
           {
             'border-error': status === 'error',
@@ -57,7 +57,7 @@ export default function Dropdown({
       </button>
 
       <div
-        className={clsx(
+        className={cn(
           'fixed left-0 top-full z-10 mt-2 flex w-full flex-col items-start gap-1 border-2 border-foreground bg-background px-8 py-6 text-sm font-medium leading-6 @lg:text-2xl @lg:leading-9 @lg:tracking-[-0.0175rem]',
           {
             hidden: !isOpen,
@@ -67,7 +67,7 @@ export default function Dropdown({
         {options.map((option, index) => (
           <button
             key={index}
-            className={clsx(
+            className={cn(
               'border-b-2 outline-none hover:border-dashed hover:border-foreground focus:border-dashed focus:border-foreground',
               {
                 'border-b-foreground': value === option.value,

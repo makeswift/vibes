@@ -1,8 +1,6 @@
-import { ComponentProps } from 'react'
-
 import { cn } from '@/lib/utils'
 
-const Badge = ({ children, className }: ComponentProps<'span'>) => {
+const Badge = ({ children, className }: React.ComponentProps<'span'>) => {
   return (
     <span
       className={cn(

@@ -2,7 +2,10 @@
 
 import { useRef } from 'react'
 
-import { MinusDashedIcon, MinusSolidIcon, PlusDashedIcon, PlusSolidIcon } from '../icons'
+import { MinusDashedIcon } from '@/vibes/2px/components/icons/MinusDashedIcon'
+import { MinusSolidIcon } from '@/vibes/2px/components/icons/MinusSolidIcon'
+import { PlusDashedIcon } from '@/vibes/2px/components/icons/PlusDashedIcon'
+import { PlusSolidIcon } from '@/vibes/2px/components/icons/PlusSolidIcon'
 
 interface Props
   extends Omit<React.HTMLAttributes<HTMLInputElement>, 'type' | 'className' | 'onChange'> {
