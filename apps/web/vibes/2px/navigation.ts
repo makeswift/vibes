@@ -18,6 +18,12 @@ export const navigation = [
         component: 'button',
       },
       {
+        title: 'Carousel Section',
+        slug: 'carousel-section',
+        file: 'docs/carousel-section.mdx',
+        component: 'carousel-section',
+      },
+      {
         title: 'File Uploader',
         slug: 'file-uploader',
         file: 'docs/file-uploader.mdx',

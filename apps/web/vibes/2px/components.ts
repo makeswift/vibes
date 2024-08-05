@@ -106,6 +106,18 @@ export const components = [
     component: lazy(() => import('./components/option-selector')),
   },
   {
+    name: 'carousel-section',
+    dependencies: ['react'],
+    registryDependencies: [],
+    files: [
+      './components/carousel-section/index.tsx',
+      './components/carousel-section/index.css',
+      '../../lib/utils.ts',
+      './components/icons/ChevronLeftIcon.tsx',
+    ],
+    component: lazy(() => import('./components/carousel-section')),
+  },
+  {
     name: 'checkbox',
     dependencies: [],
     registryDependencies: [],

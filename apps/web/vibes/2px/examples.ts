@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/breadcrumbs')),
   },
   {
+    name: 'carousel-section-example',
+    dependencies: [],
+    registryDependencies: ['carousel-section'],
+    files: ['examples/carousel-section.tsx'],
+    component: lazy(() => import('./examples/carousel-section')),
+  },
+  {
     name: 'tabs-example',
     dependencies: [],
     registryDependencies: ['tabs'],
