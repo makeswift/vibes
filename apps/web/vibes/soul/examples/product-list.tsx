@@ -1,7 +1,7 @@
 import ProductCard from '@/vibes/soul/components/product-card'
 import { ProductList } from '@/vibes/soul/components/product-list'
 
-const products: ProductCard[] = [
+export const productsList: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
@@ -40,9 +40,5 @@ const products: ProductCard[] = [
 ]
 
 export default function Preview() {
-  return (
-    <div className="min-h-48">
-      <ProductList products={products} />
-    </div>
-  )
+  return <ProductList products={productsList} />
 }

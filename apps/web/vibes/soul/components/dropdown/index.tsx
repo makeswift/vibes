@@ -9,17 +9,20 @@ import {
   DropdownMenuTrigger,
   DropdownMenuTriggerProps,
 } from '@radix-ui/react-dropdown-menu'
+import clsx from 'clsx'
 
 import Icon from '@/vibes/soul/components/icon'
 
 type Props = {
   label: string
   items: string[]
+  size?: 'default' | 'small'
 }
 
 export const Dropdown = function Dropdown({
   label,
   items,
+  size = 'default',
   ...props
 }: Props & DropdownMenuTriggerProps) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
@@ -27,7 +30,10 @@ export const Dropdown = function Dropdown({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="flex items-center gap-3 rounded-full border border-contrast-100 bg-white p-2 px-5 py-3 font-medium text-foreground transition-colors hover:bg-contrast-100 focus:outline-none focus:ring-1"
+        className={clsx(
+          'flex items-center gap-3 rounded-full border border-contrast-100 bg-white p-2 px-5 py-3 font-medium text-foreground transition-colors hover:bg-contrast-100 focus:outline-none focus:ring-1',
+          size === 'small' && 'text-sm'
+        )}
         {...props}
       >
         {selectedItem ?? label}

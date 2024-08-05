@@ -186,6 +186,13 @@ export const examples = [
     component: lazy(() => import('./examples/page-product')),
   },
   {
+    name: 'page-products-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-products.tsx'],
+    component: lazy(() => import('./examples/page-products')),
+  },
+  {
     name: 'pagination-example',
     dependencies: [],
     registryDependencies: ['pagination'],
@@ -219,6 +226,13 @@ export const examples = [
     registryDependencies: ['product-description'],
     files: ['examples/product-description.tsx'],
     component: lazy(() => import('./examples/product-description')),
+  },
+  {
+    name: 'products-header-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/products-header.tsx'],
+    component: lazy(() => import('./examples/products-header')),
   },
   {
     name: 'rating-example',

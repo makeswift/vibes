@@ -16,9 +16,9 @@ import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 import { heroSlides } from '@/vibes/soul/examples/hero'
 
-export const Home = function Home() {
+export const HomePage = function HomePage() {
   return (
-    <div className="relative">
+    <>
       <AnnouncementBar>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
@@ -99,8 +99,8 @@ export const Home = function Home() {
         />
         <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
       </div>
-    </div>
+    </>
   )
 }
 
-export default Home
+export default HomePage

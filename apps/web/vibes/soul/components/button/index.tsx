@@ -24,7 +24,7 @@ export const Button = forwardRef(function Button(
       ref={ref}
       className={clsx(
         className,
-        'group relative w-fit shrink-0 overflow-hidden rounded-full text-center font-medium leading-normal transition-colors focus:outline-none focus:ring-1',
+        'group relative flex w-fit shrink-0 overflow-hidden rounded-full text-center font-medium leading-normal transition-colors focus:outline-none focus:ring-1',
         link?.href === '#' && 'pointer-events-none opacity-20',
         {
           primary: 'bg-primary text-foreground',
@@ -55,7 +55,7 @@ export const Button = forwardRef(function Button(
         )}
       />
       <span
-        className={clsx('relative z-10 flex justify-center transition-colors', {
+        className={clsx('relative z-10 flex items-center justify-center gap-2 transition-colors', {
           invert: variant !== 'primary',
         })}
       >

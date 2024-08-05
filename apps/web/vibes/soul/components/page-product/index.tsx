@@ -14,9 +14,9 @@ import { categories } from '@/vibes/soul/examples/carousel'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
-export const Products = function Products() {
+export const ProductPage = function ProductPage() {
   return (
-    <div className="relative">
+    <>
       <AnnouncementBar>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
@@ -122,8 +122,8 @@ export const Products = function Products() {
         />
         <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
       </div>
-    </div>
+    </>
   )
 }
 
-export default Products
+export default ProductPage

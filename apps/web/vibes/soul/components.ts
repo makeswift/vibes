@@ -186,6 +186,19 @@ export const components = [
     component: lazy(() => import('./components/page-product')),
   },
   {
+    name: 'page-products',
+    dependencies: [],
+    registryDependencies: [
+      './components/announcement-bar/index.tsx',
+      './components/footer/index.tsx',
+      './components/header/index.tsx',
+      './components/product-list/index.tsx',
+      './components/products-header/index.tsx',
+    ],
+    files: ['components/page-products/index.tsx'],
+    component: lazy(() => import('./components/page-products')),
+  },
+  {
     name: 'pagination',
     dependencies: [],
     registryDependencies: [],
@@ -219,6 +232,13 @@ export const components = [
     registryDependencies: [],
     files: ['components/product-description/index.tsx'],
     component: lazy(() => import('./components/product-description')),
+  },
+  {
+    name: 'products-header',
+    dependencies: [],
+    registryDependencies: ['components/button.tsx', 'components/dropdown.tsx'],
+    files: ['components/products-header/index.tsx'],
+    component: lazy(() => import('./components/products-header')),
   },
   {
     name: 'rating',

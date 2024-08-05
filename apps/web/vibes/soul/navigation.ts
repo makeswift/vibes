@@ -138,6 +138,12 @@ export const navigation = [
         file: 'docs/product-description.mdx',
         component: 'product-description',
       },
+      {
+        title: 'Products Header',
+        slug: 'products-header',
+        file: 'docs/products-header.mdx',
+        component: 'products-header',
+      },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
 
       // Page Components
@@ -152,6 +158,12 @@ export const navigation = [
         slug: 'page-product',
         file: 'docs/page-product.mdx',
         component: 'page-product',
+      },
+      {
+        title: 'Page - Products',
+        slug: 'page-products',
+        file: 'docs/page-products.mdx',
+        component: 'page-products',
       },
     ],
   },
