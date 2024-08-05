@@ -7,7 +7,7 @@ import clsx from 'clsx'
 
 import Chevron from '@/vibes/soul/components/icons/Chevron'
 
-type AccordionItem = {
+export type AccordionItem = {
   title: ReactNode
   content: ReactNode
 }

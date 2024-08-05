@@ -1,12 +1,10 @@
 import Image from 'next/image'
 
 import { Accordions } from '@/vibes/soul/components/accordions'
+import { AccordionItem } from '@/vibes/soul/components/accordions'
 
 export interface Props {
-  accordions: {
-    title: string
-    content: string
-  }[]
+  accordions: AccordionItem[]
   image?: {
     url: string
     dimensions: {
@@ -35,14 +33,7 @@ export const ProductDescription = function ProductDescription({
         @lg:sticky @lg:top-20 @lg:aspect-[9/12] @lg:rounded-2xl @4xl:min-w-96"
         >
           {image ? (
-            <Image
-              src={image.url}
-              // height={image.dimensions.height}
-              // width={image.dimensions.width}
-              fill
-              alt={image.alt}
-              className="object-cover"
-            />
+            <Image src={image.url} fill alt={image.alt} className="object-cover" />
           ) : video ? (
             <video className="h-full object-cover" muted loop autoPlay>
               <source src={video} type="video/mp4" />
