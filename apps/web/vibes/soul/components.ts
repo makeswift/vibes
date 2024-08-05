@@ -121,14 +121,6 @@ export const components = [
     files: ['components/hero/index.tsx', 'styles.css'],
     component: lazy(() => import('./components/hero')),
   },
-
-  {
-    name: 'media-section',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['components/media-section/index.tsx', 'styles.css'],
-    component: lazy(() => import('./components/media-section')),
-  },
   {
     name: 'icon-block',
     dependencies: [],
@@ -140,8 +132,22 @@ export const components = [
     name: 'input',
     dependencies: [],
     registryDependencies: [],
-    files: ['components/input/index.tsx', 'styles.css'],
+    files: ['components/input/index.tsx'],
     component: lazy(() => import('./components/input')),
+  },
+  {
+    name: 'label',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/label/index.tsx'],
+    component: lazy(() => import('./components/label')),
+  },
+  {
+    name: 'media-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/media-section/index.tsx', 'styles.css'],
+    component: lazy(() => import('./components/media-section')),
   },
   {
     name: 'newsletter',

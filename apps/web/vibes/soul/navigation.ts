@@ -83,6 +83,7 @@ export const navigation = [
         component: 'icon-block',
       },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
+      { title: 'Label', slug: 'label', file: 'docs/label.mdx', component: 'label' },
       {
         title: 'Media Section',
         slug: 'media-section',

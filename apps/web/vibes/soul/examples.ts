@@ -144,6 +144,13 @@ export const examples = [
     component: lazy(() => import('./examples/input')),
   },
   {
+    name: 'label-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/label.tsx'],
+    component: lazy(() => import('./examples/label')),
+  },
+  {
     name: 'media-section-example',
     dependencies: [],
     registryDependencies: [],
