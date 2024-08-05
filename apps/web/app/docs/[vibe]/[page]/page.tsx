@@ -188,7 +188,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             </div>
           </div>
           <div className="not-prose hidden lg:block">
-            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-400 pb-10">
+            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-300 pb-10">
               <TableOfContents offsetTop={90} />
               <div className="space-y-5 py-5">
                 {totalSize && (
