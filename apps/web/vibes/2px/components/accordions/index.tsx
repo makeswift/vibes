@@ -3,7 +3,7 @@ import * as Accordion from '@radix-ui/react-accordion'
 import { cn } from '@/lib/utils'
 import { ChevronDownIcon } from '@/vibes/2px/components/icons/ChevronDownIcon'
 
-type AccordionItem = {
+export type AccordionItem = {
   title: React.ReactNode
   body: React.ReactNode
 }
@@ -26,13 +26,11 @@ const Accordions = ({ className, accordions, type = 'multiple' }: Props) => {
                   <Accordion.Trigger asChild>
                     <div className="flex w-full cursor-pointer items-center justify-between @lg:pr-5">
                       <div className="flex-grow text-left font-body ">{accordion.title}</div>
-                      <button className="shrink-0">
-                        <ChevronDownIcon
-                          className="text-foreground group-data-[state=open]:rotate-180"
-                          height={16}
-                          width={16}
-                        />
-                      </button>
+                      <ChevronDownIcon
+                        className="shrink-0 text-foreground group-data-[state=open]:rotate-180"
+                        height={16}
+                        width={16}
+                      />
                     </div>
                   </Accordion.Trigger>
                 </Accordion.Header>
@@ -41,7 +39,7 @@ const Accordions = ({ className, accordions, type = 'multiple' }: Props) => {
                 </Accordion.Content>
               </li>
             </Accordion.Item>
-            <div className="mb-5 mt-5 h-[2px] w-full bg-foreground @lg:mt-10" />
+            <div className="mt-5 h-0.5 w-full bg-foreground @lg:mt-10" />
           </div>
         ))}
       </ul>

@@ -165,7 +165,7 @@ export const components = [
   {
     name: 'faq-section',
     dependencies: [],
-    registryDependencies: [],
+    registryDependencies: ['accordions'],
     files: ['./components/faq-section/index.tsx'],
     component: lazy(() => import('./components/faq-section')),
   },
