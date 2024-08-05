@@ -37,7 +37,7 @@ export function Frame({ children }: Props) {
   }, [resize, setMaxWidth])
 
   return (
-    <div className="relative bg-contrast-100" ref={container}>
+    <div className="relative bg-contrast-100 [transform:translate3d(0,0,0)]" ref={container}>
       <div
         className="relative mx-auto border border-dashed border-contrast-200"
         style={{ width: width ?? '100%' }}
