@@ -225,11 +225,15 @@ export default function Preview() {
     },
   ]
 
-  const secondaryLinks = [{ text: 'Login', link: { href: '/login' } }]
+  const secondaryMenuItems = [{ title: 'Login', href: '/login' }]
 
   return (
-    <div className="flex min-h-48 items-center bg-[#07090D] sm:min-h-64 lg:min-h-80">
-      <Navigation mainMenuItems={mainMenuItems} fixed={true} />
+    <div className="flex min-h-48 items-start bg-[#07090D] sm:min-h-64 lg:min-h-64">
+      <Navigation
+        mainMenuItems={mainMenuItems}
+        secondaryMenuItems={secondaryMenuItems}
+        fixed={true}
+      />
     </div>
   )
 }

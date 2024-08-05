@@ -10,8 +10,8 @@ import { ChevronDown } from 'lucide-react'
 
 import Button from '../button'
 
-type SecondaryLink = {
-  text: string
+type SecondaryMenuItem = {
+  title: string
   href: string
 }
 
@@ -46,10 +46,11 @@ type MenuItem = {
 
 type NavigationProps = {
   mainMenuItems: MenuItem[]
+  secondaryMenuItems: SecondaryMenuItem[]
   fixed?: boolean
 }
 
-const Navigation = ({ mainMenuItems, fixed }: NavigationProps) => {
+const Navigation = ({ mainMenuItems, secondaryMenuItems, fixed }: NavigationProps) => {
   const [innerItems, setInnerItems] = useState<InnerMenuItem[]>([])
   const [activeTitle, setActiveTitle] = useState<string>('')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -95,15 +96,15 @@ const Navigation = ({ mainMenuItems, fixed }: NavigationProps) => {
   return (
     <NavigationMenu.Root
       className={clsx(
-        'mx-auto flex max-h-[calc(100%-2.5rem)] max-w-6xl flex-wrap items-center justify-between rounded-[26px] border border-contrast-400 bg-contrast-500/50 lg:rounded-full',
+        'mx-auto w-full pt-5',
         fixed || isScrollingUp
-          ? 'sticky left-0 right-0 top-0 z-10 w-[calc(100%-2.5rem)] translate-y-3 transition-transform duration-200 ease-out'
+          ? 'sticky top-0 z-10 translate-y-0 transition-transform duration-200 ease-out'
           : prevScrollPos < 10
             ? 'relative'
-            : 'sticky left-0 right-0 top-0 z-10 w-[calc(100%-2.5rem)] -translate-y-full transition-transform duration-200 ease-out'
+            : 'sticky top-0 z-10 -translate-y-full transition-transform duration-200 ease-out'
       )}
     >
-      <div className="flex w-full items-center p-2">
+      <div className="mx-auto flex h-14 max-w-6xl items-center rounded-[26px] border border-contrast-400 bg-contrast-500/50 px-2 lg:rounded-full">
         <div className="flex flex-1 shrink-0 items-center gap-5">
           <svg
             width="88"
@@ -120,121 +121,125 @@ const Navigation = ({ mainMenuItems, fixed }: NavigationProps) => {
             />
           </svg>
         </div>
-        <NavigationMenu.List className="hidden h-fit w-full list-none items-center rounded-[6px] lg:flex">
-          {mainMenuItems.map((menuItem, index) => (
-            <NavigationMenu.Item value={menuItem.id} key={index}>
-              {menuItem.href ? (
-                <NavigationMenu.Trigger>
-                  <a
-                    className="flex select-none items-center justify-between gap-0.5 rounded-[4px] px-3 py-2 text-sm font-normal leading-none text-foreground/70 outline-none hover:text-foreground focus:shadow-[0_0_0_2px]"
-                    href={menuItem.href}
+
+        <NavigationMenu.List className="hidden h-full items-center items-stretch lg:flex" asChild>
+          <div className="relative">
+            {mainMenuItems.map((menuItem, index) => (
+              <NavigationMenu.Item value={menuItem.id} key={index} asChild>
+                {menuItem.href ? (
+                  <NavigationMenu.Trigger>
+                    <a
+                      className="select-none px-3 py-2 text-sm font-normal leading-none text-foreground/70 outline-none hover:text-foreground focus:shadow-[0_0_0_2px]"
+                      href={menuItem.href}
+                    >
+                      {menuItem.title}
+                    </a>
+                  </NavigationMenu.Trigger>
+                ) : (
+                  <NavigationMenu.Trigger
+                    onMouseEnter={() => handleMouseEnter(menuItem)}
+                    className={`group flex select-none items-center justify-between gap-0.5 rounded-[4px] px-3 py-2 text-sm font-normal leading-none text-foreground/70 outline-none hover:text-foreground ${menuItem.id}`}
                   >
                     {menuItem.title}
-                  </a>
-                </NavigationMenu.Trigger>
-              ) : (
-                <NavigationMenu.Trigger
-                  onMouseEnter={() => handleMouseEnter(menuItem)}
-                  className={`group flex select-none items-center justify-between gap-0.5 rounded-[4px] px-3 py-2 text-sm font-normal leading-none text-foreground/70 outline-none hover:text-foreground focus:shadow-[0_0_0_2px] ${menuItem.id}`}
-                >
-                  {menuItem.title}
-                  <ChevronDown
-                    size={16}
-                    className="relative top-[1px] text-foreground transition-transform duration-300 ease-in group-data-[state=open]:-rotate-180"
-                    aria-hidden
-                  />
-                </NavigationMenu.Trigger>
-              )}
+                    <ChevronDown
+                      size={16}
+                      className="relative top-[1px] text-foreground transition-transform duration-300 ease-in group-data-[state=open]:-rotate-180"
+                      aria-hidden
+                    />
+                  </NavigationMenu.Trigger>
+                )}
 
-              {menuItem.subMenuItems.length > 0 && (
-                <NavigationMenu.Content
-                  className="data-[motion=from-start]:animate-enterFromRight data-[motion=from-end]:animate-enterFromLeft data-[motion=to-start]:animate-exitToRight data-[motion=to-end]:animate-exitToLeft absolute left-0 top-0 w-full rounded-2xl bg-contrast-500/50 backdrop-blur sm:w-auto"
-                  style={{ pointerEvents: 'auto' }}
-                >
-                  <div
-                    className={`content-container grid list-none rounded-2xl border border-contrast-400 ${
-                      menuItem.subMenuItems[0].title && menuItem.img
-                        ? 'grid-cols-[250px_1fr_300px]'
-                        : menuItem.subMenuItems[0].title
-                          ? 'grid-cols-[250px_1fr]'
-                          : menuItem.img
-                            ? 'grid-cols-[1fr_300px]'
-                            : 'grid-cols-[1fr]'
-                    }`}
-                  >
+                {menuItem.subMenuItems.length > 0 && (
+                  <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromRight data-[motion=from-end]:animate-enterFromLeft data-[motion=to-start]:animate-exitToRight data-[motion=to-end]:animate-exitToLeft pointer-events-auto absolute left-0 top-0 w-full rounded-2xl bg-contrast-500/50 backdrop-blur sm:w-auto">
                     <div
-                      className={`${
-                        menuItem.subMenuItems[0].title ? '' : 'hidden'
-                      } z-10 h-full rounded-l-2xl bg-[#13171E] backdrop-blur-xl`}
+                      className={`content-container grid list-none rounded-2xl border border-contrast-400 ${
+                        menuItem.subMenuItems[0].title && menuItem.img
+                          ? 'grid-cols-[250px_1fr_300px]'
+                          : menuItem.subMenuItems[0].title
+                            ? 'grid-cols-[250px_1fr]'
+                            : menuItem.img
+                              ? 'grid-cols-[1fr_300px]'
+                              : 'grid-cols-[1fr]'
+                      }`}
                     >
+                      <div
+                        className={`${
+                          menuItem.subMenuItems[0].title ? '' : 'hidden'
+                        } z-10 h-full rounded-l-2xl bg-[#13171E] backdrop-blur-xl`}
+                      >
+                        <ul
+                          className={clsx(
+                            'list group m-0 grid w-full list-none gap-2 p-2',
+                            'data-[enhanced=true]:after:opacity-[var(--opacity,0)] data-[enhanced=true]:after:[transition:opacity_0.025s,inset_0.025s_0.025s] data-[enhanced=true]:hover:after:opacity-[1] data-[enhanced=true]:hover:after:[transition:opacity_0.2s_0.2s,inset_0.2s]',
+                            "after:pointer-events-none after:absolute after:bottom-[var(--bottom)] after:left-[var(--left)] after:right-[var(--right)] after:top-[var(--top)] after:z-[1] after:h-[var(--height)] after:w-[var(--width)] after:rounded-[0.5rem] after:bg-[#39415050] after:content-[''] after:[transition:inset_0.2s]"
+                          )}
+                        >
+                          {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
+                            <ListItem
+                              key={subIndex}
+                              title={subMenuItem.title || ''}
+                              content={subMenuItem.content || ''}
+                              href="#"
+                              isActive={activeTitle === subMenuItem.title}
+                              onClick={() => handleClick(subMenuItem.title || '')}
+                            />
+                          ))}
+                        </ul>
+                      </div>
                       <ul
                         className={clsx(
-                          'list group m-0 grid w-full list-none gap-2 p-2',
+                          `group grid ${
+                            innerItems.length < 4 ? 'grid-cols-1' : 'grid-cols-1 xl:grid-cols-2'
+                          } m-0 h-full w-full min-w-[400px] list-none items-start justify-between gap-2 p-2 xl:min-w-[500px]`,
                           'data-[enhanced=true]:after:opacity-[var(--opacity,0)] data-[enhanced=true]:after:[transition:opacity_0.025s,inset_0.025s_0.025s] data-[enhanced=true]:hover:after:opacity-[1] data-[enhanced=true]:hover:after:[transition:opacity_0.2s_0.2s,inset_0.2s]',
                           "after:pointer-events-none after:absolute after:bottom-[var(--bottom)] after:left-[var(--left)] after:right-[var(--right)] after:top-[var(--top)] after:z-[1] after:h-[var(--height)] after:w-[var(--width)] after:rounded-[0.5rem] after:bg-[#39415050] after:content-[''] after:[transition:inset_0.2s]"
                         )}
                       >
-                        {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
+                        {innerItems.map((item, innerIndex) => (
                           <ListItem
-                            key={subIndex}
-                            title={subMenuItem.title || ''}
-                            content={subMenuItem.content || ''}
-                            href="#"
-                            isActive={activeTitle === subMenuItem.title}
-                            onClick={() => handleClick(subMenuItem.title || '')}
+                            key={innerIndex}
+                            title={item.title}
+                            content={item.content}
+                            href={item.href}
+                            isActive={false}
+                            onClick={() => {}}
+                            isInnerMenuItem={true}
+                            icon={item.icon}
                           />
                         ))}
                       </ul>
-                    </div>
-                    <ul
-                      className={clsx(
-                        `list group grid ${
-                          innerItems.length < 4 ? 'grid-cols-1' : 'grid-cols-1 xl:grid-cols-2'
-                        } m-0 h-full w-full min-w-[400px] list-none items-start justify-between gap-2 p-2 xl:min-w-[500px]`,
-                        'data-[enhanced=true]:after:opacity-[var(--opacity,0)] data-[enhanced=true]:after:[transition:opacity_0.025s,inset_0.025s_0.025s] data-[enhanced=true]:hover:after:opacity-[1] data-[enhanced=true]:hover:after:[transition:opacity_0.2s_0.2s,inset_0.2s]',
-                        "after:pointer-events-none after:absolute after:bottom-[var(--bottom)] after:left-[var(--left)] after:right-[var(--right)] after:top-[var(--top)] after:z-[1] after:h-[var(--height)] after:w-[var(--width)] after:rounded-[0.5rem] after:bg-[#39415050] after:content-[''] after:[transition:inset_0.2s]"
-                      )}
-                    >
-                      {innerItems.map((item, innerIndex) => (
-                        <ListItem
-                          key={innerIndex}
-                          title={item.title}
-                          content={item.content}
-                          href={item.href}
-                          isActive={false}
-                          onClick={() => {}}
-                          isInnerMenuItem={true}
-                          icon={item.icon}
-                        />
-                      ))}
-                    </ul>
-                    {menuItem.img && menuItem.img.length > 0 && (
-                      <div className="relative m-2 ml-0 max-h-[250px] min-h-[200px] overflow-hidden rounded-lg bg-[#5F49F4]/25 p-3.5">
-                        <div className="absolute left-1/2 right-1/2 top-32 h-full w-full rounded-full bg-[#5F49F4] opacity-70 blur-[120px]" />
-                        <p className="text-foreground">{menuItem.img[0].title}</p>
-                        <p className="text-foreground/50">{menuItem.img[0].description}</p>
-                        <img
-                          className="absolute left-20 top-32"
-                          src={menuItem.img[0].img}
-                          alt={menuItem.img[0].alt}
-                        />
-                      </div>
-                    )}
-                  </div>
-                </NavigationMenu.Content>
-              )}
-            </NavigationMenu.Item>
-          ))}
 
-          <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-2.5 items-end justify-center transition-[width,transform_250ms_ease]">
-            <div className="relative left-0 top-[calc(50%+2px)] h-[1px] w-full rounded-tl-[2px] bg-gradient-to-r from-primary/0 via-primary to-primary/0 mix-blend-overlay" />
-          </NavigationMenu.Indicator>
+                      {menuItem.img && menuItem.img.length > 0 && (
+                        <div className="relative m-2 ml-0 max-h-[250px] min-h-[200px] overflow-hidden rounded-lg bg-[#5F49F4]/25 p-3.5">
+                          <div className="absolute left-1/2 right-1/2 top-32 h-full w-full rounded-full bg-[#5F49F4] opacity-70 blur-[120px]" />
+                          <p className="text-foreground">{menuItem.img[0].title}</p>
+                          <p className="text-foreground/50">{menuItem.img[0].description}</p>
+                          <img
+                            className="absolute left-20 top-32"
+                            src={menuItem.img[0].img}
+                            alt={menuItem.img[0].alt}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </NavigationMenu.Content>
+                )}
+              </NavigationMenu.Item>
+            ))}
+
+            <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[1px] bg-gradient-to-r from-primary/0 via-primary to-primary/0 mix-blend-overlay transition-all duration-200" />
+          </div>
         </NavigationMenu.List>
 
         <div className="hidden flex-1 items-center justify-end gap-5 lg:flex">
-          <Link href="" className="text-sm text-foreground">
-            Log In
-          </Link>
+          {secondaryMenuItems.map((menuItem, index) => (
+            <Link
+              className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+              href={menuItem.href}
+            >
+              {menuItem.title}
+            </Link>
+          ))}
           <Button variant="primary" size="small">
             Book a demo
           </Button>
