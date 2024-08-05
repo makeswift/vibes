@@ -20,7 +20,7 @@ export const ProductsPage = function ProductsPage() {
       <div className="relative flex flex-col">
         <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
 
-        <ProductsHeader />
+        <ProductsHeader title="All Men" numberOfProducts={32} />
         <ProductList products={productsList} />
 
         <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
