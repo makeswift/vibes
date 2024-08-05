@@ -53,6 +53,12 @@ export const navigation = [
         component: 'alert-box',
       },
       {
+        title: 'Scratch to Reveal Section',
+        slug: 'scratch-to-reveal-section',
+        file: 'docs/scratch-to-reveal-section.mdx',
+        component: 'scratch-to-reveal-section',
+      },
+      {
         title: 'Counter',
         slug: 'counter',
         file: 'docs/counter.mdx',

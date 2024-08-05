@@ -3,7 +3,7 @@ import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@/lib/utils'
 import { LoadingIcon } from '@/vibes/2px/components/icons/LoadingIcon'
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ComponentProps<'button'> {
   className?: string
   variant?: 'primary' | 'secondary'
   loading?: boolean
@@ -18,6 +18,7 @@ const Button = ({
   loading,
   children,
   asChild = false,
+  ...props
 }: ButtonProps) => {
   const Component = asChild ? Slot : 'button'
   return (
@@ -34,6 +35,7 @@ const Button = ({
         }[variant],
         className
       )}
+      {...props}
     >
       {loading ? (
         <LoadingIcon

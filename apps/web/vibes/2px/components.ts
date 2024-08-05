@@ -106,6 +106,13 @@ export const components = [
     component: lazy(() => import('./components/option-selector')),
   },
   {
+    name: 'scratch-to-reveal-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/scratch-to-reveal-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/scratch-to-reveal-section')),
+  },
+  {
     name: 'checkbox',
     dependencies: [],
     registryDependencies: [],
