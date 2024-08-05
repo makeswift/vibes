@@ -1,13 +1,11 @@
-import type { ReactNode } from 'react'
-
 import * as Accordion from '@radix-ui/react-accordion'
-import clsx from 'clsx'
 
-import { ChevronDownIcon } from '../icons'
+import { cn } from '@/lib/utils'
+import { ChevronDownIcon } from '@/vibes/2px/components/icons/ChevronDownIcon'
 
-export type AccordionItem = {
-  title: ReactNode
-  body: ReactNode
+type AccordionItem = {
+  title: React.ReactNode
+  body: React.ReactNode
 }
 
 interface Props {
@@ -18,7 +16,7 @@ interface Props {
 
 const Accordions = ({ className, accordions, type = 'multiple' }: Props) => {
   return (
-    <Accordion.Root type={type} className={clsx(className, 'w-full font-body')} asChild>
+    <Accordion.Root type={type} className={cn('w-full font-body @container', className)} asChild>
       <ul className="relative w-full ">
         {accordions.map((accordion, i) => (
           <div key={i}>

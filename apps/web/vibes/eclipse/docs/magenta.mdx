@@ -1,0 +1,94 @@
+---
+title: 'Magenta'
+description: 'Magenta is a color that is variously defined as purplish-red, reddish-purple, purplish, or mauvish-crimson.'
+---
+
+## Usage
+
+Copy and paste the following variables into your CSS file.
+
+<Reveal>
+
+```css
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --primary: 210 100% 50%;
+    --accent: 210 100% 70%;
+
+    --contrast-100: 210 32% 97%;
+    --contrast-200: 216 21% 91%;
+    --contrast-300: 210 15% 73%;
+    --contrast-400: 210 10% 53%;
+    --contrast-500: 208 11% 25%;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.875rem;
+
+    --line-height-xs: 1.125rem;
+    --line-height-sm: 1.25rem;
+    --line-height-base: 1.5rem;
+    --line-height-lg: 1.75rem;
+    --line-height-xl: 1.75rem;
+    --line-height-2xl: 2.25rem;
+
+    --letter-spacing-xs: 0em;
+    --letter-spacing-sm: 0em;
+    --letter-spacing-base: 0em;
+    --letter-spacing-lg: 0em;
+    --letter-spacing-xl: -0.01em;
+    --letter-spacing-2xl: -0.02em;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 210 32% 95%;
+
+    --contrast-100: 208 18% 10%;
+    --contrast-200: 208 11% 25%;
+    --contrast-300: 210 10% 53%;
+    --contrast-400: 210 15% 73%;
+    --contrast-500: 216 23% 91%;
+  }
+}
+```
+
+</Reveal>
+
+## Colors
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.
+
+<Colors
+  colors={[
+    { name: 'primary', value: '#0080FF' },
+    { name: 'accent', value: '#9E00FF' },
+    { name: 'background', value: '#FFFFFF' },
+    { name: 'foreground', value: '#000000' },
+  ]}
+/>
+<Colors
+  colors={[
+    { name: 'contrast-100', value: '#F2F5F8' },
+    { name: 'contrast-200', value: '#E4E8EE' },
+    { name: 'contrast-300', value: '#AFB9C4' },
+    { name: 'contrast-400', value: '#7B8793' },
+    { name: 'contrast-500', value: '#394046' },
+  ]}
+/>
+
+## Typography
+
+Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem.
