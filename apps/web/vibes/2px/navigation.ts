@@ -86,6 +86,12 @@ export const navigation = [
         file: 'docs/text-section.mdx',
         component: 'text-section',
       },
+      {
+        title: 'FAQ Section',
+        slug: 'faq-section',
+        file: 'docs/faq-section.mdx',
+        component: 'faq-section',
+      },
     ],
   },
 ] satisfies Navigation
