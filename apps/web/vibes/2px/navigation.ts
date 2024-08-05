@@ -77,4 +77,15 @@ export const navigation = [
       },
     ],
   },
+  {
+    title: 'Sections',
+    pages: [
+      {
+        title: 'Text Section',
+        slug: 'text-section',
+        file: 'docs/text-section.mdx',
+        component: 'text-section',
+      },
+    ],
+  },
 ] satisfies Navigation

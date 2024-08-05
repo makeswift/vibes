@@ -109,6 +109,13 @@ export const examples = [
     component: lazy(() => import('./examples/tabs')),
   },
   {
+    name: 'text-section-example',
+    dependencies: [],
+    registryDependencies: ['text-section'],
+    files: ['examples/text-section.tsx'],
+    component: lazy(() => import('./examples/text-section')),
+  },
+  {
     name: 'accordions-example',
     dependencies: [],
     registryDependencies: ['accordions'],
