@@ -34,26 +34,23 @@ export const Button = forwardRef(function Button(
         {
           default: 'px-6 py-[13px] text-base',
           small: 'px-4 py-2 text-sm',
+        }[size],
+        // BG Pseudo Element Styles
+        'after:absolute after:left-0 after:top-0 after:z-0 after:w-full after:-translate-x-[110%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:ease-out hover:after:translate-x-0',
+        link?.href === '#' && 'after:pointer-events-none after:opacity-20',
+        {
+          primary: 'after:bg-white/40',
+          dark: 'after:bg-background',
+          light: 'after:bg-foreground',
+        }[variant],
+        {
+          default: 'after:h-[50px]',
+          small: 'after:h-[37px]',
         }[size]
       )}
       href={link?.href ?? '#'}
       target={link?.target}
     >
-      <div
-        className={clsx(
-          'absolute left-0 top-0 z-0 w-full -translate-x-[110%] rounded-full transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0',
-          link?.href === '#' && 'pointer-events-none opacity-20',
-          {
-            primary: 'bg-white/40',
-            dark: 'bg-background',
-            light: 'bg-foreground',
-          }[variant],
-          {
-            default: 'h-[50px]',
-            small: 'h-[37px]',
-          }[size]
-        )}
-      />
       <span
         className={clsx('relative z-10 flex items-center justify-center gap-2 transition-colors', {
           invert: variant !== 'primary',
