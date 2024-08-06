@@ -1,5 +1,3 @@
-'use client'
-
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import Carousel from '@/vibes/soul/components/carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
