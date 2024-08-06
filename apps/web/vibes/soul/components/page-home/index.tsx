@@ -63,10 +63,7 @@ export const HomePage = function HomePage() {
         <Feature
           image={{
             url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
-            dimensions: {
-              width: 932,
-              height: 1200,
-            },
+          
             alt: 'Biker in Mountains',
           }}
           heading="A global community"
