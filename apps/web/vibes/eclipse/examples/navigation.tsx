@@ -71,7 +71,7 @@ export default function Preview() {
         {
           title: 'First Image',
           description: 'First Image Description',
-          img: '/react-icon-png.png',
+          img: '/atom.svg',
           alt: 'First Image Alt',
         },
       ],
@@ -228,8 +228,9 @@ export default function Preview() {
   const secondaryMenuItems = [{ title: 'Login', href: '/login' }]
 
   return (
-    <div className="flex min-h-48 items-start bg-[#07090D] sm:min-h-64 lg:min-h-64">
+    <div className="flex h-48 items-start bg-[#07090D] sm:h-64 lg:h-96">
       <Navigation
+        logoImage="/logo-placeholder.svg"
         mainMenuItems={mainMenuItems}
         secondaryMenuItems={secondaryMenuItems}
         fixed={true}
