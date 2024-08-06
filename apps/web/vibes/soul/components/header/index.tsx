@@ -59,17 +59,16 @@ export const Header = forwardRef(function Header(
   }, [navOpen])
 
   return (
-    <ReactHeadroom {...rest} className="absolute top-0 z-30 !h-24 w-full [&>div]:px-5 [&>div]:pt-5">
+    <ReactHeadroom {...rest} className="sticky top-0 z-30 !h-0 w-full @container">
       <header
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
         className={clsx(
-          'mx-auto w-full max-w-7xl text-foreground @container',
-          navOpen ? 'h-full' : '!h-24',
+          'mx-auto w-full max-w-7xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5',
           className
         )}
       >
-        <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background shadow-[2px_4px_24px_#00000010] @4xl:rounded-[24px]">
+        <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background shadow-[2px_4px_24px_#00000010] @4xl:mx-5 @4xl:rounded-[24px]">
           <div className="relative flex items-stretch px-2.5" ref={container}>
             {links?.map((item, i) => (
               <Link
@@ -126,10 +125,11 @@ export const Header = forwardRef(function Header(
             </button>
           </div>
         </nav>
+
         <div
           ref={menuRef}
           className={clsx(
-            'mt-1.5 h-full max-h-96 w-full overflow-y-auto rounded-[24px] shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out',
+            'mx-1.5 mt-1.5 h-[calc(100dvh-66px)] overflow-y-auto rounded-[24px] shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5 @4xl:h-full @4xl:max-h-96',
             navOpen
               ? 'scale-100 bg-background opacity-100'
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
