@@ -53,11 +53,11 @@ export const examples = [
     component: lazy(() => import('./examples/checkbox')),
   },
   {
-    name: 'compare-bar-example',
+    name: 'compare-drawer-example',
     dependencies: [],
-    registryDependencies: ['compare-bar'],
-    files: ['examples/compare-bar.tsx'],
-    component: lazy(() => import('./examples/compare-bar')),
+    registryDependencies: ['compare-drawer'],
+    files: ['examples/compare-drawer.tsx'],
+    component: lazy(() => import('./examples/compare-drawer')),
   },
   {
     name: 'dropdown-example',

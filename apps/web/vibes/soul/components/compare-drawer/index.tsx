@@ -15,7 +15,7 @@ type Props = {
   products: ProductCard[]
 }
 
-export const CompareBar = function CompareBar({ products }: Props) {
+export const CompareDrawer = function CompareDrawer({ products }: Props) {
   const [dismissedStates, setDismissedStates] = useState(products.map(() => false))
 
   const handleDismiss = (index: number) => {
@@ -56,4 +56,4 @@ export const CompareBar = function CompareBar({ products }: Props) {
   )
 }
 
-export default CompareBar
+export default CompareDrawer

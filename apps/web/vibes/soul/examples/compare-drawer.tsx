@@ -1,4 +1,4 @@
-import CompareBar from '@/vibes/soul/components/compare-bar'
+import CompareBar from '@/vibes/soul/components/compare-drawer'
 import ProductCard from '@/vibes/soul/components/product-card'
 
 const products: ProductCard[] = [
