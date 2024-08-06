@@ -64,7 +64,7 @@ export const brands = [
       },
     ],
     cssVars: {
-      '--primary': '301, 100%, 50%',
+      '--primary': '0 0% 100%',
       '--accent': '0 0% 83%',
       '--background': '0 0% 100%',
       '--foreground': '234 80% 35%',
