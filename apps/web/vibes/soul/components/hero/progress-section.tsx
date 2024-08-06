@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import ProgressBar from './ProgressBar'
+import ProgressBar from './progress-bar'
 
 type Props = {
   currentIndex: number

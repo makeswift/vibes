@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-import Slideshow from '@/vibes/soul/components/hero/Slideshow'
-
-import ProgressSection from './ProgressSection'
+import ProgressSection from '@/vibes/soul/components/hero/progress-section'
+import Slideshow from '@/vibes/soul/components/hero/slideshow'
 
 type Props = {
   slides: {

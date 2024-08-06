@@ -7,10 +7,9 @@ import { Ref, forwardRef, useEffect, useRef, useState } from 'react'
 import ReactHeadroom from 'react-headroom'
 
 import clsx from 'clsx'
+import { Search, ShoppingBag, User } from 'lucide-react'
 
-import Icon from '@/vibes/soul/components/icon'
-
-import HamburgerMenuButton from './HamburgerMenuButton'
+import HamburgerMenuButton from '@/vibes/soul/components/header/hamburger-menu-button'
 
 type NavItem = {
   text: string
@@ -108,7 +107,7 @@ export const Header = forwardRef(function Header(
                 aria-label="Search"
                 className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
               >
-                <Icon name="Search" className="h-5 w-5" />
+                <Search className="h-5 w-5" strokeWidth={1} />
               </button>
             </div>
             <button
@@ -116,14 +115,14 @@ export const Header = forwardRef(function Header(
               aria-label="Profile"
               className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
             >
-              <Icon name="User" className="h-5 w-5" />
+              <User className="h-5 w-5" strokeWidth={1} />
             </button>
             <button
               role="button"
               aria-label="Cart"
               className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
             >
-              <Icon name="ShoppingBag" className="h-5 w-5" />
+              <ShoppingBag className="h-5 w-5" strokeWidth={1} />
             </button>
           </div>
         </nav>
