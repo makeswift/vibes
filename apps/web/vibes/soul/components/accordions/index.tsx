@@ -27,7 +27,7 @@ export const Accordions = forwardRef(function Accordions(
       <ul className="mx-auto w-full max-w-7xl bg-background @container">
         {accordions.map((accordion, i) => (
           <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="group px-5 @4xl:px-20">
+            <li className="group">
               <Accordion.Header>
                 <Accordion.Trigger asChild>
                   <div className="flex w-full cursor-pointer items-start py-3 @md:gap-8 @md:py-5">
@@ -37,22 +37,18 @@ export const Accordions = forwardRef(function Accordions(
                     >
                       {accordion.title}
                     </h3>
-
                     <Chevron />
                   </div>
                 </Accordion.Trigger>
               </Accordion.Header>
 
               <Accordion.Content
-                className="w-full overflow-hidden 
+                className="w-full overflow-hidden
                 data-[state=closed]:animate-collapse data-[state=open]:animate-expand"
               >
-                <p
-                  className="py-4 text-xl font-medium leading-tight text-foreground 
-                  @sm:w-5/6 @md:text-2xl"
-                >
+                <div className="w-full py-4 text-xl font-medium leading-tight text-foreground @md:text-2xl">
                   {accordion.content}
-                </p>
+                </div>
               </Accordion.Content>
             </li>
           </Accordion.Item>

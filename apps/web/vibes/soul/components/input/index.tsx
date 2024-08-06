@@ -9,17 +9,19 @@ import '@/vibes/soul/styles.css'
 
 export interface Props extends ComponentPropsWithRef<'input'> {
   variant?: 'default' | 'price' | 'large' | 'brand' | 'button'
+  className?: string
 }
 
 export const Input = forwardRef(function Input(
-  { variant = 'default', ...rest }: Props,
+  { variant = 'default', className = '', ...rest }: Props,
   ref: Ref<HTMLInputElement>
 ) {
   return (
     <div
       className={clsx(
         { 'bg-primary-highlight': variant === 'brand' },
-        'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-background font-medium transition-colors duration-200 focus-within:border-foreground focus:outline-none'
+        'relative w-full shrink-0 rounded-lg border border-contrast-100 bg-background text-[15px] transition-colors duration-200 focus-within:border-foreground focus:outline-none',
+        className
       )}
     >
       {variant === 'price' && (
@@ -33,7 +35,7 @@ export const Input = forwardRef(function Input(
           'placeholder-contrast-gray-500 w-full bg-transparent text-foreground placeholder:font-normal focus:outline-none',
           {
             'px-6 py-3': variant === 'default',
-            'py-3 pl-12 pr-6': variant === 'price',
+            'py-3 pl-10 pr-6': variant === 'price',
             'py-5 pl-5 pr-16': variant === 'large' || variant === 'button' || variant === 'brand',
           }
         )}

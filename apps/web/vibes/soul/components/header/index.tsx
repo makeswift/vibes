@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ReactNode, Ref, forwardRef, useEffect, useRef, useState } from 'react'
+import { Ref, forwardRef, useEffect, useRef, useState } from 'react'
 import ReactHeadroom from 'react-headroom'
 
 import clsx from 'clsx'
