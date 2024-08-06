@@ -1,4 +1,4 @@
-import Rating from '../components/rating'
+import Rating from '@/vibes/2px/components/rating'
 
 export default function Preview() {
   return (

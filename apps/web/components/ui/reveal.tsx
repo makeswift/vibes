@@ -24,7 +24,7 @@ function Reveal({ children }: { children: React.ReactNode }) {
 
       <div
         className={clsx(
-          'border-b border-dashed border-foreground bg-contrast-100',
+          'border-b border-dashed border-contrast-400 bg-contrast-100',
           isOpen ? 'max-h-[70vh] overflow-auto pb-10' : 'max-h-40 overflow-hidden'
         )}
       >

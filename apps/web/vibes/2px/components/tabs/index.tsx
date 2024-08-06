@@ -1,13 +1,14 @@
 'use client'
 
-import { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import * as RadixTabs from '@radix-ui/react-tabs'
-import clsx from 'clsx'
+
+import { cn } from '@/lib/utils'
 
 type Tab = {
   title?: string
-  children?: ReactNode
+  children?: React.ReactNode
 }
 
 export type Props = {
@@ -39,7 +40,7 @@ export default function Tabs({ className, tabs }: Props) {
 
   return (
     <RadixTabs.Root
-      className={clsx(
+      className={cn(
         className,
         'w-full font-body text-2xl !leading-[var(--line-height-3xl)] !tracking-[var(--letter-spacing-xl)] text-foreground @container'
       )}
@@ -53,14 +54,14 @@ export default function Tabs({ className, tabs }: Props) {
           style={
             {
               'scrollbar-width': 'none',
-            } as CSSProperties
+            } as React.CSSProperties
           }
         >
           {tabs?.map((tab, index) => (
             <RadixTabs.Trigger
               key={index}
               value={index.toString()}
-              className={clsx(
+              className={cn(
                 'mt-5 w-full shrink-0 border-b-[2px] border-r-[2px] border-b-foreground border-r-foreground px-[0.625rem] py-3 text-start hover:border-dashed @lg:w-[30rem]',
                 Number(value) === index && 'bg-foreground text-background'
               )}
