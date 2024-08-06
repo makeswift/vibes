@@ -3,12 +3,14 @@
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import Carousel from '@/vibes/soul/components/carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
+import { CompareDrawer } from '@/vibes/soul/components/compare-drawer'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
 import Pagination from '@/vibes/soul/components/pagination'
 import ProductList from '@/vibes/soul/components/product-list'
 import ProductsHeader from '@/vibes/soul/components/products-header'
 import { categories } from '@/vibes/soul/examples/carousel'
+import { compareProducts } from '@/vibes/soul/examples/compare-drawer'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 import { productsList } from '@/vibes/soul/examples/product-list'
@@ -30,6 +32,7 @@ export const ProductsPage = function ProductsPage() {
             <CategoryCard key={category.label} {...category} />
           ))}
         </Carousel>
+        <CompareDrawer products={compareProducts} />
         <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
       </div>
     </>
