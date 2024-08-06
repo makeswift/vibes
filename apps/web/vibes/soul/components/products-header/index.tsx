@@ -151,7 +151,7 @@ export const ProductsHeader = function ProductsHeader({ title, numberOfProducts 
               {
                 title: 'pricing',
                 content: (
-                  <div className="flex w-[49%] gap-2">
+                  <div className="flex w-[48%] gap-2">
                     <Input variant="price" />
                     <Input variant="price" />
                   </div>
