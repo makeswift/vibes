@@ -92,6 +92,12 @@ export const navigation = [
         file: 'docs/faq-section.mdx',
         component: 'faq-section',
       },
+      {
+        title: 'Blog Post Card',
+        slug: 'blog-post-card',
+        file: 'docs/blog-post-card.mdx',
+        component: 'blog-post-card',
+      },
     ],
   },
 ] satisfies Navigation

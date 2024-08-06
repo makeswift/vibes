@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/breadcrumbs')),
   },
   {
+    name: 'blog-post-card-example',
+    dependencies: [],
+    registryDependencies: ['blog-post-card'],
+    files: ['examples/blog-post-card.tsx'],
+    component: lazy(() => import('./examples/blog-post-card')),
+  },
+  {
     name: 'tabs-example',
     dependencies: [],
     registryDependencies: ['tabs'],
