@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { ReactNode } from 'react'
 
 import clsx from 'clsx'
@@ -12,14 +12,25 @@ type Props = {
 }
 
 export const AnnouncementBar = function AnnouncementBar({ className, children }: Props) {
-  const [dismissed, setDismissed] = useState(false)
-  // TODO: Use local storage for announcement bar state
+  const [banner, setBanner] = useState({ dismissed: false, initialized: false })
+
+  useEffect(() => {
+    const hidden = localStorage.getItem('hidden-banner') === 'true'
+    setBanner({ dismissed: hidden, initialized: true })
+  }, [])
+
+  const hideBanner = useCallback(() => {
+    setBanner(prev => ({ ...prev, dismissed: true }))
+    localStorage.setItem('hidden-banner', 'true')
+  }, [])
+
+  if (!banner.initialized) return null
 
   return (
     <div
       className={clsx(
         'relative w-full overflow-hidden bg-primary transition-all duration-300 ease-out @container',
-        dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
+        banner.dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
         className
       )}
     >
@@ -29,7 +40,7 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
         aria-label="Dismiss banner"
         onClick={e => {
           e.preventDefault()
-          setDismissed(true)
+          hideBanner()
         }}
         className="absolute right-2.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-foreground transition-transform duration-300 hover:scale-125"
       >
