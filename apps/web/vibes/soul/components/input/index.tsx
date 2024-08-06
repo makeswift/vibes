@@ -3,9 +3,7 @@
 import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
-
-import Arrow from '@/vibes/soul/components/icons/Arrow'
-import '@/vibes/soul/styles.css'
+import { ArrowRight } from 'lucide-react'
 
 export interface Props extends ComponentPropsWithRef<'input'> {
   variant?: 'default' | 'price' | 'large' | 'brand' | 'button'
@@ -46,11 +44,7 @@ export const Input = forwardRef(function Input(
           type="submit"
           className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-foreground text-background transition-transform focus:outline-none focus:ring-1"
         >
-          <Arrow
-            size="small"
-            direction="right"
-            className="transition-transform group-hover:translate-x-0.5"
-          />
+          <ArrowRight strokeWidth={1.5} size={20} />
         </button>
       )}
     </div>

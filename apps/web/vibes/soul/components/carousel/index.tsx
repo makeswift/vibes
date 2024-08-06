@@ -3,10 +3,9 @@
 import Link from 'next/link'
 
 import useEmblaCarousel from 'embla-carousel-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
-import Arrow from '@/vibes/soul/components/icons/Arrow'
-
-import ScrollBar from './scrollbar'
+import ScrollBar from '@/vibes/soul/components/carousel/scrollbar'
 
 type Props = {
   title: string
@@ -36,20 +35,20 @@ export const Carousel = ({ title, link, children }: Props) => {
 
       <div className="flex items-center justify-between px-3 pb-3 @4xl:px-20 @4xl:pb-20">
         <ScrollBar emblaApi={emblaApi} />
-        <div className="flex gap-1.5">
+        <div className="flex gap-2 text-foreground">
           <button
             role="button"
             className="transition-transform duration-300 hover:-translate-x-1"
             onClick={() => emblaApi?.scrollPrev()}
           >
-            <Arrow direction="left" />
+            <ArrowLeft strokeWidth={1.5} />
           </button>
           <button
             role="button"
             className="transition-transform duration-300 hover:translate-x-1"
             onClick={() => emblaApi?.scrollNext()}
           >
-            <Arrow direction="right" />
+            <ArrowRight strokeWidth={1.5} />
           </button>
         </div>
       </div>

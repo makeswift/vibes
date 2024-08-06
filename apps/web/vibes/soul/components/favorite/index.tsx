@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import Heart from '@/vibes/soul/components/icons/Heart'
+import Heart from '@/vibes/soul/components/favorite/heart'
 
 type Props = {
   favorited?: boolean

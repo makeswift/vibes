@@ -4,8 +4,7 @@ import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 
 import clsx from 'clsx'
-
-import Arrow from '@/vibes/soul/components/icons/Arrow'
+import { ArrowUpRight } from 'lucide-react'
 
 export type CategoryCard = {
   label: string
@@ -28,10 +27,11 @@ export const CategoryCard = function CategoryCard({
     <Link
       href={ctaLink?.href as Route}
       target={ctaLink?.target}
-      className="group relative flex aspect-[3/4] w-full min-w-[226px] flex-col gap-2 @4xl:min-w-[33%]"
+      className="group relative flex aspect-[3/4] w-full min-w-[226px] max-w-[467px] flex-col gap-2 @4xl:min-w-[33%]"
       {...props}
     >
-      <Arrow
+      <ArrowUpRight
+        strokeWidth={1.5}
         className={clsx(
           'absolute right-2.5 top-2.5 z-10 transition-transform duration-300 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
           theme === 'dark' ? 'text-background' : 'text-foreground'

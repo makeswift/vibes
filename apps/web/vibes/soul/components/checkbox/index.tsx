@@ -1,7 +1,6 @@
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
 import clsx from 'clsx'
-
-import Icon from '@/vibes/soul/components/icon'
+import { Check } from 'lucide-react'
 
 interface Props {
   checked: boolean
@@ -29,7 +28,7 @@ export const Checkbox = function Checkbox({
         onCheckedChange={setChecked}
       >
         <RadixCheckbox.Indicator>
-          <Icon name="Check" color="white" className="h-4 w-4" />
+          <Check color="white" className="h-4 w-4" />
         </RadixCheckbox.Indicator>
       </RadixCheckbox.Root>
 
