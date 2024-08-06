@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { ReactNode } from 'react'
 
 import clsx from 'clsx'
-
-import Icon from '@/vibes/soul/components/icon'
+import { X } from 'lucide-react'
 
 type Props = {
   className?: string
@@ -14,6 +13,7 @@ type Props = {
 
 export const AnnouncementBar = function AnnouncementBar({ className, children }: Props) {
   const [dismissed, setDismissed] = useState(false)
+  // TODO: Use local storage for announcement bar state
 
   return (
     <div
@@ -33,7 +33,7 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
         }}
         className="absolute right-2.5 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-foreground transition-transform duration-300 hover:scale-125"
       >
-        <Icon name="X" />
+        <X />
       </button>
     </div>
   )
