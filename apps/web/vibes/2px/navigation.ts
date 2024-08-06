@@ -6,12 +6,6 @@ export const navigation = [
 
     pages: [
       {
-        title: 'Blog Post Card',
-        slug: 'blog-post-card',
-        file: 'docs/blog-post-card.mdx',
-        component: 'blog-post-card',
-      },
-      {
         title: 'Breadcrumbs',
         slug: 'breadcrumbs',
         file: 'docs/breadcrumbs.mdx',
@@ -22,6 +16,34 @@ export const navigation = [
         slug: 'button',
         file: 'docs/button.mdx',
         component: 'button',
+      },
+      {
+        title: 'File Uploader',
+        slug: 'file-uploader',
+        file: 'docs/file-uploader.mdx',
+        component: 'file-uploader',
+      },
+      { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
+      { title: 'Text Area', slug: 'text-area', file: 'docs/text-area.mdx', component: 'text-area' },
+      { title: 'Skeleton', slug: 'skeleton', file: 'docs/skeleton.mdx', component: 'skeleton' },
+      {
+        title: 'Dropdown',
+        slug: 'dropdown',
+        file: 'docs/dropdown.mdx',
+        component: 'dropdown',
+      },
+      {
+        title: 'Radio Button',
+        slug: 'radio-button',
+        file: 'docs/radio-button.mdx',
+        component: 'radio-button',
+      },
+
+      {
+        title: 'Option selector',
+        slug: 'option-selector',
+        file: 'docs/option-selector.mdx',
+        component: 'option-selector',
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       {
@@ -38,6 +60,7 @@ export const navigation = [
       },
       { title: 'Calendar', slug: 'calendar', file: 'docs/calendar.mdx', component: 'calendar' },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
+      { title: 'Swatch', slug: 'swatch', file: 'docs/swatch.mdx', component: 'swatch' },
       { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
       {
         title: 'Accordions',
@@ -46,6 +69,35 @@ export const navigation = [
         component: 'accordions',
       },
       { title: 'Tabs', slug: 'tabs', file: 'docs/tabs.mdx', component: 'tabs' },
+      {
+        title: 'Product Card',
+        slug: 'product-card',
+        file: 'docs/product-card.mdx',
+        component: 'product-card',
+      },
+    ],
+  },
+  {
+    title: 'Sections',
+    pages: [
+      {
+        title: 'Text Section',
+        slug: 'text-section',
+        file: 'docs/text-section.mdx',
+        component: 'text-section',
+      },
+      {
+        title: 'FAQ Section',
+        slug: 'faq-section',
+        file: 'docs/faq-section.mdx',
+        component: 'faq-section',
+      },
+      {
+        title: 'Blog Post Card',
+        slug: 'blog-post-card',
+        file: 'docs/blog-post-card.mdx',
+        component: 'blog-post-card',
+      },
     ],
   },
 ] satisfies Navigation
