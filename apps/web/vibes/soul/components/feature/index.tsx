@@ -4,15 +4,10 @@ import clsx from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 import { Icon } from '@/vibes/soul/components/icon'
-import '@/vibes/soul/styles.css'
 
 export interface Feature {
   image: {
     url: string
-    dimensions: {
-      width: number
-      height: number
-    }
     alt: string
   }
   heading?: string
