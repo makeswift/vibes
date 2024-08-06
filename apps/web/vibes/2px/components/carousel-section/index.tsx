@@ -33,14 +33,25 @@ export default function CarouselSection({ className, title, slides, showArrows }
   const scrollLeft = () => {
     if (carouselRef.current) {
       const scrollAmount = carouselRef.current.clientWidth
-      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+      if (carouselRef.current.scrollLeft === 0) {
+        carouselRef.current.scrollTo({ left: carouselRef.current.scrollWidth, behavior: 'smooth' })
+      } else {
+        carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+      }
     }
   }
 
   const scrollRight = () => {
     if (carouselRef.current) {
       const scrollAmount = carouselRef.current.clientWidth
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+
+      if (
+        Math.ceil(carouselRef.current.scrollLeft + scrollAmount) >= carouselRef.current.scrollWidth
+      ) {
+        carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' })
+      } else {
+        carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+      }
     }
   }
 
