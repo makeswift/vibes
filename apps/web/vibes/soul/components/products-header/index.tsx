@@ -3,12 +3,12 @@
 import React, { useState } from 'react'
 
 import Accordions from '@/vibes/soul/components/accordions'
-import { Button } from '@/vibes/soul/components/button'
-import { Chip } from '@/vibes/soul/components/chip'
-import { Dropdown } from '@/vibes/soul/components/dropdown'
-import { Icon } from '@/vibes/soul/components/icon'
-import { Input } from '@/vibes/soul/components/input'
-import { SidePanel } from '@/vibes/soul/components/side-panel'
+import Button from '@/vibes/soul/components/button'
+import Chip from '@/vibes/soul/components/chip'
+import Dropdown from '@/vibes/soul/components/dropdown'
+import Icon from '@/vibes/soul/components/icon'
+import Input from '@/vibes/soul/components/input'
+import SidePanel from '@/vibes/soul/components/side-panel'
 
 type Props = {
   title: string

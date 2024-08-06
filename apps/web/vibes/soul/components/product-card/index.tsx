@@ -7,9 +7,11 @@ import clsx from 'clsx'
 
 import Label from '@/vibes/soul/components/label'
 import Compare from '@/vibes/soul/components/product-card/compare'
-import '@/vibes/soul/styles.css'
-
-import Price, { ComparePrice, RangePrice, StaticPrice } from './price'
+import Price, {
+  ComparePrice,
+  RangePrice,
+  StaticPrice,
+} from '@/vibes/soul/components/product-card/price'
 
 export type ProductCard = {
   name: string
