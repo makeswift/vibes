@@ -88,10 +88,11 @@ export default function FooterSection({ className, logo, title, groups, legal, s
           <span>{legal.copyright}</span>
           <span>{legal.builtBy}</span>
         </div>
-        <div className="social-media-links flex gap-6 text-background">
+        <div className="social-media-links flex gap-6 bg-foreground text-background">
           {Object.entries(socials).map(([key, value]) => {
             if (!(key in SOCIAL_ICONS)) return null
             const Icon = SOCIAL_ICONS[key as keyof typeof SOCIAL_ICONS]
+
             return (
               <a key={key} href={value} target="_blank">
                 <Icon />
