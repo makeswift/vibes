@@ -49,9 +49,5 @@ export default function Preview() {
     },
   ]
 
-  return (
-    <div className="flex flex-col gap-2">
-      <Feature image={image} link={link} grid={grid} />
-    </div>
-  )
+  return <Feature image={image} link={link} grid={grid} />
 }

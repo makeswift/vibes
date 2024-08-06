@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
-import '@/vibes/soul/styles.css'
 
 type Props = {
   heading: string
