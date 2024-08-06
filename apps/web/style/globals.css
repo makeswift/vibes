@@ -23,6 +23,7 @@
     --font-size-lg: 1.125rem;
     --font-size-xl: 1.25rem;
     --font-size-2xl: 1.875rem;
+    --font-size-3xl: 2.5rem;
 
     --line-height-xs: 1.125rem;
     --line-height-sm: 1.25rem;
@@ -102,36 +103,36 @@
     @apply [animation-play-state:running];
   }
   .marching-ants {
-    --length: 6px;
-    --interval: 9px;
+    --length: 5px;
+    --interval: 8px;
     background: linear-gradient(transparent, transparent),
       repeating-linear-gradient(
         to right,
-        #000,
-        #000 var(--length),
-        #fff var(--length),
-        #fff var(--interval)
+        hsl(var(--foreground)),
+        hsl(var(--foreground)) var(--length),
+        hsl(var(--background)) var(--length),
+        hsl(var(--background)) var(--interval)
       ),
       repeating-linear-gradient(
         to bottom,
-        #000,
-        #000 var(--length),
-        #fff var(--length),
-        #fff var(--interval)
+        hsl(var(--foreground)),
+        hsl(var(--foreground)) var(--length),
+        hsl(var(--background)) var(--length),
+        hsl(var(--background)) var(--interval)
       ),
       repeating-linear-gradient(
         to left,
-        #000,
-        #000 var(--length),
-        #fff var(--length),
-        #fff var(--interval)
+        hsl(var(--foreground)),
+        hsl(var(--foreground)) var(--length),
+        hsl(var(--background)) var(--length),
+        hsl(var(--background)) var(--interval)
       ),
       repeating-linear-gradient(
         to top,
-        #000,
-        #000 var(--length),
-        #fff var(--length),
-        #fff var(--interval)
+        hsl(var(--foreground)),
+        hsl(var(--foreground)) var(--length),
+        hsl(var(--background)) var(--length),
+        hsl(var(--background)) var(--interval)
       );
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
     background-size:

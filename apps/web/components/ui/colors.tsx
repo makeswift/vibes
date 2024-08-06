@@ -9,7 +9,7 @@ interface Color {
 
 function Colors({ colors }: { colors: Color[] }) {
   return (
-    <div className="my-6 grid grid-cols-2 gap-x-3 gap-y-4 sm:grid-cols-4 sm:gap-x-2 sm:gap-y-6 md:grid-cols-5">
+    <div className="grid grid-cols-2 gap-x-3 gap-y-4 sm:grid-cols-4 sm:gap-x-2 sm:gap-y-6 md:grid-cols-5">
       {colors?.map((color, index) => {
         return (
           <div key={index} className="group">

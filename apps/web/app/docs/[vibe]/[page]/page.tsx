@@ -17,6 +17,9 @@ import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { Colors } from '@/components/ui/colors'
+import { FontFamily } from '@/components/ui/font-family'
+import { FontSize } from '@/components/ui/font-size'
+import { IconsPreview } from '@/components/ui/icons-preview'
 import { Installation } from '@/components/ui/installation'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Reveal } from '@/components/ui/reveal'
@@ -94,6 +97,9 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       CodeFromFile: function CodeFromFileWithoutBasePath(props) {
         return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
       },
+      FontFamily,
+      FontSize,
+      IconsPreview,
       Popover,
       PopoverContent,
       PopoverTrigger,
@@ -184,7 +190,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             </div>
           </div>
           <div className="not-prose hidden lg:block">
-            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-400 pb-10">
+            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-300 pb-10">
               <TableOfContents offsetTop={90} />
               <div className="space-y-5 py-5">
                 {totalSize && (
