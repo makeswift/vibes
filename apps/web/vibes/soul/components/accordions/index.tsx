@@ -5,7 +5,7 @@ import React, { ReactNode, Ref, forwardRef } from 'react'
 import * as Accordion from '@radix-ui/react-accordion'
 import clsx from 'clsx'
 
-import Chevron from '@/vibes/soul/components/icons/Chevron'
+import Chevron from '@/vibes/soul/components/accordions/chevron'
 
 export type AccordionItem = {
   title: ReactNode
