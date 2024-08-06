@@ -33,12 +33,6 @@ export const navigation = [
         file: 'docs/category-card.mdx',
         component: 'category-card',
       },
-      {
-        title: 'Carousel',
-        slug: 'carousel',
-        file: 'docs/carousel.mdx',
-        component: 'carousel',
-      },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       {
         title: 'Compare Drawer',
@@ -48,6 +42,28 @@ export const navigation = [
       },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
+
+      { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
+      { title: 'Label', slug: 'label', file: 'docs/label.mdx', component: 'label' },
+      {
+        title: 'Product Card',
+        slug: 'product-card',
+        file: 'docs/product-card.mdx',
+        component: 'product-card',
+      },
+
+      { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
+    ],
+  },
+  {
+    title: 'Sections',
+    pages: [
+      {
+        title: 'Carousel',
+        slug: 'carousel',
+        file: 'docs/carousel.mdx',
+        component: 'carousel',
+      },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
         title: 'Feature (Grid)',
@@ -75,15 +91,12 @@ export const navigation = [
         file: 'docs/hero-contained.mdx',
         component: 'hero',
       },
-
       {
         title: 'Icon Block',
         slug: 'icon-block',
         file: 'docs/icon-block.mdx',
         component: 'icon-block',
       },
-      { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
-      { title: 'Label', slug: 'label', file: 'docs/label.mdx', component: 'label' },
       {
         title: 'Media Section',
         slug: 'media-section',
@@ -108,30 +121,11 @@ export const navigation = [
         file: 'docs/newsletter.mdx',
         component: 'newsletter',
       },
-
       {
         title: 'Pagination',
         slug: 'pagination',
         file: 'docs/pagination.mdx',
         component: 'pagination',
-      },
-      {
-        title: 'Product Card',
-        slug: 'product-card',
-        file: 'docs/product-card.mdx',
-        component: 'product-card',
-      },
-      {
-        title: 'Product Detail',
-        slug: 'product-detail',
-        file: 'docs/product-detail.mdx',
-        component: 'product-detail',
-      },
-      {
-        title: 'Product List',
-        slug: 'product-list',
-        file: 'docs/product-list.mdx',
-        component: 'product-list',
       },
       {
         title: 'Product Description',
@@ -140,28 +134,42 @@ export const navigation = [
         component: 'product-description',
       },
       {
+        title: 'Product Detail',
+        slug: 'product-detail',
+        file: 'docs/product-detail.mdx',
+        component: 'product-detail',
+      },
+      {
         title: 'Products Header',
         slug: 'products-header',
         file: 'docs/products-header.mdx',
         component: 'products-header',
       },
-      { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
-
-      // Page Components
       {
-        title: 'Page - Home',
+        title: 'Product List',
+        slug: 'product-list',
+        file: 'docs/product-list.mdx',
+        component: 'product-list',
+      },
+    ],
+  },
+  {
+    title: 'Pages',
+    pages: [
+      {
+        title: 'Home',
         slug: 'page-home',
         file: 'docs/page-home.mdx',
         component: 'page-home',
       },
       {
-        title: 'Page - Product',
+        title: 'Product',
         slug: 'page-product',
         file: 'docs/page-product.mdx',
         component: 'page-product',
       },
       {
-        title: 'Page - Products',
+        title: 'Products',
         slug: 'page-products',
         file: 'docs/page-products.mdx',
         component: 'page-products',
