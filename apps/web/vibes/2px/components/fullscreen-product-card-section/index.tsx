@@ -49,7 +49,7 @@ export default function FullscreenProductCardSection({
         alt={image.alt}
         width={image.width}
         height={image.height}
-        className="h-full max-h-screen w-full object-cover"
+        className="h-full w-full object-cover"
       />
       <div className="absolute bottom-0 left-0 right-0 flex w-full flex-col gap-2 p-4 text-background @lg:flex-row @lg:items-center @lg:justify-between">
         <div className="flex flex-col gap-1">
