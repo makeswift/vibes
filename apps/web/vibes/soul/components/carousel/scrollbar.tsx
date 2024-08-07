@@ -47,11 +47,8 @@ const ScrollBar = ({ emblaApi }: ScrollBarProps) => {
       />
       <div className="pointer-events-none absolute h-1 w-full rounded-full bg-contrast-100" />
       <div
-        className="pointer-events-none absolute h-1 rounded-full bg-foreground transition-all duration-300 ease-in-out"
-        style={{
-          width: '38%',
-          left: `${Math.min(Math.max(progress, 0), 62)}%`,
-        }}
+        className="pointer-events-none absolute h-1 rounded-full bg-foreground transition-all duration-300 ease-out"
+        style={{ width: '38%', left: `${progress * 0.62}%` }}
       />
     </div>
   )
