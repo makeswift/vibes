@@ -110,6 +110,12 @@ export const navigation = [
         file: 'docs/hero-header.mdx',
         component: 'hero-header',
       },
+      {
+        title: 'Callout Section',
+        slug: 'callout-section',
+        file: 'docs/callout-section.mdx',
+        component: 'callout-section',
+      },
     ],
   },
 ] satisfies Navigation
