@@ -31,7 +31,7 @@ export const Carousel = ({ title, link, children }: Props) => {
   useEffect(() => {
     if (!emblaApi) return
     emblaApi.on('select', onSelect)
-    onSelect() // Initial check
+    onSelect()
 
     return () => {
       emblaApi.off('select', onSelect)

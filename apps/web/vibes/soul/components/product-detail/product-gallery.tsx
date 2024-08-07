@@ -31,7 +31,7 @@ const ProductGallery = ({ images }: ProductGallery) => {
   }
 
   return (
-    <div className="relative flex h-[80dvh] max-h-[800px] w-full items-center overflow-hidden bg-contrast-200 @3xl:sticky @3xl:top-24">
+    <div className="relative flex w-full items-center overflow-hidden bg-contrast-200 @3xl:sticky @3xl:top-24">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex items-center">
           {images.map((image, index) => (

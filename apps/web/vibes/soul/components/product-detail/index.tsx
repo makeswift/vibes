@@ -33,7 +33,7 @@ export const ProductDetail = function ProductDetail({
     <section className="w-full bg-background @container">
       <div className="mx-auto grid w-full max-w-7xl @3xl:grid-cols-2">
         <ProductGallery images={images} />
-        <div className="my-auto flex flex-col gap-4 px-3 py-10 text-foreground @xl:px-6 @5xl:p-20">
+        <div className="my-auto flex flex-col gap-4 px-3 py-10 text-foreground @xl:px-6 @xl:py-20 @5xl:px-20">
           <h2 className="text-3xl font-medium">{product.name}</h2>
 
           <Rating rating={rating ?? 0} />
