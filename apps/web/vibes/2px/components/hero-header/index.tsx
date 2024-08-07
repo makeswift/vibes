@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { cn } from '@/lib/utils'
 import Button from '@/vibes/2px/components/button'
 
@@ -5,7 +7,7 @@ interface Props {
   className?: string
   heading: string
   text: string
-  image: { small: { url: string; alt: string }; large: { url: string; alt: string } }
+  image: { src: string; alt: string; width: number; height: number }
   cta: {
     label: string
     href: string
@@ -17,15 +19,16 @@ export default function HeroHeader({ className, heading, text, image, cta }: Pro
     <section
       className={cn(
         className,
-        'flex w-full flex-col items-center justify-center gap-4 border-b-2 border-foreground bg-background  text-foreground '
+        'flex w-full flex-col items-center justify-center gap-4 border-b-2 border-foreground bg-background text-foreground '
       )}
     >
-      <div className="flex h-fit w-full justify-center overflow-hidden ">
-        <img src={image.small.url} alt={image.small.alt} className="h-auto w-auto @md:hidden" />
-        <img
-          src={image.large.url}
-          alt={image.large.alt}
-          className="hidden h-auto w-auto @md:block"
+      <div className="relative aspect-[3/4] w-full @lg:aspect-video">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          className="h-full w-full object-cover"
+          width={image.width}
+          height={image.height}
         />
       </div>
       <div className="px-2 py-4">
@@ -38,7 +41,7 @@ export default function HeroHeader({ className, heading, text, image, cta }: Pro
           </span>
         </div>
         <Button
-          className="mt-6 w-full py-[1.56rem] text-lg font-medium leading-[1.875rem] -tracking-[0.015rem]"
+          className="mt-6 w-full text-lg font-medium leading-[1.875rem] -tracking-[0.015rem]"
           variant="secondary"
           asChild
         >

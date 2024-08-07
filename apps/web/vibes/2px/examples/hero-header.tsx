@@ -7,8 +7,10 @@ export default function Preview() {
         heading="Summer timber hits from Project 213A"
         text="Project 213A is a European design house founded in 2020 as an idea by four friends linked by common design philosophy. This Project became reality with its launch in September 2021."
         image={{
-          small: { url: '/2px/hero-header-example-small.png', alt: 'Hero header example' },
-          large: { url: '/2px/hero-header-example-large.png', alt: 'Hero header example' },
+          src: '/2px/hero-header-example-large.png',
+          alt: 'Hero header example',
+          width: 1920,
+          height: 1080,
         }}
         cta={{ label: 'Shop collection', href: '/docs/2px/hero-header' }}
       />
