@@ -166,7 +166,7 @@ export const components = [
     name: 'section-header',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/section-header/index.tsx'],
+    files: ['./components/section-header/index.tsx', '../../lib/utils.ts'],
     component: lazy(() => import('./components/section-header')),
   },
   {

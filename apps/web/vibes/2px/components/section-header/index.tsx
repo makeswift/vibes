@@ -11,8 +11,8 @@ export default function SectionHeader({ className, title, headline, subtitle }: 
   return (
     <section
       className={cn(
-        className,
-        'flex w-full flex-col items-center justify-center gap-20 border-b-2 border-foreground bg-background px-2.5 py-28 text-center text-foreground @lg:py-20'
+        'flex w-full flex-col items-center justify-center gap-20 border-b-2 border-foreground bg-background px-2.5 py-28 text-center text-foreground @lg:py-20',
+        className
       )}
     >
       <p className="font-mono text-xs uppercase leading-[1.125rem] tracking-[0.0225rem] @lg:text-sm @lg:leading-snug">
