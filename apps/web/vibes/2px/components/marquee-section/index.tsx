@@ -7,10 +7,11 @@ import { cn } from '@/lib/utils'
 import style from './index.module.css'
 
 interface Props {
+  className: string
   text: string
 }
 
-export default function MarqueeSection({ text }: Props) {
+export default function MarqueeSection({ className, text }: Props) {
   const marqueeSectionRef = useRef<HTMLDivElement>(null)
   const marqueeContentRef = useRef<HTMLDivElement>(null)
 
@@ -53,7 +54,10 @@ export default function MarqueeSection({ text }: Props) {
   return (
     <section
       ref={marqueeSectionRef}
-      className="marquee-section flex w-fit justify-center overflow-hidden bg-background font-body text-3xl leading-[2.125rem] -tracking-[0.0375rem] text-background @2xl:text-6xl @2xl:leading-[4rem] @2xl:-tracking-[0.0675rem]"
+      className={cn(
+        'marquee-section flex w-fit justify-center overflow-hidden bg-background font-body text-3xl leading-[2.125rem] -tracking-[0.0375rem] text-background @2xl:text-6xl @2xl:leading-[4rem] @2xl:-tracking-[0.0675rem]',
+        className
+      )}
     >
       <div
         ref={marqueeContentRef}
