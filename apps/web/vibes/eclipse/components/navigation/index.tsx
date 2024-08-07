@@ -134,7 +134,7 @@ const Navigation = ({
                     )}
 
                     {menuItem.subMenuItems.length > 0 && (
-                      <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromRight data-[motion=from-end]:animate-enterFromLeft data-[motion=to-start]:animate-exitToRight data-[motion=to-end]:animate-exitToLeft pointer-events-auto absolute left-0 top-0 w-full rounded-2xl bg-contrast-500/50 backdrop-blur @2xl:w-auto">
+                      <NavigationMenu.Content className="duration-[250] pointer-events-auto absolute left-0 top-0 w-full rounded-2xl bg-contrast-500/50 backdrop-blur ease-linear data-[motion=from-end]:animate-in data-[motion=from-start]:animate-in data-[motion=to-end]:animate-out data-[motion=to-start]:animate-out data-[motion=from-end]:fade-in data-[motion=from-start]:fade-in data-[motion=to-end]:fade-out data-[motion=to-start]:fade-out data-[motion=from-end]:slide-in-from-left-52 data-[motion=from-start]:slide-in-from-right-52 data-[motion=to-end]:slide-out-to-left-52 data-[motion=to-start]:slide-out-to-right-52 @2xl:w-auto">
                         <div
                           className={`content-container grid list-none rounded-2xl border border-contrast-400 ${
                             menuItem.subMenuItems[0].title && menuItem.img
@@ -212,7 +212,7 @@ const Navigation = ({
                 </NavigationMenu.Item>
               ))}
 
-              <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[1px] bg-gradient-to-r from-primary/0 via-primary to-primary/0 transition-all duration-200" />
+              <NavigationMenu.Indicator className="top-full z-10 flex h-[1px] bg-gradient-to-r from-primary/0 via-primary to-primary/0 transition-all duration-200" />
             </div>
           </NavigationMenu.List>
 
@@ -269,8 +269,8 @@ const Navigation = ({
           </div>
         </div>
 
-        <div className="perspective-[2000px] absolute left-0 top-full flex w-full justify-center">
-          <NavigationMenu.Viewport className="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] transition-[width,_height] duration-300 @2xl:w-[var(--radix-navigation-menu-viewport-width)]" />
+        <div className="absolute left-0 top-full flex w-full justify-center">
+          <NavigationMenu.Viewport className="relative mt-2.5 h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-[6px] transition-[width,_height] duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @2xl:w-[var(--radix-navigation-menu-viewport-width)]" />
         </div>
       </NavigationMenu.Root>
     </ReactHeadroom>
