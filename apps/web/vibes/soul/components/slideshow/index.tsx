@@ -40,7 +40,7 @@ export const Slideshow = function Slideshow({ slides }: Props) {
               currentIndex === idx ? 'opacity-100' : 'opacity-0'
             )}
           >
-            <h1 className="absolute bottom-10 left-0 z-10 w-full max-w-7xl px-3 text-5xl font-medium leading-none text-background @lg:bottom-24 @lg:px-20 @2xl:text-[90px]">
+            <h1 className="absolute bottom-10 left-0 z-10 w-full max-w-7xl px-3 text-5xl font-medium leading-none text-background @lg:bottom-24 @xl:px-6 @2xl:text-[90px] @5xl:px-20">
               {heading}
             </h1>
 
@@ -52,7 +52,7 @@ export const Slideshow = function Slideshow({ slides }: Props) {
         currentIndex={currentIndex}
         slides={slides}
         setCurrentIndex={setCurrentIndex}
-        className="absolute bottom-0 left-0 z-10 w-full px-3 pb-2 pt-4 @lg:px-20 @lg:pb-8 @lg:pt-10"
+        className="absolute bottom-0 left-0 z-10 w-full px-3 pb-2 pt-4 @lg:pb-8 @lg:pt-10 @xl:px-6 @5xl:px-20"
       />
     </header>
   )

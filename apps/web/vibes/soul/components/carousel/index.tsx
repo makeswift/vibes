@@ -18,7 +18,7 @@ export const Carousel = ({ title, link, children }: Props) => {
 
   return (
     <section className="flex flex-col gap-10 bg-background @container">
-      <div className="flex items-center justify-between px-3 pt-3 text-foreground @4xl:px-20 @4xl:pt-20">
+      <div className="flex items-center justify-between px-3 pt-3 text-foreground @xl:px-6 @4xl:pt-20 @5xl:px-20">
         {title && <h2 className="text-2xl font-medium">{title}</h2>}
         {link && (
           <Link href={link.href} target={link.target} className="font-semibold text-foreground">
@@ -28,12 +28,12 @@ export const Carousel = ({ title, link, children }: Props) => {
       </div>
 
       {children && (
-        <div className="w-full overflow-hidden px-3 @4xl:px-20" ref={emblaRef}>
+        <div className="w-full overflow-hidden px-3 @xl:px-6 @5xl:px-20" ref={emblaRef}>
           <div className="flex gap-5">{children}</div>
         </div>
       )}
 
-      <div className="flex items-center justify-between px-3 pb-3 @4xl:px-20 @4xl:pb-20">
+      <div className="flex items-center justify-between px-3 pb-3 @xl:px-6 @4xl:pb-20 @5xl:px-20">
         <ScrollBar emblaApi={emblaApi} />
         <div className="flex gap-2 text-foreground">
           <button

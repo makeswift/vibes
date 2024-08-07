@@ -37,7 +37,7 @@ export const Newsletter = function Newsletter({ image, heading, description, the
 
         <div
           className={clsx(
-            'flex w-full items-center gap-y-12 px-3 @xl:px-20',
+            'flex w-full items-center gap-y-12 px-3 @xl:px-6 @5xl:px-20',
             !image ? 'flex-col gap-x-10 py-20 @2xl:flex-row' : 'flex-col py-10 @3xl:gap-y-16',
             theme == 'brand-shadow' ? 'text-background' : 'text-foreground'
           )}

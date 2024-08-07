@@ -44,7 +44,7 @@ export const ProductCard = function ProductCard({
     <Link
       href={ctaLink?.href as Route}
       target={ctaLink?.target}
-      className="group relative flex h-full flex-col gap-2 text-foreground"
+      className="group relative flex h-full cursor-pointer flex-col gap-2 text-foreground"
       {...props}
     >
       <div className="relative flex-grow overflow-hidden rounded-xl">
@@ -69,7 +69,7 @@ export const ProductCard = function ProductCard({
       </div>
 
       <div className="flex h-full max-h-32 flex-col gap-1">
-        <h3 className="flex flex-col flex-wrap justify-between gap-1 pt-3 text-sm font-semibold @4xl:flex-row">
+        <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
           {name && <span className="line-clamp-2">{name}</span>}
           {tags && <span className="font-normal text-contrast-400">{tags.join('/')}</span>}
         </h3>

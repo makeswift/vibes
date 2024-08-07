@@ -44,8 +44,8 @@ export const MediaSection = function MediaSection({
           className={clsx(
             'z-10 mx-auto flex max-w-7xl flex-col items-start gap-4 px-3 py-10 text-background @5xl:p-20',
             mediaAlign
-              ? 'w-full justify-end @md:px-6 @3xl:w-1/2 @5xl:w-2/5'
-              : 'absolute bottom-0 left-0 @3xl:px-6',
+              ? 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5'
+              : 'absolute bottom-0 left-0 @xl:px-6',
             { '@3xl:order-1': mediaAlign === 'right' }
           )}
         >
