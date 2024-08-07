@@ -12,9 +12,8 @@ import { categories } from '@/vibes/soul/examples/carousel'
 import { featuredProducts } from '@/vibes/soul/examples/featured-product-list'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
-import { heroSlides } from '@/vibes/soul/examples/slideshow'
 
-export const HomePage = function HomePage() {
+export const HomePage = function HomePage({ heroSlides }: any) {
   return (
     <>
       <AnnouncementBar>
