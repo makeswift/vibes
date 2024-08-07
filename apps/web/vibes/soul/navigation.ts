@@ -84,13 +84,6 @@ export const navigation = [
         file: 'docs/header.mdx',
         component: 'header',
       },
-      { title: 'Hero', slug: 'hero', file: 'docs/hero.mdx', component: 'hero' },
-      {
-        title: 'Hero (Contained)',
-        slug: 'hero-contained',
-        file: 'docs/hero-contained.mdx',
-        component: 'hero',
-      },
       {
         title: 'Icon Block',
         slug: 'icon-block',
@@ -151,6 +144,7 @@ export const navigation = [
         file: 'docs/product-list.mdx',
         component: 'product-list',
       },
+      { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
     ],
   },
   {

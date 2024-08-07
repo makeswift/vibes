@@ -1,4 +1,4 @@
-import Hero from '@/vibes/soul/components/hero'
+import Slideshow from '@/vibes/soul/components/slideshow'
 
 export const heroSlides = [
   {
@@ -37,5 +37,5 @@ export const heroSlides = [
 ]
 
 export default function Preview() {
-  return <Hero slides={heroSlides} />
+  return <Slideshow slides={heroSlides} />
 }

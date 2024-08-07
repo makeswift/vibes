@@ -5,14 +5,14 @@ import Feature from '@/vibes/soul/components/feature'
 import FeaturedProductList from '@/vibes/soul/components/featured-product-list'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
-import Hero from '@/vibes/soul/components/hero'
 import MediaSection from '@/vibes/soul/components/media-section'
 import Newsletter from '@/vibes/soul/components/newsletter'
+import Slideshow from '@/vibes/soul/components/slideshow'
 import { categories } from '@/vibes/soul/examples/carousel'
 import { featuredProducts } from '@/vibes/soul/examples/featured-product-list'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
-import { heroSlides } from '@/vibes/soul/examples/hero'
+import { heroSlides } from '@/vibes/soul/examples/slideshow'
 
 export const HomePage = function HomePage() {
   return (
@@ -23,7 +23,7 @@ export const HomePage = function HomePage() {
       </AnnouncementBar>
       <div className="relative flex flex-col">
         <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
-        <Hero slides={heroSlides} />
+        <Slideshow slides={heroSlides} />
         <Carousel title="Category" link={{ label: 'See All', href: '/' }}>
           {categories.map(category => (
             <CategoryCard key={category.label} {...category} />
@@ -63,7 +63,6 @@ export const HomePage = function HomePage() {
         <Feature
           image={{
             url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
-          
             alt: 'Biker in Mountains',
           }}
           heading="A global community"

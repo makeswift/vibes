@@ -109,27 +109,6 @@ export const examples = [
     component: lazy(() => import('./examples/header')),
   },
   {
-    name: 'hero-example',
-    dependencies: [],
-    registryDependencies: [
-      './components/hero/ProgressSection.tsx',
-      './components/hero/Slideshow.tsx',
-    ],
-    files: ['examples/hero.tsx'],
-    component: lazy(() => import('./examples/hero')),
-  },
-  {
-    name: 'hero-contained-example',
-    dependencies: [],
-    registryDependencies: [
-      './components/hero/ProgressSection.tsx',
-      './components/hero/Slideshow.tsx',
-    ],
-    files: ['examples/hero-contained.tsx'],
-    component: lazy(() => import('./examples/hero-contained')),
-  },
-
-  {
     name: 'icon-block-example',
     dependencies: [],
     registryDependencies: [],
@@ -247,5 +226,12 @@ export const examples = [
     registryDependencies: ['rating'],
     files: ['examples/rating.tsx'],
     component: lazy(() => import('./examples/rating')),
+  },
+  {
+    name: 'slideshow-example',
+    dependencies: [],
+    registryDependencies: ['slideshow'],
+    files: ['examples/slideshow.tsx'],
+    component: lazy(() => import('./examples/slideshow')),
   },
 ] satisfies Components

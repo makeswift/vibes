@@ -106,30 +106,6 @@ export const components = [
     component: lazy(() => import('./components/header')),
   },
   {
-    name: 'hero',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: [
-      'components/hero/index.tsx',
-      'components/hero/progress-section.tsx',
-      'components/hero/progress-bar.tsx',
-      'components/hero/slideshow.tsx',
-    ],
-    component: lazy(() => import('./components/hero')),
-  },
-  {
-    name: 'hero-contained',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: [
-      'components/hero/index.tsx',
-      'components/hero/progress-section.tsx',
-      'components/hero/progress-bar.tsx',
-      'components/hero/slideshow.tsx',
-    ],
-    component: lazy(() => import('./components/hero')),
-  },
-  {
     name: 'icon-block',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
@@ -175,7 +151,7 @@ export const components = [
       'featured-product-list',
       'footer',
       'header',
-      'hero',
+      'slideshow',
       'media-section',
       'newsletter',
     ],
@@ -273,5 +249,16 @@ export const components = [
     registryDependencies: [],
     files: ['components/rating/index.tsx'],
     component: lazy(() => import('./components/rating')),
+  },
+  {
+    name: 'slideshow',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: [
+      'components/slideshow/index.tsx',
+      'components/slideshow/progress-bar.tsx',
+      'components/slideshow/progress-section.tsx',
+    ],
+    component: lazy(() => import('./components/slideshow')),
   },
 ] satisfies Components
