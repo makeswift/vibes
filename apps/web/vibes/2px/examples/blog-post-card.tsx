@@ -6,7 +6,7 @@ export default function Preview() {
       <BlogPostCard
         publishedAt="17.03.24"
         author={{ name: 'Cicero', href: '/' }}
-        href="/"
+        link={{ href: '/', label: 'READ MORE' }}
         image="/2px/blog-post-card-section.png"
         title="Update 23 from the workshop"
         blogPost={
