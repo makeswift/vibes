@@ -9,11 +9,16 @@ export default function Preview() {
         name={`Arc de Stool '52`}
         cartCta={{
           label: 'Add to cart',
-          onClick: () => {
-            console.log('Product added to cart')
+          onClick: count => {
+            console.log('Product added to cart - count:', count)
           },
         }}
-        image={{ url: '/2px/fullscreen-table-card-example.jpg', alt: 'Arc de Stool 52' }}
+        image={{
+          url: '/2px/fullscreen-table-card-example.jpg',
+          alt: 'Arc de Stool 52',
+          width: 1920,
+          height: 1080,
+        }}
         price="€1,100"
         detailsColor="light"
       />

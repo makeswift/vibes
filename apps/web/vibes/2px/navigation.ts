@@ -24,12 +24,6 @@ export const navigation = [
         component: 'file-uploader',
       },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
-      {
-        title: 'Fullscreen Product Card Section',
-        slug: 'fullscreen-product-card-section',
-        file: 'docs/fullscreen-product-card-section.mdx',
-        component: 'fullscreen-product-card-section',
-      },
       { title: 'Text Area', slug: 'text-area', file: 'docs/text-area.mdx', component: 'text-area' },
       { title: 'Skeleton', slug: 'skeleton', file: 'docs/skeleton.mdx', component: 'skeleton' },
       {
@@ -127,6 +121,12 @@ export const navigation = [
         slug: 'blog-list-section',
         file: 'docs/blog-list-section.mdx',
         component: 'blog-list-section',
+      },
+      {
+        title: 'Fullscreen Product Card Section',
+        slug: 'fullscreen-product-card-section',
+        file: 'docs/fullscreen-product-card-section.mdx',
+        component: 'fullscreen-product-card-section',
       },
     ],
   },
