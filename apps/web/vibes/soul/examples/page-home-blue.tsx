@@ -23,6 +23,17 @@ export const heroSlides = [
       target: '_self',
     },
   },
+  {
+    heading: 'Slide 3',
+    image: {
+      url: 'https://rstr.in/monogram/vibes/K-F83RXTJsx',
+      alt: 'alt',
+    },
+    link: {
+      href: '/',
+      target: '_self',
+    },
+  },
 ]
 
 export default function Preview() {

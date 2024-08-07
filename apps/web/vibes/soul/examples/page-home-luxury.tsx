@@ -4,7 +4,7 @@ export const heroSlides = [
   {
     heading: 'Slide 1',
     image: {
-      url: 'https://rstr.in/monogram/vibes/vgdjHDINE6V',
+      url: 'https://rstr.in/monogram/vibes/2dxdn6-tC-f',
       alt: 'alt',
     },
     link: {
@@ -15,7 +15,7 @@ export const heroSlides = [
   {
     heading: 'Slide 2',
     image: {
-      url: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
+      url: 'https://rstr.in/monogram/vibes/WmCjpAXZqIK',
       alt: 'alt',
     },
     link: {
@@ -26,7 +26,7 @@ export const heroSlides = [
   {
     heading: 'Slide 3',
     image: {
-      url: 'https://rstr.in/monogram/vibes/6GmqnHGoquY',
+      url: 'https://rstr.in/monogram/vibes/Rhn7rAbRFLQ',
       alt: 'alt',
     },
     link: {
