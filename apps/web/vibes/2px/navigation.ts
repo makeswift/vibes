@@ -59,6 +59,12 @@ export const navigation = [
         component: 'counter',
       },
       { title: 'Calendar', slug: 'calendar', file: 'docs/calendar.mdx', component: 'calendar' },
+      {
+        title: 'Marquee section',
+        slug: 'marquee-section',
+        file: 'docs/marquee-section.mdx',
+        component: 'marquee-section',
+      },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
       { title: 'Swatch', slug: 'swatch', file: 'docs/swatch.mdx', component: 'swatch' },
       { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
