@@ -64,10 +64,10 @@ export const Header = forwardRef(function Header(
       className="sticky top-14 z-30 !h-0 w-full @container"
       upTolerance={0}
       style={{
-        WebkitTransition: 'transform 1s ease-in-out',
-        MozTransition: 'transform 1s ease-in-out',
-        OTransition: 'transform 1s ease-in-out',
-        transition: 'transform 1s ease-in-out',
+        WebkitTransition: 'transform .5s ease-in-out',
+        MozTransition: 'transform .5s ease-in-out',
+        OTransition: 'transform .5s ease-in-out',
+        transition: 'transform .5s ease-in-out',
       }}
     >
       <header
