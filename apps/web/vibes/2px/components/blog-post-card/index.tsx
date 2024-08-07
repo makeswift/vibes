@@ -4,13 +4,16 @@ import Link from 'next/link'
 interface Props {
   publishedAt: string
   author: { name: string; href: string }
-  href: string
+  cta: {
+    href: string
+    label: string
+  }
   image?: string
   title: string
   blogPost: React.ReactNode
 }
 
-export default function BlogPostCard({ publishedAt, author, href, image, title, blogPost }: Props) {
+export default function BlogPostCard({ publishedAt, author, cta, image, title, blogPost }: Props) {
   return (
     <section className="flex w-full flex-col items-center justify-center gap-2 overflow-hidden bg-primary p-2 font-medium text-foreground @2xl:flex-row @2xl:gap-10">
       <div className="flex aspect-square w-full flex-col items-center justify-center gap-6 px-2 py-10 text-center @lg:max-w-96">
@@ -29,10 +32,10 @@ export default function BlogPostCard({ publishedAt, author, href, image, title, 
           {title}
         </h2>
         <Link
-          href={href}
+          href={cta.href}
           className="font-mono text-xs uppercase leading-[1.125rem] underline @lg:text-sm @lg:leading-snug @lg:tracking-[0.0225rem]"
         >
-          READ MORE
+          {cta.label}
         </Link>
       </div>
       <p className="flex flex-col items-center overflow-hidden text-ellipsis font-body text-lg leading-[1.875rem] -tracking-[0.015] @lg:max-w-[44.5rem] @lg:items-center @lg:text-2xl @lg:leading-[2.25rem] @lg:-tracking-[0.0175rem]">

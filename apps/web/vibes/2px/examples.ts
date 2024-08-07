@@ -109,6 +109,13 @@ export const examples = [
     component: lazy(() => import('./examples/section-header')),
   },
   {
+    name: 'hero-header-example',
+    dependencies: [],
+    registryDependencies: ['hero-header'],
+    files: ['examples/hero-header.tsx'],
+    component: lazy(() => import('./examples/hero-header')),
+  },
+  {
     name: 'blog-post-card-example',
     dependencies: [],
     registryDependencies: ['blog-post-card'],

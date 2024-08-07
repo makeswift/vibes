@@ -170,6 +170,13 @@ export const components = [
     component: lazy(() => import('./components/section-header')),
   },
   {
+    name: 'hero-header',
+    dependencies: [],
+    registryDependencies: ['button'],
+    files: ['./components/hero-header/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/hero-header')),
+  },
+  {
     name: 'blog-post-card',
     dependencies: [],
     registryDependencies: [],
