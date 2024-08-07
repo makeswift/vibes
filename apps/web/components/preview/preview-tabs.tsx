@@ -72,7 +72,7 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
               <Button
                 className="hidden @5xl:flex"
                 variant="ghost"
-                active={actualWidth === null}
+                active={actualWidth === null || actualWidth > 768}
                 size="icon"
                 onClick={() => resize(null)}
               >
