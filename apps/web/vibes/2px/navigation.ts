@@ -53,12 +53,6 @@ export const navigation = [
         component: 'alert-box',
       },
       {
-        title: 'Callout Section',
-        slug: 'callout-section',
-        file: 'docs/callout-section.mdx',
-        component: 'callout-section',
-      },
-      {
         title: 'Counter',
         slug: 'counter',
         file: 'docs/counter.mdx',
@@ -115,6 +109,12 @@ export const navigation = [
         slug: 'hero-header',
         file: 'docs/hero-header.mdx',
         component: 'hero-header',
+      },
+      {
+        title: 'Callout Section',
+        slug: 'callout-section',
+        file: 'docs/callout-section.mdx',
+        component: 'callout-section',
       },
     ],
   },

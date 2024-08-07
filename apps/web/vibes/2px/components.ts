@@ -133,7 +133,7 @@ export const components = [
   {
     name: 'callout-section',
     dependencies: [],
-    registryDependencies: [],
+    registryDependencies: ['button'],
     files: ['./components/callout-section/index.tsx'],
     component: lazy(() => import('./components/callout-section')),
   },
