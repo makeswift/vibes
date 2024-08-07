@@ -10,6 +10,7 @@ interface Props {
   hideCopyButton?: boolean
   lang?: CodeToHastOptions['lang']
   showLineNumbers?: boolean
+  className?: string
 }
 
 export async function CodeBlock({
@@ -17,6 +18,7 @@ export async function CodeBlock({
   lang = 'javascript',
   showLineNumbers = false,
   hideCopyButton = false,
+  className,
 }: Props) {
   const __html = await codeToHtml(children, {
     lang,
@@ -39,7 +41,7 @@ export async function CodeBlock({
   })
 
   return (
-    <div className="my-4 only:my-0 md:my-5">
+    <div className={clsx('my-4 only:my-0 md:my-5', className)}>
       {!hideCopyButton && (
         <div className="pointer-events-none sticky top-0 z-10 flex w-full justify-end p-2">
           <CopyButton className="pointer-events-auto" clipboard={children} />
