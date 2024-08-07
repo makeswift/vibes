@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 
+import { cn } from '@/lib/utils'
 import { MinusDashedIcon } from '@/vibes/2px/components/icons/MinusDashedIcon'
 import { MinusSolidIcon } from '@/vibes/2px/components/icons/MinusSolidIcon'
 import { PlusDashedIcon } from '@/vibes/2px/components/icons/PlusDashedIcon'
@@ -9,6 +10,8 @@ import { PlusSolidIcon } from '@/vibes/2px/components/icons/PlusSolidIcon'
 
 interface Props
   extends Omit<React.HTMLAttributes<HTMLInputElement>, 'type' | 'className' | 'onChange'> {
+  size?: 'sm' | 'md' | 'lg'
+  className?: string
   step?: number
   min?: number
   max?: number
@@ -17,12 +20,14 @@ interface Props
 }
 
 export default function Counter({
+  size = 'md',
   defaultValue = 0,
   step = 1,
   min,
   max,
   onChange,
   value,
+  className,
   ...props
 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -58,14 +63,33 @@ export default function Counter({
   }
 
   return (
-    <div className="w-full text-foreground @container">
-      <div className="mx-auto flex w-fit items-center font-body">
+    <div className={cn('w-full font-medium text-foreground', className)}>
+      <div className="flex w-fit items-center font-body">
         <button className="minus-button group" onClick={decrement}>
-          <MinusSolidIcon className="block h-5 w-5 group-hover:hidden @md:h-10 @md:w-10 @lg:h-20 @lg:w-20" />
-          <MinusDashedIcon className="hidden  h-5 w-5 group-hover:block @md:h-10 @md:w-10 @lg:h-20 @lg:w-20" />
+          <MinusSolidIcon
+            className={cn('block group-hover:hidden', {
+              'h-5 w-5 ': size === 'sm',
+              'h-10 w-10': size === 'md',
+              'h-20 w-20': size === 'lg',
+            })}
+          />
+          <MinusDashedIcon
+            className={cn('hidden  group-hover:block', {
+              'h-5 w-5 ': size === 'sm',
+              'h-10 w-10': size === 'md',
+              'h-20 w-20': size === 'lg',
+            })}
+          />
         </button>
         <input
-          className="w-6 appearance-none overflow-hidden border-none bg-background px-1 text-center text-sm outline-none @md:w-12 @md:px-2 @md:text-lg @lg:w-28 @lg:text-6xl"
+          className={cn(
+            'appearance-none overflow-hidden border-none bg-inherit  text-center outline-none',
+            {
+              'w-6 px-1  text-sm': size === 'sm',
+              'w-12 px-2 text-lg': size === 'md',
+              'w-28 px-2 text-6xl': size === 'lg',
+            }
+          )}
           ref={inputRef}
           type="text"
           readOnly
@@ -73,8 +97,20 @@ export default function Counter({
           {...(value !== undefined ? { value } : { defaultValue })}
         />
         <button className="plus-button group" onClick={increment}>
-          <PlusSolidIcon className="block h-5 w-5 group-hover:hidden @md:h-10 @md:w-10 @lg:h-20 @lg:w-20" />
-          <PlusDashedIcon className="hidden h-5 w-5 group-hover:block @md:h-10 @md:w-10 @lg:h-20 @lg:w-20" />
+          <PlusSolidIcon
+            className={cn('block group-hover:hidden', {
+              'h-5 w-5 ': size === 'sm',
+              'h-10 w-10': size === 'md',
+              'h-20 w-20': size === 'lg',
+            })}
+          />
+          <PlusDashedIcon
+            className={cn('hidden group-hover:block', {
+              'h-5 w-5 ': size === 'sm',
+              'h-10 w-10': size === 'md',
+              'h-20 w-20': size === 'lg',
+            })}
+          />
         </button>
       </div>
     </div>

@@ -122,6 +122,12 @@ export const navigation = [
         file: 'docs/blog-list-section.mdx',
         component: 'blog-list-section',
       },
+      {
+        title: 'Fullscreen Product Card Section',
+        slug: 'fullscreen-product-card-section',
+        file: 'docs/fullscreen-product-card-section.mdx',
+        component: 'fullscreen-product-card-section',
+      },
     ],
   },
 ] satisfies Navigation
