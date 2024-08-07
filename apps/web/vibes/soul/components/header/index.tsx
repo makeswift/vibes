@@ -139,10 +139,10 @@ export const Header = forwardRef(function Header(
         <div
           ref={menuRef}
           className={clsx(
-            'mx-1.5 mt-1.5 h-[calc(100dvh-66px)] overflow-y-auto rounded-[24px] shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5 @4xl:h-full @4xl:max-h-96',
+            'mx-1.5 mt-1.5 overflow-y-auto rounded-[24px] shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5',
             navOpen
-              ? 'scale-100 bg-background opacity-100'
-              : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
+              ? 'h-[calc(100dvh-66px)] scale-100 bg-background opacity-100 @4xl:h-full @4xl:max-h-96'
+              : 'pointer-events-none h-0 scale-[0.99] select-none bg-transparent opacity-0'
           )}
         >
           <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">

@@ -28,7 +28,7 @@ export const Carousel = ({ title, link, children }: Props) => {
       </div>
 
       {children && (
-        <div className="no-scrollbar w-full overflow-hidden px-3 @4xl:px-20" ref={emblaRef}>
+        <div className="w-full overflow-hidden px-3 @4xl:px-20" ref={emblaRef}>
           <div className="flex gap-5">{children}</div>
         </div>
       )}
