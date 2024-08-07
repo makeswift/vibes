@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from '@/lib/utils'
 
 interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'size' | 'type'> {

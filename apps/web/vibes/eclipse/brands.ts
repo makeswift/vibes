@@ -38,6 +38,7 @@ export const brands = [
       '--font-size-lg': '1.125rem',
       '--font-size-xl': '1.25rem',
       '--font-size-2xl': '1.5rem',
+      '--font-size-3xl': '2.5rem',
 
       '--shadow-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
       '--shadow-base': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
@@ -90,6 +91,7 @@ export const brands = [
       '--font-size-lg': '1.125rem',
       '--font-size-xl': '1.25rem',
       '--font-size-2xl': '1.5rem',
+      '--font-size-3xl': '2.5rem',
 
       '--shadow-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
       '--shadow-base': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',

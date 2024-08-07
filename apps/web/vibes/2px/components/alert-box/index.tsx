@@ -1,8 +1,10 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-
-import { AlertIcon, CheckIcon, CrossIcon, InfoIcon } from '../icons'
+import { AlertIcon } from '@/vibes/2px/components/icons/AlertIcon'
+import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
+import { CrossIcon } from '@/vibes/2px/components/icons/CrossIcon'
+import { InfoIcon } from '@/vibes/2px/components/icons/InfoIcon'
 
 interface Props {
   message: string

@@ -1,17 +1,14 @@
-import { ComponentPropsWithoutRef, FC, ReactElement } from 'react'
-
-import { LucideIcon } from 'lucide-react'
-
 import { cn } from '@/lib/utils'
-
-import { StarEmptyIcon, StarFilledIcon, StarHalfIcon } from '../icons'
+import { StarEmptyIcon } from '@/vibes/2px/components/icons/StarEmptyIcon'
+import { StarFilledIcon } from '@/vibes/2px/components/icons/StarFilledIcon'
+import { StarHalfIcon } from '@/vibes/2px/components/icons/StarHalfIcon'
 
 const MAX_RATING = 5
 const roundHalf = (num: number) => {
   return Math.round(num * 2) / 2
 }
 
-type StarIconType = FC<ComponentPropsWithoutRef<'svg'>> | LucideIcon
+type StarIconType = React.FC<React.ComponentProps<'svg'>>
 
 interface RatingProps {
   className?: string
@@ -32,7 +29,7 @@ const Rating = ({
   value,
   strokeColor,
 }: RatingProps) => {
-  const stars: ReactElement[] = []
+  const stars: React.ReactElement[] = []
   const rating = roundHalf(value)
 
   const StarHalf = starHalfIcon || StarHalfIcon

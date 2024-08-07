@@ -1,9 +1,8 @@
-'use client'
-
 import React from 'react'
 
 import { cn } from '@/lib/utils'
-import { CheckIcon, CrossIcon } from '@/vibes/2px/components/icons'
+import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
+import { CrossIcon } from '@/vibes/2px/components/icons/CrossIcon'
 
 interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
   variant?: 'default' | 'success' | 'error'
