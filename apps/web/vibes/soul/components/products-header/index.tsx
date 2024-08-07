@@ -184,7 +184,7 @@ export const ProductsHeader = function ProductsHeader({ title, numberOfProducts 
 
       {/* Filter Panel */}
       <SidePanel isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
-        <div className="flex h-full flex-col bg-background p-20 text-foreground">
+        <div className="flex h-full flex-col bg-background p-20 text-foreground @4xl:rounded-l-xl">
           <h2 className="text-2xl">Filters</h2>
           <Accordions
             className="mt-10"

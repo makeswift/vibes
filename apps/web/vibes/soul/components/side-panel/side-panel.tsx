@@ -1,17 +1,15 @@
-import React, { ReactNode, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import clsx from 'clsx'
 
 type Props = {
   isOpen: boolean
   onClose: () => void
-  children: ReactNode
+  children: React.ReactNode
 }
 
-export const SidePanel = function SidePanel({ isOpen, onClose, children }: Props) {
-  const dialogRef = useRef<HTMLDialogElement>(null)
+const SidePanel: React.FC<Props> = ({ isOpen, onClose, children }) => {
   const panelRef = useRef<HTMLDivElement>(null)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -19,22 +17,12 @@ export const SidePanel = function SidePanel({ isOpen, onClose, children }: Props
         onClose()
       }
     }
-    if (isOpen) {
-      dialogRef.current?.showModal()
-      document.addEventListener('mousedown', handleClickOutside)
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside)
-      timeoutRef.current = setTimeout(() => {
-        dialogRef.current?.close()
-      }, 300) // Delay unmounting to match the transition duration
-    }
+
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
     }
-  }, [isOpen, onClose])
+  }, [onClose])
 
   // TODO: Lock preview scroll
   // useEffect(() => {
@@ -42,25 +30,23 @@ export const SidePanel = function SidePanel({ isOpen, onClose, children }: Props
   // }, [isOpen])
 
   return (
-    <dialog
-      ref={dialogRef}
+    <div
+      role="dialog"
       className={clsx(
-        'absolute right-0 top-0 flex h-[100vh] w-full justify-end overflow-hidden border border-green-500 bg-transparent',
-        !isOpen && 'pointer-events-none'
+        'fixed inset-0 z-50 flex h-[100dvh] w-full justify-end overflow-hidden transition-colors duration-300',
+        isOpen ? 'bg-foreground/50' : 'pointer-events-none bg-transparent'
       )}
-      onClose={onClose}
     >
       <div
         ref={panelRef}
         className={clsx(
-          'z-50 h-full border border-blue-500',
-          'transition-transform duration-300 ease-out',
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+          'relative h-full transition-transform duration-300 ease-out',
+          isOpen ? 'translate-x-0' : 'translate-x-[110%]'
         )}
       >
         {children}
       </div>
-    </dialog>
+    </div>
   )
 }
 
