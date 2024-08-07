@@ -39,11 +39,7 @@ export const CompareDrawer = function CompareDrawer({ products }: Props) {
       <section className="w-full border-t bg-background @container">
         <div className="mx-auto flex w-full max-w-7xl flex-wrap items-end justify-end gap-5 px-3 py-5 @4xl:px-20">
           {products.map((product, index) => (
-            <ProductChip
-              key={product.name}
-              product={product}
-              onDismiss={() => handleDismiss(index)}
-            />
+            <ProductChip key={index} product={product} onDismiss={() => handleDismiss(index)} />
           ))}
 
           <Button>
