@@ -3,8 +3,6 @@ import { ReactNode, Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
-import '@/vibes/soul/styles.css'
-
 export interface Props {
   className?: string
   link?: { href: string; target?: string }
@@ -64,9 +62,7 @@ export const Button = forwardRef(function Button(
       <span
         className={clsx(
           'relative z-10 flex h-full items-center justify-center gap-2 transition-colors',
-          {
-            invert: variant !== 'primary',
-          }
+          { invert: variant !== 'primary' }
         )}
       >
         {children}
