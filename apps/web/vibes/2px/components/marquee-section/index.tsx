@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import style from './index.module.css'
 
 interface Props {
-  className: string
+  className?: string
   text: string
 }
 
