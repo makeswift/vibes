@@ -166,7 +166,7 @@ export const components = [
     name: 'blog-list-section',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/blog-list-section/index.tsx'],
+    files: ['./components/blog-list-section/index.tsx', '../../lib/utils.ts'],
     component: lazy(() => import('./components/blog-list-section')),
   },
   {

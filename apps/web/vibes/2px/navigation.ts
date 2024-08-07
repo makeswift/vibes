@@ -6,12 +6,6 @@ export const navigation = [
 
     pages: [
       {
-        title: 'Blog List Section',
-        slug: 'blog-list-section',
-        file: 'docs/blog-list-section.mdx',
-        component: 'blog-list-section',
-      },
-      {
         title: 'Breadcrumbs',
         slug: 'breadcrumbs',
         file: 'docs/breadcrumbs.mdx',
@@ -121,6 +115,12 @@ export const navigation = [
         slug: 'callout-section',
         file: 'docs/callout-section.mdx',
         component: 'callout-section',
+      },
+      {
+        title: 'Blog List Section',
+        slug: 'blog-list-section',
+        file: 'docs/blog-list-section.mdx',
+        component: 'blog-list-section',
       },
     ],
   },
