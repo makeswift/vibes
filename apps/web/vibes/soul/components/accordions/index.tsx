@@ -15,15 +15,21 @@ export type AccordionItem = {
 type Props = {
   className?: string
   accordions: AccordionItem[]
-  type?: 'single' | 'multiple'
+  defaultValue?: string[]
 }
 
 export const Accordions = forwardRef(function Accordions(
-  { className, accordions, type = 'multiple' }: Props,
+  { className, accordions, defaultValue }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
-    <Accordion.Root type={type} ref={ref} className={clsx(className, 'font-body')} asChild>
+    <Accordion.Root
+      className={clsx(className, 'font-body')}
+      type="multiple"
+      ref={ref}
+      defaultValue={defaultValue}
+      asChild
+    >
       <ul className="mx-auto w-full max-w-7xl bg-background @container">
         {accordions.map((accordion, i) => (
           <Accordion.Item key={i} value={`${i + 1}`} asChild>
