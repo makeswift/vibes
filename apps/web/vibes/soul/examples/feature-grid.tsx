@@ -3,10 +3,6 @@ import Feature from '@/vibes/soul/components/feature'
 export default function Preview() {
   const image: Feature['image'] = {
     url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
-    dimensions: {
-      width: 932,
-      height: 1200,
-    },
     alt: 'Biker in Mountains',
   }
 

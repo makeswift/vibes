@@ -8,7 +8,7 @@ import clsx from 'clsx'
 type Feature = {
   heading?: string
   description?: string
-  icon?: { url: string; dimensions: { width: number; height: number } }
+  icon?: { url: string; alt: string }
   iconAlt: string
 }
 
