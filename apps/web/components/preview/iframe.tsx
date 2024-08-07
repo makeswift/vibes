@@ -25,7 +25,7 @@ export function IFrame({ children, bodyStyle, ...rest }: Props) {
 
     setTimeout(() => {
       setStylesheetLoaded(true)
-    }, 50)
+    }, 40)
   }, [iframe])
 
   useLayoutEffect(() => {
@@ -39,7 +39,7 @@ export function IFrame({ children, bodyStyle, ...rest }: Props) {
 
     setTimeout(() => {
       setStyleLoaded(true)
-    }, 50)
+    }, 40)
   }, [iframe, bodyStyle])
 
   return (
