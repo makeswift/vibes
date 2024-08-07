@@ -59,7 +59,17 @@ export const Header = forwardRef(function Header(
   }, [navOpen])
 
   return (
-    <ReactHeadroom {...rest} className="sticky top-0 z-30 !h-0 w-full @container">
+    <ReactHeadroom
+      {...rest}
+      className="sticky top-14 z-30 !h-0 w-full @container"
+      upTolerance={0}
+      style={{
+        WebkitTransition: 'transform 1.5s ease-in-out',
+        MozTransition: 'transform 1.5s ease-in-out',
+        OTransition: 'transform 1.5s ease-in-out',
+        transition: 'transform 1.5s ease-in-out',
+      }}
+    >
       <header
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
