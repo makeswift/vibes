@@ -31,8 +31,8 @@ export const Feature = function Feature({ image, heading, description, grid, lin
         {/* Image Side */}
         <div
           className="relative aspect-square w-full overflow-hidden @3xl/section:aspect-[9/12]
-          @3xl/section:max-w-96 @3xl:ml-10 @4xl/section:my-[110px] @4xl/section:w-1/2 
-          @4xl/section:rounded-xl @5xl/section:w-3/5 @6xl/section:ml-[200px]"
+          @3xl/section:max-w-96 @4xl/section:my-[110px] @4xl/section:w-1/2 @4xl/section:rounded-xl 
+          @4xl:ml-10 @5xl/section:w-3/5 @6xl/section:ml-20"
         >
           <Image src={image.url} alt={image.alt} fill className="object-cover" />
         </div>
