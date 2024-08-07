@@ -20,19 +20,17 @@ export const ProductsPage = function ProductsPage() {
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
-      <div className="relative flex flex-col">
-        <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
-        <ProductsHeader title="All Men" numberOfProducts={32} />
-        <ProductList products={productsList} />
-        <Pagination pages={5} />
-        <Carousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
-          {categories.map(category => (
-            <CategoryCard key={category.label} {...category} />
-          ))}
-        </Carousel>
-        <CompareDrawer products={compareProducts} />
-        <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
-      </div>
+      <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+      <ProductsHeader title="All Men" numberOfProducts={32} />
+      <ProductList products={productsList} />
+      <Pagination pages={5} />
+      <Carousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
+        {categories.map(category => (
+          <CategoryCard key={category.label} {...category} />
+        ))}
+      </Carousel>
+      <CompareDrawer products={compareProducts} />
+      <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
     </>
   )
 }
