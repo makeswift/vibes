@@ -45,7 +45,7 @@ export function Frame({ children, size = 'medium' }: Props) {
     <div className="relative bg-contrast-100 [transform:translate3d(0,0,0)]" ref={container}>
       <div
         className={clsx(
-          'relative mx-auto h-[500px] border border-dashed border-contrast-200',
+          'relative mx-auto border border-dashed border-contrast-200',
           {
             small: 'h-[300px]',
             medium: 'h-[500px]',
