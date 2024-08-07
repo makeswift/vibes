@@ -1,15 +1,10 @@
 'use client'
 
-import * as React from 'react'
+import { useState } from 'react'
 import { DayPicker } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronUpIcon,
-} from '@/vibes/2px/components/icons'
+import { ChevronLeftIcon } from '@/vibes/2px/components/icons/ChevronLeftIcon'
 
 interface Props {
   className?: string
@@ -18,7 +13,7 @@ interface Props {
 }
 
 export default function Calendar({ className, selectedDate, setSelectedDate }: Props) {
-  const [displayedMonth, setDisplayedMonth] = React.useState<Date>(
+  const [displayedMonth, setDisplayedMonth] = useState<Date>(
     selectedDate ? selectedDate : new Date()
   )
 
@@ -36,7 +31,7 @@ export default function Calendar({ className, selectedDate, setSelectedDate }: P
       month={displayedMonth}
       onSelect={selected => setSelectedDate(selected)}
       className={cn(
-        'relative flex min-w-[19rem] flex-col gap-2 border-2 border-foreground bg-background p-3 text-center font-body text-xs leading-[1.375rem] text-foreground',
+        'relative flex min-w-[19rem] flex-col gap-2 border-2 border-foreground bg-background p-3 text-center font-body text-xs leading-snug text-foreground',
         className
       )}
       modifiers={{
@@ -78,27 +73,15 @@ export default function Calendar({ className, selectedDate, setSelectedDate }: P
       }}
       components={{
         Chevron: ({ orientation }) => {
-          if (orientation === 'left')
-            return (
-              <div className="flex h-10 w-10 items-center justify-center">
-                <ChevronLeftIcon className="h-4 w-4 cursor-pointer text-foreground" />
-              </div>
-            )
-          if (orientation === 'right')
-            return (
-              <div className="flex h-10 w-10 items-center justify-center">
-                <ChevronRightIcon className="h-4 w-4 text-foreground" />
-              </div>
-            )
-          if (orientation === 'up')
-            return (
-              <div className="flex h-10 w-10 items-center justify-center">
-                <ChevronUpIcon className="h-4 w-4 text-foreground" />
-              </div>
-            )
           return (
             <div className="flex h-10 w-10 items-center justify-center">
-              <ChevronDownIcon className="h-4 w-4 cursor-pointer text-foreground" />
+              <ChevronLeftIcon
+                className={cn('h-4 w-4 cursor-pointer text-foreground', {
+                  'rotate-90': orientation === 'up',
+                  'rotate-180': orientation === 'right',
+                  '-rotate-90': orientation === 'down',
+                })}
+              />
             </div>
           )
         },

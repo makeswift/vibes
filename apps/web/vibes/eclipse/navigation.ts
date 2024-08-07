@@ -9,6 +9,10 @@ export const navigation = [
     ],
   },
   {
+    title: 'Styles',
+    pages: [{ title: 'Magenta', slug: 'magenta', file: 'docs/magenta.mdx' }],
+  },
+  {
     title: 'Components',
     pages: [
       {
