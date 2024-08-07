@@ -36,13 +36,25 @@ export const SidePanel = function SidePanel({ isOpen, onClose, children }: Props
     }
   }, [isOpen, onClose])
 
+  // TODO: Lock preview scroll
+  // useEffect(() => {
+  //   document.body.classList.toggle('overflow-hidden', isOpen)
+  // }, [isOpen])
+
   return (
-    <dialog ref={dialogRef} className="backdrop:bg-foreground/50" onClose={onClose}>
+    <dialog
+      ref={dialogRef}
+      className={clsx(
+        'absolute right-0 top-0 flex h-[100vh] w-full justify-end overflow-hidden border border-green-500 bg-transparent',
+        !isOpen && 'pointer-events-none'
+      )}
+      onClose={onClose}
+    >
       <div
         ref={panelRef}
         className={clsx(
-          'fixed right-0 top-0 z-50 h-full w-[500px] transition-transform duration-300 ease-out',
-          // TODO: Panel should animate smoothly when opening and closing
+          'z-50 h-full border border-blue-500',
+          'transition-transform duration-300 ease-out',
           isOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >

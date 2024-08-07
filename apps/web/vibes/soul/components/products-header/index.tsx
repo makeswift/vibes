@@ -8,7 +8,10 @@ import Chip from '@/vibes/soul/components/chip'
 import Dropdown from '@/vibes/soul/components/dropdown'
 import Icon from '@/vibes/soul/components/icon'
 import Input from '@/vibes/soul/components/input'
-import SidePanel from '@/vibes/soul/components/side-panel'
+
+// import { Dialog, DialogContent, DialogTrigger } from '@/vibes/soul/components/side-panel/radix-dialog'
+// import clsx from 'clsx'
+import SidePanel from '../side-panel/side-panel'
 
 type Props = {
   title: string
@@ -71,11 +74,101 @@ export const ProductsHeader = function ProductsHeader({ title, numberOfProducts 
   return (
     <>
       {/* Products Header */}
-      <header className="z-10 flex items-center justify-between bg-background pb-10 pt-28 text-foreground @container @lg:pt-44">
+      <div className="z-10 flex items-center justify-between bg-background pb-10 pt-28 text-foreground @container @lg:pt-44">
         <h1 className="pl-3 text-xl font-medium @xl:pl-20 @2xl:text-[40px]">
           {title} <span className="text-contrast-200">{numberOfProducts}</span>
         </h1>
         <div className="flex gap-2 pr-3 @xl:pr-20">
+          {/* Filter Button & Dialog */}
+          {/* <Dialog open={filterOpen} onOpenChange={setFilterOpen}>
+            <DialogTrigger asChild>
+              <Button variant="dark" size="small" className="w-fit">
+                <span className="hidden @xl:block">Filter</span>
+                <Icon name="Sliders" size={18} />
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <div className="flex h-full flex-col border border-pink-500 p-20">
+                <h2 className="text-2xl">Filters</h2>
+                <Accordions
+                  className="mt-10"
+                  accordions={[
+                    {
+                      title: 'sizing',
+                      content: (
+                        <div className="flex flex-wrap gap-2">
+                          {sizingFilters?.length &&
+                            sizingFilters.map(({ label, amount }, index) => {
+                              return (
+                                <Chip
+                                  key={index}
+                                  label={label}
+                                  amount={amount}
+                                  onClick={() =>
+                                    setSelectedTags(
+                                      prev =>
+                                        prev.includes(label)
+                                          ? prev.filter(tag => tag !== label) // Remove the label if it's already in the array
+                                          : [...prev, label] // Add the label if it's not in the array
+                                    )
+                                  }
+                                  selected={selectedTags.includes(label)}
+                                />
+                              )
+                            })}
+                        </div>
+                      ),
+                    },
+                    {
+                      title: 'color',
+                      content: (
+                        <div className="flex flex-wrap gap-2">
+                          {colorFilters?.length &&
+                            colorFilters.map(({ label, amount }, index) => {
+                              return (
+                                <Chip
+                                  key={index}
+                                  label={label}
+                                  amount={amount}
+                                  onClick={() =>
+                                    setSelectedTags(
+                                      prev =>
+                                        prev.includes(label)
+                                          ? prev.filter(tag => tag !== label) // Remove the label if it's already in the array
+                                          : [...prev, label] // Add the label if it's not in the array
+                                    )
+                                  }
+                                  selected={selectedTags.includes(label)}
+                                />
+                              )
+                            })}
+                        </div>
+                      ),
+                    },
+                    {
+                      title: 'pricing',
+                      content: (
+                        <div className="flex w-[48%] gap-2">
+                          <Input variant="price" />
+                          <Input variant="price" />
+                        </div>
+                      ),
+                    },
+                  ]}
+                />
+
+                <div className="mt-auto flex justify-center gap-2">
+                  <Button variant="dark" onClick={() => setFilterOpen(false)}>
+                    Show 25 Results
+                  </Button>
+                  <Button variant="light" onClick={() => setSelectedTags([])}>
+                    Reset
+                  </Button>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog> */}
+
           <Button variant="dark" size="small" onClick={() => setFilterOpen(true)}>
             <span className="hidden @xl:block">Filter</span>
             <Icon name="Sliders" size={18} />
@@ -87,7 +180,7 @@ export const ProductsHeader = function ProductsHeader({ title, numberOfProducts 
             size="small"
           />
         </div>
-      </header>
+      </div>
 
       {/* Filter Panel */}
       <SidePanel isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
