@@ -70,7 +70,7 @@ export const Feature = function Feature({ image, heading, description, grid, lin
             variant="primary"
             link={{ href: link.href, target: link.target }}
             className={clsx('text-foreground', {
-              'self-center @xs/content:self-start': grid?.length,
+              'self-center @3xl/section:self-start': grid?.length,
             })}
           >
             {link.label}
