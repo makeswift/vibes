@@ -98,6 +98,12 @@ export const navigation = [
         file: 'docs/blog-post-card.mdx',
         component: 'blog-post-card',
       },
+      {
+        title: 'Section Header',
+        slug: 'section-header',
+        file: 'docs/section-header.mdx',
+        component: 'section-header',
+      },
     ],
   },
 ] satisfies Navigation
