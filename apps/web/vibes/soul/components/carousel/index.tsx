@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import useEmblaCarousel from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
@@ -15,6 +16,27 @@ type Props = {
 
 export const Carousel = ({ title, link, children }: Props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
+  const [canScrollPrev, setCanScrollPrev] = useState(false)
+  const [canScrollNext, setCanScrollNext] = useState(false)
+
+  const scrollPrev = () => emblaApi?.scrollPrev()
+  const scrollNext = () => emblaApi?.scrollNext()
+
+  const onSelect = () => {
+    if (!emblaApi) return
+    setCanScrollPrev(emblaApi.canScrollPrev())
+    setCanScrollNext(emblaApi.canScrollNext())
+  }
+
+  useEffect(() => {
+    if (!emblaApi) return
+    emblaApi.on('select', onSelect)
+    onSelect() // Initial check
+
+    return () => {
+      emblaApi.off('select', onSelect)
+    }
+  }, [emblaApi])
 
   return (
     <section className="flex flex-col gap-10 bg-background @container">
@@ -38,15 +60,17 @@ export const Carousel = ({ title, link, children }: Props) => {
         <div className="flex gap-2 text-foreground">
           <button
             role="button"
-            className="transition-transform duration-300 hover:-translate-x-1"
-            onClick={() => emblaApi?.scrollPrev()}
+            className="transition-[colors,transform] duration-300 hover:-translate-x-1 disabled:pointer-events-none disabled:text-contrast-300"
+            onClick={scrollPrev}
+            disabled={!canScrollPrev}
           >
             <ArrowLeft strokeWidth={1.5} />
           </button>
           <button
             role="button"
-            className="transition-transform duration-300 hover:translate-x-1"
-            onClick={() => emblaApi?.scrollNext()}
+            className="transition-[colors,transform] duration-300 hover:translate-x-1 disabled:pointer-events-none disabled:text-contrast-300"
+            onClick={scrollNext}
+            disabled={!canScrollNext}
           >
             <ArrowRight strokeWidth={1.5} />
           </button>
