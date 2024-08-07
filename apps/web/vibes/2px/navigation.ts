@@ -116,6 +116,12 @@ export const navigation = [
         file: 'docs/callout-section.mdx',
         component: 'callout-section',
       },
+      {
+        title: 'Blog List Section',
+        slug: 'blog-list-section',
+        file: 'docs/blog-list-section.mdx',
+        component: 'blog-list-section',
+      },
     ],
   },
 ] satisfies Navigation

@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/calendar')),
   },
   {
+    name: 'blog-list-section-example',
+    dependencies: [],
+    registryDependencies: ['blog-list-section'],
+    files: ['examples/blog-list-section.tsx'],
+    component: lazy(() => import('./examples/blog-list-section')),
+  },
+  {
     name: 'breadcrumbs-example',
     dependencies: [],
     registryDependencies: ['breadcrumbs'],

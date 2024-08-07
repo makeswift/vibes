@@ -163,6 +163,13 @@ export const components = [
     component: lazy(() => import('./components/calendar')),
   },
   {
+    name: 'blog-list-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/blog-list-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/blog-list-section')),
+  },
+  {
     name: 'breadcrumbs',
     dependencies: [],
     registryDependencies: [],
