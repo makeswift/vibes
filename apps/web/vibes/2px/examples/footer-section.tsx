@@ -7,13 +7,6 @@ import InstagramIcon from '../components/icons/InstagramIcon'
 import PinterestIcon from '../components/icons/PinterestIcon'
 import TwitterIcon from '../components/icons/TwitterIcon'
 
-const SOCIAL_ICONS = {
-  facebook: FacebookIcon,
-  instagram: InstagramIcon,
-  twitter: TwitterIcon,
-  pinterest: PinterestIcon,
-}
-
 export default function Preview() {
   return (
     <div className="flex min-h-48 items-center justify-center bg-white @container sm:min-h-64 lg:min-h-80">

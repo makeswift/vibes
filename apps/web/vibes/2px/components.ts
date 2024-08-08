@@ -180,7 +180,7 @@ export const components = [
     name: 'footer-section',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/footer-section/index.tsx'],
+    files: ['./components/footer-section/index.tsx', '../../lib/utils.ts'],
     component: lazy(() => import('./components/footer-section')),
   },
   {

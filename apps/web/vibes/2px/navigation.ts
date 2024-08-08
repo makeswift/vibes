@@ -81,13 +81,13 @@ export const navigation = [
     title: 'Sections',
     pages: [
       {
-        title: 'Text Section',
+        title: 'Text',
         slug: 'text-section',
         file: 'docs/text-section.mdx',
         component: 'text-section',
       },
       {
-        title: 'FAQ Section',
+        title: 'FAQ',
         slug: 'faq-section',
         file: 'docs/faq-section.mdx',
         component: 'faq-section',
@@ -105,31 +105,31 @@ export const navigation = [
         component: 'section-header',
       },
       {
-        title: 'Hero Header',
+        title: 'Hero',
         slug: 'hero-header',
         file: 'docs/hero-header.mdx',
         component: 'hero-header',
       },
       {
-        title: 'Callout Section',
+        title: 'Callout',
         slug: 'callout-section',
         file: 'docs/callout-section.mdx',
         component: 'callout-section',
       },
       {
-        title: 'Blog List Section',
+        title: 'Blog List',
         slug: 'blog-list-section',
         file: 'docs/blog-list-section.mdx',
         component: 'blog-list-section',
       },
       {
-        title: 'Fullscreen Product Card Section',
+        title: 'Fullscreen Product Card',
         slug: 'fullscreen-product-card-section',
         file: 'docs/fullscreen-product-card-section.mdx',
         component: 'fullscreen-product-card-section',
       },
       {
-        title: 'Footer Section',
+        title: 'Footer',
         slug: 'footer-section',
         file: 'docs/footer-section.mdx',
         component: 'footer-section',

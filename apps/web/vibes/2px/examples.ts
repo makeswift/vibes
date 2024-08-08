@@ -119,7 +119,13 @@ export const examples = [
     name: 'footer-section-example',
     dependencies: [],
     registryDependencies: ['footer-section'],
-    files: ['examples/footer-section.tsx'],
+    files: [
+      'examples/footer-section.tsx',
+      '../components/icons/FacebookIcon',
+      '../components/icons/InstagramIcon',
+      '../components/icons/PinterestIcon',
+      '../components/icons/TwitterIcon',
+    ],
     component: lazy(() => import('./examples/footer-section')),
   },
   {
