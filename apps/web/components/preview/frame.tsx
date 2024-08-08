@@ -1,21 +1,23 @@
 'use client'
 
-import { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
 import { ResizeX } from '@/icons/generated'
 
-import Card from '../ui/card'
 import { Portal } from '../ui/portal'
 import { useBrandContext } from './brand-context'
-import { IFrame } from './iframe'
 import { usePreviewContext } from './preview-context'
 
-interface Props extends ComponentPropsWithoutRef<typeof Card> {}
+interface Props {
+  vibeSlug: string
+  componentName: string
+}
 
-export function Frame({ children }: Props) {
+export function Frame({ vibeSlug, componentName }: Props) {
   const { activeBrand } = useBrandContext()
+  const iframe = useRef<HTMLIFrameElement>(null)
   const container = useRef<HTMLDivElement>(null)
   const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
   const widthStart = useRef(0)
@@ -39,15 +41,21 @@ export function Frame({ children }: Props) {
     return () => window.removeEventListener('resize', handleResize)
   }, [resize, setMaxWidth])
 
+  useEffect(() => {
+    iframe.current?.contentDocument?.body.style.setProperty('zoom', String(zoom))
+  }, [zoom])
+
   return (
     <div className="relative h-full bg-contrast-100" ref={container}>
       <div
         className={clsx('relative mx-auto h-full border border-dashed border-contrast-200')}
         style={{ width: width ?? '100%' }}
       >
-        <IFrame className="h-full w-full" bodyStyle={{ zoom, ...(activeBrand?.cssVars ?? {}) }}>
-          {children}
-        </IFrame>
+        <iframe
+          ref={iframe}
+          className="h-full w-full"
+          src={`/preview/${vibeSlug}/${componentName}?brand=${activeBrand?.name}`}
+        />
         <div
           className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-resizeX md:block"
           onPointerDown={e => {
