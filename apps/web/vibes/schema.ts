@@ -68,7 +68,6 @@ export type CSSVars = {
 export type Brand = {
   name: string
   logo: string
-  fonts: Font[]
   cssVars: CSSVars
 }
 
