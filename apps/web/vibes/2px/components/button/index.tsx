@@ -33,7 +33,7 @@ export default function Button({
         {
           primary:
             'bg-foreground text-background hover:border-foreground hover:bg-transparent hover:text-foreground',
-          secondary: 'border-foreground bg-background text-foreground hover:border-dashed',
+          secondary: 'border-foreground bg-transparent text-foreground hover:border-dashed',
         }[variant],
         className
       )}
