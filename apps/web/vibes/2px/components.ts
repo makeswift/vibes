@@ -177,6 +177,13 @@ export const components = [
     component: lazy(() => import('./components/breadcrumbs')),
   },
   {
+    name: 'media-and-text-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/media-and-text-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/media-and-text-section')),
+  },
+  {
     name: 'footer-section',
     dependencies: [],
     registryDependencies: [],

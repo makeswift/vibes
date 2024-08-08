@@ -129,6 +129,12 @@ export const navigation = [
         component: 'fullscreen-product-card-section',
       },
       {
+        title: 'Media and Text',
+        slug: 'media-and-text-section',
+        file: 'docs/media-and-text-section.mdx',
+        component: 'media-and-text-section',
+      },
+      {
         title: 'Footer',
         slug: 'footer-section',
         file: 'docs/footer-section.mdx',
