@@ -16,7 +16,7 @@ export default async function Layout({
 
       <div className="relative mx-auto block items-start gap-x-4 px-5 xl:container lg:flex xl:px-8">
         <Sidebar vibeSlug={params.vibe} />
-        <div className="flex-1">
+        <div className="min-w-0 flex-1">
           <BrandProvider vibeSlug={params.vibe}>{children}</BrandProvider>
         </div>
       </div>

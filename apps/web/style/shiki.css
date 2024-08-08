@@ -10,7 +10,7 @@
     --shiki-line-diff-add-color: hsl(120 100% 90%);
     --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
     --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-    --shiki-line-padding: 16px;
+    --shiki-line-padding: 20px;
     --shiki-gutter-width: 16px;
 
     --shiki-foreground: hsl(var(--foreground));
@@ -24,6 +24,10 @@
     --shiki-token-string-expression: hsl(var(--contrast-400));
     --shiki-token-punctuation: hsl(var(--contrast-400));
     --shiki-token-link: hsl(var(--contrast-400));
+
+    .line:before {
+      @apply text-contrast-300;
+    }
   }
 
   .dark {
@@ -48,6 +52,10 @@
     --shiki-token-string-expression: hsl(var(--contrast-400));
     --shiki-token-punctuation: hsl(var(--contrast-400));
     --shiki-token-link: hsl(var(--contrast-400));
+
+    .line:before {
+      @apply text-contrast-200;
+    }
   }
 }
 
@@ -80,7 +88,7 @@
 }
 
 .shiki.show-line-numbers .line:before {
-  @apply inline-block shrink-0 select-none text-right text-foreground/30;
+  @apply inline-block shrink-0 select-none text-right;
   width: var(--shiki-gutter-width);
   margin-right: var(--shiki-line-padding);
   counter-increment: line;

@@ -11,7 +11,7 @@ export function Sidebar({ vibeSlug }: Props) {
   if (!vibe) return null
 
   return (
-    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-56 xl:block">
+    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-56 shrink-0 xl:block">
       <ul className="h-full space-y-5 overflow-y-scroll py-10 text-foreground">
         {vibe.groups.map(group => (
           <div key={group.title}>
