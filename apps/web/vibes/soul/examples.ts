@@ -137,20 +137,6 @@ export const examples = [
     component: lazy(() => import('./examples/media-section')),
   },
   {
-    name: 'media-section-left-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/media-section.tsx'],
-    component: lazy(() => import('./examples/media-section-left')),
-  },
-  {
-    name: 'media-section-right-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/media-section.tsx'],
-    component: lazy(() => import('./examples/media-section-right')),
-  },
-  {
     name: 'newsletter-example',
     dependencies: [],
     registryDependencies: [],
