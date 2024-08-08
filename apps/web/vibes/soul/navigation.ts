@@ -64,6 +64,12 @@ export const navigation = [
         file: 'docs/card-carousel.mdx',
         component: 'card-carousel',
       },
+      {
+        title: 'Carousel',
+        slug: 'carousel',
+        file: 'docs/carousel.mdx',
+        component: 'carousel',
+      },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
         title: 'Featured Product List',

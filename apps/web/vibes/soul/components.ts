@@ -39,6 +39,13 @@ export const components = [
     component: lazy(() => import('./components/card-carousel')),
   },
   {
+    name: 'carousel',
+    dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/carousel/index.tsx'],
+    component: lazy(() => import('./components/carousel')),
+  },
+  {
     name: 'category-card',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
