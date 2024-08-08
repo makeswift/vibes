@@ -1,5 +1,3 @@
-import { AnchorHTMLAttributes, DetailedHTMLProps, JSX } from 'react'
-
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
