@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import Carousel from '@/vibes/soul/components/card-carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
@@ -23,7 +25,9 @@ export const ProductsPage = function ProductsPage() {
       <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
       <ProductsHeader title="All Men" numberOfProducts={32} />
       <ProductList products={productsList} />
-      <Pagination pages={5} />
+      <Suspense>
+        <Pagination pages={5} />
+      </Suspense>
       <Carousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
         {categories.map(category => (
           <CategoryCard key={category.label} {...category} />
