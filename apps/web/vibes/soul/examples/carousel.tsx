@@ -1,11 +1,11 @@
 import Carousel from '@/vibes/soul/components/carousel'
 
 const images = [
-  'https://rstr.in/monogram/vibes/nBQFO6MyZ34',
-  'https://rstr.in/monogram/vibes/11zZTfNCpui',
-  'https://rstr.in/monogram/vibes/h4YqOhXhxfm',
-  'https://rstr.in/monogram/vibes/GQxaw-DlEYn',
-  'https://rstr.in/monogram/vibes/WOTVa86be5S',
+  'https://rstr.in/monogram/vibes/o_0gBpyrOVe',
+  'https://rstr.in/monogram/vibes/CVQwqHQKmz4',
+  'https://rstr.in/monogram/vibes/VSkA1mBG78U',
+  'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
+  'https://rstr.in/monogram/vibes/UWfiHOc2RnP',
 ]
 
 export default function Preview() {

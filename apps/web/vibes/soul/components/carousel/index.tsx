@@ -12,10 +12,10 @@ type Props = {
 
 const Carousel = ({ title, images }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(3)
-  const ref = useRef<NodeJS.Timeout | null>(null)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const startCarousel = () => {
-    ref.current = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setCurrentIndex(prevIndex =>
         prevIndex === images.concat(images).length - 3 ? 3 : prevIndex + 1
       )
@@ -23,18 +23,10 @@ const Carousel = ({ title, images }: Props) => {
   }
 
   useEffect(() => {
-    startCarousel()
-    return () => {
-      if (ref.current) clearInterval(ref.current)
-    }
-  }, [images.length])
-
-  useEffect(() => {
-    if (ref.current) clearInterval(ref.current)
+    if (intervalRef.current) clearInterval(intervalRef.current)
     const timeout = setTimeout(() => {
       startCarousel()
     }, 500)
-
     return () => clearTimeout(timeout)
   }, [currentIndex])
 
@@ -60,7 +52,7 @@ const Carousel = ({ title, images }: Props) => {
             height={1000}
             width={1000}
             className={clsx(
-              'pointer-events-none relative h-full max-h-[300px] flex-none origin-bottom select-none object-cover transition-all duration-700 ease-out @4xl:max-h-[700px]',
+              'pointer-events-none relative aspect-[3/4] h-full max-h-[300px] flex-none origin-bottom select-none object-cover transition-all duration-700 ease-out @4xl:max-h-[700px]',
               index % images.length === currentIndex % images.length
                 ? 'w-[56%] @4xl:w-[28%]'
                 : 'w-[36%] @4xl:w-[18%]'
