@@ -67,8 +67,8 @@ export function Frame({ vibeSlug, componentName }: Props) {
           <iframe
             ref={iframe}
             className={clsx(
-              'h-full w-full opacity-0',
-              iframeLoaded && 'opacity-100 transition-opacity'
+              'h-full w-full bg-transparent opacity-0',
+              iframeLoaded && 'opacity-100 transition-opacity duration-500'
             )}
             src={`/preview/${vibeSlug}/${componentName}/${activeBrand.name}`}
           />
