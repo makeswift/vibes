@@ -6,7 +6,7 @@ export default function Preview() {
       <BlogPostCard
         title="Vestibulum eleifend placerat ligula"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit hendrerit erat imperdiet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        thumbnail={{
+        image={{
           url: 'https://rstr.in/monogram/vibes/7ayVnws_5R1',
           altText: 'Vestibulum eleifend placerat ligula',
         }}

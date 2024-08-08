@@ -23,7 +23,7 @@ export const components = [
   },
   {
     name: 'blog-post-card',
-    dependencies: [],
+    dependencies: ['clsx'],
     registryDependencies: [],
     files: ['components/blog-post-card/index.tsx'],
   },

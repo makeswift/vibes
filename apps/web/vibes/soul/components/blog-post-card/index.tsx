@@ -1,31 +1,43 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-type Props = {
+import clsx from 'clsx'
+
+interface Image {
+  altText: string
+  url: string
+}
+
+interface Props {
   author?: string | null
   content: string
   date: string
+  image?: Image | null
   link: { href: string }
-  thumbnail?: { altText: string; url: string } | null
   title: string
+  className?: string
 }
 
 export const BlogPostCard = function BlogPostCard({
   title,
-  thumbnail,
+  image,
   content,
   link,
   date,
   author,
+  className = '',
 }: Props) {
   return (
-    <Link href={link.href} className="group flex max-w-[466px] flex-col gap-2 text-foreground">
+    <Link
+      href={link.href}
+      className={clsx('group flex max-w-[466px] flex-col gap-2 text-foreground', className)}
+    >
       <div className="overflow-hidden rounded-xl">
         <Image
-          src={thumbnail?.url ?? ''}
+          src={image?.url ?? ''}
           height={349}
           width={466}
-          alt={thumbnail?.altText ?? ''}
+          alt={image?.altText ?? ''}
           className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </div>
