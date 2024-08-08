@@ -1,4 +1,9 @@
+import { Inter, Roboto_Mono } from 'next/font/google'
+
 import { Brands } from '@/vibes/schema'
+
+const inter = Inter({ subsets: ['latin'], display: 'swap' })
+const roboto_mono = Roboto_Mono({ subsets: ['latin'], display: 'swap' })
 
 export const brands = [
   {
@@ -20,9 +25,9 @@ export const brands = [
       '--contrast-400': '0 0% 60%',
       '--contrast-500': '0 0% 53%',
 
-      '--font-family-heading': "'Inter', system-ui, sans-serif",
-      '--font-family-body': "'Inter', system-ui, sans-serif",
-      '--font-family-mono': "'Inter', system-ui, sans-serif",
+      '--font-family-heading': inter.style.fontFamily,
+      '--font-family-body': inter.style.fontFamily,
+      '--font-family-mono': roboto_mono.style.fontFamily,
       '--font-variation-settings-body': '"slnt" 0',
       '--font-variation-settings-heading': '"slnt" 0',
 
@@ -59,9 +64,9 @@ export const brands = [
       '--contrast-400': '0 0% 60%',
       '--contrast-500': '0 0% 53%',
 
-      '--font-family-heading': "'Inter', system-ui, sans-serif",
-      '--font-family-body': "'Inter', system-ui, sans-serif",
-      '--font-family-mono': "'Inter', system-ui, sans-serif",
+      '--font-family-heading': inter.style.fontFamily,
+      '--font-family-body': inter.style.fontFamily,
+      '--font-family-mono': roboto_mono.style.fontFamily,
       '--font-variation-settings-body': '"slnt" 0',
       '--font-variation-settings-heading': '"slnt" 0',
 
@@ -82,12 +87,6 @@ export const brands = [
   {
     name: 'Blue',
     logo: '',
-    fonts: [
-      {
-        name: 'Inter',
-        src: '/fonts/Inter-VariableFont_slnt,wght.woff2',
-      },
-    ],
     cssVars: {
       '--primary': '209 100% 63%',
       '--accent': '209 100% 63%',
@@ -104,9 +103,9 @@ export const brands = [
       '--contrast-400': '0 0% 60%',
       '--contrast-500': '0 0% 53%',
 
-      '--font-family-heading': "'Inter', system-ui, sans-serif",
-      '--font-family-body': "'Inter', system-ui, sans-serif",
-      '--font-family-mono': "'Inter', system-ui, sans-serif",
+      '--font-family-heading': inter.style.fontFamily,
+      '--font-family-body': inter.style.fontFamily,
+      '--font-family-mono': roboto_mono.style.fontFamily,
       '--font-variation-settings-body': '"slnt" 0',
       '--font-variation-settings-heading': '"slnt" 0',
 
@@ -127,12 +126,6 @@ export const brands = [
   {
     name: 'Luxury',
     logo: '',
-    fonts: [
-      {
-        name: 'Inter',
-        src: '/fonts/Inter-VariableFont_slnt,wght.woff2',
-      },
-    ],
     cssVars: {
       '--primary': '43 38% 45%',
       '--accent': '43 38% 45%',
@@ -149,9 +142,9 @@ export const brands = [
       '--contrast-400': '0 0% 60%',
       '--contrast-500': '0 0% 53%',
 
-      '--font-family-heading': "'Inter', system-ui, sans-serif",
-      '--font-family-body': "'Inter', system-ui, sans-serif",
-      '--font-family-mono': "'Inter', system-ui, sans-serif",
+      '--font-family-heading': inter.style.fontFamily,
+      '--font-family-body': inter.style.fontFamily,
+      '--font-family-mono': roboto_mono.style.fontFamily,
       '--font-variation-settings-body': '"slnt" 0',
       '--font-variation-settings-heading': '"slnt" 0',
 
