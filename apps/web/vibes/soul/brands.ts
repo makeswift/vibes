@@ -4,12 +4,6 @@ export const brands = [
   {
     name: 'Electric',
     logo: '',
-    fonts: [
-      {
-        name: 'Inter',
-        src: '/fonts/Inter-VariableFont_slnt,wght.woff2',
-      },
-    ],
     cssVars: {
       '--primary': '97 100% 68%',
       '--accent': '97 100% 68%',
@@ -49,12 +43,6 @@ export const brands = [
   {
     name: 'Warm',
     logo: '',
-    fonts: [
-      {
-        name: 'Inter',
-        src: '/fonts/Inter-VariableFont_slnt,wght.woff2',
-      },
-    ],
     cssVars: {
       '--primary': '43 100% 50%',
       '--accent': '43 100% 50%',
