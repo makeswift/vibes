@@ -53,7 +53,7 @@ export default function Preview() {
     <FeaturedProductList
       title="Off-Race"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-      link={{ badge: 'Shop Now', href: '/new-arrivals' }}
+      link={{ label: 'Shop Now', href: '/new-arrivals' }}
       products={featuredProducts}
     />
   )
