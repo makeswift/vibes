@@ -8,12 +8,11 @@ import Header from '@/vibes/soul/components/header'
 import MediaSection from '@/vibes/soul/components/media-section'
 import Newsletter from '@/vibes/soul/components/newsletter'
 import Slideshow from '@/vibes/soul/components/slideshow'
-import { categories } from '@/vibes/soul/examples/card-carousel'
 import { featuredProducts } from '@/vibes/soul/examples/featured-product-list'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
-export const HomePage = function HomePage({ heroSlides }: any) {
+export const HomePage = function HomePage({ heroSlides, categories }: any) {
   return (
     <>
       <AnnouncementBar>
