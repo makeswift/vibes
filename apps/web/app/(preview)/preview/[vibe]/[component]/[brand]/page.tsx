@@ -1,4 +1,6 @@
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 import * as Vibes from '@/vibes'
 import { getVibe } from '@/vibes/utils'
@@ -52,7 +54,13 @@ export default async function Page({
         `,
         }}
       />
-      <Component />
+      <ErrorBoundary
+        fallback={<div className="flex justify-center p-5">Failed to load {entry.name}</div>}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
+          <Component />
+        </Suspense>
+      </ErrorBoundary>
     </>
   )
 }
