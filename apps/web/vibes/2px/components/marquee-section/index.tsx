@@ -16,8 +16,8 @@ export default function MarqueeSection({ className, text }: Props) {
   const marqueeContentRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
-    if (typeof window === 'undefined') return
     const currentMarqueeSection = marqueeSectionRef.current
+    if (typeof window === 'undefined' || !currentMarqueeSection) return
     const adjustMarqueeSpeed = () => {
       const marqueeSection = marqueeSectionRef.current
       const marqueeContent = marqueeContentRef.current
@@ -42,7 +42,7 @@ export default function MarqueeSection({ className, text }: Props) {
       adjustMarqueeSpeed()
     })
     if (marqueeSectionRef.current) {
-      resizeObserver.observe(marqueeSectionRef.current)
+      resizeObserver.observe(currentMarqueeSection)
     }
     return () => {
       if (currentMarqueeSection) {
@@ -55,19 +55,19 @@ export default function MarqueeSection({ className, text }: Props) {
     <section
       ref={marqueeSectionRef}
       className={cn(
-        'marquee-section flex w-fit justify-center overflow-hidden bg-background font-body text-3xl leading-[2.125rem] -tracking-[0.0375rem] text-background @2xl:text-6xl @2xl:leading-[4rem] @2xl:-tracking-[0.0675rem]',
+        'flex w-full justify-center overflow-hidden bg-background text-background @container',
         className
       )}
     >
-      <div
+      <p
         ref={marqueeContentRef}
         className={cn(
           style.marquee,
-          'flex h-[2.75rem] w-fit items-center whitespace-nowrap bg-foreground px-2 py-0.5 @2xl:h-20'
+          'flex h-11 items-center whitespace-nowrap bg-foreground px-2 py-0.5 font-body text-3xl leading-[2.125rem] -tracking-[0.0375rem] @2xl:h-20 @2xl:text-6xl @2xl:leading-[4rem] @2xl:-tracking-[0.0675rem]'
         )}
       >
         {text}
-      </div>
+      </p>
     </section>
   )
 }
