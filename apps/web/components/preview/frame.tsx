@@ -17,6 +17,7 @@ interface Props {
 
 export function Frame({ vibeSlug, componentName }: Props) {
   const { activeBrand } = useBrandContext()
+  const [iframeLoaded, setIframeLoaded] = useState(false)
   const iframe = useRef<HTMLIFrameElement>(null)
   const container = useRef<HTMLDivElement>(null)
   const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
@@ -53,7 +54,11 @@ export function Frame({ vibeSlug, componentName }: Props) {
       >
         <iframe
           ref={iframe}
-          className="h-full w-full"
+          onLoad={() => setIframeLoaded(true)}
+          className={clsx(
+            'h-full w-full opacity-0',
+            iframeLoaded && 'opacity-100 transition-opacity'
+          )}
           src={`/preview/${vibeSlug}/${componentName}?brand=${activeBrand?.name}`}
         />
         <div
