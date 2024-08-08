@@ -20,7 +20,7 @@ export function IFrame({ children, bodyStyle, ...rest }: Props) {
     if (!ownerDocument || !contentDocument) return
 
     ownerDocument.head.querySelectorAll('link[as="style"],link[rel="stylesheet"]').forEach(ele => {
-      contentDocument.head.append(ele.cloneNode(true))
+      contentDocument.head.append(contentDocument.importNode(ele, true))
     })
 
     setTimeout(() => {

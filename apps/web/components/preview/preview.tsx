@@ -46,6 +46,7 @@ export async function Preview({ vibeSlug, componentName, size }: Props) {
   return (
     <PreviewProvider>
       <PreviewTabs
+        size={size}
         components={await Promise.all(
           components.filter(exists).map(async ({ brandName, entry }) => {
             const pathname = `/vibes/${vibeSlug}/${entry.files[0]}`
@@ -56,7 +57,7 @@ export async function Preview({ vibeSlug, componentName, size }: Props) {
               clipboard: file,
               preview: (
                 <Suspense fallback={<div>Loading...</div>}>
-                  <Frame size={size}>
+                  <Frame>
                     <ErrorBoundary
                       fallback={
                         <div className="flex justify-center p-5">
