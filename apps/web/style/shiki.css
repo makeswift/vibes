@@ -1,29 +1,53 @@
-:root {
-  --shiki-line-highlight-color: hsl(0 0% 93%);
-  --shiki-highlight-error-color: hsl(0 100% 90%);
-  --shiki-highlight-warning-color: hsl(50 100% 90%);
-  --shiki-line-diff-remove-color: hsl(0 100% 90%);
-  --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
-  --shiki-line-diff-add-color: hsl(120 100% 90%);
-  --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-  --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-  --shiki-line-padding: 16px;
-  --shiki-gutter-width: 16px;
-}
+@tailwind base;
 
-.dark {
-  --shiki-highlight-color: rgba(101, 117, 133, 0.16);
-  --shiki-highlight-border-color: rgba(101, 117, 133, 0.5);
-  --shiki-highlight-error-color: hsl(0 100% 90%);
-  --shiki-highlight-warning-color: hsl(50 100% 90%);
-  --shiki-line-diff-remove-color: rgba(244, 63, 94, 0.16);
-  --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
-  --shiki-line-diff-add-color: rgba(16, 185, 129, 0.16);
-  --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
-  --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+@layer base {
+  :root {
+    --shiki-line-highlight-color: hsl(0 0% 93%);
+    --shiki-highlight-error-color: hsl(0 100% 90%);
+    --shiki-highlight-warning-color: hsl(50 100% 90%);
+    --shiki-line-diff-remove-color: hsl(0 100% 90%);
+    --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
+    --shiki-line-diff-add-color: hsl(120 100% 90%);
+    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+    --shiki-line-padding: 16px;
+    --shiki-gutter-width: 16px;
 
-  .shiki span {
-    color: var(--shiki-dark) !important;
+    --shiki-foreground: hsl(var(--foreground));
+    --shiki-background: hsl(var(--background));
+    --shiki-token-constant: hsl(var(--foreground));
+    --shiki-token-string: hsl(var(--contrast-400));
+    --shiki-token-comment: hsl(var(--contrast-300));
+    --shiki-token-keyword: hsl(var(--contrast-400));
+    --shiki-token-parameter: hsl(var(--contrast-400));
+    --shiki-token-function: hsl(var(--foreground));
+    --shiki-token-string-expression: hsl(var(--contrast-400));
+    --shiki-token-punctuation: hsl(var(--contrast-400));
+    --shiki-token-link: hsl(var(--contrast-400));
+  }
+
+  .dark {
+    --shiki-highlight-color: rgba(101, 117, 133, 0.16);
+    --shiki-highlight-border-color: rgba(101, 117, 133, 0.5);
+    --shiki-highlight-error-color: hsl(0 100% 90%);
+    --shiki-highlight-warning-color: hsl(50 100% 90%);
+    --shiki-line-diff-remove-color: rgba(244, 63, 94, 0.16);
+    --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
+    --shiki-line-diff-add-color: rgba(16, 185, 129, 0.16);
+    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+
+    --shiki-foreground: hsl(var(--foreground));
+    --shiki-background: hsl(var(--background));
+    --shiki-token-constant: hsl(var(--foreground));
+    --shiki-token-string: hsl(var(--contrast-400));
+    --shiki-token-comment: hsl(var(--contrast-300));
+    --shiki-token-keyword: hsl(var(--contrast-300));
+    --shiki-token-parameter: hsl(var(--contrast-400));
+    --shiki-token-function: hsl(var(--foreground));
+    --shiki-token-string-expression: hsl(var(--contrast-400));
+    --shiki-token-punctuation: hsl(var(--contrast-400));
+    --shiki-token-link: hsl(var(--contrast-400));
   }
 }
 
@@ -33,10 +57,12 @@
 
 .shiki code {
   font-family: var(--font-mono);
+  font-weight: 500;
+  display: grid;
 }
 
 .shiki .line {
-  @apply relative block text-xs;
+  @apply relative block text-sm;
   padding: 0 var(--shiki-line-padding);
   width: calc(100% + (var(--shiki-line-padding) * 2));
   margin: 0 calc(-1 * var(--shiki-line-padding));

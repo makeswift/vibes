@@ -1,9 +1,16 @@
 import clsx from 'clsx'
-import { CodeToHastOptions, ShikiTransformer, codeToHtml } from 'shiki'
+import { CodeToHastOptions, ShikiTransformer, codeToHtml, createCssVariablesTheme } from 'shiki'
 
 import { transformers } from '@/lib/shiki'
 
 import { CopyButton } from './copy-button'
+
+const myTheme = createCssVariablesTheme({
+  name: 'css-variables',
+  variablePrefix: '--shiki-',
+  variableDefaults: {},
+  fontStyle: true,
+})
 
 interface Props {
   children: string
@@ -23,8 +30,8 @@ export async function CodeBlock({
   const __html = await codeToHtml(children, {
     lang,
     themes: {
-      light: 'github-light',
-      dark: 'github-dark',
+      light: myTheme,
+      dark: myTheme,
     },
     transformers: [
       ...transformers,
@@ -41,7 +48,12 @@ export async function CodeBlock({
   })
 
   return (
-    <div className={clsx('my-4 only:my-0 md:my-5', className)}>
+    <div
+      className={clsx(
+        'my-4 only:my-0 md:my-5 [&>div>pre]:h-[inherit] [&>div]:h-[inherit]',
+        className
+      )}
+    >
       {!hideCopyButton && (
         <div className="pointer-events-none sticky top-0 z-10 flex w-full justify-end p-2">
           <CopyButton className="pointer-events-auto" clipboard={children} />
