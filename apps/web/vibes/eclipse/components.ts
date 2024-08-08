@@ -75,8 +75,8 @@ export const components = [
   },
   {
     name: 'navigation',
-    dependencies: [],
-    registryDependencies: [],
+    dependencies: ['@radix-ui/react-accordion', '@radix-ui/react-navigation-menu'],
+    registryDependencies: ['button'],
     files: ['components/navigation/index.tsx'],
   },
   {

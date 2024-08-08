@@ -2,234 +2,355 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { CSSProperties, Ref, forwardRef, useEffect, useRef, useState } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 import ReactHeadroom from 'react-headroom'
 
+import * as Accordion from '@radix-ui/react-accordion'
+import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import clsx from 'clsx'
+import { ChevronDown } from 'lucide-react'
 
 import Button from '../button'
 
-type MainLink = {
-  text?: string
-  link?: {
-    href: string
-    target?: '_self' | '_blank'
-  }
+type SecondaryMenuItem = {
+  title: string
+  href: string
 }
 
-type SecondaryLink = {
-  text?: string
-  link?: {
-    href: string
-    target?: '_self' | '_blank'
-  }
+type InnerMenuItem = {
+  title: string
+  content: string
+  href: string
+  icon?: React.ReactNode
 }
 
-type Props = {
-  className?: string
-  navWidth?: number
-  logoImage?: { url: string; dimensions: { width: number; height: number } }
-  logoWidth?: number
-  logoAlt?: string
-  logoLink?: {
-    href: string
-    target?: '_self' | '_blank'
-  }
-  mainLinks?: MainLink[]
-  secondaryLinks?: SecondaryLink[]
-  linkGap?: number
-  ctaLink?: {
-    href: string
-    target?: '_self' | '_blank'
-  }
+type SubMenuItem = {
+  title?: string
+  content?: string
+  innerMenuItems?: InnerMenuItem[]
+}
+
+type MenuItem = {
+  title: string
+  description: string
+  href?: string
+  subMenuItems: SubMenuItem[]
+}
+
+type NavigationProps = {
+  logoImage: string
+  mainMenuItems: MenuItem[]
+  secondaryMenuItems: SecondaryMenuItem[]
+  fixed?: boolean
+  logoLink: string
   ctaText?: string
+  ctaLink: string
 }
 
-function usePollAnimationFrame(callback: (timestamp: number) => unknown) {
-  useEffect(() => {
-    let requestId: number
+const Navigation = ({
+  logoImage,
+  logoLink = '/',
+  mainMenuItems,
+  secondaryMenuItems,
+  ctaText,
+  ctaLink,
+}: NavigationProps) => {
+  const [innerItems, setInnerItems] = useState<InnerMenuItem[]>([])
+  const [activeTitle, setActiveTitle] = useState<string>('')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-    function poll(timestamp: number) {
-      requestId = requestAnimationFrame(poll)
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
 
-      callback(timestamp)
+  const handleMouseEnter = (menuItem: MenuItem) => {
+    setActiveTitle(menuItem.subMenuItems[0].title || '')
+    setInnerItems(menuItem.subMenuItems[0].innerMenuItems || [])
+  }
+
+  const handleClick = (title: string) => {
+    setActiveTitle(title)
+    const selectedMenuItem = mainMenuItems.find(item =>
+      item.subMenuItems.some(subItem => subItem.title === title)
+    )
+    if (selectedMenuItem) {
+      const selectedSubMenu = selectedMenuItem.subMenuItems.find(subItem => subItem.title === title)
+      if (selectedSubMenu) {
+        setInnerItems(selectedSubMenu.innerMenuItems || [])
+      }
     }
-
-    requestId = requestAnimationFrame(poll)
-
-    return () => {
-      cancelAnimationFrame(requestId)
-    }
-  })
-}
-
-export const Navigation = forwardRef(function Navigation(
-  { className, mainLinks, secondaryLinks, ctaText, ctaLink, ...rest }: Props,
-  ref: Ref<HTMLDivElement>
-) {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const pathname = usePathname()
-  const container = useRef<HTMLDivElement>(null)
-  const [activeItemLeft, setActiveItemLeft] = useState(0)
-  const [activeItemWidth, setActiveItemWidth] = useState(0)
-
-  useEffect(() => {
-    setMobileNavOpen(false)
-  }, [pathname])
-
-  useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', mobileNavOpen)
-  }, [mobileNavOpen])
-
-  usePollAnimationFrame(() => {
-    if (!container.current) return
-
-    const activeItem = container.current.querySelector(`.active-link`)
-
-    if (!activeItem) {
-      setActiveItemLeft(0)
-      setActiveItemWidth(0)
-
-      return
-    }
-
-    const activeItemRect = activeItem.getBoundingClientRect()
-    const containerRect = container.current.getBoundingClientRect()
-
-    setActiveItemLeft(activeItemRect.left - containerRect.left + container.current.scrollLeft)
-    setActiveItemWidth(activeItemRect.width)
-  })
+  }
 
   return (
-    <ReactHeadroom {...rest} className="!h-24 w-full [&>div]:px-5 [&>div]:pt-5">
-      <header
-        ref={ref}
-        className={clsx(
-          className,
-          'bg-muted-contrast-1000 w-full overflow-hidden rounded-[28px] border border-foreground/20 text-foreground backdrop-blur-xl @container'
-        )}
+    <ReactHeadroom className="!h-24 w-full [&>div]:px-5 [&>div]:pt-5">
+      <NavigationMenu.Root
+        delayDuration={0}
+        className="mx-auto max-w-6xl overflow-hidden rounded-[28px] border border-contrast-400 bg-contrast-500/50 text-foreground backdrop-blur-xl @container @5xl:overflow-visible"
       >
-        <nav className="flex items-stretch justify-between gap-x-3 @4xl:justify-start">
-          <div className="flex items-center pl-3 @4xl:flex-1">
-            <Link href="/">
-              <Image src="/logo-placeholder.svg" alt="Logo" width={90} height={34} priority />
+        <div className="flex min-h-14 items-stretch pl-3  pr-2">
+          <div className="flex-1 shrink-0 place-content-center">
+            <Link href={logoLink}>
+              <Image src={logoImage} alt="Logo" width={88} height={24} />
             </Link>
           </div>
 
-          <div
-            className="relative hidden items-stretch px-5 [clip-path:inset(0px_0px)] before:pointer-events-none before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-[var(--active-item-width)] before:translate-x-[var(--active-item-left)] before:bg-gradient-to-r before:from-primary/0 before:via-primary/100 before:to-primary/0 before:transition-all before:duration-300 before:ease-in-out @4xl:flex"
-            ref={container}
-            style={
-              {
-                '--active-item-left': `${activeItemLeft}px`,
-                '--active-item-width': `${activeItemWidth}px`,
-              } as CSSProperties
-            }
-          >
-            {mainLinks?.map((link, i) => (
-              <Link
-                key={i}
-                href={link.link?.href ?? ''}
-                target={link.link?.target}
-                className={clsx(
-                  'relative inline-flex items-center px-3 text-sm font-medium transition duration-200 after:pointer-events-none after:absolute after:left-1/2 after:top-full after:-z-10 after:h-[8px] after:w-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-primary/70 after:opacity-0 after:blur-[12px] after:transition-all after:duration-500 after:ease-out hover:opacity-100',
-                  link.link?.href && pathname.startsWith(link.link?.href)
-                    ? 'active-link opacity-100 after:opacity-100 after:delay-300'
-                    : 'opacity-70'
-                )}
-              >
-                {link.text}
-              </Link>
-            ))}
-          </div>
+          <NavigationMenu.List className="hidden h-full items-stretch @5xl:flex" asChild>
+            <div className="relative">
+              {mainMenuItems.map((menuItem, index) => (
+                <NavigationMenu.Item key={index} asChild>
+                  <>
+                    {menuItem.href ? (
+                      <NavigationMenu.Link asChild>
+                        <Link
+                          className="select-none place-content-center px-3 py-2 text-sm font-normal leading-none text-foreground/70 outline-none transition-colors hover:text-foreground"
+                          href={menuItem.href}
+                        >
+                          {menuItem.title}
+                        </Link>
+                      </NavigationMenu.Link>
+                    ) : (
+                      <NavigationMenu.Trigger
+                        onMouseEnter={() => handleMouseEnter(menuItem)}
+                        className="group flex select-none items-center justify-between gap-0.5 rounded-[4px] px-3 py-2 text-sm font-normal leading-none text-foreground/70 outline-none transition-colors hover:text-foreground"
+                      >
+                        {menuItem.title}
+                        <ChevronDown
+                          size={16}
+                          className="relative top-[1px] transition-transform duration-200 ease-in group-data-[state=open]:-rotate-180"
+                          aria-hidden
+                        />
+                      </NavigationMenu.Trigger>
+                    )}
 
-          <div className="flex flex-1 items-center justify-end p-2 pl-5">
-            {secondaryLinks?.map((link, i) => (
-              <Link
-                key={i}
-                href={link.link?.href ?? ''}
-                target={link.link?.target}
-                className={clsx(
-                  'hidden px-3 text-sm font-medium opacity-70 transition duration-200 hover:opacity-100 @4xl:block',
-                  link.link?.href && pathname.startsWith(link.link?.href) && 'opacity-100'
-                )}
-              >
-                {link.text}
-              </Link>
-            ))}
+                    {menuItem.subMenuItems.length > 0 && (
+                      <NavigationMenu.Content className="pointer-events-auto absolute left-0 top-0 w-full data-[motion=from-end]:duration-300 data-[motion=from-start]:duration-300 data-[motion=to-end]:duration-300 data-[motion=to-start]:duration-300 data-[motion=from-end]:animate-in data-[motion=from-start]:animate-in data-[motion=to-end]:animate-out data-[motion=to-start]:animate-out data-[motion=from-end]:fade-in data-[motion=from-start]:fade-in data-[motion=to-end]:fade-out data-[motion=to-start]:fade-out data-[motion=from-end]:slide-in-from-left-20 data-[motion=from-start]:slide-in-from-right-20 data-[motion=to-end]:slide-out-to-left-20 data-[motion=to-start]:slide-out-to-right-20 @2xl:w-auto">
+                        <div
+                          className={clsx(
+                            'grid',
+                            `${
+                              menuItem.subMenuItems[0].title
+                                ? 'grid-cols-[250px_1fr]'
+                                : 'grid-cols-[500px]'
+                            }`
+                          )}
+                        >
+                          <div
+                            className={`${
+                              !menuItem.subMenuItems[0].title && 'hidden'
+                            } h-full border-r border-contrast-500 bg-background/50`}
+                          >
+                            <ul className="list group m-0 w-full list-none space-y-0.5 p-2">
+                              {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
+                                <ListItem
+                                  key={subIndex}
+                                  title={subMenuItem.title || ''}
+                                  content={subMenuItem.content || ''}
+                                  href="#"
+                                  isActive={activeTitle === subMenuItem.title}
+                                  onClick={() => handleClick(subMenuItem.title || '')}
+                                />
+                              ))}
+                            </ul>
+                          </div>
 
-            <button
-              onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="relative mr-2 block rounded-full p-2.5 @sm:mr-0 @4xl:hidden"
-              role="button"
-              aria-label="Open mobile navigation"
+                          <ul
+                            className={clsx(
+                              'group min-w-[250px] gap-0 p-2 @2xl:columns-2 @5xl:min-w-[500px]',
+                              `${innerItems.length > 4 && ''}`
+                            )}
+                          >
+                            {innerItems.map((item, innerIndex) => (
+                              <ListItem
+                                key={innerIndex}
+                                title={item.title}
+                                content={item.content}
+                                href={item.href}
+                                isActive={false}
+                                onClick={() => {}}
+                                isInnerMenuItem={true}
+                                icon={item.icon}
+                              />
+                            ))}
+                          </ul>
+                        </div>
+                      </NavigationMenu.Content>
+                    )}
+                  </>
+                </NavigationMenu.Item>
+              ))}
+
+              <NavigationMenu.Indicator className="top-full z-10 flex h-[1px] bg-gradient-to-r from-primary/0 via-primary to-primary/0 transition-all duration-300 data-[state=hidden]:opacity-0 data-[state=visible]:opacity-100" />
+            </div>
+          </NavigationMenu.List>
+
+          <div className="flex flex-1 items-center justify-end gap-x-2 @5xl:gap-x-5">
+            <div className="hidden gap-x-5 @5xl:flex">
+              {secondaryMenuItems.map((menuItem, index) => (
+                <Link
+                  key={index}
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                  href={menuItem.href}
+                >
+                  {menuItem.title}
+                </Link>
+              ))}
+            </div>
+
+            <div
+              className="group relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-md p-2 @5xl:hidden"
+              onClick={handleMobileMenuToggle}
             >
-              <div className="flex h-4 w-4 flex-col justify-between py-0.5 transition-transform">
-                <div
-                  className={clsx(
-                    'h-0.5 w-full bg-foreground transition-transform duration-200',
-                    mobileNavOpen && 'translate-y-[5px]'
-                  )}
-                ></div>
-                <div
-                  className={clsx(
-                    'h-0.5 w-full bg-foreground transition-transform duration-200',
-                    mobileNavOpen && '-translate-y-[5px]'
-                  )}
-                ></div>
-              </div>
-            </button>
+              <span
+                className={`absolute top-1/2 h-0.5 w-1/2 bg-foreground ${
+                  isMobileMenuOpen ? 'translate-y-0 rotate-45 ' : '-translate-y-1'
+                } transition-all duration-150`}
+              ></span>
+              <span
+                className={`absolute top-1/2 h-0.5 w-1/2 -translate-y-1/2 bg-foreground transition-all duration-150 ${
+                  isMobileMenuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-1'
+                }`}
+              ></span>
+            </div>
 
             <Button
-              link={ctaLink}
+              link={{ href: ctaLink }}
               variant="primary"
               size="small"
-              borderGlow={false}
-              className="ml-2 hidden @sm:inline-block"
+              className="hidden @lg:inline-flex"
             >
-              Contact us
-            </Button>
-          </div>
-        </nav>
-
-        <div
-          className={clsx(
-            'w-full transition-all duration-300 @4xl:hidden',
-            mobileNavOpen ? 'max-h-96' : 'max-h-0'
-          )}
-        >
-          <div className="w-full border-t border-foreground/20 p-5 text-center text-foreground">
-            {mainLinks?.map((link, i) => (
-              <Link
-                key={i}
-                href={link.link?.href ?? '#'}
-                target={link.link?.target}
-                className="block py-2 text-lg font-medium"
-              >
-                {link.text}
-              </Link>
-            ))}
-
-            {secondaryLinks?.map((link, i) => (
-              <Link
-                key={i}
-                href={link.link?.href ?? '#'}
-                target={link.link?.target}
-                className="block py-2 text-lg font-medium"
-              >
-                {link.text}
-              </Link>
-            ))}
-
-            <Button link={ctaLink} className="ml-2 mt-3 @sm:hidden">
               {ctaText}
             </Button>
           </div>
         </div>
-      </header>
+
+        <div
+          className={`w-full overflow-y-auto border-t border-foreground/10 transition-all duration-300 @5xl:hidden ${
+            isMobileMenuOpen ? 'max-h-[calc(100svh-6rem)]' : 'max-h-0'
+          }`}
+        >
+          <MobileMenu mainMenuItems={mainMenuItems} secondaryMenuItems={secondaryMenuItems} />
+
+          <div className="w-full border-t border-foreground/10 p-4 @lg:hidden">
+            <Button link={{ href: ctaLink }} variant="primary" size="small" borderGlow={false}>
+              {ctaText}
+            </Button>
+          </div>
+        </div>
+
+        <div className="absolute left-0 top-full flex w-full justify-center">
+          <NavigationMenu.Viewport className="relative mt-2.5 h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] origin-top overflow-hidden rounded-2xl border border-contrast-400 bg-contrast-500/50 shadow-xl backdrop-blur-xl transition-[width,_height] duration-200 ease-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95" />
+        </div>
+      </NavigationMenu.Root>
     </ReactHeadroom>
   )
-})
+}
+
+const ListItem = ({
+  title,
+  content,
+  href,
+  isActive,
+  onClick,
+  isInnerMenuItem,
+  icon,
+}: {
+  title: string
+  content: string
+  href: string
+  isActive: boolean
+  onClick: () => void
+  isInnerMenuItem?: boolean
+  icon?: React.ReactNode
+}) => {
+  return (
+    <li
+      className="cursor-pointer break-inside-avoid-column rounded-lg transition-all duration-150"
+      key={title}
+    >
+      <Link
+        href={href}
+        onClick={onClick}
+        className={clsx(
+          'flex items-start gap-x-2.5 rounded-lg p-3 py-2.5 transition-colors hover:bg-contrast-500/50',
+          `${isActive && 'bg-contrast-500/50'}`
+        )}
+      >
+        {isInnerMenuItem && icon && <div className="mt-0.5 h-4 w-4">{icon}</div>}
+
+        <div>
+          <div className="text-sm">{title}</div>
+          <div className="text-xs text-foreground/50">{content}</div>
+        </div>
+      </Link>
+    </li>
+  )
+}
+
+const MobileMenu = ({
+  mainMenuItems,
+  secondaryMenuItems,
+}: {
+  mainMenuItems: MenuItem[]
+  secondaryMenuItems: SecondaryMenuItem[]
+}) => (
+  <Accordion.Root
+    className="px-5 py-2.5 text-base text-foreground"
+    type="single"
+    defaultValue="item-1"
+    collapsible
+  >
+    <>
+      {mainMenuItems.map((menuItem, index) => (
+        <Accordion.Item value={`${index + 1}`} key={index}>
+          {menuItem.href ? (
+            <Link className="block py-2 outline-none" href={menuItem.href}>
+              {menuItem.title}
+            </Link>
+          ) : (
+            <Accordion.Header>
+              <Accordion.Trigger className="group flex w-full cursor-pointer items-center justify-between gap-x-5 py-2 outline-none">
+                {menuItem.title}
+                <ChevronDown
+                  size={20}
+                  className="transition-transform duration-300 group-data-[state=open]:rotate-180"
+                  aria-hidden
+                />
+              </Accordion.Trigger>
+            </Accordion.Header>
+          )}
+          <Accordion.Content className="overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
+            {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
+              <div key={subIndex}>
+                {subMenuItem.innerMenuItems && (
+                  <ul className="pl-2">
+                    {subMenuItem.innerMenuItems.map((innerItem, innerIndex) => (
+                      <li key={innerIndex}>
+                        <Link
+                          className="flex items-start gap-x-2.5 py-2 text-sm"
+                          href={innerItem.href}
+                        >
+                          {innerItem.icon && <div className="mt-0.5">{innerItem.icon}</div>}
+                          <div>
+                            <div className="text-sm">{innerItem.title}</div>
+                            <div className="text-xs text-foreground/50">{innerItem.content}</div>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </Accordion.Content>
+        </Accordion.Item>
+      ))}
+      {secondaryMenuItems.map((menuItem, index) => (
+        <Link key={index} className="block py-2 outline-none" href={menuItem.href}>
+          {menuItem.title}
+        </Link>
+      ))}
+    </>
+  </Accordion.Root>
+)
 
 export default Navigation
