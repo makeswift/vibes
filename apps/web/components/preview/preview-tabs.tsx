@@ -10,7 +10,6 @@ import { Desktop16, Expand16, Phone16, Tablet16, Times16 } from '@/icons/generat
 
 import { Button } from '../ui/button'
 import { CopyButton } from '../ui/copy-button'
-import { Portal } from '../ui/portal'
 import { useBrandContext } from './brand-context'
 import { BrandSelect } from './brand-select'
 import { usePreviewContext } from './preview-context'

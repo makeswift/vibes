@@ -40,6 +40,7 @@
     "embla-carousel": "^8.1.8",
     "embla-carousel-autoplay": "^8.1.8",
     "embla-carousel-react": "^8.1.8",
+    "front-matter": "^4.0.2",
     "geist": "^1.2.2",
     "gray-matter": "^4.0.3",
     "gzip-size": "^7.0.0",

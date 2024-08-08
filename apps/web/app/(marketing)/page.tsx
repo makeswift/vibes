@@ -1,17 +1,17 @@
 import Transition from '@/components/ui/transition'
 import { Vibes } from '@/icons/generated'
 
+import { EazyTheme } from '../stickers/eazy-theme'
+import { HandcraftedCode } from '../stickers/handcrafted-code'
+import { KeepIt100 } from '../stickers/keep-it-100'
+import { LikeTotally } from '../stickers/like-totally'
+import { MadProps } from '../stickers/mad-props'
+import { OpenSource } from '../stickers/open-source'
+import { PrebuiltSections } from '../stickers/prebuilt-sections'
+import { ProductionReady } from '../stickers/production-ready'
+import { Reactjs } from '../stickers/reactjs'
+import { Typescript } from '../stickers/typescript'
 import { Form } from './form'
-import { EazyTheme } from './stickers/eazy-theme'
-import { HandcraftedCode } from './stickers/handcrafted-code'
-import { KeepIt100 } from './stickers/keep-it-100'
-import { LikeTotally } from './stickers/like-totally'
-import { MadProps } from './stickers/mad-props'
-import { OpenSource } from './stickers/open-source'
-import { PrebuiltSections } from './stickers/prebuilt-sections'
-import { ProductionReady } from './stickers/production-ready'
-import { Reactjs } from './stickers/reactjs'
-import { Typescript } from './stickers/typescript'
 
 export default function Home() {
   return (

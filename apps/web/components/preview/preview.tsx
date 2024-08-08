@@ -57,17 +57,7 @@ export async function Preview({ vibeSlug, componentName, size }: Props) {
               clipboard: file,
               preview: (
                 <Suspense fallback={<div>Loading...</div>}>
-                  <Frame>
-                    <ErrorBoundary
-                      fallback={
-                        <div className="flex justify-center p-5">
-                          Preview failed to load at {vibeSlug}:{entry.name}
-                        </div>
-                      }
-                    >
-                      <entry.component />
-                    </ErrorBoundary>
-                  </Frame>
+                  <Frame vibeSlug={vibeSlug} componentName={entry.name} />
                 </Suspense>
               ),
               code: (
