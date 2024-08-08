@@ -116,6 +116,13 @@ export const examples = [
     component: lazy(() => import('./examples/breadcrumbs')),
   },
   {
+    name: 'carousel-section-example',
+    dependencies: [],
+    registryDependencies: ['carousel-section', 'product-card'],
+    files: ['examples/carousel-section.tsx'],
+    component: lazy(() => import('./examples/carousel-section')),
+  },
+  {
     name: 'media-and-text-section-example',
     dependencies: [],
     registryDependencies: ['media-and-text-section'],

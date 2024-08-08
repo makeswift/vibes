@@ -135,6 +135,12 @@ export const navigation = [
         component: 'media-and-text-section',
       },
       {
+        title: 'Carousel',
+        slug: 'carousel-section',
+        file: 'docs/carousel-section.mdx',
+        component: 'carousel-section',
+      },
+      {
         title: 'Footer',
         slug: 'footer-section',
         file: 'docs/footer-section.mdx',
