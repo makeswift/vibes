@@ -46,6 +46,17 @@ export function Frame({ vibeSlug, componentName }: Props) {
     iframe.current?.contentDocument?.body.style.setProperty('zoom', String(zoom))
   }, [zoom])
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (iframe.current?.contentDocument?.readyState === 'complete') {
+        setIframeLoaded(true)
+        clearInterval(intervalId)
+      }
+    })
+
+    return () => clearInterval(intervalId)
+  }, [])
+
   return (
     <div className="relative h-full bg-contrast-100" ref={container}>
       <div
@@ -54,7 +65,6 @@ export function Frame({ vibeSlug, componentName }: Props) {
       >
         <iframe
           ref={iframe}
-          onLoad={() => setIframeLoaded(true)}
           className={clsx(
             'h-full w-full opacity-0',
             iframeLoaded && 'opacity-100 transition-opacity'
