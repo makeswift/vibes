@@ -63,14 +63,16 @@ export function Frame({ vibeSlug, componentName }: Props) {
         className={clsx('relative mx-auto h-full border border-dashed border-contrast-200')}
         style={{ width: width ?? '100%' }}
       >
-        <iframe
-          ref={iframe}
-          className={clsx(
-            'h-full w-full opacity-0',
-            iframeLoaded && 'opacity-100 transition-opacity'
-          )}
-          src={`/preview/${vibeSlug}/${componentName}?brand=${activeBrand?.name}`}
-        />
+        {activeBrand && (
+          <iframe
+            ref={iframe}
+            className={clsx(
+              'h-full w-full opacity-0',
+              iframeLoaded && 'opacity-100 transition-opacity'
+            )}
+            src={`/preview/${vibeSlug}/${componentName}/${activeBrand.name}`}
+          />
+        )}
         <div
           className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-resizeX md:block"
           onPointerDown={e => {
