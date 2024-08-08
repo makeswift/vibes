@@ -74,6 +74,105 @@ export default function Preview() {
       },
       iconAlt: 'Feature 3 icon',
     },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
+    {
+      heading: 'Feature 4',
+      description: 'This is a description of feature 3',
+      icon: {
+        url: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NjMyZmQyMS0yOTZlLTQ0YmMtOWQ5Zi01ZTg0NWMyMjRkODU=/users.svg',
+        dimensions: { width: 20, height: 20 },
+      },
+      iconAlt: 'Feature 3 icon',
+    },
   ]
 
   return (

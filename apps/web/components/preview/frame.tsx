@@ -1,17 +1,22 @@
 'use client'
 
-import { CSSProperties, ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
+import { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
+
+import clsx from 'clsx'
 
 import { ResizeX } from '@/icons/generated'
 
 import Card from '../ui/card'
 import { Portal } from '../ui/portal'
 import { useBrandContext } from './brand-context'
+import { IFrame } from './iframe'
 import { usePreviewContext } from './preview-context'
 
-interface Props extends ComponentPropsWithoutRef<typeof Card> {}
+interface Props extends ComponentPropsWithoutRef<typeof Card> {
+  size?: 'small' | 'medium' | 'large'
+}
 
-export function Frame({ children }: Props) {
+export function Frame({ children, size = 'medium' }: Props) {
   const { activeBrand } = useBrandContext()
   const container = useRef<HTMLDivElement>(null)
   const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
@@ -39,12 +44,19 @@ export function Frame({ children }: Props) {
   return (
     <div className="relative bg-contrast-100 [transform:translate3d(0,0,0)]" ref={container}>
       <div
-        className="relative mx-auto border border-dashed border-contrast-200"
+        className={clsx(
+          'relative mx-auto border border-dashed border-contrast-200',
+          {
+            small: 'h-[300px]',
+            medium: 'h-[500px]',
+            large: 'h-[750px]',
+          }[size]
+        )}
         style={{ width: width ?? '100%' }}
       >
-        <div style={{ zoom }}>
-          <div style={(activeBrand?.cssVars ?? {}) as CSSProperties}>{children}</div>
-        </div>
+        <IFrame className="h-full w-full" bodyStyle={{ zoom, ...(activeBrand?.cssVars ?? {}) }}>
+          {children}
+        </IFrame>
         <div
           className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-resizeX md:block"
           onPointerDown={e => {

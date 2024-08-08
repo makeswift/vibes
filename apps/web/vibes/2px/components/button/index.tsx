@@ -1,9 +1,11 @@
+import { ComponentProps } from 'react'
+
 import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '@/lib/utils'
 import { LoadingIcon } from '@/vibes/2px/components/icons/LoadingIcon'
 
-export interface ButtonProps {
+export interface ButtonProps extends ComponentProps<'button'> {
   className?: string
   variant?: 'primary' | 'secondary'
   loading?: boolean
@@ -18,6 +20,7 @@ export default function Button({
   loading,
   children,
   asChild = false,
+  ...props
 }: ButtonProps) {
   const Component = asChild ? Slot : 'button'
   return (
@@ -30,10 +33,11 @@ export default function Button({
         {
           primary:
             'bg-foreground text-background hover:border-foreground hover:bg-transparent hover:text-foreground',
-          secondary: 'border-foreground bg-background text-foreground hover:border-dashed',
+          secondary: 'border-foreground bg-transparent text-foreground hover:border-dashed',
         }[variant],
         className
       )}
+      {...props}
     >
       {loading ? (
         <LoadingIcon

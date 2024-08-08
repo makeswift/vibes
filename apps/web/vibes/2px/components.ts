@@ -106,6 +106,18 @@ export const components = [
     component: lazy(() => import('./components/option-selector')),
   },
   {
+    name: 'carousel-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      './components/carousel-section/index.tsx',
+      './components/carousel-section/index.module.css',
+      '../../lib/utils.ts',
+      './components/icons/ChevronLeftIcon.tsx',
+    ],
+    component: lazy(() => import('./components/carousel-section')),
+  },
+  {
     name: 'checkbox',
     dependencies: [],
     registryDependencies: [],
@@ -170,11 +182,39 @@ export const components = [
     component: lazy(() => import('./components/calendar')),
   },
   {
+    name: 'blog-list-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/blog-list-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/blog-list-section')),
+  },
+  {
     name: 'breadcrumbs',
     dependencies: [],
     registryDependencies: [],
     files: ['./components/breadcrumbs/index.tsx', '../../lib/utils.ts'],
     component: lazy(() => import('./components/breadcrumbs')),
+  },
+  {
+    name: 'media-and-text-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/media-and-text-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/media-and-text-section')),
+  },
+  {
+    name: 'footer-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/footer-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/footer-section')),
+  },
+  {
+    name: 'fullscreen-product-card-section',
+    dependencies: [],
+    registryDependencies: ['counter', 'button'],
+    files: ['./components/fullscreen-product-card-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/fullscreen-product-card-section')),
   },
   {
     name: 'section-header',
