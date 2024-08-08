@@ -180,7 +180,7 @@ export const components = [
     name: 'media-and-text-section',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/media-and-text-section/index.tsx'],
+    files: ['./components/media-and-text-section/index.tsx', '../../lib/utils.ts'],
     component: lazy(() => import('./components/media-and-text-section')),
   },
   {
