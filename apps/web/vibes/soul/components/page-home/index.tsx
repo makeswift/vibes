@@ -1,3 +1,5 @@
+import { AnchorHTMLAttributes, DetailedHTMLProps, JSX } from 'react'
+
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
@@ -23,7 +25,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
         <Slideshow slides={heroSlides} />
         <CardCarousel title="Category" link={{ label: 'See All', href: '/' }}>
-          {categories.map(category => (
+          {categories.map((category: CategoryCard) => (
             <CategoryCard key={category.label} {...category} />
           ))}
         </CardCarousel>
@@ -54,7 +56,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           theme="brand-highlight"
         />
         <CardCarousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
-          {categories.map(category => (
+          {categories.map((category: CategoryCard) => (
             <CategoryCard key={category.label} {...category} />
           ))}
         </CardCarousel>
@@ -72,7 +74,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           }}
         />
         <CardCarousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
-          {categories.map(category => (
+          {categories.map((category: CategoryCard) => (
             <CategoryCard key={category.label} {...category} />
           ))}
         </CardCarousel>
