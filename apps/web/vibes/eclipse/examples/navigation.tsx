@@ -5,7 +5,6 @@ import Navigation from '@/vibes/eclipse/components/navigation'
 export default function Preview() {
   const mainMenuItems = [
     {
-      id: '1',
       title: 'First Menu',
       description: 'First Description',
       subMenuItems: [
@@ -84,7 +83,6 @@ export default function Preview() {
       ],
     },
     {
-      id: '2',
       title: 'Second Menu',
       description: 'Second Description',
       subMenuItems: [
@@ -120,7 +118,6 @@ export default function Preview() {
       ],
     },
     {
-      id: '3',
       title: 'Third Menu',
       description: 'Third Description',
       subMenuItems: [
@@ -156,7 +153,6 @@ export default function Preview() {
       ],
     },
     {
-      id: '4',
       title: 'Fourth Menu',
       description: 'Fourth Description',
       subMenuItems: [
@@ -205,17 +201,11 @@ export default function Preview() {
               content: '2Second Inner Menu Content',
               href: '#2second-inner-menu',
             },
-            {
-              title: '2Third Inner Menu',
-              content: '2Third Inner Menu Content',
-              href: '#2third-inner-menu',
-            },
           ],
         },
       ],
     },
     {
-      id: '5',
       title: 'Pricing',
       description: 'Pricing Description',
       href: '/pricing',
