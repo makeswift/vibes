@@ -64,18 +64,17 @@ const colorFilters = [
 export const FilterDialog = function FilterDialog() {
   const [filterOpen, setFilterOpen] = useState(false)
   const [selectedTags, setSelectedTags] = useState([] as string[])
-  const [ref, setRef] = useState<HTMLAnchorElement | HTMLButtonElement | null>(null)
 
   return (
     <>
       <Dialog.Root open={filterOpen} onOpenChange={setFilterOpen}>
         <Dialog.Trigger asChild>
-          <Button ref={setRef} variant="dark" size="small" className="w-fit">
+          <Button variant="dark" size="small" className="w-fit">
             <span className="hidden @xl:block">Filter</span>
             <Sliders size={18} />
           </Button>
         </Dialog.Trigger>
-        <Dialog.Portal container={ref?.ownerDocument.body}>
+        <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-30 bg-foreground/50">
             <Dialog.Content
               className={clsx(
