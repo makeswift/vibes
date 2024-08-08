@@ -1,7 +1,8 @@
+@import url('./shiki.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('./shiki.css');
 
 @layer base {
   :root {
