@@ -47,15 +47,13 @@ function ctaStyles(
     // Link Styles
     link?.href === '#' && 'after:pointer-events-none after:opacity-20',
     link?.href === '#' && 'pointer-events-none opacity-20',
-    // TODO: InnerSpan / Children Styles to replace InnerSpan?
-    // '[&>*]:'
     className
   )
 }
 
 export const Button = forwardRef(function Button(
   { className, link, variant = 'primary', size = 'default', onClick, children = 'Button' }: Props,
-  ref: Ref<HTMLAnchorElement>
+  ref: Ref<HTMLAnchorElement | HTMLButtonElement>
 ) {
   const InnerSpan = () => {
     return (
@@ -73,7 +71,7 @@ export const Button = forwardRef(function Button(
   if (link?.href) {
     return (
       <Link
-        ref={ref}
+        ref={ref as Ref<HTMLAnchorElement>}
         className={ctaStyles(className, link, variant, size)}
         href={link?.href ?? '#'}
         target={link?.target}
@@ -83,7 +81,11 @@ export const Button = forwardRef(function Button(
     )
   } else {
     return (
-      <button className={ctaStyles(className, undefined, variant, size)} onClick={onClick}>
+      <button
+        ref={ref as Ref<HTMLButtonElement>}
+        className={ctaStyles(className, undefined, variant, size)}
+        onClick={onClick}
+      >
         <InnerSpan />
       </button>
     )
