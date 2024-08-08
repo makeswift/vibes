@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef } from 'react'
 
 import clsx from 'clsx'
 
-import Label from '@/vibes/soul/components/label'
+import Badge from '@/vibes/soul/components/badge'
 import Compare from '@/vibes/soul/components/product-card/compare'
 import Price, {
   ComparePrice,
@@ -16,7 +16,7 @@ import Price, {
 export type ProductCard = {
   name: string
   tags?: string[]
-  label?: string
+  badge?: string
   price?: RangePrice | ComparePrice | StaticPrice
   image: string
   ctaLink?: {
@@ -31,7 +31,7 @@ export type ProductCard = {
 export const ProductCard = function ProductCard({
   name,
   tags,
-  label,
+  badge,
   price,
   image,
   ctaLink,
@@ -48,8 +48,8 @@ export const ProductCard = function ProductCard({
       {...props}
     >
       <div className="relative flex-grow overflow-hidden rounded-xl">
-        {label && (
-          <Label label={label} className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4" />
+        {badge && (
+          <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
 
         <Image

@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/announcement-bar')),
   },
   {
+    name: 'badge-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/badge.tsx'],
+    component: lazy(() => import('./examples/badge')),
+  },
+  {
     name: 'blog-post-card-example',
     dependencies: [],
     registryDependencies: ['blog-post-card'],
@@ -122,13 +129,7 @@ export const examples = [
     files: ['examples/input.tsx'],
     component: lazy(() => import('./examples/input')),
   },
-  {
-    name: 'label-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/label.tsx'],
-    component: lazy(() => import('./examples/label')),
-  },
+
   {
     name: 'media-section-example',
     dependencies: [],

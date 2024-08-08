@@ -1,11 +1,13 @@
+import { ReactNode } from 'react'
+
 import clsx from 'clsx'
 
-export interface Label {
-  label: string
+export interface Badge {
+  children: ReactNode
   className?: string
 }
 
-export const Label = function Label({ label, className = '' }: Label) {
+export const Badge = function Badge({ children, className = '' }: Badge) {
   return (
     <span
       className={clsx(
@@ -13,9 +15,9 @@ export const Label = function Label({ label, className = '' }: Label) {
         className
       )}
     >
-      {label}
+      {children}
     </span>
   )
 }
 
-export default Label
+export default Badge

@@ -12,7 +12,7 @@ export default function Preview() {
       <ProductCard
         name="Product Name"
         tags={['Blue', 'Black', 'Green']}
-        label="New"
+        badge="New"
         price={{
           type: 'static',
           value: 123.99,

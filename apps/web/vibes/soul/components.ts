@@ -16,6 +16,12 @@ export const components = [
     files: ['components/announcement-bar/index.tsx'],
   },
   {
+    name: 'badge',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['components/badge/index.tsx'],
+  },
+  {
     name: 'blog-post-card',
     dependencies: [],
     registryDependencies: [],
@@ -111,12 +117,6 @@ export const components = [
     files: ['components/input/index.tsx'],
   },
   {
-    name: 'label',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['components/label/index.tsx'],
-  },
-  {
     name: 'media-section',
     dependencies: ['clsx'],
     registryDependencies: ['button'],
@@ -138,7 +138,7 @@ export const components = [
   {
     name: 'product-card',
     dependencies: ['clsx'],
-    registryDependencies: ['label', 'checkbox'],
+    registryDependencies: ['badge', 'checkbox'],
     files: [
       'components/product-card/index.tsx',
       'components/product-card/compare.tsx',

@@ -20,6 +20,7 @@ export const navigation = [
         file: 'docs/announcement-bar.mdx',
         component: 'announcement-bar',
       },
+      { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
       {
         title: 'Blog Post Card',
         slug: 'blog-post-card',
@@ -44,7 +45,6 @@ export const navigation = [
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
 
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
-      { title: 'Label', slug: 'label', file: 'docs/label.mdx', component: 'label' },
       {
         title: 'Product Card',
         slug: 'product-card',
