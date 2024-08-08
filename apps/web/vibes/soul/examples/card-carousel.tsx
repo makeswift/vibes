@@ -1,4 +1,4 @@
-import { Carousel } from '@/vibes/soul/components/carousel'
+import CardCarousel from '@/vibes/soul/components/card-carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
 
 export const categories: CategoryCard[] = [
@@ -26,10 +26,10 @@ export const categories: CategoryCard[] = [
 
 export default function Preview() {
   return (
-    <Carousel title="Category" link={{ label: 'See All', href: '/' }}>
+    <CardCarousel title="Category" link={{ label: 'See All', href: '/' }}>
       {categories.map(category => (
         <CategoryCard key={category.label} {...category} />
       ))}
-    </Carousel>
+    </CardCarousel>
   )
 }

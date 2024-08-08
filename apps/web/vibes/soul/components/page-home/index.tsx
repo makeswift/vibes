@@ -1,5 +1,5 @@
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import Carousel from '@/vibes/soul/components/carousel'
+import CardCarousel from '@/vibes/soul/components/card-carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
 import Feature from '@/vibes/soul/components/feature'
 import FeaturedProductList from '@/vibes/soul/components/featured-product-list'
@@ -8,7 +8,7 @@ import Header from '@/vibes/soul/components/header'
 import MediaSection from '@/vibes/soul/components/media-section'
 import Newsletter from '@/vibes/soul/components/newsletter'
 import Slideshow from '@/vibes/soul/components/slideshow'
-import { categories } from '@/vibes/soul/examples/carousel'
+import { categories } from '@/vibes/soul/examples/card-carousel'
 import { featuredProducts } from '@/vibes/soul/examples/featured-product-list'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
@@ -23,11 +23,11 @@ export const HomePage = function HomePage({ heroSlides }: any) {
       <div className="relative flex flex-col">
         <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
         <Slideshow slides={heroSlides} />
-        <Carousel title="Category" link={{ label: 'See All', href: '/' }}>
+        <CardCarousel title="Category" link={{ label: 'See All', href: '/' }}>
           {categories.map(category => (
             <CategoryCard key={category.label} {...category} />
           ))}
-        </Carousel>
+        </CardCarousel>
         <MediaSection
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -54,11 +54,11 @@ export const HomePage = function HomePage({ heroSlides }: any) {
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="brand-highlight"
         />
-        <Carousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
+        <CardCarousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
           {categories.map(category => (
             <CategoryCard key={category.label} {...category} />
           ))}
-        </Carousel>
+        </CardCarousel>
         <Feature
           image={{
             url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
@@ -72,11 +72,11 @@ export const HomePage = function HomePage({ heroSlides }: any) {
             target: '_self',
           }}
         />
-        <Carousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
+        <CardCarousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
           {categories.map(category => (
             <CategoryCard key={category.label} {...category} />
           ))}
-        </Carousel>
+        </CardCarousel>
         <MediaSection
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
