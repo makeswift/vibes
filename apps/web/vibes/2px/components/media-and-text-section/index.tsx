@@ -29,9 +29,9 @@ export default function MediaAndTextSection({ className, subtitle, text, image, 
     >
       <div className="flex w-full flex-col items-start justify-center gap-10 px-2 py-6 text-start @3xl:px-20 @3xl:py-20">
         {subtitle && <p className="font-mono uppercase @2xl:tracking-[0.0225rem]">{subtitle}</p>}
-        <span className="text-body font-medium @2xl:text-2xl @2xl:leading-[2.25rem] @2xl:-tracking-[0.0175rem]">
+        <p className="text-body font-medium @2xl:text-2xl @2xl:leading-[2.25rem] @2xl:-tracking-[0.0175rem]">
           {text}
-        </span>
+        </p>
         {links && (
           <div className="flex gap-6 font-mono uppercase underline @2xl:tracking-[0.0225rem]">
             {links?.map(({ label, href }) => (
