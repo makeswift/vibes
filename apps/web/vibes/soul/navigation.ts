@@ -66,12 +66,6 @@ export const navigation = [
       },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
-        title: 'Feature (Grid)',
-        slug: 'feature-grid',
-        file: 'docs/feature-grid.mdx',
-        component: 'feature',
-      },
-      {
         title: 'Featured Product List',
         slug: 'featured-product-list',
         file: 'docs/featured-product-list.mdx',
