@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
 import * as Vibes from '@/vibes'
 import { Vibe } from '@/vibes/schema'
@@ -59,7 +60,9 @@ export default async function Page({
         `,
         }}
       />
-      <Component />
+      <Suspense fallback={null}>
+        <Component />
+      </Suspense>
     </>
   )
 }
