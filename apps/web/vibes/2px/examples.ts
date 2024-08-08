@@ -116,6 +116,19 @@ export const examples = [
     component: lazy(() => import('./examples/breadcrumbs')),
   },
   {
+    name: 'footer-section-example',
+    dependencies: [],
+    registryDependencies: ['footer-section'],
+    files: [
+      'examples/footer-section.tsx',
+      '../components/icons/FacebookIcon',
+      '../components/icons/InstagramIcon',
+      '../components/icons/PinterestIcon',
+      '../components/icons/TwitterIcon',
+    ],
+    component: lazy(() => import('./examples/footer-section')),
+  },
+  {
     name: 'fullscreen-product-card-section-example',
     dependencies: [],
     registryDependencies: ['fullscreen-product-card-section'],

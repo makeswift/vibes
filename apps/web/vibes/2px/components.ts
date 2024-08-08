@@ -177,6 +177,13 @@ export const components = [
     component: lazy(() => import('./components/breadcrumbs')),
   },
   {
+    name: 'footer-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/footer-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/footer-section')),
+  },
+  {
     name: 'fullscreen-product-card-section',
     dependencies: [],
     registryDependencies: ['counter', 'button'],
