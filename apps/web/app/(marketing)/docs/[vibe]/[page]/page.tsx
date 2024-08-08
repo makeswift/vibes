@@ -97,6 +97,9 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       CodeFromFile: function CodeFromFileWithoutBasePath(props) {
         return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
       },
+      Preview: function PreviewWithoutVibeSlug(props) {
+        return <Preview {...props} vibeSlug={vibe.slug} />
+      },
       FontFamily,
       FontSize,
       IconsPreview,
