@@ -32,11 +32,11 @@ export const components = [
     component: lazy(() => import('./components/button')),
   },
   {
-    name: 'carousel',
+    name: 'card-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
-    files: ['components/carousel/index.tsx', 'components/carousel/scrollbar.tsx'],
-    component: lazy(() => import('./components/carousel')),
+    files: ['components/card-carousel/index.tsx', 'components/card-carousel/scrollbar.tsx'],
+    component: lazy(() => import('./components/card-carousel')),
   },
   {
     name: 'category-card',

@@ -32,11 +32,11 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
-    name: 'carousel-example',
+    name: 'card-carousel-example',
     dependencies: [],
     registryDependencies: ['categories'],
-    files: ['examples/carousel.tsx'],
-    component: lazy(() => import('./examples/carousel')),
+    files: ['examples/card-carousel.tsx'],
+    component: lazy(() => import('./examples/card-carousel')),
   },
   {
     name: 'category-card-example',

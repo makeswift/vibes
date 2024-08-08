@@ -59,10 +59,10 @@ export const navigation = [
     title: 'Sections',
     pages: [
       {
-        title: 'Carousel',
-        slug: 'carousel',
-        file: 'docs/carousel.mdx',
-        component: 'carousel',
+        title: 'Card Carousel',
+        slug: 'card-carousel',
+        file: 'docs/card-carousel.mdx',
+        component: 'card-carousel',
       },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
-import ScrollBar from '@/vibes/soul/components/carousel/scrollbar'
+import ScrollBar from '@/vibes/soul/components/card-carousel/scrollbar'
 
 type Props = {
   title: string
@@ -14,7 +14,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export const Carousel = ({ title, link, children }: Props) => {
+export const CardCarousel = ({ title, link, children }: Props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
@@ -80,4 +80,4 @@ export const Carousel = ({ title, link, children }: Props) => {
   )
 }
 
-export default Carousel
+export default CardCarousel
