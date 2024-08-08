@@ -255,6 +255,13 @@ export const examples = [
     component: lazy(() => import('./examples/rating')),
   },
   {
+    name: 'marquee-section-example',
+    dependencies: [],
+    registryDependencies: ['marquee-section'],
+    files: ['examples/marquee-section.tsx'],
+    component: lazy(() => import('./examples/marquee-section')),
+  },
+  {
     name: 'tabs-example',
     dependencies: [],
     registryDependencies: ['tabs'],

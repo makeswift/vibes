@@ -150,6 +150,13 @@ export const components = [
     component: lazy(() => import('./components/callout-section')),
   },
   {
+    name: 'marquee-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/marquee-section/index.tsx'],
+    component: lazy(() => import('./components/marquee-section')),
+  },
+  {
     name: 'counter',
     dependencies: [],
     registryDependencies: [],
