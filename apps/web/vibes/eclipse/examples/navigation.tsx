@@ -17,29 +17,31 @@ export default function Preview() {
               title: 'First Inner Menu #1',
               content: 'First Inner Menu Content',
               href: '#first-inner-menu',
-              icon: <Globe />,
+              icon: <Globe size={16} />,
             },
             {
               title: 'Second Inner Menu #1',
               content: 'Second Inner Menu Content',
               href: '#second-inner-menu',
-              icon: <Globe />,
+              icon: <Globe size={16} />,
             },
             {
               title: 'Third Inner Menu #1',
               content: 'Third Inner Menu Content',
               href: '#third-inner-menu',
-              icon: <Globe />,
+              icon: <Globe size={16} />,
             },
             {
               title: 'Fourth Inner Menu #1',
               content: 'Fourth Inner Menu Content',
               href: '#fourth-inner-menu',
+              icon: <Globe size={16} />,
             },
             {
               title: 'Fifth Inner Menu #1',
               content: 'Fifth Inner Menu Content',
               href: '#fifth-inner-menu',
+              icon: <Globe size={16} />,
             },
           ],
         },
@@ -51,18 +53,19 @@ export default function Preview() {
               title: 'First Inner Menu #2',
               content: 'First Inner Menu Content',
               href: '#first-inner-menu',
-              icon: <Globe />,
+              icon: <Globe size={16} />,
             },
             {
               title: 'Second Inner Menu #2',
               content: 'Second Inner Menu Content',
               href: '#second-inner-menu',
-              icon: <Globe />,
+              icon: <Globe size={16} />,
             },
             {
               title: 'Third Inner Menu #2',
               content: 'Third Inner Menu Content',
               href: '#third-inner-menu',
+              icon: <Globe size={16} />,
             },
           ],
         },
@@ -87,7 +90,6 @@ export default function Preview() {
               title: '2First Inner Menu',
               content: '2First Inner Menu Content',
               href: '#2first-inner-menu',
-              icon: <Globe />,
             },
             {
               title: '2Second Inner Menu',
@@ -231,9 +233,11 @@ export default function Preview() {
     <div className="flex h-48 items-start bg-[#07090D] sm:h-64 lg:h-96">
       <Navigation
         logoImage="/logo-placeholder.svg"
+        logoLink="/"
         mainMenuItems={mainMenuItems}
         secondaryMenuItems={secondaryMenuItems}
-        fixed={true}
+        ctaLink="/contact"
+        ctaText="Contact Us"
       />
     </div>
   )

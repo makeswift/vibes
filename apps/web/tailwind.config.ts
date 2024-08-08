@@ -152,14 +152,6 @@ const config = {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(0%)' },
         },
-        slideDown: {
-          from: { height: '0px' },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        slideUp: {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0px' },
-        },
       },
       animation: {
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
