@@ -5,7 +5,7 @@ export const featuredProducts: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'static',
       value: 123.99,
@@ -16,7 +16,7 @@ export const featuredProducts: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'static',
       value: 123.99,
@@ -27,7 +27,7 @@ export const featuredProducts: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'static',
       value: 123.99,
@@ -38,7 +38,7 @@ export const featuredProducts: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'static',
       value: 123.99,
@@ -53,7 +53,7 @@ export default function Preview() {
     <FeaturedProductList
       title="Off-Race"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-      link={{ label: 'Shop Now', href: '/new-arrivals' }}
+      link={{ badge: 'Shop Now', href: '/new-arrivals' }}
       products={featuredProducts}
     />
   )

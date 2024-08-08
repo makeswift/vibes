@@ -5,7 +5,7 @@ export const compareProducts: ProductCard[] = [
   {
     name: 'Men’s Long Sleeve Jersey',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'static',
       value: 123.99,
@@ -16,7 +16,7 @@ export const compareProducts: ProductCard[] = [
   {
     name: 'Men’s Long Sleeve Jersey',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'static',
       value: 123.99,

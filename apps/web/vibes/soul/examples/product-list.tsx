@@ -5,7 +5,7 @@ export const productsList: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'range',
       min: 123.99,
@@ -17,7 +17,7 @@ export const productsList: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'compare',
       prev: 123.99,
@@ -29,7 +29,7 @@ export const productsList: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'static',
       value: 123.99,
@@ -40,7 +40,7 @@ export const productsList: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'range',
       min: 123.99,
@@ -52,7 +52,7 @@ export const productsList: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'compare',
       prev: 123.99,
@@ -64,7 +64,7 @@ export const productsList: ProductCard[] = [
   {
     name: 'Product Name',
     tags: ['Blue', 'Black', 'Green'],
-    label: 'New',
+    badge: 'New',
     price: {
       type: 'static',
       value: 123.99,
