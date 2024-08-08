@@ -97,18 +97,6 @@ export const navigation = [
         component: 'media-section',
       },
       {
-        title: 'Media Section (Left)',
-        slug: 'media-section-left',
-        file: 'docs/media-section-left.mdx',
-        component: 'media-section-left',
-      },
-      {
-        title: 'Media Section (Right)',
-        slug: 'media-section-right',
-        file: 'docs/media-section-right.mdx',
-        component: 'media-section-right',
-      },
-      {
         title: 'Newsletter',
         slug: 'newsletter',
         file: 'docs/newsletter.mdx',
