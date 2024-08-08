@@ -43,6 +43,18 @@ export default function Preview() {
               href: '#fifth-inner-menu',
               icon: <Globe size={16} />,
             },
+            {
+              title: 'Sixth Inner Menu #1',
+              content: 'Sixth Inner Menu Content',
+              href: '#sixth-inner-menu',
+              icon: <Globe size={16} />,
+            },
+            {
+              title: 'Seventh Inner Menu #1',
+              content: 'Seventh Inner Menu Content',
+              href: '#seventh-inner-menu',
+              icon: <Globe size={16} />,
+            },
           ],
         },
         {
@@ -68,14 +80,6 @@ export default function Preview() {
               icon: <Globe size={16} />,
             },
           ],
-        },
-      ],
-      img: [
-        {
-          title: 'First Image',
-          description: 'First Image Description',
-          img: '/atom.svg',
-          alt: 'First Image Alt',
         },
       ],
     },
@@ -112,14 +116,6 @@ export default function Preview() {
               href: '#2fifth-inner-menu',
             },
           ],
-        },
-      ],
-      img: [
-        {
-          title: 'Callout header',
-          description: 'This is a description about a really cool feature',
-          img: '/react-icon-png.png',
-          alt: 'First Image Alt',
         },
       ],
     },

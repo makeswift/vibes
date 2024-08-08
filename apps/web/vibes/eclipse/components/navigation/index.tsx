@@ -30,20 +30,12 @@ type SubMenuItem = {
   innerMenuItems?: InnerMenuItem[]
 }
 
-type imageContainer = {
-  title: string
-  description: string
-  img: string
-  alt: string
-}
-
 type MenuItem = {
   id: string
   title: string
   description: string
   href?: string
   subMenuItems: SubMenuItem[]
-  img?: imageContainer[]
 }
 
 type NavigationProps = {
@@ -61,10 +53,8 @@ const Navigation = ({
   logoLink = '/',
   mainMenuItems,
   secondaryMenuItems,
-  fixed,
   ctaText,
   ctaLink,
-  ...rest
 }: NavigationProps) => {
   const [innerItems, setInnerItems] = useState<InnerMenuItem[]>([])
   const [activeTitle, setActiveTitle] = useState<string>('')
@@ -137,23 +127,19 @@ const Navigation = ({
                       <NavigationMenu.Content className="duration-[250] pointer-events-auto absolute left-0 top-0 w-full rounded-2xl bg-contrast-500/50 backdrop-blur-xl ease-linear data-[motion=from-end]:animate-in data-[motion=from-start]:animate-in data-[motion=to-end]:animate-out data-[motion=to-start]:animate-out data-[motion=from-end]:fade-in data-[motion=from-start]:fade-in data-[motion=to-end]:fade-out data-[motion=to-start]:fade-out data-[motion=from-end]:slide-in-from-left-52 data-[motion=from-start]:slide-in-from-right-52 data-[motion=to-end]:slide-out-to-left-52 data-[motion=to-start]:slide-out-to-right-52 @2xl:w-auto">
                         <div
                           className={`content-container grid rounded-2xl border border-contrast-400 ${
-                            menuItem.subMenuItems[0].title && menuItem.img
-                              ? 'grid-cols-[250px_1fr_300px]'
-                              : menuItem.subMenuItems[0].title
-                                ? 'grid-cols-[250px_1fr]'
-                                : menuItem.img
-                                  ? 'grid-cols-[1fr_300px]'
-                                  : 'grid-cols-[1fr]'
+                            menuItem.subMenuItems[0].title
+                              ? 'grid-cols-[250px_1fr]'
+                              : 'grid-cols-[500px]'
                           }`}
                         >
                           <div
                             className={`${
-                              menuItem.subMenuItems[0].title ? '' : 'hidden'
-                            } z-10 h-full rounded-l-2xl bg-background/50`}
+                              !menuItem.subMenuItems[0].title && 'hidden'
+                            } z-10 h-full rounded-l-2xl border-r border-contrast-500 bg-background/50`}
                           >
                             <ul
                               className={clsx(
-                                'list group m-0 grid w-full list-none gap-2 p-2',
+                                'list group m-0 w-full list-none space-y-0.5 p-2',
                                 'data-[enhanced=true]:after:opacity-[var(--opacity,0)] data-[enhanced=true]:after:[transition:opacity_0.025s,inset_0.025s_0.025s] data-[enhanced=true]:hover:after:opacity-[1] data-[enhanced=true]:hover:after:[transition:opacity_0.2s_0.2s,inset_0.2s]',
                                 "after:pointer-events-none after:absolute after:bottom-[var(--bottom)] after:left-[var(--left)] after:right-[var(--right)] after:top-[var(--top)] after:z-[1] after:h-[var(--height)] after:w-[var(--width)] after:rounded-[0.5rem] after:bg-contrast-500/50 after:content-[''] after:[transition:inset_0.2s]"
                               )}
@@ -173,11 +159,9 @@ const Navigation = ({
 
                           <ul
                             className={clsx(
-                              `group grid ${
-                                innerItems.length < 4 ? 'grid-cols-1' : 'grid-cols-1 xl:grid-cols-2'
-                              } m-0 h-full w-full min-w-[400px] list-none items-start justify-between gap-2 p-2 xl:min-w-[500px]`,
-                              'data-[enhanced=true]:after:opacity-[var(--opacity,0)] data-[enhanced=true]:after:[transition:opacity_0.025s,inset_0.025s_0.025s] data-[enhanced=true]:hover:after:opacity-[1] data-[enhanced=true]:hover:after:[transition:opacity_0.2s_0.2s,inset_0.2s]',
-                              "after:pointer-events-none after:absolute after:bottom-[var(--bottom)] after:left-[var(--left)] after:right-[var(--right)] after:top-[var(--top)] after:z-[1] after:h-[var(--height)] after:w-[var(--width)] after:rounded-[0.5rem] after:content-[''] after:[transition:inset_0.2s]"
+                              `data-[enhanced=true]:hover:after:[transition:opacity_0.2s_0.2s,inset_0.2s]after:pointer-events-none after:[transition:inset_0.2s], group min-w-[400px] list-none items-start justify-between p-2 after:absolute after:bottom-[var(--bottom)] after:left-[var(--left)] after:right-[var(--right)] after:top-[var(--top)] after:z-[1] after:h-[var(--height)] after:w-[var(--width)] after:rounded-lg data-[enhanced=true]:after:opacity-[var(--opacity,0)] data-[enhanced=true]:after:[transition:opacity_0.025s,inset_0.025s_0.025s] data-[enhanced=true]:hover:after:opacity-[1] @5xl:min-w-[500px] ${
+                                innerItems.length < 4 ? 'columns-1' : 'columns-2'
+                              }`
                             )}
                           >
                             {innerItems.map((item, innerIndex) => (
@@ -193,19 +177,6 @@ const Navigation = ({
                               />
                             ))}
                           </ul>
-
-                          {menuItem.img && menuItem.img.length > 0 && (
-                            <div className="relative m-2 ml-0 max-h-[250px] min-h-[200px] overflow-hidden rounded-lg bg-[#5F49F4]/25 p-3.5">
-                              <div className="absolute left-1/2 right-1/2 top-32 h-full w-full rounded-full opacity-70" />
-                              <p className="text-foreground">{menuItem.img[0].title}</p>
-                              <p className="text-foreground/50">{menuItem.img[0].description}</p>
-                              <img
-                                className="absolute left-20 top-32"
-                                src={menuItem.img[0].img}
-                                alt={menuItem.img[0].alt}
-                              />
-                            </div>
-                          )}
                         </div>
                       </NavigationMenu.Content>
                     )}
@@ -351,26 +322,25 @@ const ListItem = ({
 
   return (
     <li
-      className={`listitem relative z-10 h-full cursor-pointer list-none rounded-lg transition-all duration-150 hover:[--li-active:1] ${
+      className={`listitem relative z-10 h-full cursor-pointer list-none break-inside-avoid-column rounded-lg transition-all duration-150 hover:[--li-active:1] ${
         isActive && 'bg-contrast-500/50 text-foreground'
       }`}
       key={title}
     >
-      <a
+      <Link
         href={href}
         onClick={onClick}
         className={clsx(
-          'list-item-container relative flex items-start gap-x-2 p-3 py-2.5',
-          "group-[&:not([data-enhanced])]:after:absolute group-[&:not([data-enhanced])]:after:inset-0 group-[&:not([data-enhanced])]:after:-z-10 group-[&:not([data-enhanced])]:after:rounded-2xl group-[&:not([data-enhanced])]:after:bg-contrast-500/50 group-[&:not([data-enhanced])]:after:opacity-[var(--li-active,0)] group-[&:not([data-enhanced])]:after:transition-opacity group-[&:not([data-enhanced])]:after:duration-200 group-[&:not([data-enhanced])]:after:content-['']"
+          'list-item-container flex items-start gap-x-2.5 rounded-lg p-3 py-2.5 transition-colors hover:bg-contrast-500/50'
         )}
       >
         {isInnerMenuItem && icon && <div className="mt-0.5 h-4 w-4">{icon}</div>}
 
-        <div className="space-y-0.5">
-          <h3 className="text-sm text-foreground">{title}</h3>
-          <p className="text-xs font-normal text-foreground/50">{content}</p>
+        <div>
+          <div className="text-sm">{title}</div>
+          <div className="text-xs text-foreground/50">{content}</div>
         </div>
-      </a>
+      </Link>
     </li>
   )
 }
@@ -383,7 +353,7 @@ const MobileMenu = ({
   secondaryMenuItems: SecondaryMenuItem[]
 }) => (
   <Accordion.Root
-    className="px-4 py-2.5 text-base text-foreground"
+    className="px-5 py-2.5 text-base text-foreground"
     type="single"
     defaultValue="item-1"
     collapsible
