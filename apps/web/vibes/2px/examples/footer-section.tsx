@@ -1,18 +1,61 @@
+import Link from 'next/link'
+
 import FooterSection from '@/vibes/2px/components/footer-section'
+
+import FacebookIcon from '../components/icons/FacebookIcon'
+import InstagramIcon from '../components/icons/InstagramIcon'
+import PinterestIcon from '../components/icons/PinterestIcon'
+import TwitterIcon from '../components/icons/TwitterIcon'
+
+const SOCIAL_ICONS = {
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+  twitter: TwitterIcon,
+  pinterest: PinterestIcon,
+}
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-white p-5 @container sm:min-h-64 sm:p-8 lg:min-h-80 lg:p-12">
+    <div className="flex min-h-48 items-center justify-center bg-white @container sm:min-h-64 lg:min-h-80">
       <FooterSection
-        title="VIBE DESIGNED AND built by WWW.TINLOOF.COM"
-        logo={{ url: '/2px/logo.svg', alt: '2px Logo' }}
-        legal={{ copyright: '© 2024 2px', builtBy: 'Built by Tinloof' }}
-        socials={{
-          facebook: 'https://www.facebook.com',
-          instagram: 'https://www.instagram.com',
-          twitter: 'https://www.twitter.com',
-          pinterest: 'https://www.pinterest.com',
-        }}
+        title={
+          <>
+            VIBE DESIGNED AND built by{' '}
+            <Link href="www.tinloof.com" target="_blank">
+              WWW.TINLOOF.COM
+            </Link>
+          </>
+        }
+        logo={{ url: '/2px/logo.svg', alt: '2px Logo', width: 293, height: 149 }}
+        footNote={
+          <p className="flex gap-6">
+            <span>© 2024 2px</span>
+            <span>
+              Built by{' '}
+              <Link href="www.tinloof.com" target="_blank">
+                Tinloof
+              </Link>
+            </span>
+          </p>
+        }
+        socials={[
+          {
+            link: 'https://www.facebook.com',
+            icon: <FacebookIcon />,
+          },
+          {
+            link: 'https://www.instagram.com',
+            icon: <InstagramIcon />,
+          },
+          {
+            link: 'https://www.twitter.com',
+            icon: <TwitterIcon />,
+          },
+          {
+            link: 'https://www.pinterest.com',
+            icon: <PinterestIcon />,
+          },
+        ]}
         groups={[
           {
             title: 'categories',

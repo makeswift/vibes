@@ -1,25 +1,19 @@
+import Image from 'next/image'
+import Link from 'next/link'
+
 import { cn } from '@/lib/utils'
-import FacebookIcon from '@/vibes/2px/components/icons/FacebookIcon'
-import InstagramIcon from '@/vibes/2px/components/icons/InstagramIcon'
-import PinterestIcon from '@/vibes/2px/components/icons/PinterestIcon'
-import TwitterIcon from '@/vibes/2px/components/icons/TwitterIcon'
 
 interface Props {
   className?: string
-  logo?: { url: string; alt: string }
-  title: string
+  logo?: { url: string; alt: string; width: number; height: number; className?: string }
+  title: JSX.Element | string
   subtitle?: string
   groups: LinkGroup[]
-  legal: {
-    copyright?: string
-    builtBy?: string
-  }
+  footNote: JSX.Element | string
   socials: {
-    facebook?: string
-    instagram?: string
-    twitter?: string
-    pinterest?: string
-  }
+    icon: JSX.Element
+    link: string
+  }[]
 }
 
 type LinkGroup = {
@@ -31,46 +25,50 @@ type LinkGroup = {
   }[]
 }
 
-const SOCIAL_ICONS = {
-  facebook: FacebookIcon,
-  instagram: InstagramIcon,
-  twitter: TwitterIcon,
-  pinterest: PinterestIcon,
-}
-
-export default function FooterSection({ className, logo, title, groups, legal, socials }: Props) {
+export default function FooterSection({
+  className,
+  logo,
+  title,
+  groups,
+  footNote,
+  socials,
+}: Props) {
   return (
-    <section className={cn('flex h-fit w-full flex-col bg-background text-background', className)}>
-      <div className="brand flex h-[49.125rem] flex-col items-center gap-[2px]  @md:h-[17.11944rem] @md:flex-row @lg:h-[19.3125rem] ">
+    <section
+      className={cn('flex h-fit w-full flex-col gap-0.5 bg-background text-background', className)}
+    >
+      <div className="flex flex-col items-center gap-0.5 @md:flex-row">
         {logo && (
-          <div className="logo flex h-[24.5625rem] w-full items-center justify-center border-b-2 border-background bg-foreground @md:h-[17.11944rem]  @lg:h-[19.3125rem] ">
-            <img
+          <div className="flex h-96 w-full items-center justify-center bg-foreground p-10 @md:h-72 @md:grow @md:basis-1/2 @lg:h-80">
+            <Image
               src={logo.url}
               alt={logo.alt}
-              className="h-[9.3125rem] w-[18.3125rem] @md:h-[7.11944rem] @md:w-[14rem] @lg:h-[9.3125rem] @lg:w-[18.3125rem]"
+              width={logo.width}
+              height={logo.height}
+              className="h-auto max-h-full w-auto max-w-full object-contain"
             />
           </div>
         )}
 
-        <div className="title flex h-[24.5625rem] w-full items-center justify-center border-b-2 border-background bg-foreground text-center font-mono text-sm uppercase leading-[1.375rem] tracking-[0.0225rem] @md:h-[17.11944rem] @lg:h-[19.3125rem]">
+        <div className="title flex h-96 w-full items-center justify-center bg-foreground p-10 text-center font-mono text-sm uppercase leading-snug tracking-[0.0225rem] @md:h-72 @md:grow @md:basis-1/2 @lg:h-80">
           {title}
         </div>
       </div>
-      <div className="link-groups flex  flex-wrap justify-items-center gap-[2px] border-b-2">
+      <div className="link-groups flex flex-wrap justify-items-center gap-0.5">
         {groups.map((group, index) => {
           return (
             <div
               key={index}
               className={cn(
-                'flex min-w-[18.75rem] flex-1 flex-col gap-4 bg-foreground px-4 pb-8 pt-6 text-start '
+                'flex min-w-[18.75rem] flex-1 flex-col gap-4 bg-foreground px-4 pb-8 pt-6 text-start'
               )}
             >
-              <span className="font-mono text-xs uppercase leading-[1.125rem]">{group.title}</span>
+              <h4 className="font-mono text-xs uppercase leading-[1.125rem]">{group.title}</h4>
               <div className="flex flex-col gap-3 font-body text-base font-medium leading-6">
                 {group.links.map((link, index) => (
-                  <a key={index} href={link.href}>
+                  <Link key={index} href={link.href}>
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -78,22 +76,14 @@ export default function FooterSection({ className, logo, title, groups, legal, s
         })}
       </div>
 
-      <div className="social-media flex flex-col items-start justify-between gap-6 bg-foreground p-6 font-body text-sm font-medium leading-[1.375rem] @md:flex-row @md:items-center @md:leading-6">
-        <div className="legal flex gap-6">
-          <span>{legal.copyright}</span>
-          <span>{legal.builtBy}</span>
-        </div>
+      <div className="social-media flex flex-col items-start justify-between gap-6 bg-foreground p-6 font-body text-sm font-medium leading-snug @md:flex-row @md:items-center @md:leading-6">
+        {footNote}
         <div className="social-media-links flex gap-6 bg-foreground text-background">
-          {Object.entries(socials).map(([key, value]) => {
-            if (!(key in SOCIAL_ICONS)) return null
-            const Icon = SOCIAL_ICONS[key as keyof typeof SOCIAL_ICONS]
-
-            return (
-              <a key={key} href={value} target="_blank">
-                <Icon />
-              </a>
-            )
-          })}
+          {socials.map(({ icon, link }) => (
+            <Link key={link} href={link} target="_blank">
+              {icon}
+            </Link>
+          ))}
         </div>
       </div>
     </section>
