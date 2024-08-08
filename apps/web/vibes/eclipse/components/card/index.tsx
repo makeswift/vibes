@@ -18,7 +18,7 @@ export const Card = forwardRef(function Card(
 ) {
   return (
     <div ref={ref} className={clsx(className, 'relative @container')}>
-      <div className="w-full rounded-2xl bg-muted-background/50 text-foreground ring-1 ring-foreground/20 @sm:rounded-3xl @2xl:flex-row">
+      <div className="bg-muted-background/50 w-full rounded-2xl font-body text-foreground ring-1 ring-foreground/20 @sm:rounded-3xl @2xl:flex-row">
         <div>{children}</div>
 
         {topGlow && (
