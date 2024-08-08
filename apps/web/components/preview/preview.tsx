@@ -4,7 +4,6 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { readFile } from 'fs/promises'
 import path from 'path'
 
-import Card from '@/components/ui/card'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { exists } from '@/lib/utils'
 import { getVibe } from '@/vibes/utils'
@@ -16,6 +15,7 @@ import { PreviewTabs } from './preview-tabs'
 interface Props {
   vibeSlug: string
   componentName: string | { [key: string]: string }
+  size?: 'small' | 'medium' | 'large'
 }
 
 function findEntry({ vibeSlug, componentName }: { vibeSlug: string; componentName: string }) {
@@ -30,7 +30,7 @@ function findEntry({ vibeSlug, componentName }: { vibeSlug: string; componentNam
   return entry
 }
 
-export async function Preview({ vibeSlug, componentName }: Props) {
+export async function Preview({ vibeSlug, componentName, size }: Props) {
   const vibe = getVibe(vibeSlug)
 
   if (!vibe) return <div>Could not find vibe: {vibeSlug}</div>
@@ -56,7 +56,7 @@ export async function Preview({ vibeSlug, componentName }: Props) {
               clipboard: file,
               preview: (
                 <Suspense fallback={<div>Loading...</div>}>
-                  <Frame>
+                  <Frame size={size}>
                     <ErrorBoundary
                       fallback={
                         <div className="flex justify-center p-5">

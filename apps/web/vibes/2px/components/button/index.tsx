@@ -1,9 +1,11 @@
+import { ComponentProps } from 'react'
+
 import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '@/lib/utils'
 import { LoadingIcon } from '@/vibes/2px/components/icons/LoadingIcon'
 
-export interface ButtonProps {
+export interface ButtonProps extends ComponentProps<'button'> {
   className?: string
   variant?: 'primary' | 'secondary'
   loading?: boolean
@@ -12,28 +14,30 @@ export interface ButtonProps {
   asChild?: boolean
 }
 
-const Button = ({
+export default function Button({
   className,
   variant = 'primary',
   loading,
   children,
   asChild = false,
-}: ButtonProps) => {
+  ...props
+}: ButtonProps) {
   const Component = asChild ? Slot : 'button'
   return (
     <Component
       className={cn(
-        'group mx-auto flex items-center justify-center whitespace-nowrap rounded-full border-2 border-transparent',
+        'group mx-auto flex items-center justify-center whitespace-nowrap rounded-full border-2 border-transparent font-body',
         'h-10 px-5 py-2.5 text-sm leading-[var(--line-height-base)] @lg:h-20 @lg:px-20 @lg:text-lg',
-        loading && variant === 'primary' && 'hover:bg-foreground hover:text-background',
+        loading && variant === 'primary' && 'hover:bg-transparent hover:text-background',
         loading && variant === 'secondary' && 'hover:border-solid',
         {
           primary:
-            'bg-foreground text-background hover:border-foreground hover:bg-background hover:text-foreground',
-          secondary: 'border-foreground bg-background text-foreground hover:border-dashed',
+            'bg-foreground text-background hover:border-foreground hover:bg-transparent hover:text-foreground',
+          secondary: 'border-foreground bg-transparent text-foreground hover:border-dashed',
         }[variant],
         className
       )}
+      {...props}
     >
       {loading ? (
         <LoadingIcon
@@ -48,6 +52,3 @@ const Button = ({
     </Component>
   )
 }
-
-Button.displayName = 'Button'
-export default Button
