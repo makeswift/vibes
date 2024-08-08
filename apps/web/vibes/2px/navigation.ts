@@ -12,12 +12,6 @@ export const navigation = [
         component: 'breadcrumbs',
       },
       {
-        title: 'Media and Text Section',
-        slug: 'media-and-text-section',
-        file: 'docs/media-and-text-section.mdx',
-        component: 'media-and-text-section',
-      },
-      {
         title: 'Button',
         slug: 'button',
         file: 'docs/button.mdx',
@@ -133,6 +127,12 @@ export const navigation = [
         slug: 'fullscreen-product-card-section',
         file: 'docs/fullscreen-product-card-section.mdx',
         component: 'fullscreen-product-card-section',
+      },
+      {
+        title: 'Media and Text',
+        slug: 'media-and-text-section',
+        file: 'docs/media-and-text-section.mdx',
+        component: 'media-and-text-section',
       },
       {
         title: 'Footer',
