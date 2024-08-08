@@ -74,7 +74,7 @@ export const Footer = forwardRef(function Footer(
                         <Link
                           href={footerLink.link?.href ?? '#'}
                           target={footerLink.link?.target}
-                          className="text-contrast-1000 relative block py-1.5 text-sm font-medium transition duration-300 after:pointer-events-none after:absolute after:right-full after:top-1/2 after:mr-2.5 after:h-0.5 after:w-5 after:origin-right after:-translate-y-1/2 after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-transparent after:to-primary after:opacity-50 after:transition-all after:duration-300 hover:text-foreground/100 hover:after:scale-x-100 hover:after:opacity-100"
+                          className="relative block py-1.5 text-sm font-medium text-contrast-100 transition duration-300 after:pointer-events-none after:absolute after:right-full after:top-1/2 after:mr-2.5 after:h-0.5 after:w-5 after:origin-right after:-translate-y-1/2 after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-transparent after:to-primary after:opacity-50 after:transition-all after:duration-300 hover:text-foreground/100 hover:after:scale-x-100 hover:after:opacity-100"
                         >
                           {footerLink.text}
                         </Link>

@@ -75,6 +75,71 @@ export const navigation = [
         component: 'accordions',
       },
       { title: 'Tabs', slug: 'tabs', file: 'docs/tabs.mdx', component: 'tabs' },
+      {
+        title: 'Product Card',
+        slug: 'product-card',
+        file: 'docs/product-card.mdx',
+        component: 'product-card',
+      },
+    ],
+  },
+  {
+    title: 'Sections',
+    pages: [
+      {
+        title: 'Text',
+        slug: 'text-section',
+        file: 'docs/text-section.mdx',
+        component: 'text-section',
+      },
+      {
+        title: 'FAQ',
+        slug: 'faq-section',
+        file: 'docs/faq-section.mdx',
+        component: 'faq-section',
+      },
+      {
+        title: 'Blog Post Card',
+        slug: 'blog-post-card',
+        file: 'docs/blog-post-card.mdx',
+        component: 'blog-post-card',
+      },
+      {
+        title: 'Section Header',
+        slug: 'section-header',
+        file: 'docs/section-header.mdx',
+        component: 'section-header',
+      },
+      {
+        title: 'Hero',
+        slug: 'hero-header',
+        file: 'docs/hero-header.mdx',
+        component: 'hero-header',
+      },
+      {
+        title: 'Callout',
+        slug: 'callout-section',
+        file: 'docs/callout-section.mdx',
+        component: 'callout-section',
+      },
+      {
+        title: 'Blog List',
+        slug: 'blog-list-section',
+        file: 'docs/blog-list-section.mdx',
+        component: 'blog-list-section',
+      },
+      {
+        title: 'Fullscreen Product Card',
+        slug: 'fullscreen-product-card-section',
+        file: 'docs/fullscreen-product-card-section.mdx',
+        component: 'fullscreen-product-card-section',
+      },
+      {
+        title: 'Footer',
+        slug: 'footer-section',
+        file: 'docs/footer-section.mdx',
+        component: 'footer-section',
+      },
     ],
   },
 ] satisfies Navigation
