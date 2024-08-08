@@ -61,7 +61,7 @@ export const Header = forwardRef(function Header(
   return (
     <ReactHeadroom
       {...rest}
-      className="sticky top-14 z-30 !h-0 w-full @container"
+      className="sticky top-0 z-30 !h-0 w-full @container"
       upTolerance={0}
       style={{
         WebkitTransition: 'transform .5s ease-in-out',
