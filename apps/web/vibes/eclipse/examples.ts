@@ -116,13 +116,6 @@ export const examples = [
     component: lazy(() => import('./examples/tabs')),
   },
   {
-    name: 'toast-example',
-    dependencies: [],
-    registryDependencies: ['toast'],
-    files: ['examples/toast.tsx'],
-    component: lazy(() => import('./examples/toast')),
-  },
-  {
     name: 'video-example',
     dependencies: [],
     registryDependencies: ['video'],
