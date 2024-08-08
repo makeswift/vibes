@@ -85,7 +85,7 @@ const Navigation = ({
     <ReactHeadroom className="!h-24 w-full [&>div]:px-5 [&>div]:pt-5">
       <NavigationMenu.Root
         delayDuration={0}
-        className="mx-auto max-w-6xl rounded-[28px] border border-contrast-400 bg-contrast-500/50 text-foreground backdrop-blur-xl @container"
+        className="mx-auto max-w-6xl overflow-hidden rounded-[28px] border border-contrast-400 bg-contrast-500/50 text-foreground backdrop-blur-xl @container @5xl:overflow-visible"
       >
         <div className="flex min-h-14 items-stretch pl-3  pr-2">
           <div className="flex-1 shrink-0 place-content-center">
@@ -224,13 +224,11 @@ const Navigation = ({
         </div>
 
         <div
-          className={`w-full overflow-hidden transition-all duration-300 @5xl:hidden ${
+          className={`w-full overflow-y-auto border-t border-foreground/10 transition-all duration-300 @5xl:hidden ${
             isMobileMenuOpen ? 'max-h-[calc(100svh-6rem)]' : 'max-h-0'
           }`}
         >
-          <div className="max-h-[calc(100svh-1.25rem)] overflow-y-scroll border-t border-foreground/10 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <MobileMenu mainMenuItems={mainMenuItems} secondaryMenuItems={secondaryMenuItems} />
-          </div>
+          <MobileMenu mainMenuItems={mainMenuItems} secondaryMenuItems={secondaryMenuItems} />
 
           <div className="w-full border-t border-foreground/10 p-4 @lg:hidden">
             <Button link={{ href: ctaLink }} variant="primary" size="small" borderGlow={false}>
@@ -324,7 +322,7 @@ const MobileMenu = ({
             {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
               <div key={subIndex}>
                 {subMenuItem.innerMenuItems && (
-                  <ul className="pl-4">
+                  <ul className="pl-2">
                     {subMenuItem.innerMenuItems.map((innerItem, innerIndex) => (
                       <li key={innerIndex}>
                         <Link
