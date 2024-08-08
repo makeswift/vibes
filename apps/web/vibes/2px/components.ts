@@ -107,11 +107,11 @@ export const components = [
   },
   {
     name: 'carousel-section',
-    dependencies: ['react'],
+    dependencies: [],
     registryDependencies: [],
     files: [
       './components/carousel-section/index.tsx',
-      './components/carousel-section/index.css',
+      './components/carousel-section/index.module.css',
       '../../lib/utils.ts',
       './components/icons/ChevronLeftIcon.tsx',
     ],

@@ -5,14 +5,11 @@ import { useRef } from 'react'
 import { cn } from '@/lib/utils'
 import { ChevronLeftIcon } from '@/vibes/2px/components/icons/ChevronLeftIcon'
 
-import './index.css'
+import Styles from './index.module.css'
 
 export type Slide = {
   item?: React.ReactNode
-  link?: {
-    href: string
-    target?: '_self' | '_blank'
-  }
+  key?: string | number
 }
 
 interface Props {
@@ -62,7 +59,7 @@ export default function CarouselSection({ className, title, slides, showArrows }
         className
       )}
     >
-      <div className="flex w-full items-center justify-between border-b-2 border-foreground px-3 py-1 @lg:border-b-0">
+      <div className="flex w-full items-center justify-between border-b-2 border-foreground px-3 py-1">
         <h2 className="text-2xl font-medium leading-[2.25rem] -tracking-[0.0175rem]">{title}</h2>
         {showArrows && (
           <div className="flex justify-center gap-2">
@@ -75,11 +72,12 @@ export default function CarouselSection({ className, title, slides, showArrows }
           </div>
         )}
       </div>
-      <div className="carousel hide-scrollbar flex w-full overflow-scroll" ref={carouselRef}>
+      <div
+        className={cn('carousel flex w-full overflow-scroll', Styles['hide-scrollbar'])}
+        ref={carouselRef}
+      >
         {slides.map((slide, index) => (
-          <a href={slide.link?.href || undefined} key={index} className={cn()}>
-            {slide.item}
-          </a>
+          <div key={slide.key ?? index}>{slide.item}</div>
         ))}
       </div>
     </section>
