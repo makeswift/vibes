@@ -1,16 +1,9 @@
 import clsx from 'clsx'
 import { CodeToHastOptions, ShikiTransformer, codeToHtml, createCssVariablesTheme } from 'shiki'
 
-import { transformers } from '@/lib/shiki'
+import { theme, transformers } from '@/lib/shiki'
 
 import { CopyButton } from './copy-button'
-
-const myTheme = createCssVariablesTheme({
-  name: 'css-variables',
-  variablePrefix: '--shiki-',
-  variableDefaults: {},
-  fontStyle: true,
-})
 
 interface Props {
   children: string
@@ -30,8 +23,8 @@ export async function CodeBlock({
   const __html = await codeToHtml(children, {
     lang,
     themes: {
-      light: myTheme,
-      dark: myTheme,
+      light: theme,
+      dark: theme,
     },
     transformers: [
       ...transformers,
