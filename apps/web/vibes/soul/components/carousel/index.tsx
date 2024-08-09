@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
@@ -11,32 +11,24 @@ type Props = {
 }
 
 const Carousel = ({ title, images }: Props) => {
-  const [currentIndex, setCurrentIndex] = useState(3)
-  const ref = useRef<NodeJS.Timeout | null>(null)
+  const [expandedImageIndex, setExpandedImageIndex] = useState(3)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
-  const startCarousel = () => {
-    ref.current = setInterval(() => {
-      setCurrentIndex(prevIndex =>
+  const startAnimation = () => {
+    intervalRef.current = setInterval(() => {
+      setExpandedImageIndex(prevIndex =>
         prevIndex === images.concat(images).length - 3 ? 3 : prevIndex + 1
       )
     }, 3500)
   }
 
   useEffect(() => {
-    startCarousel()
-    return () => {
-      if (ref.current) clearInterval(ref.current)
-    }
-  }, [images.length])
-
-  useEffect(() => {
-    if (ref.current) clearInterval(ref.current)
+    if (intervalRef.current) clearInterval(intervalRef.current)
     const timeout = setTimeout(() => {
-      startCarousel()
+      startAnimation()
     }, 500)
-
     return () => clearTimeout(timeout)
-  }, [currentIndex])
+  }, [expandedImageIndex])
 
   return (
     <section className="flex flex-col bg-background text-foreground @container">
@@ -49,7 +41,7 @@ const Carousel = ({ title, images }: Props) => {
       <div
         className="relative mr-[50%] flex min-h-[300px] items-end gap-2.5 transition-transform duration-700 ease-out @4xl:mr-0 @4xl:min-h-[700px]"
         style={{
-          transform: `translateX(calc(-${(currentIndex * 100) / images.length}% - ${currentIndex * 56}px + 72%))`,
+          transform: `translateX(calc(-${(expandedImageIndex * 100) / images.length}% - ${expandedImageIndex * 56}px + 72%))`,
         }}
       >
         {images.concat(images).map((src, index) => (
@@ -60,8 +52,8 @@ const Carousel = ({ title, images }: Props) => {
             height={1000}
             width={1000}
             className={clsx(
-              'pointer-events-none relative h-full max-h-[300px] flex-none origin-bottom select-none object-cover transition-all duration-700 ease-out @4xl:max-h-[700px]',
-              index % images.length === currentIndex % images.length
+              'pointer-events-none relative aspect-[3/4] h-full max-h-[300px] flex-none origin-bottom select-none object-cover transition-all duration-700 ease-out @4xl:max-h-[700px]',
+              index % images.length === expandedImageIndex % images.length
                 ? 'w-[56%] @4xl:w-[28%]'
                 : 'w-[36%] @4xl:w-[18%]'
             )}
