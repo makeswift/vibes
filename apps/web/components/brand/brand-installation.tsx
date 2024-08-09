@@ -46,12 +46,12 @@ ${Object.entries(fonts)
   .map(([type, font]) => {
     switch (font.type) {
       case 'google':
-        return `const ${font.name.toLowerCase()} = ${font.name}(${JSON.stringify({ ...font.options, variable: `--font-family-${type}` }, null, 2)})`
+        return `const ${font.name.toLowerCase()} = ${font.name}(${JSON.stringify({ ...font.options, variable: `--font-family-${type}` }, null, 2).replace(/"([^"]+)":/g, '$1:')})`
           .split('\n')
           .map(line => line.concat('// [!code highlight]'))
           .join('\n')
       case 'local':
-        return `const ${font.name.toLowerCase()} = localFont(${JSON.stringify({ ...font.options, variable: `--font-family-${type}` }, null, 2)})`
+        return `const ${font.name.toLowerCase()} = localFont(${JSON.stringify({ ...font.options, variable: `--font-family-${type}` }, null, 2).replace(/"([^"]+)":/g, '$1:')})`
           .split('\n')
           .map(line => line.concat('// [!code highlight]'))
           .join('\n')
