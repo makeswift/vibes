@@ -1,3 +1,5 @@
+import localFont from 'next/font/local'
+
 import { z } from 'zod'
 
 export type NonEmptyArray<T> = [T, ...T[]]
@@ -11,11 +13,6 @@ export type Component = {
 }
 
 export type Components = NonEmptyArray<Component>
-
-export type Font = {
-  name: string
-  src: string | { path: string; weight?: string; style?: string }[]
-}
 
 export type CSSVars = {
   '--primary': string

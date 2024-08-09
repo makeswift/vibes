@@ -9,6 +9,8 @@ import prettyBytes from 'pretty-bytes'
 import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
+import { BrandColors, Colors } from '@/components/brand/brand-colors'
+import { BrandInstallation } from '@/components/brand/brand-installation'
 import * as MDXComponents from '@/components/mdx'
 import { navigation } from '@/components/navigation'
 import { Preview } from '@/components/preview'
@@ -16,7 +18,6 @@ import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
-import { Colors } from '@/components/ui/colors'
 import { FontFamily } from '@/components/ui/font-family'
 import { FontSize } from '@/components/ui/font-size'
 import { IconsPreview } from '@/components/ui/icons-preview'
@@ -94,12 +95,6 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       Button,
       ButtonLink,
       Colors,
-      CodeFromFile: function CodeFromFileWithoutBasePath(props) {
-        return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
-      },
-      Preview: function PreviewWithoutVibeSlug(props) {
-        return <Preview {...props} vibeSlug={vibe.slug} />
-      },
       FontFamily,
       FontSize,
       IconsPreview,
@@ -114,6 +109,18 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       TabsContent,
       TabsList,
       TabsTrigger,
+      BrandColors: function BrandColorsWithoutVibeSlug(props) {
+        return <BrandColors {...props} vibeSlug={vibe.slug} />
+      },
+      BrandInstallation: function BrandInstallationWithoutVibeSlug(props) {
+        return <BrandInstallation {...props} vibeSlug={vibe.slug} />
+      },
+      CodeFromFile: function CodeFromFileWithoutBasePath(props) {
+        return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
+      },
+      Preview: function PreviewWithoutVibeSlug(props) {
+        return <Preview {...props} vibeSlug={vibe.slug} />
+      },
     },
   })
 
