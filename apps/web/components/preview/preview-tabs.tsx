@@ -40,7 +40,7 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
       defaultValue="preview"
       value={tab}
       onValueChange={setTab}
-      className="flex h-full flex-col"
+      className={clsx('flex flex-col', fullScreen && 'h-full')}
     >
       <div className="flex items-center @container">
         <TabsList className="flex-1">
@@ -58,20 +58,10 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
         <div className="flex flex-1 items-center justify-end gap-x-2">
           {tab !== 'code' && (
             <div className="flex">
-              {/* <Button
-              className="hidden @xl:flex"
-              variant="ghost"
-              size="icon"
-              active={actualWidth === null}
-              onClick={() => resize(null)}
-            >
-              <span className="sr-only">Fill</span>
-              <ArrowsHorz16 />
-            </Button> */}
               <Button
                 className="hidden @5xl:flex"
                 variant="ghost"
-                active={actualWidth === null || actualWidth > 768}
+                active={actualWidth === null}
                 size="icon"
                 onClick={() => resize(null)}
               >
@@ -122,11 +112,37 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
           </div>
         </div>
       </div>
-      <TabsContent value="preview" className="flex-1">
-        {preview}
+      <TabsContent className="flex-1" value="preview">
+        <div
+          className={clsx(
+            'flex',
+            fullScreen
+              ? 'h-full'
+              : {
+                  small: 'h-[300px]',
+                  medium: 'h-[500px]',
+                  large: 'h-[750px]',
+                }[size]
+          )}
+        >
+          {preview}
+        </div>
       </TabsContent>
-      <TabsContent value="code" className="flex-1">
-        {code}
+      <TabsContent className="min-h-0 flex-1" value="code">
+        <div
+          className={clsx(
+            'flex overflow-hidden',
+            fullScreen
+              ? 'max-h-full'
+              : {
+                  small: 'max-h-[300px]',
+                  medium: 'max-h-[500px]',
+                  large: 'max-h-[750px]',
+                }[size]
+          )}
+        >
+          {code}
+        </div>
       </TabsContent>
     </Tabs>
   )
@@ -135,22 +151,13 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
     <Dialog.Root onOpenChange={setFullScreen} open={fullScreen}>
       {fullScreen ? (
         <Dialog.Portal>
-          <Dialog.Content className="fixed -bottom-4 -top-4 left-0 right-0 z-50 bg-background px-4">
+          <Dialog.Overlay className="fixed inset-0 bg-background" />
+          <Dialog.Content className="fixed inset-0 z-50 bg-background px-4">
             {content}
           </Dialog.Content>
         </Dialog.Portal>
       ) : (
-        <div
-          className={clsx(
-            {
-              small: 'h-[300px]',
-              medium: 'h-[500px]',
-              large: 'h-[750px]',
-            }[size]
-          )}
-        >
-          {content}
-        </div>
+        content
       )}
     </Dialog.Root>
   )

@@ -47,7 +47,7 @@ export function Installation({
   if (!component) return null
 
   return (
-    <div className="mt-8">
+    <>
       <h2 id="installation">Installation</h2>
       <Tabs defaultValue="cli">
         <TabsList>
@@ -115,6 +115,6 @@ export function Installation({
           </Steps>
         </TabsContent>
       </Tabs>
-    </div>
+    </>
   )
 }

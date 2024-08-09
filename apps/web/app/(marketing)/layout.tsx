@@ -1,14 +1,13 @@
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
-import { IBM_Plex_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 
 import clsx from 'clsx'
 
 import { Toaster } from '@/components/ui/toaster'
-import '@/style/globals.css'
 
 import { Providers } from './providers'
+import './style/root.css'
 
 const title = 'Vibes: Stunning React components for commerce & marketing | Coming soon'
 const description =
@@ -63,9 +62,8 @@ const Polysans = localFont({
   variable: '--font-family-body',
 })
 
-const IBMPlexMono = IBM_Plex_Mono({
-  weight: '400',
-  subsets: ['latin'],
+const GeistMono = localFont({
+  src: './fonts/GeistMonoVF.woff2',
   display: 'swap',
   variable: '--font-family-mono',
 })
@@ -79,7 +77,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={clsx(Polysans.variable, PolysansWide.variable, IBMPlexMono.variable)}>
+      <body className={clsx(Polysans.variable, PolysansWide.variable, GeistMono.variable)}>
         <Providers>
           <PostHogPageView />
           <main>{children}</main>

@@ -1,7 +1,8 @@
+@import url('./shiki.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('./shiki.css');
 
 @layer base {
   :root {
@@ -62,8 +63,9 @@
   * {
     @apply antialiased;
   }
+  html,
   body {
-    @apply bg-background;
+    @apply overscroll-none bg-background font-body text-foreground;
   }
   .pattern-shadow {
     @apply relative;

@@ -11,11 +11,12 @@ import { useBrandContext } from './brand-context'
 import { usePreviewContext } from './preview-context'
 
 interface Props {
+  className?: string
   vibeSlug: string
   componentName: string
 }
 
-export function Frame({ vibeSlug, componentName }: Props) {
+export function Frame({ className, vibeSlug, componentName }: Props) {
   const { activeBrand } = useBrandContext()
   const [iframeLoaded, setIframeLoaded] = useState(false)
   const iframe = useRef<HTMLIFrameElement>(null)
@@ -58,7 +59,7 @@ export function Frame({ vibeSlug, componentName }: Props) {
   }, [])
 
   return (
-    <div className="relative h-full bg-contrast-100" ref={container}>
+    <div className={clsx('relative w-full bg-contrast-100', className)} ref={container}>
       <div
         className={clsx('relative mx-auto h-full border border-dashed border-contrast-200')}
         style={{ width: width ?? '100%' }}
