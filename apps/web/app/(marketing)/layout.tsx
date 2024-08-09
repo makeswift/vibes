@@ -5,9 +5,9 @@ import localFont from 'next/font/local'
 import clsx from 'clsx'
 
 import { Toaster } from '@/components/ui/toaster'
-import '@/style/globals.css'
 
 import { Providers } from './providers'
+import './style/root.css'
 
 const title = 'Vibes: Stunning React components for commerce & marketing | Coming soon'
 const description =

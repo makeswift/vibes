@@ -52,7 +52,7 @@ export const brands = [
     name: 'Magenta',
     logo: '',
     cssVars: {
-      '--primary': '301, 100%, 50%',
+      '--primary': '301 100% 50%',
       '--accent': '248 90% 62%',
       '--background': '220 30% 4%',
       '--foreground': '0 0% 100%',

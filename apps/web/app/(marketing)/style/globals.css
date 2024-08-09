@@ -63,8 +63,9 @@
   * {
     @apply antialiased;
   }
+  html,
   body {
-    @apply overscroll-none bg-background;
+    @apply overscroll-none bg-background font-body text-foreground;
   }
   .pattern-shadow {
     @apply relative;
