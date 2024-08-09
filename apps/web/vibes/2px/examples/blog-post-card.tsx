@@ -4,12 +4,12 @@ export default function Preview() {
   return (
     <div className="flex min-h-48 items-center justify-center bg-background @container sm:min-h-64 lg:min-h-80">
       <BlogPostCard
-        publishedAt="17.03.24"
+        date="17.03.24"
         author={{ name: 'Cicero', href: '/' }}
-        cta={{ href: '/', label: 'READ MORE' }}
-        image="/2px/blog-post-card-section.png"
+        link={{ href: '/', label: 'READ MORE' }}
+        image={{ url: '/2px/blog-post-card-section.png', altText: 'A photo of the workshop' }}
         title="Update 23 from the workshop"
-        blogPost={
+        content={
           <>
             <span>
               {`After outgrowing our old spot, we knew it was time for a change. And boy, did we find a
