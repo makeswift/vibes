@@ -11,7 +11,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
   images: {
-    domains: ['images.unsplash.com'],
+    domains: ['images.unsplash.com', 'rstr.in'],
   },
   async rewrites() {
     return [
