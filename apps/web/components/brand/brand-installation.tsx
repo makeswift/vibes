@@ -28,6 +28,13 @@ interface Props {
   }
 }
 
+function highlightLines(str: string) {
+  return str
+    .split('\n')
+    .map(line => line.concat('// [!code highlight]'))
+    .join('\n')
+}
+
 function getVariableCode(cssVars: { [key: string]: string }) {
   return `:root {\n${Object.entries(cssVars)
     .filter(([name]) => !name.startsWith('--font-family'))
@@ -44,17 +51,21 @@ import './globals.css
 
 ${Object.entries(fonts)
   .map(([type, font]) => {
+    function getFontOptions() {
+      return JSON.stringify(
+        { ...font.options, variable: `--font-family-${type}` },
+        null,
+        2
+      ).replace(/"([^"]+)":/g, '$1:')
+    }
+
     switch (font.type) {
       case 'google':
-        return `const ${font.name.toLowerCase()} = ${font.name}(${JSON.stringify({ ...font.options, variable: `--font-family-${type}` }, null, 2).replace(/"([^"]+)":/g, '$1:')})`
-          .split('\n')
-          .map(line => line.concat('// [!code highlight]'))
-          .join('\n')
+        return highlightLines(
+          `const ${font.name.toLowerCase()} = ${font.name}(${getFontOptions()})`
+        )
       case 'local':
-        return `const ${font.name.toLowerCase()} = localFont(${JSON.stringify({ ...font.options, variable: `--font-family-${type}` }, null, 2).replace(/"([^"]+)":/g, '$1:')})`
-          .split('\n')
-          .map(line => line.concat('// [!code highlight]'))
-          .join('\n')
+        return highlightLines(`const ${font.name.toLowerCase()} = localFont(${getFontOptions()})`)
     }
   })
   .join('\n\n')}
