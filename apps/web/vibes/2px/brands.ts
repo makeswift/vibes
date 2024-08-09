@@ -1,19 +1,23 @@
+import localFont from 'next/font/local'
+
 import { Brands } from '@/vibes/schema'
+
+const inter = localFont({
+  src: '../../public/fonts/Inter-VariableFont_slnt,wght.woff2',
+  display: 'swap',
+})
+const courierPrime = localFont({
+  src: '../../public/fonts/CourierPrime-Regular.woff2',
+  display: 'swap',
+})
+const sportingGrotesque = localFont({
+  src: '../../public/fonts/SportingGrotesque-Regular.woff2',
+})
 
 export const brands = [
   {
     name: 'Brand 1',
     logo: '',
-    fonts: [
-      {
-        name: 'Inter',
-        src: '/fonts/Inter-VariableFont_slnt,wght.woff2',
-      },
-      {
-        name: 'Courier Prime',
-        src: '/fonts/CourierPrime-Regular.woff2',
-      },
-    ],
     cssVars: {
       '--primary': '43	100%	73%',
       '--accent': '9 99% 61%',
@@ -28,9 +32,9 @@ export const brands = [
       '--contrast-300': '0 0% 67%',
       '--contrast-400': '0 0% 51%',
       '--contrast-500': '0 0% 27%',
-      '--font-family-heading': "'Inter', system-ui, sans-serif",
-      '--font-family-body': "'Inter', system-ui, sans-serif",
-      '--font-family-mono': "'Courier Prime', system-ui, sans-serif",
+      '--font-family-heading': inter.style.fontFamily,
+      '--font-family-body': inter.style.fontFamily,
+      '--font-family-mono': courierPrime.style.fontFamily,
       '--font-size-xs': '1rem',
       '--font-size-sm': '1.125rem',
       '--font-size-base': '1.25rem',
@@ -52,17 +56,7 @@ export const brands = [
   {
     name: 'Brand 2',
     logo: '',
-    fonts: [
-      {
-        name: 'Sporting Grotesque',
-        src: [
-          {
-            path: '/fonts/SportingGrotesque-Regular.woff2',
-            style: 'normal',
-          },
-        ],
-      },
-    ],
+
     cssVars: {
       '--primary': '0 0% 100%',
       '--accent': '0 0% 83%',
@@ -77,7 +71,7 @@ export const brands = [
       '--contrast-300': '0 0% 67%',
       '--contrast-400': '0 0% 51%',
       '--contrast-500': '0 0% 27%',
-      '--font-family-heading': "'Sporting Grotesque', system-ui, sans-serif",
+      '--font-family-heading': sportingGrotesque.style.fontFamily,
       '--font-family-body': 'Arial, system-ui, sans-serif',
       '--font-family-mono': 'Arial, system-ui, sans-serif',
       '--font-size-xs': '1rem',
