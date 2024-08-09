@@ -19,36 +19,39 @@ type SecondaryMenuItem = {
 
 type InnerMenuItem = {
   title: string
-  content: string
+  description?: string
   href: string
   icon?: React.ReactNode
 }
 
 type SubMenuItem = {
   title?: string
-  content?: string
+  description?: string
   innerMenuItems?: InnerMenuItem[]
 }
 
 type MenuItem = {
   title: string
-  description: string
+  description?: string
   href?: string
   subMenuItems: SubMenuItem[]
 }
 
 type NavigationProps = {
   logoImage: string
+  logoWidth: number
+  logoHeight: number
   mainMenuItems: MenuItem[]
   secondaryMenuItems: SecondaryMenuItem[]
-  fixed?: boolean
   logoLink: string
-  ctaText?: string
+  ctaText: string
   ctaLink: string
 }
 
 const Navigation = ({
   logoImage,
+  logoWidth,
+  logoHeight,
   logoLink = '/',
   mainMenuItems,
   secondaryMenuItems,
@@ -82,15 +85,15 @@ const Navigation = ({
   }
 
   return (
-    <ReactHeadroom className="!h-24 w-full [&>div]:px-5 [&>div]:pt-5">
+    <ReactHeadroom className="h-24 w-full @container [&>div]:px-5 [&>div]:pt-5">
       <NavigationMenu.Root
         delayDuration={0}
-        className="mx-auto max-w-6xl overflow-hidden rounded-[28px] border border-contrast-400 bg-contrast-500/50 text-foreground backdrop-blur-xl @container @5xl:overflow-visible"
+        className="mx-auto max-w-6xl overflow-hidden rounded-[28px] border border-contrast-400 bg-contrast-500/50 text-foreground backdrop-blur-xl @5xl:overflow-visible"
       >
-        <div className="flex min-h-14 items-stretch pl-3  pr-2">
+        <div className="flex min-h-14 items-stretch pl-3 pr-2.5 @lg:pr-2">
           <div className="flex-1 shrink-0 place-content-center">
             <Link href={logoLink}>
-              <Image src={logoImage} alt="Logo" width={88} height={24} />
+              <Image src={logoImage} alt="Logo" width={logoWidth} height={logoHeight} />
             </Link>
           </div>
 
@@ -102,7 +105,7 @@ const Navigation = ({
                     {menuItem.href ? (
                       <NavigationMenu.Link asChild>
                         <Link
-                          className="select-none place-content-center px-3 py-2 text-sm font-normal leading-none text-foreground/70 outline-none transition-colors hover:text-foreground"
+                          className="select-none place-content-center px-3 py-2 text-sm text-foreground/70 outline-none transition-colors hover:text-foreground"
                           href={menuItem.href}
                         >
                           {menuItem.title}
@@ -111,68 +114,62 @@ const Navigation = ({
                     ) : (
                       <NavigationMenu.Trigger
                         onMouseEnter={() => handleMouseEnter(menuItem)}
-                        className="group flex select-none items-center justify-between gap-0.5 rounded-[4px] px-3 py-2 text-sm font-normal leading-none text-foreground/70 outline-none transition-colors hover:text-foreground"
+                        className="group flex select-none items-center justify-between gap-0.5 px-3 py-2 text-sm text-foreground/70 outline-none transition-colors hover:text-foreground"
                       >
                         {menuItem.title}
                         <ChevronDown
-                          size={16}
-                          className="relative top-[1px] transition-transform duration-200 ease-in group-data-[state=open]:-rotate-180"
                           aria-hidden
+                          size={16}
+                          className="relative top-px transition-transform duration-200 ease-in group-data-[state=open]:-rotate-180"
                         />
                       </NavigationMenu.Trigger>
                     )}
 
                     {menuItem.subMenuItems.length > 0 && (
-                      <NavigationMenu.Content className="pointer-events-auto absolute left-0 top-0 w-full data-[motion=from-end]:duration-300 data-[motion=from-start]:duration-300 data-[motion=to-end]:duration-300 data-[motion=to-start]:duration-300 data-[motion=from-end]:animate-in data-[motion=from-start]:animate-in data-[motion=to-end]:animate-out data-[motion=to-start]:animate-out data-[motion=from-end]:fade-in data-[motion=from-start]:fade-in data-[motion=to-end]:fade-out data-[motion=to-start]:fade-out data-[motion=from-end]:slide-in-from-left-20 data-[motion=from-start]:slide-in-from-right-20 data-[motion=to-end]:slide-out-to-left-20 data-[motion=to-start]:slide-out-to-right-20 @2xl:w-auto">
+                      <NavigationMenu.Content
+                        className={clsx(
+                          'pointer-events-auto absolute left-0 top-0 grid w-auto data-[motion=from-end]:duration-300 data-[motion=from-start]:duration-300 data-[motion=to-end]:duration-300 data-[motion=to-start]:duration-300 data-[motion=from-end]:animate-in data-[motion=from-start]:animate-in data-[motion=to-end]:animate-out data-[motion=to-start]:animate-out data-[motion=from-end]:fade-in data-[motion=from-start]:fade-in data-[motion=to-end]:fade-out data-[motion=to-start]:fade-out data-[motion=from-end]:slide-in-from-left-20 data-[motion=from-start]:slide-in-from-right-20 data-[motion=to-end]:slide-out-to-left-20 data-[motion=to-start]:slide-out-to-right-20',
+                          `${
+                            menuItem.subMenuItems[0].title
+                              ? 'grid-cols-[250px_1fr]'
+                              : 'grid-cols-[500px]'
+                          }`
+                        )}
+                      >
                         <div
                           className={clsx(
-                            'grid',
-                            `${
-                              menuItem.subMenuItems[0].title
-                                ? 'grid-cols-[250px_1fr]'
-                                : 'grid-cols-[500px]'
-                            }`
+                            'h-full border-r border-contrast-500 bg-background/50',
+                            `${!menuItem.subMenuItems[0].title && 'hidden'}`
                           )}
                         >
-                          <div
-                            className={`${
-                              !menuItem.subMenuItems[0].title && 'hidden'
-                            } h-full border-r border-contrast-500 bg-background/50`}
-                          >
-                            <ul className="list group m-0 w-full list-none space-y-0.5 p-2">
-                              {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
-                                <ListItem
-                                  key={subIndex}
-                                  title={subMenuItem.title || ''}
-                                  content={subMenuItem.content || ''}
-                                  href="#"
-                                  isActive={activeTitle === subMenuItem.title}
-                                  onClick={() => handleClick(subMenuItem.title || '')}
-                                />
-                              ))}
-                            </ul>
-                          </div>
-
-                          <ul
-                            className={clsx(
-                              'group min-w-[250px] gap-0 p-2 @2xl:columns-2 @5xl:min-w-[500px]',
-                              `${innerItems.length > 4 && ''}`
-                            )}
-                          >
-                            {innerItems.map((item, innerIndex) => (
+                          <ul className="w-full space-y-0.5 p-2">
+                            {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
                               <ListItem
-                                key={innerIndex}
-                                title={item.title}
-                                content={item.content}
-                                href={item.href}
-                                isActive={false}
-                                onClick={() => {}}
-                                isInnerMenuItem={true}
-                                icon={item.icon}
+                                key={subIndex}
+                                title={subMenuItem.title || ''}
+                                description={subMenuItem.description || ''}
+                                href="#"
+                                isActive={activeTitle === subMenuItem.title}
+                                onClick={() => handleClick(subMenuItem.title || '')}
                               />
                             ))}
                           </ul>
                         </div>
+
+                        <ul className="min-w-[250px] gap-0 p-2 @2xl:columns-2 @5xl:min-w-[500px]">
+                          {innerItems.map((item, innerIndex) => (
+                            <ListItem
+                              key={innerIndex}
+                              title={item.title}
+                              description={item.description}
+                              href={item.href}
+                              isActive={false}
+                              onClick={() => {}}
+                              isInnerMenuItem={true}
+                              icon={item.icon}
+                            />
+                          ))}
+                        </ul>
                       </NavigationMenu.Content>
                     )}
                   </>
@@ -197,19 +194,21 @@ const Navigation = ({
             </div>
 
             <div
-              className="group relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-md p-2 @5xl:hidden"
+              className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-md p-2 @5xl:hidden"
               onClick={handleMobileMenuToggle}
             >
-              <span
-                className={`absolute top-1/2 h-0.5 w-1/2 bg-foreground ${
-                  isMobileMenuOpen ? 'translate-y-0 rotate-45 ' : '-translate-y-1'
-                } transition-all duration-150`}
-              ></span>
-              <span
-                className={`absolute top-1/2 h-0.5 w-1/2 -translate-y-1/2 bg-foreground transition-all duration-150 ${
-                  isMobileMenuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-1'
-                }`}
-              ></span>
+              <div
+                className={clsx(
+                  'absolute top-1/2 h-0.5 w-1/2 bg-foreground transition-all duration-150',
+                  `${isMobileMenuOpen ? 'translate-y-0 rotate-45 ' : '-translate-y-1'}`
+                )}
+              />
+              <div
+                className={clsx(
+                  'absolute top-1/2 h-0.5 w-1/2 -translate-y-1/2 bg-foreground transition-all duration-150',
+                  `${isMobileMenuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-1'}`
+                )}
+              />
             </div>
 
             <Button
@@ -223,19 +222,13 @@ const Navigation = ({
           </div>
         </div>
 
-        <div
-          className={`w-full overflow-y-auto border-t border-foreground/10 transition-all duration-300 @5xl:hidden ${
-            isMobileMenuOpen ? 'max-h-[calc(100svh-6rem)]' : 'max-h-0'
-          }`}
-        >
-          <MobileMenu mainMenuItems={mainMenuItems} secondaryMenuItems={secondaryMenuItems} />
-
-          <div className="w-full border-t border-foreground/10 p-4 @lg:hidden">
-            <Button link={{ href: ctaLink }} variant="primary" size="small" borderGlow={false}>
-              {ctaText}
-            </Button>
-          </div>
-        </div>
+        <MobileMenu
+          ctaLink={ctaLink}
+          ctaText={ctaText}
+          mainMenuItems={mainMenuItems}
+          secondaryMenuItems={secondaryMenuItems}
+          isMobileMenuOpen={isMobileMenuOpen}
+        />
 
         <div className="absolute left-0 top-full flex w-full justify-center">
           <NavigationMenu.Viewport className="relative mt-2.5 h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] origin-top overflow-hidden rounded-2xl border border-contrast-400 bg-contrast-500/50 shadow-xl backdrop-blur-xl transition-[width,_height] duration-200 ease-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95" />
@@ -247,7 +240,7 @@ const Navigation = ({
 
 const ListItem = ({
   title,
-  content,
+  description,
   href,
   isActive,
   onClick,
@@ -255,7 +248,7 @@ const ListItem = ({
   icon,
 }: {
   title: string
-  content: string
+  description?: string
   href: string
   isActive: boolean
   onClick: () => void
@@ -264,8 +257,8 @@ const ListItem = ({
 }) => {
   return (
     <li
-      className="cursor-pointer break-inside-avoid-column rounded-lg transition-all duration-150"
       key={title}
+      className="cursor-pointer break-inside-avoid-column rounded-lg transition-all duration-150"
     >
       <Link
         href={href}
@@ -279,7 +272,7 @@ const ListItem = ({
 
         <div>
           <div className="text-sm">{title}</div>
-          <div className="text-xs text-foreground/50">{content}</div>
+          <div className="text-xs text-foreground/50">{description}</div>
         </div>
       </Link>
     </li>
@@ -289,68 +282,87 @@ const ListItem = ({
 const MobileMenu = ({
   mainMenuItems,
   secondaryMenuItems,
+  ctaText,
+  ctaLink,
+  isMobileMenuOpen,
 }: {
   mainMenuItems: MenuItem[]
   secondaryMenuItems: SecondaryMenuItem[]
+  ctaText: string
+  ctaLink: string
+  isMobileMenuOpen: boolean
 }) => (
-  <Accordion.Root
-    className="px-5 py-2.5 text-base text-foreground"
-    type="single"
-    defaultValue="item-1"
-    collapsible
+  <div
+    className={clsx(
+      'w-full overflow-y-auto border-t transition-all duration-300 @5xl:hidden',
+      `${
+        isMobileMenuOpen
+          ? 'max-h-[calc(100svh-6rem)] border-foreground/10'
+          : 'max-h-0 border-transparent'
+      }`
+    )}
   >
-    <>
-      {mainMenuItems.map((menuItem, index) => (
-        <Accordion.Item value={`${index + 1}`} key={index}>
-          {menuItem.href ? (
-            <Link className="block py-2 outline-none" href={menuItem.href}>
-              {menuItem.title}
-            </Link>
-          ) : (
-            <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full cursor-pointer items-center justify-between gap-x-5 py-2 outline-none">
+    <Accordion.Root type="multiple" className="px-5 py-2.5 text-base text-foreground">
+      <>
+        {mainMenuItems.map((menuItem, index) => (
+          <Accordion.Item value={`${index + 1}`} key={index}>
+            {menuItem.href ? (
+              <Link className="block py-2 outline-none" href={menuItem.href}>
                 {menuItem.title}
-                <ChevronDown
-                  size={20}
-                  className="transition-transform duration-300 group-data-[state=open]:rotate-180"
-                  aria-hidden
-                />
-              </Accordion.Trigger>
-            </Accordion.Header>
-          )}
-          <Accordion.Content className="overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-            {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
-              <div key={subIndex}>
-                {subMenuItem.innerMenuItems && (
-                  <ul className="pl-2">
-                    {subMenuItem.innerMenuItems.map((innerItem, innerIndex) => (
-                      <li key={innerIndex}>
-                        <Link
-                          className="flex items-start gap-x-2.5 py-2 text-sm"
-                          href={innerItem.href}
-                        >
-                          {innerItem.icon && <div className="mt-0.5">{innerItem.icon}</div>}
-                          <div>
-                            <div className="text-sm">{innerItem.title}</div>
-                            <div className="text-xs text-foreground/50">{innerItem.content}</div>
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </Accordion.Content>
-        </Accordion.Item>
-      ))}
-      {secondaryMenuItems.map((menuItem, index) => (
-        <Link key={index} className="block py-2 outline-none" href={menuItem.href}>
-          {menuItem.title}
+              </Link>
+            ) : (
+              <Accordion.Header>
+                <Accordion.Trigger className="group flex w-full cursor-pointer items-center justify-between gap-x-5 py-2 outline-none">
+                  {menuItem.title}
+                  <ChevronDown
+                    size={20}
+                    className="transition-transform duration-300 group-data-[state=open]:rotate-180"
+                    aria-hidden
+                  />
+                </Accordion.Trigger>
+              </Accordion.Header>
+            )}
+            <Accordion.Content className="overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
+              {menuItem.subMenuItems.map((subMenuItem, subIndex) => (
+                <div key={subIndex}>
+                  {subMenuItem.innerMenuItems && (
+                    <ul className="pl-2">
+                      {subMenuItem.innerMenuItems.map((innerItem, innerIndex) => (
+                        <li key={innerIndex}>
+                          <Link
+                            className="flex items-start gap-x-2.5 py-2 text-sm"
+                            href={innerItem.href}
+                          >
+                            {innerItem.icon && <div className="mt-0.5">{innerItem.icon}</div>}
+                            <div>
+                              <div className="text-sm">{innerItem.title}</div>
+                              <div className="text-xs text-foreground/50">
+                                {innerItem.description}
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </Accordion.Content>
+          </Accordion.Item>
+        ))}
+
+        {secondaryMenuItems.map((menuItem, index) => (
+          <Link key={index} className="block py-2 outline-none" href={menuItem.href}>
+            {menuItem.title}
+          </Link>
+        ))}
+
+        <Link href={ctaLink} className="block py-2 outline-none @lg:hidden">
+          {ctaText}
         </Link>
-      ))}
-    </>
-  </Accordion.Root>
+      </>
+    </Accordion.Root>
+  </div>
 )
 
 export default Navigation
