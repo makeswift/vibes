@@ -64,6 +64,12 @@ export const components = [
     files: ['components/compare-drawer/index.tsx', 'components/compare-drawer/product-chip.tsx'],
   },
   {
+    name: 'discount',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/discount/index.tsx'],
+  },
+  {
     name: 'dropdown',
     dependencies: ['clsx', 'lucide-react', '@radix-ui/react-dropdown-menu'],
     registryDependencies: [],

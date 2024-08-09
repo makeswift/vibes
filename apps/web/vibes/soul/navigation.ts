@@ -70,6 +70,7 @@ export const navigation = [
         file: 'docs/carousel.mdx',
         component: 'carousel',
       },
+      { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
         title: 'Featured Product List',

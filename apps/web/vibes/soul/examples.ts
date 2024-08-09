@@ -74,6 +74,13 @@ export const examples = [
     component: lazy(() => import('./examples/compare-drawer')),
   },
   {
+    name: 'discount-example',
+    dependencies: [],
+    registryDependencies: ['discount'],
+    files: ['examples/discount.tsx'],
+    component: lazy(() => import('./examples/discount')),
+  },
+  {
     name: 'dropdown-example',
     dependencies: [],
     registryDependencies: ['dropdown'],
