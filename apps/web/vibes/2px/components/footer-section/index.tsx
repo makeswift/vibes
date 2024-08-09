@@ -50,7 +50,7 @@ export default function FooterSection({
           </div>
         )}
 
-        <div className="title flex h-96 w-full items-center justify-center bg-foreground p-10 text-center font-mono text-sm uppercase leading-snug tracking-[0.0225rem] @md:h-72 @md:grow @md:basis-1/2 @lg:h-80">
+        <div className="title flex h-96 w-full items-center justify-center bg-foreground p-10 text-center font-mono text-sm uppercase leading-[1.375rem] tracking-[0.02em] @md:h-72 @md:grow @md:basis-1/2 @lg:h-80">
           {title}
         </div>
       </div>
@@ -63,7 +63,9 @@ export default function FooterSection({
                 'flex min-w-[18.75rem] flex-1 flex-col gap-4 bg-foreground px-4 pb-8 pt-6 text-start'
               )}
             >
-              <h4 className="font-mono text-xs uppercase leading-[1.125rem]">{group.title}</h4>
+              <h4 className="font-mono text-xs uppercase leading-[var(----line-height-xs)]">
+                {group.title}
+              </h4>
               <div className="flex flex-col gap-3 font-body text-base font-medium leading-6">
                 {group.links.map((link, index) => (
                   <Link key={index} href={link.href}>
@@ -76,7 +78,7 @@ export default function FooterSection({
         })}
       </div>
 
-      <div className="social-media flex flex-col items-start justify-between gap-6 bg-foreground p-6 font-body text-sm font-medium leading-snug @md:flex-row @md:items-center @md:leading-6">
+      <div className="social-media flex flex-col items-start justify-between gap-6 bg-foreground p-6 font-body text-sm font-medium leading-[1.375rem] @md:flex-row @md:items-center @md:leading-6">
         {footNote}
         <div className="social-media-links flex gap-6 bg-foreground text-background">
           {socials.map(({ icon, link }) => (

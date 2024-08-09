@@ -11,7 +11,7 @@ interface Props {
 export default function CalloutSection({ text, image, ctas }: Props) {
   return (
     <section className="flex w-full flex-col gap-5 bg-accent px-2.5 py-5 font-body font-medium">
-      <h3 className="w-full text-center text-3xl leading-[2.125rem] -tracking-[0.0375rem] text-foreground @lg:text-6xl @lg:leading-[4rem] @lg:-tracking-[0.0675rem]">
+      <h3 className="w-full text-center text-3xl leading-[2.125rem] -tracking-[0.02em] text-foreground @lg:text-6xl @lg:leading-[4rem]">
         {text}
       </h3>
       <Image

@@ -35,7 +35,7 @@ export default function ProductCard({ className, title, price, tag, image, link 
         />
       </div>
       {tag && (
-        <p className="absolute right-4 top-4 bg-foreground px-1 font-mono text-xs uppercase leading-[1.125rem] text-background @lg:right-6 @lg:top-6 @lg:text-sm @lg:leading-snug @lg:-tracking-[0.0225rem]">
+        <p className="absolute right-4 top-4 bg-foreground px-1 font-mono text-xs uppercase leading-[var(----line-height-xs)] text-background @lg:right-6 @lg:top-6 @lg:text-sm @lg:leading-[1.375rem] @lg:-tracking-[0.02em]">
           {tag}
         </p>
       )}
@@ -43,7 +43,7 @@ export default function ProductCard({ className, title, price, tag, image, link 
         <Link className="font-mono text-xs uppercase leading-4 @lg:text-sm" href={link}>
           {title}
         </Link>
-        <span className="font-body text-base font-medium @lg:text-lg @lg:-tracking-[0.015rem]">
+        <span className="font-body text-base font-medium @lg:text-lg @lg:-tracking-[0.01em]">
           {price}
         </span>
       </div>

@@ -60,7 +60,7 @@ export default function CarouselSection({ className, title, slides, showArrows }
       )}
     >
       <div className="flex w-full items-center justify-between border-b-2 border-foreground px-3 py-1">
-        <h2 className="text-2xl font-medium leading-[2.25rem] -tracking-[0.0175rem]">{title}</h2>
+        <h2 className="text-2xl font-medium leading-9 -tracking-[0.01em]">{title}</h2>
         {showArrows && (
           <div className="flex justify-center gap-2">
             <button onClick={scrollLeft}>

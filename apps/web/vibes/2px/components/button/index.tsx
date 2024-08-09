@@ -27,7 +27,7 @@ export default function Button({
     <Component
       className={cn(
         'group mx-auto flex items-center justify-center whitespace-nowrap rounded-full border-2 border-transparent font-body',
-        'h-10 px-5 py-2.5 text-sm leading-[var(--line-height-base)] @lg:h-20 @lg:px-20 @lg:text-lg',
+        'h-10 px-5 py-2.5 text-sm leading-tight @lg:h-20 @lg:px-20 @lg:text-lg',
         loading && variant === 'primary' && 'hover:bg-transparent hover:text-background',
         loading && variant === 'secondary' && 'hover:border-solid',
         {

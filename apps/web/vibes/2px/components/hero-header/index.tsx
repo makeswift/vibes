@@ -33,15 +33,15 @@ export default function HeroHeader({ className, heading, text, image, cta }: Pro
       </div>
       <div className="px-2 py-4">
         <div className="flex flex-col  gap-3 @lg:flex-row @lg:gap-2">
-          <h2 className="w-full font-heading text-3xl font-medium leading-[2.125rem] -tracking-[0.0375rem] @lg:text-6xl @lg:leading-[4rem] @lg:-tracking-[0.0675rem]">
+          <h2 className="w-full font-heading text-3xl font-medium leading-[2.125rem] -tracking-[0.02em] @lg:text-6xl @lg:leading-[4rem]">
             {heading}
           </h2>
-          <span className="text-base font-medium leading-6 @lg:max-w-[50%] @lg:text-lg @lg:leading-[1.875rem] @lg:-tracking-[0.015rem]">
+          <span className="text-base font-medium leading-6 @lg:max-w-[50%] @lg:text-lg @lg:leading-tight @lg:-tracking-[0.02em]">
             {text}
           </span>
         </div>
         <Button
-          className="mt-6 w-full text-lg font-medium leading-[1.875rem] -tracking-[0.015rem]"
+          className="mt-6 w-full text-lg font-medium leading-tight -tracking-[0.01em]"
           variant="secondary"
           asChild
         >

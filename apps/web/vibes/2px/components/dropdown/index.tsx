@@ -36,7 +36,7 @@ export default function Dropdown({
     <div className={cn('relative w-full font-body text-foreground @container', className)}>
       <button
         className={cn(
-          'relative z-0 flex w-full items-center justify-between border-2 px-4 py-[1.125rem] text-base font-medium leading-6 outline-none @lg:px-5 @lg:py-[1.375rem] @lg:text-xl @lg:leading-9',
+          'relative z-0 flex w-full items-center justify-between border-2 px-4 py-[1.125rem] text-base font-medium leading-6 outline-none @lg:px-5 @lg:py-[1.375rem] @lg:text-xl @lg:leading-9 @lg:-tracking-[0.01em]',
           {
             'border-error': status === 'error',
             'border-success': status === 'success',
@@ -58,7 +58,7 @@ export default function Dropdown({
 
       <div
         className={cn(
-          'fixed left-0 top-full z-10 mt-2 flex w-full flex-col items-start gap-1 border-2 border-foreground bg-background px-8 py-6 text-sm font-medium leading-6 @lg:text-2xl @lg:leading-9 @lg:tracking-[-0.0175rem]',
+          'fixed left-0 top-full z-10 mt-2 flex w-full flex-col items-start gap-1 border-2 border-foreground bg-background px-8 py-6 text-sm font-medium leading-6 @lg:text-2xl @lg:leading-9',
           {
             hidden: !isOpen,
           }

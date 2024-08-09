@@ -42,7 +42,7 @@ export default function Tabs({ className, tabs }: Props) {
     <RadixTabs.Root
       className={cn(
         className,
-        'w-full font-body text-2xl !leading-[var(--line-height-3xl)] !tracking-[var(--letter-spacing-xl)] text-foreground @container'
+        'w-full font-body text-2xl leading-9 -tracking-[0.01em] text-foreground @container'
       )}
       value={value}
       onValueChange={setValue}
@@ -62,7 +62,7 @@ export default function Tabs({ className, tabs }: Props) {
               key={index}
               value={index.toString()}
               className={cn(
-                'mt-5 w-full shrink-0 border-b-[2px] border-r-[2px] border-b-foreground border-r-foreground px-[0.625rem] py-3 text-start hover:border-dashed @lg:w-[30rem]',
+                'mt-5 w-full shrink-0 border-b-2 border-r-2 border-b-foreground border-r-foreground px-2.5 py-3 text-start hover:border-dashed @lg:w-[30rem]',
                 Number(value) === index && 'bg-foreground text-background'
               )}
             >

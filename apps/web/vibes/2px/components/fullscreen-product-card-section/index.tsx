@@ -53,7 +53,7 @@ export default function FullscreenProductCardSection({
       />
       <div className="absolute bottom-0 left-0 right-0 flex w-full flex-col gap-2 p-4 text-background @lg:flex-row @lg:items-center @lg:justify-between">
         <div className="flex flex-col gap-1">
-          <span className="font-mono uppercase leading-snug tracking-[0.0225rem]">{name}</span>
+          <span className="font-mono uppercase leading-[1.375rem] tracking-[0.02em]">{name}</span>
           <span className="-mt-1 font-bold leading-6 ">{price}</span>
         </div>
         <div className="flex min-w-72 items-center justify-between @container @lg:justify-normal @lg:gap-4">

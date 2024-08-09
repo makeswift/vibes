@@ -63,7 +63,7 @@ export default function MarqueeSection({ className, text }: Props) {
         ref={marqueeContentRef}
         className={cn(
           style.marquee,
-          'flex h-11 items-center whitespace-nowrap bg-foreground px-2 py-0.5 font-body text-3xl leading-[2.125rem] -tracking-[0.0375rem] @2xl:h-20 @2xl:text-6xl @2xl:leading-[4rem] @2xl:-tracking-[0.0675rem]'
+          'flex h-11 items-center whitespace-nowrap bg-foreground px-2 py-0.5 font-body text-3xl leading-[2.125rem] -tracking-[0.02em] @2xl:h-20 @2xl:text-6xl @2xl:leading-[4rem]'
         )}
       >
         {text}

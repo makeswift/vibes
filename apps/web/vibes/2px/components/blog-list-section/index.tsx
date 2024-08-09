@@ -20,8 +20,8 @@ export default function BlogListSection({ className, text, blogPosts, cta }: Pro
         className
       )}
     >
-      <div className="font-mono text-sm uppercase leading-snug tracking-[0.0225rem]">{text}</div>
-      <div className="flex flex-col items-center gap-8 whitespace-pre-wrap font-body text-sm font-medium leading-6 -tracking-[0.0175rem] @lg:text-2xl @lg:leading-[2.25rem]">
+      <div className="font-mono text-sm uppercase leading-[1.375rem] tracking-[0.02em]">{text}</div>
+      <div className="flex flex-col items-center gap-8 whitespace-pre-wrap font-body text-sm font-medium leading-6 -tracking-[0.01em] @lg:text-2xl @lg:leading-9">
         {blogPosts.map(({ link, title }, index) => (
           <Link
             key={index}
@@ -33,7 +33,7 @@ export default function BlogListSection({ className, text, blogPosts, cta }: Pro
         ))}
       </div>
       <Link
-        className="font-mono text-sm uppercase leading-snug tracking-[0.0225rem] underline"
+        className="font-mono text-sm uppercase leading-[1.375rem] tracking-[0.02em] underline"
         href={cta.href}
       >
         {cta.label}
