@@ -1,10 +1,6 @@
-import { Suspense } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
-
 import { readFile } from 'fs/promises'
 import path from 'path'
 
-import Card from '@/components/ui/card'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { exists } from '@/lib/utils'
 import { getVibe } from '@/vibes/utils'
@@ -16,6 +12,7 @@ import { PreviewTabs } from './preview-tabs'
 interface Props {
   vibeSlug: string
   componentName: string | { [key: string]: string }
+  size?: 'small' | 'medium' | 'large'
 }
 
 function findEntry({ vibeSlug, componentName }: { vibeSlug: string; componentName: string }) {
@@ -30,7 +27,7 @@ function findEntry({ vibeSlug, componentName }: { vibeSlug: string; componentNam
   return entry
 }
 
-export async function Preview({ vibeSlug, componentName }: Props) {
+export async function Preview({ vibeSlug, componentName, size = 'medium' }: Props) {
   const vibe = getVibe(vibeSlug)
 
   if (!vibe) return <div>Could not find vibe: {vibeSlug}</div>
@@ -46,6 +43,7 @@ export async function Preview({ vibeSlug, componentName }: Props) {
   return (
     <PreviewProvider>
       <PreviewTabs
+        size={size}
         components={await Promise.all(
           components.filter(exists).map(async ({ brandName, entry }) => {
             const pathname = `/vibes/${vibeSlug}/${entry.files[0]}`
@@ -54,36 +52,8 @@ export async function Preview({ vibeSlug, componentName }: Props) {
             return {
               brandName,
               clipboard: file,
-              preview: (
-                <Suspense fallback={<div>Loading...</div>}>
-                  <Frame>
-                    <ErrorBoundary
-                      fallback={
-                        <div className="flex justify-center p-5">
-                          Preview failed to load at {vibeSlug}:{entry.name}
-                        </div>
-                      }
-                    >
-                      <entry.component />
-                    </ErrorBoundary>
-                  </Frame>
-                </Suspense>
-              ),
-              code: (
-                <>
-                  <ErrorBoundary
-                    fallback={
-                      <div className="flex justify-center p-5">
-                        Code failed to load at {vibeSlug}:{entry.name}
-                      </div>
-                    }
-                  >
-                    <Suspense fallback={<div>Loading...</div>}>
-                      <CodeFromFile pathname={pathname} hideCopyButton />
-                    </Suspense>
-                  </ErrorBoundary>
-                </>
-              ),
+              preview: <Frame vibeSlug={vibeSlug} componentName={entry.name} />,
+              code: <CodeFromFile pathname={pathname} hideCopyButton showLineNumbers />,
             }
           })
         )}

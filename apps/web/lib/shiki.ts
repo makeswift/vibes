@@ -5,6 +5,7 @@ import {
   transformerNotationWordHighlight,
   transformerRemoveLineBreak,
 } from '@shikijs/transformers'
+import { createCssVariablesTheme } from 'shiki'
 
 export const transformers = [
   transformerNotationDiff(),
@@ -13,3 +14,10 @@ export const transformers = [
   transformerNotationFocus(),
   transformerRemoveLineBreak(),
 ]
+
+export const theme = createCssVariablesTheme({
+  name: 'css-variables',
+  variablePrefix: '--shiki-',
+  variableDefaults: {},
+  fontStyle: true,
+})

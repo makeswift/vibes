@@ -1,18 +1,25 @@
 'use client'
 
-import { CSSProperties, ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+import clsx from 'clsx'
 
 import { ResizeX } from '@/icons/generated'
 
-import Card from '../ui/card'
 import { Portal } from '../ui/portal'
 import { useBrandContext } from './brand-context'
 import { usePreviewContext } from './preview-context'
 
-interface Props extends ComponentPropsWithoutRef<typeof Card> {}
+interface Props {
+  className?: string
+  vibeSlug: string
+  componentName: string
+}
 
-export function Frame({ children }: Props) {
+export function Frame({ className, vibeSlug, componentName }: Props) {
   const { activeBrand } = useBrandContext()
+  const [iframeLoaded, setIframeLoaded] = useState(false)
+  const iframe = useRef<HTMLIFrameElement>(null)
   const container = useRef<HTMLDivElement>(null)
   const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
   const widthStart = useRef(0)
@@ -36,12 +43,37 @@ export function Frame({ children }: Props) {
     return () => window.removeEventListener('resize', handleResize)
   }, [resize, setMaxWidth])
 
+  useEffect(() => {
+    iframe.current?.contentDocument?.body.style.setProperty('zoom', String(zoom))
+  }, [zoom])
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (iframe.current?.contentDocument?.readyState === 'complete') {
+        setIframeLoaded(true)
+        clearInterval(intervalId)
+      }
+    })
+
+    return () => clearInterval(intervalId)
+  }, [])
+
   return (
-    <div className="relative bg-contrast-100" ref={container}>
-      <div className="relative mx-auto border border-white" style={{ width: width ?? '100%' }}>
-        <div style={{ zoom }}>
-          <div style={(activeBrand?.cssVars ?? {}) as CSSProperties}>{children}</div>
-        </div>
+    <div className={clsx('relative w-full bg-contrast-100', className)} ref={container}>
+      <div
+        className={clsx('relative mx-auto h-full border border-dashed border-contrast-200')}
+        style={{ width: width ?? '100%' }}
+      >
+        {activeBrand && (
+          <iframe
+            ref={iframe}
+            className={clsx(
+              'h-full w-full bg-transparent opacity-0',
+              iframeLoaded && 'opacity-100 transition-opacity duration-500'
+            )}
+            src={`/preview/${vibeSlug}/${componentName}/${activeBrand.name}`}
+          />
+        )}
         <div
           className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-resizeX md:block"
           onPointerDown={e => {

@@ -21,7 +21,7 @@ export default function Breadcrumbs({ className, crumb }: Props) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="font-body text-xs font-medium leading-[var(--line-height-sm)] text-foreground"
+      className="font-body text-xs font-medium leading-snug text-foreground"
     >
       <ul className={cn('flex flex-wrap items-center gap-4', className)}>
         {crumb.map((item, index) => {

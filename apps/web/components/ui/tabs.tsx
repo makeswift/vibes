@@ -9,7 +9,7 @@ const Tabs = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
 >(({ className, ...props }, ref) => (
-  <TabsPrimitive.Root ref={ref} className={clsx('my-8 md:my-10', className)} {...props} />
+  <TabsPrimitive.Root ref={ref} className={clsx('py-8 md:py-10', className)} {...props} />
 ))
 Tabs.displayName = TabsPrimitive.Root.displayName
 
@@ -32,7 +32,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={clsx(
-      'inline-flex items-center justify-center whitespace-nowrap border border-b-0 border-dashed border-transparent px-3 py-1.5 text-sm font-bold text-contrast-400 ring-offset-background hover:border-contrast-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-solid data-[state=active]:border-foreground data-[state=active]:text-foreground data-[state=active]:focus-visible:border-transparent',
+      'inline-flex items-center justify-center whitespace-nowrap border border-b-0 border-dashed border-transparent px-3 py-1.5 text-sm font-bold text-contrast-400 ring-offset-background transition-colors hover:border-contrast-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-solid data-[state=active]:border-foreground data-[state=active]:text-foreground data-[state=active]:focus-visible:border-transparent',
       className
     )}
     {...props}

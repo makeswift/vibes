@@ -31,7 +31,7 @@ export default function RadioButton({ className, label, ...inputProps }: RadioBu
         <span className="dot invisible col-span-1 col-start-1 row-span-1 row-start-1 h-4 w-4 place-self-center rounded-full bg-foreground peer-checked:visible" />
       </span>
       <span
-        className={cn('justify-self-start text-xs !font-medium !leading-snug text-foreground', {
+        className={cn('justify-self-start text-xs font-medium leading-snug text-foreground', {
           'line-through': inputProps.disabled,
         })}
       >
