@@ -1,7 +1,12 @@
 'use client'
 
+import { useState } from 'react'
+
+import * as Dialog from '@radix-ui/react-dialog'
+import clsx from 'clsx'
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { ArrowsHorz16, Desktop16, Expand16, Phone16, Tablet16 } from '@/icons/generated'
+import { Desktop16, Expand16, Phone16, Tablet16, Times16 } from '@/icons/generated'
 
 import { Button } from '../ui/button'
 import { CopyButton } from '../ui/copy-button'
@@ -16,19 +21,27 @@ interface Props {
     code: React.ReactNode
     clipboard: string
   }[]
+  size?: 'small' | 'medium' | 'large'
 }
 
-export function PreviewTabs({ components }: Props) {
+export function PreviewTabs({ components, size = 'medium' }: Props) {
   const { activeBrand } = useBrandContext()
   const { width, isDragging, zoom, resize, tab, setTab } = usePreviewContext()
+  const [fullScreen, setFullScreen] = useState(false)
   const actualWidth = width && width / zoom
 
   const { preview, code, clipboard } =
     components.find(({ brandName }) => brandName === null || brandName === activeBrand?.name) ||
     components[0]
 
-  return (
-    <Tabs defaultValue="preview" value={tab} onValueChange={setTab}>
+  const content = (
+    <Tabs
+      key="preview-tabs"
+      defaultValue="preview"
+      value={tab}
+      onValueChange={setTab}
+      className={clsx('flex flex-col', fullScreen && 'h-full')}
+    >
       <div className="flex items-center @container">
         <TabsList className="flex-1">
           <TabsTrigger value="preview">Preview</TabsTrigger>
@@ -45,16 +58,6 @@ export function PreviewTabs({ components }: Props) {
         <div className="flex flex-1 items-center justify-end gap-x-2">
           {tab !== 'code' && (
             <div className="flex">
-              {/* <Button
-                className="hidden @xl:flex"
-                variant="ghost"
-                size="icon"
-                active={actualWidth === null}
-                onClick={() => resize(null)}
-              >
-                <span className="sr-only">Fill</span>
-                <ArrowsHorz16 />
-              </Button> */}
               <Button
                 className="hidden @5xl:flex"
                 variant="ghost"
@@ -92,20 +95,70 @@ export function PreviewTabs({ components }: Props) {
 
           <div className="flex">
             <CopyButton clipboard={clipboard} />
-            <Button
-              className="hidden @xl:flex"
-              variant="ghost"
-              size="icon"
-              onClick={() => resize(null)}
-            >
-              <span className="sr-only">Fullscreen</span>
-              <Expand16 />
-            </Button>
+            <Dialog.Trigger asChild>
+              <Button
+                className="hidden @xl:flex"
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  setFullScreen(prev => !prev)
+                  resize(null)
+                }}
+              >
+                <span className="sr-only">Fullscreen</span>
+                {fullScreen ? <Times16 /> : <Expand16 />}
+              </Button>
+            </Dialog.Trigger>
           </div>
         </div>
       </div>
-      <TabsContent value="preview">{preview}</TabsContent>
-      <TabsContent value="code">{code}</TabsContent>
+      <TabsContent className="flex-1" value="preview">
+        <div
+          className={clsx(
+            'flex',
+            fullScreen
+              ? 'h-full'
+              : {
+                  small: 'h-[300px]',
+                  medium: 'h-[500px]',
+                  large: 'h-[750px]',
+                }[size]
+          )}
+        >
+          {preview}
+        </div>
+      </TabsContent>
+      <TabsContent className="min-h-0 flex-1" value="code">
+        <div
+          className={clsx(
+            'flex overflow-hidden',
+            fullScreen
+              ? 'max-h-full'
+              : {
+                  small: 'max-h-[300px]',
+                  medium: 'max-h-[500px]',
+                  large: 'max-h-[750px]',
+                }[size]
+          )}
+        >
+          {code}
+        </div>
+      </TabsContent>
     </Tabs>
+  )
+
+  return (
+    <Dialog.Root onOpenChange={setFullScreen} open={fullScreen}>
+      {fullScreen ? (
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-background" />
+          <Dialog.Content className="fixed inset-0 z-50 bg-background px-4">
+            {content}
+          </Dialog.Content>
+        </Dialog.Portal>
+      ) : (
+        content
+      )}
+    </Dialog.Root>
   )
 }

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
-import { CodeToHastOptions, ShikiTransformer, codeToHtml } from 'shiki'
+import { CodeToHastOptions, ShikiTransformer, codeToHtml, createCssVariablesTheme } from 'shiki'
 
-import { transformers } from '@/lib/shiki'
+import { theme, transformers } from '@/lib/shiki'
 
 import { CopyButton } from './copy-button'
 
@@ -10,6 +10,7 @@ interface Props {
   hideCopyButton?: boolean
   lang?: CodeToHastOptions['lang']
   showLineNumbers?: boolean
+  className?: string
 }
 
 export async function CodeBlock({
@@ -17,12 +18,13 @@ export async function CodeBlock({
   lang = 'javascript',
   showLineNumbers = false,
   hideCopyButton = false,
+  className,
 }: Props) {
   const __html = await codeToHtml(children, {
     lang,
     themes: {
-      light: 'github-light',
-      dark: 'github-dark',
+      light: theme,
+      dark: theme,
     },
     transformers: [
       ...transformers,
@@ -39,7 +41,12 @@ export async function CodeBlock({
   })
 
   return (
-    <div className="my-4 only:my-0 md:my-5">
+    <div
+      className={clsx(
+        'relative my-4 w-full overflow-scroll bg-contrast-100 only:my-0 md:my-5',
+        className
+      )}
+    >
       {!hideCopyButton && (
         <div className="pointer-events-none sticky top-0 z-10 flex w-full justify-end p-2">
           <CopyButton className="pointer-events-auto" clipboard={children} />

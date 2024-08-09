@@ -7,7 +7,7 @@ export type Component = {
   dependencies: string[]
   registryDependencies: string[]
   files: string[]
-  component: React.LazyExoticComponent<React.ComponentType<any>>
+  component?: React.LazyExoticComponent<React.ComponentType<{}>>
 }
 
 export type Components = NonEmptyArray<Component>
@@ -68,7 +68,6 @@ export type CSSVars = {
 export type Brand = {
   name: string
   logo: string
-  fonts: Font[]
   cssVars: CSSVars
 }
 

@@ -28,7 +28,7 @@ import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-c
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getTotalSize } from '@/lib/bundle'
-import { transformers } from '@/lib/shiki'
+import { theme, transformers } from '@/lib/shiki'
 import { pageMetaSchema } from '@/vibes/schema'
 import { getVibe } from '@/vibes/utils'
 
@@ -68,7 +68,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
           [
             rehypeShiki,
             {
-              themes: { light: 'github-light', dark: 'github-dark' },
+              themes: { light: theme, dark: theme },
               transformers: [
                 ...transformers,
                 {
@@ -96,6 +96,9 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       Colors,
       CodeFromFile: function CodeFromFileWithoutBasePath(props) {
         return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
+      },
+      Preview: function PreviewWithoutVibeSlug(props) {
+        return <Preview {...props} vibeSlug={vibe.slug} />
       },
       FontFamily,
       FontSize,
