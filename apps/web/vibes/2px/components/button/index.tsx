@@ -7,7 +7,7 @@ import { LoadingIcon } from '@/vibes/2px/components/icons/LoadingIcon'
 
 export interface ButtonProps extends ComponentProps<'button'> {
   className?: string
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'subtle'
   loading?: boolean
   loadingText?: string
   children: React.ReactNode
@@ -34,6 +34,9 @@ export default function Button({
           primary:
             'bg-foreground text-background hover:border-foreground hover:bg-transparent hover:text-foreground',
           secondary: 'border-foreground bg-transparent text-foreground hover:border-dashed',
+          // our vibe doesn't have a subtle button variant, so we'll just repeat the primary variant
+          subtle:
+            'bg-foreground text-background hover:border-foreground hover:bg-transparent hover:text-foreground',
         }[variant],
         className
       )}
@@ -42,7 +45,8 @@ export default function Button({
       {loading ? (
         <LoadingIcon
           className={cn('h-4 w-4 @lg:h-6 @lg:w-6', {
-            'stroke-background group-hover:stroke-foreground': variant === 'primary',
+            'stroke-background group-hover:stroke-foreground':
+              variant === 'primary' || variant === 'subtle',
             'stroke-foreground': variant === 'secondary',
           })}
         />
