@@ -19,7 +19,7 @@ function ctaStyles(
   size: Props['size'] = 'default'
 ) {
   return clsx(
-    'relative flex w-fit shrink-0 overflow-hidden rounded-full',
+    'relative flex justify-center w-fit shrink-0 overflow-hidden rounded-full',
     'text-center font-medium leading-normal select-none',
     'border border-transparent focus:outline-none focus:ring-1 transition-colors',
     {
