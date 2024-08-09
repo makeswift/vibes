@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
+import Button from '@/vibes/soul/components/button'
+
 import Icon from '../icon'
 
 type Discount = {
@@ -34,11 +36,11 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
   }, [spin])
 
   useEffect(() => {
-    const shuffled = shuffleArray(discounts.concat(discounts, discounts, discounts))
+    const shuffled = shuffleCodes(discounts.concat(discounts, discounts, discounts))
     setShuffledCodes(shuffled)
   }, [discounts])
 
-  const shuffleArray = (array: Discount[]) => {
+  const shuffleCodes = (array: Discount[]) => {
     return array.sort(() => Math.random() - 0.5)
   }
 
@@ -58,7 +60,6 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
       )}
     >
       <Image src={backgroundImage} alt="Background image" fill className="object-cover" />
-
       <button
         type="button"
         onClick={() => setDismissed(true)}
@@ -67,8 +68,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
         <Icon name="X" className="h-6 w-6" />
       </button>
 
-      <button
-        type="button"
+      <div
         onClick={() => {
           if (showCode) {
             copy()
@@ -76,38 +76,38 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
             setSpin(true)
           }
         }}
-        className="z-10 flex h-[100px] w-full max-w-xs cursor-pointer flex-col items-center justify-between overflow-hidden rounded-[24px] transition-transform active:scale-[0.99] @4xl:max-w-4xl @4xl:flex-row @4xl:bg-primary-shadow"
+        className="z-10 m-5 flex w-full cursor-pointer flex-col items-center justify-between gap-10 overflow-hidden rounded-[24px] transition-transform @4xl:h-[100px] @4xl:max-w-4xl @4xl:flex-row @4xl:bg-primary-shadow @4xl:active:scale-[0.99]"
       >
-        <h2 className="flex items-center px-6 text-3xl font-medium">
-          {showCode
-            ? copied
-              ? 'Copied!'
-              : `Copy ${shuffledCodes[shuffledCodes.length - 2].code}`
-            : 'Spin for discount'}
+        <h2 className="flex w-full items-center justify-center text-4xl font-medium @4xl:justify-start @4xl:px-6 @4xl:text-[46px]">
+          {showCode ? (copied ? 'Copied!' : `Copy discount code`) : 'Spin for discount'}
         </h2>
-
-        <div className="relative h-[100px] w-full max-w-xs overflow-hidden bg-background text-foreground @4xl:max-w-[280px]">
-          <div className="absolute left-0 top-0 z-10 h-12 w-full bg-gradient-to-b from-background to-transparent" />
-          <div className="absolute bottom-0 left-0 z-10 h-12 w-full bg-gradient-to-t from-background to-transparent" />
-          <div
-            className="absolute -top-6 left-0 w-full transition-all duration-1000 ease-in-out"
-            style={{
-              transform: spin
-                ? `translateY(calc(-100% + ${discounts.length * 29}px))`
-                : 'translateY(0)',
-            }}
-          >
-            {shuffledCodes.map((discount, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-end px-6 py-1 text-3xl font-medium uppercase leading-[1] tracking-[-1px] text-foreground transition-transform duration-500"
-              >
-                {discount.label}
-              </div>
-            ))}
+        <div className="flex w-full max-w-xs flex-col gap-4 rounded-[24px] bg-background px-6 pb-6 @4xl:p-0">
+          <div className="relative h-[100px] w-full overflow-hidden bg-background text-foreground @4xl:max-w-[280px]">
+            <div className="absolute left-0 top-0 z-10 h-10 w-full bg-gradient-to-b from-background to-transparent" />
+            <div className="absolute bottom-0 left-0 z-10 h-10 w-full bg-gradient-to-t from-background to-transparent" />
+            <div
+              className="absolute -top-8 left-0 w-full transition-all duration-1000 ease-in-out"
+              style={{
+                transform: spin
+                  ? `translateY(calc(-100% + ${discounts.length * 33}px))`
+                  : 'translateY(0)',
+              }}
+            >
+              {shuffledCodes.map((discount, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-center py-1 text-[46px] font-medium uppercase leading-[1] tracking-[-1px] text-foreground transition-transform duration-500 @4xl:justify-end @4xl:px-6"
+                >
+                  {discount.label}
+                </div>
+              ))}
+            </div>
           </div>
+          <Button variant="dark" className="w-full justify-center @4xl:hidden">
+            {showCode ? 'Copy' : 'Spin'}
+          </Button>
         </div>
-      </button>
+      </div>
     </section>
   )
 }
