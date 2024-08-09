@@ -7,23 +7,23 @@ export default function Preview() {
       discounts={[
         {
           label: '20% off',
-          code: 'TAKE5DEEWFNJNNKDKNFKN',
+          code: 'TAKE20',
         },
         {
           label: '5% off',
-          code: 'TAKE5DEEWFNJNNKDKNFKN',
+          code: 'TAKE5',
         },
         {
           label: '10% off',
-          code: 'TAKE5DEEWFNJNNKDKNFKN',
+          code: 'TAKE10',
         },
         {
           label: '50% off',
-          code: 'TAKE5DEEWFNJNNKDKNFKN',
+          code: 'TAKE50',
         },
         {
           label: '15% off',
-          code: 'TAKE5DEEWFNJNNKDKNFKN',
+          code: 'TAKE15',
         },
       ]}
     />
