@@ -11,7 +11,7 @@ export const compareProducts: ProductCard[] = [
       value: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Men’s Long Sleeve Jersey',
@@ -22,7 +22,7 @@ export const compareProducts: ProductCard[] = [
       value: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
 ]
 

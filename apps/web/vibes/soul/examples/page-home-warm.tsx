@@ -9,7 +9,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      href: '/',
+      href: '#',
       label: 'Button',
     },
   },
@@ -20,7 +20,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      href: '/',
+      href: '#',
       label: 'Button',
     },
   },
@@ -31,7 +31,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      href: '/',
+      href: '#',
       label: 'Button',
     },
   },
@@ -41,22 +41,22 @@ export const categories: CategoryCard[] = [
   {
     label: 'Men',
     image: 'https://rstr.in/monogram/vibes/CVQwqHQKmz4',
-    ctaLink: { href: '/men' },
+    ctaLink: { href: '#' },
   },
   {
     label: 'Women',
     image: 'https://rstr.in/monogram/vibes/UWfiHOc2RnP',
-    ctaLink: { href: '/women' },
+    ctaLink: { href: '#' },
   },
   {
     label: 'Jerseys',
     image: 'https://rstr.in/monogram/vibes/lxY8Fqsk3Gp',
-    ctaLink: { href: '/jerseys' },
+    ctaLink: { href: '#' },
   },
   {
     label: 'Headwear',
     image: 'https://rstr.in/monogram/vibes/8bPrhQZGr4k',
-    ctaLink: { href: '/headwear' },
+    ctaLink: { href: '#' },
   },
 ]
 

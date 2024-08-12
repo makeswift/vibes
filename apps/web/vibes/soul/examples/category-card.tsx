@@ -7,7 +7,7 @@ export default function Preview() {
         label="Low Maintenance"
         image="https://rstr.in/monogram/vibes/YOD5DuBfoFM"
         theme="dark"
-        ctaLink={{ href: '/' }}
+        ctaLink={{ href: '#' }}
       />
     </div>
   )

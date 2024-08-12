@@ -11,7 +11,7 @@ export const featuredProducts: ProductCard[] = [
       value: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/EThVOYoirSZ',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Product Name',
@@ -22,7 +22,7 @@ export const featuredProducts: ProductCard[] = [
       value: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/ZNRyYzfOjaK',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Product Name',
@@ -33,7 +33,7 @@ export const featuredProducts: ProductCard[] = [
       value: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/8bPrhQZGr4k',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Product Name',
@@ -44,7 +44,7 @@ export const featuredProducts: ProductCard[] = [
       value: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
 ]
 
@@ -53,7 +53,7 @@ export default function Preview() {
     <FeaturedProductList
       title="Off-Race"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-      link={{ label: 'Shop Now', href: '/new-arrivals' }}
+      link={{ label: 'Shop Now', href: '#' }}
       products={featuredProducts}
     />
   )

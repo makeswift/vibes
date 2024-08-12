@@ -12,7 +12,7 @@ export const productsList: ProductCard[] = [
       max: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Product Name',
@@ -24,7 +24,7 @@ export const productsList: ProductCard[] = [
       current: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Product Name',
@@ -35,7 +35,7 @@ export const productsList: ProductCard[] = [
       value: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/QluRjwypujv',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Product Name',
@@ -47,7 +47,7 @@ export const productsList: ProductCard[] = [
       max: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Product Name',
@@ -59,7 +59,7 @@ export const productsList: ProductCard[] = [
       current: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
   {
     name: 'Product Name',
@@ -70,7 +70,7 @@ export const productsList: ProductCard[] = [
       value: 123.99,
     },
     image: 'https://rstr.in/monogram/vibes/QluRjwypujv',
-    ctaLink: { href: '/' },
+    ctaLink: { href: '#' },
   },
 ]
 

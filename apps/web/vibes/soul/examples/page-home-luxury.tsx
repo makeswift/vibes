@@ -9,7 +9,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      href: '/',
+      href: '#',
       label: 'Button',
     },
   },
@@ -20,7 +20,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      href: '/',
+      href: '#',
       label: 'Button',
     },
   },
@@ -31,7 +31,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      href: '/',
+      href: '#',
       label: 'Button',
     },
   },
@@ -41,22 +41,22 @@ export const categories: CategoryCard[] = [
   {
     label: 'Small Plants',
     image: 'https://rstr.in/monogram/vibes/fRbI7J5z00o',
-    ctaLink: { href: '/small-plants' },
+    ctaLink: { href: '#' },
   },
   {
     label: 'Low Maintenance',
     image: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6',
-    ctaLink: { href: '/low-maintenance-plants' },
+    ctaLink: { href: '#' },
   },
   {
     label: 'Indestructible',
     image: 'https://rstr.in/monogram/vibes/vf9FEg1kvz6',
-    ctaLink: { href: '/indestructible-plants' },
+    ctaLink: { href: '#' },
   },
   {
     label: 'Succulent',
     image: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6',
-    ctaLink: { href: '/succulent-plants' },
+    ctaLink: { href: '#' },
   },
 ]
 

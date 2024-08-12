@@ -8,7 +8,7 @@ export default function Preview() {
 
   const link: Feature['link'] = {
     label: 'Shop Now',
-    href: '/shop',
+    href: '#',
     target: '_self',
   }
 

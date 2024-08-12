@@ -24,7 +24,7 @@ export const ProductsPage = function ProductsPage() {
       <ProductsHeader title="All Men" numberOfProducts={32} />
       <ProductList products={productsList} />
       <Pagination pages={5} />
-      <Carousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
+      <Carousel title="Recently Viewed" link={{ label: 'Shop All', href: '#' }}>
         {categories.map(category => (
           <CategoryCard key={category.label} {...category} />
         ))}

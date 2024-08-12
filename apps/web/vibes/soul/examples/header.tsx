@@ -4,56 +4,56 @@ export const headerLinks = [
   {
     item: {
       text: 'Men',
-      link: { href: '/men' },
+      link: { href: '#' },
     },
     links: [
       [
-        { text: 'View All', link: { href: '/men/view-all' } },
-        { text: 'Coats & Jackets', link: { href: '/men/coats-jackets' } },
+        { text: 'View All', link: { href: '#' } },
+        { text: 'Coats & Jackets', link: { href: '#' } },
       ],
       [
-        { text: 'T-Shirts', link: { href: '/men/t-shirts' } },
-        { text: 'Sweatshirts', link: { href: '/men/sweatshirts' } },
+        { text: 'T-Shirts', link: { href: '#' } },
+        { text: 'Sweatshirts', link: { href: '#' } },
       ],
-      [{ text: 'Pants', link: { href: '/men/pants' } }],
+      [{ text: 'Pants', link: { href: '#' } }],
     ],
   },
   {
     item: {
       text: 'Women',
-      link: { href: '/women' },
+      link: { href: '#' },
     },
     links: [
       [
-        { text: 'View All', link: { href: '/women/view-all' } },
-        { text: 'Coats & Jackets', link: { href: '/women/coats-jackets' } },
+        { text: 'View All', link: { href: '#' } },
+        { text: 'Coats & Jackets', link: { href: '#' } },
       ],
       [
-        { text: 'Pants', link: { href: '/women/pants' } },
-        { text: 'Sweatshirts', link: { href: '/women/sweatshirts' } },
+        { text: 'Pants', link: { href: '#' } },
+        { text: 'Sweatshirts', link: { href: '#' } },
       ],
-      [{ text: 'Tops', link: { href: '/women/tops' } }],
+      [{ text: 'Tops', link: { href: '#' } }],
     ],
   },
   {
     item: {
       text: 'Accessories',
-      link: { href: '/accessories' },
+      link: { href: '#' },
     },
     links: [
       [
-        { text: 'View All', link: { href: '/accessories/view-all' } },
-        { text: 'Hats', link: { href: '/accessories/hats' } },
+        { text: 'View All', link: { href: '#' } },
+        { text: 'Hats', link: { href: '#' } },
       ],
-      [{ text: 'Jackets', link: { href: '/accessories/jackets' } }],
+      [{ text: 'Jackets', link: { href: '#' } }],
     ],
   },
   {
     item: {
       text: 'Stories',
-      link: { href: '/stories' },
+      link: { href: '#' },
     },
-    links: [[{ text: 'View All', link: { href: '/stories/view-all' } }]],
+    links: [[{ text: 'View All', link: { href: '#' } }]],
   },
 ]
 

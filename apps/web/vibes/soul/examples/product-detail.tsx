@@ -8,7 +8,7 @@ const product = {
     value: 39.95,
   },
   image: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
-  ctaLink: { href: '/' },
+  ctaLink: { href: '#' },
 }
 
 const images = [
