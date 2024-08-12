@@ -279,4 +279,11 @@ export const components = [
     files: ['./components/product-card/index.tsx', '../../lib/utils.ts'],
     component: lazy(() => import('./components/product-card')),
   },
+  {
+    name: 'slideshow-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/slideshow-section/index.tsx', '../../lib/utils.ts'],
+    component: lazy(() => import('./components/slideshow-section')),
+  },
 ] satisfies Components

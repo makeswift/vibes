@@ -282,4 +282,11 @@ export const examples = [
     files: ['examples/product-card.tsx'],
     component: lazy(() => import('./examples/product-card')),
   },
+  {
+    name: 'slideshow-section-example',
+    dependencies: [],
+    registryDependencies: ['slideshow-section'],
+    files: ['examples/slideshow-section.tsx'],
+    component: lazy(() => import('./examples/slideshow-section')),
+  },
 ] satisfies Components

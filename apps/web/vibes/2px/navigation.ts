@@ -147,6 +147,12 @@ export const navigation = [
         component: 'marquee-section',
       },
       {
+        title: 'Slideshow',
+        slug: 'slideshow-section',
+        file: 'docs/slideshow-section.mdx',
+        component: 'slideshow-section',
+      },
+      {
         title: 'Footer',
         slug: 'footer-section',
         file: 'docs/footer-section.mdx',
