@@ -178,6 +178,13 @@ export const examples = [
     component: lazy(() => import('./examples/tabs')),
   },
   {
+    name: 'scratch-to-reveal-section-example',
+    dependencies: [],
+    registryDependencies: ['scratch-to-reveal-section'],
+    files: ['examples/scratch-to-reveal-section.tsx'],
+    component: lazy(() => import('./examples/scratch-to-reveal-section')),
+  },
+  {
     name: 'text-section-example',
     dependencies: [],
     registryDependencies: ['text-section'],
