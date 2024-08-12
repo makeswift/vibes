@@ -102,11 +102,11 @@ export const examples = [
     component: lazy(() => import('./examples/feature')),
   },
   {
-    name: 'featured-product-list-example',
+    name: 'featured-products-list-example',
     dependencies: [],
-    registryDependencies: ['featured-product-list'],
-    files: ['examples/featured-product-list.tsx'],
-    component: lazy(() => import('./examples/featured-product-list')),
+    registryDependencies: ['featured-products-list'],
+    files: ['examples/featured-products-list.tsx'],
+    component: lazy(() => import('./examples/featured-products-list')),
   },
   {
     name: 'footer-example',
@@ -208,11 +208,11 @@ export const examples = [
     component: lazy(() => import('./examples/product-detail')),
   },
   {
-    name: 'product-list-example',
+    name: 'products-list-example',
     dependencies: [],
-    registryDependencies: ['product-list'],
-    files: ['examples/product-list.tsx'],
-    component: lazy(() => import('./examples/product-list')),
+    registryDependencies: ['products-list'],
+    files: ['examples/products-list.tsx'],
+    component: lazy(() => import('./examples/products-list')),
   },
   {
     name: 'product-description-example',
