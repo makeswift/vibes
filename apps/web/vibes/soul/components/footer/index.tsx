@@ -1,54 +1,103 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { ReactNode } from 'react'
 
-type FooterColumn = {
-  category: string
-  categoryLinks?: { text: string; href: string }[]
+import clsx from 'clsx'
+
+interface Image {
+  src: string
+  altText: string
 }
 
-type Props = {
-  logo?: {
-    image?: { url: string; dimensions: { width: number; height: number } }
-    alt?: string
-    link?: { href: string; target?: '_self' | '_blank' }
-  }
-  links?: FooterColumn[]
-  companyName: string
+interface Link {
+  href: string
+  label: string
 }
 
-export const Footer = function Footer({ links, logo, companyName }: Props) {
+interface Section {
+  title?: string
+  links: Link[]
+}
+
+interface SocialMediaLink {
+  href: string
+  icon: ReactNode
+}
+
+interface ContactInformation {
+  address?: string
+  phone?: string
+}
+
+interface Props {
+  logo?: string | Image
+
+  sections: Section[]
+  copyright?: string
+  contactInformation?: ContactInformation
+  paymentIcons?: ReactNode[]
+  socialMediaLinks?: SocialMediaLink[]
+  className?: string
+}
+
+export const Footer = function Footer({
+  logo,
+  sections,
+  contactInformation,
+  paymentIcons,
+  socialMediaLinks,
+  copyright,
+  className = '',
+}: Props) {
   return (
-    <footer className="border-b-[4px] border-t border-b-primary border-t-contrast-100 bg-background text-foreground @container">
+    <footer
+      className={clsx(
+        'border-b-[4px] border-t border-b-primary border-t-contrast-100 bg-background text-foreground @container',
+        className
+      )}
+    >
+      {/* TODO: @sami, when designs are available, add:  
+        contactInformation,
+        paymentIcons,
+        socialMediaLinks,
+      */}
+
       <div className="mx-3 flex flex-col justify-between gap-10 pt-16 @xl:mx-6 @xl:py-20 @2xl:flex-row @5xl:mx-20">
         {/* Logo */}
-        <Link
-          href={logo?.link?.href ?? '/'}
-          target={logo?.link?.target}
-          className="w-full text-2xl font-semibold @2xl:w-1/3 @5xl:w-full"
-        >
-          {logo?.image ? (
-            <Image src={logo.image.url} height={29} width={64} alt={logo.alt ?? 'Logo'} />
-          ) : (
-            logo?.alt
-          )}
-        </Link>
+        <div className="@2xl:w-1/3 @5xl:w-full">
+          <Link href="/" className="relative inline-block h-5 w-32">
+            {typeof logo === 'string' ? (
+              <span className="text-2xl font-semibold">{logo}</span>
+            ) : (
+              logo?.src && (
+                <Image
+                  src={logo.src}
+                  fill
+                  alt={logo.altText ?? 'Logo'}
+                  className="object-contain"
+                />
+              )
+            )}
+          </Link>
+        </div>
 
         {/* Footer Columns of Links */}
         <div className="grid w-full grid-cols-2 justify-between gap-12 @md:grid-cols-3">
-          {links?.length &&
-            links.map(({ category, categoryLinks }, i) => {
+          {sections?.length &&
+            sections.map(({ title, links }, i) => {
               return (
                 <div key={i} className="text-[15px]">
-                  <span className="mb-8 block font-medium">{category}</span>
+                  {title && <span className="mb-8 block font-medium">{title}</span>}
+
                   <ul>
-                    {categoryLinks?.map((link, i) => {
+                    {links?.map((link, i) => {
                       return (
                         <li key={i}>
                           <Link
                             className="block py-2 font-medium opacity-50 transition-opacity duration-300 hover:opacity-100"
                             href={link.href || '/'}
                           >
-                            {link.text}
+                            {link.label}
                           </Link>
                         </li>
                       )
@@ -59,10 +108,13 @@ export const Footer = function Footer({ links, logo, companyName }: Props) {
             })}
         </div>
       </div>
+
       {/* Copyright */}
-      <span className="mb-8 block px-3 py-10 text-[15px] text-contrast-400 @xl:px-20">
-        © {new Date().getFullYear()} {companyName} - Powered by BigCommerce
-      </span>
+      {copyright && (
+        <span className="mb-8 block px-3 py-10 text-[15px] text-contrast-400 @xl:px-20">
+          {copyright}
+        </span>
+      )}
     </footer>
   )
 }

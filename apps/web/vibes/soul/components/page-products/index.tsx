@@ -30,7 +30,7 @@ export const ProductsPage = function ProductsPage() {
         ))}
       </Carousel>
       <CompareDrawer products={compareProducts} />
-      <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
+      <Footer sections={footerLinks} logo="SOUL" />
     </>
   )
 }

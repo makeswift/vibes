@@ -118,7 +118,7 @@ export const ProductPage = function ProductPage() {
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"
         />
-        <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
+        <Footer sections={footerLinks} logo="SOUL" />
       </div>
     </>
   )
