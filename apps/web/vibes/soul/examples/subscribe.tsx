@@ -1,4 +1,4 @@
-import Newsletter from '@/vibes/soul/components/newsletter'
+import Subscribe from '@/vibes/soul/components/subscribe'
 
 export default function Preview() {
   const image = {
@@ -12,34 +12,34 @@ export default function Preview() {
 
   return (
     <div className="flex flex-col gap-2">
-      <Newsletter
+      <Subscribe
         image={image}
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="brand-shadow"
       />
-      <Newsletter
+      <Subscribe
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="brand-shadow"
       />
-      <Newsletter
+      <Subscribe
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="brand-highlight"
       />
-      <Newsletter
+      <Subscribe
         image={image}
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="neutral"
       />
-      <Newsletter
+      <Subscribe
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="neutral"
       />
-      <Newsletter
+      <Subscribe
         heading="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="light"

@@ -128,13 +128,6 @@ export const components = [
     files: ['components/media-section/index.tsx'],
   },
   {
-    name: 'newsletter',
-    dependencies: ['clsx'],
-    registryDependencies: ['input'],
-    files: ['components/newsletter/index.tsx'],
-  },
-
-  {
     name: 'pagination',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -193,5 +186,11 @@ export const components = [
       'components/slideshow/progress-bar.tsx',
       'components/slideshow/progress-section.tsx',
     ],
+  },
+  {
+    name: 'subscribe',
+    dependencies: ['clsx'],
+    registryDependencies: ['input'],
+    files: ['components/subscribe/index.tsx'],
   },
 ] satisfies Components

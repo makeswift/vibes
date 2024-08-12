@@ -98,12 +98,6 @@ export const navigation = [
         component: 'media-section',
       },
       {
-        title: 'Newsletter',
-        slug: 'newsletter',
-        file: 'docs/newsletter.mdx',
-        component: 'newsletter',
-      },
-      {
         title: 'Pagination',
         slug: 'pagination',
         file: 'docs/pagination.mdx',
@@ -134,6 +128,12 @@ export const navigation = [
         component: 'product-list',
       },
       { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
+      {
+        title: 'Subscribe',
+        slug: 'subscribe',
+        file: 'docs/subscribe.mdx',
+        component: 'subscribe',
+      },
     ],
   },
   {

@@ -145,13 +145,6 @@ export const examples = [
     component: lazy(() => import('./examples/media-section')),
   },
   {
-    name: 'newsletter-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/newsletter.tsx'],
-    component: lazy(() => import('./examples/newsletter')),
-  },
-  {
     name: 'page-home-blue-example',
     dependencies: [],
     registryDependencies: [],
@@ -248,5 +241,12 @@ export const examples = [
     registryDependencies: ['slideshow'],
     files: ['examples/slideshow.tsx'],
     component: lazy(() => import('./examples/slideshow')),
+  },
+  {
+    name: 'subscribe-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/subscribe.tsx'],
+    component: lazy(() => import('./examples/subscribe')),
   },
 ] satisfies Components

@@ -4,10 +4,10 @@ import CategoryCard from '@/vibes/soul/components/category-card'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
 import IconBlock from '@/vibes/soul/components/icon-block'
-import Newsletter from '@/vibes/soul/components/newsletter'
 import { ProductCard } from '@/vibes/soul/components/product-card'
 import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
+import Subscribe from '@/vibes/soul/components/subscribe'
 import { categories } from '@/vibes/soul/examples/card-carousel'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
@@ -113,7 +113,7 @@ export const ProductPage = function ProductPage() {
           ))}
         </Carousel>
 
-        <Newsletter
+        <Subscribe
           heading="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"

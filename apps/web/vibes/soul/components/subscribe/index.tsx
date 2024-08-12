@@ -18,7 +18,7 @@ type Props = {
   theme?: 'brand-highlight' | 'brand-shadow' | 'light' | 'neutral'
 }
 
-export const Newsletter = function Newsletter({ image, heading, description, theme }: Props) {
+export const Subscribe = function Subscribe({ image, heading, description, theme }: Props) {
   return (
     <section
       className={clsx('@container', {
@@ -60,4 +60,4 @@ export const Newsletter = function Newsletter({ image, heading, description, the
   )
 }
 
-export default Newsletter
+export default Subscribe
