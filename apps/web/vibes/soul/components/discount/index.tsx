@@ -103,7 +103,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
               ))}
             </div>
           </div>
-          <Button variant="dark" className="w-full justify-center @4xl:hidden">
+          <Button variant="secondary" className="w-full justify-center @4xl:hidden">
             {showCode ? 'Copy' : 'Spin'}
           </Button>
         </div>

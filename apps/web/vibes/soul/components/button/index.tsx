@@ -6,7 +6,7 @@ import clsx from 'clsx'
 export interface Props {
   className?: string
   link?: { href: string; target?: string }
-  variant?: 'primary' | 'dark' | 'light'
+  variant?: 'primary' | 'secondary' | 'tertiary'
   size?: 'default' | 'small'
   onClick?: () => void
   children?: ReactNode
@@ -24,8 +24,8 @@ function ctaStyles(
     'border border-transparent focus:outline-none focus:ring-1 transition-colors',
     {
       primary: 'bg-primary text-foreground',
-      dark: 'bg-foreground text-foreground hover:border-foreground hover:text-background',
-      light: 'bg-background text-background hover:border-background hover:text-foreground',
+      secondary: 'bg-foreground text-foreground hover:border-foreground hover:text-background',
+      tertiary: 'bg-background text-background hover:border-background hover:text-foreground',
     }[variant],
     {
       default: 'px-6 py-[13px] text-base',
@@ -37,8 +37,8 @@ function ctaStyles(
     'after:transition-[opacity,transform] after:duration-300 after:ease-out',
     {
       primary: 'after:bg-white/40',
-      dark: 'after:bg-background',
-      light: 'after:bg-foreground',
+      secondary: 'after:bg-background',
+      tertiary: 'after:bg-foreground',
     }[variant],
     {
       default: 'after:h-[50px]',

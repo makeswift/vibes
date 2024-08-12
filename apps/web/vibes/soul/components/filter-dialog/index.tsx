@@ -68,7 +68,7 @@ export const FilterDialog = function FilterDialog() {
   return (
     <Dialog.Root open={filterOpen} onOpenChange={setFilterOpen}>
       <Dialog.Trigger asChild>
-        <Button variant="dark" size="small">
+        <Button variant="secondary" size="small">
           <span className="hidden @xl:block">Filter</span>
           <Sliders size={18} />
         </Button>
@@ -97,7 +97,7 @@ export const FilterDialog = function FilterDialog() {
                     )}
                   </h2>
                   <Button
-                    variant="light"
+                    variant="tertiary"
                     size="small"
                     className="-mr-2 !px-2"
                     onClick={() => setFilterOpen(false)}
@@ -165,8 +165,8 @@ export const FilterDialog = function FilterDialog() {
                       title: 'pricing',
                       content: (
                         <div className="flex w-[48%] gap-2">
-                          <Input variant="price" />
-                          <Input variant="price" />
+                          <Input prepend="$" />
+                          <Input prepend="$" />
                         </div>
                       ),
                     },
@@ -174,10 +174,10 @@ export const FilterDialog = function FilterDialog() {
                 />
 
                 <div className="mt-auto flex justify-center gap-2 pt-10">
-                  <Button variant="dark" onClick={() => setFilterOpen(false)}>
+                  <Button variant="secondary" onClick={() => setFilterOpen(false)}>
                     Show 25 Results
                   </Button>
-                  <Button variant="light" onClick={() => setSelectedTags([])}>
+                  <Button variant="tertiary" onClick={() => setSelectedTags([])}>
                     Reset
                   </Button>
                 </div>
