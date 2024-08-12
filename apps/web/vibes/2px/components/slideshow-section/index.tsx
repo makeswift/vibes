@@ -55,7 +55,7 @@ export default function SlideshowSection({ className, images, title, description
         {images.map((image, i) => (
           <div
             key={i}
-            className="absolute left-1/2 top-1/2 flex max-h-[var(--max-dim-mobile)] w-11/12 max-w-[var(--max-dim-mobile)] -translate-x-1/2 -translate-y-1/2 items-center justify-center object-contain @md:max-h-[var(--max-dim-desktop)] @md:max-w-[var(--max-dim-desktop)]"
+            className="absolute left-1/2 top-1/2 flex h-full max-h-[var(--max-dim-mobile)] w-11/12 max-w-[var(--max-dim-mobile)] -translate-x-1/2 -translate-y-1/2 items-center justify-center object-contain @md:max-h-[var(--max-dim-desktop)] @md:max-w-[var(--max-dim-desktop)]"
             style={
               {
                 zIndex: images.length - 1 - Math.abs(i - currentSlide),
