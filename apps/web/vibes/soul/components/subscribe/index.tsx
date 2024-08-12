@@ -4,21 +4,24 @@ import clsx from 'clsx'
 
 import Input from '@/vibes/soul/components/input'
 
-type Props = {
+interface Props {
+  action: (formData: FormData) => void
   image?: {
-    url: string
-    dimensions: {
-      width: number
-      height: number
-    }
-    alt: string
+    src: string
+    altText: string
   }
-  heading: string
+  title: string
   description: string
   theme?: 'brand-highlight' | 'brand-shadow' | 'light' | 'neutral'
 }
 
-export const Subscribe = function Subscribe({ image, heading, description, theme }: Props) {
+export const Subscribe = function Subscribe({ action, image, title, description, theme }: Props) {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+    action(formData)
+  }
+
   return (
     <section
       className={clsx('@container', {
@@ -31,7 +34,7 @@ export const Subscribe = function Subscribe({ image, heading, description, theme
       <div className="flex flex-col items-center @2xl:flex-row">
         {image && (
           <div className="relative aspect-square h-full w-full overflow-hidden @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
-            <Image src={image.url} alt={image.alt} fill className="object-cover" />
+            <Image src={image.src} alt={image.altText} fill className="object-cover" />
           </div>
         )}
 
@@ -43,10 +46,10 @@ export const Subscribe = function Subscribe({ image, heading, description, theme
           )}
         >
           <div className="w-full">
-            <h2 className="mb-2 text-4xl font-medium leading-none @7xl:text-5xl">{heading}</h2>
+            <h2 className="mb-2 text-4xl font-medium leading-none @7xl:text-5xl">{title}</h2>
             <p className="text-[15px] opacity-50">{description}</p>
           </div>
-          <form className="w-full">
+          <form className="w-full" onSubmit={handleSubmit}>
             <Input
               variant={theme == 'light' ? 'brand' : 'button'}
               placeholder="Join our Newsletter"

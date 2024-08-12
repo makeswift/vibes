@@ -114,9 +114,10 @@ export const ProductPage = function ProductPage() {
         </Carousel>
 
         <Subscribe
-          heading="Sign up for our newsletter"
+          title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"
+          action={formData => console.log(formData)}
         />
         <Footer sections={footerLinks} logo="SOUL" />
       </div>

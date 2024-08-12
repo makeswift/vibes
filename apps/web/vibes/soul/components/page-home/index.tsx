@@ -49,9 +49,10 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           mediaAlign="right"
         />
         <Subscribe
-          heading="Sign up for our newsletter"
+          title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="brand-highlight"
+          action={(formData: FormData) => console.log(formData)}
         />
         <CardCarousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
           {categories.map((category: CategoryCard) => (
@@ -85,9 +86,10 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           mediaAlign="left"
         />
         <Subscribe
-          heading="Sign up for our newsletter"
+          title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"
+          action={(formData: FormData) => console.log(formData)}
         />
         <Footer sections={footerLinks} logo="SOUL" />
       </div>
