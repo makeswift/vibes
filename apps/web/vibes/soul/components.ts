@@ -98,6 +98,12 @@ export const components = [
     files: ['components/featured-product-list/index.tsx'],
   },
   {
+    name: 'featured-video',
+    dependencies: ['clsx'],
+    registryDependencies: ['button'],
+    files: ['components/featured-video/index.tsx'],
+  },
+  {
     name: 'footer',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -120,12 +126,6 @@ export const components = [
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
     files: ['components/input/index.tsx'],
-  },
-  {
-    name: 'media-section',
-    dependencies: ['clsx'],
-    registryDependencies: ['button'],
-    files: ['components/media-section/index.tsx'],
   },
   {
     name: 'pagination',

@@ -78,6 +78,12 @@ export const navigation = [
         file: 'docs/featured-product-list.mdx',
         component: 'featured-product-list',
       },
+      {
+        title: 'Featured Video',
+        slug: 'featured-video',
+        file: 'docs/featured-video.mdx',
+        component: 'featured-video',
+      },
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
       {
         title: 'Header',
@@ -90,12 +96,6 @@ export const navigation = [
         slug: 'icon-block',
         file: 'docs/icon-block.mdx',
         component: 'icon-block',
-      },
-      {
-        title: 'Media Section',
-        slug: 'media-section',
-        file: 'docs/media-section.mdx',
-        component: 'media-section',
       },
       {
         title: 'Pagination',

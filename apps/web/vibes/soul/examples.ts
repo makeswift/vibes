@@ -109,6 +109,13 @@ export const examples = [
     component: lazy(() => import('./examples/featured-product-list')),
   },
   {
+    name: 'featured-video-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/featured-video.tsx'],
+    component: lazy(() => import('./examples/featured-video')),
+  },
+  {
     name: 'footer-example',
     dependencies: [],
     registryDependencies: [],
@@ -135,14 +142,6 @@ export const examples = [
     registryDependencies: ['input'],
     files: ['examples/input.tsx'],
     component: lazy(() => import('./examples/input')),
-  },
-
-  {
-    name: 'media-section-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/media-section.tsx'],
-    component: lazy(() => import('./examples/media-section')),
   },
   {
     name: 'page-home-blue-example',

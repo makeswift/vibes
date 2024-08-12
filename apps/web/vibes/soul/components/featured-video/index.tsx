@@ -13,7 +13,7 @@ type Props = {
   mediaAlign?: 'left' | 'right'
 }
 
-export const MediaSection = function MediaSection({
+export const FeaturedVideo = function FeaturedVideo({
   heading,
   description,
   video,
@@ -52,7 +52,7 @@ export const MediaSection = function MediaSection({
           <h1 className="max-w-xl text-[40px] font-medium">{heading}</h1>
           <p className="max-w-xl pb-2">{description}</p>
           <Button
-            variant={mediaAlign ? 'primary' : 'light'}
+            variant={mediaAlign ? 'primary' : 'tertiary'}
             link={{ href: link.href, target: link.target }}
             className={clsx(mediaAlign ? 'text-foreground' : 'text-background')}
           >
@@ -64,4 +64,4 @@ export const MediaSection = function MediaSection({
   )
 }
 
-export default MediaSection
+export default FeaturedVideo
