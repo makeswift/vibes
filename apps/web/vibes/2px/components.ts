@@ -259,6 +259,5 @@ export const components = [
     dependencies: [],
     registryDependencies: [],
     files: ['./components/slideshow-section/index.tsx', '../../lib/utils.ts'],
-    component: lazy(() => import('./components/slideshow-section')),
   },
 ] satisfies Components
