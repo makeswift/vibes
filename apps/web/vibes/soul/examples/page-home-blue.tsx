@@ -3,36 +3,36 @@ import HomePage from '@/vibes/soul/components/page-home'
 
 export const heroSlides = [
   {
-    heading: 'New Casuals',
+    title: 'New Casuals',
     image: {
-      url: 'https://rstr.in/monogram/vibes/Nz2yR4EZgvo',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/Nz2yR4EZgvo',
+      altText: 'alt',
     },
-    link: {
+    cta: {
       href: '/',
-      target: '_self',
+      lable: 'Button',
     },
   },
   {
-    heading: 'Slide 2',
+    title: 'Slide 2',
     image: {
-      url: 'https://rstr.in/monogram/vibes/gWgyEhm5W60',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/gWgyEhm5W60',
+      altText: 'alt',
     },
-    link: {
+    cta: {
       href: '/',
-      target: '_self',
+      lable: 'Button',
     },
   },
   {
-    heading: 'Slide 3',
+    title: 'Slide 3',
     image: {
-      url: 'https://rstr.in/monogram/vibes/K-F83RXTJsx',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/K-F83RXTJsx',
+      altText: 'alt',
     },
-    link: {
+    cta: {
       href: '/',
-      target: '_self',
+      lable: 'Button',
     },
   },
 ]

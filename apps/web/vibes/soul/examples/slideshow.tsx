@@ -2,36 +2,39 @@ import Slideshow from '@/vibes/soul/components/slideshow'
 
 export const heroSlides = [
   {
-    heading: 'Slide 1',
+    title: 'Slide 1',
+    description: 'Description',
     image: {
-      url: 'https://rstr.in/monogram/vibes/vgdjHDINE6V',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/vgdjHDINE6V',
+      altText: 'alt',
     },
-    link: {
+    cta: {
+      label: 'Button',
       href: '/',
-      target: '_self',
     },
   },
   {
-    heading: 'Slide 2',
+    title: 'Slide 2',
+    description: 'Description',
     image: {
-      url: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
+      altText: 'alt',
     },
-    link: {
+    cta: {
+      label: 'Button',
       href: '/',
-      target: '_self',
     },
   },
   {
-    heading: 'Slide 3',
+    title: 'Slide 3',
+    description: 'Description',
     image: {
-      url: 'https://rstr.in/monogram/vibes/6GmqnHGoquY',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/6GmqnHGoquY',
+      altText: 'alt',
     },
-    link: {
+    cta: {
+      label: 'Button',
       href: '/',
-      target: '_self',
     },
   },
 ]

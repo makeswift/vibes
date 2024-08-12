@@ -1,16 +1,12 @@
 import clsx from 'clsx'
 
-import ProgressBar from './progress-bar'
+import { Slide } from '@/vibes/soul/components/slideshow'
+import ProgressBar from '@/vibes/soul/components/slideshow/progress-bar'
 
 type Props = {
   currentIndex: number
   setCurrentIndex: (index: number) => void
-  slides: {
-    image: {
-      url: string
-      alt: string
-    }
-  }[]
+  slides: Slide[]
   className?: string
 }
 
