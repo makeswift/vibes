@@ -38,7 +38,7 @@ export const ProductCard = function ProductCard({
       className="group relative flex cursor-pointer flex-col gap-2 text-foreground"
       {...props}
     >
-      <div className="relative min-h-56 flex-grow overflow-hidden rounded-xl @4xl:min-h-[439px]">
+      <div className="relative min-h-56 flex-grow overflow-hidden rounded-xl @4xl:max-h-[439px]">
         {badge && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
@@ -48,7 +48,7 @@ export const ProductCard = function ProductCard({
             height={600}
             width={467}
             alt="Category card image"
-            className="h-full min-h-56 w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 @4xl:min-h-[439px]"
+            className="h-full min-h-56 w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 @4xl:max-h-[439px]"
           />
         )}
         {/* {checked !== undefined && setChecked && (
