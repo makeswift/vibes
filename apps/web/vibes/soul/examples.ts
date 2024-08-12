@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/feature')),
   },
   {
+    name: 'featured-products-carousel-example',
+    dependencies: [],
+    registryDependencies: ['featured-products-carousel'],
+    files: ['examples/featured-products-carousel.tsx'],
+    component: lazy(() => import('./examples/featured-products-carousel')),
+  },
+  {
     name: 'featured-products-list-example',
     dependencies: [],
     registryDependencies: ['featured-products-list'],
@@ -136,7 +143,6 @@ export const examples = [
     files: ['examples/input.tsx'],
     component: lazy(() => import('./examples/input')),
   },
-
   {
     name: 'media-section-example',
     dependencies: [],
@@ -199,6 +205,13 @@ export const examples = [
     registryDependencies: ['product-card'],
     files: ['examples/product-card.tsx'],
     component: lazy(() => import('./examples/product-card')),
+  },
+  {
+    name: 'products-carousel-example',
+    dependencies: [],
+    registryDependencies: ['products-carousel'],
+    files: ['examples/products-carousel.tsx'],
+    component: lazy(() => import('./examples/products-carousel')),
   },
   {
     name: 'product-detail-example',

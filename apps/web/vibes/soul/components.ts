@@ -92,6 +92,12 @@ export const components = [
     files: ['components/feature/index.tsx', 'components/icon/index.tsx'],
   },
   {
+    name: 'featured-products-carousel',
+    dependencies: [],
+    registryDependencies: ['products-carousel'],
+    files: ['components/featured-products-carousel/index.tsx'],
+  },
+  {
     name: 'featured-products-list',
     dependencies: [],
     registryDependencies: ['button', 'product-card'],
@@ -142,6 +148,12 @@ export const components = [
       'components/product-card/compare.tsx',
       'components/product-card/price.tsx',
     ],
+  },
+  {
+    name: 'products-carousel',
+    dependencies: ['clsx'],
+    registryDependencies: ['product-card'],
+    files: ['components/products-carousel/index.tsx'],
   },
   {
     name: 'product-detail',

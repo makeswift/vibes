@@ -1,7 +1,6 @@
 'use client'
 
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { ComponentPropsWithoutRef, useCallback, useEffect, useState } from 'react'
 
 import useEmblaCarousel from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
@@ -9,12 +8,10 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import ScrollBar from '@/vibes/soul/components/card-carousel/scrollbar'
 
 type Props = {
-  title: string
-  link?: { label: string; href: string; target?: string }
   children: React.ReactNode
 }
 
-export const CardCarousel = ({ title, link, children }: Props) => {
+export const CardCarousel = ({ children }: Props & ComponentPropsWithoutRef<'div'>) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
@@ -22,11 +19,11 @@ export const CardCarousel = ({ title, link, children }: Props) => {
   const scrollPrev = () => emblaApi?.scrollPrev()
   const scrollNext = () => emblaApi?.scrollNext()
 
-  const onSelect = () => {
+  const onSelect = useCallback(() => {
     if (!emblaApi) return
     setCanScrollPrev(emblaApi.canScrollPrev())
     setCanScrollNext(emblaApi.canScrollNext())
-  }
+  }, [emblaApi])
 
   useEffect(() => {
     if (!emblaApi) return
@@ -36,19 +33,10 @@ export const CardCarousel = ({ title, link, children }: Props) => {
     return () => {
       emblaApi.off('select', onSelect)
     }
-  }, [emblaApi])
+  }, [emblaApi, onSelect])
 
   return (
-    <section className="flex flex-col gap-10 bg-background @container">
-      <div className="flex items-center justify-between px-3 pt-3 text-foreground @xl:px-6 @4xl:pt-20 @5xl:px-20">
-        {title && <h2 className="text-2xl font-medium">{title}</h2>}
-        {link && (
-          <Link href={link.href} target={link.target} className="font-semibold text-foreground">
-            {link.label}
-          </Link>
-        )}
-      </div>
-
+    <section className="flex flex-col gap-10 pt-10 @container">
       {children && (
         <div className="w-full overflow-hidden px-3 @xl:px-6 @5xl:px-20" ref={emblaRef}>
           <div className="flex gap-5">{children}</div>

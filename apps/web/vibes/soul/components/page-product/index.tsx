@@ -1,14 +1,12 @@
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import Carousel from '@/vibes/soul/components/card-carousel'
-import CategoryCard from '@/vibes/soul/components/category-card'
+import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
 import IconBlock from '@/vibes/soul/components/icon-block'
-import { ProductCard } from '@/vibes/soul/components/product-card'
 import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
 import Subscribe from '@/vibes/soul/components/subscribe'
-import { categories } from '@/vibes/soul/examples/card-carousel'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
@@ -23,17 +21,16 @@ export const ProductPage = function ProductPage() {
         <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
 
         <ProductDetail
-          product={
-            {
-              name: "Men's Long Sleeve Jersey",
-              price: {
-                type: 'static',
-                value: 39.95,
-              },
-              image: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
-              ctaLink: { href: '/' },
-            } as ProductCard
-          }
+          product={{
+            id: '1',
+            name: "Men's Long Sleeve Jersey",
+            price: '$39.95',
+            image: {
+              src: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
+              alt: 'Men’s Long Sleeve Jersey',
+            },
+            cta: { href: '#' },
+          }}
           images={[
             'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
             'https://rstr.in/monogram/vibes/nBQFO6MyZ34',
@@ -107,11 +104,11 @@ export const ProductPage = function ProductPage() {
           ]}
         />
 
-        <Carousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
-          {categories.map(category => (
-            <CategoryCard key={category.label} {...category} />
-          ))}
-        </Carousel>
+        <FeaturedProductsCarousel
+          title="New Arrivals"
+          cta={{ label: 'See All', href: '#' }}
+          products={featuredProducts}
+        />
 
         <Subscribe
           title="Sign up for our newsletter"

@@ -1,5 +1,5 @@
 import { Product } from '@/vibes/soul/components/product-card'
-import { ProductsList } from '@/vibes/soul/components/products-list'
+import ProductsCarousel from '@/vibes/soul/components/products-carousel'
 
 export const products: Product[] = [
   {
@@ -93,5 +93,5 @@ export const products: Product[] = [
 ]
 
 export default function Preview() {
-  return <ProductsList products={products} />
+  return <ProductsCarousel products={products} />
 }
