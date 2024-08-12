@@ -2,13 +2,13 @@ import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
 import Feature from '@/vibes/soul/components/feature'
-import FeaturedProductList from '@/vibes/soul/components/featured-product-list'
+import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
 import MediaSection from '@/vibes/soul/components/media-section'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
-import { featuredProducts } from '@/vibes/soul/examples/featured-product-list'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
@@ -34,10 +34,10 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
           link={{ href: '/', target: '_self' }}
         />
-        <FeaturedProductList
+        <FeaturedProductsList
           title="Off-Race"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-          link={{ label: 'Shop Now', href: '/new-arrivals' }}
+          cta={{ label: 'Shop Now', href: '/#' }}
           products={featuredProducts}
         />
         <MediaSection

@@ -92,10 +92,10 @@ export const components = [
     files: ['components/feature/index.tsx', 'components/icon/index.tsx'],
   },
   {
-    name: 'featured-product-list',
+    name: 'featured-products-list',
     dependencies: [],
     registryDependencies: ['button', 'product-card'],
-    files: ['components/featured-product-list/index.tsx'],
+    files: ['components/featured-products-list/index.tsx'],
   },
   {
     name: 'featured-video',
@@ -154,10 +154,10 @@ export const components = [
     ],
   },
   {
-    name: 'product-list',
+    name: 'products-list',
     dependencies: [],
     registryDependencies: ['product-card'],
-    files: ['components/product-list/index.tsx'],
+    files: ['components/products-list/index.tsx'],
   },
   {
     name: 'product-description',
