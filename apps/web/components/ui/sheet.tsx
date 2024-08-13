@@ -4,8 +4,7 @@ import * as React from 'react'
 
 import * as SheetPrimitive from '@radix-ui/react-dialog'
 import { type VariantProps, cva } from 'class-variance-authority'
-
-import { cn } from '@/lib/utils'
+import clsx from 'clsx'
 
 const Sheet = SheetPrimitive.Root
 
@@ -41,7 +40,11 @@ const SheetContent = React.forwardRef<
   SheetContentProps
 >(({ side = 'right', className, children, ...props }, ref) => (
   <SheetPortal>
-    <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), className)} {...props}>
+    <SheetPrimitive.Content
+      ref={ref}
+      className={clsx(sheetVariants({ side }), className)}
+      {...props}
+    >
       {children}
     </SheetPrimitive.Content>
   </SheetPortal>
