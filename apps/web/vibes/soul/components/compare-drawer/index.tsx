@@ -4,14 +4,10 @@ import { useEffect, useState } from 'react'
 
 import Button from '@/vibes/soul/components/button'
 import ProductChip from '@/vibes/soul/components/compare-drawer/product-chip'
-
-type ProductCard = {
-  name: string
-  image: string
-}
+import { Product } from '@/vibes/soul/components/product-card'
 
 type Props = {
-  products: ProductCard[]
+  products: Product[]
 }
 
 export const CompareDrawer = function CompareDrawer({ products }: Props) {
