@@ -7,17 +7,20 @@ import * as RadixTabs from '@radix-ui/react-tabs'
 import { cn } from '@/lib/utils'
 
 type Tab = {
-  title?: string
-  children?: React.ReactNode
+  value?: string
+  content?: React.ReactNode
 }
 
 export type Props = {
   className?: string
+  defaultValue?: string
   tabs?: Tab[]
+  label?: string
+  onValueChange?: (value: string) => void
+  value?: string
 }
 
-export default function Tabs({ className, tabs }: Props) {
-  const [value, setValue] = useState('0')
+export default function Tabs({ className, tabs, onValueChange, value }: Props) {
   const container = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -45,9 +48,9 @@ export default function Tabs({ className, tabs }: Props) {
         'w-full font-body text-2xl leading-9 -tracking-[0.01em] text-foreground @container'
       )}
       value={value}
-      onValueChange={setValue}
+      onValueChange={onValueChange}
     >
-      <RadixTabs.List className="w-full bg-background  ">
+      <RadixTabs.List className="w-full bg-background">
         <div
           className="relative flex flex-col overflow-auto px-6  @lg:flex-row"
           ref={container}
@@ -66,14 +69,14 @@ export default function Tabs({ className, tabs }: Props) {
                 Number(value) === index && 'bg-foreground text-background'
               )}
             >
-              {tab.title}
+              {tab.value}
             </RadixTabs.Trigger>
           ))}
         </div>
       </RadixTabs.List>
       {tabs?.map((tab, index) => (
         <RadixTabs.Content key={index} className="outline-none" value={index.toString()}>
-          {tab.children}
+          {tab.content}
         </RadixTabs.Content>
       ))}
     </RadixTabs.Root>
