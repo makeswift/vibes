@@ -46,6 +46,12 @@ export const navigation = [
 
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       {
+        title: 'Pagination',
+        slug: 'pagination',
+        file: 'docs/pagination.mdx',
+        component: 'pagination',
+      },
+      {
         title: 'Product Card',
         slug: 'product-card',
         file: 'docs/product-card.mdx',
@@ -102,12 +108,6 @@ export const navigation = [
         slug: 'icon-block',
         file: 'docs/icon-block.mdx',
         component: 'icon-block',
-      },
-      {
-        title: 'Pagination',
-        slug: 'pagination',
-        file: 'docs/pagination.mdx',
-        component: 'pagination',
       },
       {
         title: 'Products Carousel',
