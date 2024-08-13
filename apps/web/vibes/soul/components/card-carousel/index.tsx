@@ -48,7 +48,7 @@ export const CardCarousel = ({ children }: Props & ComponentPropsWithoutRef<'div
         <div className="flex gap-2 text-foreground">
           <button
             role="button"
-            className="rounded-lg ring-primary transition-colors duration-300 focus:outline-0 focus:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
+            className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
             onClick={scrollPrev}
             disabled={!canScrollPrev}
           >
@@ -56,7 +56,7 @@ export const CardCarousel = ({ children }: Props & ComponentPropsWithoutRef<'div
           </button>
           <button
             role="button"
-            className="rounded-lg ring-primary transition-colors duration-300 focus:outline-0 focus:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
+            className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
             onClick={scrollNext}
             disabled={!canScrollNext}
           >

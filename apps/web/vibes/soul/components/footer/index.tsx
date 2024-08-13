@@ -67,7 +67,7 @@ export const Footer = function Footer({
         <div className="@2xl:w-1/3 @5xl:w-full">
           <Link
             href="#"
-            className="relative inline-block h-5 w-32 rounded-lg ring-primary focus:outline-0 focus:ring-2"
+            className="relative inline-block h-5 w-32 rounded-lg ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
             {typeof logo === 'string' ? (
               <span className="text-2xl font-semibold">{logo}</span>
@@ -97,7 +97,7 @@ export const Footer = function Footer({
                       return (
                         <li key={i}>
                           <Link
-                            className="block rounded-lg py-2 font-medium opacity-50 ring-primary transition-opacity duration-300 hover:opacity-100 focus:outline-0 focus:ring-2"
+                            className="block rounded-lg py-2 font-medium opacity-50 ring-primary transition-opacity duration-300 hover:opacity-100 focus-visible:outline-0 focus-visible:ring-2"
                             href={link.href}
                           >
                             {link.label}

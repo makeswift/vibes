@@ -31,7 +31,7 @@ export const FeaturedProductsCarousel = function FeaturedProductsCarousel({
         {cta && (
           <Link
             href={cta.href}
-            className="rounded-lg font-semibold text-foreground ring-primary focus:outline-0 focus:ring-2"
+            className="rounded-lg font-semibold text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
             {cta.label}
           </Link>

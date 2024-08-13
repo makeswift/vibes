@@ -46,9 +46,7 @@ function ctaStyles(
       default: 'after:h-[50px]',
       small: 'after:h-[37px]',
     }[size],
-    // Link Styles
-    link?.href === '#' && 'after:pointer-events-none after:opacity-20',
-    link?.href === '#' && 'pointer-events-none opacity-20',
+
     className
   )
 }

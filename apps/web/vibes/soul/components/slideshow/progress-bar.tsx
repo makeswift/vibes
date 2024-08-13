@@ -17,7 +17,7 @@ export const ProgressBar = function ProgressBar({
         <button
           aria-label={`View image number ${index + 1}`}
           key={index}
-          className="rounded-lg px-1.5 py-2 focus:outline-0 focus:ring-2 focus:ring-primary"
+          className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
           onClick={() => setCurrentIndex(index)}
         >
           <div className="relative overflow-hidden">
