@@ -21,14 +21,18 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
+
       <div className="relative flex flex-col">
         <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
+
         <Slideshow slides={heroSlides} />
+
         <CardCarousel>
           {categories.map((card: CardProps) => (
             <Card key={card.title} {...card} />
           ))}
         </CardCarousel>
+
         <FeaturedVideo
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -36,12 +40,14 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
           link={{ href: '#', target: '_self' }}
         />
+
         <FeaturedProductsList
           title="Off-Race"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
           cta={{ label: 'Shop Now', href: '#' }}
           products={featuredProducts}
         />
+
         <FeaturedVideo
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -50,11 +56,13 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           link={{ href: '#', target: '_self' }}
           mediaAlign="right"
         />
+
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="brand-highlight"
         />
+
         <FeaturedProductsCarousel
           title="New Arrivals"
           cta={{ label: 'See All', href: '#' }}
@@ -74,7 +82,9 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
             target: '_self',
           }}
         />
+
         <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
+
         <FeaturedVideo
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -83,11 +93,13 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           link={{ href: '#', target: '_self' }}
           mediaAlign="left"
         />
+
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"
         />
+
         <Footer sections={footerLinks} logo="SOUL" />
       </div>
     </>

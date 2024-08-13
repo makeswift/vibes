@@ -24,7 +24,7 @@ export const ProductPage = function ProductPage() {
         <ProductDetail
           product={
             {
-              id: 1,
+              id: '1',
               name: "Men's Long Sleeve Jersey",
               price: '$39.95',
               image: {
@@ -111,11 +111,13 @@ export const ProductPage = function ProductPage() {
           cta={{ label: 'See All', href: '#' }}
           products={featuredProducts}
         />
+
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"
         />
+
         <Footer sections={footerLinks} logo="SOUL" />
       </div>
     </>
