@@ -93,5 +93,9 @@ export const products: Product[] = [
 ]
 
 export default function Preview() {
-  return <ProductsList products={products} />
+  return (
+    <div className="py-6">
+      <ProductsList products={products} />
+    </div>
+  )
 }
