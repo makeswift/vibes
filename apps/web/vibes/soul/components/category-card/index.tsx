@@ -27,7 +27,7 @@ export const CategoryCard = function CategoryCard({
     <Link
       href={ctaLink?.href as Route}
       target={ctaLink?.target}
-      className="group relative flex aspect-[3/4] w-full min-w-[226px] max-w-[467px] flex-col gap-2 rounded-xl ring-primary focus:outline-0 focus:ring-2 @4xl:min-w-[33%]"
+      className="group relative flex aspect-[3/4] w-full min-w-[226px] max-w-[467px] flex-col gap-2 rounded-xl ring-primary focus:outline-0 focus:ring-2  @xl:min-w-[33%] @4xl:min-w-[300px]"
       {...props}
     >
       <ArrowUpRight
