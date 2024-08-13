@@ -10,7 +10,7 @@ export const heroSlides = [
     },
     cta: {
       href: '#',
-      label: 'Button',
+      label: 'Shop Now',
     },
   },
   {
@@ -21,7 +21,7 @@ export const heroSlides = [
     },
     cta: {
       href: '#',
-      label: 'Button',
+      label: 'Shop Now',
     },
   },
   {
@@ -32,7 +32,7 @@ export const heroSlides = [
     },
     cta: {
       href: '#',
-      label: 'Button',
+      label: 'Shop Now',
     },
   },
 ]
