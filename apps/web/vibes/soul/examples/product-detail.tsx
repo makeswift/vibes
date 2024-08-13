@@ -1,14 +1,13 @@
-import { ProductCard } from '@/vibes/soul/components/product-card'
 import ProductDetail from '@/vibes/soul/components/product-detail'
 
 const product = {
   name: "Men's Long Sleeve Jersey",
-  price: {
-    type: 'static',
-    value: 39.95,
+  price: '$39.95',
+  image: {
+    src: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
+    altText: "Men's Long Sleeve Jersey",
   },
-  image: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
-  ctaLink: { href: '#' },
+  cta: { href: '#' },
 }
 
 const images = [
@@ -24,7 +23,7 @@ export default function Preview() {
   return (
     <div className="min-h-48">
       <ProductDetail
-        product={product as ProductCard}
+        product={product}
         images={images}
         rating={4.5}
         content={

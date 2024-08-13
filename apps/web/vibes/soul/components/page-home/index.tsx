@@ -12,6 +12,8 @@ import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
+import FeaturedProductsCarousel from '../featured-products-carousel'
+
 export const HomePage = function HomePage({ heroSlides, categories }: any) {
   return (
     <>
@@ -22,7 +24,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
       <div className="relative flex flex-col">
         <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
         <Slideshow slides={heroSlides} />
-        <CardCarousel title="Category" link={{ label: 'See All', href: '/' }}>
+        <CardCarousel>
           {categories.map((category: CategoryCard) => (
             <CategoryCard key={category.label} {...category} />
           ))}
@@ -54,11 +56,11 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           theme="brand-highlight"
           action={(formData: FormData) => console.log(formData)}
         />
-        <CardCarousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
-          {categories.map((category: CategoryCard) => (
-            <CategoryCard key={category.label} {...category} />
-          ))}
-        </CardCarousel>
+        <FeaturedProductsCarousel
+          title="New Arrivals"
+          cta={{ label: 'See All', href: '#' }}
+          products={featuredProducts}
+        />
         <Feature
           image={{
             url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
@@ -72,11 +74,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
             target: '_self',
           }}
         />
-        <CardCarousel title="Recently Viewed" link={{ label: 'Shop All', href: '/' }}>
-          {categories.map((category: CategoryCard) => (
-            <CategoryCard key={category.label} {...category} />
-          ))}
-        </CardCarousel>
+        <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
         <MediaSection
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
