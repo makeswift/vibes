@@ -1,13 +1,14 @@
 import ProductDetail from '@/vibes/soul/components/product-detail'
 
 const product = {
+  id: '1',
   name: "Men's Long Sleeve Jersey",
   price: '$39.95',
   image: {
     src: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
     altText: "Men's Long Sleeve Jersey",
   },
-  cta: { href: '#' },
+  href: '#',
 }
 
 const images = [
