@@ -18,14 +18,10 @@ export type ProductPrice =
 export default function Price({
   price,
   className = '',
-  ...props
 }: { price: ProductPrice; className?: string } & ComponentPropsWithoutRef<'span'>) {
   if (typeof price === 'string') {
     return (
-      <span
-        className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}
-        {...props}
-      >
+      <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
         {price}
       </span>
     )
@@ -34,19 +30,13 @@ export default function Price({
   switch (price.type) {
     case 'range':
       return (
-        <span
-          className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}
-          {...props}
-        >
+        <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
           {price.minValue} - {price.maxValue}
         </span>
       )
     case 'sale':
       return (
-        <span
-          className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}
-          {...props}
-        >
+        <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
           <span className="font-normal text-contrast-400 line-through @4xl:text-lg">
             {price.previousValue}
           </span>{' '}
