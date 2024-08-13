@@ -36,10 +36,10 @@ export const CardCarousel = ({ children }: Props & ComponentPropsWithoutRef<'div
   }, [emblaApi, onSelect])
 
   return (
-    <section className="flex flex-col gap-10  pt-10 @container">
+    <section className="flex flex-col gap-10 pt-10 @container">
       {children && (
         <div className="w-full overflow-hidden px-3 py-0.5 @xl:px-6 @5xl:px-20" ref={emblaRef}>
-          <div className="flex gap-5">{children}</div>
+          <div className="flex gap-2 @4xl:gap-5">{children}</div>
         </div>
       )}
 

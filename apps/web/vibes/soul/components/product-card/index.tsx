@@ -43,17 +43,16 @@ export const ProductCard = function ProductCard({
         className
       )}
     >
-      <div className="relative overflow-hidden rounded-xl border @4xl:max-h-[439px]">
+      <div className="relative aspect-[5/6] overflow-hidden rounded-xl @6xl:min-w-[300px]">
         {badge && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
         {image && (
           <Image
             src={image.src}
-            height={600}
-            width={467}
+            fill
             alt="Category card image"
-            className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 @4xl:max-h-[439px]"
+            className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
           />
         )}
         {/* {checked !== undefined && setChecked && (
