@@ -64,7 +64,7 @@ export const Footer = function Footer({
 
       <div className="mx-3 flex flex-col justify-between gap-10 border-t border-t-contrast-100 pt-16 @xl:mx-6 @xl:py-20 @2xl:flex-row @5xl:mx-20">
         {/* Logo */}
-        <div className="@2xl:w-1/4">
+        <div className="@2xl:w-1/3">
           <Link
             href="#"
             className="relative inline-block h-5 w-32 rounded-lg ring-primary focus-visible:outline-0 focus-visible:ring-2"
