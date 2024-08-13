@@ -90,6 +90,12 @@ export const components = [
     files: ['components/feature/index.tsx', 'components/icon/index.tsx'],
   },
   {
+    name: 'featured-image',
+    dependencies: [],
+    registryDependencies: ['button'],
+    files: ['components/featured-image/index.tsx'],
+  },
+  {
     name: 'featured-products-carousel',
     dependencies: [],
     registryDependencies: ['products-carousel'],

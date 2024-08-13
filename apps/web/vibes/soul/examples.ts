@@ -102,6 +102,13 @@ export const examples = [
     component: lazy(() => import('./examples/feature')),
   },
   {
+    name: 'featured-image-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/featured-image.tsx'],
+    component: lazy(() => import('./examples/featured-image')),
+  },
+  {
     name: 'featured-products-carousel-example',
     dependencies: [],
     registryDependencies: ['featured-products-carousel'],

@@ -79,6 +79,12 @@ export const navigation = [
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
+        title: 'Featured Image',
+        slug: 'featured-image',
+        file: 'docs/featured-image.mdx',
+        component: 'featured-image',
+      },
+      {
         title: 'Featured Products Carousel',
         slug: 'featured-products-carousel',
         file: 'docs/featured-products-carousel.mdx',
