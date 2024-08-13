@@ -34,12 +34,12 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
           video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-          link={{ href: '/', target: '_self' }}
+          link={{ href: '#', target: '_self' }}
         />
         <FeaturedProductsList
           title="Off-Race"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-          cta={{ label: 'Shop Now', href: '/#' }}
+          cta={{ label: 'Shop Now', href: '#' }}
           products={featuredProducts}
         />
         <FeaturedVideo
@@ -47,7 +47,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
           video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-          link={{ href: '/', target: '_self' }}
+          link={{ href: '#', target: '_self' }}
           mediaAlign="right"
         />
         <Subscribe
@@ -70,7 +70,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
           link={{
             label: 'Shop Now',
-            href: '/shop',
+            href: '#',
             target: '_self',
           }}
         />
