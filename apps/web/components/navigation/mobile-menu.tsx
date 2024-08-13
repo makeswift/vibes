@@ -30,24 +30,22 @@ export function MobileMenu({ vibeSlug }: Props) {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <button
-          className="relative mr-1 mt-0.5 block rounded-full px-1 py-1.5 xl:hidden"
+          className="flex h-6 w-7 flex-col justify-between px-1 py-1.5 transition-transform xl:hidden"
           role="button"
           aria-label="Open mobile navigation"
         >
-          <div className="flex h-4 w-5 flex-col justify-between py-0.5 transition-transform">
-            <div
-              className={clsx(
-                'h-0.5 w-full bg-foreground transition-transform duration-200',
-                isOpen ? 'translate-y-[5px] rotate-45' : 'translate-y-0 rotate-0'
-              )}
-            ></div>
-            <div
-              className={clsx(
-                'h-0.5 w-full bg-foreground transition-transform duration-200',
-                isOpen ? '-translate-y-[5px] -rotate-45' : 'translate-y-0 rotate-0'
-              )}
-            ></div>
-          </div>
+          <div
+            className={clsx(
+              'h-0.5 w-full bg-foreground transition-transform duration-200',
+              isOpen ? 'translate-y-[5px] rotate-45' : 'translate-y-[1px] rotate-0'
+            )}
+          />
+          <div
+            className={clsx(
+              'h-0.5 bg-foreground transition-all duration-200',
+              isOpen ? 'w-full -translate-y-[5px] -rotate-45' : 'w-4/5 translate-y-[-1px] rotate-0'
+            )}
+          />
         </button>
       </SheetTrigger>
       <SheetContent side="left" className="w-full md:w-72">
