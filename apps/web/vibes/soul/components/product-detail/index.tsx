@@ -6,13 +6,13 @@ import clsx from 'clsx'
 
 import Button from '@/vibes/soul/components/button'
 import Favorite from '@/vibes/soul/components/favorite'
-import { ProductCard } from '@/vibes/soul/components/product-card'
+import { Product } from '@/vibes/soul/components/product-card'
 import Price from '@/vibes/soul/components/product-card/price'
 import ProductGallery from '@/vibes/soul/components/product-detail/product-gallery'
 import Rating from '@/vibes/soul/components/rating'
 
 export interface ProductDetailProps {
-  product: ProductCard
+  product: Product
   images: string[]
   content?: ReactNode
   rating?: number
