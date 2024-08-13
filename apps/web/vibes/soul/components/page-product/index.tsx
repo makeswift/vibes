@@ -24,7 +24,7 @@ export const ProductPage = function ProductPage() {
         <ProductDetail
           product={
             {
-              id: '1',
+              id: 1,
               name: "Men's Long Sleeve Jersey",
               price: '$39.95',
               image: {
