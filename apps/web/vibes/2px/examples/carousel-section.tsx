@@ -61,7 +61,7 @@ const items = [
 export default function Preview() {
   return (
     <div className="flex min-h-48 items-center justify-center bg-background @container sm:min-h-64 lg:min-h-80">
-      <CarouselSection items={items} title="New in" showArrows loop />
+      <CarouselSection items={items} title="New in" showArrows />
     </div>
   )
 }

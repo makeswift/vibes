@@ -23,7 +23,7 @@ type Price =
       maxValue: string
     }
 
-interface Props {
+export interface Product {
   badge?: string
   className?: string
   id: string
@@ -33,6 +33,8 @@ interface Props {
   subtitle?: string
   price: Price
 }
+
+interface Props extends Product {}
 
 export default function ProductCard({ className, name, price, badge, image, href }: Props) {
   return (

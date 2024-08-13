@@ -141,6 +141,12 @@ export const navigation = [
         component: 'carousel-section',
       },
       {
+        title: 'Products Carousel',
+        slug: 'products-carousel',
+        file: 'docs/products-carousel.mdx',
+        component: 'products-carousel',
+      },
+      {
         title: 'Marquee',
         slug: 'marquee-section',
         file: 'docs/marquee-section.mdx',

@@ -118,6 +118,13 @@ export const components = [
     component: lazy(() => import('./components/carousel-section')),
   },
   {
+    name: 'products-carousel',
+    dependencies: ['carousel-section', 'product-card'],
+    registryDependencies: [],
+    files: ['./components/products-carousel/index.tsx'],
+    component: lazy(() => import('./components/products-carousel')),
+  },
+  {
     name: 'checkbox',
     dependencies: [],
     registryDependencies: [],
