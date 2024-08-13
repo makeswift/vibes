@@ -21,11 +21,13 @@ function ctaStyles(
   return clsx(
     'relative flex justify-center w-fit shrink-0 overflow-hidden rounded-full',
     'text-center font-medium leading-normal select-none',
-    'border border-transparent focus:outline-none focus:ring-1 transition-colors',
+    'border border-transparent focus:outline-none focus:ring-2  transition-colors',
     {
-      primary: 'bg-primary text-foreground',
-      secondary: 'bg-foreground text-foreground hover:border-foreground hover:text-background',
-      tertiary: 'bg-background text-background hover:border-background hover:text-foreground',
+      primary: 'bg-primary text-foreground ring-primary-shadow',
+      secondary:
+        'bg-foreground text-foreground hover:border-foreground hover:text-background ring-primary',
+      tertiary:
+        'bg-background text-background hover:border-background hover:text-foreground ring-primary',
     }[variant],
     {
       default: 'px-6 py-[13px] text-base',

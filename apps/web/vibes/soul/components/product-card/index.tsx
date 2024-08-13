@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 
+import clsx from 'clsx'
+
 import Badge from '@/vibes/soul/components/badge'
 // import Compare from '@/vibes/soul/components/product-card/compare'
 import Price, { ProductPrice } from '@/vibes/soul/components/product-card/price'
@@ -19,6 +21,7 @@ export interface Product {
   price?: ProductPrice
   subtitle?: string
   badge?: string
+  className?: string
 }
 
 export const ProductCard = function ProductCard({
@@ -29,14 +32,16 @@ export const ProductCard = function ProductCard({
   price,
   subtitle,
   badge,
-  ...props
+  className,
 }: Product & ComponentPropsWithoutRef<'a'>) {
   return (
     <Link
       id={id}
       href={href}
-      className="group relative flex cursor-pointer flex-col gap-2 text-foreground"
-      {...props}
+      className={clsx(
+        'group relative flex cursor-pointer flex-col gap-2 rounded-xl text-foreground ring-primary focus:outline-0 focus:ring-2',
+        className
+      )}
     >
       <div className="relative min-h-56 flex-grow overflow-hidden rounded-xl @4xl:max-h-[439px]">
         {badge && (

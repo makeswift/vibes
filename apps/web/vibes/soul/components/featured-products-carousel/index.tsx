@@ -29,7 +29,10 @@ export const FeaturedProductsCarousel = function FeaturedProductsCarousel({
           {description && <p className="max-w-md text-contrast-400">{description}</p>}
         </div>
         {cta && (
-          <Link href={cta.href} className="font-semibold text-foreground">
+          <Link
+            href={cta.href}
+            className="rounded-lg font-semibold text-foreground ring-primary focus:outline-0 focus:ring-2"
+          >
             {cta.label}
           </Link>
         )}

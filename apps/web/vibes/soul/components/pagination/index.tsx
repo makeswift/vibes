@@ -76,6 +76,7 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
               key={index}
               className={clsx(
                 'flex h-[50px] w-[50px] items-center justify-center rounded-full border transition-colors duration-300',
+                'ring-primary focus:outline-0 focus:ring-2',
                 page === currentPage
                   ? 'border-foreground bg-foreground text-background'
                   : 'border-contrast-100 text-foreground hover:bg-contrast-100'

@@ -27,7 +27,7 @@ export const CategoryCard = function CategoryCard({
     <Link
       href={ctaLink?.href as Route}
       target={ctaLink?.target}
-      className="group relative flex aspect-[3/4] w-full min-w-[226px] max-w-[467px] flex-col gap-2 @4xl:min-w-[33%]"
+      className="group relative flex aspect-[3/4] w-full min-w-[226px] max-w-[467px] flex-col gap-2 rounded-xl ring-primary focus:outline-0 focus:ring-2 @4xl:min-w-[33%]"
       {...props}
     >
       <ArrowUpRight
@@ -37,7 +37,7 @@ export const CategoryCard = function CategoryCard({
           theme === 'dark' ? 'text-background' : 'text-foreground'
         )}
       />
-      <div className="relative h-full w-full overflow-hidden rounded-lg @4xl:rounded-2xl">
+      <div className="relative h-full w-full overflow-hidden rounded-lg @4xl:rounded-xl">
         <Image
           src={image}
           fill

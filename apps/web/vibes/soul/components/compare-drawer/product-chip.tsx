@@ -41,6 +41,7 @@ const ProductChip = function ProductChip({ product, onDismiss }: Props) {
       onClick={() => setDismissed(true)}
       className={clsx(
         'group flex items-center gap-3 whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold transition-all duration-150 hover:bg-contrast-100',
+        'ring-primary focus:outline-0 focus:ring-2',
         dismissed ? 'scale-90 opacity-0' : 'scale-100 opacity-100'
       )}
     >

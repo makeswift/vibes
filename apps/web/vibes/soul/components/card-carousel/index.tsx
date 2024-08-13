@@ -36,9 +36,9 @@ export const CardCarousel = ({ children }: Props & ComponentPropsWithoutRef<'div
   }, [emblaApi, onSelect])
 
   return (
-    <section className="flex flex-col gap-10 pt-10 @container">
+    <section className="flex flex-col gap-10  pt-10 @container">
       {children && (
-        <div className="w-full overflow-hidden px-3 @xl:px-6 @5xl:px-20" ref={emblaRef}>
+        <div className="w-full overflow-hidden px-3 py-0.5 @xl:px-6 @5xl:px-20" ref={emblaRef}>
           <div className="flex gap-5">{children}</div>
         </div>
       )}
@@ -48,7 +48,7 @@ export const CardCarousel = ({ children }: Props & ComponentPropsWithoutRef<'div
         <div className="flex gap-2 text-foreground">
           <button
             role="button"
-            className="transition-[colors,transform] duration-300 hover:-translate-x-1 disabled:pointer-events-none disabled:text-contrast-300"
+            className="rounded-lg ring-primary transition-colors duration-300 focus:outline-0 focus:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
             onClick={scrollPrev}
             disabled={!canScrollPrev}
           >
@@ -56,7 +56,7 @@ export const CardCarousel = ({ children }: Props & ComponentPropsWithoutRef<'div
           </button>
           <button
             role="button"
-            className="transition-[colors,transform] duration-300 hover:translate-x-1 disabled:pointer-events-none disabled:text-contrast-300"
+            className="rounded-lg ring-primary transition-colors duration-300 focus:outline-0 focus:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
             onClick={scrollNext}
             disabled={!canScrollNext}
           >

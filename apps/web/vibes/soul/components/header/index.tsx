@@ -89,7 +89,7 @@ export const Header = forwardRef(function Header(
                   setSelectedCategory(i)
                   setNavOpen(true)
                 }}
-                className="relative mx-0.5 my-2.5 hidden items-center rounded-xl p-2.5 text-sm font-medium transition-colors duration-200 hover:bg-contrast-100 @4xl:inline-flex"
+                className="relative mx-0.5 my-2.5 hidden items-center rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200 hover:bg-contrast-100 focus:outline-0 focus:ring-2 @4xl:inline-flex"
               >
                 {item.item.text}
               </Link>
@@ -99,7 +99,7 @@ export const Header = forwardRef(function Header(
           <Link
             href={logo?.link?.href ?? '/'}
             target={logo?.link?.target}
-            className="mx-auto py-3 text-2xl font-semibold text-foreground"
+            className="mx-auto rounded-xl py-3 text-2xl font-semibold text-foreground ring-primary focus:outline-0 focus:ring-2"
           >
             {logo?.image ? (
               <Image src={logo.image.url} height={29} width={64} alt={logo.alt ?? 'Logo'} />
@@ -114,7 +114,7 @@ export const Header = forwardRef(function Header(
               <button
                 role="button"
                 aria-label="Search"
-                className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
+                className="rounded-lg p-1.5 ring-primary transition-colors focus:outline-0 focus:ring-2 @4xl:hover:bg-contrast-100"
               >
                 <Search className="h-5 w-5" strokeWidth={1} />
               </button>
@@ -122,14 +122,14 @@ export const Header = forwardRef(function Header(
             <button
               role="button"
               aria-label="Profile"
-              className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
+              className="rounded-lg p-1.5 ring-primary transition-colors focus:outline-0 focus:ring-2 @4xl:hover:bg-contrast-100"
             >
               <User className="h-5 w-5" strokeWidth={1} />
             </button>
             <button
               role="button"
               aria-label="Cart"
-              className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
+              className="rounded-lg p-1.5 ring-primary transition-colors focus:outline-0 focus:ring-2 @4xl:hover:bg-contrast-100"
             >
               <ShoppingBag className="h-5 w-5" strokeWidth={1} />
             </button>
@@ -151,7 +151,7 @@ export const Header = forwardRef(function Header(
                 <Link
                   href={item.item.link.href}
                   target={item.item.link.target}
-                  className="rounded-lg px-3 py-4 font-semibold transition-colors hover:bg-contrast-100"
+                  className="rounded-lg px-3 py-4 font-semibold ring-primary transition-colors hover:bg-contrast-100 focus:outline-0 focus:ring-2"
                 >
                   {item.item.text}
                 </Link>
@@ -160,7 +160,7 @@ export const Header = forwardRef(function Header(
                     key={j}
                     href={link.link.href}
                     target={link.link.target}
-                    className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
+                    className="block rounded-lg px-3 py-4 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus:outline-0 focus:ring-2"
                   >
                     {link.text}
                   </Link>
@@ -177,7 +177,7 @@ export const Header = forwardRef(function Header(
                       key={i}
                       href={link.link.href}
                       target={link.link.target}
-                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
+                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus:outline-0 focus:ring-2"
                     >
                       {link.text}
                     </Link>

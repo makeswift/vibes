@@ -65,7 +65,10 @@ export const Footer = function Footer({
       <div className="mx-3 flex flex-col justify-between gap-10 pt-16 @xl:mx-6 @xl:py-20 @2xl:flex-row @5xl:mx-20">
         {/* Logo */}
         <div className="@2xl:w-1/3 @5xl:w-full">
-          <Link href="/" className="relative inline-block h-5 w-32">
+          <Link
+            href="#"
+            className="relative inline-block h-5 w-32 rounded-lg ring-primary focus:outline-0 focus:ring-2"
+          >
             {typeof logo === 'string' ? (
               <span className="text-2xl font-semibold">{logo}</span>
             ) : (
@@ -94,8 +97,8 @@ export const Footer = function Footer({
                       return (
                         <li key={i}>
                           <Link
-                            className="block py-2 font-medium opacity-50 transition-opacity duration-300 hover:opacity-100"
-                            href={link.href || '/'}
+                            className="block rounded-lg py-2 font-medium opacity-50 ring-primary transition-opacity duration-300 hover:opacity-100 focus:outline-0 focus:ring-2"
+                            href={link.href}
                           >
                             {link.label}
                           </Link>
