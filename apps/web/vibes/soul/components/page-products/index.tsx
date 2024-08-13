@@ -23,8 +23,8 @@ export const ProductsPage = function ProductsPage() {
       <ProductsHeader title="All Men" numberOfProducts={32} />
       <ProductsList products={products} />
       <Pagination pages={5} />
-      <FeaturedProductsCarousel title="Recently Viewed" products={products} />
       <CompareDrawer products={compareProducts} />
+      <FeaturedProductsCarousel title="Recently Viewed" products={products} />
       <Footer sections={footerLinks} logo="SOUL" />
     </>
   )

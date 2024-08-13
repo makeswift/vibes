@@ -52,7 +52,7 @@ export const Footer = function Footer({
   return (
     <footer
       className={clsx(
-        'border-b-[4px] border-t border-b-primary border-t-contrast-100 bg-background text-foreground @container',
+        'border-b-[4px] border-b-primary bg-background text-foreground @container',
         className
       )}
     >
@@ -62,7 +62,7 @@ export const Footer = function Footer({
         socialMediaLinks,
       */}
 
-      <div className="mx-3 flex flex-col justify-between gap-10 pt-16 @xl:mx-6 @xl:py-20 @2xl:flex-row @5xl:mx-20">
+      <div className="mx-3 flex flex-col justify-between gap-10 border-t border-t-contrast-100 pt-16 @xl:mx-6 @xl:py-20 @2xl:flex-row @5xl:mx-20">
         {/* Logo */}
         <div className="@2xl:w-1/3 @5xl:w-full">
           <Link

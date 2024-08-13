@@ -32,9 +32,9 @@ export const CompareDrawer = function CompareDrawer({ products }: Props) {
   return (
     products &&
     products.length > 0 && (
-      <section className="sticky bottom-0 w-full border-t bg-background @container">
+      <div className="sticky bottom-0 w-full border-y bg-background @container">
         <div className="mx-auto flex w-full max-w-7xl flex-wrap items-end justify-end gap-5 px-3 py-5 @xl:px-6 @5xl:px-20">
-          {products.map((product, index) => (
+          {products.map((product, index: number) => (
             <ProductChip key={index} product={product} onDismiss={() => handleDismiss(index)} />
           ))}
 
@@ -42,7 +42,7 @@ export const CompareDrawer = function CompareDrawer({ products }: Props) {
             Compare<span className="-ml-1.5 hidden @4xl:block">&nbsp;Items</span>
           </Button>
         </div>
-      </section>
+      </div>
     )
   )
 }
