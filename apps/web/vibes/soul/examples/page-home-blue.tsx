@@ -1,4 +1,4 @@
-import CategoryCard from '@/vibes/soul//components/category-card'
+import { CardProps } from '@/vibes/soul//components/card'
 import HomePage from '@/vibes/soul/components/page-home'
 
 export const heroSlides = [
@@ -37,26 +37,26 @@ export const heroSlides = [
   },
 ]
 
-export const categories: CategoryCard[] = [
+export const categories: CardProps[] = [
   {
     label: 'Men',
-    image: 'https://rstr.in/monogram/vibes/ptJ724KlDom',
-    ctaLink: { href: '#' },
+    image: { src: 'https://rstr.in/monogram/vibes/ptJ724KlDom', altText: 'Men' },
+    href: '#',
   },
   {
     label: 'Women',
-    image: 'https://rstr.in/monogram/vibes/P3yw1GHGDuv',
-    ctaLink: { href: '#' },
+    image: { src: 'https://rstr.in/monogram/vibes/P3yw1GHGDuv', altText: 'Women' },
+    href: '#',
   },
   {
     label: 'Footwear',
-    image: 'https://rstr.in/monogram/vibes/XG-Zqe3Y2xH',
-    ctaLink: { href: '#' },
+    image: { src: 'https://rstr.in/monogram/vibes/XG-Zqe3Y2xH', altText: 'Footwear' },
+    href: '#',
   },
   {
     label: 'Headwear',
-    image: 'https://rstr.in/monogram/vibes/ayf5JcyknJ4',
-    ctaLink: { href: '#' },
+    image: { src: 'https://rstr.in/monogram/vibes/ayf5JcyknJ4', altText: 'Headwear' },
+    href: '#',
   },
 ]
 

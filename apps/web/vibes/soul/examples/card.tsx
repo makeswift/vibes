@@ -1,13 +1,13 @@
-import CategoryCard from '@/vibes/soul/components/category-card'
+import Card from '@/vibes/soul/components/card'
 
 export default function Preview() {
   return (
     <div className="flex min-h-48 items-center justify-center p-5 @container">
-      <CategoryCard
+      <Card
         label="Low Maintenance"
-        image="https://rstr.in/monogram/vibes/YOD5DuBfoFM"
+        image={{ src: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM', altText: 'Low Maintenance' }}
         theme="dark"
-        ctaLink={{ href: '#' }}
+        href="#"
       />
     </div>
   )

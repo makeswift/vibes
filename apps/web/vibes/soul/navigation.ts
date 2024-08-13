@@ -29,10 +29,10 @@ export const navigation = [
       },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
-        title: 'Category Card',
-        slug: 'category-card',
-        file: 'docs/category-card.mdx',
-        component: 'category-card',
+        title: 'Card',
+        slug: 'card',
+        file: 'docs/card.mdx',
+        component: 'card',
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       {

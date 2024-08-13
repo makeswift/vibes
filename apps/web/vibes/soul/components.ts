@@ -1,5 +1,3 @@
-import { lazy } from 'react'
-
 import { Components } from '@/vibes/schema'
 
 export const components = [
@@ -34,6 +32,12 @@ export const components = [
     files: ['components/button/index.tsx'],
   },
   {
+    name: 'card',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/card/index.tsx'],
+  },
+  {
     name: 'card-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
@@ -44,12 +48,6 @@ export const components = [
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
     files: ['components/carousel/index.tsx'],
-  },
-  {
-    name: 'category-card',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['components/category-card/index.tsx'],
   },
   {
     name: 'checkbox',

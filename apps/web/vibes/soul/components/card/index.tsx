@@ -1,4 +1,3 @@
-import { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
@@ -6,27 +5,26 @@ import { ComponentPropsWithoutRef } from 'react'
 import clsx from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 
-export type Category = {
+export type CardProps = {
   label: string
-  image: string
-  theme?: 'light' | 'dark'
-  ctaLink?: {
-    href: string
-    target?: '_self' | '_blank'
+  image: {
+    src: string
+    altText: string
   }
+  theme?: 'light' | 'dark'
+  href: string
 }
 
-export const CategoryCard = function CategoryCard({
+export const Card = function Card({
   label,
   image,
   theme = 'light',
-  ctaLink,
+  href,
   ...props
-}: Category & ComponentPropsWithoutRef<'a'>) {
+}: CardProps & ComponentPropsWithoutRef<'a'>) {
   return (
     <Link
-      href={ctaLink?.href as Route}
-      target={ctaLink?.target}
+      href={href}
       className="group relative flex aspect-[3/4] max-h-[600px] w-full min-w-[226px] max-w-[467px] flex-col gap-2 rounded-xl ring-primary focus:outline-0 focus:ring-2 @xl:min-w-[33%] @4xl:min-w-[300px]"
       {...props}
     >
@@ -39,16 +37,16 @@ export const CategoryCard = function CategoryCard({
       />
       <div className="relative h-full w-full overflow-hidden rounded-lg @4xl:rounded-xl">
         <Image
-          src={image}
+          src={image.src}
           fill
-          alt="Category card image"
+          alt={image.altText}
           className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>
       <span
         className={clsx(
-          'line-clamp-1 text-lg font-medium @4xl:absolute @4xl:bottom-5 @4xl:left-5',
-          theme === 'dark' ? 'text-background' : 'text-foreground'
+          'line-clamp-1 text-lg font-medium text-foreground @sm:absolute @sm:bottom-5 @sm:left-5',
+          theme === 'dark' ? '@sm:text-background' : '@sm:text-foreground'
         )}
       >
         {label}
@@ -57,4 +55,4 @@ export const CategoryCard = function CategoryCard({
   )
 }
 
-export default CategoryCard
+export default Card

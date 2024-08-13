@@ -1,6 +1,6 @@
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
+import Card, { CardProps } from '@/vibes/soul/components/card'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
-import CategoryCard, { Category } from '@/vibes/soul/components/category-card'
 import Feature from '@/vibes/soul/components/feature'
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
 import FeaturedVideo from '@/vibes/soul/components/featured-video'
@@ -25,8 +25,8 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
         <Slideshow slides={heroSlides} />
         <CardCarousel>
-          {categories.map((category: Category) => (
-            <CategoryCard key={category.label} {...category} />
+          {categories.map((card: CardProps) => (
+            <Card key={card.label} {...card} />
           ))}
         </CardCarousel>
         <FeaturedVideo
