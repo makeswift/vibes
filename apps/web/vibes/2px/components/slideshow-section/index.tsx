@@ -113,7 +113,7 @@ export default function SlideshowSection({ className, slides }: Props) {
         )}
       </div>
       <div className="mx-auto mb-10 w-full max-w-xl px-5 text-center text-sm text-foreground">
-        <h2 className="mb-2 font-mono leading-[1.375rem] tracking-[0.02em]">
+        <h2 className="mb-2 font-mono uppercase leading-[1.375rem] tracking-[0.02em]">
           {currentSlide.title}
         </h2>
         <p className="font-bold leading-6">{currentSlide.description}</p>
