@@ -35,10 +35,10 @@ export const FeaturedProductsList = function FeaturedProductsList({
           {description && <p className="hidden pb-2 text-foreground @4xl:block">{description}</p>}
           {cta && (
             <Button
-              link={{ href: cta.href }}
               className="h-5 bg-transparent !px-0 text-sm @4xl:h-12 @4xl:bg-primary @4xl:!px-6"
+              asChild
             >
-              {cta.label}
+              <Link href={cta.href}>{cta.label}</Link>
             </Button>
           )}
         </div>

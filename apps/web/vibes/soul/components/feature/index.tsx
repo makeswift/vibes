@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import clsx from 'clsx'
 
@@ -68,12 +69,12 @@ export const Feature = function Feature({ image, heading, description, grid, lin
 
           <Button
             variant="primary"
-            link={{ href: link.href, target: link.target }}
-            className={clsx('text-foreground', {
+            className={clsx({
               'self-center @3xl/section:self-start': grid?.length,
             })}
+            asChild
           >
-            {link.label}
+            <Link href={link.href}>{link.label}</Link>
           </Button>
         </div>
       </div>

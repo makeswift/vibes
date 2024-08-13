@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import clsx from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
@@ -53,10 +55,10 @@ export const FeaturedVideo = function FeaturedVideo({
           <p className="max-w-xl pb-2">{description}</p>
           <Button
             variant={mediaAlign ? 'primary' : 'tertiary'}
-            link={{ href: link.href, target: link.target }}
             className={clsx(mediaAlign ? 'text-foreground' : 'text-background')}
+            asChild
           >
-            Show Now
+            <Link href={link.href}>Show Now</Link>
           </Button>
         </div>
       </div>
