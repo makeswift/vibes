@@ -67,7 +67,14 @@ export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
 
             {/* TODO: Implement progressive loading with blurDataUrl */}
             {image?.src && (
-              <Image src={image.src} alt={image.altText} fill className="object-cover" />
+              <Image
+                src={image.src}
+                placeholder={image.blurDataUrl ? 'blur' : 'empty'}
+                blurDataURL={image.blurDataUrl}
+                alt={image.altText}
+                fill
+                className="object-cover"
+              />
             )}
           </div>
         )

@@ -8,6 +8,7 @@ type Props = {
   description: string
   image: {
     src: string
+    blurDataUrl?: string
     altText: string
   }
   cta: {
@@ -21,7 +22,14 @@ export const FeaturedImage = function FeaturedImage({ title, description, image,
     <section className="relative h-[100dvh] max-h-[880px] bg-primary-shadow @container">
       <div className="flex h-full flex-col @3xl:flex-row">
         <div className="relative h-full w-full @3xl:w-1/2 @5xl:w-3/5">
-          <Image src={image.src} alt={image.altText} fill className="object-cover" />
+          <Image
+            src={image.src}
+            alt={image.altText}
+            fill
+            placeholder={image.blurDataUrl ? 'blur' : 'empty'}
+            blurDataURL={image.blurDataUrl}
+            className="object-cover"
+          />
         </div>
 
         <div className="z-10 mx-auto flex w-full max-w-7xl flex-col items-start justify-end gap-4 px-3 py-10 text-background @xl:px-6 @3xl:w-1/2 @5xl:w-2/5 @5xl:p-20">
