@@ -78,10 +78,9 @@ export const FilterDialog = function FilterDialog() {
           <Dialog.Content
             className={clsx(
               'absolute right-0 top-0 flex h-full flex-col overflow-y-auto bg-background p-6 @md:p-20',
-              'transition-transform duration-300 ease-out',
               // TODO: Get panel to slide open and closed
-              'data-[state=closed]:translate-x-full data-[state=open]:translate-x-0'
-              // filterOpen ? 'translate-x-0' : 'translate-x-full'
+              'duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out',
+              'data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
             )}
           >
             <>
