@@ -3,54 +3,58 @@ import ProductCard from '@/vibes/2px/components/product-card'
 
 const items = [
   <ProductCard
+    id="sintra-curved-bench"
     key={'sintra-curved-bench'}
-    title="Sintra Curved Bench in oak"
+    name="Sintra Curved Bench in oak"
     image={{
       src: '/2px/sintra-curved-bench.png',
-      alt: 'Sintra Curved Bench in oak',
+      altText: 'Sintra Curved Bench in oak',
       width: 300,
       height: 400,
     }}
     price="€2,600"
     className="border-r-0"
-    link="/"
+    href="/"
   />,
 
   <ProductCard
+    id="alentejo-coffee-table"
     key={'alentejo-coffee-table'}
-    title="Alentejo Coffee Table"
-    tag="new season"
+    name="Alentejo Coffee Table"
+    badge="new season"
     image={{
       src: '/2px/alentejo-coffee-table.png',
-      alt: 'Alentejo Coffee Table',
+      altText: 'Alentejo Coffee Table',
       height: 400,
       width: 300,
     }}
     price="€4,200"
     className="border-r-0"
-    link="/"
+    href="/"
   />,
 
   <ProductCard
+    id="arc-de-stool"
     key={'arc-de-stool'}
-    title="Arc de Stool '52"
-    image={{ src: '/2px/arc-de-stool.png', alt: "Arc de Stool '52", height: 400, width: 300 }}
+    name="Arc de Stool '52"
+    image={{ src: '/2px/arc-de-stool.png', altText: "Arc de Stool '52", height: 400, width: 300 }}
     price="€1,100"
     className="border-r-0"
-    link="/"
+    href="/"
   />,
 
   <ProductCard
+    id="a-table-dining"
     key={'a-table-dining'}
-    title="À Table - Dining Table"
+    name="À Table - Dining Table"
     image={{
       src: '/2px/a-table-dining.jpg',
-      alt: 'À Table - DiningTable',
+      altText: 'À Table - DiningTable',
       width: 300,
       height: 400,
     }}
     price="€14,000"
-    link="/"
+    href="/"
   />,
 ]
 
