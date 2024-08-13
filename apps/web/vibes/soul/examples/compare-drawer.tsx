@@ -3,7 +3,7 @@ import { Product } from '@/vibes/soul/components/product-card'
 
 export const compareProducts: Product[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Men’s Long Sleeve Jersey',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
@@ -15,7 +15,7 @@ export const compareProducts: Product[] = [
     href: '#',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Men’s Long Sleeve Jersey',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
