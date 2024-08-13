@@ -18,7 +18,7 @@ function ExpandableText({
       {text.length > maxCharCount && !isExpanded ? text.slice(0, maxCharCount) + '...' : text}
       {text.length > maxCharCount && (
         <button
-          className="inline-block font-mono text-sm uppercase leading-[1.125rem] tracking-[0.02em] underline underline-offset-2"
+          className="inline-block pl-1 font-mono text-sm uppercase leading-[1.125rem] tracking-[0.02em] underline underline-offset-2"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {isExpanded ? 'Read less' : 'Read more'}
