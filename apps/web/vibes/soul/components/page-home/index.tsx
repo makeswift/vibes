@@ -22,7 +22,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
       <div className="relative flex flex-col">
-        <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+        <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
         <Slideshow slides={heroSlides} />
         <CardCarousel>
           {categories.map((category: CategoryCard) => (

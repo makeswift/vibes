@@ -1,14 +1,14 @@
 'use client'
 
-import { ComponentPropsWithoutRef, useCallback, useEffect, useState } from 'react'
+import { ComponentPropsWithoutRef, ReactNode, useCallback, useEffect, useState } from 'react'
 
 import useEmblaCarousel from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 import ScrollBar from '@/vibes/soul/components/card-carousel/scrollbar'
 
-type Props = {
-  children: React.ReactNode
+interface Props {
+  children: ReactNode
 }
 
 export const CardCarousel = ({ children }: Props & ComponentPropsWithoutRef<'div'>) => {

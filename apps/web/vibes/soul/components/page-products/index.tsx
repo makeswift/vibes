@@ -19,7 +19,7 @@ export const ProductsPage = function ProductsPage() {
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
-      <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+      <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
       <ProductsHeader title="All Men" numberOfProducts={32} />
       <ProductsList products={products} />
       <Pagination pages={5} />
