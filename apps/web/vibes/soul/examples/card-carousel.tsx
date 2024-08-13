@@ -26,7 +26,7 @@ export const categories: CategoryCard[] = [
 
 export default function Preview() {
   return (
-    <CardCarousel title="Category" link={{ label: 'See All', href: '#' }}>
+    <CardCarousel>
       {categories.map(category => (
         <CategoryCard key={category.label} {...category} />
       ))}
