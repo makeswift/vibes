@@ -69,16 +69,24 @@ export default function ProductCard({ className, name, price, badge, image, href
 }
 
 function Price({ price }: { price: Price }) {
-  // @TODO: update this when we have the design for the sale and range prices
-  const priceValue =
-    typeof price === 'string'
-      ? price
-      : 'currentValue' in price
-        ? price.currentValue
-        : price.maxValue
+  if (typeof price === 'string')
+    return (
+      <span className="font-body text-base font-medium @lg:text-lg @lg:-tracking-[0.01em]">
+        {price}
+      </span>
+    )
+
+  if ('currentValue' in price)
+    return (
+      <div className="flex gap-4 font-body text-base font-medium @lg:text-lg @lg:-tracking-[0.01em]">
+        <span className="line-through">{price.previousValue}</span>
+        <span className="">{price.currentValue}</span>
+      </div>
+    )
+
   return (
-    <span className="font-body text-base font-medium @lg:text-lg @lg:-tracking-[0.01em]">
-      {priceValue}
-    </span>
+    <div className="flex gap-4 font-body text-base font-medium @lg:text-lg @lg:-tracking-[0.01em]">
+      <span>From {price.minValue}</span> <span>to {price.maxValue}</span>
+    </div>
   )
 }
