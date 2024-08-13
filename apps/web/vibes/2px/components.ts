@@ -254,4 +254,10 @@ export const components = [
     registryDependencies: [],
     files: ['./components/product-card/index.tsx', '../../lib/utils.ts'],
   },
+  {
+    name: 'gallery',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/gallery/index.tsx', '../../lib/utils.ts'],
+  },
 ] satisfies Components

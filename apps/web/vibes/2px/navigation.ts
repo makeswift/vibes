@@ -153,6 +153,12 @@ export const navigation = [
         component: 'scratch-to-reveal-section',
       },
       {
+        title: 'Gallery',
+        slug: 'gallery',
+        file: 'docs/gallery.mdx',
+        component: 'gallery',
+      },
+      {
         title: 'Footer',
         slug: 'footer-section',
         file: 'docs/footer-section.mdx',

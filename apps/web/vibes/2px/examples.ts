@@ -289,4 +289,11 @@ export const examples = [
     files: ['examples/product-card.tsx'],
     component: lazy(() => import('./examples/product-card')),
   },
+  {
+    name: 'gallery-example',
+    dependencies: [],
+    registryDependencies: ['gallery'],
+    files: ['examples/gallery.tsx'],
+    component: lazy(() => import('./examples/gallery')),
+  },
 ] satisfies Components

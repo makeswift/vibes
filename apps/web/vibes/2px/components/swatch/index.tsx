@@ -13,7 +13,6 @@ export default function Swatch({ className, disabled, inStock, sample, ...props 
     : {
         backgroundImage: `url(${sample})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
         backgroundPosition: 'center',
       }
   return (
