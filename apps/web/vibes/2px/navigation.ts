@@ -147,6 +147,12 @@ export const navigation = [
         component: 'marquee-section',
       },
       {
+        title: 'Scratch to Reveal Section',
+        slug: 'scratch-to-reveal-section',
+        file: 'docs/scratch-to-reveal-section.mdx',
+        component: 'scratch-to-reveal-section',
+      },
+      {
         title: 'Footer',
         slug: 'footer-section',
         file: 'docs/footer-section.mdx',
