@@ -6,6 +6,10 @@ export const navigation = [
     pages: [{ title: 'Introduction', slug: 'introduction', file: 'docs/introduction.mdx' }],
   },
   {
+    title: 'Styles',
+    pages: [{ title: 'Introduction', slug: 'introduction', file: 'docs/introduction.mdx' }],
+  },
+  {
     title: 'Components',
     pages: [
       {
