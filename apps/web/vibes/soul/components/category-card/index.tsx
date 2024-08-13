@@ -6,7 +6,7 @@ import { ComponentPropsWithoutRef } from 'react'
 import clsx from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 
-export type CategoryCard = {
+export type Category = {
   label: string
   image: string
   theme?: 'light' | 'dark'
@@ -22,12 +22,12 @@ export const CategoryCard = function CategoryCard({
   theme = 'light',
   ctaLink,
   ...props
-}: CategoryCard & ComponentPropsWithoutRef<'a'>) {
+}: Category & ComponentPropsWithoutRef<'a'>) {
   return (
     <Link
       href={ctaLink?.href as Route}
       target={ctaLink?.target}
-      className="group relative flex aspect-[3/4] w-full min-w-[226px] flex-col gap-2 rounded-xl ring-primary focus:outline-0 focus:ring-2  @xl:min-w-[33%] @4xl:min-w-[300px]"
+      className="group relative flex aspect-[3/4] max-h-[600px] w-full min-w-[226px] max-w-[467px] flex-col gap-2 rounded-xl ring-primary focus:outline-0 focus:ring-2 @xl:min-w-[33%] @4xl:min-w-[300px]"
       {...props}
     >
       <ArrowUpRight
@@ -42,7 +42,7 @@ export const CategoryCard = function CategoryCard({
           src={image}
           fill
           alt="Category card image"
-          className="w-full select-none  bg-contrast-100 object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+          className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>
       <span

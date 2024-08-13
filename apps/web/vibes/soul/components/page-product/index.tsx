@@ -19,7 +19,7 @@ export const ProductPage = function ProductPage() {
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
       <div className="relative flex flex-col">
-        <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+        <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
 
         <ProductDetail
           product={
