@@ -40,7 +40,7 @@ export const ProductDetail = function ProductDetail({
 
           {content && content}
 
-          <Price price={product.price} className="!text-2xl" />
+          <Price price={product.price || ''} className="!text-2xl" />
 
           <div className="flex max-w-sm flex-wrap gap-2.5 pt-16">
             {options &&
