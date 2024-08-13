@@ -14,7 +14,7 @@ interface Image {
 }
 
 export interface Product {
-  id: string
+  id: number
   name: string
   href: string
   image?: Image
