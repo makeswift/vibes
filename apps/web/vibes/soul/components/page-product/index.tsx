@@ -3,6 +3,7 @@ import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
 import IconBlock from '@/vibes/soul/components/icon-block'
+import { Product } from '@/vibes/soul/components/product-card'
 import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
 import Subscribe from '@/vibes/soul/components/subscribe'
@@ -21,16 +22,18 @@ export const ProductPage = function ProductPage() {
         <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
 
         <ProductDetail
-          product={{
-            id: '1',
-            name: "Men's Long Sleeve Jersey",
-            price: '$39.95',
-            image: {
-              src: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
-              alt: 'Men’s Long Sleeve Jersey',
-            },
-            cta: { href: '#' },
-          }}
+          product={
+            {
+              id: '1',
+              name: "Men's Long Sleeve Jersey",
+              price: '$39.95',
+              image: {
+                src: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
+                altText: 'Men’s Long Sleeve Jersey',
+              },
+              href: '#',
+            } as Product
+          }
           images={[
             'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
             'https://rstr.in/monogram/vibes/nBQFO6MyZ34',
@@ -49,7 +52,7 @@ export const ProductPage = function ProductPage() {
           options={['XS', 'S', 'M', 'L', 'XL', 'XXL']}
         />
 
-        {/* TODO: Add Review / Returns Here */}
+        {/* TODO: @sami Add Review / Returns Here */}
 
         <ProductDescription
           accordions={[
@@ -103,18 +106,15 @@ export const ProductPage = function ProductPage() {
             },
           ]}
         />
-
         <FeaturedProductsCarousel
           title="New Arrivals"
           cta={{ label: 'See All', href: '#' }}
           products={featuredProducts}
         />
-
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"
-          action={formData => console.log(formData)}
         />
         <Footer sections={footerLinks} logo="SOUL" />
       </div>

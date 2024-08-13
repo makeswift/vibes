@@ -3,9 +3,9 @@ import CardCarousel from '@/vibes/soul/components/card-carousel'
 import CategoryCard from '@/vibes/soul/components/category-card'
 import Feature from '@/vibes/soul/components/feature'
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
+import FeaturedVideo from '@/vibes/soul/components/featured-video'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
-import MediaSection from '@/vibes/soul/components/media-section'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
@@ -29,7 +29,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
             <CategoryCard key={category.label} {...category} />
           ))}
         </CardCarousel>
-        <MediaSection
+        <FeaturedVideo
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
@@ -42,7 +42,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           cta={{ label: 'Shop Now', href: '/#' }}
           products={featuredProducts}
         />
-        <MediaSection
+        <FeaturedVideo
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
@@ -54,13 +54,13 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="brand-highlight"
-          action={(formData: FormData) => console.log(formData)}
         />
         <FeaturedProductsCarousel
           title="New Arrivals"
           cta={{ label: 'See All', href: '#' }}
           products={featuredProducts}
         />
+
         <Feature
           image={{
             url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
@@ -75,19 +75,18 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           }}
         />
         <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
-        <MediaSection
+        <FeaturedVideo
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
           video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-          link={{ href: '/', target: '_self' }}
+          link={{ href: '#', target: '_self' }}
           mediaAlign="left"
         />
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"
-          action={(formData: FormData) => console.log(formData)}
         />
         <Footer sections={footerLinks} logo="SOUL" />
       </div>
