@@ -9,7 +9,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      label: 'Button',
+      label: 'Shop Now',
       href: '#',
     },
   },
@@ -21,7 +21,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      label: 'Button',
+      label: 'Shop Now',
       href: '#',
     },
   },
@@ -33,7 +33,7 @@ export const heroSlides = [
       altText: 'alt',
     },
     cta: {
-      label: 'Button',
+      label: 'Shop Now',
       href: '#',
     },
   },
