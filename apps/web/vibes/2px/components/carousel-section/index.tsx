@@ -10,14 +10,8 @@ import Styles from './index.module.css'
 interface Props {
   className?: string
   title?: string
-  loop?: boolean
-  autoplay?: number
   items: React.ReactNode[]
-  itemsShown?: number
-  mobileItemsShown?: number
-  showDots?: boolean
   showArrows: boolean
-  pageSize?: 2 | 3 | 4
 }
 
 export default function CarouselSection({ className, title, items, showArrows }: Props) {
