@@ -14,7 +14,6 @@ export interface Props {
 
 function ctaStyles(
   className = '',
-  link: Props['link'] = { href: '' },
   variant: Props['variant'] = 'primary',
   size: Props['size'] = 'default'
 ) {
@@ -72,7 +71,7 @@ export const Button = forwardRef(function Button(
     return (
       <Link
         ref={ref as Ref<HTMLAnchorElement>}
-        className={ctaStyles(className, link, variant, size)}
+        className={ctaStyles(className, variant, size)}
         href={link?.href ?? '#'}
         target={link?.target}
       >
@@ -83,7 +82,7 @@ export const Button = forwardRef(function Button(
     return (
       <button
         ref={ref as Ref<HTMLButtonElement>}
-        className={ctaStyles(className, undefined, variant, size)}
+        className={ctaStyles(className, variant, size)}
         onClick={onClick}
       >
         <InnerSpan />
