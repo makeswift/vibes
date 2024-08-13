@@ -2,10 +2,9 @@ import Image from 'next/image'
 
 import clsx from 'clsx'
 
-import Input from '@/vibes/soul/components/input'
+import InlineEmailForm from '@/vibes/soul/components/inline-email-form'
 
 interface Props {
-  action: (formData: FormData) => void
   image?: {
     src: string
     altText: string
@@ -15,13 +14,7 @@ interface Props {
   theme?: 'brand-highlight' | 'brand-shadow' | 'light' | 'neutral'
 }
 
-export const Subscribe = function Subscribe({ action, image, title, description, theme }: Props) {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-    action(formData)
-  }
-
+export const Subscribe = function Subscribe({ image, title, description, theme }: Props) {
   return (
     <section
       className={clsx('@container', {
@@ -49,14 +42,8 @@ export const Subscribe = function Subscribe({ action, image, title, description,
             <h2 className="mb-2 text-4xl font-medium leading-none @7xl:text-5xl">{title}</h2>
             <p className="text-[15px] opacity-50">{description}</p>
           </div>
-          <form className="w-full" onSubmit={handleSubmit}>
-            <Input
-              variant={theme == 'light' ? 'brand' : 'button'}
-              placeholder="Join our Newsletter"
-              type="email"
-              className="max-w-5xl"
-            />
-          </form>
+
+          <InlineEmailForm />
         </div>
       </div>
     </section>

@@ -1,4 +1,26 @@
+// import { redirect } from 'next/navigation'
+// import { SubmissionResult } from '@conform-to/react'
+// import { parseWithZod } from '@conform-to/zod'
+// import { z } from 'zod'
 import Subscribe from '@/vibes/soul/components/subscribe'
+
+// async function action(prevState: unknown, formData: FormData): Promise<SubmissionResult> {
+//   'use server'
+
+//   const submission = parseWithZod(formData, {
+//     schema: z.object({
+//       email: z.string().email(),
+//     }),
+//   })
+
+//   console.log({ submission })
+
+//   if (submission.status !== 'success') {
+//     return submission.reply()
+//   }
+
+//   return redirect('/f?value=')
+// }
 
 export default function Preview() {
   const image = {
@@ -13,38 +35,32 @@ export default function Preview() {
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="brand-shadow"
-        action={(formData: FormData) => console.log(formData)}
       />
       <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="brand-shadow"
-        action={(formData: FormData) => console.log(formData)}
       />
       <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="brand-highlight"
-        action={(formData: FormData) => console.log(formData)}
       />
       <Subscribe
         image={image}
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="neutral"
-        action={(formData: FormData) => console.log(formData)}
       />
       <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="neutral"
-        action={(formData: FormData) => console.log(formData)}
       />
       <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         theme="light"
-        action={(formData: FormData) => console.log(formData)}
       />
     </div>
   )
