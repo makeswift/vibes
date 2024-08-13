@@ -8,14 +8,32 @@ export default function Preview() {
   return (
     <div className="flex min-h-48 flex-col items-center justify-center gap-5 bg-background sm:min-h-64 lg:min-h-80">
       <SlideshowSection
-        images={[
-          { src: img1.src, alt: 'Image 1', width: img1.width, height: img1.height },
-          { src: img3.src, alt: 'Image 3', width: img3.width, height: img3.height },
-          { src: img4.src, alt: 'Image 4', width: img4.width, height: img4.height },
-          { src: img2.src, alt: 'Image 2', width: img2.width, height: img2.height },
+        slides={[
+          {
+            title: 'Summer 2024 lookbook',
+            image: { src: img1.src, altText: 'Image 1' },
+            cta: { href: '/shop', label: 'Shop now' },
+            description: 'Summer 2022 we moved into Reform´s big bright showroom in Copenhagen.',
+          },
+          {
+            title: 'Summer 2024 lookbook 2',
+            image: { src: img2.src, altText: 'Image 2' },
+            cta: { href: '/shop', label: 'Shop now' },
+            description: 'Summer 2022 we moved into Reform´s big bright showroom in Copenhagen.',
+          },
+          {
+            title: 'Summer 2024 lookbook 3',
+            image: { src: img3.src, altText: 'Image 3' },
+            cta: { href: '/shop', label: 'Shop now' },
+            description: 'Summer 2022 we moved into Reform´s big bright showroom in Copenhagen.',
+          },
+          {
+            title: 'Summer 2024 lookbook 4',
+            image: { src: img4.src, altText: 'Image 4' },
+            cta: { href: '/shop', label: 'Shop now' },
+            description: 'Summer 2022 we moved into Reform´s big bright showroom in Copenhagen.',
+          },
         ]}
-        title="Summer 2024 lookbook"
-        description="Summer 2022 we moved into Reform´s big bright showroom in Copenhagen."
       />
     </div>
   )
