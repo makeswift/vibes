@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 
 export type CardProps = {
-  label: string
+  title: string
   image: {
     src: string
     altText: string
@@ -16,7 +16,7 @@ export type CardProps = {
 }
 
 export const Card = function Card({
-  label,
+  title,
   image,
   theme = 'light',
   href,
@@ -49,7 +49,7 @@ export const Card = function Card({
           theme === 'dark' ? '@sm:text-background' : '@sm:text-foreground'
         )}
       >
-        {label}
+        {title}
       </span>
     </Link>
   )

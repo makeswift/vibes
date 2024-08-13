@@ -39,22 +39,22 @@ export const heroSlides = [
 
 export const categories: CardProps[] = [
   {
-    label: 'Men',
+    title: 'Men',
     image: { src: 'https://rstr.in/monogram/vibes/ptJ724KlDom', altText: 'Men' },
     href: '#',
   },
   {
-    label: 'Women',
+    title: 'Women',
     image: { src: 'https://rstr.in/monogram/vibes/P3yw1GHGDuv', altText: 'Women' },
     href: '#',
   },
   {
-    label: 'Footwear',
+    title: 'Footwear',
     image: { src: 'https://rstr.in/monogram/vibes/XG-Zqe3Y2xH', altText: 'Footwear' },
     href: '#',
   },
   {
-    label: 'Headwear',
+    title: 'Headwear',
     image: { src: 'https://rstr.in/monogram/vibes/ayf5JcyknJ4', altText: 'Headwear' },
     href: '#',
   },

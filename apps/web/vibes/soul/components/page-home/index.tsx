@@ -26,7 +26,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <Slideshow slides={heroSlides} />
         <CardCarousel>
           {categories.map((card: CardProps) => (
-            <Card key={card.label} {...card} />
+            <Card key={card.title} {...card} />
           ))}
         </CardCarousel>
         <FeaturedVideo

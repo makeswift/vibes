@@ -39,22 +39,22 @@ export const heroSlides = [
 
 export const categories: CardProps[] = [
   {
-    label: 'Small Plants',
+    title: 'Small Plants',
     image: { src: 'https://rstr.in/monogram/vibes/fRbI7J5z00o', altText: 'Small Plants' },
     href: '#',
   },
   {
-    label: 'Low Maintenance',
+    title: 'Low Maintenance',
     image: { src: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6', altText: 'Low Maintenance' },
     href: '#',
   },
   {
-    label: 'Indestructible',
+    title: 'Indestructible',
     image: { src: 'https://rstr.in/monogram/vibes/vf9FEg1kvz6', altText: 'Indestructible' },
     href: '#',
   },
   {
-    label: 'Succulent',
+    title: 'Succulent',
     image: { src: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6', altText: 'Succulent' },
     href: '#',
   },
