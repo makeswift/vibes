@@ -256,8 +256,31 @@ export const components = [
   },
   {
     name: 'gallery',
+    dependencies: ['button', 'dropdown', 'swatch'],
+    registryDependencies: [],
+    files: [
+      './components/gallery/index.tsx',
+      '../../lib/utils.ts',
+      './components/gallery/expandable-text.tsx',
+      './components/gallery/options-selector.tsx',
+    ],
+  },
+  {
+    name: 'header',
+    dependencies: [],
+    registryDependencies: ['badge'],
+    files: [
+      './components/header/index.tsx',
+      '../../lib/utils.ts',
+      './components/icons/ChevronDownIcon.tsx',
+      './components/icons/CrossIcon.tsx',
+      './components/icons/SearchIcon.tsx',
+    ],
+  },
+  {
+    name: 'slideshow-section',
     dependencies: [],
     registryDependencies: [],
-    files: ['./components/gallery/index.tsx', '../../lib/utils.ts'],
+    files: ['./components/slideshow-section/index.tsx', '../../lib/utils.ts'],
   },
 ] satisfies Components
