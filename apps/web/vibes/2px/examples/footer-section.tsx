@@ -19,8 +19,8 @@ export default function Preview() {
             </Link>
           </>
         }
-        logo={{ url: '/2px/logo.svg', alt: '2px Logo', width: 293, height: 149 }}
-        footNote={
+        logo={{ src: '/2px/logo.svg', altText: '2px Logo', width: 293, height: 149 }}
+        copyright={
           <p className="flex gap-6">
             <span>© 2024 2px</span>
             <span>
@@ -31,25 +31,25 @@ export default function Preview() {
             </span>
           </p>
         }
-        socials={[
+        socialMediaLinks={[
           {
-            link: 'https://www.facebook.com',
+            href: 'https://www.facebook.com',
             icon: <FacebookIcon />,
           },
           {
-            link: 'https://www.instagram.com',
+            href: 'https://www.instagram.com',
             icon: <InstagramIcon />,
           },
           {
-            link: 'https://www.twitter.com',
+            href: 'https://www.twitter.com',
             icon: <TwitterIcon />,
           },
           {
-            link: 'https://www.pinterest.com',
+            href: 'https://www.pinterest.com',
             icon: <PinterestIcon />,
           },
         ]}
-        groups={[
+        sections={[
           {
             title: 'categories',
             links: [
