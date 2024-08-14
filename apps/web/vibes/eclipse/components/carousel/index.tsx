@@ -1,24 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import React, { PropsWithChildren, useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import clsx from 'clsx'
-import { EmblaCarouselType, EmblaEventType, EmblaOptionsType } from 'embla-carousel'
+import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 
 import Button from '@/vibes/eclipse/components/button'
 
-// Utility function to constrain a number within a range
-const numberWithinRange = (number: number, min: number, max: number): number =>
-  Math.min(Math.max(number, min), max)
-
-// Constants for tween factors
-const TWEEN_SCALE_FACTOR_BASE = 0.12
-const TWEEN_OPACITY_FACTOR_BASE = 0.75
-const TWEEN_GLOW_OPACITY_FACTOR_BASE = 0.5
-
-// Custom hook for dot button functionality
 type UseDotButtonType = {
   selectedIndex: number
   scrollSnaps: number[]
@@ -65,21 +55,6 @@ const useDotButton = (
   }
 }
 
-// DotButton component
-type DotButtonPropType = PropsWithChildren<
-  React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
->
-
-const DotButton: React.FC<DotButtonPropType> = props => {
-  const { children, ...restProps } = props
-
-  return (
-    <button type="button" {...restProps}>
-      {children}
-    </button>
-  )
-}
-
 // Slide type
 type Slide = {
   title?: string
@@ -98,142 +73,10 @@ type EmblaCarouselPropType = {
 }
 
 const Carousel: React.FC<EmblaCarouselPropType> = props => {
-  const { slides, options, className } = props
+  const { slides, options } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
-  const tweenScaleFactor = useRef(0)
-  const tweenOpacityFactor = useRef(0)
-  const tweenGlowOpacityFactor = useRef(0)
-  const tweenNodes = useRef<HTMLElement[]>([])
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-
-  // Setters for tween factors and nodes
-  const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
-    tweenNodes.current = emblaApi.slideNodes().map(slideNode => {
-      return slideNode.querySelector('.embla__slide__number') as HTMLElement
-    })
-  }, [])
-
-  const setTweenScaleFactor = useCallback((emblaApi: EmblaCarouselType) => {
-    tweenScaleFactor.current = TWEEN_SCALE_FACTOR_BASE * emblaApi.scrollSnapList().length
-  }, [])
-
-  const setTweenOpacityFactor = useCallback((emblaApi: EmblaCarouselType) => {
-    tweenOpacityFactor.current = TWEEN_OPACITY_FACTOR_BASE * emblaApi.scrollSnapList().length
-  }, [])
-
-  const setTweenGlowOpacityFactor = useCallback((emblaApi: EmblaCarouselType) => {
-    tweenGlowOpacityFactor.current =
-      TWEEN_GLOW_OPACITY_FACTOR_BASE * emblaApi.scrollSnapList().length
-  }, [])
-
-  // Tween functions
-  const tweenScale = useCallback((emblaApi: EmblaCarouselType, eventName?: EmblaEventType) => {
-    const engine = emblaApi.internalEngine()
-    const scrollProgress = emblaApi.scrollProgress()
-    const slidesInView = emblaApi.slidesInView()
-    const isScrollEvent = eventName === 'scroll'
-
-    emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
-      let diffToTarget = scrollSnap - scrollProgress
-      const slidesInSnap = engine.slideRegistry[snapIndex]
-
-      slidesInSnap.forEach(slideIndex => {
-        if (isScrollEvent && !slidesInView.includes(slideIndex)) return
-
-        if (engine.options.loop) {
-          engine.slideLooper.loopPoints.forEach(loopItem => {
-            const target = loopItem.target()
-
-            if (slideIndex === loopItem.index && target !== 0) {
-              const sign = Math.sign(target)
-
-              if (sign === -1) {
-                diffToTarget = scrollSnap - (1 + scrollProgress)
-              }
-              if (sign === 1) {
-                diffToTarget = scrollSnap + (1 - scrollProgress)
-              }
-            }
-          })
-        }
-
-        const tweenValue = 1 - Math.abs(diffToTarget * tweenScaleFactor.current)
-        const scale = numberWithinRange(tweenValue, 0, 1).toString()
-        const tweenNode = tweenNodes.current[slideIndex]
-        tweenNode.style.transform = `scale(${scale})`
-      })
-    })
-  }, [])
-
-  const tweenOpacity = useCallback((emblaApi: EmblaCarouselType, eventName?: EmblaEventType) => {
-    const engine = emblaApi.internalEngine()
-    const scrollProgress = emblaApi.scrollProgress()
-    const slidesInView = emblaApi.slidesInView()
-    const isScrollEvent = eventName === 'scroll'
-
-    emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
-      let diffToTarget = scrollSnap - scrollProgress
-      const slidesInSnap = engine.slideRegistry[snapIndex]
-
-      slidesInSnap.forEach(slideIndex => {
-        if (isScrollEvent && !slidesInView.includes(slideIndex)) return
-
-        if (engine.options.loop) {
-          engine.slideLooper.loopPoints.forEach(loopItem => {
-            const target = loopItem.target()
-
-            if (slideIndex === loopItem.index && target !== 0) {
-              const sign = Math.sign(target)
-
-              if (sign === -1) {
-                diffToTarget = scrollSnap - (1 + scrollProgress)
-              }
-              if (sign === 1) {
-                diffToTarget = scrollSnap + (1 - scrollProgress)
-              }
-            }
-          })
-        }
-
-        const tweenValue = 1 - Math.abs(diffToTarget * tweenOpacityFactor.current)
-        const opacity = numberWithinRange(tweenValue, 0, 1).toString()
-        emblaApi.slideNodes()[slideIndex].style.opacity = opacity
-      })
-    })
-  }, [])
-
-  // Effect to initialize and set up event listeners
-  useEffect(() => {
-    if (!emblaApi) return
-
-    setTweenNodes(emblaApi)
-    setTweenScaleFactor(emblaApi)
-    setTweenOpacityFactor(emblaApi)
-    setTweenGlowOpacityFactor(emblaApi)
-    tweenScale(emblaApi)
-    tweenOpacity(emblaApi)
-
-    emblaApi
-      .on('reInit', setTweenNodes)
-      .on('reInit', setTweenScaleFactor)
-      .on('reInit', setTweenOpacityFactor)
-      .on('reInit', setTweenGlowOpacityFactor)
-      .on('reInit', tweenScale)
-      .on('scroll', tweenScale)
-      .on('slideFocus', tweenScale)
-      .on('reInit', tweenOpacity)
-      .on('scroll', tweenOpacity)
-      .on('slideFocus', tweenOpacity)
-  }, [
-    emblaApi,
-    setTweenNodes,
-    setTweenScaleFactor,
-    setTweenOpacityFactor,
-    setTweenGlowOpacityFactor,
-    tweenScale,
-    tweenOpacity,
-  ])
 
   return (
     <div className="embla w-full @container">
@@ -241,16 +84,15 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
         <div className="embla__container touch-[pan-y_pinch-zoom] flex">
           {slides.map((slide, index) => (
             <div
-              className={clsx(
-                'embla__slide shrink-0 grow-0 basis-5/6 [transform:translate3d(0,0,0)] after:absolute after:-inset-3 after:-z-20 after:rounded-full after:bg-primary/25 after:opacity-[var(--glow-opacity)] after:blur-3xl after:transition-opacity @lg:basis-3/4 @2xl:basis-4/6 lg:after:-inset-4',
-                selectedIndex === index ? 'after:opacity-100' : 'after:opacity-0'
-              )}
+              className="embla__slide shrink-0 grow-0 basis-5/6 [transform:translate3d(0,0,0)]"
               key={index}
             >
               <div
                 className={clsx(
-                  'embla__slide__number relative z-0 h-full w-full rounded-[32px] bg-gradient-to-b from-primary/15 to-background/50 p-2 ring-1 ring-primary/20 after:absolute after:inset-5 after:top-0 after:z-10 after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent after:transition-opacity after:delay-200 after:duration-700',
-                  selectedIndex === index ? 'after:opacity-100' : 'after:opacity-0'
+                  'embla__slide__number relative z-0 h-full w-full rounded-[32px] bg-gradient-to-b from-primary/15 to-background/50 p-2 ring-1 ring-primary/20 transition-all duration-500 before:absolute before:-inset-3 before:-z-20 before:rounded-full before:bg-primary/25 before:opacity-[var(--glow-opacity)] before:blur-3xl before:transition-opacity after:absolute after:inset-5 after:top-0 after:z-10 after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent after:transition-opacity after:delay-200 after:duration-700 @lg:basis-3/4 @2xl:basis-4/6 lg:before:-inset-4',
+                  selectedIndex === index
+                    ? 'scale-100 opacity-100 before:opacity-100 after:opacity-100'
+                    : 'scale-90 opacity-25 before:opacity-0 after:opacity-0'
                 )}
               >
                 <div className="relative aspect-square w-full place-content-end overflow-hidden rounded-3xl bg-gradient-to-b from-transparent from-50% to-background/80 p-4 ring-1 ring-primary/10 @2xl:aspect-video @2xl:p-5">
@@ -293,7 +135,7 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
 
       <div className="mt-6 flex items-center justify-center gap-x-3">
         {scrollSnaps.map((_, index) => (
-          <DotButton
+          <button
             key={index}
             onClick={() => onDotButtonClick(index)}
             className={clsx(
