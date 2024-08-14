@@ -39,6 +39,13 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'card-example',
+    dependencies: [],
+    registryDependencies: ['card'],
+    files: ['examples/card.tsx'],
+    component: lazy(() => import('./examples/card')),
+  },
+  {
     name: 'card-carousel-example',
     dependencies: [],
     registryDependencies: ['categories'],
@@ -51,13 +58,6 @@ export const examples = [
     registryDependencies: ['categories'],
     files: ['examples/carousel.tsx'],
     component: lazy(() => import('./examples/carousel')),
-  },
-  {
-    name: 'category-card-example',
-    dependencies: [],
-    registryDependencies: ['category-card'],
-    files: ['examples/category-card.tsx'],
-    component: lazy(() => import('./examples/category-card')),
   },
   {
     name: 'checkbox-example',
@@ -102,11 +102,32 @@ export const examples = [
     component: lazy(() => import('./examples/feature')),
   },
   {
-    name: 'featured-product-list-example',
+    name: 'featured-image-example',
     dependencies: [],
-    registryDependencies: ['featured-product-list'],
-    files: ['examples/featured-product-list.tsx'],
-    component: lazy(() => import('./examples/featured-product-list')),
+    registryDependencies: [],
+    files: ['examples/featured-image.tsx'],
+    component: lazy(() => import('./examples/featured-image')),
+  },
+  {
+    name: 'featured-products-carousel-example',
+    dependencies: [],
+    registryDependencies: ['featured-products-carousel'],
+    files: ['examples/featured-products-carousel.tsx'],
+    component: lazy(() => import('./examples/featured-products-carousel')),
+  },
+  {
+    name: 'featured-products-list-example',
+    dependencies: [],
+    registryDependencies: ['featured-products-list'],
+    files: ['examples/featured-products-list.tsx'],
+    component: lazy(() => import('./examples/featured-products-list')),
+  },
+  {
+    name: 'featured-video-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/featured-video.tsx'],
+    component: lazy(() => import('./examples/featured-video')),
   },
   {
     name: 'footer-example',
@@ -136,20 +157,12 @@ export const examples = [
     files: ['examples/input.tsx'],
     component: lazy(() => import('./examples/input')),
   },
-
   {
-    name: 'media-section-example',
+    name: 'page-catalyst-home-example',
     dependencies: [],
     registryDependencies: [],
-    files: ['examples/media-section.tsx'],
-    component: lazy(() => import('./examples/media-section')),
-  },
-  {
-    name: 'newsletter-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/newsletter.tsx'],
-    component: lazy(() => import('./examples/newsletter')),
+    files: ['examples/page-catalyst-home.tsx'],
+    component: lazy(() => import('./examples/page-catalyst-home')),
   },
   {
     name: 'page-home-blue-example',
@@ -208,6 +221,13 @@ export const examples = [
     component: lazy(() => import('./examples/product-card')),
   },
   {
+    name: 'products-carousel-example',
+    dependencies: [],
+    registryDependencies: ['products-carousel'],
+    files: ['examples/products-carousel.tsx'],
+    component: lazy(() => import('./examples/products-carousel')),
+  },
+  {
     name: 'product-detail-example',
     dependencies: [],
     registryDependencies: ['product-detail'],
@@ -215,11 +235,11 @@ export const examples = [
     component: lazy(() => import('./examples/product-detail')),
   },
   {
-    name: 'product-list-example',
+    name: 'products-list-example',
     dependencies: [],
-    registryDependencies: ['product-list'],
-    files: ['examples/product-list.tsx'],
-    component: lazy(() => import('./examples/product-list')),
+    registryDependencies: ['products-list'],
+    files: ['examples/products-list.tsx'],
+    component: lazy(() => import('./examples/products-list')),
   },
   {
     name: 'product-description-example',
@@ -248,5 +268,19 @@ export const examples = [
     registryDependencies: ['slideshow'],
     files: ['examples/slideshow.tsx'],
     component: lazy(() => import('./examples/slideshow')),
+  },
+  {
+    name: 'subscribe-basic-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/subscribe-basic.tsx'],
+    component: lazy(() => import('./examples/subscribe-basic')),
+  },
+  {
+    name: 'subscribe-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/subscribe.tsx'],
+    component: lazy(() => import('./examples/subscribe')),
   },
 ] satisfies Components

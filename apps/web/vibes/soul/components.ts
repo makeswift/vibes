@@ -1,5 +1,3 @@
-import { lazy } from 'react'
-
 import { Components } from '@/vibes/schema'
 
 export const components = [
@@ -34,6 +32,12 @@ export const components = [
     files: ['components/button/index.tsx'],
   },
   {
+    name: 'card',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/card/index.tsx'],
+  },
+  {
     name: 'card-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
@@ -44,12 +48,6 @@ export const components = [
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
     files: ['components/carousel/index.tsx'],
-  },
-  {
-    name: 'category-card',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['components/category-card/index.tsx'],
   },
   {
     name: 'checkbox',
@@ -92,10 +90,28 @@ export const components = [
     files: ['components/feature/index.tsx', 'components/icon/index.tsx'],
   },
   {
-    name: 'featured-product-list',
+    name: 'featured-image',
+    dependencies: [],
+    registryDependencies: ['button'],
+    files: ['components/featured-image/index.tsx'],
+  },
+  {
+    name: 'featured-products-carousel',
+    dependencies: [],
+    registryDependencies: ['products-carousel'],
+    files: ['components/featured-products-carousel/index.tsx'],
+  },
+  {
+    name: 'featured-products-list',
     dependencies: [],
     registryDependencies: ['button', 'product-card'],
-    files: ['components/featured-product-list/index.tsx'],
+    files: ['components/featured-products-list/index.tsx'],
+  },
+  {
+    name: 'featured-video',
+    dependencies: ['clsx'],
+    registryDependencies: ['button'],
+    files: ['components/featured-video/index.tsx'],
   },
   {
     name: 'footer',
@@ -122,19 +138,6 @@ export const components = [
     files: ['components/input/index.tsx'],
   },
   {
-    name: 'media-section',
-    dependencies: ['clsx'],
-    registryDependencies: ['button'],
-    files: ['components/media-section/index.tsx'],
-  },
-  {
-    name: 'newsletter',
-    dependencies: ['clsx'],
-    registryDependencies: ['input'],
-    files: ['components/newsletter/index.tsx'],
-  },
-
-  {
     name: 'pagination',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -151,6 +154,12 @@ export const components = [
     ],
   },
   {
+    name: 'products-carousel',
+    dependencies: ['clsx'],
+    registryDependencies: ['product-card'],
+    files: ['components/products-carousel/index.tsx'],
+  },
+  {
     name: 'product-detail',
     dependencies: ['clsx', 'embla-carousel-react'],
     registryDependencies: ['button', 'favorite', 'product-card', 'rating'],
@@ -161,10 +170,10 @@ export const components = [
     ],
   },
   {
-    name: 'product-list',
+    name: 'products-list',
     dependencies: [],
     registryDependencies: ['product-card'],
-    files: ['components/product-list/index.tsx'],
+    files: ['components/products-list/index.tsx'],
   },
   {
     name: 'product-description',
@@ -193,5 +202,17 @@ export const components = [
       'components/slideshow/progress-bar.tsx',
       'components/slideshow/progress-section.tsx',
     ],
+  },
+  {
+    name: 'subscribe-basic',
+    dependencies: [],
+    registryDependencies: ['input'],
+    files: ['components/subscribe-basic/index.tsx'],
+  },
+  {
+    name: 'subscribe',
+    dependencies: ['clsx'],
+    registryDependencies: ['input'],
+    files: ['components/subscribe/index.tsx'],
   },
 ] satisfies Components

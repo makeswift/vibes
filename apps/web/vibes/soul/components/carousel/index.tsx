@@ -33,7 +33,7 @@ const Carousel = ({ title, images }: Props) => {
   return (
     <section className="flex flex-col bg-background text-foreground @container">
       {title && (
-        <h2 className="mx-auto max-w-7xl px-5 py-20 text-center text-5xl font-medium leading-[1] -tracking-[4%] @4xl:py-40 @4xl:text-[90px]">
+        <h2 className="mx-auto max-w-screen-2xl px-5 py-20 text-center text-5xl font-medium leading-[1] -tracking-[4%] @4xl:py-40 @4xl:text-[90px]">
           {title}
         </h2>
       )}

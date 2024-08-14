@@ -1,62 +1,62 @@
-import CategoryCard from '@/vibes/soul//components/category-card'
+import { CardProps } from '@/vibes/soul//components/card'
 import HomePage from '@/vibes/soul/components/page-home'
 
 export const heroSlides = [
   {
-    heading: 'Slide 1',
+    title: 'Slide 1',
     image: {
-      url: 'https://rstr.in/monogram/vibes/2dxdn6-tC-f',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/2dxdn6-tC-f',
+      altText: 'alt',
     },
-    link: {
-      href: '/',
-      target: '_self',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
     },
   },
   {
-    heading: 'Slide 2',
+    title: 'Slide 2',
     image: {
-      url: 'https://rstr.in/monogram/vibes/WmCjpAXZqIK',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/WmCjpAXZqIK',
+      altText: 'alt',
     },
-    link: {
-      href: '/',
-      target: '_self',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
     },
   },
   {
-    heading: 'Slide 3',
+    title: 'Slide 3',
     image: {
-      url: 'https://rstr.in/monogram/vibes/Rhn7rAbRFLQ',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/Rhn7rAbRFLQ',
+      altText: 'alt',
     },
-    link: {
-      href: '/',
-      target: '_self',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
     },
   },
 ]
 
-export const categories: CategoryCard[] = [
+export const categories: CardProps[] = [
   {
-    label: 'Small Plants',
-    image: 'https://rstr.in/monogram/vibes/fRbI7J5z00o',
-    ctaLink: { href: '/small-plants' },
+    title: 'Small Plants',
+    image: { src: 'https://rstr.in/monogram/vibes/fRbI7J5z00o', altText: 'Small Plants' },
+    href: '#',
   },
   {
-    label: 'Low Maintenance',
-    image: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6',
-    ctaLink: { href: '/low-maintenance-plants' },
+    title: 'Low Maintenance',
+    image: { src: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6', altText: 'Low Maintenance' },
+    href: '#',
   },
   {
-    label: 'Indestructible',
-    image: 'https://rstr.in/monogram/vibes/vf9FEg1kvz6',
-    ctaLink: { href: '/indestructible-plants' },
+    title: 'Indestructible',
+    image: { src: 'https://rstr.in/monogram/vibes/vf9FEg1kvz6', altText: 'Indestructible' },
+    href: '#',
   },
   {
-    label: 'Succulent',
-    image: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6',
-    ctaLink: { href: '/succulent-plants' },
+    title: 'Succulent',
+    image: { src: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6', altText: 'Succulent' },
+    href: '#',
   },
 ]
 

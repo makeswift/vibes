@@ -2,23 +2,19 @@ import Image from 'next/image'
 
 import clsx from 'clsx'
 
-import Input from '@/vibes/soul/components/input'
+import InlineEmailForm from '@/vibes/soul/components/inline-email-form'
 
-type Props = {
+interface Props {
   image?: {
-    url: string
-    dimensions: {
-      width: number
-      height: number
-    }
-    alt: string
+    src: string
+    altText: string
   }
-  heading: string
+  title: string
   description: string
   theme?: 'brand-highlight' | 'brand-shadow' | 'light' | 'neutral'
 }
 
-export const Newsletter = function Newsletter({ image, heading, description, theme }: Props) {
+export const Subscribe = function Subscribe({ image, title, description, theme }: Props) {
   return (
     <section
       className={clsx('@container', {
@@ -28,10 +24,10 @@ export const Newsletter = function Newsletter({ image, heading, description, the
         ['bg-background']: theme === 'light',
       })}
     >
-      <div className="flex flex-col items-center @2xl:flex-row">
+      <div className="mx-auto flex max-w-screen-2xl flex-col items-center @2xl:flex-row">
         {image && (
           <div className="relative aspect-square h-full w-full overflow-hidden @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
-            <Image src={image.url} alt={image.alt} fill className="object-cover" />
+            <Image src={image.src} alt={image.altText} fill className="object-cover" />
           </div>
         )}
 
@@ -43,21 +39,15 @@ export const Newsletter = function Newsletter({ image, heading, description, the
           )}
         >
           <div className="w-full">
-            <h2 className="mb-2 text-4xl font-medium leading-none @7xl:text-5xl">{heading}</h2>
+            <h2 className="mb-2 text-4xl font-medium leading-none @7xl:text-5xl">{title}</h2>
             <p className="text-[15px] opacity-50">{description}</p>
           </div>
-          <form className="w-full">
-            <Input
-              variant={theme == 'light' ? 'brand' : 'button'}
-              placeholder="Join our Newsletter"
-              type="email"
-              className="max-w-5xl"
-            />
-          </form>
+
+          <InlineEmailForm />
         </div>
       </div>
     </section>
   )
 }
 
-export default Newsletter
+export default Subscribe

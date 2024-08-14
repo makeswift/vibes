@@ -2,65 +2,114 @@ import Header from '@/vibes/soul/components/header'
 
 export const headerLinks = [
   {
-    item: {
-      text: 'Men',
-      link: { href: '/men' },
-    },
-    links: [
-      [
-        { text: 'View All', link: { href: '/men/view-all' } },
-        { text: 'Coats & Jackets', link: { href: '/men/coats-jackets' } },
-      ],
-      [
-        { text: 'T-Shirts', link: { href: '/men/t-shirts' } },
-        { text: 'Sweatshirts', link: { href: '/men/sweatshirts' } },
-      ],
-      [{ text: 'Pants', link: { href: '/men/pants' } }],
+    label: 'Men',
+    href: '#',
+    groups: [
+      {
+        label: 'Featured',
+        href: '#',
+        links: [
+          { label: 'New Arrivals', href: '#' },
+          { label: 'Best Sellers', href: '#' },
+          { label: 'Sale', href: '#' },
+          { label: 'Shop All', href: '#' },
+        ],
+      },
+      {
+        label: 'Tops',
+        href: '#',
+        links: [
+          { label: 'Short Sleeve Tees', href: '#' },
+          { label: 'Button Downs', href: '#' },
+          { label: 'Hoodies & Sweatshirts', href: '#' },
+          { label: 'Shop All Tops', href: '#' },
+        ],
+      },
+      {
+        label: 'Bottoms',
+        href: '#',
+        links: [
+          { label: 'Shorts', href: '#' },
+          { label: 'Pants', href: '#' },
+          { label: 'Shop All Bottoms', href: '#' },
+        ],
+      },
     ],
   },
   {
-    item: {
-      text: 'Women',
-      link: { href: '/women' },
-    },
-    links: [
-      [
-        { text: 'View All', link: { href: '/women/view-all' } },
-        { text: 'Coats & Jackets', link: { href: '/women/coats-jackets' } },
-      ],
-      [
-        { text: 'Pants', link: { href: '/women/pants' } },
-        { text: 'Sweatshirts', link: { href: '/women/sweatshirts' } },
-      ],
-      [{ text: 'Tops', link: { href: '/women/tops' } }],
+    label: 'Women',
+    href: '#',
+    groups: [
+      {
+        label: 'Featured',
+        href: '#',
+        links: [
+          { label: 'New Arrivals', href: '#' },
+          { label: 'Best Sellers', href: '#' },
+          { label: 'Shop All', href: '#' },
+        ],
+      },
+      {
+        label: 'Tops',
+        href: '#',
+        links: [
+          { label: 'Tanks', href: '#' },
+          { label: 'Outerwear', href: '#' },
+          { label: 'Shop All Tops', href: '#' },
+        ],
+      },
+      {
+        label: 'Bottoms',
+        href: '#',
+        links: [
+          { label: 'Leggings', href: '#' },
+          { label: 'Pants', href: '#' },
+          { label: 'Shorts & Skirts', href: '#' },
+          { label: 'Shop All Bottoms', href: '#' },
+        ],
+      },
     ],
   },
   {
-    item: {
-      text: 'Accessories',
-      link: { href: '/accessories' },
-    },
-    links: [
-      [
-        { text: 'View All', link: { href: '/accessories/view-all' } },
-        { text: 'Hats', link: { href: '/accessories/hats' } },
-      ],
-      [{ text: 'Jackets', link: { href: '/accessories/jackets' } }],
+    label: 'Accessories',
+    href: '#',
+    groups: [
+      {
+        label: 'Headwear',
+        href: '#',
+        links: [
+          { label: 'Hats', href: '#' },
+          { label: 'Beanies', href: '#' },
+          { label: 'Shop All Headwear', href: '#' },
+        ],
+      },
+      {
+        label: 'Travel',
+        href: '#',
+        links: [
+          { label: 'Bags', href: '#' },
+          { label: 'Shop All Travel', href: '#' },
+        ],
+      },
     ],
   },
   {
-    item: {
-      text: 'Stories',
-      link: { href: '/stories' },
-    },
-    links: [[{ text: 'View All', link: { href: '/stories/view-all' } }]],
+    label: 'Stories',
+    href: '#',
+    groups: [
+      {
+        label: 'Stories',
+        href: '#',
+        links: [{ label: 'See All Stories', href: '#' }],
+      },
+    ],
   },
 ]
 
 export default function Preview() {
   return (
     <div className="relative min-h-48">
-      <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+      <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
     </div>
   )
 }

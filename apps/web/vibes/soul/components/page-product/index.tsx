@@ -1,14 +1,13 @@
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import Carousel from '@/vibes/soul/components/card-carousel'
-import CategoryCard from '@/vibes/soul/components/category-card'
+import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
 import IconBlock from '@/vibes/soul/components/icon-block'
-import Newsletter from '@/vibes/soul/components/newsletter'
-import { ProductCard } from '@/vibes/soul/components/product-card'
+import { Product } from '@/vibes/soul/components/product-card'
 import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
-import { categories } from '@/vibes/soul/examples/card-carousel'
+import Subscribe from '@/vibes/soul/components/subscribe'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
@@ -20,19 +19,20 @@ export const ProductPage = function ProductPage() {
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
       <div className="relative flex flex-col">
-        <Header links={headerLinks} logo={{ alt: 'SOUL' }} />
+        <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
 
         <ProductDetail
           product={
             {
+              id: '1',
               name: "Men's Long Sleeve Jersey",
-              price: {
-                type: 'static',
-                value: 39.95,
+              price: '$39.95',
+              image: {
+                src: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
+                altText: 'Men’s Long Sleeve Jersey',
               },
-              image: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
-              ctaLink: { href: '/' },
-            } as ProductCard
+              href: '#',
+            } as Product
           }
           images={[
             'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
@@ -52,7 +52,7 @@ export const ProductPage = function ProductPage() {
           options={['XS', 'S', 'M', 'L', 'XL', 'XXL']}
         />
 
-        {/* TODO: Add Review / Returns Here */}
+        {/* TODO: @sami Add Review / Returns Here */}
 
         <ProductDescription
           accordions={[
@@ -106,19 +106,19 @@ export const ProductPage = function ProductPage() {
             },
           ]}
         />
+        <FeaturedProductsCarousel
+          title="New Arrivals"
+          cta={{ label: 'See All', href: '#' }}
+          products={featuredProducts}
+        />
 
-        <Carousel title="New Arrivals" link={{ label: 'See All', href: '/' }}>
-          {categories.map(category => (
-            <CategoryCard key={category.label} {...category} />
-          ))}
-        </Carousel>
-
-        <Newsletter
-          heading="Sign up for our newsletter"
+        <Subscribe
+          title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           theme="light"
         />
-        <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
+
+        <Footer sections={footerLinks} logo="SOUL" />
       </div>
     </>
   )

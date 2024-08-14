@@ -2,34 +2,45 @@ import Footer from '@/vibes/soul/components/footer'
 
 export const footerLinks = [
   {
-    category: 'Categories',
-    categoryLinks: [
-      { text: 'Coats & Jackets', href: '/men/coats-jackets' },
-      { text: 'T-Shirts', href: '/men/t-shirts' },
-      { text: 'Sweatshirts', href: '/men/sweatshirts' },
-      { text: 'Pants', href: '/men/pants' },
+    title: 'Categories',
+    links: [
+      { label: 'Coats & Jackets', href: '#' },
+      { label: 'T-Shirts', href: '#' },
+      { label: 'Sweatshirts', href: '#' },
+      { label: 'Pants', href: '#' },
     ],
   },
   {
-    category: 'Company',
-    categoryLinks: [
-      { text: 'About', href: '/about' },
-      { text: 'Stories', href: '/about/stories' },
-      { text: 'Careers', href: '/about/careers' },
-      { text: 'Stores', href: '/about/stores' },
+    title: 'Company',
+    links: [
+      { label: 'About', href: '#' },
+      { label: 'Stories', href: '#' },
+      { label: 'Careers', href: '#' },
+      { label: 'Stores', href: '#' },
     ],
   },
   {
-    category: 'Help & Support',
-    categoryLinks: [
-      { text: 'FAQs', href: '/support/faqs' },
-      { text: 'Contact Us', href: '/support/contact-us' },
-      { text: 'Returns', href: '/support/returns' },
-      { text: 'Shipping', href: '/support/shipping' },
+    title: 'Help & Support',
+    links: [
+      { label: 'FAQs', href: '#' },
+      { label: 'Contact Us', href: '#' },
+      { label: 'Returns', href: '#' },
+      { label: 'Shipping', href: '#' },
     ],
   },
 ]
 
+const copyright = `© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`
+
 export default function Preview() {
-  return <Footer links={footerLinks} logo={{ alt: 'SOUL' }} companyName="Soul" />
+  return (
+    <Footer
+      sections={footerLinks}
+      logo={{
+        src: 'https://rstr.in/monogram/vibes/5UckSov0byo',
+        altText: 'SOUL Logo',
+      }}
+      copyright={copyright}
+    />
+  )
 }

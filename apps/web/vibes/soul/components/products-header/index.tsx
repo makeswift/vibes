@@ -14,7 +14,7 @@ export const ProductsHeader = function ProductsHeader({ title, numberOfProducts 
   return (
     <>
       {/* Products Header */}
-      <div className="z-10 flex items-center justify-between bg-background pb-10 pt-28 text-foreground @container @lg:pt-44">
+      <div className="relative z-10 flex items-center justify-between bg-background pb-10 pt-28 text-foreground @container @lg:pt-44">
         <h1 className="pl-3 text-xl font-medium @xl:pl-6 @2xl:text-[40px] @5xl:pl-20">
           {title} <span className="text-contrast-200">{numberOfProducts}</span>
         </h1>

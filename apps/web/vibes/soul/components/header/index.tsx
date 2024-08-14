@@ -11,31 +11,37 @@ import { Search, ShoppingBag, User } from 'lucide-react'
 
 import HamburgerMenuButton from '@/vibes/soul/components/header/hamburger-menu-button'
 
-type NavItem = {
-  text: string
-  link: {
+interface Image {
+  url?: string
+  altText: string
+}
+
+interface Links {
+  label: string
+  href: string
+  groups?: {
+    label: string
     href: string
-    target?: '_self' | '_blank'
-  }
+    links: {
+      label: string
+      href: string
+    }[]
+  }[]
 }
 
-type Category = {
-  item: NavItem
-  links?: NavItem[][]
-}
-
-type Props = {
-  className?: string
-  logo?: {
-    image?: { url: string; dimensions: { width: number; height: number } }
-    alt?: string
-    link?: { href: string; target?: '_self' | '_blank' }
-  }
-  links?: Category[]
+interface Props {
+  cartHref: string
+  cartCount?: number
+  accountHref: string
+  links: Links[]
+  // searchAction: (query: string) => Promise<SerializableProduct[]>
+  logo?: string | Image
+  activeLocale?: string
+  locales?: { id: string; region: string; language: string }[]
 }
 
 export const Header = forwardRef(function Header(
-  { className, logo, links, ...rest }: Props,
+  { cartHref, cartCount, accountHref, links, logo, activeLocale, locales, ...rest }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   const [navOpen, setNavOpen] = useState(false)
@@ -70,41 +76,36 @@ export const Header = forwardRef(function Header(
         transition: 'transform .5s ease-in-out',
       }}
     >
-      <header
+      <div
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className={clsx(
-          'mx-auto w-full max-w-7xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5',
-          className
-        )}
+        className="mx-auto w-full max-w-screen-2xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
       >
         <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background shadow-[2px_4px_24px_#00000010] @4xl:mx-5 @4xl:rounded-[24px]">
           <div className="relative flex items-stretch px-2.5" ref={container}>
             {links?.map((item, i) => (
               <Link
                 key={i}
-                href={item.item.link.href}
-                target={item.item.link.target}
+                href={item.href}
                 onMouseOver={() => {
                   setSelectedCategory(i)
                   setNavOpen(true)
                 }}
-                className="relative mx-0.5 my-2.5 hidden items-center rounded-xl p-2.5 text-sm font-medium transition-colors duration-200 hover:bg-contrast-100 @4xl:inline-flex"
+                className="relative mx-0.5 my-2.5 hidden items-center rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
               >
-                {item.item.text}
+                {item.label}
               </Link>
             ))}
           </div>
 
           <Link
-            href={logo?.link?.href ?? '/'}
-            target={logo?.link?.target}
-            className="mx-auto py-3 text-2xl font-semibold text-foreground"
+            href="/"
+            className="mx-auto rounded-xl py-3 text-2xl font-semibold text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
-            {logo?.image ? (
-              <Image src={logo.image.url} height={29} width={64} alt={logo.alt ?? 'Logo'} />
+            {typeof logo === 'object' && logo?.url ? (
+              <Image src={logo.url} height={29} width={64} alt={logo.altText} />
             ) : (
-              logo?.alt
+              typeof logo === 'string' && logo
             )}
           </Link>
 
@@ -114,25 +115,30 @@ export const Header = forwardRef(function Header(
               <button
                 role="button"
                 aria-label="Search"
-                className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
+                className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
               >
                 <Search className="h-5 w-5" strokeWidth={1} />
               </button>
             </div>
-            <button
-              role="button"
+            <Link
+              href={accountHref}
               aria-label="Profile"
-              className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
+              className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
               <User className="h-5 w-5" strokeWidth={1} />
-            </button>
-            <button
-              role="button"
+            </Link>
+            <Link
+              href={cartHref}
               aria-label="Cart"
-              className="rounded-lg p-1.5 transition-colors @4xl:hover:bg-contrast-100"
+              className="relative rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
               <ShoppingBag className="h-5 w-5" strokeWidth={1} />
-            </button>
+              {cartCount !== undefined && cartCount > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
           </div>
         </nav>
 
@@ -149,44 +155,49 @@ export const Header = forwardRef(function Header(
             {links?.map((item, i) => (
               <div key={i} className="flex flex-col gap-2 p-5">
                 <Link
-                  href={item.item.link.href}
-                  target={item.item.link.target}
-                  className="rounded-lg px-3 py-4 font-semibold transition-colors hover:bg-contrast-100"
+                  href={item.href}
+                  className="rounded-lg px-3 py-4 font-semibold ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
                 >
-                  {item.item.text}
+                  {item.label}
                 </Link>
-                {item.links?.flat().map((link, j) => (
-                  <Link
-                    key={j}
-                    href={link.link.href}
-                    target={link.link.target}
-                    className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
-                  >
-                    {link.text}
-                  </Link>
-                ))}
+                {item.groups
+                  ?.flatMap(group => group.links)
+                  .map((link, j) => (
+                    <Link
+                      key={j}
+                      href={link.href}
+                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
               </div>
             ))}
           </div>
           <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-5">
             {selectedCategory !== null &&
-              links?.[selectedCategory]?.links?.map((column, columnIndex) => (
+              links?.[selectedCategory]?.groups?.map((group, columnIndex) => (
                 <div key={columnIndex} className="flex flex-col gap-1 p-5">
-                  {column.map((link, i) => (
+                  <Link
+                    href={group.href}
+                    className="block rounded-lg px-3 py-4 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                  >
+                    {group.label}
+                  </Link>
+                  {group.links.map((link, i) => (
                     <Link
                       key={i}
-                      href={link.link.href}
-                      target={link.link.target}
-                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 transition-colors hover:bg-contrast-100 hover:text-foreground"
+                      href={link.href}
+                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
                     >
-                      {link.text}
+                      {link.label}
                     </Link>
                   ))}
                 </div>
               ))}
           </div>
         </div>
-      </header>
+      </div>
     </ReactHeadroom>
   )
 })

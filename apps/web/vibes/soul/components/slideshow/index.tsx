@@ -5,19 +5,32 @@ import { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
+import Button from '@/vibes/soul/components/button'
 import ProgressSection from '@/vibes/soul/components/slideshow/progress-section'
 
-type Props = {
-  slides: {
-    heading: string
-    image: {
-      url: string
-      alt: string
-    }
-  }[]
+interface Link {
+  label: string
+  href: string
 }
 
-export const Slideshow = function Slideshow({ slides }: Props) {
+interface Image {
+  altText: string
+  blurDataUrl?: string
+  src: string
+}
+
+export interface Slide {
+  title: string
+  description?: string
+  image?: Image
+  cta?: Link
+}
+interface Props {
+  className?: string
+  slides: Slide[]
+}
+
+export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
@@ -30,8 +43,10 @@ export const Slideshow = function Slideshow({ slides }: Props) {
   }, [currentIndex, slides.length, setCurrentIndex])
 
   return (
-    <header className="relative h-[100dvh] max-h-[880px] bg-primary-shadow @container">
-      {slides?.map(({ heading, image }, idx) => {
+    <header
+      className={clsx('relative h-[100dvh] max-h-[880px] bg-primary-shadow @container', className)}
+    >
+      {slides?.map(({ title, description, image, cta }, idx) => {
         return (
           <div
             key={idx}
@@ -40,20 +55,37 @@ export const Slideshow = function Slideshow({ slides }: Props) {
               currentIndex === idx ? 'opacity-100' : 'opacity-0'
             )}
           >
-            <h1 className="absolute bottom-10 left-0 z-10 w-full max-w-7xl px-3 text-5xl font-medium leading-none text-background @lg:bottom-24 @xl:px-6 @2xl:text-[90px] @5xl:px-20">
-              {heading}
-            </h1>
+            <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-screen-2xl -translate-x-1/2 px-3 text-background @xl:px-6 @5xl:px-20">
+              <h1 className="mb-1 text-5xl font-medium leading-none @2xl:text-[90px]">{title}</h1>
+              {description && <p>{description}</p>}
+              {cta?.href && (
+                <Button variant="tertiary" className="mt-4">
+                  {cta.label}
+                </Button>
+              )}
 
-            <Image src={image.url} alt={image.alt} fill className="object-cover" />
+              <ProgressSection
+                currentIndex={currentIndex}
+                slides={slides}
+                setCurrentIndex={setCurrentIndex}
+                className="z-10 w-full pb-2 pt-4 @lg:pb-8 @lg:pt-10"
+              />
+            </div>
+
+            {/* TODO: Implement progressive loading with blurDataUrl */}
+            {image?.src && (
+              <Image
+                src={image.src}
+                placeholder={image.blurDataUrl ? 'blur' : 'empty'}
+                blurDataURL={image.blurDataUrl}
+                alt={image.altText}
+                fill
+                className="object-cover"
+              />
+            )}
           </div>
         )
       })}
-      <ProgressSection
-        currentIndex={currentIndex}
-        slides={slides}
-        setCurrentIndex={setCurrentIndex}
-        className="absolute bottom-0 left-0 z-10 w-full px-3 pb-2 pt-4 @lg:pb-8 @lg:pt-10 @xl:px-6 @5xl:px-20"
-      />
     </header>
   )
 }

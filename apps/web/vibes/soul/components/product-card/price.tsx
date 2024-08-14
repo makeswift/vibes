@@ -2,49 +2,45 @@ import { ComponentPropsWithoutRef } from 'react'
 
 import clsx from 'clsx'
 
-export type RangePrice = {
-  type: 'range'
-  min: number
-  max: number
-}
-
-export type ComparePrice = {
-  type: 'compare'
-  prev: number
-  current: number
-}
-
-export type StaticPrice = {
-  type: 'static'
-  value: number
-}
-
-export type Price = RangePrice | ComparePrice | StaticPrice | undefined
+export type ProductPrice =
+  | string
+  | {
+      type: 'sale'
+      currentValue: string
+      previousValue: string
+    }
+  | {
+      type: 'range'
+      minValue: string
+      maxValue: string
+    }
 
 export default function Price({
   price,
   className = '',
-}: { price: Price; className?: string } & ComponentPropsWithoutRef<'span'>) {
-  switch (price?.type) {
+}: { price: ProductPrice; className?: string } & ComponentPropsWithoutRef<'span'>) {
+  if (typeof price === 'string') {
+    return (
+      <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
+        {price}
+      </span>
+    )
+  }
+
+  switch (price.type) {
     case 'range':
       return (
         <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
-          ${price.min} - ${price.max}
+          {price.minValue} - {price.maxValue}
         </span>
       )
-    case 'compare':
+    case 'sale':
       return (
         <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
           <span className="font-normal text-contrast-400 line-through @4xl:text-lg">
-            ${price.prev}
+            {price.previousValue}
           </span>{' '}
-          ${price.current}
-        </span>
-      )
-    case 'static':
-      return (
-        <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>
-          ${price.value}
+          {price.currentValue}
         </span>
       )
     default:

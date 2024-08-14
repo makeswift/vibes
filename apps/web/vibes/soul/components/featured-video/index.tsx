@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import clsx from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
@@ -13,7 +15,7 @@ type Props = {
   mediaAlign?: 'left' | 'right'
 }
 
-export const MediaSection = function MediaSection({
+export const FeaturedVideo = function FeaturedVideo({
   heading,
   description,
   video,
@@ -27,7 +29,7 @@ export const MediaSection = function MediaSection({
         mediaAlign ? 'bg-primary-shadow' : ''
       )}
     >
-      <div className="flex h-full flex-col @3xl:flex-row">
+      <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
         <video
           className={clsx(
             'h-full w-full object-cover',
@@ -42,7 +44,7 @@ export const MediaSection = function MediaSection({
         </video>
         <div
           className={clsx(
-            'z-10 mx-auto flex max-w-7xl flex-col items-start gap-4 px-3 py-10 text-background @5xl:p-20',
+            'z-10 mx-auto flex flex-col items-start gap-4 px-3 py-10 text-background @5xl:p-20',
             mediaAlign
               ? 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5'
               : 'absolute bottom-0 left-0 @xl:px-6',
@@ -52,11 +54,11 @@ export const MediaSection = function MediaSection({
           <h1 className="max-w-xl text-[40px] font-medium">{heading}</h1>
           <p className="max-w-xl pb-2">{description}</p>
           <Button
-            variant={mediaAlign ? 'primary' : 'light'}
-            link={{ href: link.href, target: link.target }}
+            variant={mediaAlign ? 'primary' : 'tertiary'}
             className={clsx(mediaAlign ? 'text-foreground' : 'text-background')}
+            asChild
           >
-            Show Now
+            <Link href={link.href}>Show Now</Link>
           </Button>
         </div>
       </div>
@@ -64,4 +66,4 @@ export const MediaSection = function MediaSection({
   )
 }
 
-export default MediaSection
+export default FeaturedVideo

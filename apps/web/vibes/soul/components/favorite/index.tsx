@@ -11,7 +11,7 @@ export const Favorite = function Favorite({ favorited, setFavorited }: Props) {
   return (
     <label
       className={clsx(
-        'group relative flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-contrast-100 text-foreground transition-[colors,transform] duration-300',
+        'group relative flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-[colors,transform] duration-300 focus-within:outline-0 focus-within:ring-2',
         favorited ? 'bg-contrast-100' : 'hover:border-contrast-200'
       )}
     >

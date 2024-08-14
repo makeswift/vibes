@@ -1,62 +1,62 @@
-import CategoryCard from '@/vibes/soul//components/category-card'
+import { CardProps } from '@/vibes/soul//components/card'
 import HomePage from '@/vibes/soul/components/page-home'
 
 export const heroSlides = [
   {
-    heading: 'New Casuals',
+    title: 'New Casuals',
     image: {
-      url: 'https://rstr.in/monogram/vibes/Nz2yR4EZgvo',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/Nz2yR4EZgvo',
+      altText: 'alt',
     },
-    link: {
-      href: '/',
-      target: '_self',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
     },
   },
   {
-    heading: 'Slide 2',
+    title: 'Slide 2',
     image: {
-      url: 'https://rstr.in/monogram/vibes/gWgyEhm5W60',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/gWgyEhm5W60',
+      altText: 'alt',
     },
-    link: {
-      href: '/',
-      target: '_self',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
     },
   },
   {
-    heading: 'Slide 3',
+    title: 'Slide 3',
     image: {
-      url: 'https://rstr.in/monogram/vibes/K-F83RXTJsx',
-      alt: 'alt',
+      src: 'https://rstr.in/monogram/vibes/K-F83RXTJsx',
+      altText: 'alt',
     },
-    link: {
-      href: '/',
-      target: '_self',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
     },
   },
 ]
 
-export const categories: CategoryCard[] = [
+export const categories: CardProps[] = [
   {
-    label: 'Men',
-    image: 'https://rstr.in/monogram/vibes/ptJ724KlDom',
-    ctaLink: { href: '/men' },
+    title: 'Men',
+    image: { src: 'https://rstr.in/monogram/vibes/ptJ724KlDom', altText: 'Men' },
+    href: '#',
   },
   {
-    label: 'Women',
-    image: 'https://rstr.in/monogram/vibes/P3yw1GHGDuv',
-    ctaLink: { href: '/women' },
+    title: 'Women',
+    image: { src: 'https://rstr.in/monogram/vibes/P3yw1GHGDuv', altText: 'Women' },
+    href: '#',
   },
   {
-    label: 'Footwear',
-    image: 'https://rstr.in/monogram/vibes/XG-Zqe3Y2xH',
-    ctaLink: { href: '/footwear' },
+    title: 'Footwear',
+    image: { src: 'https://rstr.in/monogram/vibes/XG-Zqe3Y2xH', altText: 'Footwear' },
+    href: '#',
   },
   {
-    label: 'Headwear',
-    image: 'https://rstr.in/monogram/vibes/ayf5JcyknJ4',
-    ctaLink: { href: '/headwear' },
+    title: 'Headwear',
+    image: { src: 'https://rstr.in/monogram/vibes/ayf5JcyknJ4', altText: 'Headwear' },
+    href: '#',
   },
 ]
 

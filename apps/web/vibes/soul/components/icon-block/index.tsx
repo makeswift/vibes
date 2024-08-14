@@ -14,7 +14,7 @@ export const IconBlock = function IconBlock({ list }: IconBlock) {
   return (
     <section className="bg-background text-foreground @container">
       {list?.length && (
-        <ul className="mx-auto flex w-full max-w-7xl flex-wrap justify-center divide-y divide-contrast-100 px-3 @2xl:px-20">
+        <ul className="mx-auto flex w-full max-w-screen-2xl flex-wrap justify-center divide-y divide-contrast-100 px-3 @2xl:px-20">
           {list.map(({ title, description, icon }, idx) => {
             return (
               <li

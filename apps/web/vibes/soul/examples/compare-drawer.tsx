@@ -1,28 +1,30 @@
 import CompareDrawer from '@/vibes/soul/components/compare-drawer'
-import ProductCard from '@/vibes/soul/components/product-card'
+import { Product } from '@/vibes/soul/components/product-card'
 
-export const compareProducts: ProductCard[] = [
+export const compareProducts: Product[] = [
   {
+    id: '1',
     name: 'Men’s Long Sleeve Jersey',
-    tags: ['Blue', 'Black', 'Green'],
+    subtitle: 'Blue/Black/Green',
     badge: 'New',
-    price: {
-      type: 'static',
-      value: 123.99,
+    price: '$123.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
+      altText: 'Men’s Long Sleeve Jersey',
     },
-    image: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
-    ctaLink: { href: '/' },
+    href: '#',
   },
   {
+    id: '2',
     name: 'Men’s Long Sleeve Jersey',
-    tags: ['Blue', 'Black', 'Green'],
+    subtitle: 'Blue/Black/Green',
     badge: 'New',
-    price: {
-      type: 'static',
-      value: 123.99,
+    price: '$123.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
+      altText: 'Men’s Long Sleeve Jersey',
     },
-    image: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
-    ctaLink: { href: '/' },
+    href: '#',
   },
 ]
 

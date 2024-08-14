@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import clsx from 'clsx'
 
@@ -27,7 +28,7 @@ export interface Feature {
 export const Feature = function Feature({ image, heading, description, grid, link }: Feature) {
   return (
     <section className="relative bg-primary-shadow @container/section">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
+      <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
         {/* Image Side */}
         <div
           className="relative aspect-square w-full overflow-hidden @3xl/section:aspect-[9/12]
@@ -39,42 +40,45 @@ export const Feature = function Feature({ image, heading, description, grid, lin
 
         {/* Content Side */}
         <div
-          className="mx-auto flex w-full max-w-7xl flex-col items-start gap-4 px-3 py-10 text-background 
+          className="mx-auto w-full items-start px-3 py-10 text-background
           @container/content @lg/section:px-10 @5xl:p-20"
         >
-          <h2 className="text-[40px] font-medium">{heading}</h2>
-          <p className="max-w-xl pb-2">{description}</p>
+          <div className="mx-auto flex max-w-xl flex-col gap-4">
+            <h2 className="text-[40px] font-medium">{heading}</h2>
+            <p className=" pb-2">{description}</p>
 
-          {grid?.length && (
-            <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
-              {grid.map(({ title, description, icon }, idx) => {
-                return (
-                  <li key={idx} className="flex gap-4 @sm/content:items-center">
-                    <Icon
-                      name={icon}
-                      className="h-8 w-8 @xs/content:h-5 @xs/content:w-5 @lg/content:h-10 @lg/content:w-10"
-                    />
-                    <div className="flex flex-col">
-                      <span className="-mt-1.5 text-lg font-medium @sm/content:-mt-1 @md/content:text-xl">
-                        {title}
-                      </span>
-                      <span className="text-xs opacity-80 @md/content:text-sm">{description}</span>
-                    </div>
-                  </li>
-                )
+            {grid?.length && (
+              <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
+                {grid.map(({ title, description, icon }, idx) => {
+                  return (
+                    <li key={idx} className="flex gap-4 @sm/content:items-center">
+                      <Icon
+                        name={icon}
+                        className="h-8 w-8 @xs/content:h-5 @xs/content:w-5 @lg/content:h-10 @lg/content:w-10"
+                      />
+                      <div className="flex flex-col">
+                        <span className="-mt-1.5 text-lg font-medium @sm/content:-mt-1 @md/content:text-xl">
+                          {title}
+                        </span>
+                        <span className="text-xs opacity-80 @md/content:text-sm">
+                          {description}
+                        </span>
+                      </div>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
+            <Button
+              variant="primary"
+              className={clsx({
+                'self-center @3xl/section:self-start': grid?.length,
               })}
-            </ul>
-          )}
-
-          <Button
-            variant="primary"
-            link={{ href: link.href, target: link.target }}
-            className={clsx('text-foreground', {
-              'self-center @3xl/section:self-start': grid?.length,
-            })}
-          >
-            {link.label}
-          </Button>
+              asChild
+            >
+              <Link href={link.href}>{link.label}</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

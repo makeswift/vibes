@@ -30,7 +30,7 @@ export const Dropdown = function Dropdown({
     <DropdownMenu>
       <DropdownMenuTrigger
         className={clsx(
-          'flex items-center gap-3 rounded-full border border-contrast-100 bg-white p-2 px-5 py-3 font-medium text-foreground transition-colors hover:bg-contrast-100 focus:outline-none focus:ring-1',
+          'flex items-center gap-3 rounded-full border border-contrast-100 bg-white p-2 px-5 py-3 font-medium text-foreground ring-primary transition-colors hover:bg-contrast-100 focus:outline-none focus:ring-2',
           size === 'small' && 'text-sm'
         )}
         {...props}

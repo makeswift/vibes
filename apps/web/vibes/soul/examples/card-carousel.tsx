@@ -1,34 +1,37 @@
+import Card, { CardProps } from '@/vibes/soul/components/card'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
-import CategoryCard from '@/vibes/soul/components/category-card'
 
-export const categories: CategoryCard[] = [
+export const categories: CardProps[] = [
   {
-    label: 'Men',
-    image: 'https://rstr.in/monogram/vibes/CVQwqHQKmz4',
-    ctaLink: { href: '/men' },
+    title: 'Men',
+    image: { src: 'https://rstr.in/monogram/vibes/CVQwqHQKmz4', altText: 'Men' },
+    href: '#',
   },
   {
-    label: 'Women',
-    image: 'https://rstr.in/monogram/vibes/UWfiHOc2RnP',
-    ctaLink: { href: '/women' },
+    title: 'Women',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/UWfiHOc2RnP',
+      altText: 'Women',
+    },
+    href: '#',
   },
   {
-    label: 'Jerseys',
-    image: 'https://rstr.in/monogram/vibes/lxY8Fqsk3Gp',
-    ctaLink: { href: '/jerseys' },
+    title: 'Jerseys',
+    image: { src: 'https://rstr.in/monogram/vibes/lxY8Fqsk3Gp', altText: 'Jerseys' },
+    href: '#',
   },
   {
-    label: 'Headwear',
-    image: 'https://rstr.in/monogram/vibes/8bPrhQZGr4k',
-    ctaLink: { href: '/headwear' },
+    title: 'Headwear',
+    image: { src: 'https://rstr.in/monogram/vibes/8bPrhQZGr4k', altText: 'Headwear' },
+    href: '#',
   },
 ]
 
 export default function Preview() {
   return (
-    <CardCarousel title="Category" link={{ label: 'See All', href: '/' }}>
-      {categories.map(category => (
-        <CategoryCard key={category.label} {...category} />
+    <CardCarousel>
+      {categories.map(card => (
+        <Card key={card.title} {...card} />
       ))}
     </CardCarousel>
   )

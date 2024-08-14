@@ -10,7 +10,7 @@ export default function Preview() {
           url: 'https://rstr.in/monogram/vibes/7ayVnws_5R1',
           altText: 'Vestibulum eleifend placerat ligula',
         }}
-        link={{ href: '/' }}
+        link={{ href: '#' }}
         date="2024-07-01"
         author="Author Name"
       />
