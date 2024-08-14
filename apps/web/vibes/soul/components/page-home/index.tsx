@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
-import { Facebook, Linkedin, Youtube } from 'lucide-react'
-
+import LinkedIn from '@/vibes/soul/components//footer/social-icons/linked-in'
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 import Feature from '@/vibes/soul/components/feature'
@@ -9,6 +8,15 @@ import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
 import FeaturedVideo from '@/vibes/soul/components/featured-video'
 import Footer from '@/vibes/soul/components/footer'
+import Amex from '@/vibes/soul/components/footer/payment-icons/amex'
+import ApplePay from '@/vibes/soul/components/footer/payment-icons/apple-pay'
+import Bitcoin from '@/vibes/soul/components/footer/payment-icons/bitcoin'
+import GooglePay from '@/vibes/soul/components/footer/payment-icons/google-pay'
+import Mastercard from '@/vibes/soul/components/footer/payment-icons/mastercard'
+import Paypal from '@/vibes/soul/components/footer/payment-icons/paypal'
+import Visa from '@/vibes/soul/components/footer/payment-icons/visa'
+import Facebook from '@/vibes/soul/components/footer/social-icons/facebook'
+import X from '@/vibes/soul/components/footer/social-icons/x'
 import Header from '@/vibes/soul/components/header'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
@@ -18,36 +26,26 @@ import { headerLinks } from '@/vibes/soul/examples/header'
 const socialMediaLinks = [
   {
     href: '#',
-    icon: <Facebook size={18} strokeWidth={1} />,
+    icon: <Facebook />,
   },
   {
     href: '#',
-    icon: <Linkedin size={18} strokeWidth={1} />,
+    icon: <LinkedIn />,
   },
   {
     href: '#',
-    icon: <Youtube size={18} strokeWidth={1} />,
+    icon: <X />,
   },
 ]
 
 const paymentIconsArray: React.ReactNode[] = [
-  <Image src="https://rstr.in/monogram/vibes/8hv4difQbxs" alt="Visa" width={35} height={24} />,
-  <Image src="https://rstr.in/monogram/vibes/2si5pZsQe24" alt="Amex" width={35} height={24} />,
-  <Image
-    src="https://rstr.in/monogram/vibes/j5TMUICitrf"
-    alt="Mastercard"
-    width={35}
-    height={24}
-  />,
-  <Image src="https://rstr.in/monogram/vibes/bpLWRFd4Myo" alt="Paypal" width={35} height={24} />,
-  <Image
-    src="https://rstr.in/monogram/vibes/cko6FUZ4dQB"
-    alt="Google Pay"
-    width={35}
-    height={24}
-  />,
-  <Image src="https://rstr.in/monogram/vibes/doCkqTXefki" alt="Apple Pay" width={35} height={24} />,
-  <Image src="https://rstr.in/monogram/vibes/yINUOYdzjlz" alt="Bitcoin" width={35} height={24} />,
+  <Visa />,
+  <Amex />,
+  <Mastercard />,
+  <Paypal />,
+  <GooglePay />,
+  <ApplePay />,
+  <Bitcoin />,
 ]
 
 export const HomePage = function HomePage({ heroSlides, categories }: any) {
@@ -168,8 +166,8 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
             phone: '+(1)408 123 4567',
           }}
           copyright={`© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`}
-          // paymentIcons={paymentIconsArray}
-          // socialMediaLinks={socialMediaLinks}
+          paymentIcons={paymentIconsArray}
+          socialMediaLinks={socialMediaLinks}
         />
       </div>
     </>

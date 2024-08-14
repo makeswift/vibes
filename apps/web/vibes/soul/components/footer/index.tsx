@@ -98,7 +98,7 @@ export const Footer = function Footer({
                     <Link
                       key={i}
                       href={href}
-                      className="block rounded-full p-2 ring-primary focus-visible:outline-0 focus-visible:ring-2"
+                      className="block rounded-full p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2"
                     >
                       {icon}
                     </Link>
@@ -144,7 +144,7 @@ export const Footer = function Footer({
           <span className="block text-[15px] text-contrast-400 ">{copyright ?? ''}</span>
 
           {/* Payement Icons */}
-          {/* {paymentIcons && <div className="flex gap-2">{paymentIcons}</div>} */}
+          {paymentIcons && <div className="flex gap-2">{paymentIcons}</div>}
         </div>
       </div>
     </footer>
