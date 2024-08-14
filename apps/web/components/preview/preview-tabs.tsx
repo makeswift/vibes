@@ -21,10 +21,10 @@ interface Props {
     code: React.ReactNode
     clipboard: string
   }[]
-  size?: 'small' | 'medium' | 'large'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
-export function PreviewTabs({ components, size = 'medium' }: Props) {
+export function PreviewTabs({ components, size = 'md' }: Props) {
   const { activeBrand } = useBrandContext()
   const { width, isDragging, zoom, resize, tab, setTab } = usePreviewContext()
   const [fullScreen, setFullScreen] = useState(false)
@@ -40,7 +40,7 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
       defaultValue="preview"
       value={tab}
       onValueChange={setTab}
-      className={clsx('flex flex-col', fullScreen && 'h-full')}
+      className="my-4 flex flex-1 flex-col"
     >
       <div className="flex items-center @container">
         <TabsList className="flex-1">
@@ -112,16 +112,18 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
           </div>
         </div>
       </div>
-      <TabsContent className="flex-1" value="preview">
+      <TabsContent className="min-h-0 flex-1" value="preview">
         <div
           className={clsx(
-            'flex',
+            'flex max-h-[70vh]',
             fullScreen
               ? 'h-full'
               : {
-                  small: 'h-[300px]',
-                  medium: 'h-[500px]',
-                  large: 'h-[750px]',
+                  xs: 'h-[200px]',
+                  sm: 'h-[400px]',
+                  md: 'h-[600px]',
+                  lg: 'h-[800px]',
+                  xl: 'h-[1000px]',
                 }[size]
           )}
         >
@@ -135,9 +137,11 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
             fullScreen
               ? 'max-h-full'
               : {
-                  small: 'max-h-[300px]',
-                  medium: 'max-h-[500px]',
-                  large: 'max-h-[750px]',
+                  xs: 'max-h-[min(200px,70vh)]',
+                  sm: 'max-h-[min(400px,70vh)]',
+                  md: 'max-h-[min(600px,70vh)]',
+                  lg: 'max-h-[min(800px,70vh)]',
+                  xl: 'max-h-[min(1000px,70vh)]',
                 }[size]
           )}
         >
@@ -152,7 +156,7 @@ export function PreviewTabs({ components, size = 'medium' }: Props) {
       {fullScreen ? (
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-background" />
-          <Dialog.Content className="fixed inset-0 z-50 bg-background px-4">
+          <Dialog.Content className="fixed inset-0 z-50 flex flex-col bg-background px-4">
             {content}
           </Dialog.Content>
         </Dialog.Portal>

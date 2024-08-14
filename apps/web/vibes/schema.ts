@@ -119,6 +119,6 @@ export const pageMetaSchema = (vibe: Vibe) => {
         z.string(),
       ])
       .optional(),
-    previewSize: z.enum(['small', 'medium', 'large']).optional(),
+    previewSize: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
   })
 }
