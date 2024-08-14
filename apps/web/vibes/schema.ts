@@ -53,6 +53,8 @@ export type CSSVars = {
   '--font-size-5xl'?: string
   '--font-size-6xl'?: string
   '--font-size-7xl'?: string
+  '--font-size-8xl'?: string
+  '--font-size-9xl'?: string
 
   '--shadow-sm'?: string
   '--shadow-base'?: string

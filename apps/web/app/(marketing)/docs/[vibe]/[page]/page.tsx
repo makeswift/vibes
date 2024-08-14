@@ -9,8 +9,7 @@ import prettyBytes from 'pretty-bytes'
 import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
-import { BrandColors, Colors } from '@/components/brand/brand-colors'
-import { BrandInstallation } from '@/components/brand/brand-installation'
+import { BrandColors, BrandInstallation, BrandTypography, Colors } from '@/components/brand'
 import * as MDXComponents from '@/components/mdx'
 import { navigation } from '@/components/navigation'
 import { Preview } from '@/components/preview'
@@ -114,6 +113,9 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       },
       BrandInstallation: function BrandInstallationWithoutVibeSlug(props) {
         return <BrandInstallation {...props} vibeSlug={vibe.slug} />
+      },
+      BrandTypography: function BrandTypographyWithoutVibeSlug(props) {
+        return <BrandTypography {...props} vibeSlug={vibe.slug} />
       },
       CodeFromFile: function CodeFromFileWithoutBasePath(props) {
         return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
