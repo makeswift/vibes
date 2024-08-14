@@ -20,10 +20,12 @@ function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) 
         const page = pages.find(page => page.component === item)
 
         return (
-          <Link key={item} href={page ? `/docs/${vibe.slug}/${page.component}` : '#'}>
-            {item}
-            {arr.length > 1 ? (index < arr.length - 1 ? ', ' : 'and ') : ''}
-          </Link>
+          <>
+            {arr.length > 1 && index > 0 ? (index < arr.length - 1 ? ', ' : ' and ') : ''}
+            <Link key={item} href={page ? `/docs/${vibe.slug}/${page.component}` : '#'}>
+              {item}
+            </Link>
+          </>
         )
       })}{' '}
       {items.length > 1 ? 'components' : 'component'}
@@ -71,15 +73,12 @@ export function Installation({
           <Steps>
             {component.registryDependencies.length > 0 && (
               <Step>
-                <h3>
-                  Add the{' '}
-                  <RegistryDependencies items={component.registryDependencies} vibe={vibe} />
-                </h3>
+                <h3>Add the following {vibe.name} components</h3>
                 <p>
                   The {componentName} component uses the{' '}
                   <RegistryDependencies items={component.registryDependencies} vibe={vibe} />. Make
-                  sure you have {component.registryDependencies.length > 1 ? 'them' : 'it'}{' '}
-                  installed in your project
+                  sure you have added {component.registryDependencies.length > 1 ? 'them' : 'it'} to
+                  your project
                 </p>
               </Step>
             )}

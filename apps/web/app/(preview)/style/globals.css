@@ -8,6 +8,6 @@
   }
   html,
   body {
-    @apply overscroll-none bg-background font-body text-foreground;
+    @apply bg-background font-body text-foreground;
   }
 }
