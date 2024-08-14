@@ -91,14 +91,14 @@ export const Footer = function Footer({
 
             {/* Social Media Links */}
             {socialMediaLinks && (
-              <div className="mt-4 flex">
+              <div className="mt-4 flex items-center">
                 {socialMediaLinks.map(({ href, icon }, i) => {
                   console.log('icon', icon)
                   return (
                     <Link
                       key={i}
                       href={href}
-                      className="block rounded-full p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2"
+                      className="block rounded-full fill-contrast-300 p-1.5 ring-primary transition-colors duration-300 ease-out hover:fill-foreground focus-visible:outline-0 focus-visible:ring-2"
                     >
                       {icon}
                     </Link>
