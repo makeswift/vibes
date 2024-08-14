@@ -93,7 +93,6 @@ export const Footer = function Footer({
             {socialMediaLinks && (
               <div className="mt-4 flex items-center">
                 {socialMediaLinks.map(({ href, icon }, i) => {
-                  console.log('icon', icon)
                   return (
                     <Link
                       key={i}
