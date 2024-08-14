@@ -41,15 +41,15 @@ const copyright = `© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`
 const socialMediaLinks = [
   {
     href: '#',
-    icon: <Facebook size={16} />,
+    icon: <Facebook size={18} strokeWidth={1} />,
   },
   {
     href: '#',
-    icon: <Linkedin size={16} />,
+    icon: <Linkedin size={18} strokeWidth={1} />,
   },
   {
     href: '#',
-    icon: <Youtube size={16} />,
+    icon: <Youtube size={18} strokeWidth={1} />,
   },
 ]
 
