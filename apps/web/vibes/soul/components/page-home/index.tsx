@@ -1,7 +1,11 @@
+import Image from 'next/image'
+
+import { Facebook, Linkedin, Youtube } from 'lucide-react'
+
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import Card, { CardProps } from '@/vibes/soul/components/card'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 import Feature from '@/vibes/soul/components/feature'
+import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
 import FeaturedVideo from '@/vibes/soul/components/featured-video'
 import Footer from '@/vibes/soul/components/footer'
@@ -9,10 +13,44 @@ import Header from '@/vibes/soul/components/header'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
-import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
-import FeaturedProductsCarousel from '../featured-products-carousel'
+const copyright = `© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`
+
+const socialMediaLinks = [
+  {
+    href: '#',
+    icon: <Facebook size={18} strokeWidth={1} />,
+  },
+  {
+    href: '#',
+    icon: <Linkedin size={18} strokeWidth={1} />,
+  },
+  {
+    href: '#',
+    icon: <Youtube size={18} strokeWidth={1} />,
+  },
+]
+
+const paymentIconsArray: React.ReactNode[] = [
+  <Image src="https://rstr.in/monogram/vibes/8hv4difQbxs" alt="Visa" width={35} height={24} />,
+  <Image src="https://rstr.in/monogram/vibes/2si5pZsQe24" alt="Amex" width={35} height={24} />,
+  <Image
+    src="https://rstr.in/monogram/vibes/j5TMUICitrf"
+    alt="Mastercard"
+    width={35}
+    height={24}
+  />,
+  <Image src="https://rstr.in/monogram/vibes/bpLWRFd4Myo" alt="Paypal" width={35} height={24} />,
+  <Image
+    src="https://rstr.in/monogram/vibes/cko6FUZ4dQB"
+    alt="Google Pay"
+    width={35}
+    height={24}
+  />,
+  <Image src="https://rstr.in/monogram/vibes/doCkqTXefki" alt="Apple Pay" width={35} height={24} />,
+  <Image src="https://rstr.in/monogram/vibes/yINUOYdzjlz" alt="Bitcoin" width={35} height={24} />,
+]
 
 export const HomePage = function HomePage({ heroSlides, categories }: any) {
   return (
@@ -96,7 +134,45 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           theme="light"
         />
 
-        <Footer sections={footerLinks} logo="SOUL" />
+        <Footer
+          logo="SOUL"
+          sections={[
+            {
+              title: 'Categories',
+              links: [
+                { label: 'Coats & Jackets', href: '#' },
+                { label: 'T-Shirts', href: '#' },
+                { label: 'Sweatshirts', href: '#' },
+                { label: 'Pants', href: '#' },
+              ],
+            },
+            {
+              title: 'Company',
+              links: [
+                { label: 'About', href: '#' },
+                { label: 'Stories', href: '#' },
+                { label: 'Careers', href: '#' },
+                { label: 'Stores', href: '#' },
+              ],
+            },
+            {
+              title: 'Help & Support',
+              links: [
+                { label: 'FAQs', href: '#' },
+                { label: 'Contact Us', href: '#' },
+                { label: 'Returns', href: '#' },
+                { label: 'Shipping', href: '#' },
+              ],
+            },
+          ]}
+          contactInformation={{
+            address: 'info@mywebsite.com',
+            phone: '+(1)408 123 4567',
+          }}
+          paymentIcons={paymentIconsArray}
+          copyright={copyright}
+          socialMediaLinks={socialMediaLinks}
+        />
       </div>
     </>
   )

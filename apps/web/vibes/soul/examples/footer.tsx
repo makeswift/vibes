@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 
 import { Facebook, Linkedin, Youtube } from 'lucide-react'
@@ -36,8 +34,6 @@ export const footerLinks = [
   },
 ]
 
-const copyright = `© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`
-
 const socialMediaLinks = [
   {
     href: '#',
@@ -52,11 +48,6 @@ const socialMediaLinks = [
     icon: <Youtube size={18} strokeWidth={1} />,
   },
 ]
-
-const contactInformation = {
-  address: 'info@mywebsite.com',
-  phone: '+(1)408 123 4567',
-}
 
 const paymentIconsArray: React.ReactNode[] = [
   <Image src="https://rstr.in/monogram/vibes/8hv4difQbxs" alt="Visa" width={35} height={24} />,
@@ -86,10 +77,13 @@ export default function Preview() {
         src: 'https://rstr.in/monogram/vibes/5UckSov0byo',
         altText: 'SOUL Logo',
       }}
-      copyright={copyright}
+      copyright={`© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`}
       paymentIcons={paymentIconsArray}
       socialMediaLinks={socialMediaLinks}
-      contactInformation={contactInformation}
+      contactInformation={{
+        address: 'info@mywebsite.com',
+        phone: '+(1)408 123 4567',
+      }}
     />
   )
 }

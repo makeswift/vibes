@@ -31,7 +31,6 @@ interface ContactInformation {
 
 interface Props {
   logo?: string | Image
-
   sections: Section[]
   copyright?: string
   contactInformation?: ContactInformation
