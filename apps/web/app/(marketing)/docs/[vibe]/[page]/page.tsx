@@ -23,8 +23,6 @@ import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
-import { FontFamily } from '@/components/ui/font-family'
-import { FontSize } from '@/components/ui/font-size'
 import { IconsPreview } from '@/components/ui/icons-preview'
 import { Installation } from '@/components/ui/installation'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -100,8 +98,6 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       Button,
       ButtonLink,
       Colors,
-      FontFamily,
-      FontSize,
       IconsPreview,
       Popover,
       PopoverContent,
