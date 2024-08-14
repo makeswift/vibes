@@ -255,6 +255,18 @@ export const components = [
     files: ['./components/product-card/index.tsx', '../../lib/utils.ts'],
   },
   {
+    name: 'header',
+    dependencies: [],
+    registryDependencies: ['badge'],
+    files: [
+      './components/header/index.tsx',
+      '../../lib/utils.ts',
+      './components/icons/ChevronDownIcon.tsx',
+      './components/icons/CrossIcon.tsx',
+      './components/icons/SearchIcon.tsx',
+    ],
+  },
+  {
     name: 'slideshow-section',
     dependencies: [],
     registryDependencies: [],
