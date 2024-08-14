@@ -29,7 +29,7 @@ export const FeaturedVideo = function FeaturedVideo({
         mediaAlign ? 'bg-primary-shadow' : ''
       )}
     >
-      <div className="flex h-full flex-col @3xl:flex-row">
+      <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
         <video
           className={clsx(
             'h-full w-full object-cover',
@@ -44,7 +44,7 @@ export const FeaturedVideo = function FeaturedVideo({
         </video>
         <div
           className={clsx(
-            'z-10 mx-auto flex max-w-7xl flex-col items-start gap-4 px-3 py-10 text-background @5xl:p-20',
+            'z-10 mx-auto flex flex-col items-start gap-4 px-3 py-10 text-background @5xl:p-20',
             mediaAlign
               ? 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5'
               : 'absolute bottom-0 left-0 @xl:px-6',

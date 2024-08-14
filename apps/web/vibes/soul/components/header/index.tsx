@@ -76,10 +76,10 @@ export const Header = forwardRef(function Header(
         transition: 'transform .5s ease-in-out',
       }}
     >
-      <header
+      <div
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className="mx-auto w-full max-w-7xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
+        className="mx-auto w-full max-w-screen-2xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
       >
         <nav className="grid h-[60px] grid-cols-3 items-stretch justify-between gap-x-3 bg-background shadow-[2px_4px_24px_#00000010] @4xl:mx-5 @4xl:rounded-[24px]">
           <div className="relative flex items-stretch px-2.5" ref={container}>
@@ -197,7 +197,7 @@ export const Header = forwardRef(function Header(
               ))}
           </div>
         </div>
-      </header>
+      </div>
     </ReactHeadroom>
   )
 })

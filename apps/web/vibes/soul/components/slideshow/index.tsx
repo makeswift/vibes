@@ -55,14 +55,21 @@ export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
               currentIndex === idx ? 'opacity-100' : 'opacity-0'
             )}
           >
-            <div className="absolute bottom-10 left-0 z-10  w-full max-w-7xl px-3 text-background @lg:bottom-24 @xl:px-6 @5xl:px-20">
+            <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-screen-2xl -translate-x-1/2 px-3 text-background @xl:px-6 @5xl:px-20">
               <h1 className="mb-1 text-5xl font-medium leading-none @2xl:text-[90px]">{title}</h1>
               {description && <p>{description}</p>}
               {cta?.href && (
-                <Button size="small" variant="tertiary" className="mt-4">
+                <Button variant="tertiary" className="mt-4">
                   {cta.label}
                 </Button>
               )}
+
+              <ProgressSection
+                currentIndex={currentIndex}
+                slides={slides}
+                setCurrentIndex={setCurrentIndex}
+                className="z-10 w-full pb-2 pt-4 @lg:pb-8 @lg:pt-10"
+              />
             </div>
 
             {/* TODO: Implement progressive loading with blurDataUrl */}
@@ -79,12 +86,6 @@ export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
           </div>
         )
       })}
-      <ProgressSection
-        currentIndex={currentIndex}
-        slides={slides}
-        setCurrentIndex={setCurrentIndex}
-        className="absolute bottom-0 left-0 z-10 w-full px-3 pb-2 pt-4 @lg:pb-8 @lg:pt-10 @xl:px-6 @5xl:px-20"
-      />
     </header>
   )
 }

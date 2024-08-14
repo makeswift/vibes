@@ -24,7 +24,7 @@ export const Subscribe = function Subscribe({ image, title, description, theme }
         ['bg-background']: theme === 'light',
       })}
     >
-      <div className="flex flex-col items-center @2xl:flex-row">
+      <div className="mx-auto flex max-w-screen-2xl flex-col items-center @2xl:flex-row">
         {image && (
           <div className="relative aspect-square h-full w-full overflow-hidden @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
             <Image src={image.src} alt={image.altText} fill className="object-cover" />
