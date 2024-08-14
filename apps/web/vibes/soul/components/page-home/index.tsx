@@ -169,9 +169,9 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
             address: 'info@mywebsite.com',
             phone: '+(1)408 123 4567',
           }}
-          paymentIcons={paymentIconsArray}
-          copyright={copyright}
-          socialMediaLinks={socialMediaLinks}
+          copyright={`© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`}
+          // paymentIcons={paymentIconsArray}
+          // socialMediaLinks={socialMediaLinks}
         />
       </div>
     </>
