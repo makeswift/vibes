@@ -85,7 +85,7 @@ type Slide = {
   title?: string
   text?: string
   buttonText?: string
-  buttonLink: string
+  buttonLink?: string
   image?: string
   imageAlt: string
 }
@@ -203,50 +203,6 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
     })
   }, [])
 
-  const tweenGlowOpacity = useCallback(
-    (emblaApi: EmblaCarouselType, eventName?: EmblaEventType) => {
-      const engine = emblaApi.internalEngine()
-      const scrollProgress = emblaApi.scrollProgress()
-      const slidesInView = emblaApi.slidesInView()
-      const isScrollEvent = eventName === 'scroll'
-      const threshold = 0.1 // More aggressive threshold for sharper transition
-
-      emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
-        let diffToTarget = scrollSnap - scrollProgress
-        const slidesInSnap = engine.slideRegistry[snapIndex]
-
-        slidesInSnap.forEach(slideIndex => {
-          if (isScrollEvent && !slidesInView.includes(slideIndex)) return
-
-          if (engine.options.loop) {
-            engine.slideLooper.loopPoints.forEach(loopItem => {
-              const target = loopItem.target()
-
-              if (slideIndex === loopItem.index && target !== 0) {
-                const sign = Math.sign(target)
-
-                if (sign === -1) {
-                  diffToTarget = scrollSnap - (1 + scrollProgress)
-                }
-                if (sign === 1) {
-                  diffToTarget = scrollSnap + (1 - scrollProgress)
-                }
-              }
-            })
-          }
-
-          const distance = Math.abs(diffToTarget)
-          const glowOpacity = numberWithinRange(1 - distance / threshold, 0, 1).toString()
-          emblaApi
-            .slideNodes()
-            // eslint-disable-next-line no-unexpected-multiline
-            [slideIndex].style.setProperty('--glow-opacity', glowOpacity)
-        })
-      })
-    },
-    []
-  )
-
   // Effect to initialize and set up event listeners
   useEffect(() => {
     if (!emblaApi) return
@@ -257,7 +213,6 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
     setTweenGlowOpacityFactor(emblaApi)
     tweenScale(emblaApi)
     tweenOpacity(emblaApi)
-    tweenGlowOpacity(emblaApi)
 
     emblaApi
       .on('reInit', setTweenNodes)
@@ -270,9 +225,6 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
       .on('reInit', tweenOpacity)
       .on('scroll', tweenOpacity)
       .on('slideFocus', tweenOpacity)
-      .on('reInit', tweenGlowOpacity)
-      .on('scroll', tweenGlowOpacity)
-      .on('slideFocus', tweenGlowOpacity)
   }, [
     emblaApi,
     setTweenNodes,
@@ -281,37 +233,7 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
     setTweenGlowOpacityFactor,
     tweenScale,
     tweenOpacity,
-    tweenGlowOpacity,
   ])
-
-  const textRefs = useRef<(HTMLDivElement | null)[]>([])
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-text')
-          } else {
-            entry.target.classList.remove('animate-text')
-          }
-        })
-      },
-      { threshold: 0.85 }
-    )
-
-    const currentRefs = textRefs.current
-
-    currentRefs.forEach(ref => {
-      if (ref) observer.observe(ref)
-    })
-
-    return () => {
-      currentRefs.forEach(ref => {
-        if (ref) observer.unobserve(ref)
-      })
-    }
-  }, [])
 
   return (
     <div className="embla w-full @container">
@@ -319,11 +241,19 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
         <div className="embla__container touch-[pan-y_pinch-zoom] flex">
           {slides.map((slide, index) => (
             <div
-              className="embla__slide shrink-0 grow-0 basis-5/6 [transform:translate3d(0,0,0)] before:absolute before:-inset-3 before:-z-20 before:rounded-full before:bg-primary/25 before:opacity-[var(--glow-opacity)] before:blur-3xl before:transition-opacity @lg:basis-3/4 @2xl:basis-4/6 lg:before:-inset-4"
+              className={clsx(
+                'embla__slide shrink-0 grow-0 basis-5/6 [transform:translate3d(0,0,0)] after:absolute after:-inset-3 after:-z-20 after:rounded-full after:bg-primary/25 after:opacity-[var(--glow-opacity)] after:blur-3xl after:transition-opacity @lg:basis-3/4 @2xl:basis-4/6 lg:after:-inset-4',
+                selectedIndex === index ? 'after:opacity-100' : 'after:opacity-0'
+              )}
               key={index}
             >
-              <div className="embla__slide__number h-full w-full rounded-[32px] bg-gradient-to-b from-primary/25 to-background/50 p-2 ring-1 ring-primary/20">
-                <div className="relative z-0 overflow-hidden rounded-3xl">
+              <div
+                className={clsx(
+                  'embla__slide__number relative z-0 h-full w-full rounded-[32px] bg-gradient-to-b from-primary/15 to-background/50 p-2 ring-1 ring-primary/20 after:absolute after:inset-5 after:top-0 after:z-10 after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent after:transition-opacity after:delay-200 after:duration-700',
+                  selectedIndex === index ? 'after:opacity-100' : 'after:opacity-0'
+                )}
+              >
+                <div className="relative aspect-square w-full place-content-end overflow-hidden rounded-3xl bg-gradient-to-b from-transparent from-50% to-background/80 p-4 ring-1 ring-primary/10 @2xl:aspect-video @2xl:p-5">
                   {slide.image && (
                     <Image
                       src={slide.image}
@@ -333,10 +263,12 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
                     />
                   )}
                   <div
-                    className="flex aspect-square w-full flex-col items-start justify-end gap-x-8 gap-y-4 bg-gradient-to-b from-transparent from-50% to-background/80 p-4 @2xl:aspect-video @2xl:flex-row @2xl:items-end @2xl:p-5"
-                    ref={el => {
-                      textRefs.current[index] = el
-                    }}
+                    className={clsx(
+                      'flex flex-col items-start justify-end gap-x-8 gap-y-4 transition-all delay-150 duration-500 @2xl:flex-row @2xl:items-end',
+                      selectedIndex === index
+                        ? 'translate-y-0 opacity-100'
+                        : 'translate-y-6 opacity-0'
+                    )}
                   >
                     <div className="@2xl:flex-1">
                       <h2 className="text-balance font-medium text-foreground">{slide.title}</h2>
@@ -344,9 +276,9 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
                     </div>
 
                     <Button
-                      link={{ href: slide.buttonLink }}
+                      link={{ href: slide.buttonLink || '#' }}
                       borderGlow={false}
-                      variant="secondary"
+                      variant="primary"
                       size="small"
                     >
                       {slide.buttonText}

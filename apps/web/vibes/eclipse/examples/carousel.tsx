@@ -16,8 +16,8 @@ const slides = [
   {
     title: 'Amazing experience, highly recommend!',
     text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    buttonText: 'Read more',
-    buttonLink: '#',
+    buttonText: 'Go here',
+    buttonLink: 'https://makeswift.com',
     image:
       'https://images.pexels.com/photos/19765972/pexels-photo-19765972/free-photo-of-antelope-on-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
     imageAlt: 'Antelope on meadow',
@@ -52,6 +52,8 @@ const slides = [
   {
     title: 'Top-notch service and friendly staff.',
     text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    buttonText: 'Read more',
+    buttonLink: '#',
     image:
       'https://images.pexels.com/photos/15247550/pexels-photo-15247550/free-photo-of-standing-antelope-on-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
     imageAlt: 'Antelope on meadow',
