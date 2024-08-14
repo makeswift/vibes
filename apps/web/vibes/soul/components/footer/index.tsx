@@ -110,13 +110,13 @@ export const Footer = function Footer({
           </div>
 
           {/* Footer Columns of Links */}
-          <div className="flex w-full flex-1 flex-grow flex-wrap gap-y-8 @lg:gap-y-10">
+          <div className="flex w-full flex-1 flex-grow flex-wrap gap-y-8 @lg:gap-y-10 @xl:justify-end">
             {sections?.length &&
               sections.map(({ title, links }, i) => {
                 return (
                   <div
                     key={i}
-                    className="flex-1 basis-full pr-10 text-[15px] last:pr-0 @sm:basis-1/3 @2xl:pr-10 @4xl:basis-auto"
+                    className="flex-1 basis-full pr-10 text-[15px] last:pr-0 @sm:basis-1/3 @2xl:pr-10 @4xl:max-w-[170px] @4xl:basis-auto"
                   >
                     {title && <span className="mb-8 block font-medium">{title}</span>}
 
@@ -142,10 +142,10 @@ export const Footer = function Footer({
 
         <div className="flex flex-wrap-reverse justify-between gap-y-10 px-3 py-10 pb-20 @xl:px-6 @5xl:px-20">
           {/* Copyright */}
-          {copyright && <span className="block text-[15px] text-contrast-400 ">{copyright}</span>}
+          <span className="block text-[15px] text-contrast-400 ">{copyright ?? ''}</span>
 
           {/* Payement Icons */}
-          {paymentIcons && <div className="flex gap-2">{paymentIcons}</div>}
+          {/* {paymentIcons && <div className="flex gap-2">{paymentIcons}</div>} */}
         </div>
       </div>
     </footer>
