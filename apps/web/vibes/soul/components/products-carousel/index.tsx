@@ -1,4 +1,4 @@
-import CardCarousel from '@/vibes/soul/components/card-carousel'
+import Carousel from '@/vibes/soul/components/carousel'
 import ProductCard, { Product } from '@/vibes/soul/components/product-card'
 
 interface Props {
@@ -11,7 +11,7 @@ export const ProductsCarousel = function ProductsCarousel({
   products,
 }: Props) {
   return (
-    <CardCarousel>
+    <Carousel>
       {products.map(product => (
         <ProductCard
           key={product.id}
@@ -19,7 +19,7 @@ export const ProductsCarousel = function ProductsCarousel({
           className="[&>div]:min-w-[179px] @4xl:[&>div]:min-w-[360px]"
         />
       ))}
-    </CardCarousel>
+    </Carousel>
   )
 }
 

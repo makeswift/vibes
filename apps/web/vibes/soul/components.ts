@@ -41,7 +41,7 @@ export const components = [
     name: 'card-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
-    files: ['components/card-carousel/index.tsx', 'components/card-carousel/scrollbar.tsx'],
+    files: ['components/carousel/index.tsx', 'components/carousel/scrollbar.tsx'],
   },
   {
     name: 'checkbox',
