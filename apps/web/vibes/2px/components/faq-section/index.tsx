@@ -1,8 +1,8 @@
-import Accordions, { AccordionItem } from '@/vibes/2px/components/accordions'
+import Accordions, { Accordion } from '@/vibes/2px/components/accordions'
 
 interface Props {
   title: string
-  items: AccordionItem[]
+  items: Accordion[]
 }
 
 export default function FAQSection({ title, items }: Props) {
@@ -13,7 +13,7 @@ export default function FAQSection({ title, items }: Props) {
       </div>
       <div className="h-0.5 w-full bg-foreground @lg:hidden" />
       <div className="w-full @lg:max-w-[90rem]">
-        <Accordions accordions={items} />
+        <Accordions accordions={items} type="multiple" />
       </div>
     </section>
   )
