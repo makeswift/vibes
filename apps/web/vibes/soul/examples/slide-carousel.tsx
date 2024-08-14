@@ -1,4 +1,4 @@
-import Carousel from '@/vibes/soul/components/carousel'
+import SlideCarousel from '@/vibes/soul/components/slide-carousel'
 
 const images = [
   'https://rstr.in/monogram/vibes/o_0gBpyrOVe',
@@ -9,5 +9,5 @@ const images = [
 ]
 
 export default function Preview() {
-  return <Carousel title="A global community" images={images} />
+  return <SlideCarousel title="A global community" images={images} />
 }

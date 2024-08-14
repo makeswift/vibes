@@ -69,17 +69,17 @@ export const navigation = [
       },
 
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
+      {
+        title: 'Slide Carousel',
+        slug: 'slide-carousel',
+        file: 'docs/slide-carousel.mdx',
+        component: 'slide-carousel',
+      },
     ],
   },
   {
     title: 'Sections',
     pages: [
-      {
-        title: 'Carousel',
-        slug: 'carousel',
-        file: 'docs/carousel.mdx',
-        component: 'carousel',
-      },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {

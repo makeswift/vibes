@@ -1,7 +1,7 @@
-import Card, { CardProps } from '@/vibes/soul/components/card'
+import { CardProps } from '@/vibes/soul/components/card'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 
-export const categories: CardProps[] = [
+export const cards: CardProps[] = [
   {
     title: 'Men',
     image: { src: 'https://rstr.in/monogram/vibes/CVQwqHQKmz4', altText: 'Men' },
@@ -28,11 +28,5 @@ export const categories: CardProps[] = [
 ]
 
 export default function Preview() {
-  return (
-    <CardCarousel>
-      {categories.map(card => (
-        <Card key={card.title} {...card} />
-      ))}
-    </CardCarousel>
-  )
+  return <CardCarousel cards={cards} />
 }

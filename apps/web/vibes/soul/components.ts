@@ -41,13 +41,7 @@ export const components = [
     name: 'card-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
-    files: ['components/card-carousel/index.tsx', 'components/card-carousel/scrollbar.tsx'],
-  },
-  {
-    name: 'carousel',
-    dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
-    registryDependencies: [],
-    files: ['components/carousel/index.tsx'],
+    files: ['components/carousel/index.tsx', 'components/carousel/scrollbar.tsx'],
   },
   {
     name: 'checkbox',
@@ -192,6 +186,12 @@ export const components = [
     dependencies: [],
     registryDependencies: [],
     files: ['components/rating/index.tsx'],
+  },
+  {
+    name: 'slide-carousel',
+    dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/slide-carousel/index.tsx'],
   },
   {
     name: 'slideshow',
