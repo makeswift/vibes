@@ -15,8 +15,6 @@ import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
-const copyright = `© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`
-
 const socialMediaLinks = [
   {
     href: '#',
