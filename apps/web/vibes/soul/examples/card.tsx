@@ -6,7 +6,6 @@ export default function Preview() {
       <Card
         title="Low Maintenance"
         image={{ src: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM', altText: 'Low Maintenance' }}
-        theme="dark"
         href="#"
       />
     </div>
