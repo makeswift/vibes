@@ -8,31 +8,41 @@ type ScrollBarProps = {
 
 const ScrollBar = ({ emblaApi }: ScrollBarProps) => {
   const [progress, setProgress] = useState(0)
+  const [scrollbarPosition, setScrollbarPosition] = useState({ width: 0, left: 0 })
 
-  const updateProgress = useCallback(() => {
+  const updateScrollbar = useCallback(() => {
     if (!emblaApi) return
-    const progress = Math.round(emblaApi.scrollProgress() * 100)
-    setProgress(progress)
+
+    const totalSlides = emblaApi.slideNodes().length
+    const scrollbarWidth = 300 / totalSlides
+    const scrollbarLeft = emblaApi.scrollProgress() * (100 - scrollbarWidth)
+
+    setScrollbarPosition({ width: scrollbarWidth, left: scrollbarLeft })
   }, [emblaApi])
 
   useEffect(() => {
     if (!emblaApi) return
 
-    emblaApi.on('select', updateProgress)
-    updateProgress()
+    const update = () => {
+      updateScrollbar()
+      setProgress(Math.round(emblaApi.scrollProgress() * 100))
+    }
+
+    emblaApi.on('scroll', update)
+    emblaApi.on('select', update)
+    update()
 
     return () => {
-      emblaApi.off('select', updateProgress)
+      emblaApi.off('scroll', update)
+      emblaApi.off('select', update)
     }
-  }, [emblaApi, updateProgress])
+  }, [emblaApi, updateScrollbar])
 
   const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newProgress = Number(e.target.value)
     setProgress(newProgress)
-    if (emblaApi) {
-      const scrollToPosition = (newProgress / 100) * (emblaApi.scrollSnapList().length - 1)
-      emblaApi.scrollTo(Math.round(scrollToPosition))
-    }
+    const scrollToPosition = (newProgress / 100) * emblaApi.scrollSnapList().length
+    emblaApi.scrollTo(Math.round(scrollToPosition))
   }
 
   return (
@@ -45,10 +55,16 @@ const ScrollBar = ({ emblaApi }: ScrollBarProps) => {
         onChange={handleProgressChange}
         className="absolute h-full w-full cursor-pointer appearance-none bg-transparent opacity-0"
       />
+      {/* Track */}
       <div className="pointer-events-none absolute h-1 w-full rounded-full bg-contrast-100" />
+
+      {/* Scrollbar */}
       <div
-        className="pointer-events-none absolute h-1 rounded-full bg-foreground transition-all duration-300 ease-out"
-        style={{ width: '38%', left: `${Math.min(Math.max(progress, 0), 62)}%` }}
+        className="pointer-events-none absolute h-1 rounded-full bg-foreground transition-all duration-0 ease-linear"
+        style={{
+          width: `${scrollbarPosition.width}%`,
+          left: `${scrollbarPosition.left}%`,
+        }}
       />
     </div>
   )
