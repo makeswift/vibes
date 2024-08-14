@@ -255,6 +255,17 @@ export const components = [
     files: ['./components/product-card/index.tsx', '../../lib/utils.ts'],
   },
   {
+    name: 'gallery',
+    dependencies: ['button', 'dropdown', 'swatch'],
+    registryDependencies: [],
+    files: [
+      './components/gallery/index.tsx',
+      '../../lib/utils.ts',
+      './components/gallery/expandable-text.tsx',
+      './components/gallery/options-selector.tsx',
+    ],
+  },
+  {
     name: 'header',
     dependencies: [],
     registryDependencies: ['badge'],

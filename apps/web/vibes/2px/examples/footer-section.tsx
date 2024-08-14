@@ -13,8 +13,8 @@ export default function Preview() {
       <FooterSection
         title={
           <>
-            VIBE DESIGNED AND built by{' '}
-            <Link href="www.tinloof.com" target="_blank">
+            VIBE DESIGNED AND built by&nbsp;
+            <Link href="www.tinloof.com" target="_blank" className="hover:underline">
               WWW.TINLOOF.COM
             </Link>
           </>

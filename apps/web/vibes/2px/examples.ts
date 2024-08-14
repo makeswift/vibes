@@ -290,6 +290,13 @@ export const examples = [
     component: lazy(() => import('./examples/product-card')),
   },
   {
+    name: 'gallery-example',
+    dependencies: [],
+    registryDependencies: ['gallery'],
+    files: ['examples/gallery.tsx'],
+    component: lazy(() => import('./examples/gallery')),
+  },
+  {
     name: 'header-example',
     dependencies: [],
     registryDependencies: ['header'],
