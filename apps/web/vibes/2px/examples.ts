@@ -67,6 +67,21 @@ export const examples = [
     component: lazy(() => import('./examples/popover')),
   },
   {
+    name: 'cart-popover-example',
+    dependencies: [
+      'react',
+      '@/lib/utils',
+      '@/vibes/2px/components/icons/PlusSolidIcon',
+      '@/vibes/2px/components/icons/CrossIcon',
+      '@/vibes/2px/components/cart-popover',
+      '@/vibes/2px/components/icons/PlusSolidIcon',
+      '@/vibes/2px/components/button',
+    ],
+    registryDependencies: ['cart-popover'],
+    files: ['examples/cart-popover.tsx'],
+    component: lazy(() => import('./examples/cart-popover')),
+  },
+  {
     name: 'skeleton-example',
     dependencies: [],
     registryDependencies: ['skeleton'],

@@ -80,6 +80,12 @@ export const components = [
     files: ['./components/text-area/index.tsx', '../../lib/utils.ts'],
   },
   {
+    name: 'cart-popover',
+    dependencies: ['@/vibes/2px/components/button', '@/vibes/2px/components/popover'],
+    registryDependencies: [],
+    files: ['./components/cart-popover/index.tsx', '../../lib/utils.ts'],
+  },
+  {
     name: 'popover',
     dependencies: ['@radix-ui/react-popover', '@/vibes/2px/components/button'],
     registryDependencies: [],
