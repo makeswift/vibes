@@ -79,20 +79,17 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
   return (
-    <div className="embla w-full @container">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container touch-[pan-y_pinch-zoom] flex">
+    <div className="w-full @container">
+      <div ref={emblaRef}>
+        <div className="touch-[pan-y_pinch-zoom] flex">
           {slides.map((slide, index) => (
-            <div
-              className="embla__slide shrink-0 grow-0 basis-5/6 [transform:translate3d(0,0,0)]"
-              key={index}
-            >
+            <div className="shrink-0 grow-0 basis-4/5 [transform:translate3d(0,0,0)]" key={index}>
               <div
                 className={clsx(
-                  'embla__slide__number relative z-0 h-full w-full rounded-[32px] bg-gradient-to-b from-primary/15 to-background/50 p-2 ring-1 ring-primary/20 transition-all duration-500 before:absolute before:-inset-3 before:-z-20 before:rounded-full before:bg-primary/25 before:opacity-[var(--glow-opacity)] before:blur-3xl before:transition-opacity after:absolute after:inset-5 after:top-0 after:z-10 after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent after:transition-opacity after:delay-200 after:duration-700 @lg:basis-3/4 @2xl:basis-4/6 lg:before:-inset-4',
+                  'relative z-0 h-full w-full rounded-[32px] bg-gradient-to-b from-primary/15 to-background/50 p-2 ring-1 ring-primary/20 transition-all duration-500 before:absolute before:-inset-3 before:-z-20 before:rounded-full before:bg-primary/25 before:opacity-[var(--glow-opacity)] before:blur-3xl before:transition-opacity after:absolute after:inset-5 after:top-0 after:z-10 after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent after:transition-opacity after:delay-200 after:duration-700 @lg:basis-3/4 @2xl:basis-4/6 lg:before:-inset-4',
                   selectedIndex === index
-                    ? 'scale-100 opacity-100 before:opacity-100 after:opacity-100'
-                    : 'scale-90 opacity-25 before:opacity-0 after:opacity-0'
+                    ? 'scale-100 opacity-100 blur-0 before:opacity-100 after:opacity-100'
+                    : 'scale-90 opacity-50 blur-[4px] before:opacity-0 after:opacity-0'
                 )}
               >
                 <div className="relative aspect-square w-full place-content-end overflow-hidden rounded-3xl bg-gradient-to-b from-transparent from-50% to-background/80 p-4 ring-1 ring-primary/10 @2xl:aspect-video @2xl:p-5">
@@ -139,10 +136,8 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
             key={index}
             onClick={() => onDotButtonClick(index)}
             className={clsx(
-              'embla__dot relative m-0 inline-flex h-5 w-[1.5rem] cursor-pointer touch-manipulation items-center justify-center after:h-0.5 after:w-full after:items-center after:justify-center after:bg-foreground/20',
-              index === selectedIndex
-                ? 'embla__dot--selected before:absolute before:left-0 before:top-1/2 before:h-0.5 before:w-full before:-translate-y-1/2 before:bg-primary before:transition-all before:duration-300 before:ease-out'
-                : 'before:absolute before:left-0 before:top-1/2 before:h-0.5 before:w-0 before:-translate-y-1/2 before:bg-primary before:transition-all before:duration-300 before:ease-out'
+              'relative inline-flex h-6 w-6 cursor-pointer touch-manipulation items-center justify-center before:absolute before:left-0 before:top-1/2 before:h-0.5 before:-translate-y-1/2 before:bg-primary before:transition-all before:duration-300 before:ease-out after:h-0.5 after:w-full after:items-center after:justify-center after:bg-foreground/20',
+              index === selectedIndex ? 'before:w-full' : 'before:w-0'
             )}
           />
         ))}
