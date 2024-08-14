@@ -47,7 +47,7 @@ function getLayoutCode(fonts: Props['fonts']) {
   const googleFonts = Object.values(fonts).filter(f => f.type === 'google')
 
   return `${googleFonts.length > 0 ? `import { ${googleFonts.map(f => f.name).join(', ')} } from 'next/font/google' // [!code highlight]\n` : ''}${localFonts.length > 0 ? `import localFont from 'next/font/local' // [!code highlight]\n` : ''}
-import './globals.css
+import './globals.css'
 
 ${Object.entries(fonts)
   .map(([type, font]) => {
