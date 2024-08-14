@@ -38,6 +38,12 @@ export const navigation = [
         file: 'docs/card.mdx',
         component: 'card',
       },
+      {
+        title: 'Card Carousel',
+        slug: 'card-carousel',
+        file: 'docs/card-carousel.mdx',
+        component: 'card-carousel',
+      },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       {
         title: 'Compare Drawer',
@@ -68,12 +74,6 @@ export const navigation = [
   {
     title: 'Sections',
     pages: [
-      {
-        title: 'Card Carousel',
-        slug: 'card-carousel',
-        file: 'docs/card-carousel.mdx',
-        component: 'card-carousel',
-      },
       {
         title: 'Carousel',
         slug: 'carousel',
@@ -181,6 +181,16 @@ export const navigation = [
         title: 'Products',
         slug: 'page-products',
         file: 'docs/page-products.mdx',
+      },
+    ],
+  },
+  {
+    title: 'Catalyst',
+    pages: [
+      {
+        title: 'Home',
+        slug: 'page-catalyst-home',
+        file: 'docs/page-catalyst-home.mdx',
       },
     ],
   },
