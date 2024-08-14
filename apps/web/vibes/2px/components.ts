@@ -257,7 +257,19 @@ export const components = [
   {
     name: 'header',
     dependencies: [],
+    registryDependencies: ['badge'],
+    files: [
+      './components/header/index.tsx',
+      '../../lib/utils.ts',
+      './components/icons/ChevronDownIcon.tsx',
+      './components/icons/CrossIcon.tsx',
+      './components/icons/SearchIcon.tsx',
+    ],
+  },
+  {
+    name: 'slideshow-section',
+    dependencies: [],
     registryDependencies: [],
-    files: ['./components/header/index.tsx'],
+    files: ['./components/slideshow-section/index.tsx', '../../lib/utils.ts'],
   },
 ] satisfies Components

@@ -8,6 +8,8 @@ interface Props {
 }
 const BRUSH_RADIUS = 50
 
+const CLICKABLE_ELEMENTS = ['button', 'a']
+
 export default function ScratchToRevealSection({ backgroundChildren, coverImage }: Props) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const containerRef = React.useRef<HTMLDivElement>(null)
@@ -45,6 +47,20 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
 
     const pixel = ctx.getImageData(x, y, 1, 1).data
     return pixel[3] === 0 // Check the alpha channel
+  }, [])
+
+  const isClickableElement = useCallback((e: MouseEvent | TouchEvent) => {
+    if (
+      e.target &&
+      (('tagName' in e.target &&
+        typeof e.target.tagName === 'string' &&
+        CLICKABLE_ELEMENTS.includes(e.target.tagName.toLowerCase())) ||
+        ('onClick' in e.target && typeof e.target.onClick === 'function'))
+    ) {
+      return true
+    }
+
+    return false
   }, [])
 
   const stopDrawing = useCallback(() => {
@@ -94,6 +110,8 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
 
   const handleMouseDown = useCallback(
     (e: MouseEvent) => {
+      if (isClickableElement(e)) return
+
       startDrawing()
 
       const bounds = canvasRef.current?.getBoundingClientRect()
@@ -107,7 +125,7 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
         canvasY: e.offsetY,
       })
     },
-    [draw, startDrawing]
+    [draw, startDrawing, isClickableElement]
   )
 
   const handleMouseUp = useCallback(
@@ -129,16 +147,8 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
       e.preventDefault()
-      e.stopPropagation()
 
-      if (
-        e.target &&
-        'tagName' in e.target &&
-        typeof e.target.tagName === 'string' &&
-        ['button', 'a'].includes(e.target.tagName.toLowerCase())
-      ) {
-        return
-      }
+      if (isClickableElement(e)) return
 
       const canvas = canvasRef.current
       if (!canvas) return
@@ -157,11 +167,13 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
         canvas.style.pointerEvents = 'auto'
       }
     },
-    [draw, isTransparent]
+    [draw, isTransparent, isClickableElement]
   )
 
   const handleTouchStart = useCallback(
     (e: TouchEvent) => {
+      if (isClickableElement(e)) return
+
       startDrawing()
 
       const bounds = canvasRef.current?.getBoundingClientRect()
@@ -174,7 +186,7 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
         canvasY: e.touches[0].clientY - bounds.top,
       })
     },
-    [draw, startDrawing]
+    [draw, startDrawing, isClickableElement]
   )
 
   const handleTouchEnd = useCallback(
@@ -196,6 +208,8 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
   const handleTouchMove = useCallback(
     (e: TouchEvent) => {
       e.preventDefault()
+
+      if (isClickableElement(e)) return
 
       const bounds = canvasRef.current?.getBoundingClientRect()
 
@@ -220,7 +234,7 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
         canvas.style.pointerEvents = 'auto'
       }
     },
-    [draw, isTransparent]
+    [draw, isTransparent, isClickableElement]
   )
 
   useEffect(() => {
@@ -259,7 +273,7 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
   ])
 
   return (
-    <section className="relative w-full @container" ref={containerRef}>
+    <section className="relative w-full select-none @container" ref={containerRef}>
       {backgroundChildren}
       <canvas
         className="absolute left-0 top-0 mx-auto block cursor-crosshair object-cover"

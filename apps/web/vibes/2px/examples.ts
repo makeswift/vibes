@@ -296,4 +296,11 @@ export const examples = [
     files: ['examples/header.tsx', 'examples/assets/logo.svg'],
     component: lazy(() => import('./examples/header')),
   },
+  {
+    name: 'slideshow-section-example',
+    dependencies: [],
+    registryDependencies: ['slideshow-section'],
+    files: ['examples/slideshow-section.tsx'],
+    component: lazy(() => import('./examples/slideshow-section')),
+  },
 ] satisfies Components
