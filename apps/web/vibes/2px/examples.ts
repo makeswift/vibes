@@ -53,6 +53,20 @@ export const examples = [
     component: lazy(() => import('./examples/text-area')),
   },
   {
+    name: 'popover-example',
+    dependencies: [
+      'react',
+      '@/lib/utils',
+      '@/vibes/2px/components/icons/PlusSolidIcon',
+      '@/vibes/2px/components/popover',
+      '@/vibes/2px/components/icons/PlusSolidIcon',
+      '@/vibes/2px/components/button',
+    ],
+    registryDependencies: ['popover'],
+    files: ['examples/popover.tsx'],
+    component: lazy(() => import('./examples/popover')),
+  },
+  {
     name: 'skeleton-example',
     dependencies: [],
     registryDependencies: ['skeleton'],
