@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import Button from '@/vibes/2px/components/button'
 import Dropdown from '@/vibes/2px/components/dropdown'
 import Swatch from '@/vibes/2px/components/swatch'
@@ -28,6 +30,8 @@ const Label = ({ children }: { children: string }) => (
 )
 
 function OptionsSelector({ options }: Props) {
+  const [values, setValues] = useState<Record<string, string | undefined>>({})
+
   return (
     <form className="flex flex-col">
       {options?.map((option, index) => {
@@ -43,6 +47,10 @@ function OptionsSelector({ options }: Props) {
                     value={value.value}
                     inStock={value.inStock}
                     sample={value.sample}
+                    onChange={e => {
+                      setValues({ ...values, [option.label]: e.currentTarget.value })
+                    }}
+                    checked={values[option.label] === value.value}
                   />
                 ))}
               </div>
@@ -58,8 +66,9 @@ function OptionsSelector({ options }: Props) {
                 key={index}
                 placeholder="Select size"
                 options={option.values}
-                setValue={() => {}}
+                setValue={value => setValues({ ...values, [option.label]: value })}
                 className="mb-6"
+                value={values[option.label]}
               />
             </>
           )

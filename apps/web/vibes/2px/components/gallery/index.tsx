@@ -58,7 +58,7 @@ export default function Gallery({ product: { price, name, images, options }, des
         ))}
       </div>
       <div className="sticky top-0 flex max-w-3xl flex-col p-4 text-foreground @2xl:basis-1/2 @2xl:p-12">
-        <h1 className="mb-2 font-mono text-xs leading-[1.125rem] @2xl:text-sm @2xl:leading-[1.375rem] @2xl:tracking-[0.02em]">
+        <h1 className="mb-2 font-mono text-xs uppercase leading-[1.125rem] @2xl:text-sm @2xl:leading-[1.375rem] @2xl:tracking-[0.02em]">
           {name}
         </h1>
 
