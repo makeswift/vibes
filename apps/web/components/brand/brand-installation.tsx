@@ -73,10 +73,9 @@ ${Object.entries(fonts)
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body> // [!code --]
       <body className={[${Object.values(fonts)
         .map(f => `${f.name.toLowerCase()}.variable`)
-        .join(', ')}].join(' ')}>{children}</body> // [!code ++]
+        .join(', ')}].join(' ')}>{children}</body> // [!code highlight]
     </html>
   );
 }'`
