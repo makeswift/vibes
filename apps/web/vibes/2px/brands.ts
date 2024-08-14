@@ -1,17 +1,13 @@
+import { Courier_Prime, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 
 import { Brands } from '@/vibes/schema'
 
-const inter = localFont({
-  src: '../../public/fonts/Inter-VariableFont_slnt,wght.woff2',
+const inter = Inter({ subsets: ['latin'], display: 'swap' })
+const courier = Courier_Prime({ subsets: ['latin'], display: 'swap', weight: '400' })
+const sporting = localFont({
+  src: 'fonts/SportingGrotesque-Regular.woff2',
   display: 'swap',
-})
-const courierPrime = localFont({
-  src: '../../public/fonts/CourierPrime-Regular.woff2',
-  display: 'swap',
-})
-const sportingGrotesque = localFont({
-  src: '../../public/fonts/SportingGrotesque-Regular.woff2',
 })
 
 export const brands = [
@@ -34,7 +30,7 @@ export const brands = [
       '--contrast-500': '0 0% 27%',
       '--font-family-heading': inter.style.fontFamily,
       '--font-family-body': inter.style.fontFamily,
-      '--font-family-mono': courierPrime.style.fontFamily,
+      '--font-family-mono': courier.style.fontFamily,
       '--font-size-xs': '1rem',
       '--font-size-sm': '1.125rem',
       '--font-size-base': '1.25rem',
@@ -56,7 +52,6 @@ export const brands = [
   {
     name: 'Brand 2',
     logo: '',
-
     cssVars: {
       '--primary': '0 0% 100%',
       '--accent': '0 0% 83%',
@@ -71,7 +66,7 @@ export const brands = [
       '--contrast-300': '0 0% 67%',
       '--contrast-400': '0 0% 51%',
       '--contrast-500': '0 0% 27%',
-      '--font-family-heading': sportingGrotesque.style.fontFamily,
+      '--font-family-heading': sporting.style.fontFamily,
       '--font-family-body': 'Arial, system-ui, sans-serif',
       '--font-family-mono': 'Arial, system-ui, sans-serif',
       '--font-size-xs': '1rem',

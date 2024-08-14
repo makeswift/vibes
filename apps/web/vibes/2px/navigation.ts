@@ -153,6 +153,30 @@ export const navigation = [
         component: 'marquee-section',
       },
       {
+        title: 'Slideshow',
+        slug: 'slideshow-section',
+        file: 'docs/slideshow-section.mdx',
+        component: 'slideshow-section',
+      },
+      {
+        title: 'Scratch to Reveal',
+        slug: 'scratch-to-reveal-section',
+        file: 'docs/scratch-to-reveal-section.mdx',
+        component: 'scratch-to-reveal-section',
+      },
+      {
+        title: 'Gallery',
+        slug: 'gallery',
+        file: 'docs/gallery.mdx',
+        component: 'gallery',
+      },
+      {
+        title: 'Header',
+        slug: 'header',
+        file: 'docs/header.mdx',
+        component: 'header',
+      },
+      {
         title: 'Footer',
         slug: 'footer-section',
         file: 'docs/footer-section.mdx',

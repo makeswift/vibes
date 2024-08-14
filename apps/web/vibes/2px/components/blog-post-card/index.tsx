@@ -51,7 +51,7 @@ export default function BlogPostCard({
       )}
     >
       <div className="flex aspect-square w-full flex-col items-center justify-center gap-6 px-2 py-10 text-center @2xl:max-w-96">
-        <span className="font-mono text-xs uppercase leading-[var(--line-height-xs)] @2xl:text-sm @2xl:leading-[1.375rem] @2xl:tracking-[0.02em]">
+        <span className="font-mono text-xs uppercase leading-[1.125rem] @2xl:text-sm @2xl:leading-[1.375rem] @2xl:tracking-[0.02em]">
           {date} BY {Author}
         </span>
         {image && (
@@ -64,7 +64,7 @@ export default function BlogPostCard({
         </h2>
         <Link
           href={link.href}
-          className="font-mono text-xs uppercase leading-[var(--line-height-xs)] underline @2xl:text-sm @2xl:leading-[1.375rem] @2xl:tracking-[0.02em]"
+          className="font-mono text-xs uppercase leading-[1.125rem] underline @2xl:text-sm @2xl:leading-[1.375rem] @2xl:tracking-[0.02em]"
         >
           {link.label}
         </Link>

@@ -185,6 +185,13 @@ export const examples = [
     component: lazy(() => import('./examples/tabs')),
   },
   {
+    name: 'scratch-to-reveal-section-example',
+    dependencies: [],
+    registryDependencies: ['scratch-to-reveal-section'],
+    files: ['examples/scratch-to-reveal-section.tsx'],
+    component: lazy(() => import('./examples/scratch-to-reveal-section')),
+  },
+  {
     name: 'text-section-example',
     dependencies: [],
     registryDependencies: ['text-section'],
@@ -288,5 +295,26 @@ export const examples = [
     registryDependencies: ['product-card'],
     files: ['examples/product-card.tsx'],
     component: lazy(() => import('./examples/product-card')),
+  },
+  {
+    name: 'gallery-example',
+    dependencies: [],
+    registryDependencies: ['gallery'],
+    files: ['examples/gallery.tsx'],
+    component: lazy(() => import('./examples/gallery')),
+  },
+  {
+    name: 'header-example',
+    dependencies: [],
+    registryDependencies: ['header'],
+    files: ['examples/header.tsx', 'examples/assets/logo.svg'],
+    component: lazy(() => import('./examples/header')),
+  },
+  {
+    name: 'slideshow-section-example',
+    dependencies: [],
+    registryDependencies: ['slideshow-section'],
+    files: ['examples/slideshow-section.tsx'],
+    component: lazy(() => import('./examples/slideshow-section')),
   },
 ] satisfies Components

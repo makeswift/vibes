@@ -54,7 +54,7 @@ export default function ProductCard({ className, name, price, badge, image, href
         />
       </div>
       {badge && (
-        <p className="absolute right-4 top-4 bg-foreground px-1 font-mono text-xs uppercase leading-[var(--line-height-xs)] text-background @lg:right-6 @lg:top-6 @lg:text-sm @lg:leading-[1.375rem] @lg:-tracking-[0.02em]">
+        <p className="absolute right-4 top-4 bg-foreground px-1 font-mono text-xs uppercase leading-[1.125rem] text-background @lg:right-6 @lg:top-6 @lg:text-sm @lg:leading-[1.375rem] @lg:-tracking-[0.02em]">
           {badge}
         </p>
       )}

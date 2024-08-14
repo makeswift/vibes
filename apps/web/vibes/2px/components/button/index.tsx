@@ -1,11 +1,9 @@
-import { ComponentProps } from 'react'
-
 import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '@/lib/utils'
 import { LoadingIcon } from '@/vibes/2px/components/icons/LoadingIcon'
 
-export interface ButtonProps extends ComponentProps<'button'> {
+export interface ButtonProps extends React.ComponentProps<'button'> {
   className?: string
   variant?: 'primary' | 'secondary' | 'subtle'
   loading?: boolean

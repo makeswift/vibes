@@ -91,9 +91,7 @@ export default function FooterSection({
                 'flex min-w-[18.75rem] flex-1 flex-col gap-4 bg-foreground px-4 pb-8 pt-6 text-start'
               )}
             >
-              <h4 className="font-mono text-xs uppercase leading-[var(--line-height-xs)]">
-                {group.title}
-              </h4>
+              <h4 className="font-mono text-xs uppercase leading-[1.125rem]">{group.title}</h4>
               <div className="flex flex-col gap-3 font-body text-base font-medium leading-6">
                 {group.links.map((link, index) => (
                   <Link key={index} href={link.href}>
