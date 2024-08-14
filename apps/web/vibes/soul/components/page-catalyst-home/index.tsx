@@ -1,4 +1,3 @@
-import Feature from '@/vibes/soul/components/feature'
 import FeaturedImage from '@/vibes/soul/components/featured-image'
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
 import Footer from '@/vibes/soul/components/footer'
@@ -36,20 +35,6 @@ export const CatalystHomePage = function CatalystHomePage({ heroSlides }: any) {
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
         cta={{ label: 'Shop Now', href: '#' }}
         products={featuredProducts}
-      />
-
-      <Feature
-        image={{
-          url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
-          alt: 'Biker in Mountains',
-        }}
-        heading="A global community"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-        link={{
-          label: 'Shop Now',
-          href: '#',
-          target: '_self',
-        }}
       />
 
       <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
