@@ -165,6 +165,12 @@ export const navigation = [
         component: 'gallery',
       },
       {
+        title: 'Newsletter',
+        slug: 'newsletter',
+        file: 'docs/newsletter-section.mdx',
+        component: 'newsletter-section',
+      },
+      {
         title: 'Header',
         slug: 'header',
         file: 'docs/header.mdx',

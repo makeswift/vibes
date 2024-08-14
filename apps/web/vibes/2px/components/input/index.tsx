@@ -11,8 +11,8 @@ interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
 
 export default function Input({ className, variant = 'default', errorMessage, ...props }: Props) {
   return (
-    <div className="font-body text-sm font-medium leading-6">
-      <div className="relative inline-block">
+    <div className="w-full font-body text-sm font-medium leading-6">
+      <div className="relative inline-block w-full">
         <input
           type="text"
           className={cn(

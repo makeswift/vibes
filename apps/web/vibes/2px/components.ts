@@ -266,6 +266,12 @@ export const components = [
     ],
   },
   {
+    name: 'newsletter-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/newsletter-section/index.tsx', '../../lib/utils.ts'],
+  },
+  {
     name: 'header',
     dependencies: [],
     registryDependencies: ['badge'],
