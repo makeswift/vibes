@@ -9,7 +9,7 @@ interface Props {
   title: string
   content: string | React.ReactNode
   trigger: React.ReactNode
-  buttons?: React.ReactElement<typeof Button>[]
+  buttons?: React.ReactNode
   open?: boolean
   onOpenChange?: (open: boolean) => void
 }
@@ -36,11 +36,7 @@ export default function Popover({
                 </h2>
                 <div className="font-body text-sm leading-6">{content}</div>
               </div>
-              {buttons && buttons.length > 0 && (
-                <div className="flex items-center justify-between gap-4">
-                  {buttons?.map(button => button)}
-                </div>
-              )}
+              {buttons}
             </div>
           </PopoverPrimitive.Content>
         </PopoverPrimitive.Portal>

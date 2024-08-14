@@ -17,14 +17,16 @@ export default function Preview() {
       <MinusSolidIcon className={cn('hidden h-8 w-8', open && 'block')} />
     </button>
   )
-  const buttons = [
-    <Button className="w-full" key="cancel" variant="primary" onClick={() => setIsOpen(false)}>
-      Cancel
-    </Button>,
-    <Button className="w-full" key="ok" variant="secondary" onClick={() => setIsOpen(false)}>
-      OK
-    </Button>,
-  ]
+  const buttons = (
+    <div className="flex items-center justify-between gap-4">
+      <Button className="w-full" key="cancel" variant="primary" onClick={() => setIsOpen(false)}>
+        Cancel
+      </Button>
+      <Button className="w-full" key="ok" variant="secondary" onClick={() => setIsOpen(false)}>
+        OK
+      </Button>
+    </div>
+  )
 
   return (
     <div className="flex min-h-96 items-start justify-center bg-white p-5  sm:p-8 lg:p-12">
