@@ -20,6 +20,12 @@ export const components = [
     files: ['components/card/index.tsx'],
   },
   {
+    name: 'carousel',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/carousel/index.tsx'],
+  },
+  {
     name: 'code-block',
     dependencies: [],
     registryDependencies: [],

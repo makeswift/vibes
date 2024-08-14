@@ -25,6 +25,13 @@ export const examples = [
     component: lazy(() => import('./examples/card')),
   },
   {
+    name: 'carousel-example',
+    dependencies: [],
+    registryDependencies: ['carousel'],
+    files: ['examples/carousel.tsx'],
+    component: lazy(() => import('./examples/carousel')),
+  },
+  {
     name: 'code-block-example',
     dependencies: [],
     registryDependencies: ['code-block'],
