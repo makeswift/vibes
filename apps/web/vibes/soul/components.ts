@@ -27,7 +27,7 @@ export const components = [
   },
   {
     name: 'button',
-    dependencies: [],
+    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-slot'],
     registryDependencies: [],
     files: ['components/button/index.tsx'],
   },
@@ -41,19 +41,13 @@ export const components = [
     name: 'card-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
-    files: ['components/carousel/index.tsx', 'components/carousel/scrollbar.tsx'],
+    files: ['components/carousel/index.tsx'],
   },
   {
     name: 'checkbox',
     dependencies: ['clsx', 'lucide-react', '@radix-ui/react-checkbox'],
     registryDependencies: [],
     files: ['components/checkbox/index.tsx'],
-  },
-  {
-    name: 'compare-drawer',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: ['button'],
-    files: ['components/compare-drawer/index.tsx', 'components/compare-drawer/product-chip.tsx'],
   },
   {
     name: 'discount',
@@ -150,7 +144,7 @@ export const components = [
   {
     name: 'products-carousel',
     dependencies: ['clsx'],
-    registryDependencies: ['product-card'],
+    registryDependencies: ['product-card', 'carousel'],
     files: ['components/products-carousel/index.tsx'],
   },
   {
