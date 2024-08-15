@@ -21,8 +21,8 @@ export const components = [
   },
   {
     name: 'carousel',
-    dependencies: [],
-    registryDependencies: [],
+    dependencies: ['embla-carousel-react', 'lucide-react'],
+    registryDependencies: ['button'],
     files: ['components/carousel/index.tsx'],
   },
   {
