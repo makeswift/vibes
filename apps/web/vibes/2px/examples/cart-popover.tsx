@@ -37,7 +37,15 @@ export default function Preview() {
   )
 
   const closeIcon = <CrossIcon className="h-10 w-10 sm:h-5 sm:w-5" />
-
+  const emptyMessage = (
+    <div
+      className={cn(
+        'flex min-h-[26rem] items-center justify-center text-center text-2xl font-medium leading-9 -tracking-[0.0175rem]'
+      )}
+    >
+      Your cart is empty
+    </div>
+  )
   return (
     <div className="flex min-h-96 items-start justify-center bg-white p-5 sm:p-8 lg:p-12">
       <CartPopover
@@ -73,6 +81,7 @@ export default function Preview() {
         open={open}
         onOpenChange={onOpenChange}
         closeIcon={closeIcon}
+        emptyMessage={emptyMessage}
       />
     </div>
   )

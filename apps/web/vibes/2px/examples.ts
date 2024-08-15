@@ -228,6 +228,13 @@ export const examples = [
     component: lazy(() => import('./examples/accordions')),
   },
   {
+    name: 'products-in-cart-example',
+    dependencies: [],
+    registryDependencies: ['products-in-cart'],
+    files: ['examples/products-in-cart.tsx'],
+    component: lazy(() => import('./examples/products-in-cart')),
+  },
+  {
     name: 'faq-section-example',
     dependencies: ['@/vibes/2px/components/accordions'],
     registryDependencies: ['faq-section'],

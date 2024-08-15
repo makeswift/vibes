@@ -18,6 +18,12 @@ export const navigation = [
         component: 'button',
       },
       {
+        title: 'Products in cart',
+        slug: 'products-in-cart',
+        file: 'docs/products-in-cart.mdx',
+        component: 'products-in-cart',
+      },
+      {
         title: 'File Uploader',
         slug: 'file-uploader',
         file: 'docs/file-uploader.mdx',

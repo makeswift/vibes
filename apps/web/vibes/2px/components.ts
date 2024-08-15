@@ -219,6 +219,12 @@ export const components = [
     files: ['./components/section-header/index.tsx', '../../lib/utils.ts'],
   },
   {
+    name: 'products-in-cart',
+    dependencies: [],
+    registryDependencies: ['counter'],
+    files: ['./components/products-in-cart/index.tsx', '../../lib/utils.ts'],
+  },
+  {
     name: 'hero-header',
     dependencies: [],
     registryDependencies: ['button'],
