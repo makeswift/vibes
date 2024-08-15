@@ -18,6 +18,12 @@ export const navigation = [
         component: 'button',
       },
       {
+        title: 'Form',
+        slug: 'form',
+        file: 'docs/form.mdx',
+        component: 'form',
+      },
+      {
         title: 'File Uploader',
         slug: 'file-uploader',
         file: 'docs/file-uploader.mdx',

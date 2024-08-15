@@ -227,6 +227,13 @@ export const examples = [
     component: lazy(() => import('./examples/breadcrumbs')),
   },
   {
+    name: 'form-example',
+    dependencies: [],
+    registryDependencies: ['form'],
+    files: ['examples/form.tsx'],
+    component: lazy(() => import('./examples/form')),
+  },
+  {
     name: 'button-example',
     dependencies: [],
     registryDependencies: ['button'],

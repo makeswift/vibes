@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
 
-interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
+export interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
   checked: boolean
   setChecked: (checked: boolean) => void
 }

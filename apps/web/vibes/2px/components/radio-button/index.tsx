@@ -1,10 +1,10 @@
 import { cn } from '@/lib/utils'
 
-interface RadioButtonProps extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'hidden'> {
+export interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'hidden'> {
   label: string
 }
 
-export default function RadioButton({ className, label, ...inputProps }: RadioButtonProps) {
+export default function RadioButton({ className, label, ...inputProps }: Props) {
   return (
     <label
       className={cn('group inline-flex items-center gap-3', {

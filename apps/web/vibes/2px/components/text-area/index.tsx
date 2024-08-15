@@ -1,7 +1,10 @@
+import { ComponentPropsWithRef } from 'react'
+
 import { cn } from '@/lib/utils'
 
-interface Props extends React.HTMLProps<HTMLTextAreaElement> {
-  variant: 'default' | 'success' | 'error'
+export interface Props extends ComponentPropsWithRef<'textarea'> {
+  variant?: 'default' | 'success' | 'error'
+  error?: boolean
   errorMessage?: string
 }
 
@@ -19,7 +22,7 @@ export default function TextArea({
           className={cn(
             'min-h-[8rem] w-full border-2 bg-background px-4 py-2 placeholder-foreground outline-none focus:border-l-transparent focus:border-r-transparent focus:border-t-transparent focus:placeholder-transparent',
             {
-              'border-foreground/50 text-foreground/50': disabled,
+              'border-foreground/50 text-foreground/50 placeholder-foreground/50': disabled,
               'border-foreground text-foreground hover:border-dashed ': !disabled,
               'border-foreground text-error placeholder-error': variant === 'error',
               'border-foreground text-success placeholder-success': variant === 'success',
@@ -28,7 +31,15 @@ export default function TextArea({
           disabled={disabled}
           {...props}
         />
-        <div className="pointer-events-none absolute bottom-0.5 right-0.5 flex h-6 w-6 items-center justify-center bg-background text-foreground">
+        <div
+          className={cn(
+            'absolute bottom-0.5 right-0.5 flex h-6 w-6 items-center justify-center bg-background',
+            {
+              'pointer-events-none text-foreground': !disabled,
+              'cursor-not-allowed text-foreground/50': disabled,
+            }
+          )}
+        >
           <ResizerIcon />
         </div>
       </div>

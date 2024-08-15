@@ -231,6 +231,12 @@ export const components = [
     files: ['./components/tabs/index.tsx'],
   },
   {
+    name: 'form',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/form/index.tsx'],
+  },
+  {
     name: 'text-section',
     dependencies: [],
     registryDependencies: [],
