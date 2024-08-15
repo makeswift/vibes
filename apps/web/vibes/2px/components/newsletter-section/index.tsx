@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { cn } from '@/lib/utils'
 import Button from '@/vibes/2px/components/button'
 import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
 import Input from '@/vibes/2px/components/input'
@@ -54,12 +55,15 @@ export default function Newsletter({
             </p>
           )}
           <Input
-            className="w-full bg-accent"
+            className={cn('w-full bg-accent', {
+              'text-foreground': status === 'error',
+            })}
             placeholder="Email"
             variant={status === 'error' ? 'error' : status === 'success' ? 'success' : 'default'}
             errorMessage={status === 'error' ? errorMessage : undefined}
             required
             name="email"
+            errorClassName="text-foreground"
           />
         </div>
 

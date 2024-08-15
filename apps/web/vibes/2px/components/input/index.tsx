@@ -7,9 +7,16 @@ import { CrossIcon } from '@/vibes/2px/components/icons/CrossIcon'
 interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
   variant?: 'default' | 'success' | 'error'
   errorMessage?: string
+  errorClassName?: string
 }
 
-export default function Input({ className, variant = 'default', errorMessage, ...props }: Props) {
+export default function Input({
+  errorClassName,
+  className,
+  variant = 'default',
+  errorMessage,
+  ...props
+}: Props) {
   return (
     <div className="w-full font-body text-sm font-medium leading-6">
       <div className="relative inline-block w-full">
@@ -34,7 +41,9 @@ export default function Input({ className, variant = 'default', errorMessage, ..
           <CrossIcon className="absolute right-4 top-1/2 h-6 w-6 -translate-y-1/2 text-error" />
         )}
       </div>
-      {errorMessage && <div className="mt-2 text-xs text-error">{errorMessage}</div>}
+      {errorMessage && (
+        <div className={cn('mt-2 text-xs text-error', errorClassName)}>{errorMessage}</div>
+      )}
     </div>
   )
 }
