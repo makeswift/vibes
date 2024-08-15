@@ -22,7 +22,7 @@ export const Card = function Card({
   return (
     <Link
       href={href}
-      className="group relative flex aspect-[3/4] max-h-[600px] w-full min-w-[226px] max-w-[467px] flex-col gap-2 rounded-xl ring-primary focus:outline-0 focus:ring-2 @xl:min-w-[33%] @4xl:min-w-[300px]"
+      className="group relative flex aspect-[3/4] w-full min-w-56 max-w-md flex-col gap-2 rounded-xl ring-primary focus:outline-0 focus:ring-2 @4xl:min-w-72"
       {...props}
     >
       <ArrowUpRight
