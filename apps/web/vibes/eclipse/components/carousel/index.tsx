@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import Button from '@/vibes/eclipse/components/button'
 
@@ -55,7 +56,6 @@ const useDotButton = (
   }
 }
 
-// Slide type
 type Slide = {
   title?: string
   text?: string
@@ -65,7 +65,6 @@ type Slide = {
   imageAlt: string
 }
 
-// Main EmblaCarousel component
 type EmblaCarouselPropType = {
   className?: string
   slides: Slide[]
@@ -80,7 +79,7 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
 
   return (
     <div className="w-full @container">
-      <div ref={emblaRef}>
+      <div ref={emblaRef} className="relative">
         <div className="touch-[pan-y_pinch-zoom] flex">
           {slides.map((slide, index) => (
             <div
@@ -131,6 +130,28 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
             </div>
           ))}
         </div>
+
+        <button
+          onClick={() => emblaApi?.scrollPrev()}
+          className="group absolute inset-y-0 left-0 hidden w-1/6 px-3 text-foreground @3xl:block @7xl:w-1/5 @7xl:px-7"
+        >
+          <ChevronLeft
+            size={36}
+            absoluteStrokeWidth
+            className="translate-x-0 opacity-50 transition-all duration-300 group-hover:-translate-x-2 group-hover:opacity-100"
+          />
+        </button>
+
+        <button
+          onClick={() => emblaApi?.scrollNext()}
+          className="group absolute inset-y-0 right-0 hidden w-1/6 items-center justify-end px-3 text-foreground @3xl:flex @7xl:w-1/5 @7xl:px-7"
+        >
+          <ChevronRight
+            size={40}
+            absoluteStrokeWidth
+            className="translate-x-0 opacity-50 transition-all duration-300 group-hover:translate-x-2 group-hover:opacity-100"
+          />
+        </button>
       </div>
 
       <div className="mt-4 flex items-center justify-center gap-x-3 @2xl:mt-6">
