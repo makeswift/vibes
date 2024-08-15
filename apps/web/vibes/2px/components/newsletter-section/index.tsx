@@ -68,7 +68,7 @@ export default function Newsletter({
         </div>
 
         <Button
-          className="w-full flex-1 rounded-[2.5rem] @2xl:aspect-square @2xl:h-auto"
+          className="w-full flex-1 basis-20 rounded-[2.5rem] @lg:basis-auto @2xl:aspect-square @2xl:h-auto"
           loading={status === 'loading'}
         >
           Sign up
