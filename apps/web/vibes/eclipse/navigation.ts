@@ -34,6 +34,12 @@ export const navigation = [
         component: 'card',
       },
       {
+        title: 'Carousel',
+        slug: 'carousel',
+        file: 'docs/carousel.mdx',
+        component: 'carousel',
+      },
+      {
         title: 'Code Block',
         slug: 'code-block',
         file: 'docs/code-block.mdx',

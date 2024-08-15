@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { forwardRef, useEffect, useState } from 'react'
+import { useState } from 'react'
 import ReactHeadroom from 'react-headroom'
 
 import * as Accordion from '@radix-ui/react-accordion'
@@ -212,7 +212,7 @@ const Navigation = ({
             </div>
 
             <Button
-              link={{ href: ctaLink }}
+              link={{ href: ctaLink || '#' }}
               variant="primary"
               size="small"
               className="hidden @lg:inline-flex"

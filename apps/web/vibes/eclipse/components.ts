@@ -20,6 +20,12 @@ export const components = [
     files: ['components/card/index.tsx'],
   },
   {
+    name: 'carousel',
+    dependencies: ['embla-carousel-react', 'lucide-react'],
+    registryDependencies: ['button'],
+    files: ['components/carousel/index.tsx'],
+  },
+  {
     name: 'code-block',
     dependencies: [],
     registryDependencies: [],
