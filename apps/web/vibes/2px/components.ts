@@ -81,7 +81,7 @@ export const components = [
   },
   {
     name: 'popover',
-    dependencies: ['@radix-ui/react-popover', '@/vibes/2px/components/button'],
+    dependencies: ['@radix-ui/react-popover'],
     registryDependencies: [],
     files: ['./components/popover/index.tsx', '../../lib/utils.ts'],
   },

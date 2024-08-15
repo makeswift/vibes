@@ -54,16 +54,14 @@ export const examples = [
   },
   {
     name: 'popover-example',
-    dependencies: [
-      'react',
-      '@/lib/utils',
-      '@/vibes/2px/components/icons/PlusSolidIcon',
-      '@/vibes/2px/components/popover',
-      '@/vibes/2px/components/icons/PlusSolidIcon',
-      '@/vibes/2px/components/button',
+    dependencies: [],
+    registryDependencies: ['popover', 'button'],
+    files: [
+      'examples/popover.tsx',
+      'components/icons/MinusSolidIcon.tsx',
+      'components/icons/PlusSolidIcon',
+      '../../utils.ts',
     ],
-    registryDependencies: ['popover'],
-    files: ['examples/popover.tsx'],
     component: lazy(() => import('./examples/popover')),
   },
   {
