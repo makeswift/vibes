@@ -30,7 +30,7 @@ export default function BlogPostCard({
   link,
   image,
   title,
-  content: blogPost,
+  content,
 }: Props) {
   const authorHref = typeof author === 'object' ? author.href : undefined
   const authorName = typeof author === 'object' ? author.name : author
@@ -70,7 +70,7 @@ export default function BlogPostCard({
         </Link>
       </div>
       <p className="flex flex-col items-center overflow-hidden text-ellipsis font-body text-lg leading-6 @2xl:max-w-[44.5rem] @2xl:items-center @2xl:text-2xl @2xl:leading-9 @2xl:-tracking-[0.01em]">
-        {blogPost}
+        {content}
       </p>
     </section>
   )

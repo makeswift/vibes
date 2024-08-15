@@ -23,7 +23,7 @@ interface SocialMediaLink {
   icon: React.ReactNode
 }
 
-type Section = {
+export type Section = {
   title: string
   links: Link[]
 }

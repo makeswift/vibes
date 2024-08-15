@@ -1,7 +1,7 @@
 import CarouselSection from '@/vibes/2px/components/carousel-section'
 import ProductCard from '@/vibes/2px/components/product-card'
 
-const items = [
+export const items = [
   <ProductCard
     id="sintra-curved-bench"
     key={'sintra-curved-bench'}
