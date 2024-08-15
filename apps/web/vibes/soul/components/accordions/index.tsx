@@ -30,7 +30,7 @@ export const Accordions = forwardRef(function Accordions(
       defaultValue={defaultValue}
       asChild
     >
-      <ul className="mx-auto w-full max-w-screen-2xl bg-background @container">
+      <ul className="w-full @container">
         {accordions.map((accordion, i) => (
           <Accordion.Item key={i} value={`${i + 1}`} asChild>
             <li className="group">

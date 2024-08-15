@@ -23,6 +23,7 @@ import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
+import { Figma } from '@/components/ui/figma'
 import { IconsPreview } from '@/components/ui/icons-preview'
 import { Installation } from '@/components/ui/installation'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -30,6 +31,7 @@ import { Reveal } from '@/components/ui/reveal'
 import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ZoomImage } from '@/components/ui/zoom-image'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getTotalSize } from '@/lib/bundle'
 import { theme, transformers } from '@/lib/shiki'
@@ -98,6 +100,8 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       Button,
       ButtonLink,
       Colors,
+      Image: ZoomImage,
+      Figma,
       IconsPreview,
       Popover,
       PopoverContent,
