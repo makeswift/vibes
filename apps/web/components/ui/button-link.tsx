@@ -21,7 +21,10 @@ const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
   ({ className, href, variant = 'default', size = 'medium', children = 'Button' }) => {
     return (
       <Link
-        className={clsx('not-prose group inline-block rounded-full outline-none', className)}
+        className={clsx(
+          'not-prose group relative z-0 inline-block rounded-full outline-none',
+          className
+        )}
         href={href ?? '#'}
       >
         <span
