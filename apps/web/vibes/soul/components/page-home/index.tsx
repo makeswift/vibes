@@ -106,7 +106,6 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-          theme="brand-highlight"
         />
 
         <FeaturedProductsCarousel
@@ -143,7 +142,6 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-          theme="light"
         />
 
         <Footer

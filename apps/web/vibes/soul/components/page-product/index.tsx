@@ -129,7 +129,6 @@ export const ProductPage = function ProductPage() {
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-          theme="light"
         />
 
         <Footer sections={footerLinks} logo="SOUL" />
