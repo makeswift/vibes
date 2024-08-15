@@ -42,7 +42,7 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
           e.preventDefault()
           hideBanner()
         }}
-        className="absolute right-2.5 top-2.5 flex h-5 w-5 items-center justify-center rounded-full text-foreground transition-transform duration-300 hover:scale-125 @lg:top-1/2 @lg:-translate-y-1/2"
+        className="absolute right-2.5 top-2.5 flex h-5 w-5 items-center justify-center rounded-full text-foreground @lg:top-1/2 @lg:-translate-y-1/2"
       >
         <X />
       </button>
