@@ -1,13 +1,47 @@
 import FeaturedImage from '@/vibes/soul/components/featured-image'
+import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
 import Footer from '@/vibes/soul/components/footer'
+import Amex from '@/vibes/soul/components/footer/payment-icons/amex'
+import ApplePay from '@/vibes/soul/components/footer/payment-icons/apple-pay'
+import Bitcoin from '@/vibes/soul/components/footer/payment-icons/bitcoin'
+import GooglePay from '@/vibes/soul/components/footer/payment-icons/google-pay'
+import Mastercard from '@/vibes/soul/components/footer/payment-icons/mastercard'
+import Paypal from '@/vibes/soul/components/footer/payment-icons/paypal'
+import Visa from '@/vibes/soul/components/footer/payment-icons/visa'
+import Facebook from '@/vibes/soul/components/footer/social-icons/facebook'
+import LinkedIn from '@/vibes/soul/components/footer/social-icons/linked-in'
+import X from '@/vibes/soul/components/footer/social-icons/x'
 import Header from '@/vibes/soul/components/header'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import SubscribeBasic from '@/vibes/soul/components/subscribe-basic'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
-import FeaturedProductsCarousel from '../featured-products-carousel'
+const socialMediaLinks = [
+  {
+    href: '#',
+    icon: <Facebook />,
+  },
+  {
+    href: '#',
+    icon: <LinkedIn />,
+  },
+  {
+    href: '#',
+    icon: <X />,
+  },
+]
+
+const paymentIconsArray: React.ReactNode[] = [
+  <Visa />,
+  <Amex />,
+  <Mastercard />,
+  <Paypal />,
+  <GooglePay />,
+  <ApplePay />,
+  <Bitcoin />,
+]
 
 export const CatalystHomePage = function CatalystHomePage({ heroSlides }: any) {
   return (
@@ -80,8 +114,8 @@ export const CatalystHomePage = function CatalystHomePage({ heroSlides }: any) {
           phone: '+(1)408 123 4567',
         }}
         copyright={`© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`}
-        // paymentIcons={paymentIconsArray}
-        // socialMediaLinks={socialMediaLinks}
+        paymentIcons={paymentIconsArray}
+        socialMediaLinks={socialMediaLinks}
       />
     </>
   )

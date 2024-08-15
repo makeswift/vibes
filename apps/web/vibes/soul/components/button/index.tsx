@@ -26,7 +26,7 @@ export const Button = function Button({
       className={clsx(
         'relative flex w-fit shrink-0 justify-center overflow-hidden rounded-full',
         'select-none text-center font-medium leading-normal',
-        'border border-transparent transition-colors focus:outline-none focus:ring-2',
+        'border border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2',
         {
           primary: 'bg-primary text-foreground ring-primary-shadow',
           secondary: 'bg-foreground text-background ring-primary hover:border-foreground ',
