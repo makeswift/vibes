@@ -26,7 +26,7 @@ export const InlineEmailForm = function InlineEmailForm() {
       // action={formAction}
       noValidate
     >
-      <div className="relative w-full max-w-5xl shrink-0 rounded-lg border border-contrast-100 bg-primary-highlight text-[15px] ring-primary transition-colors duration-200 focus-within:ring-2 focus:outline-none">
+      <div className="relative w-full max-w-5xl shrink-0 rounded-lg border border-contrast-100 bg-background text-[15px] ring-primary transition-colors duration-200 focus-within:ring-2 focus:outline-none">
         <input
           type="email"
           placeholder="Join our Newsletter"

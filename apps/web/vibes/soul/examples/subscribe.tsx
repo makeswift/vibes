@@ -34,33 +34,10 @@ export default function Preview() {
         image={image}
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="brand-shadow"
       />
       <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="brand-shadow"
-      />
-      <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="brand-highlight"
-      />
-      <Subscribe
-        image={image}
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="neutral"
-      />
-      <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="neutral"
-      />
-      <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        theme="light"
       />
     </div>
   )
