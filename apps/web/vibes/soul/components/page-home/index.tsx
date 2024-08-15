@@ -3,7 +3,6 @@ import CardCarousel from '@/vibes/soul/components/card-carousel'
 import Feature from '@/vibes/soul/components/feature'
 import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
-import FeaturedVideo from '@/vibes/soul/components/featured-video'
 import Footer from '@/vibes/soul/components/footer'
 import {
   Amex,
@@ -20,6 +19,7 @@ import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
 import { headerLinks } from '@/vibes/soul/examples/header'
+import FeaturedImage from '../featured-image'
 
 const socialMediaLinks = [
   {
@@ -77,15 +77,16 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
 
         <Slideshow slides={heroSlides} />
 
-        <CardCarousel cards={categories} />
+        <CardCarousel cards={categories}  />
 
-        <FeaturedVideo
-          heading="Pro-Team"
+        <FeaturedImage
+          title="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-          video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-          link={{ href: '#', target: '_self' }}
+          image={{src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C', altText: 'Close up of a plant'}}
+          cta={{ href: '#', label: 'Shop Now' }}
         />
+   
 
         <FeaturedProductsList
           title="Off-Race"
@@ -94,14 +95,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           products={featuredProducts}
         />
 
-        <FeaturedVideo
-          heading="Pro-Team"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          labore et dolore magna aliqua."
-          video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-          link={{ href: '#', target: '_self' }}
-          mediaAlign="right"
-        />
+    
 
         <Subscribe
           title="Sign up for our newsletter"
@@ -116,10 +110,10 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
 
         <Feature
           image={{
-            url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
-            alt: 'Biker in Mountains',
+            url: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
+            alt: 'Close up of a plant',
           }}
-          heading="A global community"
+          heading="Bigger Statements"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
           link={{
             label: 'Shop Now',
@@ -130,14 +124,24 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
 
         <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
 
-        <FeaturedVideo
+
+
+        <FeaturedImage
+          title="Pro-Team"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          labore et dolore magna aliqua."
+          image={{src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk', altText: 'Close up of a plant'}}
+          cta={{ href: '#', label: 'Shop Now' }}
+        />
+
+        {/* <FeaturedVideo
           heading="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
           video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
           link={{ href: '#', target: '_self' }}
           mediaAlign="left"
-        />
+        /> */}
 
         <Subscribe
           title="Sign up for our newsletter"
