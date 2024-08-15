@@ -93,7 +93,7 @@ const Navigation = ({
         <div className="flex min-h-14 items-stretch pl-3 pr-2.5 @lg:pr-2">
           <div className="flex-1 shrink-0 place-content-center">
             <Link href={logoLink}>
-              <Image src={logoImage} alt="Logo" width={logoWidth} height={logoHeight} />
+              <Image src={logoImage} alt="Logo" width={logoWidth} height={logoHeight} priority />
             </Link>
           </div>
 
