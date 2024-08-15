@@ -1,7 +1,7 @@
 import CarouselSection, { type Slide } from '@/vibes/2px/components/carousel-section'
 import ProductCard from '@/vibes/2px/components/product-card'
 
-const slides = [
+export const productSlides = [
   {
     item: (
       <ProductCard
@@ -66,7 +66,7 @@ const slides = [
 export default function Preview() {
   return (
     <div className="flex min-h-48 items-center justify-center bg-background @container sm:min-h-64 lg:min-h-80">
-      <CarouselSection slides={slides} title="New in" showArrows loop />
+      <CarouselSection slides={productSlides} title="New in" showArrows loop />
     </div>
   )
 }

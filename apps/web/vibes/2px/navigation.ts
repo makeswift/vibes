@@ -185,4 +185,14 @@ export const navigation = [
       },
     ],
   },
+  {
+    title: 'Pages',
+    pages: [
+      {
+        title: 'Homepage',
+        slug: 'homepage',
+        file: 'docs/homepage.mdx',
+      },
+    ],
+  },
 ] satisfies Navigation

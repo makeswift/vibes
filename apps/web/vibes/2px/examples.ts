@@ -329,4 +329,12 @@ export const examples = [
     files: ['examples/slideshow-section.tsx'],
     component: lazy(() => import('./examples/slideshow-section')),
   },
+
+  {
+    name: 'homepage-example',
+    dependencies: [],
+    registryDependencies: ['header', 'footer-section'],
+    files: ['examples/homepage.tsx'],
+    component: lazy(() => import('./examples/homepage')),
+  },
 ] satisfies Components

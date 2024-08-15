@@ -47,9 +47,9 @@ export default function Tabs({ className, tabs }: Props) {
       value={value}
       onValueChange={setValue}
     >
-      <RadixTabs.List className="w-full bg-background  ">
+      <RadixTabs.List className="w-full bg-background">
         <div
-          className="relative flex flex-col overflow-auto px-6  @lg:flex-row"
+          className="relative flex flex-col overflow-auto @lg:flex-row"
           ref={container}
           style={
             {
@@ -62,9 +62,12 @@ export default function Tabs({ className, tabs }: Props) {
               key={index}
               value={index.toString()}
               className={cn(
-                'mt-5 w-full shrink-0 border-b-2 border-r-2 border-b-foreground border-r-foreground px-2.5 py-3 text-start hover:border-dashed @lg:w-[30rem]',
+                'w-full shrink-0 border-b-2 border-r-2 border-b-foreground border-r-foreground px-2.5 py-3 text-start hover:border-dashed @lg:w-[30rem]',
                 Number(value) === index && 'bg-foreground text-background'
               )}
+              style={{
+                minWidth: `calc(100% / ${tabs.length})`,
+              }}
             >
               {tab.title}
             </RadixTabs.Trigger>
