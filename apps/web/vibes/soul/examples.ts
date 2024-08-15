@@ -151,13 +151,6 @@ export const examples = [
     component: lazy(() => import('./examples/input')),
   },
   {
-    name: 'page-catalyst-home-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/page-catalyst-home.tsx'],
-    component: lazy(() => import('./examples/page-catalyst-home')),
-  },
-  {
     name: 'page-home-blue-example',
     dependencies: [],
     registryDependencies: [],

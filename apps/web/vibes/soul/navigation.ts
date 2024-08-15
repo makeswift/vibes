@@ -178,14 +178,4 @@ export const navigation = [
       },
     ],
   },
-  {
-    title: 'Catalyst',
-    pages: [
-      {
-        title: 'Home',
-        slug: 'page-catalyst-home',
-        file: 'docs/page-catalyst-home.mdx',
-      },
-    ],
-  },
 ] satisfies Navigation
