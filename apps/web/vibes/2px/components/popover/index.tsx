@@ -31,7 +31,7 @@ export default function Popover({
         <PopoverPrimitive.Trigger asChild>{trigger}</PopoverPrimitive.Trigger>
         <PopoverPrimitive.Portal>
           <PopoverPrimitive.Content className="relative mt-4 w-full font-medium">
-            <div className="flex w-[90vw] max-w-[30rem] flex-col gap-12 border-2 border-foreground pb-8 pl-5 pr-5 pt-5 ">
+            <div className="flex w-[90vw] max-w-[30rem] flex-col gap-12 border-2 border-foreground pb-8 pl-5 pr-5 pt-5 @container ">
               <div className="flex flex-col gap-6 text-start">
                 <h2 className="font-heading text-6xl leading-[4rem] -tracking-[0.0675rem]">
                   {title}
