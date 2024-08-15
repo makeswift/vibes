@@ -45,9 +45,14 @@ export default function Newsletter({
         onSubmit={handleSubmit}
       >
         <div className="flex min-h-[30rem] shrink-0 basis-1/2 flex-col justify-center">
-          <h2 className="mb-6 text-3xl font-medium leading-[2.125rem] -tracking-[0.02em] @2xl:text-6xl @2xl:leading-[4rem]">
+          <h2 className="mb-5 text-3xl font-medium leading-[2.125rem] -tracking-[0.02em] @2xl:text-6xl @2xl:leading-[4rem]">
             {title}
           </h2>
+          {description && (
+            <p className="mb-5 text-base font-medium leading-6 @2xl:text-lg @2xl:leading-[1.875rem] @2xl:-tracking-[0.01em]">
+              {description}
+            </p>
+          )}
           <Input
             className="w-full bg-accent"
             placeholder="Email"

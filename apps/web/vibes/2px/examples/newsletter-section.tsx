@@ -19,7 +19,7 @@ export default function Preview() {
 
           console.log('Email:', formData.get('email'))
         }}
-        description=""
+        description="Get the latest updates and insights delivered to your inbox"
         successMessage="Thanks for signing up to our newsletter."
         errorMessage="There has been a system error. Please, send your form again. "
       />
