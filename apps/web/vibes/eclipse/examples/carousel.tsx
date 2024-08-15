@@ -73,7 +73,7 @@ const OPTIONS: EmblaOptionsType = { loop: true, align: 'center' }
 
 export default function Preview() {
   return (
-    <div className="flex h-screen items-center justify-center bg-background py-8">
+    <div className="flex h-screen items-center justify-center py-8">
       <Carousel slides={slides} options={OPTIONS}></Carousel>
     </div>
   )
