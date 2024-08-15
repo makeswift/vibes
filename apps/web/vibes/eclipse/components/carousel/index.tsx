@@ -83,15 +83,18 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
         <div className="touch-[pan-y_pinch-zoom] flex">
           {slides.map((slide, index) => (
             <div
-              className="shrink-0 grow-0 basis-4/5 [transform:translate3d(0,0,0)] @3xl:basis-4/6 @7xl:basis-3/5"
+              className={clsx(
+                'relative shrink-0 grow-0 basis-4/5 [transform:translate3d(0,0,0)] selection:bg-transparent before:absolute before:-inset-3 before:-z-20 before:rounded-full before:bg-primary/25 before:blur-3xl before:transition-opacity before:delay-100 before:duration-1000 @3xl:basis-4/6 @7xl:basis-3/5',
+                selectedIndex === index ? 'before:opacity-100' : 'before:opacity-0'
+              )}
               key={index}
             >
               <div
                 className={clsx(
-                  'relative z-0 h-full w-full rounded-[32px] bg-gradient-to-b from-primary/15 to-background/50 p-2 ring-1 ring-primary/20 transition-all duration-500 before:absolute before:-inset-3 before:-z-20 before:rounded-full before:bg-primary/25 before:opacity-[var(--glow-opacity)] before:blur-3xl before:transition-opacity after:absolute after:inset-5 after:top-0 after:z-10 after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent after:transition-opacity after:delay-200 after:duration-700 @lg:basis-3/4 @2xl:basis-4/6 lg:before:-inset-4',
+                  'relative z-0 h-full w-full rounded-[32px] bg-gradient-to-b from-primary/15 to-background/50 p-2 ring-1 ring-primary/20 transition-all duration-500 after:absolute after:inset-5 after:top-0 after:z-10 after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent after:transition-opacity after:delay-200 after:duration-700 @lg:basis-3/4 @2xl:basis-4/6 lg:before:-inset-4',
                   selectedIndex === index
-                    ? 'scale-100 opacity-100 blur-0 before:opacity-100 after:opacity-100'
-                    : 'scale-90 opacity-50 blur-[4px] before:opacity-0 after:opacity-0'
+                    ? 'scale-100 opacity-100 blur-0 after:opacity-100'
+                    : 'scale-90 opacity-50 blur-[4px] after:opacity-0'
                 )}
               >
                 <div className="relative aspect-square w-full place-content-end overflow-hidden rounded-3xl bg-gradient-to-b from-transparent from-30% to-background/80 p-4 ring-1 ring-primary/10 @lg:aspect-[5/3] @2xl:aspect-video @2xl:p-5 @3xl:from-50%">
@@ -100,7 +103,7 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
                       src={slide.image}
                       alt={slide.imageAlt}
                       fill
-                      className="absolute inset-0 -z-10 w-full rounded-3xl object-cover selection:bg-transparent"
+                      className="absolute inset-0 -z-10 w-full rounded-3xl object-cover"
                     />
                   )}
                   <div
@@ -138,7 +141,7 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
           <ChevronLeft
             size={36}
             absoluteStrokeWidth
-            className="translate-x-0 opacity-50 transition-all duration-300 group-hover:-translate-x-2 group-hover:opacity-100"
+            className="-translate-x-10 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
           />
         </button>
 
@@ -149,7 +152,7 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
           <ChevronRight
             size={40}
             absoluteStrokeWidth
-            className="translate-x-0 opacity-50 transition-all duration-300 group-hover:translate-x-2 group-hover:opacity-100"
+            className="translate-x-10 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
           />
         </button>
       </div>
