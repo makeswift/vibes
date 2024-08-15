@@ -5,7 +5,7 @@ export const components = [
     name: 'accordions',
     dependencies: ['clsx', '@radix-ui/react-accordion'],
     registryDependencies: [],
-    files: ['components/accordions/index.tsx', 'components/accordions/chevron.tsx'],
+    files: ['components/accordions/index.tsx'],
   },
   {
     name: 'announcement-bar',
