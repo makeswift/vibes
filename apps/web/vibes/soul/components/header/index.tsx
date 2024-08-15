@@ -92,7 +92,7 @@ export const Header = forwardRef(function Header(
           className="grid h-[60px] grid-cols-3 items-stretch justify-between bg-background shadow-[2px_4px_24px_#00000010] 
           @4xl:mx-5 @4xl:rounded-[24px]"
         >
-          <div className="relative flex items-stretch px-2.5" ref={container}>
+          <div className="relative flex items-stretch pl-2.5" ref={container}>
             {links?.map((item, i) => (
               <Link
                 key={i}
@@ -120,7 +120,7 @@ export const Header = forwardRef(function Header(
             )}
           </Link>
 
-          <div className="ml-auto flex items-center gap-2 pr-3.5 @4xl:pr-6">
+          <div className="ml-auto flex items-center gap-2 pr-3.5 @4xl:pr-2.5">
             <div className="absolute left-5 flex items-center @4xl:relative @4xl:left-0">
               <HamburgerMenuButton navOpen={navOpen} setNavOpen={setNavOpen} />
               <button
