@@ -78,7 +78,17 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
   return (
-    <div className="w-full @container">
+    <div
+      tabIndex={-1}
+      className="w-full outline-none @container"
+      onKeyDown={event => {
+        if (event.key === 'ArrowLeft') {
+          emblaApi?.scrollPrev()
+        } else if (event.key === 'ArrowRight') {
+          emblaApi?.scrollNext()
+        }
+      }}
+    >
       <div ref={emblaRef} className="relative">
         <div className="touch-[pan-y_pinch-zoom] flex">
           {slides.map((slide, index) => (
@@ -136,7 +146,7 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
 
         <button
           onClick={() => emblaApi?.scrollPrev()}
-          className="group absolute inset-y-0 left-0 hidden w-1/6 px-3 text-foreground @3xl:block @7xl:w-1/5 @7xl:px-7"
+          className="group absolute inset-y-0 left-0 hidden w-1/6 px-3 text-foreground outline-none @3xl:block @7xl:w-1/5 @7xl:px-7"
         >
           <ChevronLeft
             size={36}
@@ -147,7 +157,7 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
 
         <button
           onClick={() => emblaApi?.scrollNext()}
-          className="group absolute inset-y-0 right-0 hidden w-1/6 items-center justify-end px-3 text-foreground @3xl:flex @7xl:w-1/5 @7xl:px-7"
+          className="group absolute inset-y-0 right-0 hidden w-1/6 items-center justify-end px-3 text-foreground outline-none @3xl:flex @7xl:w-1/5 @7xl:px-7"
         >
           <ChevronRight
             size={40}
