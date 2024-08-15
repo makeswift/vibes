@@ -47,10 +47,24 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin />,
 ]
 
+const locales = [
+  { id: '1', region: 'US', language: 'EN' },
+  { id: '2', region: 'FR', language: 'FR' },
+  { id: '3', region: 'DE', language: 'DC' },
+  { id: '4', region: 'IT', language: 'IT' },
+]
+
 export const CatalystHomePage = function CatalystHomePage({ heroSlides }: any) {
   return (
     <>
-      <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
+      <Header
+        links={headerLinks}
+        logo="SOUL"
+        cartHref="#"
+        accountHref="#"
+        activeLocale="EN"
+        locales={locales}
+      />
 
       <Slideshow slides={heroSlides} />
 
