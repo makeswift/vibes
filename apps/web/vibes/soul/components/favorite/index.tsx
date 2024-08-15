@@ -3,25 +3,25 @@ import clsx from 'clsx'
 import Heart from '@/vibes/soul/components/favorite/heart'
 
 type Props = {
-  favorited?: boolean
-  setFavorited: (liked: boolean) => void
+  checked?: boolean
+  setChecked: (liked: boolean) => void
 }
 
-export const Favorite = function Favorite({ favorited, setFavorited }: Props) {
+export const Favorite = function Favorite({ checked, setChecked }: Props) {
   return (
     <label
       className={clsx(
         'group relative flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-[colors,transform] duration-300 focus-within:outline-0 focus-within:ring-2',
-        favorited ? 'bg-contrast-100' : 'hover:border-contrast-200'
+        checked ? 'bg-contrast-100' : 'hover:border-contrast-200'
       )}
     >
       <input
         type="checkbox"
-        checked={favorited}
-        onChange={() => setFavorited(!favorited)}
+        checked={checked}
+        onChange={() => setChecked(!checked)}
         className="absolute h-0 w-0 opacity-0"
       />
-      <Heart filled={favorited} />
+      <Heart filled={checked} />
     </label>
   )
 }

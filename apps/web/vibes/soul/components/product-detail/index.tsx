@@ -63,7 +63,7 @@ export const ProductDetail = function ProductDetail({
 
           <div className="flex max-w-sm gap-2">
             <Button className="flex-grow">Add to Cart</Button>
-            <Favorite favorited={favorited} setFavorited={setFavorited} />
+            <Favorite checked={favorited} setChecked={setFavorited} />
           </div>
         </div>
       </div>
