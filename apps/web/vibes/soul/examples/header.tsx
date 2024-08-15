@@ -106,10 +106,24 @@ export const headerLinks = [
   },
 ]
 
+const locales = [
+  { id: '1', region: 'US', language: 'EN' },
+  { id: '2', region: 'FR', language: 'FR' },
+  { id: '3', region: 'DE', language: 'DC' },
+  { id: '4', region: 'IT', language: 'IT' },
+]
+
 export default function Preview() {
   return (
     <div className="relative min-h-48">
-      <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
+      <Header
+        links={headerLinks}
+        logo="SOUL"
+        cartHref="#"
+        accountHref="#"
+        locales={locales}
+        activeLocale="EN"
+      />
     </div>
   )
 }

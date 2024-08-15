@@ -151,12 +151,6 @@ export const navigation = [
       },
       { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
       {
-        title: 'Subscribe Basic',
-        slug: 'subscribe-basic',
-        file: 'docs/subscribe-basic.mdx',
-        component: 'subscribe-basic',
-      },
-      {
         title: 'Subscribe',
         slug: 'subscribe',
         file: 'docs/subscribe.mdx',

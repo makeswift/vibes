@@ -11,6 +11,13 @@ import { featuredProducts } from '@/vibes/soul/examples/featured-products-carous
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
+const locales = [
+  { id: '1', region: 'US', language: 'EN' },
+  { id: '2', region: 'FR', language: 'FR' },
+  { id: '3', region: 'DE', language: 'DC' },
+  { id: '4', region: 'IT', language: 'IT' },
+]
+
 export const ProductPage = function ProductPage() {
   return (
     <>
@@ -19,7 +26,14 @@ export const ProductPage = function ProductPage() {
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
       <div className="relative flex flex-col">
-        <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
+        <Header
+          links={headerLinks}
+          logo="SOUL"
+          cartHref="#"
+          accountHref="#"
+          activeLocale="EN"
+          locales={locales}
+        />
 
         <ProductDetail
           product={
@@ -115,7 +129,6 @@ export const ProductPage = function ProductPage() {
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-          theme="light"
         />
 
         <Footer sections={footerLinks} logo="SOUL" />

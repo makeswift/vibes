@@ -14,7 +14,7 @@ import {
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
 import Header from '@/vibes/soul/components/header'
 import Slideshow from '@/vibes/soul/components/slideshow'
-import SubscribeBasic from '@/vibes/soul/components/subscribe-basic'
+import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
@@ -47,10 +47,24 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin />,
 ]
 
+const locales = [
+  { id: '1', region: 'US', language: 'EN' },
+  { id: '2', region: 'FR', language: 'FR' },
+  { id: '3', region: 'DE', language: 'DC' },
+  { id: '4', region: 'IT', language: 'IT' },
+]
+
 export const CatalystHomePage = function CatalystHomePage({ heroSlides }: any) {
   return (
     <>
-      <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
+      <Header
+        links={headerLinks}
+        logo="SOUL"
+        cartHref="#"
+        accountHref="#"
+        activeLocale="EN"
+        locales={locales}
+      />
 
       <Slideshow slides={heroSlides} />
 
@@ -77,7 +91,7 @@ export const CatalystHomePage = function CatalystHomePage({ heroSlides }: any) {
 
       <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
 
-      <SubscribeBasic
+      <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
       />

@@ -50,6 +50,13 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin />,
 ]
 
+const locales = [
+  { id: '1', region: 'US', language: 'EN' },
+  { id: '2', region: 'FR', language: 'FR' },
+  { id: '3', region: 'DE', language: 'DC' },
+  { id: '4', region: 'IT', language: 'IT' },
+]
+
 export const HomePage = function HomePage({ heroSlides, categories }: any) {
   return (
     <>
@@ -59,7 +66,14 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
       </AnnouncementBar>
 
       <div className="relative flex flex-col">
-        <Header links={headerLinks} logo="SOUL" cartHref="#" accountHref="#" />
+        <Header
+          links={headerLinks}
+          logo="SOUL"
+          cartHref="#"
+          accountHref="#"
+          locales={locales}
+          activeLocale="EN"
+        />
 
         <Slideshow slides={heroSlides} />
 
@@ -92,7 +106,6 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-          theme="brand-highlight"
         />
 
         <FeaturedProductsCarousel
@@ -129,7 +142,6 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-          theme="light"
         />
 
         <Footer

@@ -270,13 +270,6 @@ export const examples = [
     component: lazy(() => import('./examples/slideshow')),
   },
   {
-    name: 'subscribe-basic-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/subscribe-basic.tsx'],
-    component: lazy(() => import('./examples/subscribe-basic')),
-  },
-  {
     name: 'subscribe-example',
     dependencies: [],
     registryDependencies: [],
