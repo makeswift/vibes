@@ -170,6 +170,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:outline-primary prose-a:before:absolute prose-a:before:inset-x-0 prose-a:before:bottom-0 prose-a:before:h-[1px] prose-a:before:animate-scroll prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] prose-a:before:[animation-play-state:paused] hover:prose-a:before:[animation-play-state:running]',
               '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-contrast-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
               '[&:not(pre_code)]:prose-code:before:content-none [&:not(pre_code)]:prose-code:after:content-none',
+              '[&>.tabs]:my-8 [&>.tabs]:md:my-10',
               'prose-pre:my-0 prose-pre:outline-primary',
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5'
             )}
@@ -209,7 +210,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             </div>
           </div>
           <div className="not-prose hidden lg:block">
-            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-300 pb-10">
+            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-300">
               <TableOfContents offsetTop={90} />
               <div className="space-y-5 py-5">
                 {totalSize && (
