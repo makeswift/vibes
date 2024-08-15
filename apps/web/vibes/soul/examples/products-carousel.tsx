@@ -9,8 +9,8 @@ export const products: Product[] = [
     badge: 'New',
     price: {
       type: 'range',
-      minValue: '$123.99',
-      maxValue: '$123.99',
+      minValue: '$110',
+      maxValue: '$150',
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
@@ -25,8 +25,8 @@ export const products: Product[] = [
     badge: 'New',
     price: {
       type: 'sale',
-      previousValue: '$123.99',
-      currentValue: '$123.99',
+      previousValue: '$159.99',
+      currentValue: '$129.99',
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
@@ -53,8 +53,8 @@ export const products: Product[] = [
     badge: 'New',
     price: {
       type: 'range',
-      minValue: '$123.99',
-      maxValue: '$123.99',
+      minValue: '$100',
+      maxValue: '$150',
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
@@ -69,7 +69,7 @@ export const products: Product[] = [
     badge: 'New',
     price: {
       type: 'sale',
-      previousValue: '$123.99',
+      previousValue: '$199.99',
       currentValue: '$123.99',
     },
     image: {
