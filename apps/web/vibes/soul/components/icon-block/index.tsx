@@ -25,10 +25,8 @@ export const IconBlock = function IconBlock({ list }: IconBlock) {
                   { 'border-t border-contrast-100': idx === 0 }
                 )}
               >
-                {/* Icon */}
                 <Icon name={icon} />
 
-                {/* Text */}
                 <div className="flex flex-col items-center text-center text-[15px]">
                   <span>{title}</span>
                   <span className="opacity-40">{description}</span>
