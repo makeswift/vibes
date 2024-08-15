@@ -6,8 +6,18 @@
   * {
     @apply antialiased;
   }
-  html,
-  body {
+  html {
     @apply bg-background font-body text-foreground;
+  }
+  body {
+    animation: fadeIn 250ms forwards;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }

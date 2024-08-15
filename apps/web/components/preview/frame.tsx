@@ -18,7 +18,6 @@ interface Props {
 
 export function Frame({ className, vibeSlug, componentName }: Props) {
   const { activeBrand } = useBrandContext()
-  const [iframeLoaded, setIframeLoaded] = useState(false)
   const iframe = useRef<HTMLIFrameElement>(null)
   const container = useRef<HTMLDivElement>(null)
   const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
@@ -47,17 +46,6 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
     iframe.current?.contentDocument?.body.style.setProperty('zoom', String(zoom))
   }, [zoom])
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (iframe.current?.contentDocument?.readyState === 'complete') {
-        setIframeLoaded(true)
-        clearInterval(intervalId)
-      }
-    })
-
-    return () => clearInterval(intervalId)
-  }, [])
-
   return (
     <div className={clsx('relative w-full bg-contrast-100', className)} ref={container}>
       <div
@@ -67,10 +55,7 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
         {activeBrand && (
           <iframe
             ref={iframe}
-            className={clsx(
-              'h-full w-full bg-transparent opacity-0',
-              iframeLoaded && 'opacity-100 transition-opacity duration-500'
-            )}
+            className="h-full w-full bg-transparent"
             src={`/preview/${vibeSlug}/${componentName}/${activeBrand.name}`}
           />
         )}
