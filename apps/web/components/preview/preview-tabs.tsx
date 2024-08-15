@@ -115,15 +115,15 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
       <TabsContent className="min-h-0 flex-1" value="preview">
         <div
           className={clsx(
-            'flex max-h-[70vh]',
+            'flex',
             fullScreen
               ? 'h-full'
               : {
-                  xs: 'h-[200px]',
-                  sm: 'h-[400px]',
-                  md: 'h-[600px]',
-                  lg: 'h-[800px]',
-                  xl: 'h-[1000px]',
+                  xs: 'h-[200px] max-h-[70vh]',
+                  sm: 'h-[400px] max-h-[70vh]',
+                  md: 'h-[600px] max-h-[70vh]',
+                  lg: 'h-[800px] max-h-[70vh]',
+                  xl: 'h-[1000px] max-h-[70vh]',
                 }[size]
           )}
         >
