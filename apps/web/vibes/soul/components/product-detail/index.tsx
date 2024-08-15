@@ -49,7 +49,7 @@ export const ProductDetail = function ProductDetail({
                   key={index}
                   onClick={() => setSelectedOption(option)}
                   className={clsx(
-                    'flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full text-xs font-medium transition-colors duration-300',
+                    'flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xs font-medium transition-colors duration-300',
                     'ring-primary focus-visible:outline-0 focus-visible:ring-2',
                     option === selectedOption
                       ? 'bg-foreground text-background'

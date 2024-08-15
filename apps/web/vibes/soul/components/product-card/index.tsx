@@ -43,7 +43,7 @@ export const ProductCard = function ProductCard({
         className
       )}
     >
-      <div className="relative aspect-[5/6] overflow-hidden rounded-xl @6xl:min-w-[300px]">
+      <div className="relative aspect-[5/6] overflow-hidden rounded-xl @6xl:min-w-80">
         {badge && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}

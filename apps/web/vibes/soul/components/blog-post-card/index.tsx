@@ -31,7 +31,7 @@ export const BlogPostCard = function BlogPostCard({
     <Link
       href={link.href}
       className={clsx(
-        'group flex max-w-[466px] flex-col gap-2 rounded-xl text-foreground ring-primary focus:outline-0 focus:ring-2',
+        'group flex max-w-md flex-col gap-2 rounded-xl text-foreground ring-primary focus:outline-0 focus:ring-2',
         className
       )}
     >
