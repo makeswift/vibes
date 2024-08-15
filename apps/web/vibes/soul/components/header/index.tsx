@@ -164,19 +164,19 @@ export const Header = forwardRef(function Header(
                 />
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="z-50 mt-4 max-h-[20rem] w-20 overflow-y-scroll rounded-xl border border-contrast-100 bg-background 
+                className="z-50 mt-4 max-h-[20rem] w-20 overflow-y-scroll rounded-xl bg-background 
                 p-2 shadow-[2px_4px_24px_#00000010] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 
                 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 
                 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 
                 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 
-                data-[side=top]:slide-in-from-bottom-2 @4xl:-ml-10 
-                @4xl:w-32 @4xl:rounded-3xl @4xl:p-5"
+                data-[side=top]:slide-in-from-bottom-2 @4xl:-ml-14
+                @4xl:w-32 @4xl:rounded-3xl @4xl:p-4"
               >
                 {locales?.map(({ id, language }) => (
                   <DropdownMenuItem
                     key={id}
                     className={clsx(
-                      'cursor-default rounded-lg px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
+                      'cursor-default rounded-xl px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
                       'hover:text-foreground focus:bg-contrast-100 @4xl:text-[15px]',
                       {
                         'text-foreground': selectedLanguage === language,
