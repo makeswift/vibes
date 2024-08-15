@@ -39,21 +39,16 @@ function OptionsSelector({ options }: Props) {
           return (
             <>
               <Label>{option.label}</Label>
-              <div key={index} className="mb-6 flex gap-5">
-                {option.values.map((value, index) => (
-                  <Swatch
-                    key={index}
-                    name="color"
-                    value={value.value}
-                    inStock={value.inStock}
-                    sample={value.sample}
-                    onChange={e => {
-                      setValues({ ...values, [option.label]: e.currentTarget.value })
-                    }}
-                    checked={values[option.label] === value.value}
-                  />
-                ))}
-              </div>
+
+              <Swatch
+                className="mb-6 flex gap-5"
+                swatches={option.values.map(value => ({
+                  value: value.value,
+                  inStock: value.inStock,
+                  disabled: !value.inStock,
+                  color: value.sample,
+                }))}
+              />
             </>
           )
         }
