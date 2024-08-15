@@ -1,6 +1,3 @@
-import Image from 'next/image'
-
-import LinkedIn from '@/vibes/soul/components//footer/social-icons/linked-in'
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 import Feature from '@/vibes/soul/components/feature'
@@ -8,15 +5,16 @@ import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
 import FeaturedVideo from '@/vibes/soul/components/featured-video'
 import Footer from '@/vibes/soul/components/footer'
-import Amex from '@/vibes/soul/components/footer/payment-icons/amex'
-import ApplePay from '@/vibes/soul/components/footer/payment-icons/apple-pay'
-import Bitcoin from '@/vibes/soul/components/footer/payment-icons/bitcoin'
-import GooglePay from '@/vibes/soul/components/footer/payment-icons/google-pay'
-import Mastercard from '@/vibes/soul/components/footer/payment-icons/mastercard'
-import Paypal from '@/vibes/soul/components/footer/payment-icons/paypal'
-import Visa from '@/vibes/soul/components/footer/payment-icons/visa'
-import Facebook from '@/vibes/soul/components/footer/social-icons/facebook'
-import X from '@/vibes/soul/components/footer/social-icons/x'
+import {
+  Amex,
+  ApplePay,
+  Bitcoin,
+  GooglePay,
+  Mastercard,
+  Paypal,
+  Visa,
+} from '@/vibes/soul/components/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
 import Header from '@/vibes/soul/components/header'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
@@ -30,11 +28,15 @@ const socialMediaLinks = [
   },
   {
     href: '#',
-    icon: <LinkedIn />,
+    icon: <X />,
   },
   {
     href: '#',
-    icon: <X />,
+    icon: <Instagram />,
+  },
+  {
+    href: '#',
+    icon: <Youtube />,
   },
 ]
 
