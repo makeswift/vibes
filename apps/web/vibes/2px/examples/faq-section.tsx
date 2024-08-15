@@ -25,7 +25,7 @@ export default function Preview() {
   ]
   return (
     <div className="flex min-h-48 justify-center bg-background  @container sm:min-h-64 lg:min-h-80">
-      <FAQSection title="FAQs" items={items} />
+      <FAQSection title="FAQs" items={faqs} />
     </div>
   )
 }

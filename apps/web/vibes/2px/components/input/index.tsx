@@ -7,6 +7,7 @@ interface Props extends ComponentPropsWithRef<'input'> {
   icon?: React.ReactNode
   variant?: 'default' | 'success' | 'error'
   errorMessage?: string
+  errorClassName?: string
 }
 
 export default function Input({
@@ -15,11 +16,12 @@ export default function Input({
   error,
   icon,
   errorMessage,
+  errorClassName,
   ...props
 }: Props) {
   return (
-    <div className="font-body text-sm font-medium leading-6">
-      <div className="relative inline-block">
+    <div className="w-full font-body text-sm font-medium leading-6">
+      <div className="relative inline-block w-full">
         <input
           type="text"
           className={cn(
@@ -36,7 +38,9 @@ export default function Input({
         />
         {icon && <div className="absolute right-4 top-1/2 -translate-y-1/2">{icon}</div>}
       </div>
-      {error && errorMessage && <div className="mt-2 text-xs text-error">{errorMessage}</div>}
+      {error && errorMessage && (
+        <div className={cn('mt-2 text-xs text-error', errorClassName)}>{errorMessage}</div>
+      )}
     </div>
   )
 }

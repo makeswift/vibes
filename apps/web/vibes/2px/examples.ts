@@ -53,6 +53,18 @@ export const examples = [
     component: lazy(() => import('./examples/text-area')),
   },
   {
+    name: 'popover-example',
+    dependencies: [],
+    registryDependencies: ['popover', 'button'],
+    files: [
+      'examples/popover.tsx',
+      'components/icons/MinusSolidIcon.tsx',
+      'components/icons/PlusSolidIcon',
+      '../../utils.ts',
+    ],
+    component: lazy(() => import('./examples/popover')),
+  },
+  {
     name: 'skeleton-example',
     dependencies: [],
     registryDependencies: ['skeleton'],
@@ -304,6 +316,13 @@ export const examples = [
     component: lazy(() => import('./examples/gallery')),
   },
   {
+    name: 'newsletter-section-example',
+    dependencies: [],
+    registryDependencies: ['newsletter-section'],
+    files: ['examples/newsletter-section.tsx'],
+    component: lazy(() => import('./examples/newsletter-section')),
+  },
+  {
     name: 'header-example',
     dependencies: [],
     registryDependencies: ['header'],
@@ -316,5 +335,13 @@ export const examples = [
     registryDependencies: ['slideshow-section'],
     files: ['examples/slideshow-section.tsx'],
     component: lazy(() => import('./examples/slideshow-section')),
+  },
+
+  {
+    name: 'homepage-example',
+    dependencies: [],
+    registryDependencies: ['header', 'footer-section'],
+    files: ['examples/homepage.tsx'],
+    component: lazy(() => import('./examples/homepage')),
   },
 ] satisfies Components
