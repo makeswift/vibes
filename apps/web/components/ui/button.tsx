@@ -13,7 +13,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
   ({ className, variant = 'default', size = 'medium', active = true, children, ...props }, ref) => {
     return (
       <button
-        className={clsx('group z-0 rounded-full focus:outline-none', className)}
+        className={clsx('group relative z-0 rounded-full focus:outline-none', className)}
         ref={ref}
         {...props}
       >
