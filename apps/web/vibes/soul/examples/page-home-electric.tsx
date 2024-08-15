@@ -1,11 +1,12 @@
 import { CardProps } from '@/vibes/soul//components/card'
 import HomePage from '@/vibes/soul/components/page-home'
 
+
 export const heroSlides = [
   {
-    title: 'Pro Jerseys',
+    title: 'Slide 1',
     image: {
-      src: 'https://rstr.in/monogram/vibes/cSJdPlXG9Ug',
+      src: 'https://rstr.in/monogram/vibes/lfmnDUMNWEo',
       altText: 'alt',
     },
     cta: {
@@ -14,9 +15,9 @@ export const heroSlides = [
     },
   },
   {
-    title: 'Embrace the Heat',
+    title: 'Slide 2',
     image: {
-      src: 'https://rstr.in/monogram/vibes/VSkA1mBG78U',
+      src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk',
       altText: 'alt',
     },
     cta: {
@@ -25,9 +26,9 @@ export const heroSlides = [
     },
   },
   {
-    title: 'Embrace the Heat',
+    title: 'Slide 3',
     image: {
-      src: 'https://rstr.in/monogram/vibes/o_0gBpyrOVe',
+      src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C',
       altText: 'alt',
     },
     cta: {
@@ -39,23 +40,23 @@ export const heroSlides = [
 
 export const categories: CardProps[] = [
   {
-    title: 'Men',
-    image: { src: 'https://rstr.in/monogram/vibes/CVQwqHQKmz4', altText: 'Men' },
+    title: 'Small Plants',
+    image: { src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk', altText: 'Small Plants' },
     href: '#',
   },
   {
-    title: 'Women',
-    image: { src: 'https://rstr.in/monogram/vibes/UWfiHOc2RnP', altText: 'Women' },
+    title: 'Low Maintenance',
+    image: { src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk', altText: 'Low Maintenance' },
     href: '#',
   },
   {
-    title: 'Jerseys',
-    image: { src: 'https://rstr.in/monogram/vibes/lxY8Fqsk3Gp', altText: 'Jerseys' },
+    title: 'Indestructible',
+    image: { src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p', altText: 'Indestructible' },
     href: '#',
   },
   {
-    title: 'Headwear',
-    image: { src: 'https://rstr.in/monogram/vibes/8bPrhQZGr4k', altText: 'Headwear' },
+    title: 'Succulent',
+    image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', altText: 'Succulent' },
     href: '#',
   },
 ]

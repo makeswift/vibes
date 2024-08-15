@@ -49,8 +49,8 @@ export const ProductDetail = function ProductDetail({
                   key={index}
                   onClick={() => setSelectedOption(option)}
                   className={clsx(
-                    'flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full text-xs font-medium transition-colors duration-300',
-                    'focus:outline-0 focus:ring-2 focus:ring-primary',
+                    'flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xs font-medium transition-colors duration-300',
+                    'ring-primary focus-visible:outline-0 focus-visible:ring-2',
                     option === selectedOption
                       ? 'bg-foreground text-background'
                       : 'bg-contrast-100 hover:bg-contrast-200'
@@ -63,7 +63,7 @@ export const ProductDetail = function ProductDetail({
 
           <div className="flex max-w-sm gap-2">
             <Button className="flex-grow">Add to Cart</Button>
-            <Favorite favorited={favorited} setFavorited={setFavorited} />
+            <Favorite checked={favorited} setChecked={setFavorited} />
           </div>
         </div>
       </div>

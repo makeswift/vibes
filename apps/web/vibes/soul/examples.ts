@@ -60,13 +60,6 @@ export const examples = [
     component: lazy(() => import('./examples/checkbox')),
   },
   {
-    name: 'compare-drawer-example',
-    dependencies: [],
-    registryDependencies: ['compare-drawer'],
-    files: ['examples/compare-drawer.tsx'],
-    component: lazy(() => import('./examples/compare-drawer')),
-  },
-  {
     name: 'discount-example',
     dependencies: [],
     registryDependencies: ['discount'],
@@ -149,13 +142,6 @@ export const examples = [
     registryDependencies: ['input'],
     files: ['examples/input.tsx'],
     component: lazy(() => import('./examples/input')),
-  },
-  {
-    name: 'page-catalyst-home-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/page-catalyst-home.tsx'],
-    component: lazy(() => import('./examples/page-catalyst-home')),
   },
   {
     name: 'page-home-blue-example',

@@ -4,9 +4,9 @@ import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
 import Pagination from '@/vibes/soul/components/pagination'
+import { Product } from '@/vibes/soul/components/product-card'
 import ProductsHeader from '@/vibes/soul/components/products-header'
 import ProductsList from '@/vibes/soul/components/products-list'
-import { compareProducts } from '@/vibes/soul/examples/compare-drawer'
 import { footerLinks } from '@/vibes/soul/examples/footer'
 import { headerLinks } from '@/vibes/soul/examples/header'
 import { products } from '@/vibes/soul/examples/products-list'
@@ -16,6 +16,33 @@ const locales = [
   { id: '2', region: 'FR', language: 'FR' },
   { id: '3', region: 'DE', language: 'DC' },
   { id: '4', region: 'IT', language: 'IT' },
+]
+
+export const compareProducts: Product[] = [
+  {
+    id: '1',
+    name: 'Men’s Long Sleeve Jersey',
+    subtitle: 'Blue/Black/Green',
+    badge: 'New',
+    price: '$123.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
+      altText: 'Men’s Long Sleeve Jersey',
+    },
+    href: '#',
+  },
+  {
+    id: '2',
+    name: 'Men’s Long Sleeve Jersey',
+    subtitle: 'Blue/Black/Green',
+    badge: 'New',
+    price: '$123.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
+      altText: 'Men’s Long Sleeve Jersey',
+    },
+    href: '#',
+  },
 ]
 
 export const ProductsPage = function ProductsPage() {

@@ -5,7 +5,7 @@ export const heroSlides = [
   {
     title: 'Slide 1',
     image: {
-      src: 'https://rstr.in/monogram/vibes/2dxdn6-tC-f',
+      src: 'https://rstr.in/monogram/vibes/lfmnDUMNWEo',
       altText: 'alt',
     },
     cta: {
@@ -16,7 +16,7 @@ export const heroSlides = [
   {
     title: 'Slide 2',
     image: {
-      src: 'https://rstr.in/monogram/vibes/WmCjpAXZqIK',
+      src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk',
       altText: 'alt',
     },
     cta: {
@@ -27,7 +27,7 @@ export const heroSlides = [
   {
     title: 'Slide 3',
     image: {
-      src: 'https://rstr.in/monogram/vibes/Rhn7rAbRFLQ',
+      src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C',
       altText: 'alt',
     },
     cta: {
@@ -37,25 +37,26 @@ export const heroSlides = [
   },
 ]
 
+
 export const categories: CardProps[] = [
   {
     title: 'Small Plants',
-    image: { src: 'https://rstr.in/monogram/vibes/fRbI7J5z00o', altText: 'Small Plants' },
+    image: { src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk', altText: 'Small Plants' },
     href: '#',
   },
   {
     title: 'Low Maintenance',
-    image: { src: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6', altText: 'Low Maintenance' },
+    image: { src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk', altText: 'Low Maintenance' },
     href: '#',
   },
   {
     title: 'Indestructible',
-    image: { src: 'https://rstr.in/monogram/vibes/vf9FEg1kvz6', altText: 'Indestructible' },
+    image: { src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p', altText: 'Indestructible' },
     href: '#',
   },
   {
     title: 'Succulent',
-    image: { src: 'https://rstr.in/monogram/vibes/HxVAMWW90Y6', altText: 'Succulent' },
+    image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', altText: 'Succulent' },
     href: '#',
   },
 ]

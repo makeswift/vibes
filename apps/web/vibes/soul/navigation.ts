@@ -45,12 +45,6 @@ export const navigation = [
         component: 'card-carousel',
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
-      {
-        title: 'Compare Drawer',
-        slug: 'compare-drawer',
-        file: 'docs/compare-drawer.mdx',
-        component: 'compare-drawer',
-      },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
 
@@ -175,16 +169,6 @@ export const navigation = [
         title: 'Products',
         slug: 'page-products',
         file: 'docs/page-products.mdx',
-      },
-    ],
-  },
-  {
-    title: 'Catalyst',
-    pages: [
-      {
-        title: 'Home',
-        slug: 'page-catalyst-home',
-        file: 'docs/page-catalyst-home.mdx',
       },
     ],
   },
