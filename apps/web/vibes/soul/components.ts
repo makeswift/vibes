@@ -204,12 +204,6 @@ export const components = [
     ],
   },
   {
-    name: 'subscribe-basic',
-    dependencies: [],
-    registryDependencies: ['input'],
-    files: ['components/subscribe-basic/index.tsx'],
-  },
-  {
     name: 'subscribe',
     dependencies: ['clsx'],
     registryDependencies: ['input'],

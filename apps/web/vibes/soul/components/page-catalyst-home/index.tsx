@@ -14,7 +14,7 @@ import {
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
 import Header from '@/vibes/soul/components/header'
 import Slideshow from '@/vibes/soul/components/slideshow'
-import SubscribeBasic from '@/vibes/soul/components/subscribe-basic'
+import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
@@ -91,7 +91,7 @@ export const CatalystHomePage = function CatalystHomePage({ heroSlides }: any) {
 
       <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
 
-      <SubscribeBasic
+      <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
       />
