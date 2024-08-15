@@ -65,7 +65,7 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
           typeof page === 'string' ? (
             <span
               key={index}
-              className="hidden h-[50px] w-[50px] items-center justify-center text-foreground @lg:flex"
+              className="hidden h-12 w-12 items-center justify-center text-foreground @lg:flex"
             >
               ...
             </span>
@@ -75,7 +75,7 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
               onClick={() => setCurrentPage(page)}
               key={index}
               className={clsx(
-                'flex h-[50px] w-[50px] items-center justify-center rounded-full border transition-colors duration-300',
+                'flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-300',
                 'ring-primary focus-visible:outline-0 focus-visible:ring-2',
                 page === currentPage
                   ? 'border-foreground bg-foreground text-background'
