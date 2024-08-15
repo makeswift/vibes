@@ -310,4 +310,11 @@ export const examples = [
     files: ['examples/slideshow-section.tsx'],
     component: lazy(() => import('./examples/slideshow-section')),
   },
+  {
+    name: 'date-picker-example',
+    dependencies: [],
+    registryDependencies: ['date-picker'],
+    files: ['examples/date-picker.tsx'],
+    component: lazy(() => import('./examples/date-picker')),
+  },
 ] satisfies Components

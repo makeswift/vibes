@@ -75,6 +75,12 @@ export const navigation = [
         file: 'docs/product-card.mdx',
         component: 'product-card',
       },
+      {
+        title: 'Date Picker',
+        slug: 'date-picker',
+        file: 'docs/date-picker.mdx',
+        component: 'date-picker',
+      },
     ],
   },
   {
