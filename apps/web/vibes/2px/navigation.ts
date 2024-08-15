@@ -25,6 +25,7 @@ export const navigation = [
       },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       { title: 'Text Area', slug: 'text-area', file: 'docs/text-area.mdx', component: 'text-area' },
+      { title: 'Popover', slug: 'popover', file: 'docs/popover.mdx', component: 'popover' },
       { title: 'Skeleton', slug: 'skeleton', file: 'docs/skeleton.mdx', component: 'skeleton' },
       {
         title: 'Dropdown',
