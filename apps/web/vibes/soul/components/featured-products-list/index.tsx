@@ -32,7 +32,7 @@ export const FeaturedProductsList = function FeaturedProductsList({
           "
         >
           {title && (
-            <h2 className="text-lg font-semibold text-foreground @4xl:text-6xl @4xl:font-medium">
+            <h2 className="text-lg font-semibold leading-none text-foreground @4xl:text-6xl @4xl:font-medium">
               {title}
             </h2>
           )}
