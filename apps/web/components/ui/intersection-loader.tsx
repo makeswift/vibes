@@ -5,10 +5,10 @@ import React, { useEffect, useRef, useState } from 'react'
 interface Props {
   children: React.ReactNode
   onEnter?: (entry: IntersectionObserverEntry) => void
-  height?: number
+  aspectRatio?: number
 }
 
-export function IntersectionLoader({ children, onEnter, height = 0 }: Props) {
+export function IntersectionLoader({ children, onEnter, aspectRatio = 16 / 9 }: Props) {
   const ref = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -33,7 +33,7 @@ export function IntersectionLoader({ children, onEnter, height = 0 }: Props) {
   }, [ref, onEnter])
 
   return (
-    <div style={{ height, width: '100%' }} ref={ref}>
+    <div className="w-full" style={{ aspectRatio }} ref={ref}>
       {isVisible && children}
     </div>
   )
