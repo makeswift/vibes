@@ -30,7 +30,7 @@ export function MobileMenu({ vibeSlug }: Props) {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <button
-          className="flex h-6 w-7 flex-col justify-between px-1 py-1.5 transition-transform xl:hidden"
+          className="inline-flex h-6 w-7 shrink-0 flex-col justify-between px-1 py-1.5 transition-transform xl:hidden"
           role="button"
           aria-label="Open mobile navigation"
         >
