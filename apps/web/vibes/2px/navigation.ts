@@ -199,6 +199,11 @@ export const navigation = [
         slug: 'homepage',
         file: 'docs/homepage.mdx',
       },
+      {
+        title: 'PDP',
+        slug: 'PDP',
+        file: 'docs/PDP.mdx',
+      },
     ],
   },
 ] satisfies Navigation

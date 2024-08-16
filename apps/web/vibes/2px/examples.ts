@@ -344,4 +344,11 @@ export const examples = [
     files: ['examples/homepage.tsx'],
     component: lazy(() => import('./examples/homepage')),
   },
+  {
+    name: 'brand-1-PDP-example',
+    dependencies: [],
+    registryDependencies: ['header', 'footer-section'],
+    files: ['examples/brand-1-PDP.tsx'],
+    component: lazy(() => import('./examples/brand-1-PDP')),
+  },
 ] satisfies Components
