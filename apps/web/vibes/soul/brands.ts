@@ -5,8 +5,9 @@ import { Brands } from '@/vibes/schema'
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 const roboto_mono = Roboto_Mono({ subsets: ['latin'], display: 'swap' })
 const dm_serif_text = DM_Serif_Text({
-  subsets: ['latin'], display: 'swap',
-  weight: '400'
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
 })
 
 export const brands = [
@@ -18,9 +19,9 @@ export const brands = [
       '--accent': '97 100% 68%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
-      '--success': '142 50% 50%',
-      '--error': '357 69% 45%',
-      '--warning': '25 73% 45%',
+      '--success': '116, 46%, 49%',
+      '--error': '0, 100%, 50%',
+      '--warning': '40, 100%, 50%',
       '--info': '220 70% 45%',
 
       '--contrast-100': '0 0% 93%',
@@ -57,9 +58,9 @@ export const brands = [
       '--accent': '43 100% 50%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
-      '--success': '142 50% 50%',
-      '--error': '357 69% 45%',
-      '--warning': '25 73% 45%',
+      '--success': '116, 46%, 49%',
+      '--error': '0, 100%, 50%',
+      '--warning': '40, 100%, 50%',
       '--info': '220 70% 45%',
 
       '--contrast-100': '0 0% 93%',
@@ -96,9 +97,9 @@ export const brands = [
       '--accent': '209 100% 63%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
-      '--success': '142 50% 50%',
-      '--error': '357 69% 45%',
-      '--warning': '25 73% 45%',
+      '--success': '116, 46%, 49%',
+      '--error': '0, 100%, 50%',
+      '--warning': '40, 100%, 50%',
       '--info': '220 70% 45%',
 
       '--contrast-100': '0 0% 93%',
@@ -135,9 +136,9 @@ export const brands = [
       '--accent': '43 38% 45%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
-      '--success': '142 50% 50%',
-      '--error': '357 69% 45%',
-      '--warning': '25 73% 45%',
+      '--success': '116, 46%, 49%',
+      '--error': '0, 100%, 50%',
+      '--warning': '40, 100%, 50%',
       '--info': '220 70% 45%',
 
       '--contrast-100': '0 0% 93%',
