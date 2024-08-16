@@ -35,11 +35,12 @@ export const BlogPostCard = function BlogPostCard({
         className
       )}
     >
-      <div className="overflow-hidden rounded-xl aspect-[4/3]">
+      <div className="aspect-[4/3] overflow-hidden rounded-xl">
         <Image
           src={image?.url ?? ''}
           height={349}
           width={466}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt={image?.altText ?? ''}
           className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
         />

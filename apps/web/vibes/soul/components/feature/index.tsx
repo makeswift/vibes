@@ -35,7 +35,13 @@ export const Feature = function Feature({ image, heading, description, grid, lin
           @3xl/section:max-w-96 @4xl/section:my-[110px] @4xl/section:w-1/2 @4xl/section:rounded-xl 
           @4xl:ml-10 @5xl/section:w-3/5 @6xl/section:ml-20"
         >
-          <Image src={image.url} alt={image.alt} fill className="object-cover" />
+          <Image
+            src={image.url}
+            alt={image.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 384px"
+            className="object-cover"
+          />
         </div>
 
         {/* Content Side */}
@@ -44,7 +50,7 @@ export const Feature = function Feature({ image, heading, description, grid, lin
           @container/content @lg/section:px-10 @5xl:p-20"
         >
           <div className="mx-auto flex max-w-xl flex-col gap-4">
-            <h2 className="text-[40px] font-medium font-heading">{heading}</h2>
+            <h2 className="font-heading text-[40px] font-medium">{heading}</h2>
             <p className=" pb-2">{description}</p>
 
             {grid?.length && (

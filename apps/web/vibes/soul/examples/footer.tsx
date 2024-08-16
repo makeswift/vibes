@@ -50,23 +50,55 @@ const socialMediaLinks = [
 ]
 
 const paymentIconsArray: React.ReactNode[] = [
-  <Image src="https://rstr.in/monogram/vibes/8hv4difQbxs" alt="Visa" width={35} height={24} />,
-  <Image src="https://rstr.in/monogram/vibes/2si5pZsQe24" alt="Amex" width={35} height={24} />,
   <Image
+    key={1}
+    src="https://rstr.in/monogram/vibes/8hv4difQbxs"
+    alt="Visa"
+    width={35}
+    height={24}
+  />,
+  <Image
+    key={2}
+    src="https://rstr.in/monogram/vibes/2si5pZsQe24"
+    alt="Amex"
+    width={35}
+    height={24}
+  />,
+  <Image
+    key={3}
     src="https://rstr.in/monogram/vibes/j5TMUICitrf"
     alt="Mastercard"
     width={35}
     height={24}
   />,
-  <Image src="https://rstr.in/monogram/vibes/bpLWRFd4Myo" alt="Paypal" width={35} height={24} />,
   <Image
+    key={4}
+    src="https://rstr.in/monogram/vibes/bpLWRFd4Myo"
+    alt="Paypal"
+    width={35}
+    height={24}
+  />,
+  <Image
+    key={5}
     src="https://rstr.in/monogram/vibes/cko6FUZ4dQB"
     alt="Google Pay"
     width={35}
     height={24}
   />,
-  <Image src="https://rstr.in/monogram/vibes/doCkqTXefki" alt="Apple Pay" width={35} height={24} />,
-  <Image src="https://rstr.in/monogram/vibes/yINUOYdzjlz" alt="Bitcoin" width={35} height={24} />,
+  <Image
+    key={6}
+    src="https://rstr.in/monogram/vibes/doCkqTXefki"
+    alt="Apple Pay"
+    width={35}
+    height={24}
+  />,
+  <Image
+    key={7}
+    src="https://rstr.in/monogram/vibes/yINUOYdzjlz"
+    alt="Bitcoin"
+    width={35}
+    height={24}
+  />,
 ]
 
 export default function Preview() {

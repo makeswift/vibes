@@ -74,12 +74,13 @@ export const Footer = function Footer({
                 className="relative inline-block h-5 w-32 rounded-lg ring-primary focus-visible:outline-0 focus-visible:ring-2"
               >
                 {typeof logo === 'string' ? (
-                  <span className="text-2xl font-semibold font-heading">{logo}</span>
+                  <span className="font-heading text-2xl font-semibold">{logo}</span>
                 ) : (
                   logo?.src && (
                     <Image
                       src={logo.src}
                       fill
+                      sizes="400px"
                       alt={logo.altText ?? 'Logo'}
                       className="object-contain"
                     />

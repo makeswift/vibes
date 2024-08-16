@@ -19,7 +19,13 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
       <div className="mx-auto flex max-w-screen-2xl flex-col items-center @2xl:flex-row">
         {image && (
           <div className="relative aspect-square h-full w-full overflow-hidden @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
-            <Image src={image.src} alt={image.altText} fill className="object-cover" />
+            <Image
+              src={image.src}
+              alt={image.altText}
+              sizes="(max-width: 680px) 100vw, 50vw"
+              fill
+              className="object-cover"
+            />
           </div>
         )}
 
@@ -30,7 +36,9 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
           )}
         >
           <div className="w-full">
-            <h2 className="mb-2 text-4xl font-medium leading-none @7xl:text-5xl font-heading">{title}</h2>
+            <h2 className="mb-2 font-heading text-4xl font-medium leading-none @7xl:text-5xl">
+              {title}
+            </h2>
             <p className="text-[15px] opacity-50">{description}</p>
           </div>
 
