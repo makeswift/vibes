@@ -11,7 +11,7 @@ interface OptionProps {
   value: string
 }
 
-interface DropdownProps {
+export interface Props {
   placeholder: string
   options: OptionProps[]
   status?: 'normal' | 'error' | 'success'
@@ -29,7 +29,7 @@ export default function Dropdown({
   setValue,
   value,
   className,
-}: DropdownProps) {
+}: Props) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

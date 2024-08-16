@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import Button from '@/vibes/2px/components/button'
 import Checkbox, { Props as CheckboxProps } from '@/vibes/2px/components/checkbox'
 import Counter, { Props as CounterProps } from '@/vibes/2px/components/counter'
+import Dropdown, { Props as DropdownProps } from '@/vibes/2px/components/dropdown'
 import FileUploader, { Props as FileUploaderProps } from '@/vibes/2px/components/file-uploader'
 import Input, { Props as InputProps } from '@/vibes/2px/components/input'
 import Select, { Props as SelectProps } from '@/vibes/2px/components/option-selector'
@@ -52,6 +53,10 @@ type Field = {
       type: 'select'
       fieldProps: SelectProps[]
     }
+  | {
+      type: 'dropdown'
+      fieldProps: DropdownProps
+    }
 )
 
 interface Props extends FormPrimitive.FormProps {
@@ -69,6 +74,7 @@ const FIELD_TYPES_COMPONENTS = {
   counter: Counter,
   'swatch-group': Swatch,
   select: Select,
+  dropdown: Dropdown,
 }
 
 const GROUP_FIELD_TYPES = ['radio-group', 'swatch-group', 'select'] as const

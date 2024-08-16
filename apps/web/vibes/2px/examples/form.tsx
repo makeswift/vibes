@@ -11,9 +11,25 @@ export default function Preview() {
   const [selectedSwatch, setSelectedSwatch] = useState('default-example-1')
   const [selectedOption, setSelectedOption] = useState('')
   const [count, setCount] = useState(0)
+  const [dropdownValue, setDropdownValue] = useState('')
   const handleSwatchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedSwatch(e.target.value)
   }
+
+  const dropdownOptions = [
+    {
+      label: 'Option 1',
+      value: 'option-1',
+    },
+    {
+      label: 'Option 2',
+      value: 'option-2',
+    },
+    {
+      label: 'Option 3',
+      value: 'option-3',
+    },
+  ]
 
   return (
     <div className="flex min-h-48 items-center justify-center bg-background p-5 sm:min-h-64 sm:p-8 lg:min-h-80 lg:p-12">
@@ -172,6 +188,17 @@ export default function Preview() {
                 onChange: () => setSelectedOption('Option 3'),
               },
             ],
+          },
+          {
+            name: 'dropdown',
+            label: 'Dropdown input',
+            type: 'dropdown',
+            fieldProps: {
+              options: dropdownOptions,
+              placeholder: 'Select value',
+              value: dropdownValue,
+              setValue: setDropdownValue,
+            },
           },
         ]}
       />
