@@ -45,9 +45,8 @@ type Field = {
       fieldProps: CounterProps
     }
   | {
-      type: 'swatch-group'
-      fieldProps: SwatchProps[]
-      groupClassName?: string
+      type: 'swatch'
+      fieldProps: SwatchProps
     }
   | {
       type: 'select'
@@ -72,12 +71,12 @@ const FIELD_TYPES_COMPONENTS = {
   'radio-group': RadioButton,
   file: FileUploader,
   counter: Counter,
-  'swatch-group': Swatch,
+  swatch: Swatch,
   select: Select,
   dropdown: Dropdown,
 }
 
-const GROUP_FIELD_TYPES = ['radio-group', 'swatch-group', 'select'] as const
+const GROUP_FIELD_TYPES = ['radio-group', 'select'] as const
 
 type GroupFieldType = (typeof GROUP_FIELD_TYPES)[number]
 
@@ -108,7 +107,7 @@ export default function Form({ className, fields, submitButton }: Props) {
             </FormPrimitive.Label>
 
             <FormPrimitive.Control asChild>
-              {/* @ts-expect-error text-area element fails to comply to expected input */}
+              {/* @ts-expect-error the text-area component doesn't comply to the input props interface */}
               <Comp id={field.name} {...field.fieldProps} />
             </FormPrimitive.Control>
           </FormPrimitive.Field>
@@ -140,7 +139,6 @@ function FieldGroup({ fieldGroupProps, type, groupClassName }: FieldGroupProps) 
       >
         {(fieldGroupProps.fieldProps as React.ComponentProps<typeof Comp>[]).map(
           (element, index) => (
-            // @ts-expect-error TS can't infer overloaded props
             <Comp key={index} name={fieldGroupProps.name} {...element} />
           )
         )}

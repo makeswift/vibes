@@ -16,7 +16,7 @@ interface Swatch {
   disabled: boolean
 }
 
-interface Props extends ComponentPropsWithRef<typeof RadioGroupPrimitive.Root> {
+export interface Props extends ComponentPropsWithRef<typeof RadioGroupPrimitive.Root> {
   error?: boolean
   swatches: Swatch[]
 }

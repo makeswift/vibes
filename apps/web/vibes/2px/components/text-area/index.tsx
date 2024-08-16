@@ -1,11 +1,10 @@
 import { ComponentPropsWithRef } from 'react'
 
-import { ComponentPropsWithRef } from 'react'
-
 import { cn } from '@/lib/utils'
 
-interface Props extends React.HTMLProps<HTMLTextAreaElement> {
+export interface Props extends React.HTMLProps<HTMLTextAreaElement> {
   variant?: 'default' | 'success' | 'error'
+  error?: boolean
   errorMessage?: string
 }
 

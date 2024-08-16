@@ -8,7 +8,7 @@ import { MinusSolidIcon } from '@/vibes/2px/components/icons/MinusSolidIcon'
 import { PlusDashedIcon } from '@/vibes/2px/components/icons/PlusDashedIcon'
 import { PlusSolidIcon } from '@/vibes/2px/components/icons/PlusSolidIcon'
 
-interface Props extends Omit<ComponentPropsWithRef<'input'>, 'onChange' | 'size'> {
+export interface Props extends Omit<ComponentPropsWithRef<'input'>, 'onChange' | 'size'> {
   className?: string
   error?: boolean
   defaultValue?: number | ''

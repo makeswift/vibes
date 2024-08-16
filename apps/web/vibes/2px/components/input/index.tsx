@@ -2,7 +2,7 @@ import React, { ComponentPropsWithRef } from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface Props extends ComponentPropsWithRef<'input'> {
+export interface Props extends ComponentPropsWithRef<'input'> {
   error?: boolean
   icon?: React.ReactNode
   variant?: 'default' | 'success' | 'error'
