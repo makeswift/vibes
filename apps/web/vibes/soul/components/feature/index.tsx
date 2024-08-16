@@ -31,8 +31,8 @@ export const Feature = function Feature({ image, heading, description, grid, lin
       <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-[100dvh]">
         {/* Image Side */}
         <div
-          className="relative aspect-square w-full overflow-hidden @3xl/section:aspect-[9/12]
-          @3xl/section:max-w-96 @4xl/section:my-[110px] @4xl/section:w-1/2 @4xl/section:rounded-xl 
+          className="relative aspect-square w-full overflow-hidden
+          @3xl/section:aspect-[9/12] @4xl/section:my-[110px] @4xl/section:w-2/3 @4xl/section:rounded-xl 
           @4xl:ml-10 @5xl/section:w-3/5 @6xl/section:ml-20"
         >
           <Image
