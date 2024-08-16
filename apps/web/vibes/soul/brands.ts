@@ -1,9 +1,13 @@
-import { Inter, Roboto_Mono } from 'next/font/google'
+import { DM_Serif_Text, Inter, Roboto_Mono } from 'next/font/google'
 
 import { Brands } from '@/vibes/schema'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 const roboto_mono = Roboto_Mono({ subsets: ['latin'], display: 'swap' })
+const dm_serif_text = DM_Serif_Text({
+  subsets: ['latin'], display: 'swap',
+  weight: '400'
+})
 
 export const brands = [
   {
@@ -25,7 +29,7 @@ export const brands = [
       '--contrast-400': '0 0% 60%',
       '--contrast-500': '0 0% 53%',
 
-      '--font-family-heading': inter.style.fontFamily,
+      '--font-family-heading': dm_serif_text.style.fontFamily,
       '--font-family-body': inter.style.fontFamily,
       '--font-family-mono': roboto_mono.style.fontFamily,
       '--font-variation-settings-body': '"slnt" 0',
@@ -142,7 +146,7 @@ export const brands = [
       '--contrast-400': '0 0% 60%',
       '--contrast-500': '0 0% 53%',
 
-      '--font-family-heading': inter.style.fontFamily,
+      '--font-family-heading': dm_serif_text.style.fontFamily,
       '--font-family-body': inter.style.fontFamily,
       '--font-family-mono': roboto_mono.style.fontFamily,
       '--font-variation-settings-body': '"slnt" 0',

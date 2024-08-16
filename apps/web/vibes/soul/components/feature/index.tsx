@@ -44,7 +44,7 @@ export const Feature = function Feature({ image, heading, description, grid, lin
           @container/content @lg/section:px-10 @5xl:p-20"
         >
           <div className="mx-auto flex max-w-xl flex-col gap-4">
-            <h2 className="text-[40px] font-medium">{heading}</h2>
+            <h2 className="text-[40px] font-medium font-heading">{heading}</h2>
             <p className=" pb-2">{description}</p>
 
             {grid?.length && (
