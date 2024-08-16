@@ -1,13 +1,12 @@
 import { CardProps } from '@/vibes/soul//components/card'
-import HomePage from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul//components/product-card'
-
+import HomePage from '@/vibes/soul/components/page-home'
 
 export const heroSlides = [
   {
     title: 'Give',
     image: {
-      src: 'https://rstr.in/monogram/vibes/lfmnDUMNWEo',
+      src: 'https://rstr.in/monogram/vibes/fzVuE9iZ4mI',
       altText: 'alt',
     },
     // cta: {
@@ -47,7 +46,10 @@ export const categories: CardProps[] = [
   },
   {
     title: 'Low Maintenance',
-    image: { src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk', altText: 'Low Maintenance' },
+    image: {
+      src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk',
+      altText: 'Low Maintenance',
+    },
     href: '#',
   },
   {
@@ -61,7 +63,6 @@ export const categories: CardProps[] = [
     href: '#',
   },
 ]
-
 
 // Featured Products
 export const newArrivals: Product[] = [
@@ -101,7 +102,7 @@ export const newArrivals: Product[] = [
     },
     href: '#',
   },
-    {
+  {
     id: '2',
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
@@ -115,9 +116,6 @@ export const newArrivals: Product[] = [
   },
 ]
 
-
-
-
 export default function Preview() {
-  return <HomePage heroSlides={heroSlides} categories={categories} newArrivals={newArrivals}  />
+  return <HomePage heroSlides={heroSlides} categories={categories} newArrivals={newArrivals} />
 }

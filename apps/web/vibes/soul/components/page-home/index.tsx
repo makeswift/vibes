@@ -19,6 +19,7 @@ import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
 import { headerLinks } from '@/vibes/soul/examples/header'
+
 import FeaturedImage from '../featured-image'
 
 const socialMediaLinks = [
@@ -41,13 +42,13 @@ const socialMediaLinks = [
 ]
 
 const paymentIconsArray: React.ReactNode[] = [
-  <Visa />,
-  <Amex />,
-  <Mastercard />,
-  <Paypal />,
-  <GooglePay />,
-  <ApplePay />,
-  <Bitcoin />,
+  <Visa key="Visa" />,
+  <Amex key="Amex" />,
+  <Mastercard key="Mastercard" />,
+  <Paypal key="Paypal" />,
+  <GooglePay key="GooglePay" />,
+  <ApplePay key="ApplePay" />,
+  <Bitcoin key="Bitcoin" />,
 ]
 
 const locales = [
@@ -77,16 +78,19 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
 
         <Slideshow slides={heroSlides} />
 
-        <CardCarousel cards={categories}  />
+        <CardCarousel cards={categories} />
 
         <FeaturedImage
           title="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-          image={{src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ', altText: 'Close up of a plant'}}
+          image={{
+            src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ',
+            altText: 'Close up of a plant',
+          }}
           cta={{ href: '#', label: 'Shop Now' }}
         />
-   
+
         <FeaturedProductsList
           title="Our Plants"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
@@ -121,13 +125,14 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
 
         <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
 
-
-
         <FeaturedImage
           title="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-          image={{src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b', altText: 'Close up of a plant'}}
+          image={{
+            src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
+            altText: 'Close up of a plant',
+          }}
           cta={{ href: '#', label: 'Shop Now' }}
         />
 

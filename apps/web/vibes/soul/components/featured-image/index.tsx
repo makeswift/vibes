@@ -21,7 +21,7 @@ export const FeaturedImage = function FeaturedImage({ title, description, image,
   return (
     <section className="relative h-[100dvh] max-h-[880px] bg-primary-shadow @container">
       <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
-        <div className="relative h-full w-full @3xl:w-1/2 @5xl:w-3/5">
+        <div className="relative h-full w-full @3xl:w-1/2 @5xl:w-3/5  @7xl:ml-20">
           <Image
             src={image.src}
             alt={image.altText}

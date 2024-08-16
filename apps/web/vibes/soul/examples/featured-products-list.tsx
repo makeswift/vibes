@@ -6,7 +6,7 @@ export const featuredProducts: Product[] = [
     id: '1',
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
-    badge: 'New',
+    // badge: 'Indestructible',
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
@@ -18,7 +18,7 @@ export const featuredProducts: Product[] = [
     id: '2',
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
-    badge: 'New',
+    // badge: 'New',
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
@@ -30,7 +30,7 @@ export const featuredProducts: Product[] = [
     id: '3',
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
-    badge: 'New',
+    // badge: 'New',
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
@@ -42,7 +42,7 @@ export const featuredProducts: Product[] = [
     id: '4',
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
-    badge: 'New',
+    // badge: 'New',
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
