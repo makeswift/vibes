@@ -6,7 +6,7 @@ import { ReactNode } from 'react'
 import clsx from 'clsx'
 import { X } from 'lucide-react'
 
-type Props = {
+interface Props {
   className?: string
   children?: ReactNode
 }

@@ -10,7 +10,7 @@ export type AccordionItem = {
   content: ReactNode
 }
 
-type Props = {
+interface Props {
   className?: string
   accordions: AccordionItem[]
   defaultValue?: string[]
