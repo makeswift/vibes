@@ -89,7 +89,7 @@ export const Header = forwardRef(function Header(
         className="mx-auto w-full max-w-screen-2xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
       >
         <nav
-          className="grid h-[60px] grid-cols-3 items-stretch justify-between bg-background shadow-[2px_4px_24px_#00000010] 
+          className="grid h-[60px] grid-cols-[1fr,auto,1fr] items-stretch justify-between bg-background shadow-[2px_4px_24px_#00000010] 
           @4xl:mx-5 @4xl:rounded-[24px]"
         >
           <div className="relative flex items-stretch pl-2.5" ref={container}>
