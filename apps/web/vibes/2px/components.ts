@@ -119,6 +119,12 @@ export const components = [
     ],
   },
   {
+    name: 'products-carousel',
+    dependencies: ['carousel-section', 'product-card'],
+    registryDependencies: [],
+    files: ['./components/products-carousel/index.tsx'],
+  },
+  {
     name: 'checkbox',
     dependencies: [],
     registryDependencies: [],

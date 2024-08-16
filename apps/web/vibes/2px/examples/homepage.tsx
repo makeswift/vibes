@@ -20,11 +20,11 @@ import Tabs from '@/vibes/2px/components/tabs'
 import TextSection from '@/vibes/2px/components/text-section'
 
 import Logo from './assets/logo.svg'
-import { blogPosts } from './blog-list-section'
-import { blogPost } from './blog-post-card'
-import { productSlides } from './carousel-section'
-import { faqs } from './faq-section'
-import { footerGroups, footerSocials } from './footer-section'
+import { posts as blogPosts } from './blog-list-section'
+import { content as blogPost } from './blog-post-card'
+import { items as productSlides } from './carousel-section'
+import { items as faqs } from './faq-section'
+import { sections as footerGroups, socialMediaLinks as footerSocials } from './footer-section'
 import { headerLinks } from './header'
 import { childrenToReveal } from './scratch-to-reveal-section'
 import { slideshowSlides } from './slideshow-section'
@@ -73,7 +73,7 @@ export default function Preview() {
         text="We aim to provide artists with a platform to show off their one-of-a-kind and limited edition contemporary work in furniture, ceramics, sculpture, and design. The designers range from well-known names to emerging talents, each exhibiting a distinctive approach or style that is unequivocally unique in some manner."
       />
 
-      <CarouselSection slides={productSlides} title="New in" showArrows loop />
+      <CarouselSection items={productSlides} title="New in" showArrows />
 
       <SlideshowSection slides={slideshowSlides} />
 
@@ -86,8 +86,8 @@ export default function Preview() {
       <Tabs
         tabs={[
           {
-            title: 'Walnut',
-            children: (
+            value: 'Walnut',
+            content: (
               <FullscreenProductCardSection
                 name={`Arc de Stool '52`}
                 cartCta={{
@@ -108,8 +108,8 @@ export default function Preview() {
             ),
           },
           {
-            title: 'Cherry',
-            children: (
+            value: 'Cherry',
+            content: (
               <FullscreenProductCardSection
                 name={`Arc de Stool '52`}
                 cartCta={{
@@ -130,8 +130,8 @@ export default function Preview() {
             ),
           },
           {
-            title: 'Oak',
-            children: (
+            value: 'Oak',
+            content: (
               <FullscreenProductCardSection
                 name={`Arc de Stool '52`}
                 cartCta={{
@@ -187,18 +187,18 @@ export default function Preview() {
       />
 
       <BlogPostCard
-        publishedAt="17.03.24"
+        date="17.03.24"
         author={{ name: 'Cicero', href: '/' }}
-        cta={{ href: '/', label: 'READ MORE' }}
-        image="/2px/blog-post-card-section.png"
+        link={{ href: '/', label: 'READ MORE' }}
+        image={{ url: '/2px/blog-post-card-section.png', altText: 'A photo of the workshop' }}
         title="Update 23 from the workshop"
-        blogPost={blogPost}
+        content={blogPost}
       />
 
       <BlogListSection
-        text="More from our Blog"
+        title="More from our Blog"
         cta={{ label: 'See all articles', href: '#' }}
-        blogPosts={blogPosts}
+        posts={blogPosts}
       />
 
       <Newsletter
@@ -231,8 +231,8 @@ export default function Preview() {
             </Link>
           </>
         }
-        logo={{ url: '/2px/logo.svg', alt: '2px Logo', width: 293, height: 149 }}
-        footNote={
+        logo={{ src: '/2px/logo.svg', altText: '2px Logo', width: 293, height: 149 }}
+        copyright={
           <p className="flex gap-6">
             <span>© 2024 2px</span>
             <span>
@@ -243,8 +243,8 @@ export default function Preview() {
             </span>
           </p>
         }
-        socials={footerSocials}
-        groups={footerGroups}
+        socialMediaLinks={footerSocials}
+        sections={footerGroups}
       />
     </div>
   )

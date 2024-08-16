@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { ComponentPropsWithRef } from 'react'
 
 import { cn } from '@/lib/utils'
-import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
-import { CrossIcon } from '@/vibes/2px/components/icons/CrossIcon'
 
-interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
+interface Props extends ComponentPropsWithRef<'input'> {
+  error?: boolean
+  icon?: React.ReactNode
   variant?: 'default' | 'success' | 'error'
   errorMessage?: string
   errorClassName?: string
 }
 
 export default function Input({
-  errorClassName,
   className,
   variant = 'default',
+  error,
+  icon,
   errorMessage,
+  errorClassName,
   ...props
 }: Props) {
   return (
@@ -34,14 +36,9 @@ export default function Input({
           )}
           {...props}
         />
-        {variant === 'success' && (
-          <CheckIcon className="absolute right-4 top-1/2 h-6 w-6 -translate-y-1/2 text-success" />
-        )}
-        {variant === 'error' && (
-          <CrossIcon className="absolute right-4 top-1/2 h-6 w-6 -translate-y-1/2 text-error" />
-        )}
+        {icon && <div className="absolute right-4 top-1/2 -translate-y-1/2">{icon}</div>}
       </div>
-      {errorMessage && (
+      {error && errorMessage && (
         <div className={cn('mt-2 text-xs text-error', errorClassName)}>{errorMessage}</div>
       )}
     </div>

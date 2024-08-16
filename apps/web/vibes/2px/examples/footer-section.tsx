@@ -1,20 +1,13 @@
 import Link from 'next/link'
 
-import FooterSection from '@/vibes/2px/components/footer-section'
+import FooterSection, { Section } from '@/vibes/2px/components/footer-section'
 
 import FacebookIcon from '../components/icons/FacebookIcon'
 import InstagramIcon from '../components/icons/InstagramIcon'
 import PinterestIcon from '../components/icons/PinterestIcon'
 import TwitterIcon from '../components/icons/TwitterIcon'
 
-export const footerGroups: {
-  title: string
-  links: {
-    label: string
-    href: string
-    target: '_self' | '_blank'
-  }[]
-}[] = [
+export const sections = [
   {
     title: 'categories',
     links: [
@@ -115,23 +108,23 @@ export const footerGroups: {
       },
     ],
   },
-]
+] satisfies Section[]
 
-export const footerSocials = [
+export const socialMediaLinks = [
   {
-    link: 'https://www.facebook.com',
+    href: 'https://www.facebook.com',
     icon: <FacebookIcon />,
   },
   {
-    link: 'https://www.instagram.com',
+    href: 'https://www.instagram.com',
     icon: <InstagramIcon />,
   },
   {
-    link: 'https://www.twitter.com',
+    href: 'https://www.twitter.com',
     icon: <TwitterIcon />,
   },
   {
-    link: 'https://www.pinterest.com',
+    href: 'https://www.pinterest.com',
     icon: <PinterestIcon />,
   },
 ]
@@ -148,8 +141,8 @@ export default function Preview() {
             </Link>
           </>
         }
-        logo={{ url: '/2px/logo.svg', alt: '2px Logo', width: 293, height: 149 }}
-        footNote={
+        logo={{ src: '/2px/logo.svg', altText: '2px Logo', width: 293, height: 149 }}
+        copyright={
           <p className="flex gap-6">
             <span>© 2024 2px</span>
             <span>
@@ -160,8 +153,8 @@ export default function Preview() {
             </span>
           </p>
         }
-        socials={footerSocials}
-        groups={footerGroups}
+        socialMediaLinks={socialMediaLinks}
+        sections={sections}
       />
     </div>
   )
