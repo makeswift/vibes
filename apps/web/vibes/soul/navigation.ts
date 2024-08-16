@@ -7,8 +7,14 @@ export const navigation = [
   },
   {
     title: 'Styles',
-    pages: [{ title: 'Introduction', slug: 'introduction', file: 'docs/introduction.mdx' }],
+    pages: [
+      { title: 'Electric', slug: 'electric', file: 'docs/electric.mdx' },
+      { title: 'Warm', slug: 'warm', file: 'docs/warm.mdx' },
+      { title: 'Blue', slug: 'blue', file: 'docs/blue.mdx' },
+      { title: 'Luxury', slug: 'luxury', file: 'docs/luxury.mdx' },
+    ],
   },
+
   {
     title: 'Components',
     pages: [
