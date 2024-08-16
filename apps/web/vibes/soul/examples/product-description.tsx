@@ -25,7 +25,7 @@ export default function Preview() {
   ]
 
   const image = {
-    url: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
+    url: 'https://rstr.in/monogram/vibes/Ie6Zc3VIRoj',
     dimensions: {
       width: 467,
       height: 600,

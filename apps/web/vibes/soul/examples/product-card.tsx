@@ -8,7 +8,7 @@ export default function Preview() {
         href="#"
         name="Product Name"
         image={{
-          src: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
+          src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
           altText: 'Product Name',
         }}
         subtitle="Blue/Black/Green"

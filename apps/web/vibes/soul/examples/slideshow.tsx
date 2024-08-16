@@ -5,7 +5,7 @@ export const heroSlides = [
     title: 'Slide 1',
     description: 'Description',
     image: {
-      src: 'https://rstr.in/monogram/vibes/vgdjHDINE6V',
+      src: 'https://rstr.in/monogram/vibes/fzVuE9iZ4mI',
       altText: 'alt',
     },
     cta: {
@@ -17,7 +17,7 @@ export const heroSlides = [
     title: 'Slide 2',
     description: 'Description',
     image: {
-      src: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
+      src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
       altText: 'alt',
     },
     cta: {
@@ -29,7 +29,7 @@ export const heroSlides = [
     title: 'Slide 3',
     description: 'Description',
     image: {
-      src: 'https://rstr.in/monogram/vibes/6GmqnHGoquY',
+      src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
       altText: 'alt',
     },
     cta: {

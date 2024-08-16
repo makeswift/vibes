@@ -1,7 +1,7 @@
 import Feature from '@/vibes/soul/components/feature'
 
 const image: Feature['image'] = {
-  url: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
+  url: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
   alt: 'Biker in Mountains',
 }
 

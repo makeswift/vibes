@@ -9,7 +9,7 @@ export const featuredProducts: Product[] = [
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/EThVOYoirSZ',
+      src: 'https://rstr.in/monogram/vibes/80LuKK05rRc',
       altText: 'Product Name',
     },
     href: '#',
@@ -21,7 +21,7 @@ export const featuredProducts: Product[] = [
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/ZNRyYzfOjaK',
+      src: 'https://rstr.in/monogram/vibes/POA58bJDpAj',
       altText: 'Product Name',
     },
     href: '#',
@@ -33,7 +33,7 @@ export const featuredProducts: Product[] = [
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/8bPrhQZGr4k',
+      src: 'https://rstr.in/monogram/vibes/Gh--ZkS7bnX',
       altText: 'Product Name',
     },
     href: '#',
@@ -45,7 +45,7 @@ export const featuredProducts: Product[] = [
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
+      src: 'https://rstr.in/monogram/vibes/0_1RCFHDWIQ',
       altText: 'Product Name',
     },
     href: '#',
@@ -55,7 +55,7 @@ export const featuredProducts: Product[] = [
 export default function Preview() {
   return (
     <FeaturedProductsCarousel
-      title="Off-Race"
+      title="Our Plants"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
       cta={{ href: '#', label: 'Shop Now' }}
       products={featuredProducts}

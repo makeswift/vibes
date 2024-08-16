@@ -1,28 +1,26 @@
 import { CardProps } from '@/vibes/soul/components/card'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 
+
 export const cards: CardProps[] = [
   {
-    title: 'Men',
-    image: { src: 'https://rstr.in/monogram/vibes/CVQwqHQKmz4', altText: 'Men' },
+    title: 'Small Plants',
+    image: { src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk', altText: 'Small Plants' },
     href: '#',
   },
   {
-    title: 'Women',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/UWfiHOc2RnP',
-      altText: 'Women',
-    },
+    title: 'Low Maintenance',
+    image: { src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk', altText: 'Low Maintenance' },
     href: '#',
   },
   {
-    title: 'Jerseys',
-    image: { src: 'https://rstr.in/monogram/vibes/lxY8Fqsk3Gp', altText: 'Jerseys' },
+    title: 'Indestructible',
+    image: { src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p', altText: 'Indestructible' },
     href: '#',
   },
   {
-    title: 'Headwear',
-    image: { src: 'https://rstr.in/monogram/vibes/8bPrhQZGr4k', altText: 'Headwear' },
+    title: 'Succulent',
+    image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', altText: 'Succulent' },
     href: '#',
   },
 ]

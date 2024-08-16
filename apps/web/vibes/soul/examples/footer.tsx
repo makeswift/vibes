@@ -8,10 +8,10 @@ export const footerLinks = [
   {
     title: 'Categories',
     links: [
-      { label: 'Coats & Jackets', href: '#' },
-      { label: 'T-Shirts', href: '#' },
-      { label: 'Sweatshirts', href: '#' },
-      { label: 'Pants', href: '#' },
+      { label: 'Small Plants', href: '#' },
+      { label: 'Low Maintenance', href: '#' },
+      { label: 'Indestructible', href: '#' },
+      { label: 'Succulents', href: '#' },
     ],
   },
   {

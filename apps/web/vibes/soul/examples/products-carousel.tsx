@@ -13,7 +13,7 @@ export const products: Product[] = [
       maxValue: '$150',
     },
     image: {
-      src: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
+      src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
       altText: 'Product Name',
     },
     href: '#',
@@ -29,7 +29,7 @@ export const products: Product[] = [
       currentValue: '$129.99',
     },
     image: {
-      src: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
+      src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
       altText: 'Product Name',
     },
     href: '#',
@@ -41,7 +41,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/QluRjwypujv',
+      src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
       altText: 'Product Name',
     },
     href: '#',
@@ -57,7 +57,7 @@ export const products: Product[] = [
       maxValue: '$150',
     },
     image: {
-      src: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
+      src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
       altText: 'Product Name',
     },
     href: '#',
@@ -73,7 +73,7 @@ export const products: Product[] = [
       currentValue: '$123.99',
     },
     image: {
-      src: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
+      src: 'https://rstr.in/monogram/vibes/hqoDeY3IeBO',
       altText: 'Product Name',
     },
     href: '#',
@@ -85,7 +85,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/QluRjwypujv',
+      src: 'https://rstr.in/monogram/vibes/Yr-VreskA68',
       altText: 'Product Name',
     },
     href: '#',

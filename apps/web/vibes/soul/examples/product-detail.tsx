@@ -5,14 +5,14 @@ const product = {
   name: "Men's Long Sleeve Jersey",
   price: '$39.95',
   image: {
-    src: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
+    src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
     altText: "Men's Long Sleeve Jersey",
   },
   href: '#',
 }
 
 const images = [
-  'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
+  'https://rstr.in/monogram/vibes/n0P83RMnClS',
   'https://rstr.in/monogram/vibes/nBQFO6MyZ34',
   'https://rstr.in/monogram/vibes/11zZTfNCpui',
   'https://rstr.in/monogram/vibes/h4YqOhXhxfm',

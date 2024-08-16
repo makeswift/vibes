@@ -2,7 +2,7 @@ import Header from '@/vibes/soul/components/header'
 
 export const headerLinks = [
   {
-    label: 'Men',
+    label: 'Shop All',
     href: '#',
     groups: [
       {
@@ -37,7 +37,7 @@ export const headerLinks = [
     ],
   },
   {
-    label: 'Women',
+    label: 'New Arrivals',
     href: '#',
     groups: [
       {
@@ -71,7 +71,7 @@ export const headerLinks = [
     ],
   },
   {
-    label: 'Accessories',
+    label: 'Pet Friendly',
     href: '#',
     groups: [
       {
@@ -94,7 +94,7 @@ export const headerLinks = [
     ],
   },
   {
-    label: 'Stories',
+    label: 'Deals',
     href: '#',
     groups: [
       {

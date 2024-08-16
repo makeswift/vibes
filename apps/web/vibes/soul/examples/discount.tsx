@@ -3,7 +3,7 @@ import Discount from '@/vibes/soul/components/discount'
 export default function Preview() {
   return (
     <Discount
-      backgroundImage="https://rstr.in/monogram/vibes/K-F83RXTJsx"
+      backgroundImage="https://rstr.in/monogram/vibes/-ZKYHmBgOcN"
       discounts={[
         {
           label: '20% off',
