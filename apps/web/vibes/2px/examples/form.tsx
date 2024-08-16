@@ -9,6 +9,7 @@ export default function Preview() {
   const [isLoading, setIsLoading] = useState(false)
   const [checkedRadio, setCheckedRadio] = useState(false)
   const [selectedSwatch, setSelectedSwatch] = useState('default-example-1')
+  const [selectedOption, setSelectedOption] = useState('')
   const [count, setCount] = useState(0)
   const handleSwatchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedSwatch(e.target.value)
@@ -145,6 +146,32 @@ export default function Preview() {
               max: 10,
               step: 1,
             },
+          },
+          {
+            name: 'select',
+            label: 'Select input',
+            type: 'select',
+            fieldProps: [
+              {
+                name: 'example-select',
+                label: 'Option 1',
+                checked: selectedOption === 'Option 1',
+                onChange: () => setSelectedOption('Option 1'),
+              },
+              {
+                name: 'example-select',
+                label: 'Option 2',
+                checked: selectedOption === 'Option 2',
+                onChange: () => setSelectedOption('Option 2'),
+              },
+              {
+                name: 'example-select',
+                label: 'Option 3',
+                unavailable: true,
+                checked: selectedOption === 'Option 3',
+                onChange: () => setSelectedOption('Option 3'),
+              },
+            ],
           },
         ]}
       />

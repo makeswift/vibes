@@ -50,7 +50,7 @@ type Field = {
     }
   | {
       type: 'select'
-      fieldProps: SelectProps
+      fieldProps: SelectProps[]
     }
 )
 
@@ -71,15 +71,20 @@ const FIELD_TYPES_COMPONENTS = {
   select: Select,
 }
 
-const GROUP_FIELD_TYPES = ['radio-group', 'swatch-group']
+const GROUP_FIELD_TYPES = ['radio-group', 'swatch-group', 'select'] as const
 
+type GroupFieldType = (typeof GROUP_FIELD_TYPES)[number]
+
+function isValidGroupFieldType(type: string): type is GroupFieldType {
+  return GROUP_FIELD_TYPES.includes(type as GroupFieldType)
+}
 export default function Form({ className, fields, submitButton }: Props) {
   return (
     <FormPrimitive.Root className={cn('font-body font-medium text-foreground', className)}>
       {fields.map(field => {
         const Comp = FIELD_TYPES_COMPONENTS[field.type]
 
-        if (GROUP_FIELD_TYPES.includes(field.type)) {
+        if (isValidGroupFieldType(field.type)) {
           return (
             <FieldGroup
               type={field.type}
@@ -110,12 +115,12 @@ export default function Form({ className, fields, submitButton }: Props) {
 
 type FieldGroupProps = {
   fieldGroupProps: Field
-  type: (typeof GROUP_FIELD_TYPES)[number]
+  type: GroupFieldType
   groupClassName?: string
 }
 
 function FieldGroup({ fieldGroupProps, type, groupClassName }: FieldGroupProps) {
-  const Comp = type === 'swatch-group' ? Swatch : RadioButton
+  const Comp = FIELD_TYPES_COMPONENTS[type]
   return (
     <FormPrimitive.Field name={fieldGroupProps.name} className="flex flex-col gap-2">
       <FormPrimitive.Label className="text-xs leading-[1.375rem]">
@@ -129,6 +134,7 @@ function FieldGroup({ fieldGroupProps, type, groupClassName }: FieldGroupProps) 
       >
         {(fieldGroupProps.fieldProps as React.ComponentProps<typeof Comp>[]).map(
           (element, index) => (
+            // @ts-expect-error TS can't infer overloaded props
             <Comp key={index} name={fieldGroupProps.name} {...element} />
           )
         )}
