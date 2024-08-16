@@ -48,7 +48,7 @@ export const Carousel = ({ children }: Props & ComponentPropsWithoutRef<'div'>) 
   }
 
   return (
-    <section className="mx-auto flex w-full max-w-screen-2xl flex-col gap-10 pt-10 @container">
+    <section className="mx-auto flex w-full max-w-screen-2xl flex-col gap-10 pt-8 @container">
       {/* Carousel Content */}
       {children && (
         <div className="w-full overflow-hidden px-3 py-0.5 @xl:px-6 @5xl:px-20" ref={emblaRef}>
