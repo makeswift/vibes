@@ -35,7 +35,7 @@ export const BlogPostCard = function BlogPostCard({
         className
       )}
     >
-      <div className="overflow-hidden rounded-xl">
+      <div className="overflow-hidden rounded-xl aspect-[4/3]">
         <Image
           src={image?.url ?? ''}
           height={349}
