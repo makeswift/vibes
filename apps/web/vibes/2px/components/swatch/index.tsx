@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
+export interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
   inStock: boolean
   sample: string
 }

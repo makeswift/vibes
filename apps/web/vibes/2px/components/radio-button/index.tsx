@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 
 export interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'hidden'> {
-  label: string
+  label?: string
 }
 
 export default function RadioButton({ className, label, ...inputProps }: Props) {
@@ -12,7 +12,7 @@ export default function RadioButton({ className, label, ...inputProps }: Props) 
         'cursor-not-allowed': inputProps.disabled,
       })}
       htmlFor={inputProps.id}
-      aria-label={label}
+      aria-label={label || 'Radio button'}
     >
       <span className="grid grid-cols-[1.5rem] grid-rows-[1.5rem]">
         <span
@@ -30,13 +30,15 @@ export default function RadioButton({ className, label, ...inputProps }: Props) 
         <input {...inputProps} type="radio" className="radio-input peer hidden" />
         <span className="dot invisible col-span-1 col-start-1 row-span-1 row-start-1 h-4 w-4 place-self-center rounded-full bg-foreground peer-checked:visible" />
       </span>
-      <span
-        className={cn('justify-self-start text-xs font-medium leading-snug text-foreground', {
-          'line-through': inputProps.disabled,
-        })}
-      >
-        {label}
-      </span>
+      {label && (
+        <span
+          className={cn('justify-self-start text-xs font-medium leading-snug text-foreground', {
+            'line-through': inputProps.disabled,
+          })}
+        >
+          {label}
+        </span>
+      )}
     </label>
   )
 }

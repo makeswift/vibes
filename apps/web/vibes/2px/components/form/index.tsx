@@ -1,45 +1,58 @@
+import React from 'react'
+
 import * as FormPrimitive from '@radix-ui/react-form'
 
 import { cn } from '@/lib/utils'
 import Button from '@/vibes/2px/components/button'
 import Checkbox, { Props as CheckboxProps } from '@/vibes/2px/components/checkbox'
+import Counter, { Props as CounterProps } from '@/vibes/2px/components/counter'
 import FileUploader, { Props as FileUploaderProps } from '@/vibes/2px/components/file-uploader'
 import Input, { Props as InputProps } from '@/vibes/2px/components/input'
+import Select, { Props as SelectProps } from '@/vibes/2px/components/option-selector'
 import RadioButton, { Props as RadioButtonProps } from '@/vibes/2px/components/radio-button'
+import Swatch, { Props as SwatchProps } from '@/vibes/2px/components/swatch'
 import TextArea, { Props as TextAreaProps } from '@/vibes/2px/components/text-area'
 
-type Field =
+type Field = {
+  name: string
+  label: string
+  required?: boolean
+} & (
   | {
-      name: string
-      label: string
       type: 'text'
       fieldProps: InputProps
     }
   | {
-      name: string
-      label: string
       type: 'textarea'
       fieldProps: TextAreaProps
     }
   | {
-      name: string
-      label: string
       type: 'checkbox'
       fieldProps: CheckboxProps
     }
   | {
-      name: string
-      label: string
-      type: 'radio'
-      required: boolean
+      type: 'radio-group'
       fieldProps: RadioButtonProps[]
+      groupClassName?: string
     }
   | {
-      name: string
-      label: string
       type: 'file'
       fieldProps: FileUploaderProps
     }
+  | {
+      type: 'counter'
+      fieldProps: CounterProps
+    }
+  | {
+      type: 'swatch-group'
+      fieldProps: SwatchProps[]
+      groupClassName?: string
+    }
+  | {
+      type: 'select'
+      fieldProps: SelectProps
+    }
+)
 
 interface Props extends FormPrimitive.FormProps {
   className?: string
@@ -51,9 +64,14 @@ const FIELD_TYPES_COMPONENTS = {
   text: Input,
   textarea: TextArea,
   checkbox: Checkbox,
-  radio: RadioButton,
+  'radio-group': RadioButton,
   file: FileUploader,
+  counter: Counter,
+  'swatch-group': Swatch,
+  select: Select,
 }
+
+const GROUP_FIELD_TYPES = ['radio-group', 'swatch-group']
 
 export default function Form({ className, fields, submitButton }: Props) {
   return (
@@ -61,13 +79,21 @@ export default function Form({ className, fields, submitButton }: Props) {
       {fields.map(field => {
         const Comp = FIELD_TYPES_COMPONENTS[field.type]
 
-        if (field.type === 'radio') {
-          return <RadioGroup radioField={field} key={field.name} />
+        if (GROUP_FIELD_TYPES.includes(field.type)) {
+          return (
+            <FieldGroup
+              type={field.type}
+              fieldGroupProps={field}
+              key={field.name}
+              {...('groupClassName' in field ? { groupClassName: field.groupClassName } : {})}
+            />
+          )
         }
+
         return (
           <FormPrimitive.Field name={field.name} key={field.name} className="flex flex-col gap-2">
             <FormPrimitive.Label htmlFor={field.name} className="text-xs leading-[1.375rem]">
-              {field.label} {field.fieldProps.required && ' *'}
+              {field.label} {field.required && ' *'}
             </FormPrimitive.Label>
 
             <FormPrimitive.Control asChild>
@@ -82,16 +108,30 @@ export default function Form({ className, fields, submitButton }: Props) {
   )
 }
 
-function RadioGroup({ radioField }: { radioField: Field }) {
+type FieldGroupProps = {
+  fieldGroupProps: Field
+  type: (typeof GROUP_FIELD_TYPES)[number]
+  groupClassName?: string
+}
+
+function FieldGroup({ fieldGroupProps, type, groupClassName }: FieldGroupProps) {
+  const Comp = type === 'swatch-group' ? Swatch : RadioButton
   return (
-    <FormPrimitive.Field name={radioField.name} className="flex flex-col gap-2">
+    <FormPrimitive.Field name={fieldGroupProps.name} className="flex flex-col gap-2">
       <FormPrimitive.Label className="text-xs leading-[1.375rem]">
-        {radioField.label}
+        {fieldGroupProps.label}
       </FormPrimitive.Label>
-      <div className="flex flex-col gap-2">
-        {(radioField.fieldProps as RadioButtonProps[]).map((radio, index) => (
-          <RadioButton key={index} name={radioField.name} {...radio} />
-        ))}
+      <div
+        className={cn({
+          'flex flex-col gap-2': !groupClassName,
+          [groupClassName!]: groupClassName,
+        })}
+      >
+        {(fieldGroupProps.fieldProps as React.ComponentProps<typeof Comp>[]).map(
+          (element, index) => (
+            <Comp key={index} name={fieldGroupProps.name} {...element} />
+          )
+        )}
       </div>
     </FormPrimitive.Field>
   )
