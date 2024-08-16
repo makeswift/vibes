@@ -8,8 +8,8 @@ import FooterSection from '@/vibes/2px/components/footer-section'
 import Gallery from '@/vibes/2px/components/gallery'
 import Header from '@/vibes/2px/components/header'
 import MediaAndTextSection from '@/vibes/2px/components/media-and-text-section'
-import TextSection from '@/vibes/2px/components/text-section'
 
+import SectionHeader from '../components/section-header'
 import Logo from './assets/logo.svg'
 import moltenStool from './assets/molten-stool.png'
 import material2 from './assets/swatch-example-1.png'
@@ -103,11 +103,9 @@ export default function Preview() {
           ],
         }}
       />
-      {/* @TODO: replace by new component */}
-      <TextSection
+      <SectionHeader
         className="bg-white"
-        heading=""
-        text="Our Molten stool in the perfect piece for your entrance hall where guests will stub their toes on it, resulting in a general panic and a hospital trip."
+        title="Our Molten stool in the perfect piece for your entrance hall where guests will stub their toes on it, resulting in a general panic and a hospital trip."
       />
 
       {/* @TODO: create new details section */}
