@@ -1,132 +1,24 @@
 ---
 title: 'Introduction'
+description: Eclipse is a set of handcrafted, production-ready components for SaaS marketing sites, designed by Makeswift. Taking inspiration from the sites of top SaaS products, such as Linear and Vercel, Eclipse is defined by a dark aesthetic and using subtle glows and light to guide visitors. Like these beloved sites, Eclipse implements a minimal design and color palette to keep focus on your product screenshots.
 ---
 
-## This is a Heading
+Out of the box, Eclipse provides several style options to choose from to help visualize how different brands can adapt these components. You'll also find section and page templates composed of Eclipse components, text, and images to provide beautiful, easy-to-use layouts for you to include in your site. Eclipse is built with performance and extensibility as top priorities, optimized to work with minimal dependencies within a Next.js stack.
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra.
+## Aesthetic
 
-Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus.
+Eclipse uses dark colors for it's primary background. It also uses brighter primary and accent colors in key areas to add contrast and convey interactivity. Like it's name suggests, these brighter colors are often displayed as glowing highlights and backgrounds to create ambiance and depth. These glowing elements are used to designate active elements, like tabs, as well as to highlight parts of a component, such as a preferred pricing card.
 
-<Button>Regular button</Button>
-<ButtonLink href="https://google.com">Testing</ButtonLink>
+Containers and cards in Eclipse use subtle, translucent backgrounds that blur content placed behind them, creating a dark, frosted effect. This creates more depth and allows for containers to interact with glows and background elements.
 
-Praesent elementum [hendrerit](https://makeswift.com) tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.
+Eclipse's typography is clean and modern primarily using sans-serif fonts. Headings can be displayed in a thinner weight to convey a sleeker look, or use heavier weights for a more bold approach.
 
-- Testing
-- Hello
-- Hsagasgag
+## Components
 
-## Examples
+We know great product teams spend countless hours getting every pixel just right. We wanted to make sure every component built for Eclipse reflected the same level of craftsmanship. Eclipse comes with standard primitives such as buttons and cards, but with an extra layer of polish and interactivity that many UI libraries don't provide.
 
-<Image src="/social-image.png" />
+We've included more dynamic components such as accordions and tabs you would expect in a marketing site toolkit. But to go the extra mile, we've also created more customized components such as auto-scrolling logo marquees, touch-enabled carousels, and animated WebGL backgrounds to elevate your website's content. All components are built to be performant across all devices, as well as accessible for all visitors.
 
-### Example 1
+## Animations
 
-```tsx
-import { transformerRemoveLineBreak } from '@shikijs/transformers'
-import { readFile } from 'fs/promises'
-import { codeToHtml } from 'shiki'
-
-interface Props {
-  pathname: string
-}
-
-export async function CodeFromFile({ pathname }: Props) {
-  const file = await readFile(process.cwd() + pathname, 'utf8')
-  const code = await codeToHtml(file, {
-    lang: 'javascript',
-    themes: {
-      light: 'github-light',
-      dark: 'github-dark',
-    },
-    transformers: [transformerRemoveLineBreak()],
-  }) // [!code ++]
-
-  return <div dangerouslySetInnerHTML={{ __html: code }} />
-}
-```
-
-<AccordionGroup>
-    <Accordion value="1" title="Accordion 1">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
-        Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
-        vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
-        leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
-    </Accordion>
-
-    <Accordion
-        value="2"
-        title="This is a really long piece of text that should wrap to another line when I type in more words for this title"
-    >
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
-        Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
-        vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
-        leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
-    </Accordion>
-
-    <Accordion value="3" title="This is a question">
-        This is the content for accordion 1
-    </Accordion>
-
-</AccordionGroup>
-
-<Steps>
-    <Step>
-        ## Step 1
-
-        This is a step
-
-    </Step>
-    <Step>
-        ## Step 2
-
-        This is a step
-
-    </Step>
-
-</Steps>
-
-## A headline
-
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
-
-<Tabs defaultValue="preview">
-  <TabsList>
-    <TabsTrigger value="preview">Preview</TabsTrigger>
-    <TabsTrigger value="code">Code</TabsTrigger>
-  </TabsList>
-  <TabsContent value="preview">
-  <Button>Test</Button>
-  </TabsContent>
-  <TabsContent value="code">
-    ```ts
-      import { ReactRuntime } from '@makeswift/runtime/react'
-
-      // [!code word:viewport]
-      export const runtime = new ReactRuntime({
-        breakpoints: {
-          mobile: { width: 575, viewport: 390, label: 'Mobile' }, // [!code highlight]
-          tablet: { width: 768, viewport: 765, label: 'Tablet' }, // [!code --]
-          laptop: { width: 1024, viewport: 1000, label: 'Laptop' }, // [!code ++]
-          external: { width: 1280, label: 'External' },
-        },
-      })
-    ```
-
-  </TabsContent>
-</Tabs>
-
-## Another headline
-
-Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante. Vivamus imperdiet nibh feugiat est.
-
-Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed augue. Integer eu magna sit amet metus fermentum posuere. Morbi sit amet nulla sed dolor elementum imperdiet. Quisque fermentum. Cum sociis natoque penatibus et magnis xdis parturient montes, nascetur ridiculus mus. Pellentesque adipiscing eros ut libero. Ut condimentum mi vel tellus. Suspendisse laoreet. Fusce ut est sed dolor gravida convallis. Morbi vitae ante. Vivamus ultrices luctus nunc. Suspendisse et dolor. Etiam dignissim. Proin malesuada adipiscing lacus. Donec metus. Curabitur gravida
-
-| Month                    | Savings | Type                             |
-| ------------------------ | ------- | -------------------------------- |
-| January                  | $250    | Prop                             |
-| February                 | $80     | [`hello`](https://makeswift.com) |
-| March asjhfkgasdj sadfas | $420    | `sup`                            |
-
-<Figma url="https://www.figma.com/design/Ss4o7sfbgqVr83CTXG7vRa/Eclipse?node-id=133-18545&t=1XWgcmS0d3X1PARk-1" />
+Eclipse contains thoughtful animations and interactions for each of it's components. For many of it's active glow effects, the animations are intentionally slowed down to give a feeling of calm and illumination. You'll also find options to add animated glowing borders on buttons and containers adding more visibility to more important content. Some of our more dynamic components, such as the Lava Lamp background, provide interactive backgrounds visitors can engage with, adding more wonder to your site.
