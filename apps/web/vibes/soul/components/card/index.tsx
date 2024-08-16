@@ -40,6 +40,7 @@ export const Card = function Card({
           src={image.src}
           fill
           alt={image.altText}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>

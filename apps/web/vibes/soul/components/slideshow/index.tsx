@@ -56,7 +56,9 @@ export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
             )}
           >
             <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-screen-2xl -translate-x-1/2 px-3 text-background @xl:px-6 @5xl:px-20">
-              <h1 className="mb-1 text-5xl font-medium leading-none @2xl:text-[90px] font-heading">{title}</h1>
+              <h1 className="mb-1 font-heading text-5xl font-medium leading-none @2xl:text-[90px]">
+                {title}
+              </h1>
               {description && <p>{description}</p>}
               {cta?.href && (
                 <Button variant="tertiary" className="mt-4">
@@ -80,6 +82,8 @@ export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
                 blurDataURL={image.blurDataUrl}
                 alt={image.altText}
                 fill
+                priority
+                sizes="100vw"
                 className="object-cover"
               />
             )}

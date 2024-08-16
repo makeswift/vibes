@@ -26,13 +26,14 @@ export const FeaturedImage = function FeaturedImage({ title, description, image,
             src={image.src}
             alt={image.altText}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
             placeholder={image.blurDataUrl ? 'blur' : 'empty'}
             blurDataURL={image.blurDataUrl}
             className="object-cover"
           />
         </div>
         <div className="z-10 flex w-full flex-col items-start justify-end gap-4 px-3 py-10 text-background @xl:px-6 @3xl:w-1/2 @5xl:w-2/5 @5xl:p-20">
-          <h2 className="max-w-xl text-[40px] font-medium leading-none font-heading">{title}</h2>
+          <h2 className="max-w-xl font-heading text-[40px] font-medium leading-none">{title}</h2>
           <p className="max-w-xl pb-2">{description}</p>
           <Button asChild>
             <Link href={cta.href}>{cta.label}</Link>

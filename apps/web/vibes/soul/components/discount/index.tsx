@@ -59,7 +59,13 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
         dismissed ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'
       )}
     >
-      <Image src={backgroundImage} alt="Background image" fill className="object-cover" />
+      <Image
+        src={backgroundImage}
+        alt="Background image"
+        fill
+        sizes="100vw"
+        className="object-cover"
+      />
       <button
         type="button"
         onClick={() => setDismissed(true)}

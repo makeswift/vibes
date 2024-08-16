@@ -111,10 +111,10 @@ export const Header = forwardRef(function Header(
 
           <Link
             href="/"
-            className="mx-auto rounded-xl py-3 text-2xl font-semibold text-foreground font-heading ring-primary focus-visible:outline-0 focus-visible:ring-2"
+            className="mx-auto rounded-xl py-3 font-heading text-2xl font-semibold text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
             {typeof logo === 'object' && logo?.url ? (
-              <Image src={logo.url} height={29} width={64} alt={logo.altText} />
+              <Image src={logo.url} fill sizes="400px" alt={logo.altText} />
             ) : (
               typeof logo === 'string' && logo
             )}
