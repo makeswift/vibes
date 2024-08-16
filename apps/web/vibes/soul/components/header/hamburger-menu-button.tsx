@@ -9,7 +9,6 @@ export default function HamburgerMenuButton({ navOpen, setNavOpen }: Props) {
   return (
     <button
       onClick={() => setNavOpen(!navOpen)}
-      role="button"
       aria-label="Toggle navigation"
       className="group relative rounded-lg p-2 transition-colors @4xl:hidden @4xl:hover:bg-contrast-100"
     >
