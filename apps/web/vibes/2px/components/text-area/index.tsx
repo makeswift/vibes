@@ -1,16 +1,18 @@
 import { ComponentPropsWithRef } from 'react'
 
+import { ComponentPropsWithRef } from 'react'
+
 import { cn } from '@/lib/utils'
 
-export interface Props extends ComponentPropsWithRef<'textarea'> {
+interface Props extends React.HTMLProps<HTMLTextAreaElement> {
   variant?: 'default' | 'success' | 'error'
-  error?: boolean
   errorMessage?: string
 }
 
 export default function TextArea({
   className,
   variant = 'default',
+  error = false,
   errorMessage,
   disabled = false,
   ...props
@@ -43,7 +45,7 @@ export default function TextArea({
           <ResizerIcon />
         </div>
       </div>
-      {errorMessage && <div className="mt-2 text-xs text-error">{errorMessage}</div>}
+      {errorMessage && error && <div className="mt-2 text-xs text-error">{errorMessage}</div>}
     </div>
   )
 }

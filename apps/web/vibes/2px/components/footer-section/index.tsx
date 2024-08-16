@@ -1,37 +1,57 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Image {
+  altText: string
+  src: string
+  width?: number
+  height?: number
   className?: string
-  logo?: { url: string; alt: string; width: number; height: number; className?: string }
-  title: JSX.Element | string
-  subtitle?: string
-  groups: LinkGroup[]
-  footNote: JSX.Element | string
-  socials: {
-    icon: JSX.Element
-    link: string
-  }[]
 }
 
-type LinkGroup = {
+interface Link {
+  href: string
+  label: string
+  target?: '_self' | '_blank'
+}
+
+interface SocialMediaLink {
+  href: string
+  icon: React.ReactNode
+}
+
+export type Section = {
   title: string
-  links: {
-    label: string
-    href: string
-    target: '_self' | '_blank'
-  }[]
+  links: Link[]
+}
+
+interface ContactInformation {
+  address?: string
+  phone?: string
+}
+
+interface Props {
+  className?: string
+  contactInformation?: ContactInformation
+  logo?: string | Image
+  title: JSX.Element | string
+  subtitle?: string
+  sections: Section[]
+  paymentIcons?: React.ReactNode[]
+  copyright: JSX.Element | string
+  socialMediaLinks: SocialMediaLink[]
 }
 
 export default function FooterSection({
   className,
   logo,
   title,
-  groups,
-  footNote,
-  socials,
+  sections,
+  copyright,
+  socialMediaLinks,
 }: Props) {
   return (
     <section
@@ -40,13 +60,21 @@ export default function FooterSection({
       <div className="flex flex-col items-center gap-0.5 @md:flex-row">
         {logo && (
           <div className="flex h-96 w-full items-center justify-center bg-foreground p-10 @md:h-72 @md:grow @md:basis-1/2 @lg:h-80">
-            <Image
-              src={logo.url}
-              alt={logo.alt}
-              width={logo.width}
-              height={logo.height}
-              className="h-auto max-h-full w-auto max-w-full object-contain"
-            />
+            {typeof logo === 'string' ? (
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-auto max-h-full w-auto max-w-full object-contain"
+              />
+            ) : (
+              <Image
+                src={logo.src}
+                alt={logo.altText}
+                width={logo.width}
+                height={logo.height}
+                className="h-auto max-h-full w-auto max-w-full object-contain"
+              />
+            )}
           </div>
         )}
 
@@ -55,7 +83,7 @@ export default function FooterSection({
         </div>
       </div>
       <div className="link-groups flex flex-wrap justify-items-center gap-0.5">
-        {groups.map((group, index) => {
+        {sections.map((group, index) => {
           return (
             <div
               key={index}
@@ -77,9 +105,9 @@ export default function FooterSection({
       </div>
 
       <div className="social-media flex flex-col items-start justify-between gap-6 bg-foreground p-6 font-body text-sm font-medium leading-[1.375rem] @md:flex-row @md:items-center @md:leading-6">
-        {footNote}
+        {copyright}
         <div className="social-media-links flex gap-6 bg-foreground text-background">
-          {socials.map(({ icon, link }) => (
+          {socialMediaLinks.map(({ icon, href: link }) => (
             <Link key={link} href={link} target="_blank">
               {icon}
             </Link>

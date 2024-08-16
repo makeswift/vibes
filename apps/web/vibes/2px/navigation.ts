@@ -31,6 +31,7 @@ export const navigation = [
       },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       { title: 'Text Area', slug: 'text-area', file: 'docs/text-area.mdx', component: 'text-area' },
+      { title: 'Popover', slug: 'popover', file: 'docs/popover.mdx', component: 'popover' },
       { title: 'Skeleton', slug: 'skeleton', file: 'docs/skeleton.mdx', component: 'skeleton' },
       {
         title: 'Dropdown',
@@ -147,6 +148,12 @@ export const navigation = [
         component: 'carousel-section',
       },
       {
+        title: 'Products Carousel',
+        slug: 'products-carousel',
+        file: 'docs/products-carousel.mdx',
+        component: 'products-carousel',
+      },
+      {
         title: 'Marquee',
         slug: 'marquee-section',
         file: 'docs/marquee-section.mdx',
@@ -171,6 +178,12 @@ export const navigation = [
         component: 'gallery',
       },
       {
+        title: 'Newsletter',
+        slug: 'newsletter',
+        file: 'docs/newsletter-section.mdx',
+        component: 'newsletter-section',
+      },
+      {
         title: 'Header',
         slug: 'header',
         file: 'docs/header.mdx',
@@ -181,6 +194,16 @@ export const navigation = [
         slug: 'footer-section',
         file: 'docs/footer-section.mdx',
         component: 'footer-section',
+      },
+    ],
+  },
+  {
+    title: 'Pages',
+    pages: [
+      {
+        title: 'Homepage',
+        slug: 'homepage',
+        file: 'docs/homepage.mdx',
       },
     ],
   },

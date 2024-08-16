@@ -80,6 +80,12 @@ export const components = [
     files: ['./components/text-area/index.tsx', '../../lib/utils.ts'],
   },
   {
+    name: 'popover',
+    dependencies: ['@radix-ui/react-popover'],
+    registryDependencies: [],
+    files: ['./components/popover/index.tsx', '../../lib/utils.ts'],
+  },
+  {
     name: 'skeleton',
     dependencies: [],
     registryDependencies: [],
@@ -111,6 +117,12 @@ export const components = [
       '../../lib/utils.ts',
       './components/icons/ChevronLeftIcon.tsx',
     ],
+  },
+  {
+    name: 'products-carousel',
+    dependencies: ['carousel-section', 'product-card'],
+    registryDependencies: [],
+    files: ['./components/products-carousel/index.tsx'],
   },
   {
     name: 'checkbox',
@@ -270,6 +282,12 @@ export const components = [
       './components/gallery/expandable-text.tsx',
       './components/gallery/options-selector.tsx',
     ],
+  },
+  {
+    name: 'newsletter-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/newsletter-section/index.tsx', '../../lib/utils.ts'],
   },
   {
     name: 'header',

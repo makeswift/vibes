@@ -1,15 +1,18 @@
+import { ComponentPropsWithRef } from 'react'
+
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
+
 import { cn } from '@/lib/utils'
 import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
 
-export interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type'> {
-  checked: boolean
-  setChecked: (checked: boolean) => void
+interface Props extends ComponentPropsWithRef<typeof CheckboxPrimitive.Root> {
+  error?: boolean
 }
 
-export default function Checkbox({ checked = false, setChecked, ...props }: Props) {
+export default function Checkbox({ checked = false, ref, ...props }: Props) {
   return (
-    <label
-      htmlFor={props.id}
+    <CheckboxPrimitive.Root
+      ref={ref}
       className={cn(
         'flex h-6 w-6 cursor-pointer items-center justify-center border-2 border-foreground hover:border-dashed',
         {
@@ -18,15 +21,10 @@ export default function Checkbox({ checked = false, setChecked, ...props }: Prop
         },
         props.className
       )}
+      {...props}
     >
-      <input
-        type="checkbox"
-        className="hidden"
-        onChange={e => setChecked(e.target.checked)}
-        checked={checked}
-        {...props}
-      />
+      <CheckboxPrimitive.Indicator />
       {checked && <CheckIcon className=" h-4 w-4 text-background" />}
-    </label>
+    </CheckboxPrimitive.Root>
   )
 }

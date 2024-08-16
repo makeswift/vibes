@@ -28,7 +28,7 @@ export default async function Page({
 
   if (!vibe) return notFound()
 
-  let activeBrand = vibe.brands.find(b => b.name === params.brand)
+  let activeBrand = vibe.brands.find(b => b.name === decodeURIComponent(params.brand))
 
   if (!activeBrand) {
     console.warn(
