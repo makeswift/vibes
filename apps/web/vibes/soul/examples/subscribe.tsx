@@ -24,8 +24,8 @@ import Subscribe from '@/vibes/soul/components/subscribe'
 
 export default function Preview() {
   const image = {
-    src: 'https://rstr.in/monogram/vibes/ZHUBk7gO45U',
-    altText: 'Biker in Mountains',
+    src: 'https://rstr.in/monogram/vibes/SHdMkzJlFss',
+    altText: 'Close up of plant',
   }
 
   return (

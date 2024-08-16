@@ -7,7 +7,7 @@ export default function Preview() {
         title="Vestibulum eleifend placerat ligula"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit hendrerit erat imperdiet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         image={{
-          url: 'https://rstr.in/monogram/vibes/7ayVnws_5R1',
+          url: 'https://rstr.in/monogram/vibes/MJbRGY1Y9LK/QlkAvXGZ2ER',
           altText: 'Vestibulum eleifend placerat ligula',
         }}
         link={{ href: '#' }}

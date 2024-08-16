@@ -55,7 +55,7 @@ export const featuredProducts: Product[] = [
 export default function Preview() {
   return (
     <FeaturedProductList
-      title="Off-Race"
+      title="Our Plants"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
       cta={{ href: '#', label: 'Shop Now' }}
       products={featuredProducts}

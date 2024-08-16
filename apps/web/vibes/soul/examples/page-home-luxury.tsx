@@ -3,7 +3,7 @@ import HomePage from '@/vibes/soul/components/page-home'
 
 export const heroSlides = [
   {
-    title: 'Slide 1',
+    title: 'Share the Joy of Nature',
     image: {
       src: 'https://rstr.in/monogram/vibes/lfmnDUMNWEo',
       altText: 'alt',

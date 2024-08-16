@@ -57,7 +57,7 @@ const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
-export const HomePage = function HomePage({ heroSlides, categories }: any) {
+export const HomePage = function HomePage({ heroSlides, categories, newArrivals }: any) {
   return (
     <>
       <AnnouncementBar>
@@ -83,19 +83,16 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           title="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-          image={{src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C', altText: 'Close up of a plant'}}
+          image={{src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ', altText: 'Close up of a plant'}}
           cta={{ href: '#', label: 'Shop Now' }}
         />
    
-
         <FeaturedProductsList
-          title="Off-Race"
+          title="Our Plants"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
           cta={{ label: 'Shop Now', href: '#' }}
           products={featuredProducts}
         />
-
-    
 
         <Subscribe
           title="Sign up for our newsletter"
@@ -105,7 +102,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
         <FeaturedProductsCarousel
           title="New Arrivals"
           cta={{ label: 'See All', href: '#' }}
-          products={featuredProducts}
+          products={newArrivals || featuredProducts}
         />
 
         <Feature
@@ -113,7 +110,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
             url: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
             alt: 'Close up of a plant',
           }}
-          heading="Bigger Statements"
+          heading="For Your Home"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
           link={{
             label: 'Shop Now',
@@ -130,7 +127,7 @@ export const HomePage = function HomePage({ heroSlides, categories }: any) {
           title="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-          image={{src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk', altText: 'Close up of a plant'}}
+          image={{src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b', altText: 'Close up of a plant'}}
           cta={{ href: '#', label: 'Shop Now' }}
         />
 
