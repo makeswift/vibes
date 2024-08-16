@@ -21,9 +21,9 @@ export const Compare = function Compare({ label, checked, setChecked }: Props) {
       }}
       onKeyDown={handleKeyDown}
       role="button"
-      className="absolute right-2.5 top-2.5 z-10 flex cursor-default items-center gap-2 text-foreground @xs:right-4 @xs:top-4"
+      className="absolute right-2.5 top-2.5 z-10 flex cursor-default items-center gap-2 text-foreground @lg:bottom-4 @lg:right-4 @lg:top-auto"
     >
-      {label && <span className="hidden @xs/card:block">{label}</span>}
+      {label && <span className="hidden @lg:block">{label}</span>}
       <Checkbox checked={checked} setChecked={setChecked} />
     </div>
   )
