@@ -9,7 +9,7 @@ export default function Preview() {
   const [isLoading, setIsLoading] = useState(false)
   const [checkedRadio, setCheckedRadio] = useState(false)
   const [selectedSwatch, setSelectedSwatch] = useState('default-example-1')
-
+  const [count, setCount] = useState(0)
   const handleSwatchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedSwatch(e.target.value)
   }
@@ -133,6 +133,18 @@ export default function Preview() {
                 onChange: handleSwatchChange,
               },
             ],
+          },
+          {
+            name: 'counter',
+            label: 'Counter input',
+            type: 'counter',
+            fieldProps: {
+              value: count,
+              onChange: setCount,
+              min: 0,
+              max: 10,
+              step: 1,
+            },
           },
         ]}
       />
