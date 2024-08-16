@@ -114,6 +114,16 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       TabsContent,
       TabsList,
       TabsTrigger,
+      TailwindConfig: function TailwindConfig() {
+        return (
+          <Reveal>
+            <CodeFromFile
+              basePath={path.join(process.cwd(), 'vibes')}
+              pathname="tailwind.config.ts"
+            />
+          </Reveal>
+        )
+      },
       BrandColors: function BrandColorsWithoutVibeSlug(props) {
         return <BrandColors {...props} vibeSlug={vibe.slug} />
       },

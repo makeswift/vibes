@@ -10,7 +10,10 @@ export const navigation = [
   },
   {
     title: 'Styles',
-    pages: [{ title: 'Magenta', slug: 'magenta', file: 'docs/magenta.mdx' }],
+    pages: [
+      { title: 'Aquamarine', slug: 'aquamarine', file: 'docs/aquamarine.mdx' },
+      { title: 'Magenta', slug: 'magenta', file: 'docs/magenta.mdx' },
+    ],
   },
   {
     title: 'Components',
