@@ -18,7 +18,7 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
     <section className="@container">
       <div className="mx-auto flex max-w-screen-2xl flex-col items-center @2xl:flex-row">
         {image && (
-          <div className="relative aspect-square h-full w-full overflow-hidden @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
+          <div className="relative aspect-square h-full w-full overflow-hidden bg-primary/10 @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
             <Image
               src={image.src}
               alt={image.altText}
