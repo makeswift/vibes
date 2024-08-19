@@ -71,4 +71,29 @@ export const ProductCard = function ProductCard({
   )
 }
 
+interface ProductCardSkeletonProps {
+  className?: string
+}
+
+export const ProductCardSkeleton = function ProductCardSkeleton({
+  className,
+}: ProductCardSkeletonProps) {
+  return (
+    <div className={clsx('animate-pulse cursor-pointer rounded-xl', className)}>
+      {/* Image */}
+      <div className="relative aspect-[5/6] overflow-hidden rounded-xl bg-contrast-100 @6xl:min-w-80"></div>
+      <div className="flex flex-col gap-2 @sm:gap-2">
+        <h3 className="mt-4 flex flex-col flex-wrap justify-between gap-2 @sm:mt-7 @sm:gap-2 @4xl:flex-row">
+          {/* Name */}
+          <div className="h-4 w-24 rounded-lg bg-contrast-100" />
+          {/* Subtitle */}
+          <div className="h-4 w-20 rounded-lg bg-contrast-100" />
+        </h3>
+        {/* Price */}
+        <div className="h-4 w-16 rounded-lg bg-contrast-100 @4xl:h-6" />
+      </div>
+    </div>
+  )
+}
+
 export default ProductCard

@@ -56,4 +56,15 @@ export const Card = function Card({
   )
 }
 
+export const CardSkeleton = function CardSkeleton() {
+  return (
+    <div className="relative flex aspect-[3/4] w-full min-w-56 max-w-md animate-pulse flex-col gap-2 @4xl:min-w-72">
+      {/* Image */}
+      <div className="h-full w-full overflow-hidden rounded-lg bg-contrast-100 @4xl:rounded-xl" />
+      {/* Title */}
+      <div className="mb-1 line-clamp-1 h-6 w-20 rounded-lg bg-contrast-100 @4xl:absolute @4xl:bottom-5 @4xl:left-5" />
+    </div>
+  )
+}
+
 export default Card
