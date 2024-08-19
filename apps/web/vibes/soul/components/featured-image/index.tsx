@@ -40,7 +40,7 @@ export const FeaturedImage = function FeaturedImage({
             'w-full object-cover',
             mediaAlign === 'full'
               ? 'absolute inset-0 h-full'
-              : 'relative aspect-square @xl:aspect-[9/6] @3xl:h-dvh @3xl:max-h-[880px] @3xl:w-1/2 @5xl:w-3/5',
+              : 'relative aspect-square bg-primary/10 @xl:aspect-[9/6] @3xl:h-dvh @3xl:max-h-[880px] @3xl:w-1/2 @5xl:w-3/5',
             {
               '@3xl:order-2 @7xl:mr-20': mediaAlign === 'right',
               '@7xl:ml-20': mediaAlign === 'left',

@@ -54,7 +54,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
   return (
     <section
       className={clsx(
-        'fixed left-0 top-0 flex h-[100dvh] w-full items-center justify-center bg-contrast-100 text-background transition-[opacity,transform] duration-300 @container',
+        'fixed left-0 top-0 flex h-dvh w-full items-center justify-center bg-contrast-100 text-background transition-[opacity,transform] duration-300 @container',
         dismissed ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'
       )}
     >
