@@ -15,7 +15,6 @@ import {
 import clsx from 'clsx'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
-
 interface Image {
   url?: string
   altText: string
@@ -160,25 +159,28 @@ export const Header = forwardRef(function Header(
               <button
                 onClick={() => setNavOpen(!navOpen)}
                 aria-label="Toggle navigation"
-                className="group relative rounded-lg p-2 transition-colors @4xl:hidden @4xl:hover:bg-contrast-100"
+                className="group relative rounded-lg p-2 transition-colors @4xl:hidden"
               >
                 <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
                   <div
                     className={clsx(
-                      'h-[1px] origin-left transform bg-foreground transition-all duration-300',
-                      navOpen ? 'translate-x-10' : 'w-7'
+                      'h-[1px] origin-left transform  transition-all duration-300',
+                      navOpen ? 'translate-x-10' : 'w-7',
+                      searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
                   />
                   <div
                     className={clsx(
-                      'h-[1px] transform rounded bg-foreground transition-all delay-75 duration-300',
-                      navOpen ? 'translate-x-10' : 'w-7'
+                      'h-[1px] transform rounded  transition-all delay-75 duration-300',
+                      navOpen ? 'translate-x-10' : 'w-7',
+                      searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
                   />
                   <div
                     className={clsx(
                       'h-[1px] origin-left transform bg-foreground transition-all delay-150 duration-300',
-                      navOpen ? 'translate-x-10' : 'w-7'
+                      navOpen ? 'translate-x-10' : 'w-7',
+                      searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
                   />
 
@@ -209,7 +211,7 @@ export const Header = forwardRef(function Header(
                 className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
                 onClick={() => setSearchOpen(!searchOpen)}
               >
-                <Search className="h-5 w-5" strokeWidth={1} />
+                <Search className="w-5" strokeWidth={1} />
               </button>
             </div>
             <Link
@@ -217,10 +219,7 @@ export const Header = forwardRef(function Header(
               aria-label="Profile"
               className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
-              <User
-                className={clsx('h-5 w-5', searchOpen && 'stroke-contrast-300')}
-                strokeWidth={1}
-              />
+              <User className={clsx('w-5', searchOpen && 'stroke-contrast-300')} strokeWidth={1} />
             </Link>
             <Link
               href={cartHref}
@@ -228,7 +227,7 @@ export const Header = forwardRef(function Header(
               className="relative rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
               <ShoppingBag
-                className={clsx('h-5 w-5', searchOpen && 'stroke-contrast-300')}
+                className={clsx('w-5', searchOpen && 'stroke-contrast-300')}
                 strokeWidth={1}
               />
               {cartCount !== undefined && cartCount > 0 && (
@@ -250,7 +249,7 @@ export const Header = forwardRef(function Header(
                 {selectedLanguage}
                 <ChevronDown
                   strokeWidth={1.5}
-                  className={clsx('h-4 w-4', searchOpen && 'stroke-contrast-300')}
+                  className={clsx('w-4', searchOpen && 'stroke-contrast-300')}
                 />
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -292,12 +291,12 @@ export const Header = forwardRef(function Header(
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
           )}
         >
-          <SearchIcon strokeWidth={1} className="shrink-0 text-contrast-500" />
+          <SearchIcon strokeWidth={1} className="hidden w-5 shrink-0 text-contrast-500 @xl:block" />
           <input
             ref={searchInputRef}
             type="text"
             placeholder="Search Products"
-            className="flex-grow bg-transparent text-lg font-medium outline-0"
+            className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 @xl:pl-0"
           />
 
           <span className="hidden shrink-0 gap-1.5 whitespace-nowrap text-xs text-contrast-500 @xl:flex">
