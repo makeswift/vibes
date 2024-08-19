@@ -7,7 +7,7 @@ export const featuredProducts: Product[] = [
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
     // badge: 'Indestructible',
-    price: '$123.99',
+    price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
       altText: 'Product Name',
@@ -19,7 +19,7 @@ export const featuredProducts: Product[] = [
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
     // badge: 'New',
-    price: '$123.99',
+    price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
       altText: 'Product Name',
@@ -31,7 +31,7 @@ export const featuredProducts: Product[] = [
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
     // badge: 'New',
-    price: '$123.99',
+    price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
       altText: 'Product Name',
@@ -43,9 +43,33 @@ export const featuredProducts: Product[] = [
     name: 'Product Name',
     subtitle: 'Blue/Black/Green',
     // badge: 'New',
-    price: '$123.99',
+    price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
+      altText: 'Product Name',
+    },
+    href: '#',
+  },
+  {
+    id: '6',
+    name: 'Product Name',
+    subtitle: 'Blue/Black/Green',
+    // badge: 'New',
+    price: '$24.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
+      altText: 'Product Name',
+    },
+    href: '#',
+  },
+  {
+    id: '5',
+    name: 'Product Name',
+    subtitle: 'Blue/Black/Green',
+    // badge: 'New',
+    price: '$24.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
       altText: 'Product Name',
     },
     href: '#',
