@@ -5,21 +5,21 @@ import clsx from 'clsx'
 import { Button } from '@/vibes/soul/components/button'
 
 type Props = {
-  heading: string
+  title: string
   description: string
   video: string
-  link: {
+  cta: {
     href: string
-    target: '_self' | '_blank'
+    label: string
   }
   mediaAlign?: 'left' | 'right'
 }
 
 export const FeaturedVideo = function FeaturedVideo({
-  heading,
+  title,
   description,
   video,
-  link,
+  cta,
   mediaAlign,
 }: Props) {
   return (
@@ -51,14 +51,14 @@ export const FeaturedVideo = function FeaturedVideo({
             { '@3xl:order-1': mediaAlign === 'right' }
           )}
         >
-          <h1 className="max-w-xl text-[40px] font-medium">{heading}</h1>
+          <h1 className="max-w-xl text-[40px] font-medium">{title}</h1>
           <p className="max-w-xl pb-2">{description}</p>
           <Button
             variant={mediaAlign ? 'primary' : 'tertiary'}
             className={clsx(mediaAlign ? 'text-foreground' : 'text-background')}
             asChild
           >
-            <Link href={link.href}>Show Now</Link>
+            <Link href={cta.href}>{cta.label}</Link>
           </Button>
         </div>
       </div>

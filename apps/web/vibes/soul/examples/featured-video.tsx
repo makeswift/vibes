@@ -4,26 +4,26 @@ export default function Preview() {
   return (
     <div className="flex flex-col gap-3">
       <FeaturedVideo
-        heading="Pro-Team"
+        title="Pro-Team"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
         video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-        link={{ href: '#', target: '_self' }}
+        cta={{ href: '#', label: 'Shop Now' }}
       />
       <FeaturedVideo
-        heading="Pro-Team"
+        title="Pro-Team"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
         video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-        link={{ href: '#', target: '_self' }}
+        cta={{ href: '#', label: 'Shop Now' }}
         mediaAlign="right"
       />
       <FeaturedVideo
-        heading="Pro-Team"
+        title="Pro-Team"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
         video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-        link={{ href: '#', target: '_self' }}
+        cta={{ href: '#', label: 'Shop Now' }}
         mediaAlign="left"
       />
     </div>
