@@ -59,7 +59,7 @@ export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
               <h1 className="mb-1 font-heading text-5xl font-medium leading-none @2xl:text-[90px]">
                 {title}
               </h1>
-              {description && <p>{description}</p>}
+              {description && <p className="max-w-xl">{description}</p>}
               {cta?.href && (
                 <Button variant="tertiary" className="mt-4">
                   {cta.label}
