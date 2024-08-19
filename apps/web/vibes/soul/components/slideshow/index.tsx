@@ -30,7 +30,7 @@ interface Props {
   slides: Slide[]
 }
 
-export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
+export const Slideshow = function Slideshow({ slides, className }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const Slideshow = function Slideshow({ slides, className = '' }: Props) {
             key={idx}
             className={clsx(
               'absolute inset-0 transition-opacity duration-1000 ease-in-out',
-              currentIndex === idx ? 'opacity-100' : 'opacity-0'
+              currentIndex === idx ? 'z-10 opacity-100' : 'z-0 opacity-0'
             )}
           >
             <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-screen-2xl -translate-x-1/2 px-3 text-background @xl:px-6 @5xl:px-20">
