@@ -15,7 +15,6 @@ import {
 import clsx from 'clsx'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
-import HamburgerMenuButton from '@/vibes/soul/components/header/hamburger-menu-button'
 
 interface Image {
   url?: string
@@ -157,7 +156,53 @@ export const Header = forwardRef(function Header(
 
           <div className="ml-auto flex items-center gap-2 pr-3 transition-colors duration-300 @4xl:pr-2.5">
             <div className="absolute left-3 flex items-center @4xl:relative @4xl:left-0">
-              <HamburgerMenuButton navOpen={navOpen} setNavOpen={setNavOpen} />
+              {/* Hamburger Menu Button */}
+              <button
+                onClick={() => setNavOpen(!navOpen)}
+                aria-label="Toggle navigation"
+                className="group relative rounded-lg p-2 transition-colors @4xl:hidden @4xl:hover:bg-contrast-100"
+              >
+                <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
+                  <div
+                    className={clsx(
+                      'h-[1px] origin-left transform bg-foreground transition-all duration-300',
+                      navOpen ? 'translate-x-10' : 'w-7'
+                    )}
+                  />
+                  <div
+                    className={clsx(
+                      'h-[1px] transform rounded bg-foreground transition-all delay-75 duration-300',
+                      navOpen ? 'translate-x-10' : 'w-7'
+                    )}
+                  />
+                  <div
+                    className={clsx(
+                      'h-[1px] origin-left transform bg-foreground transition-all delay-150 duration-300',
+                      navOpen ? 'translate-x-10' : 'w-7'
+                    )}
+                  />
+
+                  <div
+                    className={clsx(
+                      'absolute top-2 flex transform items-center justify-between transition-all duration-500',
+                      navOpen ? 'w-12 translate-x-0' : 'w-0 -translate-x-10'
+                    )}
+                  >
+                    <div
+                      className={clsx(
+                        'absolute h-[1px] w-4 transform bg-foreground transition-all delay-300 duration-500',
+                        navOpen ? 'rotate-45' : 'rotate-0'
+                      )}
+                    />
+                    <div
+                      className={clsx(
+                        'absolute h-[1px] w-4 transform bg-foreground transition-all delay-300 duration-500',
+                        navOpen ? '-rotate-45' : 'rotate-0'
+                      )}
+                    />
+                  </div>
+                </div>
+              </button>
               <button
                 role="button"
                 aria-label="Search"
