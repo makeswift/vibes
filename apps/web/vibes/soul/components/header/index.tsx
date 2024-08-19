@@ -55,6 +55,7 @@ export const Header = forwardRef(function Header(
   const container = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const searchRef = useRef<HTMLDivElement>(null)
+  const searchInputRef = useRef<HTMLInputElement>(null)
   const [selectedCategory, setSelectedCategory] = useState<number | null>(0)
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState<string | undefined>(activeLocale)
@@ -80,17 +81,31 @@ export const Header = forwardRef(function Header(
         setSearchOpen(false)
       }
     }
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setSearchOpen(false)
+      }
+    }
     document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleKeyDown)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
     }
   }, [searchRef])
+
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus()
+    }
+  }, [searchOpen])
 
   return (
     <ReactHeadroom
       {...rest}
       className="sticky top-0 z-30 !h-0 w-full @container"
       upTolerance={0}
+      onUnpin={() => setSearchOpen(false)}
       style={{
         WebkitTransition: 'transform .5s ease-in-out',
         MozTransition: 'transform .5s ease-in-out',
@@ -104,7 +119,7 @@ export const Header = forwardRef(function Header(
         className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
       >
         <nav
-          className="grid h-[60px] grid-cols-[1fr,auto,1fr] items-stretch justify-between bg-background shadow-[2px_4px_24px_#00000010] 
+          className="grid h-[60px] grid-cols-[1fr,auto,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] 
           @4xl:mx-5 @4xl:rounded-[24px]"
         >
           <div className="relative flex items-stretch pl-2.5" ref={container}>
@@ -127,16 +142,20 @@ export const Header = forwardRef(function Header(
 
           <Link
             href="/"
-            className="mx-auto rounded-xl py-3 font-heading text-2xl font-semibold text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2"
+            className="mx-auto rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
             {typeof logo === 'object' && logo?.url ? (
               <Image src={logo.url} fill sizes="400px" alt={logo.altText} />
             ) : (
-              typeof logo === 'string' && logo
+              typeof logo === 'string' && (
+                <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
+                  {logo}
+                </span>
+              )
             )}
           </Link>
 
-          <div className="ml-auto flex items-center gap-2 pr-3 @4xl:pr-2.5">
+          <div className="ml-auto flex items-center gap-2 pr-3 transition-colors duration-300 @4xl:pr-2.5">
             <div className="absolute left-3 flex items-center @4xl:relative @4xl:left-0">
               <HamburgerMenuButton navOpen={navOpen} setNavOpen={setNavOpen} />
               <button
@@ -151,16 +170,22 @@ export const Header = forwardRef(function Header(
             <Link
               href={accountHref}
               aria-label="Profile"
-              className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+              className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
-              <User className="h-5 w-5" strokeWidth={1} />
+              <User
+                className={clsx('h-5 w-5', searchOpen && 'stroke-contrast-300')}
+                strokeWidth={1}
+              />
             </Link>
             <Link
               href={cartHref}
               aria-label="Cart"
-              className="relative rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+              className="relative rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
-              <ShoppingBag className="h-5 w-5" strokeWidth={1} />
+              <ShoppingBag
+                className={clsx('h-5 w-5', searchOpen && 'stroke-contrast-300')}
+                strokeWidth={1}
+              />
               {cartCount !== undefined && cartCount > 0 && (
                 <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
                   {cartCount}
@@ -171,13 +196,16 @@ export const Header = forwardRef(function Header(
             {/* Locale / Language Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger
-                className="hidden items-center gap-1 rounded-lg bg-white p-2 text-xs uppercase text-foreground transition-colors hover:bg-contrast-100 
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex"
+                className={clsx(
+                  'hidden items-center gap-1 rounded-lg bg-white p-2 text-xs uppercase hover:bg-contrast-100',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex',
+                  searchOpen ? 'text-contrast-300' : 'text-foreground'
+                )}
               >
                 {selectedLanguage}
                 <ChevronDown
                   strokeWidth={1.5}
-                  className="h-4 w-4 text-foreground transition-transform"
+                  className={clsx('h-4 w-4', searchOpen && 'stroke-contrast-300')}
                 />
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -221,6 +249,7 @@ export const Header = forwardRef(function Header(
         >
           <SearchIcon strokeWidth={1} className="shrink-0 text-contrast-500" />
           <input
+            ref={searchInputRef}
             type="text"
             placeholder="Search Products"
             className="flex-grow bg-transparent text-lg font-medium outline-0"
