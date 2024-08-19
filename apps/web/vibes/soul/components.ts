@@ -111,7 +111,7 @@ export const components = [
     name: 'header',
     dependencies: ['clsx', 'lucide-react', 'react-headroom'],
     registryDependencies: [],
-    files: ['components/header/index.tsx', 'components/header/hamburger-menu-button.tsx'],
+    files: ['components/header/index.tsx'],
   },
   {
     name: 'icon-block',
