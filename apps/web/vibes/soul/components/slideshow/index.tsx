@@ -26,8 +26,8 @@ export interface Slide {
   cta?: Link
 }
 interface Props {
-  className?: string
   slides: Slide[]
+  className?: string
 }
 
 export const Slideshow = function Slideshow({ slides, className }: Props) {
@@ -44,7 +44,7 @@ export const Slideshow = function Slideshow({ slides, className }: Props) {
 
   return (
     <header
-      className={clsx('relative h-[100dvh] max-h-[880px] bg-primary-shadow @container', className)}
+      className={clsx('relative h-dvh max-h-[880px] bg-primary-shadow @container', className)}
     >
       {slides?.map(({ title, description, image, cta }, idx) => {
         return (
@@ -55,23 +55,25 @@ export const Slideshow = function Slideshow({ slides, className }: Props) {
               currentIndex === idx ? 'z-10 opacity-100' : 'z-0 opacity-0'
             )}
           >
-            <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-screen-2xl -translate-x-1/2 px-3 text-background @xl:px-6 @5xl:px-20">
-              <h1 className="mb-1 font-heading text-5xl font-medium leading-none @2xl:text-[90px]">
-                {title}
-              </h1>
-              {description && <p className="max-w-xl">{description}</p>}
-              {cta?.href && (
-                <Button variant="tertiary" className="mt-4">
-                  {cta.label}
-                </Button>
-              )}
+            <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pt-20 text-background">
+              <div className="mx-auto max-w-screen-2xl px-3 @xl:px-6 @5xl:px-20">
+                <h1 className="mb-1 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
+                  {title}
+                </h1>
+                {description && <p className="max-w-xl">{description}</p>}
+                {cta?.href && (
+                  <Button variant="tertiary" className="mt-4">
+                    {cta.label}
+                  </Button>
+                )}
 
-              <ProgressSection
-                currentIndex={currentIndex}
-                slides={slides}
-                setCurrentIndex={setCurrentIndex}
-                className="z-10 w-full pb-2 pt-4 @lg:pb-8 @lg:pt-10"
-              />
+                <ProgressSection
+                  currentIndex={currentIndex}
+                  slides={slides}
+                  setCurrentIndex={setCurrentIndex}
+                  className="z-10 w-full pb-2 pt-4 @lg:pb-8 @lg:pt-10"
+                />
+              </div>
             </div>
 
             {/* TODO: Implement progressive loading with blurDataUrl */}
