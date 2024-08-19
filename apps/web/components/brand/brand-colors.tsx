@@ -55,15 +55,7 @@ const neutralColors = [
   '--background',
 ] as const
 
-export function BrandColors({
-  vibeSlug,
-  brandName,
-  description,
-}: {
-  vibeSlug: string
-  brandName: string
-  description?: string
-}) {
+export function BrandColors({ vibeSlug, brandName }: { vibeSlug: string; brandName: string }) {
   const vibe = getVibe(vibeSlug)
 
   if (!vibe) return <div>Vibe: {vibeSlug} not found</div>
@@ -73,9 +65,7 @@ export function BrandColors({
   if (!brand) return <div>Brand: {brandName} not found</div>
 
   return (
-    <div>
-      <h2 id="colors">Colors</h2>
-      <p>{description}</p>
+    <>
       <h3 id="brand">Brand</h3>
       <Colors
         colors={brandColors.map(name => ({
@@ -90,6 +80,6 @@ export function BrandColors({
           value: hslToHex(brand.cssVars[name]),
         }))}
       />
-    </div>
+    </>
   )
 }

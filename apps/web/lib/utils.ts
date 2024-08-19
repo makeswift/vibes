@@ -5,11 +5,24 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function slugify(text: string) {
-  return text
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .replace(/[^\w-]+/g, '')
+export function slugify(text: string): string {
+  return text.toLowerCase().replace(/(\s+)|([.,!?:;'\"\'-])/g, '-')
+}
+
+export function getNodeTextContent(node: React.ReactNode): string {
+  if (typeof node === 'string' || typeof node === 'number') {
+    return String(node)
+  }
+
+  if (node && typeof node === 'object' && 'props' in node) {
+    return getNodeTextContent(node.props.children)
+  }
+
+  if (Array.isArray(node)) {
+    return node.map(getNodeTextContent).join('')
+  }
+
+  return ''
 }
 
 export function exists<T>(value: T | null | undefined): value is NonNullable<T> {
