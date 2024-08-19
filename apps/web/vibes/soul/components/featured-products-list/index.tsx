@@ -37,7 +37,7 @@ export const FeaturedProductsList = function FeaturedProductsList({
                 {title}
               </h2>
             )}
-            {description && <p className="mt-1.5 pb-2 text-foreground">{description}</p>}
+            {description && <p className="mt-1.5 max-w-md pb-2 text-foreground">{description}</p>}
           </div>
           {cta && (
             <Button
