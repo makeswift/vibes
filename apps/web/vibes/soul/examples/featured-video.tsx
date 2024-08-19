@@ -9,6 +9,7 @@ export default function Preview() {
           labore et dolore magna aliqua."
         video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
         cta={{ href: '#', label: 'Shop Now' }}
+        mediaAlign="full"
       />
       <FeaturedVideo
         title="Pro-Team"
