@@ -1,4 +1,4 @@
-import Card, { CardProps } from '@/vibes/soul/components/card'
+import Card, { CardProps, CardSkeleton } from '@/vibes/soul/components/card'
 import Carousel from '@/vibes/soul/components/carousel'
 
 interface Props {
@@ -9,9 +9,9 @@ interface Props {
 export const CardCarousel = function CardCarousel({ cards, className = '' }: Props) {
   return (
     <Carousel className={className}>
-      {cards.map(card => (
-        <Card key={card.title} {...card} />
-      ))}
+      {cards && cards.length > 0
+        ? cards.map(card => <Card key={card.title} {...card} />)
+        : Array.from({ length: 5 }).map((_, index) => <CardSkeleton key={index} />)}
     </Carousel>
   )
 }

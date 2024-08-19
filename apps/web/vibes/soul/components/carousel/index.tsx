@@ -1,6 +1,6 @@
 'use client'
 
-import { ComponentPropsWithoutRef, ReactNode, useCallback, useEffect, useState } from 'react'
+import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react'
 
 import useEmblaCarousel from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
@@ -48,7 +48,7 @@ export const Carousel = ({ children }: Props & ComponentPropsWithoutRef<'div'>) 
   }
 
   return (
-    <section className="mx-auto flex w-full max-w-screen-2xl flex-col gap-10 pt-8 @container">
+    <div className="mx-auto flex w-full max-w-screen-2xl flex-col gap-10 pt-8 @container">
       {/* Carousel Content */}
       {children && (
         <div className="w-full overflow-hidden px-3 py-0.5 @xl:px-6 @5xl:px-20" ref={emblaRef}>
@@ -100,7 +100,7 @@ export const Carousel = ({ children }: Props & ComponentPropsWithoutRef<'div'>) 
           </button>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
