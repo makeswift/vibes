@@ -23,9 +23,9 @@ export const FeaturedProductsCarousel = function FeaturedProductsCarousel({
 }: Props) {
   return (
     <section className="@container">
-      <div className="mx-auto flex w-full max-w-screen-2xl flex-col justify-between gap-5 px-3 pt-10 text-foreground @xl:px-6 @4xl:flex-row @4xl:items-end @5xl:px-20">
+      <div className="mx-auto flex w-full max-w-screen-2xl flex-row flex-wrap justify-between gap-5 px-3 pt-10 text-foreground @xl:px-6 @4xl:items-end @5xl:px-20">
         <div className="flex flex-col gap-5">
-          {title && <h2 className="text-2xl font-medium font-heading">{title}</h2>}
+          {title && <h2 className="font-heading text-2xl font-medium leading-none">{title}</h2>}
           {description && <p className="max-w-md text-contrast-400">{description}</p>}
         </div>
         {cta && (

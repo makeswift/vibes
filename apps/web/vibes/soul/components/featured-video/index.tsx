@@ -5,35 +5,37 @@ import clsx from 'clsx'
 import { Button } from '@/vibes/soul/components/button'
 
 type Props = {
-  heading: string
+  title: string
   description: string
   video: string
-  link: {
+  cta: {
     href: string
-    target: '_self' | '_blank'
+    label: string
   }
-  mediaAlign?: 'left' | 'right'
+  mediaAlign?: 'left' | 'right' | 'full'
 }
 
 export const FeaturedVideo = function FeaturedVideo({
-  heading,
+  title,
   description,
   video,
-  link,
-  mediaAlign,
+  cta,
+  mediaAlign = 'left',
 }: Props) {
   return (
     <section
       className={clsx(
-        'relative h-[100dvh] max-h-[880px] @container',
-        mediaAlign ? 'bg-primary-shadow' : ''
+        'relative bg-primary-shadow @container',
+        mediaAlign == 'full' && 'h-dvh max-h-[880px]'
       )}
     >
       <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
         <video
           className={clsx(
-            'h-full w-full object-cover',
-            mediaAlign ? '@3xl:w-1/2 @5xl:w-3/5' : 'absolute inset-0',
+            'w-full object-cover',
+            mediaAlign == 'full'
+              ? 'absolute inset-0 h-full'
+              : 'aspect-square @xl:aspect-[9/6] @3xl:h-dvh @3xl:max-h-[880px] @3xl:w-1/2 @5xl:w-3/5',
             { '@3xl:order-2': mediaAlign === 'right' }
           )}
           autoPlay
@@ -45,20 +47,20 @@ export const FeaturedVideo = function FeaturedVideo({
         <div
           className={clsx(
             'z-10 mx-auto flex flex-col items-start gap-4 px-3 py-10 text-background @5xl:p-20',
-            mediaAlign
-              ? 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5'
-              : 'absolute bottom-0 left-0 @xl:px-6',
+            mediaAlign == 'full'
+              ? 'mx-auto mt-auto w-full max-w-screen-2xl px-3 @xl:px-6 @5xl:px-20'
+              : 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5',
             { '@3xl:order-1': mediaAlign === 'right' }
           )}
         >
-          <h1 className="max-w-xl text-[40px] font-medium">{heading}</h1>
-          <p className="max-w-xl pb-2">{description}</p>
+          <h1 className="max-w-xl text-4xl font-medium leading-none @xl:text-5xl">{title}</h1>
+          <p className="max-w-md pb-2">{description}</p>
           <Button
-            variant={mediaAlign ? 'primary' : 'tertiary'}
-            className={clsx(mediaAlign ? 'text-foreground' : 'text-background')}
+            variant={mediaAlign == 'full' ? 'tertiary' : 'primary'}
+            className={clsx(mediaAlign == 'full' ? 'text-background' : 'text-foreground')}
             asChild
           >
-            <Link href={link.href}>Show Now</Link>
+            <Link href={cta.href}>{cta.label}</Link>
           </Button>
         </div>
       </div>

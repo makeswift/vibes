@@ -137,11 +137,11 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
         />
 
         {/* <FeaturedVideo
-          heading="Pro-Team"
+          title="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
           video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
-          link={{ href: '#', target: '_self' }}
+          cta={{ href: '#', label: 'Shop Now' }}
           mediaAlign="left"
         /> */}
 
