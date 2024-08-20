@@ -13,7 +13,7 @@ type Discount = {
   code: string
 }
 
-type Props = {
+interface Props {
   backgroundImage: string
   discounts: Discount[]
 }

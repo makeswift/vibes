@@ -1,6 +1,6 @@
 import Checkbox from '@/vibes/soul/components/checkbox'
 
-type Props = {
+interface Props {
   label?: string
   checked: boolean
   setChecked: (checked: boolean) => void

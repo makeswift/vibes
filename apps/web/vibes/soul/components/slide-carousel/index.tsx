@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
-type Props = {
+interface Props {
   title: string
   images: string[]
 }

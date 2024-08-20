@@ -5,7 +5,7 @@ import React from 'react'
 import Dropdown from '@/vibes/soul/components/dropdown'
 import FilterDialog from '@/vibes/soul/components/filter-dialog'
 
-type Props = {
+interface Props {
   title: string
   numberOfProducts: number
 }
