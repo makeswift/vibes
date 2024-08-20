@@ -191,11 +191,7 @@ export const components = [
     name: 'slideshow',
     dependencies: ['clsx'],
     registryDependencies: [],
-    files: [
-      'components/slideshow/index.tsx',
-      'components/slideshow/progress-bar.tsx',
-      'components/slideshow/progress-section.tsx',
-    ],
+    files: ['components/slideshow/index.tsx'],
   },
   {
     name: 'subscribe',
