@@ -117,10 +117,10 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
         className
       )}
     >
-      <div className="flex">
+      <div className="flex h-full">
         {slides?.map(({ title, description, image, cta }, idx) => {
           return (
-            <div key={idx} className="relative h-dvh w-full min-w-0 shrink-0 grow-0 basis-full">
+            <div key={idx} className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full">
               <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pb-5 pt-20 text-background">
                 <div className="mx-auto max-w-screen-2xl px-3 @xl:px-6 @5xl:px-20">
                   <h1 className="mb-1 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
