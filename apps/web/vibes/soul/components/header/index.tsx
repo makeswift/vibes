@@ -16,7 +16,7 @@ import clsx from 'clsx'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
 interface Image {
-  url?: string
+  src?: string
   altText: string
 }
 
@@ -142,8 +142,8 @@ export const Header = forwardRef(function Header(
             href="/"
             className="mx-auto rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
-            {typeof logo === 'object' && logo?.url ? (
-              <Image src={logo.url} fill sizes="400px" alt={logo.altText} />
+            {typeof logo === 'object' && logo?.src ? (
+              <Image src={logo.src} fill sizes="400px" alt={logo.altText} />
             ) : (
               typeof logo === 'string' && (
                 <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
@@ -301,8 +301,12 @@ export const Header = forwardRef(function Header(
 
           <span className="hidden shrink-0 gap-1.5 whitespace-nowrap text-xs text-contrast-500 @xl:flex">
             Powered by
-            {/* Algolia Logo */}
-            <svg viewBox="0 0 2196.2 500" className="w-14 fill-contrast-500">
+            <svg
+              viewBox="0 0 2196.2 500"
+              className="w-14 fill-contrast-500"
+              aria-label="Algolia logo"
+            >
+              <title>Algolia</title>
               <path d="M1070.38,275.3V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46,7.94c-2.87,.45-4.99,2.93-4.99,5.84l.17,273.22c0,12.92,0,92.7,95.97,95.49,3.33,.1,6.09-2.58,6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72Z"></path>
               <rect x="1845.88" y="104.73" width="62.58" height="277.9" rx="5.9" ry="5.9"></rect>
               <path d="M1851.78,71.38h50.77c3.26,0,5.9-2.64,5.9-5.9V5.9c0-3.62-3.24-6.39-6.82-5.83l-50.77,7.95c-2.87,.45-4.99,2.92-4.99,5.83v51.62c0,3.26,2.64,5.9,5.9,5.9Z"></path>

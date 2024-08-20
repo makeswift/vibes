@@ -4,16 +4,17 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 interface Image {
+  src: string
   altText: string
-  url: string
 }
 
-interface Props {
+export interface BlogPost {
+  id: string
   author?: string | null
   content: string
   date: string
   image?: Image | null
-  link: { href: string }
+  href: string
   title: string
   className?: string
 }
@@ -22,14 +23,14 @@ export const BlogPostCard = function BlogPostCard({
   title,
   image,
   content,
-  link,
+  href,
   date,
   author,
   className = '',
-}: Props) {
+}: BlogPost) {
   return (
     <Link
-      href={link.href}
+      href={href}
       className={clsx(
         'group flex max-w-md flex-col gap-2 rounded-xl text-foreground ring-primary focus:outline-0 focus:ring-2',
         className
@@ -37,7 +38,7 @@ export const BlogPostCard = function BlogPostCard({
     >
       <div className="aspect-[4/3] overflow-hidden rounded-xl">
         <Image
-          src={image?.url ?? ''}
+          src={image?.src ?? ''}
           height={349}
           width={466}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -64,6 +65,37 @@ export const BlogPostCard = function BlogPostCard({
         {author && author}
       </div>
     </Link>
+  )
+}
+
+interface BlogPostCardSkeletonProps {
+  className?: string
+}
+
+export const BlogPostCardSkeleton = function BlogPostCardSkeleton({
+  className,
+}: BlogPostCardSkeletonProps) {
+  return (
+    <div className={clsx('flex max-w-md animate-pulse flex-col gap-2 rounded-xl', className)}>
+      {/* Image */}
+      <div className="aspect-[4/3] overflow-hidden rounded-xl bg-contrast-100" />
+
+      {/* Title */}
+      <div className="h-4 w-24 rounded-lg bg-contrast-100" />
+
+      {/* Content */}
+      <div className="h-3 w-full rounded-lg bg-contrast-100" />
+      <div className="h-3 w-full rounded-lg bg-contrast-100" />
+      <div className="h-3 w-1/2 rounded-lg bg-contrast-100" />
+
+      <div className="flex flex-wrap items-center">
+        {/* Date */}
+        <div className="h-4 w-16 rounded-lg bg-contrast-100" />
+        <span className="after:mx-2 after:text-contrast-100 after:content-['•']" />
+        {/* Author */}
+        <div className="h-4 w-20 rounded-lg bg-contrast-100" />
+      </div>
+    </div>
   )
 }
 

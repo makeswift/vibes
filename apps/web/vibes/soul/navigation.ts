@@ -37,6 +37,12 @@ export const navigation = [
         file: 'docs/blog-post-card.mdx',
         component: 'blog-post-card',
       },
+      {
+        title: 'Blog Post List',
+        slug: 'blog-post-list',
+        file: 'docs/blog-post-list.mdx',
+        component: 'blog-post-list',
+      },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
         title: 'Card',
@@ -67,7 +73,24 @@ export const navigation = [
         file: 'docs/product-card.mdx',
         component: 'product-card',
       },
-
+      {
+        title: 'Products Carousel',
+        slug: 'products-carousel',
+        file: 'docs/products-carousel.mdx',
+        component: 'products-carousel',
+      },
+      {
+        title: 'Product Description',
+        slug: 'product-description',
+        file: 'docs/product-description.mdx',
+        component: 'product-description',
+      },
+      {
+        title: 'Products List',
+        slug: 'products-list',
+        file: 'docs/products-list.mdx',
+        component: 'products-list',
+      },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
       {
         title: 'Slide Carousel',
@@ -82,6 +105,12 @@ export const navigation = [
     pages: [
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
+      {
+        title: 'Featured Blog Post List',
+        slug: 'featured-blog-post-list',
+        file: 'docs/featured-blog-post-list.mdx',
+        component: 'featured-blog-post-list',
+      },
       {
         title: 'Featured Image',
         slug: 'featured-image',
@@ -120,18 +149,6 @@ export const navigation = [
         component: 'icon-block',
       },
       {
-        title: 'Products Carousel',
-        slug: 'products-carousel',
-        file: 'docs/products-carousel.mdx',
-        component: 'products-carousel',
-      },
-      {
-        title: 'Product Description',
-        slug: 'product-description',
-        file: 'docs/product-description.mdx',
-        component: 'product-description',
-      },
-      {
         title: 'Product Detail',
         slug: 'product-detail',
         file: 'docs/product-detail.mdx',
@@ -142,12 +159,6 @@ export const navigation = [
         slug: 'products-header',
         file: 'docs/products-header.mdx',
         component: 'products-header',
-      },
-      {
-        title: 'Products List',
-        slug: 'products-list',
-        file: 'docs/products-list.mdx',
-        component: 'products-list',
       },
       { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
       {

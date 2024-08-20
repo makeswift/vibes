@@ -32,6 +32,13 @@ export const examples = [
     component: lazy(() => import('./examples/blog-post-card')),
   },
   {
+    name: 'blog-post-list-example',
+    dependencies: [],
+    registryDependencies: ['blog-post-list'],
+    files: ['examples/blog-post-list.tsx'],
+    component: lazy(() => import('./examples/blog-post-list')),
+  },
+  {
     name: 'button-example',
     dependencies: [],
     registryDependencies: ['button'],
@@ -86,6 +93,13 @@ export const examples = [
     registryDependencies: [],
     files: ['examples/feature.tsx'],
     component: lazy(() => import('./examples/feature')),
+  },
+  {
+    name: 'featured-blog-post-list-example',
+    dependencies: [],
+    registryDependencies: ['featured-blog-post-list'],
+    files: ['examples/featured-blog-post-list.tsx'],
+    component: lazy(() => import('./examples/featured-blog-post-list')),
   },
   {
     name: 'featured-image-example',

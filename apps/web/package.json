@@ -41,6 +41,7 @@
     "color": "^4.2.3",
     "embla-carousel": "^8.1.8",
     "embla-carousel-autoplay": "^8.1.8",
+    "embla-carousel-fade": "^8.1.8",
     "embla-carousel-react": "^8.1.8",
     "front-matter": "^4.0.2",
     "geist": "^1.2.2",
