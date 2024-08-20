@@ -5,7 +5,7 @@ import clsx from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 
-type Props = {
+interface Props {
   title: string
   description: string
   image: {

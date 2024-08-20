@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-type Props = {
+interface Props {
   label: string
   amount: number
   onClick: () => void

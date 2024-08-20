@@ -8,7 +8,7 @@ import { X } from 'lucide-react'
 
 import { Product } from '@/vibes/soul/components/product-card'
 
-type Props = {
+interface Props {
   product: Product
   onDismiss?: () => void
 }
