@@ -81,9 +81,9 @@ const useDotButton = (
   }
 }
 
-export const Slideshow = function Slideshow({ slides, interval = 3000, className }: Props) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 60 }, [
-    Autoplay({ delay: interval, playOnInit: true }),
+export const Slideshow = function Slideshow({ slides, interval = 5000, className }: Props) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 }, [
+    Autoplay({ delay: interval }),
     Fade(),
   ])
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
@@ -97,10 +97,6 @@ export const Slideshow = function Slideshow({ slides, interval = 3000, className
     const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play
     playOrStop()
   }, [emblaApi])
-
-  useEffect(() => {
-    console.log('isPlaying', isPlaying)
-  }, [isPlaying])
 
   useEffect(() => {
     const autoplay = emblaApi?.plugins()?.autoplay
@@ -152,17 +148,21 @@ export const Slideshow = function Slideshow({ slides, interval = 3000, className
                             {/* White Bar - Current Index Indicator / Progress Bar */}
                             <div
                               className={clsx(
-                                'absolute h-0.5 w-[calc-(228_/_3)] bg-background opacity-100 transition-transform duration-1000 ease-linear',
-                                index === selectedIndex ? 'translate-x-0' : '-translate-x-[101%]'
+                                'absolute h-0.5 bg-background',
+                                'fill-mode-both',
+                                isPlaying ? 'running' : 'paused',
+                                index === selectedIndex
+                                  ? 'ease-linear animate-in slide-in-from-left'
+                                  : 'ease-out animate-out fade-out'
                               )}
                               style={{
-                                transitionDuration: `${index === selectedIndex ? `${interval}ms` : '0s'}`,
+                                animationDuration: `${index === selectedIndex ? `${interval}ms` : '200ms'}`,
                                 width: `${175 / slides.length}px`,
                               }}
                             />
                             {/* Grey Bar BG */}
                             <div
-                              className="h-0.5 w-[calc-(228_/_3)] bg-background opacity-30"
+                              className="h-0.5 bg-background opacity-30"
                               style={{ width: `${175 / slides.length}px` }}
                             />
                           </div>
