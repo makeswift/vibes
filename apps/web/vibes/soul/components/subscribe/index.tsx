@@ -36,10 +36,10 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
           )}
         >
           <div className="w-full">
-            <h2 className="mb-2 font-heading text-4xl font-medium leading-none @7xl:text-5xl">
+            <h2 className="mb-4 font-heading text-4xl font-medium leading-none @7xl:text-5xl">
               {title}
             </h2>
-            <p className="text-[15px] opacity-50">{description}</p>
+            <p className="text-[15px] leading-tight opacity-50">{description}</p>
           </div>
 
           <InlineEmailForm />
