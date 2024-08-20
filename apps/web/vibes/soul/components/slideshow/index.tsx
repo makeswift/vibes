@@ -138,7 +138,7 @@ export const Slideshow = function Slideshow({ slides, interval = 3000, className
                   )}
 
                   {/* Controls */}
-                  <div className="flex items-center">
+                  <div className="flex flex-wrap items-center">
                     {/* Progress Buttons */}
                     {scrollSnaps.map((_: number, index: number) => {
                       return (
@@ -157,14 +157,13 @@ export const Slideshow = function Slideshow({ slides, interval = 3000, className
                               )}
                               style={{
                                 transitionDuration: `${index === selectedIndex ? `${interval}ms` : '0s'}`,
-                                width: `${190 / slides.length}px`,
-                                animationPlayState: isPlaying ? 'running' : 'paused',
+                                width: `${175 / slides.length}px`,
                               }}
                             />
                             {/* Grey Bar BG */}
                             <div
                               className="h-0.5 w-[calc-(228_/_3)] bg-background opacity-30"
-                              style={{ width: `${190 / slides.length}px` }}
+                              style={{ width: `${175 / slides.length}px` }}
                             />
                           </div>
                         </button>
@@ -182,6 +181,7 @@ export const Slideshow = function Slideshow({ slides, interval = 3000, className
                       className="flex h-7 w-7 items-center justify-center rounded-lg border"
                       onClick={toggleAutoplay}
                       type="button"
+                      aria-label={isPlaying ? 'Pause' : 'Play'}
                     >
                       {isPlaying ? (
                         <Pause strokeWidth={1.5} className="w-3.5" />
