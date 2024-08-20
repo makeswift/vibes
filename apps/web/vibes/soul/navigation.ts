@@ -67,7 +67,24 @@ export const navigation = [
         file: 'docs/product-card.mdx',
         component: 'product-card',
       },
-
+      {
+        title: 'Products Carousel',
+        slug: 'products-carousel',
+        file: 'docs/products-carousel.mdx',
+        component: 'products-carousel',
+      },
+      {
+        title: 'Product Description',
+        slug: 'product-description',
+        file: 'docs/product-description.mdx',
+        component: 'product-description',
+      },
+      {
+        title: 'Products List',
+        slug: 'products-list',
+        file: 'docs/products-list.mdx',
+        component: 'products-list',
+      },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
       {
         title: 'Slide Carousel',
@@ -120,18 +137,6 @@ export const navigation = [
         component: 'icon-block',
       },
       {
-        title: 'Products Carousel',
-        slug: 'products-carousel',
-        file: 'docs/products-carousel.mdx',
-        component: 'products-carousel',
-      },
-      {
-        title: 'Product Description',
-        slug: 'product-description',
-        file: 'docs/product-description.mdx',
-        component: 'product-description',
-      },
-      {
         title: 'Product Detail',
         slug: 'product-detail',
         file: 'docs/product-detail.mdx',
@@ -142,12 +147,6 @@ export const navigation = [
         slug: 'products-header',
         file: 'docs/products-header.mdx',
         component: 'products-header',
-      },
-      {
-        title: 'Products List',
-        slug: 'products-list',
-        file: 'docs/products-list.mdx',
-        component: 'products-list',
       },
       { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
       {
