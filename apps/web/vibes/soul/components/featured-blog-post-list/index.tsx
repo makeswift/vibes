@@ -24,31 +24,26 @@ export const FeaturedBlogPostList = function FeaturedBlogPostList({
 }: Props) {
   return (
     <section className="bg-background @container">
-      <div className="relative mx-auto flex max-w-screen-2xl flex-col gap-6 py-10 @4xl:flex-row @4xl:py-24 @5xl:px-20">
-        <div
-          className="4xl:w-1/2 top-28 flex w-full items-start justify-between gap-4 self-start px-3 
-            @xl:px-6 @4xl:sticky @4xl:max-w-md @4xl:flex-col @4xl:items-start @4xl:justify-start @5xl:px-0 @6xl:w-4/12
-          "
-        >
+      <div className="relative mx-auto max-w-screen-2xl px-3 py-20 @xl:px-6 @4xl:py-24 @5xl:px-20">
+        <div className="mb-6 flex w-full items-end justify-between @4xl:mb-8">
           <div>
-            {title && (
-              <h2 className="font-heading text-lg font-semibold leading-none text-foreground @4xl:text-6xl @4xl:font-medium">
-                {title}
-              </h2>
-            )}
-            {description && <p className="mt-1.5 max-w-md pb-2 text-foreground">{description}</p>}
+            <h2 className="mb-2 font-heading text-3xl font-semibold leading-none text-foreground @4xl:text-6xl @4xl:font-medium">
+              {title}
+            </h2>
+            {description && <p className="max-w-md text-foreground ">{description}</p>}
           </div>
           {cta && (
-            <Button
-              className="h-5 bg-transparent !px-0 text-sm @4xl:h-12 @4xl:bg-primary @4xl:!px-6"
-              asChild
-            >
-              <Link href={cta.href}>{cta.label}</Link>
-            </Button>
+            <Link href={cta.href} className="hidden @xl:block">
+              {cta.label}
+            </Link>
           )}
         </div>
-
-        <BlogPostList posts={posts} className="4xl:w-1/2 @6xl:w-8/12" />
+        <BlogPostList posts={posts} />
+        {cta && (
+          <Button className="mx-auto mt-12 bg-primary @4xl:mt-16" asChild>
+            <Link href={cta.href}>{cta.label}</Link>
+          </Button>
+        )}
       </div>
     </section>
   )
