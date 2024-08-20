@@ -187,6 +187,11 @@ export const navigation = [
         slug: 'page-products',
         file: 'docs/page-products.mdx',
       },
+      {
+        title: 'Blog',
+        slug: 'page-blog',
+        file: 'docs/page-blog.mdx',
+      },
     ],
   },
 ] satisfies Navigation

@@ -158,6 +158,13 @@ export const examples = [
     component: lazy(() => import('./examples/input')),
   },
   {
+    name: 'page-blog-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-blog.tsx'],
+    component: lazy(() => import('./examples/page-blog')),
+  },
+  {
     name: 'page-home-blue-example',
     dependencies: [],
     registryDependencies: [],
