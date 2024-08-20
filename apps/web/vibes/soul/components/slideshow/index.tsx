@@ -82,7 +82,7 @@ const useDotButton = (
 }
 
 export const Slideshow = function Slideshow({ slides, interval = 5000, className }: Props) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 }, [
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 20 }, [
     Autoplay({ delay: interval }),
     Fade(),
   ])
@@ -149,7 +149,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                             <div
                               className={clsx(
                                 'absolute h-0.5 bg-background',
-                                'fill-mode-both',
+                                'fill-mode-forwards',
                                 isPlaying ? 'running' : 'paused',
                                 index === selectedIndex
                                   ? 'ease-linear animate-in slide-in-from-left'
@@ -178,15 +178,15 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
 
                     {/* Stop / Start Button */}
                     <button
-                      className="flex h-7 w-7 items-center justify-center rounded-lg border"
+                      className="flex h-7 w-7 items-center justify-center rounded-lg border border-contrast-300/50 ring-primary transition-opacity duration-300 hover:border-contrast-300/80 focus-visible:outline-0 focus-visible:ring-2"
                       onClick={toggleAutoplay}
                       type="button"
                       aria-label={isPlaying ? 'Pause' : 'Play'}
                     >
                       {isPlaying ? (
-                        <Pause strokeWidth={1.5} className="w-3.5" />
+                        <Pause strokeWidth={1.5} className="pointer-events-none w-3.5" />
                       ) : (
-                        <Play strokeWidth={1.5} className="ml-0.5 w-3.5" />
+                        <Play strokeWidth={1.5} className="pointer-events-none ml-0.5 w-3.5" />
                       )}
                     </button>
                   </div>
