@@ -26,6 +26,12 @@ export const components = [
     files: ['components/blog-post-card/index.tsx'],
   },
   {
+    name: 'blog-post-list',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['components/blog-post-list/index.tsx'],
+  },
+  {
     name: 'button',
     dependencies: ['clsx', 'lucide-react', '@radix-ui/react-slot'],
     registryDependencies: [],
@@ -76,6 +82,12 @@ export const components = [
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['button'],
     files: ['components/feature/index.tsx', 'components/icon/index.tsx'],
+  },
+  {
+    name: 'featured-blog-post-list',
+    dependencies: [],
+    registryDependencies: ['button', 'blog-post-card'],
+    files: ['components/featured-blog-post-list/index.tsx'],
   },
   {
     name: 'featured-image',

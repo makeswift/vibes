@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
+import { BlogPost } from '@/vibes/soul/components/blog-post-card'
+import BlogPostList from '@/vibes/soul/components/blog-post-list'
 import Button from '@/vibes/soul/components/button'
-import { Product } from '@/vibes/soul/components/product-card'
-import ProductList from '@/vibes/soul/components/products-list'
 
 interface Link {
   label: string
@@ -13,14 +13,14 @@ interface Props {
   title: string
   description?: string
   cta?: Link
-  products: Product[]
+  posts: BlogPost[]
 }
 
-export const FeaturedProductsList = function FeaturedProductsList({
+export const FeaturedBlogPostList = function FeaturedBlogPostList({
   title,
   description,
   cta,
-  products,
+  posts,
 }: Props) {
   return (
     <section className="bg-background @container">
@@ -48,10 +48,10 @@ export const FeaturedProductsList = function FeaturedProductsList({
           )}
         </div>
 
-        <ProductList products={products} className="4xl:w-1/2 @6xl:w-8/12" />
+        <BlogPostList posts={posts} className="4xl:w-1/2 @6xl:w-8/12" />
       </div>
     </section>
   )
 }
 
-export default FeaturedProductsList
+export default FeaturedBlogPostList

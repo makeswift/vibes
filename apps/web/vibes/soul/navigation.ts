@@ -37,6 +37,12 @@ export const navigation = [
         file: 'docs/blog-post-card.mdx',
         component: 'blog-post-card',
       },
+      {
+        title: 'Blog Post List',
+        slug: 'blog-post-list',
+        file: 'docs/blog-post-list.mdx',
+        component: 'blog-post-list',
+      },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
         title: 'Card',
@@ -99,6 +105,12 @@ export const navigation = [
     pages: [
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
+      {
+        title: 'Featured Blog Post List',
+        slug: 'featured-blog-post-list',
+        file: 'docs/featured-blog-post-list.mdx',
+        component: 'featured-blog-post-list',
+      },
       {
         title: 'Featured Image',
         slug: 'featured-image',

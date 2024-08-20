@@ -16,7 +16,7 @@ import clsx from 'clsx'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
 interface Image {
-  url?: string
+  src?: string
   altText: string
 }
 
@@ -142,8 +142,8 @@ export const Header = forwardRef(function Header(
             href="/"
             className="mx-auto rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
-            {typeof logo === 'object' && logo?.url ? (
-              <Image src={logo.url} fill sizes="400px" alt={logo.altText} />
+            {typeof logo === 'object' && logo?.src ? (
+              <Image src={logo.src} fill sizes="400px" alt={logo.altText} />
             ) : (
               typeof logo === 'string' && (
                 <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
