@@ -24,7 +24,7 @@ export const FeaturedBlogPostList = function FeaturedBlogPostList({
 }: Props) {
   return (
     <section className="bg-background @container">
-      <div className="relative mx-auto max-w-screen-2xl px-3 pb-20 pt-24 @xl:px-6 @4xl:py-24 @5xl:px-20">
+      <div className="relative mx-auto max-w-screen-2xl px-3 pb-20 pt-24 @xl:px-6 @4xl:pt-28 @5xl:px-20">
         <h2 className="mb-2 font-heading text-3xl font-semibold leading-none text-foreground @4xl:text-6xl @4xl:font-medium">
           {title}
         </h2>
