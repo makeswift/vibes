@@ -1,12 +1,16 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import clsx from 'clsx'
+import { EmblaCarouselType } from 'embla-carousel'
+import Autoplay from 'embla-carousel-autoplay'
+import Fade from 'embla-carousel-fade'
+import useEmblaCarousel from 'embla-carousel-react'
+import { Pause, Play } from 'lucide-react'
 
 import Button from '@/vibes/soul/components/button'
-import ProgressSection from '@/vibes/soul/components/slideshow/progress-section'
 
 interface Link {
   label: string
@@ -27,72 +31,185 @@ export interface Slide {
 }
 interface Props {
   slides: Slide[]
+  interval?: number
   className?: string
 }
 
-export const Slideshow = function Slideshow({ slides, className }: Props) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+type UseDotButtonType = {
+  selectedIndex: number
+  scrollSnaps: number[]
+  onDotButtonClick: (index: number) => void
+}
+
+const useDotButton = (
+  emblaApi: EmblaCarouselType | undefined,
+  onButtonClick?: (emblaApi: EmblaCarouselType) => void
+): UseDotButtonType => {
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+
+  const onDotButtonClick = useCallback(
+    (index: number) => {
+      if (!emblaApi) return
+      emblaApi.scrollTo(index)
+      if (onButtonClick) onButtonClick(emblaApi)
+    },
+    [emblaApi, onButtonClick]
+  )
+
+  const onInit = useCallback((emblaApi: EmblaCarouselType) => {
+    setScrollSnaps(emblaApi.scrollSnapList())
+  }, [])
+
+  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+  }, [])
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const nextIndex = (currentIndex + 1) % slides.length
-      setCurrentIndex(nextIndex)
-    }, 5000)
+    if (!emblaApi) return
 
-    return () => clearTimeout(timer)
-  }, [currentIndex, slides.length, setCurrentIndex])
+    onInit(emblaApi)
+    onSelect(emblaApi)
+
+    emblaApi.on('reInit', onInit).on('reInit', onSelect).on('select', onSelect)
+  }, [emblaApi, onInit, onSelect])
+
+  return {
+    selectedIndex,
+    scrollSnaps,
+    onDotButtonClick,
+  }
+}
+
+export const Slideshow = function Slideshow({ slides, interval = 3000, className }: Props) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 60 }, [
+    Autoplay({ delay: interval, playOnInit: true }),
+    Fade(),
+  ])
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const toggleAutoplay = useCallback(() => {
+    const autoplay = emblaApi?.plugins()?.autoplay
+    if (!autoplay) return
+
+    const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play
+    playOrStop()
+  }, [emblaApi])
+
+  useEffect(() => {
+    console.log('isPlaying', isPlaying)
+  }, [isPlaying])
+
+  useEffect(() => {
+    const autoplay = emblaApi?.plugins()?.autoplay
+    if (!autoplay) return
+
+    setIsPlaying(autoplay.isPlaying())
+    emblaApi
+      .on('autoplay:play', () => setIsPlaying(true))
+      .on('autoplay:stop', () => setIsPlaying(false))
+      .on('reInit', () => setIsPlaying(autoplay.isPlaying()))
+  }, [emblaApi])
 
   return (
-    <header
-      className={clsx('relative h-dvh max-h-[880px] bg-primary-shadow @container', className)}
+    <section
+      ref={emblaRef}
+      className={clsx(
+        'h-dvh max-h-[880px] overflow-hidden bg-primary-shadow @container',
+        className
+      )}
     >
-      {slides?.map(({ title, description, image, cta }, idx) => {
-        return (
-          <div
-            key={idx}
-            className={clsx(
-              'absolute inset-0 transition-opacity duration-1000 ease-in-out',
-              currentIndex === idx ? 'z-10 opacity-100' : 'z-0 opacity-0'
-            )}
-          >
-            <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pt-20 text-background">
-              <div className="mx-auto max-w-screen-2xl px-3 @xl:px-6 @5xl:px-20">
-                <h1 className="mb-1 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
-                  {title}
-                </h1>
-                {description && <p className="max-w-xl">{description}</p>}
-                {cta?.href && (
-                  <Button variant="tertiary" className="mt-4">
-                    {cta.label}
-                  </Button>
-                )}
+      <div className="flex">
+        {slides?.map(({ title, description, image, cta }, idx) => {
+          return (
+            <div key={idx} className="relative h-dvh w-full min-w-0 shrink-0 grow-0 basis-full">
+              <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pb-5 pt-20 text-background">
+                <div className="mx-auto max-w-screen-2xl px-3 @xl:px-6 @5xl:px-20">
+                  <h1 className="mb-1 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
+                    {title}
+                  </h1>
+                  {description && <p className="max-w-xl">{description}</p>}
+                  {cta?.href && (
+                    <Button variant="tertiary" className="mt-4">
+                      {cta.label}
+                    </Button>
+                  )}
 
-                <ProgressSection
-                  currentIndex={currentIndex}
-                  slides={slides}
-                  setCurrentIndex={setCurrentIndex}
-                  className="z-10 w-full pb-2 pt-4 @lg:pb-8 @lg:pt-10"
-                />
+                  {/* Controls */}
+                  <div className="flex items-center">
+                    {/* Progress Buttons */}
+                    {scrollSnaps.map((_: number, index: number) => {
+                      return (
+                        <button
+                          aria-label={`View image number ${index + 1}`}
+                          key={index}
+                          className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
+                          onClick={() => onDotButtonClick(index)}
+                        >
+                          <div className="relative overflow-hidden">
+                            {/* White Bar - Current Index Indicator / Progress Bar */}
+                            <div
+                              className={clsx(
+                                'absolute h-0.5 w-[calc-(228_/_3)] bg-background opacity-100 transition-transform duration-1000 ease-linear',
+                                index === selectedIndex ? 'translate-x-0' : '-translate-x-[101%]'
+                              )}
+                              style={{
+                                transitionDuration: `${index === selectedIndex ? `${interval}ms` : '0s'}`,
+                                width: `${190 / slides.length}px`,
+                                animationPlayState: isPlaying ? 'running' : 'paused',
+                              }}
+                            />
+                            {/* Grey Bar BG */}
+                            <div
+                              className="h-0.5 w-[calc-(228_/_3)] bg-background opacity-30"
+                              style={{ width: `${190 / slides.length}px` }}
+                            />
+                          </div>
+                        </button>
+                      )
+                    })}
+
+                    {/* Carousel Count - "01/03" */}
+                    <span className="ml-auto mr-2 mt-px font-mono text-xs">
+                      {selectedIndex + 1 < 10 ? `0${selectedIndex + 1}` : selectedIndex + 1}/
+                      {slides.length < 10 ? `0${slides.length}` : slides.length}
+                    </span>
+
+                    {/* Stop / Start Button */}
+                    <button
+                      className="flex h-7 w-7 items-center justify-center rounded-lg border"
+                      onClick={toggleAutoplay}
+                      type="button"
+                    >
+                      {isPlaying ? (
+                        <Pause strokeWidth={1.5} className="w-3.5" />
+                      ) : (
+                        <Play strokeWidth={1.5} className="ml-0.5 w-3.5" />
+                      )}
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* TODO: Implement progressive loading with blurDataUrl */}
-            {image?.src && (
-              <Image
-                src={image.src}
-                placeholder={image.blurDataUrl ? 'blur' : 'empty'}
-                blurDataURL={image.blurDataUrl}
-                alt={image.altText}
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-              />
-            )}
-          </div>
-        )
-      })}
-    </header>
+              {image?.src && (
+                <Image
+                  src={image.src}
+                  placeholder={image.blurDataUrl ? 'blur' : 'empty'}
+                  blurDataURL={image.blurDataUrl}
+                  alt={image.altText}
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="block h-20 w-full object-cover"
+                />
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </section>
   )
 }
 
