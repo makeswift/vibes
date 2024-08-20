@@ -12,6 +12,7 @@ import {
 } from '@/vibes/soul/components/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
 import Header from '@/vibes/soul/components/header'
+import Subscribe from '@/vibes/soul/components/subscribe'
 import { posts } from '@/vibes/soul/examples/blog-post-list'
 import { headerLinks } from '@/vibes/soul/examples/header'
 
@@ -73,6 +74,15 @@ export const BlogPage = function BlogPage({ heroSlides, categories, newArrivals 
         description="Expert Tips & Inspiration for Every Plant Lover"
         cta={{ href: '#', label: 'View All' }}
         posts={posts}
+      />
+
+      <Subscribe
+        image={{
+          src: 'https://rstr.in/monogram/vibes/m12FEyfnuDl',
+          altText: 'Lady with plant',
+        }}
+        title="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
       />
 
       <Footer
