@@ -120,7 +120,7 @@ export const BlogPage = function BlogPage({ heroSlides, categories, newArrivals 
           address: 'info@mywebsite.com',
           phone: '+(1)408 123 4567',
         }}
-        copyright={`© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`}
+        copyright={`© ${new Date().getFullYear()} SOUL - Powered by Monogram`}
         paymentIcons={paymentIconsArray}
         socialMediaLinks={socialMediaLinks}
       />
