@@ -63,8 +63,8 @@ export const Button = function Button({
             'relative z-50 flex h-full items-center justify-center gap-2 transition-colors',
             loading && 'opacity-0',
             {
-              default: 'text-base [&>a]:px-6 [&>a]:py-[13px]',
-              small: 'text-sm [&>a]:px-4 [&>a]:py-2',
+              default: 'text-base [&>*]:px-6 [&>*]:py-[13px]',
+              small: 'text-sm [&>*]:px-4 [&>*]:py-2',
             }[size],
             {
               ['mix-blend-difference']: variant === 'secondary' || variant === 'tertiary',
