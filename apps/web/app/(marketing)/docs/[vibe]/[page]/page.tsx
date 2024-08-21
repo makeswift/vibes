@@ -9,6 +9,13 @@ import prettyBytes from 'pretty-bytes'
 import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
+import {
+  BrandColors,
+  BrandFonts,
+  BrandInstallation,
+  BrandTypography,
+  Colors,
+} from '@/components/brand'
 import * as MDXComponents from '@/components/mdx'
 import { navigation } from '@/components/navigation'
 import { Preview } from '@/components/preview'
@@ -16,9 +23,7 @@ import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import { CodeFromFile } from '@/components/ui/code-from-file'
-import { Colors } from '@/components/ui/colors'
-import { FontFamily } from '@/components/ui/font-family'
-import { FontSize } from '@/components/ui/font-size'
+import { Figma } from '@/components/ui/figma'
 import { IconsPreview } from '@/components/ui/icons-preview'
 import { Installation } from '@/components/ui/installation'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -26,6 +31,7 @@ import { Reveal } from '@/components/ui/reveal'
 import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ZoomImage } from '@/components/ui/zoom-image'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getTotalSize } from '@/lib/bundle'
 import { theme, transformers } from '@/lib/shiki'
@@ -94,14 +100,8 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       Button,
       ButtonLink,
       Colors,
-      CodeFromFile: function CodeFromFileWithoutBasePath(props) {
-        return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
-      },
-      Preview: function PreviewWithoutVibeSlug(props) {
-        return <Preview {...props} vibeSlug={vibe.slug} />
-      },
-      FontFamily,
-      FontSize,
+      Image: ZoomImage,
+      Figma,
       IconsPreview,
       Popover,
       PopoverContent,
@@ -114,6 +114,34 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       TabsContent,
       TabsList,
       TabsTrigger,
+      TailwindConfig: function TailwindConfig() {
+        return (
+          <Reveal>
+            <CodeFromFile
+              basePath={path.join(process.cwd(), 'vibes')}
+              pathname="tailwind.config.ts"
+            />
+          </Reveal>
+        )
+      },
+      BrandColors: function BrandColorsWithoutVibeSlug(props) {
+        return <BrandColors {...props} vibeSlug={vibe.slug} />
+      },
+      BrandInstallation: function BrandInstallationWithoutVibeSlug(props) {
+        return <BrandInstallation {...props} vibeSlug={vibe.slug} />
+      },
+      BrandTypography: function BrandTypographyWithoutVibeSlug(props) {
+        return <BrandTypography {...props} vibeSlug={vibe.slug} />
+      },
+      BrandFonts: function BrandTypographyWithoutVibeSlug(props) {
+        return <BrandFonts {...props} vibeSlug={vibe.slug} />
+      },
+      CodeFromFile: function CodeFromFileWithoutBasePath(props) {
+        return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
+      },
+      Preview: function PreviewWithoutVibeSlug(props) {
+        return <Preview {...props} vibeSlug={vibe.slug} />
+      },
     },
   })
 
@@ -156,6 +184,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:outline-primary prose-a:before:absolute prose-a:before:inset-x-0 prose-a:before:bottom-0 prose-a:before:h-[1px] prose-a:before:animate-scroll prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] prose-a:before:[animation-play-state:paused] hover:prose-a:before:[animation-play-state:running]',
               '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-contrast-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
               '[&:not(pre_code)]:prose-code:before:content-none [&:not(pre_code)]:prose-code:after:content-none',
+              '[&>.tabs]:my-8 [&>.tabs]:md:my-10',
               'prose-pre:my-0 prose-pre:outline-primary',
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5'
             )}
@@ -195,7 +224,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             </div>
           </div>
           <div className="not-prose hidden lg:block">
-            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-300 pb-10">
+            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-300">
               <TableOfContents offsetTop={90} />
               <div className="space-y-5 py-5">
                 {totalSize && (

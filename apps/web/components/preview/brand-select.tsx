@@ -18,11 +18,11 @@ export function BrandSelect() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="small">
-          {activeBrand?.name ?? 'Pick Brand'}
+          {activeBrand?.name ?? 'Pick a style'}
           <ChevronDown12 />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" sideOffset={2}>
+      <DropdownMenuContent align="start" sideOffset={2}>
         {brands.map(brand => (
           <DropdownMenuItem key={brand.name} onClick={() => setActiveBrand(brand)}>
             {brand.name}

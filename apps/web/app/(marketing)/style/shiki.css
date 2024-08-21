@@ -2,7 +2,8 @@
 
 @layer base {
   :root {
-    --shiki-line-highlight-color: hsl(0 0% 93%);
+    --shiki-highlight-color: hsl(0 0% 93%);
+    --shiki-highlight-border-color: hsl(0 0% 93%);
     --shiki-highlight-error-color: hsl(0 100% 90%);
     --shiki-highlight-warning-color: hsl(50 100% 90%);
     --shiki-line-diff-remove-color: hsl(0 100% 90%);
@@ -11,22 +12,22 @@
     --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
     --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
     --shiki-line-padding: 20px;
-    --shiki-gutter-width: 16px;
+    --shiki-gutter-width: 20px;
 
     --shiki-foreground: hsl(var(--foreground));
     --shiki-background: hsl(var(--background));
     --shiki-token-constant: hsl(var(--foreground));
-    --shiki-token-string: hsl(var(--contrast-400));
-    --shiki-token-comment: hsl(var(--contrast-300));
-    --shiki-token-keyword: hsl(var(--contrast-400));
-    --shiki-token-parameter: hsl(var(--contrast-400));
+    --shiki-token-string: hsla(var(--foreground) / 0.4);
+    --shiki-token-comment: hsla(var(--foreground) / 0.3);
+    --shiki-token-keyword: hsla(var(--foreground) / 0.4);
+    --shiki-token-parameter: hsla(var(--foreground) / 0.4);
     --shiki-token-function: hsl(var(--foreground));
-    --shiki-token-string-expression: hsl(var(--contrast-400));
-    --shiki-token-punctuation: hsl(var(--contrast-400));
-    --shiki-token-link: hsl(var(--contrast-400));
+    --shiki-token-string-expression: hsla(var(--foreground) / 0.4);
+    --shiki-token-punctuation: hsla(var(--foreground) / 0.4);
+    --shiki-token-link: hsla(var(--foreground) / 0.4);
 
     .line:before {
-      @apply text-contrast-300;
+      color: hsla(var(--foreground) / 0.3);
     }
   }
 
@@ -44,17 +45,17 @@
     --shiki-foreground: hsl(var(--foreground));
     --shiki-background: hsl(var(--background));
     --shiki-token-constant: hsl(var(--foreground));
-    --shiki-token-string: hsl(var(--contrast-400));
-    --shiki-token-comment: hsl(var(--contrast-300));
-    --shiki-token-keyword: hsl(var(--contrast-300));
-    --shiki-token-parameter: hsl(var(--contrast-400));
+    --shiki-token-string: hsla(var(--foreground) / 0.4);
+    --shiki-token-comment: hsla(var(--foreground) / 0.3);
+    --shiki-token-keyword: hsla(var(--foreground) / 0.4);
+    --shiki-token-parameter: hsla(var(--foreground) / 0.4);
     --shiki-token-function: hsl(var(--foreground));
-    --shiki-token-string-expression: hsl(var(--contrast-400));
-    --shiki-token-punctuation: hsl(var(--contrast-400));
-    --shiki-token-link: hsl(var(--contrast-400));
+    --shiki-token-string-expression: hsla(var(--foreground) / 0.4);
+    --shiki-token-punctuation: hsla(var(--foreground) / 0.4);
+    --shiki-token-link: hsla(var(--foreground) / 0.4);
 
     .line:before {
-      @apply text-contrast-200;
+      color: hsla(var(--foreground) / 0.3);
     }
   }
 }
@@ -151,7 +152,7 @@
 }
 
 .shiki .diff.remove:before {
-  content: '-';
+  /* content: '-'; */
   color: var(--shiki-line-diff-remove-symbol-color);
 }
 
@@ -160,7 +161,6 @@
 }
 
 .shiki .diff.add:before {
-  content: '+';
   color: var(--shiki-line-diff-add-symbol-color);
 }
 
