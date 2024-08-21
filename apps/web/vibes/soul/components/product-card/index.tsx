@@ -39,7 +39,7 @@ export const ProductCard = function ProductCard({
       id={id}
       href={href}
       className={clsx(
-        'group flex cursor-pointer flex-col gap-2 rounded-xl text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2',
+        'group flex cursor-pointer flex-col gap-2 rounded-xl text-foreground ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2',
         className
       )}
     >

@@ -109,7 +109,7 @@ export default function Preview() {
         src: 'https://rstr.in/monogram/vibes/5UckSov0byo',
         altText: 'SOUL Logo',
       }}
-      copyright={`© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`}
+      copyright={`© ${new Date().getFullYear()} SOUL - Powered by Monogram`}
       paymentIcons={paymentIconsArray}
       socialMediaLinks={socialMediaLinks}
       contactInformation={{

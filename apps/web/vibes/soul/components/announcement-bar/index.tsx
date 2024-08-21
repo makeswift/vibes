@@ -28,13 +28,16 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
 
   return (
     <div
+      id="announcement-bar"
       className={clsx(
         'relative w-full overflow-hidden bg-primary transition-all duration-300 ease-in @container',
-        banner.dismissed ? 'pointer-events-none max-h-0' : ' max-h-32',
+        banner.dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
         className
       )}
     >
-      <p className="p-2.5 pr-14 text-foreground @lg:text-center">{children}</p>
+      <p className="p-2.5 pr-14 text-sm text-foreground @lg:px-14 @lg:text-center @xl:text-base">
+        {children}
+      </p>
       <button
         role="button"
         aria-label="Dismiss banner"

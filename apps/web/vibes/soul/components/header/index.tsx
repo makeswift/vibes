@@ -50,13 +50,16 @@ export const Header = forwardRef(function Header(
 ) {
   const [navOpen, setNavOpen] = useState(false)
   const pathname = usePathname()
-  const container = useRef<HTMLDivElement>(null)
+  const container = useRef<HTMLUListElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const searchRef = useRef<HTMLDivElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const [selectedCategory, setSelectedCategory] = useState<number | null>(0)
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState<string | undefined>(activeLocale)
+  const [headerHeight, setHeaderHeight] = useState<number>(0)
+  const menuTriggerRef = useRef<HTMLAnchorElement | null>(null)
+  const firstCategoryLinkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
     setNavOpen(false)
@@ -70,7 +73,6 @@ export const Header = forwardRef(function Header(
 
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', navOpen)
-    setSearchOpen(false)
   }, [navOpen])
 
   useEffect(() => {
@@ -81,7 +83,6 @@ export const Header = forwardRef(function Header(
     }
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        setSearchOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -97,6 +98,39 @@ export const Header = forwardRef(function Header(
       searchInputRef.current.focus()
     }
   }, [searchOpen])
+
+  // Set the dropdown menu height based on the announcement bar presence/height
+  useEffect(() => {
+    const announcementBar = document.querySelector('#announcement-bar')
+    const navHeight = 72
+    if (announcementBar) {
+      const announcementBarHeight = announcementBar.clientHeight
+      if (window.scrollY > announcementBarHeight) {
+        setHeaderHeight(navHeight)
+      } else {
+        setHeaderHeight(announcementBarHeight + navHeight)
+      }
+    } else {
+      setHeaderHeight(navHeight)
+    }
+  }, [navOpen])
+
+  useEffect(() => {
+    // TODO: trap focus in category menu when it's open
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setNavOpen(false)
+        // Return focus to the menu item that opened the category menu
+        if (menuTriggerRef.current) {
+          menuTriggerRef.current.focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [menuRef])
 
   return (
     <ReactHeadroom
@@ -117,27 +151,43 @@ export const Header = forwardRef(function Header(
         className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
       >
         <nav
-          className="grid h-[60px] grid-cols-[1fr,auto,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] 
-          @4xl:mx-5 @4xl:rounded-[24px]"
+          className="relative grid h-[60px] grid-cols-[1fr,auto,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] 
+          @4xl:mx-5 @4xl:rounded-3xl"
         >
-          <div className="relative flex items-stretch pl-2.5" ref={container}>
+          {/* Top Level Nav Links */}
+          <ul className="relative flex items-stretch pl-2.5" ref={container}>
             {links?.map((item, i) => (
-              <Link
-                key={i}
-                href={item.href}
-                onMouseOver={() => {
-                  setSelectedCategory(i)
-                  setNavOpen(true)
-                  setSearchOpen(false)
-                }}
-                className="relative mx-0.5 my-2.5 hidden items-center rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200 
-                  hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
+              <li key={i}>
+                <Link
+                  href={item.href}
+                  onMouseOver={() => {
+                    setSelectedCategory(i)
+                    setNavOpen(true)
+                    setSearchOpen(false)
+                  }}
+                  onKeyDown={event => {
+                    if (event.key === 'Enter') {
+                      setSelectedCategory(i)
+                      setNavOpen(true)
+                      menuTriggerRef.current = event.currentTarget
 
+                      setTimeout(() => {
+                        if (firstCategoryLinkRef.current) {
+                          firstCategoryLinkRef.current.focus()
+                        }
+                      }, 0)
+                    }
+                  }}
+                  className="relative mx-0.5 my-2.5 hidden items-center whitespace-nowrap rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200
+                  hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Logo */}
           <Link
             href="/"
             className="mx-auto rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
@@ -153,8 +203,9 @@ export const Header = forwardRef(function Header(
             )}
           </Link>
 
-          <div className="ml-auto flex items-center gap-2 pr-3 transition-colors duration-300 @4xl:pr-2.5">
-            <div className="absolute left-3 flex items-center @4xl:relative @4xl:left-0">
+          <div className="ml-auto mr-1 flex items-center gap-0 transition-colors duration-300 @sm:mr-0 @4xl:mr-2.5">
+            {/* Mobile Buttons */}
+            <div className="absolute left-1 flex items-center @4xl:relative @4xl:left-0">
               {/* Hamburger Menu Button */}
               <button
                 onClick={() => setNavOpen(!navOpen)}
@@ -164,21 +215,21 @@ export const Header = forwardRef(function Header(
                 <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
                   <div
                     className={clsx(
-                      'h-[1px] origin-left transform  transition-all duration-300',
+                      'h-px origin-left transform transition-all duration-300',
                       navOpen ? 'translate-x-10' : 'w-7',
                       searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
                   />
                   <div
                     className={clsx(
-                      'h-[1px] transform rounded  transition-all delay-75 duration-300',
+                      'h-px transform rounded transition-all delay-75 duration-300',
                       navOpen ? 'translate-x-10' : 'w-7',
                       searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
                   />
                   <div
                     className={clsx(
-                      'h-[1px] origin-left transform bg-foreground transition-all delay-150 duration-300',
+                      'h-px origin-left transform transition-all delay-150 duration-300',
                       navOpen ? 'translate-x-10' : 'w-7',
                       searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
@@ -192,13 +243,13 @@ export const Header = forwardRef(function Header(
                   >
                     <div
                       className={clsx(
-                        'absolute h-[1px] w-4 transform bg-foreground transition-all delay-300 duration-500',
+                        'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
                         navOpen ? 'rotate-45' : 'rotate-0'
                       )}
                     />
                     <div
                       className={clsx(
-                        'absolute h-[1px] w-4 transform bg-foreground transition-all delay-300 duration-500',
+                        'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
                         navOpen ? '-rotate-45' : 'rotate-0'
                       )}
                     />
@@ -209,7 +260,10 @@ export const Header = forwardRef(function Header(
                 role="button"
                 aria-label="Search"
                 className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-                onClick={() => setSearchOpen(!searchOpen)}
+                onClick={() => {
+                  setNavOpen(false)
+                  setSearchOpen(!searchOpen)
+                }}
               >
                 <Search className="w-5" strokeWidth={1} />
               </button>
@@ -285,7 +339,7 @@ export const Header = forwardRef(function Header(
         <div
           ref={searchRef}
           className={clsx(
-            'absolute inset-x-0 mx-1.5 mt-1.5 flex items-center gap-3 overflow-y-auto rounded-[24px] px-3 py-4 shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @xl:px-5 @4xl:mx-5',
+            'absolute inset-x-0 mx-1.5 mt-1.5 flex items-center gap-3 overflow-y-auto rounded-3xl px-3 py-4 shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @xl:px-5 @4xl:mx-5',
             searchOpen
               ? 'scale-100 bg-background opacity-100'
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
@@ -332,55 +386,74 @@ export const Header = forwardRef(function Header(
         <div
           ref={menuRef}
           className={clsx(
-            'mx-1.5 mt-1.5 overflow-y-auto rounded-[24px] shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5',
+            'mx-1.5 mt-1.5 overflow-y-auto rounded-3xl shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5 @4xl:max-h-96',
             navOpen
-              ? 'h-[calc(100dvh-66px)] scale-100 bg-background opacity-100 @4xl:h-full @4xl:max-h-96'
+              ? 'scale-100 bg-background opacity-100 @4xl:h-full'
               : 'pointer-events-none h-0 scale-[0.99] select-none bg-transparent opacity-0'
           )}
+          style={{ maxHeight: `calc(100dvh - ${headerHeight}px)` }}
         >
           <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
+            {/* Mobile Dropdown Links */}
             {links?.map((item, i) => (
-              <div key={i} className="flex flex-col gap-2 p-3 @xl:p-5">
-                <Link
-                  href={item.href}
-                  className="rounded-lg px-3 py-4 font-semibold ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                >
-                  {item.label}
-                </Link>
+              <ul key={i} className="flex flex-col gap-1 p-3 @xl:p-5 @4xl:gap-2">
+                <li>
+                  <Link
+                    href={item.href}
+                    className="rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                    focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
+                    tabIndex={navOpen ? 0 : -1}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
                 {item.groups
                   ?.flatMap(group => group.links)
                   .map((link, j) => (
-                    <Link
-                      key={j}
-                      href={link.href}
-                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
-                    >
-                      {link.label}
-                    </Link>
+                    <li key={j}>
+                      <Link
+                        href={link.href}
+                        className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
+                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
+                        @4xl:py-4"
+                        tabIndex={navOpen ? 0 : -1}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
                   ))}
-              </div>
+              </ul>
             ))}
           </div>
           <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-5">
+            {/* Desktop Dropdown Links */}
             {selectedCategory !== null &&
               links?.[selectedCategory]?.groups?.map((group, columnIndex) => (
-                <div key={columnIndex} className="flex flex-col gap-1 p-5">
-                  <Link
-                    href={group.href}
-                    className="block rounded-lg px-3 py-4 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                  >
-                    {group.label}
-                  </Link>
-                  {group.links.map((link, i) => (
+                <ul key={columnIndex} className="flex flex-col gap-1 p-5">
+                  {/* Second Level Links */}
+                  <li>
                     <Link
-                      key={i}
-                      href={link.href}
-                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                      href={group.href}
+                      className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                      tabIndex={navOpen ? 0 : -1}
+                      ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
                     >
-                      {link.label}
+                      {group.label}
                     </Link>
+                  </li>
+                  {group.links.map((link, i) => (
+                    // Third Level Links
+                    <li key={i}>
+                      <Link
+                        href={link.href}
+                        className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                        tabIndex={navOpen ? 0 : -1}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
                   ))}
-                </div>
+                </ul>
               ))}
           </div>
         </div>
