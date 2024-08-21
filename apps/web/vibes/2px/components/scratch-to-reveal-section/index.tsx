@@ -6,7 +6,7 @@ interface Props {
   backgroundChildren: React.ReactNode
   coverImage: { url: string; alt: string }
 }
-const BRUSH_RADIUS = 50
+const BRUSH_RADIUS = 60
 
 const CLICKABLE_ELEMENTS = ['button', 'a']
 
@@ -64,26 +64,15 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
   }, [])
 
   const stopDrawing = useCallback(() => {
-    if (!isDrawing.current) return
-    isDrawing.current = false
     prevPos.current = null
   }, [])
 
-  const isDrawing = useRef(false)
   const prevPos = useRef<{
     canvasX: number
     canvasY: number
   } | null>(null)
 
-  const startDrawing = useCallback(() => {
-    isDrawing.current = true
-  }, [])
-
   const draw = useCallback(({ canvasX, canvasY }: { canvasX: number; canvasY: number }) => {
-    if (!isDrawing.current) {
-      return
-    }
-
     const ctx = canvasRef.current?.getContext('2d')
     if (!ctx) {
       return
@@ -108,34 +97,6 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
     }
   }, [])
 
-  const handleMouseDown = useCallback(
-    (e: MouseEvent) => {
-      if (isClickableElement(e)) return
-
-      startDrawing()
-
-      const bounds = canvasRef.current?.getBoundingClientRect()
-
-      if (!bounds) {
-        return
-      }
-
-      draw({
-        canvasX: e.offsetX,
-        canvasY: e.offsetY,
-      })
-    },
-    [draw, startDrawing, isClickableElement]
-  )
-
-  const handleMouseUp = useCallback(
-    (e: MouseEvent) => {
-      e.preventDefault()
-      stopDrawing()
-    },
-    [stopDrawing]
-  )
-
   const handleMouseLeave = useCallback(
     (e: MouseEvent) => {
       e.preventDefault()
@@ -153,13 +114,15 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
       const canvas = canvasRef.current
       if (!canvas) return
 
-      if (isDrawing.current) {
-        draw({
-          canvasX: e.offsetX,
-          canvasY: e.offsetY,
-        })
-        return
-      }
+      const bounds = canvas.getBoundingClientRect()
+
+      const offsetX = e.clientX - bounds.left
+      const offsetY = e.clientY - bounds.top
+
+      draw({
+        canvasX: offsetX,
+        canvasY: offsetY,
+      })
 
       if (isTransparent(e.offsetX, e.offsetY)) {
         canvas.style.pointerEvents = 'none'
@@ -168,25 +131,6 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
       }
     },
     [draw, isTransparent, isClickableElement]
-  )
-
-  const handleTouchStart = useCallback(
-    (e: TouchEvent) => {
-      if (isClickableElement(e)) return
-
-      startDrawing()
-
-      const bounds = canvasRef.current?.getBoundingClientRect()
-
-      if (!bounds) {
-        return
-      }
-      draw({
-        canvasX: e.touches[0].clientX - bounds.left,
-        canvasY: e.touches[0].clientY - bounds.top,
-      })
-    },
-    [draw, startDrawing, isClickableElement]
   )
 
   const handleTouchEnd = useCallback(
@@ -220,13 +164,10 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
       const canvas = canvasRef.current
       if (!canvas) return
 
-      if (isDrawing.current) {
-        draw({
-          canvasX: e.touches[0].clientX - bounds.left,
-          canvasY: e.touches[0].clientY - bounds.top,
-        })
-        return
-      }
+      draw({
+        canvasX: e.touches[0].clientX - bounds.left,
+        canvasY: e.touches[0].clientY - bounds.top,
+      })
 
       if (isTransparent(e.touches[0].clientX - bounds.left, e.touches[0].clientY - bounds.top)) {
         canvas.style.pointerEvents = 'none'
@@ -242,35 +183,20 @@ export default function ScratchToRevealSection({ backgroundChildren, coverImage 
 
     if (!container) return
 
-    container.addEventListener('mousedown', handleMouseDown)
     container.addEventListener('mousemove', handleMouseMove)
-    container.addEventListener('mouseup', handleMouseUp)
     container.addEventListener('mouseleave', handleMouseLeave)
-    container.addEventListener('touchstart', handleTouchStart)
     container.addEventListener('touchmove', handleTouchMove)
     container.addEventListener('touchend', handleTouchEnd)
     container.addEventListener('touchcancel', handleTouchCancel)
 
     return () => {
-      container.removeEventListener('mousedown', handleMouseDown)
       container.removeEventListener('mousemove', handleMouseMove)
-      container.removeEventListener('mouseup', handleMouseUp)
       container.removeEventListener('mouseleave', handleMouseLeave)
-      container.removeEventListener('touchstart', handleTouchStart)
       container.removeEventListener('touchmove', handleTouchMove)
       container.removeEventListener('touchend', handleTouchEnd)
       container.removeEventListener('touchcancel', handleTouchCancel)
     }
-  }, [
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
-    handleMouseLeave,
-    handleTouchStart,
-    handleTouchMove,
-    handleTouchEnd,
-    handleTouchCancel,
-  ])
+  }, [handleMouseMove, handleTouchMove])
 
   return (
     <section className="relative w-full select-none @container" ref={containerRef}>

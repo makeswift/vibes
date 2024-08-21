@@ -53,6 +53,18 @@ export const examples = [
     component: lazy(() => import('./examples/text-area')),
   },
   {
+    name: 'popover-example',
+    dependencies: [],
+    registryDependencies: ['popover', 'button'],
+    files: [
+      'examples/popover.tsx',
+      'components/icons/MinusSolidIcon.tsx',
+      'components/icons/PlusSolidIcon',
+      '../../utils.ts',
+    ],
+    component: lazy(() => import('./examples/popover')),
+  },
+  {
     name: 'skeleton-example',
     dependencies: [],
     registryDependencies: ['skeleton'],
@@ -121,6 +133,13 @@ export const examples = [
     registryDependencies: ['carousel-section', 'product-card'],
     files: ['examples/carousel-section.tsx'],
     component: lazy(() => import('./examples/carousel-section')),
+  },
+  {
+    name: 'products-carousel-example',
+    dependencies: [],
+    registryDependencies: ['products-carousel', 'product-card'],
+    files: ['examples/products-carousel.tsx'],
+    component: lazy(() => import('./examples/products-carousel')),
   },
   {
     name: 'media-and-text-section-example',
@@ -297,6 +316,13 @@ export const examples = [
     component: lazy(() => import('./examples/gallery')),
   },
   {
+    name: 'newsletter-section-example',
+    dependencies: [],
+    registryDependencies: ['newsletter-section'],
+    files: ['examples/newsletter-section.tsx'],
+    component: lazy(() => import('./examples/newsletter-section')),
+  },
+  {
     name: 'header-example',
     dependencies: [],
     registryDependencies: ['header'],
@@ -316,5 +342,12 @@ export const examples = [
     registryDependencies: ['date-picker'],
     files: ['examples/date-picker.tsx'],
     component: lazy(() => import('./examples/date-picker')),
+  },
+  {
+    name: 'homepage-example',
+    dependencies: [],
+    registryDependencies: ['header', 'footer-section'],
+    files: ['examples/homepage.tsx'],
+    component: lazy(() => import('./examples/homepage')),
   },
 ] satisfies Components

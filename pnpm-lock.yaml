@@ -47,6 +47,9 @@ importers:
       '@radix-ui/react-accordion':
         specifier: ^1.1.2
         version: 1.2.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-checkbox':
+        specifier: ^1.1.1
+        version: 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-collapsible':
         specifier: ^1.1.0
         version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -68,6 +71,9 @@ importers:
       '@radix-ui/react-portal':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-radio-group':
+        specifier: ^1.2.0
+        version: 1.2.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.3.3)(react@18.3.1)
@@ -77,6 +83,9 @@ importers:
       '@radix-ui/react-toast':
         specifier: ^1.1.5
         version: 1.1.5(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-visually-hidden':
+        specifier: ^1.1.0
+        version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@react-email/components':
         specifier: ^0.0.19
         version: 0.0.19(@types/react@18.3.3)(react@18.3.1)
@@ -101,6 +110,21 @@ importers:
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
+      color:
+        specifier: ^4.2.3
+        version: 4.2.3
+      embla-carousel:
+        specifier: ^8.1.8
+        version: 8.2.0
+      embla-carousel-autoplay:
+        specifier: ^8.1.8
+        version: 8.2.0(embla-carousel@8.2.0)
+      embla-carousel-fade:
+        specifier: ^8.1.8
+        version: 8.2.0(embla-carousel@8.2.0)
+      embla-carousel-react:
+        specifier: ^8.1.8
+        version: 8.2.0(react@18.3.1)
       front-matter:
         specifier: ^4.0.2
         version: 4.0.2
@@ -155,6 +179,9 @@ importers:
       react-hook-form:
         specifier: ^7.51.3
         version: 7.51.3(react@18.3.1)
+      react-medium-image-zoom:
+        specifier: ^5.2.8
+        version: 5.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       remark-frontmatter:
         specifier: ^5.0.0
         version: 5.0.0
@@ -192,6 +219,9 @@ importers:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.3.3)
+      '@types/color':
+        specifier: ^3.0.6
+        version: 3.0.6
       '@types/node':
         specifier: ^20.14.2
         version: 20.14.2
@@ -654,6 +684,19 @@ packages:
       '@types/react-dom':
         optional: true
 
+  '@radix-ui/react-checkbox@1.1.1':
+    resolution: {integrity: sha512-0i/EKJ222Afa1FE0C6pNJxDq1itzcl3HChE9DwskA4th4KRse8ojx8a1nVcOjwJdbpDLcz7uol77yYnQNMHdKw==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@radix-ui/react-collapsible@1.1.0':
     resolution: {integrity: sha512-zQY7Epa8sTL0mq4ajSJpjgn2YmCgyrG7RsQgLp3C0LQVkG7+Tf6Pv1CeNWZLyqMjhdPkBa5Lx7wYBeSu7uCSTA==}
     peerDependencies:
@@ -1004,6 +1047,19 @@ packages:
       '@types/react-dom':
         optional: true
 
+  '@radix-ui/react-radio-group@1.2.0':
+    resolution: {integrity: sha512-yv+oiLaicYMBpqgfpSPw6q+RyXlLdIpQWDHZbUKURxe+nEh53hFXPPlfhfQQtYkS5MMK/5IWIa76SksleQZSzw==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@radix-ui/react-roving-focus@1.0.4':
     resolution: {integrity: sha512-2mUg5Mgcu001VkGy+FfzZyzbmuUWzgWkj3rvv4yu+mLw03+mTzbxZHvfcGyFp2b8EkQeMkpRQ5FiA2Vr2O6TeQ==}
     peerDependencies:
@@ -1169,6 +1225,15 @@ packages:
     peerDependencies:
       '@types/react': '*'
       react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  '@radix-ui/react-use-size@1.1.0':
+    resolution: {integrity: sha512-XW3/vWuIXHa+2Uwcc2ABSfcCledmXhhQPlGbfcRXbiUQI5Icjcg19BGCZVKKInYbvUCut/ufbbLLPFC5cbb1hw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -1612,6 +1677,15 @@ packages:
 
   '@types/acorn@4.0.6':
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
+
+  '@types/color-convert@2.0.3':
+    resolution: {integrity: sha512-2Q6wzrNiuEvYxVQqhh7sXM2mhIhvZR/Paq4FdsQkOMgWsCIkKvSGj8Le1/XalulrmgOzPMqNa0ix+ePY4hTrfg==}
+
+  '@types/color-name@1.1.4':
+    resolution: {integrity: sha512-hulKeREDdLFesGQjl96+4aoJSHY5b2GRjagzzcqCfIrWhe5vkCqIvrLbqzBaI1q94Vg8DNJZZqTR5ocdWmWclg==}
+
+  '@types/color@3.0.6':
+    resolution: {integrity: sha512-NMiNcZFRUAiUUCCf7zkAelY8eV3aKqfbzyFQlXpPIEeoNDbsEHGpb854V3gzTsGKYj830I5zPuOwU/TP5/cW6A==}
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
@@ -2219,8 +2293,31 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  electron-to-chromium@1.4.796:
-    resolution: {integrity: sha512-NglN/xprcM+SHD2XCli4oC6bWe6kHoytcyLKCWXmRL854F0qhPhaYgUswUsglnPxYaNQIg2uMY4BvaomIf3kLA==}
+  electron-to-chromium@1.5.13:
+    resolution: {integrity: sha512-lbBcvtIJ4J6sS4tb5TLp1b4LyfCdMkwStzXPyAgVgTRAsep4bvrAGaBOP7ZJtQMNJpSQ9SqG4brWOroNaQtm7Q==}
+
+  embla-carousel-autoplay@8.2.0:
+    resolution: {integrity: sha512-+u5I5h27tnEl9D5IiY4n3Q5DrT2XuNggZ6P/785cETYZslEVGHPevbyzuryxGNi1taXfrgvwrbMnisfUyUmytw==}
+    peerDependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel-fade@8.2.0:
+    resolution: {integrity: sha512-Gbm9hSlsB2EUwhE4sM5+R+8uY0zKqflZmkzgu/4beLx5Z4AV7CG2hgxxfDUg5DHe18FfQyFrCFcYFog+N21jBA==}
+    peerDependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel-react@8.2.0:
+    resolution: {integrity: sha512-dWqbmaEBQjeAcy/EKrcAX37beVr0ubXuHPuLZkx27z58V1FIvRbbMb4/c3cLZx0PAv/ofngX2QFrwUB+62SPnw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
+
+  embla-carousel-reactive-utils@8.2.0:
+    resolution: {integrity: sha512-ZdaPNgMydkPBiDRUv+wRIz3hpZJ3LKrTyz+XWi286qlwPyZFJDjbzPBiXnC3czF9N/nsabSc7LTRvGauUzwKEg==}
+    peerDependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel@8.2.0:
+    resolution: {integrity: sha512-rf2GIX8rab9E6ZZN0Uhz05746qu2KrDje9IfFyHzjwxLwhvGjUt6y9+uaY1Sf+B0OPSa3sgas7BE2hWZCtopTA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -3615,6 +3712,12 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
+  react-medium-image-zoom@5.2.8:
+    resolution: {integrity: sha512-ivnubZi/2GQcMTneQy5gjLxEQLenKu081844qqZ7/JvLxSh5YPF1TLq7s+5rc54dKa0jjPT8Zm2tiC0Sda6eIA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+
   react-promise-suspense@0.3.4:
     resolution: {integrity: sha512-I42jl7L3Ze6kZaq+7zXWSunBa3b1on5yfvUW6Eo/3fFOj6dZ5Bqmcd264nJbTK/gn1HjjILAjSwnZbV4RpSaNQ==}
 
@@ -4764,6 +4867,22 @@ snapshots:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
+  '@radix-ui/react-checkbox@1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@radix-ui/primitive': 1.1.0
+      '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-presence': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-previous': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-size': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
+
   '@radix-ui/react-collapsible@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/primitive': 1.1.0
@@ -5121,6 +5240,24 @@ snapshots:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
+  '@radix-ui/react-radio-group@1.2.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@radix-ui/primitive': 1.1.0
+      '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-direction': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-presence': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-roving-focus': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-previous': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-size': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
+
   '@radix-ui/react-roving-focus@1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.23.9
@@ -5282,6 +5419,13 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.23.9
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
+
+  '@radix-ui/react-use-size@1.1.0(@types/react@18.3.3)(react@18.3.1)':
+    dependencies:
+      '@radix-ui/react-use-layout-effect': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
     optionalDependencies:
       '@types/react': 18.3.3
@@ -5821,6 +5965,16 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.5
 
+  '@types/color-convert@2.0.3':
+    dependencies:
+      '@types/color-name': 1.1.4
+
+  '@types/color-name@1.1.4': {}
+
+  '@types/color@3.0.6':
+    dependencies:
+      '@types/color-convert': 2.0.3
+
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 0.7.34
@@ -6213,7 +6367,7 @@ snapshots:
   browserslist@4.23.1:
     dependencies:
       caniuse-lite: 1.0.30001629
-      electron-to-chromium: 1.4.796
+      electron-to-chromium: 1.5.13
       node-releases: 2.0.14
       update-browserslist-db: 1.0.16(browserslist@4.23.1)
 
@@ -6470,7 +6624,27 @@ snapshots:
       minimatch: 9.0.1
       semver: 7.6.0
 
-  electron-to-chromium@1.4.796: {}
+  electron-to-chromium@1.5.13: {}
+
+  embla-carousel-autoplay@8.2.0(embla-carousel@8.2.0):
+    dependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel-fade@8.2.0(embla-carousel@8.2.0):
+    dependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel-react@8.2.0(react@18.3.1):
+    dependencies:
+      embla-carousel: 8.2.0
+      embla-carousel-reactive-utils: 8.2.0(embla-carousel@8.2.0)
+      react: 18.3.1
+
+  embla-carousel-reactive-utils@8.2.0(embla-carousel@8.2.0):
+    dependencies:
+      embla-carousel: 8.2.0
+
+  embla-carousel@8.2.0: {}
 
   emoji-regex@8.0.0: {}
 
@@ -8247,6 +8421,11 @@ snapshots:
       react: 18.3.1
 
   react-is@16.13.1: {}
+
+  react-medium-image-zoom@5.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   react-promise-suspense@0.3.4:
     dependencies:

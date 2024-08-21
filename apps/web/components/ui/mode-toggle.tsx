@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Moon, Sun } from '@/icons/generated'
+import { Desktop16, Moon, Moon16, Sun, Sun16 } from '@/icons/generated'
 
 export function ModeToggle() {
   const { setTheme } = useTheme()
@@ -29,9 +29,15 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={2}>
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('light')}>
+          <Sun16 className="mt-0.5" /> Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>
+          <Moon16 className="mt-0.5" /> Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>
+          <Desktop16 className="mt-0.5" /> System
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

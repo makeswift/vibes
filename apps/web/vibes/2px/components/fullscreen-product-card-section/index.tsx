@@ -37,6 +37,8 @@ export default function FullscreenProductCardSection({
 }: Props) {
   const [count, setCount] = useState(1)
 
+  const onCountChange = (value: number | '') => setCount(Number(value))
+
   return (
     <section
       className={cn(
@@ -64,7 +66,7 @@ export default function FullscreenProductCardSection({
               'text-foreground': detailsColor === 'dark',
             })}
             min={1}
-            onChange={setCount}
+            onChange={onCountChange}
             value={count}
           />
           <Button

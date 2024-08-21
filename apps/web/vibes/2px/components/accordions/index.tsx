@@ -1,29 +1,45 @@
-import * as Accordion from '@radix-ui/react-accordion'
+import * as AccordionPrimitive from '@radix-ui/react-accordion'
 
 import { cn } from '@/lib/utils'
 import { ChevronDownIcon } from '@/vibes/2px/components/icons/ChevronDownIcon'
 
-export type AccordionItem = {
-  title: React.ReactNode
-  body: React.ReactNode
+export type Accordion = {
+  title: string | React.ReactNode
+  content: React.ReactNode
 }
 
-interface Props {
-  className?: string
-  accordions: AccordionItem[]
-  type?: 'single' | 'multiple'
-}
+type Props =
+  | {
+      className?: string
+      accordions: Accordion[]
+      defaultValue?: string
+      type: 'single'
+    }
+  | {
+      className?: string
+      accordions: Accordion[]
+      defaultValue?: string[]
+      type: 'multiple'
+    }
 
-const Accordions = ({ className, accordions, type = 'multiple' }: Props) => {
+export default function Accordions({ className, accordions, defaultValue, type }: Props) {
+  type AccordionType = typeof type extends 'single'
+    ? AccordionPrimitive.AccordionSingleProps
+    : AccordionPrimitive.AccordionMultipleProps
   return (
-    <Accordion.Root type={type} className={cn('w-full font-body @container', className)} asChild>
+    <AccordionPrimitive.Root
+      type={type as AccordionType['type']}
+      className={cn('w-full font-body @container', className)}
+      defaultValue={defaultValue as AccordionType['defaultValue']}
+      asChild
+    >
       <ul className="relative w-full ">
         {accordions.map((accordion, i) => (
           <div key={i}>
-            <Accordion.Item value={`${i + 1}`} asChild>
+            <AccordionPrimitive.Item value={`${i + 1}`} asChild>
               <li className="group relative pl-2 pr-2 pt-5 text-sm font-medium text-foreground @lg:pl-0 @lg:pt-10 @lg:text-lg">
-                <Accordion.Header>
-                  <Accordion.Trigger asChild>
+                <AccordionPrimitive.Header>
+                  <AccordionPrimitive.Trigger asChild>
                     <div className="flex w-full cursor-pointer items-center justify-between @lg:pr-5">
                       <div className="flex-grow text-left font-body ">{accordion.title}</div>
                       <ChevronDownIcon
@@ -32,19 +48,17 @@ const Accordions = ({ className, accordions, type = 'multiple' }: Props) => {
                         width={16}
                       />
                     </div>
-                  </Accordion.Trigger>
-                </Accordion.Header>
-                <Accordion.Content className="mt-5 w-full overflow-hidden @lg:pr-5">
-                  <div className="">{accordion.body}</div>
-                </Accordion.Content>
+                  </AccordionPrimitive.Trigger>
+                </AccordionPrimitive.Header>
+                <AccordionPrimitive.Content className="mt-5 w-full overflow-hidden @lg:pr-5">
+                  <div className="">{accordion.content}</div>
+                </AccordionPrimitive.Content>
               </li>
-            </Accordion.Item>
+            </AccordionPrimitive.Item>
             <div className="mt-5 h-0.5 w-full bg-foreground @lg:mt-10" />
           </div>
         ))}
       </ul>
-    </Accordion.Root>
+    </AccordionPrimitive.Root>
   )
 }
-
-export default Accordions

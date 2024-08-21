@@ -7,24 +7,14 @@ import { ChevronLeftIcon } from '@/vibes/2px/components/icons/ChevronLeftIcon'
 
 import Styles from './index.module.css'
 
-export type Slide = {
-  item?: React.ReactNode
-  key?: string | number
-}
-
 interface Props {
   className?: string
   title?: string
-  loop?: boolean
-  autoplay?: number
-  slides: Slide[]
-  itemsShown?: number
-  mobileItemsShown?: number
-  showDots?: boolean
+  items: React.ReactNode[]
   showArrows: boolean
 }
 
-export default function CarouselSection({ className, title, slides, showArrows }: Props) {
+export default function CarouselSection({ className, title, items, showArrows }: Props) {
   const carouselRef = useRef<HTMLDivElement>(null)
 
   const scrollLeft = () => {
@@ -76,8 +66,8 @@ export default function CarouselSection({ className, title, slides, showArrows }
         className={cn('carousel flex w-full overflow-scroll', Styles['hide-scrollbar'])}
         ref={carouselRef}
       >
-        {slides.map((slide, index) => (
-          <div key={slide.key ?? index}>{slide.item}</div>
+        {items.map((item, index) => (
+          <div key={index}>{item}</div>
         ))}
       </div>
     </section>

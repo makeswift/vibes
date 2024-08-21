@@ -28,10 +28,28 @@ export function CopyButton({ className, clipboard, children }: Props) {
     >
       {children}
 
-      <div className="relative h-4 w-4">
-        <div className="absolute bottom-0 left-0 h-3 w-3 rounded border-[1.5px] border-dashed border-foreground bg-background"></div>
-        <div className="absolute right-0 top-0 h-3 w-3 rounded border-[1.5px] border-foreground bg-background transition-transform duration-150 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"></div>
-      </div>
+      <svg className="h-4 w-4 overflow-visible stroke-foreground" viewBox="0 0 16 16">
+        <rect
+          x="0.75"
+          y="4.75"
+          width="10.5"
+          height="10.5"
+          rx="3.5"
+          fill="transparent"
+          stroke-width="1.5"
+          stroke-dasharray="3 1.5"
+        />
+        <rect
+          x="4.75"
+          y="0.75"
+          width="10.5"
+          height="10.5"
+          rx="3.5"
+          fill="white"
+          stroke-width="1.5"
+          className="transition-transform duration-150 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"
+        />
+      </svg>
     </Button>
   )
 }

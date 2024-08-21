@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { ComponentPropsWithRef, useRef } from 'react'
 
 import { cn } from '@/lib/utils'
 import { MinusDashedIcon } from '@/vibes/2px/components/icons/MinusDashedIcon'
@@ -8,15 +8,17 @@ import { MinusSolidIcon } from '@/vibes/2px/components/icons/MinusSolidIcon'
 import { PlusDashedIcon } from '@/vibes/2px/components/icons/PlusDashedIcon'
 import { PlusSolidIcon } from '@/vibes/2px/components/icons/PlusSolidIcon'
 
-interface Props
-  extends Omit<React.HTMLAttributes<HTMLInputElement>, 'type' | 'className' | 'onChange'> {
-  size?: 'sm' | 'md' | 'lg'
+interface Props extends Omit<ComponentPropsWithRef<'input'>, 'onChange' | 'size'> {
   className?: string
-  step?: number
-  min?: number
+  error?: boolean
+  defaultValue?: number | ''
+  isInteger?: boolean
   max?: number
+  min?: number
+  onChange?: (value: number | '') => void
+  size?: 'sm' | 'md' | 'lg'
+  step?: number
   value?: number
-  onChange?: (value: number) => void
 }
 
 export default function Counter({

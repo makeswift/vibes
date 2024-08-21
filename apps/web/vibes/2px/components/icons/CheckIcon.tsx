@@ -10,14 +10,10 @@ export const CheckIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      strokeWidth="2"
       {...props}
     >
-      <path
-        d="M16 3L6.375 13L2 8.45455"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="square"
-      />
+      <path d="M16 3L6.375 13L2 8.45455" stroke="currentColor" strokeLinecap="square" />
     </svg>
   )
 }
