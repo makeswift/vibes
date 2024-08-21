@@ -35,8 +35,8 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
             !image ? 'flex-col gap-x-10 py-20 @2xl:flex-row' : 'flex-col py-10 @3xl:gap-y-16'
           )}
         >
-          <div className="w-full @2xl:max-w-lg">
-            <h2 className="mb-4 font-heading text-4xl font-medium leading-none @7xl:text-5xl">
+          <div className="w-full">
+            <h2 className="mb-4 font-heading text-4xl font-medium leading-none @2xl:max-w-lg @7xl:text-5xl">
               {title}
             </h2>
             <p className="opacity-50 @2xl:max-w-sm">{description}</p>
