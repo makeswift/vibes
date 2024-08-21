@@ -39,7 +39,7 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
             <h2 className="mb-4 font-heading text-4xl font-medium leading-none @7xl:text-5xl">
               {title}
             </h2>
-            <p className="text-[15px] leading-tight opacity-50">{description}</p>
+            <p className="opacity-50">{description}</p>
           </div>
 
           <InlineEmailForm />
