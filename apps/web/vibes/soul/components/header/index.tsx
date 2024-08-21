@@ -57,6 +57,7 @@ export const Header = forwardRef(function Header(
   const [selectedCategory, setSelectedCategory] = useState<number | null>(0)
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState<string | undefined>(activeLocale)
+  const [headerHeight, setHeaderHeight] = useState<number>(0)
 
   useEffect(() => {
     setNavOpen(false)
@@ -70,7 +71,6 @@ export const Header = forwardRef(function Header(
 
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', navOpen)
-    setSearchOpen(false)
   }, [navOpen])
 
   useEffect(() => {
@@ -98,6 +98,21 @@ export const Header = forwardRef(function Header(
     }
   }, [searchOpen])
 
+  useEffect(() => {
+    const announcementBar = document.querySelector('#announcement-bar')
+    const navHeight = 72
+    if (announcementBar) {
+      const announcementBarHeight = announcementBar.clientHeight
+      if (window.scrollY > announcementBarHeight) {
+        setHeaderHeight(navHeight)
+      } else {
+        setHeaderHeight(announcementBarHeight + navHeight)
+      }
+    } else {
+      setHeaderHeight(navHeight)
+    }
+  }, [navOpen])
+
   return (
     <ReactHeadroom
       {...rest}
@@ -120,6 +135,7 @@ export const Header = forwardRef(function Header(
           className="grid h-[60px] grid-cols-[1fr,auto,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] 
           @4xl:mx-5 @4xl:rounded-[24px]"
         >
+          {/* Top Level Nav Links */}
           <div className="relative flex items-stretch pl-2.5" ref={container}>
             {links?.map((item, i) => (
               <Link
@@ -130,7 +146,7 @@ export const Header = forwardRef(function Header(
                   setNavOpen(true)
                   setSearchOpen(false)
                 }}
-                className="relative mx-0.5 my-2.5 hidden items-center rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200 
+                className="relative mx-0.5 my-2.5 hidden items-center whitespace-nowrap rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200
                   hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
               >
                 {item.label}
@@ -138,6 +154,7 @@ export const Header = forwardRef(function Header(
             ))}
           </div>
 
+          {/* Logo */}
           <Link
             href="/"
             className="mx-auto rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
@@ -153,8 +170,9 @@ export const Header = forwardRef(function Header(
             )}
           </Link>
 
-          <div className="ml-auto flex items-center gap-2 pr-3 transition-colors duration-300 @4xl:pr-2.5">
-            <div className="absolute left-3 flex items-center @4xl:relative @4xl:left-0">
+          <div className="ml-auto mr-1 flex items-center gap-0 transition-colors duration-300 @sm:mr-0 @4xl:mr-2.5">
+            {/* Mobile Buttons */}
+            <div className="absolute left-1 flex items-center @4xl:relative @4xl:left-0">
               {/* Hamburger Menu Button */}
               <button
                 onClick={() => setNavOpen(!navOpen)}
@@ -164,21 +182,21 @@ export const Header = forwardRef(function Header(
                 <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
                   <div
                     className={clsx(
-                      'h-[1px] origin-left transform  transition-all duration-300',
+                      'h-px origin-left transform transition-all duration-300',
                       navOpen ? 'translate-x-10' : 'w-7',
                       searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
                   />
                   <div
                     className={clsx(
-                      'h-[1px] transform rounded  transition-all delay-75 duration-300',
+                      'h-px transform rounded  transition-all delay-75 duration-300',
                       navOpen ? 'translate-x-10' : 'w-7',
                       searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
                   />
                   <div
                     className={clsx(
-                      'h-[1px] origin-left transform bg-foreground transition-all delay-150 duration-300',
+                      'h-px origin-left transform transition-all delay-150 duration-300',
                       navOpen ? 'translate-x-10' : 'w-7',
                       searchOpen ? 'bg-contrast-300' : 'bg-foreground'
                     )}
@@ -192,13 +210,13 @@ export const Header = forwardRef(function Header(
                   >
                     <div
                       className={clsx(
-                        'absolute h-[1px] w-4 transform bg-foreground transition-all delay-300 duration-500',
+                        'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
                         navOpen ? 'rotate-45' : 'rotate-0'
                       )}
                     />
                     <div
                       className={clsx(
-                        'absolute h-[1px] w-4 transform bg-foreground transition-all delay-300 duration-500',
+                        'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
                         navOpen ? '-rotate-45' : 'rotate-0'
                       )}
                     />
@@ -209,7 +227,10 @@ export const Header = forwardRef(function Header(
                 role="button"
                 aria-label="Search"
                 className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-                onClick={() => setSearchOpen(!searchOpen)}
+                onClick={() => {
+                  setNavOpen(false)
+                  setSearchOpen(!searchOpen)
+                }}
               >
                 <Search className="w-5" strokeWidth={1} />
               </button>
@@ -332,18 +353,20 @@ export const Header = forwardRef(function Header(
         <div
           ref={menuRef}
           className={clsx(
-            'mx-1.5 mt-1.5 overflow-y-auto rounded-[24px] shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5',
+            'mx-1.5 mt-1.5 overflow-y-auto rounded-[24px] shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5 @4xl:max-h-96',
             navOpen
-              ? 'h-[calc(100dvh-66px)] scale-100 bg-background opacity-100 @4xl:h-full @4xl:max-h-96'
+              ? ' scale-100 bg-background opacity-100 @4xl:h-full'
               : 'pointer-events-none h-0 scale-[0.99] select-none bg-transparent opacity-0'
           )}
+          style={{ maxHeight: `calc(100dvh - ${headerHeight}px)` }}
         >
           <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
             {links?.map((item, i) => (
-              <div key={i} className="flex flex-col gap-2 p-3 @xl:p-5">
+              <div key={i} className="flex flex-col gap-1 p-3 @xl:p-5 @4xl:gap-2">
                 <Link
                   href={item.href}
-                  className="rounded-lg px-3 py-4 font-semibold ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                  className="rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                    focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                 >
                   {item.label}
                 </Link>
@@ -353,7 +376,9 @@ export const Header = forwardRef(function Header(
                     <Link
                       key={j}
                       href={link.href}
-                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                      className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
+                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
+                        @4xl:py-4"
                     >
                       {link.label}
                     </Link>
@@ -365,17 +390,19 @@ export const Header = forwardRef(function Header(
             {selectedCategory !== null &&
               links?.[selectedCategory]?.groups?.map((group, columnIndex) => (
                 <div key={columnIndex} className="flex flex-col gap-1 p-5">
+                  {/* Second Level Links */}
                   <Link
                     href={group.href}
-                    className="block rounded-lg px-3 py-4 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                    className="block rounded-lg  px-3 py-4 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
                   >
                     {group.label}
                   </Link>
                   {group.links.map((link, i) => (
+                    // Third Level Links
                     <Link
                       key={i}
                       href={link.href}
-                      className="block rounded-lg px-3 py-4 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                      className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
                     >
                       {link.label}
                     </Link>
