@@ -10,7 +10,7 @@ export const CalendarIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({
       viewBox="0 0 16 16"
       fill="none"
       className={className}
-      stroke="black"
+      stroke="currentColor"
       {...props}
     >
       <path d="M5 3H1V15H15V3H11M5 3V0M5 3H11M5 3V6M11 3V0M11 3V6" strokeWidth="2" />

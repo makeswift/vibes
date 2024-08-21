@@ -2,7 +2,12 @@
 
 import { useRef, useState } from 'react'
 
-import { DateValue, parseAbsoluteToLocal, parseDate } from '@internationalized/date'
+import {
+  DateValue,
+  getLocalTimeZone,
+  parseAbsoluteToLocal,
+  parseDate,
+} from '@internationalized/date'
 import { DateInput, DateInputProps, DateInputValue } from '@nextui-org/date-input'
 
 import { cn } from '@/lib/utils'
@@ -81,7 +86,7 @@ export default function DatePicker({
           className={cn('absolute bottom-full left-1/2 z-10 mb-6 -translate-x-1/2', {
             hidden: !calendarOpen,
           })}
-          selectedDate={valueToUse ? new Date(valueToUse.toString()) : undefined}
+          selectedDate={valueToUse ? valueToUse?.toDate(getLocalTimeZone()) : undefined}
         />
       </div>
     </div>
