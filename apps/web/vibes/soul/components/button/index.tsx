@@ -28,14 +28,14 @@ export const Button = function Button({
         'select-none text-center font-medium leading-normal',
         'border border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2',
         {
+          ['px-4 py-2 text-sm']: !asChild && size === 'small',
+          ['px-6 py-[13px] text-base']: !asChild && size === 'default',
+        },
+        {
           primary: 'bg-primary text-foreground ring-primary-shadow',
           secondary: 'bg-foreground text-background ring-primary hover:border-foreground ',
           tertiary: 'bg-background text-background ring-primary hover:border-background',
         }[variant],
-        {
-          default: 'px-6 py-[13px] text-base',
-          small: 'px-4 py-2 text-sm',
-        }[size],
         // After Pseudo Element / Animated Background Styles
         'after:absolute after:inset-0 after:z-0 after:h-full after:w-full after:rounded-full',
         'after:transition-[opacity,transform] after:duration-300 after:ease-out',
@@ -62,6 +62,10 @@ export const Button = function Button({
           className={clsx(
             'relative z-50 flex h-full items-center justify-center gap-2 transition-colors',
             loading && 'opacity-0',
+            {
+              default: 'text-base [&>a]:px-6 [&>a]:py-[13px]',
+              small: 'text-sm [&>a]:px-4 [&>a]:py-2',
+            }[size],
             {
               ['mix-blend-difference']: variant === 'secondary' || variant === 'tertiary',
             }
