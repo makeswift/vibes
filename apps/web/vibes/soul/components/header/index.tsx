@@ -393,7 +393,7 @@ export const Header = forwardRef(function Header(
                   {/* Second Level Links */}
                   <Link
                     href={group.href}
-                    className="block rounded-lg  px-3 py-4 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                    className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
                   >
                     {group.label}
                   </Link>
