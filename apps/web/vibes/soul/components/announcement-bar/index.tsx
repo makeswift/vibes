@@ -35,7 +35,9 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
         className
       )}
     >
-      <p className="p-2.5 pr-14 text-foreground @lg:text-center">{children}</p>
+      <p className="p-2.5 pr-14 text-sm text-foreground @lg:text-center @xl:text-base">
+        {children}
+      </p>
       <button
         role="button"
         aria-label="Dismiss banner"
