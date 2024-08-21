@@ -8,7 +8,7 @@ import { MinusSolidIcon } from '@/vibes/2px/components/icons/MinusSolidIcon'
 import { PlusDashedIcon } from '@/vibes/2px/components/icons/PlusDashedIcon'
 import { PlusSolidIcon } from '@/vibes/2px/components/icons/PlusSolidIcon'
 
-interface Props extends Omit<ComponentPropsWithRef<'input'>, 'onChange' | 'size'> {
+export interface Props extends Omit<ComponentPropsWithRef<'input'>, 'onChange' | 'size'> {
   className?: string
   error?: boolean
   defaultValue?: number | ''
@@ -67,7 +67,7 @@ export default function Counter({
   return (
     <div className={cn('w-full font-medium text-foreground', className)}>
       <div className="flex w-fit items-center font-body">
-        <button className="minus-button group" onClick={decrement}>
+        <button className="minus-button group" onClick={decrement} type="button">
           <MinusSolidIcon
             className={cn('block group-hover:hidden', {
               'h-5 w-5 ': size === 'sm',
@@ -98,7 +98,7 @@ export default function Counter({
           {...props}
           {...(value !== undefined ? { value } : { defaultValue })}
         />
-        <button className="plus-button group" onClick={increment}>
+        <button className="plus-button group" onClick={increment} type="button">
           <PlusSolidIcon
             className={cn('block group-hover:hidden', {
               'h-5 w-5 ': size === 'sm',

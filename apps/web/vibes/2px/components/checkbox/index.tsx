@@ -5,7 +5,7 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { cn } from '@/lib/utils'
 import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
 
-interface Props extends ComponentPropsWithRef<typeof CheckboxPrimitive.Root> {
+export interface Props extends ComponentPropsWithRef<typeof CheckboxPrimitive.Root> {
   error?: boolean
 }
 

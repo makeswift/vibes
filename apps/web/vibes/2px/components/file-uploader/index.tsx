@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { CheckIcon } from '@/vibes/2px/components/icons/CheckIcon'
 import { CrossIcon } from '@/vibes/2px/components/icons/CrossIcon'
 
-interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'ref'> {
+export interface Props extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'ref'> {
   variant?: 'default' | 'success' | 'error'
   errorMessage?: string
 }
