@@ -28,9 +28,10 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
 
   return (
     <div
+      id="announcement-bar"
       className={clsx(
         'relative w-full overflow-hidden bg-primary transition-all duration-300 ease-in @container',
-        banner.dismissed ? 'pointer-events-none max-h-0' : ' max-h-32',
+        banner.dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
         className
       )}
     >
