@@ -154,14 +154,6 @@ export const Header = forwardRef(function Header(
           className="relative grid h-[60px] grid-cols-[1fr,auto,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] 
           @4xl:mx-5 @4xl:rounded-3xl"
         >
-          {/* TODO: Check that this works with Makeswift */}
-          <a
-            href="#main-content"
-            className="sr-only rounded-3xl text-sm ring-primary focus:not-sr-only focus:absolute focus:left-0 focus:top-[70px] focus:bg-background focus:p-3 focus:text-foreground focus:outline-0 focus:ring-2"
-          >
-            Skip to Main Content
-          </a>
-
           {/* Top Level Nav Links */}
           <ul className="relative flex items-stretch pl-2.5" ref={container}>
             {links?.map((item, i) => (

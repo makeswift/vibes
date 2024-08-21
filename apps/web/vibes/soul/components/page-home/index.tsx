@@ -66,77 +66,76 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
 
-      <div className="relative flex flex-col">
-        <Header
-          links={headerLinks}
-          logo="SOUL"
-          cartHref="#"
-          accountHref="#"
-          locales={locales}
-          activeLocale="EN"
-        />
+      <Header
+        links={headerLinks}
+        logo="SOUL"
+        cartHref="#"
+        accountHref="#"
+        locales={locales}
+        activeLocale="EN"
+      />
 
-        <Slideshow slides={heroSlides} />
+      <Slideshow slides={heroSlides} />
 
-        <CardCarousel cards={categories} />
+      <CardCarousel cards={categories} />
 
-        <FeaturedImage
-          title="Pro-Team"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      <FeaturedImage
+        title="Pro-Team"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-          image={{
-            src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ',
-            altText: 'Close up of a plant',
-          }}
-          cta={{ href: '#', label: 'Shop Now' }}
-        />
+        image={{
+          src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ',
+          altText: 'Close up of a plant',
+        }}
+        cta={{ href: '#', label: 'Shop Now' }}
+      />
 
-        <FeaturedProductsList
-          title="Our Plants"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-          cta={{ label: 'Shop Now', href: '#' }}
-          products={featuredProducts}
-        />
+      <FeaturedProductsList
+        title="Our Plants"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+        cta={{ label: 'Shop Now', href: '#' }}
+        products={featuredProducts}
+      />
 
-        <Subscribe
-          title="Sign up for our newsletter"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        />
+      <Subscribe
+        title="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+      />
 
-        <FeaturedProductsCarousel
-          title="New Arrivals"
-          cta={{ label: 'See All', href: '#' }}
-          products={newArrivals || featuredProducts}
-        />
+      <FeaturedProductsCarousel
+        title="New Arrivals"
+        cta={{ label: 'See All', href: '#' }}
+        products={newArrivals || featuredProducts}
+      />
 
-        <Feature
-          image={{
-            url: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
-            alt: 'Close up of a plant',
-          }}
-          heading="For Your Home"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-          link={{
-            label: 'Shop Now',
-            href: '#',
-            target: '_self',
-          }}
-        />
+      <Feature
+        image={{
+          url: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
+          alt: 'Close up of a plant',
+        }}
+        heading="For Your Home"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+        link={{
+          label: 'Shop Now',
+          href: '#',
+          target: '_self',
+        }}
+      />
 
-        <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
+      <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
 
-        <FeaturedImage
-          title="Pro-Team"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      <FeaturedImage
+        title="Pro-Team"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
-          image={{
-            src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
-            altText: 'Close up of a plant',
-          }}
-          cta={{ href: '#', label: 'Shop Now' }}
-        />
+        image={{
+          src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
+          altText: 'Close up of a plant',
+        }}
+        cta={{ href: '#', label: 'Shop Now' }}
+      />
 
-        {/* <FeaturedVideo
+      {/* <FeaturedVideo
           title="Pro-Team"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           labore et dolore magna aliqua."
@@ -145,51 +144,50 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
           mediaAlign="left"
         /> */}
 
-        <Subscribe
-          title="Sign up for our newsletter"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        />
+      <Subscribe
+        title="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+      />
 
-        <Footer
-          logo="SOUL"
-          sections={[
-            {
-              title: 'Categories',
-              links: [
-                { label: 'Coats & Jackets', href: '#' },
-                { label: 'T-Shirts', href: '#' },
-                { label: 'Sweatshirts', href: '#' },
-                { label: 'Pants', href: '#' },
-              ],
-            },
-            {
-              title: 'Company',
-              links: [
-                { label: 'About', href: '#' },
-                { label: 'Stories', href: '#' },
-                { label: 'Careers', href: '#' },
-                { label: 'Stores', href: '#' },
-              ],
-            },
-            {
-              title: 'Help & Support',
-              links: [
-                { label: 'FAQs', href: '#' },
-                { label: 'Contact Us', href: '#' },
-                { label: 'Returns', href: '#' },
-                { label: 'Shipping', href: '#' },
-              ],
-            },
-          ]}
-          contactInformation={{
-            address: 'info@mywebsite.com',
-            phone: '+(1)408 123 4567',
-          }}
-          copyright={`© ${new Date().getFullYear()} SOUL - Powered by BigCommerce`}
-          paymentIcons={paymentIconsArray}
-          socialMediaLinks={socialMediaLinks}
-        />
-      </div>
+      <Footer
+        logo="SOUL"
+        sections={[
+          {
+            title: 'Categories',
+            links: [
+              { label: 'Coats & Jackets', href: '#' },
+              { label: 'T-Shirts', href: '#' },
+              { label: 'Sweatshirts', href: '#' },
+              { label: 'Pants', href: '#' },
+            ],
+          },
+          {
+            title: 'Company',
+            links: [
+              { label: 'About', href: '#' },
+              { label: 'Stories', href: '#' },
+              { label: 'Careers', href: '#' },
+              { label: 'Stores', href: '#' },
+            ],
+          },
+          {
+            title: 'Help & Support',
+            links: [
+              { label: 'FAQs', href: '#' },
+              { label: 'Contact Us', href: '#' },
+              { label: 'Returns', href: '#' },
+              { label: 'Shipping', href: '#' },
+            ],
+          },
+        ]}
+        contactInformation={{
+          address: 'info@mywebsite.com',
+          phone: '+(1)408 123 4567',
+        }}
+        copyright={`© ${new Date().getFullYear()} SOUL - Powered by Monogram`}
+        paymentIcons={paymentIconsArray}
+        socialMediaLinks={socialMediaLinks}
+      />
     </>
   )
 }
