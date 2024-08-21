@@ -35,7 +35,7 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
         className
       )}
     >
-      <p className="p-2.5 pr-14 text-sm text-foreground @lg:text-center @xl:text-base">
+      <p className="p-2.5 pr-14 text-sm text-foreground @lg:px-14 @lg:text-center @xl:text-base">
         {children}
       </p>
       <button
