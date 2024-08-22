@@ -123,7 +123,7 @@ export const posts: BlogPost[] = [
 
 export default function Preview() {
   return (
-    <div className="py-6">
+    <div className="p-6">
       <BlogFeed posts={posts} />
     </div>
   )
