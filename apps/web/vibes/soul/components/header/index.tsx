@@ -396,11 +396,11 @@ export const Header = forwardRef(function Header(
           <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
             {/* Mobile Dropdown Links */}
             {links?.map((item, i) => (
-              <ul key={i} className="flex flex-col gap-1 p-3 @xl:p-5 @4xl:gap-2">
+              <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
                 <li>
                   <Link
                     href={item.href}
-                    className="rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                    className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
                     focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                     tabIndex={navOpen ? 0 : -1}
                   >
