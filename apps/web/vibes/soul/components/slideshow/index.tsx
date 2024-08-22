@@ -138,7 +138,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                     </h1>
                     {description && <p className="max-w-xl">{description}</p>}
                     {cta?.href && (
-                      <Button variant="tertiary" className="mt-4">
+                      <Button variant="tertiary" className="my-4">
                         {cta.label}
                       </Button>
                     )}
