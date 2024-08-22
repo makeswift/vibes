@@ -175,7 +175,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                     'opacity-0 fill-mode-forwards',
                     isPlaying ? 'running' : 'paused',
                     index === selectedIndex
-                      ? 'opacity ease-linear animate-in slide-in-from-left'
+                      ? 'opacity-100 ease-linear animate-in slide-in-from-left'
                       : 'ease-out animate-out fade-out'
                   )}
                   style={{
