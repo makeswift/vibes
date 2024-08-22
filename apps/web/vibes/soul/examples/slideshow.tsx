@@ -2,8 +2,9 @@ import Slideshow from '@/vibes/soul/components/slideshow'
 
 export const heroSlides = [
   {
-    title: 'Slide 1',
-    description: 'Description',
+    title: 'The Gift of Giving',
+    description:
+      'Celebrate life’s moments by gifting a symbol of care and nurturing, bringing a touch of greenery into the lives of those you cherish.',
     image: {
       src: 'https://rstr.in/monogram/vibes/fzVuE9iZ4mI',
       altText: 'alt',
@@ -14,8 +15,9 @@ export const heroSlides = [
     },
   },
   {
-    title: 'Slide 2',
-    description: 'Description',
+    title: 'The Gift of Giving',
+    description:
+      'Celebrate life’s moments by gifting a symbol of care and nurturing, bringing a touch of greenery into the lives of those you cherish.',
     image: {
       src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
       altText: 'alt',
@@ -26,8 +28,9 @@ export const heroSlides = [
     },
   },
   {
-    title: 'Slide 3',
-    description: 'Description',
+    title: 'The Gift of Giving',
+    description:
+      'Celebrate life’s moments by gifting a symbol of care and nurturing, bringing a touch of greenery into the lives of those you cherish.',
     image: {
       src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
       altText: 'alt',
