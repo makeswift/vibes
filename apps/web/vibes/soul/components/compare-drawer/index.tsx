@@ -38,8 +38,10 @@ export const CompareDrawer = function CompareDrawer({ products }: Props) {
             <ProductChip key={index} product={product} onDismiss={() => handleDismiss(index)} />
           ))}
 
-          <Button>
-            Compare<span className="-ml-1.5 hidden @4xl:block">&nbsp;Items</span>
+          <Button asChild>
+            <div className="flex">
+              Compare<span className="hidden @4xl:block">&nbsp;Items</span>
+            </div>
           </Button>
         </div>
       </div>
