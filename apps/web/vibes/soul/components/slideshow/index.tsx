@@ -35,7 +35,7 @@ interface Props {
   className?: string
 }
 
-type UseDotButtonType = {
+interface UseDotButtonType {
   selectedIndex: number
   scrollSnaps: number[]
   onDotButtonClick: (index: number) => void
@@ -87,8 +87,8 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
     Fade(),
   ])
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-
   const [isPlaying, setIsPlaying] = useState(false)
+  const [playCount, setPlayCount] = useState(0)
 
   const toggleAutoplay = useCallback(() => {
     const autoplay = emblaApi?.plugins()?.autoplay
@@ -98,16 +98,26 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
     playOrStop()
   }, [emblaApi])
 
+  const resetAutoplay = useCallback(() => {
+    const autoplay = emblaApi?.plugins()?.autoplay
+    if (!autoplay) return
+
+    autoplay.reset()
+  }, [emblaApi])
+
   useEffect(() => {
     const autoplay = emblaApi?.plugins()?.autoplay
     if (!autoplay) return
 
     setIsPlaying(autoplay.isPlaying())
     emblaApi
-      .on('autoplay:play', () => setIsPlaying(true))
+      .on('autoplay:play', () => {
+        setIsPlaying(true)
+        setPlayCount(playCount + 1)
+      })
       .on('autoplay:stop', () => setIsPlaying(false))
       .on('reInit', () => setIsPlaying(autoplay.isPlaying()))
-  }, [emblaApi])
+  }, [emblaApi, playCount])
 
   return (
     <section
@@ -122,7 +132,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
             return (
               <div key={idx} className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full">
                 <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pb-5 pt-20 text-background">
-                  <div className="mx-auto max-w-screen-2xl px-3 pb-12 @xl:px-6 @5xl:px-20">
+                  <div className="mx-auto max-w-screen-2xl px-3 pb-8 @xl:px-6 @5xl:px-20">
                     <h1 className="mb-4 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
                       {title}
                     </h1>
@@ -164,18 +174,19 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
               className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
               onClick={() => {
                 onDotButtonClick(index)
-                !isPlaying && toggleAutoplay()
+                resetAutoplay()
               }}
             >
               <div className="relative overflow-hidden">
                 {/* White Bar - Current Index Indicator / Progress Bar */}
                 <div
+                  key={`progress-${playCount}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
                   className={clsx(
                     'absolute h-0.5 bg-background',
-                    'fill-mode-forwards',
+                    'opacity-0 fill-mode-forwards',
                     isPlaying ? 'running' : 'paused',
                     index === selectedIndex
-                      ? 'ease-linear animate-in slide-in-from-left'
+                      ? 'opacity-100 ease-linear animate-in slide-in-from-left'
                       : 'ease-out animate-out fade-out'
                   )}
                   style={{
