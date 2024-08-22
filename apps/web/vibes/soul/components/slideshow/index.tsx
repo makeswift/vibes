@@ -35,20 +35,20 @@ interface Props {
   className?: string
 }
 
-interface UseDotButtonType {
+interface UseProgressButtonType {
   selectedIndex: number
   scrollSnaps: number[]
-  onDotButtonClick: (index: number) => void
+  onProgressButtonClick: (index: number) => void
 }
 
-const useDotButton = (
+const useProgressButton = (
   emblaApi: EmblaCarouselType | undefined,
   onButtonClick?: (emblaApi: EmblaCarouselType) => void
-): UseDotButtonType => {
+): UseProgressButtonType => {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
 
-  const onDotButtonClick = useCallback(
+  const onProgressButtonClick = useCallback(
     (index: number) => {
       if (!emblaApi) return
       emblaApi.scrollTo(index)
@@ -77,7 +77,7 @@ const useDotButton = (
   return {
     selectedIndex,
     scrollSnaps,
-    onDotButtonClick,
+    onProgressButtonClick,
   }
 }
 
@@ -86,7 +86,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
     Autoplay({ delay: interval }),
     Fade(),
   ])
-  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+  const { selectedIndex, scrollSnaps, onProgressButtonClick } = useProgressButton(emblaApi)
   const [isPlaying, setIsPlaying] = useState(false)
   const [playCount, setPlayCount] = useState(0)
 
@@ -173,7 +173,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
               key={index}
               className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
               onClick={() => {
-                onDotButtonClick(index)
+                onProgressButtonClick(index)
                 resetAutoplay()
               }}
             >
