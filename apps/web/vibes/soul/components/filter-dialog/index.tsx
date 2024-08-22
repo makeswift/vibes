@@ -68,9 +68,11 @@ export const FilterDialog = function FilterDialog() {
   return (
     <Dialog.Root open={filterOpen} onOpenChange={setFilterOpen}>
       <Dialog.Trigger asChild>
-        <Button variant="secondary" size="small">
-          <span className="hidden @xl:block">Filter</span>
-          <Sliders size={18} />
+        <Button variant="secondary" size="small" asChild>
+          <div className="flex gap-2">
+            <span className="hidden @xl:block">Filter</span>
+            <Sliders size={18} />
+          </div>
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
