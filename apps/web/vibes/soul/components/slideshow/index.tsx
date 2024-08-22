@@ -35,7 +35,7 @@ interface Props {
   className?: string
 }
 
-type UseDotButtonType = {
+interface UseDotButtonType {
   selectedIndex: number
   scrollSnaps: number[]
   onDotButtonClick: (index: number) => void
@@ -87,8 +87,8 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
     Fade(),
   ])
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-
   const [isPlaying, setIsPlaying] = useState(false)
+  const [playCount, setPlayCount] = useState(0)
 
   const toggleAutoplay = useCallback(() => {
     const autoplay = emblaApi?.plugins()?.autoplay
@@ -98,16 +98,26 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
     playOrStop()
   }, [emblaApi])
 
+  const resetAutoplay = useCallback(() => {
+    const autoplay = emblaApi?.plugins()?.autoplay
+    if (!autoplay) return
+
+    autoplay.reset()
+  }, [emblaApi])
+
   useEffect(() => {
     const autoplay = emblaApi?.plugins()?.autoplay
     if (!autoplay) return
 
     setIsPlaying(autoplay.isPlaying())
     emblaApi
-      .on('autoplay:play', () => setIsPlaying(true))
+      .on('autoplay:play', () => {
+        setIsPlaying(true)
+        setPlayCount(playCount + 1)
+      })
       .on('autoplay:stop', () => setIsPlaying(false))
       .on('reInit', () => setIsPlaying(autoplay.isPlaying()))
-  }, [emblaApi])
+  }, [emblaApi, playCount])
 
   return (
     <section
@@ -164,12 +174,13 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
               className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
               onClick={() => {
                 onDotButtonClick(index)
-                !isPlaying && toggleAutoplay()
+                resetAutoplay()
               }}
             >
               <div className="relative overflow-hidden">
                 {/* White Bar - Current Index Indicator / Progress Bar */}
                 <div
+                  key={`progress-${playCount}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
                   className={clsx(
                     'absolute h-0.5 bg-background',
                     'opacity-0 fill-mode-forwards',
