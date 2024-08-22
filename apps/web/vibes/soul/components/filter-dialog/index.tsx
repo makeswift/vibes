@@ -100,10 +100,13 @@ export const FilterDialog = function FilterDialog() {
                   <Button
                     variant="tertiary"
                     size="small"
-                    className="-mr-2 !px-2"
+                    className="-mr-2 [&_div]:!px-1"
                     onClick={() => setFilterOpen(false)}
+                    asChild
                   >
-                    <X size={18} strokeWidth={1.5} />
+                    <div>
+                      <X size={18} strokeWidth={1.5} className="text-background" />
+                    </div>
                   </Button>
                 </div>
                 <Accordions
