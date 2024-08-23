@@ -1,14 +1,13 @@
 import Feature from '@/vibes/soul/components/feature'
 
 const image: Feature['image'] = {
-  url: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
-  alt: 'Biker in Mountains',
+  src: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
+  altText: 'Biker in Mountains',
 }
 
-const link: Feature['link'] = {
+const link: Feature['cta'] = {
   label: 'Shop Now',
   href: '#',
-  target: '_self',
 }
 
 const grid: Feature['grid'] = [
@@ -49,11 +48,11 @@ export default function Preview() {
     <div className="flex flex-col gap-3">
       <Feature
         image={image}
-        heading="A global community"
+        title="A global community"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-        link={link}
+        cta={link}
       />
-      <Feature image={image} link={link} grid={grid} />
+      <Feature image={image} cta={link} grid={grid} />
     </div>
   )
 }

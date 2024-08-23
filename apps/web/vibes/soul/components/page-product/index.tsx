@@ -92,12 +92,8 @@ export const ProductPage = function ProductPage() {
             },
           ]}
           image={{
-            url: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
-            dimensions: {
-              width: 467,
-              height: 600,
-            },
-            alt: 'Plants',
+            src: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
+            altText: 'Plants',
           }}
         />
 
