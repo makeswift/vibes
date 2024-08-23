@@ -7,13 +7,13 @@ import { HandcraftedCodeBack, HandcraftedCodeFront, HandcraftedCodeShadow } from
 
 export function HandcraftedCode() {
   return (
-    <div className="pointer-events-none absolute left-[34%] top-[94%] sm:left-[-50%] sm:top-[24%] md:left-[-44%] md:top-[32%] md:z-auto">
+    <div className="absolute -bottom-6 left-full z-10 ml-4">
       <Draggable>
         {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1800ms]"
             from="translate-x-[-1000px] translate-y-[-50px] rotate-[-100deg]"
-            to="translate-x-0 translate-y-0 rotate-[-12deg]"
+            to="translate-x-0 translate-y-0 -rotate-12"
           >
             <Sticker
               active={active}

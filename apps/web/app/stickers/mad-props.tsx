@@ -7,13 +7,13 @@ import { PropsBack, PropsFront, PropsShadow } from '@/icons/generated'
 
 export function MadProps() {
   return (
-    <div className="pointer-events-none absolute right-[12%] top-[116%] hidden sm:block">
+    <div className="pointer-events-none absolute -top-4 right-16 hidden sm:block">
       <Draggable>
         {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1700ms]"
             from="translate-x-[200px] translate-y-[700px] rotate-[20deg]"
-            to="translate-x-0 translate-y-0 rotate-[20deg]"
+            to="translate-x-0 translate-y-0 rotate-[12deg]"
           >
             <Sticker
               active={active}

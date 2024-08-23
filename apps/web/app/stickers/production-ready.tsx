@@ -7,7 +7,7 @@ import { ProductionReadyBack, ProductionReadyFront, ProductionReadyShadow } from
 
 export function ProductionReady() {
   return (
-    <div className="pointer-events-none absolute right-[-22%] top-[125%] sm:right-[-38%] sm:top-[-25%] md:right-[-34%] md:top-[-16%]">
+    <div className="pointer-events-none absolute left-10 top-5">
       <Draggable>
         {({ active, hover }) => (
           <Transition

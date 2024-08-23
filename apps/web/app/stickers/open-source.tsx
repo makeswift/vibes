@@ -7,13 +7,13 @@ import { OpenSourceBack, OpenSourceFront, OpenSourceShadow } from '@/icons/gener
 
 export function OpenSource() {
   return (
-    <div className="pointer-events-none absolute left-[-38%] top-[88%] sm:left-[-40%] sm:top-[96%] lg:left-[-35%] lg:top-[100%]">
+    <div className="pointer-events-none absolute -top-8 left-6">
       <Draggable>
         {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1700ms]"
             from="translate-x-[-700px] translate-y-[700px] rotate-[-90deg]"
-            to="translate-x-0 translate-y-0 rotate-[8deg]"
+            to="translate-x-0 translate-y-0 rotate-[-8deg]"
           >
             <Sticker
               active={active}

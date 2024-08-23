@@ -7,13 +7,13 @@ import { KeepIt100Back, KeepIt100Front, KeepIt100Shadow } from '@/icons/generate
 
 export function KeepIt100() {
   return (
-    <div className="pointer-events-none absolute left-[-20%] top-[125%] sm:left-[15%] sm:top-[110%] sm:z-auto md:left-[22%] md:top-[120%]">
+    <div className="pointer-events-none absolute -top-6 right-16">
       <Draggable>
         {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1800ms] "
             from="translate-x-[-100px] translate-y-[700px] rotate-[-20deg]"
-            to="translate-x-0 translate-y-0 rotate-[-8deg]"
+            to="translate-x-0 translate-y-0 rotate-[12deg]"
           >
             <Sticker
               active={active}

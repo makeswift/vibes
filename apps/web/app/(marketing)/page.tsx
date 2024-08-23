@@ -1,3 +1,10 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { ReactNode } from 'react'
+
+import clsx from 'clsx'
+
+import { ButtonLink } from '@/components/ui/button-link'
 import Transition from '@/components/ui/transition'
 import { Vibes } from '@/icons/generated'
 
@@ -13,81 +20,213 @@ import { Reactjs } from '../stickers/reactjs'
 import { Typescript } from '../stickers/typescript'
 import { Form } from './form'
 
+const FeatureCard = ({
+  children,
+  text,
+  sticker,
+}: {
+  children?: ReactNode
+  text?: string
+  sticker: 'left' | 'right'
+}) => (
+  <div
+    className={clsx(
+      'relative min-h-72 w-full place-content-center rounded-3xl border-[1.5px] border-foreground bg-[#FFFAE0] pb-12 pt-10',
+      { left: 'pl-96 pr-12', right: 'pl-12 pr-96' }[sticker]
+    )}
+  >
+    <p className="text-2xl leading-snug">{text}</p>
+    {children}
+  </div>
+)
+
 export default function Home() {
   return (
-    <div className="h-dvh w-full touch-none bg-white p-3 md:p-4 lg:p-5">
-      <main className="relative z-0 h-full w-full select-none place-content-start overflow-hidden rounded-3xl border border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] md:p-8 lg:rounded-[40px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[64px]">
-        <div className="relative mx-auto flex max-w-lg translate-y-0 flex-col items-center px-0 py-0 sm:-translate-y-28 md:max-w-xl md:-translate-y-12 md:justify-center md:px-8 lg:max-w-2xl xl:max-w-3xl xl:py-10 2xl:max-w-4xl">
-          <h1 className="mb-2 font-heading text-4xl text-black sm:mb-4 sm:text-5xl md:mb-5 lg:text-6xl xl:text-7xl">
-            {Array.from('Bring the').map((letter, index) =>
-              letter === ' ' ? (
-                ' '
-              ) : (
-                <Transition
-                  key={index}
-                  className="inline-block transition-all duration-500"
-                  style={{
-                    transitionDelay: `${100 + index * 30}ms`,
-                    transitionTimingFunction: 'cubic-bezier(0,1,0.25,1.5)',
-                  }}
-                  from="translate-y-14 opacity-0"
-                  to="translate-y-0 opacity-100"
-                >
-                  {letter}
-                </Transition>
-              )
-            )}
-            <span className="sr-only"> Vibes</span>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between p-6">
+        <ButtonLink href="#updates">Get updates</ButtonLink>
+        <Image
+          src="/logo.svg"
+          width={140}
+          height={37}
+          alt="Vibes logo"
+          priority
+          className="mb-0.5"
+        />
+        <ButtonLink href="#contribute">Contribute</ButtonLink>
+      </header>
+
+      <section className="h-dvh w-full bg-white p-3 md:p-4 lg:p-5">
+        <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-3xl border border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] md:p-8 lg:rounded-[40px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[48px]">
+          <h1 className="mx-auto max-w-5xl font-heading text-4xl leading-none text-foreground sm:text-5xl md:mb-5 lg:text-7xl xl:text-9xl">
+            {/* <Transition
+              className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+              from="translate-y-16 opacity-0"
+              to="translate-y-0 opacity-100"
+            > */}
+            <div className="text-left">
+              <span className="relative">
+                A modern <HandcraftedCode />
+              </span>
+            </div>
+            <div className="text-right">
+              <span className="relative">
+                UI library for <Reactjs />
+              </span>
+            </div>
+            <div className="text-center">
+              <span className="relative">composable</span>
+            </div>
+            <div className="text-left">
+              <span className="relative">websites</span>
+            </div>
+            {/* </Transition> */}
           </h1>
-
-          <Transition
-            className="transition-all duration-700 [transition-delay:500ms] [transition-timing-function:cubic-bezier(.5,0,0,1.5)]"
-            from="translate-y-20 -translate-x-20 opacity-0 scale-.8"
-            to="translate-y-0 opacity-100 translate-x-0 scale-1"
-          >
-            <Vibes className="mx-auto w-2/3 max-w-xl md:w-3/5 lg:w-[540px]" />
-          </Transition>
-
-          <Transition
-            className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
-            from="translate-y-16 opacity-0"
-            to="translate-y-0 opacity-100"
-          >
-            <p className="mt-4 max-w-4xl text-center font-body text-xl !leading-normal text-black sm:mt-6 md:text-2xl md:!leading-snug lg:mt-8 lg:text-3xl">
-              Stunning React components for commerce and marketing, optimized for fashion and
-              function. Coming soon.
-            </p>
-          </Transition>
-
-          <Transition
-            className="relative w-full transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:1350ms] sm:w-auto"
-            from="translate-y-16 opacity-0"
-            to="translate-y-0 opacity-100"
-          >
-            <Form />
-          </Transition>
-
-          <OpenSource />
-
-          <KeepIt100 />
-
-          <MadProps />
-
-          <EazyTheme />
-
-          <PrebuiltSections />
-
-          <LikeTotally />
-
-          <HandcraftedCode />
-
-          <Reactjs />
-
-          <ProductionReady />
-
-          <Typescript />
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="h-[80vh] place-content-center">
+        <div className="mx-auto max-w-[1200px] text-3xl leading-tight md:text-4xl lg:text-5xl xl:text-6xl">
+          <p>VIBES is an open-source theming engine for composable marketing and commerce sites.</p>
+          <p>A VIBE is a theme that includes a set of React UI components and styles.</p>
+        </div>
+      </section>
+
+      <section className="h-[90vh] w-full bg-white p-3 md:p-4 lg:p-5">
+        <div className="group flex h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground md:rounded-[32px] lg:rounded-[40px] xl:rounded-[48px]">
+          <div className="relative h-full w-1/3 origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] hover:!w-1/2 group-hover:w-1/4">
+            <div className="relative h-full w-full">
+              <Image
+                src="/eclipse-components.webp"
+                alt="Eclipse components"
+                fill
+                className="rotate-12 overflow-visible object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="relative h-full w-1/3 origin-center overflow-hidden border-x-[1.5px] border-foreground bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] hover:!w-1/2 group-hover:w-1/4">
+            <div className="relative h-full w-full">
+              <Image
+                src="/2px-components.webp"
+                alt="2px components"
+                fill
+                className="rotate-12 overflow-visible object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="relative h-full w-1/3 origin-right overflow-hidden bg-[#eeeeee] transition-all duration-300 ease-out will-change-[width] hover:!w-1/2 group-hover:w-1/4">
+            <div className="relative h-full w-full">
+              <Image
+                src="/soul-components.webp"
+                alt="Soul components"
+                fill
+                className="rotate-12 overflow-visible object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto flex max-w-[1600px] items-start gap-20 px-3 pb-32 pt-48 md:px-6 lg:px-14">
+        <div className="sticky top-40 flex-1">
+          <h2 className="mb-3 font-heading text-3xl leading-none md:text-4xl lg:mb-5 lg:text-5xl xl:text-6xl">
+            This is a header about features
+          </h2>
+          <p className="text-2xl">
+            Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.
+            Aenean dig nissim pellen.
+          </p>
+        </div>
+
+        <div className="w-[740px] space-y-20">
+          <FeatureCard
+            sticker="left"
+            text="Multiple styles that can be customized to best represent your brand."
+          >
+            <EazyTheme />
+          </FeatureCard>
+
+          <FeatureCard
+            sticker="right"
+            text="Fast performance without sacrificing form and function."
+          >
+            <KeepIt100 />
+          </FeatureCard>
+
+          <FeatureCard
+            sticker="left"
+            text="Prebuilt section and page templates to get you started quickly."
+          >
+            <PrebuiltSections />
+          </FeatureCard>
+
+          <FeatureCard
+            sticker="right"
+            text="Pre-configured props to make components CMS ready and secure."
+          >
+            <MadProps />
+          </FeatureCard>
+
+          <FeatureCard
+            sticker="left"
+            text="Clean, production-ready code you can deploy with no worries."
+          >
+            <ProductionReady />
+          </FeatureCard>
+
+          <FeatureCard
+            sticker="right"
+            text="Built with and optimized for accessibility from the beginning."
+          >
+            <LikeTotally />
+          </FeatureCard>
+
+          <FeatureCard sticker="left" text="Open source and always free for all users.">
+            <OpenSource />
+          </FeatureCard>
+
+          <FeatureCard
+            sticker="right"
+            text="Smoother and safer development with TypeScript support out of the box."
+          >
+            <Typescript />
+          </FeatureCard>
+        </div>
+      </section>
+
+      <footer id="updates" className="w-full bg-white p-3 md:p-4 lg:p-5">
+        <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] lg:rounded-[40px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[48px]">
+          <div className="mx-auto flex max-w-4xl flex-col items-center px-5 pb-64 pt-20 text-center">
+            <p className="mb-8 text-xl leading-normal text-foreground sm:text-2xl md:mb-12 lg:text-3xl xl:text-4xl">
+              Stunning React components for commerce and marketing, optimized for fashion and
+              function.
+              <span className="block font-bold">Coming October 2024.</span>
+            </p>
+
+            <Transition
+              className="relative w-full transition-all duration-700 [transition-delay:1350ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)] sm:w-auto"
+              from="translate-y-16 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              <Form />
+            </Transition>
+
+            <p className="mt-14 text-base leading-normal md:mt-24">
+              Made by{' '}
+              <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
+                Makeswift
+              </Link>
+              . View source code in{' '}
+              <Link href="https://github.com/makeswift/vibes" target="_blank" className="font-bold">
+                GitHub
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </footer>
+    </>
   )
 }

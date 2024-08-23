@@ -7,7 +7,7 @@ import { TotallyBack, TotallyFront, TotallyShadow } from '@/icons/generated'
 
 export function LikeTotally() {
   return (
-    <div className="pointer-events-none absolute left-[-15%] top-[130%] hidden sm:block">
+    <div className="absolute -right-6 top-1/4">
       <Draggable>
         {({ active, hover }) => (
           <Transition
