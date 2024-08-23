@@ -262,7 +262,7 @@ export const feature: Feature = {
 }
 
 // TODO: Recently Viewed
-// TODO: Featured Image II
+
 export const featuredImageII: FeaturedImageProps = {
   title: 'Handmade in Spain',
   description:
