@@ -102,7 +102,7 @@ export const headerLinks = [
   },
 ]
 
-const locales = [
+export const locales = [
   { id: '1', region: 'US', language: 'EN' },
   { id: '2', region: 'FR', language: 'FR' },
   { id: '3', region: 'DE', language: 'DC' },
