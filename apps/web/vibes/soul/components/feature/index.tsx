@@ -8,24 +8,23 @@ import { Icon } from '@/vibes/soul/components/icon'
 
 export interface Feature {
   image: {
-    url: string
-    alt: string
+    src: string
+    altText: string
   }
-  heading?: string
+  title?: string
   description?: string
   grid?: {
     icon: string
     title: string
     description: string
   }[]
-  link: {
-    label: string
+  cta: {
     href: string
-    target: '_self' | '_blank'
+    label: string
   }
 }
 
-export const Feature = function Feature({ image, heading, description, grid, link }: Feature) {
+export const Feature = function Feature({ image, title, description, grid, cta }: Feature) {
   return (
     <section className="relative bg-primary-shadow @container/section">
       <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-dvh">
@@ -36,8 +35,8 @@ export const Feature = function Feature({ image, heading, description, grid, lin
           @4xl:ml-10 @5xl/section:w-3/5 @6xl/section:ml-20"
         >
           <Image
-            src={image.url}
-            alt={image.alt}
+            src={image.src}
+            alt={image.altText}
             fill
             sizes="(max-width: 768px) 100vw, 384px"
             className="object-cover"
@@ -50,9 +49,7 @@ export const Feature = function Feature({ image, heading, description, grid, lin
           @container/content @lg/section:px-10 @5xl:p-20"
         >
           <div className="mx-auto flex max-w-xl flex-col gap-4">
-            <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">
-              {heading}
-            </h2>
+            <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">{title}</h2>
             <p className=" pb-2">{description}</p>
 
             {grid?.length && (
@@ -84,7 +81,7 @@ export const Feature = function Feature({ image, heading, description, grid, lin
               })}
               asChild
             >
-              <Link href={link.href}>{link.label}</Link>
+              <Link href={cta.href}>{cta.label}</Link>
             </Button>
           </div>
         </div>
