@@ -11,13 +11,13 @@ import {
 
 export function PrebuiltSections() {
   return (
-    <div className="pointer-events-none absolute right-[-24%] top-[144%] hidden sm:block lg:right-[-16%] lg:top-[138%]">
+    <div className="pointer-events-none absolute -left-8 top-1/4">
       <Draggable>
         {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:1800ms]"
             from="translate-x-[450px] translate-y-[700px] rotate-[200deg]"
-            to="translate-x-0 translate-y-0 rotate-[-4deg]"
+            to="translate-x-0 translate-y-0 rotate-[-12deg]"
           >
             <Sticker
               active={active}

@@ -7,7 +7,7 @@ import { ThemesBack, ThemesFront, ThemesShadow } from '@/icons/generated'
 
 export function EazyTheme() {
   return (
-    <div className="pointer-events-none absolute right-[-28%] top-[88%] hidden sm:block lg:right-[-30%] lg:top-[94%]">
+    <div className="pointer-events-none absolute -top-1/4 left-24">
       <Draggable>
         {({ active, hover }) => (
           <Transition
