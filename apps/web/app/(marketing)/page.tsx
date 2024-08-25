@@ -83,7 +83,7 @@ export default function Home() {
         <Image
           src="/logo.svg"
           width={150}
-          height={40}
+          height={42.25}
           alt="Vibes logo"
           priority
           className={clsx(
@@ -96,7 +96,7 @@ export default function Home() {
 
       <section className="h-dvh w-full bg-white p-3 md:p-4 lg:p-5">
         <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-2xl border border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-3xl md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <h1 className="mx-auto max-w-5xl font-heading text-4xl leading-none text-foreground sm:text-5xl md:mb-5 lg:text-7xl xl:text-9xl">
+          <h1 className="mx-auto max-w-5xl font-heading text-4xl leading-none tracking-tight text-foreground sm:text-5xl md:mb-5 lg:text-7xl xl:text-9xl">
             {/* <Transition
               className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
               from="translate-y-16 opacity-0"
@@ -124,9 +124,15 @@ export default function Home() {
       </section>
 
       <section className="h-[80vh] place-content-center">
-        <div className="mx-auto max-w-[1200px] text-3xl leading-tight md:text-4xl lg:text-5xl xl:text-6xl">
-          <p>VIBES is an open-source theming engine for composable marketing and commerce sites.</p>
-          <p>A VIBE is a theme that includes a set of React UI components and styles.</p>
+        <div className="mx-auto max-w-[1200px] text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl xl:text-6xl">
+          <p>
+            <span className="font-bold">VIBES</span> is an open-source theming engine for composable
+            marketing and commerce sites.
+          </p>
+          <p>
+            A <span className="font-bold">VIBE</span> is a theme that includes a set of React UI
+            components and styles.
+          </p>
         </div>
       </section>
 
@@ -244,7 +250,7 @@ export default function Home() {
             </p>
 
             <Transition
-              className="relative w-full transition-all duration-700 [transition-delay:1350ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)] sm:w-auto"
+              className="relative w-full transition-all duration-700 [transition-delay:300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)] sm:w-auto"
               from="translate-y-16 opacity-0"
               to="translate-y-0 opacity-100"
             >
