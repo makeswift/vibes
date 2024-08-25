@@ -13,7 +13,7 @@ export function Reactjs() {
           <Transition
             className="transition-transform duration-1000 [transition-delay:500ms]"
             from="translate-x-[-600px] translate-y-[100px] rotate-[-120deg]"
-            to="translate-x-0 translate-y-0 rotate-4 md:rotate-12"
+            to="translate-x-0 translate-y-0 rotate-12"
           >
             <Sticker
               active={active}

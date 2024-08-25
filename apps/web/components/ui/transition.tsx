@@ -30,7 +30,7 @@ export default function Transition({ className, style, from, to, children }: Pro
           handleTransition()
         }
       },
-      { threshold: 0.1 } // Trigger when 10% of the element is in view
+      { threshold: 1 }
     )
 
     const element = elementRef.current
@@ -53,8 +53,8 @@ export default function Transition({ className, style, from, to, children }: Pro
   }, [hasBeenInView])
 
   return (
-    <div ref={elementRef} className={clsx(inView || hasBeenInView ? to : from, className)}>
-      {children}
+    <div ref={elementRef}>
+      <div className={clsx(inView || hasBeenInView ? to : from, className)}>{children}</div>
     </div>
   )
 }
