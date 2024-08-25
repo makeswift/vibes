@@ -37,7 +37,7 @@ export function Form() {
     <form
       {...getFormProps(form)}
       action={action}
-      className="pattern-shadow pattern-shadow-md relative flex h-14 max-w-full gap-2 gap-x-3 rounded-full border-[1.5px] border-foreground bg-background md:h-16 lg:h-[72px]"
+      className="pattern-shadow pattern-shadow-md relative flex h-14 w-full max-w-full gap-2 gap-x-3 rounded-full border-[1.5px] border-foreground bg-background md:h-16 lg:h-[72px]"
     >
       <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-5 pr-14 lg:pl-6 lg:pr-16">
         <label htmlFor={fields.email.id} className="sr-only">

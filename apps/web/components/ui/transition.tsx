@@ -53,7 +53,7 @@ export default function Transition({ className, style, from, to, children }: Pro
   }, [hasBeenInView])
 
   return (
-    <div ref={elementRef}>
+    <div ref={elementRef} className="w-full">
       <div className={clsx(inView || hasBeenInView ? to : from, className)}>{children}</div>
     </div>
   )
