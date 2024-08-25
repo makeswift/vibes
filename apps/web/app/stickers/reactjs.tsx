@@ -7,12 +7,12 @@ import { ReactjsBack, ReactjsFront, ReactjsShadow } from '@/icons/generated'
 
 export function Reactjs() {
   return (
-    <div className="pointer-events-none absolute right-full top-4 z-10 mr-4">
+    <div className="absolute right-full top-4 z-10 mr-4">
       <Draggable>
         {({ active, hover }) => (
           <Transition
-            className="transition-transform duration-1000 [transition-delay:1700ms]"
-            from="translate-x-[-600px] translate-y-[-700px] rotate-[-120deg]"
+            className="transition-transform duration-1000 [transition-delay:500ms]"
+            from="translate-x-[-600px] translate-y-[100px] rotate-[-120deg]"
             to="translate-x-0 translate-y-0 rotate-4 md:rotate-12"
           >
             <Sticker
