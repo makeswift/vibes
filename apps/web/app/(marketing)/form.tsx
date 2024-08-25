@@ -37,10 +37,7 @@ export function Form() {
     <form
       {...getFormProps(form)}
       action={action}
-      className={clsx(
-        'pattern-shadow pattern-shadow-md pattern-shadow-hover relative flex h-14 w-full max-w-full gap-2 gap-x-3 rounded-full border-[1.5px] border-foreground bg-background transition-all focus-within:w-[640px] sm:w-[400px] md:h-16 lg:h-[72px] lg:w-[450px]',
-        shake && 'animate-shake'
-      )}
+      className="pattern-shadow pattern-shadow-md relative flex h-14 max-w-full gap-2 gap-x-3 rounded-full border-[1.5px] border-foreground bg-background md:h-16 lg:h-[72px]"
     >
       <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-5 pr-14 lg:pl-6 lg:pr-16">
         <label htmlFor={fields.email.id} className="sr-only">
@@ -50,7 +47,7 @@ export function Form() {
           {...getInputProps(fields.email, { type: 'email' })}
           placeholder="Enter your email to be notified"
           className={clsx(
-            'flex-1 bg-transparent pb-0.5 font-sans text-lg text-foreground transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-foreground/50 focus:outline-none md:text-xl lg:text-[24px]',
+            'bg-transparent pb-0.5 font-sans text-lg text-foreground outline-none transition-all duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-foreground/50 focus:!w-[540px] focus:outline-none sm:w-[540px] sm:placeholder-shown:w-[300px] md:text-xl lg:text-[24px] lg:placeholder-shown:w-[350px]',
             success ? '-translate-y-full' : 'translate-y-0'
           )}
           data-1p-ignore
@@ -59,7 +56,7 @@ export function Form() {
           id={fields.email.descriptionId}
           hidden={!success}
           className={clsx(
-            'absolute inset-0 flex items-center pb-0.5 pl-5 text-foreground transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-2xl',
+            'absolute inset-0 flex items-center pb-0.5 pl-5 text-foreground transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-[24px]',
             success ? 'translate-y-0' : 'translate-y-full'
           )}
         >
@@ -71,7 +68,7 @@ export function Form() {
 
       <div
         id={fields.email.errorId}
-        className="absolute left-1/2 top-full mt-4 -translate-x-1/2 space-y-1 rounded-xl bg-foreground p-1 px-4 py-2.5 text-center text-base text-background md:text-lg"
+        className="absolute left-1/2 top-full mt-5 -translate-x-1/2 rounded-xl bg-[#EA3BA7] px-4 py-2 text-center text-lg text-background"
         hidden={!fields.email.errors}
       >
         {fields.email.errors}
@@ -79,7 +76,7 @@ export function Form() {
 
       <div
         id={form.errorId}
-        className="absolute left-1/2 top-full mt-4 -translate-x-1/2 space-y-1 rounded-xl bg-foreground p-1 px-4 py-2.5 text-center text-base text-background md:text-lg"
+        className="absolute left-1/2 top-full mt-5 -translate-x-1/2 rounded-xl bg-[#EA3BA7] px-4 py-2 text-center text-lg text-background"
         hidden={!form.errors}
       >
         {form.errors}
@@ -96,7 +93,7 @@ function Submit({ success }: { success: boolean }) {
       type="submit"
       className={clsx(
         'absolute bottom-1.5 right-1.5 top-1.5 flex aspect-square h-10 items-center justify-center overflow-hidden rounded-full transition-all md:h-12 lg:h-14',
-        success ? 'bg-[#3FCF59]' : 'bg-foreground'
+        success ? 'bg-[#39e258]' : 'bg-foreground'
       )}
       disabled={pending || success}
     >
@@ -105,7 +102,7 @@ function Submit({ success }: { success: boolean }) {
         {!pending && !success && <Arrow />}
         {success && (
           <Transition className="transition-transform" from="-translate-y-12" to="translate-y-0">
-            <Check />
+            <Check className="scale-150" />
           </Transition>
         )}
         {pending && <Loader className="animate-spin" />}
