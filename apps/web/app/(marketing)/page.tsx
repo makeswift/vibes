@@ -1,9 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
+import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import Transition from '@/components/ui/transition'
 import { Vibes } from '@/icons/generated'
@@ -41,23 +44,58 @@ const FeatureCard = ({
 )
 
 export default function Home() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollAmount = 10
+      if (window.scrollY > scrollAmount) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const targetRef = useRef<HTMLDivElement | null>(null)
+
+  // Function to handle button click
+  const handleScroll = () => {
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between p-6">
-        <ButtonLink href="#updates">Get updates</ButtonLink>
+      <header
+        className={clsx(
+          'fixed top-0 z-50 flex items-center justify-between transition-all duration-300',
+          isScrolled ? 'inset-x-7 translate-y-3' : 'inset-x-10 translate-y-10'
+        )}
+      >
+        <Button onClick={handleScroll}>Get updates</Button>
         <Image
           src="/logo.svg"
-          width={140}
-          height={37}
+          width={150}
+          height={40}
           alt="Vibes logo"
           priority
-          className="mb-0.5"
+          className={clsx(
+            'origin-center transition-transform duration-300',
+            isScrolled && 'scale-75'
+          )}
         />
         <ButtonLink href="#contribute">Contribute</ButtonLink>
       </header>
 
       <section className="h-dvh w-full bg-white p-3 md:p-4 lg:p-5">
-        <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-3xl border border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] md:p-8 lg:rounded-[40px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[48px]">
+        <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-2xl border border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-3xl md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
           <h1 className="mx-auto max-w-5xl font-heading text-4xl leading-none text-foreground sm:text-5xl md:mb-5 lg:text-7xl xl:text-9xl">
             {/* <Transition
               className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
@@ -196,7 +234,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer id="updates" className="w-full bg-white p-3 md:p-4 lg:p-5">
+      <footer ref={targetRef} className="w-full bg-white p-3 md:p-4 lg:p-5">
         <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] lg:rounded-[40px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[48px]">
           <div className="mx-auto flex max-w-4xl flex-col items-center px-5 pb-64 pt-20 text-center">
             <p className="mb-8 text-xl leading-normal text-foreground sm:text-2xl md:mb-12 lg:text-3xl xl:text-4xl">
