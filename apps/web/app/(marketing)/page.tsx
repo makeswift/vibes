@@ -34,12 +34,18 @@ const FeatureCard = ({
 }) => (
   <div
     className={clsx(
-      'relative min-h-72 w-full place-content-center rounded-3xl border-[1.5px] border-foreground bg-[#FFFAE0] pb-12 pt-10',
-      { left: 'pl-96 pr-12', right: 'pl-12 pr-96' }[sticker]
+      'min-h-auto relative flex w-full flex-col place-content-center gap-y-5 rounded-3xl border-[1.5px] border-foreground bg-[#FFFAE0] px-5 pb-6 md:min-h-72 md:flex-row md:px-12 md:pb-12 md:pt-10'
     )}
   >
-    <p className="text-2xl leading-snug">{text}</p>
-    {children}
+    <div
+      className={clsx(
+        'relative flex w-full justify-center md:w-96',
+        { left: 'md:order-first', right: 'md:order-last' }[sticker]
+      )}
+    >
+      {children}
+    </div>
+    <p className="text-xl leading-snug sm:text-2xl">{text}</p>
   </div>
 )
 
@@ -72,31 +78,32 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div className="w-full overflow-hidden">
       <header
         className={clsx(
-          'fixed top-0 z-50 flex items-center justify-between transition-all duration-300',
-          isScrolled ? 'inset-x-7 translate-y-3' : 'inset-x-10 translate-y-10'
+          'fixed left-0 top-0 z-50 flex w-full items-center justify-center transition-all duration-300 md:justify-between',
+          isScrolled ? 'translate-y-3 px-7' : 'translate-y-8 px-10 md:translate-y-10'
         )}
       >
-        <Button onClick={handleScroll}>Get updates</Button>
-        <Image
-          src="/logo.svg"
-          width={150}
-          height={42.25}
-          alt="Vibes logo"
-          priority
+        <Button onClick={handleScroll} className="hidden md:inline-block">
+          Get updates
+        </Button>
+        <div
           className={clsx(
-            'origin-center transition-transform duration-300',
-            isScrolled && 'scale-75'
+            'relative h-8 w-32 origin-center transition-transform duration-300 md:h-10 md:w-40',
+            isScrolled && 'scale-90 md:scale-75'
           )}
-        />
-        <ButtonLink href="#contribute">Contribute</ButtonLink>
+        >
+          <Image src="/logo.svg" fill alt="Vibes logo" priority />
+        </div>
+        <ButtonLink href="#contribute" className="hidden md:inline-block">
+          Contribute
+        </ButtonLink>
       </header>
 
-      <section className="h-dvh w-full bg-white p-3 md:p-4 lg:p-5">
+      <section className="h-[80vh] w-full bg-white p-3 sm:p-4 md:h-dvh lg:p-5">
         <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-2xl border border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-3xl md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <h1 className="mx-auto max-w-5xl font-heading text-4xl leading-none tracking-tight text-foreground sm:text-5xl md:mb-5 lg:text-7xl xl:text-9xl">
+          <h1 className="mx-auto max-w-5xl font-heading text-[44px] leading-none tracking-tight text-foreground sm:text-5xl md:mb-5 lg:text-7xl xl:text-9xl">
             {/* <Transition
               className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
               from="translate-y-16 opacity-0"
@@ -107,12 +114,12 @@ export default function Home() {
                 A modern <HandcraftedCode />
               </span>
             </div>
-            <div className="text-right">
+            <div className="text-left sm:text-right">
               <span className="relative">
                 UI library for <Reactjs />
               </span>
             </div>
-            <div className="text-center">
+            <div className="text-left sm:text-center">
               <span className="relative">composable</span>
             </div>
             <div className="text-left">
@@ -120,11 +127,20 @@ export default function Home() {
             </div>
             {/* </Transition> */}
           </h1>
+
+          <div className="mt-7 flex items-center gap-1.5 md:hidden">
+            <Button onClick={handleScroll} size="large">
+              Get updates
+            </Button>
+            <ButtonLink href="#contribute" size="large">
+              Contribute
+            </ButtonLink>
+          </div>
         </div>
       </section>
 
-      <section className="h-[80vh] place-content-center">
-        <div className="mx-auto max-w-[1200px] text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl xl:text-6xl">
+      <section className="h-auto px-5 pb-8 pt-16 md:mb-20 md:h-[60vh] md:place-content-end md:p-10">
+        <div className="mx-auto max-w-[1200px] text-3xl leading-snug tracking-tight md:text-4xl md:leading-tight lg:text-5xl xl:text-6xl">
           <p>
             <span className="font-bold">VIBES</span> is an open-source theming engine for composable
             marketing and commerce sites.
@@ -136,9 +152,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="h-[90vh] w-full bg-white p-3 md:p-4 lg:p-5">
-        <div className="group flex h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground md:rounded-[32px] lg:rounded-[40px] xl:rounded-[48px]">
-          <div className="relative h-full w-1/3 origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] hover:!w-1/2 group-hover:w-1/4">
+      <section className="h-[90vh] w-full bg-white p-3 md:h-[90vh] md:p-4 lg:p-5">
+        <div className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border-[1.5px] border-foreground md:flex-row md:rounded-3xl lg:rounded-[32px] xl:rounded-[40px]">
+          <div className="relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
               <Image
                 src="/eclipse-components.webp"
@@ -149,7 +165,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative h-full w-1/3 origin-center overflow-hidden border-x-[1.5px] border-foreground bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] hover:!w-1/2 group-hover:w-1/4">
+          <div className="relative h-1/3 w-full origin-center overflow-hidden border-y-[1.5px] border-foreground bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:border-x-[1.5px] md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
               <Image
                 src="/2px-components.webp"
@@ -160,7 +176,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative h-full w-1/3 origin-right overflow-hidden bg-[#eeeeee] transition-all duration-300 ease-out will-change-[width] hover:!w-1/2 group-hover:w-1/4">
+          <div className="relative h-1/3 w-full origin-right overflow-hidden bg-[#eeeeee] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
               <Image
                 src="/soul-components.webp"
@@ -173,18 +189,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto flex max-w-[1600px] items-start gap-20 px-3 pb-32 pt-48 md:px-6 lg:px-14">
+      <section className="mx-auto flex max-w-[1600px] flex-col items-start gap-20 px-3 pb-4 pt-20 md:px-6 md:pb-32 md:pt-48 lg:flex-row lg:px-14">
         <div className="sticky top-40 flex-1">
           <h2 className="mb-3 font-heading text-3xl leading-none md:text-4xl lg:mb-5 lg:text-5xl xl:text-6xl">
             This is a header about features
           </h2>
-          <p className="text-2xl">
+          <p className="text-2xl md:text-3xl">
             Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.
             Aenean dig nissim pellen.
           </p>
         </div>
 
-        <div className="w-[740px] space-y-20">
+        <div className="w-full space-y-7 lg:w-[740px] lg:space-y-20">
           <FeatureCard
             sticker="left"
             text="Multiple styles that can be customized to best represent your brand."
@@ -241,23 +257,23 @@ export default function Home() {
       </section>
 
       <footer ref={targetRef} className="w-full bg-white p-3 md:p-4 lg:p-5">
-        <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-[32px] lg:rounded-[40px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[48px]">
-          <div className="mx-auto flex max-w-4xl flex-col items-center px-5 pb-64 pt-20 text-center">
-            <p className="mb-8 text-xl leading-normal text-foreground sm:text-2xl md:mb-12 lg:text-3xl xl:text-4xl">
+        <div className="relative z-0 h-full w-full overflow-hidden rounded-2xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-3xl lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
+          <div className="mx-auto flex max-w-4xl flex-col items-center px-5 pb-64 pt-10 text-center md:pt-20">
+            <p className="mb-8 text-2xl leading-normal text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
               Stunning React components for commerce and marketing, optimized for fashion and
               function.
               <span className="block font-bold">Coming October 2024.</span>
             </p>
 
             <Transition
-              className="relative w-full transition-all duration-700 [transition-delay:300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)] sm:w-auto"
+              className="w-full transition-all duration-700 [transition-delay:300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)] sm:w-auto"
               from="translate-y-16 opacity-0"
               to="translate-y-0 opacity-100"
             >
               <Form />
             </Transition>
 
-            <p className="mt-14 text-base leading-normal md:mt-24">
+            <p className="mt-14 text-lg leading-normal md:mt-24">
               Made by{' '}
               <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
                 Makeswift
@@ -271,6 +287,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   )
 }

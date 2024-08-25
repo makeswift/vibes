@@ -70,7 +70,7 @@ export default function Sticker({
         active && styles.active,
         hover && styles.hover,
         className,
-        'scale-[.6] sm:scale-[.8] lg:scale-100'
+        'scale-90 md:scale-100'
       )}
       style={
         {
