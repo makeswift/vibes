@@ -3,8 +3,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import clsx from 'clsx'
-
 import { ButtonLink } from '@/components/ui/button-link'
 
 import { Form } from '../form'
