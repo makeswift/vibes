@@ -141,7 +141,7 @@ export default function Home() {
           className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[74px] md:flex lg:-translate-y-[78px]"
         />
 
-        <div className="relative z-0 h-full w-full select-none place-content-end overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:p-8 lg:place-content-center lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
+        <div className="relative z-0 h-full w-full select-none place-content-start overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-24 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center sm:pt-10 md:p-8 lg:place-content-center lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
           <Image
             src="/logo.svg"
             width={120}
@@ -151,7 +151,7 @@ export default function Home() {
             className="absolute left-5 top-6 z-50 sm:hidden"
           />
 
-          <h1 className="mx-auto mt-10 max-w-full font-heading text-[9vw] leading-none tracking-tight text-foreground sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
+          <h1 className="mx-auto max-w-full font-heading text-[9vw] leading-[1.05] tracking-tight text-foreground sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl md:leading-none lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
             <div className="text-left md:ml-10">
               <span className="md:relative">
                 <Transition
@@ -204,11 +204,9 @@ export default function Home() {
             </div>
           </h1>
 
-          <div className="mb-4 mt-7 flex items-center gap-1.5 sm:hidden">
-            <ScrollButton to="footer" className="flex-1">
-              <Button size="large" className="w-full [&_span]:w-full">
-                Get updates
-              </Button>
+          <div className="mb-4 mt-6 flex items-center gap-1.5 sm:hidden">
+            <ScrollButton to="footer">
+              <Button size="large">Get updates</Button>
             </ScrollButton>
 
             <ButtonLink href="/contribute" size="large">
@@ -352,18 +350,18 @@ export default function Home() {
 
       <footer id="footer" className="w-full bg-white p-3 md:p-4 lg:p-5">
         <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-64 pt-10 text-left sm:px-8 sm:text-center md:pt-20">
-            <p className="mb-8 text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
+          <div className="mx-auto flex max-w-4xl flex-col items-center px-6 pb-6 pt-10 text-left sm:px-8 sm:text-center md:pb-10 md:pt-20">
+            <p className="mb-8 text-balance text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
               Stunning React components for commerce and marketing, optimized for fashion and
               function.
-              <span className="block font-bold">Coming October 2024.</span>
+              <span className="mt-4 block font-bold md:mt-6">Coming October 2024.</span>
             </p>
 
             <div className="relative z-10 w-full sm:w-auto">
               <Form />
             </div>
 
-            <p className="mt-14 w-full px-4 text-lg leading-normal md:mt-24">
+            <p className="mt-14 w-full text-lg leading-normal md:mt-24">
               Made by{' '}
               <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
                 Makeswift
