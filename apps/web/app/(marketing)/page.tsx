@@ -290,7 +290,7 @@ export default function Home() {
           </h2>
           <p className="text-2xl md:text-3xl">
             VIBES are production ready out of the box and focus on advanced optimizations needed for
-            marketing and commerce websites. Here's what you get with each VIBE:
+            marketing and commerce websites. Here&lsquo;s what you get with each VIBE:
           </p>
         </div>
 

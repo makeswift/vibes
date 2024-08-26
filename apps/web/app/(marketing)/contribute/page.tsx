@@ -45,13 +45,8 @@ export default function Contribute() {
 
             <p className="mb-8 text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
               Interested in contributing to VIBES or creating a new VIBE? Drop your email here and
-              we'll be in touch!
+              we&lsquo;ll be in touch!
             </p>
-
-            {/* <p className="mb-8 text-balance text-lg leading-snug text-foreground sm:text-xl md:mb-12 lg:text-2xl">
-              P.S. VIBES is an open-source library and will always be free but VIBES creators will
-              be credited.
-            </p> */}
 
             <div className="relative z-10 w-full sm:w-auto">
               <Form intent="contribute" />
