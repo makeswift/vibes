@@ -1,18 +1,13 @@
 import type { Config } from 'tailwindcss'
 
 const config = {
-  content: [
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './vibes/**/*.{ts,tsx}', // [!code highlight]
-  ],
+  content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './vibes/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        // [!code highlight]
         primary: {
-          DEFAULT: 'hsl(var(--primary))', // [!code highlight]
-          highlight: 'color-mix(in oklab, hsl(var(--primary)), white 75%)', // [!code highlight]
+          DEFAULT: 'hsl(var(--primary))',
+          highlight: 'color-mix(in oklab, hsl(var(--primary)), white 75%)',
           shadow: 'color-mix(in oklab, hsl(var(--primary)), black 75%)',
         },
         accent: {
@@ -97,7 +92,7 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/container-queries')], // [!code highlight]
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/container-queries')],
 } satisfies Config
 
 export default config
