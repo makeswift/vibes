@@ -64,7 +64,7 @@ const FeatureCard = ({
 }) => (
   <div
     className={clsx(
-      'min-h-auto relative flex w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-foreground bg-[#FFFAE0] md:min-h-72 md:flex-row'
+      'min-h-auto relative flex w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-black bg-[#FFFAE0] md:min-h-72 md:flex-row'
     )}
   >
     <div
@@ -101,7 +101,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="w-full overflow-clip">
+    <div className="w-full overflow-clip bg-white">
       <header
         className={clsx(
           'fixed left-0 top-0 z-50 hidden w-full items-center justify-center transition-all duration-300 sm:flex sm:justify-between',
@@ -127,7 +127,7 @@ export default function Home() {
       <section className="relative h-[550px] w-full bg-white p-3 sm:h-[650px] sm:p-4 md:h-[calc(100vh-28px)] lg:p-5">
         <ScrollButton
           to="intro"
-          className="group absolute left-1/2 top-full z-20 -mt-6 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-foreground md:flex"
+          className="group absolute left-1/2 top-full z-20 -mt-6 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black md:flex"
         >
           <Arrow className="rotate-90 scale-125 transition-transform duration-300 ease-out group-hover:translate-y-2" />
         </ScrollButton>
@@ -141,7 +141,7 @@ export default function Home() {
           className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[74px] md:flex lg:-translate-y-[78px]"
         />
 
-        <div className="relative z-0 h-full w-full select-none place-content-start overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-24 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center sm:pt-10 md:p-8 lg:place-content-center lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
+        <div className="relative z-0 h-full w-full select-none place-content-start overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-24 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center sm:pt-10 md:p-8 lg:place-content-center lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
           <Image
             src="/logo.svg"
             width={120}
@@ -151,7 +151,7 @@ export default function Home() {
             className="absolute left-5 top-6 z-50 sm:hidden"
           />
 
-          <h1 className="mx-auto max-w-full font-heading text-[clamp(2.75rem,_9vw,_3.5rem)] leading-none tracking-tight text-foreground sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
+          <h1 className="mx-auto max-w-full font-heading text-[clamp(2.75rem,_9vw,_3.5rem)] leading-none tracking-tight text-black sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
             <div className="text-left md:ml-10">
               <span className="md:relative">
                 <Transition
@@ -251,7 +251,7 @@ export default function Home() {
       </section>
 
       <section className="h-[90vh] w-full bg-white p-3 md:h-[90vh] md:p-4 lg:p-5">
-        <div className="group flex h-full w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-foreground md:flex-row lg:rounded-[32px] xl:rounded-[40px]">
+        <div className="group flex h-full w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-black md:flex-row lg:rounded-[32px] xl:rounded-[40px]">
           <div className="relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
               <Image
@@ -263,7 +263,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative h-1/3 w-full origin-center overflow-hidden border-y-[1.5px] border-foreground bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:border-x-[1.5px] md:border-y-0 md:hover:!w-1/2 md:group-hover:w-1/4">
+          <div className="relative h-1/3 w-full origin-center overflow-hidden border-y-[1.5px] border-black bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:border-x-[1.5px] md:border-y-0 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
               <Image
                 src="/2px-components.webp"
@@ -356,9 +356,9 @@ export default function Home() {
       </section>
 
       <footer id="footer" className="w-full bg-white p-3 md:p-4 lg:p-5">
-        <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
+        <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
           <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-6 pt-10 text-left sm:px-8 sm:text-center md:pb-10 md:pt-20">
-            <p className="mb-8 text-balance px-2 text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
+            <p className="mb-8 text-balance px-2 text-2xl leading-snug text-black sm:text-3xl md:mb-12 lg:text-4xl">
               Stunning React components for commerce and marketing, optimized for fashion and
               function.
               <span className="mt-4 block font-bold md:mt-6">Coming October 2024.</span>

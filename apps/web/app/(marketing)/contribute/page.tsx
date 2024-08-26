@@ -28,7 +28,7 @@ export default function Contribute() {
       </header>
 
       <section className="relative h-dvh w-full bg-white p-3 sm:p-4 lg:p-5">
-        <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] px-4 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
+        <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] px-4 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
           <Link href="/" className="absolute left-5 top-6 z-50 sm:hidden">
             <Image src="/logo.svg" width={120} height={32} alt="Vibes logo" priority className="" />
           </Link>
@@ -38,7 +38,7 @@ export default function Contribute() {
               Contribute to VIBES
             </h1>
 
-            <p className="mb-8 px-1 text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
+            <p className="mb-8 px-1 text-2xl leading-snug text-black sm:text-3xl md:mb-12 lg:text-4xl">
               Interested in contributing to VIBES or creating a new VIBE? Drop your email here and
               we&lsquo;ll be in touch!
             </p>

@@ -38,7 +38,7 @@ export function Form({ intent }: { intent?: string }) {
     <form
       {...getFormProps(form)}
       action={action}
-      className="pattern-shadow pattern-shadow-md relative flex h-14 w-full gap-2 gap-x-3 rounded-full border-[1.5px] border-foreground bg-background sm:w-auto md:h-16 lg:h-[72px]"
+      className="pattern-shadow pattern-shadow-md relative flex h-14 w-full gap-2 gap-x-3 rounded-full border-[1.5px] border-black bg-white sm:w-auto md:h-16 lg:h-[72px]"
     >
       <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-4 pr-14 md:w-auto lg:pl-6 lg:pr-16">
         <label htmlFor={fields.email.id} className="sr-only">
@@ -48,7 +48,7 @@ export function Form({ intent }: { intent?: string }) {
           {...getInputProps(fields.email, { type: 'email' })}
           placeholder="Add your email to be notified"
           className={clsx(
-            'w-full bg-transparent font-sans text-lg text-foreground outline-none transition-all duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-foreground/50 focus:!w-[540px] focus:outline-none sm:w-[540px] sm:placeholder-shown:w-[300px] md:text-xl lg:text-[24px] lg:placeholder-shown:w-[350px]',
+            'w-full bg-transparent font-sans text-lg text-black outline-none transition-all duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-black/50 focus:!w-[540px] focus:outline-none sm:w-[540px] sm:placeholder-shown:w-[300px] md:text-xl lg:text-[24px] lg:placeholder-shown:w-[350px]',
             success ? '-translate-y-full' : 'translate-y-0'
           )}
           data-1p-ignore
@@ -58,7 +58,7 @@ export function Form({ intent }: { intent?: string }) {
           id={fields.email.descriptionId}
           hidden={!success}
           className={clsx(
-            'absolute inset-0 flex items-center pl-5 text-foreground transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-[24px]',
+            'absolute inset-0 flex items-center pl-5 text-black transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-[24px]',
             success ? 'translate-y-0' : 'translate-y-full'
           )}
         >
@@ -70,7 +70,7 @@ export function Form({ intent }: { intent?: string }) {
 
       <div
         id={fields.email.errorId}
-        className="absolute left-1/2 top-full mt-5 -translate-x-1/2 rounded-xl bg-[#EA3BA7] px-4 py-2 text-center text-lg text-background"
+        className="absolute left-1/2 top-full mt-5 -translate-x-1/2 rounded-xl bg-[#EA3BA7] px-4 py-2 text-center text-lg text-white"
         hidden={!fields.email.errors}
       >
         {fields.email.errors}
@@ -78,7 +78,7 @@ export function Form({ intent }: { intent?: string }) {
 
       <div
         id={form.errorId}
-        className="absolute left-1/2 top-full mt-5 -translate-x-1/2 rounded-xl bg-[#EA3BA7] px-4 py-2 text-center text-lg text-background"
+        className="absolute left-1/2 top-full mt-5 -translate-x-1/2 rounded-xl bg-[#EA3BA7] px-4 py-2 text-center text-lg text-white"
         hidden={!form.errors}
       >
         {form.errors}
@@ -95,7 +95,7 @@ function Submit({ success }: { success: boolean }) {
       type="submit"
       className={clsx(
         'absolute bottom-1.5 right-1.5 top-1.5 flex aspect-square h-10 items-center justify-center overflow-hidden rounded-full transition-all md:h-12 lg:h-14',
-        success ? 'bg-[#39e258]' : 'bg-foreground'
+        success ? 'bg-[#39e258]' : 'bg-black'
       )}
       disabled={pending || success}
     >
