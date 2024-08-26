@@ -286,11 +286,11 @@ export default function Home() {
       <section className="mx-auto flex max-w-[1600px] flex-col items-start gap-x-16 gap-y-16 px-3 pb-4 pt-20 md:px-6 md:pb-32 md:pt-48 lg:flex-row xl:gap-x-24 xl:px-14">
         <div className="top-32 flex-1 lg:sticky">
           <h2 className="mb-3 font-heading text-3xl leading-none sm:text-4xl md:text-5xl lg:mb-5">
-            This is a header about features
+            The future of theming is here
           </h2>
           <p className="text-2xl md:text-3xl">
-            Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.
-            Aenean dig nissim pellen.
+            VIBES are production ready out of the box and focus on advanced optimizations needed for
+            marketing and commerce websites. Here's what you get with each VIBE:
           </p>
         </div>
 
