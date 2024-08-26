@@ -9,7 +9,7 @@ import clsx from 'clsx'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import Transition from '@/components/ui/transition'
-import { Vibes } from '@/icons/generated'
+import { Arrow, Vibes } from '@/icons/generated'
 
 import { EazyTheme } from '../stickers/eazy-theme'
 import { HandcraftedCode } from '../stickers/handcrafted-code'
@@ -23,6 +23,35 @@ import { Reactjs } from '../stickers/reactjs'
 import { Typescript } from '../stickers/typescript'
 import { Form } from './form'
 
+const useSmoothScroll = () => {
+  const smoothScrollTo = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  return smoothScrollTo
+}
+
+const ScrollButton: React.FC<{ to: string; children: React.ReactNode; className?: string }> = ({
+  to,
+  children,
+  className,
+}) => {
+  const smoothScrollTo = useSmoothScroll()
+
+  const handleClick = () => {
+    smoothScrollTo(to)
+  }
+
+  return (
+    <div onClick={handleClick} className={clsx('cursor-pointer', className)}>
+      {children}
+    </div>
+  )
+}
+
 const FeatureCard = ({
   children,
   text,
@@ -34,7 +63,7 @@ const FeatureCard = ({
 }) => (
   <div
     className={clsx(
-      'min-h-auto relative flex w-full flex-col place-content-center gap-y-5 rounded-3xl border-[1.5px] border-foreground bg-[#FFFAE0] px-5 pb-6 md:min-h-72 md:flex-row md:px-12 md:pb-12 md:pt-10'
+      'min-h-auto relative flex w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-foreground bg-[#FFFAE0] md:min-h-72 md:flex-row'
     )}
   >
     <div
@@ -45,7 +74,9 @@ const FeatureCard = ({
     >
       {children}
     </div>
-    <p className="text-xl leading-snug sm:text-2xl">{text}</p>
+    <p className="w-full px-5 pb-6 text-xl leading-snug sm:px-8 sm:text-2xl md:w-auto md:px-10 md:py-10 md:text-3xl lg:px-12">
+      {text}
+    </p>
   </div>
 )
 
@@ -68,26 +99,17 @@ export default function Home() {
     }
   }, [])
 
-  const targetRef = useRef<HTMLDivElement | null>(null)
-
-  // Function to handle button click
-  const handleScroll = () => {
-    if (targetRef.current) {
-      targetRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden md:overflow-visible">
       <header
         className={clsx(
-          'fixed left-0 top-0 z-50 flex w-full items-center justify-center transition-all duration-300 md:justify-between',
+          'fixed left-0 top-0 z-50 hidden w-full items-center justify-center transition-all duration-300 md:flex md:justify-between',
           isScrolled ? 'translate-y-3 px-7' : 'translate-y-8 px-10 md:translate-y-10'
         )}
       >
-        <Button onClick={handleScroll} className="hidden md:inline-block">
-          Get updates
-        </Button>
+        <ScrollButton to="footer" className="hidden md:inline-block">
+          <Button size="large">Get updates</Button>
+        </ScrollButton>
         <div
           className={clsx(
             'relative h-8 w-32 origin-center transition-transform duration-300 md:h-10 md:w-40',
@@ -96,14 +118,38 @@ export default function Home() {
         >
           <Image src="/logo.svg" fill alt="Vibes logo" priority />
         </div>
-        <ButtonLink href="#contribute" className="hidden md:inline-block">
+        <ButtonLink href="/contribute" size="large" className="hidden md:inline-block">
           Contribute
         </ButtonLink>
       </header>
 
-      <section className="h-[80vh] w-full bg-white p-3 sm:p-4 md:h-dvh lg:p-5">
-        <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-2xl border border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-3xl md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <h1 className="mx-auto max-w-5xl font-heading text-[44px] leading-none tracking-tight text-foreground sm:text-5xl md:mb-5 lg:text-7xl xl:text-9xl">
+      <section className="relative h-[80vh] w-full bg-white p-3 sm:p-4 md:h-[calc(100vh-28px)] lg:p-5">
+        <ScrollButton
+          to="footer"
+          className="group absolute left-1/2 top-full z-20 -mt-6 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-foreground md:flex"
+        >
+          <Arrow className="rotate-90 scale-125 transition-transform duration-300 ease-out group-hover:translate-y-2" />
+        </ScrollButton>
+
+        <Image
+          src="/hero-arrow-bg.svg"
+          width={200}
+          height={114}
+          alt=""
+          className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[78px] md:flex"
+        />
+
+        <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-2xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-3xl md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
+          <Image
+            src="/logo.svg"
+            width={120}
+            height={32}
+            alt="Vibes logo"
+            priority
+            className="absolute left-5 top-6 md:hidden"
+          />
+
+          <h1 className="mx-auto mt-10 max-w-5xl font-heading text-[44px] leading-none tracking-tight text-foreground sm:text-5xl md:mb-5 md:mt-0 lg:text-7xl xl:text-9xl">
             {/* <Transition
               className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
               from="translate-y-16 opacity-0"
@@ -129,10 +175,13 @@ export default function Home() {
           </h1>
 
           <div className="mt-7 flex items-center gap-1.5 md:hidden">
-            <Button onClick={handleScroll} size="large">
-              Get updates
-            </Button>
-            <ButtonLink href="#contribute" size="large">
+            <ScrollButton to="footer" className="flex-1">
+              <Button size="large" className="w-full [&_span]:w-full">
+                Get updates
+              </Button>
+            </ScrollButton>
+
+            <ButtonLink href="/contribute" size="large">
               Contribute
             </ButtonLink>
           </div>
@@ -189,9 +238,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto flex max-w-[1600px] flex-col items-start gap-20 px-3 pb-4 pt-20 md:px-6 md:pb-32 md:pt-48 lg:flex-row lg:px-14">
-        <div className="sticky top-40 flex-1">
-          <h2 className="mb-3 font-heading text-3xl leading-none md:text-4xl lg:mb-5 lg:text-5xl xl:text-6xl">
+      <section className="mx-auto flex max-w-[1600px] flex-col items-start gap-x-16 gap-y-16 px-3 pb-4 pt-20 md:px-6 md:pb-32 md:pt-48 lg:flex-row xl:gap-x-24 xl:px-14">
+        <div className="top-40 flex-1 lg:sticky">
+          <h2 className="mb-3 font-heading text-3xl leading-none md:text-4xl lg:mb-5 lg:text-5xl">
             This is a header about features
           </h2>
           <p className="text-2xl md:text-3xl">
@@ -200,7 +249,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="w-full space-y-7 lg:w-[740px] lg:space-y-20">
+        <div className="w-full space-y-7 lg:max-w-3xl lg:space-y-20 xl:max-w-4xl">
           <FeatureCard
             sticker="left"
             text="Multiple styles that can be customized to best represent your brand."
@@ -256,22 +305,18 @@ export default function Home() {
         </div>
       </section>
 
-      <footer ref={targetRef} className="w-full bg-white p-3 md:p-4 lg:p-5">
+      <footer id="footer" className="w-full bg-white p-3 md:p-4 lg:p-5">
         <div className="relative z-0 h-full w-full overflow-hidden rounded-2xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:rounded-3xl lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <div className="mx-auto flex max-w-4xl flex-col items-center px-5 pb-64 pt-10 text-center md:pt-20">
-            <p className="mb-8 text-2xl leading-normal text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
+          <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-64 pt-10 text-center md:pt-20">
+            <p className="mb-8 text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
               Stunning React components for commerce and marketing, optimized for fashion and
               function.
               <span className="block font-bold">Coming October 2024.</span>
             </p>
 
-            <Transition
-              className="w-full transition-all duration-700 [transition-delay:300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)] sm:w-auto"
-              from="translate-y-16 opacity-0"
-              to="translate-y-0 opacity-100"
-            >
+            <div className="relative z-10 w-full sm:w-auto">
               <Form />
-            </Transition>
+            </div>
 
             <p className="mt-14 text-lg leading-normal md:mt-24">
               Made by{' '}

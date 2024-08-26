@@ -37,9 +37,9 @@ export function Form() {
     <form
       {...getFormProps(form)}
       action={action}
-      className="pattern-shadow pattern-shadow-md relative flex h-14 w-full max-w-full gap-2 gap-x-3 rounded-full border-[1.5px] border-foreground bg-background md:h-16 lg:h-[72px]"
+      className="pattern-shadow pattern-shadow-md relative flex h-14 w-full gap-2 gap-x-3 rounded-full border-[1.5px] border-foreground bg-background sm:w-auto md:h-16 lg:h-[72px]"
     >
-      <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-5 pr-14 lg:pl-6 lg:pr-16">
+      <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-4 pr-14 md:w-auto lg:pl-6 lg:pr-16">
         <label htmlFor={fields.email.id} className="sr-only">
           Enter your email to be notified
         </label>
@@ -47,7 +47,7 @@ export function Form() {
           {...getInputProps(fields.email, { type: 'email' })}
           placeholder="Enter your email to be notified"
           className={clsx(
-            'bg-transparent pb-0.5 font-sans text-lg text-foreground outline-none transition-all duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-foreground/50 focus:!w-[540px] focus:outline-none sm:w-[540px] sm:placeholder-shown:w-[300px] md:text-xl lg:text-[24px] lg:placeholder-shown:w-[350px]',
+            'w-full bg-transparent font-sans text-lg text-foreground outline-none transition-all duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-foreground/50 focus:!w-[540px] focus:outline-none sm:w-[540px] sm:placeholder-shown:w-[300px] md:text-xl lg:text-[24px] lg:placeholder-shown:w-[350px]',
             success ? '-translate-y-full' : 'translate-y-0'
           )}
           data-1p-ignore
@@ -56,7 +56,7 @@ export function Form() {
           id={fields.email.descriptionId}
           hidden={!success}
           className={clsx(
-            'absolute inset-0 flex items-center pb-0.5 pl-5 text-foreground transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-[24px]',
+            'absolute inset-0 flex items-center pl-5 text-foreground transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-[24px]',
             success ? 'translate-y-0' : 'translate-y-full'
           )}
         >
