@@ -9,7 +9,7 @@ import ProductDetail from '@/vibes/soul/components/product-detail'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
 import { footerLinks } from '@/vibes/soul/examples/footer'
-import { headerLinks } from '@/vibes/soul/examples/header'
+import { headerLinks } from '@/vibes/soul/examples/header-electric'
 
 const locales = [
   { id: '1', region: 'US', language: 'EN' },
