@@ -49,7 +49,7 @@ export default function Contribute() {
             </p>
 
             <div className="relative z-10 w-full sm:w-auto">
-              <Form />
+              <Form intent="contribute" />
             </div>
 
             <p className="mt-14 text-lg leading-normal md:mt-24">
