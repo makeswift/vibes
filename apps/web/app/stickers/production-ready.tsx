@@ -7,27 +7,25 @@ import { ProductionReadyBack, ProductionReadyFront, ProductionReadyShadow } from
 
 export function ProductionReady() {
   return (
-    <div className="pointer-events-none absolute right-[-22%] top-[125%] sm:right-[-38%] sm:top-[-25%] md:right-[-34%] md:top-[-16%]">
-      <Draggable>
-        {({ active, hover }) => (
-          <Transition
-            className="transition-transform duration-1000 [transition-delay:1800ms]"
-            from="translate-x-[600px] translate-y-[-700px] rotate-[120deg]"
-            to="translate-x-0 translate-y-0 rotate-0"
-          >
-            <Sticker
-              active={active}
-              hover={hover}
-              hoverPeel={0.15}
-              width={284}
-              height={284}
-              front={<ProductionReadyFront />}
-              back={<ProductionReadyBack />}
-              shadow={<ProductionReadyShadow />}
-            />
-          </Transition>
-        )}
-      </Draggable>
-    </div>
+    <Draggable className="-ml-6 -mt-6">
+      {({ active, hover }) => (
+        <Transition
+          className="transition-transform duration-1000"
+          from="translate-x-[600px] md:translate-x-[1200px] translate-y-0 rotate-[120deg]"
+          to="translate-x-0 translate-y-0 rotate-0"
+        >
+          <Sticker
+            active={active}
+            hover={hover}
+            hoverPeel={0.15}
+            width={284}
+            height={284}
+            front={<ProductionReadyFront />}
+            back={<ProductionReadyBack />}
+            shadow={<ProductionReadyShadow />}
+          />
+        </Transition>
+      )}
+    </Draggable>
   )
 }

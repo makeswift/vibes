@@ -5,6 +5,7 @@ import { parseWithZod } from '@conform-to/zod'
 import Airtable from 'airtable'
 import { Resend } from 'resend'
 
+import ContributeEmail from '@/components/emails/contribute'
 import WaitlistEmail from '@/components/emails/waitlist'
 import { env } from '@/lib/env'
 import { submitLeadSchema } from '@/lib/schema'
@@ -22,16 +23,26 @@ export async function submitLead(
   if (submission.status !== 'success') return submission.reply()
 
   const email = submission.value.email
+  const intent = submission.value.intent
 
   try {
-    await base(env.AIRTABLE_TABLE_ID).create({ Email: email }, { typecast: true })
+    await base(env.AIRTABLE_TABLE_ID).create({ Email: email, Intent: intent }, { typecast: true })
 
-    await resend.emails.send({
-      from: 'Vibes <hello@vibes.site>',
-      to: [email],
-      subject: `Welcome to Vibes!`,
-      react: WaitlistEmail(),
-    })
+    if (intent === 'contribute') {
+      await resend.emails.send({
+        from: 'Vibes <hello@vibes.site>',
+        to: [email],
+        subject: `Contributing to VIBES`,
+        react: ContributeEmail(),
+      })
+    } else {
+      await resend.emails.send({
+        from: 'Vibes <hello@vibes.site>',
+        to: [email],
+        subject: `Welcome to VIBES!`,
+        react: WaitlistEmail(),
+      })
+    }
 
     return submission.reply()
   } catch (e) {
