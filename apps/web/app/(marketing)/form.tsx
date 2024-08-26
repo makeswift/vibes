@@ -12,11 +12,12 @@ import Transition from '@/components/ui/transition'
 import { Arrow, Check, Loader } from '@/icons/generated'
 import { submitLeadSchema } from '@/lib/schema'
 
-export function Form() {
+export function Form({ intent }: { intent?: string }) {
   const [shake, setShake] = useState(false)
   const [lastResult, action] = useFormState(submitLead, undefined)
   const [form, fields] = useForm({
     lastResult,
+    defaultValue: { email: '', intent },
     shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',
     constraint: getZodConstraint(submitLeadSchema),
@@ -52,6 +53,7 @@ export function Form() {
           )}
           data-1p-ignore
         />
+        <input {...getInputProps(fields.intent, { type: 'hidden' })} />
         <div
           id={fields.email.descriptionId}
           hidden={!success}
