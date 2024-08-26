@@ -9,12 +9,12 @@ import { ShoppingBagBack, ShoppingBagFront, ShoppingBagShadow } from '@/icons/ge
 
 export function ShoppingBag() {
   return (
-    <div className="absolute -top-3.5 left-full z-10 hidden origin-top-left scale-75 md:block xl:scale-100">
+    <div className="absolute -bottom-28 left-1/3 z-10 hidden origin-top-left scale-110 sm:block md:-top-3.5 md:bottom-auto md:left-full md:scale-75 xl:scale-100">
       <Draggable>
         {({ active, hover }) => (
           <Transition
-            className="transition-transform duration-1000 [transition-delay:550ms]"
-            from="translate-x-[300px] translate-y-[800px] rotate-[-100deg]"
+            className="transition-transform duration-1000 [transition-delay:750ms]"
+            from="translate-x-[300px] translate-y-[1000px] rotate-[-100deg]"
             to="translate-x-0 translate-y-0 rotate-12"
           >
             <Sticker

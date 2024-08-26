@@ -75,7 +75,7 @@ const FeatureCard = ({
     >
       {children}
     </div>
-    <p className="w-full px-5 pb-6 text-xl leading-snug sm:px-8 sm:text-2xl md:w-auto md:px-10 md:py-10 md:text-3xl lg:px-12">
+    <p className="w-full px-5 pb-6 text-2xl leading-snug sm:px-8 md:w-auto md:px-10 md:py-10 md:text-3xl lg:px-12">
       {text}
     </p>
   </div>
@@ -137,7 +137,7 @@ export default function Home() {
           width={200}
           height={114}
           alt=""
-          className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[78px] md:flex"
+          className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[74px] md:flex lg:-translate-y-[78px]"
         />
 
         <div className="relative z-0 h-full w-full select-none place-content-end overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center md:p-8 lg:place-content-center lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
@@ -150,34 +150,52 @@ export default function Home() {
             className="absolute left-5 top-6 z-50 sm:hidden"
           />
 
-          <h1 className="mx-auto mt-10 max-w-full font-heading text-[44px] leading-none tracking-tight text-foreground sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
-            {/* <Transition
-              className="transition-all duration-700 [transition-delay:1200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
-              from="translate-y-16 opacity-0"
+          <h1 className="mx-auto mt-10 max-w-full font-heading text-[9vw] leading-none tracking-tight text-foreground sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
+            <Transition
+              className="transition-all duration-700 [transition-delay:100ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+              from="translate-y-28 opacity-0"
               to="translate-y-0 opacity-100"
-            > */}
-            <div className="text-left md:ml-10">
-              <span className="md:relative">
-                A modern <HandcraftedCode />
-              </span>
-            </div>
-            <div className="text-left md:text-right">
-              <span className="md:relative">UI library for</span>
-            </div>
-            <div className="text-left md:text-center">
-              <span className="md:relative">
-                composable <Reactjs />
-              </span>
-            </div>
-            <div className="text-left">
-              <span className="md:relative">
-                websites <ShoppingBag />
-              </span>
-            </div>
-            {/* </Transition> */}
+            >
+              <div className="text-left md:ml-10">
+                <span className="md:relative">
+                  A modern <HandcraftedCode />
+                </span>
+              </div>
+            </Transition>
+            <Transition
+              className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:150ms]"
+              from="translate-y-28 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              <div className="text-left md:text-right">
+                <span className="md:relative">UI library for</span>
+              </div>
+            </Transition>
+            <Transition
+              className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:200ms]"
+              from="translate-y-28 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              <div className="text-left md:text-center">
+                <span className="md:relative">
+                  composable <Reactjs />
+                </span>
+              </div>
+            </Transition>
+            <Transition
+              className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:250ms]"
+              from="translate-y-28 opacity-0"
+              to="translate-y-0 opacity-100"
+            >
+              <div className="text-left">
+                <span className="md:relative">
+                  websites <ShoppingBag />
+                </span>
+              </div>
+            </Transition>
           </h1>
 
-          <div className="mt-7 flex items-center gap-1.5 sm:hidden">
+          <div className="mb-4 mt-7 flex items-center gap-1.5 sm:hidden">
             <ScrollButton to="footer" className="flex-1">
               <Button size="large" className="w-full [&_span]:w-full">
                 Get updates
@@ -245,8 +263,8 @@ export default function Home() {
       </section>
 
       <section className="mx-auto flex max-w-[1600px] flex-col items-start gap-x-16 gap-y-16 px-3 pb-4 pt-20 md:px-6 md:pb-32 md:pt-48 lg:flex-row xl:gap-x-24 xl:px-14">
-        <div className="top-40 flex-1 lg:sticky">
-          <h2 className="mb-3 font-heading text-3xl leading-none md:text-4xl lg:mb-5 lg:text-5xl">
+        <div className="top-32 flex-1 lg:sticky">
+          <h2 className="mb-3 font-heading text-3xl leading-none sm:text-4xl md:text-5xl lg:mb-5">
             This is a header about features
           </h2>
           <p className="text-2xl md:text-3xl">
