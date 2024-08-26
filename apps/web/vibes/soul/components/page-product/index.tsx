@@ -8,7 +8,7 @@ import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
-import { footerLinks } from '@/vibes/soul/examples/footer'
+import { footerLinks } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 
 const locales = [

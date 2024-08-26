@@ -7,7 +7,7 @@ import Pagination from '@/vibes/soul/components/pagination'
 import { Product } from '@/vibes/soul/components/product-card'
 import ProductsHeader from '@/vibes/soul/components/products-header'
 import ProductsList from '@/vibes/soul/components/products-list'
-import { footerLinks } from '@/vibes/soul/examples/footer'
+import { footerLinks } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 import { products } from '@/vibes/soul/examples/products-list'
 

@@ -1,68 +1,27 @@
 import { CardProps } from '@/vibes/soul//components/card'
+import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
+import CardCarousel from '@/vibes/soul/components/card-carousel'
 import Feature from '@/vibes/soul/components/feature'
-import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
-import HomePage from '@/vibes/soul/components/page-home'
+import FeaturedImage, { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
+import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
+import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
+import Footer from '@/vibes/soul/components/footer'
+import Header from '@/vibes/soul/components/header'
 import { Product } from '@/vibes/soul/components/product-card'
-import { headerLinks } from '@/vibes/soul/examples/header-blue'
+import Slideshow from '@/vibes/soul/components/slideshow'
+import Subscribe from '@/vibes/soul/components/subscribe'
+import { cards } from '@/vibes/soul/examples/card-carousel-blue'
+import {
+  copyright,
+  footerLinks,
+  logo,
+  paymentIconsArray,
+  socialMediaLinks,
+} from '@/vibes/soul/examples/footer-blue'
+import { headerLinks, locales } from '@/vibes/soul/examples/header-blue'
+import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
 
-export const heroSlides = [
-  {
-    title: 'New Casuals',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/Nz2yR4EZgvo',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 2',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/gWgyEhm5W60',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 3',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/K-F83RXTJsx',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-]
-
-export const categories: CardProps[] = [
-  {
-    title: 'Men',
-    image: { src: 'https://rstr.in/monogram/vibes/ptJ724KlDom', altText: 'Men' },
-    href: '#',
-  },
-  {
-    title: 'Women',
-    image: { src: 'https://rstr.in/monogram/vibes/P3yw1GHGDuv', altText: 'Women' },
-    href: '#',
-  },
-  {
-    title: 'Footwear',
-    image: { src: 'https://rstr.in/monogram/vibes/XG-Zqe3Y2xH', altText: 'Footwear' },
-    href: '#',
-  },
-  {
-    title: 'Headwear',
-    image: { src: 'https://rstr.in/monogram/vibes/ayf5JcyknJ4', altText: 'Headwear' },
-    href: '#',
-  },
-]
+import { newArrivals } from './page-home-electric'
 
 const featuredImage: FeaturedImageProps = {
   title: 'Thoughtfully Designed',
@@ -193,15 +152,100 @@ export const featuredImageII: FeaturedImageProps = {
 
 export default function Preview() {
   return (
-    <HomePage
-      headerLinks={headerLinks}
-      heroSlides={heroSlides}
-      categories={categories}
-      featuredImage={featuredImage}
-      feature={feature}
-      featuredProductsContent={featuredProductsContent}
-      featuredProducts={featuredProducts}
-      featuredImageII={featuredImageII}
-    />
+    <>
+      <AnnouncementBar>
+        Get <strong>15% off</strong> and free shipping with discount code{' '}
+        <strong>&quot;welcome&quot;</strong>
+      </AnnouncementBar>
+
+      <Header
+        links={headerLinks}
+        logo="BLUE"
+        cartHref="#"
+        accountHref="#"
+        locales={locales}
+        activeLocale="EN"
+      />
+
+      <Slideshow slides={heroSlides} />
+
+      {/* Categories Carousel */}
+      <CardCarousel cards={cards} />
+
+      <FeaturedImage
+        title={featuredImage?.title}
+        description={featuredImage?.description}
+        image={{
+          src: featuredImage?.image.src,
+          altText: featuredImage?.image.altText,
+        }}
+        cta={{ href: '#', label: 'Shop Now' }}
+      />
+
+      <FeaturedProductsList
+        title={featuredProductsContent.title}
+        description={featuredProductsContent.description}
+        // cta={{ label: featuredProductsContent.label, href: featuredProductsContent.href }}
+        products={featuredProducts}
+      />
+
+      <Subscribe
+        title="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+      />
+
+      <FeaturedProductsCarousel
+        title="New Arrivals"
+        cta={{ label: 'See All', href: '#' }}
+        products={newArrivals || featuredProducts}
+      />
+
+      <Feature
+        image={{
+          src: feature.image.src,
+          altText: feature.image.altText,
+        }}
+        title={feature.title}
+        description={feature.description}
+        cta={{
+          label: feature.cta.label,
+          href: feature.cta.href,
+        }}
+      />
+
+      <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
+
+      <FeaturedImage
+        title={featuredImageII.title}
+        description={featuredImageII.description}
+        image={{
+          src: featuredImageII.image.src,
+          altText: featuredImageII.image.altText,
+        }}
+        cta={{ href: featuredImageII.cta.href, label: featuredImageII.cta.label }}
+      />
+
+      {/* <FeaturedVideo
+          title="Pro-Team"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          labore et dolore magna aliqua."
+          video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
+          cta={{ href: '#', label: 'Shop Now' }}
+          mediaAlign="left"
+        /> */}
+
+      <Subscribe
+        title="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+      />
+
+      <Footer
+        logo={logo}
+        sections={footerLinks}
+        copyright={copyright}
+        paymentIcons={paymentIconsArray}
+        socialMediaLinks={socialMediaLinks}
+      />
+    </>
   )
 }

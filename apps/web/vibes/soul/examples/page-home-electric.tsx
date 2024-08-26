@@ -2,71 +2,11 @@ import { CardProps } from '@/vibes/soul/components/card'
 import Feature from '@/vibes/soul/components/feature'
 import HomePage from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul/components/product-card'
+import { cards } from '@/vibes/soul/examples/card-carousel-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
+import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
 
 import { FeaturedImageProps } from '../components/featured-image'
-
-const heroSlides = [
-  {
-    title: 'Give',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/fzVuE9iZ4mI',
-      altText: 'alt',
-    },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
-  },
-  {
-    title: 'Grow',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk',
-      altText: 'alt',
-    },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
-  },
-  {
-    title: 'Thrive',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C',
-      altText: 'alt',
-    },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
-  },
-]
-
-const categories: CardProps[] = [
-  {
-    title: 'Small Plants',
-    image: { src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk', altText: 'Small Plants' },
-    href: '#',
-  },
-  {
-    title: 'Low Maintenance',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk',
-      altText: 'Low Maintenance',
-    },
-    href: '#',
-  },
-  {
-    title: 'Indestructible',
-    image: { src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p', altText: 'Indestructible' },
-    href: '#',
-  },
-  {
-    title: 'Succulent',
-    image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', altText: 'Succulent' },
-    href: '#',
-  },
-]
 
 // Featured Products
 export const newArrivals: Product[] = [
@@ -317,7 +257,7 @@ export default function Preview() {
       headerLinks={headerLinks}
       logo="SOUL"
       heroSlides={heroSlides}
-      categories={categories}
+      categories={cards}
       featuredImage={featuredImage}
       feature={feature}
       featuredProductsContent={featuredProductsContent}
