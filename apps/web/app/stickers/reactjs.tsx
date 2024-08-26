@@ -12,7 +12,7 @@ export function Reactjs() {
         {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000 [transition-delay:700ms]"
-            from="translate-x-[-1000px] translate-y-[100px] rotate-[-120deg]"
+            from="translate-x-[-1000px] translate-y-[100px] rotate-[-270deg]"
             to="translate-x-0 translate-y-0 rotate-12"
           >
             <Sticker

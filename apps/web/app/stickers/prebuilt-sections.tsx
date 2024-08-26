@@ -15,7 +15,7 @@ export function PrebuiltSections() {
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[600px] translate-y-[100px] rotate-[200deg]"
+          from="translate-x-[600px] md:translate-x-[1200px] translate-y-[100px] rotate-[200deg]"
           to="translate-x-0 translate-y-0 rotate-[-12deg]"
         >
           <Sticker

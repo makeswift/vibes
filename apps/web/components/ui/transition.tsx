@@ -1,6 +1,6 @@
 'use client'
 
-import { ComponentPropsWithoutRef, startTransition, useEffect, useRef, useState } from 'react'
+import { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
@@ -9,7 +9,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
   to: string
 }
 
-export default function Transition({ className, style, from, to, children }: Props) {
+export default function Transition({ className, from, to, children }: Props) {
   const [inView, setInView] = useState(false)
   const [hasBeenInView, setHasBeenInView] = useState(false)
   const elementRef = useRef<HTMLDivElement>(null)
@@ -53,7 +53,7 @@ export default function Transition({ className, style, from, to, children }: Pro
   }, [hasBeenInView])
 
   return (
-    <div ref={elementRef}>
+    <div ref={elementRef} className="inline-block">
       <div className={clsx(inView || hasBeenInView ? to : from, className)}>{children}</div>
     </div>
   )

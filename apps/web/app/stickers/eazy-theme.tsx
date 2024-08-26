@@ -7,11 +7,11 @@ import { ThemesBack, ThemesFront, ThemesShadow } from '@/icons/generated'
 
 export function EazyTheme() {
   return (
-    <Draggable className="-mt-16">
+    <Draggable className="mx-12 -mt-16">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[700px] -translate-y-20 rotate-[20deg]"
+          from="translate-x-[700px] md:translate-x-[1200px] -translate-y-20 rotate-[270deg]"
           to="translate-x-0 translate-y-0 rotate-[-16deg]"
         >
           <Sticker

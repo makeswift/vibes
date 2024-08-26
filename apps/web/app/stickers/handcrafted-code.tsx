@@ -11,8 +11,8 @@ export function HandcraftedCode() {
       <Draggable>
         {({ active, hover }) => (
           <Transition
-            className="transition-transform duration-1000 [transition-delay:700ms]"
-            from="translate-x-[200px] translate-y-[-1000px] rotate-[-100deg]"
+            className="transition-transform duration-1000 [transition-delay:740ms]"
+            from="translate-x-[200px] translate-y-[-1000px] rotate-[-270deg]"
             to="translate-x-0 translate-y-0 rotate-[-20deg] md:-rotate-12"
           >
             <Sticker

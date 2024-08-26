@@ -136,7 +136,8 @@ export default function Home() {
           src="/hero-arrow-bg.svg"
           width={200}
           height={114}
-          alt=""
+          alt="Arrow button container"
+          priority
           className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[74px] md:flex lg:-translate-y-[78px]"
         />
 
@@ -151,48 +152,56 @@ export default function Home() {
           />
 
           <h1 className="mx-auto mt-10 max-w-full font-heading text-[9vw] leading-none tracking-tight text-foreground sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
-            <Transition
-              className="transition-all duration-700 [transition-delay:100ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
-              from="translate-y-28 opacity-0"
-              to="translate-y-0 opacity-100"
-            >
-              <div className="text-left md:ml-10">
-                <span className="md:relative">
-                  A modern <HandcraftedCode />
-                </span>
-              </div>
-            </Transition>
-            <Transition
-              className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:150ms]"
-              from="translate-y-28 opacity-0"
-              to="translate-y-0 opacity-100"
-            >
-              <div className="text-left md:text-right">
-                <span className="md:relative">UI library for</span>
-              </div>
-            </Transition>
-            <Transition
-              className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:200ms]"
-              from="translate-y-28 opacity-0"
-              to="translate-y-0 opacity-100"
-            >
-              <div className="text-left md:text-center">
-                <span className="md:relative">
-                  composable <Reactjs />
-                </span>
-              </div>
-            </Transition>
-            <Transition
-              className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:250ms]"
-              from="translate-y-28 opacity-0"
-              to="translate-y-0 opacity-100"
-            >
-              <div className="text-left">
-                <span className="md:relative">
-                  websites <ShoppingBag />
-                </span>
-              </div>
-            </Transition>
+            <div className="text-left md:ml-10">
+              <span className="md:relative">
+                <Transition
+                  className="w-auto transition-all duration-700 [transition-delay:100ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+                  from="translate-y-28 opacity-0"
+                  to="translate-y-0 opacity-100"
+                >
+                  A modern{' '}
+                </Transition>
+                <HandcraftedCode />
+              </span>
+            </div>
+
+            <div className="text-left md:text-right">
+              <span className="md:relative">
+                <Transition
+                  className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:150ms]"
+                  from="translate-y-28 opacity-0"
+                  to="translate-y-0 opacity-100"
+                >
+                  UI library for{' '}
+                </Transition>
+              </span>
+            </div>
+
+            <div className="text-left md:text-center">
+              <span className="md:relative">
+                <Transition
+                  className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:200ms]"
+                  from="translate-y-28 opacity-0"
+                  to="translate-y-0 opacity-100"
+                >
+                  composable{' '}
+                </Transition>
+                <Reactjs />
+              </span>
+            </div>
+
+            <div className="text-left">
+              <span className="md:relative">
+                <Transition
+                  className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:250ms]"
+                  from="translate-y-28 opacity-0"
+                  to="translate-y-0 opacity-100"
+                >
+                  websites{' '}
+                </Transition>
+                <ShoppingBag />
+              </span>
+            </div>
           </h1>
 
           <div className="mb-4 mt-7 flex items-center gap-1.5 sm:hidden">
@@ -214,14 +223,26 @@ export default function Home() {
           id="intro"
           className="mx-auto max-w-[1200px] pt-12 text-3xl leading-snug tracking-tight md:pt-40 md:text-4xl md:leading-tight lg:text-5xl xl:text-6xl"
         >
-          <p>
-            <span className="font-bold">VIBES</span> is an open-source theming engine for composable
-            marketing and commerce sites.
-          </p>
-          <p>
-            A <span className="font-bold">VIBE</span> is a theme that includes a set of React UI
-            components and styles.
-          </p>
+          <Transition
+            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:200ms]"
+            from="translate-y-28 opacity-0"
+            to="translate-y-0 opacity-100"
+          >
+            <p>
+              <span className="font-bold">VIBES</span> is an open-source theming engine for
+              composable marketing and commerce sites.
+            </p>
+          </Transition>
+          <Transition
+            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:250ms]"
+            from="translate-y-28 opacity-0"
+            to="translate-y-0 opacity-100"
+          >
+            <p>
+              A <span className="font-bold">VIBE</span> is a theme that includes a set of React UI
+              components and styles.
+            </p>
+          </Transition>
         </div>
       </section>
 
@@ -331,7 +352,7 @@ export default function Home() {
 
       <footer id="footer" className="w-full bg-white p-3 md:p-4 lg:p-5">
         <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-64 pt-10 text-center md:pt-20">
+          <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-64 pt-10 text-left sm:px-8 sm:text-center md:pt-20">
             <p className="mb-8 text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
               Stunning React components for commerce and marketing, optimized for fashion and
               function.
@@ -342,7 +363,7 @@ export default function Home() {
               <Form />
             </div>
 
-            <p className="mt-14 text-lg leading-normal md:mt-24">
+            <p className="mt-14 w-full px-4 text-lg leading-normal md:mt-24">
               Made by{' '}
               <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
                 Makeswift

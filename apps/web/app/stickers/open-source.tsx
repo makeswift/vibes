@@ -11,7 +11,7 @@ export function OpenSource() {
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[-700px] translate-y-[400px] rotate-[-90deg]"
+          from="translate-x-[-700px] md:translate-x-[-1600px] translate-y-[400px] rotate-[-90deg]"
           to="translate-x-0 translate-y-0 rotate-[-8deg]"
         >
           <Sticker
