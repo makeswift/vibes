@@ -126,7 +126,7 @@ export default function Home() {
 
       <section className="relative h-[550px] w-full bg-white p-3 sm:h-[650px] sm:p-4 md:h-[calc(100vh-28px)] lg:p-5">
         <ScrollButton
-          to="footer"
+          to="intro"
           className="group absolute left-1/2 top-full z-20 -mt-6 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-foreground md:flex"
         >
           <Arrow className="rotate-90 scale-125 transition-transform duration-300 ease-out group-hover:translate-y-2" />
@@ -191,8 +191,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="h-auto px-5 pb-8 pt-12 md:mb-8 md:h-[60vh] md:place-content-end md:p-10 lg:mb-20">
-        <div className="mx-auto max-w-[1200px] text-3xl leading-snug tracking-tight md:text-4xl md:leading-tight lg:text-5xl xl:text-6xl">
+      <section className="h-auto px-5 pb-8 md:mb-8 md:h-[60vh] md:place-content-end md:p-10 lg:mb-20">
+        <div
+          id="intro"
+          className="mx-auto max-w-[1200px] pt-12 text-3xl leading-snug tracking-tight md:pt-40 md:text-4xl md:leading-tight lg:text-5xl xl:text-6xl"
+        >
           <p>
             <span className="font-bold">VIBES</span> is an open-source theming engine for composable
             marketing and commerce sites.
