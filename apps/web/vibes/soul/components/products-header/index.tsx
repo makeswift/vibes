@@ -3,7 +3,7 @@
 import React from 'react'
 
 import Dropdown from '@/vibes/soul/components/dropdown'
-import FilterDialog from '@/vibes/soul/components/filter-dialog'
+import FilterPanel from '@/vibes/soul/components/filter-panel'
 
 interface Props {
   title: string
@@ -19,8 +19,8 @@ export const ProductsHeader = function ProductsHeader({ title, numberOfProducts 
           {title} <span className="text-contrast-200">{numberOfProducts}</span>
         </h1>
         <div className="flex gap-2 pr-3 @xl:pr-6 @5xl:pr-20">
-          {/* Filter Button & Dialog */}
-          <FilterDialog />
+          {/* Filter Button & Panel */}
+          <FilterPanel />
           <Dropdown
             label="Sort"
             items={['Most Recent', 'Most Popular', 'Price: Low to High', 'Price: High to Low']}

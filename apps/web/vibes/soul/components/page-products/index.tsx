@@ -21,27 +21,35 @@ const locales = [
 export const compareProducts: Product[] = [
   {
     id: '1',
-    name: 'Men’s Long Sleeve Jersey',
-    subtitle: 'Blue/Black/Green',
+    name: 'Plant 1',
+    subtitle: 'Small',
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/tJ-FPKUBiSp',
+      src: 'https://rstr.in/monogram/vibes/zyFDaG5bRQE',
       altText: 'Men’s Long Sleeve Jersey',
     },
     href: '#',
+    description:
+      'Engineered for chasing alternate paths, the Alt_Road Long Sleeve Jersey is for riders who want it all.',
+    rating: 4.8,
+    availability: 'In Stock',
   },
   {
     id: '2',
-    name: 'Men’s Long Sleeve Jersey',
-    subtitle: 'Blue/Black/Green',
+    name: 'Plant 2',
+    subtitle: 'Small',
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/alCCRbqrsnE',
+      src: 'https://rstr.in/monogram/vibes/AxXaqTzRozM',
       altText: 'Men’s Long Sleeve Jersey',
     },
     href: '#',
+    description:
+      'Engineered for chasing alternate paths, the Alt_Road Long Sleeve Jersey is for riders who want it all.',
+    rating: 4.5,
+    availability: 'In Stock',
   },
 ]
 

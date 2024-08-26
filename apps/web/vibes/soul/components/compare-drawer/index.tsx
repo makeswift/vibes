@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-import Button from '@/vibes/soul/components/button'
 import ProductChip from '@/vibes/soul/components/compare-drawer/product-chip'
+import ComparePanel from '@/vibes/soul/components/compare-panel'
 import { Product } from '@/vibes/soul/components/product-card'
 
 interface Props {
@@ -37,12 +37,8 @@ export const CompareDrawer = function CompareDrawer({ products }: Props) {
           {products.map((product, index: number) => (
             <ProductChip key={index} product={product} onDismiss={() => handleDismiss(index)} />
           ))}
-
-          <Button asChild>
-            <div className="flex">
-              Compare<span className="hidden @4xl:block">&nbsp;Items</span>
-            </div>
-          </Button>
+          {/* Compare Button & Panel */}
+          <ComparePanel products={products} />
         </div>
       </div>
     )

@@ -5,8 +5,10 @@ import { ComponentPropsWithoutRef } from 'react'
 import clsx from 'clsx'
 
 import Badge from '@/vibes/soul/components/badge'
-// import Compare from '@/vibes/soul/components/product-card/compare'
+import Button from '@/vibes/soul/components/button'
+import Label from '@/vibes/soul/components/label'
 import Price, { ProductPrice } from '@/vibes/soul/components/product-card/price'
+import Rating from '@/vibes/soul/components/rating'
 
 interface Image {
   altText: string
@@ -21,13 +23,13 @@ export interface Product {
   price?: ProductPrice
   subtitle?: string
   badge?: string
-  className?: string
   description?: string
   rating?: number
   availability?: string
+  className?: string
 }
 
-export const ProductCard = function ProductCard({
+export const CompareCard = function CompareCard({
   id,
   name,
   href,
@@ -35,52 +37,76 @@ export const ProductCard = function ProductCard({
   price,
   subtitle,
   badge,
+  description,
+  rating,
+  availability,
   className,
 }: Product & ComponentPropsWithoutRef<'a'>) {
   return (
     <Link
       id={id}
-      href={href}
       className={clsx(
-        'group flex cursor-pointer flex-col gap-2 rounded-xl text-foreground ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2',
+        'flex max-w-lg flex-col gap-2 rounded-xl text-foreground ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2',
         className
       )}
+      href={href}
     >
-      <div className="relative aspect-[5/6] overflow-hidden rounded-xl @6xl:min-w-80">
+      <div className="relative aspect-[5/6] overflow-hidden rounded-xl">
         {badge && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
-        {image && (
+        {image?.src && (
           <Image
             src={image.src}
             fill
-            sizes="(max-width: 768px) 70vw, 33vw"
-            alt="Category card image"
-            className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            sizes="(max-width: 768px) 90vw, 512vw"
+            alt={image.altText}
+            className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out"
           />
         )}
-        {/* {checked !== undefined && setChecked && (
-          <Compare label="Compare" checked={checked} setChecked={setChecked} />
-        )} */}
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="mb-2 flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
           {name && <span className="line-clamp-2">{name}</span>}
           {subtitle && <span className="font-normal text-contrast-400">{subtitle}</span>}
         </h3>
         {price && <Price price={price} />}
       </div>
+      <Button className="mb-8 w-full">Add to Cart</Button>
+      <hr className="mb-4" />
+
+      {description && (
+        <>
+          <Label className="mb-3">Description</Label>
+          <p className="mb-4">{description}</p>
+          <hr className="mb-4" />
+        </>
+      )}
+      {rating && (
+        <>
+          <Label className="mb-3">Rating</Label>
+          <Rating rating={rating} className="mb-8" />
+          <hr className="mb-4" />
+        </>
+      )}
+      {availability && (
+        <>
+          <Label className="mb-3">Availability</Label>
+          <p className="mb-8">{availability}</p>
+        </>
+      )}
+      <Button className="mb-8 hidden w-full @xl:block">Add to Cart</Button>
     </Link>
   )
 }
 
-interface ProductCardSkeletonProps {
+interface CompareCardSkeletonProps {
   className?: string
 }
 
-export const ProductCardSkeleton = function ProductCardSkeleton({
+export const CompareCardSkeleton = function CompareCardSkeleton({
   className,
-}: ProductCardSkeletonProps) {
+}: CompareCardSkeletonProps) {
   return (
     <div className={clsx('animate-pulse cursor-pointer rounded-xl', className)}>
       {/* Image */}
@@ -99,4 +125,4 @@ export const ProductCardSkeleton = function ProductCardSkeleton({
   )
 }
 
-export default ProductCard
+export default CompareCard
