@@ -12,7 +12,7 @@ const sporting = localFont({
 
 export const brands = [
   {
-    name: 'Brand 1',
+    name: 'Obsidian',
     logo: '',
     cssVars: {
       '--primary': '43	100%	73%',
@@ -50,7 +50,7 @@ export const brands = [
     },
   },
   {
-    name: 'Brand 2',
+    name: 'Burst',
     logo: '',
     cssVars: {
       '--primary': '0 0% 100%',
