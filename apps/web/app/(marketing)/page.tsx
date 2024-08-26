@@ -151,7 +151,7 @@ export default function Home() {
             className="absolute left-5 top-6 z-50 sm:hidden"
           />
 
-          <h1 className="mx-auto max-w-full font-heading text-[9vw] leading-[1.05] tracking-tight text-foreground sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl md:leading-none lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
+          <h1 className="mx-auto max-w-full font-heading text-[clamp(2.75rem,_9vw,_3.5rem)] leading-none tracking-tight text-foreground sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
             <div className="text-left md:ml-10">
               <span className="md:relative">
                 <Transition
@@ -204,15 +204,21 @@ export default function Home() {
             </div>
           </h1>
 
-          <div className="mb-4 mt-6 flex items-center gap-1.5 sm:hidden">
-            <ScrollButton to="footer">
-              <Button size="large">Get updates</Button>
-            </ScrollButton>
+          <Transition
+            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:300ms]"
+            from="translate-y-28 opacity-0"
+            to="translate-y-0 opacity-100"
+          >
+            <div className="mb-4 mt-6 flex items-center gap-1.5 sm:hidden">
+              <ScrollButton to="footer">
+                <Button size="large">Get updates</Button>
+              </ScrollButton>
 
-            <ButtonLink href="/contribute" size="large">
-              Contribute
-            </ButtonLink>
-          </div>
+              <ButtonLink href="/contribute" size="large">
+                Contribute
+              </ButtonLink>
+            </div>
+          </Transition>
         </div>
       </section>
 
@@ -252,7 +258,7 @@ export default function Home() {
                 src="/eclipse-components.webp"
                 alt="Eclipse components"
                 fill
-                className="rotate-12 overflow-visible object-cover"
+                className="rotate-12 overflow-visible object-none object-top"
               />
             </div>
           </div>
@@ -263,7 +269,7 @@ export default function Home() {
                 src="/2px-components.webp"
                 alt="2px components"
                 fill
-                className="rotate-12 overflow-visible object-cover"
+                className="rotate-12 overflow-visible object-none object-top"
               />
             </div>
           </div>
@@ -274,7 +280,7 @@ export default function Home() {
                 src="/soul-components.webp"
                 alt="Soul components"
                 fill
-                className="rotate-12 overflow-visible object-cover"
+                className="rotate-12 overflow-visible object-none"
               />
             </div>
           </div>
@@ -287,8 +293,9 @@ export default function Home() {
             The future of theming is here
           </h2>
           <p className="text-2xl md:text-3xl">
-            VIBES are production ready out of the box and focus on advanced optimizations needed for
-            marketing and commerce websites. Here&lsquo;s what you get with each VIBE:
+            <span className="font-bold">VIBES</span> are production ready and focus on advanced
+            optimizations needed for marketing and commerce websites. Here&lsquo;s what you get with
+            each <span className="font-bold">VIBE</span>:
           </p>
         </div>
 
@@ -350,8 +357,8 @@ export default function Home() {
 
       <footer id="footer" className="w-full bg-white p-3 md:p-4 lg:p-5">
         <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-foreground bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <div className="mx-auto flex max-w-4xl flex-col items-center px-6 pb-6 pt-10 text-left sm:px-8 sm:text-center md:pb-10 md:pt-20">
-            <p className="mb-8 text-balance text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
+          <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-6 pt-10 text-left sm:px-8 sm:text-center md:pb-10 md:pt-20">
+            <p className="mb-8 text-balance px-2 text-2xl leading-snug text-foreground sm:text-3xl md:mb-12 lg:text-4xl">
               Stunning React components for commerce and marketing, optimized for fashion and
               function.
               <span className="mt-4 block font-bold md:mt-6">Coming October 2024.</span>
@@ -361,7 +368,7 @@ export default function Home() {
               <Form />
             </div>
 
-            <p className="mt-14 w-full text-lg leading-normal md:mt-24">
+            <p className="mt-14 w-full px-2 text-lg leading-normal md:mt-24">
               Made by{' '}
               <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
                 Makeswift

@@ -42,11 +42,11 @@ export function Form({ intent }: { intent?: string }) {
     >
       <div className="relative z-0 flex h-full w-full flex-1 overflow-hidden pl-4 pr-14 md:w-auto lg:pl-6 lg:pr-16">
         <label htmlFor={fields.email.id} className="sr-only">
-          Enter your email to be notified
+          Add your email to be notified
         </label>
         <input
           {...getInputProps(fields.email, { type: 'email' })}
-          placeholder="Enter your email to be notified"
+          placeholder="Add your email to be notified"
           className={clsx(
             'w-full bg-transparent font-sans text-lg text-foreground outline-none transition-all duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-foreground/50 focus:!w-[540px] focus:outline-none sm:w-[540px] sm:placeholder-shown:w-[300px] md:text-xl lg:text-[24px] lg:placeholder-shown:w-[350px]',
             success ? '-translate-y-full' : 'translate-y-0'
