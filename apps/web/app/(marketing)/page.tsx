@@ -2,14 +2,14 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
 import Transition from '@/components/ui/transition'
-import { Arrow, Vibes } from '@/icons/generated'
+import { Arrow } from '@/icons/generated'
 
 import { EazyTheme } from '../stickers/eazy-theme'
 import { HandcraftedCode } from '../stickers/handcrafted-code'
@@ -101,7 +101,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-clip">
       <header
         className={clsx(
           'fixed left-0 top-0 z-50 hidden w-full items-center justify-center transition-all duration-300 sm:flex sm:justify-between',
