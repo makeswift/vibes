@@ -88,10 +88,10 @@ const config = {
         '3xl': 'var(--font-size-3xl, 1.875rem)',
         '4xl': 'var(--font-size-4xl, 2.25rem)',
         '5xl': 'var(--font-size-5xl, 3rem)',
-        '6xl': 'var(--font-size-6xl, 3.75rem)',
-        '7xl': 'var(--font-size-7xl, 4.5rem)',
+        '6xl': 'var(--font-size-6xl, 4rem)',
+        '7xl': 'var(--font-size-7xl, 5rem)',
         '8xl': 'var(--font-size-8xl, 6rem)',
-        '9xl': 'var(--font-size-9xl, 8rem)',
+        '9xl': 'var(--font-size-9xl, 7rem)',
       },
       shadows: {
         sm: 'var(--shadow-sm)',
