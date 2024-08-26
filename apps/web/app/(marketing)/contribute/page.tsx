@@ -16,9 +16,12 @@ export default function Contribute() {
         <ButtonLink size="large" href="/#footer">
           Get updates
         </ButtonLink>
-        <div className="relative h-8 w-32 origin-center transition-transform duration-300 md:h-10 md:w-40">
+        <Link
+          href="/"
+          className="relative h-8 w-32 origin-center transition-transform duration-300 md:h-10 md:w-40"
+        >
           <Image src="/logo.svg" fill alt="Vibes logo" priority />
-        </div>
+        </Link>
         <ButtonLink href="/contribute" size="large">
           Contribute
         </ButtonLink>
