@@ -2,8 +2,11 @@ import { Navigation } from '@/vibes/schema'
 
 export const navigation = [
   {
+    title: 'Getting started',
+    pages: [{ title: 'Installation', slug: 'installation', file: 'docs/installation.mdx' }],
+  },
+  {
     title: 'Components',
-
     pages: [
       {
         title: 'Breadcrumbs',

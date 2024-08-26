@@ -3,7 +3,7 @@ import { Navigation } from '@/vibes/schema'
 export const navigation = [
   {
     title: 'Getting started',
-    pages: [{ title: 'Introduction', slug: 'introduction', file: 'docs/introduction.mdx' }],
+    pages: [{ title: 'Installation', slug: 'installation', file: 'docs/installation.mdx' }],
   },
   {
     title: 'Styles',
@@ -14,7 +14,6 @@ export const navigation = [
       { title: 'Luxury', slug: 'luxury', file: 'docs/luxury.mdx' },
     ],
   },
-
   {
     title: 'Components',
     pages: [
