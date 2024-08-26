@@ -137,11 +137,32 @@ export const examples = [
     component: lazy(() => import('./examples/footer')),
   },
   {
-    name: 'header-example',
+    name: 'header-electric-example',
     dependencies: [],
-    registryDependencies: ['header'],
-    files: ['examples/header.tsx'],
-    component: lazy(() => import('./examples/header')),
+    registryDependencies: ['header-electric'],
+    files: ['examples/header-electric.tsx'],
+    component: lazy(() => import('./examples/header-electric')),
+  },
+  {
+    name: 'header-warm-example',
+    dependencies: [],
+    registryDependencies: ['header-warm'],
+    files: ['examples/header-warm.tsx'],
+    component: lazy(() => import('./examples/header-warm')),
+  },
+  {
+    name: 'header-blue-example',
+    dependencies: [],
+    registryDependencies: ['header-blue'],
+    files: ['examples/header-blue.tsx'],
+    component: lazy(() => import('./examples/header-blue')),
+  },
+  {
+    name: 'header-luxury-example',
+    dependencies: [],
+    registryDependencies: ['header-luxury'],
+    files: ['examples/header-luxury.tsx'],
+    component: lazy(() => import('./examples/header-luxury')),
   },
   {
     name: 'icon-block-example',
@@ -164,6 +185,7 @@ export const examples = [
     files: ['examples/page-blog.tsx'],
     component: lazy(() => import('./examples/page-blog')),
   },
+  // Page Home Examples
   {
     name: 'page-home-blue-example',
     dependencies: [],
@@ -192,6 +214,7 @@ export const examples = [
     files: ['examples/page-home-luxury.tsx'],
     component: lazy(() => import('./examples/page-home-luxury')),
   },
+  // Page Product Examples
   {
     name: 'page-product-example',
     dependencies: [],
@@ -199,13 +222,36 @@ export const examples = [
     files: ['examples/page-product.tsx'],
     component: lazy(() => import('./examples/page-product')),
   },
+  // Page Products Examples
   {
-    name: 'page-products-example',
+    name: 'page-products-blue-example',
     dependencies: [],
     registryDependencies: [],
-    files: ['examples/page-products.tsx'],
-    component: lazy(() => import('./examples/page-products')),
+    files: ['examples/page-products-blue.tsx'],
+    component: lazy(() => import('./examples/page-products-blue')),
   },
+  {
+    name: 'page-products-electric-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-products-electric.tsx'],
+    component: lazy(() => import('./examples/page-products-electric')),
+  },
+  {
+    name: 'page-products-warm-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-products-warm.tsx'],
+    component: lazy(() => import('./examples/page-products-warm')),
+  },
+  {
+    name: 'page-products-luxury-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-products-luxury.tsx'],
+    component: lazy(() => import('./examples/page-products-luxury')),
+  },
+  //
   {
     name: 'pagination-example',
     dependencies: [],
