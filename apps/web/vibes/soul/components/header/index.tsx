@@ -21,8 +21,8 @@ interface Image {
 }
 
 interface Links {
-  label?: string
-  href?: string
+  label: string
+  href: string
   groups?: {
     label?: string
     href?: string

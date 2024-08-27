@@ -70,6 +70,11 @@ export const headerLinks = [
   },
 ]
 
+export const logo = {
+  src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID',
+  altText: 'Freda Salvador Logo',
+}
+
 export const locales = [
   { id: '1', region: 'US', language: 'EN' },
   { id: '2', region: 'FR', language: 'FR' },
@@ -82,7 +87,7 @@ export default function Preview() {
     <div className="relative min-h-48">
       <Header
         links={headerLinks}
-        logo="SOUL"
+        logo={logo}
         cartHref="#"
         accountHref="#"
         locales={locales}
