@@ -1,11 +1,8 @@
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import { CompareDrawer } from '@/vibes/soul/components/compare-drawer'
+import CompareProducts from '@/vibes/soul/components/compare-products'
 import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
-import Pagination from '@/vibes/soul/components/pagination'
-import ProductsHeader from '@/vibes/soul/components/products-header'
-import ProductsList from '@/vibes/soul/components/products-list'
 
 const locales = [
   { id: '1', region: 'US', language: 'EN' },
@@ -17,8 +14,8 @@ const locales = [
 export const ProductsPage = function ProductsPage({
   headerLinks,
   logo,
+  title,
   products,
-  compareProducts,
   footerLinks,
   copyright,
 }: any) {
@@ -36,10 +33,7 @@ export const ProductsPage = function ProductsPage({
         activeLocale="EN"
         locales={locales}
       />
-      <ProductsHeader title="All Men" numberOfProducts={32} />
-      <ProductsList products={products} />
-      <Pagination pages={5} />
-      <CompareDrawer products={compareProducts} />
+      <CompareProducts title={title} products={products} pages={5} />
       <FeaturedProductsCarousel title="Recently Viewed" products={products} />
       <Footer sections={footerLinks} logo={logo} copyright={copyright} />
     </>
