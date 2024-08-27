@@ -25,8 +25,8 @@ export const featuredImageII: FeaturedImageProps = {
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
   image: {
-    src: 'Close up of a plant',
-    altText: '',
+    src: '',
+    altText: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },
 }
