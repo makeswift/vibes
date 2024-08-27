@@ -104,7 +104,7 @@ export default function Home() {
   return (
     <div
       className="w-full overflow-clip bg-white text-black"
-      style={{ '--foreground': '0 0% 0%' } as React.CSSProperties}
+      style={{ '--foreground': '0 0% 0%', '--background': '0 0% 100%' } as React.CSSProperties}
     >
       <header
         className={clsx(
@@ -113,12 +113,7 @@ export default function Home() {
         )}
       >
         <ScrollButton to="footer">
-          <Button
-            size="large"
-            className="[&_span]:border-black [&_span]:bg-white [&_span]:text-black"
-          >
-            Get updates
-          </Button>
+          <Button size="large">Get updates</Button>
         </ScrollButton>
         <div
           className={clsx(
@@ -128,11 +123,7 @@ export default function Home() {
         >
           <Image src="/logo.svg" fill alt="Vibes logo" priority />
         </div>
-        <ButtonLink
-          href="/contribute"
-          size="large"
-          className="[&_span]:border-black [&_span]:bg-white [&_span]:text-black"
-        >
+        <ButtonLink href="/contribute" size="large">
           Contribute
         </ButtonLink>
       </header>

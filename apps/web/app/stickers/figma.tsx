@@ -7,7 +7,7 @@ import { FigmaBack, FigmaFront, FigmaShadow } from '@/icons/generated'
 
 export function Figma() {
   return (
-    <Draggable className="ml-14 mt-6 select-none">
+    <Draggable className="ml-14 mt-6">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"

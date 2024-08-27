@@ -7,7 +7,7 @@ import { ReactjsBack, ReactjsFront, ReactjsShadow } from '@/icons/generated'
 
 export function Reactjs() {
   return (
-    <div className="absolute -bottom-20 -left-16 z-10 origin-right scale-100 select-none sm:-right-12 sm:left-auto sm:top-96 sm:scale-110 md:-left-48 md:bottom-6 md:right-auto md:top-auto md:scale-75 xl:-left-36 xl:bottom-16 xl:scale-100">
+    <div className="absolute -bottom-20 -left-16 z-10 origin-right scale-100 sm:-right-12 sm:left-auto sm:top-96 sm:scale-110 md:-left-48 md:bottom-6 md:right-auto md:top-auto md:scale-75 xl:-left-36 xl:bottom-16 xl:scale-100">
       <Draggable>
         {({ active, hover }) => (
           <Transition

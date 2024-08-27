@@ -7,7 +7,7 @@ import { KeepIt100Back, KeepIt100Front, KeepIt100Shadow } from '@/icons/generate
 
 export function KeepIt100() {
   return (
-    <Draggable className="-mt-6 mr-8 select-none">
+    <Draggable className="-mt-6 mr-8">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"

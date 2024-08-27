@@ -9,7 +9,7 @@ import { ShoppingBagBack, ShoppingBagFront, ShoppingBagShadow } from '@/icons/ge
 
 export function ShoppingBag() {
   return (
-    <div className="absolute -bottom-36 left-1/4 z-10 origin-top-left scale-110 select-none sm:-bottom-28 sm:left-1/3 md:-top-2 md:bottom-auto md:left-full md:scale-75 xl:scale-100">
+    <div className="absolute -bottom-36 left-1/4 z-10 origin-top-left scale-110 sm:-bottom-28 sm:left-1/3 md:-top-2 md:bottom-auto md:left-full md:scale-75 xl:scale-100">
       <Draggable>
         {({ active, hover }) => (
           <Transition
