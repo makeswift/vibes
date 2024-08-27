@@ -11,7 +11,7 @@ export function ProductionReady() {
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[600px] md:translate-x-[1200px] translate-y-0 rotate-[120deg]"
+          from="translate-x-[600px] md:translate-x-[1600px] translate-y-0 rotate-[120deg]"
           to="translate-x-0 translate-y-0 rotate-0"
         >
           <Sticker

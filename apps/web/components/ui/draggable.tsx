@@ -45,7 +45,7 @@ export default function Draggable({ className, children, style, ...rest }: Props
   return (
     <div
       {...rest}
-      className={clsx(className, 'relative')}
+      className={clsx(className, 'relative touch-none select-none')}
       style={{
         ...style,
         transform: `translate3d(${position[0]}px, ${position[1]}px, 0)`,

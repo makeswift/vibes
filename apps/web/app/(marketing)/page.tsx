@@ -12,6 +12,7 @@ import Transition from '@/components/ui/transition'
 import { Arrow } from '@/icons/generated'
 
 import { EazyTheme } from '../stickers/eazy-theme'
+import { Figma } from '../stickers/figma'
 import { HandcraftedCode } from '../stickers/handcrafted-code'
 import { KeepIt100 } from '../stickers/keep-it-100'
 import { LikeTotally } from '../stickers/like-totally'
@@ -101,7 +102,10 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="w-full overflow-clip bg-white text-black">
+    <div
+      className="w-full overflow-clip bg-white text-black"
+      style={{ '--foreground': '0 0% 0%', '--background': '0 0% 100%' } as React.CSSProperties}
+    >
       <header
         className={clsx(
           'fixed left-0 top-0 z-50 hidden w-full items-center justify-center transition-all duration-300 sm:flex sm:justify-between',
@@ -299,7 +303,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="w-full space-y-7 lg:max-w-2xl lg:space-y-20 xl:max-w-3xl 2xl:max-w-4xl">
+        <div className="w-full space-y-7 lg:max-w-2xl lg:space-y-16 xl:max-w-3xl 2xl:max-w-4xl">
           <FeatureCard
             sticker="left"
             text="Multiple styles that can be customized to best represent your brand."
@@ -352,6 +356,13 @@ export default function Home() {
           >
             <Typescript />
           </FeatureCard>
+
+          <FeatureCard
+            sticker="left"
+            text="Every component is recreated in Figma, ready to be dropped into your designs."
+          >
+            <Figma />
+          </FeatureCard>
         </div>
       </section>
 
@@ -373,11 +384,11 @@ export default function Home() {
               <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
                 Makeswift
               </Link>
-              . View source code in{' '}
+              {/* . View source code in{' '}
               <Link href="https://github.com/makeswift/vibes" target="_blank" className="font-bold">
                 GitHub
               </Link>
-              .
+              . */}
             </p>
           </div>
         </div>

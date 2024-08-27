@@ -11,7 +11,7 @@ export function LikeTotally() {
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[-600px] md:translate-x-[-1600px] translate-y-[200px] rotate-[-80deg]"
+          from="translate-x-[-600px] md:translate-x-[1600px] translate-y-[200px] rotate-[-80deg]"
           to="translate-x-0 translate-y-0 rotate-12"
         >
           <Sticker

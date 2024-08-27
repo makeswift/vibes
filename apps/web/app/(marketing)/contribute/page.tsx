@@ -9,7 +9,10 @@ import { Form } from '../form'
 
 export default function Contribute() {
   return (
-    <div className="w-full overflow-hidden">
+    <div
+      className="w-full overflow-clip text-black"
+      style={{ '--foreground': '0 0% 0%', '--background': '0 0% 100%' } as React.CSSProperties}
+    >
       <header className="fixed left-0 top-0 z-50 hidden w-full translate-y-8 items-center justify-center px-10 transition-all duration-300 sm:flex sm:justify-between md:translate-y-10">
         <ButtonLink size="large" href="/#footer">
           Get updates
@@ -50,11 +53,11 @@ export default function Contribute() {
               <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
                 Makeswift
               </Link>
-              . View source code in{' '}
+              {/* . View source code in{' '}
               <Link href="https://github.com/makeswift/vibes" target="_blank" className="font-bold">
                 GitHub
               </Link>
-              .
+              . */}
             </p>
           </div>
         </div>

@@ -11,7 +11,7 @@ export function EazyTheme() {
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[700px] md:translate-x-[1200px] -translate-y-20 rotate-[270deg]"
+          from="translate-x-[700px] md:translate-x-[1600px] -translate-y-20 rotate-[270deg]"
           to="translate-x-0 translate-y-0 rotate-[-16deg]"
         >
           <Sticker
