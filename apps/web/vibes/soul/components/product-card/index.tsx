@@ -25,7 +25,7 @@ export interface Product {
   description?: string
   rating?: number
   compareProducts?: Product[]
-  setCompareProducts: React.Dispatch<React.SetStateAction<Product[]>>
+  setCompareProducts?: React.Dispatch<React.SetStateAction<Product[]>>
 }
 
 export const ProductCard = function ProductCard({

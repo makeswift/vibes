@@ -26,7 +26,7 @@ export const CompareProducts = function CompareProducts({ title, products, pages
         setCompareProducts={setCompareProducts}
       />
       <Pagination pages={pages} />
-      <CompareDrawer products={compareProducts} />
+      <CompareDrawer compareProducts={compareProducts} setCompareProducts={setCompareProducts} />
     </div>
   )
 }

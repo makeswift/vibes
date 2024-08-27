@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import Checkbox from '@/vibes/soul/components/checkbox'
-
-import { Product } from '../compare-card'
+import { Product } from '@/vibes/soul/components/compare-card'
 
 interface Props {
   product: Product
@@ -41,7 +40,7 @@ export const Compare = function Compare({ product, compareProducts, setComparePr
       onClick={handleCheck}
       onKeyDown={handleKeyDown}
       role="button"
-      className="absolute right-2.5 top-2.5 z-10 flex cursor-default items-center gap-2 text-foreground @lg:bottom-4 @lg:right-4 @lg:top-auto"
+      className="absolute right-1.5 top-1.5 z-10 flex cursor-pointer items-center gap-2 rounded-lg p-1 text-foreground transition-colors duration-300 hover:bg-background/80 @lg:bottom-4 @lg:right-4 @lg:top-auto"
     >
       <span className="hidden @lg:block">Compare</span>
       <Checkbox checked={isProductInArray} />
