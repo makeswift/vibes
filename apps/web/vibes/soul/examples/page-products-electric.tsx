@@ -1,8 +1,8 @@
 import ProductsPage from '@/vibes/soul/components/page-products'
 import { Product } from '@/vibes/soul/components/product-card'
-import { copyright, footerLinks, logo } from '@/vibes/soul/examples/footer-warm'
-import { headerLinks } from '@/vibes/soul/examples/header-warm'
-import { products } from '@/vibes/soul/examples/products-list-warm'
+import { copyright, footerLinks, logo } from '@/vibes/soul/examples/footer-electric'
+import { headerLinks } from '@/vibes/soul/examples/header-electric'
+import { products } from '@/vibes/soul/examples/products-list-electric'
 
 export const compareProducts: Product[] = [
   {
