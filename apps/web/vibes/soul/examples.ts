@@ -290,7 +290,6 @@ export const examples = [
     files: ['examples/page-blog.tsx'],
     component: lazy(() => import('./examples/page-blog')),
   },
-  // Page Home Examples
   {
     name: 'page-home-blue-example',
     dependencies: [],
@@ -319,15 +318,34 @@ export const examples = [
     files: ['examples/page-home-luxury.tsx'],
     component: lazy(() => import('./examples/page-home-luxury')),
   },
-  // Page Product Examples
   {
-    name: 'page-product-example',
+    name: 'page-product-electric-example',
     dependencies: [],
     registryDependencies: [],
-    files: ['examples/page-product.tsx'],
-    component: lazy(() => import('./examples/page-product')),
+    files: ['examples/page-product-electric.tsx'],
+    component: lazy(() => import('./examples/page-product-electric')),
   },
-  // Page Products Examples
+  {
+    name: 'page-product-warm-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-product-warm.tsx'],
+    component: lazy(() => import('./examples/page-product-warm')),
+  },
+  {
+    name: 'page-product-blue-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-product-blue.tsx'],
+    component: lazy(() => import('./examples/page-product-blue')),
+  },
+  {
+    name: 'page-product-luxury-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/page-product-luxury.tsx'],
+    component: lazy(() => import('./examples/page-product-luxury')),
+  },
   {
     name: 'page-products-blue-example',
     dependencies: [],
