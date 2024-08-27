@@ -14,7 +14,7 @@ export const footerLinks = [
   {
     title: 'Categories',
     links: [
-      { label: 'Handlebar Bags', href: '#' },
+      { label: 'Handle Bags', href: '#' },
       { label: 'Frame Bags', href: '#' },
       { label: 'Seat Bags', href: '#' },
       { label: 'Rack Bags', href: '#' },
