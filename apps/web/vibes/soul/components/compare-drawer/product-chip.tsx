@@ -10,36 +10,22 @@ import { Product } from '@/vibes/soul/components/product-card'
 
 interface Props {
   product: Product
-  onDismiss?: () => void
+  setCompareProducts: React.Dispatch<React.SetStateAction<Product[]>>
 }
 
-const ProductChip = function ProductChip({ product, onDismiss }: Props) {
-  const [dismissed, setDismissed] = useState(false)
-  const [isAnimating, setIsAnimating] = useState(false)
-
-  useEffect(() => {
-    if (dismissed) {
-      const timeoutId = setTimeout(() => {
-        setIsAnimating(true)
-        onDismiss?.()
-      }, 150)
-      return () => clearTimeout(timeoutId)
-    }
-  }, [dismissed, onDismiss])
-
-  if (isAnimating) {
-    return null
-  }
-
+const ProductChip = function ProductChip({ product, setCompareProducts }: Props) {
   return (
     <button
       role="button"
       aria-label="Remove product"
-      onClick={() => setDismissed(true)}
+      onClick={() =>
+        setCompareProducts((prevProducts: Product[]) => {
+          return prevProducts.filter(p => p.id !== product.id)
+        })
+      }
       className={clsx(
         'group flex items-center gap-3 whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold transition-all duration-150 hover:bg-contrast-100',
-        'ring-primary focus:outline-0 focus:ring-2',
-        dismissed ? 'scale-90 opacity-0' : 'scale-100 opacity-100'
+        'ring-primary focus:outline-0 focus:ring-2'
       )}
     >
       {product.image?.src && (

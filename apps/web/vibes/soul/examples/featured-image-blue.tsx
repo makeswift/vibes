@@ -5,8 +5,8 @@ export const featuredImage: FeaturedImageProps = {
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
   image: {
-    src: 'https://rstr.in/monogram/vibes/shMqUI79u99',
-    altText: 'Close up of a plant',
+    src: 'https://rstr.in/monogram/vibes/gGrGJ7avES_',
+    altText: 'Handle bar bag',
   },
   cta: { href: '#', label: 'Shop Now' },
 }
@@ -14,16 +14,6 @@ export const featuredImage: FeaturedImageProps = {
 export default function Preview() {
   return (
     <div className="flex flex-col gap-3">
-      <FeaturedImage
-        title={featuredImage.title}
-        description={featuredImage.description}
-        image={{
-          src: featuredImage.image.src,
-          altText: featuredImage.image.altText,
-        }}
-        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
-        mediaAlign="full"
-      />
       <FeaturedImage
         title={featuredImage.title}
         description={featuredImage.description}
@@ -43,6 +33,16 @@ export default function Preview() {
         }}
         cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="right"
+      />
+      <FeaturedImage
+        title={featuredImage.title}
+        description={featuredImage.description}
+        image={{
+          src: featuredImage.image.src,
+          altText: featuredImage.image.altText,
+        }}
+        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
+        mediaAlign="full"
       />
     </div>
   )

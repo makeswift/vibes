@@ -46,7 +46,7 @@ export const CompareCard = function CompareCard({
     <Link
       id={id}
       className={clsx(
-        'flex max-w-lg flex-col gap-2 rounded-xl text-foreground ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2',
+        'flex max-w-lg flex-col gap-2 rounded-xl text-foreground ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @5xl:w-96',
         className
       )}
       href={href}
@@ -95,7 +95,6 @@ export const CompareCard = function CompareCard({
           <p className="mb-8">{availability}</p>
         </>
       )}
-      <Button className="mb-8 hidden w-full @xl:block">Add to Cart</Button>
     </Link>
   )
 }

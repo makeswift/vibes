@@ -122,15 +122,6 @@ export const newArrivals: Product[] = [
   },
 ]
 
-export const featuredProductsContent = {
-  title: '',
-  description: '',
-  cta: {
-    label: '',
-    href: '#',
-  },
-}
-
 // TODO: New Arrivals
 
 // TODO: Recently Viewed
@@ -157,7 +148,6 @@ export default function Preview() {
       categories={cards}
       featuredImage={featuredImage}
       feature={feature}
-      featuredProductsContent={featuredProductsContent}
       featuredProducts={featuredProducts}
       newArrivals={newArrivals}
       featuredImageII={featuredImageII}

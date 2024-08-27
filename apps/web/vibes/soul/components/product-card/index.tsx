@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef } from 'react'
 import clsx from 'clsx'
 
 import Badge from '@/vibes/soul/components/badge'
-// import Compare from '@/vibes/soul/components/product-card/compare'
+import Compare from '@/vibes/soul/components/product-card/compare'
 import Price, { ProductPrice } from '@/vibes/soul/components/product-card/price'
 
 interface Image {
@@ -24,7 +24,8 @@ export interface Product {
   className?: string
   description?: string
   rating?: number
-  availability?: string
+  compareProducts?: Product[]
+  setCompareProducts?: React.Dispatch<React.SetStateAction<Product[]>>
 }
 
 export const ProductCard = function ProductCard({
@@ -35,6 +36,8 @@ export const ProductCard = function ProductCard({
   price,
   subtitle,
   badge,
+  compareProducts,
+  setCompareProducts,
   className,
 }: Product & ComponentPropsWithoutRef<'a'>) {
   return (
@@ -59,9 +62,24 @@ export const ProductCard = function ProductCard({
             className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
           />
         )}
-        {/* {checked !== undefined && setChecked && (
-          <Compare label="Compare" checked={checked} setChecked={setChecked} />
-        )} */}
+        {compareProducts && setCompareProducts && (
+          <Compare
+            product={{
+              id,
+              name,
+              href,
+              image,
+              price,
+              subtitle,
+              badge,
+              // description,
+              // rating,
+              // availability,
+            }}
+            compareProducts={compareProducts}
+            setCompareProducts={setCompareProducts}
+          />
+        )}
       </div>
       <div className="flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">

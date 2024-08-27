@@ -60,7 +60,7 @@ export const HomePage = function HomePage({
   logo,
   heroSlides,
   categories,
-  featuredProductsContent,
+  textContrast,
   featuredProducts,
   newArrivals,
   featuredImage,
@@ -87,7 +87,7 @@ export const HomePage = function HomePage({
 
       <Slideshow slides={heroSlides} />
 
-      <CardCarousel cards={categories} />
+      <CardCarousel cards={categories} textContrast={textContrast} />
 
       <FeaturedImage
         title={featuredImage?.title}
@@ -100,10 +100,10 @@ export const HomePage = function HomePage({
       />
 
       <FeaturedProductsList
-        title={featuredProductsContent.title}
-        description={featuredProductsContent.description}
-        cta={{ label: featuredProductsContent.label, href: featuredProductsContent.href }}
-        products={featuredProducts}
+        title={featuredProducts.title}
+        description={featuredProducts.description}
+        cta={{ label: featuredProducts.cta.label, href: featuredProducts.cta.href }}
+        products={featuredProducts.list}
       />
 
       <Subscribe
@@ -114,7 +114,7 @@ export const HomePage = function HomePage({
       <FeaturedProductsCarousel
         title="New Arrivals"
         cta={{ label: 'See All', href: '#' }}
-        products={newArrivals || featuredProducts}
+        products={newArrivals || featuredProducts.list}
       />
 
       <Feature
@@ -130,7 +130,7 @@ export const HomePage = function HomePage({
         }}
       />
 
-      <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
+      <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts.list} />
 
       <FeaturedImage
         title={featuredImageII.title}
@@ -159,10 +159,6 @@ export const HomePage = function HomePage({
       <Footer
         logo={logo}
         sections={footerLinks}
-        // contactInformation={{
-        //   address: 'info@mywebsite.com',
-        //   phone: '+(1)408 123 4567',
-        // }}
         copyright={copyright}
         paymentIcons={paymentIconsArray}
         socialMediaLinks={socialMediaLinks}

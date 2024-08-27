@@ -2,9 +2,22 @@ import Slideshow from '@/vibes/soul/components/slideshow'
 
 export const heroSlides = [
   {
-    title: 'New Casuals',
+    title: 'Customizable',
+    // description: 'Create your own style',
     image: {
-      src: 'https://rstr.in/monogram/vibes/Nz2yR4EZgvo',
+      src: 'https://rstr.in/monogram/vibes/Q5DVr0sKa6I',
+      altText: 'Outer Shell Frame Bag',
+    },
+    cta: {
+      href: '#',
+      label: 'Create your own style',
+    },
+  },
+  {
+    title: 'Aero Dynamic',
+    // description: 'Designed for speed and comfort',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/shMqUI79u99',
       altText: 'alt',
     },
     cta: {
@@ -13,20 +26,10 @@ export const heroSlides = [
     },
   },
   {
-    title: 'Slide 2',
+    title: 'Accessible',
+    // description: 'Easy access to all your gear',
     image: {
-      src: 'https://rstr.in/monogram/vibes/gWgyEhm5W60',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 3',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/K-F83RXTJsx',
+      src: 'https://rstr.in/monogram/vibes/Hbzg3JrFIHV',
       altText: 'alt',
     },
     cta: {

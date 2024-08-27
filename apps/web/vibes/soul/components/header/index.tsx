@@ -24,8 +24,8 @@ interface Links {
   label: string
   href: string
   groups?: {
-    label: string
-    href: string
+    label?: string
+    href?: string
     links: {
       label: string
       href: string
@@ -403,16 +403,28 @@ export const Header = forwardRef(function Header(
             {/* Mobile Dropdown Links */}
             {links?.map((item, i) => (
               <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
-                <li>
-                  <Link
-                    href={item.href}
-                    className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                    focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                    tabIndex={navOpen ? 0 : -1}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
+                {item.label && (
+                  <li>
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
+                        tabIndex={navOpen ? 0 : -1}
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span
+                        className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
+                        tabIndex={navOpen ? 0 : -1}
+                      >
+                        {item.label}
+                      </span>
+                    )}
+                  </li>
+                )}
                 {item.groups
                   ?.flatMap(group => group.links)
                   .map((link, j) => (
@@ -431,22 +443,34 @@ export const Header = forwardRef(function Header(
               </ul>
             ))}
           </div>
-          <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-5">
+          <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-4">
             {/* Desktop Dropdown Links */}
             {selectedCategory !== null &&
               links?.[selectedCategory]?.groups?.map((group, columnIndex) => (
                 <ul key={columnIndex} className="flex flex-col gap-1 p-5">
                   {/* Second Level Links */}
-                  <li>
-                    <Link
-                      href={group.href}
-                      className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                      tabIndex={navOpen ? 0 : -1}
-                      ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
-                    >
-                      {group.label}
-                    </Link>
-                  </li>
+                  {group.label && (
+                    <li>
+                      {group.href ? (
+                        <Link
+                          href={group.href}
+                          className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                          tabIndex={navOpen ? 0 : -1}
+                          ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                        >
+                          {group.label}
+                        </Link>
+                      ) : (
+                        <span
+                          className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                          tabIndex={navOpen ? 0 : -1}
+                          ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                        >
+                          {group.label}
+                        </span>
+                      )}
+                    </li>
+                  )}
                   {group.links.map((link, i) => (
                     // Third Level Links
                     <li key={i}>

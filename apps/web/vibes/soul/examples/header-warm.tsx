@@ -2,11 +2,11 @@ import Header from '@/vibes/soul/components/header'
 
 export const headerLinks = [
   {
-    label: 'All Bags',
+    label: 'Shop',
     href: '#',
     groups: [
       {
-        label: 'Featured',
+        label: 'Bike Bags',
         href: '#',
         links: [
           { label: 'New Arrivals', href: '#' },
@@ -15,7 +15,7 @@ export const headerLinks = [
         ],
       },
       {
-        label: 'Shop By Size',
+        label: 'Bags You Wear',
         href: '#',
         links: [
           { label: 'Small', href: '#' },
@@ -24,7 +24,7 @@ export const headerLinks = [
         ],
       },
       {
-        label: 'Light',
+        label: 'Camera Straps',
         href: '#',
         links: [
           { label: 'Bright Direct', href: '#' },
@@ -35,7 +35,7 @@ export const headerLinks = [
     ],
   },
   {
-    label: 'New Arrivals',
+    label: 'Journal',
     href: '#',
     groups: [
       {
@@ -47,7 +47,7 @@ export const headerLinks = [
         ],
       },
       {
-        label: 'Indoor',
+        label: 'Clear',
         href: '#',
         links: [
           { label: 'Desk Plants', href: '#' },
@@ -67,40 +67,26 @@ export const headerLinks = [
     ],
   },
   {
-    label: 'Pet Friendly',
+    label: 'About',
     href: '#',
     groups: [
       {
-        label: 'Indoor',
         href: '#',
         links: [
-          { label: 'Low Light', href: '#' },
-          { label: 'Air Purifying', href: '#' },
-          { label: 'Low Maintenance', href: '#' },
+          { label: 'Our Story', href: '#' },
+          { label: 'Policies', href: '#' },
+          { label: 'Retailers', href: '#' },
+          { label: 'Press', href: '#' },
         ],
-      },
-      {
-        label: 'Outdoor',
-        href: '#',
-        links: [
-          { label: 'Direct Sun', href: '#' },
-          { label: 'Floral', href: '#' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Blog',
-    href: '#',
-    groups: [
-      {
-        label: 'Plant Life',
-        href: '#',
-        links: [{ label: 'See All Stories', href: '#' }],
       },
     ],
   },
 ]
+
+export const logo = {
+  src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
+  altText: 'Outer Shell Logo',
+}
 
 export const locales = [
   { id: '1', region: 'US', language: 'EN' },
@@ -114,7 +100,7 @@ export default function Preview() {
     <div className="relative min-h-48">
       <Header
         links={headerLinks}
-        logo="Outer Shell"
+        logo={logo}
         cartHref="#"
         accountHref="#"
         locales={locales}

@@ -4,7 +4,7 @@ import { Check } from 'lucide-react'
 
 interface Props {
   checked: boolean
-  setChecked: (checked: boolean) => void
+  setChecked?: (checked: boolean) => void
   label?: string
   className?: string
 }
@@ -21,12 +21,12 @@ export const Checkbox = function Checkbox({
         className={clsx(
           'flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-150',
           'focus:outline-0 focus:ring-2 focus:ring-primary',
-          checked ? 'border-foreground bg-foreground' : 'border-foreground bg-background'
+          checked ? 'border-foreground bg-foreground' : 'border-contrast-300 bg-background'
         )}
         defaultChecked
         id="checkbox"
         checked={checked}
-        onCheckedChange={setChecked}
+        onCheckedChange={setChecked && setChecked}
       >
         <RadixCheckbox.Indicator>
           <Check color="white" className="h-4 w-4" />

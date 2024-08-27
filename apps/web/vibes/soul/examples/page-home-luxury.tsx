@@ -9,15 +9,6 @@ import { heroSlides } from '@/vibes/soul/examples/slideshow-luxury'
 
 import { FeaturedImageProps } from '../components/featured-image'
 
-export const featuredProductsContent = {
-  title: 'Trending Now',
-  description: '',
-  cta: {
-    label: '',
-    href: '#',
-  },
-}
-
 // TODO: New Arrivals
 
 // TODO: Recently Viewed
@@ -42,7 +33,6 @@ export default function Preview() {
       categories={cards}
       featuredImage={featuredImage}
       feature={feature}
-      featuredProductsContent={featuredProductsContent}
       featuredProducts={featuredProducts}
       featuredImageII={featuredImageII}
       footerLinks={footerLinks}

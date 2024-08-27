@@ -12,10 +12,10 @@ import { Product } from '@/vibes/soul/components/product-card'
 import SidePanel from '@/vibes/soul/components/side-panel'
 
 interface Props {
-  products: Product[]
+  compareProducts: Product[]
 }
 
-export const ComparePanel = function ComparePanel({ products }: Props) {
+export const ComparePanel = function ComparePanel({ compareProducts }: Props) {
   const [compareOpen, setCompareOpen] = useState(false)
 
   return (
@@ -36,7 +36,7 @@ export const ComparePanel = function ComparePanel({ products }: Props) {
           </VisuallyHidden.Root>
           <div className="mb-12 flex flex-wrap-reverse items-center justify-between gap-x-4">
             <h1 className="text-2xl font-medium leading-none @xl:text-4xl">
-              Compare <span className="text-contrast-300">{products.length} Products</span>
+              Compare <span className="text-contrast-300">{compareProducts.length} Products</span>
             </h1>
             <Button
               variant="tertiary"
@@ -52,8 +52,8 @@ export const ComparePanel = function ComparePanel({ products }: Props) {
           </div>
 
           <div className="grid grid-cols-1 gap-x-5 gap-y-10 @xl:grid-cols-2">
-            {products && products.length > 0
-              ? products.map(product => <CompareCard key={product.id} {...product} />)
+            {compareProducts && compareProducts.length > 0
+              ? compareProducts.map(product => <CompareCard key={product.id} {...product} />)
               : Array.from({ length: 5 }).map((_, index) => <CompareCardSkeleton key={index} />)}
           </div>
         </>
