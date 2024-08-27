@@ -93,7 +93,7 @@ export const Footer = function Footer({
 
             {/* Social Media Links */}
             {socialMediaLinks && (
-              <div className="mt-auto flex items-center gap-4 pt-8">
+              <div className="mt-auto flex items-center gap-4 pb-2 pt-8">
                 {socialMediaLinks.map(({ href, icon }, i) => {
                   return (
                     <Link
