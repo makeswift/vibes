@@ -4,7 +4,7 @@ export const heroSlides = [
   {
     title: 'NEW IN',
     description:
-      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, loafers, mary janes, ballet flats and more.',
+      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, mary janes, ballet flats and more.',
 
     image: {
       src: 'https://rstr.in/monogram/vibes/2EMiPsA7hB6',
@@ -19,7 +19,7 @@ export const heroSlides = [
   {
     title: 'NEW IN',
     description:
-      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, loafers, mary janes, ballet flats and more.',
+      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, mary janes, ballet flats and more.',
     image: {
       src: 'https://rstr.in/monogram/vibes/QmfQfksVmJO',
       altText: 'alt',
@@ -32,7 +32,7 @@ export const heroSlides = [
   {
     title: 'NEW IN',
     description:
-      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, loafers, mary janes, ballet flats and more.',
+      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, mary janes, ballet flats and more.',
     image: {
       src: 'https://rstr.in/monogram/vibes/TiwfRzYo4oG/ZSR8DkwOi8t',
       altText: 'alt',
