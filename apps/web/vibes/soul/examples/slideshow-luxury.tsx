@@ -2,10 +2,26 @@ import Slideshow from '@/vibes/soul/components/slideshow'
 
 export const heroSlides = [
   {
-    title: '',
-    description: 'who is Freda?',
+    title: 'NEW IN',
+    description:
+      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, loafers, mary janes, ballet flats and more.',
+
     image: {
-      src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT/jhF8-98zfEq',
+      src: 'https://rstr.in/monogram/vibes/2EMiPsA7hB6',
+      altText: 'alt',
+    },
+
+    // cta: {
+    //   href: '#',
+    //   label: 'Shop Now',
+    // },
+  },
+  {
+    title: 'NEW IN',
+    description:
+      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, loafers, mary janes, ballet flats and more.',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/QmfQfksVmJO',
       altText: 'alt',
     },
     // cta: {
@@ -14,20 +30,11 @@ export const heroSlides = [
     // },
   },
   {
-    title: '',
+    title: 'NEW IN',
+    description:
+      'Match the energy of your fall vibe with our latest collection of reimagined classics. This season it’s all about boots, loafers, mary janes, ballet flats and more.',
     image: {
-      src: 'https://rstr.in/monogram/vibes/8zU5OY9zRhv/nAXoYnVFDdU',
-      altText: 'alt',
-    },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
-  },
-  {
-    title: '',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/Cjfge1f4__e',
+      src: 'https://rstr.in/monogram/vibes/TiwfRzYo4oG/ZSR8DkwOi8t',
       altText: 'alt',
     },
     // cta: {
