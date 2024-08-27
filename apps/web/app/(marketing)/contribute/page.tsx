@@ -9,9 +9,16 @@ import { Form } from '../form'
 
 export default function Contribute() {
   return (
-    <div className="w-full overflow-hidden">
+    <div
+      className="w-full overflow-clip text-black"
+      style={{ '--foreground': '0 0% 0%' } as React.CSSProperties}
+    >
       <header className="fixed left-0 top-0 z-50 hidden w-full translate-y-8 items-center justify-center px-10 transition-all duration-300 sm:flex sm:justify-between md:translate-y-10">
-        <ButtonLink size="large" href="/#footer">
+        <ButtonLink
+          size="large"
+          href="/#footer"
+          className="[&_span]:border-black [&_span]:bg-white [&_span]:text-black"
+        >
           Get updates
         </ButtonLink>
         <Link
@@ -20,7 +27,11 @@ export default function Contribute() {
         >
           <Image src="/logo.svg" fill alt="Vibes logo" priority />
         </Link>
-        <ButtonLink href="/contribute" size="large">
+        <ButtonLink
+          href="/contribute"
+          size="large"
+          className="[&_span]:border-black [&_span]:bg-white [&_span]:text-black"
+        >
           Contribute
         </ButtonLink>
       </header>

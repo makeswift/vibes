@@ -18,7 +18,7 @@ export interface Props {
 }
 
 const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
-  ({ className, href, variant = 'default', size = 'medium', children = 'Button' }) => {
+  ({ className, href, variant = 'default', size = 'medium', children = 'Button', ...props }) => {
     return (
       <Link
         className={clsx(
@@ -26,6 +26,7 @@ const ButtonLink = React.forwardRef<HTMLButtonElement, Props>(
           className
         )}
         href={href ?? '#'}
+        {...props}
       >
         <span
           className={clsx(
