@@ -22,16 +22,6 @@ export default function Preview() {
           altText: featuredImage.image.altText,
         }}
         cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
-        mediaAlign="full"
-      />
-      <FeaturedImage
-        title={featuredImage.title}
-        description={featuredImage.description}
-        image={{
-          src: featuredImage.image.src,
-          altText: featuredImage.image.altText,
-        }}
-        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="left"
       />
       <FeaturedImage
@@ -43,6 +33,16 @@ export default function Preview() {
         }}
         cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="right"
+      />
+      <FeaturedImage
+        title={featuredImage.title}
+        description={featuredImage.description}
+        image={{
+          src: featuredImage.image.src,
+          altText: featuredImage.image.altText,
+        }}
+        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
+        mediaAlign="full"
       />
     </div>
   )
