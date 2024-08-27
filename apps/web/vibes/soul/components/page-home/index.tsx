@@ -66,6 +66,8 @@ export const HomePage = function HomePage({
   featuredImage,
   feature,
   featuredImageII,
+  footerLinks,
+  copyright,
 }: any) {
   return (
     <>
@@ -155,41 +157,13 @@ export const HomePage = function HomePage({
       />
 
       <Footer
-        logo="SOUL"
-        sections={[
-          {
-            title: 'Categories',
-            links: [
-              { label: 'Coats & Jackets', href: '#' },
-              { label: 'T-Shirts', href: '#' },
-              { label: 'Sweatshirts', href: '#' },
-              { label: 'Pants', href: '#' },
-            ],
-          },
-          {
-            title: 'Company',
-            links: [
-              { label: 'About', href: '#' },
-              { label: 'Stories', href: '#' },
-              { label: 'Careers', href: '#' },
-              { label: 'Stores', href: '#' },
-            ],
-          },
-          {
-            title: 'Help & Support',
-            links: [
-              { label: 'FAQs', href: '#' },
-              { label: 'Contact Us', href: '#' },
-              { label: 'Returns', href: '#' },
-              { label: 'Shipping', href: '#' },
-            ],
-          },
-        ]}
-        contactInformation={{
-          address: 'info@mywebsite.com',
-          phone: '+(1)408 123 4567',
-        }}
-        copyright={`© ${new Date().getFullYear()} SOUL - Powered by Monogram`}
+        logo={logo}
+        sections={footerLinks}
+        // contactInformation={{
+        //   address: 'info@mywebsite.com',
+        //   phone: '+(1)408 123 4567',
+        // }}
+        copyright={copyright}
         paymentIcons={paymentIconsArray}
         socialMediaLinks={socialMediaLinks}
       />

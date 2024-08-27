@@ -3,6 +3,7 @@ import { cards } from '@/vibes/soul/examples/card-carousel-luxury'
 import { feature } from '@/vibes/soul/examples/feature-luxury'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-luxury'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-luxury'
+import { copyright, footerLinks } from '@/vibes/soul/examples/footer-luxury'
 import { headerLinks } from '@/vibes/soul/examples/header-luxury'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-luxury'
 
@@ -32,8 +33,6 @@ export const featuredImageII: FeaturedImageProps = {
   cta: { href: '#', label: 'Shop Now' },
 }
 
-// TODO: Footer
-
 export default function Preview() {
   return (
     <HomePage
@@ -46,6 +45,8 @@ export default function Preview() {
       featuredProductsContent={featuredProductsContent}
       featuredProducts={featuredProducts}
       featuredImageII={featuredImageII}
+      footerLinks={footerLinks}
+      copyright={copyright}
     />
   )
 }

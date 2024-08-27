@@ -4,6 +4,7 @@ import { cards } from '@/vibes/soul/examples/card-carousel-electric'
 import { feature } from '@/vibes/soul/examples/feature-electric'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-electric'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-electric'
+import { copyright, footerLinks } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
 
@@ -160,6 +161,8 @@ export default function Preview() {
       featuredProducts={featuredProducts}
       newArrivals={newArrivals}
       featuredImageII={featuredImageII}
+      footerLinks={footerLinks}
+      copyright={copyright}
     />
   )
 }

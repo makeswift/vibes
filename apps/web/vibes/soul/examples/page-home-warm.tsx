@@ -3,6 +3,7 @@ import HomePage from '@/vibes/soul/components/page-home'
 import { cards } from '@/vibes/soul/examples/card-carousel-warm'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-warm'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-warm'
+import { copyright, footerLinks } from '@/vibes/soul/examples/footer-warm'
 import { headerLinks } from '@/vibes/soul/examples/header-warm'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-warm'
 
@@ -67,6 +68,8 @@ export default function Preview() {
       featuredProductsContent={featuredProductsContent}
       featuredProducts={featuredProducts}
       featuredImageII={featuredImageII}
+      footerLinks={footerLinks}
+      copyright={copyright}
     />
   )
 }
