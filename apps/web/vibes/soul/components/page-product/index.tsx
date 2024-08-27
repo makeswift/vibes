@@ -8,7 +8,7 @@ import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
-import { footerLinks } from '@/vibes/soul/examples/footer-electric'
+import { footerLinks, logo } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 
 const locales = [
@@ -28,7 +28,7 @@ export const ProductPage = function ProductPage() {
       <div className="relative flex flex-col">
         <Header
           links={headerLinks}
-          logo="SOUL"
+          logo={logo}
           cartHref="#"
           accountHref="#"
           activeLocale="EN"
