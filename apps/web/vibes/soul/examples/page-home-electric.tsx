@@ -1,9 +1,9 @@
-import { CardProps } from '@/vibes/soul/components/card'
 import Feature from '@/vibes/soul/components/feature'
 import HomePage from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul/components/product-card'
 import { cards } from '@/vibes/soul/examples/card-carousel-electric'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-electric'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
 
@@ -129,81 +129,6 @@ export const featuredProductsContent = {
     href: '#',
   },
 }
-
-export const featuredProducts: Product[] = [
-  {
-    id: '1',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
-    // badge: 'Indestructible',
-    price: '$24.99',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
-      altText: 'Product Name',
-    },
-    href: '#',
-  },
-  {
-    id: '2',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
-    // badge: 'New',
-    price: '$24.99',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
-      altText: 'Product Name',
-    },
-    href: '#',
-  },
-  {
-    id: '3',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
-    // badge: 'New',
-    price: '$24.99',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
-      altText: 'Product Name',
-    },
-    href: '#',
-  },
-  {
-    id: '4',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
-    // badge: 'New',
-    price: '$24.99',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
-      altText: 'Product Name',
-    },
-    href: '#',
-  },
-  {
-    id: '6',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
-    // badge: 'New',
-    price: '$24.99',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
-      altText: 'Product Name',
-    },
-    href: '#',
-  },
-  {
-    id: '5',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
-    // badge: 'New',
-    price: '$24.99',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
-      altText: 'Product Name',
-    },
-    href: '#',
-  },
-]
 
 // TODO: New Arrivals
 
