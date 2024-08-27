@@ -95,7 +95,6 @@ export const CompareCard = function CompareCard({
           <p className="mb-8">{availability}</p>
         </>
       )}
-      <Button className="mb-8 hidden w-full @xl:block">Add to Cart</Button>
     </Link>
   )
 }
