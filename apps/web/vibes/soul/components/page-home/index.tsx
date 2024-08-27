@@ -159,10 +159,6 @@ export const HomePage = function HomePage({
       <Footer
         logo={logo}
         sections={footerLinks}
-        // contactInformation={{
-        //   address: 'info@mywebsite.com',
-        //   phone: '+(1)408 123 4567',
-        // }}
         copyright={copyright}
         paymentIcons={paymentIconsArray}
         socialMediaLinks={socialMediaLinks}
