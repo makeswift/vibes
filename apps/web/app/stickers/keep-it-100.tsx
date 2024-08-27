@@ -11,7 +11,7 @@ export function KeepIt100() {
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[-700px] md:translate-x-[-1600px] translate-y-0 rotate-[-180deg]"
+          from="translate-x-[-700px] md:translate-x-[1600px] translate-y-0 rotate-[180deg]"
           to="translate-x-0 translate-y-0 rotate-12"
         >
           <Sticker

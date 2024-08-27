@@ -7,27 +7,25 @@ import { FigmaBack, FigmaFront, FigmaShadow } from '@/icons/generated'
 
 export function Figma() {
   return (
-    <div className="absolute left-[8%] top-[115%]">
-      <Draggable>
-        {({ active, hover }) => (
-          <Transition
-            className="delay-[4000ms] transition-transform duration-1000"
-            from="translate-x-[-400px] translate-y-[700px] rotate-[-20deg]"
-            to="translate-x-0 translate-y-0 -rotate-12"
-          >
-            <Sticker
-              active={active}
-              hover={hover}
-              peelAngle={0}
-              width={168}
-              height={268}
-              front={<FigmaFront />}
-              back={<FigmaBack />}
-              shadow={<FigmaShadow />}
-            />
-          </Transition>
-        )}
-      </Draggable>
-    </div>
+    <Draggable className="ml-14 mt-6">
+      {({ active, hover }) => (
+        <Transition
+          className="transition-transform duration-1000"
+          from="translate-x-[-700px] md:translate-x-[1600px] translate-y-[250px] rotate-[-210deg]"
+          to="translate-x-0 translate-y-0 -rotate-12"
+        >
+          <Sticker
+            active={active}
+            hover={hover}
+            peelAngle={0}
+            width={168}
+            height={268}
+            front={<FigmaFront />}
+            back={<FigmaBack />}
+            shadow={<FigmaShadow />}
+          />
+        </Transition>
+      )}
+    </Draggable>
   )
 }

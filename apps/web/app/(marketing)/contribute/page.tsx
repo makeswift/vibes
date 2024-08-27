@@ -61,11 +61,11 @@ export default function Contribute() {
               <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
                 Makeswift
               </Link>
-              . View source code in{' '}
+              {/* . View source code in{' '}
               <Link href="https://github.com/makeswift/vibes" target="_blank" className="font-bold">
                 GitHub
               </Link>
-              .
+              . */}
             </p>
           </div>
         </div>

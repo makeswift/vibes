@@ -11,7 +11,7 @@ export function Typescript() {
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[700px] md:translate-x-[1200px] translate-y-[-200px] rotate-[480deg]"
+          from="translate-x-[700px] md:translate-x-[1600px] translate-y-[-200px] rotate-[480deg]"
           to="translate-x-0 translate-y-0 rotate-[8deg]"
         >
           <Sticker
