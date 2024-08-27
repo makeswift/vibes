@@ -12,12 +12,12 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/
 
 export const footerLinks = [
   {
-    title: 'Categories',
+    title: 'Shop',
     links: [
-      { label: 'Small Plants', href: '#' },
-      { label: 'Low Maintenance', href: '#' },
-      { label: 'Indestructible', href: '#' },
-      { label: 'Succulents', href: '#' },
+      { label: 'Handle Bags', href: '#' },
+      { label: 'Frame Bags', href: '#' },
+      { label: 'Bags You Wear', href: '#' },
+      { label: 'Camera Straps', href: '#' },
     ],
   },
   {
@@ -40,7 +40,10 @@ export const footerLinks = [
   },
 ]
 
-export const logo = 'BLUE'
+export const logo = {
+  src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
+  altText: 'Outer Shell Logo',
+}
 
 export const socialMediaLinks = [
   {
@@ -71,7 +74,7 @@ export const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-export const copyright = `© ${new Date().getFullYear()} BLUE - Powered by Monogram`
+export const copyright = `© ${new Date().getFullYear()} OUTER SHELL - Powered by Monogram`
 
 export const contactInformation = {
   address: 'info@blue.com',
