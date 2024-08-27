@@ -9,7 +9,9 @@ import Header from '@/vibes/soul/components/header'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { cards } from '@/vibes/soul/examples/card-carousel-blue'
+import { feature } from '@/vibes/soul/examples/feature-blue'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-blue'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-blue'
 import {
   copyright,
   footerLinks,
@@ -20,7 +22,6 @@ import {
 import { headerLinks, locales } from '@/vibes/soul/examples/header-blue'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-blue'
 
-import { featuredProducts } from './featured-products-list-blue'
 import { newArrivals } from './page-home-electric'
 
 export const featuredProductsContent = {
@@ -33,24 +34,6 @@ export const featuredProductsContent = {
 }
 
 // TODO: New Arrivals
-
-const feature: Feature = {
-  image: {
-    src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
-    altText: 'string',
-  },
-  title: 'Our Everday Tote',
-  description: 'Fits Perfectly in a Basket',
-  // grid: {
-  //   icon: 'string',
-  //   title: 'string',
-  //   description: 'string',
-  // },
-  cta: {
-    href: 'string',
-    label: 'string',
-  },
-}
 
 // TODO: Recently Viewed
 export const featuredImageII: FeaturedImageProps = {

@@ -1,0 +1,66 @@
+import Feature from '@/vibes/soul/components/feature'
+
+export const feature: Feature = {
+  image: {
+    src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+    altText: 'string',
+  },
+  title: 'Our Everday Tote',
+  description: 'Fits Perfectly in a Basket',
+  // grid: {
+  //   icon: 'string',
+  //   title: 'string',
+  //   description: 'string',
+  // },
+  cta: {
+    href: 'string',
+    label: 'string',
+  },
+}
+
+const grid: Feature['grid'] = [
+  {
+    icon: 'Truck',
+    title: 'Free Shipping',
+    description: 'On orders over $250',
+  },
+  {
+    icon: 'RotateCcw',
+    title: 'Free Returns',
+    description: 'On full priced items only',
+  },
+  {
+    icon: 'Star',
+    title: '2 Year Warranty',
+    description: 'As standard',
+  },
+  {
+    icon: 'Truck',
+    title: 'Free Shipping',
+    description: 'On orders over $250',
+  },
+  {
+    icon: 'RotateCcw',
+    title: 'Free Returns',
+    description: 'On full priced items only',
+  },
+  {
+    icon: 'Star',
+    title: '2 Year Warranty',
+    description: 'As standard',
+  },
+]
+
+export default function Preview() {
+  return (
+    <div className="flex flex-col gap-3">
+      <Feature
+        image={feature.image}
+        title={feature.title}
+        description={feature.description}
+        cta={feature.cta}
+      />
+      <Feature image={feature.image} cta={feature.cta} grid={grid} />
+    </div>
+  )
+}

@@ -1,7 +1,7 @@
-import Feature from '@/vibes/soul/components/feature'
 import HomePage from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul/components/product-card'
 import { cards } from '@/vibes/soul/examples/card-carousel-electric'
+import { feature } from '@/vibes/soul/examples/feature-electric'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-electric'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
@@ -131,25 +131,6 @@ export const featuredProductsContent = {
 }
 
 // TODO: New Arrivals
-
-const feature: Feature = {
-  image: {
-    src: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
-    altText: 'Close up of a plant',
-  },
-  title: 'For Your Home',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-  // grid: {
-  //   icon: 'string',
-  //   title: 'string',
-  //   description: 'string',
-  // },
-  cta: {
-    href: 'string',
-    label: 'string',
-  },
-}
 
 // TODO: Recently Viewed
 
