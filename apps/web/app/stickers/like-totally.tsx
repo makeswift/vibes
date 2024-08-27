@@ -7,7 +7,7 @@ import { TotallyBack, TotallyFront, TotallyShadow } from '@/icons/generated'
 
 export function LikeTotally() {
   return (
-    <Draggable className="-mt-1">
+    <Draggable className="-mt-1 select-none">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"

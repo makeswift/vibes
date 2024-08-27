@@ -7,7 +7,7 @@ import { ProductionReadyBack, ProductionReadyFront, ProductionReadyShadow } from
 
 export function ProductionReady() {
   return (
-    <Draggable className="-ml-6 -mt-6">
+    <Draggable className="-ml-6 -mt-6 select-none">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
