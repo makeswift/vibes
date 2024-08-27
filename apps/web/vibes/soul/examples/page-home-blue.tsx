@@ -11,6 +11,7 @@ import { Product } from '@/vibes/soul/components/product-card'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { cards } from '@/vibes/soul/examples/card-carousel-blue'
+import { featuredImage } from '@/vibes/soul/examples/featured-image-blue'
 import {
   copyright,
   footerLinks,
@@ -19,20 +20,9 @@ import {
   socialMediaLinks,
 } from '@/vibes/soul/examples/footer-blue'
 import { headerLinks, locales } from '@/vibes/soul/examples/header-blue'
-import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
+import { heroSlides } from '@/vibes/soul/examples/slideshow-blue'
 
 import { newArrivals } from './page-home-electric'
-
-const featuredImage: FeaturedImageProps = {
-  title: 'Thoughtfully Designed',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
-  image: {
-    src: 'https://rstr.in/monogram/vibes/shMqUI79u99',
-    altText: 'Close up of a plant',
-  },
-  cta: { href: '#', label: 'Shop Now' },
-}
 
 export const featuredProductsContent = {
   title: '',

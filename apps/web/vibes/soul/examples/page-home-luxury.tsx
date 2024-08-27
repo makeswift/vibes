@@ -1,10 +1,12 @@
 import { Feature } from '@/vibes/soul/components/feature'
-import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
 import HomePage from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul/components/product-card'
 import { cards } from '@/vibes/soul/examples/card-carousel-luxury'
+import { featuredImage } from '@/vibes/soul/examples/featured-image-luxury'
 import { headerLinks } from '@/vibes/soul/examples/header-luxury'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-luxury'
+
+import { FeaturedImageProps } from '../components/featured-image'
 
 export const featuredProductsContent = {
   title: 'Trending Now',
@@ -91,17 +93,6 @@ export const featuredProducts: Product[] = [
 ]
 
 // TODO: New Arrivals
-
-export const featuredImage: FeaturedImageProps = {
-  title: 'Loved by Women Everywhere',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
-  image: {
-    src: 'https://rstr.in/monogram/vibes/vfUlF0UL0ZN',
-    altText: 'Close up of a plant',
-  },
-  cta: { href: '#', label: 'Shop Now' },
-}
 
 export const feature: Feature = {
   image: {

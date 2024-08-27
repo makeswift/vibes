@@ -3,6 +3,7 @@ import Feature from '@/vibes/soul/components/feature'
 import HomePage from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul/components/product-card'
 import { cards } from '@/vibes/soul/examples/card-carousel-electric'
+import { featuredImage } from '@/vibes/soul/examples/featured-image-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
 
@@ -119,17 +120,6 @@ export const newArrivals: Product[] = [
     href: '#',
   },
 ]
-
-const featuredImage: FeaturedImageProps = {
-  title: 'Thoughtfully Curated',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
-  image: {
-    src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ',
-    altText: 'Close up of a plant',
-  },
-  cta: { href: '#', label: 'Shop Now' },
-}
 
 export const featuredProductsContent = {
   title: '',
