@@ -147,7 +147,7 @@ export const brands = [
       '--contrast-400': '0 0% 60%',
       '--contrast-500': '0 0% 53%',
 
-      '--font-family-heading': dm_serif_text.style.fontFamily,
+      '--font-family-heading': inter.style.fontFamily,
       '--font-family-body': inter.style.fontFamily,
       '--font-family-mono': roboto_mono.style.fontFamily,
       '--font-variation-settings-body': '"slnt" 0',

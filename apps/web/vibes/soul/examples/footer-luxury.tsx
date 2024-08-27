@@ -34,7 +34,12 @@ export const footerLinks = [
   },
 ]
 
-const socialMediaLinks = [
+export const logo = {
+  src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID',
+  altText: 'Freda Salvador Logo',
+}
+
+export const socialMediaLinks = [
   {
     href: '#',
     icon: <Facebook size={18} strokeWidth={1} />,
@@ -49,7 +54,7 @@ const socialMediaLinks = [
   },
 ]
 
-const paymentIconsArray: React.ReactNode[] = [
+export const paymentIconsArray: React.ReactNode[] = [
   <Image
     key={1}
     src="https://rstr.in/monogram/vibes/8hv4difQbxs"
@@ -100,22 +105,20 @@ const paymentIconsArray: React.ReactNode[] = [
     height={24}
   />,
 ]
+export const copyright = `© ${new Date().getFullYear()} SOUL - Powered by Monogram`
 
 export default function Preview() {
   return (
     <Footer
       sections={footerLinks}
-      logo={{
-        src: 'https://rstr.in/monogram/vibes/5UckSov0byo',
-        altText: 'SOUL Logo',
-      }}
-      copyright={`© ${new Date().getFullYear()} SOUL - Powered by Monogram`}
+      logo={logo}
+      copyright={copyright}
       paymentIcons={paymentIconsArray}
       socialMediaLinks={socialMediaLinks}
-      contactInformation={{
-        address: 'info@mywebsite.com',
-        phone: '+(1)408 123 4567',
-      }}
+      // contactInformation={{
+      //   address: 'info@mywebsite.com',
+      //   phone: '+(1)408 123 4567',
+      // }}
     />
   )
 }

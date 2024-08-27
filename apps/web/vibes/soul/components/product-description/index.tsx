@@ -6,12 +6,8 @@ import { AccordionItem } from '@/vibes/soul/components/accordions'
 export interface Props {
   accordions: AccordionItem[]
   image?: {
-    url: string
-    dimensions: {
-      width: number
-      height: number
-    }
-    alt: string
+    src: string
+    altText: string
   }
   video?: string
 }
@@ -33,9 +29,9 @@ export const ProductDescription = function ProductDescription({
         >
           {image ? (
             <Image
-              src={image.url}
+              src={image.src}
               fill
-              alt={image.alt}
+              alt={image.altText}
               sizes="(max-width: 500px) 100vw, 50vw"
               className="object-cover"
             />

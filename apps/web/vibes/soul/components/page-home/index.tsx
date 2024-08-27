@@ -1,6 +1,7 @@
 import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 import Feature from '@/vibes/soul/components/feature'
+import FeaturedImage from '@/vibes/soul/components/featured-image'
 import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
 import FeaturedProductsList from '@/vibes/soul/components/featured-products-list'
 import Footer from '@/vibes/soul/components/footer'
@@ -17,10 +18,6 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/
 import Header from '@/vibes/soul/components/header'
 import Slideshow from '@/vibes/soul/components/slideshow'
 import Subscribe from '@/vibes/soul/components/subscribe'
-import { featuredProducts } from '@/vibes/soul/examples/featured-products-list'
-import { headerLinks } from '@/vibes/soul/examples/header'
-
-import FeaturedImage from '../featured-image'
 
 const socialMediaLinks = [
   {
@@ -58,7 +55,20 @@ const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
-export const HomePage = function HomePage({ heroSlides, categories, newArrivals }: any) {
+export const HomePage = function HomePage({
+  headerLinks,
+  logo,
+  heroSlides,
+  categories,
+  featuredProductsContent,
+  featuredProducts,
+  newArrivals,
+  featuredImage,
+  feature,
+  featuredImageII,
+  footerLinks,
+  copyright,
+}: any) {
   return (
     <>
       <AnnouncementBar>
@@ -68,7 +78,7 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
 
       <Header
         links={headerLinks}
-        logo="SOUL"
+        logo={logo}
         cartHref="#"
         accountHref="#"
         locales={locales}
@@ -80,20 +90,19 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
       <CardCarousel cards={categories} />
 
       <FeaturedImage
-        title="Pro-Team"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          labore et dolore magna aliqua."
+        title={featuredImage?.title}
+        description={featuredImage?.description}
         image={{
-          src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ',
-          altText: 'Close up of a plant',
+          src: featuredImage?.image.src,
+          altText: featuredImage?.image.altText,
         }}
         cta={{ href: '#', label: 'Shop Now' }}
       />
 
       <FeaturedProductsList
-        title="Our Plants"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-        cta={{ label: 'Shop Now', href: '#' }}
+        title={featuredProductsContent.title}
+        description={featuredProductsContent.description}
+        cta={{ label: featuredProductsContent.label, href: featuredProductsContent.href }}
         products={featuredProducts}
       />
 
@@ -110,29 +119,27 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
 
       <Feature
         image={{
-          url: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
-          alt: 'Close up of a plant',
+          src: feature.image.src,
+          altText: feature.image.altText,
         }}
-        heading="For Your Home"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-        link={{
-          label: 'Shop Now',
-          href: '#',
-          target: '_self',
+        title={feature.title}
+        description={feature.description}
+        cta={{
+          label: feature.cta.label,
+          href: feature.cta.href,
         }}
       />
 
       <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts} />
 
       <FeaturedImage
-        title="Pro-Team"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          labore et dolore magna aliqua."
+        title={featuredImageII.title}
+        description={featuredImageII.description}
         image={{
-          src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
-          altText: 'Close up of a plant',
+          src: featuredImageII.image.src,
+          altText: featuredImageII.image.altText,
         }}
-        cta={{ href: '#', label: 'Shop Now' }}
+        cta={{ href: featuredImageII.cta.href, label: featuredImageII.cta.label }}
       />
 
       {/* <FeaturedVideo
@@ -150,41 +157,13 @@ export const HomePage = function HomePage({ heroSlides, categories, newArrivals 
       />
 
       <Footer
-        logo="SOUL"
-        sections={[
-          {
-            title: 'Categories',
-            links: [
-              { label: 'Coats & Jackets', href: '#' },
-              { label: 'T-Shirts', href: '#' },
-              { label: 'Sweatshirts', href: '#' },
-              { label: 'Pants', href: '#' },
-            ],
-          },
-          {
-            title: 'Company',
-            links: [
-              { label: 'About', href: '#' },
-              { label: 'Stories', href: '#' },
-              { label: 'Careers', href: '#' },
-              { label: 'Stores', href: '#' },
-            ],
-          },
-          {
-            title: 'Help & Support',
-            links: [
-              { label: 'FAQs', href: '#' },
-              { label: 'Contact Us', href: '#' },
-              { label: 'Returns', href: '#' },
-              { label: 'Shipping', href: '#' },
-            ],
-          },
-        ]}
-        contactInformation={{
-          address: 'info@mywebsite.com',
-          phone: '+(1)408 123 4567',
-        }}
-        copyright={`© ${new Date().getFullYear()} SOUL - Powered by Monogram`}
+        logo={logo}
+        sections={footerLinks}
+        // contactInformation={{
+        //   address: 'info@mywebsite.com',
+        //   phone: '+(1)408 123 4567',
+        // }}
+        copyright={copyright}
         paymentIcons={paymentIconsArray}
         socialMediaLinks={socialMediaLinks}
       />

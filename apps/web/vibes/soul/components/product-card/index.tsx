@@ -22,6 +22,9 @@ export interface Product {
   subtitle?: string
   badge?: string
   className?: string
+  description?: string
+  rating?: number
+  availability?: string
 }
 
 export const ProductCard = function ProductCard({

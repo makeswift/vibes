@@ -1,65 +1,75 @@
-import { CardProps } from '@/vibes/soul//components/card'
+import Feature from '@/vibes/soul/components/feature'
 import HomePage from '@/vibes/soul/components/page-home'
+import { cards } from '@/vibes/soul/examples/card-carousel-warm'
+import { featuredImage } from '@/vibes/soul/examples/featured-image-warm'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-warm'
+import { copyright, footerLinks } from '@/vibes/soul/examples/footer-warm'
+import { headerLinks } from '@/vibes/soul/examples/header-warm'
+import { heroSlides } from '@/vibes/soul/examples/slideshow-warm'
 
-export const heroSlides = [
-  {
-    title: 'Embrace the Heat',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/ij1KKiLkmKb',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 2',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/o_0gBpyrOVe',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 3',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/VSkA1mBG78U',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-]
+import { FeaturedImageProps } from '../components/featured-image'
 
-export const categories: CardProps[] = [
-  {
-    title: 'Men',
-    image: { src: 'https://rstr.in/monogram/vibes/CVQwqHQKmz4', altText: 'Men' },
+export const featuredProductsContent = {
+  title: '',
+  description: '',
+  cta: {
+    label: '',
     href: '#',
   },
-  {
-    title: 'Women',
-    image: { src: 'https://rstr.in/monogram/vibes/UWfiHOc2RnP', altText: 'Women' },
-    href: '#',
+}
+
+// TODO: New Arrivals
+
+const feature: Feature = {
+  image: {
+    src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+    altText: 'string',
   },
-  {
-    title: 'Jerseys',
-    image: { src: 'https://rstr.in/monogram/vibes/lxY8Fqsk3Gp', altText: 'Jerseys' },
-    href: '#',
+  title: 'Our Everday Tote',
+  description: 'Fits Perfectly in a Basket',
+  // grid: {
+  //   icon: 'string',
+  //   title: 'string',
+  //   description: 'string',
+  // },
+  cta: {
+    href: 'string',
+    label: 'string',
   },
-  {
-    title: 'Headwear',
-    image: { src: 'https://rstr.in/monogram/vibes/8bPrhQZGr4k', altText: 'Headwear' },
-    href: '#',
+}
+
+// TODO: Recently Viewed
+
+export const featuredImageII: FeaturedImageProps = {
+  title: 'Pro-Team',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
+  image: {
+    src: 'https://rstr.in/monogram/vibes/mQ0gb1u9_CO',
+    altText: '',
   },
-]
+  cta: { href: '#', label: 'Shop Now' },
+}
+
+// TODO: Footer
 
 export default function Preview() {
-  return <HomePage heroSlides={heroSlides} categories={categories} />
+  return (
+    <HomePage
+      headerLinks={headerLinks}
+      logo={{
+        src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
+        alt: 'Outer Shell Logo',
+      }}
+      heroSlides={heroSlides}
+      categories={cards}
+      featuredImage={featuredImage}
+      feature={feature}
+      featuredProductsContent={featuredProductsContent}
+      featuredProducts={featuredProducts}
+      featuredImageII={featuredImageII}
+      footerLinks={footerLinks}
+      copyright={copyright}
+    />
+  )
 }

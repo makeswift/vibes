@@ -25,12 +25,8 @@ export default function Preview() {
   ]
 
   const image = {
-    url: 'https://rstr.in/monogram/vibes/Ie6Zc3VIRoj',
-    dimensions: {
-      width: 467,
-      height: 600,
-    },
-    alt: 'Plants',
+    src: 'https://rstr.in/monogram/vibes/Ie6Zc3VIRoj',
+    altText: 'Plants',
   }
 
   const video = 'https://videos.pexels.com/video-files/4957753/4957753-hd_1920_1080_25fps.mp4'

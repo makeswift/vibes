@@ -5,7 +5,7 @@ import clsx from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 
-interface Props {
+export interface FeaturedImageProps {
   title: string
   description: string
   image: {
@@ -26,7 +26,7 @@ export const FeaturedImage = function FeaturedImage({
   image,
   cta,
   mediaAlign = 'left',
-}: Props) {
+}: FeaturedImageProps) {
   return (
     <section
       className={clsx(
@@ -59,7 +59,7 @@ export const FeaturedImage = function FeaturedImage({
         </div>
         <div
           className={clsx(
-            'z-10 mx-auto flex flex-col items-start gap-4 px-3 py-10 text-background @5xl:p-20',
+            'z-10 mx-auto flex flex-col items-start gap-4 px-3 pb-20 pt-10 text-background @5xl:p-20',
             mediaAlign == 'full'
               ? '5xl:px-20 mx-auto mt-auto w-full max-w-screen-2xl px-3 @xl:px-6'
               : 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5',

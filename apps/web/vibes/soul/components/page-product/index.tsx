@@ -8,8 +8,8 @@ import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
-import { footerLinks } from '@/vibes/soul/examples/footer'
-import { headerLinks } from '@/vibes/soul/examples/header'
+import { footerLinks } from '@/vibes/soul/examples/footer-electric'
+import { headerLinks } from '@/vibes/soul/examples/header-electric'
 
 const locales = [
   { id: '1', region: 'US', language: 'EN' },
@@ -92,12 +92,8 @@ export const ProductPage = function ProductPage() {
             },
           ]}
           image={{
-            url: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
-            dimensions: {
-              width: 467,
-              height: 600,
-            },
-            alt: 'Plants',
+            src: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
+            altText: 'Plants',
           }}
         />
 

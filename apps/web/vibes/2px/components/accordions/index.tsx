@@ -43,7 +43,7 @@ export default function Accordions({ className, accordions, defaultValue, type }
                 <AccordionPrimitive.Header>
                   <AccordionPrimitive.Trigger asChild>
                     <div className="flex w-full cursor-pointer items-center justify-between @lg:pr-5">
-                      <div className="flex-grow text-left font-body ">{accordion.title}</div>
+                      <div className="flex-grow text-left font-body">{accordion.title}</div>
                       <ChevronDownIcon
                         className="shrink-0 text-foreground group-data-[state=open]:rotate-180"
                         height={16}
@@ -53,7 +53,7 @@ export default function Accordions({ className, accordions, defaultValue, type }
                   </AccordionPrimitive.Trigger>
                 </AccordionPrimitive.Header>
                 <AccordionPrimitive.Content className="mt-5 w-full overflow-hidden @lg:pr-5">
-                  <div className="">{accordion.content}</div>
+                  <div>{accordion.content}</div>
                 </AccordionPrimitive.Content>
               </li>
             </AccordionPrimitive.Item>

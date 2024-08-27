@@ -1,66 +1,52 @@
-import { CardProps } from '@/vibes/soul//components/card'
 import HomePage from '@/vibes/soul/components/page-home'
+import { cards } from '@/vibes/soul/examples/card-carousel-luxury'
+import { feature } from '@/vibes/soul/examples/feature-luxury'
+import { featuredImage } from '@/vibes/soul/examples/featured-image-luxury'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-luxury'
+import { copyright, footerLinks } from '@/vibes/soul/examples/footer-luxury'
+import { headerLinks } from '@/vibes/soul/examples/header-luxury'
+import { heroSlides } from '@/vibes/soul/examples/slideshow-luxury'
 
-export const heroSlides = [
-  {
-    title: 'Share the Joy of Nature',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/lfmnDUMNWEo',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 2',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 3',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-]
+import { FeaturedImageProps } from '../components/featured-image'
 
+export const featuredProductsContent = {
+  title: 'Trending Now',
+  description: '',
+  cta: {
+    label: '',
+    href: '#',
+  },
+}
 
-export const categories: CardProps[] = [
-  {
-    title: 'Small Plants',
-    image: { src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk', altText: 'Small Plants' },
-    href: '#',
+// TODO: New Arrivals
+
+// TODO: Recently Viewed
+
+export const featuredImageII: FeaturedImageProps = {
+  title: 'Handmade in Spain',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
+  image: {
+    src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz',
+    altText: '',
   },
-  {
-    title: 'Low Maintenance',
-    image: { src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk', altText: 'Low Maintenance' },
-    href: '#',
-  },
-  {
-    title: 'Indestructible',
-    image: { src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p', altText: 'Indestructible' },
-    href: '#',
-  },
-  {
-    title: 'Succulent',
-    image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', altText: 'Succulent' },
-    href: '#',
-  },
-]
+  cta: { href: '#', label: 'Shop Now' },
+}
 
 export default function Preview() {
-  return <HomePage heroSlides={heroSlides} categories={categories} />
+  return (
+    <HomePage
+      headerLinks={headerLinks}
+      logo={{ src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID', altText: 'Freda Salvador' }}
+      heroSlides={heroSlides}
+      categories={cards}
+      featuredImage={featuredImage}
+      feature={feature}
+      featuredProductsContent={featuredProductsContent}
+      featuredProducts={featuredProducts}
+      featuredImageII={featuredImageII}
+      footerLinks={footerLinks}
+      copyright={copyright}
+    />
+  )
 }

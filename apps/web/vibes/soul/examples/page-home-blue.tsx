@@ -1,65 +1,52 @@
-import { CardProps } from '@/vibes/soul//components/card'
-import HomePage from '@/vibes/soul/components/page-home'
+import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
+import { cards } from '@/vibes/soul/examples/card-carousel-blue'
+import { feature } from '@/vibes/soul/examples/feature-blue'
+import { featuredImage } from '@/vibes/soul/examples/featured-image-blue'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-blue'
+import { copyright, footerLinks, logo } from '@/vibes/soul/examples/footer-blue'
+import { headerLinks } from '@/vibes/soul/examples/header-blue'
+import { heroSlides } from '@/vibes/soul/examples/slideshow-blue'
 
-export const heroSlides = [
-  {
-    title: 'New Casuals',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/Nz2yR4EZgvo',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 2',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/gWgyEhm5W60',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-  {
-    title: 'Slide 3',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/K-F83RXTJsx',
-      altText: 'alt',
-    },
-    cta: {
-      href: '#',
-      label: 'Shop Now',
-    },
-  },
-]
+import HomePage from '../components/page-home'
 
-export const categories: CardProps[] = [
-  {
-    title: 'Men',
-    image: { src: 'https://rstr.in/monogram/vibes/ptJ724KlDom', altText: 'Men' },
+export const featuredProductsContent = {
+  title: '',
+  description: '',
+  cta: {
+    label: '',
     href: '#',
   },
-  {
-    title: 'Women',
-    image: { src: 'https://rstr.in/monogram/vibes/P3yw1GHGDuv', altText: 'Women' },
-    href: '#',
+}
+
+// TODO: New Arrivals
+// TODO: Recently Viewed
+export const featuredImageII: FeaturedImageProps = {
+  title: 'Pro-Team',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
+  image: {
+    src: '',
+    altText: 'Close up of a plant',
   },
-  {
-    title: 'Footwear',
-    image: { src: 'https://rstr.in/monogram/vibes/XG-Zqe3Y2xH', altText: 'Footwear' },
-    href: '#',
-  },
-  {
-    title: 'Headwear',
-    image: { src: 'https://rstr.in/monogram/vibes/ayf5JcyknJ4', altText: 'Headwear' },
-    href: '#',
-  },
-]
+  cta: { href: '#', label: 'Shop Now' },
+}
 
 export default function Preview() {
-  return <HomePage heroSlides={heroSlides} categories={categories} />
+  return (
+    <>
+      <HomePage
+        headerLinks={headerLinks}
+        logo={logo}
+        heroSlides={heroSlides}
+        categories={cards}
+        featuredImage={featuredImage}
+        feature={feature}
+        featuredProductsContent={featuredProductsContent}
+        featuredProducts={featuredProducts}
+        featuredImageII={featuredImageII}
+        footerLinks={footerLinks}
+        copyright={copyright}
+      />
+    </>
+  )
 }

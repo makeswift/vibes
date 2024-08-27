@@ -151,8 +151,8 @@ export const Header = forwardRef(function Header(
         className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
       >
         <nav
-          className="relative grid h-[60px] grid-cols-[1fr,auto,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] 
-          @4xl:mx-5 @4xl:rounded-3xl"
+          className="relative grid h-[60px] grid-cols-[1fr,2fr,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] @4xl:mx-5 
+          @4xl:rounded-3xl md:grid-cols-[1fr,1fr,1fr]"
         >
           {/* Top Level Nav Links */}
           <ul className="relative flex items-stretch pl-2.5" ref={container}>
@@ -190,10 +190,16 @@ export const Header = forwardRef(function Header(
           {/* Logo */}
           <Link
             href="/"
-            className="mx-auto rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
+            className="relative mx-auto my-2 flex h-10 w-full max-w-56 items-center justify-center rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
             {typeof logo === 'object' && logo?.src ? (
-              <Image src={logo.src} fill sizes="400px" alt={logo.altText} />
+              <Image
+                src={logo.src}
+                fill
+                sizes="400px"
+                alt={logo.altText}
+                className="object-contain"
+              />
             ) : (
               typeof logo === 'string' && (
                 <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">

@@ -1,68 +1,14 @@
-import { CardProps } from '@/vibes/soul//components/card'
-import { Product } from '@/vibes/soul//components/product-card'
 import HomePage from '@/vibes/soul/components/page-home'
+import { Product } from '@/vibes/soul/components/product-card'
+import { cards } from '@/vibes/soul/examples/card-carousel-electric'
+import { feature } from '@/vibes/soul/examples/feature-electric'
+import { featuredImage } from '@/vibes/soul/examples/featured-image-electric'
+import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-electric'
+import { copyright, footerLinks } from '@/vibes/soul/examples/footer-electric'
+import { headerLinks } from '@/vibes/soul/examples/header-electric'
+import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
 
-export const heroSlides = [
-  {
-    title: 'Give',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/fzVuE9iZ4mI',
-      altText: 'alt',
-    },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
-  },
-  {
-    title: 'Grow',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk',
-      altText: 'alt',
-    },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
-  },
-  {
-    title: 'Thrive',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C',
-      altText: 'alt',
-    },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
-  },
-]
-
-export const categories: CardProps[] = [
-  {
-    title: 'Small Plants',
-    image: { src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk', altText: 'Small Plants' },
-    href: '#',
-  },
-  {
-    title: 'Low Maintenance',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk',
-      altText: 'Low Maintenance',
-    },
-    href: '#',
-  },
-  {
-    title: 'Indestructible',
-    image: { src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p', altText: 'Indestructible' },
-    href: '#',
-  },
-  {
-    title: 'Succulent',
-    image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', altText: 'Succulent' },
-    href: '#',
-  },
-]
+import { FeaturedImageProps } from '../components/featured-image'
 
 // Featured Products
 export const newArrivals: Product[] = [
@@ -176,6 +122,47 @@ export const newArrivals: Product[] = [
   },
 ]
 
+export const featuredProductsContent = {
+  title: '',
+  description: '',
+  cta: {
+    label: '',
+    href: '#',
+  },
+}
+
+// TODO: New Arrivals
+
+// TODO: Recently Viewed
+
+export const featuredImageII: FeaturedImageProps = {
+  title: 'Pro-Team',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
+  image: {
+    src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
+    altText: 'Close up of a plant',
+  },
+  cta: { href: '#', label: 'Shop Now' },
+}
+
+// TODO: Footer
+
 export default function Preview() {
-  return <HomePage heroSlides={heroSlides} categories={categories} newArrivals={newArrivals} />
+  return (
+    <HomePage
+      headerLinks={headerLinks}
+      logo="SOUL"
+      heroSlides={heroSlides}
+      categories={cards}
+      featuredImage={featuredImage}
+      feature={feature}
+      featuredProductsContent={featuredProductsContent}
+      featuredProducts={featuredProducts}
+      newArrivals={newArrivals}
+      featuredImageII={featuredImageII}
+      footerLinks={footerLinks}
+      copyright={copyright}
+    />
+  )
 }
