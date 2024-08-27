@@ -4,8 +4,8 @@ import ProductCard, { Product, ProductCardSkeleton } from '@/vibes/soul/componen
 
 interface Props {
   products: Product[]
-  compareProducts: Product[]
-  setCompareProducts: React.Dispatch<React.SetStateAction<Product[]>>
+  compareProducts?: Product[]
+  setCompareProducts?: React.Dispatch<React.SetStateAction<Product[]>>
   className?: string
 }
 

@@ -2,11 +2,12 @@ import Feature from '@/vibes/soul/components/feature'
 
 export const feature: Feature = {
   image: {
-    src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+    src: 'https://rstr.in/monogram/vibes/KeSfQ1z8c9-',
     altText: 'string',
   },
-  title: 'Our Everday Tote',
-  description: 'Fits Perfectly in a Basket',
+  title: 'Where Every Ride Meets Perfect Fit.',
+  description:
+    'Our custom bike bags are designed to seamlessly integrate with your bike, like this perfectly fitted square bag for your front basket. Adventure, style, and functionality—tailored just for you.',
   // grid: {
   //   icon: 'string',
   //   title: 'string',

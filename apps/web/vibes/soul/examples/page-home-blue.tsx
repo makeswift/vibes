@@ -1,5 +1,6 @@
 import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
-import { cards } from '@/vibes/soul/examples/card-carousel-blue'
+import HomePage from '@/vibes/soul/components/page-home'
+import { cards, textContrast } from '@/vibes/soul/examples/card-carousel-blue'
 import { feature } from '@/vibes/soul/examples/feature-blue'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-blue'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-blue'
@@ -7,26 +8,15 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/footer-blue'
 import { headerLinks, logo } from '@/vibes/soul/examples/header-blue'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-blue'
 
-import HomePage from '../components/page-home'
-
-export const featuredProductsContent = {
-  title: '',
-  description: '',
-  cta: {
-    label: '',
-    href: '#',
-  },
-}
-
 // TODO: New Arrivals
 // TODO: Recently Viewed
 export const featuredImageII: FeaturedImageProps = {
-  title: 'Pro-Team',
+  title: 'Where Every Ride Meets Perfect Fit.',
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
+    'Our custom bike bags are designed to seamlessly integrate with your bike, like this perfectly fitted square bag for your front basket. Adventure, style, and functionality—tailored just for you.',
   image: {
-    src: '',
-    altText: 'Close up of a plant',
+    src: 'https://rstr.in/monogram/vibes/KeSfQ1z8c9-',
+    altText: 'Basket Bag',
   },
   cta: { href: '#', label: 'Shop Now' },
 }
@@ -39,9 +29,9 @@ export default function Preview() {
         logo={logo}
         heroSlides={heroSlides}
         categories={cards}
+        textContrast={textContrast}
         featuredImage={featuredImage}
         feature={feature}
-        featuredProductsContent={featuredProductsContent}
         featuredProducts={featuredProducts}
         featuredImageII={featuredImageII}
         footerLinks={footerLinks}

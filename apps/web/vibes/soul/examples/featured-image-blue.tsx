@@ -5,8 +5,8 @@ export const featuredImage: FeaturedImageProps = {
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
   image: {
-    src: 'https://rstr.in/monogram/vibes/shMqUI79u99',
-    altText: 'Close up of a plant',
+    src: 'https://rstr.in/monogram/vibes/gGrGJ7avES_',
+    altText: 'Handle bar bag',
   },
   cta: { href: '#', label: 'Shop Now' },
 }

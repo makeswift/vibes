@@ -1,7 +1,6 @@
 import { CardProps } from '@/vibes/soul/components/card'
 import CardCarousel from '@/vibes/soul/components/card-carousel'
 
-
 export const cards: CardProps[] = [
   {
     title: 'Small Plants',
@@ -10,7 +9,10 @@ export const cards: CardProps[] = [
   },
   {
     title: 'Low Maintenance',
-    image: { src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk', altText: 'Low Maintenance' },
+    image: {
+      src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk',
+      altText: 'Low Maintenance',
+    },
     href: '#',
   },
   {
@@ -25,6 +27,8 @@ export const cards: CardProps[] = [
   },
 ]
 
+export const textContrast = 'dark'
+
 export default function Preview() {
-  return <CardCarousel cards={cards} />
+  return <CardCarousel cards={cards} textContrast={textContrast} />
 }

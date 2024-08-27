@@ -6,7 +6,7 @@ export const heroSlides = [
     description: 'Designed for speed and comfort',
     image: {
       altText: 'alt',
-      src: 'https://rstr.in/monogram/vibes/shMqUI79u99',
+      src: 'https://rstr.in/monogram/vibes/2UhnmMan5ct',
     },
     // cta: {
     //   href: '#',
