@@ -20,7 +20,7 @@ export const Checkbox = function Checkbox({
       <RadixCheckbox.Root
         className={clsx(
           'flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-150',
-          'focus:outline-0 focus:ring-2 focus:ring-primary',
+          'focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary',
           checked ? 'border-foreground bg-foreground' : 'border-contrast-300 bg-background'
         )}
         defaultChecked
