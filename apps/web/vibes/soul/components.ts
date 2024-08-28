@@ -50,6 +50,12 @@ export const components = [
     files: ['components/card/index.tsx'],
   },
   {
+    name: 'cart',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/cart/index.tsx'],
+  },
+  {
     name: 'card-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],

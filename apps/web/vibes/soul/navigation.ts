@@ -108,6 +108,7 @@ export const navigation = [
   {
     title: 'Sections',
     pages: [
+      { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
