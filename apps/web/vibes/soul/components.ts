@@ -194,6 +194,12 @@ export const components = [
     files: ['components/rating/index.tsx'],
   },
   {
+    name: 'reviews',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/reviews/index.tsx'],
+  },
+  {
     name: 'slide-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],

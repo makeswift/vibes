@@ -453,6 +453,13 @@ export const examples = [
     component: lazy(() => import('./examples/rating')),
   },
   {
+    name: 'reviews-example',
+    dependencies: [],
+    registryDependencies: ['reviews'],
+    files: ['examples/reviews.tsx'],
+    component: lazy(() => import('./examples/reviews')),
+  },
+  {
     name: 'slide-carousel-example',
     dependencies: [],
     registryDependencies: ['categories'],

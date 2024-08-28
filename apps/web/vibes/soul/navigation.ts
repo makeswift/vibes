@@ -159,6 +159,7 @@ export const navigation = [
         file: 'docs/products-header.mdx',
         component: 'products-header',
       },
+      { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
       { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
       {
         title: 'Subscribe',

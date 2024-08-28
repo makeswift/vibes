@@ -6,10 +6,12 @@ import IconBlock from '@/vibes/soul/components/icon-block'
 import { Product } from '@/vibes/soul/components/product-card'
 import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
+import Reviews from '@/vibes/soul/components/reviews'
 import Subscribe from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
 import { footerLinks, logo } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
+import { reviews } from '@/vibes/soul/examples/reviews'
 
 const locales = [
   { id: '1', region: 'US', language: 'EN' },
@@ -121,6 +123,8 @@ export const ProductPage = function ProductPage() {
           cta={{ label: 'See All', href: '#' }}
           products={featuredProducts}
         />
+
+        <Reviews reviews={reviews} averageRating={4.5} />
 
         <Subscribe
           title="Sign up for our newsletter"
