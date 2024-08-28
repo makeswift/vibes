@@ -123,6 +123,13 @@ export const examples = [
     component: lazy(() => import('./examples/checkbox')),
   },
   {
+    name: 'counter-example',
+    dependencies: [],
+    registryDependencies: ['counter'],
+    files: ['examples/counter.tsx'],
+    component: lazy(() => import('./examples/counter')),
+  },
+  {
     name: 'discount-example',
     dependencies: [],
     registryDependencies: ['discount'],

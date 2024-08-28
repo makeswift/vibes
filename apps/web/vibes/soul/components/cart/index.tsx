@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Trash2 } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/components/button'
+import Counter from '@/vibes/soul/components/counter'
 import { Product } from '@/vibes/soul/components/product-card'
 
 interface Image {
@@ -34,28 +35,31 @@ export const Cart = function Cart({ products }: CartProps) {
           <ul className="flex flex-col gap-5 gap-y-10">
             {products?.map(({ id, name, href, image, price, subtitle, quantity }) => {
               return (
-                <li className="flex  items-center gap-5" key={id}>
-                  <Link href={href} className="flex w-full max-w-36 items-center gap-5">
-                    {image && (
-                      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
+                <li className="flex items-center gap-x-5" key={id}>
+                  {image && (
+                    <Link
+                      href={href}
+                      className="relative aspect-[3/4] w-full max-w-36 overflow-hidden rounded-lg"
+                    >
+                      <div className="">
                         <Image fill src={image.src} alt={image.altText} className="object-cover" />
                       </div>
-                    )}
-                  </Link>
-                  <div className="flex flex-grow flex-wrap justify-between gap-5">
+                    </Link>
+                  )}
+                  <div className="flex flex-grow flex-wrap justify-between gap-x-5 gap-y-2">
                     <div className="flex flex-col">
                       <span className="font-medium">{name}</span>
                       <span className="text-contrast-300">{subtitle}</span>
                     </div>
-                    <div className="flex items-center gap-5">
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                       <span>$123.99</span>
-                      <span>Counter</span>
+                      <Counter current={quantity} />
                       {/* TODO: Counter */}
                       {/* TODO: Remove */}
                       <button>
                         <Trash2
                           strokeWidth={1.5}
-                          className="text-sm text-contrast-300 transition-colors duration-300 hover:text-foreground"
+                          className="my-2 text-sm text-contrast-300 transition-colors duration-300 hover:text-foreground"
                         />
                       </button>
                     </div>

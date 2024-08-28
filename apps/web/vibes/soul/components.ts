@@ -68,6 +68,12 @@ export const components = [
     files: ['components/checkbox/index.tsx'],
   },
   {
+    name: 'counter',
+    dependencies: ['lucide-react'],
+    registryDependencies: [],
+    files: ['components/counter/index.tsx'],
+  },
+  {
     name: 'discount',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
