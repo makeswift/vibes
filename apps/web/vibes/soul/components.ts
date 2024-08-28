@@ -32,6 +32,12 @@ export const components = [
     files: ['components/blog-post-list/index.tsx'],
   },
   {
+    name: 'breadcrumbs',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/breadcrumbs/index.tsx'],
+  },
+  {
     name: 'button',
     dependencies: ['clsx', 'lucide-react', '@radix-ui/react-slot'],
     registryDependencies: [],

@@ -1,5 +1,5 @@
 import ProductsPage from '@/vibes/soul/components/page-products'
-import { Product } from '@/vibes/soul/components/product-card'
+import { breadcrumbs } from '@/vibes/soul/examples/breadcrumbs-electric'
 import { copyright, footerLinks, logo } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 import { products } from '@/vibes/soul/examples/products-list-electric'
@@ -10,6 +10,7 @@ export default function Preview() {
       headerLinks={headerLinks}
       logo={logo}
       title="All Plants"
+      breadcrumbs={breadcrumbs}
       products={products}
       footerLinks={footerLinks}
       copyright={copyright}

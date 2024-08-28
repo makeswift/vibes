@@ -14,6 +14,7 @@ const locales = [
 export const ProductsPage = function ProductsPage({
   headerLinks,
   logo,
+  breadcrumbs,
   title,
   products,
   footerLinks,
@@ -33,7 +34,7 @@ export const ProductsPage = function ProductsPage({
         activeLocale="EN"
         locales={locales}
       />
-      <CompareProducts title={title} products={products} pages={5} />
+      <CompareProducts breadcrumbs={breadcrumbs} title={title} products={products} pages={5} />
       <FeaturedProductsCarousel title="Recently Viewed" products={products} />
       <Footer sections={footerLinks} logo={logo} copyright={copyright} />
     </>
