@@ -39,6 +39,34 @@ export const examples = [
     component: lazy(() => import('./examples/blog-post-list')),
   },
   {
+    name: 'breadcrumbs-electric-example',
+    dependencies: [],
+    registryDependencies: ['breadcrumbs-electric'],
+    files: ['examples/breadcrumbs-electric.tsx'],
+    component: lazy(() => import('./examples/breadcrumbs-electric')),
+  },
+  {
+    name: 'breadcrumbs-warm-example',
+    dependencies: [],
+    registryDependencies: ['breadcrumbs-warm'],
+    files: ['examples/breadcrumbs-warm.tsx'],
+    component: lazy(() => import('./examples/breadcrumbs-warm')),
+  },
+  {
+    name: 'breadcrumbs-blue-example',
+    dependencies: [],
+    registryDependencies: ['breadcrumbs-blue'],
+    files: ['examples/breadcrumbs-blue.tsx'],
+    component: lazy(() => import('./examples/breadcrumbs-blue')),
+  },
+  {
+    name: 'breadcrumbs-luxury-example',
+    dependencies: [],
+    registryDependencies: ['breadcrumbs-luxury'],
+    files: ['examples/breadcrumbs-luxury.tsx'],
+    component: lazy(() => import('./examples/breadcrumbs-luxury')),
+  },
+  {
     name: 'button-example',
     dependencies: [],
     registryDependencies: ['button'],
@@ -451,6 +479,13 @@ export const examples = [
     registryDependencies: ['rating'],
     files: ['examples/rating.tsx'],
     component: lazy(() => import('./examples/rating')),
+  },
+  {
+    name: 'reviews-example',
+    dependencies: [],
+    registryDependencies: ['reviews'],
+    files: ['examples/reviews.tsx'],
+    component: lazy(() => import('./examples/reviews')),
   },
   {
     name: 'slide-carousel-example',

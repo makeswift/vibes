@@ -42,6 +42,12 @@ export const navigation = [
         file: 'docs/blog-post-list.mdx',
         component: 'blog-post-list',
       },
+      {
+        title: 'Breadcrumbs',
+        slug: 'breadcrumbs',
+        file: 'docs/breadcrumbs.mdx',
+        component: 'breadcrumbs',
+      },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
         title: 'Card',
@@ -159,6 +165,7 @@ export const navigation = [
         file: 'docs/products-header.mdx',
         component: 'products-header',
       },
+      { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
       { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
       {
         title: 'Subscribe',

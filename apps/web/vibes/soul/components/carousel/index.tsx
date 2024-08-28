@@ -8,10 +8,15 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 interface Props {
   className?: string
+  contentClassName?: string
   children: ReactNode
 }
 
-export const Carousel = ({ className, children }: Props & ComponentPropsWithoutRef<'div'>) => {
+export const Carousel = ({
+  className,
+  contentClassName,
+  children,
+}: Props & ComponentPropsWithoutRef<'div'>) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
@@ -59,7 +64,7 @@ export const Carousel = ({ className, children }: Props & ComponentPropsWithoutR
           className="w-full overflow-hidden px-3 pb-2 pt-6 @xl:px-6 @4xl:pt-8 @5xl:px-20"
           ref={emblaRef}
         >
-          <div className="flex gap-2 @4xl:gap-5">{children}</div>
+          <div className={clsx('flex gap-2 @4xl:gap-5', contentClassName)}>{children}</div>
         </div>
       )}
 
