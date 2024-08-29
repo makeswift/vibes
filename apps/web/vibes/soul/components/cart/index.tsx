@@ -82,8 +82,8 @@ export const Cart = function Cart({ products }: CartProps) {
                         <span className="font-medium">{price}</span>
                         <Counter current={quantity} />
                         {/* TODO: Remove */}
-                        <button className="rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                          <Trash2 strokeWidth={1} className="my-2" size={18} />
+                        <button className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
+                          <Trash2 strokeWidth={1} className="" size={18} />
                         </button>
                       </div>
                     </div>
@@ -123,7 +123,7 @@ export const Cart = function Cart({ products }: CartProps) {
                   <tr className="border-b border-contrast-100">
                     <td scope="row">Shipping</td>
                     <td className="py-4 text-right">
-                      <button className="rounded-lg font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                      <button className="rounded-lg font-medium ring-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                         Add Address
                       </button>
                     </td>
