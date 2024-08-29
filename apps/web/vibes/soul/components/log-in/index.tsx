@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import clsx from 'clsx'
 
 import Button from '@/vibes/soul/components/button'
@@ -10,16 +12,19 @@ export interface LogInProps {
 export const LogIn = function LogIn({ className }: LogInProps) {
   return (
     <div className={clsx('@container', className)}>
-      <div className="flex flex-col justify-center gap-y-20 px-3 py-10 @xl:flex-row @xl:px-6 @4xl:py-20 @5xl:px-20">
+      <div className="flex flex-col justify-center gap-y-24 px-3 py-10 @xl:flex-row @xl:px-6 @4xl:py-20 @5xl:px-20">
         <div className="flex w-full flex-col @xl:max-w-md @xl:border-r @xl:pr-10 @4xl:pr-20">
           <h1 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">Log In</h1>
           <form className="flex flex-grow flex-col gap-5">
-            <Input type="text" placeholder="Username" label="Username" />
-            <Input type="password" placeholder="Password" label="Password" />
+            <Input type="text" placeholder="hello@example.com" label="Username" />
+            <Input type="password" placeholder="" label="Password" className="mb-6" />
             <Button variant="secondary" className="mt-auto w-full">
               Log In
             </Button>
           </form>
+          <Link href="#" className="-mb-10 mt-4 text-sm font-semibold">
+            Forgot your password?
+          </Link>
         </div>
 
         {/* TODO: Rich Text Component? */}
