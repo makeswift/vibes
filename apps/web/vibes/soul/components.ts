@@ -50,6 +50,12 @@ export const components = [
     files: ['components/card/index.tsx'],
   },
   {
+    name: 'cart',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/cart/index.tsx'],
+  },
+  {
     name: 'card-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
@@ -60,6 +66,12 @@ export const components = [
     dependencies: ['clsx', 'lucide-react', '@radix-ui/react-checkbox'],
     registryDependencies: [],
     files: ['components/checkbox/index.tsx'],
+  },
+  {
+    name: 'counter',
+    dependencies: ['lucide-react'],
+    registryDependencies: [],
+    files: ['components/counter/index.tsx'],
   },
   {
     name: 'discount',

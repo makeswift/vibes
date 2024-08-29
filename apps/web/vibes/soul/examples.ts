@@ -81,6 +81,13 @@ export const examples = [
     component: lazy(() => import('./examples/card')),
   },
   {
+    name: 'cart-example',
+    dependencies: [],
+    registryDependencies: ['cart'],
+    files: ['examples/cart.tsx'],
+    component: lazy(() => import('./examples/cart')),
+  },
+  {
     name: 'card-carousel-electric-example',
     dependencies: [],
     registryDependencies: ['categories'],
@@ -114,6 +121,13 @@ export const examples = [
     registryDependencies: ['checkbox'],
     files: ['examples/checkbox.tsx'],
     component: lazy(() => import('./examples/checkbox')),
+  },
+  {
+    name: 'counter-example',
+    dependencies: [],
+    registryDependencies: ['counter'],
+    files: ['examples/counter.tsx'],
+    component: lazy(() => import('./examples/counter')),
   },
   {
     name: 'discount-example',

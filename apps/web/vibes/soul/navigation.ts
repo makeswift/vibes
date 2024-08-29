@@ -62,9 +62,9 @@ export const navigation = [
         component: 'card-carousel',
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
+      { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
-
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       {
         title: 'Pagination',
@@ -108,6 +108,7 @@ export const navigation = [
   {
     title: 'Sections',
     pages: [
+      { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {

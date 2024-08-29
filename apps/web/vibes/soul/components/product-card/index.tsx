@@ -21,9 +21,9 @@ export interface Product {
   price?: ProductPrice
   subtitle?: string
   badge?: string
-  className?: string
   description?: string
   rating?: number
+  className?: string
   compareProducts?: Product[]
   setCompareProducts?: React.Dispatch<React.SetStateAction<Product[]>>
 }
