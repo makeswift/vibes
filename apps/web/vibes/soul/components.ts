@@ -156,6 +156,12 @@ export const components = [
     files: ['components/input/index.tsx'],
   },
   {
+    name: 'log-in',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['components/log-in/index.tsx'],
+  },
+  {
     name: 'pagination',
     dependencies: ['clsx'],
     registryDependencies: [],

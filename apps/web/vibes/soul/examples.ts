@@ -326,6 +326,13 @@ export const examples = [
     component: lazy(() => import('./examples/input')),
   },
   {
+    name: 'log-in-example',
+    dependencies: [],
+    registryDependencies: ['log-in'],
+    files: ['examples/log-in.tsx'],
+    component: lazy(() => import('./examples/log-in')),
+  },
+  {
     name: 'page-blog-example',
     dependencies: [],
     registryDependencies: [],
