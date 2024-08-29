@@ -33,7 +33,7 @@ export const Cart = function Cart({ products }: CartProps) {
       <div className="flex w-full flex-col gap-10 px-3 py-10 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:py-20 @5xl:px-20">
         {/* Cart Side */}
         <div className={clsx(products?.length > 0 && '@4xl:w-2/3', 'w-full')}>
-          <h1 className="mb-10 text-4xl font-medium @xl:text-5xl">
+          <h1 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">
             Your Cart
             {!isLoading && products?.length > 0 && (
               <span className="ml-4 text-contrast-200">{products.length}</span>
@@ -46,7 +46,7 @@ export const Cart = function Cart({ products }: CartProps) {
               ? Array.from({ length: 2 }).map((_, index) => {
                   // Skeleton Loader
                   return (
-                    <div className="flex animate-pulse items-center gap-x-5">
+                    <div key={index} className="flex animate-pulse items-center gap-x-5">
                       <div className="aspect-[3/4] w-full max-w-36 rounded-lg bg-contrast-100" />
                       <div className="flex flex-grow flex-wrap justify-between gap-x-5 gap-y-2">
                         <div className="flex flex-grow flex-col gap-y-2">
@@ -112,7 +112,7 @@ export const Cart = function Cart({ products }: CartProps) {
         ) : (
           products.length > 0 && (
             <div className="@4xl:w-1/3">
-              <h2 className="mb-10 text-4xl font-medium @xl:text-5xl">Summary</h2>
+              <h2 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">Summary</h2>
               <table aria-label="Receipt Summary" className="w-full">
                 <caption className="sr-only">Receipt Summary</caption>
                 <tbody>
