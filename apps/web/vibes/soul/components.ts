@@ -158,7 +158,7 @@ export const components = [
   {
     name: 'log-in',
     dependencies: ['clsx'],
-    registryDependencies: [],
+    registryDependencies: ['button', 'input'],
     files: ['components/log-in/index.tsx'],
   },
   {
