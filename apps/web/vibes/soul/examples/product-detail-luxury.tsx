@@ -34,7 +34,7 @@ export const product = {
   rating: 4.8,
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-  options: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  options: ['5', '5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'],
 }
 
 export default function Preview() {
