@@ -17,7 +17,7 @@ export const LogIn = function LogIn({ className }: LogInProps) {
           <h1 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">Log In</h1>
           <form className="flex flex-grow flex-col gap-5">
             <Input type="text" placeholder="hello@example.com" label="Username" />
-            <Input type="password" placeholder="" label="Password" className="mb-6" />
+            <Input type="password" label="Password" className="mb-6" />
             <Button variant="secondary" className="mt-auto w-full">
               Log In
             </Button>
