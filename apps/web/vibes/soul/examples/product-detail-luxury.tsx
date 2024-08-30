@@ -2,38 +2,40 @@ import ProductDetail from '@/vibes/soul/components/product-detail'
 
 export const product = {
   id: '1',
-  name: 'ROMA ROUND TOE BALLET FLAT',
+  name: 'ELBA PENNY LOAFER',
   price: '$19.95',
   image: {
-    src: 'https://rstr.in/monogram/vibes/18bzcr01WWx',
-    altText: 'A pair of red leather flats with a woven texture.',
+    src: 'https://rstr.in/monogram/vibes/JCwYbAk9Nhi',
+    altText:
+      'A woman wearing a white crocheted cardigan with green trim and orange flowers, green pants, and brown suede loafers.',
   },
   images: [
     {
-      src: 'https://rstr.in/monogram/vibes/18bzcr01WWx',
-      altText: 'A pair of red leather flats with a woven texture.',
+      src: 'https://rstr.in/monogram/vibes/JCwYbAk9Nhi',
+      altText:
+        'A woman wearing a white crocheted cardigan with green trim and orange flowers, green pants, and brown suede loafers.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/wEcDbUtI2vE',
-      altText: 'A pair of brown woven leather ballet flats with a bow.',
+      src: 'https://rstr.in/monogram/vibes/Qrk6pJMoWwZ',
+      altText: 'A brown suede loafer with a leather sole.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/_xepH0hyVby',
-      altText: 'A pair of brown woven leather flats with a bow on the toe.',
+      src: 'https://rstr.in/monogram/vibes/ozMaktUeiPy',
+      altText: 'A pair of brown suede loafers with a leather sole.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/Ry5uxOjSt9D',
-      altText: 'A pair of brown woven leather ballet flats.',
+      src: 'https://rstr.in/monogram/vibes/Pk6sizxQWc5',
+      altText: 'A pair of brown suede loafers with a leather sole.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/ltgqCUWtQBl',
-      altText: 'A pair of brown woven leather ballet flats.',
+      src: 'https://rstr.in/monogram/vibes/cLe51lBiEUD',
+      altText: 'A brown suede loafer with a leather sole.',
     },
   ],
   href: '#',
   rating: 4.8,
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+    'Our modern take on a classic penny loafer. Handcrafted in a cumin suede, the ELBA updates the timeless style with our signature notched welt and angled leather heel. We’ll live in these loafers with everything from oversized suits, to cuffed jeans and socks to long skirts.',
   options: ['5', '5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'],
 }
 

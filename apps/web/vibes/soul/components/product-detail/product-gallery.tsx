@@ -36,8 +36,8 @@ const ProductGallery = ({ images }: ProductGallery) => {
   }
 
   return (
-    <div className="relative mt-[60px] flex h-96 w-full items-center overflow-hidden bg-contrast-200 @2xl:h-[550px] @4xl:mt-0 @4xl:h-full">
-      <div className="h-full w-full overflow-hidden" ref={emblaRef}>
+    <div className="relative mt-[60px] flex h-96 w-full items-center overflow-hidden bg-contrast-100 @2xl:h-[550px] @4xl:mt-0 @4xl:h-full">
+      <div className="my-auto h-full max-h-[800px] w-full overflow-hidden" ref={emblaRef}>
         <div className="flex h-full w-full">
           {images.map((image, index) => (
             <div

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import clsx from 'clsx'
 
@@ -28,39 +28,21 @@ export interface ProductDetailProps {
 export const ProductDetail = function ProductDetail({ product }: ProductDetailProps) {
   const [favorited, setFavorited] = useState(false)
   const [selectedOption, setSelectedOption] = useState(product.options?.[0] ?? null)
-  const [announcementHeight, setAnnouncementHeight] = useState(0)
-
-  useEffect(() => {
-    const handleLoad = () => {
-      const announcementBar = document.querySelector('#announcement-bar')
-      if (announcementBar) {
-        const announcementBarHeight = announcementBar.clientHeight
-        setAnnouncementHeight(announcementBarHeight)
-      }
-    }
-    const timeoutId = setTimeout(handleLoad, 1000)
-    return () => {
-      clearTimeout(timeoutId)
-    }
-  }, [])
 
   return (
-    <section
-      className="flex flex-col bg-background @container"
-      style={{ minHeight: `calc(100dvh - ${announcementHeight}px)` }}
-    >
-      <div className="mx-auto grid h-full w-full max-w-screen-2xl flex-grow @4xl:grid-cols-2">
+    <section className="flex flex-col bg-background @container">
+      <div className="mx-auto grid h-full w-full max-w-screen-2xl flex-grow @4xl:min-h-[800px] @4xl:grid-cols-2">
         <ProductGallery images={product.images ?? []} />
 
         {/* Product Details */}
-        <div className="my-auto flex flex-col gap-4 px-3 py-10 text-foreground @xl:px-6 @4xl:pt-28 @5xl:px-20">
+        <div className="my-auto flex flex-col gap-4 px-3 py-10 text-foreground @xl:px-6 @4xl:py-28 @5xl:px-20">
           <h2 className="font-heading text-3xl font-medium leading-none">{product.name}</h2>
           <Rating rating={product.rating ?? 0} />
           {product.description && <p>{product.description}</p>}
           <Price price={product.price || ''} className="!text-2xl" />
 
           {product.options && (
-            <div className="mt-16 flex flex-wrap gap-2.5">
+            <div className="mt-6 flex flex-wrap gap-2.5 @4xl:mt-16">
               {product.options.map((option, index) => (
                 <button
                   key={index}
