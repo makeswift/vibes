@@ -60,7 +60,7 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
           <Price price={product.price || ''} className="!text-2xl" />
 
           {product.options && (
-            <div className="flex max-w-sm flex-wrap gap-2.5 pt-16">
+            <div className="mt-16 flex flex-wrap gap-2.5">
               {product.options.map((option, index) => (
                 <button
                   key={index}
@@ -79,7 +79,7 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
             </div>
           )}
 
-          <div className="flex max-w-sm gap-2">
+          <div className="mt-4 flex max-w-sm gap-2">
             <Button className="flex-grow">Add to Cart</Button>
             <Favorite checked={favorited} setChecked={setFavorited} />
           </div>
