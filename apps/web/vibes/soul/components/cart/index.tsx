@@ -83,7 +83,7 @@ export const Cart = function Cart({ products }: CartProps) {
                         <Counter current={quantity} />
                         {/* TODO: Remove */}
                         <button className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
-                          <Trash2 strokeWidth={1} className="" size={18} />
+                          <Trash2 strokeWidth={1} size={18} />
                         </button>
                       </div>
                     </div>
@@ -91,7 +91,7 @@ export const Cart = function Cart({ products }: CartProps) {
                 ))}
 
             {products.length === 0 && (
-              <div className="">
+              <div>
                 <h2 className="mb-2 text-center text-3xl font-medium text-contrast-300">
                   Your cart is empty
                 </h2>
