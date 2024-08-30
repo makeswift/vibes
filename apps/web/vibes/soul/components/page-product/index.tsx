@@ -3,7 +3,6 @@ import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-
 import Footer from '@/vibes/soul/components/footer'
 import Header from '@/vibes/soul/components/header'
 import IconBlock from '@/vibes/soul/components/icon-block'
-import { Product } from '@/vibes/soul/components/product-card'
 import ProductDescription from '@/vibes/soul/components/product-description'
 import ProductDetail from '@/vibes/soul/components/product-detail'
 import Reviews from '@/vibes/soul/components/reviews'
@@ -20,7 +19,7 @@ const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
-export const ProductPage = function ProductPage() {
+export const ProductPage = function ProductPage({ product }: any) {
   return (
     <>
       <AnnouncementBar>
@@ -37,36 +36,7 @@ export const ProductPage = function ProductPage() {
           locales={locales}
         />
 
-        <ProductDetail
-          product={
-            {
-              id: '1',
-              name: "Men's Long Sleeve Jersey",
-              price: '$39.95',
-              image: {
-                src: 'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
-                altText: 'Men’s Long Sleeve Jersey',
-              },
-              href: '#',
-            } as Product
-          }
-          images={[
-            'https://rstr.in/monogram/vibes/pVfZNkBI_Rd',
-            'https://rstr.in/monogram/vibes/nBQFO6MyZ34',
-            'https://rstr.in/monogram/vibes/11zZTfNCpui',
-            'https://rstr.in/monogram/vibes/h4YqOhXhxfm',
-            'https://rstr.in/monogram/vibes/GQxaw-DlEYn',
-            'https://rstr.in/monogram/vibes/WOTVa86be5S',
-          ]}
-          rating={4.5}
-          content={
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore.
-            </p>
-          }
-          options={['XS', 'S', 'M', 'L', 'XL', 'XXL']}
-        />
+        <ProductDetail product={product} />
 
         {/* TODO: @sami Add Review / Returns Here */}
 
