@@ -25,7 +25,7 @@ export const ProductDescription = function ProductDescription({
         {/* Image || Video Container */}
         <div
           className="relative aspect-square w-full overflow-hidden 
-        @lg:sticky @lg:top-20 @lg:aspect-[9/12] @lg:rounded-2xl @4xl:min-w-96"
+            @lg:sticky @lg:top-20 @lg:aspect-[9/12] @lg:rounded-2xl @4xl:min-w-96"
         >
           {image ? (
             <Image
