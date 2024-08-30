@@ -24,7 +24,7 @@ export const accordions = [
 ]
 
 export const productDescriptionImage = {
-  src: 'https://rstr.in/monogram/vibes/nH3UU-ncSv7',
+  src: 'https://rstr.in/monogram/vibes/nH3UU-ncSv7/hGakp4qZXfo',
   altText:
     'A woman wearing a white crochet shirt with green trim and orange flowers, green pants, and Freda brown loafers.',
 }
