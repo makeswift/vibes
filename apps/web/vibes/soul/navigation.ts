@@ -155,6 +155,12 @@ export const navigation = [
         component: 'icon-block',
       },
       {
+        title: 'Log In',
+        slug: 'log-in',
+        file: 'docs/log-in.mdx',
+        component: 'log-in',
+      },
+      {
         title: 'Product Detail',
         slug: 'product-detail',
         file: 'docs/product-detail.mdx',
