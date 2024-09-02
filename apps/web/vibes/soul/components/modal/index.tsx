@@ -18,7 +18,7 @@ export const Modal = function Modal({ isOpen, setOpen, trigger, content }: Props
         <Dialog.Overlay className="fixed inset-0 z-30 flex items-center justify-center bg-foreground/50 @container">
           <Dialog.Content
             className={clsx(
-              'mx-3 my-10 max-h-[90%] max-w-3xl overflow-y-auto rounded-xl bg-background px-3 py-10 @xl:px-6 @5xl:px-20 @5xl:py-20',
+              'mx-3 my-10 max-h-[90%] max-w-3xl overflow-y-auto rounded-xl bg-background px-3 pb-10 pt-8 @xl:px-6 @5xl:px-20 @5xl:pb-12 @5xl:pt-10',
               'transition ease-out',
               'data-[state=closed]:duration-200 data-[state=open]:duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out',
               'data-[state=closed]:slide-out-to-bottom-16 data-[state=open]:slide-in-from-bottom-16'

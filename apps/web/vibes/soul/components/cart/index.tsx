@@ -38,7 +38,7 @@ export const Cart = function Cart({ products }: CartProps) {
       <div className="flex w-full flex-col gap-10 px-3 py-10 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:py-20 @5xl:px-20">
         {/* Cart Side */}
         <div className={clsx(products?.length > 0 && '@4xl:w-2/3', 'w-full')}>
-          <h1 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">
+          <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             Your Cart
             {!isLoading && products?.length > 0 && (
               <span className="ml-4 text-contrast-200">{products.length}</span>
@@ -151,7 +151,9 @@ export const Cart = function Cart({ products }: CartProps) {
         ) : (
           products.length > 0 && (
             <div className="@4xl:w-1/3">
-              <h2 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">Summary</h2>
+              <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
+                Summary
+              </h2>
               <table aria-label="Receipt Summary" className="w-full">
                 <caption className="sr-only">Receipt Summary</caption>
                 <tbody>
@@ -173,23 +175,28 @@ export const Cart = function Cart({ products }: CartProps) {
                         }
                         content={
                           <div className="max-w-md">
-                            <h2 className="font-heading text-2xl font-medium">Add Address</h2>
+                            <h2 className="font-heading text-3xl font-medium">Add Address</h2>
                             <form className="mt-10 grid w-full grid-cols-1 gap-5 @sm:grid-cols-2">
                               <Input type="text" label="Address Line 1" />
                               <Input type="text" label="Address Line 2" />
                               <Input type="text" label="Suburb/City" />
-                              <Dropdown label="Country" items={['USA', 'England', 'Brazil']} />
                               <Dropdown
                                 label="State/Provence"
+                                labelOnTop
+                                items={['Georgia', 'Florida', 'California']}
+                              />
+                              <Dropdown
+                                label="Country"
+                                labelOnTop
                                 items={['USA', 'England', 'Brazil']}
                               />
                               <Input type="text" label="ZIP/Postcode" />
+                              <Button variant="secondary" className="mt-10 w-full">
+                                Cancel
+                              </Button>
                               {/* TODO: disbale until form is complete */}
                               <Button disabled variant="primary" className="mt-10 w-full">
                                 Add Address
-                              </Button>
-                              <Button variant="secondary" className=" mt-10 w-full">
-                                Cancel
                               </Button>
                             </form>
                           </div>

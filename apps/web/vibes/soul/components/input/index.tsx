@@ -25,7 +25,6 @@ export const Input = forwardRef(function Input(
             {prepend}
           </span>
         )}
-
         <input
           ref={ref}
           {...rest}
