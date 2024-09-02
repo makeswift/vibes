@@ -55,7 +55,11 @@ export default function Accordions({ className, accordions, defaultValue, type }
                 </AccordionPrimitive.Content>
               </li>
             </AccordionPrimitive.Item>
-            <div className="mt-5 h-0.5 w-full bg-foreground @lg:mt-10" />
+            <div
+              className={cn('mt-5 h-0.5 w-full bg-foreground @lg:mt-10', {
+                invisible: i === accordions.length - 1,
+              })}
+            />
           </div>
         ))}
       </ul>
