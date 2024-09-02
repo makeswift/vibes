@@ -1,3 +1,5 @@
+import localFont from 'next/font/local'
+
 import { z } from 'zod'
 
 export type NonEmptyArray<T> = [T, ...T[]]
@@ -11,11 +13,6 @@ export type Component = {
 }
 
 export type Components = NonEmptyArray<Component>
-
-export type Font = {
-  name: string
-  src: string | { path: string; weight?: string; style?: string }[]
-}
 
 export type CSSVars = {
   '--primary': string
@@ -56,6 +53,8 @@ export type CSSVars = {
   '--font-size-5xl'?: string
   '--font-size-6xl'?: string
   '--font-size-7xl'?: string
+  '--font-size-8xl'?: string
+  '--font-size-9xl'?: string
 
   '--shadow-sm'?: string
   '--shadow-base'?: string
@@ -120,6 +119,6 @@ export const pageMetaSchema = (vibe: Vibe) => {
         z.string(),
       ])
       .optional(),
-    previewSize: z.enum(['small', 'medium', 'large']).optional(),
+    previewSize: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
   })
 }

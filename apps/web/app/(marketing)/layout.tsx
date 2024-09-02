@@ -7,7 +7,7 @@ import clsx from 'clsx'
 import { Toaster } from '@/components/ui/toaster'
 
 import { Providers } from './providers'
-import './style/root.css'
+import './style/globals.css'
 
 const title = 'Vibes: Stunning React components for commerce & marketing | Coming soon'
 const description =

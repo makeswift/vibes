@@ -20,7 +20,7 @@ export function Header({ vibeSlug }: Props) {
   const vibe = navigation.vibes.find(vibe => vibe.slug === vibeSlug)
 
   return (
-    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-contrast-300 bg-background md:h-16">
+    <header className="sticky top-0 z-30 h-14 border-b border-dashed border-contrast-300 bg-background @container md:h-16">
       <div className="mx-auto flex h-full items-center justify-between px-3 xl:container md:px-5 xl:px-8">
         <div className="flex flex-1 items-center gap-x-2 md:gap-x-3">
           <MobileMenu vibeSlug={vibeSlug} />
@@ -45,7 +45,7 @@ export function Header({ vibeSlug }: Props) {
           </div>
         </div>
 
-        <nav className="hidden h-full gap-x-4 xl:flex">
+        <nav className="hidden h-full gap-x-4 lg:flex">
           {vibe?.groups.map(group => (
             <GroupLink
               key={group.pages[0].slug}

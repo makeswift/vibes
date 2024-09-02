@@ -1,10 +1,10 @@
 import { ComponentPropsWithoutRef } from 'react'
 
-import { slugify } from '@/lib/utils'
+import { getNodeTextContent, slugify } from '@/lib/utils'
 
-export default function H2({ children, ...rest }: ComponentPropsWithoutRef<'h1'>) {
+export default function H2({ children, ...rest }: ComponentPropsWithoutRef<'h2'>) {
   return (
-    <h2 {...rest} id={typeof children === 'string' ? slugify(children) : undefined}>
+    <h2 {...rest} id={slugify(getNodeTextContent(children))}>
       {children}
     </h2>
   )

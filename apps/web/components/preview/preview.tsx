@@ -12,7 +12,7 @@ import { PreviewTabs } from './preview-tabs'
 interface Props {
   vibeSlug: string
   componentName: string | { [key: string]: string }
-  size?: 'small' | 'medium' | 'large'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 function findEntry({ vibeSlug, componentName }: { vibeSlug: string; componentName: string }) {
@@ -27,7 +27,7 @@ function findEntry({ vibeSlug, componentName }: { vibeSlug: string; componentNam
   return entry
 }
 
-export async function Preview({ vibeSlug, componentName, size = 'medium' }: Props) {
+export async function Preview({ vibeSlug, componentName, size = 'md' }: Props) {
   const vibe = getVibe(vibeSlug)
 
   if (!vibe) return <div>Could not find vibe: {vibeSlug}</div>

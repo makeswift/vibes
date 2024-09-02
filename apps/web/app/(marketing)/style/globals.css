@@ -1,4 +1,5 @@
 @import url('./shiki.css');
+@import url('./zoom.css');
 
 @tailwind base;
 @tailwind components;
