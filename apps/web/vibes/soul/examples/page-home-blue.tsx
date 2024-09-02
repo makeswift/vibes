@@ -23,20 +23,18 @@ export const featuredImageII: FeaturedImageProps = {
 
 export default function Preview() {
   return (
-    <>
-      <HomePage
-        headerLinks={headerLinks}
-        logo={logo}
-        heroSlides={heroSlides}
-        categories={cards}
-        textContrast={textContrast}
-        featuredImage={featuredImage}
-        feature={feature}
-        featuredProducts={featuredProducts}
-        featuredImageII={featuredImageII}
-        footerLinks={footerLinks}
-        copyright={copyright}
-      />
-    </>
+    <HomePage
+      headerLinks={headerLinks}
+      logo={logo}
+      heroSlides={heroSlides}
+      categories={cards}
+      textContrast={textContrast}
+      featuredImage={featuredImage}
+      feature={feature}
+      featuredProducts={featuredProducts}
+      featuredImageII={featuredImageII}
+      footerLinks={footerLinks}
+      copyright={copyright}
+    />
   )
 }

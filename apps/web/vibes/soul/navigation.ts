@@ -191,14 +191,19 @@ export const navigation = [
         file: 'docs/page-home.mdx',
       },
       {
+        title: 'Products',
+        slug: 'page-products',
+        file: 'docs/page-products.mdx',
+      },
+      {
         title: 'Product',
         slug: 'page-product',
         file: 'docs/page-product.mdx',
       },
       {
-        title: 'Products',
-        slug: 'page-products',
-        file: 'docs/page-products.mdx',
+        title: 'Cart',
+        slug: 'page-cart',
+        file: 'docs/page-cart.mdx',
       },
       {
         title: 'Blog',

@@ -35,7 +35,7 @@ export const Cart = function Cart({ products }: CartProps) {
 
   return (
     <div className="mx-auto max-w-screen-2xl @container">
-      <div className="flex w-full flex-col gap-10 px-3 py-10 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:py-20 @5xl:px-20">
+      <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
         {/* Cart Side */}
         <div className={clsx(products?.length > 0 && '@4xl:w-2/3', 'w-full')}>
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
@@ -69,22 +69,25 @@ export const Cart = function Cart({ products }: CartProps) {
                 })
               : // Cart Items
                 products.map(({ id, name, href, image, price, subtitle, quantity }) => (
-                  <li className="flex items-center gap-x-5" key={id}>
+                  <li
+                    className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
+                    key={id}
+                  >
                     {image && (
                       <Link
                         href={href}
-                        className="relative aspect-[3/4] w-full max-w-36 overflow-hidden rounded-lg bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+                        className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36"
                       >
                         <Image fill src={image.src} alt={image.altText} className="object-cover" />
                       </Link>
                     )}
-                    <div className="flex flex-grow flex-wrap justify-between gap-x-5 gap-y-2">
-                      <div className="flex flex-col">
+                    <div className="flex flex-grow flex-wrap justify-between gap-y-2">
+                      <div className="flex flex-col @xl:w-1/2 @xl:pr-4">
                         <span className="font-medium">{name}</span>
                         <span className="text-contrast-300">{subtitle}</span>
                       </div>
-                      <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                        <span className="font-medium">{price}</span>
+                      <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
+                        <span className="font-medium @xl:ml-auto">{price}</span>
                         <Counter current={quantity} />
                         {/* Remove Item Button & Confirmation Modal */}
                         <Modal
