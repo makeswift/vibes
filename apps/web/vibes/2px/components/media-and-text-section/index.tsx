@@ -31,7 +31,7 @@ export default function MediaAndTextSection({
   return (
     <section
       className={cn(
-        'flex bg-primary text-xs text-foreground @2xl:text-sm',
+        'flex border-b-2 border-foreground bg-primary text-xs text-foreground @2xl:text-sm',
         {
           'flex-col-reverse @2xl:flex-row-reverse': reverse,
           'flex-col @2xl:flex-row': !reverse,
