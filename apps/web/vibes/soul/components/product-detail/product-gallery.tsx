@@ -57,7 +57,7 @@ const ProductGallery = ({ images }: ProductGallery) => {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 flex max-w-full -translate-x-1/2 gap-1.5 overflow-x-auto px-10 @3xl:gap-3 @4xl:bottom-16">
+      <div className="absolute bottom-6 left-1/2 flex max-w-full -translate-x-1/2 gap-1.5 overflow-x-auto px-10 @3xl:gap-3 @4xl:bottom-10">
         {images.map((image, index) => (
           <button
             key={index}

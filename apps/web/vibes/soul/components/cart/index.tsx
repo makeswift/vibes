@@ -9,6 +9,9 @@ import { Trash2 } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/components/button'
 import Counter from '@/vibes/soul/components/counter'
+import Dropdown from '@/vibes/soul/components/dropdown'
+import Input from '@/vibes/soul/components/input'
+import Modal from '@/vibes/soul/components/modal'
 import { Product } from '@/vibes/soul/components/product-card'
 
 interface Image {
@@ -27,13 +30,15 @@ interface CartProps {
 
 export const Cart = function Cart({ products }: CartProps) {
   const [isLoading, setIsLoading] = useState(false)
+  const [removeItemModalIsOpen, setRemoveItemModalIsOpen] = useState(false)
+  const [addressModalIsOpen, setAddressModalIsOpen] = useState(false)
 
   return (
     <div className="mx-auto max-w-screen-2xl @container">
-      <div className="flex w-full flex-col gap-10 px-3 py-10 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:py-20 @5xl:px-20">
+      <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
         {/* Cart Side */}
         <div className={clsx(products?.length > 0 && '@4xl:w-2/3', 'w-full')}>
-          <h1 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">
+          <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             Your Cart
             {!isLoading && products?.length > 0 && (
               <span className="ml-4 text-contrast-200">{products.length}</span>
@@ -64,27 +69,64 @@ export const Cart = function Cart({ products }: CartProps) {
                 })
               : // Cart Items
                 products.map(({ id, name, href, image, price, subtitle, quantity }) => (
-                  <li className="flex items-center gap-x-5" key={id}>
+                  <li
+                    className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
+                    key={id}
+                  >
                     {image && (
                       <Link
                         href={href}
-                        className="relative aspect-[3/4] w-full max-w-36 overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+                        className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36"
                       >
                         <Image fill src={image.src} alt={image.altText} className="object-cover" />
                       </Link>
                     )}
-                    <div className="flex flex-grow flex-wrap justify-between gap-x-5 gap-y-2">
-                      <div className="flex flex-col">
+                    <div className="flex flex-grow flex-wrap justify-between gap-y-2">
+                      <div className="flex flex-col @xl:w-1/2 @xl:pr-4">
                         <span className="font-medium">{name}</span>
                         <span className="text-contrast-300">{subtitle}</span>
                       </div>
-                      <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                        <span className="font-medium">{price}</span>
+                      <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
+                        <span className="font-medium @xl:ml-auto">{price}</span>
                         <Counter current={quantity} />
-                        {/* TODO: Remove */}
-                        <button className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
-                          <Trash2 strokeWidth={1} size={18} />
-                        </button>
+                        {/* Remove Item Button & Confirmation Modal */}
+                        <Modal
+                          isOpen={removeItemModalIsOpen}
+                          setOpen={setRemoveItemModalIsOpen}
+                          trigger={
+                            <button className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
+                              <Trash2 strokeWidth={1} size={18} />
+                            </button>
+                          }
+                          content={
+                            <div className="max-w-xs">
+                              <h2 className="text-center font-heading text-2xl font-medium">
+                                Remove Item From Cart?
+                              </h2>
+                              <p className="mt-2 text-center text-sm text-contrast-400">
+                                Are you sure you want to remove this item from your cart? Once
+                                removed, you cannot undo it.
+                              </p>
+                              <Button
+                                variant="primary"
+                                className="mt-6 w-full bg-error [&>div]:text-white"
+                                onClick={() => {
+                                  // TODO: Remove Item from Cart
+                                  setRemoveItemModalIsOpen(false)
+                                }}
+                              >
+                                Remove From Cart
+                              </Button>
+                              <Button
+                                variant="secondary"
+                                className="mt-2 w-full"
+                                onClick={() => setRemoveItemModalIsOpen(false)}
+                              >
+                                Cancel
+                              </Button>
+                            </div>
+                          }
+                        />
                       </div>
                     </div>
                   </li>
@@ -112,7 +154,9 @@ export const Cart = function Cart({ products }: CartProps) {
         ) : (
           products.length > 0 && (
             <div className="@4xl:w-1/3">
-              <h2 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">Summary</h2>
+              <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
+                Summary
+              </h2>
               <table aria-label="Receipt Summary" className="w-full">
                 <caption className="sr-only">Receipt Summary</caption>
                 <tbody>
@@ -123,9 +167,44 @@ export const Cart = function Cart({ products }: CartProps) {
                   <tr className="border-b border-contrast-100">
                     <td scope="row">Shipping</td>
                     <td className="py-4 text-right">
-                      <button className="rounded-lg font-medium ring-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                        Add Address
-                      </button>
+                      {/* Add Address Button and Modal Form */}
+                      <Modal
+                        isOpen={addressModalIsOpen}
+                        setOpen={setAddressModalIsOpen}
+                        trigger={
+                          <button className="rounded-lg font-medium ring-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                            Add Address
+                          </button>
+                        }
+                        content={
+                          <div className="max-w-md">
+                            <h2 className="font-heading text-3xl font-medium">Add Address</h2>
+                            <form className="mt-10 grid w-full grid-cols-1 gap-5 @sm:grid-cols-2">
+                              <Input type="text" label="Address Line 1" />
+                              <Input type="text" label="Address Line 2" />
+                              <Input type="text" label="Suburb/City" />
+                              <Dropdown
+                                label="State/Provence"
+                                labelOnTop
+                                items={['Georgia', 'Florida', 'California']}
+                              />
+                              <Dropdown
+                                label="Country"
+                                labelOnTop
+                                items={['USA', 'England', 'Brazil']}
+                              />
+                              <Input type="text" label="ZIP/Postcode" />
+                              <Button variant="secondary" className="mt-10 w-full">
+                                Cancel
+                              </Button>
+                              {/* TODO: disbale until form is complete */}
+                              <Button disabled variant="primary" className="mt-10 w-full">
+                                Add Address
+                              </Button>
+                            </form>
+                          </div>
+                        }
+                      />
                     </td>
                   </tr>
                   <tr className="border-b border-contrast-100">

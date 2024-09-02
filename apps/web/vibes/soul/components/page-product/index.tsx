@@ -19,7 +19,11 @@ const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
-export const ProductPage = function ProductPage({ product }: any) {
+export const ProductPage = function ProductPage({
+  product,
+  accordions,
+  productDescriptionImage,
+}: any) {
   return (
     <>
       <AnnouncementBar>
@@ -40,34 +44,7 @@ export const ProductPage = function ProductPage({ product }: any) {
 
         {/* TODO: @sami Add Review / Returns Here */}
 
-        <ProductDescription
-          accordions={[
-            {
-              title: 'What is your return policy?',
-              content:
-                'We want you to be completely satisfied with your purchase. If you’re not happy with your plant, you can return it within 30 days of delivery. Please ensure the plant is in its original condition and packaging. For detailed return instructions, visit our Return Policy page or contact our customer support team.',
-            },
-            {
-              title: 'How do I care for my new plants?',
-              content:
-                'Caring for your new plants involves understanding their specific needs. Most indoor plants require indirect sunlight, regular watering, and occasional feeding. Check the plant care tag that comes with your purchase for detailed instructions. If you need more help, our Care Guide section offers detailed advice for each plant type.',
-            },
-            {
-              title: 'Do you offer plant delivery services?',
-              content:
-                'Yes, we offer nationwide delivery for all our plants. Our plants are carefully packaged to ensure they arrive healthy and safe. Delivery times vary depending on your location but typically range from 3 to 7 business days. For more information, check our Delivery Information page or enter your zip code at checkout for estimated delivery times.',
-            },
-            {
-              title: 'Can I get advice on choosing the right plant?',
-              content:
-                'Absolutely! Choosing the right plant can depend on several factors such as your living space, light availability, and personal preferences. Our Plant Finder tool can help you select the perfect plant for your environment. Additionally, our customer service team is available to offer personalized recommendations based on your needs.',
-            },
-          ]}
-          image={{
-            src: 'https://rstr.in/monogram/vibes/YOD5DuBfoFM',
-            altText: 'Plants',
-          }}
-        />
+        <ProductDescription accordions={accordions} image={productDescriptionImage} />
 
         <IconBlock
           list={[

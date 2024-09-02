@@ -36,7 +36,7 @@ export const Counter = function Counter({ current = 0, max = 20 }: Props) {
           size={18}
         />
       </button>
-      <span className="flex w-8 justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
+      <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
         {count}
       </span>
       <button
