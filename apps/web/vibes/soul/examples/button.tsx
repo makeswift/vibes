@@ -2,10 +2,21 @@ import Button from '@/vibes/soul/components/button'
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 flex-col items-center justify-center gap-10 p-5 sm:min-h-64 sm:p-8 lg:min-h-80 lg:p-20">
+    <div className="mx-auto mt-10 grid max-w-sm grid-cols-2 justify-items-center gap-y-6">
       <Button variant="primary">Shop Now</Button>
+      <Button variant="primary" loading>
+        Shop Now
+      </Button>
+
       <Button variant="secondary">Shop Now</Button>
+      <Button variant="secondary" loading>
+        Shop Now
+      </Button>
+
       <Button variant="tertiary">Shop Now</Button>
+      <Button variant="tertiary" loading>
+        Shop Now
+      </Button>
     </div>
   )
 }

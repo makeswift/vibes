@@ -62,7 +62,7 @@ export const Button = function Button({
         {/* Children */}
         <div
           className={clsx(
-            'relative z-50 flex h-full items-center justify-center gap-2 transition-colors',
+            'relative z-10 flex h-full items-center justify-center gap-2 transition-colors',
             loading && 'opacity-0',
             {
               default: 'text-base [&>*]:px-6 [&>*]:py-[13px]',
