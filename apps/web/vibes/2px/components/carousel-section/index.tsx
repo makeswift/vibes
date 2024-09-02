@@ -63,11 +63,13 @@ export default function CarouselSection({ className, title, items, showArrows }:
         )}
       </div>
       <div
-        className={cn('carousel flex w-full overflow-scroll', Styles['hide-scrollbar'])}
+        className={cn('flex w-full overflow-scroll', Styles['hide-scrollbar'])}
         ref={carouselRef}
       >
         {items.map((item, index) => (
-          <div key={index}>{item}</div>
+          <div key={index} className="h-fit">
+            {item}
+          </div>
         ))}
       </div>
     </section>
