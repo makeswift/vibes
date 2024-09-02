@@ -9,6 +9,9 @@ import { Trash2 } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/components/button'
 import Counter from '@/vibes/soul/components/counter'
+import Dropdown from '@/vibes/soul/components/dropdown'
+import Input from '@/vibes/soul/components/input'
+import Modal from '@/vibes/soul/components/modal'
 import { Product } from '@/vibes/soul/components/product-card'
 
 interface Image {
@@ -27,6 +30,8 @@ interface CartProps {
 
 export const Cart = function Cart({ products }: CartProps) {
   const [isLoading, setIsLoading] = useState(false)
+  const [removeItemModalIsOpen, setRemoveItemModalIsOpen] = useState(false)
+  const [addressModalIsOpen, setAddressModalIsOpen] = useState(false)
 
   return (
     <div className="mx-auto max-w-screen-2xl @container">
@@ -68,7 +73,7 @@ export const Cart = function Cart({ products }: CartProps) {
                     {image && (
                       <Link
                         href={href}
-                        className="relative aspect-[3/4] w-full max-w-36 overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+                        className="relative aspect-[3/4] w-full max-w-36 overflow-hidden rounded-lg bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
                       >
                         <Image fill src={image.src} alt={image.altText} className="object-cover" />
                       </Link>
@@ -81,10 +86,44 @@ export const Cart = function Cart({ products }: CartProps) {
                       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                         <span className="font-medium">{price}</span>
                         <Counter current={quantity} />
-                        {/* TODO: Remove */}
-                        <button className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
-                          <Trash2 strokeWidth={1} size={18} />
-                        </button>
+                        {/* Remove Item Button & Confirmation Modal */}
+                        <Modal
+                          isOpen={removeItemModalIsOpen}
+                          setOpen={setRemoveItemModalIsOpen}
+                          trigger={
+                            <button className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
+                              <Trash2 strokeWidth={1} size={18} />
+                            </button>
+                          }
+                          content={
+                            <div className="max-w-xs">
+                              <h2 className="text-center font-heading text-2xl font-medium">
+                                Remove Item From Cart?
+                              </h2>
+                              <p className="mt-2 text-center text-sm text-contrast-400">
+                                Are you sure you want to remove this item from your cart? Once
+                                removed, you cannot undo it.
+                              </p>
+                              <Button
+                                variant="primary"
+                                className="mt-6 w-full bg-error [&>div]:text-white"
+                                onClick={() => {
+                                  // TODO: Remove Item from Cart
+                                  setRemoveItemModalIsOpen(false)
+                                }}
+                              >
+                                Remove From Cart
+                              </Button>
+                              <Button
+                                variant="secondary"
+                                className="mt-2 w-full"
+                                onClick={() => setRemoveItemModalIsOpen(false)}
+                              >
+                                Cancel
+                              </Button>
+                            </div>
+                          }
+                        />
                       </div>
                     </div>
                   </li>
@@ -123,9 +162,39 @@ export const Cart = function Cart({ products }: CartProps) {
                   <tr className="border-b border-contrast-100">
                     <td scope="row">Shipping</td>
                     <td className="py-4 text-right">
-                      <button className="rounded-lg font-medium ring-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                        Add Address
-                      </button>
+                      {/* Add Address Button and Modal Form */}
+                      <Modal
+                        isOpen={addressModalIsOpen}
+                        setOpen={setAddressModalIsOpen}
+                        trigger={
+                          <button className="rounded-lg font-medium ring-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                            Add Address
+                          </button>
+                        }
+                        content={
+                          <div className="max-w-md">
+                            <h2 className="font-heading text-2xl font-medium">Add Address</h2>
+                            <form className="mt-10 grid w-full grid-cols-1 gap-5 @sm:grid-cols-2">
+                              <Input type="text" label="Address Line 1" />
+                              <Input type="text" label="Address Line 2" />
+                              <Input type="text" label="Suburb/City" />
+                              <Dropdown label="Country" items={['USA', 'England', 'Brazil']} />
+                              <Dropdown
+                                label="State/Provence"
+                                items={['USA', 'England', 'Brazil']}
+                              />
+                              <Input type="text" label="ZIP/Postcode" />
+                              {/* TODO: disbale until form is complete */}
+                              <Button disabled variant="primary" className="mt-10 w-full">
+                                Add Address
+                              </Button>
+                              <Button variant="secondary" className=" mt-10 w-full">
+                                Cancel
+                              </Button>
+                            </form>
+                          </div>
+                        }
+                      />
                     </td>
                   </tr>
                   <tr className="border-b border-contrast-100">
