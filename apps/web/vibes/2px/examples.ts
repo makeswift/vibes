@@ -344,6 +344,13 @@ export const examples = [
     component: lazy(() => import('./examples/date-picker')),
   },
   {
+    name: 'product-details-example',
+    dependencies: [],
+    registryDependencies: ['product-details'],
+    files: ['examples/product-details.tsx'],
+    component: lazy(() => import('./examples/product-details')),
+  },
+  {
     name: 'homepage-example',
     dependencies: [],
     registryDependencies: ['header', 'footer-section'],
