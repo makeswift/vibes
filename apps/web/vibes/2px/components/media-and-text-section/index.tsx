@@ -6,7 +6,8 @@ import { cn } from '@/lib/utils'
 interface Props {
   className?: string
   subtitle?: string
-  text: string
+  text: React.ReactElement
+  reverse?: boolean
   image: {
     url: string
     alt: string
@@ -19,19 +20,28 @@ interface Props {
   }[]
 }
 
-export default function MediaAndTextSection({ className, subtitle, text, image, links }: Props) {
+export default function MediaAndTextSection({
+  className,
+  subtitle,
+  text,
+  image,
+  links,
+  reverse = false,
+}: Props) {
   return (
     <section
       className={cn(
-        'grid grid-cols-1 bg-primary text-xs text-foreground @2xl:grid-cols-2 @2xl:text-sm',
+        'flex bg-primary text-xs text-foreground @2xl:text-sm',
+        {
+          'flex-col-reverse @2xl:flex-row-reverse': reverse,
+          'flex-col @2xl:flex-row': !reverse,
+        },
         className
       )}
     >
       <div className="flex w-full flex-col items-start justify-center gap-10 px-2 py-6 text-start @3xl:px-20 @3xl:py-20">
         {subtitle && <p className="font-mono uppercase @2xl:tracking-[0.02em]">{subtitle}</p>}
-        <p className="text-body font-medium leading-tight @2xl:text-2xl @2xl:-tracking-[0.01em]">
-          {text}
-        </p>
+        {text}
         {links && (
           <div className="flex gap-6 font-mono uppercase underline @2xl:tracking-[0.02em]">
             {links?.map(({ label, href }) => (
