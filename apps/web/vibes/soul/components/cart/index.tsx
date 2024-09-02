@@ -177,7 +177,7 @@ export const Cart = function Cart({ products }: CartProps) {
                           </button>
                         }
                         content={
-                          <div className="max-w-md">
+                          <div className="w-full max-w-md">
                             <h2 className="font-heading text-3xl font-medium">Add Address</h2>
                             <form className="mt-10 grid w-full grid-cols-1 gap-5 @sm:grid-cols-2">
                               <Input type="text" label="Address Line 1" />
@@ -186,7 +186,7 @@ export const Cart = function Cart({ products }: CartProps) {
                               <Dropdown
                                 label="State/Provence"
                                 labelOnTop
-                                items={['Georgia', 'Florida', 'California']}
+                                items={['Alabama', 'California', 'Georgia', 'Florida', 'Texas']}
                               />
                               <Dropdown
                                 label="Country"
@@ -194,13 +194,15 @@ export const Cart = function Cart({ products }: CartProps) {
                                 items={['USA', 'England', 'Brazil']}
                               />
                               <Input type="text" label="ZIP/Postcode" />
-                              <Button variant="secondary" className="mt-10 w-full">
-                                Cancel
-                              </Button>
-                              {/* TODO: disbale until form is complete */}
-                              <Button disabled variant="primary" className="mt-10 w-full">
-                                Add Address
-                              </Button>
+                              <div className="grid w-full grid-cols-1 gap-5 @sm:col-span-2 @sm:mt-10 @md:grid-cols-2">
+                                <Button variant="secondary" className="order-2 w-full @md:order-1">
+                                  Cancel
+                                </Button>
+                                {/* TODO: disbale until form is complete */}
+                                <Button disabled variant="primary" className="w-full">
+                                  Add Address
+                                </Button>
+                              </div>
                             </form>
                           </div>
                         }

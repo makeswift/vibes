@@ -31,7 +31,7 @@ export const Dropdown = function Dropdown({
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
 
   return (
-    <div>
+    <div className="relative z-50">
       {label && labelOnTop && <Label className="mb-2 block text-foreground">{label}</Label>}
       <DropdownMenu>
         <DropdownMenuTrigger
@@ -49,7 +49,7 @@ export const Dropdown = function Dropdown({
           className="z-50 mt-2 max-h-80 w-full overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] 
           data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 
           data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
-          @4xl:-ml-14 @4xl:rounded-3xl @4xl:p-4"
+          @4xl:rounded-3xl @4xl:p-4"
         >
           {items.map(item => (
             <DropdownMenuItem
