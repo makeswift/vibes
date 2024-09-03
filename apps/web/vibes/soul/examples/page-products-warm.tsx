@@ -1,9 +1,8 @@
-import ProductsPage from '@/vibes/soul/components/page-products';
-import { breadcrumbs } from '@/vibes/soul/examples/breadcrumbs-warm';
-import { copyright, footerLinks, logo } from '@/vibes/soul/examples/footer-warm';
+import ProductsPage from '@/vibes/soul/components/page-products'
+import { breadcrumbs } from '@/vibes/soul/examples/breadcrumbs-warm'
+import { copyright, footerLinks, logo } from '@/vibes/soul/examples/footer-warm'
 import { headerLinks } from '@/vibes/soul/examples/header-warm'
 import { products } from '@/vibes/soul/examples/products-list-warm'
-
 
 export default function Preview() {
   return (

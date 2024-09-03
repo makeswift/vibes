@@ -159,7 +159,7 @@ export default function Home() {
             <div className="text-left md:ml-10">
               <span className="md:relative">
                 <Transition
-                  className="w-auto transition-all duration-700 [transition-delay:100ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+                  className="w-auto transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:100ms]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >

@@ -51,7 +51,7 @@ export const Accordions = forwardRef(function Accordions(
               >
                 <div
                   className={clsx(
-                    'py-4 text-xl font-medium leading-tight text-foreground @md:text-2xl font-heading',
+                    'py-4 font-heading text-xl font-medium leading-tight text-foreground @md:text-2xl',
                     typeof accordion.content === 'string' ? '@md:w-5/6 @lg:w-3/4' : 'w-full'
                   )}
                 >

@@ -19,7 +19,7 @@ export const Toast = forwardRef(function Toast(
     <RadixToast.Provider swipeDirection="right">
       <RadixToast.Root
         {...rest}
-        className="data-[state=closed]:animate-fadeOut data-[state=open]:animate-toastSlideIn data-[swipe=end]:animate-toastSwipeOut flex items-center justify-between rounded-md border-l-4 border-primary bg-muted-background px-4 py-3 shadow-md data-[swipe=cancel]:translate-x-0 data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:transition-[transform_200ms_ease-out]"
+        className="data-[state=closed]:animate-fadeOut data-[state=open]:animate-toastSlideIn data-[swipe=end]:animate-toastSwipeOut bg-muted-background flex items-center justify-between rounded-md border-l-4 border-primary px-4 py-3 shadow-md data-[swipe=cancel]:translate-x-0 data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:transition-[transform_200ms_ease-out]"
       >
         <div className="space-y-2">
           <RadixToast.Title className="font-bold">{title}</RadixToast.Title>
