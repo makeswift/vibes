@@ -130,7 +130,7 @@ export default function Preview() {
         className="bg-white"
         reverse
         image={{
-          url: '/2px/mirror-chair.png',
+          url: '/2px/alentejo-media.png',
           alt: 'Alentejo coffee table',
           width: 2880,
           height: 1440,

@@ -39,7 +39,7 @@ export default function MediaAndTextSection({
         className
       )}
     >
-      <div className="flex w-full flex-col items-start justify-center gap-10 px-2 py-6 text-start @3xl:px-20 @3xl:py-20">
+      <div className="my-auto flex w-full flex-col items-start justify-center gap-10 px-2 py-6 text-start @3xl:px-20 @3xl:py-0">
         {subtitle && <p className="font-mono uppercase @2xl:tracking-[0.02em]">{subtitle}</p>}
         {text}
         {links && (
