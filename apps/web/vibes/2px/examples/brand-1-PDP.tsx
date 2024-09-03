@@ -9,12 +9,9 @@ import Gallery from '@/vibes/2px/components/gallery'
 import Header from '@/vibes/2px/components/header'
 import MediaAndTextSection from '@/vibes/2px/components/media-and-text-section'
 
+import ProductDetails from '../components/product-details'
 import SectionHeader from '../components/section-header'
 import Logo from './assets/logo.svg'
-import moltenStool from './assets/molten-stool.png'
-import material2 from './assets/swatch-example-1.png'
-import material3 from './assets/swatch-example-2.png'
-import material1 from './assets/swatch-example.png'
 import { items as productSlides } from './carousel-section'
 import { items as faqs } from './faq-section'
 import { sections as footerGroups, socialMediaLinks as footerSocials } from './footer-section'
@@ -54,21 +51,21 @@ export default function Preview() {
         product={{
           images: [
             {
-              src: moltenStool.src,
-              altText: 'Molten Stool',
+              src: '/2px/alentejo-coffee-table.png',
+              altText: 'Alentejo coffee table',
             },
             {
-              src: moltenStool.src,
-              altText: 'Molten Stool',
+              src: '/2px/alentejo-coffee-table-top-view.png',
+              altText: 'Alentejo coffee table',
             },
             {
-              src: moltenStool.src,
-              altText: 'Molten Stool',
+              src: '/2px/alentejo-coffee-table-detail.png',
+              altText: 'Alentejo coffee table',
             },
           ],
           id: 1,
-          name: 'Molten Stool',
-          price: '549,00 €',
+          name: 'Alentejo coffee table',
+          price: '4,500 €',
           options: [
             {
               label: 'Colour / treatment',
@@ -77,17 +74,17 @@ export default function Preview() {
                 {
                   value: 'natural',
                   inStock: true,
-                  sample: material1.src,
+                  sample: '/2px/swatch-example.png',
                 },
                 {
                   value: 'black',
                   inStock: false,
-                  sample: material2.src,
+                  sample: '/2px/alentejo-swatch-2.png',
                 },
                 {
                   value: 'white',
                   inStock: true,
-                  sample: material3.src,
+                  sample: '/2px/alentejo-swatch-3.png',
                 },
               ],
             },
@@ -108,12 +105,42 @@ export default function Preview() {
         title="Our Molten stool in the perfect piece for your entrance hall where guests will stub their toes on it, resulting in a general panic and a hospital trip."
       />
 
-      {/* @TODO: create new details section */}
+      <ProductDetails
+        details={[
+          { label: 'Dimensions', value: '200mm x 200mm' },
+          {
+            label: 'Weight',
+            value: '600kg',
+          },
+          {
+            label: 'Material',
+            value: 'Pure molten hatred',
+          },
+          {
+            label: 'Delivery size',
+            value: '3000mm x 3000mm palette',
+          },
+          {
+            label: 'Care instructions',
+            value: 'Clean with a damp cloth',
+          },
+        ]}
+      />
       <MediaAndTextSection
-        className="flex-row-reverse bg-white"
-        image={{ url: '/2px/mirror-chair.png', alt: 'Mirror chair', width: 1024, height: 720 }}
+        className="bg-white"
+        reverse
+        image={{
+          url: '/2px/mirror-chair.png',
+          alt: 'Alentejo coffee table',
+          width: 2880,
+          height: 1440,
+        }}
         subtitle="now in stock"
-        text={`Come try it on at our studio.`}
+        text={
+          <p className="text-body text-3xl font-medium leading-8  @2xl:text-6xl @2xl:leading-[4rem] @2xl:-tracking-[0.0675em]">
+            Come try it on at our studio.
+          </p>
+        }
         links={[
           { label: 'Contact us', href: 'mailto:' },
           { label: 'Maps', href: 'www.instagram.com' },
@@ -122,7 +149,7 @@ export default function Preview() {
 
       <FAQSection title="FAQs" items={faqs} />
 
-      <CarouselSection items={productSlides} title="New in" showArrows />
+      <CarouselSection items={productSlides} title="Related products" showArrows />
 
       <FooterSection
         title={
