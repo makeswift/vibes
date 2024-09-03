@@ -302,6 +302,12 @@ export const components = [
     files: ['./components/slideshow-section/index.tsx', '../../lib/utils.ts'],
   },
   {
+    name: 'product-details',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['./components/product-details/index.tsx', '../../lib/utils.ts'],
+  },
+  {
     name: 'date-picker',
     dependencies: ['@nextui-org/date-input', '@internationalized/date'],
     registryDependencies: ['calendar'],

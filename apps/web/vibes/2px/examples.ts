@@ -344,10 +344,24 @@ export const examples = [
     component: lazy(() => import('./examples/date-picker')),
   },
   {
+    name: 'product-details-example',
+    dependencies: [],
+    registryDependencies: ['product-details'],
+    files: ['examples/product-details.tsx'],
+    component: lazy(() => import('./examples/product-details')),
+  },
+  {
     name: 'homepage-example',
     dependencies: [],
     registryDependencies: ['header', 'footer-section'],
     files: ['examples/homepage.tsx'],
     component: lazy(() => import('./examples/homepage')),
+  },
+  {
+    name: 'brand-1-PDP-example',
+    dependencies: [],
+    registryDependencies: ['header', 'footer-section'],
+    files: ['examples/brand-1-PDP.tsx'],
+    component: lazy(() => import('./examples/brand-1-PDP')),
   },
 ] satisfies Components

@@ -82,6 +82,12 @@ export const navigation = [
         file: 'docs/date-picker.mdx',
         component: 'date-picker',
       },
+      {
+        title: 'Product details',
+        slug: 'product-details',
+        file: 'docs/product-details.mdx',
+        component: 'product-details',
+      },
     ],
   },
   {
@@ -204,6 +210,11 @@ export const navigation = [
         title: 'Homepage',
         slug: 'homepage',
         file: 'docs/homepage.mdx',
+      },
+      {
+        title: 'PDP',
+        slug: 'PDP',
+        file: 'docs/PDP.mdx',
       },
     ],
   },
