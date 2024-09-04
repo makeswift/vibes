@@ -26,7 +26,7 @@ export const Counter = function Counter({ current = 0, max = 20 }: Props) {
   return (
     <div className="flex items-center rounded-lg border">
       <button
-        className="group rounded-l-lg p-3 hover:bg-primary-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="group rounded-l-lg p-3 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         onClick={decrement}
         aria-label="Decrease count"
       >
@@ -40,7 +40,7 @@ export const Counter = function Counter({ current = 0, max = 20 }: Props) {
         {count}
       </span>
       <button
-        className="group rounded-r-lg p-3 transition-colors duration-300 hover:bg-primary-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         onClick={increment}
         aria-label="Increase count"
       >
