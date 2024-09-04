@@ -5,12 +5,12 @@ export const feature: Feature = {
     src: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
     altText: 'Close up of a plant',
   },
-  title: 'For Your Home',
+  title: 'Thoughtfully Curated',
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
   cta: {
-    href: 'string',
-    label: 'string',
+    href: '#',
+    label: 'Shop Now',
   },
 }
 
