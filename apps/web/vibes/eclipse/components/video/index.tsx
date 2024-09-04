@@ -56,7 +56,7 @@ export const Video = forwardRef(function Video(
               <div className="bg-muted-background/50 aspect-video w-full"></div>
             )}
 
-            <div className="noise shadow-foreground/2 rounded-circle after:rounded-circle absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-background/60 ring-1 ring-border backdrop-blur-md transition duration-300 group-hover:bg-background/75 sm:h-36 sm:w-36">
+            <div className="noise shadow-foreground/2 rounded-circle after:rounded-circle ring-border absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-background/60 ring-1 backdrop-blur-md transition duration-300 group-hover:bg-background/75 sm:h-36 sm:w-36">
               <svg className="ml-2 w-10 sm:w-12" viewBox="0 0 46 52" fill="none">
                 <path
                   d="M0 47.1755V4.8245C0 1.76856 3.2881 -0.158666 5.95442 1.33448L43.7678 22.51C46.4953 24.0373 46.4953 27.9627 43.7678 29.49L5.95441 50.6655C3.28809 52.1587 0 50.2314 0 47.1755Z"
