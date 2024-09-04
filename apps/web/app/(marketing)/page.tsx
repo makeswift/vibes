@@ -23,6 +23,22 @@ import { ProductionReady } from '../stickers/production-ready'
 import { Reactjs } from '../stickers/reactjs'
 import { ShoppingBag } from '../stickers/shopping-bag'
 import { Typescript } from '../stickers/typescript'
+import { Vibes1 } from '../stickers/vibes-1'
+import { Vibes2 } from '../stickers/vibes-2'
+import { Vibes3 } from '../stickers/vibes-3'
+import { Vibes4 } from '../stickers/vibes-4'
+import { Vibes5 } from '../stickers/vibes-5'
+import { Vibes6 } from '../stickers/vibes-6'
+import { Vibes7 } from '../stickers/vibes-7'
+import { Vibes8 } from '../stickers/vibes-8'
+import { Vibes9 } from '../stickers/vibes-9'
+import { Vibes10 } from '../stickers/vibes-10'
+import { Vibes11 } from '../stickers/vibes-11'
+import { Vibes12 } from '../stickers/vibes-12'
+import { Vibes13 } from '../stickers/vibes-13'
+import { Vibes14 } from '../stickers/vibes-14'
+import { Vibes15 } from '../stickers/vibes-15'
+import { Vibes16 } from '../stickers/vibes-16'
 import { Form } from './form'
 
 const useSmoothScroll = () => {
@@ -159,7 +175,7 @@ export default function Home() {
             <div className="text-left md:ml-10">
               <span className="md:relative">
                 <Transition
-                  className="w-auto transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:100ms]"
+                  className="w-auto transition-all duration-700 [transition-delay:100ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -390,6 +406,25 @@ export default function Home() {
               </Link>
               . */}
             </p>
+
+            <div className="relative h-56">
+              <Vibes1 />
+              <Vibes2 />
+              <Vibes3 />
+              <Vibes4 />
+              <Vibes5 />
+              <Vibes6 />
+              <Vibes7 />
+              <Vibes8 />
+              <Vibes9 />
+              <Vibes10 />
+              <Vibes11 />
+              <Vibes12 />
+              <Vibes13 />
+              <Vibes14 />
+              <Vibes15 />
+              <Vibes16 />
+            </div>
           </div>
         </div>
       </footer>
