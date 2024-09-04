@@ -13,6 +13,9 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'rstr.in', 'images.pexels.com'],
   },
+  eslint: {
+    dirs: ['actions', 'app', 'components', 'docs', 'icons', 'lib', 'vibes'],
+  },
   async rewrites() {
     return [
       {
