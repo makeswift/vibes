@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { Product } from '@/vibes/soul/components/product-card'
-import ProductsCarousel from '@/vibes/soul/components/products-carousel'
+import { ProductsCarousel } from '@/vibes/soul/components/products-carousel'
 
 interface Link {
   label: string
@@ -41,5 +41,3 @@ export const FeaturedProductsCarousel = function FeaturedProductsCarousel({
     </section>
   )
 }
-
-export default FeaturedProductsCarousel

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 interface Props {
   isOpen: boolean
@@ -32,5 +32,3 @@ export const SidePanel = function SidePanel({ isOpen, setOpen, trigger, content 
     </Dialog.Root>
   )
 }
-
-export default SidePanel

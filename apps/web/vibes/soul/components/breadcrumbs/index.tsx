@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Fragment } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { ChevronRight } from 'lucide-react'
 
 export interface Breadcrumb {
@@ -44,5 +44,3 @@ export const Breadcrumbs = function Breadcrumbs({ breadcrumbs, className }: Brea
     </nav>
   )
 }
-
-export default Breadcrumbs

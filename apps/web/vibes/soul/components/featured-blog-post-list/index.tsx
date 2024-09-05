@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 import { BlogPost } from '@/vibes/soul/components/blog-post-card'
-import BlogPostList from '@/vibes/soul/components/blog-post-list'
-import Button from '@/vibes/soul/components/button'
+import { BlogPostList } from '@/vibes/soul/components/blog-post-list'
+import { Button } from '@/vibes/soul/components/button'
 
 interface Link {
   label: string
@@ -39,5 +39,3 @@ export const FeaturedBlogPostList = function FeaturedBlogPostList({
     </section>
   )
 }
-
-export default FeaturedBlogPostList

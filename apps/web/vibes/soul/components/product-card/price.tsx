@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 export type ProductPrice =
   | string
@@ -15,7 +15,7 @@ export type ProductPrice =
       maxValue: string
     }
 
-export default function Price({
+export function Price({
   price,
   className = '',
 }: { price: ProductPrice; className?: string } & ComponentPropsWithoutRef<'span'>) {

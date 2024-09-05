@@ -1,6 +1,6 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import ProductCard, { Product, ProductCardSkeleton } from '@/vibes/soul/components/product-card'
+import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/components/product-card'
 
 interface Props {
   products: Product[]
@@ -32,5 +32,3 @@ export const ProductsList = function ProductsList({
     </div>
   )
 }
-
-export default ProductsList

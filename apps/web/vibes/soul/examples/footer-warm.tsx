@@ -1,4 +1,4 @@
-import Footer from '@/vibes/soul/components/footer'
+import { Footer } from '@/vibes/soul/components/footer'
 import {
   Amex,
   ApplePay,

@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import Button from '@/vibes/soul/components/button'
-import Input from '@/vibes/soul/components/input'
+import { Button } from '@/vibes/soul/components/button'
+import { Input } from '@/vibes/soul/components/input'
 
 export interface LogInProps {
   className?: string
@@ -46,5 +46,3 @@ export const LogIn = function LogIn({ className }: LogInProps) {
     </div>
   )
 }
-
-export default LogIn

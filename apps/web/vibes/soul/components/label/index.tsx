@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 export interface LabelProps {
   className?: string
@@ -14,5 +14,3 @@ export const Label = function Label({ className, children }: LabelProps) {
     </span>
   )
 }
-
-export default Label

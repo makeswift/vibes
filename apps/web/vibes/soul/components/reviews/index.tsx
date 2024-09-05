@@ -1,5 +1,5 @@
-import Carousel from '@/vibes/soul/components/carousel'
-import Rating from '@/vibes/soul/components/rating'
+import { Carousel } from '@/vibes/soul/components/carousel'
+import { Rating } from '@/vibes/soul/components/rating'
 
 export interface Props {
   reviews: {
@@ -37,5 +37,3 @@ export const Reviews = function Reviews({ reviews, averageRating }: Readonly<Pro
     </div>
   )
 }
-
-export default Reviews

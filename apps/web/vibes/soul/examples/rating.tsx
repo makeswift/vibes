@@ -1,4 +1,4 @@
-import Rating from '@/vibes/soul/components/rating'
+import { Rating } from '@/vibes/soul/components/rating'
 
 export default function Preview() {
   return (

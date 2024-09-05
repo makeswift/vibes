@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 import { Icon } from '@/vibes/soul/components/icon'
@@ -89,5 +89,3 @@ export const Feature = function Feature({ image, title, description, grid, cta }
     </section>
   )
 }
-
-export default Feature

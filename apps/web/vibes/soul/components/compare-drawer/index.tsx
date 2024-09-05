@@ -1,5 +1,5 @@
-import ProductChip from '@/vibes/soul/components/compare-drawer/product-chip'
-import ComparePanel from '@/vibes/soul/components/compare-panel'
+import { ProductChip } from '@/vibes/soul/components/compare-drawer/product-chip'
+import { ComparePanel } from '@/vibes/soul/components/compare-panel'
 import { Product } from '@/vibes/soul/components/product-card'
 
 interface Props {
@@ -28,5 +28,3 @@ export const CompareDrawer = function CompareDrawer({
     )
   )
 }
-
-export default CompareDrawer

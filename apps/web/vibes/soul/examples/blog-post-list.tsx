@@ -1,5 +1,5 @@
 import { BlogPost } from '@/vibes/soul/components/blog-post-card'
-import BlogFeed from '@/vibes/soul/components/blog-post-list'
+import { BlogPostList } from '@/vibes/soul/components/blog-post-list'
 
 export const posts: BlogPost[] = [
   {
@@ -124,7 +124,7 @@ export const posts: BlogPost[] = [
 export default function Preview() {
   return (
     <div className="p-6">
-      <BlogFeed posts={posts} />
+      <BlogPostList posts={posts} />
     </div>
   )
 }

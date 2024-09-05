@@ -1,4 +1,4 @@
-import ProductPage from '@/vibes/soul/components/page-product'
+import { ProductPage } from '@/vibes/soul/components/page-product'
 import { accordions, productDescriptionImage } from '@/vibes/soul/examples/product-description-blue'
 import { product } from '@/vibes/soul/examples/product-detail-blue'
 

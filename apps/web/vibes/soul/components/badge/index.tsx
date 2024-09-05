@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 export interface Badge {
   children: ReactNode
@@ -19,5 +19,3 @@ export const Badge = function Badge({ children, className = '' }: Badge) {
     </span>
   )
 }
-
-export default Badge

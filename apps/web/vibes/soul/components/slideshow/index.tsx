@@ -3,14 +3,14 @@
 import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { EmblaCarouselType } from 'embla-carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Fade from 'embla-carousel-fade'
 import useEmblaCarousel from 'embla-carousel-react'
 import { Pause, Play } from 'lucide-react'
 
-import Button from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/components/button'
 
 interface Link {
   label: string
@@ -227,5 +227,3 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
     </section>
   )
 }
-
-export default Slideshow

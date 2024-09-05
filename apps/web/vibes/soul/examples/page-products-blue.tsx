@@ -1,4 +1,4 @@
-import ProductsPage from '@/vibes/soul/components/page-products'
+import { ProductsPage } from '@/vibes/soul/components/page-products'
 import { breadcrumbs } from '@/vibes/soul/examples/breadcrumbs-blue'
 import { copyright, footerLinks, logo } from '@/vibes/soul/examples/footer-blue'
 import { headerLinks } from '@/vibes/soul/examples/header-blue'

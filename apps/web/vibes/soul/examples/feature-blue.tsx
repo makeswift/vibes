@@ -1,4 +1,4 @@
-import Feature from '@/vibes/soul/components/feature'
+import { Feature } from '@/vibes/soul/components/feature'
 
 export const feature: Feature = {
   image: {

@@ -1,4 +1,4 @@
-import Badge from '@/vibes/soul/components/badge'
+import { Badge } from '@/vibes/soul/components/badge'
 
 export default function Preview() {
   return (

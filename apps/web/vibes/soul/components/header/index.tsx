@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
 interface Image {
@@ -488,5 +488,3 @@ export const Header = forwardRef(function Header(
     </ReactHeadroom>
   )
 })
-
-export default Header

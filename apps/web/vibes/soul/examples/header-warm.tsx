@@ -1,4 +1,4 @@
-import Header from '@/vibes/soul/components/header'
+import { Header } from '@/vibes/soul/components/header'
 
 export const headerLinks = [
   {

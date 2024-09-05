@@ -1,4 +1,4 @@
-import ProductDescription from '@/vibes/soul/components/product-description'
+import { ProductDescription } from '@/vibes/soul/components/product-description'
 
 export const accordions = [
   {

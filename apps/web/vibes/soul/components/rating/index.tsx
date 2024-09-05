@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 export interface Props {
   rating: number
@@ -73,5 +73,3 @@ export const Rating = function Rating({ rating, className }: Readonly<Props>) {
     </div>
   )
 }
-
-export default Rating

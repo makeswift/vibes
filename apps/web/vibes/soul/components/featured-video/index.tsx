@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 
@@ -67,5 +67,3 @@ export const FeaturedVideo = function FeaturedVideo({
     </section>
   )
 }
-
-export default FeaturedVideo

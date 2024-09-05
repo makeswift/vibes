@@ -1,5 +1,5 @@
 import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
-import HomePage from '@/vibes/soul/components/page-home'
+import { HomePage } from '@/vibes/soul/components/page-home'
 import { cards, textContrast } from '@/vibes/soul/examples/card-carousel-warm'
 import { feature } from '@/vibes/soul/examples/feature-warm'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-warm'

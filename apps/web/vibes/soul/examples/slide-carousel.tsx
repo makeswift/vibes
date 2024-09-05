@@ -1,4 +1,4 @@
-import SlideCarousel from '@/vibes/soul/components/slide-carousel'
+import { SlideCarousel } from '@/vibes/soul/components/slide-carousel'
 
 const images = [
   'https://rstr.in/monogram/vibes/SHdMkzJlFss',

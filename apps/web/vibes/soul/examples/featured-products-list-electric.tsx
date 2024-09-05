@@ -1,4 +1,4 @@
-import FeaturedProductList from '@/vibes/soul/components/featured-products-list'
+import { FeaturedProductsList } from '@/vibes/soul/components/featured-products-list'
 import { Product } from '@/vibes/soul/components/product-card'
 
 export const featuredProducts: {
@@ -91,7 +91,7 @@ export const featuredProducts: {
 
 export default function Preview() {
   return (
-    <FeaturedProductList
+    <FeaturedProductsList
       title={featuredProducts.title}
       description={featuredProducts.description}
       cta={{

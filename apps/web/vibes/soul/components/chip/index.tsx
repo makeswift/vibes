@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 interface Props {
   label: string
@@ -22,5 +22,3 @@ export const Chip = function Chip({ label, amount, onClick, selected }: Props) {
     </button>
   )
 }
-
-export default Chip

@@ -2,13 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import Badge from '@/vibes/soul/components/badge'
-import Button from '@/vibes/soul/components/button'
-import Label from '@/vibes/soul/components/label'
-import Price, { ProductPrice } from '@/vibes/soul/components/product-card/price'
-import Rating from '@/vibes/soul/components/rating'
+import { Badge } from '@/vibes/soul/components/badge'
+import { Button } from '@/vibes/soul/components/button'
+import { Label } from '@/vibes/soul/components/label'
+import { Price, ProductPrice } from '@/vibes/soul/components/product-card/price'
+import { Rating } from '@/vibes/soul/components/rating'
 
 interface Image {
   altText: string
@@ -123,5 +123,3 @@ export const CompareCardSkeleton = function CompareCardSkeleton({
     </div>
   )
 }
-
-export default CompareCard

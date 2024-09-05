@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
 
 interface Image {
@@ -15,7 +15,7 @@ export interface ProductGallery {
   images: Image[]
 }
 
-const ProductGallery = ({ images }: ProductGallery) => {
+export const ProductGallery = ({ images }: ProductGallery) => {
   const [previewImage, setPreviewImage] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel()
 
@@ -81,5 +81,3 @@ const ProductGallery = ({ images }: ProductGallery) => {
     </div>
   )
 }
-
-export default ProductGallery

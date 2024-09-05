@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { Loader2 } from 'lucide-react'
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -88,5 +88,3 @@ export const Button = function Button({
     </Comp>
   )
 }
-
-export default Button

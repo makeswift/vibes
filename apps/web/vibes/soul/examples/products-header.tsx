@@ -1,4 +1,4 @@
-import ProductsHeader from '@/vibes/soul/components/products-header'
+import { ProductsHeader } from '@/vibes/soul/components/products-header'
 
 export default function Preview() {
   return (

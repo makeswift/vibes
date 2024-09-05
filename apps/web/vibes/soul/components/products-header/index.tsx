@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-import Breadcrumbs, { Breadcrumb } from '@/vibes/soul/components/breadcrumbs'
-import Dropdown from '@/vibes/soul/components/dropdown'
-import FilterPanel from '@/vibes/soul/components/filter-panel'
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/components/breadcrumbs'
+import { Dropdown } from '@/vibes/soul/components/dropdown'
+import { FilterPanel } from '@/vibes/soul/components/filter-panel'
 
 interface Props {
   breadcrumbs?: Breadcrumb[]
@@ -43,5 +43,3 @@ export const ProductsHeader = function ProductsHeader({
     </div>
   )
 }
-
-export default ProductsHeader

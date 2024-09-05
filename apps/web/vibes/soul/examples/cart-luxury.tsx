@@ -1,4 +1,4 @@
-import Cart, { CartProduct } from '@/vibes/soul/components/cart'
+import { Cart, CartProduct } from '@/vibes/soul/components/cart'
 
 export const products: CartProduct[] = [
   {

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 interface Image {
   src: string
@@ -151,5 +151,3 @@ export const Footer = function Footer({
     </footer>
   )
 }
-
-export default Footer
