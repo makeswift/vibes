@@ -2,8 +2,7 @@
 
 import React from 'react'
 
-import Breadcrumbs from '@/vibes/soul/components/breadcrumbs'
-import { Breadcrumb } from '@/vibes/soul/components/breadcrumbs'
+import Breadcrumbs, { Breadcrumb } from '@/vibes/soul/components/breadcrumbs'
 import Dropdown from '@/vibes/soul/components/dropdown'
 import FilterPanel from '@/vibes/soul/components/filter-panel'
 

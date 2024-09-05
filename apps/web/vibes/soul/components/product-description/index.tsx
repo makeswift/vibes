@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
-import { Accordions } from '@/vibes/soul/components/accordions'
-import { AccordionItem } from '@/vibes/soul/components/accordions'
+import { Accordions , AccordionItem } from '@/vibes/soul/components/accordions'
 
 export interface Props {
   accordions: AccordionItem[]
