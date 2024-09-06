@@ -43,7 +43,7 @@ export const BlogPostCard = function BlogPostCard({
           width={466}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt={image?.altText ?? ''}
-          className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
+          className="scale-105 bg-contrast-100 transition-transform duration-700 ease-out group-hover:scale-100"
         />
       </div>
 

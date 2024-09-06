@@ -128,7 +128,7 @@ const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
               <div
                 key={index}
                 className={clsx(
-                  'relative ml-2.5 aspect-[3/4] h-[480px] min-w-0 max-w-[320px] shrink-0 grow-0 basis-full border border-black bg-contrast-100',
+                  'relative ml-2.5 aspect-[3/4] h-[480px] min-w-0 max-w-[320px] shrink-0 grow-0 basis-full bg-contrast-100',
                   index === selectedIndex ? '' : ''
                 )}
               >
@@ -151,7 +151,7 @@ const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
         {/* Magnified Carousel */}
         <div
           ref={emblaRefMag}
-          className="absolute bottom-0 left-1/2 h-[560px] w-[520px] -translate-x-1/2 overflow-hidden border border-pink-200 bg-background"
+          className="absolute bottom-0 left-1/2 h-[560px] w-[520px] -translate-x-1/2 overflow-hidden bg-background"
         >
           <div className="flex h-full">
             {content.concat(content).map(({ image, label }, index) => (
