@@ -94,7 +94,7 @@ export const Cart = function Cart({ products }: CartProps) {
                           isOpen={removeItemModalIsOpen}
                           setOpen={setRemoveItemModalIsOpen}
                           trigger={
-                            <button className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
+                            <button className="-ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
                               <Trash2 strokeWidth={1} size={18} />
                             </button>
                           }
@@ -109,7 +109,7 @@ export const Cart = function Cart({ products }: CartProps) {
                               </p>
                               <Button
                                 variant="primary"
-                                className="mt-6 w-full bg-error [&>div]:text-white"
+                                className="mt-6 w-full !bg-error [&>div]:text-white"
                                 onClick={() => {
                                   // TODO: Remove Item from Cart
                                   setRemoveItemModalIsOpen(false)
