@@ -97,12 +97,12 @@ export const navigation = [
         component: 'products-list',
       },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
-      {
-        title: 'Slide Carousel',
-        slug: 'slide-carousel',
-        file: 'docs/slide-carousel.mdx',
-        component: 'slide-carousel',
-      },
+      // {
+      //   title: 'Slide Carousel',
+      //   slug: 'slide-carousel',
+      //   file: 'docs/slide-carousel.mdx',
+      //   component: 'slide-carousel',
+      // },
     ],
   },
   {
