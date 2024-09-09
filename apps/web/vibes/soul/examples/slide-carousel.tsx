@@ -1,6 +1,6 @@
 import { RotateCcwIcon } from 'lucide-react'
 
-import SlideCarousel from '@/vibes/soul/components/slide-carousel'
+import { SlideCarousel } from '@/vibes/soul/components/slide-carousel'
 
 const content = [
   {
