@@ -76,5 +76,3 @@ export const Dropdown = function Dropdown({
     </div>
   )
 }
-
-export default Dropdown
