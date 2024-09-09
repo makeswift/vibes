@@ -109,6 +109,12 @@ export const navigation = [
     title: 'Sections',
     pages: [
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
+      {
+        title: 'Create Account',
+        slug: 'create-account',
+        file: 'docs/create-account.mdx',
+        component: 'create-account',
+      },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {

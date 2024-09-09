@@ -74,6 +74,12 @@ export const components = [
     files: ['components/counter/index.tsx'],
   },
   {
+    name: 'create-account',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/create-account/index.tsx'],
+  },
+  {
     name: 'discount',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],

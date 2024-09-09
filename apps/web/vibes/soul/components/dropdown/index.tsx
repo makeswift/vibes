@@ -19,6 +19,7 @@ interface Props {
   labelOnTop?: boolean
   style?: 'round' | 'rectangle'
   items: string[]
+  required?: boolean
 }
 
 export const Dropdown = function Dropdown({
@@ -26,13 +27,17 @@ export const Dropdown = function Dropdown({
   labelOnTop = false,
   style = 'rectangle',
   items,
+  required,
   ...props
 }: Props & DropdownMenuTriggerProps) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
 
   return (
-    <div className="relative z-50">
-      {label && labelOnTop && <Label className="mb-2 block text-foreground">{label}</Label>}
+    <div>
+      <div className="flex items-center justify-between">
+        {label && labelOnTop && <Label className="mb-2 block text-foreground">{label}</Label>}
+        {required && <span className="text-xs text-contrast-300">Required</span>}
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger
           className={clsx(

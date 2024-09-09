@@ -151,6 +151,13 @@ export const examples = [
     component: lazy(() => import('./examples/counter')),
   },
   {
+    name: 'create-account-example',
+    dependencies: [],
+    registryDependencies: ['create-account'],
+    files: ['examples/create-account.tsx'],
+    component: lazy(() => import('./examples/create-account')),
+  },
+  {
     name: 'discount-example',
     dependencies: [],
     registryDependencies: ['discount'],
