@@ -13,7 +13,7 @@ export interface Props extends ComponentPropsWithRef<'input'> {
 }
 
 export const Input = forwardRef(function Input(
-  { prepend, label, className = '', required, ...rest }: Props,
+  { prepend, label, className, required, ...rest }: Props,
   ref: Ref<HTMLInputElement>
 ) {
   return (
