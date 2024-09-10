@@ -17,7 +17,7 @@ export const Input = forwardRef(function Input(
   ref: Ref<HTMLInputElement>
 ) {
   return (
-    <div className={clsx('w-full shrink-0', className)}>
+    <div className={clsx('w-full', className)}>
       <div className="flex items-center justify-between">
         {label && <Label className="mb-2 block text-foreground">{label}</Label>}
         {required && <span className="text-xs text-contrast-300">Required</span>}

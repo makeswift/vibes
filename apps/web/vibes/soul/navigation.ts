@@ -109,6 +109,7 @@ export const navigation = [
     title: 'Sections',
     pages: [
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
+      { title: 'Checkout', slug: 'checkout', file: 'docs/checkout.mdx', component: 'checkout' },
       {
         title: 'Create Account',
         slug: 'create-account',

@@ -8,10 +8,10 @@ import clsx from 'clsx'
 import { Trash2 } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/components/button'
-import Counter from '@/vibes/soul/components/counter'
-import Dropdown from '@/vibes/soul/components/dropdown'
-import Input from '@/vibes/soul/components/input'
-import Modal from '@/vibes/soul/components/modal'
+import { Counter } from '@/vibes/soul/components/counter'
+import { Dropdown } from '@/vibes/soul/components/dropdown'
+import { Input } from '@/vibes/soul/components/input'
+import { Modal } from '@/vibes/soul/components/modal'
 import { Product } from '@/vibes/soul/components/product-card'
 
 interface Image {
