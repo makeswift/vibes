@@ -35,9 +35,11 @@ export const FeaturedProductsList = function FeaturedProductsList({
                 {title}
               </h2>
             )}
-            {description && <p className="mt-1.5 max-w-md pb-2 text-foreground">{description}</p>}
+            {description !== undefined && (
+              <p className="mt-1.5 max-w-md pb-2 text-foreground">{description}</p>
+            )}
           </div>
-          {cta?.href && (
+          {cta?.href !== undefined && (
             <Button className="h-5 bg-transparent text-sm @4xl:h-12 @4xl:bg-primary" asChild>
               <Link href={cta.href}>{cta.label}</Link>
             </Button>

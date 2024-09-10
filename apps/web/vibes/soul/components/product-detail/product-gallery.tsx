@@ -22,7 +22,9 @@ export const ProductGallery = ({ images }: ProductGallery) => {
   useEffect(() => {
     if (!emblaApi) return
 
-    const onSelect = () => setPreviewImage(emblaApi.selectedScrollSnap())
+    const onSelect = () => {
+      setPreviewImage(emblaApi.selectedScrollSnap())
+    }
     emblaApi.on('select', onSelect)
 
     return () => {
@@ -61,12 +63,14 @@ export const ProductGallery = ({ images }: ProductGallery) => {
         {images.map((image, index) => (
           <button
             key={index}
-            aria-label={`View image number ${index + 1}`}
+            aria-label={`View image number ${String(index + 1)}`}
             className={clsx(
               'h-10 w-10 shrink-0 overflow-hidden rounded-lg border transition-colors duration-300 @4xl:h-14 @4xl:w-14',
               index === previewImage ? 'border-foreground' : 'border-transparent'
             )}
-            onClick={() => selectImage(index)}
+            onClick={() => {
+              selectImage(index)
+            }}
           >
             <Image
               src={image.src}

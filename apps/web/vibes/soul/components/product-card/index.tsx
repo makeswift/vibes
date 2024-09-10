@@ -50,7 +50,7 @@ export const ProductCard = function ProductCard({
       )}
     >
       <div className="relative aspect-[5/6] overflow-hidden rounded-xl @6xl:min-w-80">
-        {badge && (
+        {badge !== undefined && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
         {image && (
@@ -84,7 +84,9 @@ export const ProductCard = function ProductCard({
       <div className="flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
           {name && <span className="line-clamp-2">{name}</span>}
-          {subtitle && <span className="font-normal text-contrast-400">{subtitle}</span>}
+          {subtitle !== undefined && (
+            <span className="font-normal text-contrast-400">{subtitle}</span>
+          )}
         </h3>
         {price && <Price price={price} />}
       </div>

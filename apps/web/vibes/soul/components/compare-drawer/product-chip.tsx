@@ -15,22 +15,21 @@ interface Props {
 export const ProductChip = function ProductChip({ product, setCompareProducts }: Props) {
   return (
     <button
-      role="button"
       aria-label="Remove product"
-      onClick={() =>
+      onClick={() => {
         setCompareProducts((prevProducts: Product[]) => {
           return prevProducts.filter(p => p.id !== product.id)
         })
-      }
+      }}
       className={clsx(
         'group flex items-center gap-3 whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold transition-all duration-150 hover:bg-contrast-100',
         'ring-primary focus:outline-0 focus:ring-2'
       )}
     >
-      {product.image?.src && (
+      {product.image?.src !== undefined && (
         <Image
           src={product.image.src}
-          alt={product.image?.altText}
+          alt={product.image.altText}
           width={50}
           height={50}
           className="aspect-square h-[50px] w-[50px] rounded-[11px] bg-contrast-100 object-cover @4xl:rounded-r-none"

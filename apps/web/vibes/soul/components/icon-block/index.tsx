@@ -2,7 +2,7 @@ import { clsx } from 'clsx'
 
 import { Icon } from '@/vibes/soul/components/icon'
 
-export interface IconBlock {
+export interface IconBlockProps {
   list?: {
     icon: string
     title: string
@@ -10,10 +10,10 @@ export interface IconBlock {
   }[]
 }
 
-export const IconBlock = function IconBlock({ list }: IconBlock) {
+export const IconBlock = function IconBlock({ list }: IconBlockProps) {
   return (
     <section className="bg-background text-foreground @container">
-      {list?.length && (
+      {list?.length != null && (
         <ul className="mx-auto flex w-full max-w-screen-2xl flex-wrap justify-center divide-y divide-contrast-100 px-3 @2xl:px-20">
           {list.map(({ title, description, icon }, idx) => {
             return (

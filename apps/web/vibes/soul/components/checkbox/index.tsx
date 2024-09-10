@@ -33,7 +33,7 @@ export const Checkbox = function Checkbox({
         </RadixCheckbox.Indicator>
       </RadixCheckbox.Root>
 
-      {label && (
+      {label !== undefined && (
         <label className="cursor-pointer select-none text-foreground" htmlFor="checkbox">
           {label}
         </label>

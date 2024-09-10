@@ -27,7 +27,9 @@ export const SlideCarousel = ({ title, images }: Props) => {
     const timeout = setTimeout(() => {
       startAnimation()
     }, 500)
-    return () => clearTimeout(timeout)
+    return () => {
+      clearTimeout(timeout)
+    }
   }, [expandedImageIndex])
 
   return (
@@ -48,7 +50,7 @@ export const SlideCarousel = ({ title, images }: Props) => {
           <Image
             key={index}
             src={src}
-            alt={`Image ${(index % images.length) + 1}`}
+            alt={`Image ${String((index % images.length) + 1)}`}
             height={1000}
             width={1000}
             className={clsx(

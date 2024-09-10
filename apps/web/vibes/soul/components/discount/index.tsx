@@ -8,14 +8,14 @@ import { X } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/components/button'
 
-interface Discount {
+interface DiscountType {
   label: string
   code: string
 }
 
 interface Props {
   backgroundImage: string
-  discounts: Discount[]
+  discounts: DiscountType[]
 }
 
 export const Discount = function Discount({ backgroundImage, discounts }: Props) {
@@ -23,7 +23,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
   const [dismissed, setDismissed] = useState(false)
   const [spin, setSpin] = useState(false)
   const [isSpun, setIsSpun] = useState(false)
-  const [shuffledCodes, setShuffledCodes] = useState<Discount[]>([])
+  const [shuffledCodes, setShuffledCodes] = useState<DiscountType[]>([])
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
     setShuffledCodes(shuffled)
   }, [discounts])
 
-  const shuffleCodes = (array: Discount[]) => {
+  const shuffleCodes = (array: DiscountType[]) => {
     return array.sort(() => Math.random() - 0.5)
   }
 
@@ -67,21 +67,22 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
       />
       <button
         type="button"
-        onClick={() => setDismissed(true)}
+        onClick={() => {
+          setDismissed(true)
+        }}
         className="absolute right-5 top-5 text-foreground transition-transform hover:scale-110"
       >
         <X className="h-6 w-6" />
       </button>
 
-      <div
+      <button
         onClick={() => {
           if (isSpun) {
-            copy()
+            void copy()
           } else {
             setSpin(true)
           }
         }}
-        role="button"
         className="z-10 m-5 flex w-full cursor-pointer flex-col items-center justify-between gap-10 overflow-hidden rounded-[24px] transition-transform @4xl:h-[100px] @4xl:max-w-4xl @4xl:flex-row @4xl:bg-primary-shadow @4xl:active:scale-[0.99]"
       >
         <h2 className="flex w-full select-none items-center justify-center text-4xl font-medium @4xl:justify-start @4xl:px-6 @4xl:text-[46px]">
@@ -98,7 +99,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
               className="absolute -top-8 left-0 w-full transition-all [transition-duration:5000ms] [transition-timing-function:cubic-bezier(0.285,-0.125,0.050,1.130)]"
               style={{
                 transform: spin
-                  ? `translateY(calc(-100% + ${discounts.length * 33}px))`
+                  ? `translateY(calc(-100% + ${String(discounts.length * 33)}px))`
                   : 'translateY(0)',
               }}
             >
@@ -116,7 +117,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
             {isSpun ? 'Copy' : 'Spin'}
           </Button>
         </div>
-      </div>
+      </button>
     </section>
   )
 }

@@ -52,7 +52,7 @@ export const CompareCard = function CompareCard({
       href={href}
     >
       <div className="relative aspect-[5/6] overflow-hidden rounded-xl">
-        {Boolean(badge) && (
+        {badge !== undefined && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
         {image?.src != null && (
@@ -68,14 +68,16 @@ export const CompareCard = function CompareCard({
       <div className="mb-2 flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
           {name && <span className="line-clamp-2">{name}</span>}
-          {Boolean(subtitle) && <span className="font-normal text-contrast-400">{subtitle}</span>}
+          {subtitle !== undefined && (
+            <span className="font-normal text-contrast-400">{subtitle}</span>
+          )}
         </h3>
-        {Boolean(price) && <Price price={price} />}
+        <Price price={price} />
       </div>
       <Button className="mb-8 w-full">Add to Cart</Button>
       <hr className="mb-4" />
 
-      {Boolean(description) && (
+      {description !== undefined && (
         <>
           <Label className="mb-3">Description</Label>
           <p className="mb-4">{description}</p>
@@ -89,7 +91,7 @@ export const CompareCard = function CompareCard({
           <hr className="mb-4" />
         </>
       )}
-      {Boolean(availability) && (
+      {availability !== undefined && (
         <>
           <Label className="mb-3">Availability</Label>
           <p className="mb-8">{availability}</p>

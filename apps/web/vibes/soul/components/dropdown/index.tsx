@@ -61,7 +61,9 @@ export const Dropdown = function Dropdown({
                   'text-foreground': selectedItem === item,
                 }
               )}
-              onSelect={() => setSelectedItem(item)}
+              onSelect={() => {
+                setSelectedItem(item)
+              }}
             >
               {item}
             </DropdownMenuItem>

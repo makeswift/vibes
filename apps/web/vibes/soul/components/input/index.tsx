@@ -18,9 +18,9 @@ export const Input = forwardRef(function Input(
 ) {
   return (
     <div className={clsx('w-full shrink-0', className)}>
-      {label && <Label className="mb-2 block text-foreground">{label}</Label>}
+      {label !== undefined && <Label className="mb-2 block text-foreground">{label}</Label>}
       <div className="relative overflow-hidden rounded-lg border border-contrast-100 bg-background transition-colors duration-200 focus-within:border-foreground focus:outline-none">
-        {prepend && (
+        {prepend !== undefined && (
           <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2">
             {prepend}
           </span>

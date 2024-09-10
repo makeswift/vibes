@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 import { Button } from '@/vibes/soul/components/button'
 import { Icon } from '@/vibes/soul/components/icon'
 
-export interface Feature {
+export interface FeatureProps {
   image: {
     src: string
     altText: string
@@ -24,7 +24,7 @@ export interface Feature {
   }
 }
 
-export const Feature = function Feature({ image, title, description, grid, cta }: Feature) {
+export const Feature = function Feature({ image, title, description, grid, cta }: FeatureProps) {
   return (
     <section className="relative bg-primary-shadow @container/section">
       <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-dvh">
@@ -52,7 +52,7 @@ export const Feature = function Feature({ image, title, description, grid, cta }
             <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">{title}</h2>
             <p className=" pb-2">{description}</p>
 
-            {grid?.length && (
+            {grid !== undefined && (
               <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
                 {grid.map(({ title, description, icon }, idx) => {
                   return (
