@@ -2,18 +2,20 @@ import { ComponentPropsWithoutRef } from 'react'
 
 import { clsx } from 'clsx'
 
-export type ProductPrice =
-  | string
-  | {
-      type: 'sale'
-      currentValue: string
-      previousValue: string
-    }
-  | {
-      type: 'range'
-      minValue: string
-      maxValue: string
-    }
+interface SalePrice {
+  type: 'sale'
+  currentValue: string
+  previousValue: string
+}
+
+interface RangePrice {
+  type: 'range'
+  minValue: string
+
+  maxValue: string
+}
+
+export type ProductPrice = string | SalePrice | RangePrice
 
 export function Price({
   price,

@@ -5,7 +5,7 @@ import React, { ReactNode, Ref, forwardRef } from 'react'
 import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
 
-export type AccordionItem = {
+export interface AccordionItem {
   title: ReactNode
   content: ReactNode
 }

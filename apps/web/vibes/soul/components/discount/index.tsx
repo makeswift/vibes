@@ -8,7 +8,7 @@ import { X } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/components/button'
 
-type Discount = {
+interface Discount {
   label: string
   code: string
 }
