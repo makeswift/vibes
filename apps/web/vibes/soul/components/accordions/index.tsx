@@ -30,7 +30,7 @@ export const Accordions = forwardRef(function Accordions(
     >
       <ul className="w-full @container">
         {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
+          <Accordion.Item key={i} value={String(i + 1)} asChild>
             <li className="group">
               <Accordion.Header>
                 <Accordion.Trigger asChild>
@@ -66,7 +66,7 @@ export const Accordions = forwardRef(function Accordions(
   )
 })
 
-function Chevron(props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
+function Chevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 10 10"
