@@ -36,16 +36,18 @@ export const BlogPostCard = function BlogPostCard({
         className
       )}
     >
-      <div className="aspect-[4/3] overflow-hidden rounded-xl">
-        <Image
-          src={image?.src ?? ''}
-          height={349}
-          width={466}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          alt={image?.altText ?? ''}
-          className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
-        />
-      </div>
+      {image?.src != null && (
+        <div className="aspect-[4/3] overflow-hidden rounded-xl">
+          <Image
+            src={image.src}
+            height={349}
+            width={466}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            alt={image.altText}
+            className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        </div>
+      )}
 
       <h3 className="pb-1 pt-3 text-lg font-medium">{title}</h3>
 
@@ -61,8 +63,8 @@ export const BlogPostCard = function BlogPostCard({
             })}
           </time>
         )}
-        {date && author && <span className="after:mx-2 after:content-['•']" />}
-        {author && author}
+        {date && Boolean(author) && <span className="after:mx-2 after:content-['•']" />}
+        {Boolean(author) && author}
       </div>
     </Link>
   )

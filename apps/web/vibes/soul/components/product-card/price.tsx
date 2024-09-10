@@ -11,7 +11,6 @@ interface SalePrice {
 interface RangePrice {
   type: 'range'
   minValue: string
-
   maxValue: string
 }
 

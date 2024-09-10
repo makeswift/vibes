@@ -52,7 +52,7 @@ const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
-export const BlogPage = function BlogPage({ heroSlides, categories, newArrivals }: any) {
+export const BlogPage = function BlogPage() {
   return (
     <>
       <AnnouncementBar>
@@ -120,7 +120,7 @@ export const BlogPage = function BlogPage({ heroSlides, categories, newArrivals 
           address: 'info@mywebsite.com',
           phone: '+(1)408 123 4567',
         }}
-        copyright={`© ${new Date().getFullYear()} SOUL - Powered by Monogram`}
+        copyright={`© ${new Date().getFullYear().toString()} SOUL - Powered by Monogram`}
         paymentIcons={paymentIconsArray}
         socialMediaLinks={socialMediaLinks}
       />
