@@ -1,8 +1,8 @@
-import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import CompareProducts from '@/vibes/soul/components/compare-products'
-import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
-import Footer from '@/vibes/soul/components/footer'
-import Header from '@/vibes/soul/components/header'
+import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
+import { CompareProducts } from '@/vibes/soul/components/compare-products'
+import { FeaturedProductsCarousel } from '@/vibes/soul/components/featured-products-carousel'
+import { Footer } from '@/vibes/soul/components/footer'
+import { Header } from '@/vibes/soul/components/header'
 
 const locales = [
   { id: '1', region: 'US', language: 'EN' },
@@ -40,5 +40,3 @@ export const ProductsPage = function ProductsPage({
     </>
   )
 }
-
-export default ProductsPage

@@ -6,10 +6,10 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { X } from 'lucide-react'
 
-import Button from '@/vibes/soul/components/button'
-import CompareCard, { CompareCardSkeleton } from '@/vibes/soul/components/compare-card'
+import { Button } from '@/vibes/soul/components/button'
+import { CompareCard, CompareCardSkeleton } from '@/vibes/soul/components/compare-card'
 import { Product } from '@/vibes/soul/components/product-card'
-import SidePanel from '@/vibes/soul/components/side-panel'
+import { SidePanel } from '@/vibes/soul/components/side-panel'
 
 interface Props {
   compareProducts: Product[]
@@ -61,5 +61,3 @@ export const ComparePanel = function ComparePanel({ compareProducts }: Props) {
     />
   )
 }
-
-export default ComparePanel

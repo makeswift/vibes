@@ -3,14 +3,14 @@
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 interface Props {
   title: string
   images: string[]
 }
 
-const SlideCarousel = ({ title, images }: Props) => {
+export const SlideCarousel = ({ title, images }: Props) => {
   const [expandedImageIndex, setExpandedImageIndex] = useState(3)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -63,5 +63,3 @@ const SlideCarousel = ({ title, images }: Props) => {
     </section>
   )
 }
-
-export default SlideCarousel

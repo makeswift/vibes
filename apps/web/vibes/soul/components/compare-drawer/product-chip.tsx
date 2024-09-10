@@ -1,9 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
 import { Product } from '@/vibes/soul/components/product-card'
@@ -13,7 +12,7 @@ interface Props {
   setCompareProducts: React.Dispatch<React.SetStateAction<Product[]>>
 }
 
-const ProductChip = function ProductChip({ product, setCompareProducts }: Props) {
+export const ProductChip = function ProductChip({ product, setCompareProducts }: Props) {
   return (
     <button
       role="button"
@@ -45,5 +44,3 @@ const ProductChip = function ProductChip({ product, setCompareProducts }: Props)
     </button>
   )
 }
-
-export default ProductChip

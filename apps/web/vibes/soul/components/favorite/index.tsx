@@ -1,6 +1,6 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import Heart from '@/vibes/soul/components/favorite/heart'
+import { Heart } from '@/vibes/soul/components/favorite/heart'
 
 interface Props {
   checked?: boolean
@@ -25,5 +25,3 @@ export const Favorite = function Favorite({ checked, setChecked }: Props) {
     </label>
   )
 }
-
-export default Favorite

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import Checkbox from '@/vibes/soul/components/checkbox'
+import { Checkbox } from '@/vibes/soul/components/checkbox'
 import { Product } from '@/vibes/soul/components/compare-card'
 
 interface Props {
@@ -47,5 +47,3 @@ export const Compare = function Compare({ product, compareProducts, setComparePr
     </div>
   )
 }
-
-export default Compare

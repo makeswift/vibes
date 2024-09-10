@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 interface Image {
   src: string
@@ -98,5 +98,3 @@ export const BlogPostCardSkeleton = function BlogPostCardSkeleton({
     </div>
   )
 }
-
-export default BlogPostCard

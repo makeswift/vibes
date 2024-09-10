@@ -12,5 +12,3 @@ export const Icon = function Icon({ name, color, size, className = '' }: Icon) {
 
   return <LucideIcon color={color} size={size} strokeWidth={1} className={className} />
 }
-
-export default Icon

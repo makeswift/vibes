@@ -1,7 +1,7 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import Card, { CardProps, CardSkeleton } from '@/vibes/soul/components/card'
-import Carousel from '@/vibes/soul/components/carousel'
+import { Card, CardProps, CardSkeleton } from '@/vibes/soul/components/card'
+import { Carousel } from '@/vibes/soul/components/carousel'
 
 interface Props {
   cards: CardProps[]
@@ -18,5 +18,3 @@ export const CardCarousel = function CardCarousel({ cards, textContrast, classNa
     </Carousel>
   )
 }
-
-export default CardCarousel

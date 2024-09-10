@@ -1,4 +1,4 @@
-import Slideshow from '@/vibes/soul/components/slideshow'
+import { Slideshow } from '@/vibes/soul/components/slideshow'
 
 export const heroSlides = [
   {

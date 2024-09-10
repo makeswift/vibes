@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import Checkbox from '@/vibes/soul/components/checkbox'
+import { Checkbox } from '@/vibes/soul/components/checkbox'
 
 export default function Preview() {
   const [checked, setChecked] = useState(true)

@@ -2,9 +2,9 @@
 
 import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import Label from '@/vibes/soul/components/label'
+import { Label } from '@/vibes/soul/components/label'
 
 export interface Props extends ComponentPropsWithRef<'input'> {
   prepend?: string
@@ -39,5 +39,3 @@ export const Input = forwardRef(function Input(
     </div>
   )
 })
-
-export default Input

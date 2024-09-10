@@ -1,4 +1,4 @@
-import Card from '@/vibes/soul/components/card'
+import { Card } from '@/vibes/soul/components/card'
 
 export default function Preview() {
   return (

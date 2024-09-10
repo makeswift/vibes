@@ -1,4 +1,4 @@
-import FeaturedImage, { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
+import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/components/featured-image'
 
 export const featuredImage: FeaturedImageProps = {
   title: 'Loved by Women Everywhere',

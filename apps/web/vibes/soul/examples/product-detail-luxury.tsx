@@ -1,4 +1,4 @@
-import ProductDetail from '@/vibes/soul/components/product-detail'
+import { ProductDetail } from '@/vibes/soul/components/product-detail'
 
 export const product = {
   id: '1',

@@ -2,14 +2,14 @@
 
 import { useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import Button from '@/vibes/soul/components/button'
-import Favorite from '@/vibes/soul/components/favorite'
+import { Button } from '@/vibes/soul/components/button'
+import { Favorite } from '@/vibes/soul/components/favorite'
 import { Product } from '@/vibes/soul/components/product-card'
-import Price from '@/vibes/soul/components/product-card/price'
-import ProductGallery from '@/vibes/soul/components/product-detail/product-gallery'
-import Rating from '@/vibes/soul/components/rating'
+import { Price } from '@/vibes/soul/components/product-card/price'
+import { ProductGallery } from '@/vibes/soul/components/product-detail/product-gallery'
+import { Rating } from '@/vibes/soul/components/rating'
 
 interface Image {
   altText: string
@@ -70,5 +70,3 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
     </section>
   )
 }
-
-export default ProductDetail

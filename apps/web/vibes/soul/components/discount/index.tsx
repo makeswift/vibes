@@ -3,10 +3,10 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
-import Button from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/components/button'
 
 type Discount = {
   label: string
@@ -120,5 +120,3 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
     </section>
   )
 }
-
-export default Discount

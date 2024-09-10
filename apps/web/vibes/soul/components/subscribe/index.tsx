@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import InlineEmailForm from '@/vibes/soul/components/inline-email-form'
+import { InlineEmailForm } from '@/vibes/soul/components/inline-email-form'
 
 interface Props {
   image?: {
@@ -50,5 +50,3 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
     </section>
   )
 }
-
-export default Subscribe

@@ -1,4 +1,4 @@
-import Input from '@/vibes/soul/components/input'
+import { Input } from '@/vibes/soul/components/input'
 
 export default function Preview() {
   return (

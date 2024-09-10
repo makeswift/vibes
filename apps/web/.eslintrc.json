@@ -1,3 +1,30 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "plugin:@typescript-eslint/strict-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:jsx-a11y/recommended",
+    "next/core-web-vitals"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": true
+    }
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "never" }],
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-unnecessary-condition": "error",
+    "@typescript-eslint/strict-boolean-expressions": "error",
+    "complexity": ["error", 20],
+    "eqeqeq": ["error", "smart"],
+    "import/order": "error",
+    "no-empty": "error",
+    "no-shadow": "off",
+    "no-useless-computed-key": "error"
+  }
 }

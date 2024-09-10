@@ -1,4 +1,4 @@
-import BlogPostCard from '@/vibes/soul/components/blog-post-card'
+import { BlogPostCard } from '@/vibes/soul/components/blog-post-card'
 
 export default function Preview() {
   return (

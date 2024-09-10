@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import { Icon } from '@/vibes/soul/components/icon'
 
@@ -39,5 +39,3 @@ export const IconBlock = function IconBlock({ list }: IconBlock) {
     </section>
   )
 }
-
-export default IconBlock

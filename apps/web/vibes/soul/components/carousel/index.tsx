@@ -2,7 +2,7 @@
 
 import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
@@ -115,5 +115,3 @@ export const Carousel = ({
     </div>
   )
 }
-
-export default Carousel

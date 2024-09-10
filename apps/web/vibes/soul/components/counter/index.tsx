@@ -53,5 +53,3 @@ export const Counter = function Counter({ current = 0, max = 20 }: Props) {
     </div>
   )
 }
-
-export default Counter

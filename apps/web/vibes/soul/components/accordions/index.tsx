@@ -3,7 +3,7 @@
 import React, { ReactNode, Ref, forwardRef } from 'react'
 
 import * as Accordion from '@radix-ui/react-accordion'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 export type AccordionItem = {
   title: ReactNode
@@ -97,5 +97,3 @@ function Chevron(props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>)
     </svg>
   )
 }
-
-export default Accordions

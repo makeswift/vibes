@@ -1,12 +1,12 @@
-import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
-import Footer from '@/vibes/soul/components/footer'
-import Header from '@/vibes/soul/components/header'
-import IconBlock from '@/vibes/soul/components/icon-block'
-import ProductDescription from '@/vibes/soul/components/product-description'
-import ProductDetail from '@/vibes/soul/components/product-detail'
-import Reviews from '@/vibes/soul/components/reviews'
-import Subscribe from '@/vibes/soul/components/subscribe'
+import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
+import { FeaturedProductsCarousel } from '@/vibes/soul/components/featured-products-carousel'
+import { Footer } from '@/vibes/soul/components/footer'
+import { Header } from '@/vibes/soul/components/header'
+import { IconBlock } from '@/vibes/soul/components/icon-block'
+import { ProductDescription } from '@/vibes/soul/components/product-description'
+import { ProductDetail } from '@/vibes/soul/components/product-detail'
+import { Reviews } from '@/vibes/soul/components/reviews'
+import { Subscribe } from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
 import { footerLinks, logo } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
@@ -83,5 +83,3 @@ export const ProductPage = function ProductPage({
     </>
   )
 }
-
-export default ProductPage

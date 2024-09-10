@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
-import { Accordions } from '@/vibes/soul/components/accordions'
-import { AccordionItem } from '@/vibes/soul/components/accordions'
+import { AccordionItem, Accordions } from '@/vibes/soul/components/accordions'
 
 export interface Props {
   accordions: AccordionItem[]
@@ -45,5 +44,3 @@ export const ProductDescription = function ProductDescription({
     </div>
   )
 }
-
-export default ProductDescription

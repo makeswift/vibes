@@ -1,4 +1,4 @@
-import HomePage from '@/vibes/soul/components/page-home'
+import { HomePage } from '@/vibes/soul/components/page-home'
 import { cards } from '@/vibes/soul/examples/card-carousel-luxury'
 import { feature } from '@/vibes/soul/examples/feature-luxury'
 import { featuredImage } from '@/vibes/soul/examples/featured-image-luxury'

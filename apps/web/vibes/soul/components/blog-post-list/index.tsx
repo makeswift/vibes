@@ -1,7 +1,8 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import BlogPostCard, {
+import {
   BlogPost,
+  BlogPostCard,
   BlogPostCardSkeleton,
 } from '@/vibes/soul/components/blog-post-card'
 
@@ -21,5 +22,3 @@ export const BlogPostList = function BlogPostList({ posts, className = '' }: Pro
     </div>
   )
 }
-
-export default BlogPostList

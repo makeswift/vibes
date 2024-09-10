@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 
@@ -82,5 +82,3 @@ export const FeaturedImage = function FeaturedImage({
     </section>
   )
 }
-
-export default FeaturedImage

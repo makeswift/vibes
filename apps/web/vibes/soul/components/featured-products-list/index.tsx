@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import Button from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/components/button'
 import { Product } from '@/vibes/soul/components/product-card'
-import ProductList from '@/vibes/soul/components/products-list'
+import { ProductsList } from '@/vibes/soul/components/products-list'
 
 interface Link {
   label: string
@@ -44,10 +44,8 @@ export const FeaturedProductsList = function FeaturedProductsList({
           )}
         </div>
 
-        <ProductList products={products} className="4xl:w-1/2 @6xl:w-8/12" />
+        <ProductsList products={products} className="4xl:w-1/2 @6xl:w-8/12" />
       </div>
     </section>
   )
 }
-
-export default FeaturedProductsList
