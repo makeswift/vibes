@@ -1,8 +1,9 @@
+import { Vibe } from '@/vibes/schema'
+
 import { brands } from './brands'
 import { components } from './components'
 import { examples } from './examples'
 import { navigation } from './navigation'
-import { Vibe } from '@/vibes/schema'
 
 export default {
   name: 'Soul',
