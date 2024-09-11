@@ -14,7 +14,7 @@ interface Link {
   label: string
 }
 
-interface Section {
+export interface Section {
   title?: string
   links: Link[]
 }

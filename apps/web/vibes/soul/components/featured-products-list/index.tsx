@@ -9,7 +9,7 @@ interface Link {
   href: string
 }
 
-interface Props {
+export interface FeaturedProductsListProps {
   title: string
   description?: string
   cta?: Link
@@ -21,7 +21,7 @@ export const FeaturedProductsList = function FeaturedProductsList({
   description,
   cta,
   products,
-}: Props) {
+}: FeaturedProductsListProps) {
   return (
     <section className="bg-background @container">
       <div className="relative mx-auto flex max-w-screen-2xl flex-col gap-6 py-10 @4xl:flex-row @4xl:py-24 @5xl:px-20">
