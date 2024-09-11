@@ -88,7 +88,7 @@ export const ProductCard = function ProductCard({
             <span className="font-normal text-contrast-400">{subtitle}</span>
           )}
         </h3>
-        {price && <Price price={price} />}
+        {price !== undefined && <Price price={price} />}
       </div>
     </Link>
   )

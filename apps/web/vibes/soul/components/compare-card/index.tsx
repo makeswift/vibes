@@ -20,7 +20,7 @@ export interface Product {
   name: string
   href: string
   image?: Image
-  price: ProductPrice
+  price?: ProductPrice
   subtitle?: string
   badge?: string
   description?: string
@@ -72,7 +72,7 @@ export const CompareCard = function CompareCard({
             <span className="font-normal text-contrast-400">{subtitle}</span>
           )}
         </h3>
-        <Price price={price} />
+        {price !== undefined && <Price price={price} />}
       </div>
       <Button className="mb-8 w-full">Add to Cart</Button>
       <hr className="mb-4" />
