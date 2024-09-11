@@ -1,6 +1,6 @@
 import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
-import { Cart } from '@/vibes/soul/components/cart'
-import { Footer } from '@/vibes/soul/components/footer'
+import { Cart, CartProduct } from '@/vibes/soul/components/cart'
+import { Footer, Section } from '@/vibes/soul/components/footer'
 import {
   Amex,
   ApplePay,
@@ -11,8 +11,20 @@ import {
   Visa,
 } from '@/vibes/soul/components/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
-import { Header } from '@/vibes/soul/components/header'
+import { Header, Links } from '@/vibes/soul/components/header'
 import { Subscribe } from '@/vibes/soul/components/subscribe'
+
+interface Image {
+  src: string
+  altText: string
+}
+interface CartPageProps {
+  headerLinks: Links[]
+  logo: string | Image
+  products: CartProduct[]
+  footerLinks: Section[]
+  copyright: string
+}
 
 const socialMediaLinks = [
   {
@@ -56,7 +68,7 @@ export const CartPage = function CartPage({
   products,
   footerLinks,
   copyright,
-}: any) {
+}: CartPageProps) {
   return (
     <>
       <AnnouncementBar>

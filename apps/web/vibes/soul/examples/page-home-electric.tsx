@@ -122,7 +122,6 @@ export const newArrivals: Product[] = [
 ]
 
 // TODO: New Arrivals
-
 // TODO: Recently Viewed
 
 export const featuredImageII: FeaturedImageProps = {
@@ -135,8 +134,6 @@ export const featuredImageII: FeaturedImageProps = {
   },
   cta: { href: '#', label: 'Shop Now' },
 }
-
-// TODO: Footer
 
 export default function Preview() {
   return (

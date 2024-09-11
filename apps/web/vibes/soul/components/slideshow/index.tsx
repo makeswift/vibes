@@ -57,12 +57,12 @@ const useProgressButton = (
     [emblaApi, onButtonClick]
   )
 
-  const onInit = useCallback((emblaApi: EmblaCarouselType) => {
-    setScrollSnaps(emblaApi.scrollSnapList())
+  const onInit = useCallback((emblaAPI: EmblaCarouselType) => {
+    setScrollSnaps(emblaAPI.scrollSnapList())
   }, [])
 
-  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    setSelectedIndex(emblaApi.selectedScrollSnap())
+  const onSelect = useCallback((emblaAPI: EmblaCarouselType) => {
+    setSelectedIndex(emblaAPI.selectedScrollSnap())
   }, [])
 
   useEffect(() => {
@@ -91,7 +91,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
   const [playCount, setPlayCount] = useState(0)
 
   const toggleAutoplay = useCallback(() => {
-    const autoplay = emblaApi?.plugins()?.autoplay
+    const autoplay = emblaApi?.plugins().autoplay
     if (!autoplay) return
 
     const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play
@@ -99,14 +99,14 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
   }, [emblaApi])
 
   const resetAutoplay = useCallback(() => {
-    const autoplay = emblaApi?.plugins()?.autoplay
+    const autoplay = emblaApi?.plugins().autoplay
     if (!autoplay) return
 
     autoplay.reset()
   }, [emblaApi])
 
   useEffect(() => {
-    const autoplay = emblaApi?.plugins()?.autoplay
+    const autoplay = emblaApi?.plugins().autoplay
     if (!autoplay) return
 
     setIsPlaying(autoplay.isPlaying())
@@ -115,8 +115,12 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
         setIsPlaying(true)
         setPlayCount(playCount + 1)
       })
-      .on('autoplay:stop', () => setIsPlaying(false))
-      .on('reInit', () => setIsPlaying(autoplay.isPlaying()))
+      .on('autoplay:stop', () => {
+        setIsPlaying(false)
+      })
+      .on('reInit', () => {
+        setIsPlaying(autoplay.isPlaying())
+      })
   }, [emblaApi, playCount])
 
   return (
@@ -128,7 +132,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
     >
       <div ref={emblaRef} className="h-full">
         <div className="flex h-full">
-          {slides?.map(({ title, description, image, cta }, idx) => {
+          {slides.map(({ title, description, image, cta }, idx) => {
             return (
               <div key={idx} className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full">
                 <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pb-5 pt-20 text-background">
@@ -136,8 +140,8 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                     <h1 className="mb-2 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
                       {title}
                     </h1>
-                    {description && <p className="mb-4 max-w-xl">{description}</p>}
-                    {cta?.href && (
+                    {description !== undefined && <p className="mb-4 max-w-xl">{description}</p>}
+                    {cta?.href !== undefined && (
                       <Button variant="tertiary" className="my-4">
                         {cta.label}
                       </Button>
@@ -145,10 +149,10 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                   </div>
                 </div>
 
-                {image?.src && (
+                {image?.src !== undefined && (
                   <Image
                     src={image.src}
-                    placeholder={image.blurDataUrl ? 'blur' : 'empty'}
+                    placeholder={image.blurDataUrl !== undefined ? 'blur' : 'empty'}
                     blurDataURL={image.blurDataUrl}
                     alt={image.altText}
                     fill
@@ -169,7 +173,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
         {scrollSnaps.map((_: number, index: number) => {
           return (
             <button
-              aria-label={`View image number ${index + 1}`}
+              aria-label={`View image number ${String(index + 1)}`}
               key={index}
               className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
               onClick={() => {
@@ -180,7 +184,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
               <div className="relative overflow-hidden">
                 {/* White Bar - Current Index Indicator / Progress Bar */}
                 <div
-                  key={`progress-${playCount}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
+                  key={`progress-${String(playCount)}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
                   className={clsx(
                     'absolute h-0.5 bg-background',
                     'opacity-0 fill-mode-forwards',
@@ -190,14 +194,14 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                       : 'ease-out animate-out fade-out'
                   )}
                   style={{
-                    animationDuration: `${index === selectedIndex ? `${interval}ms` : '200ms'}`,
-                    width: `${175 / slides.length}px`,
+                    animationDuration: index === selectedIndex ? `${String(interval)}ms` : '200ms',
+                    width: `${String(175 / slides.length)}px`,
                   }}
                 />
                 {/* Grey Bar BG */}
                 <div
                   className="h-0.5 bg-background opacity-30"
-                  style={{ width: `${175 / slides.length}px` }}
+                  style={{ width: `${String(175 / slides.length)}px` }}
                 />
               </div>
             </button>
@@ -206,8 +210,8 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
 
         {/* Carousel Count - "01/03" */}
         <span className="ml-auto mr-2 mt-px font-mono text-xs">
-          {selectedIndex + 1 < 10 ? `0${selectedIndex + 1}` : selectedIndex + 1}/
-          {slides.length < 10 ? `0${slides.length}` : slides.length}
+          {selectedIndex + 1 < 10 ? `0${String(selectedIndex + 1)}` : selectedIndex + 1}/
+          {slides.length < 10 ? `0${String(slides.length)}` : slides.length}
         </span>
 
         {/* Stop / Start Button */}

@@ -24,6 +24,21 @@ import { Product } from '@/vibes/soul/components/product-card'
 import { Slide, Slideshow } from '@/vibes/soul/components/slideshow'
 import { Subscribe } from '@/vibes/soul/components/subscribe'
 
+interface HomePageProps {
+  headerLinks: Links[]
+  logo: string | Image
+  heroSlides: Slide[]
+  categories: CardProps[]
+  textContrast?: 'light' | 'dark'
+  featuredProducts: FeaturedProductsListProps
+  newArrivals?: Product[]
+  featuredImage: FeaturedImageProps
+  feature: FeatureProps
+  featuredImageII: FeaturedImageProps
+  footerLinks: Section[]
+  copyright: string
+}
+
 const socialMediaLinks = [
   {
     href: '#',
@@ -78,20 +93,7 @@ export const HomePage = function HomePage({
   featuredImageII,
   footerLinks,
   copyright,
-}: {
-  headerLinks: Links[]
-  logo: string | Image
-  heroSlides: Slide[]
-  categories: CardProps[]
-  textContrast?: 'light' | 'dark'
-  featuredProducts: FeaturedProductsListProps
-  newArrivals?: Product[]
-  featuredImage: FeaturedImageProps
-  feature: FeatureProps
-  featuredImageII: FeaturedImageProps
-  footerLinks: Section[]
-  copyright: string
-}) {
+}: HomePageProps) {
   return (
     <>
       <AnnouncementBar>
