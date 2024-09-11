@@ -54,7 +54,7 @@ export const Feature = function Feature({ image, title, description, grid, cta }
 
             {grid !== undefined && (
               <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
-                {grid.map(({ title, description, icon }, idx) => {
+                {grid.map(({ title: itemTitle, description: itemDescription, icon }, idx) => {
                   return (
                     <li key={idx} className="flex gap-4 @sm/content:items-center">
                       <Icon
@@ -63,10 +63,10 @@ export const Feature = function Feature({ image, title, description, grid, cta }
                       />
                       <div className="flex flex-col">
                         <span className="-mt-1.5 text-lg font-medium @sm/content:-mt-1 @md/content:text-xl">
-                          {title}
+                          {itemTitle}
                         </span>
                         <span className="text-xs opacity-80 @md/content:text-sm">
-                          {description}
+                          {itemDescription}
                         </span>
                       </div>
                     </li>
