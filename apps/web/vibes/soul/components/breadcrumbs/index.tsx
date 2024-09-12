@@ -5,6 +5,7 @@ import { clsx } from 'clsx'
 import { ChevronRight } from 'lucide-react'
 
 export interface Breadcrumb {
+  id: string
   label: string
   href: string
 }
@@ -20,10 +21,10 @@ export const Breadcrumbs = function Breadcrumbs({ breadcrumbs, className }: Brea
       aria-label="breadcrumb"
       className={clsx('flex flex-wrap items-center gap-x-2 text-sm @4xl:text-base', className)}
     >
-      {breadcrumbs.map(({ label, href }, idx) => {
+      {breadcrumbs.map(({ id, label, href }, idx) => {
         if (idx < breadcrumbs.length - 1) {
           return (
-            <Fragment key={idx}>
+            <Fragment key={id}>
               <Link
                 href={href}
                 className="rounded-md ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
@@ -35,7 +36,7 @@ export const Breadcrumbs = function Breadcrumbs({ breadcrumbs, className }: Brea
           )
         } else {
           return (
-            <span key={idx} className="text-contrast-500">
+            <span key={id} className="text-contrast-500">
               {label}
             </span>
           )
