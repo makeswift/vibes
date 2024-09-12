@@ -36,8 +36,8 @@ export const BlogPostCard = function BlogPostCard({
         className
       )}
     >
-      {image?.src != null && (
-        <div className="aspect-[4/3] overflow-hidden rounded-xl">
+      <div className="aspect-[4/3] overflow-hidden rounded-xl bg-contrast-100">
+        {image?.src != null && (
           <Image
             src={image.src}
             height={349}
@@ -46,13 +46,10 @@ export const BlogPostCard = function BlogPostCard({
             alt={image.altText}
             className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
           />
-        </div>
-      )}
-
+        )}
+      </div>
       <h3 className="pb-1 pt-3 text-lg font-medium">{title}</h3>
-
       {content && <p className="line-clamp-3 text-contrast-400">{content}</p>}
-
       <div className="flex flex-wrap items-center">
         {date && (
           <time dateTime={date}>
