@@ -41,18 +41,22 @@ interface HomePageProps {
 
 const socialMediaLinks = [
   {
+    id: '1',
     href: '#',
     icon: <Facebook />,
   },
   {
+    id: '2',
     href: '#',
     icon: <X />,
   },
   {
+    id: '3',
     href: '#',
     icon: <Instagram />,
   },
   {
+    id: '4',
     href: '#',
     icon: <Youtube />,
   },
