@@ -44,11 +44,15 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
   }
 
   const copy = async () => {
-    await navigator.clipboard.writeText(shuffledCodes[shuffledCodes.length - 2].code)
-    setCopied(true)
-    setTimeout(() => {
-      setCopied(false)
-    }, 2000)
+    try {
+      await navigator.clipboard.writeText(shuffledCodes[shuffledCodes.length - 2].code)
+      setCopied(true)
+      setTimeout(() => {
+        setCopied(false)
+      }, 2000)
+    } catch (error) {
+      console.log('Failed to copy:', error)
+    }
   }
 
   return (
@@ -75,6 +79,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
         <X className="h-6 w-6" />
       </button>
 
+      {/* Desktop Version */}
       <button
         onClick={() => {
           if (isSpun) {
@@ -83,41 +88,101 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
             setSpin(true)
           }
         }}
-        className="z-10 m-5 flex w-full cursor-pointer flex-col items-center justify-between gap-10 overflow-hidden rounded-[24px] transition-transform @4xl:h-[100px] @4xl:max-w-4xl @4xl:flex-row @4xl:bg-primary-shadow @4xl:active:scale-[0.99]"
+        className="z-10 m-5 hidden h-24 w-full max-w-4xl cursor-pointer items-center justify-between gap-10 overflow-hidden rounded-3xl bg-primary-shadow transition-transform active:scale-[0.99] @4xl:flex"
       >
-        <h2 className="flex w-full select-none items-center justify-center text-4xl font-medium @4xl:justify-start @4xl:px-6 @4xl:text-[46px]">
-          {isSpun ? (copied ? 'Copied!' : `Copy discount code`) : 'Spin for discount'}
-        </h2>
-        <div className="flex w-full max-w-xs flex-col gap-4 rounded-[24px] bg-background px-6 pb-6 @4xl:p-0">
-          <div
-            className="relative h-[100px] w-full overflow-hidden bg-background text-foreground before:absolute
+        <DiscountUI
+          isSpun={isSpun}
+          copied={copied}
+          spin={spin}
+          setSpin={setSpin}
+          discounts={discounts}
+          shuffledCodes={shuffledCodes}
+          copy={copy}
+        />
+      </button>
+
+      {/* Mobile Version */}
+      <div className="z-10 m-5 flex w-full max-w-xs cursor-pointer flex-col items-center justify-between overflow-hidden rounded-3xl transition-transform @4xl:hidden">
+        <DiscountUI
+          isSpun={isSpun}
+          copied={copied}
+          spin={spin}
+          setSpin={setSpin}
+          discounts={discounts}
+          shuffledCodes={shuffledCodes}
+          copy={copy}
+          renderButton
+        />
+      </div>
+    </section>
+  )
+}
+
+const DiscountUI = ({
+  isSpun,
+  copied,
+  spin,
+  setSpin,
+  discounts,
+  shuffledCodes,
+  copy,
+  renderButton,
+}: {
+  isSpun: boolean
+  copied: boolean
+  spin: boolean
+  setSpin: (value: boolean) => void
+  discounts: DiscountType[]
+  shuffledCodes: DiscountType[]
+  copy: () => Promise<void>
+  renderButton?: boolean
+}) => {
+  return (
+    <>
+      <h2 className="flex min-h-20 w-full select-none items-center justify-center bg-primary-shadow py-3 text-center text-3xl font-medium leading-none @4xl:mb-0 @4xl:justify-start @4xl:bg-transparent @4xl:px-6 @4xl:text-5xl">
+        {isSpun ? (copied ? 'Copied!' : `Copy discount code`) : 'Spin for discount'}
+      </h2>
+      <div className="flex w-full max-w-xs flex-col gap-4 rounded-b-3xl bg-background px-6 pb-6 pt-4 @4xl:rounded-t-3xl @4xl:p-0">
+        <div
+          className="relative h-[100px] w-full overflow-hidden bg-background text-foreground before:absolute
             before:left-0 before:top-0 before:z-10 before:h-8 before:w-full before:bg-gradient-to-b before:from-background before:to-transparent after:absolute
-            after:bottom-0 after:left-0 after:z-10 after:h-8 after:w-full after:bg-gradient-to-t after:from-background after:to-transparent @4xl:max-w-[280px]
+            after:bottom-0 after:left-0 after:z-10 after:h-8 after:w-full after:bg-gradient-to-t after:from-background after:to-transparent @4xl:max-w-72
           "
+        >
+          <div
+            className="absolute -top-8 left-0 w-full transition-all [transition-duration:5000ms] [transition-timing-function:cubic-bezier(0.285,-0.125,0.050,1.130)]"
+            style={{
+              transform: spin
+                ? `translateY(calc(-100% + ${discounts.length * 33}px))`
+                : 'translateY(0)',
+            }}
           >
-            <div
-              className="absolute -top-8 left-0 w-full transition-all [transition-duration:5000ms] [transition-timing-function:cubic-bezier(0.285,-0.125,0.050,1.130)]"
-              style={{
-                transform: spin
-                  ? `translateY(calc(-100% + ${discounts.length * 33}px))`
-                  : 'translateY(0)',
-              }}
-            >
-              {shuffledCodes.map((discount, index) => (
-                <div
-                  key={index}
-                  className="flex select-none items-center justify-center py-1 text-[46px] font-medium uppercase leading-[1] tracking-[-1px] text-foreground transition-transform duration-500 @4xl:justify-end @4xl:px-6"
-                >
-                  {discount.label}
-                </div>
-              ))}
-            </div>
+            {shuffledCodes.map((discount, index) => (
+              <div
+                key={index}
+                className="flex select-none items-center justify-center py-1 text-5xl font-medium uppercase leading-[1] tracking-[-1px] text-foreground transition-transform duration-500 @4xl:justify-end @4xl:px-6"
+              >
+                {discount.label}
+              </div>
+            ))}
           </div>
-          <Button variant="secondary" className="w-full select-none justify-center @4xl:hidden">
+        </div>
+        {renderButton === true && (
+          <Button
+            variant="secondary"
+            className="w-full select-none justify-center"
+            onClick={() => {
+              if (isSpun) {
+                void copy()
+              } else {
+                setSpin(true)
+              }
+            }}
+          >
             {isSpun ? 'Copy' : 'Spin'}
           </Button>
-        </div>
-      </button>
-    </section>
+        )}
+      </div>
+    </>
   )
 }
