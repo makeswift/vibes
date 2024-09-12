@@ -23,12 +23,15 @@ interface Image {
 }
 
 export interface Links {
+  id: string
   label: string
   href: string
   groups?: {
+    id: string
     label?: string
     href?: string
     links: {
+      id: string
       label: string
       href: string
     }[]
@@ -164,7 +167,7 @@ export const Header = forwardRef(function Header(
           {/* Top Level Nav Links */}
           <ul className="relative flex items-stretch pl-2.5" ref={container}>
             {links.map((item, i) => (
-              <li key={i}>
+              <li key={item.id}>
                 <Link
                   href={item.href}
                   onMouseOver={() => {
@@ -361,8 +364,8 @@ export const Header = forwardRef(function Header(
         >
           <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
             {/* Mobile Dropdown Links */}
-            {links.map((item, i) => (
-              <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
+            {links.map(item => (
+              <ul key={item.id} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
                 {item.label && (
                   <li>
                     {item.href ? (
@@ -429,9 +432,9 @@ export const Header = forwardRef(function Header(
                       )}
                     </li>
                   )}
-                  {group.links.map((link, i) => (
+                  {group.links.map(link => (
                     // Third Level Links
-                    <li key={i}>
+                    <li key={link.id}>
                       <Link
                         href={link.href}
                         className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"

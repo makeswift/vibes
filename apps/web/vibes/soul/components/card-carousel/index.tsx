@@ -13,7 +13,7 @@ export const CardCarousel = function CardCarousel({ cards, textContrast, classNa
   return (
     <Carousel className={clsx('pt-7', className)}>
       {cards.length > 0
-        ? cards.map(card => <Card key={card.title} {...card} textContrast={textContrast} />)
+        ? cards.map(card => <Card key={card.id} {...card} textContrast={textContrast} />)
         : Array.from({ length: 5 }).map((_, index) => <CardSkeleton key={index} />)}
     </Carousel>
   )

@@ -2,81 +2,91 @@ import { Header } from '@/vibes/soul/components/header'
 
 export const headerLinks = [
   {
+    id: '1',
     label: 'Shop',
     href: '#',
     groups: [
       {
+        id: '1',
         label: 'Bike Bags',
         href: '#',
         links: [
-          { label: 'New Arrivals', href: '#' },
-          { label: 'Best Sellers', href: '#' },
-          { label: 'Sale', href: '#' },
+          { id: '1', label: 'New Arrivals', href: '#' },
+          { id: '2', label: 'Best Sellers', href: '#' },
+          { id: '3', label: 'Sale', href: '#' },
         ],
       },
       {
+        id: '2',
         label: 'Bags You Wear',
         href: '#',
         links: [
-          { label: 'Small', href: '#' },
-          { label: 'Medium', href: '#' },
-          { label: 'Large', href: '#' },
+          { id: '1', label: 'Small', href: '#' },
+          { id: '2', label: 'Medium', href: '#' },
+          { id: '3', label: 'Large', href: '#' },
         ],
       },
       {
+        id: '3',
         label: 'Camera Straps',
         href: '#',
         links: [
-          { label: 'Bright Direct', href: '#' },
-          { label: 'Bright Indirect', href: '#' },
-          { label: 'Low Light', href: '#' },
+          { id: '1', label: 'Bright Direct', href: '#' },
+          { id: '2', label: 'Bright Indirect', href: '#' },
+          { id: '3', label: 'Low Light', href: '#' },
         ],
       },
     ],
   },
   {
+    id: '2',
     label: 'Journal',
     href: '#',
     groups: [
       {
+        id: '1',
         label: 'Featured',
         href: '#',
         links: [
-          { label: 'Best Sellers', href: '#' },
-          { label: 'Shop All', href: '#' },
+          { id: '1', label: 'Best Sellers', href: '#' },
+          { id: '2', label: 'Shop All', href: '#' },
         ],
       },
       {
+        id: '2',
         label: 'Clear',
         href: '#',
         links: [
-          { label: 'Desk Plants', href: '#' },
-          { label: 'Low Light Plants', href: '#' },
-          { label: 'Pet Friendly', href: '#' },
+          { id: '1', label: 'Desk Plants', href: '#' },
+          { id: '2', label: 'Low Light Plants', href: '#' },
+          { id: '3', label: 'Pet Friendly', href: '#' },
         ],
       },
       {
+        id: '3',
         label: 'Outdoor',
         href: '#',
         links: [
-          { label: 'Small', href: '#' },
-          { label: 'Medium', href: '#' },
-          { label: 'Large', href: '#' },
+          { id: '1', label: 'Small', href: '#' },
+          { id: '2', label: 'Medium', href: '#' },
+          { id: '3', label: 'Large', href: '#' },
         ],
       },
     ],
   },
   {
+    id: '3',
     label: 'About',
     href: '#',
     groups: [
       {
+        id: '1',
         href: '#',
         links: [
-          { label: 'Our Story', href: '#' },
-          { label: 'Policies', href: '#' },
-          { label: 'Retailers', href: '#' },
-          { label: 'Press', href: '#' },
+          { id: '1', label: 'Our Story', href: '#' },
+          { id: '2', label: 'Policies', href: '#' },
+          { id: '3', label: 'Retailers', href: '#' },
+          { id: '4', label: 'Press', href: '#' },
         ],
       },
     ],

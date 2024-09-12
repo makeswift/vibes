@@ -12,48 +12,55 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/
 
 export const footerLinks = [
   {
+    id: '1',
     title: 'Categories',
     links: [
-      { label: 'Small Plants', href: '#' },
-      { label: 'Low Maintenance', href: '#' },
-      { label: 'Indestructible', href: '#' },
-      { label: 'Succulents', href: '#' },
+      { id: '1', label: 'Small Plants', href: '#' },
+      { id: '2', label: 'Low Maintenance', href: '#' },
+      { id: '3', label: 'Indestructible', href: '#' },
+      { id: '4', label: 'Succulents', href: '#' },
     ],
   },
   {
+    id: '2',
     title: 'Company',
     links: [
-      { label: 'About', href: '#' },
-      { label: 'Stories', href: '#' },
-      { label: 'Careers', href: '#' },
-      { label: 'Stores', href: '#' },
+      { id: '1', label: 'About', href: '#' },
+      { id: '2', label: 'Stories', href: '#' },
+      { id: '3', label: 'Careers', href: '#' },
+      { id: '4', label: 'Stores', href: '#' },
     ],
   },
   {
+    id: '3',
     title: 'Help & Support',
     links: [
-      { label: 'FAQs', href: '#' },
-      { label: 'Contact Us', href: '#' },
-      { label: 'Returns', href: '#' },
-      { label: 'Shipping', href: '#' },
+      { id: '1', label: 'FAQs', href: '#' },
+      { id: '2', label: 'Contact Us', href: '#' },
+      { id: '3', label: 'Returns', href: '#' },
+      { id: '4', label: 'Shipping', href: '#' },
     ],
   },
 ]
 
 const socialMediaLinks = [
   {
+    id: '1',
     href: '#',
     icon: <Facebook />,
   },
   {
+    id: '2',
     href: '#',
     icon: <X />,
   },
   {
+    id: '3',
     href: '#',
     icon: <Instagram />,
   },
   {
+    id: '4',
     href: '#',
     icon: <Youtube />,
   },
