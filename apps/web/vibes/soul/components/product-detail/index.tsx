@@ -12,6 +12,7 @@ import { ProductGallery } from '@/vibes/soul/components/product-detail/product-g
 import { Rating } from '@/vibes/soul/components/rating'
 
 interface Image {
+  id: string
   altText: string
   src: string
 }
