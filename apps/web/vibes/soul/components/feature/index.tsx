@@ -52,7 +52,7 @@ export const Feature = function Feature({ image, title, description, grid, cta }
             <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">{title}</h2>
             <p className=" pb-2">{description}</p>
 
-            {grid !== undefined && (
+            {grid != null && (
               <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
                 {grid.map(({ title: itemTitle, description: itemDescription, icon }, idx) => {
                   return (

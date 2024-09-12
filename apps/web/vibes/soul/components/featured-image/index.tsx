@@ -52,7 +52,7 @@ export const FeaturedImage = function FeaturedImage({
             alt={image.altText}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
-            placeholder={image.blurDataUrl !== undefined ? 'blur' : 'empty'}
+            placeholder={image.blurDataUrl != null ? 'blur' : 'empty'}
             blurDataURL={image.blurDataUrl}
             className="object-cover"
           />

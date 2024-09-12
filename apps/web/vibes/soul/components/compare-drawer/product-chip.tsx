@@ -16,17 +16,15 @@ export const ProductChip = function ProductChip({ product, setCompareProducts }:
   return (
     <button
       aria-label="Remove product"
-      onClick={() => {
-        setCompareProducts((prevProducts: Product[]) => {
+      onClick={() => setCompareProducts((prevProducts: Product[]) => {
           return prevProducts.filter(p => p.id !== product.id)
-        })
-      }}
+      })}
       className={clsx(
         'group flex items-center gap-3 whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold transition-all duration-150 hover:bg-contrast-100',
         'ring-primary focus:outline-0 focus:ring-2'
       )}
     >
-      {product.image?.src !== undefined && (
+      {product.image?.src != null && (
         <Image
           src={product.image.src}
           alt={product.image.altText}

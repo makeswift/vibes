@@ -140,8 +140,8 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                     <h1 className="mb-2 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
                       {title}
                     </h1>
-                    {description !== undefined && <p className="mb-4 max-w-xl">{description}</p>}
-                    {cta?.href !== undefined && (
+                    {description != null && <p className="mb-4 max-w-xl">{description}</p>}
+                    {cta?.href != null && (
                       <Button variant="tertiary" className="my-4">
                         {cta.label}
                       </Button>
@@ -149,10 +149,10 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                   </div>
                 </div>
 
-                {image?.src !== undefined && (
+                {image?.src != null && (
                   <Image
                     src={image.src}
-                    placeholder={image.blurDataUrl !== undefined ? 'blur' : 'empty'}
+                    placeholder={image.blurDataUrl != null ? 'blur' : 'empty'}
                     blurDataURL={image.blurDataUrl}
                     alt={image.altText}
                     fill

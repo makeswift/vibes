@@ -14,8 +14,8 @@ export const Button = function Button({
   variant = 'primary',
   size = 'default',
   onClick,
-  loading,
-  disabled,
+  loading = false,
+  disabled = false,
   className,
   children = 'Button',
   asChild = false,
@@ -41,7 +41,7 @@ export const Button = function Button({
         'after:absolute after:inset-0 after:z-0 after:h-full after:w-full after:rounded-full',
         'after:ease-[cubic-bezier(0.075,0.365,0.000,0.995)] after:transition-[opacity,transform] after:duration-500',
         'after:-translate-x-[110%]',
-        !Boolean(loading) && !Boolean(disabled) && 'hover:after:translate-x-0',
+        !loading && !disabled && 'hover:after:translate-x-0',
         {
           primary: 'after:bg-white/40',
           secondary: 'after:bg-background',
@@ -51,7 +51,7 @@ export const Button = function Button({
           default: 'after:h-[50px]',
           small: 'after:h-[37px]',
         }[size],
-        Boolean(disabled) && 'cursor-not-allowed opacity-50',
+        disabled && 'cursor-not-allowed opacity-50',
         className
       )}
       onClick={onClick}
@@ -63,7 +63,7 @@ export const Button = function Button({
         <div
           className={clsx(
             'relative z-50 flex h-full items-center justify-center gap-2 transition-colors',
-            Boolean(loading) && 'opacity-0',
+            loading && 'opacity-0',
             {
               default: 'text-base [&>*]:px-6 [&>*]:py-[13px]',
               small: 'text-sm [&>*]:px-4 [&>*]:py-2',
@@ -75,7 +75,7 @@ export const Button = function Button({
         </div>
 
         {/* Loading */}
-        {Boolean(loading) && (
+        {loading && (
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <Loader2
               className={clsx('animate-spin', variant === 'tertiary' && 'text-foreground')}

@@ -59,14 +59,12 @@ export const Carousel = ({
       className={clsx('mx-auto flex w-full max-w-screen-2xl flex-col gap-6 @container', className)}
     >
       {/* Carousel Content */}
-      {Boolean(children) && (
-        <div
-          className="w-full overflow-hidden px-3 pb-2 pt-6 @xl:px-6 @4xl:pt-8 @5xl:px-20"
-          ref={emblaRef}
-        >
-          <div className={clsx('flex gap-2 @4xl:gap-5', contentClassName)}>{children}</div>
-        </div>
-      )}
+      <div
+        className="w-full overflow-hidden px-3 pb-2 pt-6 @xl:px-6 @4xl:pt-8 @5xl:px-20"
+        ref={emblaRef}
+      >
+        <div className={clsx('flex gap-2 @4xl:gap-5', contentClassName)}>{children}</div>
+      </div>
 
       <div className="flex items-center justify-between px-3 pb-9 @xl:px-6 @4xl:pb-16 @5xl:px-20">
         {/* ScrollBar */}

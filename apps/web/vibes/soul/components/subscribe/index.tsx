@@ -32,7 +32,7 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
         <div
           className={clsx(
             'mx-3 flex items-center gap-y-12 text-foreground @xl:mx-6 @3xl:w-full @5xl:mx-20',
-            image?.src !== undefined
+            image?.src != null
               ? 'flex-col py-10 @3xl:gap-y-16'
               : 'flex-col gap-x-10 border-t border-t-contrast-100 py-20 @2xl:flex-row'
           )}

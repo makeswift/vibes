@@ -59,13 +59,13 @@ export const Footer = function Footer({
         <div className="mx-3 flex flex-col justify-between gap-10 border-t border-t-contrast-100 pt-16 @xl:mx-6 @xl:py-20 @2xl:flex-row @5xl:mx-20">
           <div className="flex flex-col @2xl:w-1/3">
             {/* Contact Information */}
-            {contactInformation?.address !== undefined ||
-            contactInformation?.phone !== undefined ? (
+            {contactInformation?.address != null ||
+            contactInformation?.phone != null ? (
               <div className="text-[20px] font-medium @lg:text-2xl">
                 <h3 className="text-contrast-300">Contact Us</h3>
                 <div>
-                  {contactInformation.address !== undefined && <p>{contactInformation.address}</p>}
-                  {contactInformation.phone !== undefined && <p>{contactInformation.phone}</p>}
+                  {contactInformation.address != null && <p>{contactInformation.address}</p>}
+                  {contactInformation.phone != null && <p>{contactInformation.phone}</p>}
                 </div>
               </div>
             ) : (
@@ -79,7 +79,7 @@ export const Footer = function Footer({
                     {logo}
                   </span>
                 ) : (
-                  logo?.src !== undefined && (
+                  logo?.src != null && (
                     <Image
                       src={logo.src}
                       fill
@@ -119,7 +119,7 @@ export const Footer = function Footer({
                     key={i}
                     className="flex-1 basis-full pr-10 text-[15px] last:pr-0 @sm:basis-1/3 @2xl:pr-10 @4xl:max-w-[170px] @4xl:basis-auto"
                   >
-                    {title !== undefined && <span className="mb-8 block font-medium">{title}</span>}
+                    {title != null && <span className="mb-8 block font-medium">{title}</span>}
 
                     <ul>
                       {links.map((link, idx) => {

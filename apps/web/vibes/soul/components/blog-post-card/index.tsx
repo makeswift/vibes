@@ -63,8 +63,8 @@ export const BlogPostCard = function BlogPostCard({
             })}
           </time>
         )}
-        {date && author !== undefined && <span className="after:mx-2 after:content-['•']" />}
-        {author !== undefined && <span>author</span>}
+        {date && author != null && <span className="after:mx-2 after:content-['•']" />}
+        {author != null && <span>{author}</span>}
       </div>
     </Link>
   )

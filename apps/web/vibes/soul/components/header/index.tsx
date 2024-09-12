@@ -144,9 +144,7 @@ export const Header = forwardRef(function Header(
       {...rest}
       className="sticky top-0 z-30 !h-0 w-full @container"
       upTolerance={0}
-      onUnpin={() => {
-        setSearchOpen(false)
-      }}
+      onUnpin={() => setSearchOpen(false)}
       style={{
         WebkitTransition: 'transform .5s ease-in-out',
         MozTransition: 'transform .5s ease-in-out',
@@ -156,9 +154,7 @@ export const Header = forwardRef(function Header(
     >
       <div
         ref={ref}
-        onMouseLeave={() => {
-          setNavOpen(false)
-        }}
+        onMouseLeave={() => setNavOpen(false)}
         className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
       >
         <nav
@@ -203,7 +199,7 @@ export const Header = forwardRef(function Header(
             href="/"
             className="relative mx-auto my-2 flex h-10 w-full max-w-56 items-center justify-center rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
-            {typeof logo === 'object' && logo.src !== undefined ? (
+            {typeof logo === 'object' && logo.src != null ? (
               <Image
                 src={logo.src}
                 fill
@@ -257,7 +253,7 @@ export const Header = forwardRef(function Header(
                 className={clsx('w-5', searchOpen && 'stroke-contrast-300')}
                 strokeWidth={1}
               />
-              {cartCount !== undefined && cartCount > 0 && (
+              {cartCount != null && cartCount > 0 && (
                 <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
                   {cartCount}
                 </span>
@@ -295,9 +291,7 @@ export const Header = forwardRef(function Header(
                         'text-foreground': selectedLanguage === language,
                       }
                     )}
-                    onSelect={() => {
-                      setSelectedLanguage(language)
-                    }}
+                    onSelect={() => setSelectedLanguage(language)}
                   >
                     {language}
                   </DropdownMenuItem>
@@ -414,9 +408,9 @@ export const Header = forwardRef(function Header(
               links[selectedCategory]?.groups?.map((group, columnIndex) => (
                 <ul key={columnIndex} className="flex flex-col gap-1 p-5">
                   {/* Second Level Links */}
-                  {group.label !== undefined && (
+                  {group.label != null && (
                     <li>
-                      {group.href !== undefined ? (
+                      {group.href != null ? (
                         <Link
                           href={group.href}
                           className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"

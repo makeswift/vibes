@@ -94,9 +94,7 @@ export const FilterPanel = function FilterPanel() {
                 variant="tertiary"
                 size="small"
                 className="-mr-2 [&_div]:!px-1"
-                onClick={() => {
-                  setFilterOpen(false)
-                }}
+                onClick={() => setFilterOpen(false)}
                 asChild
               >
                 <div>
@@ -120,14 +118,14 @@ export const FilterPanel = function FilterPanel() {
                               key={index}
                               label={label}
                               amount={amount}
-                              onClick={() => {
+                              onClick={() => 
                                 setSelectedTags(
                                   prev =>
                                     prev.includes(label)
                                       ? prev.filter(tag => tag !== label) // Remove the label if it's already in the array
                                       : [...prev, label] // Add the label if it's not in the array
                                 )
-                              }}
+                              }
                               selected={selectedTags.includes(label)}
                             />
                           )
@@ -146,14 +144,15 @@ export const FilterPanel = function FilterPanel() {
                               key={index}
                               label={label}
                               amount={amount}
-                              onClick={() => {
+                              onClick={() => 
                                 setSelectedTags(
                                   prev =>
                                     prev.includes(label)
                                       ? prev.filter(tag => tag !== label) // Remove the label if it's already in the array
                                       : [...prev, label] // Add the label if it's not in the array
                                 )
-                              }}
+                              }
+
                               selected={selectedTags.includes(label)}
                             />
                           )
@@ -176,17 +175,13 @@ export const FilterPanel = function FilterPanel() {
             <div className="mt-auto flex justify-center gap-2 pt-10">
               <Button
                 variant="secondary"
-                onClick={() => {
-                  setFilterOpen(false)
-                }}
+                onClick={() => setFilterOpen(false)}
               >
                 Show 25 Results
               </Button>
               <Button
                 variant="tertiary"
-                onClick={() => {
-                  setSelectedTags([])
-                }}
+                onClick={() => setSelectedTags([])}
               >
                 Reset
               </Button>

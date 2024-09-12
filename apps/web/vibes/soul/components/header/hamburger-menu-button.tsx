@@ -13,9 +13,7 @@ export const HamburgerMenuButton = function HamburgerMenuButton({
 }: HamburgerMenuButtonProps) {
   return (
     <button
-      onClick={() => {
-        setNavOpen(!navOpen)
-      }}
+      onClick={() => setNavOpen(!navOpen)}
       aria-label="Toggle navigation"
       className="group relative rounded-lg p-2 transition-colors @4xl:hidden"
     >

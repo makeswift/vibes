@@ -42,9 +42,7 @@ export const ComparePanel = function ComparePanel({ compareProducts }: Props) {
               variant="tertiary"
               size="small"
               className="-mr-2 ml-auto [&_div]:!px-1"
-              onClick={() => {
-                setCompareOpen(false)
-              }}
+              onClick={() => setCompareOpen(false)}
               asChild
             >
               <div>

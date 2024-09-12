@@ -68,9 +68,7 @@ export const ProductGallery = ({ images }: ProductGallery) => {
               'h-10 w-10 shrink-0 overflow-hidden rounded-lg border transition-colors duration-300 @4xl:h-14 @4xl:w-14',
               index === previewImage ? 'border-foreground' : 'border-transparent'
             )}
-            onClick={() => {
-              selectImage(index)
-            }}
+            onClick={() => selectImage(index)}
           >
             <Image
               src={image.src}

@@ -119,9 +119,7 @@ export const Cart = function Cart({ products }: CartProps) {
                               <Button
                                 variant="secondary"
                                 className="mt-2 w-full"
-                                onClick={() => {
-                                  setRemoveItemModalIsOpen(false)
-                                }}
+                                onClick={() => setRemoveItemModalIsOpen(false)}
                               >
                                 Cancel
                               </Button>
