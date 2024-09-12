@@ -6,6 +6,7 @@ import { clsx } from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 
 export interface CardProps {
+  id: string
   title: string
   image: {
     src: string
