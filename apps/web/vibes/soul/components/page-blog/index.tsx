@@ -93,30 +93,33 @@ export const BlogPage = function BlogPage() {
         logo="SOUL"
         sections={[
           {
+            id: '1',
             title: 'Categories',
             links: [
-              { label: 'Coats & Jackets', href: '#' },
-              { label: 'T-Shirts', href: '#' },
-              { label: 'Sweatshirts', href: '#' },
-              { label: 'Pants', href: '#' },
+              { id: '1', label: 'Coats & Jackets', href: '#' },
+              { id: '2', label: 'T-Shirts', href: '#' },
+              { id: '3', label: 'Sweatshirts', href: '#' },
+              { id: '4', label: 'Pants', href: '#' },
             ],
           },
           {
+            id: '2',
             title: 'Company',
             links: [
-              { label: 'About', href: '#' },
-              { label: 'Stories', href: '#' },
-              { label: 'Careers', href: '#' },
-              { label: 'Stores', href: '#' },
+              { id: '1', label: 'About', href: '#' },
+              { id: '2', label: 'Stories', href: '#' },
+              { id: '3', label: 'Careers', href: '#' },
+              { id: '4', label: 'Stores', href: '#' },
             ],
           },
           {
+            id: '3',
             title: 'Help & Support',
             links: [
-              { label: 'FAQs', href: '#' },
-              { label: 'Contact Us', href: '#' },
-              { label: 'Returns', href: '#' },
-              { label: 'Shipping', href: '#' },
+              { id: '1', label: 'FAQs', href: '#' },
+              { id: '2', label: 'Contact Us', href: '#' },
+              { id: '3', label: 'Returns', href: '#' },
+              { id: '4', label: 'Shipping', href: '#' },
             ],
           },
         ]}
