@@ -84,8 +84,8 @@ export const Carousel = ({
           <div
             className="pointer-events-none absolute h-1 rounded-full bg-foreground transition-all duration-0 ease-linear"
             style={{
-              width: `${String(scrollbarPosition.width)}%`,
-              left: `${String(scrollbarPosition.left)}%`,
+              width: `${scrollbarPosition.width}%`,
+              left: `${scrollbarPosition.left}%`,
             }}
           />
         </div>

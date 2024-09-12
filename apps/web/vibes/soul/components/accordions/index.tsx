@@ -30,7 +30,7 @@ export const Accordions = forwardRef(function Accordions(
     >
       <ul className="w-full @container">
         {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={String(i + 1)} asChild>
+          <Accordion.Item key={i} value={`${i + 1}`} asChild>
             <li className="group">
               <Accordion.Header>
                 <Accordion.Trigger asChild>

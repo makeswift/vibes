@@ -99,7 +99,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
               className="absolute -top-8 left-0 w-full transition-all [transition-duration:5000ms] [transition-timing-function:cubic-bezier(0.285,-0.125,0.050,1.130)]"
               style={{
                 transform: spin
-                  ? `translateY(calc(-100% + ${String(discounts.length * 33)}px))`
+                  ? `translateY(calc(-100% + ${discounts.length * 33}px))`
                   : 'translateY(0)',
               }}
             >

@@ -173,7 +173,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
         {scrollSnaps.map((_: number, index: number) => {
           return (
             <button
-              aria-label={`View image number ${String(index + 1)}`}
+              aria-label={`View image number ${index + 1}`}
               key={index}
               className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
               onClick={() => {
@@ -184,7 +184,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
               <div className="relative overflow-hidden">
                 {/* White Bar - Current Index Indicator / Progress Bar */}
                 <div
-                  key={`progress-${String(playCount)}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
+                  key={`progress-${playCount}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
                   className={clsx(
                     'absolute h-0.5 bg-background',
                     'opacity-0 fill-mode-forwards',
@@ -194,14 +194,14 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                       : 'ease-out animate-out fade-out'
                   )}
                   style={{
-                    animationDuration: index === selectedIndex ? `${String(interval)}ms` : '200ms',
-                    width: `${String(175 / slides.length)}px`,
+                    animationDuration: index === selectedIndex ? `${interval}ms` : '200ms',
+                    width: `${175 / slides.length}px`,
                   }}
                 />
                 {/* Grey Bar BG */}
                 <div
                   className="h-0.5 bg-background opacity-30"
-                  style={{ width: `${String(175 / slides.length)}px` }}
+                  style={{ width: `${175 / slides.length}px` }}
                 />
               </div>
             </button>
@@ -210,8 +210,8 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
 
         {/* Carousel Count - "01/03" */}
         <span className="ml-auto mr-2 mt-px font-mono text-xs">
-          {selectedIndex + 1 < 10 ? `0${String(selectedIndex + 1)}` : selectedIndex + 1}/
-          {slides.length < 10 ? `0${String(slides.length)}` : slides.length}
+          {selectedIndex + 1 < 10 ? `0${selectedIndex + 1}` : selectedIndex + 1}/
+          {slides.length < 10 ? `0${slides.length}` : slides.length}
         </span>
 
         {/* Stop / Start Button */}

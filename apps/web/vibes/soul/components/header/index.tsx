@@ -357,7 +357,7 @@ export const Header = forwardRef(function Header(
               ? 'scale-100 bg-background opacity-100 @4xl:h-full'
               : 'pointer-events-none h-0 scale-[0.99] select-none bg-transparent opacity-0'
           )}
-          style={{ maxHeight: `calc(100dvh - ${String(headerHeight)}px)` }}
+          style={{ maxHeight: `calc(100dvh - ${headerHeight}px)` }}
         >
           <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
             {/* Mobile Dropdown Links */}

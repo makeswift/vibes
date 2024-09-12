@@ -48,7 +48,7 @@ export const SlideCarousel = ({ title, images }: Props) => {
           <Image
             key={index}
             src={src}
-            alt={`Image ${String((index % images.length) + 1)}`}
+            alt={`Image ${(index % images.length) + 1}`}
             height={1000}
             width={1000}
             className={clsx(
