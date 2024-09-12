@@ -36,16 +36,20 @@ export const BlogPostCard = function BlogPostCard({
         className
       )}
     >
-      <div className="aspect-[4/3] overflow-hidden rounded-xl bg-contrast-100">
-        {image?.src != null && (
+      <div className="aspect-[4/3] overflow-hidden rounded-xl bg-primary-highlight bg-opacity-10">
+        {image?.src != null ? (
           <Image
             src={image.src}
             height={349}
             width={466}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt={image.altText}
-            className="bg-contrast-100 transition-transform duration-500 ease-out group-hover:scale-105"
+            className="transition-transform duration-500 ease-out group-hover:scale-105"
           />
+        ) : (
+          <h3 className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-primary-shadow opacity-10 transition-transform duration-500 ease-out group-hover:scale-105">
+            {title}
+          </h3>
         )}
       </div>
       <h3 className="pb-1 pt-3 text-lg font-medium">{title}</h3>
