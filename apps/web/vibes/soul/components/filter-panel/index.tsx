@@ -108,6 +108,7 @@ export const FilterPanel = function FilterPanel() {
               // TODO: filters should be customizable
               accordions={[
                 {
+                  id: '1',
                   title: 'sizing',
                   content: (
                     <div className="flex flex-wrap gap-2">
@@ -118,7 +119,7 @@ export const FilterPanel = function FilterPanel() {
                               key={index}
                               label={label}
                               amount={amount}
-                              onClick={() => 
+                              onClick={() =>
                                 setSelectedTags(
                                   prev =>
                                     prev.includes(label)
@@ -134,6 +135,7 @@ export const FilterPanel = function FilterPanel() {
                   ),
                 },
                 {
+                  id: '2',
                   title: 'color',
                   content: (
                     <div className="flex flex-wrap gap-2">
@@ -144,7 +146,7 @@ export const FilterPanel = function FilterPanel() {
                               key={index}
                               label={label}
                               amount={amount}
-                              onClick={() => 
+                              onClick={() =>
                                 setSelectedTags(
                                   prev =>
                                     prev.includes(label)
@@ -152,7 +154,6 @@ export const FilterPanel = function FilterPanel() {
                                       : [...prev, label] // Add the label if it's not in the array
                                 )
                               }
-
                               selected={selectedTags.includes(label)}
                             />
                           )
@@ -161,6 +162,7 @@ export const FilterPanel = function FilterPanel() {
                   ),
                 },
                 {
+                  id: '3',
                   title: 'pricing',
                   content: (
                     <div className="flex w-[48%] gap-2">
@@ -173,16 +175,10 @@ export const FilterPanel = function FilterPanel() {
             />
 
             <div className="mt-auto flex justify-center gap-2 pt-10">
-              <Button
-                variant="secondary"
-                onClick={() => setFilterOpen(false)}
-              >
+              <Button variant="secondary" onClick={() => setFilterOpen(false)}>
                 Show 25 Results
               </Button>
-              <Button
-                variant="tertiary"
-                onClick={() => setSelectedTags([])}
-              >
+              <Button variant="tertiary" onClick={() => setSelectedTags([])}>
                 Reset
               </Button>
             </div>
