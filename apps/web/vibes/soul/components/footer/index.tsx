@@ -10,19 +10,16 @@ interface Image {
 }
 
 interface Link {
-  id: string
   href: string
   label: string
 }
 
 export interface Section {
-  id: string
   title?: string
   links: Link[]
 }
 
 interface SocialMediaLink {
-  id: string
   href: string
   icon: ReactNode
 }
@@ -97,10 +94,10 @@ export const Footer = function Footer({
             {/* Social Media Links */}
             {socialMediaLinks && (
               <div className="mt-auto flex items-center gap-4 pb-2 pt-8">
-                {socialMediaLinks.map(({ id, href, icon }) => {
+                {socialMediaLinks.map(({ href, icon }, i) => {
                   return (
                     <Link
-                      key={id}
+                      key={i}
                       href={href}
                       className="flex items-center justify-center rounded-lg fill-contrast-400 p-1 ring-primary transition-colors duration-300 ease-out hover:fill-foreground focus-visible:outline-0 focus-visible:ring-2"
                     >
@@ -115,18 +112,18 @@ export const Footer = function Footer({
           {/* Footer Columns of Links */}
           <div className="flex w-full flex-1 flex-grow flex-wrap gap-y-8 @lg:gap-y-10 @xl:justify-end">
             {sections.length &&
-              sections.map(({ id, title, links }) => {
+              sections.map(({ title, links }, i) => {
                 return (
                   <div
-                    key={id}
+                    key={i}
                     className="flex-1 basis-full pr-10 text-[15px] last:pr-0 @sm:basis-1/3 @2xl:pr-10 @4xl:max-w-[170px] @4xl:basis-auto"
                   >
                     {title != null && <span className="mb-8 block font-medium">{title}</span>}
 
                     <ul>
-                      {links.map(link => {
+                      {links.map((link, idx) => {
                         return (
-                          <li key={link.id}>
+                          <li key={idx}>
                             <Link
                               className="block rounded-lg py-2 font-medium opacity-50 ring-primary transition-opacity duration-300 hover:opacity-100 focus-visible:outline-0 focus-visible:ring-2"
                               href={link.href}
@@ -145,7 +142,7 @@ export const Footer = function Footer({
 
         <div className="flex flex-wrap-reverse justify-between gap-y-10 px-3 py-10 pb-20 @xl:px-6 @5xl:px-20">
           {/* Copyright */}
-          <span className="block text-[15px] text-contrast-400 ">{copyright ?? ''}</span>
+          <span className="block text-[15px] text-contrast-400">{copyright ?? ''}</span>
 
           {/* Payement Icons */}
           {paymentIcons && <div className="flex gap-2">{paymentIcons}</div>}

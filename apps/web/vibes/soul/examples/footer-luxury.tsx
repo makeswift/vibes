@@ -12,33 +12,30 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/
 
 export const footerLinks = [
   {
-    id: '1',
     title: 'Shoes',
     links: [
-      { id: '1', label: 'Sandals', href: '#' },
-      { id: '2', label: 'Heels', href: '#' },
-      { id: '3', label: 'Loafers', href: '#' },
+      { label: 'Sandals', href: '#' },
+      { label: 'Heels', href: '#' },
+      { label: 'Loafers', href: '#' },
       { id: '4', label: 'Boots', href: '#' },
     ],
   },
   {
-    id: '2',
     title: 'Company',
     links: [
-      { id: '1', label: 'About Us', href: '#' },
-      { id: '2', label: 'Locations', href: '#' },
-      { id: '3', label: 'Careers', href: '#' },
-      { id: '4', label: 'Reviews', href: '#' },
+      { label: 'About Us', href: '#' },
+      { label: 'Locations', href: '#' },
+      { label: 'Careers', href: '#' },
+      { label: 'Reviews', href: '#' },
     ],
   },
   {
-    id: '3',
     title: 'Help & Support',
     links: [
-      { id: '1', label: 'FAQs', href: '#' },
-      { id: '2', label: 'Contact Us', href: '#' },
-      { id: '3', label: 'Returns', href: '#' },
-      { id: '4', label: 'Shipping', href: '#' },
+      { label: 'FAQs', href: '#' },
+      { label: 'Contact Us', href: '#' },
+      { label: 'Returns', href: '#' },
+      { label: 'Shipping', href: '#' },
     ],
   },
 ]
@@ -50,22 +47,18 @@ export const logo = {
 
 export const socialMediaLinks = [
   {
-    id: '1',
     href: '#',
     icon: <Facebook />,
   },
   {
-    id: '2',
     href: '#',
     icon: <X />,
   },
   {
-    id: '3',
     href: '#',
     icon: <Instagram />,
   },
   {
-    id: '4',
     href: '#',
     icon: <Youtube />,
   },
