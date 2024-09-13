@@ -4,7 +4,7 @@ import { Card, CardProps, CardSkeleton } from '@/vibes/soul/components/card'
 import { Carousel } from '@/vibes/soul/components/carousel'
 
 interface Props {
-  cards: CardProps[]
+  cards: (CardProps & { id: string })[]
   textContrast?: 'light' | 'dark'
   className?: string
 }
