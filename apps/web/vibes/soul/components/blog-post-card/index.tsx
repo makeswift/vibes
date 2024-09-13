@@ -37,7 +37,7 @@ export const BlogPostCard = function BlogPostCard({
       )}
     >
       <div className="aspect-[4/3] overflow-hidden rounded-xl bg-primary-highlight bg-opacity-10">
-        {image?.src != null ? (
+        {image?.src != null && image.src !== '' ? (
           <Image
             src={image.src}
             height={349}

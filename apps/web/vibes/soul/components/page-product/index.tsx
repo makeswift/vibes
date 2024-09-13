@@ -60,19 +60,16 @@ export const ProductPage = function ProductPage({
         <IconBlock
           list={[
             {
-              id: '1',
               icon: 'Truck',
               title: 'Free Shipping',
               description: 'On orders over $250',
             },
             {
-              id: '2',
               icon: 'RotateCcw',
               title: 'Free Returns',
               description: 'On full priced items only',
             },
             {
-              id: '3',
               icon: 'Star',
               title: '2 Year Warranty',
               description: 'As standard',

@@ -17,7 +17,7 @@ export const footerLinks = [
       { label: 'Sandals', href: '#' },
       { label: 'Heels', href: '#' },
       { label: 'Loafers', href: '#' },
-      { id: '4', label: 'Boots', href: '#' },
+      { label: 'Boots', href: '#' },
     ],
   },
   {

@@ -14,7 +14,6 @@ export interface FeatureProps {
   title?: string
   description?: string
   grid?: {
-    id: string
     icon: string
     title: string
     description: string
@@ -60,9 +59,9 @@ export const Feature = function Feature({ image, title, description, grid, cta }
 
             {grid != null && (
               <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
-                {grid.map(({ id, title: itemTitle, description: itemDescription, icon }) => {
+                {grid.map(({ title: itemTitle, description: itemDescription, icon }, idx) => {
                   return (
-                    <li key={id} className="flex gap-4 @sm/content:items-center">
+                    <li key={idx} className="flex gap-4 @sm/content:items-center">
                       <Icon
                         name={icon}
                         className="h-8 w-8 @xs/content:h-5 @xs/content:w-5 @lg/content:h-10 @lg/content:w-10"

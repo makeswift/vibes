@@ -6,7 +6,6 @@ import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
 
 export interface AccordionItem {
-  id: string
   title: ReactNode
   content: ReactNode
 }
@@ -31,7 +30,7 @@ export const Accordions = forwardRef(function Accordions(
     >
       <ul className="w-full @container">
         {accordions.map((accordion, i) => (
-          <Accordion.Item key={accordion.id} value={`${i + 1}`} asChild>
+          <Accordion.Item key={i} value={`${i + 1}`} asChild>
             <li className="group">
               <Accordion.Header>
                 <Accordion.Trigger asChild>

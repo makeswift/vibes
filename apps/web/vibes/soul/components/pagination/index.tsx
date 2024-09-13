@@ -72,9 +72,7 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
           ) : (
             <Link
               href={`${pathname}?page=${page.toString()}`}
-              onClick={() => {
-                setCurrentPage(page)
-              }}
+              onClick={() => setCurrentPage(page)}
               key={index}
               className={clsx(
                 'flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-300',

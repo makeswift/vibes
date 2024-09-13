@@ -7,7 +7,6 @@ import { clsx } from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
 
 interface Image {
-  id: string
   altText: string
   src: string
 }
@@ -23,9 +22,8 @@ export const ProductGallery = ({ images }: ProductGalleryProps) => {
   useEffect(() => {
     if (!emblaApi) return
 
-    const onSelect = () => {
-      setPreviewImage(emblaApi.selectedScrollSnap())
-    }
+    const onSelect = () => setPreviewImage(emblaApi.selectedScrollSnap())
+
     emblaApi.on('select', onSelect)
 
     return () => {
@@ -42,9 +40,9 @@ export const ProductGallery = ({ images }: ProductGalleryProps) => {
     <div className="relative mt-[60px] flex h-96 w-full items-center overflow-hidden bg-contrast-100 @2xl:h-[550px] @4xl:mt-0 @4xl:h-full">
       <div className="my-auto h-full max-h-[800px] w-full overflow-hidden" ref={emblaRef}>
         <div className="flex h-full w-full">
-          {images.map(image => (
+          {images.map((image, idx) => (
             <div
-              key={image.id}
+              key={idx}
               className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full items-center"
             >
               <Image

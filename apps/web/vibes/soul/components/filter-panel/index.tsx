@@ -108,7 +108,6 @@ export const FilterPanel = function FilterPanel() {
               // TODO: filters should be customizable
               accordions={[
                 {
-                  id: '1',
                   title: 'sizing',
                   content: (
                     <div className="flex flex-wrap gap-2">
@@ -135,7 +134,6 @@ export const FilterPanel = function FilterPanel() {
                   ),
                 },
                 {
-                  id: '2',
                   title: 'color',
                   content: (
                     <div className="flex flex-wrap gap-2">
@@ -162,7 +160,6 @@ export const FilterPanel = function FilterPanel() {
                   ),
                 },
                 {
-                  id: '3',
                   title: 'pricing',
                   content: (
                     <div className="flex w-[48%] gap-2">

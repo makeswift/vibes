@@ -55,7 +55,7 @@ export const CompareCard = function CompareCard({
         {badge != null && badge !== '' && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
-        {image?.src != null && (
+        {image?.src != null && image.src !== '' && (
           <Image
             src={image.src}
             fill
