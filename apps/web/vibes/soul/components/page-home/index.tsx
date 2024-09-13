@@ -28,7 +28,7 @@ interface HomePageProps {
   headerLinks: Links[]
   logo: string | Image
   heroSlides: Slide[]
-  categories: CardProps[]
+  categories: (CardProps & { id: string })[]
   textContrast?: 'light' | 'dark'
   featuredProducts: FeaturedProductsListProps
   newArrivals?: Product[]

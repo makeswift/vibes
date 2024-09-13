@@ -1,7 +1,6 @@
-import { CardProps } from '@/vibes/soul/components/card'
 import { CardCarousel } from '@/vibes/soul/components/card-carousel'
 
-export const cards: CardProps[] = [
+export const cards = [
   {
     id: '1',
     title: 'Flats',
