@@ -50,8 +50,13 @@ export const Feature = function Feature({ image, title, description, grid, cta }
           @container/content @lg/section:px-10 @5xl:p-20"
         >
           <div className="mx-auto flex max-w-xl flex-col gap-4">
-            <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">{title}</h2>
-            <p className=" pb-2">{description}</p>
+            {title != null && title !== '' && (
+              <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">
+                {title}
+              </h2>
+            )}
+
+            {description != null && description !== '' && <p className="pb-2">{description}</p>}
 
             {grid != null && (
               <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">

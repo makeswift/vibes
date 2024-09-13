@@ -140,8 +140,10 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                     <h1 className="mb-2 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
                       {title}
                     </h1>
-                    {description != null && <p className="mb-4 max-w-xl">{description}</p>}
-                    {cta?.href != null && (
+                    {description != null && description !== '' && (
+                      <p className="mb-4 max-w-xl">{description}</p>
+                    )}
+                    {cta != null && cta.href !== '' && cta.label !== '' && (
                       <Button variant="tertiary" className="my-4">
                         {cta.label}
                       </Button>

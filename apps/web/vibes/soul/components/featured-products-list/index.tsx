@@ -35,11 +35,11 @@ export const FeaturedProductsList = function FeaturedProductsList({
                 {title}
               </h2>
             )}
-            {description != null && (
+            {description != null && description !== '' && (
               <p className="mt-1.5 max-w-md pb-2 text-foreground">{description}</p>
             )}
           </div>
-          {cta?.href != null && (
+          {cta?.href != null && cta.href !== '' && cta.label !== '' && (
             <Button className="h-5 bg-transparent text-sm @4xl:h-12 @4xl:bg-primary" asChild>
               <Link href={cta.href}>{cta.label}</Link>
             </Button>

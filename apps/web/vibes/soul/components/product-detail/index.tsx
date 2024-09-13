@@ -39,7 +39,9 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
         <div className="my-auto flex flex-col gap-4 px-3 py-10 text-foreground @xl:px-6 @4xl:py-28 @5xl:px-20">
           <h2 className="font-heading text-3xl font-medium leading-none">{product.name}</h2>
           <Rating rating={product.rating ?? 0} />
-          {product.description != null && <p>{product.description}</p>}
+          {product.description != null && product.description !== '' && (
+            <p>{product.description}</p>
+          )}
           <Price price={product.price ?? ''} className="!text-2xl" />
 
           {product.options && (

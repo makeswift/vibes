@@ -34,7 +34,7 @@ export const ProductDescription = function ProductDescription({
               sizes="(max-width: 500px) 100vw, 50vw"
               className="object-cover"
             />
-          ) : video != null ? (
+          ) : video != null && video !== '' ? (
             <video className="h-full object-cover" muted loop autoPlay>
               <source src={video} type="video/mp4" />
             </video>

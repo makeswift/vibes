@@ -63,8 +63,12 @@ export const Footer = function Footer({
               <div className="text-[20px] font-medium @lg:text-2xl">
                 <h3 className="text-contrast-300">Contact Us</h3>
                 <div>
-                  {contactInformation.address != null && <p>{contactInformation.address}</p>}
-                  {contactInformation.phone != null && <p>{contactInformation.phone}</p>}
+                  {contactInformation.address != null && contactInformation.address !== '' && (
+                    <p>{contactInformation.address}</p>
+                  )}
+                  {contactInformation.phone != null && contactInformation.phone !== '' && (
+                    <p>{contactInformation.phone}</p>
+                  )}
                 </div>
               </div>
             ) : (
@@ -78,7 +82,8 @@ export const Footer = function Footer({
                     {logo}
                   </span>
                 ) : (
-                  logo?.src != null && (
+                  logo?.src != null &&
+                  logo.src !== '' && (
                     <Image
                       src={logo.src}
                       fill
@@ -92,7 +97,7 @@ export const Footer = function Footer({
             )}
 
             {/* Social Media Links */}
-            {socialMediaLinks && (
+            {socialMediaLinks != null && (
               <div className="mt-auto flex items-center gap-4 pb-2 pt-8">
                 {socialMediaLinks.map(({ href, icon }, i) => {
                   return (
@@ -142,10 +147,12 @@ export const Footer = function Footer({
 
         <div className="flex flex-wrap-reverse justify-between gap-y-10 px-3 py-10 pb-20 @xl:px-6 @5xl:px-20">
           {/* Copyright */}
-          <span className="block text-[15px] text-contrast-400">{copyright ?? ''}</span>
+          {copyright != null && copyright !== '' && (
+            <span className="block text-contrast-400">{copyright}</span>
+          )}
 
           {/* Payement Icons */}
-          {paymentIcons && <div className="flex gap-2">{paymentIcons}</div>}
+          {paymentIcons != null && <div className="ml-auto flex gap-2">{paymentIcons}</div>}
         </div>
       </div>
     </footer>
