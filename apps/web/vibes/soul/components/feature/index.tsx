@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { clsx } from 'clsx'
+import { icons } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/components/button'
 import { Icon } from '@/vibes/soul/components/icon'
@@ -14,7 +15,7 @@ export interface FeatureProps {
   title?: string
   description?: string
   grid?: {
-    icon: string
+    icon: keyof typeof icons
     title: string
     description: string
   }[]

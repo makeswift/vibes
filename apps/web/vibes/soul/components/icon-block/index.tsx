@@ -1,10 +1,10 @@
 import { clsx } from 'clsx'
 
-import { Icon } from '@/vibes/soul/components/icon'
+import { Icon, IconProps } from '@/vibes/soul/components/icon'
 
 export interface IconBlockProps {
   list: {
-    icon: string
+    icon: IconProps['name']
     title: string
     description: string
   }[]
