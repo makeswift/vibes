@@ -35,7 +35,11 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
   }, [spin])
 
   useEffect(() => {
-    const shuffled = shuffleCodes(Array(10).fill(discounts).flat())
+    const shuffled = shuffleCodes(
+      Array<DiscountType>(10)
+        .fill(discounts[0])
+        .flatMap(() => discounts)
+    )
     setShuffledCodes(shuffled)
   }, [discounts])
 
