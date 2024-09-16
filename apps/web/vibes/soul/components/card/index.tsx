@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef } from 'react'
 import { clsx } from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 
-export type CardProps = {
+export interface CardProps {
   title: string
   image: {
     src: string

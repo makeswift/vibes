@@ -9,7 +9,7 @@ interface Link {
   href: string
 }
 
-interface Props {
+export interface FeaturedProductsListProps {
   title: string
   description?: string
   cta?: Link
@@ -21,7 +21,7 @@ export const FeaturedProductsList = function FeaturedProductsList({
   description,
   cta,
   products,
-}: Props) {
+}: FeaturedProductsListProps) {
   return (
     <section className="bg-background @container">
       <div className="relative mx-auto flex max-w-screen-2xl flex-col gap-6 py-10 @4xl:flex-row @4xl:py-24 @5xl:px-20">
@@ -35,9 +35,11 @@ export const FeaturedProductsList = function FeaturedProductsList({
                 {title}
               </h2>
             )}
-            {description && <p className="mt-1.5 max-w-md pb-2 text-foreground">{description}</p>}
+            {description != null && description !== '' && (
+              <p className="mt-1.5 max-w-md pb-2 text-foreground">{description}</p>
+            )}
           </div>
-          {cta?.href && (
+          {cta?.href != null && cta.href !== '' && cta.label !== '' && (
             <Button className="h-5 bg-transparent text-sm @4xl:h-12 @4xl:bg-primary" asChild>
               <Link href={cta.href}>{cta.label}</Link>
             </Button>

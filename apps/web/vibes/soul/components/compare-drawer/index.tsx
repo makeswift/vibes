@@ -11,15 +11,16 @@ export const CompareDrawer = function CompareDrawer({
   compareProducts,
   setCompareProducts,
 }: Props) {
-  if (!compareProducts) return null
-
   return (
-    compareProducts &&
     compareProducts.length > 0 && (
       <div className="sticky bottom-0 w-full border-y bg-background @container">
         <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap items-end justify-end gap-5 px-3 py-5 @xl:px-6 @5xl:px-20">
-          {compareProducts.map((product, index: number) => (
-            <ProductChip key={index} product={product} setCompareProducts={setCompareProducts} />
+          {compareProducts.map(product => (
+            <ProductChip
+              key={product.id}
+              product={product}
+              setCompareProducts={setCompareProducts}
+            />
           ))}
           {/* Compare Button & Panel */}
           <ComparePanel compareProducts={compareProducts} />

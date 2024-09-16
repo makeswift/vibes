@@ -16,6 +16,15 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "@typescript-eslint/no-confusing-void-expression": [
+      "error",
+      {
+        "ignoreArrowShorthand": true
+      }
+    ],
+    "@typescript-eslint/restrict-template-expressions": ["error", {
+      "allowNumber": true
+    }],
     "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "never" }],
     "@typescript-eslint/no-shadow": "error",
     "@typescript-eslint/no-unnecessary-condition": "error",

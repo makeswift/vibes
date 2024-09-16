@@ -5,7 +5,7 @@ export const featuredProducts: {
   title: string
   description: string
   cta: { label: string; href: string }
-  list: Product[]
+  products: Product[]
 } = {
   title: 'Discover',
   description:
@@ -14,7 +14,7 @@ export const featuredProducts: {
     label: 'Show Now',
     href: '#',
   },
-  list: [
+  products: [
     {
       id: '1',
       name: 'Product Name',
@@ -99,7 +99,7 @@ export default function Preview() {
         label: featuredProducts.cta.label,
         href: featuredProducts.cta.href,
       }}
-      products={featuredProducts.list}
+      products={featuredProducts.products}
     />
   )
 }

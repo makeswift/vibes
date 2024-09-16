@@ -14,8 +14,8 @@ export const Button = function Button({
   variant = 'primary',
   size = 'default',
   onClick,
-  loading,
-  disabled,
+  loading = false,
+  disabled = false,
   className,
   children = 'Button',
   asChild = false,
@@ -29,8 +29,8 @@ export const Button = function Button({
         'select-none text-center font-medium leading-normal',
         'border border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2',
         {
-          ['px-4 py-2 text-sm']: !asChild && size === 'small',
-          ['px-6 py-[13px] text-base']: !asChild && size === 'default',
+          'px-4 py-2 text-sm': !asChild && size === 'small',
+          'px-6 py-[13px] text-base': !asChild && size === 'default',
         },
         {
           primary: 'bg-primary text-foreground ring-primary-shadow',
@@ -68,9 +68,7 @@ export const Button = function Button({
               default: 'text-base [&>*]:px-6 [&>*]:py-[13px]',
               small: 'text-sm [&>*]:px-4 [&>*]:py-2',
             }[size],
-            {
-              ['mix-blend-difference']: variant === 'secondary' || variant === 'tertiary',
-            }
+            (variant === 'secondary' || variant === 'tertiary') && 'mix-blend-difference'
           )}
         >
           {children}

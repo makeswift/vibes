@@ -38,7 +38,6 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
         {children}
       </p>
       <button
-        role="button"
         aria-label="Dismiss banner"
         onClick={e => {
           e.preventDefault()

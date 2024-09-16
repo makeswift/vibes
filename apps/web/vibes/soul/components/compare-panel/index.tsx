@@ -52,7 +52,7 @@ export const ComparePanel = function ComparePanel({ compareProducts }: Props) {
           </div>
 
           <div className="grid grid-cols-1 gap-x-5 gap-y-10 @xl:grid-cols-2">
-            {compareProducts && compareProducts.length > 0
+            {compareProducts.length > 0
               ? compareProducts.map(product => <CompareCard key={product.id} {...product} />)
               : Array.from({ length: 5 }).map((_, index) => <CompareCardSkeleton key={index} />)}
           </div>

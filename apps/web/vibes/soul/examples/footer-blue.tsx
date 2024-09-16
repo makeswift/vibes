@@ -74,7 +74,7 @@ export const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-export const copyright = `© ${new Date().getFullYear()} OUTER SHELL - Powered by Monogram`
+export const copyright = `© ${new Date().getFullYear().toString()} OUTER SHELL - Powered by Monogram`
 
 export const contactInformation = {
   address: 'info@blue.com',

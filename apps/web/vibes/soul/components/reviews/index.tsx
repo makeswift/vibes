@@ -3,6 +3,7 @@ import { Rating } from '@/vibes/soul/components/rating'
 
 export interface Props {
   reviews: {
+    id: string
     review: string
     name: string
     date: string
@@ -21,10 +22,10 @@ export const Reviews = function Reviews({ reviews, averageRating }: Readonly<Pro
         <Rating rating={averageRating} className="-mt-3 mb-3" />
       </div>
       <Carousel className="pb-10 @4xl:pb-20" contentClassName="!gap-6">
-        {reviews.map(({ review, name, date }, index) => {
+        {reviews.map(({ id, review, name, date }) => {
           return (
             <div
-              key={index}
+              key={id}
               className="mb-10 flex min-w-full flex-col border-t border-t-contrast-200 @lg:min-w-96"
             >
               <p className="my-10 text-sm">{review}</p>

@@ -1,3 +1,4 @@
+import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
 import { HomePage } from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul/components/product-card'
 import { cards } from '@/vibes/soul/examples/card-carousel-electric'
@@ -7,8 +8,6 @@ import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-e
 import { copyright, footerLinks } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
-
-import { FeaturedImageProps } from '../components/featured-image'
 
 // Featured Products
 export const newArrivals: Product[] = [
@@ -123,7 +122,6 @@ export const newArrivals: Product[] = [
 ]
 
 // TODO: New Arrivals
-
 // TODO: Recently Viewed
 
 export const featuredImageII: FeaturedImageProps = {
@@ -136,8 +134,6 @@ export const featuredImageII: FeaturedImageProps = {
   },
   cta: { href: '#', label: 'Shop Now' },
 }
-
-// TODO: Footer
 
 export default function Preview() {
   return (

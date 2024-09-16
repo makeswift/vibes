@@ -8,7 +8,7 @@ interface Props {
 export const ProductsCarousel = function ProductsCarousel({ products }: Props) {
   return (
     <Carousel>
-      {products && products.length > 0
+      {products.length > 0
         ? products.map(product => (
             <ProductCard
               key={product.id}
