@@ -144,6 +144,13 @@ export const examples = [
     component: lazy(() => import('./examples/checkbox')),
   },
   {
+    name: 'countdown-example',
+    dependencies: [],
+    registryDependencies: ['countdown'],
+    files: ['examples/countdown.tsx'],
+    component: lazy(() => import('./examples/countdown')),
+  },
+  {
     name: 'counter-example',
     dependencies: [],
     registryDependencies: ['counter'],
