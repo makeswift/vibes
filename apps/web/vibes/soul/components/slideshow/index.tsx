@@ -154,7 +154,9 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                 {image?.src != null && image.src !== '' && (
                   <Image
                     src={image.src}
-                    placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
+                    placeholder={
+                      image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
+                    }
                     blurDataURL={image.blurDataUrl}
                     alt={image.altText}
                     fill
