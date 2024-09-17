@@ -375,7 +375,7 @@ export default function Home() {
 
           <FeatureCard
             sticker="left"
-            text="Every component is recreated in Figma, ready to be dropped into your designs."
+            text="Every component is recreated in Figma, ready to be dropped into your mockups."
           >
             <Figma />
           </FeatureCard>
@@ -407,23 +407,23 @@ export default function Home() {
               . */}
             </p>
           </div>
-          <div className="relative h-56 w-full">
+          <div className="relative h-48 w-full">
             <Vibes1 />
+            <Vibes11 />
             <Vibes2 />
             <Vibes3 />
+            <Vibes13 />
+            <Vibes16 />
             <Vibes5 />
+            <Vibes12 />
             <Vibes4 />
             <Vibes6 />
             <Vibes7 />
             <Vibes8 />
             <Vibes9 />
             <Vibes10 />
-            <Vibes11 />
-            <Vibes12 />
-            <Vibes13 />
             <Vibes14 />
             <Vibes15 />
-            <Vibes16 />
           </div>
         </div>
       </footer>

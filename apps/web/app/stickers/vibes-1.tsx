@@ -12,8 +12,8 @@ export function Vibes1() {
         {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000"
-            from="translate-x-[-700px] translate-y-[250px] rotate-45"
-            to="translate-x-0 translate-y-0 rotate-[4deg]"
+            from="translate-x-40 translate-y-[250px] rotate-90"
+            to="translate-x-0 translate-y-0 -rotate-[4deg]"
           >
             <Sticker
               active={active}

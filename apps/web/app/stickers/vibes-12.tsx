@@ -7,25 +7,27 @@ import { Vibes12Back, Vibes12Front, Vibes12Shadow } from '@/icons/generated'
 
 export function Vibes12() {
   return (
-    <Draggable>
-      {({ active, hover }) => (
-        <Transition
-          className="transition-transform duration-1000"
-          from="translate-x-[-700px] translate-y-[250px] rotate-[-210deg]"
-          to="translate-x-0 translate-y-0 -rotate-12"
-        >
-          <Sticker
-            active={active}
-            hover={hover}
-            peelAngle={0}
-            width={203}
-            height={73}
-            front={<Vibes12Front />}
-            back={<Vibes12Back />}
-            shadow={<Vibes12Shadow />}
-          />
-        </Transition>
-      )}
-    </Draggable>
+    <div className="absolute bottom-16 left-1/2 translate-x-6">
+      <Draggable>
+        {({ active, hover }) => (
+          <Transition
+            className="transition-transform delay-200 duration-1000"
+            from="translate-x-20 translate-y-[250px] rotate-45"
+            to="translate-x-0 translate-y-0 rotate-0"
+          >
+            <Sticker
+              active={active}
+              hover={hover}
+              peelAngle={0}
+              width={161}
+              height={103}
+              front={<Vibes12Front />}
+              back={<Vibes12Back />}
+              shadow={<Vibes12Shadow />}
+            />
+          </Transition>
+        )}
+      </Draggable>
+    </div>
   )
 }

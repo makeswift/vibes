@@ -11,8 +11,8 @@ export function Vibes6() {
       <Draggable>
         {({ active, hover }) => (
           <Transition
-            className="transition-transform duration-1000"
-            from="translate-x-[-700px] translate-y-[250px] rotate-[-210deg]"
+            className="transition-transform delay-300 duration-1000"
+            from="-translate-x-20 translate-y-[250px] rotate-90"
             to="translate-x-0 translate-y-0 rotate-[-4deg]"
           >
             <Sticker

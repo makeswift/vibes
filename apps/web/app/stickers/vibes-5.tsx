@@ -12,7 +12,7 @@ export function Vibes5() {
         {({ active, hover }) => (
           <Transition
             className="transition-transform duration-1000"
-            from="translate-x-[-700px] translate-y-[250px] rotate-[-210deg]"
+            from="translate-x-0 translate-y-[250px] -rotate-180"
             to="translate-x-0 translate-y-0 -rotate-12"
           >
             <Sticker

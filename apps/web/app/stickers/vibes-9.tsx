@@ -7,25 +7,27 @@ import { Vibes9Back, Vibes9Front, Vibes9Shadow } from '@/icons/generated'
 
 export function Vibes9() {
   return (
-    <Draggable>
-      {({ active, hover }) => (
-        <Transition
-          className="transition-transform duration-1000"
-          from="translate-x-[-700px] translate-y-[250px] rotate-[-210deg]"
-          to="translate-x-0 translate-y-0 -rotate-12"
-        >
-          <Sticker
-            active={active}
-            hover={hover}
-            peelAngle={0}
-            width={196}
-            height={73}
-            front={<Vibes9Front />}
-            back={<Vibes9Back />}
-            shadow={<Vibes9Shadow />}
-          />
-        </Transition>
-      )}
-    </Draggable>
+    <div className="absolute bottom-24 left-1/2 translate-x-[600px]">
+      <Draggable>
+        {({ active, hover }) => (
+          <Transition
+            className="transition-transform delay-300 duration-1000"
+            from="translate-x-48 translate-y-[250px] rotate-180"
+            to="translate-x-0 translate-y-0 rotate-[20deg]"
+          >
+            <Sticker
+              active={active}
+              hover={hover}
+              peelAngle={0}
+              width={196}
+              height={73}
+              front={<Vibes9Front />}
+              back={<Vibes9Back />}
+              shadow={<Vibes9Shadow />}
+            />
+          </Transition>
+        )}
+      </Draggable>
+    </div>
   )
 }
