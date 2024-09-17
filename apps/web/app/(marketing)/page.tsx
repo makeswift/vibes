@@ -270,7 +270,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="h-[90vh] w-full bg-white p-3 md:h-[90vh] md:p-4 lg:p-5">
+      <section className="h-[70vh] w-full bg-white p-3 md:h-[70vh] md:p-4 lg:p-5">
         <div className="group flex h-full w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-black md:flex-row lg:rounded-[32px] xl:rounded-[40px]">
           <div className="relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">

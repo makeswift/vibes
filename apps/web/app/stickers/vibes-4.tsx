@@ -7,7 +7,7 @@ import { Vibes4Back, Vibes4Front, Vibes4Shadow } from '@/icons/generated'
 
 export function Vibes4() {
   return (
-    <div className="absolute -bottom-2 left-1/2 translate-x-20">
+    <div className="absolute -bottom-6 left-1/2 translate-x-6 sm:-bottom-2 sm:translate-x-20">
       <Draggable>
         {({ active, hover }) => (
           <Transition
