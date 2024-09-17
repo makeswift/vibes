@@ -406,25 +406,24 @@ export default function Home() {
               </Link>
               . */}
             </p>
-
-            <div className="relative h-56">
-              <Vibes1 />
-              <Vibes2 />
-              <Vibes3 />
-              <Vibes4 />
-              <Vibes5 />
-              <Vibes6 />
-              <Vibes7 />
-              <Vibes8 />
-              <Vibes9 />
-              <Vibes10 />
-              <Vibes11 />
-              <Vibes12 />
-              <Vibes13 />
-              <Vibes14 />
-              <Vibes15 />
-              <Vibes16 />
-            </div>
+          </div>
+          <div className="relative h-56 w-full">
+            <Vibes1 />
+            <Vibes2 />
+            <Vibes3 />
+            <Vibes5 />
+            <Vibes4 />
+            <Vibes6 />
+            <Vibes7 />
+            <Vibes8 />
+            <Vibes9 />
+            <Vibes10 />
+            <Vibes11 />
+            <Vibes12 />
+            <Vibes13 />
+            <Vibes14 />
+            <Vibes15 />
+            <Vibes16 />
           </div>
         </div>
       </footer>

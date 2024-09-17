@@ -7,25 +7,27 @@ import { Vibes6Back, Vibes6Front, Vibes6Shadow } from '@/icons/generated'
 
 export function Vibes6() {
   return (
-    <Draggable className="ml-14 mt-6">
-      {({ active, hover }) => (
-        <Transition
-          className="transition-transform duration-1000"
-          from="translate-x-[-700px] md:translate-x-[1600px] translate-y-[250px] rotate-[-210deg]"
-          to="translate-x-0 translate-y-0 -rotate-12"
-        >
-          <Sticker
-            active={active}
-            hover={hover}
-            peelAngle={0}
-            width={221}
-            height={86}
-            front={<Vibes6Front />}
-            back={<Vibes6Back />}
-            shadow={<Vibes6Shadow />}
-          />
-        </Transition>
-      )}
-    </Draggable>
+    <div className="absolute -bottom-5 left-1/2 -translate-x-[360px]">
+      <Draggable>
+        {({ active, hover }) => (
+          <Transition
+            className="transition-transform duration-1000"
+            from="translate-x-[-700px] translate-y-[250px] rotate-[-210deg]"
+            to="translate-x-0 translate-y-0 rotate-[-4deg]"
+          >
+            <Sticker
+              active={active}
+              hover={hover}
+              peelAngle={0}
+              width={221}
+              height={86}
+              front={<Vibes6Front />}
+              back={<Vibes6Back />}
+              shadow={<Vibes6Shadow />}
+            />
+          </Transition>
+        )}
+      </Draggable>
+    </div>
   )
 }

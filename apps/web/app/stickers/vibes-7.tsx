@@ -7,11 +7,11 @@ import { Vibes7Back, Vibes7Front, Vibes7Shadow } from '@/icons/generated'
 
 export function Vibes7() {
   return (
-    <Draggable className="ml-14 mt-6">
+    <Draggable>
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
-          from="translate-x-[-700px] md:translate-x-[1600px] translate-y-[250px] rotate-[-210deg]"
+          from="translate-x-[-700px] translate-y-[250px] rotate-[-210deg]"
           to="translate-x-0 translate-y-0 -rotate-12"
         >
           <Sticker
