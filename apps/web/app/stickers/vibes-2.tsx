@@ -18,7 +18,9 @@ export function Vibes2() {
             <Sticker
               active={active}
               hover={hover}
-              peelAngle={0}
+              peelAngle={-110}
+              hoverPeel={0.25}
+              activePeel={0.35}
               width={176}
               height={68}
               front={<Vibes2Front />}

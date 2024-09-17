@@ -13,12 +13,14 @@ export function Vibes6() {
           <Transition
             className="transition-transform delay-300 duration-1000"
             from="-translate-x-20 translate-y-[250px] rotate-90"
-            to="translate-x-0 translate-y-0 rotate-[-4deg]"
+            to="translate-x-0 translate-y-0 -rotate-6"
           >
             <Sticker
               active={active}
               hover={hover}
-              peelAngle={0}
+              peelAngle={-150}
+              hoverPeel={0.2}
+              activePeel={0.3}
               width={221}
               height={86}
               front={<Vibes6Front />}
