@@ -7,7 +7,7 @@ import { OpenSourceBack, OpenSourceFront, OpenSourceShadow } from '@/icons/gener
 
 export function OpenSource() {
   return (
-    <Draggable className="-mt-4 ml-3">
+    <Draggable className="relative z-10 -mt-4 ml-3">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
