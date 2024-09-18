@@ -7,7 +7,7 @@ import { PropsBack, PropsFront, PropsShadow } from '@/icons/generated'
 
 export function MadProps() {
   return (
-    <Draggable className="-mt-5">
+    <Draggable className="relative z-10 -mt-5">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"
