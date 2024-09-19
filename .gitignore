@@ -26,7 +26,7 @@ coverage
 out/
 build
 dist
-
+sitemap*.xml
 
 # Debug
 npm-debug.log*
