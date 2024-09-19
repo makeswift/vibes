@@ -157,7 +157,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   return (
     <>
       <div className="py-8 lg:py-10">
-        <h1 className="-mt-1 mb-3 text-2xl font-bold text-foreground">{meta.title}</h1>
+        <h1 className="-mt-1 mb-2 text-3xl font-bold text-foreground">{meta.title}</h1>
 
         {meta.description && (
           <p className="max-w-4xl text-base font-light leading-relaxed text-contrast-500 md:text-lg">

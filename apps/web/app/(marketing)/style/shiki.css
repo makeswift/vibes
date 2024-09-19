@@ -2,14 +2,13 @@
 
 @layer base {
   :root {
-    --shiki-highlight-color: hsl(0 0% 93%);
-    --shiki-highlight-border-color: hsl(0 0% 93%);
+    --shiki-highlight-color: hsl(216 20% 92%);
+    --shiki-highlight-border-color: hsl(216 20% 90%);
     --shiki-highlight-error-color: hsl(0 100% 90%);
     --shiki-highlight-warning-color: hsl(50 100% 90%);
     --shiki-line-diff-remove-color: hsl(0 100% 90%);
     --shiki-line-diff-remove-symbol-color: hsl(0 100% 50%);
-    --shiki-line-diff-add-color: hsl(120 100% 90%);
-    --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
+    --shiki-line-diff-add-color: hsl(120 40% 90%);
     --shiki-line-diff-add-symbol-color: hsl(120 100% 50%);
     --shiki-line-padding: 20px;
     --shiki-gutter-width: 20px;

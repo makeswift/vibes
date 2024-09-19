@@ -19,7 +19,7 @@ export function CopyButton({ className, clipboard, children }: Props) {
     <Button
       variant="ghost"
       size="icon"
-      className={clsx('group/button', className)}
+      className={clsx('group/button [&>span]:hover:bg-transparent', className)}
       onClick={() => {
         navigator.clipboard.writeText(clipboard)
 
