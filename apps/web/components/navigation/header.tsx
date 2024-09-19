@@ -2,6 +2,9 @@
 
 import Image from 'next/image'
 
+import '@docsearch/css'
+import { DocSearch } from '@docsearch/react'
+
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { Search } from '@/icons/generated'
 
@@ -57,9 +60,15 @@ export function Header({ vibeSlug }: Props) {
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-x-0 md:gap-x-1">
-          <Button variant="ghost" size="icon">
+          {/* <Button variant="ghost" size="icon">
             <Search />
-          </Button>
+          </Button> */}
+
+          <DocSearch
+            appId="Q9L04M9AMF"
+            indexName="vibes"
+            apiKey="ef510190238e6bf2ae942046fd83e4b9"
+          />
 
           <ModeToggle />
         </div>
