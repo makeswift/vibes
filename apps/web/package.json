@@ -7,12 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "icons": "npx @svgr/cli --no-runtime-config --typescript --replace-attr-values \"#64de21=currentColor\" --out-dir icons/generated -- icons/svg && npx prettier icons/generated --write --ignore-existing",
+    "icons": "npx @svgr/cli --no-runtime-config --typescript --replace-attr-values \"#64de21=currentColor\" --out-dir icons/generated -- icons/svg && npx prettier icons/generated --write",
     "vibes": "node scripts/build-preview-index.js ./components/vibes"
   },
   "dependencies": {
     "@conform-to/react": "^1.1.4",
     "@conform-to/zod": "^1.1.4",
+    "@docsearch/react": "3",
     "@hookform/resolvers": "^3.5.0",
     "@internationalized/date": "^3.5.5",
     "@mdx-js/loader": "^3.0.1",
@@ -86,6 +87,7 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-headroom": "^3.2.3",
     "@types/vimeo__player": "^2.18.3",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",

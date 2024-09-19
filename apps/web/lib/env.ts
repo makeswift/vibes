@@ -15,4 +15,5 @@ export const env = createEnv({
   experimental__runtimeEnv: {
     NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
   },
+  skipValidation: process.env.npm_lifecycle_event === 'lint',
 })

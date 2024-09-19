@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import Favorite from '@/vibes/soul/components/favorite'
+import { Favorite } from '@/vibes/soul/components/favorite'
 
 export default function Preview() {
   const [favorited, setFavorited] = useState(false)

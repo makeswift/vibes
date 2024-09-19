@@ -3,23 +3,25 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
-import clsx from 'clsx'
 
-import Button from '@/vibes/soul/components/button'
-import Favorite from '@/vibes/soul/components/favorite'
-import Label from '@/vibes/soul/components/label'
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
+import { clsx } from 'clsx'
+
+import { Button } from '@/vibes/soul/components/button'
+import { Favorite } from '@/vibes/soul/components/favorite'
+import { Label} from '@/vibes/soul/components/label'
+
 import { Product } from '@/vibes/soul/components/product-card'
-import Price from '@/vibes/soul/components/product-card/price'
-import ProductGallery from '@/vibes/soul/components/product-detail/product-gallery'
-import Rating from '@/vibes/soul/components/rating'
+import { Price } from '@/vibes/soul/components/product-card/price'
+import { ProductGallery } from '@/vibes/soul/components/product-detail/product-gallery'
+import { Rating } from '@/vibes/soul/components/rating'
 
 interface Image {
   altText: string
   src: string
 }
 
-interface ProductDetail extends Product {
+interface ProductDetailType extends Product {
   options?: string[]
   swatches?: {
     id: string
@@ -31,7 +33,7 @@ interface ProductDetail extends Product {
 }
 
 export interface ProductDetailProps {
-  product: ProductDetail
+  product: ProductDetailType
 }
 
 export const ProductDetail = function ProductDetail({ product }: ProductDetailProps) {
@@ -48,8 +50,10 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
         <div className="my-auto flex flex-col gap-4 px-3 py-10 text-foreground @xl:px-6 @4xl:py-28 @5xl:px-20">
           <h2 className="font-heading text-3xl font-medium leading-none">{product.name}</h2>
           <Rating rating={product.rating ?? 0} />
-          {product.description && <p>{product.description}</p>}
-          <Price price={product.price || ''} className="!text-2xl" />
+          {product.description != null && product.description !== '' && (
+            <p>{product.description}</p>
+          )}
+          <Price price={product.price ?? ''} className="!text-2xl" />
 
           <form className="mt-6 flex flex-col gap-4 @4xl:mt-12">
             {/* Options */}
@@ -81,7 +85,7 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
             {product.swatches && (
               <>
                 {/* TODO: Restructure JSON to include group name */}
-                <Label className="mt-6">{selectedSwatch?.name || 'Color'}</Label>
+                <Label className="mt-6">{selectedSwatch?.name != null && selectedSwatch.name !== '' && selectedSwatch.name || 'Color'}</Label>
                 <RadioGroupPrimitive.Root className="flex flex-wrap gap-2.5">
                   {product.swatches.map(swatch => (
                     <RadioGroupPrimitive.Item
@@ -94,7 +98,7 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
                         swatch.id === selectedSwatch?.id ? 'ring-primary' : 'ring-transparent'
                       )}
                     >
-                      {swatch.image?.src ? (
+                      {swatch.image?.src != null && swatch.image.src !== '' ? (
                         <Image
                           src={swatch.image.src}
                           alt={swatch.image.altText}
@@ -120,5 +124,3 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
     </section>
   )
 }
-
-export default ProductDetail

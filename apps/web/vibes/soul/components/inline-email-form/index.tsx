@@ -44,5 +44,3 @@ export const InlineEmailForm = function InlineEmailForm() {
     </form>
   )
 }
-
-export default InlineEmailForm

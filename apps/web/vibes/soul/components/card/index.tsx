@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 
-export type CardProps = {
+export interface CardProps {
   title: string
   image: {
     src: string
@@ -66,5 +66,3 @@ export const CardSkeleton = function CardSkeleton() {
     </div>
   )
 }
-
-export default Card

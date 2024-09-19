@@ -1,5 +1,4 @@
-import { Breadcrumb } from '@/vibes/soul/components/breadcrumbs'
-import Breadcrumbs from '@/vibes/soul/components/breadcrumbs'
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/components/breadcrumbs'
 
 export const breadcrumbs: Breadcrumb[] = [
   {

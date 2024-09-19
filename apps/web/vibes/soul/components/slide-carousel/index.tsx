@@ -141,7 +141,7 @@ const CarouselTrack = ({
   }, [])
 
   useEffect(() => {
-    let slideAmount = selectedIndex * imageWidth + selectedIndex * 10
+    const slideAmount = selectedIndex * imageWidth + selectedIndex * 10
     if (trackRef.current) {
       trackRef.current.style.transform = `translateX(calc(-${slideAmount}px))`
     }
@@ -169,7 +169,7 @@ const CarouselTrack = ({
           )}
         >
           {/* Label */}
-          {label && <div className="absolute right-2 top-2 z-10">{label}</div>}
+          {label != null && label !== '' && <div className="absolute right-2 top-2 z-10">{label}</div>}
           <Image
             src={image.src}
             alt={image.altText}

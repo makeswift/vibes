@@ -9,10 +9,10 @@ import {
   DropdownMenuTrigger,
   DropdownMenuTriggerProps,
 } from '@radix-ui/react-dropdown-menu'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { ChevronDown } from 'lucide-react'
 
-import Label from '@/vibes/soul/components/label'
+import { Label } from '@/vibes/soul/components/label'
 
 interface Props {
   label: string

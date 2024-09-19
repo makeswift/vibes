@@ -1,4 +1,4 @@
-import Footer from '@/vibes/soul/components/footer'
+import { Footer } from '@/vibes/soul/components/footer'
 import {
   Amex,
   ApplePay,
@@ -74,7 +74,7 @@ export const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-export const copyright = `© ${new Date().getFullYear()} FREDA SALVADOR - Powered by Monogram`
+export const copyright = `© ${new Date().getFullYear().toString()} FREDA SALVADOR - Powered by Monogram`
 
 export const contactInformation = {
   address: 'info@freda.com',

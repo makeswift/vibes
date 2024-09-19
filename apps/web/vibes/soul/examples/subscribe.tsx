@@ -2,7 +2,7 @@
 // import { SubmissionResult } from '@conform-to/react'
 // import { parseWithZod } from '@conform-to/zod'
 // import { z } from 'zod'
-import Subscribe from '@/vibes/soul/components/subscribe'
+import { Subscribe } from '@/vibes/soul/components/subscribe'
 
 // async function action(prevState: unknown, formData: FormData): Promise<SubmissionResult> {
 //   'use server'

@@ -45,5 +45,3 @@ export const LogIn = function LogIn({ className }: LogInProps) {
     </div>
   )
 }
-
-export default LogIn

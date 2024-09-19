@@ -1,5 +1,5 @@
 import { BlogPost } from '@/vibes/soul/components/blog-post-card'
-import BlogFeed from '@/vibes/soul/components/blog-post-list'
+import { BlogPostList } from '@/vibes/soul/components/blog-post-list'
 
 export const posts: BlogPost[] = [
   {
@@ -110,11 +110,11 @@ export const posts: BlogPost[] = [
     id: '9',
     title: 'How to Choose the Right Pot for Your Plant',
     content:
-      "The right pot can make all the difference in your plant's health. Learn how to select the perfect pot based on your plant's size, growth habits, and aesthetic preferences.",
-    image: {
-      src: 'https://rstr.in/monogram/vibes/L9i8WKVVLzt/8Jxv3zXPxa3',
-      altText: 'Choosing the Right Pot for Your Plant',
-    },
+      "The right pot can make alls the difference in your plant's health. Learn how to select the perfect pot based on your plant's size, growth habits, and aesthetic preferences.",
+    // image: {
+    //   src: 'https://rstr.in/monogram/vibes/L9i8WKVVLzt/8Jxv3zXPxa3',
+    //   altText: 'Choosing the Right Pot for Your Plant',
+    // },
     date: '2024-08-05',
     href: '#',
     author: 'Author Name',
@@ -124,7 +124,7 @@ export const posts: BlogPost[] = [
 export default function Preview() {
   return (
     <div className="p-6">
-      <BlogFeed posts={posts} />
+      <BlogPostList posts={posts} />
     </div>
   )
 }

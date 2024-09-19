@@ -2,7 +2,7 @@
 
 import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
@@ -59,14 +59,12 @@ export const Carousel = ({
       className={clsx('mx-auto flex w-full max-w-screen-2xl flex-col gap-6 @container', className)}
     >
       {/* Carousel Content */}
-      {children && (
-        <div
-          className="w-full overflow-hidden px-3 pb-2 pt-6 @xl:px-6 @4xl:pt-8 @5xl:px-20"
-          ref={emblaRef}
-        >
-          <div className={clsx('flex gap-2 @4xl:gap-5', contentClassName)}>{children}</div>
-        </div>
-      )}
+      <div
+        className="w-full overflow-hidden px-3 pb-2 pt-6 @xl:px-6 @4xl:pt-8 @5xl:px-20"
+        ref={emblaRef}
+      >
+        <div className={clsx('flex gap-2 @4xl:gap-5', contentClassName)}>{children}</div>
+      </div>
 
       <div className="flex items-center justify-between px-3 pb-9 @xl:px-6 @4xl:pb-16 @5xl:px-20">
         {/* ScrollBar */}
@@ -95,7 +93,6 @@ export const Carousel = ({
         {/* Buttons */}
         <div className="flex gap-2 text-foreground">
           <button
-            role="button"
             className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
             onClick={() => emblaApi?.scrollPrev()}
             disabled={!canScrollPrev}
@@ -103,7 +100,6 @@ export const Carousel = ({
             <ArrowLeft strokeWidth={1.5} />
           </button>
           <button
-            role="button"
             className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
             onClick={() => emblaApi?.scrollNext()}
             disabled={!canScrollNext}
@@ -115,5 +111,3 @@ export const Carousel = ({
     </div>
   )
 }
-
-export default Carousel

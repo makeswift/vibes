@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import InlineEmailForm from '@/vibes/soul/components/inline-email-form'
+import { InlineEmailForm } from '@/vibes/soul/components/inline-email-form'
 
 interface Props {
   image?: {
@@ -32,9 +32,9 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
         <div
           className={clsx(
             'mx-3 flex items-center gap-y-12 text-foreground @xl:mx-6 @3xl:w-full @5xl:mx-20',
-            !image?.src
-              ? 'flex-col gap-x-10 border-t border-t-contrast-100 py-20 @2xl:flex-row'
-              : 'flex-col py-10 @3xl:gap-y-16'
+            image?.src != null
+              ? 'flex-col py-10 @3xl:gap-y-16'
+              : 'flex-col gap-x-10 border-t border-t-contrast-100 py-20 @2xl:flex-row'
           )}
         >
           <div className="w-full">
@@ -50,5 +50,3 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
     </section>
   )
 }
-
-export default Subscribe

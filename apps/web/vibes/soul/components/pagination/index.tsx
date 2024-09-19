@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 export const Pagination = function Pagination({ pages: totalPages }: { pages: number }) {
   const pathname = usePathname()
@@ -14,9 +14,9 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
   const [currentPage, setCurrentPage] = useState(initialPage)
 
   useEffect(() => {
-    const currentPage = parseInt(searchParams.get('page') ?? '1')
-    if (currentPage !== currentPage) {
-      setCurrentPage(currentPage)
+    const current = parseInt(searchParams.get('page') ?? '1')
+    if (current !== currentPage) {
+      setCurrentPage(current)
     }
   }, [currentPage, searchParams])
 
@@ -71,7 +71,7 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
             </span>
           ) : (
             <Link
-              href={`${pathname}?page=${page}`}
+              href={`${pathname}?page=${page.toString()}`}
               onClick={() => setCurrentPage(page)}
               key={index}
               className={clsx(
@@ -90,5 +90,3 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
     </div>
   )
 }
-
-export default Pagination

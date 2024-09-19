@@ -2,11 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import Badge from '@/vibes/soul/components/badge'
-import Compare from '@/vibes/soul/components/product-card/compare'
-import Price, { ProductPrice } from '@/vibes/soul/components/product-card/price'
+import { Badge } from '@/vibes/soul/components/badge'
+import { Compare } from '@/vibes/soul/components/product-card/compare'
+import { Price, ProductPrice } from '@/vibes/soul/components/product-card/price'
 
 interface Image {
   altText: string
@@ -49,11 +49,11 @@ export const ProductCard = function ProductCard({
         className
       )}
     >
-      <div className="relative aspect-[5/6] overflow-hidden rounded-xl @6xl:min-w-80">
-        {badge && (
+      <div className="relative aspect-[5/6] overflow-hidden rounded-xl bg-primary-highlight bg-opacity-10 @6xl:min-w-80">
+        {badge != null && badge !== '' && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
-        {image && (
+        {image?.src != null ? (
           <Image
             src={image.src}
             fill
@@ -61,6 +61,10 @@ export const ProductCard = function ProductCard({
             alt="Category card image"
             className="w-full scale-105 select-none bg-contrast-100 object-cover transition-transform duration-700 ease-out group-hover:scale-100"
           />
+        ) : (
+          <h3 className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-primary-shadow opacity-10 transition-transform duration-500 ease-out group-hover:scale-105">
+            {name}
+          </h3>
         )}
         {compareProducts && setCompareProducts && (
           <Compare
@@ -72,9 +76,6 @@ export const ProductCard = function ProductCard({
               price,
               subtitle,
               badge,
-              // description,
-              // rating,
-              // availability,
             }}
             compareProducts={compareProducts}
             setCompareProducts={setCompareProducts}
@@ -84,9 +85,11 @@ export const ProductCard = function ProductCard({
       <div className="flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
           {name && <span className="line-clamp-2">{name}</span>}
-          {subtitle && <span className="font-normal text-contrast-400">{subtitle}</span>}
+          {subtitle != null && subtitle !== '' && (
+            <span className="font-normal text-contrast-400">{subtitle}</span>
+          )}
         </h3>
-        {price && <Price price={price} />}
+        {price != null && <Price price={price} />}
       </div>
     </Link>
   )
@@ -116,5 +119,3 @@ export const ProductCardSkeleton = function ProductCardSkeleton({
     </div>
   )
 }
-
-export default ProductCard

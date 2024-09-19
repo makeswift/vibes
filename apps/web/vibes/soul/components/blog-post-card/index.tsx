@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 interface Image {
   src: string
@@ -36,21 +36,24 @@ export const BlogPostCard = function BlogPostCard({
         className
       )}
     >
-      <div className="aspect-[4/3] overflow-hidden rounded-xl">
-        <Image
-          src={image?.src ?? ''}
-          height={349}
-          width={466}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          alt={image?.altText ?? ''}
-          className="scale-105 bg-contrast-100 transition-transform duration-700 ease-out group-hover:scale-100"
-        />
+      <div className="aspect-[4/3] overflow-hidden rounded-xl bg-primary-highlight bg-opacity-10">
+        {image?.src != null && image.src !== '' ? (
+          <Image
+            src={image.src}
+            height={349}
+            width={466}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            alt={image.altText}
+            className="transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <h3 className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-primary-shadow opacity-10 transition-transform duration-500 ease-out group-hover:scale-105">
+            {title}
+          </h3>
+        )}
       </div>
-
       <h3 className="pb-1 pt-3 text-lg font-medium">{title}</h3>
-
       {content && <p className="line-clamp-3 text-contrast-400">{content}</p>}
-
       <div className="flex flex-wrap items-center">
         {date && (
           <time dateTime={date}>
@@ -61,8 +64,10 @@ export const BlogPostCard = function BlogPostCard({
             })}
           </time>
         )}
-        {date && author && <span className="after:mx-2 after:content-['•']" />}
-        {author && author}
+        {date && author != null && author !== '' && (
+          <span className="after:mx-2 after:content-['•']" />
+        )}
+        {author != null && author !== '' && <span>{author}</span>}
       </div>
     </Link>
   )
@@ -98,5 +103,3 @@ export const BlogPostCardSkeleton = function BlogPostCardSkeleton({
     </div>
   )
 }
-
-export default BlogPostCard

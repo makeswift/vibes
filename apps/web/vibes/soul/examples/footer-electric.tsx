@@ -1,4 +1,4 @@
-import Footer from '@/vibes/soul/components/footer'
+import { Footer } from '@/vibes/soul/components/footer'
 import {
   Amex,
   ApplePay,
@@ -71,7 +71,7 @@ export const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-export const copyright = `© ${new Date().getFullYear()} SOUL - Powered by Monogram`
+export const copyright = `© ${new Date().getFullYear().toString()} SOUL - Powered by Monogram`
 
 export const contactInformation = {
   address: 'info@soul.com',

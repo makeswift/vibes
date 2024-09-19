@@ -7,7 +7,7 @@ import { ThemesBack, ThemesFront, ThemesShadow } from '@/icons/generated'
 
 export function EazyTheme() {
   return (
-    <Draggable className="mx-12 -mt-16">
+    <Draggable className="relative z-10 mx-12 -mt-16">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"

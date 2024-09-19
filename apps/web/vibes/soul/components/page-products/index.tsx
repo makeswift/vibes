@@ -1,8 +1,25 @@
-import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import CompareProducts from '@/vibes/soul/components/compare-products'
-import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
-import Footer from '@/vibes/soul/components/footer'
-import Header from '@/vibes/soul/components/header'
+import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
+import { Breadcrumb } from '@/vibes/soul/components/breadcrumbs'
+import { CompareProducts } from '@/vibes/soul/components/compare-products'
+import { FeaturedProductsCarousel } from '@/vibes/soul/components/featured-products-carousel'
+import { Footer, Section } from '@/vibes/soul/components/footer'
+import { Header, Links } from '@/vibes/soul/components/header'
+import { Product } from '@/vibes/soul/components/product-card'
+
+interface Image {
+  src: string
+  altText: string
+}
+
+interface ProductsPageProps {
+  headerLinks: Links[]
+  logo: string | Image
+  breadcrumbs: Breadcrumb[]
+  title: string
+  products: Product[]
+  footerLinks: Section[]
+  copyright: string
+}
 
 const locales = [
   { id: '1', region: 'US', language: 'EN' },
@@ -19,7 +36,7 @@ export const ProductsPage = function ProductsPage({
   products,
   footerLinks,
   copyright,
-}: any) {
+}: ProductsPageProps) {
   return (
     <>
       <AnnouncementBar>
@@ -40,5 +57,3 @@ export const ProductsPage = function ProductsPage({
     </>
   )
 }
-
-export default ProductsPage

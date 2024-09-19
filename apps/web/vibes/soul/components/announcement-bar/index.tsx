@@ -1,9 +1,8 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
-import { ReactNode } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
 interface Props {
@@ -39,7 +38,6 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
         {children}
       </p>
       <button
-        role="button"
         aria-label="Dismiss banner"
         onClick={e => {
           e.preventDefault()
@@ -52,5 +50,3 @@ export const AnnouncementBar = function AnnouncementBar({ className, children }:
     </div>
   )
 }
-
-export default AnnouncementBar

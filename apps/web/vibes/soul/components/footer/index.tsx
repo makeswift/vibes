@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 interface Image {
   src: string
@@ -14,7 +14,7 @@ interface Link {
   label: string
 }
 
-interface Section {
+export interface Section {
   title?: string
   links: Link[]
 }
@@ -59,12 +59,16 @@ export const Footer = function Footer({
         <div className="mx-3 flex flex-col justify-between gap-10 border-t border-t-contrast-100 pt-16 @xl:mx-6 @xl:py-20 @2xl:flex-row @5xl:mx-20">
           <div className="flex flex-col @2xl:w-1/3">
             {/* Contact Information */}
-            {contactInformation?.address || contactInformation?.phone ? (
+            {contactInformation?.address != null || contactInformation?.phone != null ? (
               <div className="text-[20px] font-medium @lg:text-2xl">
                 <h3 className="text-contrast-300">Contact Us</h3>
                 <div>
-                  {contactInformation?.address && <p>{contactInformation.address}</p>}
-                  {contactInformation?.phone && <p>{contactInformation.phone}</p>}
+                  {contactInformation.address != null && contactInformation.address !== '' && (
+                    <p>{contactInformation.address}</p>
+                  )}
+                  {contactInformation.phone != null && contactInformation.phone !== '' && (
+                    <p>{contactInformation.phone}</p>
+                  )}
                 </div>
               </div>
             ) : (
@@ -78,12 +82,13 @@ export const Footer = function Footer({
                     {logo}
                   </span>
                 ) : (
-                  logo?.src && (
+                  logo?.src != null &&
+                  logo.src !== '' && (
                     <Image
                       src={logo.src}
                       fill
                       sizes="400px"
-                      alt={logo.altText ?? 'Logo'}
+                      alt={logo.altText}
                       className="object-contain object-left"
                     />
                   )
@@ -92,7 +97,7 @@ export const Footer = function Footer({
             )}
 
             {/* Social Media Links */}
-            {socialMediaLinks && (
+            {socialMediaLinks != null && (
               <div className="mt-auto flex items-center gap-4 pb-2 pt-8">
                 {socialMediaLinks.map(({ href, icon }, i) => {
                   return (
@@ -111,19 +116,19 @@ export const Footer = function Footer({
 
           {/* Footer Columns of Links */}
           <div className="flex w-full flex-1 flex-grow flex-wrap gap-y-8 @lg:gap-y-10 @xl:justify-end">
-            {sections?.length &&
+            {sections.length &&
               sections.map(({ title, links }, i) => {
                 return (
                   <div
                     key={i}
                     className="flex-1 basis-full pr-10 text-[15px] last:pr-0 @sm:basis-1/3 @2xl:pr-10 @4xl:max-w-[170px] @4xl:basis-auto"
                   >
-                    {title && <span className="mb-8 block font-medium">{title}</span>}
+                    {title != null && <span className="mb-8 block font-medium">{title}</span>}
 
                     <ul>
-                      {links?.map((link, i) => {
+                      {links.map((link, idx) => {
                         return (
-                          <li key={i}>
+                          <li key={idx}>
                             <Link
                               className="block rounded-lg py-2 font-medium opacity-50 ring-primary transition-opacity duration-300 hover:opacity-100 focus-visible:outline-0 focus-visible:ring-2"
                               href={link.href}
@@ -142,14 +147,14 @@ export const Footer = function Footer({
 
         <div className="flex flex-wrap-reverse justify-between gap-y-10 px-3 py-10 pb-20 @xl:px-6 @5xl:px-20">
           {/* Copyright */}
-          <span className="block text-[15px] text-contrast-400 ">{copyright ?? ''}</span>
+          {copyright != null && copyright !== '' && (
+            <span className="block text-contrast-400">{copyright}</span>
+          )}
 
           {/* Payement Icons */}
-          {paymentIcons && <div className="flex gap-2">{paymentIcons}</div>}
+          {paymentIcons != null && <div className="ml-auto flex gap-2">{paymentIcons}</div>}
         </div>
       </div>
     </footer>
   )
 }
-
-export default Footer

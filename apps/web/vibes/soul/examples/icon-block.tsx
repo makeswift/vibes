@@ -1,7 +1,7 @@
-import IconBlock from '@/vibes/soul/components/icon-block'
+import { IconBlock, IconBlockProps } from '@/vibes/soul/components/icon-block'
 
 export default function Preview() {
-  const listOf6 = [
+  const listOf6: IconBlockProps['list'] = [
     {
       icon: 'Truck',
       title: 'Free Shipping',
@@ -33,7 +33,7 @@ export default function Preview() {
       description: 'As standard',
     },
   ]
-  const listOf5 = [
+  const listOf5: IconBlockProps['list'] = [
     {
       icon: 'Truck',
       title: 'Free Shipping',
@@ -60,7 +60,7 @@ export default function Preview() {
       description: 'On full priced items only',
     },
   ]
-  const listOf4 = [
+  const listOf4: IconBlockProps['list'] = [
     {
       icon: 'Truck',
       title: 'Free Shipping',
@@ -82,7 +82,7 @@ export default function Preview() {
       description: 'On orders over $250',
     },
   ]
-  const listOf3 = [
+  const listOf3: IconBlockProps['list'] = [
     {
       icon: 'Truck',
       title: 'Free Shipping',

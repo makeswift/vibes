@@ -3,7 +3,10 @@ import { Navigation } from '@/vibes/schema'
 export const navigation = [
   {
     title: 'Getting started',
-    pages: [{ title: 'Installation', slug: 'installation', file: 'docs/installation.mdx' }],
+    pages: [
+      { title: 'Introduction', slug: 'introduction', file: 'docs/introduction.mdx' },
+      { title: 'Installation', slug: 'installation', file: 'docs/installation.mdx' },
+    ],
   },
   {
     title: 'Styles',
@@ -63,6 +66,7 @@ export const navigation = [
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
+      { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
@@ -180,7 +184,7 @@ export const navigation = [
         component: 'products-header',
       },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
-      { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
+
       {
         title: 'Subscribe',
         slug: 'subscribe',

@@ -1,4 +1,4 @@
-import Dropdown from '@/vibes/soul/components/dropdown'
+import { Dropdown } from '@/vibes/soul/components/dropdown'
 
 export default function Preview() {
   return (

@@ -11,7 +11,7 @@ import {
 
 export function PrebuiltSections() {
   return (
-    <Draggable className="mb-6 ml-2">
+    <Draggable className="relative z-10 mb-6 ml-2">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"

@@ -1,11 +1,11 @@
-import FeaturedProductList from '@/vibes/soul/components/featured-products-list'
+import { FeaturedProductsList } from '@/vibes/soul/components/featured-products-list'
 import { Product } from '@/vibes/soul/components/product-card'
 
 export const featuredProducts: {
   title: string
   description: string
   cta: { label: string; href: string }
-  list: Product[]
+  products: Product[]
 } = {
   title: 'Discover',
   description:
@@ -14,7 +14,7 @@ export const featuredProducts: {
     label: 'Shop Now',
     href: '#',
   },
-  list: [
+  products: [
     {
       id: '1',
       name: 'Product Name',
@@ -92,14 +92,14 @@ export const featuredProducts: {
 
 export default function Preview() {
   return (
-    <FeaturedProductList
+    <FeaturedProductsList
       title={featuredProducts.title}
       description={featuredProducts.description}
       cta={{
         label: featuredProducts.cta.label,
         href: featuredProducts.cta.href,
       }}
-      products={featuredProducts.list}
+      products={featuredProducts.products}
     />
   )
 }

@@ -3,9 +3,9 @@
 import React, { ReactNode, Ref, forwardRef } from 'react'
 
 import * as Accordion from '@radix-ui/react-accordion'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-export type AccordionItem = {
+export interface AccordionItem {
   title: ReactNode
   content: ReactNode
 }
@@ -66,7 +66,7 @@ export const Accordions = forwardRef(function Accordions(
   )
 })
 
-function Chevron(props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
+function Chevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 10 10"
@@ -97,5 +97,3 @@ function Chevron(props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>)
     </svg>
   )
 }
-
-export default Accordions

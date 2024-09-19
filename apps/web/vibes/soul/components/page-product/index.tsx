@@ -1,16 +1,29 @@
-import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import FeaturedProductsCarousel from '@/vibes/soul/components/featured-products-carousel'
-import Footer from '@/vibes/soul/components/footer'
-import Header from '@/vibes/soul/components/header'
-import IconBlock from '@/vibes/soul/components/icon-block'
-import ProductDescription from '@/vibes/soul/components/product-description'
-import ProductDetail from '@/vibes/soul/components/product-detail'
-import Reviews from '@/vibes/soul/components/reviews'
-import Subscribe from '@/vibes/soul/components/subscribe'
+import { AccordionItem } from '@/vibes/soul/components/accordions'
+import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
+import { FeaturedProductsCarousel } from '@/vibes/soul/components/featured-products-carousel'
+import { Footer } from '@/vibes/soul/components/footer'
+import { Header } from '@/vibes/soul/components/header'
+import { IconBlock } from '@/vibes/soul/components/icon-block'
+import { Product } from '@/vibes/soul/components/product-card'
+import { ProductDescription } from '@/vibes/soul/components/product-description'
+import { ProductDetail } from '@/vibes/soul/components/product-detail'
+import { Reviews } from '@/vibes/soul/components/reviews'
+import { Subscribe } from '@/vibes/soul/components/subscribe'
 import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
 import { footerLinks, logo } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 import { reviews } from '@/vibes/soul/examples/reviews'
+
+interface Image {
+  src: string
+  altText: string
+}
+
+interface ProductPageProps {
+  product: Product
+  accordions: AccordionItem[]
+  productDescriptionImage: Image
+}
 
 const locales = [
   { id: '1', region: 'US', language: 'EN' },
@@ -23,7 +36,7 @@ export const ProductPage = function ProductPage({
   product,
   accordions,
   productDescriptionImage,
-}: any) {
+}: ProductPageProps) {
   return (
     <>
       <AnnouncementBar>
@@ -41,8 +54,6 @@ export const ProductPage = function ProductPage({
         />
 
         <ProductDetail product={product} />
-
-        {/* TODO: @sami Add Review / Returns Here */}
 
         <ProductDescription accordions={accordions} image={productDescriptionImage} />
 
@@ -83,5 +94,3 @@ export const ProductPage = function ProductPage({
     </>
   )
 }
-
-export default ProductPage

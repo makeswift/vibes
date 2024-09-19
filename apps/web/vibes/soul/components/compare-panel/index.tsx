@@ -6,10 +6,10 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { X } from 'lucide-react'
 
-import Button from '@/vibes/soul/components/button'
-import CompareCard, { CompareCardSkeleton } from '@/vibes/soul/components/compare-card'
+import { Button } from '@/vibes/soul/components/button'
+import { CompareCard, CompareCardSkeleton } from '@/vibes/soul/components/compare-card'
 import { Product } from '@/vibes/soul/components/product-card'
-import SidePanel from '@/vibes/soul/components/side-panel'
+import { SidePanel } from '@/vibes/soul/components/side-panel'
 
 interface Props {
   compareProducts: Product[]
@@ -52,7 +52,7 @@ export const ComparePanel = function ComparePanel({ compareProducts }: Props) {
           </div>
 
           <div className="grid grid-cols-1 gap-x-5 gap-y-10 @xl:grid-cols-2">
-            {compareProducts && compareProducts.length > 0
+            {compareProducts.length > 0
               ? compareProducts.map(product => <CompareCard key={product.id} {...product} />)
               : Array.from({ length: 5 }).map((_, index) => <CompareCardSkeleton key={index} />)}
           </div>
@@ -61,5 +61,3 @@ export const ComparePanel = function ComparePanel({ compareProducts }: Props) {
     />
   )
 }
-
-export default ComparePanel

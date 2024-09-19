@@ -1,4 +1,4 @@
-import Pagination from '@/vibes/soul/components/pagination'
+import { Pagination } from '@/vibes/soul/components/pagination'
 
 export default function Preview() {
   return (

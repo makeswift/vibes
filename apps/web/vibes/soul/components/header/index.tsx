@@ -12,15 +12,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
+
+import { HamburgerMenuButton } from '@/vibes/soul/components/header/hamburger-menu-button'
 
 interface Image {
   src?: string
   altText: string
 }
 
-interface Links {
+export interface Links {
   label: string
   href: string
   groups?: {
@@ -77,12 +79,17 @@ export const Header = forwardRef(function Header(
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+      if (
+        searchRef.current &&
+        event.target instanceof Node &&
+        !searchRef.current.contains(event.target)
+      ) {
         setSearchOpen(false)
       }
     }
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
+        setSearchOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -156,7 +163,7 @@ export const Header = forwardRef(function Header(
         >
           {/* Top Level Nav Links */}
           <ul className="relative flex items-stretch pl-2.5" ref={container}>
-            {links?.map((item, i) => (
+            {links.map((item, i) => (
               <li key={i}>
                 <Link
                   href={item.href}
@@ -192,7 +199,7 @@ export const Header = forwardRef(function Header(
             href="/"
             className="relative mx-auto my-2 flex h-10 w-full max-w-56 items-center justify-center rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
-            {typeof logo === 'object' && logo?.src ? (
+            {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
               <Image
                 src={logo.src}
                 fill
@@ -213,57 +220,13 @@ export const Header = forwardRef(function Header(
             {/* Mobile Buttons */}
             <div className="absolute left-1 flex items-center @4xl:relative @4xl:left-0">
               {/* Hamburger Menu Button */}
-              <button
-                onClick={() => setNavOpen(!navOpen)}
-                aria-label="Toggle navigation"
-                className="group relative rounded-lg p-2 transition-colors @4xl:hidden"
-              >
-                <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
-                  <div
-                    className={clsx(
-                      'h-px origin-left transform transition-all duration-300',
-                      navOpen ? 'translate-x-10' : 'w-7',
-                      searchOpen ? 'bg-contrast-300' : 'bg-foreground'
-                    )}
-                  />
-                  <div
-                    className={clsx(
-                      'h-px transform rounded transition-all delay-75 duration-300',
-                      navOpen ? 'translate-x-10' : 'w-7',
-                      searchOpen ? 'bg-contrast-300' : 'bg-foreground'
-                    )}
-                  />
-                  <div
-                    className={clsx(
-                      'h-px origin-left transform transition-all delay-150 duration-300',
-                      navOpen ? 'translate-x-10' : 'w-7',
-                      searchOpen ? 'bg-contrast-300' : 'bg-foreground'
-                    )}
-                  />
+              <HamburgerMenuButton
+                navOpen={navOpen}
+                setNavOpen={setNavOpen}
+                searchOpen={searchOpen}
+              />
 
-                  <div
-                    className={clsx(
-                      'absolute top-2 flex transform items-center justify-between transition-all duration-500',
-                      navOpen ? 'w-12 translate-x-0' : 'w-0 -translate-x-10'
-                    )}
-                  >
-                    <div
-                      className={clsx(
-                        'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
-                        navOpen ? 'rotate-45' : 'rotate-0'
-                      )}
-                    />
-                    <div
-                      className={clsx(
-                        'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
-                        navOpen ? '-rotate-45' : 'rotate-0'
-                      )}
-                    />
-                  </div>
-                </div>
-              </button>
               <button
-                role="button"
                 aria-label="Search"
                 className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
                 onClick={() => {
@@ -290,7 +253,7 @@ export const Header = forwardRef(function Header(
                 className={clsx('w-5', searchOpen && 'stroke-contrast-300')}
                 strokeWidth={1}
               />
-              {cartCount !== undefined && cartCount > 0 && (
+              {cartCount != null && cartCount > 0 && (
                 <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
                   {cartCount}
                 </span>
@@ -398,7 +361,7 @@ export const Header = forwardRef(function Header(
         >
           <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
             {/* Mobile Dropdown Links */}
-            {links?.map((item, i) => (
+            {links.map((item, i) => (
               <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
                 {item.label && (
                   <li>
@@ -415,7 +378,6 @@ export const Header = forwardRef(function Header(
                       <span
                         className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
                           focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                        tabIndex={navOpen ? 0 : -1}
                       >
                         {item.label}
                       </span>
@@ -443,12 +405,12 @@ export const Header = forwardRef(function Header(
           <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-4">
             {/* Desktop Dropdown Links */}
             {selectedCategory !== null &&
-              links?.[selectedCategory]?.groups?.map((group, columnIndex) => (
+              links[selectedCategory]?.groups?.map((group, columnIndex) => (
                 <ul key={columnIndex} className="flex flex-col gap-1 p-5">
                   {/* Second Level Links */}
-                  {group.label && (
+                  {group.label != null && group.label !== '' && (
                     <li>
-                      {group.href ? (
+                      {group.href != null && group.href !== '' ? (
                         <Link
                           href={group.href}
                           className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
@@ -460,7 +422,6 @@ export const Header = forwardRef(function Header(
                       ) : (
                         <span
                           className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                          tabIndex={navOpen ? 0 : -1}
                           ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
                         >
                           {group.label}
@@ -468,9 +429,9 @@ export const Header = forwardRef(function Header(
                       )}
                     </li>
                   )}
-                  {group.links.map((link, i) => (
+                  {group.links.map((link, idx) => (
                     // Third Level Links
-                    <li key={i}>
+                    <li key={idx}>
                       <Link
                         href={link.href}
                         className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
@@ -488,5 +449,3 @@ export const Header = forwardRef(function Header(
     </ReactHeadroom>
   )
 })
-
-export default Header

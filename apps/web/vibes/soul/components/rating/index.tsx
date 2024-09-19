@@ -1,11 +1,15 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 export interface Props {
   rating: number
   className?: string
 }
 
-const Star = ({ type }: { type: 'empty' | 'half' | 'full' }) => {
+interface StarType {
+  type: 'empty' | 'half' | 'full'
+}
+
+const Star = ({ type }: StarType) => {
   const paths = {
     empty: (
       <path
@@ -57,10 +61,12 @@ const Star = ({ type }: { type: 'empty' | 'half' | 'full' }) => {
 
 export const Rating = function Rating({ rating, className }: Readonly<Props>) {
   const adjustedRating = Math.min(rating, 5)
-  const stars = Array(5)
-    .fill('empty')
-    .fill('full', 0, Math.floor(adjustedRating))
-    .fill('half', Math.floor(adjustedRating), Math.ceil(adjustedRating))
+
+  const stars: StarType['type'][] = Array.from({ length: 5 }, (_, index) => {
+    if (index < Math.floor(adjustedRating)) return 'full'
+    if (index < Math.ceil(adjustedRating)) return 'half'
+    return 'empty'
+  })
 
   return (
     <div className={clsx('flex', className)}>
@@ -73,5 +79,3 @@ export const Rating = function Rating({ rating, className }: Readonly<Props>) {
     </div>
   )
 }
-
-export default Rating

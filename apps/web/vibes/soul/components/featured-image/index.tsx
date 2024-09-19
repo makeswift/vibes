@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 
@@ -31,7 +31,7 @@ export const FeaturedImage = function FeaturedImage({
     <section
       className={clsx(
         'relative bg-primary-shadow @container',
-        mediaAlign == 'full' && 'h-dvh max-h-[780px]'
+        mediaAlign === 'full' && 'h-dvh max-h-[780px]'
       )}
     >
       <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
@@ -52,7 +52,7 @@ export const FeaturedImage = function FeaturedImage({
             alt={image.altText}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
-            placeholder={image.blurDataUrl ? 'blur' : 'empty'}
+            placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
             blurDataURL={image.blurDataUrl}
             className="object-cover"
           />
@@ -60,7 +60,7 @@ export const FeaturedImage = function FeaturedImage({
         <div
           className={clsx(
             'z-10 mx-auto flex flex-col items-start gap-4 px-3 pb-20 pt-10 text-background @5xl:p-20',
-            mediaAlign == 'full'
+            mediaAlign === 'full'
               ? '5xl:px-20 mx-auto mt-auto w-full max-w-screen-2xl px-3 @xl:px-6'
               : 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5',
             { '@3xl:order-1': mediaAlign === 'right' }
@@ -71,8 +71,8 @@ export const FeaturedImage = function FeaturedImage({
           </h2>
           <p className="max-w-md pb-2">{description}</p>
           <Button
-            variant={mediaAlign == 'full' ? 'tertiary' : 'primary'}
-            className={clsx(mediaAlign == 'full' ? 'text-background' : 'text-foreground')}
+            variant={mediaAlign === 'full' ? 'tertiary' : 'primary'}
+            className={clsx(mediaAlign === 'full' ? 'text-background' : 'text-foreground')}
             asChild
           >
             <Link href={cta.href}>{cta.label}</Link>
@@ -82,5 +82,3 @@ export const FeaturedImage = function FeaturedImage({
     </section>
   )
 }
-
-export default FeaturedImage

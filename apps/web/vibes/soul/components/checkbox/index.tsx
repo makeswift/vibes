@@ -1,5 +1,5 @@
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { Check } from 'lucide-react'
 
 interface Props {
@@ -33,7 +33,7 @@ export const Checkbox = function Checkbox({
         </RadixCheckbox.Indicator>
       </RadixCheckbox.Root>
 
-      {label && (
+      {label != null && label !== '' && (
         <label className="cursor-pointer select-none text-foreground" htmlFor="checkbox">
           {label}
         </label>
@@ -41,5 +41,3 @@ export const Checkbox = function Checkbox({
     </div>
   )
 }
-
-export default Checkbox

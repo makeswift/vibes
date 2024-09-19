@@ -1,6 +1,6 @@
-import AnnouncementBar from '@/vibes/soul/components/announcement-bar'
-import FeaturedBlogPostList from '@/vibes/soul/components/featured-blog-post-list'
-import Footer from '@/vibes/soul/components/footer'
+import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
+import { FeaturedBlogPostList } from '@/vibes/soul/components/featured-blog-post-list'
+import { Footer } from '@/vibes/soul/components/footer'
 import {
   Amex,
   ApplePay,
@@ -11,8 +11,8 @@ import {
   Visa,
 } from '@/vibes/soul/components/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
-import Header from '@/vibes/soul/components/header'
-import Subscribe from '@/vibes/soul/components/subscribe'
+import { Header } from '@/vibes/soul/components/header'
+import { Subscribe } from '@/vibes/soul/components/subscribe'
 import { posts } from '@/vibes/soul/examples/blog-post-list'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 
@@ -52,7 +52,7 @@ const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
-export const BlogPage = function BlogPage({ heroSlides, categories, newArrivals }: any) {
+export const BlogPage = function BlogPage() {
   return (
     <>
       <AnnouncementBar>
@@ -120,12 +120,10 @@ export const BlogPage = function BlogPage({ heroSlides, categories, newArrivals 
           address: 'info@mywebsite.com',
           phone: '+(1)408 123 4567',
         }}
-        copyright={`© ${new Date().getFullYear()} SOUL - Powered by Monogram`}
+        copyright={`© ${new Date().getFullYear().toString()} SOUL - Powered by Monogram`}
         paymentIcons={paymentIconsArray}
         socialMediaLinks={socialMediaLinks}
       />
     </>
   )
 }
-
-export default BlogPage

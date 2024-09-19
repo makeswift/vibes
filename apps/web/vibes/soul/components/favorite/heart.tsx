@@ -1,10 +1,10 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import './styles.css'
 
-export default function Heart(
+export function Heart(
   { filled = false }: { filled: boolean | undefined },
-  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
 ) {
   return (
     <svg

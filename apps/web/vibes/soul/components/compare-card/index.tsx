@@ -2,13 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
-import Badge from '@/vibes/soul/components/badge'
-import Button from '@/vibes/soul/components/button'
-import Label from '@/vibes/soul/components/label'
-import Price, { ProductPrice } from '@/vibes/soul/components/product-card/price'
-import Rating from '@/vibes/soul/components/rating'
+import { Badge } from '@/vibes/soul/components/badge'
+import { Button } from '@/vibes/soul/components/button'
+import { Label } from '@/vibes/soul/components/label'
+import { Price, ProductPrice } from '@/vibes/soul/components/product-card/price'
+import { Rating } from '@/vibes/soul/components/rating'
 
 interface Image {
   altText: string
@@ -52,10 +52,10 @@ export const CompareCard = function CompareCard({
       href={href}
     >
       <div className="relative aspect-[5/6] overflow-hidden rounded-xl">
-        {badge && (
+        {badge != null && badge !== '' && (
           <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
         )}
-        {image?.src && (
+        {image?.src != null && image.src !== '' && (
           <Image
             src={image.src}
             fill
@@ -67,29 +67,31 @@ export const CompareCard = function CompareCard({
       </div>
       <div className="mb-2 flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
-          {name && <span className="line-clamp-2">{name}</span>}
-          {subtitle && <span className="font-normal text-contrast-400">{subtitle}</span>}
+          <span className="line-clamp-2">{name}</span>
+          {subtitle != null && subtitle !== '' && (
+            <span className="font-normal text-contrast-400">{subtitle}</span>
+          )}
         </h3>
-        {price && <Price price={price} />}
+        {price != null && price !== '' && <Price price={price} />}
       </div>
       <Button className="mb-8 w-full">Add to Cart</Button>
       <hr className="mb-4" />
 
-      {description && (
+      {description != null && description !== '' && (
         <>
           <Label className="mb-3">Description</Label>
           <p className="mb-4">{description}</p>
           <hr className="mb-4" />
         </>
       )}
-      {rating && (
+      {rating != null && (
         <>
           <Label className="mb-3">Rating</Label>
           <Rating rating={rating} className="mb-8" />
           <hr className="mb-4" />
         </>
       )}
-      {availability && (
+      {availability != null && availability !== '' && (
         <>
           <Label className="mb-3">Availability</Label>
           <p className="mb-8">{availability}</p>
@@ -123,5 +125,3 @@ export const CompareCardSkeleton = function CompareCardSkeleton({
     </div>
   )
 }
-
-export default CompareCard

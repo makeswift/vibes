@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 interface Props {
   isOpen: boolean
@@ -31,5 +31,3 @@ export const Modal = function Modal({ isOpen, setOpen, trigger, content }: Props
     </Dialog.Root>
   )
 }
-
-export default Modal

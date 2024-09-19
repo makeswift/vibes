@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
-import { Accordions } from '@/vibes/soul/components/accordions'
-import { AccordionItem } from '@/vibes/soul/components/accordions'
+import { AccordionItem, Accordions } from '@/vibes/soul/components/accordions'
 
 export interface Props {
   accordions: AccordionItem[]
@@ -35,7 +34,7 @@ export const ProductDescription = function ProductDescription({
               sizes="(max-width: 500px) 100vw, 50vw"
               className="object-cover"
             />
-          ) : video ? (
+          ) : video != null && video !== '' ? (
             <video className="h-full object-cover" muted loop autoPlay>
               <source src={video} type="video/mp4" />
             </video>
@@ -45,5 +44,3 @@ export const ProductDescription = function ProductDescription({
     </div>
   )
 }
-
-export default ProductDescription

@@ -7,7 +7,7 @@ import { TypescriptBack, TypescriptFront, TypescriptShadow } from '@/icons/gener
 
 export function Typescript() {
   return (
-    <Draggable className="-mt-5 ml-8">
+    <Draggable className="relative z-10 -mt-5 ml-8">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"

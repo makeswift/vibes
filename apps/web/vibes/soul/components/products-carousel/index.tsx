@@ -1,5 +1,5 @@
-import Carousel from '@/vibes/soul/components/carousel'
-import ProductCard, { Product, ProductCardSkeleton } from '@/vibes/soul/components/product-card'
+import { Carousel } from '@/vibes/soul/components/carousel'
+import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/components/product-card'
 
 interface Props {
   products: Product[]
@@ -8,7 +8,7 @@ interface Props {
 export const ProductsCarousel = function ProductsCarousel({ products }: Props) {
   return (
     <Carousel>
-      {products && products.length > 0
+      {products.length > 0
         ? products.map(product => (
             <ProductCard
               key={product.id}
@@ -25,5 +25,3 @@ export const ProductsCarousel = function ProductsCarousel({ products }: Props) {
     </Carousel>
   )
 }
-
-export default ProductsCarousel

@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 import { BlogPost } from '@/vibes/soul/components/blog-post-card'
-import BlogPostList from '@/vibes/soul/components/blog-post-list'
-import Button from '@/vibes/soul/components/button'
+import { BlogPostList } from '@/vibes/soul/components/blog-post-list'
+import { Button } from '@/vibes/soul/components/button'
 
 interface Link {
   label: string
@@ -28,9 +28,11 @@ export const FeaturedBlogPostList = function FeaturedBlogPostList({
         <h2 className="mb-2 font-heading text-3xl font-semibold leading-none text-foreground @4xl:text-6xl @4xl:font-medium">
           {title}
         </h2>
-        {description && <p className="max-w-md text-foreground">{description}</p>}
+        {description != null && description !== '' && (
+          <p className="max-w-md text-foreground">{description}</p>
+        )}
         <BlogPostList posts={posts} className="mt-6 @4xl:mt-8" />
-        {cta && (
+        {cta != null && cta.href !== '' && cta.label !== '' && (
           <Button className="mx-auto mt-12 bg-primary @4xl:mt-16" asChild>
             <Link href={cta.href}>{cta.label}</Link>
           </Button>
@@ -39,5 +41,3 @@ export const FeaturedBlogPostList = function FeaturedBlogPostList({
     </section>
   )
 }
-
-export default FeaturedBlogPostList
