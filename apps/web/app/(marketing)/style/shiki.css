@@ -16,17 +16,17 @@
     --shiki-foreground: hsl(var(--foreground));
     --shiki-background: hsl(var(--background));
     --shiki-token-constant: hsl(var(--foreground));
-    --shiki-token-string: hsla(var(--foreground) / 0.4);
-    --shiki-token-comment: hsla(var(--foreground) / 0.3);
-    --shiki-token-keyword: hsla(var(--foreground) / 0.4);
-    --shiki-token-parameter: hsla(var(--foreground) / 0.4);
+    --shiki-token-string: hsla(var(--contrast-400));
+    --shiki-token-comment: hsla(var(--contrast-300));
+    --shiki-token-keyword: hsla(var(--contrast-400));
+    --shiki-token-parameter: hsla(var(--contrast-400));
     --shiki-token-function: hsl(var(--foreground));
-    --shiki-token-string-expression: hsla(var(--foreground) / 0.4);
-    --shiki-token-punctuation: hsla(var(--foreground) / 0.4);
-    --shiki-token-link: hsla(var(--foreground) / 0.4);
+    --shiki-token-string-expression: hsla(var(--contrast-400));
+    --shiki-token-punctuation: hsla(var(--contrast-400));
+    --shiki-token-link: hsla(var(--contrast-400));
 
     .line:before {
-      color: hsla(var(--foreground) / 0.3);
+      color: hsla(var(--contrast-300));
     }
   }
 
@@ -44,17 +44,17 @@
     --shiki-foreground: hsl(var(--foreground));
     --shiki-background: hsl(var(--background));
     --shiki-token-constant: hsl(var(--foreground));
-    --shiki-token-string: hsla(var(--foreground) / 0.4);
-    --shiki-token-comment: hsla(var(--foreground) / 0.3);
-    --shiki-token-keyword: hsla(var(--foreground) / 0.4);
-    --shiki-token-parameter: hsla(var(--foreground) / 0.4);
+    --shiki-token-string: hsla(var(--contrast-300));
+    --shiki-token-comment: hsla(var(--contrast-200));
+    --shiki-token-keyword: hsla(var(--contrast-300));
+    --shiki-token-parameter: hsla(var(--contrast-300));
     --shiki-token-function: hsl(var(--foreground));
-    --shiki-token-string-expression: hsla(var(--foreground) / 0.4);
-    --shiki-token-punctuation: hsla(var(--foreground) / 0.4);
-    --shiki-token-link: hsla(var(--foreground) / 0.4);
+    --shiki-token-string-expression: hsla(var(--contrast-300));
+    --shiki-token-punctuation: hsla(var(--contrast-300));
+    --shiki-token-link: hsla(var(--contrast-300));
 
     .line:before {
-      color: hsla(var(--foreground) / 0.3);
+      color: hsla(var(--contrast-200));
     }
   }
 }

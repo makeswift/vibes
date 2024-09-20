@@ -54,7 +54,7 @@ export function BrandTypography({ vibeSlug, brandName }: Props) {
             </div>
             <div className="font-mono text-xs text-contrast-500">
               <span className="rounded bg-contrast-100 px-1 py-0.5">
-                {size.variable.replace('--', '')}
+                {size.variable.replace('--font-size', 'text')}
               </span>
               <span className="ml-2 text-contrast-400">
                 {brand.cssVars[size.variable] ?? size.fontSize}
