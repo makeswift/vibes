@@ -81,10 +81,10 @@
     @apply -left-[3px] top-[3px];
   }
   .pattern-shadow-md:after {
-    @apply -left-1.5 top-1.5;
+    @apply -left-1 top-1;
   }
   .pattern-shadow-lg:after {
-    @apply -left-2 top-2;
+    @apply -left-1.5 top-1.5;
   }
   .pattern-shadow:after {
     @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''];
