@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/button')),
   },
   {
+    name: 'button-link-example',
+    dependencies: [],
+    registryDependencies: ['button-link'],
+    files: ['examples/button-link.tsx'],
+    component: lazy(() => import('./examples/button-link')),
+  },
+  {
     name: 'card-example',
     dependencies: [],
     registryDependencies: ['card'],

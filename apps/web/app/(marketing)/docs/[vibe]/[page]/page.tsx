@@ -164,7 +164,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
         <h1 className="-mt-1 mb-2 text-3xl font-bold text-foreground">{meta.title}</h1>
 
         {meta.description && (
-          <p className="max-w-4xl text-base font-light leading-relaxed text-contrast-500 md:text-lg">
+          <p className="mb-8 max-w-4xl text-base font-light leading-relaxed text-contrast-500 md:text-lg">
             {meta.description}
           </p>
         )}
