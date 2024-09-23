@@ -6,7 +6,7 @@ import { Ref, forwardRef, useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
-import ButtonLink from '../button-link'
+import Button from '../button'
 
 type Item = {
   link?: {
@@ -118,14 +118,14 @@ export const Feed = forwardRef(function Feed(
       </div>
 
       {paginate && page < items.length && (
-        <ButtonLink
+        <Button
           borderGlow={false}
           variant="secondary"
           className="mt-10 text-foreground @lg:mt-14"
           onClick={() => setPage(p => p + paginationAmount)}
         >
           Load more
-        </ButtonLink>
+        </Button>
       )}
     </div>
   )

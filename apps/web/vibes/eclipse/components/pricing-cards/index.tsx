@@ -4,7 +4,7 @@ import { ReactNode, Ref, forwardRef, useState } from 'react'
 
 import clsx from 'clsx'
 
-import Button from '../button'
+import ButtonLink from '../button-link'
 import Card from '../card'
 
 type Feature = {
@@ -86,9 +86,9 @@ export const PricingCards = forwardRef(function PricingCards(
               {card.children}
             </div>
 
-            <Button link={card.ctaLink} className="mt-5" variant="primary" borderGlow={false}>
+            <ButtonLink link={card.ctaLink} className="mt-5" variant="primary" borderGlow={false}>
               {card.ctaText}
-            </Button>
+            </ButtonLink>
           </div>
         ))}
       </div>
