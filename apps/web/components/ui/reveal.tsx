@@ -9,7 +9,7 @@ import { Button } from './button'
 function Reveal({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className="relative my-5 md:my-6">
+    <div className="relative my-5 last:mb-0 md:my-6">
       <div className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2">
         <Button size="small" onClick={() => setIsOpen(prev => !prev)}>
           {isOpen ? 'Show less' : 'Show more'}

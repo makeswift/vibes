@@ -10,19 +10,19 @@ interface Color {
 
 export function Colors({ colors }: { colors: Color[] }) {
   return (
-    <div className="grid grid-cols-2 gap-x-3 gap-y-4 sm:grid-cols-4 sm:gap-x-2 sm:gap-y-5 md:grid-cols-5">
+    <div className="grid grid-cols-2 gap-x-3 gap-y-3.5 sm:grid-cols-4 sm:gap-x-2 sm:gap-y-5 md:grid-cols-5">
       {colors?.map((color, index) => {
         return (
           <div key={index} className="group">
             <div
-              className="mb-1 h-12 w-full ring-1 ring-inset ring-foreground/15"
+              className="mb-2 h-12 w-full ring-1 ring-inset ring-foreground/15"
               style={{ backgroundColor: `${color.value}` }}
             />
             <div className="relative">
-              <div className="font-mono text-xs text-foreground">{color.name}</div>
+              <div className="font-mono text-xs leading-tight text-foreground">{color.name}</div>
               <div className="text-xs text-contrast-400">{color.value}</div>
               <CopyButton
-                className="!absolute right-0 top-0 translate-y-2 opacity-0 transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100"
+                className="!absolute -top-1 right-0 translate-y-2 opacity-0 transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100"
                 clipboard={color.value}
               />
             </div>

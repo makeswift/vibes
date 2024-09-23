@@ -22,6 +22,7 @@ import { Preview } from '@/components/preview'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
 import { ButtonLink } from '@/components/ui/button-link'
+import { CodeBlock } from '@/components/ui/code-block'
 import { CodeFromFile } from '@/components/ui/code-from-file'
 import { Figma } from '@/components/ui/figma'
 import { IconsPreview } from '@/components/ui/icons-preview'
@@ -31,6 +32,7 @@ import { Reveal } from '@/components/ui/reveal'
 import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tooltip } from '@/components/ui/tooltip'
 import { ZoomImage } from '@/components/ui/zoom-image'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getTotalSize } from '@/lib/bundle'
@@ -99,6 +101,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       AccordionGroup,
       Button,
       ButtonLink,
+      CodeBlock,
       Colors,
       Image: ZoomImage,
       Figma,
@@ -114,6 +117,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       TabsContent,
       TabsList,
       TabsTrigger,
+      Tooltip,
       TailwindConfig: function TailwindConfig() {
         return (
           <Reveal>
@@ -157,10 +161,10 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   return (
     <>
       <div className="py-8 lg:py-10">
-        <h1 className="-mt-1 mb-3 text-2xl font-bold text-foreground">{meta.title}</h1>
+        <h1 className="-mt-1 mb-2 text-3xl font-bold text-foreground">{meta.title}</h1>
 
         {meta.description && (
-          <p className="max-w-4xl text-base font-light leading-relaxed text-contrast-500 md:text-lg">
+          <p className="mb-8 max-w-4xl text-base font-light leading-relaxed text-contrast-500 md:text-lg">
             {meta.description}
           </p>
         )}
@@ -182,7 +186,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               'prose-ul:pl-5 prose-ul:font-light',
               'prose-li:[&_::marker]:!text-foreground',
               'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:outline-primary prose-a:before:absolute prose-a:before:inset-x-0 prose-a:before:bottom-0 prose-a:before:h-[1px] prose-a:before:animate-scroll prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] prose-a:before:[animation-play-state:paused] hover:prose-a:before:[animation-play-state:running]',
-              '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-contrast-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
+              '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-contrast-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:text-sm [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
               '[&:not(pre_code)]:prose-code:before:content-none [&:not(pre_code)]:prose-code:after:content-none',
               '[&>.tabs]:my-8 [&>.tabs]:md:my-10',
               'prose-pre:my-0 prose-pre:outline-primary',
@@ -228,7 +232,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               <TableOfContents offsetTop={90} />
               <div className="space-y-5 py-5">
                 {totalSize && (
-                  <div className="flex w-full items-center gap-x-3">
+                  <div className="flex w-full items-center gap-x-2">
                     <span className="text-sm font-bold text-foreground">Total size</span>
 
                     <span className="rounded bg-contrast-100 px-1.5 py-0.5 font-mono text-xs text-contrast-500">

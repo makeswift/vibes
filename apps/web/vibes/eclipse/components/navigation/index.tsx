@@ -10,7 +10,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import clsx from 'clsx'
 import { ChevronDown } from 'lucide-react'
 
-import Button from '../button'
+import ButtonLink from '../button-link'
 
 type SecondaryMenuItem = {
   title: string
@@ -211,14 +211,14 @@ const Navigation = ({
               />
             </div>
 
-            <Button
+            <ButtonLink
               link={{ href: ctaLink || '#' }}
               variant="primary"
               size="small"
               className="hidden @lg:inline-flex"
             >
               {ctaText}
-            </Button>
+            </ButtonLink>
           </div>
         </div>
 

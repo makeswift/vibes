@@ -29,7 +29,7 @@ function IconsPreview({
   strokeWidth,
   size = 32,
 }: {
-  variant: string
+  variant?: string
   strokeWidth: number
   size: number
 }) {

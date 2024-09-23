@@ -8,7 +8,7 @@ import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-import Button from '@/vibes/eclipse/components/button'
+import ButtonLink from '@/vibes/eclipse/components/button-link'
 
 type UseDotButtonType = {
   selectedIndex: number
@@ -129,14 +129,14 @@ const Carousel: React.FC<EmblaCarouselPropType> = props => {
                       <p className="text-balance text-sm text-foreground/60">{slide.text}</p>
                     </div>
 
-                    <Button
+                    <ButtonLink
                       link={{ href: slide.buttonLink || '#' }}
                       borderGlow={false}
                       variant="primary"
                       size="small"
                     >
                       {slide.buttonText}
-                    </Button>
+                    </ButtonLink>
                   </div>
                 </div>
               </div>

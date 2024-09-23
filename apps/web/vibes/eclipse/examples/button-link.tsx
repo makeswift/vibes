@@ -1,11 +1,11 @@
-import { Button } from '@/vibes/eclipse/components/button'
+import { ButtonLink } from '@/vibes/eclipse/components/button-link'
 
 export default function Preview() {
   return (
     <div className="flex h-screen items-center justify-center bg-background p-10">
-      <Button variant="primary" size="default">
+      <ButtonLink variant="primary" size="default">
         Text
-      </Button>
+      </ButtonLink>
     </div>
   )
 }
