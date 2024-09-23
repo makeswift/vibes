@@ -32,6 +32,7 @@ import { Reveal } from '@/components/ui/reveal'
 import { Step, Steps } from '@/components/ui/steps'
 import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tooltip } from '@/components/ui/tooltip'
 import { ZoomImage } from '@/components/ui/zoom-image'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getTotalSize } from '@/lib/bundle'
@@ -116,6 +117,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
       TabsContent,
       TabsList,
       TabsTrigger,
+      Tooltip,
       TailwindConfig: function TailwindConfig() {
         return (
           <Reveal>
