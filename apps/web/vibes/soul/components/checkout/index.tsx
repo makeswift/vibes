@@ -2,38 +2,100 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 import { CartProduct } from '@/vibes/soul/components/cart'
+import { Checkbox } from '@/vibes/soul/components/checkbox'
 import { Input } from '@/vibes/soul/components/input'
+import { ShippingForm } from '@/vibes/soul/components/shipping-form'
 
 export const Checkout = function Checkout({ products }: { products: CartProduct[] }) {
   const [isLoading, setIsLoading] = useState(false)
+  const [checked, setChecked] = useState(true)
+  const [expandedPanel, setExpandedPanel] = useState<string | null>(null)
+
+  // TODO: Remove this when we have a real API
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
 
   return (
     <div className="mx-auto max-w-screen-2xl @container">
       <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
         {/* Cart Side */}
-        <div className={clsx(products?.length > 0 && '@4xl:w-2/3', 'w-full')}>
+        <div className={clsx(products.length > 0 && '@4xl:w-2/3', 'w-full')}>
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             Checkout
-            {!isLoading && products?.length > 0 && (
+            {!isLoading && products.length > 0 && (
               <span className="ml-4 text-contrast-200">{products.length}</span>
             )}
           </h1>
 
-          {/* Customer */}
-          <div className="flex items-end gap-4">
-            <Input label="Email" className="max-w-64" value="test@test.com" />
-            <Button variant="secondary" size="small" className="h-[48px]">
-              Continue
-            </Button>
-          </div>
+          <div className="my-4 grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-4">
+            {/* Customer */}
+            <ExpansionPanel
+              title="Customer"
+              preview={<span>email@email.com</span>}
+              form={
+                <div className="space-y-4">
+                  <div className="flex items-end gap-4">
+                    <Input label="Email" value="test@test.com" />
+                    <Button
+                      variant="secondary"
+                      size="small"
+                      className="h-[48px]"
+                      onClick={() => setExpandedPanel(expandedPanel === '1' ? null : '1')}
+                    >
+                      Continue
+                    </Button>
+                  </div>
+                  <Checkbox
+                    checked={checked}
+                    setChecked={setChecked}
+                    label="Subscribe to our newsletter"
+                  />
+                  <span className="block text-sm">
+                    Already have an account?{' '}
+                    <Link href="#" className="font-semibold">
+                      Sign in now
+                    </Link>
+                  </span>
+                </div>
+              }
+              isExpanded={expandedPanel === '1'}
+              onToggle={() => setExpandedPanel(expandedPanel === '1' ? null : '1')}
+            />
 
-          {/* Shipping */}
+            <ExpansionPanel
+              title="Shipping"
+              preview={
+                <div className="flex flex-col">
+                  <span>Jane Jones</span>
+                  <span>Monogram</span>
+                  <span>+1 404 555 0123</span>
+                  <span>1234 Main St</span>
+                  <span>Atlanta, GA 30303</span>
+                  <hr className="my-2" />
+                  <span>
+                    Free Shipping <span className="font-medium">$0.00</span>
+                  </span>
+                </div>
+              }
+              form={<ShippingForm />}
+              isExpanded={expandedPanel === '2'}
+              onToggle={() => setExpandedPanel(expandedPanel === '2' ? null : '2')}
+            />
+
+            {/* Shipping */}
+          </div>
         </div>
 
         {/* Summary Side */}
@@ -52,7 +114,7 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                 </h2>
                 <Link
                   href="#"
-                  className="text-sm text-contrast-300 transition-colors duration-300 hover:text-foreground"
+                  className="mb-0.5 text-sm text-contrast-300 transition-colors duration-300 hover:text-foreground"
                 >
                   Edit Cart
                 </Link>
@@ -60,10 +122,10 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
 
               {/* Mini Products List in Order Summary */}
               <ul className="flex flex-col gap-y-4">
-                {products.map(({ id, name, href, image, price, subtitle, quantity }) => (
+                {products.map(({ id, name, image, price, quantity }) => (
                   <li key={id} className="flex items-center justify-between gap-x-4">
                     <div className="flex items-center gap-x-4">
-                      {image?.src && (
+                      {image?.src != null && image.src !== '' && (
                         <div className="relative aspect-[3/4] w-16 overflow-hidden rounded-lg bg-contrast-100">
                           <Image
                             src={image.src}
@@ -91,31 +153,29 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                 <tbody>
                   <tr className="flex w-full items-end gap-2 pb-10">
                     {/* <span>Coupon / Gift Certificate</span> */}
-                    <Input label="Coupon / Gift Certificate" className="" />
+                    <Input label="Coupon / Gift Certificate" className="w-full" />
                     <Button variant="secondary" size="small" className="h-[48px]">
                       Apply
                     </Button>
                   </tr>
                   <tr className="border-y border-contrast-100">
-                    <td scope="row">Subtotal</td>
+                    <td>Subtotal</td>
                     <td className="py-4 text-right">$50.00</td>
                   </tr>
                   <tr className="border-b border-contrast-100">
-                    <td scope="row">Shipping</td>
+                    <td>Shipping</td>
                     <td className="py-4 text-right">
                       {/* Add Address Button and Modal Form */} --
                     </td>
                   </tr>
                   <tr className="border-b border-contrast-100">
-                    <td scope="row">Tax</td>
+                    <td>Tax</td>
                     <td className="py-4 text-right">$4.50</td>
                   </tr>
                 </tbody>
                 <tfoot>
-                  <tr className=" text-xl">
-                    <th scope="row" className="text-left">
-                      Grand Total
-                    </th>
+                  <tr className="text-xl">
+                    <th className="text-left">Grand Total</th>
                     <td className="py-10 text-right">$59.50</td>
                   </tr>
                 </tfoot>
@@ -125,5 +185,34 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
         )}
       </div>
     </div>
+  )
+}
+
+const ExpansionPanel = function ExpansionPanel({
+  title,
+  preview,
+  form,
+  isExpanded,
+  onToggle,
+}: {
+  title: string
+  preview: React.ReactNode
+  form: React.ReactNode
+  isExpanded: boolean
+  onToggle: () => void
+}) {
+  return (
+    <>
+      <h2 className="w-full justify-stretch whitespace-nowrap font-heading text-3xl font-medium">
+        {title}
+      </h2>
+      {!isExpanded && <div className="mt-4 flex w-full flex-col gap-2">{preview}</div>}
+      {isExpanded && <div className="col-span-3 mb-6 border-b pb-10">{form}</div>}
+      {!isExpanded && (
+        <Button variant="secondary" size="small" className="h-min" onClick={onToggle}>
+          Edit
+        </Button>
+      )}
+    </>
   )
 }
