@@ -92,7 +92,6 @@ export function BrandInstallation({ vibeSlug, brandName, fonts }: Props) {
 
   return (
     <>
-      <h2 id="usage">Usage</h2>
       <Steps>
         <Step>
           <h3 id="add-css-variables">Add CSS variables</h3>

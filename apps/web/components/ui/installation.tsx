@@ -57,7 +57,10 @@ export function Installation({
           <TabsTrigger value="manual">Manual</TabsTrigger>
         </TabsList>
         <TabsContent value="cli" className="pt-4">
-          <Steps>
+          <p>Install the component from your command line.</p>
+          <CodeBlock lang="bash">{`npx vibes add ${vibeSlug}/${componentName}`}</CodeBlock>
+
+          {/* <Steps>
             <Step>
               <h3>Run the following command</h3>
               <CodeBlock lang="bash">{`npx vibes add ${vibeSlug}/${componentName}`}</CodeBlock>
@@ -67,7 +70,7 @@ export function Installation({
               You can now find the {componentName} component in your project in the{' '}
               <code>/vibes/{vibeSlug}</code> directory
             </Step>
-          </Steps>
+          </Steps> */}
         </TabsContent>
         <TabsContent value="manual" className="pt-4">
           <Steps>
@@ -92,11 +95,11 @@ export function Installation({
             )}
             {component.files.length > 0 && (
               <Step>
-                <h3 className="mb-2">Copy and paste the following code into your project</h3>
-                <div className="space-y-8">
+                <h3>Copy and paste the following code into your project</h3>
+                <div className="mt-5 space-y-6">
                   {component.files.map((file, index) => (
-                    <div className="space-y-3" key={index}>
-                      <code>{file}</code>
+                    <div key={index}>
+                      <p className="-mb-4 font-mono text-sm font-bold text-foreground">{file}</p>
                       <Reveal>
                         <CodeFromFile
                           basePath={path.join(process.cwd(), 'vibes', vibe.slug)}
@@ -108,9 +111,6 @@ export function Installation({
                 </div>
               </Step>
             )}
-            <Step>
-              <h3>Update the import paths to match your project setup</h3>
-            </Step>
           </Steps>
         </TabsContent>
       </Tabs>

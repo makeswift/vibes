@@ -9,8 +9,8 @@ export default function Preview() {
   ]
 
   return (
-    <div className="flex min-h-48 justify-center bg-[#07090D] p-5 sm:min-h-64 sm:p-8 lg:min-h-80 lg:p-12">
-      <Accordions accordions={accordions} />
+    <div className="flex h-screen items-start justify-center bg-background p-10">
+      <Accordions type="multiple" accordions={accordions} />
     </div>
   )
 }

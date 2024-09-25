@@ -53,7 +53,7 @@ export const components = [
   },
   {
     name: 'accordions',
-    dependencies: ['@radix-ui/react-accordion'],
+    dependencies: ['@radix-ui/react-accordion', 'clsx'],
     registryDependencies: [],
     files: [
       './components/accordions/index.tsx',

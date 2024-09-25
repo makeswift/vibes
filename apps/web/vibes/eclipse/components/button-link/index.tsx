@@ -1,37 +1,40 @@
 'use client'
 
+import Link from 'next/link'
 import { ReactNode, Ref, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
 export interface Props {
   className?: string
+  link?: { href: string; target?: string }
   variant?: 'primary' | 'secondary'
   size?: 'default' | 'small'
-  onClick?: () => void
   children?: ReactNode
   borderGlow?: boolean
 }
 
-export const Button = forwardRef(function Button(
+export const ButtonLink = forwardRef(function ButtonLink(
   {
     className,
-    onClick,
+    link,
     variant = 'primary',
     size = 'default',
     children = 'Button',
     borderGlow = true,
   }: Props,
-  ref: Ref<HTMLButtonElement>
+  ref: Ref<HTMLAnchorElement>
 ) {
   return (
-    <button
+    <Link
       ref={ref}
       className={clsx(
         className,
-        'group relative z-0 overflow-hidden rounded-full p-px text-center leading-normal text-foreground'
+        'group relative z-0 overflow-hidden rounded-full p-px text-center leading-normal text-foreground',
+        link?.href === '#' && 'pointer-events-none'
       )}
-      onClick={onClick}
+      href={link?.href ?? '#'}
+      target={link?.target}
     >
       <div
         className={clsx(
@@ -54,8 +57,8 @@ export const Button = forwardRef(function Button(
       >
         <span className="shrink-0 text-foreground">{children}</span>
       </div>
-    </button>
+    </Link>
   )
 })
 
-export default Button
+export default ButtonLink

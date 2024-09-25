@@ -1,10 +1,6 @@
 import localFont from 'next/font/local'
 
-import { CodeBlock } from '@/components/ui/code-block'
-import { Reveal } from '@/components/ui/reveal'
 import { getVibe } from '@/vibes/utils'
-
-import { Step, Steps } from '../ui/steps'
 
 interface Props {
   vibeSlug: string
