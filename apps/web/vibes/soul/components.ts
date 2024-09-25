@@ -253,4 +253,10 @@ export const components = [
     registryDependencies: ['input'],
     files: ['components/subscribe/index.tsx'],
   },
+  {
+    name: 'textarea',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['components/textarea/index.tsx'],
+  },
 ] satisfies Components

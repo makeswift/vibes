@@ -655,4 +655,11 @@ export const examples = [
     files: ['examples/subscribe.tsx'],
     component: lazy(() => import('./examples/subscribe')),
   },
+  {
+    name: 'textarea-example',
+    dependencies: [],
+    registryDependencies: ['textarea'],
+    files: ['examples/textarea.tsx'],
+    component: lazy(() => import('./examples/textarea')),
+  },
 ] satisfies Components

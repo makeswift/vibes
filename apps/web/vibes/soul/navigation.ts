@@ -107,6 +107,12 @@ export const navigation = [
       //   file: 'docs/slide-carousel.mdx',
       //   component: 'slide-carousel',
       // },
+      {
+        title: 'Text Area',
+        slug: 'textarea',
+        file: 'docs/textarea.mdx',
+        component: 'textarea',
+      },
     ],
   },
   {
