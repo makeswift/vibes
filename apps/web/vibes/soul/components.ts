@@ -236,12 +236,6 @@ export const components = [
     files: ['components/reviews/index.tsx'],
   },
   {
-    name: 'shipping-form',
-    dependencies: [],
-    registryDependencies: ['input', 'dropdown', 'button', 'checkbox'],
-    files: ['components/shipping-form/index.tsx'],
-  },
-  {
     name: 'slide-carousel',
     dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
     registryDependencies: [],

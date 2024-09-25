@@ -9,8 +9,8 @@ import { clsx } from 'clsx'
 import { Button } from '@/vibes/soul/components/button'
 import { CartProduct } from '@/vibes/soul/components/cart'
 import { Checkbox } from '@/vibes/soul/components/checkbox'
+import { CheckoutForm } from '@/vibes/soul/components/checkout/checkout-form'
 import { Input } from '@/vibes/soul/components/input'
-import { ShippingForm } from '@/vibes/soul/components/shipping-form'
 
 export const Checkout = function Checkout({ products }: { products: CartProduct[] }) {
   const [isLoading, setIsLoading] = useState(false)
@@ -40,7 +40,6 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
           </h1>
 
           <div className="my-4 grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-4">
-            {/* Customer */}
             <ExpansionPanel
               title="Customer"
               preview={<span>email@email.com</span>}
@@ -80,21 +79,38 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                 <div className="flex flex-col">
                   <span>Jane Jones</span>
                   <span>Monogram</span>
-                  <span>+1 404 555 0123</span>
-                  <span>1234 Main St</span>
-                  <span>Atlanta, GA 30303</span>
-                  <hr className="my-2" />
-                  <span>
+                  <span>+1 (404) 555 0123</span>
+                  <span>1234 Main St, Atlanta, GA 30303</span>
+                  <span className="mt-1 w-fit border-t pt-1">
                     Free Shipping <span className="font-medium">$0.00</span>
                   </span>
                 </div>
               }
-              form={<ShippingForm />}
+              form={
+                <CheckoutForm
+                  includeSameAsBillingAddress
+                  includeOrderComments
+                  includeShippingMethod
+                />
+              }
               isExpanded={expandedPanel === '2'}
               onToggle={() => setExpandedPanel(expandedPanel === '2' ? null : '2')}
             />
 
-            {/* Shipping */}
+            <ExpansionPanel
+              title="Billing"
+              preview={
+                <div className="flex flex-col">
+                  <span>Jane Jones</span>
+                  <span>Monogram</span>
+                  <span>+1 (404) 555 0123</span>
+                  <span>1234 Main St, Atlanta, GA 30303</span>
+                </div>
+              }
+              form={<CheckoutForm />}
+              isExpanded={expandedPanel === '3'}
+              onToggle={() => setExpandedPanel(expandedPanel === '3' ? null : '3')}
+            />
           </div>
         </div>
 
@@ -146,19 +162,17 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                 ))}
               </ul>
 
-              <hr className="my-10 border-contrast-100" />
+              <div className="flex items-end gap-2 pb-7 pt-10">
+                <Input label="Coupon / Gift Certificate" />
+                <Button variant="secondary" size="small" className="h-[48px]">
+                  Apply
+                </Button>
+              </div>
 
               <table aria-label="Receipt Summary" className="w-full">
                 <caption className="sr-only">Receipt Summary</caption>
                 <tbody>
-                  <tr className="flex w-full items-end gap-2 pb-10">
-                    {/* <span>Coupon / Gift Certificate</span> */}
-                    <Input label="Coupon / Gift Certificate" className="w-full" />
-                    <Button variant="secondary" size="small" className="h-[48px]">
-                      Apply
-                    </Button>
-                  </tr>
-                  <tr className="border-y border-contrast-100">
+                  <tr className="border-b border-contrast-100">
                     <td>Subtotal</td>
                     <td className="py-4 text-right">$50.00</td>
                   </tr>
@@ -206,7 +220,7 @@ const ExpansionPanel = function ExpansionPanel({
       <h2 className="w-full justify-stretch whitespace-nowrap font-heading text-3xl font-medium">
         {title}
       </h2>
-      {!isExpanded && <div className="mt-4 flex w-full flex-col gap-2">{preview}</div>}
+      {!isExpanded && <div className="mt-4 flex w-full flex-col gap-2 text-sm">{preview}</div>}
       {isExpanded && <div className="col-span-3 mb-6 border-b pb-10">{form}</div>}
       {!isExpanded && (
         <Button variant="secondary" size="small" className="h-min" onClick={onToggle}>

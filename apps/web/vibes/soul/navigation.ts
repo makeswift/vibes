@@ -101,12 +101,6 @@ export const navigation = [
         component: 'products-list',
       },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
-      {
-        title: 'Shipping Form',
-        slug: 'shipping-form',
-        file: 'docs/shipping-form.mdx',
-        component: 'shipping-form',
-      },
       // {
       //   title: 'Slide Carousel',
       //   slug: 'slide-carousel',
