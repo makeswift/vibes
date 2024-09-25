@@ -614,6 +614,13 @@ export const examples = [
     component: lazy(() => import('./examples/reviews')),
   },
   {
+    name: 'shipping-form-example',
+    dependencies: [],
+    registryDependencies: ['shipping-form'],
+    files: ['examples/shipping-form.tsx'],
+    component: lazy(() => import('./examples/shipping-form')),
+  },
+  {
     name: 'slide-carousel-example',
     dependencies: [],
     registryDependencies: ['slide-carousel'],
