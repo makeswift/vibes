@@ -35,20 +35,14 @@ export const Accordions = forwardRef(function Accordions(
               <Accordion.Header>
                 <Accordion.Trigger asChild>
                   <div className="flex w-full cursor-pointer items-start py-3 @md:gap-8 @md:py-5">
-                    <h3
-                      className="mr-8 flex-1 select-none font-mono text-sm uppercase 
-                      text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground"
-                    >
+                    <h3 className="mr-8 flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
                       {accordion.title}
                     </h3>
                     <Chevron />
                   </div>
                 </Accordion.Trigger>
               </Accordion.Header>
-              <Accordion.Content
-                className="w-full overflow-hidden
-                data-[state=closed]:animate-collapse data-[state=open]:animate-expand"
-              >
+              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
                 <div
                   className={clsx(
                     'py-4 font-heading text-xl font-medium leading-tight text-foreground @md:text-2xl',
