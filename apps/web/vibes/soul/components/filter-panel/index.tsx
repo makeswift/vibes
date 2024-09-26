@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { Sliders, X } from 'lucide-react'
+
 import { Accordions } from '@/vibes/soul/components/accordions'
 import { Button } from '@/vibes/soul/components/button'
 import { Chip } from '@/vibes/soul/components/chip'
