@@ -3,14 +3,12 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
-
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
 import { Favorite } from '@/vibes/soul/components/favorite'
-import { Label} from '@/vibes/soul/components/label'
-
+import { Label } from '@/vibes/soul/components/label'
 import { Product } from '@/vibes/soul/components/product-card'
 import { Price } from '@/vibes/soul/components/product-card/price'
 import { ProductGallery } from '@/vibes/soul/components/product-detail/product-gallery'
@@ -85,7 +83,9 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
             {product.swatches && (
               <>
                 {/* TODO: Restructure JSON to include group name */}
-                <Label className="mt-6">{selectedSwatch?.name != null && selectedSwatch.name !== '' && selectedSwatch.name || 'Color'}</Label>
+                <Label className="mt-6">
+                  {(selectedSwatch?.name != null && selectedSwatch.name !== '') || 'Color'}
+                </Label>
                 <RadioGroupPrimitive.Root className="flex flex-wrap gap-2.5">
                   {product.swatches.map(swatch => (
                     <RadioGroupPrimitive.Item

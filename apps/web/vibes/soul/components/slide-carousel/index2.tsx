@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { EmblaCarouselType } from 'embla-carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
@@ -43,12 +43,12 @@ const useProgressButton = (
     [emblaApi, onButtonClick]
   )
 
-  const onInit = useCallback((emblaApi: EmblaCarouselType) => {
-    setScrollSnaps(emblaApi.scrollSnapList())
+  const onInit = useCallback((emblaAPI: EmblaCarouselType) => {
+    setScrollSnaps(emblaAPI.scrollSnapList())
   }, [])
 
-  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    setSelectedIndex(emblaApi.selectedScrollSnap())
+  const onSelect = useCallback((emblaAPI: EmblaCarouselType) => {
+    setSelectedIndex(emblaAPI.selectedScrollSnap())
   }, [])
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
     { loop: true, duration: 75, dragFree: true, align: 'center' },
     [Autoplay({ delay: interval })]
   )
-  const [emblaRefMag, emblaApiMag] = useEmblaCarousel(
+  const [emblaRefMag] = useEmblaCarousel(
     { loop: true, duration: 75, dragFree: true, align: 'center' },
     [Autoplay({ delay: interval })]
   )
@@ -81,7 +81,7 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
   const toggleAutoplay = useCallback(() => {
-    const autoplay = emblaApi?.plugins()?.autoplay
+    const autoplay = emblaApi?.plugins().autoplay
     if (!autoplay) return
 
     const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play
@@ -91,14 +91,14 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
   }, [emblaApi])
 
   const resetAutoplay = useCallback(() => {
-    const autoplay = emblaApi?.plugins()?.autoplay
+    const autoplay = emblaApi?.plugins().autoplay
     if (!autoplay) return
 
     autoplay.reset()
   }, [emblaApi])
 
   useEffect(() => {
-    const autoplay = emblaApi?.plugins()?.autoplay
+    const autoplay = emblaApi?.plugins().autoplay
     if (!autoplay) return
 
     setIsPlaying(autoplay.isPlaying())
@@ -113,11 +113,9 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
 
   return (
     <section className="flex min-h-dvh flex-col justify-between overflow-hidden @container">
-      {title && (
-        <h2 className="mx-auto max-w-screen-2xl px-5 pb-44 pt-20 text-center text-5xl font-medium leading-none tracking-tight @4xl:pt-40 @4xl:text-7xl">
-          {title}
-        </h2>
-      )}
+      <h2 className="mx-auto max-w-screen-2xl px-5 pb-44 pt-20 text-center text-5xl font-medium leading-none tracking-tight @4xl:pt-40 @4xl:text-7xl">
+        {title}
+      </h2>
 
       <div className="relative">
         {/* Background Carousel */}
@@ -133,7 +131,7 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
                 )}
               >
                 {/* Label */}
-                {label && <div className="absolute right-2 top-2 z-10">{label}</div>}
+                <div className="absolute right-2 top-2 z-10">{label}</div>
 
                 <Image
                   src={image.src}
@@ -161,7 +159,7 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
                 className="relative ml-2.5 aspect-[3/4] w-full min-w-0 shrink-0 grow-0 basis-full bg-contrast-100"
               >
                 {/* Label */}
-                {label && <div className="absolute right-2 top-2 z-10">{label}</div>}
+                <div className="absolute right-2 top-2 z-10">{label}</div>
 
                 <Image
                   src={image.src}
@@ -204,7 +202,7 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
                         : 'ease-out animate-out fade-out'
                     )}
                     style={{
-                      animationDuration: `${index === selectedIndex ? `${interval}ms` : '200ms'}`,
+                      animationDuration: index === selectedIndex ? `${interval}ms` : '200ms',
                       width: `${175 / content.length}px`,
                     }}
                   />

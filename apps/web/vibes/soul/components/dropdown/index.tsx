@@ -35,7 +35,7 @@ export const Dropdown = function Dropdown({
   return (
     <div>
       <div className="flex items-center justify-between">
-        {label && labelOnTop && <Label className="mb-2 block text-foreground">{label}</Label>}
+        {labelOnTop && <Label className="mb-2 block text-foreground">{label}</Label>}
         {required === true && <span className="text-xs text-contrast-300">Required</span>}
       </div>
       <DropdownMenu>

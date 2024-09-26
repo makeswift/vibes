@@ -22,11 +22,9 @@ export const SlideCarousel = ({ title, content }: Props) => {
 
   return (
     <section className="relative flex min-h-dvh flex-col justify-between overflow-hidden @container">
-      {title && (
-        <h2 className="mx-auto max-w-screen-2xl px-5 pb-44 pt-20 text-center text-5xl font-medium leading-none tracking-tight @4xl:pt-40 @4xl:text-7xl">
-          {title}
-        </h2>
-      )}
+      <h2 className="mx-auto max-w-screen-2xl px-5 pb-44 pt-20 text-center text-5xl font-medium leading-none tracking-tight @4xl:pt-40 @4xl:text-7xl">
+        {title}
+      </h2>
 
       {/* Carousels Container */}
       <div className="mx-auto flex w-full max-w-screen-2xl items-end overflow-hidden">
@@ -75,7 +73,6 @@ interface TrackProps {
 }
 
 const CarouselTrack = ({
-  id,
   adjustedContent,
   staggeredIndex,
   trackClassName,
@@ -169,7 +166,9 @@ const CarouselTrack = ({
           )}
         >
           {/* Label */}
-          {label != null && label !== '' && <div className="absolute right-2 top-2 z-10">{label}</div>}
+          {label != null && label !== '' && (
+            <div className="absolute right-2 top-2 z-10">{label}</div>
+          )}
           <Image
             src={image.src}
             alt={image.altText}
