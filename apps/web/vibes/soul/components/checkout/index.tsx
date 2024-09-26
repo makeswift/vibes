@@ -53,10 +53,10 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
             </Button>
           </div>
           <Checkbox checked={checked} setChecked={setChecked} label="Subscribe to our newsletter" />
-          <span className="block text-sm">
+          <span className="block pt-8 text-xs">
             Already have an account?{' '}
             <Link href="#" className="font-semibold">
-              Sign in now
+              Log in
             </Link>
           </span>
         </form>
@@ -115,10 +115,10 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
 
   return (
     <div className="mx-auto max-w-screen-2xl @container">
-      <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
-        {/* Customer Info Side */}
-        <div className={clsx(products.length > 0 && '@4xl:w-2/3', 'w-full')}>
-          <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
+      <div className="flex w-full flex-col gap-4 pb-10 pt-24 @3xl:flex-row @4xl:pb-20 @4xl:pt-32">
+        {/* Customer Form Side */}
+        <div className={clsx(products.length > 0 && '@3xl:w-1/2 @6xl:w-2/3', 'w-full max-w-3xl')}>
+          <h1 className="mb-10 px-3 font-heading text-4xl font-medium leading-none @xl:pl-6 @xl:text-5xl @5xl:pl-20">
             Checkout
             {!isLoading && products.length > 0 && (
               <span className="ml-4 text-contrast-200">{products.length}</span>
@@ -135,29 +135,52 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
             <ul>
               {accordions.map((accordion, i) => (
                 <Accordion.Item key={i} value={`${i + 1}`} asChild>
-                  <li className="group mb-4 border-b pb-6">
+                  <li className="group px-3 transition-colors duration-500 @container/accordion data-[state=closed]:bg-transparent data-[state=open]:bg-contrast-100/50 @xl:rounded-r-lg @xl:px-6 @5xl:pl-20 @5xl:pr-10 @6xl:px-20 @7xl:rounded-lg">
                     <Accordion.Header>
-                      <div className="grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-4 py-3 @md:gap-8 @md:py-5">
+                      <div
+                        // TODO: REMOVE SECOND ROW WHEN HEADER IS OPEN
+                        className="grid grid-cols-[max-content_1fr_minmax(max-content,auto)] grid-rows-[auto,auto] gap-x-4
+                        py-5 @md:gap-x-8 @xl/accordion:grid-rows-1"
+                      >
                         <h2 className="w-32 justify-stretch whitespace-nowrap font-heading text-3xl font-medium">
                           {accordion.title}
                         </h2>
-                        <div className="mt-4 flex w-full flex-col gap-2 overflow-hidden text-sm transition duration-500 ease-out group-data-[state=closed]:h-full group-data-[state=open]:h-0 group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0">
+
+                        <div
+                          className="col-span-3 row-start-2 mt-4 flex w-full
+                          flex-col gap-2 overflow-hidden pb-2 
+                          text-sm 
+                          group-data-[state=closed]:h-full group-data-[state=open]:h-0
+                          group-data-[state=closed]:opacity-100
+                          group-data-[state=open]:opacity-0 @xl/accordion:col-span-1
+                          @xl/accordion:col-start-2
+                          @xl/accordion:row-start-1
+                          "
+                        >
                           {accordion.preview}
                         </div>
                         <Accordion.Trigger asChild>
                           <Button
                             variant="secondary"
                             size="small"
-                            className="h-min group-data-[state=open]:pointer-events-none group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0"
+                            className="col-start-3 h-min
+                            group-data-[state=open]:pointer-events-none
+                            group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0 "
                           >
                             Edit
                           </Button>
                         </Accordion.Trigger>
                       </div>
                     </Accordion.Header>
-                    <Accordion.Content className="w-full overflow-hidden pb-6 data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
+                    <Accordion.Content
+                      className="w-full overflow-hidden pb-8 pt-4
+                      [animation-delay:1000ms] [animation-duration:5000ms] 
+                      [transition-timing-function:cubic-bezier(0.680,0.265,0.000)] data-[state=closed]:animate-collapse
+                      data-[state=open]:animate-expand data-[state=closed]:opacity-0 data-[state=open]:opacity-100"
+                    >
                       {accordion.form}
                     </Accordion.Content>
+                    <hr className={clsx(openAccordion !== '' ? 'opacity-0' : 'opacity-100')} />
                   </li>
                 </Accordion.Item>
               ))}
@@ -166,88 +189,90 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
         </div>
 
         {/* Summary Side */}
-        {isLoading ? (
-          // Skeleton Loader
-          <div className="animate-pulse @4xl:w-1/3">
-            <div className="mb-20 mt-6 h-10 w-44 rounded bg-contrast-100"></div>
-            <div className="h-96 w-full rounded bg-contrast-100"></div>
-          </div>
-        ) : (
-          products.length > 0 && (
-            <div className="@4xl:w-1/3">
-              <div className="mb-10 flex items-end justify-between">
-                <h2 className="inline font-heading text-4xl font-medium leading-none @xl:text-5xl">
-                  Summary
-                </h2>
-                <Link
-                  href="#"
-                  className="mb-0.5 text-sm text-contrast-300 transition-colors duration-300 hover:text-foreground"
-                >
-                  Edit Cart
-                </Link>
-              </div>
-
-              {/* Mini Products List in Order Summary */}
-              <ul className="flex flex-col gap-y-4">
-                {products.map(({ id, name, image, price, quantity }) => (
-                  <li key={id} className="flex items-center justify-between gap-x-4">
-                    <div className="flex items-center gap-x-4">
-                      {image?.src != null && image.src !== '' && (
-                        <div className="relative aspect-[3/4] w-16 overflow-hidden rounded-lg bg-contrast-100">
-                          <Image
-                            src={image.src}
-                            alt={image.altText}
-                            fill
-                            sizes="64px"
-                            className="h-full w-full object-cover"
-                          />
-                        </div>
-                      )}
-                      <div>
-                        <span className="text-sm">{name}</span>
-                        <span className="block text-sm text-contrast-300">x{quantity}</span>
-                      </div>
-                    </div>
-                    <span>{price}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex items-end gap-2 pb-7 pt-10">
-                <Input label="Coupon / Gift Certificate" />
-                <Button variant="secondary" size="small" className="h-[48px]">
-                  Apply
-                </Button>
-              </div>
-
-              <table aria-label="Receipt Summary" className="w-full">
-                <caption className="sr-only">Receipt Summary</caption>
-                <tbody>
-                  <tr className="border-b border-contrast-100">
-                    <td>Subtotal</td>
-                    <td className="py-4 text-right">$50.00</td>
-                  </tr>
-                  <tr className="border-b border-contrast-100">
-                    <td>Shipping</td>
-                    <td className="py-4 text-right">
-                      {/* Add Address Button and Modal Form */} --
-                    </td>
-                  </tr>
-                  <tr className="border-b border-contrast-100">
-                    <td>Tax</td>
-                    <td className="py-4 text-right">$4.50</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr className="text-xl">
-                    <th className="text-left">Grand Total</th>
-                    <td className="py-10 text-right">$59.50</td>
-                  </tr>
-                </tfoot>
-              </table>
+        <div className="w-full px-3 @xl:mx-auto @xl:pr-6 @3xl:w-1/2 @5xl:pr-20 @6xl:w-1/3">
+          {isLoading ? (
+            // Skeleton Loader
+            <div className="animate-pulse">
+              <div className="mb-20 mt-6 h-10 w-44 rounded bg-contrast-100"></div>
+              <div className="h-96 w-full rounded bg-contrast-100"></div>
             </div>
-          )
-        )}
+          ) : (
+            products.length > 0 && (
+              <div>
+                <div className="mb-10 flex items-end justify-between">
+                  <h2 className="inline font-heading text-4xl font-medium leading-none @xl:text-5xl">
+                    Summary
+                  </h2>
+                  <Link
+                    href="#"
+                    className="mb-0.5 text-sm text-contrast-300 transition-colors duration-300 hover:text-foreground"
+                  >
+                    Edit Cart
+                  </Link>
+                </div>
+
+                {/* Mini Products List in Order Summary */}
+                <ul className="flex flex-col gap-y-4">
+                  {products.map(({ id, name, image, price, quantity }) => (
+                    <li key={id} className="flex items-center justify-between gap-x-4">
+                      <div className="flex items-center gap-x-4">
+                        {image?.src != null && image.src !== '' && (
+                          <div className="relative aspect-[3/4] w-16 overflow-hidden rounded-lg bg-contrast-100">
+                            <Image
+                              src={image.src}
+                              alt={image.altText}
+                              fill
+                              sizes="64px"
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                        )}
+                        <div>
+                          <span className="text-sm">{name}</span>
+                          <span className="block text-sm text-contrast-300">x{quantity}</span>
+                        </div>
+                      </div>
+                      <span>{price}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex items-end gap-2 pb-7 pt-10">
+                  <Input label="Coupon / Gift Certificate" />
+                  <Button variant="secondary" size="small" className="h-[48px]">
+                    Apply
+                  </Button>
+                </div>
+
+                <table aria-label="Receipt Summary" className="w-full">
+                  <caption className="sr-only">Receipt Summary</caption>
+                  <tbody>
+                    <tr className="border-b border-contrast-100">
+                      <td>Subtotal</td>
+                      <td className="py-4 text-right">$50.00</td>
+                    </tr>
+                    <tr className="border-b border-contrast-100">
+                      <td>Shipping</td>
+                      <td className="py-4 text-right">
+                        {/* Add Address Button and Modal Form */} --
+                      </td>
+                    </tr>
+                    <tr className="border-b border-contrast-100">
+                      <td>Tax</td>
+                      <td className="py-4 text-right">$4.50</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr className="text-xl">
+                      <th className="text-left">Grand Total</th>
+                      <td className="py-10 text-right">$59.50</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            )
+          )}
+        </div>
       </div>
     </div>
   )
