@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
@@ -27,10 +28,71 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
     }
   }, [])
 
+  const accordions = [
+    {
+      title: 'Customer',
+      preview: <span>email@email.com</span>,
+      form: (
+        <div className="space-y-4">
+          <div className="flex items-end gap-4">
+            <Input label="Email" value="test@test.com" />
+            <Button
+              variant="secondary"
+              size="small"
+              className="h-[48px]"
+              onClick={() => setExpandedPanel(expandedPanel === '1' ? null : '1')}
+            >
+              Continue
+            </Button>
+          </div>
+          <Checkbox checked={checked} setChecked={setChecked} label="Subscribe to our newsletter" />
+          <span className="block text-sm">
+            Already have an account?{' '}
+            <Link href="#" className="font-semibold">
+              Sign in now
+            </Link>
+          </span>
+        </div>
+      ),
+    },
+    {
+      title: 'Shipping',
+      preview: (
+        <div className="flex flex-col">
+          <span>Jane Jones</span>
+          <span>Monogram</span>
+          <span>+1 (404) 555 0123</span>
+          <span>1234 Main St, Atlanta, GA 30303</span>
+          <span className="mt-1 w-fit border-t pt-1">
+            Free Shipping <span className="font-medium">$0.00</span>
+          </span>
+        </div>
+      ),
+      form: <CheckoutForm includeSameAsBillingAddress includeOrderComments includeShippingMethod />,
+    },
+    {
+      title: 'Billing',
+      preview: (
+        <div className="flex flex-col">
+          <span>Jane Jones</span>
+          <span>Monogram</span>
+          <span>+1 (404) 555 0123</span>
+          <span>1234 Main St, Atlanta, GA 30303</span>
+        </div>
+      ),
+      form: <CheckoutForm />,
+    },
+    {
+      title: 'Payment',
+      preview: <></>,
+      form: <></>,
+    },
+  ]
+
   return (
     <div className="mx-auto max-w-screen-2xl @container">
       <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
-        {/* Cart Side */}
+        {/* Customer Info Side */}
         <div className={clsx(products.length > 0 && '@4xl:w-2/3', 'w-full')}>
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             Checkout
@@ -39,79 +101,39 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
             )}
           </h1>
 
-          <div className="my-4 grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-4">
-            <ExpansionPanel
-              title="Customer"
-              preview={<span>email@email.com</span>}
-              form={
-                <div className="space-y-4">
-                  <div className="flex items-end gap-4">
-                    <Input label="Email" value="test@test.com" />
-                    <Button
-                      variant="secondary"
-                      size="small"
-                      className="h-[48px]"
-                      onClick={() => setExpandedPanel(expandedPanel === '1' ? null : '1')}
-                    >
-                      Continue
-                    </Button>
-                  </div>
-                  <Checkbox
-                    checked={checked}
-                    setChecked={setChecked}
-                    label="Subscribe to our newsletter"
-                  />
-                  <span className="block text-sm">
-                    Already have an account?{' '}
-                    <Link href="#" className="font-semibold">
-                      Sign in now
-                    </Link>
-                  </span>
-                </div>
-              }
-              isExpanded={expandedPanel === '1'}
-              onToggle={() => setExpandedPanel(expandedPanel === '1' ? null : '1')}
-            />
-
-            <ExpansionPanel
-              title="Shipping"
-              preview={
-                <div className="flex flex-col">
-                  <span>Jane Jones</span>
-                  <span>Monogram</span>
-                  <span>+1 (404) 555 0123</span>
-                  <span>1234 Main St, Atlanta, GA 30303</span>
-                  <span className="mt-1 w-fit border-t pt-1">
-                    Free Shipping <span className="font-medium">$0.00</span>
-                  </span>
-                </div>
-              }
-              form={
-                <CheckoutForm
-                  includeSameAsBillingAddress
-                  includeOrderComments
-                  includeShippingMethod
-                />
-              }
-              isExpanded={expandedPanel === '2'}
-              onToggle={() => setExpandedPanel(expandedPanel === '2' ? null : '2')}
-            />
-
-            <ExpansionPanel
-              title="Billing"
-              preview={
-                <div className="flex flex-col">
-                  <span>Jane Jones</span>
-                  <span>Monogram</span>
-                  <span>+1 (404) 555 0123</span>
-                  <span>1234 Main St, Atlanta, GA 30303</span>
-                </div>
-              }
-              form={<CheckoutForm />}
-              isExpanded={expandedPanel === '3'}
-              onToggle={() => setExpandedPanel(expandedPanel === '3' ? null : '3')}
-            />
-          </div>
+          <Accordion.Root type="single" collapsible asChild>
+            <ul>
+              {/* grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-4 */}
+              {accordions.map((accordion, i) => (
+                <Accordion.Item key={i} value={`${i + 1}`} asChild>
+                  <li className="group">
+                    <Accordion.Header>
+                      <div className="grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-4 py-3 @md:gap-8 @md:py-5">
+                        <h2 className="w-32 justify-stretch whitespace-nowrap font-heading text-3xl font-medium">
+                          {accordion.title}
+                        </h2>
+                        <div className="mt-4 flex w-full flex-col gap-2 overflow-hidden text-sm transition duration-200 ease-out group-data-[state=closed]:h-full group-data-[state=open]:h-0 group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0">
+                          {accordion.preview}
+                        </div>
+                        <Accordion.Trigger asChild>
+                          <Button
+                            variant="secondary"
+                            size="small"
+                            className="h-min group-data-[state=open]:pointer-events-none group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0"
+                          >
+                            Edit
+                          </Button>
+                        </Accordion.Trigger>
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
+                      {accordion.form}
+                    </Accordion.Content>
+                  </li>
+                </Accordion.Item>
+              ))}
+            </ul>
+          </Accordion.Root>
         </div>
 
         {/* Summary Side */}
@@ -199,34 +221,5 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
         )}
       </div>
     </div>
-  )
-}
-
-const ExpansionPanel = function ExpansionPanel({
-  title,
-  preview,
-  form,
-  isExpanded,
-  onToggle,
-}: {
-  title: string
-  preview: React.ReactNode
-  form: React.ReactNode
-  isExpanded: boolean
-  onToggle: () => void
-}) {
-  return (
-    <>
-      <h2 className="w-full justify-stretch whitespace-nowrap font-heading text-3xl font-medium">
-        {title}
-      </h2>
-      {!isExpanded && <div className="mt-4 flex w-full flex-col gap-2 text-sm">{preview}</div>}
-      {isExpanded && <div className="col-span-3 mb-6 border-b pb-10">{form}</div>}
-      {!isExpanded && (
-        <Button variant="secondary" size="small" className="h-min" onClick={onToggle}>
-          Edit
-        </Button>
-      )}
-    </>
   )
 }
