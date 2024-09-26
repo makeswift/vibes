@@ -5,7 +5,7 @@ import { Loader2 } from 'lucide-react'
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'tertiary'
   size?: 'default' | 'small'
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   loading?: boolean
   asChild?: boolean
 }

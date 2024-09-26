@@ -12,11 +12,6 @@ import { Input } from '@/vibes/soul/components/input'
 import { Label } from '@/vibes/soul/components/label'
 import { TextArea } from '@/vibes/soul/components/textarea'
 
-interface Props {
-  includeSameAsBillingAddress?: boolean
-  includeShippingMethod?: boolean
-  includeOrderComments?: boolean
-}
 const shippingMethods = [
   {
     id: '1',
@@ -29,11 +24,18 @@ const shippingMethods = [
     cost: '$10.00',
   },
 ]
+interface Props {
+  includeSameAsBillingAddress?: boolean
+  includeShippingMethod?: boolean
+  includeOrderComments?: boolean
+  onSubmit?: (e: React.MouseEvent<HTMLButtonElement>) => void
+}
 
 export const CheckoutForm = function CheckoutForm({
   includeSameAsBillingAddress,
   includeShippingMethod,
   includeOrderComments,
+  onSubmit,
 }: Props) {
   const [useSameAddress, setUseSameAddress] = useState(true)
   const [shippingMethod, setShippingMethod] = useState<string | null>()
@@ -96,7 +98,7 @@ export const CheckoutForm = function CheckoutForm({
       )}
 
       {/* TODO: disbale until form is complete */}
-      <Button variant="secondary" className="ml-auto @sm:col-span-2">
+      <Button variant="secondary" className="ml-auto @sm:col-span-2" onClick={e => onSubmit?.(e)}>
         Continue
       </Button>
     </form>

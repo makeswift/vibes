@@ -16,7 +16,7 @@ import { Input } from '@/vibes/soul/components/input'
 export const Checkout = function Checkout({ products }: { products: CartProduct[] }) {
   const [isLoading, setIsLoading] = useState(false)
   const [checked, setChecked] = useState(true)
-  const [expandedPanel, setExpandedPanel] = useState<string | null>(null)
+  const [openAccordion, setOpenAccordion] = useState<string | undefined>(undefined)
 
   // TODO: Remove this when we have a real API
   useEffect(() => {
@@ -28,19 +28,26 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
     }
   }, [])
 
+  const handleAccordionChange = (value: string | undefined) => {
+    setOpenAccordion(value)
+  }
+
   const accordions = [
     {
       title: 'Customer',
       preview: <span>email@email.com</span>,
       form: (
-        <div className="space-y-4">
+        <form className="space-y-4">
           <div className="flex items-end gap-4">
             <Input label="Email" value="test@test.com" />
             <Button
               variant="secondary"
               size="small"
               className="h-[48px]"
-              onClick={() => setExpandedPanel(expandedPanel === '1' ? null : '1')}
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                e.preventDefault()
+                handleAccordionChange('')
+              }}
             >
               Continue
             </Button>
@@ -52,7 +59,7 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
               Sign in now
             </Link>
           </span>
-        </div>
+        </form>
       ),
     },
     {
@@ -68,7 +75,17 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
           </span>
         </div>
       ),
-      form: <CheckoutForm includeSameAsBillingAddress includeOrderComments includeShippingMethod />,
+      form: (
+        <CheckoutForm
+          includeSameAsBillingAddress
+          includeOrderComments
+          includeShippingMethod
+          onSubmit={(e: React.MouseEvent<HTMLButtonElement>) => {
+            e.preventDefault()
+            handleAccordionChange('')
+          }}
+        />
+      ),
     },
     {
       title: 'Billing',
@@ -80,7 +97,14 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
           <span>1234 Main St, Atlanta, GA 30303</span>
         </div>
       ),
-      form: <CheckoutForm />,
+      form: (
+        <CheckoutForm
+          onSubmit={(e: React.MouseEvent<HTMLButtonElement>) => {
+            e.preventDefault()
+            handleAccordionChange('')
+          }}
+        />
+      ),
     },
     {
       title: 'Payment',
@@ -101,18 +125,23 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
             )}
           </h1>
 
-          <Accordion.Root type="single" collapsible asChild>
+          <Accordion.Root
+            type="single"
+            collapsible
+            value={openAccordion}
+            onValueChange={handleAccordionChange}
+            asChild
+          >
             <ul>
-              {/* grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-4 */}
               {accordions.map((accordion, i) => (
                 <Accordion.Item key={i} value={`${i + 1}`} asChild>
-                  <li className="group">
+                  <li className="group mb-4 border-b pb-6">
                     <Accordion.Header>
                       <div className="grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-4 py-3 @md:gap-8 @md:py-5">
                         <h2 className="w-32 justify-stretch whitespace-nowrap font-heading text-3xl font-medium">
                           {accordion.title}
                         </h2>
-                        <div className="mt-4 flex w-full flex-col gap-2 overflow-hidden text-sm transition duration-200 ease-out group-data-[state=closed]:h-full group-data-[state=open]:h-0 group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0">
+                        <div className="mt-4 flex w-full flex-col gap-2 overflow-hidden text-sm transition duration-500 ease-out group-data-[state=closed]:h-full group-data-[state=open]:h-0 group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0">
                           {accordion.preview}
                         </div>
                         <Accordion.Trigger asChild>
@@ -126,7 +155,7 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                         </Accordion.Trigger>
                       </div>
                     </Accordion.Header>
-                    <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
+                    <Accordion.Content className="w-full overflow-hidden pb-6 data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
                       {accordion.form}
                     </Accordion.Content>
                   </li>
