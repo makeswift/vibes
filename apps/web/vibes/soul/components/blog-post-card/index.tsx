@@ -53,18 +53,16 @@ export const BlogPostCard = function BlogPostCard({
         )}
       </div>
       <h3 className="pb-1 pt-3 text-lg font-medium">{title}</h3>
-      {content && <p className="line-clamp-3 text-contrast-400">{content}</p>}
+      <p className="line-clamp-3 text-contrast-400">{content}</p>
       <div className="flex flex-wrap items-center">
-        {date && (
-          <time dateTime={date}>
-            {new Date(date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </time>
-        )}
-        {date && author != null && author !== '' && (
+        <time dateTime={date}>
+          {new Date(date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+        {date !== '' && author != null && author !== '' && (
           <span className="after:mx-2 after:content-['•']" />
         )}
         {author != null && author !== '' && <span>{author}</span>}

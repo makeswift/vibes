@@ -144,11 +144,25 @@ export const examples = [
     component: lazy(() => import('./examples/checkbox')),
   },
   {
+    name: 'checkout-example',
+    dependencies: [],
+    registryDependencies: ['checkout'],
+    files: ['examples/checkout.tsx'],
+    component: lazy(() => import('./examples/checkout')),
+  },
+  {
     name: 'counter-example',
     dependencies: [],
     registryDependencies: ['counter'],
     files: ['examples/counter.tsx'],
     component: lazy(() => import('./examples/counter')),
+  },
+  {
+    name: 'create-account-example',
+    dependencies: [],
+    registryDependencies: ['create-account'],
+    files: ['examples/create-account.tsx'],
+    component: lazy(() => import('./examples/create-account')),
   },
   {
     name: 'discount-example',
@@ -640,5 +654,12 @@ export const examples = [
     registryDependencies: ['subscribe'],
     files: ['examples/subscribe.tsx'],
     component: lazy(() => import('./examples/subscribe')),
+  },
+  {
+    name: 'textarea-example',
+    dependencies: [],
+    registryDependencies: ['textarea'],
+    files: ['examples/textarea.tsx'],
+    component: lazy(() => import('./examples/textarea')),
   },
 ] satisfies Components

@@ -59,7 +59,7 @@ export const ProductCard = function ProductCard({
             fill
             sizes="(max-width: 768px) 70vw, 33vw"
             alt="Category card image"
-            className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            className="w-full scale-105 select-none bg-contrast-100 object-cover transition-transform duration-700 ease-out group-hover:scale-100"
           />
         ) : (
           <h3 className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-primary-shadow opacity-10 transition-transform duration-500 ease-out group-hover:scale-105">
@@ -84,7 +84,7 @@ export const ProductCard = function ProductCard({
       </div>
       <div className="flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
-          {name && <span className="line-clamp-2">{name}</span>}
+          <span className="line-clamp-2">{name}</span>
           {subtitle != null && subtitle !== '' && (
             <span className="font-normal text-contrast-400">{subtitle}</span>
           )}

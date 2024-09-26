@@ -5,7 +5,7 @@ import { Loader2 } from 'lucide-react'
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'tertiary'
   size?: 'default' | 'small'
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   loading?: boolean
   asChild?: boolean
 }
@@ -62,7 +62,7 @@ export const Button = function Button({
         {/* Children */}
         <div
           className={clsx(
-            'relative z-50 flex h-full items-center justify-center gap-2 transition-colors',
+            'relative z-10 flex h-full items-center justify-center gap-2 transition-colors',
             loading && 'opacity-0',
             {
               default: 'text-base [&>*]:px-6 [&>*]:py-[13px]',

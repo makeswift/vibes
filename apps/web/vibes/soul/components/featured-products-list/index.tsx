@@ -30,11 +30,9 @@ export const FeaturedProductsList = function FeaturedProductsList({
             @xl:px-6 @4xl:sticky @4xl:max-w-md @4xl:flex-col @4xl:items-start @4xl:justify-start @5xl:px-0 @6xl:w-4/12"
         >
           <div>
-            {title && (
-              <h2 className="mb-4 font-heading text-lg font-semibold leading-none text-foreground @4xl:text-6xl @4xl:font-medium">
-                {title}
-              </h2>
-            )}
+            <h2 className="mb-4 font-heading text-lg font-semibold leading-none text-foreground @4xl:text-6xl @4xl:font-medium">
+              {title}
+            </h2>
             {description != null && description !== '' && (
               <p className="mt-1.5 max-w-md pb-2 text-foreground">{description}</p>
             )}

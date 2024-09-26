@@ -101,20 +101,32 @@ export const navigation = [
         component: 'products-list',
       },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
+      // {
+      //   title: 'Slide Carousel',
+      //   slug: 'slide-carousel',
+      //   file: 'docs/slide-carousel.mdx',
+      //   component: 'slide-carousel',
+      // },
       {
-        title: 'Slide Carousel',
-        slug: 'slide-carousel',
-        file: 'docs/slide-carousel.mdx',
-        component: 'slide-carousel',
+        title: 'Text Area',
+        slug: 'textarea',
+        file: 'docs/textarea.mdx',
+        component: 'textarea',
       },
-      { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
     ],
   },
   {
     title: 'Sections',
     pages: [
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
-
+      { title: 'Checkout', slug: 'checkout', file: 'docs/checkout.mdx', component: 'checkout' },
+      {
+        title: 'Create Account',
+        slug: 'create-account',
+        file: 'docs/create-account.mdx',
+        component: 'create-account',
+      },
+      { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
         title: 'Featured Blog Post List',

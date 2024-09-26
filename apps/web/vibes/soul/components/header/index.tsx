@@ -363,9 +363,9 @@ export const Header = forwardRef(function Header(
             {/* Mobile Dropdown Links */}
             {links.map((item, i) => (
               <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
-                {item.label && (
+                {item.label !== '' && (
                   <li>
-                    {item.href ? (
+                    {item.href !== '' ? (
                       <Link
                         href={item.href}
                         className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 

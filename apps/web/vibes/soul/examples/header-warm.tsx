@@ -27,9 +27,9 @@ export const headerLinks = [
         label: 'Camera Straps',
         href: '#',
         links: [
-          { label: 'Bright Direct', href: '#' },
-          { label: 'Bright Indirect', href: '#' },
-          { label: 'Low Light', href: '#' },
+          { label: 'Wrist Straps', href: '#' },
+          { label: 'Body Straps', href: '#' },
+          { label: 'Camera Padding Inserts', href: '#' },
         ],
       },
     ],
@@ -39,29 +39,18 @@ export const headerLinks = [
     href: '#',
     groups: [
       {
-        label: 'Featured',
-        href: '#',
         links: [
-          { label: 'Best Sellers', href: '#' },
-          { label: 'Shop All', href: '#' },
+          { label: 'Adventures', href: '#' },
+          { label: 'Bike Check', href: '#' },
+          { label: 'How Tos', href: '#' },
+          { label: 'Interviews', href: '#' },
         ],
       },
       {
-        label: 'Clear',
-        href: '#',
         links: [
-          { label: 'Desk Plants', href: '#' },
-          { label: 'Low Light Plants', href: '#' },
-          { label: 'Pet Friendly', href: '#' },
-        ],
-      },
-      {
-        label: 'Outdoor',
-        href: '#',
-        links: [
-          { label: 'Small', href: '#' },
-          { label: 'Medium', href: '#' },
-          { label: 'Large', href: '#' },
+          { label: 'News', href: '#' },
+          { label: 'Videos', href: '#' },
+          { label: 'All', href: '#' },
         ],
       },
     ],

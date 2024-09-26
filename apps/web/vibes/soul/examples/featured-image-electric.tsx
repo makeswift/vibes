@@ -1,9 +1,9 @@
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/components/featured-image'
 
 export const featuredImage: FeaturedImageProps = {
-  title: 'Thoughtfully Curated',
+  title: 'Grow With Confidence',
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
+    'Whether you’re a seasoned plant parent or just starting, we have the perfect plants to suit your home and lifestyle.',
   image: {
     src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ',
     altText: 'Close up of a plant',

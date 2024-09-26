@@ -26,8 +26,7 @@ export const product = {
   href: '#',
   rating: 4.8,
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-  // options: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    'The Caladium Rosebud plant features vibrant pink and green heart-shaped leaves, adding a beautiful pop of color to any indoor or outdoor setting.',
 }
 
 export default function Preview() {

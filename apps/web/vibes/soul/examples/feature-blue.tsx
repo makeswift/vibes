@@ -14,8 +14,8 @@ export const feature: FeatureProps = {
   //   description: 'string',
   // },
   cta: {
-    href: 'string',
-    label: 'string',
+    href: '#',
+    label: 'Shop Now',
   },
 }
 
