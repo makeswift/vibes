@@ -137,50 +137,39 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                 <Accordion.Item key={i} value={`${i + 1}`} asChild>
                   <li className="group px-3 transition-colors duration-500 @container/accordion data-[state=closed]:bg-transparent data-[state=open]:bg-contrast-100/50 @xl:rounded-r-lg @xl:px-6 @5xl:pl-20 @5xl:pr-10 @6xl:px-20 @7xl:rounded-lg">
                     <Accordion.Header>
-                      <div
-                        // TODO: REMOVE SECOND ROW WHEN HEADER IS OPEN
-                        className="grid grid-cols-[max-content_1fr_minmax(max-content,auto)] grid-rows-[auto,auto] gap-x-4
-                        py-5 @md:gap-x-8 @xl/accordion:grid-rows-1"
-                      >
+                      <div className="grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-x-4 py-5 group-data-[state=closed]:grid-rows-[auto,auto] group-data-[state=open]:grid-rows-1 @md:gap-x-8 @xl/accordion:grid-rows-1">
                         <h2 className="w-32 justify-stretch whitespace-nowrap font-heading text-3xl font-medium">
                           {accordion.title}
                         </h2>
 
-                        <div
-                          className="col-span-3 row-start-2 mt-4 flex w-full
-                          flex-col gap-2 overflow-hidden pb-2 
-                          text-sm 
-                          group-data-[state=closed]:h-full group-data-[state=open]:h-0
-                          group-data-[state=closed]:opacity-100
-                          group-data-[state=open]:opacity-0 @xl/accordion:col-span-1
-                          @xl/accordion:col-start-2
-                          @xl/accordion:row-start-1
-                          "
-                        >
-                          {accordion.preview}
-                        </div>
+                        {((typeof openAccordion === 'string' &&
+                          parseInt(openAccordion) !== i + 1) ||
+                          openAccordion === undefined) && (
+                          <div className="col-span-3 row-start-2 mt-4 flex w-full flex-col gap-2 overflow-hidden pb-2 text-sm group-data-[state=closed]:h-full group-data-[state=open]:h-0 @xl/accordion:col-span-1 @xl/accordion:col-start-2 @xl/accordion:row-start-1">
+                            {accordion.preview}
+                          </div>
+                        )}
                         <Accordion.Trigger asChild>
                           <Button
                             variant="secondary"
                             size="small"
-                            className="col-start-3 h-min
-                            group-data-[state=open]:pointer-events-none
-                            group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0 "
+                            className="col-start-3 h-min group-data-[state=open]:pointer-events-none group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0 "
                           >
                             Edit
                           </Button>
                         </Accordion.Trigger>
                       </div>
                     </Accordion.Header>
-                    <Accordion.Content
-                      className="w-full overflow-hidden pb-8 pt-4
-                      [animation-delay:1000ms] [animation-duration:5000ms] 
-                      [transition-timing-function:cubic-bezier(0.680,0.265,0.000)] data-[state=closed]:animate-collapse
-                      data-[state=open]:animate-expand data-[state=closed]:opacity-0 data-[state=open]:opacity-100"
-                    >
-                      {accordion.form}
+                    <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
+                      <div className="pb-8 pt-2">{accordion.form}</div>
                     </Accordion.Content>
-                    <hr className={clsx(openAccordion !== '' ? 'opacity-0' : 'opacity-100')} />
+                    <hr
+                      className={clsx(
+                        openAccordion !== undefined && openAccordion !== ''
+                          ? 'opacity-0'
+                          : 'opacity-100'
+                      )}
+                    />
                   </li>
                 </Accordion.Item>
               ))}
