@@ -16,7 +16,7 @@ export const brands = [
     logo: '',
     cssVars: {
       '--primary': '97 100% 68%',
-      '--accent': '97 100% 68%',
+      '--accent': '97 100% 88%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
       '--success': '116, 46%, 49%',
@@ -55,7 +55,7 @@ export const brands = [
     logo: '',
     cssVars: {
       '--primary': '43 100% 50%',
-      '--accent': '43 100% 50%',
+      '--accent': '43 100% 80%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
       '--success': '116, 46%, 49%',
@@ -94,7 +94,7 @@ export const brands = [
     logo: '',
     cssVars: {
       '--primary': '43 38% 45%',
-      '--accent': '43 38% 45%',
+      '--accent': '43 38% 78%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
       '--success': '116, 46%, 49%',
