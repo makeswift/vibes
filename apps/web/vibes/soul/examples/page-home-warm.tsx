@@ -31,7 +31,7 @@ export default function Preview() {
       headerLinks={headerLinks}
       logo={{
         src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
-        alt: 'Outer Shell Logo',
+        altText: 'Outer Shell Logo',
       }}
       heroSlides={heroSlides}
       categories={cards}

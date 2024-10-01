@@ -1,88 +1,82 @@
 import { FeaturedProductsList } from '@/vibes/soul/components/featured-products-list'
-import { Product } from '@/vibes/soul/components/product-card'
 
-export const featuredProducts: {
-  title: string
-  description: string
-  cta: { label: string; href: string }
-  list: Product[]
-} = {
+export const featuredProducts = {
   title: 'Our Plants',
   description: '',
   cta: {
     label: 'Shop Now',
     href: '#',
   },
-  list: [
+  products: [
     {
       id: '1',
-      name: 'Product Name',
-      subtitle: 'Blue/Black/Green',
+      name: 'Philodendron Imperial Red',
+      subtitle: 'Indoor Plant',
       // badge: 'Indestructible',
-      price: '$24.99',
+      price: '$44.95',
       image: {
         src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
-        altText: 'Product Name',
+        altText: 'Philodendron Imperial Red',
       },
       href: '#',
     },
     {
       id: '2',
-      name: 'Product Name',
-      subtitle: 'Blue/Black/Green',
+      name: 'Monstera',
+      subtitle: 'Indoor Plant',
       // badge: 'New',
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
-        altText: 'Product Name',
+        altText: 'Monstera',
       },
       href: '#',
     },
     {
       id: '3',
-      name: 'Product Name',
-      subtitle: 'Blue/Black/Green',
+      name: 'Pink Caladium',
+      subtitle: 'Indoor Plant',
       // badge: 'New',
-      price: '$24.99',
+      price: '$19.95',
       image: {
         src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
-        altText: 'Product Name',
+        altText: 'Pink Caladium',
       },
       href: '#',
     },
     {
       id: '4',
-      name: 'Product Name',
-      subtitle: 'Blue/Black/Green',
+      name: 'Hoya Kerrii',
+      subtitle: 'Indoor Plant',
       // badge: 'New',
-      price: '$24.99',
+      price: '$16.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
-        altText: 'Product Name',
+        altText: 'Hoya Kerrii',
       },
       href: '#',
     },
     {
       id: '6',
-      name: 'Product Name',
-      subtitle: 'Blue/Black/Green',
+      name: 'Bird Nest Fern',
+      subtitle: 'Indoor Plant',
       // badge: 'New',
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
-        altText: 'Product Name',
+        altText: 'Bird Nest Fern',
       },
       href: '#',
     },
     {
       id: '5',
-      name: 'Product Name',
-      subtitle: 'Blue/Black/Green',
+      name: 'Jade Plant',
+      subtitle: 'Indoor Plant',
       // badge: 'New',
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
-        altText: 'Product Name',
+        altText: 'Jade Plant',
       },
       href: '#',
     },
@@ -98,7 +92,7 @@ export default function Preview() {
         label: featuredProducts.cta.label,
         href: featuredProducts.cta.href,
       }}
-      products={featuredProducts.list}
+      products={featuredProducts.products}
     />
   )
 }

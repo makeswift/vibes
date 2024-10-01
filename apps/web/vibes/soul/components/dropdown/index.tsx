@@ -19,6 +19,7 @@ interface Props {
   labelOnTop?: boolean
   style?: 'round' | 'rectangle'
   items: string[]
+  required?: boolean
 }
 
 export const Dropdown = function Dropdown({
@@ -26,17 +27,21 @@ export const Dropdown = function Dropdown({
   labelOnTop = false,
   style = 'rectangle',
   items,
+  required,
   ...props
 }: Props & DropdownMenuTriggerProps) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
 
   return (
     <div>
-      {label && labelOnTop && <Label className="mb-2 block text-foreground">{label}</Label>}
+      <div className="flex items-center justify-between">
+        {labelOnTop && <Label className="mb-2 block text-foreground">{label}</Label>}
+        {required === true && <span className="text-xs text-contrast-300">Required</span>}
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger
           className={clsx(
-            style === 'rectangle' ? 'rounded-xl' : 'rounded-full',
+            style === 'rectangle' ? 'rounded-lg' : 'rounded-full',
             'flex h-fit w-full select-none items-center justify-between gap-3 border border-contrast-100 bg-white p-2 px-5 py-3 font-medium text-foreground',
             'text-sm ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2'
           )}
@@ -49,7 +54,7 @@ export const Dropdown = function Dropdown({
           className="z-50 mt-2 max-h-80 w-full overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] 
           data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 
           data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
-          @4xl:-ml-14 @4xl:rounded-3xl @4xl:p-4"
+          @4xl:rounded-3xl @4xl:p-4"
         >
           {items.map(item => (
             <DropdownMenuItem

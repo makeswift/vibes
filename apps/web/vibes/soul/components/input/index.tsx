@@ -13,14 +13,19 @@ export interface Props extends ComponentPropsWithRef<'input'> {
 }
 
 export const Input = forwardRef(function Input(
-  { prepend, label, className = '', ...rest }: Props,
+  { prepend, label, className, required, ...rest }: Props,
   ref: Ref<HTMLInputElement>
 ) {
   return (
-    <div className={clsx('w-full shrink-0', className)}>
-      {label && <Label className="mb-2 block text-foreground">{label}</Label>}
+    <div className={clsx('w-full', className)}>
+      <div className="flex items-center justify-between">
+        {label != null && label !== '' && (
+          <Label className="mb-2 block text-foreground">{label}</Label>
+        )}
+        {required === true && <span className="text-xs text-contrast-300">Required</span>}
+      </div>
       <div className="relative overflow-hidden rounded-lg border border-contrast-100 bg-background transition-colors duration-200 focus-within:border-foreground focus:outline-none">
-        {prepend && (
+        {prepend != null && prepend !== '' && (
           <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2">
             {prepend}
           </span>

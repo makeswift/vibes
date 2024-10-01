@@ -1,6 +1,6 @@
-import { Feature } from '@/vibes/soul/components/feature'
+import { Feature, FeatureProps } from '@/vibes/soul/components/feature'
 
-export const feature: Feature = {
+export const feature: FeatureProps = {
   image: {
     src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
     altText: 'string',
@@ -14,12 +14,12 @@ export const feature: Feature = {
   //   description: 'string',
   // },
   cta: {
-    href: 'string',
-    label: 'string',
+    href: '#',
+    label: 'Shop Now',
   },
 }
 
-const grid: Feature['grid'] = [
+const grid: FeatureProps['grid'] = [
   {
     icon: 'Truck',
     title: 'Free Shipping',

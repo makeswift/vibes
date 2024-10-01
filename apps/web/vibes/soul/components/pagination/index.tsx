@@ -14,9 +14,9 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
   const [currentPage, setCurrentPage] = useState(initialPage)
 
   useEffect(() => {
-    const currentPage = parseInt(searchParams.get('page') ?? '1')
-    if (currentPage !== currentPage) {
-      setCurrentPage(currentPage)
+    const current = parseInt(searchParams.get('page') ?? '1')
+    if (current !== currentPage) {
+      setCurrentPage(current)
     }
   }, [currentPage, searchParams])
 
@@ -71,7 +71,7 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
             </span>
           ) : (
             <Link
-              href={`${pathname}?page=${page}`}
+              href={`${pathname}?page=${page.toString()}`}
               onClick={() => setCurrentPage(page)}
               key={index}
               className={clsx(

@@ -27,8 +27,7 @@ export const LogIn = function LogIn({ className }: LogInProps) {
           </Link>
         </div>
 
-        {/* TODO: Rich Text Component? */}
-        <div className="w-full @xl:max-w-md @xl:pl-10 @4xl:pl-20">
+        <div className="flex w-full flex-col @xl:max-w-md @xl:pl-10 @4xl:pl-20">
           <h2 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">New Customer?</h2>
           <p>Create an account with us and you&apos;ll be able to:</p>
           <ul className="mb-10 ml-4 mt-4 list-disc">

@@ -1,3 +1,4 @@
+import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
 import { HomePage } from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul/components/product-card'
 import { cards } from '@/vibes/soul/examples/card-carousel-electric'
@@ -8,136 +9,131 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
 
-import { FeaturedImageProps } from '../components/featured-image'
-
 // Featured Products
 export const newArrivals: Product[] = [
   {
     id: '1',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Heart to Heart',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/zyFDaG5bRQE',
-      altText: 'Product Name',
+      altText: 'Heart to Heart',
     },
     href: '#',
   },
   {
     id: '2',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Caladium Pink',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/AxXaqTzRozM',
-      altText: 'Product Name',
+      altText: 'Caladium Pink',
     },
     href: '#',
   },
   {
     id: '3',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Caladium Angel Wing',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/vznZvupsj2y',
-      altText: 'Product Name',
+      altText: 'Caladium Angel Wing',
     },
     href: '#',
   },
   {
     id: '4',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Philodendron Brandtianum',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt',
-      altText: 'Product Name',
+      altText: 'Philodendron Brandtianum',
     },
     href: '#',
   },
   {
     id: '5',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Silver Leaf Philodendron',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/UQMA3XLfWvF',
-      altText: 'Product Name',
+      altText: 'Silver Leaf Philodendron',
     },
     href: '#',
   },
   {
     id: '6',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Pink Beauty Caladium',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/cMF-gCyIas9',
-      altText: 'Product Name',
+      altText: 'Pink Beauty Caladium',
     },
     href: '#',
   },
   {
     id: '7',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Caladium Angel Wing',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/W_zhzrsEqp7',
-      altText: 'Product Name',
+      altText: 'Caladium Angel Wing',
     },
     href: '#',
   },
   {
     id: '8',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Caladium Watermelon',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/HL613sp6BIP',
-      altText: 'Product Name',
+      altText: 'Caladium Watermelon',
     },
     href: '#',
   },
   {
     id: '9',
-    name: 'Product Name',
-    subtitle: 'Blue/Black/Green',
+    name: 'Speckled Heart Caladium',
+    subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/afA-7qP8zih',
-      altText: 'Product Name',
+      altText: 'Speckled Heart Caladium',
     },
     href: '#',
   },
 ]
 
 // TODO: New Arrivals
-
 // TODO: Recently Viewed
 
 export const featuredImageII: FeaturedImageProps = {
-  title: 'Pro-Team',
+  title: 'Thoughtfully Curated',
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
+    'Our team of plant experts inspects every leaf, stem, and root to guarantee quality, resilience, and beauty. We prioritize plants from sustainable growers who share our passion for eco-friendly practices, ensuring that every green addition to your home has been responsibly sourced and lovingly nurtured from the start.',
   image: {
     src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
     altText: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },
 }
-
-// TODO: Footer
 
 export default function Preview() {
   return (

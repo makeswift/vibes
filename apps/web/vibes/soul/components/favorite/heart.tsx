@@ -4,7 +4,7 @@ import './styles.css'
 
 export function Heart(
   { filled = false }: { filled: boolean | undefined },
-  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
 ) {
   return (
     <svg

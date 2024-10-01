@@ -25,7 +25,7 @@ export default function Preview() {
   ]
 
   return (
-    <div className="m-auto flex h-screen max-w-screen-lg justify-center p-8">
+    <div className="m-auto flex h-screen max-w-screen-lg items-start justify-center p-10">
       <Accordions accordions={accordions} />
     </div>
   )

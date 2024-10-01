@@ -2,7 +2,7 @@ import { BlogPostCard } from '@/vibes/soul/components/blog-post-card'
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-background p-5 @container">
+    <div className="flex min-h-48 items-center justify-center bg-background p-8 @container">
       <BlogPostCard
         id="1"
         title="Vestibulum eleifend placerat ligula"

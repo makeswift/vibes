@@ -52,7 +52,7 @@ export const components = [
   {
     name: 'cart',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
+    registryDependencies: ['button', 'counter', 'dropdown', 'input', 'modal'],
     files: ['components/cart/index.tsx'],
   },
   {
@@ -68,6 +68,12 @@ export const components = [
     files: ['components/checkbox/index.tsx'],
   },
   {
+    name: 'checkout',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/checkout/index.tsx'],
+  },
+  {
     name: 'countdown',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -78,6 +84,12 @@ export const components = [
     dependencies: ['lucide-react'],
     registryDependencies: [],
     files: ['components/counter/index.tsx'],
+  },
+  {
+    name: 'create-account',
+    dependencies: [],
+    registryDependencies: ['input', 'dropdown', 'button'],
+    files: ['components/create-account/index.tsx'],
   },
   {
     name: 'discount',
@@ -246,5 +258,11 @@ export const components = [
     dependencies: ['clsx'],
     registryDependencies: ['input'],
     files: ['components/subscribe/index.tsx'],
+  },
+  {
+    name: 'textarea',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['components/textarea/index.tsx'],
   },
 ] satisfies Components

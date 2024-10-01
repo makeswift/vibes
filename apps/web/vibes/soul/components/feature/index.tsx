@@ -2,11 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { clsx } from 'clsx'
+import { icons } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/components/button'
 import { Icon } from '@/vibes/soul/components/icon'
 
-export interface Feature {
+export interface FeatureProps {
   image: {
     src: string
     altText: string
@@ -14,7 +15,7 @@ export interface Feature {
   title?: string
   description?: string
   grid?: {
-    icon: string
+    icon: keyof typeof icons
     title: string
     description: string
   }[]
@@ -24,7 +25,7 @@ export interface Feature {
   }
 }
 
-export const Feature = function Feature({ image, title, description, grid, cta }: Feature) {
+export const Feature = function Feature({ image, title, description, grid, cta }: FeatureProps) {
   return (
     <section className="relative bg-primary-shadow @container/section">
       <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-dvh">
@@ -49,12 +50,17 @@ export const Feature = function Feature({ image, title, description, grid, cta }
           @container/content @lg/section:px-10 @5xl:p-20"
         >
           <div className="mx-auto flex max-w-xl flex-col gap-4">
-            <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">{title}</h2>
-            <p className=" pb-2">{description}</p>
+            {title != null && title !== '' && (
+              <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">
+                {title}
+              </h2>
+            )}
 
-            {grid?.length && (
+            {description != null && description !== '' && <p className="pb-2">{description}</p>}
+
+            {grid != null && (
               <ul className="mx-auto mb-16 grid gap-10 @xs/content:grid-cols-2 @4xl/section:mx-0">
-                {grid.map(({ title, description, icon }, idx) => {
+                {grid.map(({ title: itemTitle, description: itemDescription, icon }, idx) => {
                   return (
                     <li key={idx} className="flex gap-4 @sm/content:items-center">
                       <Icon
@@ -63,10 +69,10 @@ export const Feature = function Feature({ image, title, description, grid, cta }
                       />
                       <div className="flex flex-col">
                         <span className="-mt-1.5 text-lg font-medium @sm/content:-mt-1 @md/content:text-xl">
-                          {title}
+                          {itemTitle}
                         </span>
                         <span className="text-xs opacity-80 @md/content:text-sm">
-                          {description}
+                          {itemDescription}
                         </span>
                       </div>
                     </li>

@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { clsx } from 'clsx'
 import { Trash2 } from 'lucide-react'
@@ -29,18 +29,28 @@ interface CartProps {
 }
 
 export const Cart = function Cart({ products }: CartProps) {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [removeItemModalIsOpen, setRemoveItemModalIsOpen] = useState(false)
   const [addressModalIsOpen, setAddressModalIsOpen] = useState(false)
+
+  // TODO: Remove this when we have a real API
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
 
   return (
     <div className="mx-auto max-w-screen-2xl @container">
       <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
         {/* Cart Side */}
-        <div className={clsx(products?.length > 0 && '@4xl:w-2/3', 'w-full')}>
+        <div className={clsx(products.length > 0 && '@4xl:w-2/3', 'w-full')}>
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             Your Cart
-            {!isLoading && products?.length > 0 && (
+            {!isLoading && products.length > 0 && (
               <span className="ml-4 text-contrast-200">{products.length}</span>
             )}
           </h1>
@@ -52,18 +62,7 @@ export const Cart = function Cart({ products }: CartProps) {
                   // Skeleton Loader
                   return (
                     <div key={index} className="flex animate-pulse items-center gap-x-5">
-                      <div className="aspect-[3/4] w-full max-w-36 rounded-lg bg-contrast-100" />
-                      <div className="flex flex-grow flex-wrap justify-between gap-x-5 gap-y-2">
-                        <div className="flex flex-grow flex-col gap-y-2">
-                          <div className="h-4 w-32 rounded bg-contrast-100"></div>
-                          <div className="h-4 w-44 rounded bg-contrast-100"></div>
-                        </div>
-                        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                          <div className="h-4 w-16 rounded bg-contrast-100"></div>
-                          <div className="h-10 w-20 rounded bg-contrast-100"></div>
-                          <div className="h-6 w-6 rounded bg-contrast-100"></div>
-                        </div>
-                      </div>
+                      <div className="h-56 w-full rounded-lg bg-contrast-100" />
                     </div>
                   )
                 })
@@ -94,7 +93,7 @@ export const Cart = function Cart({ products }: CartProps) {
                           isOpen={removeItemModalIsOpen}
                           setOpen={setRemoveItemModalIsOpen}
                           trigger={
-                            <button className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
+                            <button className="-ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
                               <Trash2 strokeWidth={1} size={18} />
                             </button>
                           }
@@ -109,7 +108,7 @@ export const Cart = function Cart({ products }: CartProps) {
                               </p>
                               <Button
                                 variant="primary"
-                                className="mt-6 w-full bg-error [&>div]:text-white"
+                                className="mt-6 w-full !bg-error [&>div]:text-white"
                                 onClick={() => {
                                   // TODO: Remove Item from Cart
                                   setRemoveItemModalIsOpen(false)
@@ -147,9 +146,8 @@ export const Cart = function Cart({ products }: CartProps) {
         {/* TODO: Need API structure to generate dynamically */}
         {isLoading ? (
           // Skeleton Loader
-          <div className="animate-pulse @4xl:w-1/3">
-            <div className="mb-20 mt-6 h-10 w-44 rounded bg-contrast-100"></div>
-            <div className="h-96 w-full rounded bg-contrast-100"></div>
+          <div className="mt-1 animate-pulse @4xl:w-1/3">
+            <div className="mt-20 h-96 w-full rounded bg-contrast-100" />
           </div>
         ) : (
           products.length > 0 && (
@@ -161,11 +159,11 @@ export const Cart = function Cart({ products }: CartProps) {
                 <caption className="sr-only">Receipt Summary</caption>
                 <tbody>
                   <tr className="border-b border-contrast-100">
-                    <td scope="row">Subtotal</td>
+                    <td>Subtotal</td>
                     <td className="py-4 text-right">$50.00</td>
                   </tr>
                   <tr className="border-b border-contrast-100">
-                    <td scope="row">Shipping</td>
+                    <td>Shipping</td>
                     <td className="py-4 text-right">
                       {/* Add Address Button and Modal Form */}
                       <Modal
@@ -177,7 +175,7 @@ export const Cart = function Cart({ products }: CartProps) {
                           </button>
                         }
                         content={
-                          <div className="max-w-md">
+                          <div className="w-full max-w-md">
                             <h2 className="font-heading text-3xl font-medium">Add Address</h2>
                             <form className="mt-10 grid w-full grid-cols-1 gap-5 @sm:grid-cols-2">
                               <Input type="text" label="Address Line 1" />
@@ -186,7 +184,7 @@ export const Cart = function Cart({ products }: CartProps) {
                               <Dropdown
                                 label="State/Provence"
                                 labelOnTop
-                                items={['Georgia', 'Florida', 'California']}
+                                items={['Alabama', 'California', 'Georgia', 'Florida', 'Texas']}
                               />
                               <Dropdown
                                 label="Country"
@@ -194,13 +192,15 @@ export const Cart = function Cart({ products }: CartProps) {
                                 items={['USA', 'England', 'Brazil']}
                               />
                               <Input type="text" label="ZIP/Postcode" />
-                              <Button variant="secondary" className="mt-10 w-full">
-                                Cancel
-                              </Button>
-                              {/* TODO: disbale until form is complete */}
-                              <Button disabled variant="primary" className="mt-10 w-full">
-                                Add Address
-                              </Button>
+                              <div className="grid w-full grid-cols-1 gap-5 @sm:col-span-2 @sm:mt-10 @md:grid-cols-2">
+                                <Button variant="secondary" className="order-2 w-full @md:order-1">
+                                  Cancel
+                                </Button>
+                                {/* TODO: disbale until form is complete */}
+                                <Button disabled variant="primary" className="w-full">
+                                  Add Address
+                                </Button>
+                              </div>
                             </form>
                           </div>
                         }
@@ -208,7 +208,7 @@ export const Cart = function Cart({ products }: CartProps) {
                     </td>
                   </tr>
                   <tr className="border-b border-contrast-100">
-                    <td scope="row">Tax</td>
+                    <td>Tax</td>
                     <td className="py-4 text-right">$4.50</td>
                   </tr>
                 </tbody>

@@ -11,11 +11,11 @@ interface Image {
   src: string
 }
 
-export interface ProductGallery {
+export interface ProductGalleryProps {
   images: Image[]
 }
 
-export const ProductGallery = ({ images }: ProductGallery) => {
+export const ProductGallery = ({ images }: ProductGalleryProps) => {
   const [previewImage, setPreviewImage] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel()
 
@@ -23,6 +23,7 @@ export const ProductGallery = ({ images }: ProductGallery) => {
     if (!emblaApi) return
 
     const onSelect = () => setPreviewImage(emblaApi.selectedScrollSnap())
+
     emblaApi.on('select', onSelect)
 
     return () => {
@@ -39,9 +40,9 @@ export const ProductGallery = ({ images }: ProductGallery) => {
     <div className="relative mt-[60px] flex h-96 w-full items-center overflow-hidden bg-contrast-100 @2xl:h-[550px] @4xl:mt-0 @4xl:h-full">
       <div className="my-auto h-full max-h-[800px] w-full overflow-hidden" ref={emblaRef}>
         <div className="flex h-full w-full">
-          {images.map((image, index) => (
+          {images.map((image, idx) => (
             <div
-              key={index}
+              key={idx}
               className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full items-center"
             >
               <Image

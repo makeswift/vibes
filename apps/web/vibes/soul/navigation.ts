@@ -3,7 +3,10 @@ import { Navigation } from '@/vibes/schema'
 export const navigation = [
   {
     title: 'Getting started',
-    pages: [{ title: 'Installation', slug: 'installation', file: 'docs/installation.mdx' }],
+    pages: [
+      { title: 'Introduction', slug: 'introduction', file: 'docs/introduction.mdx' },
+      { title: 'Installation', slug: 'installation', file: 'docs/installation.mdx' },
+    ],
   },
   {
     title: 'Styles',
@@ -64,6 +67,7 @@ export const navigation = [
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       { title: 'Countdown', slug: 'countdown', file: 'docs/countdown.mdx', component: 'countdown' },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
+      { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
@@ -98,11 +102,17 @@ export const navigation = [
         component: 'products-list',
       },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
+      // {
+      //   title: 'Slide Carousel',
+      //   slug: 'slide-carousel',
+      //   file: 'docs/slide-carousel.mdx',
+      //   component: 'slide-carousel',
+      // },
       {
-        title: 'Slide Carousel',
-        slug: 'slide-carousel',
-        file: 'docs/slide-carousel.mdx',
-        component: 'slide-carousel',
+        title: 'Text Area',
+        slug: 'textarea',
+        file: 'docs/textarea.mdx',
+        component: 'textarea',
       },
     ],
   },
@@ -110,6 +120,13 @@ export const navigation = [
     title: 'Sections',
     pages: [
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
+      { title: 'Checkout', slug: 'checkout', file: 'docs/checkout.mdx', component: 'checkout' },
+      {
+        title: 'Create Account',
+        slug: 'create-account',
+        file: 'docs/create-account.mdx',
+        component: 'create-account',
+      },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
@@ -174,7 +191,7 @@ export const navigation = [
         component: 'products-header',
       },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
-      { title: 'Slideshow', slug: 'slideshow', file: 'docs/slideshow.mdx', component: 'slideshow' },
+
       {
         title: 'Subscribe',
         slug: 'subscribe',

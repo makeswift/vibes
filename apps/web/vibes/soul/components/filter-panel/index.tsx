@@ -63,7 +63,7 @@ const colorFilters = [
 
 export const FilterPanel = function FilterPanel() {
   const [filterOpen, setFilterOpen] = useState(false)
-  const [selectedTags, setSelectedTags] = useState([] as string[])
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   return (
     <SidePanel
@@ -111,7 +111,7 @@ export const FilterPanel = function FilterPanel() {
                   title: 'sizing',
                   content: (
                     <div className="flex flex-wrap gap-2">
-                      {sizingFilters?.length &&
+                      {sizingFilters.length &&
                         sizingFilters.map(({ label, amount }, index) => {
                           return (
                             <Chip
@@ -137,7 +137,7 @@ export const FilterPanel = function FilterPanel() {
                   title: 'color',
                   content: (
                     <div className="flex flex-wrap gap-2">
-                      {colorFilters?.length &&
+                      {colorFilters.length &&
                         colorFilters.map(({ label, amount }, index) => {
                           return (
                             <Chip

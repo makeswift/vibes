@@ -23,6 +23,22 @@ import { ProductionReady } from '../stickers/production-ready'
 import { Reactjs } from '../stickers/reactjs'
 import { ShoppingBag } from '../stickers/shopping-bag'
 import { Typescript } from '../stickers/typescript'
+import { Vibes1 } from '../stickers/vibes-1'
+import { Vibes2 } from '../stickers/vibes-2'
+import { Vibes3 } from '../stickers/vibes-3'
+import { Vibes4 } from '../stickers/vibes-4'
+import { Vibes5 } from '../stickers/vibes-5'
+import { Vibes6 } from '../stickers/vibes-6'
+import { Vibes7 } from '../stickers/vibes-7'
+import { Vibes8 } from '../stickers/vibes-8'
+import { Vibes9 } from '../stickers/vibes-9'
+import { Vibes10 } from '../stickers/vibes-10'
+import { Vibes11 } from '../stickers/vibes-11'
+import { Vibes12 } from '../stickers/vibes-12'
+import { Vibes13 } from '../stickers/vibes-13'
+import { Vibes14 } from '../stickers/vibes-14'
+import { Vibes15 } from '../stickers/vibes-15'
+import { Vibes16 } from '../stickers/vibes-16'
 import { Form } from './form'
 
 const useSmoothScroll = () => {
@@ -65,7 +81,7 @@ const FeatureCard = ({
 }) => (
   <div
     className={clsx(
-      'min-h-auto relative flex w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-black bg-[#FFFAE0] md:min-h-72 md:flex-row'
+      'min-h-auto flex w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-black bg-[#FFFAE0] md:min-h-72 md:flex-row'
     )}
   >
     <div
@@ -254,7 +270,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="h-[90vh] w-full bg-white p-3 md:h-[90vh] md:p-4 lg:p-5">
+      <section className="h-[70vh] w-full bg-white p-3 md:h-[70vh] md:p-4 lg:p-5">
         <div className="group flex h-full w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-black md:flex-row lg:rounded-[32px] xl:rounded-[40px]">
           <div className="relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
@@ -359,7 +375,7 @@ export default function Home() {
 
           <FeatureCard
             sticker="left"
-            text="Every component is recreated in Figma, ready to be dropped into your designs."
+            text="Every component is recreated in Figma, ready to be dropped into your mockups."
           >
             <Figma />
           </FeatureCard>
@@ -390,6 +406,24 @@ export default function Home() {
               </Link>
               . */}
             </p>
+          </div>
+          <div className="relative h-48 w-full">
+            <Vibes1 />
+            <Vibes11 />
+            <Vibes2 />
+            <Vibes3 />
+            <Vibes13 />
+            <Vibes16 />
+            <Vibes5 />
+            <Vibes12 />
+            <Vibes4 />
+            <Vibes6 />
+            <Vibes7 />
+            <Vibes8 />
+            <Vibes9 />
+            <Vibes10 />
+            <Vibes14 />
+            <Vibes15 />
           </div>
         </div>
       </footer>

@@ -43,12 +43,12 @@ export async function CodeBlock({
   return (
     <div
       className={clsx(
-        'relative my-4 w-full overflow-scroll bg-contrast-100 only:my-0 md:my-5',
+        'group relative my-4 w-full bg-contrast-100 last:mb-0 only:my-0 md:my-5',
         className
       )}
     >
       {!hideCopyButton && (
-        <div className="pointer-events-none sticky top-0 z-10 flex w-full justify-end p-2">
+        <div className="pointer-events-none sticky top-0 z-10 flex w-full translate-y-2 justify-end p-2 opacity-0 transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100">
           <CopyButton className="pointer-events-auto" clipboard={children} />
         </div>
       )}

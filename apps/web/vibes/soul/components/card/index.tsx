@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef } from 'react'
 import { clsx } from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 
-export type CardProps = {
+export interface CardProps {
   title: string
   image: {
     src: string
@@ -31,7 +31,7 @@ export const Card = function Card({
       <ArrowUpRight
         strokeWidth={1.5}
         className={clsx(
-          'absolute right-2.5 top-2.5 z-10 transition-transform duration-300 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
+          'absolute right-2.5 top-2.5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
           textContrast === 'light' ? 'text-background' : 'text-foreground'
         )}
       />
@@ -41,7 +41,7 @@ export const Card = function Card({
           fill
           alt={image.altText}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+          className="w-full scale-105 select-none bg-contrast-100 object-cover transition-transform duration-700 ease-out group-hover:scale-100"
         />
       </div>
       <span
