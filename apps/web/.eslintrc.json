@@ -33,7 +33,11 @@
     "eqeqeq": ["error", "smart"],
     "import/order": "error",
     "no-empty": "error",
+    "no-nested-ternary": "error",
+    "no-plusplus": "error",
     "no-shadow": "off",
-    "no-useless-computed-key": "error"
+    "no-useless-computed-key": "error",
+    "radix": "error",
+    "react/style-prop-object": "error"
   }
 }
