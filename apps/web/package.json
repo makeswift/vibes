@@ -94,7 +94,6 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
-    "eslint-plugin-react": "^7.37.1",
     "postcss": "^8",
     "postcss-nesting": "^12.1.1",
     "prettier": "^3.2.5",

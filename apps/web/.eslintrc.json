@@ -15,9 +15,6 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": [
-    "react"
-  ],
   "rules": {
     "@typescript-eslint/no-confusing-void-expression": [
       "error",
