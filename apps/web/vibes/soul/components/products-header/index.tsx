@@ -35,7 +35,7 @@ export const ProductsHeader = function ProductsHeader({
           <FilterPanel />
           <Dropdown
             label="Sort"
-            style="round"
+            variant="round"
             items={['Most Recent', 'Most Popular', 'Price: Low to High', 'Price: High to Low']}
           />
         </div>

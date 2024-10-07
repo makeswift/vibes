@@ -17,7 +17,7 @@ import { Label } from '@/vibes/soul/components/label'
 interface Props {
   label: string
   labelOnTop?: boolean
-  style?: 'round' | 'rectangle'
+  variant?: 'round' | 'rectangle'
   items: string[]
   required?: boolean
 }
@@ -25,7 +25,7 @@ interface Props {
 export const Dropdown = function Dropdown({
   label,
   labelOnTop = false,
-  style = 'rectangle',
+  variant = 'rectangle',
   items,
   required,
   ...props
@@ -41,7 +41,7 @@ export const Dropdown = function Dropdown({
       <DropdownMenu>
         <DropdownMenuTrigger
           className={clsx(
-            style === 'rectangle' ? 'rounded-lg' : 'rounded-full',
+            variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',
             'flex h-fit w-full select-none items-center justify-between gap-3 border border-contrast-100 bg-white p-2 px-5 py-3 font-medium text-foreground',
             'text-sm ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2'
           )}
