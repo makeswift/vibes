@@ -143,7 +143,7 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                         </h2>
 
                         {((typeof openAccordion === 'string' &&
-                          parseInt(openAccordion) !== i + 1) ||
+                          parseInt(openAccordion, 10) !== i + 1) ||
                           openAccordion === undefined) && (
                           <div className="col-span-3 row-start-2 mt-4 flex w-full flex-col gap-2 overflow-hidden pb-2 text-sm group-data-[state=closed]:h-full group-data-[state=open]:h-0 @xl/accordion:col-span-1 @xl/accordion:col-start-2 @xl/accordion:row-start-1">
                             {accordion.preview}
