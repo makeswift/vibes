@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import Link from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-import { clsx } from 'clsx';
+import { clsx } from 'clsx'
 
 export const Pagination = function Pagination({ pages: totalPages }: { pages: number }) {
   const pathname = usePathname()
