@@ -9,12 +9,12 @@ import { clsx } from 'clsx'
 export const Pagination = function Pagination({ pages: totalPages }: { pages: number }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const initialPage = parseInt(searchParams.get('page') ?? '1')
+  const initialPage = parseInt(searchParams.get('page') ?? '1', 10)
 
   const [currentPage, setCurrentPage] = useState(initialPage)
 
   useEffect(() => {
-    const current = parseInt(searchParams.get('page') ?? '1')
+    const current = parseInt(searchParams.get('page') ?? '1', 10)
     if (current !== currentPage) {
       setCurrentPage(current)
     }
@@ -24,9 +24,7 @@ export const Pagination = function Pagination({ pages: totalPages }: { pages: nu
     const pages = []
 
     if (totalPages <= 4) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i)
-      }
+      pages.push(...Array.from({ length: totalPages }, (_, i) => i + 1))
     } else {
       pages.push(1)
 
