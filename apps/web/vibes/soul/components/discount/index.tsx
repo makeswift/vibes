@@ -141,10 +141,15 @@ const DiscountUI = ({
   copy: () => Promise<void>
   renderButton?: boolean
 }) => {
+  let discountText = 'Spin for discount'
+  if (isSpun) {
+    discountText = copied ? 'Copied!' : `Copy discount code`
+  }
+
   return (
     <>
       <h2 className="flex min-h-20 w-full select-none items-center justify-center bg-primary-shadow py-3 text-center text-3xl font-medium leading-none @4xl:mb-0 @4xl:justify-start @4xl:bg-transparent @4xl:px-6 @4xl:text-5xl">
-        {isSpun ? (copied ? 'Copied!' : `Copy discount code`) : 'Spin for discount'}
+        {discountText}
       </h2>
       <div className="flex w-full max-w-xs flex-col gap-4 rounded-b-3xl bg-background px-6 pb-6 pt-4 @4xl:rounded-t-3xl @4xl:p-0">
         <div
