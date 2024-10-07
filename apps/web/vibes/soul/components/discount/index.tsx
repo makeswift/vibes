@@ -141,7 +141,7 @@ const DiscountUI = ({
   copy: () => Promise<void>
   renderButton?: boolean
 }) => {
-  let discountText =  'Spin for discount'
+  let discountText = 'Spin for discount'
   if (isSpun) {
     discountText = copied ? 'Copied!' : `Copy discount code`
   }
