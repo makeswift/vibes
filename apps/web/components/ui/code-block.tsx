@@ -43,7 +43,7 @@ export async function CodeBlock({
   return (
     <div
       className={clsx(
-        'group relative my-4 w-full bg-contrast-100 last:mb-0 only:my-0 md:my-5',
+        'group relative my-4 w-full overflow-y-scroll bg-contrast-100 last:mb-0 only:my-0 md:my-5',
         className
       )}
     >
