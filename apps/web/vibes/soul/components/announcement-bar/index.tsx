@@ -10,7 +10,7 @@ interface Props {
   className?: string
 }
 
-export const AnnouncementBar = function AnnouncementBar({ children, className}: Props) {
+export const AnnouncementBar = function AnnouncementBar({ children, className }: Props) {
   const [banner, setBanner] = useState({ dismissed: false, initialized: false })
 
   useEffect(() => {
