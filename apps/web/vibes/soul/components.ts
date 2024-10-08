@@ -8,6 +8,12 @@ export const components = [
     files: ['components/accordions/index.tsx'],
   },
   {
+    name: 'alert',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['components/alert/index.tsx'],
+  },
+  {
     name: 'announcement-bar',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],

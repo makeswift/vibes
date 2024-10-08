@@ -11,6 +11,13 @@ export const examples = [
     component: lazy(() => import('./examples/accordions')),
   },
   {
+    name: 'alert-example',
+    dependencies: [],
+    registryDependencies: ['alert'],
+    files: ['examples/alert.tsx'],
+    component: lazy(() => import('./examples/alert')),
+  },
+  {
     name: 'announcement-bar-example',
     dependencies: [],
     registryDependencies: ['announcement-bar'],

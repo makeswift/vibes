@@ -1,5 +1,49 @@
 ---
 title: Accordions
+description: Accordions allow users to expand and collapse content sections.
 preview: accordions-example
 previewSize: sm
+features:
+  - Full keyboard navigation
+  - Can be controlled or uncontrolled
+  - Fully animated transitions
 ---
+
+## Usage
+
+<CodeBlock lang="bash">{`import { Accordions } from '@/vibes/soul/components/accordions'`}</CodeBlock>
+
+<CodeBlock lang="bash">{`const accordions = [
+  {
+    title: 'What is your return policy?',
+    content:
+      'Our return policy allows you to return items within 30 days of purchase for a full refund. Items must be in their original condition and packaging.',
+  },
+  {
+    title: 'How long does shipping take?',
+    content:
+      'Shipping typically takes 3-5 business days for domestic orders. International shipping may take longer depending on the destination.',
+  },
+  {
+    title: 'Do you offer international shipping?',
+    content:
+      'Yes, we offer international shipping to select countries. Please check our shipping policy for more details on available locations.',
+  },
+  {
+    title: 'How can I track my order?',
+    content:
+      'Once your order has shipped, you will receive an email with a tracking number. You can use this number to track your order on our website.',
+  },
+]`}</CodeBlock>
+
+<CodeBlock lang="bash">{`<Accordions accordions={accordions} />`}</CodeBlock>
+
+## API Reference
+
+| Prop         | Type                                                                      | Default |
+| ------------ | ------------------------------------------------------------------------- | ------- |
+| `accordions` | `object[]` <Tooltip content={`{title: ReactNode, content: ReactNode}`} /> |         |
+
+## Figma
+
+<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42908&t=dbm9GtAtS2A3vy2g-4" />

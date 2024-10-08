@@ -6,11 +6,11 @@ import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
 interface Props {
+  children: ReactNode
   className?: string
-  children?: ReactNode
 }
 
-export const AnnouncementBar = function AnnouncementBar({ className, children }: Props) {
+export const AnnouncementBar = function AnnouncementBar({ children, className }: Props) {
   const [banner, setBanner] = useState({ dismissed: false, initialized: false })
 
   useEffect(() => {

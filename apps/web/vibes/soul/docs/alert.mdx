@@ -1,0 +1,39 @@
+---
+title: Alert
+description: An Alert is used to display important information to the user. It is typically styled with a distinct color and icon to indicate the type of alert such as success, error, warning, or info.
+preview: alert-example
+previewSize: xs
+features:
+  - Dismissable
+  - Auto dismiss after 3 seconds
+  - success, error, warning, info variants
+  - Animated transition
+---
+
+## Usage
+
+<CodeBlock lang="bash">{`import { Alert } from '@/vibes/soul/components/alert'
+import { useState } from 'react'`}</CodeBlock>
+
+<CodeBlock lang="bash">{`const [showAlert, setShowAlert] = useState(false)
+`}</CodeBlock>
+
+<CodeBlock lang="bash">{`<Alert
+  variant="success"
+  message="1 item added to your cart"
+  showAlert={showAlert}
+  onClose={setShowAlert}
+/>`}</CodeBlock>
+
+## API Reference
+
+| Prop                                                                                   | Type                                                              | Default     |
+| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- |
+| `variant` <Tooltip content='The style variant of the alert, defines color and icon' /> | `enum` <Tooltip content={`"success" "error" "warning" "info"`} /> | `"success"` |
+| `message` <Tooltip content='Alert message displayed' />                                | `string`                                                          |             |
+| `showAlert`                                                                            | `boolean`                                                         |             |
+| `onClose`                                                                              | `(showAlert: boolean) => void`                                    |             |
+
+## Figma
+
+<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42917&t=dbm9GtAtS2A3vy2g-4" />
