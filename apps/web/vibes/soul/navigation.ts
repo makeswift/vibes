@@ -26,6 +26,12 @@ export const navigation = [
         component: 'accordions',
       },
       {
+        title: 'Alert',
+        slug: 'alert',
+        file: 'docs/alert.mdx',
+        component: 'alert',
+      },
+      {
         title: 'Announcement Bar',
         slug: 'announcement-bar',
         file: 'docs/announcement-bar.mdx',
