@@ -3,24 +3,24 @@ import { Accordions } from '@/vibes/soul/components/accordions'
 export default function Preview() {
   const accordions = [
     {
-      title: 'Description',
+      title: 'What is your return policy?',
       content:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.',
+        'Our return policy allows you to return items within 30 days of purchase for a full refund. Items must be in their original condition and packaging.',
     },
     {
-      title: 'Description',
+      title: 'How long does shipping take?',
       content:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.',
+        'Shipping typically takes 3-5 business days for domestic orders. International shipping may take longer depending on the destination.',
     },
     {
-      title: 'Description',
+      title: 'Do you offer international shipping?',
       content:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.',
+        'Yes, we offer international shipping to select countries. Please check our shipping policy for more details on available locations.',
     },
     {
-      title: 'Description',
+      title: 'How can I track my order?',
       content:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.',
+        'Once your order has shipped, you will receive an email with a tracking number. You can use this number to track your order on our website.',
     },
   ]
 

@@ -5,7 +5,6 @@ preview: accordions-example
 previewSize: sm
 features:
   - Full keyboard navigation
-  - Can expand one or multiple items
   - Can be controlled or uncontrolled
   - Fully animated transitions
 ---
@@ -15,37 +14,35 @@ features:
 <CodeBlock lang="bash">{`import { Accordions } from '@/vibes/soul/components/accordions'`}</CodeBlock>
 
 <CodeBlock lang="bash">{`const accordions = [
-    {
-      title: 'Description',
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.',
-    },
-    {
-      title: 'Description',
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.',
-    },
-    {
-      title: 'Description',
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.',
-    },
-    {
-      title: 'Description',
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien.',
-    },
-  ]`}</CodeBlock>
+  {
+    title: 'What is your return policy?',
+    content:
+      'Our return policy allows you to return items within 30 days of purchase for a full refund. Items must be in their original condition and packaging.',
+  },
+  {
+    title: 'How long does shipping take?',
+    content:
+      'Shipping typically takes 3-5 business days for domestic orders. International shipping may take longer depending on the destination.',
+  },
+  {
+    title: 'Do you offer international shipping?',
+    content:
+      'Yes, we offer international shipping to select countries. Please check our shipping policy for more details on available locations.',
+  },
+  {
+    title: 'How can I track my order?',
+    content:
+      'Once your order has shipped, you will receive an email with a tracking number. You can use this number to track your order on our website.',
+  },
+]`}</CodeBlock>
 
 <CodeBlock lang="bash">{`<Accordions accordions={accordions} />`}</CodeBlock>
 
 ## API Reference
 
-| Prop                                                                                       | Type                                                                           | Default      |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------ |
-| `type` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `enum` <Tooltip content={`"single" ${String.fromCharCode(124)} "multiple"`} /> | `"multiple"` |
-| `title` <Tooltip content='This is an example tooltip for what this particular prop does'/> | `string`                                                                       |              |
-| `body` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `string`                                                                       |              |
+| Prop         | Type                                                                      | Default |
+| ------------ | ------------------------------------------------------------------------- | ------- |
+| `accordions` | `object[]` <Tooltip content={`{title: ReactNode, content: ReactNode}`} /> |         |
 
 ## Figma
 
