@@ -11,6 +11,7 @@ interface Props {
   }
   title: string
   description: string
+  // action: (formData: FormData) => void
 }
 
 export const Subscribe = function Subscribe({ image, title, description }: Props) {
@@ -44,7 +45,9 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
             <p className="opacity-50 @2xl:max-w-sm">{description}</p>
           </div>
 
-          <InlineEmailForm />
+          <InlineEmailForm
+          // action={action}
+          />
         </div>
       </div>
     </section>
