@@ -1,16 +1,40 @@
 'use client'
 
+import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 import { clsx } from 'clsx'
 
-interface Props {
-  title: string
-  backgroundImage?: string
-  targetDate: Date
+interface Default {
+  type: 'default'
+  images?: string[]
 }
 
-export const Countdown = function Countdown({ title, backgroundImage, targetDate }: Props) {
+interface Full {
+  type: 'full'
+  backgroundImage: string
+}
+
+interface Split {
+  type: 'split'
+  image: string
+}
+
+interface Banner {
+  type: 'banner'
+}
+
+interface Props {
+  title: string
+  targetDate: Date
+  variant: Default | Full | Split | Banner
+}
+
+export const Countdown = function Countdown({
+  title,
+  targetDate,
+  variant = { type: 'default' },
+}: Props) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
 
   useEffect(() => {
@@ -50,17 +74,35 @@ export const Countdown = function Countdown({ title, backgroundImage, targetDate
     }, [value])
 
     return (
-      <div className={clsx('relative h-24 w-12 text-white')}>
+      <div
+        className={clsx(
+          'relative overflow-hidden',
+          {
+            default: 'h-[110px] w-10',
+            full: 'h-[110px] w-10',
+            split: 'h-[70px] w-6',
+            banner: '',
+          }[variant.type]
+        )}
+      >
         <div
-          className={clsx(`absolute inset-0 flex h-24 flex-col`)}
-          style={{
-            transform: `translateY(-${String(displayValue * 100)}%)`,
-            transition: 'transform 0.5s ease-out',
-          }}
+          className="absolute inset-0 flex flex-col"
+          style={{ transform: `translateY(-${displayValue * 100}%)` }}
         >
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="flex h-24 w-12 flex-shrink-0 items-center justify-center">
-              <span className="text-4xl font-bold text-white">{i}</span>
+          {Array.from({ length: 10 }, (_, i) => (
+            <div
+              key={i}
+              className={clsx(
+                'flex flex-shrink-0 items-center justify-center font-medium',
+                {
+                  default: 'h-[110px] w-10 text-6xl',
+                  full: 'h-[110px] w-10 text-6xl',
+                  split: 'h-[70px] w-6 text-[40px]',
+                  banner: '',
+                }[variant.type]
+              )}
+            >
+              {i}
             </div>
           ))}
         </div>
@@ -71,10 +113,16 @@ export const Countdown = function Countdown({ title, backgroundImage, targetDate
   const TwoDigitAnimatedNumber = ({ value }: { value: number }) => (
     <div
       className={clsx(
-        'flex h-24 w-24 rounded-lg',
-        backgroundImage != null && backgroundImage !== ''
+        'flex items-center justify-center rounded-lg',
+        variant.type === 'full'
           ? 'bg-primary-shadow text-primary'
-          : 'bg-primary text-primary-shadow'
+          : 'bg-primary text-primary-shadow',
+        {
+          default: 'h-[110px] w-[100px]',
+          full: 'h-[110px] w-[100px]',
+          split: 'h-[70px] w-[70px]',
+          banner: '',
+        }[variant.type]
       )}
     >
       <AnimatedNumber value={Math.floor(value / 10)} />
@@ -85,20 +133,39 @@ export const Countdown = function Countdown({ title, backgroundImage, targetDate
   return (
     <div
       className={clsx(
-        'relative flex min-h-screen flex-col items-center justify-center bg-primary-shadow',
-        'bg-cover bg-center bg-no-repeat'
+        'relative items-center justify-center overflow-hidden bg-primary-shadow bg-cover bg-center bg-no-repeat',
+        {
+          default: 'flex flex-col py-32',
+          full: 'flex flex-col py-40',
+          split: 'grid grid-cols-2',
+          banner: 'flex flex-col',
+        }[variant.type]
       )}
     >
-      <div className="relative z-10 text-center text-white">
-        <h1 className="mb-8 text-4xl font-bold">{title}</h1>
-        <div className="flex space-x-2">
+      {variant.type === 'full' || variant.type === 'split' ? (
+        <Image
+          src={variant.type === 'full' ? variant.backgroundImage : variant.image}
+          alt={title}
+          height={1000}
+          width={1000}
+          className={clsx('w-full object-cover', { 'absolute inset-0': variant.type === 'full' })}
+        />
+      ) : null}
+
+      <div
+        className={clsx('relative z-10 text-center text-white', {
+          'py-9': variant.type === 'split',
+        })}
+      >
+        <h2 className="mb-8 text-2xl font-bold">{title}</h2>
+        <div className={clsx('flex justify-center space-x-2')}>
           {Object.entries(timeLeft).map(([unit, value], index, array) => (
             <React.Fragment key={unit}>
-              <div key={unit} className="flex flex-col items-center border">
+              <div key={unit} className="flex flex-col items-center">
                 <TwoDigitAnimatedNumber value={value} />
-                <span className="mt-2 text-xl capitalize">{unit}</span>
+                <span className="mt-2 text-xs capitalize">{unit}</span>
               </div>
-              {index < array.length - 1 && <span className="mt-2 text-5xl">:</span>}
+              {index < array.length - 1 && <>:</>}
             </React.Fragment>
           ))}
         </div>
