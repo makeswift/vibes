@@ -1,9 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import { clsx } from 'clsx'
+import { X } from 'lucide-react'
 
 interface Default {
   type: 'default'
@@ -36,6 +37,7 @@ export const Countdown = function Countdown({
   variant = { type: 'default' },
 }: Props) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
+  const [banner, setBanner] = useState({ dismissed: false, initialized: false })
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -46,6 +48,18 @@ export const Countdown = function Countdown({
       clearInterval(timer)
     }
   }, [targetDate])
+
+  useEffect(() => {
+    const hidden = localStorage.getItem('hidden-countdown') === 'true'
+    setBanner({ dismissed: hidden, initialized: true })
+  }, [])
+
+  const hideBanner = useCallback(() => {
+    setBanner(prev => ({ ...prev, dismissed: true }))
+    localStorage.setItem('hidden-countdown', 'true')
+  }, [])
+
+  if (!banner.initialized) return null
 
   function calculateTimeLeft() {
     const difference = +targetDate - +new Date()
@@ -109,7 +123,16 @@ export const Countdown = function Countdown({
   )
 
   return (
-    <section className="@container">
+    <section
+      className={clsx(
+        'relative transition-all duration-300 ease-in @container',
+        variant.type === 'banner'
+          ? banner.dismissed
+            ? 'pointer-events-none max-h-0'
+            : 'max-h-[84px]'
+          : null
+      )}
+    >
       <div
         className={clsx(
           'relative flex flex-col items-center justify-center overflow-hidden bg-primary-shadow bg-cover bg-center bg-no-repeat font-medium',
@@ -158,6 +181,19 @@ export const Countdown = function Countdown({
           </div>
         </div>
       </div>
+
+      {variant.type === 'banner' ? (
+        <button
+          aria-label="Dismiss banner"
+          onClick={e => {
+            e.preventDefault()
+            hideBanner()
+          }}
+          className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-white transition-transform hover:scale-110"
+        >
+          <X className="h-5 w-5" />
+        </button>
+      ) : null}
     </section>
   )
 }
