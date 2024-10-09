@@ -20,6 +20,7 @@ interface Props {
   variant?: 'round' | 'rectangle'
   items: string[]
   required?: boolean
+  error?: string
 }
 
 export const Dropdown = function Dropdown({
@@ -28,6 +29,7 @@ export const Dropdown = function Dropdown({
   variant = 'rectangle',
   items,
   required,
+  error,
   ...props
 }: Props & DropdownMenuTriggerProps) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
@@ -42,8 +44,9 @@ export const Dropdown = function Dropdown({
         <DropdownMenuTrigger
           className={clsx(
             variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',
-            'flex h-fit w-full select-none items-center justify-between gap-3 border border-contrast-100 bg-white p-2 px-5 py-3 font-medium text-foreground',
-            'text-sm ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2'
+            'flex h-fit w-full select-none items-center justify-between gap-3 border bg-white p-2 px-5 py-3 font-medium text-foreground',
+            'text-sm ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2',
+            error != null && error !== '' ? 'border-error' : 'border-contrast-100'
           )}
           {...props}
         >
@@ -73,6 +76,7 @@ export const Dropdown = function Dropdown({
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
+      {error != null && error !== '' && <span className="text-xs text-error">{error}</span>}
     </div>
   )
 }

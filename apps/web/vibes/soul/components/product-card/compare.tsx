@@ -37,7 +37,10 @@ export const Compare = function Compare({ product, compareProducts, setComparePr
 
   return (
     <div
-      onClick={handleCheck}
+      onClick={e => {
+        e.preventDefault()
+        handleCheck()
+      }}
       onKeyDown={handleKeyDown}
       role="button"
       className="absolute right-1.5 top-1.5 z-10 flex cursor-pointer items-center gap-2 rounded-lg p-1 text-foreground transition-colors duration-300 hover:bg-background/80 @lg:bottom-4 @lg:right-4 @lg:top-auto"
