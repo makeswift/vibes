@@ -14,6 +14,12 @@ export const components = [
     files: ['components/alert/index.tsx'],
   },
   {
+    name: 'animated-link',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['components/animated-link/index.tsx'],
+  },
+  {
     name: 'announcement-bar',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],

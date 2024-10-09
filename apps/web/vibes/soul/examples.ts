@@ -18,6 +18,13 @@ export const examples = [
     component: lazy(() => import('./examples/alert')),
   },
   {
+    name: 'animated-link-example',
+    dependencies: [],
+    registryDependencies: ['animated-link'],
+    files: ['examples/animated-link.tsx'],
+    component: lazy(() => import('./examples/animated-link')),
+  },
+  {
     name: 'announcement-bar-example',
     dependencies: [],
     registryDependencies: ['announcement-bar'],

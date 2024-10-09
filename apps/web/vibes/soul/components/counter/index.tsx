@@ -7,9 +7,10 @@ import { Minus, Plus } from 'lucide-react'
 interface Props {
   current?: number
   max?: number
+  type?: 'button' | 'submit'
 }
 
-export const Counter = function Counter({ current = 0, max = 20 }: Props) {
+export const Counter = function Counter({ current = 0, max = 20, type = 'button' }: Props) {
   const [count, setCount] = useState(current)
 
   const decrement = () => {
@@ -29,6 +30,7 @@ export const Counter = function Counter({ current = 0, max = 20 }: Props) {
         className="group rounded-l-lg p-3 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         onClick={decrement}
         aria-label="Decrease count"
+        type={type}
       >
         <Minus
           className="text-contrast-300 transition-colors duration-300 group-hover:text-foreground"
@@ -43,6 +45,7 @@ export const Counter = function Counter({ current = 0, max = 20 }: Props) {
         className="group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         onClick={increment}
         aria-label="Increase count"
+        type={type}
       >
         <Plus
           className="text-contrast-300 transition-colors duration-300 group-hover:text-foreground"

@@ -32,6 +32,12 @@ export const navigation = [
         component: 'alert',
       },
       {
+        title: 'Animated Link',
+        slug: 'animated-link',
+        file: 'docs/animated-link.mdx',
+        component: 'animated-link',
+      },
+      {
         title: 'Announcement Bar',
         slug: 'announcement-bar',
         file: 'docs/announcement-bar.mdx',
