@@ -49,14 +49,14 @@ export const Countdown = function Countdown({
 
   function calculateTimeLeft() {
     const difference = +targetDate - +new Date()
-    let timeRemaining = { days: 0, hours: 0, minutes: 0, seconds: 0 }
+    let timeRemaining = { days: 0, hours: 0, mins: 0, secs: 0 }
 
     if (difference > 0) {
       timeRemaining = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        mins: Math.floor((difference / 1000 / 60) % 60),
+        secs: Math.floor((difference / 1000) % 60),
       }
     }
 
@@ -69,43 +69,21 @@ export const Countdown = function Countdown({
 
     useEffect(() => {
       // Timeout to delay the update for smooth animation
-      const timeout = setTimeout(() => setDisplayValue(value), 10)
+      const timeout = setTimeout(() => setDisplayValue(value))
       return () => clearTimeout(timeout)
     }, [value])
 
     return (
-      <div
-        className={clsx(
-          'relative overflow-hidden',
-          {
-            default: 'h-[110px] w-10',
-            full: 'h-[110px] w-10',
-            split: 'h-[70px] w-6',
-            banner: '',
-          }[variant.type]
-        )}
-      >
-        <div
-          className="absolute inset-0 flex flex-col"
-          style={{ transform: `translateY(-${displayValue * 100}%)` }}
-        >
-          {Array.from({ length: 10 }, (_, i) => (
-            <div
-              key={i}
-              className={clsx(
-                'flex flex-shrink-0 items-center justify-center font-medium',
-                {
-                  default: 'h-[110px] w-10 text-6xl',
-                  full: 'h-[110px] w-10 text-6xl',
-                  split: 'h-[70px] w-6 text-[40px]',
-                  banner: '',
-                }[variant.type]
-              )}
-            >
-              {i}
-            </div>
-          ))}
-        </div>
+      <div className="relative overflow-hidden">
+        {Array.from({ length: 10 }, (_, i) => (
+          <div
+            key={i}
+            style={{ transform: `translateY(-${displayValue * 100}%)` }}
+            className="flex flex-shrink-0 flex-col items-center justify-center"
+          >
+            {i}
+          </div>
+        ))}
       </div>
     )
   }
@@ -118,10 +96,10 @@ export const Countdown = function Countdown({
           ? 'bg-primary-shadow text-primary'
           : 'bg-primary text-primary-shadow',
         {
-          default: 'h-[110px] w-[100px]',
-          full: 'h-[110px] w-[100px]',
-          split: 'h-[70px] w-[70px]',
-          banner: '',
+          default: 'h-[110px] w-[100px]  [&>*>*]:h-[110px] [&>*]:h-[110px] [&>*]:w-10',
+          full: 'h-[110px] w-[100px] [&>*>*]:h-[110px] [&>*]:h-[110px] [&>*]:w-10',
+          split: 'h-[70px] w-[70px] [&>*>*]:h-[70px] [&>*]:h-[70px] [&>*]:w-6',
+          banner: 'h-[38px] w-[38px] [&>*>*]:h-[38px] [&>*]:h-[38px] [&>*]:w-3',
         }[variant.type]
       )}
     >
@@ -131,45 +109,55 @@ export const Countdown = function Countdown({
   )
 
   return (
-    <div
-      className={clsx(
-        'relative items-center justify-center overflow-hidden bg-primary-shadow bg-cover bg-center bg-no-repeat',
-        {
-          default: 'flex flex-col py-32',
-          full: 'flex flex-col py-40',
-          split: 'grid grid-cols-2',
-          banner: 'flex flex-col',
-        }[variant.type]
-      )}
-    >
-      {variant.type === 'full' || variant.type === 'split' ? (
-        <Image
-          src={variant.type === 'full' ? variant.backgroundImage : variant.image}
-          alt={title}
-          height={1000}
-          width={1000}
-          className={clsx('w-full object-cover', { 'absolute inset-0': variant.type === 'full' })}
-        />
-      ) : null}
-
+    <section className="@container">
       <div
-        className={clsx('relative z-10 text-center text-white', {
-          'py-9': variant.type === 'split',
-        })}
+        className={clsx(
+          'relative flex flex-col items-center justify-center overflow-hidden bg-primary-shadow bg-cover bg-center bg-no-repeat font-medium',
+          {
+            default: 'py-32',
+            full: 'py-40',
+            split: '@3xl:grid @3xl:grid-cols-2',
+            banner: '',
+          }[variant.type]
+        )}
       >
-        <h2 className="mb-8 text-2xl font-bold">{title}</h2>
-        <div className={clsx('flex justify-center space-x-2')}>
-          {Object.entries(timeLeft).map(([unit, value], index, array) => (
-            <React.Fragment key={unit}>
-              <div key={unit} className="flex flex-col items-center">
-                <TwoDigitAnimatedNumber value={value} />
-                <span className="mt-2 text-xs capitalize">{unit}</span>
-              </div>
-              {index < array.length - 1 && <>:</>}
-            </React.Fragment>
-          ))}
+        {variant.type === 'full' || variant.type === 'split' ? (
+          <Image
+            src={variant.type === 'full' ? variant.backgroundImage : variant.image}
+            alt={title}
+            height={1000}
+            width={1000}
+            className={clsx('h-full w-full object-cover', {
+              'absolute inset-0': variant.type === 'full',
+            })}
+          />
+        ) : null}
+
+        <div
+          className={clsx(
+            'relative z-10 scale-[0.7] text-center text-white @2xl:scale-100',
+            {
+              default: 'text-6xl [&>div>div>span]:text-lg [&>h2]:text-[40px]',
+              full: 'text-6xl [&>div>div>span]:text-lg',
+              split: 'py-9 text-[40px] [&>div>div>span]:text-xs [&>h2]:text-2xl',
+              banner: 'flex items-center gap-6 py-2.5 text-xl [&>div>div>span]:text-xs',
+            }[variant.type]
+          )}
+        >
+          <h2 className={clsx({ 'mb-6': variant.type !== 'banner' })}>{title}</h2>
+          <div className="flex justify-center space-x-2">
+            {Object.entries(timeLeft).map(([unit, value], index, array) => (
+              <React.Fragment key={unit}>
+                <div key={unit} className="flex flex-col items-center">
+                  <TwoDigitAnimatedNumber value={value} />
+                  <span className="mt-2 capitalize">{unit}</span>
+                </div>
+                {index < array.length - 1 && <span>:</span>}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
