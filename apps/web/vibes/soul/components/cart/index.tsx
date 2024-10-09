@@ -57,86 +57,86 @@ export const Cart = function Cart({ products }: CartProps) {
 
           {/* Cart Items */}
           <ul className="flex flex-col gap-5 gap-y-10">
-            {isLoading
-              ? Array.from({ length: 2 }).map((_, index) => {
-                  // Skeleton Loader
-                  return (
-                    <div key={index} className="flex animate-pulse items-center gap-x-5">
-                      <div className="h-56 w-full rounded-lg bg-contrast-100" />
+            {isLoading ? (
+              <div className="flex animate-pulse items-center gap-x-5">
+                <div className="h-96 w-full rounded-lg bg-contrast-100" />
+              </div>
+            ) : (
+              // Cart Items
+              products.map(({ id, name, href, image, price, subtitle, quantity }) => (
+                <li
+                  className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
+                  key={id}
+                >
+                  {image && (
+                    <Link
+                      href={href}
+                      className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36"
+                    >
+                      <Image fill src={image.src} alt={image.altText} className="object-cover" />
+                    </Link>
+                  )}
+                  <div className="flex flex-grow flex-wrap justify-between gap-y-2">
+                    <div className="flex flex-col @xl:w-1/2 @xl:pr-4">
+                      <span className="font-medium">{name}</span>
+                      <span className="text-contrast-300">{subtitle}</span>
                     </div>
-                  )
-                })
-              : // Cart Items
-                products.map(({ id, name, href, image, price, subtitle, quantity }) => (
-                  <li
-                    className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
-                    key={id}
-                  >
-                    {image && (
-                      <Link
-                        href={href}
-                        className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36"
-                      >
-                        <Image fill src={image.src} alt={image.altText} className="object-cover" />
-                      </Link>
-                    )}
-                    <div className="flex flex-grow flex-wrap justify-between gap-y-2">
-                      <div className="flex flex-col @xl:w-1/2 @xl:pr-4">
-                        <span className="font-medium">{name}</span>
-                        <span className="text-contrast-300">{subtitle}</span>
-                      </div>
-                      <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
-                        <span className="font-medium @xl:ml-auto">{price}</span>
-                        <Counter current={quantity} />
-                        {/* Remove Item Button & Confirmation Modal */}
-                        <Modal
-                          isOpen={removeItemModalIsOpen}
-                          setOpen={setRemoveItemModalIsOpen}
-                          trigger={
-                            <button className="-ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
-                              <Trash2 strokeWidth={1} size={18} />
-                            </button>
-                          }
-                          content={
-                            <div className="max-w-xs">
-                              <h2 className="text-center font-heading text-2xl font-medium">
-                                Remove Item From Cart?
-                              </h2>
-                              <p className="mt-2 text-center text-sm text-contrast-400">
-                                Are you sure you want to remove this item from your cart? Once
-                                removed, you cannot undo it.
-                              </p>
-                              <Button
-                                variant="primary"
-                                className="mt-6 w-full !bg-error [&>div]:text-white"
-                                onClick={() => {
-                                  // TODO: Remove Item from Cart
-                                  setRemoveItemModalIsOpen(false)
-                                }}
-                              >
-                                Remove From Cart
-                              </Button>
-                              <Button
-                                variant="secondary"
-                                className="mt-2 w-full"
-                                onClick={() => setRemoveItemModalIsOpen(false)}
-                              >
-                                Cancel
-                              </Button>
-                            </div>
-                          }
-                        />
-                      </div>
+                    <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
+                      <span className="font-medium @xl:ml-auto">{price}</span>
+                      <Counter current={quantity} />
+                      {/* Remove Item Button & Confirmation Modal */}
+                      <Modal
+                        isOpen={removeItemModalIsOpen}
+                        setOpen={setRemoveItemModalIsOpen}
+                        trigger={
+                          <button className="-ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
+                            <Trash2 strokeWidth={1} size={18} />
+                          </button>
+                        }
+                        content={
+                          <div className="max-w-xs">
+                            <h2 className="text-center font-heading text-2xl font-medium">
+                              Remove Item From Cart?
+                            </h2>
+                            <p className="mt-2 text-center text-sm text-contrast-400">
+                              Are you sure you want to remove this item from your cart? Once
+                              removed, you cannot undo it.
+                            </p>
+                            <Button
+                              variant="primary"
+                              className="mt-6 w-full !bg-error [&>div]:text-white"
+                              onClick={() => {
+                                // TODO: Remove Item from Cart
+                                setRemoveItemModalIsOpen(false)
+                              }}
+                            >
+                              Remove From Cart
+                            </Button>
+                            <Button
+                              variant="secondary"
+                              className="mt-2 w-full"
+                              onClick={() => setRemoveItemModalIsOpen(false)}
+                            >
+                              Cancel
+                            </Button>
+                          </div>
+                        }
+                      />
                     </div>
-                  </li>
-                ))}
+                  </div>
+                </li>
+              ))
+            )}
 
-            {products.length === 0 && (
-              <div>
-                <h2 className="mb-2 text-center text-3xl font-medium text-contrast-300">
-                  Your cart is empty
+            {products.length === 0 && !isLoading && (
+              <div className="flex min-h-96 flex-col items-center justify-center">
+                <span className="mb-2 text-center text-5xl font-bold leading-none text-contrast-200">
+                  Oh no,
+                </span>
+                <h2 className="mb-10 text-center text-lg font-medium leading-none text-contrast-300">
+                  Your cart is empty!
                 </h2>
-                <p className="mx-auto max-w-sm text-center text-contrast-300">Go ahead & explore</p>
+                <Button size="small">Explore The Shop</Button>
               </div>
             )}
           </ul>
