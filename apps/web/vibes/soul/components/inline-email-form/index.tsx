@@ -1,10 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 
-interface Props {
-  action: (formData: FormData) => void
-}
-
-export const InlineEmailForm = function InlineEmailForm({ action }: Props) {
+export const InlineEmailForm = function InlineEmailForm() {
   // action: (prevState: unknown, formData: FormData) => Promise<SubmissionResult>
 
   // const schema = z.object({
@@ -27,7 +23,7 @@ export const InlineEmailForm = function InlineEmailForm({ action }: Props) {
       // id={form.id}
       className="w-full"
       // onSubmit={form.onSubmit}
-      action={action}
+      // action={action}
       noValidate
     >
       <div className="relative w-full max-w-5xl shrink-0 rounded-lg border border-contrast-100 bg-primary-highlight text-[15px] ring-foreground transition-colors duration-200 focus-within:ring-[1px] focus:outline-none">

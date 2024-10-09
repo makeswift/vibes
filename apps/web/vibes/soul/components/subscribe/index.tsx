@@ -11,10 +11,10 @@ interface Props {
   }
   title: string
   description: string
-  action: (formData: FormData) => void
+  // action: (formData: FormData) => void
 }
 
-export const Subscribe = function Subscribe({ image, title, description, action }: Props) {
+export const Subscribe = function Subscribe({ image, title, description }: Props) {
   return (
     <section className="@container">
       <div className="mx-auto flex max-w-screen-2xl flex-col items-center @2xl:flex-row">
@@ -45,7 +45,9 @@ export const Subscribe = function Subscribe({ image, title, description, action 
             <p className="opacity-50 @2xl:max-w-sm">{description}</p>
           </div>
 
-          <InlineEmailForm action={action} />
+          <InlineEmailForm
+          // action={action}
+          />
         </div>
       </div>
     </section>
