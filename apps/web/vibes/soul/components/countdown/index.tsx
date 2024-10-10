@@ -78,11 +78,9 @@ export const Countdown = function Countdown({
   }
 
   const AnimatedNumber = ({ value }: { value: number }) => {
-    // State to handle the displayed value for smooth transitions
     const [displayValue, setDisplayValue] = useState(value)
 
     useEffect(() => {
-      // Timeout to delay the update for smooth animation
       const timeout = setTimeout(() => setDisplayValue(value))
       return () => clearTimeout(timeout)
     }, [value])
@@ -125,75 +123,77 @@ export const Countdown = function Countdown({
   return (
     <section
       className={clsx(
-        'relative transition-all duration-300 ease-in @container',
+        'relative grid origin-top transition-all duration-300 ease-out @container',
         variant.type === 'banner'
           ? banner.dismissed
-            ? 'pointer-events-none max-h-0'
-            : 'max-h-[84px]'
-          : null
+            ? 'pointer-events-none grid-rows-[0fr]'
+            : 'grid-rows-[1fr]'
+          : ''
       )}
     >
-      <div
-        className={clsx(
-          'relative flex flex-col items-center justify-center overflow-hidden bg-primary-shadow bg-cover bg-center bg-no-repeat font-medium',
-          {
-            default: 'py-32',
-            full: 'py-40',
-            split: '@3xl:grid @3xl:grid-cols-2',
-            banner: '',
-          }[variant.type]
-        )}
-      >
-        {variant.type === 'full' || variant.type === 'split' ? (
-          <Image
-            src={variant.type === 'full' ? variant.backgroundImage : variant.image}
-            alt={title}
-            height={1000}
-            width={1000}
-            className={clsx('h-full w-full object-cover', {
-              'absolute inset-0': variant.type === 'full',
-            })}
-          />
-        ) : null}
-
+      <div className="overflow-hidden">
         <div
           className={clsx(
-            'relative z-10 scale-[0.7] text-center text-white @2xl:scale-100',
+            'relative flex flex-col items-center justify-center overflow-hidden bg-primary-shadow bg-cover bg-center bg-no-repeat font-medium',
             {
-              default: 'text-6xl [&>div>div>span]:text-lg [&>h2]:text-[40px]',
-              full: 'text-6xl [&>div>div>span]:text-lg',
-              split: 'py-9 text-[40px] [&>div>div>span]:text-xs [&>h2]:text-2xl',
-              banner: 'flex items-center gap-6 py-2.5 text-xl [&>div>div>span]:text-xs',
+              default: 'py-32',
+              full: 'py-40',
+              split: '@3xl:grid @3xl:grid-cols-2',
+              banner: '',
             }[variant.type]
           )}
         >
-          <h2 className={clsx({ 'mb-6': variant.type !== 'banner' })}>{title}</h2>
-          <div className="flex justify-center space-x-2">
-            {Object.entries(timeLeft).map(([unit, value], index, array) => (
-              <React.Fragment key={unit}>
-                <div key={unit} className="flex flex-col items-center">
-                  <TwoDigitAnimatedNumber value={value} />
-                  <span className="mt-2 capitalize">{unit}</span>
-                </div>
-                {index < array.length - 1 && <span>:</span>}
-              </React.Fragment>
-            ))}
+          {variant.type === 'full' || variant.type === 'split' ? (
+            <Image
+              src={variant.type === 'full' ? variant.backgroundImage : variant.image}
+              alt={title}
+              height={1000}
+              width={1000}
+              className={clsx('h-full w-full object-cover', {
+                'absolute inset-0': variant.type === 'full',
+              })}
+            />
+          ) : null}
+
+          <div
+            className={clsx(
+              'relative z-10 scale-[0.7] text-center text-white @2xl:scale-100',
+              {
+                default: 'text-6xl [&>div>div>span]:text-lg [&>h2]:text-[40px]',
+                full: 'text-6xl [&>div>div>span]:text-lg',
+                split: 'py-9 text-[40px] [&>div>div>span]:text-xs [&>h2]:text-2xl',
+                banner: 'flex items-center gap-6 py-2.5 text-xl [&>div>div>span]:text-xs',
+              }[variant.type]
+            )}
+          >
+            <h2 className={clsx({ 'mb-6': variant.type !== 'banner' })}>{title}</h2>
+            <div className="flex justify-center space-x-2">
+              {Object.entries(timeLeft).map(([unit, value], index, array) => (
+                <React.Fragment key={unit}>
+                  <div key={unit} className="flex flex-col items-center">
+                    <TwoDigitAnimatedNumber value={value} />
+                    <span className="mt-2 capitalize">{unit}</span>
+                  </div>
+                  {index < array.length - 1 && <span>:</span>}
+                </React.Fragment>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {variant.type === 'banner' ? (
-        <button
-          aria-label="Dismiss banner"
-          onClick={e => {
-            e.preventDefault()
-            hideBanner()
-          }}
-          className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-white transition-transform hover:scale-110"
-        >
-          <X className="h-5 w-5" />
-        </button>
-      ) : null}
+        {variant.type === 'banner' ? (
+          <button
+            aria-label="Dismiss banner"
+            onClick={e => {
+              e.preventDefault()
+              hideBanner()
+            }}
+            className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-white transition-transform hover:scale-110"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        ) : null}
+      </div>
     </section>
   )
 }
