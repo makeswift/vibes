@@ -69,7 +69,7 @@ export const Rating = function Rating({ rating, className }: Readonly<Props>) {
   })
 
   return (
-    <div className={clsx('flex', className)}>
+    <div className={clsx('flex w-full justify-center', className)}>
       {stars.map((type, index) => (
         <Star key={index} type={type} />
       ))}
