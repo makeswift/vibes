@@ -133,7 +133,7 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
       <TabsContent className="min-h-0 flex-1" value="code">
         <div
           className={clsx(
-            'flex overflow-hidden',
+            'flex overflow-auto',
             fullScreen
               ? 'max-h-full'
               : {
@@ -155,8 +155,8 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
     <Dialog.Root onOpenChange={setFullScreen} open={fullScreen}>
       {fullScreen ? (
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-background" />
-          <Dialog.Content className="fixed inset-0 z-50 flex flex-col bg-background px-4">
+          <Dialog.Overlay className="fixed inset-0 z-[100] bg-background" />
+          <Dialog.Content className="fixed inset-0 z-[100] flex flex-col bg-background px-4">
             {content}
           </Dialog.Content>
         </Dialog.Portal>
