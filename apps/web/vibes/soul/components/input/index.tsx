@@ -9,11 +9,12 @@ import { Label } from '@/vibes/soul/components/label'
 export interface Props extends ComponentPropsWithRef<'input'> {
   prepend?: string
   label?: string
+  error?: string
   className?: string
 }
 
 export const Input = forwardRef(function Input(
-  { prepend, label, className, required, ...rest }: Props,
+  { prepend, label, className, required, error, ...rest }: Props,
   ref: Ref<HTMLInputElement>
 ) {
   return (
@@ -24,7 +25,12 @@ export const Input = forwardRef(function Input(
         )}
         {required === true && <span className="text-xs text-contrast-300">Required</span>}
       </div>
-      <div className="relative overflow-hidden rounded-lg border border-contrast-100 bg-background transition-colors duration-200 focus-within:border-foreground focus:outline-none">
+      <div
+        className={clsx(
+          'relative overflow-hidden rounded-lg border bg-background transition-colors duration-200 focus-within:border-foreground focus:outline-none',
+          error != null && error !== '' ? 'border-error' : 'border-contrast-100'
+        )}
+      >
         {prepend != null && prepend !== '' && (
           <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2">
             {prepend}
@@ -41,6 +47,7 @@ export const Input = forwardRef(function Input(
           )}
         />
       </div>
+      {error != null && error !== '' && <span className="text-xs text-error">{error}</span>}
     </div>
   )
 })

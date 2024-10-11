@@ -126,7 +126,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
   return (
     <section
       className={clsx(
-        'h-dvh max-h-[880px] overflow-hidden bg-primary-shadow @container',
+        'relative h-dvh max-h-[880px] overflow-hidden bg-primary-shadow @container',
         className
       )}
     >
