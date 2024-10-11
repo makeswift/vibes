@@ -1,32 +1,56 @@
-import { Cart, CartProduct } from '@/vibes/soul/components/cart'
+import { Cart, CartLineItem } from '@/vibes/soul/components/cart'
 
-export const products: CartProduct[] = [
+export const products: CartLineItem[] = [
   {
     id: '1',
-    name: 'Philodendron Imperial Red',
+    title: 'Philodendron Imperial Red',
     subtitle: 'Indoor Plant',
     price: '$46',
     image: {
       src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
       altText: 'Philodendron Imperial Red',
     },
-    href: '#',
+    // href: '#',
     quantity: 1,
   },
   {
     id: '2',
-    name: 'Caladium',
+    title: 'Caladium',
     subtitle: 'Indoor / Outdoor Plant',
     price: '$24',
     image: {
       src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
       altText: 'Caladium',
     },
-    href: '#',
+    // href: '#',
     quantity: 2,
   },
 ]
 
 export default function Preview() {
-  return <Cart products={products} />
+  return (
+    <Cart
+      title="Cart"
+      lineItems={products}
+      summary={{
+        title: 'Cart',
+        subtotal: '$116',
+        caption: 'Shipping & taxes calculated at checkout',
+        subtotalLabel: 'Subtotal',
+        shippingLabel: 'Shipping',
+        taxLabel: 'Tax',
+        grandTotalLabel: 'Total',
+        tax: '$11.60',
+        grandTotal: 127.6,
+      }}
+      emptyState={{
+        title: 'Your cart is empty',
+        subtitle: 'Add some products to get started.',
+        cta: {
+          label: 'Continue shopping',
+          href: '#',
+        },
+      }}
+    />
+  )
 }

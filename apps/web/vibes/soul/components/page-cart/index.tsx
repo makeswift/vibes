@@ -1,5 +1,5 @@
 import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
-import { Cart, CartProduct } from '@/vibes/soul/components/cart'
+import { Cart, CartLineItem } from '@/vibes/soul/components/cart'
 import { Footer, Section } from '@/vibes/soul/components/footer'
 import {
   Amex,
@@ -14,6 +14,8 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/
 import { Header, Links } from '@/vibes/soul/components/header'
 import { Subscribe } from '@/vibes/soul/components/subscribe'
 
+import { removeLineItemAction } from './actions'
+
 interface Image {
   src: string
   altText: string
@@ -21,7 +23,7 @@ interface Image {
 interface CartPageProps {
   headerLinks: Links[]
   logo: string | Image
-  products: CartProduct[]
+  products: CartLineItem[]
   footerLinks: Section[]
   copyright: string
 }
@@ -85,7 +87,32 @@ export const CartPage = function CartPage({
         activeLocale="EN"
       />
 
-      <Cart products={products} />
+      <Cart
+        title="Cart"
+        lineItems={products}
+        summary={{
+          title: 'Cart',
+          subtotal: '$116',
+          caption: 'Shipping & taxes calculated at checkout',
+          subtotalLabel: 'Subtotal',
+          shippingLabel: 'Shipping',
+          taxLabel: 'Tax',
+          grandTotalLabel: 'Total',
+          tax: '$11.60',
+          grandTotal: 127.6,
+        }}
+        emptyState={{
+          title: 'Your cart is empty',
+          subtitle: 'Add some products to get started.',
+          cta: {
+            label: 'Continue shopping',
+            href: '#',
+          },
+        }}
+        removeLineItemAction={removeLineItemAction}
+        // updateLineItemQuantityAction={updateLineItemQuantityAction}
+        // redirectToCheckoutAction={}
+      />
 
       <Subscribe
         title="Sign up for our newsletter"

@@ -1,9 +1,12 @@
 import { CartPage } from '@/vibes/soul/components/page-cart'
-import { products } from '@/vibes/soul/examples/cart-electric'
+import { getProducts } from '@/vibes/soul/components/page-cart/products'
 import { copyright, footerLinks } from '@/vibes/soul/examples/footer-electric'
 import { headerLinks } from '@/vibes/soul/examples/header-electric'
 
-export default function Preview() {
+// eslint-disable-next-line @typescript-eslint/require-await
+export default async function Preview() {
+  const products = await getProducts()
+
   return (
     <CartPage
       headerLinks={headerLinks}
