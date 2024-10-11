@@ -37,8 +37,9 @@ export const InlineEmailForm = function InlineEmailForm() {
           // formAction={formAction}
           type="submit"
           className="group absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-foreground text-background ring-foreground transition-transform focus:outline-none focus:ring-[1px]"
+          aria-label="Submit"
         >
-          <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
+          <ArrowRight strokeWidth={1.5} size={20} />
         </button>
       </div>
     </form>
