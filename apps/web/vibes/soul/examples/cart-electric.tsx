@@ -1,33 +1,15 @@
-import { Cart, CartLineItem } from '@/vibes/soul/components/cart'
+import { Cart } from '@/vibes/soul/components/cart'
+import {
+  removeLineItemAction,
+  updateLineItemQuantityAction,
+} from '@/vibes/soul/components/page-cart/actions-electric'
+import { getProducts } from '@/vibes/soul/components/page-cart/products-electric'
 
-export const products: CartLineItem[] = [
-  {
-    id: '1',
-    title: 'Philodendron Imperial Red',
-    subtitle: 'Indoor Plant',
-    price: '$46',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
-      altText: 'Philodendron Imperial Red',
-    },
-    // href: '#',
-    quantity: 1,
-  },
-  {
-    id: '2',
-    title: 'Caladium',
-    subtitle: 'Indoor / Outdoor Plant',
-    price: '$24',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
-      altText: 'Caladium',
-    },
-    // href: '#',
-    quantity: 2,
-  },
-]
+export default async function Preview() {
+  const products = await getProducts()
 
-export default function Preview() {
+  console.log('products electric', products)
+
   return (
     <Cart
       title="Cart"
@@ -42,10 +24,7 @@ export default function Preview() {
         tax: '$11.60',
         grandTotalLabel: 'Total',
         grandTotal: '$127.60',
-        cta: {
-          label: 'Checkout',
-          href: '#',
-        },
+        ctaLabel: 'Checkout',
       }}
       emptyState={{
         title: 'Your cart is empty',
@@ -55,6 +34,9 @@ export default function Preview() {
           href: '#',
         },
       }}
+      removeLineItemAction={removeLineItemAction}
+      updateLineItemQuantityAction={updateLineItemQuantityAction}
+      // redirectToCheckoutAction={}
     />
   )
 }

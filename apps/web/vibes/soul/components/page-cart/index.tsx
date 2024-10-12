@@ -12,10 +12,6 @@ import {
 } from '@/vibes/soul/components/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
 import { Header, Links } from '@/vibes/soul/components/header'
-import {
-  removeLineItemAction,
-  updateLineItemQuantityAction,
-} from '@/vibes/soul/components/page-cart/actions'
 import { Subscribe } from '@/vibes/soul/components/subscribe'
 
 interface Image {
@@ -26,6 +22,9 @@ interface CartPageProps {
   headerLinks: Links[]
   logo: string | Image
   products: CartLineItem[]
+  removeLineItemAction(id: string): Promise<void> //formData.get('id')
+  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
+  // redirectToCheckoutAction(): Promise<void>
   footerLinks: Section[]
   copyright: string
 }
@@ -70,6 +69,9 @@ export const CartPage = function CartPage({
   headerLinks,
   logo,
   products,
+  removeLineItemAction,
+  updateLineItemQuantityAction,
+  // redirectToCheckoutAction,
   footerLinks,
   copyright,
 }: CartPageProps) {
@@ -102,10 +104,7 @@ export const CartPage = function CartPage({
           grandTotalLabel: 'Total',
           tax: '$11.60',
           grandTotal: '$127.60',
-          cta: {
-            label: 'Checkout',
-            href: '#',
-          },
+          ctaLabel: 'Checkout',
         }}
         emptyState={{
           title: 'Your cart is empty',

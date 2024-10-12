@@ -2,8 +2,10 @@
 
 import { revalidateTag } from 'next/cache'
 
-// import { FormStatus } from 'react'
-import { removeProduct, updateProductQuantity } from './products'
+import {
+  removeProduct,
+  updateProductQuantity,
+} from '@/vibes/soul/components/page-cart/products-electric'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function removeLineItemAction(id: string): Promise<void> {

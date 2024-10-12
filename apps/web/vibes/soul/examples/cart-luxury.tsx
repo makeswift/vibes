@@ -1,33 +1,15 @@
-import { Cart, CartLineItem } from '@/vibes/soul/components/cart'
+import { Cart } from '@/vibes/soul/components/cart'
+import {
+  removeLineItemAction,
+  updateLineItemQuantityAction,
+} from '@/vibes/soul/components/page-cart/actions-luxury'
+import { getProducts } from '@/vibes/soul/components/page-cart/products-luxury'
 
-export const products: CartLineItem[] = [
-  {
-    id: '1',
-    title: 'DARYA LUG SOLE FISHERMAN',
-    subtitle: 'Cuoro Embossed Snake',
-    price: '$40',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/18bzcr01WWx',
-      altText: 'DARYA LUG SOLE FISHERMAN',
-    },
-    // href: '#',
-    quantity: 1,
-  },
-  {
-    id: '2',
-    title: 'ROMA ROUND TOE BALLET FLAT',
-    subtitle: 'Rust Closed Woven Calf',
-    price: '$42',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz',
-      altText: 'ROMA ROUND TOE BALLET FLAT',
-    },
-    // href: '#',
-    quantity: 2,
-  },
-]
+export default async function Preview() {
+  const products = await getProducts()
 
-export default function Preview() {
+  console.log('products luxury', products)
+
   return (
     <Cart
       title="Cart"
@@ -42,10 +24,7 @@ export default function Preview() {
         tax: '$11.60',
         grandTotalLabel: 'Total',
         grandTotal: '$127.60',
-        cta: {
-          label: 'Checkout',
-          href: '#',
-        },
+        ctaLabel: 'Checkout',
       }}
       emptyState={{
         title: 'Your cart is empty',
@@ -55,6 +34,9 @@ export default function Preview() {
           href: '#',
         },
       }}
+      removeLineItemAction={removeLineItemAction}
+      updateLineItemQuantityAction={updateLineItemQuantityAction}
+      // redirectToCheckoutAction={}
     />
   )
 }

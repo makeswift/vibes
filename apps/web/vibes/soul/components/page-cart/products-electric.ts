@@ -2,7 +2,7 @@ import { unstable_cache } from 'next/cache'
 
 import { CartLineItem } from '@/vibes/soul/components/cart'
 
-let products: CartLineItem[] = [
+let productsElectric: CartLineItem[] = [
   {
     id: '1',
     title: 'Philodendron Imperial Red',
@@ -12,7 +12,6 @@ let products: CartLineItem[] = [
       src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
       altText: 'Philodendron Imperial Red',
     },
-    // href: '#',
     quantity: 1,
   },
   {
@@ -24,20 +23,19 @@ let products: CartLineItem[] = [
       src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
       altText: 'Caladium',
     },
-    // href: '#',
     quantity: 2,
   },
 ]
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export const getProducts = unstable_cache(async () => products, ['products'])
+export const getProducts = unstable_cache(async () => productsElectric, ['products-electric'])
 
 export function removeProduct(id: string) {
-  products = products.filter(product => product.id !== id)
+  productsElectric = productsElectric.filter(product => product.id !== id)
 }
 
 export function updateProductQuantity(id: string, quantity: number) {
-  const productToUpdate = products.find(product => product.id === id)
+  const productToUpdate = productsElectric.find(product => product.id === id)
   if (productToUpdate) {
     productToUpdate.quantity = quantity
   }

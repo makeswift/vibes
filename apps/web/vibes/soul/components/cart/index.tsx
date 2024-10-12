@@ -7,7 +7,6 @@ import { clsx } from 'clsx'
 import { Button } from '@/vibes/soul/components/button'
 import { DeleteLineItemButton } from '@/vibes/soul/components/cart/delete-line-item-button'
 import { Counter } from '@/vibes/soul/components/counter'
-import { updateLineItemQuantityAction } from '@/vibes/soul/components/page-cart/actions'
 
 interface Image {
   altText: string
@@ -33,14 +32,10 @@ interface CartSummary {
   tax: string | Promise<string>
   grandTotalLabel?: string
   grandTotal: string | Promise<string>
-  // TODO: Looks like we also need Checkout CTA Props
-  cta: {
-    label?: string
-    href: string
-  }
+  // TODO: Looks like we also need Checkout CTA Label?
+  ctaLabel?: string
 }
 
-// TODO: use single line or icon (?)
 // Counter receive name prop & type submit
 // TODO: Counter as input and Counter as submit buttons
 // How to test loading state?
@@ -61,7 +56,7 @@ interface CartProps {
   emptyState: CartEmptyState
   removeLineItemAction(id: string): Promise<void> //formData.get('id')
   updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
-  redirectToCheckoutAction(): Promise<void>
+  // redirectToCheckoutAction(): Promise<void>
 }
 
 export const Cart = function Cart({
@@ -88,7 +83,15 @@ export const Cart = function Cart({
   )
 }
 
-async function CartUI({ title, lineItems, emptyState, removeLineItemAction, summary }: CartProps) {
+async function CartUI({
+  title,
+  lineItems,
+  summary,
+  emptyState,
+  removeLineItemAction,
+  updateLineItemQuantityAction,
+  // redirectToCheckoutAction,
+}: CartProps) {
   const resolvedLineItems = await Promise.resolve(lineItems)
 
   const calculateCartQuantity = (items: CartLineItem[]) => {
@@ -191,9 +194,8 @@ async function CartUI({ title, lineItems, emptyState, removeLineItemAction, summ
                   </tr>
                 </tfoot> */}
             </table>
-            <Button className="mt-10 w-full" asChild>
-              <Link href={summary.cta.href}>{summary.cta.label ?? 'Checkout'}</Link>
-            </Button>
+            <Button className="mt-10 w-full">{summary.ctaLabel ?? 'Checkout'}</Button>
+            {/* TODO: Is this supposed to be a form submission as well? with the redirectToCheckoutAction prop passed? */}
           </div>
         )}
       </div>
