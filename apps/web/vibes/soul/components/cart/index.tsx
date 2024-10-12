@@ -32,13 +32,9 @@ interface CartSummary {
   tax: string | Promise<string>
   grandTotalLabel?: string
   grandTotal: string | Promise<string>
-  // TODO: Looks like we also need Checkout CTA Label?
+  // TODO: summary.ctaLabel is in the Linear doc... Looks like we also need Checkout CTA Label so I added it here
   ctaLabel?: string
 }
-
-// Counter receive name prop & type submit
-// TODO: Counter as input and Counter as submit buttons
-// How to test loading state?
 
 interface CartEmptyState {
   title: string
@@ -184,7 +180,7 @@ async function CartUI({
                   <td className="py-4 text-right">TBD</td>
                 </tr>
               </tbody>
-              {/* TODO: when shipping and tax are TBD, it doesn’t make sense to display Grand Total here... Commenting out for now */}
+              {/* TODO: when shipping and tax are TBD, it doesn’t make sense to display Grand Total here... Commenting out for now. Should I remove it? In that case should we remove the summary.grandTotalLabel & summary.grandTotal prop defs? */}
               {/* <tfoot>
                   <tr className="text-xl">
                     <th scope="row" className="text-left">
