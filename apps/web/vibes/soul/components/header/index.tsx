@@ -20,7 +20,7 @@ import { ProductCard } from '@/vibes/soul/components/product-card'
 
 interface Image {
   src?: string
-  altText: string
+  alt: string
 }
 
 export interface Links {
@@ -212,13 +212,7 @@ export const Header = forwardRef(function Header(
             className="relative mx-auto my-2 flex h-10 w-full max-w-56 items-center justify-center rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
           >
             {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
-              <Image
-                src={logo.src}
-                fill
-                sizes="400px"
-                alt={logo.altText}
-                className="object-contain"
-              />
+              <Image src={logo.src} fill sizes="400px" alt={logo.alt} className="object-contain" />
             ) : (
               typeof logo === 'string' && (
                 <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">

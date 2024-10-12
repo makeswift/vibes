@@ -5,7 +5,7 @@ export const heroSlides = [
     title: 'Give',
     image: {
       src: 'https://rstr.in/monogram/vibes/fzVuE9iZ4mI',
-      altText: 'alt',
+      alt: 'alt',
     },
     // cta: {
     //   href: '#',
@@ -16,7 +16,7 @@ export const heroSlides = [
     title: 'Grow',
     image: {
       src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk',
-      altText: 'alt',
+      alt: 'alt',
     },
     // cta: {
     //   href: '#',
@@ -27,7 +27,7 @@ export const heroSlides = [
     title: 'Thrive',
     image: {
       src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C',
-      altText: 'alt',
+      alt: 'alt',
     },
     // cta: {
     //   href: '#',

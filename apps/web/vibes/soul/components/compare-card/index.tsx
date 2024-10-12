@@ -11,7 +11,7 @@ import { Price, ProductPrice } from '@/vibes/soul/components/product-card/price'
 import { Rating } from '@/vibes/soul/components/rating'
 
 interface Image {
-  altText: string
+  alt: string
   src: string
 }
 
@@ -60,7 +60,7 @@ export const CompareCard = function CompareCard({
             src={image.src}
             fill
             sizes="(max-width: 768px) 90vw, 512vw"
-            alt={image.altText}
+            alt={image.alt}
             className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out"
           />
         )}

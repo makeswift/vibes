@@ -14,7 +14,7 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
@@ -30,7 +30,7 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
@@ -42,7 +42,7 @@ export const products: Product[] = [
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
@@ -58,7 +58,7 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
@@ -74,7 +74,7 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/hqoDeY3IeBO',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
@@ -86,7 +86,7 @@ export const products: Product[] = [
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/Yr-VreskA68',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },

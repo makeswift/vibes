@@ -6,60 +6,60 @@ export const product = {
   price: '$60',
   image: {
     src: 'https://rstr.in/monogram/vibes/5IdIE27Cj9r',
-    altText: 'A close-up of a bicycle handlebar with a brown handlebar bag.',
+    alt: 'A close-up of a bicycle handlebar with a brown handlebar bag.',
   },
   images: [
     {
       src: 'https://rstr.in/monogram/vibes/5IdIE27Cj9r',
-      altText: 'A close-up of a bicycle handlebar with a brown handlebar bag.',
+      alt: 'A close-up of a bicycle handlebar with a brown handlebar bag.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/3dmqcoTLHrK',
-      altText: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
+      alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/D9gxhIajApp',
-      altText: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
+      alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/T9YaFuqsEWp',
-      altText: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
+      alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/Nsj4qcMks2D',
-      altText: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
+      alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/uuhJbt607Ve',
-      altText: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
+      alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/MIh7shsUtXg',
-      altText: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
+      alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/44Z0ObxFdrL',
-      altText: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
+      alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/yl3MSuQta1C',
-      altText: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
+      alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/RJr9FNVonZG',
-      altText: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
+      alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/EVfQoHIUYf2',
-      altText: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
+      alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/h1YtCgM_Jqx',
-      altText: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
+      alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
     {
       src: 'https://rstr.in/monogram/vibes/INqNEFs7p_o',
-      altText: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
+      alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
   ],
   href: '#',

@@ -7,7 +7,7 @@ import { clsx } from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
 
 interface Image {
-  altText: string
+  alt: string
   src: string
 }
 
@@ -47,7 +47,7 @@ export const ProductGallery = ({ images }: ProductGalleryProps) => {
             >
               <Image
                 src={image.src}
-                alt={image.altText}
+                alt={image.alt}
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -71,7 +71,7 @@ export const ProductGallery = ({ images }: ProductGalleryProps) => {
           >
             <Image
               src={image.src}
-              alt={image.altText}
+              alt={image.alt}
               height={256}
               width={256}
               className="h-full w-full bg-contrast-100 object-cover"

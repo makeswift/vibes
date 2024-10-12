@@ -19,7 +19,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/zyFDaG5bRQE',
-      altText: 'Heart to Heart',
+      alt: 'Heart to Heart',
     },
     href: '#',
   },
@@ -31,7 +31,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/AxXaqTzRozM',
-      altText: 'Caladium Pink',
+      alt: 'Caladium Pink',
     },
     href: '#',
   },
@@ -43,7 +43,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/vznZvupsj2y',
-      altText: 'Caladium Angel Wing',
+      alt: 'Caladium Angel Wing',
     },
     href: '#',
   },
@@ -55,7 +55,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt',
-      altText: 'Philodendron Brandtianum',
+      alt: 'Philodendron Brandtianum',
     },
     href: '#',
   },
@@ -67,7 +67,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/UQMA3XLfWvF',
-      altText: 'Silver Leaf Philodendron',
+      alt: 'Silver Leaf Philodendron',
     },
     href: '#',
   },
@@ -79,7 +79,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/cMF-gCyIas9',
-      altText: 'Pink Beauty Caladium',
+      alt: 'Pink Beauty Caladium',
     },
     href: '#',
   },
@@ -91,7 +91,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/W_zhzrsEqp7',
-      altText: 'Caladium Angel Wing',
+      alt: 'Caladium Angel Wing',
     },
     href: '#',
   },
@@ -103,7 +103,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/HL613sp6BIP',
-      altText: 'Caladium Watermelon',
+      alt: 'Caladium Watermelon',
     },
     href: '#',
   },
@@ -115,7 +115,7 @@ export const newArrivals: Product[] = [
     price: '$24.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/afA-7qP8zih',
-      altText: 'Speckled Heart Caladium',
+      alt: 'Speckled Heart Caladium',
     },
     href: '#',
   },
@@ -130,7 +130,7 @@ export const featuredImageII: FeaturedImageProps = {
     'Our team of plant experts inspects every leaf, stem, and root to guarantee quality, resilience, and beauty. We prioritize plants from sustainable growers who share our passion for eco-friendly practices, ensuring that every green addition to your home has been responsibly sourced and lovingly nurtured from the start.',
   image: {
     src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
-    altText: 'Close up of a plant',
+    alt: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },
 }

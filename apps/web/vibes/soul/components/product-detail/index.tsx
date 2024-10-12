@@ -15,7 +15,7 @@ import { ProductGallery } from '@/vibes/soul/components/product-detail/product-g
 import { Rating } from '@/vibes/soul/components/rating'
 
 interface Image {
-  altText: string
+  alt: string
   src: string
 }
 
@@ -101,7 +101,7 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
                       {swatch.image?.src != null && swatch.image.src !== '' ? (
                         <Image
                           src={swatch.image.src}
-                          alt={swatch.image.altText}
+                          alt={swatch.image.alt}
                           height={48}
                           width={48}
                           className="h-full object-cover"

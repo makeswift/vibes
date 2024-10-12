@@ -4,7 +4,7 @@ export const cards = [
   {
     id: '1',
     title: 'Small Plants',
-    image: { src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk', altText: 'Small Plants' },
+    image: { src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk', alt: 'Small Plants' },
     href: '#',
   },
   {
@@ -12,20 +12,20 @@ export const cards = [
     title: 'Low Maintenance',
     image: {
       src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/LiQxF_6c-Sk',
-      altText: 'Low Maintenance',
+      alt: 'Low Maintenance',
     },
     href: '#',
   },
   {
     id: '3',
     title: 'Indestructible',
-    image: { src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p', altText: 'Indestructible' },
+    image: { src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p', alt: 'Indestructible' },
     href: '#',
   },
   {
     id: '4',
     title: 'Succulent',
-    image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', altText: 'Succulent' },
+    image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', alt: 'Succulent' },
     href: '#',
   },
 ]

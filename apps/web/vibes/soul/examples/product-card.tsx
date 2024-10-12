@@ -9,7 +9,7 @@ export default function Preview() {
         name="Product Name"
         image={{
           src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
-          altText: 'Product Name',
+          alt: 'Product Name',
         }}
         subtitle="Blue/Black/Green"
         price="123.99"

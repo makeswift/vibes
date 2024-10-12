@@ -16,7 +16,7 @@ export const featuredProducts = {
       price: '$44.95',
       image: {
         src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
-        altText: 'Philodendron Imperial Red',
+        alt: 'Philodendron Imperial Red',
       },
       href: '#',
     },
@@ -28,7 +28,7 @@ export const featuredProducts = {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
-        altText: 'Monstera',
+        alt: 'Monstera',
       },
       href: '#',
     },
@@ -40,7 +40,7 @@ export const featuredProducts = {
       price: '$19.95',
       image: {
         src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
-        altText: 'Pink Caladium',
+        alt: 'Pink Caladium',
       },
       href: '#',
     },
@@ -52,7 +52,7 @@ export const featuredProducts = {
       price: '$16.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
-        altText: 'Hoya Kerrii',
+        alt: 'Hoya Kerrii',
       },
       href: '#',
     },
@@ -64,7 +64,7 @@ export const featuredProducts = {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
-        altText: 'Bird Nest Fern',
+        alt: 'Bird Nest Fern',
       },
       href: '#',
     },
@@ -76,7 +76,7 @@ export const featuredProducts = {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
-        altText: 'Jade Plant',
+        alt: 'Jade Plant',
       },
       href: '#',
     },

@@ -23,7 +23,7 @@ export const featuredProducts: {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
-        altText: 'Product Name',
+        alt: 'Product Name',
       },
       href: '#',
     },
@@ -35,7 +35,7 @@ export const featuredProducts: {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
-        altText: 'Product Name',
+        alt: 'Product Name',
       },
       href: '#',
     },
@@ -47,7 +47,7 @@ export const featuredProducts: {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
-        altText: 'Product Name',
+        alt: 'Product Name',
       },
       href: '#',
     },
@@ -59,7 +59,7 @@ export const featuredProducts: {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
-        altText: 'Product Name',
+        alt: 'Product Name',
       },
       href: '#',
     },
@@ -71,7 +71,7 @@ export const featuredProducts: {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
-        altText: 'Product Name',
+        alt: 'Product Name',
       },
       href: '#',
     },
@@ -83,7 +83,7 @@ export const featuredProducts: {
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
-        altText: 'Product Name',
+        alt: 'Product Name',
       },
       href: '#',
     },

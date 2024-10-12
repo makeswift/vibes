@@ -6,21 +6,21 @@ export const product = {
   price: '$19.95',
   image: {
     src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt',
-    altText: 'Caladium Rosebud',
+    alt: 'Caladium Rosebud',
   },
   images: [
-    { src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt', altText: 'Caladium Rosebud' },
+    { src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt', alt: 'Caladium Rosebud' },
     {
       src: 'https://rstr.in/monogram/vibes/FDRjvGlh8JT',
-      altText: 'Caladium Rosebud Detail',
+      alt: 'Caladium Rosebud Detail',
     },
     {
       src: 'https://rstr.in/monogram/vibes/D1uDyHea7f0',
-      altText: 'Caladium Rosebud Detail',
+      alt: 'Caladium Rosebud Detail',
     },
     {
       src: 'https://rstr.in/monogram/vibes/4xDOP4qM9cC',
-      altText: 'Caladium Rosebud Detail',
+      alt: 'Caladium Rosebud Detail',
     },
   ],
   href: '#',

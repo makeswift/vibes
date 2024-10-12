@@ -39,7 +39,7 @@ export const ProductChip = function ProductChip({ product, setCompareProducts }:
         {product.image?.src != null ? (
           <Image
             src={product.image.src}
-            alt={product.image.altText}
+            alt={product.image.alt}
             width={50}
             height={50}
             className="object-cover"

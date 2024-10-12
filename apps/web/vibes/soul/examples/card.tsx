@@ -5,7 +5,7 @@ export default function Preview() {
     <div className="flex min-h-48 items-center justify-center p-5 @container">
       <Card
         title="Low Maintenance"
-        image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', altText: 'Low Maintenance' }}
+        image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
         href="#"
       />
     </div>

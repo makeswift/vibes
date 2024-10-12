@@ -6,7 +6,7 @@ const content = [
   {
     image: {
       src: 'https://rstr.in/monogram/vibes/NJjKwTB8biw',
-      altText: '',
+      alt: '',
     },
     label: (
       <span className="flex gap-2 text-foreground">
@@ -17,25 +17,25 @@ const content = [
   {
     image: {
       src: 'https://rstr.in/monogram/vibes/wbKMgb4hc5x',
-      altText: '',
+      alt: '',
     },
   },
   {
     image: {
       src: 'https://rstr.in/monogram/vibes/6inssBpCQru',
-      altText: '',
+      alt: '',
     },
   },
   {
     image: {
       src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-      altText: '',
+      alt: '',
     },
   },
   {
     image: {
       src: 'https://rstr.in/monogram/vibes/t-qGwa7OGM2',
-      altText: '',
+      alt: '',
     },
   },
 ]
