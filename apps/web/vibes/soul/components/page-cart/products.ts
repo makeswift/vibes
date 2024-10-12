@@ -1,6 +1,6 @@
 import { unstable_cache } from 'next/cache'
 
-import { CartLineItem } from '../cart'
+import { CartLineItem } from '@/vibes/soul/components/cart'
 
 let products: CartLineItem[] = [
   {
@@ -34,4 +34,11 @@ export const getProducts = unstable_cache(async () => products, ['products'])
 
 export function removeProduct(id: string) {
   products = products.filter(product => product.id !== id)
+}
+
+export function updateProductQuantity(id: string, quantity: number) {
+  const productToUpdate = products.find(product => product.id === id)
+  if (productToUpdate) {
+    productToUpdate.quantity = quantity
+  }
 }

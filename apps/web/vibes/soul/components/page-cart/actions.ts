@@ -2,7 +2,8 @@
 
 import { revalidateTag } from 'next/cache'
 
-import { removeProduct } from './products'
+// import { FormStatus } from 'react'
+import { removeProduct, updateProductQuantity } from './products'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function removeLineItemAction(id: string): Promise<void> {
@@ -11,4 +12,13 @@ export async function removeLineItemAction(id: string): Promise<void> {
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
-// export async function updateLineItemQuantityAction() {}
+export async function updateLineItemQuantityAction({
+  id,
+  quantity,
+}: {
+  id: string
+  quantity: number
+}): Promise<void> {
+  updateProductQuantity(id, quantity)
+  revalidateTag('products')
+}

@@ -12,9 +12,11 @@ import {
 } from '@/vibes/soul/components/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
 import { Header, Links } from '@/vibes/soul/components/header'
+import {
+  removeLineItemAction,
+  updateLineItemQuantityAction,
+} from '@/vibes/soul/components/page-cart/actions'
 import { Subscribe } from '@/vibes/soul/components/subscribe'
-
-import { removeLineItemAction } from './actions'
 
 interface Image {
   src: string
@@ -91,7 +93,7 @@ export const CartPage = function CartPage({
         title="Cart"
         lineItems={products}
         summary={{
-          title: 'Cart',
+          title: 'Summary',
           subtotal: '$116',
           caption: 'Shipping & taxes calculated at checkout',
           subtotalLabel: 'Subtotal',
@@ -114,7 +116,7 @@ export const CartPage = function CartPage({
           },
         }}
         removeLineItemAction={removeLineItemAction}
-        // updateLineItemQuantityAction={updateLineItemQuantityAction}
+        updateLineItemQuantityAction={updateLineItemQuantityAction}
         // redirectToCheckoutAction={}
       />
 

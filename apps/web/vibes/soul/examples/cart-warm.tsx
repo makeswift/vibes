@@ -33,7 +33,7 @@ export default function Preview() {
       title="Cart"
       lineItems={products}
       summary={{
-        title: 'Cart',
+        title: 'Summary',
         subtotal: '$116',
         caption: 'Shipping & taxes calculated at checkout',
         subtotalLabel: 'Subtotal',
