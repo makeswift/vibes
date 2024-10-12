@@ -502,6 +502,13 @@ export const examples = [
     component: lazy(() => import('./examples/products-list-luxury')),
   },
   {
+    name: 'products-list-section-electric-example',
+    dependencies: [],
+    registryDependencies: ['products-list-section'],
+    files: ['examples/products-list-section-electric.tsx'],
+    component: lazy(() => import('./examples/products-list-section-electric')),
+  },
+  {
     name: 'product-description-electric-example',
     dependencies: [],
     registryDependencies: ['product-description-electric'],
