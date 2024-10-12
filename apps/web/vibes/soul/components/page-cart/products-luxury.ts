@@ -30,6 +30,12 @@ export let productsLuxury: CartLineItem[] = [
 // eslint-disable-next-line @typescript-eslint/require-await
 export const getProducts = unstable_cache(async () => productsLuxury, ['products-luxury'])
 
+export const getSubtotal = () => {
+  return `$${productsLuxury.reduce((acc, product) => {
+    return acc + Number(product.price.replace('$', '')) * product.quantity
+  }, 0)}`
+}
+
 export function removeProduct(id: string) {
   productsLuxury = productsLuxury.filter(product => product.id !== id)
 }

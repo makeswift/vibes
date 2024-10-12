@@ -22,6 +22,7 @@ interface CartPageProps {
   headerLinks: Links[]
   logo: string | Image
   products: CartLineItem[]
+  subtotal: string
   removeLineItemAction(id: string): Promise<void> //formData.get('id')
   updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
   // redirectToCheckoutAction(): Promise<void>
@@ -69,6 +70,7 @@ export const CartPage = function CartPage({
   headerLinks,
   logo,
   products,
+  subtotal,
   removeLineItemAction,
   updateLineItemQuantityAction,
   // redirectToCheckoutAction,
@@ -96,7 +98,7 @@ export const CartPage = function CartPage({
         lineItems={products}
         summary={{
           title: 'Summary',
-          subtotal: '$116',
+          subtotal: subtotal,
           caption: 'Shipping & taxes calculated at checkout',
           subtotalLabel: 'Subtotal',
           shippingLabel: 'Shipping',

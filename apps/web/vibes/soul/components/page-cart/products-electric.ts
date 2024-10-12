@@ -30,6 +30,12 @@ let productsElectric: CartLineItem[] = [
 // eslint-disable-next-line @typescript-eslint/require-await
 export const getProducts = unstable_cache(async () => productsElectric, ['products-electric'])
 
+export const getSubtotal = () => {
+  return `$${productsElectric.reduce((acc, product) => {
+    return acc + Number(product.price.replace('$', '')) * product.quantity
+  }, 0)}`
+}
+
 export function removeProduct(id: string) {
   productsElectric = productsElectric.filter(product => product.id !== id)
 }
