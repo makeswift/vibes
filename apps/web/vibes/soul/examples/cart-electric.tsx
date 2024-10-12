@@ -39,9 +39,13 @@ export default function Preview() {
         subtotalLabel: 'Subtotal',
         shippingLabel: 'Shipping',
         taxLabel: 'Tax',
-        grandTotalLabel: 'Total',
         tax: '$11.60',
-        grandTotal: 127.6,
+        grandTotalLabel: 'Total',
+        grandTotal: '$127.60',
+        cta: {
+          label: 'Checkout',
+          href: '#',
+        },
       }}
       emptyState={{
         title: 'Your cart is empty',

@@ -24,18 +24,21 @@ export interface CartLineItem {
 
 interface CartSummary {
   title?: string
-  subtotal: string | Promise<string>
   caption?: string
   subtotalLabel?: string
+  subtotal: string | Promise<string>
   shippingLabel?: string
   taxLabel?: string
   tax: string | Promise<string>
   grandTotalLabel?: string
-  grandTotal: number | Promise<string>
+  grandTotal: string | Promise<string>
+  // TODO: Do we also need Checkout CTA Props?
+  cta: {
+    label?: string
+    href: string
+  }
 }
 
-// TODO: Labels
-// TODO: Shipping & Tax TBD
 // TODO: use single line or icon (?)
 // Counter receive name prop & type submit
 // TODO: Counter as input and Counter as submit buttons
@@ -63,8 +66,11 @@ interface CartProps {
 export const Cart = async function Cart({
   title = 'Cart',
   lineItems,
+  summary,
   emptyState,
   removeLineItemAction,
+  // updateLineItemQuantityAction,
+  // redirectToCheckoutAction,
 }: CartProps) {
   // TODO: create a component to render in suspense and get resolved items in there
   const resolvedLineItems = await Promise.resolve(lineItems)
@@ -140,26 +146,37 @@ export const Cart = async function Cart({
           {resolvedLineItems.length > 0 && (
             <div className="@4xl:w-1/3">
               <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
-                Summary
+                {summary.title ?? 'Summary'}
               </h2>
               <table aria-label="Receipt Summary" className="w-full">
-                <caption className="sr-only">Receipt Summary</caption>
+                <caption className="sr-only">{summary.caption ?? 'Receipt Summary'}</caption>
                 <tbody>
                   <tr className="border-b border-contrast-100">
-                    <td>Subtotal</td>
-                    <td className="py-4 text-right">$50.00</td>
+                    <td>{summary.subtotalLabel ?? 'Subtotal'}</td>
+                    <td className="py-4 text-right">{summary.subtotal}</td>
+                  </tr>
+                  <tr className="border-b border-contrast-100">
+                    <td>{summary.shippingLabel ?? 'Shipping'}</td>
+                    <td className="py-4 text-right">TBD</td>
+                  </tr>
+                  <tr>
+                    <td>Tax</td>
+                    <td className="py-4 text-right">TBD</td>
                   </tr>
                 </tbody>
-                <tfoot>
+                {/* TODO: when shipping and tax are TBD, it doesn’t make sense to display Grand Total here. Commenting out for now */}
+                {/* <tfoot>
                   <tr className="text-xl">
                     <th scope="row" className="text-left">
-                      Grand Total
+                      {summary.grandTotalLabel ?? 'Grand Total'}
                     </th>
-                    <td className="py-10 text-right">$59.50</td>
+                    <td className="py-10 text-right">{summary.grandTotal}</td>
                   </tr>
-                </tfoot>
+                </tfoot> */}
               </table>
-              <Button className="w-full">Checkout</Button>
+              <Button className="mt-10 w-full" asChild>
+                <Link href={summary.cta.href}>{summary.cta.label ?? 'Checkout'}</Link>
+              </Button>
             </div>
           )}
         </div>

@@ -99,7 +99,11 @@ export const CartPage = function CartPage({
           taxLabel: 'Tax',
           grandTotalLabel: 'Total',
           tax: '$11.60',
-          grandTotal: 127.6,
+          grandTotal: '$127.60',
+          cta: {
+            label: 'Checkout',
+            href: '#',
+          },
         }}
         emptyState={{
           title: 'Your cart is empty',
