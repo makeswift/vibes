@@ -1,16 +1,13 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
 import { Product } from '@/vibes/soul/components/product-card'
-
-interface Props {
-  product: Product
-  setCompareProducts: React.Dispatch<React.SetStateAction<Product[]>>
-}
 
 function getInitials(name: string): string {
   return name
@@ -21,15 +18,35 @@ function getInitials(name: string): string {
     .slice(0, 2)
 }
 
-export const ProductChip = function ProductChip({ product, setCompareProducts }: Props) {
+const createUrl = (pathname: string, params: URLSearchParams) => {
+  const paramsString = params.toString()
+  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`
+
+  return `${pathname}${queryString}`
+}
+
+interface Props {
+  product: Product
+  label?: string
+  paramKey?: string
+}
+
+export const ProductChip = function ProductChip({
+  product,
+  paramKey = 'compare',
+  label = 'Remove product',
+}: Props) {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const currentParams = Array.from(searchParams.entries())
+  const newParams = currentParams.filter(([key, value]) => key !== paramKey || value !== product.id)
+  const href = createUrl(pathname, new URLSearchParams(newParams))
+
   return (
-    <button
-      aria-label="Remove product"
-      onClick={() =>
-        setCompareProducts((prevProducts: Product[]) => {
-          return prevProducts.filter(p => p.id !== product.id)
-        })
-      }
+    <Link
+      aria-label={label}
+      href={href}
+      scroll={false}
       className={clsx(
         'group relative flex items-center whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold transition-all duration-150 hover:bg-contrast-100',
         'ring-primary focus:outline-0 focus:ring-2'
@@ -46,15 +63,15 @@ export const ProductChip = function ProductChip({ product, setCompareProducts }:
           />
         ) : (
           <span className="max-w-full break-all p-1 text-xs text-primary-shadow opacity-20">
-            {getInitials(product.name)}
+            {getInitials(product.title)}
           </span>
         )}
       </div>
-      <span className="ml-3 hidden text-foreground @4xl:block">{product.name}</span>
+      <span className="ml-3 hidden text-foreground @4xl:block">{product.title}</span>
       <div className="absolute -right-1.5 -top-1.5 ml-1 flex h-5 w-5 items-center justify-center rounded-full border border-contrast-100 bg-background text-contrast-400 transition-[colors,transform] duration-150 group-hover:scale-110 group-hover:text-foreground @4xl:relative @4xl:right-auto @4xl:top-auto @4xl:mr-2.5 @4xl:border-none @4xl:bg-transparent">
         <X className="hidden @4xl:block" />
         <div className="h-px w-2.5 bg-foreground @4xl:hidden" />
       </div>
-    </button>
+    </Link>
   )
 }

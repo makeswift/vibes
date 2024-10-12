@@ -13,7 +13,7 @@ import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
 export const newArrivals: Product[] = [
   {
     id: '1',
-    name: 'Heart to Heart',
+    title: 'Heart to Heart',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
@@ -25,7 +25,7 @@ export const newArrivals: Product[] = [
   },
   {
     id: '2',
-    name: 'Caladium Pink',
+    title: 'Caladium Pink',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
@@ -37,7 +37,7 @@ export const newArrivals: Product[] = [
   },
   {
     id: '3',
-    name: 'Caladium Angel Wing',
+    title: 'Caladium Angel Wing',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
@@ -49,7 +49,7 @@ export const newArrivals: Product[] = [
   },
   {
     id: '4',
-    name: 'Philodendron Brandtianum',
+    title: 'Philodendron Brandtianum',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
@@ -61,7 +61,7 @@ export const newArrivals: Product[] = [
   },
   {
     id: '5',
-    name: 'Silver Leaf Philodendron',
+    title: 'Silver Leaf Philodendron',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
@@ -73,7 +73,7 @@ export const newArrivals: Product[] = [
   },
   {
     id: '6',
-    name: 'Pink Beauty Caladium',
+    title: 'Pink Beauty Caladium',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
@@ -85,7 +85,7 @@ export const newArrivals: Product[] = [
   },
   {
     id: '7',
-    name: 'Caladium Angel Wing',
+    title: 'Caladium Angel Wing',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
@@ -97,7 +97,7 @@ export const newArrivals: Product[] = [
   },
   {
     id: '8',
-    name: 'Caladium Watermelon',
+    title: 'Caladium Watermelon',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',
@@ -109,7 +109,7 @@ export const newArrivals: Product[] = [
   },
   {
     id: '9',
-    name: 'Speckled Heart Caladium',
+    title: 'Speckled Heart Caladium',
     subtitle: 'Sun or Shade',
     badge: 'New',
     price: '$24.99',

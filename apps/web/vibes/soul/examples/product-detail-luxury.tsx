@@ -2,7 +2,7 @@ import { ProductDetail } from '@/vibes/soul/components/product-detail'
 
 export const product = {
   id: '1',
-  name: 'ELBA PENNY LOAFER',
+  title: 'ELBA PENNY LOAFER',
   price: '$19.95',
   image: {
     src: 'https://rstr.in/monogram/vibes/JCwYbAk9Nhi',

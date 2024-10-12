@@ -1,53 +1,48 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 import { Checkbox } from '@/vibes/soul/components/checkbox'
-import { Product } from '@/vibes/soul/components/compare-card'
 
-interface Props {
-  product: Product
-  compareProducts: Product[]
-  setCompareProducts: React.Dispatch<React.SetStateAction<Product[]>>
+const createUrl = (pathname: string, params: URLSearchParams) => {
+  const paramsString = params.toString()
+  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`
+
+  return `${pathname}${queryString}`
 }
 
-export const Compare = function Compare({ product, compareProducts, setCompareProducts }: Props) {
-  const [isProductInArray, setIsProductInArray] = useState(false)
+interface Props {
+  productId: string
+  paramKey?: string
+  label?: string
+}
 
-  useEffect(() => {
-    setIsProductInArray(compareProducts.some(p => p.id === product.id))
-  }, [compareProducts, product])
+export const Compare = function Compare({
+  productId,
+  paramKey = 'compare',
+  label = 'Compare',
+}: Props) {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const activeOptions = searchParams.getAll(paramKey)
+  const active = activeOptions.includes(productId)
+  const currentParams = Array.from(searchParams.entries())
+  const newParams = active
+    ? currentParams.filter(([key, value]) => key !== paramKey || value !== productId)
+    : [...currentParams, [paramKey, productId]]
 
-  const handleCheck = () => {
-    setCompareProducts((prevProducts: Product[]) => {
-      if (isProductInArray) {
-        return prevProducts.filter(p => p.id !== product.id)
-      } else {
-        return [...prevProducts, product]
-      }
-    })
-  }
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault()
-      handleCheck()
-    }
-  }
+  const href = createUrl(pathname, new URLSearchParams(newParams))
 
   return (
-    <div
-      onClick={e => {
-        e.preventDefault()
-        handleCheck()
-      }}
-      onKeyDown={handleKeyDown}
-      role="button"
-      className="absolute right-1.5 top-1.5 z-10 flex cursor-pointer items-center gap-2 rounded-lg p-1 text-foreground transition-colors duration-300 hover:bg-background/80 @lg:bottom-4 @lg:right-4 @lg:top-auto"
+    <Link
+      href={href}
+      scroll={false}
+      className="absolute right-1.5 top-1.5 flex cursor-pointer items-center gap-2 rounded-lg p-1 text-foreground transition-colors duration-300 hover:bg-background/80 @lg:bottom-4 @lg:right-4 @lg:top-auto"
       tabIndex={0}
     >
-      <span className="hidden @lg:block">Compare</span>
-      <Checkbox checked={isProductInArray} />
-    </div>
+      <span className="hidden @lg:block">{label}</span>
+      <Checkbox checked={active} />
+    </Link>
   )
 }

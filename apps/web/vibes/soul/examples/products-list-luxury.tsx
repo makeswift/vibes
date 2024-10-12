@@ -4,7 +4,7 @@ import { ProductsList } from '@/vibes/soul/components/products-list'
 export const products: Product[] = [
   {
     id: '1',
-    name: 'DARYA LUG SOLE FISHERMAN',
+    title: 'DARYA LUG SOLE FISHERMAN',
     subtitle: 'Cuoro Embossed Snake',
     badge: '',
     price: '$325',
@@ -16,7 +16,7 @@ export const products: Product[] = [
   },
   {
     id: '2',
-    name: 'ROMA ROUND TOE BALLET FLAT',
+    title: 'ROMA ROUND TOE BALLET FLAT',
     subtitle: 'Rust Closed Woven Calf',
     badge: 'New',
     price: {
@@ -32,7 +32,7 @@ export const products: Product[] = [
   },
   {
     id: '3',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
@@ -44,7 +44,7 @@ export const products: Product[] = [
   },
   {
     id: '4',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -60,7 +60,7 @@ export const products: Product[] = [
   },
   {
     id: '5',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -76,7 +76,7 @@ export const products: Product[] = [
   },
   {
     id: '6',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',

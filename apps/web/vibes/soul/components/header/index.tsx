@@ -365,7 +365,7 @@ export const Header = forwardRef(function Header(
                   <ProductCard
                     key={`Product ${i + 1}`}
                     id="productName"
-                    name="Product Name"
+                    title="Product Name"
                     href="#"
                     price="$123.99"
                   />

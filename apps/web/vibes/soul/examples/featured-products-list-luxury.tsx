@@ -17,7 +17,7 @@ export const featuredProducts: {
   products: [
     {
       id: '1',
-      name: 'Product Name',
+      title: 'Product Name',
       subtitle: 'Blue/Black/Green',
       badge: 'New',
       price: '$24.99',
@@ -29,7 +29,7 @@ export const featuredProducts: {
     },
     {
       id: '2',
-      name: 'Product Name',
+      title: 'Product Name',
       subtitle: 'Blue/Black/Green',
       badge: 'New',
       price: '$24.99',
@@ -41,7 +41,7 @@ export const featuredProducts: {
     },
     {
       id: '3',
-      name: 'Product Name',
+      title: 'Product Name',
       subtitle: 'Blue/Black/Green',
       badge: 'New',
       price: '$24.99',
@@ -53,7 +53,7 @@ export const featuredProducts: {
     },
     {
       id: '4',
-      name: 'Product Name',
+      title: 'Product Name',
       subtitle: 'Blue/Black/Green',
       badge: 'New',
       price: '$24.99',
@@ -65,7 +65,7 @@ export const featuredProducts: {
     },
     {
       id: '6',
-      name: 'Product Name',
+      title: 'Product Name',
       subtitle: 'Blue/Black/Green',
       badge: 'New',
       price: '$24.99',
@@ -77,7 +77,7 @@ export const featuredProducts: {
     },
     {
       id: '5',
-      name: 'Product Name',
+      title: 'Product Name',
       subtitle: 'Blue/Black/Green',
       badge: 'New',
       price: '$24.99',

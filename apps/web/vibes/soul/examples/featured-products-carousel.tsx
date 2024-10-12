@@ -4,7 +4,7 @@ import { Product } from '@/vibes/soul/components/product-card'
 export const featuredProducts: Product[] = [
   {
     id: '1',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
@@ -16,7 +16,7 @@ export const featuredProducts: Product[] = [
   },
   {
     id: '2',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
@@ -28,7 +28,7 @@ export const featuredProducts: Product[] = [
   },
   {
     id: '3',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
@@ -40,7 +40,7 @@ export const featuredProducts: Product[] = [
   },
   {
     id: '4',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',

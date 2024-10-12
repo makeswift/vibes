@@ -4,7 +4,7 @@ import { ProductsCarousel } from '@/vibes/soul/components/products-carousel'
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -20,7 +20,7 @@ export const products: Product[] = [
   },
   {
     id: '2',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -36,7 +36,7 @@ export const products: Product[] = [
   },
   {
     id: '3',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
@@ -48,7 +48,7 @@ export const products: Product[] = [
   },
   {
     id: '4',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -64,7 +64,7 @@ export const products: Product[] = [
   },
   {
     id: '5',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -80,7 +80,7 @@ export const products: Product[] = [
   },
   {
     id: '6',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',

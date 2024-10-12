@@ -2,7 +2,7 @@ import { ProductDetail } from '@/vibes/soul/components/product-detail'
 
 export const product = {
   id: '1',
-  name: 'Mini Bar Bag',
+  title: 'Mini Bar Bag',
   price: '$60',
   image: {
     src: 'https://rstr.in/monogram/vibes/5IdIE27Cj9r',

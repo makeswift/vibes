@@ -2,7 +2,7 @@ import { ProductDetail } from '@/vibes/soul/components/product-detail'
 
 export const product = {
   id: '1',
-  name: 'Caladium Rosebud',
+  title: 'Caladium Rosebud',
   price: '$19.95',
   image: {
     src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt',

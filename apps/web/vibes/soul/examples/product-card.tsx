@@ -6,7 +6,7 @@ export default function Preview() {
       <ProductCard
         id="1"
         href="#"
-        name="Product Name"
+        title="Product Name"
         image={{
           src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
           alt: 'Product Name',
@@ -14,6 +14,7 @@ export default function Preview() {
         subtitle="Blue/Black/Green"
         price="123.99"
         badge="New"
+        showCompare
       />
     </div>
   )

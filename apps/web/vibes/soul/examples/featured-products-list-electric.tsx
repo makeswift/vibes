@@ -10,7 +10,7 @@ export const featuredProducts = {
   products: [
     {
       id: '1',
-      name: 'Philodendron Imperial Red',
+      title: 'Philodendron Imperial Red',
       subtitle: 'Indoor Plant',
       // badge: 'Indestructible',
       price: '$44.95',
@@ -22,7 +22,7 @@ export const featuredProducts = {
     },
     {
       id: '2',
-      name: 'Monstera',
+      title: 'Monstera',
       subtitle: 'Indoor Plant',
       // badge: 'New',
       price: '$24.99',
@@ -34,7 +34,7 @@ export const featuredProducts = {
     },
     {
       id: '3',
-      name: 'Pink Caladium',
+      title: 'Pink Caladium',
       subtitle: 'Indoor Plant',
       // badge: 'New',
       price: '$19.95',
@@ -46,7 +46,7 @@ export const featuredProducts = {
     },
     {
       id: '4',
-      name: 'Hoya Kerrii',
+      title: 'Hoya Kerrii',
       subtitle: 'Indoor Plant',
       // badge: 'New',
       price: '$16.99',
@@ -58,7 +58,7 @@ export const featuredProducts = {
     },
     {
       id: '6',
-      name: 'Bird Nest Fern',
+      title: 'Bird Nest Fern',
       subtitle: 'Indoor Plant',
       // badge: 'New',
       price: '$24.99',
@@ -70,7 +70,7 @@ export const featuredProducts = {
     },
     {
       id: '5',
-      name: 'Jade Plant',
+      title: 'Jade Plant',
       subtitle: 'Indoor Plant',
       // badge: 'New',
       price: '$24.99',
