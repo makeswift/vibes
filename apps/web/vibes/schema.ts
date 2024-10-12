@@ -9,7 +9,9 @@ export type Component = {
   dependencies: string[]
   registryDependencies: string[]
   files: string[]
-  component?: React.LazyExoticComponent<React.ComponentType<{}>>
+  component?: React.LazyExoticComponent<
+    React.ComponentType<{ searchParams: { [key: string]: string | string[] } }>
+  >
 }
 
 export type Components = NonEmptyArray<Component>
