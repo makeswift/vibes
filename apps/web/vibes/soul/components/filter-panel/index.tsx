@@ -67,8 +67,8 @@ export const FilterPanel = function FilterPanel() {
 
   return (
     <SidePanel
-      isOpen={filterOpen}
-      setOpen={setFilterOpen}
+      open={filterOpen}
+      onOpenChange={setFilterOpen}
       trigger={
         <Button variant="secondary" size="small" asChild>
           <div className="flex gap-2">

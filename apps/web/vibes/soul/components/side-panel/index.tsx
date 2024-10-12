@@ -1,18 +1,26 @@
-import React, { ReactNode } from 'react'
+'use client'
+
+import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { clsx } from 'clsx'
+import { X } from 'lucide-react'
 
-interface Props {
-  isOpen: boolean
-  setOpen: (open: boolean) => void
+import { Button } from '../button'
+
+interface Props extends ComponentPropsWithoutRef<typeof Dialog.Root> {
+  title?: string
   trigger: ReactNode
   content: ReactNode
 }
 
-export const SidePanel = function SidePanel({ isOpen, setOpen, trigger, content }: Props) {
+export function SidePanel({ title, trigger, content, ...rest }: Props) {
   return (
-    <Dialog.Root open={isOpen} onOpenChange={setOpen}>
+    <Dialog.Root {...rest}>
+      <VisuallyHidden.Root>
+        <Dialog.Title>{title}</Dialog.Title>
+      </VisuallyHidden.Root>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-30 bg-foreground/50 @container">
@@ -26,5 +34,17 @@ export const SidePanel = function SidePanel({ isOpen, setOpen, trigger, content 
         </Dialog.Overlay>
       </Dialog.Portal>
     </Dialog.Root>
+  )
+}
+
+export function SidePanelClose() {
+  return (
+    <Dialog.Close asChild>
+      <Button variant="tertiary" size="small" className="-mr-2 [&_div]:!px-1" asChild>
+        <div>
+          <X size={18} strokeWidth={1.5} />
+        </div>
+      </Button>
+    </Dialog.Close>
   )
 }
