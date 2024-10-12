@@ -551,6 +551,13 @@ export const examples = [
     component: lazy(() => import('./examples/slideshow-luxury')),
   },
   {
+    name: 'spinner-example',
+    dependencies: [],
+    registryDependencies: ['spinner'],
+    files: ['examples/spinner.tsx'],
+    component: lazy(() => import('./examples/spinner')),
+  },
+  {
     name: 'subscribe-example',
     dependencies: [],
     registryDependencies: ['subscribe'],

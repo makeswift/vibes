@@ -260,6 +260,12 @@ export const components = [
     files: ['components/slideshow/index.tsx'],
   },
   {
+    name: 'spinner',
+    dependencies: ['clsx'],
+    registryDependencies: ['input'],
+    files: ['components/spinner/index.tsx'],
+  },
+  {
     name: 'subscribe',
     dependencies: ['clsx'],
     registryDependencies: ['input'],

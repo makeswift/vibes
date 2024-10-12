@@ -119,6 +119,12 @@ export const navigation = [
       //   component: 'slide-carousel',
       // },
       {
+        title: 'Spinner',
+        slug: 'spinner',
+        file: 'docs/spinner.mdx',
+        component: 'spinner',
+      },
+      {
         title: 'Text Area',
         slug: 'textarea',
         file: 'docs/textarea.mdx',
