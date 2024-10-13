@@ -42,7 +42,7 @@ export const Compare = function Compare({
       tabIndex={0}
     >
       <span className="hidden @lg:block">{label}</span>
-      <Checkbox checked={active} />
+      <Checkbox id={`${paramKey}-${productId}`} checked={active} />
     </Link>
   )
 }

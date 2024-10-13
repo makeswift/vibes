@@ -52,7 +52,12 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
               Continue
             </Button>
           </div>
-          <Checkbox checked={checked} setChecked={setChecked} label="Subscribe to our newsletter" />
+          <Checkbox
+            id="newsletter-subscribe"
+            checked={checked}
+            setChecked={setChecked}
+            label="Subscribe to our newsletter"
+          />
           <span className="block pt-8 text-xs">
             Already have an account?{' '}
             <Link href="#" className="font-semibold">
