@@ -63,8 +63,8 @@ export const components = [
   },
   {
     name: 'cart',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: ['button', 'counter', 'dropdown', 'input', 'modal'],
+    dependencies: ['clsx'],
+    registryDependencies: ['button', 'counter'],
     files: ['components/cart/index.tsx'],
   },
   {

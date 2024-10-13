@@ -1,8 +1,98 @@
 ---
 title: Cart
+description: The Cart component displays the items in the user's cart, along with a summary of the total cost.
 preview:
   Electric: cart-electric-example
   Warm: cart-warm-example
   Luxury: cart-luxury-example
 previewSize: xl
+features:
+  - Displays the items in the user's cart
+  - Displays a summary of the total cost
+  - Allows the user to remove items from the cart
+  - Allows the user to update the quantity of items in the cart
 ---
+
+## Usage
+
+<CodeBlock lang="bash">{`import { Cart } from '@/vibes/soul/components/cart'`}</CodeBlock>
+
+<CodeBlock lang="bash">{`const products = await getProducts()
+const subtotal = await getSubtotal()`}</CodeBlock>
+
+<CodeBlock lang="bash">{`<Cart
+  title="Cart"
+  lineItems={products}
+  summary={{
+    title: 'Summary',
+    caption: 'Shipping & taxes calculated at checkout',
+    subtotal: subtotal,
+    subtotalLabel: 'Subtotal',
+    shippingLabel: 'Shipping',
+    taxLabel: 'Tax',
+    tax: '$11.60',
+    grandTotalLabel: 'Total',
+    grandTotal: '$127.60',
+    ctaLabel: 'Checkout',
+  }}
+  emptyState={{
+    title: 'Your cart is empty',
+    subtitle: 'Add some products to get started.',
+    cta: {
+      label: 'Continue shopping',
+      href: '#',
+    },
+  }}
+  removeLineItemAction={removeLineItemAction}
+  updateLineItemQuantityAction={updateLineItemQuantityAction}
+  // redirectToCheckoutAction={}
+/>
+`}</CodeBlock>
+
+## API Reference
+
+| Prop                           | Type                                                                                                                             | Default  |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `title`                        | `string`                                                                                                                         | `"Cart"` |
+| `lineItems`                    | `CartLineItem[]` <Tooltip content='Refer to `CartLineItem` table below' />                                                       |          |
+| `summary`                      | `CartSummary` <Tooltip content='Refer to `CartSummary` table below' />                                                           |          |
+| `emptyState`                   | `CartEmptyState` <Tooltip content='Refer to `CartEmptyState` table below' />                                                     |          |
+| `removeLineItemAction`         | `function` <Tooltip content='removeLineItemAction(id: string): Promise<void> ' />                                                |          |
+| `updateLineItemQuantityAction` | `function` <Tooltip content='updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>' /> |          |
+| `redirectToCheckoutAction`     | `function` <Tooltip content='redirectToCheckoutAction(): Promise<void>' />                                                       |          |
+
+### `CartLineItem`
+
+| Prop       | Type                                                     | Default |
+| ---------- | -------------------------------------------------------- | ------- |
+| `id`       | `string`                                                 |         |
+| `image`    | `Image` <Tooltip content="{src: string, alt: string}" /> |         |
+| `title`    | `string`                                                 |         |
+| `subtitle` | `string`                                                 |         |
+| `quantity` | `number`                                                 |         |
+| `price`    | `string`                                                 |         |
+
+### `CartSummary`
+
+| Prop              | Type     | Default             |
+| ----------------- | -------- | ------------------- |
+| `title`           | `string` | `"Summary"`         |
+| `caption`         | `string` | `"Receipt Summary"` |
+| `subtotal`        | `string` |                     |
+| `subtotalLabel`   | `string` | `"Subtotal"`        |
+| `shippingLabel`   | `string` | `"Shipping"`        |
+| `taxLabel`        | `string` |                     |
+| `grandTotalLabel` | `string` | `"Grand Total"`     |
+| `grandTotal`      | `string` |                     |
+
+### `CartEmptyState`
+
+| Prop       | Type                                                        | Default |
+| ---------- | ----------------------------------------------------------- | ------- |
+| `title`    | `string`                                                    |         |
+| `subtitle` | `string`                                                    |         |
+| `cta`      | `object` <Tooltip content='{label: string, href: string}'/> |         |
+
+## Figma
+
+<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=1720-21795&t=RzBeIql49iCnmSMw-4" />
