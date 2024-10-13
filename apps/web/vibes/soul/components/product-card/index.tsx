@@ -55,9 +55,6 @@ export function ProductCard({
           )}
         >
           <div className="relative aspect-[5/6] overflow-hidden rounded-xl bg-primary-highlight bg-opacity-10">
-            {badge != null && badge !== '' && (
-              <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
-            )}
             {image?.src != null ? (
               <Image
                 src={image.src}
@@ -70,6 +67,9 @@ export function ProductCard({
               <h3 className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-primary-shadow opacity-10 transition-transform duration-500 ease-out group-hover:scale-105">
                 {title}
               </h3>
+            )}
+            {badge != null && badge !== '' && (
+              <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
             )}
           </div>
         </Link>
