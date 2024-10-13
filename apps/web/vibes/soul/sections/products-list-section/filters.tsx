@@ -14,29 +14,25 @@ interface CheckboxGroupFilterOption {
 
 interface CheckboxGroupFilter {
   type: 'checkbox-group'
-  name: string
   label: string
-  defaultValue?: string[]
+  name: string
   options: CheckboxGroupFilterOption[]
 }
 
 interface RangeFilter {
   type: 'range'
-  name: string
   label: string
-  min: number
-  max: number
-  defaultMin?: number
-  defaultMax?: number
-  minLabel: string
-  maxLabel: string
+  name: string
+  min?: number
+  max?: number
+  minLabel?: string
+  maxLabel?: string
 }
 
 interface RatingFilter {
   type: 'rating'
-  name: string
   label: string
-  defaultValue: number
+  name: string
 }
 
 export type Filter = CheckboxGroupFilter | RangeFilter | RatingFilter

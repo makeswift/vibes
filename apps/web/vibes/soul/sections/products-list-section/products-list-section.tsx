@@ -38,7 +38,7 @@ export function ProductsListSection({
       <div className="relative pb-10 @container">
         {/* Products Header */}
         <div className="flex flex-wrap items-center justify-between gap-4 bg-background text-foreground">
-          <h1 className="pl-3 font-heading text-xl font-medium leading-none @xl:pl-6 @2xl:text-5xl @5xl:pl-20">
+          <h1 className="pl-3 text-xl font-medium leading-none @xl:pl-6 @2xl:text-5xl @5xl:pl-20">
             {title} <span className="text-contrast-200">{totalCount}</span>
           </h1>
           <div className="ml-auto flex gap-2 pr-3 @xl:pr-6 @5xl:pr-20">

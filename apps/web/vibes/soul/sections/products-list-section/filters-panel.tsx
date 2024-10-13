@@ -4,9 +4,11 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import { Accordions } from '@/vibes/soul/components/accordions'
 import { Button } from '@/vibes/soul/components/button'
-import { Input } from '@/vibes/soul/components/input'
 import { SidePanelClose } from '@/vibes/soul/components/side-panel'
 
+import { FilterCheckboxGroup } from './filter-checkbox-group'
+import { FilterRange } from './filter-range'
+import { FilterRating } from './filter-rating'
 import { Filter } from './filters'
 
 interface Props {
@@ -20,7 +22,7 @@ export function FiltersPanel({ filters }: Props) {
   const activeOptions = filters.flatMap(filter => searchParams.getAll(filter.name))
 
   return (
-    <div>
+    <div className="w-full">
       <div className="flex items-center justify-between gap-5">
         <h2 className="flex gap-2 text-xl font-medium @lg:text-2xl">
           Filters
@@ -32,29 +34,52 @@ export function FiltersPanel({ filters }: Props) {
       </div>
       <Accordions
         className="mt-10"
-        defaultValue={['1', '2', '3']}
         accordions={filters.map(filter => {
           switch (filter.type) {
             case 'checkbox-group':
               return {
+                defaultOpen: true,
                 title: filter.label,
-                content: <div>Checkbox Group!</div>,
+                content: (
+                  <FilterCheckboxGroup
+                    key={filter.name}
+                    name={filter.name}
+                    options={filter.options}
+                  />
+                ),
               }
             case 'range':
               return {
+                defaultOpen: true,
                 title: filter.label,
-                content: <div>Range!</div>,
+                content: (
+                  <FilterRange
+                    name={filter.name}
+                    min={filter.min}
+                    max={filter.max}
+                    minLabel={filter.minLabel}
+                    maxLabel={filter.maxLabel}
+                  />
+                ),
               }
             case 'rating':
               return {
+                defaultOpen: true,
                 title: filter.label,
-                content: <div>Rating!</div>,
+                content: <FilterRating name={filter.name} />,
               }
           }
         })}
       />
       <div className="mt-auto flex justify-center gap-2 pt-10">
-        <Button variant="tertiary" onClick={() => router.push(pathname, { scroll: false })}>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            console.log('clearing', { pathname })
+
+            router.replace(pathname, { scroll: false })
+          }}
+        >
           Reset
         </Button>
       </div>
