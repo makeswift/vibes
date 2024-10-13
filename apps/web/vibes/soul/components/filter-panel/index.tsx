@@ -104,7 +104,6 @@ export const FilterPanel = function FilterPanel() {
             </div>
             <Accordions
               className="mt-10"
-              defaultValue={['1', '2', '3']}
               // TODO: filters should be customizable
               accordions={[
                 {

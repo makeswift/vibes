@@ -127,7 +127,6 @@ const filters: Filter[] = [
     name: 'rating',
     label: 'Rating',
     type: 'rating',
-    defaultValue: 4,
   },
 ]
 
