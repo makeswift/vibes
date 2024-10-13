@@ -4,7 +4,7 @@ import { Product } from '@/vibes/soul/components/product-card'
 import { ProductsList } from '@/vibes/soul/components/products-list'
 
 import { Filter, Filters } from './filters'
-import { Pagination, Props as PaginationProps } from './pagination'
+import { Pages, Pagination } from './pagination'
 import { Option as SortOption, Sorting } from './sorting'
 
 interface Props {
@@ -12,10 +12,10 @@ interface Props {
   title?: Promise<string> | string
   totalCount: Promise<number> | number
   products: Promise<Product[]> | Product[]
-  compareProducts: Promise<Product[]> | Product[]
-  sortOptions: Promise<SortOption[]> | SortOption[]
   filters: Promise<Filter[]> | Filter[]
-  pagination?: Promise<PaginationProps> | PaginationProps
+  sortOptions: Promise<SortOption[]> | SortOption[]
+  compareProducts?: Promise<Product[]> | Product[]
+  pagination?: Promise<Pages> | Pages
   compareLabel?: string
   filterLabel?: string
   sortLabel?: string
@@ -23,7 +23,7 @@ interface Props {
 
 export function ProductsListSection({
   breadcrumbs,
-  title,
+  title = 'Products',
   totalCount,
   products,
   compareProducts,
@@ -54,7 +54,8 @@ export function ProductsListSection({
         </div>
       </div>
       <ProductsList products={products} compareLabel={compareLabel} showCompare />
-      <CompareDrawer products={compareProducts} />
+      {pagination && <Pagination pages={pagination} />}
+      {compareProducts && <CompareDrawer products={compareProducts} />}
     </>
   )
 }
