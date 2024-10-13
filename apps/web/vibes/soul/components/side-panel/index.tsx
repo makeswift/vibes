@@ -26,7 +26,7 @@ export function SidePanel({ title, trigger, content, ...rest }: Props) {
         <Dialog.Overlay className="fixed inset-0 z-30 bg-foreground/50 @container">
           <Dialog.Content
             className={clsx(
-              'ease-[cubic-bezier(0.25,1,0,1)] fixed bottom-0 right-0 top-0 flex h-full flex-col overflow-y-auto bg-background p-6 transition data-[state=closed]:duration-500 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right @md:p-20'
+              'ease-[cubic-bezier(0.25,1,0,1)] fixed bottom-0 right-0 top-0 flex h-full w-[400px] max-w-[calc(100%-40px)] flex-col overflow-y-auto bg-background p-6 transition data-[state=closed]:duration-500 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right @md:p-20'
             )}
           >
             {content}
