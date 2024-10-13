@@ -1,4 +1,5 @@
 import { Product } from '@/vibes/soul/components/product-card'
+import { breadcrumbs } from '@/vibes/soul/examples/breadcrumbs-electric'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 import { Filter } from '@/vibes/soul/sections/products-list-section/filters'
 
@@ -139,6 +140,7 @@ export default function Preview({
     <div className="py-6">
       <ProductsListSection
         title="Plants"
+        breadcrumbs={breadcrumbs}
         products={products}
         totalCount={products.length}
         filters={filters}
