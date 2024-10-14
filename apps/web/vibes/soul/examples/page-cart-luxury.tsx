@@ -1,7 +1,8 @@
 import { CartPage } from '@/vibes/soul/components/page-cart'
 import {
+  redirectToCheckoutAction,
   removeLineItemAction,
-  updateLineItemQuantityAction, // redirectToCheckoutAction,
+  updateLineItemQuantityAction,
 } from '@/vibes/soul/components/page-cart/actions-luxury'
 import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-luxury'
 import { copyright, footerLinks } from '@/vibes/soul/examples/footer-luxury'
@@ -18,7 +19,7 @@ export default async function Preview() {
       subtotal={subtotal}
       removeLineItemAction={removeLineItemAction}
       updateLineItemQuantityAction={updateLineItemQuantityAction}
-      // redirectToCheckoutAction={redirectToCheckoutAction}
+      redirectToCheckoutAction={redirectToCheckoutAction}
       footerLinks={footerLinks}
       copyright={copyright}
     />

@@ -1,5 +1,6 @@
 import { Cart } from '@/vibes/soul/components/cart'
 import {
+  redirectToCheckoutAction,
   removeLineItemAction,
   updateLineItemQuantityAction,
 } from '@/vibes/soul/components/page-cart/actions-warm'
@@ -19,8 +20,9 @@ export default async function Preview() {
         caption: 'Shipping & taxes calculated at checkout',
         subtotalLabel: 'Subtotal',
         shippingLabel: 'Shipping',
+        shipping: 'TBD',
         taxLabel: 'Tax',
-        tax: '$11.60',
+        tax: 'TBD',
         grandTotalLabel: 'Total',
         grandTotal: '$127.60',
         ctaLabel: 'Checkout',
@@ -35,7 +37,7 @@ export default async function Preview() {
       }}
       removeLineItemAction={removeLineItemAction}
       updateLineItemQuantityAction={updateLineItemQuantityAction}
-      // redirectToCheckoutAction={}
+      redirectToCheckoutAction={redirectToCheckoutAction}
     />
   )
 }
