@@ -51,15 +51,17 @@ const subtotal = await getSubtotal()`}</CodeBlock>
 
 ## API Reference
 
-| Prop                           | Type                                                                                                                             | Default  |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `title`                        | `string`                                                                                                                         | `"Cart"` |
-| `lineItems`                    | `CartLineItem[]` <Tooltip content='Refer to `CartLineItem` table below' />                                                       |          |
-| `summary`                      | `CartSummary` <Tooltip content='Refer to `CartSummary` table below' />                                                           |          |
-| `emptyState`                   | `CartEmptyState` <Tooltip content='Refer to `CartEmptyState` table below' />                                                     |          |
-| `removeLineItemAction`         | `function` <Tooltip content='removeLineItemAction(id: string): Promise<void> ' />                                                |          |
-| `updateLineItemQuantityAction` | `function` <Tooltip content='updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>' /> |          |
-| `redirectToCheckoutAction`     | `function` <Tooltip content='redirectToCheckoutAction(): Promise<void>' />                                                       |          |
+### `Cart`
+
+| Prop                           | Type                                                                                                    | Default  |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------- | -------- |
+| `title?`                       | `string`                                                                                                | `"Cart"` |
+| `lineItems`                    | [`CartLineItem[]`](#cartlineitem)                                                                       |          |
+| `summary`                      | [`CartSummary`](#cartsummary)                                                                           |          |
+| `emptyState`                   | [`CartEmptyState`](#cartemptystate)                                                                     |          |
+| `removeLineItemAction`         | `function` <Tooltip content='(id: string) => Promise<void>' />                                          |          |
+| `updateLineItemQuantityAction` | `function` <Tooltip content='({ id, quantity } : { id: string; quantity: number }) => Promise<void>' /> |          |
+| `redirectToCheckoutAction`     | `function` <Tooltip content='() => Promise<void>' />                                                    |          |
 
 ### `CartLineItem`
 
@@ -74,16 +76,16 @@ const subtotal = await getSubtotal()`}</CodeBlock>
 
 ### `CartSummary`
 
-| Prop              | Type     | Default             |
-| ----------------- | -------- | ------------------- |
-| `title`           | `string` | `"Summary"`         |
-| `caption`         | `string` | `"Receipt Summary"` |
-| `subtotal`        | `string` |                     |
-| `subtotalLabel`   | `string` | `"Subtotal"`        |
-| `shippingLabel`   | `string` | `"Shipping"`        |
-| `taxLabel`        | `string` |                     |
-| `grandTotalLabel` | `string` | `"Grand Total"`     |
-| `grandTotal`      | `string` |                     |
+| Prop               | Type     | Default             |
+| ------------------ | -------- | ------------------- |
+| `title?`           | `string` | `"Summary"`         |
+| `caption?`         | `string` | `"Receipt Summary"` |
+| `subtotal`         | `string` |                     |
+| `subtotalLabel?`   | `string` | `"Subtotal"`        |
+| `shippingLabel?`   | `string` | `"Shipping"`        |
+| `taxLabel?`        | `string` |                     |
+| `grandTotalLabel?` | `string` | `"Grand Total"`     |
+| `grandTotal`       | `string` |                     |
 
 ### `CartEmptyState`
 
