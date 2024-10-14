@@ -31,7 +31,6 @@ interface CartSummary {
   tax?: string | Promise<string>
   grandTotalLabel?: string
   grandTotal?: string | Promise<string>
-  // TODO: summary.ctaLabel isn't in the Linear doc... Looks like we also need Checkout CTA Label so I added it here
   ctaLabel?: string
 }
 
@@ -49,6 +48,8 @@ interface CartProps {
   lineItems: CartLineItem[] | Promise<CartLineItem[]>
   summary: CartSummary
   emptyState: CartEmptyState
+  removeItemLabel?: string
+  loadingLabel?: string
   removeLineItemAction(id: string): Promise<void> //formData.get('id')
   updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
   // redirectToCheckoutAction(): Promise<void>
@@ -59,6 +60,8 @@ export const Cart = function Cart({
   lineItems,
   summary,
   emptyState,
+  removeItemLabel,
+  loadingLabel,
   removeLineItemAction,
   updateLineItemQuantityAction,
   // redirectToCheckoutAction,
@@ -70,6 +73,7 @@ export const Cart = function Cart({
         lineItems={lineItems}
         summary={summary}
         emptyState={emptyState}
+        removeItemLabel={removeItemLabel}
         removeLineItemAction={removeLineItemAction}
         updateLineItemQuantityAction={updateLineItemQuantityAction}
         // redirectToCheckoutAction={redirectToCheckoutAction}
@@ -83,6 +87,8 @@ async function CartUI({
   lineItems,
   summary,
   emptyState,
+  removeItemLabel,
+  loadingLabel,
   removeLineItemAction,
   updateLineItemQuantityAction,
   // redirectToCheckoutAction,
@@ -136,7 +142,7 @@ async function CartUI({
                       />
                       {/* Remove Line Item Button */}
                       <form action={removeLineItemAction.bind(null, id)}>
-                        <DeleteLineItemButton />
+                        <DeleteLineItemButton label={removeItemLabel} loadingLabel={loadingLabel} />
                       </form>
                     </div>
                   </div>
