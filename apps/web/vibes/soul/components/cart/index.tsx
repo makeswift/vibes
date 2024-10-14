@@ -4,7 +4,8 @@ import { Suspense } from 'react'
 
 import { Button } from '@/vibes/soul/components/button'
 import { DeleteLineItemButton } from '@/vibes/soul/components/cart/delete-line-item-button'
-import { Counter } from '@/vibes/soul/components/counter'
+import { DecrementButton } from '@/vibes/soul/components/counter/decrement-button'
+import { IncrementButton } from '@/vibes/soul/components/counter/increment-button'
 
 interface Image {
   altText: string
@@ -144,13 +145,30 @@ async function CartUI({
                     </div>
                     <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
                       <span className="font-medium @xl:ml-auto">{price}</span>
-                      <Counter
-                        id={id}
-                        current={quantity}
-                        decrementAriaLabel={decrementAriaLabel}
-                        incrementAriaLabel={incrementAriaLabel}
-                        updateLineItemQuantityAction={updateLineItemQuantityAction}
-                      />
+
+                      {/* Counter */}
+                      <div className="flex items-center rounded-lg border">
+                        <form
+                          action={updateLineItemQuantityAction.bind(null, {
+                            id,
+                            quantity: quantity - 1,
+                          })}
+                        >
+                          <DecrementButton ariaLabel={decrementAriaLabel} />
+                        </form>
+                        <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
+                          {quantity}
+                        </span>
+                        <form
+                          action={updateLineItemQuantityAction.bind(null, {
+                            id,
+                            quantity: quantity + 1,
+                          })}
+                        >
+                          <IncrementButton ariaLabel={incrementAriaLabel} />
+                        </form>
+                      </div>
+
                       {/* Remove Line Item Button */}
                       <form action={removeLineItemAction.bind(null, id)}>
                         <DeleteLineItemButton
