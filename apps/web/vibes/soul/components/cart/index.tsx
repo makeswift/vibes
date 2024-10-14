@@ -62,6 +62,7 @@ export const Cart = function Cart({
   emptyState,
   removeItemAriaLabel,
   loadingAriaLabel,
+
   removeLineItemAction,
   updateLineItemQuantityAction,
   // redirectToCheckoutAction,
