@@ -47,15 +47,19 @@ export const FeaturedImage = function FeaturedImage({
             }
           )}
         >
-          <Image
-            src={image.src}
-            alt={image.altText}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
-            placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
-            blurDataURL={image.blurDataUrl}
-            className="object-cover"
-          />
+          {image.src !== '' ? (
+            <Image
+              src={image.src}
+              alt={image.altText}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
+              placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
+              blurDataURL={image.blurDataUrl}
+              className="object-cover"
+            />
+          ) : (
+            <div className="h-full w-full animate-pulse bg-primary-shadow" />
+          )}
         </div>
         <div
           className={clsx(
