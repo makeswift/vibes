@@ -117,7 +117,13 @@ async function CartUI({
                   key={id}
                 >
                   <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36">
-                    <Image fill src={image.src} alt={image.altText} className="object-cover" />
+                    <Image
+                      fill
+                      src={image.src}
+                      alt={image.altText}
+                      sizes="(max-width: 400px) 100vw, 144px"
+                      className="object-cover"
+                    />
                   </div>
                   <div className="flex flex-grow flex-wrap justify-between gap-y-2">
                     <div className="flex flex-col @xl:w-1/2 @xl:pr-4">
