@@ -51,10 +51,10 @@ interface CartProps {
   emptyState: CartEmptyState
   removeItemAriaLabel?: string
   loadingAriaLabel?: string
-  removeLineItemAction(id: string): Promise<void> //formData.get('id')
+  removeLineItemAction(id: string): Promise<void>
   decrementAriaLabel?: string
   incrementAriaLabel?: string
-  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
+  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>
   redirectToCheckoutAction(): Promise<void>
 }
 
