@@ -22,6 +22,9 @@ export async function updateLineItemQuantityAction({
   id: string
   quantity: number
 }): Promise<void> {
+  if (quantity === 0) {
+    removeLineItemAction(id)
+  }
   updateProductQuantity(id, quantity)
   revalidateTag('products-electric')
 }
