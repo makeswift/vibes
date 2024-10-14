@@ -10,7 +10,7 @@ import {
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function removeLineItemAction(id: string): Promise<void> {
   removeProduct(id)
-  revalidateTag('products')
+  revalidateTag('products-warm')
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
@@ -22,5 +22,5 @@ export async function updateLineItemQuantityAction({
   quantity: number
 }): Promise<void> {
   updateProductQuantity(id, quantity)
-  revalidateTag('products')
+  revalidateTag('products-warm')
 }
