@@ -15,7 +15,7 @@ interface Props {
 export const Counter = function Counter({
   id,
   current = 0,
-  max = 20,
+  max,
   updateLineItemQuantityAction,
 }: Props) {
   const decrement = () => {
@@ -26,11 +26,7 @@ export const Counter = function Counter({
     }
   }
   const increment = () => {
-    if (current < max) {
-      return current + 1
-    } else {
-      return current
-    }
+    return Math.min(current + 1, max ?? current + 1)
   }
 
   return (
