@@ -32,7 +32,7 @@ interface CartSummary {
   tax: string | Promise<string>
   grandTotalLabel?: string
   grandTotal: string | Promise<string>
-  // TODO: summary.ctaLabel is in the Linear doc... Looks like we also need Checkout CTA Label so I added it here
+  // TODO: summary.ctaLabel isn't in the Linear doc... Looks like we also need Checkout CTA Label so I added it here
   ctaLabel?: string
 }
 
