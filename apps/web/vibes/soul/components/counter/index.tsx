@@ -9,6 +9,8 @@ interface Props {
   id: string
   current?: number
   max?: number
+  decrementAriaLabel?: string
+  incrementAriaLabel?: string
   updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
 }
 
@@ -16,6 +18,8 @@ export const Counter = function Counter({
   id,
   current = 0,
   max,
+  decrementAriaLabel,
+  incrementAriaLabel,
   updateLineItemQuantityAction,
 }: Props) {
   const decrement = () => {
@@ -32,13 +36,13 @@ export const Counter = function Counter({
   return (
     <div className="flex items-center rounded-lg border">
       <form action={updateLineItemQuantityAction.bind(null, { id, quantity: decrement() })}>
-        <DecrementButton />
+        <DecrementButton ariaLabel={decrementAriaLabel} />
       </form>
       <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
         {current}
       </span>
       <form action={updateLineItemQuantityAction.bind(null, { id, quantity: increment() })}>
-        <IncrementButton />
+        <IncrementButton ariaLabel={incrementAriaLabel} />
       </form>
     </div>
   )
