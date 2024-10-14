@@ -23,8 +23,8 @@ export default async function Preview() {
         shipping: 'TBD',
         taxLabel: 'Tax',
         tax: 'TBD',
-        grandTotalLabel: 'Total',
-        grandTotal: '$127.60',
+        // grandTotalLabel: 'Total',
+        // grandTotal: '$127.60',
         ctaLabel: 'Checkout',
       }}
       emptyState={{

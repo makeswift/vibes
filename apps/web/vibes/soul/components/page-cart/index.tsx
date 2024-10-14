@@ -104,9 +104,9 @@ export const CartPage = function CartPage({
           shippingLabel: 'Shipping',
           shipping: 'TBD',
           taxLabel: 'Tax',
-          grandTotalLabel: 'Total',
           tax: 'TBD',
-          grandTotal: '$127.60',
+          // grandTotalLabel: 'Total',
+          // grandTotal: '$127.60',
           ctaLabel: 'Checkout',
         }}
         emptyState={{
