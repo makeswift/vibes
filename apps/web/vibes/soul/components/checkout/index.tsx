@@ -8,12 +8,12 @@ import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
-import { CartProduct } from '@/vibes/soul/components/cart'
+import { CartLineItem } from '@/vibes/soul/components/cart'
 import { Checkbox } from '@/vibes/soul/components/checkbox'
 import { CheckoutForm } from '@/vibes/soul/components/checkout/checkout-form'
 import { Input } from '@/vibes/soul/components/input'
 
-export const Checkout = function Checkout({ products }: { products: CartProduct[] }) {
+export const Checkout = function Checkout({ products }: { products: CartLineItem[] }) {
   const [isLoading, setIsLoading] = useState(false)
   const [checked, setChecked] = useState(true)
   const [openAccordion, setOpenAccordion] = useState<string | undefined>(undefined)
@@ -202,7 +202,7 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
 
                 {/* Mini Products List in Order Summary */}
                 <ul className="flex flex-col gap-y-4">
-                  {products.map(({ id, name, image, price, quantity }) => (
+                  {products.map(({ id, title, image, price, quantity }) => (
                     <li key={id} className="flex items-center justify-between gap-x-4">
                       <div className="flex items-center gap-x-4">
                         {image?.src != null && image.src !== '' && (
@@ -217,7 +217,7 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                           </div>
                         )}
                         <div>
-                          <span className="text-sm">{name}</span>
+                          <span className="text-sm">{title}</span>
                           <span className="block text-sm text-contrast-300">x{quantity}</span>
                         </div>
                       </div>
