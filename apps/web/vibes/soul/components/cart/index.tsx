@@ -51,6 +51,8 @@ interface CartProps {
   removeItemAriaLabel?: string
   loadingAriaLabel?: string
   removeLineItemAction(id: string): Promise<void> //formData.get('id')
+  decrementAriaLabel?: string
+  incrementAriaLabel?: string
   updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
   redirectToCheckoutAction(): Promise<void>
 }
@@ -62,7 +64,8 @@ export const Cart = function Cart({
   emptyState,
   removeItemAriaLabel,
   loadingAriaLabel,
-
+  decrementAriaLabel,
+  incrementAriaLabel,
   removeLineItemAction,
   updateLineItemQuantityAction,
   redirectToCheckoutAction,
@@ -91,6 +94,8 @@ async function CartUI({
   emptyState,
   removeItemAriaLabel,
   loadingAriaLabel,
+  decrementAriaLabel,
+  incrementAriaLabel,
   removeLineItemAction,
   updateLineItemQuantityAction,
   redirectToCheckoutAction,
@@ -140,6 +145,8 @@ async function CartUI({
                       <Counter
                         id={id}
                         current={quantity}
+                        decrementAriaLabel={decrementAriaLabel}
+                        incrementAriaLabel={incrementAriaLabel}
                         updateLineItemQuantityAction={updateLineItemQuantityAction}
                       />
                       {/* Remove Line Item Button */}

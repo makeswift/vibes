@@ -4,12 +4,12 @@ import { useFormStatus } from 'react-dom'
 
 import { Minus } from 'lucide-react'
 
-export function DecrementButton() {
+export function DecrementButton({ ariaLabel }: { ariaLabel?: string }) {
   const { pending } = useFormStatus()
   return (
     <button
       className="group rounded-l-lg p-3 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-      aria-label="Decrease Count"
+      aria-label={ariaLabel ?? 'Decrease Count'}
       type="submit"
       disabled={pending}
     >

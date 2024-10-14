@@ -4,13 +4,13 @@ import { useFormStatus } from 'react-dom'
 
 import { Plus } from 'lucide-react'
 
-export function IncrementButton() {
+export function IncrementButton({ ariaLabel }: { ariaLabel?: string }) {
   const { pending } = useFormStatus()
 
   return (
     <button
       className="group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-50"
-      aria-label="Increase Count"
+      aria-label={ariaLabel ?? 'Increase Count'}
       type="submit"
       disabled={pending}
     >
