@@ -137,7 +137,6 @@ async function CartUI({
                       />
                       {/* Remove Line Item Button */}
                       <form action={removeLineItemAction.bind(null, id)}>
-                        <input type="hidden" name="line-item-id" value={id} />
                         <DeleteLineItemButton />
                       </form>
                     </div>
