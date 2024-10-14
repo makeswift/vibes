@@ -3,12 +3,11 @@ import {
   removeLineItemAction,
   updateLineItemQuantityAction,
 } from '@/vibes/soul/components/page-cart/actions-luxury'
-import { getProducts } from '@/vibes/soul/components/page-cart/products-luxury'
+import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-luxury'
 
 export default async function Preview() {
   const products = await getProducts()
-
-  console.log('products luxury', products)
+  const subtotal = await getSubtotal()
 
   return (
     <Cart
@@ -16,7 +15,7 @@ export default async function Preview() {
       lineItems={products}
       summary={{
         title: 'Summary',
-        subtotal: '$116',
+        subtotal: subtotal,
         caption: 'Shipping & taxes calculated at checkout',
         subtotalLabel: 'Subtotal',
         shippingLabel: 'Shipping',
