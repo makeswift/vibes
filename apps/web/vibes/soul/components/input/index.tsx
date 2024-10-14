@@ -1,6 +1,6 @@
 'use client'
 
-import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
+import { ChangeEvent, ComponentPropsWithRef, Ref, forwardRef, useState } from 'react'
 
 import { clsx } from 'clsx'
 
@@ -14,9 +14,40 @@ export interface Props extends ComponentPropsWithRef<'input'> {
 }
 
 export const Input = forwardRef(function Input(
-  { prepend, label, className, required, error, ...rest }: Props,
+  { prepend, label, className, required, error, type = 'text', ...rest }: Props,
   ref: Ref<HTMLInputElement>
 ) {
+  const [value, setValue] = useState<string>(String(rest.value ?? ''))
+
+  const formatPhoneNumber = (input: string): string => {
+    const cleanedInput = input.replace(/\D/g, '')
+    const size = cleanedInput.length
+
+    if (size > 10) return cleanedInput
+
+    const areaCode = cleanedInput.slice(0, 3)
+    const prefix = cleanedInput.slice(3, 6)
+    const line = cleanedInput.slice(6, 10)
+
+    if (size > 6) return `(${areaCode}) ${prefix}-${line}`
+    if (size > 3) return `(${areaCode}) ${prefix}`
+    if (size > 0) return `(${areaCode}`
+    return cleanedInput
+  }
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const input = event.target.value.replace(/\D/g, '')
+    setValue(input)
+
+    rest.onChange?.({
+      ...event,
+      target: {
+        ...event.target,
+        value: input,
+      },
+    })
+  }
+
   return (
     <div className={clsx('w-full', className)}>
       <div className="flex items-center justify-between">
@@ -38,13 +69,14 @@ export const Input = forwardRef(function Input(
         )}
         <input
           ref={ref}
-          {...rest}
+          type={type}
+          value={type === 'tel' ? formatPhoneNumber(value) : value}
+          onChange={handleChange}
           className={clsx(
             'placeholder-contrast-gray-500 w-full bg-transparent px-6 py-3 text-foreground placeholder:font-normal focus:outline-none',
-            {
-              'py-3 pl-10 pr-6': prepend,
-            }
+            { 'py-3 pl-10 pr-6': prepend }
           )}
+          {...rest}
         />
       </div>
       {error != null && error !== '' && <span className="text-xs text-error">{error}</span>}
