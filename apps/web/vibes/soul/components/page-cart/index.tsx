@@ -23,9 +23,9 @@ interface CartPageProps {
   logo: string | Image
   products: CartLineItem[]
   subtotal: string
-  removeLineItemAction(id: string): Promise<void> //formData.get('id')
-  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
-  // redirectToCheckoutAction(): Promise<void>
+  removeLineItemAction(id: string): Promise<void>
+  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>
+  redirectToCheckoutAction(): Promise<void>
   footerLinks: Section[]
   copyright: string
 }
@@ -73,7 +73,7 @@ export const CartPage = function CartPage({
   subtotal,
   removeLineItemAction,
   updateLineItemQuantityAction,
-  // redirectToCheckoutAction,
+  redirectToCheckoutAction,
   footerLinks,
   copyright,
 }: CartPageProps) {
@@ -119,7 +119,7 @@ export const CartPage = function CartPage({
         }}
         removeLineItemAction={removeLineItemAction}
         updateLineItemQuantityAction={updateLineItemQuantityAction}
-        // redirectToCheckoutAction={}
+        redirectToCheckoutAction={redirectToCheckoutAction}
       />
 
       <Subscribe

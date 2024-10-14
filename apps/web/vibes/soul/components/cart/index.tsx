@@ -52,7 +52,7 @@ interface CartProps {
   loadingAriaLabel?: string
   removeLineItemAction(id: string): Promise<void> //formData.get('id')
   updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
-  // redirectToCheckoutAction(): Promise<void>
+  redirectToCheckoutAction(): Promise<void>
 }
 
 export const Cart = function Cart({
@@ -65,7 +65,7 @@ export const Cart = function Cart({
 
   removeLineItemAction,
   updateLineItemQuantityAction,
-  // redirectToCheckoutAction,
+  redirectToCheckoutAction,
 }: CartProps) {
   return (
     <Suspense fallback={<CartSkeleton title={title} />}>
@@ -78,7 +78,7 @@ export const Cart = function Cart({
         loadingAriaLabel={loadingAriaLabel}
         removeLineItemAction={removeLineItemAction}
         updateLineItemQuantityAction={updateLineItemQuantityAction}
-        // redirectToCheckoutAction={redirectToCheckoutAction}
+        redirectToCheckoutAction={redirectToCheckoutAction}
       />
     </Suspense>
   )
@@ -93,7 +93,7 @@ async function CartUI({
   loadingAriaLabel,
   removeLineItemAction,
   updateLineItemQuantityAction,
-  // redirectToCheckoutAction,
+  redirectToCheckoutAction,
 }: CartProps) {
   const resolvedLineItems = await Promise.resolve(lineItems)
 
@@ -194,8 +194,11 @@ async function CartUI({
               </tfoot>
             )}
           </table>
-          <Button className="mt-10 w-full">{summary.ctaLabel ?? 'Checkout'}</Button>
-          {/* TODO: Is this supposed to be a form submission as well? with the redirectToCheckoutAction prop passed? */}
+          <form action={redirectToCheckoutAction}>
+            <Button className="mt-10 w-full" type="submit">
+              {summary.ctaLabel ?? 'Checkout'}
+            </Button>
+          </form>
         </div>
       </div>
     </div>

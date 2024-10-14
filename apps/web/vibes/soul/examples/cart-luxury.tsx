@@ -1,5 +1,6 @@
 import { Cart } from '@/vibes/soul/components/cart'
 import {
+  redirectToCheckoutAction,
   removeLineItemAction,
   updateLineItemQuantityAction,
 } from '@/vibes/soul/components/page-cart/actions-luxury'
@@ -36,7 +37,7 @@ export default async function Preview() {
       }}
       removeLineItemAction={removeLineItemAction}
       updateLineItemQuantityAction={updateLineItemQuantityAction}
-      // redirectToCheckoutAction={}
+      redirectToCheckoutAction={redirectToCheckoutAction}
     />
   )
 }

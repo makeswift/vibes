@@ -1,6 +1,7 @@
 'use server'
 
 import { revalidateTag } from 'next/cache'
+import { redirect } from 'next/navigation'
 
 import {
   removeProduct,
@@ -23,4 +24,8 @@ export async function updateLineItemQuantityAction({
 }): Promise<void> {
   updateProductQuantity(id, quantity)
   revalidateTag('products-luxury')
+}
+
+export async function redirectToCheckoutAction() {
+  redirect(`/checkout`)
 }
