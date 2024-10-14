@@ -21,7 +21,7 @@ export const Counter = function Counter({
   updateLineItemQuantityAction,
 }: Props) {
   const decrement = () => {
-    if (current > 0) {
+    if (current > 1) {
       return current - 1
     } else {
       return current
