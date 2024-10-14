@@ -9,7 +9,6 @@ interface Props {
   id: string
   current?: number
   max?: number
-  type?: 'button' | 'submit'
   updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
 }
 
@@ -17,7 +16,6 @@ export const Counter = function Counter({
   id,
   current = 0,
   max = 20,
-  type = 'button',
   updateLineItemQuantityAction,
 }: Props) {
   const decrement = () => {
