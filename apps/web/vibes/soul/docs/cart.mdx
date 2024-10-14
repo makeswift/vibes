@@ -49,6 +49,40 @@ const subtotal = await getSubtotal()`}</CodeBlock>
 />
 `}</CodeBlock>
 
+### Internationalization
+
+Integrating internationalization into your Vibes components starts at the application level. You'll need a dictionary of strings that correspond to the properties of the `Cart` component. For example, the `title` property of the `Cart` component would have a corresponding key-value pair in the dictionary like so:
+
+<CodeBlock lang="json">
+  {`
+{
+  "CartPage": {
+    "title": "Hello world!",
+    //...
+  }
+}`}
+</CodeBlock>
+
+To setup internationalization, we recommend using a package like [next-intl](https://next-intl-docs.vercel.app/). After it's configured, you can retrieve translated strings via the `useTranslations` hook. You can then pass the translated string into each component property appropriately.
+
+<CodeBlock lang="tsx">
+  {`import { useTranslations } from 'next-intl';
+ 
+export default function CartPage() {
+  const t = useTranslations('CartPage');
+  return (
+    <div>
+        <Cart
+            title={t('title')}
+            // ...
+        />
+    </div>
+  );
+}`}
+</CodeBlock>
+
+For full setup instructions, refer to the [next-intl getting started docs.](https://next-intl-docs.vercel.app/docs/getting-started)
+
 ## API Reference
 
 ### `Cart`
