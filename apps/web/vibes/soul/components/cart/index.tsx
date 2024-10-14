@@ -28,9 +28,9 @@ interface CartSummary {
   shippingLabel?: string
   shipping?: string
   taxLabel?: string
-  tax: string | Promise<string>
+  tax?: string | Promise<string>
   grandTotalLabel?: string
-  grandTotal: string | Promise<string>
+  grandTotal?: string | Promise<string>
   // TODO: summary.ctaLabel isn't in the Linear doc... Looks like we also need Checkout CTA Label so I added it here
   ctaLabel?: string
 }
@@ -158,24 +158,30 @@ async function CartUI({
                 <td>{summary.subtotalLabel ?? 'Subtotal'}</td>
                 <td className="py-4 text-right">{summary.subtotal}</td>
               </tr>
-              <tr className="border-b border-contrast-100">
-                <td>{summary.shippingLabel ?? 'Shipping'}</td>
-                <td className="py-4 text-right">{summary.shipping ?? 'TBD'}</td>
-              </tr>
-              <tr>
-                <td>Tax</td>
-                <td className="py-4 text-right">{summary.tax ?? 'TBD'}</td>
-              </tr>
+              {summary.shipping && (
+                <tr className="border-b border-contrast-100">
+                  <td>{summary.shippingLabel ?? 'Shipping'}</td>
+                  <td className="py-4 text-right">{summary.shipping}</td>
+                </tr>
+              )}
+              {summary.tax && (
+                <tr>
+                  <td>{summary.taxLabel ?? 'Tax'}</td>
+                  <td className="py-4 text-right">{summary.tax}</td>
+                </tr>
+              )}
             </tbody>
-            {/* TODO: when shipping and tax are TBD, it doesn’t make sense to display Grand Total here... Commenting out for now. Should I remove it? In that case should we remove the summary.grandTotalLabel & summary.grandTotal prop defs? */}
-            {/* <tfoot>
-                  <tr className="text-xl">
-                    <th scope="row" className="text-left">
-                      {summary.grandTotalLabel ?? 'Grand Total'}
-                    </th>
-                    <td className="py-10 text-right">{summary.grandTotal}</td>
-                  </tr>
-                </tfoot> */}
+
+            {summary.grandTotal && (
+              <tfoot>
+                <tr className="text-xl">
+                  <th scope="row" className="text-left">
+                    {summary.grandTotalLabel ?? 'Grand Total'}
+                  </th>
+                  <td className="py-10 text-right">{summary.grandTotal}</td>
+                </tr>
+              </tfoot>
+            )}
           </table>
           <Button className="mt-10 w-full">{summary.ctaLabel ?? 'Checkout'}</Button>
           {/* TODO: Is this supposed to be a form submission as well? with the redirectToCheckoutAction prop passed? */}
