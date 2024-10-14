@@ -90,7 +90,7 @@ For full setup instructions, refer to the [next-intl getting started docs.](http
 | Prop                           | Type                                                                                                    | Default  |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------- | -------- |
 | `title?`                       | `string`                                                                                                | `"Cart"` |
-| `lineItems`                    | [`CartLineItem[]`](#cartlineitem)                                                                       |          |
+| `lineItems`                    | [`CartLineItem[]`](#cartlineitem) \| [`Promise<CartLineItem[]`](#cartlineitem)>                         |          |
 | `summary`                      | [`CartSummary`](#cartsummary)                                                                           |          |
 | `emptyState`                   | [`CartEmptyState`](#cartemptystate)                                                                     |          |
 | `removeLineItemAction`         | `function` <Tooltip content='(id: string) => Promise<void>' />                                          |          |
@@ -110,16 +110,19 @@ For full setup instructions, refer to the [next-intl getting started docs.](http
 
 ### `CartSummary`
 
-| Prop               | Type     | Default             |
-| ------------------ | -------- | ------------------- |
-| `title?`           | `string` | `"Summary"`         |
-| `caption?`         | `string` | `"Receipt Summary"` |
-| `subtotal`         | `string` |                     |
-| `subtotalLabel?`   | `string` | `"Subtotal"`        |
-| `shippingLabel?`   | `string` | `"Shipping"`        |
-| `taxLabel?`        | `string` |                     |
-| `grandTotalLabel?` | `string` | `"Grand Total"`     |
-| `grandTotal`       | `string` |                     |
+| Prop               | Type                          | Default             |
+| ------------------ | ----------------------------- | ------------------- |
+| `title?`           | `string`                      | `"Summary"`         |
+| `caption?`         | `string`                      | `"Receipt Summary"` |
+| `subtotalLabel?`   | `string`                      | `"Subtotal"`        |
+| `subtotal`         | `string` \| `Promise<string>` |                     |
+| `shippingLabel?`   | `string`                      | `"Shipping"`        |
+| `shipping?`        | `string`                      |                     |
+| `taxLabel?`        | `string`                      |                     |
+| `tax?`             | `string` \| `Promise<string>` |                     |
+| `grandTotalLabel?` | `string`                      | `"Grand Total"`     |
+| `grandTotal`       | `string` \| `Promise<string>` |                     |
+| `ctaLabel?`        | `string`                      |                     |
 
 ### `CartEmptyState`
 
