@@ -1,18 +1,16 @@
 import { DecrementButton } from './decrement-button'
 import { IncrementButton } from './increment-button'
 
-// This is the Counter Submission Component
-
-// TODO: Since we need a Counter with an input and no submit buttons on the PDP page, should I create another reusable component? or should that be a one off instance and this remains the library component?
-
 interface Props {
   id: string
   current?: number
   max?: number
   decrementAriaLabel?: string
   incrementAriaLabel?: string
-  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void> //formData.get('id'), formData.get('quantity')
+  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>
 }
+
+// TODO: This can be refactored for the PDP page. Use Input instead of span.
 
 export const Counter = function Counter({
   id,
@@ -23,11 +21,7 @@ export const Counter = function Counter({
   updateLineItemQuantityAction,
 }: Props) {
   const decrement = () => {
-    if (current > 1) {
-      return current - 1
-    } else {
-      return current
-    }
+    return current - 1
   }
   const increment = () => {
     return Math.min(current + 1, max ?? current + 1)
