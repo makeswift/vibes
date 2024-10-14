@@ -92,16 +92,18 @@ async function CartUI({
 
   const totalQuantity = resolvedLineItems.reduce((total, item) => total + item.quantity, 0)
 
+  if (resolvedLineItems.length === 0) {
+    return <CartEmptyState {...emptyState} />
+  }
+
   return (
     <div className="mx-auto max-w-screen-2xl @container">
       <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
         {/* Cart Side */}
-        <div className={clsx(resolvedLineItems.length > 0 && '@4xl:w-2/3', 'w-full')}>
+        <div className="w-full">
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             {title}
-            {resolvedLineItems.length > 0 && (
-              <span className="ml-4 text-contrast-200">{totalQuantity}</span>
-            )}
+            <span className="ml-4 text-contrast-200">{totalQuantity}</span>
           </h1>
 
           {/* Cart Items */}
@@ -143,47 +145,32 @@ async function CartUI({
                 </li>
               )
             )}
-
-            {resolvedLineItems.length === 0 && (
-              <div className="flex min-h-96 flex-col items-center justify-center">
-                <span className="mb-3 text-center font-heading text-5xl font-medium leading-none text-foreground">
-                  {emptyState.title}
-                </span>
-                <h2 className="mb-10 text-center text-lg leading-none text-contrast-300">
-                  {emptyState.subtitle}
-                </h2>
-                <Button asChild>
-                  <Link href={emptyState.cta.href}>{emptyState.cta.label}</Link>
-                </Button>
-              </div>
-            )}
           </ul>
         </div>
 
         {/* Summary Side */}
-        {resolvedLineItems.length > 0 && (
-          <div className="@4xl:w-1/3">
-            <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
-              {summary.title ?? 'Summary'}
-            </h2>
-            <table aria-label="Receipt Summary" className="w-full">
-              <caption className="sr-only">{summary.caption ?? 'Receipt Summary'}</caption>
-              <tbody>
-                <tr className="border-b border-contrast-100">
-                  <td>{summary.subtotalLabel ?? 'Subtotal'}</td>
-                  <td className="py-4 text-right">{summary.subtotal}</td>
-                </tr>
-                <tr className="border-b border-contrast-100">
-                  <td>{summary.shippingLabel ?? 'Shipping'}</td>
-                  <td className="py-4 text-right">TBD</td>
-                </tr>
-                <tr>
-                  <td>Tax</td>
-                  <td className="py-4 text-right">TBD</td>
-                </tr>
-              </tbody>
-              {/* TODO: when shipping and tax are TBD, it doesn’t make sense to display Grand Total here... Commenting out for now. Should I remove it? In that case should we remove the summary.grandTotalLabel & summary.grandTotal prop defs? */}
-              {/* <tfoot>
+        <div className="@4xl:w-1/3">
+          <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
+            {summary.title ?? 'Summary'}
+          </h2>
+          <table aria-label="Receipt Summary" className="w-full">
+            <caption className="sr-only">{summary.caption ?? 'Receipt Summary'}</caption>
+            <tbody>
+              <tr className="border-b border-contrast-100">
+                <td>{summary.subtotalLabel ?? 'Subtotal'}</td>
+                <td className="py-4 text-right">{summary.subtotal}</td>
+              </tr>
+              <tr className="border-b border-contrast-100">
+                <td>{summary.shippingLabel ?? 'Shipping'}</td>
+                <td className="py-4 text-right">TBD</td>
+              </tr>
+              <tr>
+                <td>Tax</td>
+                <td className="py-4 text-right">TBD</td>
+              </tr>
+            </tbody>
+            {/* TODO: when shipping and tax are TBD, it doesn’t make sense to display Grand Total here... Commenting out for now. Should I remove it? In that case should we remove the summary.grandTotalLabel & summary.grandTotal prop defs? */}
+            {/* <tfoot>
                   <tr className="text-xl">
                     <th scope="row" className="text-left">
                       {summary.grandTotalLabel ?? 'Grand Total'}
@@ -191,12 +178,25 @@ async function CartUI({
                     <td className="py-10 text-right">{summary.grandTotal}</td>
                   </tr>
                 </tfoot> */}
-            </table>
-            <Button className="mt-10 w-full">{summary.ctaLabel ?? 'Checkout'}</Button>
-            {/* TODO: Is this supposed to be a form submission as well? with the redirectToCheckoutAction prop passed? */}
-          </div>
-        )}
+          </table>
+          <Button className="mt-10 w-full">{summary.ctaLabel ?? 'Checkout'}</Button>
+          {/* TODO: Is this supposed to be a form submission as well? with the redirectToCheckoutAction prop passed? */}
+        </div>
       </div>
+    </div>
+  )
+}
+
+function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
+  return (
+    <div className="mt-20 flex min-h-96 flex-col items-center justify-center @container">
+      <span className="mb-3 text-center font-heading text-2xl font-medium leading-none text-foreground @lg:text-4xl @3xl:text-5xl ">
+        {title}
+      </span>
+      <h2 className="mb-10 text-center leading-none text-contrast-300 @3xl:text-lg">{subtitle}</h2>
+      <Button asChild>
+        <Link href={cta.href}>{cta.label}</Link>
+      </Button>
     </div>
   )
 }
