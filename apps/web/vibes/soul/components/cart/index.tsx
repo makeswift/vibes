@@ -90,9 +90,7 @@ async function CartUI({
 }: CartProps) {
   const resolvedLineItems = await Promise.resolve(lineItems)
 
-  const calculateCartQuantity = (items: CartLineItem[]) => {
-    return items.reduce((total, item) => total + item.quantity, 0)
-  }
+  const totalQuantity = resolvedLineItems.reduce((total, item) => total + item.quantity, 0)
 
   return (
     <div className="mx-auto max-w-screen-2xl @container">
@@ -102,9 +100,7 @@ async function CartUI({
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             {title}
             {resolvedLineItems.length > 0 && (
-              <span className="ml-4 text-contrast-200">
-                {calculateCartQuantity(resolvedLineItems)}
-              </span>
+              <span className="ml-4 text-contrast-200">{totalQuantity}</span>
             )}
           </h1>
 
