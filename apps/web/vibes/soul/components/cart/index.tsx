@@ -2,8 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense } from 'react'
 
-import { clsx } from 'clsx'
-
 import { Button } from '@/vibes/soul/components/button'
 import { DeleteLineItemButton } from '@/vibes/soul/components/cart/delete-line-item-button'
 import { Counter } from '@/vibes/soul/components/counter'
@@ -28,6 +26,7 @@ interface CartSummary {
   subtotalLabel?: string
   subtotal: string | Promise<string>
   shippingLabel?: string
+  shipping?: string
   taxLabel?: string
   tax: string | Promise<string>
   grandTotalLabel?: string
@@ -161,11 +160,11 @@ async function CartUI({
               </tr>
               <tr className="border-b border-contrast-100">
                 <td>{summary.shippingLabel ?? 'Shipping'}</td>
-                <td className="py-4 text-right">TBD</td>
+                <td className="py-4 text-right">{summary.shipping ?? 'TBD'}</td>
               </tr>
               <tr>
                 <td>Tax</td>
-                <td className="py-4 text-right">TBD</td>
+                <td className="py-4 text-right">{summary.tax ?? 'TBD'}</td>
               </tr>
             </tbody>
             {/* TODO: when shipping and tax are TBD, it doesn’t make sense to display Grand Total here... Commenting out for now. Should I remove it? In that case should we remove the summary.grandTotalLabel & summary.grandTotal prop defs? */}

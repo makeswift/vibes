@@ -102,9 +102,10 @@ export const CartPage = function CartPage({
           caption: 'Shipping & taxes calculated at checkout',
           subtotalLabel: 'Subtotal',
           shippingLabel: 'Shipping',
+          shipping: 'TBD',
           taxLabel: 'Tax',
           grandTotalLabel: 'Total',
-          tax: '$11.60',
+          tax: 'TBD',
           grandTotal: '$127.60',
           ctaLabel: 'Checkout',
         }}
