@@ -1,10 +1,10 @@
-import { Cart, CartLineItem } from '@/vibes/soul/components/cart'
 import {
   redirectToCheckoutAction,
   removeLineItemAction,
   updateLineItemQuantityAction,
-} from '@/vibes/soul/components/page-cart/actions-electric'
-import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-electric'
+} from '@/vibes/soul/pages/cart/actions-electric'
+import { getProducts, getSubtotal } from '@/vibes/soul/pages/cart/products-electric'
+import { Cart, CartLineItem } from '@/vibes/soul/sections/cart'
 
 export default function Preview() {
   const products = new Promise<CartLineItem[]>(res => setTimeout(() => res(getProducts()), 5000))

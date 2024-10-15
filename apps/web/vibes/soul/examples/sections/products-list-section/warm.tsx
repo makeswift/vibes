@@ -1,5 +1,5 @@
-import { Product } from '@/vibes/soul/components/product-card'
 import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm'
+import { Product } from '@/vibes/soul/primitives/product-card'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 import { Filter } from '@/vibes/soul/sections/products-list-section/filters'
 

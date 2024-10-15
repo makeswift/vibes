@@ -3,9 +3,9 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { Input } from '@/vibes/soul/components/input'
+import { Input } from '@/vibes/soul/primitives/input'
 
-import { Button } from '../../components/button'
+import { Button } from '../../primitives/button'
 
 interface Props {
   name: string

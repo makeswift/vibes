@@ -4,8 +4,8 @@ import { useState } from 'react'
 
 import { clsx } from 'clsx'
 
-import { Alert } from '@/vibes/soul/components/alert'
-import { Button } from '@/vibes/soul/components/button'
+import { Alert } from '@/vibes/soul/primitives/alert'
+import { Button } from '@/vibes/soul/primitives/button'
 
 export default function Preview() {
   const [showAlert, setShowAlert] = useState(false)

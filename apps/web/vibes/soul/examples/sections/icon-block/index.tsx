@@ -1,4 +1,4 @@
-import { IconBlock, IconBlockProps } from '@/vibes/soul/components/icon-block'
+import { IconBlock, IconBlockProps } from '@/vibes/soul/sections/icon-block'
 
 export default function Preview() {
   const listOf6: IconBlockProps['list'] = [

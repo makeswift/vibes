@@ -2,9 +2,9 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-import { Accordions } from '@/vibes/soul/components/accordions'
-import { Button } from '@/vibes/soul/components/button'
-import { SidePanelClose } from '@/vibes/soul/components/side-panel'
+import { Accordions } from '@/vibes/soul/primitives/accordions'
+import { Button } from '@/vibes/soul/primitives/button'
+import { SidePanelClose } from '@/vibes/soul/primitives/side-panel'
 
 import { FilterCheckboxGroup } from './filter-checkbox-group'
 import { FilterRange } from './filter-range'

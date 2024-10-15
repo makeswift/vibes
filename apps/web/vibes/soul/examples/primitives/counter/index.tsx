@@ -1,4 +1,4 @@
-import { Counter } from '@/vibes/soul/components/counter'
+import { Counter } from '@/vibes/soul/primitives/counter'
 
 export default function Preview() {
   return (

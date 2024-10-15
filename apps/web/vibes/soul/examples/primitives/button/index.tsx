@@ -1,4 +1,4 @@
-import { Button } from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/primitives/button'
 
 export default function Preview() {
   return (

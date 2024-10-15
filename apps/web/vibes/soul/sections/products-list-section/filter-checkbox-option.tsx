@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-import { Chip } from '@/vibes/soul/components/chip'
+import { Chip } from '@/vibes/soul/primitives/chip'
 
 interface Props {
   label: string

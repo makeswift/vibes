@@ -1,4 +1,4 @@
-import { Spinner } from '@/vibes/soul/components/spinner'
+import { Spinner } from '@/vibes/soul/primitives/spinner'
 
 export default function Preview() {
   return (

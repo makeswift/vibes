@@ -1,4 +1,4 @@
-import { AnimatedLink } from '@/vibes/soul/components/animated-link'
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link'
 
 export default function Preview() {
   return (

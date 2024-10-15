@@ -118,6 +118,7 @@ export const navigation = [
       //   file: 'docs/slide-carousel.mdx',
       //   component: 'slide-carousel',
       // },
+
       {
         title: 'Spinner',
         slug: 'spinner',
@@ -207,6 +208,12 @@ export const navigation = [
         component: 'product-detail',
       },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
+      {
+        title: 'Slideshow',
+        slug: 'slideshow',
+        file: 'docs/slideshow.mdx',
+        component: 'slideshow',
+      },
       {
         title: 'Subscribe',
         slug: 'subscribe',

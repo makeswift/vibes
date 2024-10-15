@@ -1,4 +1,4 @@
-import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
+import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 
 export default function Preview() {
   return (
