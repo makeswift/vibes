@@ -238,6 +238,11 @@ export const navigation = [
         slug: 'page-blog',
         file: 'docs/page-blog.mdx',
       },
+      {
+        title: 'Not Found',
+        slug: 'page-not-found',
+        file: 'docs/page-not-found.mdx',
+      },
     ],
   },
 ] satisfies Navigation
