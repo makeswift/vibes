@@ -49,6 +49,23 @@ const subtotal = await getSubtotal()`}</CodeBlock>
 />
 `}</CodeBlock>
 
+### Streaming
+
+Notice in the [API Reference](#api-reference) that some properties accept data (ex. `string` or `number`) or a `Promise`. By passing a `Promise`, you enable the component to stream data from the server as it's loaded.
+
+You can view this in the following example where the `lineItems` and `summary.subtotal` properties are passed as Promises:
+
+<Preview
+  vibeSlug="soul"
+  componentName={{
+    electric: 'cart-loading-electric-example',
+    luxury: 'cart-loading-luxury-example',
+    warm: 'cart-loading-warm-example',
+  }}
+>
+  Something
+</Preview>
+
 ### Internationalization
 
 Integrating internationalization into your Vibes components starts at the application level. You'll need a dictionary of strings that correspond to the properties of the `Cart` component. For example, the `title` property of the `Cart` component would have a corresponding key-value pair in the dictionary like so:
