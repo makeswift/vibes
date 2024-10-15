@@ -34,11 +34,12 @@ export const Counter = function Counter({
         )}
         onClick={decrement}
         aria-label={decrementAriaLabel ?? 'Decrease count'}
-        type={type}
         disabled={count === 0}
       >
         <Minus
-          className={`text-contrast-300 transition-colors duration-300 ${count > 0 ? 'group-hover:text-foreground' : ''}`}
+          className={clsx('text-contrast-300 transition-colors duration-300', {
+            'group-hover:text-foreground': count > 0,
+          })}
           strokeWidth={1.5}
           size={18}
         />
