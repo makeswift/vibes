@@ -14,6 +14,8 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/
 import { Header, Links } from '@/vibes/soul/components/header'
 import { Subscribe } from '@/vibes/soul/components/subscribe'
 
+import { Action } from '../cart/remove-button'
+
 interface Image {
   src: string
   alt: string
@@ -23,9 +25,9 @@ interface CartPageProps {
   logo: string | Image
   lineItems: CartLineItem[] | Promise<CartLineItem[]>
   subtotal: string
-  removeLineItemAction(id: string): Promise<void>
-  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>
-  redirectToCheckoutAction(): Promise<void>
+  removeLineItemAction: Action<{ error: string | null }, string>
+  updateLineItemQuantityAction: Action<{ error: string | null }, { id: string; quantity: number }>
+  redirectToCheckoutAction: Action<{ error: string | null }, unknown>
   footerLinks: Section[]
   copyright: string
 }
