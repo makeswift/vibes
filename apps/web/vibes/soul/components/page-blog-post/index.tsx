@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
 import { BlogPostCard } from '@/vibes/soul/components/blog-post-card'
 import { BlogPostContent } from '@/vibes/soul/components/blog-post-content'
@@ -25,6 +27,11 @@ interface BlogPostPageProps {
   date: string
   image: string
   content: string
+  relatedPostsTitle: string
+  cta: {
+    href: string
+    label: string
+  }
 }
 
 const socialMediaLinks = [
@@ -70,6 +77,8 @@ export const BlogPostPage = function BlogPostPage({
   date,
   content,
   image,
+  relatedPostsTitle,
+  cta,
 }: BlogPostPageProps) {
   return (
     <>
@@ -77,6 +86,7 @@ export const BlogPostPage = function BlogPostPage({
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
+
       <Header
         links={headerLinks}
         logo="SOUL"
@@ -94,6 +104,20 @@ export const BlogPostPage = function BlogPostPage({
         image={image}
         content={content}
       />
+
+      <section className="@container">
+        <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap justify-between gap-5 px-3 @xl:px-6 @4xl:items-end @5xl:px-20">
+          <h2 className="font-heading text-2xl font-medium leading-none">{relatedPostsTitle}</h2>
+          {cta != null && cta.href !== '' && cta.label !== '' && (
+            <Link
+              href={cta.href}
+              className="rounded-lg font-semibold text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2"
+            >
+              {cta.label}
+            </Link>
+          )}
+        </div>
+      </section>
 
       <Carousel
         className="pb-10 @4xl:pb-20"
@@ -122,10 +146,12 @@ export const BlogPostPage = function BlogPostPage({
           }
         )}
       </Carousel>
+
       <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
       />
+
       <Footer
         logo="SOUL"
         sections={[
