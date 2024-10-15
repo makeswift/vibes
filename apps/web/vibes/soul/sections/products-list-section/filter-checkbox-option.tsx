@@ -23,14 +23,19 @@ export function FilterCheckboxOption({ label, value, name }: Props) {
   const searchParams = useSearchParams()
   const activeOptions = searchParams.getAll(name)
   const active = activeOptions.includes(value)
-  const currentParams = Array.from(searchParams.entries())
-  const newParams = active
-    ? currentParams.filter(([k, v]) => k !== name || v !== value)
-    : [...currentParams, [name, value]]
-
-  const href = createUrl(pathname, new URLSearchParams(newParams))
 
   return (
-    <Chip label={label} onClick={() => router.push(href, { scroll: false })} selected={active} />
+    <Chip
+      label={label}
+      onClick={() => {
+        const currentParams = Array.from(searchParams.entries())
+        const newParams = active
+          ? currentParams.filter(([k, v]) => k !== name || v !== value)
+          : [...currentParams, [name, value]]
+
+        router.replace(createUrl(pathname, new URLSearchParams(newParams)), { scroll: false })
+      }}
+      selected={active}
+    />
   )
 }

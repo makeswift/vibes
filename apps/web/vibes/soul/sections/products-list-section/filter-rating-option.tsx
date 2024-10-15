@@ -23,12 +23,6 @@ export function FilterRatingOption({ value, name }: Props) {
   const searchParams = useSearchParams()
   const activeOptions = searchParams.getAll(name)
   const active = activeOptions.includes(value.toString())
-  const currentParams = Array.from(searchParams.entries())
-  const newParams = active
-    ? currentParams.filter(([k, v]) => k !== name || v !== value.toString())
-    : [...currentParams, [name, value.toString()]]
-
-  const href = createUrl(pathname, new URLSearchParams(newParams))
 
   return (
     <Checkbox
@@ -36,7 +30,14 @@ export function FilterRatingOption({ value, name }: Props) {
       label={<Rating rating={value} />}
       checked={active}
       setChecked={() => {
-        router.push(href, { scroll: false })
+        const params = Array.from(searchParams.entries())
+        const newParams = active
+          ? params.filter(([k, v]) => k !== name || v !== value.toString())
+          : [...params, [name, value.toString()]]
+
+        const href = createUrl(pathname, new URLSearchParams(newParams))
+
+        router.replace(href, { scroll: false })
       }}
     />
   )

@@ -63,7 +63,7 @@ export function FilterRange({ name, min, max, minLabel, maxLabel }: Props) {
             const params = new URLSearchParams(searchParams.toString())
 
             params.set(`${name}-min`, clamped.toString())
-            router.push(createUrl(pathname, params), { scroll: false })
+            router.replace(createUrl(pathname, params), { scroll: false })
 
             setMinValue(clamped)
           }}
@@ -81,7 +81,7 @@ export function FilterRange({ name, min, max, minLabel, maxLabel }: Props) {
             const params = new URLSearchParams(searchParams.toString())
 
             params.set(`${name}-max`, clamped.toString())
-            router.push(createUrl(pathname, params), { scroll: false })
+            router.replace(createUrl(pathname, params), { scroll: false })
 
             setMaxValue(clamped)
           }}
@@ -98,7 +98,7 @@ export function FilterRange({ name, min, max, minLabel, maxLabel }: Props) {
               if (minValue != null) params.set(`${name}-min`, minValue.toString())
               if (maxValue != null) params.set(`${name}-max`, maxValue.toString())
 
-              router.push(createUrl(pathname, params), { scroll: false })
+              router.replace(createUrl(pathname, params), { scroll: false })
             }}
           >
             Apply Changes
