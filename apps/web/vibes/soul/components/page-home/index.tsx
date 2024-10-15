@@ -3,12 +3,13 @@ import { CardProps } from '@/vibes/soul/components/card'
 import { CardCarousel } from '@/vibes/soul/components/card-carousel'
 import { Feature, FeatureProps } from '@/vibes/soul/components/feature'
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/components/featured-image'
-import { FeaturedProductsCarousel } from '@/vibes/soul/components/featured-products-carousel'
+import { Product } from '@/vibes/soul/components/product-card'
+import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import {
   FeaturedProductsList,
   FeaturedProductsListProps,
-} from '@/vibes/soul/components/featured-products-list'
-import { Footer, Section } from '@/vibes/soul/components/footer'
+} from '@/vibes/soul/sections/featured-products-list'
+import { Footer, Section } from '@/vibes/soul/sections/footer'
 import {
   Amex,
   ApplePay,
@@ -17,12 +18,11 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/components/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
-import { Header, Links } from '@/vibes/soul/components/header'
-import { Product } from '@/vibes/soul/components/product-card'
-import { Slide, Slideshow } from '@/vibes/soul/components/slideshow'
-import { Subscribe } from '@/vibes/soul/components/subscribe'
+} from '@/vibes/soul/sections/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
+import { Header, Links } from '@/vibes/soul/sections/header'
+import { Slide, Slideshow } from '@/vibes/soul/sections/slideshow'
+import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
 interface HomePageProps {
   headerLinks: Links[]

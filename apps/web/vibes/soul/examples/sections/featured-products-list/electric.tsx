@@ -1,4 +1,4 @@
-import { FeaturedProductsList } from '@/vibes/soul/components/featured-products-list'
+import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list'
 
 export const featuredProducts = {
   title: 'Our Plants',

@@ -1,6 +1,8 @@
 import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
 import { FeaturedBlogPostList } from '@/vibes/soul/components/featured-blog-post-list'
-import { Footer } from '@/vibes/soul/components/footer'
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
+import { Footer } from '@/vibes/soul/sections/footer'
 import {
   Amex,
   ApplePay,
@@ -9,12 +11,10 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/components/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
-import { Header } from '@/vibes/soul/components/header'
-import { Subscribe } from '@/vibes/soul/components/subscribe'
-import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
-import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
+} from '@/vibes/soul/sections/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
+import { Header } from '@/vibes/soul/sections/header'
+import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
 const socialMediaLinks = [
   {
