@@ -29,7 +29,7 @@ export function FilterToggleGroup({ name, options }: Props) {
         const params = new URLSearchParams(searchParams.toString())
 
         params.delete(name)
-        next.forEach(value => params.append(name, value))
+        next.forEach(v => params.append(name, v))
 
         router.replace(createUrl(pathname, new URLSearchParams(params)))
       }}

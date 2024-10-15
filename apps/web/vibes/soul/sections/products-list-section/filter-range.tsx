@@ -3,9 +3,8 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+import { Button } from '@/vibes/soul/primitives/button'
 import { Input } from '@/vibes/soul/primitives/input'
-
-import { Button } from '../../primitives/button'
 
 interface Props {
   name: string
@@ -28,7 +27,7 @@ const parseNumberOrNull = (value: string | null) => {
   return Number.isNaN(parsed) ? null : parsed
 }
 
-const clamp = (value: number, min: number = -Infinity, max: number = Infinity) =>
+const clamp = (value: number, min = -Infinity, max = Infinity) =>
   Math.min(Math.max(value, min), max)
 
 export function FilterRange({ name, min, max, minLabel, maxLabel }: Props) {

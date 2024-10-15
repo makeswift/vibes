@@ -44,15 +44,15 @@ function PaginationResolved({ pages }: Props) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const prevHref = previousPage
-    ? createUrl(pathname, updateParam(searchParams, name, previousPage))
-    : null
-  const nextHref = nextPage ? createUrl(pathname, updateParam(searchParams, name, nextPage)) : null
+  const prevHref =
+    previousPage != null ? createUrl(pathname, updateParam(searchParams, name, previousPage)) : null
+  const nextHref =
+    nextPage != null ? createUrl(pathname, updateParam(searchParams, name, nextPage)) : null
 
   return (
     <div className="flex w-full justify-center bg-background py-10 text-xs">
       <div className="flex gap-2">
-        {prevHref ? (
+        {prevHref != null ? (
           <PaginationLink href={prevHref}>
             <ChevronLeft />
           </PaginationLink>
@@ -61,7 +61,7 @@ function PaginationResolved({ pages }: Props) {
             <ChevronLeft />
           </SkeletonLink>
         )}
-        {nextHref ? (
+        {nextHref != null ? (
           <PaginationLink href={nextHref}>
             <ChevronRight />
           </PaginationLink>

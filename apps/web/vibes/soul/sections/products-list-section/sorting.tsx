@@ -1,8 +1,7 @@
 'use client'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
-import { use } from 'react'
+import { Suspense, use } from 'react'
 
 import { Select } from '@/vibes/soul/form/select'
 
@@ -45,10 +44,10 @@ function SortingInner({ label = 'Sort', options, sortParam = 'sort' }: Props) {
       variant="round"
       options={resolved}
       value={value}
-      onValueChange={value => {
+      onValueChange={next => {
         const params = new URLSearchParams(searchParams.toString())
 
-        params.set(sortParam, value)
+        params.set(sortParam, next)
 
         router.replace(createUrl(pathname, params), { scroll: false })
       }}
