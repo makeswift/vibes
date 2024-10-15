@@ -8,6 +8,7 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   loading?: boolean
   asChild?: boolean
+  type?: 'button' | 'submit' | 'reset'
 }
 
 export const Button = function Button({
@@ -19,6 +20,7 @@ export const Button = function Button({
   className,
   children = 'Button',
   asChild = false,
+  type = 'button',
   ...props
 }: Props) {
   const Comp = asChild ? Slot : 'button'
@@ -39,7 +41,7 @@ export const Button = function Button({
         }[variant],
         // After Pseudo Element / Animated Background Styles
         'after:absolute after:inset-0 after:z-0 after:h-full after:w-full after:rounded-full',
-        'after:ease-[cubic-bezier(0.075,0.365,0.000,0.995)] after:transition-[opacity,transform] after:duration-500',
+        'after:transition-[opacity,transform] after:duration-500 after:[animation-timing-function:cubic-bezier(0.075,0.365,0.000,0.995)]',
         'after:-translate-x-[110%]',
         !loading && !disabled && 'hover:after:translate-x-0',
         {
@@ -54,6 +56,7 @@ export const Button = function Button({
         disabled && 'cursor-not-allowed opacity-50',
         className
       )}
+      type={type}
       onClick={onClick}
       aria-busy={loading}
       {...props}

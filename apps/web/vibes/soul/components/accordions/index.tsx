@@ -8,16 +8,16 @@ import { clsx } from 'clsx'
 export interface AccordionItem {
   title: ReactNode
   content: ReactNode
+  defaultOpen?: boolean
 }
 
 interface Props {
   className?: string
   accordions: AccordionItem[]
-  defaultValue?: string[]
 }
 
 export const Accordions = forwardRef(function Accordions(
-  { className, accordions, defaultValue }: Props,
+  { className, accordions }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
@@ -25,16 +25,19 @@ export const Accordions = forwardRef(function Accordions(
       className={className}
       type="multiple"
       ref={ref}
-      defaultValue={defaultValue}
+      defaultValue={accordions.reduce(
+        (acc, accordion, i) => (accordion.defaultOpen ? [...acc, i.toString()] : acc),
+        [] as string[]
+      )}
       asChild
     >
       <ul className="w-full @container">
         {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`${i + 1}`} asChild>
-            <li className="group">
+          <Accordion.Item key={i} value={i.toString()} asChild>
+            <li>
               <Accordion.Header>
                 <Accordion.Trigger asChild>
-                  <div className="flex w-full cursor-pointer items-start py-3 @md:gap-8 @md:py-5">
+                  <div className="group w-full cursor-pointer items-start py-3 last:flex @md:gap-8 @md:py-5">
                     <h3 className="mr-8 flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
                       {accordion.title}
                     </h3>
@@ -45,7 +48,7 @@ export const Accordions = forwardRef(function Accordions(
               <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
                 <div
                   className={clsx(
-                    'pb-4 font-heading text-xl font-medium leading-tight text-foreground @md:text-2xl',
+                    'pb-4 font-body text-xl font-medium leading-tight text-foreground @md:text-2xl',
                     typeof accordion.content === 'string' ? '@md:w-5/6 @lg:w-3/4' : 'w-full'
                   )}
                 >

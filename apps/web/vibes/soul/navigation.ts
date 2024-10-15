@@ -119,6 +119,12 @@ export const navigation = [
       //   component: 'slide-carousel',
       // },
       {
+        title: 'Spinner',
+        slug: 'spinner',
+        file: 'docs/spinner.mdx',
+        component: 'spinner',
+      },
+      {
         title: 'Text Area',
         slug: 'textarea',
         file: 'docs/textarea.mdx',
@@ -189,19 +195,18 @@ export const navigation = [
         component: 'log-in',
       },
       {
+        title: 'Products List Section',
+        slug: 'products-list-section',
+        file: 'docs/products-list-section.mdx',
+        component: 'products-list-section',
+      },
+      {
         title: 'Product Detail',
         slug: 'product-detail',
         file: 'docs/product-detail.mdx',
         component: 'product-detail',
       },
-      {
-        title: 'Products Header',
-        slug: 'products-header',
-        file: 'docs/products-header.mdx',
-        component: 'products-header',
-      },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
-
       {
         title: 'Subscribe',
         slug: 'subscribe',

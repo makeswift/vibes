@@ -8,12 +8,12 @@ import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
-import { CartProduct } from '@/vibes/soul/components/cart'
+import { CartLineItem } from '@/vibes/soul/components/cart'
 import { Checkbox } from '@/vibes/soul/components/checkbox'
 import { CheckoutForm } from '@/vibes/soul/components/checkout/checkout-form'
 import { Input } from '@/vibes/soul/components/input'
 
-export const Checkout = function Checkout({ products }: { products: CartProduct[] }) {
+export const Checkout = function Checkout({ products }: { products: CartLineItem[] }) {
   const [isLoading, setIsLoading] = useState(false)
   const [checked, setChecked] = useState(true)
   const [openAccordion, setOpenAccordion] = useState<string | undefined>(undefined)
@@ -52,7 +52,12 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
               Continue
             </Button>
           </div>
-          <Checkbox checked={checked} setChecked={setChecked} label="Subscribe to our newsletter" />
+          <Checkbox
+            id="newsletter-subscribe"
+            checked={checked}
+            setChecked={setChecked}
+            label="Subscribe to our newsletter"
+          />
           <span className="block pt-8 text-xs">
             Already have an account?{' '}
             <Link href="#" className="font-semibold">
@@ -202,14 +207,14 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
 
                 {/* Mini Products List in Order Summary */}
                 <ul className="flex flex-col gap-y-4">
-                  {products.map(({ id, name, image, price, quantity }) => (
+                  {products.map(({ id, title, image, price, quantity }) => (
                     <li key={id} className="flex items-center justify-between gap-x-4">
                       <div className="flex items-center gap-x-4">
                         {image?.src != null && image.src !== '' && (
                           <div className="relative aspect-[3/4] w-16 overflow-hidden rounded-lg bg-contrast-100">
                             <Image
                               src={image.src}
-                              alt={image.altText}
+                              alt={image.alt}
                               fill
                               sizes="64px"
                               className="h-full w-full object-cover"
@@ -217,7 +222,7 @@ export const Checkout = function Checkout({ products }: { products: CartProduct[
                           </div>
                         )}
                         <div>
-                          <span className="text-sm">{name}</span>
+                          <span className="text-sm">{title}</span>
                           <span className="block text-sm text-contrast-300">x{quantity}</span>
                         </div>
                       </div>

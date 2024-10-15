@@ -8,32 +8,32 @@ import { Minus, Plus } from 'lucide-react'
 interface Props {
   current?: number
   max?: number
-  type?: 'button' | 'submit'
+  decrementAriaLabel?: string
+  incrementAriaLabel?: string
 }
 
-export const Counter = function Counter({ current = 0, max = 20, type = 'button' }: Props) {
+export const Counter = function Counter({
+  current = 0,
+  decrementAriaLabel,
+  incrementAriaLabel,
+}: Props) {
   const [count, setCount] = useState(current)
-
   const decrement = () => {
-    if (count > 0) {
-      setCount(prev => prev - 1)
-    }
+    setCount(prev => prev - 1)
   }
   const increment = () => {
-    if (count < max) {
-      setCount(prev => prev + 1)
-    }
+    setCount(prev => prev + 1)
   }
 
   return (
-    <div className="flex items-center rounded-lg border">
+    <div className="flex items-center justify-between rounded-lg border">
       <button
         className={clsx(
           'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
           { 'hover:bg-contrast-100/50': count > 0 }
         )}
         onClick={decrement}
-        aria-label="Decrease count"
+        aria-label={decrementAriaLabel ?? 'Decrease count'}
         type={type}
         disabled={count === 0}
       >
@@ -43,14 +43,21 @@ export const Counter = function Counter({ current = 0, max = 20, type = 'button'
           size={18}
         />
       </button>
-      <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
-        {count}
-      </span>
+      <input
+        className="w-8 select-none text-center focus-visible:outline-none"
+        // type="number"
+        // style={{
+        //   appearance: 'none', // Remove default styling
+        //   MozAppearance: 'textfield', // For Firefox
+        //   WebkitAppearance: 'none', // For Chrome and Safari
+        // }}
+        value={count}
+      />
+
       <button
         className="group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         onClick={increment}
-        aria-label="Increase count"
-        type={type}
+        aria-label={incrementAriaLabel ?? 'Increase count'}
       >
         <Plus
           className="text-contrast-300 transition-colors duration-300 group-hover:text-foreground"

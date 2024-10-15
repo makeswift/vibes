@@ -7,31 +7,28 @@ import { clsx } from 'clsx'
 import { Badge } from '@/vibes/soul/components/badge'
 import { Button } from '@/vibes/soul/components/button'
 import { Label } from '@/vibes/soul/components/label'
+import { Product } from '@/vibes/soul/components/product-card'
 import { Price, ProductPrice } from '@/vibes/soul/components/product-card/price'
 import { Rating } from '@/vibes/soul/components/rating'
 
 interface Image {
-  altText: string
+  alt: string
   src: string
 }
 
-export interface Product {
-  id: string
-  name: string
-  href: string
-  image?: Image
-  price?: ProductPrice
-  subtitle?: string
-  badge?: string
+export interface CompareCardProduct extends Product {
   description?: string
-  rating?: number
   availability?: string
-  className?: string
 }
 
-export const CompareCard = function CompareCard({
+interface Props extends CompareCardProduct {
+  className?: string
+  href: string
+}
+
+export function CompareCard({
   id,
-  name,
+  title,
   href,
   image,
   price,
@@ -41,7 +38,7 @@ export const CompareCard = function CompareCard({
   rating,
   availability,
   className,
-}: Product & ComponentPropsWithoutRef<'a'>) {
+}: Props) {
   return (
     <Link
       id={id}
@@ -60,14 +57,14 @@ export const CompareCard = function CompareCard({
             src={image.src}
             fill
             sizes="(max-width: 768px) 90vw, 512vw"
-            alt={image.altText}
+            alt={image.alt}
             className="w-full select-none bg-contrast-100 object-cover transition-transform duration-300 ease-in-out"
           />
         )}
       </div>
       <div className="mb-2 flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
-          <span className="line-clamp-2">{name}</span>
+          <span className="line-clamp-2">{title}</span>
           {subtitle != null && subtitle !== '' && (
             <span className="font-normal text-contrast-400">{subtitle}</span>
           )}
