@@ -262,7 +262,7 @@ export const components = [
   {
     name: 'spinner',
     dependencies: ['clsx'],
-    registryDependencies: ['input'],
+    registryDependencies: [],
     files: ['components/spinner/index.tsx'],
   },
   {
