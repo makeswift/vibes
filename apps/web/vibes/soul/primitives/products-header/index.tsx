@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/components/breadcrumbs'
-import { Dropdown } from '@/vibes/soul/components/dropdown'
-import { FilterPanel } from '@/vibes/soul/components/filter-panel'
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
+import { Dropdown } from '@/vibes/soul/primitives/dropdown'
+import { FilterPanel } from '@/vibes/soul/primitives/filter-panel'
 
 interface Props {
   breadcrumbs?: Breadcrumb[]

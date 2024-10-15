@@ -1,4 +1,3 @@
-import { Product } from '@/vibes/soul/components/product-card'
 import { cards } from '@/vibes/soul/examples/sections/card-carousel/electric'
 import { feature } from '@/vibes/soul/examples/sections/feature/electric'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/electric'
@@ -7,6 +6,7 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/el
 import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric'
 import { HomePage } from '@/vibes/soul/pages/home'
+import { Product } from '@/vibes/soul/primitives/product-card'
 import { FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
 
 // Featured Products

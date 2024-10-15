@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { BlogPost } from '@/vibes/soul/components/blog-post-card'
-import { Button } from '@/vibes/soul/components/button'
+import { BlogPost } from '@/vibes/soul/primitives/blog-post-card'
+import { Button } from '@/vibes/soul/primitives/button'
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list'
 
 interface Link {

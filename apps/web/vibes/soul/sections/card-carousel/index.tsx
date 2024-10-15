@@ -1,7 +1,7 @@
 import { clsx } from 'clsx'
 
-import { Card, CardProps, CardSkeleton } from '@/vibes/soul/components/card'
-import { Carousel } from '@/vibes/soul/components/carousel'
+import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card'
+import { Carousel } from '@/vibes/soul/primitives/carousel'
 
 interface Props {
   cards: (CardProps & { id: string })[]

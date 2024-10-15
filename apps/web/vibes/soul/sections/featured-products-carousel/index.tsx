@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { Product } from '@/vibes/soul/components/product-card'
-import { ProductsCarousel } from '@/vibes/soul/components/products-carousel'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
 
 interface Link {
   label: string

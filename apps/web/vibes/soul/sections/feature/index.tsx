@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { clsx } from 'clsx'
 import { icons } from 'lucide-react'
 
-import { Button } from '@/vibes/soul/components/button'
-import { Icon } from '@/vibes/soul/components/icon'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Icon } from '@/vibes/soul/primitives/icon'
 
 export interface FeatureProps {
   image: {

@@ -1,8 +1,8 @@
 import { Suspense, use } from 'react'
 
-import { ProductChip } from '@/vibes/soul/components/compare-drawer/product-chip'
-import { ComparePanel } from '@/vibes/soul/components/compare-panel'
-import { Product } from '@/vibes/soul/components/product-card'
+import { ProductChip } from '@/vibes/soul/primitives/compare-drawer/product-chip'
+import { ComparePanel } from '@/vibes/soul/primitives/compare-panel'
+import { Product } from '@/vibes/soul/primitives/product-card'
 
 interface Props {
   products: Product[] | Promise<Product[]>

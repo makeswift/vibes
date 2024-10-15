@@ -1,4 +1,4 @@
-import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
+import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart'
 import { Footer, Section } from '@/vibes/soul/sections/footer'
 import {

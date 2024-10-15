@@ -5,7 +5,7 @@ import { useFormStatus } from 'react-dom'
 import { clsx } from 'clsx'
 import { Trash2 } from 'lucide-react'
 
-import { Spinner } from '@/vibes/soul/components/spinner'
+import { Spinner } from '@/vibes/soul/primitives/spinner'
 
 export function DeleteLineItemButton({
   removeItemAriaLabel,

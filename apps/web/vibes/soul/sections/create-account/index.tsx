@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import { Button } from '@/vibes/soul/components/button'
-import { Dropdown } from '@/vibes/soul/components/dropdown'
-import { Input } from '@/vibes/soul/components/input'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Dropdown } from '@/vibes/soul/primitives/dropdown'
+import { Input } from '@/vibes/soul/primitives/input'
 
 export const CreateAccount = function CreateAccount() {
   return (

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 
-import { Checkbox } from '@/vibes/soul/components/checkbox'
+import { Checkbox } from '@/vibes/soul/primitives/checkbox'
 
 const createUrl = (pathname: string, params: URLSearchParams) => {
   const paramsString = params.toString()

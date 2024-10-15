@@ -7,9 +7,9 @@ import { useEffect, useState } from 'react'
 import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
 
-import { Button } from '@/vibes/soul/components/button'
-import { Checkbox } from '@/vibes/soul/components/checkbox'
-import { Input } from '@/vibes/soul/components/input'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Checkbox } from '@/vibes/soul/primitives/checkbox'
+import { Input } from '@/vibes/soul/primitives/input'
 import { CartLineItem } from '@/vibes/soul/sections/cart'
 import { CheckoutForm } from '@/vibes/soul/sections/checkout/checkout-form'
 

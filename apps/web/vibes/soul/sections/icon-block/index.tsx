@@ -1,6 +1,6 @@
 import { clsx } from 'clsx'
 
-import { Icon, IconProps } from '@/vibes/soul/components/icon'
+import { Icon, IconProps } from '@/vibes/soul/primitives/icon'
 
 export interface IconBlockProps {
   list: {

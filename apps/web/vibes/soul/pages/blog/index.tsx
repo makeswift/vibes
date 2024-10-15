@@ -1,6 +1,6 @@
-import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
 import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
+import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list'
 import { Footer } from '@/vibes/soul/sections/footer'
 import {

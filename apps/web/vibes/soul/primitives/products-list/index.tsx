@@ -2,7 +2,7 @@ import { Suspense, use } from 'react'
 
 import { clsx } from 'clsx'
 
-import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/components/product-card'
+import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
 
 interface Props {
   products: Product[] | Promise<Product[]>

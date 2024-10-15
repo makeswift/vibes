@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react'
 
-import { Breadcrumb } from '@/vibes/soul/components/breadcrumbs'
-import { CompareDrawer } from '@/vibes/soul/components/compare-drawer'
-import { Pagination } from '@/vibes/soul/components/pagination'
-import { Product } from '@/vibes/soul/components/product-card'
-import { ProductsHeader } from '@/vibes/soul/components/products-header'
-import { ProductsList } from '@/vibes/soul/components/products-list'
+import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs'
+import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer'
+import { Pagination } from '@/vibes/soul/primitives/pagination'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { ProductsHeader } from '@/vibes/soul/primitives/products-header'
+import { ProductsList } from '@/vibes/soul/primitives/products-list'
 
 interface Props {
   breadcrumbs?: Breadcrumb[]

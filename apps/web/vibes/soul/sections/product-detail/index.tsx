@@ -6,12 +6,12 @@ import { useState } from 'react'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import { clsx } from 'clsx'
 
-import { Button } from '@/vibes/soul/components/button'
-import { Favorite } from '@/vibes/soul/components/favorite'
-import { Label } from '@/vibes/soul/components/label'
-import { Product } from '@/vibes/soul/components/product-card'
-import { Price } from '@/vibes/soul/components/product-card/price'
-import { Rating } from '@/vibes/soul/components/rating'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Favorite } from '@/vibes/soul/primitives/favorite'
+import { Label } from '@/vibes/soul/primitives/label'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { Price } from '@/vibes/soul/primitives/product-card/price'
+import { Rating } from '@/vibes/soul/primitives/rating'
 import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery'
 
 interface Image {

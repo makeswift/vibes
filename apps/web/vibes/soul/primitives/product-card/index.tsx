@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { clsx } from 'clsx'
 
-import { Badge } from '@/vibes/soul/components/badge'
+import { Badge } from '@/vibes/soul/primitives/badge'
 
 import { Compare } from './compare'
 import { Price, ProductPrice } from './price'

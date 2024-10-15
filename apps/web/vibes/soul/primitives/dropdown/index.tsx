@@ -12,7 +12,7 @@ import {
 import { clsx } from 'clsx'
 import { ChevronDown } from 'lucide-react'
 
-import { Label } from '@/vibes/soul/components/label'
+import { Label } from '@/vibes/soul/primitives/label'
 
 interface Props {
   label: string

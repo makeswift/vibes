@@ -5,12 +5,12 @@ import { useState } from 'react'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import { clsx } from 'clsx'
 
-import { Button } from '@/vibes/soul/components/button'
-import { Checkbox } from '@/vibes/soul/components/checkbox'
-import { Dropdown } from '@/vibes/soul/components/dropdown'
-import { Input } from '@/vibes/soul/components/input'
-import { Label } from '@/vibes/soul/components/label'
-import { TextArea } from '@/vibes/soul/components/textarea'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Checkbox } from '@/vibes/soul/primitives/checkbox'
+import { Dropdown } from '@/vibes/soul/primitives/dropdown'
+import { Input } from '@/vibes/soul/primitives/input'
+import { Label } from '@/vibes/soul/primitives/label'
+import { TextArea } from '@/vibes/soul/primitives/textarea'
 
 const shippingMethods = [
   {

@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 import { clsx } from 'clsx'
 
-import { Button } from '@/vibes/soul/components/button'
-import { Input } from '@/vibes/soul/components/input'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Input } from '@/vibes/soul/primitives/input'
 
 export interface LogInProps {
   className?: string

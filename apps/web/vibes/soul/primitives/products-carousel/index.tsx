@@ -1,5 +1,5 @@
-import { Carousel } from '@/vibes/soul/components/carousel'
-import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/components/product-card'
+import { Carousel } from '@/vibes/soul/primitives/carousel'
+import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
 
 interface Props {
   products: Product[]

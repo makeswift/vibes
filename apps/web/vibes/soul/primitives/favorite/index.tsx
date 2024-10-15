@@ -1,6 +1,6 @@
 import { clsx } from 'clsx'
 
-import { Heart } from '@/vibes/soul/components/favorite/heart'
+import { Heart } from '@/vibes/soul/primitives/favorite/heart'
 
 interface Props {
   checked?: boolean

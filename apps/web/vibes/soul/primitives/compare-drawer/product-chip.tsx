@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
-import { Product } from '@/vibes/soul/components/product-card'
+import { Product } from '@/vibes/soul/primitives/product-card'
 
 function getInitials(name: string): string {
   return name

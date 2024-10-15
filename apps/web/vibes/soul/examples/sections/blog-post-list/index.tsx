@@ -1,4 +1,4 @@
-import { BlogPost } from '@/vibes/soul/components/blog-post-card'
+import { BlogPost } from '@/vibes/soul/primitives/blog-post-card'
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list'
 
 export const posts: BlogPost[] = [

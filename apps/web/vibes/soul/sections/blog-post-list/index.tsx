@@ -4,7 +4,7 @@ import {
   BlogPost,
   BlogPostCard,
   BlogPostCardSkeleton,
-} from '@/vibes/soul/components/blog-post-card'
+} from '@/vibes/soul/primitives/blog-post-card'
 
 interface Props {
   posts: BlogPost[]

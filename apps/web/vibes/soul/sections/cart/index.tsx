@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 // import { Suspense, use } from 'react'
-import { Button } from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/primitives/button'
 import { DecrementButton } from '@/vibes/soul/sections/cart/decrement-button'
 import { DeleteLineItemButton } from '@/vibes/soul/sections/cart/delete-line-item-button'
 import { IncrementButton } from '@/vibes/soul/sections/cart/increment-button'

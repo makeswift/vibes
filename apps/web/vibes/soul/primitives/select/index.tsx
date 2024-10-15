@@ -7,7 +7,7 @@ import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
-import { Label } from '@/vibes/soul/components/label'
+import { Label } from '@/vibes/soul/primitives/label'
 
 interface Option {
   label: string

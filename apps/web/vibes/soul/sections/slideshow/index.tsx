@@ -10,7 +10,7 @@ import Fade from 'embla-carousel-fade'
 import useEmblaCarousel from 'embla-carousel-react'
 import { Pause, Play } from 'lucide-react'
 
-import { Button } from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/primitives/button'
 
 interface Link {
   label: string

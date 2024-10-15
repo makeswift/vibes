@@ -4,12 +4,12 @@ import { ComponentPropsWithoutRef } from 'react'
 
 import { clsx } from 'clsx'
 
-import { Badge } from '@/vibes/soul/components/badge'
-import { Button } from '@/vibes/soul/components/button'
-import { Label } from '@/vibes/soul/components/label'
-import { Product } from '@/vibes/soul/components/product-card'
-import { Price, ProductPrice } from '@/vibes/soul/components/product-card/price'
-import { Rating } from '@/vibes/soul/components/rating'
+import { Badge } from '@/vibes/soul/primitives/badge'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Label } from '@/vibes/soul/primitives/label'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { Price, ProductPrice } from '@/vibes/soul/primitives/product-card/price'
+import { Rating } from '@/vibes/soul/primitives/rating'
 
 interface Image {
   alt: string

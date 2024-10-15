@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
-import { Button } from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/primitives/button'
 
 interface DiscountType {
   label: string

@@ -4,7 +4,7 @@ import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
 
 import { clsx } from 'clsx'
 
-import { Label } from '@/vibes/soul/components/label'
+import { Label } from '@/vibes/soul/primitives/label'
 
 export interface Props extends ComponentPropsWithRef<'textarea'> {
   label?: string

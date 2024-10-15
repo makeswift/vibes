@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import { Button } from '@/vibes/soul/components/button'
-import { Product } from '@/vibes/soul/components/product-card'
-import { ProductsList } from '@/vibes/soul/components/products-list'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { ProductsList } from '@/vibes/soul/primitives/products-list'
 
 interface Link {
   label: string

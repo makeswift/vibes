@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { clsx } from 'clsx'
 
-import { Button } from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/primitives/button'
 
 interface Props {
   title: string

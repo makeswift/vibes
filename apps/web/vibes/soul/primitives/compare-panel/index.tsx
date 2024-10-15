@@ -5,10 +5,10 @@ import React from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 
-import { Button } from '@/vibes/soul/components/button'
-import { CompareCard, CompareCardSkeleton } from '@/vibes/soul/components/compare-card'
-import { Product } from '@/vibes/soul/components/product-card'
-import { SidePanel, SidePanelClose } from '@/vibes/soul/components/side-panel'
+import { Button } from '@/vibes/soul/primitives/button'
+import { CompareCard, CompareCardSkeleton } from '@/vibes/soul/primitives/compare-card'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { SidePanel, SidePanelClose } from '@/vibes/soul/primitives/side-panel'
 
 interface Props {
   products: Product[]

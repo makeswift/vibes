@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { clsx } from 'clsx'
 
-import { InlineEmailForm } from '@/vibes/soul/components/inline-email-form'
+import { InlineEmailForm } from '@/vibes/soul/primitives/inline-email-form'
 
 interface Props {
   image?: {

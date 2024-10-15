@@ -1,5 +1,5 @@
-import { Carousel } from '@/vibes/soul/components/carousel'
-import { Rating } from '@/vibes/soul/components/rating'
+import { Carousel } from '@/vibes/soul/primitives/carousel'
+import { Rating } from '@/vibes/soul/primitives/rating'
 
 export interface Props {
   reviews: {
