@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense, use } from 'react'
 
+// import { Suspense, use } from 'react'
 import { Button } from '@/vibes/soul/components/button'
 import { DecrementButton } from '@/vibes/soul/components/cart/decrement-button'
 import { DeleteLineItemButton } from '@/vibes/soul/components/cart/delete-line-item-button'
@@ -72,21 +72,21 @@ export const Cart = function Cart({
   redirectToCheckoutAction,
 }: CartProps) {
   return (
-    <Suspense fallback={<CartSkeleton title={title ?? 'Cart'} />}>
-      <CartInner
-        title={title}
-        lineItems={lineItems}
-        summary={summary}
-        emptyState={emptyState}
-        removeItemAriaLabel={removeItemAriaLabel}
-        loadingAriaLabel={loadingAriaLabel}
-        decrementAriaLabel={decrementAriaLabel}
-        incrementAriaLabel={incrementAriaLabel}
-        removeLineItemAction={removeLineItemAction}
-        updateLineItemQuantityAction={updateLineItemQuantityAction}
-        redirectToCheckoutAction={redirectToCheckoutAction}
-      />
-    </Suspense>
+    // <Suspense fallback={<CartSkeleton title={title ?? 'Cart'} />}>
+    <CartInner
+      title={title}
+      lineItems={lineItems}
+      summary={summary}
+      emptyState={emptyState}
+      removeItemAriaLabel={removeItemAriaLabel}
+      loadingAriaLabel={loadingAriaLabel}
+      decrementAriaLabel={decrementAriaLabel}
+      incrementAriaLabel={incrementAriaLabel}
+      removeLineItemAction={removeLineItemAction}
+      updateLineItemQuantityAction={updateLineItemQuantityAction}
+      redirectToCheckoutAction={redirectToCheckoutAction}
+    />
+    // </Suspense>
   )
 }
 
@@ -103,7 +103,8 @@ async function CartInner({
   updateLineItemQuantityAction,
   redirectToCheckoutAction,
 }: CartProps) {
-  const resolvedLineItems = use(Promise.resolve(lineItems))
+  // const resolvedLineItems = use(Promise.resolve(lineItems))
+  const resolvedLineItems = await Promise.resolve(lineItems)
 
   const totalQuantity = resolvedLineItems.reduce((total, item) => total + item.quantity, 0)
 
