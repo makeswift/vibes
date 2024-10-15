@@ -1,4 +1,4 @@
-import { Cart } from '@/vibes/soul/components/cart'
+import { Cart, CartLineItem } from '@/vibes/soul/components/cart'
 import {
   redirectToCheckoutAction,
   removeLineItemAction,
@@ -6,9 +6,9 @@ import {
 } from '@/vibes/soul/components/page-cart/actions-warm'
 import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-warm'
 
-export default async function Preview() {
-  const products = await getProducts()
-  const subtotal = await getSubtotal()
+export default function Preview() {
+  const products = new Promise<CartLineItem[]>(res => setTimeout(() => res(getProducts()), 5000))
+  const subtotal = new Promise<string>(res => setTimeout(() => res(getSubtotal()), 10000))
 
   return (
     <Cart

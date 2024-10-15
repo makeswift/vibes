@@ -1,5 +1,5 @@
 import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
-import { Cart, CartProduct } from '@/vibes/soul/components/cart'
+import { Cart, CartLineItem } from '@/vibes/soul/components/cart'
 import { Footer, Section } from '@/vibes/soul/components/footer'
 import {
   Amex,
@@ -21,7 +21,11 @@ interface Image {
 interface CartPageProps {
   headerLinks: Links[]
   logo: string | Image
-  products: CartProduct[]
+  lineItems: CartLineItem[] | Promise<CartLineItem[]>
+  subtotal: string
+  removeLineItemAction(id: string): Promise<void>
+  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>
+  redirectToCheckoutAction(): Promise<void>
   footerLinks: Section[]
   copyright: string
 }
@@ -65,7 +69,11 @@ const locales = [
 export const CartPage = function CartPage({
   headerLinks,
   logo,
-  products,
+  lineItems,
+  subtotal,
+  removeLineItemAction,
+  updateLineItemQuantityAction,
+  redirectToCheckoutAction,
   footerLinks,
   copyright,
 }: CartPageProps) {
@@ -85,7 +93,34 @@ export const CartPage = function CartPage({
         activeLocale="EN"
       />
 
-      <Cart products={products} />
+      <Cart
+        title="Cart"
+        lineItems={lineItems}
+        summary={{
+          title: 'Summary',
+          subtotal: subtotal,
+          caption: 'Shipping & taxes calculated at checkout',
+          subtotalLabel: 'Subtotal',
+          shippingLabel: 'Shipping',
+          shipping: 'TBD',
+          taxLabel: 'Tax',
+          tax: 'TBD',
+          // grandTotalLabel: 'Total',
+          // grandTotal: '$127.60',
+          ctaLabel: 'Checkout',
+        }}
+        emptyState={{
+          title: 'Your cart is empty',
+          subtitle: 'Add some products to get started.',
+          cta: {
+            label: 'Continue shopping',
+            href: '#',
+          },
+        }}
+        removeLineItemAction={removeLineItemAction}
+        updateLineItemQuantityAction={updateLineItemQuantityAction}
+        redirectToCheckoutAction={redirectToCheckoutAction}
+      />
 
       <Subscribe
         title="Sign up for our newsletter"

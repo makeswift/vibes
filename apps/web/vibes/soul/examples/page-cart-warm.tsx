@@ -1,14 +1,25 @@
 import { CartPage } from '@/vibes/soul/components/page-cart'
-import { products } from '@/vibes/soul/examples/cart-warm'
+import {
+  redirectToCheckoutAction,
+  removeLineItemAction,
+  updateLineItemQuantityAction,
+} from '@/vibes/soul/components/page-cart/actions-warm'
+import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-warm'
 import { copyright, footerLinks } from '@/vibes/soul/examples/footer-warm'
 import { headerLinks, logo } from '@/vibes/soul/examples/header-warm'
 
-export default function Preview() {
+export default async function Preview() {
+  const lineItems = await getProducts()
+  const subtotal = await getSubtotal()
   return (
     <CartPage
       headerLinks={headerLinks}
       logo={logo}
-      products={products}
+      lineItems={lineItems}
+      subtotal={subtotal}
+      removeLineItemAction={removeLineItemAction}
+      updateLineItemQuantityAction={updateLineItemQuantityAction}
+      redirectToCheckoutAction={redirectToCheckoutAction}
       footerLinks={footerLinks}
       copyright={copyright}
     />

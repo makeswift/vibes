@@ -1,32 +1,43 @@
-import { Cart, CartProduct } from '@/vibes/soul/components/cart'
+import { Cart } from '@/vibes/soul/components/cart'
+import {
+  redirectToCheckoutAction,
+  removeLineItemAction,
+  updateLineItemQuantityAction,
+} from '@/vibes/soul/components/page-cart/actions-electric'
+import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-electric'
 
-export const products: CartProduct[] = [
-  {
-    id: '1',
-    name: 'Philodendron Imperial Red',
-    subtitle: 'Indoor Plant',
-    price: '$46',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
-      altText: 'Philodendron Imperial Red',
-    },
-    href: '#',
-    quantity: 1,
-  },
-  {
-    id: '2',
-    name: 'Caladium',
-    subtitle: 'Indoor / Outdoor Plant',
-    price: '$24',
-    image: {
-      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
-      altText: 'Caladium',
-    },
-    href: '#',
-    quantity: 2,
-  },
-]
+export default async function Preview() {
+  const products = await getProducts()
+  const subtotal = await getSubtotal()
 
-export default function Preview() {
-  return <Cart products={products} />
+  return (
+    <Cart
+      title="Cart"
+      lineItems={products}
+      summary={{
+        title: 'Summary',
+        subtotal: subtotal,
+        caption: 'Shipping & taxes calculated at checkout',
+        subtotalLabel: 'Subtotal',
+        shippingLabel: 'Shipping',
+        shipping: 'TBD',
+        taxLabel: 'Tax',
+        tax: 'TBD',
+        // grandTotalLabel: 'Total',
+        // grandTotal: '$127.60',
+        ctaLabel: 'Checkout',
+      }}
+      emptyState={{
+        title: 'Your cart is empty',
+        subtitle: 'Add some products to get started.',
+        cta: {
+          label: 'Continue shopping',
+          href: '#',
+        },
+      }}
+      removeLineItemAction={removeLineItemAction}
+      updateLineItemQuantityAction={updateLineItemQuantityAction}
+      redirectToCheckoutAction={redirectToCheckoutAction}
+    />
+  )
 }
