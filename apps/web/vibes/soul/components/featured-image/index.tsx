@@ -11,7 +11,7 @@ export interface FeaturedImageProps {
   image: {
     src: string
     blurDataUrl?: string
-    altText: string
+    alt: string
   }
   cta: {
     href: string
@@ -50,7 +50,7 @@ export const FeaturedImage = function FeaturedImage({
           {image.src !== '' ? (
             <Image
               src={image.src}
-              alt={image.altText}
+              alt={image.alt}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
               placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
