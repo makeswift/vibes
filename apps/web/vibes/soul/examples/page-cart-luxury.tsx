@@ -9,13 +9,13 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/footer-luxury'
 import { headerLinks, logo } from '@/vibes/soul/examples/header-luxury'
 
 export default async function Preview() {
-  const products = await getProducts()
+  const lineItems = await getProducts()
   const subtotal = await getSubtotal()
   return (
     <CartPage
       headerLinks={headerLinks}
       logo={logo}
-      products={products}
+      lineItems={lineItems}
       subtotal={subtotal}
       removeLineItemAction={removeLineItemAction}
       updateLineItemQuantityAction={updateLineItemQuantityAction}

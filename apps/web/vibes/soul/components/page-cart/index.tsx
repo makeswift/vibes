@@ -21,7 +21,7 @@ interface Image {
 interface CartPageProps {
   headerLinks: Links[]
   logo: string | Image
-  products: CartLineItem[]
+  lineItems: CartLineItem[] | Promise<CartLineItem[]>
   subtotal: string
   removeLineItemAction(id: string): Promise<void>
   updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>
@@ -69,7 +69,7 @@ const locales = [
 export const CartPage = function CartPage({
   headerLinks,
   logo,
-  products,
+  lineItems,
   subtotal,
   removeLineItemAction,
   updateLineItemQuantityAction,
@@ -95,7 +95,7 @@ export const CartPage = function CartPage({
 
       <Cart
         title="Cart"
-        lineItems={products}
+        lineItems={lineItems}
         summary={{
           title: 'Summary',
           subtotal: subtotal,

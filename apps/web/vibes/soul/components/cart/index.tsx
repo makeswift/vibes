@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense } from 'react'
+import { Suspense, use } from 'react'
 
 import { Button } from '@/vibes/soul/components/button'
 import { DecrementButton } from '@/vibes/soul/components/cart/decrement-button'
@@ -72,8 +72,8 @@ export const Cart = function Cart({
   redirectToCheckoutAction,
 }: CartProps) {
   return (
-    <Suspense fallback={<CartSkeleton title={title} />}>
-      <CartUI
+    <Suspense fallback={<CartSkeleton title={title ?? 'Cart'} />}>
+      <CartInner
         title={title}
         lineItems={lineItems}
         summary={summary}
@@ -90,7 +90,7 @@ export const Cart = function Cart({
   )
 }
 
-async function CartUI({
+async function CartInner({
   title,
   lineItems,
   summary,
@@ -103,7 +103,7 @@ async function CartUI({
   updateLineItemQuantityAction,
   redirectToCheckoutAction,
 }: CartProps) {
-  const resolvedLineItems = await Promise.resolve(lineItems)
+  const resolvedLineItems = use(Promise.resolve(lineItems))
 
   const totalQuantity = resolvedLineItems.reduce((total, item) => total + item.quantity, 0)
 
@@ -118,7 +118,7 @@ async function CartUI({
         <div className="w-full">
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             {title}
-            <span className="ml-4 text-contrast-200">{totalQuantity}</span>
+            {totalQuantity && <span className="ml-4 text-contrast-200">{totalQuantity}</span>}
           </h1>
 
           {/* Cart Items */}
@@ -242,6 +242,24 @@ function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
       <Button asChild>
         <Link href={cta.href}>{cta.label}</Link>
       </Button>
+    </div>
+  )
+}
+
+function CartItemSkeleton() {
+  return (
+    <div className="flex flex-col gap-5 gap-y-10">
+      <div className="flex animate-pulse items-center gap-x-5">
+        <div className="h-96 w-full rounded-lg bg-contrast-100" />
+      </div>
+    </div>
+  )
+}
+
+function CartSummarySkeleton() {
+  return (
+    <div className="mt-1 animate-pulse @4xl:w-1/3">
+      <div className="mt-20 h-96 w-full rounded bg-contrast-100" />
     </div>
   )
 }

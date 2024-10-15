@@ -10,13 +10,13 @@ import { headerLinks } from '@/vibes/soul/examples/header-electric'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export default async function Preview() {
-  const products = await getProducts()
+  const lineItems = await getProducts()
   const subtotal = await getSubtotal()
   return (
     <CartPage
       headerLinks={headerLinks}
       logo="SOUL"
-      products={products}
+      lineItems={lineItems}
       subtotal={subtotal}
       removeLineItemAction={removeLineItemAction}
       updateLineItemQuantityAction={updateLineItemQuantityAction}
