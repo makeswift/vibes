@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect } from 'react'
 
-import { Button } from '@/vibes/soul/components/button'
+import { Button } from '@/vibes/soul/primitives/button'
 
 import { Action } from './remove-button'
 
