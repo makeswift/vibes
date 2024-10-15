@@ -229,6 +229,7 @@ export const components = [
     registryDependencies: ['accordions'],
     files: ['sections/product-description/index.tsx'],
   },
+  // TODO: Does ProductsHeader need to be here?
   {
     name: 'products-header',
     dependencies: [],
