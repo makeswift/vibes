@@ -109,6 +109,27 @@ export const examples = [
     component: lazy(() => import('./examples/cart-luxury')),
   },
   {
+    name: 'cart-loading-electric-example',
+    dependencies: [],
+    registryDependencies: ['cart-electric'],
+    files: ['examples/cart-loading-electric.tsx'],
+    component: lazy(() => import('./examples/cart-loading-electric')),
+  },
+  {
+    name: 'cart-loading-warm-example',
+    dependencies: [],
+    registryDependencies: ['cart-warm'],
+    files: ['examples/cart-loading-warm.tsx'],
+    component: lazy(() => import('./examples/cart-loading-warm')),
+  },
+  {
+    name: 'cart-loading-luxury-example',
+    dependencies: [],
+    registryDependencies: ['cart-luxury'],
+    files: ['examples/cart-loading-luxury.tsx'],
+    component: lazy(() => import('./examples/cart-loading-luxury')),
+  },
+  {
     name: 'card-carousel-electric-example',
     dependencies: [],
     registryDependencies: ['card-carousel-electric'],
