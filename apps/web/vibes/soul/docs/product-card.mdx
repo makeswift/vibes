@@ -3,3 +3,92 @@ title: Product Card
 preview: product-card-example
 previewSize: md
 ---
+
+## Usage
+
+Import the component.
+
+<CodeBlock lang="bash">{`import { ProductCard } from '@/vibes/soul/components/product-card'
+`}</CodeBlock>
+
+Display the component.
+
+<CodeBlock lang="bash">{`<ProductCard
+    id="1"
+    href="#"
+    title="Product Name"
+    image={{
+        src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
+        alt: 'Product Name',
+    }}
+    subtitle="Blue/Black/Green"
+    price="123.99"
+    badge="New"
+    showCompare
+/>
+`}</CodeBlock>
+
+### Internationalization
+
+Integrating internationalization into your Vibes components starts at the application level. You'll need a dictionary of strings that correspond to the properties of the `ProductCard` component. For example, the `subtitle` property of the `ProductCard` component would have a corresponding key-value pair in the dictionary like so:
+
+<CodeBlock lang="json">
+  {`
+{
+  "ProductCard": {
+    "subtitle": "Hello world!",
+    //...
+  }
+}`}
+</CodeBlock>
+
+To setup internationalization, we recommend using a package like [next-intl](https://next-intl-docs.vercel.app/). After it's configured, you can retrieve translated strings via the `useTranslations` hook. You can then pass the translated string into each component property appropriately.
+
+<CodeBlock lang="tsx">
+  {`import { useTranslations } from 'next-intl';
+ 
+export default function Page() {
+  const t = useTranslations('ProductCard');
+  return (
+    <div>
+        <ProductCard
+            subtitle={t('subtitle')}
+            // ...
+        />
+    </div>
+  );
+}`}
+</CodeBlock>
+
+For full setup instructions, refer to the [next-intl getting started docs.](https://next-intl-docs.vercel.app/docs/getting-started)
+
+## API Reference
+
+### `Product`
+
+| Prop        | Type                                                                               | Default |
+| ----------- | ---------------------------------------------------------------------------------- | ------- |
+| `id`        | `string`                                                                           |         |
+| `title`     | `string`                                                                           |         |
+| `href`      | `string`                                                                           |         |
+| `image`     | `Image` <Tooltip content="{src: string, alt: string}" />                           |         |
+| `price?`    | `string` \| [`ProductPriceRange`](#productpricerange) \| [`SalePrice`](#saleprice) |         |
+| `subtitle?` | `string`                                                                           |         |
+| `badge?`    | `string`                                                                           |         |
+| `rating?`   | `number`                                                                           |         |
+
+### `ProductPriceRange`
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `type`     | `'range'` |         |
+| `minValue` | `string`  |         |
+| `maxValue` | `string`  |         |
+
+### `SalePrice`
+
+| Prop            | Type     | Default |
+| --------------- | -------- | ------- |
+| `type`          | `'sale'` |         |
+| `previousValue` | `string` |         |
+| `currentValue`  | `string` |         |

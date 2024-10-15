@@ -35,44 +35,15 @@ TODO: example
 
 ### Internationalization
 
-For internationlization details, see the [Product Card](/docs/soul/product-card).
+For details, see [Product Card](/docs/soul/product-card).
 
 ## API Reference
 
 ### `ProductsList`
 
-| Prop       | Type                                                        | Default |
-| ---------- | ----------------------------------------------------------- | ------- |
-| `products` | [`Product[]`](#product) \| [`Promise<Product[]>`](#product) |         |
-
-### `Product`
-
-| Prop        | Type                                                                               | Default |
-| ----------- | ---------------------------------------------------------------------------------- | ------- |
-| `id`        | `string`                                                                           |         |
-| `title`     | `string`                                                                           |         |
-| `href`      | `string`                                                                           |         |
-| `image`     | `Image` <Tooltip content="{src: string, alt: string}" />                           |         |
-| `price?`    | `string` \| [`ProductPriceRange`](#productpricerange) \| [`SalePrice`](#saleprice) |         |
-| `subtitle?` | `string`                                                                           |         |
-| `badge?`    | `string`                                                                           |         |
-| `rating?`   | `number`                                                                           |         |
-
-### `ProductPriceRange`
-
-| Prop       | Type      | Default |
-| ---------- | --------- | ------- |
-| `type`     | `'range'` |         |
-| `minValue` | `string`  |         |
-| `maxValue` | `string`  |         |
-
-### `SalePrice`
-
-| Prop            | Type     | Default |
-| --------------- | -------- | ------- |
-| `type`          | `'sale'` |         |
-| `previousValue` | `string` |         |
-| `currentValue`  | `string` |         |
+| Prop       | Type                                                                                                      | Default |
+| ---------- | --------------------------------------------------------------------------------------------------------- | ------- |
+| `products` | [`Product[]`](/docs/soul/product-card#product) \| [`Promise<Product[]>`](/docs/soul/product-card#product) |         |
 
 ## Figma
 
