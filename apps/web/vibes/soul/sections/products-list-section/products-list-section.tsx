@@ -19,6 +19,7 @@ interface Props {
   compareLabel?: string
   filterLabel?: string
   sortLabel?: string
+  sortParam?: string
 }
 
 export function ProductsListSection({
@@ -33,6 +34,7 @@ export function ProductsListSection({
   pagination,
   filterLabel,
   sortLabel,
+  sortParam,
 }: Props) {
   return (
     <>
@@ -49,7 +51,7 @@ export function ProductsListSection({
           </h1>
           <div className="ml-auto flex gap-2 pr-3 @xl:pr-6 @5xl:pr-20">
             <Filters filters={filters} label={filterLabel} />
-            <Sorting options={sortOptions} label={sortLabel} />
+            <Sorting options={sortOptions} label={sortLabel} sortParam={sortParam} />
           </div>
         </div>
       </div>

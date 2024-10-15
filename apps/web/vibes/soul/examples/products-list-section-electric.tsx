@@ -131,14 +131,11 @@ const filters: Filter[] = [
   },
 ]
 
-const sortBy = {
-  name: 'sort',
-  options: [
-    { label: 'Price: Low to High', value: 'price-asc' },
-    { label: 'Price: High to Low', value: 'price-desc' },
-    { label: 'Newest', value: 'newest' },
-  ],
-}
+const sortOptions = [
+  { label: 'Price: Low to High', value: 'price-asc' },
+  { label: 'Price: High to Low', value: 'price-desc' },
+  { label: 'Newest', value: 'newest' },
+]
 
 export default function Preview({
   searchParams,
@@ -153,7 +150,7 @@ export default function Preview({
         products={products}
         totalCount={products.length}
         filters={filters}
-        sortOptions={[]}
+        sortOptions={sortOptions}
         pagination={{ name: 'page', previousPage: '2', nextPage: '3' }}
         compareProducts={
           Array.isArray(searchParams.compare)
