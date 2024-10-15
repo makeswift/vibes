@@ -10,7 +10,7 @@ export let productsWarm: CartLineItem[] = [
     price: '$50',
     image: {
       src: 'https://rstr.in/monogram/vibes/4Mo9ulLGcbL/DfL7Hp4ix9B',
-      altText: 'Rolltop Saddlebag',
+      alt: 'Rolltop Saddlebag',
     },
     quantity: 1,
   },
@@ -21,7 +21,7 @@ export let productsWarm: CartLineItem[] = [
     price: '$60',
     image: {
       src: 'https://rstr.in/monogram/vibes/JFeKAqWOECR',
-      altText: 'Mini Bar Bag',
+      alt: 'Mini Bar Bag',
     },
     quantity: 2,
   },

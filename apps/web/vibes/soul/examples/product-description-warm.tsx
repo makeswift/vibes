@@ -25,8 +25,7 @@ export const accordions = [
 
 export const productDescriptionImage = {
   src: 'https://rstr.in/monogram/vibes/3dmqcoTLHrK',
-  altText:
-    'A close-up of a bicycle handlebar with a brown handlebar bag and a GPS device attached.',
+  alt: 'A close-up of a bicycle handlebar with a brown handlebar bag and a GPS device attached.',
 }
 
 const video = 'https://videos.pexels.com/video-files/4957753/4957753-hd_1920_1080_25fps.mp4'

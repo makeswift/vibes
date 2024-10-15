@@ -10,7 +10,7 @@ interface Props {
   content: {
     image: {
       src: string
-      altText: string
+      alt: string
     }
     label?: React.ReactNode
   }[]
@@ -171,7 +171,7 @@ const CarouselTrack = ({
           )}
           <Image
             src={image.src}
-            alt={image.altText}
+            alt={image.alt}
             fill
             className={clsx('select-none object-cover')}
           />

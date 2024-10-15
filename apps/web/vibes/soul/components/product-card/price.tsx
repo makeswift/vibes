@@ -1,25 +1,25 @@
-import { ComponentPropsWithoutRef } from 'react'
-
 import { clsx } from 'clsx'
 
-interface SalePrice {
-  type: 'sale'
-  currentValue: string
-  previousValue: string
-}
-
-interface RangePrice {
+interface ProductPriceRange {
   type: 'range'
   minValue: string
   maxValue: string
 }
 
-export type ProductPrice = string | SalePrice | RangePrice
+interface SalePrice {
+  type: 'sale'
+  previousValue: string
+  currentValue: string
+}
 
-export function Price({
-  price,
-  className = '',
-}: { price: ProductPrice; className?: string } & ComponentPropsWithoutRef<'span'>) {
+export type ProductPrice = string | ProductPriceRange | SalePrice
+
+interface Props {
+  price: ProductPrice
+  className?: string
+}
+
+export function Price({ price, className }: Props) {
   if (typeof price === 'string') {
     return (
       <span className={clsx('text-sm font-semibold @4xl:text-xl @4xl:font-medium', className)}>

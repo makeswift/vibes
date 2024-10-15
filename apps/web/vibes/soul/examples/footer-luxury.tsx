@@ -42,7 +42,7 @@ export const footerLinks = [
 
 export const logo = {
   src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID',
-  altText: 'Freda Salvador Logo',
+  alt: 'Freda Salvador Logo',
 }
 
 export const socialMediaLinks = [

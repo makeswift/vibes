@@ -79,7 +79,7 @@ export const BlogPage = function BlogPage() {
       <Subscribe
         image={{
           src: 'https://rstr.in/monogram/vibes/m12FEyfnuDl',
-          altText: 'Lady with plant',
+          alt: 'Lady with plant',
         }}
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."

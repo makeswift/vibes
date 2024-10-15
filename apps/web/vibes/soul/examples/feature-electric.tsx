@@ -3,7 +3,7 @@ import { Feature, FeatureProps } from '@/vibes/soul/components/feature'
 export const feature: FeatureProps = {
   image: {
     src: 'https://rstr.in/monogram/vibes/hmVsJqRS2jJ',
-    altText: 'Close up of a plant',
+    alt: 'Close up of a plant',
   },
   title: 'Thoughtfully Curated',
   description:
