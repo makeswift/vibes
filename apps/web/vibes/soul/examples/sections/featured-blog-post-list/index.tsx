@@ -1,5 +1,5 @@
-import { FeaturedBlogPostList } from '@/vibes/soul/components/featured-blog-post-list'
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
+import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list'
 
 export default function Preview() {
   return (

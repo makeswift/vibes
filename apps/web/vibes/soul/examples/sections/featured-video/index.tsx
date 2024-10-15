@@ -1,4 +1,4 @@
-import { FeaturedVideo } from '@/vibes/soul/components/featured-video'
+import { FeaturedVideo } from '@/vibes/soul/sections/featured-video'
 
 export default function Preview() {
   return (

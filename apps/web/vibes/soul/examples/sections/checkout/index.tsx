@@ -1,5 +1,5 @@
-import { CartLineItem } from '@/vibes/soul/components/cart'
-import { Checkout } from '@/vibes/soul/components/checkout'
+import { CartLineItem } from '@/vibes/soul/sections/cart'
+import { Checkout } from '@/vibes/soul/sections/checkout'
 
 export const products: CartLineItem[] = [
   {
