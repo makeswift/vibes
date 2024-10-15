@@ -1,10 +1,10 @@
 import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
 import { Breadcrumb } from '@/vibes/soul/components/breadcrumbs'
-import { CompareProducts } from '@/vibes/soul/components/compare-products'
-import { FeaturedProductsCarousel } from '@/vibes/soul/components/featured-products-carousel'
-import { Footer, Section } from '@/vibes/soul/components/footer'
-import { Header, Links } from '@/vibes/soul/components/header'
 import { Product } from '@/vibes/soul/components/product-card'
+import { CompareProducts } from '@/vibes/soul/sections/compare-products'
+import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
+import { Footer, Section } from '@/vibes/soul/sections/footer'
+import { Header, Links } from '@/vibes/soul/sections/header'
 
 interface Image {
   src: string

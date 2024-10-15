@@ -1,6 +1,6 @@
 import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
-import { Cart, CartLineItem } from '@/vibes/soul/components/cart'
-import { Footer, Section } from '@/vibes/soul/components/footer'
+import { Cart, CartLineItem } from '@/vibes/soul/sections/cart'
+import { Footer, Section } from '@/vibes/soul/sections/footer'
 import {
   Amex,
   ApplePay,
@@ -9,10 +9,10 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/components/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
-import { Header, Links } from '@/vibes/soul/components/header'
-import { Subscribe } from '@/vibes/soul/components/subscribe'
+} from '@/vibes/soul/sections/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
+import { Header, Links } from '@/vibes/soul/sections/header'
+import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
 interface Image {
   src: string

@@ -6,12 +6,12 @@ import { redirect } from 'next/navigation'
 import {
   removeProduct,
   updateProductQuantity,
-} from '@/vibes/soul/components/page-cart/products-warm'
+} from '@/vibes/soul/pages/cart/products-electric'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function removeLineItemAction(id: string): Promise<void> {
   removeProduct(id)
-  revalidateTag('products-warm')
+  revalidateTag('products-electric')
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
@@ -22,8 +22,11 @@ export async function updateLineItemQuantityAction({
   id: string
   quantity: number
 }): Promise<void> {
+  if (quantity === 0) {
+    removeLineItemAction(id)
+  }
   updateProductQuantity(id, quantity)
-  revalidateTag('products-warm')
+  revalidateTag('products-electric')
 }
 
 export async function redirectToCheckoutAction() {

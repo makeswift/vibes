@@ -15,8 +15,8 @@ import {
 import { clsx } from 'clsx'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
-import { HamburgerMenuButton } from '@/vibes/soul/components/header/hamburger-menu-button'
 import { ProductCard } from '@/vibes/soul/components/product-card'
+import { HamburgerMenuButton } from '@/vibes/soul/sections/header/hamburger-menu-button'
 
 interface Image {
   src?: string

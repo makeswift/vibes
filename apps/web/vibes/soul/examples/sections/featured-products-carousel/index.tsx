@@ -1,5 +1,5 @@
-import { FeaturedProductsCarousel } from '@/vibes/soul/components/featured-products-carousel'
 import { Product } from '@/vibes/soul/components/product-card'
+import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 
 export const featuredProducts: Product[] = [
   {

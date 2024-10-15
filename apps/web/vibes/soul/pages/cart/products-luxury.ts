@@ -1,6 +1,6 @@
 import { unstable_cache } from 'next/cache'
 
-import { CartLineItem } from '@/vibes/soul/components/cart'
+import { CartLineItem } from '@/vibes/soul/sections/cart'
 
 export let productsLuxury: CartLineItem[] = [
   {

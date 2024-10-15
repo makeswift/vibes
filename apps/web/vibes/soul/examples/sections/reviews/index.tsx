@@ -1,4 +1,4 @@
-import { Reviews } from '@/vibes/soul/components/reviews'
+import { Reviews } from '@/vibes/soul/sections/reviews'
 
 export const reviews = [
   {

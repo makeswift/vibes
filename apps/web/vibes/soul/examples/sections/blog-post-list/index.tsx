@@ -1,5 +1,5 @@
 import { BlogPost } from '@/vibes/soul/components/blog-post-card'
-import { BlogPostList } from '@/vibes/soul/components/blog-post-list'
+import { BlogPostList } from '@/vibes/soul/sections/blog-post-list'
 
 export const posts: BlogPost[] = [
   {

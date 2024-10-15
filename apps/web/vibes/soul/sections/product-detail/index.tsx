@@ -11,8 +11,8 @@ import { Favorite } from '@/vibes/soul/components/favorite'
 import { Label } from '@/vibes/soul/components/label'
 import { Product } from '@/vibes/soul/components/product-card'
 import { Price } from '@/vibes/soul/components/product-card/price'
-import { ProductGallery } from '@/vibes/soul/components/product-detail/product-gallery'
 import { Rating } from '@/vibes/soul/components/rating'
+import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery'
 
 interface Image {
   alt: string

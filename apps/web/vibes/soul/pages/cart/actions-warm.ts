@@ -3,15 +3,12 @@
 import { revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import {
-  removeProduct,
-  updateProductQuantity,
-} from '@/vibes/soul/components/page-cart/products-luxury'
+import { removeProduct, updateProductQuantity } from '@/vibes/soul/pages/cart/products-warm'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function removeLineItemAction(id: string): Promise<void> {
   removeProduct(id)
-  revalidateTag('products-luxury')
+  revalidateTag('products-warm')
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
@@ -23,7 +20,7 @@ export async function updateLineItemQuantityAction({
   quantity: number
 }): Promise<void> {
   updateProductQuantity(id, quantity)
-  revalidateTag('products-luxury')
+  revalidateTag('products-warm')
 }
 
 export async function redirectToCheckoutAction() {

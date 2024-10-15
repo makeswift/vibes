@@ -3,9 +3,9 @@ import Link from 'next/link'
 
 // import { Suspense, use } from 'react'
 import { Button } from '@/vibes/soul/components/button'
-import { DecrementButton } from '@/vibes/soul/components/cart/decrement-button'
-import { DeleteLineItemButton } from '@/vibes/soul/components/cart/delete-line-item-button'
-import { IncrementButton } from '@/vibes/soul/components/cart/increment-button'
+import { DecrementButton } from '@/vibes/soul/sections/cart/decrement-button'
+import { DeleteLineItemButton } from '@/vibes/soul/sections/cart/delete-line-item-button'
+import { IncrementButton } from '@/vibes/soul/sections/cart/increment-button'
 
 interface Image {
   alt: string

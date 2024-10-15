@@ -8,10 +8,10 @@ import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/components/button'
-import { CartLineItem } from '@/vibes/soul/components/cart'
 import { Checkbox } from '@/vibes/soul/components/checkbox'
-import { CheckoutForm } from '@/vibes/soul/components/checkout/checkout-form'
 import { Input } from '@/vibes/soul/components/input'
+import { CartLineItem } from '@/vibes/soul/sections/cart'
+import { CheckoutForm } from '@/vibes/soul/sections/checkout/checkout-form'
 
 export const Checkout = function Checkout({ products }: { products: CartLineItem[] }) {
   const [isLoading, setIsLoading] = useState(false)
