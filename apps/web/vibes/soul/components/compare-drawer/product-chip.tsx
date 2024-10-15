@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
@@ -38,19 +38,21 @@ export const ProductChip = function ProductChip({
 }: Props) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const currentParams = Array.from(searchParams.entries())
-  const newParams = currentParams.filter(([key, value]) => key !== paramKey || value !== product.id)
-  const href = createUrl(pathname, new URLSearchParams(newParams))
+  const router = useRouter()
 
   return (
-    <Link
+    <button
       aria-label={label}
-      href={href}
-      scroll={false}
       className={clsx(
         'group relative flex items-center whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold transition-all duration-150 hover:bg-contrast-100',
         'ring-primary focus:outline-0 focus:ring-2'
       )}
+      onClick={() => {
+        const params = Array.from(searchParams.entries())
+        const newParams = params.filter(([key, value]) => key !== paramKey || value !== product.id)
+
+        router.replace(createUrl(pathname, new URLSearchParams(newParams)), { scroll: false })
+      }}
     >
       <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-[11px] bg-primary-highlight bg-opacity-10 @4xl:rounded-r-none">
         {product.image?.src != null ? (
@@ -72,6 +74,6 @@ export const ProductChip = function ProductChip({
         <X className="hidden @4xl:block" />
         <div className="h-px w-2.5 bg-foreground @4xl:hidden" />
       </div>
-    </Link>
+    </button>
   )
 }
