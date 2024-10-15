@@ -3,18 +3,19 @@ import {
   redirectToCheckoutAction,
   removeLineItemAction,
   updateLineItemQuantityAction,
-} from '@/vibes/soul/components/page-cart/actions-luxury'
-import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-luxury'
-import { copyright, footerLinks } from '@/vibes/soul/examples/footer-luxury'
-import { headerLinks, logo } from '@/vibes/soul/examples/header-luxury'
+} from '@/vibes/soul/components/page-cart/actions-electric'
+import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-electric'
+import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export default async function Preview() {
   const lineItems = await getProducts()
   const subtotal = await getSubtotal()
   return (
     <CartPage
       headerLinks={headerLinks}
-      logo={logo}
+      logo="SOUL"
       lineItems={lineItems}
       subtotal={subtotal}
       removeLineItemAction={removeLineItemAction}

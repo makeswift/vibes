@@ -13,8 +13,8 @@ import {
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
 import { Header } from '@/vibes/soul/components/header'
 import { Subscribe } from '@/vibes/soul/components/subscribe'
-import { posts } from '@/vibes/soul/examples/blog-post-list'
-import { headerLinks } from '@/vibes/soul/examples/header-electric'
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 
 const socialMediaLinks = [
   {

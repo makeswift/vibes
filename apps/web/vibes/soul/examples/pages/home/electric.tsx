@@ -1,13 +1,13 @@
 import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
 import { HomePage } from '@/vibes/soul/components/page-home'
 import { Product } from '@/vibes/soul/components/product-card'
-import { cards } from '@/vibes/soul/examples/card-carousel-electric'
-import { feature } from '@/vibes/soul/examples/feature-electric'
-import { featuredImage } from '@/vibes/soul/examples/featured-image-electric'
-import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-electric'
-import { copyright, footerLinks } from '@/vibes/soul/examples/footer-electric'
-import { headerLinks } from '@/vibes/soul/examples/header-electric'
-import { heroSlides } from '@/vibes/soul/examples/slideshow-electric'
+import { cards } from '@/vibes/soul/examples/sections/card-carousel/electric'
+import { feature } from '@/vibes/soul/examples/sections/feature/electric'
+import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/electric'
+import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/electric'
+import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
+import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric'
 
 // Featured Products
 export const newArrivals: Product[] = [

@@ -1,8 +1,8 @@
 import { ProductsPage } from '@/vibes/soul/components/page-products'
-import { breadcrumbs } from '@/vibes/soul/examples/breadcrumbs-electric'
-import { copyright, footerLinks, logo } from '@/vibes/soul/examples/footer-electric'
-import { headerLinks } from '@/vibes/soul/examples/header-electric'
-import { products } from '@/vibes/soul/examples/products-list-electric'
+import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric'
+import { products } from '@/vibes/soul/examples/primitives/products-list/electric'
+import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 
 export default function Preview() {
   return (

@@ -2,8 +2,8 @@ import { ProductPage } from '@/vibes/soul/components/page-product'
 import {
   accordions,
   productDescriptionImage,
-} from '@/vibes/soul/examples/product-description-electric'
-import { product } from '@/vibes/soul/examples/product-detail-electric'
+} from '@/vibes/soul/examples/sections/product-description/warm'
+import { product } from '@/vibes/soul/examples/sections/product-detail/warm'
 
 export default function Preview() {
   return (

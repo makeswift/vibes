@@ -9,10 +9,10 @@ import { ProductDescription } from '@/vibes/soul/components/product-description'
 import { ProductDetail } from '@/vibes/soul/components/product-detail'
 import { Reviews } from '@/vibes/soul/components/reviews'
 import { Subscribe } from '@/vibes/soul/components/subscribe'
-import { featuredProducts } from '@/vibes/soul/examples/featured-products-carousel'
-import { footerLinks, logo } from '@/vibes/soul/examples/footer-electric'
-import { headerLinks } from '@/vibes/soul/examples/header-electric'
-import { reviews } from '@/vibes/soul/examples/reviews'
+import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-carousel'
+import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
+import { reviews } from '@/vibes/soul/examples/sections/reviews'
 
 interface Image {
   src: string

@@ -1,6 +1,9 @@
 import { ProductPage } from '@/vibes/soul/components/page-product'
-import { accordions, productDescriptionImage } from '@/vibes/soul/examples/product-description-warm'
-import { product } from '@/vibes/soul/examples/product-detail-warm'
+import {
+  accordions,
+  productDescriptionImage,
+} from '@/vibes/soul/examples/sections/product-description/luxury'
+import { product } from '@/vibes/soul/examples/sections/product-detail/luxury'
 
 export default function Preview() {
   return (

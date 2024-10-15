@@ -1,15 +1,14 @@
 import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
 import { HomePage } from '@/vibes/soul/components/page-home'
-import { cards, textContrast } from '@/vibes/soul/examples/card-carousel-warm'
-import { feature } from '@/vibes/soul/examples/feature-warm'
-import { featuredImage } from '@/vibes/soul/examples/featured-image-warm'
-import { featuredProducts } from '@/vibes/soul/examples/featured-products-list-warm'
-import { copyright, footerLinks } from '@/vibes/soul/examples/footer-warm'
-import { headerLinks } from '@/vibes/soul/examples/header-warm'
-import { heroSlides } from '@/vibes/soul/examples/slideshow-warm'
+import { cards, textContrast } from '@/vibes/soul/examples/sections/card-carousel/warm'
+import { feature } from '@/vibes/soul/examples/sections/feature/warm'
+import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/warm'
+import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/warm'
+import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/warm'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/warm'
+import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/warm'
 
 // TODO: New Arrivals
-
 // TODO: Recently Viewed
 
 export const featuredImageII: FeaturedImageProps = {
