@@ -16,12 +16,7 @@ interface Props {
   pages: number
 }
 
-export function CompareProducts({
-  breadcrumbs,
-  title,
-  products,
-  pages,
-}: Props) {
+export function CompareProducts({ breadcrumbs, title, products, pages }: Props) {
   const [compareProducts, setCompareProducts] = useState<Product[]>([])
 
   return (
