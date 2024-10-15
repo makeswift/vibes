@@ -6,7 +6,7 @@ export const featuredImage: FeaturedImageProps = {
     'Whether you’re a seasoned plant parent or just starting, we have the perfect plants to suit your home and lifestyle.',
   image: {
     src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ',
-    altText: 'Close up of a plant',
+    alt: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },
 }
@@ -19,7 +19,7 @@ export default function Preview() {
         description={featuredImage.description}
         image={{
           src: featuredImage.image.src,
-          altText: featuredImage.image.altText,
+          alt: featuredImage.image.alt,
         }}
         cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="left"
@@ -29,7 +29,7 @@ export default function Preview() {
         description={featuredImage.description}
         image={{
           src: featuredImage.image.src,
-          altText: featuredImage.image.altText,
+          alt: featuredImage.image.alt,
         }}
         cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="right"
@@ -39,7 +39,7 @@ export default function Preview() {
         description={featuredImage.description}
         image={{
           src: featuredImage.image.src,
-          altText: featuredImage.image.altText,
+          alt: featuredImage.image.alt,
         }}
         cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="full"

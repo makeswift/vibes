@@ -9,8 +9,9 @@ export default function Preview() {
 
   return (
     <div className="flex h-screen flex-col justify-center gap-4 p-10">
-      <Checkbox checked={checked} setChecked={setChecked} label="Checkbox" />
+      <Checkbox id="example-1" checked={checked} setChecked={setChecked} label="Checkbox" />
       <Checkbox
+        id="example-2"
         checked={checked}
         setChecked={setChecked}
         label="Accept Terms & Conditions"

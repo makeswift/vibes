@@ -5,7 +5,7 @@ export const heroSlides = [
     title: 'Aero Dynamic',
     description: 'Designed for speed and comfort',
     image: {
-      altText: 'alt',
+      alt: 'alt',
       src: 'https://rstr.in/monogram/vibes/2UhnmMan5ct',
     },
     // cta: {
@@ -18,7 +18,7 @@ export const heroSlides = [
     description: 'Easy access to your gear',
     image: {
       src: 'https://rstr.in/monogram/vibes/Nsj4qcMks2D',
-      altText: 'alt',
+      alt: 'alt',
     },
     // cta: {
     //   href: '#',
@@ -30,7 +30,7 @@ export const heroSlides = [
     description: 'Create your own style',
     image: {
       src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
-      altText: 'alt',
+      alt: 'alt',
     },
     // cta: {
     //   href: '#',

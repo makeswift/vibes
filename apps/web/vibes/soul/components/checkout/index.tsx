@@ -52,7 +52,12 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
               Continue
             </Button>
           </div>
-          <Checkbox checked={checked} setChecked={setChecked} label="Subscribe to our newsletter" />
+          <Checkbox
+            id="newsletter-subscribe"
+            checked={checked}
+            setChecked={setChecked}
+            label="Subscribe to our newsletter"
+          />
           <span className="block pt-8 text-xs">
             Already have an account?{' '}
             <Link href="#" className="font-semibold">
@@ -209,7 +214,7 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                           <div className="relative aspect-[3/4] w-16 overflow-hidden rounded-lg bg-contrast-100">
                             <Image
                               src={image.src}
-                              alt={image.altText}
+                              alt={image.alt}
                               fill
                               sizes="64px"
                               className="h-full w-full object-cover"

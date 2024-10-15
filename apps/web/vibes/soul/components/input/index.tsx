@@ -40,7 +40,7 @@ export const Input = forwardRef(function Input(
           ref={ref}
           {...rest}
           className={clsx(
-            'placeholder-contrast-gray-500 w-full bg-transparent px-6 py-3 text-foreground placeholder:font-normal focus:outline-none',
+            'placeholder-contrast-gray-500 w-full bg-transparent px-6 py-3 text-foreground [appearance:textfield] placeholder:font-normal focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
             {
               'py-3 pl-10 pr-6': prepend,
             }

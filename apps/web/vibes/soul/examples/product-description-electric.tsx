@@ -25,7 +25,7 @@ export const accordions = [
 
 export const productDescriptionImage = {
   src: 'https://rstr.in/monogram/vibes/D1uDyHea7f0',
-  altText: 'Close-up of a green and white leaf with a pink background.',
+  alt: 'Close-up of a green and white leaf with a pink background.',
 }
 
 const video = 'https://videos.pexels.com/video-files/4957753/4957753-hd_1920_1080_25fps.mp4'

@@ -42,7 +42,7 @@ export const footerLinks = [
 
 export const logo = {
   src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
-  altText: 'Outer Shell Logo',
+  alt: 'Outer Shell Logo',
 }
 
 export const socialMediaLinks = [

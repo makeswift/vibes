@@ -4,7 +4,7 @@ import { ProductsCarousel } from '@/vibes/soul/components/products-carousel'
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -14,13 +14,13 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
   {
     id: '2',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -30,25 +30,25 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
   {
     id: '3',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
   {
     id: '4',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -58,13 +58,13 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
   {
     id: '5',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -74,19 +74,19 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/hqoDeY3IeBO',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
   {
     id: '6',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/Yr-VreskA68',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },

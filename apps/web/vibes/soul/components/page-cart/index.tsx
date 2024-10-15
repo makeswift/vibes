@@ -16,7 +16,7 @@ import { Subscribe } from '@/vibes/soul/components/subscribe'
 
 interface Image {
   src: string
-  altText: string
+  alt: string
 }
 interface CartPageProps {
   headerLinks: Links[]

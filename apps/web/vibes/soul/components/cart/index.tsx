@@ -8,7 +8,7 @@ import { DeleteLineItemButton } from '@/vibes/soul/components/cart/delete-line-i
 import { IncrementButton } from '@/vibes/soul/components/cart/increment-button'
 
 interface Image {
-  altText: string
+  alt: string
   src: string
 }
 
@@ -134,7 +134,7 @@ async function CartInner({
                     <Image
                       fill
                       src={image.src}
-                      alt={image.altText}
+                      alt={image.alt}
                       sizes="(max-width: 400px) 100vw, 144px"
                       className="object-cover"
                     />
