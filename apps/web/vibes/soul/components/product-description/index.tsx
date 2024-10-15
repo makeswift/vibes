@@ -6,7 +6,7 @@ export interface Props {
   accordions: AccordionItem[]
   image?: {
     src: string
-    altText: string
+    alt: string
   }
   video?: string
 }
@@ -30,7 +30,7 @@ export const ProductDescription = function ProductDescription({
             <Image
               src={image.src}
               fill
-              alt={image.altText}
+              alt={image.alt}
               sizes="(max-width: 500px) 100vw, 50vw"
               className="object-cover"
             />

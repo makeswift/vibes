@@ -14,7 +14,7 @@ interface Props {
   content: {
     image: {
       src: string
-      altText: string
+      alt: string
     }
     label?: React.ReactNode
   }[]
@@ -135,7 +135,7 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
 
                 <Image
                   src={image.src}
-                  alt={image.altText}
+                  alt={image.alt}
                   fill
                   className={clsx('select-none object-cover')}
                 />
@@ -163,7 +163,7 @@ export const SlideCarousel = ({ title, content, interval = 6000 }: Props) => {
 
                 <Image
                   src={image.src}
-                  alt={image.altText}
+                  alt={image.alt}
                   fill
                   className={clsx('select-none object-cover')}
                 />

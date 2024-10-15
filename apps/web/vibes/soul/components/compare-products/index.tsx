@@ -16,24 +16,15 @@ interface Props {
   pages: number
 }
 
-export const CompareProducts = function CompareProducts({
-  breadcrumbs,
-  title,
-  products,
-  pages,
-}: Props) {
+export function CompareProducts({ breadcrumbs, title, products, pages }: Props) {
   const [compareProducts, setCompareProducts] = useState<Product[]>([])
 
   return (
     <div className="mx-auto max-w-screen-2xl">
       <ProductsHeader breadcrumbs={breadcrumbs} title={title} numberOfProducts={products.length} />
-      <ProductsList
-        products={products}
-        compareProducts={compareProducts}
-        setCompareProducts={setCompareProducts}
-      />
+      <ProductsList products={products} />
       <Pagination pages={pages} />
-      <CompareDrawer compareProducts={compareProducts} setCompareProducts={setCompareProducts} />
+      <CompareDrawer products={compareProducts} />
     </div>
   )
 }

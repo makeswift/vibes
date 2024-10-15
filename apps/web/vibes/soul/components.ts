@@ -63,8 +63,8 @@ export const components = [
   },
   {
     name: 'cart',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: ['button', 'counter', 'dropdown', 'input', 'modal'],
+    dependencies: ['clsx'],
+    registryDependencies: ['button', 'counter'],
     files: ['components/cart/index.tsx'],
   },
   {
@@ -258,6 +258,12 @@ export const components = [
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['components/slideshow/index.tsx'],
+  },
+  {
+    name: 'spinner',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['components/spinner/index.tsx'],
   },
   {
     name: 'subscribe',
