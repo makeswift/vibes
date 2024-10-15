@@ -195,7 +195,7 @@ export const navigation = [
         component: 'log-in',
       },
       {
-        title: 'Products List',
+        title: 'Products List Section',
         slug: 'products-list-section',
         file: 'docs/products-list-section.mdx',
         component: 'products-list-section',
@@ -206,14 +206,7 @@ export const navigation = [
         file: 'docs/product-detail.mdx',
         component: 'product-detail',
       },
-      {
-        title: 'Products Header',
-        slug: 'products-header',
-        file: 'docs/products-header.mdx',
-        component: 'products-header',
-      },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
-
       {
         title: 'Subscribe',
         slug: 'subscribe',

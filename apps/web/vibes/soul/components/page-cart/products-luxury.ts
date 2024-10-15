@@ -7,7 +7,7 @@ export let productsLuxury: CartLineItem[] = [
     id: '1',
     title: 'DARYA LUG SOLE FISHERMAN',
     subtitle: 'Cuoro Embossed Snake',
-    price: '$40',
+    price: '$350',
     image: {
       src: 'https://rstr.in/monogram/vibes/18bzcr01WWx',
       alt: 'DARYA LUG SOLE FISHERMAN',
@@ -18,7 +18,7 @@ export let productsLuxury: CartLineItem[] = [
     id: '2',
     title: 'ROMA ROUND TOE BALLET FLAT',
     subtitle: 'Rust Closed Woven Calf',
-    price: '$42',
+    price: '$350',
     image: {
       src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz',
       alt: 'ROMA ROUND TOE BALLET FLAT',
