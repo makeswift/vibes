@@ -14,7 +14,7 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/so
 import { Header, Links } from '@/vibes/soul/sections/header'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
-import { Action } from '../cart/remove-button'
+import { Action } from '../../sections/cart/remove-button'
 
 interface Image {
   src: string
