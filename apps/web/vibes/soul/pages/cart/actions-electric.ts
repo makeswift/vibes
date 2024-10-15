@@ -3,10 +3,7 @@
 import { revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import {
-  removeProduct,
-  updateProductQuantity,
-} from '@/vibes/soul/pages/cart/products-electric'
+import { removeProduct, updateProductQuantity } from '@/vibes/soul/pages/cart/products-electric'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function removeLineItemAction(id: string): Promise<void> {
