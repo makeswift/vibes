@@ -5,4 +5,77 @@ preview:
   Warm: products-list-warm-example
   Luxury: products-list-luxury-example
 previewSize: lg
+features:
+  - Displays a list of products
+  - Displays skeleton loading state for async data
 ---
+
+## Usage
+
+Import the component.
+
+<CodeBlock lang="bash">{`import { ProductsList } from '@/vibes/soul/components/products-list'
+`}</CodeBlock>
+
+Query the product data.
+
+<CodeBlock lang="bash">{`const products = await getProducts()
+`}</CodeBlock>
+
+Display the component.
+
+<CodeBlock lang="bash">{`<ProductsList products={products} />
+`}</CodeBlock>
+
+### Streaming
+
+The `products` property accepts either `Product[]` or `Promise<Product[]>`. By passing a `Promise<Product[]>`, you enable streaming which will show a loading state until the data is finished loading and streamed to the browser.
+
+TODO: example
+
+### Internationalization
+
+For internationlization details, see the [Product Card](/docs/soul/product-card).
+
+## API Reference
+
+### `ProductsList`
+
+| Prop       | Type                                                        | Default |
+| ---------- | ----------------------------------------------------------- | ------- |
+| `products` | [`Product[]`](#product) \| [`Promise<Product[]>`](#product) |         |
+
+### `Product`
+
+| Prop        | Type                                                                               | Default |
+| ----------- | ---------------------------------------------------------------------------------- | ------- |
+| `id`        | `string`                                                                           |         |
+| `title`     | `string`                                                                           |         |
+| `href`      | `string`                                                                           |         |
+| `image`     | `Image` <Tooltip content="{src: string, alt: string}" />                           |         |
+| `price?`    | `string` \| [`ProductPriceRange`](#productpricerange) \| [`SalePrice`](#saleprice) |         |
+| `subtitle?` | `string`                                                                           |         |
+| `badge?`    | `string`                                                                           |         |
+| `rating?`   | `number`                                                                           |         |
+
+### `ProductPriceRange`
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `type`     | `'range'` |         |
+| `minValue` | `string`  |         |
+| `maxValue` | `string`  |         |
+
+### `SalePrice`
+
+| Prop            | Type     | Default |
+| --------------- | -------- | ------- |
+| `type`          | `'sale'` |         |
+| `previousValue` | `string` |         |
+| `currentValue`  | `string` |         |
+
+## Figma
+
+TODO - need figma link
+
+<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=1720-21795&t=RzBeIql49iCnmSMw-4" />
