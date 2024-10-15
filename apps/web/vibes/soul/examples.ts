@@ -333,6 +333,13 @@ export const examples = [
     component: lazy(() => import('./examples/page-blog')),
   },
   {
+    name: 'page-blog-post-example',
+    dependencies: [],
+    registryDependencies: ['page-blog-post'],
+    files: ['examples/page-blog-post.tsx'],
+    component: lazy(() => import('./examples/page-blog-post')),
+  },
+  {
     name: 'page-cart-electric-example',
     dependencies: [],
     registryDependencies: ['page-cart-electric'],
