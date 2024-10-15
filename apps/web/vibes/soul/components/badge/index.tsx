@@ -12,7 +12,7 @@ export const Badge = function Badge({ children, variant = 'round', className }: 
   return (
     <span
       className={clsx(
-        'z-10 bg-primary-highlight px-2 py-0.5 font-mono text-xs uppercase tracking-tighter text-foreground',
+        'bg-primary-highlight px-2 py-0.5 font-mono text-xs uppercase tracking-tighter text-foreground',
         variant === 'round' ? 'rounded-full' : 'rounded',
         className
       )}

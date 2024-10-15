@@ -41,7 +41,7 @@ export const Button = function Button({
         }[variant],
         // After Pseudo Element / Animated Background Styles
         'after:absolute after:inset-0 after:z-0 after:h-full after:w-full after:rounded-full',
-        'after:ease-[cubic-bezier(0.075,0.365,0.000,0.995)] after:transition-[opacity,transform] after:duration-500',
+        'after:transition-[opacity,transform] after:duration-500 after:[animation-timing-function:cubic-bezier(0.075,0.365,0.000,0.995)]',
         'after:-translate-x-[110%]',
         !loading && !disabled && 'hover:after:translate-x-0',
         {

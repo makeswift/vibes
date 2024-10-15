@@ -21,8 +21,10 @@ export async function generateStaticParams() {
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: { vibe: string; component: string; brand: string }
+  searchParams: { [key: string]: string | string[] }
 }) {
   const vibe = getVibe(params.vibe)
 
@@ -61,7 +63,7 @@ export default async function Page({
         }}
       />
       <Suspense fallback={null}>
-        <Component />
+        <Component searchParams={searchParams} />
       </Suspense>
     </>
   )

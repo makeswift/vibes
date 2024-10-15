@@ -10,7 +10,7 @@ import { Icon } from '@/vibes/soul/components/icon'
 export interface FeatureProps {
   image: {
     src: string
-    altText: string
+    alt: string
   }
   title?: string
   description?: string
@@ -37,7 +37,7 @@ export const Feature = function Feature({ image, title, description, grid, cta }
         >
           <Image
             src={image.src}
-            alt={image.altText}
+            alt={image.alt}
             fill
             sizes="(max-width: 768px) 100vw, 384px"
             className="object-cover"

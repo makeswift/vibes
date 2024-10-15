@@ -16,7 +16,7 @@ import { reviews } from '@/vibes/soul/examples/sections/reviews'
 
 interface Image {
   src: string
-  altText: string
+  alt: string
 }
 
 interface ProductPageProps {

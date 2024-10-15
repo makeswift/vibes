@@ -18,7 +18,7 @@ export const featuredImageII: FeaturedImageProps = {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
   image: {
     src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz',
-    altText: '',
+    alt: '',
   },
   cta: { href: '#', label: 'Shop Now' },
 }
@@ -27,7 +27,7 @@ export default function Preview() {
   return (
     <HomePage
       headerLinks={headerLinks}
-      logo={{ src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID', altText: 'Freda Salvador' }}
+      logo={{ src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID', alt: 'Freda Salvador' }}
       heroSlides={heroSlides}
       categories={cards}
       featuredImage={featuredImage}

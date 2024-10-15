@@ -5,7 +5,7 @@ import { clsx } from 'clsx'
 
 interface Image {
   src: string
-  altText: string
+  alt: string
 }
 
 export interface BlogPost {
@@ -43,7 +43,7 @@ export const BlogPostCard = function BlogPostCard({
             height={349}
             width={466}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            alt={image.altText}
+            alt={image.alt}
             className="transition-transform duration-500 ease-out group-hover:scale-105"
           />
         ) : (

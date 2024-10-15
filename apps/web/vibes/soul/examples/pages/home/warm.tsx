@@ -17,7 +17,7 @@ export const featuredImageII: FeaturedImageProps = {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
   image: {
     src: 'https://rstr.in/monogram/vibes/mQ0gb1u9_CO',
-    altText: '',
+    alt: '',
   },
   cta: { href: '#', label: 'Shop Now' },
 }
@@ -30,7 +30,7 @@ export default function Preview() {
       headerLinks={headerLinks}
       logo={{
         src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
-        altText: 'Outer Shell Logo',
+        alt: 'Outer Shell Logo',
       }}
       heroSlides={heroSlides}
       categories={cards}

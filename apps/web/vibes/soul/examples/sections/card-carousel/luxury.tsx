@@ -4,7 +4,7 @@ export const cards = [
   {
     id: '1',
     title: 'Flats',
-    image: { src: 'https://rstr.in/monogram/vibes/YXr3BKEq3T4/j4d8DXT8gGB', altText: 'Flats' },
+    image: { src: 'https://rstr.in/monogram/vibes/YXr3BKEq3T4/j4d8DXT8gGB', alt: 'Flats' },
     href: '#',
   },
   {
@@ -12,7 +12,7 @@ export const cards = [
     title: 'Boots',
     image: {
       src: 'https://rstr.in/monogram/vibes/EnWYvct7gIR',
-      altText: 'Boots',
+      alt: 'Boots',
     },
     href: '#',
   },
@@ -21,20 +21,20 @@ export const cards = [
     title: 'Loafers',
     image: {
       src: 'https://rstr.in/monogram/vibes/--JXxhCGkan',
-      altText: 'Loafers',
+      alt: 'Loafers',
     },
     href: '#',
   },
   {
     id: '4',
     title: 'Sneakers',
-    image: { src: 'https://rstr.in/monogram/vibes/w8kVrtse8Id/mO9ju-R1-8L', altText: 'Sneakers' },
+    image: { src: 'https://rstr.in/monogram/vibes/w8kVrtse8Id/mO9ju-R1-8L', alt: 'Sneakers' },
     href: '#',
   },
   {
     id: '5',
     title: 'Heels',
-    image: { src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT', altText: 'Heels' },
+    image: { src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT', alt: 'Heels' },
     href: '#',
   },
 ]

@@ -18,7 +18,7 @@ interface Link {
 }
 
 interface Image {
-  altText: string
+  alt: string
   blurDataUrl?: string
   src: string
 }
@@ -158,7 +158,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                       image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
                     }
                     blurDataURL={image.blurDataUrl}
-                    alt={image.altText}
+                    alt={image.alt}
                     fill
                     priority
                     sizes="100vw"
