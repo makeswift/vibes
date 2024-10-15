@@ -6,9 +6,9 @@ import { Accordions } from '@/vibes/soul/primitives/accordions'
 import { Button } from '@/vibes/soul/primitives/button'
 import { SidePanelClose } from '@/vibes/soul/primitives/side-panel'
 
-import { FilterCheckboxGroup } from './filter-checkbox-group'
 import { FilterRange } from './filter-range'
 import { FilterRating } from './filter-rating'
+import { FilterToggleGroup } from './filter-toggle-group'
 import { Filter } from './filters'
 
 interface Props {
@@ -41,7 +41,7 @@ export function FiltersPanel({ filters }: Props) {
                 defaultOpen: true,
                 title: filter.label,
                 content: (
-                  <FilterCheckboxGroup
+                  <FilterToggleGroup
                     key={filter.name}
                     name={filter.name}
                     options={filter.options}
