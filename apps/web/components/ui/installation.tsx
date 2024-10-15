@@ -51,16 +51,16 @@ export function Installation({
   return (
     <>
       <h2 id="installation">Installation</h2>
-      <Tabs defaultValue="cli">
+      <Tabs defaultValue="manual">
         <TabsList>
-          <TabsTrigger value="cli">CLI</TabsTrigger>
+          {/* <TabsTrigger value="cli">CLI</TabsTrigger> */}
           <TabsTrigger value="manual">Manual</TabsTrigger>
         </TabsList>
-        <TabsContent value="cli" className="pt-4">
+        {/* <TabsContent value="cli" className="pt-4">
           <p>Install the component from your command line.</p>
           <CodeBlock lang="bash">{`npx vibes add ${vibeSlug}/${componentName}`}</CodeBlock>
 
-          {/* <Steps>
+          <Steps>
             <Step>
               <h3>Run the following command</h3>
               <CodeBlock lang="bash">{`npx vibes add ${vibeSlug}/${componentName}`}</CodeBlock>
@@ -70,8 +70,8 @@ export function Installation({
               You can now find the {componentName} component in your project in the{' '}
               <code>/vibes/{vibeSlug}</code> directory
             </Step>
-          </Steps> */}
-        </TabsContent>
+          </Steps> 
+        </TabsContent> */}
         <TabsContent value="manual" className="pt-4">
           <Steps>
             {component.registryDependencies.length > 0 && (

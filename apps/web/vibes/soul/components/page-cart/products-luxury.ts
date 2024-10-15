@@ -10,7 +10,7 @@ export let productsLuxury: CartLineItem[] = [
     price: '$40',
     image: {
       src: 'https://rstr.in/monogram/vibes/18bzcr01WWx',
-      altText: 'DARYA LUG SOLE FISHERMAN',
+      alt: 'DARYA LUG SOLE FISHERMAN',
     },
     quantity: 1,
   },
@@ -21,7 +21,7 @@ export let productsLuxury: CartLineItem[] = [
     price: '$42',
     image: {
       src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz',
-      altText: 'ROMA ROUND TOE BALLET FLAT',
+      alt: 'ROMA ROUND TOE BALLET FLAT',
     },
     quantity: 2,
   },

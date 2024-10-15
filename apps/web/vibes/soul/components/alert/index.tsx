@@ -29,7 +29,7 @@ export const Alert = function Alert({ variant, message, showAlert, onClose }: Pr
       className={clsx(
         'fixed right-2 top-2 flex min-w-64 max-w-96 rounded-lg border transition-[transform,opacity] duration-300',
         showAlert
-          ? 'ease-[cubic-bezier(0.56,0.23,0.00,1.00)] translate-y-0 opacity-100'
+          ? 'translate-y-0 opacity-100 [animation-timing-function:cubic-bezier(0.56,0.23,0.00,1.00)]'
           : '-translate-y-full opacity-0  ease-in',
         variant === 'error' && 'border-error bg-error-highlight',
         variant === 'info' && 'border-info bg-info-highlight',

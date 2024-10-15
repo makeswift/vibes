@@ -459,6 +459,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/products-carousel')),
   },
   {
+    name: 'products-list-section-electric-example',
+    dependencies: [],
+    registryDependencies: ['products-list-section'],
+    files: ['examples/sections/products-list-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/products-list-section')),
+  },
+  {
     name: 'product-description-electric-example',
     dependencies: [],
     registryDependencies: ['product-description-electric'],
@@ -520,13 +527,6 @@ export const examples = [
     registryDependencies: ['products-list-luxury'],
     files: ['examples/primitives/products-list/luxury.tsx'],
     component: lazy(() => import('./examples/primitives/products-list/luxury')),
-  },
-  {
-    name: 'products-header-example',
-    dependencies: [],
-    registryDependencies: ['products-header'],
-    files: ['examples/products-header.tsx'],
-    component: lazy(() => import('./examples/products-header')),
   },
   {
     name: 'rating-example',

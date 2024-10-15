@@ -7,7 +7,7 @@ import { InlineEmailForm } from '@/vibes/soul/components/inline-email-form'
 interface Props {
   image?: {
     src: string
-    altText: string
+    alt: string
   }
   title: string
   description: string
@@ -22,7 +22,7 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
           <div className="relative aspect-square h-full w-full overflow-hidden bg-primary/10 @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
             <Image
               src={image.src}
-              alt={image.altText}
+              alt={image.alt}
               sizes="(max-width: 680px) 100vw, 50vw"
               fill
               className="object-cover"

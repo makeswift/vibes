@@ -10,7 +10,7 @@ let productsElectric: CartLineItem[] = [
     price: '$46',
     image: {
       src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
-      altText: 'Philodendron Imperial Red',
+      alt: 'Philodendron Imperial Red',
     },
     quantity: 1,
   },
@@ -21,7 +21,7 @@ let productsElectric: CartLineItem[] = [
     price: '$24',
     image: {
       src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
-      altText: 'Caladium',
+      alt: 'Caladium',
     },
     quantity: 2,
   },

@@ -9,7 +9,7 @@ export interface CardProps {
   title: string
   image: {
     src: string
-    altText: string
+    alt: string
   }
   href: string
   textContrast?: 'light' | 'dark'
@@ -39,7 +39,7 @@ export const Card = function Card({
         <Image
           src={image.src}
           fill
-          alt={image.altText}
+          alt={image.alt}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="w-full scale-105 select-none bg-contrast-100 object-cover transition-transform duration-700 ease-out group-hover:scale-100"
         />

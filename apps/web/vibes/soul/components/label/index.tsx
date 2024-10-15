@@ -1,16 +1,16 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
+import * as LabelPrimitive from '@radix-ui/react-label'
 import { clsx } from 'clsx'
 
-export interface LabelProps {
-  className?: string
-  children: ReactNode
-}
-
-export const Label = function Label({ className, children }: LabelProps) {
+export function Label({
+  className,
+  ...rest
+}: ComponentPropsWithoutRef<typeof LabelPrimitive.Root>) {
   return (
-    <span className={clsx('font-mono text-xs uppercase text-contrast-500', className)}>
-      {children}
-    </span>
+    <LabelPrimitive.Root
+      {...rest}
+      className={clsx('font-mono text-xs uppercase text-contrast-500', className)}
+    />
   )
 }

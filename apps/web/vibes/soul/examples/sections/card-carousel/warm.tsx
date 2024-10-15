@@ -6,7 +6,7 @@ export const cards = [
     title: 'Handlebar Bags',
     image: {
       src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
-      altText: 'Handlebar Bags',
+      alt: 'Handlebar Bags',
     },
     href: '#',
   },
@@ -15,20 +15,20 @@ export const cards = [
     title: 'Frame Bags',
     image: {
       src: 'https://rstr.in/monogram/vibes/uh4Y3aF2rqO/KBtATLbT344',
-      altText: 'Frame Bags',
+      alt: 'Frame Bags',
     },
     href: '#',
   },
   {
     id: '3',
     title: 'Seat Bags',
-    image: { src: 'https://rstr.in/monogram/vibes/MZX8-yya26e', altText: 'Seat Bags' },
+    image: { src: 'https://rstr.in/monogram/vibes/MZX8-yya26e', alt: 'Seat Bags' },
     href: '#',
   },
   {
     id: '4',
     title: 'Rack Bags',
-    image: { src: 'https://rstr.in/monogram/vibes/BplFmXgFkEY/Y6W895XQAah', altText: 'Succulent' },
+    image: { src: 'https://rstr.in/monogram/vibes/BplFmXgFkEY/Y6W895XQAah', alt: 'Succulent' },
     href: '#',
   },
 ]

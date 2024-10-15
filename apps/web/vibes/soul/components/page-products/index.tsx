@@ -8,7 +8,7 @@ import { Product } from '@/vibes/soul/components/product-card'
 
 interface Image {
   src: string
-  altText: string
+  alt: string
 }
 
 interface ProductsPageProps {

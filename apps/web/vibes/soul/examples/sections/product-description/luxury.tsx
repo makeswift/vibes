@@ -25,8 +25,7 @@ export const accordions = [
 
 export const productDescriptionImage = {
   src: 'https://rstr.in/monogram/vibes/nH3UU-ncSv7/hGakp4qZXfo',
-  altText:
-    'A woman wearing a white crochet shirt with green trim and orange flowers, green pants, and Freda brown loafers.',
+  alt: 'A woman wearing a white crochet shirt with green trim and orange flowers, green pants, and Freda brown loafers.',
 }
 
 const video = 'https://videos.pexels.com/video-files/4957753/4957753-hd_1920_1080_25fps.mp4'

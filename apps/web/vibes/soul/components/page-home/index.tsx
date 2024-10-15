@@ -77,7 +77,7 @@ const locales = [
 
 interface Image {
   src: string
-  altText: string
+  alt: string
 }
 
 export const HomePage = function HomePage({
@@ -119,7 +119,7 @@ export const HomePage = function HomePage({
         description={featuredImage.description}
         image={{
           src: featuredImage.image.src,
-          altText: featuredImage.image.altText,
+          alt: featuredImage.image.alt,
         }}
         cta={{ href: '#', label: 'Shop Now' }}
       />
@@ -148,7 +148,7 @@ export const HomePage = function HomePage({
       <Feature
         image={{
           src: feature.image.src,
-          altText: feature.image.altText,
+          alt: feature.image.alt,
         }}
         title={feature.title}
         description={feature.description}
@@ -165,7 +165,7 @@ export const HomePage = function HomePage({
         description={featuredImageII.description}
         image={{
           src: featuredImageII.image.src,
-          altText: featuredImageII.image.altText,
+          alt: featuredImageII.image.alt,
         }}
         cta={{ href: featuredImageII.cta.href, label: featuredImageII.cta.label }}
       />

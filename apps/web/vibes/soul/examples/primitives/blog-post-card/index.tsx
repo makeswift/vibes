@@ -9,7 +9,7 @@ export default function Preview() {
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit hendrerit erat imperdiet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         image={{
           src: 'https://rstr.in/monogram/vibes/MJbRGY1Y9LK/QlkAvXGZ2ER',
-          altText: 'Vestibulum eleifend placerat ligula',
+          alt: 'Vestibulum eleifend placerat ligula',
         }}
         href="#"
         date="2024-07-01"

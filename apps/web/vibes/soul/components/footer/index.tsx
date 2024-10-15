@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 
 interface Image {
   src: string
-  altText: string
+  alt: string
 }
 
 interface Link {
@@ -88,7 +88,7 @@ export const Footer = function Footer({
                       src={logo.src}
                       fill
                       sizes="400px"
-                      alt={logo.altText}
+                      alt={logo.alt}
                       className="object-contain object-left"
                     />
                   )
