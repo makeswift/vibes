@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import clsx from 'clsx'
 import { Minus, Plus } from 'lucide-react'
 
 interface Props {
@@ -27,13 +28,17 @@ export const Counter = function Counter({ current = 0, max = 20, type = 'button'
   return (
     <div className="flex items-center rounded-lg border">
       <button
-        className="group rounded-l-lg p-3 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className={clsx(
+          'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+          { 'hover:bg-contrast-100/50': count > 0 }
+        )}
         onClick={decrement}
         aria-label="Decrease count"
         type={type}
+        disabled={count === 0}
       >
         <Minus
-          className="text-contrast-300 transition-colors duration-300 group-hover:text-foreground"
+          className={`text-contrast-300 transition-colors duration-300 ${count > 0 ? 'group-hover:text-foreground' : ''}`}
           strokeWidth={1.5}
           size={18}
         />
