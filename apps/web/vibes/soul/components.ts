@@ -224,6 +224,22 @@ export const components = [
     files: ['components/products-list/index.tsx'],
   },
   {
+    name: 'products-list-section',
+    dependencies: [],
+    registryDependencies: ['products-list'],
+    files: [
+      'sections/products-list-section/products-list-section.tsx',
+      'sections/products-list-section/pagination.tsx',
+      'sections/products-list-section/sorting.tsx',
+      'sections/products-list-section/filters.tsx',
+      'sections/products-list-section/filter-checkbox-group.tsx',
+      'sections/products-list-section/filter-checkbox-option.tsx',
+      'sections/products-list-section/filter-rating-option.tsx',
+      'sections/products-list-section/filter-rating.tsx',
+      'sections/products-list-section/filter-range.tsx',
+    ],
+  },
+  {
     name: 'product-description',
     dependencies: [],
     registryDependencies: ['accordions'],
