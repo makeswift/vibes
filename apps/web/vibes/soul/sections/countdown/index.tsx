@@ -86,17 +86,7 @@ export const Countdown = function Countdown({
     }, [value])
 
     return (
-      <div
-        className={clsx(
-          'relative overflow-hidden',
-          {
-            default: 'h-[110px] w-10 [&>*]:h-[110px]',
-            full: 'h-[110px] w-10 [&>*]:h-[110px]',
-            split: 'h-[70px] w-6 [&>*]:h-[70px]',
-            banner: 'h-[38px] w-3 [&>*]:h-[38px]',
-          }[variant.type]
-        )}
-      >
+      <div className="relative h-14 overflow-hidden [&>*]:h-14">
         {Array.from({ length: 10 }, (_, i) => (
           <div
             key={i}
@@ -118,9 +108,9 @@ export const Countdown = function Countdown({
           ? 'bg-primary-shadow text-primary'
           : 'bg-primary text-primary-shadow',
         {
-          default: 'h-[110px] w-[100px]',
-          full: 'h-[110px] w-[100px]',
-          split: 'h-[70px] w-[70px]',
+          default: 'h-14 w-14 @2xl:h-[110px] @2xl:w-[100px]',
+          full: 'h-14 w-14 @2xl:h-[110px] @2xl:w-[100px]',
+          split: 'h-14 w-14 @2xl:h-[70px] @2xl:w-[70px]',
           banner: 'h-[38px] w-[38px]',
         }[variant.type]
       )}
@@ -132,27 +122,21 @@ export const Countdown = function Countdown({
 
   return (
     <section
-      className={clsx(
-        'relative grid origin-top transition-all duration-300 ease-out @container',
-        variant.type === 'banner'
-          ? banner.dismissed
-            ? 'pointer-events-none  grid-rows-[0fr]'
-            : 'grid-rows-[1fr]'
-          : '',
-        {
-          'fixed top-0': variant.type === 'banner',
-          'bg-primary-shadow': variant.type === 'default' || variant.type === 'split',
-        }
-      )}
+      className={clsx('relative grid origin-top transition-all duration-300 ease-out @container', {
+        'pointer-events-none grid-rows-[0fr]': variant.type === 'banner' && banner.dismissed,
+        'grid-rows-[1fr]': variant.type === 'banner' && !banner.dismissed,
+        'fixed top-0': variant.type === 'banner',
+        'bg-primary-shadow': variant.type === 'default' || variant.type === 'split',
+      })}
     >
       <div className="overflow-hidden">
         <div
           className={clsx(
             'relative flex flex-col items-center justify-center overflow-hidden bg-primary-shadow bg-cover bg-center bg-no-repeat font-medium',
             {
-              default: 'container mx-auto py-32',
+              default: 'py-32 @5xl:container @5xl:mx-auto',
               full: 'py-40',
-              split: 'container mx-auto @3xl:grid @3xl:grid-cols-2',
+              split: '@5xl:container @3xl:mx-auto @3xl:grid @3xl:grid-cols-2',
               banner: '',
             }[variant.type]
           )}
@@ -180,8 +164,8 @@ export const Countdown = function Countdown({
                   className={clsx(
                     'absolute object-contain',
                     index === 0
-                      ? 'left-0 top-0 -translate-x-1/4 -translate-y-1/4'
-                      : 'bottom-0 right-0 translate-x-1/4 translate-y-1/4'
+                      ? '-left-20 top-0 -translate-y-2/3 @5xl:-translate-y-1/3'
+                      : '-right-20 bottom-0 translate-y-2/3 @5xl:translate-y-1/3'
                   )}
                 />
               ))
@@ -189,20 +173,23 @@ export const Countdown = function Countdown({
 
           <div
             className={clsx(
-              'relative z-10 text-center text-white @2xl:scale-100',
+              'relative z-10 text-center text-white',
               {
-                default: 'scale-[0.7] text-6xl [&>div>div>span]:text-lg [&>h2]:text-[40px]',
-                full: 'scale-[0.7] text-6xl [&>div>div>span]:text-lg',
-                split: 'py-9 text-[40px] [&>div>div>span]:text-xs [&>h2]:text-2xl',
+                default:
+                  'text-3xl @2xl:text-6xl [&>div>div>span]:text-lg [&>h2]:text-3xl @2xl:[&>h2]:text-[40px]',
+                full: 'text-3xl @2xl:text-6xl [&>div>div>span]:text-lg',
+                split: 'py-9 text-3xl @2xl:text-[40px] [&>div>div>span]:text-xs [&>h2]:text-2xl',
                 banner:
-                  'flex scale-75 items-center gap-6 py-2.5 text-xl [&>div>div>span]:mt-1 [&>div>div>span]:text-xs',
+                  'flex flex-col items-center gap-4 py-2.5 text-lg @xl:flex-row @xl:gap-6 @2xl:text-xl [&>div>div>span]:text-xs [&>div>span]:mt-0.5',
               }[variant.type]
             )}
           >
             <h2
-              className={clsx({ 'mb-6 max-w-2xl [text-wrap:pretty]': variant.type !== 'banner' })}
+              className={clsx('leading-[1.1] [text-wrap:pretty]', {
+                'mb-6 max-w-2xl': variant.type !== 'banner',
+              })}
             >
-              {title} long very long title test
+              {title}
             </h2>
             <div className="flex justify-center space-x-2">
               {Object.entries(timeLeft).map(([unit, value], index, array) => (
