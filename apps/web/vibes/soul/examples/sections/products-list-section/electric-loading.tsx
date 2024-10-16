@@ -21,6 +21,12 @@ export default function Preview() {
     }, 5000)
   })
 
+  const totalCount = new Promise<number>(res => {
+    setTimeout(() => {
+      res(getProducts().length)
+    }, 2000)
+  })
+
   const breadcrumbs = getBreadcrumbs()
 
   return (
@@ -29,7 +35,7 @@ export default function Preview() {
         title="Plants"
         breadcrumbs={breadcrumbs}
         products={products}
-        totalCount={0}
+        totalCount={totalCount}
         filters={filters}
         sortOptions={sortOptions}
       />
