@@ -130,7 +130,7 @@ const sortOptions = [
 export default function Preview({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] }
+  searchParams: Record<string, string | string[] | null>
 }) {
   return (
     <div className="py-6">
@@ -141,14 +141,14 @@ export default function Preview({
         totalCount={products.length}
         filters={filters}
         sortOptions={sortOptions}
-        pagination={{ name: 'page', previousPage: '2', nextPage: '3' }}
-        compareProducts={
-          Array.isArray(searchParams.compare)
-            ? products.filter(product => searchParams.compare.includes(product.id))
-            : typeof searchParams.compare === 'string'
-              ? products.filter(product => product.id === searchParams.compare)
-              : []
-        }
+        pagination={{ previousValue: '1', nextValue: '10' }}
+        compareProducts={products.filter(product => {
+          if (typeof searchParams.compare === 'string') {
+            return searchParams.compare === product.id
+          } else if (Array.isArray(searchParams.compare)) {
+            return searchParams.compare.includes(product.id)
+          }
+        })}
       />
     </div>
   )
