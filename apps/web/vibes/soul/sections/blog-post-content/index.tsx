@@ -23,9 +23,9 @@ export const BlogPostContent = function BlogPostContent({
   className = '',
 }: Props) {
   return (
-    <section className={clsx('w-full bg-background pt-0.5 @container', className)}>
+    <section className={clsx('mx-auto max-w-screen-2xl @container', className)}>
       <div className="px-3 @xl:px-6 @5xl:px-20">
-        <div className="mx-auto w-full max-w-4xl space-y-4 pb-12 pt-32 @5xl:pb-16 @5xl:pt-40">
+        <header className="mx-auto w-full max-w-4xl space-y-4 pb-10 pt-24 @4xl:pb-16 @4xl:pt-40">
           <Breadcrumbs
             breadcrumbs={[
               {
@@ -43,24 +43,25 @@ export const BlogPostContent = function BlogPostContent({
             ]}
           />
 
-          <h1 className="mt-2 text-4xl font-medium leading-[1.1] @4xl:text-6xl">{title}</h1>
+          <h1 className="mt-2 font-heading text-4xl font-medium leading-[1.1] @4xl:text-6xl">
+            {title}
+          </h1>
           <p>
             {date} • {author}
           </p>
-        </div>
+        </header>
 
         <Image
           src={image}
           alt={title}
           height={780}
           width={1280}
-          className="mx-auto aspect-[5/3] w-full max-w-7xl rounded-2xl"
+          className="mx-auto aspect-[5/3] w-full max-w-screen-2xl rounded-2xl"
         />
 
-        <div
-          id={content}
+        <article
           dangerouslySetInnerHTML={{ __html: content }}
-          className="mx-auto w-full max-w-4xl space-y-4 py-20"
+          className="prose mx-auto w-full max-w-4xl space-y-4 pb-20 pt-10 @4xl:py-20"
         />
       </div>
     </section>

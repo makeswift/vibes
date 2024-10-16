@@ -354,11 +354,11 @@ export const examples = [
     component: lazy(() => import('./examples/pages/blog')),
   },
   {
-    name: 'page-blog-post-example',
+    name: 'page-blog-post-electric-example',
     dependencies: [],
-    registryDependencies: ['page-blog-post'],
-    files: ['examples/pages/blog/post/index.tsx'],
-    component: lazy(() => import('./examples/pages/blog/post')),
+    registryDependencies: ['page-blog-post-electric'],
+    files: ['examples/pages/blog/post/electric.tsx'],
+    component: lazy(() => import('./examples/pages/blog/post/electric')),
   },
   {
     name: 'page-cart-electric-example',
