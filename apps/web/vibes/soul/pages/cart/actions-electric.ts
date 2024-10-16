@@ -3,16 +3,14 @@
 import { revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { removeProduct, updateProductQuantity } from '@/vibes/soul/pages/cart/products-electric'
+import { removeLineItem, updateLineItemQuantity } from '@/vibes/soul/pages/cart/line-items-electric'
 
 export async function removeLineItemAction(
   state: { error: string | null },
   id: string
 ): Promise<{ error: string | null }> {
-  await removeProduct(id)
-
-  revalidateTag('products-electric')
-
+  await removeLineItem(id)
+  revalidateTag('line-items-electric')
   return { error: null }
 }
 
@@ -27,11 +25,9 @@ export async function updateLineItemQuantityAction(
   }
 ): Promise<{ error: string | null }> {
   if (quantity > 0) {
-    await updateProductQuantity(id, quantity)
+    await updateLineItemQuantity(id, quantity)
   }
-
-  revalidateTag('products-electric')
-
+  revalidateTag('line-items-electric')
   return { error: null }
 }
 

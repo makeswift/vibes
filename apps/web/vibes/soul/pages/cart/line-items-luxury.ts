@@ -2,7 +2,7 @@ import { unstable_cache } from 'next/cache'
 
 import { CartLineItem } from '@/vibes/soul/sections/cart'
 
-export let productsLuxury: CartLineItem[] = [
+export let linItemsLuxury: CartLineItem[] = [
   {
     id: '1',
     title: 'DARYA LUG SOLE FISHERMAN',
@@ -28,21 +28,21 @@ export let productsLuxury: CartLineItem[] = [
 ]
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export const getProducts = unstable_cache(async () => productsLuxury, ['products-luxury'])
+export const getLineItems = unstable_cache(async () => linItemsLuxury, ['line-items-luxury'])
 
 export const getSubtotal = () => {
-  return `$${productsLuxury.reduce((acc, product) => {
-    return acc + Number(product.price.replace('$', '')) * product.quantity
+  return `$${linItemsLuxury.reduce((acc, lineItem) => {
+    return acc + Number(lineItem.price.replace('$', '')) * lineItem.quantity
   }, 0)}`
 }
 
-export function removeProduct(id: string) {
-  productsLuxury = productsLuxury.filter(product => product.id !== id)
+export function removeLineItem(id: string) {
+  linItemsLuxury = linItemsLuxury.filter(lineItem => lineItem.id !== id)
 }
 
-export function updateProductQuantity(id: string, quantity: number) {
-  const productToUpdate = productsLuxury.find(product => product.id === id)
-  if (productToUpdate) {
-    productToUpdate.quantity = quantity
+export function updateLineItemQuantity(id: string, quantity: number) {
+  const lineItemToUpdate = linItemsLuxury.find(lineItem => lineItem.id === id)
+  if (lineItemToUpdate) {
+    lineItemToUpdate.quantity = quantity
   }
 }
