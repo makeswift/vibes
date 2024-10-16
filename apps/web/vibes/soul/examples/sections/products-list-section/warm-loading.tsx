@@ -25,7 +25,7 @@ export default function Preview() {
 
   const totalCount = new Promise<number>(res => {
     setTimeout(() => {
-      res(getProducts().length)
+      res(getProducts('warm').length)
     }, 2000)
   })
 
