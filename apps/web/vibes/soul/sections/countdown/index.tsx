@@ -108,10 +108,10 @@ export const Countdown = function Countdown({
           ? 'bg-primary-shadow text-primary'
           : 'bg-primary text-primary-shadow',
         {
-          default: 'h-14 w-14 @2xl:h-[110px] @2xl:w-[100px]',
-          full: 'h-14 w-14 @2xl:h-[110px] @2xl:w-[100px]',
-          split: 'h-14 w-14 @2xl:h-[70px] @2xl:w-[70px]',
-          banner: 'h-[38px] w-[38px]',
+          default: 'h-14 w-14 @2xl:h-28 @2xl:w-28',
+          full: 'h-14 w-14 @2xl:h-28 @2xl:w-28',
+          split: 'h-14 w-14 @2xl:h-16 @2xl:w-16',
+          banner: 'h-9 w-9',
         }[variant.type]
       )}
     >
@@ -196,7 +196,7 @@ export const Countdown = function Countdown({
                 <React.Fragment key={unit}>
                   <div key={unit} className="flex flex-col items-center">
                     <TwoDigitAnimatedNumber value={value} />
-                    <span className="mt-2 capitalize">{unit}</span>
+                    <span className="mt-1 capitalize">{unit}</span>
                   </div>
                   {index < array.length - 1 && <span>:</span>}
                 </React.Fragment>
@@ -209,6 +209,7 @@ export const Countdown = function Countdown({
         {variant.type === 'banner' ? (
           <button
             aria-label="Dismiss banner"
+            type="button"
             onClick={e => {
               e.preventDefault()
               hideBanner()
