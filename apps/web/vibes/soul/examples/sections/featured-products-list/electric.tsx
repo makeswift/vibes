@@ -57,7 +57,7 @@ export const featuredProducts = {
       href: '#',
     },
     {
-      id: '6',
+      id: '5',
       title: 'Bird Nest Fern',
       subtitle: 'Indoor Plant',
       // badge: 'New',
@@ -69,7 +69,7 @@ export const featuredProducts = {
       href: '#',
     },
     {
-      id: '5',
+      id: '6',
       title: 'Jade Plant',
       subtitle: 'Indoor Plant',
       // badge: 'New',
