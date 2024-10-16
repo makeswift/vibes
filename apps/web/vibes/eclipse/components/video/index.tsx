@@ -108,8 +108,8 @@ export const Video = forwardRef(function Video(
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M2.05026 0.636039L0.636042 2.05025L5.58579 7L0.636042 11.9497L2.05026 13.364L7 8.41421L11.9498 13.364L13.364 11.9497L8.41422 7L13.364 2.05025L11.9498 0.636039L7 5.58579L2.05026 0.636039Z"
                     fill="white"
                   />
