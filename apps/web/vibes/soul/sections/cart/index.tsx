@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { Suspense, use, useActionState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
-// import { Suspense, use } from 'react'
 import { Button } from '@/vibes/soul/primitives/button'
 import { DecrementButton } from '@/vibes/soul/sections/cart/decrement-button'
 import { LineItemQuantityIncrementButton } from '@/vibes/soul/sections/cart/increment-button'
@@ -97,12 +96,22 @@ export const Cart = function Cart({
 async function CartInner({
   title,
   lineItems,
-  summary,
+  summary = {
+    title: 'Summary',
+    subtotalLabel: 'Subtotal',
+    subtotal: '$0.00',
+    shippingLabel: 'Shipping',
+    shipping: '$0.00',
+    taxLabel: 'Tax',
+    tax: '$0.00',
+    grandTotalLabel: 'Grand Total',
+    grandTotal: '$0.00',
+  },
   emptyState,
-  removeItemAriaLabel,
-  loadingAriaLabel,
   decrementAriaLabel,
   incrementAriaLabel,
+  removeItemAriaLabel,
+  loadingAriaLabel,
   removeLineItemAction,
   updateLineItemQuantityAction,
   redirectToCheckoutAction,
@@ -188,24 +197,24 @@ async function CartInner({
         {/* Summary Side */}
         <div className="@4xl:w-1/3">
           <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
-            {summary.title ?? 'Summary'}
+            {summary.title}
           </h2>
           <table aria-label="Receipt Summary" className="w-full">
-            <caption className="sr-only">{summary.caption ?? 'Receipt Summary'}</caption>
+            <caption className="sr-only">{summary.caption}</caption>
             <tbody>
               <tr className="border-b border-contrast-100">
-                <td>{summary.subtotalLabel ?? 'Subtotal'}</td>
+                <td>{summary.subtotalLabel}</td>
                 <td className="py-4 text-right">{summary.subtotal}</td>
               </tr>
               {summary.shipping && (
                 <tr className="border-b border-contrast-100">
-                  <td>{summary.shippingLabel ?? 'Shipping'}</td>
+                  <td>{summary.shippingLabel}</td>
                   <td className="py-4 text-right">{summary.shipping}</td>
                 </tr>
               )}
               {summary.tax && (
                 <tr>
-                  <td>{summary.taxLabel ?? 'Tax'}</td>
+                  <td>{summary.taxLabel}</td>
                   <td className="py-4 text-right">{summary.tax}</td>
                 </tr>
               )}
@@ -215,7 +224,7 @@ async function CartInner({
               <tfoot>
                 <tr className="text-xl">
                   <th scope="row" className="text-left">
-                    {summary.grandTotalLabel ?? 'Grand Total'}
+                    {summary.grandTotalLabel}
                   </th>
                   <td className="py-10 text-right">{summary.grandTotal}</td>
                 </tr>
