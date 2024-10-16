@@ -14,16 +14,17 @@ export interface AccordionItem {
 interface Props {
   className?: string
   accordions: AccordionItem[]
+  type?: 'single' | 'multiple'
 }
 
 export const Accordions = forwardRef(function Accordions(
-  { className, accordions }: Props,
+  { className, accordions, type = 'multiple' }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   return (
     <Accordion.Root
       className={className}
-      type="multiple"
+      type={type}
       ref={ref}
       defaultValue={accordions.reduce(
         (acc, accordion, i) => (accordion.defaultOpen != null ? [...acc, i.toString()] : acc),
