@@ -2,6 +2,7 @@
 
 import { Checkbox } from '../form/checkbox'
 import { Input } from '../form/input'
+import { Textarea } from '../form/textarea'
 import { ToggleGroup } from '../form/toggle-group'
 
 export default function Preview() {
@@ -18,6 +19,7 @@ export default function Preview() {
         ]}
       />
       <Input id="first-name" label="First Name" required />
+      <Textarea id="description" label="Description" required disabled error="This is required" />
       <Checkbox id="consent" label="Consent" required error="" />
     </div>
   )
