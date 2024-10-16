@@ -19,9 +19,9 @@ export const ToggleGroup = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> & {
     label?: string
     options: Option[]
-    error?: string
+    errors?: string[]
   }
->(({ id, label, options, error, className, ...rest }, ref) => {
+>(({ id, label, options, errors, className, ...rest }, ref) => {
   return (
     <div className={clsx('space-y-2', className)}>
       {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
@@ -38,7 +38,7 @@ export const ToggleGroup = React.forwardRef<
           </ToggleGroupPrimitive.Item>
         ))}
       </ToggleGroupPrimitive.Root>
-      {error !== undefined && error !== '' && <ErrorMessage>{error}</ErrorMessage>}
+      {errors?.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
     </div>
   )
 })

@@ -13,9 +13,9 @@ export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
     label?: string
-    error?: string
+    errors?: string[]
   }
->(({ id, label, error, className, ...rest }) => {
+>(({ id, label, errors, className, ...rest }) => {
   return (
     <div className="space-y-2">
       <div className={clsx('flex items-center gap-2', className)}>
@@ -24,7 +24,7 @@ export const Checkbox = React.forwardRef<
           id={id}
           className={clsx(
             'flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-150 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary data-[state=checked]:border-foreground data-[state=unchecked]:border-contrast-300 data-[state=checked]:bg-foreground data-[state=unchecked]:bg-background',
-            error != null && error !== '' ? 'border-error' : 'border-contrast-300'
+            errors && errors.length > 0 ? 'border-error' : 'border-contrast-300'
           )}
         >
           <CheckboxPrimitive.Indicator>
@@ -38,7 +38,7 @@ export const Checkbox = React.forwardRef<
           </LabelPrimitive.Root>
         )}
       </div>
-      {error != null && error !== '' && <ErrorMessage>{error}</ErrorMessage>}
+      {errors?.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
     </div>
   )
 })

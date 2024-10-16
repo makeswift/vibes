@@ -11,7 +11,7 @@ export default function Preview() {
       <ToggleGroup
         type="multiple"
         label="Size"
-        error="This is required"
+        errors={['This is required']}
         options={[
           { label: 'Small', value: 'sm' },
           { label: 'Medium', value: 'md' },
@@ -19,8 +19,14 @@ export default function Preview() {
         ]}
       />
       <Input id="first-name" label="First Name" required />
-      <Textarea id="description" label="Description" required disabled error="This is required" />
-      <Checkbox id="consent" label="Consent" required error="" />
+      <Textarea
+        id="description"
+        label="Description"
+        required
+        disabled
+        errors={['This is required']}
+      />
+      <Checkbox id="consent" label="Consent" required />
     </div>
   )
 }

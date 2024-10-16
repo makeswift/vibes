@@ -14,24 +14,16 @@ interface Option {
   value: string
 }
 
-interface Props extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> {
-  id?: string
-  label?: string
-  placeholder?: string
-  variant?: 'round' | 'rectangle'
-  error?: string
-  options: Option[]
-  className?: string
-}
-
 export const Select = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
+    id?: string
+    placeholder?: string
     label?: string
     variant?: 'round' | 'rectangle'
-    error?: string
     options: Option[]
     className?: string
+    errors?: string[]
   }
 >(
   ({
@@ -40,10 +32,10 @@ export const Select = React.forwardRef<
     placeholder = 'Select an item',
     variant = 'rectangle',
     options,
-    error,
     className,
+    errors,
     ...rest
-  }: Props) => {
+  }) => {
     return (
       <div className={clsx('space-y-2', className)}>
         {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
@@ -54,7 +46,7 @@ export const Select = React.forwardRef<
               variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',
               'flex h-fit w-full select-none items-center justify-between gap-3 border bg-white p-2 px-5 py-3 font-medium text-foreground',
               'text-sm ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2',
-              error != null && error !== '' ? 'border-error' : 'border-contrast-100'
+              errors && errors.length > 0 ? 'border-error' : 'border-contrast-100'
             )}
           >
             <SelectPrimitive.Value placeholder={placeholder} />
@@ -86,7 +78,7 @@ export const Select = React.forwardRef<
             </SelectPrimitive.Content>
           </SelectPrimitive.Portal>
         </SelectPrimitive.Root>
-        {error !== undefined && error !== '' && <ErrorMessage>{error}</ErrorMessage>}
+        {errors?.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
       </div>
     )
   }

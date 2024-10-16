@@ -12,9 +12,9 @@ export const Textarea = React.forwardRef<
   React.ComponentPropsWithoutRef<'textarea'> & {
     prepend?: React.ReactNode
     label?: string
-    error?: string
+    errors?: string[]
   }
->(({ label, className, required, error, ...rest }, ref) => {
+>(({ label, className, required, errors, ...rest }, ref) => {
   return (
     <div className={clsx('space-y-2', className)}>
       <div className="flex items-center justify-between">
@@ -26,10 +26,10 @@ export const Textarea = React.forwardRef<
         ref={ref}
         className={clsx(
           'placeholder-contrast-gray-500 w-full rounded-lg border bg-background p-3 text-foreground transition-colors duration-200 placeholder:font-normal focus:border-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
-          error != null && error !== '' ? 'border-error' : 'border-contrast-100'
+          errors && errors.length > 0 ? 'border-error' : 'border-contrast-100'
         )}
       />
-      {error != null && error !== '' && <ErrorMessage>{error}</ErrorMessage>}
+      {errors?.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
     </div>
   )
 })
