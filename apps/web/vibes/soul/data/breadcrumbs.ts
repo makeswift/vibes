@@ -23,4 +23,32 @@ const breadcrumbs: BrandBreadcrumbsMap = {
       href: '#',
     },
   ],
+  luxury: [
+    {
+      label: 'Home',
+      href: '#',
+    },
+    {
+      label: 'Shoes',
+      href: '#',
+    },
+    {
+      label: 'Flats',
+      href: '#',
+    },
+  ],
+  warm: [
+    {
+      label: 'Home',
+      href: '#',
+    },
+    {
+      label: 'Bags',
+      href: '#',
+    },
+    {
+      label: 'Handle Bags',
+      href: '#',
+    },
+  ],
 }
