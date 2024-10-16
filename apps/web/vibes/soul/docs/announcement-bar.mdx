@@ -1,5 +1,38 @@
 ---
 title: Announcement Bar
+description: The `announcement-bar` component is used to display important messages or announcements to users in the form of a bar across the top of the screen.
 preview: announcement-bar-example
 previewSize: xs
+features:
+  - Full keyboard navigation
+  - Dismissible
+  - Animated transition
 ---
+
+## Usage
+
+export default function Preview() {
+  return (
+    <AnnouncementBar>
+      Get <strong>15% off</strong> and free shipping with discount code{' '}
+      <strong>&quot;welcome&quot;</strong>
+    </AnnouncementBar>
+  )
+}
+
+<CodeBlock lang="bash">{`import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'`}</CodeBlock>
+
+<CodeBlock lang="bash">{`<AnnouncementBar>
+  Get <strong>15% off</strong> and free shipping with discount code{' '}
+  <strong>&quot;welcome&quot;</strong>
+</AnnouncementBar>`}</CodeBlock>
+
+## API Reference
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+## Figma
+
+<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42901&t=dbm9GtAtS2A3vy2g-4" />

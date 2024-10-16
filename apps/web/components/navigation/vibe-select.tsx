@@ -63,7 +63,7 @@ export function VibeSelect({ vibeSlug }: Props) {
                       priority
                       src={vibe.thumbnail}
                       alt={`Thumbnail of ${vibe.name} vibe`}
-                      className="bg-contrast-100"
+                      className="border border-contrast-200 bg-contrast-100"
                     />
                   </div>
                 </Link>

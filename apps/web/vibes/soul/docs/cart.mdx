@@ -1,9 +1,154 @@
 ---
 title: Cart
+description: The Cart component displays the items in the user's cart, along with a summary of the total cost.
 preview:
   Electric: cart-electric-example
   Warm: cart-warm-example
-  Blue: cart-blue-example
   Luxury: cart-luxury-example
 previewSize: xl
+features:
+  - Displays the items in the user's cart
+  - Displays a summary of the total cost
+  - Allows the user to remove items from the cart
+  - Allows the user to update the quantity of items in the cart
 ---
+
+## Usage
+
+<CodeBlock lang="bash">{`import { Cart } from '@/vibes/soul/sections/cart'`}</CodeBlock>
+
+<CodeBlock lang="bash">{`const products = await getProducts()
+const subtotal = await getSubtotal()`}</CodeBlock>
+
+<CodeBlock lang="bash">{`<Cart
+  title="Cart"
+  lineItems={products}
+  summary={{
+    title: 'Summary',
+    caption: 'Shipping & taxes calculated at checkout',
+    subtotal: subtotal,
+    subtotalLabel: 'Subtotal',
+    shippingLabel: 'Shipping',
+    taxLabel: 'Tax',
+    tax: '$11.60',
+    grandTotalLabel: 'Total',
+    grandTotal: '$127.60',
+    ctaLabel: 'Checkout',
+  }}
+  emptyState={{
+    title: 'Your cart is empty',
+    subtitle: 'Add some products to get started.',
+    cta: {
+      label: 'Continue shopping',
+      href: '#',
+    },
+  }}
+  removeLineItemAction={removeLineItemAction}
+  updateLineItemQuantityAction={updateLineItemQuantityAction}
+  // redirectToCheckoutAction={}
+/>
+`}</CodeBlock>
+
+### Streaming
+
+Notice in the [API Reference](#api-reference) that some properties accept data (ex. `string` or `number`) or a `Promise`. By passing a `Promise`, you enable the component to stream data from the server as it's loaded.
+
+You can view this in the following example where the `lineItems` and `summary.subtotal` properties are passed as Promises:
+
+<Preview
+  vibeSlug="soul"
+  componentName={{
+    electric: 'cart-loading-electric-example',
+    luxury: 'cart-loading-luxury-example',
+    warm: 'cart-loading-warm-example',
+  }}
+>
+  Something
+</Preview>
+
+### Internationalization
+
+Integrating internationalization into your Vibes components starts at the application level. You'll need a dictionary of strings that correspond to the properties of the `Cart` component. For example, the `title` property of the `Cart` component would have a corresponding key-value pair in the dictionary like so:
+
+<CodeBlock lang="json">
+  {`
+{
+  "Cart": {
+    "title": "Hello world!",
+    //...
+  }
+}`}
+</CodeBlock>
+
+To setup internationalization, we recommend using a package like [next-intl](https://next-intl-docs.vercel.app/). After it's configured, you can retrieve translated strings via the `useTranslations` hook. You can then pass the translated string into each component property appropriately.
+
+<CodeBlock lang="tsx">
+  {`import { useTranslations } from 'next-intl';
+ 
+export default function CartPage() {
+  const t = useTranslations('CartPage');
+  return (
+    <div>
+        <Cart
+            title={t('title')}
+            // ...
+        />
+    </div>
+  );
+}`}
+</CodeBlock>
+
+For full setup instructions, refer to the [next-intl getting started docs.](https://next-intl-docs.vercel.app/docs/getting-started)
+
+## API Reference
+
+### `Cart`
+
+| Prop                           | Type                                                                                                    | Default  |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------- | -------- |
+| `title?`                       | `string`                                                                                                | `"Cart"` |
+| `lineItems`                    | [`CartLineItem[]`](#cartlineitem) \| [`Promise<CartLineItem[]`](#cartlineitem)>                         |          |
+| `summary`                      | [`CartSummary`](#cartsummary)                                                                           |          |
+| `emptyState`                   | [`CartEmptyState`](#cartemptystate)                                                                     |          |
+| `removeLineItemAction`         | `function` <Tooltip content='(id: string) => Promise<void>' />                                          |          |
+| `updateLineItemQuantityAction` | `function` <Tooltip content='({ id, quantity } : { id: string; quantity: number }) => Promise<void>' /> |          |
+| `redirectToCheckoutAction`     | `function` <Tooltip content='() => Promise<void>' />                                                    |          |
+
+### `CartLineItem`
+
+| Prop       | Type                                                     | Default |
+| ---------- | -------------------------------------------------------- | ------- |
+| `id`       | `string`                                                 |         |
+| `image`    | `Image` <Tooltip content="{src: string, alt: string}" /> |         |
+| `title`    | `string`                                                 |         |
+| `subtitle` | `string`                                                 |         |
+| `quantity` | `number`                                                 |         |
+| `price`    | `string`                                                 |         |
+
+### `CartSummary`
+
+| Prop               | Type                          | Default             |
+| ------------------ | ----------------------------- | ------------------- |
+| `title?`           | `string`                      | `"Summary"`         |
+| `caption?`         | `string`                      | `"Receipt Summary"` |
+| `subtotalLabel?`   | `string`                      | `"Subtotal"`        |
+| `subtotal`         | `string` \| `Promise<string>` |                     |
+| `shippingLabel?`   | `string`                      | `"Shipping"`        |
+| `shipping?`        | `string`                      |                     |
+| `taxLabel?`        | `string`                      |                     |
+| `tax?`             | `string` \| `Promise<string>` |                     |
+| `grandTotalLabel?` | `string`                      | `"Grand Total"`     |
+| `grandTotal`       | `string` \| `Promise<string>` |                     |
+| `ctaLabel?`        | `string`                      |                     |
+
+### `CartEmptyState`
+
+| Prop       | Type                                                        | Default |
+| ---------- | ----------------------------------------------------------- | ------- |
+| `title`    | `string`                                                    |         |
+| `subtitle` | `string`                                                    |         |
+| `cta`      | `object` <Tooltip content='{label: string, href: string}'/> |         |
+
+## Figma
+
+<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=1720-21795&t=RzBeIql49iCnmSMw-4" />

@@ -13,7 +13,6 @@ export const navigation = [
     pages: [
       { title: 'Electric', slug: 'electric', file: 'docs/electric.mdx' },
       { title: 'Warm', slug: 'warm', file: 'docs/warm.mdx' },
-      { title: 'Blue', slug: 'blue', file: 'docs/blue.mdx' },
       { title: 'Luxury', slug: 'luxury', file: 'docs/luxury.mdx' },
     ],
   },
@@ -25,6 +24,18 @@ export const navigation = [
         slug: 'accordions',
         file: 'docs/accordions.mdx',
         component: 'accordions',
+      },
+      {
+        title: 'Alert',
+        slug: 'alert',
+        file: 'docs/alert.mdx',
+        component: 'alert',
+      },
+      {
+        title: 'Animated Link',
+        slug: 'animated-link',
+        file: 'docs/animated-link.mdx',
+        component: 'animated-link',
       },
       {
         title: 'Announcement Bar',
@@ -108,6 +119,13 @@ export const navigation = [
       //   file: 'docs/slide-carousel.mdx',
       //   component: 'slide-carousel',
       // },
+
+      {
+        title: 'Spinner',
+        slug: 'spinner',
+        file: 'docs/spinner.mdx',
+        component: 'spinner',
+      },
       {
         title: 'Text Area',
         slug: 'textarea',
@@ -179,19 +197,24 @@ export const navigation = [
         component: 'log-in',
       },
       {
+        title: 'Products List Section',
+        slug: 'products-list-section',
+        file: 'docs/products-list-section.mdx',
+        component: 'products-list-section',
+      },
+      {
         title: 'Product Detail',
         slug: 'product-detail',
         file: 'docs/product-detail.mdx',
         component: 'product-detail',
       },
-      {
-        title: 'Products Header',
-        slug: 'products-header',
-        file: 'docs/products-header.mdx',
-        component: 'products-header',
-      },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
-
+      {
+        title: 'Slideshow',
+        slug: 'slideshow',
+        file: 'docs/slideshow.mdx',
+        component: 'slideshow',
+      },
       {
         title: 'Subscribe',
         slug: 'subscribe',
