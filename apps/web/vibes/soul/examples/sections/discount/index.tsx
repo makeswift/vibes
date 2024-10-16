@@ -1,4 +1,4 @@
-import { Discount } from '@/vibes/soul/components/discount'
+import { Discount } from '@/vibes/soul/sections/discount'
 
 export default function Preview() {
   return (

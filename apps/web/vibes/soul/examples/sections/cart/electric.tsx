@@ -1,10 +1,10 @@
-import { Cart } from '@/vibes/soul/components/cart'
 import {
   redirectToCheckoutAction,
   removeLineItemAction,
   updateLineItemQuantityAction,
-} from '@/vibes/soul/components/page-cart/actions-electric'
-import { getProducts, getSubtotal } from '@/vibes/soul/components/page-cart/products-electric'
+} from '@/vibes/soul/pages/cart/actions-electric'
+import { getProducts, getSubtotal } from '@/vibes/soul/pages/cart/products-electric'
+import { Cart } from '@/vibes/soul/sections/cart'
 
 export default async function Preview() {
   const products = await getProducts()
