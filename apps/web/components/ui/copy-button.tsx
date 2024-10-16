@@ -36,8 +36,8 @@ export function CopyButton({ className, clipboard, children }: Props) {
           height="10.5"
           rx="3.5"
           fill="transparent"
-          stroke-width="1.5"
-          stroke-dasharray="3 1.5"
+          strokeWidth="1.5"
+          strokeDasharray="3 1.5"
         />
         <rect
           x="4.75"
@@ -46,7 +46,7 @@ export function CopyButton({ className, clipboard, children }: Props) {
           height="10.5"
           rx="3.5"
           fill="white"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           className="transition-transform duration-150 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"
         />
       </svg>
