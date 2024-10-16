@@ -1,7 +1,15 @@
-import { Filter } from '@/vibes/soul/types'
+import { Brand, Filter } from '@/vibes/soul/types'
 
-export const getFilters = (): Filter[] => {
-  return [
+export const getFilters = (brand: Brand): Filter[] => {
+  return filters[brand]
+}
+
+interface BrandFiltersMap {
+  [key: string]: Filter[]
+}
+
+const filters: BrandFiltersMap = {
+  warm: [
     {
       name: 'color',
       label: 'Color',
@@ -36,5 +44,5 @@ export const getFilters = (): Filter[] => {
       label: 'Rating',
       type: 'rating',
     },
-  ]
+  ],
 }

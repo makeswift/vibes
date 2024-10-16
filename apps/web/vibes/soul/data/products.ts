@@ -1,13 +1,11 @@
-import { Product } from '@/vibes/soul/types'
-
-type Brand = 'electric' | 'luxury' | 'warm'
+import { Brand, Product } from '@/vibes/soul/types'
 
 export const getProducts = (brand: Brand): Product[] => {
   return products[brand]
 }
 
 interface BrandProductsMap {
-  [key: string]: any
+  [key: string]: Product[]
 }
 
 const products: BrandProductsMap = {
