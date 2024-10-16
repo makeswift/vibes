@@ -7,7 +7,7 @@ export default function Preview({
   searchParams: { [key: string]: string | string[] }
 }) {
   const products = getProducts('electric')
-  const filters = getFilters()
+  const filters = getFilters('electric')
   const sortOptions = getSortOptions()
   const breadcrumbs = getBreadcrumbs()
 

@@ -11,7 +11,7 @@ export default function Preview() {
 
   const filters = new Promise<Filter[]>(res => {
     setTimeout(() => {
-      res(getFilters())
+      res(getFilters('luxury'))
     }, 5000)
   })
 

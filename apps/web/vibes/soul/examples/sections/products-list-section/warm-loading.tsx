@@ -13,7 +13,7 @@ export default function Preview() {
 
   const filters = new Promise<Filter[]>(res => {
     setTimeout(() => {
-      res(getFilters())
+      res(getFilters('warm'))
     }, 5000)
   })
 

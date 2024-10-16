@@ -7,7 +7,7 @@ export default function Preview({
   searchParams: { [key: string]: string | string[] }
 }) {
   const products = getProducts('luxury')
-  const filters = getFilters()
+  const filters = getFilters('luxury')
   const sortOptions = getSortOptions()
   const breadcrumbs = getBreadcrumbs()
 
