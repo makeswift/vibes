@@ -1,25 +1,25 @@
-import { NotFoundPage } from '@/vibes/soul/components/page-not-found'
-import { Product } from '@/vibes/soul/components/product-card'
-import { copyright, footerLinks } from '@/vibes/soul/examples/footer-luxury'
-import { headerLinks } from '@/vibes/soul/examples/header-luxury'
+import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/luxury'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/luxury'
+import { NotFoundPage } from '@/vibes/soul/pages/not-found'
+import { Product } from '@/vibes/soul/primitives/product-card'
 
 // Products
 export const products: Product[] = [
   {
     id: '1',
-    name: 'DARYA LUG SOLE FISHERMAN',
+    title: 'DARYA LUG SOLE FISHERMAN',
     subtitle: 'Cuoro Embossed Snake',
     badge: '',
     price: '$325',
     image: {
       src: 'https://rstr.in/monogram/vibes/18bzcr01WWx',
-      altText: 'DARYA LUG SOLE FISHERMAN',
+      alt: 'DARYA LUG SOLE FISHERMAN',
     },
     href: '#',
   },
   {
     id: '2',
-    name: 'ROMA ROUND TOE BALLET FLAT',
+    title: 'ROMA ROUND TOE BALLET FLAT',
     subtitle: 'Rust Closed Woven Calf',
     badge: 'New',
     price: {
@@ -29,25 +29,25 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz',
-      altText: 'ROMA ROUND TOE BALLET FLAT',
+      alt: 'ROMA ROUND TOE BALLET FLAT',
     },
     href: '#',
   },
   {
     id: '3',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
   {
     id: '4',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -57,13 +57,13 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
   {
     id: '5',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: {
@@ -73,19 +73,19 @@ export const products: Product[] = [
     },
     image: {
       src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },
   {
     id: '6',
-    name: 'Product Name',
+    title: 'Product Name',
     subtitle: 'Blue/Black/Green',
     badge: 'New',
     price: '$123.99',
     image: {
       src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
-      altText: 'Product Name',
+      alt: 'Product Name',
     },
     href: '#',
   },

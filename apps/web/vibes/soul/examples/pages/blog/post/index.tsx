@@ -1,4 +1,4 @@
-import { BlogPostPage } from '@/vibes/soul/components/page-blog-post'
+import { BlogPostPage } from '@/vibes/soul/pages/blog/post'
 
 export default function Preview() {
   return (

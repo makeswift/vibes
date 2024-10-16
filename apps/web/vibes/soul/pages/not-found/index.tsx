@@ -1,5 +1,7 @@
-import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
-import { Footer, Section } from '@/vibes/soul/components/footer'
+import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
+import { Footer, Section } from '@/vibes/soul/sections/footer'
 import {
   Amex,
   ApplePay,
@@ -8,17 +10,15 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/components/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
-import { Header, Links } from '@/vibes/soul/components/header'
-import { NotFound } from '@/vibes/soul/components/not-found'
-import { Product } from '@/vibes/soul/components/product-card'
-import { ProductsCarousel } from '@/vibes/soul/components/products-carousel'
-import { Subscribe } from '@/vibes/soul/components/subscribe'
+} from '@/vibes/soul/sections/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
+import { Header, Links } from '@/vibes/soul/sections/header'
+import { NotFound } from '@/vibes/soul/sections/not-found'
+import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
 interface NotFoundPageProps {
   headerLinks: Links[]
-  logo: string | Image
+  logo: Image | string
   products: Product[]
   textContrast?: 'light' | 'dark'
   footerLinks: Section[]
@@ -63,7 +63,7 @@ const locales = [
 
 interface Image {
   src: string
-  altText: string
+  alt: string
 }
 
 export const NotFoundPage = function NotFoundPage({

@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { clsx } from 'clsx'
 
-import { Breadcrumbs } from '@/vibes/soul/components/breadcrumbs'
+import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
 
 interface Props {
   id: string

@@ -1,10 +1,12 @@
 import Link from 'next/link'
 
-import { AnnouncementBar } from '@/vibes/soul/components/announcement-bar'
-import { BlogPostCard } from '@/vibes/soul/components/blog-post-card'
-import { BlogPostContent } from '@/vibes/soul/components/blog-post-content'
-import { Carousel } from '@/vibes/soul/components/carousel'
-import { Footer } from '@/vibes/soul/components/footer'
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
+import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
+import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card'
+import { Carousel } from '@/vibes/soul/primitives/carousel'
+import { BlogPostContent } from '@/vibes/soul/sections/blog-post-content'
+import { Footer } from '@/vibes/soul/sections/footer'
 import {
   Amex,
   ApplePay,
@@ -13,12 +15,15 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/components/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
-import { Header } from '@/vibes/soul/components/header'
-import { Subscribe } from '@/vibes/soul/components/subscribe'
-import { posts } from '@/vibes/soul/examples/blog-post-list'
-import { headerLinks } from '@/vibes/soul/examples/header-electric'
+} from '@/vibes/soul/sections/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
+import { Header } from '@/vibes/soul/sections/header'
+import { Subscribe } from '@/vibes/soul/sections/subscribe'
+
+interface Link {
+  label: string
+  href: string
+}
 
 interface BlogPostPageProps {
   id: string
@@ -28,10 +33,7 @@ interface BlogPostPageProps {
   image: string
   content: string
   relatedPostsTitle: string
-  cta: {
-    href: string
-    label: string
-  }
+  cta?: Link
 }
 
 const socialMediaLinks = [
