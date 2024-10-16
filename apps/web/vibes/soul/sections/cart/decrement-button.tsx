@@ -29,7 +29,7 @@ export function DecrementButton({
       <button
         className={clsx(
           'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
-          isPending || quantity === 1 ? 'cursor-not-allowed opacity-50' : 'hover:bg-contrast-100/50'
+          isPending || quantity === 1 ? 'opacity-50' : 'hover:bg-contrast-100/50'
         )}
         aria-label={ariaLabel ?? 'Decrease Count'}
         type="submit"
