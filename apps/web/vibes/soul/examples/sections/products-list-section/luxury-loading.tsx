@@ -27,7 +27,7 @@ export default function Preview() {
     }, 2000)
   })
 
-  const breadcrumbs = getBreadcrumbs()
+  const breadcrumbs = getBreadcrumbs('luxury')
   return (
     <div className="py-6">
       <ProductsListSection

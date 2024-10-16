@@ -29,7 +29,7 @@ export default function Preview() {
     }, 2000)
   })
 
-  const breadcrumbs = getBreadcrumbs()
+  const breadcrumbs = getBreadcrumbs('warm')
 
   return (
     <div className="py-6">

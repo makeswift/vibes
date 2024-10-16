@@ -9,7 +9,7 @@ export default function Preview({
   const products = getProducts('luxury')
   const filters = getFilters('luxury')
   const sortOptions = getSortOptions()
-  const breadcrumbs = getBreadcrumbs()
+  const breadcrumbs = getBreadcrumbs('luxury')
 
   return (
     <div className="py-6">
