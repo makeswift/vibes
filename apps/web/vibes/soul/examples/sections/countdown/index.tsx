@@ -1,4 +1,4 @@
-import { Countdown } from '@/vibes/soul/components/countdown'
+import { Countdown } from '@/vibes/soul/sections/countdown'
 
 export default function Preview() {
   return (

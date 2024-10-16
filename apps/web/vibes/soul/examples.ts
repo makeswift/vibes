@@ -168,8 +168,8 @@ export const examples = [
     name: 'countdown-example',
     dependencies: [],
     registryDependencies: ['countdown'],
-    files: ['examples/countdown.tsx'],
-    component: lazy(() => import('./examples/countdown')),
+    files: ['examples/sections/countdown/index.tsx'],
+    component: lazy(() => import('./examples/sections/countdown')),
   },
   {
     name: 'counter-example',

@@ -89,7 +89,7 @@ export const components = [
     name: 'countdown',
     dependencies: ['clsx'],
     registryDependencies: [],
-    files: ['components/countdown/index.tsx'],
+    files: ['sections/countdown/index.tsx'],
   },
   {
     name: 'counter',
