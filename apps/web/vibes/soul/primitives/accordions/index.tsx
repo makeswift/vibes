@@ -38,7 +38,7 @@ export const Accordions = forwardRef(function Accordions(
               <Accordion.Header>
                 <Accordion.Trigger asChild>
                   <div className="group w-full cursor-pointer items-start py-3 last:flex @md:gap-8 @md:py-5">
-                    <h3 className="mr-8 flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
+                    <h3 className="mr-8 flex-1 select-none font-mono text-sm uppercase text-contrast-500 transition-colors duration-300 ease-out group-hover:text-foreground">
                       {accordion.title}
                     </h3>
                     <Chevron />
@@ -68,7 +68,7 @@ function Chevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGEle
     <svg
       viewBox="0 0 10 10"
       width="16"
-      className="mt-1 shrink-0 [&>line]:origin-center [&>line]:stroke-contrast-300 [&>line]:transition [&>line]:duration-300 [&>line]:ease-out [&>line]:group-hover:stroke-foreground"
+      className="mt-1 shrink-0 [&>line]:origin-center [&>line]:stroke-contrast-500 [&>line]:transition [&>line]:duration-300 [&>line]:ease-out [&>line]:group-hover:stroke-foreground"
       {...props}
     >
       {/* Left Line of Chevron */}
