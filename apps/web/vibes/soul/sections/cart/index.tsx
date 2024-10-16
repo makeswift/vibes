@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense, use } from 'react'
+import { Suspense } from 'react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 import { DecrementButton } from '@/vibes/soul/sections/cart/decrement-button'
