@@ -4,8 +4,8 @@ import * as React from 'react'
 
 import { clsx } from 'clsx'
 
-import { Label } from '@/vibes/soul/components/label'
 import { ErrorMessage } from '@/vibes/soul/form/error-message'
+import { Label } from '@/vibes/soul/form/label'
 
 export const Input = React.forwardRef<
   React.ElementRef<'input'>,
