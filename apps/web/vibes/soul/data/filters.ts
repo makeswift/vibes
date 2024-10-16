@@ -1,4 +1,4 @@
-import { Filter } from '../types/filter'
+import { Filter } from '@/vibes/soul/types'
 
 export const getFilters = (): Filter[] => {
   return [

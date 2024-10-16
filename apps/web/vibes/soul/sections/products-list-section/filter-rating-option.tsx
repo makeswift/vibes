@@ -2,8 +2,8 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-import { Checkbox } from '@/vibes/soul/components/checkbox'
-import { Rating } from '@/vibes/soul/components/rating'
+import { Checkbox } from '@/vibes/soul/primitives/checkbox'
+import { Rating } from '@/vibes/soul/primitives/rating'
 
 interface Props {
   value: number

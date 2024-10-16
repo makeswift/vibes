@@ -1,4 +1,4 @@
-import Product from '../types/product'
+import { Product } from '@/vibes/soul/types'
 
 export const getProducts = (): Product[] => {
   return [

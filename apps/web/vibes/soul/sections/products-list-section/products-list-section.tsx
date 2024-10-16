@@ -1,11 +1,11 @@
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/components/breadcrumbs'
-import { CompareDrawer } from '@/vibes/soul/components/compare-drawer'
-import { Product } from '@/vibes/soul/components/product-card'
-import { ProductsList } from '@/vibes/soul/components/products-list'
+import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
+import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer'
+import { ProductsList } from '@/vibes/soul/primitives/products-list'
+import { Breadcrumb, Filter, Pages, Product, Option as SortOption } from '@/vibes/soul/types'
 
-import { Filter, Filters } from './filters'
-import { Pages, Pagination } from './pagination'
-import { Option as SortOption, Sorting } from './sorting'
+import { Filters } from './filters'
+import { Pagination } from './pagination'
+import { Sorting } from './sorting'
 
 interface Props {
   breadcrumbs?: Breadcrumb[]

@@ -1,7 +1,4 @@
-import { getFilters } from '@/vibes/soul/data/filters'
-import { getProducts } from '@/vibes/soul/data/products'
-import { getSortOptions } from '@/vibes/soul/data/sort-options'
-import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm'
+import { getBreadcrumbs, getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 
 export default function Preview({
@@ -12,6 +9,8 @@ export default function Preview({
   const products = getProducts()
   const filters = getFilters()
   const sortOptions = getSortOptions()
+  const breadcrumbs = getBreadcrumbs()
+
   return (
     <div className="py-6">
       <ProductsListSection

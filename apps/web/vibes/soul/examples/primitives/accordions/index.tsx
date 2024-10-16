@@ -1,4 +1,4 @@
-import { Accordions } from '@/vibes/soul/components/accordions'
+import { Accordions } from '@/vibes/soul/primitives/accordions'
 
 export default function Preview() {
   const accordions = [

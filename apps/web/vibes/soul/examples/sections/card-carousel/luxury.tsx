@@ -1,4 +1,4 @@
-import { CardCarousel } from '@/vibes/soul/components/card-carousel'
+import { CardCarousel } from '@/vibes/soul/sections/card-carousel'
 
 export const cards = [
   {

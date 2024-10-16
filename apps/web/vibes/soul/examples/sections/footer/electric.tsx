@@ -1,4 +1,4 @@
-import { Footer } from '@/vibes/soul/components/footer'
+import { Footer } from '@/vibes/soul/sections/footer'
 import {
   Amex,
   ApplePay,
@@ -7,8 +7,8 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/components/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/components/footer/social-icons'
+} from '@/vibes/soul/sections/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
 
 export const footerLinks = [
   {
