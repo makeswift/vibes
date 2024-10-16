@@ -5,13 +5,11 @@ import { redirect } from 'next/navigation'
 
 import { removeLineItem, updateLineItemQuantity } from '@/vibes/soul/pages/cart/line-items-luxury'
 
-// eslint-disable-next-line @typescript-eslint/require-await
 export async function removeLineItemAction(id: string): Promise<void> {
   removeLineItem(id)
   revalidateTag('line-items-luxury')
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
 export async function updateLineItemQuantityAction({
   id,
   quantity,
