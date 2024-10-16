@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 import { use } from 'react'
 
-import { Select } from '@/vibes/soul/components/select'
+import { Select } from '@/vibes/soul/primitives/select'
 
 const createUrl = (pathname: string, params: URLSearchParams) => {
   const paramsString = params.toString()

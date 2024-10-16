@@ -1,4 +1,4 @@
-import { TextArea } from '@/vibes/soul/components/textarea'
+import { TextArea } from '@/vibes/soul/primitives/textarea'
 
 export default function Preview() {
   return (

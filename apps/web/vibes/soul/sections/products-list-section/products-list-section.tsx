@@ -1,7 +1,7 @@
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/components/breadcrumbs'
-import { CompareDrawer } from '@/vibes/soul/components/compare-drawer'
-import { Product } from '@/vibes/soul/components/product-card'
-import { ProductsList } from '@/vibes/soul/components/products-list'
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
+import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { ProductsList } from '@/vibes/soul/primitives/products-list'
 
 import { Filter, Filters } from './filters'
 import { Pages, Pagination } from './pagination'

@@ -1,5 +1,5 @@
-import { FeaturedProductsList } from '@/vibes/soul/components/featured-products-list'
-import { Product } from '@/vibes/soul/components/product-card'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list'
 
 export const featuredProducts: {
   title: string
