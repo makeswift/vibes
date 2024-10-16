@@ -2,7 +2,7 @@ import { unstable_cache } from 'next/cache'
 
 import { CartLineItem } from '@/vibes/soul/sections/cart'
 
-export let linItemsLuxury: CartLineItem[] = [
+export let initialLineItems: CartLineItem[] = [
   {
     id: '1',
     title: 'DARYA LUG SOLE FISHERMAN',
@@ -27,22 +27,28 @@ export let linItemsLuxury: CartLineItem[] = [
   },
 ]
 
-// eslint-disable-next-line @typescript-eslint/require-await
-export const getLineItems = unstable_cache(async () => linItemsLuxury, ['line-items-luxury'])
+const lineItems = new Map(initialLineItems.map(lineItem => [lineItem.id, lineItem]))
 
-export const getSubtotal = () => {
-  return `$${linItemsLuxury.reduce((acc, lineItem) => {
-    return acc + Number(lineItem.price.replace('$', '')) * lineItem.quantity
-  }, 0)}`
+export const getLineItems = unstable_cache(async () => Array.from(lineItems.values()), [], {
+  tags: ['line-items-electric'],
+  revalidate: false,
+})
+
+export async function getSubtotal(): Promise<string> {
+  const cachedLineItems = await getLineItems()
+  const subtotal = cachedLineItems
+    .map(lineItem => parseInt(lineItem.price.replace('$', ''), 10) * lineItem.quantity)
+    .reduce((acc, quantity) => acc + quantity, 0)
+  return `$${subtotal}`
 }
 
-export function removeLineItem(id: string) {
-  linItemsLuxury = linItemsLuxury.filter(lineItem => lineItem.id !== id)
+export async function removeLineItem(id: string): Promise<void> {
+  lineItems.delete(id)
 }
 
-export function updateLineItemQuantity(id: string, quantity: number) {
-  const lineItemToUpdate = linItemsLuxury.find(lineItem => lineItem.id === id)
-  if (lineItemToUpdate) {
-    lineItemToUpdate.quantity = quantity
+export async function updateLineItemQuantity(id: string, quantity: number): Promise<void> {
+  const lineItemToUpdate = lineItems.get(id)
+  if (lineItemToUpdate != null) {
+    lineItems.set(id, { ...lineItemToUpdate, quantity })
   }
 }
