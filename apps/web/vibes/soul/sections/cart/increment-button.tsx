@@ -29,7 +29,7 @@ export function LineItemQuantityIncrementButton({
       <button
         className={clsx(
           'group rounded-r-lg p-3 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
-          isPending ? 'cursor-not-allowed opacity-50' : 'hover:bg-contrast-100/50'
+          isPending ? 'opacity-50' : 'hover:bg-contrast-100/50'
         )}
         aria-label={ariaLabel ?? 'Increase Count'}
         type="submit"
