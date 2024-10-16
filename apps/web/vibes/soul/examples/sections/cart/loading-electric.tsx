@@ -3,11 +3,11 @@ import {
   removeLineItemAction,
   updateLineItemQuantityAction,
 } from '@/vibes/soul/pages/cart/actions-electric'
-import { getProducts, getSubtotal } from '@/vibes/soul/pages/cart/products-electric'
+import { getLineItems, getSubtotal } from '@/vibes/soul/pages/cart/line-items-electric'
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart'
 
 export default function Preview() {
-  const products = new Promise<CartLineItem[]>(res => setTimeout(() => res(getProducts()), 5000))
+  const products = new Promise<CartLineItem[]>(res => setTimeout(() => res(getLineItems()), 5000))
   const subtotal = new Promise<string>(res => setTimeout(() => res(getSubtotal()), 10000))
 
   return (

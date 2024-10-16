@@ -6,10 +6,10 @@ import {
   removeLineItemAction,
   updateLineItemQuantityAction,
 } from '@/vibes/soul/pages/cart/actions-luxury'
-import { getProducts, getSubtotal } from '@/vibes/soul/pages/cart/products-luxury'
+import { getLineItems, getSubtotal } from '@/vibes/soul/pages/cart/line-items-luxury'
 
 export default async function Preview() {
-  const lineItems = await getProducts()
+  const lineItems = await getLineItems()
   const subtotal = await getSubtotal()
   return (
     <CartPage
