@@ -5,7 +5,7 @@ import { Filter, Option, Product } from '@/vibes/soul/types'
 export default function Preview() {
   const products = new Promise<Product[]>(res => {
     setTimeout(() => {
-      res(getProducts())
+      res(getProducts('luxury'))
     }, 5000)
   })
 
@@ -23,7 +23,7 @@ export default function Preview() {
 
   const totalCount = new Promise<number>(res => {
     setTimeout(() => {
-      res(getProducts().length)
+      res(getProducts('luxury').length)
     }, 2000)
   })
 

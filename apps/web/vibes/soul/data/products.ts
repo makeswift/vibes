@@ -1,7 +1,17 @@
 import { Product } from '@/vibes/soul/types'
 
-export const getProducts = (): Product[] => {
-  return [
+type Brand = 'electric' | 'luxury' | 'warm'
+
+export const getProducts = (brand: Brand): Product[] => {
+  return products[brand]
+}
+
+interface BrandProductsMap {
+  [key: string]: any
+}
+
+const products: BrandProductsMap = {
+  electric: [
     {
       id: '1',
       title: 'Product Name',
@@ -90,5 +100,5 @@ export const getProducts = (): Product[] => {
       },
       href: '#',
     },
-  ]
+  ],
 }

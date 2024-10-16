@@ -7,7 +7,7 @@ import { Filter, Option, Product } from '@/vibes/soul/types'
 export default function Preview() {
   const products = new Promise<Product[]>(res => {
     setTimeout(() => {
-      res(getProducts())
+      res(getProducts('warm'))
     }, 5000)
   })
 
