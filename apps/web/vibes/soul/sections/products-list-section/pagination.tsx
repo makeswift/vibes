@@ -33,7 +33,7 @@ function PaginationResolved({ info }: Props) {
     endCursorParamName = 'after',
     startCursor,
     endCursor,
-  } = use(Promise.resolve(info))
+  } = info instanceof Promise ? use(info) : info
   const pathname = usePathname()
   const serialize = createSerializer({
     [startCursorParamName]: parseAsString,

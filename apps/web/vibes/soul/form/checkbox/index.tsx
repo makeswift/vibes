@@ -12,7 +12,7 @@ import { ErrorMessage } from '@/vibes/soul/form/error-message'
 export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
-    label?: string
+    label?: React.ReactNode
     errors?: string[]
   }
 >(({ id, label, errors, className, ...rest }) => {

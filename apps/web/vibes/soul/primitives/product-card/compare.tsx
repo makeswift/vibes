@@ -1,48 +1,33 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
 
-import { Checkbox } from '@/vibes/soul/primitives/checkbox'
-
-const createUrl = (pathname: string, params: URLSearchParams) => {
-  const paramsString = params.toString()
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`
-
-  return `${pathname}${queryString}`
-}
+import { Checkbox } from '@/vibes/soul/form/checkbox'
 
 interface Props {
   productId: string
-  paramKey?: string
+  paramName?: string
   label?: string
 }
 
 export const Compare = function Compare({
   productId,
-  paramKey = 'compare',
+  paramName = 'compare',
   label = 'Compare',
 }: Props) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const activeOptions = searchParams.getAll(paramKey)
-  const active = activeOptions.includes(productId)
-  const currentParams = Array.from(searchParams.entries())
-  const newParams = active
-    ? currentParams.filter(([key, value]) => key !== paramKey || value !== productId)
-    : [...currentParams, [paramKey, productId]]
-
-  const href = createUrl(pathname, new URLSearchParams(newParams))
+  const [param, setParam] = useQueryState(paramName, parseAsArrayOf(parseAsString))
 
   return (
-    <Link
-      href={href}
-      scroll={false}
-      className="absolute right-1.5 top-1.5 flex cursor-pointer items-center gap-2 rounded-lg p-1 text-foreground transition-colors duration-300 hover:bg-background/80 @lg:bottom-4 @lg:right-4 @lg:top-auto"
-      tabIndex={0}
-    >
-      <span className="hidden @lg:block">{label}</span>
-      <Checkbox id={`${paramKey}-${productId}`} checked={active} />
-    </Link>
+    <Checkbox
+      id={`${paramName}-${productId}`}
+      className="absolute left-1.5 top-1.5 rounded-lg p-1 text-foreground transition-colors duration-300 hover:bg-background/80 @lg:bottom-4 @lg:left-4 @lg:top-auto"
+      label={label}
+      checked={param?.includes(productId) ?? false}
+      onCheckedChange={value => {
+        setParam(p =>
+          value === true ? [...(p ?? []), productId] : (p ?? []).filter(v => v !== productId)
+        ).catch(() => console.error(`Failed to update ${paramName} param`))
+      }}
+    />
   )
 }

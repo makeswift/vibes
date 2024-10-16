@@ -1,37 +1,22 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
 
 import { ToggleGroup } from '@/vibes/soul/form/toggle-group'
 
-const createUrl = (pathname: string, params: URLSearchParams) => {
-  const paramsString = params.toString()
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`
-
-  return `${pathname}${queryString}`
-}
-
 interface Props {
   options: { label: string; value: string }[]
-  name: string
+  paramName: string
 }
 
-export function FilterToggleGroup({ name, options }: Props) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const value = searchParams.getAll(name)
+export function FilterToggleGroup({ paramName, options }: Props) {
+  const [param, setParam] = useQueryState(paramName, parseAsArrayOf(parseAsString))
 
   return (
     <ToggleGroup
       type="multiple"
       options={options}
-      value={value}
-      onValueChange={next => {
-        const params = new URLSearchParams(searchParams.toString())
-
-        params.delete(name)
-        next.forEach(v => params.append(name, v))
-
-        router.replace(createUrl(pathname, new URLSearchParams(params)))
+      value={param ?? []}
+      onValueChange={value => {
+        setParam(value).catch(() => console.error(`Failed to update ${paramName} param`))
       }}
     />
   )

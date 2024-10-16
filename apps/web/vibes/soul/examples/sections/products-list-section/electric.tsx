@@ -1,7 +1,7 @@
 import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric'
 import { Product } from '@/vibes/soul/primitives/product-card'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-import { Filter } from '@/vibes/soul/sections/products-list-section/filters'
+import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
 
 export const products: Product[] = [
   {
@@ -96,9 +96,9 @@ export const products: Product[] = [
 
 const filters: Filter[] = [
   {
-    name: 'color',
+    paramName: 'color',
     label: 'Color',
-    type: 'checkbox-group',
+    type: 'toggle-group',
     options: [
       { label: 'Red', value: 'red' },
       { label: 'Green', value: 'green' },
@@ -106,9 +106,9 @@ const filters: Filter[] = [
     ],
   },
   {
-    name: 'size',
+    paramName: 'size',
     label: 'Size',
-    type: 'checkbox-group',
+    type: 'toggle-group',
     options: [
       { label: 'Small', value: 'sm' },
       { label: 'Medium', value: 'md' },
@@ -116,16 +116,17 @@ const filters: Filter[] = [
     ],
   },
   {
-    name: 'price',
     label: 'Price',
     type: 'range',
+    minParamName: 'price-min',
+    maxParamName: 'price-max',
     min: 0,
     max: 200,
-    minLabel: '$',
-    maxLabel: '$',
+    minPrepend: '$',
+    maxPrepend: '$',
   },
   {
-    name: 'rating',
+    paramName: 'rating',
     label: 'Rating',
     type: 'rating',
   },
@@ -137,7 +138,7 @@ const sortOptions = [
   { label: 'Newest', value: 'newest' },
 ]
 
-export default function Preview({
+export default async function Preview({
   searchParams,
 }: {
   searchParams: Record<string, string | string[] | null>

@@ -1,9 +1,12 @@
+import { Sliders } from 'lucide-react'
+
 import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
 import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer'
 import { Product } from '@/vibes/soul/primitives/product-card'
 import { ProductsList } from '@/vibes/soul/primitives/products-list'
 
-import { Filter, Filters } from './filters'
+import { Filter, FiltersPanel } from './filters-panel'
+import { MobileFilters } from './mobile-filters'
 import { Pagination, PaginationInfo } from './pagination'
 import { Option as SortOption, Sorting } from './sorting'
 
@@ -19,7 +22,8 @@ interface Props {
   compareLabel?: string
   filterLabel?: string
   sortLabel?: string
-  sortParam?: string
+  sortParamName?: string
+  compareParamName?: string
 }
 
 export function ProductsListSection({
@@ -32,32 +36,42 @@ export function ProductsListSection({
   filters,
   compareLabel,
   paginationInfo,
-  filterLabel,
+  filterLabel = 'Filter',
   sortLabel,
-  sortParam,
+  sortParamName,
+  compareParamName,
 }: Props) {
   return (
-    <>
-      <div className="relative pb-10 @container">
-        {breadcrumbs && (
-          <Breadcrumbs
-            breadcrumbs={breadcrumbs}
-            className="px-3 pb-6 pt-24 @xl:px-6 @4xl:pt-32 @5xl:px-20"
-          />
-        )}
-        <div className="flex flex-wrap items-center justify-between gap-4 bg-background text-foreground">
-          <h1 className="pl-3 text-xl font-medium leading-none @xl:pl-6 @2xl:text-5xl @5xl:pl-20">
-            {title} <span className="text-contrast-200">{totalCount}</span>
-          </h1>
-          <div className="ml-auto flex gap-2 pr-3 @xl:pr-6 @5xl:pr-20">
-            <Filters filters={filters} label={filterLabel} />
-            <Sorting options={sortOptions} label={sortLabel} sortParam={sortParam} />
+    <div className="m-auto w-[1280px] space-y-5 @container">
+      {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-background text-foreground">
+        <h1 className="text-xl font-medium leading-none @2xl:text-5xl ">
+          {title} <span className="text-contrast-200">{totalCount}</span>
+        </h1>
+        <div className="flex gap-2">
+          {/* Hide on mobile here */}
+          <div>
+            <MobileFilters filters={filters} label={filterLabel} />
           </div>
+          <Sorting options={sortOptions} label={sortLabel} paramName={sortParamName} />
         </div>
       </div>
-      <ProductsList products={products} compareLabel={compareLabel} showCompare />
-      {paginationInfo && <Pagination info={paginationInfo} />}
+      <div className="flex gap-10">
+        <div className="w-[320px]">
+          <FiltersPanel filters={filters} />
+        </div>
+        <div className="flex-1">
+          <ProductsList
+            products={products}
+            compareLabel={compareLabel}
+            compareParamName={compareParamName}
+            showCompare
+          />
+          {paginationInfo && <Pagination info={paginationInfo} />}
+        </div>
+      </div>
+
       {compareProducts && <CompareDrawer products={compareProducts} />}
-    </>
+    </div>
   )
 }

@@ -5,7 +5,7 @@ import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-product
 import { Footer, Section } from '@/vibes/soul/sections/footer'
 import { Header, Links } from '@/vibes/soul/sections/header'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-import { Filter } from '@/vibes/soul/sections/products-list-section/filters'
+import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
 
 interface Image {
   src: string
@@ -31,9 +31,9 @@ const locales = [
 
 const filters: Filter[] = [
   {
-    name: 'color',
+    paramName: 'color',
     label: 'Color',
-    type: 'checkbox-group',
+    type: 'toggle-group',
     options: [
       { label: 'Red', value: 'red' },
       { label: 'Green', value: 'green' },
@@ -41,9 +41,9 @@ const filters: Filter[] = [
     ],
   },
   {
-    name: 'size',
+    paramName: 'size',
     label: 'Size',
-    type: 'checkbox-group',
+    type: 'toggle-group',
     options: [
       { label: 'Small', value: 'sm' },
       { label: 'Medium', value: 'md' },
@@ -51,16 +51,17 @@ const filters: Filter[] = [
     ],
   },
   {
-    name: 'price',
     label: 'Price',
     type: 'range',
+    minParamName: 'min-price',
+    maxParamName: 'max-price',
     min: 0,
     max: 200,
     minLabel: '$',
     maxLabel: '$',
   },
   {
-    name: 'rating',
+    paramName: 'rating',
     label: 'Rating',
     type: 'rating',
   },

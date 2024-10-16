@@ -1,104 +1,76 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+import { parseAsInteger, useQueryStates } from 'nuqs'
+
+import { RangeInput } from '@/vibes/soul/form/range-input'
 import { Button } from '@/vibes/soul/primitives/button'
-import { Input } from '@/vibes/soul/primitives/input'
 
 interface Props {
-  name: string
+  minParamName?: string
+  maxParamName?: string
   min?: number
   max?: number
   minLabel?: string
   maxLabel?: string
+  minPrepend?: React.ReactNode
+  maxPrepend?: React.ReactNode
+  minPlaceholder?: string
+  maxPlaceholder?: string
 }
 
-const createUrl = (pathname: string, params: URLSearchParams) => {
-  const paramsString = params.toString()
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`
-
-  return `${pathname}${queryString}`
-}
-
-const parseNumberOrNull = (value: string | null) => {
-  const parsed = parseInt(value ?? '', 10)
-
-  return Number.isNaN(parsed) ? null : parsed
-}
-
-const clamp = (value: number, min = -Infinity, max = Infinity) =>
-  Math.min(Math.max(value, min), max)
-
-export function FilterRange({ name, min, max, minLabel, maxLabel }: Props) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const minParam = parseNumberOrNull(searchParams.get(`${name}-min`))
-  const maxParam = parseNumberOrNull(searchParams.get(`${name}-max`))
-  const [minValue, setMinValue] = useState(minParam ?? min)
-  const [maxValue, setMaxValue] = useState(maxParam ?? max)
+export function FilterRange({
+  min,
+  max,
+  minParamName = 'min',
+  maxParamName = 'max',
+  minLabel,
+  maxLabel,
+  minPrepend,
+  maxPrepend,
+  minPlaceholder = 'Min',
+  maxPlaceholder = 'Max',
+}: Props) {
+  const [params, setParams] = useQueryStates({
+    [minParamName]: parseAsInteger,
+    [maxParamName]: parseAsInteger,
+  })
+  const [minState, setMinState] = useState(params[minParamName] ?? min)
+  const [maxState, setMaxState] = useState(params[maxParamName] ?? max)
   const isDirty =
-    (minValue !== minParam && !(minParam === null && minValue === min)) ||
-    (maxValue !== maxParam && !(maxParam === null && maxValue === max))
+    (minState !== params[minParamName] && !(params[minParamName] === null && minState === min)) ||
+    (maxState !== params[maxParamName] && !(params[maxParamName] === null && maxState === max))
 
   useEffect(() => {
-    setMinValue(minParam ?? min)
-    setMaxValue(maxParam ?? max)
-  }, [minParam, maxParam, min, max])
+    setMinState(params[minParamName] ?? min)
+    setMaxState(params[maxParamName] ?? max)
+  }, [params, min, max, minParamName, maxParamName])
 
   return (
     <div className="space-y-3">
-      <div className="flex w-full items-center gap-2">
-        <Input
-          type="number"
-          prepend={minLabel}
-          value={minValue}
-          min={min}
-          max={maxValue ?? max}
-          onChange={e => setMinValue(e.currentTarget.valueAsNumber)}
-          onBlur={e => {
-            const clamped = clamp(e.currentTarget.valueAsNumber, min, maxValue ?? max)
-            const params = new URLSearchParams(searchParams.toString())
-
-            params.set(`${name}-min`, clamped.toString())
-            router.replace(createUrl(pathname, params), { scroll: false })
-
-            setMinValue(clamped)
-          }}
-        />
-        <span className="text-base text-contrast-400">to</span>
-        <Input
-          type="number"
-          min={minValue ?? min}
-          max={max}
-          prepend={maxLabel}
-          value={maxValue}
-          onChange={e => setMaxValue(e.currentTarget.valueAsNumber)}
-          onBlur={e => {
-            const clamped = clamp(e.currentTarget.valueAsNumber, minValue ?? min, max)
-            const params = new URLSearchParams(searchParams.toString())
-
-            params.set(`${name}-max`, clamped.toString())
-            router.replace(createUrl(pathname, params), { scroll: false })
-
-            setMaxValue(clamped)
-          }}
-        />
-      </div>
+      <RangeInput
+        min={min}
+        max={max}
+        minLabel={minLabel}
+        maxLabel={maxLabel}
+        minPrepend={minPrepend}
+        maxPrepend={maxPrepend}
+        minPlaceholder={minPlaceholder}
+        maxPlaceholder={maxPlaceholder}
+        minValue={minState}
+        maxValue={maxState}
+        minName={minParamName}
+        maxName={minParamName}
+        onMinValueChange={setMinState}
+        onMaxValueChange={setMaxState}
+      />
       {isDirty && (
         <div className="flex justify-center">
           <Button
             size="small"
             variant="secondary"
-            onClick={() => {
-              const params = new URLSearchParams(searchParams.toString())
-
-              if (minValue != null) params.set(`${name}-min`, minValue.toString())
-              if (maxValue != null) params.set(`${name}-max`, maxValue.toString())
-
-              router.replace(createUrl(pathname, params), { scroll: false })
-            }}
+            onClick={() => void setParams({ [minParamName]: minState, [maxParamName]: maxState })}
           >
             Apply Changes
           </Button>
