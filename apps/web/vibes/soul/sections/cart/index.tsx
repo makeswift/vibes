@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense, use, useActionState } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
+import { Suspense } from 'react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 import { DecrementButton } from '@/vibes/soul/sections/cart/decrement-button'
