@@ -1,5 +1,59 @@
 ---
 title: Countdown
+description: A countdown component that displays the time left until a specified date.
 preview: countdown-example
 previewSize: xl
+features:
+  - Displays the time left until a specified date.
+  - Supports varying layouts (default, full, split, and banner).
+  - Customizable with a title and target date.
 ---
+
+## Usage
+
+Import the component.
+
+<CodeBlock lang="bash">{`import { Countdown } from '@/vibes/soul/primitives/countdown'`}</CodeBlock>
+
+Display the component.
+
+<CodeBlock lang="bash">{`<Countdown title="Sale ends in" targetDate={new Date('2025-06-30')} />`}</CodeBlock>
+
+## API Reference
+
+| Prop       | Type                                                                                 | Default      |
+| ---------- | ------------------------------------------------------------------------------------ | ------------ |
+| title      | `string`                                                                             |              |
+| targetDate | `Date`                                                                               | `new Date()` |
+| variant    | [`Default`](#default) \| [`Full`](#full) \| [`Split`](#split) \| [`Banner`](#banner) | `'default'`  |
+
+### Default
+
+| Prop   | Type       | Default |
+| ------ | ---------- | ------- |
+| type   | `default`  |         |
+| images | `string[]` |         |
+
+### Full
+
+| Prop            | Type     | Default |
+| --------------- | -------- | ------- |
+| type            | `full`   |         |
+| backgroundImage | `string` |         |
+
+### Split
+
+| Prop  | Type     | Default |
+| ----- | -------- | ------- |
+| type  | `split`  |         |
+| image | `string` |         |
+
+### Banner
+
+| Prop | Type     | Default |
+| ---- | -------- | ------- |
+| type | `banner` |         |
+
+## Figma
+
+<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2281-42529&t=bvdVWjdyC3mhKCHG-4" />
