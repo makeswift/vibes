@@ -2,8 +2,8 @@ import { Suspense, use } from 'react'
 
 import { Sliders } from 'lucide-react'
 
-import { Button } from '@/vibes/soul/components/button'
-import { SidePanel } from '@/vibes/soul/components/side-panel'
+import { Button } from '@/vibes/soul/primitives/button'
+import { SidePanel } from '@/vibes/soul/primitives/side-panel'
 
 import { FiltersPanel } from './filters-panel'
 

@@ -1,5 +1,5 @@
-import { Product } from '@/vibes/soul/components/product-card'
-import { ProductsList } from '@/vibes/soul/components/products-list'
+import { Product } from '@/vibes/soul/primitives/product-card'
+import { ProductsList } from '@/vibes/soul/primitives/products-list'
 
 export const products: Product[] = [
   {

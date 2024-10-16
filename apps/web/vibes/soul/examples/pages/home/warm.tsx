@@ -1,5 +1,3 @@
-import { FeaturedImageProps } from '@/vibes/soul/components/featured-image'
-import { HomePage } from '@/vibes/soul/components/page-home'
 import { cards, textContrast } from '@/vibes/soul/examples/sections/card-carousel/warm'
 import { feature } from '@/vibes/soul/examples/sections/feature/warm'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/warm'
@@ -7,6 +5,8 @@ import { featuredProducts } from '@/vibes/soul/examples/sections/featured-produc
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/warm'
 import { headerLinks } from '@/vibes/soul/examples/sections/header/warm'
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/warm'
+import { HomePage } from '@/vibes/soul/pages/home'
+import { FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
 
 // TODO: New Arrivals
 // TODO: Recently Viewed
