@@ -1,15 +1,11 @@
 import { Brand, Breadcrumb } from '@/vibes/soul/types'
 
-export const getBreadcrumbs = (brand: Brand): Breadcrumb[] => {
+export function getBreadcrumbs(brand: Brand): Breadcrumb[] {
   return breadcrumbs[brand]
 }
 
-interface BrandBreadcrumbsMap {
-  [key: string]: Breadcrumb[]
-}
-
-const breadcrumbs: BrandBreadcrumbsMap = {
-  electric: [
+const breadcrumbs = {
+  Electric: [
     {
       label: 'Home',
       href: '#',
@@ -23,7 +19,7 @@ const breadcrumbs: BrandBreadcrumbsMap = {
       href: '#',
     },
   ],
-  luxury: [
+  Luxury: [
     {
       label: 'Home',
       href: '#',
@@ -37,7 +33,7 @@ const breadcrumbs: BrandBreadcrumbsMap = {
       href: '#',
     },
   ],
-  warm: [
+  Warm: [
     {
       label: 'Home',
       href: '#',
@@ -51,4 +47,5 @@ const breadcrumbs: BrandBreadcrumbsMap = {
       href: '#',
     },
   ],
-}
+} as const satisfies Record<Brand, [Breadcrumb, ...Breadcrumb[]]>
+// as const satisfies { [brand: Brand]: [Breadcrumb, ...Breadcrumb[]] }

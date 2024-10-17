@@ -1,15 +1,11 @@
-import { Brand, Product } from '@/vibes/soul/types'
+import { Brand, ProductCardProduct } from '@/vibes/soul/types'
 
-export const getProducts = (brand: Brand): Product[] => {
+export function getProducts(brand: Brand): ProductCardProduct[] {
   return products[brand]
 }
 
-interface BrandProductsMap {
-  [key: string]: Product[]
-}
-
-const products: BrandProductsMap = {
-  electric: [
+const products = {
+  Electric: [
     {
       id: '1',
       title: 'Philodendron Imperial Red',
@@ -83,7 +79,7 @@ const products: BrandProductsMap = {
       href: '#',
     },
   ],
-  luxury: [
+  Luxury: [
     {
       id: '1',
       title: 'JADA SQUARE TOE BALLET FLAT',
@@ -157,7 +153,7 @@ const products: BrandProductsMap = {
       href: '#',
     },
   ],
-  warm: [
+  Warm: [
     {
       id: '1',
       title: 'Mini Bar Bag',
@@ -231,4 +227,4 @@ const products: BrandProductsMap = {
       href: '#',
     },
   ],
-}
+} as const satisfies Record<Brand, [ProductCardProduct, ...ProductCardProduct[]]>

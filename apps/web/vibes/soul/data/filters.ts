@@ -1,15 +1,11 @@
 import { Brand, Filter } from '@/vibes/soul/types'
 
-export const getFilters = (brand: Brand): Filter[] => {
+export function getFilters(brand: Brand): Filter[] {
   return filters[brand]
 }
 
-interface BrandFiltersMap {
-  [key: string]: Filter[]
-}
-
-const filters: BrandFiltersMap = {
-  electric: [
+const filters = {
+  Electric: [
     {
       name: 'type',
       label: 'Type',
@@ -45,7 +41,7 @@ const filters: BrandFiltersMap = {
       type: 'rating',
     },
   ],
-  luxury: [
+  Luxury: [
     {
       name: 'color',
       label: 'Color',
@@ -91,7 +87,7 @@ const filters: BrandFiltersMap = {
       type: 'rating',
     },
   ],
-  warm: [
+  Warm: [
     {
       name: 'color',
       label: 'Color',
@@ -127,4 +123,4 @@ const filters: BrandFiltersMap = {
       type: 'rating',
     },
   ],
-}
+} as const satisfies Record<Brand, [Filter, ...Filter[]]>
