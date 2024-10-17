@@ -23,7 +23,7 @@ export const Checkbox = React.forwardRef<
           {...rest}
           id={id}
           className={clsx(
-            'flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-150 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary data-[state=checked]:border-foreground data-[state=unchecked]:border-contrast-300 data-[state=checked]:bg-foreground data-[state=unchecked]:bg-background',
+            'flex h-5 w-5 items-center justify-center rounded-md border transition-colors duration-150 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary data-[state=checked]:border-foreground data-[state=unchecked]:border-contrast-300 data-[state=checked]:bg-foreground data-[state=unchecked]:bg-background',
             errors && errors.length > 0 ? 'border-error' : 'border-contrast-300'
           )}
         >
