@@ -2,13 +2,14 @@ import { Suspense, use } from 'react'
 
 import { clsx } from 'clsx'
 
-import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
+import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
+import { ProductCardProduct } from '@/vibes/soul/types'
 
 import { CompareDrawer } from './compare-drawer'
 
 interface Props {
-  products: Product[] | Promise<Product[]>
-  compareProducts?: Product[] | Promise<Product[]>
+  products: ProductCardProduct[] | Promise<ProductCardProduct[]>
+  compareProducts?: ProductCardProduct[] | Promise<ProductCardProduct[]>
   className?: string
   showCompare?: boolean
   compareLabel?: string

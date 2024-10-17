@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
-import { Product } from '@/vibes/soul/primitives/product-card'
+import { ProductCardProduct } from '../../types'
 
 function getInitials(name: string): string {
   return name
@@ -15,7 +15,7 @@ function getInitials(name: string): string {
 }
 
 interface Props extends Omit<React.ComponentPropsWithoutRef<'button'>, 'children'> {
-  product: Product
+  product: ProductCardProduct
 }
 
 export function ProductChip({ product, className, ...rest }: Props) {

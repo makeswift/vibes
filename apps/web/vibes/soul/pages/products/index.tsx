@@ -1,23 +1,18 @@
+import { getFilters, getSortOptions } from '@/vibes/soul/data'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs'
-import { Product } from '@/vibes/soul/primitives/product-card'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer, Section } from '@/vibes/soul/sections/footer'
 import { Header, Links } from '@/vibes/soul/sections/header'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
-
-interface Image {
-  src: string
-  alt: string
-}
+import { Image, ProductCardProduct } from '@/vibes/soul/types'
 
 interface ProductsPageProps {
   headerLinks: Links[]
   logo: string | Image
   breadcrumbs: Breadcrumb[]
   title: string
-  products: Product[]
+  products: ProductCardProduct[]
   footerLinks: Section[]
   copyright: string
 }
@@ -29,50 +24,6 @@ const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
-const filters: Filter[] = [
-  {
-    paramName: 'color',
-    label: 'Color',
-    type: 'toggle-group',
-    options: [
-      { label: 'Red', value: 'red' },
-      { label: 'Green', value: 'green' },
-      { label: 'Blue', value: 'blue' },
-    ],
-  },
-  {
-    paramName: 'size',
-    label: 'Size',
-    type: 'toggle-group',
-    options: [
-      { label: 'Small', value: 'sm' },
-      { label: 'Medium', value: 'md' },
-      { label: 'Large', value: 'lg' },
-    ],
-  },
-  {
-    label: 'Price',
-    type: 'range',
-    minParamName: 'min-price',
-    maxParamName: 'max-price',
-    min: 0,
-    max: 200,
-    minLabel: '$',
-    maxLabel: '$',
-  },
-  {
-    paramName: 'rating',
-    label: 'Rating',
-    type: 'rating',
-  },
-]
-
-const sortOptions = [
-  { label: 'Price: Low to High', value: 'price-asc' },
-  { label: 'Price: High to Low', value: 'price-desc' },
-  { label: 'Newest', value: 'newest' },
-]
-
 export const ProductsPage = function ProductsPage({
   headerLinks,
   logo,
@@ -82,6 +33,8 @@ export const ProductsPage = function ProductsPage({
   footerLinks,
   copyright,
 }: ProductsPageProps) {
+  const sortOptions = getSortOptions()
+  const filters = getFilters('Warm')
   return (
     <>
       <AnnouncementBar>

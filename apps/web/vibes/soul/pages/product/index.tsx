@@ -1,9 +1,8 @@
-import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-carousel'
+import { getProducts } from '@/vibes/soul/data'
 import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric'
 import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 import { reviews } from '@/vibes/soul/examples/sections/reviews'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
-import { Product } from '@/vibes/soul/primitives/product-card'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
 import { Header } from '@/vibes/soul/sections/header'
@@ -12,14 +11,10 @@ import { AccordionItem, ProductDescription } from '@/vibes/soul/sections/product
 import { ProductDetail } from '@/vibes/soul/sections/product-detail'
 import { Reviews } from '@/vibes/soul/sections/reviews'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
-
-interface Image {
-  src: string
-  alt: string
-}
+import { Image, ProductCardProduct } from '@/vibes/soul/types'
 
 interface ProductPageProps {
-  product: Product
+  product: ProductCardProduct
   accordions: AccordionItem[]
   productDescriptionImage: Image
 }
@@ -36,6 +31,8 @@ export const ProductPage = function ProductPage({
   accordions,
   productDescriptionImage,
 }: ProductPageProps) {
+  const featuredProducts = getProducts('Electric')
+
   return (
     <>
       <AnnouncementBar>

@@ -4,27 +4,12 @@ import Link from 'next/link'
 import { clsx } from 'clsx'
 
 import { Badge } from '@/vibes/soul/primitives/badge'
+import { ProductCardProduct } from '@/vibes/soul/types'
 
 import { Compare } from './compare'
-import { Price, ProductPrice } from './price'
+import { Price } from './price'
 
-interface Image {
-  alt: string
-  src: string
-}
-
-export interface Product {
-  id: string
-  title: string
-  href: string
-  image?: Image
-  price?: ProductPrice
-  subtitle?: string
-  badge?: string
-  rating?: number
-}
-
-export interface Props extends Product {
+export interface Props extends ProductCardProduct {
   className?: string
   showCompare?: boolean
   compareLabel?: string

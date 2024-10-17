@@ -1,8 +1,9 @@
 import { Carousel } from '@/vibes/soul/primitives/carousel'
-import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
+import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
+import { ProductCardProduct } from '@/vibes/soul/types'
 
 interface Props {
-  products: Product[]
+  products: ProductCardProduct[]
 }
 
 export const ProductsCarousel = function ProductsCarousel({ products }: Props) {

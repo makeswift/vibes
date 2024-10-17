@@ -230,6 +230,21 @@ export const components = [
     files: ['primitives/products-list/index.tsx'],
   },
   {
+    name: 'products-list-section',
+    dependencies: [],
+    registryDependencies: ['products-list'],
+    files: [
+      'sections/products-list-section/filter-range.tsx',
+      'sections/products-list-section/filter-rating.tsx',
+      'sections/products-list-section/filter-toggle-group.tsx',
+      'sections/products-list-section/filters-panel.tsx',
+      'sections/products-list-section/mobile-filters.tsx',
+      'sections/products-list-section/pagination.tsx',
+      'sections/products-list-section/products-list-section.tsx',
+      'sections/products-list-section/sorting.tsx',
+    ],
+  },
+  {
     name: 'product-description',
     dependencies: [],
     registryDependencies: ['accordions'],

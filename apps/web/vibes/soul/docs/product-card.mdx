@@ -3,3 +3,58 @@ title: Product Card
 preview: product-card-example
 previewSize: md
 ---
+
+## Usage
+
+Import the component.
+
+<CodeBlock lang="bash">{`import { ProductCard } from '@/vibes/soul/primitives/product-card'
+`}</CodeBlock>
+
+Display the component.
+
+<CodeBlock lang="bash">{`<ProductCard
+  id="1"
+  href="#"
+  title="Product Name"
+  image={{
+    src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
+    alt: 'Product Name',
+  }}
+  subtitle="Blue/Black/Green"
+  price="123.99"
+  badge="New"
+  showCompare
+/>
+`}</CodeBlock>
+
+## API Reference
+
+### `Product`
+
+| Prop        | Type                                                                               | Default |
+| ----------- | ---------------------------------------------------------------------------------- | ------- |
+| `id`        | `string`                                                                           |         |
+| `title`     | `string`                                                                           |         |
+| `href`      | `string`                                                                           |         |
+| `image`     | `Image` <Tooltip content="{src: string, alt: string}" />                           |         |
+| `price?`    | `string` \| [`ProductPriceRange`](#productpricerange) \| [`SalePrice`](#saleprice) |         |
+| `subtitle?` | `string`                                                                           |         |
+| `badge?`    | `string`                                                                           |         |
+| `rating?`   | `number`                                                                           |         |
+
+### `ProductPriceRange`
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `type`     | `'range'` |         |
+| `minValue` | `string`  |         |
+| `maxValue` | `string`  |         |
+
+### `SalePrice`
+
+| Prop            | Type     | Default |
+| --------------- | -------- | ------- |
+| `type`          | `'sale'` |         |
+| `previousValue` | `string` |         |
+| `currentValue`  | `string` |         |
