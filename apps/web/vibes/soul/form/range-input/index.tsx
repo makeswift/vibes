@@ -13,8 +13,8 @@ interface Props {
   maxPlaceholder?: string
   minPrepend?: React.ReactNode
   maxPrepend?: React.ReactNode
-  minValue?: number
-  maxValue?: number
+  minValue?: number | null
+  maxValue?: number | null
   onMinValueChange?: (value: number) => void
   onMaxValueChange?: (value: number) => void
   minStep?: number
@@ -49,22 +49,20 @@ export function RangeInput({
         name={minName}
         label={minLabel}
         prepend={minPrepend}
-        value={minValue}
+        value={minValue ?? ''}
         min={min}
         max={maxValue ?? max}
         step={minStep}
         onChange={e => onMinValueChange?.(e.currentTarget.valueAsNumber)}
         placeholder={minPlaceholder}
         onBlur={e => {
-          console.log('BLURRED!')
           const clamped = clamp(e.currentTarget.valueAsNumber, min, maxValue ?? max)
 
-          e.currentTarget.value = clamped.toString()
+          if (Number.isNaN(clamped)) e.currentTarget.value = clamped.toString()
 
           onMinValueChange?.(clamped)
         }}
       />
-      <span className="text-base text-contrast-400">to</span>
       <Input
         type="number"
         name={maxName}
@@ -73,13 +71,13 @@ export function RangeInput({
         min={minValue ?? min}
         max={max}
         step={maxStep}
-        value={maxValue}
+        value={maxValue ?? ''}
         onChange={e => onMaxValueChange?.(e.currentTarget.valueAsNumber)}
         placeholder={maxPlaceholder}
         onBlur={e => {
           const clamped = clamp(e.currentTarget.valueAsNumber, minValue ?? min, max)
 
-          e.currentTarget.value = clamped.toString()
+          if (!Number.isNaN(clamped)) e.currentTarget.value = clamped.toString()
 
           onMaxValueChange?.(clamped)
         }}

@@ -36,15 +36,15 @@ export function FilterRange({
     [minParamName]: parseAsInteger,
     [maxParamName]: parseAsInteger,
   })
-  const [minState, setMinState] = useState(params[minParamName] ?? min)
-  const [maxState, setMaxState] = useState(params[maxParamName] ?? max)
+  const [minState, setMinState] = useState<number | null>(params[minParamName])
+  const [maxState, setMaxState] = useState<number | null>(params[maxParamName])
   const isDirty =
     (minState !== params[minParamName] && !(params[minParamName] === null && minState === min)) ||
     (maxState !== params[maxParamName] && !(params[maxParamName] === null && maxState === max))
 
   useEffect(() => {
-    setMinState(params[minParamName] ?? min)
-    setMaxState(params[maxParamName] ?? max)
+    setMinState(params[minParamName])
+    setMaxState(params[maxParamName])
   }, [params, min, max, minParamName, maxParamName])
 
   return (
@@ -62,8 +62,8 @@ export function FilterRange({
         maxValue={maxState}
         minName={minParamName}
         maxName={minParamName}
-        onMinValueChange={setMinState}
-        onMaxValueChange={setMaxState}
+        onMinValueChange={value => void setMinState(Number.isNaN(value) ? null : value)}
+        onMaxValueChange={value => void setMaxState(Number.isNaN(value) ? null : value)}
       />
       {isDirty && (
         <div className="flex justify-center">
