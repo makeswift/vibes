@@ -17,9 +17,7 @@ export function ComparePanel({ products }: Props) {
     <SidePanel.Root>
       <SidePanel.Trigger asChild>
         <Button asChild>
-          <div className="flex">
-            Compare<span className="hidden @4xl:block">&nbsp;Items</span>
-          </div>
+          Compare<span className="hidden @4xl:block">&nbsp;Items</span>
         </Button>
       </SidePanel.Trigger>
       <SidePanel.Content

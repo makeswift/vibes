@@ -7,6 +7,7 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   loading?: boolean
   type?: 'button' | 'submit' | 'reset'
+  asChild?: boolean
 }
 
 export const Button = function Button({
@@ -18,6 +19,7 @@ export const Button = function Button({
   className,
   children,
   type = 'button',
+  asChild,
   ...props
 }: Props) {
   return (
