@@ -86,6 +86,12 @@ export const components = [
     files: ['sections/checkout/index.tsx'],
   },
   {
+    name: 'countdown',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['sections/countdown/index.tsx'],
+  },
+  {
     name: 'counter',
     dependencies: ['lucide-react'],
     registryDependencies: [],
