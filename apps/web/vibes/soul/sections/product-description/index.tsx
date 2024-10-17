@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
 
-type AccordionItem = {
+export type AccordionItem = {
   title: string
   content: React.ReactNode
 }

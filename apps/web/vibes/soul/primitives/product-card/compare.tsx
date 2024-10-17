@@ -15,7 +15,10 @@ export const Compare = function Compare({
   paramName = 'compare',
   label = 'Compare',
 }: Props) {
-  const [param, setParam] = useQueryState(paramName, parseAsArrayOf(parseAsString))
+  const [param, setParam] = useQueryState(
+    paramName,
+    parseAsArrayOf(parseAsString).withOptions({ shallow: false })
+  )
 
   return (
     <Checkbox
@@ -24,9 +27,14 @@ export const Compare = function Compare({
       label={label}
       checked={param?.includes(productId) ?? false}
       onCheckedChange={value => {
-        setParam(p =>
-          value === true ? [...(p ?? []), productId] : (p ?? []).filter(v => v !== productId)
-        ).catch(() => console.error(`Failed to update ${paramName} param`))
+        void setParam(prev => {
+          const next =
+            value === true
+              ? [...(prev ?? []), productId]
+              : (prev ?? []).filter(v => v !== productId)
+
+          return next.length > 0 ? next : null
+        })
       }}
     />
   )

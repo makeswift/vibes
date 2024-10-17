@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { Suspense, use } from 'react'
 
 import clsx from 'clsx'
@@ -34,7 +34,7 @@ function PaginationResolved({ info }: Props) {
     startCursor,
     endCursor,
   } = info instanceof Promise ? use(info) : info
-  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const serialize = createSerializer({
     [startCursorParamName]: parseAsString,
     [endCursorParamName]: parseAsString,
@@ -44,7 +44,7 @@ function PaginationResolved({ info }: Props) {
     <div className="flex w-full justify-center bg-background py-10 text-xs">
       <div className="flex gap-2">
         {startCursor != null ? (
-          <PaginationLink href={serialize(pathname, { [startCursorParamName]: startCursor })}>
+          <PaginationLink href={serialize(searchParams, { [startCursorParamName]: startCursor })}>
             <ChevronLeft />
           </PaginationLink>
         ) : (
@@ -53,7 +53,7 @@ function PaginationResolved({ info }: Props) {
           </SkeletonLink>
         )}
         {endCursor != null ? (
-          <PaginationLink href={serialize(pathname, { [endCursorParamName]: endCursor })}>
+          <PaginationLink href={serialize(searchParams, { [endCursorParamName]: endCursor })}>
             <ChevronRight />
           </PaginationLink>
         ) : (

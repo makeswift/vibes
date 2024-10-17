@@ -3,6 +3,8 @@ import { Product } from '@/vibes/soul/primitives/product-card'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
 
+import { cache, compareParamName, sortParamName } from './searchParams'
+
 export const products: Product[] = [
   {
     id: '1',
@@ -141,8 +143,10 @@ const sortOptions = [
 export default function Preview({
   searchParams,
 }: {
-  searchParams: Record<string, string | string[] | null>
+  searchParams: Record<string, string | string[] | undefined>
 }) {
+  const { [compareParamName]: compare, [sortParamName]: sort } = cache.parse(searchParams)
+
   return (
     <div className="py-6">
       <ProductsListSection
@@ -153,13 +157,9 @@ export default function Preview({
         filters={filters}
         sortOptions={sortOptions}
         paginationInfo={{ startCursor: '1', endCursor: '10' }}
-        compareProducts={products.filter(product => {
-          if (typeof searchParams.compare === 'string') {
-            return searchParams.compare === product.id
-          } else if (Array.isArray(searchParams.compare)) {
-            return searchParams.compare.includes(product.id)
-          }
-        })}
+        compareProducts={products.filter(product => compare?.includes(product.id))}
+        compareParamName={compareParamName}
+        sortParamName={sortParamName}
       />
     </div>
   )

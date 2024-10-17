@@ -3,9 +3,10 @@
 import React from 'react'
 
 import { Button } from '@/vibes/soul/primitives/button'
-import { CompareCard, CompareCardSkeleton } from '@/vibes/soul/primitives/compare-card'
 import { Product } from '@/vibes/soul/primitives/product-card'
 import * as SidePanel from '@/vibes/soul/primitives/side-panel'
+
+import { CompareCard, CompareCardSkeleton } from './compare-card'
 
 interface Props {
   products: Product[]

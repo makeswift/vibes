@@ -1,7 +1,11 @@
+import { createSearchParamsCache, parseAsArrayOf, parseAsString } from 'nuqs/server'
+
 import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric'
 import { Product } from '@/vibes/soul/primitives/product-card'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
+
+import { cache, compareParamName, sortParamName } from './searchParams'
 
 export const products: Product[] = [
   {
@@ -120,8 +124,8 @@ const filters: Filter[] = [
     type: 'range',
     minParamName: 'price-min',
     maxParamName: 'price-max',
-    min: 0,
-    max: 200,
+    // min: 0,
+    // max: 200,
     minPrepend: '$',
     maxPrepend: '$',
   },
@@ -141,8 +145,10 @@ const sortOptions = [
 export default async function Preview({
   searchParams,
 }: {
-  searchParams: Record<string, string | string[] | null>
+  searchParams: Record<string, string | string[] | undefined>
 }) {
+  const { [compareParamName]: compare, [sortParamName]: sort } = cache.parse(searchParams)
+
   return (
     <div className="py-6">
       <ProductsListSection
@@ -153,13 +159,9 @@ export default async function Preview({
         filters={filters}
         sortOptions={sortOptions}
         paginationInfo={{ endCursor: '10' }}
-        compareProducts={products.filter(product => {
-          if (typeof searchParams.compare === 'string') {
-            return searchParams.compare === product.id
-          } else if (Array.isArray(searchParams.compare)) {
-            return searchParams.compare.includes(product.id)
-          }
-        })}
+        compareProducts={products.filter(product => compare?.includes(product.id))}
+        compareParamName={compareParamName}
+        sortParamName={sortParamName}
       />
     </div>
   )
