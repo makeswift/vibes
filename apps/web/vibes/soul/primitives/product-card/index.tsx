@@ -28,6 +28,7 @@ export interface Props extends Product {
   className?: string
   showCompare?: boolean
   compareLabel?: string
+  compareParamName?: string
   href: string
 }
 
@@ -42,6 +43,7 @@ export function ProductCard({
   className,
   showCompare = false,
   compareLabel,
+  compareParamName,
 }: Props) {
   return (
     <div>
@@ -73,7 +75,9 @@ export function ProductCard({
             )}
           </div>
         </Link>
-        {showCompare && <Compare productId={id} label={compareLabel} />}
+        {showCompare && (
+          <Compare productId={id} label={compareLabel} paramName={compareParamName} />
+        )}
       </div>
       <div className="flex flex-col gap-1">
         <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">

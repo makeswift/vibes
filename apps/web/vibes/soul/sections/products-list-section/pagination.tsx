@@ -1,59 +1,50 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { Suspense, use } from 'react'
 
 import clsx from 'clsx'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { createSerializer, parseAsString } from 'nuqs'
 
-const createUrl = (pathname: string, params: URLSearchParams) => {
-  const paramsString = params.toString()
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`
-
-  return `${pathname}${queryString}`
-}
-
-function updateParam(searchParams: URLSearchParams, key: string, value: string) {
-  const newParams = new URLSearchParams(searchParams.toString())
-  newParams.set(key, value)
-
-  return newParams
-}
-
-export interface Pages {
-  name: string
-  previousPage?: string
-  nextPage?: string
+export interface PaginationInfo {
+  startCursorParamName?: string
+  startCursor?: string
+  endCursorParamName?: string
+  endCursor?: string
 }
 
 interface Props {
-  pages: Pages | Promise<Pages>
+  info: PaginationInfo | Promise<PaginationInfo>
 }
 
-export function Pagination({ pages }: Props) {
+export function Pagination({ info }: Props) {
   return (
     <Suspense fallback={<PaginationSkeleton />}>
-      <PaginationResolved pages={pages} />
+      <PaginationResolved info={info} />
     </Suspense>
   )
 }
 
-function PaginationResolved({ pages }: Props) {
-  const { name, previousPage, nextPage } = use(Promise.resolve(pages))
-  const pathname = usePathname()
+function PaginationResolved({ info }: Props) {
+  const {
+    startCursorParamName = 'before',
+    endCursorParamName = 'after',
+    startCursor,
+    endCursor,
+  } = info instanceof Promise ? use(info) : info
   const searchParams = useSearchParams()
-
-  const prevHref = previousPage
-    ? createUrl(pathname, updateParam(searchParams, name, previousPage))
-    : null
-  const nextHref = nextPage ? createUrl(pathname, updateParam(searchParams, name, nextPage)) : null
+  const serialize = createSerializer({
+    [startCursorParamName]: parseAsString,
+    [endCursorParamName]: parseAsString,
+  })
 
   return (
     <div className="flex w-full justify-center bg-background py-10 text-xs">
       <div className="flex gap-2">
-        {prevHref ? (
-          <PaginationLink href={prevHref}>
+        {startCursor != null ? (
+          <PaginationLink href={serialize(searchParams, { [startCursorParamName]: startCursor })}>
             <ChevronLeft />
           </PaginationLink>
         ) : (
@@ -61,8 +52,8 @@ function PaginationResolved({ pages }: Props) {
             <ChevronLeft />
           </SkeletonLink>
         )}
-        {nextHref ? (
-          <PaginationLink href={nextHref}>
+        {endCursor != null ? (
+          <PaginationLink href={serialize(searchParams, { [endCursorParamName]: endCursor })}>
             <ChevronRight />
           </PaginationLink>
         ) : (

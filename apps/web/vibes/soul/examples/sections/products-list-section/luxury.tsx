@@ -1,7 +1,9 @@
 import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/luxury'
 import { Product } from '@/vibes/soul/primitives/product-card'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-import { Filter } from '@/vibes/soul/sections/products-list-section/filters'
+import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
+
+import { cache, compareParamName, sortParamName } from './searchParams'
 
 export const products: Product[] = [
   {
@@ -83,12 +85,11 @@ export const products: Product[] = [
     href: '#',
   },
 ]
-
 const filters: Filter[] = [
   {
-    name: 'color',
+    paramName: 'color',
     label: 'Color',
-    type: 'checkbox-group',
+    type: 'toggle-group',
     options: [
       { label: 'Red', value: 'red' },
       { label: 'Green', value: 'green' },
@@ -96,9 +97,9 @@ const filters: Filter[] = [
     ],
   },
   {
-    name: 'size',
+    paramName: 'size',
     label: 'Size',
-    type: 'checkbox-group',
+    type: 'toggle-group',
     options: [
       { label: 'Small', value: 'sm' },
       { label: 'Medium', value: 'md' },
@@ -106,16 +107,17 @@ const filters: Filter[] = [
     ],
   },
   {
-    name: 'price',
     label: 'Price',
     type: 'range',
+    minParamName: 'price-min',
+    maxParamName: 'price-max',
     min: 0,
     max: 200,
-    minLabel: '$',
-    maxLabel: '$',
+    minPrepend: '$',
+    maxPrepend: '$',
   },
   {
-    name: 'rating',
+    paramName: 'rating',
     label: 'Rating',
     type: 'rating',
   },
@@ -130,8 +132,10 @@ const sortOptions = [
 export default function Preview({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] }
+  searchParams: Record<string, string | string[] | undefined>
 }) {
+  const { [compareParamName]: compare, [sortParamName]: sort } = cache.parse(searchParams)
+
   return (
     <div className="py-6">
       <ProductsListSection
@@ -141,14 +145,10 @@ export default function Preview({
         totalCount={products.length}
         filters={filters}
         sortOptions={sortOptions}
-        pagination={{ name: 'page', previousPage: '2', nextPage: '3' }}
-        compareProducts={
-          Array.isArray(searchParams.compare)
-            ? products.filter(product => searchParams.compare.includes(product.id))
-            : typeof searchParams.compare === 'string'
-              ? products.filter(product => product.id === searchParams.compare)
-              : []
-        }
+        paginationInfo={{ startCursor: '1', endCursor: '10' }}
+        compareProducts={products.filter(product => compare?.includes(product.id))}
+        compareParamName={compareParamName}
+        sortParamName={sortParamName}
       />
     </div>
   )

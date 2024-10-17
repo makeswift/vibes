@@ -1,8 +1,4 @@
-'use client'
-
 import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
@@ -18,41 +14,18 @@ function getInitials(name: string): string {
     .slice(0, 2)
 }
 
-const createUrl = (pathname: string, params: URLSearchParams) => {
-  const paramsString = params.toString()
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`
-
-  return `${pathname}${queryString}`
-}
-
-interface Props {
+interface Props extends Omit<React.ComponentPropsWithoutRef<'button'>, 'children'> {
   product: Product
-  label?: string
-  paramKey?: string
 }
 
-export const ProductChip = function ProductChip({
-  product,
-  paramKey = 'compare',
-  label = 'Remove product',
-}: Props) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const router = useRouter()
-
+export function ProductChip({ product, className, ...rest }: Props) {
   return (
     <button
-      aria-label={label}
+      {...rest}
       className={clsx(
-        'group relative flex items-center whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold transition-all duration-150 hover:bg-contrast-100',
-        'ring-primary focus:outline-0 focus:ring-2'
+        'group relative flex items-center whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold ring-primary transition-all duration-150 hover:bg-contrast-100 focus:outline-0 focus:ring-2',
+        className
       )}
-      onClick={() => {
-        const params = Array.from(searchParams.entries())
-        const newParams = params.filter(([key, value]) => key !== paramKey || value !== product.id)
-
-        router.replace(createUrl(pathname, new URLSearchParams(newParams)), { scroll: false })
-      }}
     >
       <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-[11px] bg-primary-highlight bg-opacity-10 @4xl:rounded-r-none">
         {product.image?.src != null ? (

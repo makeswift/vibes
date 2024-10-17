@@ -1,50 +1,52 @@
 'use client'
 
-import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
+import React from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
 import { Button } from '../button'
 
-interface Props extends ComponentPropsWithoutRef<typeof Dialog.Root> {
-  title?: string
-  trigger: ReactNode
-  content: ReactNode
+interface Props {
+  title: React.ReactNode
+  children: React.ReactNode
 }
 
-export function SidePanel({ title, trigger, content, ...rest }: Props) {
+function Content({ title, children }: Props) {
   return (
-    <Dialog.Root {...rest}>
-      <VisuallyHidden.Root>
-        <Dialog.Title>{title}</Dialog.Title>
-      </VisuallyHidden.Root>
-      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-30 bg-foreground/50 @container">
-          <Dialog.Content
-            className={clsx(
-              'fixed bottom-0 right-0 top-0 flex h-full w-[400px] max-w-[calc(100%-40px)] flex-col overflow-y-auto bg-background p-6 transition [animation-timing-function:cubic-bezier(0.25,1,0,1)] data-[state=closed]:duration-500 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right @md:rounded-l-2xl @md:p-12'
-            )}
-          >
-            {content}
-          </Dialog.Content>
-        </Dialog.Overlay>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <Dialog.Portal>
+      <Dialog.Overlay className="fixed inset-0 z-30 bg-foreground/50 @container">
+        <Dialog.Content
+          className={clsx(
+            'fixed bottom-0 right-0 top-0 flex h-full w-[400px] max-w-[calc(100%-40px)] flex-col overflow-y-auto bg-background transition [animation-timing-function:cubic-bezier(0.25,1,0,1)] data-[state=closed]:duration-500 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
+          )}
+        >
+          <div className="absolute right-2 top-2">
+            <Dialog.Close asChild>
+              <Button variant="tertiary" size="small">
+                <div>
+                  <X size={18} strokeWidth={1.5} />
+                </div>
+              </Button>
+            </Dialog.Close>
+          </div>
+
+          <div className="px-6 @md:px-20 @md:pt-20">
+            <div className="flex">
+              <Dialog.Title asChild>
+                <h2 className="gap-2 text-xl font-medium @lg:text-2xl">{title}</h2>
+              </Dialog.Title>
+            </div>
+            {children}
+          </div>
+        </Dialog.Content>
+      </Dialog.Overlay>
+    </Dialog.Portal>
   )
 }
 
-export function SidePanelClose() {
-  return (
-    <Dialog.Close asChild>
-      <Button variant="tertiary" size="small" className="-mr-2 [&_div]:!px-1" asChild>
-        <div>
-          <X size={18} strokeWidth={1.5} />
-        </div>
-      </Button>
-    </Dialog.Close>
-  )
-}
+const Root = Dialog.Root
+const Trigger = Dialog.Trigger
+
+export { Root, Trigger, Content }
