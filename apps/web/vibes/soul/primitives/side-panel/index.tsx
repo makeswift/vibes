@@ -18,28 +18,23 @@ function Content({ title, children }: Props) {
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 z-30 bg-foreground/50 @container">
         <Dialog.Content
+          forceMount
           className={clsx(
-            'fixed bottom-0 right-0 top-0 flex h-full w-[400px] max-w-[calc(100%-40px)] flex-col overflow-y-auto bg-background transition [animation-timing-function:cubic-bezier(0.25,1,0,1)] data-[state=closed]:duration-500 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
+            'fixed inset-y-0 right-0 flex w-96 max-w-full flex-col bg-background transition duration-500 [animation-timing-function:cubic-bezier(0.25,1,0,1)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
           )}
         >
-          <div className="absolute right-2 top-2">
+          <div className="flex items-center justify-between gap-2 bg-background px-6 pb-4 pt-5 @md:px-8 @md:pt-7">
+            <Dialog.Title asChild>
+              <div className="text-xl font-medium @lg:text-2xl">{title}</div>
+            </Dialog.Title>
             <Dialog.Close asChild>
-              <Button variant="tertiary" size="small">
-                <div>
-                  <X size={18} strokeWidth={1.5} />
-                </div>
+              <Button variant="tertiary" size="icon" className="translate-x-3">
+                <X size={20} strokeWidth={1} />
               </Button>
             </Dialog.Close>
           </div>
 
-          <div className="px-6 @md:px-20 @md:pt-20">
-            <div className="flex">
-              <Dialog.Title asChild>
-                <h2 className="gap-2 text-xl font-medium @lg:text-2xl">{title}</h2>
-              </Dialog.Title>
-            </div>
-            {children}
-          </div>
+          <div className="flex-1 overflow-y-auto px-6 pb-6 @md:px-8 @md:pb-8">{children}</div>
         </Dialog.Content>
       </Dialog.Overlay>
     </Dialog.Portal>
