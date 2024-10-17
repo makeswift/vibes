@@ -86,6 +86,12 @@ export const components = [
     files: ['sections/checkout/index.tsx'],
   },
   {
+    name: 'countdown',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['sections/countdown/index.tsx'],
+  },
+  {
     name: 'counter',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -228,12 +234,6 @@ export const components = [
     dependencies: [],
     registryDependencies: ['accordions'],
     files: ['sections/product-description/index.tsx'],
-  },
-  {
-    name: 'products-header',
-    dependencies: [],
-    registryDependencies: ['accordions', 'button', 'dropdown'],
-    files: ['primitives/products-header/index.tsx'],
   },
   {
     name: 'rating',
