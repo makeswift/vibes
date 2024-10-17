@@ -230,12 +230,6 @@ export const components = [
     files: ['sections/product-description/index.tsx'],
   },
   {
-    name: 'products-header',
-    dependencies: [],
-    registryDependencies: ['accordions', 'button', 'dropdown'],
-    files: ['primitives/products-header/index.tsx'],
-  },
-  {
     name: 'rating',
     dependencies: [],
     registryDependencies: [],

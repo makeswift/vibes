@@ -1,69 +1,36 @@
 'use client'
 
-import React, { ReactNode, Ref, forwardRef } from 'react'
+import React from 'react'
 
-import * as Accordion from '@radix-ui/react-accordion'
-import { clsx } from 'clsx'
+import * as AccordionsPrimitive from '@radix-ui/react-accordion'
 
-export interface AccordionItem {
-  title: ReactNode
-  content: ReactNode
-  defaultOpen?: boolean
-}
-
-interface Props {
-  className?: string
-  accordions: AccordionItem[]
-}
-
-export const Accordions = forwardRef(function Accordions(
-  { className, accordions }: Props,
-  ref: Ref<HTMLDivElement>
-) {
+function Accordion({
+  children,
+  title,
+  ...rest
+}: React.ComponentPropsWithoutRef<typeof AccordionsPrimitive.Item>) {
   return (
-    <Accordion.Root
-      className={className}
-      type="multiple"
-      ref={ref}
-      defaultValue={accordions.reduce(
-        (acc, accordion, i) => (accordion.defaultOpen ? [...acc, i.toString()] : acc),
-        [] as string[]
-      )}
-      asChild
-    >
-      <ul className="w-full @container">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={i.toString()} asChild>
-            <li>
-              <Accordion.Header>
-                <Accordion.Trigger asChild>
-                  <div className="group w-full cursor-pointer items-start py-3 last:flex @md:gap-8 @md:py-5">
-                    <h3 className="mr-8 flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
-                      {accordion.title}
-                    </h3>
-                    <Chevron />
-                  </div>
-                </Accordion.Trigger>
-              </Accordion.Header>
-              <Accordion.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-                <div
-                  className={clsx(
-                    'pb-4 font-body text-xl font-medium leading-tight text-foreground @md:text-2xl',
-                    typeof accordion.content === 'string' ? '@md:w-5/6 @lg:w-3/4' : 'w-full'
-                  )}
-                >
-                  {accordion.content}
-                </div>
-              </Accordion.Content>
-            </li>
-          </Accordion.Item>
-        ))}
-      </ul>
-    </Accordion.Root>
+    <AccordionsPrimitive.Item {...rest}>
+      <AccordionsPrimitive.Header>
+        <AccordionsPrimitive.Trigger asChild>
+          <div className="group w-full cursor-pointer items-start py-3 last:flex @md:gap-8 @md:py-5">
+            <h3 className="mr-8 flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
+              {title}
+            </h3>
+            <AnimatedChevron />
+          </div>
+        </AccordionsPrimitive.Trigger>
+      </AccordionsPrimitive.Header>
+      <AccordionsPrimitive.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
+        <div className="w-full pb-4 font-body text-xl font-medium leading-tight text-foreground @md:text-2xl">
+          {children}
+        </div>
+      </AccordionsPrimitive.Content>
+    </AccordionsPrimitive.Item>
   )
-})
+}
 
-function Chevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
+function AnimatedChevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 10 10"
@@ -94,3 +61,7 @@ function Chevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGEle
     </svg>
   )
 }
+
+const Accordions = AccordionsPrimitive.Root
+
+export { Accordions, Accordion }

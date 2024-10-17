@@ -1,83 +1,129 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { Suspense, use } from 'react'
 
-import { Accordions } from '@/vibes/soul/primitives/accordions'
+import clsx from 'clsx'
+import { parseAsArrayOf, parseAsInteger, parseAsString, useQueryStates } from 'nuqs'
+
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
 import { Button } from '@/vibes/soul/primitives/button'
-import { SidePanelClose } from '@/vibes/soul/primitives/side-panel'
 
-import { FilterCheckboxGroup } from './filter-checkbox-group'
 import { FilterRange } from './filter-range'
 import { FilterRating } from './filter-rating'
-import { Filter } from './filters'
+import { FilterToggleGroup } from './filter-toggle-group'
 
-interface Props {
-  filters: Filter[]
+interface ToggleGroupFilter {
+  type: 'toggle-group'
+  label: string
+  paramName: string
+  options: { label: string; value: string }[]
 }
 
-export function FiltersPanel({ filters }: Props) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const activeOptions = filters.flatMap(filter => searchParams.getAll(filter.name))
+interface RangeFilter {
+  type: 'range'
+  label: string
+  minParamName: string
+  maxParamName: string
+  min?: number
+  max?: number
+  minLabel?: string
+  maxLabel?: string
+  minPrepend?: React.ReactNode
+  maxPrepend?: React.ReactNode
+  minPlaceholder?: string
+  maxPlaceholder?: string
+}
+
+interface RatingFilter {
+  type: 'rating'
+  label: string
+  paramName: string
+}
+
+export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter
+
+interface Props {
+  className?: string
+  filters: Filter[] | Promise<Filter[]>
+}
+
+function getParamCountLabel(params: Record<string, string | null | string[]>, key: string) {
+  if (Array.isArray(params[key]) && params[key].length > 0) return `(${params[key].length})`
+  else return ''
+}
+
+export function FiltersPanel({ className, filters }: Props) {
+  return (
+    <Suspense fallback={<FiltersSkeleton />}>
+      <FiltersPanelInner className={className} filters={filters} />
+    </Suspense>
+  )
+}
+
+export function FiltersPanelInner({ className, filters }: Props) {
+  const resolved = filters instanceof Promise ? use(filters) : filters
+  const [params, setParams] = useQueryStates(
+    resolved.reduce((acc, filter) => {
+      switch (filter.type) {
+        case 'range':
+          return {
+            ...acc,
+            [filter.minParamName]: parseAsInteger,
+            [filter.maxParamName]: parseAsInteger,
+          }
+        default:
+          return { ...acc, [filter.paramName]: parseAsArrayOf(parseAsString) }
+      }
+    }, {}),
+    { shallow: false }
+  )
 
   return (
-    <div className="w-full">
-      <div className="flex items-center justify-between gap-5">
-        <h2 className="flex gap-2 text-xl font-medium @lg:text-2xl">
-          Filters
-          {activeOptions.length > 0 && (
-            <span className="text-contrast-300">{activeOptions.length} applied</span>
-          )}
-        </h2>
-        <SidePanelClose />
-      </div>
-      <Accordions
-        className="mt-10"
-        accordions={filters.map(filter => {
+    <div className={clsx('w-full space-y-10', className)}>
+      <Accordions type="multiple" defaultValue={resolved.map((_, i) => i.toString())}>
+        {resolved.map((filter, index) => {
           switch (filter.type) {
-            case 'checkbox-group':
-              return {
-                defaultOpen: true,
-                title: filter.label,
-                content: (
-                  <FilterCheckboxGroup
-                    key={filter.name}
-                    name={filter.name}
-                    options={filter.options}
-                  />
-                ),
-              }
+            case 'toggle-group':
+              return (
+                <Accordion
+                  key={index}
+                  title={`${filter.label}${getParamCountLabel(params, filter.paramName)}`}
+                  value={index.toString()}
+                >
+                  <FilterToggleGroup paramName={filter.paramName} options={filter.options} />
+                </Accordion>
+              )
             case 'range':
-              return {
-                defaultOpen: true,
-                title: filter.label,
-                content: (
+              return (
+                <Accordion key={index} title={filter.label} value={index.toString()}>
                   <FilterRange
-                    name={filter.name}
                     min={filter.min}
                     max={filter.max}
                     minLabel={filter.minLabel}
                     maxLabel={filter.maxLabel}
+                    minPrepend={filter.minPrepend}
+                    maxPrepend={filter.maxPrepend}
+                    minPlaceholder={filter.minPlaceholder}
+                    maxPlaceholder={filter.maxPlaceholder}
+                    minParamName={filter.minParamName}
+                    maxParamName={filter.maxParamName}
                   />
-                ),
-              }
+                </Accordion>
+              )
             case 'rating':
-              return {
-                defaultOpen: true,
-                title: filter.label,
-                content: <FilterRating name={filter.name} />,
-              }
+              return (
+                <Accordion key={index} title={filter.label} value={index.toString()}>
+                  <FilterRating paramName={filter.paramName} />
+                </Accordion>
+              )
           }
         })}
-      />
-      <div className="mt-auto flex justify-center gap-2 pt-10">
+      </Accordions>
+      <div className="flex justify-center">
         <Button
           variant="secondary"
           onClick={() => {
-            console.log('clearing', { pathname })
-
-            router.replace(pathname, { scroll: false })
+            setParams(null).catch(() => console.error('Failed to reset filters'))
           }}
         >
           Reset
@@ -85,4 +131,8 @@ export function FiltersPanel({ filters }: Props) {
       </div>
     </div>
   )
+}
+
+export function FiltersSkeleton() {
+  return <div>Skeleton!</div>
 }

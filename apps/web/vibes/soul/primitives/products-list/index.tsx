@@ -4,51 +4,63 @@ import { clsx } from 'clsx'
 
 import { Product, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
 
+import { CompareDrawer } from './compare-drawer'
+
 interface Props {
   products: Product[] | Promise<Product[]>
+  compareProducts?: Product[] | Promise<Product[]>
   className?: string
   showCompare?: boolean
   compareLabel?: string
+  compareParamName?: string
 }
 
-function ProductsListResolved({ products, showCompare, compareLabel }: Omit<Props, 'className'>) {
-  const resolved = use(Promise.resolve(products))
+function ProductsListInner({
+  products,
+  showCompare,
+  compareLabel,
+  compareParamName,
+}: Omit<Props, 'className'>) {
+  const resolved = products instanceof Promise ? use(products) : products
 
-  return (
-    <>
-      {resolved.map(product => (
-        <ProductCard
-          key={product.id}
-          {...product}
-          showCompare={showCompare}
-          compareLabel={compareLabel}
-        />
-      ))}
-    </>
-  )
+  return resolved.map(product => (
+    <ProductCard
+      key={product.id}
+      {...product}
+      showCompare={showCompare}
+      compareLabel={compareLabel}
+      compareParamName={compareParamName}
+    />
+  ))
 }
 
-export const ProductsList = function ProductsList({
+export function ProductsList({
   products,
   className,
   showCompare,
+  compareProducts,
   compareLabel,
+  compareParamName,
 }: Props) {
   return (
-    <div className={clsx('w-full bg-background pt-0.5 @container', className)}>
-      <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-x-5 gap-y-10 px-3 @md:grid-cols-2 @xl:gap-y-10 @xl:px-6 @4xl:grid-cols-3 @5xl:px-20">
-        <Suspense
-          fallback={Array.from({ length: 20 }).map((_, index) => (
-            <ProductCardSkeleton key={index} />
-          ))}
-        >
-          <ProductsListResolved
-            products={products}
-            showCompare={showCompare}
-            compareLabel={compareLabel}
-          />
-        </Suspense>
+    <>
+      <div className={clsx('w-full bg-background pt-0.5 @container', className)}>
+        <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-x-5 gap-y-10 @md:grid-cols-2 @xl:gap-y-10 @4xl:grid-cols-3">
+          <Suspense
+            fallback={Array.from({ length: 20 }).map((_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))}
+          >
+            <ProductsListInner
+              products={products}
+              showCompare={showCompare}
+              compareLabel={compareLabel}
+              compareParamName={compareParamName}
+            />
+          </Suspense>
+        </div>
       </div>
-    </div>
+      {compareProducts && <CompareDrawer products={compareProducts} paramName={compareParamName} />}
+    </>
   )
 }
