@@ -5,7 +5,7 @@ import { Suspense, use } from 'react'
 import clsx from 'clsx'
 import { parseAsArrayOf, parseAsInteger, parseAsString, useQueryStates } from 'nuqs'
 
-import { Accordions } from '@/vibes/soul/primitives/accordions'
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
 import { Button } from '@/vibes/soul/primitives/button'
 
 import { FilterRange } from './filter-range'
@@ -47,6 +47,11 @@ interface Props {
   filters: Filter[] | Promise<Filter[]>
 }
 
+function getParamCountLabel(params: Record<string, string | null | string[]>, key: string) {
+  if (Array.isArray(params[key]) && params[key].length > 0) return `(${params[key].length})`
+  else return ''
+}
+
 export function FiltersPanel({ className, filters }: Props) {
   return (
     <Suspense fallback={<FiltersSkeleton />}>
@@ -71,30 +76,25 @@ export function FiltersPanelInner({ className, filters }: Props) {
       }
     }, {})
   )
-  // const paramCount = Object.values(params).reduce<number>((acc, param) => {
-  //   if (Array.isArray(param)) return acc + param.length
-  //   else if (param != null) return acc + 1
-  //   else return acc
-  // }, 0)
 
   return (
     <div className={clsx('w-full space-y-10', className)}>
-      <Accordions
-        accordions={resolved.map(filter => {
+      <Accordions type="multiple" defaultValue={resolved.map((_, i) => i.toString())}>
+        {resolved.map((filter, index) => {
           switch (filter.type) {
             case 'toggle-group':
-              return {
-                defaultOpen: true,
-                title: filter.label,
-                content: (
+              return (
+                <Accordion
+                  key={index}
+                  title={`${filter.label}${getParamCountLabel(params, filter.paramName)}`}
+                  value={index.toString()}
+                >
                   <FilterToggleGroup paramName={filter.paramName} options={filter.options} />
-                ),
-              }
+                </Accordion>
+              )
             case 'range':
-              return {
-                defaultOpen: true,
-                title: filter.label,
-                content: (
+              return (
+                <Accordion key={index} title={filter.label} value={index.toString()}>
                   <FilterRange
                     min={filter.min}
                     max={filter.max}
@@ -107,17 +107,17 @@ export function FiltersPanelInner({ className, filters }: Props) {
                     minParamName={filter.minParamName}
                     maxParamName={filter.maxParamName}
                   />
-                ),
-              }
+                </Accordion>
+              )
             case 'rating':
-              return {
-                defaultOpen: true,
-                title: filter.label,
-                content: <FilterRating paramName={filter.paramName} />,
-              }
+              return (
+                <Accordion key={index} title={filter.label} value={index.toString()}>
+                  <FilterRating paramName={filter.paramName} />
+                </Accordion>
+              )
           }
         })}
-      />
+      </Accordions>
       <div className="flex justify-center">
         <Button
           variant="secondary"

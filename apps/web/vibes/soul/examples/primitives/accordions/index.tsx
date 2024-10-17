@@ -1,4 +1,4 @@
-import { Accordions } from '@/vibes/soul/primitives/accordions'
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
 
 export default function Preview() {
   const accordions = [
@@ -26,7 +26,13 @@ export default function Preview() {
 
   return (
     <div className="m-auto flex h-screen max-w-screen-lg items-start justify-center p-10">
-      <Accordions accordions={accordions} />
+      <Accordions type="multiple">
+        {accordions.map(({ title, content }, index) => (
+          <Accordion title={title} value={index.toString()}>
+            {content}
+          </Accordion>
+        ))}
+      </Accordions>
     </div>
   )
 }

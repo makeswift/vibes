@@ -1,6 +1,11 @@
 import Image from 'next/image'
 
-import { AccordionItem, Accordions } from '@/vibes/soul/primitives/accordions'
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
+
+type AccordionItem = {
+  title: string
+  content: React.ReactNode
+}
 
 export interface Props {
   accordions: AccordionItem[]
@@ -11,15 +16,17 @@ export interface Props {
   video?: string
 }
 
-export const ProductDescription = function ProductDescription({
-  accordions,
-  image,
-  video,
-}: Readonly<Props>) {
+export function ProductDescription({ accordions, image, video }: Readonly<Props>) {
   return (
     <div className="bg-background @container">
       <div className="relative mx-auto flex w-full max-w-screen-2xl flex-col-reverse items-start justify-between gap-x-4 gap-y-4 py-6 @lg:flex-row @lg:px-6 @lg:py-24 @xl:gap-x-10 @5xl:px-20 @7xl:gap-x-32">
-        <Accordions accordions={accordions} className="px-5 @lg:sticky @lg:top-20" />
+        <Accordions className="px-5 @lg:sticky @lg:top-20" type="multiple">
+          {accordions.map((accordion, index) => (
+            <Accordion title={accordion.title} value={index.toString()}>
+              {accordion.content}
+            </Accordion>
+          ))}
+        </Accordions>
 
         {/* Image || Video Container */}
         <div
