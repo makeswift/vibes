@@ -99,6 +99,7 @@ export type Vibe = {
   navigation: Navigation
   components: Components
   brands: Brands
+  comingSoon?: boolean
 }
 
 export const pageMetaSchema = (vibe: Vibe) => {

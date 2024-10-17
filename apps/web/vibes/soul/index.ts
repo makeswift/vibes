@@ -18,4 +18,5 @@ export default {
   navigation,
   components: [...components, ...examples],
   brands,
+  comingSoon: false,
 } satisfies Vibe

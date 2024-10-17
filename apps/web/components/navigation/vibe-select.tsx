@@ -9,6 +9,7 @@ import clsx from 'clsx'
 
 import ChevronDown12 from '@/icons/generated/ChevronDown12'
 import * as Vibes from '@/vibes'
+import { Vibe } from '@/vibes/schema'
 
 import { Button } from '../ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
@@ -17,7 +18,7 @@ interface Props {
   vibeSlug: string
 }
 
-const vibes = Object.values(Vibes)
+const vibes: Vibe[] = Object.values(Vibes)
 
 export function VibeSelect({ vibeSlug }: Props) {
   const [isOpen, setIsOpen] = useState(false)
@@ -50,20 +51,34 @@ export function VibeSelect({ vibeSlug }: Props) {
         </SheetTrigger>
         <SheetContent side="top" className="z-20 focus:outline-none">
           <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-8 xl:container md:grid-cols-2 md:gap-y-10 lg:gap-x-8 lg:py-2 xl:px-8 2xl:grid-cols-3">
-            {Object.values(Vibes).map(vibe => (
+            {[
+              ...Object.values(Vibes).filter(vibe => !vibe.comingSoon),
+              ...Object.values(Vibes).filter(vibe => vibe.comingSoon),
+            ].map(vibe => (
               <div key={vibe.slug}>
                 <Link
                   href={`/docs/${vibe.slug}`}
-                  className="group ring-primary ring-offset-8 focus:outline-none focus-visible:ring-2"
+                  className={clsx(
+                    'group ring-primary ring-offset-8 focus:outline-none focus-visible:ring-2',
+                    vibe.comingSoon && 'pointer-events-none'
+                  )}
                 >
                   <div className="relative mb-4 aspect-video">
+                    {vibe.comingSoon && (
+                      <span className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold text-white">
+                        Coming Soon!
+                      </span>
+                    )}
                     <div className="marching-ants absolute inset-0 border border-dashed border-transparent bg-transparent opacity-50 transition-all [animation-play-state:paused] group-hover:-inset-1 group-hover:opacity-100 group-hover:[animation-play-state:running]" />
                     <Image
                       fill
                       priority
                       src={vibe.thumbnail}
                       alt={`Thumbnail of ${vibe.name} vibe`}
-                      className="border border-contrast-200 bg-contrast-100"
+                      className={clsx(
+                        'border border-contrast-200 bg-contrast-100 object-cover',
+                        vibe.comingSoon && 'opacity-50'
+                      )}
                     />
                   </div>
                 </Link>
