@@ -361,6 +361,20 @@ export const examples = [
     component: lazy(() => import('./examples/pages/blog/post/electric')),
   },
   {
+    name: 'page-blog-post-warm-example',
+    dependencies: [],
+    registryDependencies: ['page-blog-post-warm'],
+    files: ['examples/pages/blog/post/warm.tsx'],
+    component: lazy(() => import('./examples/pages/blog/post/warm')),
+  },
+  {
+    name: 'page-blog-post-luxury-example',
+    dependencies: [],
+    registryDependencies: ['page-blog-post-luxury'],
+    files: ['examples/pages/blog/post/luxury.tsx'],
+    component: lazy(() => import('./examples/pages/blog/post/luxury')),
+  },
+  {
     name: 'page-cart-electric-example',
     dependencies: [],
     registryDependencies: ['page-cart-electric'],

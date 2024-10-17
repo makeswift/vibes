@@ -25,12 +25,17 @@ interface Link {
   href: string
 }
 
+interface Image {
+  src: string
+  alt: string
+}
+
 interface BlogPostPageProps {
   id: string
   title: string
   author: string
   date: string
-  image: string
+  image: Image
   content: string
   relatedPostsTitle: string
   cta?: Link

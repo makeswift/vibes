@@ -7,7 +7,10 @@ export default function Preview() {
       title="Top 5 Plants to Purify Your Home's Air"
       author="Sam Smith"
       date="June 30, 2024"
-      image="https://rstr.in/monogram/vibes/RNZYqBoUs7C"
+      image={{
+        src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
+        alt: 'A plant with large leaves and a short stem.',
+      }}
       content={`
        <h2>Best Air-Purifying Plants</h2>
         <ol>
