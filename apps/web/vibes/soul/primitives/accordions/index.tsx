@@ -13,8 +13,8 @@ function Accordion({
     <AccordionsPrimitive.Item {...rest}>
       <AccordionsPrimitive.Header>
         <AccordionsPrimitive.Trigger asChild>
-          <div className="group w-full cursor-pointer items-start py-3 last:flex @md:gap-8 @md:py-5">
-            <h3 className="mr-8 flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
+          <div className="group w-full cursor-pointer items-start gap-8 py-3 last:flex @md:py-5">
+            <h3 className="flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
               {title}
             </h3>
             <AnimatedChevron />
@@ -34,26 +34,26 @@ function AnimatedChevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<S
   return (
     <svg
       viewBox="0 0 10 10"
-      width="16"
-      className="mt-1 shrink-0 [&>line]:origin-center [&>line]:stroke-contrast-300 [&>line]:transition [&>line]:duration-300 [&>line]:ease-out [&>line]:group-hover:stroke-foreground"
+      width={16}
+      className="mt-1 shrink-0 [&>line]:origin-center [&>line]:stroke-contrast-500 [&>line]:transition [&>line]:duration-300 [&>line]:ease-out [&>line]:group-hover:stroke-foreground"
       {...props}
     >
       {/* Left Line of Chevron */}
       <line
-        x1="2"
-        y1="2"
-        x2="5"
-        y2="5"
+        x1={2}
+        y1={2}
+        x2={5}
+        y2={5}
         className="group-data-[state=open]:-translate-y-[3px] group-data-[state=open]:-rotate-90"
         stroke="currentColor"
         strokeLinecap="round"
       />
       {/* Right Line of Chevron */}
       <line
-        x1="8"
-        y1="2"
-        x2="5"
-        y2="5"
+        x1={8}
+        y1={2}
+        x2={5}
+        y2={5}
         className="group-data-[state=open]:-translate-y-[3px] group-data-[state=open]:rotate-90"
         stroke="currentColor"
         strokeLinecap="round"
