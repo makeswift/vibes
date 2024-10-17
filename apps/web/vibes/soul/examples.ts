@@ -284,6 +284,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/featured-video')),
   },
   {
+    name: 'form-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/form.tsx'],
+    component: lazy(() => import('./examples/form')),
+  },
+  {
     name: 'footer-electric-example',
     dependencies: [],
     registryDependencies: ['footer-electric'],

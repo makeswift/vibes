@@ -1,24 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ComponentPropsWithoutRef } from 'react'
 
 import { clsx } from 'clsx'
 
 import { Badge } from '@/vibes/soul/primitives/badge'
 import { Button } from '@/vibes/soul/primitives/button'
 import { Label } from '@/vibes/soul/primitives/label'
-import { Product } from '@/vibes/soul/primitives/product-card'
-import { Price, ProductPrice } from '@/vibes/soul/primitives/product-card/price'
+import { Price } from '@/vibes/soul/primitives/product-card/price'
 import { Rating } from '@/vibes/soul/primitives/rating'
+import { CompareCardProduct } from '@/vibes/soul/types'
 
 interface Image {
   alt: string
   src: string
-}
-
-export interface CompareCardProduct extends Product {
-  description?: string
-  availability?: string
 }
 
 interface Props extends CompareCardProduct {

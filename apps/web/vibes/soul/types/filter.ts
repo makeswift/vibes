@@ -6,24 +6,36 @@ export interface CheckboxGroupFilterOption {
 export interface CheckboxGroupFilter {
   type: 'checkbox-group'
   label: string
-  name: string
+  paramName: string
   options: CheckboxGroupFilterOption[]
+}
+
+export interface ToggleGroupFilter {
+  type: 'toggle-group'
+  label: string
+  paramName: string
+  options: { label: string; value: string }[]
 }
 
 export interface RangeFilter {
   type: 'range'
   label: string
-  name: string
+  minParamName: string
+  maxParamName: string
   min?: number
   max?: number
   minLabel?: string
   maxLabel?: string
+  minPrepend?: React.ReactNode
+  maxPrepend?: React.ReactNode
+  minPlaceholder?: string
+  maxPlaceholder?: string
 }
 
 export interface RatingFilter {
   type: 'rating'
   label: string
-  name: string
+  paramName: string
 }
 
 export interface Option {
@@ -31,4 +43,4 @@ export interface Option {
   value: string
 }
 
-export type Filter = CheckboxGroupFilter | RangeFilter | RatingFilter
+export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter | CheckboxGroupFilter

@@ -11,6 +11,11 @@ export interface ProductCardProduct {
   rating?: number
 }
 
+export interface CompareCardProduct extends ProductCardProduct {
+  description?: string
+  availability?: string
+}
+
 export interface ProductCardPriceRange {
   type: 'range'
   minValue: string

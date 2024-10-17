@@ -196,7 +196,7 @@ export const navigation = [
         component: 'log-in',
       },
       {
-        title: 'Products List Section',
+        title: 'Products List',
         slug: 'products-list-section',
         file: 'docs/products-list-section.mdx',
         component: 'products-list-section',

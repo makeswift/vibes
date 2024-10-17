@@ -7,7 +7,7 @@ export function getFilters(brand: Brand): Filter[] {
 const filters = {
   Electric: [
     {
-      name: 'type',
+      paramName: 'type',
       label: 'Type',
       type: 'checkbox-group',
       options: [
@@ -17,7 +17,7 @@ const filters = {
       ],
     },
     {
-      name: 'size',
+      paramName: 'size',
       label: 'Size',
       type: 'checkbox-group',
       options: [
@@ -27,7 +27,8 @@ const filters = {
       ],
     },
     {
-      name: 'price',
+      minParamName: 'min-price',
+      maxParamName: 'max-price',
       label: 'Price',
       type: 'range',
       min: 0,
@@ -36,14 +37,14 @@ const filters = {
       maxLabel: '$',
     },
     {
-      name: 'rating',
+      paramName: 'rating',
       label: 'Rating',
       type: 'rating',
     },
   ],
   Luxury: [
     {
-      name: 'color',
+      paramName: 'color',
       label: 'Color',
       type: 'checkbox-group',
       options: [
@@ -53,7 +54,7 @@ const filters = {
       ],
     },
     {
-      name: 'size',
+      paramName: 'size',
       label: 'Size',
       type: 'checkbox-group',
       options: [
@@ -73,7 +74,8 @@ const filters = {
       ],
     },
     {
-      name: 'price',
+      minParamName: 'min-price',
+      maxParamName: 'max-price',
       label: 'Price',
       type: 'range',
       min: 0,
@@ -82,14 +84,14 @@ const filters = {
       maxLabel: '$',
     },
     {
-      name: 'rating',
+      paramName: 'rating',
       label: 'Rating',
       type: 'rating',
     },
   ],
   Warm: [
     {
-      name: 'color',
+      paramName: 'color',
       label: 'Color',
       type: 'checkbox-group',
       options: [
@@ -99,7 +101,7 @@ const filters = {
       ],
     },
     {
-      name: 'size',
+      paramName: 'size',
       label: 'Size',
       type: 'checkbox-group',
       options: [
@@ -109,7 +111,8 @@ const filters = {
       ],
     },
     {
-      name: 'price',
+      minParamName: 'min-price',
+      maxParamName: 'max-price',
       label: 'Price',
       type: 'range',
       min: 0,
@@ -118,7 +121,7 @@ const filters = {
       maxLabel: '$',
     },
     {
-      name: 'rating',
+      paramName: 'rating',
       label: 'Rating',
       type: 'rating',
     },

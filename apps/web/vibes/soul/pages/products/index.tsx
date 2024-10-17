@@ -1,22 +1,18 @@
+import { getFilters, getSortOptions } from '@/vibes/soul/data'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs'
-import { Product } from '@/vibes/soul/primitives/product-card'
-import { CompareProducts } from '@/vibes/soul/sections/compare-products'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer, Section } from '@/vibes/soul/sections/footer'
 import { Header, Links } from '@/vibes/soul/sections/header'
-
-interface Image {
-  src: string
-  alt: string
-}
+import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
+import { Image, ProductCardProduct } from '@/vibes/soul/types'
 
 interface ProductsPageProps {
   headerLinks: Links[]
   logo: string | Image
   breadcrumbs: Breadcrumb[]
   title: string
-  products: Product[]
+  products: ProductCardProduct[]
   footerLinks: Section[]
   copyright: string
 }
@@ -37,6 +33,8 @@ export const ProductsPage = function ProductsPage({
   footerLinks,
   copyright,
 }: ProductsPageProps) {
+  const sortOptions = getSortOptions()
+  const filters = getFilters('Warm')
   return (
     <>
       <AnnouncementBar>
@@ -51,7 +49,14 @@ export const ProductsPage = function ProductsPage({
         activeLocale="EN"
         locales={locales}
       />
-      <CompareProducts breadcrumbs={breadcrumbs} title={title} products={products} pages={5} />
+      <ProductsListSection
+        breadcrumbs={breadcrumbs}
+        title={title}
+        products={products}
+        totalCount={products.length}
+        sortOptions={sortOptions}
+        filters={filters}
+      />
       <FeaturedProductsCarousel title="Recently Viewed" products={products} />
       <Footer sections={footerLinks} logo={logo} copyright={copyright} />
     </>

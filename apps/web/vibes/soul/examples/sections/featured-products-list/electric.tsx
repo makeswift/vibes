@@ -1,3 +1,4 @@
+import { getProducts } from '@/vibes/soul/data'
 import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list'
 
 export const featuredProducts = {
@@ -7,80 +8,7 @@ export const featuredProducts = {
     label: 'Shop Now',
     href: '#',
   },
-  products: [
-    {
-      id: '1',
-      title: 'Philodendron Imperial Red',
-      subtitle: 'Indoor Plant',
-      // badge: 'Indestructible',
-      price: '$44.95',
-      image: {
-        src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
-        alt: 'Philodendron Imperial Red',
-      },
-      href: '#',
-    },
-    {
-      id: '2',
-      title: 'Monstera',
-      subtitle: 'Indoor Plant',
-      // badge: 'New',
-      price: '$24.99',
-      image: {
-        src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
-        alt: 'Monstera',
-      },
-      href: '#',
-    },
-    {
-      id: '3',
-      title: 'Pink Caladium',
-      subtitle: 'Indoor Plant',
-      // badge: 'New',
-      price: '$19.95',
-      image: {
-        src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
-        alt: 'Pink Caladium',
-      },
-      href: '#',
-    },
-    {
-      id: '4',
-      title: 'Hoya Kerrii',
-      subtitle: 'Indoor Plant',
-      // badge: 'New',
-      price: '$16.99',
-      image: {
-        src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
-        alt: 'Hoya Kerrii',
-      },
-      href: '#',
-    },
-    {
-      id: '5',
-      title: 'Bird Nest Fern',
-      subtitle: 'Indoor Plant',
-      // badge: 'New',
-      price: '$24.99',
-      image: {
-        src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
-        alt: 'Bird Nest Fern',
-      },
-      href: '#',
-    },
-    {
-      id: '6',
-      title: 'Jade Plant',
-      subtitle: 'Indoor Plant',
-      // badge: 'New',
-      price: '$24.99',
-      image: {
-        src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
-        alt: 'Jade Plant',
-      },
-      href: '#',
-    },
-  ],
+  products: getProducts('Electric'),
 }
 
 export default function Preview() {
