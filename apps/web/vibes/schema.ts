@@ -109,21 +109,19 @@ export const pageMetaSchema = (vibe: Vibe) => {
     title: z.string(),
     description: z.string().optional(),
     features: z.array(z.string()).optional(),
-    preview: z.union([
-      z
-        .object(
+    preview: z
+      .union([
+        z.object(
           Object.fromEntries(
-            vibe.brands.length > 0
-              ? vibe.brands.map(brand => [
-                  brand.name,
-                  z.enum([component.name, ...rest.map(entry => entry.name)]),
-                ])
-              : []
+            vibe.brands.map(brand => [
+              brand.name,
+              z.enum([component.name, ...rest.map(entry => entry.name)]),
+            ])
           )
-        )
-        .optional(),
-      z.string(),
-    ]),
+        ),
+        z.string(),
+      ])
+      .optional(),
     previewSize: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
   })
 }
