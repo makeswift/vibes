@@ -31,14 +31,11 @@ export function ProductCard({
   compareParamName,
 }: Props) {
   return (
-    <div>
+    <div className={clsx('@container', className)}>
       <Link
         id={id}
         href={href}
-        className={clsx(
-          'group flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl',
-          className
-        )}
+        className="group flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl"
       >
         <div className="relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100">
           {image?.src != null ? (
@@ -61,7 +58,7 @@ export function ProductCard({
           )}
         </div>
       </Link>
-      <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 @md:mt-3 @md:flex-row">
+      <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 @xs:mt-3 @xs:flex-row">
         <div className="flex-1">
           <Link tabIndex={-1} href={href} className="group text-base">
             <span className="block font-semibold">{title}</span>
@@ -74,7 +71,7 @@ export function ProductCard({
         </div>
 
         {showCompare && (
-          <div className="shrink-0">
+          <div className="mt-0.5 shrink-0">
             <Compare productId={id} label={compareLabel} paramName={compareParamName} />
           </div>
         )}

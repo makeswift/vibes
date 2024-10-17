@@ -18,7 +18,7 @@ export function MobileFilters({ filters, label = 'Filters' }: Props) {
         <Button variant="secondary" size="small">
           <div className="flex gap-2">
             <span className="hidden @xl:block">{label}</span>
-            <Sliders size={18} />
+            <Sliders size={16} />
           </div>
         </Button>
       </SidePanel.Trigger>
