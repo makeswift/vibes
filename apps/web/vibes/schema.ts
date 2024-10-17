@@ -111,14 +111,18 @@ export const pageMetaSchema = (vibe: Vibe) => {
     features: z.array(z.string()).optional(),
     preview: z
       .union([
-        z.object(
-          Object.fromEntries(
-            vibe.brands.map(brand => [
-              brand.name,
-              z.enum([component.name, ...rest.map(entry => entry.name)]),
-            ])
+        z
+          .object(
+            Object.fromEntries(
+              vibe.brands.length > 0
+                ? vibe.brands.map(brand => [
+                    brand.name,
+                    z.enum([component.name, ...rest.map(entry => entry.name)]),
+                  ])
+                : []
+            )
           )
-        ),
+          .optional(),
         z.string(),
       ])
       .optional(),
