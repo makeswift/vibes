@@ -11,8 +11,7 @@ previewSize: lg
 
 Import the component.
 
-<CodeBlock lang="bash">{`import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-`}</CodeBlock>
+<CodeBlock lang="bash">{`import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'`}</CodeBlock>
 
 Query the appropriate data.
 
@@ -46,13 +45,11 @@ The `products` property accepts either `Product[]` or `Promise<Product[]>`. By p
 <Preview
   vibeSlug="soul"
   componentName={{
-    electric: 'products-list-section-loading-electric-example',
-    luxury: 'products-list-section-loading-luxury-example',
-    warm: 'products-list-section-loading-warm-example',
+    Electric: 'products-list-section-loading-electric-example',
+    Warm: 'products-list-section-loading-warm-example',
+    Luxury: 'products-list-section-loading-luxury-example',
   }}
->
-  Something
-</Preview>
+/>
 
 ### Internationalization
 
@@ -75,7 +72,7 @@ To setup internationalization, we recommend using a package like [next-intl](htt
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section;
  
 export default function ProductListPage() {
-  const t = useTranslations('ProductListSection');
+  const t = useTranslations('ProductsListSection');
   return (
     <div>
         <ProductListSection
