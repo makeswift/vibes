@@ -27,6 +27,10 @@ export const FeaturedImage = function FeaturedImage({
   cta,
   mediaAlign = 'left',
 }: FeaturedImageProps) {
+  // if (isLoading) {
+  // return <FeaturedImageSkeleton mediaAlign={mediaAlign} />
+  // }
+
   return (
     <section
       className={clsx(
@@ -47,19 +51,15 @@ export const FeaturedImage = function FeaturedImage({
             }
           )}
         >
-          {image.src !== '' ? (
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
-              placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
-              blurDataURL={image.blurDataUrl}
-              className="object-cover"
-            />
-          ) : (
-            <div className="h-full w-full animate-pulse bg-contrast-500" />
-          )}
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
+            placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
+            blurDataURL={image.blurDataUrl}
+            className="object-cover"
+          />
         </div>
         <div
           className={clsx(
@@ -82,6 +82,42 @@ export const FeaturedImage = function FeaturedImage({
             <Link href={cta.href}>{cta.label}</Link>
           </Button>
         </div>
+      </div>
+    </section>
+  )
+}
+
+function FeaturedImageSkeleton({ mediaAlign }: { mediaAlign: FeaturedImageProps['mediaAlign'] }) {
+  return (
+    <section
+      className={clsx(
+        'relative animate-pulse bg-primary-shadow @container',
+        mediaAlign === 'full' && 'h-dvh max-h-[780px]'
+      )}
+    >
+      <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
+        {/* Image */}
+        <div
+          className={clsx(
+            'w-full object-cover',
+            mediaAlign === 'full'
+              ? 'absolute inset-0 h-full'
+              : 'relative aspect-square bg-primary/10 @xl:aspect-[9/6] @3xl:h-dvh @3xl:max-h-[880px] @3xl:w-1/2 @5xl:w-3/5',
+            {
+              '@3xl:order-2 @7xl:mr-20': mediaAlign === 'right',
+              '@7xl:ml-20': mediaAlign === 'left',
+            }
+          )}
+        />
+        {/* Content */}
+        <div
+          className={clsx(
+            mediaAlign === 'full' ? 'w-full' : 'min-h-40 w-full @3xl:w-1/2 @5xl:w-2/5',
+            {
+              '@3xl:order-1': mediaAlign === 'right',
+            }
+          )}
+        />
       </div>
     </section>
   )
