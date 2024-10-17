@@ -1,25 +1,25 @@
 import { Image } from './image'
 
-export interface Product {
+export interface ProductCardProduct {
   id: string
   title: string
   href: string
   image?: Image
-  price?: ProductPrice
+  price?: ProductCardPrice
   subtitle?: string
   badge?: string
   rating?: number
 }
 
-export interface ProductPriceRange {
+export interface ProductCardPriceRange {
   type: 'range'
   minValue: string
   maxValue: string
 }
 
-export type ProductPrice = string | ProductPriceRange | SalePrice
+export type ProductCardPrice = string | ProductCardPriceRange | ProductCardSalePrice
 
-export interface SalePrice {
+export interface ProductCardSalePrice {
   type: 'sale'
   previousValue: string
   currentValue: string

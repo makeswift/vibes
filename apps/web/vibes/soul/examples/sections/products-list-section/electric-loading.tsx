@@ -1,17 +1,17 @@
 import { getBreadcrumbs, getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-import { Filter, Option, Product } from '@/vibes/soul/types'
+import { Filter, Option, ProductCardProduct } from '@/vibes/soul/types'
 
 export default function Preview() {
-  const products = new Promise<Product[]>(res => {
+  const products = new Promise<ProductCardProduct[]>(res => {
     setTimeout(() => {
-      res(getProducts('electric'))
+      res(getProducts('Electric'))
     }, 5000)
   })
 
   const filters = new Promise<Filter[]>(res => {
     setTimeout(() => {
-      res(getFilters('electric'))
+      res(getFilters('Electric'))
     }, 5000)
   })
 
@@ -23,11 +23,11 @@ export default function Preview() {
 
   const totalCount = new Promise<number>(res => {
     setTimeout(() => {
-      res(getProducts('electric').length)
+      res(getProducts('Electric').length)
     }, 2000)
   })
 
-  const breadcrumbs = getBreadcrumbs('electric')
+  const breadcrumbs = getBreadcrumbs('Electric')
 
   return (
     <div className="py-6">

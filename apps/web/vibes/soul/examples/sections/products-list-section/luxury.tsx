@@ -6,10 +6,10 @@ export default function Preview({
 }: {
   searchParams: { [key: string]: string | string[] }
 }) {
-  const products = getProducts('luxury')
-  const filters = getFilters('luxury')
+  const products = getProducts('Luxury')
+  const filters = getFilters('Luxury')
   const sortOptions = getSortOptions()
-  const breadcrumbs = getBreadcrumbs('luxury')
+  const breadcrumbs = getBreadcrumbs('Luxury')
 
   return (
     <div className="py-6">
