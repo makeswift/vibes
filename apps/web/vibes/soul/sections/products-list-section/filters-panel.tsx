@@ -74,7 +74,8 @@ export function FiltersPanelInner({ className, filters }: Props) {
         default:
           return { ...acc, [filter.paramName]: parseAsArrayOf(parseAsString) }
       }
-    }, {})
+    }, {}),
+    { shallow: false }
   )
 
   return (

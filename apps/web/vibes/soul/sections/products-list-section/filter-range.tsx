@@ -32,10 +32,13 @@ export function FilterRange({
   minPlaceholder = 'Min',
   maxPlaceholder = 'Max',
 }: Props) {
-  const [params, setParams] = useQueryStates({
-    [minParamName]: parseAsInteger,
-    [maxParamName]: parseAsInteger,
-  })
+  const [params, setParams] = useQueryStates(
+    {
+      [minParamName]: parseAsInteger,
+      [maxParamName]: parseAsInteger,
+    },
+    { shallow: false }
+  )
   const [minState, setMinState] = useState<number | null>(params[minParamName])
   const [maxState, setMaxState] = useState<number | null>(params[maxParamName])
   const isDirty =

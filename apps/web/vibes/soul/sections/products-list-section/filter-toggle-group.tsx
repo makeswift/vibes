@@ -8,7 +8,10 @@ interface Props {
 }
 
 export function FilterToggleGroup({ paramName, options }: Props) {
-  const [param, setParam] = useQueryState(paramName, parseAsArrayOf(parseAsString))
+  const [param, setParam] = useQueryState(
+    paramName,
+    parseAsArrayOf(parseAsString).withOptions({ shallow: false })
+  )
 
   return (
     <ToggleGroup

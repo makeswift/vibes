@@ -8,7 +8,10 @@ interface Props {
 }
 
 export function FilterRating({ paramName }: Props) {
-  const [param, setParam] = useQueryState(paramName, parseAsArrayOf(parseAsString))
+  const [param, setParam] = useQueryState(
+    paramName,
+    parseAsArrayOf(parseAsString).withOptions({ shallow: false })
+  )
 
   return (
     <div className="space-y-3">
@@ -19,11 +22,14 @@ export function FilterRating({ paramName }: Props) {
           label={<Rating rating={rating} />}
           checked={param?.includes(rating.toString()) ?? false}
           onCheckedChange={value =>
-            void setParam(p =>
-              value === true
-                ? [...(p ?? []), rating.toString()]
-                : (p ?? []).filter(v => v !== rating.toString())
-            )
+            void setParam(prev => {
+              const next =
+                value === true
+                  ? [...(prev ?? []), rating.toString()]
+                  : (prev ?? []).filter(v => v !== rating.toString())
+
+              return next.length > 0 ? next : null
+            })
           }
         />
       ))}
