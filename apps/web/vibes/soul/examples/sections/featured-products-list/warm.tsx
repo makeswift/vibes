@@ -1,11 +1,11 @@
-import { Product } from '@/vibes/soul/primitives/product-card'
 import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list'
+import { ProductCardProduct } from '@/vibes/soul/types'
 
 export const featuredProducts: {
   title: string
   description: string
   cta: { label: string; href: string }
-  products: Product[]
+  products: ProductCardProduct[]
 } = {
   title: 'Discover',
   description:
@@ -17,73 +17,73 @@ export const featuredProducts: {
   products: [
     {
       id: '1',
-      title: 'Product Name',
+      title: 'Mini Bar Bag',
       subtitle: 'Blue/Black/Green',
       // badge: 'Indestructible',
-      price: '$24.99',
+      price: '$65',
       image: {
         src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
-        alt: 'Product Name',
+        alt: 'Mini Bar Bag',
       },
       href: '#',
     },
     {
       id: '2',
-      title: 'Product Name',
+      title: 'Mini Bar Bag',
       subtitle: 'Blue/Black/Green',
       // badge: 'New',
-      price: '$24.99',
+      price: '$65',
       image: {
         src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
-        alt: 'Product Name',
+        alt: 'Mini Bar Bag',
       },
       href: '#',
     },
     {
       id: '3',
-      title: 'Product Name',
+      title: 'Stem Caddy',
       subtitle: 'Blue/Black/Green',
       // badge: 'New',
-      price: '$24.99',
+      price: '$60',
       image: {
         src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
-        alt: 'Product Name',
+        alt: 'Stem Caddy',
       },
       href: '#',
     },
     {
       id: '4',
-      title: 'Product Name',
+      title: 'Hip Slinger',
       subtitle: 'Blue/Black/Green',
       // badge: 'New',
-      price: '$24.99',
+      price: '$105',
       image: {
         src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
-        alt: 'Product Name',
-      },
-      href: '#',
-    },
-    {
-      id: '6',
-      title: 'Product Name',
-      subtitle: 'Blue/Black/Green',
-      // badge: 'New',
-      price: '$24.99',
-      image: {
-        src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
-        alt: 'Product Name',
+        alt: 'Hip Slinger',
       },
       href: '#',
     },
     {
       id: '5',
-      title: 'Product Name',
+      title: 'Everyday Tote',
       subtitle: 'Blue/Black/Green',
       // badge: 'New',
-      price: '$24.99',
+      price: '$185',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+        alt: 'Everyday Tote',
+      },
+      href: '#',
+    },
+    {
+      id: '6',
+      title: 'Mini Saddlebag',
+      subtitle: 'Blue/Black/Green',
+      // badge: 'New',
+      price: '$45',
       image: {
         src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
-        alt: 'Product Name',
+        alt: 'Mini Saddlebag',
       },
       href: '#',
     },

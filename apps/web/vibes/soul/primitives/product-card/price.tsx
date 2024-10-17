@@ -1,21 +1,9 @@
 import { clsx } from 'clsx'
 
-interface ProductPriceRange {
-  type: 'range'
-  minValue: string
-  maxValue: string
-}
-
-interface SalePrice {
-  type: 'sale'
-  previousValue: string
-  currentValue: string
-}
-
-export type ProductPrice = string | ProductPriceRange | SalePrice
+import { ProductCardPrice } from '@/vibes/soul/types'
 
 interface Props {
-  price: ProductPrice
+  price: ProductCardPrice
   className?: string
 }
 

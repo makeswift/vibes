@@ -6,11 +6,11 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/el
 import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric'
 import { HomePage } from '@/vibes/soul/pages/home'
-import { Product } from '@/vibes/soul/primitives/product-card'
 import { FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
+import { ProductCardProduct } from '@/vibes/soul/types'
 
 // Featured Products
-export const newArrivals: Product[] = [
+export const newArrivals: ProductCardProduct[] = [
   {
     id: '1',
     title: 'Heart to Heart',

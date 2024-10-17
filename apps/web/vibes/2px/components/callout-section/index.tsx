@@ -22,7 +22,7 @@ export default function CalloutSection({ text, image, ctas }: Props) {
         className="mx-auto h-auto max-h-[21.25rem] w-auto max-w-full object-contain @xl:max-h-[37.5rem] "
       />
       <div className="flex flex-wrap gap-4">
-        <Button asChild variant="primary" className="w-full flex-1 py-6 text-lg">
+        <Button variant="primary" className="w-full flex-1 py-6 text-lg">
           <a href={ctas.primary.href}>{ctas.primary.label}</a>
         </Button>
         {ctas.secondary && (

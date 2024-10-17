@@ -329,7 +329,7 @@ export const Header = forwardRef(function Header(
               name="searchTerm"
               type="text"
               placeholder="Search Products"
-              className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 @xl:pl-0"
+              className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
             />
             <button
               type="submit"

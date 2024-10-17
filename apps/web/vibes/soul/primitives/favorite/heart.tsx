@@ -13,7 +13,7 @@ export function Heart(
       viewBox="0 0 20 21"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="group-active:heart-pulse transition-transform duration-300 ease-out group-hover:scale-110 group-active:scale-75"
+      className="group-active:heart-pulse transform-gpu transition-transform duration-300 ease-out group-active:scale-75 sm:group-hover:scale-110"
       {...props}
     >
       {/* Line Heart */}

@@ -1,17 +1,10 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
-import { use } from 'react'
+import { Suspense, use } from 'react'
 
-import { Select } from '@/vibes/soul/primitives/select'
+import { parseAsString, useQueryState } from 'nuqs'
 
-const createUrl = (pathname: string, params: URLSearchParams) => {
-  const paramsString = params.toString()
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`
-
-  return `${pathname}${queryString}`
-}
+import { Select } from '@/vibes/soul/form/select'
 
 export interface Option {
   label: string
@@ -21,37 +14,29 @@ export interface Option {
 interface Props {
   options: Option[] | Promise<Option[]>
   label?: string
-  sortParam?: string
+  paramName?: string
+  defaultValue?: string
 }
 
-export function Sorting({ label = 'Sort', options, sortParam }: Props) {
+export function Sorting({ label = 'Sort', options, paramName }: Props) {
   return (
     <Suspense fallback={<SortingSkeleton placeholder={label} />}>
-      <SortingInner options={options} label={label} sortParam={sortParam} />
+      <SortingInner options={options} label={label} paramName={paramName} />
     </Suspense>
   )
 }
 
-function SortingInner({ label = 'Sort', options, sortParam = 'sort' }: Props) {
-  const resolved = use(Promise.resolve(options))
-  const searchParams = useSearchParams()
-  const router = useRouter()
-  const pathname = usePathname()
-  const value = searchParams.get(sortParam) ?? undefined
+function SortingInner({ label = 'Sort', options, paramName = 'sort', defaultValue = '' }: Props) {
+  const [param, setParam] = useQueryState(paramName, parseAsString.withDefault(defaultValue))
+  const resolved = options instanceof Promise ? use(options) : options
 
   return (
     <Select
       placeholder={label}
       variant="round"
       options={resolved}
-      value={value}
-      onValueChange={value => {
-        const params = new URLSearchParams(searchParams.toString())
-
-        params.set(sortParam, value)
-
-        router.replace(createUrl(pathname, params), { scroll: false })
-      }}
+      value={param}
+      onValueChange={value => void setParam(value)}
     />
   )
 }

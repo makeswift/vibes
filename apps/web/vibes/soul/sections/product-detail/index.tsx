@@ -9,25 +9,20 @@ import { clsx } from 'clsx'
 import { Button } from '@/vibes/soul/primitives/button'
 import { Favorite } from '@/vibes/soul/primitives/favorite'
 import { Label } from '@/vibes/soul/primitives/label'
-import { Product } from '@/vibes/soul/primitives/product-card'
 import { Price } from '@/vibes/soul/primitives/product-card/price'
 import { Rating } from '@/vibes/soul/primitives/rating'
 import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery'
+import { Image as IImage, ProductCardProduct } from '@/vibes/soul/types'
 
-interface Image {
-  alt: string
-  src: string
-}
-
-interface ProductDetailType extends Product {
+interface ProductDetailType extends ProductCardProduct {
   options?: string[]
   swatches?: {
     id: string
     name: string
-    image?: Image
+    image?: IImage
     hex?: string
   }[]
-  images?: Image[]
+  images?: IImage[]
 }
 
 export interface ProductDetailProps {

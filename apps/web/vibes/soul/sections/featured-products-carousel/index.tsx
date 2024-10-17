@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { Product } from '@/vibes/soul/primitives/product-card'
 import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
+import { ProductCardProduct } from '@/vibes/soul/types'
 
 interface Link {
   label: string
@@ -12,7 +12,7 @@ interface Props {
   title: string
   description?: string
   cta?: Link
-  products: Product[]
+  products: ProductCardProduct[]
 }
 
 export const FeaturedProductsCarousel = function FeaturedProductsCarousel({
