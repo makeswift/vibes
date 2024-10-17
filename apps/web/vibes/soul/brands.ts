@@ -19,9 +19,9 @@ export const brands = [
       '--accent': '96 100% 88%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
-      '--success': '116, 78%, 65%',
-      '--error': '0, 100%, 60%',
-      '--warning': '40, 100%, 60%',
+      '--success': '116 78% 65%',
+      '--error': '0 100% 60%',
+      '--warning': '40 100% 60%',
       '--info': '220 70% 45%',
 
       '--contrast-100': '0 0% 93%',
