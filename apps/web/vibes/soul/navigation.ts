@@ -251,6 +251,16 @@ export const navigation = [
         slug: 'page-blog',
         file: 'docs/page-blog.mdx',
       },
+      {
+        title: 'Blog Post',
+        slug: 'page-blog-post',
+        file: 'docs/page-blog-post.mdx',
+      },
+      {
+        title: 'Not Found',
+        slug: 'page-not-found',
+        file: 'docs/page-not-found.mdx',
+      },
     ],
   },
 ] satisfies Navigation

@@ -19,7 +19,7 @@ export function Checkbox({ id, checked = false, setChecked, label, error, classN
         <RadixCheckbox.Root
           id={id}
           className={clsx(
-            'flex h-6 w-6 items-center justify-center rounded-md border transition-colors duration-150',
+            'flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition-colors duration-150',
             'focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary',
             checked ? 'border-foreground bg-foreground' : 'border-contrast-300 bg-background',
             error != null && error !== '' ? 'border-error' : 'border-contrast-300'
