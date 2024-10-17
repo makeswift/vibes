@@ -18,7 +18,10 @@ export const Breadcrumbs = function Breadcrumbs({ breadcrumbs, className }: Brea
   return (
     <nav
       aria-label="breadcrumb"
-      className={clsx('flex flex-wrap items-center gap-x-2 text-sm @4xl:text-base', className)}
+      className={clsx(
+        'flex w-full flex-wrap items-center gap-x-2 text-sm @4xl:text-base',
+        className
+      )}
     >
       {breadcrumbs.map(({ label, href }, idx) => {
         if (idx < breadcrumbs.length - 1) {
