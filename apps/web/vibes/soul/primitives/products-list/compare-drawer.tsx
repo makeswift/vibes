@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, use } from 'react'
+import { Suspense, use, useEffect, useState } from 'react'
 
 import * as Portal from '@radix-ui/react-portal'
 import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
@@ -21,10 +21,19 @@ function CompareDrawerInner({ products, paramName = 'compare' }: Props) {
     paramName,
     parseAsArrayOf(parseAsString).withOptions({ shallow: false })
   )
+  // This hack is needed to prevent hydration errors.
+  // The Radix Portal is not rendered correctly server side, so we need to prevent it from rendering until the client side hydration is complete (and `useEffect` is run).
+  // The issue is reported here: https://github.com/radix-ui/primitives/issues/1386
+  const [doc, setDoc] = useState<Document | null>(null)
+  useEffect(() => setDoc(window.document), [])
 
   return (
-    resolved.length > 0 && (
-      <Portal.Root className="fixed bottom-0 w-full border-y bg-background @container">
+    resolved.length > 0 &&
+    doc && (
+      <Portal.Root
+        container={doc.body}
+        className="fixed bottom-0 w-full border-y bg-background @container"
+      >
         <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap items-center justify-end gap-5 px-3 py-5 @xl:px-6 @5xl:px-20">
           {resolved.map(product => (
             <ProductChip
