@@ -130,108 +130,135 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
         className
       )}
     >
-      <div ref={emblaRef} className="h-full">
-        <div className="flex h-full">
-          {slides.map(({ title, description, image, cta }, idx) => {
-            return (
-              <div key={idx} className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full">
-                <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pb-5 pt-20 text-background">
-                  <div className="mx-auto max-w-screen-2xl px-3 pb-8 @xl:px-6 @5xl:px-20">
-                    <h1 className="mb-2 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
-                      {title}
-                    </h1>
-                    {description != null && description !== '' && (
-                      <p className="mb-4 max-w-xl">{description}</p>
-                    )}
-                    {cta != null && cta.href !== '' && cta.label !== '' && (
-                      <Button variant="tertiary" className="my-4">
-                        {cta.label}
-                      </Button>
+      {slides.length > 0 ? (
+        <>
+          <div ref={emblaRef} className="h-full">
+            <div className="flex h-full">
+              {slides.map(({ title, description, image, cta }, idx) => {
+                return (
+                  <div
+                    key={idx}
+                    className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full"
+                  >
+                    <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pb-5 pt-20 text-background">
+                      <div className="mx-auto max-w-screen-2xl px-3 pb-8 @xl:px-6 @5xl:px-20">
+                        <h1 className="mb-2 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
+                          {title}
+                        </h1>
+                        {description != null && description !== '' && (
+                          <p className="mb-4 max-w-xl">{description}</p>
+                        )}
+                        {cta != null && cta.href !== '' && cta.label !== '' && (
+                          <Button variant="tertiary" className="my-4">
+                            {cta.label}
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+
+                    {image?.src != null && image.src !== '' && (
+                      <Image
+                        src={image.src}
+                        placeholder={
+                          image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
+                        }
+                        blurDataURL={image.blurDataUrl}
+                        alt={image.alt}
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="block h-20 w-full object-cover"
+                      />
                     )}
                   </div>
-                </div>
+                )
+              })}
+            </div>
+          </div>
 
-                {image?.src != null && image.src !== '' && (
-                  <Image
-                    src={image.src}
-                    placeholder={
-                      image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
-                    }
-                    blurDataURL={image.blurDataUrl}
-                    alt={image.alt}
-                    fill
-                    priority
-                    sizes="100vw"
-                    className="block h-20 w-full object-cover"
-                  />
-                )}
-              </div>
-            )
-          })}
+          {/* Controls */}
+          <div className="absolute bottom-6 left-1/2 flex w-full max-w-screen-2xl -translate-x-1/2 flex-wrap items-center px-3 text-background @xl:px-6 @5xl:px-20">
+            {/* Progress Buttons */}
+            {scrollSnaps.map((_: number, index: number) => {
+              return (
+                <button
+                  aria-label={`View image number ${index + 1}`}
+                  key={index}
+                  className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
+                  onClick={() => {
+                    onProgressButtonClick(index)
+                    resetAutoplay()
+                  }}
+                >
+                  <div className="relative overflow-hidden">
+                    {/* White Bar - Current Index Indicator / Progress Bar */}
+                    <div
+                      key={`progress-${playCount}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
+                      className={clsx(
+                        'absolute h-0.5 bg-background',
+                        'opacity-0 fill-mode-forwards',
+                        isPlaying ? 'running' : 'paused',
+                        index === selectedIndex
+                          ? 'opacity-100 ease-linear animate-in slide-in-from-left'
+                          : 'ease-out animate-out fade-out'
+                      )}
+                      style={{
+                        animationDuration: index === selectedIndex ? `${interval}ms` : '200ms',
+                        width: `${175 / slides.length}px`,
+                      }}
+                    />
+                    {/* Grey Bar BG */}
+                    <div
+                      className="h-0.5 bg-background opacity-30"
+                      style={{ width: `${175 / slides.length}px` }}
+                    />
+                  </div>
+                </button>
+              )
+            })}
+
+            {/* Carousel Count - "01/03" */}
+            <span className="ml-auto mr-2 mt-px font-mono text-xs">
+              {selectedIndex + 1 < 10 ? `0${selectedIndex + 1}` : selectedIndex + 1}/
+              {slides.length < 10 ? `0${slides.length}` : slides.length}
+            </span>
+
+            {/* Stop / Start Button */}
+            <button
+              className="flex h-7 w-7 items-center justify-center rounded-lg border border-contrast-300/50 ring-primary transition-opacity duration-300 hover:border-contrast-300/80 focus-visible:outline-0 focus-visible:ring-2"
+              onClick={toggleAutoplay}
+              type="button"
+              aria-label={isPlaying ? 'Pause' : 'Play'}
+            >
+              {isPlaying ? (
+                <Pause strokeWidth={1.5} className="pointer-events-none w-3.5" />
+              ) : (
+                <Play strokeWidth={1.5} className="pointer-events-none ml-0.5 w-3.5" />
+              )}
+            </button>
+          </div>
+        </>
+      ) : (
+        <SlideshowSkeleton />
+      )}
+    </section>
+  )
+}
+
+export const SlideshowSkeleton = function SlideshowSkeleton() {
+  return (
+    <>
+      <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 pb-5 pt-20 text-background">
+        <div className="mx-auto max-w-screen-2xl px-3 pb-8 @xl:px-6 @5xl:px-20">
+          <div className="mb-2 h-12 w-40 animate-pulse rounded-lg bg-contrast-100 @2xl:h-24 @2xl:w-72" />
         </div>
       </div>
-
-      {/* Controls */}
-      <div className="absolute bottom-6 left-1/2 flex w-full max-w-screen-2xl -translate-x-1/2 flex-wrap items-center px-3 text-background @xl:px-6 @5xl:px-20">
-        {/* Progress Buttons */}
-        {scrollSnaps.map((_: number, index: number) => {
-          return (
-            <button
-              aria-label={`View image number ${index + 1}`}
-              key={index}
-              className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
-              onClick={() => {
-                onProgressButtonClick(index)
-                resetAutoplay()
-              }}
-            >
-              <div className="relative overflow-hidden">
-                {/* White Bar - Current Index Indicator / Progress Bar */}
-                <div
-                  key={`progress-${playCount}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
-                  className={clsx(
-                    'absolute h-0.5 bg-background',
-                    'opacity-0 fill-mode-forwards',
-                    isPlaying ? 'running' : 'paused',
-                    index === selectedIndex
-                      ? 'opacity-100 ease-linear animate-in slide-in-from-left'
-                      : 'ease-out animate-out fade-out'
-                  )}
-                  style={{
-                    animationDuration: index === selectedIndex ? `${interval}ms` : '200ms',
-                    width: `${175 / slides.length}px`,
-                  }}
-                />
-                {/* Grey Bar BG */}
-                <div
-                  className="h-0.5 bg-background opacity-30"
-                  style={{ width: `${175 / slides.length}px` }}
-                />
-              </div>
-            </button>
-          )
-        })}
-
-        {/* Carousel Count - "01/03" */}
-        <span className="ml-auto mr-2 mt-px font-mono text-xs">
-          {selectedIndex + 1 < 10 ? `0${selectedIndex + 1}` : selectedIndex + 1}/
-          {slides.length < 10 ? `0${slides.length}` : slides.length}
-        </span>
-
-        {/* Stop / Start Button */}
-        <button
-          className="flex h-7 w-7 items-center justify-center rounded-lg border border-contrast-300/50 ring-primary transition-opacity duration-300 hover:border-contrast-300/80 focus-visible:outline-0 focus-visible:ring-2"
-          onClick={toggleAutoplay}
-          type="button"
-          aria-label={isPlaying ? 'Pause' : 'Play'}
-        >
-          {isPlaying ? (
-            <Pause strokeWidth={1.5} className="pointer-events-none w-3.5" />
-          ) : (
-            <Play strokeWidth={1.5} className="pointer-events-none ml-0.5 w-3.5" />
-          )}
-        </button>
+      <div className="absolute inset-0 animate-pulse bg-contrast-500" />
+      <div className="absolute bottom-6 left-1/2 flex h-7 w-full max-w-screen-2xl -translate-x-1/2 flex-wrap items-center px-3 @xl:px-6 @5xl:px-20">
+        <div className="mx-1.5 my-2 h-0.5 w-48 animate-pulse rounded-lg bg-contrast-100" />
+        <div className="ml-auto mr-2 h-4 w-7 animate-pulse rounded-md bg-contrast-100" />
+        <span className="h-7 w-7 animate-pulse rounded-lg bg-contrast-100 font-mono text-xs" />
       </div>
-    </section>
+    </>
   )
 }

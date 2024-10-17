@@ -58,7 +58,7 @@ export const FeaturedImage = function FeaturedImage({
               className="object-cover"
             />
           ) : (
-            <div className="h-full w-full animate-pulse bg-primary-shadow" />
+            <div className="h-full w-full animate-pulse bg-contrast-500" />
           )}
         </div>
         <div
