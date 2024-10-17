@@ -51,39 +51,6 @@ The `products` property accepts either `Product[]` or `Promise<Product[]>`. By p
   }}
 />
 
-### Internationalization
-
-Integrating internationalization into your Vibes components starts at the application level. You'll need a dictionary of strings that correspond to the properties of the `ProductsListSection` component. For example, the `title` property of the `ProductsListSection` component would have a corresponding key-value pair in the dictionary like so:
-
-<CodeBlock lang="json">
-  {`
-{
-  "ProductsListSection": {
-    "title": "Hello world!",
-    //...
-  }
-}`}
-</CodeBlock>
-
-To setup internationalization, we recommend using a package like [next-intl](https://next-intl-docs.vercel.app/). After it's configured, you can retrieve translated strings via the `useTranslations` hook. You can then pass the translated string into each component property appropriately.
-
-<CodeBlock lang="tsx">
-  {`import { useTranslations } from 'next-intl';
-import { ProductsListSection } from '@/vibes/soul/sections/products-list-section;
- 
-export default function ProductListPage() {
-  const t = useTranslations('ProductsListSection');
-  return (
-        <ProductListSection
-            title={t('title')}
-            // ...
-        />
-  );
-}`}
-</CodeBlock>
-
-For full setup instructions, refer to the [next-intl getting started docs.](https://next-intl-docs.vercel.app/docs/getting-started)
-
 ## API Reference
 
 ### `ProductsListSection`
