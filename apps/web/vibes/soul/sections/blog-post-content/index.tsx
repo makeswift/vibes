@@ -61,7 +61,7 @@ export const BlogPostContent = function BlogPostContent({
 
         <article
           dangerouslySetInnerHTML={{ __html: content }}
-          className="prose mx-auto w-full max-w-4xl space-y-4 pb-20 pt-10 @4xl:py-20"
+          className="prose mx-auto w-full max-w-4xl space-y-4 pb-20 pt-10 @4xl:py-20 [&_h2]:font-heading [&_h3]:font-heading [&_h4]:font-heading [&_h5]:font-heading [&_h6]:font-heading"
         />
       </div>
     </section>
