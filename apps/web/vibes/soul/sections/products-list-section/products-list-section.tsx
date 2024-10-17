@@ -1,7 +1,13 @@
 import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
 import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer'
 import { ProductsList } from '@/vibes/soul/primitives/products-list'
-import { Breadcrumb, Filter, Pages, Product, Option as SortOption } from '@/vibes/soul/types'
+import {
+  Breadcrumb,
+  Filter,
+  Pages,
+  ProductCardProduct,
+  Option as SortOption,
+} from '@/vibes/soul/types'
 
 import { Filters } from './filters'
 import { Pagination } from './pagination'
@@ -11,10 +17,10 @@ interface Props {
   breadcrumbs?: Breadcrumb[]
   title?: Promise<string> | string
   totalCount: Promise<number> | number
-  products: Promise<Product[]> | Product[]
+  products: Promise<ProductCardProduct[]> | ProductCardProduct[]
   filters: Promise<Filter[]> | Filter[]
   sortOptions: Promise<SortOption[]> | SortOption[]
-  compareProducts?: Promise<Product[]> | Product[]
+  compareProducts?: Promise<ProductCardProduct[]> | ProductCardProduct[]
   pagination?: Promise<Pages> | Pages
   compareLabel?: string
   filterLabel?: string
