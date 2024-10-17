@@ -61,7 +61,7 @@ export const BlogPostContent = function BlogPostContent({
           alt={image.alt}
           height={780}
           width={1280}
-          className="mx-auto aspect-[5/3] w-full max-w-screen-2xl rounded-2xl object-cover"
+          className="mx-auto aspect-[5/3] w-full max-w-screen-2xl rounded-2xl bg-contrast-100 object-cover"
         />
 
         <article
