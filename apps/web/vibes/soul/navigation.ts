@@ -263,4 +263,14 @@ export const navigation = [
       },
     ],
   },
+  {
+    title: 'API Reference',
+    pages: [
+      {
+        title: 'Types',
+        slug: 'types',
+        file: 'docs/types.mdx',
+      },
+    ],
+  },
 ] satisfies Navigation
