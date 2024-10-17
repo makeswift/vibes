@@ -46,37 +46,34 @@ export function ProductsListSection({
   compareParamName,
 }: Props) {
   return (
-    <>
-      <div className="m-auto w-[1280px] space-y-5 @container">
-        {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-        <div className="flex flex-wrap items-center justify-between gap-4 bg-background text-foreground">
-          <h1 className="text-xl font-medium leading-none @2xl:text-5xl ">
-            {title} <span className="text-contrast-200">{totalCount}</span>
-          </h1>
-          <div className="flex gap-2">
-            {/* Hide on mobile here */}
-            <div>
-              <MobileFilters filters={filters} label={filterLabel} />
-            </div>
-            <Sorting options={sortOptions} label={sortLabel} paramName={sortParamName} />
-          </div>
-        </div>
-        <div className="flex gap-20">
-          <div className="w-[300px]">
-            <FiltersPanel filters={filters} />
-          </div>
-          <div className="flex-1">
-            <ProductsList
-              products={products}
-              showCompare
-              compareLabel={compareLabel}
-              compareParamName={compareParamName}
-              compareProducts={compareProducts}
-            />
-            {paginationInfo && <Pagination info={paginationInfo} />}
+    <div className="mx-auto max-w-7xl @container">
+      {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-8 pt-6 text-foreground">
+        <h1 className="text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl ">
+          {title} <span className="text-contrast-300">{totalCount}</span>
+        </h1>
+        <div className="flex gap-2">
+          <Sorting options={sortOptions} label={sortLabel} paramName={sortParamName} />
+          <div className="block @3xl:hidden">
+            <MobileFilters filters={filters} label={filterLabel} />
           </div>
         </div>
       </div>
-    </>
+      <div className="flex gap-8 @4xl:gap-10">
+        <div className="hidden w-52 @3xl:block @4xl:w-60">
+          <FiltersPanel filters={filters} />
+        </div>
+        <div className="flex-1">
+          <ProductsList
+            products={products}
+            showCompare
+            compareLabel={compareLabel}
+            compareParamName={compareParamName}
+            compareProducts={compareProducts}
+          />
+          {paginationInfo && <Pagination info={paginationInfo} />}
+        </div>
+      </div>
+    </div>
   )
 }

@@ -50,7 +50,7 @@ export function FiltersPanelInner({ className, filters }: Props) {
   )
 
   return (
-    <div className={clsx('w-full space-y-10', className)}>
+    <div className={clsx('w-full space-y-5', className)}>
       <Accordions type="multiple" defaultValue={resolved.map((_, i) => i.toString())}>
         {resolved.map((filter, index) => {
           switch (filter.type) {
@@ -90,16 +90,16 @@ export function FiltersPanelInner({ className, filters }: Props) {
           }
         })}
       </Accordions>
-      <div className="flex justify-center">
-        <Button
-          variant="secondary"
-          onClick={() => {
-            setParams(null).catch(() => console.error('Failed to reset filters'))
-          }}
-        >
-          Reset
-        </Button>
-      </div>
+
+      <Button
+        variant="secondary"
+        size="small"
+        onClick={() => {
+          setParams(null).catch(() => console.error('Failed to reset filters'))
+        }}
+      >
+        Reset filters
+      </Button>
     </div>
   )
 }

@@ -31,49 +31,50 @@ export function ProductCard({
   compareParamName,
 }: Props) {
   return (
-    <div>
-      <div className="relative">
-        <Link
-          id={id}
-          href={href}
-          className={clsx(
-            'group flex cursor-pointer flex-col gap-2 rounded-xl text-foreground ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2',
-            className
+    <div className={clsx('@container', className)}>
+      <Link
+        id={id}
+        href={href}
+        className="group flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl"
+      >
+        <div className="relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100">
+          {image?.src != null ? (
+            <Image
+              src={image.src}
+              fill
+              sizes="(max-width: 768px) 70vw, 33vw"
+              alt="Category card image"
+              className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+            />
+          ) : (
+            <div className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">
+              {title}
+            </div>
           )}
-        >
-          <div className="relative aspect-[5/6] overflow-hidden rounded-xl bg-primary-highlight bg-opacity-10">
-            {image?.src != null ? (
-              <Image
-                src={image.src}
-                fill
-                sizes="(max-width: 768px) 70vw, 33vw"
-                alt="Category card image"
-                className="w-full scale-105 select-none bg-contrast-100 object-cover transition-transform duration-700 ease-out group-hover:scale-100"
-              />
-            ) : (
-              <h3 className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-primary-shadow opacity-10 transition-transform duration-500 ease-out group-hover:scale-105">
-                {title}
-              </h3>
+          {badge != null && badge !== '' && (
+            <Badge variant="square" className="absolute left-3 top-3">
+              {badge}
+            </Badge>
+          )}
+        </div>
+      </Link>
+      <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @xs:flex-row">
+        <div className="flex-1">
+          <Link tabIndex={-1} href={href} className="group text-base">
+            <span className="block font-semibold">{title}</span>
+
+            {subtitle != null && subtitle !== '' && (
+              <span className="block text-sm font-normal text-contrast-400">{subtitle}</span>
             )}
-            {badge != null && badge !== '' && (
-              <Badge className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">{badge}</Badge>
-            )}
-          </div>
-        </Link>
-        {showCompare && (
-          <Compare productId={id} label={compareLabel} paramName={compareParamName} />
-        )}
-      </div>
-      <div className="flex flex-col gap-1">
-        <h3 className="flex flex-col flex-wrap justify-between gap-1 text-sm font-semibold @sm:pt-3 @4xl:flex-row">
-          <Link href={href} className="line-clamp-2">
-            {title}
+            {price != null && <Price price={price} />}
           </Link>
-          {subtitle != null && subtitle !== '' && (
-            <span className="font-normal text-contrast-400">{subtitle}</span>
-          )}
-        </h3>
-        {price != null && <Price price={price} />}
+        </div>
+
+        {showCompare && (
+          <div className="mt-0.5 shrink-0">
+            <Compare productId={id} label={compareLabel} paramName={compareParamName} />
+          </div>
+        )}
       </div>
     </div>
   )

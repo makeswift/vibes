@@ -25,7 +25,7 @@ function CompareDrawerInner({ products, paramName = 'compare' }: Props) {
   return (
     resolved.length > 0 && (
       <Portal.Root className="fixed bottom-0 w-full border-y bg-background @container">
-        <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap items-end justify-end gap-5 px-3 py-5 @xl:px-6 @5xl:px-20">
+        <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap items-center justify-end gap-5 px-3 py-5 @xl:px-6 @5xl:px-20">
           {resolved.map(product => (
             <ProductChip
               key={product.id}

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx'
 
 export interface Props {
+  showRating?: boolean
   rating: number
   className?: string
 }
@@ -47,11 +48,10 @@ const Star = ({ type }: StarType) => {
 
   return (
     <svg
-      width="20"
-      height="20"
+      width={20}
+      height={20}
       viewBox="0 0 20 20"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       className="inline-block text-foreground"
     >
       {paths[type]}
@@ -59,7 +59,7 @@ const Star = ({ type }: StarType) => {
   )
 }
 
-export const Rating = function Rating({ rating, className }: Readonly<Props>) {
+export const Rating = function Rating({ showRating = true, rating, className }: Readonly<Props>) {
   const adjustedRating = Math.min(rating, 5)
 
   const stars: StarType['type'][] = Array.from({ length: 5 }, (_, index) => {
@@ -69,13 +69,16 @@ export const Rating = function Rating({ rating, className }: Readonly<Props>) {
   })
 
   return (
-    <div className={clsx('flex', className)}>
+    <div className={clsx('flex items-center', className)}>
       {stars.map((type, index) => (
         <Star key={index} type={type} />
       ))}
-      <span className="ml-1 flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full border border-contrast-100 px-1 text-xs font-medium text-contrast-400">
-        {adjustedRating % 1 !== 0 ? adjustedRating.toFixed(1) : adjustedRating}
-      </span>
+
+      {showRating && (
+        <span className="ml-1.5 flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-contrast-100 px-1 text-xs font-medium text-contrast-400">
+          {adjustedRating % 1 !== 0 ? adjustedRating.toFixed(1) : adjustedRating}
+        </span>
+      )}
     </div>
   )
 }
