@@ -46,7 +46,7 @@ export function ProductsList({
   return (
     <>
       <div className={clsx('w-full @container', className)}>
-        <div className="mx-auto grid grid-cols-1 gap-x-5 gap-y-10 @sm:grid-cols-2 @2xl:grid-cols-3">
+        <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-8 @sm:grid-cols-2 @xl:gap-x-5 @xl:gap-y-10 @2xl:grid-cols-3">
           <Suspense
             fallback={Array.from({ length: 20 }).map((_, index) => (
               <ProductCardSkeleton key={index} />

@@ -16,8 +16,10 @@ export function MobileFilters({ filters, label = 'Filters' }: Props) {
     <SidePanel.Root>
       <SidePanel.Trigger asChild>
         <Button variant="secondary" size="medium">
-          <span className="hidden @xl:block">{label}</span>
-          <Sliders size={20} />
+          {label}
+          <span className="hidden @xl:block">
+            <Sliders size={20} />
+          </span>
         </Button>
       </SidePanel.Trigger>
       <SidePanel.Content title={label}>

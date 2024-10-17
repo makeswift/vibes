@@ -48,7 +48,7 @@ export function ProductsListSection({
   return (
     <div className="mx-auto max-w-7xl @container">
       {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-      <div className="flex flex-wrap items-center justify-between gap-4 py-5 text-foreground">
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-8 pt-6 text-foreground">
         <h1 className="text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl ">
           {title} <span className="text-contrast-300">{totalCount}</span>
         </h1>
