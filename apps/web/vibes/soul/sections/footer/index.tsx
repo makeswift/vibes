@@ -199,7 +199,7 @@ export const FooterSkeleton = function FooterSkeleton() {
         </div>
       </div>
       <div className="flex flex-wrap-reverse justify-between gap-y-10 px-3 py-10 pb-20 @xl:px-6 @5xl:px-20">
-        <span className="block h-6 w-80 animate-pulse rounded-lg bg-contrast-100 text-gray-400" />
+        <span className="block h-6 w-80 animate-pulse rounded-lg bg-contrast-100" />
         <div className="ml-auto flex gap-2">
           {Array.from({ length: 6 }).map((_, index) => (
             <div key={index} className="h-6 w-9 animate-pulse rounded bg-contrast-100" />
