@@ -14,7 +14,7 @@ export type Component = {
   >
 }
 
-export type Components = NonEmptyArray<Component>
+export type Components = Array<Component>
 
 export type CSSVars = {
   '--primary': string
@@ -72,7 +72,7 @@ export type Brand = {
   cssVars: CSSVars
 }
 
-export type Brands = NonEmptyArray<Brand>
+export type Brands = Array<Brand>
 
 export type Page = {
   title: string
@@ -111,14 +111,18 @@ export const pageMetaSchema = (vibe: Vibe) => {
     features: z.array(z.string()).optional(),
     preview: z
       .union([
-        z.object(
-          Object.fromEntries(
-            vibe.brands.map(brand => [
-              brand.name,
-              z.enum([component.name, ...rest.map(entry => entry.name)]),
-            ])
+        z
+          .object(
+            Object.fromEntries(
+              vibe.brands.length > 0
+                ? vibe.brands.map(brand => [
+                    brand.name,
+                    z.enum([component.name, ...rest.map(entry => entry.name)]),
+                  ])
+                : []
+            )
           )
-        ),
+          .optional(),
         z.string(),
       ])
       .optional(),
