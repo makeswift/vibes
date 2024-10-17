@@ -59,8 +59,8 @@ export function ProductsListSection({
           </div>
         </div>
       </div>
-      <div className="flex gap-10 @3xl:gap-12 @4xl:gap-14">
-        <div className="hidden w-48 @3xl:block @4xl:w-56">
+      <div className="flex gap-8 @4xl:gap-10">
+        <div className="hidden w-52 @3xl:block @4xl:w-60">
           <FiltersPanel filters={filters} />
         </div>
         <div className="flex-1">

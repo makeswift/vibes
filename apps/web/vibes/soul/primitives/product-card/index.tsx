@@ -52,13 +52,13 @@ export function ProductCard({
             </div>
           )}
           {badge != null && badge !== '' && (
-            <Badge variant="square" className="absolute left-2.5 top-2.5 @4xl:left-4 @4xl:top-4">
+            <Badge variant="square" className="absolute left-3 top-3">
               {badge}
             </Badge>
           )}
         </div>
       </Link>
-      <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 @xs:mt-3 @xs:flex-row">
+      <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @xs:flex-row">
         <div className="flex-1">
           <Link tabIndex={-1} href={href} className="group text-base">
             <span className="block font-semibold">{title}</span>
