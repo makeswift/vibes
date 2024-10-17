@@ -247,18 +247,15 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
 
 export const SlideshowSkeleton = function SlideshowSkeleton() {
   return (
-    <>
-      <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 pb-5 pt-20 text-background">
-        <div className="mx-auto max-w-screen-2xl px-3 pb-8 @xl:px-6 @5xl:px-20">
-          <div className="mb-2 h-12 w-40 animate-pulse rounded-lg bg-contrast-100 @2xl:h-24 @2xl:w-72" />
-        </div>
+    <div className="absolute bottom-8 left-1/2 z-10 w-full max-w-screen-2xl -translate-x-1/2 px-3 @xl:px-6 @5xl:px-20">
+      {/* Title */}
+      <div className="mb-2 h-12 w-full animate-pulse rounded-lg bg-contrast-100/20 @2xl:h-24 @2xl:max-w-96" />
+      {/* Controls */}
+      <div className="flex h-7 w-full max-w-screen-2xl flex-wrap items-center">
+        <div className="mx-1.5 my-2 h-4 w-48 animate-pulse rounded-lg bg-contrast-100/20" />
+        <div className="ml-auto mr-2 h-4 w-10 animate-pulse rounded-lg bg-contrast-100/20" />
+        <span className="h-4 w-10 animate-pulse rounded-lg bg-contrast-100/20" />
       </div>
-      <div className="absolute inset-0 animate-pulse bg-contrast-500" />
-      <div className="absolute bottom-6 left-1/2 flex h-7 w-full max-w-screen-2xl -translate-x-1/2 flex-wrap items-center px-3 @xl:px-6 @5xl:px-20">
-        <div className="mx-1.5 my-2 h-0.5 w-48 animate-pulse rounded-lg bg-contrast-100" />
-        <div className="ml-auto mr-2 h-4 w-7 animate-pulse rounded-md bg-contrast-100" />
-        <span className="h-7 w-7 animate-pulse rounded-lg bg-contrast-100 font-mono text-xs" />
-      </div>
-    </>
+    </div>
   )
 }
