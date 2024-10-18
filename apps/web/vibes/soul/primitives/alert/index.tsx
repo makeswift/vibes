@@ -2,46 +2,51 @@ import { clsx } from 'clsx'
 import { AlertTriangle, Check, X } from 'lucide-react'
 
 interface Props {
-  variant: 'error' | 'success' | 'warning'
+  variant: 'success' | 'warning' | 'error'
   message: string
 }
 
 export const Alert = function Alert({ variant, message }: Props) {
   return (
-    <div>
+    <div
+      role="alert"
+      aria-live="assertive"
+      className={clsx(
+        'flex min-w-80 max-w-md items-center rounded-xl px-3 py-2.5',
+        {
+          success: 'bg-success-highlight',
+          warning: 'bg-warning-highlight',
+          error: 'bg-error-highlight',
+        }[variant]
+      )}
+    >
       <div
-        role="alert"
-        aria-live="assertive"
         className={clsx(
-          'relative flex min-w-64 max-w-96 justify-between rounded-xl p-3',
-          variant === 'error' && 'bg-error-highlight bg-opacity-50',
-          variant === 'success' && 'bg-success-highlight',
-          variant === 'warning' && 'bg-warning-highlight'
+          'grid aspect-square h-7 place-content-center rounded-full text-foreground',
+          {
+            success: 'bg-success/50',
+            warning: 'bg-warning/30',
+            error: 'bg-error/50',
+          }[variant]
         )}
       >
-        <div className="flex items-center gap-2">
-          <div
-            className={clsx(
-              'flex h-5 w-5 items-center justify-center rounded-full text-foreground',
-              variant === 'error' && 'bg-error/50',
-              variant === 'success' && 'bg-success/50',
-              variant === 'warning' && 'bg-warning/50'
-            )}
-          >
-            {variant === 'error' && <X size={12} strokeWidth={1} />}
-            {variant === 'success' && <Check size={12} strokeWidth={1} />}
-            {variant === 'warning' && <AlertTriangle size={12} strokeWidth={1} />}
-          </div>
-          <span className="text-xs leading-tight text-foreground">{message}</span>
-        </div>
-        <button
-          aria-label="Dismiss alert"
-          // onClick={}
-          className="flex items-center justify-center rounded-full text-foreground"
-        >
-          <X size={20} strokeWidth={1} />
-        </button>
+        {variant === 'success' ? (
+          <Check size={16} strokeWidth={1} />
+        ) : variant === 'warning' ? (
+          <AlertTriangle size={16} strokeWidth={1} />
+        ) : variant === 'error' ? (
+          <X size={16} strokeWidth={1} />
+        ) : null}
       </div>
+
+      <span className="flex-1 pl-3 pr-5 text-sm leading-normal text-foreground">{message}</span>
+
+      <button
+        aria-label="Dismiss alert"
+        // onClick={}
+      >
+        <X size={20} strokeWidth={1} />
+      </button>
     </div>
   )
 }
