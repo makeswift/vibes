@@ -1,17 +1,90 @@
-import { BlogPostPage } from '@/vibes/soul/pages/blog/post'
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
+import {
+  contactInformation,
+  copyright,
+  footerLinks,
+} from '@/vibes/soul/examples/sections/footer/luxury'
+import { headerLinks, logo } from '@/vibes/soul/examples/sections/header/luxury'
+import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { BlogPostContent } from '@/vibes/soul/sections/blog-post-content'
+import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel'
+import { Footer } from '@/vibes/soul/sections/footer'
+import {
+  Amex,
+  ApplePay,
+  Bitcoin,
+  GooglePay,
+  Mastercard,
+  Paypal,
+  Visa,
+} from '@/vibes/soul/sections/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
+import { Header } from '@/vibes/soul/sections/header'
+import { Subscribe } from '@/vibes/soul/sections/subscribe'
+
+const socialMediaLinks = [
+  {
+    href: '#',
+    icon: <Facebook />,
+  },
+  {
+    href: '#',
+    icon: <X />,
+  },
+  {
+    href: '#',
+    icon: <Instagram />,
+  },
+  {
+    href: '#',
+    icon: <Youtube />,
+  },
+]
+
+const paymentIconsArray: React.ReactNode[] = [
+  <Visa key="Visa" />,
+  <Amex key="Amex" />,
+  <Mastercard key="Mastercard" />,
+  <Paypal key="Paypal" />,
+  <GooglePay key="GooglePay" />,
+  <ApplePay key="ApplePay" />,
+  <Bitcoin key="Bitcoin" />,
+]
+
+const locales = [
+  { id: '1', region: 'US', language: 'EN' },
+  { id: '2', region: 'FR', language: 'FR' },
+  { id: '3', region: 'DE', language: 'DC' },
+  { id: '4', region: 'IT', language: 'IT' },
+]
 
 export default function Preview() {
   return (
-    <BlogPostPage
-      id="1"
-      title="STYLING STORIES:"
-      author="Freda Salvador"
-      date="October 03, 2024"
-      image={{
-        src: 'https://rstr.in/monogram/vibes/lJaCK7qAO8W/k9soESSDDU1',
-        alt: 'A woman wearing a green velvet dress, black boots, and a small black handbag.',
-      }}
-      content={`
+    <>
+      <AnnouncementBar>
+        Get <strong>15% off</strong> and free shipping with discount code{' '}
+        <strong>&quot;welcome&quot;</strong>
+      </AnnouncementBar>
+
+      <Header
+        links={headerLinks}
+        logo={logo}
+        cartHref="#"
+        accountHref="#"
+        locales={locales}
+        activeLocale="EN"
+      />
+
+      <BlogPostContent
+        id="1"
+        title="STYLING STORIES:"
+        author="Freda Salvador"
+        date="October 03, 2024"
+        image={{
+          src: 'https://rstr.in/monogram/vibes/lJaCK7qAO8W/k9soESSDDU1',
+          alt: 'A woman wearing a green velvet dress, black boots, and a small black handbag.',
+        }}
+        content={`
        <h2>OCTOBER CAMPAIGN</h2>
        <p>Fall fashion is very much happening and we are very much loving everything. Boots, loafers, leopard print, sweaters, plaid, denim, gold…to name just a few of our favorite things.</p>
        <p>For our October campaign, we wanted to have fun with the styling. It’s all about taking classic looks and reimagining them with certain pieces. All your staples with a refreshed energy. Mixing textures, playing with sequins, making a statement print a neutral–we’re feeling it all.</p>
@@ -25,11 +98,30 @@ export default function Preview() {
        </blockquote>
        
       `}
-      relatedPostsTitle="Related posts"
-      cta={{
-        href: '#',
-        label: 'View All',
-      }}
-    />
+      />
+
+      <FeaturedBlogPostCarousel
+        title="Related posts"
+        blogPosts={posts}
+        cta={{
+          href: '#',
+          label: 'View All',
+        }}
+      />
+
+      <Subscribe
+        title="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+      />
+
+      <Footer
+        logo={logo}
+        sections={footerLinks}
+        contactInformation={contactInformation}
+        copyright={copyright}
+        paymentIcons={paymentIconsArray}
+        socialMediaLinks={socialMediaLinks}
+      />
+    </>
   )
 }

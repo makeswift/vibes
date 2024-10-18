@@ -109,12 +109,14 @@ export const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
+export const logo = 'SOUL'
+
 export default function Preview() {
   return (
     <div className="relative min-h-48">
       <Header
         links={headerLinks}
-        logo="SOUL"
+        logo={logo}
         cartHref="#"
         accountHref="#"
         locales={locales}
