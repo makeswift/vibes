@@ -6,11 +6,11 @@ import {
   removeLineItemAction,
   updateLineItemQuantityAction,
 } from '@/vibes/soul/pages/cart/actions-electric'
-import { getProducts, getSubtotal } from '@/vibes/soul/pages/cart/products-electric'
+import { getLineItems, getSubtotal } from '@/vibes/soul/pages/cart/line-items-electric'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export default async function Preview() {
-  const lineItems = await getProducts()
+  const lineItems = await getLineItems()
   const subtotal = await getSubtotal()
   return (
     <CartPage

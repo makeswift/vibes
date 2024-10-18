@@ -3,29 +3,34 @@
 import { revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { removeProduct, updateProductQuantity } from '@/vibes/soul/pages/cart/products-electric'
+import { removeLineItem, updateLineItemQuantity } from '@/vibes/soul/pages/cart/line-items-electric'
 
-// eslint-disable-next-line @typescript-eslint/require-await
-export async function removeLineItemAction(id: string): Promise<void> {
-  removeProduct(id)
-  revalidateTag('products-electric')
-}
-
-// eslint-disable-next-line @typescript-eslint/require-await
-export async function updateLineItemQuantityAction({
-  id,
-  quantity,
-}: {
+export async function removeLineItemAction(
+  state: { error: string | null },
   id: string
-  quantity: number
-}): Promise<void> {
-  if (quantity === 0) {
-    removeLineItemAction(id)
-  }
-  updateProductQuantity(id, quantity)
-  revalidateTag('products-electric')
+): Promise<{ error: string | null }> {
+  await removeLineItem(id)
+  revalidateTag('line-items-electric')
+  return { error: null }
 }
 
-export async function redirectToCheckoutAction() {
-  redirect(`/checkout`)
+export async function updateLineItemQuantityAction(
+  state: { error: string | null },
+  {
+    id,
+    quantity,
+  }: {
+    id: string
+    quantity: number
+  }
+): Promise<{ error: string | null }> {
+  if (quantity > 0) {
+    await updateLineItemQuantity(id, quantity)
+  }
+  revalidateTag('line-items-electric')
+  return { error: null }
+}
+
+export async function redirectToCheckoutAction(): Promise<{ error: string | null }> {
+  redirect('/')
 }
