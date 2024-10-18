@@ -44,8 +44,7 @@ export const CheckoutForm = function CheckoutForm({
       <Input type="text" label="First Name" required />
       <Input type="text" label="Last Name" required />
       <Input type="text" label="Company Name" />
-      {/* TODO: Phone number input */}
-      <Input type="text" label="Phone Number" />
+      <Input type="tel" label="Phone Number" />
       <Input type="text" label="Address" required />
       <Input type="text" label="Apartment/Suite/Building" />
       <Input type="text" label="City" required />
