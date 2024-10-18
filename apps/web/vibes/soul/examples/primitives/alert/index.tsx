@@ -4,7 +4,7 @@ import { Alert } from '@/vibes/soul/primitives/alert'
 
 export default function Preview() {
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-4">
+    <div className="flex h-screen flex-col items-center justify-center gap-4 p-8">
       <Alert variant="success" message="This is a success alert" />
       <Alert variant="warning" message="This is a warning alert" />
       <Alert variant="error" message="This is an error alert" />
