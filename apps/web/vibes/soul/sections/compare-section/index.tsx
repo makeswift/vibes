@@ -4,9 +4,15 @@ type Props = {
   className?: string
   title?: string
   products: CompareProduct[]
+  addToCartAction?(id: string): Promise<void>
 }
 
-export function CompareSection({ className, title = 'Compare products', products }: Props) {
+export function CompareSection({
+  className,
+  title = 'Compare products',
+  products,
+  addToCartAction,
+}: Props) {
   return (
     <div className={className}>
       <div className="pb-8 pt-6 text-foreground">
@@ -16,7 +22,11 @@ export function CompareSection({ className, title = 'Compare products', products
       </div>
       <div className="flex w-full gap-8 @container">
         {products.map(product => (
-          <CompareCard className="min-w-[400px] flex-1" product={product} />
+          <CompareCard
+            className="min-w-[400px] flex-1"
+            product={product}
+            addToCartAction={addToCartAction}
+          />
         ))}
       </div>
     </div>
