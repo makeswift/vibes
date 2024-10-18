@@ -88,11 +88,11 @@ export const ProductCardSkeleton = function ProductCardSkeleton({
   className,
 }: ProductCardSkeletonProps) {
   return (
-    <div className={clsx('animate-pulse cursor-pointer rounded-xl', className)}>
+    <div className={clsx('animate-pulse cursor-pointer rounded-xl @container', className)}>
       {/* Image */}
       <div className="relative aspect-[5/6] overflow-hidden rounded-xl bg-contrast-100 @6xl:min-w-80"></div>
-      <div className="flex flex-col gap-2 @sm:gap-2">
-        <h3 className="mt-4 flex flex-col flex-wrap justify-between gap-2 @sm:mt-7 @sm:gap-2 @4xl:flex-row">
+      <div className="flex justify-between gap-2 pt-4 @sm:gap-2 @sm:pt-7">
+        <h3 className="flex flex-col flex-wrap justify-between gap-2 @sm:gap-2 @4xl:flex-row">
           {/* Name */}
           <div className="h-4 w-24 rounded-lg bg-contrast-100" />
           {/* Subtitle */}

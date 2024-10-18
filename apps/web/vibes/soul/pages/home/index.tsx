@@ -1,7 +1,7 @@
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { CardProps } from '@/vibes/soul/primitives/card'
-import { CardCarousel } from '@/vibes/soul/sections/card-carousel'
 import { Feature, FeatureProps } from '@/vibes/soul/sections/feature'
+import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel'
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import {
@@ -85,7 +85,6 @@ export const HomePage = function HomePage({
   logo,
   heroSlides,
   categories,
-  textContrast,
   featuredProducts,
   newArrivals,
   featuredImage,
@@ -112,7 +111,7 @@ export const HomePage = function HomePage({
 
       <Slideshow slides={heroSlides} />
 
-      <CardCarousel cards={categories} textContrast={textContrast} />
+      <FeaturedCardCarousel title="Categories" cards={categories} />
 
       <FeaturedImage
         title={featuredImage.title}

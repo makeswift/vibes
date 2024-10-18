@@ -1,4 +1,4 @@
-import { cards, textContrast } from '@/vibes/soul/examples/sections/card-carousel/warm'
+import { cards, textContrast } from '@/vibes/soul/examples/primitives/card-carousel/warm'
 import { feature } from '@/vibes/soul/examples/sections/feature/warm'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/warm'
 import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/warm'

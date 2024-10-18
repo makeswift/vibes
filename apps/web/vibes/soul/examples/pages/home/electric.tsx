@@ -1,4 +1,4 @@
-import { cards } from '@/vibes/soul/examples/sections/card-carousel/electric'
+import { cards } from '@/vibes/soul/examples/primitives/card-carousel/electric'
 import { feature } from '@/vibes/soul/examples/sections/feature/electric'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/electric'
 import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/electric'
