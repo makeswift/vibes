@@ -4,10 +4,25 @@ import Link from 'next/link'
 import { clsx } from 'clsx'
 
 import { Badge } from '@/vibes/soul/primitives/badge'
-import { ProductCardProduct } from '@/vibes/soul/types'
 
 import { Compare } from './compare'
-import { Price } from './price'
+import { Price, ProductCardPrice } from './price'
+
+export interface Image {
+  alt: string
+  src: string
+}
+
+export interface ProductCardProduct {
+  id: string
+  title: string
+  href: string
+  image?: Image
+  price?: ProductCardPrice
+  subtitle?: string
+  badge?: string
+  rating?: number
+}
 
 export interface Props extends ProductCardProduct {
   className?: string

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
-import { ProductCardProduct } from '../../types'
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 
 function getInitials(name: string): string {
   return name

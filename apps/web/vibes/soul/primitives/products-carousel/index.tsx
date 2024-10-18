@@ -6,7 +6,7 @@ import {
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
 import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
-import { ProductCardProduct } from '@/vibes/soul/types'
+import { Image, ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 
 interface Props {
   products: ProductCardProduct[]

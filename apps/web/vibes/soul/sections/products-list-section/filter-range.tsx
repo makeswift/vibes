@@ -9,8 +9,8 @@ import { RangeInput } from '@/vibes/soul/form/range-input'
 import { Button } from '@/vibes/soul/primitives/button'
 
 interface Props {
-  minParamName?: string
-  maxParamName?: string
+  minParamName: string
+  maxParamName: string
   min?: number
   max?: number
   minLabel?: string
@@ -24,8 +24,8 @@ interface Props {
 export function FilterRange({
   min,
   max,
-  minParamName = 'min',
-  maxParamName = 'max',
+  minParamName,
+  maxParamName,
   minLabel,
   maxLabel,
   minPrepend,

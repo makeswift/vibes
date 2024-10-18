@@ -6,6 +6,7 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/el
 import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import { Feature } from '@/vibes/soul/sections/feature'
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel'
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
@@ -25,7 +26,6 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/so
 import { Header } from '@/vibes/soul/sections/header'
 import { Slideshow } from '@/vibes/soul/sections/slideshow'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
-import { ProductCardProduct } from '@/vibes/soul/types'
 
 const logo = 'SOUL'
 

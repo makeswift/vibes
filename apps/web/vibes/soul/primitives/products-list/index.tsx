@@ -3,7 +3,7 @@ import { Suspense, use } from 'react'
 import { clsx } from 'clsx'
 
 import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
-import { ProductCardProduct } from '@/vibes/soul/types'
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 
 import { CompareDrawer } from './compare-drawer'
 
