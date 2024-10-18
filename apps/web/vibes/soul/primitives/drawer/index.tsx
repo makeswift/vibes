@@ -31,7 +31,7 @@ type DrawerProps = {
   cta: { label: string; href: string }
 }
 
-export function Drawer({ items, onRemoveClick }: DrawerProps) {
+export function Drawer({ items, onRemoveClick, cta }: DrawerProps) {
   // This hack is needed to prevent hydration errors.
   // The Radix Portal is not rendered correctly server side, so we need to prevent it from rendering until the client side hydration is complete (and `useEffect` is run).
   // The issue is reported here: https://github.com/radix-ui/primitives/issues/1386
@@ -80,11 +80,11 @@ export function Drawer({ items, onRemoveClick }: DrawerProps) {
           </div>
 
           <Button size="medium" variant="primary" className="hidden @md:block">
-            Compare <ArrowRight size={20} strokeWidth={1} absoluteStrokeWidth />
+            {cta.label} <ArrowRight size={20} strokeWidth={1} absoluteStrokeWidth />
           </Button>
 
           <Button size="small" variant="primary" className="w-full @md:hidden">
-            Compare <ArrowRight size={16} strokeWidth={1} absoluteStrokeWidth />
+            {cta.label} <ArrowRight size={16} strokeWidth={1} absoluteStrokeWidth />
           </Button>
         </div>
       </Portal.Root>
