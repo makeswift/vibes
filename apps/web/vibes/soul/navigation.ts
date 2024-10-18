@@ -95,8 +95,8 @@ export const navigation = [
         component: 'product-card',
       },
       {
-        title: 'Products Carousel',
-        slug: 'products-carousel',
+        title: 'Product Carousel',
+        slug: 'product-carousel',
         file: 'docs/products-carousel.mdx',
         component: 'products-carousel',
       },
@@ -107,8 +107,8 @@ export const navigation = [
         component: 'product-description',
       },
       {
-        title: 'Products List',
-        slug: 'products-list',
+        title: 'Product List',
+        slug: 'product-list',
         file: 'docs/products-list.mdx',
         component: 'products-list',
       },
@@ -166,7 +166,7 @@ export const navigation = [
         component: 'featured-products-carousel',
       },
       {
-        title: 'Featured Products List',
+        title: 'Featured Product List',
         slug: 'featured-products-list',
         file: 'docs/featured-products-list.mdx',
         component: 'featured-products-list',
@@ -197,8 +197,8 @@ export const navigation = [
         component: 'log-in',
       },
       {
-        title: 'Products List',
-        slug: 'products-list-section',
+        title: 'Product List',
+        slug: 'product-list-section',
         file: 'docs/products-list-section.mdx',
         component: 'products-list-section',
       },

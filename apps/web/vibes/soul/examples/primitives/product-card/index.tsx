@@ -2,7 +2,7 @@ import { ProductCard } from '@/vibes/soul/primitives/product-card'
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-background p-5 @container">
+    <div className="flex h-screen items-center justify-center bg-background p-8">
       <ProductCard
         id="1"
         href="#"
@@ -15,6 +15,7 @@ export default function Preview() {
         price="123.99"
         badge="New"
         showCompare
+        className="w-80"
       />
     </div>
   )
