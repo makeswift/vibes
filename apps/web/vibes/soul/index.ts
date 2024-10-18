@@ -1,9 +1,10 @@
 import { Vibe } from '@/vibes/schema'
 
 import { brands } from './brands'
-import { components } from './components'
 import { examples } from './examples'
 import { navigation } from './navigation'
+import { primitives } from './primitives'
+import { sections } from './sections'
 
 export default {
   name: 'Soul',
@@ -16,6 +17,6 @@ export default {
     url: 'https://monogram.io',
   },
   navigation,
-  components: [...components, ...examples],
+  components: [...primitives, ...sections, ...examples],
   brands,
 } satisfies Vibe

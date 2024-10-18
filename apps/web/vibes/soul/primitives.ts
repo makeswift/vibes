@@ -1,6 +1,6 @@
 import { Components } from '@/vibes/schema'
 
-export const components = [
+export const primitives = [
   {
     name: 'accordions',
     dependencies: ['clsx', '@radix-ui/react-accordion'],
@@ -38,12 +38,6 @@ export const components = [
     files: ['primitives/blog-post-card/index.tsx'],
   },
   {
-    name: 'blog-post-list',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/blog-post-list/index.tsx'],
-  },
-  {
     name: 'breadcrumbs',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
@@ -60,12 +54,6 @@ export const components = [
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
     files: ['primitives/card/index.tsx'],
-  },
-  {
-    name: 'cart',
-    dependencies: ['clsx'],
-    registryDependencies: ['button', 'counter'],
-    files: ['sections/cart/index.tsx'],
   },
   {
     name: 'card-carousel',
@@ -86,40 +74,10 @@ export const components = [
     files: ['primitives/checkbox/index.tsx'],
   },
   {
-    name: 'checkout',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['sections/checkout/index.tsx'],
-  },
-  {
-    name: 'countdown',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['sections/countdown/index.tsx'],
-  },
-  {
     name: 'counter',
     dependencies: ['lucide-react'],
     registryDependencies: [],
     files: ['primitives/counter/index.tsx'],
-  },
-  {
-    name: 'compare-section',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['section/compare-section/index.tsx'],
-  },
-  {
-    name: 'create-account',
-    dependencies: [],
-    registryDependencies: ['input', 'dropdown', 'button'],
-    files: ['sections/create-account/index.tsx'],
-  },
-  {
-    name: 'discount',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['sections/discount/index.tsx'],
   },
   {
     name: 'dropdown',
@@ -144,64 +102,16 @@ export const components = [
     files: ['sections/feature/index.tsx', 'primitives/icon/index.tsx'],
   },
   {
-    name: 'featured-blog-post-list',
-    dependencies: [],
-    registryDependencies: ['button', 'blog-post-card'],
-    files: ['sections/featured-blog-post-list/index.tsx'],
-  },
-  {
-    name: 'featured-image',
-    dependencies: [],
-    registryDependencies: ['button'],
-    files: ['sections/featured-image/index.tsx'],
-  },
-  {
-    name: 'featured-products-carousel',
-    dependencies: [],
-    registryDependencies: ['products-carousel'],
-    files: ['sections/featured-products-carousel/index.tsx'],
-  },
-  {
-    name: 'featured-products-list',
-    dependencies: [],
-    registryDependencies: ['button', 'product-card'],
-    files: ['sections/featured-products-list/index.tsx'],
-  },
-  {
     name: 'featured-video',
     dependencies: ['clsx'],
     registryDependencies: ['button'],
     files: ['sections/featured-video/index.tsx'],
   },
   {
-    name: 'footer',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/footer/index.tsx'],
-  },
-  {
-    name: 'header',
-    dependencies: ['clsx', 'lucide-react', 'react-headroom'],
-    registryDependencies: [],
-    files: ['sections/header/index.tsx'],
-  },
-  {
-    name: 'icon-block',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['sections/icon-block/index.tsx', 'primitives/icon/index.tsx'],
-  },
-  {
     name: 'input',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
     files: ['primitives/input/index.tsx'],
-  },
-  {
-    name: 'log-in',
-    dependencies: ['clsx'],
-    registryDependencies: ['button', 'input'],
-    files: ['sections/log-in/index.tsx'],
   },
   {
     name: 'pagination',
@@ -226,35 +136,10 @@ export const components = [
     files: ['primitives/products-carousel/index.tsx'],
   },
   {
-    name: 'product-detail',
-    dependencies: ['clsx', 'embla-carousel-react'],
-    registryDependencies: ['button', 'favorite', 'product-card', 'rating'],
-    files: [
-      'sections/product-detail/index.tsx',
-      'sections/product-detail/product-gallery.tsx',
-      'primitives/product-card/price.tsx',
-    ],
-  },
-  {
     name: 'products-list',
     dependencies: [],
     registryDependencies: ['product-card'],
     files: ['primitives/products-list/index.tsx'],
-  },
-  {
-    name: 'products-list-section',
-    dependencies: ['nuqs'],
-    registryDependencies: ['products-list'],
-    files: [
-      'sections/products-list-section/index.tsx',
-      'sections/products-list-section/filter-range.tsx',
-      'sections/products-list-section/filter-rating.tsx',
-      'sections/products-list-section/filter-toggle-group.tsx',
-      'sections/products-list-section/filters-panel.tsx',
-      'sections/products-list-section/mobile-filters.tsx',
-      'sections/products-list-section/pagination.tsx',
-      'sections/products-list-section/sorting.tsx',
-    ],
   },
   {
     name: 'product-description',
@@ -269,34 +154,10 @@ export const components = [
     files: ['primitives/rating/index.tsx'],
   },
   {
-    name: 'reviews',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['sections/reviews/index.tsx'],
-  },
-  {
-    name: 'slide-carousel',
-    dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
-    registryDependencies: [],
-    files: ['sections/slide-carousel/index.tsx'],
-  },
-  {
-    name: 'slideshow',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/slideshow/index.tsx'],
-  },
-  {
     name: 'spinner',
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/spinner/index.tsx'],
-  },
-  {
-    name: 'subscribe',
-    dependencies: ['clsx'],
-    registryDependencies: ['input'],
-    files: ['sections/subscribe/index.tsx'],
   },
   {
     name: 'textarea',
