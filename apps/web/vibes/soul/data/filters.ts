@@ -35,8 +35,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 200,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',
@@ -82,8 +82,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 500,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',
@@ -119,8 +119,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 200,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',

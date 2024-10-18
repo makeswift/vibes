@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import { ArrowRight } from 'lucide-react'
+
 import { Button } from '@/vibes/soul/primitives/button'
 import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import * as SidePanel from '@/vibes/soul/primitives/side-panel'
@@ -16,9 +18,15 @@ export function ComparePanel({ products }: Props) {
   return (
     <SidePanel.Root>
       <SidePanel.Trigger asChild>
-        <Button size="medium" variant="primary">
-          Compare
-        </Button>
+        <>
+          <Button size="medium" variant="primary" className="hidden @md:block">
+            Compare <ArrowRight size={20} strokeWidth={1} absoluteStrokeWidth />
+          </Button>
+
+          <Button size="small" variant="primary" className="w-full @md:hidden">
+            Compare <ArrowRight size={16} strokeWidth={1} absoluteStrokeWidth />
+          </Button>
+        </>
       </SidePanel.Trigger>
       <SidePanel.Content
         title={

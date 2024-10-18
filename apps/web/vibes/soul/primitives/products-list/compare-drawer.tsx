@@ -30,26 +30,25 @@ function CompareDrawerInner({ products, paramName = 'compare' }: Props) {
   return (
     resolved.length > 0 &&
     doc && (
-      <Portal.Root
-        container={doc.body}
-        className="fixed bottom-0 w-full border-y bg-background @container"
-      >
-        <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap items-center justify-end gap-5 px-3 py-5 @xl:px-6 @5xl:px-20">
-          {resolved.map(product => (
-            <ProductChip
-              key={product.id}
-              product={product}
-              aria-label={product.title}
-              onClick={() => {
-                setParam(prev => {
-                  const next = prev?.filter(v => v !== product.id) ?? []
+      <Portal.Root className="sticky bottom-0 z-10 w-full border-t bg-background px-3 py-4 @container @md:py-5 @xl:px-6 @5xl:px-10">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-end gap-x-3 gap-y-4 @md:flex-row">
+          <div className="flex flex-1 flex-wrap justify-end gap-4">
+            {resolved.map(product => (
+              <ProductChip
+                key={product.id}
+                product={product}
+                aria-label={product.title}
+                onClick={() => {
+                  setParam(prev => {
+                    const next = prev?.filter(v => v !== product.id) ?? []
 
-                  return next.length > 0 ? next : null
-                })
-              }}
-            />
-          ))}
-          {/* Compare Button & Panel */}
+                    return next.length > 0 ? next : null
+                  })
+                }}
+              />
+            ))}
+          </div>
+
           <ComparePanel products={resolved} />
         </div>
       </Portal.Root>
