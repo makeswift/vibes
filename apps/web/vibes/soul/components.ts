@@ -210,14 +210,16 @@ export const components = [
     files: ['primitives/pagination/index.tsx'],
   },
   {
+    name: 'price-label',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['primitives/price-label/index.tsx'],
+  },
+  {
     name: 'product-card',
     dependencies: ['clsx'],
-    registryDependencies: ['badge', 'checkbox'],
-    files: [
-      'primitives/product-card/index.tsx',
-      'primitives/product-card/compare.tsx',
-      'primitives/product-card/price.tsx',
-    ],
+    registryDependencies: ['badge', 'checkbox', 'price-label'],
+    files: ['primitives/product-card/index.tsx', 'primitives/product-card/compare.tsx'],
   },
   {
     name: 'products-carousel',
@@ -228,12 +230,8 @@ export const components = [
   {
     name: 'product-detail',
     dependencies: ['clsx', 'embla-carousel-react'],
-    registryDependencies: ['button', 'favorite', 'product-card', 'rating'],
-    files: [
-      'sections/product-detail/index.tsx',
-      'sections/product-detail/product-gallery.tsx',
-      'primitives/product-card/price.tsx',
-    ],
+    registryDependencies: ['button', 'favorite', 'product-card', 'rating', 'price-label'],
+    files: ['sections/product-detail/index.tsx', 'sections/product-detail/product-gallery.tsx'],
   },
   {
     name: 'products-list',
