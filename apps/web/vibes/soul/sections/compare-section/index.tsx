@@ -1,20 +1,24 @@
-import { CompareCard } from '../../primitives/compare-card'
+import { CompareCard, CompareProduct } from '../../primitives/compare-card'
 
-const product = {
-  id: '1',
-  title: 'Philodendron Imperial Red',
-  subtitle: 'Indoor Plant',
-  // badge: 'Indestructible',
-  price: '$44.95',
-  image: {
-    src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
-    alt: 'Philodendron Imperial Red',
-  },
-  href: '#',
+type Props = {
+  className?: string
+  title?: string
+  products: CompareProduct[]
 }
 
-type Props = {}
-
-export function CompareSection({}) {
-  return <CompareCard product={product} />
+export function CompareSection({ className, title = 'Compare products', products }: Props) {
+  return (
+    <div className={className}>
+      <div className="pb-8 pt-6 text-foreground">
+        <h1 className="text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl ">
+          {title} <span className="text-contrast-300">{products.length}</span>
+        </h1>
+      </div>
+      <div className="flex w-full gap-8 @container">
+        {products.map(product => (
+          <CompareCard className="min-w-[400px] flex-1" product={product} />
+        ))}
+      </div>
+    </div>
+  )
 }
