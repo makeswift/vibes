@@ -165,6 +165,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/checkout')),
   },
   {
+    name: 'compare-section-electric-example',
+    dependencies: [],
+    registryDependencies: ['compare-section'],
+    files: ['examples/sections/compare-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/compare-section/electric')),
+  },
+  {
     name: 'countdown-example',
     dependencies: [],
     registryDependencies: ['countdown'],

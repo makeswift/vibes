@@ -98,6 +98,12 @@ export const components = [
     files: ['primitives/counter/index.tsx'],
   },
   {
+    name: 'compare-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['section/compare-section/index.tsx'],
+  },
+  {
     name: 'create-account',
     dependencies: [],
     registryDependencies: ['input', 'dropdown', 'button'],
