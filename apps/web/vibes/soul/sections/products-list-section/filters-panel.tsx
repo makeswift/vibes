@@ -134,5 +134,72 @@ export function FiltersPanelInner({ className, filters }: Props) {
 }
 
 export function FiltersSkeleton() {
-  return <div>Skeleton!</div>
+  return (
+    <div className="absolute top-0 w-full animate-pulse">
+      {/* First Accordion Header */}
+      <div className="mt-5 flex justify-between gap-2">
+        <div className="h-4 w-9 rounded-md bg-contrast-100" />
+        <div className="h-4 w-4 rounded-md bg-contrast-100" />
+      </div>
+      {/* First Accordion Content*/}
+      <div className="mt-4 flex flex-wrap gap-2">
+        <div className="h-10 w-16 rounded-full bg-contrast-100" />
+        <div className="h-10 w-20 rounded-full bg-contrast-100" />
+        <div className="h-10 w-32 rounded-full bg-contrast-100" />
+      </div>
+
+      {/* Second Accordion Header */}
+      <div className="mt-9 flex justify-between gap-2">
+        <div className="h-4 w-9 rounded-md bg-contrast-100" />
+        <div className="h-4 w-4 rounded-md bg-contrast-100" />
+      </div>
+      {/* Second Accordion Content */}
+      <div className="mt-5 flex flex-wrap gap-2">
+        <div className="h-10 w-16 rounded-full bg-contrast-100" />
+        <div className="h-10 w-16 rounded-full bg-contrast-100" />
+        <div className="h-10 w-16 rounded-full bg-contrast-100" />
+      </div>
+
+      {/* Third Accordion Header */}
+      <div className="mt-9 flex justify-between gap-2">
+        <div className="h-4 w-9 rounded-md bg-contrast-100" />
+        <div className="h-4 w-4 rounded-md bg-contrast-100" />
+      </div>
+      {/* Third Accordion Content */}
+      <div className="relative z-30 mt-5 flex items-center gap-2">
+        <div className="h-12 w-[90px] rounded-lg bg-contrast-100" />
+        <div className="h-12 w-[90px] rounded-lg bg-contrast-100" />
+        <div className="h-10 w-10 rounded-full bg-contrast-100" />
+      </div>
+
+      {/* Fourth Accordion Header */}
+      <div className="mt-9 flex justify-between gap-2">
+        <div className="h-4 w-9 rounded-md bg-contrast-100" />
+        <div className="h-4 w-4 rounded-md bg-contrast-100" />
+      </div>
+      {/* Fourth Accordion Content */}
+      <div className="relative z-30 mt-5 flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 rounded-full bg-contrast-100" />
+          <div className="h-5 w-24 rounded-md bg-contrast-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 rounded-full bg-contrast-100" />
+          <div className="h-5 w-24 rounded-md bg-contrast-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 rounded-full bg-contrast-100" />
+          <div className="h-5 w-24 rounded-md bg-contrast-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 rounded-full bg-contrast-100" />
+          <div className="h-5 w-24 rounded-md bg-contrast-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 rounded-full bg-contrast-100" />
+          <div className="h-5 w-24 rounded-md bg-contrast-100" />
+        </div>
+      </div>
+    </div>
+  )
 }
