@@ -364,10 +364,12 @@ export const Header = forwardRef(function Header(
                 {Array.from({ length: 4 }).map((_, i) => (
                   <ProductCard
                     key={`Product ${i + 1}`}
-                    id="productName"
-                    title="Product Name"
-                    href="#"
-                    price="$123.99"
+                    product={{
+                      id: `productName`,
+                      title: 'Product Name',
+                      href: '#',
+                      price: '$123.99',
+                    }}
                   />
                 ))}
               </div>

@@ -1,7 +1,7 @@
 import { SoulBrandName } from '../brands'
-import { ProductCardProduct } from '../primitives/product-card'
+import { CardProduct } from '../primitives/product-card'
 
-export function getProducts(brand: SoulBrandName): ProductCardProduct[] {
+export function getProducts(brand: SoulBrandName): CardProduct[] {
   return products[brand]
 }
 
@@ -228,4 +228,4 @@ const products = {
       href: '#',
     },
   ],
-} as const satisfies Record<SoulBrandName, [ProductCardProduct, ...ProductCardProduct[]]>
+} as const satisfies Record<SoulBrandName, [CardProduct, ...CardProduct[]]>

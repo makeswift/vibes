@@ -1,11 +1,11 @@
-import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
+import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list'
 
 export const featuredProducts: {
   title: string
   description: string
   cta: { label: string; href: string }
-  products: ProductCardProduct[]
+  products: CardProduct[]
 } = {
   title: 'Own Your Journey',
   description:

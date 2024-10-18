@@ -5,13 +5,13 @@ import { Suspense, use, useEffect, useState } from 'react'
 import * as Portal from '@radix-ui/react-portal'
 import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
 
-import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
+import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { ProductChip } from '@/vibes/soul/primitives/product-chip'
 
 import { ComparePanel } from './compare-panel'
 
 interface Props {
-  products: ProductCardProduct[] | Promise<ProductCardProduct[]>
+  products: CardProduct[] | Promise<CardProduct[]>
   paramName?: string
 }
 

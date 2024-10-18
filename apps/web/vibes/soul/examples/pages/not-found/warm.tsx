@@ -1,7 +1,7 @@
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/warm'
 import { headerLinks, logo } from '@/vibes/soul/examples/sections/header/warm'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
-import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
+import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
 import {
@@ -55,7 +55,7 @@ const locales = [
 ]
 
 // Products
-export const products: ProductCardProduct[] = [
+export const products: CardProduct[] = [
   {
     id: '1',
     title: 'Product Name',

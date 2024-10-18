@@ -1,24 +1,25 @@
-import { clsx } from 'clsx'
+import clsx from 'clsx'
 
-export interface ProductCardSalePrice {
-  type: 'sale'
-  previousValue: string
-  currentValue: string
-}
-export interface ProductCardPriceRange {
+export type PriceRange = {
   type: 'range'
   minValue: string
   maxValue: string
 }
 
-export type ProductCardPrice = string | ProductCardPriceRange | ProductCardSalePrice
-
-interface Props {
-  price: ProductCardPrice
-  className?: string
+export type PriceSale = {
+  type: 'sale'
+  previousValue: string
+  currentValue: string
 }
 
-export function Price({ price, className }: Props) {
+export type Price = string | PriceRange | PriceSale
+
+type Props = {
+  className?: string
+  price: Price
+}
+
+export function PriceLabel({ className, price }: Props) {
   if (typeof price === 'string') {
     return <span className={clsx('mt-2 block font-semibold', className)}>{price}</span>
   }
