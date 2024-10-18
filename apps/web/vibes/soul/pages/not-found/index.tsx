@@ -1,4 +1,5 @@
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
 import { Footer, Section } from '@/vibes/soul/sections/footer'
 import {
@@ -14,7 +15,6 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/so
 import { Header, Links } from '@/vibes/soul/sections/header'
 import { NotFound } from '@/vibes/soul/sections/not-found'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
-import { ProductCardProduct } from '@/vibes/soul/types'
 
 interface NotFoundPageProps {
   headerLinks: Links[]

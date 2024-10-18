@@ -1,6 +1,8 @@
-import { Brand, Filter } from '@/vibes/soul/types'
+import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
 
-export function getFilters(brand: Brand): Filter[] {
+import { SoulBrandName } from '../brands'
+
+export function getFilters(brand: SoulBrandName): Filter[] {
   return filters[brand]
 }
 
@@ -9,7 +11,7 @@ const filters = {
     {
       paramName: 'type',
       label: 'Type',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Indoor', value: 'indoor' },
         { label: 'Outdoor', value: 'outdoor' },
@@ -19,7 +21,7 @@ const filters = {
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Small', value: 'sm' },
         { label: 'Medium', value: 'md' },
@@ -46,7 +48,7 @@ const filters = {
     {
       paramName: 'color',
       label: 'Color',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Black', value: 'black' },
         { label: 'Red', value: 'red' },
@@ -56,7 +58,7 @@ const filters = {
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: '5', value: '5' },
         { label: '5.5', value: '5.5' },
@@ -93,7 +95,7 @@ const filters = {
     {
       paramName: 'color',
       label: 'Color',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Red', value: 'red' },
         { label: 'Green', value: 'green' },
@@ -103,7 +105,7 @@ const filters = {
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Small', value: 'sm' },
         { label: 'Medium', value: 'md' },
@@ -126,4 +128,4 @@ const filters = {
       type: 'rating',
     },
   ],
-} as const satisfies Record<Brand, [Filter, ...Filter[]]>
+} as const satisfies Record<SoulBrandName, [Filter, ...Filter[]]>

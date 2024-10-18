@@ -71,7 +71,7 @@ You can view this in the following example where the `lineItems` and `summary.su
 | Prop                           | Type                                                                                                    | Default  |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------- | -------- |
 | `title?`                       | `string`                                                                                                | `"Cart"` |
-| `lineItems`                    | [`CartLineItem[]`](#cartlineitem) \| [`Promise<CartLineItem[]`](#cartlineitem)>                         |          |
+| `lineItems`                    | [`CartLineItem`](#cartlineitem)`[]` &nbsp; \| &nbsp; `Promise<`[`CartLineItem>`](#cartlineitem)`[]>`    |          |
 | `summary`                      | [`CartSummary`](#cartsummary)                                                                           |          |
 | `emptyState`                   | [`CartEmptyState`](#cartemptystate)                                                                     |          |
 | `removeLineItemAction`         | `function` <Tooltip content='(id: string) => Promise<void>' />                                          |          |
@@ -80,38 +80,51 @@ You can view this in the following example where the `lineItems` and `summary.su
 
 ### `CartLineItem`
 
-| Prop       | Type                                                     | Default |
-| ---------- | -------------------------------------------------------- | ------- |
-| `id`       | `string`                                                 |         |
-| `image`    | `Image` <Tooltip content="{src: string, alt: string}" /> |         |
-| `title`    | `string`                                                 |         |
-| `subtitle` | `string`                                                 |         |
-| `quantity` | `number`                                                 |         |
-| `price`    | `string`                                                 |         |
+<CodeBlock lang="ts">
+  {`
+interface CartLineItem {
+  id: string
+  image: Image
+  title: string
+  subtitle: string
+  quantity: number
+  price: string
+}
+`}
+</CodeBlock>
 
 ### `CartSummary`
 
-| Prop               | Type                          | Default             |
-| ------------------ | ----------------------------- | ------------------- |
-| `title?`           | `string`                      | `"Summary"`         |
-| `caption?`         | `string`                      | `"Receipt Summary"` |
-| `subtotalLabel?`   | `string`                      | `"Subtotal"`        |
-| `subtotal`         | `string` \| `Promise<string>` |                     |
-| `shippingLabel?`   | `string`                      | `"Shipping"`        |
-| `shipping?`        | `string`                      |                     |
-| `taxLabel?`        | `string`                      |                     |
-| `tax?`             | `string` \| `Promise<string>` |                     |
-| `grandTotalLabel?` | `string`                      | `"Grand Total"`     |
-| `grandTotal`       | `string` \| `Promise<string>` |                     |
-| `ctaLabel?`        | `string`                      |                     |
+<CodeBlock lang="ts">{`interface CartSummary {
+  title?: string
+  caption?: string
+  subtotalLabel?: string
+  subtotal: string | Promise<string>
+  shippingLabel?: string
+  shipping?: string
+  taxLabel?: string
+  tax?: string | Promise<string>
+  grandTotalLabel?: string
+  grandTotal?: string | Promise<string>
+  ctaLabel?: string
+}
+`}
 
+</CodeBlock>
 ### `CartEmptyState`
 
-| Prop       | Type                                                        | Default |
-| ---------- | ----------------------------------------------------------- | ------- |
-| `title`    | `string`                                                    |         |
-| `subtitle` | `string`                                                    |         |
-| `cta`      | `object` <Tooltip content='{label: string, href: string}'/> |         |
+<CodeBlock lang="ts">
+  {`
+interface CartEmptyState {
+    title: string
+    subtitle: string
+    cta: {
+        label: string
+        href: string
+    }
+  }
+`}
+</CodeBlock>
 
 ## Figma
 

@@ -30,31 +30,41 @@ Display the component.
 
 ## API Reference
 
-### `Product`
+| Prop                | Type                                                     | Default |
+| ------------------- | -------------------------------------------------------- | ------- |
+| `id`                | `string`                                                 |         |
+| `title`             | `string`                                                 |         |
+| `href`              | `string`                                                 |         |
+| `image`             | `Image` <Tooltip content="{src: string, alt: string}" /> |         |
+| `price?`            | `string` \| [`ProductCardPrice`](#productcardprice)      |         |
+| `subtitle?`         | `string`                                                 |         |
+| `badge?`            | `string`                                                 |         |
+| `rating?`           | `number`                                                 |         |
+| `className?`        | `string`                                                 |         |
+| `showCompare?`      | `boolean`                                                | `false` |
+| `compareLabel?`     | `string`                                                 |         |
+| `compareParamName?` | `string`                                                 |         |
 
-| Prop        | Type                                                                               | Default |
-| ----------- | ---------------------------------------------------------------------------------- | ------- |
-| `id`        | `string`                                                                           |         |
-| `title`     | `string`                                                                           |         |
-| `href`      | `string`                                                                           |         |
-| `image`     | `Image` <Tooltip content="{src: string, alt: string}" />                           |         |
-| `price?`    | `string` \| [`ProductPriceRange`](#productpricerange) \| [`SalePrice`](#saleprice) |         |
-| `subtitle?` | `string`                                                                           |         |
-| `badge?`    | `string`                                                                           |         |
-| `rating?`   | `number`                                                                           |         |
+### `ProductCardPrice`
 
-### `ProductPriceRange`
+<CodeBlock lang="ts">{`type ProductCardPrice = string | ProductCardPriceRange | ProductCardSalePrice;`}</CodeBlock>
 
-| Prop       | Type      | Default |
-| ---------- | --------- | ------- |
-| `type`     | `'range'` |         |
-| `minValue` | `string`  |         |
-| `maxValue` | `string`  |         |
+### `ProductCardPriceRange`
 
-### `SalePrice`
+<CodeBlock lang="ts">
+  {`interface ProductCardPriceRange {
+  type: 'range'
+  minValue: string
+  maxValue: string
+}`}
+</CodeBlock>
 
-| Prop            | Type     | Default |
-| --------------- | -------- | ------- |
-| `type`          | `'sale'` |         |
-| `previousValue` | `string` |         |
-| `currentValue`  | `string` |         |
+### `ProductCardSalePrice`
+
+<CodeBlock lang="ts">
+  {`interface ProductCardSalePrice {
+  type: 'sale'
+  previousValue: string
+  currentValue: string
+}`}
+</CodeBlock>

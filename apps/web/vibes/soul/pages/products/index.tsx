@@ -1,11 +1,11 @@
 import { getFilters, getSortOptions } from '@/vibes/soul/data'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs'
+import { Image, ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer, Section } from '@/vibes/soul/sections/footer'
 import { Header, Links } from '@/vibes/soul/sections/header'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-import { Image, ProductCardProduct } from '@/vibes/soul/types'
 
 interface ProductsPageProps {
   headerLinks: Links[]

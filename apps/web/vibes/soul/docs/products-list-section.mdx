@@ -55,42 +55,101 @@ The `products` property accepts either `Product[]` or `Promise<Product[]>`. By p
 
 ### `ProductsListSection`
 
-| Prop               | Type                                                                                                      | Default |
-| ------------------ | --------------------------------------------------------------------------------------------------------- | ------- |
-| `breadcrumbs?`     | [`Breadcrumb[]`](#breadcrumb)                                                                             |         |
-| `title?`           | `Promise<string>` \| `string`                                                                             |         |
-| `totalCount`       | `Promise<number>` \| `number`                                                                             |         |
-| `products`         | [`Promise<Product[]>`](/docs/soul/product-card#product) \| [`Product[]`](/docs/soul/product-card#product) |         |
-| `filters`          | `Promise<Filter[]>` \| `Filter[]`                                                                         |         |
-| `sortOptions`      | [`Promise<SortOption[]>`](#sortoption) \| [`SortOption[]`](#sortoption)                                   |         |
-| `compareProducts?` | [`Promise<Product[]>`](#product) \| `Product[]`                                                           |         |
-| `pagination?`      | [`Promise<Pages>`](#pages) \| [`Pages`](#pages)                                                           |         |
-| `compareLabel?`    | `string`                                                                                                  |         |
-| `filterLabel?`     | `string`                                                                                                  |         |
-| `sortLabel?`       | `string`                                                                                                  |         |
-| `sortParam?`       | `string`                                                                                                  |         |
+| Prop               | Type                                                                                                                        | Default |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `breadcrumbs?`     | [`Breadcrumb`](#breadcrumb)`[]`                                                                                             |         |
+| `title?`           | `string` &nbsp;\|&nbsp; `Promise<string>`                                                                                   |         |
+| `totalCount`       | `number` &nbsp;\|&nbsp; `Promise<number>`                                                                                   |         |
+| `products`         | [`Product`](/docs/soul/product-card#product)`[]` &nbsp;\|&nbsp; `Promise<`[`Product`](/docs/soul/product-card#product)`[]>` |         |
+| `filters`          | [`Filter`](#filter)`[]` &nbsp;\|&nbsp; `Promise<`[`Filter`](#filter)`[]>`                                                   |         |
+| `sortOptions`      | [`Option`](#option)`[]` &nbsp;\|&nbsp; `Promise<`[`Option`](#option)`[]>`                                                   |         |
+| `compareProducts?` | [`Product`](/docs/soul/product-card#product)`[]` &nbsp;\|&nbsp; `Promise<`[`Product`](/docs/soul/product-card#product)`[]>` |         |
+| `pagination?`      | [`Pages`](#pages)`[]` &nbsp;\|&nbsp; `Promise<`[`Pages`](#pages)`[]>`                                                       |         |
+| `compareLabel?`    | `string`                                                                                                                    |         |
+| `filterLabel?`     | `string`                                                                                                                    |         |
+| `sortLabel?`       | `string`                                                                                                                    |         |
+| `sortParam?`       | `string`                                                                                                                    |         |
 
 ### `Breadcrumb`
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `label` | `string` |         |
-| `href`  | `string` |         |
+<CodeBlock lang="ts">
+  {`interface Breadcrumb {
+  label: string
+  href: string
+}
+`}
+</CodeBlock>
 
-### `SortOption`
+### `Option`
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `label` | `string` |         |
-| `value` | `string` |         |
+<CodeBlock lang="ts">
+  {`interface Option {
+  label: string
+  value: string
+}
+`}
+</CodeBlock>
 
 ### `Pages`
 
-| Prop            | Type     | Default |
-| --------------- | -------- | ------- |
-| `name`          | `string` |         |
-| `previousPage?` | `string` |         |
-| `nextPage?`     | `string` |         |
+<CodeBlock lang="ts">
+  {`Pages {
+  name: string
+  previousPage?: string
+  nextPage?: string
+}
+`}
+</CodeBlock>
+
+### `Filter`
+
+<CodeBlock lang="ts">
+  {`
+type Filter = ToggleGroupFilter | RangeFilter | RatingFilter
+`}
+</CodeBlock>
+
+### `ToggleGroupFilter`
+
+<CodeBlock lang="ts">
+  {`interface ToggleGroupFilter {
+  type: 'toggle-group'
+  paramName: string
+  label: string
+  options: { label: string; value: string }[]
+}`}
+</CodeBlock>
+
+### `RatingFilter`
+
+<CodeBlock lang="ts">
+  {`interface RatingFilter {
+  type: 'rating'
+  paramName: string
+  label: string
+}
+`}
+</CodeBlock>
+
+### `RangeFilter`
+
+<CodeBlock lang="ts">
+  {`interface RangeFilter {
+  type: 'range'
+  label: string
+  minParamName: string
+  maxParamName: string
+  min?: number
+  max?: number
+  minLabel?: string
+  maxLabel?: string
+  minPrepend?: React.ReactNode
+  maxPrepend?: React.ReactNode
+  minPlaceholder?: string
+  maxPlaceholder?: string
+}
+`}
+</CodeBlock>
 
 ## Figma
 

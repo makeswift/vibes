@@ -1,5 +1,6 @@
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { CardProps } from '@/vibes/soul/primitives/card'
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import { Feature, FeatureProps } from '@/vibes/soul/sections/feature'
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel'
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
@@ -22,7 +23,6 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/so
 import { Header, Links } from '@/vibes/soul/sections/header'
 import { Slide, Slideshow } from '@/vibes/soul/sections/slideshow'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
-import { ProductCardProduct } from '@/vibes/soul/types'
 
 interface HomePageProps {
   headerLinks: Links[]

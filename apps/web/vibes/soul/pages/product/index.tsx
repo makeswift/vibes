@@ -3,6 +3,7 @@ import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electri
 import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 import { reviews } from '@/vibes/soul/examples/sections/reviews'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Image, ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
 import { Header } from '@/vibes/soul/sections/header'
@@ -11,7 +12,6 @@ import { AccordionItem, ProductDescription } from '@/vibes/soul/sections/product
 import { ProductDetail } from '@/vibes/soul/sections/product-detail'
 import { Reviews } from '@/vibes/soul/sections/reviews'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
-import { Image, ProductCardProduct } from '@/vibes/soul/types'
 
 interface ProductPageProps {
   product: ProductCardProduct

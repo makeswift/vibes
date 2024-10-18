@@ -1,7 +1,7 @@
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
 import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 import { NotFoundPage } from '@/vibes/soul/pages/not-found'
-import { ProductCardProduct } from '@/vibes/soul/types'
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 
 // Products
 export const products: ProductCardProduct[] = [

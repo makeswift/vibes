@@ -3,8 +3,8 @@
 import React from 'react'
 
 import { Button } from '@/vibes/soul/primitives/button'
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import * as SidePanel from '@/vibes/soul/primitives/side-panel'
-import { ProductCardProduct } from '@/vibes/soul/types'
 
 import { CompareCard, CompareCardSkeleton } from './compare-card'
 

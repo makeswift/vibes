@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import NextImage from 'next/image'
 import { useState } from 'react'
 
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
@@ -9,20 +9,20 @@ import { clsx } from 'clsx'
 import { Button } from '@/vibes/soul/primitives/button'
 import { Favorite } from '@/vibes/soul/primitives/favorite'
 import { Label } from '@/vibes/soul/primitives/label'
+import { Image, ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import { Price } from '@/vibes/soul/primitives/product-card/price'
 import { Rating } from '@/vibes/soul/primitives/rating'
 import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery'
-import { Image as IImage, ProductCardProduct } from '@/vibes/soul/types'
 
 interface ProductDetailType extends ProductCardProduct {
   options?: string[]
   swatches?: {
     id: string
     name: string
-    image?: IImage
+    image?: Image
     hex?: string
   }[]
-  images?: IImage[]
+  images?: Image[]
 }
 
 export interface ProductDetailProps {
@@ -92,7 +92,7 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
                       )}
                     >
                       {swatch.image?.src != null && swatch.image.src !== '' ? (
-                        <Image
+                        <NextImage
                           src={swatch.image.src}
                           alt={swatch.image.alt}
                           height={48}

@@ -5,8 +5,8 @@ import { Suspense, use, useEffect, useState } from 'react'
 import * as Portal from '@radix-ui/react-portal'
 import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
 
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import { ProductChip } from '@/vibes/soul/primitives/product-chip'
-import { ProductCardProduct } from '@/vibes/soul/types'
 
 import { ComparePanel } from './compare-panel'
 

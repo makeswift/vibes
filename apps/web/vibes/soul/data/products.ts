@@ -1,6 +1,7 @@
-import { Brand, ProductCardProduct } from '@/vibes/soul/types'
+import { SoulBrandName } from '../brands'
+import { ProductCardProduct } from '../primitives/product-card'
 
-export function getProducts(brand: Brand): ProductCardProduct[] {
+export function getProducts(brand: SoulBrandName): ProductCardProduct[] {
   return products[brand]
 }
 
@@ -227,4 +228,4 @@ const products = {
       href: '#',
     },
   ],
-} as const satisfies Record<Brand, [ProductCardProduct, ...ProductCardProduct[]]>
+} as const satisfies Record<SoulBrandName, [ProductCardProduct, ...ProductCardProduct[]]>

@@ -6,10 +6,14 @@ import { clsx } from 'clsx'
 import { Badge } from '@/vibes/soul/primitives/badge'
 import { Button } from '@/vibes/soul/primitives/button'
 import { Label } from '@/vibes/soul/primitives/label'
+import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
 import { Price } from '@/vibes/soul/primitives/product-card/price'
 import { Rating } from '@/vibes/soul/primitives/rating'
-import { CompareCardProduct } from '@/vibes/soul/types'
 
+export interface CompareCardProduct extends ProductCardProduct {
+  description?: string
+  availability?: string
+}
 interface Image {
   alt: string
   src: string
