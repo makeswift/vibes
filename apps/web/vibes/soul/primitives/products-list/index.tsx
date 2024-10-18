@@ -62,7 +62,7 @@ export function ProductsList({
           </Suspense>
         </div>
       </div>
-      {compareProducts && <CompareDrawer products={compareProducts} paramName={compareParamName} />}
+      {compareProducts && <CompareDrawer items={compareProducts} paramName={compareParamName} />}
     </>
   )
 }
