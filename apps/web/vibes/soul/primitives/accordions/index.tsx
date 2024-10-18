@@ -13,7 +13,7 @@ function Accordion({
     <AccordionsPrimitive.Item {...rest}>
       <AccordionsPrimitive.Header>
         <AccordionsPrimitive.Trigger asChild>
-          <div className="group w-full cursor-pointer items-start gap-8 py-3 last:flex @md:py-5">
+          <div className="group w-full cursor-pointer items-start gap-8 py-3 last:flex @md:py-4">
             <h3 className="flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
               {title}
             </h3>
@@ -22,7 +22,7 @@ function Accordion({
         </AccordionsPrimitive.Trigger>
       </AccordionsPrimitive.Header>
       <AccordionsPrimitive.Content className="w-full overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-        <div className="w-full pb-4 font-body text-xl font-medium leading-tight text-foreground @md:text-2xl">
+        <div className="w-full pb-5 font-body font-medium leading-normal text-foreground">
           {children}
         </div>
       </AccordionsPrimitive.Content>

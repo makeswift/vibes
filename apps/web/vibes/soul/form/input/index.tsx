@@ -30,7 +30,7 @@ export const Input = React.forwardRef<
         )}
       >
         {prepend != null && prepend !== '' && (
-          <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2">
+          <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2">
             {prepend}
           </span>
         )}
@@ -38,8 +38,8 @@ export const Input = React.forwardRef<
           {...rest}
           ref={ref}
           className={clsx(
-            'placeholder-contrast-gray-500 w-full bg-transparent px-6 py-3 text-foreground [appearance:textfield] placeholder:font-normal focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
-            { 'py-3 pl-10 pr-6': prepend }
+            'placeholder-contrast-gray-500 w-full bg-transparent px-6 py-3 text-sm text-foreground [appearance:textfield] placeholder:font-normal focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+            { 'py-2.5 pl-8 pr-4': prepend }
           )}
         />
       </div>

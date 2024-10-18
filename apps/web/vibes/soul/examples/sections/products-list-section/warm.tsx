@@ -15,7 +15,7 @@ export default function Preview({
   const { [compareParamName]: compare, [sortParamName]: sort } = cache.parse(searchParams)
 
   return (
-    <div className="py-6">
+    <div className="p-6">
       <ProductsListSection
         title="Handle Bags"
         breadcrumbs={breadcrumbs}

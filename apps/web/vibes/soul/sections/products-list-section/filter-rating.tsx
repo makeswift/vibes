@@ -19,7 +19,7 @@ export function FilterRating({ paramName }: Props) {
         <Checkbox
           key={rating}
           id={`${paramName}-${rating}`}
-          label={<Rating rating={rating} />}
+          label={<Rating showRating={false} rating={rating} />}
           checked={param?.includes(rating.toString()) ?? false}
           onCheckedChange={value =>
             void setParam(prev => {

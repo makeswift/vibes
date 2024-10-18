@@ -25,7 +25,7 @@ export const Button = function Button({
   return (
     <button
       className={clsx(
-        'relative z-0 select-none justify-center overflow-hidden rounded-full border text-center font-medium leading-normal transition-colors focus-visible:outline-none focus-visible:ring-2',
+        'relative z-0 select-none justify-center overflow-hidden rounded-full border text-center font-medium leading-normal transition-all duration-300 focus-visible:outline-none focus-visible:ring-2',
         {
           primary: 'border-primary bg-primary text-foreground ring-foreground',
           secondary: 'border-foreground bg-foreground text-background ring-primary',
@@ -39,7 +39,7 @@ export const Button = function Button({
           secondary: 'after:bg-background',
           tertiary: 'after:bg-contrast-100',
         }[variant],
-        disabled && 'cursor-not-allowed opacity-50',
+        disabled && 'cursor-not-allowed opacity-30',
         className
       )}
       type={type}

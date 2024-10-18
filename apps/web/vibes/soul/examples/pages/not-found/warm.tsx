@@ -1,10 +1,10 @@
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/luxury'
 import { headerLinks } from '@/vibes/soul/examples/sections/header/luxury'
 import { NotFoundPage } from '@/vibes/soul/pages/not-found'
-import { Product } from '@/vibes/soul/primitives/product-card'
+import { ProductCardProduct } from '@/vibes/soul/types'
 
 // Products
-export const products: Product[] = [
+export const products: ProductCardProduct[] = [
   {
     id: '1',
     title: 'Product Name',

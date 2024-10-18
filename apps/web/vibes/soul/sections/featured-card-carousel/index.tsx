@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
-import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
-import { ProductCardProduct } from '@/vibes/soul/types'
+import { Card, CardCarousel } from '@/vibes/soul/primitives/card-carousel'
 
 interface Link {
   label: string
@@ -12,15 +11,10 @@ interface Props {
   title: string
   description?: string
   cta?: Link
-  products: ProductCardProduct[]
+  cards: Card[]
 }
 
-export const FeaturedProductsCarousel = function FeaturedProductsCarousel({
-  title,
-  description,
-  cta,
-  products,
-}: Props) {
+export function FeaturedCardCarousel({ title, description, cta, cards }: Props) {
   return (
     <section className="@container">
       <div className="py-10 @4xl:py-24">
@@ -40,7 +34,7 @@ export const FeaturedProductsCarousel = function FeaturedProductsCarousel({
             </Link>
           )}
         </div>
-        <ProductsCarousel products={products} />
+        <CardCarousel cards={cards} />
       </div>
     </section>
   )

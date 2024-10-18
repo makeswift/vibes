@@ -62,6 +62,7 @@ export function RangeInput({
 
           onMinValueChange?.(clamped)
         }}
+        className="flex-1"
       />
       <Input
         type="number"
@@ -81,6 +82,7 @@ export function RangeInput({
 
           onMaxValueChange?.(clamped)
         }}
+        className="flex-1"
       />
     </div>
   )

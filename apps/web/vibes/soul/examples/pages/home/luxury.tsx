@@ -1,4 +1,4 @@
-import { cards } from '@/vibes/soul/examples/sections/card-carousel/luxury'
+import { cards } from '@/vibes/soul/examples/primitives/card-carousel/luxury'
 import { feature } from '@/vibes/soul/examples/sections/feature/luxury'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/luxury'
 import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/luxury'

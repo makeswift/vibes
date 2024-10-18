@@ -1,3 +1,4 @@
+import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card'
 import {
   Carousel,
   CarouselButtons,
@@ -5,27 +6,30 @@ import {
   CarouselItem,
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
-import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
-import { ProductCardProduct } from '@/vibes/soul/types'
+
+export interface Card extends CardProps {
+  id: string
+}
 
 interface Props {
-  products: ProductCardProduct[]
+  cards: Card[]
+  textContrast?: 'light' | 'dark'
   className?: string
 }
 
-export function ProductsCarousel({ products, className }: Props) {
+export function CardCarousel({ cards, textContrast, className }: Props) {
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-20 px-3 @xl:px-6 @4xl:px-20">
-        {products.length > 0
-          ? products.map(product => (
-              <CarouselItem key={product.id} className="basis-full @md:basis-1/2 @xl:basis-1/4">
-                <ProductCard {...product} />
+        {cards.length > 0
+          ? cards.map(card => (
+              <CarouselItem className="basis-full @md:basis-1/2 @xl:basis-1/4">
+                <Card key={card.id} {...card} textContrast={textContrast} />
               </CarouselItem>
             ))
           : Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem key={index} className="basis-full @md:basis-1/2 @xl:basis-1/4">
-                <ProductCardSkeleton />
+              <CarouselItem className="basis-full @md:basis-1/2 @xl:basis-1/4">
+                <CardSkeleton key={index} />
               </CarouselItem>
             ))}
       </CarouselContent>
