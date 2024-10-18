@@ -69,7 +69,13 @@ export const components = [
   },
   {
     name: 'card-carousel',
-    dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
+    dependencies: ['clsx'],
+    registryDependencies: ['carousel'],
+    files: ['primitives/card-carousel/index.tsx'],
+  },
+  {
+    name: 'carousel',
+    dependencies: ['embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
     files: ['primitives/carousel/index.tsx'],
   },
@@ -96,6 +102,12 @@ export const components = [
     dependencies: ['lucide-react'],
     registryDependencies: [],
     files: ['primitives/counter/index.tsx'],
+  },
+  {
+    name: 'compare-section',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['section/compare-section/index.tsx'],
   },
   {
     name: 'create-account',
@@ -231,16 +243,16 @@ export const components = [
   },
   {
     name: 'products-list-section',
-    dependencies: [],
+    dependencies: ['nuqs'],
     registryDependencies: ['products-list'],
     files: [
+      'sections/products-list-section/index.tsx',
       'sections/products-list-section/filter-range.tsx',
       'sections/products-list-section/filter-rating.tsx',
       'sections/products-list-section/filter-toggle-group.tsx',
       'sections/products-list-section/filters-panel.tsx',
       'sections/products-list-section/mobile-filters.tsx',
       'sections/products-list-section/pagination.tsx',
-      'sections/products-list-section/products-list-section.tsx',
       'sections/products-list-section/sorting.tsx',
     ],
   },

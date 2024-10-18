@@ -9,7 +9,7 @@ const filters = {
     {
       paramName: 'type',
       label: 'Type',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Indoor', value: 'indoor' },
         { label: 'Outdoor', value: 'outdoor' },
@@ -19,7 +19,7 @@ const filters = {
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Small', value: 'sm' },
         { label: 'Medium', value: 'md' },
@@ -33,8 +33,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 200,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',
@@ -46,7 +46,7 @@ const filters = {
     {
       paramName: 'color',
       label: 'Color',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Black', value: 'black' },
         { label: 'Red', value: 'red' },
@@ -56,7 +56,7 @@ const filters = {
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: '5', value: '5' },
         { label: '5.5', value: '5.5' },
@@ -80,8 +80,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 500,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',
@@ -93,7 +93,7 @@ const filters = {
     {
       paramName: 'color',
       label: 'Color',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Red', value: 'red' },
         { label: 'Green', value: 'green' },
@@ -103,7 +103,7 @@ const filters = {
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Small', value: 'sm' },
         { label: 'Medium', value: 'md' },
@@ -117,8 +117,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 200,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',
