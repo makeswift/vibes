@@ -1,4 +1,9 @@
-import { Carousel } from '@/vibes/soul/primitives/carousel'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselControls,
+  CarouselItem,
+} from '@/vibes/soul/primitives/carousel'
 import { Rating } from '@/vibes/soul/primitives/rating'
 
 export interface Props {
@@ -21,19 +26,21 @@ export const Reviews = function Reviews({ reviews, averageRating }: Readonly<Pro
         <span className="font-heading text-6xl @2xl:text-8xl">{averageRating}</span>
         <Rating rating={averageRating} className="-mt-3 mb-3" />
       </div>
-      <Carousel className="pb-10 @4xl:pb-20" contentClassName="!gap-6">
-        {reviews.map(({ id, review, name, date }) => {
-          return (
-            <div
-              key={id}
-              className="mb-10 flex min-w-full flex-col border-t border-t-contrast-200 @lg:min-w-96"
-            >
-              <p className="my-10 text-sm">{review}</p>
-              <span className="text-sm font-medium">{name}</span>
-              <span className="text-sm text-contrast-400">{date}</span>
-            </div>
-          )
-        })}
+      <Carousel className="pt-6 @4xl:pt-8">
+        <CarouselContent className="mb-20 @xl:px-6 @5xl:px-20">
+          {reviews.map(({ id, review, name, date }) => {
+            return (
+              <CarouselItem key={id} className="basis-1/3">
+                <div className="flex flex-col border-t border-t-contrast-200">
+                  <p className="my-10 text-sm">{review}</p>
+                  <span className="text-sm font-medium">{name}</span>
+                  <span className="text-sm text-contrast-400">{date}</span>
+                </div>
+              </CarouselItem>
+            )
+          })}
+        </CarouselContent>
+        <CarouselControls className="@xl:px-6 @5xl:px-20" />
       </Carousel>
     </div>
   )

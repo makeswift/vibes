@@ -66,7 +66,7 @@ interface Image {
   alt: string
 }
 
-export const NotFoundPage = function NotFoundPage({
+export function NotFoundPage({
   headerLinks,
   logo,
   products,
@@ -91,7 +91,7 @@ export const NotFoundPage = function NotFoundPage({
 
       <NotFound />
 
-      <ProductsCarousel products={products} />
+      <ProductsCarousel className="mb-6 @xl:mb-8" products={products} />
 
       <Subscribe
         title="Sign up for our newsletter"
