@@ -2,14 +2,15 @@ import { Suspense, use } from 'react'
 
 import { clsx } from 'clsx'
 
-import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
-import { ProductCardProduct } from '@/vibes/soul/primitives/product-card'
+import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
 
 import { CompareDrawer } from './compare-drawer'
 
+export type ListProduct = CardProduct
+
 interface Props {
-  products: ProductCardProduct[] | Promise<ProductCardProduct[]>
-  compareProducts?: ProductCardProduct[] | Promise<ProductCardProduct[]>
+  products: ListProduct[] | Promise<ListProduct[]>
+  compareProducts?: ListProduct[] | Promise<ListProduct[]>
   className?: string
   showCompare?: boolean
   compareLabel?: string
@@ -27,7 +28,7 @@ function ProductsListInner({
   return resolved.map(product => (
     <ProductCard
       key={product.id}
-      {...product}
+      product={product}
       showCompare={showCompare}
       compareLabel={compareLabel}
       compareParamName={compareParamName}
@@ -61,7 +62,7 @@ export function ProductsList({
           </Suspense>
         </div>
       </div>
-      {compareProducts && <CompareDrawer products={compareProducts} paramName={compareParamName} />}
+      {compareProducts && <CompareDrawer items={compareProducts} paramName={compareParamName} />}
     </>
   )
 }

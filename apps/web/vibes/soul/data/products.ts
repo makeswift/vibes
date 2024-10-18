@@ -1,7 +1,7 @@
 import { SoulBrandName } from '../brands'
-import { ProductCardProduct } from '../primitives/product-card'
+import { CardProduct } from '../primitives/product-card'
 
-export function getProducts(brand: SoulBrandName): ProductCardProduct[] {
+export function getProducts(brand: SoulBrandName): CardProduct[] {
   return products[brand]
 }
 
@@ -18,6 +18,7 @@ const products = {
         alt: 'Philodendron Imperial Red',
       },
       href: '#',
+      rating: 4,
     },
     {
       id: '2',
@@ -30,6 +31,7 @@ const products = {
         alt: 'Monstera',
       },
       href: '#',
+      rating: 4.4,
     },
     {
       id: '3',
@@ -42,6 +44,7 @@ const products = {
         alt: 'Pink Caladium',
       },
       href: '#',
+      rating: 4.8,
     },
     {
       id: '4',
@@ -54,6 +57,7 @@ const products = {
         alt: 'Hoya Kerrii',
       },
       href: '#',
+      rating: 2.2,
     },
     {
       id: '5',
@@ -66,6 +70,7 @@ const products = {
         alt: 'Bird Nest Fern',
       },
       href: '#',
+      rating: 3.5,
     },
     {
       id: '6',
@@ -78,6 +83,7 @@ const products = {
         alt: 'Jade Plant',
       },
       href: '#',
+      rating: 5,
     },
   ],
   Luxury: [
@@ -228,4 +234,4 @@ const products = {
       href: '#',
     },
   ],
-} as const satisfies Record<SoulBrandName, [ProductCardProduct, ...ProductCardProduct[]]>
+} as const satisfies Record<SoulBrandName, [CardProduct, ...CardProduct[]]>

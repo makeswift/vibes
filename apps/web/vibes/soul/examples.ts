@@ -643,13 +643,6 @@ export const examples = [
     component: lazy(() => import('./examples/sections/reviews')),
   },
   {
-    name: 'slide-carousel-example',
-    dependencies: [],
-    registryDependencies: ['slide-carousel'],
-    files: ['examples/sections/slide-carousel/index.tsx'],
-    component: lazy(() => import('./examples/sections/slide-carousel')),
-  },
-  {
     name: 'slideshow-electric-example',
     dependencies: [],
     registryDependencies: ['slideshow-electric'],
