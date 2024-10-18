@@ -3,14 +3,8 @@ import Link from 'next/link'
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
 import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
-import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselControls,
-  CarouselItem,
-} from '@/vibes/soul/primitives/carousel'
 import { BlogPostContent } from '@/vibes/soul/sections/blog-post-content'
+import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
 import {
   Amex,
@@ -117,49 +111,7 @@ export const BlogPostPage = function BlogPostPage({
         content={content}
       />
 
-      <section className="mb-6 @container @xl:mb-8">
-        <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap justify-between gap-5 px-3 @xl:px-6 @4xl:items-end @5xl:px-20">
-          <h2 className="font-heading text-2xl font-medium leading-none">{relatedPostsTitle}</h2>
-          {cta != null && cta.href !== '' && cta.label !== '' && (
-            <Link
-              href={cta.href}
-              className="rounded-lg font-semibold text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2"
-            >
-              {cta.label}
-            </Link>
-          )}
-        </div>
-      </section>
-
-      <Carousel className="mb-10 @4xl:mb-20">
-        <CarouselContent className="mb-20 px-3 @xl:px-6 @5xl:px-20">
-          {posts.map(
-            ({
-              id: postId,
-              title: postTitle,
-              date: postDate,
-              content: postContent,
-              href: postHref,
-              image: postImage,
-            }) => {
-              return (
-                <CarouselItem className="basis-full @md:basis-1/2 @xl:basis-1/3">
-                  <BlogPostCard
-                    key={postId}
-                    id={postId}
-                    title={postTitle}
-                    date={postDate}
-                    content={postContent}
-                    href={postHref}
-                    image={postImage}
-                  />
-                </CarouselItem>
-              )
-            }
-          )}
-        </CarouselContent>
-        <CarouselControls className="px-3 @xl:px-6 @5xl:px-20" />
-      </Carousel>
+      <FeaturedBlogPostCarousel title={relatedPostsTitle} blogPosts={posts} />
 
       <Subscribe
         title="Sign up for our newsletter"
