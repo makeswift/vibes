@@ -1,8 +1,9 @@
 import {
   Carousel,
+  CarouselButtons,
   CarouselContent,
-  CarouselControls,
   CarouselItem,
+  CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
 import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
 import { ProductCardProduct } from '@/vibes/soul/types'
@@ -28,7 +29,10 @@ export function ProductsCarousel({ products, className }: Props) {
               </CarouselItem>
             ))}
       </CarouselContent>
-      <CarouselControls className="px-3 @xl:px-6 @5xl:px-20" />
+      <div className="flex items-center justify-between px-3 @xl:px-6 @5xl:px-20">
+        <CarouselScrollbar />
+        <CarouselButtons />
+      </div>
     </Carousel>
   )
 }

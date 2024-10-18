@@ -1,9 +1,10 @@
 import { BlogPost, BlogPostCard } from '@/vibes/soul/primitives/blog-post-card'
 import {
   Carousel,
+  CarouselButtons,
   CarouselContent,
-  CarouselControls,
   CarouselItem,
+  CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
 
 interface Props {
@@ -23,7 +24,10 @@ export function BlogPostCarousel({ className, blogPosts }: Props) {
           )
         })}
       </CarouselContent>
-      <CarouselControls className="px-3 @xl:px-6 @5xl:px-20" />
+      <div className="flex items-center justify-between px-3 @xl:px-6 @5xl:px-20">
+        <CarouselScrollbar />
+        <CarouselButtons />
+      </div>
     </Carousel>
   )
 }

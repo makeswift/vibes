@@ -1,9 +1,10 @@
 import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card'
 import {
   Carousel,
+  CarouselButtons,
   CarouselContent,
-  CarouselControls,
   CarouselItem,
+  CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
 
 export interface Card extends CardProps {
@@ -32,7 +33,10 @@ export function CardCarousel({ cards, textContrast, className }: Props) {
               </CarouselItem>
             ))}
       </CarouselContent>
-      <CarouselControls className="px-3 @xl:px-6 @5xl:px-20" />
+      <div className="flex items-center justify-between px-3 @xl:px-6 @5xl:px-20">
+        <CarouselScrollbar />
+        <CarouselButtons />
+      </div>
     </Carousel>
   )
 }

@@ -132,7 +132,30 @@ function CarouselItem({ className, ...rest }: React.HTMLAttributes<HTMLDivElemen
   )
 }
 
-function CarouselControls({ className }: React.HTMLAttributes<HTMLDivElement>) {
+function CarouselButtons({ className, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel()
+
+  return (
+    <div {...rest} className={clsx('flex gap-2 text-foreground', className)}>
+      <button
+        className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
+        onClick={scrollPrev}
+        disabled={!canScrollPrev}
+      >
+        <ArrowLeft strokeWidth={1.5} />
+      </button>
+      <button
+        className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
+        onClick={scrollNext}
+        disabled={!canScrollNext}
+      >
+        <ArrowRight strokeWidth={1.5} />
+      </button>
+    </div>
+  )
+}
+
+function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) {
   const { api, scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel()
   const [progress, setProgress] = useState(0)
   const [scrollbarPosition, setScrollbarPosition] = useState({ width: 0, left: 0 })
@@ -182,50 +205,38 @@ function CarouselControls({ className }: React.HTMLAttributes<HTMLDivElement>) {
       api.off('scroll', onScroll)
     }
   }, [api])
-
   return (
-    <div className={clsx('flex items-center justify-between', className)}>
-      {/* ScrollBar */}
-      <div className="relative flex h-6 w-full max-w-56 items-center overflow-hidden">
-        <input
-          type="range"
-          min={0}
-          max={100}
-          value={progress}
-          onChange={e => setProgress(e.currentTarget.valueAsNumber)}
-          className="absolute h-full w-full cursor-pointer appearance-none bg-transparent opacity-0"
-        />
-        {/* Track */}
-        <div className="pointer-events-none absolute h-1 w-full rounded-full bg-contrast-100" />
+    <div
+      className={clsx('relative flex h-6 w-full max-w-56 items-center overflow-hidden', className)}
+    >
+      <input
+        type="range"
+        min={0}
+        max={100}
+        value={progress}
+        onChange={e => setProgress(e.currentTarget.valueAsNumber)}
+        className="absolute h-full w-full cursor-pointer appearance-none bg-transparent opacity-0"
+      />
+      {/* Track */}
+      <div className="pointer-events-none absolute h-1 w-full rounded-full bg-contrast-100" />
 
-        {/* Bar */}
-        <div
-          className="pointer-events-none absolute h-1 rounded-full bg-foreground transition-all ease-out"
-          style={{
-            width: `${scrollbarPosition.width}%`,
-            left: `${scrollbarPosition.left}%`,
-          }}
-        />
-      </div>
-
-      <div className="flex gap-2 text-foreground">
-        <button
-          className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
-          onClick={scrollPrev}
-          disabled={!canScrollPrev}
-        >
-          <ArrowLeft strokeWidth={1.5} />
-        </button>
-        <button
-          className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
-          onClick={scrollNext}
-          disabled={!canScrollNext}
-        >
-          <ArrowRight strokeWidth={1.5} />
-        </button>
-      </div>
+      {/* Bar */}
+      <div
+        className="pointer-events-none absolute h-1 rounded-full bg-foreground transition-all ease-out"
+        style={{
+          width: `${scrollbarPosition.width}%`,
+          left: `${scrollbarPosition.left}%`,
+        }}
+      />
     </div>
   )
 }
 
-export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselControls }
+export {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselButtons,
+  CarouselScrollbar,
+}
