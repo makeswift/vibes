@@ -3,11 +3,11 @@ import { CompareSection } from '@/vibes/soul/sections/compare-section'
 
 const products = getProducts('Electric')
 
-async function addToCartAction(id: string) {
-  'use server'
+// async function addToCartAction(id: string) {
+//   'use server'
 
-  console.log('Add to cart:', id)
-}
+//   console.log('Add to cart:', id)
+// }
 
 export default function Preview({
   searchParams,
@@ -16,7 +16,7 @@ export default function Preview({
 }) {
   return (
     <div className="p-20">
-      <CompareSection products={products} addToCartAction={addToCartAction} />
+      <CompareSection products={products} />
     </div>
   )
 }
