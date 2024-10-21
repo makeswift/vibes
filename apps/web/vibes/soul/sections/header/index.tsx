@@ -18,6 +18,8 @@ import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from '
 import { ProductCard } from '@/vibes/soul/primitives/product-card'
 import { HamburgerMenuButton } from '@/vibes/soul/sections/header/hamburger-menu-button'
 
+import { Button } from '../../primitives/button'
+
 interface Image {
   src?: string
   alt: string
@@ -157,12 +159,6 @@ export const Header = forwardRef(function Header(
       className="sticky top-0 z-30 !h-0 w-full @container"
       upTolerance={0}
       onUnpin={() => setSearchOpen(false)}
-      style={{
-        WebkitTransition: 'transform .5s ease-in-out',
-        MozTransition: 'transform .5s ease-in-out',
-        OTransition: 'transform .5s ease-in-out',
-        transition: 'transform .5s ease-in-out',
-      }}
     >
       <div
         ref={ref}
@@ -331,23 +327,20 @@ export const Header = forwardRef(function Header(
               placeholder="Search Products"
               className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
             />
-            <button
-              type="submit"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-foreground text-background ring-primary focus:outline-none focus:ring-[1px]"
-            >
+            <Button type="submit" variant="secondary" size="icon">
               <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
-            </button>
+            </Button>
           </form>
 
           {/* Search Results */}
           <div className="flex flex-col border-t border-contrast-100 @2xl:flex-row">
             <div className="flex w-full flex-col gap-1 border-b border-contrast-100 p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r">
-              <span className="mb-4 font-mono text-[13px] uppercase">Suggestions</span>
+              <span className="mb-4 font-mono text-sm uppercase">Suggestions</span>
               {[
-                { name: 'T-Shirts', href: '#' },
-                { name: 'Shirts', href: '#' },
-                { name: 'Short Sleeve', href: '#' },
-                { name: 'Long Sleeve', href: '#' },
+                { name: 'Indoor', href: '#' },
+                { name: 'Outdoor', href: '#' },
+                { name: 'Low light', href: '#' },
+                { name: 'Pet friendly', href: '#' },
               ].map((item, i) => (
                 <Link
                   key={i}
@@ -359,7 +352,7 @@ export const Header = forwardRef(function Header(
               ))}
             </div>
             <div className="flex w-full flex-col gap-5 p-5">
-              <span className="font-mono text-[13px] uppercase">Products</span>
+              <span className="font-mono text-sm uppercase">Products</span>
               <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
                 {Array.from({ length: 4 }).map((_, i) => (
                   <ProductCard

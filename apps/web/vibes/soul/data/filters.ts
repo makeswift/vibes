@@ -9,13 +9,24 @@ export function getFilters(brand: SoulBrandName): Filter[] {
 const filters = {
   Electric: [
     {
-      paramName: 'type',
-      label: 'Type',
+      paramName: 'features',
+      label: 'Features',
       type: 'toggle-group',
       options: [
+        { label: 'Air purifying', value: 'air-purifying' },
         { label: 'Indoor', value: 'indoor' },
         { label: 'Outdoor', value: 'outdoor' },
-        { label: 'Pet Friendly', value: 'pet-friendly' },
+        { label: 'Pet friendly', value: 'pet-friendly' },
+      ],
+    },
+    {
+      paramName: 'light',
+      label: 'Light',
+      type: 'toggle-group',
+      options: [
+        { label: 'Bright direct', value: 'bright-direct' },
+        { label: 'Bright indirect', value: 'bright-indirect' },
+        { label: 'Low light', value: 'low-light' },
       ],
     },
     {

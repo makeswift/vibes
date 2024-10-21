@@ -35,7 +35,7 @@ export function ProductCard({
   compareParamName,
 }: Props) {
   return (
-    <div className={clsx('@container', className)}>
+    <div className={className}>
       <Link
         id={id}
         href={href}
@@ -62,13 +62,14 @@ export function ProductCard({
           )}
         </div>
       </Link>
-      <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @xs:flex-row">
+
+      <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row">
         <div className="flex-1">
           <Link tabIndex={-1} href={href} className="group text-base">
             <span className="block font-semibold">{title}</span>
 
             {subtitle != null && subtitle !== '' && (
-              <span className="block text-sm font-normal text-contrast-400">{subtitle}</span>
+              <span className="mb-2 block text-sm font-normal text-contrast-400">{subtitle}</span>
             )}
             {price != null && <PriceLabel price={price} />}
           </Link>
@@ -92,7 +93,7 @@ export const ProductCardSkeleton = function ProductCardSkeleton({
   className,
 }: ProductCardSkeletonProps) {
   return (
-    <div className={clsx('animate-pulse cursor-pointer rounded-xl @container', className)}>
+    <div className={clsx('animate-pulse cursor-pointer rounded-xl @md:rounded-2xl', className)}>
       {/* Image */}
       <div className="relative aspect-[5/6] overflow-hidden rounded-xl bg-contrast-100 @6xl:min-w-80"></div>
       <div className="flex justify-between gap-2 pt-4 @sm:gap-2 @sm:pt-7">
