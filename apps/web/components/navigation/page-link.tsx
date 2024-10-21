@@ -3,17 +3,17 @@
 import { usePathname } from 'next/navigation'
 
 import { Link } from './link'
-import { Page, Vibe } from './navigation'
+import { Page } from './navigation'
 
 interface Props
   extends Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href' | 'active' | 'children'> {
-  vibe: Vibe
+  chapterSlug: string
   page: Page
 }
 
-export function PageLink({ vibe, page, ...rest }: Props) {
+export function PageLink({ chapterSlug, page, ...rest }: Props) {
   const pathname = usePathname()
-  const href = `/docs/${vibe.slug}/${page.slug}`
+  const href = `/docs/${chapterSlug}/${page.slug}`
 
   return (
     <Link {...rest} href={href} active={pathname === href}>

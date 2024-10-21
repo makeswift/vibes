@@ -8,21 +8,20 @@ import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import ChevronDown12 from '@/icons/generated/ChevronDown12'
-import * as Vibes from '@/vibes'
 
 import { Button } from '../ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
+import { Chapter } from './navigation'
 
 interface Props {
-  vibeSlug: string
+  chapterSlug: string
+  chapters: Chapter[]
 }
 
-const vibes = Object.values(Vibes)
-
-export function VibeSelect({ vibeSlug }: Props) {
+export function ChapterSelect({ chapters, chapterSlug }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const activeVibe = vibes.find(vibe => vibe.slug === vibeSlug)
+  const activeVibe = Object.values(chapters).find(chapter => chapter.slug === chapterSlug)
 
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', isOpen)
@@ -50,10 +49,10 @@ export function VibeSelect({ vibeSlug }: Props) {
         </SheetTrigger>
         <SheetContent side="top" className="z-20 focus:outline-none">
           <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-8 xl:container md:grid-cols-2 md:gap-y-10 lg:gap-x-8 lg:py-2 xl:px-8 2xl:grid-cols-3">
-            {Object.values(Vibes).map(vibe => (
-              <div key={vibe.slug}>
+            {Object.values(chapters).map(chapter => (
+              <div key={chapter.slug}>
                 <Link
-                  href={`/docs/${vibe.slug}`}
+                  href={`/docs/${chapter.slug}`}
                   className="group ring-primary ring-offset-8 focus:outline-none focus-visible:ring-2"
                 >
                   <div className="relative mb-4 aspect-video">
@@ -61,30 +60,30 @@ export function VibeSelect({ vibeSlug }: Props) {
                     <Image
                       fill
                       priority
-                      src={vibe.thumbnail}
-                      alt={`Thumbnail of ${vibe.name} vibe`}
+                      src={chapter.thumbnail}
+                      alt={`Thumbnail of ${chapter.name} chapter`}
                       className="border border-contrast-200 bg-contrast-100"
                     />
                   </div>
                 </Link>
                 <div className="mb-2 flex justify-between">
                   <div className="mb-1">
-                    <Link className="text-xl font-bold" href={`/docs/${vibe.slug}`}>
-                      {vibe.name}
+                    <Link className="text-xl font-bold" href={`/docs/${chapter.slug}`}>
+                      {chapter.name}
                     </Link>
                     <div className="text-xs">
                       <span className="text-contrast-400">by </span>
                       <Link
-                        href={vibe.author.url}
+                        href={chapter.author.url}
                         target="_blank"
                         className="marching-ants-link text-contrast-500"
                       >
-                        {vibe.author.name}
+                        {chapter.author.name}
                       </Link>
                     </div>
                   </div>
                   <div>
-                    {vibe.tags.map((tag, index) => (
+                    {chapter.tags.map((tag, index) => (
                       <span
                         key={index}
                         className="rounded-full border border-foreground px-2 py-0.5 text-xs font-bold text-foreground"
@@ -94,20 +93,20 @@ export function VibeSelect({ vibeSlug }: Props) {
                     ))}
                   </div>
                 </div>
-                <p className="pr-4 font-light text-foreground">{vibe.description}</p>
+                <p className="pr-4 font-light text-foreground">{chapter.description}</p>
               </div>
             ))}
           </div>
         </SheetContent>
       </Sheet>
       <div className="hidden" aria-hidden="true">
-        {Object.values(Vibes).map(vibe => (
+        {Object.values(chapters).map(chapter => (
           <Image
-            key={vibe.slug}
+            key={chapter.slug}
             fill
             priority
-            src={vibe.thumbnail}
-            alt={`Preload thumbnail of ${vibe.name} vibe`}
+            src={chapter.thumbnail}
+            alt={`Preload thumbnail of ${chapter.name} chapter`}
           />
         ))}
       </div>
