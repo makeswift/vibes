@@ -15,20 +15,20 @@ export const brands = [
     name: 'Electric',
     logo: '',
     cssVars: {
-      '--primary': '97 100% 68%',
-      '--accent': '97 100% 88%',
+      '--primary': '96 100% 68%',
+      '--accent': '96 100% 88%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
-      '--success': '116, 46%, 49%',
-      '--error': '0, 100%, 50%',
-      '--warning': '40, 100%, 50%',
+      '--success': '116 78% 65%',
+      '--error': '0 100% 60%',
+      '--warning': '40 100% 60%',
       '--info': '220 70% 45%',
 
       '--contrast-100': '0 0% 93%',
-      '--contrast-200': '0 0% 89%',
-      '--contrast-300': '0 0% 72%',
-      '--contrast-400': '0 0% 60%',
-      '--contrast-500': '0 0% 53%',
+      '--contrast-200': '0 0% 82%',
+      '--contrast-300': '0 0% 70%',
+      '--contrast-400': '0 0% 54%',
+      '--contrast-500': '0 0% 34%',
 
       '--font-family-heading': dm_serif_text.style.fontFamily,
       '--font-family-body': inter.style.fontFamily,
@@ -128,4 +128,6 @@ export const brands = [
       '--shadow-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
     },
   },
-] satisfies Brands
+] as const satisfies Brands
+
+export type SoulBrandName = (typeof brands)[number]['name']

@@ -1,59 +1,45 @@
-import { Slot } from '@radix-ui/react-slot'
 import { clsx } from 'clsx'
 import { Loader2 } from 'lucide-react'
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'tertiary'
-  size?: 'default' | 'small'
+  size?: 'large' | 'medium' | 'small' | 'icon'
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   loading?: boolean
-  asChild?: boolean
   type?: 'button' | 'submit' | 'reset'
+  asChild?: boolean
 }
 
 export const Button = function Button({
   variant = 'primary',
-  size = 'default',
+  size = 'large',
   onClick,
-  loading = false,
-  disabled = false,
+  loading,
+  disabled,
   className,
-  children = 'Button',
-  asChild = false,
+  children,
   type = 'button',
+  asChild,
   ...props
 }: Props) {
-  const Comp = asChild ? Slot : 'button'
   return (
-    <Comp
+    <button
       className={clsx(
-        'relative flex w-fit shrink-0 justify-center overflow-hidden rounded-full',
-        'select-none text-center font-medium leading-normal',
-        'border border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2',
+        'relative z-0 select-none justify-center overflow-hidden rounded-full border text-center font-medium leading-normal transition-all duration-300 focus-visible:outline-none focus-visible:ring-2',
         {
-          'px-4 py-2 text-sm': !asChild && size === 'small',
-          'px-6 py-[13px] text-base': !asChild && size === 'default',
-        },
-        {
-          primary: 'bg-primary text-foreground ring-primary-shadow',
-          secondary: 'bg-foreground text-background ring-primary hover:border-foreground ',
-          tertiary: 'bg-background text-background ring-primary hover:border-background',
+          primary: 'border-primary bg-primary text-foreground ring-foreground',
+          secondary: 'border-foreground bg-foreground text-background ring-primary',
+          tertiary: 'border-contrast-200 bg-background text-background ring-primary',
         }[variant],
         // After Pseudo Element / Animated Background Styles
-        'after:absolute after:inset-0 after:z-0 after:h-full after:w-full after:rounded-full',
-        'after:transition-[opacity,transform] after:duration-500 after:[animation-timing-function:cubic-bezier(0.075,0.365,0.000,0.995)]',
-        'after:-translate-x-[110%]',
+        'after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)]',
         !loading && !disabled && 'hover:after:translate-x-0',
         {
-          primary: 'after:bg-white/40',
+          primary: 'after:bg-background/40',
           secondary: 'after:bg-background',
-          tertiary: 'after:bg-foreground',
+          tertiary: 'after:bg-contrast-100',
         }[variant],
-        {
-          default: 'after:h-[50px]',
-          small: 'after:h-[37px]',
-        }[size],
-        disabled && 'cursor-not-allowed opacity-50',
+        disabled && 'cursor-not-allowed opacity-30',
         className
       )}
       type={type}
@@ -61,31 +47,32 @@ export const Button = function Button({
       aria-busy={loading}
       {...props}
     >
-      <div className={clsx(!asChild && 'h-full')}>
-        {/* Children */}
-        <div
+      <>
+        <span
           className={clsx(
-            'relative z-10 flex h-full items-center justify-center gap-2 transition-colors',
-            loading && 'opacity-0',
+            'flex items-center justify-center transition-all duration-300 ease-in-out',
+            loading ? '-translate-y-10 opacity-0' : 'translate-y-0 opacity-100',
             {
-              default: 'text-base [&>*]:px-6 [&>*]:py-[13px]',
-              small: 'text-sm [&>*]:px-4 [&>*]:py-2',
+              icon: 'p-2.5 text-sm',
+              small: 'gap-x-2 px-4 py-2.5 text-sm',
+              medium: 'gap-x-2.5 px-5 py-3 text-base',
+              large: 'gap-x-3 px-6 py-4 text-base',
             }[size],
             (variant === 'secondary' || variant === 'tertiary') && 'mix-blend-difference'
           )}
         >
           {children}
-        </div>
+        </span>
 
-        {/* Loading */}
-        {loading && (
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Loader2
-              className={clsx('animate-spin', variant === 'tertiary' && 'text-foreground')}
-            />
-          </div>
-        )}
-      </div>
-    </Comp>
+        <span
+          className={clsx(
+            'absolute inset-0 grid place-content-center transition-all duration-300 ease-in-out',
+            loading ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          )}
+        >
+          <Loader2 className={clsx('animate-spin', variant === 'tertiary' && 'text-foreground')} />
+        </span>
+      </>
+    </button>
   )
 }

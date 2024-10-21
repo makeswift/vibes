@@ -12,14 +12,20 @@ import { FilterRange } from './filter-range'
 import { FilterRating } from './filter-rating'
 import { FilterToggleGroup } from './filter-toggle-group'
 
-interface ToggleGroupFilter {
+export interface ToggleGroupFilter {
   type: 'toggle-group'
-  label: string
   paramName: string
+  label: string
   options: { label: string; value: string }[]
 }
 
-interface RangeFilter {
+export interface RatingFilter {
+  type: 'rating'
+  paramName: string
+  label: string
+}
+
+export interface RangeFilter {
   type: 'range'
   label: string
   minParamName: string
@@ -32,12 +38,6 @@ interface RangeFilter {
   maxPrepend?: React.ReactNode
   minPlaceholder?: string
   maxPlaceholder?: string
-}
-
-interface RatingFilter {
-  type: 'rating'
-  label: string
-  paramName: string
 }
 
 export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter
@@ -79,7 +79,7 @@ export function FiltersPanelInner({ className, filters }: Props) {
   )
 
   return (
-    <div className={clsx('w-full space-y-10', className)}>
+    <div className={clsx('w-full space-y-5', className)}>
       <Accordions type="multiple" defaultValue={resolved.map((_, i) => i.toString())}>
         {resolved.map((filter, index) => {
           switch (filter.type) {
@@ -119,16 +119,16 @@ export function FiltersPanelInner({ className, filters }: Props) {
           }
         })}
       </Accordions>
-      <div className="flex justify-center">
-        <Button
-          variant="secondary"
-          onClick={() => {
-            setParams(null).catch(() => console.error('Failed to reset filters'))
-          }}
-        >
-          Reset
-        </Button>
-      </div>
+
+      <Button
+        variant="secondary"
+        size="small"
+        onClick={() => {
+          setParams(null).catch(() => console.error('Failed to reset filters'))
+        }}
+      >
+        Reset filters
+      </Button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import NextImage from 'next/image'
 import { useState } from 'react'
 
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
@@ -9,25 +9,20 @@ import { clsx } from 'clsx'
 import { Button } from '@/vibes/soul/primitives/button'
 import { Favorite } from '@/vibes/soul/primitives/favorite'
 import { Label } from '@/vibes/soul/primitives/label'
-import { Product } from '@/vibes/soul/primitives/product-card'
-import { Price } from '@/vibes/soul/primitives/product-card/price'
+import { PriceLabel } from '@/vibes/soul/primitives/price-label'
+import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { Rating } from '@/vibes/soul/primitives/rating'
 import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery'
 
-interface Image {
-  alt: string
-  src: string
-}
-
-interface ProductDetailType extends Product {
+interface ProductDetailType extends CardProduct {
   options?: string[]
   swatches?: {
     id: string
     name: string
-    image?: Image
+    image?: { src: string; alt: string }
     hex?: string
   }[]
-  images?: Image[]
+  images?: { src: string; alt: string }[]
 }
 
 export interface ProductDetailProps {
@@ -49,7 +44,7 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
           <h2 className="font-heading text-3xl font-medium leading-none">{product.title}</h2>
           <Rating rating={product.rating ?? 0} />
           {product.subtitle != null && product.subtitle !== '' && <p>{product.subtitle}</p>}
-          <Price price={product.price ?? ''} className="!text-2xl" />
+          <PriceLabel price={product.price ?? ''} className="!text-2xl" />
 
           <form className="mt-6 flex flex-col gap-4 @4xl:mt-12">
             {/* Options */}
@@ -97,7 +92,7 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
                       )}
                     >
                       {swatch.image?.src != null && swatch.image.src !== '' ? (
-                        <Image
+                        <NextImage
                           src={swatch.image.src}
                           alt={swatch.image.alt}
                           height={48}

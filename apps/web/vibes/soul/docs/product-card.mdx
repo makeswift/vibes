@@ -3,3 +3,68 @@ title: Product Card
 preview: product-card-example
 previewSize: md
 ---
+
+## Usage
+
+Import the component.
+
+<CodeBlock lang="bash">{`import { ProductCard } from '@/vibes/soul/primitives/product-card'
+`}</CodeBlock>
+
+Display the component.
+
+<CodeBlock lang="bash">{`<ProductCard
+  id="1"
+  href="#"
+  title="Product Name"
+  image={{
+    src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
+    alt: 'Product Name',
+  }}
+  subtitle="Blue/Black/Green"
+  price="123.99"
+  badge="New"
+  showCompare
+/>
+`}</CodeBlock>
+
+## API Reference
+
+| Prop                | Type                                                     | Default |
+| ------------------- | -------------------------------------------------------- | ------- |
+| `id`                | `string`                                                 |         |
+| `title`             | `string`                                                 |         |
+| `href`              | `string`                                                 |         |
+| `image`             | `Image` <Tooltip content="{src: string, alt: string}" /> |         |
+| `price?`            | `string` \| [`ProductCardPrice`](#productcardprice)      |         |
+| `subtitle?`         | `string`                                                 |         |
+| `badge?`            | `string`                                                 |         |
+| `rating?`           | `number`                                                 |         |
+| `className?`        | `string`                                                 |         |
+| `showCompare?`      | `boolean`                                                | `false` |
+| `compareLabel?`     | `string`                                                 |         |
+| `compareParamName?` | `string`                                                 |         |
+
+### `ProductCardPrice`
+
+<CodeBlock lang="ts">{`type ProductCardPrice = string | ProductCardPriceRange | ProductCardSalePrice;`}</CodeBlock>
+
+### `ProductCardPriceRange`
+
+<CodeBlock lang="ts">
+  {`interface ProductCardPriceRange {
+  type: 'range'
+  minValue: string
+  maxValue: string
+}`}
+</CodeBlock>
+
+### `ProductCardSalePrice`
+
+<CodeBlock lang="ts">
+  {`interface ProductCardSalePrice {
+  type: 'sale'
+  previousValue: string
+  currentValue: string
+}`}
+</CodeBlock>

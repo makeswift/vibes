@@ -2,21 +2,17 @@
 
 import { Suspense, use } from 'react'
 
-import * as Portal from '@radix-ui/react-portal'
 import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
 
-import { Product } from '@/vibes/soul/primitives/product-card'
-import { ProductChip } from '@/vibes/soul/primitives/product-chip'
-
-import { ComparePanel } from './compare-panel'
+import { Drawer, DrawerItem } from '../drawer'
 
 interface Props {
-  products: Product[] | Promise<Product[]>
+  items: DrawerItem[] | Promise<DrawerItem[]>
   paramName?: string
 }
 
-function CompareDrawerInner({ products, paramName = 'compare' }: Props) {
-  const resolved = products instanceof Promise ? use(products) : products
+function CompareDrawerInner({ items, paramName = 'compare' }: Props) {
+  const resolved = items instanceof Promise ? use(items) : items
   const [, setParam] = useQueryState(
     paramName,
     parseAsArrayOf(parseAsString).withOptions({ shallow: false })
@@ -24,26 +20,17 @@ function CompareDrawerInner({ products, paramName = 'compare' }: Props) {
 
   return (
     resolved.length > 0 && (
-      <Portal.Root className="fixed bottom-0 w-full border-y bg-background @container">
-        <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap items-end justify-end gap-5 px-3 py-5 @xl:px-6 @5xl:px-20">
-          {resolved.map(product => (
-            <ProductChip
-              key={product.id}
-              product={product}
-              aria-label={product.title}
-              onClick={() => {
-                setParam(prev => {
-                  const next = prev?.filter(v => v !== product.id) ?? []
+      <Drawer
+        items={resolved}
+        onRemoveClick={id => {
+          setParam(prev => {
+            const next = prev?.filter(v => v !== id) ?? []
 
-                  return next.length > 0 ? next : null
-                })
-              }}
-            />
-          ))}
-          {/* Compare Button & Panel */}
-          <ComparePanel products={resolved} />
-        </div>
-      </Portal.Root>
+            return next.length > 0 ? next : null
+          })
+        }}
+        cta={{ label: 'Compare', href: '/compare' }}
+      />
     )
   )
 }

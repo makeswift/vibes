@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { Suspense, use } from 'react'
 
 import clsx from 'clsx'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { createSerializer, parseAsString } from 'nuqs'
 
 export interface PaginationInfo {
@@ -41,27 +41,25 @@ function PaginationResolved({ info }: Props) {
   })
 
   return (
-    <div className="flex w-full justify-center bg-background py-10 text-xs">
-      <div className="flex gap-2">
-        {startCursor != null ? (
-          <PaginationLink href={serialize(searchParams, { [startCursorParamName]: startCursor })}>
-            <ChevronLeft />
-          </PaginationLink>
-        ) : (
-          <SkeletonLink>
-            <ChevronLeft />
-          </SkeletonLink>
-        )}
-        {endCursor != null ? (
-          <PaginationLink href={serialize(searchParams, { [endCursorParamName]: endCursor })}>
-            <ChevronRight />
-          </PaginationLink>
-        ) : (
-          <SkeletonLink>
-            <ChevronRight />
-          </SkeletonLink>
-        )}
-      </div>
+    <div className="flex w-full items-center justify-center gap-3 py-10">
+      {startCursor != null ? (
+        <PaginationLink href={serialize(searchParams, { [startCursorParamName]: startCursor })}>
+          <ArrowLeft size={24} strokeWidth={1} />
+        </PaginationLink>
+      ) : (
+        <SkeletonLink>
+          <ArrowLeft size={24} strokeWidth={1} />
+        </SkeletonLink>
+      )}
+      {endCursor != null ? (
+        <PaginationLink href={serialize(searchParams, { [endCursorParamName]: endCursor })}>
+          <ArrowRight size={24} strokeWidth={1} />
+        </PaginationLink>
+      ) : (
+        <SkeletonLink>
+          <ArrowRight size={24} strokeWidth={1} />
+        </SkeletonLink>
+      )}
     </div>
   )
 }
@@ -71,7 +69,7 @@ function PaginationLink({ href, children }: { href: string; children: React.Reac
     <Link
       href={href}
       className={clsx(
-        'flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2'
+        'flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2'
       )}
     >
       {children}
@@ -92,10 +90,10 @@ function PaginationSkeleton() {
     <div className="flex w-full justify-center bg-background py-10 text-xs">
       <div className="flex gap-2">
         <SkeletonLink>
-          <ChevronLeft />
+          <ArrowLeft />
         </SkeletonLink>
         <SkeletonLink>
-          <ChevronRight />
+          <ArrowRight />
         </SkeletonLink>
       </div>
     </div>

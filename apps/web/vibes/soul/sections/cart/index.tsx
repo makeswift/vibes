@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Suspense } from 'react'
 
-// import { Suspense, use } from 'react'
 import { Button } from '@/vibes/soul/primitives/button'
 import { DecrementButton } from '@/vibes/soul/sections/cart/decrement-button'
 import { DeleteLineItemButton } from '@/vibes/soul/sections/cart/delete-line-item-button'
@@ -72,21 +72,21 @@ export const Cart = function Cart({
   redirectToCheckoutAction,
 }: CartProps) {
   return (
-    // <Suspense fallback={<CartSkeleton title={title ?? 'Cart'} />}>
-    <CartInner
-      title={title}
-      lineItems={lineItems}
-      summary={summary}
-      emptyState={emptyState}
-      removeItemAriaLabel={removeItemAriaLabel}
-      loadingAriaLabel={loadingAriaLabel}
-      decrementAriaLabel={decrementAriaLabel}
-      incrementAriaLabel={incrementAriaLabel}
-      removeLineItemAction={removeLineItemAction}
-      updateLineItemQuantityAction={updateLineItemQuantityAction}
-      redirectToCheckoutAction={redirectToCheckoutAction}
-    />
-    // </Suspense>
+    <Suspense fallback={<CartSkeleton title={title} />}>
+      <CartInner
+        title={title}
+        lineItems={lineItems}
+        summary={summary}
+        emptyState={emptyState}
+        removeItemAriaLabel={removeItemAriaLabel}
+        loadingAriaLabel={loadingAriaLabel}
+        decrementAriaLabel={decrementAriaLabel}
+        incrementAriaLabel={incrementAriaLabel}
+        removeLineItemAction={removeLineItemAction}
+        updateLineItemQuantityAction={updateLineItemQuantityAction}
+        redirectToCheckoutAction={redirectToCheckoutAction}
+      />
+    </Suspense>
   )
 }
 
@@ -123,14 +123,14 @@ async function CartInner({
           </h1>
 
           {/* Cart Items */}
-          <ul className="flex flex-col gap-5 gap-y-10">
+          <ul className="flex flex-col gap-5">
             {resolvedLineItems.map(
               ({ id, title: lineItemTitle, image, price, subtitle, quantity }) => (
                 <li
                   className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
                   key={id}
                 >
-                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36">
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36">
                     <Image
                       fill
                       src={image.src}
@@ -170,7 +170,6 @@ async function CartInner({
                         </form>
                       </div>
 
-                      {/* Remove Line Item Button */}
                       <form action={removeLineItemAction.bind(null, id)}>
                         <DeleteLineItemButton
                           removeItemAriaLabel={removeItemAriaLabel}
@@ -247,44 +246,77 @@ function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
   )
 }
 
-function CartItemSkeleton() {
-  return (
-    <div className="flex flex-col gap-5 gap-y-10">
-      <div className="flex animate-pulse items-center gap-x-5">
-        <div className="h-96 w-full rounded-lg bg-contrast-100" />
-      </div>
-    </div>
-  )
-}
-
-function CartSummarySkeleton() {
-  return (
-    <div className="mt-1 animate-pulse @4xl:w-1/3">
-      <div className="mt-20 h-96 w-full rounded bg-contrast-100" />
-    </div>
-  )
-}
-
 function CartSkeleton({ title }: { title: string }) {
   return (
-    <div className="mx-auto max-w-screen-2xl @container">
+    <div className="mx-auto w-full max-w-screen-2xl animate-pulse @container">
       <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
         {/* Cart Side */}
         <div className="w-full">
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             {title}
           </h1>
-          {/* Cart Items */}
-          <ul className="flex flex-col gap-5 gap-y-10">
-            <div className="flex animate-pulse items-center gap-x-5">
-              <div className="h-96 w-full rounded-lg bg-contrast-100" />
-            </div>
+
+          {/* Cart Line Items */}
+          <ul className="flex flex-col gap-5">
+            {Array.from({ length: 2 }).map((_, index) => (
+              <li
+                className="flex flex-col items-start gap-x-5 gap-y-8 @sm:flex-row @sm:items-center @sm:gap-y-4"
+                key={index}
+              >
+                {/* Image */}
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36"></div>
+                <div className="flex flex-grow flex-wrap justify-between gap-y-3.5">
+                  <div className="flex flex-col gap-3 @xl:w-1/2 @xl:pr-4">
+                    {/* Line Item Title */}
+                    <div className="h-4 w-44 rounded-md bg-contrast-100" />
+                    {/* Subtitle */}
+                    <div className="h-3 w-36 rounded-md bg-contrast-100" />
+                  </div>
+                  <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap @xl:justify-end">
+                    {/* Price */}
+                    <div className="h-4 w-8 rounded-md bg-contrast-100" />
+                    {/* Counter */}
+                    <div className="h-[44px] w-[120px] rounded-lg bg-contrast-100" />
+                    {/* DeleteLineItemButton */}
+                    <div className="mr-1 h-6 w-6 rounded-full bg-contrast-100" />
+                  </div>
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Summary Side */}
-        <div className="mt-1 animate-pulse @4xl:w-1/3">
-          <div className="mt-20 h-96 w-full rounded bg-contrast-100" />
+        <div className="@4xl:w-1/3">
+          {/* Summary Title */}
+          <div className="mt-3.5 h-4 w-40 rounded-lg bg-contrast-100 @xl:h-7 @xl:w-52" />
+
+          {/* Subtotal */}
+          <div className="mt-[66px] flex justify-between border-b border-contrast-100/50 pb-5">
+            <div className="h-4 w-16 rounded-md bg-contrast-100" />
+            <div className="h-4 w-9 rounded-md bg-contrast-100" />
+          </div>
+
+          {/* Shipping */}
+          <div className="mt-5 flex justify-between border-b border-contrast-100/50 pb-5">
+            <div className="h-4 w-[70px] rounded-md bg-contrast-100" />
+            <div className="h-4 w-8 rounded-md bg-contrast-100" />
+          </div>
+
+          {/* Tax */}
+          <div className="mt-5 flex justify-between border-b border-contrast-100/50 pb-5">
+            <div className="h-4 w-8 rounded-md bg-contrast-100" />
+            <div className="h-4 w-8 rounded-md bg-contrast-100" />
+          </div>
+
+          {/* Grand Total */}
+          {/* <div className="mt-10 flex justify-between border-b border-contrast-100/50 pb-5">
+            <div className="h-6 w-20 rounded-lg bg-contrast-100" />
+            <div className="h-6 w-16 rounded-lg bg-contrast-100" />
+          </div> */}
+
+          {/* Checkout Button */}
+          <div className="mt-10 h-[50px] w-full rounded-full bg-contrast-100" />
         </div>
       </div>
     </div>
