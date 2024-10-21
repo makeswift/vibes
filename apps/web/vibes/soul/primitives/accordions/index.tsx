@@ -14,9 +14,9 @@ function Accordion({
       <AccordionsPrimitive.Header>
         <AccordionsPrimitive.Trigger asChild>
           <div className="group w-full cursor-pointer items-start gap-8 py-3 last:flex @md:py-4">
-            <h3 className="flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
+            <div className="flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
               {title}
-            </h3>
+            </div>
             <AnimatedChevron />
           </div>
         </AccordionsPrimitive.Trigger>

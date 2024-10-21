@@ -37,7 +37,7 @@ export const ToggleGroup = React.forwardRef<
             value={option.value}
             aria-label={option.label}
             disabled={option.disabled}
-            className="whitespace-nowrap rounded-full border border-contrast-100 px-3 py-2 font-body text-sm font-normal ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 data-[disabled]:cursor-not-allowed data-[state=on]:border-foreground data-[state=off]:bg-background data-[state=on]:bg-foreground data-[state=on]:text-background data-[disabled]:opacity-50 data-[disabled]:hover:border-transparent data-[state=off]:hover:border-contrast-200 data-[state=off]:hover:bg-contrast-100"
+            className="whitespace-nowrap rounded-full border border-contrast-100 px-3 py-1.5 font-body text-sm font-normal leading-normal ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 data-[disabled]:cursor-not-allowed data-[state=on]:border-foreground data-[state=off]:bg-background data-[state=on]:bg-foreground data-[state=on]:text-background data-[disabled]:opacity-50 data-[disabled]:hover:border-transparent data-[state=off]:hover:border-contrast-200 data-[state=off]:hover:bg-contrast-100"
           >
             {option.label}
           </ToggleGroupPrimitive.Item>
