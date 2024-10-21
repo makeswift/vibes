@@ -6,27 +6,27 @@ import '@docsearch/css'
 import { DocSearch } from '@docsearch/react'
 
 import { ModeToggle } from '@/components/ui/mode-toggle'
-import { Search } from '@/icons/generated'
+import { Vibe } from '@/vibes/schema'
 
-import { Button } from '../ui/button'
 import { GroupLink } from './group-link'
 import { Link } from './link'
 import { MobileMenu } from './mobile-menu'
-import { navigation } from './navigation'
+import { getChapter } from './navigation'
 import { VibeSelect } from './vibe-select'
 
 interface Props {
   vibeSlug: string
+  vibes: Record<string, Vibe>
 }
 
-export function Header({ vibeSlug }: Props) {
-  const vibe = navigation.vibes.find(vibe => vibe.slug === vibeSlug)
+export function Header({ vibes, vibeSlug }: Props) {
+  const chapter = getChapter(vibes, vibeSlug)
 
   return (
     <header className="sticky top-0 z-[60] h-14 border-b border-dashed border-contrast-300 bg-background @container md:h-16">
       <div className="mx-auto flex h-full items-center justify-between px-3 xl:container md:px-5 xl:px-8">
         <div className="flex flex-1 items-center gap-x-2 md:gap-x-3">
-          <MobileMenu vibeSlug={vibeSlug} />
+          <MobileMenu vibes={vibes} vibeSlug={vibeSlug} />
 
           <Link href="/" className="shrink-0">
             <Image
@@ -44,15 +44,15 @@ export function Header({ vibeSlug }: Props) {
               <div className="mx-auto h-5 w-[1px] -skew-x-[20deg] bg-contrast-500" />
             </div>
 
-            <VibeSelect vibeSlug={vibeSlug} />
+            <VibeSelect vibes={vibes} vibeSlug={vibeSlug} />
           </div>
         </div>
 
         <nav className="hidden h-full gap-x-4 lg:flex">
-          {vibe?.groups.map(group => (
+          {chapter?.groups.map(group => (
             <GroupLink
               key={group.pages[0].slug}
-              vibe={vibe}
+              chapterSlug={vibeSlug}
               group={group}
               className="h-[calc(100%+1px)] place-content-center border-b-2 border-transparent"
             />

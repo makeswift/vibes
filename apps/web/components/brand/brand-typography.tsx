@@ -1,9 +1,7 @@
-import { getVibe } from '@/vibes/utils'
-
-import { Reveal } from '../ui/reveal'
+import { Vibe } from '@/vibes/schema'
 
 interface Props {
-  vibeSlug: string
+  vibe: Vibe
   brandName: string
 }
 
@@ -23,11 +21,7 @@ const sizes = [
   { variable: '--font-size-9xl', fontSize: '8rem', lineHeight: '115%' },
 ] as const
 
-export function BrandTypography({ vibeSlug, brandName }: Props) {
-  const vibe = getVibe(vibeSlug)
-
-  if (!vibe) return <div>Vibe: {vibeSlug} not found</div>
-
+export function BrandTypography({ vibe, brandName }: Props) {
   const brand = vibe.brands.find(brand => brand.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>

@@ -2,8 +2,7 @@
 
 import { Dispatch, SetStateAction, createContext, useContext, useState } from 'react'
 
-import { Brand } from '@/vibes/schema'
-import { getVibe } from '@/vibes/utils'
+import { Brand, Vibe } from '@/vibes/schema'
 
 type Context = {
   activeBrand?: Brand
@@ -16,10 +15,11 @@ const BrandContext = createContext<Context>({ setActiveBrand: () => {}, brands: 
 interface Props {
   children: React.ReactNode
   vibeSlug: string
+  vibes: Record<string, Vibe>
 }
 
-export function BrandProvider({ children, vibeSlug }: Props) {
-  const vibe = getVibe(vibeSlug)
+export function BrandProvider({ children, vibeSlug, vibes }: Props) {
+  const vibe = Object.values(vibes).find(v => v.slug === vibeSlug)
   const brands = vibe?.brands ?? []
   const [activeBrand, setActiveBrand] = useState(brands[0])
 

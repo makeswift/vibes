@@ -8,21 +8,20 @@ import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import ChevronDown12 from '@/icons/generated/ChevronDown12'
-import * as Vibes from '@/vibes'
+import { Vibe } from '@/vibes/schema'
 
 import { Button } from '../ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 
 interface Props {
   vibeSlug: string
+  vibes: Record<string, Vibe>
 }
 
-const vibes = Object.values(Vibes)
-
-export function VibeSelect({ vibeSlug }: Props) {
+export function VibeSelect({ vibes, vibeSlug }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const activeVibe = vibes.find(vibe => vibe.slug === vibeSlug)
+  const activeVibe = Object.values(vibes).find(vibe => vibe.slug === vibeSlug)
 
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', isOpen)
@@ -50,7 +49,7 @@ export function VibeSelect({ vibeSlug }: Props) {
         </SheetTrigger>
         <SheetContent side="top" className="z-20 focus:outline-none">
           <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-8 xl:container md:grid-cols-2 md:gap-y-10 lg:gap-x-8 lg:py-2 xl:px-8 2xl:grid-cols-3">
-            {Object.values(Vibes).map(vibe => (
+            {Object.values(vibes).map(vibe => (
               <div key={vibe.slug}>
                 <Link
                   href={`/docs/${vibe.slug}`}
@@ -101,7 +100,7 @@ export function VibeSelect({ vibeSlug }: Props) {
         </SheetContent>
       </Sheet>
       <div className="hidden" aria-hidden="true">
-        {Object.values(Vibes).map(vibe => (
+        {Object.values(vibes).map(vibe => (
           <Image
             key={vibe.slug}
             fill

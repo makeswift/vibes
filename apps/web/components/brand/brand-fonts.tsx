@@ -1,9 +1,7 @@
-import localFont from 'next/font/local'
-
-import { getVibe } from '@/vibes/utils'
+import { Vibe } from '@/vibes/schema'
 
 interface Props {
-  vibeSlug: string
+  vibe: Vibe
   brandName: string
   fonts: {
     body: string
@@ -12,11 +10,7 @@ interface Props {
   }
 }
 
-export function BrandFonts({ vibeSlug, brandName, fonts }: Props) {
-  const vibe = getVibe(vibeSlug)
-
-  if (!vibe) return <div>Vibe: {vibeSlug} not found</div>
-
+export function BrandFonts({ vibe, brandName, fonts }: Props) {
   const brand = vibe.brands.find(brand => brand.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>

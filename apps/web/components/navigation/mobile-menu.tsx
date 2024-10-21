@@ -3,17 +3,20 @@ import { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
+import { Vibe } from '@/vibes/schema'
+
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
-import { navigation } from './navigation'
+import { getChapter } from './navigation'
 import { PageLink } from './page-link'
 
 interface Props {
   vibeSlug: string
+  vibes: Record<string, Vibe>
 }
 
-export function MobileMenu({ vibeSlug }: Props) {
+export function MobileMenu({ vibes, vibeSlug }: Props) {
   const [isOpen, setIsOpen] = useState(false)
-  const vibe = navigation.vibes.find(vibe => vibe.slug === vibeSlug)
+  const chapter = getChapter(vibes, vibeSlug)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -24,7 +27,7 @@ export function MobileMenu({ vibeSlug }: Props) {
     setIsOpen(false)
   }, [pathname])
 
-  if (!vibe) return null
+  if (!chapter) return null
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -50,14 +53,14 @@ export function MobileMenu({ vibeSlug }: Props) {
       </SheetTrigger>
       <SheetContent side="left" className="w-full md:w-72">
         <div className="space-y-4 text-foreground">
-          {vibe?.groups.map(group => (
+          {chapter?.groups.map(group => (
             <div key={group.title}>
               <div className="pb-1.5 text-sm font-bold leading-normal">{group.title}</div>
 
               <ul>
                 {group.pages.map(page => (
                   <li key={page.slug}>
-                    <PageLink className="block py-1.5" vibe={vibe} page={page} />
+                    <PageLink className="block py-1.5" chapterSlug={vibeSlug} page={page} />
                   </li>
                 ))}
               </ul>

@@ -2,7 +2,7 @@ import localFont from 'next/font/local'
 
 import { CodeBlock } from '@/components/ui/code-block'
 import { Reveal } from '@/components/ui/reveal'
-import { getVibe } from '@/vibes/utils'
+import { Vibe } from '@/vibes/schema'
 
 import { Step, Steps } from '../ui/steps'
 
@@ -19,7 +19,7 @@ export type Font =
     }
 
 interface Props {
-  vibeSlug: string
+  vibe: Vibe
   brandName: string
   fonts: {
     body: Font
@@ -81,11 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }'`
 }
 
-export function BrandInstallation({ vibeSlug, brandName, fonts }: Props) {
-  const vibe = getVibe(vibeSlug)
-
-  if (!vibe) return <div>Vibe: {vibeSlug} not found</div>
-
+export function BrandInstallation({ vibe, brandName, fonts }: Props) {
   const brand = vibe.brands.find(brand => brand.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>

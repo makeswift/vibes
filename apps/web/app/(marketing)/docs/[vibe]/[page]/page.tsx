@@ -17,7 +17,7 @@ import {
   Colors,
 } from '@/components/brand'
 import * as MDXComponents from '@/components/mdx'
-import { navigation } from '@/components/navigation'
+import { mapVibesToNavigation } from '@/components/navigation'
 import { Preview } from '@/components/preview'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
@@ -37,6 +37,7 @@ import { ZoomImage } from '@/components/ui/zoom-image'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getTotalSize } from '@/lib/bundle'
 import { theme, transformers } from '@/lib/shiki'
+import * as Vibes from '@/vibes'
 import { pageMetaSchema } from '@/vibes/schema'
 import { getVibe } from '@/vibes/utils'
 
@@ -48,8 +49,12 @@ interface PageMeta {
 }
 
 export async function generateStaticParams() {
-  return navigation.vibes.flatMap(vibe =>
-    vibe.groups.flatMap(group => group.pages.map(page => ({ vibe: vibe.slug, page: page.slug })))
+  const navigation = mapVibesToNavigation(Vibes)
+
+  return navigation.chapters.flatMap(chapter =>
+    chapter.groups.flatMap(group =>
+      group.pages.map(page => ({ vibe: chapter.slug, page: page.slug }))
+    )
   )
 }
 
@@ -129,22 +134,22 @@ export default async function Page({ params }: { params: { vibe: string; page: s
         )
       },
       BrandColors: function BrandColorsWithoutVibeSlug(props) {
-        return <BrandColors {...props} vibeSlug={vibe.slug} />
+        return <BrandColors {...props} vibe={vibe} />
       },
       BrandInstallation: function BrandInstallationWithoutVibeSlug(props) {
-        return <BrandInstallation {...props} vibeSlug={vibe.slug} />
+        return <BrandInstallation {...props} vibe={vibe} />
       },
       BrandTypography: function BrandTypographyWithoutVibeSlug(props) {
-        return <BrandTypography {...props} vibeSlug={vibe.slug} />
+        return <BrandTypography {...props} vibe={vibe} />
       },
       BrandFonts: function BrandTypographyWithoutVibeSlug(props) {
-        return <BrandFonts {...props} vibeSlug={vibe.slug} />
+        return <BrandFonts {...props} vibe={vibe} />
       },
       CodeFromFile: function CodeFromFileWithoutBasePath(props) {
         return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
       },
       Preview: function PreviewWithoutVibeSlug(props) {
-        return <Preview {...props} vibeSlug={vibe.slug} />
+        return <Preview {...props} vibe={vibe} />
       },
     },
   })
@@ -170,7 +175,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
         )}
 
         {meta.preview && (
-          <Preview vibeSlug={vibe.slug} componentName={meta.preview} size={meta.previewSize} />
+          <Preview vibe={vibe} componentName={meta.preview} size={meta.previewSize} />
         )}
 
         <div className="mt-8 gap-x-20 font-sans text-foreground md:mt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
@@ -204,7 +209,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
               </ul>
             )}
 
-            {page.component && <Installation vibeSlug={vibe.slug} componentName={page.component} />}
+            {page.component && <Installation vibe={vibe} componentName={page.component} />}
 
             {content}
 
