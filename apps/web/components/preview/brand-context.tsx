@@ -6,7 +6,7 @@ import { Brand, Vibe } from '@/vibes/schema'
 
 type Context = {
   activeBrand?: Brand
-  setActiveBrand: Dispatch<SetStateAction<Brand | undefined>>
+  setActiveBrand: Dispatch<SetStateAction<Brand>>
   brands: Brand[]
 }
 
@@ -14,13 +14,10 @@ const BrandContext = createContext<Context>({ setActiveBrand: () => {}, brands: 
 
 interface Props {
   children: React.ReactNode
-  vibeSlug: string
-  vibes: Record<string, Vibe>
+  brands: Brand[]
 }
 
-export function BrandProvider({ children, vibeSlug, vibes }: Props) {
-  const vibe = Object.values(vibes).find(v => v.slug === vibeSlug)
-  const brands = vibe?.brands ?? []
+export function BrandProvider({ children, brands }: Props) {
   const [activeBrand, setActiveBrand] = useState(brands[0])
 
   return (

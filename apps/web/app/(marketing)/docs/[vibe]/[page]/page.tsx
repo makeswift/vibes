@@ -17,7 +17,7 @@ import {
   Colors,
 } from '@/components/brand'
 import * as MDXComponents from '@/components/mdx'
-import { mapVibesToNavigation } from '@/components/navigation'
+import { toChapter } from '@/components/navigation'
 import { Preview } from '@/components/preview'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
@@ -48,10 +48,10 @@ interface PageMeta {
   icon?: string
 }
 
-export async function generateStaticParams() {
-  const navigation = mapVibesToNavigation(Vibes)
+const chapters = Object.values(Vibes).map(toChapter)
 
-  return navigation.chapters.flatMap(chapter =>
+export async function generateStaticParams() {
+  return chapters.flatMap(chapter =>
     chapter.groups.flatMap(group =>
       group.pages.map(page => ({ vibe: chapter.slug, page: page.slug }))
     )
@@ -134,16 +134,16 @@ export default async function Page({ params }: { params: { vibe: string; page: s
         )
       },
       BrandColors: function BrandColorsWithoutVibeSlug(props) {
-        return <BrandColors {...props} vibe={vibe} />
+        return <BrandColors {...props} brands={vibe.brands} />
       },
       BrandInstallation: function BrandInstallationWithoutVibeSlug(props) {
-        return <BrandInstallation {...props} vibe={vibe} />
+        return <BrandInstallation {...props} brands={vibe.brands} />
       },
       BrandTypography: function BrandTypographyWithoutVibeSlug(props) {
-        return <BrandTypography {...props} vibe={vibe} />
+        return <BrandTypography {...props} brands={vibe.brands} />
       },
       BrandFonts: function BrandTypographyWithoutVibeSlug(props) {
-        return <BrandFonts {...props} vibe={vibe} />
+        return <BrandFonts {...props} brands={vibe.brands} />
       },
       CodeFromFile: function CodeFromFileWithoutBasePath(props) {
         return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />

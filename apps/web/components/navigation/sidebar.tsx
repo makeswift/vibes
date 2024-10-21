@@ -1,18 +1,11 @@
-import { Vibe } from '@/vibes/schema'
-
-import { getChapter } from './navigation'
+import { Chapter } from './navigation'
 import { PageLink } from './page-link'
 
 interface Props {
-  vibeSlug: string
-  vibes: Record<string, Vibe>
+  chapter: Chapter
 }
 
-export function Sidebar({ vibes, vibeSlug }: Props) {
-  const chapter = getChapter(vibes, vibeSlug)
-
-  if (!chapter) return null
-
+export function Sidebar({ chapter }: Props) {
   return (
     <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-56 shrink-0 xl:block">
       <ul className="h-full space-y-5 overflow-y-auto py-10 text-foreground">
@@ -21,7 +14,7 @@ export function Sidebar({ vibes, vibeSlug }: Props) {
             <div className="mb-2.5 text-sm font-bold">{group.title}</div>
             {group.pages.map(page => (
               <li key={page.slug} className="[&_a]:block [&_a]:py-1.5">
-                <PageLink chapterSlug={vibeSlug} page={page} />
+                <PageLink chapterSlug={chapter.slug} page={page} />
               </li>
             ))}
           </div>

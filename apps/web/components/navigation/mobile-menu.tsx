@@ -3,20 +3,16 @@ import { useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
-import { Vibe } from '@/vibes/schema'
-
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
-import { getChapter } from './navigation'
+import { Chapter } from './navigation'
 import { PageLink } from './page-link'
 
 interface Props {
-  vibeSlug: string
-  vibes: Record<string, Vibe>
+  chapter?: Chapter
 }
 
-export function MobileMenu({ vibes, vibeSlug }: Props) {
+export function MobileMenu({ chapter }: Props) {
   const [isOpen, setIsOpen] = useState(false)
-  const chapter = getChapter(vibes, vibeSlug)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -60,7 +56,7 @@ export function MobileMenu({ vibes, vibeSlug }: Props) {
               <ul>
                 {group.pages.map(page => (
                   <li key={page.slug}>
-                    <PageLink className="block py-1.5" chapterSlug={vibeSlug} page={page} />
+                    <PageLink className="block py-1.5" chapterSlug={chapter.slug} page={page} />
                   </li>
                 ))}
               </ul>

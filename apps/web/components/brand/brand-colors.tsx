@@ -1,7 +1,7 @@
 import color from 'color'
 
 import { CopyButton } from '@/components/ui/copy-button'
-import { Vibe } from '@/vibes/schema'
+import { Brand, Vibe } from '@/vibes/schema'
 
 interface Color {
   name: string
@@ -55,8 +55,8 @@ const neutralColors = [
   '--background',
 ] as const
 
-export function BrandColors({ vibe, brandName }: { vibe: Vibe; brandName: string }) {
-  const brand = vibe.brands.find(brand => brand.name === brandName)
+export function BrandColors({ brands, brandName }: { brands: Brand[]; brandName: string }) {
+  const brand = brands.find(brand => brand.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>
 

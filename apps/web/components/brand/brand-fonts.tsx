@@ -1,7 +1,7 @@
-import { Vibe } from '@/vibes/schema'
+import { Brand } from '@/vibes/schema'
 
 interface Props {
-  vibe: Vibe
+  brands: Brand[]
   brandName: string
   fonts: {
     body: string
@@ -10,8 +10,8 @@ interface Props {
   }
 }
 
-export function BrandFonts({ vibe, brandName, fonts }: Props) {
-  const brand = vibe.brands.find(brand => brand.name === brandName)
+export function BrandFonts({ brands, brandName, fonts }: Props) {
+  const brand = brands.find(brand => brand.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>
 

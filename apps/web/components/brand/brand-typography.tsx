@@ -1,7 +1,7 @@
-import { Vibe } from '@/vibes/schema'
+import { Brand } from '@/vibes/schema'
 
 interface Props {
-  vibe: Vibe
+  brands: Brand[]
   brandName: string
 }
 
@@ -21,8 +21,8 @@ const sizes = [
   { variable: '--font-size-9xl', fontSize: '8rem', lineHeight: '115%' },
 ] as const
 
-export function BrandTypography({ vibe, brandName }: Props) {
-  const brand = vibe.brands.find(brand => brand.name === brandName)
+export function BrandTypography({ brands, brandName }: Props) {
+  const brand = brands.find(brand => brand.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>
 

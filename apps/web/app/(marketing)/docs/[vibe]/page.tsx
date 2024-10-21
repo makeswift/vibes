@@ -1,16 +1,16 @@
 import { notFound, redirect } from 'next/navigation'
 
-import { getChapter, mapVibesToNavigation } from '@/components/navigation'
+import { toChapter } from '@/components/navigation'
 import * as Vibes from '@/vibes'
 
-export async function generateStaticParams() {
-  const navigation = mapVibesToNavigation(Vibes)
+const chapters = Object.values(Vibes).map(toChapter)
 
-  return navigation.chapters.map(vibe => ({ vibe: vibe.slug }))
+export async function generateStaticParams() {
+  return chapters.map(vibe => ({ vibe: vibe.slug }))
 }
 
 export default function Page({ params }: { params: { vibe: string } }) {
-  const chapter = getChapter(Vibes, params.vibe)
+  const chapter = chapters.find(c => c.slug === params.vibe)
 
   if (!chapter) return notFound()
 

@@ -1,4 +1,4 @@
-import { Vibe } from '@/vibes/schema'
+import { Vibe, Navigation as VibeNavigation } from '@/vibes/schema'
 
 export type Link = {
   title: string
@@ -18,6 +18,13 @@ export type Group = {
 export type Chapter = {
   name: string
   slug: string
+  description: string
+  tags: string[]
+  thumbnail: string
+  author: {
+    name: string
+    url: string
+  }
   groups: Group[]
 }
 
@@ -26,23 +33,28 @@ export type Navigation = {
   chapters: Chapter[]
 }
 
-export function mapVibesToNavigation(vibes: Record<string, Vibe>): Navigation {
+export function toChapter({
+  name,
+  slug,
+  description,
+  tags,
+  thumbnail,
+  author,
+  navigation,
+}: Vibe): Chapter {
   return {
-    links: [],
-    chapters: Object.values(vibes).map(registry => ({
-      name: registry.name,
-      slug: registry.slug,
-      groups: registry.navigation.map(group => ({
-        title: group.title,
-        pages: group.pages.map(page => ({
-          title: page.title,
-          slug: page.slug,
-        })),
+    name,
+    slug,
+    description,
+    tags,
+    thumbnail,
+    author,
+    groups: navigation.map(group => ({
+      title: group.title,
+      pages: group.pages.map(page => ({
+        title: page.title,
+        slug: page.slug,
       })),
     })),
   }
-}
-
-export function getChapter(vibes: Record<string, Vibe>, slug: string): Chapter | undefined {
-  return mapVibesToNavigation(vibes).chapters.find(vibe => vibe.slug === slug)
 }

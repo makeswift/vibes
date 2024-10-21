@@ -1,5 +1,7 @@
 import { lazy } from 'react'
 
+import 'server-only'
+
 import { Components } from '@/vibes/schema'
 
 export const examples = [
