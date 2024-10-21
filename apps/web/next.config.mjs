@@ -11,7 +11,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
   images: {
-    domains: ['images.unsplash.com', 'rstr.in', 'images.pexels.com'],
+    domains: ['images.unsplash.com', 'rstr.in', 'images.pexels.com', 'storage.googleapis.com'],
   },
   eslint: {
     ignoreDuringBuilds: true,
