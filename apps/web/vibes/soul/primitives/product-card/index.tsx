@@ -4,27 +4,31 @@ import Link from 'next/link'
 import { clsx } from 'clsx'
 
 import { Badge } from '@/vibes/soul/primitives/badge'
-import { ProductCardProduct } from '@/vibes/soul/types'
+import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label'
 
 import { Compare } from './compare'
-import { Price } from './price'
 
-export interface Props extends ProductCardProduct {
+export type CardProduct = {
+  id: string
+  title: string
+  href: string
+  image?: { src: string; alt: string }
+  price?: Price
+  subtitle?: string
+  badge?: string
+  rating?: number
+}
+
+type Props = {
   className?: string
   showCompare?: boolean
   compareLabel?: string
   compareParamName?: string
-  href: string
+  product: CardProduct
 }
 
 export function ProductCard({
-  id,
-  title,
-  href,
-  image,
-  price,
-  subtitle,
-  badge,
+  product: { id, title, subtitle, badge, price, image, href },
   className,
   showCompare = false,
   compareLabel,
@@ -66,7 +70,7 @@ export function ProductCard({
             {subtitle != null && subtitle !== '' && (
               <span className="block text-sm font-normal text-contrast-400">{subtitle}</span>
             )}
-            {price != null && <Price price={price} />}
+            {price != null && <PriceLabel price={price} />}
           </Link>
         </div>
 

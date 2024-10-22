@@ -5,11 +5,12 @@ import {
   CarouselItem,
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
-import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
-import { ProductCardProduct } from '@/vibes/soul/types'
+import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
+
+export type CarouselProduct = CardProduct
 
 interface Props {
-  products: ProductCardProduct[]
+  products: CarouselProduct[]
   className?: string
 }
 
@@ -20,7 +21,7 @@ export function ProductsCarousel({ products, className }: Props) {
         {products.length > 0
           ? products.map(product => (
               <CarouselItem key={product.id} className="basis-full @md:basis-1/2 @xl:basis-1/4">
-                <ProductCard {...product} />
+                <ProductCard product={product} />
               </CarouselItem>
             ))
           : Array.from({ length: 5 }).map((_, index) => (

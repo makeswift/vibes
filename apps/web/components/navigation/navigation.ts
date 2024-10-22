@@ -1,4 +1,4 @@
-import * as Index from '@/vibes'
+import { Vibe, Navigation as VibeNavigation } from '@/vibes/schema'
 
 export type Link = {
   title: string
@@ -15,28 +15,46 @@ export type Group = {
   pages: Page[]
 }
 
-export type Vibe = {
+export type Chapter = {
   name: string
   slug: string
+  description: string
+  tags: string[]
+  thumbnail: string
+  author: {
+    name: string
+    url: string
+  }
   groups: Group[]
 }
 
 export type Navigation = {
   links: Link[]
-  vibes: Vibe[]
+  chapters: Chapter[]
 }
 
-export const navigation = {
-  links: [],
-  vibes: Object.values(Index).map(registry => ({
-    name: registry.name,
-    slug: registry.slug,
-    groups: registry.navigation.map(group => ({
+export function toChapter({
+  name,
+  slug,
+  description,
+  tags,
+  thumbnail,
+  author,
+  navigation,
+}: Vibe): Chapter {
+  return {
+    name,
+    slug,
+    description,
+    tags,
+    thumbnail,
+    author,
+    groups: navigation.map(group => ({
       title: group.title,
       pages: group.pages.map(page => ({
         title: page.title,
         slug: page.slug,
       })),
     })),
-  })),
-} satisfies Navigation
+  }
+}

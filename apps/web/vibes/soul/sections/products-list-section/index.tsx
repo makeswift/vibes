@@ -1,26 +1,25 @@
-import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
-import { ProductsList } from '@/vibes/soul/primitives/products-list'
-import {
-  Breadcrumb,
-  Filter,
-  Pages,
-  ProductCardProduct,
-  Option as SortOption,
-} from '@/vibes/soul/types'
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
+import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
 
-import { FiltersPanel } from './filters-panel'
+import { Filter, FiltersPanel } from './filters-panel'
 import { MobileFilters } from './mobile-filters'
 import { Pagination, PaginationInfo } from './pagination'
+import { Option as SortOption } from './sorting'
 import { Sorting } from './sorting'
 
+interface Pages {
+  name: string
+  previousPage?: string
+  nextPage?: string
+}
 interface Props {
   breadcrumbs?: Breadcrumb[]
   title?: Promise<string> | string
   totalCount: Promise<number> | number
-  products: Promise<ProductCardProduct[]> | ProductCardProduct[]
+  products: Promise<ListProduct[]> | ListProduct[]
   filters: Promise<Filter[]> | Filter[]
   sortOptions: Promise<SortOption[]> | SortOption[]
-  compareProducts?: Promise<ProductCardProduct[]> | ProductCardProduct[]
+  compareProducts?: Promise<ListProduct[]> | ListProduct[]
   pagination?: Promise<Pages> | Pages
   paginationInfo?: Promise<PaginationInfo> | PaginationInfo
   compareLabel?: string

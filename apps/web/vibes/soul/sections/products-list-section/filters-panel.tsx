@@ -7,11 +7,40 @@ import { parseAsArrayOf, parseAsInteger, parseAsString, useQueryStates } from 'n
 
 import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
 import { Button } from '@/vibes/soul/primitives/button'
-import { Filter } from '@/vibes/soul/types'
 
 import { FilterRange } from './filter-range'
 import { FilterRating } from './filter-rating'
 import { FilterToggleGroup } from './filter-toggle-group'
+
+export interface ToggleGroupFilter {
+  type: 'toggle-group'
+  paramName: string
+  label: string
+  options: { label: string; value: string }[]
+}
+
+export interface RatingFilter {
+  type: 'rating'
+  paramName: string
+  label: string
+}
+
+export interface RangeFilter {
+  type: 'range'
+  label: string
+  minParamName: string
+  maxParamName: string
+  min?: number
+  max?: number
+  minLabel?: string
+  maxLabel?: string
+  minPrepend?: React.ReactNode
+  maxPrepend?: React.ReactNode
+  minPlaceholder?: string
+  maxPlaceholder?: string
+}
+
+export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter
 
 interface Props {
   className?: string

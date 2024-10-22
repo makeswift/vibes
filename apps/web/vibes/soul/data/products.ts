@@ -1,6 +1,7 @@
-import { Brand, ProductCardProduct } from '@/vibes/soul/types'
+import { SoulBrandName } from '../brands'
+import { CardProduct } from '../primitives/product-card'
 
-export function getProducts(brand: Brand): ProductCardProduct[] {
+export function getProducts(brand: SoulBrandName): CardProduct[] {
   return products[brand]
 }
 
@@ -17,6 +18,7 @@ const products = {
         alt: 'Philodendron Imperial Red',
       },
       href: '#',
+      rating: 4,
     },
     {
       id: '2',
@@ -29,6 +31,7 @@ const products = {
         alt: 'Monstera',
       },
       href: '#',
+      rating: 4.4,
     },
     {
       id: '3',
@@ -41,6 +44,7 @@ const products = {
         alt: 'Pink Caladium',
       },
       href: '#',
+      rating: 4.8,
     },
     {
       id: '4',
@@ -53,6 +57,7 @@ const products = {
         alt: 'Hoya Kerrii',
       },
       href: '#',
+      rating: 2.2,
     },
     {
       id: '5',
@@ -65,6 +70,7 @@ const products = {
         alt: 'Bird Nest Fern',
       },
       href: '#',
+      rating: 3.5,
     },
     {
       id: '6',
@@ -77,54 +83,55 @@ const products = {
         alt: 'Jade Plant',
       },
       href: '#',
+      rating: 5,
     },
   ],
   Luxury: [
     {
       id: '1',
-      title: 'JADA SQUARE TOE BALLET FLAT',
+      title: 'Jada Square Toe Ballet Flat',
       subtitle: '',
       badge: 'Bestseller',
       price: '$350',
       image: {
         src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-        alt: 'JADA SQUARE TOE BALLET FLAT',
+        alt: 'Jada Square Toe Ballet Flat',
       },
       href: '#',
     },
     {
       id: '2',
-      title: 'JAYLA WOVEN BALLET HEEL',
+      title: 'Jayla Woven Ballet Heel',
       subtitle: '',
       badge: 'Bestseller',
       price: '$395',
       image: {
         src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT',
-        alt: 'JAYLA WOVEN BALLET HEEL',
+        alt: 'Jayla Woven Ballet Heel',
       },
       href: '#',
     },
     {
       id: '3',
-      title: 'JESSIE BALLET FLAT',
+      title: 'Jessie Ballet Flat',
       subtitle: '',
       badge: 'Bestseller',
       price: '$450',
       image: {
         src: 'https://rstr.in/monogram/vibes/1ipihAyvRQj',
-        alt: 'JESSIE BALLET FLAT',
+        alt: 'Jessie Ballet Flat',
       },
       href: '#',
     },
     {
       id: '4',
-      title: 'LEIGHTON SOFT LEATHER LOAFER',
+      title: 'Leighton Soft Leather Loafer',
       subtitle: '',
       badge: 'Almost Gone',
       price: '$350',
       image: {
         src: 'https://rstr.in/monogram/vibes/YfQW8M1Gv2H/zTWKcqJrdIu',
-        alt: 'LEIGHTON SOFT LEATHER LOAFER',
+        alt: 'Leighton Soft Leather Loafer',
       },
       href: '#',
     },
@@ -227,4 +234,4 @@ const products = {
       href: '#',
     },
   ],
-} as const satisfies Record<Brand, [ProductCardProduct, ...ProductCardProduct[]]>
+} as const satisfies Record<SoulBrandName, [CardProduct, ...CardProduct[]]>

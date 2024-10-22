@@ -1,6 +1,7 @@
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
 import { headerLinks, logo } from '@/vibes/soul/examples/sections/header/electric'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
 import {
@@ -16,7 +17,6 @@ import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/so
 import { Header } from '@/vibes/soul/sections/header'
 import { NotFound } from '@/vibes/soul/sections/not-found'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
-import { ProductCardProduct } from '@/vibes/soul/types'
 
 const socialMediaLinks = [
   {
@@ -55,7 +55,7 @@ const locales = [
 ]
 
 // Products
-export const products: ProductCardProduct[] = [
+export const products: CardProduct[] = [
   {
     id: '1',
     title: 'Heart to Heart',

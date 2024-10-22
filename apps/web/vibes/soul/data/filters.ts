@@ -1,6 +1,8 @@
-import { Brand, Filter } from '@/vibes/soul/types'
+import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
 
-export function getFilters(brand: Brand): Filter[] {
+import { SoulBrandName } from '../brands'
+
+export function getFilters(brand: SoulBrandName): Filter[] {
   return filters[brand]
 }
 
@@ -126,4 +128,4 @@ const filters = {
       type: 'rating',
     },
   ],
-} as const satisfies Record<Brand, [Filter, ...Filter[]]>
+} as const satisfies Record<SoulBrandName, [Filter, ...Filter[]]>

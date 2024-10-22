@@ -1,4 +1,4 @@
-import { Option } from '@/vibes/soul/types'
+import { Option } from '@/vibes/soul/sections/products-list-section/sorting'
 
 export function getSortOptions(): Option[] {
   return [

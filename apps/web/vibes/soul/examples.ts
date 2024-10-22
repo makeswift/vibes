@@ -1,5 +1,7 @@
 import { lazy } from 'react'
 
+import 'server-only'
+
 import { Components } from '@/vibes/schema'
 
 export const examples = [
@@ -641,13 +643,6 @@ export const examples = [
     registryDependencies: ['reviews'],
     files: ['examples/sections/reviews/index.tsx'],
     component: lazy(() => import('./examples/sections/reviews')),
-  },
-  {
-    name: 'slide-carousel-example',
-    dependencies: [],
-    registryDependencies: ['slide-carousel'],
-    files: ['examples/sections/slide-carousel/index.tsx'],
-    component: lazy(() => import('./examples/sections/slide-carousel')),
   },
   {
     name: 'slideshow-electric-example',
