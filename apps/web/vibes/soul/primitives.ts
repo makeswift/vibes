@@ -156,21 +156,6 @@ export const primitives = [
     files: ['primitives/rating/index.tsx'],
   },
   {
-<<<<<<< HEAD:apps/web/vibes/soul/primitives.ts
-=======
-    name: 'reviews',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['sections/reviews/index.tsx'],
-  },
-  {
-    name: 'slideshow',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/slideshow/index.tsx'],
-  },
-  {
->>>>>>> b852f203b8c4d9b98b6544bb815f49648e31be86:apps/web/vibes/soul/components.ts
     name: 'spinner',
     dependencies: ['clsx'],
     registryDependencies: [],
