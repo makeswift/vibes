@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import clsx from 'clsx'
 
@@ -12,6 +12,37 @@ import ChevronDown12 from '@/icons/generated/ChevronDown12'
 import { Button } from '../ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 import { Chapter } from './navigation'
+
+type ComingSoonChapter = Pick<
+  Chapter,
+  'name' | 'slug' | 'description' | 'author' | 'thumbnail' | 'tags'
+>
+
+const comingSoonChapters = [
+  {
+    name: '2px',
+    slug: '2px',
+    author: {
+      name: 'Tinloof',
+      url: 'https://tinloof.com',
+    },
+    description: 'A 2px vibe.',
+    thumbnail: '/2px/thumbnail.png',
+    tags: ['Ecommerce'],
+  },
+  {
+    name: 'Eclipse',
+    slug: 'eclipse',
+    author: {
+      name: 'Makeswift',
+      url: 'https://makeswift.com',
+    },
+    description:
+      'A modern dark mode SaaS website vibe inspired by Linear, featuring minimalistic design, background textures, translucent foreground elements, and animated glow effects.',
+    thumbnail: '/eclipse/thumbnail.png',
+    tags: ['SaaS'],
+  },
+] as const satisfies ComingSoonChapter[]
 
 interface Props {
   chapterSlug: string
@@ -22,6 +53,13 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const activeVibe = Object.values(chapters).find(chapter => chapter.slug === chapterSlug)
+  const allChapters = useMemo(
+    () => [
+      ...chapters.map(chapter => ({ ...chapter, comingSoon: false })),
+      ...comingSoonChapters.map(chapter => ({ ...chapter, comingSoon: true })),
+    ],
+    [chapters]
+  )
 
   useEffect(() => {
     document.body.classList.toggle('overflow-hidden', isOpen)
@@ -49,20 +87,32 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
         </SheetTrigger>
         <SheetContent side="top" className="z-20 focus:outline-none">
           <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-8 xl:container md:grid-cols-2 md:gap-y-10 lg:gap-x-8 lg:py-2 xl:px-8 2xl:grid-cols-3">
-            {Object.values(chapters).map(chapter => (
+            {Object.values(allChapters).map(chapter => (
               <div key={chapter.slug}>
                 <Link
                   href={`/docs/${chapter.slug}`}
-                  className="group ring-primary ring-offset-8 focus:outline-none focus-visible:ring-2"
+                  aria-disabled={chapter.comingSoon}
+                  className={clsx(
+                    'group ring-primary ring-offset-8 focus:outline-none focus-visible:ring-2',
+                    chapter.comingSoon && 'pointer-events-none'
+                  )}
                 >
                   <div className="relative mb-4 aspect-video">
+                    {chapter.comingSoon && (
+                      <span className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold text-white">
+                        Coming Soon!
+                      </span>
+                    )}
                     <div className="marching-ants absolute inset-0 border border-dashed border-transparent bg-transparent opacity-50 transition-all [animation-play-state:paused] group-hover:-inset-1 group-hover:opacity-100 group-hover:[animation-play-state:running]" />
                     <Image
                       fill
                       priority
                       src={chapter.thumbnail}
                       alt={`Thumbnail of ${chapter.name} chapter`}
-                      className="border border-contrast-200 bg-contrast-100"
+                      className={clsx(
+                        'border border-contrast-200 bg-contrast-100 object-cover',
+                        chapter.comingSoon && 'opacity-50'
+                      )}
                     />
                   </div>
                 </Link>
