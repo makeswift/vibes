@@ -167,7 +167,7 @@ export const Header = forwardRef(function Header(
       >
         <nav
           className="relative grid h-[60px] grid-cols-[1fr,2fr,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] @4xl:mx-5 
-          @4xl:rounded-3xl md:grid-cols-[1fr,1fr,1fr]"
+          @4xl:rounded-2xl md:grid-cols-[1fr,1fr,1fr]"
         >
           {/* Top Level Nav Links */}
           <ul className="relative flex items-stretch pl-2.5" ref={container}>
@@ -278,12 +278,12 @@ export const Header = forwardRef(function Header(
                     strokeWidth={1.5}
                   />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="z-50 mt-4 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:-ml-14 @4xl:w-32 @4xl:rounded-3xl @4xl:p-4">
+                <DropdownMenuContent className="z-50 mt-4 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:-ml-14 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2">
                   {locales.map(({ id, language }) => (
                     <DropdownMenuItem
                       className={clsx(
-                        'cursor-default rounded-xl px-3 py-2 text-sm font-medium uppercase text-contrast-400 outline-none transition-colors',
-                        'hover:text-foreground focus:bg-contrast-100 @4xl:text-base',
+                        'cursor-default rounded-lg px-3 py-2 text-sm font-medium uppercase text-contrast-400 outline-none transition-colors',
+                        'hover:text-foreground focus:bg-contrast-100',
                         { 'text-foreground': selectedLanguage === language }
                       )}
                       key={id}
@@ -305,7 +305,7 @@ export const Header = forwardRef(function Header(
         {/* Search Dropdown */}
         <div
           className={clsx(
-            'absolute inset-x-0 mx-1.5 mt-1.5 overflow-y-auto rounded-3xl shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5',
+            'absolute inset-x-0 mx-1.5 mt-1.5 overflow-y-auto rounded-2xl shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5',
             searchOpen
               ? 'scale-100 bg-background opacity-100'
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
@@ -354,7 +354,67 @@ export const Header = forwardRef(function Header(
             <div className="flex w-full flex-col gap-5 p-5">
               <span className="font-mono text-sm uppercase">Products</span>
               <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
-                {Array.from({ length: 4 }).map((_, i) => (
+                <ProductCard
+                  key="1"
+                  product={{
+                    id: '1',
+                    title: 'Philodendron Imperial Red',
+                    subtitle: 'Indoor Plant',
+                    badge: 'Popular',
+                    price: '$44.95',
+                    image: {
+                      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+                      alt: 'Philodendron Imperial Red',
+                    },
+                    href: '#',
+                  }}
+                />
+                <ProductCard
+                  key="2"
+                  product={{
+                    id: '2',
+                    title: 'Monstera',
+                    subtitle: 'Indoor Plant',
+                    badge: 'New',
+                    price: '$24.99',
+                    image: {
+                      src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
+                      alt: 'Monstera',
+                    },
+                    href: '#',
+                  }}
+                />
+                <ProductCard
+                  key="3"
+                  product={{
+                    id: '3',
+                    title: 'Pink Caladium',
+                    subtitle: 'Indoor Plant',
+                    // badge: 'New',
+                    price: '$19.95',
+                    image: {
+                      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
+                      alt: 'Pink Caladium',
+                    },
+                    href: '#',
+                  }}
+                />
+                <ProductCard
+                  key="4"
+                  product={{
+                    id: '4',
+                    title: 'Hoya Kerrii',
+                    subtitle: 'Indoor Plant',
+                    // badge: 'New',
+                    price: '$16.99',
+                    image: {
+                      src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
+                      alt: 'Hoya Kerrii',
+                    },
+                    href: '#',
+                  }}
+                />
+                {/* {Array.from({ length: 4 }).map((_, i) => (
                   <ProductCard
                     key={`Product ${i + 1}`}
                     product={{
@@ -364,7 +424,7 @@ export const Header = forwardRef(function Header(
                       price: '$123.99',
                     }}
                   />
-                ))}
+                ))} */}
               </div>
             </div>
           </div>

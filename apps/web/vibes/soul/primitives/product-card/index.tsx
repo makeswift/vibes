@@ -56,7 +56,7 @@ export function ProductCard({
             </div>
           )}
           {badge != null && badge !== '' && (
-            <Badge variant="square" className="absolute left-3 top-3">
+            <Badge variant="rounded" className="absolute left-3 top-3">
               {badge}
             </Badge>
           )}
