@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
+import * as Accordion from '@/vibes/soul/primitives/accordion'
 
 export type AccordionItem = {
   title: string
@@ -20,13 +20,13 @@ export function ProductDescription({ accordions, image, video }: Readonly<Props>
   return (
     <div className="bg-background @container">
       <div className="relative mx-auto flex w-full max-w-screen-2xl flex-col-reverse items-start justify-between gap-x-4 gap-y-4 py-6 @lg:flex-row @lg:px-6 @lg:py-24 @xl:gap-x-10 @5xl:px-20 @7xl:gap-x-32">
-        <Accordions className="px-5 @lg:sticky @lg:top-20" type="multiple">
+        <Accordion.Root className="px-5 @lg:sticky @lg:top-20" type="multiple">
           {accordions.map((accordion, index) => (
-            <Accordion title={accordion.title} value={index.toString()}>
+            <Accordion.Item title={accordion.title} value={index.toString()}>
               {accordion.content}
-            </Accordion>
+            </Accordion.Item>
           ))}
-        </Accordions>
+        </Accordion.Root>
 
         {/* Image || Video Container */}
         <div
