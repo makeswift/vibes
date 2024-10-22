@@ -7,10 +7,15 @@ import { X } from 'lucide-react'
 
 interface Props {
   children: ReactNode
+  hideDismiss?: boolean
   className?: string
 }
 
-export const AnnouncementBar = function AnnouncementBar({ children, className }: Props) {
+export const AnnouncementBar = function AnnouncementBar({
+  children,
+  hideDismiss,
+  className,
+}: Props) {
   const [banner, setBanner] = useState({ dismissed: false, initialized: false })
 
   useEffect(() => {
@@ -34,19 +39,22 @@ export const AnnouncementBar = function AnnouncementBar({ children, className }:
         className
       )}
     >
-      <p className="p-2.5 pr-14 text-sm text-foreground @lg:px-14 @lg:text-center @xl:text-base">
+      <p className="p-3 pr-12 text-sm text-foreground @xl:px-12 @xl:text-center @xl:text-base">
         {children}
       </p>
-      <button
-        aria-label="Dismiss banner"
-        onClick={e => {
-          e.preventDefault()
-          hideBanner()
-        }}
-        className="absolute right-2.5 top-2.5 flex h-5 w-5 items-center justify-center rounded-full text-foreground @lg:top-1/2 @lg:-translate-y-1/2"
-      >
-        <X />
-      </button>
+
+      {!hideDismiss && (
+        <button
+          aria-label="Dismiss banner"
+          onClick={e => {
+            e.preventDefault()
+            hideBanner()
+          }}
+          className="absolute right-3 top-3 grid h-8 w-8 place-content-center rounded-full text-foreground/50 transition-colors duration-300 hover:bg-background/40 hover:text-foreground @xl:top-1/2 @xl:-translate-y-1/2"
+        >
+          <X size={20} strokeWidth={1.5} absoluteStrokeWidth />
+        </button>
+      )}
     </div>
   )
 }
