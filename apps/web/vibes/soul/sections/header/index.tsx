@@ -18,6 +18,8 @@ import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from '
 import { ProductCard } from '@/vibes/soul/primitives/product-card'
 import { HamburgerMenuButton } from '@/vibes/soul/sections/header/hamburger-menu-button'
 
+import { Button } from '../../primitives/button'
+
 interface Image {
   src?: string
   alt: string
@@ -157,12 +159,6 @@ export const Header = forwardRef(function Header(
       className="sticky top-0 z-30 !h-0 w-full @container"
       upTolerance={0}
       onUnpin={() => setSearchOpen(false)}
-      style={{
-        WebkitTransition: 'transform .5s ease-in-out',
-        MozTransition: 'transform .5s ease-in-out',
-        OTransition: 'transform .5s ease-in-out',
-        transition: 'transform .5s ease-in-out',
-      }}
     >
       <div
         ref={ref}
@@ -171,7 +167,7 @@ export const Header = forwardRef(function Header(
       >
         <nav
           className="relative grid h-[60px] grid-cols-[1fr,2fr,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] @4xl:mx-5 
-          @4xl:rounded-3xl md:grid-cols-[1fr,1fr,1fr]"
+          @4xl:rounded-2xl md:grid-cols-[1fr,1fr,1fr]"
         >
           {/* Top Level Nav Links */}
           <ul className="relative flex items-stretch pl-2.5" ref={container}>
@@ -271,8 +267,8 @@ export const Header = forwardRef(function Header(
               <DropdownMenu>
                 <DropdownMenuTrigger
                   className={clsx(
-                    'hidden items-center gap-1 rounded-lg bg-white p-2 text-xs uppercase hover:bg-contrast-100',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex',
+                    'hidden items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
+                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex',
                     searchOpen ? 'text-contrast-300' : 'text-foreground'
                   )}
                 >
@@ -282,12 +278,12 @@ export const Header = forwardRef(function Header(
                     strokeWidth={1.5}
                   />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="z-50 mt-4 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:-ml-14 @4xl:w-32 @4xl:rounded-3xl @4xl:p-4">
+                <DropdownMenuContent className="z-50 mt-4 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:-ml-14 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2">
                   {locales.map(({ id, language }) => (
                     <DropdownMenuItem
                       className={clsx(
-                        'cursor-default rounded-xl px-3 py-2 text-sm font-medium uppercase text-contrast-400 outline-none transition-colors',
-                        'hover:text-foreground focus:bg-contrast-100 @4xl:text-base',
+                        'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
+                        'hover:text-foreground focus:bg-contrast-100',
                         { 'text-foreground': selectedLanguage === language }
                       )}
                       key={id}
@@ -309,7 +305,7 @@ export const Header = forwardRef(function Header(
         {/* Search Dropdown */}
         <div
           className={clsx(
-            'absolute inset-x-0 mx-1.5 mt-1.5 overflow-y-auto rounded-3xl shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5',
+            'absolute inset-x-0 mx-1.5 mt-1.5 overflow-y-auto rounded-2xl shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5',
             searchOpen
               ? 'scale-100 bg-background opacity-100'
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
@@ -331,23 +327,20 @@ export const Header = forwardRef(function Header(
               placeholder="Search Products"
               className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
             />
-            <button
-              type="submit"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-foreground text-background ring-primary focus:outline-none focus:ring-[1px]"
-            >
+            <Button type="submit" variant="secondary" size="icon">
               <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
-            </button>
+            </Button>
           </form>
 
           {/* Search Results */}
           <div className="flex flex-col border-t border-contrast-100 @2xl:flex-row">
             <div className="flex w-full flex-col gap-1 border-b border-contrast-100 p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r">
-              <span className="mb-4 font-mono text-[13px] uppercase">Suggestions</span>
+              <span className="mb-4 font-mono text-sm uppercase">Suggestions</span>
               {[
-                { name: 'T-Shirts', href: '#' },
-                { name: 'Shirts', href: '#' },
-                { name: 'Short Sleeve', href: '#' },
-                { name: 'Long Sleeve', href: '#' },
+                { name: 'Indoor', href: '#' },
+                { name: 'Outdoor', href: '#' },
+                { name: 'Low light', href: '#' },
+                { name: 'Pet friendly', href: '#' },
               ].map((item, i) => (
                 <Link
                   key={i}
@@ -359,9 +352,69 @@ export const Header = forwardRef(function Header(
               ))}
             </div>
             <div className="flex w-full flex-col gap-5 p-5">
-              <span className="font-mono text-[13px] uppercase">Products</span>
+              <span className="font-mono text-sm uppercase">Products</span>
               <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
-                {Array.from({ length: 4 }).map((_, i) => (
+                <ProductCard
+                  key="1"
+                  product={{
+                    id: '1',
+                    title: 'Philodendron Imperial Red',
+                    subtitle: 'Indoor Plant',
+                    badge: 'Popular',
+                    price: '$44.95',
+                    image: {
+                      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+                      alt: 'Philodendron Imperial Red',
+                    },
+                    href: '#',
+                  }}
+                />
+                <ProductCard
+                  key="2"
+                  product={{
+                    id: '2',
+                    title: 'Monstera',
+                    subtitle: 'Indoor Plant',
+                    badge: 'New',
+                    price: '$24.99',
+                    image: {
+                      src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
+                      alt: 'Monstera',
+                    },
+                    href: '#',
+                  }}
+                />
+                <ProductCard
+                  key="3"
+                  product={{
+                    id: '3',
+                    title: 'Pink Caladium',
+                    subtitle: 'Indoor Plant',
+                    // badge: 'New',
+                    price: '$19.95',
+                    image: {
+                      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
+                      alt: 'Pink Caladium',
+                    },
+                    href: '#',
+                  }}
+                />
+                <ProductCard
+                  key="4"
+                  product={{
+                    id: '4',
+                    title: 'Hoya Kerrii',
+                    subtitle: 'Indoor Plant',
+                    // badge: 'New',
+                    price: '$16.99',
+                    image: {
+                      src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
+                      alt: 'Hoya Kerrii',
+                    },
+                    href: '#',
+                  }}
+                />
+                {/* {Array.from({ length: 4 }).map((_, i) => (
                   <ProductCard
                     key={`Product ${i + 1}`}
                     product={{
@@ -371,7 +424,7 @@ export const Header = forwardRef(function Header(
                       price: '$123.99',
                     }}
                   />
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
