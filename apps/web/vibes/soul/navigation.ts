@@ -70,6 +70,12 @@ export const navigation = [
         component: 'button-link',
       },
       {
+        title: 'Calendar',
+        slug: 'calendar',
+        file: 'docs/calendar.mdx',
+        component: 'calendar',
+      },
+      {
         title: 'Card',
         slug: 'card',
         file: 'docs/card.mdx',
