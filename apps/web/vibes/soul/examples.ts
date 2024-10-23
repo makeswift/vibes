@@ -83,6 +83,27 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/button')),
   },
   {
+    name: 'calendar-electric-example',
+    dependencies: [],
+    registryDependencies: ['calendar'],
+    files: ['examples/primitives/calendar/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/calendar/electric')),
+  },
+  {
+    name: 'calendar-warm-example',
+    dependencies: [],
+    registryDependencies: ['calendar'],
+    files: ['examples/primitives/calendar/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/calendar/warm')),
+  },
+  {
+    name: 'calendar-luxury-example',
+    dependencies: [],
+    registryDependencies: ['calendar'],
+    files: ['examples/primitives/calendar/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/calendar/luxury')),
+  },
+  {
     name: 'card-carousel-electric-example',
     dependencies: [],
     registryDependencies: ['card-carousel-electric'],

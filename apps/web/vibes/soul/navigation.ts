@@ -64,6 +64,12 @@ export const navigation = [
       },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
+        title: 'Calendar',
+        slug: 'calendar',
+        file: 'docs/calendar.mdx',
+        component: 'calendar',
+      },
+      {
         title: 'Card',
         slug: 'card',
         file: 'docs/card.mdx',

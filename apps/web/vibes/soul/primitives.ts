@@ -50,6 +50,12 @@ export const primitives = [
     files: ['primitives/button/index.tsx'],
   },
   {
+    name: 'calendar',
+    dependencies: ['clsx', 'lucide-react', 'react-day-picker'],
+    registryDependencies: [],
+    files: ['primitives/calendar.tsx'],
+  },
+  {
     name: 'card',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
