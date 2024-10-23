@@ -36,7 +36,7 @@ export const BlogPostCard = function BlogPostCard({
         className
       )}
     >
-      <div className="bg-primary-highlight/10 relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl">
+      <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-contrast-100">
         {image?.src != null && image.src !== '' ? (
           <Image
             src={image.src}
@@ -46,14 +46,14 @@ export const BlogPostCard = function BlogPostCard({
             className="transition-transform duration-500 ease-out group-hover:scale-110"
           />
         ) : (
-          <span className="pl-2 pt-3 text-5xl font-bold leading-none tracking-tighter text-primary-shadow opacity-10">
+          <div className="pl-4 pt-4 text-5xl font-bold leading-none tracking-tighter text-foreground/15">
             {title}
-          </span>
+          </div>
         )}
       </div>
 
-      <div className="text-xl font-medium leading-snug">{title}</div>
-      <p className="mb-3 mt-1.5 line-clamp-3 font-normal text-contrast-400">{content}</p>
+      <div className="text-lg font-medium leading-snug">{title}</div>
+      <p className="mb-3 mt-1.5 line-clamp-3 text-sm font-normal text-contrast-400">{content}</p>
       <div className="text-sm">
         <time dateTime={date}>
           {new Date(date).toLocaleDateString('en-US', {
