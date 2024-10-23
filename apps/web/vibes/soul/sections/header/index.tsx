@@ -267,8 +267,8 @@ export const Header = forwardRef(function Header(
               <DropdownMenu>
                 <DropdownMenuTrigger
                   className={clsx(
-                    'hidden items-center gap-1 rounded-lg bg-white p-2 text-xs uppercase hover:bg-contrast-100',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex',
+                    'hidden items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
+                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex',
                     searchOpen ? 'text-contrast-300' : 'text-foreground'
                   )}
                 >
@@ -282,7 +282,7 @@ export const Header = forwardRef(function Header(
                   {locales.map(({ id, language }) => (
                     <DropdownMenuItem
                       className={clsx(
-                        'cursor-default rounded-lg px-3 py-2 text-sm font-medium uppercase text-contrast-400 outline-none transition-colors',
+                        'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
                         'hover:text-foreground focus:bg-contrast-100',
                         { 'text-foreground': selectedLanguage === language }
                       )}
