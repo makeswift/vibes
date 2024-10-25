@@ -19,7 +19,7 @@ export const Breadcrumbs = function Breadcrumbs({ breadcrumbs, className }: Brea
     <nav
       aria-label="breadcrumb"
       className={clsx(
-        'flex w-full flex-wrap items-center gap-x-2 text-sm @xl:text-base',
+        'inline-flex flex-wrap items-center gap-x-2 text-sm @xl:text-base',
         className
       )}
     >
