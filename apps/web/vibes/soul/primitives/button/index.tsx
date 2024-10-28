@@ -25,11 +25,11 @@ export const Button = function Button({
   return (
     <button
       className={clsx(
-        'relative z-0 select-none justify-center overflow-hidden rounded-full border text-center font-medium leading-normal transition-all duration-300 focus-visible:outline-none focus-visible:ring-2',
+        'relative z-0 inline-block select-none justify-center overflow-hidden rounded-full border text-center font-medium leading-normal transition-all duration-300 focus-visible:outline-none focus-visible:ring-2',
         {
           primary: 'border-primary bg-primary text-foreground ring-foreground',
           secondary: 'border-foreground bg-foreground text-background ring-primary',
-          tertiary: 'border-contrast-200 bg-background text-background ring-primary',
+          tertiary: 'border-contrast-200 bg-background text-foreground ring-primary',
         }[variant],
         // After Pseudo Element / Animated Background Styles
         'after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)]',
@@ -50,7 +50,7 @@ export const Button = function Button({
       <>
         <span
           className={clsx(
-            'flex items-center justify-center transition-all duration-300 ease-in-out',
+            'inline-flex items-center justify-center transition-all duration-300 ease-in-out',
             loading ? '-translate-y-10 opacity-0' : 'translate-y-0 opacity-100',
             {
               icon: 'p-2.5 text-sm',
@@ -58,7 +58,7 @@ export const Button = function Button({
               medium: 'gap-x-2.5 px-5 py-3 text-base',
               large: 'gap-x-3 px-6 py-4 text-base',
             }[size],
-            (variant === 'secondary' || variant === 'tertiary') && 'mix-blend-difference'
+            variant === 'secondary' && 'mix-blend-difference'
           )}
         >
           {children}

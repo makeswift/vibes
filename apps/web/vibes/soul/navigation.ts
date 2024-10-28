@@ -64,6 +64,12 @@ export const navigation = [
       },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
+        title: 'Button Link',
+        slug: 'button-link',
+        file: 'docs/button-link.mdx',
+        component: 'button-link',
+      },
+      {
         title: 'Card',
         slug: 'card',
         file: 'docs/card.mdx',
