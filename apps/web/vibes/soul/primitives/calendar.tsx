@@ -26,7 +26,7 @@ export function Calendar({
         weekdays: 'flex py-0.5',
         weekday: 'flex h-10 w-10 items-center justify-center text-xs font-medium',
         week: 'flex py-0.5',
-        day: 'h-10 w-10 flex text-xs font-medium group',
+        day: 'h-10 w-10 flex text-xs font-medium group p-0',
         day_button:
           'h-full w-full flex items-center justify-center rounded-full group-data-[selected=true]:bg-primary group-data-[selected=true]/middle:bg-primary-highlight hover:border hover:border-contrast-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground disabled:hover:border-none',
         disabled: 'text-contrast-300',
