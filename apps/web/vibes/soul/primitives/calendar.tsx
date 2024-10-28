@@ -17,15 +17,15 @@ export function Calendar({
       )}
       classNames={{
         months: 'relative',
-        month_caption: 'flex justify-center w-full font-medium',
+        month_caption: 'flex justify-center w-full font-medium pb-px',
         nav: 'absolute flex justify-between w-full',
         button_next:
           'rotate-180 rounded-full focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground',
         button_previous:
           'rounded-full focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground',
-        weekdays: 'flex py-0.5',
+        weekdays: 'flex py-px',
         weekday: 'flex h-10 w-10 items-center justify-center text-xs font-medium',
-        week: 'flex py-0.5',
+        week: 'flex py-px',
         day: 'h-10 w-10 flex text-xs font-medium group p-0',
         day_button:
           'h-full w-full flex items-center justify-center rounded-full group-data-[selected=true]:bg-primary group-data-[selected=true]/middle:bg-primary-highlight hover:border hover:border-contrast-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground disabled:hover:border-none',
