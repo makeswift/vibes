@@ -11,7 +11,10 @@ export function Calendar({
 }: ComponentPropsWithoutRef<typeof DayPicker>) {
   return (
     <DayPicker
-      className={clsx('w-[304px] rounded-lg border border-contrast-100 p-3', className)}
+      className={clsx(
+        'w-[304px] rounded-lg border border-contrast-100 bg-background p-3',
+        className
+      )}
       classNames={{
         months: 'relative',
         month_caption: 'flex justify-center w-full font-medium',
