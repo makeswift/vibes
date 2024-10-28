@@ -269,4 +269,8 @@ export const navigation = [
       },
     ],
   },
+  {
+    title: 'Form',
+    pages: [{ title: 'Example', slug: 'form', file: 'docs/form.mdx' }],
+  },
 ] satisfies Navigation
