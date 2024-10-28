@@ -83,6 +83,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/button')),
   },
   {
+    name: 'button-link-example',
+    dependencies: [],
+    registryDependencies: ['button-link'],
+    files: ['examples/primitives/button-link/index.tsx'],
+    component: lazy(() => import('./examples/primitives/button-link')),
+  },
+  {
     name: 'card-carousel-electric-example',
     dependencies: [],
     registryDependencies: ['card-carousel-electric'],

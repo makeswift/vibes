@@ -45,9 +45,15 @@ export const primitives = [
   },
   {
     name: 'button',
-    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-slot'],
+    dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
     files: ['primitives/button/index.tsx'],
+  },
+  {
+    name: 'button-link',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['primitives/button-link/index.tsx'],
   },
   {
     name: 'card',
