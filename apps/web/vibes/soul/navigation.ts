@@ -89,6 +89,12 @@ export const navigation = [
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       {
+        title: 'Navigation',
+        slug: 'navigation',
+        file: 'docs/navigation.mdx',
+        component: 'navigation',
+      },
+      {
         title: 'Pagination',
         slug: 'pagination',
         file: 'docs/pagination.mdx',
@@ -178,12 +184,6 @@ export const navigation = [
         component: 'featured-video',
       },
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
-      {
-        title: 'Header',
-        slug: 'header',
-        file: 'docs/header.mdx',
-        component: 'header',
-      },
       {
         title: 'Icon Block',
         slug: 'icon-block',

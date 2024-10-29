@@ -1,6 +1,7 @@
+import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/warm'
-import { headerLinks, logo } from '@/vibes/soul/examples/sections/header/warm'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
@@ -14,7 +15,6 @@ import {
   Visa,
 } from '@/vibes/soul/sections/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
-import { Header } from '@/vibes/soul/sections/header'
 import { NotFound } from '@/vibes/soul/sections/not-found'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
@@ -154,8 +154,8 @@ export default function Preview() {
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
 
-      <Header
-        links={headerLinks}
+      <Navigation
+        links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"

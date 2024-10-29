@@ -1,11 +1,12 @@
+import { headerLinks, logo } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
 import {
   contactInformation,
   copyright,
   footerLinks,
 } from '@/vibes/soul/examples/sections/footer/electric'
-import { headerLinks, logo } from '@/vibes/soul/examples/sections/header/electric'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { BlogPostContent } from '@/vibes/soul/sections/blog-post-content'
 import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
@@ -19,7 +20,6 @@ import {
   Visa,
 } from '@/vibes/soul/sections/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
-import { Header } from '@/vibes/soul/sections/header'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
 const socialMediaLinks = [
@@ -66,7 +66,7 @@ export default function Preview() {
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
 
-      <Header
+      <Navigation
         links={headerLinks}
         logo={logo}
         cartHref="#"

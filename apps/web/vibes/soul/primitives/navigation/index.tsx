@@ -16,9 +16,9 @@ import { clsx } from 'clsx'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
 import { ProductCard } from '@/vibes/soul/primitives/product-card'
-import { HamburgerMenuButton } from '@/vibes/soul/sections/header/hamburger-menu-button'
 
-import { Button } from '../../primitives/button'
+import { Button } from '../button'
+import { HamburgerMenuButton } from './hamburger-menu-button'
 
 interface Image {
   src?: string
@@ -49,7 +49,7 @@ interface Props {
   locales?: { id: string; region: string; language: string }[]
 }
 
-export const Header = forwardRef(function Header(
+export const Navigation = forwardRef(function Navigation(
   { cartHref, cartCount, accountHref, links, logo, activeLocale, locales, ...rest }: Props,
   ref: Ref<HTMLDivElement>
 ) {
@@ -62,7 +62,7 @@ export const Header = forwardRef(function Header(
   const [selectedCategory, setSelectedCategory] = useState<number | null>(0)
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState<string | undefined>(activeLocale)
-  const [headerHeight, setHeaderHeight] = useState<number>(0)
+  const [navigationHeight, setNavigationHeight] = useState<number>(0)
   const menuTriggerRef = useRef<HTMLAnchorElement | null>(null)
   const firstCategoryLinkRef = useRef<HTMLAnchorElement>(null)
 
@@ -116,12 +116,12 @@ export const Header = forwardRef(function Header(
     if (announcementBar) {
       const announcementBarHeight = announcementBar.clientHeight
       if (window.scrollY > announcementBarHeight) {
-        setHeaderHeight(navHeight)
+        setNavigationHeight(navHeight)
       } else {
-        setHeaderHeight(announcementBarHeight + navHeight)
+        setNavigationHeight(announcementBarHeight + navHeight)
       }
     } else {
-      setHeaderHeight(navHeight)
+      setNavigationHeight(navHeight)
     }
   }, [navOpen])
 
@@ -450,7 +450,7 @@ export const Header = forwardRef(function Header(
               ? 'scale-100 bg-background opacity-100 @4xl:h-full'
               : 'pointer-events-none h-0 scale-[0.99] select-none bg-transparent opacity-0'
           )}
-          style={{ maxHeight: `calc(100dvh - ${headerHeight}px)` }}
+          style={{ maxHeight: `calc(100dvh - ${navigationHeight}px)` }}
         >
           <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
             {/* Mobile Dropdown Links */}
