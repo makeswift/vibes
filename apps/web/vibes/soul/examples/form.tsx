@@ -9,7 +9,6 @@ export default function Preview() {
   return (
     <div className="m-auto mt-4 w-[500px] space-y-4 rounded-lg border border-contrast-100 bg-white p-4 shadow-lg">
       <ToggleGroup
-        type="multiple"
         label="Size"
         errors={['This is required']}
         options={[
