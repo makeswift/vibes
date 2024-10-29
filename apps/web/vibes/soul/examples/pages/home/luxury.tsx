@@ -1,11 +1,12 @@
 import { cards } from '@/vibes/soul/examples/primitives/card-carousel/luxury'
+import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury'
 import { feature } from '@/vibes/soul/examples/sections/feature/luxury'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/luxury'
 import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/luxury'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/luxury'
-import { headerLinks } from '@/vibes/soul/examples/sections/header/luxury'
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/luxury'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { Feature } from '@/vibes/soul/sections/feature'
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel'
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
@@ -22,7 +23,6 @@ import {
   Visa,
 } from '@/vibes/soul/sections/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
-import { Header } from '@/vibes/soul/sections/header'
 import { Slideshow } from '@/vibes/soul/sections/slideshow'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
@@ -82,8 +82,8 @@ export default function Preview() {
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
-      <Header
-        links={headerLinks}
+      <Navigation
+        links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"

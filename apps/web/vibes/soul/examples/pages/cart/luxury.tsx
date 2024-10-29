@@ -1,5 +1,5 @@
+import { headerLinks, logo } from '@/vibes/soul/examples/primitives/navigation/luxury'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/luxury'
-import { headerLinks, logo } from '@/vibes/soul/examples/sections/header/luxury'
 import { CartPage } from '@/vibes/soul/pages/cart'
 import {
   redirectToCheckoutAction,

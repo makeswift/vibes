@@ -1,6 +1,6 @@
-import { Header } from '@/vibes/soul/sections/header'
+import { Navigation } from '@/vibes/soul/primitives/navigation'
 
-export const headerLinks = [
+export const navigationLinks = [
   {
     label: 'Shop',
     href: '#',
@@ -87,8 +87,8 @@ export const locales = [
 export default function Preview() {
   return (
     <div className="relative min-h-48">
-      <Header
-        links={headerLinks}
+      <Navigation
+        links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"

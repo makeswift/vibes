@@ -1,6 +1,6 @@
 import { getProducts } from '@/vibes/soul/data'
+import { headerLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric'
-import { headerLinks } from '@/vibes/soul/examples/sections/header/electric'
 import {
   accordions,
   productDescriptionImage,
@@ -8,9 +8,9 @@ import {
 import { product } from '@/vibes/soul/examples/sections/product-detail/electric'
 import { reviews } from '@/vibes/soul/examples/sections/reviews'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
-import { Header } from '@/vibes/soul/sections/header'
 import { IconBlock } from '@/vibes/soul/sections/icon-block'
 import { ProductDescription } from '@/vibes/soul/sections/product-description'
 import { ProductDetail } from '@/vibes/soul/sections/product-detail'
@@ -33,7 +33,7 @@ export default function Preview() {
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
       <div className="relative flex flex-col">
-        <Header
+        <Navigation
           links={headerLinks}
           logo={logo}
           cartHref="#"

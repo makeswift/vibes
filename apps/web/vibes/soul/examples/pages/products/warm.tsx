@@ -1,11 +1,11 @@
 import { getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
 import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm'
+import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm'
 import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/warm'
-import { headerLinks } from '@/vibes/soul/examples/sections/header/warm'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
-import { Header } from '@/vibes/soul/sections/header'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 
 const locales = [
@@ -26,8 +26,8 @@ export default function Preview() {
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
-      <Header
-        links={headerLinks}
+      <Navigation
+        links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"

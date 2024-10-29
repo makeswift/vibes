@@ -1,4 +1,5 @@
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Header, Links } from '@/vibes/soul/primitives/navigation'
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart'
 import { Footer, Section } from '@/vibes/soul/sections/footer'
 import {
@@ -11,7 +12,6 @@ import {
   Visa,
 } from '@/vibes/soul/sections/footer/payment-icons'
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
-import { Header, Links } from '@/vibes/soul/sections/header'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
 interface Image {
