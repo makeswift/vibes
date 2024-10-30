@@ -1,0 +1,31 @@
+---
+title: Accordions
+description: Accordions allow users to expand and collapse content sections.
+preview: accordions-example
+previewSize: md
+features:
+  - Full keyboard navigation
+  - Can expand one or multiple items
+  - Can be controlled or uncontrolled
+  - Fully animated transitions
+---
+
+## Usage
+
+<CodeBlock lang="bash">
+  {`import {Accordions} from '@/vibes/eclipse/components/accordions'`}
+</CodeBlock>
+
+<CodeBlock lang="bash">{`<Accordions type="multiple" accordions={} />`}</CodeBlock>
+
+## API Reference
+
+| Prop                                                                                       | Type                                                                           | Default      |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------ |
+| `type` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `enum` <Tooltip content={`"single" ${String.fromCharCode(124)} "multiple"`} /> | `"multiple"` |
+| `title` <Tooltip content='This is an example tooltip for what this particular prop does'/> | `string`                                                                       |              |
+| `body` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `string`                                                                       |              |
+
+## Figma
+
+<Figma url="https://www.figma.com/design/Ss4o7sfbgqVr83CTXG7vRa/Eclipse?node-id=0-1&t=YUULMsYEJlzDsjhl-1" />
