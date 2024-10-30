@@ -11,7 +11,33 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
   images: {
-    domains: ['images.unsplash.com', 'rstr.in', 'images.pexels.com', 'storage.googleapis.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'rstr.in',
+        port: '',
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        port: '',
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+        pathname: '/s.mkswft.com/',
+        port: '',
+        search: '',
+      },
+    ],
   },
   eslint: {
     ignoreDuringBuilds: true,
