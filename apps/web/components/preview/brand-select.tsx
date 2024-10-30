@@ -1,5 +1,7 @@
 'use client'
 
+import { Button } from '../ui/button'
+import { useBrandContext } from './brand-context'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +10,6 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { ChevronDown12 } from '@/icons/generated'
 
-import { Button } from '../ui/button'
-import { useBrandContext } from './brand-context'
 
 export function BrandSelect() {
   const { brands, activeBrand, setActiveBrand } = useBrandContext()

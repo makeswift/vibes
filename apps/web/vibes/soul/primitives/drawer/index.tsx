@@ -18,14 +18,14 @@ function getInitials(name: string): string {
     .slice(0, 2)
 }
 
-export type DrawerItem = {
+export interface DrawerItem {
   id: string
   image?: { src: string; alt: string }
   title: string
   href: string
 }
 
-type DrawerProps = {
+interface DrawerProps {
   items: DrawerItem[]
   onRemoveClick?: (id: string) => void
   cta: { label: string; href: string }

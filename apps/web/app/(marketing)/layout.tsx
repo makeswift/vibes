@@ -5,9 +5,9 @@ import Head from 'next/head'
 
 import clsx from 'clsx'
 
+import { Providers } from './providers'
 import { Toaster } from '@/components/ui/toaster'
 
-import { Providers } from './providers'
 import './style/globals.css'
 
 const title = 'Vibes: Stunning React components for commerce & marketing | Coming soon'

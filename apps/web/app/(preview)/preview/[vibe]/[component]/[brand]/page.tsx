@@ -24,7 +24,7 @@ export default async function Page({
   searchParams,
 }: {
   params: { vibe: string; component: string; brand: string }
-  searchParams: { [key: string]: string | string[] }
+  searchParams: Record<string, string | string[]>
 }) {
   const vibe = getVibe(params.vibe)
 

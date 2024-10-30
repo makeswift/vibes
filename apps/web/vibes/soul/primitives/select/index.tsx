@@ -1,7 +1,6 @@
 'use client'
 
-import { ComponentPropsWithoutRef } from 'react'
-import React from 'react'
+import React, { ComponentPropsWithoutRef } from 'react'
 
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'

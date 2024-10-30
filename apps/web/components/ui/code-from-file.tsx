@@ -1,7 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react'
 
 import { readFile } from 'fs/promises'
 import path from 'path'
+import { ComponentPropsWithoutRef } from 'react'
 
 import { CodeBlock } from './code-block'
 

@@ -5,14 +5,14 @@ import { useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import clsx from 'clsx'
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Desktop16, Expand16, Phone16, Tablet16, Times16 } from '@/icons/generated'
 
 import { Button } from '../ui/button'
 import { CopyButton } from '../ui/copy-button'
 import { useBrandContext } from './brand-context'
 import { BrandSelect } from './brand-select'
 import { usePreviewContext } from './preview-context'
+import { Desktop16, Expand16, Phone16, Tablet16, Times16 } from '@/icons/generated'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 interface Props {
   components: {

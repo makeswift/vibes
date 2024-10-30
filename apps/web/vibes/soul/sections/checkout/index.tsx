@@ -210,7 +210,7 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                   {products.map(({ id, title, image, price, quantity }) => (
                     <li key={id} className="flex items-center justify-between gap-x-4">
                       <div className="flex items-center gap-x-4">
-                        {image?.src != null && image.src !== '' && (
+                        {image.src != null && image.src !== '' && (
                           <div className="relative aspect-[3/4] w-16 overflow-hidden rounded-lg bg-contrast-100">
                             <Image
                               src={image.src}

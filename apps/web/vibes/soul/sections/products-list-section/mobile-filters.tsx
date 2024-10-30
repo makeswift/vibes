@@ -1,9 +1,9 @@
 import { Sliders } from 'lucide-react'
 
+import { Filter, FiltersPanel } from './filters-panel'
 import { Button } from '@/vibes/soul/primitives/button'
 import * as SidePanel from '@/vibes/soul/primitives/side-panel'
 
-import { Filter, FiltersPanel } from './filters-panel'
 
 interface Props {
   filters: Filter[] | Promise<Filter[]>

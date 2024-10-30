@@ -1,12 +1,12 @@
 import clsx from 'clsx'
 
-export type PriceRange = {
+export interface PriceRange {
   type: 'range'
   minValue: string
   maxValue: string
 }
 
-export type PriceSale = {
+export interface PriceSale {
   type: 'sale'
   previousValue: string
   currentValue: string
@@ -14,7 +14,7 @@ export type PriceSale = {
 
 export type Price = string | PriceRange | PriceSale
 
-type Props = {
+interface Props {
   className?: string
   price: Price
 }

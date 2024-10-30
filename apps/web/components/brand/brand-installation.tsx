@@ -1,16 +1,16 @@
 import localFont from 'next/font/local'
 
+import { Step, Steps } from '../ui/steps'
 import { CodeBlock } from '@/components/ui/code-block'
 import { Reveal } from '@/components/ui/reveal'
 import { Brand } from '@/vibes/schema'
 
-import { Step, Steps } from '../ui/steps'
 
 export type Font =
   | {
       type: 'google'
       name: string
-      options: NonNullable<{ [key: string]: any }>
+      options: NonNullable<Record<string, any>>
     }
   | {
       type: 'local'
@@ -35,7 +35,7 @@ function highlightLines(str: string) {
     .join('\n')
 }
 
-function getVariableCode(cssVars: { [key: string]: string }) {
+function getVariableCode(cssVars: Record<string, string>) {
   return `:root {\n${Object.entries(cssVars)
     .filter(([name]) => !name.startsWith('--font-family'))
     .map(([name, value]) => `  ${name}: ${value};`)

@@ -1,6 +1,6 @@
 import { CompareCard, CompareProduct } from '../../primitives/compare-card'
 
-type Props = {
+interface Props {
   className?: string
   title?: string
   products: CompareProduct[]

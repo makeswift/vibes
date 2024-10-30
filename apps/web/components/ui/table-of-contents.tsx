@@ -7,7 +7,7 @@ import clsx from 'clsx'
 
 import { Popout12 } from '@/icons/generated'
 
-type Heading = { id: string; text: string; level: number; element: Element }
+interface Heading { id: string; text: string; level: number; element: Element }
 
 interface Props {
   className?: string

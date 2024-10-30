@@ -49,7 +49,7 @@ export function MobileMenu({ chapter }: Props) {
       </SheetTrigger>
       <SheetContent side="left" className="w-full md:w-72">
         <div className="space-y-4 text-foreground">
-          {chapter?.groups.map(group => (
+          {chapter.groups.map(group => (
             <div key={group.title}>
               <div className="pb-1.5 text-sm font-bold leading-normal">{group.title}</div>
 

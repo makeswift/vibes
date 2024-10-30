@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 import { ArrowRight } from 'lucide-react'
 
+import { Rating } from '../rating'
 import { Button } from '@/vibes/soul/primitives/button'
 import { CardProduct, ProductCard } from '@/vibes/soul/primitives/product-card'
 
-import { Rating } from '../rating'
 
 export type CompareProduct = CardProduct & { description?: string }
 
-export type Props = {
+export interface Props {
   className?: string
   product: CompareProduct
   addToCartAction?(id: string): Promise<void>

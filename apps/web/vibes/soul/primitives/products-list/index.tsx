@@ -2,9 +2,9 @@ import { Suspense, use } from 'react'
 
 import { clsx } from 'clsx'
 
+import { CompareDrawer } from './compare-drawer'
 import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
 
-import { CompareDrawer } from './compare-drawer'
 
 export type ListProduct = CardProduct
 

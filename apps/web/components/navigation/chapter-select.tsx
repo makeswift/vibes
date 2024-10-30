@@ -7,11 +7,11 @@ import { useEffect, useMemo, useState } from 'react'
 
 import clsx from 'clsx'
 
-import ChevronDown12 from '@/icons/generated/ChevronDown12'
 
 import { Button } from '../ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 import { Chapter } from './navigation'
+import ChevronDown12 from '@/icons/generated/ChevronDown12'
 
 type ComingSoonChapter = Pick<
   Chapter,

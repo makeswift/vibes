@@ -1,7 +1,7 @@
+import { cache, compareParamName, sortParamName } from './searchParams'
 import { getBreadcrumbs, getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 
-import { cache, compareParamName, sortParamName } from './searchParams'
 
 export default async function Preview({
   searchParams,
