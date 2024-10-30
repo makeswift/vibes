@@ -1,5 +1,5 @@
 import { getProducts } from '@/vibes/soul/data'
-import { headerLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
+import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric'
 import {
   accordions,
@@ -34,7 +34,7 @@ export default function Preview() {
       </AnnouncementBar>
       <div className="relative flex flex-col">
         <Navigation
-          links={headerLinks}
+          links={navigationLinks}
           logo={logo}
           cartHref="#"
           accountHref="#"

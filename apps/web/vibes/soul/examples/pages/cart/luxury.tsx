@@ -1,4 +1,4 @@
-import { headerLinks, logo } from '@/vibes/soul/examples/primitives/navigation/luxury'
+import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/luxury'
 import { CartPage } from '@/vibes/soul/pages/cart'
 import {
@@ -13,7 +13,7 @@ export default async function Preview() {
   const subtotal = await getSubtotal()
   return (
     <CartPage
-      headerLinks={headerLinks}
+      navigationLinks={navigationLinks}
       logo={logo}
       lineItems={lineItems}
       subtotal={subtotal}

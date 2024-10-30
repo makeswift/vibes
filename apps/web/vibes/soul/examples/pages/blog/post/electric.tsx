@@ -1,4 +1,4 @@
-import { headerLinks, logo } from '@/vibes/soul/examples/primitives/navigation/electric'
+import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
 import {
   contactInformation,
@@ -67,7 +67,7 @@ export default function Preview() {
       </AnnouncementBar>
 
       <Navigation
-        links={headerLinks}
+        links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"

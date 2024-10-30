@@ -1,4 +1,4 @@
-import { headerLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
+import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
@@ -61,7 +61,7 @@ export default function Preview() {
       </AnnouncementBar>
 
       <Navigation
-        links={headerLinks}
+        links={navigationLinks}
         logo="SOUL"
         cartHref="#"
         accountHref="#"

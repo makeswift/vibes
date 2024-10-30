@@ -1,4 +1,4 @@
-import { headerLinks, logo } from '@/vibes/soul/examples/primitives/navigation/electric'
+import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
@@ -175,7 +175,7 @@ export default function Preview() {
       </AnnouncementBar>
 
       <Navigation
-        links={headerLinks}
+        links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"

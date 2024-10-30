@@ -1,5 +1,5 @@
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
-import { Header, Links } from '@/vibes/soul/primitives/navigation'
+import { Links, Navigation } from '@/vibes/soul/primitives/navigation'
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart'
 import { Footer, Section } from '@/vibes/soul/sections/footer'
 import {
@@ -19,7 +19,7 @@ interface Image {
   alt: string
 }
 interface CartPageProps {
-  headerLinks: Links[]
+  navigationLinks: Links[]
   logo: string | Image
   lineItems: CartLineItem[] | Promise<CartLineItem[]>
   subtotal: string
@@ -67,7 +67,7 @@ const locales = [
 ]
 
 export const CartPage = function CartPage({
-  headerLinks,
+  navigationLinks,
   logo,
   lineItems,
   subtotal,
@@ -84,8 +84,8 @@ export const CartPage = function CartPage({
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
 
-      <Header
-        links={headerLinks}
+      <Navigation
+        links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"

@@ -1,6 +1,6 @@
 import { getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
 import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric'
-import { headerLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
+import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric'
 import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
@@ -27,7 +27,7 @@ export default function Preview() {
         <strong>&quot;welcome&quot;</strong>
       </AnnouncementBar>
       <Navigation
-        links={headerLinks}
+        links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"
