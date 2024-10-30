@@ -203,6 +203,12 @@ export const navigation = [
         component: 'log-in',
       },
       {
+        title: 'Order History Section',
+        slug: 'order-history-section',
+        file: 'docs/order-history-section.mdx',
+        component: 'order-history-section',
+      },
+      {
         title: 'Product List',
         slug: 'product-list-section',
         file: 'docs/products-list-section.mdx',
