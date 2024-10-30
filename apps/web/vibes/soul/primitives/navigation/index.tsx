@@ -355,7 +355,6 @@ export const Navigation = forwardRef(function Navigation(
               <span className="font-mono text-sm uppercase">Products</span>
               <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
                 <ProductCard
-                  key="1"
                   product={{
                     id: '1',
                     title: 'Philodendron Imperial Red',
@@ -370,7 +369,6 @@ export const Navigation = forwardRef(function Navigation(
                   }}
                 />
                 <ProductCard
-                  key="2"
                   product={{
                     id: '2',
                     title: 'Monstera',
@@ -385,7 +383,6 @@ export const Navigation = forwardRef(function Navigation(
                   }}
                 />
                 <ProductCard
-                  key="3"
                   product={{
                     id: '3',
                     title: 'Pink Caladium',
@@ -400,7 +397,6 @@ export const Navigation = forwardRef(function Navigation(
                   }}
                 />
                 <ProductCard
-                  key="4"
                   product={{
                     id: '4',
                     title: 'Hoya Kerrii',
@@ -414,17 +410,6 @@ export const Navigation = forwardRef(function Navigation(
                     href: '#',
                   }}
                 />
-                {/* {Array.from({ length: 4 }).map((_, i) => (
-                  <ProductCard
-                    key={`Product ${i + 1}`}
-                    product={{
-                      id: `productName`,
-                      title: 'Product Name',
-                      href: '#',
-                      price: '$123.99',
-                    }}
-                  />
-                ))} */}
               </div>
             </div>
           </div>
