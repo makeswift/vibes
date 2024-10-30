@@ -398,6 +398,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/navigation/luxury')),
   },
   {
+    name: 'order-history-section-electric-example',
+    dependencies: [],
+    registryDependencies: ['order-history-section'],
+    files: ['examples/sections/order-history-section/electric.tsx'],
+    component: lazy(() => import('./examples/sections/order-history-section/electric')),
+  },
+  {
     name: 'page-blog-example',
     dependencies: [],
     registryDependencies: ['page-blog'],

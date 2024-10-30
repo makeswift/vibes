@@ -98,6 +98,12 @@ export const sections = [
     files: ['sections/log-in/index.tsx'],
   },
   {
+    name: 'order-history-section',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['sections/order-history-section/index.tsx'],
+  },
+  {
     name: 'product-detail',
     dependencies: ['clsx', 'embla-carousel-react'],
     registryDependencies: ['button', 'favorite', 'product-card', 'rating'],
