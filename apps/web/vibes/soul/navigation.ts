@@ -209,10 +209,10 @@ export const navigation = [
         component: 'order-details-section',
       },
       {
-        title: 'Order History Section',
-        slug: 'order-history-section',
-        file: 'docs/order-history-section.mdx',
-        component: 'order-history-section',
+        title: 'Order List Section',
+        slug: 'order-list-section',
+        file: 'docs/order-list-section.mdx',
+        component: 'order-list-section',
       },
       {
         title: 'Product List',
