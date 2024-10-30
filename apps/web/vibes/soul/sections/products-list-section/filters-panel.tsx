@@ -5,12 +5,12 @@ import { Suspense, use } from 'react'
 import clsx from 'clsx'
 import { parseAsArrayOf, parseAsInteger, parseAsString, useQueryStates } from 'nuqs'
 
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
+import { Button } from '@/vibes/soul/primitives/button'
 
 import { FilterRange } from './filter-range'
 import { FilterRating } from './filter-rating'
 import { FilterToggleGroup } from './filter-toggle-group'
-import { Button } from '@/vibes/soul/primitives/button'
-import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
 
 export interface ToggleGroupFilter {
   type: 'toggle-group'

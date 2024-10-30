@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import { CodeToHastOptions, ShikiTransformer, codeToHtml, createCssVariablesTheme } from 'shiki'
 
-import { CopyButton } from './copy-button'
 import { theme, transformers } from '@/lib/shiki'
 
+import { CopyButton } from './copy-button'
 
 interface Props {
   children: string

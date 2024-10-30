@@ -3,10 +3,10 @@ import Link from 'next/link'
 
 import { clsx } from 'clsx'
 
-import { Compare } from './compare'
 import { Badge } from '@/vibes/soul/primitives/badge'
 import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label'
 
+import { Compare } from './compare'
 
 export interface CardProduct {
   id: string

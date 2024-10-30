@@ -3,9 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Form } from '../form'
 import { ButtonLink } from '@/components/ui/button-link'
 
+import { Form } from '../form'
 
 export default function Contribute() {
   return (

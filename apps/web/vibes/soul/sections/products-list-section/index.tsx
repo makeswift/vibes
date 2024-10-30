@@ -1,10 +1,10 @@
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
+import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
 
 import { Filter, FiltersPanel } from './filters-panel'
 import { MobileFilters } from './mobile-filters'
 import { Pagination, PaginationInfo } from './pagination'
-import { Option as SortOption , Sorting } from './sorting'
-import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
+import { Option as SortOption, Sorting } from './sorting'
 
 interface Pages {
   name: string

@@ -2,9 +2,9 @@
 
 import clsx from 'clsx'
 
-import { Button } from './button'
 import { useToast } from '@/components/ui/use-toast'
 
+import { Button } from './button'
 
 interface Props {
   className?: string

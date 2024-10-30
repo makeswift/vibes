@@ -1,10 +1,10 @@
-import { readFile } from 'fs/promises'
-import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 
 import rehypeShiki from '@shikijs/rehype'
 import clsx from 'clsx'
+import { readFile } from 'fs/promises'
+import path from 'path'
 import prettyBytes from 'pretty-bytes'
 import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'

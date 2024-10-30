@@ -1,6 +1,6 @@
-import { SoulBrandName } from '../brands'
 import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs'
 
+import { SoulBrandName } from '../brands'
 
 export function getBreadcrumbs(brand: SoulBrandName): Breadcrumb[] {
   return breadcrumbs[brand]

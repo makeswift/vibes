@@ -1,6 +1,6 @@
-import { SoulBrandName } from '../brands'
 import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
 
+import { SoulBrandName } from '../brands'
 
 export function getFilters(brand: SoulBrandName): Filter[] {
   return filters[brand]

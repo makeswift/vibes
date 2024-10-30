@@ -5,13 +5,13 @@ import Image from 'next/image'
 import '@docsearch/css'
 import { DocSearch } from '@docsearch/react'
 
+import { ModeToggle } from '@/components/ui/mode-toggle'
 
 import { ChapterSelect } from './chapter-select'
 import { GroupLink } from './group-link'
 import { Link } from './link'
 import { MobileMenu } from './mobile-menu'
 import { Chapter } from './navigation'
-import { ModeToggle } from '@/components/ui/mode-toggle'
 
 interface Props {
   chapterSlug: string

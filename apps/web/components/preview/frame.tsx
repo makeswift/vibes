@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 
+import { ResizeX } from '@/icons/generated'
 
 import { Portal } from '../ui/portal'
 import { useBrandContext } from './brand-context'
 import { usePreviewContext } from './preview-context'
-import { ResizeX } from '@/icons/generated'
 
 interface Props {
   className?: string

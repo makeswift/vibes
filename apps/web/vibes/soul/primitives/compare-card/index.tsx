@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 import { ArrowRight } from 'lucide-react'
 
-import { Rating } from '../rating'
 import { Button } from '@/vibes/soul/primitives/button'
 import { CardProduct, ProductCard } from '@/vibes/soul/primitives/product-card'
 
+import { Rating } from '../rating'
 
 export type CompareProduct = CardProduct & { description?: string }
 

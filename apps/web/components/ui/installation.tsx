@@ -1,14 +1,14 @@
-
-import path from 'path'
 import Link from 'next/link'
 
+import path from 'path'
+
+import { Vibe } from '@/vibes/schema'
 
 import { CodeBlock } from './code-block'
 import { CodeFromFile } from './code-from-file'
 import { Reveal } from './reveal'
 import { Step, Steps } from './steps'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs'
-import { Vibe } from '@/vibes/schema'
 
 function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) {
   const pages = vibe.navigation.flatMap(nav => nav.pages)

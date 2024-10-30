@@ -6,6 +6,10 @@ import { ReactNode, useEffect, useState } from 'react'
 
 import clsx from 'clsx'
 
+import { Button } from '@/components/ui/button'
+import { ButtonLink } from '@/components/ui/button-link'
+import Transition from '@/components/ui/transition'
+import { Arrow } from '@/icons/generated'
 
 import { EazyTheme } from '../stickers/eazy-theme'
 import { Figma } from '../stickers/figma'
@@ -36,10 +40,6 @@ import { Vibes14 } from '../stickers/vibes-14'
 import { Vibes15 } from '../stickers/vibes-15'
 import { Vibes16 } from '../stickers/vibes-16'
 import { Form } from './form'
-import { Arrow } from '@/icons/generated'
-import Transition from '@/components/ui/transition'
-import { ButtonLink } from '@/components/ui/button-link'
-import { Button } from '@/components/ui/button'
 
 const useSmoothScroll = () => {
   const smoothScrollTo = (id: string) => {

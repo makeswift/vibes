@@ -1,10 +1,10 @@
 import localFont from 'next/font/local'
 
-import { Step, Steps } from '../ui/steps'
 import { CodeBlock } from '@/components/ui/code-block'
 import { Reveal } from '@/components/ui/reveal'
 import { Brand, CSSVars } from '@/vibes/schema'
 
+import { Step, Steps } from '../ui/steps'
 
 export type Font =
   | {

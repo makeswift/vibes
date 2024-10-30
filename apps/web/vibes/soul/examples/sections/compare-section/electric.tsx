@@ -1,7 +1,7 @@
-import { addToCartAction } from './actions'
 import { getProducts } from '@/vibes/soul/data'
 import { CompareSection } from '@/vibes/soul/sections/compare-section'
 
+import { addToCartAction } from './actions'
 
 const products = getProducts('Electric')
 
