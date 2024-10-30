@@ -405,11 +405,11 @@ export const examples = [
     component: lazy(() => import('./examples/sections/order-details-section/electric')),
   },
   {
-    name: 'order-history-section-electric-example',
+    name: 'order-list-section-electric-example',
     dependencies: [],
-    registryDependencies: ['order-history-section'],
-    files: ['examples/sections/order-history-section/electric.tsx'],
-    component: lazy(() => import('./examples/sections/order-history-section/electric')),
+    registryDependencies: ['order-list-section'],
+    files: ['examples/sections/order-list-section/electric.tsx'],
+    component: lazy(() => import('./examples/sections/order-list-section/electric')),
   },
   {
     name: 'page-blog-example',
