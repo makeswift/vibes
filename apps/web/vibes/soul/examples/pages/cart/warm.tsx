@@ -13,7 +13,7 @@ export default async function Preview() {
   const subtotal = await getSubtotal()
   return (
     <CartPage
-      headerLinks={navigationLinks}
+      navigationLinks={navigationLinks}
       logo={logo}
       lineItems={lineItems}
       subtotal={subtotal}
