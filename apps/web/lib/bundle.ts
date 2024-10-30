@@ -1,39 +1,62 @@
 import { readFile } from 'fs/promises'
 import { gzipSizeSync } from 'gzip-size'
 import path from 'path'
+import { z } from 'zod'
 
 import { Component, Vibe } from '@/vibes/schema'
 
-type BundlephobiaResponse = {
-  assets: { gzip: number; name: string; size: number; type: string }[]
-  dependencyCount: number
-  dependencySizes: { approximateSize: number; name: string }[]
-  description: string
-  gzip: number
-  hasJSModule: string
-  hasJSNext: boolean
-  hasSideEffects: boolean
-  isModuleType: boolean
-  name: string
-  peerDependencies: string[]
-  repository: string
-  scoped: boolean
-  size: number
-  version: string
-}
-
-export function fetchBundleSize(packageName: string): Promise<BundlephobiaResponse> {
-  return fetch(`https://bundlephobia.com/api/size?package=${packageName}&record=true`)
-    .then(r => r.json())
-    .then(res => {
-      if (res.error) {
-        console.error(`Failed to fetch dependency: ${packageName}`)
-
-        return { gzip: 0 }
-      } else {
-        return res
-      }
+const bundlephobiaResponseBodySchema = z.object({
+  assets: z.array(
+    z.object({
+      gzip: z.number(),
+      name: z.string(),
+      size: z.number(),
+      type: z.string(),
     })
+  ),
+  dependencyCount: z.number(),
+  dependencySizes: z.array(
+    z.object({
+      approximateSize: z.number(),
+      name: z.string(),
+    })
+  ),
+  description: z.string(),
+  gzip: z.number(),
+  hasJSModule: z.string(),
+  hasJSNext: z.boolean(),
+  hasSideEffects: z.boolean(),
+  isModuleType: z.boolean(),
+  name: z.string(),
+  peerDependencies: z.array(z.string()).optional(),
+  repository: z.string(),
+  scoped: z.boolean(),
+  size: z.number(),
+  version: z.string(),
+})
+
+type BundlephobiaResponseBody = z.infer<typeof bundlephobiaResponseBodySchema>
+
+export async function fetchBundleSize(packageName: string): Promise<BundlephobiaResponseBody> {
+  const response = await fetch(
+    `https://bundlephobia.com/api/size?package=${encodeURIComponent(packageName)}&record=true`
+  )
+
+  if (!response.ok) {
+    if (response.headers.get('content-type')?.includes('application/json')) {
+      const body = await response.json()
+
+      console.error(body)
+    }
+
+    throw new Error(
+      `Failed to fetch bundlephobia package size for "${packageName}" with status ${response.status} ${response.statusText}`
+    )
+  }
+
+  const body = await bundlephobiaResponseBodySchema.parseAsync(await response.json())
+
+  return body
 }
 
 export async function getDependencySize(component: Component): Promise<number> {
