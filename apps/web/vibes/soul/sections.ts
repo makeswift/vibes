@@ -101,11 +101,7 @@ export const sections = [
     name: 'product-detail',
     dependencies: ['clsx', 'embla-carousel-react'],
     registryDependencies: ['button', 'favorite', 'product-card', 'rating'],
-    files: [
-      'sections/product-detail/index.tsx',
-      'sections/product-detail/product-gallery.tsx',
-      'primitives/product-card/price.tsx',
-    ],
+    files: ['sections/product-detail/index.tsx', 'sections/product-detail/product-gallery.tsx'],
   },
   {
     name: 'products-list-section',
