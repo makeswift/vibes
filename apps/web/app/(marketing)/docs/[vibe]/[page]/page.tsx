@@ -161,7 +161,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
   const numDependencies = component
     ? component.registryDependencies.length + component.dependencies.length
     : 0
-  const totalSize = component ? await getTotalSize({ component, vibe }) : null
+  // const totalSize = component ? await getTotalSize({ component, vibe }) : null
 
   return (
     <>
@@ -236,7 +236,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
             <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-300">
               <TableOfContents offsetTop={90} />
               <div className="space-y-5 py-5">
-                {totalSize && (
+                {/* {totalSize && (
                   <div className="flex w-full items-center gap-x-2">
                     <span className="text-sm font-bold text-foreground">Total size</span>
 
@@ -244,7 +244,7 @@ export default async function Page({ params }: { params: { vibe: string; page: s
                       {prettyBytes(totalSize, { maximumFractionDigits: 1 })}
                     </span>
                   </div>
-                )}
+                )} */}
 
                 {component && numDependencies > 0 && (
                   <div className="space-y-1">
