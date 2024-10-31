@@ -1,6 +1,7 @@
 'use client'
 
 import { Checkbox } from '../form/checkbox'
+import { DatePicker } from '../form/date-picker'
 import { Input } from '../form/input'
 import { Textarea } from '../form/textarea'
 import { ToggleGroup } from '../form/toggle-group'
@@ -27,6 +28,7 @@ export default function Preview() {
         errors={['This is required']}
       />
       <Checkbox id="consent" label="Consent" required />
+      <DatePicker required errors={['This is required']} />
     </div>
   )
 }

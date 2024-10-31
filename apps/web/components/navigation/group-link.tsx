@@ -3,36 +3,36 @@
 import { usePathname } from 'next/navigation'
 
 import { Link } from './link'
-import { Group, Vibe } from './navigation'
+import { Group } from './navigation'
 
 function isInSameGroup({
-  vibe,
+  chapterSlug,
   group,
   pathname,
   href,
 }: {
-  vibe: Vibe
+  chapterSlug: string
   group: Group
   pathname: string
   href: string
 }) {
-  const hrefs = group.pages.map(page => `/docs/${vibe.slug}/${page.slug}`)
+  const hrefs = group.pages.map(page => `/docs/${chapterSlug}/${page.slug}`)
 
   return hrefs.includes(pathname) && hrefs.includes(href)
 }
 
 interface Props
   extends Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href' | 'active' | 'children'> {
-  vibe: Vibe
+  chapterSlug: string
   group: Group
 }
 
-export function GroupLink({ vibe, group, ...rest }: Props) {
+export function GroupLink({ chapterSlug, group, ...rest }: Props) {
   const pathname = usePathname()
-  const href = `/docs/${vibe.slug}/${group.pages[0].slug}`
+  const href = `/docs/${chapterSlug}/${group.pages[0].slug}`
 
   return (
-    <Link {...rest} href={href} active={isInSameGroup({ vibe, group, pathname, href })}>
+    <Link {...rest} href={href} active={isInSameGroup({ chapterSlug, group, pathname, href })}>
       {group.title}
     </Link>
   )

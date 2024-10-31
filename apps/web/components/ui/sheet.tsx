@@ -13,7 +13,7 @@ const SheetTrigger = SheetPrimitive.Trigger
 const SheetPortal = SheetPrimitive.Portal
 
 const sheetVariants = cva(
-  'fixed z-50 bg-background border-transparent overflow-y-auto border-dashed sm:border-contrast-300 p-5 md:p-6 lg:p-7 transition ease-[cubic-bezier(0.25,1,0,1)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-300',
+  'fixed z-50 bg-background border-transparent overflow-y-auto border-dashed sm:border-contrast-300 p-5 md:p-6 lg:p-7 transition [transition-timing-function:cubic-bezier(0.25,1,0,1)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-300',
   {
     variants: {
       side: {

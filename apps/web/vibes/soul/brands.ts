@@ -19,9 +19,9 @@ export const brands = [
       '--accent': '96 100% 88%',
       '--background': '0 0% 100%',
       '--foreground': '0 0% 7%',
-      '--success': '116, 78%, 65%',
-      '--error': '0, 100%, 60%',
-      '--warning': '40, 100%, 60%',
+      '--success': '116 78% 65%',
+      '--error': '0 100% 60%',
+      '--warning': '40 100% 60%',
       '--info': '220 70% 45%',
 
       '--contrast-100': '0 0% 93%',
@@ -128,4 +128,6 @@ export const brands = [
       '--shadow-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
     },
   },
-] satisfies Brands
+] as const satisfies Brands
+
+export type SoulBrandName = (typeof brands)[number]['name']

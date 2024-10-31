@@ -3,7 +3,6 @@ import Link from 'next/link'
 import path from 'path'
 
 import { Vibe } from '@/vibes/schema'
-import { getVibe } from '@/vibes/utils'
 
 import { CodeBlock } from './code-block'
 import { CodeFromFile } from './code-from-file'
@@ -22,7 +21,7 @@ function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) 
         return (
           <>
             {arr.length > 1 && index > 0 ? (index < arr.length - 1 ? ', ' : ' and ') : ''}
-            <Link key={item} href={page ? `/docs/${vibe.slug}/${page.component}` : '#'}>
+            <Link key={item} href={page ? `/docs/${vibe.slug}/${page.slug}` : '#'}>
               {item}
             </Link>
           </>
@@ -33,17 +32,7 @@ function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) 
   )
 }
 
-export function Installation({
-  vibeSlug,
-  componentName,
-}: {
-  vibeSlug: string
-  componentName: string
-}) {
-  const vibe = getVibe(vibeSlug)
-
-  if (!vibe) return null
-
+export function Installation({ vibe, componentName }: { vibe: Vibe; componentName: string }) {
   const component = vibe.components.find(component => component.name === componentName)
 
   if (!component) return null

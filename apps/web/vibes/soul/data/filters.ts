@@ -1,25 +1,38 @@
-import { Brand, Filter } from '@/vibes/soul/types'
+import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
 
-export function getFilters(brand: Brand): Filter[] {
+import { SoulBrandName } from '../brands'
+
+export function getFilters(brand: SoulBrandName): Filter[] {
   return filters[brand]
 }
 
 const filters = {
   Electric: [
     {
-      paramName: 'type',
-      label: 'Type',
-      type: 'checkbox-group',
+      paramName: 'features',
+      label: 'Features',
+      type: 'toggle-group',
       options: [
+        { label: 'Air purifying', value: 'air-purifying' },
         { label: 'Indoor', value: 'indoor' },
         { label: 'Outdoor', value: 'outdoor' },
-        { label: 'Pet Friendly', value: 'pet-friendly' },
+        { label: 'Pet friendly', value: 'pet-friendly' },
+      ],
+    },
+    {
+      paramName: 'light',
+      label: 'Light',
+      type: 'toggle-group',
+      options: [
+        { label: 'Bright direct', value: 'bright-direct' },
+        { label: 'Bright indirect', value: 'bright-indirect' },
+        { label: 'Low light', value: 'low-light' },
       ],
     },
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Small', value: 'sm' },
         { label: 'Medium', value: 'md' },
@@ -33,8 +46,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 200,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',
@@ -46,7 +59,7 @@ const filters = {
     {
       paramName: 'color',
       label: 'Color',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Black', value: 'black' },
         { label: 'Red', value: 'red' },
@@ -56,7 +69,7 @@ const filters = {
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: '5', value: '5' },
         { label: '5.5', value: '5.5' },
@@ -80,8 +93,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 500,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',
@@ -93,7 +106,7 @@ const filters = {
     {
       paramName: 'color',
       label: 'Color',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Red', value: 'red' },
         { label: 'Green', value: 'green' },
@@ -103,7 +116,7 @@ const filters = {
     {
       paramName: 'size',
       label: 'Size',
-      type: 'checkbox-group',
+      type: 'toggle-group',
       options: [
         { label: 'Small', value: 'sm' },
         { label: 'Medium', value: 'md' },
@@ -117,8 +130,8 @@ const filters = {
       type: 'range',
       min: 0,
       max: 200,
-      minLabel: '$',
-      maxLabel: '$',
+      minPrepend: '$',
+      maxPrepend: '$',
     },
     {
       paramName: 'rating',
@@ -126,4 +139,4 @@ const filters = {
       type: 'rating',
     },
   ],
-} as const satisfies Record<Brand, [Filter, ...Filter[]]>
+} as const satisfies Record<SoulBrandName, [Filter, ...Filter[]]>

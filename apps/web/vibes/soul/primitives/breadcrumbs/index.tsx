@@ -19,7 +19,7 @@ export const Breadcrumbs = function Breadcrumbs({ breadcrumbs, className }: Brea
     <nav
       aria-label="breadcrumb"
       className={clsx(
-        'flex w-full flex-wrap items-center gap-x-2 text-sm @4xl:text-base',
+        'inline-flex flex-wrap items-center gap-x-2 text-sm @xl:text-base',
         className
       )}
     >
@@ -29,16 +29,16 @@ export const Breadcrumbs = function Breadcrumbs({ breadcrumbs, className }: Brea
             <Fragment key={idx}>
               <Link
                 href={href}
-                className="rounded-md ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
+                className="rounded font-medium text-contrast-500 ring-offset-4 transition-colors hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
               >
                 {label}
               </Link>
-              <ChevronRight size={16} strokeWidth={1.5} className="text-contrast-500" />
+              <ChevronRight size={16} strokeWidth={1} className="text-contrast-500" />
             </Fragment>
           )
         } else {
           return (
-            <span key={idx} className="text-contrast-500">
+            <span key={idx} className="text-contrast-400">
               {label}
             </span>
           )

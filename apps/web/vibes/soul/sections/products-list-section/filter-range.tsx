@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from 'react'
 
+import { ArrowRight } from 'lucide-react'
 import { parseAsInteger, useQueryStates } from 'nuqs'
 
 import { RangeInput } from '@/vibes/soul/form/range-input'
 import { Button } from '@/vibes/soul/primitives/button'
 
 interface Props {
-  minParamName?: string
-  maxParamName?: string
+  minParamName: string
+  maxParamName: string
   min?: number
   max?: number
   minLabel?: string
@@ -23,8 +24,8 @@ interface Props {
 export function FilterRange({
   min,
   max,
-  minParamName = 'min',
-  maxParamName = 'max',
+  minParamName,
+  maxParamName,
   minLabel,
   maxLabel,
   minPrepend,
@@ -51,7 +52,7 @@ export function FilterRange({
   }, [params, min, max, minParamName, maxParamName])
 
   return (
-    <div className="space-y-3">
+    <div className="flex items-center gap-2">
       <RangeInput
         min={min}
         max={max}
@@ -68,17 +69,15 @@ export function FilterRange({
         onMinValueChange={value => void setMinState(Number.isNaN(value) ? null : value)}
         onMaxValueChange={value => void setMaxState(Number.isNaN(value) ? null : value)}
       />
-      {isDirty && (
-        <div className="flex justify-center">
-          <Button
-            size="small"
-            variant="secondary"
-            onClick={() => void setParams({ [minParamName]: minState, [maxParamName]: maxState })}
-          >
-            Apply Changes
-          </Button>
-        </div>
-      )}
+      <Button
+        size="icon"
+        variant="secondary"
+        disabled={!isDirty}
+        onClick={() => void setParams({ [minParamName]: minState, [maxParamName]: maxState })}
+        className="shrink-0"
+      >
+        <ArrowRight size={20} strokeWidth={1} />
+      </Button>
     </div>
   )
 }

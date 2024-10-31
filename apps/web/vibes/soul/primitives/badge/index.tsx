@@ -4,16 +4,19 @@ import { clsx } from 'clsx'
 
 export interface BadgeProps {
   children: ReactNode
-  variant?: 'round' | 'square'
+  variant?: 'pill' | 'rounded'
   className?: string
 }
 
-export const Badge = function Badge({ children, variant = 'round', className }: BadgeProps) {
+export const Badge = function Badge({ children, variant = 'rounded', className }: BadgeProps) {
   return (
     <span
       className={clsx(
         'bg-primary-highlight px-2 py-0.5 font-mono text-xs uppercase tracking-tighter text-foreground',
-        variant === 'round' ? 'rounded-full' : 'rounded',
+        {
+          pill: 'rounded-full',
+          rounded: 'rounded',
+        }[variant],
         className
       )}
     >

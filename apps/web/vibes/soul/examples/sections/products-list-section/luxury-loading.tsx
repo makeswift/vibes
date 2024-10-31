@@ -1,9 +1,11 @@
 import { getBreadcrumbs, getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
+import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-import { Filter, Option, ProductCardProduct } from '@/vibes/soul/types'
+import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
+import { Option } from '@/vibes/soul/sections/products-list-section/sorting'
 
 export default function Preview() {
-  const products = new Promise<ProductCardProduct[]>(res => {
+  const products = new Promise<CardProduct[]>(res => {
     setTimeout(() => {
       res(getProducts('Luxury'))
     }, 5000)

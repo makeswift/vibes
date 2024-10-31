@@ -1,17 +1,90 @@
-import { BlogPostPage } from '@/vibes/soul/pages/blog/post'
+import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
+import {
+  contactInformation,
+  copyright,
+  footerLinks,
+} from '@/vibes/soul/examples/sections/footer/electric'
+import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Navigation } from '@/vibes/soul/primitives/navigation'
+import { BlogPostContent } from '@/vibes/soul/sections/blog-post-content'
+import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel'
+import { Footer } from '@/vibes/soul/sections/footer'
+import {
+  Amex,
+  ApplePay,
+  Bitcoin,
+  GooglePay,
+  Mastercard,
+  Paypal,
+  Visa,
+} from '@/vibes/soul/sections/footer/payment-icons'
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
+import { Subscribe } from '@/vibes/soul/sections/subscribe'
+
+const socialMediaLinks = [
+  {
+    href: '#',
+    icon: <Facebook />,
+  },
+  {
+    href: '#',
+    icon: <X />,
+  },
+  {
+    href: '#',
+    icon: <Instagram />,
+  },
+  {
+    href: '#',
+    icon: <Youtube />,
+  },
+]
+
+const paymentIconsArray: React.ReactNode[] = [
+  <Visa key="Visa" />,
+  <Amex key="Amex" />,
+  <Mastercard key="Mastercard" />,
+  <Paypal key="Paypal" />,
+  <GooglePay key="GooglePay" />,
+  <ApplePay key="ApplePay" />,
+  <Bitcoin key="Bitcoin" />,
+]
+
+const locales = [
+  { id: '1', region: 'US', language: 'EN' },
+  { id: '2', region: 'FR', language: 'FR' },
+  { id: '3', region: 'DE', language: 'DC' },
+  { id: '4', region: 'IT', language: 'IT' },
+]
 
 export default function Preview() {
   return (
-    <BlogPostPage
-      id="1"
-      title="Top 5 Plants to Purify Your Home's Air"
-      author="Sam Smith"
-      date="June 30, 2024"
-      image={{
-        src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
-        alt: 'A plant with large leaves and a short stem.',
-      }}
-      content={`
+    <>
+      <AnnouncementBar>
+        Get <strong>15% off</strong> and free shipping with discount code{' '}
+        <strong>&quot;welcome&quot;</strong>
+      </AnnouncementBar>
+
+      <Navigation
+        links={navigationLinks}
+        logo={logo}
+        cartHref="#"
+        accountHref="#"
+        locales={locales}
+        activeLocale="EN"
+      />
+
+      <BlogPostContent
+        id="1"
+        title="Top 5 Plants to Purify Your Home's Air"
+        author="Sam Smith"
+        date="June 30, 2024"
+        image={{
+          src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
+          alt: 'A plant with large leaves and a short stem.',
+        }}
+        content={`
        <h2>Best Air-Purifying Plants</h2>
         <ol>
             <li>
@@ -56,11 +129,30 @@ export default function Preview() {
             </li>
         </ol>
       `}
-      relatedPostsTitle="Related posts"
-      cta={{
-        href: '#',
-        label: 'View All',
-      }}
-    />
+      />
+
+      <FeaturedBlogPostCarousel
+        title="Related posts"
+        blogPosts={posts}
+        cta={{
+          href: '#',
+          label: 'View All',
+        }}
+      />
+
+      <Subscribe
+        title="Sign up for our newsletter"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+      />
+
+      <Footer
+        logo={logo}
+        sections={footerLinks}
+        contactInformation={contactInformation}
+        copyright={copyright}
+        paymentIcons={paymentIconsArray}
+        socialMediaLinks={socialMediaLinks}
+      />
+    </>
   )
 }

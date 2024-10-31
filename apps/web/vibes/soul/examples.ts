@@ -1,5 +1,7 @@
 import { lazy } from 'react'
 
+import 'server-only'
+
 import { Components } from '@/vibes/schema'
 
 export const examples = [
@@ -81,25 +83,53 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/button')),
   },
   {
+    name: 'button-link-example',
+    dependencies: [],
+    registryDependencies: ['button-link'],
+    files: ['examples/primitives/button-link/index.tsx'],
+    component: lazy(() => import('./examples/primitives/button-link')),
+  },
+  {
+    name: 'calendar-electric-example',
+    dependencies: [],
+    registryDependencies: ['calendar'],
+    files: ['examples/primitives/calendar/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/calendar/electric')),
+  },
+  {
+    name: 'calendar-warm-example',
+    dependencies: [],
+    registryDependencies: ['calendar'],
+    files: ['examples/primitives/calendar/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/calendar/warm')),
+  },
+  {
+    name: 'calendar-luxury-example',
+    dependencies: [],
+    registryDependencies: ['calendar'],
+    files: ['examples/primitives/calendar/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/calendar/luxury')),
+  },
+  {
     name: 'card-carousel-electric-example',
     dependencies: [],
     registryDependencies: ['card-carousel-electric'],
-    files: ['examples/sections/card-carousel/electric.tsx'],
-    component: lazy(() => import('./examples/sections/card-carousel/electric')),
+    files: ['examples/primitives/card-carousel/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/card-carousel/electric')),
   },
   {
     name: 'card-carousel-warm-example',
     dependencies: [],
     registryDependencies: ['card-carousel-warm'],
-    files: ['examples/sections/card-carousel/warm.tsx'],
-    component: lazy(() => import('./examples/sections/card-carousel/warm')),
+    files: ['examples/primitives/card-carousel/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/card-carousel/warm')),
   },
   {
     name: 'card-carousel-luxury-example',
     dependencies: [],
     registryDependencies: ['card-carousel-luxury'],
-    files: ['examples/sections/card-carousel/luxury.tsx'],
-    component: lazy(() => import('./examples/sections/card-carousel/luxury')),
+    files: ['examples/primitives/card-carousel/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/card-carousel/luxury')),
   },
   {
     name: 'card-example',
@@ -165,6 +195,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/checkout')),
   },
   {
+    name: 'compare-section-electric-example',
+    dependencies: [],
+    registryDependencies: ['compare-section'],
+    files: ['examples/sections/compare-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/compare-section/electric')),
+  },
+  {
     name: 'countdown-example',
     dependencies: [],
     registryDependencies: ['countdown'],
@@ -177,6 +214,13 @@ export const examples = [
     registryDependencies: ['counter'],
     files: ['examples/primitives/counter/index.tsx'],
     component: lazy(() => import('./examples/primitives/counter')),
+  },
+  {
+    name: 'cursor-pagination-example',
+    dependencies: [],
+    registryDependencies: ['cursor-pagination'],
+    files: ['examples/primitives/cursor-pagination/index.tsx'],
+    component: lazy(() => import('./examples/primitives/cursor-pagination')),
   },
   {
     name: 'create-account-example',
@@ -319,27 +363,6 @@ export const examples = [
     component: lazy(() => import('./examples/sections/footer/luxury')),
   },
   {
-    name: 'header-electric-example',
-    dependencies: [],
-    registryDependencies: ['header-electric'],
-    files: ['examples/sections/header/electric.tsx'],
-    component: lazy(() => import('./examples/sections/header/electric')),
-  },
-  {
-    name: 'header-warm-example',
-    dependencies: [],
-    registryDependencies: ['header-warm'],
-    files: ['examples/sections/header/warm.tsx'],
-    component: lazy(() => import('./examples/sections/header/warm')),
-  },
-  {
-    name: 'header-luxury-example',
-    dependencies: [],
-    registryDependencies: ['header-luxury'],
-    files: ['examples/sections/header/luxury.tsx'],
-    component: lazy(() => import('./examples/sections/header/luxury')),
-  },
-  {
     name: 'icon-block-example',
     dependencies: [],
     registryDependencies: ['icon-block'],
@@ -359,6 +382,41 @@ export const examples = [
     registryDependencies: ['log-in'],
     files: ['examples/sections/log-in/index.tsx'],
     component: lazy(() => import('./examples/sections/log-in')),
+  },
+  {
+    name: 'navigation-electric-example',
+    dependencies: [],
+    registryDependencies: ['navigation-electric'],
+    files: ['examples/primitives/navigation/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/navigation/electric')),
+  },
+  {
+    name: 'navigation-warm-example',
+    dependencies: [],
+    registryDependencies: ['navigation-warm'],
+    files: ['examples/primitives/navigation/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/navigation/warm')),
+  },
+  {
+    name: 'navigation-luxury-example',
+    dependencies: [],
+    registryDependencies: ['navigation-luxury'],
+    files: ['examples/primitives/navigation/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/navigation/luxury')),
+  },
+  {
+    name: 'order-details-section-electric-example',
+    dependencies: [],
+    registryDependencies: ['order-details-section'],
+    files: ['examples/sections/order-details-section/electric.tsx'],
+    component: lazy(() => import('./examples/sections/order-details-section/electric')),
+  },
+  {
+    name: 'order-list-section-electric-example',
+    dependencies: [],
+    registryDependencies: ['order-list-section'],
+    files: ['examples/sections/order-list-section/electric.tsx'],
+    component: lazy(() => import('./examples/sections/order-list-section/electric')),
   },
   {
     name: 'page-blog-example',
@@ -494,11 +552,11 @@ export const examples = [
     component: lazy(() => import('./examples/pages/products/luxury')),
   },
   {
-    name: 'pagination-example',
+    name: 'offset-pagination-example',
     dependencies: [],
-    registryDependencies: ['pagination'],
-    files: ['examples/primitives/pagination/index.tsx'],
-    component: lazy(() => import('./examples/primitives/pagination')),
+    registryDependencies: ['offset-pagination'],
+    files: ['examples/primitives/offset-pagination/index.tsx'],
+    component: lazy(() => import('./examples/primitives/offset-pagination')),
   },
   {
     name: 'product-card-example',
@@ -634,13 +692,6 @@ export const examples = [
     registryDependencies: ['reviews'],
     files: ['examples/sections/reviews/index.tsx'],
     component: lazy(() => import('./examples/sections/reviews')),
-  },
-  {
-    name: 'slide-carousel-example',
-    dependencies: [],
-    registryDependencies: ['slide-carousel'],
-    files: ['examples/sections/slide-carousel/index.tsx'],
-    component: lazy(() => import('./examples/sections/slide-carousel')),
   },
   {
     name: 'slideshow-electric-example',

@@ -1,6 +1,7 @@
-import { Brand, ProductCardProduct } from '@/vibes/soul/types'
+import { SoulBrandName } from '../brands'
+import { CardProduct } from '../primitives/product-card'
 
-export function getProducts(brand: Brand): ProductCardProduct[] {
+export function getProducts(brand: SoulBrandName): CardProduct[] {
   return products[brand]
 }
 
@@ -10,25 +11,27 @@ const products = {
       id: '1',
       title: 'Philodendron Imperial Red',
       subtitle: 'Indoor Plant',
-      // badge: 'Indestructible',
+      badge: 'Popular',
       price: '$44.95',
       image: {
         src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
         alt: 'Philodendron Imperial Red',
       },
       href: '#',
+      rating: 4,
     },
     {
       id: '2',
       title: 'Monstera',
       subtitle: 'Indoor Plant',
-      // badge: 'New',
+      badge: 'New',
       price: '$24.99',
       image: {
         src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
         alt: 'Monstera',
       },
       href: '#',
+      rating: 4.4,
     },
     {
       id: '3',
@@ -41,6 +44,7 @@ const products = {
         alt: 'Pink Caladium',
       },
       href: '#',
+      rating: 4.8,
     },
     {
       id: '4',
@@ -53,6 +57,7 @@ const products = {
         alt: 'Hoya Kerrii',
       },
       href: '#',
+      rating: 2.2,
     },
     {
       id: '5',
@@ -65,6 +70,7 @@ const products = {
         alt: 'Bird Nest Fern',
       },
       href: '#',
+      rating: 3.5,
     },
     {
       id: '6',
@@ -77,54 +83,133 @@ const products = {
         alt: 'Jade Plant',
       },
       href: '#',
+      rating: 5,
+    },
+    {
+      id: '7',
+      title: 'Snake Plant',
+      subtitle: 'Indoor Plant',
+      // badge: 'Best Seller',
+      price: '$34.95',
+      image: {
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplNGNiMjdiNi04NTY2LTQxOTctODhhMC0xYThhYmY3NDdkZTU=/snake-plant.jpg',
+        alt: 'Snake Plant',
+      },
+      href: '#',
+      rating: 4.9,
+    },
+    {
+      id: '8',
+      title: 'Spider Plant',
+      subtitle: 'Indoor Plant',
+      // badge: 'Easy Care',
+      price: '$12.99',
+      image: {
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiYmYyNDEzMC0wNzU3LTRiYjMtYjkwMi0zNzI0NjBjNzk5MjY=/spider-plant.jpg',
+        alt: 'Spider Plant',
+      },
+      href: '#',
+      rating: 4.2,
+    },
+    {
+      id: '9',
+      title: 'African Fig Tree',
+      subtitle: 'Indoor Plant',
+      // badge: 'Trending',
+      price: '$49.99',
+      image: {
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1MGFmMDIxOC05NWM4LTRlN2UtOTAyMS01OWExOGQxMjUwNGM=/african-fig.jpg',
+        alt: 'African Fig Tree',
+      },
+      href: '#',
+      rating: 4.7,
+    },
+    {
+      id: '10',
+      title: 'Birds of Paradise',
+      subtitle: 'Indoor Plant',
+      // badge: 'Air Purifier',
+      price: '$29.95',
+      image: {
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNWUwYmEwMS0yMDhiLTQ5ZWQtOTI3NC0yZTM0ZTZjYmZhNzg=/birds-of-paradise.jpg',
+        alt: 'Birds of Paradise',
+      },
+      href: '#',
+      rating: 4.5,
+    },
+    {
+      id: '11',
+      title: 'ZZ Plant',
+      subtitle: 'Indoor Plant',
+      // badge: 'Low Maintenance',
+      price: '$22.99',
+      image: {
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1N2Q2YThlZS04MjZiLTRjZmEtODRmZi1hZjgzZDM3MWE2ZGY=/zz-plant.jpg',
+        alt: 'ZZ Plant',
+      },
+      href: '#',
+      rating: 4.6,
+    },
+    {
+      id: '12',
+      title: 'Dracaena',
+      subtitle: 'Indoor Plant',
+      // badge: 'Healing Properties',
+      price: '$18.95',
+      image: {
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3YTJhYTJmZi00ODBhLTQ3NTctODdkYi02ZWEyZGYzZWJmNjI=/dracaena.jpg',
+        alt: 'Dracanea',
+      },
+      href: '#',
+      rating: 4.3,
     },
   ],
   Luxury: [
     {
       id: '1',
-      title: 'JADA SQUARE TOE BALLET FLAT',
+      title: 'Jada Square Toe Ballet Flat',
       subtitle: '',
       badge: 'Bestseller',
       price: '$350',
       image: {
         src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-        alt: 'JADA SQUARE TOE BALLET FLAT',
+        alt: 'Jada Square Toe Ballet Flat',
       },
       href: '#',
     },
     {
       id: '2',
-      title: 'JAYLA WOVEN BALLET HEEL',
+      title: 'Jayla Woven Ballet Heel',
       subtitle: '',
       badge: 'Bestseller',
       price: '$395',
       image: {
         src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT',
-        alt: 'JAYLA WOVEN BALLET HEEL',
+        alt: 'Jayla Woven Ballet Heel',
       },
       href: '#',
     },
     {
       id: '3',
-      title: 'JESSIE BALLET FLAT',
+      title: 'Jessie Ballet Flat',
       subtitle: '',
       badge: 'Bestseller',
       price: '$450',
       image: {
         src: 'https://rstr.in/monogram/vibes/1ipihAyvRQj',
-        alt: 'JESSIE BALLET FLAT',
+        alt: 'Jessie Ballet Flat',
       },
       href: '#',
     },
     {
       id: '4',
-      title: 'LEIGHTON SOFT LEATHER LOAFER',
+      title: 'Leighton Soft Leather Loafer',
       subtitle: '',
       badge: 'Almost Gone',
       price: '$350',
       image: {
         src: 'https://rstr.in/monogram/vibes/YfQW8M1Gv2H/zTWKcqJrdIu',
-        alt: 'LEIGHTON SOFT LEATHER LOAFER',
+        alt: 'Leighton Soft Leather Loafer',
       },
       href: '#',
     },
@@ -227,4 +312,4 @@ const products = {
       href: '#',
     },
   ],
-} as const satisfies Record<Brand, [ProductCardProduct, ...ProductCardProduct[]]>
+} as const satisfies Record<SoulBrandName, [CardProduct, ...CardProduct[]]>

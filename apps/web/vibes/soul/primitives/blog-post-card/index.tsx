@@ -26,35 +26,35 @@ export const BlogPostCard = function BlogPostCard({
   href,
   date,
   author,
-  className = '',
+  className,
 }: BlogPost) {
   return (
     <Link
       href={href}
       className={clsx(
-        'group flex max-w-md flex-col gap-2 rounded-xl text-foreground ring-primary focus:outline-0 focus:ring-2',
+        'group max-w-full rounded-b-lg rounded-t-2xl text-foreground ring-primary ring-offset-4 @container focus:outline-0 focus-visible:ring-2',
         className
       )}
     >
-      <div className="aspect-[4/3] overflow-hidden rounded-xl bg-primary-highlight bg-opacity-10">
+      <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-contrast-100">
         {image?.src != null && image.src !== '' ? (
           <Image
             src={image.src}
-            height={349}
-            width={466}
+            fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt={image.alt}
-            className="transition-transform duration-500 ease-out group-hover:scale-105"
+            className="transition-transform duration-500 ease-out group-hover:scale-110"
           />
         ) : (
-          <h3 className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-primary-shadow opacity-10 transition-transform duration-500 ease-out group-hover:scale-105">
+          <div className="pl-4 pt-4 text-5xl font-bold leading-none tracking-tighter text-foreground/15">
             {title}
-          </h3>
+          </div>
         )}
       </div>
-      <h3 className="pb-1 pt-3 text-lg font-medium">{title}</h3>
-      <p className="line-clamp-3 text-contrast-400">{content}</p>
-      <div className="flex flex-wrap items-center">
+
+      <div className="text-lg font-medium leading-snug">{title}</div>
+      <p className="mb-3 mt-1.5 line-clamp-3 text-sm font-normal text-contrast-400">{content}</p>
+      <div className="text-sm">
         <time dateTime={date}>
           {new Date(date).toLocaleDateString('en-US', {
             year: 'numeric',

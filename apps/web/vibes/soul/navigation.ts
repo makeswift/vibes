@@ -64,6 +64,18 @@ export const navigation = [
       },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
+        title: 'Button Link',
+        slug: 'button-link',
+        file: 'docs/button-link.mdx',
+        component: 'button-link',
+      },
+      {
+        title: 'Calendar',
+        slug: 'calendar',
+        file: 'docs/calendar.mdx',
+        component: 'calendar',
+      },
+      {
         title: 'Card',
         slug: 'card',
         file: 'docs/card.mdx',
@@ -78,15 +90,21 @@ export const navigation = [
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       { title: 'Countdown', slug: 'countdown', file: 'docs/countdown.mdx', component: 'countdown' },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
+      {
+        title: 'Cursor Pagination',
+        slug: 'cursor-pagination',
+        file: 'docs/cursor-pagination.mdx',
+        component: 'cursor-pagination',
+      },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       {
-        title: 'Pagination',
-        slug: 'pagination',
-        file: 'docs/pagination.mdx',
-        component: 'pagination',
+        title: 'Navigation',
+        slug: 'navigation',
+        file: 'docs/navigation.mdx',
+        component: 'navigation',
       },
       {
         title: 'Product Card',
@@ -95,8 +113,8 @@ export const navigation = [
         component: 'product-card',
       },
       {
-        title: 'Products Carousel',
-        slug: 'products-carousel',
+        title: 'Product Carousel',
+        slug: 'product-carousel',
         file: 'docs/products-carousel.mdx',
         component: 'products-carousel',
       },
@@ -107,18 +125,12 @@ export const navigation = [
         component: 'product-description',
       },
       {
-        title: 'Products List',
+        title: 'Product List',
         slug: 'products-list',
         file: 'docs/products-list.mdx',
         component: 'products-list',
       },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
-      // {
-      //   title: 'Slide Carousel',
-      //   slug: 'slide-carousel',
-      //   file: 'docs/slide-carousel.mdx',
-      //   component: 'slide-carousel',
-      // },
 
       {
         title: 'Spinner',
@@ -166,7 +178,7 @@ export const navigation = [
         component: 'featured-products-carousel',
       },
       {
-        title: 'Featured Products List',
+        title: 'Featured Product List',
         slug: 'featured-products-list',
         file: 'docs/featured-products-list.mdx',
         component: 'featured-products-list',
@@ -178,12 +190,6 @@ export const navigation = [
         component: 'featured-video',
       },
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
-      {
-        title: 'Header',
-        slug: 'header',
-        file: 'docs/header.mdx',
-        component: 'header',
-      },
       {
         title: 'Icon Block',
         slug: 'icon-block',
@@ -197,8 +203,20 @@ export const navigation = [
         component: 'log-in',
       },
       {
-        title: 'Products List',
-        slug: 'products-list-section',
+        title: 'Order Details Section',
+        slug: 'order-details-section',
+        file: 'docs/order-details-section.mdx',
+        component: 'order-details-section',
+      },
+      {
+        title: 'Order List Section',
+        slug: 'order-list-section',
+        file: 'docs/order-list-section.mdx',
+        component: 'order-list-section',
+      },
+      {
+        title: 'Product List',
+        slug: 'product-list-section',
         file: 'docs/products-list-section.mdx',
         component: 'products-list-section',
       },
@@ -262,5 +280,9 @@ export const navigation = [
         file: 'docs/page-not-found.mdx',
       },
     ],
+  },
+  {
+    title: 'Form',
+    pages: [{ title: 'Example', slug: 'form', file: 'docs/form.mdx' }],
   },
 ] satisfies Navigation

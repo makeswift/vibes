@@ -7,10 +7,7 @@ import { ArrowUpRight } from 'lucide-react'
 
 export interface CardProps {
   title: string
-  image: {
-    src: string
-    alt: string
-  }
+  image: { src: string; alt: string }
   href: string
   textContrast?: 'light' | 'dark'
 }

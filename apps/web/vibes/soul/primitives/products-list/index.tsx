@@ -2,14 +2,15 @@ import { Suspense, use } from 'react'
 
 import { clsx } from 'clsx'
 
-import { ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
-import { ProductCardProduct } from '@/vibes/soul/types'
+import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
 
 import { CompareDrawer } from './compare-drawer'
 
+export type ListProduct = CardProduct
+
 interface Props {
-  products: ProductCardProduct[] | Promise<ProductCardProduct[]>
-  compareProducts?: ProductCardProduct[] | Promise<ProductCardProduct[]>
+  products: ListProduct[] | Promise<ListProduct[]>
+  compareProducts?: ListProduct[] | Promise<ListProduct[]>
   className?: string
   showCompare?: boolean
   compareLabel?: string
@@ -27,7 +28,7 @@ function ProductsListInner({
   return resolved.map(product => (
     <ProductCard
       key={product.id}
-      {...product}
+      product={product}
       showCompare={showCompare}
       compareLabel={compareLabel}
       compareParamName={compareParamName}
@@ -45,10 +46,10 @@ export function ProductsList({
 }: Props) {
   return (
     <>
-      <div className={clsx('w-full bg-background pt-0.5 @container', className)}>
-        <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-x-5 gap-y-10 @md:grid-cols-2 @xl:gap-y-10 @4xl:grid-cols-3">
+      <div className={clsx('w-full @container', className)}>
+        <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5">
           <Suspense
-            fallback={Array.from({ length: 20 }).map((_, index) => (
+            fallback={Array.from({ length: 9 }).map((_, index) => (
               <ProductCardSkeleton key={index} />
             ))}
           >
@@ -61,7 +62,7 @@ export function ProductsList({
           </Suspense>
         </div>
       </div>
-      {compareProducts && <CompareDrawer products={compareProducts} paramName={compareParamName} />}
+      {compareProducts && <CompareDrawer items={compareProducts} paramName={compareParamName} />}
     </>
   )
 }
