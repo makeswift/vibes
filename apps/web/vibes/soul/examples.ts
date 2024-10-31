@@ -216,6 +216,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/counter')),
   },
   {
+    name: 'cursor-pagination-example',
+    dependencies: [],
+    registryDependencies: ['cursor-pagination'],
+    files: ['examples/primitives/cursor-pagination/index.tsx'],
+    component: lazy(() => import('./examples/primitives/cursor-pagination')),
+  },
+  {
     name: 'create-account-example',
     dependencies: [],
     registryDependencies: ['create-account'],

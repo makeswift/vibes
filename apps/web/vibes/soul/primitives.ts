@@ -92,6 +92,12 @@ export const primitives = [
     files: ['primitives/counter/index.tsx'],
   },
   {
+    name: 'cursor-pagination',
+    dependencies: ['lucide-react', 'nuqs', 'clsx'],
+    registryDependencies: [],
+    files: ['primitives/cursor-pagination/index.tsx'],
+  },
+  {
     name: 'dropdown',
     dependencies: ['clsx', 'lucide-react', '@radix-ui/react-dropdown-menu'],
     registryDependencies: [],

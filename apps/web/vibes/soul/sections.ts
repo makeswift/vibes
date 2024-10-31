@@ -112,7 +112,7 @@ export const sections = [
   {
     name: 'products-list-section',
     dependencies: ['nuqs'],
-    registryDependencies: ['products-list'],
+    registryDependencies: ['products-list', 'button', 'toggle-group', 'cursor-pagination'],
     files: [
       'sections/products-list-section/index.tsx',
       'sections/products-list-section/filter-range.tsx',
@@ -120,7 +120,6 @@ export const sections = [
       'sections/products-list-section/filter-toggle-group.tsx',
       'sections/products-list-section/filters-panel.tsx',
       'sections/products-list-section/mobile-filters.tsx',
-      'sections/products-list-section/pagination.tsx',
       'sections/products-list-section/sorting.tsx',
     ],
   },
