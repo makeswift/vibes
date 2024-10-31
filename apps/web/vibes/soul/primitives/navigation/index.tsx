@@ -50,7 +50,7 @@ interface Props {
   searchHref: string
   searchParamName?: string
   searchAction?: (term: string) => Promise<SearchResult[]>
-  searchCta?: { label: string; href: string }
+  searchCtaLabel?: string
   emptySearchTitleLabel?: string
   emptySearchSubtitleLabel?: string
 }
@@ -67,7 +67,7 @@ export const Navigation = forwardRef(function Navigation(
     searchHref,
     searchParamName = 'term',
     searchAction,
-    searchCta,
+    searchCtaLabel,
     emptySearchTitleLabel,
     emptySearchSubtitleLabel,
     ...rest
@@ -403,10 +403,11 @@ export const Navigation = forwardRef(function Navigation(
           {searchResults && term.length > 2 && !searchPending ? (
             <SearchResults
               searchResults={searchResults}
-              cta={searchCta}
+              searchCtaLabel={searchCtaLabel}
               emptySearchTitleLabel={emptySearchTitleLabel}
               emptySearchSubtitleLabel={emptySearchSubtitleLabel}
               term={term}
+              searchHref={searchHref}
             />
           ) : null}
         </div>

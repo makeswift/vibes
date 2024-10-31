@@ -20,18 +20,20 @@ export type SearchResult =
 
 type Props = {
   searchResults: SearchResult[]
-  cta?: { label: string; href: string }
+  searchCtaLabel?: string
   emptySearchTitleLabel?: string
   emptySearchSubtitleLabel?: string
   term: string
+  searchHref: string
 }
 
 export const SearchResults = ({
   searchResults,
-  cta,
+  searchCtaLabel = 'View all results',
   emptySearchTitleLabel = 'No results were found for',
   emptySearchSubtitleLabel = 'Please try another search.',
   term,
+  searchHref,
 }: Props) => {
   if (searchResults.length === 0) {
     return (
@@ -94,17 +96,15 @@ export const SearchResults = ({
         })}
       </div>
       {/* CTA */}
-      {cta && (
-        <div className="w-full border-t border-contrast-100 p-4">
-          <Link
-            href={cta.href}
-            className="group flex w-fit items-center gap-1 rounded-md p-1 text-[15px] font-semibold ring-primary hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
-          >
-            {cta.label}
-            <ArrowRight className="h-5 w-5 p-0.5 transition group-hover:translate-x-1" />
-          </Link>
-        </div>
-      )}
+      <div className="w-full border-t border-contrast-100 p-4">
+        <Link
+          href={`${searchHref}?term=${term}`}
+          className="group flex w-fit items-center gap-1 rounded-md p-1 text-[15px] font-semibold ring-primary hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+        >
+          {searchCtaLabel}
+          <ArrowRight className="h-5 w-5 p-0.5 transition group-hover:translate-x-1" />
+        </Link>
+      </div>
     </>
   )
 }
