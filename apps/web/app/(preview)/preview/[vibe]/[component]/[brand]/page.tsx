@@ -1,22 +1,14 @@
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
-import * as Vibes from '@/vibes'
-import { Vibe } from '@/vibes/schema'
 import { getVibe } from '@/vibes/utils'
 
+export const revalidate = 60
+
+export const dynamicParams = true
+
 export async function generateStaticParams() {
-  return Object.values(Vibes).flatMap((vibe: Vibe) =>
-    vibe.components
-      .filter(c => c.component !== null)
-      .flatMap(component =>
-        vibe.brands.map(brand => ({
-          vibe: vibe.slug,
-          component: component.name,
-          brand: brand.name,
-        }))
-      )
-  )
+  return []
 }
 
 export default async function Page({
