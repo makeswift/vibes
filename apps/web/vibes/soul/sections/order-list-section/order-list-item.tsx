@@ -20,8 +20,13 @@ type Props = {
 
 export function OrderListItem({ className, order }: Props) {
   return (
-    <div className={clsx('border-t border-contrast-200 pb-4 pt-6 last:border-b', className)}>
-      <div className="flex justify-between gap-x-10">
+    <div
+      className={clsx(
+        'border-t border-contrast-100 pb-6 pt-5 last:border-b @lg:pb-10 @lg:pt-6',
+        className
+      )}
+    >
+      <div className="flex flex-col justify-between gap-x-10 gap-y-4 @lg:flex-row">
         <div className="flex items-start gap-x-12">
           <div>
             <span className="font-mono text-xs uppercase leading-normal text-contrast-500">
@@ -43,7 +48,7 @@ export function OrderListItem({ className, order }: Props) {
         </ButtonLink>
       </div>
 
-      <div className="flex gap-4 overflow-x-auto py-6">
+      <div className="mt-6 flex gap-4 overflow-hidden [mask-image:linear-gradient(to_right,_black_0%,_black_80%,_transparent_98%)]">
         {order.lineItems.map(lineItem => (
           <OrderListLineItem key={lineItem.id} lineItem={lineItem} />
         ))}
