@@ -1,3 +1,5 @@
+import { isValidElement } from 'react'
+
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -14,7 +16,15 @@ export function getNodeTextContent(node: React.ReactNode): string {
     return String(node)
   }
 
-  if (node && typeof node === 'object' && 'props' in node) {
+  if (
+    node &&
+    typeof node === 'object' &&
+    'props' in node &&
+    typeof node.props === 'object' &&
+    node.props !== null &&
+    'children' in node.props &&
+    isValidElement(node.props.children)
+  ) {
     return getNodeTextContent(node.props.children)
   }
 

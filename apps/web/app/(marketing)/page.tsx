@@ -176,7 +176,7 @@ export default function Home() {
             <div className="text-left md:ml-10">
               <span className="md:relative">
                 <Transition
-                  className="w-auto transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:100ms]"
+                  className="w-auto transition-all duration-700 [transition-delay:100ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -189,7 +189,7 @@ export default function Home() {
             <div className="text-left md:text-right">
               <span className="md:relative">
                 <Transition
-                  className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:150ms]"
+                  className="transition-all duration-700 [transition-delay:150ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -201,7 +201,7 @@ export default function Home() {
             <div className="text-left md:text-center">
               <span className="md:relative">
                 <Transition
-                  className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:200ms]"
+                  className="transition-all duration-700 [transition-delay:200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -214,7 +214,7 @@ export default function Home() {
             <div className="text-left">
               <span className="md:relative">
                 <Transition
-                  className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:250ms]"
+                  className="transition-all duration-700 [transition-delay:250ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -226,7 +226,7 @@ export default function Home() {
           </h1>
 
           <Transition
-            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:300ms]"
+            className="transition-all duration-700 [transition-delay:300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
             from="translate-y-28 opacity-0"
             to="translate-y-0 opacity-100"
           >
@@ -249,7 +249,7 @@ export default function Home() {
           className="mx-auto max-w-[1200px] pt-12 text-3xl leading-snug tracking-tight md:pt-40 md:text-4xl md:leading-tight lg:text-5xl xl:text-6xl"
         >
           <Transition
-            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:200ms]"
+            className="transition-all duration-700 [transition-delay:200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
             from="translate-y-28 opacity-0"
             to="translate-y-0 opacity-100"
           >
@@ -259,7 +259,7 @@ export default function Home() {
             </p>
           </Transition>
           <Transition
-            className="transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:250ms]"
+            className="transition-all duration-700 [transition-delay:250ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
             from="translate-y-28 opacity-0"
             to="translate-y-0 opacity-100"
           >

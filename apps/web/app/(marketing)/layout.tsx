@@ -69,7 +69,7 @@ const GeistMono = localFont({
   variable: '--font-family-mono',
 })
 
-const PostHogPageView = dynamic(() => import('./post-hog-page-view'), { ssr: false })
+const PostHogPageView = dynamic(() => import('./post-hog-page-view'))
 
 export default function RootLayout({
   children,

@@ -9,8 +9,9 @@ export async function generateStaticParams() {
   return chapters.map(vibe => ({ vibe: vibe.slug }))
 }
 
-export default function Page({ params }: { params: { vibe: string } }) {
-  const chapter = chapters.find(c => c.slug === params.vibe)
+export default async function Page({ params }: { params: Promise<{ vibe: string }> }) {
+  const { vibe: vibeSlug } = await params
+  const chapter = chapters.find(c => c.slug === vibeSlug)
 
   if (!chapter) return notFound()
 

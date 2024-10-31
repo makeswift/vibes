@@ -10,7 +10,7 @@ export type Component = {
   registryDependencies: string[]
   files: string[]
   component?: React.LazyExoticComponent<
-    React.ComponentType<{ searchParams: { [key: string]: string | string[] } }>
+    React.ComponentType<{ searchParams: Promise<{ [key: string]: string | string[] }> }>
   >
 }
 
