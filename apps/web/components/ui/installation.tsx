@@ -21,7 +21,7 @@ function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) 
         return (
           <>
             {arr.length > 1 && index > 0 ? (index < arr.length - 1 ? ', ' : ' and ') : ''}
-            <Link key={item} href={page ? `/docs/${vibe.slug}/${page.component}` : '#'}>
+            <Link key={item} href={page ? `/docs/${vibe.slug}/${page.slug}` : '#'}>
               {item}
             </Link>
           </>
