@@ -5,10 +5,10 @@ import { addToCartAction } from './actions'
 
 const products = getProducts('Electric')
 
-export default function Preview({
+export default async function Preview({
   searchParams,
 }: {
-  searchParams: Record<string, string | string[] | undefined>
+  searchParams: Promise<{ [key: string]: string | string[] }>
 }) {
   return (
     <div className="p-20">

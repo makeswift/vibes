@@ -6,13 +6,13 @@ import { cache, compareParamName, sortParamName } from './searchParams'
 export default async function Preview({
   searchParams,
 }: {
-  searchParams: Record<string, string | string[] | undefined>
+  searchParams: Promise<{ [key: string]: string | string[] }>
 }) {
   const products = getProducts('Electric')
   const filters = getFilters('Electric')
   const sortOptions = getSortOptions()
   const breadcrumbs = getBreadcrumbs('Electric')
-  const { [compareParamName]: compare, [sortParamName]: sort } = cache.parse(searchParams)
+  const { [compareParamName]: compare, [sortParamName]: sort } = cache.parse(await searchParams)
 
   return (
     <div className="p-6">

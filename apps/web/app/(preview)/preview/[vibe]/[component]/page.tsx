@@ -9,10 +9,15 @@ export async function generateStaticParams() {
   )
 }
 
-export default async function Page({ params }: { params: { vibe: string; component: string } }) {
-  const vibe = getVibe(params.vibe)
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ vibe: string; component: string }>
+}) {
+  const { vibe: vibeSlug, component: componentName } = await params
+  const vibe = getVibe(vibeSlug)
 
   if (!vibe) return notFound()
 
-  return redirect(`/preview/${params.vibe}/${params.component}/${vibe.brands[0].name}`)
+  return redirect(`/preview/${vibeSlug}/${componentName}/${vibe.brands[0].name}`)
 }

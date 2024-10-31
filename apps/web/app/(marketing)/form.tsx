@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { useFormState, useFormStatus } from 'react-dom'
+import { useActionState, useState } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
@@ -14,7 +14,7 @@ import { submitLeadSchema } from '@/lib/schema'
 
 export function Form({ intent }: { intent?: string }) {
   const [shake, setShake] = useState(false)
-  const [lastResult, action] = useFormState(submitLead, undefined)
+  const [lastResult, action] = useActionState(submitLead, undefined)
   const [form, fields] = useForm({
     lastResult,
     defaultValue: { email: '', intent },

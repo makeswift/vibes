@@ -23,24 +23,25 @@ export default async function Page({
   params,
   searchParams,
 }: {
-  params: { vibe: string; component: string; brand: string }
-  searchParams: { [key: string]: string | string[] }
+  params: Promise<{ vibe: string; component: string; brand: string }>
+  searchParams: Promise<{ [key: string]: string | string[] }>
 }) {
-  const vibe = getVibe(params.vibe)
+  const { vibe: vibeSlug, brand: brandName, component: componentName } = await params
+  const vibe = getVibe(vibeSlug)
 
   if (!vibe) return notFound()
 
-  let activeBrand = vibe.brands.find(b => b.name === decodeURIComponent(params.brand))
+  let activeBrand = vibe.brands.find(b => b.name === decodeURIComponent(brandName))
 
   if (!activeBrand) {
     console.warn(
-      `Could not find brand: ${params.brand} on vibe: ${params.vibe}, defaulting to first brand`
+      `Could not find brand: ${brandName} on vibe: ${vibeSlug}, defaulting to first brand`
     )
 
     activeBrand = vibe.brands[0]
   }
 
-  const entry = vibe.components.find(c => c.name === params.component)
+  const entry = vibe.components.find(c => c.name === componentName)
 
   if (!entry?.component) return notFound()
 

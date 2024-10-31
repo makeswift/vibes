@@ -58,13 +58,18 @@ export async function generateStaticParams() {
   )
 }
 
-export default async function Page({ params }: { params: { vibe: string; page: string } }) {
-  const vibe = getVibe(params.vibe)
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ vibe: string; page: string }>
+}) {
+  const { vibe: vibeSlug, page: pageSlug } = await params
+  const vibe = getVibe(vibeSlug)
 
   if (!vibe) return notFound()
 
   const allPages = vibe.navigation.flatMap(group => group.pages)
-  const pageIndex = allPages.findIndex(page => page.slug === params.page)
+  const pageIndex = allPages.findIndex(page => page.slug === pageSlug)
 
   if (pageIndex === -1) return notFound()
 
