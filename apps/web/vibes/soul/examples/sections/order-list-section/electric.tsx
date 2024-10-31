@@ -1,14 +1,15 @@
 import { getProducts } from '@/vibes/soul/data'
 import { OrderListSection } from '@/vibes/soul/sections/order-list-section'
 
-const products = getProducts('Electric')
+const lineItems = getProducts('Electric')
 
 const orders = [
   {
     id: '1',
     totalPrice: '$100',
     status: 'Delivered',
-    products: products
+    href: '/order/1',
+    lineItems: lineItems
       .filter(() => Math.random() > 0.5)
       .map(({ id, title, subtitle, image, href }) => ({
         id,
@@ -16,14 +17,15 @@ const orders = [
         subtitle,
         image,
         href,
-        price: `${Math.floor(Math.random() * 500)}`,
+        price: `$${Math.floor(Math.random() * 500)}`,
       })),
   },
   {
     id: '2',
     totalPrice: '$150',
     status: 'Delivered',
-    products: products
+    href: '/order/2',
+    lineItems: lineItems
       .filter(() => Math.random() > 0.5)
       .map(({ id, title, subtitle, image, href }) => ({
         id,
@@ -31,14 +33,15 @@ const orders = [
         subtitle,
         image,
         href,
-        price: `${Math.floor(Math.random() * 500)}`,
+        price: `$${Math.floor(Math.random() * 500)}`,
       })),
   },
   {
     id: '3',
     totalPrice: '$500',
     status: 'Delivered',
-    products: products
+    href: '/order/3',
+    lineItems: lineItems
       .filter(() => Math.random() > 0.5)
       .map(({ id, title, subtitle, image, href }) => ({
         id,
@@ -46,7 +49,7 @@ const orders = [
         subtitle,
         image,
         href,
-        price: `${Math.floor(Math.random() * 500)}`,
+        price: `$${Math.floor(Math.random() * 500)}`,
       })),
   },
 ]
