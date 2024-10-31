@@ -1,6 +1,6 @@
 import { Suspense, use } from 'react'
 
-import { Order, OrderItem } from './order-item'
+import { Order, OrderListItem } from './order-list-item'
 
 type Props = {
   orders: Order[] | Promise<Order[]>
@@ -18,9 +18,9 @@ function OrderListInner({ orders }: Props) {
   const resolved = orders instanceof Promise ? use(orders) : orders
 
   return (
-    <div className="space-y-8">
+    <div>
       {resolved.map(order => (
-        <OrderItem key={order.id} order={order} />
+        <OrderListItem key={order.id} order={order} />
       ))}
     </div>
   )
