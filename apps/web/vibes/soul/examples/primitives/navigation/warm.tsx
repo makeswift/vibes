@@ -94,6 +94,7 @@ export default function Preview() {
         accountHref="#"
         locales={locales}
         activeLocale="EN"
+        searchHref="#"
       />
     </div>
   )

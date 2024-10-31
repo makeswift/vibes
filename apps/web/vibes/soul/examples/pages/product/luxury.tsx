@@ -41,6 +41,7 @@ export default function Preview() {
           accountHref="#"
           activeLocale="EN"
           locales={locales}
+          searchHref="#"
         />
 
         <ProductDetail product={product} />

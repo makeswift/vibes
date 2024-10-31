@@ -33,6 +33,7 @@ export default function Preview() {
         accountHref="#"
         activeLocale="EN"
         locales={locales}
+        searchHref="#"
       />
       <ProductsListSection
         breadcrumbs={breadcrumbs}
