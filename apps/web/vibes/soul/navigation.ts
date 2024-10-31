@@ -149,6 +149,12 @@ export const navigation = [
   {
     title: 'Sections',
     pages: [
+      {
+        title: 'Account Layout',
+        slug: 'account-layout',
+        file: 'docs/account-layout.mdx',
+        component: 'account-layout',
+      },
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
       { title: 'Checkout', slug: 'checkout', file: 'docs/checkout.mdx', component: 'checkout' },
       {
