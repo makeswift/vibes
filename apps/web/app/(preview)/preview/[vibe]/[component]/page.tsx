@@ -3,10 +3,12 @@ import { notFound, redirect } from 'next/navigation'
 import * as Vibes from '@/vibes'
 import { getVibe } from '@/vibes/utils'
 
+export const revalidate = 60
+
+export const dynamicParams = true
+
 export async function generateStaticParams() {
-  return Object.values(Vibes).flatMap(vibe =>
-    vibe.components.map(component => ({ vibe: vibe.slug, component: component.name }))
-  )
+  return []
 }
 
 export default async function Page({

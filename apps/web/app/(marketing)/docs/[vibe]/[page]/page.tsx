@@ -17,7 +17,6 @@ import {
   Colors,
 } from '@/components/brand'
 import * as MDXComponents from '@/components/mdx'
-import { toChapter } from '@/components/navigation'
 import { Preview } from '@/components/preview'
 import { Accordion, AccordionGroup } from '@/components/ui/accordions'
 import { Button } from '@/components/ui/button'
@@ -37,7 +36,6 @@ import { ZoomImage } from '@/components/ui/zoom-image'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
 import { getTotalSize } from '@/lib/bundle'
 import { theme, transformers } from '@/lib/shiki'
-import * as Vibes from '@/vibes'
 import { pageMetaSchema } from '@/vibes/schema'
 import { getVibe } from '@/vibes/utils'
 
@@ -48,14 +46,12 @@ interface PageMeta {
   icon?: string
 }
 
-const chapters = Object.values(Vibes).map(toChapter)
+export const revalidate = 60
+
+export const dynamicParams = true
 
 export async function generateStaticParams() {
-  return chapters.flatMap(chapter =>
-    chapter.groups.flatMap(group =>
-      group.pages.map(page => ({ vibe: chapter.slug, page: page.slug }))
-    )
-  )
+  return []
 }
 
 export default async function Page({
