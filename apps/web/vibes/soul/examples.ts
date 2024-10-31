@@ -552,11 +552,11 @@ export const examples = [
     component: lazy(() => import('./examples/pages/products/luxury')),
   },
   {
-    name: 'pagination-example',
+    name: 'offset-pagination-example',
     dependencies: [],
-    registryDependencies: ['pagination'],
-    files: ['examples/primitives/pagination/index.tsx'],
-    component: lazy(() => import('./examples/primitives/pagination')),
+    registryDependencies: ['offset-pagination'],
+    files: ['examples/primitives/offset-pagination/index.tsx'],
+    component: lazy(() => import('./examples/primitives/offset-pagination')),
   },
   {
     name: 'product-card-example',
