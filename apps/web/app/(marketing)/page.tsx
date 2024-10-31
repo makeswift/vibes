@@ -17,6 +17,7 @@ import { HandcraftedCode } from '../stickers/handcrafted-code'
 import { KeepIt100 } from '../stickers/keep-it-100'
 import { LikeTotally } from '../stickers/like-totally'
 import { MadProps } from '../stickers/mad-props'
+import { Nextjs } from '../stickers/nextjs'
 import { OpenSource } from '../stickers/open-source'
 import { PrebuiltSections } from '../stickers/prebuilt-sections'
 import { ProductionReady } from '../stickers/production-ready'
@@ -175,7 +176,7 @@ export default function Home() {
             <div className="text-left md:ml-10">
               <span className="md:relative">
                 <Transition
-                  className="w-auto transition-all duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)] [transition-delay:100ms]"
+                  className="w-auto transition-all duration-700 [transition-delay:100ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -321,6 +322,13 @@ export default function Home() {
 
         <div className="w-full space-y-7 lg:max-w-2xl lg:space-y-16 xl:max-w-3xl 2xl:max-w-4xl">
           <FeatureCard
+            sticker="right"
+            text="Modern patterns leveraging the latest features of Next.js: Server Components, Server Actions, PPR, and more!"
+          >
+            <Nextjs />
+          </FeatureCard>
+
+          <FeatureCard
             sticker="left"
             text="Multiple styles that can be customized to best represent your brand."
           >
@@ -388,7 +396,7 @@ export default function Home() {
             <p className="mb-8 text-balance px-2 text-2xl leading-snug text-black sm:text-3xl md:mb-12 lg:text-4xl">
               Stunning React components for commerce and marketing, optimized for fashion and
               function.
-              <span className="mt-4 block font-bold md:mt-6">Coming October 2024.</span>
+              <span className="mt-4 block font-bold md:mt-6">Coming November 2024.</span>
             </p>
 
             <div className="relative z-10 w-full sm:w-auto">
