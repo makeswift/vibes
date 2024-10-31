@@ -25,7 +25,7 @@ export function OrderListLineItem({ className, lineItem }: Props) {
       id={lineItem.id}
       href={lineItem.href}
       className={clsx(
-        'group w-40 shrink-0 basis-40 cursor-pointer rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl',
+        'group shrink-0 basis-32 cursor-pointer rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl @lg:basis-40',
         className
       )}
     >
@@ -39,17 +39,17 @@ export function OrderListLineItem({ className, lineItem }: Props) {
             className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
           />
         ) : (
-          <div className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">
+          <div className="pl-2 pt-3 text-4xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">
             {lineItem.title}
           </div>
         )}
       </div>
 
-      <div className="mt-2 px-1 text-sm @xs:mt-3">
+      <div className="mt-2 px-1 text-sm leading-snug @xs:mt-3">
         <span className="block font-semibold">{lineItem.title}</span>
 
         {lineItem.subtitle != null && lineItem.subtitle !== '' && (
-          <span className="mb-1 block font-normal text-contrast-400">{lineItem.subtitle}</span>
+          <span className="mb-1.5 block font-normal text-contrast-400">{lineItem.subtitle}</span>
         )}
         {lineItem.price != null && <PriceLabel price={lineItem.price} />}
       </div>

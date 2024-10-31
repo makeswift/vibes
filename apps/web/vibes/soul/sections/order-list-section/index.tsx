@@ -19,10 +19,12 @@ export function OrderListSection({
   paginationInfo,
 }: Props) {
   return (
-    <>
-      <h1 className="mb-8 text-4xl">{title}</h1>
+    <div className="@container">
+      <h1 className="mb-8 hidden text-4xl font-medium leading-tight tracking-tight @2xl:block">
+        {title}
+      </h1>
       <OrderList orders={orders} />
       {paginationInfo && <CursorPagination info={paginationInfo} />}
-    </>
+    </div>
   )
 }
