@@ -7,6 +7,7 @@ import { ProductCard } from '@/vibes/soul/primitives/product-card'
 
 export type SearchResult =
   | {
+      type: 'products'
       title: string
       products: {
         id: string
@@ -16,7 +17,7 @@ export type SearchResult =
         image?: { src: string; alt: string }
       }[]
     }
-  | { title: string; links: { label: string; href: string }[] }
+  | { type: 'links'; title: string; links: { label: string; href: string }[] }
 
 type Props = {
   searchResults: SearchResult[]
@@ -50,7 +51,7 @@ export const SearchResults = ({
     <>
       <div className="flex flex-col border-t border-contrast-100 @2xl:flex-row">
         {searchResults.map((result, index) => {
-          if ('links' in result) {
+          if (result.type === 'links') {
             return (
               <div
                 className="flex w-full flex-col gap-1 border-b border-contrast-100 p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r"
@@ -70,7 +71,7 @@ export const SearchResults = ({
             )
           }
 
-          if ('products' in result) {
+          if (result.type === 'products') {
             return (
               <div className="flex w-full flex-col gap-5 p-5" key={`result-${index}`}>
                 <span className="font-mono text-sm uppercase">{result.title}</span>
