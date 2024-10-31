@@ -78,7 +78,7 @@ export const Navigation = forwardRef(function Navigation(
   const pathname = usePathname()
   const container = useRef<HTMLUListElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
-  const searchRef = useRef<HTMLFormElement>(null)
+  const searchRef = useRef<HTMLDivElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const [selectedCategory, setSelectedCategory] = useState<number | null>(0)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -92,6 +92,7 @@ export const Navigation = forwardRef(function Navigation(
 
   useEffect(() => {
     setNavOpen(false)
+    setSearchOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -173,7 +174,6 @@ export const Navigation = forwardRef(function Navigation(
     const searchTerm = searchInputRef.current?.value.trim() ?? ''
 
     if (searchTerm.length > 0) {
-      setSearchOpen(false)
       router.push(`${searchHref}?${searchParamName}=${encodeURIComponent(searchTerm)}`)
     }
   }
@@ -372,12 +372,9 @@ export const Navigation = forwardRef(function Navigation(
               ? 'scale-100 bg-background opacity-100'
               : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
           )}
+          ref={searchRef}
         >
-          <form
-            onSubmit={handleSearch}
-            className="flex items-center gap-3 px-3 py-4 @xl:px-5"
-            ref={searchRef}
-          >
+          <form onSubmit={handleSearch} className="flex items-center gap-3 px-3 py-4 @xl:px-5">
             <SearchIcon
               strokeWidth={1}
               className="hidden w-5 shrink-0 text-contrast-500 @xl:block"
