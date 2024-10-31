@@ -4,6 +4,10 @@ import { DayPicker } from 'react-day-picker'
 import clsx from 'clsx'
 import { ChevronLeftIcon } from 'lucide-react'
 
+const components = {
+  Chevron: () => <ChevronLeftIcon className="h-5 w-5" strokeWidth={1} />,
+}
+
 export function Calendar({
   className,
   classNames,
@@ -38,9 +42,7 @@ export function Calendar({
         range_end: 'bg-gradient-to-r from-primary-highlight',
         ...classNames,
       }}
-      components={{
-        Chevron: () => <ChevronLeftIcon className="h-5 w-5" strokeWidth={1} />,
-      }}
+      components={components}
       {...props}
     />
   )
