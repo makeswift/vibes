@@ -90,6 +90,12 @@ export const navigation = [
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       { title: 'Countdown', slug: 'countdown', file: 'docs/countdown.mdx', component: 'countdown' },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
+      {
+        title: 'Cursor Pagination',
+        slug: 'cursor-pagination',
+        file: 'docs/cursor-pagination.mdx',
+        component: 'cursor-pagination',
+      },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
