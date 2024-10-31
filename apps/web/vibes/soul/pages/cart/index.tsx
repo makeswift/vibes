@@ -91,6 +91,7 @@ export const CartPage = function CartPage({
         accountHref="#"
         locales={locales}
         activeLocale="EN"
+        searchHref="#"
       />
 
       <Cart
