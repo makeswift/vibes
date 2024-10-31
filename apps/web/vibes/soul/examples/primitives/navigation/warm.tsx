@@ -1,4 +1,6 @@
+import { getProducts } from '@/vibes/soul/data'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
+import { SearchResult } from '@/vibes/soul/primitives/navigation/search-results'
 
 export const navigationLinks = [
   {
@@ -72,17 +74,62 @@ export const navigationLinks = [
   },
 ]
 
-export const logo = {
-  src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
-  alt: 'Outer Shell Logo',
-}
-
 export const locales = [
   { id: '1', region: 'US', language: 'EN' },
   { id: '2', region: 'FR', language: 'FR' },
   { id: '3', region: 'DE', language: 'DC' },
   { id: '4', region: 'IT', language: 'IT' },
 ]
+
+const searchAction = async () => {
+  'use server'
+
+  return new Promise<SearchResult[]>(res => {
+    setTimeout(() => {
+      res([
+        {
+          title: 'Bags You Wear',
+          links: [
+            {
+              label: 'Small',
+              href: '#',
+            },
+            {
+              label: 'Medium',
+              href: '#',
+            },
+            {
+              label: 'Large',
+              href: '#',
+            },
+          ],
+        },
+        {
+          title: 'Camera Straps',
+          links: [
+            {
+              label: 'Wrist Straps',
+              href: '#',
+            },
+            {
+              label: 'Body Straps',
+              href: '#',
+            },
+          ],
+        },
+        {
+          title: 'Products',
+          products: getProducts('Warm'),
+        },
+      ])
+    }, 1000)
+  })
+}
+
+export const logo = {
+  src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
+  alt: 'Outer Shell Logo',
+}
 
 export default function Preview() {
   return (
@@ -92,9 +139,11 @@ export default function Preview() {
         logo={logo}
         cartHref="#"
         accountHref="#"
-        locales={locales}
         activeLocale="EN"
         searchHref="#"
+        locales={locales}
+        searchAction={searchAction}
+        searchCta={{ label: 'View all items', href: '#' }}
       />
     </div>
   )
