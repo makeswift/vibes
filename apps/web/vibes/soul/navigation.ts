@@ -126,7 +126,7 @@ export const navigation = [
       },
       {
         title: 'Product List',
-        slug: 'product-list',
+        slug: 'products-list',
         file: 'docs/products-list.mdx',
         component: 'products-list',
       },
