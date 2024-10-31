@@ -47,7 +47,7 @@ interface Props {
   links: Links[]
   locales?: { id: string; region: string; language: string }[]
   logo?: string | Image
-  searchHref: string
+  searchHref?: string
 }
 
 export const Navigation = forwardRef(function Navigation(
@@ -59,7 +59,7 @@ export const Navigation = forwardRef(function Navigation(
     links,
     locales,
     logo,
-    searchHref,
+    searchHref = '/search',
     ...rest
   }: Props,
   ref: Ref<HTMLDivElement>
