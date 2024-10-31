@@ -47,10 +47,13 @@ export const SearchResults = ({
   return (
     <>
       <div className="flex flex-col border-t border-contrast-100 @2xl:flex-row">
-        {searchResults.map(result => {
+        {searchResults.map((result, index) => {
           if ('links' in result) {
             return (
-              <div className="flex w-full flex-col gap-1 border-b border-contrast-100 p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r">
+              <div
+                className="flex w-full flex-col gap-1 border-b border-contrast-100 p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r"
+                key={`result-${index}`}
+              >
                 <span className="mb-4 font-mono text-sm uppercase">{result.title}</span>
                 {result.links.map((link, i) => (
                   <Link
@@ -67,10 +70,10 @@ export const SearchResults = ({
 
           if ('products' in result) {
             return (
-              <div className="flex w-full flex-col gap-5 p-5">
+              <div className="flex w-full flex-col gap-5 p-5" key={`result-${index}`}>
                 <span className="font-mono text-sm uppercase">{result.title}</span>
                 <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
-                  {result.products.map((product, i) => (
+                  {result.products.map(product => (
                     <ProductCard
                       key={product.id}
                       product={{
