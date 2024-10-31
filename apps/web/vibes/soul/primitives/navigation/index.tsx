@@ -48,6 +48,7 @@ interface Props {
   locales?: { id: string; region: string; language: string }[]
   logo?: string | Image
   searchHref: string
+  searchParamName?: string
 }
 
 export const Navigation = forwardRef(function Navigation(
@@ -60,6 +61,7 @@ export const Navigation = forwardRef(function Navigation(
     locales,
     logo,
     searchHref,
+    searchParamName = 'term',
     ...rest
   }: Props,
   ref: Ref<HTMLDivElement>
@@ -160,7 +162,7 @@ export const Navigation = forwardRef(function Navigation(
     const searchTerm = searchInputRef.current?.value.trim() ?? ''
 
     if (searchTerm.length > 0) {
-      router.push(`${searchHref}?term=${encodeURIComponent(searchTerm)}`)
+      router.push(`${searchHref}?${searchParamName}=${encodeURIComponent(searchTerm)}`)
     }
   }
 
