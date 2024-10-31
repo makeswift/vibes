@@ -1,11 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense } from 'react'
+import { Suspense, use, useActionState } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
+// import { Suspense, use } from 'react'
 import { Button } from '@/vibes/soul/primitives/button'
 import { DecrementButton } from '@/vibes/soul/sections/cart/decrement-button'
-import { DeleteLineItemButton } from '@/vibes/soul/sections/cart/delete-line-item-button'
-import { IncrementButton } from '@/vibes/soul/sections/cart/increment-button'
+import { LineItemQuantityIncrementButton } from '@/vibes/soul/sections/cart/increment-button'
+
+import { CheckoutButton } from './redirect-to-checkout-button'
+import { Action, RemoveButton } from './remove-button'
 
 interface Image {
   alt: string
@@ -51,11 +55,11 @@ interface CartProps {
   emptyState: CartEmptyState
   removeItemAriaLabel?: string
   loadingAriaLabel?: string
-  removeLineItemAction(id: string): Promise<void>
+  removeLineItemAction: Action<{ error: string | null }, string>
   decrementAriaLabel?: string
   incrementAriaLabel?: string
-  updateLineItemQuantityAction({ id, quantity }: { id: string; quantity: number }): Promise<void>
-  redirectToCheckoutAction(): Promise<void>
+  updateLineItemQuantityAction: Action<{ error: string | null }, { id: string; quantity: number }>
+  redirectToCheckoutAction: Action<{ error: string | null }, unknown>
 }
 
 export const Cart = function Cart({
@@ -149,33 +153,30 @@ async function CartInner({
 
                       {/* Counter */}
                       <div className="flex items-center rounded-lg border">
-                        <form
-                          action={updateLineItemQuantityAction.bind(null, {
-                            id,
-                            quantity: quantity - 1,
-                          })}
-                        >
-                          <DecrementButton ariaLabel={decrementAriaLabel} />
-                        </form>
+                        <DecrementButton
+                          id={id}
+                          quantity={quantity}
+                          action={updateLineItemQuantityAction}
+                          ariaLabel={decrementAriaLabel}
+                        />
                         <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
                           {quantity}
                         </span>
-                        <form
-                          action={updateLineItemQuantityAction.bind(null, {
-                            id,
-                            quantity: quantity + 1,
-                          })}
-                        >
-                          <IncrementButton ariaLabel={incrementAriaLabel} />
-                        </form>
+                        <LineItemQuantityIncrementButton
+                          id={id}
+                          quantity={quantity}
+                          action={updateLineItemQuantityAction}
+                          ariaLabel={incrementAriaLabel}
+                        />
                       </div>
 
-                      <form action={removeLineItemAction.bind(null, id)}>
-                        <DeleteLineItemButton
-                          removeItemAriaLabel={removeItemAriaLabel}
-                          loadingAriaLabel={loadingAriaLabel}
-                        />
-                      </form>
+                      {/* Remove Line Item Button */}
+                      <RemoveButton
+                        id={id}
+                        action={removeLineItemAction}
+                        removeItemAriaLabel={removeItemAriaLabel}
+                        loadingAriaLabel={loadingAriaLabel}
+                      />
                     </div>
                   </div>
                 </li>
@@ -221,11 +222,7 @@ async function CartInner({
               </tfoot>
             )}
           </table>
-          <form action={redirectToCheckoutAction}>
-            <Button className="mt-10 w-full" type="submit">
-              {summary.ctaLabel ?? 'Checkout'}
-            </Button>
-          </form>
+          <CheckoutButton label={summary.ctaLabel} action={redirectToCheckoutAction} />
         </div>
       </div>
     </div>
