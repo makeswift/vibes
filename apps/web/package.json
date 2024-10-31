@@ -10,7 +10,8 @@
     "lint": "next lint",
     "icons": "npx @svgr/cli --no-runtime-config --typescript --replace-attr-values \"#64de21=currentColor\" --out-dir icons/generated -- icons/svg && npx prettier icons/generated --write",
     "postbuild": "next-sitemap",
-    "vibes": "node scripts/build-preview-index.js ./components/vibes"
+    "vibes": "node scripts/build-preview-index.js ./components/vibes",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@conform-to/react": "^1.1.4",
