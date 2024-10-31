@@ -79,6 +79,7 @@ const searchAction = async () => {
     setTimeout(() => {
       res([
         {
+          type: 'links',
           title: 'Categories',
           links: [
             {
@@ -100,6 +101,7 @@ const searchAction = async () => {
           ],
         },
         {
+          type: 'links',
           title: 'Collection',
           links: [
             {
@@ -125,6 +127,7 @@ const searchAction = async () => {
           ],
         },
         {
+          type: 'products',
           title: 'Products',
           products: getProducts('Warm'),
         },
@@ -157,7 +160,7 @@ export default function Preview() {
         searchHref="#"
         locales={locales}
         searchAction={searchAction}
-        searchCta={{ label: 'View all items', href: '#' }}
+        searchCtaLabel="View all items"
       />
     </div>
   )
