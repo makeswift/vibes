@@ -1,4 +1,6 @@
+import { getProducts } from '@/vibes/soul/data'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
+import { SearchResult } from '@/vibes/soul/primitives/navigation/search-results'
 
 export const navigationLinks = [
   {
@@ -109,6 +111,55 @@ export const locales = [
   { id: '4', region: 'IT', language: 'IT' },
 ]
 
+const searchAction = async () => {
+  'use server'
+
+  return new Promise<SearchResult[]>(res => {
+    setTimeout(() => {
+      res([
+        {
+          title: 'Indoors',
+          links: [
+            {
+              label: 'Desk Plants',
+              href: '#',
+            },
+            {
+              label: 'Low Light Plants',
+              href: '#',
+            },
+            {
+              label: 'Pet Friendly',
+              href: '#',
+            },
+          ],
+        },
+        {
+          title: 'Outdoors',
+          links: [
+            {
+              label: 'Small',
+              href: '#',
+            },
+            {
+              label: 'Medium',
+              href: '#',
+            },
+            {
+              label: 'Large',
+              href: '#',
+            },
+          ],
+        },
+        {
+          title: 'Products',
+          products: getProducts('Electric'),
+        },
+      ])
+    }, 1000)
+  })
+}
+
 export const logo = 'SOUL'
 
 export default function Preview() {
@@ -119,9 +170,11 @@ export default function Preview() {
         logo={logo}
         cartHref="#"
         accountHref="#"
-        locales={locales}
         activeLocale="EN"
         searchHref="#"
+        locales={locales}
+        searchAction={searchAction}
+        searchCta={{ label: 'View all items', href: '#' }}
       />
     </div>
   )

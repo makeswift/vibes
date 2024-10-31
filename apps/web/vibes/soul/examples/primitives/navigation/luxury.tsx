@@ -1,4 +1,6 @@
+import { getProducts } from '@/vibes/soul/data'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
+import { SearchResult } from '@/vibes/soul/primitives/navigation/search-results'
 
 export const navigationLinks = [
   {
@@ -70,6 +72,67 @@ export const navigationLinks = [
   },
 ]
 
+const searchAction = async () => {
+  'use server'
+
+  return new Promise<SearchResult[]>(res => {
+    setTimeout(() => {
+      res([
+        {
+          title: 'Categories',
+          links: [
+            {
+              label: 'Sandals',
+              href: '#',
+            },
+            {
+              label: 'Flats',
+              href: '#',
+            },
+            {
+              label: 'Sneakers',
+              href: '#',
+            },
+            {
+              label: 'Loafers',
+              href: '#',
+            },
+          ],
+        },
+        {
+          title: 'Collection',
+          links: [
+            {
+              label: 'Fall Drop One',
+              href: '#',
+            },
+            {
+              label: 'Travel Edit',
+              href: '#',
+            },
+            {
+              label: 'Ballet Everyday',
+              href: '#',
+            },
+            {
+              label: 'FRĒDA X WOLFSPOUT',
+              href: '#',
+            },
+            {
+              label: 'Loafer Shop',
+              href: '#',
+            },
+          ],
+        },
+        {
+          title: 'Products',
+          products: getProducts('Warm'),
+        },
+      ])
+    }, 1000)
+  })
+}
+
 export const logo = {
   src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID',
   alt: 'Freda Salvador Logo',
@@ -90,9 +153,11 @@ export default function Preview() {
         logo={logo}
         cartHref="#"
         accountHref="#"
-        locales={locales}
         activeLocale="EN"
         searchHref="#"
+        locales={locales}
+        searchAction={searchAction}
+        searchCta={{ label: 'View all items', href: '#' }}
       />
     </div>
   )
