@@ -40,6 +40,7 @@ export function Calendar({
         range_start: 'bg-gradient-to-l from-primary-highlight',
         range_middle: 'bg-primary-highlight group/middle',
         range_end: 'bg-gradient-to-r from-primary-highlight',
+        ...classNames,
       }}
       components={components}
       {...props}
