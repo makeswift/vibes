@@ -173,6 +173,7 @@ export const Navigation = forwardRef(function Navigation(
     const searchTerm = searchInputRef.current?.value.trim() ?? ''
 
     if (searchTerm.length > 0) {
+      setSearchOpen(false)
       router.push(`${searchHref}?${searchParamName}=${encodeURIComponent(searchTerm)}`)
     }
   }
