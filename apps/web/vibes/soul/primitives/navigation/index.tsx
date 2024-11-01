@@ -39,18 +39,31 @@ export interface Links {
 }
 
 interface Props {
-  cartHref: string
-  cartCount?: number
-  accountHref: string
-  links: Links[]
   // searchAction: (query: string) => Promise<SerializableProduct[]>
-  logo?: string | Image
+  accountHref: string
   activeLocale?: string
+  cartCount?: number
+  cartHref: string
+  links: Links[]
   locales?: { id: string; region: string; language: string }[]
+  logo?: string | Image
+  searchHref: string
+  searchParamName?: string
 }
 
 export const Navigation = forwardRef(function Navigation(
-  { cartHref, cartCount, accountHref, links, logo, activeLocale, locales, ...rest }: Props,
+  {
+    accountHref,
+    activeLocale,
+    cartCount,
+    cartHref,
+    links,
+    locales,
+    logo,
+    searchHref,
+    searchParamName = 'term',
+    ...rest
+  }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   const [navOpen, setNavOpen] = useState(false)
@@ -149,7 +162,7 @@ export const Navigation = forwardRef(function Navigation(
     const searchTerm = searchInputRef.current?.value.trim() ?? ''
 
     if (searchTerm.length > 0) {
-      router.push(`/search?term=${encodeURIComponent(searchTerm)}`)
+      router.push(`${searchHref}?${searchParamName}=${encodeURIComponent(searchTerm)}`)
     }
   }
 

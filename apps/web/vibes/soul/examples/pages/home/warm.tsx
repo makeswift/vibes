@@ -97,6 +97,7 @@ export default function Preview() {
         accountHref="#"
         locales={locales}
         activeLocale="EN"
+        searchHref="#"
       />
       <Slideshow slides={heroSlides} />
       <FeaturedCardCarousel title="Categories" cards={cards} />

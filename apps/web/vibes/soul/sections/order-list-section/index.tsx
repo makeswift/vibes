@@ -1,22 +1,7 @@
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination'
 
 import { OrderList } from './order-list'
-
-type OrderProduct = {
-  id: string
-  title: string
-  subtitle?: string
-  price: string
-  href: string
-  image?: { src: string; alt: string }
-}
-
-type Order = {
-  id: string
-  totalPrice: string
-  status: string
-  products: OrderProduct[]
-}
+import { Order } from './order-list-item'
 
 type Props = {
   title?: string
@@ -34,11 +19,11 @@ export function OrderListSection({
   paginationInfo,
 }: Props) {
   return (
-    <div className="space-y-8">
-      <h1 className="text-xl">{title}</h1>
-      <div>
-        <OrderList orders={orders} />
-      </div>
+    <div className="@container">
+      <h1 className="mb-8 hidden text-4xl font-medium leading-tight tracking-tight @2xl:block">
+        {title}
+      </h1>
+      <OrderList orders={orders} />
       {paginationInfo && <CursorPagination info={paginationInfo} />}
     </div>
   )

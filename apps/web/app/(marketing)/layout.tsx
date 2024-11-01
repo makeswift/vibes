@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 import Head from 'next/head'
+import { Suspense } from 'react'
 
 import clsx from 'clsx'
 
@@ -69,7 +70,7 @@ const GeistMono = localFont({
   variable: '--font-family-mono',
 })
 
-const PostHogPageView = dynamic(() => import('./post-hog-page-view'), { ssr: false })
+const PostHogPageView = dynamic(() => import('./post-hog-page-view'))
 
 export default function RootLayout({
   children,
@@ -83,7 +84,9 @@ export default function RootLayout({
       </Head>
       <body className={clsx(Polysans.variable, PolysansWide.variable, GeistMono.variable)}>
         <Providers>
-          <PostHogPageView />
+          <Suspense>
+            <PostHogPageView />
+          </Suspense>
           <main>{children}</main>
           <Toaster />
         </Providers>
