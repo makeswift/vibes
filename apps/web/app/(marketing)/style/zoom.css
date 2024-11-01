@@ -1,6 +1,6 @@
-@tailwind base;
-
 @import url('react-medium-image-zoom/dist/styles.css');
+
+@tailwind base;
 
 [data-rmiz-modal-overlay='hidden'] {
   @apply bg-background/0;
