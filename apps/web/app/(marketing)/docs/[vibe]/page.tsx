@@ -5,12 +5,8 @@ import * as Vibes from '@/vibes'
 
 const chapters = Object.values(Vibes).map(toChapter)
 
-export const revalidate = 60
-
-export const dynamicParams = true
-
 export async function generateStaticParams() {
-  return []
+  return chapters.map(vibe => ({ vibe: vibe.slug }))
 }
 
 export default async function Page({ params }: { params: Promise<{ vibe: string }> }) {
