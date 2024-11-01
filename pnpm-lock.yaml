@@ -30,6 +30,9 @@ importers:
       '@conform-to/zod':
         specifier: ^1.1.4
         version: 1.2.2(zod@3.23.8)
+      '@docsearch/css':
+        specifier: ^3.6.3
+        version: 3.6.3
       '@docsearch/react':
         specifier: ^3.6.1
         version: 3.6.3(@algolia/client-search@5.12.0)(react-dom@19.0.0-rc-603e6108-20241029)(react@19.0.0-rc-603e6108-20241029)(search-insights@2.17.2)(types-react@19.0.0-rc.1)
@@ -2475,10 +2478,10 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
       '@react-aria/focus': 3.18.4(react@19.0.0-rc-603e6108-20241029)
-      '@react-aria/i18n': 3.11.1(react@19.0.0-rc-603e6108-20241029)
+      '@react-aria/i18n': 3.12.3(react@19.0.0-rc-603e6108-20241029)
       '@react-aria/interactions': 3.22.4(react@19.0.0-rc-603e6108-20241029)
       '@react-aria/ssr': 3.9.6(react@19.0.0-rc-603e6108-20241029)
-      '@react-aria/utils': 3.24.1(react@19.0.0-rc-603e6108-20241029)
+      '@react-aria/utils': 3.25.3(react@19.0.0-rc-603e6108-20241029)
       '@react-aria/visually-hidden': 3.8.17(react@19.0.0-rc-603e6108-20241029)
       '@react-stately/overlays': 3.6.11(react@19.0.0-rc-603e6108-20241029)
       '@react-types/button': 3.10.0(react@19.0.0-rc-603e6108-20241029)
