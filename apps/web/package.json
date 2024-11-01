@@ -16,6 +16,7 @@
   "dependencies": {
     "@conform-to/react": "^1.1.4",
     "@conform-to/zod": "^1.1.4",
+    "@docsearch/css": "^3.6.3",
     "@docsearch/react": "^3.6.1",
     "@hookform/resolvers": "^3.5.0",
     "@internationalized/date": "^3.5.5",
