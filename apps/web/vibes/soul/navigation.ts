@@ -155,6 +155,12 @@ export const navigation = [
         file: 'docs/account-layout.mdx',
         component: 'account-layout',
       },
+      {
+        title: 'Address List Section',
+        slug: 'address-list-section',
+        file: 'docs/address-list-section.mdx',
+        component: 'address-list',
+      },
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
       { title: 'Checkout', slug: 'checkout', file: 'docs/checkout.mdx', component: 'checkout' },
       {
