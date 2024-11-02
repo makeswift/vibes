@@ -14,7 +14,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@conform-to/react": "^1.1.4",
+    "@conform-to/react": "^1.2.2",
     "@conform-to/zod": "^1.1.4",
     "@docsearch/css": "^3.6.3",
     "@docsearch/react": "^3.6.1",
