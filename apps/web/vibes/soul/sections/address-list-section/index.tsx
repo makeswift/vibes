@@ -187,7 +187,7 @@ function AddressActionButton({
   address: Address
   action: Action<{ id: string; lastResult: SubmissionResult | null }, FormData>
 } & React.ComponentProps<'button'>) {
-  const [state, formAction, isPending] = useActionState(action, {
+  const [, formAction, isPending] = useActionState(action, {
     id: address.id,
     lastResult: null,
   })
@@ -204,14 +204,26 @@ function AddressForm({
   address,
   action,
   onCancel,
-  cancelLabel,
-  submitLabel,
+  cancelLabel = 'Cancel',
+  submitLabel = 'Submit',
+  addressLine1Label = 'Address Line 1',
+  addressLine2Label = 'Address Line 1',
+  addressLevel1Label = 'State/Province',
+  addressLevel2Label = 'City/Town',
+  countryLabel = 'Country',
+  postalCodeLabel = 'Postal code',
 }: {
   address: Address
   action: Action<{ address: Address; lastResult: SubmissionResult | null }, FormData>
   onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void
-  cancelLabel: string
-  submitLabel: string
+  cancelLabel?: string
+  submitLabel?: string
+  addressLine1Label?: string
+  addressLine2Label?: string
+  addressLevel1Label?: string
+  addressLevel2Label?: string
+  countryLabel?: string
+  postalCodeLabel?: string
 }) {
   const [state, formAction, isPending] = useActionState(action, { address, lastResult: null })
   const [form, fields] = useForm({
@@ -232,39 +244,53 @@ function AddressForm({
   return (
     <form {...getFormProps(form)} action={formAction} className="w-[480px] space-y-4">
       <input {...getInputProps(fields.id, { type: 'hidden' })} key={fields.id.id} />
-      <Input label="Name" {...getInputProps(fields.name, { type: 'text' })} key={fields.name.id} />
       <Input
-        label="Street 1"
-        {...getInputProps(fields.street1, { type: 'text' })}
-        key={fields.street1.id}
+        label="Name"
+        {...getInputProps(fields.name, { type: 'text' })}
+        key={fields.name.id}
+        autoComplete="off"
       />
       <Input
-        label="Street 2"
+        {...getInputProps(fields.street1, { type: 'text' })}
+        key={fields.street1.id}
+        label={addressLine1Label}
+        autoComplete={`section-${address.id} address-line1`}
+      />
+      <Input
         {...getInputProps(fields.street2, { type: 'text' })}
         key={fields.street2.id}
+        label={addressLine2Label}
+        autoComplete={`section-${address.id} address-line2`}
       />
       <div className="flex gap-4">
         <Input
-          label="City"
-          {...getInputProps(fields.city, { type: 'text' })}
-          key={fields.city.id}
-        />
-        <Input
-          label="State"
           {...getInputProps(fields.state, { type: 'text' })}
           key={fields.state.id}
+          label={addressLevel1Label}
+          autoComplete={`section-${address.id} address-level1`}
         />
         <Input
-          label="Postal Code"
-          {...getInputProps(fields.zipcode, { type: 'text' })}
-          key={fields.zipcode.id}
+          {...getInputProps(fields.city, { type: 'text' })}
+          key={fields.city.id}
+          label={addressLevel2Label}
+          autoComplete={`section-${address.id} address-level2`}
         />
       </div>
-      <Input
-        label="Country"
-        {...getInputProps(fields.country, { type: 'text' })}
-        key={fields.country.id}
-      />
+      <div className="flex gap-4">
+        <Input
+          {...getInputProps(fields.country, { type: 'text' })}
+          key={fields.country.id}
+          label={countryLabel}
+          autoComplete={`section-${address.id} country`}
+        />
+        <Input
+          {...getInputProps(fields.zipcode, { type: 'text' })}
+          key={fields.zipcode.id}
+          label={postalCodeLabel}
+          autoComplete={`section-${address.id} postal-code`}
+        />
+      </div>
+
       <div className="flex gap-1">
         <Button
           size="small"
