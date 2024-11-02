@@ -31,45 +31,50 @@ export async function addressAction(
     }
   }
 
+  // Simulate a network request
   await new Promise(resolve => setTimeout(resolve, 1000))
 
   switch (intent) {
     case 'create': {
-      // await createAddress(submission.value) here
+      // const newAddress = await createAddress(submission.value)
+      const newAddress = { ...submission.value, id: randomUUID() }
 
       return {
-        addresses: [...prevState.addresses, { ...submission.value, id: randomUUID() }],
+        addresses: [...prevState.addresses, newAddress],
         lastResult: submission.reply({ resetForm: true }),
         defaultAddressId: prevState.defaultAddressId,
       }
     }
     case 'update': {
-      // await updateAddress(submission.value) here
+      // const newAddress = await updateAddress(submission.value)
+      const newAddress = submission.value
 
       return {
         addresses: prevState.addresses.map(address =>
-          address.id === submission.value.id ? submission.value : address
+          address.id === newAddress.id ? newAddress : address
         ),
         lastResult: submission.reply({ resetForm: true }),
         defaultAddressId: prevState.defaultAddressId,
       }
     }
     case 'delete': {
-      // await deleteAddress(submission.value) here
+      // const deletedAddress = await deleteAddress(submission.value)
+      const deletedAddress = submission.value
 
       return {
-        addresses: prevState.addresses.filter(address => address.id !== submission.value.id),
+        addresses: prevState.addresses.filter(address => address.id !== deletedAddress.id),
         lastResult: submission.reply({ resetForm: true }),
         defaultAddressId: prevState.defaultAddressId,
       }
     }
     case 'setDefault': {
-      // await setDefaultAddress(submission.value) here
+      // const defaultAddress = await setDefaultAddress(submission.value)
+      const defaultAddress = submission.value
 
       return {
         addresses: prevState.addresses,
         lastResult: submission.reply({ resetForm: true }),
-        defaultAddressId: submission.value.id,
+        defaultAddressId: defaultAddress.id,
       }
     }
     default: {
