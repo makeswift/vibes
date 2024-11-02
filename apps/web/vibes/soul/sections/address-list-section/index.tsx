@@ -177,35 +177,37 @@ export function AddressListSection({
                   >
                     {editLabel}
                   </Button>
-                  <AddressActionButton
-                    intent="delete"
-                    aria-label={`${deleteLabel}: ${address.name}`}
-                    address={address}
-                    action={formAction}
-                    onSubmit={async function (formData) {
-                      startTransition(async () => {
-                        formAction(formData)
-                        setOptimisticState(formData)
-                      })
-                    }}
-                  >
-                    {deleteLabel}
-                  </AddressActionButton>
                   {optimisticState.defaultAddressId !== address.id && (
-                    <AddressActionButton
-                      intent="setDefault"
-                      aria-label={`${setDefaultLabel}: ${address.name}`}
-                      address={address}
-                      action={formAction}
-                      onSubmit={async function (formData) {
-                        startTransition(async () => {
-                          formAction(formData)
-                          setOptimisticState(formData)
-                        })
-                      }}
-                    >
-                      {setDefaultLabel}
-                    </AddressActionButton>
+                    <>
+                      <AddressActionButton
+                        intent="delete"
+                        aria-label={`${deleteLabel}: ${address.name}`}
+                        address={address}
+                        action={formAction}
+                        onSubmit={async function (formData) {
+                          startTransition(async () => {
+                            formAction(formData)
+                            setOptimisticState(formData)
+                          })
+                        }}
+                      >
+                        {deleteLabel}
+                      </AddressActionButton>
+                      <AddressActionButton
+                        intent="setDefault"
+                        aria-label={`${setDefaultLabel}: ${address.name}`}
+                        address={address}
+                        action={formAction}
+                        onSubmit={async function (formData) {
+                          startTransition(async () => {
+                            formAction(formData)
+                            setOptimisticState(formData)
+                          })
+                        }}
+                      >
+                        {setDefaultLabel}
+                      </AddressActionButton>
+                    </>
                   )}
                 </div>
               </div>
