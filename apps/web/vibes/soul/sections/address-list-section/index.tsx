@@ -249,8 +249,6 @@ function AddressActionButton({
   const [form, fields] = useForm({
     defaultValue: address,
     constraint: getZodConstraint(schema),
-    shouldValidate: 'onBlur',
-    shouldRevalidate: 'onInput',
     onValidate({ formData }) {
       return parseWithZod(formData, { schema })
     },
