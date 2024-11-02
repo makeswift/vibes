@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const addressSchema = z.object({
+export const schema = z.object({
   id: z.string(),
   name: z.string().optional(),
   street1: z.string(),
@@ -10,5 +10,3 @@ export const addressSchema = z.object({
   zipcode: z.string().optional(),
   country: z.string().optional(),
 })
-
-export const idSchema = z.object({ id: z.string() })

@@ -3,87 +3,77 @@ import { parseWithZod } from '@conform-to/zod'
 import { randomUUID } from 'crypto'
 import { z } from 'zod'
 
-import { addressSchema, idSchema } from '@/vibes/soul/sections/address-list-section/schema'
+import { schema } from '@/vibes/soul/sections/address-list-section/schema'
 
-type Address = z.infer<typeof addressSchema>
+type Address = z.infer<typeof schema>
 
-export async function createAddressAction(
-  prevState: Awaited<{ address: Address | null; lastResult: SubmissionResult | null }>,
+export async function addressAction(
+  prevState: Awaited<{
+    addresses: Address[]
+    lastResult: SubmissionResult | null
+    defaultAddressId: string
+  }>,
   formData: FormData
-): Promise<{ lastResult: SubmissionResult; address: Address | null }> {
+): Promise<{
+  addresses: Address[]
+  lastResult: SubmissionResult | null
+  defaultAddressId: string
+}> {
   'use server'
 
-  const submission = parseWithZod(formData, { schema: addressSchema })
-
-  console.log('add', { submission })
+  const intent = formData.get('intent')
+  const submission = parseWithZod(formData, { schema })
 
   if (submission.status !== 'success') {
-    return { lastResult: submission.reply(), address: prevState.address }
+    return {
+      ...prevState,
+      lastResult: submission.reply({ formErrors: ['Boom!'] }),
+    }
   }
 
   await new Promise(resolve => setTimeout(resolve, 1000))
 
-  return {
-    lastResult: submission.reply({ resetForm: true }),
-    address: { ...submission.value, id: randomUUID() },
+  switch (intent) {
+    case 'create': {
+      // await createAddress(submission.value) here
+
+      return {
+        addresses: [...prevState.addresses, { ...submission.value, id: randomUUID() }],
+        lastResult: submission.reply({ resetForm: true }),
+        defaultAddressId: prevState.defaultAddressId,
+      }
+    }
+    case 'update': {
+      // await updateAddress(submission.value) here
+
+      return {
+        addresses: prevState.addresses.map(address =>
+          address.id === submission.value.id ? submission.value : address
+        ),
+        lastResult: submission.reply({ resetForm: true }),
+        defaultAddressId: prevState.defaultAddressId,
+      }
+    }
+    case 'delete': {
+      // await deleteAddress(submission.value) here
+
+      return {
+        addresses: prevState.addresses.filter(address => address.id !== submission.value.id),
+        lastResult: submission.reply({ resetForm: true }),
+        defaultAddressId: prevState.defaultAddressId,
+      }
+    }
+    case 'setDefault': {
+      // await setDefaultAddress(submission.value) here
+
+      return {
+        addresses: prevState.addresses,
+        lastResult: submission.reply({ resetForm: true }),
+        defaultAddressId: submission.value.id,
+      }
+    }
+    default: {
+      return prevState
+    }
   }
-}
-
-export async function updateAddressAction(
-  prevState: Awaited<{ address: Address; lastResult: SubmissionResult | null }>,
-  formData: FormData
-): Promise<{ lastResult: SubmissionResult; address: Address }> {
-  'use server'
-
-  const submission = parseWithZod(formData, { schema: addressSchema })
-
-  console.log('update', { submission })
-
-  if (submission.status !== 'success') {
-    return { lastResult: submission.reply(), address: prevState.address }
-  }
-
-  await new Promise(resolve => setTimeout(resolve, 1000))
-
-  // return { lastResult: submission.reply({ formErrors: ['Boom!'] }), address: prevState.address }
-
-  return { lastResult: submission.reply({ resetForm: true }), address: submission.value }
-}
-
-export async function deleteAddressAction(
-  prevState: Awaited<{ id: string; lastResult: SubmissionResult | null }>,
-  formData: FormData
-): Promise<{ lastResult: SubmissionResult; id: string }> {
-  'use server'
-
-  const submission = parseWithZod(formData, { schema: idSchema })
-
-  console.log('delete', { submission })
-
-  if (submission.status !== 'success') {
-    return { lastResult: submission.reply(), id: prevState.id }
-  }
-
-  await new Promise(resolve => setTimeout(resolve, 1000))
-
-  return { lastResult: submission.reply({ resetForm: true }), id: submission.value.id }
-}
-
-export async function setDefaultAddressAction(
-  prevState: Awaited<{ id: string; lastResult: SubmissionResult | null }>,
-  formData: FormData
-): Promise<{ lastResult: SubmissionResult; id: string }> {
-  'use server'
-
-  const submission = parseWithZod(formData, { schema: idSchema })
-
-  console.log('set default address', { submission })
-
-  if (submission.status !== 'success') {
-    return { lastResult: submission.reply(), id: prevState.id }
-  }
-
-  await new Promise(resolve => setTimeout(resolve, 1000))
-
-  return { lastResult: submission.reply({ resetForm: true }), id: submission.value.id }
 }
