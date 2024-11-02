@@ -20,7 +20,7 @@ export const examples = [
     component: lazy(() => import('./examples/sections/account-layout')),
   },
   {
-    name: 'address-list-example',
+    name: 'address-list-section-example',
     dependencies: [],
     registryDependencies: [],
     files: ['examples/sections/address-list-section/index.tsx'],
