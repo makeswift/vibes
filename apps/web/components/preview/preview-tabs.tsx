@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -157,6 +158,9 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-[100] bg-background" />
           <Dialog.Content className="fixed inset-0 z-[100] flex flex-col bg-background px-4">
+            <VisuallyHidden.Root>
+              <Dialog.Title>Fullscreen preview</Dialog.Title>
+            </VisuallyHidden.Root>
             {content}
           </Dialog.Content>
         </Dialog.Portal>
