@@ -344,6 +344,7 @@ function AddressForm({
         label="Name"
         {...getInputProps(fields.name, { type: 'text' })}
         key={fields.name.id}
+        errors={fields.name.errors}
         autoComplete="off"
         data-1p-ignore
         data-lpignore
@@ -352,12 +353,14 @@ function AddressForm({
         {...getInputProps(fields.street1, { type: 'text' })}
         key={fields.street1.id}
         label={addressLine1Label}
+        errors={fields.street1.errors}
         autoComplete={`section-${address.id} address-line1`}
       />
       <Input
         {...getInputProps(fields.street2, { type: 'text' })}
         key={fields.street2.id}
         label={addressLine2Label}
+        errors={fields.street2.errors}
         autoComplete={`section-${address.id} address-line2`}
       />
       <div className="flex gap-4">
@@ -365,12 +368,14 @@ function AddressForm({
           {...getInputProps(fields.city, { type: 'text' })}
           key={fields.city.id}
           label={addressLevel2Label}
+          errors={fields.city.errors}
           autoComplete={`section-${address.id} address-level2`}
         />
         <Input
           {...getInputProps(fields.state, { type: 'text' })}
           key={fields.state.id}
           label={addressLevel1Label}
+          errors={fields.state.errors}
           autoComplete={`section-${address.id} address-level1`}
         />
       </div>
@@ -379,12 +384,14 @@ function AddressForm({
           {...getInputProps(fields.zipcode, { type: 'text' })}
           key={fields.zipcode.id}
           label={postalCodeLabel}
+          errors={fields.zipcode.errors}
           autoComplete={`section-${address.id} postal-code`}
         />
         <Input
           {...getInputProps(fields.country, { type: 'text' })}
           key={fields.country.id}
           label={countryLabel}
+          errors={fields.country.errors}
           autoComplete={`section-${address.id} country`}
         />
       </div>
