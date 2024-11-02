@@ -1,14 +1,6 @@
-import { SubmissionResult } from '@conform-to/react'
-import { parseWithZod } from '@conform-to/zod'
-
 import { Address, AddressListSection } from '@/vibes/soul/sections/address-list-section'
 
-import {
-  createAddressAction,
-  deleteAddressAction,
-  setDefaultAddressAction,
-  updateAddressAction,
-} from './actions'
+import { addressAction } from './actions'
 
 const addresses: Address[] = [
   {
@@ -37,10 +29,7 @@ export default function Preview() {
       <AddressListSection
         addresses={addresses}
         defaultAddressId="1"
-        createAddressAction={createAddressAction}
-        deleteAddressAction={deleteAddressAction}
-        updateAddressAction={updateAddressAction}
-        setDefaultAddressAction={setDefaultAddressAction}
+        addressAction={addressAction}
       />
     </div>
   )
