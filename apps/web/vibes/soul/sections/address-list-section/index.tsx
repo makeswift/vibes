@@ -259,7 +259,7 @@ function AddressActionButton({
 
       if (submission?.status !== 'success') return
 
-      action(formData)
+      onSubmit(formData)
     },
   })
   return (
@@ -346,20 +346,19 @@ function AddressForm({
         key={fields.name.id}
         autoComplete="off"
         data-1p-ignore
+        data-lpignore
       />
       <Input
         {...getInputProps(fields.street1, { type: 'text' })}
         key={fields.street1.id}
         label={addressLine1Label}
         autoComplete={`section-${address.id} address-line1`}
-        data-1p-ignore
       />
       <Input
         {...getInputProps(fields.street2, { type: 'text' })}
         key={fields.street2.id}
         label={addressLine2Label}
         autoComplete={`section-${address.id} address-line2`}
-        data-1p-ignore
       />
       <div className="flex gap-4">
         <Input
@@ -367,30 +366,26 @@ function AddressForm({
           key={fields.city.id}
           label={addressLevel2Label}
           autoComplete={`section-${address.id} address-level2`}
-          data-1p-ignore
         />
         <Input
           {...getInputProps(fields.state, { type: 'text' })}
           key={fields.state.id}
           label={addressLevel1Label}
           autoComplete={`section-${address.id} address-level1`}
-          data-1p-ignore
         />
       </div>
       <div className="flex gap-4">
-        <Input
-          {...getInputProps(fields.country, { type: 'text' })}
-          key={fields.country.id}
-          label={countryLabel}
-          autoComplete={`section-${address.id} country`}
-          data-1p-ignore
-        />
         <Input
           {...getInputProps(fields.zipcode, { type: 'text' })}
           key={fields.zipcode.id}
           label={postalCodeLabel}
           autoComplete={`section-${address.id} postal-code`}
-          data-1p-ignore
+        />
+        <Input
+          {...getInputProps(fields.country, { type: 'text' })}
+          key={fields.country.id}
+          label={countryLabel}
+          autoComplete={`section-${address.id} country`}
         />
       </div>
 
