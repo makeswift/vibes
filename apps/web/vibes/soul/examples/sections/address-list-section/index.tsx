@@ -1,39 +1,18 @@
+import { SubmissionResult } from '@conform-to/react'
+import { parseWithZod } from '@conform-to/zod'
+
 import { Address, AddressListSection } from '@/vibes/soul/sections/address-list-section'
 
-async function addAddressAction(state: Awaited<{ error: string | null }>, payload: Address) {
-  'use server'
-
-  console.log({ state, payload })
-
-  return { error: null }
-}
-
-async function updateAddressAction(state: Awaited<{ error: string | null }>, payload: Address) {
-  'use server'
-
-  console.log({ state, payload })
-
-  return { error: null }
-}
-
-async function deleteAddressAction(state: Awaited<{ error: string | null }>, payload: Address) {
-  'use server'
-
-  console.log({ state, payload })
-
-  return { error: null }
-}
-
-async function setDefaultAddressAction(state: Awaited<{ error: string | null }>, payload: Address) {
-  'use server'
-
-  console.log({ state, payload })
-
-  return { error: null }
-}
+import {
+  createAddressAction,
+  deleteAddressAction,
+  setDefaultAddressAction,
+  updateAddressAction,
+} from './actions'
 
 const addresses: Address[] = [
   {
+    id: '1',
     name: 'Home',
     street1: '123 Main St',
     city: 'San Francisco',
@@ -42,6 +21,7 @@ const addresses: Address[] = [
     country: 'United States',
   },
   {
+    id: '2',
     name: 'Office',
     street1: '456 Main St',
     city: 'San Francisco',
@@ -53,12 +33,15 @@ const addresses: Address[] = [
 
 export default function Preview() {
   return (
-    <AddressListSection
-      addresses={addresses}
-      addAddressAction={addAddressAction}
-      deleteAddressAction={deleteAddressAction}
-      updateAddressAction={updateAddressAction}
-      setDefaultAddressAction={setDefaultAddressAction}
-    />
+    <div className="m-auto max-w-screen-xl p-5">
+      <AddressListSection
+        addresses={addresses}
+        defaultAddressId="1"
+        createAddressAction={createAddressAction}
+        deleteAddressAction={deleteAddressAction}
+        updateAddressAction={updateAddressAction}
+        setDefaultAddressAction={setDefaultAddressAction}
+      />
+    </div>
   )
 }

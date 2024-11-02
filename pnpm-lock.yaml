@@ -25,7 +25,7 @@ importers:
   apps/web:
     dependencies:
       '@conform-to/react':
-        specifier: ^1.1.4
+        specifier: ^1.2.2
         version: 1.2.2(react@19.0.0-rc-603e6108-20241029)
       '@conform-to/zod':
         specifier: ^1.1.4
