@@ -1,8 +1,15 @@
 'use client'
 
-import { useActionState, useEffect, useState } from 'react'
+import { startTransition, useActionState, useEffect, useOptimistic, useState } from 'react'
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
+import {
+  FormMetadata,
+  Submission,
+  SubmissionResult,
+  getFormProps,
+  getInputProps,
+  useForm,
+} from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
 import { z } from 'zod'
 
@@ -10,19 +17,23 @@ import { Input } from '@/vibes/soul/form/input'
 import { Badge } from '@/vibes/soul/primitives/badge'
 import { Button } from '@/vibes/soul/primitives/button'
 
-import { schema } from './schema'
+import { Spinner } from '../../primitives/spinner'
+import { addressSchema, idSchema } from './schema'
 
-export type Address = z.infer<typeof schema>
+export type Address = z.infer<typeof addressSchema>
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
 type Props = {
   title?: string
   addresses: Address[]
-  defaultAddressId?: string
+  defaultAddressId: string
   updateAddressAction: Action<{ address: Address; lastResult: SubmissionResult | null }, FormData>
   deleteAddressAction: Action<{ id: string; lastResult: SubmissionResult | null }, FormData>
-  createAddressAction: Action<{ address: Address; lastResult: SubmissionResult | null }, FormData>
+  createAddressAction: Action<
+    { address: Address | null; lastResult: SubmissionResult | null },
+    FormData
+  >
   setDefaultAddressAction: Action<{ id: string; lastResult: SubmissionResult | null }, FormData>
   editLabel?: string
   deleteLabel?: string
@@ -32,6 +43,24 @@ type Props = {
   showAddFormLabel?: string
   setDefaultLabel?: string
 }
+
+type State = {
+  addresses: Address[]
+  defaultAddressId: string
+  lastResult: SubmissionResult | null
+}
+
+type Payload =
+  | {
+      type: 'create' | 'update'
+      formData: FormData
+      submission: Submission<Address>
+    }
+  | {
+      type: 'delete' | 'setDefault'
+      formData: FormData
+      submission: Submission<{ id: string }>
+    }
 
 export function AddressListSection({
   title = 'Addresses',
@@ -49,15 +78,139 @@ export function AddressListSection({
   showAddFormLabel = 'Add address',
   setDefaultLabel = 'Set as default',
 }: Props) {
-  const [defaultAddressIdState, setDefaultAddressIdState] = useState(defaultAddressId)
-  const [addressesState, setAddressesState] = useState(addresses)
+  const [state, action, isPending] = useActionState<State, Payload>(
+    async function (prevState, action) {
+      switch (action.type) {
+        case 'create': {
+          if (action.submission.status !== 'success') return prevState
+
+          const nextAddress = action.submission.value
+          const prevAddress = prevState.addresses.find(a => a.id === nextAddress.id)
+
+          const response = await createAddressAction(
+            { address: prevAddress ?? null, lastResult: prevState.lastResult },
+            action.formData
+          )
+
+          if (response.address == null) return prevState
+
+          return {
+            ...prevState,
+            addresses: [...prevState.addresses, response.address],
+          }
+        }
+        case 'update': {
+          if (action.submission.status !== 'success') return prevState
+
+          const nextAddress = action.submission.value
+          const prevAddress = prevState.addresses.find(a => a.id === nextAddress.id)
+
+          if (!prevAddress) return prevState
+
+          const response = await updateAddressAction(
+            { address: prevAddress, lastResult: prevState.lastResult },
+            action.formData
+          )
+
+          return {
+            ...prevState,
+            addresses: prevState.addresses.map(a =>
+              a.id === response.address.id ? response.address : a
+            ),
+          }
+        }
+        case 'delete': {
+          if (action.submission.status !== 'success') return prevState
+
+          const { id } = action.submission.value
+
+          const response = await deleteAddressAction(
+            { id, lastResult: prevState.lastResult },
+            action.formData
+          )
+
+          return {
+            ...prevState,
+            addresses: prevState.addresses.filter(a => a.id !== response.id),
+          }
+        }
+        case 'setDefault': {
+          if (action.submission.status !== 'success') return prevState
+
+          const { id } = action.submission.value
+
+          const response = await setDefaultAddressAction(
+            { id, lastResult: prevState.lastResult },
+            action.formData
+          )
+
+          return { ...prevState, defaultAddressId: response.id }
+        }
+      }
+    },
+    { addresses, defaultAddressId, lastResult: null }
+  )
+  const [optimisticState, setOptimisticState] = useOptimistic<State, Payload>(
+    state,
+    (prevState, action) => {
+      switch (action.type) {
+        case 'create': {
+          if (action.submission.status !== 'success') return prevState
+
+          const nextAddress = action.submission.value
+
+          return {
+            ...prevState,
+            addresses: [...prevState.addresses, nextAddress],
+          }
+        }
+        case 'update': {
+          if (action.submission.status !== 'success') return prevState
+
+          const nextAddress = action.submission.value
+          const prevAddress = prevState.addresses.find(a => a.id === nextAddress.id)
+
+          if (!prevAddress) return prevState
+
+          return {
+            ...prevState,
+            addresses: prevState.addresses.map(a => (a.id === nextAddress.id ? nextAddress : a)),
+          }
+        }
+        case 'delete': {
+          if (action.submission.status !== 'success') return prevState
+
+          const { id } = action.submission.value
+
+          return {
+            ...prevState,
+            addresses: prevState.addresses.filter(a => a.id !== id),
+          }
+        }
+        case 'setDefault': {
+          if (action.submission.status !== 'success') return prevState
+
+          const { id } = action.submission.value
+
+          return { ...prevState, defaultAddressId: id }
+        }
+      }
+    }
+  )
   const [activeAddressIds, setActiveAddressIds] = useState<string[]>([])
   const [showNewAddressForm, setShowNewAddressForm] = useState(false)
 
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h1 className="text-4xl">{title}</h1>
+        <h1 className="text-4xl">
+          {title}
+          {isPending && (
+            <span className="ml-2">
+              <Spinner />
+            </span>
+          )}
+        </h1>
         {!showNewAddressForm && (
           <Button size="small" onClick={() => setShowNewAddressForm(true)}>
             {showAddFormLabel}
@@ -76,13 +229,17 @@ export function AddressListSection({
                 state: '',
                 zipcode: '',
               }}
-              action={async function (lastResult, formData) {
-                const response = await createAddressAction(lastResult, formData)
+              onSubmit={async function (event, { formData, submission }) {
+                event.preventDefault()
+
+                if (submission?.status !== 'success') return
 
                 setShowNewAddressForm(false)
-                setAddressesState(prev => [...prev, response.address])
 
-                return response
+                startTransition(async () => {
+                  action({ type: 'create', formData, submission })
+                  setOptimisticState({ type: 'create', formData, submission })
+                })
               }}
               onCancel={() => setShowNewAddressForm(false)}
               cancelLabel={cancelLabel}
@@ -90,20 +247,22 @@ export function AddressListSection({
             />
           </div>
         )}
-        {addressesState.map(address => (
+        {optimisticState.addresses.map(address => (
           <div key={address.id} className="border-b border-contrast-200 pb-6 pt-5">
             {activeAddressIds.includes(address.id) ? (
               <AddressForm
                 address={address}
-                action={async function (lastResult, formData) {
-                  const response = await updateAddressAction(lastResult, formData)
+                onSubmit={async function (event, { formData, submission }) {
+                  event.preventDefault()
+
+                  if (submission?.status !== 'success') return
 
                   setActiveAddressIds(prev => prev.filter(id => id !== address.id))
-                  setAddressesState(prev =>
-                    prev.map(a => (a.id === response.address.id ? response.address : a))
-                  )
 
-                  return response
+                  startTransition(async () => {
+                    action({ type: 'update', formData, submission })
+                    setOptimisticState({ type: 'update', formData, submission })
+                  })
                 }}
                 onCancel={() => setActiveAddressIds(prev => prev.filter(id => id !== address.id))}
                 cancelLabel={cancelLabel}
@@ -113,7 +272,7 @@ export function AddressListSection({
               <div className="space-y-4">
                 <AddressPreview
                   address={address}
-                  isDefault={defaultAddressIdState === address.id}
+                  isDefault={optimisticState.defaultAddressId === address.id}
                 />
                 <div className="flex gap-1">
                   <Button
@@ -126,28 +285,33 @@ export function AddressListSection({
                   </Button>
                   <AddressActionButton
                     address={address}
-                    action={async function (lastResult, formData) {
-                      const response = await deleteAddressAction(lastResult, formData)
+                    onSubmit={async function (event, { formData, submission }) {
+                      event.preventDefault()
 
-                      setAddressesState(prev => prev.filter(a => a.id !== response.id))
+                      if (submission?.status !== 'success') return
 
-                      return response
+                      startTransition(async () => {
+                        action({ type: 'delete', formData, submission })
+                        setOptimisticState({ type: 'delete', formData, submission })
+                      })
                     }}
-                    aria-label={`${deleteLabel}: ${address.name}`}
                   >
                     {deleteLabel}
                   </AddressActionButton>
-                  {defaultAddressIdState !== address.id && (
+                  {optimisticState.defaultAddressId !== address.id && (
                     <AddressActionButton
-                      address={address}
-                      action={async function (lastResult, formData) {
-                        const response = await setDefaultAddressAction(lastResult, formData)
-
-                        setDefaultAddressIdState(response.id)
-
-                        return response
-                      }}
                       aria-label={`${setDefaultLabel}: ${address.name}`}
+                      address={address}
+                      onSubmit={async function (event, { formData, submission }) {
+                        event.preventDefault()
+
+                        if (submission?.status !== 'success') return
+
+                        startTransition(async () => {
+                          action({ type: 'setDefault', formData, submission })
+                          setOptimisticState({ type: 'setDefault', formData, submission })
+                        })
+                      }}
                     >
                       {setDefaultLabel}
                     </AddressActionButton>
@@ -179,31 +343,42 @@ function AddressPreview({ address, isDefault }: { address: Address; isDefault?: 
   )
 }
 
+type OnSubmit<Schema> = (
+  event: React.FormEvent<HTMLFormElement>,
+  context: { submission?: Submission<Schema>; formData: FormData }
+) => void
+
 function AddressActionButton({
   address,
-  action,
+  onSubmit,
   ...rest
 }: {
   address: Address
-  action: Action<{ id: string; lastResult: SubmissionResult | null }, FormData>
-} & React.ComponentProps<'button'>) {
-  const [, formAction, isPending] = useActionState(action, {
-    id: address.id,
-    lastResult: null,
+  onSubmit: OnSubmit<{ id: string }>
+} & Omit<React.ComponentProps<'button'>, 'onSubmit'>) {
+  const [form, fields] = useForm({
+    defaultValue: { id: address.id },
+    constraint: getZodConstraint(idSchema),
+    shouldValidate: 'onBlur',
+    shouldRevalidate: 'onInput',
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: idSchema })
+    },
+    onSubmit,
   })
-
   return (
-    <form action={formAction}>
-      <input type="hidden" name="id" value={address.id} />
-      <Button {...rest} variant="tertiary" size="small" type="submit" loading={isPending} />
+    <form {...getFormProps(form)}>
+      <input {...getInputProps(fields.id, { type: 'hidden' })} key={fields.id.id} />
+      <Button {...rest} variant="tertiary" size="small" type="submit" />
     </form>
   )
 }
 
 function AddressForm({
   address,
-  action,
+  lastResult,
   onCancel,
+  onSubmit,
   cancelLabel = 'Cancel',
   submitLabel = 'Submit',
   addressLine1Label = 'Address Line 1',
@@ -214,7 +389,8 @@ function AddressForm({
   postalCodeLabel = 'Postal code',
 }: {
   address: Address
-  action: Action<{ address: Address; lastResult: SubmissionResult | null }, FormData>
+  onSubmit: OnSubmit<Address>
+  lastResult?: SubmissionResult | null
   onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void
   cancelLabel?: string
   submitLabel?: string
@@ -225,24 +401,24 @@ function AddressForm({
   countryLabel?: string
   postalCodeLabel?: string
 }) {
-  const [state, formAction, isPending] = useActionState(action, { address, lastResult: null })
   const [form, fields] = useForm({
-    lastResult: state.lastResult,
-    defaultValue: state.address,
-    constraint: getZodConstraint(schema),
+    lastResult,
+    defaultValue: address,
+    constraint: getZodConstraint(addressSchema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema })
+      return parseWithZod(formData, { schema: addressSchema })
     },
+    onSubmit,
   })
 
   useEffect(() => {
-    if (state.lastResult?.error) console.log(state.lastResult?.error)
-  }, [state.lastResult?.error])
+    if (lastResult?.error) console.log(lastResult?.error)
+  }, [lastResult?.error])
 
   return (
-    <form {...getFormProps(form)} action={formAction} className="w-[480px] space-y-4">
+    <form {...getFormProps(form)} className="w-[480px] space-y-4">
       <input {...getInputProps(fields.id, { type: 'hidden' })} key={fields.id.id} />
       <Input
         label="Name"
@@ -300,12 +476,7 @@ function AddressForm({
         >
           {cancelLabel}
         </Button>
-        <Button
-          type="submit"
-          size="small"
-          loading={isPending}
-          aria-label={`${submitLabel} ${address.name}`}
-        >
+        <Button type="submit" size="small" aria-label={`${submitLabel} ${address.name}`}>
           {submitLabel}
         </Button>
       </div>
