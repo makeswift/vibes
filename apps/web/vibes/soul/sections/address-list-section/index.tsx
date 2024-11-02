@@ -128,7 +128,8 @@ export function AddressListSection({
                 zipcode: '',
               }}
               intent="create"
-              action={async function (formData) {
+              action={formAction}
+              onSubmit={async function (formData) {
                 setShowNewAddressForm(false)
 
                 startTransition(async () => {
@@ -148,7 +149,8 @@ export function AddressListSection({
               <AddressForm
                 address={address}
                 intent="update"
-                action={async function (formData) {
+                action={formAction}
+                onSubmit={async function (formData) {
                   setActiveAddressIds(prev => prev.filter(id => id !== address.id))
 
                   startTransition(async () => {
@@ -179,7 +181,8 @@ export function AddressListSection({
                     intent="delete"
                     aria-label={`${deleteLabel}: ${address.name}`}
                     address={address}
-                    action={async function (formData) {
+                    action={formAction}
+                    onSubmit={async function (formData) {
                       startTransition(async () => {
                         formAction(formData)
                         setOptimisticState(formData)
@@ -193,7 +196,8 @@ export function AddressListSection({
                       intent="setDefault"
                       aria-label={`${setDefaultLabel}: ${address.name}`}
                       address={address}
-                      action={async function (formData) {
+                      action={formAction}
+                      onSubmit={async function (formData) {
                         startTransition(async () => {
                           formAction(formData)
                           setOptimisticState(formData)
@@ -234,12 +238,14 @@ function AddressActionButton({
   address,
   intent,
   action,
+  onSubmit,
   ...rest
 }: {
   address: Address
   intent: string
   action(formData: FormData): void
-} & React.ComponentProps<'button'>) {
+  onSubmit(formData: FormData): void
+} & Omit<React.ComponentProps<'button'>, 'onSubmit'>) {
   const [form, fields] = useForm({
     defaultValue: address,
     constraint: getZodConstraint(schema),
@@ -283,6 +289,7 @@ function AddressForm({
   lastResult,
   onCancel,
   action,
+  onSubmit,
   intent,
   cancelLabel = 'Cancel',
   submitLabel = 'Submit',
@@ -296,6 +303,7 @@ function AddressForm({
   address: Address
   intent: string
   action(formData: FormData): void
+  onSubmit(formData: FormData): void
   lastResult?: SubmissionResult | null
   onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void
   cancelLabel?: string
@@ -321,7 +329,7 @@ function AddressForm({
 
       if (submission?.status !== 'success') return
 
-      action(formData)
+      onSubmit(formData)
     },
   })
 
