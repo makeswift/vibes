@@ -20,6 +20,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/account-layout')),
   },
   {
+    name: 'account-settings-section-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/account-settings-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/account-settings-section')),
+  },
+  {
     name: 'address-list-section-example',
     dependencies: [],
     registryDependencies: [],

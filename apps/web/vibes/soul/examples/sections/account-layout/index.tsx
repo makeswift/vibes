@@ -2,7 +2,6 @@ import { AccountLayout } from '@/vibes/soul/sections/account-layout'
 
 const links = [
   { href: '#', label: 'Orders' },
-  { href: '#', label: 'Messages' },
   { href: '#', label: 'Addresses' },
   { href: '#', label: 'Account' },
 ]
