@@ -104,12 +104,6 @@ export const sections = [
     files: ['sections/icon-block/index.tsx', 'primitives/icon/index.tsx'],
   },
   {
-    name: 'log-in',
-    dependencies: ['clsx'],
-    registryDependencies: ['button', 'input'],
-    files: ['sections/log-in/index.tsx'],
-  },
-  {
     name: 'order-history-section',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -146,6 +140,16 @@ export const sections = [
     dependencies: [],
     registryDependencies: [],
     files: ['sections/reviews/index.tsx'],
+  },
+  {
+    name: 'sign-in-section',
+    dependencies: ['clsx'],
+    registryDependencies: ['button', 'input'],
+    files: [
+      'sections/sign-in-section/index.tsx',
+      'sections/sign-in-section/sign-in-form.tsx',
+      'sections/sign-in-section/schema.ts',
+    ],
   },
   {
     name: 'slide-carousel',

@@ -215,12 +215,6 @@ export const navigation = [
         component: 'icon-block',
       },
       {
-        title: 'Log In',
-        slug: 'log-in',
-        file: 'docs/log-in.mdx',
-        component: 'log-in',
-      },
-      {
         title: 'Order Details Section',
         slug: 'order-details-section',
         file: 'docs/order-details-section.mdx',
@@ -245,6 +239,12 @@ export const navigation = [
         component: 'product-detail',
       },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
+      {
+        title: 'Sign In Section',
+        slug: 'sign-in-section',
+        file: 'docs/sign-in-section.mdx',
+        component: 'sign-in-section',
+      },
       {
         title: 'Slideshow',
         slug: 'slideshow',

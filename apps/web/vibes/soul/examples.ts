@@ -405,13 +405,6 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/input')),
   },
   {
-    name: 'log-in-example',
-    dependencies: [],
-    registryDependencies: ['log-in'],
-    files: ['examples/sections/log-in/index.tsx'],
-    component: lazy(() => import('./examples/sections/log-in')),
-  },
-  {
     name: 'navigation-electric-example',
     dependencies: [],
     registryDependencies: ['navigation-electric'],
@@ -720,6 +713,13 @@ export const examples = [
     registryDependencies: ['reviews'],
     files: ['examples/sections/reviews/index.tsx'],
     component: lazy(() => import('./examples/sections/reviews')),
+  },
+  {
+    name: 'sign-in-section-example',
+    dependencies: [],
+    registryDependencies: ['sign-in-section'],
+    files: ['examples/sections/sign-in-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/sign-in-section')),
   },
   {
     name: 'slideshow-electric-example',
