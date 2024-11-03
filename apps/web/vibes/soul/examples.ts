@@ -701,6 +701,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/rating')),
   },
   {
+    name: 'reset-password-section-example',
+    dependencies: [],
+    registryDependencies: ['reset-password-section'],
+    files: ['examples/sections/reset-password-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/reset-password-section')),
+  },
+  {
     name: 'reviews-example',
     dependencies: [],
     registryDependencies: ['reviews'],

@@ -232,6 +232,12 @@ export const navigation = [
         file: 'docs/product-detail.mdx',
         component: 'product-detail',
       },
+      {
+        title: 'Reset Password Section',
+        slug: 'reset-password-section',
+        file: 'docs/reset-password-section.mdx',
+        component: 'reset-password-section',
+      },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
       {
         title: 'Sign In Section',
