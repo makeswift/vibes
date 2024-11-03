@@ -181,7 +181,7 @@ function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) 
     const snapList = api.scrollSnapList()
     const closestSnapIndex = findClosestSnap(progress)
     const scrollbarWidth = 100 / snapList.length
-    const scrollbarLeft = snapList[closestSnapIndex] * (100 - scrollbarWidth)
+    const scrollbarLeft = (closestSnapIndex / snapList.length) * 100
 
     setScrollbarPosition({ width: scrollbarWidth, left: scrollbarLeft })
 
