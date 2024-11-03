@@ -22,7 +22,7 @@ export const Card = function Card({
   return (
     <Link
       href={href}
-      className="group relative flex aspect-[3/4] w-full min-w-56 max-w-md flex-col gap-2 rounded-lg ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @4xl:min-w-72 @4xl:rounded-xl"
+      className="group relative flex aspect-[3/4] w-full min-w-56 max-w-md flex-col gap-2 rounded-lg ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @4xl:rounded-xl"
       {...props}
     >
       <ArrowUpRight
@@ -43,7 +43,7 @@ export const Card = function Card({
       </div>
       <span
         className={clsx(
-          'line-clamp-1 text-lg font-medium text-foreground @4xl:absolute @4xl:bottom-5 @4xl:left-5',
+          'line-clamp-1 text-lg font-medium text-foreground',
           textContrast === 'light' ? '@4xl:text-background' : '@4xl:text-foreground'
         )}
       >

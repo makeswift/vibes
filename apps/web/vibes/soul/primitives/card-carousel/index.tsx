@@ -23,13 +23,13 @@ export function CardCarousel({ cards, textContrast, className }: Props) {
       <CarouselContent className="mb-20 px-3 @xl:px-6 @4xl:px-20">
         {cards.length > 0
           ? cards.map(card => (
-              <CarouselItem className="basis-full @md:basis-1/2 @xl:basis-1/4">
-                <Card key={card.id} {...card} textContrast={textContrast} />
+              <CarouselItem key={card.id} className="basis-full @md:basis-1/2 @xl:basis-1/4">
+                <Card {...card} textContrast={textContrast} />
               </CarouselItem>
             ))
           : Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem className="basis-full @md:basis-1/2 @xl:basis-1/4">
-                <CardSkeleton key={index} />
+              <CarouselItem key={index} className="basis-full @md:basis-1/2 @xl:basis-1/4">
+                <CardSkeleton />
               </CarouselItem>
             ))}
       </CarouselContent>
