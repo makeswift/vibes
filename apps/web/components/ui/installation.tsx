@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Fragment } from 'react'
 
 import path from 'path'
 
@@ -19,12 +20,10 @@ function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) 
         const page = pages.find(page => page.component === item)
 
         return (
-          <>
+          <Fragment key={index}>
             {arr.length > 1 && index > 0 ? (index < arr.length - 1 ? ', ' : ' and ') : ''}
-            <Link key={item} href={page ? `/docs/${vibe.slug}/${page.slug}` : '#'}>
-              {item}
-            </Link>
-          </>
+            <Link href={page ? `/docs/${vibe.slug}/${page.slug}` : '#'}>{item}</Link>
+          </Fragment>
         )
       })}{' '}
       {items.length > 1 ? 'components' : 'component'}
