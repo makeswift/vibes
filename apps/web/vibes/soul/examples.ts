@@ -212,8 +212,22 @@ export const examples = [
     name: 'compare-section-electric-example',
     dependencies: [],
     registryDependencies: ['compare-section'],
-    files: ['examples/sections/compare-section/index.tsx'],
+    files: ['examples/sections/compare-section/electric.tsx'],
     component: lazy(() => import('./examples/sections/compare-section/electric')),
+  },
+  {
+    name: 'compare-section-luxury-example',
+    dependencies: [],
+    registryDependencies: ['compare-section'],
+    files: ['examples/sections/compare-section/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/compare-section/luxury')),
+  },
+  {
+    name: 'compare-section-warm-example',
+    dependencies: [],
+    registryDependencies: ['compare-section'],
+    files: ['examples/sections/compare-section/warm.tsx'],
+    component: lazy(() => import('./examples/sections/compare-section/warm')),
   },
   {
     name: 'countdown-example',

@@ -164,6 +164,12 @@ export const navigation = [
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
       { title: 'Checkout', slug: 'checkout', file: 'docs/checkout.mdx', component: 'checkout' },
       {
+        title: 'Compare Section',
+        slug: 'compare-section',
+        file: 'docs/compare-section.mdx',
+        component: 'compare-section',
+      },
+      {
         title: 'Create Account',
         slug: 'create-account',
         file: 'docs/create-account.mdx',
