@@ -156,6 +156,12 @@ export const navigation = [
         component: 'account-layout',
       },
       {
+        title: 'Account Settings Section',
+        slug: 'account-settings-section',
+        file: 'docs/account-settings-section.mdx',
+        component: 'account-settings-section',
+      },
+      {
         title: 'Address List Section',
         slug: 'address-list-section',
         file: 'docs/address-list-section.mdx',

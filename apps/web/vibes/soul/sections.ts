@@ -8,6 +8,12 @@ export const sections = [
     files: ['sections/account-layout/index.tsx'],
   },
   {
+    name: 'account-settings-section',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['sections/account-settings-section/index.tsx'],
+  },
+  {
     name: 'address-list-section',
     dependencies: ['clsx'],
     registryDependencies: [],
