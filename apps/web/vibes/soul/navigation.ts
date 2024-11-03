@@ -169,12 +169,6 @@ export const navigation = [
         file: 'docs/compare-section.mdx',
         component: 'compare-section',
       },
-      {
-        title: 'Create Account',
-        slug: 'create-account',
-        file: 'docs/create-account.mdx',
-        component: 'create-account',
-      },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
@@ -244,6 +238,12 @@ export const navigation = [
         slug: 'sign-in-section',
         file: 'docs/sign-in-section.mdx',
         component: 'sign-in-section',
+      },
+      {
+        title: 'Sign Up Section',
+        slug: 'sign-up-section',
+        file: 'docs/sign-up-section.mdx',
+        component: 'sign-up-section',
       },
       {
         title: 'Slideshow',

@@ -251,13 +251,6 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/cursor-pagination')),
   },
   {
-    name: 'create-account-example',
-    dependencies: [],
-    registryDependencies: ['create-account'],
-    files: ['examples/sections/create-account/index.tsx'],
-    component: lazy(() => import('./examples/sections/create-account')),
-  },
-  {
     name: 'discount-example',
     dependencies: [],
     registryDependencies: ['discount'],
@@ -720,6 +713,13 @@ export const examples = [
     registryDependencies: ['sign-in-section'],
     files: ['examples/sections/sign-in-section/index.tsx'],
     component: lazy(() => import('./examples/sections/sign-in-section')),
+  },
+  {
+    name: 'sign-up-section-example',
+    dependencies: [],
+    registryDependencies: ['sign-up-section'],
+    files: ['examples/sections/sign-up-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/sign-up-section')),
   },
   {
     name: 'slideshow-electric-example',

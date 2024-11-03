@@ -44,12 +44,6 @@ export const sections = [
     files: ['sections/compare-section/index.tsx'],
   },
   {
-    name: 'create-account',
-    dependencies: [],
-    registryDependencies: ['input', 'dropdown', 'button'],
-    files: ['sections/create-account/index.tsx'],
-  },
-  {
     name: 'discount',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
@@ -149,6 +143,16 @@ export const sections = [
       'sections/sign-in-section/index.tsx',
       'sections/sign-in-section/sign-in-form.tsx',
       'sections/sign-in-section/schema.ts',
+    ],
+  },
+  {
+    name: 'sign-up-section',
+    dependencies: ['clsx'],
+    registryDependencies: ['button', 'input'],
+    files: [
+      'sections/sign-up-section/index.tsx',
+      'sections/sign-up-section/sign-up-form.tsx',
+      'sections/sign-up-section/schema.ts',
     ],
   },
   {
