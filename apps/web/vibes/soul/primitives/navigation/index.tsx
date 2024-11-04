@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { Ref, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import ReactHeadroom from 'react-headroom'
 
 import {
   DropdownMenu,
@@ -16,8 +15,9 @@ import { clsx } from 'clsx'
 import debounce from 'lodash.debounce'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
-import { Button } from '../button'
-import { Spinner } from '../spinner'
+import { Button } from '@/vibes/soul/primitives/button'
+import { Spinner } from '@/vibes/soul/primitives/spinner'
+
 import { HamburgerMenuButton } from './hamburger-menu-button'
 import { type SearchResult, SearchResults } from './search-results'
 
@@ -83,7 +83,6 @@ export const Navigation = forwardRef(function Navigation(
   const [selectedCategory, setSelectedCategory] = useState<number | null>(0)
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState<string | undefined>(activeLocale)
-  const [navigationHeight, setNavigationHeight] = useState<number>(0)
   const menuTriggerRef = useRef<HTMLAnchorElement | null>(null)
   const firstCategoryLinkRef = useRef<HTMLAnchorElement>(null)
   const [searchResults, setSearchResults] = useState<SearchResult[] | null>(null)
@@ -133,22 +132,6 @@ export const Navigation = forwardRef(function Navigation(
       searchInputRef.current.focus()
     }
   }, [searchOpen])
-
-  // Set the dropdown menu height based on the announcement bar presence/height
-  useEffect(() => {
-    const announcementBar = document.querySelector('#announcement-bar')
-    const navHeight = 72
-    if (announcementBar) {
-      const announcementBarHeight = announcementBar.clientHeight
-      if (window.scrollY > announcementBarHeight) {
-        setNavigationHeight(navHeight)
-      } else {
-        setNavigationHeight(announcementBarHeight + navHeight)
-      }
-    } else {
-      setNavigationHeight(navHeight)
-    }
-  }, [navOpen])
 
   useEffect(() => {
     // TODO: trap focus in category menu when it's open
@@ -216,23 +199,42 @@ export const Navigation = forwardRef(function Navigation(
   }
 
   return (
-    <ReactHeadroom
-      {...rest}
-      className="sticky top-0 z-30 !h-0 w-full @container"
-      upTolerance={0}
-      onUnpin={() => setSearchOpen(false)}
-    >
+    <div {...rest} className="sticky top-0 z-30 w-full @container">
       <div
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:mx-[max(20px,auto)] @4xl:mt-5"
+        className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:pt-3"
       >
         <nav
-          className="relative grid h-[60px] grid-cols-[1fr,2fr,1fr] items-center justify-between bg-background shadow-[2px_4px_24px_#00000010] @4xl:mx-5 
-          @4xl:rounded-2xl md:grid-cols-[1fr,1fr,1fr]"
+          className="relative flex h-16 items-center bg-background pl-4 
+          pr-2 @4xl:mx-4 @4xl:rounded-2xl @4xl:pl-5 @4xl:pr-2.5"
         >
+          {/* Logo */}
+          <div className="flex-1">
+            <Link
+              href="/"
+              className="relative rounded-xl outline-0 ring-primary ring-offset-4 focus-visible:ring-2"
+            >
+              {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
+                <Image
+                  src={logo.src}
+                  fill
+                  sizes="400px"
+                  alt={logo.alt}
+                  className="object-contain"
+                />
+              ) : (
+                typeof logo === 'string' && (
+                  <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
+                    {logo}
+                  </span>
+                )
+              )}
+            </Link>
+          </div>
+
           {/* Top Level Nav Links */}
-          <ul className="relative flex items-stretch pl-2.5" ref={container}>
+          <ul className="relative flex" ref={container}>
             {links.map((item, i) => (
               <li key={i}>
                 <Link
@@ -255,7 +257,7 @@ export const Navigation = forwardRef(function Navigation(
                       }, 0)
                     }
                   }}
-                  className="relative mx-0.5 my-2.5 hidden items-center whitespace-nowrap rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200
+                  className="mx-0.5 my-2.5 hidden items-center whitespace-nowrap rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200
                   hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
                 >
                   {item.label}
@@ -264,23 +266,7 @@ export const Navigation = forwardRef(function Navigation(
             ))}
           </ul>
 
-          {/* Logo */}
-          <Link
-            href="/"
-            className="relative mx-auto my-2 flex h-10 w-full max-w-56 items-center justify-center rounded-xl ring-primary focus-visible:outline-0 focus-visible:ring-2"
-          >
-            {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
-              <Image src={logo.src} fill sizes="400px" alt={logo.alt} className="object-contain" />
-            ) : (
-              typeof logo === 'string' && (
-                <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
-                  {logo}
-                </span>
-              )
-            )}
-          </Link>
-
-          <div className="ml-auto mr-1 flex items-center gap-0 transition-colors duration-300 @sm:mr-0 @4xl:mr-2.5">
+          <div className="flex flex-1 items-center justify-end transition-colors duration-300">
             {/* Mobile Buttons */}
             <div className="absolute left-1 flex items-center @4xl:relative @4xl:left-0">
               {/* Hamburger Menu Button */}
@@ -298,7 +284,7 @@ export const Navigation = forwardRef(function Navigation(
                   setSearchOpen(!searchOpen)
                 }}
               >
-                <Search className="w-5" strokeWidth={1} />
+                <Search strokeWidth={1} size={20} />
               </button>
             </div>
             <Link
@@ -306,7 +292,11 @@ export const Navigation = forwardRef(function Navigation(
               aria-label="Profile"
               className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
-              <User className={clsx('w-5', searchOpen && 'stroke-contrast-300')} strokeWidth={1} />
+              <User
+                className={clsx(searchOpen && 'stroke-contrast-300')}
+                strokeWidth={1}
+                size={20}
+              />
             </Link>
             <Link
               href={cartHref}
@@ -314,8 +304,9 @@ export const Navigation = forwardRef(function Navigation(
               className="relative rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
               <ShoppingBag
-                className={clsx('w-5', searchOpen && 'stroke-contrast-300')}
+                className={clsx(searchOpen && 'stroke-contrast-300')}
                 strokeWidth={1}
+                size={20}
               />
               {cartCount != null && cartCount > 0 && (
                 <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
@@ -362,151 +353,150 @@ export const Navigation = forwardRef(function Navigation(
               </DropdownMenu>
             ) : null}
           </div>
-        </nav>
 
-        {/* Search Dropdown */}
-        <div
-          className={clsx(
-            'absolute inset-x-0 mx-1.5 mt-1.5 overflow-y-auto rounded-2xl shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5',
-            searchOpen
-              ? 'scale-100 bg-background opacity-100'
-              : 'pointer-events-none scale-[0.99] select-none bg-transparent opacity-0'
-          )}
-          ref={searchRef}
-        >
-          <form onSubmit={handleSearch} className="flex items-center gap-3 px-3 py-4 @xl:px-5">
-            <SearchIcon
-              strokeWidth={1}
-              className="hidden w-5 shrink-0 text-contrast-500 @xl:block"
-            />
-            <input
-              ref={searchInputRef}
-              name="searchTerm"
-              type="text"
-              placeholder="Search Products"
-              className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
-              onChange={handleTermChange}
-            />
-            <Button type="submit" variant="secondary" size="icon">
-              {searchPending ? (
-                <Spinner size="xs" />
-              ) : (
-                <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
-              )}
-            </Button>
-          </form>
-
-          {/* Search Results */}
-          {searchResults && term.length > 2 && !searchPending ? (
-            <SearchResults
-              searchResults={searchResults}
-              searchCtaLabel={searchCtaLabel}
-              emptySearchTitleLabel={emptySearchTitleLabel}
-              emptySearchSubtitleLabel={emptySearchSubtitleLabel}
-              term={term}
-              searchHref={searchHref}
-            />
-          ) : null}
-        </div>
-
-        {/* Menu Dropdown */}
-        <div
-          ref={menuRef}
-          className={clsx(
-            'mx-1.5 mt-1.5 overflow-y-auto rounded-3xl shadow-[2px_4px_24px_#00000010] transition-all duration-300 ease-in-out @4xl:mx-5 @4xl:max-h-96',
-            navOpen
-              ? 'scale-100 bg-background opacity-100 @4xl:h-full'
-              : 'pointer-events-none h-0 scale-[0.99] select-none bg-transparent opacity-0'
-          )}
-          style={{ maxHeight: `calc(100dvh - ${navigationHeight}px)` }}
-        >
-          <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
-            {/* Mobile Dropdown Links */}
-            {links.map((item, i) => (
-              <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
-                {item.label !== '' && (
-                  <li>
-                    {item.href !== '' ? (
-                      <Link
-                        href={item.href}
-                        className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                        tabIndex={navOpen ? 0 : -1}
-                      >
-                        {item.label}
-                      </Link>
-                    ) : (
-                      <span
-                        className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                      >
-                        {item.label}
-                      </span>
-                    )}
-                  </li>
+          {/* Search Dropdown */}
+          <div
+            className={clsx(
+              'absolute inset-x-0 top-[calc(100%+8px)] origin-top overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10 transition-all duration-200 ease-in-out',
+              searchOpen
+                ? 'scale-100 opacity-100'
+                : 'pointer-events-none scale-[0.98] select-none opacity-0'
+            )}
+            ref={searchRef}
+          >
+            <form onSubmit={handleSearch} className="flex items-center gap-3 px-3 py-4 @xl:px-5">
+              <SearchIcon
+                strokeWidth={1}
+                className="hidden w-5 shrink-0 text-contrast-500 @xl:block"
+              />
+              <input
+                ref={searchInputRef}
+                name="searchTerm"
+                type="text"
+                placeholder="Search Products"
+                className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
+                onChange={handleTermChange}
+              />
+              <Button type="submit" variant="secondary" size="icon">
+                {searchPending ? (
+                  <Spinner size="xs" />
+                ) : (
+                  <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
                 )}
-                {item.groups
-                  ?.flatMap(group => group.links)
-                  .map((link, j) => (
-                    <li key={j}>
-                      <Link
-                        href={link.href}
-                        className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
-                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
-                        @4xl:py-4"
-                        tabIndex={navOpen ? 0 : -1}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            ))}
+              </Button>
+            </form>
+
+            {/* Search Results */}
+            {searchResults && term.length > 2 && !searchPending ? (
+              <SearchResults
+                searchResults={searchResults}
+                searchCtaLabel={searchCtaLabel}
+                emptySearchTitleLabel={emptySearchTitleLabel}
+                emptySearchSubtitleLabel={emptySearchSubtitleLabel}
+                term={term}
+                searchHref={searchHref}
+              />
+            ) : null}
           </div>
-          <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-4">
-            {/* Desktop Dropdown Links */}
-            {selectedCategory !== null &&
-              links[selectedCategory]?.groups?.map((group, columnIndex) => (
-                <ul key={columnIndex} className="flex flex-col gap-1 p-5">
-                  {/* Second Level Links */}
-                  {group.label != null && group.label !== '' && (
+
+          {/* Menu Dropdown */}
+          <div
+            ref={menuRef}
+            className={clsx(
+              'absolute inset-x-0 top-[calc(100%+8px)] origin-top overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10 transition-all duration-200 ease-in-out @4xl:max-h-96',
+              navOpen
+                ? 'scale-100 opacity-100'
+                : 'pointer-events-none scale-[0.98] select-none opacity-0'
+            )}
+          >
+            <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
+              {/* Mobile Dropdown Links */}
+              {links.map((item, i) => (
+                <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
+                  {item.label !== '' && (
                     <li>
-                      {group.href != null && group.href !== '' ? (
+                      {item.href !== '' ? (
                         <Link
-                          href={group.href}
-                          className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                          href={item.href}
+                          className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                           tabIndex={navOpen ? 0 : -1}
-                          ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
                         >
-                          {group.label}
+                          {item.label}
                         </Link>
                       ) : (
                         <span
-                          className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                          ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                          className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                         >
-                          {group.label}
+                          {item.label}
                         </span>
                       )}
                     </li>
                   )}
-                  {group.links.map((link, idx) => (
-                    // Third Level Links
-                    <li key={idx}>
-                      <Link
-                        href={link.href}
-                        className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
-                        tabIndex={navOpen ? 0 : -1}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {item.groups
+                    ?.flatMap(group => group.links)
+                    .map((link, j) => (
+                      <li key={j}>
+                        <Link
+                          href={link.href}
+                          className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
+                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
+                        @4xl:py-4"
+                          tabIndex={navOpen ? 0 : -1}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               ))}
+            </div>
+            <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-4">
+              {/* Desktop Dropdown Links */}
+              {selectedCategory !== null &&
+                links[selectedCategory]?.groups?.map((group, columnIndex) => (
+                  <ul key={columnIndex} className="flex flex-col gap-1 p-5">
+                    {/* Second Level Links */}
+                    {group.label != null && group.label !== '' && (
+                      <li>
+                        {group.href != null && group.href !== '' ? (
+                          <Link
+                            href={group.href}
+                            className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                            tabIndex={navOpen ? 0 : -1}
+                            ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                          >
+                            {group.label}
+                          </Link>
+                        ) : (
+                          <span
+                            className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                            ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                          >
+                            {group.label}
+                          </span>
+                        )}
+                      </li>
+                    )}
+                    {group.links.map((link, idx) => (
+                      // Third Level Links
+                      <li key={idx}>
+                        <Link
+                          href={link.href}
+                          className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                          tabIndex={navOpen ? 0 : -1}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ))}
+            </div>
           </div>
-        </div>
+        </nav>
       </div>
-    </ReactHeadroom>
+    </div>
   )
 })
