@@ -13,6 +13,7 @@ export interface CardProps {
 }
 
 export const Card = function Card({
+  className,
   title,
   image,
   href,
@@ -22,7 +23,10 @@ export const Card = function Card({
   return (
     <Link
       href={href}
-      className="group relative flex aspect-[3/4] w-full flex-col gap-2 rounded-lg ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @4xl:rounded-xl"
+      className={clsx(
+        'group relative flex aspect-[3/4] w-full flex-col gap-2 rounded-lg ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @4xl:rounded-xl',
+        className
+      )}
       {...props}
     >
       <ArrowUpRight
