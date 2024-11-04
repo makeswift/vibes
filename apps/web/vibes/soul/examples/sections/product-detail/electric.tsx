@@ -1,4 +1,4 @@
-import { ProductDetail } from '@/vibes/soul/sections/product-detail'
+import { Product, ProductDetail } from '@/vibes/soul/sections/product-detail'
 
 export const product = {
   id: '1',
@@ -27,7 +27,30 @@ export const product = {
   rating: 4.8,
   description:
     'The Caladium Rosebud plant features vibrant pink and green heart-shaped leaves, adding a beautiful pop of color to any indoor or outdoor setting.',
-}
+  variants: [
+    {
+      type: 'text-input',
+      name: 'attribute-1',
+      label: 'Text',
+      defaultValue: '',
+      required: false,
+      disabled: false,
+      minLength: 0,
+      maxLength: 20,
+    },
+    {
+      type: 'number-input',
+      name: 'attribute-2',
+      label: 'Number',
+      defaultValue: 0,
+      required: false,
+      disabled: false,
+      min: 0,
+      max: 100,
+      step: 1,
+    },
+  ],
+} satisfies Product
 
 export default function Preview() {
   return <ProductDetail product={product} />

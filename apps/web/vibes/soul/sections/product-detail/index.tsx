@@ -1,7 +1,7 @@
 'use client'
 
 import NextImage from 'next/image'
-import { useState } from 'react'
+import { useActionState, useState } from 'react'
 
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import { clsx } from 'clsx'
@@ -14,25 +14,70 @@ import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { Rating } from '@/vibes/soul/primitives/rating'
 import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery'
 
-interface ProductDetailType extends CardProduct {
-  options?: string[]
-  swatches?: {
-    id: string
-    name: string
-    image?: { src: string; alt: string }
-    hex?: string
-  }[]
-  images?: { src: string; alt: string }[]
+import { Input } from '../../form/input'
+
+type ProductImage = {
+  src: string
+  alt: string
 }
 
-export interface ProductDetailProps {
-  product: ProductDetailType
+const ProductVariantType = {
+  TextInput: 'text-input',
+  NumberInput: 'number-input',
+} as const
+type ProductVariantType = (typeof ProductVariantType)[keyof typeof ProductVariantType]
+
+type TextInputVariant = {
+  type: typeof ProductVariantType.TextInput
+  name: string
+  label: string
+  defaultValue?: string
+  required?: boolean
+  disabled?: boolean
+  minLength?: number
+  maxLength?: number
 }
 
-export const ProductDetail = function ProductDetail({ product }: ProductDetailProps) {
+type NumberInputVariant = {
+  type: typeof ProductVariantType.NumberInput
+  name: string
+  label: string
+  defaultValue?: number
+  required?: boolean
+  disabled?: boolean
+  min?: number
+  max?: number
+  step?: number
+}
+
+type ProductVariant = TextInputVariant | NumberInputVariant
+
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
+
+export type Product = {
+  id: string
+  title: string
+  subtitle?: string
+  rating?: number
+  price?: string
+  images: ProductImage[]
+  variants: ProductVariant[]
+}
+
+export function ProductDetail({
+  product,
+  addToCartAction,
+}: {
+  product: Product
+  addToCartAction: Action<{ error: null | string }, string>
+}) {
+  const [addToCartState, addToCartFormAction, addToCartIsPending] = useActionState(
+    addToCartAction,
+    { error: null }
+  )
   const [favorited, setFavorited] = useState(false)
-  const [selectedOption, setSelectedOption] = useState(product.options?.[0] ?? null)
-  const [selectedSwatch, setSelectedSwatch] = useState(product.swatches?.[0] ?? null)
+  // const [selectedOption, setSelectedOption] = useState(product.options?.[0] ?? null)
+  // const [selectedSwatch, setSelectedSwatch] = useState(product.swatches?.[0] ?? null)
 
   return (
     <section className="flex flex-col bg-background @container">
@@ -46,9 +91,48 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
           {product.subtitle != null && product.subtitle !== '' && <p>{product.subtitle}</p>}
           <PriceLabel price={product.price ?? ''} className="!text-2xl" />
 
-          <form className="mt-6 flex flex-col gap-4 @4xl:mt-12">
+          <form
+            action={addToCartFormAction.bind(null, product.id)}
+            className="mt-6 flex flex-col gap-4 @4xl:mt-12"
+          >
+            {product.variants.map(variant => {
+              switch (variant.type) {
+                case ProductVariantType.TextInput:
+                  // TODO(miguel): replace `Input` with new `TextInputField` primitive
+                  return (
+                    <Input
+                      type="text"
+                      name={variant.name}
+                      label={variant.label}
+                      defaultValue={variant.defaultValue}
+                      disabled={variant.disabled}
+                      required={variant.required}
+                      minLength={variant.minLength}
+                      maxLength={variant.maxLength}
+                    />
+                  )
+
+                case ProductVariantType.NumberInput:
+                  // TODO(miguel): replace `Input` with new `NumberInputField` primitive
+                  return (
+                    <Input
+                      type="number"
+                      name={variant.name}
+                      label={variant.label}
+                      defaultValue={variant.defaultValue}
+                      disabled={variant.disabled}
+                      required={variant.required}
+                      min={variant.min}
+                      max={variant.max}
+                      step={variant.step}
+                    />
+                  )
+                default:
+                  return <p>Unsupported product variant "{variant.type}"</p>
+              }
+            })}
             {/* Options */}
-            {product.options && (
+            {/* {product.options && (
               <>
                 <Label>Size</Label>
                 <RadioGroupPrimitive.Root className="flex flex-wrap gap-2.5 ">
@@ -70,12 +154,11 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
                   ))}
                 </RadioGroupPrimitive.Root>
               </>
-            )}
+            )} */}
 
             {/* Swatches */}
-            {product.swatches && (
+            {/* {product.swatches && (
               <>
-                {/* TODO: Restructure JSON to include group name */}
                 <Label className="mt-6">
                   {(selectedSwatch?.name != null && selectedSwatch.name !== '') || 'Color'}
                 </Label>
@@ -100,12 +183,11 @@ export const ProductDetail = function ProductDetail({ product }: ProductDetailPr
                           className="h-full object-cover"
                         />
                       ) : null}
-                      {/* {swatch.name} */}
                     </RadioGroupPrimitive.Item>
                   ))}
                 </RadioGroupPrimitive.Root>
               </>
-            )}
+            )} */}
 
             <div className="mt-4 flex max-w-sm gap-2">
               <Button className="flex-grow">Add to Cart</Button>
