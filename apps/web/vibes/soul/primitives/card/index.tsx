@@ -22,7 +22,7 @@ export const Card = function Card({
   return (
     <Link
       href={href}
-      className="group relative flex aspect-[3/4] w-full min-w-56 max-w-md flex-col gap-2 rounded-lg ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @4xl:rounded-xl"
+      className="group relative flex aspect-[3/4] w-full flex-col gap-2 rounded-lg ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @4xl:rounded-xl"
       {...props}
     >
       <ArrowUpRight
@@ -55,7 +55,7 @@ export const Card = function Card({
 
 export const CardSkeleton = function CardSkeleton() {
   return (
-    <div className="relative flex aspect-[3/4] w-full min-w-56 max-w-md animate-pulse flex-col gap-2 @4xl:min-w-72">
+    <div className="relative flex aspect-[3/4] w-full animate-pulse flex-col gap-2 @4xl:min-w-72">
       {/* Image */}
       <div className="h-full w-full overflow-hidden rounded-lg bg-contrast-100 @4xl:rounded-xl" />
       {/* Title */}
