@@ -17,7 +17,6 @@ export const schema = z
     confirmPassword: z.string(),
   })
   .superRefine(({ confirmPassword, password }, ctx) => {
-    console.log({ confirmPassword, password })
     if (confirmPassword !== password) {
       ctx.addIssue({
         code: 'custom',
