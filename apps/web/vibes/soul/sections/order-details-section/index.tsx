@@ -1,7 +1,13 @@
+import { prerender } from 'next/dist/server/app-render/entry-base'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { ArrowLeft } from 'lucide-react'
+
+import { ButtonLink } from '@/vibes/soul/primitives/button-link'
+
+import { Badge } from '../../primitives/badge'
+import { PriceLabel } from '../../primitives/price-label'
 
 type Summary = {
   lineItems: {
@@ -54,6 +60,7 @@ type Order = {
   id: string
   title: string
   status: string
+  statusColor?: 'success' | 'warning' | 'danger' | 'info'
   date: string
   shipments: Shipment[]
   summary: Summary
@@ -66,27 +73,37 @@ type Props = {
 
 export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
   return (
-    <div>
-      <div className="flex items-center">
-        <Link href={prevHref}>
+    <div className="@container">
+      <div className="flex gap-4 border-b border-contrast-100 pb-8">
+        <Link
+          href={prevHref}
+          className={
+            'mt-1 flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2'
+          }
+        >
           <ArrowLeft />
         </Link>
-        <h1>{order.title}</h1>
-        <span>
-          {new Date(order.date).toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric',
-          })}
-        </span>
+        <div className="space-y-1">
+          <div className="flex items-center gap-3">
+            <h1 className="text-4xl">{order.title}</h1>
+            <Badge color={order.statusColor}>{order.status}</Badge>
+          </div>
+          <p>
+            {new Date(order.date).toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </p>
+        </div>
       </div>
       <div className="flex">
-        <div className="flex-1 gap-8">
+        <div className="flex-1 pr-12">
           {order.shipments.map(shipment => (
             <Shipment key={shipment.id} shipment={shipment} />
           ))}
         </div>
-        <div className="flex-1">
+        <div className="basis-72 pt-8">
           <Summary summary={order.summary} />
         </div>
       </div>
@@ -96,11 +113,12 @@ export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
 
 function Shipment({ shipment }: { shipment: Shipment }) {
   return (
-    <div>
-      <div>
-        <div className="flex gap-8">
-          <div>
-            <h3>{shipment.addressLabel ?? 'Shipping address'}</h3>
+    <div className="border-b border-contrast-100 py-8">
+      <div className="space-y-6">
+        <div className="text-2xl font-medium">{shipment.title}</div>
+        <div className="flex gap-20">
+          <div className="text-sm">
+            <h3 className="font-semibold">{shipment.addressLabel ?? 'Shipping address'}</h3>
             <p>{shipment.address.name}</p>
             <p>{shipment.address.street1}</p>
             <p>{shipment.address.street2}</p>
@@ -109,15 +127,15 @@ function Shipment({ shipment }: { shipment: Shipment }) {
             </p>
             <p>{shipment.address.country}</p>
           </div>
-          <div>
-            <h3>{shipment.methodLabel ?? 'Shipping method'}</h3>
+          <div className="text-sm">
+            <h3 className="font-semibold">{shipment.methodLabel ?? 'Shipping method'}</h3>
             <p>{shipment.method.name}</p>
             <p>{shipment.method.status}</p>
             <p>{shipment.method.id}</p>
           </div>
         </div>
         {shipment.lineItems.map(lineItem => (
-          <ShipmentLineItem lineItem={lineItem} />
+          <ShipmentLineItem key={lineItem.id} lineItem={lineItem} />
         ))}
       </div>
     </div>
@@ -126,45 +144,70 @@ function Shipment({ shipment }: { shipment: Shipment }) {
 
 function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
   return (
-    <div>
-      {lineItem.image && (
-        <div>
-          <Image src={lineItem.image.src} alt={lineItem.image.alt} />
-        </div>
-      )}
-      <div>
-        <h3>{lineItem.title}</h3>
-        <p>{lineItem.subtitle}</p>
-        <p>{lineItem.price}</p>
-        <p>{lineItem.quantity}</p>
-
-        {lineItem.metadata?.map((metadata, index) => (
-          <div key={index}>
-            <span>{metadata.label}</span>
-            <span>{metadata.value}</span>
+    <Link
+      id={lineItem.id}
+      href={lineItem.href}
+      className="group flex shrink-0 basis-32 cursor-pointer gap-8 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl @lg:basis-40"
+    >
+      <div className="relative aspect-square basis-40 overflow-hidden rounded-[inherit] border border-contrast-100 bg-contrast-100">
+        {lineItem.image?.src != null ? (
+          <Image
+            src={lineItem.image.src}
+            fill
+            sizes="(max-width: 768px) 70vw, 33vw"
+            alt={lineItem.image.alt}
+            className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+          />
+        ) : (
+          <div className="pl-2 pt-3 text-4xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">
+            {lineItem.title}
           </div>
-        ))}
+        )}
       </div>
-    </div>
+
+      <div className="space-y-3 text-sm leading-snug">
+        <div>
+          <div className="font-semibold">{lineItem.title}</div>
+          {lineItem.subtitle != null && lineItem.subtitle !== '' && (
+            <div className="font-normal text-contrast-500">{lineItem.subtitle}</div>
+          )}
+        </div>
+        <div className="flex gap-1 text-sm">
+          <span className="font-semibold">{lineItem.price}</span>
+          <span>×</span>
+          <span className="font-semibold">{lineItem.quantity}</span>
+        </div>
+        <div>
+          {lineItem.metadata?.map((metadata, index) => (
+            <div key={index} className="flex gap-1 text-sm">
+              <span className="font-semibold">{metadata.label}:</span>
+              <span>{metadata.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Link>
   )
 }
 
 function Summary({ summary }: { summary: Summary }) {
   return (
     <div className="divide-y divide-gray-100">
-      <div className="space-y-1">
-        {summary.lineItems.map(lineItem => (
-          <div className="flex justify-between">
+      <div className="space-y-2 pb-3 pt-5">
+        {summary.lineItems.map((lineItem, index) => (
+          <div key={index} className="flex justify-between">
             <div>
-              <span>{lineItem.label}</span>
-              <span>{lineItem.subtext}</span>
+              <div className="text-sm">{lineItem.label}</div>
+              {lineItem.subtext != null && lineItem.subtext !== '' && (
+                <div className="text-xs text-contrast-400">{lineItem.subtext}</div>
+              )}
             </div>
 
-            <span>{lineItem.value}</span>
+            <span className="text-sm">{lineItem.value}</span>
           </div>
         ))}
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between border-t border-contrast-200 py-3 font-semibold">
         <span>{summary.totalLabel ?? 'Total'}</span>
         <span>{summary.total}</span>
       </div>

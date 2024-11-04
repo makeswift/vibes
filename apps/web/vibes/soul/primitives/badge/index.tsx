@@ -5,10 +5,16 @@ import { clsx } from 'clsx'
 export interface BadgeProps {
   children: ReactNode
   variant?: 'pill' | 'rounded'
+  color?: 'primary' | 'accent' | 'warning' | 'danger' | 'success' | 'info'
   className?: string
 }
 
-export const Badge = function Badge({ children, variant = 'rounded', className }: BadgeProps) {
+export const Badge = function Badge({
+  children,
+  variant = 'rounded',
+  className,
+  color = 'primary',
+}: BadgeProps) {
   return (
     <span
       className={clsx(
@@ -17,6 +23,14 @@ export const Badge = function Badge({ children, variant = 'rounded', className }
           pill: 'rounded-full',
           rounded: 'rounded',
         }[variant],
+        {
+          primary: 'bg-primary-highlight',
+          accent: 'bg-accent-highlight',
+          warning: 'bg-warning-highlight',
+          danger: 'bg-danger-highlight',
+          success: 'bg-success-highlight',
+          info: 'bg-info-highlight',
+        }[color],
         className
       )}
     >
