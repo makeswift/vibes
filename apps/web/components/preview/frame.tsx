@@ -43,7 +43,7 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
   }, [resize, setMaxWidth])
 
   useEffect(() => {
-    iframe.current?.contentDocument?.body.style.setProperty('zoom', String(zoom))
+    iframe.current?.contentWindow?.postMessage({ type: 'zoom', zoom })
   }, [zoom])
 
   return (
