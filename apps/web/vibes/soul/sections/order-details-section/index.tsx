@@ -97,13 +97,13 @@ export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
           </p>
         </div>
       </div>
-      <div className="flex">
-        <div className="flex-1 pr-12">
+      <div className="grid @3xl:flex">
+        <div className="order-2 flex-1 pr-12 @3xl:order-1">
           {order.shipments.map(shipment => (
             <Shipment key={shipment.id} shipment={shipment} />
           ))}
         </div>
-        <div className="basis-72 pt-8">
+        <div className="order-1 basis-72 pt-8 @3xl:order-2">
           <Summary summary={order.summary} />
         </div>
       </div>
@@ -113,10 +113,10 @@ export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
 
 function Shipment({ shipment }: { shipment: Shipment }) {
   return (
-    <div className="border-b border-contrast-100 py-8">
+    <div className="border-b border-contrast-100 py-8 @container">
       <div className="space-y-6">
         <div className="text-2xl font-medium">{shipment.title}</div>
-        <div className="flex gap-20">
+        <div className="grid gap-8 @xl:flex @xl:gap-20">
           <div className="text-sm">
             <h3 className="font-semibold">{shipment.addressLabel ?? 'Shipping address'}</h3>
             <p>{shipment.address.name}</p>
@@ -147,7 +147,7 @@ function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
     <Link
       id={lineItem.id}
       href={lineItem.href}
-      className="group flex shrink-0 basis-32 cursor-pointer gap-8 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl @lg:basis-40"
+      className="group grid shrink-0 cursor-pointer gap-8 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @sm:flex @sm:rounded-2xl"
     >
       <div className="relative aspect-square basis-40 overflow-hidden rounded-[inherit] border border-contrast-100 bg-contrast-100">
         {lineItem.image?.src != null ? (
