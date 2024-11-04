@@ -1,7 +1,9 @@
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
+import { Domain } from 'domain'
 
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 import { Chapter } from './navigation'

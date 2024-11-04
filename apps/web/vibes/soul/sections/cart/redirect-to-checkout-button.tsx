@@ -4,7 +4,7 @@ import { useActionState, useEffect } from 'react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 
-import { Action } from './remove-button'
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
 export function CheckoutButton({
   action,
