@@ -15,7 +15,7 @@ export const HamburgerMenuButton = function HamburgerMenuButton({
     <button
       onClick={() => setNavOpen(!navOpen)}
       aria-label="Toggle navigation"
-      className="group relative rounded-lg p-2 transition-colors @4xl:hidden"
+      className="group relative mr-4 rounded-lg p-2 transition-colors @4xl:hidden"
     >
       <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
         <div
