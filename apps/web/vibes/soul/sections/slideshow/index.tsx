@@ -136,7 +136,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
             return (
               <div key={idx} className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full">
                 <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pb-5 pt-20 text-background">
-                  <div className="mx-auto max-w-screen-2xl px-3 pb-8 @xl:px-6 @5xl:px-20">
+                  <div className="mx-auto max-w-screen-2xl px-4 pb-8">
                     <h1 className="mb-2 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
                       {title}
                     </h1>
@@ -172,7 +172,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
       </div>
 
       {/* Controls */}
-      <div className="absolute bottom-6 left-1/2 flex w-full max-w-screen-2xl -translate-x-1/2 flex-wrap items-center px-3 text-background @xl:px-6 @5xl:px-20">
+      <div className="absolute bottom-6 left-1/2 flex w-full max-w-screen-2xl -translate-x-1/2 flex-wrap items-center px-4 text-background">
         {/* Progress Buttons */}
         {scrollSnaps.map((_: number, index: number) => {
           return (

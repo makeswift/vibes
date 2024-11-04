@@ -17,20 +17,26 @@ interface Props {
 export function ProductsCarousel({ products, className }: Props) {
   return (
     <Carousel className={className}>
-      <CarouselContent className="mb-20 px-3 @xl:px-6 @4xl:px-20">
+      <CarouselContent className="mb-20">
         {products.length > 0
           ? products.map(product => (
-              <CarouselItem key={product.id} className="basis-full @md:basis-1/2 @xl:basis-1/4">
+              <CarouselItem
+                key={product.id}
+                className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+              >
                 <ProductCard product={product} />
               </CarouselItem>
             ))
           : Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem key={index} className="basis-full @md:basis-1/2 @xl:basis-1/4">
+              <CarouselItem
+                key={index}
+                className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+              >
                 <ProductCardSkeleton />
               </CarouselItem>
             ))}
       </CarouselContent>
-      <div className="flex items-center justify-between px-3 @xl:px-6 @5xl:px-20">
+      <div className="flex w-full items-center justify-between">
         <CarouselScrollbar />
         <CarouselButtons />
       </div>
