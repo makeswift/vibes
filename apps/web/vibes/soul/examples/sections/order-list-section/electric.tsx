@@ -1,7 +1,8 @@
 import { getProducts } from '@/vibes/soul/data'
+import { AccountLayout } from '@/vibes/soul/sections/account-layout'
 import { OrderListSection } from '@/vibes/soul/sections/order-list-section'
 
-const lineItems = getProducts('Electric')
+const products = getProducts('Electric')
 
 const orders = [
   {
@@ -9,7 +10,7 @@ const orders = [
     totalPrice: '$100',
     status: 'Delivered',
     href: '/order/1',
-    lineItems: lineItems
+    lineItems: products
       .filter(() => Math.random() > 0.5)
       .map(({ id, title, subtitle, image, href }) => ({
         id,
@@ -25,7 +26,7 @@ const orders = [
     totalPrice: '$150',
     status: 'Delivered',
     href: '/order/2',
-    lineItems: lineItems
+    lineItems: products
       .filter(() => Math.random() > 0.5)
       .map(({ id, title, subtitle, image, href }) => ({
         id,
@@ -41,7 +42,7 @@ const orders = [
     totalPrice: '$500',
     status: 'Delivered',
     href: '/order/3',
-    lineItems: lineItems
+    lineItems: products
       .filter(() => Math.random() > 0.5)
       .map(({ id, title, subtitle, image, href }) => ({
         id,
@@ -66,13 +67,21 @@ async function orderTrackAction({ id }: { id: string }) {
   console.log('Tracking order', id)
 }
 
+const links = [
+  { href: '#', label: 'Orders' },
+  { href: '#', label: 'Addresses' },
+  { href: '#', label: 'Account' },
+]
+
 export default function Preview() {
   return (
-    <OrderListSection
-      orders={orders}
-      orderReturnAction={orderReturnAction}
-      orderTrackAction={orderTrackAction}
-      paginationInfo={{ startCursor: '1', endCursor: '5' }}
-    />
+    <AccountLayout links={links}>
+      <OrderListSection
+        orders={orders}
+        orderReturnAction={orderReturnAction}
+        orderTrackAction={orderTrackAction}
+        paginationInfo={{ startCursor: '1', endCursor: '5' }}
+      />
+    </AccountLayout>
   )
 }
