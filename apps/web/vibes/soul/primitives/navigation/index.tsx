@@ -9,6 +9,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuPortal,
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu'
 import { clsx } from 'clsx'
@@ -203,14 +204,20 @@ export const Navigation = forwardRef(function Navigation(
       <div
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:pt-3"
+        className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:py-2"
       >
         <nav
-          className="relative flex h-16 items-center bg-background pl-4 
-          pr-2 @4xl:mx-4 @4xl:rounded-2xl @4xl:pl-5 @4xl:pr-2.5"
+          className="relative flex h-14 items-center bg-background pl-2 pr-2 
+          @4xl:rounded-2xl @4xl:pl-5 @4xl:pr-2.5"
         >
           {/* Logo */}
-          <div className="flex-1">
+          <div className="flex flex-1 items-center">
+            <HamburgerMenuButton
+              navOpen={navOpen}
+              setNavOpen={setNavOpen}
+              searchOpen={searchOpen}
+            />
+
             <Link
               href="/"
               className="relative rounded-xl outline-0 ring-primary ring-offset-4 focus-visible:ring-2"
@@ -267,47 +274,29 @@ export const Navigation = forwardRef(function Navigation(
           </ul>
 
           <div className="flex flex-1 items-center justify-end transition-colors duration-300">
-            {/* Mobile Buttons */}
-            <div className="absolute left-1 flex items-center @4xl:relative @4xl:left-0">
-              {/* Hamburger Menu Button */}
-              <HamburgerMenuButton
-                navOpen={navOpen}
-                setNavOpen={setNavOpen}
-                searchOpen={searchOpen}
-              />
-
-              <button
-                aria-label="Search"
-                className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-                onClick={() => {
-                  setNavOpen(false)
-                  setSearchOpen(!searchOpen)
-                }}
-              >
-                <Search strokeWidth={1} size={20} />
-              </button>
-            </div>
+            <button
+              aria-label="Search"
+              className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+              onClick={() => {
+                setNavOpen(false)
+                setSearchOpen(!searchOpen)
+              }}
+            >
+              <Search strokeWidth={1} size={20} />
+            </button>
             <Link
               href={accountHref}
               aria-label="Profile"
               className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
-              <User
-                className={clsx(searchOpen && 'stroke-contrast-300')}
-                strokeWidth={1}
-                size={20}
-              />
+              <User strokeWidth={1} size={20} />
             </Link>
             <Link
               href={cartHref}
               aria-label="Cart"
               className="relative rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             >
-              <ShoppingBag
-                className={clsx(searchOpen && 'stroke-contrast-300')}
-                strokeWidth={1}
-                size={20}
-              />
+              <ShoppingBag strokeWidth={1} size={20} />
               {cartCount != null && cartCount > 0 && (
                 <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
                   {cartCount}
@@ -321,35 +310,37 @@ export const Navigation = forwardRef(function Navigation(
                 <DropdownMenuTrigger
                   className={clsx(
                     'hidden items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
-                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex',
-                    searchOpen ? 'text-contrast-300' : 'text-foreground'
+                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex'
                   )}
                 >
                   {selectedLanguage}
-                  <ChevronDown
-                    className={clsx('w-4', searchOpen && 'stroke-contrast-300')}
-                    strokeWidth={1.5}
-                  />
+                  <ChevronDown strokeWidth={1.5} size={16} />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="z-50 mt-4 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:-ml-14 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2">
-                  {locales.map(({ id, language }) => (
-                    <DropdownMenuItem
-                      className={clsx(
-                        'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
-                        'hover:text-foreground focus:bg-contrast-100',
-                        { 'text-foreground': selectedLanguage === language }
-                      )}
-                      key={id}
-                      onSelect={() => {
-                        setSelectedLanguage(language)
-                        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-                        // router.replace('/', { locale: id as LocaleType })
-                      }}
-                    >
-                      {language}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
+                <DropdownMenuPortal>
+                  <DropdownMenuContent
+                    align="end"
+                    sideOffset={24}
+                    className="z-50 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-xl shadow-foreground/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
+                  >
+                    {locales.map(({ id, language }) => (
+                      <DropdownMenuItem
+                        className={clsx(
+                          'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
+                          'hover:text-foreground focus:bg-contrast-100',
+                          { 'text-foreground': selectedLanguage === language }
+                        )}
+                        key={id}
+                        onSelect={() => {
+                          setSelectedLanguage(language)
+                          // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+                          // router.replace('/', { locale: id as LocaleType })
+                        }}
+                      >
+                        {language}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenuPortal>
               </DropdownMenu>
             ) : null}
           </div>
@@ -357,17 +348,21 @@ export const Navigation = forwardRef(function Navigation(
           {/* Search Dropdown */}
           <div
             className={clsx(
-              'absolute inset-x-0 top-[calc(100%+8px)] origin-top overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10 transition-all duration-200 ease-in-out',
+              'absolute inset-x-2 top-full origin-top translate-y-4 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10 transition-all duration-200 ease-in-out @4xl:inset-x-0',
               searchOpen
                 ? 'scale-100 opacity-100'
                 : 'pointer-events-none scale-[0.98] select-none opacity-0'
             )}
             ref={searchRef}
           >
-            <form onSubmit={handleSearch} className="flex items-center gap-3 px-3 py-4 @xl:px-5">
+            <form
+              onSubmit={handleSearch}
+              className="flex items-center gap-3 px-3 py-3 @xl:px-5 @xl:py-4"
+            >
               <SearchIcon
                 strokeWidth={1}
-                className="hidden w-5 shrink-0 text-contrast-500 @xl:block"
+                size={20}
+                className="hidden shrink-0 text-contrast-500 @xl:block"
               />
               <input
                 ref={searchInputRef}
@@ -403,96 +398,98 @@ export const Navigation = forwardRef(function Navigation(
           <div
             ref={menuRef}
             className={clsx(
-              'absolute inset-x-0 top-[calc(100%+8px)] origin-top overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10 transition-all duration-200 ease-in-out @4xl:max-h-96',
+              'absolute inset-x-2 top-full origin-top translate-y-2 pt-2 transition-all duration-200 ease-in-out @4xl:inset-x-0',
               navOpen
                 ? 'scale-100 opacity-100'
                 : 'pointer-events-none scale-[0.98] select-none opacity-0'
             )}
           >
-            <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
-              {/* Mobile Dropdown Links */}
-              {links.map((item, i) => (
-                <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
-                  {item.label !== '' && (
-                    <li>
-                      {item.href !== '' ? (
-                        <Link
-                          href={item.href}
-                          className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                          tabIndex={navOpen ? 0 : -1}
-                        >
-                          {item.label}
-                        </Link>
-                      ) : (
-                        <span
-                          className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                        >
-                          {item.label}
-                        </span>
-                      )}
-                    </li>
-                  )}
-                  {item.groups
-                    ?.flatMap(group => group.links)
-                    .map((link, j) => (
-                      <li key={j}>
-                        <Link
-                          href={link.href}
-                          className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
-                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
-                        @4xl:py-4"
-                          tabIndex={navOpen ? 0 : -1}
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              ))}
-            </div>
-            <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-4">
-              {/* Desktop Dropdown Links */}
-              {selectedCategory !== null &&
-                links[selectedCategory]?.groups?.map((group, columnIndex) => (
-                  <ul key={columnIndex} className="flex flex-col gap-1 p-5">
-                    {/* Second Level Links */}
-                    {group.label != null && group.label !== '' && (
+            <div className="max-h-96 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10">
+              <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
+                {/* Mobile Dropdown Links */}
+                {links.map((item, i) => (
+                  <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
+                    {item.label !== '' && (
                       <li>
-                        {group.href != null && group.href !== '' ? (
+                        {item.href !== '' ? (
                           <Link
-                            href={group.href}
-                            className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                            href={item.href}
+                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                             tabIndex={navOpen ? 0 : -1}
-                            ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
                           >
-                            {group.label}
+                            {item.label}
                           </Link>
                         ) : (
                           <span
-                            className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                            ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                           >
-                            {group.label}
+                            {item.label}
                           </span>
                         )}
                       </li>
                     )}
-                    {group.links.map((link, idx) => (
-                      // Third Level Links
-                      <li key={idx}>
-                        <Link
-                          href={link.href}
-                          className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
-                          tabIndex={navOpen ? 0 : -1}
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
+                    {item.groups
+                      ?.flatMap(group => group.links)
+                      .map((link, j) => (
+                        <li key={j}>
+                          <Link
+                            href={link.href}
+                            className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
+                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
+                        @4xl:py-4"
+                            tabIndex={navOpen ? 0 : -1}
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
                   </ul>
                 ))}
+              </div>
+              <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-4">
+                {/* Desktop Dropdown Links */}
+                {selectedCategory !== null &&
+                  links[selectedCategory]?.groups?.map((group, columnIndex) => (
+                    <ul key={columnIndex} className="flex flex-col gap-1 p-5">
+                      {/* Second Level Links */}
+                      {group.label != null && group.label !== '' && (
+                        <li>
+                          {group.href != null && group.href !== '' ? (
+                            <Link
+                              href={group.href}
+                              className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                              tabIndex={navOpen ? 0 : -1}
+                              ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                            >
+                              {group.label}
+                            </Link>
+                          ) : (
+                            <span
+                              className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                              ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                            >
+                              {group.label}
+                            </span>
+                          )}
+                        </li>
+                      )}
+                      {group.links.map((link, idx) => (
+                        // Third Level Links
+                        <li key={idx}>
+                          <Link
+                            href={link.href}
+                            className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                            tabIndex={navOpen ? 0 : -1}
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ))}
+              </div>
             </div>
           </div>
         </nav>
