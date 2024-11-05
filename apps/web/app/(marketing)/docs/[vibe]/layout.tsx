@@ -20,7 +20,7 @@ export default async function Layout({
     <>
       <Header chapters={chapters} chapterSlug={vibeSlug} />
 
-      <div className="relative mx-auto block items-start gap-x-4 px-5 xl:container lg:flex xl:px-8">
+      <div className="relative mx-auto block max-w-screen-2xl items-start gap-x-4 px-5 lg:flex xl:px-8">
         {activeChapter && <Sidebar chapter={activeChapter} />}
         <div className="min-w-0 flex-1">
           <BrandProvider brands={brands}>{children}</BrandProvider>
