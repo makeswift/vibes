@@ -13,7 +13,7 @@ interface Props {
 
 export const BlogPostList = function BlogPostList({ posts, className = '' }: Props) {
   return (
-    <div className={clsx('w-full @container', className)}>
+    <div className={clsx('@container', className)}>
       <div className="mx-auto grid grid-cols-1 gap-x-5 gap-y-8 @md:grid-cols-2 @xl:gap-y-10 @3xl:grid-cols-3 @6xl:grid-cols-4">
         {posts.length > 0
           ? posts.map(post => <BlogPostCard key={post.id} {...post} />)
