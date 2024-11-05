@@ -5,13 +5,9 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { Ref, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuPortal,
-  DropdownMenuTrigger,
-} from '@radix-ui/react-dropdown-menu'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as NavigationMenu from '@radix-ui/react-navigation-menu'
+import * as Popover from '@radix-ui/react-popover'
 import { clsx } from 'clsx'
 import debounce from 'lodash.debounce'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
@@ -218,308 +214,307 @@ export const Navigation = forwardRef(function Navigation(
   }
 
   return (
-    <div {...rest} className="sticky top-0 z-30 w-full @container">
-      <div
-        onMouseLeave={() => setNavOpen(false)}
-        className="relative mx-auto w-full max-w-screen-2xl px-0 text-foreground @4xl:px-2 @4xl:pt-2"
-      >
-        <nav
-          ref={ref}
-          className={clsx(
-            'relative flex h-14 items-center bg-background pl-3 pr-2 shadow-xl ring-1 transition-[box-shadow] duration-300 @4xl:rounded-2xl @4xl:pl-6 @4xl:pr-2.5',
-            scrolled
-              ? 'shadow-foreground/5 ring-foreground/5'
-              : 'shadow-transparent ring-transparent'
-          )}
-        >
-          {/* Logo */}
-          <div className="flex flex-1 items-center">
-            <HamburgerMenuButton
-              navOpen={navOpen}
-              setNavOpen={setNavOpen}
-              searchOpen={searchOpen}
-            />
+    <NavigationMenu.Root
+      ref={ref}
+      onMouseLeave={() => setNavOpen(false)}
+      className="relative mx-auto w-full max-w-screen-2xl text-foreground @container"
+    >
+      <Popover.Root modal>
+        <Popover.Anchor>
+          <nav
+            className={clsx(
+              'relative flex h-14 items-center bg-background pl-3 pr-2 shadow-xl ring-1 transition-[box-shadow] duration-300 @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
+              scrolled
+                ? 'shadow-foreground/5 ring-foreground/5'
+                : 'shadow-transparent ring-transparent'
+            )}
+          >
+            {/* Logo */}
+            <div className="flex flex-1 items-center">
+              <HamburgerMenuButton
+                navOpen={navOpen}
+                setNavOpen={setNavOpen}
+                searchOpen={searchOpen}
+              />
 
-            <Link
-              href="/"
-              className="relative rounded outline-0 ring-primary ring-offset-4 focus-visible:ring-2"
-            >
-              {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
-                <Image
-                  src={logo.src}
-                  fill
-                  sizes="400px"
-                  alt={logo.alt}
-                  className="object-contain"
-                />
-              ) : (
-                typeof logo === 'string' && (
-                  <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
-                    {logo}
-                  </span>
-                )
-              )}
-            </Link>
-          </div>
+              <Link
+                href="/"
+                className="relative rounded outline-0 ring-primary ring-offset-4 focus-visible:ring-2"
+              >
+                {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
+                  <Image
+                    src={logo.src}
+                    fill
+                    sizes="400px"
+                    alt={logo.alt}
+                    className="object-contain"
+                  />
+                ) : (
+                  typeof logo === 'string' && (
+                    <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
+                      {logo}
+                    </span>
+                  )
+                )}
+              </Link>
+            </div>
 
-          {/* Top Level Nav Links */}
-          <ul className="relative flex" ref={container}>
-            {links.map((item, i) => (
-              <li key={i}>
-                <Link
-                  href={item.href}
-                  onMouseOver={() => {
-                    setSelectedCategory(i)
-                    setNavOpen(true)
-                    setSearchOpen(false)
-                  }}
-                  onKeyDown={event => {
-                    if (event.key === 'Enter') {
+            {/* Top Level Nav Links */}
+            <ul className="relative flex" ref={container}>
+              {links.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    href={item.href}
+                    onMouseOver={() => {
                       setSelectedCategory(i)
                       setNavOpen(true)
-                      menuTriggerRef.current = event.currentTarget
+                      setSearchOpen(false)
+                    }}
+                    onKeyDown={event => {
+                      if (event.key === 'Enter') {
+                        setSelectedCategory(i)
+                        setNavOpen(true)
+                        menuTriggerRef.current = event.currentTarget
 
-                      setTimeout(() => {
-                        if (firstCategoryLinkRef.current) {
-                          firstCategoryLinkRef.current.focus()
-                        }
-                      }, 0)
-                    }
-                  }}
-                  className="mx-0.5 my-2.5 hidden items-center whitespace-nowrap rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200
+                        setTimeout(() => {
+                          if (firstCategoryLinkRef.current) {
+                            firstCategoryLinkRef.current.focus()
+                          }
+                        }, 0)
+                      }
+                    }}
+                    className="mx-0.5 my-2.5 hidden items-center whitespace-nowrap rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200
                   hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex flex-1 items-center justify-end transition-colors duration-300">
-            <button
-              aria-label="Search"
-              className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-              onClick={() => {
-                setNavOpen(false)
-                setSearchOpen(prevState => !prevState)
-              }}
-            >
-              <Search strokeWidth={1} size={20} />
-            </button>
-            <Link
-              href={accountHref}
-              aria-label="Profile"
-              className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-            >
-              <User strokeWidth={1} size={20} />
-            </Link>
-            <Link
-              href={cartHref}
-              aria-label="Cart"
-              className="relative rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-            >
-              <ShoppingBag strokeWidth={1} size={20} />
-              {cartCount != null && cartCount > 0 && (
-                <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
-                  {cartCount}
-                </span>
-              )}
-            </Link>
-
-            {/* Locale / Language Dropdown */}
-            {locales && locales.length > 1 ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  className={clsx(
-                    'hidden items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
-                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex'
-                  )}
-                >
-                  {selectedLanguage}
-                  <ChevronDown strokeWidth={1.5} size={16} />
-                </DropdownMenuTrigger>
-                <DropdownMenuPortal>
-                  <DropdownMenuContent
-                    align="end"
-                    sideOffset={scrolled ? 16 : 24}
-                    className="z-50 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-xl shadow-foreground/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
                   >
-                    {locales.map(({ id, language }) => (
-                      <DropdownMenuItem
-                        className={clsx(
-                          'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
-                          'hover:text-foreground focus:bg-contrast-100',
-                          { 'text-foreground': selectedLanguage === language }
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-1 items-center justify-end transition-colors duration-300">
+              <Popover.Trigger asChild>
+                <button
+                  aria-label="Search"
+                  className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+                  onClick={() => {
+                    setNavOpen(false)
+                    setSearchOpen(prevState => !prevState)
+                  }}
+                >
+                  <Search strokeWidth={1} size={20} />
+                </button>
+              </Popover.Trigger>
+              <Popover.Portal>
+                <Popover.Content className="w-[var(--radix-popover-content-available-width)] px-4 py-2 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
+                  <div className="overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5 transition-all duration-200 ease-in-out @4xl:inset-x-0">
+                    <form
+                      onSubmit={handleSearch}
+                      className="flex items-center gap-3 px-3 py-3 @4xl:px-5 @4xl:py-4"
+                    >
+                      <SearchIcon
+                        strokeWidth={1}
+                        size={20}
+                        className="hidden shrink-0 text-contrast-500 @xl:block"
+                      />
+                      <input
+                        ref={searchInputRef}
+                        name="searchTerm"
+                        type="text"
+                        placeholder="Search Products"
+                        className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
+                        onChange={handleTermChange}
+                      />
+                      <Button type="submit" variant="secondary" size="icon">
+                        {searchPending ? (
+                          <Spinner size="xs" />
+                        ) : (
+                          <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
                         )}
-                        key={id}
-                        onSelect={() => {
-                          setSelectedLanguage(language)
-                          // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-                          // router.replace('/', { locale: id as LocaleType })
-                        }}
-                      >
-                        {language}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenuPortal>
-              </DropdownMenu>
-            ) : null}
-          </div>
+                      </Button>
+                    </form>
 
-          {/* Search Dropdown */}
-          <div
-            className={clsx(
-              'absolute inset-x-2 top-full origin-top translate-y-1 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5 transition-all duration-200 ease-in-out @4xl:inset-x-0',
-              searchOpen
-                ? 'scale-100 opacity-100'
-                : 'pointer-events-none scale-[0.98] select-none opacity-0'
-            )}
-            ref={searchRef}
-          >
-            <form
-              onSubmit={handleSearch}
-              className="flex items-center gap-3 px-3 py-3 @4xl:px-5 @4xl:py-4"
-            >
-              <SearchIcon
-                strokeWidth={1}
-                size={20}
-                className="hidden shrink-0 text-contrast-500 @xl:block"
-              />
-              <input
-                ref={searchInputRef}
-                name="searchTerm"
-                type="text"
-                placeholder={searchInputPlaceholder}
-                className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
-                onChange={handleTermChange}
-              />
-              <Button type="submit" variant="secondary" size="icon">
-                {searchPending ? (
-                  <Spinner size="xs" />
-                ) : (
-                  <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
+                    {/* Search Results */}
+                    {searchResults && term.length > 2 && !searchPending ? (
+                      <SearchResults
+                        searchResults={searchResults}
+                        searchCtaLabel={searchCtaLabel}
+                        emptySearchTitleLabel={emptySearchTitleLabel}
+                        emptySearchSubtitleLabel={emptySearchSubtitleLabel}
+                        term={term}
+                        searchHref={searchHref}
+                      />
+                    ) : null}
+                  </div>
+                </Popover.Content>
+              </Popover.Portal>
+
+              <Link
+                href={accountHref}
+                aria-label="Profile"
+                className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+              >
+                <User strokeWidth={1} size={20} />
+              </Link>
+              <Link
+                href={cartHref}
+                aria-label="Cart"
+                className="relative rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+              >
+                <ShoppingBag strokeWidth={1} size={20} />
+                {cartCount != null && cartCount > 0 && (
+                  <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
+                    {cartCount}
+                  </span>
                 )}
-              </Button>
-            </form>
+              </Link>
 
-            {/* Search Results */}
-            {searchResults && term.length > 2 && !searchPending ? (
-              <SearchResults
-                searchResults={searchResults}
-                searchCtaLabel={searchCtaLabel}
-                emptySearchTitleLabel={emptySearchTitleLabel}
-                emptySearchSubtitleLabel={emptySearchSubtitleLabel}
-                term={term}
-                searchHref={searchHref}
-              />
-            ) : null}
-          </div>
+              {/* Locale / Language Dropdown */}
+              {locales && locales.length > 1 ? (
+                <DropdownMenu.Root>
+                  <DropdownMenu.Trigger
+                    className={clsx(
+                      'hidden items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
+                      'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex'
+                    )}
+                  >
+                    {selectedLanguage}
+                    <ChevronDown strokeWidth={1.5} size={16} />
+                  </DropdownMenu.Trigger>
+                  <DropdownMenu.Portal>
+                    <DropdownMenu.Content
+                      align="end"
+                      sideOffset={scrolled ? 16 : 24}
+                      className="z-50 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-xl shadow-foreground/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
+                    >
+                      {locales.map(({ id, language }) => (
+                        <DropdownMenu.Item
+                          className={clsx(
+                            'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
+                            'hover:text-foreground focus:bg-contrast-100',
+                            { 'text-foreground': selectedLanguage === language }
+                          )}
+                          key={id}
+                          onSelect={() => {
+                            setSelectedLanguage(language)
+                            // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+                            // router.replace('/', { locale: id as LocaleType })
+                          }}
+                        >
+                          {language}
+                        </DropdownMenu.Item>
+                      ))}
+                    </DropdownMenu.Content>
+                  </DropdownMenu.Portal>
+                </DropdownMenu.Root>
+              ) : null}
+            </div>
 
-          {/* Menu Dropdown */}
-          <div
-            ref={menuRef}
-            className={clsx(
-              'absolute inset-x-2 top-full origin-top transition-all duration-200 ease-in-out @4xl:inset-x-0',
-              navOpen
-                ? 'scale-100 opacity-100'
-                : 'pointer-events-none scale-[0.98] select-none opacity-0'
-            )}
-          >
+            {/* Menu Dropdown */}
             <div
+              ref={menuRef}
               className={clsx(
-                'max-h-96 translate-y-1 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5'
+                'absolute inset-x-2 top-full origin-top transition-all duration-200 ease-in-out @4xl:inset-x-0',
+                navOpen
+                  ? 'scale-100 opacity-100'
+                  : 'pointer-events-none scale-[0.98] select-none opacity-0'
               )}
             >
-              <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
-                {/* Mobile Dropdown Links */}
-                {links.map((item, i) => (
-                  <ul key={i} className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5">
-                    {item.label !== '' && (
-                      <li>
-                        {item.href !== '' ? (
-                          <Link
-                            href={item.href}
-                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                            tabIndex={navOpen ? 0 : -1}
-                          >
-                            {item.label}
-                          </Link>
-                        ) : (
-                          <span
-                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                          >
-                            {item.label}
-                          </span>
-                        )}
-                      </li>
-                    )}
-                    {item.groups
-                      ?.flatMap(group => group.links)
-                      .map((link, j) => (
-                        <li key={j}>
-                          <Link
-                            href={link.href}
-                            className="block rounded-lg px-3 py-2 text-sm font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
-                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
-                        @4xl:py-4"
-                            tabIndex={navOpen ? 0 : -1}
-                          >
-                            {link.label}
-                          </Link>
-                        </li>
-                      ))}
-                  </ul>
-                ))}
-              </div>
-              <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-4">
-                {/* Desktop Dropdown Links */}
-                {selectedCategory !== null &&
-                  links[selectedCategory]?.groups?.map((group, columnIndex) => (
-                    <ul key={columnIndex} className="flex flex-col gap-1 p-5">
-                      {/* Second Level Links */}
-                      {group.label != null && group.label !== '' && (
+              <div
+                className={clsx(
+                  'max-h-96 translate-y-1 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5'
+                )}
+              >
+                <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
+                  {/* Mobile Dropdown Links */}
+                  {links.map((item, i) => (
+                    <ul key={i} className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5">
+                      {item.label !== '' && (
                         <li>
-                          {group.href != null && group.href !== '' ? (
+                          {item.href !== '' ? (
                             <Link
-                              href={group.href}
-                              className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                              href={item.href}
+                              className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                               tabIndex={navOpen ? 0 : -1}
-                              ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
                             >
-                              {group.label}
+                              {item.label}
                             </Link>
                           ) : (
                             <span
-                              className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                              ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                              className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                             >
-                              {group.label}
+                              {item.label}
                             </span>
                           )}
                         </li>
                       )}
-                      {group.links.map((link, idx) => (
-                        // Third Level Links
-                        <li key={idx}>
-                          <Link
-                            href={link.href}
-                            className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
-                            tabIndex={navOpen ? 0 : -1}
-                          >
-                            {link.label}
-                          </Link>
-                        </li>
-                      ))}
+                      {item.groups
+                        ?.flatMap(group => group.links)
+                        .map((link, j) => (
+                          <li key={j}>
+                            <Link
+                              href={link.href}
+                              className="block rounded-lg px-3 py-2 text-sm font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
+                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
+                        @4xl:py-4"
+                              tabIndex={navOpen ? 0 : -1}
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
                     </ul>
                   ))}
+                </div>
+                <div className="hidden w-full divide-x divide-contrast-100 @4xl:grid @4xl:grid-cols-4">
+                  {/* Desktop Dropdown Links */}
+                  {selectedCategory !== null &&
+                    links[selectedCategory]?.groups?.map((group, columnIndex) => (
+                      <ul key={columnIndex} className="flex flex-col gap-1 p-5">
+                        {/* Second Level Links */}
+                        {group.label != null && group.label !== '' && (
+                          <li>
+                            {group.href != null && group.href !== '' ? (
+                              <Link
+                                href={group.href}
+                                className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                                tabIndex={navOpen ? 0 : -1}
+                                ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                              >
+                                {group.label}
+                              </Link>
+                            ) : (
+                              <span
+                                className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                                ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
+                              >
+                                {group.label}
+                              </span>
+                            )}
+                          </li>
+                        )}
+                        {group.links.map((link, idx) => (
+                          // Third Level Links
+                          <li key={idx}>
+                            <Link
+                              href={link.href}
+                              className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                              tabIndex={navOpen ? 0 : -1}
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ))}
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
-      </div>
-    </div>
+          </nav>
+        </Popover.Anchor>
+      </Popover.Root>
+    </NavigationMenu.Root>
   )
 })

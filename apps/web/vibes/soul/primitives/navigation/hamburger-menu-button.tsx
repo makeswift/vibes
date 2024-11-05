@@ -6,11 +6,7 @@ export interface HamburgerMenuButtonProps {
   searchOpen: boolean
 }
 
-export const HamburgerMenuButton = function HamburgerMenuButton({
-  navOpen,
-  setNavOpen,
-  searchOpen,
-}: HamburgerMenuButtonProps) {
+export function HamburgerMenuButton({ navOpen, setNavOpen, searchOpen }: HamburgerMenuButtonProps) {
   return (
     <button
       onClick={() => setNavOpen(!navOpen)}
