@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
 
 import ChevronDown12 from '@/icons/generated/ChevronDown12'
 
 import { Button } from '../ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
 import { Chapter } from './navigation'
 
 type ComingSoonChapter = Pick<
@@ -86,6 +87,9 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
           </Button>
         </SheetTrigger>
         <SheetContent side="top" className="z-20 focus:outline-none">
+          <VisuallyHidden.Root>
+            <SheetTitle>VIBES</SheetTitle>
+          </VisuallyHidden.Root>
           <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-8 xl:container md:grid-cols-2 md:gap-y-10 lg:gap-x-8 lg:py-2 xl:px-8 2xl:grid-cols-3">
             {Object.values(allChapters).map(chapter => (
               <div key={chapter.slug}>
