@@ -3,31 +3,32 @@ import * as React from 'react'
 
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import clsx from 'clsx'
+import { X } from 'lucide-react'
 
 import { ErrorMessage } from '@/vibes/soul/form/error-message'
 import { Label } from '@/vibes/soul/form/label'
 
-interface SwatchColorOption {
-  value: string
-  label: string
-  color: string
-  disabled?: boolean
-}
+type SwatchOption =
+  | {
+      type: 'color'
+      value: string
+      label: string
+      color: string
+      disabled?: boolean
+    }
+  | {
+      type: 'image'
+      value: string
+      label: string
+      image: { src: string; alt: string }
+      disabled?: boolean
+    }
 
-interface SwatchImageOption {
-  value: string
-  label: string
-  image: { src: string }
-  disabled?: boolean
-}
-
-type Option = SwatchColorOption | SwatchImageOption
-
-export const SwatchPicker = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
+export const SwatchRadioGroup = React.forwardRef<
+  React.ComponentRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & {
     label?: string
-    options: Option[]
+    options: SwatchOption[]
     errors?: string[]
   }
 >(({ id, label, options, errors, className, ...rest }, ref) => {
@@ -42,22 +43,25 @@ export const SwatchPicker = React.forwardRef<
             aria-label={option.label}
             disabled={option.disabled}
             className={clsx(
-              'box-content h-10 w-10 rounded-full border p-1 transition-colors hover:border-contrast-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-20 disabled:hover:border-transparent data-[state=checked]:border-foreground',
+              'group relative box-content h-8 w-8 rounded-full border p-0.5 transition-colors hover:border-contrast-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:hover:border-transparent data-[disabled]:pointer-events-none data-[state=checked]:border-foreground [&:disabled>.disabled-icon]:grid',
               errors && errors.length > 0
                 ? 'border-error disabled:border-transparent'
                 : 'border-transparent'
             )}
           >
-            {'color' in option ? (
+            {option.type === 'color' ? (
               <span
-                className="block h-10 w-10 rounded-full border border-foreground/10"
+                className="block size-full rounded-full border border-foreground/10 group-disabled:opacity-20"
                 style={{ backgroundColor: option.color }}
               />
             ) : (
               <span className="relative block h-10 w-10 rounded-full border border-foreground/10">
-                <Image src={option.image.src} alt={option.label} height={40} width={40} />
+                <Image src={option.image.src} alt={option.image.alt} height={40} width={40} />
               </span>
             )}
+            <div className="disabled-icon absolute inset-0 hidden place-content-center text-foreground">
+              <X size={16} strokeWidth={1.5} />
+            </div>
           </RadioGroupPrimitive.Item>
         ))}
       </RadioGroupPrimitive.Root>
@@ -66,4 +70,4 @@ export const SwatchPicker = React.forwardRef<
   )
 })
 
-SwatchPicker.displayName = 'SwatchPicker'
+SwatchRadioGroup.displayName = 'SwatchRadioGroup'
