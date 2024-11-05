@@ -87,6 +87,7 @@ export const Navigation = forwardRef(function Navigation(
   const menuTriggerRef = useRef<HTMLAnchorElement | null>(null)
   const firstCategoryLinkRef = useRef<HTMLAnchorElement>(null)
   const [searchResults, setSearchResults] = useState<SearchResult[] | null>(null)
+  const [scrolled, setScrolled] = useState(false)
   const [term, setTerm] = useState('')
   const [searchPending, setSearchPending] = useState(false)
 
@@ -128,11 +129,11 @@ export const Navigation = forwardRef(function Navigation(
     }
   }, [searchRef])
 
-  useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus()
-    }
-  }, [searchOpen])
+  // useEffect(() => {
+  //   if (searchOpen && searchInputRef.current) {
+  //     searchInputRef.current.focus()
+  //   }
+  // }, [searchOpen])
 
   useEffect(() => {
     // TODO: trap focus in category menu when it's open
@@ -150,6 +151,21 @@ export const Navigation = forwardRef(function Navigation(
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [menuRef])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set scrolled state to true if the scroll position is beyond 0px
+      setScrolled(window.scrollY > 0)
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll)
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const router = useRouter()
 
@@ -204,11 +220,13 @@ export const Navigation = forwardRef(function Navigation(
       <div
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className="relative mx-auto w-full max-w-screen-2xl text-foreground @4xl:py-2"
+        className="relative mx-auto w-full max-w-screen-2xl px-0 text-foreground @4xl:px-2 @4xl:py-2"
       >
         <nav
-          className="relative flex h-14 items-center bg-background pl-2 pr-2 
-          @4xl:rounded-2xl @4xl:pl-5 @4xl:pr-2.5"
+          className={clsx(
+            'relative flex h-14 items-center bg-background pl-2 pr-2 shadow-xl transition-all duration-300 @4xl:rounded-2xl @4xl:pl-5 @4xl:pr-2.5',
+            scrolled ? 'shadow-foreground/10' : 'shadow-transparent'
+          )}
         >
           {/* Logo */}
           <div className="flex flex-1 items-center">
@@ -220,7 +238,7 @@ export const Navigation = forwardRef(function Navigation(
 
             <Link
               href="/"
-              className="relative rounded-xl outline-0 ring-primary ring-offset-4 focus-visible:ring-2"
+              className="relative rounded outline-0 ring-primary ring-offset-4 focus-visible:ring-2"
             >
               {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
                 <Image
@@ -279,7 +297,7 @@ export const Navigation = forwardRef(function Navigation(
               className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
               onClick={() => {
                 setNavOpen(false)
-                setSearchOpen(!searchOpen)
+                setSearchOpen(prevState => !prevState)
               }}
             >
               <Search strokeWidth={1} size={20} />
@@ -319,7 +337,7 @@ export const Navigation = forwardRef(function Navigation(
                 <DropdownMenuPortal>
                   <DropdownMenuContent
                     align="end"
-                    sideOffset={24}
+                    sideOffset={scrolled ? 16 : 24}
                     className="z-50 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-xl shadow-foreground/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
                   >
                     {locales.map(({ id, language }) => (
@@ -348,7 +366,8 @@ export const Navigation = forwardRef(function Navigation(
           {/* Search Dropdown */}
           <div
             className={clsx(
-              'absolute inset-x-2 top-full origin-top translate-y-4 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10 transition-all duration-200 ease-in-out @4xl:inset-x-0',
+              'absolute inset-x-2 top-full origin-top overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10 transition-all duration-200 ease-in-out @4xl:inset-x-0',
+              scrolled ? 'translate-y-2' : 'translate-y-2 @4xl:translate-y-4',
               searchOpen
                 ? 'scale-100 opacity-100'
                 : 'pointer-events-none scale-[0.98] select-none opacity-0'
@@ -357,7 +376,7 @@ export const Navigation = forwardRef(function Navigation(
           >
             <form
               onSubmit={handleSearch}
-              className="flex items-center gap-3 px-3 py-3 @xl:px-5 @xl:py-4"
+              className="flex items-center gap-3 px-3 py-3 @4xl:px-5 @4xl:py-4"
             >
               <SearchIcon
                 strokeWidth={1}
@@ -398,17 +417,22 @@ export const Navigation = forwardRef(function Navigation(
           <div
             ref={menuRef}
             className={clsx(
-              'absolute inset-x-2 top-full origin-top translate-y-2 pt-2 transition-all duration-200 ease-in-out @4xl:inset-x-0',
+              'absolute inset-x-2 top-full origin-top transition-all duration-200 ease-in-out @4xl:inset-x-0',
               navOpen
                 ? 'scale-100 opacity-100'
                 : 'pointer-events-none scale-[0.98] select-none opacity-0'
             )}
           >
-            <div className="max-h-96 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10">
+            <div
+              className={clsx(
+                'max-h-96 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10',
+                scrolled ? 'translate-y-2' : 'translate-y-2 @4xl:translate-y-4'
+              )}
+            >
               <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
                 {/* Mobile Dropdown Links */}
                 {links.map((item, i) => (
-                  <ul key={i} className="flex flex-col gap-1 p-3 @4xl:gap-2 @4xl:p-5">
+                  <ul key={i} className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5">
                     {item.label !== '' && (
                       <li>
                         {item.href !== '' ? (
@@ -436,7 +460,7 @@ export const Navigation = forwardRef(function Navigation(
                         <li key={j}>
                           <Link
                             href={link.href}
-                            className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
+                            className="block rounded-lg px-3 py-2 text-sm font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
                         hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
                         @4xl:py-4"
                             tabIndex={navOpen ? 0 : -1}
