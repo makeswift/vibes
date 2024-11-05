@@ -21,7 +21,7 @@ export function CheckoutButton({
 
   return (
     <form action={formAction}>
-      <Button className="mt-10 w-full" type="submit" disabled={isPending} loading={isPending}>
+      <Button className="mt-5 w-full" type="submit" disabled={isPending} loading={isPending}>
         {label}
       </Button>
     </form>

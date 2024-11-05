@@ -220,12 +220,14 @@ export const Navigation = forwardRef(function Navigation(
       <div
         ref={ref}
         onMouseLeave={() => setNavOpen(false)}
-        className="relative mx-auto w-full max-w-screen-2xl px-0 text-foreground @4xl:px-2 @4xl:py-2"
+        className="relative mx-auto w-full max-w-screen-2xl px-0 text-foreground @4xl:px-2 @4xl:pt-2"
       >
         <nav
           className={clsx(
-            'relative flex h-14 items-center bg-background pl-2 pr-2 shadow-xl transition-all duration-300 @4xl:rounded-2xl @4xl:pl-5 @4xl:pr-2.5',
-            scrolled ? 'shadow-foreground/10' : 'shadow-transparent'
+            'relative flex h-14 items-center bg-background pl-3 pr-2 shadow-xl ring-1 transition-all duration-300 @4xl:rounded-2xl @4xl:pl-6 @4xl:pr-2.5',
+            scrolled
+              ? 'shadow-foreground/5 ring-foreground/5'
+              : 'shadow-transparent ring-transparent'
           )}
         >
           {/* Logo */}
@@ -366,8 +368,7 @@ export const Navigation = forwardRef(function Navigation(
           {/* Search Dropdown */}
           <div
             className={clsx(
-              'absolute inset-x-2 top-full origin-top overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10 transition-all duration-200 ease-in-out @4xl:inset-x-0',
-              scrolled ? 'translate-y-2' : 'translate-y-2 @4xl:translate-y-4',
+              'absolute inset-x-2 top-full origin-top translate-y-1 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5 transition-all duration-200 ease-in-out @4xl:inset-x-0',
               searchOpen
                 ? 'scale-100 opacity-100'
                 : 'pointer-events-none scale-[0.98] select-none opacity-0'
@@ -425,8 +426,7 @@ export const Navigation = forwardRef(function Navigation(
           >
             <div
               className={clsx(
-                'max-h-96 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/10',
-                scrolled ? 'translate-y-2' : 'translate-y-2 @4xl:translate-y-4'
+                'max-h-96 translate-y-1 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5'
               )}
             >
               <div className="flex flex-col divide-y divide-contrast-100 @4xl:hidden">
