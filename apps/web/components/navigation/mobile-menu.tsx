@@ -1,11 +1,10 @@
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import clsx from 'clsx'
-import { Domain } from 'domain'
 
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
 import { Chapter } from './navigation'
 import { PageLink } from './page-link'
 
@@ -50,6 +49,9 @@ export function MobileMenu({ chapter }: Props) {
         </button>
       </SheetTrigger>
       <SheetContent side="left" className="w-full md:w-72">
+        <VisuallyHidden.Root>
+          <SheetTitle>Groups</SheetTitle>
+        </VisuallyHidden.Root>
         <div className="space-y-4 text-foreground">
           {chapter?.groups.map(group => (
             <div key={group.title}>
