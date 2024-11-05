@@ -51,6 +51,7 @@ interface Props {
   searchHref: string
   searchParamName?: string
   searchAction?: (term: string) => Promise<SearchResult[]>
+  searchInputPlaceholder?: string
   searchCtaLabel?: string
   emptySearchTitleLabel?: string
   emptySearchSubtitleLabel?: string
@@ -68,6 +69,7 @@ export const Navigation = forwardRef(function Navigation(
     searchHref,
     searchParamName = 'term',
     searchAction,
+    searchInputPlaceholder = 'Search Products',
     searchCtaLabel,
     emptySearchTitleLabel,
     emptySearchSubtitleLabel,
@@ -218,11 +220,11 @@ export const Navigation = forwardRef(function Navigation(
   return (
     <div {...rest} className="sticky top-0 z-30 w-full @container">
       <div
-        ref={ref}
         onMouseLeave={() => setNavOpen(false)}
         className="relative mx-auto w-full max-w-screen-2xl px-0 text-foreground @4xl:px-2 @4xl:pt-2"
       >
         <nav
+          ref={ref}
           className={clsx(
             'relative flex h-14 items-center bg-background pl-3 pr-2 shadow-xl ring-1 transition-[box-shadow] duration-300 @4xl:rounded-2xl @4xl:pl-6 @4xl:pr-2.5',
             scrolled
@@ -388,7 +390,7 @@ export const Navigation = forwardRef(function Navigation(
                 ref={searchInputRef}
                 name="searchTerm"
                 type="text"
-                placeholder="Search Products"
+                placeholder={searchInputPlaceholder}
                 className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
                 onChange={handleTermChange}
               />
