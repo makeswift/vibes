@@ -224,7 +224,7 @@ export const Navigation = forwardRef(function Navigation(
       >
         <nav
           className={clsx(
-            'relative flex h-14 items-center bg-background pl-3 pr-2 shadow-xl ring-1 transition-all duration-300 @4xl:rounded-2xl @4xl:pl-6 @4xl:pr-2.5',
+            'relative flex h-14 items-center bg-background pl-3 pr-2 shadow-xl ring-1 transition-[box-shadow] duration-300 @4xl:rounded-2xl @4xl:pl-6 @4xl:pr-2.5',
             scrolled
               ? 'shadow-foreground/5 ring-foreground/5'
               : 'shadow-transparent ring-transparent'
