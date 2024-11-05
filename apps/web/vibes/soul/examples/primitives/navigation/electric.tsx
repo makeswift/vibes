@@ -167,7 +167,7 @@ export const logo = 'SOUL'
 
 export default function Preview() {
   return (
-    <div className="relative min-h-48">
+    <div className="relative min-h-screen bg-contrast-100 p-4">
       <Navigation
         links={navigationLinks}
         logo={logo}
