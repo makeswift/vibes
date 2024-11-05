@@ -168,16 +168,11 @@ function CartInner({
         <div className="w-full">
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             {title}
-<<<<<<< HEAD
             <span className="ml-4 text-contrast-200">{optimisticQuantity}</span>
-=======
-            {totalQuantity && <span className="ml-4 text-contrast-200">{totalQuantity}</span>}
->>>>>>> 4d9457a6 (fix: revert cart section changes)
           </h1>
 
           {/* Cart Items */}
           <ul className="flex flex-col gap-5">
-<<<<<<< HEAD
             {optimisticLineItems.map(lineItem => (
               <li
                 className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
@@ -216,65 +211,6 @@ function CartInner({
           </ul>
         </div>
 
-=======
-            {resolvedLineItems.map(
-              ({ id, title: lineItemTitle, image, price, subtitle, quantity }) => (
-                <li
-                  className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
-                  key={id}
-                >
-                  <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36">
-                    <Image
-                      fill
-                      src={image.src}
-                      alt={image.alt}
-                      sizes="(max-width: 400px) 100vw, 144px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-grow flex-wrap justify-between gap-y-2">
-                    <div className="flex flex-col @xl:w-1/2 @xl:pr-4">
-                      <span className="font-medium">{lineItemTitle}</span>
-                      <span className="text-contrast-300">{subtitle}</span>
-                    </div>
-                    <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
-                      <span className="font-medium @xl:ml-auto">{price}</span>
-
-                      {/* Counter */}
-                      <div className="flex items-center rounded-lg border">
-                        <DecrementButton
-                          id={id}
-                          quantity={quantity}
-                          action={updateLineItemQuantityAction}
-                          ariaLabel={decrementAriaLabel}
-                        />
-                        <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
-                          {quantity}
-                        </span>
-                        <LineItemQuantityIncrementButton
-                          id={id}
-                          quantity={quantity}
-                          action={updateLineItemQuantityAction}
-                          ariaLabel={incrementAriaLabel}
-                        />
-                      </div>
-
-                      {/* Remove Line Item Button */}
-                      <RemoveButton
-                        id={id}
-                        action={removeLineItemAction}
-                        removeItemAriaLabel={removeItemAriaLabel}
-                        loadingAriaLabel={loadingAriaLabel}
-                      />
-                    </div>
-                  </div>
-                </li>
-              )
-            )}
-          </ul>
-        </div>
-
->>>>>>> 4d9457a6 (fix: revert cart section changes)
         {/* Summary Side */}
         <div className="@4xl:w-1/3">
           <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
@@ -312,13 +248,9 @@ function CartInner({
               </tfoot>
             )}
           </table>
-<<<<<<< HEAD
           <CheckoutButton disabled={isPending} className="mt-10 w-full" action={checkoutAction}>
             {summary.ctaLabel}
           </CheckoutButton>
-=======
-          <CheckoutButton label={summary.ctaLabel} action={redirectToCheckoutAction} />
->>>>>>> 4d9457a6 (fix: revert cart section changes)
         </div>
       </div>
     </div>
