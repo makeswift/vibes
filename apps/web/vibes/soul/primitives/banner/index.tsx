@@ -8,11 +8,12 @@ import { X } from 'lucide-react'
 type Props = {
   children: ReactNode
   hideDismiss?: boolean
+  onDismiss?: () => void
   className?: string
 }
 
 export const Banner = forwardRef<React.ComponentRef<'div'>, Props>(
-  ({ children, hideDismiss, className }, ref) => {
+  ({ children, hideDismiss, className, onDismiss }, ref) => {
     const [banner, setBanner] = useState({ dismissed: false, initialized: false })
 
     useEffect(() => {
@@ -23,7 +24,8 @@ export const Banner = forwardRef<React.ComponentRef<'div'>, Props>(
     const hideBanner = useCallback(() => {
       setBanner(prev => ({ ...prev, dismissed: true }))
       localStorage.setItem('hidden-banner', 'true')
-    }, [])
+      onDismiss?.()
+    }, [onDismiss])
 
     if (!banner.initialized) return null
 

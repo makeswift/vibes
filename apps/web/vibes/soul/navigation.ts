@@ -209,6 +209,12 @@ export const navigation = [
       },
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
       {
+        title: 'Header Section',
+        slug: 'header-section',
+        file: 'docs/header-section.mdx',
+        component: 'header-section',
+      },
+      {
         title: 'Icon Block',
         slug: 'icon-block',
         file: 'docs/icon-block.mdx',
