@@ -48,7 +48,7 @@ export function InlineEmailForm({
     <form {...getFormProps(form)} className={className} action={formAction}>
       <div
         className={clsx(
-          'relative mb-4 rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
+          'relative rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
           errors && errors.length ? 'border-error' : 'border-black'
         )}
       >

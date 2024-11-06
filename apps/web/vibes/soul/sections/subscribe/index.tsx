@@ -20,9 +20,9 @@ export function Subscribe({
 }) {
   return (
     <section className="bg-primary-shadow @container">
-      <div className="flex flex-col items-start @3xl:flex-row @3xl:items-stretch">
+      <div className="flex flex-col items-start @4xl:flex-row @4xl:items-stretch">
         {image && (
-          <div className="relative min-h-96 w-full bg-primary/10 @3xl:flex-1">
+          <div className="relative min-h-96 w-full bg-primary/10 @4xl:flex-1">
             <Image
               src={image.src}
               alt={image.alt}
@@ -33,17 +33,17 @@ export function Subscribe({
           </div>
         )}
 
-        <div className="flex-1">
+        <div className="w-full flex-1">
           <div
             className={clsx(
-              'flex w-full flex-col gap-10 p-6 @3xl:gap-16 @3xl:p-20',
+              'flex w-full flex-col gap-10 px-4 py-10 @xl:px-6 @xl:py-14 @4xl:gap-16 @4xl:px-8 @4xl:py-20',
               image != null
-                ? '@3xl:max-w-3xl'
-                : 'mx-auto max-w-screen-2xl @3xl:flex-row @3xl:items-center'
+                ? '@4xl:max-w-4xl'
+                : 'mx-auto max-w-screen-2xl @4xl:flex-row @4xl:items-center'
             )}
           >
             <div className="flex-1">
-              <h2 className="mb-4 font-heading text-4xl font-medium leading-none text-primary-highlight">
+              <h2 className="mb-4 font-heading text-2xl font-medium leading-none text-primary-highlight @xl:text-3xl @4xl:text-4xl">
                 {title}
               </h2>
               <p className="text-primary-highlight opacity-75">{description}</p>
