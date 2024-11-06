@@ -1,3 +1,5 @@
+import { locales } from '@/vibes/soul/data/locales'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury'
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
 import {
@@ -51,13 +53,6 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
-
 export default function Preview() {
   return (
     <>
@@ -72,7 +67,8 @@ export default function Preview() {
         cartHref="#"
         accountHref="#"
         locales={locales}
-        activeLocale="EN"
+        localeAction={localeAction}
+        activeLocaleId="US"
         searchHref="#"
       />
 

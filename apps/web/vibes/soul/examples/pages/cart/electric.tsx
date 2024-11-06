@@ -1,4 +1,6 @@
 import { getLineItems, getSubtotal } from '@/vibes/soul/data/line-items'
+import { locales } from '@/vibes/soul/data/locales'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { checkoutAction, lineItemAction } from '@/vibes/soul/examples/sections/cart/actions'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
@@ -47,13 +49,6 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
-
 export default async function Preview() {
   const lineItems = await getLineItems('Electric')
   const subtotal = await getSubtotal('Electric')
@@ -71,7 +66,8 @@ export default async function Preview() {
         cartHref="#"
         accountHref="#"
         locales={locales}
-        activeLocale="EN"
+        localeAction={localeAction}
+        activeLocaleId="US"
         searchHref="#"
       />
 

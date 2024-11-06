@@ -1,4 +1,6 @@
 import { getProducts } from '@/vibes/soul/data'
+import { locales } from '@/vibes/soul/data/locales'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm'
 import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/warm'
 import {
@@ -17,13 +19,6 @@ import { ProductDetail } from '@/vibes/soul/sections/product-detail'
 import { Reviews } from '@/vibes/soul/sections/reviews'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
-
 export default function Preview() {
   const featuredProducts = getProducts('Warm')
 
@@ -39,8 +34,9 @@ export default function Preview() {
           logo={logo}
           cartHref="#"
           accountHref="#"
-          activeLocale="EN"
+          activeLocaleId="US"
           locales={locales}
+          localeAction={localeAction}
           searchHref="#"
         />
 

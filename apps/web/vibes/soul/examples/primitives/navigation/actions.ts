@@ -18,49 +18,51 @@ export async function localeAction(
   return submission.reply()
 }
 
-export async function searchAction(
-  prevState: { searchResults: SearchResult[] | null; lastResult: SubmissionResult | null },
-  payload: FormData
-): Promise<{ searchResults: SearchResult[]; lastResult: SubmissionResult }> {
-  'use server'
+export function searchAction(brand: 'Electric' | 'Warm' | 'Luxury') {
+  return async function searchAction(
+    prevState: { searchResults: SearchResult[] | null; lastResult: SubmissionResult | null },
+    payload: FormData
+  ): Promise<{ searchResults: SearchResult[]; lastResult: SubmissionResult }> {
+    'use server'
 
-  const submission = parseWithZod(payload, { schema: searchSchema('query') })
+    const submission = parseWithZod(payload, { schema: searchSchema('query') })
 
-  if (submission.status !== 'success') {
+    if (submission.status !== 'success') {
+      return {
+        searchResults: [],
+        lastResult: submission.reply(),
+      }
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
     return {
-      searchResults: [],
+      searchResults: [
+        {
+          type: 'links',
+          title: 'Indoors',
+          links: [
+            { label: 'Desk Plants', href: '#' },
+            { label: 'Low Light Plants', href: '#' },
+            { label: 'Pet Friendly', href: '#' },
+          ].filter(() => Math.random() > 0.5),
+        },
+        {
+          type: 'links',
+          title: 'Outdoors',
+          links: [
+            { label: 'Small', href: '#' },
+            { label: 'Medium', href: '#' },
+            { label: 'Large', href: '#' },
+          ].filter(() => Math.random() > 0.5),
+        },
+        {
+          type: 'products',
+          title: 'Products',
+          products: getProducts(brand).filter(() => Math.random() > 0.5),
+        },
+      ],
       lastResult: submission.reply(),
     }
-  }
-
-  await new Promise(resolve => setTimeout(resolve, 1000))
-
-  return {
-    searchResults: [
-      {
-        type: 'links',
-        title: 'Indoors',
-        links: [
-          { label: 'Desk Plants', href: '#' },
-          { label: 'Low Light Plants', href: '#' },
-          { label: 'Pet Friendly', href: '#' },
-        ].filter(() => Math.random() > 0.5),
-      },
-      {
-        type: 'links',
-        title: 'Outdoors',
-        links: [
-          { label: 'Small', href: '#' },
-          { label: 'Medium', href: '#' },
-          { label: 'Large', href: '#' },
-        ].filter(() => Math.random() > 0.5),
-      },
-      {
-        type: 'products',
-        title: 'Products',
-        products: getProducts('Electric').filter(() => Math.random() > 0.5),
-      },
-    ],
-    lastResult: submission.reply(),
   }
 }
