@@ -33,7 +33,7 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
 
   const { preview, code, clipboard } =
     components.find(({ brandName }) => brandName === null || brandName === activeBrand?.name) ||
-    components[0]
+    components[0]!
 
   const content = (
     <Tabs

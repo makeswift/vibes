@@ -50,7 +50,7 @@ export function Header({ chapters, chapterSlug }: Props) {
         <nav className="hidden h-full gap-x-4 lg:flex">
           {chapter?.groups.map(group => (
             <GroupLink
-              key={group.pages[0].slug}
+              key={group.pages[0]!.slug}
               chapterSlug={chapterSlug}
               group={group}
               className="h-[calc(100%+1px)] place-content-center border-b-2 border-transparent"

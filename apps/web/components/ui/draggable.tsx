@@ -20,13 +20,15 @@ interface Props extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {
   children: (state: { active: boolean; hover: boolean }) => ReactNode
 }
 
+type Position = [number, number]
+
 export default function Draggable({ className, children, style, ...rest }: Props) {
   const { stack, setStack } = useDraggable()
   const [zIndex, setZIndex] = useState(stack)
   const prevZIndex = useRef(0)
-  const pointerStart = useRef([0, 0])
-  const positionStart = useRef([0, 0])
-  const [position, setPosition] = useState([0, 0])
+  const pointerStart = useRef<Position>([0, 0])
+  const positionStart = useRef<Position>([0, 0])
+  const [position, setPosition] = useState<Position>([0, 0])
   const [active, setActive] = useState(false)
   const [hover, setHover] = useState(false)
   const onPointerMove = useCallback((e: PointerEvent) => {
@@ -37,8 +39,8 @@ export default function Draggable({ className, children, style, ...rest }: Props
   }, [])
   const onTouchMove = useCallback((e: TouchEvent) => {
     setPosition([
-      positionStart.current[0] + e.touches[0].clientX - pointerStart.current[0],
-      positionStart.current[1] + e.touches[0].clientY - pointerStart.current[1],
+      positionStart.current[0] + e.touches[0]!.clientX - pointerStart.current[0],
+      positionStart.current[1] + e.touches[0]!.clientY - pointerStart.current[1],
     ])
   }, [])
 
@@ -79,7 +81,7 @@ export default function Draggable({ className, children, style, ...rest }: Props
         })
       }}
       onTouchStart={e => {
-        pointerStart.current = [e.touches[0].clientX, e.touches[0].clientY]
+        pointerStart.current = [e.touches[0]!.clientX, e.touches[0]!.clientY]
         positionStart.current = position
 
         setActive(true)

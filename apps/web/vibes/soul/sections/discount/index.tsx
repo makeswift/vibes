@@ -37,7 +37,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
   useEffect(() => {
     const shuffled = shuffleCodes(
       Array<DiscountType>(10)
-        .fill(discounts[0])
+        .fill(discounts[0]!)
         .flatMap(() => discounts)
     )
     setShuffledCodes(shuffled)
@@ -49,7 +49,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(shuffledCodes[shuffledCodes.length - 2].code)
+      await navigator.clipboard.writeText(shuffledCodes[shuffledCodes.length - 2]!.code)
       setCopied(true)
       setTimeout(() => {
         setCopied(false)
