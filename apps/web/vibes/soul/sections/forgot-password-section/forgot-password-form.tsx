@@ -16,10 +16,15 @@ export type ForgotPasswordAction = Action<SubmissionResult | null, FormData>
 
 type Props = {
   action: ForgotPasswordAction
+  emailLabel?: string
   submitLabel?: string
 }
 
-export function ForgotPasswordForm({ action, submitLabel = 'Reset password' }: Props) {
+export function ForgotPasswordForm({
+  action,
+  emailLabel = 'Email',
+  submitLabel = 'Reset password',
+}: Props) {
   const [lastResult, formAction, isPending] = useActionState(action, null)
   const [form, fields] = useForm({
     constraint: getZodConstraint(schema),
@@ -40,7 +45,7 @@ export function ForgotPasswordForm({ action, submitLabel = 'Reset password' }: P
         {...getInputProps(fields.email, { type: 'text' })}
         key={fields.email.id}
         errors={fields.email.errors}
-        label="Email"
+        label={emailLabel}
       />
       <Button type="submit" variant="secondary" className="mt-auto w-full" loading={isPending}>
         {submitLabel}

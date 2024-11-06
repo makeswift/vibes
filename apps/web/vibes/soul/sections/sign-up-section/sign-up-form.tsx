@@ -16,10 +16,23 @@ export type SignUpAction = Action<SubmissionResult | null, FormData>
 
 type Props = {
   action: SignUpAction
+  firstNameLabel?: string
+  lastNameLabel?: string
+  emailLabel?: string
+  passwordLabel?: string
+  confirmPasswordLabel?: string
   submitLabel?: string
 }
 
-export function SignUpForm({ action, submitLabel = 'Sign up' }: Props) {
+export function SignUpForm({
+  action,
+  firstNameLabel = 'First name',
+  lastNameLabel = 'Last name',
+  emailLabel = 'Email',
+  passwordLabel = 'Password',
+  confirmPasswordLabel = 'Confirm password',
+  submitLabel = 'Sign up',
+}: Props) {
   const [lastResult, formAction, isPending] = useActionState(action, null)
   const [form, fields] = useForm({
     constraint: getZodConstraint(schema),
@@ -41,33 +54,33 @@ export function SignUpForm({ action, submitLabel = 'Sign up' }: Props) {
           {...getInputProps(fields.firstName, { type: 'text' })}
           key={fields.firstName.id}
           errors={fields.firstName.errors}
-          label="First name"
+          label={firstNameLabel}
         />
         <Input
           {...getInputProps(fields.lastName, { type: 'text' })}
           key={fields.lastName.id}
           errors={fields.lastName.errors}
-          label="Last name"
+          label={lastNameLabel}
         />
       </div>
       <Input
         {...getInputProps(fields.email, { type: 'text' })}
         key={fields.email.id}
         errors={fields.email.errors}
-        label="Email"
+        label={emailLabel}
       />
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
         key={fields.password.id}
         errors={fields.password.errors}
-        label="Password"
+        label={passwordLabel}
       />
       <Input
         {...getInputProps(fields.confirmPassword, { type: 'password' })}
         key={fields.confirmPassword.id}
         errors={fields.confirmPassword.errors}
         className="mb-6"
-        label="Confirm password"
+        label={confirmPasswordLabel}
       />
       <Button type="submit" variant="secondary" className="mt-auto w-full" loading={isPending}>
         {submitLabel}
