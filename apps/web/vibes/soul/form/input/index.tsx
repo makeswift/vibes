@@ -29,6 +29,7 @@ export const Input = React.forwardRef<
         )}
         <input
           {...rest}
+          id={id}
           ref={ref}
           className={clsx(
             'placeholder-contrast-gray-500 w-full bg-transparent px-6 py-3 text-sm text-foreground [appearance:textfield] placeholder:font-normal focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',

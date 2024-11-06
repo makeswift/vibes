@@ -26,6 +26,7 @@ export const ButtonRadioGroup = React.forwardRef<
       <RadioGroupPrimitive.Root
         {...rest}
         ref={ref}
+        id={id}
         aria-label={label}
         className="flex flex-wrap gap-2"
       >
