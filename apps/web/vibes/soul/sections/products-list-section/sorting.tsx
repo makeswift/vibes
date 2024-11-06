@@ -32,6 +32,7 @@ function SortingInner({ label = 'Sort', options, paramName = 'sort', defaultValu
 
   return (
     <Select
+      name={paramName}
       placeholder={label}
       variant="round"
       options={resolved}
@@ -42,5 +43,5 @@ function SortingInner({ label = 'Sort', options, paramName = 'sort', defaultValu
 }
 
 function SortingSkeleton({ placeholder }: { placeholder: string }) {
-  return <Select placeholder={placeholder} disabled options={[]} variant="round" />
+  return <Select name="skeleton" placeholder={placeholder} disabled options={[]} variant="round" />
 }
