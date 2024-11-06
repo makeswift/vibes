@@ -8,9 +8,10 @@ import useEmblaCarousel from 'embla-carousel-react'
 
 type Props = {
   images: { alt: string; src: string }[]
+  className?: string
 }
 
-export const ProductGallery = ({ images }: Props) => {
+export const ProductGallery = ({ images, className }: Props) => {
   const [previewImage, setPreviewImage] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel()
 
@@ -32,14 +33,11 @@ export const ProductGallery = ({ images }: Props) => {
   }
 
   return (
-    <div className="relative mt-[60px] flex h-96 w-full items-center overflow-hidden bg-contrast-100 @2xl:h-[550px] @4xl:mt-0 @4xl:h-full">
-      <div className="my-auto h-full max-h-[800px] w-full overflow-hidden" ref={emblaRef}>
-        <div className="flex h-full w-full">
+    <div className={clsx('@container', className)}>
+      <div className="w-full overflow-hidden rounded-xl @xl:rounded-2xl" ref={emblaRef}>
+        <div className="flex">
           {images.map((image, idx) => (
-            <div
-              key={idx}
-              className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full items-center"
-            >
+            <div key={idx} className="relative aspect-[4/5] w-full shrink-0 grow-0 basis-full ">
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -53,24 +51,20 @@ export const ProductGallery = ({ images }: Props) => {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 flex max-w-full -translate-x-1/2 gap-1.5 overflow-x-auto px-10 @3xl:gap-3 @4xl:bottom-10">
+      <div className="mt-2 flex max-w-full justify-center gap-2 overflow-x-auto @md:mt-4">
         {images.map((image, index) => (
           <button
             key={index}
             aria-label={`View image number ${index + 1}`}
             className={clsx(
-              'h-10 w-10 shrink-0 overflow-hidden rounded-lg border transition-colors duration-300 @4xl:h-14 @4xl:w-14',
-              index === previewImage ? 'border-foreground' : 'border-transparent'
+              'relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border transition-all duration-300 hover:opacity-100 @md:h-16 @md:w-16',
+              index === previewImage
+                ? 'border-foreground opacity-100'
+                : 'border-transparent opacity-50'
             )}
             onClick={() => selectImage(index)}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              height={256}
-              width={256}
-              className="h-full w-full bg-contrast-100 object-cover"
-            />
+            <Image src={image.src} alt={image.alt} fill className="bg-contrast-100 object-cover" />
           </button>
         ))}
       </div>
