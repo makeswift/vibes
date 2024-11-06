@@ -1,6 +1,7 @@
-import { getProducts } from '@/vibes/soul/data'
+import { locales } from '@/vibes/soul/data/locales'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
-import { SearchResult } from '@/vibes/soul/primitives/navigation/search-results'
+
+import { localeAction, searchAction } from './actions'
 
 export const navigationLinks = [
   {
@@ -72,81 +73,10 @@ export const navigationLinks = [
   },
 ]
 
-const searchAction = async () => {
-  'use server'
-
-  return new Promise<SearchResult[]>(res => {
-    setTimeout(() => {
-      res([
-        {
-          type: 'links',
-          title: 'Categories',
-          links: [
-            {
-              label: 'Sandals',
-              href: '#',
-            },
-            {
-              label: 'Flats',
-              href: '#',
-            },
-            {
-              label: 'Sneakers',
-              href: '#',
-            },
-            {
-              label: 'Loafers',
-              href: '#',
-            },
-          ],
-        },
-        {
-          type: 'links',
-          title: 'Collection',
-          links: [
-            {
-              label: 'Fall Drop One',
-              href: '#',
-            },
-            {
-              label: 'Travel Edit',
-              href: '#',
-            },
-            {
-              label: 'Ballet Everyday',
-              href: '#',
-            },
-            {
-              label: 'FRĒDA X WOLFSPOUT',
-              href: '#',
-            },
-            {
-              label: 'Loafer Shop',
-              href: '#',
-            },
-          ],
-        },
-        {
-          type: 'products',
-          title: 'Products',
-          products: getProducts('Warm'),
-        },
-      ])
-    }, 1000)
-  })
-}
-
 export const logo = {
   src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID',
   alt: 'Freda Salvador Logo',
 }
-
-export const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
 
 export default function Preview() {
   return (
@@ -156,10 +86,11 @@ export default function Preview() {
         logo={logo}
         cartHref="#"
         accountHref="#"
-        activeLocale="EN"
+        activeLocaleId="US"
         searchHref="#"
         locales={locales}
-        searchAction={searchAction}
+        localeAction={localeAction}
+        searchAction={searchAction('Warm')}
         searchCtaLabel="View all items"
       />
     </div>

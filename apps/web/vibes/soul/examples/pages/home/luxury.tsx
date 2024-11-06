@@ -1,4 +1,6 @@
+import { locales } from '@/vibes/soul/data/locales'
 import { cards } from '@/vibes/soul/examples/primitives/card-carousel/luxury'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury'
 import { feature } from '@/vibes/soul/examples/sections/feature/luxury'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/luxury'
@@ -57,13 +59,6 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
-
 export const featuredImageII: FeaturedImageProps = {
   title: 'Handmade in Spain',
   description:
@@ -88,7 +83,8 @@ export default function Preview() {
         cartHref="#"
         accountHref="#"
         locales={locales}
-        activeLocale="EN"
+        activeLocaleId="US"
+        localeAction={localeAction}
         searchHref="#"
       />
       <Slideshow slides={heroSlides} />

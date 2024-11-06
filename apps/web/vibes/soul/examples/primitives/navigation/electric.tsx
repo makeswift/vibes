@@ -1,3 +1,4 @@
+import { locales } from '@/vibes/soul/data/locales'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 
 import { localeAction, searchAction } from './actions'
@@ -104,13 +105,6 @@ export const navigationLinks = [
   },
 ]
 
-export const locales = [
-  { id: 'US', label: 'United States' },
-  { id: 'FR', label: 'France' },
-  { id: 'DE', label: 'Denmark' },
-  { id: 'IT', label: 'Italy' },
-]
-
 export const logo = 'SOUL'
 
 export default function Preview() {
@@ -124,7 +118,7 @@ export default function Preview() {
         activeLocaleId="US"
         searchHref="#"
         locales={locales}
-        searchAction={searchAction}
+        searchAction={searchAction('Electric')}
         localeAction={localeAction}
       />
     </div>
