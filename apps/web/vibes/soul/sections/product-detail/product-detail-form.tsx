@@ -71,7 +71,7 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
     <FormProvider context={form.context}>
       <form {...getFormProps(form)} action={formAction}>
         <input type="hidden" value={productId} name="id" />
-        <div className="space-y-8">
+        <div className="space-y-6">
           {fields.map(field => {
             return (
               <FormField
@@ -81,21 +81,23 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
               />
             )
           })}
-          <NumberInput
-            id={formFields.quantity.id}
-            name={formFields.quantity.name}
-            value={quantityControl.value}
-            onChange={e => quantityControl.change(e.currentTarget.value)}
-            onFocus={quantityControl.focus}
-            onBlur={quantityControl.blur}
-            label="Quantity"
-            min={1}
-            required
-          />
-          <Button size="medium" type="submit">
-            {ctaLabel}
-            <ArrowRight strokeWidth={1} size={20} />
-          </Button>
+          <div className="flex gap-x-3 pt-3">
+            <NumberInput
+              id={formFields.quantity.id}
+              name={formFields.quantity.name}
+              value={quantityControl.value}
+              onChange={e => quantityControl.change(e.currentTarget.value)}
+              onFocus={quantityControl.focus}
+              onBlur={quantityControl.blur}
+              label=""
+              min={1}
+              required
+            />
+            <Button size="medium" type="submit" className="w-auto @xl:w-56">
+              {ctaLabel}
+              <ArrowRight strokeWidth={1} size={20} />
+            </Button>
+          </div>
         </div>
       </form>
     </FormProvider>
