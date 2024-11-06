@@ -11,7 +11,6 @@ import { Minus, Plus, Trash2 } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 
-// import { CheckoutButton } from './redirect-to-checkout-button'
 import { schema } from './schema'
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
