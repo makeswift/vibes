@@ -2,15 +2,16 @@ import { Slideshow } from '@/vibes/soul/sections/slideshow'
 
 export const heroSlides = [
   {
-    title: 'Give',
+    title: 'Plants delivered to your door',
     image: {
       src: 'https://rstr.in/monogram/vibes/fzVuE9iZ4mI',
       alt: 'alt',
     },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
+    },
   },
   {
     title: 'Grow',
@@ -18,10 +19,11 @@ export const heroSlides = [
       src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk',
       alt: 'alt',
     },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
+    },
   },
   {
     title: 'Thrive',
@@ -29,10 +31,11 @@ export const heroSlides = [
       src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C',
       alt: 'alt',
     },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
+    },
   },
 ]
 
