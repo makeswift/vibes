@@ -3,16 +3,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import {
-  Ref,
-  forwardRef,
-  startTransition,
-  useActionState,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import { Ref, forwardRef, startTransition, useEffect, useMemo, useRef, useState } from 'react'
+import { useFormState as useActionState } from 'react-dom'
 
 import { SubmissionResult } from '@conform-to/react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
@@ -27,20 +19,23 @@ import { Button } from '@/vibes/soul/primitives/button'
 import { Price } from '../price-label'
 import { ProductCard } from '../product-card'
 
-type Link = {
+interface Link {
   label: string
   href: string
-  groups?: {
+  groups?: Array<{
     label?: string
     href?: string
-    links: {
+    links: Array<{
       label: string
       href: string
-    }[]
-  }[]
+    }>
+  }>
 }
 
-type Locale = { id: string; label: string }
+interface Locale {
+  id: string
+  label: string
+}
 
 type Action<State, Payload> = (
   state: Awaited<State>,
@@ -51,18 +46,18 @@ export type SearchResult =
   | {
       type: 'products'
       title: string
-      products: {
+      products: Array<{
         id: string
         title: string
         href: string
         price?: Price
         image?: { src: string; alt: string }
-      }[]
+      }>
     }
   | {
       type: 'links'
       title: string
-      links: { label: string; href: string }[]
+      links: Array<{ label: string; href: string }>
     }
 
 type LocaleAction = Action<SubmissionResult | null, FormData>
@@ -71,7 +66,7 @@ type SearchAction = Action<
   FormData
 >
 
-type Props = {
+interface Props {
   accountHref: string
   cartCount?: number
   cartHref: string
@@ -124,42 +119,38 @@ export const Navigation = forwardRef(function Navigation(
 
   return (
     <NavigationMenu.Root
-      ref={ref}
-      onValueChange={() => setIsSearchOpen(false)}
-      delayDuration={0}
       className="relative mx-auto w-full max-w-screen-2xl text-foreground @container"
+      delayDuration={0}
+      onValueChange={() => setIsSearchOpen(false)}
+      ref={ref}
     >
       <div className="flex h-14 items-center justify-between bg-background pl-3 pr-2 @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5">
         {/* Logo */}
-        <Popover.Root open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+        <Popover.Root onOpenChange={setIsMobileMenuOpen} open={isMobileMenuOpen}>
           <Popover.Anchor className="absolute left-0 right-0 top-full" />
           <Popover.Trigger asChild>
             <HamburgerMenuButton
               className="mr-3 @4xl:hidden"
-              open={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(prev => !prev)}
+              open={isMobileMenuOpen}
             />
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-8px)] w-[var(--radix-popper-anchor-width)] @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
               <div className="max-h-[inherit] divide-y divide-contrast-100 overflow-y-auto bg-background">
                 {links.map((item, i) => (
-                  <ul key={i} className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5">
+                  <ul className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5" key={i}>
                     {item.label !== '' && (
                       <li>
                         {item.href !== '' ? (
                           <Link
+                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                             href={item.href}
-                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                           >
                             {item.label}
                           </Link>
                         ) : (
-                          <span
-                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
-                          focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                          >
+                          <span className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4">
                             {item.label}
                           </span>
                         )}
@@ -170,10 +161,8 @@ export const Navigation = forwardRef(function Navigation(
                       .map((link, j) => (
                         <li key={j}>
                           <Link
+                            className="block rounded-lg px-3 py-2 text-sm font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
                             href={link.href}
-                            className="block rounded-lg px-3 py-2 text-sm font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
-                        hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
-                        @4xl:py-4"
                           >
                             {link.label}
                           </Link>
@@ -187,16 +176,16 @@ export const Navigation = forwardRef(function Navigation(
         </Popover.Root>
         <div className="flex flex-1 items-center self-stretch py-2">
           <Link
-            href={logoHref}
             className="relative flex size-full max-w-[80%] items-center outline-0 ring-primary ring-offset-4 focus-visible:ring-2 @4xl:max-w-[50%]"
+            href={logoHref}
           >
             {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
               <Image
-                src={logo.src}
-                fill
-                sizes="25vw"
                 alt={logo.alt}
                 className="object-contain object-left"
+                fill
+                sizes="25vw"
+                src={logo.src}
               />
             ) : (
               typeof logo === 'string' && (
@@ -214,9 +203,8 @@ export const Navigation = forwardRef(function Navigation(
             <NavigationMenu.Item key={i} value={i.toString()}>
               <NavigationMenu.Trigger asChild>
                 <Link
+                  className="mx-0.5 my-2.5 hidden items-center whitespace-nowrap rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
                   href={item.href}
-                  className="mx-0.5 my-2.5 hidden items-center whitespace-nowrap rounded-xl p-2.5 text-sm font-medium ring-primary transition-colors duration-200
-                  hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
                 >
                   {item.label}
                 </Link>
@@ -224,14 +212,14 @@ export const Navigation = forwardRef(function Navigation(
               <NavigationMenu.Content className="max-h-96 overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5">
                 <div className="grid w-full grid-cols-4 divide-x divide-contrast-100">
                   {item.groups?.map((group, columnIndex) => (
-                    <ul key={columnIndex} className="flex flex-col gap-1 p-5">
+                    <ul className="flex flex-col gap-1 p-5" key={columnIndex}>
                       {/* Second Level Links */}
                       {group.label != null && group.label !== '' && (
                         <li>
                           {group.href != null && group.href !== '' ? (
                             <Link
-                              href={group.href}
                               className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+                              href={group.href}
                             >
                               {group.label}
                             </Link>
@@ -246,8 +234,8 @@ export const Navigation = forwardRef(function Navigation(
                         // Third Level Links
                         <li key={idx}>
                           <Link
-                            href={link.href}
                             className="block rounded-lg px-3 py-2 font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                            href={link.href}
                           >
                             {link.label}
                           </Link>
@@ -263,30 +251,30 @@ export const Navigation = forwardRef(function Navigation(
 
         <div className="flex flex-1 items-center justify-end transition-colors duration-300">
           {searchAction && (
-            <Popover.Root open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+            <Popover.Root onOpenChange={setIsSearchOpen} open={isSearchOpen}>
               <Popover.Anchor className="absolute left-0 right-0 top-full" />
               <Popover.Trigger asChild>
                 <button
                   aria-label="Search"
                   className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
                   onPointerEnter={e => e.preventDefault()}
-                  onPointerMove={e => e.preventDefault()}
                   onPointerLeave={e => e.preventDefault()}
+                  onPointerMove={e => e.preventDefault()}
                 >
-                  <Search strokeWidth={1} size={20} />
+                  <Search size={20} strokeWidth={1} />
                 </button>
               </Popover.Trigger>
               <Popover.Portal>
                 <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-16px)] w-[var(--radix-popper-anchor-width)] py-2 @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
                   <div className="flex max-h-[inherit] flex-col rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5 transition-all duration-200 ease-in-out @4xl:inset-x-0">
                     <SearchForm
-                      searchHref={searchHref}
-                      searchParamName={searchParamName}
+                      emptySearchSubtitle={emptySearchSubtitle}
+                      emptySearchTitle={emptySearchTitle}
                       searchAction={searchAction}
                       searchCtaLabel={searchCtaLabel}
+                      searchHref={searchHref}
                       searchInputPlaceholder={searchInputPlaceholder}
-                      emptySearchTitle={emptySearchTitle}
-                      emptySearchSubtitle={emptySearchSubtitle}
+                      searchParamName={searchParamName}
                     />
                   </div>
                 </Popover.Content>
@@ -295,18 +283,18 @@ export const Navigation = forwardRef(function Navigation(
           )}
 
           <Link
-            href={accountHref}
             aria-label="Profile"
             className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+            href={accountHref}
           >
-            <User strokeWidth={1} size={20} />
+            <User size={20} strokeWidth={1} />
           </Link>
           <Link
-            href={cartHref}
             aria-label="Cart"
             className="relative rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+            href={cartHref}
           >
-            <ShoppingBag strokeWidth={1} size={20} />
+            <ShoppingBag size={20} strokeWidth={1} />
             {cartCount != null && cartCount > 0 && (
               <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
                 {cartCount}
@@ -316,7 +304,12 @@ export const Navigation = forwardRef(function Navigation(
 
           {/* Locale / Language Dropdown */}
           {locales && locales.length > 1 ? (
-            <LocaleForm action={localeAction} locales={locales} activeLocaleId={activeLocaleId} />
+            <LocaleForm
+              action={localeAction}
+              activeLocaleId={activeLocaleId}
+              // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+              locales={locales as [Locale, Locale, ...Locale[]]}
+            />
           ) : null}
         </div>
       </div>
@@ -371,7 +364,7 @@ function HamburgerMenuButton({
         >
           <div
             className={clsx(
-              'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500 ',
+              'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
               open ? 'rotate-45' : 'rotate-0'
             )}
           />
@@ -421,44 +414,46 @@ function SearchForm({
 
     startTransition(() => {
       const formData = new FormData()
+
       formData.append(searchParamName, debouncedQuery)
 
       formAction(formData)
     })
-  }, [searchParamName, debouncedQuery])
+  }, [searchParamName, debouncedQuery, formAction])
 
   return (
     <>
       <form action={searchHref} className="flex items-center gap-3 px-3 py-3 @4xl:px-5 @4xl:py-4">
         <SearchIcon
-          strokeWidth={1}
-          size={20}
           className="hidden shrink-0 text-contrast-500 @xl:block"
+          size={20}
+          strokeWidth={1}
         />
         <input
-          type="text"
-          name={searchParamName}
-          placeholder={searchInputPlaceholder}
           className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
-          value={query}
+          name={searchParamName}
           onChange={e => {
             setQuery(e.currentTarget.value)
             debouncedOnChange(e.currentTarget.value)
           }}
+          placeholder={searchInputPlaceholder}
+          type="text"
+          value={query}
         />
-        <Button type="submit" variant="secondary" size="icon" loading={isPending}>
-          <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
+        <Button loading={isPending} size="icon" type="submit" variant="secondary">
+          <ArrowRight aria-label="Submit" size={20} strokeWidth={1.5} />
         </Button>
       </form>
 
       {/* Search Results */}
       {searchResults && (
         <SearchResults
-          query={query}
-          searchResults={searchResults}
-          searchParamName={searchParamName}
-          emptySearchTitle={emptySearchTitle}
           emptySearchSubtitle={emptySearchSubtitle}
+          emptySearchTitle={emptySearchTitle}
+          query={query}
+          searchCtaLabel={searchCtaLabel}
+          searchParamName={searchParamName}
+          searchResults={searchResults}
           stale={isPending}
         />
       )}
@@ -502,49 +497,52 @@ function SearchResults({
       )}
     >
       {searchResults.map((result, index) => {
-        if (result.type === 'links') {
-          return (
-            <div
-              className="flex w-full flex-col gap-1 border-b border-contrast-100 p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r"
-              key={`result-${index}`}
-            >
-              <span className="mb-4 font-mono text-sm uppercase">{result.title}</span>
-              {result.links.map((link, i) => (
-                <Link
-                  key={i}
-                  href={link.href}
-                  className="block rounded-lg px-3 py-4 font-semibold text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          )
-        }
-
-        if (result.type === 'products') {
-          return (
-            <div className="flex w-full flex-col gap-5 p-5" key={`result-${index}`}>
-              <span className="font-mono text-sm uppercase">{result.title}</span>
-              <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
-                {result.products.map(product => (
-                  <ProductCard
-                    key={product.id}
-                    product={{
-                      id: product.id,
-                      title: product.title,
-                      href: product.href,
-                      price: product.price,
-                      image: product.image,
-                    }}
-                  />
+        switch (result.type) {
+          case 'links': {
+            return (
+              <div
+                className="flex w-full flex-col gap-1 border-b border-contrast-100 p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r"
+                key={`result-${index}`}
+              >
+                <span className="mb-4 font-mono text-sm uppercase">{result.title}</span>
+                {result.links.map((link, i) => (
+                  <Link
+                    className="block rounded-lg px-3 py-4 font-semibold text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                    href={link.href}
+                    key={i}
+                  >
+                    {link.label}
+                  </Link>
                 ))}
               </div>
-            </div>
-          )
-        }
+            )
+          }
 
-        return null
+          case 'products': {
+            return (
+              <div className="flex w-full flex-col gap-5 p-5" key={`result-${index}`}>
+                <span className="font-mono text-sm uppercase">{result.title}</span>
+                <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
+                  {result.products.map(product => (
+                    <ProductCard
+                      key={product.id}
+                      product={{
+                        id: product.id,
+                        title: product.title,
+                        href: product.href,
+                        price: product.price,
+                        image: product.image,
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )
+          }
+
+          default:
+            return null
+        }
       })}
     </div>
   )
@@ -557,9 +555,9 @@ function LocaleForm({
 }: {
   activeLocaleId?: string
   action: LocaleAction
-  locales: Locale[]
+  locales: [Locale, ...Locale[]]
 }) {
-  const [lastResult, formAction, isPending] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null)
   const activeLocale = locales.find(locale => locale.id === activeLocaleId)
 
   useEffect(() => {
@@ -575,13 +573,13 @@ function LocaleForm({
         )}
       >
         {activeLocale?.id ?? locales[0].id}
-        <ChevronDown strokeWidth={1.5} size={16} />
+        <ChevronDown size={16} strokeWidth={1.5} />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           align="end"
-          sideOffset={16}
           className="z-50 max-h-80 overflow-y-scroll rounded-xl bg-background p-2 shadow-xl shadow-foreground/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
+          sideOffset={16}
         >
           {locales.map(({ id, label }) => (
             <DropdownMenu.Item
@@ -592,6 +590,7 @@ function LocaleForm({
               )}
               key={id}
               onSelect={() => {
+                // eslint-disable-next-line @typescript-eslint/require-await
                 startTransition(async () => {
                   const formData = new FormData()
 
