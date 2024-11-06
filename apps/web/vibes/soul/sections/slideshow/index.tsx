@@ -125,30 +125,25 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
 
   return (
     <section
-      className={clsx(
-        'relative h-dvh max-h-[880px] overflow-hidden bg-primary-shadow @container',
-        className
-      )}
+      className={clsx('relative h-[80vh] overflow-hidden bg-primary-shadow @container', className)}
     >
       <div ref={emblaRef} className="h-full">
         <div className="flex h-full">
           {slides.map(({ title, description, image, cta }, idx) => {
             return (
               <div key={idx} className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full">
-                <div className="absolute bottom-0 left-1/2 z-10 w-full -translate-x-1/2 bg-gradient-to-t from-foreground to-transparent pb-5 pt-20 text-background">
-                  <div className="mx-auto max-w-screen-2xl px-4 pb-8">
-                    <h1 className="mb-2 font-heading text-5xl font-medium leading-none @2xl:text-8xl">
-                      {title}
-                    </h1>
-                    {description != null && description !== '' && (
-                      <p className="mb-4 max-w-xl">{description}</p>
-                    )}
-                    {cta != null && cta.href !== '' && cta.label !== '' && (
-                      <Button variant="tertiary" className="my-4">
-                        {cta.label}
-                      </Button>
-                    )}
-                  </div>
+                <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-screen-2xl -translate-x-1/2 bg-gradient-to-t from-foreground/80 to-transparent px-4 pb-16 pt-12 text-background @xl:px-6 @xl:pb-20 @xl:pt-16 @4xl:px-8 @4xl:pt-20">
+                  <h1 className="font-heading text-4xl font-medium leading-none @2xl:text-5xl @4xl:text-6xl">
+                    {title}
+                  </h1>
+                  {description != null && description !== '' && (
+                    <p className="mb-6 mt-2 max-w-xl text-lg text-background/80 @xl:mb-8 @xl:mt-3">
+                      {description}
+                    </p>
+                  )}
+                  {cta != null && cta.href !== '' && cta.label !== '' && (
+                    <Button variant="tertiary">{cta.label}</Button>
+                  )}
                 </div>
 
                 {image?.src != null && image.src !== '' && (
@@ -172,7 +167,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
       </div>
 
       {/* Controls */}
-      <div className="absolute bottom-6 left-1/2 flex w-full max-w-screen-2xl -translate-x-1/2 flex-wrap items-center px-4 text-background">
+      <div className="absolute bottom-4 left-1/2 flex w-full max-w-screen-2xl -translate-x-1/2 flex-wrap items-center px-4 text-background @xl:bottom-6 @xl:px-6 @4xl:px-8">
         {/* Progress Buttons */}
         {scrollSnaps.map((_: number, index: number) => {
           return (
@@ -199,13 +194,13 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
                   )}
                   style={{
                     animationDuration: index === selectedIndex ? `${interval}ms` : '200ms',
-                    width: `${175 / slides.length}px`,
+                    width: `${150 / slides.length}px`,
                   }}
                 />
                 {/* Grey Bar BG */}
                 <div
                   className="h-0.5 bg-background opacity-30"
-                  style={{ width: `${175 / slides.length}px` }}
+                  style={{ width: `${150 / slides.length}px` }}
                 />
               </div>
             </button>
@@ -213,7 +208,7 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
         })}
 
         {/* Carousel Count - "01/03" */}
-        <span className="ml-auto mr-2 mt-px font-mono text-xs">
+        <span className="ml-auto mr-3 mt-px font-mono text-sm">
           {selectedIndex + 1 < 10 ? `0${selectedIndex + 1}` : selectedIndex + 1}/
           {slides.length < 10 ? `0${slides.length}` : slides.length}
         </span>
@@ -226,9 +221,9 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? (
-            <Pause strokeWidth={1.5} className="pointer-events-none w-3.5" />
+            <Pause strokeWidth={1.5} size={16} className="pointer-events-none" />
           ) : (
-            <Play strokeWidth={1.5} className="pointer-events-none ml-0.5 w-3.5" />
+            <Play strokeWidth={1.5} size={16} className="pointer-events-none" />
           )}
         </button>
       </div>
