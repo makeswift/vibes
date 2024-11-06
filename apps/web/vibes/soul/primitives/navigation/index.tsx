@@ -129,70 +129,75 @@ export const Navigation = forwardRef(function Navigation(
       delayDuration={0}
       className="relative mx-auto w-full max-w-screen-2xl text-foreground @container"
     >
-      <div className="flex h-14 items-center bg-background pl-3 pr-2 @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5">
+      <div className="flex h-14 items-center justify-between bg-background pl-3 pr-2 @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5">
         {/* Logo */}
-        <div className="flex flex-1 items-center">
-          <Popover.Root open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <Popover.Anchor className="absolute left-0 right-0 top-full" />
-            <Popover.Trigger asChild>
-              <HamburgerMenuButton
-                className="mr-3 @4xl:hidden"
-                open={isMobileMenuOpen}
-                onClick={() => setIsMobileMenuOpen(prev => !prev)}
-              />
-            </Popover.Trigger>
-            <Popover.Portal>
-              <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-8px)] w-[var(--radix-popper-anchor-width)] @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
-                <div className="max-h-[inherit] divide-y divide-contrast-100 overflow-y-auto bg-background">
-                  {links.map((item, i) => (
-                    <ul key={i} className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5">
-                      {item.label !== '' && (
-                        <li>
-                          {item.href !== '' ? (
-                            <Link
-                              href={item.href}
-                              className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+        <Popover.Root open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+          <Popover.Anchor className="absolute left-0 right-0 top-full" />
+          <Popover.Trigger asChild>
+            <HamburgerMenuButton
+              className="mr-3 @4xl:hidden"
+              open={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen(prev => !prev)}
+            />
+          </Popover.Trigger>
+          <Popover.Portal>
+            <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-8px)] w-[var(--radix-popper-anchor-width)] @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
+              <div className="max-h-[inherit] divide-y divide-contrast-100 overflow-y-auto bg-background">
+                {links.map((item, i) => (
+                  <ul key={i} className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5">
+                    {item.label !== '' && (
+                      <li>
+                        {item.href !== '' ? (
+                          <Link
+                            href={item.href}
+                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
                           focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                            >
-                              {item.label}
-                            </Link>
-                          ) : (
-                            <span
-                              className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
+                          >
+                            {item.label}
+                          </Link>
+                        ) : (
+                          <span
+                            className="block rounded-lg px-3 py-2 font-semibold ring-primary transition-colors hover:bg-contrast-100 
                           focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
-                            >
-                              {item.label}
-                            </span>
-                          )}
-                        </li>
-                      )}
-                      {item.groups
-                        ?.flatMap(group => group.links)
-                        .map((link, j) => (
-                          <li key={j}>
-                            <Link
-                              href={link.href}
-                              className="block rounded-lg px-3 py-2 text-sm font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
+                          >
+                            {item.label}
+                          </span>
+                        )}
+                      </li>
+                    )}
+                    {item.groups
+                      ?.flatMap(group => group.links)
+                      .map((link, j) => (
+                        <li key={j}>
+                          <Link
+                            href={link.href}
+                            className="block rounded-lg px-3 py-2 text-sm font-medium text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 
                         hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 
                         @4xl:py-4"
-                            >
-                              {link.label}
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  ))}
-                </div>
-              </Popover.Content>
-            </Popover.Portal>
-          </Popover.Root>
-
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                ))}
+              </div>
+            </Popover.Content>
+          </Popover.Portal>
+        </Popover.Root>
+        <div className="flex flex-1 items-center self-stretch py-2">
           <Link
             href={logoHref}
-            className="relative rounded outline-0 ring-primary ring-offset-4 focus-visible:ring-2"
+            className="relative flex size-full max-w-[80%] items-center outline-0 ring-primary ring-offset-4 focus-visible:ring-2 @4xl:max-w-[50%]"
           >
             {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
-              <Image src={logo.src} fill sizes="400px" alt={logo.alt} className="object-contain" />
+              <Image
+                src={logo.src}
+                fill
+                sizes="25vw"
+                alt={logo.alt}
+                className="object-contain object-left"
+              />
             ) : (
               typeof logo === 'string' && (
                 <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
@@ -204,7 +209,7 @@ export const Navigation = forwardRef(function Navigation(
         </div>
 
         {/* Top Level Nav Links */}
-        <ul className="flex" ref={container}>
+        <ul className="hidden @4xl:flex" ref={container}>
           {links.map((item, i) => (
             <NavigationMenu.Item key={i} value={i.toString()}>
               <NavigationMenu.Trigger asChild>
