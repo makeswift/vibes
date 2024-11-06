@@ -132,18 +132,20 @@ export const Slideshow = function Slideshow({ slides, interval = 5000, className
           {slides.map(({ title, description, image, cta }, idx) => {
             return (
               <div key={idx} className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full">
-                <div className="absolute bottom-0 left-1/2 z-10 w-full max-w-screen-2xl -translate-x-1/2 bg-gradient-to-t from-foreground/80 to-transparent px-4 pb-16 pt-12 text-background @xl:px-6 @xl:pb-20 @xl:pt-16 @4xl:px-8 @4xl:pt-20">
-                  <h1 className="font-heading text-4xl font-medium leading-none @2xl:text-5xl @4xl:text-6xl">
-                    {title}
-                  </h1>
-                  {description != null && description !== '' && (
-                    <p className="mb-6 mt-2 max-w-xl text-lg text-background/80 @xl:mb-8 @xl:mt-3">
-                      {description}
-                    </p>
-                  )}
-                  {cta != null && cta.href !== '' && cta.label !== '' && (
-                    <Button variant="tertiary">{cta.label}</Button>
-                  )}
+                <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-foreground/80 to-transparent">
+                  <div className="mx-auto w-full max-w-screen-2xl px-4 pb-16 pt-12 text-background @xl:px-6 @xl:pb-20 @xl:pt-16 @4xl:px-8 @4xl:pt-20">
+                    <h1 className="font-heading text-4xl font-medium leading-none @2xl:text-5xl @4xl:text-6xl">
+                      {title}
+                    </h1>
+                    {description != null && description !== '' && (
+                      <p className="mb-6 mt-2 max-w-xl text-lg text-background/80 @xl:mb-8 @xl:mt-3">
+                        {description}
+                      </p>
+                    )}
+                    {cta != null && cta.href !== '' && cta.label !== '' && (
+                      <Button variant="tertiary">{cta.label}</Button>
+                    )}
+                  </div>
                 </div>
 
                 {image?.src != null && image.src !== '' && (
