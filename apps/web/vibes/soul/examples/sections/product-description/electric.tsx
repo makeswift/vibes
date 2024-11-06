@@ -28,12 +28,10 @@ export const productDescriptionImage = {
   alt: 'Close-up of a green and white leaf with a pink background.',
 }
 
-const video = 'https://videos.pexels.com/video-files/4957753/4957753-hd_1920_1080_25fps.mp4'
 export default function Preview() {
   return (
     <>
       <ProductDescription accordions={accordions} image={productDescriptionImage} />
-      <ProductDescription accordions={accordions} video={video} />
     </>
   )
 }

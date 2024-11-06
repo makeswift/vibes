@@ -29,7 +29,6 @@ export function ProductDescription({ accordions, image }: Readonly<Props>) {
           </Accordions>
         </div>
 
-        {/* Image || Video Container */}
         <div className="relative aspect-square w-full flex-1 self-start overflow-hidden rounded-2xl @2xl:aspect-[4/5]">
           {image && (
             <Image
