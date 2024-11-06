@@ -69,6 +69,7 @@ export const NumberInput = forwardRef<
           <input
             {...rest}
             ref={ref}
+            id={id}
             type="number"
             className="w-8 flex-1 select-none justify-center text-center [appearance:textfield] focus-visible:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
             value={value}

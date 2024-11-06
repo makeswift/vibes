@@ -35,7 +35,13 @@ export const SwatchRadioGroup = React.forwardRef<
   return (
     <div className={clsx('space-y-2', className)}>
       {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
-      <RadioGroupPrimitive.Root {...rest} ref={ref} aria-label={label} className="flex gap-2">
+      <RadioGroupPrimitive.Root
+        {...rest}
+        id={id}
+        ref={ref}
+        aria-label={label}
+        className="flex gap-2"
+      >
         {options.map(option => (
           <RadioGroupPrimitive.Item
             key={option.value}

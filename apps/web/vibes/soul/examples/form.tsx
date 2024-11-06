@@ -7,6 +7,7 @@ import { DatePicker } from '../form/date-picker'
 import { Input } from '../form/input'
 import { NumberInput } from '../form/number-input'
 import { RadioGroup } from '../form/radio-group'
+import { Select } from '../form/select'
 import { SwatchRadioGroup } from '../form/swatch-radio-group'
 import { Textarea } from '../form/textarea'
 import { ToggleGroup } from '../form/toggle-group'
@@ -27,6 +28,7 @@ export default function Preview() {
       <Input id="first-name" label="First Name" required />
       <Textarea
         id="description"
+        name="description"
         label="Description"
         required
         disabled
@@ -45,7 +47,7 @@ export default function Preview() {
         ]}
         errors={['This is required']}
       />
-      <NumberInput label="Quantity" />
+      <NumberInput id="quantity" label="Quantity" />
       <RadioGroup
         label="Size"
         options={[
@@ -62,6 +64,16 @@ export default function Preview() {
           { label: 'Large', value: 'lg', disabled: true },
         ]}
         errors={['This is required']}
+      />
+      <Select
+        id="size"
+        name="size"
+        label="Size"
+        options={[
+          { label: 'Small', value: 'sm' },
+          { label: 'Medium', value: 'md' },
+          { label: 'Large', value: 'lg' },
+        ]}
       />
       <ButtonRadioGroup
         options={[
