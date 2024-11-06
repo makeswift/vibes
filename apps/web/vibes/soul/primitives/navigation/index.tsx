@@ -2,9 +2,19 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
-import { Ref, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import {
+  Ref,
+  forwardRef,
+  startTransition,
+  useActionState,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 
+import { SubmissionResult } from '@conform-to/react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import * as Popover from '@radix-ui/react-popover'
@@ -13,16 +23,11 @@ import debounce from 'lodash.debounce'
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/primitives/button'
-import { Spinner } from '@/vibes/soul/primitives/spinner'
 
-import { type SearchResult, SearchResults } from './search-results'
+import { Price } from '../price-label'
+import { ProductCard } from '../product-card'
 
-interface Image {
-  src?: string
-  alt: string
-}
-
-export interface Links {
+type Link = {
   label: string
   href: string
   groups?: {
@@ -35,21 +40,54 @@ export interface Links {
   }[]
 }
 
-interface Props {
+type Locale = { id: string; label: string }
+
+type Action<State, Payload> = (
+  state: Awaited<State>,
+  payload: Awaited<Payload>
+) => State | Promise<State>
+
+export type SearchResult =
+  | {
+      type: 'products'
+      title: string
+      products: {
+        id: string
+        title: string
+        href: string
+        price?: Price
+        image?: { src: string; alt: string }
+      }[]
+    }
+  | {
+      type: 'links'
+      title: string
+      links: { label: string; href: string }[]
+    }
+
+type LocaleAction = Action<SubmissionResult | null, FormData>
+type SearchAction = Action<
+  { searchResults: SearchResult[] | null; lastResult: SubmissionResult | null },
+  FormData
+>
+
+type Props = {
   accountHref: string
-  activeLocale?: string
   cartCount?: number
   cartHref: string
-  links: Links[]
-  locales?: { id: string; region: string; language: string }[]
-  logo?: string | Image
+  links: Link[]
+  locales?: Locale[]
+  activeLocaleId?: string
+  localeAction: LocaleAction
+  logo?: string | { src?: string; alt: string }
+  logoHref?: string
   searchHref: string
   searchParamName?: string
-  searchAction?: (term: string) => Promise<SearchResult[]>
-  searchInputPlaceholder?: string
+  searchAction?: SearchAction
   searchCtaLabel?: string
-  emptySearchTitleLabel?: string
-  emptySearchSubtitleLabel?: string
+  searchInputPlaceholder?: string
+  emptySearchTitle?: string
+  emptySearchSubtitle?: string
 }
 
 export const Navigation = forwardRef(function Navigation(
@@ -59,16 +97,17 @@ export const Navigation = forwardRef(function Navigation(
     accountHref,
     links,
     logo,
-    activeLocale,
+    logoHref = '/',
+    activeLocaleId,
+    localeAction,
     locales,
     searchHref,
-    searchParamName = 'term',
+    searchParamName = 'query',
     searchAction,
-    searchInputPlaceholder = 'Search Products',
     searchCtaLabel,
-    emptySearchTitleLabel,
-    emptySearchSubtitleLabel,
-    ...rest
+    searchInputPlaceholder,
+    emptySearchTitle,
+    emptySearchSubtitle,
   }: Props,
   ref: Ref<HTMLDivElement>
 ) {
@@ -77,65 +116,11 @@ export const Navigation = forwardRef(function Navigation(
 
   const pathname = usePathname()
   const container = useRef<HTMLUListElement>(null)
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const [selectedLanguage, setSelectedLanguage] = useState<string | undefined>(activeLocale)
-  const firstCategoryLinkRef = useRef<HTMLAnchorElement>(null)
-  const [searchResults, setSearchResults] = useState<SearchResult[] | null>(null)
-  const [term, setTerm] = useState('')
-  const [searchPending, setSearchPending] = useState(false)
 
   useEffect(() => {
     setIsMobileMenuOpen(false)
     setIsSearchOpen(false)
   }, [pathname])
-
-  const router = useRouter()
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const searchTerm = searchInputRef.current?.value.trim() ?? ''
-
-    if (searchTerm.length > 0) {
-      router.push(`${searchHref}?${searchParamName}=${encodeURIComponent(searchTerm)}`)
-    }
-  }
-
-  const debouncedOnSearch = useMemo(
-    () =>
-      debounce(async (query: string) => {
-        if (searchAction) {
-          const results = await searchAction(query)
-
-          setSearchResults(results)
-        }
-      }, 1000),
-    [searchAction]
-  )
-
-  const fetchSearchResults = useCallback(
-    async (query: string) => {
-      await debouncedOnSearch(query)
-    },
-    [debouncedOnSearch]
-  )
-
-  useEffect(() => {
-    if (term.length < 3 || !searchAction) {
-      setSearchResults(null)
-    } else {
-      setSearchPending(true)
-
-      void fetchSearchResults(term)
-    }
-  }, [term, fetchSearchResults, searchAction])
-
-  useEffect(() => {
-    setSearchPending(false)
-  }, [searchResults])
-
-  const handleTermChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setTerm(e.currentTarget.value)
-  }
 
   return (
     <NavigationMenu.Root
@@ -144,10 +129,11 @@ export const Navigation = forwardRef(function Navigation(
       delayDuration={0}
       className="relative mx-auto w-full max-w-screen-2xl text-foreground @container"
     >
-      <div className="relative flex h-14 items-center bg-background pl-3 pr-2 @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5">
+      <div className="flex h-14 items-center bg-background pl-3 pr-2 @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5">
         {/* Logo */}
         <div className="flex flex-1 items-center">
           <Popover.Root open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <Popover.Anchor className="absolute left-0 right-0 top-full" />
             <Popover.Trigger asChild>
               <HamburgerMenuButton
                 className="mr-3 @4xl:hidden"
@@ -156,10 +142,7 @@ export const Navigation = forwardRef(function Navigation(
               />
             </Popover.Trigger>
             <Popover.Portal>
-              <Popover.Content
-                sideOffset={12}
-                className="max-h-[var(--radix-popover-content-available-height)] w-[var(--radix-popover-content-available-width)] px-4 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
-              >
+              <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-8px)] w-[var(--radix-popper-anchor-width)] @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
                 <div className="max-h-[inherit] divide-y divide-contrast-100 overflow-y-auto bg-background">
                   {links.map((item, i) => (
                     <ul key={i} className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5">
@@ -205,7 +188,7 @@ export const Navigation = forwardRef(function Navigation(
           </Popover.Root>
 
           <Link
-            href="/"
+            href={logoHref}
             className="relative rounded outline-0 ring-primary ring-offset-4 focus-visible:ring-2"
           >
             {typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
@@ -221,7 +204,7 @@ export const Navigation = forwardRef(function Navigation(
         </div>
 
         {/* Top Level Nav Links */}
-        <ul className="relative flex" ref={container}>
+        <ul className="flex" ref={container}>
           {links.map((item, i) => (
             <NavigationMenu.Item key={i} value={i.toString()}>
               <NavigationMenu.Trigger asChild>
@@ -244,15 +227,11 @@ export const Navigation = forwardRef(function Navigation(
                             <Link
                               href={group.href}
                               className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                              ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
                             >
                               {group.label}
                             </Link>
                           ) : (
-                            <span
-                              className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
-                              ref={columnIndex === 0 ? firstCategoryLinkRef : undefined}
-                            >
+                            <span className="block rounded-lg px-3 py-2 font-medium ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2">
                               {group.label}
                             </span>
                           )}
@@ -278,65 +257,37 @@ export const Navigation = forwardRef(function Navigation(
         </ul>
 
         <div className="flex flex-1 items-center justify-end transition-colors duration-300">
-          <Popover.Root open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-            <Popover.Trigger asChild>
-              <button
-                aria-label="Search"
-                className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-                onPointerEnter={e => e.preventDefault()}
-                onPointerMove={e => e.preventDefault()}
-                onPointerLeave={e => e.preventDefault()}
-              >
-                <Search strokeWidth={1} size={20} />
-              </button>
-            </Popover.Trigger>
-            <Popover.Portal>
-              <Popover.Content
-                sideOffset={16}
-                className="w-[var(--radix-popover-content-available-width)] px-4 py-2 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
-              >
-                <div className="overflow-y-auto rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5 transition-all duration-200 ease-in-out @4xl:inset-x-0">
-                  <form
-                    onSubmit={handleSearch}
-                    className="flex items-center gap-3 px-3 py-3 @4xl:px-5 @4xl:py-4"
-                  >
-                    <SearchIcon
-                      strokeWidth={1}
-                      size={20}
-                      className="hidden shrink-0 text-contrast-500 @xl:block"
-                    />
-                    <input
-                      ref={searchInputRef}
-                      name="searchTerm"
-                      type="text"
-                      placeholder="Search Products"
-                      className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
-                      onChange={handleTermChange}
-                    />
-                    <Button type="submit" variant="secondary" size="icon">
-                      {searchPending ? (
-                        <Spinner size="xs" />
-                      ) : (
-                        <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
-                      )}
-                    </Button>
-                  </form>
-
-                  {/* Search Results */}
-                  {searchResults && term.length > 2 && !searchPending ? (
-                    <SearchResults
-                      searchResults={searchResults}
-                      searchCtaLabel={searchCtaLabel}
-                      emptySearchTitleLabel={emptySearchTitleLabel}
-                      emptySearchSubtitleLabel={emptySearchSubtitleLabel}
-                      term={term}
+          {searchAction && (
+            <Popover.Root open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+              <Popover.Anchor className="absolute left-0 right-0 top-full" />
+              <Popover.Trigger asChild>
+                <button
+                  aria-label="Search"
+                  className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+                  onPointerEnter={e => e.preventDefault()}
+                  onPointerMove={e => e.preventDefault()}
+                  onPointerLeave={e => e.preventDefault()}
+                >
+                  <Search strokeWidth={1} size={20} />
+                </button>
+              </Popover.Trigger>
+              <Popover.Portal>
+                <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-16px)] w-[var(--radix-popper-anchor-width)] py-2 @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
+                  <div className="flex max-h-[inherit] flex-col rounded-2xl bg-background shadow-xl shadow-foreground/5 ring-1 ring-foreground/5 transition-all duration-200 ease-in-out @4xl:inset-x-0">
+                    <SearchForm
                       searchHref={searchHref}
+                      searchParamName={searchParamName}
+                      searchAction={searchAction}
+                      searchCtaLabel={searchCtaLabel}
+                      searchInputPlaceholder={searchInputPlaceholder}
+                      emptySearchTitle={emptySearchTitle}
+                      emptySearchSubtitle={emptySearchSubtitle}
                     />
-                  ) : null}
-                </div>
-              </Popover.Content>
-            </Popover.Portal>
-          </Popover.Root>
+                  </div>
+                </Popover.Content>
+              </Popover.Portal>
+            </Popover.Root>
+          )}
 
           <Link
             href={accountHref}
@@ -360,42 +311,7 @@ export const Navigation = forwardRef(function Navigation(
 
           {/* Locale / Language Dropdown */}
           {locales && locales.length > 1 ? (
-            <DropdownMenu.Root>
-              <DropdownMenu.Trigger
-                className={clsx(
-                  'hidden items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
-                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex'
-                )}
-              >
-                {selectedLanguage}
-                <ChevronDown strokeWidth={1.5} size={16} />
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Portal>
-                <DropdownMenu.Content
-                  align="end"
-                  sideOffset={16}
-                  className="z-50 max-h-80 w-20 overflow-y-scroll rounded-xl bg-background p-2 shadow-xl shadow-foreground/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
-                >
-                  {locales.map(({ id, language }) => (
-                    <DropdownMenu.Item
-                      className={clsx(
-                        'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
-                        'hover:text-foreground focus:bg-contrast-100',
-                        { 'text-foreground': selectedLanguage === language }
-                      )}
-                      key={id}
-                      onSelect={() => {
-                        setSelectedLanguage(language)
-                        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-                        // router.replace('/', { locale: id as LocaleType })
-                      }}
-                    >
-                      {language}
-                    </DropdownMenu.Item>
-                  ))}
-                </DropdownMenu.Content>
-              </DropdownMenu.Portal>
-            </DropdownMenu.Root>
+            <LocaleForm action={localeAction} locales={locales} activeLocaleId={activeLocaleId} />
           ) : null}
         </div>
       </div>
@@ -407,7 +323,7 @@ export const Navigation = forwardRef(function Navigation(
   )
 })
 
-export function HamburgerMenuButton({
+function HamburgerMenuButton({
   open,
   className,
   ...rest
@@ -461,5 +377,227 @@ export function HamburgerMenuButton({
         </div>
       </div>
     </button>
+  )
+}
+
+function SearchForm({
+  searchAction,
+  searchParamName = 'query',
+  searchHref = '/search',
+  searchInputPlaceholder = 'Search Products',
+  searchCtaLabel = 'View more',
+  emptySearchTitle,
+  emptySearchSubtitle,
+}: {
+  searchAction: SearchAction
+  searchParamName?: string
+  searchHref?: string
+  searchCtaLabel?: string
+  searchInputPlaceholder?: string
+  emptySearchTitle?: string
+  emptySearchSubtitle?: string
+}) {
+  const [query, setQuery] = useState('')
+  const [debouncedQuery, setDebouncedQuery] = useState('')
+  const debouncedOnChange = useMemo(() => debounce(setDebouncedQuery, 300), [])
+  const [{ searchResults, lastResult }, formAction, isPending] = useActionState(searchAction, {
+    searchResults: null,
+    lastResult: null,
+  })
+
+  useEffect(() => {
+    if (lastResult?.error) console.log(lastResult.error)
+  }, [lastResult])
+
+  useEffect(() => {
+    if (debouncedQuery === '') return
+
+    startTransition(() => {
+      const formData = new FormData()
+      formData.append(searchParamName, debouncedQuery)
+
+      formAction(formData)
+    })
+  }, [searchParamName, debouncedQuery])
+
+  return (
+    <>
+      <form action={searchHref} className="flex items-center gap-3 px-3 py-3 @4xl:px-5 @4xl:py-4">
+        <SearchIcon
+          strokeWidth={1}
+          size={20}
+          className="hidden shrink-0 text-contrast-500 @xl:block"
+        />
+        <input
+          type="text"
+          name={searchParamName}
+          placeholder={searchInputPlaceholder}
+          className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
+          value={query}
+          onChange={e => {
+            setQuery(e.currentTarget.value)
+            debouncedOnChange(e.currentTarget.value)
+          }}
+        />
+        <Button type="submit" variant="secondary" size="icon" loading={isPending}>
+          <ArrowRight strokeWidth={1.5} size={20} aria-label="Submit" />
+        </Button>
+      </form>
+
+      {/* Search Results */}
+      {searchResults && (
+        <SearchResults
+          query={query}
+          searchResults={searchResults}
+          searchParamName={searchParamName}
+          emptySearchTitle={emptySearchTitle}
+          emptySearchSubtitle={emptySearchSubtitle}
+          stale={isPending}
+        />
+      )}
+    </>
+  )
+}
+
+function SearchResults({
+  query,
+  searchResults,
+  stale,
+  emptySearchTitle = 'No results were found for',
+  emptySearchSubtitle = 'Please try another search.',
+}: {
+  query: string
+  searchParamName: string
+  searchCtaLabel?: string
+  emptySearchTitle?: string
+  emptySearchSubtitle?: string
+  searchResults: SearchResult[]
+  stale: boolean
+}) {
+  if (query === '') return null
+
+  if (searchResults.length === 0) {
+    return (
+      <div className="flex flex-col border-t border-contrast-100 p-6">
+        <h1 className="text-2xl font-medium text-foreground">
+          {emptySearchTitle} '{query}'.
+        </h1>
+        <p className="text-contrast-500">{emptySearchSubtitle}</p>
+      </div>
+    )
+  }
+
+  return (
+    <div
+      className={clsx(
+        'flex flex-1 flex-col overflow-y-auto border-t border-contrast-100 @2xl:flex-row',
+        stale && 'opacity-50'
+      )}
+    >
+      {searchResults.map((result, index) => {
+        if (result.type === 'links') {
+          return (
+            <div
+              className="flex w-full flex-col gap-1 border-b border-contrast-100 p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r"
+              key={`result-${index}`}
+            >
+              <span className="mb-4 font-mono text-sm uppercase">{result.title}</span>
+              {result.links.map((link, i) => (
+                <Link
+                  key={i}
+                  href={link.href}
+                  className="block rounded-lg px-3 py-4 font-semibold text-contrast-500 ring-primary transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:outline-0 focus-visible:ring-2"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          )
+        }
+
+        if (result.type === 'products') {
+          return (
+            <div className="flex w-full flex-col gap-5 p-5" key={`result-${index}`}>
+              <span className="font-mono text-sm uppercase">{result.title}</span>
+              <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
+                {result.products.map(product => (
+                  <ProductCard
+                    key={product.id}
+                    product={{
+                      id: product.id,
+                      title: product.title,
+                      href: product.href,
+                      price: product.price,
+                      image: product.image,
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        return null
+      })}
+    </div>
+  )
+}
+
+function LocaleForm({
+  action,
+  locales,
+  activeLocaleId,
+}: {
+  activeLocaleId?: string
+  action: LocaleAction
+  locales: Locale[]
+}) {
+  const [lastResult, formAction, isPending] = useActionState(action, null)
+  const activeLocale = locales.find(locale => locale.id === activeLocaleId)
+
+  useEffect(() => {
+    if (lastResult?.error) console.log(lastResult.error)
+  }, [lastResult?.error])
+
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger
+        className={clsx(
+          'hidden items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
+          'uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex'
+        )}
+      >
+        {activeLocale?.id ?? locales[0].id}
+        <ChevronDown strokeWidth={1.5} size={16} />
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          align="end"
+          sideOffset={16}
+          className="z-50 max-h-80 overflow-y-scroll rounded-xl bg-background p-2 shadow-xl shadow-foreground/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
+        >
+          {locales.map(({ id, label }) => (
+            <DropdownMenu.Item
+              className={clsx(
+                'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
+                'hover:text-foreground focus:bg-contrast-100',
+                { 'text-foreground': id === activeLocaleId }
+              )}
+              key={id}
+              onSelect={() => {
+                startTransition(async () => {
+                  const formData = new FormData()
+
+                  formData.append('id', id)
+                  formAction(formData)
+                })
+              }}
+            >
+              {label}
+            </DropdownMenu.Item>
+          ))}
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   )
 }
