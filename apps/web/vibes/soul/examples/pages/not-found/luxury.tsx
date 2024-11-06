@@ -5,7 +5,7 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/lu
 import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { CardProduct } from '@/vibes/soul/primitives/product-card'
-import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
+import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
 import {
   Amex,
@@ -158,7 +158,7 @@ export default function Preview() {
 
       <NotFound />
 
-      <ProductsCarousel className="mb-6 @xl:mb-8" products={products} />
+      <FeaturedProductsCarousel title="Other products" products={products} />
 
       <Subscribe
         title="Sign up for our newsletter"
