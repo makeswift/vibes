@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react'
 import Headroom from 'react-headroom'
 
-import { Banner } from '../../primitives/banner'
-import { Navigation } from '../../primitives/navigation'
+import { Banner } from '@/vibes/soul/primitives/banner'
+import { Navigation } from '@/vibes/soul/primitives/navigation'
 
 type Props = {
   navigation: Omit<React.ComponentPropsWithoutRef<typeof Navigation>, 'onDismiss'>

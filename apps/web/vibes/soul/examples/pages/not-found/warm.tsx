@@ -155,7 +155,7 @@ export default function Preview() {
         cartHref="#"
         accountHref="#"
         locales={locales}
-        activeLocaleId="US"
+        activeLocaleId="en"
         localeAction={localeAction}
         searchHref="#"
       />

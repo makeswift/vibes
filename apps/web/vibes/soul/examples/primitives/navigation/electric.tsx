@@ -115,7 +115,7 @@ export default function Preview() {
         logo={logo}
         cartHref="#"
         accountHref="#"
-        activeLocaleId="US"
+        activeLocaleId="en"
         searchHref="#"
         locales={locales}
         searchAction={searchAction('Electric')}
