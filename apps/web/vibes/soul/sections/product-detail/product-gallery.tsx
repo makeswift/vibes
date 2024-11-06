@@ -6,16 +6,11 @@ import { useEffect, useState } from 'react'
 import { clsx } from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
 
-interface Image {
-  alt: string
-  src: string
+type Props = {
+  images: { alt: string; src: string }[]
 }
 
-export interface ProductGalleryProps {
-  images: Image[]
-}
-
-export const ProductGallery = ({ images }: ProductGalleryProps) => {
+export const ProductGallery = ({ images }: Props) => {
   const [previewImage, setPreviewImage] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel()
 

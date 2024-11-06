@@ -1,7 +1,10 @@
 import { ProductDetail } from '@/vibes/soul/sections/product-detail'
 
+import { action, fields } from './action'
+
 export const product = {
   id: '1',
+  subtitle: 'Indoor Plants',
   title: 'Caladium Rosebud',
   price: '$19.95',
   image: {
@@ -30,5 +33,5 @@ export const product = {
 }
 
 export default function Preview() {
-  return <ProductDetail product={product} />
+  return <ProductDetail product={product} fields={fields} action={action} />
 }
