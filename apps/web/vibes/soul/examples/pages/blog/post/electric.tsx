@@ -7,7 +7,7 @@ import {
   copyright,
   footerLinks,
 } from '@/vibes/soul/examples/sections/footer/electric'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { BlogPostContent } from '@/vibes/soul/sections/blog-post-content'
 import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel'
@@ -56,10 +56,10 @@ const paymentIconsArray: React.ReactNode[] = [
 export default function Preview() {
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
 
       <Navigation
         links={navigationLinks}

@@ -9,7 +9,7 @@ import {
 } from '@/vibes/soul/examples/sections/product-description/luxury'
 import { product } from '@/vibes/soul/examples/sections/product-detail/luxury'
 import { reviews } from '@/vibes/soul/examples/sections/reviews'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
@@ -24,10 +24,10 @@ export default function Preview() {
 
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
       <div className="relative flex flex-col">
         <Navigation
           links={navigationLinks}

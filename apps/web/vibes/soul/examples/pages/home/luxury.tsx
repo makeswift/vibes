@@ -7,7 +7,7 @@ import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/lux
 import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/luxury'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/luxury'
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/luxury'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { Feature } from '@/vibes/soul/sections/feature'
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel'
@@ -73,10 +73,10 @@ export const featuredImageII: FeaturedImageProps = {
 export default function Preview() {
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
       <Navigation
         links={navigationLinks}
         logo={logo}

@@ -4,7 +4,7 @@ import { localeAction } from '@/vibes/soul/examples/primitives/navigation/action
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { checkoutAction, lineItemAction } from '@/vibes/soul/examples/sections/cart/actions'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { Cart } from '@/vibes/soul/sections/cart'
 import { Footer } from '@/vibes/soul/sections/footer'
@@ -55,10 +55,10 @@ export default async function Preview() {
 
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
 
       <Navigation
         links={navigationLinks}
