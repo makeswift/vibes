@@ -68,7 +68,7 @@ export default function Preview() {
         accountHref="#"
         locales={locales}
         localeAction={localeAction}
-        activeLocaleId="US"
+        activeLocaleId="en"
         searchHref="#"
       />
 
