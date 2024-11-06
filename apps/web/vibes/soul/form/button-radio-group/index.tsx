@@ -31,7 +31,12 @@ export const ButtonRadioGroup = React.forwardRef<
       >
         {options.map(option => (
           <RadioGroupPrimitive.Item
-            className="h-12 whitespace-nowrap rounded-full border border-contrast-100 px-4 font-body text-sm font-normal leading-normal ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 data-[disabled]:pointer-events-none data-[state=checked]:border-foreground data-[state=checked]:bg-foreground data-[state=unchecked]:bg-background data-[state=checked]:text-background data-[disabled]:opacity-50 data-[disabled]:hover:border-transparent data-[state=unchecked]:hover:border-contrast-200 data-[state=unchecked]:hover:bg-contrast-100"
+            className={clsx(
+              'h-12 whitespace-nowrap rounded-full border border-contrast-100 px-4 font-body text-sm font-normal leading-normal ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 data-[disabled]:pointer-events-none data-[state=checked]:bg-foreground data-[state=unchecked]:bg-background data-[state=checked]:text-background data-[disabled]:opacity-50 data-[disabled]:hover:border-transparent data-[state=unchecked]:hover:border-contrast-200 data-[state=unchecked]:hover:bg-contrast-100',
+              errors && errors.length > 0
+                ? 'disabled:border-error/50 data-[state=unchecked]:border-error'
+                : 'data-[state=checked]:border-foreground'
+            )}
             id={option.value}
             key={option.value}
             value={option.value}
