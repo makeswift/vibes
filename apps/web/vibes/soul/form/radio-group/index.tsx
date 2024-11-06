@@ -27,7 +27,12 @@ export const RadioGroup = React.forwardRef<
         {options.map(option => (
           <div className="flex items-center" key={option.value}>
             <RadioGroupPrimitive.Item
-              className="size-5 cursor-default rounded-full border border-contrast-200 bg-background outline-none hover:border-contrast-300 focus:border-contrast-300 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50"
+              className={clsx(
+                'size-5 cursor-default rounded-full border bg-background outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50',
+                errors && errors.length > 0
+                  ? 'border-error disabled:border-error/50'
+                  : 'border-contrast-200 hover:border-contrast-300 focus:border-contrast-300'
+              )}
               id={option.value}
               value={option.value}
               aria-label={option.label}
