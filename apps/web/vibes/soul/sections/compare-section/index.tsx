@@ -1,4 +1,4 @@
-import { CompareCard, CompareProduct } from '../../primitives/compare-card'
+import { CompareCard, CompareProduct } from '@/vibes/soul/primitives/compare-card'
 
 type Props = {
   className?: string

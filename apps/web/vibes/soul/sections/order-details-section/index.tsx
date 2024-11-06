@@ -4,10 +4,9 @@ import Link from 'next/link'
 
 import { ArrowLeft } from 'lucide-react'
 
+import { Badge } from '@/vibes/soul/primitives/badge'
 import { ButtonLink } from '@/vibes/soul/primitives/button-link'
-
-import { Badge } from '../../primitives/badge'
-import { PriceLabel } from '../../primitives/price-label'
+import { PriceLabel } from '@/vibes/soul/primitives/price-label'
 
 type Summary = {
   lineItems: {

@@ -11,7 +11,10 @@ import { ErrorMessage } from '../../form/error-message'
 import { Button } from '../button'
 import { schema } from './schema'
 
-type Action<State, Payload> = (prevState: Awaited<State>, formData: Payload) => Promise<State>
+type Action<State, Payload> = (
+  prevState: Awaited<State>,
+  formData: Payload
+) => State | Promise<State>
 
 export function InlineEmailForm({
   className,
@@ -45,8 +48,8 @@ export function InlineEmailForm({
     <form {...getFormProps(form)} className={className} action={formAction}>
       <div
         className={clsx(
-          'relative mb-4 rounded-xl border border-contrast-100 bg-primary-highlight text-base ring-foreground transition-colors duration-200 focus-within:ring-1 focus:outline-none',
-          errors && errors.length && 'ring-1 ring-error'
+          'relative mb-4 rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
+          errors && errors.length ? 'border-error' : 'border-black'
         )}
       >
         <input
