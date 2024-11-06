@@ -16,10 +16,19 @@ export type ChangePasswordAction = Action<SubmissionResult | null, FormData>
 
 type Props = {
   action: ChangePasswordAction
+  currentPasswordLabel?: string
+  newPasswordLabel?: string
+  confirmPasswordLabel?: string
   submitLabel?: string
 }
 
-export function ChangePasswordForm({ action, submitLabel = 'Update' }: Props) {
+export function ChangePasswordForm({
+  action,
+  currentPasswordLabel = 'Current password',
+  newPasswordLabel = 'New password',
+  confirmPasswordLabel = 'Confirm password',
+  submitLabel = 'Update',
+}: Props) {
   const [lastResult, formAction, isPending] = useActionState(action, null)
   const [form, fields] = useForm({
     constraint: getZodConstraint(changePasswordSchema),
@@ -40,20 +49,20 @@ export function ChangePasswordForm({ action, submitLabel = 'Update' }: Props) {
         {...getInputProps(fields.currentPassword, { type: 'password' })}
         key={fields.currentPassword.id}
         errors={fields.currentPassword.errors}
-        label="Current password"
+        label={currentPasswordLabel}
       />
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
         key={fields.password.id}
         errors={fields.password.errors}
-        label="Password"
+        label={newPasswordLabel}
       />
       <Input
         {...getInputProps(fields.confirmPassword, { type: 'password' })}
         key={fields.confirmPassword.id}
         errors={fields.confirmPassword.errors}
         className="mb-6"
-        label="Confirm password"
+        label={confirmPasswordLabel}
       />
       <Button type="submit" variant="secondary" size="small" loading={isPending}>
         {submitLabel}

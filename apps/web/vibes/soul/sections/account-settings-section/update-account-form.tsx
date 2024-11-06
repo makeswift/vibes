@@ -16,10 +16,19 @@ export type UpdateAccountAction = Action<SubmissionResult | null, FormData>
 
 type Props = {
   action: UpdateAccountAction
+  firstNameLabel?: string
+  lastNameLabel?: string
+  emailLabel?: string
   submitLabel?: string
 }
 
-export function UpdateAccountForm({ action, submitLabel = 'Update' }: Props) {
+export function UpdateAccountForm({
+  action,
+  firstNameLabel = 'First name',
+  lastNameLabel = 'Last name',
+  emailLabel = 'Email',
+  submitLabel = 'Update',
+}: Props) {
   const [lastResult, formAction, isPending] = useActionState(action, null)
   const [form, fields] = useForm({
     constraint: getZodConstraint(updateAccountSchema),
@@ -41,20 +50,20 @@ export function UpdateAccountForm({ action, submitLabel = 'Update' }: Props) {
           {...getInputProps(fields.firstName, { type: 'text' })}
           key={fields.firstName.id}
           errors={fields.firstName.errors}
-          label="First name"
+          label={firstNameLabel}
         />
         <Input
           {...getInputProps(fields.lastName, { type: 'text' })}
           key={fields.lastName.id}
           errors={fields.lastName.errors}
-          label="Last name"
+          label={lastNameLabel}
         />
       </div>
       <Input
         {...getInputProps(fields.email, { type: 'text' })}
         key={fields.email.id}
         errors={fields.email.errors}
-        label="Email"
+        label={emailLabel}
       />
       <Button type="submit" variant="secondary" size="small" loading={isPending}>
         {submitLabel}
