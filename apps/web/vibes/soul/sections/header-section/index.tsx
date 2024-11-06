@@ -25,7 +25,7 @@ export function HeaderSection({ navigation, banner }: Props) {
     <>
       {banner && <Banner ref={setBannerElement} {...banner} onDismiss={() => setBannerHeight(0)} />}
       <Headroom pinStart={bannerHeight}>
-        <div className="p-4">
+        <div className="p-2">
           <Navigation {...navigation} />
         </div>
       </Headroom>
