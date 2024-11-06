@@ -328,6 +328,8 @@ export const Navigation = forwardRef(function Navigation(
   )
 })
 
+Navigation.displayName = 'Navigation'
+
 function HamburgerMenuButton({
   open,
   className,
