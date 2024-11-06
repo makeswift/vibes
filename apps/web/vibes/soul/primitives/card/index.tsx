@@ -1,59 +1,56 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ComponentPropsWithoutRef } from 'react'
 
 import { clsx } from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 
-export interface CardProps {
+export type CardProps = {
+  className?: string
   title: string
-  image: { src: string; alt: string }
+  image?: { src: string; alt: string }
   href: string
   textContrast?: 'light' | 'dark'
 }
 
-export const Card = function Card({
-  className,
-  title,
-  image,
-  href,
-  textContrast = 'dark',
-  ...props
-}: CardProps & ComponentPropsWithoutRef<'a'>) {
+export function Card({ className, title, image, href, textContrast = 'dark' }: CardProps) {
   return (
-    <Link
-      href={href}
-      className={clsx(
-        'group relative flex aspect-[3/4] w-full flex-col gap-2 rounded-lg ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @4xl:rounded-xl',
-        className
-      )}
-      {...props}
-    >
-      <ArrowUpRight
-        strokeWidth={1.5}
-        className={clsx(
-          'absolute right-2.5 top-2.5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
-          textContrast === 'light' ? 'text-background' : 'text-foreground'
-        )}
-      />
-      <div className="relative h-full w-full overflow-hidden rounded-lg @4xl:rounded-xl">
-        <Image
-          src={image.src}
-          fill
-          alt={image.alt}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="w-full scale-105 select-none bg-contrast-100 object-cover transition-transform duration-700 ease-out group-hover:scale-100"
-        />
-      </div>
-      <span
-        className={clsx(
-          'line-clamp-1 text-lg font-medium text-foreground',
-          textContrast === 'light' ? '@4xl:text-background' : '@4xl:text-foreground'
-        )}
+    <div className={className}>
+      <Link
+        href={href}
+        className="group relative flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl"
       >
-        {title}
-      </span>
-    </Link>
+        <ArrowUpRight
+          strokeWidth={1.5}
+          className={clsx(
+            'absolute right-2.5 top-2.5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
+            textContrast === 'light' ? 'text-background' : 'text-foreground'
+          )}
+        />
+        <div className="relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100">
+          {image != null ? (
+            <Image
+              fill
+              sizes="(max-width: 768px) 70vw, 33vw"
+              src={image.src}
+              alt={image.alt}
+              className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+            />
+          ) : (
+            <div className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">
+              {title}
+            </div>
+          )}
+        </div>
+        <span
+          className={clsx(
+            'line-clamp-1 text-lg font-medium text-foreground',
+            textContrast === 'light' ? '@4xl:text-background' : '@4xl:text-foreground'
+          )}
+        >
+          {title}
+        </span>
+      </Link>
+    </div>
   )
 }
 
