@@ -1,29 +1,31 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense } from 'react'
+import { Suspense, startTransition, use, useActionState, useEffect, useOptimistic } from 'react'
+
+import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
+import { parseWithZod } from '@conform-to/zod'
+import clsx from 'clsx'
+import { Minus, Plus, Trash2 } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/primitives/button'
-import { DecrementButton } from '@/vibes/soul/sections/cart/decrement-button'
-import { LineItemQuantityIncrementButton } from '@/vibes/soul/sections/cart/increment-button'
 
-import { CheckoutButton } from './redirect-to-checkout-button'
-import { Action, RemoveButton } from './remove-button'
+// import { CheckoutButton } from './redirect-to-checkout-button'
+import { schema } from './schema'
 
-interface Image {
-  alt: string
-  src: string
-}
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
-export interface CartLineItem {
+export type CartLineItem = {
   id: string
-  image: Image
+  image: { alt: string; src: string }
   title: string
   subtitle: string
   quantity: number
   price: string
 }
 
-interface CartSummary {
+type CartSummary = {
   title?: string
   caption?: string
   subtotalLabel?: string
@@ -37,7 +39,7 @@ interface CartSummary {
   ctaLabel?: string
 }
 
-interface CartEmptyState {
+type CartEmptyState = {
   title: string
   subtitle: string
   cta: {
@@ -46,53 +48,52 @@ interface CartEmptyState {
   }
 }
 
-interface CartProps {
+type CartState = {
+  lineItems: CartLineItem[]
+  lastResult: SubmissionResult | null
+}
+
+type CartProps = {
   title?: string
   lineItems: CartLineItem[] | Promise<CartLineItem[]>
   summary: CartSummary
   emptyState: CartEmptyState
-  removeItemAriaLabel?: string
-  loadingAriaLabel?: string
-  removeLineItemAction: Action<{ error: string | null }, string>
-  decrementAriaLabel?: string
-  incrementAriaLabel?: string
-  updateLineItemQuantityAction: Action<{ error: string | null }, { id: string; quantity: number }>
-  redirectToCheckoutAction: Action<{ error: string | null }, unknown>
+  lineItemAction: Action<CartState, FormData>
+  checkoutAction: Action<SubmissionResult | null, FormData>
+  deleteLineItemLabel?: string
+  decrementLineItemLabel?: string
+  incrementLineItemLabel?: string
 }
 
-export const Cart = function Cart({
+export function Cart({
   title = 'Cart',
   lineItems,
+  lineItemAction,
+  checkoutAction,
   summary,
   emptyState,
-  removeItemAriaLabel,
-  loadingAriaLabel,
-  decrementAriaLabel,
-  incrementAriaLabel,
-  removeLineItemAction,
-  updateLineItemQuantityAction,
-  redirectToCheckoutAction,
+  deleteLineItemLabel,
+  decrementLineItemLabel,
+  incrementLineItemLabel,
 }: CartProps) {
   return (
     <Suspense fallback={<CartSkeleton title={title} />}>
       <CartInner
         title={title}
         lineItems={lineItems}
+        lineItemAction={lineItemAction}
+        checkoutAction={checkoutAction}
         summary={summary}
         emptyState={emptyState}
-        removeItemAriaLabel={removeItemAriaLabel}
-        loadingAriaLabel={loadingAriaLabel}
-        decrementAriaLabel={decrementAriaLabel}
-        incrementAriaLabel={incrementAriaLabel}
-        removeLineItemAction={removeLineItemAction}
-        updateLineItemQuantityAction={updateLineItemQuantityAction}
-        redirectToCheckoutAction={redirectToCheckoutAction}
+        deleteLineItemLabel={deleteLineItemLabel}
+        decrementLineItemLabel={decrementLineItemLabel}
+        incrementLineItemLabel={incrementLineItemLabel}
       />
     </Suspense>
   )
 }
 
-async function CartInner({
+function CartInner({
   title,
   lineItems,
   summary = {
@@ -107,20 +108,56 @@ async function CartInner({
     grandTotal: '$0.00',
   },
   emptyState,
-  decrementAriaLabel,
-  incrementAriaLabel,
-  removeItemAriaLabel,
-  loadingAriaLabel,
-  removeLineItemAction,
-  updateLineItemQuantityAction,
-  redirectToCheckoutAction,
+  decrementLineItemLabel,
+  incrementLineItemLabel,
+  deleteLineItemLabel,
+  lineItemAction,
+  checkoutAction,
 }: CartProps) {
-  // const resolvedLineItems = use(Promise.resolve(lineItems))
-  const resolvedLineItems = await Promise.resolve(lineItems)
+  const resolvedLineItems = lineItems instanceof Promise ? use(lineItems) : lineItems
 
-  const totalQuantity = resolvedLineItems.reduce((total, item) => total + item.quantity, 0)
+  const [state, formAction, isPending] = useActionState(lineItemAction, {
+    lineItems: resolvedLineItems,
+    lastResult: null,
+  })
 
-  if (resolvedLineItems.length === 0) {
+  const [optimisticLineItems, setOptimisticLineItems] = useOptimistic<CartLineItem[], FormData>(
+    state.lineItems,
+    (prevState, formData) => {
+      const intent = formData.get('intent')
+      const submission = parseWithZod(formData, { schema })
+
+      if (submission.status !== 'success') return prevState
+
+      switch (intent) {
+        case 'increment': {
+          const { id } = submission.value
+
+          return prevState.map(item =>
+            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+          )
+        }
+        case 'decrement': {
+          const { id } = submission.value
+
+          return prevState.map(item =>
+            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+          )
+        }
+        case 'delete': {
+          const { id } = submission.value
+
+          return prevState.filter(item => item.id !== id)
+        }
+        default:
+          return prevState
+      }
+    }
+  )
+
+  const optimisticQuantity = optimisticLineItems.reduce((total, item) => total + item.quantity, 0)
+
+  if (optimisticLineItems.length === 0) {
     return <CartEmptyState {...emptyState} />
   }
 
@@ -131,65 +168,46 @@ async function CartInner({
         <div className="w-full">
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             {title}
-            {totalQuantity && <span className="ml-4 text-contrast-200">{totalQuantity}</span>}
+            <span className="ml-4 text-contrast-200">{optimisticQuantity}</span>
           </h1>
 
           {/* Cart Items */}
           <ul className="flex flex-col gap-5">
-            {resolvedLineItems.map(
-              ({ id, title: lineItemTitle, image, price, subtitle, quantity }) => (
-                <li
-                  className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
-                  key={id}
-                >
-                  <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36">
-                    <Image
-                      fill
-                      src={image.src}
-                      alt={image.alt}
-                      sizes="(max-width: 400px) 100vw, 144px"
-                      className="object-cover"
-                    />
+            {optimisticLineItems.map(lineItem => (
+              <li
+                className="flex flex-col items-start gap-x-5 gap-y-6 @sm:flex-row @sm:items-center @sm:gap-y-4"
+                key={lineItem.id}
+              >
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-36">
+                  <Image
+                    fill
+                    src={lineItem.image.src}
+                    alt={lineItem.image.alt}
+                    sizes="(max-width: 400px) 100vw, 144px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-grow flex-wrap justify-between gap-y-2">
+                  <div className="flex flex-col @xl:w-1/2 @xl:pr-4">
+                    <span className="font-medium">{lineItem.title}</span>
+                    <span className="text-contrast-300">{lineItem.subtitle}</span>
                   </div>
-                  <div className="flex flex-grow flex-wrap justify-between gap-y-2">
-                    <div className="flex flex-col @xl:w-1/2 @xl:pr-4">
-                      <span className="font-medium">{lineItemTitle}</span>
-                      <span className="text-contrast-300">{subtitle}</span>
-                    </div>
-                    <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
-                      <span className="font-medium @xl:ml-auto">{price}</span>
-
-                      {/* Counter */}
-                      <div className="flex items-center rounded-lg border">
-                        <DecrementButton
-                          id={id}
-                          quantity={quantity}
-                          action={updateLineItemQuantityAction}
-                          ariaLabel={decrementAriaLabel}
-                        />
-                        <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
-                          {quantity}
-                        </span>
-                        <LineItemQuantityIncrementButton
-                          id={id}
-                          quantity={quantity}
-                          action={updateLineItemQuantityAction}
-                          ariaLabel={incrementAriaLabel}
-                        />
-                      </div>
-
-                      {/* Remove Line Item Button */}
-                      <RemoveButton
-                        id={id}
-                        action={removeLineItemAction}
-                        removeItemAriaLabel={removeItemAriaLabel}
-                        loadingAriaLabel={loadingAriaLabel}
-                      />
-                    </div>
-                  </div>
-                </li>
-              )
-            )}
+                  <CounterForm
+                    lineItem={lineItem}
+                    action={formAction}
+                    onSubmit={formData => {
+                      startTransition(async () => {
+                        formAction(formData)
+                        setOptimisticLineItems(formData)
+                      })
+                    }}
+                    incrementLabel={incrementLineItemLabel}
+                    decrementLabel={decrementLineItemLabel}
+                    deleteLabel={deleteLineItemLabel}
+                  />
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -230,10 +248,123 @@ async function CartInner({
               </tfoot>
             )}
           </table>
-          <CheckoutButton label={summary.ctaLabel} action={redirectToCheckoutAction} />
+          <CheckoutButton disabled={isPending} className="mt-10 w-full" action={checkoutAction}>
+            {summary.ctaLabel}
+          </CheckoutButton>
         </div>
       </div>
     </div>
+  )
+}
+
+function CounterForm({
+  lineItem,
+  action,
+  onSubmit,
+  incrementLabel = 'Increase count',
+  decrementLabel = 'Decrease count',
+  deleteLabel = 'Remove item',
+}: {
+  action(payload: FormData): void
+  onSubmit(formData: FormData): void
+  lineItem: CartLineItem
+  incrementLabel?: string
+  decrementLabel?: string
+  deleteLabel?: string
+}) {
+  const [form, fields] = useForm({
+    defaultValue: lineItem,
+    shouldValidate: 'onBlur',
+    shouldRevalidate: 'onInput',
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema })
+    },
+    onSubmit(event, { formData }) {
+      event.preventDefault()
+
+      onSubmit(formData)
+    },
+  })
+
+  return (
+    <form {...getFormProps(form)} action={action}>
+      <input {...getInputProps(fields.id, { type: 'hidden' })} key={fields.id.id} />
+      <input {...getInputProps(fields.quantity, { type: 'hidden' })} key={fields.quantity.id} />
+      <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
+        <span className="font-medium @xl:ml-auto">{lineItem.price}</span>
+
+        {/* Counter */}
+        <div className="flex items-center rounded-lg border">
+          <button
+            className={clsx(
+              'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+              lineItem.quantity === 1 ? 'opacity-50' : 'hover:bg-contrast-100/50'
+            )}
+            aria-label={decrementLabel}
+            type="submit"
+            disabled={lineItem.quantity === 1}
+            name="intent"
+            value="decrement"
+          >
+            <Minus
+              className={clsx(
+                'text-contrast-300 transition-colors duration-300 ',
+                lineItem.quantity !== 1 && 'group-hover:text-foreground'
+              )}
+              strokeWidth={1.5}
+              size={18}
+            />
+          </button>
+          <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
+            {lineItem.quantity}
+          </span>
+          <button
+            className={clsx(
+              'group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
+            )}
+            aria-label={incrementLabel}
+            type="submit"
+            name="intent"
+            value="increment"
+          >
+            <Plus
+              className="text-contrast-300 transition-colors duration-300 group-hover:text-foreground"
+              strokeWidth={1.5}
+              size={18}
+            />
+          </button>
+        </div>
+
+        <button
+          type="submit"
+          aria-label={deleteLabel}
+          className="-ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+          name="intent"
+          value="delete"
+        >
+          <Trash2 strokeWidth={1} size={18} />
+        </button>
+      </div>
+    </form>
+  )
+}
+
+function CheckoutButton({
+  action,
+  ...rest
+}: { action: Action<SubmissionResult | null, FormData> } & React.ComponentPropsWithoutRef<
+  typeof Button
+>) {
+  const [lastResult, formAction, isPending] = useActionState(action, null)
+
+  useEffect(() => {
+    if (lastResult?.error) return console.log(lastResult.error)
+  }, [lastResult?.error])
+
+  return (
+    <form action={formAction}>
+      <Button {...rest} type="submit" loading={isPending} />
+    </form>
   )
 }
 

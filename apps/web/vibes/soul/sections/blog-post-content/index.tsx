@@ -28,9 +28,9 @@ export const BlogPostContent = function BlogPostContent({
   className = '',
 }: Props) {
   return (
-    <section className={clsx('mx-auto max-w-screen-2xl @container', className)}>
-      <div className="px-3 @xl:px-6 @5xl:px-20">
-        <header className="mx-auto w-full max-w-4xl space-y-4 pb-10 pt-24 @4xl:pb-16 @4xl:pt-40">
+    <section className={clsx('@container', className)}>
+      <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+        <header className="mx-auto w-full max-w-4xl pb-10 @4xl:pb-16">
           <Breadcrumbs
             breadcrumbs={[
               {
@@ -48,7 +48,7 @@ export const BlogPostContent = function BlogPostContent({
             ]}
           />
 
-          <h1 className="mt-2 font-heading text-4xl font-medium leading-[1.1] @4xl:text-6xl">
+          <h1 className="mb-4 mt-8 font-heading text-4xl font-medium leading-none @xl:text-5xl @4xl:text-6xl">
             {title}
           </h1>
           <p>
@@ -61,12 +61,12 @@ export const BlogPostContent = function BlogPostContent({
           alt={image.alt}
           height={780}
           width={1280}
-          className="mx-auto aspect-[5/3] w-full max-w-screen-2xl rounded-2xl bg-contrast-100 object-cover"
+          className="aspect-video w-full rounded-2xl bg-contrast-100 object-cover"
         />
 
         <article
           dangerouslySetInnerHTML={{ __html: content }}
-          className="prose mx-auto w-full max-w-4xl space-y-4 pb-20 pt-10 @4xl:py-20 [&_h2]:font-heading [&_h3]:font-heading [&_h4]:font-heading [&_h5]:font-heading [&_h6]:font-heading [&_img]:mx-auto [&_img]:max-h-[600px] [&_img]:w-fit [&_img]:rounded-2xl [&_img]:object-cover"
+          className="prose mx-auto w-full max-w-4xl space-y-4 pt-10 @4xl:pt-16 [&_h2]:font-heading [&_h3]:font-semibold [&_h4]:font-semibold [&_h5]:font-semibold [&_h6]:font-semibold [&_img]:mx-auto [&_img]:max-h-[600px] [&_img]:w-fit [&_img]:rounded-2xl [&_img]:object-cover"
         />
       </div>
     </section>

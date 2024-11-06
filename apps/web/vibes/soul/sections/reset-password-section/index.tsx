@@ -8,8 +8,8 @@ type Props = {
 }
 
 export function ResetPasswordSection({
-  title = 'Reset Password',
-  subtitle = 'Enter the email associated with your account below. We’ll send you instructions to reset your password.',
+  title = 'Reset password',
+  subtitle = 'Enter a new password below to reset your account password.',
   submitLabel,
   action,
 }: Props) {

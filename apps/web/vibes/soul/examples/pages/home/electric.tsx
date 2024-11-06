@@ -1,11 +1,13 @@
+import { locales } from '@/vibes/soul/data/locales'
 import { cards } from '@/vibes/soul/examples/primitives/card-carousel/electric'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { feature } from '@/vibes/soul/examples/sections/feature/electric'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/electric'
 import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/electric'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { CardProduct } from '@/vibes/soul/primitives/product-card'
 import { Feature } from '@/vibes/soul/sections/feature'
@@ -56,13 +58,6 @@ const paymentIconsArray: React.ReactNode[] = [
   <GooglePay key="GooglePay" />,
   <ApplePay key="ApplePay" />,
   <Bitcoin key="Bitcoin" />,
-]
-
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
 ]
 
 // Featured Products
@@ -194,17 +189,18 @@ export const featuredImageII: FeaturedImageProps = {
 export default function Preview() {
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
       <Navigation
         links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"
         locales={locales}
-        activeLocale="EN"
+        activeLocaleId="en"
+        localeAction={localeAction}
         searchHref="#"
       />
       <Slideshow slides={heroSlides} />

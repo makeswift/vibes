@@ -23,7 +23,7 @@ export function Header({ chapters, chapterSlug }: Props) {
 
   return (
     <header className="sticky top-0 z-[60] h-14 border-b border-dashed border-contrast-300 bg-background @container md:h-16">
-      <div className="mx-auto flex h-full items-center justify-between px-3 xl:container md:px-5 xl:px-8">
+      <div className="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-3 md:px-5 xl:px-8">
         <div className="flex flex-1 items-center gap-x-2 md:gap-x-3">
           <MobileMenu chapter={chapter} />
 

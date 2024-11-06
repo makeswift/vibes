@@ -4,7 +4,7 @@ import { useActionState, useEffect } from 'react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 
-import { Action } from './remove-button'
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
 export function CheckoutButton({
   action,
@@ -21,7 +21,7 @@ export function CheckoutButton({
 
   return (
     <form action={formAction}>
-      <Button className="mt-10 w-full" type="submit" disabled={isPending} loading={isPending}>
+      <Button className="mt-5 w-full" type="submit" disabled={isPending} loading={isPending}>
         {label}
       </Button>
     </form>

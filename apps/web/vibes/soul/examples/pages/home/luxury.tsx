@@ -1,11 +1,13 @@
+import { locales } from '@/vibes/soul/data/locales'
 import { cards } from '@/vibes/soul/examples/primitives/card-carousel/luxury'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury'
 import { feature } from '@/vibes/soul/examples/sections/feature/luxury'
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/luxury'
 import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/luxury'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/luxury'
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/luxury'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { Feature } from '@/vibes/soul/sections/feature'
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel'
@@ -57,13 +59,6 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
-
 export const featuredImageII: FeaturedImageProps = {
   title: 'Handmade in Spain',
   description:
@@ -78,17 +73,18 @@ export const featuredImageII: FeaturedImageProps = {
 export default function Preview() {
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
       <Navigation
         links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"
         locales={locales}
-        activeLocale="EN"
+        activeLocaleId="en"
+        localeAction={localeAction}
         searchHref="#"
       />
       <Slideshow slides={heroSlides} />

@@ -1,3 +1,4 @@
+import { ZoomListener } from '../zoom-listener'
 import './style/globals.css'
 
 export const metadata = {
@@ -8,6 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <ZoomListener />
       <body>{children}</body>
     </html>
   )

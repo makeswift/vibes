@@ -1,7 +1,7 @@
 import { SubmissionResult } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
 
-import { schema } from '@/vibes/soul/sections/reset-password-section/schema'
+import { schema } from '@/vibes/soul/sections/forgot-password-section/schema'
 
 export async function resetPasswordAction(lastResult: SubmissionResult | null, formData: FormData) {
   'use server'

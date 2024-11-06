@@ -1,4 +1,6 @@
 import { getProducts } from '@/vibes/soul/data'
+import { locales } from '@/vibes/soul/data/locales'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury'
 import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/luxury'
 import {
@@ -7,7 +9,7 @@ import {
 } from '@/vibes/soul/examples/sections/product-description/luxury'
 import { product } from '@/vibes/soul/examples/sections/product-detail/luxury'
 import { reviews } from '@/vibes/soul/examples/sections/reviews'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
@@ -17,30 +19,24 @@ import { ProductDetail } from '@/vibes/soul/sections/product-detail'
 import { Reviews } from '@/vibes/soul/sections/reviews'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
-
 export default function Preview() {
   const featuredProducts = getProducts('Luxury')
 
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
       <div className="relative flex flex-col">
         <Navigation
           links={navigationLinks}
           logo={logo}
           cartHref="#"
           accountHref="#"
-          activeLocale="EN"
+          activeLocaleId="en"
           locales={locales}
+          localeAction={localeAction}
           searchHref="#"
         />
 

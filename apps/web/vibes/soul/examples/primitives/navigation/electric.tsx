@@ -1,6 +1,7 @@
-import { getProducts } from '@/vibes/soul/data'
+import { locales } from '@/vibes/soul/data/locales'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
-import { SearchResult } from '@/vibes/soul/primitives/navigation/search-results'
+
+import { localeAction, searchAction } from './actions'
 
 export const navigationLinks = [
   {
@@ -104,80 +105,21 @@ export const navigationLinks = [
   },
 ]
 
-export const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
-
-const searchAction = async () => {
-  'use server'
-
-  return new Promise<SearchResult[]>(res => {
-    setTimeout(() => {
-      res([
-        {
-          type: 'links',
-          title: 'Indoors',
-          links: [
-            {
-              label: 'Desk Plants',
-              href: '#',
-            },
-            {
-              label: 'Low Light Plants',
-              href: '#',
-            },
-            {
-              label: 'Pet Friendly',
-              href: '#',
-            },
-          ],
-        },
-        {
-          type: 'links',
-          title: 'Outdoors',
-          links: [
-            {
-              label: 'Small',
-              href: '#',
-            },
-            {
-              label: 'Medium',
-              href: '#',
-            },
-            {
-              label: 'Large',
-              href: '#',
-            },
-          ],
-        },
-        {
-          type: 'products',
-          title: 'Products',
-          products: getProducts('Electric'),
-        },
-      ])
-    }, 1000)
-  })
-}
-
 export const logo = 'SOUL'
 
 export default function Preview() {
   return (
-    <div className="relative min-h-48">
+    <div className="relative min-h-screen bg-contrast-100 p-4">
       <Navigation
         links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"
-        activeLocale="EN"
+        activeLocaleId="en"
         searchHref="#"
         locales={locales}
-        searchAction={searchAction}
-        searchCtaLabel="View all items"
+        searchAction={searchAction('Electric')}
+        localeAction={localeAction}
       />
     </div>
   )

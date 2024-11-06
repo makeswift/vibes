@@ -92,10 +92,20 @@ export const sections = [
     files: ['sections/footer/index.tsx'],
   },
   {
-    name: 'header',
-    dependencies: ['clsx', 'lucide-react', 'react-headroom'],
-    registryDependencies: [],
-    files: ['sections/header/index.tsx'],
+    name: 'forgot-password-section',
+    dependencies: [],
+    registryDependencies: ['button', 'input'],
+    files: [
+      'sections/forgot-password-section/index.tsx',
+      'sections/forgot-password-section/forgot-password-form.tsx',
+      'sections/forgot-password-section/schema.ts',
+    ],
+  },
+  {
+    name: 'header-section',
+    dependencies: ['clsx', 'react-headroom'],
+    registryDependencies: ['banner', 'navigation'],
+    files: ['sections/header-section/index.tsx'],
   },
   {
     name: 'icon-block',

@@ -37,13 +37,13 @@ export const navigation = [
         file: 'docs/animated-link.mdx',
         component: 'animated-link',
       },
-      {
-        title: 'Announcement Bar',
-        slug: 'announcement-bar',
-        file: 'docs/announcement-bar.mdx',
-        component: 'announcement-bar',
-      },
       { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
+      {
+        title: 'Banner',
+        slug: 'banner',
+        file: 'docs/banner.mdx',
+        component: 'banner',
+      },
       {
         title: 'Blog Post Card',
         slug: 'blog-post-card',
@@ -208,6 +208,18 @@ export const navigation = [
         component: 'featured-video',
       },
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
+      {
+        title: 'Forgot Password Section',
+        slug: 'forgot-password-section',
+        file: 'docs/forgot-password-section.mdx',
+        component: 'forgot-password-section',
+      },
+      {
+        title: 'Header Section',
+        slug: 'header-section',
+        file: 'docs/header-section.mdx',
+        component: 'header-section',
+      },
       {
         title: 'Icon Block',
         slug: 'icon-block',

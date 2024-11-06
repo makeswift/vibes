@@ -1,19 +1,14 @@
 import { getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
+import { locales } from '@/vibes/soul/data/locales'
 import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm'
 import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/warm'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 import { Footer } from '@/vibes/soul/sections/footer'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
-
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
 
 export default function Preview() {
   const products = getProducts('Warm')
@@ -22,17 +17,18 @@ export default function Preview() {
 
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
       <Navigation
         links={navigationLinks}
         logo={logo}
         cartHref="#"
         accountHref="#"
-        activeLocale="EN"
+        activeLocaleId="en"
         locales={locales}
+        localeAction={localeAction}
         searchHref="#"
       />
       <ProductsListSection

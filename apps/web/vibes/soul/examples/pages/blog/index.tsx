@@ -1,6 +1,8 @@
+import { locales } from '@/vibes/soul/data/locales'
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
-import { AnnouncementBar } from '@/vibes/soul/primitives/announcement-bar'
+import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list'
 import { Footer } from '@/vibes/soul/sections/footer'
@@ -45,20 +47,13 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ]
 
-const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
-]
-
 export default function Preview() {
   return (
     <>
-      <AnnouncementBar>
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
-      </AnnouncementBar>
+      </Banner>
 
       <Navigation
         links={navigationLinks}
@@ -66,7 +61,8 @@ export default function Preview() {
         cartHref="#"
         accountHref="#"
         locales={locales}
-        activeLocale="EN"
+        localeAction={localeAction}
+        activeLocaleId="en"
         searchHref="#"
       />
 

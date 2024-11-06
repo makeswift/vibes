@@ -19,7 +19,7 @@ type Props = {
   submitLabel?: string
 }
 
-export function ResetPasswordForm({ action, submitLabel = 'Reset password' }: Props) {
+export function ResetPasswordForm({ action, submitLabel = 'Update' }: Props) {
   const [lastResult, formAction, isPending] = useActionState(action, null)
   const [form, fields] = useForm({
     constraint: getZodConstraint(schema),
@@ -35,14 +35,21 @@ export function ResetPasswordForm({ action, submitLabel = 'Reset password' }: Pr
   }, [lastResult])
 
   return (
-    <form {...getFormProps(form)} className="flex flex-grow flex-col gap-5" action={formAction}>
+    <form {...getFormProps(form)} className="space-y-5" action={formAction}>
       <Input
-        {...getInputProps(fields.email, { type: 'text' })}
-        key={fields.email.id}
-        errors={fields.email.errors}
-        label="Email"
+        {...getInputProps(fields.password, { type: 'password' })}
+        key={fields.password.id}
+        errors={fields.password.errors}
+        label="Password"
       />
-      <Button type="submit" variant="secondary" className="mt-auto w-full" loading={isPending}>
+      <Input
+        {...getInputProps(fields.confirmPassword, { type: 'password' })}
+        key={fields.confirmPassword.id}
+        errors={fields.confirmPassword.errors}
+        className="mb-6"
+        label="Confirm password"
+      />
+      <Button type="submit" variant="secondary" size="small" loading={isPending}>
         {submitLabel}
       </Button>
     </form>
