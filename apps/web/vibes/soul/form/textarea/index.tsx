@@ -1,5 +1,3 @@
-'use client'
-
 import * as React from 'react'
 
 import { clsx } from 'clsx'
@@ -8,7 +6,7 @@ import { ErrorMessage } from '@/vibes/soul/form/error-message'
 import { Label } from '@/vibes/soul/form/label'
 
 export const Textarea = React.forwardRef<
-  React.ElementRef<'textarea'>,
+  React.ComponentRef<'textarea'>,
   React.ComponentPropsWithoutRef<'textarea'> & {
     prepend?: React.ReactNode
     label?: string
