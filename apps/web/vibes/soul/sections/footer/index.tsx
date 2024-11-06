@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { ReactNode, type Ref, forwardRef } from 'react'
 
 import { clsx } from 'clsx'
 
@@ -39,17 +39,21 @@ interface Props {
   className?: string
 }
 
-export const Footer = function Footer({
-  logo,
-  sections,
-  contactInformation,
-  paymentIcons,
-  socialMediaLinks,
-  copyright,
-  className = '',
-}: Props) {
+export const Footer = forwardRef(function Footer(
+  {
+    logo,
+    sections,
+    contactInformation,
+    paymentIcons,
+    socialMediaLinks,
+    copyright,
+    className = '',
+  }: Props,
+  ref: Ref<HTMLDivElement>
+) {
   return (
     <footer
+      ref={ref}
       className={clsx(
         'border-b-[4px] border-b-primary bg-background text-foreground @container',
         className
@@ -157,4 +161,4 @@ export const Footer = function Footer({
       </div>
     </footer>
   )
-}
+})
