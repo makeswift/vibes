@@ -7,6 +7,7 @@ import {
   accordions,
   productDescriptionImage,
 } from '@/vibes/soul/examples/sections/product-description/warm'
+import { action, fields } from '@/vibes/soul/examples/sections/product-detail/action'
 import { product } from '@/vibes/soul/examples/sections/product-detail/warm'
 import { reviews } from '@/vibes/soul/examples/sections/reviews'
 import { Banner } from '@/vibes/soul/primitives/banner'
@@ -40,7 +41,7 @@ export default function Preview() {
           searchHref="#"
         />
 
-        <ProductDetail product={product} />
+        <ProductDetail product={product} fields={fields} action={action} />
 
         <ProductDescription accordions={accordions} image={productDescriptionImage} />
 
