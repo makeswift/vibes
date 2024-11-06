@@ -14,13 +14,10 @@ export const Textarea = React.forwardRef<
     label?: string
     errors?: string[]
   }
->(({ label, className, required, errors, ...rest }, ref) => {
+>(({ id, label, className, required, errors, ...rest }, ref) => {
   return (
     <div className={clsx('space-y-2', className)}>
-      <div className="flex items-center justify-between">
-        {label != null && label !== '' && <Label>{label}</Label>}
-        {required === true && <span className="text-xs text-contrast-300">Required</span>}
-      </div>
+      {label != null && label !== '' && <Label htmlFor={id}>{label}</Label>}
       <textarea
         {...rest}
         ref={ref}
