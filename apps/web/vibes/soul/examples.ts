@@ -391,6 +391,27 @@ export const examples = [
     component: lazy(() => import('./examples/sections/footer/luxury')),
   },
   {
+    name: 'header-section-electric-example',
+    dependencies: [],
+    registryDependencies: ['header-section'],
+    files: ['examples/sections/header-section/electric.tsx'],
+    component: lazy(() => import('./examples/sections/header-section/electric')),
+  },
+  {
+    name: 'header-section-warm-example',
+    dependencies: [],
+    registryDependencies: ['header-section'],
+    files: ['examples/sections/header-section/warm.tsx'],
+    component: lazy(() => import('./examples/sections/header-section/warm')),
+  },
+  {
+    name: 'header-section-luxury-example',
+    dependencies: [],
+    registryDependencies: ['header-section'],
+    files: ['examples/sections/header-section/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/header-section/luxury')),
+  },
+  {
     name: 'icon-block-example',
     dependencies: [],
     registryDependencies: ['icon-block'],

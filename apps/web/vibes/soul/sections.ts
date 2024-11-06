@@ -92,10 +92,10 @@ export const sections = [
     files: ['sections/footer/index.tsx'],
   },
   {
-    name: 'header',
-    dependencies: ['clsx', 'lucide-react', 'react-headroom'],
-    registryDependencies: [],
-    files: ['sections/header/index.tsx'],
+    name: 'header-section',
+    dependencies: ['clsx', 'react-headroom'],
+    registryDependencies: ['banner', 'navigation'],
+    files: ['sections/header-section/index.tsx'],
   },
   {
     name: 'icon-block',
