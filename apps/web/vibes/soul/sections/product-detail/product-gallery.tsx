@@ -51,7 +51,7 @@ export const ProductGallery = ({ images, className }: Props) => {
         </div>
       </div>
 
-      <div className="mt-2 flex max-w-full justify-center gap-2 overflow-x-auto @md:mt-4">
+      <div className="mt-2 flex max-w-full gap-2 overflow-x-auto">
         {images.map((image, index) => (
           <button
             key={index}

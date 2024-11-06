@@ -43,7 +43,7 @@ export const NumberInput = forwardRef<
         <div className="inline-flex items-center rounded-lg border">
           <button
             className={clsx(
-              'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+              'group rounded-l-lg p-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
               Number(value) === min ? 'opacity-50' : 'hover:bg-contrast-100/50'
             )}
             aria-label={decrementLabel}
@@ -78,7 +78,7 @@ export const NumberInput = forwardRef<
           />
           <button
             className={clsx(
-              'group rounded-r-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+              'group rounded-r-lg p-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
               Number(value) === max ? 'opacity-50' : 'hover:bg-contrast-100/50'
             )}
             aria-label={incrementLabel}

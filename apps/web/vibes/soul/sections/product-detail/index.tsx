@@ -26,7 +26,7 @@ type Props = {
 export function ProductDetail({ product, action, fields }: Props) {
   return (
     <section className="@container">
-      <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 items-stretch gap-x-10 gap-y-10 px-4 py-10 @xl:px-6 @xl:py-14 @2xl:grid-cols-2 @4xl:px-8 @4xl:py-20 @5xl:gap-x-16">
+      <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 items-stretch gap-x-8 gap-y-10 px-4 py-10 @xl:px-6 @xl:py-14 @2xl:grid-cols-2 @4xl:px-8 @4xl:py-20 @5xl:gap-x-16">
         <div className="hidden @2xl:block">
           <ProductGallery images={product.images ?? []} className="sticky top-8" />
         </div>
@@ -37,21 +37,21 @@ export function ProductDetail({ product, action, fields }: Props) {
             <p className="font-mono text-sm uppercase">{product.subtitle}</p>
           )}
 
-          <h1 className="mb-4 mt-2 font-heading text-2xl font-medium leading-none @xl:text-3xl @4xl:text-4xl">
+          <h1 className="mb-3 mt-2 font-heading text-2xl font-medium leading-none @xl:mb-4 @xl:text-3xl @4xl:text-4xl">
             {product.title}
           </h1>
 
           <Rating rating={product.rating ?? 0} />
 
-          {product.description != null && product.description !== '' && (
-            <p className="my-3 text-contrast-500">{product.description}</p>
-          )}
+          <PriceLabel price={product.price ?? ''} className="my-3 text-xl @xl:text-2xl" />
 
-          <PriceLabel price={product.price ?? ''} className="mb-6 text-2xl" />
-
-          <div className="@2xl:hidden">
+          <div className="mb-8 @2xl:hidden">
             <ProductGallery images={product.images ?? []} />
           </div>
+
+          {product.description != null && product.description !== '' && (
+            <p className="mb-6 text-contrast-500">{product.description}</p>
+          )}
 
           <ProductDetailForm fields={fields} productId={product.id} action={action} />
         </div>

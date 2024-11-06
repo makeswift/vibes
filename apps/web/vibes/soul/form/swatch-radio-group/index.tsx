@@ -40,7 +40,7 @@ export const SwatchRadioGroup = React.forwardRef<
         id={id}
         ref={ref}
         aria-label={label}
-        className="flex gap-2"
+        className="flex flex-wrap gap-1"
       >
         {options.map(option => (
           <RadioGroupPrimitive.Item
