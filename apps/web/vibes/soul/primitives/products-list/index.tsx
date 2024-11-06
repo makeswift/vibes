@@ -13,6 +13,7 @@ interface Props {
   compareProducts?: ListProduct[] | Promise<ListProduct[]>
   className?: string
   showCompare?: boolean
+  compareAction?: React.ComponentProps<'form'>['action']
   compareLabel?: string
   compareParamName?: string
 }
@@ -40,6 +41,7 @@ export function ProductsList({
   products,
   className,
   showCompare,
+  compareAction,
   compareProducts,
   compareLabel,
   compareParamName,
@@ -62,7 +64,14 @@ export function ProductsList({
           </Suspense>
         </div>
       </div>
-      {compareProducts && <CompareDrawer items={compareProducts} paramName={compareParamName} />}
+      {compareProducts && (
+        <CompareDrawer
+          items={compareProducts}
+          paramName={compareParamName}
+          action={compareAction}
+          submitLabel={compareLabel}
+        />
+      )}
     </>
   )
 }

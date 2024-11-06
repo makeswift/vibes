@@ -16,6 +16,7 @@ interface Props {
   sortOptions: Promise<SortOption[]> | SortOption[]
   compareProducts?: Promise<ListProduct[]> | ListProduct[]
   paginationInfo?: Promise<CursorPaginationInfo> | CursorPaginationInfo
+  compareAction?: React.ComponentProps<'form'>['action']
   compareLabel?: string
   filterLabel?: string
   sortLabel?: string
@@ -31,6 +32,7 @@ export function ProductsListSection({
   compareProducts,
   sortOptions,
   filters,
+  compareAction,
   compareLabel,
   paginationInfo,
   filterLabel,
@@ -63,6 +65,7 @@ export function ProductsListSection({
             compareLabel={compareLabel}
             compareParamName={compareParamName}
             compareProducts={compareProducts}
+            compareAction={compareAction}
           />
           {paginationInfo && <CursorPagination info={paginationInfo} />}
         </div>
