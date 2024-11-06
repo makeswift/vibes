@@ -55,16 +55,16 @@ export const Footer = forwardRef(function Footer(
     <footer
       ref={ref}
       className={clsx(
-        'border-b-[4px] border-b-primary bg-background text-foreground @container',
+        'border-b-4 border-t border-b-primary border-t-contrast-100 bg-background text-foreground @container',
         className
       )}
     >
-      <div className="mx-auto max-w-screen-2xl">
-        <div className="mx-3 flex flex-col justify-between gap-10 border-t border-t-contrast-100 pt-16 @xl:mx-6 @xl:py-20 @2xl:flex-row @5xl:mx-20">
-          <div className="flex flex-col @2xl:w-1/3">
+      <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+        <div className="flex flex-col justify-between gap-10 @2xl:flex-row">
+          <div className="@2xl:w-1/3">
             {/* Contact Information */}
             {contactInformation?.address != null || contactInformation?.phone != null ? (
-              <div className="text-[20px] font-medium @lg:text-2xl">
+              <div className="text-xl font-medium @lg:text-2xl">
                 <h3 className="text-contrast-300">Contact Us</h3>
                 <div>
                   {contactInformation.address != null && contactInformation.address !== '' && (
@@ -149,14 +149,14 @@ export const Footer = forwardRef(function Footer(
           </div>
         </div>
 
-        <div className="flex flex-wrap-reverse justify-between gap-y-10 px-3 py-10 pb-20 @xl:px-6 @5xl:px-20">
-          {/* Copyright */}
+        <div className="flex flex-wrap-reverse justify-between gap-y-10 pt-10 @xl:pt-16">
           {copyright != null && copyright !== '' && (
-            <span className="block text-contrast-400">{copyright}</span>
+            <p className="text-sm text-contrast-400">{copyright}</p>
           )}
 
-          {/* Payement Icons */}
-          {paymentIcons != null && <div className="ml-auto flex gap-2">{paymentIcons}</div>}
+          {paymentIcons != null && (
+            <div className="ml-auto flex flex-wrap gap-2">{paymentIcons}</div>
+          )}
         </div>
       </div>
     </footer>
