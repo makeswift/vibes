@@ -8,7 +8,7 @@ import { ArrowRight, X } from 'lucide-react'
 import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
 
 import { Button } from '@/vibes/soul/primitives/button'
-import { Drawer, DrawerItem } from '@/vibes/soul/primitives/drawer'
+import { Drawer } from '@/vibes/soul/primitives/drawer'
 
 function getInitials(name: string): string {
   return name
@@ -17,6 +17,13 @@ function getInitials(name: string): string {
     .join('')
     .toUpperCase()
     .slice(0, 2)
+}
+
+type DrawerItem = {
+  id: string
+  image?: { src: string; alt: string }
+  href: string
+  title: string
 }
 
 type Props = {

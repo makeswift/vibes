@@ -4,13 +4,6 @@ import { useEffect, useState } from 'react'
 
 import * as Portal from '@radix-ui/react-portal'
 
-export type DrawerItem = {
-  id: string
-  image?: { src: string; alt: string }
-  title: string
-  href: string
-}
-
 type DrawerProps = {
   children: React.ReactNode
 }
