@@ -37,13 +37,13 @@ export const navigation = [
         file: 'docs/animated-link.mdx',
         component: 'animated-link',
       },
-      {
-        title: 'Announcement Bar',
-        slug: 'announcement-bar',
-        file: 'docs/announcement-bar.mdx',
-        component: 'announcement-bar',
-      },
       { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
+      {
+        title: 'Banner',
+        slug: 'banner',
+        file: 'docs/banner.mdx',
+        component: 'banner',
+      },
       {
         title: 'Blog Post Card',
         slug: 'blog-post-card',

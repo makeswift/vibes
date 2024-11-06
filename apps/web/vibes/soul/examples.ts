@@ -48,11 +48,11 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/animated-link')),
   },
   {
-    name: 'announcement-bar-example',
+    name: 'banner-example',
     dependencies: [],
-    registryDependencies: ['announcement-bar'],
-    files: ['examples/primitives/announcement-bar/index.tsx'],
-    component: lazy(() => import('./examples/primitives/announcement-bar')),
+    registryDependencies: ['banner'],
+    files: ['examples/primitives/banner/index.tsx'],
+    component: lazy(() => import('./examples/primitives/banner')),
   },
   {
     name: 'badge-example',

@@ -19,17 +19,18 @@ export const primitives = [
     registryDependencies: [],
     files: ['primitives/animated-link/index.tsx'],
   },
-  {
-    name: 'announcement-bar',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['primitives/announcement-bar/index.tsx'],
-  },
+
   {
     name: 'badge',
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/badge/index.tsx'],
+  },
+  {
+    name: 'banner',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['primitives/banner/index.tsx'],
   },
   {
     name: 'blog-post-card',
