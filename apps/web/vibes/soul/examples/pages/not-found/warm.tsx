@@ -1,4 +1,5 @@
 import { locales } from '@/vibes/soul/data/locales'
+import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions'
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm'
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/warm'
@@ -167,6 +168,7 @@ export default function Preview() {
       <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        action={action}
       />
 
       <Footer

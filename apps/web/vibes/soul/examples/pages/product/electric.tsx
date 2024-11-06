@@ -74,6 +74,7 @@ export default function Preview() {
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+          action={action}
         />
 
         <Footer sections={footerLinks} logo="SOUL" />

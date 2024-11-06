@@ -1,25 +1,28 @@
 import Image from 'next/image'
 
+import { SubmissionResult } from '@conform-to/react'
 import { clsx } from 'clsx'
 
 import { InlineEmailForm } from '@/vibes/soul/primitives/inline-email-form'
 
-interface Props {
-  image?: {
-    src: string
-    alt: string
-  }
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
+
+export function Subscribe({
+  action,
+  image,
+  title,
+  description,
+}: {
+  action: Action<SubmissionResult | null, FormData>
+  image?: { src: string; alt: string }
   title: string
   description: string
-  // action: (formData: FormData) => void
-}
-
-export const Subscribe = function Subscribe({ image, title, description }: Props) {
+}) {
   return (
-    <section className="@container">
-      <div className="mx-auto flex max-w-screen-2xl flex-col items-center @2xl:flex-row">
+    <section className="bg-primary-shadow @container">
+      <div className="flex flex-col items-start @3xl:flex-row @3xl:items-stretch">
         {image && (
-          <div className="relative aspect-square h-full w-full overflow-hidden bg-primary/10 @2xl:aspect-[9/12] @2xl:w-3/4 @4xl:aspect-square">
+          <div className="relative min-h-96 w-full bg-primary/10 @3xl:flex-1">
             <Image
               src={image.src}
               alt={image.alt}
@@ -30,24 +33,23 @@ export const Subscribe = function Subscribe({ image, title, description }: Props
           </div>
         )}
 
-        <div
-          className={clsx(
-            'mx-3 flex items-center gap-y-12 text-foreground @xl:mx-6 @3xl:w-full @5xl:mx-20',
-            image?.src != null
-              ? 'flex-col py-10 @3xl:gap-y-16'
-              : 'flex-col gap-x-10 border-t border-t-contrast-100 py-20 @2xl:flex-row'
-          )}
-        >
-          <div className="w-full">
-            <h2 className="mb-4 font-heading text-4xl font-medium leading-none @2xl:max-w-lg @7xl:text-5xl">
-              {title}
-            </h2>
-            <p className="opacity-50 @2xl:max-w-sm">{description}</p>
+        <div className="flex-1">
+          <div
+            className={clsx(
+              'flex w-full flex-col gap-10 p-6 @3xl:gap-16 @3xl:p-20',
+              image != null
+                ? '@3xl:max-w-3xl'
+                : 'mx-auto max-w-screen-2xl @3xl:flex-row @3xl:items-center'
+            )}
+          >
+            <div className="flex-1">
+              <h2 className="mb-4 font-heading text-4xl font-medium leading-none text-primary-highlight">
+                {title}
+              </h2>
+              <p className="text-primary-highlight opacity-75">{description}</p>
+            </div>
+            <InlineEmailForm className="flex-1" action={action} />
           </div>
-
-          <InlineEmailForm
-          // action={action}
-          />
         </div>
       </div>
     </section>
