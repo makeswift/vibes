@@ -1,6 +1,6 @@
-import { getProducts } from '@/vibes/soul/data'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
-import { SearchResult } from '@/vibes/soul/primitives/navigation/search-results'
+
+import { localeAction, searchAction } from './actions'
 
 export const navigationLinks = [
   {
@@ -105,63 +105,11 @@ export const navigationLinks = [
 ]
 
 export const locales = [
-  { id: '1', region: 'US', language: 'EN' },
-  { id: '2', region: 'FR', language: 'FR' },
-  { id: '3', region: 'DE', language: 'DC' },
-  { id: '4', region: 'IT', language: 'IT' },
+  { id: 'US', label: 'United States' },
+  { id: 'FR', label: 'France' },
+  { id: 'DE', label: 'Denmark' },
+  { id: 'IT', label: 'Italy' },
 ]
-
-const searchAction = async () => {
-  'use server'
-
-  return new Promise<SearchResult[]>(res => {
-    setTimeout(() => {
-      res([
-        {
-          type: 'links',
-          title: 'Indoors',
-          links: [
-            {
-              label: 'Desk Plants',
-              href: '#',
-            },
-            {
-              label: 'Low Light Plants',
-              href: '#',
-            },
-            {
-              label: 'Pet Friendly',
-              href: '#',
-            },
-          ],
-        },
-        {
-          type: 'links',
-          title: 'Outdoors',
-          links: [
-            {
-              label: 'Small',
-              href: '#',
-            },
-            {
-              label: 'Medium',
-              href: '#',
-            },
-            {
-              label: 'Large',
-              href: '#',
-            },
-          ],
-        },
-        {
-          type: 'products',
-          title: 'Products',
-          products: getProducts('Electric'),
-        },
-      ])
-    }, 1000)
-  })
-}
 
 export const logo = 'SOUL'
 
@@ -173,11 +121,11 @@ export default function Preview() {
         logo={logo}
         cartHref="#"
         accountHref="#"
-        activeLocale="EN"
+        activeLocaleId="US"
         searchHref="#"
         locales={locales}
         searchAction={searchAction}
-        searchCtaLabel="View all items"
+        localeAction={localeAction}
       />
     </div>
   )
