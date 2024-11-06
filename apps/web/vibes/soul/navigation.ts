@@ -99,6 +99,12 @@ export const navigation = [
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
+      {
+        title: 'Inline Email Form',
+        slug: 'inline-email-form',
+        file: 'docs/inline-email-form.mdx',
+        component: 'inline-email-form',
+      },
       { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       {
         title: 'Navigation',

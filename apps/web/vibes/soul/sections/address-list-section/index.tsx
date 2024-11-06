@@ -9,8 +9,8 @@ import { z } from 'zod'
 import { Input } from '@/vibes/soul/form/input'
 import { Badge } from '@/vibes/soul/primitives/badge'
 import { Button } from '@/vibes/soul/primitives/button'
+import { Spinner } from '@/vibes/soul/primitives/spinner'
 
-import { Spinner } from '../../primitives/spinner'
 import { schema } from './schema'
 
 export type Address = z.infer<typeof schema>
