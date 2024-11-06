@@ -26,7 +26,7 @@ export default function Transition({ className, from, to, children }: Props) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry!.isIntersecting) {
           handleTransition()
         }
       },

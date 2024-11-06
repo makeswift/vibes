@@ -18,7 +18,7 @@ interface Props {
 }
 
 export function BrandProvider({ children, brands }: Props) {
-  const [activeBrand, setActiveBrand] = useState(brands[0])
+  const [activeBrand, setActiveBrand] = useState(brands[0]!)
 
   return (
     <BrandContext.Provider

@@ -95,7 +95,7 @@ export const ProductCardSkeleton = function ProductCardSkeleton({
   return (
     <div className={clsx('animate-pulse cursor-pointer rounded-xl @md:rounded-2xl', className)}>
       {/* Image */}
-      <div className="relative aspect-[5/6] overflow-hidden rounded-xl bg-contrast-100 @6xl:min-w-80"></div>
+      <div className="relative aspect-[5/6] overflow-hidden rounded-xl bg-contrast-100 @6xl:min-w-80" />
       <div className="flex justify-between gap-2 pt-4 @sm:gap-2 @sm:pt-7">
         <h3 className="flex flex-col flex-wrap justify-between gap-2 @sm:gap-2 @4xl:flex-row">
           {/* Name */}

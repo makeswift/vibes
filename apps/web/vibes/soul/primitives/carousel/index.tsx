@@ -156,7 +156,7 @@ function CarouselButtons({ className, ...rest }: React.HTMLAttributes<HTMLDivEle
 }
 
 function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) {
-  const { api, scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel()
+  const { api } = useCarousel()
   const [progress, setProgress] = useState(0)
   const [scrollbarPosition, setScrollbarPosition] = useState({ width: 0, left: 0 })
 
@@ -197,7 +197,7 @@ function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) 
     function onScroll() {
       if (!api) return
 
-      setProgress(api.scrollSnapList()[api.selectedScrollSnap()] * 100)
+      setProgress(api.scrollSnapList()[api.selectedScrollSnap()]! * 100)
     }
 
     api.on('select', onScroll)

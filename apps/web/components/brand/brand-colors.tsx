@@ -33,14 +33,22 @@ export function Colors({ colors }: { colors: Color[] }) {
   )
 }
 
-function hslToHex(hsl: string): string {
-  return color({
-    h: parseInt(hsl.split(' ')[0], 10),
-    s: parseInt(hsl.split(' ')[1], 10),
-    l: parseInt(hsl.split(' ')[2], 10),
-  })
-    .hex()
-    .toString()
+/**
+ * Transforms an HSL color channels string to a hex color string.
+ *
+ * This is necessary because in Tailwind, colors are defined in CSS variables as channels, without
+ * the color space function to support the opcity modifier syntax.
+ *
+ * @example
+ *
+ * ```ts
+ * hslChannelsToHex('0 0% 100%') // '#ffffff'
+ * ```
+ *
+ * @see https://tailwindcss.com/docs/customizing-colors#using-css-variables
+ */
+function hslChannelsToHex(hslChannels: string): string {
+  return color.hsl(`hsl(${hslChannels})`).hex().toString()
 }
 
 const brandColors = ['--primary', '--accent', '--success', '--warning', '--error'] as const
@@ -68,14 +76,14 @@ export function BrandColors({ brands, brandName }: { brands: Brand[]; brandName:
       <Colors
         colors={brandColors.map(name => ({
           name: name.replace('--', ''),
-          value: hslToHex(brand.cssVars[name]),
+          value: hslChannelsToHex(brand.cssVars[name]),
         }))}
       />
       <h3 id="neutrals">Neutrals</h3>
       <Colors
         colors={neutralColors.map(name => ({
           name: name.replace('--', ''),
-          value: hslToHex(brand.cssVars[name]),
+          value: hslChannelsToHex(brand.cssVars[name]),
         }))}
       />
     </>

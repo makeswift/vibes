@@ -29,7 +29,7 @@ interface Props
 
 export function GroupLink({ chapterSlug, group, ...rest }: Props) {
   const pathname = usePathname()
-  const href = `/docs/${chapterSlug}/${group.pages[0].slug}`
+  const href = `/docs/${chapterSlug}/${group.pages[0]!.slug}`
 
   return (
     <Link {...rest} href={href} active={isInSameGroup({ chapterSlug, group, pathname, href })}>

@@ -69,11 +69,9 @@ export default async function Page({
   if (!vibe) return notFound()
 
   const allPages = vibe.navigation.flatMap(group => group.pages)
-  const pageIndex = allPages.findIndex(page => page.slug === pageSlug)
+  const page = allPages.find(page => page.slug === pageSlug)
 
-  if (pageIndex === -1) return notFound()
-
-  const page = allPages[pageIndex]
+  if (page == null) return notFound()
   const source = await readFile(path.resolve(path.join('vibes', vibe.slug, page.file)), 'utf-8')
 
   const { content, frontmatter } = await compileMDX<PageMeta>({
@@ -160,6 +158,7 @@ export default async function Page({
   })
 
   const meta = pageMetaSchema(vibe).parse(frontmatter)
+  const pageIndex = allPages.findIndex(p => p.slug === page.slug)
   const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null
   const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null
   const component = vibe.components.find(component => component.name === page.component)

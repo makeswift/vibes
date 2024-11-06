@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: Promise<{ vibe: string 
 
   if (!chapter) return notFound()
 
-  const page = chapter.groups[0].pages[0]
+  const page = chapter.groups[0]?.pages[0]
 
   if (!page) return notFound()
 

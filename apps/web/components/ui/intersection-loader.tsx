@@ -17,9 +17,9 @@ export function IntersectionLoader({ children, onEnter, aspectRatio = 16 / 9 }: 
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.intersectionRatio > 0) {
+        if (entry!.intersectionRatio > 0) {
           setIsVisible(true)
-          onEnter?.(entry)
+          onEnter?.(entry!)
         }
       },
       {

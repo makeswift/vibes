@@ -13,6 +13,7 @@ import {
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
 import { ArrowRight } from 'lucide-react'
 import { parseAsString, useQueryState, useQueryStates } from 'nuqs'
+import { z } from 'zod'
 
 import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group'
 import { CardRadioGroup } from '@/vibes/soul/form/card-radio-group'
@@ -24,7 +25,7 @@ import { Select } from '@/vibes/soul/form/select'
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group'
 import { Button } from '@/vibes/soul/primitives/button'
 
-import { Field, schema } from './schema'
+import { Field, SchemaRawShape, schema } from './schema'
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
@@ -52,7 +53,7 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
       ...acc,
       [field.name]: params[field.name] ?? field.defaultValue ?? '',
     }),
-    { quantity: 1 }
+    { quantity: 1 } as { [Key in keyof SchemaRawShape]?: z.infer<SchemaRawShape[Key]> }
   )
   const [lastResult, formAction] = useActionState(action, null)
   const [form, formFields] = useForm({
@@ -61,6 +62,7 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: schema(fields) })
     },
+    // @ts-expect-error: `defaultValue` types are conflicting with `onValidate`.
     defaultValue,
     shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',
@@ -75,9 +77,9 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
           {fields.map(field => {
             return (
               <FormField
-                key={formFields[field.name].id}
+                key={formFields[field.name]!.id}
                 field={field}
-                formField={formFields[field.name]}
+                formField={formFields[field.name]!}
               />
             )
           })}

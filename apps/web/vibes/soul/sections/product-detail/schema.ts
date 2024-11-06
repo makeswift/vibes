@@ -105,14 +105,20 @@ export type Field =
   | ButtonRadioField
   | SelectField
 
-export function schema(fields: Field[]) {
-  const schema: Record<string, z.ZodType<string | number | boolean | Date | undefined>> = {
+export type SchemaRawShape = {
+  [key: string]: z.ZodString | z.ZodOptional<z.ZodString> | z.ZodNumber | z.ZodOptional<z.ZodNumber>
+  id: z.ZodString
+  quantity: z.ZodNumber
+}
+
+export function schema(fields: Field[]): z.ZodObject<SchemaRawShape> {
+  const schema: SchemaRawShape = {
     id: z.string(),
     quantity: z.number().min(1),
   }
 
   fields.forEach(field => {
-    let fieldSchema
+    let fieldSchema: z.ZodString | z.ZodNumber
     switch (field.type) {
       case 'number':
         fieldSchema = z.number()
@@ -129,7 +135,7 @@ export function schema(fields: Field[]) {
         break
     }
 
-    if (!field.required) schema[field.name] = schema[field.name].optional()
+    if (!field.required) schema[field.name] = fieldSchema.optional()
   })
 
   return z.object(schema)

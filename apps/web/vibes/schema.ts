@@ -81,10 +81,12 @@ export type Page = {
   component?: string
 }
 
-export type Navigation = {
+type NavigationItem = {
   title: string
-  pages: Page[]
-}[]
+  pages: [Page, ...Page[]]
+}
+
+export type Navigation = [NavigationItem, ...NavigationItem[]]
 
 export type Vibe = {
   name: string
