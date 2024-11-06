@@ -14,15 +14,10 @@ export const Input = React.forwardRef<
     label?: string
     errors?: string[]
   }
->(({ prepend, label, className, required, errors, ...rest }, ref) => {
+>(({ id, prepend, label, className, required, errors, ...rest }, ref) => {
   return (
     <div className={clsx('w-full space-y-2', className)}>
-      {label != null && label !== '' && (
-        <div className="flex items-center justify-between">
-          <Label>{label}</Label>
-          {required === true && <span className="text-xs text-contrast-300">Required</span>}
-        </div>
-      )}
+      {label != null && label !== '' && <Label htmlFor={id}>{label}</Label>}
       <div
         className={clsx(
           'relative overflow-hidden rounded-lg border bg-background transition-colors duration-200 focus-within:border-foreground focus:outline-none',
