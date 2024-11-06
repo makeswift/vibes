@@ -563,8 +563,8 @@ function LocaleForm({
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
         className={clsx(
-          'hidden items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
-          'uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-primary @sm:flex'
+          'items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
+          'flex uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-primary'
         )}
       >
         {activeLocale?.id ?? locales[0].id}
