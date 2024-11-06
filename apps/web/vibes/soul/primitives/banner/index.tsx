@@ -5,7 +5,7 @@ import { ReactNode, forwardRef, useCallback, useEffect, useState } from 'react'
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
 
-type Props = {
+interface Props {
   children: ReactNode
   hideDismiss?: boolean
   onDismiss?: () => void
@@ -18,6 +18,7 @@ export const Banner = forwardRef<React.ComponentRef<'div'>, Props>(
 
     useEffect(() => {
       const hidden = localStorage.getItem('hidden-banner') === 'true'
+
       setBanner({ dismissed: hidden, initialized: true })
     }, [])
 
@@ -31,13 +32,13 @@ export const Banner = forwardRef<React.ComponentRef<'div'>, Props>(
 
     return (
       <div
-        id="announcement-bar"
-        ref={ref}
         className={clsx(
           'relative w-full overflow-hidden bg-primary transition-all duration-300 ease-in @container',
           banner.dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
           className
         )}
+        id="announcement-bar"
+        ref={ref}
       >
         <p className="p-3 pr-12 text-sm text-foreground @xl:px-12 @xl:text-center @xl:text-base">
           {children}
@@ -46,13 +47,13 @@ export const Banner = forwardRef<React.ComponentRef<'div'>, Props>(
         {!hideDismiss && (
           <button
             aria-label="Dismiss banner"
+            className="absolute right-3 top-3 grid h-8 w-8 place-content-center rounded-full text-foreground/50 transition-colors duration-300 hover:bg-background/40 hover:text-foreground @xl:top-1/2 @xl:-translate-y-1/2"
             onClick={e => {
               e.preventDefault()
               hideBanner()
             }}
-            className="absolute right-3 top-3 grid h-8 w-8 place-content-center rounded-full text-foreground/50 transition-colors duration-300 hover:bg-background/40 hover:text-foreground @xl:top-1/2 @xl:-translate-y-1/2"
           >
-            <X size={20} strokeWidth={1.5} absoluteStrokeWidth />
+            <X absoluteStrokeWidth size={20} strokeWidth={1.5} />
           </button>
         )}
       </div>
