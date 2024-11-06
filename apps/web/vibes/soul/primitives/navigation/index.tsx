@@ -316,7 +316,7 @@ export const Navigation = forwardRef(function Navigation(
         </div>
       </div>
 
-      <div className="perspective-[2000px] absolute left-0 right-0 top-full flex w-full justify-center">
+      <div className="perspective-[2000px] absolute left-0 right-0 top-full z-50 flex w-full justify-center">
         <NavigationMenu.Viewport className="relative mt-2 w-full data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95" />
       </div>
     </NavigationMenu.Root>
