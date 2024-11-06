@@ -5,20 +5,23 @@ import { addressAction } from './actions'
 const addresses: Address[] = [
   {
     id: '1',
-    name: 'Home',
+    firstName: 'Ben',
+    lastName: 'Smith',
+    company: 'Google',
     street1: '123 Main St',
     city: 'San Francisco',
     state: 'CA',
-    zipcode: '94105',
+    postalCode: '94105',
     country: 'United States',
   },
   {
     id: '2',
-    name: 'Office',
+    firstName: 'Sherlock',
+    lastName: 'Holmes',
     street1: '456 Main St',
     city: 'San Francisco',
     state: 'CA',
-    zipcode: '94105',
+    postalCode: '94105',
     country: 'United States',
   },
 ]
