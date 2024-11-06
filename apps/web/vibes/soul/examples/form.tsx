@@ -5,6 +5,7 @@ import { CardRadioGroup } from '../form/card-radio-group'
 import { Checkbox } from '../form/checkbox'
 import { DatePicker } from '../form/date-picker'
 import { Input } from '../form/input'
+import { NumberInput } from '../form/number-input'
 import { RadioGroup } from '../form/radio-group'
 import { SwatchRadioGroup } from '../form/swatch-radio-group'
 import { Textarea } from '../form/textarea'
@@ -42,9 +43,27 @@ export default function Preview() {
           { type: 'color', label: 'Green', value: 'green', color: 'green', disabled: true },
           { type: 'color', label: 'Gray', value: 'gray', color: '#eee', disabled: true },
         ]}
+        errors={['This is required']}
+      />
+      <NumberInput label="Quantity" />
+      <RadioGroup
+        label="Size"
+        options={[
+          { label: 'Small', value: 'sm' },
+          { label: 'Medium', value: 'md' },
+          { label: 'Large', value: 'lg', disabled: true },
+        ]}
       />
       <RadioGroup
         label="Size"
+        options={[
+          { label: 'Small', value: 'sm' },
+          { label: 'Medium', value: 'md' },
+          { label: 'Large', value: 'lg', disabled: true },
+        ]}
+        errors={['This is required']}
+      />
+      <ButtonRadioGroup
         options={[
           { label: 'Small', value: 'sm' },
           { label: 'Medium', value: 'md' },
@@ -57,8 +76,39 @@ export default function Preview() {
           { label: 'Medium', value: 'md' },
           { label: 'Large', value: 'lg', disabled: true },
         ]}
+        errors={['This is required']}
       />
       <CardRadioGroup
+        options={[
+          {
+            label: 'Small',
+            value: 'sm',
+            image: {
+              src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+              alt: 'Philodendron Imperial Red',
+            },
+          },
+          {
+            label: 'Medium',
+            value: 'md',
+            image: {
+              src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
+              alt: 'Monstera',
+            },
+          },
+          {
+            label: 'Large',
+            value: 'lg',
+            image: {
+              src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
+              alt: 'Pink Caladium',
+            },
+            disabled: true,
+          },
+        ]}
+      />
+      <CardRadioGroup
+        errors={['This is required']}
         options={[
           {
             label: 'Small',
