@@ -426,6 +426,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/icon-block')),
   },
   {
+    name: 'inline-email-form-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/primitives/inline-email-form/index.tsx'],
+    component: lazy(() => import('./examples/primitives/inline-email-form')),
+  },
+  {
     name: 'input-example',
     dependencies: [],
     registryDependencies: ['input'],
