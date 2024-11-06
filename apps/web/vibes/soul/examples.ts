@@ -391,6 +391,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/footer/luxury')),
   },
   {
+    name: 'forgot-password-section-example',
+    dependencies: [],
+    registryDependencies: ['forgot-password-section'],
+    files: ['examples/sections/forgot-password-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/forgot-password-section')),
+  },
+  {
     name: 'header-section-electric-example',
     dependencies: [],
     registryDependencies: ['header-section'],

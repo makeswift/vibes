@@ -3,7 +3,10 @@ import { parseWithZod } from '@conform-to/zod'
 
 import { schema } from '@/vibes/soul/sections/forgot-password-section/schema'
 
-export async function resetPasswordAction(lastResult: SubmissionResult | null, formData: FormData) {
+export async function forgotPasswordAction(
+  lastResult: SubmissionResult | null,
+  formData: FormData
+) {
   'use server'
 
   const submission = parseWithZod(formData, { schema })

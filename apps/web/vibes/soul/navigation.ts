@@ -209,6 +209,12 @@ export const navigation = [
       },
       { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
       {
+        title: 'Forgot Password Section',
+        slug: 'forgot-password-section',
+        file: 'docs/forgot-password-section.mdx',
+        component: 'forgot-password-section',
+      },
+      {
         title: 'Header Section',
         slug: 'header-section',
         file: 'docs/header-section.mdx',
