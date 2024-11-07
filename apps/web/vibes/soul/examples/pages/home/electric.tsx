@@ -205,7 +205,11 @@ export default function Preview() {
         searchHref="#"
       />
       <Slideshow slides={heroSlides} />
-      <FeaturedCardCarousel title="Categories" cards={cards} />
+      <FeaturedCardCarousel
+        title="Categories"
+        cta={{ label: 'Shop all', href: '/all' }}
+        cards={cards}
+      />
       <FeaturedImage
         title={featuredImage.title}
         description={featuredImage.description}
@@ -247,15 +251,6 @@ export default function Preview() {
         }}
       />
       <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts.products} />
-      <FeaturedImage
-        title={featuredImageII.title}
-        description={featuredImageII.description}
-        image={{
-          src: featuredImageII.image.src,
-          alt: featuredImageII.image.alt,
-        }}
-        cta={{ href: featuredImageII.cta.href, label: featuredImageII.cta.label }}
-      />
       <Subscribe
         title="Sign up for our newsletter"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."

@@ -17,7 +17,7 @@ interface Props {
 export function ProductsCarousel({ products, className }: Props) {
   return (
     <Carousel className={className}>
-      <CarouselContent className="mb-20">
+      <CarouselContent className="mb-10">
         {products.length > 0
           ? products.map(product => (
               <CarouselItem
