@@ -47,24 +47,24 @@ type CartEmptyState = {
   }
 }
 
-type CartState = {
-  lineItems: CartLineItem[]
+type CartState<LineItem extends CartLineItem> = {
+  lineItems: LineItem[]
   lastResult: SubmissionResult | null
 }
 
-type CartProps = {
+type CartProps<LineItem extends CartLineItem> = {
   title?: string
-  lineItems: CartLineItem[] | Promise<CartLineItem[]>
+  lineItems: LineItem[] | Promise<LineItem[]>
   summary: CartSummary
   emptyState: CartEmptyState
-  lineItemAction: Action<CartState, FormData>
+  lineItemAction: Action<CartState<LineItem>, FormData>
   checkoutAction: Action<SubmissionResult | null, FormData>
   deleteLineItemLabel?: string
   decrementLineItemLabel?: string
   incrementLineItemLabel?: string
 }
 
-export function Cart({
+export function Cart<LineItem extends CartLineItem>({
   title = 'Cart',
   lineItems,
   lineItemAction,
@@ -74,7 +74,7 @@ export function Cart({
   deleteLineItemLabel,
   decrementLineItemLabel,
   incrementLineItemLabel,
-}: CartProps) {
+}: CartProps<LineItem>) {
   return (
     <Suspense fallback={<CartSkeleton title={title} />}>
       <CartInner
@@ -92,7 +92,7 @@ export function Cart({
   )
 }
 
-function CartInner({
+function CartInner<LineItem extends CartLineItem>({
   title,
   lineItems,
   summary = {
@@ -112,13 +112,15 @@ function CartInner({
   deleteLineItemLabel,
   lineItemAction,
   checkoutAction,
-}: CartProps) {
+}: CartProps<LineItem>) {
   const resolvedLineItems = lineItems instanceof Promise ? use(lineItems) : lineItems
 
   const [state, formAction, isPending] = useActionState(lineItemAction, {
     lineItems: resolvedLineItems,
     lastResult: null,
   })
+
+  console.log({ resolvedLineItems })
 
   const [optimisticLineItems, setOptimisticLineItems] = useOptimistic<CartLineItem[], FormData>(
     state.lineItems,
