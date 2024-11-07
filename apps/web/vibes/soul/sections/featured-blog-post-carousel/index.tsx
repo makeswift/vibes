@@ -8,7 +8,7 @@ interface Link {
 }
 
 interface Props {
-  title: string
+  title?: string
   cta?: Link
   blogPosts: BlogPost[]
 }

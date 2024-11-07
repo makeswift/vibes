@@ -7,7 +7,7 @@ interface Link {
 }
 
 interface Props {
-  title: string
+  title?: string
   description?: string
   cta?: Link
   cards: Card[]
