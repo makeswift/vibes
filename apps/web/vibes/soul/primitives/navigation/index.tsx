@@ -61,12 +61,12 @@ export type SearchResult =
     }
 
 type LocaleAction = Action<SubmissionResult | null, FormData>
-type SearchAction = Action<
-  { searchResults: SearchResult[] | null; lastResult: SubmissionResult | null },
+type SearchAction<S extends SearchResult> = Action<
+  { searchResults: S[] | null; lastResult: SubmissionResult | null },
   FormData
 >
 
-interface Props {
+interface Props<S extends SearchResult> {
   accountHref: string
   cartCount?: number
   cartHref: string
@@ -78,14 +78,14 @@ interface Props {
   logoHref?: string
   searchHref: string
   searchParamName?: string
-  searchAction?: SearchAction
+  searchAction?: SearchAction<S>
   searchCtaLabel?: string
   searchInputPlaceholder?: string
   emptySearchTitle?: string
   emptySearchSubtitle?: string
 }
 
-export const Navigation = forwardRef(function Navigation(
+export const Navigation = forwardRef(function Navigation<S extends SearchResult>(
   {
     cartHref,
     cartCount,
@@ -103,7 +103,7 @@ export const Navigation = forwardRef(function Navigation(
     searchInputPlaceholder,
     emptySearchTitle,
     emptySearchSubtitle,
-  }: Props,
+  }: Props<S>,
   ref: Ref<HTMLDivElement>
 ) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -380,7 +380,7 @@ function HamburgerMenuButton({
   )
 }
 
-function SearchForm({
+function SearchForm<S extends SearchResult>({
   searchAction,
   searchParamName = 'query',
   searchHref = '/search',
@@ -389,7 +389,7 @@ function SearchForm({
   emptySearchTitle,
   emptySearchSubtitle,
 }: {
-  searchAction: SearchAction
+  searchAction: SearchAction<S>
   searchParamName?: string
   searchHref?: string
   searchCtaLabel?: string
