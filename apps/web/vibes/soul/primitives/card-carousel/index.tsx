@@ -20,7 +20,7 @@ interface Props {
 export function CardCarousel({ cards, textContrast, className }: Props) {
   return (
     <Carousel className={className}>
-      <CarouselContent className="mb-20">
+      <CarouselContent className="mb-10">
         {cards.length > 0
           ? cards.map(card => (
               <CarouselItem
