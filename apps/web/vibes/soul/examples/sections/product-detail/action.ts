@@ -87,18 +87,25 @@ export const fields = [
   },
 ] as Field[]
 
-export async function action(prevState: SubmissionResult | null, payload: FormData) {
+export async function action(
+  prevState: { fields: Field[]; lastResult: SubmissionResult | null },
+  payload: FormData
+) {
   'use server'
 
   const submission = parseWithZod(payload, { schema: schema(fields) })
 
   if (submission.status !== 'success') {
-    return submission.reply()
+    return {
+      fields: prevState.fields,
+      lastResult: submission.reply(),
+    }
   }
-
-  console.log(submission)
 
   await new Promise(resolve => setTimeout(resolve, 1000))
 
-  return submission.reply()
+  return {
+    fields: prevState.fields,
+    lastResult: submission.reply({}),
+  }
 }

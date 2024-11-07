@@ -28,7 +28,7 @@ export function ProductDetail({ product, action, fields }: Props) {
     <section className="@container">
       <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 items-stretch gap-x-8 gap-y-10 px-4 py-10 @xl:px-6 @xl:py-14 @2xl:grid-cols-2 @4xl:px-8 @4xl:py-20 @5xl:gap-x-16">
         <div className="hidden @2xl:block">
-          <ProductGallery images={product.images ?? []} className="sticky top-8" />
+          <ProductGallery images={product.images} className="sticky top-8" />
         </div>
 
         {/* Product Details */}
@@ -46,7 +46,7 @@ export function ProductDetail({ product, action, fields }: Props) {
           <PriceLabel price={product.price ?? ''} className="my-3 text-xl @xl:text-2xl" />
 
           <div className="mb-8 @2xl:hidden">
-            <ProductGallery images={product.images ?? []} />
+            <ProductGallery images={product.images} />
           </div>
 
           {product.description != null && product.description !== '' && (
