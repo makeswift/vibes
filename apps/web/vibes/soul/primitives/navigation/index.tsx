@@ -3,8 +3,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Ref, forwardRef, startTransition, useEffect, useMemo, useRef, useState } from 'react'
-import { useFormState as useActionState } from 'react-dom'
+import {
+  Ref,
+  forwardRef,
+  startTransition,
+  useActionState,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 
 import { SubmissionResult } from '@conform-to/react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
@@ -19,7 +27,7 @@ import { Button } from '@/vibes/soul/primitives/button'
 import { Price } from '../price-label'
 import { ProductCard } from '../product-card'
 
-interface Link {
+type Link = {
   label: string
   href: string
   groups?: Array<{
@@ -32,7 +40,7 @@ interface Link {
   }>
 }
 
-interface Locale {
+type Locale = {
   id: string
   label: string
 }
@@ -66,7 +74,9 @@ type SearchAction<S extends SearchResult> = Action<
   FormData
 >
 
-interface Props<S extends SearchResult> {
+type Props<S extends SearchResult> = {
+  className?: string
+  isFloating?: boolean
   accountHref: string
   cartCount?: number
   cartHref: string
@@ -87,6 +97,8 @@ interface Props<S extends SearchResult> {
 
 export const Navigation = forwardRef(function Navigation<S extends SearchResult>(
   {
+    className,
+    isFloating = false,
     cartHref,
     cartCount,
     accountHref,
@@ -117,14 +129,33 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     setIsSearchOpen(false)
   }, [pathname])
 
+  useEffect(() => {
+    function handleScroll() {
+      setIsSearchOpen(false)
+      setIsMobileMenuOpen(false)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <NavigationMenu.Root
-      className="relative mx-auto w-full max-w-screen-2xl text-foreground @container"
+      className={clsx(
+        'relative mx-auto w-full max-w-screen-2xl text-foreground @container',
+        className
+      )}
       delayDuration={0}
       onValueChange={() => setIsSearchOpen(false)}
       ref={ref}
     >
-      <div className="flex h-14 items-center justify-between bg-background pl-3 pr-2 @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5">
+      <div
+        className={clsx(
+          'flex h-14 items-center justify-between bg-background pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
+          isFloating ? 'shadow-xl ring-1 ring-foreground/10' : 'shadow-none ring-0'
+        )}
+      >
         {/* Logo */}
         <Popover.Root onOpenChange={setIsMobileMenuOpen} open={isMobileMenuOpen}>
           <Popover.Anchor className="absolute left-0 right-0 top-full" />
