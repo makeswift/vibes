@@ -73,7 +73,7 @@ interface Props<S extends SearchResult> {
   links: Link[]
   locales?: Locale[]
   activeLocaleId?: string
-  localeAction: LocaleAction
+  localeAction?: LocaleAction
   logo?: string | { src?: string; alt: string }
   logoHref?: string
   searchHref: string
@@ -303,7 +303,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           </Link>
 
           {/* Locale / Language Dropdown */}
-          {locales && locales.length > 1 ? (
+          {locales && locales.length > 1 && localeAction ? (
             <LocaleForm
               action={localeAction}
               activeLocaleId={activeLocaleId}
