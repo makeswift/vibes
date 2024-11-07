@@ -11,7 +11,7 @@ type Props = {
   className?: string
 }
 
-export const ProductGallery = ({ images, className }: Props) => {
+export function ProductGallery({ images, className }: Props) {
   const [previewImage, setPreviewImage] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel()
 
