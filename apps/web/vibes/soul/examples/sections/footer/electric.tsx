@@ -38,6 +38,33 @@ export const footerLinks = [
       { label: 'Shipping', href: '#' },
     ],
   },
+  {
+    title: 'Help & Support',
+    links: [
+      { label: 'FAQs', href: '#' },
+      { label: 'Contact Us', href: '#' },
+      { label: 'Returns', href: '#' },
+      { label: 'Shipping', href: '#' },
+    ],
+  },
+  {
+    title: 'Help & Support',
+    links: [
+      { label: 'FAQs', href: '#' },
+      { label: 'Contact Us', href: '#' },
+      { label: 'Returns', href: '#' },
+      { label: 'Shipping', href: '#' },
+    ],
+  },
+  {
+    title: 'Help & Support',
+    links: [
+      { label: 'FAQs', href: '#' },
+      { label: 'Contact Us', href: '#' },
+      { label: 'Returns', href: '#' },
+      { label: 'Shipping', href: '#' },
+    ],
+  },
 ]
 
 const socialMediaLinks = [
