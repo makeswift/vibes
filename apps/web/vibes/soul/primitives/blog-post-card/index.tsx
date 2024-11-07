@@ -44,7 +44,7 @@ export const BlogPostCard = function BlogPostCard({
             className="transition-transform duration-500 ease-out group-hover:scale-110"
           />
         ) : (
-          <div className="pl-4 pt-4 text-5xl font-bold leading-none tracking-tighter text-foreground/15">
+          <div className="p-4 text-5xl font-bold leading-none tracking-tighter text-foreground/15">
             {title}
           </div>
         )}

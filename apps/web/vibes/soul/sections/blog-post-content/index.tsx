@@ -15,7 +15,7 @@ interface Props {
   author: string
   date: string
   content: string
-  image: Image
+  image?: Image
   className?: string
 }
 
@@ -56,17 +56,19 @@ export const BlogPostContent = function BlogPostContent({
           </p>
         </header>
 
-        <Image
-          src={image.src}
-          alt={image.alt}
-          height={780}
-          width={1280}
-          className="aspect-video w-full rounded-2xl bg-contrast-100 object-cover"
-        />
+        {image?.src != null && image.src !== '' && (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            height={780}
+            width={1280}
+            className="mb-10 aspect-video w-full rounded-2xl bg-contrast-100 object-cover @4xl:mb-16"
+          />
+        )}
 
         <article
           dangerouslySetInnerHTML={{ __html: content }}
-          className="prose mx-auto w-full max-w-4xl space-y-4 pt-10 @4xl:pt-16 [&_h2]:font-heading [&_h3]:font-semibold [&_h4]:font-semibold [&_h5]:font-semibold [&_h6]:font-semibold [&_img]:mx-auto [&_img]:max-h-[600px] [&_img]:w-fit [&_img]:rounded-2xl [&_img]:object-cover"
+          className="prose mx-auto w-full max-w-4xl space-y-4 [&_h2]:font-heading [&_h3]:font-semibold [&_h4]:font-semibold [&_h5]:font-semibold [&_h6]:font-semibold [&_img]:mx-auto [&_img]:max-h-[600px] [&_img]:w-fit [&_img]:rounded-2xl [&_img]:object-cover"
         />
       </div>
     </section>

@@ -183,7 +183,7 @@ export default function Preview() {
 
       <NotFound />
 
-      <FeaturedProductsCarousel title="Other products" products={products} />
+      <FeaturedProductsCarousel products={products} />
 
       <Subscribe
         title="Sign up for our newsletter"
