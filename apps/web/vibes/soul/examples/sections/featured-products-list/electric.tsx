@@ -2,10 +2,10 @@ import { getProducts } from '@/vibes/soul/data'
 import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list'
 
 export const featuredProducts = {
-  title: 'Our Plants',
-  description: '',
+  title: 'Our plants',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto.',
   cta: {
-    label: 'Shop Now',
+    label: 'Shop now',
     href: '#',
   },
   products: getProducts('Electric'),
