@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { SubmissionResult } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
 
-import { schema } from '@/vibes/soul/sections/cart/schema'
+import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema'
 
 type CartLineItem = {
   id: string
@@ -26,9 +26,7 @@ export async function lineItemAction(
 }> {
   'use server'
 
-  const intent = formData.get('intent')
-
-  const submission = parseWithZod(formData, { schema })
+  const submission = parseWithZod(formData, { schema: cartLineItemActionFormDataSchema })
 
   if (submission.status !== 'success') {
     return {
@@ -40,7 +38,7 @@ export async function lineItemAction(
   // Simulate a network request
   await new Promise(resolve => setTimeout(resolve, 1000))
 
-  switch (intent) {
+  switch (submission.value.intent) {
     case 'increment': {
       // const item = await incrementLineItem(submission.value)
       const item = submission.value
