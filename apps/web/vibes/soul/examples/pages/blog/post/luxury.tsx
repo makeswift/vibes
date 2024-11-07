@@ -74,7 +74,6 @@ export default function Preview() {
       />
 
       <BlogPostContent
-        id="1"
         title="STYLING STORIES:"
         author="Freda Salvador"
         date="October 03, 2024"
