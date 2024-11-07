@@ -8,7 +8,7 @@ import clsx from 'clsx'
 import { ErrorMessage } from '@/vibes/soul/form/error-message'
 import { Label } from '@/vibes/soul/form/label'
 
-interface Option {
+type Option = {
   value: string
   label: string
   disabled?: boolean

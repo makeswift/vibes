@@ -12,30 +12,20 @@ import { Pause, Play } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 
-interface Link {
-  label: string
-  href: string
-}
-
-interface Image {
-  alt: string
-  blurDataUrl?: string
-  src: string
-}
-
-export interface Slide {
+type Slide = {
   title: string
   description?: string
-  image?: Image
-  cta?: Link
+  image?: { alt: string; blurDataUrl?: string; src: string }
+  cta?: { label: string; href: string }
 }
-interface Props {
+
+type Props = {
   slides: Slide[]
   interval?: number
   className?: string
 }
 
-interface UseProgressButtonType {
+type UseProgressButtonType = {
   selectedIndex: number
   scrollSnaps: number[]
   onProgressButtonClick: (index: number) => void
@@ -81,7 +71,7 @@ const useProgressButton = (
   }
 }
 
-export const Slideshow = function Slideshow({ slides, interval = 5000, className }: Props) {
+export function Slideshow({ slides, interval = 5000, className }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 20 }, [
     Autoplay({ delay: interval }),
     Fade(),

@@ -3,17 +3,15 @@ import Link from 'next/link'
 
 import { clsx } from 'clsx'
 
-interface Image {
-  src: string
-  alt: string
-}
-
-export interface BlogPost {
+export type BlogPost = {
   id: string
   author?: string | null
   content: string
   date: string
-  image?: Image | null
+  image?: {
+    src: string
+    alt: string
+  }
   href: string
   title: string
   className?: string
@@ -71,13 +69,11 @@ export const BlogPostCard = function BlogPostCard({
   )
 }
 
-interface BlogPostCardSkeletonProps {
-  className?: string
-}
-
 export const BlogPostCardSkeleton = function BlogPostCardSkeleton({
   className,
-}: BlogPostCardSkeletonProps) {
+}: {
+  className?: string
+}) {
   return (
     <div className={clsx('flex max-w-md animate-pulse flex-col gap-2 rounded-xl', className)}>
       {/* Image */}

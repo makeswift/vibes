@@ -1,6 +1,6 @@
 import { Rating } from '@/vibes/soul/primitives/rating'
 
-export interface Props {
+type Props = {
   reviews: {
     id: string
     rating: number
@@ -11,7 +11,7 @@ export interface Props {
   averageRating: number
 }
 
-export const Reviews = function Reviews({ reviews, averageRating }: Readonly<Props>) {
+export function Reviews({ reviews, averageRating }: Readonly<Props>) {
   return (
     <div className="@container">
       <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-stretch gap-10 px-4 py-10 @xl:px-6 @xl:py-14 @2xl:flex-row @4xl:px-8 @4xl:py-20">

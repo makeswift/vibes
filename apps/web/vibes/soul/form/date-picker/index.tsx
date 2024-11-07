@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
+import { ComponentPropsWithoutRef, ComponentRef, forwardRef, useState } from 'react'
 
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 import { CalendarIcon } from 'lucide-react'
@@ -7,15 +7,15 @@ import { Calendar } from '@/vibes/soul/primitives/calendar'
 
 import { Input } from '../input'
 
-interface Props extends Omit<ComponentPropsWithoutRef<'input'>, 'defaultValue' | 'onSelect'> {
+type Props = {
   defaultValue?: string | Date
   disabledDays?: Date[]
   errors?: string[]
   onSelect?: (date: Date | undefined) => void
   selected?: Date | undefined
-}
+} & Omit<ComponentPropsWithoutRef<'input'>, 'defaultValue' | 'onSelect'>
 
-const DatePicker = forwardRef<ElementRef<'input'>, Props>(
+const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
   (
     {
       defaultValue,
@@ -45,8 +45,8 @@ const DatePicker = forwardRef<ElementRef<'input'>, Props>(
         <PopoverPrimitive.Trigger asChild>
           <Input
             errors={errors}
-            prepend={<CalendarIcon className="h-5 w-5" strokeWidth={1} />}
             placeholder={placeholder}
+            prepend={<CalendarIcon className="h-5 w-5" strokeWidth={1} />}
             readOnly={true}
             ref={ref}
             required={required}

@@ -120,8 +120,6 @@ function CartInner<LineItem extends CartLineItem>({
     lastResult: null,
   })
 
-  console.log({ resolvedLineItems })
-
   const [optimisticLineItems, setOptimisticLineItems] = useOptimistic<CartLineItem[], FormData>(
     state.lineItems,
     (prevState, formData) => {
@@ -197,7 +195,7 @@ function CartInner<LineItem extends CartLineItem>({
                     lineItem={lineItem}
                     action={formAction}
                     onSubmit={formData => {
-                      startTransition(async () => {
+                      startTransition(() => {
                         formAction(formData)
                         setOptimisticLineItems(formData)
                       })
@@ -224,13 +222,13 @@ function CartInner<LineItem extends CartLineItem>({
                 <td>{summary.subtotalLabel}</td>
                 <td className="py-4 text-right">{summary.subtotal}</td>
               </tr>
-              {summary.shipping && (
+              {summary.shipping != null && summary.shipping !== '' && (
                 <tr className="border-b border-contrast-100">
                   <td>{summary.shippingLabel}</td>
                   <td className="py-4 text-right">{summary.shipping}</td>
                 </tr>
               )}
-              {summary.tax && (
+              {summary.tax != null && summary.tax !== '' && (
                 <tr>
                   <td>{summary.taxLabel}</td>
                   <td className="py-4 text-right">{summary.tax}</td>
@@ -238,10 +236,10 @@ function CartInner<LineItem extends CartLineItem>({
               )}
             </tbody>
 
-            {summary.grandTotal && (
+            {summary.grandTotal != null && summary.grandTotal !== '' && (
               <tfoot>
                 <tr className="text-xl">
-                  <th scope="row" className="text-left">
+                  <th className="text-left" scope="row">
                     {summary.grandTotalLabel}
                   </th>
                   <td className="py-10 text-right">{summary.grandTotal}</td>
@@ -266,12 +264,12 @@ function CounterForm({
   decrementLabel = 'Decrease count',
   deleteLabel = 'Remove item',
 }: {
-  action(payload: FormData): void
-  onSubmit(formData: FormData): void
   lineItem: CartLineItem
   incrementLabel?: string
   decrementLabel?: string
   deleteLabel?: string
+  action(payload: FormData): void
+  onSubmit(formData: FormData): void
 }) {
   const [form, fields] = useForm({
     defaultValue: lineItem,
@@ -369,7 +367,7 @@ function CheckoutButton({
   )
 }
 
-function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
+export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
   return (
     <div className="mt-20 flex min-h-96 flex-col items-center justify-center @container">
       <span className="mb-3 text-center font-heading text-2xl font-medium leading-none text-foreground @lg:text-4xl @3xl:text-5xl ">
@@ -383,7 +381,7 @@ function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
   )
 }
 
-function CartSkeleton({ title }: { title: string }) {
+export function CartSkeleton({ title }: { title: string }) {
   return (
     <div className="mx-auto w-full max-w-screen-2xl animate-pulse @container">
       <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">

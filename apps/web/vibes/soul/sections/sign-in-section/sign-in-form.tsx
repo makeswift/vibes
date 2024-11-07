@@ -39,7 +39,7 @@ export function SignInForm({
   })
 
   useEffect(() => {
-    if (lastResult?.error) return console.log(lastResult.error)
+    if (lastResult?.error) console.log(lastResult.error)
   }, [lastResult])
 
   return (

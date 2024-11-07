@@ -2,7 +2,7 @@
 
 import { Input } from '@/vibes/soul/form/input'
 
-interface Props {
+type Props = {
   minName?: string
   maxName?: string
   min?: number

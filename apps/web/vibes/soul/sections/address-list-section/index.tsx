@@ -93,6 +93,7 @@ export function AddressListSection<A extends Address>({
             addresses: [...prevState.addresses, nextAddress],
           }
         }
+
         case 'update': {
           return {
             ...prevState,
@@ -101,15 +102,18 @@ export function AddressListSection<A extends Address>({
             ),
           }
         }
+
         case 'delete': {
           return {
             ...prevState,
             addresses: prevState.addresses.filter(a => a.id !== submission.value.id),
           }
         }
+
         case 'setDefault': {
           return { ...prevState, defaultAddressId: submission.value.id }
         }
+
         default:
           return prevState
       }
@@ -130,7 +134,7 @@ export function AddressListSection<A extends Address>({
           )}
         </h1>
         {!showNewAddressForm && (
-          <Button size="small" onClick={() => setShowNewAddressForm(true)}>
+          <Button onClick={() => setShowNewAddressForm(true)} size="small">
             {showAddFormLabel}
           </Button>
         )}
@@ -139,6 +143,7 @@ export function AddressListSection<A extends Address>({
         {showNewAddressForm && (
           <div className="border-b border-contrast-200 pb-6 pt-5">
             <AddressForm
+              action={formAction}
               address={{
                 id: 'new',
                 firstName: '',
@@ -149,60 +154,59 @@ export function AddressListSection<A extends Address>({
                 state: '',
                 country: '',
               }}
+              addressLevel1Label={addressLevel1Label}
+              addressLevel2Label={addressLevel2Label}
+              addressLine1Label={addressLine1Label}
+              addressLine2Label={addressLine2Label}
+              cancelLabel={cancelLabel}
+              companyLabel={companyLabel}
+              countryLabel={countryLabel}
+              firstNameLabel={firstNameLabel}
               intent="create"
-              action={formAction}
-              onSubmit={async function (formData) {
+              lastNameLabel={lastNameLabel}
+              onCancel={() => setShowNewAddressForm(false)}
+              onSubmit={formData => {
                 setShowNewAddressForm(false)
 
-                startTransition(async () => {
+                startTransition(() => {
                   formAction(formData)
                   setOptimisticState(formData)
                 })
               }}
-              onCancel={() => setShowNewAddressForm(false)}
-              cancelLabel={cancelLabel}
-              submitLabel={createLabel}
-              firstNameLabel={firstNameLabel}
-              lastNameLabel={lastNameLabel}
-              companyLabel={companyLabel}
               phoneLabel={phoneLabel}
-              addressLine1Label={addressLine1Label}
-              addressLine2Label={addressLine2Label}
-              addressLevel1Label={addressLevel1Label}
-              addressLevel2Label={addressLevel2Label}
               postalCodeLabel={postalCodeLabel}
-              countryLabel={countryLabel}
+              submitLabel={createLabel}
             />
           </div>
         )}
         {optimisticState.addresses.map(address => (
-          <div key={address.id} className="border-b border-contrast-200 pb-6 pt-5">
+          <div className="border-b border-contrast-200 pb-6 pt-5" key={address.id}>
             {activeAddressIds.includes(address.id) ? (
               <AddressForm
-                address={address}
-                intent="update"
                 action={formAction}
-                onSubmit={async function (formData) {
+                address={address}
+                addressLevel1Label={addressLevel1Label}
+                addressLevel2Label={addressLevel2Label}
+                addressLine1Label={addressLine1Label}
+                addressLine2Label={addressLine2Label}
+                cancelLabel={cancelLabel}
+                companyLabel={companyLabel}
+                countryLabel={countryLabel}
+                firstNameLabel={firstNameLabel}
+                intent="update"
+                lastNameLabel={lastNameLabel}
+                onCancel={() => setActiveAddressIds(prev => prev.filter(id => id !== address.id))}
+                onSubmit={formData => {
                   setActiveAddressIds(prev => prev.filter(id => id !== address.id))
 
-                  startTransition(async () => {
+                  startTransition(() => {
                     formAction(formData)
                     setOptimisticState(formData)
                   })
                 }}
-                onCancel={() => setActiveAddressIds(prev => prev.filter(id => id !== address.id))}
-                cancelLabel={cancelLabel}
-                submitLabel={updateLabel}
-                firstNameLabel={firstNameLabel}
-                lastNameLabel={lastNameLabel}
-                companyLabel={companyLabel}
                 phoneLabel={phoneLabel}
-                addressLine1Label={addressLine1Label}
-                addressLine2Label={addressLine2Label}
-                addressLevel1Label={addressLevel1Label}
-                addressLevel2Label={addressLevel2Label}
                 postalCodeLabel={postalCodeLabel}
-                countryLabel={countryLabel}
+                submitLabel={updateLabel}
               />
             ) : (
               <div className="space-y-4">
@@ -212,22 +216,22 @@ export function AddressListSection<A extends Address>({
                 />
                 <div className="flex gap-1">
                   <Button
-                    variant="tertiary"
-                    size="small"
-                    onClick={() => setActiveAddressIds(prev => [...prev, address.id])}
                     aria-label={`${editLabel}: ${address.firstName} ${address.lastName}`}
+                    onClick={() => setActiveAddressIds(prev => [...prev, address.id])}
+                    size="small"
+                    variant="tertiary"
                   >
                     {editLabel}
                   </Button>
                   {optimisticState.defaultAddressId !== address.id && (
                     <>
                       <AddressActionButton
-                        intent="delete"
-                        aria-label={`${deleteLabel}: ${address.firstName} ${address.lastName}`}
-                        address={address}
                         action={formAction}
-                        onSubmit={async function (formData) {
-                          startTransition(async () => {
+                        address={address}
+                        aria-label={`${deleteLabel}: ${address.firstName} ${address.lastName}`}
+                        intent="delete"
+                        onSubmit={formData => {
+                          startTransition(() => {
                             formAction(formData)
                             setOptimisticState(formData)
                           })
@@ -236,12 +240,12 @@ export function AddressListSection<A extends Address>({
                         {deleteLabel}
                       </AddressActionButton>
                       <AddressActionButton
-                        intent="setDefault"
-                        aria-label={`${setDefaultLabel}: ${address.firstName} ${address.lastName}`}
-                        address={address}
                         action={formAction}
-                        onSubmit={async function (formData) {
-                          startTransition(async () => {
+                        address={address}
+                        aria-label={`${setDefaultLabel}: ${address.firstName} ${address.lastName}`}
+                        intent="setDefault"
+                        onSubmit={formData => {
+                          startTransition(() => {
                             formAction(formData)
                             setOptimisticState(formData)
                           })
@@ -308,6 +312,7 @@ function AddressActionButton({
       onSubmit(formData)
     },
   })
+
   return (
     <form {...getFormProps(form)} action={action}>
       <input {...getInputProps(fields.id, { type: 'hidden' })} key={fields.id.id} />
@@ -323,11 +328,11 @@ function AddressActionButton({
       <input {...getInputProps(fields.country, { type: 'hidden' })} key={fields.country.id} />
       <Button
         {...rest}
-        variant="tertiary"
+        name="intent"
         size="small"
         type="submit"
-        name="intent"
         value={intent}
+        variant="tertiary"
       />
     </form>
   )
@@ -355,10 +360,7 @@ function AddressForm({
 }: {
   address: Address
   intent: string
-  action(formData: FormData): void
-  onSubmit(formData: FormData): void
   lastResult?: SubmissionResult | null
-  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void
   cancelLabel?: string
   submitLabel?: string
   firstNameLabel?: string
@@ -371,6 +373,9 @@ function AddressForm({
   addressLevel2Label?: string
   countryLabel?: string
   postalCodeLabel?: string
+  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void
+  action(formData: FormData): void
+  onSubmit(formData: FormData): void
 }) {
   const [form, fields] = useForm({
     lastResult,
@@ -391,7 +396,7 @@ function AddressForm({
   })
 
   useEffect(() => {
-    if (lastResult?.error) console.log(lastResult?.error)
+    if (lastResult?.error) console.log(lastResult.error)
   }, [lastResult?.error])
 
   return (
@@ -400,100 +405,100 @@ function AddressForm({
       <div className="flex gap-4">
         <Input
           {...getInputProps(fields.firstName, { type: 'text' })}
-          label={firstNameLabel}
-          key={fields.firstName.id}
-          errors={fields.firstName.errors}
           autoComplete="off"
           data-1p-ignore
           data-lpignore
+          errors={fields.firstName.errors}
+          key={fields.firstName.id}
+          label={firstNameLabel}
         />
         <Input
           {...getInputProps(fields.lastName, { type: 'text' })}
-          label={lastNameLabel}
-          key={fields.lastName.id}
-          errors={fields.lastName.errors}
           autoComplete="off"
           data-1p-ignore
           data-lpignore
+          errors={fields.lastName.errors}
+          key={fields.lastName.id}
+          label={lastNameLabel}
         />
       </div>
 
       <Input
         {...getInputProps(fields.company, { type: 'text' })}
+        autoComplete={`section-${address.id} company`}
+        errors={fields.company.errors}
         key={fields.company.id}
         label={companyLabel}
-        errors={fields.company.errors}
-        autoComplete={`section-${address.id} company`}
       />
       <Input
         {...getInputProps(fields.phone, { type: 'tel' })}
+        autoComplete={`section-${address.id} phone`}
+        errors={fields.phone.errors}
         key={fields.phone.id}
         label={phoneLabel}
-        errors={fields.phone.errors}
-        autoComplete={`section-${address.id} phone`}
       />
       <Input
         {...getInputProps(fields.street1, { type: 'text' })}
+        autoComplete={`section-${address.id} address-line1`}
+        errors={fields.street1.errors}
         key={fields.street1.id}
         label={addressLine1Label}
-        errors={fields.street1.errors}
-        autoComplete={`section-${address.id} address-line1`}
       />
       <Input
         {...getInputProps(fields.street2, { type: 'text' })}
+        autoComplete={`section-${address.id} address-line2`}
+        errors={fields.street2.errors}
         key={fields.street2.id}
         label={addressLine2Label}
-        errors={fields.street2.errors}
-        autoComplete={`section-${address.id} address-line2`}
       />
       <div className="flex gap-4">
         <Input
           {...getInputProps(fields.city, { type: 'text' })}
+          autoComplete={`section-${address.id} address-level2`}
+          errors={fields.city.errors}
           key={fields.city.id}
           label={addressLevel2Label}
-          errors={fields.city.errors}
-          autoComplete={`section-${address.id} address-level2`}
         />
         <Input
           {...getInputProps(fields.state, { type: 'text' })}
+          autoComplete={`section-${address.id} address-level1`}
+          errors={fields.state.errors}
           key={fields.state.id}
           label={addressLevel1Label}
-          errors={fields.state.errors}
-          autoComplete={`section-${address.id} address-level1`}
         />
       </div>
       <div className="flex gap-4">
         <Input
           {...getInputProps(fields.postalCode, { type: 'text' })}
+          autoComplete={`section-${address.id} postal-code`}
+          errors={fields.postalCode.errors}
           key={fields.postalCode.id}
           label={postalCodeLabel}
-          errors={fields.postalCode.errors}
-          autoComplete={`section-${address.id} postal-code`}
         />
         <Input
           {...getInputProps(fields.country, { type: 'text' })}
+          autoComplete={`section-${address.id} country`}
+          errors={fields.country.errors}
           key={fields.country.id}
           label={countryLabel}
-          errors={fields.country.errors}
-          autoComplete={`section-${address.id} country`}
         />
       </div>
 
       <div className="flex gap-1">
         <Button
+          aria-label={`${cancelLabel} ${submitLabel} ${address.firstName} ${address.lastName}`}
+          onClick={onCancel}
           size="small"
           variant="tertiary"
-          onClick={onCancel}
-          aria-label={`${cancelLabel} ${submitLabel} ${address.firstName} ${address.lastName}`}
         >
           {cancelLabel}
         </Button>
         <Button
-          type="submit"
-          size="small"
-          name="intent"
-          value={intent}
           aria-label={`${submitLabel} ${address.firstName} ${address.lastName}`}
+          name="intent"
+          size="small"
+          type="submit"
+          value={intent}
         >
           {submitLabel}
         </Button>

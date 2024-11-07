@@ -7,7 +7,7 @@ export type AccordionItem = {
   content: React.ReactNode
 }
 
-export interface Props {
+type Props = {
   accordions: AccordionItem[]
   image?: {
     src: string
@@ -15,7 +15,7 @@ export interface Props {
   }
 }
 
-export function ProductDescription({ accordions, image }: Readonly<Props>) {
+export function ProductDescription({ accordions, image }: Props) {
   return (
     <div className="@container">
       <div className="mx-auto flex w-full max-w-screen-xl flex-col-reverse items-stretch gap-x-10 gap-y-6 px-4 py-10 @xl:px-6 @xl:py-14 @2xl:flex-row @2xl:gap-x-12 @4xl:gap-x-16 @4xl:px-8 @4xl:py-20">
