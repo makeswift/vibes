@@ -12,18 +12,19 @@ export function AccountLayoutLink({
   ...rest
 }: React.ComponentPropsWithoutRef<typeof Link>) {
   const pathname = usePathname()
-
-  console.log({ pathname })
+  const linkPathname = typeof href === 'string' ? href : (href.pathname ?? null)
 
   return (
     <Link
       {...rest}
-      href={href}
       className={clsx(
         'flex min-h-10 items-center rounded-md px-3 text-sm font-semibold',
-        pathname.includes(href.toString()) ? 'bg-contrast-100' : 'hover:bg-contrast-100',
+        linkPathname !== null && pathname.includes(linkPathname)
+          ? 'bg-contrast-100'
+          : 'hover:bg-contrast-100',
         className
       )}
+      href={href}
     />
   )
 }

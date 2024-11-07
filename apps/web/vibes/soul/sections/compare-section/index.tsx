@@ -23,6 +23,7 @@ export function CompareSection({
       <div className="flex w-full gap-8 @container">
         {products.map(product => (
           <CompareCard
+            key={product.id}
             className="min-w-[400px] flex-1"
             product={product}
             addToCartAction={addToCartAction}

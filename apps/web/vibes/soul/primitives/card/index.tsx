@@ -54,7 +54,7 @@ export function Card({ className, title, image, href, textContrast = 'dark' }: C
   )
 }
 
-export const CardSkeleton = function CardSkeleton() {
+export function CardSkeleton() {
   return (
     <div className="relative flex aspect-[3/4] w-full animate-pulse flex-col gap-2 @4xl:min-w-72">
       {/* Image */}

@@ -2,19 +2,14 @@ import { ReactNode } from 'react'
 
 import { clsx } from 'clsx'
 
-export interface BadgeProps {
+type Props = {
   children: ReactNode
   variant?: 'pill' | 'rounded'
   color?: 'primary' | 'accent' | 'warning' | 'danger' | 'success' | 'info'
   className?: string
 }
 
-export const Badge = function Badge({
-  children,
-  variant = 'rounded',
-  className,
-  color = 'primary',
-}: BadgeProps) {
+export function Badge({ children, variant = 'rounded', className, color = 'primary' }: Props) {
   return (
     <span
       className={clsx(

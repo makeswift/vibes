@@ -1,6 +1,6 @@
 'use client'
 
-import { forwardRef, useImperativeHandle, useRef } from 'react'
+import { forwardRef } from 'react'
 
 import { clsx } from 'clsx'
 import { Minus, Plus } from 'lucide-react'

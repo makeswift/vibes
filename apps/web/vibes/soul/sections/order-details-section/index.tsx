@@ -1,12 +1,9 @@
-import { prerender } from 'next/dist/server/app-render/entry-base'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { ArrowLeft } from 'lucide-react'
 
 import { Badge } from '@/vibes/soul/primitives/badge'
-import { ButtonLink } from '@/vibes/soul/primitives/button-link'
-import { PriceLabel } from '@/vibes/soul/primitives/price-label'
 
 type Summary = {
   lineItems: {

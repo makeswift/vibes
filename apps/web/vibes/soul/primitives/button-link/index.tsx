@@ -9,7 +9,7 @@ export interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   asChild?: boolean
 }
 
-export const ButtonLink = function ButtonLink({
+export function ButtonLink({
   variant = 'primary',
   size = 'large',
   href,

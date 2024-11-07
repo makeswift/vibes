@@ -8,7 +8,7 @@ import { parseAsInteger, useQueryStates } from 'nuqs'
 import { RangeInput } from '@/vibes/soul/form/range-input'
 import { Button } from '@/vibes/soul/primitives/button'
 
-interface Props {
+type Props = {
   minParamName: string
   maxParamName: string
   min?: number
@@ -40,41 +40,41 @@ export function FilterRange({
     },
     { shallow: false }
   )
-  const [minState, setMinState] = useState<number | null>(params[minParamName])
-  const [maxState, setMaxState] = useState<number | null>(params[maxParamName])
+  const [minState, setMinState] = useState<number | null>(params[minParamName] ?? null)
+  const [maxState, setMaxState] = useState<number | null>(params[maxParamName] ?? null)
   const isDirty =
     (minState !== params[minParamName] && !(params[minParamName] === null && minState === min)) ||
     (maxState !== params[maxParamName] && !(params[maxParamName] === null && maxState === max))
 
   useEffect(() => {
-    setMinState(params[minParamName])
-    setMaxState(params[maxParamName])
+    setMinState(params[minParamName] ?? null)
+    setMaxState(params[maxParamName] ?? null)
   }, [params, min, max, minParamName, maxParamName])
 
   return (
     <div className="flex items-center gap-2">
       <RangeInput
-        min={min}
         max={max}
-        minLabel={minLabel}
         maxLabel={maxLabel}
-        minPrepend={minPrepend}
-        maxPrepend={maxPrepend}
-        minPlaceholder={minPlaceholder}
-        maxPlaceholder={maxPlaceholder}
-        minValue={minState}
-        maxValue={maxState}
-        minName={minParamName}
         maxName={minParamName}
-        onMinValueChange={value => void setMinState(Number.isNaN(value) ? null : value)}
-        onMaxValueChange={value => void setMaxState(Number.isNaN(value) ? null : value)}
+        maxPlaceholder={maxPlaceholder}
+        maxPrepend={maxPrepend}
+        maxValue={maxState}
+        min={min}
+        minLabel={minLabel}
+        minName={minParamName}
+        minPlaceholder={minPlaceholder}
+        minPrepend={minPrepend}
+        minValue={minState}
+        onMaxValueChange={value => setMaxState(Number.isNaN(value) ? null : value)}
+        onMinValueChange={value => setMinState(Number.isNaN(value) ? null : value)}
       />
       <Button
+        className="shrink-0"
+        disabled={!isDirty}
+        onClick={() => setParams({ [minParamName]: minState, [maxParamName]: maxState })}
         size="icon"
         variant="secondary"
-        disabled={!isDirty}
-        onClick={() => void setParams({ [minParamName]: minState, [maxParamName]: maxState })}
-        className="shrink-0"
       >
         <ArrowRight size={20} strokeWidth={1} />
       </Button>
