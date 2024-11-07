@@ -29,7 +29,12 @@ import { Field, SchemaRawShape, schema } from './schema'
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
-export type ProductDetailFormAction = Action<SubmissionResult | null, FormData>
+type State = {
+  fields: Field[]
+  lastResult: SubmissionResult | null
+}
+
+export type ProductDetailFormAction = Action<State, FormData>
 
 type Props = {
   fields: Field[]
@@ -55,9 +60,9 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
     }),
     { quantity: 1 } as { [Key in keyof SchemaRawShape]?: z.infer<SchemaRawShape[Key]> }
   )
-  const [lastResult, formAction] = useActionState(action, null)
+  const [prevState, formAction] = useActionState(action, { fields, lastResult: null })
   const [form, formFields] = useForm({
-    lastResult,
+    lastResult: prevState.lastResult,
     constraint: getZodConstraint(schema(fields)),
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: schema(fields) })
@@ -118,10 +123,10 @@ function FormField({
 
   const handleChange = useCallback(
     (value: string) => {
-      setParam(value)
+      void setParam(value)
       controls.change(value)
     },
-    [controls.change, setParam]
+    [setParam, controls]
   )
 
   switch (field.type) {
