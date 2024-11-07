@@ -40,9 +40,9 @@ export const Banner = forwardRef<React.ComponentRef<'div'>, Props>(
         id="announcement-bar"
         ref={ref}
       >
-        <p className="p-3 pr-12 text-sm text-foreground @xl:px-12 @xl:text-center @xl:text-base">
+        <div className="p-3 pr-12 text-sm text-foreground @xl:px-12 @xl:text-center @xl:text-base">
           {children}
-        </p>
+        </div>
 
         {!hideDismiss && (
           <button
