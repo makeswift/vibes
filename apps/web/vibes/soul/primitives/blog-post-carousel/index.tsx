@@ -15,16 +15,19 @@ type Props = {
 export function BlogPostCarousel({ className, blogPosts }: Props) {
   return (
     <Carousel className={className}>
-      <CarouselContent className="mb-10 px-3 @xl:px-6 @5xl:px-20">
+      <CarouselContent className="mb-10">
         {blogPosts.map(post => {
           return (
-            <CarouselItem key={post.id} className="basis-full @md:basis-1/2 @xl:basis-1/3">
+            <CarouselItem
+              key={post.id}
+              className="basis-full @md:basis-1/2 @4xl:basis-1/3 @7xl:basis-1/4"
+            >
               <BlogPostCard {...post} />
             </CarouselItem>
           )
         })}
       </CarouselContent>
-      <div className="flex items-center justify-between px-3 @xl:px-6 @5xl:px-20">
+      <div className="flex w-full items-center justify-between">
         <CarouselScrollbar />
         <CarouselButtons />
       </div>

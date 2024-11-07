@@ -74,10 +74,29 @@ export default function Preview() {
       />
 
       <BlogPostContent
-        id="1"
         title="Top 5 Plants to Purify Your Home's Air"
         author="Sam Smith"
         date="June 30, 2024"
+        tags={[
+          {
+            label: 'Plants',
+            link: {
+              href: '#',
+            },
+          },
+          {
+            label: 'Home',
+            link: {
+              href: '#',
+            },
+          },
+          {
+            label: 'Gardening',
+            link: {
+              href: '#',
+            },
+          },
+        ]}
         image={{
           src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
           alt: 'A plant with large leaves and a short stem.',
