@@ -9,7 +9,7 @@ import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/prim
 
 export type CarouselProduct = CardProduct
 
-interface Props {
+type Props = {
   products: CarouselProduct[]
   className?: string
 }

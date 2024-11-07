@@ -4,32 +4,32 @@ import { ReactNode, type Ref, forwardRef } from 'react'
 
 import { clsx } from 'clsx'
 
-interface Image {
+type Image = {
   src: string
   alt: string
 }
 
-interface Link {
+type Link = {
   href: string
   label: string
 }
 
-export interface Section {
+export type Section = {
   title?: string
   links: Link[]
 }
 
-interface SocialMediaLink {
+type SocialMediaLink = {
   href: string
   icon: ReactNode
 }
 
-interface ContactInformation {
+type ContactInformation = {
   address?: string
   phone?: string
 }
 
-interface Props {
+type Props = {
   logo?: string | Image
   sections: Section[]
   copyright?: string
@@ -120,7 +120,7 @@ export const Footer = forwardRef(function Footer(
 
           {/* Footer Columns of Links */}
           <div className="grid w-full flex-1 gap-y-8 [grid-template-columns:_repeat(auto-fill,_minmax(200px,_1fr))] @xl:gap-y-10">
-            {sections.length &&
+            {sections.length > 0 &&
               sections.map(({ title, links }, i) => {
                 return (
                   <div key={i} className="pr-8">
