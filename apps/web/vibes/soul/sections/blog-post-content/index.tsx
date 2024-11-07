@@ -4,16 +4,26 @@ import { clsx } from 'clsx'
 
 import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
 
+import { ButtonLink } from '../../primitives/button-link'
+
+interface Tag {
+  label: string
+  link: {
+    href: string
+    target?: string
+  }
+}
+
 interface Image {
   src: string
   alt: string
 }
 
 interface Props {
-  id: string
   title: string
   author: string
   date: string
+  tags?: Tag[]
   content: string
   image?: Image
   className?: string
@@ -23,6 +33,7 @@ export const BlogPostContent = function BlogPostContent({
   title,
   author,
   date,
+  tags,
   content,
   image,
   className = '',
@@ -30,7 +41,7 @@ export const BlogPostContent = function BlogPostContent({
   return (
     <section className={clsx('@container', className)}>
       <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        <header className="mx-auto w-full max-w-4xl pb-10 @4xl:pb-16">
+        <header className="mx-auto w-full max-w-4xl pb-8 @2xl:pb-12 @4xl:pb-16">
           <Breadcrumbs
             breadcrumbs={[
               {
@@ -52,8 +63,18 @@ export const BlogPostContent = function BlogPostContent({
             {title}
           </h1>
           <p>
-            {date} • {author}
+            {date} <span className="px-1">•</span> {author}
           </p>
+
+          {(tags?.length ?? 0) > 0 && (
+            <div className="-ml-1 mt-4 flex flex-wrap gap-1.5 @xl:mt-6">
+              {tags?.map((tag, index) => (
+                <ButtonLink key={index} href={tag.link.href} variant="tertiary" size="small">
+                  {tag.label}
+                </ButtonLink>
+              ))}
+            </div>
+          )}
         </header>
 
         {image?.src != null && image.src !== '' && (
@@ -62,13 +83,13 @@ export const BlogPostContent = function BlogPostContent({
             alt={image.alt}
             height={780}
             width={1280}
-            className="mb-10 aspect-video w-full rounded-2xl bg-contrast-100 object-cover @4xl:mb-16"
+            className="mb-8 aspect-video w-full rounded-2xl bg-contrast-100 object-cover @2xl:mb-12 @4xl:mb-16"
           />
         )}
 
         <article
           dangerouslySetInnerHTML={{ __html: content }}
-          className="prose mx-auto w-full max-w-4xl space-y-4 [&_h2]:font-heading [&_h3]:font-semibold [&_h4]:font-semibold [&_h5]:font-semibold [&_h6]:font-semibold [&_img]:mx-auto [&_img]:max-h-[600px] [&_img]:w-fit [&_img]:rounded-2xl [&_img]:object-cover"
+          className="prose mx-auto w-full max-w-4xl space-y-4 [&_h2]:font-heading [&_h2]:text-3xl [&_h2]:font-normal [&_h2]:leading-none [&_h2]:@xl:text-4xl [&_img]:mx-auto [&_img]:max-h-[600px] [&_img]:w-fit [&_img]:rounded-2xl [&_img]:object-cover"
         />
       </div>
     </section>

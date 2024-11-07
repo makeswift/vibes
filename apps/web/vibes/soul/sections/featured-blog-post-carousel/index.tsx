@@ -15,17 +15,20 @@ interface Props {
 
 export function FeaturedBlogPostCarousel({ cta, title, blogPosts }: Props) {
   return (
-    <div className="py-10 @4xl:py-24">
-      <section className="mb-6 @container @xl:mb-8">
-        <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap justify-between gap-5 px-3 @xl:px-6 @4xl:items-end @5xl:px-20">
-          <h2 className="font-heading text-2xl font-medium leading-none">{title}</h2>
+    <section className="overflow-hidden @container">
+      <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+        <div className="mb-6 flex w-full flex-row flex-wrap justify-between gap-x-8 text-foreground @4xl:mb-8 @4xl:items-end">
+          <div className="flex-1">
+            <h2 className="font-heading text-2xl font-medium leading-none @xl:text-3xl @4xl:text-4xl">
+              {title}
+            </h2>
+          </div>
           {cta != null && cta.href !== '' && cta.label !== '' && (
             <AnimatedLink label={cta.label} link={{ href: cta.href }} className="mr-3" />
           )}
         </div>
-      </section>
-
-      <BlogPostCarousel blogPosts={blogPosts} />
-    </div>
+        <BlogPostCarousel blogPosts={blogPosts} />
+      </div>
+    </section>
   )
 }
