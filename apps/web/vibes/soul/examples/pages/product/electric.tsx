@@ -1,5 +1,8 @@
+import { subscribe } from 'diagnostics_channel'
+
 import { getProducts } from '@/vibes/soul/data'
 import { locales } from '@/vibes/soul/data/locales'
+import { action as subscribeAction } from '@/vibes/soul/examples/primitives/inline-email-form/actions'
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
 import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric'
@@ -74,7 +77,7 @@ export default function Preview() {
         <Subscribe
           title="Sign up for our newsletter"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-          action={action}
+          action={subscribeAction}
         />
 
         <Footer sections={footerLinks} logo="SOUL" />
