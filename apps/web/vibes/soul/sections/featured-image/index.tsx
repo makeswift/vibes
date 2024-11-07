@@ -5,6 +5,8 @@ import { clsx } from 'clsx'
 
 import { Button } from '@/vibes/soul/primitives/button'
 
+import { ButtonLink } from '../../primitives/button-link'
+
 export interface FeaturedImageProps {
   title: string
   description: string
@@ -31,7 +33,7 @@ export const FeaturedImage = function FeaturedImage({
     <section
       className={clsx(
         'relative bg-primary-shadow @container',
-        mediaAlign === 'full' && 'h-dvh max-h-[780px]'
+        mediaAlign === 'full' && 'h-dvh max-h-[700px]'
       )}
     >
       <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
@@ -66,17 +68,15 @@ export const FeaturedImage = function FeaturedImage({
             { '@3xl:order-1': mediaAlign === 'right' }
           )}
         >
-          <h2 className="max-w-xl font-heading text-4xl font-medium leading-none @xl:text-5xl">
-            {title}
-          </h2>
+          <h2 className="max-w-xl font-heading text-4xl leading-none @xl:text-5xl">{title}</h2>
           <p className="max-w-md pb-2">{description}</p>
-          <Button
+          <ButtonLink
+            href={cta.href}
             variant={mediaAlign === 'full' ? 'tertiary' : 'primary'}
             className={clsx(mediaAlign === 'full' ? 'text-background' : 'text-foreground')}
-            asChild
           >
-            <Link href={cta.href}>{cta.label}</Link>
-          </Button>
+            {cta.label}
+          </ButtonLink>
         </div>
       </div>
     </section>
