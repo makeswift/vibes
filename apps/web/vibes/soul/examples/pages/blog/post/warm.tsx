@@ -74,7 +74,6 @@ export default function Preview() {
       />
 
       <BlogPostContent
-        id="1"
         title="The Good, the Great, and the (My) Bad: Adventures of a First Time Bikepacker"
         author="Sam Smith"
         date="June 30, 2024"
