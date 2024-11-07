@@ -45,6 +45,7 @@ export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter
 interface Props {
   className?: string
   filters: Filter[] | Promise<Filter[]>
+  resetFiltersLabel?: string
 }
 
 function getParamCountLabel(params: Record<string, string | null | string[]>, key: string) {
@@ -52,7 +53,7 @@ function getParamCountLabel(params: Record<string, string | null | string[]>, ke
   else return ''
 }
 
-export function FiltersPanel({ className, filters }: Props) {
+export function FiltersPanel({ className, filters, resetFiltersLabel }: Props) {
   return (
     <Suspense fallback={<FiltersSkeleton />}>
       <FiltersPanelInner className={className} filters={filters} />
@@ -60,7 +61,11 @@ export function FiltersPanel({ className, filters }: Props) {
   )
 }
 
-export function FiltersPanelInner({ className, filters }: Props) {
+export function FiltersPanelInner({
+  className,
+  filters,
+  resetFiltersLabel = 'Reset filters',
+}: Props) {
   const resolved = filters instanceof Promise ? use(filters) : filters
   const [params, setParams] = useQueryStates(
     resolved.reduce((acc, filter) => {
@@ -81,7 +86,7 @@ export function FiltersPanelInner({ className, filters }: Props) {
   if (resolved.length === 0) return null
 
   return (
-    <div className={clsx('w-full space-y-5', className)}>
+    <div className={clsx('space-y-5', className)}>
       <Accordions type="multiple" defaultValue={resolved.map((_, i) => i.toString())}>
         {resolved.map((filter, index) => {
           switch (filter.type) {
@@ -126,10 +131,10 @@ export function FiltersPanelInner({ className, filters }: Props) {
         variant="secondary"
         size="small"
         onClick={() => {
-          setParams(null).catch(() => console.error('Failed to reset filters'))
+          void setParams(null)
         }}
       >
-        Reset filters
+        {resetFiltersLabel}
       </Button>
     </div>
   )
