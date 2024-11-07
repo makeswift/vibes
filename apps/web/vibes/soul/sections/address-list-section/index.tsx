@@ -17,17 +17,17 @@ export type Address = z.infer<typeof schema>
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
-type State = {
-  addresses: Address[]
+type State<A extends Address> = {
+  addresses: A[]
   defaultAddressId: string
   lastResult: SubmissionResult | null
 }
 
-type Props = {
+type Props<A extends Address> = {
   title?: string
-  addresses: Address[]
+  addresses: A[]
   defaultAddressId: string
-  addressAction: Action<State, FormData>
+  addressAction: Action<State<A>, FormData>
   editLabel?: string
   deleteLabel?: string
   updateLabel?: string
@@ -47,7 +47,7 @@ type Props = {
   postalCodeLabel?: string
 }
 
-export function AddressListSection({
+export function AddressListSection<A extends Address>({
   title = 'Addresses',
   addresses,
   defaultAddressId,
@@ -69,14 +69,14 @@ export function AddressListSection({
   addressLevel2Label,
   countryLabel,
   postalCodeLabel,
-}: Props) {
-  const [state, formAction, isPending] = useActionState<State, FormData>(addressAction, {
+}: Props<A>) {
+  const [state, formAction, isPending] = useActionState(addressAction, {
     addresses,
     defaultAddressId,
     lastResult: null,
   })
 
-  const [optimisticState, setOptimisticState] = useOptimistic<State, FormData>(
+  const [optimisticState, setOptimisticState] = useOptimistic<State<Address>, FormData>(
     state,
     (prevState, formData) => {
       const intent = formData.get('intent')
