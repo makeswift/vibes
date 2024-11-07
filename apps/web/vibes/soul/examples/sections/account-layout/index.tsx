@@ -1,9 +1,9 @@
 import { AccountLayout } from '@/vibes/soul/sections/account-layout'
 
 const links = [
-  { href: '#', label: 'Orders' },
-  { href: '#', label: 'Addresses' },
-  { href: '#', label: 'Account' },
+  { href: '/preview/soul/account-layout-example/Electric#a', label: 'Orders' },
+  { href: '/preview/soul/account-layout-example/Electric#b', label: 'Addresses' },
+  { href: '/preview/soul/account-layout-example/Electric#c', label: 'Account' },
 ]
 
 export default function Preview() {

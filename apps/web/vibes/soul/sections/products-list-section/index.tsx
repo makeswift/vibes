@@ -4,10 +4,9 @@ import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list
 
 import { Filter, FiltersPanel } from './filters-panel'
 import { MobileFilters } from './mobile-filters'
-import { Option as SortOption } from './sorting'
-import { Sorting } from './sorting'
+import { Option as SortOption, Sorting } from './sorting'
 
-interface Props {
+type Props = {
   breadcrumbs?: Breadcrumb[]
   title?: Promise<string> | string
   totalCount: Promise<number> | number
@@ -43,37 +42,42 @@ export function ProductsListSection({
   compareParamName,
 }: Props) {
   return (
-    <div className="mx-auto max-w-7xl @container">
-      <div className="p-4 @4xl:p-10">
-        {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-8 pt-6 text-foreground">
-          <h1 className="text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl ">
-            {title} <span className="text-contrast-300">{totalCount}</span>
-          </h1>
-          <div className="flex gap-2">
-            <Sorting options={sortOptions} label={sortLabel} paramName={sortParamName} />
-            <div className="block @3xl:hidden">
-              <MobileFilters filters={filters} label={filterLabel} />
+    <div className="@container">
+      <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-12">
+        <div>
+          {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-8 pt-6 text-foreground">
+            <h1 className="text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl ">
+              {title} <span className="text-contrast-300">{totalCount}</span>
+            </h1>
+            <div className="flex gap-2">
+              <Sorting options={sortOptions} label={sortLabel} paramName={sortParamName} />
+              <div className="block @3xl:hidden">
+                <MobileFilters filters={filters} label={filterLabel} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex gap-8 @4xl:gap-10">
-        <FiltersPanel
-          className="hidden w-52 @3xl:block @4xl:w-60"
-          filters={filters}
-          resetFiltersLabel={resetFiltersLabel}
-        />
-        <div className="flex-1">
-          <ProductsList
-            products={products}
-            showCompare
-            compareLabel={compareLabel}
-            compareParamName={compareParamName}
-            compareProducts={compareProducts}
-            compareAction={compareAction}
-          />
-          {paginationInfo && <CursorPagination info={paginationInfo} />}
+        <div className="flex items-stretch gap-8 @4xl:gap-10">
+          <div className="hidden w-52 @3xl:block @4xl:w-60">
+            <FiltersPanel
+              className="sticky top-4"
+              filters={filters}
+              resetFiltersLabel={resetFiltersLabel}
+            />
+          </div>
+
+          <div className="flex-1">
+            <ProductsList
+              products={products}
+              showCompare
+              compareLabel={compareLabel}
+              compareParamName={compareParamName}
+              compareProducts={compareProducts}
+              compareAction={compareAction}
+            />
+            {paginationInfo && <CursorPagination info={paginationInfo} />}
+          </div>
         </div>
       </div>
     </div>
