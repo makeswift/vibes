@@ -1,5 +1,4 @@
-import Link from 'next/link'
-
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link'
 import { Card, CardCarousel } from '@/vibes/soul/primitives/card-carousel'
 
 interface Link {
@@ -28,12 +27,7 @@ export function FeaturedCardCarousel({ title, description, cta, cards }: Props) 
             )}
           </div>
           {cta != null && cta.href !== '' && cta.label !== '' && (
-            <Link
-              href={cta.href}
-              className="mr-3 rounded-lg font-semibold text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2"
-            >
-              {cta.label}
-            </Link>
+            <AnimatedLink label={cta.label} link={{ href: cta.href }} className="mr-3" />
           )}
         </div>
         <CardCarousel cards={cards} />

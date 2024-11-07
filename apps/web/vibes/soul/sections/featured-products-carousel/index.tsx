@@ -1,5 +1,4 @@
-import Link from 'next/link'
-
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link'
 import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
 
 interface Link {
@@ -28,12 +27,7 @@ export function FeaturedProductsCarousel({ title, description, cta, products }: 
             )}
           </div>
           {cta != null && cta.href !== '' && cta.label !== '' && (
-            <Link
-              href={cta.href}
-              className="mr-3 rounded-lg font-semibold text-foreground ring-primary focus-visible:outline-0 focus-visible:ring-2"
-            >
-              {cta.label}
-            </Link>
+            <AnimatedLink label={cta.label} link={{ href: cta.href }} className="mr-3" />
           )}
         </div>
         <ProductsCarousel products={products} />
