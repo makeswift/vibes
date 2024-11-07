@@ -5,11 +5,11 @@ export default function Preview() {
     <div className="flex h-screen flex-col items-center justify-center">
       <div className="max-w-80">
         <p className="mb-6">
-          This is text with an <AnimatedLink href="/" label="animated link" /> inside.
+          This is text with an <AnimatedLink link={{ href: '/' }} label="animated link" /> inside.
         </p>
 
         <AnimatedLink
-          href="/"
+          link={{ href: '/' }}
           label="Animated link with a very long label to exhibit multi line support"
         />
       </div>
