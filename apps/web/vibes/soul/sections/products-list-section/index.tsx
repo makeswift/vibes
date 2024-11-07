@@ -55,21 +55,19 @@ export function ProductsListSection({
             </div>
           </div>
         </div>
-        <div className="flex gap-8 @4xl:gap-10">
-          <div className="hidden w-52 @3xl:block @4xl:w-60">
-            <FiltersPanel filters={filters} />
-          </div>
-          <div className="flex-1">
-            <ProductsList
-              products={products}
-              showCompare
-              compareLabel={compareLabel}
-              compareParamName={compareParamName}
-              compareProducts={compareProducts}
-              compareAction={compareAction}
-            />
-            {paginationInfo && <CursorPagination info={paginationInfo} />}
-          </div>
+      </div>
+      <div className="flex gap-8 @4xl:gap-10">
+        <FiltersPanel className="hidden w-52 @3xl:block @4xl:w-60" filters={filters} />
+        <div className="flex-1">
+          <ProductsList
+            products={products}
+            showCompare
+            compareLabel={compareLabel}
+            compareParamName={compareParamName}
+            compareProducts={compareProducts}
+            compareAction={compareAction}
+          />
+          {paginationInfo && <CursorPagination info={paginationInfo} />}
         </div>
       </div>
     </div>

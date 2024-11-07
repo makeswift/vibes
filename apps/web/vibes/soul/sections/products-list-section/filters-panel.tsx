@@ -78,6 +78,8 @@ export function FiltersPanelInner({ className, filters }: Props) {
     { shallow: false }
   )
 
+  if (resolved.length === 0) return null
+
   return (
     <div className={clsx('w-full space-y-5', className)}>
       <Accordions type="multiple" defaultValue={resolved.map((_, i) => i.toString())}>
