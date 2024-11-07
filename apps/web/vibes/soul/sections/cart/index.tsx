@@ -123,12 +123,11 @@ function CartInner<LineItem extends CartLineItem>({
   const [optimisticLineItems, setOptimisticLineItems] = useOptimistic<CartLineItem[], FormData>(
     state.lineItems,
     (prevState, formData) => {
-      const intent = formData.get('intent')
       const submission = parseWithZod(formData, { schema: cartLineItemActionFormDataSchema })
 
       if (submission.status !== 'success') return prevState
 
-      switch (intent) {
+      switch (submission.value.intent) {
         case 'increment': {
           const { id } = submission.value
 
