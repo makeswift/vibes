@@ -11,6 +11,7 @@ import { Minus, Plus, Trash2 } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 
+import { ButtonLink } from '../../primitives/button-link'
 import { cartLineItemActionFormDataSchema } from './schema'
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
@@ -160,8 +161,8 @@ function CartInner<LineItem extends CartLineItem>({
   }
 
   return (
-    <div className="mx-auto max-w-screen-2xl @container">
-      <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
+    <div className="@container">
+      <div className="mx-auto flex w-full max-w-screen-xl flex-col gap-10 px-4 py-10 @xl:px-6 @xl:py-14 @4xl:flex-row @4xl:gap-20 @4xl:px-8 @4xl:py-20">
         {/* Cart Side */}
         <div className="w-full">
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
@@ -339,7 +340,7 @@ function CounterForm({
           name="intent"
           value="delete"
         >
-          <Trash2 strokeWidth={1} size={18} />
+          <Trash2 strokeWidth={1} size={20} />
         </button>
       </div>
     </form>
@@ -367,22 +368,24 @@ function CheckoutButton({
 
 export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
   return (
-    <div className="mt-20 flex min-h-96 flex-col items-center justify-center @container">
-      <span className="mb-3 text-center font-heading text-2xl font-medium leading-none text-foreground @lg:text-4xl @3xl:text-5xl ">
-        {title}
-      </span>
-      <h2 className="mb-10 text-center leading-none text-contrast-300 @3xl:text-lg">{subtitle}</h2>
-      <Button asChild>
-        <Link href={cta.href}>{cta.label}</Link>
-      </Button>
+    <div className="@container">
+      <div className="px-4 py-10 text-center @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+        <h1 className="mb-3 text-center font-heading text-2xl leading-none text-foreground @lg:text-4xl @3xl:text-5xl ">
+          {title}
+        </h1>
+        <p className="mb-10 text-center leading-normal text-contrast-500 @3xl:text-lg">
+          {subtitle}
+        </p>
+        <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
+      </div>
     </div>
   )
 }
 
 export function CartSkeleton({ title }: { title: string }) {
   return (
-    <div className="mx-auto w-full max-w-screen-2xl animate-pulse @container">
-      <div className="flex w-full flex-col gap-10 px-3 pb-10 pt-24 @xl:px-6 @4xl:flex-row @4xl:gap-20 @4xl:pb-20 @4xl:pt-32 @5xl:px-20">
+    <div className="animate-pulse @container">
+      <div className="mx-auto flex w-full max-w-screen-2xl flex-col gap-10 px-4 py-10 @xl:px-6 @xl:py-14 @4xl:flex-row @4xl:gap-20 @4xl:px-8 @4xl:py-20">
         {/* Cart Side */}
         <div className="w-full">
           <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
