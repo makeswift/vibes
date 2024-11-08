@@ -1,3 +1,4 @@
+import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm'
 import { ProductDetail } from '@/vibes/soul/sections/product-detail'
 
 import { action, fields } from './action'
@@ -72,5 +73,7 @@ export const product = {
 }
 
 export default function Preview() {
-  return <ProductDetail product={product} fields={fields} action={action} />
+  return (
+    <ProductDetail breadcrumbs={breadcrumbs} product={product} fields={fields} action={action} />
+  )
 }

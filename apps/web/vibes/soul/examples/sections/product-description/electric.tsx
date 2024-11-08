@@ -3,8 +3,14 @@ import { ProductDescription } from '@/vibes/soul/sections/product-description'
 export const accordions = [
   {
     title: 'What is your return policy?',
-    content:
-      'We want you to be completely satisfied with your purchase. If you’re not happy with your plant, you can return it within 30 days of delivery. Please ensure the plant is in its original condition and packaging. For detailed return instructions, visit our Return Policy page or contact our customer support team.',
+    content: (
+      <div className="w-[700px] max-w-full">
+        We want you to be completely satisfied with your purchase. If you’re not happy with your
+        plant, you can return it within 30 days of delivery. Please ensure the plant is in its
+        original condition and packaging. For detailed return instructions, visit our Return Policy
+        page or contact our customer support team.
+      </div>
+    ),
   },
   {
     title: 'How do I care for my new plants?',
