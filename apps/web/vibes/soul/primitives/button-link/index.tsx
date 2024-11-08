@@ -23,7 +23,7 @@ export function ButtonLink({
       {...props}
       href={href}
       className={clsx(
-        'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden rounded-full border text-center font-medium leading-normal transition-all duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-2',
+        'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden rounded-full border text-center font-medium leading-normal duration-300 ease-in-out after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:outline-none focus-visible:ring-2',
         {
           primary:
             'border-primary bg-primary text-foreground ring-foreground after:bg-background/40',
@@ -38,8 +38,6 @@ export function ButtonLink({
           medium: 'gap-x-2.5 px-5 py-3 text-base',
           large: 'gap-x-3 px-6 py-4 text-base',
         }[size],
-        // After Pseudo Element / Animated Background Styles
-        'after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0',
         className
       )}
     >
