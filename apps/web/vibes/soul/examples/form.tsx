@@ -44,6 +44,12 @@ export default function Preview() {
           { type: 'color', label: 'Red', value: 'red', color: 'red' },
           { type: 'color', label: 'Green', value: 'green', color: 'green', disabled: true },
           { type: 'color', label: 'Gray', value: 'gray', color: '#eee', disabled: true },
+          {
+            type: 'image',
+            label: 'Gray',
+            value: 'gray',
+            image: { src: 'https://rstr.in/monogram/vibes/-kv08IvX08j', alt: '' },
+          },
         ]}
         errors={['This is required']}
       />
