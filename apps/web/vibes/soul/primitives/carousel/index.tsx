@@ -127,7 +127,7 @@ function CarouselItem({ className, ...rest }: React.HTMLAttributes<HTMLDivElemen
       {...rest}
       role="group"
       aria-roledescription="slide"
-      className={clsx('min-w-0 shrink-0 grow-0 pl-4', className)}
+      className={clsx('min-w-0 shrink-0 grow-0 pl-4 @2xl:pl-5', className)}
     />
   )
 }

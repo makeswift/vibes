@@ -10,9 +10,5 @@ export default async function Preview({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] }>
 }) {
-  return (
-    <div className="p-20">
-      <CompareSection products={products} addToCartAction={addToCartAction} />
-    </div>
-  )
+  return <CompareSection products={products} addToCartAction={addToCartAction} />
 }
