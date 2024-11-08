@@ -1,6 +1,8 @@
 @import url('./shiki.css');
 @import url('./zoom.css');
 
+@config '../../../tailwind.config.ts';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
