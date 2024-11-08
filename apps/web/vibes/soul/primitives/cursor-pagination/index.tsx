@@ -43,7 +43,12 @@ function CursorPaginationResolved({ info }: Props) {
   return (
     <div className="flex w-full items-center justify-center gap-3 py-10">
       {startCursor != null ? (
-        <PaginationLink href={serialize(searchParams, { [startCursorParamName]: startCursor })}>
+        <PaginationLink
+          href={serialize(searchParams, {
+            [startCursorParamName]: startCursor,
+            [endCursorParamName]: null,
+          })}
+        >
           <ArrowLeft size={24} strokeWidth={1} />
         </PaginationLink>
       ) : (
@@ -52,7 +57,12 @@ function CursorPaginationResolved({ info }: Props) {
         </SkeletonLink>
       )}
       {endCursor != null ? (
-        <PaginationLink href={serialize(searchParams, { [endCursorParamName]: endCursor })}>
+        <PaginationLink
+          href={serialize(searchParams, {
+            [endCursorParamName]: endCursor,
+            [startCursorParamName]: null,
+          })}
+        >
           <ArrowRight size={24} strokeWidth={1} />
         </PaginationLink>
       ) : (
