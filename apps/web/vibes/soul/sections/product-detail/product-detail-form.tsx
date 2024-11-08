@@ -60,7 +60,7 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
     }),
     { quantity: 1 } as { [Key in keyof SchemaRawShape]?: z.infer<SchemaRawShape[Key]> }
   )
-  const [prevState, formAction] = useActionState(action, { fields, lastResult: null })
+  const [prevState, formAction, isPending] = useActionState(action, { fields, lastResult: null })
   const [form, formFields] = useForm({
     lastResult: prevState.lastResult,
     constraint: getZodConstraint(schema(fields)),
@@ -100,9 +100,8 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
               min={1}
               required
             />
-            <Button size="medium" type="submit" className="w-auto @xl:w-56">
+            <Button size="medium" type="submit" className="w-auto @xl:w-56" loading={isPending}>
               {ctaLabel}
-              <ArrowRight strokeWidth={1} size={20} />
             </Button>
           </div>
         </div>
