@@ -35,7 +35,7 @@ export function Reviews({
           <div className="mb-2 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl">
             {averageRating}
           </div>
-          <Rating rating={averageRating} />
+          <Rating rating={averageRating} showRating={false} />
         </>
       }
       sidebarSize="medium"
@@ -52,7 +52,7 @@ export function Reviews({
           )
         })}
 
-        {paginationInfo && <CursorPagination info={paginationInfo} />}
+        {paginationInfo && <CursorPagination info={paginationInfo} scroll={false} />}
       </div>
     </StickySidebarLayout>
   )
