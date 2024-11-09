@@ -1,4 +1,4 @@
-import { Reviews } from '@/vibes/soul/sections/reviews'
+import { Reviews, ReviewsEmptyState, ReviewsSkeleton } from '@/vibes/soul/sections/reviews'
 
 export const reviews = [
   {
@@ -44,5 +44,11 @@ export const reviews = [
 ]
 
 export default function Preview() {
-  return <Reviews reviews={reviews} averageRating={4.5} />
+  return (
+    <div>
+      <Reviews reviews={reviews} totalCount={reviews.length} averageRating={4.5} />
+      <ReviewsEmptyState />
+      <ReviewsSkeleton />
+    </div>
+  )
 }
