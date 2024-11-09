@@ -43,21 +43,28 @@ export function CompareCard({
           </form>
         )}
       </div>
-      {product.rating != null && (
-        <div className="space-y-4 py-4">
-          <h3 className="font-mono text-xs uppercase">{ratingLabel}</h3>
+
+      <div className="space-y-4 py-4">
+        <div className="font-mono text-xs uppercase">{ratingLabel}</div>
+        {product.rating != null ? (
           <Rating rating={product.rating} />
-        </div>
-      )}
-      {product.description != null && product.description !== '' && (
-        <div className="space-y-4 py-4">
-          <h3 className="font-mono text-xs uppercase">{descriptionLabel}</h3>
+        ) : (
+          <p className="text-sm text-contrast-400"> There are no reviews.</p>
+        )}
+      </div>
+
+      <div className="space-y-4 py-4">
+        <div className="font-mono text-xs uppercase">{descriptionLabel}</div>
+        {product.description != null && product.description !== '' ? (
           <p className="text-sm">{product.description}</p>
-        </div>
-      )}
-      {product.customFields != null && (
+        ) : (
+          <p className="text-sm text-contrast-400"> There is no description available.</p>
+        )}
+      </div>
+
+      {product.customFields != null ? (
         <div className="space-y-4 py-4">
-          <h3 className="font-mono text-xs uppercase">{otherDetailsLabel}</h3>
+          <div className="font-mono text-xs uppercase">{otherDetailsLabel}</div>
           {product.customFields?.map(field => (
             <div>
               <p className="text-xs">
@@ -65,6 +72,11 @@ export function CompareCard({
               </p>
             </div>
           ))}
+        </div>
+      ) : (
+        <div className="space-y-4 py-4">
+          <div className="font-mono text-xs uppercase">{otherDetailsLabel}</div>
+          <p className="text-sm text-contrast-400"> There are no other details available.</p>
         </div>
       )}
     </div>
