@@ -13,11 +13,11 @@ export type CompareProduct = CardProduct & {
 export type Props = {
   className?: string
   product: CompareProduct
-  addToCartAction?(id: string): Promise<void>
   addToCartLabel?: string
   descriptionLabel?: string
   ratingLabel?: string
   otherDetailsLabel?: string
+  addToCartAction?(id: string): Promise<void>
 }
 
 export function CompareCard({
@@ -65,8 +65,8 @@ export function CompareCard({
       {product.customFields != null ? (
         <div className="space-y-4 py-4">
           <div className="font-mono text-xs uppercase">{otherDetailsLabel}</div>
-          {product.customFields?.map(field => (
-            <div>
+          {product.customFields?.map((field, index) => (
+            <div key={index}>
               <p className="text-xs">
                 <strong>{field.name}</strong>: {field.value}
               </p>
