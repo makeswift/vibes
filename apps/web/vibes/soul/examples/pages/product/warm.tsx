@@ -21,8 +21,8 @@ import { ProductDetail } from '@/vibes/soul/sections/product-detail'
 import { Reviews } from '@/vibes/soul/sections/reviews'
 import { Subscribe } from '@/vibes/soul/sections/subscribe'
 
-export default function Preview() {
-  const featuredProducts = getProducts('Warm')
+export default async function Preview() {
+  const featuredProducts = await getProducts('Warm')
 
   return (
     <>

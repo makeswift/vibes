@@ -10,10 +10,10 @@ import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-product
 import { Footer } from '@/vibes/soul/sections/footer'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 
-export default function Preview() {
-  const products = getProducts('Luxury')
-  const sortOptions = getSortOptions()
-  const filters = getFilters('Luxury')
+export default async function Preview() {
+  const products = await getProducts('Luxury')
+  const sortOptions = await getSortOptions()
+  const filters = await getFilters('Luxury')
 
   return (
     <>

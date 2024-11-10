@@ -3,7 +3,7 @@ import { CompareSection } from '@/vibes/soul/sections/compare-section'
 
 import { addToCartAction } from './actions'
 
-const products = getProducts('Electric')
+const products = await getProducts('Electric')
 
 export default async function Preview({
   searchParams,
