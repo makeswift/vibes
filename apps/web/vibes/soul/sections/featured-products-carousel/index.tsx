@@ -1,5 +1,12 @@
+import { Suspense } from 'react'
+
+import { Streamable } from '@/vibes/soul/lib/streamable'
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link'
-import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel'
+import {
+  CarouselProduct,
+  ProductsCarousel,
+  ProductsCarouselSkeleton,
+} from '@/vibes/soul/primitives/products-carousel'
 
 type Link = {
   label: string
@@ -10,7 +17,7 @@ type Props = {
   title?: string
   description?: string
   cta?: Link
-  products: CarouselProduct[]
+  products: Streamable<CarouselProduct[]>
 }
 
 export function FeaturedProductsCarousel({ title, description, cta, products }: Props) {
@@ -31,7 +38,9 @@ export function FeaturedProductsCarousel({ title, description, cta, products }: 
             <AnimatedLink label={cta.label} link={{ href: cta.href }} className="mr-3" />
           )}
         </div>
-        <ProductsCarousel products={products} />
+        <Suspense fallback={<ProductsCarouselSkeleton />}>
+          <ProductsCarousel products={products} />
+        </Suspense>
       </div>
     </section>
   )
