@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { Suspense, startTransition, use, useActionState, useEffect, useOptimistic } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
@@ -9,9 +10,9 @@ import clsx from 'clsx'
 import { ArrowRight, Minus, Plus, Trash2 } from 'lucide-react'
 
 import { Button } from '@/vibes/soul/primitives/button'
+import { ButtonLink } from '@/vibes/soul/primitives/button-link'
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
 
-import { ButtonLink } from '../../primitives/button-link'
-import { StickySidebarLayout } from '../sticky-sidebar-layout'
 import { cartLineItemActionFormDataSchema } from './schema'
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
@@ -79,15 +80,15 @@ export function Cart<LineItem extends CartLineItem>({
   return (
     <Suspense fallback={<CartSkeleton title={title} />}>
       <CartInner
-        title={title}
-        lineItems={lineItems}
-        lineItemAction={lineItemAction}
         checkoutAction={checkoutAction}
-        summary={summary}
-        emptyState={emptyState}
-        deleteLineItemLabel={deleteLineItemLabel}
         decrementLineItemLabel={decrementLineItemLabel}
+        deleteLineItemLabel={deleteLineItemLabel}
+        emptyState={emptyState}
         incrementLineItemLabel={incrementLineItemLabel}
+        lineItemAction={lineItemAction}
+        lineItems={lineItems}
+        summary={summary}
+        title={title}
       />
     </Suspense>
   )
@@ -116,7 +117,7 @@ function CartInner<LineItem extends CartLineItem>({
 }: CartProps<LineItem>) {
   const resolvedLineItems = lineItems instanceof Promise ? use(lineItems) : lineItems
 
-  const [state, formAction, isPending] = useActionState(lineItemAction, {
+  const [state, formAction] = useActionState(lineItemAction, {
     lineItems: resolvedLineItems,
     lastResult: null,
   })
@@ -136,6 +137,7 @@ function CartInner<LineItem extends CartLineItem>({
             item.id === id ? { ...item, quantity: item.quantity + 1 } : item
           )
         }
+
         case 'decrement': {
           const { id } = submission.value
 
@@ -143,11 +145,13 @@ function CartInner<LineItem extends CartLineItem>({
             item.id === id ? { ...item, quantity: item.quantity - 1 } : item
           )
         }
+
         case 'delete': {
           const { id } = submission.value
 
           return prevState.filter(item => item.id !== id)
         }
+
         default:
           return prevState
       }
@@ -162,8 +166,6 @@ function CartInner<LineItem extends CartLineItem>({
 
   return (
     <StickySidebarLayout
-      sidebarPosition="right"
-      sidebarSize="1/3"
       sidebar={
         <>
           <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
@@ -201,12 +203,14 @@ function CartInner<LineItem extends CartLineItem>({
               </tfoot>
             )}
           </table>
-          <CheckoutButton disabled={isPending} className="mt-10 w-full" action={checkoutAction}>
+          <CheckoutButton action={checkoutAction} className="mt-10 w-full">
             {summary.ctaLabel}
             <ArrowRight size={20} strokeWidth={1} />
           </CheckoutButton>
         </>
       }
+      sidebarPosition="right"
+      sidebarSize="1/3"
     >
       <div className="w-full">
         <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
@@ -223,11 +227,11 @@ function CartInner<LineItem extends CartLineItem>({
             >
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-24 @md:max-w-36">
                 <Image
-                  fill
-                  src={lineItem.image.src}
                   alt={lineItem.image.alt}
-                  sizes="(max-width: 400px) 100vw, 144px"
                   className="object-cover"
+                  fill
+                  sizes="(max-width: 400px) 100vw, 144px"
+                  src={lineItem.image.src}
                 />
               </div>
               <div className="flex flex-grow flex-col flex-wrap justify-between gap-y-2 @xl:flex-row">
@@ -236,17 +240,17 @@ function CartInner<LineItem extends CartLineItem>({
                   <span className="text-contrast-300">{lineItem.subtitle}</span>
                 </div>
                 <CounterForm
-                  lineItem={lineItem}
                   action={formAction}
+                  decrementLabel={decrementLineItemLabel}
+                  deleteLabel={deleteLineItemLabel}
+                  incrementLabel={incrementLineItemLabel}
+                  lineItem={lineItem}
                   onSubmit={formData => {
                     startTransition(() => {
                       formAction(formData)
                       setOptimisticLineItems(formData)
                     })
                   }}
-                  incrementLabel={incrementLineItemLabel}
-                  decrementLabel={decrementLineItemLabel}
-                  deleteLabel={deleteLineItemLabel}
                 />
               </div>
             </li>
@@ -295,53 +299,53 @@ function CounterForm({
         {/* Counter */}
         <div className="flex items-center rounded-lg border">
           <button
+            aria-label={decrementLabel}
             className={clsx(
               'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
               lineItem.quantity === 1 ? 'opacity-50' : 'hover:bg-contrast-100/50'
             )}
-            aria-label={decrementLabel}
-            type="submit"
             disabled={lineItem.quantity === 1}
             name="intent"
+            type="submit"
             value="decrement"
           >
             <Minus
               className={clsx(
-                'text-contrast-300 transition-colors duration-300 ',
+                'text-contrast-300 transition-colors duration-300',
                 lineItem.quantity !== 1 && 'group-hover:text-foreground'
               )}
-              strokeWidth={1.5}
               size={18}
+              strokeWidth={1.5}
             />
           </button>
-          <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ">
+          <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
             {lineItem.quantity}
           </span>
           <button
+            aria-label={incrementLabel}
             className={clsx(
               'group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
             )}
-            aria-label={incrementLabel}
-            type="submit"
             name="intent"
+            type="submit"
             value="increment"
           >
             <Plus
               className="text-contrast-300 transition-colors duration-300 group-hover:text-foreground"
-              strokeWidth={1.5}
               size={18}
+              strokeWidth={1.5}
             />
           </button>
         </div>
 
         <button
-          type="submit"
           aria-label={deleteLabel}
           className="-ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
           name="intent"
+          type="submit"
           value="delete"
         >
-          <Trash2 strokeWidth={1} size={20} />
+          <Trash2 size={20} strokeWidth={1} />
         </button>
       </div>
     </form>
@@ -354,24 +358,32 @@ function CheckoutButton({
 }: { action: Action<SubmissionResult | null, FormData> } & React.ComponentPropsWithoutRef<
   typeof Button
 >) {
-  const [lastResult, formAction, isPending] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null)
 
   useEffect(() => {
-    if (lastResult?.error) return console.log(lastResult.error)
+    if (lastResult?.error) {
+      console.log(lastResult.error)
+    }
   }, [lastResult?.error])
 
   return (
     <form action={formAction}>
-      <Button {...rest} type="submit" loading={isPending} />
+      <SubmitButton {...rest} />
     </form>
   )
+}
+
+function SubmitButton(props: React.ComponentPropsWithoutRef<typeof Button>) {
+  const { pending } = useFormStatus()
+
+  return <Button {...props} loading={pending} disabled={pending} type="submit" />
 }
 
 export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
   return (
     <div className="@container">
       <div className="px-4 py-10 text-center @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        <h1 className="mb-3 text-center font-heading text-2xl leading-none text-foreground @lg:text-4xl @3xl:text-5xl ">
+        <h1 className="mb-3 text-center font-heading text-2xl leading-none text-foreground @lg:text-4xl @3xl:text-5xl">
           {title}
         </h1>
         <p className="mb-10 text-center leading-normal text-contrast-500 @3xl:text-lg">
@@ -387,8 +399,6 @@ export function CartSkeleton({ title = 'Cart' }: { title?: string }) {
   return (
     <StickySidebarLayout
       className="animate-pulse"
-      sidebarSize="1/3"
-      sidebarPosition="right"
       sidebar={
         <>
           {/* Summary Title */}
@@ -422,6 +432,8 @@ export function CartSkeleton({ title = 'Cart' }: { title?: string }) {
           <div className="mt-10 h-[50px] w-full rounded-full bg-contrast-100" />
         </>
       }
+      sidebarPosition="right"
+      sidebarSize="1/3"
     >
       <div className="w-full">
         <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
@@ -436,7 +448,7 @@ export function CartSkeleton({ title = 'Cart' }: { title?: string }) {
               key={index}
             >
               {/* Image */}
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-24 @md:max-w-36"></div>
+              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-24 @md:max-w-36" />
               <div className="flex flex-grow flex-col flex-wrap justify-between gap-y-4 @xl:flex-row">
                 <div className="flex w-full flex-1 flex-col @xl:w-1/2 @xl:pr-4">
                   {/* Line Item Title */}

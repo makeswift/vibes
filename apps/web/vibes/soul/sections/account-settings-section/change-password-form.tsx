@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useEffect } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
@@ -29,7 +30,7 @@ export function ChangePasswordForm({
   confirmPasswordLabel = 'Confirm password',
   submitLabel = 'Update',
 }: Props) {
-  const [lastResult, formAction, isPending] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null)
   const [form, fields] = useForm({
     constraint: getZodConstraint(changePasswordSchema),
     shouldValidate: 'onBlur',
@@ -40,33 +41,43 @@ export function ChangePasswordForm({
   })
 
   useEffect(() => {
-    if (lastResult?.error) return console.log(lastResult.error)
+    if (lastResult?.error) {
+      console.log(lastResult.error)
+    }
   }, [lastResult])
 
   return (
-    <form {...getFormProps(form)} className="space-y-5" action={formAction}>
+    <form {...getFormProps(form)} action={formAction} className="space-y-5">
       <Input
         {...getInputProps(fields.currentPassword, { type: 'password' })}
-        key={fields.currentPassword.id}
         errors={fields.currentPassword.errors}
+        key={fields.currentPassword.id}
         label={currentPasswordLabel}
       />
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
-        key={fields.password.id}
         errors={fields.password.errors}
+        key={fields.password.id}
         label={newPasswordLabel}
       />
       <Input
         {...getInputProps(fields.confirmPassword, { type: 'password' })}
-        key={fields.confirmPassword.id}
-        errors={fields.confirmPassword.errors}
         className="mb-6"
+        errors={fields.confirmPassword.errors}
+        key={fields.confirmPassword.id}
         label={confirmPasswordLabel}
       />
-      <Button type="submit" variant="secondary" size="small" loading={isPending}>
-        {submitLabel}
-      </Button>
+      <SubmitButton>{submitLabel}</SubmitButton>
     </form>
+  )
+}
+
+function SubmitButton({ children }: { children: React.ReactNode }) {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button loading={pending} size="small" type="submit" variant="secondary">
+      {children}
+    </Button>
   )
 }

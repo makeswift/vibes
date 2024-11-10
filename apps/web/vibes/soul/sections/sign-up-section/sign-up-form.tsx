@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useEffect } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
@@ -33,7 +34,7 @@ export function SignUpForm({
   confirmPasswordLabel = 'Confirm password',
   submitLabel = 'Sign up',
 }: Props) {
-  const [lastResult, formAction, isPending] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null)
   const [form, fields] = useForm({
     constraint: getZodConstraint(schema),
     shouldValidate: 'onBlur',
@@ -44,47 +45,57 @@ export function SignUpForm({
   })
 
   useEffect(() => {
-    if (lastResult?.error) return console.log(lastResult.error)
+    if (lastResult?.error) {
+      console.log(lastResult.error)
+    }
   }, [lastResult])
 
   return (
-    <form {...getFormProps(form)} className="flex flex-grow flex-col gap-5" action={formAction}>
+    <form {...getFormProps(form)} action={formAction} className="flex flex-grow flex-col gap-5">
       <div className="flex gap-5">
         <Input
           {...getInputProps(fields.firstName, { type: 'text' })}
-          key={fields.firstName.id}
           errors={fields.firstName.errors}
+          key={fields.firstName.id}
           label={firstNameLabel}
         />
         <Input
           {...getInputProps(fields.lastName, { type: 'text' })}
-          key={fields.lastName.id}
           errors={fields.lastName.errors}
+          key={fields.lastName.id}
           label={lastNameLabel}
         />
       </div>
       <Input
         {...getInputProps(fields.email, { type: 'text' })}
-        key={fields.email.id}
         errors={fields.email.errors}
+        key={fields.email.id}
         label={emailLabel}
       />
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
-        key={fields.password.id}
         errors={fields.password.errors}
+        key={fields.password.id}
         label={passwordLabel}
       />
       <Input
         {...getInputProps(fields.confirmPassword, { type: 'password' })}
-        key={fields.confirmPassword.id}
-        errors={fields.confirmPassword.errors}
         className="mb-6"
+        errors={fields.confirmPassword.errors}
+        key={fields.confirmPassword.id}
         label={confirmPasswordLabel}
       />
-      <Button type="submit" variant="secondary" className="mt-auto w-full" loading={isPending}>
-        {submitLabel}
-      </Button>
+      <SubmitButton>{submitLabel}</SubmitButton>
     </form>
+  )
+}
+
+function SubmitButton({ children }: { children: React.ReactNode }) {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button className="mt-auto w-full" loading={pending} type="submit" variant="secondary">
+      {children}
+    </Button>
   )
 }

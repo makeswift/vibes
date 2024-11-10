@@ -18,14 +18,14 @@ type ProductDetailProduct = {
   description?: string
 }
 
-type Props = {
+type Props<F extends Field> = {
   breadcrumbs?: Breadcrumb[]
   product: ProductDetailProduct
-  action: ProductDetailFormAction
-  fields: Field[]
+  action: ProductDetailFormAction<F>
+  fields: F[]
 }
 
-export function ProductDetail({ product, action, fields, breadcrumbs }: Props) {
+export function ProductDetail<F extends Field>({ product, action, fields, breadcrumbs }: Props<F>) {
   return (
     <section className="@container">
       <div className="mx-auto w-full max-w-screen-lg px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">

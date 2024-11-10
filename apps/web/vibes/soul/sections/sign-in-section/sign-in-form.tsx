@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useEffect } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
@@ -27,7 +28,7 @@ export function SignInForm({
   passwordLabel = 'Password',
   submitLabel = 'Sign in',
 }: Props) {
-  const [lastResult, formAction, isPending] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null)
   const [form, fields] = useForm({
     defaultValue: { email: '', password: '' },
     constraint: getZodConstraint(schema),
@@ -43,23 +44,31 @@ export function SignInForm({
   }, [lastResult])
 
   return (
-    <form {...getFormProps(form)} className="flex flex-grow flex-col gap-5" action={formAction}>
+    <form {...getFormProps(form)} action={formAction} className="flex flex-grow flex-col gap-5">
       <Input
         {...getInputProps(fields.email, { type: 'text' })}
-        key={fields.email.id}
         errors={fields.email.errors}
+        key={fields.email.id}
         label={emailLabel}
       />
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
-        key={fields.password.id}
-        errors={fields.password.errors}
         className="mb-6"
+        errors={fields.password.errors}
+        key={fields.password.id}
         label={passwordLabel}
       />
-      <Button type="submit" variant="secondary" className="mt-auto w-full" loading={isPending}>
-        {submitLabel}
-      </Button>
+      <SubmitButton>{submitLabel}</SubmitButton>
     </form>
+  )
+}
+
+function SubmitButton({ children }: { children: React.ReactNode }) {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button className="mt-auto w-full" loading={pending} type="submit" variant="secondary">
+      {children}
+    </Button>
   )
 }
