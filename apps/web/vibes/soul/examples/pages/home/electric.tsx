@@ -207,6 +207,7 @@ export default function Preview() {
       <Slideshow slides={heroSlides} />
       <FeaturedCardCarousel
         title="Categories"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         cta={{ label: 'Shop all', href: '/all' }}
         cards={cards}
       />
@@ -235,6 +236,7 @@ export default function Preview() {
       />
       <FeaturedProductsCarousel
         title="New Arrivals"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         cta={{ label: 'See All', href: '#' }}
         products={newArrivals ?? featuredProducts.products}
       />
