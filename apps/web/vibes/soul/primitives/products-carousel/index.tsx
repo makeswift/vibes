@@ -1,3 +1,4 @@
+import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable'
 import {
   Carousel,
   CarouselButtons,
@@ -10,12 +11,18 @@ import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/prim
 export type CarouselProduct = CardProduct
 
 type Props = {
-  products: CarouselProduct[]
+  products: Streamable<CarouselProduct[]>
   className?: string
   emptyStateMessage?: string
 }
 
-export function ProductsCarousel({ products, className, emptyStateMessage }: Props) {
+export function ProductsCarousel({
+  products: streamableProducts,
+  className,
+  emptyStateMessage,
+}: Props) {
+  const products = useStreamable(streamableProducts)
+
   if (products.length === 0) {
     return <ProductsCarouselEmptyState className={className} message={emptyStateMessage} />
   }
@@ -68,7 +75,7 @@ export function ProductsCarouselEmptyState({
   )
 }
 
-export function ProductsCarouselSkeleton({ className }: Props) {
+export function ProductsCarouselSkeleton({ className }: { className?: string }) {
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-10">
