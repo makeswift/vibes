@@ -59,7 +59,7 @@ export function searchAction(brand: 'Electric' | 'Warm' | 'Luxury') {
         {
           type: 'products',
           title: 'Products',
-          products: getProducts(brand).filter(() => Math.random() > 0.5),
+          products: (await getProducts(brand)).filter(() => Math.random() > 0.5),
         },
       ],
       lastResult: submission.reply(),

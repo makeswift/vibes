@@ -1,8 +1,8 @@
 import { getProducts } from '@/vibes/soul/data'
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
 
-export default function Preview() {
-  const featuredProducts = getProducts('Electric')
+export default async function Preview() {
+  const featuredProducts = await getProducts('Electric')
   return (
     <FeaturedProductsCarousel
       title="Our Plants"

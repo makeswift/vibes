@@ -8,7 +8,7 @@ export const featuredProducts = {
     label: 'Shop now',
     href: '#',
   },
-  products: getProducts('Electric'),
+  products: await getProducts('Electric'),
 }
 
 export default function Preview() {

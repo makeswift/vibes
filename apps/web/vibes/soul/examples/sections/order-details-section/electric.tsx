@@ -2,7 +2,7 @@ import { getProducts } from '@/vibes/soul/data'
 import { AccountLayout } from '@/vibes/soul/sections/account-layout'
 import { OrderDetailsSection } from '@/vibes/soul/sections/order-details-section'
 
-const products = getProducts('Electric')
+const products = await getProducts('Electric')
 
 const order = {
   id: '1',
