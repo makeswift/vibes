@@ -131,9 +131,6 @@ export const sections = [
     registryDependencies: ['products-list', 'button', 'toggle-group', 'cursor-pagination'],
     files: [
       'sections/products-list-section/index.tsx',
-      'sections/products-list-section/filter-range.tsx',
-      'sections/products-list-section/filter-rating.tsx',
-      'sections/products-list-section/filter-toggle-group.tsx',
       'sections/products-list-section/filters-panel.tsx',
       'sections/products-list-section/mobile-filters.tsx',
       'sections/products-list-section/sorting.tsx',
