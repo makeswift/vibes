@@ -1,30 +1,20 @@
-import { Suspense, use } from 'react'
+import { Suspense } from 'react'
 
 import { Sliders } from 'lucide-react'
 
+import { Streamable } from '@/vibes/soul/lib/streamable'
 import { Button } from '@/vibes/soul/primitives/button'
 import * as SidePanel from '@/vibes/soul/primitives/side-panel'
 
 import { Filter, FiltersPanel } from './filters-panel'
 
-interface Props {
-  filters: Filter[] | Promise<Filter[]>
+export function MobileFilters({
+  label = 'Filters',
+  filters,
+}: {
   label?: string
-}
-
-export function MobileFilters(props: Props) {
-  return (
-    <Suspense fallback={null}>
-      <MobileFiltersInner {...props} />
-    </Suspense>
-  )
-}
-
-export function MobileFiltersInner({ filters, label = 'Filters' }: Props) {
-  const resolved = filters instanceof Promise ? use(filters) : filters
-
-  if (resolved.length === 0) return null
-
+  filters: Streamable<Filter[]>
+}) {
   return (
     <SidePanel.Root>
       <SidePanel.Trigger asChild>
@@ -36,7 +26,9 @@ export function MobileFiltersInner({ filters, label = 'Filters' }: Props) {
         </Button>
       </SidePanel.Trigger>
       <SidePanel.Content title={label}>
-        <FiltersPanel filters={resolved} />
+        <Suspense>
+          <FiltersPanel filters={filters} />
+        </Suspense>
       </SidePanel.Content>
     </SidePanel.Root>
   )
