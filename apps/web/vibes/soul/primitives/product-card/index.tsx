@@ -89,9 +89,9 @@ interface ProductCardSkeletonProps {
   className?: string
 }
 
-export const ProductCardSkeleton = function ProductCardSkeleton() {
+export function ProductCardSkeleton({ className }: { className?: string }) {
   return (
-    <div className="animate-pulse">
+    <div className={clsx('animate-pulse', className)}>
       <div className="group flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl">
         <div className="relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100">
           <div className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
