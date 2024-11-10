@@ -3,98 +3,98 @@ import { IconBlock, IconBlockProps } from '@/vibes/soul/sections/icon-block'
 export default function Preview() {
   const listOf6: IconBlockProps['list'] = [
     {
-      icon: 'Truck',
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: 'RotateCcw',
+      icon: 'rotate-ccw',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: 'Star',
+      icon: 'star',
       title: '2 Year Warranty',
       description: 'As standard',
     },
     {
-      icon: 'Truck',
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: 'RotateCcw',
+      icon: 'rotate-ccw',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: 'Star',
+      icon: 'star',
       title: '2 Year Warranty',
       description: 'As standard',
     },
   ]
   const listOf5: IconBlockProps['list'] = [
     {
-      icon: 'Truck',
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: 'RotateCcw',
+      icon: 'rotate-ccw',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: 'Star',
+      icon: 'star',
       title: '2 Year Warranty',
       description: 'As standard',
     },
     {
-      icon: 'Truck',
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: 'RotateCcw',
+      icon: 'rotate-ccw',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
   ]
   const listOf4: IconBlockProps['list'] = [
     {
-      icon: 'Truck',
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: 'RotateCcw',
+      icon: 'rotate-ccw',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: 'Star',
+      icon: 'star',
       title: '2 Year Warranty',
       description: 'As standard',
     },
     {
-      icon: 'Truck',
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
   ]
   const listOf3: IconBlockProps['list'] = [
     {
-      icon: 'Truck',
+      icon: 'truck',
       title: 'Free Shipping',
       description: 'On orders over $250',
     },
     {
-      icon: 'RotateCcw',
+      icon: 'rotate-ccw',
       title: 'Free Returns',
       description: 'On full priced items only',
     },
     {
-      icon: 'Star',
+      icon: 'star',
       title: '2 Year Warranty',
       description: 'As standard',
     },

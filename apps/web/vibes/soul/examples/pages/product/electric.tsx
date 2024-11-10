@@ -50,17 +50,17 @@ export default async function Preview() {
         <IconBlock
           list={[
             {
-              icon: 'Truck',
+              icon: 'truck',
               title: 'Free Shipping',
               description: 'On orders over $250',
             },
             {
-              icon: 'RotateCcw',
+              icon: 'rotate-ccw',
               title: 'Free Returns',
               description: 'On full priced items only',
             },
             {
-              icon: 'Star',
+              icon: 'star',
               title: '2 Year Warranty',
               description: 'As standard',
             },
