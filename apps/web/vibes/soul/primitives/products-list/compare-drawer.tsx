@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense, use } from 'react'
 
 import { ArrowRight, X } from 'lucide-react'
 import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
@@ -27,33 +26,32 @@ type DrawerItem = {
 }
 
 type Props = {
-  items: DrawerItem[] | Promise<DrawerItem[]>
+  items: DrawerItem[]
   paramName?: string
   action?: React.ComponentProps<'form'>['action']
   submitLabel?: string
 }
 
-function CompareDrawerInner({
+export function CompareDrawer({
   items,
   paramName = 'compare',
   action,
   submitLabel = 'Compare',
 }: Props) {
-  const resolved = items instanceof Promise ? use(items) : items
   const [, setParam] = useQueryState(
     paramName,
     parseAsArrayOf(parseAsString).withOptions({ shallow: false, scroll: false })
   )
 
   return (
-    resolved.length > 0 && (
+    items.length > 0 && (
       <Drawer>
         <form
           action={action}
           className="mx-auto flex w-full max-w-7xl flex-col items-start justify-end gap-x-3 gap-y-4 @md:flex-row"
         >
           <div className="flex flex-1 flex-wrap justify-end gap-4">
-            {resolved.map(item => (
+            {items.map(item => (
               <div className="relative" key={item.id}>
                 <input type="hidden" name={paramName} value={item.id} key={item.id} />
                 <Link
@@ -107,13 +105,5 @@ function CompareDrawerInner({
         </form>
       </Drawer>
     )
-  )
-}
-
-export function CompareDrawer(props: Props) {
-  return (
-    <Suspense fallback={null}>
-      <CompareDrawerInner {...props} />
-    </Suspense>
   )
 }
