@@ -5,6 +5,7 @@ import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination'
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
 
+import { mapStreamable } from '../../lib/streamable/server'
 import { ProductListTransitionProvider } from './context'
 import { Filter, FiltersPanel } from './filters-panel'
 import { MobileFilters } from './mobile-filters'
@@ -13,13 +14,13 @@ import { Option as SortOption, Sorting } from './sorting'
 
 type Props = {
   breadcrumbs?: Breadcrumb[]
-  title?: Streamable<string>
+  title?: Streamable<string | null>
   totalCount: Streamable<number>
   products: Streamable<ListProduct[]>
   filters: Streamable<Filter[]>
   sortOptions: Streamable<SortOption[]>
-  compareProducts?: Streamable<ListProduct[]>
-  paginationInfo?: Streamable<CursorPaginationInfo>
+  compareProducts?: Streamable<ListProduct[] | null>
+  paginationInfo?: Streamable<CursorPaginationInfo | null>
   compareAction?: React.ComponentProps<'form'>['action']
   compareLabel?: string
   filterLabel?: string
@@ -97,7 +98,7 @@ export function ProductsListSection({
                 compareProducts={compareProducts}
                 compareAction={compareAction}
               />
-              {paginationInfo && <CursorPagination info={paginationInfo} />}
+              {mapStreamable(paginationInfo, info => info && <CursorPagination info={info} />)}
             </ProductListContainer>
           </div>
         </div>
