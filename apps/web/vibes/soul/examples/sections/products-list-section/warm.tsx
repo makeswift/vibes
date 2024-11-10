@@ -8,11 +8,13 @@ export default async function Preview({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] }>
 }) {
-  const products = getProducts('Warm')
+  const parsedParams = cache.parse(await searchParams)
+  const { [compareParamName]: compare, [sortParamName]: sort, ...filterParams } = parsedParams
+
+  const products = getProducts('Warm', filterParams)
   const filters = getFilters('Warm')
   const sortOptions = getSortOptions()
   const breadcrumbs = getBreadcrumbs('Warm')
-  const { [compareParamName]: compare, [sortParamName]: sort } = cache.parse(await searchParams)
 
   return (
     <div className="p-6">
@@ -20,11 +22,13 @@ export default async function Preview({
         title="Handle Bags"
         breadcrumbs={breadcrumbs}
         products={products}
-        totalCount={products.length}
+        totalCount={products.then(products => products.length)}
         filters={filters}
         sortOptions={sortOptions}
         paginationInfo={{ startCursor: '1', endCursor: '10' }}
-        compareProducts={products.filter(product => compare?.includes(product.id))}
+        compareProducts={products.then(products =>
+          products.filter(product => compare?.includes(product.id))
+        )}
         compareParamName={compareParamName}
         sortParamName={sortParamName}
       />
