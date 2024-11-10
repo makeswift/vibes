@@ -441,7 +441,7 @@ type BrandFilters = {
 // Define the filter types based on search params
 type FilterParams = {
   features?: string[] | null
-  light?: string | null
+  light?: string[] | null
   color?: string[] | null
   size?: string[] | null
   rating?: number | null
@@ -572,9 +572,9 @@ export async function getProducts<T extends SoulBrandName>(
         }
       }
 
-      if (filterParams.light) {
+      if (filterParams.light && filterParams.light.length > 0) {
         if (isElectricProduct(product)) {
-          conditions.push(product.light === filterParams.light)
+          conditions.push(filterParams.light.some(light => product.light === light))
         }
       }
 

@@ -29,7 +29,7 @@ export const parser = {
   [filterParamNames.priceMin]: parseAsFloat,
   [filterParamNames.priceMax]: parseAsFloat,
   [filterParamNames.features]: parseAsArrayOf(parseAsString),
-  [filterParamNames.light]: parseAsString,
+  [filterParamNames.light]: parseAsArrayOf(parseAsString),
   [filterParamNames.color]: parseAsArrayOf(parseAsString),
   [filterParamNames.size]: parseAsArrayOf(parseAsString),
 }
