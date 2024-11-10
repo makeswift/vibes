@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useCallback } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import {
   FieldMetadata,
@@ -11,7 +12,6 @@ import {
   useInputControl,
 } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { ArrowRight } from 'lucide-react'
 import { parseAsString, useQueryState, useQueryStates } from 'nuqs'
 import { z } from 'zod'
 
@@ -29,40 +29,50 @@ import { Field, SchemaRawShape, schema } from './schema'
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
-type State = {
-  fields: Field[]
+type State<F extends Field> = {
+  fields: F[]
   lastResult: SubmissionResult | null
 }
 
-export type ProductDetailFormAction = Action<State, FormData>
+export type ProductDetailFormAction<F extends Field> = Action<State<F>, FormData>
 
-type Props = {
-  fields: Field[]
-  action: ProductDetailFormAction
+type Props<F extends Field> = {
+  fields: F[]
+  action: ProductDetailFormAction<F>
   productId: string
   ctaLabel?: string
 }
 
-export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add to cart' }: Props) {
+export function ProductDetailForm<F extends Field>({
+  action,
+  fields,
+  productId,
+  ctaLabel = 'Add to cart',
+}: Props<F>) {
   const [params] = useQueryStates(
-    fields.reduce(
+    fields.reduce<Record<string, typeof parseAsString>>(
       (acc, field) => {
         return { ...acc, [field.name]: parseAsString }
       },
-      { quantity: parseAsString } as Record<string, typeof parseAsString>
+      { quantity: parseAsString }
     ),
     { shallow: false }
   )
-  const defaultValue = fields.reduce(
+  const defaultValue = fields.reduce<{
+    [Key in keyof SchemaRawShape]?: z.infer<SchemaRawShape[Key]>
+  }>(
     (acc, field) => ({
       ...acc,
       [field.name]: params[field.name] ?? field.defaultValue ?? '',
     }),
-    { quantity: 1 } as { [Key in keyof SchemaRawShape]?: z.infer<SchemaRawShape[Key]> }
+    { quantity: 1 }
   )
-  const [prevState, formAction, isPending] = useActionState(action, { fields, lastResult: null })
+  const [{ lastResult }, formAction] = useActionState(action, {
+    fields,
+    lastResult: null,
+  })
   const [form, formFields] = useForm({
-    lastResult: prevState.lastResult,
+    lastResult,
     constraint: getZodConstraint(schema(fields)),
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: schema(fields) })
@@ -77,36 +87,46 @@ export function ProductDetailForm({ action, fields, productId, ctaLabel = 'Add t
   return (
     <FormProvider context={form.context}>
       <form {...getFormProps(form)} action={formAction}>
-        <input type="hidden" value={productId} name="id" />
+        <input name="id" type="hidden" value={productId} />
         <div className="space-y-6">
           {fields.map(field => {
             return (
               <FormField
-                key={formFields[field.name]!.id}
                 field={field}
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 formField={formFields[field.name]!}
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                key={formFields[field.name]!.id}
               />
             )
           })}
           <div className="flex gap-x-3 pt-3">
             <NumberInput
               id={formFields.quantity.id}
-              name={formFields.quantity.name}
-              value={quantityControl.value}
-              onChange={e => quantityControl.change(e.currentTarget.value)}
-              onFocus={quantityControl.focus}
-              onBlur={quantityControl.blur}
               label=""
               min={1}
+              name={formFields.quantity.name}
+              onBlur={quantityControl.blur}
+              onChange={e => quantityControl.change(e.currentTarget.value)}
+              onFocus={quantityControl.focus}
               required
+              value={quantityControl.value}
             />
-            <Button size="medium" type="submit" className="w-auto @xl:w-56" loading={isPending}>
-              {ctaLabel}
-            </Button>
+            <SubmitButton>{ctaLabel}</SubmitButton>
           </div>
         </div>
       </form>
     </FormProvider>
+  )
+}
+
+function SubmitButton({ children }: { children: React.ReactNode }) {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button className="w-auto @xl:w-56" loading={pending} size="medium" type="submit">
+      {children}
+    </Button>
   )
 }
 
@@ -132,126 +152,133 @@ function FormField({
     case 'number':
       return (
         <NumberInput
-          key={formField.id}
-          id={formField.id}
           errors={formField.errors}
-          value={controls.value}
+          id={formField.id}
+          key={formField.id}
+          label={field.label}
+          name={formField.name}
+          onBlur={controls.blur}
           onChange={e => handleChange(e.currentTarget.value)}
           onFocus={controls.focus}
-          onBlur={controls.blur}
-          name={formField.name}
           required={formField.required}
-          label={field.label}
+          value={controls.value}
         />
       )
+
     case 'text':
       return (
         <Input
-          key={formField.id}
-          id={formField.id}
           errors={formField.errors}
-          value={controls.value}
+          id={formField.id}
+          key={formField.id}
+          label={field.label}
+          name={formField.name}
+          onBlur={controls.blur}
           onChange={e => handleChange(e.currentTarget.value)}
           onFocus={controls.focus}
-          onBlur={controls.blur}
-          name={formField.name}
           required={formField.required}
-          label={field.label}
+          value={controls.value}
         />
       )
+
     case 'checkbox':
       return (
         <Checkbox
-          key={formField.id}
+          errors={formField.errors}
           id={formField.id}
+          key={formField.id}
+          label={field.label}
           name={formField.name}
-          value={controls.value}
+          onBlur={controls.blur}
           onCheckedChange={value => handleChange(String(value))}
           onFocus={controls.focus}
-          onBlur={controls.blur}
-          label={field.label}
           required={formField.required}
-          errors={formField.errors}
+          value={controls.value}
         />
       )
+
     case 'select':
       return (
         <Select
-          key={formField.id}
-          id={formField.id}
-          name={formField.name}
-          label={field.label}
-          options={field.options}
           errors={formField.errors}
+          id={formField.id}
+          key={formField.id}
+          label={field.label}
+          name={formField.name}
+          onBlur={controls.blur}
+          onFocus={controls.focus}
+          onValueChange={handleChange}
+          options={field.options}
           required={formField.required}
           value={controls.value}
-          onValueChange={handleChange}
-          onFocus={controls.focus}
-          onBlur={controls.blur}
         />
       )
+
     case 'radio-group':
       return (
         <RadioGroup
-          key={formField.id}
-          id={formField.id}
-          name={formField.name}
-          label={field.label}
-          options={field.options}
           errors={formField.errors}
+          id={formField.id}
+          key={formField.id}
+          label={field.label}
+          name={formField.name}
+          onBlur={controls.blur}
+          onFocus={controls.focus}
+          onValueChange={handleChange}
+          options={field.options}
           required={formField.required}
           value={controls.value}
-          onValueChange={handleChange}
-          onFocus={controls.focus}
-          onBlur={controls.blur}
         />
       )
+
     case 'swatch-radio-group':
       return (
         <SwatchRadioGroup
-          key={formField.id}
-          id={formField.id}
-          name={formField.name}
           errors={formField.errors}
-          required={formField.required}
+          id={formField.id}
+          key={formField.id}
           label={field.label}
-          options={field.options}
-          value={controls.value}
-          onValueChange={handleChange}
-          onFocus={controls.focus}
+          name={formField.name}
           onBlur={controls.blur}
+          onFocus={controls.focus}
+          onValueChange={handleChange}
+          options={field.options}
+          required={formField.required}
+          value={controls.value}
         />
       )
+
     case 'card-radio-group':
       return (
         <CardRadioGroup
-          key={formField.id}
-          id={formField.id}
-          name={formField.name}
           errors={formField.errors}
-          required={formField.required}
+          id={formField.id}
+          key={formField.id}
           label={field.label}
-          options={field.options}
-          value={controls.value}
-          onValueChange={handleChange}
-          onFocus={controls.focus}
+          name={formField.name}
           onBlur={controls.blur}
+          onFocus={controls.focus}
+          onValueChange={handleChange}
+          options={field.options}
+          required={formField.required}
+          value={controls.value}
         />
       )
+
     case 'button-radio-group':
       return (
         <ButtonRadioGroup
-          key={formField.id}
-          id={formField.id}
-          name={formField.name}
           errors={formField.errors}
-          required={formField.required}
+          id={formField.id}
+          key={formField.id}
           label={field.label}
-          options={field.options}
-          value={controls.value}
-          onValueChange={handleChange}
-          onFocus={controls.focus}
+          name={formField.name}
           onBlur={controls.blur}
+          onFocus={controls.focus}
+          onValueChange={handleChange}
+          options={field.options}
+          required={formField.required}
+          value={controls.value}
         />
       )
   }

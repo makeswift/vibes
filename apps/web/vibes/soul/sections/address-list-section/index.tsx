@@ -1,6 +1,7 @@
 'use client'
 
 import { startTransition, useActionState, useEffect, useOptimistic, useState } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
@@ -70,7 +71,7 @@ export function AddressListSection<A extends Address>({
   countryLabel,
   postalCodeLabel,
 }: Props<A>) {
-  const [state, formAction, isPending] = useActionState(addressAction, {
+  const [state, formAction] = useActionState(addressAction, {
     addresses,
     defaultAddressId,
     lastResult: null,
@@ -125,14 +126,7 @@ export function AddressListSection<A extends Address>({
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h1 className="text-4xl">
-          {title}
-          {isPending && (
-            <span className="ml-2">
-              <Spinner />
-            </span>
-          )}
-        </h1>
+        <Title>{title}</Title>
         {!showNewAddressForm && (
           <Button onClick={() => setShowNewAddressForm(true)} size="small">
             {showAddFormLabel}
@@ -262,6 +256,21 @@ export function AddressListSection<A extends Address>({
         ))}
       </div>
     </div>
+  )
+}
+
+function Title({ children }: { children: React.ReactNode }) {
+  const { pending } = useFormStatus()
+
+  return (
+    <h1 className="text-4xl">
+      {children}
+      {pending && (
+        <span className="ml-2">
+          <Spinner />
+        </span>
+      )}
+    </h1>
   )
 }
 
