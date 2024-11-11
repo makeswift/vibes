@@ -10,7 +10,7 @@ import Fade from 'embla-carousel-fade'
 import useEmblaCarousel from 'embla-carousel-react'
 import { Pause, Play } from 'lucide-react'
 
-import { Button } from '@/vibes/soul/primitives/button'
+import { ButtonLink } from '@/vibes/soul/primitives/button-link'
 
 type Slide = {
   title: string
@@ -133,7 +133,9 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
                       </p>
                     )}
                     {cta != null && cta.href !== '' && cta.label !== '' && (
-                      <Button variant="tertiary">{cta.label}</Button>
+                      <ButtonLink href={cta.href} variant="tertiary">
+                        {cta.label}
+                      </ButtonLink>
                     )}
                   </div>
                 </div>
