@@ -1,4 +1,7 @@
-import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable'
+import { Suspense } from 'react'
+
+import clsx from 'clsx'
+
 import {
   Carousel,
   CarouselButtons,
@@ -7,6 +10,9 @@ import {
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
 import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
+
+import { Streamable } from '../../lib/streamable'
+import { mapStreamable } from '../../lib/streamable/server'
 
 export type CarouselProduct = CardProduct
 
@@ -19,25 +25,29 @@ type Props = {
 export function ProductsCarousel({
   products: streamableProducts,
   className,
-  emptyStateMessage,
+  emptyStateMessage = 'No products found',
 }: Props) {
-  const products = useStreamable(streamableProducts)
-
-  if (products.length === 0) {
-    return <ProductsCarouselEmptyState className={className} message={emptyStateMessage} />
-  }
-
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-10">
-        {products.map(product => (
-          <CarouselItem
-            className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-            key={product.id}
-          >
-            <ProductCard product={product} />
-          </CarouselItem>
-        ))}
+        <Suspense
+          fallback={<ProductsCarouselSkeleton className={className} message={emptyStateMessage} />}
+        >
+          {mapStreamable(streamableProducts, products => {
+            if (products.length === 0) {
+              return <ProductsCarouselSkeleton className={className} message={emptyStateMessage} />
+            }
+
+            return products.map(product => (
+              <CarouselItem
+                className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+                key={product.id}
+              >
+                <ProductCard product={product} />
+              </CarouselItem>
+            ))
+          })}
+        </Suspense>
       </CarouselContent>
       <div className="flex w-full items-center justify-between">
         <CarouselScrollbar />
@@ -47,17 +57,24 @@ export function ProductsCarousel({
   )
 }
 
-export function ProductsCarouselEmptyState({
+export function ProductsCarouselSkeleton({
   className,
-  message = 'No products found',
+  message,
+  count = 8,
 }: {
   className?: string
   message?: string
+  count?: number
 }) {
   return (
     <Carousel className={className}>
-      <CarouselContent className="relative mb-10 [mask-image:radial-gradient(circle,transparent,black)]">
-        {Array.from({ length: 8 }).map((_, index) => (
+      <CarouselContent
+        className={clsx(
+          'relative mb-10',
+          message && message !== '' && '[mask-image:radial-gradient(circle,transparent,black)]'
+        )}
+      >
+        {Array.from({ length: count }).map((_, index) => (
           <CarouselItem
             className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
             key={index}
@@ -71,27 +88,6 @@ export function ProductsCarouselEmptyState({
         <CarouselButtons />
       </div>
       <div className="absolute inset-0 flex items-center justify-center text-lg">{message}</div>
-    </Carousel>
-  )
-}
-
-export function ProductsCarouselSkeleton({ className }: { className?: string }) {
-  return (
-    <Carousel className={className}>
-      <CarouselContent className="mb-10">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <CarouselItem
-            className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-            key={index}
-          >
-            <ProductCardSkeleton />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar />
-        <CarouselButtons />
-      </div>
     </Carousel>
   )
 }
