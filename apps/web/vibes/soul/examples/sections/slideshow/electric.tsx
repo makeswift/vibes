@@ -9,7 +9,7 @@ export const heroSlides = [
     },
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     cta: {
-      href: '#',
+      href: '/shop-all',
       label: 'Shop Now',
     },
   },
@@ -21,7 +21,7 @@ export const heroSlides = [
     },
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     cta: {
-      href: '#',
+      href: '/shop-all',
       label: 'Shop Now',
     },
   },
@@ -33,7 +33,7 @@ export const heroSlides = [
     },
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     cta: {
-      href: '#',
+      href: '/shop-all',
       label: 'Shop Now',
     },
   },
