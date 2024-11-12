@@ -15,7 +15,7 @@ type ProductDetailProduct = {
   subtitle?: string
   badge?: string
   rating?: number
-  description?: string
+  description?: string | React.ReactNode
 }
 
 type Props<F extends Field> = {
@@ -54,9 +54,13 @@ export function ProductDetail<F extends Field>({ product, action, fields, breadc
               <ProductGallery images={product.images} />
             </div>
 
-            {product.description != null && product.description !== '' && (
-              <p className="mb-6 text-contrast-500">{product.description}</p>
-            )}
+            {product.description != null &&
+              product.description !== '' &&
+              (typeof product.description === 'string' ? (
+                <p className="mb-6 text-contrast-500">{product.description}</p>
+              ) : (
+                <div className="mb-6 text-contrast-500">{product.description}</div>
+              ))}
 
             <ProductDetailForm fields={fields} productId={product.id} action={action} />
           </div>
