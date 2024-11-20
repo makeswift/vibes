@@ -5,7 +5,6 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-
 interface Props {
   images: { alt: string; src: string }[]
   className?: string
