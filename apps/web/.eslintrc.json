@@ -35,7 +35,14 @@
     "@typescript-eslint/strict-boolean-expressions": ["error", { "allowString": false }],
     "complexity": ["error", 20],
     "eqeqeq": ["error", "smart"],
-    "import/order": "error",
+    "import/order": [
+      "warn",
+      {
+        "alphabetize": { "caseInsensitive": true, "order": "asc" },
+        "groups": [["builtin", "external"], "internal", "parent", "sibling", "index"],
+        "newlines-between": "always"
+      }
+    ],
     "no-empty": "error",
     "no-nested-ternary": "error",
     "no-plusplus": "error",
