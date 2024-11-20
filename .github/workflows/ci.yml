@@ -30,7 +30,6 @@ jobs:
         run: pnpm install
 
       - name: Lint
-        if: false
         run: pnpm lint
 
       - name: Format

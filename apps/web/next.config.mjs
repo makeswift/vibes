@@ -36,7 +36,6 @@ const nextConfig = {
     ],
   },
   eslint: {
-    ignoreDuringBuilds: true,
     dirs: ['actions', 'app', 'components', 'docs', 'icons', 'lib', 'vibes'],
   },
   async rewrites() {
