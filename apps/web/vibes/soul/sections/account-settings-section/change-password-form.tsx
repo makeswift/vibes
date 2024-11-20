@@ -1,10 +1,9 @@
 'use client'
 
-import { useActionState, useEffect } from 'react'
-import { useFormStatus } from 'react-dom'
-
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
+import { useActionState, useEffect } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { Input } from '@/vibes/soul/form/input'
 import { Button } from '@/vibes/soul/primitives/button'
@@ -15,7 +14,7 @@ type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State
 
 export type ChangePasswordAction = Action<SubmissionResult | null, FormData>
 
-type Props = {
+interface Props {
   action: ChangePasswordAction
   currentPasswordLabel?: string
   newPasswordLabel?: string

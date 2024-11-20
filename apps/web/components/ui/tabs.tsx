@@ -1,9 +1,8 @@
 'use client'
 
-import * as React from 'react'
-
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import clsx from 'clsx'
+import * as React from 'react'
 
 const Tabs = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,

@@ -1,9 +1,8 @@
 'use client'
 
-import { forwardRef } from 'react'
-
 import { clsx } from 'clsx'
 import { Minus, Plus } from 'lucide-react'
+import { forwardRef } from 'react'
 
 import { ErrorMessage } from '@/vibes/soul/form/error-message'
 import { Label } from '@/vibes/soul/form/label'

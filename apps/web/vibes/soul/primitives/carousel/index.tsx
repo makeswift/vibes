@@ -1,11 +1,10 @@
 'use client'
 
-import * as React from 'react'
-import { useCallback, useEffect, useState } from 'react'
-
 import clsx from 'clsx'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
+import * as React from 'react'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -82,7 +81,7 @@ function Carousel({ opts, setApi, plugins, className, children, ...rest }: Carou
     api.on('select', onSelect)
 
     return () => {
-      api?.off('select', onSelect)
+      api.off('select', onSelect)
     }
   }, [api, onSelect])
 

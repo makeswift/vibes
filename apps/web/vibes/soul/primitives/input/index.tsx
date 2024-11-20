@@ -1,8 +1,7 @@
 'use client'
 
-import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
-
 import { clsx } from 'clsx'
+import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
 
 import { Label } from '@/vibes/soul/primitives/label'
 

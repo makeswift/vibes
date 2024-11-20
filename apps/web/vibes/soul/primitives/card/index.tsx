@@ -1,10 +1,9 @@
+import { clsx } from 'clsx'
+import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { clsx } from 'clsx'
-import { ArrowUpRight } from 'lucide-react'
-
-export type CardProps = {
+export interface CardProps {
   className?: string
   title: string
   image?: { src: string; alt: string }

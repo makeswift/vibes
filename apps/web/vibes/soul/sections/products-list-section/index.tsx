@@ -6,13 +6,14 @@ import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
 
 import { mapStreamable } from '../../lib/streamable/server'
+
 import { ProductListTransitionProvider } from './context'
 import { Filter, FiltersPanel } from './filters-panel'
 import { MobileFilters } from './mobile-filters'
 import { ProductListContainer } from './product-list-container'
 import { Option as SortOption, Sorting } from './sorting'
 
-type Props = {
+interface Props {
   breadcrumbs?: Breadcrumb[]
   title?: Streamable<string | null>
   totalCount: Streamable<number>

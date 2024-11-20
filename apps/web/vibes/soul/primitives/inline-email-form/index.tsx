@@ -1,14 +1,14 @@
 'use client'
 
-import { useActionState, useEffect } from 'react'
-
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
 import clsx from 'clsx'
 import { ArrowRight, CircleAlert } from 'lucide-react'
+import { useActionState, useEffect } from 'react'
 
 import { ErrorMessage } from '../../form/error-message'
 import { Button } from '../button'
+
 import { schema } from './schema'
 
 type Action<State, Payload> = (
@@ -39,7 +39,10 @@ export function InlineEmailForm({
   })
 
   useEffect(() => {
-    if (lastResult?.error) return console.log(lastResult.error)
+    if (lastResult?.error) {
+      console.log(lastResult.error)
+      return
+    }
   }, [lastResult])
 
   const { errors } = fields.email
@@ -49,7 +52,7 @@ export function InlineEmailForm({
       <div
         className={clsx(
           'relative rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
-          errors && errors.length ? 'border-error' : 'border-black'
+          errors?.length ? 'border-error' : 'border-black'
         )}
       >
         <input

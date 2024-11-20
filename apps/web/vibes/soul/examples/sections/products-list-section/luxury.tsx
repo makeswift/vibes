@@ -6,7 +6,7 @@ import { cache, compareParamName, sortParamName } from './searchParams'
 export default async function Preview({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] }>
+  searchParams: Promise<Record<string, string | string[]>>
 }) {
   const parsedParams = cache.parse(await searchParams)
   const { [compareParamName]: compare, [sortParamName]: sort, ...filterParams } = parsedParams

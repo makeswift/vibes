@@ -1,8 +1,7 @@
+import { clsx } from 'clsx'
 import Link from 'next/link'
 
-import { clsx } from 'clsx'
-
-export type AnimatedLinkProps = {
+export interface AnimatedLinkProps {
   link: {
     href: string
     target?: string

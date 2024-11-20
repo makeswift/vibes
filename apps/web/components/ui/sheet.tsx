@@ -1,10 +1,9 @@
 'use client'
 
-import * as React from 'react'
-
 import * as SheetPrimitive from '@radix-ui/react-dialog'
 import { type VariantProps, cva } from 'class-variance-authority'
 import clsx from 'clsx'
+import * as React from 'react'
 
 const Sheet = SheetPrimitive.Root
 

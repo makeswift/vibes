@@ -1,10 +1,9 @@
 'use client'
 
-import { startTransition, useActionState, useEffect, useOptimistic, useState } from 'react'
-import { useFormStatus } from 'react-dom'
-
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
+import { startTransition, useActionState, useEffect, useOptimistic, useState } from 'react'
+import { useFormStatus } from 'react-dom'
 import { z } from 'zod'
 
 import { Input } from '@/vibes/soul/form/input'
@@ -18,13 +17,13 @@ export type Address = z.infer<typeof schema>
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
-type State<A extends Address> = {
+interface State<A extends Address> {
   addresses: A[]
   defaultAddressId: string
   lastResult: SubmissionResult | null
 }
 
-type Props<A extends Address> = {
+interface Props<A extends Address> {
   title?: string
   addresses: A[]
   defaultAddressId: string

@@ -1,6 +1,6 @@
 import { SignUpAction, SignUpForm } from './sign-up-form'
 
-type Props = {
+interface Props {
   title?: string
   action: SignUpAction
   submitLabel?: string

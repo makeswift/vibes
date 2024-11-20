@@ -1,10 +1,9 @@
 'use client'
 
+import { clsx } from 'clsx'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-
-import { clsx } from 'clsx'
 
 export function OffsetPagination({ pages: totalPages }: { pages: number }) {
   const pathname = usePathname()

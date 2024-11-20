@@ -5,11 +5,11 @@ import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout
 import { AccountLayoutLink } from './account-layout-link'
 import { AccountLayoutLinkSelect } from './account-layout-link-select'
 
-type Props = {
-  links: Array<{
+interface Props {
+  links: {
     href: string
     label: string
-  }>
+  }[]
   children: ReactNode
 }
 

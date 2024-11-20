@@ -1,6 +1,5 @@
-import { Suspense } from 'react'
-
 import { clsx } from 'clsx'
+import { Suspense } from 'react'
 
 import { Streamable } from '@/vibes/soul/lib/streamable'
 import { mapStreamable } from '@/vibes/soul/lib/streamable/server'

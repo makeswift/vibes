@@ -1,12 +1,12 @@
 'use client'
 
+import { clsx } from 'clsx'
+import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-import { clsx } from 'clsx'
-import useEmblaCarousel from 'embla-carousel-react'
 
-type Props = {
+interface Props {
   images: { alt: string; src: string }[]
   className?: string
 }

@@ -1,6 +1,5 @@
-import { Suspense } from 'react'
-
 import clsx from 'clsx'
+import { Suspense } from 'react'
 
 import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card'
 import {
@@ -18,7 +17,7 @@ export type Card = CardProps & {
   id: string
 }
 
-type Props = {
+interface Props {
   cards: Streamable<Card[]>
   textContrast?: 'light' | 'dark'
   className?: string

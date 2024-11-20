@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-
 import * as AccordionsPrimitive from '@radix-ui/react-accordion'
+import React from 'react'
 
 function Accordion({
   children,

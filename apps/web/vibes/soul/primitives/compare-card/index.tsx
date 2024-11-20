@@ -9,7 +9,7 @@ export type CompareProduct = CardProduct & {
   customFields?: { name: string; value: string }[]
 }
 
-export type Props = {
+export interface Props {
   className?: string
   product: CompareProduct
   addToCartLabel?: string
@@ -64,7 +64,7 @@ export function CompareCard({
       {product.customFields != null ? (
         <div className="space-y-4 py-4">
           <div className="font-mono text-xs uppercase">{otherDetailsLabel}</div>
-          {product.customFields?.map((field, index) => (
+          {product.customFields.map((field, index) => (
             <div key={index}>
               <p className="text-xs">
                 <strong>{field.name}</strong>: {field.value}

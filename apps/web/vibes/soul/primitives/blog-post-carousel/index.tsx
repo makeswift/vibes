@@ -7,7 +7,7 @@ import {
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
 
-type Props = {
+interface Props {
   className?: string
   blogPosts: BlogPost[]
 }

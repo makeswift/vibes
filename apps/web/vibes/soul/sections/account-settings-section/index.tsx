@@ -1,7 +1,7 @@
 import { ChangePasswordAction, ChangePasswordForm } from './change-password-form'
 import { UpdateAccountAction, UpdateAccountForm } from './update-account-form'
 
-type Props = {
+interface Props {
   title?: string
   updateAccountAction: UpdateAccountAction
   updateAccountSubmitLabel?: string

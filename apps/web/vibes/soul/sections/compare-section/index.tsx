@@ -12,7 +12,7 @@ import {
   CompareProduct,
 } from '@/vibes/soul/primitives/compare-card'
 
-type Props = {
+interface Props {
   className?: string
   title?: string
   products: CompareProduct[]

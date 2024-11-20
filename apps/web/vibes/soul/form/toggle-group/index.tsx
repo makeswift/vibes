@@ -1,14 +1,13 @@
 'use client'
 
-import * as React from 'react'
-
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
 import clsx from 'clsx'
+import * as React from 'react'
 
 import { ErrorMessage } from '@/vibes/soul/form/error-message'
 import { Label } from '@/vibes/soul/form/label'
 
-type Option = {
+interface Option {
   value: string
   label: string
   disabled?: boolean

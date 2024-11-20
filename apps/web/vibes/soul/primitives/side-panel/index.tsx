@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
-
 import * as Dialog from '@radix-ui/react-dialog'
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
+import React from 'react'
 
 import { Button } from '../button'
 

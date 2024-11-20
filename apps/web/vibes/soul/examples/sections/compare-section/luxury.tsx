@@ -8,7 +8,7 @@ const products = await getProducts('Luxury')
 export default async function Preview({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] }>
+  searchParams: Promise<Record<string, string | string[]>>
 }) {
   return <CompareSection products={products} addToCartAction={addToCartAction} />
 }

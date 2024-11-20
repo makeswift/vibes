@@ -2,7 +2,7 @@ import { Suspense, use } from 'react'
 
 import { Order, OrderListItem } from './order-list-item'
 
-type Props = {
+interface Props {
   orders: Order[] | Promise<Order[]>
 }
 

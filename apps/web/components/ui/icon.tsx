@@ -1,6 +1,6 @@
 import { lazy } from 'react'
 
-type Props = {
+interface Props {
   className?: string
   name?: keyof typeof Icons
 }

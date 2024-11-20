@@ -1,10 +1,9 @@
 'use client'
 
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
-
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 

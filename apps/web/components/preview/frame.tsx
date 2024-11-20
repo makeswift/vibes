@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-
 import clsx from 'clsx'
+import { useEffect, useRef, useState } from 'react'
 
 import { ResizeX } from '@/icons/generated'
 
 import { Portal } from '../ui/portal'
+
 import { useBrandContext } from './brand-context'
 import { usePreviewContext } from './preview-context'
 

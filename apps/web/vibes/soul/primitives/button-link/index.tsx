@@ -1,6 +1,5 @@
-import Link from 'next/link'
-
 import { clsx } from 'clsx'
+import Link from 'next/link'
 
 export type Props = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   variant?: 'primary' | 'secondary' | 'tertiary'

@@ -1,11 +1,10 @@
-import { redirect } from 'next/navigation'
-
 import { SubmissionResult } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
+import { redirect } from 'next/navigation'
 
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema'
 
-type CartLineItem = {
+interface CartLineItem {
   id: string
   image: { src: string; alt: string }
   title: string

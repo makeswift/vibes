@@ -1,11 +1,10 @@
 'use client'
 
-import { ReactNode, forwardRef, useCallback, useEffect, useState } from 'react'
-
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
+import { ReactNode, forwardRef, useCallback, useEffect, useState } from 'react'
 
-type Props = {
+interface Props {
   children: ReactNode
   hideDismiss?: boolean
   onDismiss?: () => void

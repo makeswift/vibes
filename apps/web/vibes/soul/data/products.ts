@@ -4,7 +4,7 @@ import { SoulBrandName } from '../brands'
 import { CardProduct } from '../primitives/product-card'
 
 // Common product type
-type BaseProduct = {
+interface BaseProduct {
   id: string
   title: string
   subtitle: string
@@ -20,22 +20,22 @@ type BaseProduct = {
 
 // Brand-specific product types
 type ElectricProduct = BaseProduct & {
-  features: Array<'air-purifying' | 'indoor' | 'pet-friendly'>
+  features: ('air-purifying' | 'indoor' | 'pet-friendly')[]
   light: 'bright-indirect' | 'bright-direct' | 'low-light'
   size: 'sm' | 'md' | 'lg'
 }
 
 type LuxuryProduct = BaseProduct & {
-  color: Array<'black' | 'brown' | 'red'>
+  color: ('black' | 'brown' | 'red')[]
   size: string[] // Shoe sizes like '6', '6.5', etc.
 }
 
 type WarmProduct = BaseProduct & {
-  color: Array<'blue' | 'green' | 'red'>
+  color: ('blue' | 'green' | 'red')[]
   size: 'sm' | 'md' | 'lg'
 }
 
-type ProductCatalog = {
+interface ProductCatalog {
   Electric: ElectricProduct[]
   Luxury: LuxuryProduct[]
   Warm: WarmProduct[]
@@ -407,39 +407,39 @@ const products: ProductCatalog = {
 }
 
 // Define filter option types
-type FilterOption = {
+interface FilterOption {
   value: string
   label: string
 }
 
 // Brand-specific filter types
-type ElectricFilters = {
-  features?: Array<'air-purifying' | 'indoor' | 'pet-friendly'>
+interface ElectricFilters {
+  features?: ('air-purifying' | 'indoor' | 'pet-friendly')[]
   light?: 'bright-indirect' | 'bright-direct' | 'low-light'
   size?: 'sm' | 'md' | 'lg'
   rating?: number
 }
 
-type LuxuryFilters = {
-  color?: Array<'black' | 'brown' | 'red'>
+interface LuxuryFilters {
+  color?: ('black' | 'brown' | 'red')[]
   size?: string[] // Shoe sizes
   rating?: number
 }
 
-type WarmFilters = {
-  color?: Array<'blue' | 'green' | 'red'>
+interface WarmFilters {
+  color?: ('blue' | 'green' | 'red')[]
   size?: 'sm' | 'md' | 'lg'
   rating?: number
 }
 
-type BrandFilters = {
+interface BrandFilters {
   Electric: ElectricFilters
   Luxury: LuxuryFilters
   Warm: WarmFilters
 }
 
 // Define the filter types based on search params
-type FilterParams = {
+interface FilterParams {
   features?: string[] | null
   light?: string[] | null
   color?: string[] | null

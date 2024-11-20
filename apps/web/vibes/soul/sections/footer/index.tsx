@@ -1,35 +1,34 @@
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode, type Ref, forwardRef } from 'react'
 
-import { clsx } from 'clsx'
-
-type Image = {
+interface Image {
   src: string
   alt: string
 }
 
-type Link = {
+interface Link {
   href: string
   label: string
 }
 
-export type Section = {
+export interface Section {
   title?: string
   links: Link[]
 }
 
-type SocialMediaLink = {
+interface SocialMediaLink {
   href: string
   icon: ReactNode
 }
 
-type ContactInformation = {
+interface ContactInformation {
   address?: string
   phone?: string
 }
 
-type Props = {
+interface Props {
   logo?: string | Image
   sections: Section[]
   copyright?: string

@@ -34,7 +34,7 @@ export function BrandTypography({ brands, brandName }: Props) {
         [size.variable]: brand.cssVars[size.variable] ?? size.fontSize,
       }))}
     >
-      {sizes?.map((size, index) => {
+      {sizes.map((size, index) => {
         return (
           <div key={index}>
             <div

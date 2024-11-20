@@ -1,7 +1,6 @@
-import Image from 'next/image'
-
 import { SubmissionResult } from '@conform-to/react'
 import { clsx } from 'clsx'
+import Image from 'next/image'
 
 import { InlineEmailForm } from '@/vibes/soul/primitives/inline-email-form'
 

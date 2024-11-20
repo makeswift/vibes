@@ -5,12 +5,12 @@ export type Action<State, Payload> = (
   payload: Payload
 ) => State | Promise<State>
 
-export type CartState = {
+export interface CartState {
   lineItems: CartLineItem[]
   lastResult: SubmissionResult | null
 }
 
-export type CartLineItem = {
+export interface CartLineItem {
   id: string
   image: { alt: string; src: string }
   title: string
@@ -19,7 +19,7 @@ export type CartLineItem = {
   price: string
 }
 
-export type CartSummary = {
+export interface CartSummary {
   title?: string
   caption?: string
   subtotalLabel?: string
@@ -33,7 +33,7 @@ export type CartSummary = {
   ctaLabel?: string
 }
 
-export type CartEmptyState = {
+export interface CartEmptyState {
   title: string
   subtitle: string
   cta: {

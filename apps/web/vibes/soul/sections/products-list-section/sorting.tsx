@@ -1,15 +1,14 @@
 'use client'
 
-import { Suspense, use, useOptimistic } from 'react'
-
 import { parseAsString, useQueryState } from 'nuqs'
+import { Suspense, use, useOptimistic } from 'react'
 
 import { Select } from '@/vibes/soul/form/select'
 import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable'
 
 import { ProductListTransitionContext } from './context'
 
-export type Option = {
+export interface Option {
   label: string
   value: string
 }

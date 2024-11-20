@@ -1,8 +1,7 @@
-import { ComponentRef, Suspense, forwardRef, lazy, useMemo } from 'react'
-
 import clsx from 'clsx'
 import { LucideProps } from 'lucide-react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
+import { ComponentRef, Suspense, forwardRef, lazy, useMemo } from 'react'
 
 export type IconName = keyof typeof dynamicIconImports
 

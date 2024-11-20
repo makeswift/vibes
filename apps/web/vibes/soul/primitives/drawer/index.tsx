@@ -1,10 +1,9 @@
 'use client'
 
+import * as Portal from '@radix-ui/react-portal'
 import { useEffect, useState } from 'react'
 
-import * as Portal from '@radix-ui/react-portal'
-
-type DrawerProps = {
+interface DrawerProps {
   children: React.ReactNode
 }
 

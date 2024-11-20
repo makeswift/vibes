@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import { Fragment } from 'react'
-
 import path from 'path'
+import { Fragment } from 'react'
 
 import { Vibe } from '@/vibes/schema'
 

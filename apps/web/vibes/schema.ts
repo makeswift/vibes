@@ -1,22 +1,21 @@
 import localFont from 'next/font/local'
-
 import { z } from 'zod'
 
 export type NonEmptyArray<T> = [T, ...T[]]
 
-export type Component = {
+export interface Component {
   name: string
   dependencies: string[]
   registryDependencies: string[]
   files: string[]
   component?: React.LazyExoticComponent<
-    React.ComponentType<{ searchParams: Promise<{ [key: string]: string | string[] }> }>
+    React.ComponentType<{ searchParams: Promise<Record<string, string | string[]>> }>
   >
 }
 
 export type Components = NonEmptyArray<Component>
 
-export type CSSVars = {
+export interface CSSVars {
   '--primary': string
   '--accent': string
   '--background': string
@@ -66,7 +65,7 @@ export type CSSVars = {
   '--shadow-2xl'?: string
 }
 
-export type Brand = {
+export interface Brand {
   name: string
   logo: string
   cssVars: CSSVars
@@ -74,21 +73,21 @@ export type Brand = {
 
 export type Brands = NonEmptyArray<Brand>
 
-export type Page = {
+export interface Page {
   title: string
   slug: string
   file: string
   component?: string
 }
 
-type NavigationItem = {
+interface NavigationItem {
   title: string
   pages: [Page, ...Page[]]
 }
 
 export type Navigation = [NavigationItem, ...NavigationItem[]]
 
-export type Vibe = {
+export interface Vibe {
   name: string
   slug: string
   description: string

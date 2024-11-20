@@ -1,6 +1,6 @@
 import { ResetPasswordAction, ResetPasswordForm } from './reset-password-form'
 
-type Props = {
+interface Props {
   title?: string
   subtitle?: string
   action: ResetPasswordAction

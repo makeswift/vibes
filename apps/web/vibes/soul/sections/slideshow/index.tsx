@@ -1,31 +1,30 @@
 'use client'
 
-import Image from 'next/image'
-import { useCallback, useEffect, useState } from 'react'
-
 import { clsx } from 'clsx'
 import { EmblaCarouselType } from 'embla-carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Fade from 'embla-carousel-fade'
 import useEmblaCarousel from 'embla-carousel-react'
 import { Pause, Play } from 'lucide-react'
+import Image from 'next/image'
+import { useCallback, useEffect, useState } from 'react'
 
 import { ButtonLink } from '@/vibes/soul/primitives/button-link'
 
-type Slide = {
+interface Slide {
   title: string
   description?: string
   image?: { alt: string; blurDataUrl?: string; src: string }
   cta?: { label: string; href: string }
 }
 
-type Props = {
+interface Props {
   slides: Slide[]
   interval?: number
   className?: string
 }
 
-type UseProgressButtonType = {
+interface UseProgressButtonType {
   selectedIndex: number
   scrollSnaps: number[]
   onProgressButtonClick: (index: number) => void

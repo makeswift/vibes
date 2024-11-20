@@ -1,8 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react'
-import { DayPicker } from 'react-day-picker'
-
 import clsx from 'clsx'
 import { ChevronLeftIcon } from 'lucide-react'
+import { ComponentPropsWithoutRef } from 'react'
+import { DayPicker } from 'react-day-picker'
 
 const components = {
   Chevron: () => <ChevronLeftIcon className="h-5 w-5" strokeWidth={1} />,

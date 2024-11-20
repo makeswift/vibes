@@ -1,21 +1,20 @@
 'use client'
 
-import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { Suspense, use } from 'react'
-
 import clsx from 'clsx'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { createSerializer, parseAsString } from 'nuqs'
+import { Suspense, use } from 'react'
 
-export type CursorPaginationInfo = {
+export interface CursorPaginationInfo {
   startCursorParamName?: string
   startCursor?: string | null
   endCursorParamName?: string
   endCursor?: string | null
 }
 
-type Props = {
+interface Props {
   info: CursorPaginationInfo | Promise<CursorPaginationInfo>
   scroll?: boolean
 }

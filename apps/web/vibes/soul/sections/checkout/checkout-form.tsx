@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import { clsx } from 'clsx'
+import { useState } from 'react'
 
 import { Button } from '@/vibes/soul/primitives/button'
 import { Checkbox } from '@/vibes/soul/primitives/checkbox'

@@ -1,6 +1,5 @@
-import { Suspense } from 'react'
-
 import { Sliders } from 'lucide-react'
+import { Suspense } from 'react'
 
 import { Streamable } from '@/vibes/soul/lib/streamable'
 import { Button } from '@/vibes/soul/primitives/button'

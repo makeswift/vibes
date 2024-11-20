@@ -6,7 +6,7 @@ import Headroom from 'react-headroom'
 import { Banner } from '@/vibes/soul/primitives/banner'
 import { Navigation } from '@/vibes/soul/primitives/navigation'
 
-type Props = {
+interface Props {
   navigation: Omit<React.ComponentPropsWithoutRef<typeof Navigation>, 'onDismiss'>
   banner?: React.ComponentPropsWithoutRef<typeof Banner>
 }
