@@ -1,6 +1,5 @@
 import { SubmissionResult } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
-import { redirect } from 'next/navigation'
 
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema'
 
@@ -76,8 +75,7 @@ export async function lineItemAction(
 }
 
 export async function checkoutAction(
-  prevState: Awaited<SubmissionResult | null>,
-  formData: FormData
+  prevState: Awaited<SubmissionResult | null>
 ): Promise<SubmissionResult | null> {
   'use server'
 

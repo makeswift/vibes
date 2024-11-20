@@ -1,8 +1,5 @@
 import { clsx } from 'clsx'
 import Image from 'next/image'
-import Link from 'next/link'
-
-import { Button } from '@/vibes/soul/primitives/button'
 
 import { ButtonLink } from '../../primitives/button-link'
 

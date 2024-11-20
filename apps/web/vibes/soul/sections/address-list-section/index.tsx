@@ -273,7 +273,7 @@ function Title({ children }: { children: React.ReactNode }) {
   )
 }
 
-function AddressPreview({ address, isDefault }: { address: Address; isDefault?: boolean }) {
+function AddressPreview({ address, isDefault = false }: { address: Address; isDefault?: boolean }) {
   return (
     <div className="flex gap-10">
       <div className="text-sm">

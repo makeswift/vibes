@@ -1,7 +1,5 @@
 'use client'
 
-import clsx from 'clsx'
-
 import Draggable from '@/components/ui/draggable'
 import { Sticker } from '@/components/ui/sticker'
 import Transition from '@/components/ui/transition'

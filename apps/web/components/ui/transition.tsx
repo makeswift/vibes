@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
@@ -25,7 +25,7 @@ export default function Transition({ className, from, to, children }: Props) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry!.isIntersecting) {
+        if (entry?.isIntersecting === true) {
           handleTransition()
         }
       },

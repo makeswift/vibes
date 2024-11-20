@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { Suspense } from 'react'
 
 import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card'
@@ -74,7 +74,9 @@ export function CardCarouselSkeleton({
       <CarouselContent
         className={clsx(
           'relative mb-10',
-          message && message !== '' && '[mask-image:radial-gradient(circle,transparent,black)]'
+          message != null &&
+            message !== '' &&
+            '[mask-image:radial-gradient(circle,transparent,black)]'
         )}
       >
         {Array.from({ length: count }).map((_, index) => (

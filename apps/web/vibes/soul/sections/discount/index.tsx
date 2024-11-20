@@ -36,6 +36,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
   useEffect(() => {
     const shuffled = shuffleCodes(
       Array<DiscountType>(10)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         .fill(discounts[0]!)
         .flatMap(() => discounts)
     )
@@ -48,6 +49,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
 
   const copy = async () => {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       await navigator.clipboard.writeText(shuffledCodes[shuffledCodes.length - 2]!.code)
       setCopied(true)
       setTimeout(() => {

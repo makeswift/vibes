@@ -7,19 +7,17 @@ export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   loading?: boolean
   type?: 'button' | 'submit' | 'reset'
-  asChild?: boolean
 }
 
 export function Button({
   variant = 'primary',
   size = 'large',
   onClick,
-  loading,
-  disabled,
+  loading = false,
+  disabled = false,
   className,
   children,
   type = 'button',
-  asChild,
   ...props
 }: Props) {
   return (

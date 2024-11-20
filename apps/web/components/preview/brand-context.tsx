@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction, createContext, useContext, useState } from 'react'
 
-import { Brand, Vibe } from '@/vibes/schema'
+import { Brand } from '@/vibes/schema'
 
 interface Context {
   activeBrand?: Brand
@@ -10,7 +10,7 @@ interface Context {
   brands: Brand[]
 }
 
-const BrandContext = createContext<Context>({ setActiveBrand: () => {}, brands: [] })
+const BrandContext = createContext<Context>({ setActiveBrand: () => void 0, brands: [] })
 
 interface Props {
   children: React.ReactNode
@@ -18,6 +18,7 @@ interface Props {
 }
 
 export function BrandProvider({ children, brands }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const [activeBrand, setActiveBrand] = useState(brands[0]!)
 
   return (

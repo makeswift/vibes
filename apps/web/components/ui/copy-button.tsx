@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import { useToast } from '@/components/ui/use-toast'
 

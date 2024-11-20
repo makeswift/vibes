@@ -1,7 +1,7 @@
-import color from 'color'
+import { hsl } from 'color'
 
 import { CopyButton } from '@/components/ui/copy-button'
-import { Brand, Vibe } from '@/vibes/schema'
+import { Brand } from '@/vibes/schema'
 
 interface Color {
   name: string
@@ -48,7 +48,7 @@ export function Colors({ colors }: { colors: Color[] }) {
  * @see https://tailwindcss.com/docs/customizing-colors#using-css-variables
  */
 function hslChannelsToHex(hslChannels: string): string {
-  return color.hsl(`hsl(${hslChannels})`).hex().toString()
+  return hsl(`hsl(${hslChannels})`).hex().toString()
 }
 
 const brandColors = ['--primary', '--accent', '--success', '--warning', '--error'] as const
@@ -64,7 +64,7 @@ const neutralColors = [
 ] as const
 
 export function BrandColors({ brands, brandName }: { brands: Brand[]; brandName: string }) {
-  const brand = brands.find(brand => brand.name === brandName)
+  const brand = brands.find(b => b.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>
 

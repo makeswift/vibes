@@ -16,7 +16,7 @@ export function getNodeTextContent(node: React.ReactNode): string {
   }
 
   if (
-    node &&
+    node != null &&
     typeof node === 'object' &&
     'props' in node &&
     typeof node.props === 'object' &&

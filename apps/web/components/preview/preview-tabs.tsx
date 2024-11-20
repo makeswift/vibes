@@ -2,7 +2,7 @@
 
 import * as Dialog from '@radix-ui/react-dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { useState } from 'react'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -29,10 +29,11 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
   const { activeBrand } = useBrandContext()
   const { width, isDragging, zoom, resize, tab, setTab } = usePreviewContext()
   const [fullScreen, setFullScreen] = useState(false)
-  const actualWidth = width && width / zoom
+  const actualWidth = width != null ? width / zoom : null
 
   const { preview, code, clipboard } =
-    components.find(({ brandName }) => brandName === null || brandName === activeBrand?.name) ||
+    components.find(({ brandName }) => brandName === null || brandName === activeBrand?.name) ??
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     components[0]!
 
   const content = (
@@ -49,7 +50,7 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <div className="flex flex-1 justify-center">
-          {actualWidth && isDragging && (
+          {actualWidth != null && isDragging && (
             <div className="text-xs font-bold">
               <span className="mr-2 text-foreground">{`${Math.round(actualWidth)}px`}</span>
               <span className="text-contrast-400">{`${Math.round(zoom * 100)}%`}</span>

@@ -5,10 +5,6 @@ import { addToCartAction } from './actions'
 
 const products = await getProducts('Warm')
 
-export default async function Preview({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[]>>
-}) {
+export default async function Preview() {
   return <CompareSection products={products} addToCartAction={addToCartAction} />
 }

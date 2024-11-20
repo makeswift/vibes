@@ -27,8 +27,8 @@ export async function Preview({ vibe, componentName, size = 'md' }: Props) {
   const components =
     typeof componentName === 'string'
       ? [{ entry: findEntry({ vibe, componentName }), brandName: null }]
-      : Object.entries(componentName).map(([brandName, componentName]) => ({
-          entry: findEntry({ vibe, componentName }),
+      : Object.entries(componentName).map(([brandName, name]) => ({
+          entry: findEntry({ vibe, componentName: name }),
           brandName,
         }))
 

@@ -10,7 +10,7 @@ export type Font =
   | {
       type: 'google'
       name: string
-      options: NonNullable<Record<string, any>>
+      options: NonNullable<Record<string, unknown>>
     }
   | {
       type: 'local'
@@ -82,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 export function BrandInstallation({ brands, brandName, fonts }: Props) {
-  const brand = brands.find(brand => brand.name === brandName)
+  const brand = brands.find(b => b.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>
 

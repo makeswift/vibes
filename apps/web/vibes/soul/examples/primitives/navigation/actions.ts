@@ -19,7 +19,7 @@ export async function localeAction(
 }
 
 export function searchAction(brand: 'Electric' | 'Warm' | 'Luxury') {
-  return async function searchAction(
+  return async function brandSearchAction(
     prevState: { searchResults: SearchResult[] | null; lastResult: SubmissionResult | null },
     payload: FormData
   ): Promise<{ searchResults: SearchResult[]; lastResult: SubmissionResult }> {

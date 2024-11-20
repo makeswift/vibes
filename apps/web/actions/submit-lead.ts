@@ -5,8 +5,8 @@ import { parseWithZod } from '@conform-to/zod'
 import Airtable from 'airtable'
 import { Resend } from 'resend'
 
-import ContributeEmail from '@/components/emails/contribute'
-import WaitlistEmail from '@/components/emails/waitlist'
+import { ContributeEmail } from '@/components/emails/contribute'
+import { WaitlistEmail } from '@/components/emails/waitlist'
 import { env } from '@/lib/env'
 import { submitLeadSchema } from '@/lib/schema'
 

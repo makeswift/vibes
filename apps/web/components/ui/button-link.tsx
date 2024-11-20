@@ -1,12 +1,6 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import Link from 'next/link'
 import * as React from 'react'
-
-export interface Props extends React.ButtonHTMLAttributes<HTMLAnchorElement> {
-  children?: React.ReactNode
-  variant?: 'default' | 'ghost' | 'link'
-  size?: 'large' | 'medium' | 'small' | 'icon'
-}
 
 export interface Props {
   className?: string

@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { ChevronLeftIcon } from 'lucide-react'
 import { ComponentPropsWithoutRef } from 'react'
 import { DayPicker } from 'react-day-picker'

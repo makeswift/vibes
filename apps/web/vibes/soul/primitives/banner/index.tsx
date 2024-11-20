@@ -2,17 +2,23 @@
 
 import { clsx } from 'clsx'
 import { X } from 'lucide-react'
-import { ReactNode, forwardRef, useCallback, useEffect, useState } from 'react'
+import { ForwardedRef, forwardRef, ReactNode, useCallback, useEffect, useState } from 'react'
 
-interface Props {
-  children: ReactNode
-  hideDismiss?: boolean
-  onDismiss?: () => void
-  className?: string
-}
-
-export const Banner = forwardRef<React.ComponentRef<'div'>, Props>(
-  ({ children, hideDismiss, className, onDismiss }, ref) => {
+export const Banner = forwardRef(
+  (
+    {
+      children,
+      hideDismiss = false,
+      className,
+      onDismiss,
+    }: {
+      children: ReactNode
+      hideDismiss?: boolean
+      className?: string
+      onDismiss?(): void
+    },
+    ref: ForwardedRef<HTMLDivElement>
+  ) => {
     const [banner, setBanner] = useState({ dismissed: false, initialized: false })
 
     useEffect(() => {
@@ -59,3 +65,5 @@ export const Banner = forwardRef<React.ComponentRef<'div'>, Props>(
     )
   }
 )
+
+Banner.displayName = 'Banner'

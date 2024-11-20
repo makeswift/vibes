@@ -5,7 +5,6 @@ export type Props = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   variant?: 'primary' | 'secondary' | 'tertiary'
   size?: 'large' | 'medium' | 'small' | 'icon'
   href: string
-  asChild?: boolean
 }
 
 export function ButtonLink({
@@ -14,7 +13,6 @@ export function ButtonLink({
   href,
   className,
   children,
-  asChild,
   ...props
 }: Props) {
   return (

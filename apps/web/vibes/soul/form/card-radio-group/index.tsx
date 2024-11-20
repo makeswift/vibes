@@ -1,5 +1,5 @@
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import * as React from 'react'
 

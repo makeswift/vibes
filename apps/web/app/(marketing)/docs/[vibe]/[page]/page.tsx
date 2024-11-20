@@ -1,10 +1,10 @@
 import rehypeShiki from '@shikijs/rehype'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { readFile } from 'fs/promises'
 import { notFound } from 'next/navigation'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import path from 'path'
-import prettyBytes from 'pretty-bytes'
+// import prettyBytes from 'pretty-bytes'
 import remarkGfm from 'remark-gfm'
 import { ShikiTransformer } from 'shiki'
 
@@ -34,7 +34,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Tooltip } from '@/components/ui/tooltip'
 import { ZoomImage } from '@/components/ui/zoom-image'
 import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
-import { getTotalSize } from '@/lib/bundle'
+// import { getTotalSize } from '@/lib/bundle'
 import { theme, transformers } from '@/lib/shiki'
 import * as Vibes from '@/vibes'
 import { pageMetaSchema } from '@/vibes/schema'
@@ -68,7 +68,7 @@ export default async function Page({
   if (!vibe) return notFound()
 
   const allPages = vibe.navigation.flatMap(group => group.pages)
-  const page = allPages.find(page => page.slug === pageSlug)
+  const page = allPages.find(p => p.slug === pageSlug)
 
   if (page == null) return notFound()
   const source = await readFile(path.resolve(path.join('vibes', vibe.slug, page.file)), 'utf-8')
@@ -91,11 +91,11 @@ export default async function Page({
                   pre(node) {
                     this.addClassToHast(node, 'relative')
 
-                    if (this.options.meta?.__raw?.includes('showLineNumbers')) {
+                    if (this.options.meta?.__raw?.includes('showLineNumbers') === true) {
                       this.addClassToHast(node, 'show-line-numbers')
                     }
                   },
-                } as ShikiTransformer,
+                } satisfies ShikiTransformer,
               ],
             },
           ],
@@ -160,7 +160,7 @@ export default async function Page({
   const pageIndex = allPages.findIndex(p => p.slug === page.slug)
   const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null
   const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null
-  const component = vibe.components.find(component => component.name === page.component)
+  const component = vibe.components.find(c => c.name === page.component)
   const numDependencies = component
     ? component.registryDependencies.length + component.dependencies.length
     : 0
@@ -171,13 +171,13 @@ export default async function Page({
       <div className="py-8 lg:py-10">
         <h1 className="-mt-1 mb-2 text-3xl font-bold text-foreground">{meta.title}</h1>
 
-        {meta.description && (
+        {meta.description != null && (
           <p className="mb-8 max-w-4xl text-base font-light leading-relaxed text-contrast-500 md:text-lg">
             {meta.description}
           </p>
         )}
 
-        {meta.preview && (
+        {meta.preview != null && (
           <Preview vibe={vibe} componentName={meta.preview} size={meta.previewSize} />
         )}
 
@@ -212,7 +212,7 @@ export default async function Page({
               </ul>
             )}
 
-            {page.component && <Installation vibe={vibe} componentName={page.component} />}
+            {page.component != null && <Installation vibe={vibe} componentName={page.component} />}
 
             {content}
 
@@ -254,7 +254,7 @@ export default async function Page({
                     <div className="text-sm font-bold text-foreground">Dependencies</div>
                     <ul>
                       {component.registryDependencies.map(dependency => {
-                        const dependencyPage = allPages.find(page => page.component === dependency)
+                        const dependencyPage = allPages.find(p => p.component === dependency)
 
                         if (!dependencyPage) return null
 
@@ -283,7 +283,7 @@ export default async function Page({
                 <div className="space-y-1">
                   <div className="text-sm font-bold text-foreground">Other links</div>
                   <ul>
-                    {component?.files[0] && (
+                    {component?.files[0] != null && (
                       <li>
                         <TableOfContentsLink
                           href={`https://github.com/makeswift/vibes/tree/main/apps/web/vibes/${vibe.slug}/${component.files[0]}`}

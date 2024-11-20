@@ -1,4 +1,4 @@
-import { Vibe, Navigation as VibeNavigation } from '@/vibes/schema'
+import { Vibe } from '@/vibes/schema'
 
 export interface Link {
   title: string

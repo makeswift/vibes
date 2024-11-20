@@ -11,7 +11,7 @@ export default async function Preview({
   const parsedParams = cache.parse(await searchParams)
   const { [compareParamName]: compare, [sortParamName]: sort, ...filterParams } = parsedParams
 
-  const products = getProducts('Warm', filterParams)
+  const productsPromise = getProducts('Warm', filterParams)
   const filters = getFilters('Warm')
   const sortOptions = getSortOptions()
   const breadcrumbs = getBreadcrumbs('Warm')
@@ -21,12 +21,12 @@ export default async function Preview({
       <ProductsListSection
         title="Handle Bags"
         breadcrumbs={breadcrumbs}
-        products={products}
-        totalCount={products.then(products => products.length)}
+        products={productsPromise}
+        totalCount={productsPromise.then(products => products.length)}
         filters={filters}
         sortOptions={sortOptions}
         paginationInfo={{ startCursor: '1', endCursor: '10' }}
-        compareProducts={products.then(products =>
+        compareProducts={productsPromise.then(products =>
           products.filter(product => compare?.includes(product.id))
         )}
         compareParamName={compareParamName}

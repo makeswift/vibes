@@ -57,7 +57,6 @@ export const FeaturedVideo = function FeaturedVideo({
           <Button
             variant={mediaAlign === 'full' ? 'tertiary' : 'primary'}
             className={clsx(mediaAlign === 'full' ? 'text-background' : 'text-foreground')}
-            asChild
           >
             <Link href={cta.href}>{cta.label}</Link>
           </Button>

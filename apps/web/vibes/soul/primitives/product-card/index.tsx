@@ -84,10 +84,6 @@ export function ProductCard({
   )
 }
 
-interface ProductCardSkeletonProps {
-  className?: string
-}
-
 export function ProductCardSkeleton({ className }: { className?: string }) {
   return (
     <div className={clsx('animate-pulse', className)}>

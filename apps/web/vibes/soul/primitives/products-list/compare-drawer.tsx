@@ -79,7 +79,7 @@ export function CompareDrawer({
                 <button
                   type="button"
                   aria-label={`Remove ${item.title}`}
-                  onClick={e => {
+                  onClick={() => {
                     setParam(prev => {
                       const next = prev?.filter(v => v !== item.id) ?? []
 

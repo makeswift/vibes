@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function BrandFonts({ brands, brandName, fonts }: Props) {
-  const brand = brands.find(brand => brand.name === brandName)
+  const brand = brands.find(b => b.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>
 
@@ -23,6 +23,7 @@ export function BrandFonts({ brands, brandName, fonts }: Props) {
             <div
               className="truncate text-xl leading-normal text-foreground md:text-xl"
               style={
+                // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                 {
                   '--font-family-body': brand.cssVars['--font-family-body'],
                   '--font-family-heading': brand.cssVars['--font-family-heading'],

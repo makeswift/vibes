@@ -83,7 +83,6 @@ export const Feature = function Feature({ image, title, description, grid, cta }
               className={clsx({
                 'self-center @3xl/section:self-start': grid?.length,
               })}
-              asChild
             >
               <Link href={cta.href}>{cta.label}</Link>
             </Button>

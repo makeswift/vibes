@@ -1,5 +1,3 @@
-import { Suspense } from 'react'
-
 import { getBreadcrumbs, getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 
@@ -14,7 +12,7 @@ export default async function Preview({
   const { [compareParamName]: compare, [sortParamName]: sort, ...filterParams } = parsedParams
 
   const filters = getFilters('Electric')
-  const products = getProducts('Electric', filterParams)
+  const productsPromise = getProducts('Electric', filterParams)
   const sortOptions = getSortOptions()
   const breadcrumbs = getBreadcrumbs('Electric')
 
@@ -23,12 +21,12 @@ export default async function Preview({
       <ProductsListSection
         title="Plants"
         breadcrumbs={breadcrumbs}
-        products={products}
-        totalCount={products.then(products => products.length)}
+        products={productsPromise}
+        totalCount={productsPromise.then(products => products.length)}
         filters={filters}
         sortOptions={sortOptions}
         paginationInfo={{ endCursor: '10' }}
-        compareProducts={products.then(products =>
+        compareProducts={productsPromise.then(products =>
           products.filter(product => compare?.includes(product.id))
         )}
         compareParamName={compareParamName}

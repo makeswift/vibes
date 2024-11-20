@@ -15,9 +15,8 @@ import * as React from 'react'
 
 import { env } from '@/lib/env'
 
-const baseUrl = env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : ''
+const baseUrl =
+  env.VERCEL_PROJECT_PRODUCTION_URL != null ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}` : ''
 
 export const WaitlistEmail = () => (
   <Html>
@@ -80,10 +79,6 @@ const paragraph = {
   fontSize: '16px',
   lineHeight: '24px',
   textAlign: 'left' as const,
-}
-
-const anchor = {
-  color: '#556cd6',
 }
 
 const button = {

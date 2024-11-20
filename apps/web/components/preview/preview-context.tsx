@@ -19,11 +19,11 @@ const PreviewContext = createContext<Context>({
   width: null,
   zoom: 1,
   isDragging: false,
-  setIsDragging: () => {},
-  setMaxWidth: () => {},
-  resize: () => {},
+  setIsDragging: () => void 0,
+  setMaxWidth: () => void 0,
+  resize: () => void 0,
   tab: undefined,
-  setTab: () => {},
+  setTab: () => void 0,
 })
 
 interface Props {

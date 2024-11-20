@@ -1,9 +1,9 @@
 'use client'
 
+import { DocSearch } from '@docsearch/react'
 import Image from 'next/image'
 
 import '@docsearch/css'
-import { DocSearch } from '@docsearch/react'
 
 import { ModeToggle } from '@/components/ui/mode-toggle'
 
@@ -50,6 +50,7 @@ export function Header({ chapters, chapterSlug }: Props) {
         <nav className="hidden h-full gap-x-4 lg:flex">
           {chapter?.groups.map(group => (
             <GroupLink
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               key={group.pages[0]!.slug}
               chapterSlug={chapterSlug}
               group={group}

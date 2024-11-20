@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
@@ -43,6 +43,7 @@ function Carousel({ opts, setApi, plugins, className, children, ...rest }: Carou
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const onSelect = React.useCallback((api: CarouselApi) => {
     if (!api) return
 
@@ -160,10 +161,10 @@ function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) 
   const [scrollbarPosition, setScrollbarPosition] = useState({ width: 0, left: 0 })
 
   const findClosestSnap = useCallback(
-    (progress: number) => {
+    (nextProgress: number) => {
       if (!api) return 0
 
-      const point = progress / 100
+      const point = nextProgress / 100
       const snapList = api.scrollSnapList()
 
       if (snapList.length === 0) return -1
@@ -188,7 +189,7 @@ function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) 
     setScrollbarPosition({ width: scrollbarWidth, left: scrollbarLeft })
 
     api.scrollTo(closestSnapIndex)
-  }, [progress, api])
+  }, [progress, api, findClosestSnap])
 
   useEffect(() => {
     if (!api) return
@@ -196,6 +197,7 @@ function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) 
     function onScroll() {
       if (!api) return
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       setProgress(api.scrollSnapList()[api.selectedScrollSnap()]! * 100)
     }
 

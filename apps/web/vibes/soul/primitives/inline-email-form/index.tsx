@@ -2,8 +2,8 @@
 
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
-import clsx from 'clsx'
-import { ArrowRight, CircleAlert } from 'lucide-react'
+import { clsx } from 'clsx'
+import { ArrowRight } from 'lucide-react'
 import { useActionState, useEffect } from 'react'
 
 import { ErrorMessage } from '../../form/error-message'
@@ -45,14 +45,14 @@ export function InlineEmailForm({
     }
   }, [lastResult])
 
-  const { errors } = fields.email
+  const { errors = [] } = fields.email
 
   return (
     <form {...getFormProps(form)} className={className} action={formAction}>
       <div
         className={clsx(
           'relative rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
-          errors?.length ? 'border-error' : 'border-black'
+          errors.length ? 'border-error' : 'border-black'
         )}
       >
         <input
@@ -73,9 +73,9 @@ export function InlineEmailForm({
           </Button>
         </div>
       </div>
-      {errors &&
-        errors.length > 0 &&
-        errors.map((error, index) => <ErrorMessage key={index}>{error}</ErrorMessage>)}
+      {errors.map((error, index) => (
+        <ErrorMessage key={index}>{error}</ErrorMessage>
+      ))}
     </form>
   )
 }

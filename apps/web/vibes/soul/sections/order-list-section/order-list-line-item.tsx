@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -50,7 +50,7 @@ export function OrderListLineItem({ className, lineItem }: Props) {
         {lineItem.subtitle != null && lineItem.subtitle !== '' && (
           <span className="mb-1.5 block font-normal text-contrast-400">{lineItem.subtitle}</span>
         )}
-        {lineItem.price != null && <PriceLabel price={lineItem.price} />}
+        <PriceLabel price={lineItem.price} />
       </div>
     </Link>
   )

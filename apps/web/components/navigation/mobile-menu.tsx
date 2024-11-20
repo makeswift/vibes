@@ -1,5 +1,5 @@
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -31,7 +31,6 @@ export function MobileMenu({ chapter }: Props) {
       <SheetTrigger asChild>
         <button
           className="inline-flex h-6 w-7 shrink-0 flex-col justify-between px-1 py-1.5 transition-transform xl:hidden"
-          role="button"
           aria-label="Open mobile navigation"
         >
           <div

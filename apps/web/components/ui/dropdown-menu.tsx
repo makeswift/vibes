@@ -1,7 +1,7 @@
 'use client'
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { Check, ChevronRight, Circle } from 'lucide-react'
 import * as React from 'react'
 
@@ -22,7 +22,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
     inset?: boolean
   }
->(({ className, inset, children, ...props }, ref) => (
+>(({ className, inset = false, children, ...props }, ref) => (
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={clsx(
@@ -80,7 +80,7 @@ const DropdownMenuItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean
   }
->(({ className, inset, ...props }, ref) => (
+>(({ className, inset = false, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={clsx(
@@ -143,7 +143,7 @@ const DropdownMenuLabel = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
     inset?: boolean
   }
->(({ className, inset, ...props }, ref) => (
+>(({ className, inset = false, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
     ref={ref}
     className={clsx('px-2 py-1.5 text-sm font-semibold', inset && 'pl-8', className)}
