@@ -49,20 +49,13 @@ export default async function Page({
 
   return (
     <>
-      <style
-        // @ts-ignore React 18.3 doesn't include type definitions for style
-        href={`/brands/${activeBrand.name}`}
-        precedence="high"
-        dangerouslySetInnerHTML={{
-          __html: `
-          :root {
-            ${Object.entries(activeBrand.cssVars)
-              .map(([key, value]) => `${key}: ${value};`)
-              .join('\n')}
-          }
-        `,
-        }}
-      />
+      {/* @ts-expect-error: `types-react@19.0.0-rc.1` doesn't include `href` in `<style>`'s props. */}
+      <style href={`${activeBrand.name}-CSS-Vars`} precedence="high">
+        {`:root {\n${Object.entries(activeBrand.cssVars)
+          .map(([key, value]) => `  ${key}: ${value};`)
+          .join('\n')}\n}
+        `}
+      </style>
       <Suspense fallback={null}>
         <Component searchParams={searchParams} />
       </Suspense>
