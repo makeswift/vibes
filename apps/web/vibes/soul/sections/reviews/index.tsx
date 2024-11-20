@@ -1,41 +1,76 @@
+import { Suspense } from 'react'
+
+import { Streamable } from '@/vibes/soul/lib/streamable'
+import { mapStreamable } from '@/vibes/soul/lib/streamable/server'
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination'
 import { Rating } from '@/vibes/soul/primitives/rating'
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
 
-interface Props {
-  reviews: {
-    id: string
-    rating: number
-    review: string
-    name: string
-    date: string
-  }[]
-  averageRating: number
-  totalCount?: number
-  paginationInfo?: CursorPaginationInfo
-  emptyStateMessage?: string
+interface Review {
+  id: string
+  rating: number
+  review: string
+  name: string
+  date: string
 }
 
-export function Reviews({
-  reviews,
-  averageRating,
-  totalCount,
-  paginationInfo,
+interface Props {
+  reviews: Streamable<Review[]>
+  averageRating: Streamable<number>
+  totalCount?: Streamable<number>
+  paginationInfo?: Streamable<CursorPaginationInfo>
+  emptyStateMessage?: string
+  reviewsLabel?: string
+}
+
+async function ReviewsImpl({
+  reviews: streamableReviews,
+  averageRating: streamableAverageRating,
+  totalCount: streamableTotalCount,
+  paginationInfo: streamablePaginationInfo,
   emptyStateMessage,
+  reviewsLabel = 'Reviews',
 }: Readonly<Props>) {
+  const reviews = await mapStreamable(streamableReviews, resolvedReviews => resolvedReviews)
+
   if (reviews.length === 0) return <ReviewsEmptyState message={emptyStateMessage} />
 
   return (
     <StickySidebarLayout
       sidebar={
         <>
-          <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
-            Reviews <span className="text-contrast-300">{totalCount ?? reviews.length}</span>
-          </h2>
-          <div className="mb-2 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl">
-            {averageRating}
-          </div>
-          <Rating rating={averageRating} showRating={false} />
+          <Suspense
+            fallback={
+              <div className="animate-pulse">
+                <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
+                  {reviewsLabel}
+                </h2>
+              </div>
+            }
+          >
+            {mapStreamable(streamableTotalCount, totalCount => (
+              <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
+                {reviewsLabel} <span className="text-contrast-300">{totalCount}</span>
+              </h2>
+            ))}
+          </Suspense>
+          <Suspense
+            fallback={
+              <div className="animate-pulse">
+                <div className="mb-2 h-[1lh] w-[3ch] rounded-md bg-contrast-100 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl" />
+                <div className="h-5 w-32 rounded-md bg-contrast-100" />
+              </div>
+            }
+          >
+            {mapStreamable(streamableAverageRating, averageRating => (
+              <>
+                <div className="mb-2 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl">
+                  {averageRating}
+                </div>
+                <Rating rating={averageRating} showRating={false} />
+              </>
+            ))}
+          </Suspense>
         </>
       }
       sidebarSize="medium"
@@ -52,7 +87,13 @@ export function Reviews({
           )
         })}
 
-        {paginationInfo && <CursorPagination info={paginationInfo} scroll={false} />}
+        <Suspense>
+          {mapStreamable(
+            streamablePaginationInfo,
+            paginationInfo =>
+              paginationInfo && <CursorPagination info={paginationInfo} scroll={false} />
+          )}
+        </Suspense>
       </div>
     </StickySidebarLayout>
   )
@@ -60,15 +101,17 @@ export function Reviews({
 
 export function ReviewsEmptyState({
   message = 'No reviews have been added for this product',
+  reviewsLabel = 'Reviews',
 }: {
   message?: string
+  reviewsLabel?: string
 }) {
   return (
     <StickySidebarLayout
       sidebar={
         <>
           <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
-            Reviews <span className="text-contrast-300">0</span>
+            {reviewsLabel} <span className="text-contrast-300">0</span>
           </h2>
           <div className="mb-2 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl">
             0
@@ -85,12 +128,12 @@ export function ReviewsEmptyState({
   )
 }
 
-export function ReviewsSkeleton() {
+export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: { reviewsLabel?: string }) {
   return (
     <StickySidebarLayout
       sidebar={
         <div className="animate-pulse">
-          <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">Reviews</h2>
+          <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">{reviewsLabel}</h2>
           <div className="mb-2 h-[1lh] w-[3ch] rounded-md bg-contrast-100 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl" />
           <div className="h-5 w-32 rounded-md bg-contrast-100" />
         </div>
@@ -108,5 +151,13 @@ export function ReviewsSkeleton() {
         ))}
       </div>
     </StickySidebarLayout>
+  )
+}
+
+export function Reviews({ reviewsLabel = 'Reviews', ...props }: Props) {
+  return (
+    <Suspense fallback={<ReviewsSkeleton />}>
+      <ReviewsImpl {...props} reviewsLabel={reviewsLabel} />
+    </Suspense>
   )
 }
