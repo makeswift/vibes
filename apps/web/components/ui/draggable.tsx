@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import {
   ComponentPropsWithoutRef,
   Dispatch,
@@ -11,8 +12,6 @@ import {
   useRef,
   useState,
 } from 'react'
-
-import clsx from 'clsx'
 
 import { Portal } from './portal'
 

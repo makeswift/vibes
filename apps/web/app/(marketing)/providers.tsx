@@ -1,10 +1,9 @@
 'use client'
 
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import * as React from 'react'
-
 import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
+import * as React from 'react'
 
 import { DraggableProvider } from '@/components/ui/draggable'
 import { env } from '@/lib/env'

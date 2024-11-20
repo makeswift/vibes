@@ -1,15 +1,14 @@
+import { clsx } from 'clsx'
+import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
-import { clsx } from 'clsx'
-import { ChevronRight } from 'lucide-react'
-
-export type Breadcrumb = {
+export interface Breadcrumb {
   label: string
   href: string
 }
 
-export type BreadcrumbsProps = {
+export interface BreadcrumbsProps {
   breadcrumbs: Breadcrumb[]
   className?: string
 }

@@ -1,5 +1,12 @@
 'use client'
 
+import { SubmissionResult } from '@conform-to/react'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as NavigationMenu from '@radix-ui/react-navigation-menu'
+import * as Popover from '@radix-ui/react-popover'
+import { clsx } from 'clsx'
+import debounce from 'lodash.debounce'
+import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -16,33 +23,25 @@ import React, {
 } from 'react'
 import { useFormStatus } from 'react-dom'
 
-import { SubmissionResult } from '@conform-to/react'
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import * as Popover from '@radix-ui/react-popover'
-import { clsx } from 'clsx'
-import debounce from 'lodash.debounce'
-import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
-
 import { Button } from '@/vibes/soul/primitives/button'
 
 import { Price } from '../price-label'
 import { ProductCard } from '../product-card'
 
-type Link = {
+interface Link {
   label: string
   href: string
-  groups?: Array<{
+  groups?: {
     label?: string
     href?: string
-    links: Array<{
+    links: {
       label: string
       href: string
-    }>
-  }>
+    }[]
+  }[]
 }
 
-type Locale = {
+interface Locale {
   id: string
   label: string
 }
@@ -56,18 +55,18 @@ export type SearchResult =
   | {
       type: 'products'
       title: string
-      products: Array<{
+      products: {
         id: string
         title: string
         href: string
         price?: Price
         image?: { src: string; alt: string }
-      }>
+      }[]
     }
   | {
       type: 'links'
       title: string
-      links: Array<{ label: string; href: string }>
+      links: { label: string; href: string }[]
     }
 
 type LocaleAction = Action<SubmissionResult | null, FormData>
@@ -76,7 +75,7 @@ type SearchAction<S extends SearchResult> = Action<
   FormData
 >
 
-type Props<S extends SearchResult> = {
+interface Props<S extends SearchResult> {
   className?: string
   isFloating?: boolean
   accountHref: string

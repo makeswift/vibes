@@ -1,8 +1,7 @@
+import { clsx } from 'clsx'
 import { ReactNode } from 'react'
 
-import { clsx } from 'clsx'
-
-type Props = {
+interface Props {
   children: ReactNode
   variant?: 'pill' | 'rounded'
   color?: 'primary' | 'accent' | 'warning' | 'danger' | 'success' | 'info'

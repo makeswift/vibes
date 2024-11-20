@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { SignInAction, SignInForm } from './sign-in-form'
 
-type Props = {
+interface Props {
   children?: React.ReactNode
   title?: string
   action: SignInAction

@@ -1,9 +1,8 @@
-import { compileMDX } from 'next-mdx-remote/rsc'
-import { notFound } from 'next/navigation'
-
 import rehypeShiki from '@shikijs/rehype'
 import clsx from 'clsx'
 import { readFile } from 'fs/promises'
+import { notFound } from 'next/navigation'
+import { compileMDX } from 'next-mdx-remote/rsc'
 import path from 'path'
 import prettyBytes from 'pretty-bytes'
 import remarkGfm from 'remark-gfm'
@@ -92,7 +91,7 @@ export default async function Page({
                   pre(node) {
                     this.addClassToHast(node, 'relative')
 
-                    if (this.options?.meta?.__raw?.includes('showLineNumbers')) {
+                    if (this.options.meta?.__raw?.includes('showLineNumbers')) {
                       this.addClassToHast(node, 'show-line-numbers')
                     }
                   },
@@ -284,7 +283,7 @@ export default async function Page({
                 <div className="space-y-1">
                   <div className="text-sm font-bold text-foreground">Other links</div>
                   <ul>
-                    {component && component.files[0] && (
+                    {component?.files[0] && (
                       <li>
                         <TableOfContentsLink
                           href={`https://github.com/makeswift/vibes/tree/main/apps/web/vibes/${vibe.slug}/${component.files[0]}`}

@@ -1,12 +1,12 @@
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link'
 import { Card, CardCarousel } from '@/vibes/soul/primitives/card-carousel'
 
-type Link = {
+interface Link {
   label: string
   href: string
 }
 
-type Props = {
+interface Props {
   title: string
   description?: string
   cta?: Link

@@ -5,7 +5,7 @@ import { ButtonLink } from '@/vibes/soul/primitives/button-link'
 
 import { OrderListLineItem } from './order-list-line-item'
 
-export type Order = {
+export interface Order {
   id: string
   totalPrice: string
   status: string
@@ -13,7 +13,7 @@ export type Order = {
   lineItems: OrderListLineItem[]
 }
 
-type Props = {
+interface Props {
   className?: string
   order: Order
 }

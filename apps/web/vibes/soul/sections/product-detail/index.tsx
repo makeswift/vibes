@@ -6,7 +6,7 @@ import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gal
 import { ProductDetailForm, ProductDetailFormAction } from './product-detail-form'
 import { Field } from './schema'
 
-type ProductDetailProduct = {
+interface ProductDetailProduct {
   id: string
   title: string
   href: string
@@ -18,7 +18,7 @@ type ProductDetailProduct = {
   description?: string | React.ReactNode
 }
 
-type Props<F extends Field> = {
+interface Props<F extends Field> {
   breadcrumbs?: Breadcrumb[]
   product: ProductDetailProduct
   action: ProductDetailFormAction<F>

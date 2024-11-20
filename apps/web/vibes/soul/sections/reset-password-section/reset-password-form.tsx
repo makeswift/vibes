@@ -1,9 +1,8 @@
 'use client'
 
-import { useActionState, useEffect } from 'react'
-
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
+import { useActionState, useEffect } from 'react'
 
 import { Input } from '@/vibes/soul/form/input'
 import { Button } from '@/vibes/soul/primitives/button'
@@ -14,7 +13,7 @@ type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State
 
 export type ResetPasswordAction = Action<SubmissionResult | null, FormData>
 
-type Props = {
+interface Props {
   action: ResetPasswordAction
   submitLabel?: string
   newPasswordLabel?: string
@@ -38,7 +37,10 @@ export function ResetPasswordForm({
   })
 
   useEffect(() => {
-    if (lastResult?.error) return console.log(lastResult.error)
+    if (lastResult?.error) {
+      console.log(lastResult.error)
+      return
+    }
   }, [lastResult])
 
   return (

@@ -1,14 +1,14 @@
+import clsx from 'clsx'
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 import Head from 'next/head'
 import { Suspense } from 'react'
 
-import clsx from 'clsx'
-
 import { Toaster } from '@/components/ui/toaster'
 
 import { Providers } from './providers'
+
 import './style/globals.css'
 
 const title = 'Vibes: Stunning React components for commerce & marketing | Coming soon'

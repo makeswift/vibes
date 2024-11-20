@@ -3,7 +3,7 @@ import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/
 import { OrderList } from './order-list'
 import { Order } from './order-list-item'
 
-type Props = {
+interface Props {
   title?: string
   orders: Order[] | Promise<Order[]>
   paginationInfo?: CursorPaginationInfo | Promise<CursorPaginationInfo>

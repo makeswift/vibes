@@ -1,17 +1,17 @@
 'use client'
 
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import clsx from 'clsx'
-
 import ChevronDown12 from '@/icons/generated/ChevronDown12'
 
 import { Button } from '../ui/button'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
+
 import { Chapter } from './navigation'
 
 type ComingSoonChapter = Pick<

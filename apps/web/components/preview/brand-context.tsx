@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, createContext, useContext, useState } from 'r
 
 import { Brand, Vibe } from '@/vibes/schema'
 
-type Context = {
+interface Context {
   activeBrand?: Brand
   setActiveBrand: Dispatch<SetStateAction<Brand>>
   brands: Brand[]

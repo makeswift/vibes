@@ -1,6 +1,5 @@
-import { Suspense } from 'react'
-
 import clsx from 'clsx'
+import { Suspense } from 'react'
 
 import {
   Carousel,
@@ -16,7 +15,7 @@ import { mapStreamable } from '../../lib/streamable/server'
 
 export type CarouselProduct = CardProduct
 
-type Props = {
+interface Props {
   products: Streamable<CarouselProduct[]>
   className?: string
   emptyStateMessage?: string

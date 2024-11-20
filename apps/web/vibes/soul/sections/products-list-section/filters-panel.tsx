@@ -1,7 +1,5 @@
 'use client'
 
-import { Suspense, use, useOptimistic } from 'react'
-
 import clsx from 'clsx'
 import { ArrowRight } from 'lucide-react'
 import {
@@ -11,6 +9,7 @@ import {
   parseAsString,
   useQueryStates,
 } from 'nuqs'
+import { Suspense, use, useOptimistic } from 'react'
 
 import { Checkbox } from '@/vibes/soul/form/checkbox'
 import { RangeInput } from '@/vibes/soul/form/range-input'
@@ -22,20 +21,20 @@ import { Rating } from '@/vibes/soul/primitives/rating'
 
 import { ProductListTransitionContext } from './context'
 
-export type ToggleGroupFilter = {
+export interface ToggleGroupFilter {
   type: 'toggle-group'
   paramName: string
   label: string
-  options: Array<{ label: string; value: string }>
+  options: { label: string; value: string }[]
 }
 
-export type RatingFilter = {
+export interface RatingFilter {
   type: 'rating'
   paramName: string
   label: string
 }
 
-export type RangeFilter = {
+export interface RangeFilter {
   type: 'range'
   label: string
   minParamName: string
@@ -52,7 +51,7 @@ export type RangeFilter = {
 
 export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter
 
-type Props = {
+interface Props {
   className?: string
   filters: Filter[] | Promise<Filter[]>
   resetFiltersLabel?: string
@@ -281,7 +280,7 @@ function ToggleGroupSkeleton({ options, seed = 0 }: { options: number; seed?: nu
         return (
           <div
             key={i}
-            style={{ ['--width']: `${width}ch` } as React.CSSProperties}
+            style={{ '--width': `${width}ch` } as React.CSSProperties}
             className="h-12 w-[var(--width)] animate-pulse rounded-full bg-contrast-100 px-4"
           />
         )

@@ -1,12 +1,11 @@
-import * as React from 'react'
-
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import clsx from 'clsx'
+import * as React from 'react'
 
 import { ErrorMessage } from '@/vibes/soul/form/error-message'
 import { Label } from '@/vibes/soul/form/label'
 
-type Option = {
+interface Option {
   value: string
   label: string
   disabled?: boolean

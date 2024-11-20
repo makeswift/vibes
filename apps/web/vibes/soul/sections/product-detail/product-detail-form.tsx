@@ -1,8 +1,5 @@
 'use client'
 
-import { useActionState, useCallback } from 'react'
-import { useFormStatus } from 'react-dom'
-
 import {
   FieldMetadata,
   FormProvider,
@@ -13,6 +10,8 @@ import {
 } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
 import { parseAsString, useQueryState, useQueryStates } from 'nuqs'
+import { useActionState, useCallback } from 'react'
+import { useFormStatus } from 'react-dom'
 import { z } from 'zod'
 
 import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group'
@@ -29,14 +28,14 @@ import { Field, SchemaRawShape, schema } from './schema'
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
-type State<F extends Field> = {
+interface State<F extends Field> {
   fields: F[]
   lastResult: SubmissionResult | null
 }
 
 export type ProductDetailFormAction<F extends Field> = Action<State<F>, FormData>
 
-type Props<F extends Field> = {
+interface Props<F extends Field> {
   fields: F[]
   action: ProductDetailFormAction<F>
   productId: string

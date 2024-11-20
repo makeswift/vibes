@@ -1,8 +1,7 @@
 'use client'
 
-import { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
-
 import clsx from 'clsx'
+import { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
   from: string

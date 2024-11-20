@@ -1,21 +1,21 @@
 import { Vibe, Navigation as VibeNavigation } from '@/vibes/schema'
 
-export type Link = {
+export interface Link {
   title: string
   href: string
 }
 
-export type Page = {
+export interface Page {
   title: string
   slug: string
 }
 
-export type Group = {
+export interface Group {
   title: string
   pages: Page[]
 }
 
-export type Chapter = {
+export interface Chapter {
   name: string
   slug: string
   description: string
@@ -28,7 +28,7 @@ export type Chapter = {
   groups: Group[]
 }
 
-export type Navigation = {
+export interface Navigation {
   links: Link[]
   chapters: Chapter[]
 }

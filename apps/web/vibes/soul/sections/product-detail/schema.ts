@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-type FormField = {
+interface FormField {
   name: string
   label?: string
   errors?: string[]
@@ -105,7 +105,7 @@ export type Field =
   | ButtonRadioField
   | SelectField
 
-export type SchemaRawShape = {
+export interface SchemaRawShape {
   [key: string]: z.ZodString | z.ZodOptional<z.ZodString> | z.ZodNumber | z.ZodOptional<z.ZodNumber>
   id: z.ZodString
   quantity: z.ZodNumber

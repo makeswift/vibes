@@ -84,7 +84,7 @@ const lineItems = {
 }
 
 export const getLineItems = unstable_cache(
-  async (brand: 'Electric' | 'Warm' | 'Luxury') => Array.from(lineItems[brand]?.values()),
+  async (brand: 'Electric' | 'Warm' | 'Luxury') => Array.from(lineItems[brand].values()),
   [],
   {
     tags: ['line-items-electric'],

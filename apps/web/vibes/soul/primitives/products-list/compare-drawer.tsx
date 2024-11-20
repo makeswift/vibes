@@ -1,9 +1,8 @@
 'use client'
 
+import { ArrowRight, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-
-import { ArrowRight, X } from 'lucide-react'
 import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
 
 import { Button } from '@/vibes/soul/primitives/button'
@@ -18,14 +17,14 @@ function getInitials(name: string): string {
     .slice(0, 2)
 }
 
-type DrawerItem = {
+interface DrawerItem {
   id: string
   image?: { src: string; alt: string }
   href: string
   title: string
 }
 
-type Props = {
+interface Props {
   items: DrawerItem[]
   paramName?: string
   action?: React.ComponentProps<'form'>['action']

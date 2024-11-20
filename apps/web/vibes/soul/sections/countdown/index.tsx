@@ -1,31 +1,30 @@
 'use client'
 
+import { clsx } from 'clsx'
+import { X } from 'lucide-react'
 import Image from 'next/image'
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { clsx } from 'clsx'
-import { X } from 'lucide-react'
-
-type Default = {
+interface Default {
   type: 'default'
   images?: string[]
 }
 
-type Full = {
+interface Full {
   type: 'full'
   backgroundImage: string
 }
 
-type Split = {
+interface Split {
   type: 'split'
   image: string
 }
 
-type Banner = {
+interface Banner {
   type: 'banner'
 }
 
-type Props = {
+interface Props {
   title: string
   targetDate: Date
   variant: Default | Full | Split | Banner

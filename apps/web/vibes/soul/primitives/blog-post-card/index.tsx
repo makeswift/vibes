@@ -1,9 +1,8 @@
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { clsx } from 'clsx'
-
-export type BlogPost = {
+export interface BlogPost {
   id: string
   author?: string | null
   content: string

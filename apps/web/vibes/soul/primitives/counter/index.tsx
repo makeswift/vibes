@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-
 import clsx from 'clsx'
 import { Minus, Plus } from 'lucide-react'
+import { useState } from 'react'
 
 interface Props {
   current?: number

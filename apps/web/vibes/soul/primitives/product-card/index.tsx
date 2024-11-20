@@ -1,14 +1,13 @@
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-
-import { clsx } from 'clsx'
 
 import { Badge } from '@/vibes/soul/primitives/badge'
 import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label'
 
 import { Compare } from './compare'
 
-export type CardProduct = {
+export interface CardProduct {
   id: string
   title: string
   href: string
@@ -19,7 +18,7 @@ export type CardProduct = {
   rating?: number
 }
 
-type Props = {
+interface Props {
   className?: string
   showCompare?: boolean
   compareLabel?: string

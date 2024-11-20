@@ -1,11 +1,10 @@
 'use client'
 
-import * as React from 'react'
-
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { clsx } from 'clsx'
 import { Check } from 'lucide-react'
+import * as React from 'react'
 
 import { ErrorMessage } from '@/vibes/soul/form/error-message'
 

@@ -1,6 +1,5 @@
-import * as React from 'react'
-
 import clsx from 'clsx'
+import * as React from 'react'
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode

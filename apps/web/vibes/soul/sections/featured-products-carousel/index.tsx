@@ -8,12 +8,12 @@ import {
   ProductsCarouselSkeleton,
 } from '@/vibes/soul/primitives/products-carousel'
 
-type Link = {
+interface Link {
   label: string
   href: string
 }
 
-type Props = {
+interface Props {
   title?: string
   description?: string
   cta?: Link

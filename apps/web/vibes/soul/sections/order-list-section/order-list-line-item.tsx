@@ -1,11 +1,10 @@
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import clsx from 'clsx'
-
 import { PriceLabel } from '@/vibes/soul/primitives/price-label'
 
-export type OrderListLineItem = {
+export interface OrderListLineItem {
   id: string
   title: string
   subtitle?: string
@@ -14,7 +13,7 @@ export type OrderListLineItem = {
   image?: { src: string; alt: string }
 }
 
-type Props = {
+interface Props {
   className?: string
   lineItem: OrderListLineItem
 }

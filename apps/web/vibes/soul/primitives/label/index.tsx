@@ -1,7 +1,6 @@
-import { ComponentPropsWithoutRef } from 'react'
-
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { clsx } from 'clsx'
+import { ComponentPropsWithoutRef } from 'react'
 
 export function Label({
   className,

@@ -1,7 +1,7 @@
 import { clsx } from 'clsx'
 import { AlertTriangle, Check, X } from 'lucide-react'
 
-type Props = {
+interface Props {
   variant: 'success' | 'warning' | 'error'
   message: string
 }

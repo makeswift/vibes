@@ -1,11 +1,10 @@
+import { ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { ArrowLeft } from 'lucide-react'
-
 import { Badge } from '@/vibes/soul/primitives/badge'
 
-type Summary = {
+interface Summary {
   lineItems: {
     label: string
     value: string
@@ -15,7 +14,7 @@ type Summary = {
   total: string
 }
 
-type Address = {
+interface Address {
   name?: string
   street1: string
   street2?: string
@@ -25,13 +24,13 @@ type Address = {
   country?: string
 }
 
-type Method = {
+interface Method {
   id: string
   name: string
   status: string
 }
 
-type ShipmentLineItem = {
+interface ShipmentLineItem {
   id: string
   title: string
   subtitle?: string
@@ -42,7 +41,7 @@ type ShipmentLineItem = {
   metadata?: { label: string; value: string }[]
 }
 
-type Shipment = {
+interface Shipment {
   id: string
   title: string
   address: Address
@@ -52,7 +51,7 @@ type Shipment = {
   lineItems: ShipmentLineItem[]
 }
 
-type Order = {
+interface Order {
   id: string
   title: string
   status: string
@@ -62,7 +61,7 @@ type Order = {
   summary: Summary
 }
 
-type Props = {
+interface Props {
   order: Order
   prevHref?: string
 }

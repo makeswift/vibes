@@ -1,6 +1,6 @@
 import { ForgotPasswordAction, ForgotPasswordForm } from './forgot-password-form'
 
-type Props = {
+interface Props {
   title?: string
   subtitle?: string
   action: ForgotPasswordAction

@@ -9,6 +9,7 @@ import {
 import { ChevronDown12 } from '@/icons/generated'
 
 import { Button } from '../ui/button'
+
 import { useBrandContext } from './brand-context'
 
 export function BrandSelect() {

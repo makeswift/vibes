@@ -1,6 +1,5 @@
-import Image from 'next/image'
-
 import { clsx } from 'clsx'
+import Image from 'next/image'
 
 import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
 

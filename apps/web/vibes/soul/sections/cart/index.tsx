@@ -1,13 +1,12 @@
 'use client'
 
-import Image from 'next/image'
-import { Suspense, startTransition, use, useActionState, useEffect, useOptimistic } from 'react'
-import { useFormStatus } from 'react-dom'
-
 import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
 import clsx from 'clsx'
 import { ArrowRight, Minus, Plus, Trash2 } from 'lucide-react'
+import Image from 'next/image'
+import { Suspense, startTransition, use, useActionState, useEffect, useOptimistic } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { Button } from '@/vibes/soul/primitives/button'
 import { ButtonLink } from '@/vibes/soul/primitives/button-link'
@@ -17,7 +16,7 @@ import { cartLineItemActionFormDataSchema } from './schema'
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
 
-export type CartLineItem = {
+export interface CartLineItem {
   id: string
   image: { alt: string; src: string }
   title: string
@@ -26,7 +25,7 @@ export type CartLineItem = {
   price: string
 }
 
-type CartSummary = {
+interface CartSummary {
   title?: string
   caption?: string
   subtotalLabel?: string
@@ -40,7 +39,7 @@ type CartSummary = {
   ctaLabel?: string
 }
 
-type CartEmptyState = {
+interface CartEmptyState {
   title: string
   subtitle: string
   cta: {
@@ -49,12 +48,12 @@ type CartEmptyState = {
   }
 }
 
-type CartState<LineItem extends CartLineItem> = {
+interface CartState<LineItem extends CartLineItem> {
   lineItems: LineItem[]
   lastResult: SubmissionResult | null
 }
 
-type CartProps<LineItem extends CartLineItem> = {
+interface CartProps<LineItem extends CartLineItem> {
   title?: string
   lineItems: LineItem[] | Promise<LineItem[]>
   summary: CartSummary

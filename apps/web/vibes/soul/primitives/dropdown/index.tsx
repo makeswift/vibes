@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,6 +9,7 @@ import {
 } from '@radix-ui/react-dropdown-menu'
 import { clsx } from 'clsx'
 import { ChevronDown } from 'lucide-react'
+import { useState } from 'react'
 
 import { Label } from '@/vibes/soul/primitives/label'
 

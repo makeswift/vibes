@@ -1,13 +1,17 @@
 'use client'
 
+import clsx from 'clsx'
 import Link from 'next/link'
 import React, { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
 
-import clsx from 'clsx'
-
 import { Popout12 } from '@/icons/generated'
 
-type Heading = { id: string; text: string; level: number; element: Element }
+interface Heading {
+  id: string
+  text: string
+  level: number
+  element: Element
+}
 
 interface Props {
   className?: string

@@ -1,11 +1,9 @@
 'use client'
 
-import { ComponentPropsWithoutRef } from 'react'
-import React from 'react'
-
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import React, { ComponentPropsWithoutRef } from 'react'
 
 import { Label } from '@/vibes/soul/primitives/label'
 

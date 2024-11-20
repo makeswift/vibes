@@ -2,7 +2,7 @@ import { ButtonLink } from '@/vibes/soul/primitives/button-link'
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
 
-type Link = {
+interface Link {
   label: string
   href: string
 }

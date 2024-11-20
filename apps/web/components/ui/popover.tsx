@@ -1,9 +1,8 @@
 'use client'
 
-import * as React from 'react'
-
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 import clsx from 'clsx'
+import * as React from 'react'
 
 const Popover = PopoverPrimitive.Root
 

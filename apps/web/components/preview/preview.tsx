@@ -10,7 +10,7 @@ import { PreviewProvider } from './preview-context'
 import { PreviewTabs } from './preview-tabs'
 
 interface Props {
-  componentName: string | { [key: string]: string }
+  componentName: string | Record<string, string>
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   vibe: Vibe
 }

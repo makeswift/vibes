@@ -24,7 +24,7 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ vibe: string; component: string; brand: string }>
-  searchParams: Promise<{ [key: string]: string | string[] }>
+  searchParams: Promise<Record<string, string | string[]>>
 }) {
   const { vibe: vibeSlug, brand: brandName, component: componentName } = await params
   const vibe = getVibe(vibeSlug)

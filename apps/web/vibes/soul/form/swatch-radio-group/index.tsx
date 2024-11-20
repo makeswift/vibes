@@ -1,9 +1,8 @@
-import Image from 'next/image'
-import * as React from 'react'
-
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import clsx from 'clsx'
 import { X } from 'lucide-react'
+import Image from 'next/image'
+import * as React from 'react'
 
 import { ErrorMessage } from '@/vibes/soul/form/error-message'
 import { Label } from '@/vibes/soul/form/label'

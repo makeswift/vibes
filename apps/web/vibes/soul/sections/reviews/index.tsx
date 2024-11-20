@@ -2,7 +2,7 @@ import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/
 import { Rating } from '@/vibes/soul/primitives/rating'
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
 
-type Props = {
+interface Props {
   reviews: {
     id: string
     rating: number

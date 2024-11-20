@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, createContext, useCallback, useContext, useSt
 
 const MIN_WIDTH = 320
 
-type Context = {
+interface Context {
   width: number | null
   zoom: number
   isDragging: boolean
