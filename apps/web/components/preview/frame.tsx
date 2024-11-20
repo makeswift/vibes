@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 
 import { ResizeX } from '@/icons/generated'
@@ -54,6 +54,7 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
       >
         {activeBrand && (
           <iframe
+            title={`${activeBrand.name} preview`}
             ref={iframe}
             className="h-full w-full bg-transparent"
             src={`/preview/${vibeSlug}/${componentName}/${activeBrand.name}`}
@@ -84,6 +85,7 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
             const nextCursorX = cursorStart.current[0] + e.movementX
             const nextWidth = widthStart.current + e.movementX * 2
             const nextCursor = [
+              // eslint-disable-next-line no-nested-ternary
               nextCursorX > windowWidth
                 ? nextCursorX % windowWidth
                 : nextCursorX < 0

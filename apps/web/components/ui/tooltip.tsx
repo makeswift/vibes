@@ -1,7 +1,7 @@
 'use client'
 
 import * as TooltipRadix from '@radix-ui/react-tooltip'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { Info } from 'lucide-react'
 import { ReactNode } from 'react'
 import * as React from 'react'

@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import { Button } from '@/vibes/soul/primitives/button'
 
 export default function Preview() {

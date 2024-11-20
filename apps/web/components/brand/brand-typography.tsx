@@ -22,7 +22,7 @@ const sizes = [
 ] as const
 
 export function BrandTypography({ brands, brandName }: Props) {
-  const brand = brands.find(brand => brand.name === brandName)
+  const brand = brands.find(b => b.name === brandName)
 
   if (!brand) return <div>Brand: {brandName} not found</div>
 
@@ -40,7 +40,8 @@ export function BrandTypography({ brands, brandName }: Props) {
             <div
               className="mb-1 truncate text-foreground"
               style={{
-                fontSize: brand.cssVars[size.variable] ? `var(${size.variable})` : size.fontSize,
+                fontSize:
+                  brand.cssVars[size.variable] != null ? `var(${size.variable})` : size.fontSize,
                 lineHeight: size.lineHeight,
               }}
             >

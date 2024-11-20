@@ -2,8 +2,8 @@
 
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import clsx from 'clsx'
-import { useActionState, useState } from 'react'
+import { clsx } from 'clsx'
+import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 
 import { submitLead } from '@/actions/submit-lead'
@@ -12,7 +12,6 @@ import { Arrow, Check, Loader } from '@/icons/generated'
 import { submitLeadSchema } from '@/lib/schema'
 
 export function Form({ intent }: { intent?: string }) {
-  const [shake, setShake] = useState(false)
   const [lastResult, action] = useActionState(submitLead, undefined)
   const [form, fields] = useForm({
     lastResult,
@@ -21,14 +20,7 @@ export function Form({ intent }: { intent?: string }) {
     shouldRevalidate: 'onInput',
     constraint: getZodConstraint(submitLeadSchema),
     onValidate({ formData }) {
-      const submission = parseWithZod(formData, { schema: submitLeadSchema })
-
-      if (submission.status === 'error') {
-        setShake(true)
-        setTimeout(() => setShake(false), 1000)
-      }
-
-      return submission
+      return parseWithZod(formData, { schema: submitLeadSchema })
     },
   })
   const success = form.status === 'success'

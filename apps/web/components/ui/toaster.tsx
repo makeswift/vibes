@@ -19,8 +19,8 @@ export function Toaster() {
         return (
           <Toast key={id} {...props}>
             <div className="pattern-shadow pattern-shadow-md font-docs-sans grid w-full gap-1 border border-foreground bg-background p-4 pr-6 text-foreground">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && <ToastDescription>{description}</ToastDescription>}
+              {title != null && <ToastTitle>{title}</ToastTitle>}
+              {description != null && <ToastDescription>{description}</ToastDescription>}
             </div>
             {action}
             <ToastClose />

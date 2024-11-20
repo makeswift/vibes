@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode, useEffect, useState } from 'react'
@@ -65,6 +65,7 @@ const ScrollButton: React.FC<{ to: string; children: React.ReactNode; className?
   }
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div onClick={handleClick} className={clsx('cursor-pointer', className)}>
       {children}
     </div>
@@ -121,6 +122,7 @@ export default function Home() {
   return (
     <div
       className="w-full overflow-clip bg-white text-black"
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       style={{ '--foreground': '0 0% 0%', '--background': '0 0% 100%' } as React.CSSProperties}
     >
       <header

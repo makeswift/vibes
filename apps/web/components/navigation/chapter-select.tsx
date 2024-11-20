@@ -1,7 +1,7 @@
 'use client'
 
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

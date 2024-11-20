@@ -1,4 +1,3 @@
-import localFont from 'next/font/local'
 import { z } from 'zod'
 
 export type NonEmptyArray<T> = [T, ...T[]]

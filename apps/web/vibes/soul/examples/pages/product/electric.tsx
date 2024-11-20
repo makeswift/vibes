@@ -1,5 +1,3 @@
-import { subscribe } from 'diagnostics_channel'
-
 import { getProducts } from '@/vibes/soul/data'
 import { locales } from '@/vibes/soul/data/locales'
 import { action as subscribeAction } from '@/vibes/soul/examples/primitives/inline-email-form/actions'

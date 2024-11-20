@@ -7,15 +7,13 @@ import { getVibe } from '@/vibes/utils'
 
 export async function generateStaticParams() {
   return Object.values(Vibes).flatMap((vibe: Vibe) =>
-    vibe.components
-      .filter(c => c.component !== null)
-      .flatMap(component =>
-        vibe.brands.map(brand => ({
-          vibe: vibe.slug,
-          component: component.name,
-          brand: brand.name,
-        }))
-      )
+    vibe.components.flatMap(component =>
+      vibe.brands.map(brand => ({
+        vibe: vibe.slug,
+        component: component.name,
+        brand: brand.name,
+      }))
+    )
   )
 }
 

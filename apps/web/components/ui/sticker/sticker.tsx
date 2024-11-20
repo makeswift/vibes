@@ -1,4 +1,5 @@
-import clsx from 'clsx'
+/* eslint-disable no-nested-ternary */
+import { clsx } from 'clsx'
 import { CSSProperties } from 'react'
 
 import styles from './sticker.module.css'
@@ -72,6 +73,7 @@ export default function Sticker({
         'scale-90 md:scale-100'
       )}
       style={
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         {
           ...style,
           '--width': `${width}px`,

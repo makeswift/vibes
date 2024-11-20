@@ -11,7 +11,7 @@ import {
   Heart,
   HelpCircle,
   Home,
-  Image,
+  Image as ImageIcon,
   Lock,
   Mail,
   MapPin,
@@ -48,7 +48,7 @@ function IconsPreview({
         <Heart strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
         <HelpCircle strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
         <Home strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Image strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
+        <ImageIcon strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
         <Lock strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
         <Mail strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
         <MapPin strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />

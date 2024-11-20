@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { use } from 'react'
 
 import { ProductListTransitionContext } from './context'

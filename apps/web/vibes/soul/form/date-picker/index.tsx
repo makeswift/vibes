@@ -30,7 +30,7 @@ const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
   ) => {
     // State to manage the selected date
     const [date, setDate] = useState<Date | undefined>(
-      defaultValue ? new Date(defaultValue) : undefined
+      defaultValue != null ? new Date(defaultValue) : undefined
     )
 
     // Format the selected date for display
@@ -64,7 +64,7 @@ const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
             <Calendar
               disabled={disabledDays}
               mode="single"
-              onSelect={onSelect || setDate}
+              onSelect={onSelect ?? setDate}
               selected={selected ?? date}
             />
           </PopoverPrimitive.Content>

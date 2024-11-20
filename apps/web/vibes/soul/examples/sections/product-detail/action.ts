@@ -85,7 +85,7 @@ export const fields = [
       },
     ],
   },
-] as Field[]
+] satisfies Field[]
 
 export async function action(
   prevState: { fields: Field[]; lastResult: SubmissionResult | null },

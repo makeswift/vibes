@@ -29,6 +29,7 @@ interface Props
 
 export function GroupLink({ chapterSlug, group, ...rest }: Props) {
   const pathname = usePathname()
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const href = `/docs/${chapterSlug}/${group.pages[0]!.slug}`
 
   return (

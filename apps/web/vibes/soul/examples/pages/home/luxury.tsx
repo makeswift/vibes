@@ -103,8 +103,8 @@ export default function Preview() {
         title={featuredProducts.title}
         description={featuredProducts.description}
         cta={{
-          label: featuredProducts.cta.label ?? '',
-          href: featuredProducts.cta.href ?? '',
+          label: featuredProducts.cta.label,
+          href: featuredProducts.cta.href,
         }}
         products={featuredProducts.products}
       />

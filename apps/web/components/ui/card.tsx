@@ -1,7 +1,7 @@
-import clsx from 'clsx'
-import React from 'react'
+import { clsx } from 'clsx'
+import React, { ComponentPropsWithoutRef } from 'react'
 
-interface Props extends React.ComponentPropsWithoutRef<'div'> {
+interface Props extends ComponentPropsWithoutRef<'div'> {
   children: React.ReactNode
   className?: string
 }

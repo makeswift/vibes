@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { default as NextLink } from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 
@@ -6,7 +6,7 @@ interface Props extends ComponentPropsWithoutRef<typeof NextLink> {
   active?: boolean
 }
 
-export function Link({ active, className, ...rest }: Props) {
+export function Link({ active = false, className, ...rest }: Props) {
   return (
     <NextLink
       {...rest}

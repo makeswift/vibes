@@ -1,4 +1,4 @@
-import { Navigation, Vibe } from './schema'
+import { Vibe } from './schema'
 
 import * as Vibes from '.'
 

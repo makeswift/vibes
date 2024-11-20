@@ -16,10 +16,11 @@ function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) 
   return (
     <>
       {items.map((item, index, arr) => {
-        const page = pages.find(page => page.component === item)
+        const page = pages.find(p => p.component === item)
 
         return (
           <Fragment key={index}>
+            {/* eslint-disable-next-line no-nested-ternary */}
             {arr.length > 1 && index > 0 ? (index < arr.length - 1 ? ', ' : ' and ') : ''}
             <Link href={page ? `/docs/${vibe.slug}/${page.slug}` : '#'}>{item}</Link>
           </Fragment>
@@ -31,7 +32,7 @@ function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) 
 }
 
 export function Installation({ vibe, componentName }: { vibe: Vibe; componentName: string }) {
-  const component = vibe.components.find(component => component.name === componentName)
+  const component = vibe.components.find(c => c.name === componentName)
 
   if (!component) return null
 

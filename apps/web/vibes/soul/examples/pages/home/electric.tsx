@@ -224,8 +224,8 @@ export default function Preview() {
         title={featuredProducts.title}
         description={featuredProducts.description}
         cta={{
-          label: featuredProducts.cta.label ?? '',
-          href: featuredProducts.cta.href ?? '',
+          label: featuredProducts.cta.label,
+          href: featuredProducts.cta.href,
         }}
         products={featuredProducts.products}
       />
@@ -238,7 +238,7 @@ export default function Preview() {
         title="New Arrivals"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         cta={{ label: 'See All', href: '#' }}
-        products={newArrivals ?? featuredProducts.products}
+        products={newArrivals}
       />
       <Feature
         image={{

@@ -112,7 +112,7 @@ export interface SchemaRawShape {
 }
 
 export function schema(fields: Field[]): z.ZodObject<SchemaRawShape> {
-  const schema: SchemaRawShape = {
+  const shape: SchemaRawShape = {
     id: z.string(),
     quantity: z.number().min(1),
   }
@@ -126,17 +126,17 @@ export function schema(fields: Field[]): z.ZodObject<SchemaRawShape> {
         if (field.min != null) fieldSchema = fieldSchema.min(field.min)
         if (field.max != null) fieldSchema = fieldSchema.max(field.max)
 
-        schema[field.name] = fieldSchema
+        shape[field.name] = fieldSchema
         break
       default:
         fieldSchema = z.string()
 
-        schema[field.name] = fieldSchema
+        shape[field.name] = fieldSchema
         break
     }
 
-    if (!field.required) schema[field.name] = fieldSchema.optional()
+    if (field.required !== true) shape[field.name] = fieldSchema.optional()
   })
 
-  return z.object(schema)
+  return z.object(shape)
 }

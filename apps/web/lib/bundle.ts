@@ -43,7 +43,7 @@ export async function fetchBundleSize(packageName: string): Promise<Bundlephobia
   )
 
   if (!response.ok) {
-    if (response.headers.get('content-type')?.includes('application/json')) {
+    if (response.headers.get('content-type')?.includes('application/json') === true) {
       const body = await response.json()
 
       console.error(body)

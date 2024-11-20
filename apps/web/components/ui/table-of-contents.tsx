@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import Link from 'next/link'
 import React, { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react'
 

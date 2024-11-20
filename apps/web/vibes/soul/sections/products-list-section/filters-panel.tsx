@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { ArrowRight } from 'lucide-react'
 import {
   UseQueryStatesKeysMap,
@@ -82,7 +82,7 @@ export function FiltersPanelInner({
 }: Props) {
   const filters = useStreamable(streamableFilters)
   const [params, setParams] = useQueryStates(
-    filters.reduce((acc, filter) => {
+    filters.reduce<UseQueryStatesKeysMap>((acc, filter) => {
       switch (filter.type) {
         case 'range':
           return {
@@ -94,7 +94,7 @@ export function FiltersPanelInner({
         default:
           return { ...acc, [filter.paramName]: parseAsArrayOf(parseAsString) }
       }
-    }, {} as UseQueryStatesKeysMap),
+    }, {}),
     { shallow: false, history: 'push' }
   )
   const [, startTransition] = use(ProductListTransitionContext)
@@ -280,6 +280,7 @@ function ToggleGroupSkeleton({ options, seed = 0 }: { options: number; seed?: nu
         return (
           <div
             key={i}
+            // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
             style={{ '--width': `${width}ch` } as React.CSSProperties}
             className="h-12 w-[var(--width)] animate-pulse rounded-full bg-contrast-100 px-4"
           />

@@ -1,5 +1,5 @@
-import clsx from 'clsx'
-import { CodeToHastOptions, ShikiTransformer, codeToHtml, createCssVariablesTheme } from 'shiki'
+import { clsx } from 'clsx'
+import { CodeToHastOptions, ShikiTransformer, codeToHtml } from 'shiki'
 
 import { theme, transformers } from '@/lib/shiki'
 
@@ -36,7 +36,7 @@ export async function CodeBlock({
             this.addClassToHast(node, 'show-line-numbers')
           }
         },
-      } as ShikiTransformer,
+      } satisfies ShikiTransformer,
     ],
   })
 

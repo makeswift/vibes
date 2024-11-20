@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { ComponentPropsWithoutRef } from 'react'
 import Zoom from 'react-medium-image-zoom'
 
 import { Times16 } from '@/icons/generated'

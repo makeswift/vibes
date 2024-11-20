@@ -5,7 +5,7 @@ import { Filter } from '@/vibes/soul/sections/products-list-section/filters-pane
 import { Option } from '@/vibes/soul/sections/products-list-section/sorting'
 
 export default function Preview() {
-  const products = new Promise<CardProduct[]>(res => {
+  const productsPromise = new Promise<CardProduct[]>(res => {
     setTimeout(() => {
       res(getProducts('Electric'))
     }, 5000)
@@ -36,7 +36,7 @@ export default function Preview() {
       <ProductsListSection
         title="Plants"
         breadcrumbs={breadcrumbs}
-        products={products}
+        products={productsPromise}
         totalCount={totalCount}
         filters={filters}
         sortOptions={sortOptions}

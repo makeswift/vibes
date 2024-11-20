@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
 
 import { SoulBrandName } from '../brands'
@@ -406,38 +408,6 @@ const products: ProductCatalog = {
   ],
 }
 
-// Define filter option types
-interface FilterOption {
-  value: string
-  label: string
-}
-
-// Brand-specific filter types
-interface ElectricFilters {
-  features?: ('air-purifying' | 'indoor' | 'pet-friendly')[]
-  light?: 'bright-indirect' | 'bright-direct' | 'low-light'
-  size?: 'sm' | 'md' | 'lg'
-  rating?: number
-}
-
-interface LuxuryFilters {
-  color?: ('black' | 'brown' | 'red')[]
-  size?: string[] // Shoe sizes
-  rating?: number
-}
-
-interface WarmFilters {
-  color?: ('blue' | 'green' | 'red')[]
-  size?: 'sm' | 'md' | 'lg'
-  rating?: number
-}
-
-interface BrandFilters {
-  Electric: ElectricFilters
-  Luxury: LuxuryFilters
-  Warm: WarmFilters
-}
-
 // Define the filter types based on search params
 interface FilterParams {
   features?: string[] | null
@@ -477,46 +447,43 @@ export async function getFilters<T extends SoulBrandName>(brand: T): Promise<Fil
   })
 
   // Extract unique values from products
-  const uniqueValues = brandProducts.reduce(
-    (acc, product) => {
-      // Handle features (Electric only)
-      if ('features' in product) {
-        acc.features = new Set([...(acc.features || []), ...product.features])
-      }
+  const uniqueValues = brandProducts.reduce<Record<string, Set<string>>>((acc, product) => {
+    // Handle features (Electric only)
+    if ('features' in product) {
+      acc.features = new Set([...(acc.features ?? []), ...product.features])
+    }
 
-      // Handle light (Electric only)
-      if ('light' in product) {
-        acc.light = new Set([...(acc.light || []), product.light])
-      }
+    // Handle light (Electric only)
+    if ('light' in product) {
+      acc.light = new Set([...(acc.light ?? []), product.light])
+    }
 
-      // Handle colors (Luxury and Warm)
-      if ('color' in product) {
-        acc.colors = new Set([...(acc.colors || []), ...product.color])
-      }
+    // Handle colors (Luxury and Warm)
+    if ('color' in product) {
+      acc.colors = new Set([...(acc.colors ?? []), ...product.color])
+    }
 
-      // Handle sizes (all brands)
-      if ('size' in product) {
-        const sizes = Array.isArray(product.size) ? product.size : [product.size]
-        acc.sizes = new Set([...(acc.sizes || []), ...sizes])
-      }
+    // Handle sizes (all brands)
+    if ('size' in product) {
+      const sizes = Array.isArray(product.size) ? product.size : [product.size]
+      acc.sizes = new Set([...(acc.sizes ?? []), ...sizes])
+    }
 
-      return acc
-    },
-    {} as Record<string, Set<string>>
-  )
+    return acc
+  }, {})
 
   // Add brand-specific filters
   if (brand === 'Electric') {
-    if (uniqueValues.features?.size) {
+    if (uniqueValues.features?.size != null) {
       filters.push(buildToggleGroupFilter('features', 'Features', uniqueValues.features))
     }
-    if (uniqueValues.light?.size) {
+    if (uniqueValues.light?.size != null) {
       filters.push(buildToggleGroupFilter('light', 'Light Requirements', uniqueValues.light))
     }
   }
 
   if (brand === 'Luxury' || brand === 'Warm') {
-    if (uniqueValues.colors?.size) {
+    if (uniqueValues.colors?.size != null) {
       filters.push(
         buildToggleGroupFilter(
           'color',
@@ -529,7 +496,7 @@ export async function getFilters<T extends SoulBrandName>(brand: T): Promise<Fil
   }
 
   // Add size filter for all brands
-  if (uniqueValues.sizes?.size) {
+  if (uniqueValues.sizes?.size != null) {
     filters.push(buildToggleGroupFilter('size', 'Size', uniqueValues.sizes, s => s.toUpperCase()))
   }
 
@@ -592,17 +559,17 @@ export async function getProducts<T extends SoulBrandName>(
         }
       }
 
-      if (filterParams.rating) {
+      if (filterParams.rating != null) {
         conditions.push(product.rating >= filterParams.rating)
       }
 
-      if (filterParams.price_min || filterParams.price_max) {
+      if (filterParams.price_min != null || filterParams.price_max != null) {
         const productPrice = parseFloat(product.price.replace(/[^0-9.]/g, ''))
 
-        if (filterParams.price_min) {
+        if (filterParams.price_min != null) {
           conditions.push(productPrice >= filterParams.price_min)
         }
-        if (filterParams.price_max) {
+        if (filterParams.price_max != null) {
           conditions.push(productPrice <= filterParams.price_max)
         }
       }

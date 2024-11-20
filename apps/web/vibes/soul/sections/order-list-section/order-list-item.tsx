@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import { Badge } from '@/vibes/soul/primitives/badge'
 import { ButtonLink } from '@/vibes/soul/primitives/button-link'

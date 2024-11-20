@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { CircleAlert } from 'lucide-react'
 
 export function ErrorMessage({

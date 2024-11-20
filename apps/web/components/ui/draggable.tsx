@@ -1,6 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import {
   ComponentPropsWithoutRef,
   Dispatch,
@@ -38,7 +38,9 @@ export default function Draggable({ className, children, style, ...rest }: Props
   }, [])
   const onTouchMove = useCallback((e: TouchEvent) => {
     setPosition([
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       positionStart.current[0] + e.touches[0]!.clientX - pointerStart.current[0],
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       positionStart.current[1] + e.touches[0]!.clientY - pointerStart.current[1],
     ])
   }, [])
@@ -80,6 +82,7 @@ export default function Draggable({ className, children, style, ...rest }: Props
         })
       }}
       onTouchStart={e => {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         pointerStart.current = [e.touches[0]!.clientX, e.touches[0]!.clientY]
         positionStart.current = position
 
@@ -112,7 +115,7 @@ interface Context {
   setStack: Dispatch<SetStateAction<number>>
 }
 
-const DraggableContext = createContext<Context>({ stack: 0, setStack: () => {} })
+const DraggableContext = createContext<Context>({ stack: 0, setStack: () => void 0 })
 
 export function useDraggable() {
   return useContext(DraggableContext)

@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import * as React from 'react'
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {

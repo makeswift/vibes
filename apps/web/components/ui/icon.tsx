@@ -18,7 +18,5 @@ export const Icons = {
 export function Icon({ name = 'Cube', ...rest }: Props) {
   const Component = Icons[name]
 
-  if (!Component) return null
-
   return <Component {...rest} />
 }

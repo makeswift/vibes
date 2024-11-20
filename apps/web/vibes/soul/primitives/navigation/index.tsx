@@ -441,22 +441,22 @@ function SearchForm<S extends SearchResult>({
   })
   const [isDebouncing, setIsDebouncing] = useState(false)
   const debouncedOnChange = useMemo(() => {
-    const debounced = debounce((query: string) => {
+    const debounced = debounce((q: string) => {
       setIsDebouncing(false)
 
       const formData = new FormData()
 
-      formData.append(searchParamName, query)
+      formData.append(searchParamName, q)
 
       startSearching(() => {
         formAction(formData)
       })
     }, 300)
 
-    return (query: string) => {
+    return (q: string) => {
       setIsDebouncing(true)
 
-      debounced(query)
+      debounced(q)
     }
   }, [formAction, searchParamName])
   const isPending = isSearching || isDebouncing
@@ -534,7 +534,7 @@ function SearchResults({
     return (
       <div className="flex flex-col border-t border-contrast-100 p-6">
         <h1 className="text-2xl font-medium text-foreground">
-          {emptySearchTitle} '{query}'.
+          {emptySearchTitle} &apos;{query}&apos;.
         </h1>
         <p className="text-contrast-500">{emptySearchSubtitle}</p>
       </div>

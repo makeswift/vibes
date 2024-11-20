@@ -11,7 +11,7 @@ import { Footer } from '@/vibes/soul/sections/footer'
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
 
 export default async function Preview() {
-  const products = getProducts('Electric')
+  const productsPromise = getProducts('Electric')
   const sortOptions = getSortOptions()
   const filters = getFilters('Electric')
 
@@ -34,12 +34,12 @@ export default async function Preview() {
       <ProductsListSection
         breadcrumbs={breadcrumbs}
         title="All Plants"
-        products={products}
-        totalCount={products.then(products => products.length)}
+        products={productsPromise}
+        totalCount={productsPromise.then(products => products.length)}
         sortOptions={sortOptions}
         filters={filters}
       />
-      <FeaturedProductsCarousel title="Recently Viewed" products={products} />
+      <FeaturedProductsCarousel title="Recently Viewed" products={productsPromise} />
       <Footer sections={footerLinks} logo={logo} copyright={copyright} />
     </>
   )

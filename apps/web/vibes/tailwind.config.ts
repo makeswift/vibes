@@ -1,6 +1,8 @@
+import containerQueries from '@tailwindcss/container-queries'
 import type { Config } from 'tailwindcss'
+import animate from 'tailwindcss-animate'
 
-const config = {
+export default {
   content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './vibes/**/*.{ts,tsx}'],
   theme: {
     extend: {
@@ -155,7 +157,5 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/container-queries')],
+  plugins: [animate, containerQueries],
 } satisfies Config
-
-export default config
