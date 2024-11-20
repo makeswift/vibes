@@ -29,10 +29,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-
       - name: Lint
         if: false
         run: pnpm lint
 
       - name: Format
         run: pnpm format-check
+
+      - name: Typecheck
+        run: pnpm typecheck
