@@ -1,12 +1,13 @@
 {
   "extends": [
-    "plugin:@typescript-eslint/type-checked",
+    "plugin:@typescript-eslint/strict",
     "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:jsx-a11y/recommended",
     "next/core-web-vitals"
   ],
+  "parser": "@typescript-eslint/parser",
   "settings": {
     "import/resolver": {
       "typescript": true
