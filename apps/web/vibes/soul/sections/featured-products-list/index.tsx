@@ -1,3 +1,4 @@
+import { Streamable } from '@/vibes/soul/lib/streamable'
 import { ButtonLink } from '@/vibes/soul/primitives/button-link'
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
@@ -16,7 +17,7 @@ export function FeaturedProductsList({
   title: string
   description?: string
   cta?: Link
-  products: ListProduct[]
+  products: Streamable<ListProduct[]>
 }) {
   return (
     <StickySidebarLayout
