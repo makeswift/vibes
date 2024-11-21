@@ -31,9 +31,10 @@ async function ReviewsImpl({
   emptyStateMessage,
   reviewsLabel = 'Reviews',
 }: Readonly<Props>) {
-  const reviews = await mapStreamable(streamableReviews, resolvedReviews => resolvedReviews)
+  const reviews = await streamableReviews
 
-  if (reviews.length === 0) return <ReviewsEmptyState message={emptyStateMessage} />
+  if (reviews.length === 0)
+    return <ReviewsEmptyState message={emptyStateMessage} reviewsLabel={reviewsLabel} />
 
   return (
     <StickySidebarLayout
@@ -156,7 +157,7 @@ export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: { reviewsLabel?: s
 
 export function Reviews({ reviewsLabel = 'Reviews', ...props }: Props) {
   return (
-    <Suspense fallback={<ReviewsSkeleton />}>
+    <Suspense fallback={<ReviewsSkeleton reviewsLabel={reviewsLabel} />}>
       <ReviewsImpl {...props} reviewsLabel={reviewsLabel} />
     </Suspense>
   )
