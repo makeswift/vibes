@@ -398,7 +398,7 @@ export default function Home() {
             <p className="mb-8 text-balance px-2 text-2xl leading-snug text-black sm:text-3xl md:mb-12 lg:text-4xl">
               Stunning React components for commerce and marketing, optimized for fashion and
               function.
-              <span className="mt-4 block font-bold md:mt-6">Coming November 2024.</span>
+              <span className="mt-4 block font-bold md:mt-6">Coming soon.</span>
             </p>
 
             <div className="relative z-10 w-full sm:w-auto">
