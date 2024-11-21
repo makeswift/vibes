@@ -11,11 +11,13 @@ export function Subscribe({
   image,
   title,
   description,
+  placeholder,
 }: {
   action: Action<SubmissionResult | null, FormData>
   image?: { src: string; alt: string }
   title: string
-  description: string
+  description?: string
+  placeholder?: string
 }) {
   return (
     <section className="bg-primary-shadow @container">
@@ -47,7 +49,7 @@ export function Subscribe({
               </h2>
               <p className="text-primary-highlight opacity-75">{description}</p>
             </div>
-            <InlineEmailForm className="flex-1" action={action} />
+            <InlineEmailForm className="flex-1" action={action} placeholder={placeholder} />
           </div>
         </div>
       </div>
