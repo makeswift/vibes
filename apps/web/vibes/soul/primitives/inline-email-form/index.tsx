@@ -48,7 +48,7 @@ export function InlineEmailForm({
   const { errors = [] } = fields.email
 
   return (
-    <form {...getFormProps(form)} className={className} action={formAction}>
+    <form {...getFormProps(form)} className={clsx('space-y-2', className)} action={formAction}>
       <div
         className={clsx(
           'relative rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
