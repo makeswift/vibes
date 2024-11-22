@@ -1,6 +1,10 @@
 import { Streamable } from '@/vibes/soul/lib/streamable'
 import { ButtonLink } from '@/vibes/soul/primitives/button-link'
-import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
+import {
+  ListProduct,
+  ProductsList,
+  ProductsListSkeleton,
+} from '@/vibes/soul/primitives/products-list'
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
 
 interface Link {
@@ -42,6 +46,42 @@ export function FeaturedProductsList({
       sidebarSize="1/3"
     >
       <ProductsList products={products} className="flex-1" />
+    </StickySidebarLayout>
+  )
+}
+
+export function FeaturedProductsListSkeleton({
+  title,
+  description,
+  cta,
+}: {
+  title: string
+  description?: string
+  cta?: Link
+}) {
+  return (
+    <StickySidebarLayout
+      sidebar={
+        <>
+          <h2 className="mb-3 font-heading text-4xl font-medium leading-none text-foreground @4xl:text-5xl">
+            {title}
+          </h2>
+          {description != null && description !== '' && (
+            <p className="mb-8 max-w-xl text-lg font-light leading-normal text-foreground">
+              {description}
+            </p>
+          )}
+
+          {cta?.href != null && cta.href !== '' && cta.label !== '' && (
+            <ButtonLink href={cta.href} variant="secondary">
+              {cta.label}
+            </ButtonLink>
+          )}
+        </>
+      }
+      sidebarSize="1/3"
+    >
+      <ProductsListSkeleton />
     </StickySidebarLayout>
   )
 }
