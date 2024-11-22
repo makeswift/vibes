@@ -1,11 +1,9 @@
 import { Suspense } from 'react'
 
-import { Streamable } from '@/vibes/soul/lib/streamable'
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable'
 import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination'
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
-
-import { mapStreamable } from '../../lib/streamable/server'
 
 import { ProductListTransitionProvider } from './context'
 import { Filter, FiltersPanel } from './filters-panel'
@@ -99,7 +97,9 @@ export function ProductsListSection({
                 compareProducts={compareProducts}
                 compareAction={compareAction}
               />
-              {mapStreamable(paginationInfo, info => info && <CursorPagination info={info} />)}
+              <Stream value={paginationInfo}>
+                {info => info && <CursorPagination info={info} />}
+              </Stream>
             </ProductListContainer>
           </div>
         </div>
