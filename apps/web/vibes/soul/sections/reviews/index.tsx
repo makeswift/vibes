@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
 
-import { Streamable } from '@/vibes/soul/lib/streamable'
-import { mapStreamable } from '@/vibes/soul/lib/streamable/server'
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable'
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination'
 import { Rating } from '@/vibes/soul/primitives/rating'
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
@@ -40,7 +39,8 @@ async function ReviewsImpl({
     <StickySidebarLayout
       sidebar={
         <>
-          <Suspense
+          <Stream
+            value={streamableTotalCount}
             fallback={
               <div className="animate-pulse">
                 <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
@@ -49,13 +49,14 @@ async function ReviewsImpl({
               </div>
             }
           >
-            {mapStreamable(streamableTotalCount, totalCount => (
+            {totalCount => (
               <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
                 {reviewsLabel} <span className="text-contrast-300">{totalCount}</span>
               </h2>
-            ))}
-          </Suspense>
-          <Suspense
+            )}
+          </Stream>
+          <Stream
+            value={streamableAverageRating}
             fallback={
               <div className="animate-pulse">
                 <div className="mb-2 h-[1lh] w-[3ch] rounded-md bg-contrast-100 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl" />
@@ -63,15 +64,15 @@ async function ReviewsImpl({
               </div>
             }
           >
-            {mapStreamable(streamableAverageRating, averageRating => (
+            {averageRating => (
               <>
                 <div className="mb-2 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl">
                   {averageRating}
                 </div>
                 <Rating rating={averageRating} showRating={false} />
               </>
-            ))}
-          </Suspense>
+            )}
+          </Stream>
         </>
       }
       sidebarSize="medium"
@@ -88,13 +89,11 @@ async function ReviewsImpl({
           )
         })}
 
-        <Suspense>
-          {mapStreamable(
-            streamablePaginationInfo,
-            paginationInfo =>
-              paginationInfo && <CursorPagination info={paginationInfo} scroll={false} />
-          )}
-        </Suspense>
+        <Stream value={streamablePaginationInfo}>
+          {paginationInfo =>
+            paginationInfo && <CursorPagination info={paginationInfo} scroll={false} />
+          }
+        </Stream>
       </div>
     </StickySidebarLayout>
   )

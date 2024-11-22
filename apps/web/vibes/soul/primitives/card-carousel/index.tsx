@@ -1,5 +1,4 @@
 import { clsx } from 'clsx'
-import { Suspense } from 'react'
 
 import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card'
 import {
@@ -10,8 +9,7 @@ import {
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel'
 
-import { Streamable } from '../../lib/streamable'
-import { mapStreamable } from '../../lib/streamable/server'
+import { Stream, Streamable } from '../../lib/streamable'
 
 export type Card = CardProps & {
   id: string
@@ -33,10 +31,11 @@ export function CardCarousel({
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-10">
-        <Suspense
+        <Stream
+          value={streamableCards}
           fallback={<CardCarouselSkeleton className={className} message={emptyStateMessage} />}
         >
-          {mapStreamable(streamableCards, cards => {
+          {cards => {
             if (cards.length === 0) {
               return <CardCarouselSkeleton className={className} message={emptyStateMessage} />
             }
@@ -49,8 +48,8 @@ export function CardCarousel({
                 <Card {...card} textContrast={textContrast} />
               </CarouselItem>
             ))
-          })}
-        </Suspense>
+          }}
+        </Stream>
       </CarouselContent>
       <div className="flex w-full items-center justify-between">
         <CarouselScrollbar />
