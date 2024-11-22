@@ -1,5 +1,8 @@
 import { getProducts } from '@/vibes/soul/data'
-import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list'
+import {
+  FeaturedProductsList,
+  FeaturedProductsListSkeleton,
+} from '@/vibes/soul/sections/featured-products-list'
 
 export const featuredProducts = {
   title: 'Our plants',
@@ -13,14 +16,25 @@ export const featuredProducts = {
 
 export default function Preview() {
   return (
-    <FeaturedProductsList
-      title={featuredProducts.title}
-      description={featuredProducts.description}
-      cta={{
-        label: featuredProducts.cta.label,
-        href: featuredProducts.cta.href,
-      }}
-      products={featuredProducts.products}
-    />
+    <>
+      <FeaturedProductsList
+        title={featuredProducts.title}
+        description={featuredProducts.description}
+        cta={{
+          label: featuredProducts.cta.label,
+          href: featuredProducts.cta.href,
+        }}
+        products={featuredProducts.products}
+      />
+
+      <FeaturedProductsListSkeleton
+        title={featuredProducts.title}
+        description={featuredProducts.description}
+        cta={{
+          label: featuredProducts.cta.label,
+          href: featuredProducts.cta.href,
+        }}
+      />
+    </>
   )
 }
