@@ -395,7 +395,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </ul>
 
         <div className="flex flex-1 items-center justify-end transition-colors duration-300">
-          {searchAction && (
+          {searchAction ? (
             <Popover.Root onOpenChange={setIsSearchOpen} open={isSearchOpen}>
               <Popover.Anchor className="absolute left-0 right-0 top-full" />
               <Popover.Trigger asChild>
@@ -425,6 +425,14 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>
+          ) : (
+            <Link
+              aria-label="Search"
+              className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
+              href={accountHref}
+            >
+              <Search size={20} strokeWidth={1} />
+            </Link>
           )}
 
           <Link
