@@ -27,6 +27,7 @@ out/
 build
 dist
 sitemap*.xml
+robots.txt
 
 # Debug
 npm-debug.log*
