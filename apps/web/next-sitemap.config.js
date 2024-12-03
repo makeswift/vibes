@@ -1,9 +1,9 @@
 /** @type {import('next-sitemap').IConfig} */
 
-const dev = process.env.NODE_ENV !== 'production'
+const siteUrl = process.env.VERCEL_URL || 'localhost:3000'
 
 module.exports = {
-  siteUrl: dev ? 'http://localhost:3000' : 'https://vibes.site/',
+  siteUrl,
   generateRobotsTxt: true,
   transform: async (config, path) => {
     // ignore preview pages
