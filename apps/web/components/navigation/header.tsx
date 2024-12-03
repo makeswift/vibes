@@ -67,7 +67,7 @@ export function Header({ chapters, chapterSlug }: Props) {
           <DocSearch
             appId="Q9L04M9AMF"
             indexName="vibes"
-            apiKey="ef510190238e6bf2ae942046fd83e4b9"
+            apiKey="931574c95fe03313ea73bd5a77286fee"
           />
 
           <ModeToggle />
