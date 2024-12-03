@@ -8,7 +8,7 @@ export default function Preview() {
     setTimeout(() => res(navigationLinks), 3000)
   )
   const cartCountPromise = new Promise<number>(res => setTimeout(() => res(3), 2000))
-  const logoPromise = new Promise<string | { src?: string; alt: string }>(res =>
+  const logoPromise = new Promise<string | { src: string; alt: string }>(res =>
     setTimeout(() => res(logo), 1000)
   )
 

@@ -86,7 +86,7 @@ interface Props<S extends SearchResult> {
   locales?: Locale[]
   activeLocaleId?: string
   localeAction?: LocaleAction
-  logo?: Streamable<string | { src?: string; alt: string }>
+  logo?: Streamable<string | { src: string; alt: string }>
   logoHref?: string
   searchHref: string
   searchParamName?: string
@@ -298,7 +298,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
               fallback={<div className="h-6 w-16 animate-pulse rounded-md bg-contrast-100"></div>}
             >
               {logo =>
-                typeof logo === 'object' && logo.src != null && logo.src !== '' ? (
+                typeof logo === 'object' && logo.src !== '' ? (
                   <Image
                     alt={logo.alt}
                     className="object-contain object-left"
