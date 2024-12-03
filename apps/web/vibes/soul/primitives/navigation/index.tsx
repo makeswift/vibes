@@ -95,6 +95,9 @@ interface Props<S extends SearchResult> {
   searchInputPlaceholder?: string
   emptySearchTitle?: string
   emptySearchSubtitle?: string
+  cartLabel?: string
+  accountLabel?: string
+  searchLabel?: string
 }
 
 const HamburgerMenuButton = forwardRef<
@@ -176,6 +179,9 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     searchInputPlaceholder,
     emptySearchTitle,
     emptySearchSubtitle,
+    cartLabel = 'Cart',
+    accountLabel = 'Profile',
+    searchLabel = 'Search',
   }: Props<S>,
   ref: Ref<HTMLDivElement>
 ) {
@@ -400,7 +406,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
               <Popover.Anchor className="absolute left-0 right-0 top-full" />
               <Popover.Trigger asChild>
                 <button
-                  aria-label="Search"
+                  aria-label={searchLabel}
                   className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
                   onPointerEnter={e => e.preventDefault()}
                   onPointerLeave={e => e.preventDefault()}
@@ -427,23 +433,23 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             </Popover.Root>
           ) : (
             <Link
-              aria-label="Search"
+              aria-label={searchLabel}
               className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-              href={accountHref}
+              href={searchHref}
             >
               <Search size={20} strokeWidth={1} />
             </Link>
           )}
 
           <Link
-            aria-label="Profile"
+            aria-label={accountLabel}
             className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             href={accountHref}
           >
             <User size={20} strokeWidth={1} />
           </Link>
           <Link
-            aria-label="Cart"
+            aria-label={cartLabel}
             className="relative rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
             href={cartHref}
           >
@@ -494,6 +500,7 @@ function SearchForm<S extends SearchResult>({
   searchCtaLabel = 'View more',
   emptySearchTitle,
   emptySearchSubtitle,
+  submitLabel = 'Submit',
 }: {
   searchAction: SearchAction<S>
   searchParamName?: string
@@ -502,6 +509,7 @@ function SearchForm<S extends SearchResult>({
   searchInputPlaceholder?: string
   emptySearchTitle?: string
   emptySearchSubtitle?: string
+  submitLabel?: string
 }) {
   const [query, setQuery] = useState('')
   const [isSearching, startSearching] = useTransition()
@@ -554,7 +562,7 @@ function SearchForm<S extends SearchResult>({
           type="text"
           value={query}
         />
-        <SubmitButton loading={isPending} />
+        <SubmitButton loading={isPending} submitLabel={submitLabel} />
       </form>
 
       {/* Search Results */}
@@ -573,12 +581,12 @@ function SearchForm<S extends SearchResult>({
   )
 }
 
-function SubmitButton({ loading }: { loading: boolean }) {
+function SubmitButton({ loading, submitLabel }: { loading: boolean; submitLabel: string }) {
   const { pending } = useFormStatus()
 
   return (
     <Button loading={pending || loading} size="icon" type="submit" variant="secondary">
-      <ArrowRight aria-label="Submit" size={20} strokeWidth={1.5} />
+      <ArrowRight aria-label={submitLabel} size={20} strokeWidth={1.5} />
     </Button>
   )
 }
