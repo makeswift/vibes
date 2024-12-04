@@ -80,6 +80,7 @@
     "remark-mdx-frontmatter": "^4.0.0",
     "resend": "^3.2.0",
     "server-only": "^0.0.1",
+    "sonner": "^1.7.0",
     "tailwind-merge": "^2.2.1",
     "utils": "link:@/lib/utils",
     "zod": "^3.23.8"

@@ -840,4 +840,11 @@ export const examples = [
     files: ['examples/primitives/textarea/index.tsx'],
     component: lazy(() => import('./examples/primitives/textarea')),
   },
+  {
+    name: 'toaster-example',
+    dependencies: [],
+    registryDependencies: ['toaster'],
+    files: ['examples/primitives/toaster/index.tsx'],
+    component: lazy(() => import('./examples/primitives/toaster')),
+  },
 ] satisfies Components;
