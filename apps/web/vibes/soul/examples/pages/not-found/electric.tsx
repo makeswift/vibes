@@ -165,7 +165,7 @@ export const products: CardProduct[] = [
 export default function Preview() {
   return (
     <>
-      <Banner>
+      <Banner id="example-banner">
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </Banner>
