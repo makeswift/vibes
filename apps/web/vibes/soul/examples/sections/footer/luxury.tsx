@@ -1,4 +1,6 @@
-import { Footer } from '@/vibes/soul/sections/footer'
+import { ReactNode } from 'react'
+
+import { Footer, Section } from '@/vibes/soul/sections/footer'
 import {
   Amex,
   ApplePay,
@@ -82,14 +84,37 @@ export const contactInformation = {
 }
 
 export default function Preview() {
+  const sectionsPromise = new Promise<Section[]>(res => setTimeout(() => res(footerLinks), 1000))
+
+  const logoPromise = new Promise<string | { src: string; alt: string }>(res =>
+    setTimeout(() => res(logo), 1000)
+  )
+
+  const copyrightPromise = new Promise<string>(res => setTimeout(() => res(copyright), 1000))
+
+  const paymentIconsPromise = new Promise<React.ReactNode[]>(res =>
+    setTimeout(() => res(paymentIconsArray), 1000)
+  )
+
+  const socialMediaLinksPromise = new Promise<
+    {
+      href: string
+      icon: ReactNode
+    }[]
+  >(res => setTimeout(() => res(socialMediaLinks), 1000))
+
+  const contactInformationPromise = new Promise<{ address?: string; phone?: string }>(res =>
+    setTimeout(() => res(contactInformation), 1000)
+  )
+
   return (
     <Footer
-      sections={footerLinks}
-      logo={logo}
-      copyright={copyright}
-      paymentIcons={paymentIconsArray}
-      socialMediaLinks={socialMediaLinks}
-      contactInformation={contactInformation}
+      sections={sectionsPromise}
+      logo={logoPromise}
+      copyright={copyrightPromise}
+      paymentIcons={paymentIconsPromise}
+      socialMediaLinks={socialMediaLinksPromise}
+      contactInformation={contactInformationPromise}
     />
   )
 }
