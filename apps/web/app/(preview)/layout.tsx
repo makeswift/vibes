@@ -1,5 +1,7 @@
-import { ZoomListener } from '../zoom-listener';
 import './style/globals.css';
+import { Toaster } from '@/vibes/soul/primitives/toaster';
+
+import { ZoomListener } from '../zoom-listener';
 
 export const metadata = {
   title: 'Vibes preview',
@@ -10,7 +12,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <ZoomListener />
-      <body>{children}</body>
+
+      <body>
+        <Toaster closeButton={true} position="top-right" />
+        {children}
+      </body>
     </html>
   );
 }

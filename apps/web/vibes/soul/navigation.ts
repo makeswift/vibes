@@ -150,6 +150,12 @@ export const navigation = [
         file: 'docs/textarea.mdx',
         component: 'textarea',
       },
+      {
+        title: 'Toaster',
+        slug: 'toaster',
+        file: 'docs/toaster.mdx',
+        component: 'toaster',
+      },
     ],
   },
   {
