@@ -6,6 +6,7 @@ import Image from 'next/image'
 import '@docsearch/css'
 
 import { ModeToggle } from '@/components/ui/mode-toggle'
+import { env } from '@/lib/env'
 
 import { ChapterSelect } from './chapter-select'
 import { GroupLink } from './group-link'
@@ -65,9 +66,9 @@ export function Header({ chapters, chapterSlug }: Props) {
           </Button> */}
 
           <DocSearch
-            appId="Q9L04M9AMF"
-            indexName="vibes"
-            apiKey="931574c95fe03313ea73bd5a77286fee"
+            appId={env.NEXT_PUBLIC_ALGOLIA_APP_ID}
+            indexName={env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME}
+            apiKey={env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY}
           />
 
           <ModeToggle />
