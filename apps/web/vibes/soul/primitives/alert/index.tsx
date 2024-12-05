@@ -1,6 +1,8 @@
 import { clsx } from 'clsx';
 import { X } from 'lucide-react';
 
+import { Button } from '@/vibes/soul/primitives/button';
+
 interface Props {
   variant: 'success' | 'warning' | 'error' | 'info';
   message: string;
@@ -41,23 +43,16 @@ export function Alert({
         )}
       </div>
 
-      <div className="flex gap-1">
+      <div className="flex items-center gap-1">
         {action && (
-          <button
-            className="flex items-center justify-center rounded-full border-none px-3 py-1.5 text-xs font-semibold ring-foreground hover:bg-foreground/5 focus-visible:outline-none focus-visible:ring-2"
-            onClick={action.onClick}
-          >
+          <Button onClick={action.onClick} size="x-small" variant="ghost">
             {action.label}
-          </button>
+          </Button>
         )}
 
-        <button
-          aria-label={dismissLabel}
-          className="flex h-8 w-8 items-center justify-center rounded-full border-none ring-foreground hover:bg-foreground/5 focus-visible:outline-none focus-visible:ring-2"
-          onClick={onDismiss}
-        >
-          <X size={20} strokeWidth={1.5} />
-        </button>
+        <Button aria-label={dismissLabel} onClick={onDismiss} size="icon-small" variant="ghost">
+          <X size={20} strokeWidth={1} />
+        </Button>
       </div>
     </div>
   );
