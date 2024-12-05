@@ -12,21 +12,21 @@ export const Toaster = ({ ...props }: ToasterProps) => {
         unstyled: true,
         classNames: {
           toast:
-            'rounded-xl p-3 min-w-[284px] max-w-[356px] flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 ring-foreground flex',
+            'rounded-xl py-3 px-4 min-w-[284px] max-w-[356px] text-foreground flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 ring-foreground flex border border-foreground/10 shadow-sm',
           content: 'grow',
-          title: 'font-normal text-sm leading-5',
-          description: 'font-normal text-xs leading-5',
+          title: 'font-normal text-sm',
+          description: 'font-medium text-xs text-contrast-400',
           error: 'group error bg-error-highlight',
           success: 'group success bg-success-highlight',
           warning: 'group warning bg-warning-highlight',
-          info: 'group info bg-info-highlight',
+          info: 'group info bg-background',
           icon: 'hidden',
           actionButton:
-            'text-xs focus-visible:outline-none focus-visible:ring-2 ring-foreground font-semibold leading-5 p-0.5 rounded-md text-nowrap',
+            'text-xs focus-visible:outline-none focus-visible:ring-2 ring-foreground font-semibold py-1.5 px-3 rounded-full text-nowrap hover:bg-foreground/5',
           cancelButton:
-            'text-xs focus-visible:outline-none focus-visible:ring-2 ring-foreground font-semibold leading-5 p-0.5 rounded-md text-nowrap',
+            'text-xs focus-visible:outline-none focus-visible:ring-2 ring-foreground font-semibold py-1.5 px-3 rounded-full text-nowrap hover:bg-foreground/5',
           closeButton:
-            'focus-visible:outline-none focus-visible:ring-2 ring-foreground static order-last data-[close-button]:!bg-transparent hover:data-[close-button]:bg-transparent border-none align-middle translate-x-0 translate-y-0 rounded-md',
+            'h-8 w-8 focus-visible:outline-none focus-visible:ring-2 ring-foreground static order-last data-[close-button]:!bg-transparent hover:data-[close-button]:!bg-foreground/5 border-none align-middle translate-x-0 translate-y-0 rounded-full',
         },
       }}
       icons={{
