@@ -1,6 +1,6 @@
 'use client'
 
-import { CheckIcon, XIcon } from 'lucide-react'
+import { XIcon } from 'lucide-react'
 import { Toaster as Sonner } from 'sonner'
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
@@ -12,23 +12,25 @@ export const Toaster = ({ ...props }: ToasterProps) => {
         unstyled: true,
         classNames: {
           toast:
-            'rounded-xl text-base px-3 py-2 min-w-[284px] max-w-[356px] flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 ring-foreground',
+            'rounded-xl p-3 min-w-[284px] max-w-[356px] flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 ring-foreground flex',
+          content: 'grow',
+          title: 'font-normal text-sm leading-5',
+          description: 'font-normal text-xs leading-5',
           error: 'group error bg-error-highlight',
           success: 'group success bg-success-highlight',
           warning: 'group warning bg-warning-highlight',
           info: 'group info bg-info-highlight',
-          icon: 'me-2.5 h-7 w-7 rounded-full flex items-center justify-center group-[.error]:bg-error/50 group-[.success]:bg-success/50 group-[.warning]:bg-warning/50 group-[.info]:bg-info/50',
+          icon: 'hidden',
           actionButton:
-            'border-contrast-200 border px-1.5 py-1 rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 ring-foreground ms-auto',
-          closeButton: 'focus-visible:outline-none focus-visible:ring-2 ring-foreground',
+            'text-xs focus-visible:outline-none focus-visible:ring-2 ring-foreground font-semibold leading-5 p-0.5 rounded-md text-nowrap',
+          cancelButton:
+            'text-xs focus-visible:outline-none focus-visible:ring-2 ring-foreground font-semibold leading-5 p-0.5 rounded-md text-nowrap',
+          closeButton:
+            'focus-visible:outline-none focus-visible:ring-2 ring-foreground static order-last data-[close-button]:!bg-transparent hover:data-[close-button]:bg-transparent border-none align-middle translate-x-0 translate-y-0 rounded-md',
         },
       }}
       icons={{
-        success: <CheckIcon strokeWidth={1.5} size={16} />,
-        error: <CheckIcon strokeWidth={1.5} size={16} />,
-        warning: <CheckIcon strokeWidth={1.5} size={16} />,
-        info: <CheckIcon strokeWidth={1.5} size={16} />,
-        close: <XIcon strokeWidth={1.5} size={12} />,
+        close: <XIcon strokeWidth={1.5} size={20} />,
       }}
       {...props}
     />
