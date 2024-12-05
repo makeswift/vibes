@@ -8,6 +8,7 @@ export default function Preview() {
       <Alert message="This is a success alert" variant="success" />
       <Alert message="This is a warning alert" variant="warning" />
       <Alert message="This is an error alert" variant="error" />
+      <Alert message="This is an info alert" variant="info" />
     </div>
   );
 }
