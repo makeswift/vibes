@@ -1,8 +1,8 @@
-import { getProducts } from '@/vibes/soul/data'
-import { AccountLayout } from '@/vibes/soul/sections/account-layout'
-import { OrderListSection } from '@/vibes/soul/sections/order-list-section'
+import { getProducts } from '@/vibes/soul/data';
+import { AccountLayout } from '@/vibes/soul/sections/account-layout';
+import { OrderListSection } from '@/vibes/soul/sections/order-list-section';
 
-const products = await getProducts('Electric')
+const products = await getProducts('Electric');
 
 const orders = [
   {
@@ -53,18 +53,18 @@ const orders = [
         price: `$${Math.floor(Math.random() * 500)}`,
       })),
   },
-]
+];
 
 const links = [
   { href: '#', label: 'Orders' },
   { href: '#', label: 'Addresses' },
   { href: '#', label: 'Account' },
-]
+];
 
 export default function Preview() {
   return (
     <AccountLayout links={links}>
       <OrderListSection orders={orders} paginationInfo={{ startCursor: '1', endCursor: '5' }} />
     </AccountLayout>
-  )
+  );
 }

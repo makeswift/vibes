@@ -1,4 +1,4 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
 import {
   Carousel,
@@ -6,17 +6,21 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselScrollbar,
-} from '@/vibes/soul/primitives/carousel'
-import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
+} from '@/vibes/soul/primitives/carousel';
+import {
+  CardProduct,
+  ProductCard,
+  ProductCardSkeleton,
+} from '@/vibes/soul/primitives/product-card';
 
-import { Stream, Streamable } from '../../lib/streamable'
+import { Stream, Streamable } from '../../lib/streamable';
 
-export type CarouselProduct = CardProduct
+export type CarouselProduct = CardProduct;
 
 interface Props {
-  products: Streamable<CarouselProduct[]>
-  className?: string
-  emptyStateMessage?: string
+  products: Streamable<CarouselProduct[]>;
+  className?: string;
+  emptyStateMessage?: string;
 }
 
 export function ProductsCarousel({
@@ -28,19 +32,19 @@ export function ProductsCarousel({
     <Carousel className={className}>
       <CarouselContent className="mb-10">
         <Stream value={streamableProducts} fallback={<ProductsCarouselSkeleton />}>
-          {products => {
+          {(products) => {
             if (products.length === 0) {
-              return <ProductsCarouselSkeleton message={emptyStateMessage} />
+              return <ProductsCarouselSkeleton message={emptyStateMessage} />;
             }
 
-            return products.map(product => (
+            return products.map((product) => (
               <CarouselItem
                 className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
                 key={product.id}
               >
                 <ProductCard product={product} />
               </CarouselItem>
-            ))
+            ));
           }}
         </Stream>
       </CarouselContent>
@@ -49,7 +53,7 @@ export function ProductsCarousel({
         <CarouselButtons />
       </div>
     </Carousel>
-  )
+  );
 }
 
 export function ProductsCarouselSkeleton({
@@ -57,9 +61,9 @@ export function ProductsCarouselSkeleton({
   message,
   count = 8,
 }: {
-  className?: string
-  message?: string
-  count?: number
+  className?: string;
+  message?: string;
+  count?: number;
 }) {
   return (
     <Carousel className={className}>
@@ -68,7 +72,7 @@ export function ProductsCarouselSkeleton({
           'relative mb-10',
           message != null &&
             message !== '' &&
-            '[mask-image:radial-gradient(circle,transparent,black)]'
+            '[mask-image:radial-gradient(circle,transparent,black)]',
         )}
       >
         {Array.from({ length: count }).map((_, index) => (
@@ -86,5 +90,5 @@ export function ProductsCarouselSkeleton({
       </div>
       <div className="absolute inset-0 flex items-center justify-center text-lg">{message}</div>
     </Carousel>
-  )
+  );
 }

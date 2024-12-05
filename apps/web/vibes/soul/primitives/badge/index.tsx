@@ -1,11 +1,11 @@
-import { clsx } from 'clsx'
-import { ReactNode } from 'react'
+import { clsx } from 'clsx';
+import { ReactNode } from 'react';
 
 interface Props {
-  children: ReactNode
-  variant?: 'pill' | 'rounded'
-  color?: 'primary' | 'accent' | 'warning' | 'danger' | 'success' | 'info'
-  className?: string
+  children: ReactNode;
+  variant?: 'pill' | 'rounded';
+  color?: 'primary' | 'accent' | 'warning' | 'danger' | 'success' | 'info';
+  className?: string;
 }
 
 export function Badge({ children, variant = 'rounded', className, color = 'primary' }: Props) {
@@ -25,10 +25,10 @@ export function Badge({ children, variant = 'rounded', className, color = 'prima
           success: 'bg-success-highlight',
           info: 'bg-info-highlight',
         }[color],
-        className
+        className,
       )}
     >
       {children}
     </span>
-  )
+  );
 }

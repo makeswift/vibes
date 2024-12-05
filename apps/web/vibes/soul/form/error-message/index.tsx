@@ -1,5 +1,5 @@
-import { clsx } from 'clsx'
-import { CircleAlert } from 'lucide-react'
+import { clsx } from 'clsx';
+import { CircleAlert } from 'lucide-react';
 
 export function ErrorMessage({
   className,
@@ -12,5 +12,5 @@ export function ErrorMessage({
 
       {children}
     </div>
-  )
+  );
 }

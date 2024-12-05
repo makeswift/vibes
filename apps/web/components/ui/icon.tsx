@@ -1,8 +1,8 @@
-import { lazy } from 'react'
+import { lazy } from 'react';
 
 interface Props {
-  className?: string
-  name?: keyof typeof Icons
+  className?: string;
+  name?: keyof typeof Icons;
 }
 
 export const Icons = {
@@ -13,10 +13,10 @@ export const Icons = {
   Search: lazy(() => import('@/icons/generated/Search')),
   Sun: lazy(() => import('@/icons/generated/Sun')),
   UpDownArrows: lazy(() => import('@/icons/generated/UpDownArrows')),
-} as const
+} as const;
 
 export function Icon({ name = 'Cube', ...rest }: Props) {
-  const Component = Icons[name]
+  const Component = Icons[name];
 
-  return <Component {...rest} />
+  return <Component {...rest} />;
 }

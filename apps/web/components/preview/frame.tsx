@@ -1,50 +1,50 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { useEffect, useRef, useState } from 'react'
+import { clsx } from 'clsx';
+import { useEffect, useRef, useState } from 'react';
 
-import { ResizeX } from '@/icons/generated'
+import { ResizeX } from '@/icons/generated';
 
-import { Portal } from '../ui/portal'
+import { Portal } from '../ui/portal';
 
-import { useBrandContext } from './brand-context'
-import { usePreviewContext } from './preview-context'
+import { useBrandContext } from './brand-context';
+import { usePreviewContext } from './preview-context';
 
 interface Props {
-  className?: string
-  vibeSlug: string
-  componentName: string
+  className?: string;
+  vibeSlug: string;
+  componentName: string;
 }
 
 export function Frame({ className, vibeSlug, componentName }: Props) {
-  const { activeBrand } = useBrandContext()
-  const iframe = useRef<HTMLIFrameElement>(null)
-  const container = useRef<HTMLDivElement>(null)
-  const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext()
-  const widthStart = useRef(0)
-  const cursorStart = useRef<readonly [number, number]>([0, 0])
-  const [cursor, setCursor] = useState<readonly [number, number] | null>(null)
+  const { activeBrand } = useBrandContext();
+  const iframe = useRef<HTMLIFrameElement>(null);
+  const container = useRef<HTMLDivElement>(null);
+  const { width, zoom, resize, isDragging, setIsDragging, setMaxWidth } = usePreviewContext();
+  const widthStart = useRef(0);
+  const cursorStart = useRef<readonly [number, number]>([0, 0]);
+  const [cursor, setCursor] = useState<readonly [number, number] | null>(null);
 
   useEffect(() => {
-    if (!container.current) return
+    if (!container.current) return;
 
     function handleResize() {
-      if (!container.current) return
+      if (!container.current) return;
 
-      setMaxWidth(container.current.clientWidth)
-      resize(null)
+      setMaxWidth(container.current.clientWidth);
+      resize(null);
     }
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize);
 
-    setMaxWidth(container.current.clientWidth)
+    setMaxWidth(container.current.clientWidth);
 
-    return () => window.removeEventListener('resize', handleResize)
-  }, [resize, setMaxWidth])
+    return () => window.removeEventListener('resize', handleResize);
+  }, [resize, setMaxWidth]);
 
   useEffect(() => {
-    iframe.current?.contentWindow?.postMessage({ type: 'zoom', zoom })
-  }, [zoom])
+    iframe.current?.contentWindow?.postMessage({ type: 'zoom', zoom });
+  }, [zoom]);
 
   return (
     <div className={clsx('relative w-full bg-contrast-100', className)} ref={container}>
@@ -62,28 +62,28 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
         )}
         <div
           className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-resizeX md:block"
-          onPointerDown={e => {
-            if (!container.current) return
+          onPointerDown={(e) => {
+            if (!container.current) return;
 
-            const nextCursor = [e.clientX, e.clientY] as const
+            const nextCursor = [e.clientX, e.clientY] as const;
 
-            setCursor(nextCursor)
+            setCursor(nextCursor);
 
-            widthStart.current = width !== null ? width / zoom : container.current.clientWidth
-            cursorStart.current = nextCursor
+            widthStart.current = width !== null ? width / zoom : container.current.clientWidth;
+            cursorStart.current = nextCursor;
 
-            setIsDragging(true)
+            setIsDragging(true);
 
-            e.currentTarget.requestPointerLock()
+            e.currentTarget.requestPointerLock();
           }}
-          onPointerMove={e => {
-            const { ownerDocument } = e.currentTarget
+          onPointerMove={(e) => {
+            const { ownerDocument } = e.currentTarget;
 
-            if (ownerDocument.pointerLockElement !== e.currentTarget) return
+            if (ownerDocument.pointerLockElement !== e.currentTarget) return;
 
-            const windowWidth = ownerDocument.defaultView?.innerWidth ?? 0
-            const nextCursorX = cursorStart.current[0] + e.movementX
-            const nextWidth = widthStart.current + e.movementX * 2
+            const windowWidth = ownerDocument.defaultView?.innerWidth ?? 0;
+            const nextCursorX = cursorStart.current[0] + e.movementX;
+            const nextWidth = widthStart.current + e.movementX * 2;
             const nextCursor = [
               // eslint-disable-next-line no-nested-ternary
               nextCursorX > windowWidth
@@ -92,19 +92,19 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
                   ? windowWidth + nextCursorX
                   : nextCursorX,
               cursorStart.current[1],
-            ] as const
+            ] as const;
 
-            resize(nextWidth)
-            setCursor(nextCursor)
+            resize(nextWidth);
+            setCursor(nextCursor);
 
-            widthStart.current = nextWidth
-            cursorStart.current = nextCursor
+            widthStart.current = nextWidth;
+            cursorStart.current = nextCursor;
           }}
-          onPointerUp={e => {
-            setIsDragging(false)
-            setCursor(null)
+          onPointerUp={(e) => {
+            setIsDragging(false);
+            setCursor(null);
 
-            e.currentTarget.ownerDocument.exitPointerLock()
+            e.currentTarget.ownerDocument.exitPointerLock();
           }}
         >
           <div className="absolute top-1/2 ml-2 h-8 w-0.5 -translate-y-1/2 rounded-full bg-foreground transition-all group-hover:scale-x-125 group-hover:scale-y-150"></div>
@@ -122,5 +122,5 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
         )}
       </Portal>
     </div>
-  )
+  );
 }

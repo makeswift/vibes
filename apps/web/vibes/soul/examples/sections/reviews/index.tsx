@@ -1,4 +1,4 @@
-import { Reviews, ReviewsEmptyState, ReviewsSkeleton } from '@/vibes/soul/sections/reviews'
+import { Reviews, ReviewsEmptyState, ReviewsSkeleton } from '@/vibes/soul/sections/reviews';
 
 export const reviews = [
   {
@@ -41,7 +41,7 @@ export const reviews = [
     name: 'Victor',
     date: 'August 13, 2024',
   },
-]
+];
 
 export default function Preview() {
   return (
@@ -50,5 +50,5 @@ export default function Preview() {
       <ReviewsEmptyState />
       <ReviewsSkeleton />
     </div>
-  )
+  );
 }

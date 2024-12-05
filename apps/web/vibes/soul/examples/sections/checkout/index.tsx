@@ -1,5 +1,5 @@
-import { CartLineItem } from '@/vibes/soul/sections/cart'
-import { Checkout } from '@/vibes/soul/sections/checkout'
+import { CartLineItem } from '@/vibes/soul/sections/cart';
+import { Checkout } from '@/vibes/soul/sections/checkout';
 
 export const products: CartLineItem[] = [
   {
@@ -24,8 +24,8 @@ export const products: CartLineItem[] = [
     },
     quantity: 2,
   },
-]
+];
 
 export default function Preview() {
-  return <Checkout products={products} />
+  return <Checkout products={products} />;
 }

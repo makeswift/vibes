@@ -1,19 +1,19 @@
-import { clsx } from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export interface BlogPost {
-  id: string
-  author?: string | null
-  content: string
-  date: string
+  id: string;
+  author?: string | null;
+  content: string;
+  date: string;
   image?: {
-    src: string
-    alt: string
-  }
-  href: string
-  title: string
-  className?: string
+    src: string;
+    alt: string;
+  };
+  href: string;
+  title: string;
+  className?: string;
 }
 
 export const BlogPostCard = function BlogPostCard({
@@ -30,7 +30,7 @@ export const BlogPostCard = function BlogPostCard({
       href={href}
       className={clsx(
         'group max-w-full rounded-b-lg rounded-t-2xl text-foreground ring-primary ring-offset-4 @container focus:outline-0 focus-visible:ring-2',
-        className
+        className,
       )}
     >
       <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-contrast-100">
@@ -65,13 +65,13 @@ export const BlogPostCard = function BlogPostCard({
         {author != null && author !== '' && <span>{author}</span>}
       </div>
     </Link>
-  )
-}
+  );
+};
 
 export const BlogPostCardSkeleton = function BlogPostCardSkeleton({
   className,
 }: {
-  className?: string
+  className?: string;
 }) {
   return (
     <div className={clsx('flex max-w-md animate-pulse flex-col gap-2 rounded-xl', className)}>
@@ -94,5 +94,5 @@ export const BlogPostCardSkeleton = function BlogPostCardSkeleton({
         <div className="h-4 w-20 rounded-lg bg-contrast-100" />
       </div>
     </div>
-  )
-}
+  );
+};

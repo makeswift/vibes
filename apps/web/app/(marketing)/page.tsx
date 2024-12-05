@@ -1,95 +1,95 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ReactNode, useEffect, useState } from 'react'
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ReactNode, useEffect, useState } from 'react';
 
-import { Button } from '@/components/ui/button'
-import { ButtonLink } from '@/components/ui/button-link'
-import Transition from '@/components/ui/transition'
-import { Arrow } from '@/icons/generated'
+import { Button } from '@/components/ui/button';
+import { ButtonLink } from '@/components/ui/button-link';
+import Transition from '@/components/ui/transition';
+import { Arrow } from '@/icons/generated';
 
-import { EazyTheme } from '../stickers/eazy-theme'
-import { Figma } from '../stickers/figma'
-import { HandcraftedCode } from '../stickers/handcrafted-code'
-import { KeepIt100 } from '../stickers/keep-it-100'
-import { LikeTotally } from '../stickers/like-totally'
-import { MadProps } from '../stickers/mad-props'
-import { Nextjs } from '../stickers/nextjs'
-import { OpenSource } from '../stickers/open-source'
-import { PrebuiltSections } from '../stickers/prebuilt-sections'
-import { ProductionReady } from '../stickers/production-ready'
-import { Reactjs } from '../stickers/reactjs'
-import { ShoppingBag } from '../stickers/shopping-bag'
-import { Typescript } from '../stickers/typescript'
-import { Vibes1 } from '../stickers/vibes-1'
-import { Vibes10 } from '../stickers/vibes-10'
-import { Vibes11 } from '../stickers/vibes-11'
-import { Vibes12 } from '../stickers/vibes-12'
-import { Vibes13 } from '../stickers/vibes-13'
-import { Vibes14 } from '../stickers/vibes-14'
-import { Vibes15 } from '../stickers/vibes-15'
-import { Vibes16 } from '../stickers/vibes-16'
-import { Vibes2 } from '../stickers/vibes-2'
-import { Vibes3 } from '../stickers/vibes-3'
-import { Vibes4 } from '../stickers/vibes-4'
-import { Vibes5 } from '../stickers/vibes-5'
-import { Vibes6 } from '../stickers/vibes-6'
-import { Vibes7 } from '../stickers/vibes-7'
-import { Vibes8 } from '../stickers/vibes-8'
-import { Vibes9 } from '../stickers/vibes-9'
+import { EazyTheme } from '../stickers/eazy-theme';
+import { Figma } from '../stickers/figma';
+import { HandcraftedCode } from '../stickers/handcrafted-code';
+import { KeepIt100 } from '../stickers/keep-it-100';
+import { LikeTotally } from '../stickers/like-totally';
+import { MadProps } from '../stickers/mad-props';
+import { Nextjs } from '../stickers/nextjs';
+import { OpenSource } from '../stickers/open-source';
+import { PrebuiltSections } from '../stickers/prebuilt-sections';
+import { ProductionReady } from '../stickers/production-ready';
+import { Reactjs } from '../stickers/reactjs';
+import { ShoppingBag } from '../stickers/shopping-bag';
+import { Typescript } from '../stickers/typescript';
+import { Vibes1 } from '../stickers/vibes-1';
+import { Vibes10 } from '../stickers/vibes-10';
+import { Vibes11 } from '../stickers/vibes-11';
+import { Vibes12 } from '../stickers/vibes-12';
+import { Vibes13 } from '../stickers/vibes-13';
+import { Vibes14 } from '../stickers/vibes-14';
+import { Vibes15 } from '../stickers/vibes-15';
+import { Vibes16 } from '../stickers/vibes-16';
+import { Vibes2 } from '../stickers/vibes-2';
+import { Vibes3 } from '../stickers/vibes-3';
+import { Vibes4 } from '../stickers/vibes-4';
+import { Vibes5 } from '../stickers/vibes-5';
+import { Vibes6 } from '../stickers/vibes-6';
+import { Vibes7 } from '../stickers/vibes-7';
+import { Vibes8 } from '../stickers/vibes-8';
+import { Vibes9 } from '../stickers/vibes-9';
 
-import { Form } from './form'
+import { Form } from './form';
 
 const useSmoothScroll = () => {
   const smoothScrollTo = (id: string) => {
-    const element = document.getElementById(id)
+    const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-  }
+  };
 
-  return smoothScrollTo
-}
+  return smoothScrollTo;
+};
 
 const ScrollButton: React.FC<{ to: string; children: React.ReactNode; className?: string }> = ({
   to,
   children,
   className,
 }) => {
-  const smoothScrollTo = useSmoothScroll()
+  const smoothScrollTo = useSmoothScroll();
 
   const handleClick = () => {
-    smoothScrollTo(to)
-  }
+    smoothScrollTo(to);
+  };
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div onClick={handleClick} className={clsx('cursor-pointer', className)}>
       {children}
     </div>
-  )
-}
+  );
+};
 
 const FeatureCard = ({
   children,
   text,
   sticker,
 }: {
-  children?: ReactNode
-  text?: string
-  sticker: 'left' | 'right'
+  children?: ReactNode;
+  text?: string;
+  sticker: 'left' | 'right';
 }) => (
   <div
     className={clsx(
-      'min-h-auto flex w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-black bg-[#FFFAE0] md:min-h-72 md:flex-row'
+      'min-h-auto flex w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-black bg-[#FFFAE0] md:min-h-72 md:flex-row',
     )}
   >
     <div
       className={clsx(
         'relative flex w-full justify-center md:w-96',
-        { left: 'md:order-first', right: 'md:order-last' }[sticker]
+        { left: 'md:order-first', right: 'md:order-last' }[sticker],
       )}
     >
       {children}
@@ -98,26 +98,26 @@ const FeatureCard = ({
       {text}
     </p>
   </div>
-)
+);
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollAmount = 10
+      const scrollAmount = 10;
       if (window.scrollY > scrollAmount) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div
@@ -128,7 +128,7 @@ export default function Home() {
       <header
         className={clsx(
           'fixed left-0 top-0 z-50 hidden w-full items-center justify-center transition-all duration-300 sm:flex sm:justify-between',
-          isScrolled ? 'translate-y-3 px-7' : 'translate-y-8 px-10 md:translate-y-10'
+          isScrolled ? 'translate-y-3 px-7' : 'translate-y-8 px-10 md:translate-y-10',
         )}
       >
         <ScrollButton to="footer">
@@ -137,7 +137,7 @@ export default function Home() {
         <div
           className={clsx(
             'relative h-8 w-32 origin-center transition-transform duration-300 md:h-10 md:w-40',
-            isScrolled && 'scale-90 md:scale-[0.8]'
+            isScrolled && 'scale-90 md:scale-[0.8]',
           )}
         >
           <Image src="/logo.svg" fill alt="Vibes logo" priority />
@@ -438,5 +438,5 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
 }

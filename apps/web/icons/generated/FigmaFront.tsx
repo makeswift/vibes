@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgFigmaFront = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={168} height={238} fill="none" {...props}>
@@ -33,5 +33,5 @@ const SvgFigmaFront = (props: SVGProps<SVGSVGElement>) => (
       d="M156 117c0 19.32-15.68 35-35 35s-35-15.68-35-35 15.68-35 35-35 35 15.68 35 35"
     />
   </svg>
-)
-export default SvgFigmaFront
+);
+export default SvgFigmaFront;

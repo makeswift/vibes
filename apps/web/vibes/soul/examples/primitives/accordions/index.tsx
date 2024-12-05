@@ -1,4 +1,4 @@
-import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';
 
 export default function Preview() {
   const accordions = [
@@ -22,7 +22,7 @@ export default function Preview() {
       content:
         'Once your order has shipped, you will receive an email with a tracking number. You can use this number to track your order on our website.',
     },
-  ]
+  ];
 
   return (
     <div className="m-auto flex h-screen w-1/2 max-w-screen-lg items-start justify-center p-10">
@@ -34,5 +34,5 @@ export default function Preview() {
         ))}
       </Accordions>
     </div>
-  )
+  );
 }

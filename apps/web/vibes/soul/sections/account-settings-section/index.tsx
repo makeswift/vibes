@@ -1,13 +1,13 @@
-import { ChangePasswordAction, ChangePasswordForm } from './change-password-form'
-import { UpdateAccountAction, UpdateAccountForm } from './update-account-form'
+import { ChangePasswordAction, ChangePasswordForm } from './change-password-form';
+import { UpdateAccountAction, UpdateAccountForm } from './update-account-form';
 
 interface Props {
-  title?: string
-  updateAccountAction: UpdateAccountAction
-  updateAccountSubmitLabel?: string
-  changePasswordTitle?: string
-  changePasswordAction: ChangePasswordAction
-  changePasswordSubmitLabel?: string
+  title?: string;
+  updateAccountAction: UpdateAccountAction;
+  updateAccountSubmitLabel?: string;
+  changePasswordTitle?: string;
+  changePasswordAction: ChangePasswordAction;
+  changePasswordSubmitLabel?: string;
 }
 
 export function AccountSettingsSection({
@@ -41,5 +41,5 @@ export function AccountSettingsSection({
         </div>
       </div>
     </div>
-  )
+  );
 }

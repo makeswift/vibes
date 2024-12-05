@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
-import { clsx } from 'clsx'
-import { useState } from 'react'
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import { clsx } from 'clsx';
+import { useState } from 'react';
 
-import { Button } from '@/vibes/soul/primitives/button'
-import { Checkbox } from '@/vibes/soul/primitives/checkbox'
-import { Dropdown } from '@/vibes/soul/primitives/dropdown'
-import { Input } from '@/vibes/soul/primitives/input'
-import { Label } from '@/vibes/soul/primitives/label'
-import { TextArea } from '@/vibes/soul/primitives/textarea'
+import { Button } from '@/vibes/soul/primitives/button';
+import { Checkbox } from '@/vibes/soul/primitives/checkbox';
+import { Dropdown } from '@/vibes/soul/primitives/dropdown';
+import { Input } from '@/vibes/soul/primitives/input';
+import { Label } from '@/vibes/soul/primitives/label';
+import { TextArea } from '@/vibes/soul/primitives/textarea';
 
 const shippingMethods = [
   {
@@ -22,12 +22,12 @@ const shippingMethods = [
     label: 'Expidited Shipping',
     cost: '$10.00',
   },
-]
+];
 interface Props {
-  includeSameAsBillingAddress?: boolean
-  includeShippingMethod?: boolean
-  includeOrderComments?: boolean
-  onSubmit?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  includeSameAsBillingAddress?: boolean;
+  includeShippingMethod?: boolean;
+  includeOrderComments?: boolean;
+  onSubmit?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const CheckoutForm = function CheckoutForm({
@@ -36,8 +36,8 @@ export const CheckoutForm = function CheckoutForm({
   includeOrderComments,
   onSubmit,
 }: Props) {
-  const [useSameAddress, setUseSameAddress] = useState(true)
-  const [shippingMethod, setShippingMethod] = useState<string | null>()
+  const [useSameAddress, setUseSameAddress] = useState(true);
+  const [shippingMethod, setShippingMethod] = useState<string | null>();
   return (
     <form className="grid w-full grid-cols-1 gap-5 @sm:grid-cols-2">
       <Input type="text" label="First Name" required />
@@ -81,7 +81,7 @@ export const CheckoutForm = function CheckoutForm({
                   'ring-primary focus-visible:outline-0 focus-visible:ring-2',
                   option.id === shippingMethod
                     ? 'bg-foreground text-background'
-                    : 'bg-contrast-100 hover:bg-contrast-200'
+                    : 'bg-contrast-100 hover:bg-contrast-200',
                 )}
               >
                 <span>{option.label}</span>
@@ -97,9 +97,9 @@ export const CheckoutForm = function CheckoutForm({
       )}
 
       {/* TODO: disbale until form is complete */}
-      <Button variant="secondary" className="ml-auto @sm:col-span-2" onClick={e => onSubmit?.(e)}>
+      <Button variant="secondary" className="ml-auto @sm:col-span-2" onClick={(e) => onSubmit?.(e)}>
         Continue
       </Button>
     </form>
-  )
-}
+  );
+};

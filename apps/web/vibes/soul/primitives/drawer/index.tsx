@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import * as Portal from '@radix-ui/react-portal'
-import { useEffect, useState } from 'react'
+import * as Portal from '@radix-ui/react-portal';
+import { useEffect, useState } from 'react';
 
 interface DrawerProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function Drawer({ children }: DrawerProps) {
   // This hack is needed to prevent hydration errors.
   // The Radix Portal is not rendered correctly server side, so we need to prevent it from rendering until the client side hydration is complete (and `useEffect` is run).
   // The issue is reported here: https://github.com/radix-ui/primitives/issues/1386
-  const [doc, setDoc] = useState<Document | null>(null)
-  useEffect(() => setDoc(window.document), [])
+  const [doc, setDoc] = useState<Document | null>(null);
+  useEffect(() => setDoc(window.document), []);
 
   return (
     doc && (
@@ -20,5 +20,5 @@ export function Drawer({ children }: DrawerProps) {
         {children}
       </Portal.Root>
     )
-  )
+  );
 }

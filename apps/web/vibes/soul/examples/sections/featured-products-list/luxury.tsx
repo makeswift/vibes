@@ -1,14 +1,14 @@
-import { CardProduct } from '@/vibes/soul/primitives/product-card'
+import { CardProduct } from '@/vibes/soul/primitives/product-card';
 import {
   FeaturedProductsList,
   FeaturedProductsListSkeleton,
-} from '@/vibes/soul/sections/featured-products-list'
+} from '@/vibes/soul/sections/featured-products-list';
 
 export const featuredProducts: {
-  title: string
-  description: string
-  cta: { label: string; href: string }
-  products: CardProduct[]
+  title: string;
+  description: string;
+  cta: { label: string; href: string };
+  products: CardProduct[];
 } = {
   title: 'Own Your Journey',
   description:
@@ -91,7 +91,7 @@ export const featuredProducts: {
       href: '#',
     },
   ],
-}
+};
 
 export default function Preview() {
   return (
@@ -115,5 +115,5 @@ export default function Preview() {
         }}
       />
     </>
-  )
+  );
 }

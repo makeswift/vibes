@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import * as SheetPrimitive from '@radix-ui/react-dialog'
-import { type VariantProps, cva } from 'class-variance-authority'
-import { clsx } from 'clsx'
-import * as React from 'react'
+import * as SheetPrimitive from '@radix-ui/react-dialog';
+import { type VariantProps, cva } from 'class-variance-authority';
+import { clsx } from 'clsx';
+import * as React from 'react';
 
-const Sheet = SheetPrimitive.Root
+const Sheet = SheetPrimitive.Root;
 
-const SheetTrigger = SheetPrimitive.Trigger
+const SheetTrigger = SheetPrimitive.Trigger;
 
-const SheetPortal = SheetPrimitive.Portal
+const SheetPortal = SheetPrimitive.Portal;
 
-const SheetTitle = SheetPrimitive.Title
+const SheetTitle = SheetPrimitive.Title;
 
 const sheetVariants = cva(
   'fixed z-50 bg-background border-transparent overflow-y-auto border-dashed sm:border-contrast-300 p-5 md:p-6 lg:p-7 transition [transition-timing-function:cubic-bezier(0.25,1,0,1)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-300',
@@ -29,8 +29,8 @@ const sheetVariants = cva(
     defaultVariants: {
       side: 'left',
     },
-  }
-)
+  },
+);
 
 interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
@@ -49,7 +49,7 @@ const SheetContent = React.forwardRef<
       {children}
     </SheetPrimitive.Content>
   </SheetPortal>
-))
-SheetContent.displayName = SheetPrimitive.Content.displayName
+));
+SheetContent.displayName = SheetPrimitive.Content.displayName;
 
-export { Sheet, SheetPortal, SheetTrigger, SheetContent, SheetTitle }
+export { Sheet, SheetPortal, SheetTrigger, SheetContent, SheetTitle };

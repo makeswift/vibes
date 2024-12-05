@@ -1,21 +1,21 @@
-import { clsx } from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { PriceLabel } from '@/vibes/soul/primitives/price-label'
+import { PriceLabel } from '@/vibes/soul/primitives/price-label';
 
 export interface OrderListLineItem {
-  id: string
-  title: string
-  subtitle?: string
-  price: string
-  href: string
-  image?: { src: string; alt: string }
+  id: string;
+  title: string;
+  subtitle?: string;
+  price: string;
+  href: string;
+  image?: { src: string; alt: string };
 }
 
 interface Props {
-  className?: string
-  lineItem: OrderListLineItem
+  className?: string;
+  lineItem: OrderListLineItem;
 }
 
 export function OrderListLineItem({ className, lineItem }: Props) {
@@ -25,7 +25,7 @@ export function OrderListLineItem({ className, lineItem }: Props) {
       href={lineItem.href}
       className={clsx(
         'group shrink-0 basis-32 cursor-pointer rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl @lg:basis-40',
-        className
+        className,
       )}
     >
       <div className="relative aspect-square overflow-hidden rounded-[inherit] bg-contrast-100">
@@ -53,5 +53,5 @@ export function OrderListLineItem({ className, lineItem }: Props) {
         <PriceLabel price={lineItem.price} />
       </div>
     </Link>
-  )
+  );
 }

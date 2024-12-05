@@ -1,12 +1,12 @@
-import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination'
+import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 
-import { OrderList } from './order-list'
-import { Order } from './order-list-item'
+import { OrderList } from './order-list';
+import { Order } from './order-list-item';
 
 interface Props {
-  title?: string
-  orders: Order[] | Promise<Order[]>
-  paginationInfo?: CursorPaginationInfo | Promise<CursorPaginationInfo>
+  title?: string;
+  orders: Order[] | Promise<Order[]>;
+  paginationInfo?: CursorPaginationInfo | Promise<CursorPaginationInfo>;
 }
 
 export function OrderListSection({ title = 'Orders', orders, paginationInfo }: Props) {
@@ -18,5 +18,5 @@ export function OrderListSection({ title = 'Orders', orders, paginationInfo }: P
       <OrderList orders={orders} />
       {paginationInfo && <CursorPagination info={paginationInfo} />}
     </div>
-  )
+  );
 }

@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import * as Dialog from '@radix-ui/react-dialog'
-import { clsx } from 'clsx'
-import { X } from 'lucide-react'
-import React from 'react'
+import * as Dialog from '@radix-ui/react-dialog';
+import { clsx } from 'clsx';
+import { X } from 'lucide-react';
+import React from 'react';
 
-import { Button } from '../button'
+import { Button } from '../button';
 
 interface Props {
-  title: React.ReactNode
-  children: React.ReactNode
+  title: React.ReactNode;
+  children: React.ReactNode;
 }
 
 function Content({ title, children }: Props) {
@@ -19,7 +19,7 @@ function Content({ title, children }: Props) {
         <Dialog.Content
           forceMount
           className={clsx(
-            'fixed inset-y-0 right-0 flex w-96 max-w-full flex-col bg-background transition duration-500 [animation-timing-function:cubic-bezier(0.25,1,0,1)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right'
+            'fixed inset-y-0 right-0 flex w-96 max-w-full flex-col bg-background transition duration-500 [animation-timing-function:cubic-bezier(0.25,1,0,1)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right',
           )}
         >
           <div className="flex items-center justify-between gap-2 bg-background px-6 pb-4 pt-4 @md:px-8 @md:pt-7">
@@ -37,10 +37,10 @@ function Content({ title, children }: Props) {
         </Dialog.Content>
       </Dialog.Overlay>
     </Dialog.Portal>
-  )
+  );
 }
 
-const Root = Dialog.Root
-const Trigger = Dialog.Trigger
+const Root = Dialog.Root;
+const Trigger = Dialog.Trigger;
 
-export { Root, Trigger, Content }
+export { Root, Trigger, Content };

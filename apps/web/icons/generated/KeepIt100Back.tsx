@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgKeepIt100Back = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={258} height={289} fill="none" {...props}>
@@ -22,5 +22,5 @@ const SvgKeepIt100Back = (props: SVGProps<SVGSVGElement>) => (
       mask="url(#keep-it-100-back_svg__a)"
     />
   </svg>
-)
-export default SvgKeepIt100Back
+);
+export default SvgKeepIt100Back;

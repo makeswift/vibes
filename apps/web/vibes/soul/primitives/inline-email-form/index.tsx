@@ -1,20 +1,20 @@
-'use client'
+'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { parseWithZod } from '@conform-to/zod'
-import { clsx } from 'clsx'
-import { ArrowRight } from 'lucide-react'
-import { useActionState, useEffect } from 'react'
+import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { parseWithZod } from '@conform-to/zod';
+import { clsx } from 'clsx';
+import { ArrowRight } from 'lucide-react';
+import { useActionState, useEffect } from 'react';
 
-import { ErrorMessage } from '../../form/error-message'
-import { Button } from '../button'
+import { ErrorMessage } from '../../form/error-message';
+import { Button } from '../button';
 
-import { schema } from './schema'
+import { schema } from './schema';
 
 type Action<State, Payload> = (
   prevState: Awaited<State>,
-  formData: Payload
-) => State | Promise<State>
+  formData: Payload,
+) => State | Promise<State>;
 
 export function InlineEmailForm({
   className,
@@ -22,37 +22,37 @@ export function InlineEmailForm({
   submitLabel = 'Submit',
   placeholder = 'Enter your email',
 }: {
-  className?: string
-  placeholder?: string
-  submitLabel?: string
-  action: Action<SubmissionResult | null, FormData>
+  className?: string;
+  placeholder?: string;
+  submitLabel?: string;
+  action: Action<SubmissionResult | null, FormData>;
 }) {
-  const [lastResult, formAction, isPending] = useActionState(action, null)
+  const [lastResult, formAction, isPending] = useActionState(action, null);
 
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema })
+      return parseWithZod(formData, { schema });
     },
     shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',
-  })
+  });
 
   useEffect(() => {
     if (lastResult?.error) {
-      console.log(lastResult.error)
-      return
+      console.log(lastResult.error);
+      return;
     }
-  }, [lastResult])
+  }, [lastResult]);
 
-  const { errors = [] } = fields.email
+  const { errors = [] } = fields.email;
 
   return (
     <form {...getFormProps(form)} className={clsx('space-y-2', className)} action={formAction}>
       <div
         className={clsx(
           'relative rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
-          errors.length ? 'border-error' : 'border-black'
+          errors.length ? 'border-error' : 'border-black',
         )}
       >
         <input
@@ -77,5 +77,5 @@ export function InlineEmailForm({
         <ErrorMessage key={index}>{error}</ErrorMessage>
       ))}
     </form>
-  )
+  );
 }

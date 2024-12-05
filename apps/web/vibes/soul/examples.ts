@@ -1,8 +1,8 @@
-import { lazy } from 'react'
+import { lazy } from 'react';
 
-import 'server-only'
+import 'server-only';
 
-import { Components } from '@/vibes/schema'
+import { Components } from '@/vibes/schema';
 
 export const examples = [
   {
@@ -840,4 +840,4 @@ export const examples = [
     files: ['examples/primitives/textarea/index.tsx'],
     component: lazy(() => import('./examples/primitives/textarea')),
   },
-] satisfies Components
+] satisfies Components;

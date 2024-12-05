@@ -1,11 +1,11 @@
-import { clsx } from 'clsx'
-import Link from 'next/link'
+import { clsx } from 'clsx';
+import Link from 'next/link';
 
 export type Props = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  variant?: 'primary' | 'secondary' | 'tertiary'
-  size?: 'large' | 'medium' | 'small' | 'icon'
-  href: string
-}
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'large' | 'medium' | 'small' | 'icon';
+  href: string;
+};
 
 export function ButtonLink({
   variant = 'primary',
@@ -35,10 +35,10 @@ export function ButtonLink({
           medium: 'gap-x-2.5 px-5 py-3 text-base',
           large: 'gap-x-3 px-6 py-4 text-base',
         }[size],
-        className
+        className,
       )}
     >
       <span className={clsx(variant === 'secondary' && 'mix-blend-difference')}>{children}</span>
     </Link>
-  )
+  );
 }

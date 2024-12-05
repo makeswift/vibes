@@ -1,11 +1,11 @@
-import { getProducts } from '@/vibes/soul/data'
+import { getProducts } from '@/vibes/soul/data';
 import {
   FeaturedProductsCarousel,
   FeaturedProductsCarouselSkeleton,
-} from '@/vibes/soul/sections/featured-products-carousel'
+} from '@/vibes/soul/sections/featured-products-carousel';
 
 export default async function Preview() {
-  const featuredProducts = await getProducts('Electric')
+  const featuredProducts = await getProducts('Electric');
   return (
     <>
       <FeaturedProductsCarousel
@@ -21,5 +21,5 @@ export default async function Preview() {
         cta={{ href: '#', label: 'Shop Now' }}
       />
     </>
-  )
+  );
 }

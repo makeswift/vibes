@@ -1,4 +1,4 @@
-import { Card } from '@/vibes/soul/primitives/card'
+import { Card } from '@/vibes/soul/primitives/card';
 
 export default function Preview() {
   return (
@@ -16,5 +16,5 @@ export default function Preview() {
         href="#"
       />
     </div>
-  )
+  );
 }

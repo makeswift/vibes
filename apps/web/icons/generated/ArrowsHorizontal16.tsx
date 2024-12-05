@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgArrowsHorizontal16 = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -16,5 +16,5 @@ const SvgArrowsHorizontal16 = (props: SVGProps<SVGSVGElement>) => (
     <path d="M2 8H5.25" strokeWidth="1.5" />
     <path d="M10.75 8H14" strokeWidth="1.5" />
   </svg>
-)
-export default SvgArrowsHorizontal16
+);
+export default SvgArrowsHorizontal16;

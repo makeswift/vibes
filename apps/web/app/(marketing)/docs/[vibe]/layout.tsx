@@ -1,20 +1,20 @@
-import { Header, Sidebar, toChapter } from '@/components/navigation'
-import { BrandProvider } from '@/components/preview/brand-context'
-import * as Vibes from '@/vibes'
+import { Header, Sidebar, toChapter } from '@/components/navigation';
+import { BrandProvider } from '@/components/preview/brand-context';
+import * as Vibes from '@/vibes';
 
 export default async function Layout({
   children,
   params,
 }: {
-  children: React.ReactNode
-  params: Promise<{ vibe: string }>
+  children: React.ReactNode;
+  params: Promise<{ vibe: string }>;
 }) {
-  const { vibe: vibeSlug } = await params
-  const allVibes = Object.values(Vibes)
-  const activeVibe = allVibes.find(vibe => vibe.slug === vibeSlug)
-  const chapters = Object.values(Vibes).map(toChapter)
-  const activeChapter = chapters.find(c => c.slug === vibeSlug)
-  const brands = activeVibe?.brands ?? []
+  const { vibe: vibeSlug } = await params;
+  const allVibes = Object.values(Vibes);
+  const activeVibe = allVibes.find((vibe) => vibe.slug === vibeSlug);
+  const chapters = Object.values(Vibes).map(toChapter);
+  const activeChapter = chapters.find((c) => c.slug === vibeSlug);
+  const brands = activeVibe?.brands ?? [];
 
   return (
     <>
@@ -27,5 +27,5 @@ export default async function Layout({
         </div>
       </div>
     </>
-  )
+  );
 }

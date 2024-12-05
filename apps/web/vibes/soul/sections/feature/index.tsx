@@ -1,26 +1,26 @@
-import { clsx } from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { Button } from '@/vibes/soul/primitives/button'
-import { Icon, IconName } from '@/vibes/soul/primitives/icon'
+import { Button } from '@/vibes/soul/primitives/button';
+import { Icon, IconName } from '@/vibes/soul/primitives/icon';
 
 export interface FeatureProps {
   image: {
-    src: string
-    alt: string
-  }
-  title?: string
-  description?: string
+    src: string;
+    alt: string;
+  };
+  title?: string;
+  description?: string;
   grid?: {
-    icon: IconName
-    title: string
-    description: string
-  }[]
+    icon: IconName;
+    title: string;
+    description: string;
+  }[];
   cta: {
-    href: string
-    label: string
-  }
+    href: string;
+    label: string;
+  };
 }
 
 export const Feature = function Feature({ image, title, description, grid, cta }: FeatureProps) {
@@ -74,7 +74,7 @@ export const Feature = function Feature({ image, title, description, grid, cta }
                         </span>
                       </div>
                     </li>
-                  )
+                  );
                 })}
               </ul>
             )}
@@ -90,5 +90,5 @@ export const Feature = function Feature({ image, title, description, grid, cta }
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

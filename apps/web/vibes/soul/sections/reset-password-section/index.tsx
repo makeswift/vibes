@@ -1,12 +1,12 @@
-import { ResetPasswordAction, ResetPasswordForm } from './reset-password-form'
+import { ResetPasswordAction, ResetPasswordForm } from './reset-password-form';
 
 interface Props {
-  title?: string
-  subtitle?: string
-  action: ResetPasswordAction
-  submitLabel?: string
-  newPasswordLabel?: string
-  confirmPasswordLabel?: string
+  title?: string;
+  subtitle?: string;
+  action: ResetPasswordAction;
+  submitLabel?: string;
+  newPasswordLabel?: string;
+  confirmPasswordLabel?: string;
 }
 
 export function ResetPasswordSection({
@@ -32,5 +32,5 @@ export function ResetPasswordSection({
         </div>
       </div>
     </div>
-  )
+  );
 }

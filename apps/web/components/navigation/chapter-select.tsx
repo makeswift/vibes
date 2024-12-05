@@ -1,23 +1,23 @@
-'use client'
+'use client';
 
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import { clsx } from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useMemo, useState } from 'react'
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
 
-import ChevronDown12 from '@/icons/generated/ChevronDown12'
+import ChevronDown12 from '@/icons/generated/ChevronDown12';
 
-import { Button } from '../ui/button'
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
+import { Button } from '../ui/button';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet';
 
-import { Chapter } from './navigation'
+import { Chapter } from './navigation';
 
 type ComingSoonChapter = Pick<
   Chapter,
   'name' | 'slug' | 'description' | 'author' | 'thumbnail' | 'tags'
->
+>;
 
 const comingSoonChapters = [
   {
@@ -43,34 +43,34 @@ const comingSoonChapters = [
     thumbnail: '/eclipse/thumbnail.png',
     tags: ['SaaS'],
   },
-] as const satisfies ComingSoonChapter[]
+] as const satisfies ComingSoonChapter[];
 
 interface Props {
-  chapterSlug: string
-  chapters: Chapter[]
+  chapterSlug: string;
+  chapters: Chapter[];
 }
 
 export function ChapterSelect({ chapters, chapterSlug }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
-  const activeVibe = Object.values(chapters).find(chapter => chapter.slug === chapterSlug)
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const activeVibe = Object.values(chapters).find((chapter) => chapter.slug === chapterSlug);
   const allChapters = useMemo(
     () => [
-      ...chapters.map(chapter => ({ ...chapter, comingSoon: false })),
-      ...comingSoonChapters.map(chapter => ({ ...chapter, comingSoon: true })),
+      ...chapters.map((chapter) => ({ ...chapter, comingSoon: false })),
+      ...comingSoonChapters.map((chapter) => ({ ...chapter, comingSoon: true })),
     ],
-    [chapters]
-  )
+    [chapters],
+  );
 
   useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', isOpen)
-  }, [isOpen])
+    document.body.classList.toggle('overflow-hidden', isOpen);
+  }, [isOpen]);
 
   useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
+    setIsOpen(false);
+  }, [pathname]);
 
-  if (!activeVibe) return null
+  if (!activeVibe) return null;
 
   return (
     <>
@@ -81,7 +81,7 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
             <ChevronDown12
               className={clsx(
                 'stroke-foreground transition-transform',
-                isOpen ? 'rotate-180' : 'rotate-0'
+                isOpen ? 'rotate-180' : 'rotate-0',
               )}
             />
           </Button>
@@ -91,14 +91,14 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
             <SheetTitle>VIBES</SheetTitle>
           </VisuallyHidden.Root>
           <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-8 xl:container md:grid-cols-2 md:gap-y-10 lg:gap-x-8 lg:py-2 xl:px-8 2xl:grid-cols-3">
-            {Object.values(allChapters).map(chapter => (
+            {Object.values(allChapters).map((chapter) => (
               <div key={chapter.slug}>
                 <Link
                   href={`/docs/${chapter.slug}`}
                   aria-disabled={chapter.comingSoon}
                   className={clsx(
                     'group ring-primary ring-offset-8 focus:outline-none focus-visible:ring-2',
-                    chapter.comingSoon && 'pointer-events-none'
+                    chapter.comingSoon && 'pointer-events-none',
                   )}
                 >
                   <div className="relative mb-4 aspect-video">
@@ -115,7 +115,7 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
                       alt={`Thumbnail of ${chapter.name} chapter`}
                       className={clsx(
                         'border border-contrast-200 bg-contrast-100 object-cover',
-                        chapter.comingSoon && 'opacity-50'
+                        chapter.comingSoon && 'opacity-50',
                       )}
                     />
                   </div>
@@ -154,7 +154,7 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
         </SheetContent>
       </Sheet>
       <div className="hidden" aria-hidden="true">
-        {Object.values(chapters).map(chapter => (
+        {Object.values(chapters).map((chapter) => (
           <Image
             key={chapter.slug}
             fill
@@ -165,5 +165,5 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
         ))}
       </div>
     </>
-  )
+  );
 }

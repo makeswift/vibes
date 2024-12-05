@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { Minus, Plus } from 'lucide-react'
-import { forwardRef } from 'react'
+import { clsx } from 'clsx';
+import { Minus, Plus } from 'lucide-react';
+import { forwardRef } from 'react';
 
-import { ErrorMessage } from '@/vibes/soul/form/error-message'
-import { Label } from '@/vibes/soul/form/label'
+import { ErrorMessage } from '@/vibes/soul/form/error-message';
+import { Label } from '@/vibes/soul/form/label';
 
 export const NumberInput = forwardRef<
   React.ComponentRef<'input'>,
   React.ComponentPropsWithoutRef<'input'> & {
-    label?: string
-    errors?: string[]
-    decrementLabel?: string
-    incrementLabel?: string
+    label?: string;
+    errors?: string[];
+    decrementLabel?: string;
+    incrementLabel?: string;
   }
 >(({ id, label, className, required, errors, decrementLabel, incrementLabel, ...rest }, ref) => {
   return (
@@ -22,16 +22,16 @@ export const NumberInput = forwardRef<
       <div className="inline-flex items-center rounded-lg border">
         <button
           className={clsx(
-            'group rounded-l-lg p-3.5 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
+            'group rounded-l-lg p-3.5 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
           )}
           aria-label={decrementLabel}
-          onClick={e => {
-            e.preventDefault()
+          onClick={(e) => {
+            e.preventDefault();
 
-            const input = e.currentTarget.parentElement?.querySelector('input')
+            const input = e.currentTarget.parentElement?.querySelector('input');
 
-            input?.stepDown()
-            input?.dispatchEvent(new InputEvent('change', { bubbles: true, cancelable: true }))
+            input?.stepDown();
+            input?.dispatchEvent(new InputEvent('change', { bubbles: true, cancelable: true }));
           }}
         >
           <Minus
@@ -50,13 +50,13 @@ export const NumberInput = forwardRef<
         <button
           className="group rounded-r-lg p-3.5 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           aria-label={incrementLabel}
-          onClick={e => {
-            e.preventDefault()
+          onClick={(e) => {
+            e.preventDefault();
 
-            const input = e.currentTarget.parentElement?.querySelector('input')
+            const input = e.currentTarget.parentElement?.querySelector('input');
 
-            input?.stepUp()
-            input?.dispatchEvent(new InputEvent('change', { bubbles: true, cancelable: true }))
+            input?.stepUp();
+            input?.dispatchEvent(new InputEvent('change', { bubbles: true, cancelable: true }));
           }}
         >
           <Plus
@@ -66,9 +66,9 @@ export const NumberInput = forwardRef<
           />
         </button>
       </div>
-      {errors?.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
+      {errors?.map((error) => <ErrorMessage key={error}>{error}</ErrorMessage>)}
     </div>
-  )
-})
+  );
+});
 
-NumberInput.displayName = 'NumberInput'
+NumberInput.displayName = 'NumberInput';

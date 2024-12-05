@@ -1,25 +1,25 @@
-'use client'
+'use client';
 
-import * as SelectPrimitive from '@radix-ui/react-select'
-import { clsx } from 'clsx'
-import { ChevronDown, ChevronUp } from 'lucide-react'
-import * as React from 'react'
+import * as SelectPrimitive from '@radix-ui/react-select';
+import { clsx } from 'clsx';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import * as React from 'react';
 
-import { ErrorMessage } from '@/vibes/soul/form/error-message'
-import { Label } from '@/vibes/soul/form/label'
+import { ErrorMessage } from '@/vibes/soul/form/error-message';
+import { Label } from '@/vibes/soul/form/label';
 
 type Props = {
-  id?: string
-  name: string
-  placeholder?: string
-  label?: string
-  variant?: 'round' | 'rectangle'
-  options: { label: string; value: string }[]
-  className?: string
-  errors?: string[]
-  onFocus?: (e: React.FocusEvent<HTMLButtonElement>) => void
-  onBlur?: (e: React.FocusEvent<HTMLButtonElement>) => void
-} & React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
+  id?: string;
+  name: string;
+  placeholder?: string;
+  label?: string;
+  variant?: 'round' | 'rectangle';
+  options: { label: string; value: string }[];
+  className?: string;
+  errors?: string[];
+  onFocus?: (e: React.FocusEvent<HTMLButtonElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLButtonElement>) => void;
+} & React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>;
 
 export function Select({
   id,
@@ -46,7 +46,7 @@ export function Select({
           className={clsx(
             'flex h-fit w-full select-none items-center justify-between gap-3 border bg-white p-2 px-5 py-3 text-sm font-medium text-foreground ring-primary transition-colors hover:border-contrast-300 hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2',
             variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',
-            errors && errors.length > 0 ? 'border-error' : 'border-contrast-100'
+            errors && errors.length > 0 ? 'border-error' : 'border-contrast-100',
           )}
         >
           <SelectPrimitive.Value placeholder={placeholder} />
@@ -60,7 +60,7 @@ export function Select({
               <ChevronUp strokeWidth={1.5} className="w-5 text-foreground" />
             </SelectPrimitive.ScrollUpButton>
             <SelectPrimitive.Viewport>
-              {options.map(option => (
+              {options.map((option) => (
                 <SelectPrimitive.Item
                   key={option.value}
                   value={option.value}
@@ -76,7 +76,7 @@ export function Select({
           </SelectPrimitive.Content>
         </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
-      {errors?.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
+      {errors?.map((error) => <ErrorMessage key={error}>{error}</ErrorMessage>)}
     </div>
-  )
+  );
 }

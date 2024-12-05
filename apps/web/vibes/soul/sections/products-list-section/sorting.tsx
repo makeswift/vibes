@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import { parseAsString, useQueryState } from 'nuqs'
-import { Suspense, use, useOptimistic } from 'react'
+import { parseAsString, useQueryState } from 'nuqs';
+import { Suspense, use, useOptimistic } from 'react';
 
-import { Select } from '@/vibes/soul/form/select'
-import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable'
+import { Select } from '@/vibes/soul/form/select';
+import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable';
 
-import { ProductListTransitionContext } from './context'
+import { ProductListTransitionContext } from './context';
 
 export interface Option {
-  label: string
-  value: string
+  label: string;
+  value: string;
 }
 
 export function Sorting({
@@ -19,10 +19,10 @@ export function Sorting({
   paramName = 'sort',
   defaultValue = '',
 }: {
-  label?: string
-  options: Streamable<Option[]>
-  paramName?: string
-  defaultValue?: string
+  label?: string;
+  options: Streamable<Option[]>;
+  paramName?: string;
+  defaultValue?: string;
 }) {
   return (
     <Suspense fallback={<SortingSkeleton />}>
@@ -33,7 +33,7 @@ export function Sorting({
         defaultValue={defaultValue}
       />
     </Suspense>
-  )
+  );
 }
 
 function SortingInner({
@@ -42,18 +42,18 @@ function SortingInner({
   options: streamableOptions,
   label,
 }: {
-  paramName: string
-  defaultValue: string
-  options: Streamable<Option[]>
-  label: string
+  paramName: string;
+  defaultValue: string;
+  options: Streamable<Option[]>;
+  label: string;
 }) {
   const [param, setParam] = useQueryState(
     paramName,
-    parseAsString.withDefault(defaultValue).withOptions({ shallow: false, history: 'push' })
-  )
-  const [optimisticParam, setOptimisticParam] = useOptimistic(param)
-  const [, startTransition] = use(ProductListTransitionContext)
-  const options = useStreamable(streamableOptions)
+    parseAsString.withDefault(defaultValue).withOptions({ shallow: false, history: 'push' }),
+  );
+  const [optimisticParam, setOptimisticParam] = useOptimistic(param);
+  const [, startTransition] = use(ProductListTransitionContext);
+  const options = useStreamable(streamableOptions);
 
   return (
     <Select
@@ -62,16 +62,16 @@ function SortingInner({
       variant="round"
       options={options}
       value={optimisticParam}
-      onValueChange={value => {
+      onValueChange={(value) => {
         startTransition(async () => {
-          setOptimisticParam(value)
-          await setParam(value)
-        })
+          setOptimisticParam(value);
+          await setParam(value);
+        });
       }}
     />
-  )
+  );
 }
 
 function SortingSkeleton() {
-  return <div className="h-[50px] w-[12ch] animate-pulse rounded-full bg-contrast-100" />
+  return <div className="h-[50px] w-[12ch] animate-pulse rounded-full bg-contrast-100" />;
 }

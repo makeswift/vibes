@@ -1,14 +1,14 @@
-import { clsx } from 'clsx'
-import { ArrowUpRight } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { clsx } from 'clsx';
+import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export interface CardProps {
-  className?: string
-  title: string
-  image?: { src: string; alt: string }
-  href: string
-  textContrast?: 'light' | 'dark'
+  className?: string;
+  title: string;
+  image?: { src: string; alt: string };
+  href: string;
+  textContrast?: 'light' | 'dark';
 }
 
 export function Card({ className, title, image, href, textContrast = 'dark' }: CardProps) {
@@ -22,7 +22,7 @@ export function Card({ className, title, image, href, textContrast = 'dark' }: C
           strokeWidth={1.5}
           className={clsx(
             'absolute right-2.5 top-2.5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
-            textContrast === 'light' ? 'text-background' : 'text-foreground'
+            textContrast === 'light' ? 'text-background' : 'text-foreground',
           )}
         />
         <div className="relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100">
@@ -43,14 +43,14 @@ export function Card({ className, title, image, href, textContrast = 'dark' }: C
         <span
           className={clsx(
             'line-clamp-1 text-lg font-medium text-foreground',
-            textContrast === 'light' ? '@4xl:text-background' : '@4xl:text-foreground'
+            textContrast === 'light' ? '@4xl:text-background' : '@4xl:text-foreground',
           )}
         >
           {title}
         </span>
       </Link>
     </div>
-  )
+  );
 }
 
 export function CardSkeleton() {
@@ -61,5 +61,5 @@ export function CardSkeleton() {
       {/* Title */}
       <div className="mb-1 line-clamp-1 h-6 w-20 rounded-lg bg-contrast-100 @4xl:absolute @4xl:bottom-5 @4xl:left-5" />
     </div>
-  )
+  );
 }

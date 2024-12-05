@@ -1,11 +1,11 @@
-import { clsx } from 'clsx'
-import * as React from 'react'
+import { clsx } from 'clsx';
+import * as React from 'react';
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode
-  variant?: 'default' | 'ghost' | 'link'
-  size?: 'large' | 'medium' | 'small' | 'icon'
-  active?: boolean
+  children?: React.ReactNode;
+  variant?: 'default' | 'ghost' | 'link';
+  size?: 'large' | 'medium' | 'small' | 'icon';
+  active?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, Props>(
@@ -33,16 +33,16 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
             }[size],
             active
               ? 'text-foreground'
-              : 'text-contrast-300 hover:text-contrast-400 [&_svg]:stroke-current'
+              : 'text-contrast-300 hover:text-contrast-400 [&_svg]:stroke-current',
           )}
         >
           {children}
         </span>
       </button>
-    )
-  }
-)
+    );
+  },
+);
 
-Button.displayName = 'Button'
+Button.displayName = 'Button';
 
-export { Button }
+export { Button };

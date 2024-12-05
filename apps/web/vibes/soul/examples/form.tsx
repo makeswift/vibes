@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import { ButtonRadioGroup } from '../form/button-radio-group'
-import { CardRadioGroup } from '../form/card-radio-group'
-import { Checkbox } from '../form/checkbox'
-import { DatePicker } from '../form/date-picker'
-import { Input } from '../form/input'
-import { NumberInput } from '../form/number-input'
-import { RadioGroup } from '../form/radio-group'
-import { Select } from '../form/select'
-import { SwatchRadioGroup } from '../form/swatch-radio-group'
-import { Textarea } from '../form/textarea'
-import { ToggleGroup } from '../form/toggle-group'
+import { ButtonRadioGroup } from '../form/button-radio-group';
+import { CardRadioGroup } from '../form/card-radio-group';
+import { Checkbox } from '../form/checkbox';
+import { DatePicker } from '../form/date-picker';
+import { Input } from '../form/input';
+import { NumberInput } from '../form/number-input';
+import { RadioGroup } from '../form/radio-group';
+import { Select } from '../form/select';
+import { SwatchRadioGroup } from '../form/swatch-radio-group';
+import { Textarea } from '../form/textarea';
+import { ToggleGroup } from '../form/toggle-group';
 
 export default function Preview() {
   return (
@@ -156,5 +156,5 @@ export default function Preview() {
         ]}
       />
     </div>
-  )
+  );
 }

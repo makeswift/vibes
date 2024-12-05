@@ -1,4 +1,4 @@
-import { Components } from '@/vibes/schema'
+import { Components } from '@/vibes/schema';
 
 export const sections = [
   {
@@ -196,4 +196,4 @@ export const sections = [
     registryDependencies: ['input'],
     files: ['sections/subscribe/index.tsx'],
   },
-] satisfies Components
+] satisfies Components;

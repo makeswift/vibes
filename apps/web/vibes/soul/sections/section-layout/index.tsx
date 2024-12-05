@@ -1,13 +1,13 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
 export function SectionLayout({
   className,
   children,
   containerSize = '2xl',
 }: {
-  className?: string
-  children: React.ReactNode
-  containerSize?: 'lg' | 'xl' | '2xl'
+  className?: string;
+  children: React.ReactNode;
+  containerSize?: 'lg' | 'xl' | '2xl';
 }) {
   return (
     <section className={clsx('@container', className)}>
@@ -18,11 +18,11 @@ export function SectionLayout({
             lg: 'max-w-screen-lg',
             xl: 'max-w-screen-xl',
             '2xl': 'max-w-screen-2xl',
-          }[containerSize]
+          }[containerSize],
         )}
       >
         {children}
       </div>
     </section>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { OpenSourceBack, OpenSourceFront, OpenSourceShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { OpenSourceBack, OpenSourceFront, OpenSourceShadow } from '@/icons/generated';
 
 export function OpenSource() {
   return (
@@ -28,5 +28,5 @@ export function OpenSource() {
         </Transition>
       )}
     </Draggable>
-  )
+  );
 }

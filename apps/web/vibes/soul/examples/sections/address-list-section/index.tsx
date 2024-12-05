@@ -1,6 +1,6 @@
-import { Address, AddressListSection } from '@/vibes/soul/sections/address-list-section'
+import { Address, AddressListSection } from '@/vibes/soul/sections/address-list-section';
 
-import { addressAction } from './actions'
+import { addressAction } from './actions';
 
 const addresses: Address[] = [
   {
@@ -24,7 +24,7 @@ const addresses: Address[] = [
     postalCode: '94105',
     country: 'United States',
   },
-]
+];
 
 export default function Preview() {
   return (
@@ -35,5 +35,5 @@ export default function Preview() {
         addressAction={addressAction}
       />
     </div>
-  )
+  );
 }

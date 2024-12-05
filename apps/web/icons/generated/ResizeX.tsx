@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgResizeX = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={28} height={16} fill="none" {...props}>
@@ -35,5 +35,5 @@ const SvgResizeX = (props: SVGProps<SVGSVGElement>) => (
       </filter>
     </defs>
   </svg>
-)
-export default SvgResizeX
+);
+export default SvgResizeX;

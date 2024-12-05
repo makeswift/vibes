@@ -1,68 +1,68 @@
-'use client'
+'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { parseWithZod } from '@conform-to/zod'
-import { clsx } from 'clsx'
-import { ArrowRight, Minus, Plus, Trash2 } from 'lucide-react'
-import Image from 'next/image'
-import { Suspense, startTransition, use, useActionState, useEffect, useOptimistic } from 'react'
-import { useFormStatus } from 'react-dom'
+import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { parseWithZod } from '@conform-to/zod';
+import { clsx } from 'clsx';
+import { ArrowRight, Minus, Plus, Trash2 } from 'lucide-react';
+import Image from 'next/image';
+import { Suspense, startTransition, use, useActionState, useEffect, useOptimistic } from 'react';
+import { useFormStatus } from 'react-dom';
 
-import { Button } from '@/vibes/soul/primitives/button'
-import { ButtonLink } from '@/vibes/soul/primitives/button-link'
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
+import { Button } from '@/vibes/soul/primitives/button';
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
-import { cartLineItemActionFormDataSchema } from './schema'
+import { cartLineItemActionFormDataSchema } from './schema';
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
 export interface CartLineItem {
-  id: string
-  image: { alt: string; src: string }
-  title: string
-  subtitle: string
-  quantity: number
-  price: string
+  id: string;
+  image: { alt: string; src: string };
+  title: string;
+  subtitle: string;
+  quantity: number;
+  price: string;
 }
 
 interface CartSummary {
-  title?: string
-  caption?: string
-  subtotalLabel?: string
-  subtotal: string | Promise<string>
-  shippingLabel?: string
-  shipping?: string
-  taxLabel?: string
-  tax?: string | Promise<string>
-  grandTotalLabel?: string
-  grandTotal?: string | Promise<string>
-  ctaLabel?: string
+  title?: string;
+  caption?: string;
+  subtotalLabel?: string;
+  subtotal: string | Promise<string>;
+  shippingLabel?: string;
+  shipping?: string;
+  taxLabel?: string;
+  tax?: string | Promise<string>;
+  grandTotalLabel?: string;
+  grandTotal?: string | Promise<string>;
+  ctaLabel?: string;
 }
 
 interface CartEmptyState {
-  title: string
-  subtitle: string
+  title: string;
+  subtitle: string;
   cta: {
-    label: string
-    href: string
-  }
+    label: string;
+    href: string;
+  };
 }
 
 interface CartState<LineItem extends CartLineItem> {
-  lineItems: LineItem[]
-  lastResult: SubmissionResult | null
+  lineItems: LineItem[];
+  lastResult: SubmissionResult | null;
 }
 
 interface CartProps<LineItem extends CartLineItem> {
-  title?: string
-  lineItems: LineItem[] | Promise<LineItem[]>
-  summary: CartSummary
-  emptyState: CartEmptyState
-  lineItemAction: Action<CartState<LineItem>, FormData>
-  checkoutAction: Action<SubmissionResult | null, FormData>
-  deleteLineItemLabel?: string
-  decrementLineItemLabel?: string
-  incrementLineItemLabel?: string
+  title?: string;
+  lineItems: LineItem[] | Promise<LineItem[]>;
+  summary: CartSummary;
+  emptyState: CartEmptyState;
+  lineItemAction: Action<CartState<LineItem>, FormData>;
+  checkoutAction: Action<SubmissionResult | null, FormData>;
+  deleteLineItemLabel?: string;
+  decrementLineItemLabel?: string;
+  incrementLineItemLabel?: string;
 }
 
 export function Cart<LineItem extends CartLineItem>({
@@ -90,7 +90,7 @@ export function Cart<LineItem extends CartLineItem>({
         title={title}
       />
     </Suspense>
-  )
+  );
 }
 
 function CartInner<LineItem extends CartLineItem>({
@@ -114,53 +114,53 @@ function CartInner<LineItem extends CartLineItem>({
   lineItemAction,
   checkoutAction,
 }: CartProps<LineItem>) {
-  const resolvedLineItems = lineItems instanceof Promise ? use(lineItems) : lineItems
+  const resolvedLineItems = lineItems instanceof Promise ? use(lineItems) : lineItems;
 
   const [state, formAction] = useActionState(lineItemAction, {
     lineItems: resolvedLineItems,
     lastResult: null,
-  })
+  });
 
   const [optimisticLineItems, setOptimisticLineItems] = useOptimistic<CartLineItem[], FormData>(
     state.lineItems,
     (prevState, formData) => {
-      const submission = parseWithZod(formData, { schema: cartLineItemActionFormDataSchema })
+      const submission = parseWithZod(formData, { schema: cartLineItemActionFormDataSchema });
 
-      if (submission.status !== 'success') return prevState
+      if (submission.status !== 'success') return prevState;
 
       switch (submission.value.intent) {
         case 'increment': {
-          const { id } = submission.value
+          const { id } = submission.value;
 
-          return prevState.map(item =>
-            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-          )
+          return prevState.map((item) =>
+            item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+          );
         }
 
         case 'decrement': {
-          const { id } = submission.value
+          const { id } = submission.value;
 
-          return prevState.map(item =>
-            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-          )
+          return prevState.map((item) =>
+            item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+          );
         }
 
         case 'delete': {
-          const { id } = submission.value
+          const { id } = submission.value;
 
-          return prevState.filter(item => item.id !== id)
+          return prevState.filter((item) => item.id !== id);
         }
 
         default:
-          return prevState
+          return prevState;
       }
-    }
-  )
+    },
+  );
 
-  const optimisticQuantity = optimisticLineItems.reduce((total, item) => total + item.quantity, 0)
+  const optimisticQuantity = optimisticLineItems.reduce((total, item) => total + item.quantity, 0);
 
   if (optimisticLineItems.length === 0) {
-    return <CartEmptyState {...emptyState} />
+    return <CartEmptyState {...emptyState} />;
   }
 
   return (
@@ -219,7 +219,7 @@ function CartInner<LineItem extends CartLineItem>({
 
         {/* Cart Items */}
         <ul className="flex flex-col gap-5 @container">
-          {optimisticLineItems.map(lineItem => (
+          {optimisticLineItems.map((lineItem) => (
             <li
               className="flex flex-col items-start gap-x-5 gap-y-6 @container @sm:flex-row @sm:gap-y-4"
               key={lineItem.id}
@@ -244,11 +244,11 @@ function CartInner<LineItem extends CartLineItem>({
                   deleteLabel={deleteLineItemLabel}
                   incrementLabel={incrementLineItemLabel}
                   lineItem={lineItem}
-                  onSubmit={formData => {
+                  onSubmit={(formData) => {
                     startTransition(() => {
-                      formAction(formData)
-                      setOptimisticLineItems(formData)
-                    })
+                      formAction(formData);
+                      setOptimisticLineItems(formData);
+                    });
                   }}
                 />
               </div>
@@ -257,7 +257,7 @@ function CartInner<LineItem extends CartLineItem>({
         </ul>
       </div>
     </StickySidebarLayout>
-  )
+  );
 }
 
 function CounterForm({
@@ -268,26 +268,26 @@ function CounterForm({
   decrementLabel = 'Decrease count',
   deleteLabel = 'Remove item',
 }: {
-  lineItem: CartLineItem
-  incrementLabel?: string
-  decrementLabel?: string
-  deleteLabel?: string
-  action(payload: FormData): void
-  onSubmit(formData: FormData): void
+  lineItem: CartLineItem;
+  incrementLabel?: string;
+  decrementLabel?: string;
+  deleteLabel?: string;
+  action(payload: FormData): void;
+  onSubmit(formData: FormData): void;
 }) {
   const [form, fields] = useForm({
     defaultValue: { id: lineItem.id },
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: cartLineItemActionFormDataSchema })
+      return parseWithZod(formData, { schema: cartLineItemActionFormDataSchema });
     },
     onSubmit(event, { formData }) {
-      event.preventDefault()
+      event.preventDefault();
 
-      onSubmit(formData)
+      onSubmit(formData);
     },
-  })
+  });
 
   return (
     <form {...getFormProps(form)} action={action}>
@@ -301,7 +301,7 @@ function CounterForm({
             aria-label={decrementLabel}
             className={clsx(
               'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
-              lineItem.quantity === 1 ? 'opacity-50' : 'hover:bg-contrast-100/50'
+              lineItem.quantity === 1 ? 'opacity-50' : 'hover:bg-contrast-100/50',
             )}
             disabled={lineItem.quantity === 1}
             name="intent"
@@ -311,7 +311,7 @@ function CounterForm({
             <Minus
               className={clsx(
                 'text-contrast-300 transition-colors duration-300',
-                lineItem.quantity !== 1 && 'group-hover:text-foreground'
+                lineItem.quantity !== 1 && 'group-hover:text-foreground',
               )}
               size={18}
               strokeWidth={1.5}
@@ -323,7 +323,7 @@ function CounterForm({
           <button
             aria-label={incrementLabel}
             className={clsx(
-              'group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
+              'group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
             )}
             name="intent"
             type="submit"
@@ -348,7 +348,7 @@ function CounterForm({
         </button>
       </div>
     </form>
-  )
+  );
 }
 
 function CheckoutButton({
@@ -357,25 +357,25 @@ function CheckoutButton({
 }: { action: Action<SubmissionResult | null, FormData> } & React.ComponentPropsWithoutRef<
   typeof Button
 >) {
-  const [lastResult, formAction] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null);
 
   useEffect(() => {
     if (lastResult?.error) {
-      console.log(lastResult.error)
+      console.log(lastResult.error);
     }
-  }, [lastResult?.error])
+  }, [lastResult?.error]);
 
   return (
     <form action={formAction}>
       <SubmitButton {...rest} />
     </form>
-  )
+  );
 }
 
 function SubmitButton(props: React.ComponentPropsWithoutRef<typeof Button>) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
-  return <Button {...props} loading={pending} disabled={pending} type="submit" />
+  return <Button {...props} loading={pending} disabled={pending} type="submit" />;
 }
 
 export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
@@ -391,7 +391,7 @@ export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
         <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
       </div>
     </div>
-  )
+  );
 }
 
 export function CartSkeleton({ title = 'Cart' }: { title?: string }) {
@@ -469,5 +469,5 @@ export function CartSkeleton({ title = 'Cart' }: { title?: string }) {
         </ul>
       </div>
     </StickySidebarLayout>
-  )
+  );
 }

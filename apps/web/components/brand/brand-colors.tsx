@@ -1,11 +1,11 @@
-import { hsl } from 'color'
+import { hsl } from 'color';
 
-import { CopyButton } from '@/components/ui/copy-button'
-import { Brand } from '@/vibes/schema'
+import { CopyButton } from '@/components/ui/copy-button';
+import { Brand } from '@/vibes/schema';
 
 interface Color {
-  name: string
-  value: string
+  name: string;
+  value: string;
 }
 
 export function Colors({ colors }: { colors: Color[] }) {
@@ -27,10 +27,10 @@ export function Colors({ colors }: { colors: Color[] }) {
               />
             </div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
 /**
@@ -48,10 +48,10 @@ export function Colors({ colors }: { colors: Color[] }) {
  * @see https://tailwindcss.com/docs/customizing-colors#using-css-variables
  */
 function hslChannelsToHex(hslChannels: string): string {
-  return hsl(`hsl(${hslChannels})`).hex().toString()
+  return hsl(`hsl(${hslChannels})`).hex().toString();
 }
 
-const brandColors = ['--primary', '--accent', '--success', '--warning', '--error'] as const
+const brandColors = ['--primary', '--accent', '--success', '--warning', '--error'] as const;
 
 const neutralColors = [
   '--foreground',
@@ -61,12 +61,12 @@ const neutralColors = [
   '--contrast-400',
   '--contrast-500',
   '--background',
-] as const
+] as const;
 
 export function BrandColors({ brands, brandName }: { brands: Brand[]; brandName: string }) {
-  const brand = brands.find(b => b.name === brandName)
+  const brand = brands.find((b) => b.name === brandName);
 
-  if (!brand) return <div>Brand: {brandName} not found</div>
+  if (!brand) return <div>Brand: {brandName} not found</div>;
 
   return (
     <>
@@ -74,18 +74,18 @@ export function BrandColors({ brands, brandName }: { brands: Brand[]; brandName:
         Brand
       </h3>
       <Colors
-        colors={brandColors.map(name => ({
+        colors={brandColors.map((name) => ({
           name: name.replace('--', ''),
           value: hslChannelsToHex(brand.cssVars[name]),
         }))}
       />
       <h3 id="neutrals">Neutrals</h3>
       <Colors
-        colors={neutralColors.map(name => ({
+        colors={neutralColors.map((name) => ({
           name: name.replace('--', ''),
           value: hslChannelsToHex(brand.cssVars[name]),
         }))}
       />
     </>
-  )
+  );
 }

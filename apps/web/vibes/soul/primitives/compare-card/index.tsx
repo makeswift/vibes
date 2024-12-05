@@ -1,22 +1,26 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
-import { Button } from '@/vibes/soul/primitives/button'
-import { CardProduct, ProductCard, ProductCardSkeleton } from '@/vibes/soul/primitives/product-card'
-import { Rating } from '@/vibes/soul/primitives/rating'
+import { Button } from '@/vibes/soul/primitives/button';
+import {
+  CardProduct,
+  ProductCard,
+  ProductCardSkeleton,
+} from '@/vibes/soul/primitives/product-card';
+import { Rating } from '@/vibes/soul/primitives/rating';
 
 export type CompareProduct = CardProduct & {
-  description?: string
-  customFields?: { name: string; value: string }[]
-}
+  description?: string;
+  customFields?: { name: string; value: string }[];
+};
 
 export interface Props {
-  className?: string
-  product: CompareProduct
-  addToCartLabel?: string
-  descriptionLabel?: string
-  ratingLabel?: string
-  otherDetailsLabel?: string
-  addToCartAction?(id: string): Promise<void>
+  className?: string;
+  product: CompareProduct;
+  addToCartLabel?: string;
+  descriptionLabel?: string;
+  ratingLabel?: string;
+  otherDetailsLabel?: string;
+  addToCartAction?(id: string): Promise<void>;
 }
 
 export function CompareCard({
@@ -79,7 +83,7 @@ export function CompareCard({
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export function CompareCardSkeleton({ className }: { className?: string }) {
@@ -87,7 +91,7 @@ export function CompareCardSkeleton({ className }: { className?: string }) {
     <div
       className={clsx(
         'flex w-full animate-pulse flex-col divide-y divide-contrast-100 @container',
-        className
+        className,
       )}
     >
       <div className="mb-2 space-y-4 pb-4">
@@ -105,5 +109,5 @@ export function CompareCardSkeleton({ className }: { className?: string }) {
         <div className="h-[1lh] rounded-md bg-contrast-100 text-sm"></div>
       </div>
     </div>
-  )
+  );
 }

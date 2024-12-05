@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const schema = z.object({
   id: z.string(),
@@ -12,4 +12,4 @@ export const schema = z.object({
   postalCode: z.string().optional(),
   phone: z.string().optional(),
   country: z.string(),
-})
+});

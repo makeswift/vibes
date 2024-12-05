@@ -1,7 +1,7 @@
-import { locales } from '@/vibes/soul/data/locales'
-import { Navigation } from '@/vibes/soul/primitives/navigation'
+import { locales } from '@/vibes/soul/data/locales';
+import { Navigation } from '@/vibes/soul/primitives/navigation';
 
-import { localeAction, searchAction } from './actions'
+import { localeAction, searchAction } from './actions';
 
 export const navigationLinks = [
   {
@@ -71,12 +71,12 @@ export const navigationLinks = [
       },
     ],
   },
-]
+];
 
 export const logo = {
   src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID',
   alt: 'Freda Salvador Logo',
-}
+};
 
 export default function Preview() {
   return (
@@ -94,5 +94,5 @@ export default function Preview() {
         searchCtaLabel="View all items"
       />
     </div>
-  )
+  );
 }

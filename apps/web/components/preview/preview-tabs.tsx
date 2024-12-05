@@ -1,40 +1,40 @@
-'use client'
+'use client';
 
-import * as Dialog from '@radix-ui/react-dialog'
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import { clsx } from 'clsx'
-import { useState } from 'react'
+import * as Dialog from '@radix-ui/react-dialog';
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+import { clsx } from 'clsx';
+import { useState } from 'react';
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Desktop16, Expand16, Phone16, Tablet16, Times16 } from '@/icons/generated'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Desktop16, Expand16, Phone16, Tablet16, Times16 } from '@/icons/generated';
 
-import { Button } from '../ui/button'
-import { CopyButton } from '../ui/copy-button'
+import { Button } from '../ui/button';
+import { CopyButton } from '../ui/copy-button';
 
-import { useBrandContext } from './brand-context'
-import { BrandSelect } from './brand-select'
-import { usePreviewContext } from './preview-context'
+import { useBrandContext } from './brand-context';
+import { BrandSelect } from './brand-select';
+import { usePreviewContext } from './preview-context';
 
 interface Props {
   components: {
-    brandName: string | null
-    preview: React.ReactNode
-    code: React.ReactNode
-    clipboard: string
-  }[]
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+    brandName: string | null;
+    preview: React.ReactNode;
+    code: React.ReactNode;
+    clipboard: string;
+  }[];
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export function PreviewTabs({ components, size = 'md' }: Props) {
-  const { activeBrand } = useBrandContext()
-  const { width, isDragging, zoom, resize, tab, setTab } = usePreviewContext()
-  const [fullScreen, setFullScreen] = useState(false)
-  const actualWidth = width != null ? width / zoom : null
+  const { activeBrand } = useBrandContext();
+  const { width, isDragging, zoom, resize, tab, setTab } = usePreviewContext();
+  const [fullScreen, setFullScreen] = useState(false);
+  const actualWidth = width != null ? width / zoom : null;
 
   const { preview, code, clipboard } =
     components.find(({ brandName }) => brandName === null || brandName === activeBrand?.name) ??
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    components[0]!
+    components[0]!;
 
   const content = (
     <Tabs
@@ -103,8 +103,8 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
                 variant="ghost"
                 size="icon"
                 onClick={() => {
-                  setFullScreen(prev => !prev)
-                  resize(null)
+                  setFullScreen((prev) => !prev);
+                  resize(null);
                 }}
               >
                 <span className="sr-only">Fullscreen</span>
@@ -126,7 +126,7 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
                   md: 'h-[600px] max-h-[70vh]',
                   lg: 'h-[800px] max-h-[70vh]',
                   xl: 'h-[1000px] max-h-[70vh]',
-                }[size]
+                }[size],
           )}
         >
           {preview}
@@ -144,14 +144,14 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
                   md: 'max-h-[min(600px,70vh)]',
                   lg: 'max-h-[min(800px,70vh)]',
                   xl: 'max-h-[min(1000px,70vh)]',
-                }[size]
+                }[size],
           )}
         >
           {code}
         </div>
       </TabsContent>
     </Tabs>
-  )
+  );
 
   return (
     <Dialog.Root onOpenChange={setFullScreen} open={fullScreen}>
@@ -169,5 +169,5 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
         content
       )}
     </Dialog.Root>
-  )
+  );
 }

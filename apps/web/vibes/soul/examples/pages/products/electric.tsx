@@ -1,19 +1,19 @@
-import { getFilters, getProducts, getSortOptions } from '@/vibes/soul/data'
-import { locales } from '@/vibes/soul/data/locales'
-import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric'
-import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
-import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
-import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric'
-import { Banner } from '@/vibes/soul/primitives/banner'
-import { Navigation } from '@/vibes/soul/primitives/navigation'
-import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
-import { Footer } from '@/vibes/soul/sections/footer'
-import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'
+import { getFilters, getProducts, getSortOptions } from '@/vibes/soul/data';
+import { locales } from '@/vibes/soul/data/locales';
+import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric';
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
+import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
+import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric';
+import { Banner } from '@/vibes/soul/primitives/banner';
+import { Navigation } from '@/vibes/soul/primitives/navigation';
+import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
+import { Footer } from '@/vibes/soul/sections/footer';
+import { ProductsListSection } from '@/vibes/soul/sections/products-list-section';
 
 export default async function Preview() {
-  const productsPromise = getProducts('Electric')
-  const sortOptions = getSortOptions()
-  const filters = getFilters('Electric')
+  const productsPromise = getProducts('Electric');
+  const sortOptions = getSortOptions();
+  const filters = getFilters('Electric');
 
   return (
     <>
@@ -35,12 +35,12 @@ export default async function Preview() {
         breadcrumbs={breadcrumbs}
         title="All Plants"
         products={productsPromise}
-        totalCount={productsPromise.then(products => products.length)}
+        totalCount={productsPromise.then((products) => products.length)}
         sortOptions={sortOptions}
         filters={filters}
       />
       <FeaturedProductsCarousel title="Recently Viewed" products={productsPromise} />
       <Footer sections={footerLinks} logo={logo} copyright={copyright} />
     </>
-  )
+  );
 }

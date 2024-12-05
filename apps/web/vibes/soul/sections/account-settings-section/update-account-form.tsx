@@ -1,25 +1,25 @@
-'use client'
+'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { useActionState, useEffect } from 'react'
-import { useFormStatus } from 'react-dom'
+import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { getZodConstraint, parseWithZod } from '@conform-to/zod';
+import { useActionState, useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
 
-import { Input } from '@/vibes/soul/form/input'
-import { Button } from '@/vibes/soul/primitives/button'
+import { Input } from '@/vibes/soul/form/input';
+import { Button } from '@/vibes/soul/primitives/button';
 
-import { updateAccountSchema } from './schema'
+import { updateAccountSchema } from './schema';
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
-export type UpdateAccountAction = Action<SubmissionResult | null, FormData>
+export type UpdateAccountAction = Action<SubmissionResult | null, FormData>;
 
 interface Props {
-  action: UpdateAccountAction
-  firstNameLabel?: string
-  lastNameLabel?: string
-  emailLabel?: string
-  submitLabel?: string
+  action: UpdateAccountAction;
+  firstNameLabel?: string;
+  lastNameLabel?: string;
+  emailLabel?: string;
+  submitLabel?: string;
 }
 
 export function UpdateAccountForm({
@@ -29,21 +29,21 @@ export function UpdateAccountForm({
   emailLabel = 'Email',
   submitLabel = 'Update',
 }: Props) {
-  const [lastResult, formAction] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null);
   const [form, fields] = useForm({
     constraint: getZodConstraint(updateAccountSchema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: updateAccountSchema })
+      return parseWithZod(formData, { schema: updateAccountSchema });
     },
-  })
+  });
 
   useEffect(() => {
     if (lastResult?.error) {
-      console.log(lastResult.error)
+      console.log(lastResult.error);
     }
-  }, [lastResult])
+  }, [lastResult]);
 
   return (
     <form {...getFormProps(form)} action={formAction} className="space-y-5">
@@ -69,15 +69,15 @@ export function UpdateAccountForm({
       />
       <SubmitButton>{submitLabel}</SubmitButton>
     </form>
-  )
+  );
 }
 
 function SubmitButton({ children }: { children: React.ReactNode }) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <Button loading={pending} size="small" type="submit" variant="secondary">
       {children}
     </Button>
-  )
+  );
 }

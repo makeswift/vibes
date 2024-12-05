@@ -1,12 +1,12 @@
-import { locales } from '@/vibes/soul/data/locales'
-import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions'
-import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
-import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
-import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
-import { Banner } from '@/vibes/soul/primitives/banner'
-import { Navigation } from '@/vibes/soul/primitives/navigation'
-import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list'
-import { Footer } from '@/vibes/soul/sections/footer'
+import { locales } from '@/vibes/soul/data/locales';
+import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
+import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
+import { Banner } from '@/vibes/soul/primitives/banner';
+import { Navigation } from '@/vibes/soul/primitives/navigation';
+import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
+import { Footer } from '@/vibes/soul/sections/footer';
 import {
   Amex,
   ApplePay,
@@ -15,9 +15,9 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/sections/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
-import { Subscribe } from '@/vibes/soul/sections/subscribe'
+} from '@/vibes/soul/sections/footer/payment-icons';
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
+import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
 const socialMediaLinks = [
   {
@@ -36,7 +36,7 @@ const socialMediaLinks = [
     href: '#',
     icon: <Youtube />,
   },
-]
+];
 
 const paymentIconsArray: React.ReactNode[] = [
   <Visa key="Visa" />,
@@ -46,7 +46,7 @@ const paymentIconsArray: React.ReactNode[] = [
   <GooglePay key="GooglePay" />,
   <ApplePay key="ApplePay" />,
   <Bitcoin key="Bitcoin" />,
-]
+];
 
 export default function Preview() {
   return (
@@ -124,5 +124,5 @@ export default function Preview() {
         socialMediaLinks={socialMediaLinks}
       />
     </>
-  )
+  );
 }

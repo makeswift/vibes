@@ -1,18 +1,18 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';
 
 export interface AccordionItem {
-  title: string
-  content: React.ReactNode
+  title: string;
+  content: React.ReactNode;
 }
 
 interface Props {
-  accordions: AccordionItem[]
+  accordions: AccordionItem[];
   image?: {
-    src: string
-    alt: string
-  }
+    src: string;
+    alt: string;
+  };
 }
 
 export function ProductDescription({ accordions, image }: Props) {
@@ -44,5 +44,5 @@ export function ProductDescription({ accordions, image }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

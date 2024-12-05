@@ -1,9 +1,13 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { HandcraftedCodeBack, HandcraftedCodeFront, HandcraftedCodeShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import {
+  HandcraftedCodeBack,
+  HandcraftedCodeFront,
+  HandcraftedCodeShadow,
+} from '@/icons/generated';
 
 export function HandcraftedCode() {
   return (
@@ -29,5 +33,5 @@ export function HandcraftedCode() {
         )}
       </Draggable>
     </div>
-  )
+  );
 }

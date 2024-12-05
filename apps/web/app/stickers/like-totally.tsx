@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { TotallyBack, TotallyFront, TotallyShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { TotallyBack, TotallyFront, TotallyShadow } from '@/icons/generated';
 
 export function LikeTotally() {
   return (
@@ -29,5 +29,5 @@ export function LikeTotally() {
         </Transition>
       )}
     </Draggable>
-  )
+  );
 }

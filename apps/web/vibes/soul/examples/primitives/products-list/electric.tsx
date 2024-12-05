@@ -1,11 +1,11 @@
-import { getProducts } from '@/vibes/soul/data'
-import { ProductsList } from '@/vibes/soul/primitives/products-list'
+import { getProducts } from '@/vibes/soul/data';
+import { ProductsList } from '@/vibes/soul/primitives/products-list';
 
 export default function Preview() {
-  const products = getProducts('Electric')
+  const products = getProducts('Electric');
   return (
     <div className="p-6">
       <ProductsList products={products} />
     </div>
-  )
+  );
 }

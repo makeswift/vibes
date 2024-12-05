@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgFigmaBack = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={168} height={238} fill="none" {...props}>
@@ -22,5 +22,5 @@ const SvgFigmaBack = (props: SVGProps<SVGSVGElement>) => (
       mask="url(#figma-back_svg__a)"
     />
   </svg>
-)
-export default SvgFigmaBack
+);
+export default SvgFigmaBack;

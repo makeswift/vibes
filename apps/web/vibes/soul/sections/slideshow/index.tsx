@@ -1,116 +1,116 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { EmblaCarouselType } from 'embla-carousel'
-import Autoplay from 'embla-carousel-autoplay'
-import Fade from 'embla-carousel-fade'
-import useEmblaCarousel from 'embla-carousel-react'
-import { Pause, Play } from 'lucide-react'
-import Image from 'next/image'
-import { useCallback, useEffect, useState } from 'react'
+import { clsx } from 'clsx';
+import { EmblaCarouselType } from 'embla-carousel';
+import Autoplay from 'embla-carousel-autoplay';
+import Fade from 'embla-carousel-fade';
+import useEmblaCarousel from 'embla-carousel-react';
+import { Pause, Play } from 'lucide-react';
+import Image from 'next/image';
+import { useCallback, useEffect, useState } from 'react';
 
-import { ButtonLink } from '@/vibes/soul/primitives/button-link'
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
 interface Slide {
-  title: string
-  description?: string
-  image?: { alt: string; blurDataUrl?: string; src: string }
-  cta?: { label: string; href: string }
+  title: string;
+  description?: string;
+  image?: { alt: string; blurDataUrl?: string; src: string };
+  cta?: { label: string; href: string };
 }
 
 interface Props {
-  slides: Slide[]
-  interval?: number
-  className?: string
+  slides: Slide[];
+  interval?: number;
+  className?: string;
 }
 
 interface UseProgressButtonType {
-  selectedIndex: number
-  scrollSnaps: number[]
-  onProgressButtonClick: (index: number) => void
+  selectedIndex: number;
+  scrollSnaps: number[];
+  onProgressButtonClick: (index: number) => void;
 }
 
 const useProgressButton = (
   emblaApi: EmblaCarouselType | undefined,
-  onButtonClick?: (emblaApi: EmblaCarouselType) => void
+  onButtonClick?: (emblaApi: EmblaCarouselType) => void,
 ): UseProgressButtonType => {
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
   const onProgressButtonClick = useCallback(
     (index: number) => {
-      if (!emblaApi) return
-      emblaApi.scrollTo(index)
-      if (onButtonClick) onButtonClick(emblaApi)
+      if (!emblaApi) return;
+      emblaApi.scrollTo(index);
+      if (onButtonClick) onButtonClick(emblaApi);
     },
-    [emblaApi, onButtonClick]
-  )
+    [emblaApi, onButtonClick],
+  );
 
   const onInit = useCallback((emblaAPI: EmblaCarouselType) => {
-    setScrollSnaps(emblaAPI.scrollSnapList())
-  }, [])
+    setScrollSnaps(emblaAPI.scrollSnapList());
+  }, []);
 
   const onSelect = useCallback((emblaAPI: EmblaCarouselType) => {
-    setSelectedIndex(emblaAPI.selectedScrollSnap())
-  }, [])
+    setSelectedIndex(emblaAPI.selectedScrollSnap());
+  }, []);
 
   useEffect(() => {
-    if (!emblaApi) return
+    if (!emblaApi) return;
 
-    onInit(emblaApi)
-    onSelect(emblaApi)
+    onInit(emblaApi);
+    onSelect(emblaApi);
 
-    emblaApi.on('reInit', onInit).on('reInit', onSelect).on('select', onSelect)
-  }, [emblaApi, onInit, onSelect])
+    emblaApi.on('reInit', onInit).on('reInit', onSelect).on('select', onSelect);
+  }, [emblaApi, onInit, onSelect]);
 
   return {
     selectedIndex,
     scrollSnaps,
     onProgressButtonClick,
-  }
-}
+  };
+};
 
 export function Slideshow({ slides, interval = 5000, className }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 20 }, [
     Autoplay({ delay: interval }),
     Fade(),
-  ])
-  const { selectedIndex, scrollSnaps, onProgressButtonClick } = useProgressButton(emblaApi)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [playCount, setPlayCount] = useState(0)
+  ]);
+  const { selectedIndex, scrollSnaps, onProgressButtonClick } = useProgressButton(emblaApi);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playCount, setPlayCount] = useState(0);
 
   const toggleAutoplay = useCallback(() => {
-    const autoplay = emblaApi?.plugins().autoplay
-    if (!autoplay) return
+    const autoplay = emblaApi?.plugins().autoplay;
+    if (!autoplay) return;
 
-    const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play
-    playOrStop()
-  }, [emblaApi])
+    const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play;
+    playOrStop();
+  }, [emblaApi]);
 
   const resetAutoplay = useCallback(() => {
-    const autoplay = emblaApi?.plugins().autoplay
-    if (!autoplay) return
+    const autoplay = emblaApi?.plugins().autoplay;
+    if (!autoplay) return;
 
-    autoplay.reset()
-  }, [emblaApi])
+    autoplay.reset();
+  }, [emblaApi]);
 
   useEffect(() => {
-    const autoplay = emblaApi?.plugins().autoplay
-    if (!autoplay) return
+    const autoplay = emblaApi?.plugins().autoplay;
+    if (!autoplay) return;
 
-    setIsPlaying(autoplay.isPlaying())
+    setIsPlaying(autoplay.isPlaying());
     emblaApi
       .on('autoplay:play', () => {
-        setIsPlaying(true)
-        setPlayCount(playCount + 1)
+        setIsPlaying(true);
+        setPlayCount(playCount + 1);
       })
       .on('autoplay:stop', () => {
-        setIsPlaying(false)
+        setIsPlaying(false);
       })
       .on('reInit', () => {
-        setIsPlaying(autoplay.isPlaying())
-      })
-  }, [emblaApi, playCount])
+        setIsPlaying(autoplay.isPlaying());
+      });
+  }, [emblaApi, playCount]);
 
   return (
     <section className={clsx('relative h-[80vh] bg-primary-shadow @container', className)}>
@@ -152,7 +152,7 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
                   />
                 )}
               </div>
-            )
+            );
           })}
         </div>
       </div>
@@ -167,8 +167,8 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
               key={index}
               className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
               onClick={() => {
-                onProgressButtonClick(index)
-                resetAutoplay()
+                onProgressButtonClick(index);
+                resetAutoplay();
               }}
             >
               <div className="relative overflow-hidden">
@@ -181,7 +181,7 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
                     isPlaying ? 'running' : 'paused',
                     index === selectedIndex
                       ? 'opacity-100 ease-linear animate-in slide-in-from-left'
-                      : 'ease-out animate-out fade-out'
+                      : 'ease-out animate-out fade-out',
                   )}
                   style={{
                     animationDuration: index === selectedIndex ? `${interval}ms` : '200ms',
@@ -195,7 +195,7 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
                 />
               </div>
             </button>
-          )
+          );
         })}
 
         {/* Carousel Count - "01/03" */}
@@ -219,5 +219,5 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
         </button>
       </div>
     </section>
-  )
+  );
 }

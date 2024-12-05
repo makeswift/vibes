@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import { IntersectionLoader } from './intersection-loader'
+import { IntersectionLoader } from './intersection-loader';
 
 export interface Props {
-  aspectRatio?: number
-  url: string
+  aspectRatio?: number;
+  url: string;
 }
 
 export function Figma({ aspectRatio = 16 / 9, url }: Props) {
@@ -17,5 +17,5 @@ export function Figma({ aspectRatio = 16 / 9, url }: Props) {
         allowFullScreen
       />
     </IntersectionLoader>
-  )
+  );
 }

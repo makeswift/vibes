@@ -1,32 +1,32 @@
-import { Suspense } from 'react'
+import { Suspense } from 'react';
 
-import { Stream, Streamable } from '@/vibes/soul/lib/streamable'
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
-import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination'
-import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list'
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
+import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
+import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
 
-import { ProductListTransitionProvider } from './context'
-import { Filter, FiltersPanel } from './filters-panel'
-import { MobileFilters } from './mobile-filters'
-import { ProductListContainer } from './product-list-container'
-import { Option as SortOption, Sorting } from './sorting'
+import { ProductListTransitionProvider } from './context';
+import { Filter, FiltersPanel } from './filters-panel';
+import { MobileFilters } from './mobile-filters';
+import { ProductListContainer } from './product-list-container';
+import { Option as SortOption, Sorting } from './sorting';
 
 interface Props {
-  breadcrumbs?: Breadcrumb[]
-  title?: Streamable<string | null>
-  totalCount: Streamable<number>
-  products: Streamable<ListProduct[]>
-  filters: Streamable<Filter[]>
-  sortOptions: Streamable<SortOption[]>
-  compareProducts?: Streamable<ListProduct[] | null>
-  paginationInfo?: Streamable<CursorPaginationInfo | null>
-  compareAction?: React.ComponentProps<'form'>['action']
-  compareLabel?: string
-  filterLabel?: string
-  resetFiltersLabel?: string
-  sortLabel?: string
-  sortParamName?: string
-  compareParamName?: string
+  breadcrumbs?: Breadcrumb[];
+  title?: Streamable<string | null>;
+  totalCount: Streamable<number>;
+  products: Streamable<ListProduct[]>;
+  filters: Streamable<Filter[]>;
+  sortOptions: Streamable<SortOption[]>;
+  compareProducts?: Streamable<ListProduct[] | null>;
+  paginationInfo?: Streamable<CursorPaginationInfo | null>;
+  compareAction?: React.ComponentProps<'form'>['action'];
+  compareLabel?: string;
+  filterLabel?: string;
+  resetFiltersLabel?: string;
+  sortLabel?: string;
+  sortParamName?: string;
+  compareParamName?: string;
 }
 
 export function ProductsListSection({
@@ -98,12 +98,12 @@ export function ProductsListSection({
                 compareAction={compareAction}
               />
               <Stream value={paginationInfo}>
-                {info => info && <CursorPagination info={info} />}
+                {(info) => info && <CursorPagination info={info} />}
               </Stream>
             </ProductListContainer>
           </div>
         </div>
       </div>
     </ProductListTransitionProvider>
-  )
+  );
 }

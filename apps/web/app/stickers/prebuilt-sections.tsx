@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
 import {
   PrebuiltSectionsBack,
   PrebuiltSectionsFront,
   PrebuiltSectionsShadow,
-} from '@/icons/generated'
+} from '@/icons/generated';
 
 export function PrebuiltSections() {
   return (
@@ -32,5 +32,5 @@ export function PrebuiltSections() {
         </Transition>
       )}
     </Draggable>
-  )
+  );
 }

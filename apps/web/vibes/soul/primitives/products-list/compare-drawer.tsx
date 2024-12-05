@@ -1,34 +1,34 @@
-'use client'
+'use client';
 
-import { ArrowRight, X } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs'
+import { ArrowRight, X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs';
 
-import { Button } from '@/vibes/soul/primitives/button'
-import { Drawer } from '@/vibes/soul/primitives/drawer'
+import { Button } from '@/vibes/soul/primitives/button';
+import { Drawer } from '@/vibes/soul/primitives/drawer';
 
 function getInitials(name: string): string {
   return name
     .split(' ')
-    .map(word => word[0])
+    .map((word) => word[0])
     .join('')
     .toUpperCase()
-    .slice(0, 2)
+    .slice(0, 2);
 }
 
 interface DrawerItem {
-  id: string
-  image?: { src: string; alt: string }
-  href: string
-  title: string
+  id: string;
+  image?: { src: string; alt: string };
+  href: string;
+  title: string;
 }
 
 interface Props {
-  items: DrawerItem[]
-  paramName?: string
-  action?: React.ComponentProps<'form'>['action']
-  submitLabel?: string
+  items: DrawerItem[];
+  paramName?: string;
+  action?: React.ComponentProps<'form'>['action'];
+  submitLabel?: string;
 }
 
 export function CompareDrawer({
@@ -39,8 +39,8 @@ export function CompareDrawer({
 }: Props) {
   const [, setParam] = useQueryState(
     paramName,
-    parseAsArrayOf(parseAsString).withOptions({ shallow: false, scroll: false })
-  )
+    parseAsArrayOf(parseAsString).withOptions({ shallow: false, scroll: false }),
+  );
 
   return (
     items.length > 0 && (
@@ -50,7 +50,7 @@ export function CompareDrawer({
           className="mx-auto flex w-full max-w-7xl flex-col items-start justify-end gap-x-3 gap-y-4 @md:flex-row"
         >
           <div className="flex flex-1 flex-wrap justify-end gap-4">
-            {items.map(item => (
+            {items.map((item) => (
               <div className="relative" key={item.id}>
                 <input type="hidden" name={paramName} value={item.id} key={item.id} />
                 <Link
@@ -80,11 +80,11 @@ export function CompareDrawer({
                   type="button"
                   aria-label={`Remove ${item.title}`}
                   onClick={() => {
-                    setParam(prev => {
-                      const next = prev?.filter(v => v !== item.id) ?? []
+                    setParam((prev) => {
+                      const next = prev?.filter((v) => v !== item.id) ?? [];
 
-                      return next.length > 0 ? next : null
-                    })
+                      return next.length > 0 ? next : null;
+                    });
                   }}
                   className="absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center rounded-full border border-contrast-100 bg-background text-contrast-400 transition-colors duration-150 hover:border-contrast-200 hover:bg-contrast-100 hover:text-foreground"
                 >
@@ -104,5 +104,5 @@ export function CompareDrawer({
         </form>
       </Drawer>
     )
-  )
+  );
 }

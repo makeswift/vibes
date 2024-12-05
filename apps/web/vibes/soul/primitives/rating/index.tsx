@@ -1,13 +1,13 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
 export interface Props {
-  showRating?: boolean
-  rating: number
-  className?: string
+  showRating?: boolean;
+  rating: number;
+  className?: string;
 }
 
 interface StarType {
-  type: 'empty' | 'half' | 'full'
+  type: 'empty' | 'half' | 'full';
 }
 
 const Star = ({ type }: StarType) => {
@@ -44,7 +44,7 @@ const Star = ({ type }: StarType) => {
         strokeLinejoin="round"
       />
     ),
-  }
+  };
 
   return (
     <svg
@@ -56,17 +56,17 @@ const Star = ({ type }: StarType) => {
     >
       {paths[type]}
     </svg>
-  )
-}
+  );
+};
 
 export const Rating = function Rating({ showRating = true, rating, className }: Readonly<Props>) {
-  const adjustedRating = Math.min(rating, 5)
+  const adjustedRating = Math.min(rating, 5);
 
   const stars: StarType['type'][] = Array.from({ length: 5 }, (_, index) => {
-    if (index < Math.floor(adjustedRating)) return 'full'
-    if (index < Math.ceil(adjustedRating)) return 'half'
-    return 'empty'
-  })
+    if (index < Math.floor(adjustedRating)) return 'full';
+    if (index < Math.ceil(adjustedRating)) return 'half';
+    return 'empty';
+  });
 
   return (
     <div className={clsx('flex items-center', className)}>
@@ -80,5 +80,5 @@ export const Rating = function Rating({ showRating = true, rating, className }: 
         </span>
       )}
     </div>
-  )
-}
+  );
+};

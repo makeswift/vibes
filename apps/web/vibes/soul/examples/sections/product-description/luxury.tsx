@@ -1,4 +1,4 @@
-import { ProductDescription } from '@/vibes/soul/sections/product-description'
+import { ProductDescription } from '@/vibes/soul/sections/product-description';
 
 export const accordions = [
   {
@@ -21,17 +21,17 @@ export const accordions = [
     content:
       'Of course! Choosing the right pair of shoes is about style, comfort, and fit. Our Shoe Finder tool helps you select the perfect pair based on your preferences and needs. Our customer service team is also available to provide personalized recommendations to help you find the ideal style for any occasion.',
   },
-]
+];
 
 export const productDescriptionImage = {
   src: 'https://rstr.in/monogram/vibes/nH3UU-ncSv7/hGakp4qZXfo',
   alt: 'A woman wearing a white crochet shirt with green trim and orange flowers, green pants, and Freda brown loafers.',
-}
+};
 
 export default function Preview() {
   return (
     <>
       <ProductDescription accordions={accordions} image={productDescriptionImage} />
     </>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-import { clsx } from 'clsx'
-import { ChevronLeftIcon } from 'lucide-react'
-import { ComponentPropsWithoutRef } from 'react'
-import { DayPicker } from 'react-day-picker'
+import { clsx } from 'clsx';
+import { ChevronLeftIcon } from 'lucide-react';
+import { ComponentPropsWithoutRef } from 'react';
+import { DayPicker } from 'react-day-picker';
 
 const components = {
   Chevron: () => <ChevronLeftIcon className="h-5 w-5" strokeWidth={1} />,
-}
+};
 
 export function Calendar({
   className,
@@ -16,7 +16,7 @@ export function Calendar({
     <DayPicker
       className={clsx(
         'box-content w-[280px] rounded-lg border border-contrast-100 bg-background p-3',
-        className
+        className,
       )}
       classNames={{
         months: 'relative',
@@ -44,5 +44,5 @@ export function Calendar({
       components={components}
       {...props}
     />
-  )
+  );
 }

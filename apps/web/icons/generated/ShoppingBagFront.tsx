@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgShoppingBagFront = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={210} height={234} fill="none" {...props}>
@@ -50,5 +50,5 @@ const SvgShoppingBagFront = (props: SVGProps<SVGSVGElement>) => (
       </linearGradient>
     </defs>
   </svg>
-)
-export default SvgShoppingBagFront
+);
+export default SvgShoppingBagFront;

@@ -1,14 +1,14 @@
-import { getLineItems, getSubtotal } from '@/vibes/soul/data/line-items'
-import { Cart, CartLineItem } from '@/vibes/soul/sections/cart'
+import { getLineItems, getSubtotal } from '@/vibes/soul/data/line-items';
+import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
 
-import { checkoutAction, lineItemAction } from './actions'
+import { checkoutAction, lineItemAction } from './actions';
 
 export default async function Preview() {
   // const products = await getLineItems('Electric')
-  const lineItems = new Promise<CartLineItem[]>(res =>
-    setTimeout(() => res(getLineItems('Electric')), 5000)
-  )
-  const subtotal = await getSubtotal('Electric')
+  const lineItems = new Promise<CartLineItem[]>((res) =>
+    setTimeout(() => res(getLineItems('Electric')), 5000),
+  );
+  const subtotal = await getSubtotal('Electric');
 
   return (
     <Cart
@@ -38,5 +38,5 @@ export default async function Preview() {
       lineItemAction={lineItemAction}
       checkoutAction={checkoutAction}
     />
-  )
+  );
 }

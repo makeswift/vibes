@@ -1,29 +1,29 @@
-import { clsx } from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { Badge } from '@/vibes/soul/primitives/badge'
-import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label'
+import { Badge } from '@/vibes/soul/primitives/badge';
+import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';
 
-import { Compare } from './compare'
+import { Compare } from './compare';
 
 export interface CardProduct {
-  id: string
-  title: string
-  href: string
-  image?: { src: string; alt: string }
-  price?: Price
-  subtitle?: string
-  badge?: string
-  rating?: number
+  id: string;
+  title: string;
+  href: string;
+  image?: { src: string; alt: string };
+  price?: Price;
+  subtitle?: string;
+  badge?: string;
+  rating?: number;
 }
 
 interface Props {
-  className?: string
-  showCompare?: boolean
-  compareLabel?: string
-  compareParamName?: string
-  product: CardProduct
+  className?: string;
+  showCompare?: boolean;
+  compareLabel?: string;
+  compareParamName?: string;
+  product: CardProduct;
 }
 
 export function ProductCard({
@@ -81,7 +81,7 @@ export function ProductCard({
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export function ProductCardSkeleton({ className }: { className?: string }) {
@@ -109,5 +109,5 @@ export function ProductCardSkeleton({ className }: { className?: string }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

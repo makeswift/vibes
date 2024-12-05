@@ -1,4 +1,4 @@
-import { Input } from '@/vibes/soul/primitives/input'
+import { Input } from '@/vibes/soul/primitives/input';
 
 export default function Preview() {
   return (
@@ -7,5 +7,5 @@ export default function Preview() {
       <Input placeholder="First Name" />
       <Input placeholder="Last Name" error="Last name required" />
     </div>
-  )
+  );
 }

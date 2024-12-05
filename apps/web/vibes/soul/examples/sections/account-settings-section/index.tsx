@@ -1,13 +1,13 @@
-import { AccountLayout } from '@/vibes/soul/sections/account-layout'
-import { AccountSettingsSection } from '@/vibes/soul/sections/account-settings-section'
+import { AccountLayout } from '@/vibes/soul/sections/account-layout';
+import { AccountSettingsSection } from '@/vibes/soul/sections/account-settings-section';
 
-import { changePasswordAction, updateAccountAction } from './actions'
+import { changePasswordAction, updateAccountAction } from './actions';
 
 const links = [
   { href: '#', label: 'Orders' },
   { href: '#', label: 'Addresses' },
   { href: '/preview/soul/account-settings-section-example', label: 'Account' },
-]
+];
 
 export default function Preview() {
   return (
@@ -17,5 +17,5 @@ export default function Preview() {
         changePasswordAction={changePasswordAction}
       />
     </AccountLayout>
-  )
+  );
 }

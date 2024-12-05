@@ -1,4 +1,4 @@
-import { ProductDescription } from '@/vibes/soul/sections/product-description'
+import { ProductDescription } from '@/vibes/soul/sections/product-description';
 
 export const accordions = [
   {
@@ -27,17 +27,17 @@ export const accordions = [
     content:
       'Absolutely! Choosing the right plant can depend on several factors such as your living space, light availability, and personal preferences. Our Plant Finder tool can help you select the perfect plant for your environment. Additionally, our customer service team is available to offer personalized recommendations based on your needs.',
   },
-]
+];
 
 export const productDescriptionImage = {
   src: 'https://rstr.in/monogram/vibes/D1uDyHea7f0',
   alt: 'Close-up of a green and white leaf with a pink background.',
-}
+};
 
 export default function Preview() {
   return (
     <>
       <ProductDescription accordions={accordions} image={productDescriptionImage} />
     </>
-  )
+  );
 }

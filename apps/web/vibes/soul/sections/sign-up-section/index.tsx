@@ -1,14 +1,14 @@
-import { SignUpAction, SignUpForm } from './sign-up-form'
+import { SignUpAction, SignUpForm } from './sign-up-form';
 
 interface Props {
-  title?: string
-  action: SignUpAction
-  submitLabel?: string
-  firstNameLabel?: string
-  lastNameLabel?: string
-  emailLabel?: string
-  passwordLabel?: string
-  confirmPasswordLabel?: string
+  title?: string;
+  action: SignUpAction;
+  submitLabel?: string;
+  firstNameLabel?: string;
+  lastNameLabel?: string;
+  emailLabel?: string;
+  passwordLabel?: string;
+  confirmPasswordLabel?: string;
 }
 
 export function SignUpSection({
@@ -38,5 +38,5 @@ export function SignUpSection({
         </div>
       </div>
     </div>
-  )
+  );
 }

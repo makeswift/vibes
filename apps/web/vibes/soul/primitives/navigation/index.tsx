@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { SubmissionResult } from '@conform-to/react'
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import * as Popover from '@radix-ui/react-popover'
-import { clsx } from 'clsx'
-import debounce from 'lodash.debounce'
-import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { SubmissionResult } from '@conform-to/react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import * as Popover from '@radix-ui/react-popover';
+import { clsx } from 'clsx';
+import debounce from 'lodash.debounce';
+import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, {
   Ref,
   forwardRef,
@@ -20,84 +20,84 @@ import React, {
   useRef,
   useState,
   useTransition,
-} from 'react'
-import { useFormStatus } from 'react-dom'
+} from 'react';
+import { useFormStatus } from 'react-dom';
 
-import { Stream, Streamable } from '@/vibes/soul/lib/streamable'
-import { Button } from '@/vibes/soul/primitives/button'
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
+import { Button } from '@/vibes/soul/primitives/button';
 
-import { Price } from '../price-label'
-import { ProductCard } from '../product-card'
+import { Price } from '../price-label';
+import { ProductCard } from '../product-card';
 
 interface Link {
-  label: string
-  href: string
+  label: string;
+  href: string;
   groups?: {
-    label?: string
-    href?: string
+    label?: string;
+    href?: string;
     links: {
-      label: string
-      href: string
-    }[]
-  }[]
+      label: string;
+      href: string;
+    }[];
+  }[];
 }
 
 interface Locale {
-  id: string
-  label: string
+  id: string;
+  label: string;
 }
 
 type Action<State, Payload> = (
   state: Awaited<State>,
-  payload: Awaited<Payload>
-) => State | Promise<State>
+  payload: Awaited<Payload>,
+) => State | Promise<State>;
 
 export type SearchResult =
   | {
-      type: 'products'
-      title: string
+      type: 'products';
+      title: string;
       products: {
-        id: string
-        title: string
-        href: string
-        price?: Price
-        image?: { src: string; alt: string }
-      }[]
+        id: string;
+        title: string;
+        href: string;
+        price?: Price;
+        image?: { src: string; alt: string };
+      }[];
     }
   | {
-      type: 'links'
-      title: string
-      links: { label: string; href: string }[]
-    }
+      type: 'links';
+      title: string;
+      links: { label: string; href: string }[];
+    };
 
-type LocaleAction = Action<SubmissionResult | null, FormData>
+type LocaleAction = Action<SubmissionResult | null, FormData>;
 type SearchAction<S extends SearchResult> = Action<
   { searchResults: S[] | null; lastResult: SubmissionResult | null },
   FormData
->
+>;
 
 interface Props<S extends SearchResult> {
-  className?: string
-  isFloating?: boolean
-  accountHref: string
-  cartCount?: Streamable<number | null>
-  cartHref: string
-  links: Streamable<Link[]>
-  locales?: Locale[]
-  activeLocaleId?: string
-  localeAction?: LocaleAction
-  logo?: Streamable<string | { src: string; alt: string } | null>
-  logoHref?: string
-  searchHref: string
-  searchParamName?: string
-  searchAction?: SearchAction<S>
-  searchCtaLabel?: string
-  searchInputPlaceholder?: string
-  emptySearchTitle?: string
-  emptySearchSubtitle?: string
-  cartLabel?: string
-  accountLabel?: string
-  searchLabel?: string
+  className?: string;
+  isFloating?: boolean;
+  accountHref: string;
+  cartCount?: Streamable<number | null>;
+  cartHref: string;
+  links: Streamable<Link[]>;
+  locales?: Locale[];
+  activeLocaleId?: string;
+  localeAction?: LocaleAction;
+  logo?: Streamable<string | { src: string; alt: string } | null>;
+  logoHref?: string;
+  searchHref: string;
+  searchParamName?: string;
+  searchAction?: SearchAction<S>;
+  searchCtaLabel?: string;
+  searchInputPlaceholder?: string;
+  emptySearchTitle?: string;
+  emptySearchSubtitle?: string;
+  cartLabel?: string;
+  accountLabel?: string;
+  searchLabel?: string;
 }
 
 const HamburgerMenuButton = forwardRef<
@@ -110,54 +110,54 @@ const HamburgerMenuButton = forwardRef<
       ref={ref}
       className={clsx(
         'group relative rounded-lg p-2 outline-0 ring-primary transition-colors focus-visible:ring-2',
-        className
+        className,
       )}
     >
       <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
         <div
           className={clsx(
             'h-px origin-left transform bg-foreground transition-all duration-300',
-            open ? 'translate-x-10' : 'w-7'
+            open ? 'translate-x-10' : 'w-7',
           )}
         />
         <div
           className={clsx(
             'h-px transform rounded bg-foreground transition-all delay-75 duration-300',
-            open ? 'translate-x-10' : 'w-7'
+            open ? 'translate-x-10' : 'w-7',
           )}
         />
         <div
           className={clsx(
             'h-px origin-left transform bg-foreground transition-all delay-150 duration-300',
-            open ? 'translate-x-10' : 'w-7'
+            open ? 'translate-x-10' : 'w-7',
           )}
         />
 
         <div
           className={clsx(
             'absolute top-2 flex transform items-center justify-between bg-foreground transition-all duration-500',
-            open ? 'w-12 translate-x-0' : 'w-0 -translate-x-10'
+            open ? 'w-12 translate-x-0' : 'w-0 -translate-x-10',
           )}
         >
           <div
             className={clsx(
               'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
-              open ? 'rotate-45' : 'rotate-0'
+              open ? 'rotate-45' : 'rotate-0',
             )}
           />
           <div
             className={clsx(
               'absolute h-px w-4 transform bg-foreground transition-all delay-300 duration-500',
-              open ? '-rotate-45' : 'rotate-0'
+              open ? '-rotate-45' : 'rotate-0',
             )}
           />
         </div>
       </div>
     </button>
-  )
-})
+  );
+});
 
-HamburgerMenuButton.displayName = 'HamburgerMenuButton'
+HamburgerMenuButton.displayName = 'HamburgerMenuButton';
 
 export const Navigation = forwardRef(function Navigation<S extends SearchResult>(
   {
@@ -183,35 +183,35 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     accountLabel = 'Profile',
     searchLabel = 'Search',
   }: Props<S>,
-  ref: Ref<HTMLDivElement>
+  ref: Ref<HTMLDivElement>,
 ) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const pathname = usePathname()
-  const container = useRef<HTMLUListElement>(null)
+  const pathname = usePathname();
+  const container = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    setIsMobileMenuOpen(false)
-    setIsSearchOpen(false)
-  }, [pathname])
+    setIsMobileMenuOpen(false);
+    setIsSearchOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     function handleScroll() {
-      setIsSearchOpen(false)
-      setIsMobileMenuOpen(false)
+      setIsSearchOpen(false);
+      setIsMobileMenuOpen(false);
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <NavigationMenu.Root
       className={clsx(
         'relative mx-auto w-full max-w-screen-2xl text-foreground @container',
-        className
+        className,
       )}
       delayDuration={0}
       onValueChange={() => setIsSearchOpen(false)}
@@ -220,7 +220,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
       <div
         className={clsx(
           'flex h-14 items-center justify-between bg-background pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
-          isFloating ? 'shadow-xl ring-1 ring-foreground/10' : 'shadow-none ring-0'
+          isFloating ? 'shadow-xl ring-1 ring-foreground/10' : 'shadow-none ring-0',
         )}
       >
         {/* Logo */}
@@ -229,7 +229,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           <Popover.Trigger asChild>
             <HamburgerMenuButton
               className="mr-3 @4xl:hidden"
-              onClick={() => setIsMobileMenuOpen(prev => !prev)}
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               open={isMobileMenuOpen}
             />
           </Popover.Trigger>
@@ -255,7 +255,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                     </ul>
                   }
                 >
-                  {links =>
+                  {(links) =>
                     links.map((item, i) => (
                       <ul className="flex flex-col p-2 @4xl:gap-2 @4xl:p-5" key={i}>
                         {item.label !== '' && (
@@ -275,7 +275,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                           </li>
                         )}
                         {item.groups
-                          ?.flatMap(group => group.links)
+                          ?.flatMap((group) => group.links)
                           .map((link, j) => (
                             <li key={j}>
                               <Link
@@ -303,7 +303,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
               value={streamableLogo}
               fallback={<div className="h-6 w-16 animate-pulse rounded-md bg-contrast-100"></div>}
             >
-              {logo =>
+              {(logo) =>
                 typeof logo === 'object' && logo !== null && logo.src !== '' ? (
                   <Image
                     alt={logo.alt}
@@ -345,7 +345,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
               </ul>
             }
           >
-            {links =>
+            {(links) =>
               links.map((item, i) => (
                 <NavigationMenu.Item key={i} value={i.toString()}>
                   <NavigationMenu.Trigger asChild>
@@ -408,9 +408,9 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                 <button
                   aria-label={searchLabel}
                   className="rounded-lg p-1.5 ring-primary transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
-                  onPointerEnter={e => e.preventDefault()}
-                  onPointerLeave={e => e.preventDefault()}
-                  onPointerMove={e => e.preventDefault()}
+                  onPointerEnter={(e) => e.preventDefault()}
+                  onPointerLeave={(e) => e.preventDefault()}
+                  onPointerMove={(e) => e.preventDefault()}
                 >
                   <Search size={20} strokeWidth={1} />
                 </button>
@@ -460,7 +460,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                 <span className="absolute -right-1 -top-1 flex h-4 w-4 animate-pulse items-center justify-center rounded-full bg-contrast-100 text-xs text-background"></span>
               }
             >
-              {cartCount =>
+              {(cartCount) =>
                 cartCount != null &&
                 cartCount > 0 && (
                   <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-xs text-background">
@@ -487,10 +487,10 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         <NavigationMenu.Viewport className="relative mt-2 w-full data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95" />
       </div>
     </NavigationMenu.Root>
-  )
-})
+  );
+});
 
-Navigation.displayName = 'Navigation'
+Navigation.displayName = 'Navigation';
 
 function SearchForm<S extends SearchResult>({
   searchAction,
@@ -502,46 +502,46 @@ function SearchForm<S extends SearchResult>({
   emptySearchSubtitle,
   submitLabel = 'Submit',
 }: {
-  searchAction: SearchAction<S>
-  searchParamName?: string
-  searchHref?: string
-  searchCtaLabel?: string
-  searchInputPlaceholder?: string
-  emptySearchTitle?: string
-  emptySearchSubtitle?: string
-  submitLabel?: string
+  searchAction: SearchAction<S>;
+  searchParamName?: string;
+  searchHref?: string;
+  searchCtaLabel?: string;
+  searchInputPlaceholder?: string;
+  emptySearchTitle?: string;
+  emptySearchSubtitle?: string;
+  submitLabel?: string;
 }) {
-  const [query, setQuery] = useState('')
-  const [isSearching, startSearching] = useTransition()
+  const [query, setQuery] = useState('');
+  const [isSearching, startSearching] = useTransition();
   const [{ searchResults, lastResult }, formAction] = useActionState(searchAction, {
     searchResults: null,
     lastResult: null,
-  })
-  const [isDebouncing, setIsDebouncing] = useState(false)
+  });
+  const [isDebouncing, setIsDebouncing] = useState(false);
   const debouncedOnChange = useMemo(() => {
     const debounced = debounce((q: string) => {
-      setIsDebouncing(false)
+      setIsDebouncing(false);
 
-      const formData = new FormData()
+      const formData = new FormData();
 
-      formData.append(searchParamName, q)
+      formData.append(searchParamName, q);
 
       startSearching(() => {
-        formAction(formData)
-      })
-    }, 300)
+        formAction(formData);
+      });
+    }, 300);
 
     return (q: string) => {
-      setIsDebouncing(true)
+      setIsDebouncing(true);
 
-      debounced(q)
-    }
-  }, [formAction, searchParamName])
-  const isPending = isSearching || isDebouncing
+      debounced(q);
+    };
+  }, [formAction, searchParamName]);
+  const isPending = isSearching || isDebouncing;
 
   useEffect(() => {
-    if (lastResult?.error) console.log(lastResult.error)
-  }, [lastResult])
+    if (lastResult?.error) console.log(lastResult.error);
+  }, [lastResult]);
 
   return (
     <>
@@ -554,9 +554,9 @@ function SearchForm<S extends SearchResult>({
         <input
           className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
           name={searchParamName}
-          onChange={e => {
-            setQuery(e.currentTarget.value)
-            debouncedOnChange(e.currentTarget.value)
+          onChange={(e) => {
+            setQuery(e.currentTarget.value);
+            debouncedOnChange(e.currentTarget.value);
           }}
           placeholder={searchInputPlaceholder}
           type="text"
@@ -578,17 +578,17 @@ function SearchForm<S extends SearchResult>({
         />
       )}
     </>
-  )
+  );
 }
 
 function SubmitButton({ loading, submitLabel }: { loading: boolean; submitLabel: string }) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <Button loading={pending || loading} size="icon" type="submit" variant="secondary">
       <ArrowRight aria-label={submitLabel} size={20} strokeWidth={1.5} />
     </Button>
-  )
+  );
 }
 
 function SearchResults({
@@ -598,15 +598,15 @@ function SearchResults({
   emptySearchTitle = 'No results were found for',
   emptySearchSubtitle = 'Please try another search.',
 }: {
-  query: string
-  searchParamName: string
-  searchCtaLabel?: string
-  emptySearchTitle?: string
-  emptySearchSubtitle?: string
-  searchResults: SearchResult[]
-  stale: boolean
+  query: string;
+  searchParamName: string;
+  searchCtaLabel?: string;
+  emptySearchTitle?: string;
+  emptySearchSubtitle?: string;
+  searchResults: SearchResult[];
+  stale: boolean;
 }) {
-  if (query === '') return null
+  if (query === '') return null;
 
   if (searchResults.length === 0) {
     return (
@@ -616,14 +616,14 @@ function SearchResults({
         </h1>
         <p className="text-contrast-500">{emptySearchSubtitle}</p>
       </div>
-    )
+    );
   }
 
   return (
     <div
       className={clsx(
         'flex flex-1 flex-col overflow-y-auto border-t border-contrast-100 @2xl:flex-row',
-        stale && 'opacity-50'
+        stale && 'opacity-50',
       )}
     >
       {searchResults.map((result, index) => {
@@ -645,7 +645,7 @@ function SearchResults({
                   </Link>
                 ))}
               </div>
-            )
+            );
           }
 
           case 'products': {
@@ -653,7 +653,7 @@ function SearchResults({
               <div className="flex w-full flex-col gap-5 p-5" key={`result-${index}`}>
                 <span className="font-mono text-sm uppercase">{result.title}</span>
                 <div className="grid w-fit grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4">
-                  {result.products.map(product => (
+                  {result.products.map((product) => (
                     <ProductCard
                       key={product.id}
                       product={{
@@ -667,15 +667,15 @@ function SearchResults({
                   ))}
                 </div>
               </div>
-            )
+            );
           }
 
           default:
-            return null
+            return null;
         }
       })}
     </div>
-  )
+  );
 }
 
 function LocaleForm({
@@ -683,23 +683,23 @@ function LocaleForm({
   locales,
   activeLocaleId,
 }: {
-  activeLocaleId?: string
-  action: LocaleAction
-  locales: [Locale, ...Locale[]]
+  activeLocaleId?: string;
+  action: LocaleAction;
+  locales: [Locale, ...Locale[]];
 }) {
-  const [lastResult, formAction] = useActionState(action, null)
-  const activeLocale = locales.find(locale => locale.id === activeLocaleId)
+  const [lastResult, formAction] = useActionState(action, null);
+  const activeLocale = locales.find((locale) => locale.id === activeLocaleId);
 
   useEffect(() => {
-    if (lastResult?.error) console.log(lastResult.error)
-  }, [lastResult?.error])
+    if (lastResult?.error) console.log(lastResult.error);
+  }, [lastResult?.error]);
 
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
         className={clsx(
           'items-center gap-1 rounded-lg p-2 text-xs hover:bg-contrast-100',
-          'flex uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-primary'
+          'flex uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
         )}
       >
         {activeLocale?.id ?? locales[0].id}
@@ -716,17 +716,17 @@ function LocaleForm({
               className={clsx(
                 'cursor-default rounded-lg px-2.5 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
                 'hover:text-foreground focus:bg-contrast-100',
-                { 'text-foreground': id === activeLocaleId }
+                { 'text-foreground': id === activeLocaleId },
               )}
               key={id}
               onSelect={() => {
                 // eslint-disable-next-line @typescript-eslint/require-await
                 startTransition(async () => {
-                  const formData = new FormData()
+                  const formData = new FormData();
 
-                  formData.append('id', id)
-                  formAction(formData)
-                })
+                  formData.append('id', id);
+                  formAction(formData);
+                });
               }}
             >
               {label}
@@ -735,5 +735,5 @@ function LocaleForm({
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
-  )
+  );
 }

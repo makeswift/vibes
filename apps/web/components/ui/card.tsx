@@ -1,9 +1,9 @@
-import { clsx } from 'clsx'
-import React, { ComponentPropsWithoutRef } from 'react'
+import { clsx } from 'clsx';
+import React, { ComponentPropsWithoutRef } from 'react';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }
 
 export default function Card({ children, className, ...rest }: Props) {
@@ -14,5 +14,5 @@ export default function Card({ children, className, ...rest }: Props) {
     >
       {children}
     </div>
-  )
+  );
 }

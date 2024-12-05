@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import * as TooltipRadix from '@radix-ui/react-tooltip'
-import { clsx } from 'clsx'
-import { Info } from 'lucide-react'
-import { ReactNode } from 'react'
-import * as React from 'react'
+import * as TooltipRadix from '@radix-ui/react-tooltip';
+import { clsx } from 'clsx';
+import { Info } from 'lucide-react';
+import { ReactNode } from 'react';
+import * as React from 'react';
 
 function Tooltip({
   className,
@@ -13,10 +13,10 @@ function Tooltip({
   showIcon = true,
   ...props
 }: {
-  className?: string
-  children?: ReactNode
-  content?: string
-  showIcon?: boolean
+  className?: string;
+  children?: ReactNode;
+  content?: string;
+  showIcon?: boolean;
 }) {
   return (
     <TooltipRadix.Provider>
@@ -40,7 +40,7 @@ function Tooltip({
           <TooltipRadix.Content
             className={clsx(
               'z-50 outline-none data-[state=delayed-open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=delayed-open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=delayed-open]:zoom-in-95',
-              className
+              className,
             )}
             forceMount
             sideOffset={8}
@@ -53,7 +53,7 @@ function Tooltip({
         </TooltipRadix.Portal>
       </TooltipRadix.Root>
     </TooltipRadix.Provider>
-  )
+  );
 }
 
-export { Tooltip }
+export { Tooltip };

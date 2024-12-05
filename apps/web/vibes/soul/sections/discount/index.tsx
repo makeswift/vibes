@@ -1,70 +1,70 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { X } from 'lucide-react'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { clsx } from 'clsx';
+import { X } from 'lucide-react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-import { Button } from '@/vibes/soul/primitives/button'
+import { Button } from '@/vibes/soul/primitives/button';
 
 interface DiscountType {
-  label: string
-  code: string
+  label: string;
+  code: string;
 }
 
 interface Props {
-  backgroundImage: string
-  discounts: DiscountType[]
+  backgroundImage: string;
+  discounts: DiscountType[];
 }
 
 export const Discount = function Discount({ backgroundImage, discounts }: Props) {
   // TODO: store dismissed state in local storage
-  const [dismissed, setDismissed] = useState(false)
-  const [spin, setSpin] = useState(false)
-  const [isSpun, setIsSpun] = useState(false)
-  const [shuffledCodes, setShuffledCodes] = useState<DiscountType[]>([])
-  const [copied, setCopied] = useState(false)
+  const [dismissed, setDismissed] = useState(false);
+  const [spin, setSpin] = useState(false);
+  const [isSpun, setIsSpun] = useState(false);
+  const [shuffledCodes, setShuffledCodes] = useState<DiscountType[]>([]);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (spin) {
       setTimeout(() => {
-        setIsSpun(true)
-      }, 5000)
+        setIsSpun(true);
+      }, 5000);
     }
-  }, [spin])
+  }, [spin]);
 
   useEffect(() => {
     const shuffled = shuffleCodes(
       Array<DiscountType>(10)
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         .fill(discounts[0]!)
-        .flatMap(() => discounts)
-    )
-    setShuffledCodes(shuffled)
-  }, [discounts])
+        .flatMap(() => discounts),
+    );
+    setShuffledCodes(shuffled);
+  }, [discounts]);
 
   const shuffleCodes = (array: DiscountType[]) => {
-    return array.sort(() => Math.random() - 0.5)
-  }
+    return array.sort(() => Math.random() - 0.5);
+  };
 
   const copy = async () => {
     try {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      await navigator.clipboard.writeText(shuffledCodes[shuffledCodes.length - 2]!.code)
-      setCopied(true)
+      await navigator.clipboard.writeText(shuffledCodes[shuffledCodes.length - 2]!.code);
+      setCopied(true);
       setTimeout(() => {
-        setCopied(false)
-      }, 2000)
+        setCopied(false);
+      }, 2000);
     } catch (error) {
-      console.log('Failed to copy:', error)
+      console.log('Failed to copy:', error);
     }
-  }
+  };
 
   return (
     <section
       className={clsx(
         'fixed left-0 top-0 flex h-dvh w-full items-center justify-center bg-contrast-100 text-background transition-[opacity,transform] duration-300 @container',
-        dismissed ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'
+        dismissed ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100',
       )}
     >
       <Image
@@ -77,7 +77,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
       <button
         type="button"
         onClick={() => {
-          setDismissed(true)
+          setDismissed(true);
         }}
         className="absolute right-5 top-5 text-foreground transition-transform hover:scale-110"
       >
@@ -88,9 +88,9 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
       <button
         onClick={() => {
           if (isSpun) {
-            void copy()
+            void copy();
           } else {
-            setSpin(true)
+            setSpin(true);
           }
         }}
         className="z-10 m-5 hidden h-24 w-full max-w-4xl cursor-pointer items-center justify-between gap-10 overflow-hidden rounded-3xl bg-primary-shadow transition-transform active:scale-[0.99] @4xl:flex"
@@ -120,8 +120,8 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
         />
       </div>
     </section>
-  )
-}
+  );
+};
 
 const DiscountUI = ({
   isSpun,
@@ -133,18 +133,18 @@ const DiscountUI = ({
   copy,
   renderButton,
 }: {
-  isSpun: boolean
-  copied: boolean
-  spin: boolean
-  setSpin: (value: boolean) => void
-  discounts: DiscountType[]
-  shuffledCodes: DiscountType[]
-  copy: () => Promise<void>
-  renderButton?: boolean
+  isSpun: boolean;
+  copied: boolean;
+  spin: boolean;
+  setSpin: (value: boolean) => void;
+  discounts: DiscountType[];
+  shuffledCodes: DiscountType[];
+  copy: () => Promise<void>;
+  renderButton?: boolean;
 }) => {
-  let discountText = 'Spin for discount'
+  let discountText = 'Spin for discount';
   if (isSpun) {
-    discountText = copied ? 'Copied!' : `Copy discount code`
+    discountText = copied ? 'Copied!' : `Copy discount code`;
   }
 
   return (
@@ -183,9 +183,9 @@ const DiscountUI = ({
             className="w-full select-none justify-center"
             onClick={() => {
               if (isSpun) {
-                void copy()
+                void copy();
               } else {
-                setSpin(true)
+                setSpin(true);
               }
             }}
           >
@@ -194,5 +194,5 @@ const DiscountUI = ({
         )}
       </div>
     </>
-  )
-}
+  );
+};

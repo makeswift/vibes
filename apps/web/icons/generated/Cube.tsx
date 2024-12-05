@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgCube = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none" {...props}>
@@ -10,5 +10,5 @@ const SvgCube = (props: SVGProps<SVGSVGElement>) => (
     />
     <path stroke="currentColor" d="M2.75 5.833 10 10l7.25-4.167M10 18.333V10" />
   </svg>
-)
-export default SvgCube
+);
+export default SvgCube;

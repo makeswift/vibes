@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgChevronRight16 = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" {...props}>
@@ -12,5 +12,5 @@ const SvgChevronRight16 = (props: SVGProps<SVGSVGElement>) => (
       d="M10.5 8.5 6 13M6 3l4.5 4.5"
     />
   </svg>
-)
-export default SvgChevronRight16
+);
+export default SvgChevronRight16;

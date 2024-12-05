@@ -1,7 +1,7 @@
-import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric'
-import { ProductDetail } from '@/vibes/soul/sections/product-detail'
+import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric';
+import { ProductDetail } from '@/vibes/soul/sections/product-detail';
 
-import { action, fields } from './action'
+import { action, fields } from './action';
 
 export const product = {
   id: '1',
@@ -31,10 +31,10 @@ export const product = {
   rating: 4.8,
   description:
     'The Caladium Rosebud plant features vibrant pink and green heart-shaped leaves, adding a beautiful pop of color to any indoor or outdoor setting.',
-}
+};
 
 export default function Preview() {
   return (
     <ProductDetail breadcrumbs={breadcrumbs} product={product} fields={fields} action={action} />
-  )
+  );
 }

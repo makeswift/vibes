@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { ThemesBack, ThemesFront, ThemesShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { ThemesBack, ThemesFront, ThemesShadow } from '@/icons/generated';
 
 export function EazyTheme() {
   return (
@@ -28,5 +28,5 @@ export function EazyTheme() {
         </Transition>
       )}
     </Draggable>
-  )
+  );
 }

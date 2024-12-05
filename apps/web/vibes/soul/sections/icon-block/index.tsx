@@ -1,13 +1,13 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
-import { Icon, IconName } from '@/vibes/soul/primitives/icon'
+import { Icon, IconName } from '@/vibes/soul/primitives/icon';
 
 export interface IconBlockProps {
   list: {
-    icon: IconName
-    title: string
-    description: string
-  }[]
+    icon: IconName;
+    title: string;
+    description: string;
+  }[];
 }
 
 export const IconBlock = function IconBlock({ list }: IconBlockProps) {
@@ -21,7 +21,7 @@ export const IconBlock = function IconBlock({ list }: IconBlockProps) {
               className={clsx(
                 'flex flex-col items-center gap-2 px-1 py-10',
                 list.length !== 4 ? 'w-full @md:w-1/2 @xl:w-1/3' : 'w-1/4',
-                { 'border-t border-contrast-100': idx === 0 }
+                { 'border-t border-contrast-100': idx === 0 },
               )}
             >
               <Icon name={icon} />
@@ -31,9 +31,9 @@ export const IconBlock = function IconBlock({ list }: IconBlockProps) {
                 <span className="opacity-40">{description}</span>
               </div>
             </li>
-          )
+          );
         })}
       </ul>
     </section>
-  )
-}
+  );
+};

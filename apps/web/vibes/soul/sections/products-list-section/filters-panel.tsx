@@ -1,66 +1,66 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { ArrowRight } from 'lucide-react'
+import { clsx } from 'clsx';
+import { ArrowRight } from 'lucide-react';
 import {
   UseQueryStatesKeysMap,
   parseAsArrayOf,
   parseAsInteger,
   parseAsString,
   useQueryStates,
-} from 'nuqs'
-import { Suspense, use, useOptimistic } from 'react'
+} from 'nuqs';
+import { Suspense, use, useOptimistic } from 'react';
 
-import { Checkbox } from '@/vibes/soul/form/checkbox'
-import { RangeInput } from '@/vibes/soul/form/range-input'
-import { ToggleGroup } from '@/vibes/soul/form/toggle-group'
-import { useStreamable } from '@/vibes/soul/lib/streamable'
-import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions'
-import { Button } from '@/vibes/soul/primitives/button'
-import { Rating } from '@/vibes/soul/primitives/rating'
+import { Checkbox } from '@/vibes/soul/form/checkbox';
+import { RangeInput } from '@/vibes/soul/form/range-input';
+import { ToggleGroup } from '@/vibes/soul/form/toggle-group';
+import { useStreamable } from '@/vibes/soul/lib/streamable';
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';
+import { Button } from '@/vibes/soul/primitives/button';
+import { Rating } from '@/vibes/soul/primitives/rating';
 
-import { ProductListTransitionContext } from './context'
+import { ProductListTransitionContext } from './context';
 
 export interface ToggleGroupFilter {
-  type: 'toggle-group'
-  paramName: string
-  label: string
-  options: { label: string; value: string }[]
+  type: 'toggle-group';
+  paramName: string;
+  label: string;
+  options: { label: string; value: string }[];
 }
 
 export interface RatingFilter {
-  type: 'rating'
-  paramName: string
-  label: string
+  type: 'rating';
+  paramName: string;
+  label: string;
 }
 
 export interface RangeFilter {
-  type: 'range'
-  label: string
-  minParamName: string
-  maxParamName: string
-  min?: number
-  max?: number
-  minLabel?: string
-  maxLabel?: string
-  minPrepend?: React.ReactNode
-  maxPrepend?: React.ReactNode
-  minPlaceholder?: string
-  maxPlaceholder?: string
+  type: 'range';
+  label: string;
+  minParamName: string;
+  maxParamName: string;
+  min?: number;
+  max?: number;
+  minLabel?: string;
+  maxLabel?: string;
+  minPrepend?: React.ReactNode;
+  maxPrepend?: React.ReactNode;
+  minPlaceholder?: string;
+  maxPlaceholder?: string;
 }
 
-export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter
+export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter;
 
 interface Props {
-  className?: string
-  filters: Filter[] | Promise<Filter[]>
-  resetFiltersLabel?: string
+  className?: string;
+  filters: Filter[] | Promise<Filter[]>;
+  resetFiltersLabel?: string;
 }
 
 function getParamCountLabel(params: Record<string, string | null | string[]>, key: string) {
-  if (Array.isArray(params[key]) && params[key].length > 0) return `(${params[key].length})`
+  if (Array.isArray(params[key]) && params[key].length > 0) return `(${params[key].length})`;
 
-  return ''
+  return '';
 }
 
 export function FiltersPanel({ className, filters, resetFiltersLabel }: Props) {
@@ -72,7 +72,7 @@ export function FiltersPanel({ className, filters, resetFiltersLabel }: Props) {
         resetFiltersLabel={resetFiltersLabel}
       />
     </Suspense>
-  )
+  );
 }
 
 export function FiltersPanelInner({
@@ -80,7 +80,7 @@ export function FiltersPanelInner({
   filters: streamableFilters,
   resetFiltersLabel = 'Reset filters',
 }: Props) {
-  const filters = useStreamable(streamableFilters)
+  const filters = useStreamable(streamableFilters);
   const [params, setParams] = useQueryStates(
     filters.reduce<UseQueryStatesKeysMap>((acc, filter) => {
       switch (filter.type) {
@@ -89,18 +89,18 @@ export function FiltersPanelInner({
             ...acc,
             [filter.minParamName]: parseAsInteger,
             [filter.maxParamName]: parseAsInteger,
-          }
+          };
 
         default:
-          return { ...acc, [filter.paramName]: parseAsArrayOf(parseAsString) }
+          return { ...acc, [filter.paramName]: parseAsArrayOf(parseAsString) };
       }
     }, {}),
-    { shallow: false, history: 'push' }
-  )
-  const [, startTransition] = use(ProductListTransitionContext)
-  const [optimisticParams, setOptimisticParams] = useOptimistic(params)
+    { shallow: false, history: 'push' },
+  );
+  const [, startTransition] = use(ProductListTransitionContext);
+  const [optimisticParams, setOptimisticParams] = useOptimistic(params);
 
-  if (filters.length === 0) return null
+  if (filters.length === 0) return null;
 
   return (
     <div className={clsx('space-y-5', className)}>
@@ -118,16 +118,16 @@ export function FiltersPanelInner({
                     type="multiple"
                     value={optimisticParams[filter.paramName] ?? []}
                     options={filter.options}
-                    onValueChange={value => {
+                    onValueChange={(value) => {
                       startTransition(async () => {
-                        const nextParams = { ...optimisticParams, [filter.paramName]: value }
-                        setOptimisticParams(nextParams)
-                        await setParams(nextParams)
-                      })
+                        const nextParams = { ...optimisticParams, [filter.paramName]: value };
+                        setOptimisticParams(nextParams);
+                        await setParams(nextParams);
+                      });
                     }}
                   />
                 </Accordion>
-              )
+              );
 
             case 'range':
               return (
@@ -146,15 +146,15 @@ export function FiltersPanelInner({
                       minPlaceholder={filter.minPlaceholder}
                       minPrepend={filter.minPrepend}
                       minValue={optimisticParams[filter.minParamName] ?? null}
-                      onMaxValueChange={value => {
-                        const nextParams = { ...optimisticParams, [filter.maxParamName]: value }
-                        setOptimisticParams(nextParams)
-                        setParams(nextParams)
+                      onMaxValueChange={(value) => {
+                        const nextParams = { ...optimisticParams, [filter.maxParamName]: value };
+                        setOptimisticParams(nextParams);
+                        setParams(nextParams);
                       }}
-                      onMinValueChange={value => {
-                        const nextParams = { ...optimisticParams, [filter.minParamName]: value }
-                        setOptimisticParams(nextParams)
-                        setParams(nextParams)
+                      onMinValueChange={(value) => {
+                        const nextParams = { ...optimisticParams, [filter.minParamName]: value };
+                        setOptimisticParams(nextParams);
+                        setParams(nextParams);
                       }}
                     />
                     <Button
@@ -171,10 +171,10 @@ export function FiltersPanelInner({
                             ...optimisticParams,
                             [filter.minParamName]: optimisticParams[filter.minParamName],
                             [filter.maxParamName]: optimisticParams[filter.maxParamName],
-                          }
-                          setOptimisticParams(nextParams)
-                          setParams(nextParams)
-                        })
+                          };
+                          setOptimisticParams(nextParams);
+                          setParams(nextParams);
+                        });
                       }}
                       size="icon"
                       variant="secondary"
@@ -183,13 +183,13 @@ export function FiltersPanelInner({
                     </Button>
                   </div>
                 </Accordion>
-              )
+              );
 
             case 'rating':
               return (
                 <Accordion key={index} title={filter.label} value={index.toString()}>
                   <div className="space-y-3">
-                    {[5, 4, 3, 2, 1].map(rating => (
+                    {[5, 4, 3, 2, 1].map((rating) => (
                       <Checkbox
                         key={rating}
                         id={`${filter.paramName}-${rating}`}
@@ -197,29 +197,29 @@ export function FiltersPanelInner({
                         checked={
                           optimisticParams[filter.paramName]?.includes(rating.toString()) ?? false
                         }
-                        onCheckedChange={value =>
+                        onCheckedChange={(value) =>
                           startTransition(async () => {
-                            const ratings = new Set(optimisticParams[filter.paramName])
+                            const ratings = new Set(optimisticParams[filter.paramName]);
 
-                            if (value === true) ratings.add(rating.toString())
-                            else ratings.delete(rating.toString())
+                            if (value === true) ratings.add(rating.toString());
+                            else ratings.delete(rating.toString());
 
                             const nextParams = {
                               ...optimisticParams,
                               [filter.paramName]: Array.from(ratings),
-                            }
-                            setOptimisticParams(nextParams)
-                            await setParams(nextParams)
+                            };
+                            setOptimisticParams(nextParams);
+                            await setParams(nextParams);
                           })
                         }
                       />
                     ))}
                   </div>
                 </Accordion>
-              )
+              );
 
             default:
-              return null
+              return null;
           }
         })}
       </Accordions>
@@ -227,9 +227,9 @@ export function FiltersPanelInner({
       <Button
         onClick={() => {
           startTransition(async () => {
-            setOptimisticParams({})
-            await setParams(null)
-          })
+            setOptimisticParams({});
+            await setParams(null);
+          });
         }}
         size="small"
         variant="secondary"
@@ -237,7 +237,7 @@ export function FiltersPanelInner({
         {resetFiltersLabel}
       </Button>
     </div>
-  )
+  );
 }
 
 export function FiltersSkeleton() {
@@ -255,7 +255,7 @@ export function FiltersSkeleton() {
       {/* Reset Filters Button */}
       <div className="h-10 w-[10ch] animate-pulse rounded-full bg-contrast-100" />
     </div>
-  )
+  );
 }
 
 function AccordionSkeleton({ children }: { children: React.ReactNode }) {
@@ -268,14 +268,14 @@ function AccordionSkeleton({ children }: { children: React.ReactNode }) {
       </div>
       <div className="pb-5">{children}</div>
     </div>
-  )
+  );
 }
 
 function ToggleGroupSkeleton({ options, seed = 0 }: { options: number; seed?: number }) {
   return (
     <div className="flex flex-wrap gap-2">
       {Array.from({ length: options }, (_, i) => {
-        const width = Math.floor(((i * 3 + 7 + seed) % 8) + 6)
+        const width = Math.floor(((i * 3 + 7 + seed) % 8) + 6);
 
         return (
           <div
@@ -284,10 +284,10 @@ function ToggleGroupSkeleton({ options, seed = 0 }: { options: number; seed?: nu
             style={{ '--width': `${width}ch` } as React.CSSProperties}
             className="h-12 w-[var(--width)] animate-pulse rounded-full bg-contrast-100 px-4"
           />
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
 function RangeSkeleton() {
@@ -297,5 +297,5 @@ function RangeSkeleton() {
       <div className="h-12 w-[10ch] animate-pulse rounded-lg bg-contrast-100" />
       <div className="h-10 w-10 shrink-0 animate-pulse rounded-full bg-contrast-100" />
     </div>
-  )
+  );
 }

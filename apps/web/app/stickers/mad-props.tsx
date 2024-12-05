@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { PropsBack, PropsFront, PropsShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { PropsBack, PropsFront, PropsShadow } from '@/icons/generated';
 
 export function MadProps() {
   return (
@@ -29,5 +29,5 @@ export function MadProps() {
         </Transition>
       )}
     </Draggable>
-  )
+  );
 }

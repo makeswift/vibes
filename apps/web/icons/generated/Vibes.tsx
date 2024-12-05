@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgVibes = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 449 120" {...props}>
@@ -28,5 +28,5 @@ const SvgVibes = (props: SVGProps<SVGSVGElement>) => (
       mask="url(#vibes_svg__a)"
     />
   </svg>
-)
-export default SvgVibes
+);
+export default SvgVibes;

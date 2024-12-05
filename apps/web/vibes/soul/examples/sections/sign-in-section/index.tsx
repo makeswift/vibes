@@ -1,7 +1,7 @@
-import { Button } from '@/vibes/soul/primitives/button'
-import { SignInSection } from '@/vibes/soul/sections/sign-in-section'
+import { Button } from '@/vibes/soul/primitives/button';
+import { SignInSection } from '@/vibes/soul/sections/sign-in-section';
 
-import { signInAction } from './actions'
+import { signInAction } from './actions';
 
 export default function Preview() {
   return (
@@ -19,5 +19,5 @@ export default function Preview() {
         Create Account
       </Button>
     </SignInSection>
-  )
+  );
 }

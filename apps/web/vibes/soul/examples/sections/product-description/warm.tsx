@@ -1,4 +1,4 @@
-import { ProductDescription } from '@/vibes/soul/sections/product-description'
+import { ProductDescription } from '@/vibes/soul/sections/product-description';
 
 export const accordions = [
   {
@@ -21,17 +21,17 @@ export const accordions = [
     content:
       'Absolutely! Choosing the right bike pack depends on your riding style, gear needs, and the type of terrain you tackle. Our Pack Finder tool can help you select the perfect pack based on your requirements. Additionally, our customer service team is available to provide personalized recommendations to suit your needs.',
   },
-]
+];
 
 export const productDescriptionImage = {
   src: 'https://rstr.in/monogram/vibes/3dmqcoTLHrK',
   alt: 'A close-up of a bicycle handlebar with a brown handlebar bag and a GPS device attached.',
-}
+};
 
 export default function Preview() {
   return (
     <>
       <ProductDescription accordions={accordions} image={productDescriptionImage} />
     </>
-  )
+  );
 }

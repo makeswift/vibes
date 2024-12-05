@@ -1,4 +1,4 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
 export function StickySidebarLayout({
   className,
@@ -8,12 +8,12 @@ export function StickySidebarLayout({
   sidebarPosition = 'left',
   containerSize = '2xl',
 }: {
-  className?: string
-  sidebar: React.ReactNode
-  children: React.ReactNode
-  containerSize?: 'lg' | 'xl' | '2xl'
-  sidebarSize?: '1/4' | '1/3' | '1/2' | 'small' | 'medium' | 'large'
-  sidebarPosition?: 'left' | 'right'
+  className?: string;
+  sidebar: React.ReactNode;
+  children: React.ReactNode;
+  containerSize?: 'lg' | 'xl' | '2xl';
+  sidebarSize?: '1/4' | '1/3' | '1/2' | 'small' | 'medium' | 'large';
+  sidebarPosition?: 'left' | 'right';
 }) {
   return (
     <section className={clsx('@container', className)}>
@@ -24,7 +24,7 @@ export function StickySidebarLayout({
             lg: 'max-w-screen-lg',
             xl: 'max-w-screen-xl',
             '2xl': 'max-w-screen-2xl',
-          }[containerSize]
+          }[containerSize],
         )}
       >
         <div
@@ -38,7 +38,7 @@ export function StickySidebarLayout({
               small: '@4xl:w-48',
               medium: '@4xl:w-60',
               large: '@4xl:w-80',
-            }[sidebarSize]
+            }[sidebarSize],
           )}
         >
           <div className="sticky top-10">{sidebar}</div>
@@ -53,12 +53,12 @@ export function StickySidebarLayout({
               small: '@4xl:flex-1',
               medium: '@4xl:flex-1',
               large: '@4xl:flex-1',
-            }[sidebarSize]
+            }[sidebarSize],
           )}
         >
           {children}
         </div>
       </div>
     </section>
-  )
+  );
 }

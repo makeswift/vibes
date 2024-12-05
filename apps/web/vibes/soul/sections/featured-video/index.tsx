@@ -1,17 +1,17 @@
-import { clsx } from 'clsx'
-import Link from 'next/link'
+import { clsx } from 'clsx';
+import Link from 'next/link';
 
-import { Button } from '@/vibes/soul/primitives/button'
+import { Button } from '@/vibes/soul/primitives/button';
 
 interface Props {
-  title: string
-  description: string
-  video: string
+  title: string;
+  description: string;
+  video: string;
   cta: {
-    href: string
-    label: string
-  }
-  mediaAlign?: 'left' | 'right' | 'full'
+    href: string;
+    label: string;
+  };
+  mediaAlign?: 'left' | 'right' | 'full';
 }
 
 export const FeaturedVideo = function FeaturedVideo({
@@ -25,7 +25,7 @@ export const FeaturedVideo = function FeaturedVideo({
     <section
       className={clsx(
         'relative bg-primary-shadow @container',
-        mediaAlign === 'full' && 'h-dvh max-h-[880px]'
+        mediaAlign === 'full' && 'h-dvh max-h-[880px]',
       )}
     >
       <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
@@ -35,7 +35,7 @@ export const FeaturedVideo = function FeaturedVideo({
             mediaAlign === 'full'
               ? 'absolute inset-0 h-full'
               : 'aspect-square @xl:aspect-[9/6] @3xl:h-dvh @3xl:max-h-[880px] @3xl:w-1/2 @5xl:w-3/5',
-            { '@3xl:order-2': mediaAlign === 'right' }
+            { '@3xl:order-2': mediaAlign === 'right' },
           )}
           autoPlay
           muted
@@ -49,7 +49,7 @@ export const FeaturedVideo = function FeaturedVideo({
             mediaAlign === 'full'
               ? 'mx-auto mt-auto w-full max-w-screen-2xl px-3 @xl:px-6 @5xl:px-20'
               : 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5',
-            { '@3xl:order-1': mediaAlign === 'right' }
+            { '@3xl:order-1': mediaAlign === 'right' },
           )}
         >
           <h1 className="max-w-xl text-4xl font-medium leading-none @xl:text-5xl">{title}</h1>
@@ -63,5 +63,5 @@ export const FeaturedVideo = function FeaturedVideo({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

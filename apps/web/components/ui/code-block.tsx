@@ -1,16 +1,16 @@
-import { clsx } from 'clsx'
-import { CodeToHastOptions, ShikiTransformer, codeToHtml } from 'shiki'
+import { clsx } from 'clsx';
+import { CodeToHastOptions, ShikiTransformer, codeToHtml } from 'shiki';
 
-import { theme, transformers } from '@/lib/shiki'
+import { theme, transformers } from '@/lib/shiki';
 
-import { CopyButton } from './copy-button'
+import { CopyButton } from './copy-button';
 
 interface Props {
-  children: string
-  hideCopyButton?: boolean
-  lang?: CodeToHastOptions['lang']
-  showLineNumbers?: boolean
-  className?: string
+  children: string;
+  hideCopyButton?: boolean;
+  lang?: CodeToHastOptions['lang'];
+  showLineNumbers?: boolean;
+  className?: string;
 }
 
 export async function CodeBlock({
@@ -32,19 +32,19 @@ export async function CodeBlock({
         name: 'transformers:pre',
         pre(node) {
           if (showLineNumbers) {
-            this.addClassToHast(node, 'relative')
-            this.addClassToHast(node, 'show-line-numbers')
+            this.addClassToHast(node, 'relative');
+            this.addClassToHast(node, 'show-line-numbers');
           }
         },
       } satisfies ShikiTransformer,
     ],
-  })
+  });
 
   return (
     <div
       className={clsx(
         'group relative my-4 w-full bg-contrast-100 last:mb-0 only:my-0 md:my-5',
-        className
+        className,
       )}
     >
       {!hideCopyButton && (
@@ -54,5 +54,5 @@ export async function CodeBlock({
       )}
       <div dangerouslySetInnerHTML={{ __html }} className={clsx(!hideCopyButton && '-mt-[47px]')} />
     </div>
-  )
+  );
 }

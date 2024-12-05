@@ -1,4 +1,4 @@
-import { Spinner } from '@/vibes/soul/primitives/spinner'
+import { Spinner } from '@/vibes/soul/primitives/spinner';
 
 export default function Preview() {
   return (
@@ -7,5 +7,5 @@ export default function Preview() {
       <Spinner size="md" />
       <Spinner size="lg" />
     </div>
-  )
+  );
 }

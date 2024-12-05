@@ -1,4 +1,4 @@
-import { Slideshow } from '@/vibes/soul/sections/slideshow'
+import { Slideshow } from '@/vibes/soul/sections/slideshow';
 
 export const heroSlides = [
   {
@@ -37,8 +37,8 @@ export const heroSlides = [
     //   label: 'Shop Now',
     // },
   },
-]
+];
 
 export default function Preview() {
-  return <Slideshow slides={heroSlides} />
+  return <Slideshow slides={heroSlides} />;
 }

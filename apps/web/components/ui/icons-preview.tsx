@@ -23,15 +23,15 @@ import {
   Star,
   Trash,
   User,
-} from 'lucide-react'
+} from 'lucide-react';
 
 function IconsPreview({
   strokeWidth,
   size = 32,
 }: {
-  variant?: string
-  strokeWidth: number
-  size: number
+  variant?: string;
+  strokeWidth: number;
+  size: number;
 }) {
   return (
     <div className="bg-contrast-100 p-6 text-foreground lg:p-8">
@@ -62,7 +62,7 @@ function IconsPreview({
         <User strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
       </div>
     </div>
-  )
+  );
 }
 
-export { IconsPreview }
+export { IconsPreview };

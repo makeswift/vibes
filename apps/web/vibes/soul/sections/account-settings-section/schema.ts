@@ -1,10 +1,10 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const updateAccountSchema = z.object({
   firstName: z.string().min(2, { message: 'Name must be at least 2 characters long.' }).trim(),
   lastName: z.string().min(2, { message: 'Name must be at least 2 characters long.' }).trim(),
   email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
-})
+});
 
 export const changePasswordSchema = z
   .object({
@@ -26,6 +26,6 @@ export const changePasswordSchema = z
         code: 'custom',
         message: 'The passwords did not match',
         path: ['confirmPassword'],
-      })
+      });
     }
-  })
+  });

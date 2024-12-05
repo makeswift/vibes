@@ -1,22 +1,22 @@
-import { BlogPost, BlogPostCard } from '@/vibes/soul/primitives/blog-post-card'
+import { BlogPost, BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
 import {
   Carousel,
   CarouselButtons,
   CarouselContent,
   CarouselItem,
   CarouselScrollbar,
-} from '@/vibes/soul/primitives/carousel'
+} from '@/vibes/soul/primitives/carousel';
 
 interface Props {
-  className?: string
-  blogPosts: BlogPost[]
+  className?: string;
+  blogPosts: BlogPost[];
 }
 
 export function BlogPostCarousel({ className, blogPosts }: Props) {
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-10">
-        {blogPosts.map(post => {
+        {blogPosts.map((post) => {
           return (
             <CarouselItem
               key={post.id}
@@ -24,7 +24,7 @@ export function BlogPostCarousel({ className, blogPosts }: Props) {
             >
               <BlogPostCard {...post} />
             </CarouselItem>
-          )
+          );
         })}
       </CarouselContent>
       <div className="flex w-full items-center justify-between">
@@ -32,5 +32,5 @@ export function BlogPostCarousel({ className, blogPosts }: Props) {
         <CarouselButtons />
       </div>
     </Carousel>
-  )
+  );
 }
