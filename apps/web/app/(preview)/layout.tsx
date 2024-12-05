@@ -14,6 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <ZoomListener />
 
       <body>
+        {/* TODO: This is currently hardcoded to the Soul vibe. 
+        We want to make it so that each vibe has its own preview 
+        layout. */}
         <Toaster position="top-right" />
         {children}
       </body>
