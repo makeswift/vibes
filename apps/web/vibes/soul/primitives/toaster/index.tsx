@@ -1,6 +1,5 @@
 'use client'
 
-import { XIcon } from 'lucide-react'
 import { Toaster as Sonner, toast as SonnerToast } from 'sonner'
 
 import { Alert } from '@/vibes/soul/primitives/alert'
@@ -25,9 +24,6 @@ export const Toaster = ({ ...props }: ToasterProps) => {
         classNames: {
           toast: 'group focus-visible:ring-0',
         },
-      }}
-      icons={{
-        close: <XIcon strokeWidth={1.5} size={20} />,
       }}
       {...props}
     />
