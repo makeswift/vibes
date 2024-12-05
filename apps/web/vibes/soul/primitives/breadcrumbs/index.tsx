@@ -27,18 +27,18 @@ export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
           return (
             <Fragment key={idx}>
               <Link
-                href={href}
                 className="rounded font-medium text-contrast-500 ring-offset-4 transition-colors hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
+                href={href}
               >
                 {label}
               </Link>
-              <ChevronRight size={16} strokeWidth={1} className="text-contrast-500" />
+              <ChevronRight className="text-contrast-500" size={16} strokeWidth={1} />
             </Fragment>
           );
         }
 
         return (
-          <span key={idx} className="text-contrast-400">
+          <span className="text-contrast-400" key={idx}>
             {label}
           </span>
         );

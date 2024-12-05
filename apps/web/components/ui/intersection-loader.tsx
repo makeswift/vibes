@@ -33,7 +33,7 @@ export function IntersectionLoader({ children, onEnter, aspectRatio = 16 / 9 }: 
   }, [ref, onEnter]);
 
   return (
-    <div className="w-full" style={{ aspectRatio }} ref={ref}>
+    <div className="w-full" ref={ref} style={{ aspectRatio }}>
       {isVisible && children}
     </div>
   );

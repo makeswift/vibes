@@ -27,7 +27,7 @@ export function FeaturedCardCarousel({ title, description, cta, cards }: Props) 
             )}
           </div>
           {cta != null && cta.href !== '' && cta.label !== '' && (
-            <AnimatedLink label={cta.label} link={{ href: cta.href }} className="mr-3" />
+            <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
           )}
         </div>
         <CardCarousel cards={cards} />

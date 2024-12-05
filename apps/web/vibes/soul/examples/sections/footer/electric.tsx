@@ -133,12 +133,12 @@ export default function Preview() {
 
   return (
     <Footer
-      sections={sectionsPromise}
-      logo={logoPromise}
-      copyright={copyrightPromise}
-      paymentIcons={paymentIconsPromise}
-      socialMediaLinks={socialMediaLinksPromise}
       contactInformation={contactInformationPromise}
+      copyright={copyrightPromise}
+      logo={logoPromise}
+      paymentIcons={paymentIconsPromise}
+      sections={sectionsPromise}
+      socialMediaLinks={socialMediaLinksPromise}
     />
   );
 }

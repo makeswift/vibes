@@ -20,13 +20,13 @@ export function ProductionReady() {
         >
           <Sticker
             active={active}
+            back={<ProductionReadyBack />}
+            front={<ProductionReadyFront />}
+            height={284}
             hover={hover}
             hoverPeel={0.15}
-            width={284}
-            height={284}
-            front={<ProductionReadyFront />}
-            back={<ProductionReadyBack />}
             shadow={<ProductionReadyShadow />}
+            width={284}
           />
         </Transition>
       )}

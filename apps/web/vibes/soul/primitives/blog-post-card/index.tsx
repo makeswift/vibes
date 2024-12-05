@@ -27,20 +27,20 @@ export const BlogPostCard = function BlogPostCard({
 }: BlogPost) {
   return (
     <Link
-      href={href}
       className={clsx(
         'group max-w-full rounded-b-lg rounded-t-2xl text-foreground ring-primary ring-offset-4 @container focus:outline-0 focus-visible:ring-2',
         className,
       )}
+      href={href}
     >
       <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-contrast-100">
         {image?.src != null && image.src !== '' ? (
           <Image
-            src={image.src}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt={image.alt}
             className="transition-transform duration-500 ease-out group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            src={image.src}
           />
         ) : (
           <div className="p-4 text-5xl font-bold leading-none tracking-tighter text-foreground/15">

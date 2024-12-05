@@ -46,14 +46,14 @@ export function CompareSection({
           <CarouselContent>
             {products.map((product) => (
               <CarouselItem
-                key={product.id}
                 className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+                key={product.id}
               >
                 <CompareCard
-                  key={product.id}
-                  product={product}
                   addToCartAction={addToCartAction}
                   addToCartLabel={addToCartLabel}
+                  key={product.id}
+                  product={product}
                 />
               </CarouselItem>
             ))}
@@ -84,8 +84,8 @@ export function CompareSectionSkeleton({
           <CarouselContent>
             {Array.from({ length: 4 }).map((_, index) => (
               <CarouselItem
-                key={index}
                 className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+                key={index}
               >
                 <CompareCardSkeleton />
               </CarouselItem>
@@ -119,8 +119,8 @@ export function CompareSectionEmptyState({
           <CarouselContent className="[mask-image:radial-gradient(circle,transparent,black)]">
             {Array.from({ length: 4 }).map((_, index) => (
               <CarouselItem
-                key={index}
                 className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+                key={index}
               >
                 <CompareCardSkeleton />
               </CarouselItem>

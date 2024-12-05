@@ -14,7 +14,7 @@ export function ZoomImage({ alt = 'An Image', src = 'https://placehold.it/1024x6
   return (
     <Zoom IconUnzoom={Times16} zoomMargin={48}>
       <div className="not-prose relative aspect-video w-full border border-dashed border-contrast-200 bg-contrast-100">
-        <Image className="object-cover" sizes="100vw" fill src={src} alt={alt} />
+        <Image alt={alt} className="object-cover" fill sizes="100vw" src={src} />
       </div>
     </Zoom>
   );

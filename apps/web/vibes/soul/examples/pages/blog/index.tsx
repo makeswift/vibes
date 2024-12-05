@@ -57,35 +57,41 @@ export default function Preview() {
       </Banner>
 
       <Navigation
-        links={navigationLinks}
-        logo="SOUL"
-        cartHref="#"
         accountHref="#"
-        locales={locales}
-        localeAction={localeAction}
         activeLocaleId="en"
+        cartHref="#"
+        links={navigationLinks}
+        localeAction={localeAction}
+        locales={locales}
+        logo="SOUL"
         searchHref="#"
       />
 
       <FeaturedBlogPostList
-        title="Plant Life"
-        description="Expert Tips & Inspiration for Every Plant Lover"
         cta={{ href: '#', label: 'View All' }}
+        description="Expert Tips & Inspiration for Every Plant Lover"
         posts={posts}
+        title="Plant Life"
       />
 
       <Subscribe
+        action={action}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         image={{
           src: 'https://rstr.in/monogram/vibes/m12FEyfnuDl',
           alt: 'Lady with plant',
         }}
         title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        action={action}
       />
 
       <Footer
+        contactInformation={{
+          address: 'info@mywebsite.com',
+          phone: '+(1)408 123 4567',
+        }}
+        copyright={`© ${new Date().getFullYear().toString()} SOUL - Powered by Monogram`}
         logo="SOUL"
+        paymentIcons={paymentIconsArray}
         sections={[
           {
             title: 'Categories',
@@ -115,12 +121,6 @@ export default function Preview() {
             ],
           },
         ]}
-        contactInformation={{
-          address: 'info@mywebsite.com',
-          phone: '+(1)408 123 4567',
-        }}
-        copyright={`© ${new Date().getFullYear().toString()} SOUL - Powered by Monogram`}
-        paymentIcons={paymentIconsArray}
         socialMediaLinks={socialMediaLinks}
       />
     </>

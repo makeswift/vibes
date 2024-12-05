@@ -97,22 +97,22 @@ export default function Preview() {
   return (
     <>
       <FeaturedProductsList
-        title={featuredProducts.title}
-        description={featuredProducts.description}
         cta={{
           label: featuredProducts.cta.label,
           href: featuredProducts.cta.href,
         }}
+        description={featuredProducts.description}
         products={featuredProducts.products}
+        title={featuredProducts.title}
       />
 
       <FeaturedProductsListSkeleton
-        title={featuredProducts.title}
-        description={featuredProducts.description}
         cta={{
           label: featuredProducts.cta.label,
           href: featuredProducts.cta.href,
         }}
+        description={featuredProducts.description}
+        title={featuredProducts.title}
       />
     </>
   );

@@ -44,21 +44,21 @@ export function ResetPasswordForm({
   }, [lastResult]);
 
   return (
-    <form {...getFormProps(form)} className="space-y-5" action={formAction}>
+    <form {...getFormProps(form)} action={formAction} className="space-y-5">
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
-        key={fields.password.id}
         errors={fields.password.errors}
+        key={fields.password.id}
         label={newPasswordLabel}
       />
       <Input
         {...getInputProps(fields.confirmPassword, { type: 'password' })}
-        key={fields.confirmPassword.id}
-        errors={fields.confirmPassword.errors}
         className="mb-6"
+        errors={fields.confirmPassword.errors}
+        key={fields.confirmPassword.id}
         label={confirmPasswordLabel}
       />
-      <Button type="submit" variant="secondary" size="small" loading={isPending}>
+      <Button loading={isPending} size="small" type="submit" variant="secondary">
         {submitLabel}
       </Button>
     </form>

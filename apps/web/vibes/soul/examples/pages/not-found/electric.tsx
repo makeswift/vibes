@@ -171,13 +171,13 @@ export default function Preview() {
       </Banner>
 
       <Navigation
-        links={navigationLinks}
-        logo={logo}
-        cartHref="#"
         accountHref="#"
-        locales={locales}
         activeLocaleId="en"
+        cartHref="#"
+        links={navigationLinks}
         localeAction={localeAction}
+        locales={locales}
+        logo={logo}
         searchHref="#"
       />
 
@@ -186,16 +186,16 @@ export default function Preview() {
       <FeaturedProductsCarousel products={products} />
 
       <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         action={action}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        title="Sign up for our newsletter"
       />
 
       <Footer
-        logo={logo}
-        sections={footerLinks}
         copyright={copyright}
+        logo={logo}
         paymentIcons={paymentIconsArray}
+        sections={footerLinks}
         socialMediaLinks={socialMediaLinks}
       />
     </>

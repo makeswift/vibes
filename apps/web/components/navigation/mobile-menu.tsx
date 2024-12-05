@@ -27,11 +27,11 @@ export function MobileMenu({ chapter }: Props) {
   if (!chapter) return null;
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet onOpenChange={setIsOpen} open={isOpen}>
       <SheetTrigger asChild>
         <button
-          className="inline-flex h-6 w-7 shrink-0 flex-col justify-between px-1 py-1.5 transition-transform xl:hidden"
           aria-label="Open mobile navigation"
+          className="inline-flex h-6 w-7 shrink-0 flex-col justify-between px-1 py-1.5 transition-transform xl:hidden"
         >
           <div
             className={clsx(
@@ -47,7 +47,7 @@ export function MobileMenu({ chapter }: Props) {
           />
         </button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-full md:w-72">
+      <SheetContent className="w-full md:w-72" side="left">
         <VisuallyHidden.Root>
           <SheetTitle>Groups</SheetTitle>
         </VisuallyHidden.Root>
@@ -59,7 +59,7 @@ export function MobileMenu({ chapter }: Props) {
               <ul>
                 {group.pages.map((page) => (
                   <li key={page.slug}>
-                    <PageLink className="block py-1.5" chapterSlug={chapter.slug} page={page} />
+                    <PageLink chapterSlug={chapter.slug} className="block py-1.5" page={page} />
                   </li>
                 ))}
               </ul>

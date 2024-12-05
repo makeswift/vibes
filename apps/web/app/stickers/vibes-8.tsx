@@ -17,15 +17,15 @@ export function Vibes8() {
           >
             <Sticker
               active={active}
-              hover={hover}
-              peelAngle={-100}
-              hoverPeel={0.2}
               activePeel={0.3}
-              width={197}
-              height={65}
-              front={<Vibes8Front />}
               back={<Vibes8Back />}
+              front={<Vibes8Front />}
+              height={65}
+              hover={hover}
+              hoverPeel={0.2}
+              peelAngle={-100}
               shadow={<Vibes8Shadow />}
+              width={197}
             />
           </Transition>
         )}

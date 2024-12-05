@@ -45,7 +45,7 @@ export function FeaturedProductsList({
       }
       sidebarSize="1/3"
     >
-      <ProductsList products={products} className="flex-1" />
+      <ProductsList className="flex-1" products={products} />
     </StickySidebarLayout>
   );
 }

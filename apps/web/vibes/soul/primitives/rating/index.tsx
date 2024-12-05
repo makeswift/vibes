@@ -16,9 +16,9 @@ const Star = ({ type }: StarType) => {
       <path
         d="M9.99984 1.66669L12.5748 6.88335L18.3332 7.72502L14.1665 11.7834L15.1498 17.5167L9.99984 14.8084L4.84984 17.5167L5.83317 11.7834L1.6665 7.72502L7.42484 6.88335L9.99984 1.66669Z"
         stroke="currentColor"
-        strokeOpacity="0.4"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeOpacity="0.4"
       />
     ),
     half: (
@@ -48,11 +48,11 @@ const Star = ({ type }: StarType) => {
 
   return (
     <svg
-      width={20}
+      className="inline-block text-foreground"
+      fill="none"
       height={20}
       viewBox="0 0 20 20"
-      fill="none"
-      className="inline-block text-foreground"
+      width={20}
     >
       {paths[type]}
     </svg>

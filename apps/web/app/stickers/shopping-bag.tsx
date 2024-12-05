@@ -17,15 +17,15 @@ export function ShoppingBag() {
           >
             <Sticker
               active={active}
-              hover={hover}
-              peelAngle={-40}
-              hoverPeel={0.2}
               activePeel={0.3}
-              width={227}
-              height={242}
-              front={<ShoppingBagFront />}
               back={<ShoppingBagBack />}
+              front={<ShoppingBagFront />}
+              height={242}
+              hover={hover}
+              hoverPeel={0.2}
+              peelAngle={-40}
               shadow={<ShoppingBagShadow />}
+              width={227}
             />
           </Transition>
         )}

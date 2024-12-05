@@ -52,18 +52,18 @@ export function CompareDrawer({
           <div className="flex flex-1 flex-wrap justify-end gap-4">
             {items.map((item) => (
               <div className="relative" key={item.id}>
-                <input type="hidden" name={paramName} value={item.id} key={item.id} />
+                <input key={item.id} name={paramName} type="hidden" value={item.id} />
                 <Link
-                  href={item.href}
                   className="group relative flex max-w-56 items-center whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold ring-primary transition-all duration-150 hover:bg-contrast-100 focus:outline-0 focus:ring-2"
+                  href={item.href}
                 >
                   <div className="bg-primary-highlight/10 relative aspect-square w-12 shrink-0">
                     {item.image?.src != null ? (
                       <Image
-                        src={item.image.src}
                         alt={item.image.alt}
-                        fill
                         className="rounded-lg object-cover @4xl:rounded-r-none"
+                        fill
+                        src={item.image.src}
                       />
                     ) : (
                       <span className="max-w-full break-all p-1 text-xs text-primary-shadow opacity-20">
@@ -77,8 +77,8 @@ export function CompareDrawer({
                 </Link>
 
                 <button
-                  type="button"
                   aria-label={`Remove ${item.title}`}
+                  className="absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center rounded-full border border-contrast-100 bg-background text-contrast-400 transition-colors duration-150 hover:border-contrast-200 hover:bg-contrast-100 hover:text-foreground"
                   onClick={() => {
                     setParam((prev) => {
                       const next = prev?.filter((v) => v !== item.id) ?? [];
@@ -86,20 +86,20 @@ export function CompareDrawer({
                       return next.length > 0 ? next : null;
                     });
                   }}
-                  className="absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center rounded-full border border-contrast-100 bg-background text-contrast-400 transition-colors duration-150 hover:border-contrast-200 hover:bg-contrast-100 hover:text-foreground"
+                  type="button"
                 >
-                  <X strokeWidth={1.5} absoluteStrokeWidth size={16} />
+                  <X absoluteStrokeWidth size={16} strokeWidth={1.5} />
                 </button>
               </div>
             ))}
           </div>
 
-          <Button size="medium" variant="primary" className="hidden @md:block" type="submit">
-            {submitLabel} <ArrowRight size={20} strokeWidth={1} absoluteStrokeWidth />
+          <Button className="hidden @md:block" size="medium" type="submit" variant="primary">
+            {submitLabel} <ArrowRight absoluteStrokeWidth size={20} strokeWidth={1} />
           </Button>
 
-          <Button size="small" variant="primary" className="w-full @md:hidden" type="submit">
-            {submitLabel} <ArrowRight size={16} strokeWidth={1} absoluteStrokeWidth />
+          <Button className="w-full @md:hidden" size="small" type="submit" variant="primary">
+            {submitLabel} <ArrowRight absoluteStrokeWidth size={16} strokeWidth={1} />
           </Button>
         </form>
       </Drawer>

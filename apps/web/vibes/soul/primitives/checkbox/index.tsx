@@ -17,7 +17,7 @@ export function Checkbox({ id, checked = false, setChecked, label, error, classN
     <div>
       <div className={clsx('flex items-center gap-2', className)}>
         <RadixCheckbox.Root
-          id={id}
+          checked={checked}
           className={clsx(
             'flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition-colors duration-150',
             'focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary',
@@ -25,11 +25,11 @@ export function Checkbox({ id, checked = false, setChecked, label, error, classN
             error != null && error !== '' ? 'border-error' : 'border-contrast-300',
           )}
           defaultChecked
-          checked={checked}
+          id={id}
           onCheckedChange={setChecked}
         >
           <RadixCheckbox.Indicator>
-            <Check color="white" className="h-4 w-4" />
+            <Check className="h-4 w-4" color="white" />
           </RadixCheckbox.Indicator>
         </RadixCheckbox.Root>
 

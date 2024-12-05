@@ -10,7 +10,7 @@ function Reveal({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative my-5 last:mb-0 md:my-6">
       <div className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2">
-        <Button size="small" onClick={() => setIsOpen((prev) => !prev)}>
+        <Button onClick={() => setIsOpen((prev) => !prev)} size="small">
           {isOpen ? 'Show less' : 'Show more'}
         </Button>
       </div>

@@ -107,11 +107,11 @@ const HamburgerMenuButton = forwardRef<
   return (
     <button
       {...rest}
-      ref={ref}
       className={clsx(
         'group relative rounded-lg p-2 outline-0 ring-primary transition-colors focus-visible:ring-2',
         className,
       )}
+      ref={ref}
     >
       <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
         <div
@@ -237,7 +237,6 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-8px)] w-[var(--radix-popper-anchor-width)] @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
               <div className="max-h-[inherit] divide-y divide-contrast-100 overflow-y-auto bg-background">
                 <Stream
-                  value={streamableLinks}
                   fallback={
                     <ul className="flex animate-pulse flex-col gap-4 p-5 @4xl:gap-2 @4xl:p-5">
                       <li>
@@ -254,6 +253,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                       </li>
                     </ul>
                   }
+                  value={streamableLinks}
                 >
                   {(links) =>
                     links.map((item, i) => (
@@ -300,8 +300,8 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             href={logoHref}
           >
             <Stream
-              value={streamableLogo}
               fallback={<div className="h-6 w-16 animate-pulse rounded-md bg-contrast-100"></div>}
+              value={streamableLogo}
             >
               {(logo) =>
                 typeof logo === 'object' && logo !== null && logo.src !== '' ? (
@@ -327,7 +327,6 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         {/* Top Level Nav Links */}
         <ul className="hidden @4xl:flex" ref={container}>
           <Stream
-            value={streamableLinks}
             fallback={
               <ul className="flex animate-pulse flex-row p-2 @4xl:gap-2 @4xl:p-5">
                 <li>
@@ -344,6 +343,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                 </li>
               </ul>
             }
+            value={streamableLinks}
           >
             {(links) =>
               links.map((item, i) => (
@@ -455,10 +455,10 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           >
             <ShoppingBag size={20} strokeWidth={1} />
             <Stream
-              value={streamableCartCount}
               fallback={
                 <span className="absolute -right-1 -top-1 flex h-4 w-4 animate-pulse items-center justify-center rounded-full bg-contrast-100 text-xs text-background"></span>
               }
+              value={streamableCartCount}
             >
               {(cartCount) =>
                 cartCount != null &&

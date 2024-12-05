@@ -54,10 +54,10 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
       >
         {activeBrand && (
           <iframe
-            title={`${activeBrand.name} preview`}
-            ref={iframe}
             className="h-full w-full bg-transparent"
+            ref={iframe}
             src={`/preview/${vibeSlug}/${componentName}/${activeBrand.name}`}
+            title={`${activeBrand.name} preview`}
           />
         )}
         <div

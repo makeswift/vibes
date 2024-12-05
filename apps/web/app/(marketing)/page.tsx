@@ -66,7 +66,7 @@ const ScrollButton: React.FC<{ to: string; children: React.ReactNode; className?
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div onClick={handleClick} className={clsx('cursor-pointer', className)}>
+    <div className={clsx('cursor-pointer', className)} onClick={handleClick}>
       {children}
     </div>
   );
@@ -140,7 +140,7 @@ export default function Home() {
             isScrolled && 'scale-90 md:scale-[0.8]',
           )}
         >
-          <Image src="/logo.svg" fill alt="Vibes logo" priority />
+          <Image alt="Vibes logo" fill priority src="/logo.svg" />
         </div>
         <ButtonLink href="/contribute" size="large">
           Contribute
@@ -149,29 +149,29 @@ export default function Home() {
 
       <section className="relative h-[550px] w-full bg-white p-3 sm:h-[650px] sm:p-4 md:h-[calc(100vh-28px)] lg:p-5">
         <ScrollButton
-          to="intro"
           className="group absolute left-1/2 top-full z-20 -mt-6 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black md:flex"
+          to="intro"
         >
           <Arrow className="rotate-90 scale-125 transition-transform duration-300 ease-out group-hover:translate-y-2" />
         </ScrollButton>
 
         <Image
+          alt="Arrow button container"
+          className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[74px] md:flex lg:-translate-y-[78px]"
+          height={114}
+          priority
           src="/hero-arrow-bg.svg"
           width={200}
-          height={114}
-          alt="Arrow button container"
-          priority
-          className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[74px] md:flex lg:-translate-y-[78px]"
         />
 
         <div className="relative z-0 h-full w-full select-none place-content-start overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-24 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center sm:pt-10 md:p-8 lg:place-content-center lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
           <Image
+            alt="Vibes logo"
+            className="absolute left-5 top-6 z-50 sm:hidden"
+            height={32}
+            priority
             src="/logo.svg"
             width={120}
-            height={32}
-            alt="Vibes logo"
-            priority
-            className="absolute left-5 top-6 z-50 sm:hidden"
           />
 
           <h1 className="mx-auto max-w-full font-heading text-[clamp(2.75rem,_9vw,_3.5rem)] leading-none tracking-tight text-black sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
@@ -247,8 +247,8 @@ export default function Home() {
 
       <section className="h-auto px-5 pb-8 md:mb-8 md:h-[60vh] md:place-content-end md:p-10 lg:mb-20">
         <div
-          id="intro"
           className="mx-auto max-w-[1200px] pt-12 text-3xl leading-snug tracking-tight md:pt-40 md:text-4xl md:leading-tight lg:text-5xl xl:text-6xl"
+          id="intro"
         >
           <Transition
             className="transition-all duration-700 [transition-delay:200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
@@ -278,10 +278,10 @@ export default function Home() {
           <div className="relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
               <Image
-                src="/eclipse-components.webp"
                 alt="Eclipse components"
-                fill
                 className="rotate-12 overflow-visible object-none object-top"
+                fill
+                src="/eclipse-components.webp"
               />
             </div>
           </div>
@@ -289,10 +289,10 @@ export default function Home() {
           <div className="relative h-1/3 w-full origin-center overflow-hidden border-y-[1.5px] border-black bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:border-x-[1.5px] md:border-y-0 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
               <Image
-                src="/2px-components.webp"
                 alt="2px components"
-                fill
                 className="rotate-12 overflow-visible object-none object-top"
+                fill
+                src="/2px-components.webp"
               />
             </div>
           </div>
@@ -300,10 +300,10 @@ export default function Home() {
           <div className="relative h-1/3 w-full origin-right overflow-hidden bg-[#eeeeee] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
               <Image
-                src="/soul-components.webp"
                 alt="Soul components"
-                fill
                 className="rotate-12 overflow-visible object-none"
+                fill
+                src="/soul-components.webp"
               />
             </div>
           </div>
@@ -392,7 +392,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer id="footer" className="w-full bg-white p-3 md:p-4 lg:p-5">
+      <footer className="w-full bg-white p-3 md:p-4 lg:p-5" id="footer">
         <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
           <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-6 pt-10 text-left sm:px-8 sm:text-center md:pb-10 md:pt-20">
             <p className="mb-8 text-balance px-2 text-2xl leading-snug text-black sm:text-3xl md:mb-12 lg:text-4xl">
@@ -407,7 +407,7 @@ export default function Home() {
 
             <p className="mt-14 w-full px-2 text-lg leading-normal md:mt-24">
               Made by{' '}
-              <Link href="https://www.makeswift.com" target="_blank" className="font-bold">
+              <Link className="font-bold" href="https://www.makeswift.com" target="_blank">
                 Makeswift
               </Link>
               {/* . View source code in{' '}

@@ -8,7 +8,6 @@ interface Props {
 export const Spinner = function Spinner({ size = 'sm', loadingAriaLabel }: Props) {
   return (
     <span
-      role="status"
       aria-label={loadingAriaLabel ?? 'Loading...'}
       className={clsx(
         'box-border inline-block animate-spin rounded-full border-contrast-100 border-b-primary-shadow',
@@ -19,6 +18,7 @@ export const Spinner = function Spinner({ size = 'sm', loadingAriaLabel }: Props
           lg: 'h-14 w-14 border-4',
         }[size],
       )}
+      role="status"
     ></span>
   );
 };

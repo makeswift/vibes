@@ -19,18 +19,18 @@ export default async function Preview({
   return (
     <div className="p-6">
       <ProductsListSection
-        title="Shoes"
         breadcrumbs={breadcrumbs}
-        products={productsPromise}
-        totalCount={productsPromise.then((products) => products.length)}
-        filters={filters}
-        sortOptions={sortOptions}
-        paginationInfo={{ startCursor: '1', endCursor: '10' }}
+        compareParamName={compareParamName}
         compareProducts={productsPromise.then((products) =>
           products.filter((product) => compare?.includes(product.id)),
         )}
-        compareParamName={compareParamName}
+        filters={filters}
+        paginationInfo={{ startCursor: '1', endCursor: '10' }}
+        products={productsPromise}
+        sortOptions={sortOptions}
         sortParamName={sortParamName}
+        title="Shoes"
+        totalCount={productsPromise.then((products) => products.length)}
       />
     </div>
   );

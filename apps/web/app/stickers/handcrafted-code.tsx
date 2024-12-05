@@ -21,13 +21,13 @@ export function HandcraftedCode() {
           >
             <Sticker
               active={active}
+              back={<HandcraftedCodeBack />}
+              front={<HandcraftedCodeFront />}
+              height={242}
               hover={hover}
               peelAngle={-100}
-              width={227}
-              height={242}
-              front={<HandcraftedCodeFront />}
-              back={<HandcraftedCodeBack />}
               shadow={<HandcraftedCodeShadow />}
+              width={227}
             />
           </Transition>
         )}

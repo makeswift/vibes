@@ -33,7 +33,7 @@ export function GroupLink({ chapterSlug, group, ...rest }: Props) {
   const href = `/docs/${chapterSlug}/${group.pages[0]!.slug}`;
 
   return (
-    <Link {...rest} href={href} active={isInSameGroup({ chapterSlug, group, pathname, href })}>
+    <Link {...rest} active={isInSameGroup({ chapterSlug, group, pathname, href })} href={href}>
       {group.title}
     </Link>
   );

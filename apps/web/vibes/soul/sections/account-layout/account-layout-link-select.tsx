@@ -11,11 +11,11 @@ export function AccountLayoutLinkSelect({ links }: { links: { href: string; labe
   return (
     <Select
       name="account-layout-link-select"
-      value={pathname}
       onValueChange={(value) => {
         router.push(value);
       }}
       options={links.map((link) => ({ value: link.href, label: link.label }))}
+      value={pathname}
     />
   );
 }

@@ -115,9 +115,6 @@ export function FiltersPanelInner({
                   value={index.toString()}
                 >
                   <ToggleGroup
-                    type="multiple"
-                    value={optimisticParams[filter.paramName] ?? []}
-                    options={filter.options}
                     onValueChange={(value) => {
                       startTransition(async () => {
                         const nextParams = { ...optimisticParams, [filter.paramName]: value };
@@ -125,6 +122,9 @@ export function FiltersPanelInner({
                         await setParams(nextParams);
                       });
                     }}
+                    options={filter.options}
+                    type="multiple"
+                    value={optimisticParams[filter.paramName] ?? []}
                   />
                 </Accordion>
               );
@@ -191,12 +191,12 @@ export function FiltersPanelInner({
                   <div className="space-y-3">
                     {[5, 4, 3, 2, 1].map((rating) => (
                       <Checkbox
-                        key={rating}
-                        id={`${filter.paramName}-${rating}`}
-                        label={<Rating showRating={false} rating={rating} />}
                         checked={
                           optimisticParams[filter.paramName]?.includes(rating.toString()) ?? false
                         }
+                        id={`${filter.paramName}-${rating}`}
+                        key={rating}
+                        label={<Rating rating={rating} showRating={false} />}
                         onCheckedChange={(value) =>
                           startTransition(async () => {
                             const ratings = new Set(optimisticParams[filter.paramName]);
@@ -279,10 +279,10 @@ function ToggleGroupSkeleton({ options, seed = 0 }: { options: number; seed?: nu
 
         return (
           <div
+            className="h-12 w-[var(--width)] animate-pulse rounded-full bg-contrast-100 px-4"
             key={i}
             // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
             style={{ '--width': `${width}ch` } as React.CSSProperties}
-            className="h-12 w-[var(--width)] animate-pulse rounded-full bg-contrast-100 px-4"
           />
         );
       })}

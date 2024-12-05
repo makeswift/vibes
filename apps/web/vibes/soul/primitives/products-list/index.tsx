@@ -35,19 +35,19 @@ export function ProductsList({
       <div className={clsx('w-full @container', className)}>
         <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5">
           <Stream
-            value={streamableProducts}
             fallback={Array.from({ length: 9 }).map((_, index) => (
               <ProductCardSkeleton key={index} />
             ))}
+            value={streamableProducts}
           >
             {(products) =>
               products.map((product) => (
                 <ProductCard
+                  compareLabel={compareLabel}
+                  compareParamName={compareParamName}
                   key={product.id}
                   product={product}
                   showCompare={showCompare}
-                  compareLabel={compareLabel}
-                  compareParamName={compareParamName}
                 />
               ))
             }
@@ -58,9 +58,9 @@ export function ProductsList({
         {(compareProducts) =>
           compareProducts && (
             <CompareDrawer
+              action={compareAction}
               items={compareProducts}
               paramName={compareParamName}
-              action={compareAction}
               submitLabel={compareLabel}
             />
           )

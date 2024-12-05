@@ -42,8 +42,8 @@ const SheetContent = React.forwardRef<
 >(({ side = 'right', className, children, ...props }, ref) => (
   <SheetPortal>
     <SheetPrimitive.Content
-      ref={ref}
       className={clsx(sheetVariants({ side }), className)}
+      ref={ref}
       {...props}
     >
       {children}

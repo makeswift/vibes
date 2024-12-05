@@ -16,15 +16,15 @@ export function LikeTotally() {
         >
           <Sticker
             active={active}
-            hover={hover}
-            peelAngle={-14}
-            hoverPeel={0.2}
             activePeel={0.3}
-            width={340}
-            height={172}
-            front={<TotallyFront />}
             back={<TotallyBack />}
+            front={<TotallyFront />}
+            height={172}
+            hover={hover}
+            hoverPeel={0.2}
+            peelAngle={-14}
             shadow={<TotallyShadow />}
+            width={340}
           />
         </Transition>
       )}

@@ -60,7 +60,7 @@ export function Installation({ vibe, componentName }: { vibe: Vibe; componentNam
             </Step>
           </Steps> 
         </TabsContent> */}
-        <TabsContent value="manual" className="pt-4">
+        <TabsContent className="pt-4" value="manual">
           <Steps>
             {component.registryDependencies.length > 0 && (
               <Step>

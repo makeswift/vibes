@@ -35,7 +35,6 @@ export async function Preview({ vibe, componentName, size = 'md' }: Props) {
   return (
     <PreviewProvider>
       <PreviewTabs
-        size={size}
         components={await Promise.all(
           components.filter(exists).map(async ({ brandName, entry }) => {
             const pathname = `/vibes/${vibe.slug}/${entry.files[0]}`;
@@ -44,11 +43,12 @@ export async function Preview({ vibe, componentName, size = 'md' }: Props) {
             return {
               brandName,
               clipboard: file,
-              preview: <Frame vibeSlug={vibe.slug} componentName={entry.name} />,
-              code: <CodeFromFile pathname={pathname} hideCopyButton showLineNumbers />,
+              preview: <Frame componentName={entry.name} vibeSlug={vibe.slug} />,
+              code: <CodeFromFile hideCopyButton pathname={pathname} showLineNumbers />,
             };
           }),
         )}
+        size={size}
       />
     </PreviewProvider>
   );

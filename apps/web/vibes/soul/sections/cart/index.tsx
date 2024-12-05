@@ -375,7 +375,7 @@ function CheckoutButton({
 function SubmitButton(props: React.ComponentPropsWithoutRef<typeof Button>) {
   const { pending } = useFormStatus();
 
-  return <Button {...props} loading={pending} disabled={pending} type="submit" />;
+  return <Button {...props} disabled={pending} loading={pending} type="submit" />;
 }
 
 export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {

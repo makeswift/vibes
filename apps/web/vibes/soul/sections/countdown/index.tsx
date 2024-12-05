@@ -87,9 +87,9 @@ export const Countdown = function Countdown({
       <div className="relative h-14 overflow-hidden [&>*]:h-14">
         {Array.from({ length: 10 }, (_, i) => (
           <div
+            className="flex flex-shrink-0 flex-col items-center justify-center"
             key={i}
             style={{ transform: `translateY(-${displayValue * 100}%)` }}
-            className="flex flex-shrink-0 flex-col items-center justify-center"
           >
             {i}
           </div>
@@ -141,30 +141,30 @@ export const Countdown = function Countdown({
         >
           {variant.type === 'full' || variant.type === 'split' ? (
             <Image
-              src={variant.type === 'full' ? variant.backgroundImage : variant.image}
               alt={title}
-              height={1000}
-              width={1000}
               className={clsx('h-full w-full object-cover', {
                 'absolute inset-0': variant.type === 'full',
               })}
+              height={1000}
+              src={variant.type === 'full' ? variant.backgroundImage : variant.image}
+              width={1000}
             />
           ) : null}
 
           {variant.type === 'default' && variant.images
             ? variant.images.map((image, index) => (
                 <Image
-                  key={`image-${index + 1}`}
-                  src={image}
                   alt={title}
-                  height={500}
-                  width={500}
                   className={clsx(
                     'absolute object-contain',
                     index === 0
                       ? '-left-20 top-0 -translate-y-2/3 @5xl:-translate-y-1/3'
                       : '-right-20 bottom-0 translate-y-2/3 @5xl:translate-y-1/3',
                   )}
+                  height={500}
+                  key={`image-${index + 1}`}
+                  src={image}
+                  width={500}
                 />
               ))
             : null}
@@ -192,7 +192,7 @@ export const Countdown = function Countdown({
             <div className="flex justify-center space-x-2">
               {Object.entries(timeLeft).map(([unit, value], index, array) => (
                 <React.Fragment key={unit}>
-                  <div key={unit} className="flex flex-col items-center">
+                  <div className="flex flex-col items-center" key={unit}>
                     <TwoDigitAnimatedNumber value={value} />
                     <span className="mt-1 capitalize">{unit}</span>
                   </div>
@@ -207,12 +207,12 @@ export const Countdown = function Countdown({
         {variant.type === 'banner' ? (
           <button
             aria-label="Dismiss banner"
-            type="button"
+            className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-white transition-transform hover:scale-110"
             onClick={(e) => {
               e.preventDefault();
               hideBanner();
             }}
-            className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-white transition-transform hover:scale-110"
+            type="button"
           >
             <X className="h-5 w-5" />
           </button>

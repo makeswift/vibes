@@ -62,18 +62,27 @@ export default async function Preview() {
       </Banner>
 
       <Navigation
-        links={navigationLinks}
-        logo={logo}
-        cartHref="#"
         accountHref="#"
-        locales={locales}
         activeLocaleId="en"
+        cartHref="#"
+        links={navigationLinks}
         localeAction={localeAction}
+        locales={locales}
+        logo={logo}
         searchHref="#"
       />
 
       <Cart
-        title="Cart"
+        checkoutAction={checkoutAction}
+        emptyState={{
+          title: 'Your cart is empty',
+          subtitle: 'Add some products to get started.',
+          cta: {
+            label: 'Continue shopping',
+            href: '#',
+          },
+        }}
+        lineItemAction={lineItemAction}
         lineItems={lineItems}
         summary={{
           title: 'Summary',
@@ -88,29 +97,20 @@ export default async function Preview() {
           // grandTotal: '$127.60',
           ctaLabel: 'Checkout',
         }}
-        emptyState={{
-          title: 'Your cart is empty',
-          subtitle: 'Add some products to get started.',
-          cta: {
-            label: 'Continue shopping',
-            href: '#',
-          },
-        }}
-        lineItemAction={lineItemAction}
-        checkoutAction={checkoutAction}
+        title="Cart"
       />
 
       <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         action={action}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        title="Sign up for our newsletter"
       />
 
       <Footer
-        logo={logo}
-        sections={footerLinks}
         copyright={copyright}
+        logo={logo}
         paymentIcons={paymentIconsArray}
+        sections={footerLinks}
         socialMediaLinks={socialMediaLinks}
       />
     </>

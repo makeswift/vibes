@@ -71,7 +71,7 @@ export function ProductsListSection({
                   </Suspense>
                 </h1>
                 <div className="flex gap-2">
-                  <Sorting options={sortOptions} label={sortLabel} paramName={sortParamName} />
+                  <Sorting label={sortLabel} options={sortOptions} paramName={sortParamName} />
                   <div className="block @3xl:hidden">
                     <MobileFilters filters={filters} label={filterLabel} />
                   </div>
@@ -90,12 +90,12 @@ export function ProductsListSection({
 
             <ProductListContainer className="flex-1">
               <ProductsList
-                products={products}
-                showCompare
+                compareAction={compareAction}
                 compareLabel={compareLabel}
                 compareParamName={compareParamName}
                 compareProducts={compareProducts}
-                compareAction={compareAction}
+                products={products}
+                showCompare
               />
               <Stream value={paginationInfo}>
                 {(info) => info && <CursorPagination info={info} />}

@@ -16,14 +16,14 @@ export const Favorite = function Favorite({ checked, setChecked }: Props) {
       )}
     >
       <input
-        id="favorite-checkbox"
-        type="checkbox"
-        checked={checked}
         aria-label="Favorite"
+        checked={checked}
+        className="absolute h-0 w-0 opacity-0"
+        id="favorite-checkbox"
         onChange={() => {
           setChecked(checked === true ? false : true);
         }}
-        className="absolute h-0 w-0 opacity-0"
+        type="checkbox"
       />
       <Heart filled={checked} />
     </label>

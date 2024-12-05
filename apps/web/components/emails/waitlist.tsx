@@ -25,13 +25,13 @@ export const WaitlistEmail = () => (
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
-          <Img src={`${baseUrl}/logo.png`} width="150" height="40" alt="Vibes" />
+          <Img alt="Vibes" height="40" src={`${baseUrl}/logo.png`} width="150" />
           <Hr style={hr} />
           <Heading style={heading}>You&apos;re on the list!</Heading>
           <Text style={paragraph}>
             Thank you for the interest! We&apos;ll keep you in the loop as the project progresses.
           </Text>
-          <Button style={button} href="https://vibes.site">
+          <Button href="https://vibes.site" style={button}>
             Back to Vibes
           </Button>
           <Hr style={hr} />

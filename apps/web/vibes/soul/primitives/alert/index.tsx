@@ -9,7 +9,6 @@ interface Props {
 export function Alert({ variant, message }: Props) {
   return (
     <div
-      role="alert"
       aria-live="assertive"
       className={clsx(
         'flex min-w-80 max-w-md items-center rounded-xl px-3 py-2.5',
@@ -19,6 +18,7 @@ export function Alert({ variant, message }: Props) {
           error: 'bg-error-highlight',
         }[variant],
       )}
+      role="alert"
     >
       <div
         className={clsx(

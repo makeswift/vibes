@@ -48,7 +48,7 @@ export function InlineEmailForm({
   const { errors = [] } = fields.email;
 
   return (
-    <form {...getFormProps(form)} className={clsx('space-y-2', className)} action={formAction}>
+    <form {...getFormProps(form)} action={formAction} className={clsx('space-y-2', className)}>
       <div
         className={clsx(
           'relative rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
@@ -57,19 +57,19 @@ export function InlineEmailForm({
       >
         <input
           {...getInputProps(fields.email, { type: 'email' })}
+          className="placeholder-contrast-gray-500 h-14 w-full bg-transparent pl-5 pr-16 text-foreground placeholder:font-normal focus:outline-none"
           key={fields.email.id}
           placeholder={placeholder}
-          className="placeholder-contrast-gray-500 h-14 w-full bg-transparent pl-5 pr-16 text-foreground placeholder:font-normal focus:outline-none"
         />
         <div className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
           <Button
-            type="submit"
-            variant="secondary"
-            size="icon"
             aria-label={submitLabel}
             loading={isPending}
+            size="icon"
+            type="submit"
+            variant="secondary"
           >
-            <ArrowRight strokeWidth={1.5} size={20} />
+            <ArrowRight size={20} strokeWidth={1.5} />
           </Button>
         </div>
       </div>

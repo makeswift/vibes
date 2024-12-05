@@ -49,20 +49,6 @@ export default function Draggable({ className, children, style, ...rest }: Props
     <div
       {...rest}
       className={clsx(className, 'relative touch-none select-none')}
-      style={{
-        ...style,
-        transform: `translate3d(${position[0]}px, ${position[1]}px, 0)`,
-        zIndex,
-      }}
-      onPointerEnter={() => {
-        prevZIndex.current = zIndex;
-        setZIndex(stack + 1);
-        setHover(true);
-      }}
-      onPointerLeave={() => {
-        setZIndex(prevZIndex.current);
-        setHover(false);
-      }}
       onPointerDown={(e) => {
         pointerStart.current = [e.clientX, e.clientY];
         positionStart.current = position;
@@ -81,6 +67,15 @@ export default function Draggable({ className, children, style, ...rest }: Props
           window.removeEventListener('pointermove', onPointerMove);
         });
       }}
+      onPointerEnter={() => {
+        prevZIndex.current = zIndex;
+        setZIndex(stack + 1);
+        setHover(true);
+      }}
+      onPointerLeave={() => {
+        setZIndex(prevZIndex.current);
+        setHover(false);
+      }}
       onTouchStart={(e) => {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         pointerStart.current = [e.touches[0]!.clientX, e.touches[0]!.clientY];
@@ -98,6 +93,11 @@ export default function Draggable({ className, children, style, ...rest }: Props
 
           window.removeEventListener('touchmove', onTouchMove);
         });
+      }}
+      style={{
+        ...style,
+        transform: `translate3d(${position[0]}px, ${position[1]}px, 0)`,
+        zIndex,
       }}
     >
       {children({ active, hover })}

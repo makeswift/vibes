@@ -114,11 +114,11 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
 
   return (
     <section className={clsx('relative h-[80vh] bg-primary-shadow @container', className)}>
-      <div ref={emblaRef} className="h-full overflow-hidden">
+      <div className="h-full overflow-hidden" ref={emblaRef}>
         <div className="flex h-full">
           {slides.map(({ title, description, image, cta }, idx) => {
             return (
-              <div key={idx} className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full">
+              <div className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full" key={idx}>
                 <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-foreground/80 to-transparent">
                   <div className="mx-auto w-full max-w-screen-2xl text-balance px-4 pb-16 pt-12 text-background @xl:px-6 @xl:pb-20 @xl:pt-16 @4xl:px-8 @4xl:pt-20">
                     <h1 className="m-0 max-w-xl font-heading text-4xl font-medium leading-none @2xl:text-5xl @2xl:leading-[.9] @4xl:text-6xl">
@@ -130,7 +130,7 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
                       </p>
                     )}
                     {cta != null && cta.href !== '' && cta.label !== '' && (
-                      <ButtonLink href={cta.href} variant="tertiary" className="mt-6 @xl:mt-8">
+                      <ButtonLink className="mt-6 @xl:mt-8" href={cta.href} variant="tertiary">
                         {cta.label}
                       </ButtonLink>
                     )}
@@ -139,16 +139,16 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
 
                 {image?.src != null && image.src !== '' && (
                   <Image
-                    src={image.src}
+                    alt={image.alt}
+                    blurDataURL={image.blurDataUrl}
+                    className="block h-20 w-full object-cover"
+                    fill
                     placeholder={
                       image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
                     }
-                    blurDataURL={image.blurDataUrl}
-                    alt={image.alt}
-                    fill
                     priority
                     sizes="100vw"
-                    className="block h-20 w-full object-cover"
+                    src={image.src}
                   />
                 )}
               </div>
@@ -164,8 +164,8 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
           return (
             <button
               aria-label={`View image number ${index + 1}`}
-              key={index}
               className="rounded-lg px-1.5 py-2 focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
+              key={index}
               onClick={() => {
                 onProgressButtonClick(index);
                 resetAutoplay();
@@ -174,7 +174,6 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
               <div className="relative overflow-hidden">
                 {/* White Bar - Current Index Indicator / Progress Bar */}
                 <div
-                  key={`progress-${playCount}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
                   className={clsx(
                     'absolute h-0.5 bg-background',
                     'opacity-0 fill-mode-forwards',
@@ -183,6 +182,7 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
                       ? 'opacity-100 ease-linear animate-in slide-in-from-left'
                       : 'ease-out animate-out fade-out',
                   )}
+                  key={`progress-${playCount}`} // Force the animation to restart when pressing "Play", to match animation with embla's autoplay timer
                   style={{
                     animationDuration: index === selectedIndex ? `${interval}ms` : '200ms',
                     width: `${150 / slides.length}px`,
@@ -206,15 +206,15 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
 
         {/* Stop / Start Button */}
         <button
+          aria-label={isPlaying ? 'Pause' : 'Play'}
           className="flex h-7 w-7 items-center justify-center rounded-lg border border-contrast-300/50 ring-primary transition-opacity duration-300 hover:border-contrast-300/80 focus-visible:outline-0 focus-visible:ring-2"
           onClick={toggleAutoplay}
           type="button"
-          aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? (
-            <Pause strokeWidth={1.5} size={16} className="pointer-events-none" />
+            <Pause className="pointer-events-none" size={16} strokeWidth={1.5} />
           ) : (
-            <Play strokeWidth={1.5} size={16} className="pointer-events-none" />
+            <Play className="pointer-events-none" size={16} strokeWidth={1.5} />
           )}
         </button>
       </div>

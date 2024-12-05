@@ -4,10 +4,10 @@ import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-l
 export default function Preview() {
   return (
     <FeaturedBlogPostList
-      title="Plant Life"
-      description="Expert Tips & Inspiration for Every Plant Lover"
       cta={{ href: '#', label: 'View All' }}
+      description="Expert Tips & Inspiration for Every Plant Lover"
       posts={posts}
+      title="Plant Life"
     />
   );
 }

@@ -84,16 +84,16 @@ export default function Preview() {
   return (
     <div className="relative min-h-48">
       <Navigation
-        links={navigationLinks}
-        logo={logo}
-        cartHref="#"
         accountHref="#"
         activeLocaleId="en"
-        searchHref="#"
-        locales={locales}
+        cartHref="#"
+        links={navigationLinks}
         localeAction={localeAction}
+        locales={locales}
+        logo={logo}
         searchAction={searchAction('Warm')}
         searchCtaLabel="View all items"
+        searchHref="#"
       />
     </div>
   );

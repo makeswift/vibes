@@ -16,7 +16,7 @@ export function PageLink({ chapterSlug, page, ...rest }: Props) {
   const href = `/docs/${chapterSlug}/${page.slug}`;
 
   return (
-    <Link {...rest} href={href} active={pathname === href}>
+    <Link {...rest} active={pathname === href} href={href}>
       {page.title}
     </Link>
   );

@@ -40,7 +40,6 @@ async function ReviewsImpl({
       sidebar={
         <>
           <Stream
-            value={streamableTotalCount}
             fallback={
               <div className="animate-pulse">
                 <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
@@ -48,6 +47,7 @@ async function ReviewsImpl({
                 </h2>
               </div>
             }
+            value={streamableTotalCount}
           >
             {(totalCount) => (
               <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
@@ -56,13 +56,13 @@ async function ReviewsImpl({
             )}
           </Stream>
           <Stream
-            value={streamableAverageRating}
             fallback={
               <div className="animate-pulse">
                 <div className="mb-2 h-[1lh] w-[3ch] rounded-md bg-contrast-100 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl" />
                 <div className="h-5 w-32 rounded-md bg-contrast-100" />
               </div>
             }
+            value={streamableAverageRating}
           >
             {(averageRating) => (
               <>
@@ -80,7 +80,7 @@ async function ReviewsImpl({
       <div className="flex-1 border-t border-contrast-100">
         {reviews.map(({ id, rating, review, name, date }) => {
           return (
-            <div key={id} className="border-b border-contrast-100 py-6">
+            <div className="border-b border-contrast-100 py-6" key={id}>
               <Rating rating={rating} />
               <p className="mt-5 text-lg font-semibold text-foreground">{name}</p>
               <p className="mb-8 mt-2 leading-normal text-contrast-500">{review}</p>
@@ -142,7 +142,7 @@ export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: { reviewsLabel?: s
     >
       <div className="flex-1 animate-pulse border-t border-contrast-100">
         {Array.from({ length: 3 }).map((_, index) => (
-          <div key={index} className="border-b border-contrast-100 py-6">
+          <div className="border-b border-contrast-100 py-6" key={index}>
             <div className="h-5 w-32 rounded-md bg-contrast-100" />
             <div className="mt-5 h-[1lh] rounded-md bg-contrast-100 text-lg font-semibold"></div>
             <div className="mb-8 mt-2 h-[1lh] w-1/2 rounded-md bg-contrast-100 leading-normal"></div>

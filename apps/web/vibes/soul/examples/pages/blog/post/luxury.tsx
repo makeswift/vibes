@@ -63,24 +63,18 @@ export default function Preview() {
       </Banner>
 
       <Navigation
-        links={navigationLinks}
-        logo={logo}
-        cartHref="#"
         accountHref="#"
-        locales={locales}
-        localeAction={localeAction}
         activeLocaleId="en"
+        cartHref="#"
+        links={navigationLinks}
+        localeAction={localeAction}
+        locales={locales}
+        logo={logo}
         searchHref="#"
       />
 
       <BlogPostContent
-        title="STYLING STORIES:"
         author="Freda Salvador"
-        date="October 03, 2024"
-        image={{
-          src: 'https://rstr.in/monogram/vibes/lJaCK7qAO8W/k9soESSDDU1',
-          alt: 'A woman wearing a green velvet dress, black boots, and a small black handbag.',
-        }}
         content={`
        <h2>OCTOBER CAMPAIGN</h2>
        <p>Fall fashion is very much happening and we are very much loving everything. Boots, loafers, leopard print, sweaters, plaid, denim, gold…to name just a few of our favorite things.</p>
@@ -95,29 +89,35 @@ export default function Preview() {
        </blockquote>
        
       `}
+        date="October 03, 2024"
+        image={{
+          src: 'https://rstr.in/monogram/vibes/lJaCK7qAO8W/k9soESSDDU1',
+          alt: 'A woman wearing a green velvet dress, black boots, and a small black handbag.',
+        }}
+        title="STYLING STORIES:"
       />
 
       <FeaturedBlogPostCarousel
-        title="Related posts"
         blogPosts={posts}
         cta={{
           href: '#',
           label: 'View All',
         }}
+        title="Related posts"
       />
 
       <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         action={action}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        title="Sign up for our newsletter"
       />
 
       <Footer
-        logo={logo}
-        sections={footerLinks}
         contactInformation={contactInformation}
         copyright={copyright}
+        logo={logo}
         paymentIcons={paymentIconsArray}
+        sections={footerLinks}
         socialMediaLinks={socialMediaLinks}
       />
     </>

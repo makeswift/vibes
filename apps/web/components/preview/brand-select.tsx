@@ -18,7 +18,7 @@ export function BrandSelect() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="small">
+        <Button size="small" variant="ghost">
           {activeBrand?.name ?? 'Pick a style'}
           <ChevronDown12 />
         </Button>

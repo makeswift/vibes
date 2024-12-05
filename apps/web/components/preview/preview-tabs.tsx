@@ -38,11 +38,11 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
 
   const content = (
     <Tabs
-      key="preview-tabs"
-      defaultValue="preview"
-      value={tab}
-      onValueChange={setTab}
       className="my-4 flex flex-1 flex-col"
+      defaultValue="preview"
+      key="preview-tabs"
+      onValueChange={setTab}
+      value={tab}
     >
       <div className="flex items-center @container">
         <TabsList className="flex-1">
@@ -61,31 +61,31 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
           {tab !== 'code' && (
             <div className="flex">
               <Button
-                className="hidden @5xl:flex"
-                variant="ghost"
                 active={actualWidth === null}
-                size="icon"
+                className="hidden @5xl:flex"
                 onClick={() => resize(null)}
+                size="icon"
+                variant="ghost"
               >
                 <span className="sr-only">Desktop</span>
                 <Desktop16 />
               </Button>
               <Button
-                className="hidden @3xl:flex"
-                variant="ghost"
-                size="icon"
                 active={actualWidth !== null && actualWidth > 320 && actualWidth <= 768}
+                className="hidden @3xl:flex"
                 onClick={() => resize(768)}
+                size="icon"
+                variant="ghost"
               >
                 <span className="sr-only">Tablet</span>
                 <Tablet16 />
               </Button>
               <Button
-                className="hidden @xl:flex"
-                variant="ghost"
-                size="icon"
                 active={actualWidth !== null && actualWidth <= 320}
+                className="hidden @xl:flex"
                 onClick={() => resize(320)}
+                size="icon"
+                variant="ghost"
               >
                 <span className="sr-only">Mobile</span>
                 <Phone16 />
@@ -100,12 +100,12 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
             <Dialog.Trigger asChild>
               <Button
                 className="hidden @xl:flex"
-                variant="ghost"
-                size="icon"
                 onClick={() => {
                   setFullScreen((prev) => !prev);
                   resize(null);
                 }}
+                size="icon"
+                variant="ghost"
               >
                 <span className="sr-only">Fullscreen</span>
                 {fullScreen ? <Times16 /> : <Expand16 />}

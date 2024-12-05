@@ -27,10 +27,10 @@ export function Sorting({
   return (
     <Suspense fallback={<SortingSkeleton />}>
       <SortingInner
-        options={options}
-        label={label}
-        paramName={paramName}
         defaultValue={defaultValue}
+        label={label}
+        options={options}
+        paramName={paramName}
       />
     </Suspense>
   );
@@ -58,16 +58,16 @@ function SortingInner({
   return (
     <Select
       name={paramName}
-      placeholder={label}
-      variant="round"
-      options={options}
-      value={optimisticParam}
       onValueChange={(value) => {
         startTransition(async () => {
           setOptimisticParam(value);
           await setParam(value);
         });
       }}
+      options={options}
+      placeholder={label}
+      value={optimisticParam}
+      variant="round"
     />
   );
 }

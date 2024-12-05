@@ -16,15 +16,15 @@ export function KeepIt100() {
         >
           <Sticker
             active={active}
-            hover={hover}
-            peelAngle={15}
-            hoverPeel={0.2}
             activePeel={0.3}
-            width={258}
-            height={289}
-            front={<KeepIt100Front />}
             back={<KeepIt100Back />}
+            front={<KeepIt100Front />}
+            height={289}
+            hover={hover}
+            hoverPeel={0.2}
+            peelAngle={15}
             shadow={<KeepIt100Shadow />}
+            width={258}
           />
         </Transition>
       )}

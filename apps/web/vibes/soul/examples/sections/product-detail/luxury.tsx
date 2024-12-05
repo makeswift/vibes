@@ -100,6 +100,6 @@ export const product = {
 
 export default function Preview() {
   return (
-    <ProductDetail breadcrumbs={breadcrumbs} product={product} fields={fields} action={action} />
+    <ProductDetail action={action} breadcrumbs={breadcrumbs} fields={fields} product={product} />
   );
 }

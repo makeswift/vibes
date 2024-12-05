@@ -27,20 +27,20 @@ export const Counter = function Counter({
   return (
     <div className="flex items-center justify-between rounded-lg border">
       <button
+        aria-label={decrementAriaLabel ?? 'Decrease count'}
         className={clsx(
           'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
           { 'hover:bg-contrast-100/50': count > 0 },
         )}
-        onClick={decrement}
-        aria-label={decrementAriaLabel ?? 'Decrease count'}
         disabled={count === 0}
+        onClick={decrement}
       >
         <Minus
           className={clsx('text-contrast-300 transition-colors duration-300', {
             'group-hover:text-foreground': count > 0,
           })}
-          strokeWidth={1.5}
           size={18}
+          strokeWidth={1.5}
         />
       </button>
       <input
@@ -55,14 +55,14 @@ export const Counter = function Counter({
       />
 
       <button
+        aria-label={incrementAriaLabel ?? 'Increase count'}
         className="group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         onClick={increment}
-        aria-label={incrementAriaLabel ?? 'Increase count'}
       >
         <Plus
           className="text-contrast-300 transition-colors duration-300 group-hover:text-foreground"
-          strokeWidth={1.5}
           size={18}
+          strokeWidth={1.5}
         />
       </button>
     </div>

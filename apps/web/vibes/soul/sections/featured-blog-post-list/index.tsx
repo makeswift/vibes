@@ -31,10 +31,10 @@ export const FeaturedBlogPostList = function FeaturedBlogPostList({
           <p className="max-w-lg text-lg text-contrast-500">{description}</p>
         )}
 
-        <BlogPostList posts={posts} className="mb-8 mt-8 @4xl:mb-10 @4xl:mt-10" />
+        <BlogPostList className="mb-8 mt-8 @4xl:mb-10 @4xl:mt-10" posts={posts} />
 
         {cta != null && cta.href !== '' && cta.label !== '' && (
-          <ButtonLink variant="tertiary" size="medium" href={cta.href}>
+          <ButtonLink href={cta.href} size="medium" variant="tertiary">
             {cta.label}
           </ButtonLink>
         )}

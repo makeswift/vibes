@@ -16,15 +16,15 @@ export function MadProps() {
         >
           <Sticker
             active={active}
-            hover={hover}
-            peelAngle={20}
-            hoverPeel={0.2}
             activePeel={0.3}
-            width={250}
-            height={302}
-            front={<PropsFront />}
             back={<PropsBack />}
+            front={<PropsFront />}
+            height={302}
+            hover={hover}
+            hoverPeel={0.2}
+            peelAngle={20}
             shadow={<PropsShadow />}
+            width={250}
           />
         </Transition>
       )}

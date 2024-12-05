@@ -52,7 +52,7 @@ export default function Transition({ className, from, to, children }: Props) {
   }, [hasBeenInView]);
 
   return (
-    <div ref={elementRef} className="inline-block">
+    <div className="inline-block" ref={elementRef}>
       <div className={clsx(inView || hasBeenInView ? to : from, className)}>{children}</div>
     </div>
   );

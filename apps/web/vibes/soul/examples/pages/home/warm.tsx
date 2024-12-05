@@ -87,77 +87,77 @@ export default function Preview() {
         <strong>&quot;welcome&quot;</strong>
       </Banner>
       <Navigation
-        links={navigationLinks}
-        logo={logo}
-        cartHref="#"
         accountHref="#"
-        locales={locales}
         activeLocaleId="en"
+        cartHref="#"
+        links={navigationLinks}
         localeAction={localeAction}
+        locales={locales}
+        logo={logo}
         searchHref="#"
       />
       <Slideshow slides={heroSlides} />
-      <FeaturedCardCarousel title="Categories" cards={cards} />
+      <FeaturedCardCarousel cards={cards} title="Categories" />
       <FeaturedImage
-        title={featuredImage.title}
+        cta={{ href: '#', label: 'Shop Now' }}
         description={featuredImage.description}
         image={{
           src: featuredImage.image.src,
           alt: featuredImage.image.alt,
         }}
-        cta={{ href: '#', label: 'Shop Now' }}
+        title={featuredImage.title}
       />
       <FeaturedProductsList
-        title={featuredProducts.title}
-        description={featuredProducts.description}
         cta={{
           label: featuredProducts.cta.label,
           href: featuredProducts.cta.href,
         }}
+        description={featuredProducts.description}
         products={featuredProducts.products}
+        title={featuredProducts.title}
       />
       <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         action={action}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        title="Sign up for our newsletter"
       />
       <FeaturedProductsCarousel
-        title="New Arrivals"
         cta={{ label: 'See All', href: '#' }}
         products={featuredProducts.products}
+        title="New Arrivals"
       />
       <Feature
+        cta={{
+          label: feature.cta.label,
+          href: feature.cta.href,
+        }}
+        description={feature.description}
         image={{
           src: feature.image.src,
           alt: feature.image.alt,
         }}
         title={feature.title}
-        description={feature.description}
-        cta={{
-          label: feature.cta.label,
-          href: feature.cta.href,
-        }}
       />
-      <FeaturedProductsCarousel title="Recently Viewed" products={featuredProducts.products} />
+      <FeaturedProductsCarousel products={featuredProducts.products} title="Recently Viewed" />
       <FeaturedImage
-        title={featuredImageII.title}
+        cta={{ href: featuredImageII.cta.href, label: featuredImageII.cta.label }}
         description={featuredImageII.description}
         image={{
           src: featuredImageII.image.src,
           alt: featuredImageII.image.alt,
         }}
-        cta={{ href: featuredImageII.cta.href, label: featuredImageII.cta.label }}
+        title={featuredImageII.title}
       />
       <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         action={action}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        title="Sign up for our newsletter"
       />
       <Footer
-        logo={logo}
-        sections={footerLinks}
         copyright={copyright}
+        logo={logo}
         paymentIcons={paymentIconsArray}
+        sections={footerLinks}
         socialMediaLinks={socialMediaLinks}
       />
     </>

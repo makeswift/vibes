@@ -100,10 +100,10 @@ function Carousel({ opts, setApi, plugins, className, children, ...rest }: Carou
     >
       <div
         {...rest}
-        className={clsx('relative @container', className)}
-        role="region"
         aria-roledescription="carousel"
+        className={clsx('relative @container', className)}
         onKeyDownCapture={handleKeyDown}
+        role="region"
       >
         {children}
       </div>
@@ -115,7 +115,7 @@ function CarouselContent({ className, ...rest }: React.HTMLAttributes<HTMLDivEle
   const { carouselRef } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="w-full">
+    <div className="w-full" ref={carouselRef}>
       <div {...rest} className={clsx('-ml-4 flex @2xl:-ml-5', className)} />
     </div>
   );
@@ -125,9 +125,9 @@ function CarouselItem({ className, ...rest }: React.HTMLAttributes<HTMLDivElemen
   return (
     <div
       {...rest}
-      role="group"
       aria-roledescription="slide"
       className={clsx('min-w-0 shrink-0 grow-0 pl-4 @2xl:pl-5', className)}
+      role="group"
     />
   );
 }
@@ -139,15 +139,15 @@ function CarouselButtons({ className, ...rest }: React.HTMLAttributes<HTMLDivEle
     <div {...rest} className={clsx('flex gap-2 text-foreground', className)}>
       <button
         className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
-        onClick={scrollPrev}
         disabled={!canScrollPrev}
+        onClick={scrollPrev}
       >
         <ArrowLeft strokeWidth={1.5} />
       </button>
       <button
         className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
-        onClick={scrollNext}
         disabled={!canScrollNext}
+        onClick={scrollNext}
       >
         <ArrowRight strokeWidth={1.5} />
       </button>
@@ -214,12 +214,12 @@ function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) 
       className={clsx('relative flex h-6 w-full max-w-56 items-center overflow-hidden', className)}
     >
       <input
-        type="range"
-        min={0}
-        max={100}
-        value={progress}
-        onChange={(e) => setProgress(e.currentTarget.valueAsNumber)}
         className="absolute h-full w-full cursor-pointer appearance-none bg-transparent opacity-0"
+        max={100}
+        min={0}
+        onChange={(e) => setProgress(e.currentTarget.valueAsNumber)}
+        type="range"
+        value={progress}
       />
       {/* Track */}
       <div className="pointer-events-none absolute h-1 w-full rounded-full bg-contrast-100" />

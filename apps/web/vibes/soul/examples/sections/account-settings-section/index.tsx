@@ -13,8 +13,8 @@ export default function Preview() {
   return (
     <AccountLayout links={links}>
       <AccountSettingsSection
-        updateAccountAction={updateAccountAction}
         changePasswordAction={changePasswordAction}
+        updateAccountAction={updateAccountAction}
       />
     </AccountLayout>
   );

@@ -20,14 +20,14 @@ export function PrebuiltSections() {
         >
           <Sticker
             active={active}
-            hover={hover}
-            peelAngle={-100}
-            hoverPeel={0.15}
-            width={369}
-            height={138}
-            front={<PrebuiltSectionsFront />}
             back={<PrebuiltSectionsBack />}
+            front={<PrebuiltSectionsFront />}
+            height={138}
+            hover={hover}
+            hoverPeel={0.15}
+            peelAngle={-100}
             shadow={<PrebuiltSectionsShadow />}
+            width={369}
           />
         </Transition>
       )}

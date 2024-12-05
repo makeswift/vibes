@@ -50,7 +50,7 @@ export const Dropdown = function Dropdown({
           {...props}
         >
           {selectedItem ?? label}
-          <ChevronDown strokeWidth={1.5} className="w-5 text-foreground transition-transform" />
+          <ChevronDown className="w-5 text-foreground transition-transform" strokeWidth={1.5} />
         </DropdownMenuTrigger>
         <DropdownMenuContent
           className="z-50 mt-2 max-h-80 w-full overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] 
@@ -60,7 +60,6 @@ export const Dropdown = function Dropdown({
         >
           {items.map((item) => (
             <DropdownMenuItem
-              key={item}
               className={clsx(
                 'w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',
                 'hover:bg-contrast-100 hover:text-foreground @4xl:text-base',
@@ -68,6 +67,7 @@ export const Dropdown = function Dropdown({
                   'text-foreground': selectedItem === item,
                 },
               )}
+              key={item}
               onSelect={() => setSelectedItem(item)}
             >
               {item}

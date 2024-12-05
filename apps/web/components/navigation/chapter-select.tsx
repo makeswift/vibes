@@ -74,9 +74,9 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
 
   return (
     <>
-      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <Sheet onOpenChange={setIsOpen} open={isOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="small">
+          <Button size="small" variant="ghost">
             <span className="text-sm">{activeVibe.name}</span>
             <ChevronDown12
               className={clsx(
@@ -86,7 +86,7 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
             />
           </Button>
         </SheetTrigger>
-        <SheetContent side="top" className="z-20 focus:outline-none">
+        <SheetContent className="z-20 focus:outline-none" side="top">
           <VisuallyHidden.Root>
             <SheetTitle>VIBES</SheetTitle>
           </VisuallyHidden.Root>
@@ -94,12 +94,12 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
             {Object.values(allChapters).map((chapter) => (
               <div key={chapter.slug}>
                 <Link
-                  href={`/docs/${chapter.slug}`}
                   aria-disabled={chapter.comingSoon}
                   className={clsx(
                     'group ring-primary ring-offset-8 focus:outline-none focus-visible:ring-2',
                     chapter.comingSoon && 'pointer-events-none',
                   )}
+                  href={`/docs/${chapter.slug}`}
                 >
                   <div className="relative mb-4 aspect-video">
                     {chapter.comingSoon && (
@@ -109,14 +109,14 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
                     )}
                     <div className="marching-ants absolute inset-0 border border-dashed border-transparent bg-transparent opacity-50 transition-all [animation-play-state:paused] group-hover:-inset-1 group-hover:opacity-100 group-hover:[animation-play-state:running]" />
                     <Image
-                      fill
-                      priority
-                      src={chapter.thumbnail}
                       alt={`Thumbnail of ${chapter.name} chapter`}
                       className={clsx(
                         'border border-contrast-200 bg-contrast-100 object-cover',
                         chapter.comingSoon && 'opacity-50',
                       )}
+                      fill
+                      priority
+                      src={chapter.thumbnail}
                     />
                   </div>
                 </Link>
@@ -128,9 +128,9 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
                     <div className="text-xs">
                       <span className="text-contrast-400">by </span>
                       <Link
+                        className="marching-ants-link text-contrast-500"
                         href={chapter.author.url}
                         target="_blank"
-                        className="marching-ants-link text-contrast-500"
                       >
                         {chapter.author.name}
                       </Link>
@@ -139,8 +139,8 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
                   <div>
                     {chapter.tags.map((tag, index) => (
                       <span
-                        key={index}
                         className="rounded-full border border-foreground px-2 py-0.5 text-xs font-bold text-foreground"
+                        key={index}
                       >
                         {tag}
                       </span>
@@ -153,14 +153,14 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
           </div>
         </SheetContent>
       </Sheet>
-      <div className="hidden" aria-hidden="true">
+      <div aria-hidden="true" className="hidden">
         {Object.values(chapters).map((chapter) => (
           <Image
-            key={chapter.slug}
+            alt={`Preload thumbnail of ${chapter.name} chapter`}
             fill
+            key={chapter.slug}
             priority
             src={chapter.thumbnail}
-            alt={`Preload thumbnail of ${chapter.name} chapter`}
           />
         ))}
       </div>

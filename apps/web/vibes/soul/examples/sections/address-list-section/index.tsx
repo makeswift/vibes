@@ -30,9 +30,9 @@ export default function Preview() {
   return (
     <div className="m-auto max-w-screen-xl p-5">
       <AddressListSection
+        addressAction={addressAction}
         addresses={addresses}
         defaultAddressId="1"
-        addressAction={addressAction}
       />
     </div>
   );

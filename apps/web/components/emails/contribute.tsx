@@ -25,14 +25,14 @@ export const ContributeEmail = () => (
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
-          <Img src={`${baseUrl}/logo.png`} width="150" height="40" alt="Vibes" />
+          <Img alt="Vibes" height="40" src={`${baseUrl}/logo.png`} width="150" />
           <Hr style={hr} />
           <Heading style={heading}>You&apos;re on the list!</Heading>
           <Text style={paragraph}>
             Thanks for your interest in contributing to VIBES. We&apos;ll reach out soon with next
             steps.
           </Text>
-          <Button style={button} href="https://vibes.site">
+          <Button href="https://vibes.site" style={button}>
             Back to Vibes
           </Button>
           <Hr style={hr} />

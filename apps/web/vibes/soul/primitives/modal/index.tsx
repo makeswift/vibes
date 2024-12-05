@@ -11,7 +11,7 @@ interface Props {
 
 export const Modal = function Modal({ isOpen, setOpen, trigger, content }: Props) {
   return (
-    <Dialog.Root open={isOpen} onOpenChange={setOpen}>
+    <Dialog.Root onOpenChange={setOpen} open={isOpen}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-30 flex items-center justify-center bg-foreground/50 @container">

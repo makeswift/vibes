@@ -27,10 +27,10 @@ function Tooltip({
               {children}
               {showIcon && (
                 <Info
-                  className="text-contrast-400"
-                  strokeWidth={1.25}
                   absoluteStrokeWidth
+                  className="text-contrast-400"
                   size={16}
+                  strokeWidth={1.25}
                 />
               )}
             </div>
