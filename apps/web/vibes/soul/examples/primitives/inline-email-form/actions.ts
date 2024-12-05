@@ -15,7 +15,5 @@ export async function action(lastResult: SubmissionResult | null, formData: Form
   // Simulate a network request
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  // const user = await logIn(submission.value)
-
-  return submission.reply({ resetForm: true });
+  return submission.reply();
 }

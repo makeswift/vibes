@@ -12,12 +12,16 @@ export function Subscribe({
   title,
   description,
   placeholder,
+  successMessage = 'Thanks for subscribing!',
+  dismissLabel,
 }: {
   action: Action<SubmissionResult | null, FormData>;
   image?: { src: string; alt: string };
   title: string;
   description?: string;
   placeholder?: string;
+  successMessage?: string;
+  dismissLabel?: string;
 }) {
   return (
     <section className="bg-primary-shadow @container">
@@ -49,7 +53,13 @@ export function Subscribe({
               </h2>
               <p className="text-primary-highlight opacity-75">{description}</p>
             </div>
-            <InlineEmailForm action={action} className="flex-1" placeholder={placeholder} />
+            <InlineEmailForm
+              action={action}
+              className="flex-1"
+              dismissLabel={dismissLabel}
+              placeholder={placeholder}
+              successMessage={successMessage}
+            />
           </div>
         </div>
       </div>

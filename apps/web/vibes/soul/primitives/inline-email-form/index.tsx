@@ -6,8 +6,10 @@ import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react';
 import { useActionState, useEffect } from 'react';
 
-import { FieldError } from '../../form/field-error';
-import { Button } from '../button';
+import { FieldError } from '@/vibes/soul/form/field-error';
+import { Button } from '@/vibes/soul/primitives/button';
+import { toast } from '@/vibes/soul/primitives/toaster';
+
 
 import { schema } from './schema';
 
@@ -21,10 +23,14 @@ export function InlineEmailForm({
   action,
   submitLabel = 'Submit',
   placeholder = 'Enter your email',
+  successMessage,
+  dismissLabel,
 }: {
   className?: string;
   placeholder?: string;
   submitLabel?: string;
+  successMessage: string;
+  dismissLabel?: string;
   action: Action<SubmissionResult | null, FormData>;
 }) {
   const [lastResult, formAction, isPending] = useActionState(action, null);
@@ -35,15 +41,15 @@ export function InlineEmailForm({
       return parseWithZod(formData, { schema });
     },
     shouldValidate: 'onSubmit',
-    shouldRevalidate: 'onInput',
+    shouldRevalidate: 'onBlur',
   });
 
   useEffect(() => {
-    if (lastResult?.error) {
-      console.log(lastResult.error);
+    if (lastResult?.status === 'success') {
+      toast.success(successMessage, { dismissLabel });
       return;
     }
-  }, [lastResult]);
+  }, [dismissLabel, lastResult, successMessage]);
 
   const { errors = [] } = fields.email;
 
