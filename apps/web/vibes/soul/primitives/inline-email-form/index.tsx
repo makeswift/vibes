@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react';
 import { useActionState, useEffect } from 'react';
 
-import { ErrorMessage } from '../../form/error-message';
+import { FieldError } from '../../form/field-error';
 import { Button } from '../button';
 
 import { schema } from './schema';
@@ -74,7 +74,7 @@ export function InlineEmailForm({
         </div>
       </div>
       {errors.map((error, index) => (
-        <ErrorMessage key={index}>{error}</ErrorMessage>
+        <FieldError key={index}>{error}</FieldError>
       ))}
     </form>
   );

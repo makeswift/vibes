@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 import Image from 'next/image';
 import * as React from 'react';
 
-import { ErrorMessage } from '@/vibes/soul/form/error-message';
+import { FieldError } from '@/vibes/soul/form/field-error';
 import { Label } from '@/vibes/soul/form/label';
 
 type SwatchOption =
@@ -70,7 +70,7 @@ export const SwatchRadioGroup = React.forwardRef<
           </RadioGroupPrimitive.Item>
         ))}
       </RadioGroupPrimitive.Root>
-      {errors?.map((error) => <ErrorMessage key={error}>{error}</ErrorMessage>)}
+      {errors?.map((error) => <FieldError key={error}>{error}</FieldError>)}
     </div>
   );
 });

@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import * as React from 'react';
 
-import { ErrorMessage } from '@/vibes/soul/form/error-message';
+import { FieldError } from '@/vibes/soul/form/field-error';
 import { Label } from '@/vibes/soul/form/label';
 
 type Props = {
@@ -76,7 +76,7 @@ export function Select({
           </SelectPrimitive.Content>
         </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
-      {errors?.map((error) => <ErrorMessage key={error}>{error}</ErrorMessage>)}
+      {errors?.map((error) => <FieldError key={error}>{error}</FieldError>)}
     </div>
   );
 }
