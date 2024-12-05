@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <ZoomListener />
 
       <body>
-        <Toaster closeButton={true} position="top-right" />
+        <Toaster position="top-right" />
         {children}
       </body>
     </html>
