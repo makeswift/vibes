@@ -14,6 +14,7 @@ interface ToastOptions {
   }
   description?: string
   position?: ToasterProps['position']
+  dismissLabel?: string
 }
 
 export const Toaster = ({ ...props }: ToasterProps) => {
