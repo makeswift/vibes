@@ -1,25 +1,25 @@
-'use client'
+'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { useActionState, useEffect } from 'react'
-import { useFormStatus } from 'react-dom'
+import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { getZodConstraint, parseWithZod } from '@conform-to/zod';
+import { useActionState, useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
 
-import { Input } from '@/vibes/soul/form/input'
-import { Button } from '@/vibes/soul/primitives/button'
+import { Input } from '@/vibes/soul/form/input';
+import { Button } from '@/vibes/soul/primitives/button';
 
-import { changePasswordSchema } from './schema'
+import { changePasswordSchema } from './schema';
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
-export type ChangePasswordAction = Action<SubmissionResult | null, FormData>
+export type ChangePasswordAction = Action<SubmissionResult | null, FormData>;
 
 interface Props {
-  action: ChangePasswordAction
-  currentPasswordLabel?: string
-  newPasswordLabel?: string
-  confirmPasswordLabel?: string
-  submitLabel?: string
+  action: ChangePasswordAction;
+  currentPasswordLabel?: string;
+  newPasswordLabel?: string;
+  confirmPasswordLabel?: string;
+  submitLabel?: string;
 }
 
 export function ChangePasswordForm({
@@ -29,21 +29,21 @@ export function ChangePasswordForm({
   confirmPasswordLabel = 'Confirm password',
   submitLabel = 'Update',
 }: Props) {
-  const [lastResult, formAction] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null);
   const [form, fields] = useForm({
     constraint: getZodConstraint(changePasswordSchema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: changePasswordSchema })
+      return parseWithZod(formData, { schema: changePasswordSchema });
     },
-  })
+  });
 
   useEffect(() => {
     if (lastResult?.error) {
-      console.log(lastResult.error)
+      console.log(lastResult.error);
     }
-  }, [lastResult])
+  }, [lastResult]);
 
   return (
     <form {...getFormProps(form)} action={formAction} className="space-y-5">
@@ -68,15 +68,15 @@ export function ChangePasswordForm({
       />
       <SubmitButton>{submitLabel}</SubmitButton>
     </form>
-  )
+  );
 }
 
 function SubmitButton({ children }: { children: React.ReactNode }) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <Button loading={pending} size="small" type="submit" variant="secondary">
       {children}
     </Button>
-  )
+  );
 }

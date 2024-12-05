@@ -1,16 +1,16 @@
-import { clsx } from 'clsx'
-import { ChevronRight } from 'lucide-react'
-import Link from 'next/link'
-import { Fragment } from 'react'
+import { clsx } from 'clsx';
+import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+import { Fragment } from 'react';
 
 export interface Breadcrumb {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 export interface BreadcrumbsProps {
-  breadcrumbs: Breadcrumb[]
-  className?: string
+  breadcrumbs: Breadcrumb[];
+  className?: string;
 }
 
 export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
@@ -19,7 +19,7 @@ export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
       aria-label="breadcrumb"
       className={clsx(
         'inline-flex flex-wrap items-center gap-x-2 text-sm @xl:text-base',
-        className
+        className,
       )}
     >
       {breadcrumbs.map(({ label, href }, idx) => {
@@ -34,15 +34,15 @@ export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
               </Link>
               <ChevronRight size={16} strokeWidth={1} className="text-contrast-500" />
             </Fragment>
-          )
+          );
         }
 
         return (
           <span key={idx} className="text-contrast-400">
             {label}
           </span>
-        )
+        );
       })}
     </nav>
-  )
+  );
 }

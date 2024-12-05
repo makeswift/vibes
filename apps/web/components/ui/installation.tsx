@@ -1,22 +1,22 @@
-import Link from 'next/link'
-import path from 'path'
-import { Fragment } from 'react'
+import Link from 'next/link';
+import path from 'path';
+import { Fragment } from 'react';
 
-import { Vibe } from '@/vibes/schema'
+import { Vibe } from '@/vibes/schema';
 
-import { CodeBlock } from './code-block'
-import { CodeFromFile } from './code-from-file'
-import { Reveal } from './reveal'
-import { Step, Steps } from './steps'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs'
+import { CodeBlock } from './code-block';
+import { CodeFromFile } from './code-from-file';
+import { Reveal } from './reveal';
+import { Step, Steps } from './steps';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs';
 
 function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) {
-  const pages = vibe.navigation.flatMap(nav => nav.pages)
+  const pages = vibe.navigation.flatMap((nav) => nav.pages);
 
   return (
     <>
       {items.map((item, index, arr) => {
-        const page = pages.find(p => p.component === item)
+        const page = pages.find((p) => p.component === item);
 
         return (
           <Fragment key={index}>
@@ -24,17 +24,17 @@ function RegistryDependencies({ items, vibe }: { items: string[]; vibe: Vibe }) 
             {arr.length > 1 && index > 0 ? (index < arr.length - 1 ? ', ' : ' and ') : ''}
             <Link href={page ? `/docs/${vibe.slug}/${page.slug}` : '#'}>{item}</Link>
           </Fragment>
-        )
+        );
       })}{' '}
       {items.length > 1 ? 'components' : 'component'}
     </>
-  )
+  );
 }
 
 export function Installation({ vibe, componentName }: { vibe: Vibe; componentName: string }) {
-  const component = vibe.components.find(c => c.name === componentName)
+  const component = vibe.components.find((c) => c.name === componentName);
 
-  if (!component) return null
+  if (!component) return null;
 
   return (
     <>
@@ -103,5 +103,5 @@ export function Installation({ vibe, componentName }: { vibe: Vibe; componentNam
         </TabsContent>
       </Tabs>
     </>
-  )
+  );
 }

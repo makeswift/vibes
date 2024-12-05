@@ -1,6 +1,6 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const submitLeadSchema = z.object({
   email: z.string({ required_error: 'Email is required' }).email('Email is invalid'),
   intent: z.string().optional(),
-})
+});

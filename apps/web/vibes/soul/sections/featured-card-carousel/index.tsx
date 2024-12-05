@@ -1,16 +1,16 @@
-import { AnimatedLink } from '@/vibes/soul/primitives/animated-link'
-import { Card, CardCarousel } from '@/vibes/soul/primitives/card-carousel'
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
+import { Card, CardCarousel } from '@/vibes/soul/primitives/card-carousel';
 
 interface Link {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 interface Props {
-  title: string
-  description?: string
-  cta?: Link
-  cards: Card[]
+  title: string;
+  description?: string;
+  cta?: Link;
+  cards: Card[];
 }
 
 export function FeaturedCardCarousel({ title, description, cta, cards }: Props) {
@@ -33,5 +33,5 @@ export function FeaturedCardCarousel({ title, description, cta, cards }: Props) 
         <CardCarousel cards={cards} />
       </div>
     </section>
-  )
+  );
 }

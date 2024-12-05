@@ -1,35 +1,35 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import useEmblaCarousel from 'embla-carousel-react'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { clsx } from 'clsx';
+import useEmblaCarousel from 'embla-carousel-react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface Props {
-  images: { alt: string; src: string }[]
-  className?: string
+  images: { alt: string; src: string }[];
+  className?: string;
 }
 
 export function ProductGallery({ images, className }: Props) {
-  const [previewImage, setPreviewImage] = useState(0)
-  const [emblaRef, emblaApi] = useEmblaCarousel()
+  const [previewImage, setPreviewImage] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel();
 
   useEffect(() => {
-    if (!emblaApi) return
+    if (!emblaApi) return;
 
-    const onSelect = () => setPreviewImage(emblaApi.selectedScrollSnap())
+    const onSelect = () => setPreviewImage(emblaApi.selectedScrollSnap());
 
-    emblaApi.on('select', onSelect)
+    emblaApi.on('select', onSelect);
 
     return () => {
-      emblaApi.off('select', onSelect)
-    }
-  }, [emblaApi])
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi]);
 
   const selectImage = (index: number) => {
-    setPreviewImage(index)
-    if (emblaApi) emblaApi.scrollTo(index)
-  }
+    setPreviewImage(index);
+    if (emblaApi) emblaApi.scrollTo(index);
+  };
 
   return (
     <div className={clsx('@container', className)}>
@@ -59,7 +59,7 @@ export function ProductGallery({ images, className }: Props) {
               'relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border transition-all duration-300 hover:opacity-100 @md:h-16 @md:w-16',
               index === previewImage
                 ? 'border-foreground opacity-100'
-                : 'border-transparent opacity-50'
+                : 'border-transparent opacity-50',
             )}
             onClick={() => selectImage(index)}
           >
@@ -68,5 +68,5 @@ export function ProductGallery({ images, className }: Props) {
         ))}
       </div>
     </div>
-  )
+  );
 }

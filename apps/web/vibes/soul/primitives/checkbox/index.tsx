@@ -1,15 +1,15 @@
-import * as RadixCheckbox from '@radix-ui/react-checkbox'
-import { clsx } from 'clsx'
-import { Check } from 'lucide-react'
+import * as RadixCheckbox from '@radix-ui/react-checkbox';
+import { clsx } from 'clsx';
+import { Check } from 'lucide-react';
 
 interface Props {
-  id?: string
-  checked: boolean
+  id?: string;
+  checked: boolean;
   // TODO: refactor props here
-  setChecked?: (checked: boolean) => void
-  label?: React.ReactNode
-  error?: string
-  className?: string
+  setChecked?: (checked: boolean) => void;
+  label?: React.ReactNode;
+  error?: string;
+  className?: string;
 }
 
 export function Checkbox({ id, checked = false, setChecked, label, error, className }: Props) {
@@ -22,7 +22,7 @@ export function Checkbox({ id, checked = false, setChecked, label, error, classN
             'flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition-colors duration-150',
             'focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary',
             checked ? 'border-foreground bg-foreground' : 'border-contrast-300 bg-background',
-            error != null && error !== '' ? 'border-error' : 'border-contrast-300'
+            error != null && error !== '' ? 'border-error' : 'border-contrast-300',
           )}
           defaultChecked
           checked={checked}
@@ -41,5 +41,5 @@ export function Checkbox({ id, checked = false, setChecked, label, error, classN
       </div>
       {error != null && error !== '' && <span className="text-xs text-error">{error}</span>}
     </div>
-  )
+  );
 }

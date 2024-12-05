@@ -1,18 +1,18 @@
-import * as PopoverPrimitive from '@radix-ui/react-popover'
-import { CalendarIcon } from 'lucide-react'
-import { ComponentPropsWithoutRef, ComponentRef, forwardRef, useState } from 'react'
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { CalendarIcon } from 'lucide-react';
+import { ComponentPropsWithoutRef, ComponentRef, forwardRef, useState } from 'react';
 
-import { Calendar } from '@/vibes/soul/primitives/calendar'
+import { Calendar } from '@/vibes/soul/primitives/calendar';
 
-import { Input } from '../input'
+import { Input } from '../input';
 
 type Props = {
-  defaultValue?: string | Date
-  disabledDays?: Date[]
-  errors?: string[]
-  onSelect?: (date: Date | undefined) => void
-  selected?: Date | undefined
-} & Omit<ComponentPropsWithoutRef<'input'>, 'defaultValue' | 'onSelect'>
+  defaultValue?: string | Date;
+  disabledDays?: Date[];
+  errors?: string[];
+  onSelect?: (date: Date | undefined) => void;
+  selected?: Date | undefined;
+} & Omit<ComponentPropsWithoutRef<'input'>, 'defaultValue' | 'onSelect'>;
 
 const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
   (
@@ -26,18 +26,18 @@ const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
       selected,
       ...props
     },
-    ref
+    ref,
   ) => {
     // State to manage the selected date
     const [date, setDate] = useState<Date | undefined>(
-      defaultValue != null ? new Date(defaultValue) : undefined
-    )
+      defaultValue != null ? new Date(defaultValue) : undefined,
+    );
 
     // Format the selected date for display
-    const formattedSelected = selected ? Intl.DateTimeFormat().format(selected) : undefined
+    const formattedSelected = selected ? Intl.DateTimeFormat().format(selected) : undefined;
 
     // Format the default date for display
-    const formattedDate = date ? Intl.DateTimeFormat().format(date) : undefined
+    const formattedDate = date ? Intl.DateTimeFormat().format(date) : undefined;
 
     return (
       <PopoverPrimitive.Root>
@@ -70,10 +70,10 @@ const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
           </PopoverPrimitive.Content>
         </PopoverPrimitive.Portal>
       </PopoverPrimitive.Root>
-    )
-  }
-)
+    );
+  },
+);
 
-DatePicker.displayName = 'DatePicker'
+DatePicker.displayName = 'DatePicker';
 
-export { DatePicker }
+export { DatePicker };

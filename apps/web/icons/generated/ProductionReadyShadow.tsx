@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgProductionReadyShadow = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={284} height={284} fill="none" {...props}>
@@ -12,5 +12,5 @@ const SvgProductionReadyShadow = (props: SVGProps<SVGSVGElement>) => (
       </clipPath>
     </defs>
   </svg>
-)
-export default SvgProductionReadyShadow
+);
+export default SvgProductionReadyShadow;

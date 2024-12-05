@@ -1,23 +1,23 @@
-'use client'
+'use client';
 
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation';
 
-import { Link } from './link'
-import { Page } from './navigation'
+import { Link } from './link';
+import { Page } from './navigation';
 
 interface Props
   extends Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href' | 'active' | 'children'> {
-  chapterSlug: string
-  page: Page
+  chapterSlug: string;
+  page: Page;
 }
 
 export function PageLink({ chapterSlug, page, ...rest }: Props) {
-  const pathname = usePathname()
-  const href = `/docs/${chapterSlug}/${page.slug}`
+  const pathname = usePathname();
+  const href = `/docs/${chapterSlug}/${page.slug}`;
 
   return (
     <Link {...rest} href={href} active={pathname === href}>
       {page.title}
     </Link>
-  )
+  );
 }

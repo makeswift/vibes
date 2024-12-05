@@ -1,4 +1,4 @@
-import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
+import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image';
 
 export const featuredImage: FeaturedImageProps = {
   title: 'Thoughtfully Designed',
@@ -9,7 +9,7 @@ export const featuredImage: FeaturedImageProps = {
     alt: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },
-}
+};
 
 export default function Preview() {
   return (
@@ -45,5 +45,5 @@ export default function Preview() {
         mediaAlign="full"
       />
     </div>
-  )
+  );
 }

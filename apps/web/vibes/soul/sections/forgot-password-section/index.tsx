@@ -1,11 +1,11 @@
-import { ForgotPasswordAction, ForgotPasswordForm } from './forgot-password-form'
+import { ForgotPasswordAction, ForgotPasswordForm } from './forgot-password-form';
 
 interface Props {
-  title?: string
-  subtitle?: string
-  action: ForgotPasswordAction
-  emailLabel?: string
-  submitLabel?: string
+  title?: string;
+  subtitle?: string;
+  action: ForgotPasswordAction;
+  emailLabel?: string;
+  submitLabel?: string;
 }
 
 export function ForgotPasswordSection({
@@ -25,5 +25,5 @@ export function ForgotPasswordSection({
         </div>
       </div>
     </div>
-  )
+  );
 }

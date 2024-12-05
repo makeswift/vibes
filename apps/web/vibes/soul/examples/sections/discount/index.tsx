@@ -1,4 +1,4 @@
-import { Discount } from '@/vibes/soul/sections/discount'
+import { Discount } from '@/vibes/soul/sections/discount';
 
 export default function Preview() {
   return (
@@ -27,5 +27,5 @@ export default function Preview() {
         },
       ]}
     />
-  )
+  );
 }

@@ -1,24 +1,24 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
 import {
   Carousel,
   CarouselButtons,
   CarouselContent,
   CarouselItem,
-} from '@/vibes/soul/primitives/carousel'
+} from '@/vibes/soul/primitives/carousel';
 import {
   CompareCard,
   CompareCardSkeleton,
   CompareProduct,
-} from '@/vibes/soul/primitives/compare-card'
+} from '@/vibes/soul/primitives/compare-card';
 
 interface Props {
-  className?: string
-  title?: string
-  products: CompareProduct[]
-  addToCartLabel?: string
-  emptyStateMessage?: string
-  addToCartAction?(id: string): Promise<void>
+  className?: string;
+  title?: string;
+  products: CompareProduct[];
+  addToCartLabel?: string;
+  emptyStateMessage?: string;
+  addToCartAction?(id: string): Promise<void>;
 }
 
 export function CompareSection({
@@ -30,7 +30,7 @@ export function CompareSection({
   emptyStateMessage,
 }: Props) {
   if (products.length === 0) {
-    return <CompareSectionEmptyState message={emptyStateMessage} />
+    return <CompareSectionEmptyState message={emptyStateMessage} />;
   }
 
   return (
@@ -44,7 +44,7 @@ export function CompareSection({
             <CarouselButtons className="hidden xl:block" />
           </div>
           <CarouselContent>
-            {products.map(product => (
+            {products.map((product) => (
               <CarouselItem
                 key={product.id}
                 className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
@@ -61,15 +61,15 @@ export function CompareSection({
         </Carousel>
       </div>
     </div>
-  )
+  );
 }
 
 export function CompareSectionSkeleton({
   className,
   title = 'Compare products',
 }: {
-  className?: string
-  title?: string
+  className?: string;
+  title?: string;
 }) {
   return (
     <div className={clsx('overflow-hidden @container', className)}>
@@ -94,7 +94,7 @@ export function CompareSectionSkeleton({
         </Carousel>
       </div>
     </div>
-  )
+  );
 }
 
 export function CompareSectionEmptyState({
@@ -102,9 +102,9 @@ export function CompareSectionEmptyState({
   title = 'Compare products',
   message = 'No products found',
 }: {
-  className?: string
-  title?: string
-  message?: string
+  className?: string;
+  title?: string;
+  message?: string;
 }) {
   return (
     <div className={clsx('overflow-hidden @container', className)}>
@@ -130,5 +130,5 @@ export function CompareSectionEmptyState({
         </Carousel>
       </div>
     </div>
-  )
+  );
 }

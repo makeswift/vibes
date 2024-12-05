@@ -1,7 +1,7 @@
-import { locales } from '@/vibes/soul/data/locales'
-import { Navigation } from '@/vibes/soul/primitives/navigation'
+import { locales } from '@/vibes/soul/data/locales';
+import { Navigation } from '@/vibes/soul/primitives/navigation';
 
-import { localeAction, searchAction } from './actions'
+import { localeAction, searchAction } from './actions';
 
 export const navigationLinks = [
   {
@@ -103,9 +103,9 @@ export const navigationLinks = [
       },
     ],
   },
-]
+];
 
-export const logo = 'SOUL'
+export const logo = 'SOUL';
 
 export default function Preview() {
   return (
@@ -122,5 +122,5 @@ export default function Preview() {
         localeAction={localeAction}
       />
     </div>
-  )
+  );
 }

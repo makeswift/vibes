@@ -1,6 +1,6 @@
-import { unstable_cache } from 'next/cache'
+import { unstable_cache } from 'next/cache';
 
-import { CartLineItem } from '@/vibes/soul/sections/cart'
+import { CartLineItem } from '@/vibes/soul/sections/cart';
 
 const Electric: CartLineItem[] = [
   {
@@ -25,7 +25,7 @@ const Electric: CartLineItem[] = [
     },
     quantity: 2,
   },
-]
+];
 
 const Luxury: CartLineItem[] = [
   {
@@ -50,7 +50,7 @@ const Luxury: CartLineItem[] = [
     },
     quantity: 2,
   },
-]
+];
 
 const Warm: CartLineItem[] = [
   {
@@ -75,13 +75,13 @@ const Warm: CartLineItem[] = [
     },
     quantity: 2,
   },
-]
+];
 
 const lineItems = {
-  Electric: new Map(Electric.map(item => [item.id, item])),
-  Warm: new Map(Warm.map(item => [item.id, item])),
-  Luxury: new Map(Luxury.map(item => [item.id, item])),
-}
+  Electric: new Map(Electric.map((item) => [item.id, item])),
+  Warm: new Map(Warm.map((item) => [item.id, item])),
+  Luxury: new Map(Luxury.map((item) => [item.id, item])),
+};
 
 export const getLineItems = unstable_cache(
   async (brand: 'Electric' | 'Warm' | 'Luxury') => Array.from(lineItems[brand].values()),
@@ -89,13 +89,13 @@ export const getLineItems = unstable_cache(
   {
     tags: ['line-items-electric'],
     revalidate: false,
-  }
-)
+  },
+);
 
 export async function getSubtotal(brand: 'Electric' | 'Warm' | 'Luxury'): Promise<string> {
-  const cachedLineItems = await getLineItems(brand)
+  const cachedLineItems = await getLineItems(brand);
   const subtotal = cachedLineItems
-    .map(lineItem => parseInt(lineItem.price.replace('$', ''), 10) * lineItem.quantity)
-    .reduce((acc, quantity) => acc + quantity, 0)
-  return `$${subtotal}`
+    .map((lineItem) => parseInt(lineItem.price.replace('$', ''), 10) * lineItem.quantity)
+    .reduce((acc, quantity) => acc + quantity, 0);
+  return `$${subtotal}`;
 }

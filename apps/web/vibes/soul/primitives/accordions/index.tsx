@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import * as AccordionsPrimitive from '@radix-ui/react-accordion'
-import React from 'react'
+import * as AccordionsPrimitive from '@radix-ui/react-accordion';
+import React from 'react';
 
 function Accordion({
   children,
@@ -24,7 +24,7 @@ function Accordion({
         <div className="pb-5 font-body font-medium leading-normal text-foreground">{children}</div>
       </AccordionsPrimitive.Content>
     </AccordionsPrimitive.Item>
-  )
+  );
 }
 
 function AnimatedChevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
@@ -56,9 +56,9 @@ function AnimatedChevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<S
         strokeLinecap="round"
       />
     </svg>
-  )
+  );
 }
 
-const Accordions = AccordionsPrimitive.Root
+const Accordions = AccordionsPrimitive.Root;
 
-export { Accordions, Accordion }
+export { Accordions, Accordion };

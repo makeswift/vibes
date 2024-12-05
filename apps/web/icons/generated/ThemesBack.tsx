@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgThemesBack = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={168} height={382} fill="none" {...props}>
@@ -22,5 +22,5 @@ const SvgThemesBack = (props: SVGProps<SVGSVGElement>) => (
       mask="url(#themes-back_svg__a)"
     />
   </svg>
-)
-export default SvgThemesBack
+);
+export default SvgThemesBack;

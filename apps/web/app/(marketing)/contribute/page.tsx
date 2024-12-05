@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { ButtonLink } from '@/components/ui/button-link'
+import { ButtonLink } from '@/components/ui/button-link';
 
-import { Form } from '../form'
+import { Form } from '../form';
 
 export default function Contribute() {
   return (
@@ -64,5 +64,5 @@ export default function Contribute() {
         </div>
       </section>
     </div>
-  )
+  );
 }

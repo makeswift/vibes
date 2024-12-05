@@ -1,21 +1,21 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
-import { Badge } from '@/vibes/soul/primitives/badge'
-import { ButtonLink } from '@/vibes/soul/primitives/button-link'
+import { Badge } from '@/vibes/soul/primitives/badge';
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
-import { OrderListLineItem } from './order-list-line-item'
+import { OrderListLineItem } from './order-list-line-item';
 
 export interface Order {
-  id: string
-  totalPrice: string
-  status: string
-  href: string
-  lineItems: OrderListLineItem[]
+  id: string;
+  totalPrice: string;
+  status: string;
+  href: string;
+  lineItems: OrderListLineItem[];
 }
 
 interface Props {
-  className?: string
-  order: Order
+  className?: string;
+  order: Order;
 }
 
 export function OrderListItem({ className, order }: Props) {
@@ -23,7 +23,7 @@ export function OrderListItem({ className, order }: Props) {
     <div
       className={clsx(
         'border-t border-contrast-100 pb-6 pt-5 last:border-b @lg:pb-10 @lg:pt-6',
-        className
+        className,
       )}
     >
       <div className="flex flex-col justify-between gap-x-10 gap-y-4 @lg:flex-row">
@@ -49,10 +49,10 @@ export function OrderListItem({ className, order }: Props) {
       </div>
 
       <div className="mt-6 flex gap-4 overflow-hidden [mask-image:linear-gradient(to_right,_black_0%,_black_80%,_transparent_98%)]">
-        {order.lineItems.map(lineItem => (
+        {order.lineItems.map((lineItem) => (
           <OrderListLineItem key={lineItem.id} lineItem={lineItem} />
         ))}
       </div>
     </div>
-  )
+  );
 }

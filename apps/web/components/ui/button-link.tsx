@@ -1,13 +1,13 @@
-import { clsx } from 'clsx'
-import Link from 'next/link'
-import * as React from 'react'
+import { clsx } from 'clsx';
+import Link from 'next/link';
+import * as React from 'react';
 
 export interface Props {
-  className?: string
-  href?: string
-  children?: React.ReactNode
-  variant?: 'default' | 'ghost' | 'link'
-  size?: 'large' | 'medium' | 'small' | 'icon'
+  className?: string;
+  href?: string;
+  children?: React.ReactNode;
+  variant?: 'default' | 'ghost' | 'link';
+  size?: 'large' | 'medium' | 'small' | 'icon';
 }
 
 export function ButtonLink({
@@ -22,7 +22,7 @@ export function ButtonLink({
     <Link
       className={clsx(
         'not-prose group relative z-0 inline-block rounded-full outline-none',
-        className
+        className,
       )}
       href={href ?? '#'}
       {...props}
@@ -41,11 +41,11 @@ export function ButtonLink({
             medium: 'gap-x-2 px-4 py-2 text-sm',
             small: 'gap-x-1.5 px-3 py-1.5 text-xs',
             icon: 'p-1.5',
-          }[size]
+          }[size],
         )}
       >
         {children}
       </span>
     </Link>
-  )
+  );
 }

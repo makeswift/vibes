@@ -1,33 +1,33 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { X } from 'lucide-react'
-import Image from 'next/image'
-import React, { useCallback, useEffect, useState } from 'react'
+import { clsx } from 'clsx';
+import { X } from 'lucide-react';
+import Image from 'next/image';
+import React, { useCallback, useEffect, useState } from 'react';
 
 interface Default {
-  type: 'default'
-  images?: string[]
+  type: 'default';
+  images?: string[];
 }
 
 interface Full {
-  type: 'full'
-  backgroundImage: string
+  type: 'full';
+  backgroundImage: string;
 }
 
 interface Split {
-  type: 'split'
-  image: string
+  type: 'split';
+  image: string;
 }
 
 interface Banner {
-  type: 'banner'
+  type: 'banner';
 }
 
 interface Props {
-  title: string
-  targetDate: Date
-  variant: Default | Full | Split | Banner
+  title: string;
+  targetDate: Date;
+  variant: Default | Full | Split | Banner;
 }
 
 export const Countdown = function Countdown({
@@ -36,8 +36,8 @@ export const Countdown = function Countdown({
   variant = { type: 'default' },
 }: Props) {
   const calculateTimeLeft = useCallback(() => {
-    const difference = +targetDate - +new Date()
-    let timeRemaining = { days: 0, hours: 0, mins: 0, secs: 0 }
+    const difference = +targetDate - +new Date();
+    let timeRemaining = { days: 0, hours: 0, mins: 0, secs: 0 };
 
     if (difference > 0) {
       timeRemaining = {
@@ -45,43 +45,43 @@ export const Countdown = function Countdown({
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         mins: Math.floor((difference / 1000 / 60) % 60),
         secs: Math.floor((difference / 1000) % 60),
-      }
+      };
     }
 
-    return timeRemaining
-  }, [targetDate])
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
-  const [banner, setBanner] = useState({ dismissed: false, initialized: false })
+    return timeRemaining;
+  }, [targetDate]);
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [banner, setBanner] = useState({ dismissed: false, initialized: false });
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft())
-    }, 1000)
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
 
     return () => {
-      clearInterval(timer)
-    }
-  }, [targetDate, calculateTimeLeft])
+      clearInterval(timer);
+    };
+  }, [targetDate, calculateTimeLeft]);
 
   useEffect(() => {
-    const hidden = localStorage.getItem('hidden-countdown') === 'true'
-    setBanner({ dismissed: hidden, initialized: true })
-  }, [])
+    const hidden = localStorage.getItem('hidden-countdown') === 'true';
+    setBanner({ dismissed: hidden, initialized: true });
+  }, []);
 
   const hideBanner = useCallback(() => {
-    setBanner(prev => ({ ...prev, dismissed: true }))
-    localStorage.setItem('hidden-countdown', 'true')
-  }, [])
+    setBanner((prev) => ({ ...prev, dismissed: true }));
+    localStorage.setItem('hidden-countdown', 'true');
+  }, []);
 
-  if (!banner.initialized) return null
+  if (!banner.initialized) return null;
 
   const AnimatedNumber = ({ value }: { value: number }) => {
-    const [displayValue, setDisplayValue] = useState(value)
+    const [displayValue, setDisplayValue] = useState(value);
 
     useEffect(() => {
-      const timeout = setTimeout(() => setDisplayValue(value))
-      return () => clearTimeout(timeout)
-    }, [value])
+      const timeout = setTimeout(() => setDisplayValue(value));
+      return () => clearTimeout(timeout);
+    }, [value]);
 
     return (
       <div className="relative h-14 overflow-hidden [&>*]:h-14">
@@ -95,8 +95,8 @@ export const Countdown = function Countdown({
           </div>
         ))}
       </div>
-    )
-  }
+    );
+  };
 
   const TwoDigitAnimatedNumber = ({ value }: { value: number }) => (
     <div
@@ -110,13 +110,13 @@ export const Countdown = function Countdown({
           full: 'h-14 w-14 @2xl:h-28 @2xl:w-28',
           split: 'h-14 w-14 @2xl:h-16 @2xl:w-16',
           banner: 'h-9 w-9',
-        }[variant.type]
+        }[variant.type],
       )}
     >
       <AnimatedNumber value={Math.floor(value / 10)} />
       <AnimatedNumber value={value % 10} />
     </div>
-  )
+  );
 
   return (
     <section
@@ -136,7 +136,7 @@ export const Countdown = function Countdown({
               full: 'py-40',
               split: '@5xl:container @3xl:mx-auto @3xl:grid @3xl:grid-cols-2',
               banner: '',
-            }[variant.type]
+            }[variant.type],
           )}
         >
           {variant.type === 'full' || variant.type === 'split' ? (
@@ -163,7 +163,7 @@ export const Countdown = function Countdown({
                     'absolute object-contain',
                     index === 0
                       ? '-left-20 top-0 -translate-y-2/3 @5xl:-translate-y-1/3'
-                      : '-right-20 bottom-0 translate-y-2/3 @5xl:translate-y-1/3'
+                      : '-right-20 bottom-0 translate-y-2/3 @5xl:translate-y-1/3',
                   )}
                 />
               ))
@@ -179,7 +179,7 @@ export const Countdown = function Countdown({
                 split: 'py-9 text-3xl @2xl:text-[40px] [&>div>div>span]:text-xs [&>h2]:text-2xl',
                 banner:
                   'flex flex-col items-center gap-4 py-2.5 text-lg @xl:flex-row @xl:gap-6 @2xl:text-xl [&>div>div>span]:text-xs [&>div>span]:mt-0.5',
-              }[variant.type]
+              }[variant.type],
             )}
           >
             <h2
@@ -208,9 +208,9 @@ export const Countdown = function Countdown({
           <button
             aria-label="Dismiss banner"
             type="button"
-            onClick={e => {
-              e.preventDefault()
-              hideBanner()
+            onClick={(e) => {
+              e.preventDefault();
+              hideBanner();
             }}
             className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-white transition-transform hover:scale-110"
           >
@@ -219,5 +219,5 @@ export const Countdown = function Countdown({
         ) : null}
       </div>
     </section>
-  )
-}
+  );
+};

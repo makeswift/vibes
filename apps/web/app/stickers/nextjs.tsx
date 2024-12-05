@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { NextjsBack, NextjsFront, NextjsShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { NextjsBack, NextjsFront, NextjsShadow } from '@/icons/generated';
 
 export function Nextjs() {
   return (
@@ -29,5 +29,5 @@ export function Nextjs() {
         </Transition>
       )}
     </Draggable>
-  )
+  );
 }

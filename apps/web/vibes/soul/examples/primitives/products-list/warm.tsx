@@ -1,11 +1,11 @@
-import { getProducts } from '@/vibes/soul/data'
-import { ProductsList } from '@/vibes/soul/primitives/products-list'
+import { getProducts } from '@/vibes/soul/data';
+import { ProductsList } from '@/vibes/soul/primitives/products-list';
 
 export default function Preview() {
-  const products = getProducts('Warm')
+  const products = getProducts('Warm');
   return (
     <div className="py-6">
       <ProductsList products={products} />
     </div>
-  )
+  );
 }

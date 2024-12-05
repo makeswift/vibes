@@ -1,4 +1,4 @@
-import { Countdown } from '@/vibes/soul/sections/countdown'
+import { Countdown } from '@/vibes/soul/sections/countdown';
 
 export default function Preview() {
   return (
@@ -30,5 +30,5 @@ export default function Preview() {
         variant={{ type: 'banner' }}
       />
     </div>
-  )
+  );
 }

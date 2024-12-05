@@ -1,26 +1,26 @@
-import { readFile } from 'fs/promises'
-import path from 'path'
+import { readFile } from 'fs/promises';
+import path from 'path';
 
-import { CodeFromFile } from '@/components/ui/code-from-file'
-import { exists } from '@/lib/utils'
-import { Vibe } from '@/vibes/schema'
+import { CodeFromFile } from '@/components/ui/code-from-file';
+import { exists } from '@/lib/utils';
+import { Vibe } from '@/vibes/schema';
 
-import { Frame } from './frame'
-import { PreviewProvider } from './preview-context'
-import { PreviewTabs } from './preview-tabs'
+import { Frame } from './frame';
+import { PreviewProvider } from './preview-context';
+import { PreviewTabs } from './preview-tabs';
 
 interface Props {
-  componentName: string | Record<string, string>
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  vibe: Vibe
+  componentName: string | Record<string, string>;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  vibe: Vibe;
 }
 
 function findEntry({ vibe, componentName }: { vibe: Vibe; componentName: string }) {
-  const entry = vibe.components.find(component => component.name === componentName)
+  const entry = vibe.components.find((component) => component.name === componentName);
 
-  if (!entry) throw new Error(`Component not found in ${vibe.slug}:${componentName}`)
+  if (!entry) throw new Error(`Component not found in ${vibe.slug}:${componentName}`);
 
-  return entry
+  return entry;
 }
 
 export async function Preview({ vibe, componentName, size = 'md' }: Props) {
@@ -30,7 +30,7 @@ export async function Preview({ vibe, componentName, size = 'md' }: Props) {
       : Object.entries(componentName).map(([brandName, name]) => ({
           entry: findEntry({ vibe, componentName: name }),
           brandName,
-        }))
+        }));
 
   return (
     <PreviewProvider>
@@ -38,18 +38,18 @@ export async function Preview({ vibe, componentName, size = 'md' }: Props) {
         size={size}
         components={await Promise.all(
           components.filter(exists).map(async ({ brandName, entry }) => {
-            const pathname = `/vibes/${vibe.slug}/${entry.files[0]}`
-            const file = await readFile(path.join(process.cwd(), pathname), 'utf8')
+            const pathname = `/vibes/${vibe.slug}/${entry.files[0]}`;
+            const file = await readFile(path.join(process.cwd(), pathname), 'utf8');
 
             return {
               brandName,
               clipboard: file,
               preview: <Frame vibeSlug={vibe.slug} componentName={entry.name} />,
               code: <CodeFromFile pathname={pathname} hideCopyButton showLineNumbers />,
-            }
-          })
+            };
+          }),
         )}
       />
     </PreviewProvider>
-  )
+  );
 }

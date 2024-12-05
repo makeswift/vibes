@@ -1,16 +1,16 @@
-import { locales } from '@/vibes/soul/data/locales'
-import { localeAction, searchAction } from '@/vibes/soul/examples/primitives/navigation/actions'
-import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury'
-import { HeaderSection } from '@/vibes/soul/sections/header-section'
+import { locales } from '@/vibes/soul/data/locales';
+import { localeAction, searchAction } from '@/vibes/soul/examples/primitives/navigation/actions';
+import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury';
+import { HeaderSection } from '@/vibes/soul/sections/header-section';
 
 export default function Preview() {
-  const linksPromise = new Promise<{ href: string; label: string }[]>(res =>
-    setTimeout(() => res(navigationLinks), 3000)
-  )
-  const cartCountPromise = new Promise<number>(res => setTimeout(() => res(3), 2000))
-  const logoPromise = new Promise<string | { src: string; alt: string }>(res =>
-    setTimeout(() => res(logo), 1000)
-  )
+  const linksPromise = new Promise<{ href: string; label: string }[]>((res) =>
+    setTimeout(() => res(navigationLinks), 3000),
+  );
+  const cartCountPromise = new Promise<number>((res) => setTimeout(() => res(3), 2000));
+  const logoPromise = new Promise<string | { src: string; alt: string }>((res) =>
+    setTimeout(() => res(logo), 1000),
+  );
 
   return (
     <>
@@ -39,5 +39,5 @@ export default function Preview() {
       />
       <div className="h-[2000px] w-full bg-contrast-100"></div>
     </>
-  )
+  );
 }

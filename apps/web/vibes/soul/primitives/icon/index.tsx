@@ -1,22 +1,22 @@
-import { clsx } from 'clsx'
-import dynamicIconImports from 'lucide-react/dynamicIconImports'
-import { Suspense, lazy, useMemo } from 'react'
+import { clsx } from 'clsx';
+import dynamicIconImports from 'lucide-react/dynamicIconImports';
+import { Suspense, lazy, useMemo } from 'react';
 
-export type IconName = keyof typeof dynamicIconImports
+export type IconName = keyof typeof dynamicIconImports;
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-export const IconNames = Object.keys(dynamicIconImports) as IconName[]
+export const IconNames = Object.keys(dynamicIconImports) as IconName[];
 
 export function Icon({
   className,
   name,
   size = 24,
 }: {
-  className?: string
-  size?: number
-  name: IconName
+  className?: string;
+  size?: number;
+  name: IconName;
 }) {
-  const LucideIcon = useMemo(() => lazy(dynamicIconImports[name]), [name])
+  const LucideIcon = useMemo(() => lazy(dynamicIconImports[name]), [name]);
 
   return (
     <Suspense
@@ -29,5 +29,5 @@ export function Icon({
     >
       <LucideIcon className={className} size={size} />
     </Suspense>
-  )
+  );
 }

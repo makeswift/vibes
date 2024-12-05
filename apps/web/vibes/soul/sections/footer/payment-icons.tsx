@@ -9,8 +9,8 @@ export const Amex = function Amex() {
         fill="white"
       />
     </svg>
-  )
-}
+  );
+};
 
 export const ApplePay = function ApplePay() {
   return (
@@ -23,8 +23,8 @@ export const ApplePay = function ApplePay() {
         fill="black"
       />
     </svg>
-  )
-}
+  );
+};
 
 export const Bitcoin = function Bitcoin() {
   return (
@@ -37,8 +37,8 @@ export const Bitcoin = function Bitcoin() {
         fill="#F7931A"
       />
     </svg>
-  )
-}
+  );
+};
 
 export const GooglePay = function GooglePay() {
   return (
@@ -67,8 +67,8 @@ export const GooglePay = function GooglePay() {
         fill="#EA4335"
       />
     </svg>
-  )
-}
+  );
+};
 
 export const Mastercard = function Mastercard() {
   return (
@@ -93,8 +93,8 @@ export const Mastercard = function Mastercard() {
         fill="#FF5E00"
       />
     </svg>
-  )
-}
+  );
+};
 
 export const Paypal = function Paypal() {
   return (
@@ -129,8 +129,8 @@ export const Paypal = function Paypal() {
         fill="#253B80"
       />
     </svg>
-  )
-}
+  );
+};
 
 export const Visa = function Visa() {
   return (
@@ -143,5 +143,5 @@ export const Visa = function Visa() {
         fill="#172B85"
       />
     </svg>
-  )
-}
+  );
+};

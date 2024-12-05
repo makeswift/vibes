@@ -1,5 +1,5 @@
-import { BlogPost } from '@/vibes/soul/primitives/blog-post-card'
-import { BlogPostList } from '@/vibes/soul/sections/blog-post-list'
+import { BlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
 
 export const posts: BlogPost[] = [
   {
@@ -119,12 +119,12 @@ export const posts: BlogPost[] = [
     href: '#',
     author: 'Author Name',
   },
-]
+];
 
 export default function Preview() {
   return (
     <div className="p-6">
       <BlogPostList posts={posts} />
     </div>
-  )
+  );
 }

@@ -1,26 +1,26 @@
-'use client'
+'use client';
 
-import { DocSearch } from '@docsearch/react'
-import Image from 'next/image'
+import { DocSearch } from '@docsearch/react';
+import Image from 'next/image';
 
-import '@docsearch/css'
+import '@docsearch/css';
 
-import { ModeToggle } from '@/components/ui/mode-toggle'
-import { env } from '@/lib/env'
+import { ModeToggle } from '@/components/ui/mode-toggle';
+import { env } from '@/lib/env';
 
-import { ChapterSelect } from './chapter-select'
-import { GroupLink } from './group-link'
-import { Link } from './link'
-import { MobileMenu } from './mobile-menu'
-import { Chapter } from './navigation'
+import { ChapterSelect } from './chapter-select';
+import { GroupLink } from './group-link';
+import { Link } from './link';
+import { MobileMenu } from './mobile-menu';
+import { Chapter } from './navigation';
 
 interface Props {
-  chapterSlug: string
-  chapters: Chapter[]
+  chapterSlug: string;
+  chapters: Chapter[];
 }
 
 export function Header({ chapters, chapterSlug }: Props) {
-  const chapter = chapters.find(c => c.slug === chapterSlug)
+  const chapter = chapters.find((c) => c.slug === chapterSlug);
 
   return (
     <header className="sticky top-0 z-[60] h-14 border-b border-dashed border-contrast-300 bg-background @container md:h-16">
@@ -49,7 +49,7 @@ export function Header({ chapters, chapterSlug }: Props) {
         </div>
 
         <nav className="hidden h-full gap-x-4 lg:flex">
-          {chapter?.groups.map(group => (
+          {chapter?.groups.map((group) => (
             <GroupLink
               // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               key={group.pages[0]!.slug}
@@ -75,5 +75,5 @@ export function Header({ chapters, chapterSlug }: Props) {
         </div>
       </div>
     </header>
-  )
+  );
 }

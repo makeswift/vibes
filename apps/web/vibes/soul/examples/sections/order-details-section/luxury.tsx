@@ -1,8 +1,8 @@
-import { getProducts } from '@/vibes/soul/data'
-import { AccountLayout } from '@/vibes/soul/sections/account-layout'
-import { OrderDetailsSection } from '@/vibes/soul/sections/order-details-section'
+import { getProducts } from '@/vibes/soul/data';
+import { AccountLayout } from '@/vibes/soul/sections/account-layout';
+import { OrderDetailsSection } from '@/vibes/soul/sections/order-details-section';
 
-const products = await getProducts('Luxury')
+const products = await getProducts('Luxury');
 
 const order = {
   id: '1',
@@ -87,18 +87,18 @@ const order = {
     ],
     total: '$115',
   },
-}
+};
 
 const links = [
   { href: '#', label: 'Orders' },
   { href: '#', label: 'Addresses' },
   { href: '#', label: 'Account' },
-]
+];
 
 export default function Preview() {
   return (
     <AccountLayout links={links}>
       <OrderDetailsSection order={order} prevHref="#" />
     </AccountLayout>
-  )
+  );
 }

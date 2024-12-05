@@ -1,16 +1,16 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import { SignInAction, SignInForm } from './sign-in-form'
+import { SignInAction, SignInForm } from './sign-in-form';
 
 interface Props {
-  children?: React.ReactNode
-  title?: string
-  action: SignInAction
-  submitLabel?: string
-  emailLabel?: string
-  passwordLabel?: string
-  forgotPasswordHref?: string
-  forgotPasswordLabel?: string
+  children?: React.ReactNode;
+  title?: string;
+  action: SignInAction;
+  submitLabel?: string;
+  emailLabel?: string;
+  passwordLabel?: string;
+  forgotPasswordHref?: string;
+  forgotPasswordLabel?: string;
 }
 
 export function SignInSection({
@@ -42,5 +42,5 @@ export function SignInSection({
         <div className="flex w-full flex-col @xl:max-w-md @xl:pl-10 @4xl:pl-20">{children}</div>
       </div>
     </div>
-  )
+  );
 }

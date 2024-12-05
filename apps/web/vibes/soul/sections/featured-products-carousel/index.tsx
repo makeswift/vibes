@@ -1,23 +1,23 @@
-import { Suspense } from 'react'
+import { Suspense } from 'react';
 
-import { Streamable } from '@/vibes/soul/lib/streamable'
-import { AnimatedLink } from '@/vibes/soul/primitives/animated-link'
+import { Streamable } from '@/vibes/soul/lib/streamable';
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
 import {
   CarouselProduct,
   ProductsCarousel,
   ProductsCarouselSkeleton,
-} from '@/vibes/soul/primitives/products-carousel'
+} from '@/vibes/soul/primitives/products-carousel';
 
 interface Link {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 interface Props {
-  title?: string
-  description?: string
-  cta?: Link
-  products: Streamable<CarouselProduct[]>
+  title?: string;
+  description?: string;
+  cta?: Link;
+  products: Streamable<CarouselProduct[]>;
 }
 
 export function FeaturedProductsCarousel({ title, description, cta, products }: Props) {
@@ -43,7 +43,7 @@ export function FeaturedProductsCarousel({ title, description, cta, products }: 
         </Suspense>
       </div>
     </section>
-  )
+  );
 }
 
 export function FeaturedProductsCarouselSkeleton({
@@ -71,5 +71,5 @@ export function FeaturedProductsCarouselSkeleton({
         <ProductsCarouselSkeleton />
       </div>
     </section>
-  )
+  );
 }

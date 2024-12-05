@@ -1,22 +1,22 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { createSerializer, parseAsString } from 'nuqs'
-import { Suspense, use } from 'react'
+import { clsx } from 'clsx';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { createSerializer, parseAsString } from 'nuqs';
+import { Suspense, use } from 'react';
 
 export interface CursorPaginationInfo {
-  startCursorParamName?: string
-  startCursor?: string | null
-  endCursorParamName?: string
-  endCursor?: string | null
+  startCursorParamName?: string;
+  startCursor?: string | null;
+  endCursorParamName?: string;
+  endCursor?: string | null;
 }
 
 interface Props {
-  info: CursorPaginationInfo | Promise<CursorPaginationInfo>
-  scroll?: boolean
+  info: CursorPaginationInfo | Promise<CursorPaginationInfo>;
+  scroll?: boolean;
 }
 
 export function CursorPagination(props: Props) {
@@ -24,7 +24,7 @@ export function CursorPagination(props: Props) {
     <Suspense fallback={<CursorPaginationSkeleton />}>
       <CursorPaginationResolved {...props} />
     </Suspense>
-  )
+  );
 }
 
 function CursorPaginationResolved({ info, scroll }: Props) {
@@ -33,12 +33,12 @@ function CursorPaginationResolved({ info, scroll }: Props) {
     endCursorParamName = 'after',
     startCursor,
     endCursor,
-  } = info instanceof Promise ? use(info) : info
-  const searchParams = useSearchParams()
+  } = info instanceof Promise ? use(info) : info;
+  const searchParams = useSearchParams();
   const serialize = createSerializer({
     [startCursorParamName]: parseAsString,
     [endCursorParamName]: parseAsString,
-  })
+  });
 
   return (
     <div className="flex w-full items-center justify-center gap-3 py-10">
@@ -73,7 +73,7 @@ function CursorPaginationResolved({ info, scroll }: Props) {
         </SkeletonLink>
       )}
     </div>
-  )
+  );
 }
 
 function PaginationLink({
@@ -81,21 +81,21 @@ function PaginationLink({
   children,
   scroll,
 }: {
-  href: string
-  children: React.ReactNode
-  scroll?: boolean
+  href: string;
+  children: React.ReactNode;
+  scroll?: boolean;
 }) {
   return (
     <Link
       className={clsx(
-        'flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2'
+        'flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2',
       )}
       href={href}
       scroll={scroll}
     >
       {children}
     </Link>
-  )
+  );
 }
 
 function SkeletonLink({ children }: { children: React.ReactNode }) {
@@ -103,7 +103,7 @@ function SkeletonLink({ children }: { children: React.ReactNode }) {
     <div className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-contrast-100 text-foreground opacity-50 duration-300">
       {children}
     </div>
-  )
+  );
 }
 
 export function CursorPaginationSkeleton() {
@@ -118,5 +118,5 @@ export function CursorPaginationSkeleton() {
         </SkeletonLink>
       </div>
     </div>
-  )
+  );
 }

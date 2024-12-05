@@ -1,18 +1,18 @@
-import { locales } from '@/vibes/soul/data/locales'
-import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions'
-import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
-import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm'
-import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
+import { locales } from '@/vibes/soul/data/locales';
+import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
+import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm';
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
 import {
   contactInformation,
   copyright,
   footerLinks,
-} from '@/vibes/soul/examples/sections/footer/warm'
-import { Banner } from '@/vibes/soul/primitives/banner'
-import { Navigation } from '@/vibes/soul/primitives/navigation'
-import { BlogPostContent } from '@/vibes/soul/sections/blog-post-content'
-import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel'
-import { Footer } from '@/vibes/soul/sections/footer'
+} from '@/vibes/soul/examples/sections/footer/warm';
+import { Banner } from '@/vibes/soul/primitives/banner';
+import { Navigation } from '@/vibes/soul/primitives/navigation';
+import { BlogPostContent } from '@/vibes/soul/sections/blog-post-content';
+import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel';
+import { Footer } from '@/vibes/soul/sections/footer';
 import {
   Amex,
   ApplePay,
@@ -21,9 +21,9 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/sections/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
-import { Subscribe } from '@/vibes/soul/sections/subscribe'
+} from '@/vibes/soul/sections/footer/payment-icons';
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
+import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
 const socialMediaLinks = [
   {
@@ -42,7 +42,7 @@ const socialMediaLinks = [
     href: '#',
     icon: <Youtube />,
   },
-]
+];
 
 const paymentIconsArray: React.ReactNode[] = [
   <Visa key="Visa" />,
@@ -52,7 +52,7 @@ const paymentIconsArray: React.ReactNode[] = [
   <GooglePay key="GooglePay" />,
   <ApplePay key="ApplePay" />,
   <Bitcoin key="Bitcoin" />,
-]
+];
 
 export default function Preview() {
   return (
@@ -116,5 +116,5 @@ export default function Preview() {
         socialMediaLinks={socialMediaLinks}
       />
     </>
-  )
+  );
 }

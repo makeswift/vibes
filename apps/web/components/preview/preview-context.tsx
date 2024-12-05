@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import { Dispatch, SetStateAction, createContext, useCallback, useContext, useState } from 'react'
+import { Dispatch, SetStateAction, createContext, useCallback, useContext, useState } from 'react';
 
-const MIN_WIDTH = 320
+const MIN_WIDTH = 320;
 
 interface Context {
-  width: number | null
-  zoom: number
-  isDragging: boolean
-  setIsDragging: Dispatch<SetStateAction<boolean>>
-  setMaxWidth: Dispatch<SetStateAction<number | null>>
-  resize: (nextWidth: number | null) => void
-  tab: string | undefined
-  setTab: Dispatch<SetStateAction<string>>
+  width: number | null;
+  zoom: number;
+  isDragging: boolean;
+  setIsDragging: Dispatch<SetStateAction<boolean>>;
+  setMaxWidth: Dispatch<SetStateAction<number | null>>;
+  resize: (nextWidth: number | null) => void;
+  tab: string | undefined;
+  setTab: Dispatch<SetStateAction<string>>;
 }
 
 const PreviewContext = createContext<Context>({
@@ -24,33 +24,33 @@ const PreviewContext = createContext<Context>({
   resize: () => void 0,
   tab: undefined,
   setTab: () => void 0,
-})
+});
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function PreviewProvider({ children }: Props) {
-  const [width, setWidth] = useState<number | null>(null)
-  const [zoom, setZoom] = useState<number>(1)
-  const [isDragging, setIsDragging] = useState<boolean>(false)
-  const [maxWidth, setMaxWidth] = useState<number | null>(null)
-  const [tab, setTab] = useState<string>('preview')
+  const [width, setWidth] = useState<number | null>(null);
+  const [zoom, setZoom] = useState<number>(1);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [maxWidth, setMaxWidth] = useState<number | null>(null);
+  const [tab, setTab] = useState<string>('preview');
 
   const resize = useCallback(
     (nextWidth: number | null) => {
       if (nextWidth === null) {
-        setWidth(null)
-        setZoom(1)
+        setWidth(null);
+        setZoom(1);
       } else {
-        if (maxWidth === null) return
+        if (maxWidth === null) return;
 
-        setWidth(Math.max(Math.min(nextWidth, maxWidth), MIN_WIDTH))
-        setZoom(Math.min(maxWidth / Math.max(nextWidth, MIN_WIDTH), 1))
+        setWidth(Math.max(Math.min(nextWidth, maxWidth), MIN_WIDTH));
+        setZoom(Math.min(maxWidth / Math.max(nextWidth, MIN_WIDTH), 1));
       }
     },
-    [maxWidth]
-  )
+    [maxWidth],
+  );
 
   return (
     <PreviewContext.Provider
@@ -67,9 +67,9 @@ export function PreviewProvider({ children }: Props) {
     >
       {children}
     </PreviewContext.Provider>
-  )
+  );
 }
 
 export function usePreviewContext() {
-  return useContext(PreviewContext)
+  return useContext(PreviewContext);
 }

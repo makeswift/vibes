@@ -3,4 +3,4 @@ export const locales = [
   { id: 'fr', label: 'France' },
   { id: 'de', label: 'Denmark' },
   { id: 'it', label: 'Italy' },
-]
+];

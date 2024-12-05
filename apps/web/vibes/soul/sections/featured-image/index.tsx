@@ -1,21 +1,21 @@
-import { clsx } from 'clsx'
-import Image from 'next/image'
+import { clsx } from 'clsx';
+import Image from 'next/image';
 
-import { ButtonLink } from '../../primitives/button-link'
+import { ButtonLink } from '../../primitives/button-link';
 
 export interface FeaturedImageProps {
-  title: string
-  description: string
+  title: string;
+  description: string;
   image: {
-    src: string
-    blurDataUrl?: string
-    alt: string
-  }
+    src: string;
+    blurDataUrl?: string;
+    alt: string;
+  };
   cta: {
-    href: string
-    label: string
-  }
-  mediaAlign?: 'left' | 'right' | 'full'
+    href: string;
+    label: string;
+  };
+  mediaAlign?: 'left' | 'right' | 'full';
 }
 
 export const FeaturedImage = function FeaturedImage({
@@ -29,7 +29,7 @@ export const FeaturedImage = function FeaturedImage({
     <section
       className={clsx(
         'relative bg-primary-shadow @container',
-        mediaAlign === 'full' && 'h-dvh max-h-[700px]'
+        mediaAlign === 'full' && 'h-dvh max-h-[700px]',
       )}
     >
       <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
@@ -42,7 +42,7 @@ export const FeaturedImage = function FeaturedImage({
             {
               '@3xl:order-2 @7xl:mr-20': mediaAlign === 'right',
               '@7xl:ml-20': mediaAlign === 'left',
-            }
+            },
           )}
         >
           <Image
@@ -61,7 +61,7 @@ export const FeaturedImage = function FeaturedImage({
             mediaAlign === 'full'
               ? '5xl:px-20 mx-auto mt-auto w-full max-w-screen-2xl px-3 @xl:px-6'
               : 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5',
-            { '@3xl:order-1': mediaAlign === 'right' }
+            { '@3xl:order-1': mediaAlign === 'right' },
           )}
         >
           <h2 className="max-w-xl font-heading text-4xl leading-none @xl:text-5xl">{title}</h2>
@@ -76,5 +76,5 @@ export const FeaturedImage = function FeaturedImage({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

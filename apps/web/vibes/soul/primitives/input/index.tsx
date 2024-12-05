@@ -1,20 +1,20 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
+import { clsx } from 'clsx';
+import { ComponentPropsWithRef, Ref, forwardRef } from 'react';
 
-import { Label } from '@/vibes/soul/primitives/label'
+import { Label } from '@/vibes/soul/primitives/label';
 
 export interface Props extends ComponentPropsWithRef<'input'> {
-  prepend?: string
-  label?: string
-  error?: string
-  className?: string
+  prepend?: string;
+  label?: string;
+  error?: string;
+  className?: string;
 }
 
 export const Input = forwardRef(function Input(
   { prepend, label, className, required, error, ...rest }: Props,
-  ref: Ref<HTMLInputElement>
+  ref: Ref<HTMLInputElement>,
 ) {
   return (
     <div className={clsx('w-full', className)}>
@@ -27,7 +27,7 @@ export const Input = forwardRef(function Input(
       <div
         className={clsx(
           'relative overflow-hidden rounded-lg border bg-background transition-colors duration-200 focus-within:border-foreground focus:outline-none',
-          error != null && error !== '' ? 'border-error' : 'border-contrast-100'
+          error != null && error !== '' ? 'border-error' : 'border-contrast-100',
         )}
       >
         {prepend != null && prepend !== '' && (
@@ -42,11 +42,11 @@ export const Input = forwardRef(function Input(
             'placeholder-contrast-gray-500 w-full bg-transparent px-6 py-3 text-foreground [appearance:textfield] placeholder:font-normal focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
             {
               'py-3 pl-10 pr-6': prepend,
-            }
+            },
           )}
         />
       </div>
       {error != null && error !== '' && <span className="text-xs text-error">{error}</span>}
     </div>
-  )
-})
+  );
+});

@@ -1,7 +1,7 @@
-import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm'
-import { ProductDetail } from '@/vibes/soul/sections/product-detail'
+import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm';
+import { ProductDetail } from '@/vibes/soul/sections/product-detail';
 
-import { action, fields } from './action'
+import { action, fields } from './action';
 
 export const product = {
   id: '1',
@@ -70,10 +70,10 @@ export const product = {
   description:
     'Svelte and functional, this is one bag that goes well with every bike. We made this smaller so it fits little bikes and still carries the essentials - snacks, wallet, phone, keys, a tube, and tools. With multiple mounting positions, the fit can be dialed for short head-tubed mountain bikes, long stemmed road bikes, and everything in-between. The slim top edge is designed to fit behind mountain bike cables and tuck up neatly under computers, lights, and other accessories.',
   // options: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-}
+};
 
 export default function Preview() {
   return (
     <ProductDetail breadcrumbs={breadcrumbs} product={product} fields={fields} action={action} />
-  )
+  );
 }

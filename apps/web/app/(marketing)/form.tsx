@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import { getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { clsx } from 'clsx'
-import { useActionState } from 'react'
-import { useFormStatus } from 'react-dom'
+import { getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { getZodConstraint, parseWithZod } from '@conform-to/zod';
+import { clsx } from 'clsx';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 
-import { submitLead } from '@/actions/submit-lead'
-import Transition from '@/components/ui/transition'
-import { Arrow, Check, Loader } from '@/icons/generated'
-import { submitLeadSchema } from '@/lib/schema'
+import { submitLead } from '@/actions/submit-lead';
+import Transition from '@/components/ui/transition';
+import { Arrow, Check, Loader } from '@/icons/generated';
+import { submitLeadSchema } from '@/lib/schema';
 
 export function Form({ intent }: { intent?: string }) {
-  const [lastResult, action] = useActionState(submitLead, undefined)
+  const [lastResult, action] = useActionState(submitLead, undefined);
   const [form, fields] = useForm({
     lastResult,
     defaultValue: { email: '', intent },
@@ -20,10 +20,10 @@ export function Form({ intent }: { intent?: string }) {
     shouldRevalidate: 'onInput',
     constraint: getZodConstraint(submitLeadSchema),
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: submitLeadSchema })
+      return parseWithZod(formData, { schema: submitLeadSchema });
     },
-  })
-  const success = form.status === 'success'
+  });
+  const success = form.status === 'success';
 
   return (
     <form
@@ -40,7 +40,7 @@ export function Form({ intent }: { intent?: string }) {
           placeholder="Add your email to be notified"
           className={clsx(
             'w-full bg-transparent font-sans text-lg text-black outline-none transition-all duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] placeholder:text-black/50 focus:!w-[540px] focus:outline-none sm:w-[540px] sm:placeholder-shown:w-[300px] md:text-xl lg:text-[24px] lg:placeholder-shown:w-[350px]',
-            success ? '-translate-y-full' : 'translate-y-0'
+            success ? '-translate-y-full' : 'translate-y-0',
           )}
           data-1p-ignore
         />
@@ -50,7 +50,7 @@ export function Form({ intent }: { intent?: string }) {
           hidden={!success}
           className={clsx(
             'absolute inset-0 flex items-center pl-5 text-black transition-transform duration-300 [transition-timing-function:cubic-bezier(.5,0,.25,1)] md:text-xl lg:pl-8 lg:text-[24px]',
-            success ? 'translate-y-0' : 'translate-y-full'
+            success ? 'translate-y-0' : 'translate-y-full',
           )}
         >
           Success! Check your email.
@@ -75,18 +75,18 @@ export function Form({ intent }: { intent?: string }) {
         {form.errors}
       </div>
     </form>
-  )
+  );
 }
 
 function Submit({ success }: { success: boolean }) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <button
       type="submit"
       className={clsx(
         'absolute bottom-1.5 right-1.5 top-1.5 flex aspect-square h-10 items-center justify-center overflow-hidden rounded-full transition-all md:h-12 lg:h-14',
-        success ? 'bg-[#39e258]' : 'bg-black'
+        success ? 'bg-[#39e258]' : 'bg-black',
       )}
       disabled={pending || success}
     >
@@ -101,5 +101,5 @@ function Submit({ success }: { success: boolean }) {
         {pending && <Loader className="animate-spin" />}
       </div>
     </button>
-  )
+  );
 }

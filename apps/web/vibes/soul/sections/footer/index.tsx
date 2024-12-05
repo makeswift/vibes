@@ -1,43 +1,43 @@
-import { clsx } from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ReactNode, type Ref, forwardRef } from 'react'
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ReactNode, type Ref, forwardRef } from 'react';
 
-import { Stream, Streamable } from '@/vibes/soul/lib/streamable'
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 
 interface Image {
-  src: string
-  alt: string
+  src: string;
+  alt: string;
 }
 
 interface Link {
-  href: string
-  label: string
+  href: string;
+  label: string;
 }
 
 export interface Section {
-  title?: string
-  links: Link[]
+  title?: string;
+  links: Link[];
 }
 
 interface SocialMediaLink {
-  href: string
-  icon: ReactNode
+  href: string;
+  icon: ReactNode;
 }
 
 interface ContactInformation {
-  address?: string
-  phone?: string
+  address?: string;
+  phone?: string;
 }
 
 interface Props {
-  logo?: Streamable<string | Image | null>
-  sections: Streamable<Section[]>
-  copyright?: Streamable<string | null>
-  contactInformation?: Streamable<ContactInformation | null>
-  paymentIcons?: Streamable<ReactNode[] | null>
-  socialMediaLinks?: Streamable<SocialMediaLink[] | null>
-  className?: string
+  logo?: Streamable<string | Image | null>;
+  sections: Streamable<Section[]>;
+  copyright?: Streamable<string | null>;
+  contactInformation?: Streamable<ContactInformation | null>;
+  paymentIcons?: Streamable<ReactNode[] | null>;
+  socialMediaLinks?: Streamable<SocialMediaLink[] | null>;
+  className?: string;
 }
 
 export const Footer = forwardRef(function Footer(
@@ -50,14 +50,14 @@ export const Footer = forwardRef(function Footer(
     copyright: streamableCopyright,
     className = '',
   }: Props,
-  ref: Ref<HTMLDivElement>
+  ref: Ref<HTMLDivElement>,
 ) {
   return (
     <footer
       ref={ref}
       className={clsx(
         'border-b-4 border-t border-b-primary border-t-contrast-100 bg-background text-foreground @container',
-        className
+        className,
       )}
     >
       <div className="mx-auto max-w-screen-2xl px-4 py-6 @xl:px-6 @xl:py-10 @4xl:px-8 @4xl:py-12">
@@ -72,7 +72,7 @@ export const Footer = forwardRef(function Footer(
               }
               value={streamableLogo}
             >
-              {logo => {
+              {(logo) => {
                 if (logo != null && typeof logo === 'string') {
                   return (
                     <Link
@@ -83,7 +83,7 @@ export const Footer = forwardRef(function Footer(
                         {logo}
                       </span>
                     </Link>
-                  )
+                  );
                 }
                 if (logo != null && typeof logo === 'object' && logo.src !== '') {
                   return (
@@ -99,7 +99,7 @@ export const Footer = forwardRef(function Footer(
                         src={logo.src}
                       />
                     </Link>
-                  )
+                  );
                 }
               }}
             </Stream>
@@ -121,7 +121,7 @@ export const Footer = forwardRef(function Footer(
               }
               value={streamableContactInformation}
             >
-              {contactInformation => {
+              {(contactInformation) => {
                 if (contactInformation?.address != null || contactInformation?.phone != null) {
                   return (
                     <div className="text-lg font-medium @lg:text-xl">
@@ -134,7 +134,7 @@ export const Footer = forwardRef(function Footer(
                         )}
                       </div>
                     </div>
-                  )
+                  );
                 }
               }}
             </Stream>
@@ -151,7 +151,7 @@ export const Footer = forwardRef(function Footer(
               }
               value={streamableSocialMediaLinks}
             >
-              {socialMediaLinks => {
+              {(socialMediaLinks) => {
                 if (socialMediaLinks != null) {
                   return (
                     <div className="flex items-center gap-3 pt-8 @3xl:pt-10">
@@ -164,10 +164,10 @@ export const Footer = forwardRef(function Footer(
                           >
                             {icon}
                           </Link>
-                        )
+                        );
                       })}
                     </div>
-                  )
+                  );
                 }
               }}
             </Stream>
@@ -296,7 +296,7 @@ export const Footer = forwardRef(function Footer(
             }
             value={streamableSections}
           >
-            {sections => {
+            {(sections) => {
               if (sections.length > 0) {
                 return (
                   <div className="grid w-full flex-1 gap-y-8 [grid-template-columns:_repeat(auto-fill,_minmax(200px,_1fr))] @xl:gap-y-10">
@@ -315,13 +315,13 @@ export const Footer = forwardRef(function Footer(
                                   {link.label}
                                 </Link>
                               </li>
-                            )
+                            );
                           })}
                         </ul>
                       </div>
                     ))}
                   </div>
-                )
+                );
               }
             }}
           </Stream>
@@ -337,9 +337,9 @@ export const Footer = forwardRef(function Footer(
             }
             value={streamableCopyright}
           >
-            {copyright => {
+            {(copyright) => {
               if (copyright != null) {
-                return <p className="flex-1 text-sm text-contrast-400">{copyright}</p>
+                return <p className="flex-1 text-sm text-contrast-400">{copyright}</p>;
               }
             }}
           </Stream>
@@ -358,14 +358,14 @@ export const Footer = forwardRef(function Footer(
             }
             value={streamablePaymentIcons}
           >
-            {paymentIcons => {
+            {(paymentIcons) => {
               if (paymentIcons != null) {
-                return <div className="flex flex-wrap gap-2">{paymentIcons}</div>
+                return <div className="flex flex-wrap gap-2">{paymentIcons}</div>;
               }
             }}
           </Stream>
         </div>
       </div>
     </footer>
-  )
-})
+  );
+});

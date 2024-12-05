@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { Vibes6Back, Vibes6Front, Vibes6Shadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { Vibes6Back, Vibes6Front, Vibes6Shadow } from '@/icons/generated';
 
 export function Vibes6() {
   return (
@@ -31,5 +31,5 @@ export function Vibes6() {
         )}
       </Draggable>
     </div>
-  )
+  );
 }

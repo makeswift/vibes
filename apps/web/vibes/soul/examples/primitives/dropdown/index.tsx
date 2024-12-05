@@ -1,4 +1,4 @@
-import { Dropdown } from '@/vibes/soul/primitives/dropdown'
+import { Dropdown } from '@/vibes/soul/primitives/dropdown';
 
 export default function Preview() {
   return (
@@ -13,5 +13,5 @@ export default function Preview() {
         error="You must select an option"
       />
     </div>
-  )
+  );
 }

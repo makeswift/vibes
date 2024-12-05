@@ -1,22 +1,22 @@
-import { locales } from '@/vibes/soul/data/locales'
-import { cards } from '@/vibes/soul/examples/primitives/card-carousel/electric'
-import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions'
-import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions'
-import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric'
-import { feature } from '@/vibes/soul/examples/sections/feature/electric'
-import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/electric'
-import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/electric'
-import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric'
-import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric'
-import { Banner } from '@/vibes/soul/primitives/banner'
-import { Navigation } from '@/vibes/soul/primitives/navigation'
-import { CardProduct } from '@/vibes/soul/primitives/product-card'
-import { Feature } from '@/vibes/soul/sections/feature'
-import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel'
-import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image'
-import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel'
-import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list'
-import { Footer } from '@/vibes/soul/sections/footer'
+import { locales } from '@/vibes/soul/data/locales';
+import { cards } from '@/vibes/soul/examples/primitives/card-carousel/electric';
+import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
+import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
+import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
+import { feature } from '@/vibes/soul/examples/sections/feature/electric';
+import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/electric';
+import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/electric';
+import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric';
+import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric';
+import { Banner } from '@/vibes/soul/primitives/banner';
+import { Navigation } from '@/vibes/soul/primitives/navigation';
+import { CardProduct } from '@/vibes/soul/primitives/product-card';
+import { Feature } from '@/vibes/soul/sections/feature';
+import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel';
+import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image';
+import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
+import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list';
+import { Footer } from '@/vibes/soul/sections/footer';
 import {
   Amex,
   ApplePay,
@@ -25,12 +25,12 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/sections/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
-import { Slideshow } from '@/vibes/soul/sections/slideshow'
-import { Subscribe } from '@/vibes/soul/sections/subscribe'
+} from '@/vibes/soul/sections/footer/payment-icons';
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
+import { Slideshow } from '@/vibes/soul/sections/slideshow';
+import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
-const logo = 'SOUL'
+const logo = 'SOUL';
 
 const socialMediaLinks = [
   {
@@ -49,7 +49,7 @@ const socialMediaLinks = [
     href: '#',
     icon: <Youtube />,
   },
-]
+];
 
 const paymentIconsArray: React.ReactNode[] = [
   <Visa key="Visa" />,
@@ -59,7 +59,7 @@ const paymentIconsArray: React.ReactNode[] = [
   <GooglePay key="GooglePay" />,
   <ApplePay key="ApplePay" />,
   <Bitcoin key="Bitcoin" />,
-]
+];
 
 // Featured Products
 export const newArrivals: CardProduct[] = [
@@ -171,7 +171,7 @@ export const newArrivals: CardProduct[] = [
     },
     href: '#',
   },
-]
+];
 
 // TODO: New Arrivals
 // TODO: Recently Viewed
@@ -185,7 +185,7 @@ export const featuredImageII: FeaturedImageProps = {
     alt: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },
-}
+};
 
 export default function Preview() {
   return (
@@ -266,5 +266,5 @@ export default function Preview() {
         socialMediaLinks={socialMediaLinks}
       />
     </>
-  )
+  );
 }

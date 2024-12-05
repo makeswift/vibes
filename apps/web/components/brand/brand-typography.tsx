@@ -1,8 +1,8 @@
-import { Brand } from '@/vibes/schema'
+import { Brand } from '@/vibes/schema';
 
 interface Props {
-  brands: Brand[]
-  brandName: string
+  brands: Brand[];
+  brandName: string;
 }
 
 const sizes = [
@@ -19,12 +19,12 @@ const sizes = [
   { variable: '--font-size-7xl', fontSize: '4.5rem', lineHeight: '120%' },
   { variable: '--font-size-8xl', fontSize: '6rem', lineHeight: '120%' },
   { variable: '--font-size-9xl', fontSize: '8rem', lineHeight: '115%' },
-] as const
+] as const;
 
 export function BrandTypography({ brands, brandName }: Props) {
-  const brand = brands.find(b => b.name === brandName)
+  const brand = brands.find((b) => b.name === brandName);
 
-  if (!brand) return <div>Brand: {brandName} not found</div>
+  if (!brand) return <div>Brand: {brandName} not found</div>;
 
   return (
     <div
@@ -56,8 +56,8 @@ export function BrandTypography({ brands, brandName }: Props) {
               </span>
             </div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

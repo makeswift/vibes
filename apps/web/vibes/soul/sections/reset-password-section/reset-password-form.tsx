@@ -1,23 +1,23 @@
-'use client'
+'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { useActionState, useEffect } from 'react'
+import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { getZodConstraint, parseWithZod } from '@conform-to/zod';
+import { useActionState, useEffect } from 'react';
 
-import { Input } from '@/vibes/soul/form/input'
-import { Button } from '@/vibes/soul/primitives/button'
+import { Input } from '@/vibes/soul/form/input';
+import { Button } from '@/vibes/soul/primitives/button';
 
-import { schema } from './schema'
+import { schema } from './schema';
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
-export type ResetPasswordAction = Action<SubmissionResult | null, FormData>
+export type ResetPasswordAction = Action<SubmissionResult | null, FormData>;
 
 interface Props {
-  action: ResetPasswordAction
-  submitLabel?: string
-  newPasswordLabel?: string
-  confirmPasswordLabel?: string
+  action: ResetPasswordAction;
+  submitLabel?: string;
+  newPasswordLabel?: string;
+  confirmPasswordLabel?: string;
 }
 
 export function ResetPasswordForm({
@@ -26,22 +26,22 @@ export function ResetPasswordForm({
   confirmPasswordLabel = 'Confirm Password',
   submitLabel = 'Update',
 }: Props) {
-  const [lastResult, formAction, isPending] = useActionState(action, null)
+  const [lastResult, formAction, isPending] = useActionState(action, null);
   const [form, fields] = useForm({
     constraint: getZodConstraint(schema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema })
+      return parseWithZod(formData, { schema });
     },
-  })
+  });
 
   useEffect(() => {
     if (lastResult?.error) {
-      console.log(lastResult.error)
-      return
+      console.log(lastResult.error);
+      return;
     }
-  }, [lastResult])
+  }, [lastResult]);
 
   return (
     <form {...getFormProps(form)} className="space-y-5" action={formAction}>
@@ -62,5 +62,5 @@ export function ResetPasswordForm({
         {submitLabel}
       </Button>
     </form>
-  )
+  );
 }

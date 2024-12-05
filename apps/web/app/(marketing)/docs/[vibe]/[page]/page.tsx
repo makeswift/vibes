@@ -1,12 +1,12 @@
-import rehypeShiki from '@shikijs/rehype'
-import { clsx } from 'clsx'
-import { readFile } from 'fs/promises'
-import { notFound } from 'next/navigation'
-import { compileMDX } from 'next-mdx-remote/rsc'
-import path from 'path'
+import rehypeShiki from '@shikijs/rehype';
+import { clsx } from 'clsx';
+import { readFile } from 'fs/promises';
+import { notFound } from 'next/navigation';
+import { compileMDX } from 'next-mdx-remote/rsc';
+import path from 'path';
 // import prettyBytes from 'pretty-bytes'
-import remarkGfm from 'remark-gfm'
-import { ShikiTransformer } from 'shiki'
+import remarkGfm from 'remark-gfm';
+import { ShikiTransformer } from 'shiki';
 
 import {
   BrandColors,
@@ -14,64 +14,64 @@ import {
   BrandInstallation,
   BrandTypography,
   Colors,
-} from '@/components/brand'
-import * as MDXComponents from '@/components/mdx'
-import { toChapter } from '@/components/navigation'
-import { Preview } from '@/components/preview'
-import { Accordion, AccordionGroup } from '@/components/ui/accordions'
-import { Button } from '@/components/ui/button'
-import { ButtonLink } from '@/components/ui/button-link'
-import { CodeBlock } from '@/components/ui/code-block'
-import { CodeFromFile } from '@/components/ui/code-from-file'
-import { Figma } from '@/components/ui/figma'
-import { IconsPreview } from '@/components/ui/icons-preview'
-import { Installation } from '@/components/ui/installation'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Reveal } from '@/components/ui/reveal'
-import { Step, Steps } from '@/components/ui/steps'
-import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Tooltip } from '@/components/ui/tooltip'
-import { ZoomImage } from '@/components/ui/zoom-image'
-import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated'
+} from '@/components/brand';
+import * as MDXComponents from '@/components/mdx';
+import { toChapter } from '@/components/navigation';
+import { Preview } from '@/components/preview';
+import { Accordion, AccordionGroup } from '@/components/ui/accordions';
+import { Button } from '@/components/ui/button';
+import { ButtonLink } from '@/components/ui/button-link';
+import { CodeBlock } from '@/components/ui/code-block';
+import { CodeFromFile } from '@/components/ui/code-from-file';
+import { Figma } from '@/components/ui/figma';
+import { IconsPreview } from '@/components/ui/icons-preview';
+import { Installation } from '@/components/ui/installation';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Reveal } from '@/components/ui/reveal';
+import { Step, Steps } from '@/components/ui/steps';
+import { TableOfContents, TableOfContentsLink } from '@/components/ui/table-of-contents';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tooltip } from '@/components/ui/tooltip';
+import { ZoomImage } from '@/components/ui/zoom-image';
+import { Check, ChevronLeft16, ChevronRight16 } from '@/icons/generated';
 // import { getTotalSize } from '@/lib/bundle'
-import { theme, transformers } from '@/lib/shiki'
-import * as Vibes from '@/vibes'
-import { pageMetaSchema } from '@/vibes/schema'
-import { getVibe } from '@/vibes/utils'
+import { theme, transformers } from '@/lib/shiki';
+import * as Vibes from '@/vibes';
+import { pageMetaSchema } from '@/vibes/schema';
+import { getVibe } from '@/vibes/utils';
 
 interface PageMeta {
-  title?: string
-  description?: string
-  preview?: string
-  icon?: string
+  title?: string;
+  description?: string;
+  preview?: string;
+  icon?: string;
 }
 
-const chapters = Object.values(Vibes).map(toChapter)
+const chapters = Object.values(Vibes).map(toChapter);
 
 export async function generateStaticParams() {
-  return chapters.flatMap(chapter =>
-    chapter.groups.flatMap(group =>
-      group.pages.map(page => ({ vibe: chapter.slug, page: page.slug }))
-    )
-  )
+  return chapters.flatMap((chapter) =>
+    chapter.groups.flatMap((group) =>
+      group.pages.map((page) => ({ vibe: chapter.slug, page: page.slug })),
+    ),
+  );
 }
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ vibe: string; page: string }>
+  params: Promise<{ vibe: string; page: string }>;
 }) {
-  const { vibe: vibeSlug, page: pageSlug } = await params
-  const vibe = getVibe(vibeSlug)
+  const { vibe: vibeSlug, page: pageSlug } = await params;
+  const vibe = getVibe(vibeSlug);
 
-  if (!vibe) return notFound()
+  if (!vibe) return notFound();
 
-  const allPages = vibe.navigation.flatMap(group => group.pages)
-  const page = allPages.find(p => p.slug === pageSlug)
+  const allPages = vibe.navigation.flatMap((group) => group.pages);
+  const page = allPages.find((p) => p.slug === pageSlug);
 
-  if (page == null) return notFound()
-  const source = await readFile(path.resolve(path.join('vibes', vibe.slug, page.file)), 'utf-8')
+  if (page == null) return notFound();
+  const source = await readFile(path.resolve(path.join('vibes', vibe.slug, page.file)), 'utf-8');
 
   const { content, frontmatter } = await compileMDX<PageMeta>({
     source,
@@ -89,10 +89,10 @@ export default async function Page({
                 {
                   name: 'transformers:pre',
                   pre(node) {
-                    this.addClassToHast(node, 'relative')
+                    this.addClassToHast(node, 'relative');
 
                     if (this.options.meta?.__raw?.includes('showLineNumbers') === true) {
-                      this.addClassToHast(node, 'show-line-numbers')
+                      this.addClassToHast(node, 'show-line-numbers');
                     }
                   },
                 } satisfies ShikiTransformer,
@@ -133,37 +133,37 @@ export default async function Page({
               pathname="tailwind.config.ts"
             />
           </Reveal>
-        )
+        );
       },
       BrandColors: function BrandColorsWithoutVibeSlug(props) {
-        return <BrandColors {...props} brands={vibe.brands} />
+        return <BrandColors {...props} brands={vibe.brands} />;
       },
       BrandInstallation: function BrandInstallationWithoutVibeSlug(props) {
-        return <BrandInstallation {...props} brands={vibe.brands} />
+        return <BrandInstallation {...props} brands={vibe.brands} />;
       },
       BrandTypography: function BrandTypographyWithoutVibeSlug(props) {
-        return <BrandTypography {...props} brands={vibe.brands} />
+        return <BrandTypography {...props} brands={vibe.brands} />;
       },
       BrandFonts: function BrandTypographyWithoutVibeSlug(props) {
-        return <BrandFonts {...props} brands={vibe.brands} />
+        return <BrandFonts {...props} brands={vibe.brands} />;
       },
       CodeFromFile: function CodeFromFileWithoutBasePath(props) {
-        return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />
+        return <CodeFromFile {...props} basePath={path.join(process.cwd(), 'vibes', vibe.slug)} />;
       },
       Preview: function PreviewWithoutVibeSlug(props) {
-        return <Preview {...props} vibe={vibe} />
+        return <Preview {...props} vibe={vibe} />;
       },
     },
-  })
+  });
 
-  const meta = pageMetaSchema(vibe).parse(frontmatter)
-  const pageIndex = allPages.findIndex(p => p.slug === page.slug)
-  const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null
-  const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null
-  const component = vibe.components.find(c => c.name === page.component)
+  const meta = pageMetaSchema(vibe).parse(frontmatter);
+  const pageIndex = allPages.findIndex((p) => p.slug === page.slug);
+  const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null;
+  const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null;
+  const component = vibe.components.find((c) => c.name === page.component);
   const numDependencies = component
     ? component.registryDependencies.length + component.dependencies.length
-    : 0
+    : 0;
   // const totalSize = component ? await getTotalSize({ component, vibe }) : null
 
   return (
@@ -198,7 +198,7 @@ export default async function Page({
               '[&:not(pre_code)]:prose-code:before:content-none [&:not(pre_code)]:prose-code:after:content-none',
               '[&>.tabs]:my-8 [&>.tabs]:md:my-10',
               'prose-pre:my-0 prose-pre:outline-primary',
-              'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5'
+              'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5',
             )}
           >
             {meta.features && (
@@ -253,10 +253,10 @@ export default async function Page({
                   <div className="space-y-1">
                     <div className="text-sm font-bold text-foreground">Dependencies</div>
                     <ul>
-                      {component.registryDependencies.map(dependency => {
-                        const dependencyPage = allPages.find(p => p.component === dependency)
+                      {component.registryDependencies.map((dependency) => {
+                        const dependencyPage = allPages.find((p) => p.component === dependency);
 
-                        if (!dependencyPage) return null
+                        if (!dependencyPage) return null;
 
                         return (
                           <li key={dependency}>
@@ -264,9 +264,9 @@ export default async function Page({
                               {`${vibe.slug}/${dependency}`}
                             </TableOfContentsLink>
                           </li>
-                        )
+                        );
                       })}
-                      {component.dependencies.map(dependency => (
+                      {component.dependencies.map((dependency) => (
                         <li key={dependency}>
                           <TableOfContentsLink
                             href={`https://www.npmjs.com/package/${dependency}`}
@@ -309,5 +309,5 @@ export default async function Page({
         </div>
       </div>
     </>
-  )
+  );
 }

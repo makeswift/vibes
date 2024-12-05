@@ -1,46 +1,46 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
-import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel'
+import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel';
 
-import { SoulBrandName } from '../brands'
-import { CardProduct } from '../primitives/product-card'
+import { SoulBrandName } from '../brands';
+import { CardProduct } from '../primitives/product-card';
 
 // Common product type
 interface BaseProduct {
-  id: string
-  title: string
-  subtitle: string
-  badge?: string
-  price: string
+  id: string;
+  title: string;
+  subtitle: string;
+  badge?: string;
+  price: string;
   image: {
-    src: string
-    alt: string
-  }
-  href: string
-  rating: number
+    src: string;
+    alt: string;
+  };
+  href: string;
+  rating: number;
 }
 
 // Brand-specific product types
 type ElectricProduct = BaseProduct & {
-  features: ('air-purifying' | 'indoor' | 'pet-friendly')[]
-  light: 'bright-indirect' | 'bright-direct' | 'low-light'
-  size: 'sm' | 'md' | 'lg'
-}
+  features: ('air-purifying' | 'indoor' | 'pet-friendly')[];
+  light: 'bright-indirect' | 'bright-direct' | 'low-light';
+  size: 'sm' | 'md' | 'lg';
+};
 
 type LuxuryProduct = BaseProduct & {
-  color: ('black' | 'brown' | 'red')[]
-  size: string[] // Shoe sizes like '6', '6.5', etc.
-}
+  color: ('black' | 'brown' | 'red')[];
+  size: string[]; // Shoe sizes like '6', '6.5', etc.
+};
 
 type WarmProduct = BaseProduct & {
-  color: ('blue' | 'green' | 'red')[]
-  size: 'sm' | 'md' | 'lg'
-}
+  color: ('blue' | 'green' | 'red')[];
+  size: 'sm' | 'md' | 'lg';
+};
 
 interface ProductCatalog {
-  Electric: ElectricProduct[]
-  Luxury: LuxuryProduct[]
-  Warm: WarmProduct[]
+  Electric: ElectricProduct[];
+  Luxury: LuxuryProduct[];
+  Warm: WarmProduct[];
 }
 
 const products: ProductCatalog = {
@@ -406,25 +406,25 @@ const products: ProductCatalog = {
       size: 'sm',
     },
   ],
-}
+};
 
 // Define the filter types based on search params
 interface FilterParams {
-  features?: string[] | null
-  light?: string[] | null
-  color?: string[] | null
-  size?: string[] | null
-  rating?: number | null
-  price_min?: number | null
-  price_max?: number | null
+  features?: string[] | null;
+  light?: string[] | null;
+  color?: string[] | null;
+  size?: string[] | null;
+  rating?: number | null;
+  price_min?: number | null;
+  price_max?: number | null;
 }
 
 // Update getFilters function signature
 export async function getFilters<T extends SoulBrandName>(brand: T): Promise<Filter[]> {
-  await new Promise(resolve => setTimeout(resolve, 250))
+  await new Promise((resolve) => setTimeout(resolve, 250));
 
-  const brandProducts = products[brand]
-  const filters: Filter[] = []
+  const brandProducts = products[brand];
+  const filters: Filter[] = [];
 
   // Common filter builders
   const buildToggleGroupFilter = (
@@ -434,51 +434,51 @@ export async function getFilters<T extends SoulBrandName>(brand: T): Promise<Fil
     formatLabel = (s: string) =>
       s
         .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' '),
   ): Filter => ({
     type: 'toggle-group',
     paramName,
     label,
-    options: Array.from(values).map(value => ({
+    options: Array.from(values).map((value) => ({
       value,
       label: formatLabel(value),
     })),
-  })
+  });
 
   // Extract unique values from products
   const uniqueValues = brandProducts.reduce<Record<string, Set<string>>>((acc, product) => {
     // Handle features (Electric only)
     if ('features' in product) {
-      acc.features = new Set([...(acc.features ?? []), ...product.features])
+      acc.features = new Set([...(acc.features ?? []), ...product.features]);
     }
 
     // Handle light (Electric only)
     if ('light' in product) {
-      acc.light = new Set([...(acc.light ?? []), product.light])
+      acc.light = new Set([...(acc.light ?? []), product.light]);
     }
 
     // Handle colors (Luxury and Warm)
     if ('color' in product) {
-      acc.colors = new Set([...(acc.colors ?? []), ...product.color])
+      acc.colors = new Set([...(acc.colors ?? []), ...product.color]);
     }
 
     // Handle sizes (all brands)
     if ('size' in product) {
-      const sizes = Array.isArray(product.size) ? product.size : [product.size]
-      acc.sizes = new Set([...(acc.sizes ?? []), ...sizes])
+      const sizes = Array.isArray(product.size) ? product.size : [product.size];
+      acc.sizes = new Set([...(acc.sizes ?? []), ...sizes]);
     }
 
-    return acc
-  }, {})
+    return acc;
+  }, {});
 
   // Add brand-specific filters
   if (brand === 'Electric') {
     if (uniqueValues.features?.size != null) {
-      filters.push(buildToggleGroupFilter('features', 'Features', uniqueValues.features))
+      filters.push(buildToggleGroupFilter('features', 'Features', uniqueValues.features));
     }
     if (uniqueValues.light?.size != null) {
-      filters.push(buildToggleGroupFilter('light', 'Light Requirements', uniqueValues.light))
+      filters.push(buildToggleGroupFilter('light', 'Light Requirements', uniqueValues.light));
     }
   }
 
@@ -489,15 +489,17 @@ export async function getFilters<T extends SoulBrandName>(brand: T): Promise<Fil
           'color',
           'Color',
           uniqueValues.colors,
-          s => s.charAt(0).toUpperCase() + s.slice(1)
-        )
-      )
+          (s) => s.charAt(0).toUpperCase() + s.slice(1),
+        ),
+      );
     }
   }
 
   // Add size filter for all brands
   if (uniqueValues.sizes?.size != null) {
-    filters.push(buildToggleGroupFilter('size', 'Size', uniqueValues.sizes, s => s.toUpperCase()))
+    filters.push(
+      buildToggleGroupFilter('size', 'Size', uniqueValues.sizes, (s) => s.toUpperCase()),
+    );
   }
 
   // Add rating filter for all brands
@@ -505,79 +507,79 @@ export async function getFilters<T extends SoulBrandName>(brand: T): Promise<Fil
     type: 'rating',
     paramName: 'rating',
     label: 'Rating',
-  })
+  });
 
-  return filters
+  return filters;
 }
 
 // Update getProducts function to use FilterParams
 export async function getProducts<T extends SoulBrandName>(
   brand: T,
-  filterParams?: FilterParams
+  filterParams?: FilterParams,
 ): Promise<CardProduct[]> {
-  await new Promise(resolve => setTimeout(resolve, 500))
+  await new Promise((resolve) => setTimeout(resolve, 500));
 
-  let brandProducts = products[brand] as (ElectricProduct | LuxuryProduct | WarmProduct)[]
+  let brandProducts = products[brand] as (ElectricProduct | LuxuryProduct | WarmProduct)[];
 
   if (filterParams) {
-    brandProducts = brandProducts.filter(product => {
+    brandProducts = brandProducts.filter((product) => {
       // Type guards
-      const isElectricProduct = (p: any): p is ElectricProduct => 'features' in p && 'light' in p
-      const isColorProduct = (p: any): p is LuxuryProduct | WarmProduct => 'color' in p
+      const isElectricProduct = (p: any): p is ElectricProduct => 'features' in p && 'light' in p;
+      const isColorProduct = (p: any): p is LuxuryProduct | WarmProduct => 'color' in p;
 
       // Filter conditions
-      const conditions: boolean[] = []
+      const conditions: boolean[] = [];
 
       // Only apply filters if they have valid values (not null or empty)
       if (filterParams.features && filterParams.features.length > 0) {
         if (isElectricProduct(product)) {
           conditions.push(
-            filterParams.features.every(feature =>
-              product.features.includes(feature as ElectricProduct['features'][number])
-            )
-          )
+            filterParams.features.every((feature) =>
+              product.features.includes(feature as ElectricProduct['features'][number]),
+            ),
+          );
         }
       }
 
       if (filterParams.light && filterParams.light.length > 0) {
         if (isElectricProduct(product)) {
-          conditions.push(filterParams.light.some(light => product.light === light))
+          conditions.push(filterParams.light.some((light) => product.light === light));
         }
       }
 
       if (filterParams.color && filterParams.color.length > 0) {
         if (isColorProduct(product)) {
-          conditions.push(filterParams.color.some(color => product.color.includes(color as any)))
+          conditions.push(filterParams.color.some((color) => product.color.includes(color as any)));
         }
       }
 
       if (filterParams.size && filterParams.size.length > 0) {
         if (Array.isArray(product.size)) {
-          conditions.push(filterParams.size.some(size => product.size.includes(size)))
+          conditions.push(filterParams.size.some((size) => product.size.includes(size)));
         } else {
-          conditions.push(filterParams.size.includes(product.size))
+          conditions.push(filterParams.size.includes(product.size));
         }
       }
 
       if (filterParams.rating != null) {
-        conditions.push(product.rating >= filterParams.rating)
+        conditions.push(product.rating >= filterParams.rating);
       }
 
       if (filterParams.price_min != null || filterParams.price_max != null) {
-        const productPrice = parseFloat(product.price.replace(/[^0-9.]/g, ''))
+        const productPrice = parseFloat(product.price.replace(/[^0-9.]/g, ''));
 
         if (filterParams.price_min != null) {
-          conditions.push(productPrice >= filterParams.price_min)
+          conditions.push(productPrice >= filterParams.price_min);
         }
         if (filterParams.price_max != null) {
-          conditions.push(productPrice <= filterParams.price_max)
+          conditions.push(productPrice <= filterParams.price_max);
         }
       }
 
       // Only filter if there are active conditions
-      return conditions.length === 0 || conditions.every(condition => condition)
-    })
+      return conditions.length === 0 || conditions.every((condition) => condition);
+    });
   }
 
-  return brandProducts as unknown as CardProduct[]
+  return brandProducts as unknown as CardProduct[];
 }

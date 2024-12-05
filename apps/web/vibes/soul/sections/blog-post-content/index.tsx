@@ -1,31 +1,31 @@
-import { clsx } from 'clsx'
-import Image from 'next/image'
+import { clsx } from 'clsx';
+import Image from 'next/image';
 
-import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
+import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
 
-import { ButtonLink } from '../../primitives/button-link'
+import { ButtonLink } from '../../primitives/button-link';
 
 interface Tag {
-  label: string
+  label: string;
   link: {
-    href: string
-    target?: string
-  }
+    href: string;
+    target?: string;
+  };
 }
 
 interface Image {
-  src: string
-  alt: string
+  src: string;
+  alt: string;
 }
 
 interface Props {
-  title: string
-  author: string
-  date: string
-  tags?: Tag[]
-  content: string
-  image?: Image
-  className?: string
+  title: string;
+  author: string;
+  date: string;
+  tags?: Tag[];
+  content: string;
+  image?: Image;
+  className?: string;
 }
 
 export const BlogPostContent = function BlogPostContent({
@@ -92,5 +92,5 @@ export const BlogPostContent = function BlogPostContent({
         />
       </div>
     </section>
-  )
-}
+  );
+};

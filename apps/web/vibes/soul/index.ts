@@ -1,10 +1,10 @@
-import { Vibe } from '@/vibes/schema'
+import { Vibe } from '@/vibes/schema';
 
-import { brands } from './brands'
-import { examples } from './examples'
-import { navigation } from './navigation'
-import { primitives } from './primitives'
-import { sections } from './sections'
+import { brands } from './brands';
+import { examples } from './examples';
+import { navigation } from './navigation';
+import { primitives } from './primitives';
+import { sections } from './sections';
 
 export default {
   name: 'Soul',
@@ -19,4 +19,4 @@ export default {
   navigation,
   components: [...primitives, ...sections, ...examples],
   brands,
-} satisfies Vibe
+} satisfies Vibe;

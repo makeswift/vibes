@@ -1,14 +1,14 @@
-import { DM_Serif_Text, Inter, Roboto_Mono } from 'next/font/google'
+import { DM_Serif_Text, Inter, Roboto_Mono } from 'next/font/google';
 
-import { Brands } from '@/vibes/schema'
+import { Brands } from '@/vibes/schema';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
-const roboto_mono = Roboto_Mono({ subsets: ['latin'], display: 'swap' })
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
+const roboto_mono = Roboto_Mono({ subsets: ['latin'], display: 'swap' });
 const dm_serif_text = DM_Serif_Text({
   subsets: ['latin'],
   display: 'swap',
   weight: '400',
-})
+});
 
 export const brands = [
   {
@@ -128,6 +128,6 @@ export const brands = [
       '--shadow-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
     },
   },
-] as const satisfies Brands
+] as const satisfies Brands;
 
-export type SoulBrandName = (typeof brands)[number]['name']
+export type SoulBrandName = (typeof brands)[number]['name'];

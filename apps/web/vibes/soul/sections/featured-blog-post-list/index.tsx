@@ -1,17 +1,17 @@
-import { BlogPost } from '@/vibes/soul/primitives/blog-post-card'
-import { ButtonLink } from '@/vibes/soul/primitives/button-link'
-import { BlogPostList } from '@/vibes/soul/sections/blog-post-list'
+import { BlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
+import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
 
 interface Link {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 interface Props {
-  title: string
-  description?: string
-  cta?: Link
-  posts: BlogPost[]
+  title: string;
+  description?: string;
+  cta?: Link;
+  posts: BlogPost[];
 }
 
 export const FeaturedBlogPostList = function FeaturedBlogPostList({
@@ -40,5 +40,5 @@ export const FeaturedBlogPostList = function FeaturedBlogPostList({
         )}
       </div>
     </section>
-  )
-}
+  );
+};

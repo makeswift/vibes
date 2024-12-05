@@ -1,1 +1,1 @@
-export { default as Sticker } from './sticker'
+export { default as Sticker } from './sticker';

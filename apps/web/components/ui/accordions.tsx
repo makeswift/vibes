@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import * as AccordionRadix from '@radix-ui/react-accordion'
+import * as AccordionRadix from '@radix-ui/react-accordion';
 
 function AccordionGroup({ children }: { children: React.ReactNode }) {
   return (
     <AccordionRadix.Root className="my-8 w-full space-y-4 md:my-10" type="multiple">
       {children}
     </AccordionRadix.Root>
-  )
+  );
 }
 
 function Accordion({
@@ -15,9 +15,9 @@ function Accordion({
   children,
   value,
 }: {
-  title: string
-  children: React.ReactNode
-  value: string
+  title: string;
+  children: React.ReactNode;
+  value: string;
 }) {
   return (
     <AccordionRadix.Item
@@ -41,7 +41,7 @@ function Accordion({
         <div className="not-prose -mt-1 px-5 pb-5 font-light">{children}</div>
       </AccordionRadix.Content>
     </AccordionRadix.Item>
-  )
+  );
 }
 
-export { AccordionGroup, Accordion }
+export { AccordionGroup, Accordion };

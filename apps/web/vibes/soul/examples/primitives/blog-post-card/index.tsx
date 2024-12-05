@@ -1,4 +1,4 @@
-import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card'
+import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
 
 export default function Preview() {
   return (
@@ -17,5 +17,5 @@ export default function Preview() {
         className="w-80"
       />
     </div>
-  )
+  );
 }

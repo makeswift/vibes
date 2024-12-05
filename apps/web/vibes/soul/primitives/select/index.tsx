@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
-import * as SelectPrimitive from '@radix-ui/react-select'
-import { clsx } from 'clsx'
-import { ChevronDown, ChevronUp } from 'lucide-react'
-import React, { ComponentPropsWithoutRef } from 'react'
+import * as SelectPrimitive from '@radix-ui/react-select';
+import { clsx } from 'clsx';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import React, { ComponentPropsWithoutRef } from 'react';
 
-import { Label } from '@/vibes/soul/primitives/label'
+import { Label } from '@/vibes/soul/primitives/label';
 
 interface Option {
-  label: string
-  value: string
+  label: string;
+  value: string;
 }
 
 interface Props extends ComponentPropsWithoutRef<typeof SelectPrimitive.Root> {
-  id?: string
-  label?: string
-  placeholder?: string
-  variant?: 'round' | 'rectangle'
-  error?: string
-  options: Option[]
+  id?: string;
+  label?: string;
+  placeholder?: string;
+  variant?: 'round' | 'rectangle';
+  error?: string;
+  options: Option[];
 }
 
 export function Select({
@@ -44,7 +44,7 @@ export function Select({
             variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',
             'flex h-fit w-full select-none items-center justify-between gap-3 border bg-white p-2 px-5 py-3 font-medium text-foreground',
             'text-sm ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2',
-            error != null && error !== '' ? 'border-error' : 'border-contrast-100'
+            error != null && error !== '' ? 'border-error' : 'border-contrast-100',
           )}
         >
           <SelectPrimitive.Value placeholder={placeholder} />
@@ -58,12 +58,12 @@ export function Select({
               <ChevronUp strokeWidth={1.5} className="w-5 text-foreground" />
             </SelectPrimitive.ScrollUpButton>
             <SelectPrimitive.Viewport>
-              {options.map(option => (
+              {options.map((option) => (
                 <SelectPrimitive.Item
                   key={option.value}
                   value={option.value}
                   className={clsx(
-                    'w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors hover:bg-contrast-100 hover:text-foreground data-[state=checked]:text-foreground @4xl:text-base'
+                    'w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors hover:bg-contrast-100 hover:text-foreground data-[state=checked]:text-foreground @4xl:text-base',
                   )}
                 >
                   <SelectPrimitive.ItemText>{option.label}</SelectPrimitive.ItemText>
@@ -78,7 +78,7 @@ export function Select({
       </SelectPrimitive.Root>
       {error !== undefined && error !== '' && <div className="text-xs text-error">{error}</div>}
     </>
-  )
+  );
 }
 
 {

@@ -1,6 +1,6 @@
-import * as LabelPrimitive from '@radix-ui/react-label'
-import { clsx } from 'clsx'
-import { ComponentPropsWithoutRef } from 'react'
+import * as LabelPrimitive from '@radix-ui/react-label';
+import { clsx } from 'clsx';
+import { ComponentPropsWithoutRef } from 'react';
 
 export function Label({
   className,
@@ -11,5 +11,5 @@ export function Label({
       {...rest}
       className={clsx('font-mono text-xs uppercase text-contrast-500', className)}
     />
-  )
+  );
 }

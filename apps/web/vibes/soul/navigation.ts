@@ -1,4 +1,4 @@
-import { Navigation } from '@/vibes/schema'
+import { Navigation } from '@/vibes/schema';
 
 export const navigation = [
   {
@@ -333,4 +333,4 @@ export const navigation = [
     title: 'Form',
     pages: [{ title: 'Example', slug: 'form', file: 'docs/form.mdx' }],
   },
-] satisfies Navigation
+] satisfies Navigation;

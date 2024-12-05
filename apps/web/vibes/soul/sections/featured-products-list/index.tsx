@@ -1,15 +1,15 @@
-import { Streamable } from '@/vibes/soul/lib/streamable'
-import { ButtonLink } from '@/vibes/soul/primitives/button-link'
+import { Streamable } from '@/vibes/soul/lib/streamable';
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import {
   ListProduct,
   ProductsList,
   ProductsListSkeleton,
-} from '@/vibes/soul/primitives/products-list'
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
+} from '@/vibes/soul/primitives/products-list';
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 interface Link {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 export function FeaturedProductsList({
@@ -18,10 +18,10 @@ export function FeaturedProductsList({
   cta,
   products,
 }: {
-  title: string
-  description?: string
-  cta?: Link
-  products: Streamable<ListProduct[]>
+  title: string;
+  description?: string;
+  cta?: Link;
+  products: Streamable<ListProduct[]>;
 }) {
   return (
     <StickySidebarLayout
@@ -47,7 +47,7 @@ export function FeaturedProductsList({
     >
       <ProductsList products={products} className="flex-1" />
     </StickySidebarLayout>
-  )
+  );
 }
 
 export function FeaturedProductsListSkeleton({
@@ -55,9 +55,9 @@ export function FeaturedProductsListSkeleton({
   description,
   cta,
 }: {
-  title: string
-  description?: string
-  cta?: Link
+  title: string;
+  description?: string;
+  cta?: Link;
 }) {
   return (
     <StickySidebarLayout
@@ -83,5 +83,5 @@ export function FeaturedProductsListSkeleton({
     >
       <ProductsListSkeleton />
     </StickySidebarLayout>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React from 'react'
+import { clsx } from 'clsx';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React from 'react';
 
 export function AccountLayoutLink({
   className,
   href,
   ...rest
 }: React.ComponentPropsWithoutRef<typeof Link>) {
-  const pathname = usePathname()
-  const linkPathname = typeof href === 'string' ? href : (href.pathname ?? null)
+  const pathname = usePathname();
+  const linkPathname = typeof href === 'string' ? href : (href.pathname ?? null);
 
   return (
     <Link
@@ -21,9 +21,9 @@ export function AccountLayoutLink({
         linkPathname !== null && pathname.includes(linkPathname)
           ? 'bg-contrast-100'
           : 'hover:bg-contrast-100',
-        className
+        className,
       )}
       href={href}
     />
-  )
+  );
 }

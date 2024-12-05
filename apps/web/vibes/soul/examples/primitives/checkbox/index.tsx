@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 
-import { Checkbox } from '@/vibes/soul/primitives/checkbox'
+import { Checkbox } from '@/vibes/soul/primitives/checkbox';
 
 export default function Preview() {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
 
   return (
     <div className="flex h-screen flex-col justify-center gap-4 p-10">
@@ -18,5 +18,5 @@ export default function Preview() {
         error="You must accept the Terms & Conditions"
       />
     </div>
-  )
+  );
 }

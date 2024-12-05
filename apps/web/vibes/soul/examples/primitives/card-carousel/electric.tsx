@@ -1,4 +1,4 @@
-import { CardCarousel } from '@/vibes/soul/primitives/card-carousel'
+import { CardCarousel } from '@/vibes/soul/primitives/card-carousel';
 
 export const cards = [
   {
@@ -28,10 +28,10 @@ export const cards = [
     image: { src: 'https://rstr.in/monogram/vibes/lJg081kQqvc', alt: 'Succulent' },
     href: '#',
   },
-]
+];
 
-export const textContrast = 'dark'
+export const textContrast = 'dark';
 
 export default function Preview() {
-  return <CardCarousel cards={cards} textContrast={textContrast} />
+  return <CardCarousel cards={cards} textContrast={textContrast} />;
 }

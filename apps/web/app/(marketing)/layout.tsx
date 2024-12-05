@@ -1,19 +1,19 @@
-import { clsx } from 'clsx'
-import type { Metadata } from 'next'
-import dynamic from 'next/dynamic'
-import localFont from 'next/font/local'
-import Head from 'next/head'
-import { Suspense } from 'react'
+import { clsx } from 'clsx';
+import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+import localFont from 'next/font/local';
+import Head from 'next/head';
+import { Suspense } from 'react';
 
-import { Toaster } from '@/components/ui/toaster'
+import { Toaster } from '@/components/ui/toaster';
 
-import { Providers } from './providers'
+import { Providers } from './providers';
 
-import './style/globals.css'
+import './style/globals.css';
 
-const title = 'Vibes: Stunning React components for commerce & marketing | Coming soon'
+const title = 'Vibes: Stunning React components for commerce & marketing | Coming soon';
 const description =
-  'Stunning React components for commerce and marketing, optimized for fashion and function.'
+  'Stunning React components for commerce and marketing, optimized for fashion and function.';
 
 export const metadata: Metadata = {
   title,
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     creator: '@MakeswiftHQ',
     images: ['https://vibes.site/social-image.png'],
   },
-}
+};
 
 const PolysansWide = localFont({
   src: './fonts/PolySans-BulkyWide.woff2',
   display: 'swap',
   variable: '--font-family-heading',
-})
+});
 
 const Polysans = localFont({
   src: [
@@ -62,20 +62,20 @@ const Polysans = localFont({
   ],
   display: 'swap',
   variable: '--font-family-body',
-})
+});
 
 const GeistMono = localFont({
   src: './fonts/GeistMonoVF.woff2',
   display: 'swap',
   variable: '--font-family-mono',
-})
+});
 
-const PostHogPageView = dynamic(() => import('./post-hog-page-view'))
+const PostHogPageView = dynamic(() => import('./post-hog-page-view'));
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -92,5 +92,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  )
+  );
 }

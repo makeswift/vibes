@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { FigmaBack, FigmaFront, FigmaShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { FigmaBack, FigmaFront, FigmaShadow } from '@/icons/generated';
 
 export function Figma() {
   return (
@@ -27,5 +27,5 @@ export function Figma() {
         </Transition>
       )}
     </Draggable>
-  )
+  );
 }

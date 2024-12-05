@@ -1,27 +1,27 @@
-'use client'
+'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { useActionState, useEffect } from 'react'
-import { useFormStatus } from 'react-dom'
+import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { getZodConstraint, parseWithZod } from '@conform-to/zod';
+import { useActionState, useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
 
-import { Input } from '@/vibes/soul/form/input'
-import { Button } from '@/vibes/soul/primitives/button'
+import { Input } from '@/vibes/soul/form/input';
+import { Button } from '@/vibes/soul/primitives/button';
 
-import { schema } from './schema'
+import { schema } from './schema';
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
-export type SignUpAction = Action<SubmissionResult | null, FormData>
+export type SignUpAction = Action<SubmissionResult | null, FormData>;
 
 interface Props {
-  action: SignUpAction
-  firstNameLabel?: string
-  lastNameLabel?: string
-  emailLabel?: string
-  passwordLabel?: string
-  confirmPasswordLabel?: string
-  submitLabel?: string
+  action: SignUpAction;
+  firstNameLabel?: string;
+  lastNameLabel?: string;
+  emailLabel?: string;
+  passwordLabel?: string;
+  confirmPasswordLabel?: string;
+  submitLabel?: string;
 }
 
 export function SignUpForm({
@@ -33,21 +33,21 @@ export function SignUpForm({
   confirmPasswordLabel = 'Confirm password',
   submitLabel = 'Sign up',
 }: Props) {
-  const [lastResult, formAction] = useActionState(action, null)
+  const [lastResult, formAction] = useActionState(action, null);
   const [form, fields] = useForm({
     constraint: getZodConstraint(schema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema })
+      return parseWithZod(formData, { schema });
     },
-  })
+  });
 
   useEffect(() => {
     if (lastResult?.error) {
-      console.log(lastResult.error)
+      console.log(lastResult.error);
     }
-  }, [lastResult])
+  }, [lastResult]);
 
   return (
     <form {...getFormProps(form)} action={formAction} className="flex flex-grow flex-col gap-5">
@@ -86,15 +86,15 @@ export function SignUpForm({
       />
       <SubmitButton>{submitLabel}</SubmitButton>
     </form>
-  )
+  );
 }
 
 function SubmitButton({ children }: { children: React.ReactNode }) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <Button className="mt-auto w-full" loading={pending} type="submit" variant="secondary">
       {children}
     </Button>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgKeepIt100Front = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={258} height={289} fill="none" {...props}>
@@ -260,5 +260,5 @@ const SvgKeepIt100Front = (props: SVGProps<SVGSVGElement>) => (
       </linearGradient>
     </defs>
   </svg>
-)
-export default SvgKeepIt100Front
+);
+export default SvgKeepIt100Front;

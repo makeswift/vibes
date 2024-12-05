@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgCheck = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" {...props}>
@@ -12,5 +12,5 @@ const SvgCheck = (props: SVGProps<SVGSVGElement>) => (
     />
     <path stroke="currentColor" strokeLinecap="square" strokeWidth={1.5} d="m2 8.5 4 4" />
   </svg>
-)
-export default SvgCheck
+);
+export default SvgCheck;

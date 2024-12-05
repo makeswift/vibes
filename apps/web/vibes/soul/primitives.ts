@@ -1,4 +1,4 @@
-import { Components } from '@/vibes/schema'
+import { Components } from '@/vibes/schema';
 
 export const primitives = [
   {
@@ -192,4 +192,4 @@ export const primitives = [
     registryDependencies: [],
     files: ['primitives/textarea/index.tsx'],
   },
-] satisfies Components
+] satisfies Components;

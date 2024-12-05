@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const cartLineItemActionFormDataSchema = z.discriminatedUnion('intent', [
   z.object({
@@ -13,4 +13,4 @@ export const cartLineItemActionFormDataSchema = z.discriminatedUnion('intent', [
     intent: z.literal('delete'),
     id: z.string(),
   }),
-])
+]);

@@ -1,6 +1,6 @@
-import containerQueries from '@tailwindcss/container-queries'
-import type { Config } from 'tailwindcss'
-import animate from 'tailwindcss-animate'
+import containerQueries from '@tailwindcss/container-queries';
+import type { Config } from 'tailwindcss';
+import animate from 'tailwindcss-animate';
 
 export default {
   content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './vibes/**/*.{ts,tsx}'],
@@ -158,4 +158,4 @@ export default {
     },
   },
   plugins: [animate, containerQueries],
-} satisfies Config
+} satisfies Config;

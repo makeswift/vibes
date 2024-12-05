@@ -1,69 +1,69 @@
-import { ArrowLeft } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { Badge } from '@/vibes/soul/primitives/badge'
+import { Badge } from '@/vibes/soul/primitives/badge';
 
 interface Summary {
   lineItems: {
-    label: string
-    value: string
-    subtext?: string
-  }[]
-  totalLabel?: string
-  total: string
+    label: string;
+    value: string;
+    subtext?: string;
+  }[];
+  totalLabel?: string;
+  total: string;
 }
 
 interface Address {
-  name?: string
-  street1: string
-  street2?: string
-  city: string
-  state: string
-  zipcode?: string
-  country?: string
+  name?: string;
+  street1: string;
+  street2?: string;
+  city: string;
+  state: string;
+  zipcode?: string;
+  country?: string;
 }
 
 interface Method {
-  id: string
-  name: string
-  status: string
+  id: string;
+  name: string;
+  status: string;
 }
 
 interface ShipmentLineItem {
-  id: string
-  title: string
-  subtitle?: string
-  price: string
-  href: string
-  image?: { src: string; alt: string }
-  quantity: number
-  metadata?: { label: string; value: string }[]
+  id: string;
+  title: string;
+  subtitle?: string;
+  price: string;
+  href: string;
+  image?: { src: string; alt: string };
+  quantity: number;
+  metadata?: { label: string; value: string }[];
 }
 
 interface Shipment {
-  id: string
-  title: string
-  address: Address
-  addressLabel?: string
-  method: Method
-  methodLabel?: string
-  lineItems: ShipmentLineItem[]
+  id: string;
+  title: string;
+  address: Address;
+  addressLabel?: string;
+  method: Method;
+  methodLabel?: string;
+  lineItems: ShipmentLineItem[];
 }
 
 interface Order {
-  id: string
-  title: string
-  status: string
-  statusColor?: 'success' | 'warning' | 'danger' | 'info'
-  date: string
-  shipments: Shipment[]
-  summary: Summary
+  id: string;
+  title: string;
+  status: string;
+  statusColor?: 'success' | 'warning' | 'danger' | 'info';
+  date: string;
+  shipments: Shipment[];
+  summary: Summary;
 }
 
 interface Props {
-  order: Order
-  prevHref?: string
+  order: Order;
+  prevHref?: string;
 }
 
 export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
@@ -94,7 +94,7 @@ export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
       </div>
       <div className="grid @3xl:flex">
         <div className="order-2 flex-1 pr-12 @3xl:order-1">
-          {order.shipments.map(shipment => (
+          {order.shipments.map((shipment) => (
             <Shipment key={shipment.id} shipment={shipment} />
           ))}
         </div>
@@ -103,7 +103,7 @@ export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function Shipment({ shipment }: { shipment: Shipment }) {
@@ -129,12 +129,12 @@ function Shipment({ shipment }: { shipment: Shipment }) {
             <p>{shipment.method.id}</p>
           </div>
         </div>
-        {shipment.lineItems.map(lineItem => (
+        {shipment.lineItems.map((lineItem) => (
           <ShipmentLineItem key={lineItem.id} lineItem={lineItem} />
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
@@ -182,7 +182,7 @@ function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
         </div>
       </div>
     </Link>
-  )
+  );
 }
 
 function Summary({ summary }: { summary: Summary }) {
@@ -207,5 +207,5 @@ function Summary({ summary }: { summary: Summary }) {
         <span>{summary.total}</span>
       </div>
     </div>
-  )
+  );
 }

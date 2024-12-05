@@ -1,16 +1,16 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
-import { AccountLayoutLink } from './account-layout-link'
-import { AccountLayoutLinkSelect } from './account-layout-link-select'
+import { AccountLayoutLink } from './account-layout-link';
+import { AccountLayoutLinkSelect } from './account-layout-link-select';
 
 interface Props {
   links: {
-    href: string
-    label: string
-  }[]
-  children: ReactNode
+    href: string;
+    label: string;
+  }[];
+  children: ReactNode;
 }
 
 export function AccountLayout({ links, children }: Props) {
@@ -34,5 +34,5 @@ export function AccountLayout({ links, children }: Props) {
     >
       {children}
     </StickySidebarLayout>
-  )
+  );
 }

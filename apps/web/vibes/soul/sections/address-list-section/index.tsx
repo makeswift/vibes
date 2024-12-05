@@ -1,50 +1,50 @@
-'use client'
+'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { startTransition, useActionState, useEffect, useOptimistic, useState } from 'react'
-import { useFormStatus } from 'react-dom'
-import { z } from 'zod'
+import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { getZodConstraint, parseWithZod } from '@conform-to/zod';
+import { startTransition, useActionState, useEffect, useOptimistic, useState } from 'react';
+import { useFormStatus } from 'react-dom';
+import { z } from 'zod';
 
-import { Input } from '@/vibes/soul/form/input'
-import { Badge } from '@/vibes/soul/primitives/badge'
-import { Button } from '@/vibes/soul/primitives/button'
-import { Spinner } from '@/vibes/soul/primitives/spinner'
+import { Input } from '@/vibes/soul/form/input';
+import { Badge } from '@/vibes/soul/primitives/badge';
+import { Button } from '@/vibes/soul/primitives/button';
+import { Spinner } from '@/vibes/soul/primitives/spinner';
 
-import { schema } from './schema'
+import { schema } from './schema';
 
-export type Address = z.infer<typeof schema>
+export type Address = z.infer<typeof schema>;
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
 interface State<A extends Address> {
-  addresses: A[]
-  defaultAddressId: string
-  lastResult: SubmissionResult | null
+  addresses: A[];
+  defaultAddressId: string;
+  lastResult: SubmissionResult | null;
 }
 
 interface Props<A extends Address> {
-  title?: string
-  addresses: A[]
-  defaultAddressId: string
-  addressAction: Action<State<A>, FormData>
-  editLabel?: string
-  deleteLabel?: string
-  updateLabel?: string
-  createLabel?: string
-  showAddFormLabel?: string
-  setDefaultLabel?: string
-  cancelLabel?: string
-  firstNameLabel?: string
-  lastNameLabel?: string
-  companyLabel?: string
-  phoneLabel?: string
-  addressLine1Label?: string
-  addressLine2Label?: string
-  addressLevel1Label?: string
-  addressLevel2Label?: string
-  countryLabel?: string
-  postalCodeLabel?: string
+  title?: string;
+  addresses: A[];
+  defaultAddressId: string;
+  addressAction: Action<State<A>, FormData>;
+  editLabel?: string;
+  deleteLabel?: string;
+  updateLabel?: string;
+  createLabel?: string;
+  showAddFormLabel?: string;
+  setDefaultLabel?: string;
+  cancelLabel?: string;
+  firstNameLabel?: string;
+  lastNameLabel?: string;
+  companyLabel?: string;
+  phoneLabel?: string;
+  addressLine1Label?: string;
+  addressLine2Label?: string;
+  addressLevel1Label?: string;
+  addressLevel2Label?: string;
+  countryLabel?: string;
+  postalCodeLabel?: string;
 }
 
 export function AddressListSection<A extends Address>({
@@ -74,53 +74,53 @@ export function AddressListSection<A extends Address>({
     addresses,
     defaultAddressId,
     lastResult: null,
-  })
+  });
 
   const [optimisticState, setOptimisticState] = useOptimistic<State<Address>, FormData>(
     state,
     (prevState, formData) => {
-      const intent = formData.get('intent')
-      const submission = parseWithZod(formData, { schema })
+      const intent = formData.get('intent');
+      const submission = parseWithZod(formData, { schema });
 
-      if (submission.status !== 'success') return prevState
+      if (submission.status !== 'success') return prevState;
 
       switch (intent) {
         case 'create': {
-          const nextAddress = submission.value
+          const nextAddress = submission.value;
 
           return {
             ...prevState,
             addresses: [...prevState.addresses, nextAddress],
-          }
+          };
         }
 
         case 'update': {
           return {
             ...prevState,
-            addresses: prevState.addresses.map(a =>
-              a.id === submission.value.id ? submission.value : a
+            addresses: prevState.addresses.map((a) =>
+              a.id === submission.value.id ? submission.value : a,
             ),
-          }
+          };
         }
 
         case 'delete': {
           return {
             ...prevState,
-            addresses: prevState.addresses.filter(a => a.id !== submission.value.id),
-          }
+            addresses: prevState.addresses.filter((a) => a.id !== submission.value.id),
+          };
         }
 
         case 'setDefault': {
-          return { ...prevState, defaultAddressId: submission.value.id }
+          return { ...prevState, defaultAddressId: submission.value.id };
         }
 
         default:
-          return prevState
+          return prevState;
       }
-    }
-  )
-  const [activeAddressIds, setActiveAddressIds] = useState<string[]>([])
-  const [showNewAddressForm, setShowNewAddressForm] = useState(false)
+    },
+  );
+  const [activeAddressIds, setActiveAddressIds] = useState<string[]>([]);
+  const [showNewAddressForm, setShowNewAddressForm] = useState(false);
 
   return (
     <div>
@@ -158,13 +158,13 @@ export function AddressListSection<A extends Address>({
               intent="create"
               lastNameLabel={lastNameLabel}
               onCancel={() => setShowNewAddressForm(false)}
-              onSubmit={formData => {
-                setShowNewAddressForm(false)
+              onSubmit={(formData) => {
+                setShowNewAddressForm(false);
 
                 startTransition(() => {
-                  formAction(formData)
-                  setOptimisticState(formData)
-                })
+                  formAction(formData);
+                  setOptimisticState(formData);
+                });
               }}
               phoneLabel={phoneLabel}
               postalCodeLabel={postalCodeLabel}
@@ -172,7 +172,7 @@ export function AddressListSection<A extends Address>({
             />
           </div>
         )}
-        {optimisticState.addresses.map(address => (
+        {optimisticState.addresses.map((address) => (
           <div className="border-b border-contrast-200 pb-6 pt-5" key={address.id}>
             {activeAddressIds.includes(address.id) ? (
               <AddressForm
@@ -188,14 +188,16 @@ export function AddressListSection<A extends Address>({
                 firstNameLabel={firstNameLabel}
                 intent="update"
                 lastNameLabel={lastNameLabel}
-                onCancel={() => setActiveAddressIds(prev => prev.filter(id => id !== address.id))}
-                onSubmit={formData => {
-                  setActiveAddressIds(prev => prev.filter(id => id !== address.id))
+                onCancel={() =>
+                  setActiveAddressIds((prev) => prev.filter((id) => id !== address.id))
+                }
+                onSubmit={(formData) => {
+                  setActiveAddressIds((prev) => prev.filter((id) => id !== address.id));
 
                   startTransition(() => {
-                    formAction(formData)
-                    setOptimisticState(formData)
-                  })
+                    formAction(formData);
+                    setOptimisticState(formData);
+                  });
                 }}
                 phoneLabel={phoneLabel}
                 postalCodeLabel={postalCodeLabel}
@@ -210,7 +212,7 @@ export function AddressListSection<A extends Address>({
                 <div className="flex gap-1">
                   <Button
                     aria-label={`${editLabel}: ${address.firstName} ${address.lastName}`}
-                    onClick={() => setActiveAddressIds(prev => [...prev, address.id])}
+                    onClick={() => setActiveAddressIds((prev) => [...prev, address.id])}
                     size="small"
                     variant="tertiary"
                   >
@@ -223,11 +225,11 @@ export function AddressListSection<A extends Address>({
                         address={address}
                         aria-label={`${deleteLabel}: ${address.firstName} ${address.lastName}`}
                         intent="delete"
-                        onSubmit={formData => {
+                        onSubmit={(formData) => {
                           startTransition(() => {
-                            formAction(formData)
-                            setOptimisticState(formData)
-                          })
+                            formAction(formData);
+                            setOptimisticState(formData);
+                          });
                         }}
                       >
                         {deleteLabel}
@@ -237,11 +239,11 @@ export function AddressListSection<A extends Address>({
                         address={address}
                         aria-label={`${setDefaultLabel}: ${address.firstName} ${address.lastName}`}
                         intent="setDefault"
-                        onSubmit={formData => {
+                        onSubmit={(formData) => {
                           startTransition(() => {
-                            formAction(formData)
-                            setOptimisticState(formData)
-                          })
+                            formAction(formData);
+                            setOptimisticState(formData);
+                          });
                         }}
                       >
                         {setDefaultLabel}
@@ -255,11 +257,11 @@ export function AddressListSection<A extends Address>({
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function Title({ children }: { children: React.ReactNode }) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <h1 className="text-4xl">
@@ -270,7 +272,7 @@ function Title({ children }: { children: React.ReactNode }) {
         </span>
       )}
     </h1>
-  )
+  );
 }
 
 function AddressPreview({ address, isDefault = false }: { address: Address; isDefault?: boolean }) {
@@ -291,7 +293,7 @@ function AddressPreview({ address, isDefault = false }: { address: Address; isDe
       </div>
       <div>{isDefault && <Badge>Default</Badge>}</div>
     </div>
-  )
+  );
 }
 
 function AddressActionButton({
@@ -301,25 +303,25 @@ function AddressActionButton({
   onSubmit,
   ...rest
 }: {
-  address: Address
-  intent: string
-  action(formData: FormData): void
-  onSubmit(formData: FormData): void
+  address: Address;
+  intent: string;
+  action(formData: FormData): void;
+  onSubmit(formData: FormData): void;
 } & Omit<React.ComponentProps<'button'>, 'onSubmit'>) {
   const [form, fields] = useForm({
     defaultValue: address,
     constraint: getZodConstraint(schema),
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema })
+      return parseWithZod(formData, { schema });
     },
     onSubmit(event, { submission, formData }) {
-      event.preventDefault()
+      event.preventDefault();
 
-      if (submission?.status !== 'success') return
+      if (submission?.status !== 'success') return;
 
-      onSubmit(formData)
+      onSubmit(formData);
     },
-  })
+  });
 
   return (
     <form {...getFormProps(form)} action={action}>
@@ -343,7 +345,7 @@ function AddressActionButton({
         variant="tertiary"
       />
     </form>
-  )
+  );
 }
 
 function AddressForm({
@@ -366,24 +368,24 @@ function AddressForm({
   countryLabel = 'Country',
   postalCodeLabel = 'Postal code',
 }: {
-  address: Address
-  intent: string
-  lastResult?: SubmissionResult | null
-  cancelLabel?: string
-  submitLabel?: string
-  firstNameLabel?: string
-  lastNameLabel?: string
-  companyLabel?: string
-  phoneLabel?: string
-  addressLine1Label?: string
-  addressLine2Label?: string
-  addressLevel1Label?: string
-  addressLevel2Label?: string
-  countryLabel?: string
-  postalCodeLabel?: string
-  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void
-  action(formData: FormData): void
-  onSubmit(formData: FormData): void
+  address: Address;
+  intent: string;
+  lastResult?: SubmissionResult | null;
+  cancelLabel?: string;
+  submitLabel?: string;
+  firstNameLabel?: string;
+  lastNameLabel?: string;
+  companyLabel?: string;
+  phoneLabel?: string;
+  addressLine1Label?: string;
+  addressLine2Label?: string;
+  addressLevel1Label?: string;
+  addressLevel2Label?: string;
+  countryLabel?: string;
+  postalCodeLabel?: string;
+  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  action(formData: FormData): void;
+  onSubmit(formData: FormData): void;
 }) {
   const [form, fields] = useForm({
     lastResult,
@@ -392,20 +394,20 @@ function AddressForm({
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema })
+      return parseWithZod(formData, { schema });
     },
     onSubmit(event, { formData, submission }) {
-      event.preventDefault()
+      event.preventDefault();
 
-      if (submission?.status !== 'success') return
+      if (submission?.status !== 'success') return;
 
-      onSubmit(formData)
+      onSubmit(formData);
     },
-  })
+  });
 
   useEffect(() => {
-    if (lastResult?.error) console.log(lastResult.error)
-  }, [lastResult?.error])
+    if (lastResult?.error) console.log(lastResult.error);
+  }, [lastResult?.error]);
 
   return (
     <form {...getFormProps(form)} action={action} className="w-[480px] space-y-4">
@@ -512,5 +514,5 @@ function AddressForm({
         </Button>
       </div>
     </form>
-  )
+  );
 }

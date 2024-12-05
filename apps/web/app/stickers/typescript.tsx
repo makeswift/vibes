@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { TypescriptBack, TypescriptFront, TypescriptShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { TypescriptBack, TypescriptFront, TypescriptShadow } from '@/icons/generated';
 
 export function Typescript() {
   return (
@@ -28,5 +28,5 @@ export function Typescript() {
         </Transition>
       )}
     </Draggable>
-  )
+  );
 }

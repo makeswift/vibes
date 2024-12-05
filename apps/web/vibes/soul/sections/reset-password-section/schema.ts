@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const schema = z
   .object({
@@ -19,6 +19,6 @@ export const schema = z
         code: 'custom',
         message: 'The passwords did not match',
         path: ['confirmPassword'],
-      })
+      });
     }
-  })
+  });

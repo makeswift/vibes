@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Draggable from '@/components/ui/draggable'
-import { Sticker } from '@/components/ui/sticker'
-import Transition from '@/components/ui/transition'
-import { ReactjsBack, ReactjsFront, ReactjsShadow } from '@/icons/generated'
+import Draggable from '@/components/ui/draggable';
+import { Sticker } from '@/components/ui/sticker';
+import Transition from '@/components/ui/transition';
+import { ReactjsBack, ReactjsFront, ReactjsShadow } from '@/icons/generated';
 
 export function Reactjs() {
   return (
@@ -31,5 +31,5 @@ export function Reactjs() {
         )}
       </Draggable>
     </div>
-  )
+  );
 }

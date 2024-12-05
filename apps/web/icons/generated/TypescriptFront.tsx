@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgTypescriptFront = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={200} height={200} fill="none" {...props}>
@@ -26,5 +26,5 @@ const SvgTypescriptFront = (props: SVGProps<SVGSVGElement>) => (
       </linearGradient>
     </defs>
   </svg>
-)
-export default SvgTypescriptFront
+);
+export default SvgTypescriptFront;

@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
-import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
-import { clsx } from 'clsx'
-import * as React from 'react'
+import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
+import { clsx } from 'clsx';
+import * as React from 'react';
 
-import { ErrorMessage } from '@/vibes/soul/form/error-message'
-import { Label } from '@/vibes/soul/form/label'
+import { ErrorMessage } from '@/vibes/soul/form/error-message';
+import { Label } from '@/vibes/soul/form/label';
 
 interface Option {
-  value: string
-  label: string
-  disabled?: boolean
+  value: string;
+  label: string;
+  disabled?: boolean;
 }
 
 export const ToggleGroup = React.forwardRef<
   React.ElementRef<typeof ToggleGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> & {
-    label?: string
-    options: Option[]
-    errors?: string[]
+    label?: string;
+    options: Option[];
+    errors?: string[];
   }
 >(({ id, label, options, errors, className, ...rest }, ref) => {
   return (
@@ -30,7 +30,7 @@ export const ToggleGroup = React.forwardRef<
         aria-label={label}
         className="flex flex-wrap gap-2"
       >
-        {options.map(option => (
+        {options.map((option) => (
           <ToggleGroupPrimitive.Item
             key={option.value}
             value={option.value}
@@ -42,9 +42,9 @@ export const ToggleGroup = React.forwardRef<
           </ToggleGroupPrimitive.Item>
         ))}
       </ToggleGroupPrimitive.Root>
-      {errors?.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
+      {errors?.map((error) => <ErrorMessage key={error}>{error}</ErrorMessage>)}
     </div>
-  )
-})
+  );
+});
 
-ToggleGroup.displayName = 'ToggleGroup'
+ToggleGroup.displayName = 'ToggleGroup';

@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
-import { ComponentPropsWithRef, Ref, forwardRef } from 'react'
+import { clsx } from 'clsx';
+import { ComponentPropsWithRef, Ref, forwardRef } from 'react';
 
-import { Label } from '@/vibes/soul/primitives/label'
+import { Label } from '@/vibes/soul/primitives/label';
 
 export interface Props extends ComponentPropsWithRef<'textarea'> {
-  label?: string
-  className?: string
+  label?: string;
+  className?: string;
 }
 
 export const TextArea = forwardRef(function TextArea(
   { label, className, required, ...rest }: Props,
-  ref: Ref<HTMLTextAreaElement>
+  ref: Ref<HTMLTextAreaElement>,
 ) {
   return (
     <div className={clsx('w-full', className)}>
@@ -27,10 +27,10 @@ export const TextArea = forwardRef(function TextArea(
           ref={ref}
           {...rest}
           className={clsx(
-            'placeholder-contrast-gray-500 w-full bg-transparent p-3 text-foreground placeholder:font-normal focus:outline-none'
+            'placeholder-contrast-gray-500 w-full bg-transparent p-3 text-foreground placeholder:font-normal focus:outline-none',
           )}
         />
       </div>
     </div>
-  )
-})
+  );
+});

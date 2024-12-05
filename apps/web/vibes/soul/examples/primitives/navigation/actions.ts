@@ -1,40 +1,40 @@
-import { SubmissionResult } from '@conform-to/react'
-import { parseWithZod } from '@conform-to/zod'
+import { SubmissionResult } from '@conform-to/react';
+import { parseWithZod } from '@conform-to/zod';
 
-import { getProducts } from '@/vibes/soul/data'
-import { SearchResult } from '@/vibes/soul/primitives/navigation'
-import { localeSchema, searchSchema } from '@/vibes/soul/primitives/navigation/schema'
+import { getProducts } from '@/vibes/soul/data';
+import { SearchResult } from '@/vibes/soul/primitives/navigation';
+import { localeSchema, searchSchema } from '@/vibes/soul/primitives/navigation/schema';
 
 export async function localeAction(
   prevState: SubmissionResult | null,
-  payload: FormData
+  payload: FormData,
 ): Promise<SubmissionResult> {
-  'use server'
+  'use server';
 
-  const submission = parseWithZod(payload, { schema: localeSchema })
+  const submission = parseWithZod(payload, { schema: localeSchema });
 
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  return submission.reply()
+  return submission.reply();
 }
 
 export function searchAction(brand: 'Electric' | 'Warm' | 'Luxury') {
   return async function brandSearchAction(
     prevState: { searchResults: SearchResult[] | null; lastResult: SubmissionResult | null },
-    payload: FormData
+    payload: FormData,
   ): Promise<{ searchResults: SearchResult[]; lastResult: SubmissionResult }> {
-    'use server'
+    'use server';
 
-    const submission = parseWithZod(payload, { schema: searchSchema('query') })
+    const submission = parseWithZod(payload, { schema: searchSchema('query') });
 
     if (submission.status !== 'success') {
       return {
         searchResults: [],
         lastResult: submission.reply(),
-      }
+      };
     }
 
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return {
       searchResults: [
@@ -63,6 +63,6 @@ export function searchAction(brand: 'Electric' | 'Warm' | 'Luxury') {
         },
       ],
       lastResult: submission.reply(),
-    }
-  }
+    };
+  };
 }

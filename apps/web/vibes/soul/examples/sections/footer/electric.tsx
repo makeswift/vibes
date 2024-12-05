@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
-import { Footer, Section } from '@/vibes/soul/sections/footer'
+import { Footer, Section } from '@/vibes/soul/sections/footer';
 import {
   Amex,
   ApplePay,
@@ -9,8 +9,8 @@ import {
   Mastercard,
   Paypal,
   Visa,
-} from '@/vibes/soul/sections/footer/payment-icons'
-import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons'
+} from '@/vibes/soul/sections/footer/payment-icons';
+import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
 
 export const footerLinks = [
   {
@@ -67,7 +67,7 @@ export const footerLinks = [
       { label: 'Shipping', href: '#' },
     ],
   },
-]
+];
 
 const socialMediaLinks = [
   {
@@ -86,9 +86,9 @@ const socialMediaLinks = [
     href: '#',
     icon: <Youtube />,
   },
-]
+];
 
-export const logo = 'SOUL'
+export const logo = 'SOUL';
 
 export const paymentIconsArray: React.ReactNode[] = [
   <Visa key="Visa" />,
@@ -98,38 +98,38 @@ export const paymentIconsArray: React.ReactNode[] = [
   <GooglePay key="GooglePay" />,
   <ApplePay key="ApplePay" />,
   <Bitcoin key="Bitcoin" />,
-]
+];
 
-export const copyright = `© ${new Date().getFullYear().toString()} SOUL - Powered by Monogram`
+export const copyright = `© ${new Date().getFullYear().toString()} SOUL - Powered by Monogram`;
 
 export const contactInformation = {
   address: 'info@soul.com',
   phone: '+(1) 408 123 4567',
-}
+};
 
 export default function Preview() {
-  const sectionsPromise = new Promise<Section[]>(res => setTimeout(() => res(footerLinks), 1000))
+  const sectionsPromise = new Promise<Section[]>((res) => setTimeout(() => res(footerLinks), 1000));
 
-  const logoPromise = new Promise<string | { src: string; alt: string }>(res =>
-    setTimeout(() => res(logo), 1000)
-  )
+  const logoPromise = new Promise<string | { src: string; alt: string }>((res) =>
+    setTimeout(() => res(logo), 1000),
+  );
 
-  const copyrightPromise = new Promise<string>(res => setTimeout(() => res(copyright), 1000))
+  const copyrightPromise = new Promise<string>((res) => setTimeout(() => res(copyright), 1000));
 
-  const paymentIconsPromise = new Promise<React.ReactNode[]>(res =>
-    setTimeout(() => res(paymentIconsArray), 1000)
-  )
+  const paymentIconsPromise = new Promise<React.ReactNode[]>((res) =>
+    setTimeout(() => res(paymentIconsArray), 1000),
+  );
 
   const socialMediaLinksPromise = new Promise<
     {
-      href: string
-      icon: ReactNode
+      href: string;
+      icon: ReactNode;
     }[]
-  >(res => setTimeout(() => res(socialMediaLinks), 1000))
+  >((res) => setTimeout(() => res(socialMediaLinks), 1000));
 
-  const contactInformationPromise = new Promise<{ address?: string; phone?: string }>(res =>
-    setTimeout(() => res(contactInformation), 1000)
-  )
+  const contactInformationPromise = new Promise<{ address?: string; phone?: string }>((res) =>
+    setTimeout(() => res(contactInformation), 1000),
+  );
 
   return (
     <Footer
@@ -140,5 +140,5 @@ export default function Preview() {
       socialMediaLinks={socialMediaLinksPromise}
       contactInformation={contactInformationPromise}
     />
-  )
+  );
 }

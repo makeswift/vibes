@@ -1,19 +1,19 @@
-import { Brand } from '@/vibes/schema'
+import { Brand } from '@/vibes/schema';
 
 interface Props {
-  brands: Brand[]
-  brandName: string
+  brands: Brand[];
+  brandName: string;
   fonts: {
-    body: string
-    heading?: string
-    mono?: string
-  }
+    body: string;
+    heading?: string;
+    mono?: string;
+  };
 }
 
 export function BrandFonts({ brands, brandName, fonts }: Props) {
-  const brand = brands.find(b => b.name === brandName)
+  const brand = brands.find((b) => b.name === brandName);
 
-  if (!brand) return <div>Brand: {brandName} not found</div>
+  if (!brand) return <div>Brand: {brandName} not found</div>;
 
   return (
     <div className="mt-6 space-y-5">
@@ -38,8 +38,8 @@ export function BrandFonts({ brands, brandName, fonts }: Props) {
               font-{type}
             </span>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

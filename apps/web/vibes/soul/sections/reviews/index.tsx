@@ -1,25 +1,25 @@
-import { Suspense } from 'react'
+import { Suspense } from 'react';
 
-import { Stream, Streamable } from '@/vibes/soul/lib/streamable'
-import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination'
-import { Rating } from '@/vibes/soul/primitives/rating'
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout'
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
+import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
+import { Rating } from '@/vibes/soul/primitives/rating';
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 interface Review {
-  id: string
-  rating: number
-  review: string
-  name: string
-  date: string
+  id: string;
+  rating: number;
+  review: string;
+  name: string;
+  date: string;
 }
 
 interface Props {
-  reviews: Streamable<Review[]>
-  averageRating: Streamable<number>
-  totalCount?: Streamable<number>
-  paginationInfo?: Streamable<CursorPaginationInfo>
-  emptyStateMessage?: string
-  reviewsLabel?: string
+  reviews: Streamable<Review[]>;
+  averageRating: Streamable<number>;
+  totalCount?: Streamable<number>;
+  paginationInfo?: Streamable<CursorPaginationInfo>;
+  emptyStateMessage?: string;
+  reviewsLabel?: string;
 }
 
 async function ReviewsImpl({
@@ -30,10 +30,10 @@ async function ReviewsImpl({
   emptyStateMessage,
   reviewsLabel = 'Reviews',
 }: Readonly<Props>) {
-  const reviews = await streamableReviews
+  const reviews = await streamableReviews;
 
   if (reviews.length === 0)
-    return <ReviewsEmptyState message={emptyStateMessage} reviewsLabel={reviewsLabel} />
+    return <ReviewsEmptyState message={emptyStateMessage} reviewsLabel={reviewsLabel} />;
 
   return (
     <StickySidebarLayout
@@ -49,7 +49,7 @@ async function ReviewsImpl({
               </div>
             }
           >
-            {totalCount => (
+            {(totalCount) => (
               <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
                 {reviewsLabel} <span className="text-contrast-300">{totalCount}</span>
               </h2>
@@ -64,7 +64,7 @@ async function ReviewsImpl({
               </div>
             }
           >
-            {averageRating => (
+            {(averageRating) => (
               <>
                 <div className="mb-2 font-heading text-5xl leading-none tracking-tighter @2xl:text-6xl">
                   {averageRating}
@@ -86,25 +86,25 @@ async function ReviewsImpl({
               <p className="mb-8 mt-2 leading-normal text-contrast-500">{review}</p>
               <p className="text-sm text-contrast-500">{date}</p>
             </div>
-          )
+          );
         })}
 
         <Stream value={streamablePaginationInfo}>
-          {paginationInfo =>
+          {(paginationInfo) =>
             paginationInfo && <CursorPagination info={paginationInfo} scroll={false} />
           }
         </Stream>
       </div>
     </StickySidebarLayout>
-  )
+  );
 }
 
 export function ReviewsEmptyState({
   message = 'No reviews have been added for this product',
   reviewsLabel = 'Reviews',
 }: {
-  message?: string
-  reviewsLabel?: string
+  message?: string;
+  reviewsLabel?: string;
 }) {
   return (
     <StickySidebarLayout
@@ -125,7 +125,7 @@ export function ReviewsEmptyState({
         <p className="text-center">{message}</p>
       </div>
     </StickySidebarLayout>
-  )
+  );
 }
 
 export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: { reviewsLabel?: string }) {
@@ -151,7 +151,7 @@ export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: { reviewsLabel?: s
         ))}
       </div>
     </StickySidebarLayout>
-  )
+  );
 }
 
 export function Reviews({ reviewsLabel = 'Reviews', ...props }: Props) {
@@ -159,5 +159,5 @@ export function Reviews({ reviewsLabel = 'Reviews', ...props }: Props) {
     <Suspense fallback={<ReviewsSkeleton reviewsLabel={reviewsLabel} />}>
       <ReviewsImpl {...props} reviewsLabel={reviewsLabel} />
     </Suspense>
-  )
+  );
 }

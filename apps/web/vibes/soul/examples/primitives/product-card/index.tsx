@@ -1,4 +1,4 @@
-import { ProductCard } from '@/vibes/soul/primitives/product-card'
+import { ProductCard } from '@/vibes/soul/primitives/product-card';
 
 export default function Preview() {
   return (
@@ -32,5 +32,5 @@ export default function Preview() {
         className="w-80"
       />
     </div>
-  )
+  );
 }

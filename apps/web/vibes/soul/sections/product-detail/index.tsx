@@ -1,28 +1,28 @@
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'
-import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label'
-import { Rating } from '@/vibes/soul/primitives/rating'
-import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery'
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
+import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';
+import { Rating } from '@/vibes/soul/primitives/rating';
+import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery';
 
-import { ProductDetailForm, ProductDetailFormAction } from './product-detail-form'
-import { Field } from './schema'
+import { ProductDetailForm, ProductDetailFormAction } from './product-detail-form';
+import { Field } from './schema';
 
 interface ProductDetailProduct {
-  id: string
-  title: string
-  href: string
-  images: { src: string; alt: string }[]
-  price?: Price
-  subtitle?: string
-  badge?: string
-  rating?: number
-  description?: string | React.ReactNode
+  id: string;
+  title: string;
+  href: string;
+  images: { src: string; alt: string }[];
+  price?: Price;
+  subtitle?: string;
+  badge?: string;
+  rating?: number;
+  description?: string | React.ReactNode;
 }
 
 interface Props<F extends Field> {
-  breadcrumbs?: Breadcrumb[]
-  product: ProductDetailProduct
-  action: ProductDetailFormAction<F>
-  fields: F[]
+  breadcrumbs?: Breadcrumb[];
+  product: ProductDetailProduct;
+  action: ProductDetailFormAction<F>;
+  fields: F[];
 }
 
 export function ProductDetail<F extends Field>({ product, action, fields, breadcrumbs }: Props<F>) {
@@ -67,5 +67,5 @@ export function ProductDetail<F extends Field>({ product, action, fields, breadc
         </div>
       </div>
     </section>
-  )
+  );
 }

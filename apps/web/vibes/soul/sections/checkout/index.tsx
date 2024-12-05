@@ -1,35 +1,35 @@
-'use client'
+'use client';
 
-import * as Accordion from '@radix-ui/react-accordion'
-import { clsx } from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import * as Accordion from '@radix-ui/react-accordion';
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-import { Button } from '@/vibes/soul/primitives/button'
-import { Checkbox } from '@/vibes/soul/primitives/checkbox'
-import { Input } from '@/vibes/soul/primitives/input'
-import { CartLineItem } from '@/vibes/soul/sections/cart'
-import { CheckoutForm } from '@/vibes/soul/sections/checkout/checkout-form'
+import { Button } from '@/vibes/soul/primitives/button';
+import { Checkbox } from '@/vibes/soul/primitives/checkbox';
+import { Input } from '@/vibes/soul/primitives/input';
+import { CartLineItem } from '@/vibes/soul/sections/cart';
+import { CheckoutForm } from '@/vibes/soul/sections/checkout/checkout-form';
 
 export const Checkout = function Checkout({ products }: { products: CartLineItem[] }) {
-  const [isLoading, setIsLoading] = useState(false)
-  const [checked, setChecked] = useState(true)
-  const [openAccordion, setOpenAccordion] = useState<string | undefined>(undefined)
+  const [isLoading, setIsLoading] = useState(false);
+  const [checked, setChecked] = useState(true);
+  const [openAccordion, setOpenAccordion] = useState<string | undefined>(undefined);
 
   // TODO: Remove this when we have a real API
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
+      setIsLoading(false);
+    }, 3000);
     return () => {
-      clearTimeout(timer)
-    }
-  }, [])
+      clearTimeout(timer);
+    };
+  }, []);
 
   const handleAccordionChange = (value: string | undefined) => {
-    setOpenAccordion(value)
-  }
+    setOpenAccordion(value);
+  };
 
   const accordions = [
     {
@@ -44,8 +44,8 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
               size="small"
               className="h-[48px]"
               onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                e.preventDefault()
-                handleAccordionChange('')
+                e.preventDefault();
+                handleAccordionChange('');
               }}
             >
               Continue
@@ -85,8 +85,8 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
           includeOrderComments
           includeShippingMethod
           onSubmit={(e: React.MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault()
-            handleAccordionChange('')
+            e.preventDefault();
+            handleAccordionChange('');
           }}
         />
       ),
@@ -104,8 +104,8 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
       form: (
         <CheckoutForm
           onSubmit={(e: React.MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault()
-            handleAccordionChange('')
+            e.preventDefault();
+            handleAccordionChange('');
           }}
         />
       ),
@@ -115,7 +115,7 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
       preview: <></>,
       form: <></>,
     },
-  ]
+  ];
 
   return (
     <div className="mx-auto max-w-screen-2xl @container">
@@ -171,7 +171,7 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                       className={clsx(
                         openAccordion !== undefined && openAccordion !== ''
                           ? 'opacity-0'
-                          : 'opacity-100'
+                          : 'opacity-100',
                       )}
                     />
                   </li>
@@ -266,5 +266,5 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

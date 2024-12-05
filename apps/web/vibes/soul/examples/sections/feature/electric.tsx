@@ -1,4 +1,4 @@
-import { Feature, FeatureProps } from '@/vibes/soul/sections/feature'
+import { Feature, FeatureProps } from '@/vibes/soul/sections/feature';
 
 export const feature: FeatureProps = {
   image: {
@@ -12,7 +12,7 @@ export const feature: FeatureProps = {
     href: '#',
     label: 'Shop Now',
   },
-}
+};
 
 const grid: FeatureProps['grid'] = [
   {
@@ -45,7 +45,7 @@ const grid: FeatureProps['grid'] = [
     title: '2 Year Warranty',
     description: 'As standard',
   },
-]
+];
 
 export default function Preview() {
   return (
@@ -58,5 +58,5 @@ export default function Preview() {
       />
       <Feature image={feature.image} cta={feature.cta} grid={grid} />
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { Button } from '@/vibes/soul/primitives/button'
+import { Button } from '@/vibes/soul/primitives/button';
 
 export default function Preview() {
   return (
@@ -18,5 +18,5 @@ export default function Preview() {
         Shop Now
       </Button>
     </div>
-  )
+  );
 }

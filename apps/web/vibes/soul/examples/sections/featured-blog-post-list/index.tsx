@@ -1,5 +1,5 @@
-import { posts } from '@/vibes/soul/examples/sections/blog-post-list'
-import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list'
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
+import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 
 export default function Preview() {
   return (
@@ -9,5 +9,5 @@ export default function Preview() {
       cta={{ href: '#', label: 'View All' }}
       posts={posts}
     />
-  )
+  );
 }

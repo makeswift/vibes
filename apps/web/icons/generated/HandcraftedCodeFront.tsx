@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgHandcraftedCodeFront = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={227} height={242} fill="none" {...props}>
@@ -405,5 +405,5 @@ const SvgHandcraftedCodeFront = (props: SVGProps<SVGSVGElement>) => (
       </clipPath>
     </defs>
   </svg>
-)
-export default SvgHandcraftedCodeFront
+);
+export default SvgHandcraftedCodeFront;

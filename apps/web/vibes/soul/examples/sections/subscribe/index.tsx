@@ -2,8 +2,8 @@
 // import { SubmissionResult } from '@conform-to/react'
 // import { parseWithZod } from '@conform-to/zod'
 // import { z } from 'zod'
-import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions'
-import { Subscribe } from '@/vibes/soul/sections/subscribe'
+import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
+import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
 // async function action(prevState: unknown, formData: FormData): Promise<SubmissionResult> {
 //   'use server'
@@ -27,7 +27,7 @@ export default function Preview() {
   const image = {
     src: 'https://rstr.in/monogram/vibes/m12FEyfnuDl',
     alt: 'Lady with plant',
-  }
+  };
 
   return (
     <div className="flex flex-col gap-2">
@@ -43,5 +43,5 @@ export default function Preview() {
         action={action}
       />
     </div>
-  )
+  );
 }

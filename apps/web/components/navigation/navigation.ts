@@ -1,36 +1,36 @@
-import { Vibe } from '@/vibes/schema'
+import { Vibe } from '@/vibes/schema';
 
 export interface Link {
-  title: string
-  href: string
+  title: string;
+  href: string;
 }
 
 export interface Page {
-  title: string
-  slug: string
+  title: string;
+  slug: string;
 }
 
 export interface Group {
-  title: string
-  pages: Page[]
+  title: string;
+  pages: Page[];
 }
 
 export interface Chapter {
-  name: string
-  slug: string
-  description: string
-  tags: string[]
-  thumbnail: string
+  name: string;
+  slug: string;
+  description: string;
+  tags: string[];
+  thumbnail: string;
   author: {
-    name: string
-    url: string
-  }
-  groups: Group[]
+    name: string;
+    url: string;
+  };
+  groups: Group[];
 }
 
 export interface Navigation {
-  links: Link[]
-  chapters: Chapter[]
+  links: Link[];
+  chapters: Chapter[];
 }
 
 export function toChapter({
@@ -49,12 +49,12 @@ export function toChapter({
     tags,
     thumbnail,
     author,
-    groups: navigation.map(group => ({
+    groups: navigation.map((group) => ({
       title: group.title,
-      pages: group.pages.map(page => ({
+      pages: group.pages.map((page) => ({
         title: page.title,
         slug: page.slug,
       })),
     })),
-  }
+  };
 }

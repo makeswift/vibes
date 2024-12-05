@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Alert } from '@/vibes/soul/primitives/alert'
+import { Alert } from '@/vibes/soul/primitives/alert';
 
 export default function Preview() {
   return (
@@ -9,5 +9,5 @@ export default function Preview() {
       <Alert variant="warning" message="This is a warning alert" />
       <Alert variant="error" message="This is an error alert" />
     </div>
-  )
+  );
 }

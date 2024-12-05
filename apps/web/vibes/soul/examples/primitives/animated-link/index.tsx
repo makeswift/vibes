@@ -1,4 +1,4 @@
-import { AnimatedLink } from '@/vibes/soul/primitives/animated-link'
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
 
 export default function Preview() {
   return (
@@ -14,5 +14,5 @@ export default function Preview() {
         />
       </div>
     </div>
-  )
+  );
 }

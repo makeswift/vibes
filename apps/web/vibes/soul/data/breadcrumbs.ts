@@ -1,9 +1,9 @@
-import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs'
+import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs';
 
-import { SoulBrandName } from '../brands'
+import { SoulBrandName } from '../brands';
 
 export function getBreadcrumbs(brand: SoulBrandName): Breadcrumb[] {
-  return breadcrumbs[brand]
+  return breadcrumbs[brand];
 }
 
 const breadcrumbs = {
@@ -49,4 +49,4 @@ const breadcrumbs = {
       href: '#',
     },
   ],
-} as const satisfies Record<SoulBrandName, [Breadcrumb, ...Breadcrumb[]]>
+} as const satisfies Record<SoulBrandName, [Breadcrumb, ...Breadcrumb[]]>;

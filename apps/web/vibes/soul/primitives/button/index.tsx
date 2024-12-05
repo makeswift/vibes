@@ -1,13 +1,13 @@
-import { clsx } from 'clsx'
-import { Loader2 } from 'lucide-react'
+import { clsx } from 'clsx';
+import { Loader2 } from 'lucide-react';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'secondary' | 'tertiary'
-  size?: 'large' | 'medium' | 'small' | 'icon'
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
-  loading?: boolean
-  type?: 'button' | 'submit' | 'reset'
-}
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'large' | 'medium' | 'small' | 'icon';
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  loading?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+};
 
 export function Button({
   variant = 'primary',
@@ -36,7 +36,7 @@ export function Button({
           tertiary: 'after:bg-contrast-100',
         }[variant],
         disabled && 'cursor-not-allowed opacity-30',
-        className
+        className,
       )}
       type={type}
       onClick={onClick}
@@ -53,7 +53,7 @@ export function Button({
             medium: 'min-h-12 gap-x-2.5 px-5 py-3 text-base',
             large: 'min-h-14 gap-x-3 px-6 py-4 text-base',
           }[size],
-          variant === 'secondary' && 'mix-blend-difference'
+          variant === 'secondary' && 'mix-blend-difference',
         )}
       >
         {children}
@@ -62,11 +62,11 @@ export function Button({
       <span
         className={clsx(
           'absolute inset-0 grid place-content-center transition-all duration-300 ease-in-out',
-          loading ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          loading ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
         )}
       >
         <Loader2 className={clsx('animate-spin', variant === 'tertiary' && 'text-foreground')} />
       </span>
     </button>
-  )
+  );
 }

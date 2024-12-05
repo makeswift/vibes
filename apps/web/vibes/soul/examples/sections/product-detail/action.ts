@@ -1,7 +1,7 @@
-import { SubmissionResult } from '@conform-to/react'
-import { parseWithZod } from '@conform-to/zod'
+import { SubmissionResult } from '@conform-to/react';
+import { parseWithZod } from '@conform-to/zod';
 
-import { Field, schema } from '@/vibes/soul/sections/product-detail/schema'
+import { Field, schema } from '@/vibes/soul/sections/product-detail/schema';
 
 export const fields = [
   {
@@ -85,27 +85,27 @@ export const fields = [
       },
     ],
   },
-] satisfies Field[]
+] satisfies Field[];
 
 export async function action(
   prevState: { fields: Field[]; lastResult: SubmissionResult | null },
-  payload: FormData
+  payload: FormData,
 ) {
-  'use server'
+  'use server';
 
-  const submission = parseWithZod(payload, { schema: schema(fields) })
+  const submission = parseWithZod(payload, { schema: schema(fields) });
 
   if (submission.status !== 'success') {
     return {
       fields: prevState.fields,
       lastResult: submission.reply(),
-    }
+    };
   }
 
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return {
     fields: prevState.fields,
     lastResult: submission.reply({}),
-  }
+  };
 }

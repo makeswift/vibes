@@ -1,5 +1,5 @@
-import * as React from 'react'
-import type { SVGProps } from 'react'
+import * as React from 'react';
+import type { SVGProps } from 'react';
 
 const SvgVibes14Front = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={200} height={72} fill="none" {...props}>
@@ -24,5 +24,5 @@ const SvgVibes14Front = (props: SVGProps<SVGSVGElement>) => (
       d="m172.979 38.63 10.32 2.16.64.16c4.72.96 8 5.04 8 9.84v.32c0 5.6-5.28 9.28-10.88 9.28-5.36 0-10.96-2.48-12.32-10.72h-.56v9.68h-14.24v-16h17.52v4c0 .64.48 1.2 1.12 1.28v-5.92l-10.32-2.16-.64-.16c-4.72-.96-8-5.04-8-9.84v-.32c0-5.6 5.28-9.28 10.8-9.28 5.36 0 11.04 2.48 12.4 10.64h.56v-9.6h14.16v16h-17.44v-4c0-.64-.56-1.2-1.12-1.28zM10.933 21.99l10.16 37.36h20.56l.08-.24 10.16-37.12h-19.36l-.64 2.24.48 1.68 4.8 17.68.56 2.16c.32 1.12.32 2.16 0 3.28v.24l-6.4-23.36-1.04-3.92z"
     />
   </svg>
-)
-export default SvgVibes14Front
+);
+export default SvgVibes14Front;

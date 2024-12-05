@@ -1,6 +1,6 @@
 interface Props {
-  title?: string
-  subtitle?: string
+  title?: string;
+  subtitle?: string;
 }
 
 export function NotFound({
@@ -16,5 +16,5 @@ export function NotFound({
         <p className="text-lg text-contrast-500">{subtitle}</p>
       </div>
     </section>
-  )
+  );
 }

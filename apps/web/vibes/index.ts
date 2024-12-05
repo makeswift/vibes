@@ -1,1 +1,1 @@
-export { default as soul } from './soul'
+export { default as soul } from './soul';

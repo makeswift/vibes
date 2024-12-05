@@ -1,22 +1,22 @@
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
-import { clsx } from 'clsx'
-import * as React from 'react'
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import { clsx } from 'clsx';
+import * as React from 'react';
 
-import { ErrorMessage } from '@/vibes/soul/form/error-message'
-import { Label } from '@/vibes/soul/form/label'
+import { ErrorMessage } from '@/vibes/soul/form/error-message';
+import { Label } from '@/vibes/soul/form/label';
 
 interface Option {
-  value: string
-  label: string
-  disabled?: boolean
+  value: string;
+  label: string;
+  disabled?: boolean;
 }
 
 export const RadioGroup = React.forwardRef<
   React.ComponentRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & {
-    label?: string
-    options: Option[]
-    errors?: string[]
+    label?: string;
+    options: Option[];
+    errors?: string[];
   }
 >(({ id, label, options, errors, className, ...rest }, ref) => {
   return (
@@ -29,14 +29,14 @@ export const RadioGroup = React.forwardRef<
         aria-label={label}
         className="space-y-2"
       >
-        {options.map(option => (
+        {options.map((option) => (
           <div className="flex items-center" key={option.value}>
             <RadioGroupPrimitive.Item
               className={clsx(
                 'size-5 cursor-default rounded-full border bg-background outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50',
                 errors && errors.length > 0
                   ? 'border-error disabled:border-error/50'
-                  : 'border-contrast-200 hover:border-contrast-300 focus:border-contrast-300'
+                  : 'border-contrast-200 hover:border-contrast-300 focus:border-contrast-300',
               )}
               id={option.value}
               value={option.value}
@@ -51,9 +51,9 @@ export const RadioGroup = React.forwardRef<
           </div>
         ))}
       </RadioGroupPrimitive.Root>
-      {errors?.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
+      {errors?.map((error) => <ErrorMessage key={error}>{error}</ErrorMessage>)}
     </div>
-  )
-})
+  );
+});
 
-RadioGroup.displayName = 'RadioGroup'
+RadioGroup.displayName = 'RadioGroup';

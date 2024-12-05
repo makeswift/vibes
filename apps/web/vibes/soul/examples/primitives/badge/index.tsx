@@ -1,4 +1,4 @@
-import { Badge } from '@/vibes/soul/primitives/badge'
+import { Badge } from '@/vibes/soul/primitives/badge';
 
 export default function Preview() {
   return (
@@ -6,5 +6,5 @@ export default function Preview() {
       <Badge variant="pill">Pill</Badge>
       <Badge variant="rounded">Rounded</Badge>
     </div>
-  )
+  );
 }

@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
-import { useToast } from '@/components/ui/use-toast'
+import { useToast } from '@/components/ui/use-toast';
 
-import { Button } from './button'
+import { Button } from './button';
 
 interface Props {
-  className?: string
-  clipboard: string
-  children?: React.ReactNode
+  className?: string;
+  clipboard: string;
+  children?: React.ReactNode;
 }
 
 export function CopyButton({ className, clipboard, children }: Props) {
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   return (
     <Button
@@ -21,9 +21,9 @@ export function CopyButton({ className, clipboard, children }: Props) {
       size="icon"
       className={clsx('group/button [&>span]:hover:bg-transparent', className)}
       onClick={() => {
-        navigator.clipboard.writeText(clipboard)
+        navigator.clipboard.writeText(clipboard);
 
-        toast({ title: 'Copied to clipboard' })
+        toast({ title: 'Copied to clipboard' });
       }}
     >
       {children}
@@ -51,5 +51,5 @@ export function CopyButton({ className, clipboard, children }: Props) {
         />
       </svg>
     </Button>
-  )
+  );
 }

@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Zoom from 'react-medium-image-zoom'
+import Image from 'next/image';
+import Zoom from 'react-medium-image-zoom';
 
-import { Times16 } from '@/icons/generated'
+import { Times16 } from '@/icons/generated';
 
 interface Props {
-  src: string
-  alt: string
+  src: string;
+  alt: string;
 }
 
 export function ZoomImage({ alt = 'An Image', src = 'https://placehold.it/1024x640' }: Props) {
@@ -17,5 +17,5 @@ export function ZoomImage({ alt = 'An Image', src = 'https://placehold.it/1024x6
         <Image className="object-cover" sizes="100vw" fill src={src} alt={alt} />
       </div>
     </Zoom>
-  )
+  );
 }

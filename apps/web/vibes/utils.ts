@@ -1,7 +1,7 @@
-import { Vibe } from './schema'
+import { Vibe } from './schema';
 
-import * as Vibes from '.'
+import * as Vibes from '.';
 
 export function getVibe(slug: string): Vibe | undefined {
-  return Object.values(Vibes).find(vibe => vibe.slug === slug)
+  return Object.values(Vibes).find((vibe) => vibe.slug === slug);
 }

@@ -1,8 +1,8 @@
-import { getProducts } from '@/vibes/soul/data'
+import { getProducts } from '@/vibes/soul/data';
 import {
   FeaturedProductsList,
   FeaturedProductsListSkeleton,
-} from '@/vibes/soul/sections/featured-products-list'
+} from '@/vibes/soul/sections/featured-products-list';
 
 export const featuredProducts = {
   title: 'Our plants',
@@ -12,7 +12,7 @@ export const featuredProducts = {
     href: '#',
   },
   products: await getProducts('Electric'),
-}
+};
 
 export default function Preview() {
   return (
@@ -36,5 +36,5 @@ export default function Preview() {
         }}
       />
     </>
-  )
+  );
 }
