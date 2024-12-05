@@ -4,6 +4,7 @@ import { ButtonRadioGroup } from '../form/button-radio-group';
 import { CardRadioGroup } from '../form/card-radio-group';
 import { Checkbox } from '../form/checkbox';
 import { DatePicker } from '../form/date-picker';
+import { FormStatus } from '../form/form-status';
 import { Input } from '../form/input';
 import { NumberInput } from '../form/number-input';
 import { RadioGroup } from '../form/radio-group';
@@ -46,8 +47,8 @@ export default function Preview() {
           { type: 'color', label: 'Gray', value: 'gray', color: '#eee', disabled: true },
           {
             type: 'image',
-            label: 'Gray',
-            value: 'gray',
+            label: 'Pattern',
+            value: 'pattern',
             image: { src: 'https://rstr.in/monogram/vibes/-kv08IvX08j', alt: '' },
           },
         ]}
@@ -155,6 +156,8 @@ export default function Preview() {
           },
         ]}
       />
+      <FormStatus>Login was successful</FormStatus>
+      <FormStatus type="error">Could not login</FormStatus>
     </div>
   );
 }
