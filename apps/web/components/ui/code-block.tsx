@@ -52,7 +52,7 @@ export async function CodeBlock({
           <CopyButton className="pointer-events-auto" clipboard={children} />
         </div>
       )}
-      <div dangerouslySetInnerHTML={{ __html }} className={clsx(!hideCopyButton && '-mt-[47px]')} />
+      <div className={clsx(!hideCopyButton && '-mt-[47px]')} dangerouslySetInnerHTML={{ __html }} />
     </div>
   );
 }

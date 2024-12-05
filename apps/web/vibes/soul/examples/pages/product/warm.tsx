@@ -32,17 +32,17 @@ export default async function Preview() {
       </Banner>
       <div className="relative flex flex-col">
         <Navigation
-          links={navigationLinks}
-          logo={logo}
-          cartHref="#"
           accountHref="#"
           activeLocaleId="en"
-          locales={locales}
+          cartHref="#"
+          links={navigationLinks}
           localeAction={localeAction}
+          locales={locales}
+          logo={logo}
           searchHref="#"
         />
 
-        <ProductDetail product={product} fields={fields} action={action} />
+        <ProductDetail action={action} fields={fields} product={product} />
 
         <ProductDescription accordions={accordions} image={productDescriptionImage} />
 
@@ -66,20 +66,20 @@ export default async function Preview() {
           ]}
         />
         <FeaturedProductsCarousel
-          title="New Arrivals"
           cta={{ label: 'See All', href: '#' }}
           products={featuredProducts}
+          title="New Arrivals"
         />
 
-        <Reviews reviews={reviews} averageRating={4.5} />
+        <Reviews averageRating={4.5} reviews={reviews} />
 
         <Subscribe
-          title="Sign up for our newsletter"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
           action={subscribeAction}
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+          title="Sign up for our newsletter"
         />
 
-        <Footer sections={footerLinks} logo="SOUL" />
+        <Footer logo="SOUL" sections={footerLinks} />
       </div>
     </>
   );

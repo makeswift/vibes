@@ -36,30 +36,30 @@ function IconsPreview({
   return (
     <div className="bg-contrast-100 p-6 text-foreground lg:p-8">
       <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-4 lg:gap-6 ">
-        <AlertTriangle strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Bell strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Calendar strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Camera strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <CheckCircle strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Cloud strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Edit strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <FileText strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Globe strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Heart strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <HelpCircle strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Home strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <ImageIcon strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Lock strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Mail strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <MapPin strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <MessageCircle strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Play strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Search strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Settings strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <ShoppingCart strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Star strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <Trash strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
-        <User strokeWidth={strokeWidth} size={size} absoluteStrokeWidth />
+        <AlertTriangle absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Bell absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Calendar absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Camera absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <CheckCircle absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Cloud absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Edit absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <FileText absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Globe absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Heart absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <HelpCircle absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Home absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <ImageIcon absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Lock absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Mail absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <MapPin absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <MessageCircle absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Play absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Search absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Settings absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <ShoppingCart absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Star absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <Trash absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
+        <User absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
       </div>
     </div>
   );

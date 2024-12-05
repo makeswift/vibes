@@ -16,15 +16,15 @@ export function Nextjs() {
         >
           <Sticker
             active={active}
-            hover={hover}
-            peelAngle={20}
-            hoverPeel={0.2}
             activePeel={0.3}
-            width={244}
-            height={244}
-            front={<NextjsFront />}
             back={<NextjsBack />}
+            front={<NextjsFront />}
+            height={244}
+            hover={hover}
+            hoverPeel={0.2}
+            peelAngle={20}
             shadow={<NextjsShadow />}
+            width={244}
           />
         </Transition>
       )}

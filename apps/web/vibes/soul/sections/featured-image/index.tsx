@@ -46,13 +46,13 @@ export const FeaturedImage = function FeaturedImage({
           )}
         >
           <Image
-            src={image.src}
             alt={image.alt}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
-            placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
             blurDataURL={image.blurDataUrl}
             className="object-cover"
+            fill
+            placeholder={image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
+            src={image.src}
           />
         </div>
         <div
@@ -67,9 +67,9 @@ export const FeaturedImage = function FeaturedImage({
           <h2 className="max-w-xl font-heading text-4xl leading-none @xl:text-5xl">{title}</h2>
           <p className="max-w-md pb-2">{description}</p>
           <ButtonLink
+            className={clsx(mediaAlign === 'full' ? 'text-background' : 'text-foreground')}
             href={cta.href}
             variant={mediaAlign === 'full' ? 'tertiary' : 'primary'}
-            className={clsx(mediaAlign === 'full' ? 'text-background' : 'text-foreground')}
           >
             {cta.label}
           </ButtonLink>

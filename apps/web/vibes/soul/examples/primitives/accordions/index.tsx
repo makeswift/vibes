@@ -26,7 +26,7 @@ export default function Preview() {
 
   return (
     <div className="m-auto flex h-screen w-1/2 max-w-screen-lg items-start justify-center p-10">
-      <Accordions type="multiple" className="w-full">
+      <Accordions className="w-full" type="multiple">
         {accordions.map(({ title, content }, index) => (
           <Accordion key={index} title={title} value={index.toString()}>
             {content}

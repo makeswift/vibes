@@ -17,15 +17,15 @@ export function Vibes11() {
           >
             <Sticker
               active={active}
-              hover={hover}
-              peelAngle={-95}
-              hoverPeel={0.2}
               activePeel={0.3}
-              width={203}
-              height={73}
-              front={<Vibes11Front />}
               back={<Vibes11Back />}
+              front={<Vibes11Front />}
+              height={73}
+              hover={hover}
+              hoverPeel={0.2}
+              peelAngle={-95}
               shadow={<Vibes11Shadow />}
+              width={203}
             />
           </Transition>
         )}

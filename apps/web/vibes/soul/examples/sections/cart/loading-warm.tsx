@@ -11,7 +11,16 @@ export default function Preview() {
 
   return (
     <Cart
-      title="Cart"
+      checkoutAction={checkoutAction}
+      emptyState={{
+        title: 'Your cart is empty',
+        subtitle: 'Add some products to get started.',
+        cta: {
+          label: 'Continue shopping',
+          href: '#',
+        },
+      }}
+      lineItemAction={lineItemAction}
       lineItems={lineItems}
       summary={{
         title: 'Summary',
@@ -26,16 +35,7 @@ export default function Preview() {
         // grandTotal: '$127.60',
         ctaLabel: 'Checkout',
       }}
-      emptyState={{
-        title: 'Your cart is empty',
-        subtitle: 'Add some products to get started.',
-        cta: {
-          label: 'Continue shopping',
-          href: '#',
-        },
-      }}
-      lineItemAction={lineItemAction}
-      checkoutAction={checkoutAction}
+      title="Cart"
     />
   );
 }

@@ -30,6 +30,7 @@ export const FeaturedVideo = function FeaturedVideo({
     >
       <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
         <video
+          autoPlay
           className={clsx(
             'w-full object-cover',
             mediaAlign === 'full'
@@ -37,9 +38,8 @@ export const FeaturedVideo = function FeaturedVideo({
               : 'aspect-square @xl:aspect-[9/6] @3xl:h-dvh @3xl:max-h-[880px] @3xl:w-1/2 @5xl:w-3/5',
             { '@3xl:order-2': mediaAlign === 'right' },
           )}
-          autoPlay
-          muted
           loop
+          muted
         >
           <source src={video} type="video/mp4" />
         </video>
@@ -55,8 +55,8 @@ export const FeaturedVideo = function FeaturedVideo({
           <h1 className="max-w-xl text-4xl font-medium leading-none @xl:text-5xl">{title}</h1>
           <p className="max-w-md pb-2">{description}</p>
           <Button
-            variant={mediaAlign === 'full' ? 'tertiary' : 'primary'}
             className={clsx(mediaAlign === 'full' ? 'text-background' : 'text-foreground')}
+            variant={mediaAlign === 'full' ? 'tertiary' : 'primary'}
           >
             <Link href={cta.href}>{cta.label}</Link>
           </Button>

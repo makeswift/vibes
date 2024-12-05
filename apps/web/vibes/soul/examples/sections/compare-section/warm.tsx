@@ -6,5 +6,5 @@ import { addToCartAction } from './actions';
 const products = await getProducts('Warm');
 
 export default async function Preview() {
-  return <CompareSection products={products} addToCartAction={addToCartAction} />;
+  return <CompareSection addToCartAction={addToCartAction} products={products} />;
 }

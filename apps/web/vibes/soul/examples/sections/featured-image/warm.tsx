@@ -15,34 +15,34 @@ export default function Preview() {
   return (
     <div className="flex flex-col gap-3">
       <FeaturedImage
-        title={featuredImage.title}
+        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         description={featuredImage.description}
         image={{
           src: featuredImage.image.src,
           alt: featuredImage.image.alt,
         }}
-        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="left"
+        title={featuredImage.title}
       />
       <FeaturedImage
-        title={featuredImage.title}
+        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         description={featuredImage.description}
         image={{
           src: featuredImage.image.src,
           alt: featuredImage.image.alt,
         }}
-        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="right"
+        title={featuredImage.title}
       />
       <FeaturedImage
-        title={featuredImage.title}
+        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         description={featuredImage.description}
         image={{
           src: featuredImage.image.src,
           alt: featuredImage.image.alt,
         }}
-        cta={{ href: featuredImage.cta.href, label: featuredImage.cta.label }}
         mediaAlign="full"
+        title={featuredImage.title}
       />
     </div>
   );

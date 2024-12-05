@@ -32,8 +32,8 @@ export function CardCarousel({
     <Carousel className={className}>
       <CarouselContent className="mb-10">
         <Stream
-          value={streamableCards}
           fallback={<CardCarouselSkeleton className={className} message={emptyStateMessage} />}
+          value={streamableCards}
         >
           {(cards) => {
             if (cards.length === 0) {

@@ -17,7 +17,7 @@ export function MobileFilters({
   return (
     <SidePanel.Root>
       <SidePanel.Trigger asChild>
-        <Button variant="secondary" size="medium">
+        <Button size="medium" variant="secondary">
           {label}
           <span className="hidden @xl:block">
             <Sliders size={20} />

@@ -71,10 +71,10 @@ export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
     <div className="@container">
       <div className="flex gap-4 border-b border-contrast-100 pb-8">
         <Link
-          href={prevHref}
           className={
             'mt-1 flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2'
           }
+          href={prevHref}
         >
           <ArrowLeft />
         </Link>
@@ -140,18 +140,18 @@ function Shipment({ shipment }: { shipment: Shipment }) {
 function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
   return (
     <Link
-      id={lineItem.id}
-      href={lineItem.href}
       className="group grid shrink-0 cursor-pointer gap-8 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @sm:flex @sm:rounded-2xl"
+      href={lineItem.href}
+      id={lineItem.id}
     >
       <div className="relative aspect-square basis-40 overflow-hidden rounded-[inherit] border border-contrast-100 bg-contrast-100">
         {lineItem.image?.src != null ? (
           <Image
-            src={lineItem.image.src}
-            fill
-            sizes="(max-width: 768px) 70vw, 33vw"
             alt={lineItem.image.alt}
             className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 70vw, 33vw"
+            src={lineItem.image.src}
           />
         ) : (
           <div className="pl-2 pt-3 text-4xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">
@@ -174,7 +174,7 @@ function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
         </div>
         <div>
           {lineItem.metadata?.map((metadata, index) => (
-            <div key={index} className="flex gap-1 text-sm">
+            <div className="flex gap-1 text-sm" key={index}>
               <span className="font-semibold">{metadata.label}:</span>
               <span>{metadata.value}</span>
             </div>
@@ -190,7 +190,7 @@ function Summary({ summary }: { summary: Summary }) {
     <div className="divide-y divide-gray-100">
       <div className="space-y-2 pb-3 pt-5">
         {summary.lineItems.map((lineItem, index) => (
-          <div key={index} className="flex justify-between">
+          <div className="flex justify-between" key={index}>
             <div>
               <div className="text-sm">{lineItem.label}</div>
               {lineItem.subtext != null && lineItem.subtext !== '' && (

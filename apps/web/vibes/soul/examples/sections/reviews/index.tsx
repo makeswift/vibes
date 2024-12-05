@@ -46,7 +46,7 @@ export const reviews = [
 export default function Preview() {
   return (
     <div>
-      <Reviews reviews={reviews} totalCount={reviews.length} averageRating={4.5} />
+      <Reviews averageRating={4.5} reviews={reviews} totalCount={reviews.length} />
       <ReviewsEmptyState />
       <ReviewsSkeleton />
     </div>

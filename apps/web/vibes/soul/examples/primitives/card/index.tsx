@@ -5,15 +5,15 @@ export default function Preview() {
     <div className="flex h-screen items-center justify-center gap-8 bg-background p-8">
       <Card
         className="w-80"
-        title="Low Maintenance"
-        image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
         href="#"
+        image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
+        title="Low Maintenance"
       />
       <Card
         className="w-80"
-        title="Partial shade"
-        // image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
         href="#"
+        // image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
+        title="Partial shade"
       />
     </div>
   );

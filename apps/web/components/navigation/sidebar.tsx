@@ -13,7 +13,7 @@ export function Sidebar({ chapter }: Props) {
           <div key={group.title}>
             <div className="mb-2.5 text-sm font-bold">{group.title}</div>
             {group.pages.map((page) => (
-              <li key={page.slug} className="[&_a]:block [&_a]:py-1.5">
+              <li className="[&_a]:block [&_a]:py-1.5" key={page.slug}>
                 <PageLink chapterSlug={chapter.slug} page={page} />
               </li>
             ))}

@@ -36,14 +36,14 @@ export function ProductGallery({ images, className }: Props) {
       <div className="w-full overflow-hidden rounded-xl @xl:rounded-2xl" ref={emblaRef}>
         <div className="flex">
           {images.map((image, idx) => (
-            <div key={idx} className="relative aspect-[4/5] w-full shrink-0 grow-0 basis-full ">
+            <div className="relative aspect-[4/5] w-full shrink-0 grow-0 basis-full " key={idx}>
               <Image
-                src={image.src}
                 alt={image.alt}
+                className="object-cover"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                src={image.src}
               />
             </div>
           ))}
@@ -53,7 +53,6 @@ export function ProductGallery({ images, className }: Props) {
       <div className="mt-2 flex max-w-full gap-2 overflow-x-auto">
         {images.map((image, index) => (
           <button
-            key={index}
             aria-label={`View image number ${index + 1}`}
             className={clsx(
               'relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border transition-all duration-300 hover:opacity-100 @md:h-16 @md:w-16',
@@ -61,9 +60,10 @@ export function ProductGallery({ images, className }: Props) {
                 ? 'border-foreground opacity-100'
                 : 'border-transparent opacity-50',
             )}
+            key={index}
             onClick={() => selectImage(index)}
           >
-            <Image src={image.src} alt={image.alt} fill className="bg-contrast-100 object-cover" />
+            <Image alt={image.alt} className="bg-contrast-100 object-cover" fill src={image.src} />
           </button>
         ))}
       </div>

@@ -18,7 +18,6 @@ export function ButtonLink({
   return (
     <Link
       {...props}
-      href={href}
       className={clsx(
         'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden rounded-full border text-center font-medium leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:outline-none focus-visible:ring-2',
         {
@@ -37,6 +36,7 @@ export function ButtonLink({
         }[size],
         className,
       )}
+      href={href}
     >
       <span className={clsx(variant === 'secondary' && 'mix-blend-difference')}>{children}</span>
     </Link>

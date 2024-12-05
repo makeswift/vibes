@@ -9,16 +9,16 @@ export default async function Preview() {
   return (
     <>
       <FeaturedProductsCarousel
-        title="Our Plants"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
         cta={{ href: '#', label: 'Shop Now' }}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
         products={featuredProducts}
+        title="Our Plants"
       />
 
       <FeaturedProductsCarouselSkeleton
-        title="Our Plants"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
         cta={{ href: '#', label: 'Shop Now' }}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+        title="Our Plants"
       />
     </>
   );

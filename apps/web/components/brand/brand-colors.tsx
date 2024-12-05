@@ -13,7 +13,7 @@ export function Colors({ colors }: { colors: Color[] }) {
     <div className="grid grid-cols-2 gap-x-3 gap-y-3.5 sm:grid-cols-4 sm:gap-x-2 sm:gap-y-5 md:grid-cols-5">
       {colors.map((color, index) => {
         return (
-          <div key={index} className="group">
+          <div className="group" key={index}>
             <div
               className="mb-2 h-12 w-full ring-1 ring-inset ring-foreground/15"
               style={{ backgroundColor: `${color.value}` }}
@@ -70,7 +70,7 @@ export function BrandColors({ brands, brandName }: { brands: Brand[]; brandName:
 
   return (
     <>
-      <h3 id="brand" className="!mt-6">
+      <h3 className="!mt-6" id="brand">
         Brand
       </h3>
       <Colors

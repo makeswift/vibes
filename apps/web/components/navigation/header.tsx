@@ -28,14 +28,14 @@ export function Header({ chapters, chapterSlug }: Props) {
         <div className="flex flex-1 items-center gap-x-2 md:gap-x-3">
           <MobileMenu chapter={chapter} />
 
-          <Link href="/" className="shrink-0">
+          <Link className="shrink-0" href="/">
             <Image
+              alt="Vibes logo"
+              className="mb-0.5"
+              height={22}
+              priority
               src="/logo.svg"
               width={80}
-              height={22}
-              alt="Vibes logo"
-              priority
-              className="mb-0.5"
             />
           </Link>
 
@@ -44,18 +44,18 @@ export function Header({ chapters, chapterSlug }: Props) {
               <div className="mx-auto h-5 w-[1px] -skew-x-[20deg] bg-contrast-500" />
             </div>
 
-            <ChapterSelect chapters={chapters} chapterSlug={chapterSlug} />
+            <ChapterSelect chapterSlug={chapterSlug} chapters={chapters} />
           </div>
         </div>
 
         <nav className="hidden h-full gap-x-4 lg:flex">
           {chapter?.groups.map((group) => (
             <GroupLink
+              chapterSlug={chapterSlug}
+              className="h-[calc(100%+1px)] place-content-center border-b-2 border-transparent"
+              group={group}
               // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               key={group.pages[0]!.slug}
-              chapterSlug={chapterSlug}
-              group={group}
-              className="h-[calc(100%+1px)] place-content-center border-b-2 border-transparent"
             />
           ))}
         </nav>
@@ -66,9 +66,9 @@ export function Header({ chapters, chapterSlug }: Props) {
           </Button> */}
 
           <DocSearch
+            apiKey={env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY}
             appId={env.NEXT_PUBLIC_ALGOLIA_APP_ID}
             indexName={env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME}
-            apiKey={env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY}
           />
 
           <ModeToggle />

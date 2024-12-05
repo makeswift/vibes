@@ -16,13 +16,13 @@ export function Figma() {
         >
           <Sticker
             active={active}
+            back={<FigmaBack />}
+            front={<FigmaFront />}
+            height={268}
             hover={hover}
             peelAngle={0}
-            width={168}
-            height={268}
-            front={<FigmaFront />}
-            back={<FigmaBack />}
             shadow={<FigmaShadow />}
+            width={168}
           />
         </Transition>
       )}

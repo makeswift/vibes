@@ -16,14 +16,14 @@ export function OpenSource() {
         >
           <Sticker
             active={active}
-            hover={hover}
-            peelAngle={-15}
-            hoverPeel={0.15}
-            width={350}
-            height={329}
-            front={<OpenSourceFront />}
             back={<OpenSourceBack />}
+            front={<OpenSourceFront />}
+            height={329}
+            hover={hover}
+            hoverPeel={0.15}
+            peelAngle={-15}
             shadow={<OpenSourceShadow />}
+            width={350}
           />
         </Transition>
       )}

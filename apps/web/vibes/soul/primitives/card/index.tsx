@@ -15,24 +15,24 @@ export function Card({ className, title, image, href, textContrast = 'dark' }: C
   return (
     <div className={className}>
       <Link
-        href={href}
         className="group relative flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl"
+        href={href}
       >
         <ArrowUpRight
-          strokeWidth={1.5}
           className={clsx(
             'absolute right-2.5 top-2.5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
             textContrast === 'light' ? 'text-background' : 'text-foreground',
           )}
+          strokeWidth={1.5}
         />
         <div className="relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100">
           {image != null ? (
             <Image
+              alt={image.alt}
+              className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
               fill
               sizes="(max-width: 768px) 70vw, 33vw"
               src={image.src}
-              alt={image.alt}
-              className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
             />
           ) : (
             <div className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">

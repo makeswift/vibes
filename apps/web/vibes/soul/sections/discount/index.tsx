@@ -68,24 +68,25 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
       )}
     >
       <Image
-        src={backgroundImage}
         alt="Background image"
+        className="object-cover"
         fill
         sizes="100vw"
-        className="object-cover"
+        src={backgroundImage}
       />
       <button
-        type="button"
+        className="absolute right-5 top-5 text-foreground transition-transform hover:scale-110"
         onClick={() => {
           setDismissed(true);
         }}
-        className="absolute right-5 top-5 text-foreground transition-transform hover:scale-110"
+        type="button"
       >
         <X className="h-6 w-6" />
       </button>
 
       {/* Desktop Version */}
       <button
+        className="z-10 m-5 hidden h-24 w-full max-w-4xl cursor-pointer items-center justify-between gap-10 overflow-hidden rounded-3xl bg-primary-shadow transition-transform active:scale-[0.99] @4xl:flex"
         onClick={() => {
           if (isSpun) {
             void copy();
@@ -93,30 +94,29 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
             setSpin(true);
           }
         }}
-        className="z-10 m-5 hidden h-24 w-full max-w-4xl cursor-pointer items-center justify-between gap-10 overflow-hidden rounded-3xl bg-primary-shadow transition-transform active:scale-[0.99] @4xl:flex"
       >
         <DiscountUI
-          isSpun={isSpun}
           copied={copied}
-          spin={spin}
-          setSpin={setSpin}
-          discounts={discounts}
-          shuffledCodes={shuffledCodes}
           copy={copy}
+          discounts={discounts}
+          isSpun={isSpun}
+          setSpin={setSpin}
+          shuffledCodes={shuffledCodes}
+          spin={spin}
         />
       </button>
 
       {/* Mobile Version */}
       <div className="z-10 m-5 flex w-full max-w-xs cursor-pointer flex-col items-center justify-between overflow-hidden rounded-3xl transition-transform @4xl:hidden">
         <DiscountUI
-          isSpun={isSpun}
           copied={copied}
-          spin={spin}
-          setSpin={setSpin}
-          discounts={discounts}
-          shuffledCodes={shuffledCodes}
           copy={copy}
+          discounts={discounts}
+          isSpun={isSpun}
           renderButton
+          setSpin={setSpin}
+          shuffledCodes={shuffledCodes}
+          spin={spin}
         />
       </div>
     </section>
@@ -169,8 +169,8 @@ const DiscountUI = ({
           >
             {shuffledCodes.map((discount, index) => (
               <div
-                key={index}
                 className="flex select-none items-center justify-center py-1 text-5xl font-medium uppercase leading-[1] tracking-[-1px] text-foreground transition-transform duration-500 @4xl:justify-end @4xl:px-6"
+                key={index}
               >
                 {discount.label}
               </div>
@@ -179,7 +179,6 @@ const DiscountUI = ({
         </div>
         {renderButton === true && (
           <Button
-            variant="secondary"
             className="w-full select-none justify-center"
             onClick={() => {
               if (isSpun) {
@@ -188,6 +187,7 @@ const DiscountUI = ({
                 setSpin(true);
               }
             }}
+            variant="secondary"
           >
             {isSpun ? 'Copy' : 'Spin'}
           </Button>

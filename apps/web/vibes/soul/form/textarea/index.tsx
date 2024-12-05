@@ -17,12 +17,12 @@ export const Textarea = React.forwardRef<
       {label != null && label !== '' && <Label htmlFor={id}>{label}</Label>}
       <textarea
         {...rest}
-        id={id}
-        ref={ref}
         className={clsx(
           'placeholder-contrast-gray-500 w-full rounded-lg border bg-background p-3 text-foreground transition-colors duration-200 placeholder:font-normal focus:border-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
           errors && errors.length > 0 ? 'border-error' : 'border-contrast-100',
         )}
+        id={id}
+        ref={ref}
       />
       {errors?.map((error) => <ErrorMessage key={error}>{error}</ErrorMessage>)}
     </div>

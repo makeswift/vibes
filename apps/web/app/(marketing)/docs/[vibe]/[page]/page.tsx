@@ -178,7 +178,7 @@ export default async function Page({
         )}
 
         {meta.preview != null && (
-          <Preview vibe={vibe} componentName={meta.preview} size={meta.previewSize} />
+          <Preview componentName={meta.preview} size={meta.previewSize} vibe={vibe} />
         )}
 
         <div className="mt-8 gap-x-20 font-sans text-foreground md:mt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
@@ -212,7 +212,7 @@ export default async function Page({
               </ul>
             )}
 
-            {page.component != null && <Installation vibe={vibe} componentName={page.component} />}
+            {page.component != null && <Installation componentName={page.component} vibe={vibe} />}
 
             {content}
 

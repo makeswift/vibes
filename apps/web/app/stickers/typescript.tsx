@@ -16,14 +16,14 @@ export function Typescript() {
         >
           <Sticker
             active={active}
-            hover={hover}
-            peelAngle={-100}
-            hoverPeel={0.15}
-            width={200}
-            height={200}
-            front={<TypescriptFront />}
             back={<TypescriptBack />}
+            front={<TypescriptFront />}
+            height={200}
+            hover={hover}
+            hoverPeel={0.15}
+            peelAngle={-100}
             shadow={<TypescriptShadow />}
+            width={200}
           />
         </Transition>
       )}

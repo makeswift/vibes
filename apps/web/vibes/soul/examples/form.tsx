@@ -16,29 +16,29 @@ export default function Preview() {
   return (
     <div className="m-auto mt-4 w-[500px] space-y-4 rounded-lg border border-contrast-100 bg-white p-4 shadow-lg">
       <ToggleGroup
-        type="multiple"
-        label="Size"
         errors={['This is required']}
+        label="Size"
         options={[
           { label: 'Small', value: 'sm' },
           { label: 'Medium', value: 'md' },
           { label: 'Large', value: 'lg', disabled: true },
         ]}
+        type="multiple"
       />
       <Input id="first-name" label="First Name" required />
       <Textarea
-        id="description"
-        name="description"
-        label="Description"
-        required
         disabled
         errors={['This is required']}
+        id="description"
+        label="Description"
+        name="description"
+        required
       />
       <Checkbox id="consent" label="Consent" required />
-      <DatePicker required errors={['This is required']} />
+      <DatePicker errors={['This is required']} required />
       <SwatchRadioGroup
+        errors={['This is required']}
         label="Color"
-        required
         options={[
           { type: 'color', label: 'Blue', value: 'blue', color: 'blue' },
           { type: 'color', label: 'Red', value: 'red', color: 'red' },
@@ -51,7 +51,7 @@ export default function Preview() {
             image: { src: 'https://rstr.in/monogram/vibes/-kv08IvX08j', alt: '' },
           },
         ]}
-        errors={['This is required']}
+        required
       />
       <NumberInput id="quantity" label="Quantity" />
       <RadioGroup
@@ -63,18 +63,18 @@ export default function Preview() {
         ]}
       />
       <RadioGroup
+        errors={['This is required']}
         label="Size"
         options={[
           { label: 'Small', value: 'sm' },
           { label: 'Medium', value: 'md' },
           { label: 'Large', value: 'lg', disabled: true },
         ]}
-        errors={['This is required']}
       />
       <Select
         id="size"
-        name="size"
         label="Size"
+        name="size"
         options={[
           { label: 'Small', value: 'sm' },
           { label: 'Medium', value: 'md' },
@@ -89,12 +89,12 @@ export default function Preview() {
         ]}
       />
       <ButtonRadioGroup
+        errors={['This is required']}
         options={[
           { label: 'Small', value: 'sm' },
           { label: 'Medium', value: 'md' },
           { label: 'Large', value: 'lg', disabled: true },
         ]}
-        errors={['This is required']}
       />
       <CardRadioGroup
         options={[

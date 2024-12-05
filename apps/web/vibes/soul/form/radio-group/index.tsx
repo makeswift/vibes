@@ -24,24 +24,24 @@ export const RadioGroup = React.forwardRef<
       {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
       <RadioGroupPrimitive.Root
         {...rest}
-        id={id}
-        ref={ref}
         aria-label={label}
         className="space-y-2"
+        id={id}
+        ref={ref}
       >
         {options.map((option) => (
           <div className="flex items-center" key={option.value}>
             <RadioGroupPrimitive.Item
+              aria-label={option.label}
               className={clsx(
                 'size-5 cursor-default rounded-full border bg-background outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50',
                 errors && errors.length > 0
                   ? 'border-error disabled:border-error/50'
                   : 'border-contrast-200 hover:border-contrast-300 focus:border-contrast-300',
               )}
+              disabled={option.disabled}
               id={option.value}
               value={option.value}
-              aria-label={option.label}
-              disabled={option.disabled}
             >
               <RadioGroupPrimitive.Indicator className="relative flex size-full items-center justify-center after:block after:size-3 after:rounded-full after:bg-foreground" />
             </RadioGroupPrimitive.Item>

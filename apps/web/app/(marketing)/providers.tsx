@@ -27,8 +27,8 @@ export function Providers({ children }: Props) {
     <NextThemesProvider
       attribute="class"
       defaultTheme="system"
-      enableSystem
       disableTransitionOnChange
+      enableSystem
     >
       <DraggableProvider>
         <PostHogProvider client={posthog}>{children}</PostHogProvider>

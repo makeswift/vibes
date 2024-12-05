@@ -24,7 +24,7 @@ export function FeaturedBlogPostCarousel({ cta, title, blogPosts }: Props) {
             </h2>
           </div>
           {cta != null && cta.href !== '' && cta.label !== '' && (
-            <AnimatedLink label={cta.label} link={{ href: cta.href }} className="mr-3" />
+            <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
           )}
         </div>
         <BlogPostCarousel blogPosts={blogPosts} />

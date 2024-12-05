@@ -28,12 +28,12 @@ export function SignUpSection({
           <h1 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">{title}</h1>
           <SignUpForm
             action={action}
-            submitLabel={submitLabel}
+            confirmPasswordLabel={confirmPasswordLabel}
+            emailLabel={emailLabel}
             firstNameLabel={firstNameLabel}
             lastNameLabel={lastNameLabel}
-            emailLabel={emailLabel}
             passwordLabel={passwordLabel}
-            confirmPasswordLabel={confirmPasswordLabel}
+            submitLabel={submitLabel}
           />
         </div>
       </div>

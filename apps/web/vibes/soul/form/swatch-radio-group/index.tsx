@@ -36,23 +36,23 @@ export const SwatchRadioGroup = React.forwardRef<
       {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
       <RadioGroupPrimitive.Root
         {...rest}
-        id={id}
-        ref={ref}
         aria-label={label}
         className="flex flex-wrap gap-1"
+        id={id}
+        ref={ref}
       >
         {options.map((option) => (
           <RadioGroupPrimitive.Item
-            key={option.value}
-            value={option.value}
             aria-label={option.label}
-            disabled={option.disabled}
             className={clsx(
               'group relative box-content h-8 w-8 rounded-full border p-0.5 transition-colors hover:border-contrast-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:hover:border-transparent data-[disabled]:pointer-events-none data-[state=checked]:border-foreground [&:disabled>.disabled-icon]:grid',
               errors && errors.length > 0
                 ? 'border-error disabled:border-transparent'
                 : 'border-transparent',
             )}
+            disabled={option.disabled}
+            key={option.value}
+            value={option.value}
           >
             {option.type === 'color' ? (
               <span
@@ -61,7 +61,7 @@ export const SwatchRadioGroup = React.forwardRef<
               />
             ) : (
               <span className="relative block size-full overflow-hidden rounded-full border border-foreground/10">
-                <Image src={option.image.src} alt={option.image.alt} height={40} width={40} />
+                <Image alt={option.image.alt} height={40} src={option.image.src} width={40} />
               </span>
             )}
             <div className="disabled-icon absolute inset-0 hidden place-content-center text-foreground">

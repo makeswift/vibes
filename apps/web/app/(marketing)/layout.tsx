@@ -80,7 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-        <link rel="preconnect" href="https://Q9L04M9AMF-dsn.algolia.net" crossOrigin="anonymous" />
+        <link crossOrigin="anonymous" href="https://Q9L04M9AMF-dsn.algolia.net" rel="preconnect" />
       </Head>
       <body className={clsx(Polysans.variable, PolysansWide.variable, GeistMono.variable)}>
         <Providers>

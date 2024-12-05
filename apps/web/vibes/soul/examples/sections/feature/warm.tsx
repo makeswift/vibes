@@ -56,12 +56,12 @@ export default function Preview() {
   return (
     <div className="flex flex-col gap-3">
       <Feature
+        cta={feature.cta}
+        description={feature.description}
         image={feature.image}
         title={feature.title}
-        description={feature.description}
-        cta={feature.cta}
       />
-      <Feature image={feature.image} cta={feature.cta} grid={grid} />
+      <Feature cta={feature.cta} grid={grid} image={feature.image} />
     </div>
   );
 }

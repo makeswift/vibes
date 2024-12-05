@@ -29,11 +29,11 @@ export function ProductDetail<F extends Field>({ product, action, fields, breadc
   return (
     <section className="@container">
       <div className="mx-auto w-full max-w-screen-lg px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        {breadcrumbs && <Breadcrumbs className="mb-6" breadcrumbs={breadcrumbs} />}
+        {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} className="mb-6" />}
 
         <div className="grid grid-cols-1 items-stretch gap-x-6 gap-y-8 @2xl:grid-cols-2 @5xl:gap-x-12">
           <div className="hidden @2xl:block">
-            <ProductGallery images={product.images} className="sticky top-8" />
+            <ProductGallery className="sticky top-8" images={product.images} />
           </div>
 
           {/* Product Details */}
@@ -48,7 +48,7 @@ export function ProductDetail<F extends Field>({ product, action, fields, breadc
 
             <Rating rating={product.rating ?? 0} />
 
-            <PriceLabel price={product.price ?? ''} className="my-3 text-xl @xl:text-2xl" />
+            <PriceLabel className="my-3 text-xl @xl:text-2xl" price={product.price ?? ''} />
 
             <div className="mb-8 @2xl:hidden">
               <ProductGallery images={product.images} />
@@ -62,7 +62,7 @@ export function ProductDetail<F extends Field>({ product, action, fields, breadc
                 <div className="mb-6 text-contrast-500">{product.description}</div>
               ))}
 
-            <ProductDetailForm fields={fields} productId={product.id} action={action} />
+            <ProductDetailForm action={action} fields={fields} productId={product.id} />
           </div>
         </div>
       </div>

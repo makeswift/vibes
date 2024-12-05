@@ -16,7 +16,6 @@ interface Props {
 export function AccountLayout({ links, children }: Props) {
   return (
     <StickySidebarLayout
-      sidebarSize="small"
       sidebar={
         <nav>
           <ul className="hidden @2xl:block">
@@ -31,6 +30,7 @@ export function AccountLayout({ links, children }: Props) {
           </div>
         </nav>
       }
+      sidebarSize="small"
     >
       {children}
     </StickySidebarLayout>

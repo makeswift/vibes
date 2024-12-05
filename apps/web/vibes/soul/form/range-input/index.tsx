@@ -45,16 +45,11 @@ export function RangeInput({
   return (
     <div className="flex w-full items-center gap-2">
       <Input
-        type="number"
-        name={minName}
+        className="flex-1"
         label={minLabel}
-        prepend={minPrepend}
-        value={minValue ?? ''}
-        min={min}
         max={maxValue ?? max}
-        step={minStep}
-        onChange={(e) => onMinValueChange?.(e.currentTarget.valueAsNumber)}
-        placeholder={minPlaceholder}
+        min={min}
+        name={minName}
         onBlur={(e) => {
           const clamped = clamp(e.currentTarget.valueAsNumber, min, maxValue ?? max);
 
@@ -62,19 +57,19 @@ export function RangeInput({
 
           onMinValueChange?.(clamped);
         }}
-        className="flex-1"
+        onChange={(e) => onMinValueChange?.(e.currentTarget.valueAsNumber)}
+        placeholder={minPlaceholder}
+        prepend={minPrepend}
+        step={minStep}
+        type="number"
+        value={minValue ?? ''}
       />
       <Input
-        type="number"
-        name={maxName}
+        className="flex-1"
         label={maxLabel}
-        prepend={maxPrepend}
-        min={minValue ?? min}
         max={max}
-        step={maxStep}
-        value={maxValue ?? ''}
-        onChange={(e) => onMaxValueChange?.(e.currentTarget.valueAsNumber)}
-        placeholder={maxPlaceholder}
+        min={minValue ?? min}
+        name={maxName}
         onBlur={(e) => {
           const clamped = clamp(e.currentTarget.valueAsNumber, minValue ?? min, max);
 
@@ -82,7 +77,12 @@ export function RangeInput({
 
           onMaxValueChange?.(clamped);
         }}
-        className="flex-1"
+        onChange={(e) => onMaxValueChange?.(e.currentTarget.valueAsNumber)}
+        placeholder={maxPlaceholder}
+        prepend={maxPrepend}
+        step={maxStep}
+        type="number"
+        value={maxValue ?? ''}
       />
     </div>
   );

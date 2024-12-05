@@ -4,6 +4,7 @@ export default function Preview() {
   return (
     <div className="flex h-screen items-center justify-center gap-8 bg-background p-8">
       <ProductCard
+        className="w-80"
         product={{
           id: '1',
           href: '#',
@@ -17,9 +18,9 @@ export default function Preview() {
           badge: 'New',
         }}
         showCompare
-        className="w-80"
       />
       <ProductCard
+        className="w-80"
         product={{
           id: '1',
           href: '#',
@@ -29,7 +30,6 @@ export default function Preview() {
           badge: 'New',
         }}
         showCompare
-        className="w-80"
       />
     </div>
   );

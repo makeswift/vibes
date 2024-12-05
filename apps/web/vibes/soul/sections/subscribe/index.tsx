@@ -25,11 +25,11 @@ export function Subscribe({
         {image && (
           <div className="relative min-h-96 w-full bg-primary/10 @4xl:flex-1">
             <Image
-              src={image.src}
               alt={image.alt}
-              sizes="(max-width: 680px) 100vw, 50vw"
-              fill
               className="object-cover"
+              fill
+              sizes="(max-width: 680px) 100vw, 50vw"
+              src={image.src}
             />
           </div>
         )}
@@ -49,7 +49,7 @@ export function Subscribe({
               </h2>
               <p className="text-primary-highlight opacity-75">{description}</p>
             </div>
-            <InlineEmailForm className="flex-1" action={action} placeholder={placeholder} />
+            <InlineEmailForm action={action} className="flex-1" placeholder={placeholder} />
           </div>
         </div>
       </div>

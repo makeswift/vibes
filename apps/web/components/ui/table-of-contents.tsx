@@ -78,9 +78,6 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
         {headings.map((heading, index) => (
           <li key={index}>
             <TableOfContentsLink
-              style={{
-                marginLeft: `${heading.level - 2}em`,
-              }}
               active={activeHeading?.id === heading.id}
               href={`#${heading.id}`}
               onClick={(e) => {
@@ -92,6 +89,9 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
                   left: (element?.getBoundingClientRect().left ?? 0) + window.scrollY - offsetTop,
                   behavior: 'smooth',
                 });
+              }}
+              style={{
+                marginLeft: `${heading.level - 2}em`,
               }}
             >
               {heading.text}

@@ -111,15 +111,15 @@ export default function Preview() {
   return (
     <div className="relative min-h-screen bg-contrast-100 p-4">
       <Navigation
-        links={navigationLinks}
-        logo={logo}
-        cartHref="#"
         accountHref="#"
         activeLocaleId="en"
-        searchHref="#"
-        locales={locales}
-        searchAction={searchAction('Electric')}
+        cartHref="#"
+        links={navigationLinks}
         localeAction={localeAction}
+        locales={locales}
+        logo={logo}
+        searchAction={searchAction('Electric')}
+        searchHref="#"
       />
     </div>
   );

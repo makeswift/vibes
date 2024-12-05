@@ -25,9 +25,9 @@ export function ResetPasswordSection({
           <p className="mb-10 text-base font-light leading-none @xl:text-lg">{subtitle}</p>
           <ResetPasswordForm
             action={action}
-            submitLabel={submitLabel}
-            newPasswordLabel={newPasswordLabel}
             confirmPasswordLabel={confirmPasswordLabel}
+            newPasswordLabel={newPasswordLabel}
+            submitLabel={submitLabel}
           />
         </div>
       </div>

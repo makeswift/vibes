@@ -35,7 +35,7 @@ export function FeaturedProductsCarousel({ title, description, cta, products }: 
           </div>
 
           {cta != null && cta.href !== '' && cta.label !== '' && (
-            <AnimatedLink label={cta.label} link={{ href: cta.href }} className="mr-3" />
+            <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
           )}
         </div>
         <Suspense fallback={<ProductsCarouselSkeleton />}>
@@ -65,7 +65,7 @@ export function FeaturedProductsCarouselSkeleton({
           </div>
 
           {cta != null && cta.href !== '' && cta.label !== '' && (
-            <AnimatedLink label={cta.label} link={{ href: cta.href }} className="mr-3" />
+            <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
           )}
         </div>
         <ProductsCarouselSkeleton />

@@ -18,7 +18,7 @@ export default async function Layout({
 
   return (
     <>
-      <Header chapters={chapters} chapterSlug={vibeSlug} />
+      <Header chapterSlug={vibeSlug} chapters={chapters} />
 
       <div className="relative mx-auto block max-w-screen-2xl items-start gap-x-4 px-5 lg:flex xl:px-8">
         {activeChapter && <Sidebar chapter={activeChapter} />}

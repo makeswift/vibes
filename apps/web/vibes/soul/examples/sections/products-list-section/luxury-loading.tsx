@@ -33,12 +33,12 @@ export default function Preview() {
   return (
     <div className="py-6">
       <ProductsListSection
-        title="Shoes"
         breadcrumbs={breadcrumbs}
-        products={productsPromise}
-        totalCount={totalCount}
         filters={filters}
+        products={productsPromise}
         sortOptions={sortOptions}
+        title="Shoes"
+        totalCount={totalCount}
       />
     </div>
   );

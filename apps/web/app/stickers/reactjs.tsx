@@ -17,15 +17,15 @@ export function Reactjs() {
           >
             <Sticker
               active={active}
-              hover={hover}
-              peelAngle={-0}
-              hoverPeel={0.25}
               activePeel={0.35}
-              width={229}
-              height={207}
-              front={<ReactjsFront />}
               back={<ReactjsBack />}
+              front={<ReactjsFront />}
+              height={207}
+              hover={hover}
+              hoverPeel={0.25}
+              peelAngle={-0}
               shadow={<ReactjsShadow />}
+              width={229}
             />
           </Transition>
         )}

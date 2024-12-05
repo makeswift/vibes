@@ -15,7 +15,7 @@ export default function Preview() {
         <li>Track new orders</li>
         <li>Save items to your Wish List</li>
       </ul>
-      <Button variant="secondary" className="mt-auto w-full">
+      <Button className="mt-auto w-full" variant="secondary">
         Create Account
       </Button>
     </SignInSection>

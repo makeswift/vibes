@@ -63,44 +63,18 @@ export default function Preview() {
       </Banner>
 
       <Navigation
-        links={navigationLinks}
-        logo={logo}
-        cartHref="#"
         accountHref="#"
-        locales={locales}
-        localeAction={localeAction}
         activeLocaleId="en"
+        cartHref="#"
+        links={navigationLinks}
+        localeAction={localeAction}
+        locales={locales}
+        logo={logo}
         searchHref="#"
       />
 
       <BlogPostContent
-        title="Top 5 Plants to Purify Your Home's Air"
         author="Sam Smith"
-        date="June 30, 2024"
-        tags={[
-          {
-            label: 'Plants',
-            link: {
-              href: '#',
-            },
-          },
-          {
-            label: 'Home',
-            link: {
-              href: '#',
-            },
-          },
-          {
-            label: 'Gardening',
-            link: {
-              href: '#',
-            },
-          },
-        ]}
-        image={{
-          src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
-          alt: 'A plant with large leaves and a short stem.',
-        }}
         content={`
        <h2>Best Air-Purifying Plants</h2>
         <ol>
@@ -146,29 +120,55 @@ export default function Preview() {
             </li>
         </ol>
       `}
+        date="June 30, 2024"
+        image={{
+          src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
+          alt: 'A plant with large leaves and a short stem.',
+        }}
+        tags={[
+          {
+            label: 'Plants',
+            link: {
+              href: '#',
+            },
+          },
+          {
+            label: 'Home',
+            link: {
+              href: '#',
+            },
+          },
+          {
+            label: 'Gardening',
+            link: {
+              href: '#',
+            },
+          },
+        ]}
+        title="Top 5 Plants to Purify Your Home's Air"
       />
 
       <FeaturedBlogPostCarousel
-        title="Related posts"
         blogPosts={posts}
         cta={{
           href: '#',
           label: 'View All',
         }}
+        title="Related posts"
       />
 
       <Subscribe
-        title="Sign up for our newsletter"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         action={action}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+        title="Sign up for our newsletter"
       />
 
       <Footer
-        logo={logo}
-        sections={footerLinks}
         contactInformation={contactInformation}
         copyright={copyright}
+        logo={logo}
         paymentIcons={paymentIconsArray}
+        sections={footerLinks}
         socialMediaLinks={socialMediaLinks}
       />
     </>

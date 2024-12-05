@@ -22,25 +22,25 @@ export default async function Preview() {
         <strong>&quot;welcome&quot;</strong>
       </Banner>
       <Navigation
-        links={navigationLinks}
-        logo={logo}
-        cartHref="#"
         accountHref="#"
         activeLocaleId="en"
-        locales={locales}
+        cartHref="#"
+        links={navigationLinks}
         localeAction={localeAction}
+        locales={locales}
+        logo={logo}
         searchHref="#"
       />
       <ProductsListSection
         breadcrumbs={breadcrumbs}
-        title="All Shoes"
-        products={products}
-        totalCount={products.length}
-        sortOptions={sortOptions}
         filters={filters}
+        products={products}
+        sortOptions={sortOptions}
+        title="All Shoes"
+        totalCount={products.length}
       />
-      <FeaturedProductsCarousel title="Recently Viewed" products={products} />
-      <Footer sections={footerLinks} logo={logo} copyright={copyright} />
+      <FeaturedProductsCarousel products={products} title="Recently Viewed" />
+      <Footer copyright={copyright} logo={logo} sections={footerLinks} />
     </>
   );
 }

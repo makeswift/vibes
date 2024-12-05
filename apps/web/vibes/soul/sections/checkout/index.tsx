@@ -40,26 +40,26 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
           <div className="flex items-end gap-4">
             <Input label="Email" value="test@test.com" />
             <Button
-              variant="secondary"
-              size="small"
               className="h-[48px]"
               onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault();
                 handleAccordionChange('');
               }}
+              size="small"
+              variant="secondary"
             >
               Continue
             </Button>
           </div>
           <Checkbox
-            id="newsletter-subscribe"
             checked={checked}
-            setChecked={setChecked}
+            id="newsletter-subscribe"
             label="Subscribe to our newsletter"
+            setChecked={setChecked}
           />
           <span className="block pt-8 text-xs">
             Already have an account?{' '}
-            <Link href="#" className="font-semibold">
+            <Link className="font-semibold" href="#">
               Log in
             </Link>
           </span>
@@ -81,8 +81,8 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
       ),
       form: (
         <CheckoutForm
-          includeSameAsBillingAddress
           includeOrderComments
+          includeSameAsBillingAddress
           includeShippingMethod
           onSubmit={(e: React.MouseEvent<HTMLButtonElement>) => {
             e.preventDefault();
@@ -130,15 +130,15 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
           </h1>
 
           <Accordion.Root
-            type="single"
-            collapsible
-            value={openAccordion}
-            onValueChange={handleAccordionChange}
             asChild
+            collapsible
+            onValueChange={handleAccordionChange}
+            type="single"
+            value={openAccordion}
           >
             <ul>
               {accordions.map((accordion, i) => (
-                <Accordion.Item key={i} value={`${i + 1}`} asChild>
+                <Accordion.Item asChild key={i} value={`${i + 1}`}>
                   <li className="group px-3 transition-colors duration-500 @container/accordion data-[state=closed]:bg-transparent data-[state=open]:bg-contrast-100/50 @xl:rounded-r-lg @xl:px-6 @5xl:pl-20 @5xl:pr-10 @6xl:px-20 @7xl:rounded-lg">
                     <Accordion.Header>
                       <div className="grid grid-cols-[max-content_1fr_minmax(max-content,auto)] gap-x-4 py-5 group-data-[state=closed]:grid-rows-[auto,auto] group-data-[state=open]:grid-rows-1 @md:gap-x-8 @xl/accordion:grid-rows-1">
@@ -155,9 +155,9 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                         )}
                         <Accordion.Trigger asChild>
                           <Button
-                            variant="secondary"
-                            size="small"
                             className="col-start-3 h-min group-data-[state=open]:pointer-events-none group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0 "
+                            size="small"
+                            variant="secondary"
                           >
                             Edit
                           </Button>
@@ -197,8 +197,8 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                     Summary
                   </h2>
                   <Link
-                    href="#"
                     className="mb-0.5 text-sm text-contrast-300 transition-colors duration-300 hover:text-foreground"
+                    href="#"
                   >
                     Edit Cart
                   </Link>
@@ -207,15 +207,15 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                 {/* Mini Products List in Order Summary */}
                 <ul className="flex flex-col gap-y-4">
                   {products.map(({ id, title, image, price, quantity }) => (
-                    <li key={id} className="flex items-center justify-between gap-x-4">
+                    <li className="flex items-center justify-between gap-x-4" key={id}>
                       <div className="flex items-center gap-x-4">
                         <div className="relative aspect-[3/4] w-16 overflow-hidden rounded-lg bg-contrast-100">
                           <Image
-                            src={image.src}
                             alt={image.alt}
+                            className="h-full w-full object-cover"
                             fill
                             sizes="64px"
-                            className="h-full w-full object-cover"
+                            src={image.src}
                           />
                         </div>
                         <div>
@@ -230,7 +230,7 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
 
                 <div className="flex items-end gap-2 pb-7 pt-10">
                   <Input label="Coupon / Gift Certificate" />
-                  <Button variant="secondary" size="small" className="h-[48px]">
+                  <Button className="h-[48px]" size="small" variant="secondary">
                     Apply
                   </Button>
                 </div>

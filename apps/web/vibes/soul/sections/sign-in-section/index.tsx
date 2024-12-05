@@ -30,11 +30,11 @@ export function SignInSection({
           <h1 className="mb-10 text-4xl font-medium leading-none @xl:text-5xl">{title}</h1>
           <SignInForm
             action={action}
-            submitLabel={submitLabel}
             emailLabel={emailLabel}
             passwordLabel={passwordLabel}
+            submitLabel={submitLabel}
           />
-          <Link href={forgotPasswordHref} className="-mb-10 mt-4 text-sm font-semibold">
+          <Link className="-mb-10 mt-4 text-sm font-semibold" href={forgotPasswordHref}>
             {forgotPasswordLabel}
           </Link>
         </div>

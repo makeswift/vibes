@@ -16,14 +16,14 @@ export function EazyTheme() {
         >
           <Sticker
             active={active}
-            hover={hover}
-            peelAngle={15}
-            hoverPeel={0.2}
-            width={168}
-            height={382}
-            front={<ThemesFront />}
             back={<ThemesBack />}
+            front={<ThemesFront />}
+            height={382}
+            hover={hover}
+            hoverPeel={0.2}
+            peelAngle={15}
             shadow={<ThemesShadow />}
+            width={168}
           />
         </Transition>
       )}

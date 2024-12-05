@@ -19,8 +19,8 @@ export function BlogPostCarousel({ className, blogPosts }: Props) {
         {blogPosts.map((post) => {
           return (
             <CarouselItem
-              key={post.id}
               className="basis-full @md:basis-1/2 @4xl:basis-1/3 @7xl:basis-1/4"
+              key={post.id}
             >
               <BlogPostCard {...post} />
             </CarouselItem>
