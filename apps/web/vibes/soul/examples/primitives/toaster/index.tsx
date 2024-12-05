@@ -1,38 +1,38 @@
-'use client'
+'use client';
 
-import { Button } from '@/vibes/soul/primitives/button'
-import { toast } from '@/vibes/soul/primitives/toaster'
+import { Button } from '@/vibes/soul/primitives/button';
+import { toast } from '@/vibes/soul/primitives/toaster';
 
 export default function Preview() {
   return (
     <div className="grid h-screen place-content-center gap-x-4 gap-y-6">
-      <Button variant="primary" onClick={() => toast.success('Success')}>
+      <Button onClick={() => toast.success('Success')} variant="primary">
         Success
       </Button>
 
-      <Button variant="primary" onClick={() => toast.error('Error')}>
+      <Button onClick={() => toast.error('Error')} variant="primary">
         Error
       </Button>
 
-      <Button variant="primary" onClick={() => toast.warning('Warning')}>
+      <Button onClick={() => toast.warning('Warning')} variant="primary">
         Warning
       </Button>
 
-      <Button variant="primary" onClick={() => toast.info('Info')}>
+      <Button onClick={() => toast.info('Info')} variant="primary">
         Info
       </Button>
 
       <Button
-        variant="primary"
         onClick={() =>
           toast.success('Success', {
             description: 'Description of toast',
             action: { label: 'Undo', onClick: () => console.log('undo') },
           })
         }
+        variant="primary"
       >
         Options
       </Button>
     </div>
-  )
+  );
 }

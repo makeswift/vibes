@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { Toaster as Sonner, toast as SonnerToast } from 'sonner'
+import { Toaster as Sonner, toast as SonnerToast } from 'sonner';
 
-import { Alert } from '@/vibes/soul/primitives/alert'
+import { Alert } from '@/vibes/soul/primitives/alert';
 
-type ToasterProps = React.ComponentProps<typeof Sonner>
+type ToasterProps = React.ComponentProps<typeof Sonner>;
 
 interface ToastOptions {
   action?: {
-    label: string
-    onClick: () => void
-  }
-  description?: string
-  position?: ToasterProps['position']
-  dismissLabel?: string
+    label: string;
+    onClick: () => void;
+  };
+  description?: string;
+  position?: ToasterProps['position'];
+  dismissLabel?: string;
 }
 
 export const Toaster = ({ ...props }: ToasterProps) => {
@@ -27,60 +27,60 @@ export const Toaster = ({ ...props }: ToasterProps) => {
       }}
       {...props}
     />
-  )
-}
+  );
+};
 
 export const toast = {
   success: (message: string, options?: ToastOptions) => {
-    const position = options?.position
+    const position = options?.position;
 
     const toastId = SonnerToast(
       <Alert
-        variant="success"
         message={message}
         onDismiss={() => SonnerToast.dismiss(toastId)}
+        variant="success"
         {...options}
       />,
-      { position }
-    )
+      { position },
+    );
   },
   error: (message: string, options?: ToastOptions) => {
-    const position = options?.position
+    const position = options?.position;
 
     const toastId = SonnerToast(
       <Alert
-        variant="error"
         message={message}
         onDismiss={() => SonnerToast.dismiss(toastId)}
+        variant="error"
         {...options}
       />,
-      { position }
-    )
+      { position },
+    );
   },
   warning: (message: string, options?: ToastOptions) => {
-    const position = options?.position
+    const position = options?.position;
 
     const toastId = SonnerToast(
       <Alert
-        variant="warning"
         message={message}
         onDismiss={() => SonnerToast.dismiss(toastId)}
+        variant="warning"
         {...options}
       />,
-      { position }
-    )
+      { position },
+    );
   },
   info: (message: string, options?: ToastOptions) => {
-    const position = options?.position
+    const position = options?.position;
 
     const toastId = SonnerToast(
       <Alert
-        variant="info"
         message={message}
         onDismiss={() => SonnerToast.dismiss(toastId)}
+        variant="info"
         {...options}
       />,
-      { position }
-    )
+      { position },
+    );
   },
-}
+};
