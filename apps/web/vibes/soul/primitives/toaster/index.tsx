@@ -12,7 +12,7 @@ export const Toaster = ({ ...props }: ToasterProps) => {
         unstyled: true,
         classNames: {
           toast:
-            'rounded-xl py-3 px-4 min-w-[284px] max-w-[356px] text-foreground flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 ring-foreground flex border border-foreground/10 shadow-sm',
+            'rounded-xl ps-4 pe-3 py-3 min-w-[284px] max-w-[356px] text-foreground flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 ring-foreground flex border border-foreground/10 shadow-sm',
           content: 'grow',
           title: 'font-normal text-sm',
           description: 'font-medium text-xs text-contrast-400',
