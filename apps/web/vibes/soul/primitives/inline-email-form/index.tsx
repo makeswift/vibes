@@ -10,7 +10,6 @@ import { FieldError } from '@/vibes/soul/form/field-error';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
 
-
 import { schema } from './schema';
 
 type Action<State, Payload> = (
@@ -29,7 +28,7 @@ export function InlineEmailForm({
   placeholder?: string;
   submitLabel?: string;
   dismissLabel?: string;
-  action: Action<SubmissionResult & {successMessage?: string} | null, FormData>;
+  action: Action<(SubmissionResult & { successMessage?: string }) | null, FormData>;
 }) {
   const [lastResult, formAction, isPending] = useActionState(action, null);
 

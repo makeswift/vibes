@@ -5,7 +5,7 @@ import { action } from './actions';
 export default function Preview() {
   return (
     <div className="p-10">
-      <InlineEmailForm action={action} successMessage="Submitted!" />
+      <InlineEmailForm action={action} />
     </div>
   );
 }
