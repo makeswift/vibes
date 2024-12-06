@@ -62,6 +62,7 @@ export function InlineEmailForm({
         <input
           {...getInputProps(fields.email, { type: 'email' })}
           className="placeholder-contrast-gray-500 h-14 w-full bg-transparent pl-5 pr-16 text-foreground placeholder:font-normal focus:outline-none"
+          data-1p-ignore
           key={fields.email.id}
           placeholder={placeholder}
         />
