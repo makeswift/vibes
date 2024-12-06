@@ -1,89 +1,90 @@
-import { Button } from '@/vibes/soul/primitives/button';
 import { ArrowRight } from 'lucide-react';
+
+import { Button } from '@/vibes/soul/primitives/button';
 
 export default function Preview() {
   return (
     <div className="flex h-screen flex-col items-center gap-x-4 gap-y-6 px-6 py-8">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
-        <Button variant="primary" size="large">
+        <Button size="large" variant="primary">
           Shop now
         </Button>
-        <Button variant="primary" size="medium">
+        <Button size="medium" variant="primary">
           Shop now
         </Button>
-        <Button variant="primary" size="small">
+        <Button size="small" variant="primary">
           Shop now
         </Button>
-        <Button variant="primary" size="x-small">
+        <Button size="x-small" variant="primary">
           Shop now
         </Button>
-        <Button variant="primary" size="icon">
+        <Button size="icon" variant="primary">
           <ArrowRight size={20} />
         </Button>
-        <Button variant="primary" size="icon-small">
-          <ArrowRight size={20} />
-        </Button>
-      </div>
-
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
-        <Button variant="secondary" size="large">
-          Shop now
-        </Button>
-        <Button variant="secondary" size="medium">
-          Shop now
-        </Button>
-        <Button variant="secondary" size="small">
-          Shop now
-        </Button>
-        <Button variant="secondary" size="x-small">
-          Shop now
-        </Button>
-        <Button variant="secondary" size="icon">
-          <ArrowRight size={20} />
-        </Button>
-        <Button variant="secondary" size="icon-small">
+        <Button size="icon-small" variant="primary">
           <ArrowRight size={20} />
         </Button>
       </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
-        <Button variant="tertiary" size="large">
+        <Button size="large" variant="secondary">
           Shop now
         </Button>
-        <Button variant="tertiary" size="medium">
+        <Button size="medium" variant="secondary">
           Shop now
         </Button>
-        <Button variant="tertiary" size="small">
+        <Button size="small" variant="secondary">
           Shop now
         </Button>
-        <Button variant="tertiary" size="x-small">
+        <Button size="x-small" variant="secondary">
           Shop now
         </Button>
-        <Button variant="tertiary" size="icon">
+        <Button size="icon" variant="secondary">
           <ArrowRight size={20} />
         </Button>
-        <Button variant="tertiary" size="icon-small">
+        <Button size="icon-small" variant="secondary">
           <ArrowRight size={20} />
         </Button>
       </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
-        <Button variant="ghost" size="large">
+        <Button size="large" variant="tertiary">
           Shop now
         </Button>
-        <Button variant="ghost" size="medium">
+        <Button size="medium" variant="tertiary">
           Shop now
         </Button>
-        <Button variant="ghost" size="small">
+        <Button size="small" variant="tertiary">
           Shop now
         </Button>
-        <Button variant="ghost" size="x-small">
+        <Button size="x-small" variant="tertiary">
           Shop now
         </Button>
-        <Button variant="ghost" size="icon">
+        <Button size="icon" variant="tertiary">
           <ArrowRight size={20} />
         </Button>
-        <Button variant="ghost" size="icon-small">
+        <Button size="icon-small" variant="tertiary">
+          <ArrowRight size={20} />
+        </Button>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
+        <Button size="large" variant="ghost">
+          Shop now
+        </Button>
+        <Button size="medium" variant="ghost">
+          Shop now
+        </Button>
+        <Button size="small" variant="ghost">
+          Shop now
+        </Button>
+        <Button size="x-small" variant="ghost">
+          Shop now
+        </Button>
+        <Button size="icon" variant="ghost">
+          <ArrowRight size={20} />
+        </Button>
+        <Button size="icon-small" variant="ghost">
           <ArrowRight size={20} />
         </Button>
       </div>
