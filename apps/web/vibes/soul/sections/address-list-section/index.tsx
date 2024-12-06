@@ -305,8 +305,8 @@ function AddressActionButton({
 }: {
   address: Address;
   intent: string;
-  action(formData: FormData): void;
-  onSubmit(formData: FormData): void;
+  action: (formData: FormData) => void;
+  onSubmit: (formData: FormData) => void;
 } & Omit<React.ComponentProps<'button'>, 'onSubmit'>) {
   const [form, fields] = useForm({
     defaultValue: address,
@@ -384,8 +384,8 @@ function AddressForm({
   countryLabel?: string;
   postalCodeLabel?: string;
   onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  action(formData: FormData): void;
-  onSubmit(formData: FormData): void;
+  action: (formData: FormData) => void;
+  onSubmit: (formData: FormData) => void;
 }) {
   const [form, fields] = useForm({
     lastResult,

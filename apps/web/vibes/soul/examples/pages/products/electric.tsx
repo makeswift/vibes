@@ -10,7 +10,7 @@ import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-product
 import { Footer } from '@/vibes/soul/sections/footer';
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section';
 
-export default async function Preview() {
+export default function Preview() {
   const productsPromise = getProducts('Electric');
   const sortOptions = getSortOptions();
   const filters = getFilters('Electric');

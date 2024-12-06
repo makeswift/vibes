@@ -18,7 +18,7 @@ interface Props {
   products: CompareProduct[];
   addToCartLabel?: string;
   emptyStateMessage?: string;
-  addToCartAction?(id: string): Promise<void>;
+  addToCartAction?: (id: string) => Promise<void>;
 }
 
 export function CompareSection({

@@ -16,7 +16,7 @@ export function Colors({ colors }: { colors: Color[] }) {
           <div className="group" key={index}>
             <div
               className="mb-2 h-12 w-full ring-1 ring-inset ring-foreground/15"
-              style={{ backgroundColor: `${color.value}` }}
+              style={{ backgroundColor: color.value }}
             />
             <div className="relative">
               <div className="font-mono text-xs leading-tight text-foreground">{color.name}</div>

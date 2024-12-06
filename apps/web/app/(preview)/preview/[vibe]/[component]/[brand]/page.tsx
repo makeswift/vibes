@@ -5,7 +5,7 @@ import * as Vibes from '@/vibes';
 import { Vibe } from '@/vibes/schema';
 import { getVibe } from '@/vibes/utils';
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return Object.values(Vibes).flatMap((vibe: Vibe) =>
     vibe.components.flatMap((component) =>
       vibe.brands.map((brand) => ({
