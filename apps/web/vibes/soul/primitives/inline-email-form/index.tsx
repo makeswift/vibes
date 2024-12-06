@@ -23,15 +23,13 @@ export function InlineEmailForm({
   action,
   submitLabel = 'Submit',
   placeholder = 'Enter your email',
-  successMessage,
   dismissLabel,
 }: {
   className?: string;
   placeholder?: string;
   submitLabel?: string;
-  successMessage: string;
   dismissLabel?: string;
-  action: Action<SubmissionResult | null, FormData>;
+  action: Action<SubmissionResult & {successMessage?: string} | null, FormData>;
 }) {
   const [lastResult, formAction, isPending] = useActionState(action, null);
 
@@ -45,11 +43,11 @@ export function InlineEmailForm({
   });
 
   useEffect(() => {
-    if (lastResult?.status === 'success') {
-      toast.success(successMessage, { dismissLabel });
+    if (typeof lastResult?.successMessage === 'string') {
+      toast.success(lastResult.successMessage, { dismissLabel });
       return;
     }
-  }, [dismissLabel, lastResult, successMessage]);
+  }, [dismissLabel, lastResult]);
 
   const { errors = [] } = fields.email;
 
