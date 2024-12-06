@@ -1,10 +1,11 @@
 'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { getFormProps, getInputProps, SubmissionResult, useForm } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
-import { useActionState, useEffect } from 'react';
+import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 
+import { FormStatus } from '@/vibes/soul/form/form-status';
 import { Input } from '@/vibes/soul/form/input';
 import { Button } from '@/vibes/soul/primitives/button';
 
@@ -12,10 +13,14 @@ import { schema } from './schema';
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
-export type ForgotPasswordAction = Action<SubmissionResult | null, FormData>;
+export type ForgotPasswordAction = Action<
+  (SubmissionResult & { successMessage?: string }) | null,
+  FormData
+>;
 
 interface Props {
   action: ForgotPasswordAction;
+  recaptchaSiteKey?: string;
   emailLabel?: string;
   submitLabel?: string;
 }
@@ -27,6 +32,7 @@ export function ForgotPasswordForm({
 }: Props) {
   const [lastResult, formAction] = useActionState(action, null);
   const [form, fields] = useForm({
+    lastResult,
     constraint: getZodConstraint(schema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
@@ -34,10 +40,6 @@ export function ForgotPasswordForm({
       return parseWithZod(formData, { schema });
     },
   });
-
-  useEffect(() => {
-    if (lastResult?.error) console.log(lastResult.error);
-  }, [lastResult]);
 
   return (
     <form {...getFormProps(form)} action={formAction} className="flex flex-grow flex-col gap-5">
@@ -48,6 +50,14 @@ export function ForgotPasswordForm({
         label={emailLabel}
       />
       <SubmitButton>{submitLabel}</SubmitButton>
+      {form.errors?.map((error, index) => (
+        <FormStatus key={index} type="error">
+          {error}
+        </FormStatus>
+      ))}
+      {form.status === 'success' && lastResult?.successMessage != null && (
+        <FormStatus>{lastResult.successMessage}</FormStatus>
+      )}
     </form>
   );
 }
