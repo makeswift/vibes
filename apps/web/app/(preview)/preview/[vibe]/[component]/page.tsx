@@ -3,7 +3,7 @@ import { notFound, redirect } from 'next/navigation';
 import * as Vibes from '@/vibes';
 import { getVibe } from '@/vibes/utils';
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return Object.values(Vibes).flatMap((vibe) =>
     vibe.components.map((component) => ({ vibe: vibe.slug, component: component.name })),
   );

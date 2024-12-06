@@ -420,7 +420,7 @@ interface FilterParams {
 }
 
 // Update getFilters function signature
-export async function getFilters<T extends SoulBrandName>(brand: T): Promise<Filter[]> {
+export async function getFilters(brand: SoulBrandName): Promise<Filter[]> {
   await new Promise((resolve) => setTimeout(resolve, 250));
 
   const brandProducts = products[brand];
@@ -513,8 +513,8 @@ export async function getFilters<T extends SoulBrandName>(brand: T): Promise<Fil
 }
 
 // Update getProducts function to use FilterParams
-export async function getProducts<T extends SoulBrandName>(
-  brand: T,
+export async function getProducts(
+  brand: SoulBrandName,
   filterParams?: FilterParams,
 ): Promise<CardProduct[]> {
   await new Promise((resolve) => setTimeout(resolve, 500));
@@ -549,6 +549,7 @@ export async function getProducts<T extends SoulBrandName>(
 
       if (filterParams.color && filterParams.color.length > 0) {
         if (isColorProduct(product)) {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           conditions.push(filterParams.color.some((color) => product.color.includes(color as any)));
         }
       }

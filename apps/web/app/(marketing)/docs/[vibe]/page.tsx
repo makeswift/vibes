@@ -5,7 +5,7 @@ import * as Vibes from '@/vibes';
 
 const chapters = Object.values(Vibes).map(toChapter);
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return chapters.map((vibe) => ({ vibe: vibe.slug }));
 }
 

@@ -20,7 +20,7 @@ export interface Props {
   descriptionLabel?: string;
   ratingLabel?: string;
   otherDetailsLabel?: string;
-  addToCartAction?(id: string): Promise<void>;
+  addToCartAction?: (id: string) => Promise<void>;
 }
 
 export function CompareCard({
@@ -39,6 +39,7 @@ export function CompareCard({
       <div className="mb-2 space-y-4 pb-4">
         <ProductCard product={product} />
         {addToCartAction && (
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           <form action={addToCartAction.bind(null, product.id)}>
             <Button className="w-full" size="medium" type="submit">
               {addToCartLabel}

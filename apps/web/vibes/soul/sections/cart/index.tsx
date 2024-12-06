@@ -272,8 +272,8 @@ function CounterForm({
   incrementLabel?: string;
   decrementLabel?: string;
   deleteLabel?: string;
-  action(payload: FormData): void;
-  onSubmit(formData: FormData): void;
+  action: (payload: FormData) => void;
+  onSubmit: (formData: FormData) => void;
 }) {
   const [form, fields] = useForm({
     defaultValue: { id: lineItem.id },

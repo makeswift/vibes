@@ -49,7 +49,7 @@ interface PageMeta {
 
 const chapters = Object.values(Vibes).map(toChapter);
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return chapters.flatMap((chapter) =>
     chapter.groups.flatMap((group) =>
       group.pages.map((page) => ({ vibe: chapter.slug, page: page.slug })),
