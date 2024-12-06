@@ -1,13 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 'use client';
 
 import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react';
 import {
-  UseQueryStatesKeysMap,
   parseAsArrayOf,
   parseAsInteger,
   parseAsString,
   useQueryStates,
+  UseQueryStatesKeysMap,
 } from 'nuqs';
 import { Suspense, use, useOptimistic } from 'react';
 
@@ -118,6 +122,7 @@ export function FiltersPanelInner({
                     onValueChange={(value) => {
                       startTransition(async () => {
                         const nextParams = { ...optimisticParams, [filter.paramName]: value };
+
                         setOptimisticParams(nextParams);
                         await setParams(nextParams);
                       });
@@ -147,14 +152,20 @@ export function FiltersPanelInner({
                       minPrepend={filter.minPrepend}
                       minValue={optimisticParams[filter.minParamName] ?? null}
                       onMaxValueChange={(value) => {
-                        const nextParams = { ...optimisticParams, [filter.maxParamName]: value };
-                        setOptimisticParams(nextParams);
-                        setParams(nextParams);
+                        startTransition(async () => {
+                          const nextParams = { ...optimisticParams, [filter.maxParamName]: value };
+
+                          setOptimisticParams(nextParams);
+                          await setParams(nextParams);
+                        });
                       }}
                       onMinValueChange={(value) => {
-                        const nextParams = { ...optimisticParams, [filter.minParamName]: value };
-                        setOptimisticParams(nextParams);
-                        setParams(nextParams);
+                        startTransition(async () => {
+                          const nextParams = { ...optimisticParams, [filter.minParamName]: value };
+
+                          setOptimisticParams(nextParams);
+                          await setParams(nextParams);
+                        });
                       }}
                     />
                     <Button
@@ -172,8 +183,9 @@ export function FiltersPanelInner({
                             [filter.minParamName]: optimisticParams[filter.minParamName],
                             [filter.maxParamName]: optimisticParams[filter.maxParamName],
                           };
+
                           setOptimisticParams(nextParams);
-                          setParams(nextParams);
+                          await setParams(nextParams);
                         });
                       }}
                       size="icon"
@@ -208,6 +220,7 @@ export function FiltersPanelInner({
                               ...optimisticParams,
                               [filter.paramName]: Array.from(ratings),
                             };
+
                             setOptimisticParams(nextParams);
                             await setParams(nextParams);
                           })

@@ -2,7 +2,11 @@ import { Suspense } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
-import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
+import {
+  CursorPagination,
+  CursorPaginationInfo,
+  CursorPaginationSkeleton,
+} from '@/vibes/soul/primitives/cursor-pagination';
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
 
 import { ProductListTransitionProvider } from './context';
@@ -54,7 +58,7 @@ export function ProductsListSection({
             {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
             <Suspense fallback="Loading...">
               <div className="flex flex-wrap items-center justify-between gap-4 pb-8 pt-6 text-foreground">
-                <h1 className="flex items-center gap-2 text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl">
+                <h1 className="flex items-center gap-2 font-heading text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl">
                   <Suspense
                     fallback={
                       <span className="inline-flex h-[1lh] w-[6ch] animate-pulse rounded-lg bg-contrast-100" />
@@ -97,7 +101,7 @@ export function ProductsListSection({
                 products={products}
                 showCompare
               />
-              <Stream value={paginationInfo}>
+              <Stream fallback={<CursorPaginationSkeleton />} value={paginationInfo}>
                 {(info) => info && <CursorPagination info={info} />}
               </Stream>
             </ProductListContainer>
