@@ -4,11 +4,10 @@ import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform
 import { parseWithZod } from '@conform-to/zod';
 import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react';
-import { useActionState, useEffect } from 'react';
+import { useActionState } from 'react';
 
-import { FieldError } from '@/vibes/soul/form/field-error';
+import { FormStatus } from '@/vibes/soul/form/form-status';
 import { Button } from '@/vibes/soul/primitives/button';
-import { toast } from '@/vibes/soul/primitives/toaster';
 
 import { schema } from './schema';
 
@@ -22,12 +21,10 @@ export function InlineEmailForm({
   action,
   submitLabel = 'Submit',
   placeholder = 'Enter your email',
-  dismissLabel,
 }: {
   className?: string;
   placeholder?: string;
   submitLabel?: string;
-  dismissLabel?: string;
   action: Action<(SubmissionResult & { successMessage?: string }) | null, FormData>;
 }) {
   const [lastResult, formAction, isPending] = useActionState(action, null);
@@ -38,15 +35,8 @@ export function InlineEmailForm({
       return parseWithZod(formData, { schema });
     },
     shouldValidate: 'onSubmit',
-    shouldRevalidate: 'onBlur',
+    shouldRevalidate: 'onInput',
   });
-
-  useEffect(() => {
-    if (typeof lastResult?.successMessage === 'string') {
-      toast.success(lastResult.successMessage, { dismissLabel });
-      return;
-    }
-  }, [dismissLabel, lastResult]);
 
   const { errors = [] } = fields.email;
 
@@ -78,8 +68,13 @@ export function InlineEmailForm({
         </div>
       </div>
       {errors.map((error, index) => (
-        <FieldError key={index}>{error}</FieldError>
+        <FormStatus key={index} type="error">
+          {error}
+        </FormStatus>
       ))}
+      {form.status === 'success' && lastResult?.successMessage != null && (
+        <FormStatus>{lastResult.successMessage}</FormStatus>
+      )}
     </form>
   );
 }
