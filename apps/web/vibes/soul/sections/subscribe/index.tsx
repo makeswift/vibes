@@ -12,7 +12,6 @@ export function Subscribe({
   title,
   description,
   placeholder,
-  successMessage = 'Thanks for subscribing!',
   dismissLabel,
 }: {
   action: Action<SubmissionResult | null, FormData>;
@@ -20,7 +19,6 @@ export function Subscribe({
   title: string;
   description?: string;
   placeholder?: string;
-  successMessage?: string;
   dismissLabel?: string;
 }) {
   return (
@@ -58,7 +56,6 @@ export function Subscribe({
               className="flex-1"
               dismissLabel={dismissLabel}
               placeholder={placeholder}
-              successMessage={successMessage}
             />
           </div>
         </div>
