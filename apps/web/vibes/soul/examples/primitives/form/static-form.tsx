@@ -1,21 +1,21 @@
 'use client';
 
-import { ButtonRadioGroup } from '../form/button-radio-group';
-import { CardRadioGroup } from '../form/card-radio-group';
-import { Checkbox } from '../form/checkbox';
-import { DatePicker } from '../form/date-picker';
-import { FormStatus } from '../form/form-status';
-import { Input } from '../form/input';
-import { NumberInput } from '../form/number-input';
-import { RadioGroup } from '../form/radio-group';
-import { Select } from '../form/select';
-import { SwatchRadioGroup } from '../form/swatch-radio-group';
-import { Textarea } from '../form/textarea';
-import { ToggleGroup } from '../form/toggle-group';
+import { ButtonRadioGroup } from '../../../form/button-radio-group';
+import { CardRadioGroup } from '../../../form/card-radio-group';
+import { Checkbox } from '../../../form/checkbox';
+import { DatePicker } from '../../../form/date-picker';
+import { FormStatus } from '../../../form/form-status';
+import { Input } from '../../../form/input';
+import { NumberInput } from '../../../form/number-input';
+import { RadioGroup } from '../../../form/radio-group';
+import { Select } from '../../../form/select';
+import { SwatchRadioGroup } from '../../../form/swatch-radio-group';
+import { Textarea } from '../../../form/textarea';
+import { ToggleGroup } from '../../../form/toggle-group';
 
-export default function Preview() {
+export function StaticForm() {
   return (
-    <div className="m-auto mt-4 w-[500px] space-y-4 rounded-lg border border-contrast-100 bg-white p-4 shadow-lg">
+    <form className="mb-6 space-y-4 rounded-lg border border-contrast-100 bg-white p-4 shadow-lg">
       <ToggleGroup
         errors={['This is required']}
         label="Size"
@@ -158,6 +158,6 @@ export default function Preview() {
       />
       <FormStatus>Login was successful</FormStatus>
       <FormStatus type="error">Could not login</FormStatus>
-    </div>
+    </form>
   );
 }
