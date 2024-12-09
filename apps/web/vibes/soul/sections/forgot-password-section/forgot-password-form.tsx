@@ -20,7 +20,6 @@ export type ForgotPasswordAction = Action<
 
 interface Props {
   action: ForgotPasswordAction;
-  recaptchaSiteKey?: string;
   emailLabel?: string;
   submitLabel?: string;
 }
