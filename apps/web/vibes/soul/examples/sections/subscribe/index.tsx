@@ -1,27 +1,5 @@
-// import { redirect } from 'next/navigation'
-// import { SubmissionResult } from '@conform-to/react'
-// import { parseWithZod } from '@conform-to/zod'
-// import { z } from 'zod'
 import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
 import { Subscribe } from '@/vibes/soul/sections/subscribe';
-
-// async function action(prevState: unknown, formData: FormData): Promise<SubmissionResult> {
-//   'use server'
-
-//   const submission = parseWithZod(formData, {
-//     schema: z.object({
-//       email: z.string().email(),
-//     }),
-//   })
-
-//   console.log({ submission })
-
-//   if (submission.status !== 'success') {
-//     return submission.reply()
-//   }
-
-//   return redirect('/f?value=')
-// }
 
 export default function Preview() {
   const image = {

@@ -13,7 +13,7 @@ export function Subscribe({
   description,
   placeholder,
 }: {
-  action: Action<SubmissionResult | null, FormData>;
+  action: Action<{ lastResult: SubmissionResult | null; successMessage?: string }, FormData>;
   image?: { src: string; alt: string };
   title: string;
   description?: string;
