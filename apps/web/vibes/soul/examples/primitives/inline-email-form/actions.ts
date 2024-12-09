@@ -4,7 +4,7 @@ import { parseWithZod } from '@conform-to/zod';
 import { schema } from '@/vibes/soul/primitives/inline-email-form/schema';
 
 export async function action(
-  _lastResult: { lastResult: SubmissionResult | null; },
+  _lastResult: { lastResult: SubmissionResult | null },
   formData: FormData,
 ) {
   'use server';

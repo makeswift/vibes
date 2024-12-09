@@ -31,8 +31,6 @@ export function InlineEmailForm({
     lastResult: null,
   });
 
-  console.log('lastResult', lastResult);
-
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
