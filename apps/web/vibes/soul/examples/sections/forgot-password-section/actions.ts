@@ -4,15 +4,15 @@ import { parseWithZod } from '@conform-to/zod';
 import { schema } from '@/vibes/soul/sections/forgot-password-section/schema';
 
 export async function forgotPasswordAction(
-  lastResult: SubmissionResult | null,
+  state: { lastResult: SubmissionResult | null; successMessage?: string },
   formData: FormData,
-) {
+): Promise<{ lastResult: SubmissionResult | null; successMessage?: string }> {
   'use server';
 
   const submission = parseWithZod(formData, { schema });
 
   if (submission.status !== 'success') {
-    return submission.reply({ formErrors: ['Boom!'] });
+    return { lastResult: submission.reply({ formErrors: ['Boom!'] }) };
   }
 
   // Simulate a network request
@@ -20,5 +20,8 @@ export async function forgotPasswordAction(
 
   // const user = await logIn(submission.value)
 
-  return submission.reply({ resetForm: true });
+  return {
+    lastResult: submission.reply(),
+    successMessage: 'Check your email for a reset link',
+  };
 }
