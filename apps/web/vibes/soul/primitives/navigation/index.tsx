@@ -88,6 +88,7 @@ interface Props<S extends SearchResult> {
   localeAction?: LocaleAction;
   logo?: Streamable<string | { src: string; alt: string } | null>;
   logoHref?: string;
+  logoLabel?: string;
   searchHref: string;
   searchParamName?: string;
   searchAction?: SearchAction<S>;
@@ -169,6 +170,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     links: streamableLinks,
     logo: streamableLogo,
     logoHref = '/',
+    logoLabel = 'Home',
     activeLocaleId,
     localeAction,
     locales,
@@ -296,6 +298,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </Popover.Root>
         <div className="flex flex-1 items-center self-stretch py-2">
           <Link
+            aria-label={logoLabel}
             className="relative flex size-full max-w-[80%] items-center outline-0 ring-primary ring-offset-4 focus-visible:ring-2 @4xl:max-w-[50%]"
             href={logoHref}
           >
