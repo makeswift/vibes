@@ -5,7 +5,9 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { createSerializer, parseAsString } from 'nuqs';
-import { Suspense, use } from 'react';
+import { Suspense } from 'react';
+
+import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable';
 
 export interface CursorPaginationInfo {
   startCursorParamName?: string;
@@ -15,7 +17,10 @@ export interface CursorPaginationInfo {
 }
 
 interface Props {
-  info: CursorPaginationInfo | Promise<CursorPaginationInfo>;
+  label?: Streamable<string | null>;
+  info: Streamable<CursorPaginationInfo>;
+  previousLabel?: Streamable<string | null>;
+  nextLabel?: Streamable<string | null>;
   scroll?: boolean;
 }
 
@@ -27,52 +32,69 @@ export function CursorPagination(props: Props) {
   );
 }
 
-function CursorPaginationResolved({ info, scroll }: Props) {
+function CursorPaginationResolved({
+  label: streamableLabel,
+  info,
+  previousLabel: streamablePreviousLabel,
+  nextLabel: streamableNextLabel,
+  scroll,
+}: Props) {
+  const label = useStreamable(streamableLabel) ?? 'pagination';
   const {
     startCursorParamName = 'before',
     endCursorParamName = 'after',
     startCursor,
     endCursor,
-  } = info instanceof Promise ? use(info) : info;
+  } = useStreamable(info);
   const searchParams = useSearchParams();
   const serialize = createSerializer({
     [startCursorParamName]: parseAsString,
     [endCursorParamName]: parseAsString,
   });
+  const previousLabel = useStreamable(streamablePreviousLabel) ?? 'Go to previous page';
+  const nextLabel = useStreamable(streamableNextLabel) ?? 'Go to next page';
 
   return (
-    <div className="flex w-full items-center justify-center gap-3 py-10">
-      {startCursor != null ? (
-        <PaginationLink
-          href={serialize(searchParams, {
-            [startCursorParamName]: startCursor,
-            [endCursorParamName]: null,
-          })}
-          scroll={scroll}
-        >
-          <ArrowLeft size={24} strokeWidth={1} />
-        </PaginationLink>
-      ) : (
-        <SkeletonLink>
-          <ArrowLeft size={24} strokeWidth={1} />
-        </SkeletonLink>
-      )}
-      {endCursor != null ? (
-        <PaginationLink
-          href={serialize(searchParams, {
-            [endCursorParamName]: endCursor,
-            [startCursorParamName]: null,
-          })}
-          scroll={scroll}
-        >
-          <ArrowRight size={24} strokeWidth={1} />
-        </PaginationLink>
-      ) : (
-        <SkeletonLink>
-          <ArrowRight size={24} strokeWidth={1} />
-        </SkeletonLink>
-      )}
-    </div>
+    <nav aria-label={label} className="py-10" role="navigation">
+      <ul className="flex items-center justify-center gap-3">
+        <li>
+          {startCursor != null ? (
+            <PaginationLink
+              aria-label={previousLabel}
+              href={serialize(searchParams, {
+                [startCursorParamName]: startCursor,
+                [endCursorParamName]: null,
+              })}
+              scroll={scroll}
+            >
+              <ArrowLeft size={24} strokeWidth={1} />
+            </PaginationLink>
+          ) : (
+            <SkeletonLink>
+              <ArrowLeft size={24} strokeWidth={1} />
+            </SkeletonLink>
+          )}
+        </li>
+        <li>
+          {endCursor != null ? (
+            <PaginationLink
+              aria-label={nextLabel}
+              href={serialize(searchParams, {
+                [endCursorParamName]: endCursor,
+                [startCursorParamName]: null,
+              })}
+              scroll={scroll}
+            >
+              <ArrowRight size={24} strokeWidth={1} />
+            </PaginationLink>
+          ) : (
+            <SkeletonLink>
+              <ArrowRight size={24} strokeWidth={1} />
+            </SkeletonLink>
+          )}
+        </li>
+      </ul>
+    </nav>
   );
 }
 
@@ -80,13 +102,16 @@ function PaginationLink({
   href,
   children,
   scroll,
+  'aria-label': ariaLabel,
 }: {
   href: string;
   children: React.ReactNode;
   scroll?: boolean;
+  ['aria-label']?: string;
 }) {
   return (
     <Link
+      aria-label={ariaLabel}
       className={clsx(
         'flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2',
       )}
