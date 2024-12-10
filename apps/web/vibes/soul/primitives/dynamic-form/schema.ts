@@ -24,6 +24,12 @@ type CheckboxField = {
   defaultValue?: string;
 } & FormField;
 
+type CheckboxGroupField = {
+  type: 'checkbox-group';
+  options: { label: string; value: string }[];
+  defaultValue?: string[];
+} & FormField;
+
 type NumberInputField = {
   type: 'number';
   defaultValue?: string;
@@ -50,6 +56,8 @@ type TextAreaField = {
 type DateField = {
   type: 'date';
   defaultValue?: string;
+  minDate?: string;
+  maxDate?: string;
 } & FormField;
 
 type SwatchRadioFieldOption =
@@ -107,6 +115,7 @@ type ConfirmPasswordField = {
 export type Field =
   | RadioField
   | CheckboxField
+  | CheckboxGroupField
   | NumberInputField
   | TextInputField
   | TextAreaField
@@ -123,7 +132,12 @@ export type FieldGroup<F> = F[];
 
 export type SchemaRawShape = Record<
   string,
-  z.ZodString | z.ZodOptional<z.ZodString> | z.ZodNumber | z.ZodOptional<z.ZodNumber>
+  | z.ZodString
+  | z.ZodOptional<z.ZodString>
+  | z.ZodNumber
+  | z.ZodOptional<z.ZodNumber>
+  | z.ZodArray<z.ZodString>
+  | z.ZodOptional<z.ZodArray<z.ZodString>>
 >;
 
 function getFieldSchema(field: Field) {
@@ -131,7 +145,9 @@ function getFieldSchema(field: Field) {
     | z.ZodString
     | z.ZodNumber
     | z.ZodOptional<z.ZodString>
-    | z.ZodOptional<z.ZodNumber>;
+    | z.ZodOptional<z.ZodNumber>
+    | z.ZodArray<z.ZodString, 'atleastone' | 'many'>
+    | z.ZodOptional<z.ZodArray<z.ZodString, 'atleastone' | 'many'>>;
 
   switch (field.type) {
     case 'number':
@@ -139,6 +155,7 @@ function getFieldSchema(field: Field) {
 
       if (field.min != null) fieldSchema.min(field.min);
       if (field.max != null) fieldSchema.max(field.max);
+      if (field.required !== true) fieldSchema = fieldSchema.optional();
 
       break;
 
@@ -153,18 +170,29 @@ function getFieldSchema(field: Field) {
         })
         .trim();
 
+      if (field.required !== true) fieldSchema = fieldSchema.optional();
+
       break;
 
     case 'email':
-      console.log('EMAIL!');
       fieldSchema = z.string().email({ message: 'Please enter a valid email.' }).trim();
+
+      if (field.required !== true) fieldSchema = fieldSchema.optional();
+
+      break;
+
+    case 'checkbox-group':
+      fieldSchema = z.string().array();
+
+      if (field.required === true) fieldSchema = fieldSchema.nonempty();
+
       break;
 
     default:
       fieldSchema = z.string();
-  }
 
-  if (field.required !== true) fieldSchema = fieldSchema.optional();
+      if (field.required !== true) fieldSchema = fieldSchema.optional();
+  }
 
   return fieldSchema;
 }
@@ -199,6 +227,7 @@ export function schema(fields: (Field | FieldGroup<Field>)[]) {
       ctx.addIssue({
         code: 'custom',
         message: 'The passwords did not match',
+        path: [confirmPasswordFieldName],
       });
     }
   });

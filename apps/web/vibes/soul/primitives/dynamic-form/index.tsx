@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 'use client';
 
 import {
@@ -17,12 +18,15 @@ import { z } from 'zod';
 import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group';
 import { CardRadioGroup } from '@/vibes/soul/form/card-radio-group';
 import { Checkbox } from '@/vibes/soul/form/checkbox';
+import { DatePicker } from '@/vibes/soul/form/date-picker';
 import { Input } from '@/vibes/soul/form/input';
 import { NumberInput } from '@/vibes/soul/form/number-input';
 import { RadioGroup } from '@/vibes/soul/form/radio-group';
 import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
+
+import { CheckboxGroup } from '../../form/checkbox-group';
 
 import { Field, FieldGroup, schema } from './schema';
 
@@ -64,7 +68,7 @@ export function DynamicForm<F extends Field>({
     lastResult,
     constraint: getZodConstraint(dynamicSchema),
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: schema(fields) });
+      return parseWithZod(formData, { schema: dynamicSchema });
     },
     defaultValue,
     shouldValidate: 'onSubmit',
@@ -126,8 +130,7 @@ function DynamicFormField({
   formField,
 }: {
   field: Field;
-  formField: FieldMetadata<string | number | boolean | Date | undefined>;
-  syncQueryParams?: boolean;
+  formField: FieldMetadata<string | string[] | number | boolean | Date | undefined>;
 }) {
   const controls = useInputControl(formField);
 
@@ -137,6 +140,7 @@ function DynamicFormField({
         <NumberInput
           {...getInputProps(formField, { type: 'number' })}
           errors={formField.errors}
+          key={formField.id}
           label={field.label}
         />
       );
@@ -146,6 +150,7 @@ function DynamicFormField({
         <Input
           {...getInputProps(formField, { type: 'text' })}
           errors={formField.errors}
+          key={formField.id}
           label={field.label}
         />
       );
@@ -156,6 +161,7 @@ function DynamicFormField({
         <Input
           {...getInputProps(formField, { type: 'password' })}
           errors={formField.errors}
+          key={formField.id}
           label={field.label}
         />
       );
@@ -165,6 +171,7 @@ function DynamicFormField({
         <Input
           {...getInputProps(formField, { type: 'email' })}
           errors={formField.errors}
+          key={formField.id}
           label={field.label}
         />
       );
@@ -173,7 +180,6 @@ function DynamicFormField({
       return (
         <Checkbox
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
@@ -182,6 +188,20 @@ function DynamicFormField({
           onFocus={controls.focus}
           required={formField.required}
           value={controls.value}
+        />
+      );
+
+    case 'checkbox-group':
+      return (
+        <CheckboxGroup
+          errors={formField.errors}
+          id={formField.id}
+          key={formField.id}
+          label={field.label}
+          name={formField.name}
+          onValueChange={controls.change}
+          options={field.options}
+          value={Array.isArray(controls.value) ? controls.value : []}
         />
       );
 
@@ -198,7 +218,7 @@ function DynamicFormField({
           onValueChange={controls.change}
           options={field.options}
           required={formField.required}
-          value={controls.value}
+          value={typeof controls.value === 'string' ? controls.value : ''}
         />
       );
 
@@ -215,7 +235,7 @@ function DynamicFormField({
           onValueChange={controls.change}
           options={field.options}
           required={formField.required}
-          value={controls.value}
+          value={typeof controls.value === 'string' ? controls.value : ''}
         />
       );
 
@@ -232,7 +252,7 @@ function DynamicFormField({
           onValueChange={controls.change}
           options={field.options}
           required={formField.required}
-          value={controls.value}
+          value={typeof controls.value === 'string' ? controls.value : ''}
         />
       );
 
@@ -249,7 +269,7 @@ function DynamicFormField({
           onValueChange={controls.change}
           options={field.options}
           required={formField.required}
-          value={controls.value}
+          value={typeof controls.value === 'string' ? controls.value : ''}
         />
       );
 
@@ -266,7 +286,30 @@ function DynamicFormField({
           onValueChange={controls.change}
           options={field.options}
           required={formField.required}
-          value={controls.value}
+          value={typeof controls.value === 'string' ? controls.value : ''}
+        />
+      );
+
+    case 'date':
+      return (
+        <DatePicker
+          disabledDays={
+            field.minDate != null && field.maxDate != null
+              ? {
+                  before: new Date(field.minDate),
+                  after: new Date(field.maxDate),
+                }
+              : undefined
+          }
+          errors={formField.errors}
+          key={formField.id}
+          label={field.label}
+          name={formField.name}
+          onBlur={controls.blur}
+          onFocus={controls.focus}
+          onSelect={(date) => controls.change(Intl.DateTimeFormat().format(date))}
+          required={formField.required}
+          selected={typeof controls.value === 'string' ? new Date(controls.value) : undefined}
         />
       );
   }
