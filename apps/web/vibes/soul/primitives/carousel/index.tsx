@@ -203,10 +203,12 @@ function CarouselScrollbar({ className }: React.HTMLAttributes<HTMLDivElement>) 
 
     api.on('select', onScroll);
     api.on('scroll', onScroll);
+    api.on('reInit', onScroll);
 
     return () => {
       api.off('select', onScroll);
       api.off('scroll', onScroll);
+      api.off('reInit', onScroll);
     };
   }, [api]);
   return (
