@@ -2,19 +2,20 @@ import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { CalendarIcon } from 'lucide-react';
 import { ComponentPropsWithoutRef, ComponentRef, forwardRef, useState } from 'react';
 
+import { Input } from '@/vibes/soul/form/input';
 import { Calendar } from '@/vibes/soul/primitives/calendar';
 
-import { Input } from '../input';
+type CalendarProps = ComponentPropsWithoutRef<typeof Calendar>;
 
 type Props = {
   defaultValue?: string | Date;
-  disabledDays?: Date[];
+  disabledDays?: CalendarProps['disabled'];
   errors?: string[];
   onSelect?: (date: Date | undefined) => void;
   selected?: Date | undefined;
-} & Omit<ComponentPropsWithoutRef<'input'>, 'defaultValue' | 'onSelect'>;
+} & Omit<ComponentPropsWithoutRef<typeof Input>, 'defaultValue' | 'onSelect' | 'value' | 'type'>;
 
-const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
+const DatePicker = forwardRef<ComponentRef<typeof Input>, Props>(
   (
     {
       defaultValue,
@@ -43,6 +44,7 @@ const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
       <PopoverPrimitive.Root>
         <PopoverPrimitive.Trigger asChild>
           <Input
+            {...props}
             errors={errors}
             placeholder={placeholder}
             prepend={<CalendarIcon className="h-5 w-5" strokeWidth={1} />}
@@ -52,7 +54,6 @@ const DatePicker = forwardRef<ComponentRef<'input'>, Props>(
             type="text"
             // We control the value of the input based on the selected date or the default date
             value={formattedSelected ?? formattedDate ?? ''}
-            {...props}
           />
         </PopoverPrimitive.Trigger>
         <PopoverPrimitive.Portal>
