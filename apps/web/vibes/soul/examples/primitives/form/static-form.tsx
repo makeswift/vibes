@@ -26,7 +26,7 @@ export function StaticForm() {
         ]}
         type="multiple"
       />
-      <Input id="first-name" label="First Name" required />
+      <Input label="First Name" name="first-name" required />
       <Textarea
         disabled
         errors={['This is required']}
@@ -35,7 +35,7 @@ export function StaticForm() {
         name="description"
         required
       />
-      <Checkbox id="consent" label="Consent" required />
+      <Checkbox label="Consent" name="consent" required />
       <DatePicker errors={['This is required']} required />
       <SwatchRadioGroup
         errors={['This is required']}
@@ -54,7 +54,7 @@ export function StaticForm() {
         ]}
         required
       />
-      <NumberInput id="quantity" label="Quantity" />
+      <NumberInput label="Quantity" name="quantity" />
       <RadioGroup
         label="Size"
         options={[

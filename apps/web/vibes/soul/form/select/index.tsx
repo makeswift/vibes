@@ -22,7 +22,6 @@ type Props = {
 } & React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>;
 
 export function Select({
-  id,
   label,
   name,
   placeholder = 'Select an item',
@@ -35,6 +34,8 @@ export function Select({
   value,
   ...rest
 }: Props) {
+  const id = React.useId();
+
   return (
     <div className={clsx('space-y-2', className)}>
       {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
@@ -45,7 +46,8 @@ export function Select({
             variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',
             errors && errors.length > 0 ? 'border-error' : 'border-contrast-100',
           )}
-          id={name}
+          id={id}
+          name={name}
           onBlur={onBlur}
           onFocus={onFocus}
         >

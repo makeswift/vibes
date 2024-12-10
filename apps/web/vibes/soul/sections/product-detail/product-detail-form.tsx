@@ -109,7 +109,6 @@ export function ProductDetailForm<F extends Field>({
             <NumberInput
               aria-label={quantityLabel}
               decrementLabel={decrementLabel}
-              id={formFields.quantity.id}
               incrementLabel={incrementLabel}
               min={1}
               name={formFields.quantity.name}
@@ -160,7 +159,6 @@ function FormField({
       return (
         <NumberInput
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
@@ -176,7 +174,6 @@ function FormField({
       return (
         <Input
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
@@ -192,7 +189,6 @@ function FormField({
       return (
         <Checkbox
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
@@ -208,7 +204,6 @@ function FormField({
       return (
         <Select
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
@@ -225,7 +220,6 @@ function FormField({
       return (
         <RadioGroup
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
@@ -242,7 +236,6 @@ function FormField({
       return (
         <SwatchRadioGroup
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
@@ -259,7 +252,6 @@ function FormField({
       return (
         <CardRadioGroup
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
@@ -276,7 +268,6 @@ function FormField({
       return (
         <ButtonRadioGroup
           errors={formField.errors}
-          id={formField.id}
           key={formField.id}
           label={field.label}
           name={formField.name}
