@@ -1,17 +1,14 @@
 import { getProducts } from '@/vibes/soul/data';
-import {
-  FeaturedProductsList,
-  FeaturedProductsListSkeleton,
-} from '@/vibes/soul/sections/featured-products-list';
+import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list';
 
 export const featuredProducts = {
   title: 'Our plants',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto.',
   cta: {
-    label: 'Shop now',
+    label: 'Shop Now',
     href: '#',
   },
-  products: await getProducts('Electric'),
+  products: getProducts('Electric'),
 };
 
 export default function Preview() {
@@ -27,12 +24,15 @@ export default function Preview() {
         title={featuredProducts.title}
       />
 
-      <FeaturedProductsListSkeleton
+      <FeaturedProductsList
         cta={{
           label: featuredProducts.cta.label,
           href: featuredProducts.cta.href,
         }}
         description={featuredProducts.description}
+        emptyStateSubtitle="Try browsing our complete catalog of products."
+        emptyStateTitle="No products found"
+        products={[]}
         title={featuredProducts.title}
       />
     </>
