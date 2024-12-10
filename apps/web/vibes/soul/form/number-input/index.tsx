@@ -2,20 +2,22 @@
 
 import { clsx } from 'clsx';
 import { Minus, Plus } from 'lucide-react';
-import { forwardRef } from 'react';
+import * as React from 'react';
 
 import { FieldError } from '@/vibes/soul/form/field-error';
 import { Label } from '@/vibes/soul/form/label';
 
-export const NumberInput = forwardRef<
+export const NumberInput = React.forwardRef<
   React.ComponentRef<'input'>,
-  React.ComponentPropsWithoutRef<'input'> & {
+  Omit<React.ComponentPropsWithoutRef<'input'>, 'id'> & {
     label?: string;
     errors?: string[];
     decrementLabel?: string;
     incrementLabel?: string;
   }
->(({ id, label, className, required, errors, decrementLabel, incrementLabel, ...rest }, ref) => {
+>(({ label, className, required, errors, decrementLabel, incrementLabel, ...rest }, ref) => {
+  const id = React.useId();
+
   return (
     <div className={clsx('space-y-2', className)}>
       {label != null && label !== '' && <Label htmlFor={id}>{label}</Label>}
