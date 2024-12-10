@@ -20,6 +20,7 @@ interface Props {
   textContrast?: 'light' | 'dark';
   className?: string;
   emptyStateMessage?: string;
+  carouselScrollbarLabel?: string;
 }
 
 export function CardCarousel({
@@ -27,17 +28,30 @@ export function CardCarousel({
   textContrast,
   className,
   emptyStateMessage = 'No items found',
+  carouselScrollbarLabel,
 }: Props) {
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-10">
         <Stream
-          fallback={<CardCarouselSkeleton className={className} message={emptyStateMessage} />}
+          fallback={
+            <CardCarouselSkeleton
+              carouselScrollbarLabel={carouselScrollbarLabel}
+              className={className}
+              message={emptyStateMessage}
+            />
+          }
           value={streamableCards}
         >
           {(cards) => {
             if (cards.length === 0) {
-              return <CardCarouselSkeleton className={className} message={emptyStateMessage} />;
+              return (
+                <CardCarouselSkeleton
+                  carouselScrollbarLabel={carouselScrollbarLabel}
+                  className={className}
+                  message={emptyStateMessage}
+                />
+              );
             }
 
             return cards.map((card) => (
@@ -52,7 +66,7 @@ export function CardCarousel({
         </Stream>
       </CarouselContent>
       <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar />
+        <CarouselScrollbar carouselScrollbarLabel={carouselScrollbarLabel} />
         <CarouselButtons />
       </div>
     </Carousel>
@@ -63,10 +77,12 @@ export function CardCarouselSkeleton({
   className,
   message,
   count = 8,
+  carouselScrollbarLabel,
 }: {
   className?: string;
   message?: string;
   count?: number;
+  carouselScrollbarLabel?: string;
 }) {
   return (
     <Carousel className={className}>
@@ -88,7 +104,7 @@ export function CardCarouselSkeleton({
         ))}
       </CarouselContent>
       <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar />
+        <CarouselScrollbar carouselScrollbarLabel={carouselScrollbarLabel} />
         <CarouselButtons />
       </div>
       <div className="absolute inset-0 flex items-center justify-center text-lg">{message}</div>
