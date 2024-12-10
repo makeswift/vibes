@@ -98,6 +98,7 @@ interface Props<S extends SearchResult> {
   cartLabel?: string;
   accountLabel?: string;
   searchLabel?: string;
+  toggleButtonLabel?: string;
 }
 
 const HamburgerMenuButton = forwardRef<
@@ -182,6 +183,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     cartLabel = 'Cart',
     accountLabel = 'Profile',
     searchLabel = 'Search',
+    toggleButtonLabel = 'Toggle navigation',
   }: Props<S>,
   ref: Ref<HTMLDivElement>,
 ) {
@@ -228,6 +230,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           <Popover.Anchor className="absolute left-0 right-0 top-full" />
           <Popover.Trigger asChild>
             <HamburgerMenuButton
+              aria-label={toggleButtonLabel}
               className="mr-3 @4xl:hidden"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               open={isMobileMenuOpen}
