@@ -206,7 +206,6 @@ export function FiltersPanelInner({
                         checked={
                           optimisticParams[filter.paramName]?.includes(rating.toString()) ?? false
                         }
-                        id={`${filter.paramName}-${rating}`}
                         key={rating}
                         label={<Rating rating={rating} showRating={false} />}
                         onCheckedChange={(value) =>
