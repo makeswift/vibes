@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import {
   Carousel,
   CarouselButtons,
@@ -12,8 +13,6 @@ import {
   ProductCard,
   ProductCardSkeleton,
 } from '@/vibes/soul/primitives/product-card';
-
-import { Stream, Streamable } from '../../lib/streamable';
 
 export type CarouselProduct = CardProduct;
 
