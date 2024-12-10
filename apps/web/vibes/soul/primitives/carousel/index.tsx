@@ -158,8 +158,8 @@ function CarouselButtons({ className, ...rest }: React.HTMLAttributes<HTMLDivEle
 
 function CarouselScrollbar({
   className,
-  carouselScrollbarLabel = 'Carousel scrollbar',
-}: React.HTMLAttributes<HTMLDivElement> & { carouselScrollbarLabel?: string }) {
+  label = 'Carousel scrollbar',
+}: React.HTMLAttributes<HTMLDivElement> & { label?: string }) {
   const { api } = useCarousel();
   const [progress, setProgress] = useState(0);
   const [scrollbarPosition, setScrollbarPosition] = useState({ width: 0, left: 0 });
@@ -218,7 +218,7 @@ function CarouselScrollbar({
       className={clsx('relative flex h-6 w-full max-w-56 items-center overflow-hidden', className)}
     >
       <input
-        aria-label={carouselScrollbarLabel}
+        aria-label={label}
         aria-orientation="horizontal"
         aria-valuenow={progress}
         aria-valuetext={`${Math.round(progress)}%`}

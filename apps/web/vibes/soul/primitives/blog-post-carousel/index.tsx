@@ -10,10 +10,10 @@ import {
 interface Props {
   className?: string;
   blogPosts: BlogPost[];
-  carouselScrollbarLabel?: string;
+  scrollbarLabel?: string;
 }
 
-export function BlogPostCarousel({ className, blogPosts, carouselScrollbarLabel }: Props) {
+export function BlogPostCarousel({ className, blogPosts, scrollbarLabel }: Props) {
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-10">
@@ -29,7 +29,7 @@ export function BlogPostCarousel({ className, blogPosts, carouselScrollbarLabel 
         })}
       </CarouselContent>
       <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar carouselScrollbarLabel={carouselScrollbarLabel} />
+        <CarouselScrollbar label={scrollbarLabel} />
         <CarouselButtons />
       </div>
     </Carousel>
