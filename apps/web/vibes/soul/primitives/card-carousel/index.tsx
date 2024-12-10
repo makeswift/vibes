@@ -34,24 +34,12 @@ export function CardCarousel({
     <Carousel className={className}>
       <CarouselContent className="mb-10">
         <Stream
-          fallback={
-            <CardCarouselSkeleton
-              className={className}
-              message={emptyStateMessage}
-              scrollbarLabel={scrollbarLabel}
-            />
-          }
+          fallback={<CardCarouselSkeleton className={className} message={emptyStateMessage} />}
           value={streamableCards}
         >
           {(cards) => {
             if (cards.length === 0) {
-              return (
-                <CardCarouselSkeleton
-                  className={className}
-                  message={emptyStateMessage}
-                  scrollbarLabel={scrollbarLabel}
-                />
-              );
+              return <CardCarouselSkeleton className={className} message={emptyStateMessage} />;
             }
 
             return cards.map((card) => (
@@ -77,12 +65,10 @@ export function CardCarouselSkeleton({
   className,
   message,
   count = 8,
-  scrollbarLabel,
 }: {
   className?: string;
   message?: string;
   count?: number;
-  scrollbarLabel?: string;
 }) {
   return (
     <Carousel className={className}>
@@ -103,10 +89,7 @@ export function CardCarouselSkeleton({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar label={scrollbarLabel} />
-        <CarouselButtons />
-      </div>
+      <div className="flex h-6 w-56 animate-pulse items-center justify-between bg-contrast-100"></div>
       <div className="absolute inset-0 flex items-center justify-center text-lg">{message}</div>
     </Carousel>
   );
