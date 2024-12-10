@@ -11,22 +11,22 @@ import {
   useInputControl,
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
-import { useActionState } from 'react';
+import { startTransition, useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
 
 import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group';
 import { CardRadioGroup } from '@/vibes/soul/form/card-radio-group';
 import { Checkbox } from '@/vibes/soul/form/checkbox';
+import { CheckboxGroup } from '@/vibes/soul/form/checkbox-group';
 import { DatePicker } from '@/vibes/soul/form/date-picker';
+import { FormStatus } from '@/vibes/soul/form/form-status';
 import { Input } from '@/vibes/soul/form/input';
 import { NumberInput } from '@/vibes/soul/form/number-input';
 import { RadioGroup } from '@/vibes/soul/form/radio-group';
 import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
-
-import { CheckboxGroup } from '../../form/checkbox-group';
 
 import { Field, FieldGroup, schema } from './schema';
 
@@ -73,6 +73,13 @@ export function DynamicForm<F extends Field>({
     defaultValue,
     shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',
+    onSubmit(event, { formData }) {
+      event.preventDefault();
+
+      startTransition(() => {
+        formAction(formData);
+      });
+    },
   });
 
   return (
@@ -104,11 +111,16 @@ export function DynamicForm<F extends Field>({
 
             if (formField == null) return null;
 
-            return <DynamicFormField field={field} formField={formField} key={formField.id} />;
+            return <DynamicFormField field={field} formField={formField} key={field.name} />;
           })}
           <div className="flex gap-x-3 pt-3">
             <SubmitButton>{submitLabel}</SubmitButton>
           </div>
+          {form.errors?.map((error, index) => (
+            <FormStatus key={index} type="error">
+              {error}
+            </FormStatus>
+          ))}
         </div>
       </form>
     </FormProvider>
@@ -140,7 +152,7 @@ function DynamicFormField({
         <NumberInput
           {...getInputProps(formField, { type: 'number' })}
           errors={formField.errors}
-          key={formField.id}
+          key={field.name}
           label={field.label}
         />
       );
@@ -150,7 +162,7 @@ function DynamicFormField({
         <Input
           {...getInputProps(formField, { type: 'text' })}
           errors={formField.errors}
-          key={formField.id}
+          key={field.name}
           label={field.label}
         />
       );
@@ -161,7 +173,7 @@ function DynamicFormField({
         <Input
           {...getInputProps(formField, { type: 'password' })}
           errors={formField.errors}
-          key={formField.id}
+          key={field.name}
           label={field.label}
         />
       );
@@ -171,7 +183,7 @@ function DynamicFormField({
         <Input
           {...getInputProps(formField, { type: 'email' })}
           errors={formField.errors}
-          key={formField.id}
+          key={field.name}
           label={field.label}
         />
       );
@@ -180,7 +192,7 @@ function DynamicFormField({
       return (
         <Checkbox
           errors={formField.errors}
-          key={formField.id}
+          key={field.name}
           label={field.label}
           name={formField.name}
           onBlur={controls.blur}
@@ -196,7 +208,7 @@ function DynamicFormField({
         <CheckboxGroup
           errors={formField.errors}
           id={formField.id}
-          key={formField.id}
+          key={field.name}
           label={field.label}
           name={formField.name}
           onValueChange={controls.change}
@@ -210,7 +222,7 @@ function DynamicFormField({
         <Select
           errors={formField.errors}
           id={formField.id}
-          key={formField.id}
+          key={field.name}
           label={field.label}
           name={formField.name}
           onBlur={controls.blur}
@@ -227,7 +239,7 @@ function DynamicFormField({
         <RadioGroup
           errors={formField.errors}
           id={formField.id}
-          key={formField.id}
+          key={field.name}
           label={field.label}
           name={formField.name}
           onBlur={controls.blur}
@@ -244,7 +256,7 @@ function DynamicFormField({
         <SwatchRadioGroup
           errors={formField.errors}
           id={formField.id}
-          key={formField.id}
+          key={field.name}
           label={field.label}
           name={formField.name}
           onBlur={controls.blur}
@@ -261,7 +273,7 @@ function DynamicFormField({
         <CardRadioGroup
           errors={formField.errors}
           id={formField.id}
-          key={formField.id}
+          key={field.name}
           label={field.label}
           name={formField.name}
           onBlur={controls.blur}
@@ -278,7 +290,7 @@ function DynamicFormField({
         <ButtonRadioGroup
           errors={formField.errors}
           id={formField.id}
-          key={formField.id}
+          key={field.name}
           label={field.label}
           name={formField.name}
           onBlur={controls.blur}
@@ -302,7 +314,7 @@ function DynamicFormField({
               : undefined
           }
           errors={formField.errors}
-          key={formField.id}
+          key={field.name}
           label={field.label}
           name={formField.name}
           onBlur={controls.blur}
