@@ -20,6 +20,7 @@ interface Props {
   textContrast?: 'light' | 'dark';
   className?: string;
   emptyStateMessage?: string;
+  scrollbarLabel?: string;
 }
 
 export function CardCarousel({
@@ -27,6 +28,7 @@ export function CardCarousel({
   textContrast,
   className,
   emptyStateMessage = 'No items found',
+  scrollbarLabel,
 }: Props) {
   return (
     <Carousel className={className}>
@@ -52,7 +54,7 @@ export function CardCarousel({
         </Stream>
       </CarouselContent>
       <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar />
+        <CarouselScrollbar label={scrollbarLabel} />
         <CarouselButtons />
       </div>
     </Carousel>
@@ -87,10 +89,7 @@ export function CardCarouselSkeleton({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar />
-        <CarouselButtons />
-      </div>
+      <div className="flex h-6 w-56 animate-pulse items-center justify-between bg-contrast-100"></div>
       <div className="absolute inset-0 flex items-center justify-center text-lg">{message}</div>
     </Carousel>
   );
