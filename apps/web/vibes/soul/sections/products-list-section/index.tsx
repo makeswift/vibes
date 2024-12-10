@@ -31,6 +31,9 @@ interface Props {
   sortLabel?: string;
   sortParamName?: string;
   compareParamName?: string;
+  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string | null>;
+  placeholderCount?: number;
 }
 
 export function ProductsListSection({
@@ -49,6 +52,9 @@ export function ProductsListSection({
   sortLabel,
   sortParamName,
   compareParamName,
+  emptyStateSubtitle,
+  emptyStateTitle,
+  placeholderCount = 8,
 }: Props) {
   return (
     <ProductListTransitionProvider>
@@ -98,6 +104,9 @@ export function ProductsListSection({
                 compareLabel={compareLabel}
                 compareParamName={compareParamName}
                 compareProducts={compareProducts}
+                emptyStateSubtitle={emptyStateSubtitle}
+                emptyStateTitle={emptyStateTitle}
+                placeholderCount={placeholderCount}
                 products={products}
                 showCompare
               />

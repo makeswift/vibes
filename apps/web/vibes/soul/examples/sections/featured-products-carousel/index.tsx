@@ -2,24 +2,35 @@ import { getProducts } from '@/vibes/soul/data';
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
 
 export default function Preview() {
-  const featuredProducts = getProducts('Electric');
+  const featuredProducts = {
+    title: 'Our plants',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+    cta: {
+      label: 'Shop Now',
+      href: '#',
+    },
+    products: getProducts('Electric'),
+    emptyStateSubtitle: 'Try browsing our complete catalog of products.',
+    emptyStateTitle: 'No products found',
+  };
 
   return (
     <>
       <FeaturedProductsCarousel
-        cta={{ href: '#', label: 'Shop Now' }}
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-        products={featuredProducts}
-        title="Our Plants"
+        cta={featuredProducts.cta}
+        description={featuredProducts.description}
+        products={featuredProducts.products}
+        title={featuredProducts.title}
       />
 
       <FeaturedProductsCarousel
-        cta={{ href: '#', label: 'Shop Now' }}
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-        emptyStateSubtitle="Try browsing our complete catalog of products."
-        emptyStateTitle="No products found"
+        cta={featuredProducts.cta}
+        description={featuredProducts.description}
+        emptyStateSubtitle={featuredProducts.emptyStateSubtitle}
+        emptyStateTitle={featuredProducts.emptyStateTitle}
         products={[]}
-        title="Our Plants"
+        title={featuredProducts.title}
       />
     </>
   );

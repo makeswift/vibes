@@ -13,8 +13,9 @@ interface Props {
   description?: string;
   cta?: Link;
   products: Streamable<ListProduct[]>;
-  emptyStateTitle?: string;
-  emptyStateSubtitle?: string;
+  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string | null>;
+  placeholderCount?: number;
 }
 
 export function FeaturedProductsList({
@@ -24,6 +25,7 @@ export function FeaturedProductsList({
   products,
   emptyStateTitle,
   emptyStateSubtitle,
+  placeholderCount,
 }: Props) {
   return (
     <StickySidebarLayout
@@ -52,6 +54,7 @@ export function FeaturedProductsList({
           className="flex-1"
           emptyStateSubtitle={emptyStateSubtitle}
           emptyStateTitle={emptyStateTitle}
+          placeholderCount={placeholderCount}
           products={products}
         />
       </div>
