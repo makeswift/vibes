@@ -110,9 +110,7 @@ export function ProductsCarouselEmptyState({
   return (
     <Carousel className={clsx('relative', className)}>
       <CarouselContent
-        className={clsx(
-          'mb-10 [mask-image:linear-gradient(to_top,_transparent_0%,_hsl(var(--background))_75%)]',
-        )}
+        className={clsx('mb-10 [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)]')}
       >
         {Array.from({ length: count }).map((_, index) => (
           <CarouselItem

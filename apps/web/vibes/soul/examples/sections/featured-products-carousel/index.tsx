@@ -16,7 +16,7 @@ export default function Preview() {
       <FeaturedProductsCarousel
         cta={{ href: '#', label: 'Shop Now' }}
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
-        emptyStateSubtitle="Change your filters to see more products"
+        emptyStateSubtitle="Try browsing our complete catalog of products."
         emptyStateTitle="No products found"
         products={[]}
         title="Our Plants"
