@@ -46,3 +46,15 @@ export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
     </nav>
   );
 }
+
+export function BreadcrumbsSkeleton() {
+  return (
+    <div className="mb-6 flex animate-pulse items-center gap-2">
+      <div className="h-6 w-10 rounded-md bg-contrast-100" />
+      <div className="h-3 w-3 rounded-full bg-contrast-100" />
+      <div className="h-6 w-11 rounded-md bg-contrast-100" />
+      <div className="h-3 w-3 rounded-full bg-contrast-100" />
+      <div className="h-6 w-10 rounded-md bg-contrast-100" />
+    </div>
+  );
+}
