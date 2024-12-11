@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { ProductDescription } from '@/vibes/soul/sections/product-description';
 
 export const accordions = [
@@ -29,9 +31,17 @@ export const productDescriptionImage = {
 };
 
 export default function Preview() {
+  const accordionsPromise = new Promise<{ title: string; content: ReactNode }[]>((res) =>
+    setTimeout(() => res(accordions), 2000),
+  );
+
+  const imagePromise = new Promise<{ src: string; alt: string }>((res) =>
+    setTimeout(() => res(productDescriptionImage), 1000),
+  );
+
   return (
     <>
-      <ProductDescription accordions={accordions} image={productDescriptionImage} />
+      <ProductDescription accordions={accordionsPromise} image={imagePromise} />
     </>
   );
 }
