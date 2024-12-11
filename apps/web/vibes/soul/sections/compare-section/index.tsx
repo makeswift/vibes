@@ -31,7 +31,7 @@ export function CompareSection({
   addToCartLabel,
   emptyStateMessage,
   previousLabel,
-  nextLabel
+  nextLabel,
 }: Props) {
   if (products.length === 0) {
     return <CompareSectionEmptyState message={emptyStateMessage} />;
@@ -45,7 +45,11 @@ export function CompareSection({
             <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
               {title} <span className="text-contrast-300">{products.length}</span>
             </h1>
-            <CarouselButtons className="hidden xl:block" nextLabel={nextLabel} previousLabel={previousLabel}/>
+            <CarouselButtons
+              className="hidden xl:block"
+              nextLabel={nextLabel}
+              previousLabel={previousLabel}
+            />
           </div>
           <CarouselContent>
             {products.map((product) => (
