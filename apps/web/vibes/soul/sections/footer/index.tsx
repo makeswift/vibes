@@ -51,7 +51,7 @@ export const Footer = forwardRef(function Footer(
     socialMediaLinks: streamableSocialMediaLinks,
     copyright: streamableCopyright,
     className,
-    logoHref,
+    logoHref = '#',
     logoLabel = 'Home',
   }: Props,
   ref: Ref<HTMLDivElement>,
@@ -78,7 +78,7 @@ export const Footer = forwardRef(function Footer(
             >
               {(logo) => {
                 if (logo != null && typeof logo === 'string') {
-                  return logoHref !== undefined && logoHref !== '' ? (
+                  return (
                     <Link
                       aria-label={logoLabel}
                       className="relative mb-2 inline-block h-10 w-full max-w-56 rounded-lg ring-primary focus-visible:outline-0 focus-visible:ring-2"
@@ -88,16 +88,10 @@ export const Footer = forwardRef(function Footer(
                         {logo}
                       </span>
                     </Link>
-                  ) : (
-                    <div className="relative mb-2 inline-block h-10 w-full max-w-56 rounded-lg ring-primary focus-visible:outline-0 focus-visible:ring-2">
-                      <span className="whitespace-nowrap font-heading text-2xl font-semibold">
-                        {logo}
-                      </span>
-                    </div>
                   );
                 }
                 if (logo != null && typeof logo === 'object' && logo.src !== '') {
-                  return logoHref !== undefined && logoHref !== '' ? (
+                  return (
                     <Link
                       aria-label={logoLabel}
                       className="relative mb-2 inline-block h-10 w-full max-w-56 rounded-lg ring-primary focus-visible:outline-0 focus-visible:ring-2"
@@ -111,16 +105,6 @@ export const Footer = forwardRef(function Footer(
                         src={logo.src}
                       />
                     </Link>
-                  ) : (
-                    <div className="relative mb-2 inline-block h-10 w-full max-w-56 rounded-lg ring-primary focus-visible:outline-0 focus-visible:ring-2">
-                      <Image
-                        alt={logo.alt}
-                        className="object-contain object-left"
-                        fill
-                        sizes="400px"
-                        src={logo.src}
-                      />
-                    </div>
                   );
                 }
               }}
