@@ -9,7 +9,7 @@ export interface AccordionItem {
 }
 
 interface Props {
-  accordions: Streamable<AccordionItem[] | null>;
+  accordions: Streamable<AccordionItem[]>;
   image?: Streamable<{
     src: string;
     alt: string;
@@ -25,17 +25,15 @@ export function ProductDescription({
       <div className="mx-auto flex w-full max-w-screen-lg flex-col items-stretch px-4 py-10 @xl:px-6 @xl:py-14 @2xl:flex-row @4xl:px-8 @4xl:py-20">
         <div className="w-full pb-5 @2xl:w-1/2 @2xl:basis-1/2 @2xl:pr-6 @4xl:pr-8">
           <Stream fallback={<AccordionsSkeleton />} value={streamableAccordions}>
-            {(accordions) =>
-              accordions && (
-                <Accordions className="sticky top-6" type="multiple">
-                  {accordions.map((accordion, index) => (
-                    <Accordion key={index} title={accordion.title} value={index.toString()}>
-                      {accordion.content}
-                    </Accordion>
-                  ))}
-                </Accordions>
-              )
-            }
+            {(accordions) => (
+              <Accordions className="sticky top-6" type="multiple">
+                {accordions.map((accordion, index) => (
+                  <Accordion key={index} title={accordion.title} value={index.toString()}>
+                    {accordion.content}
+                  </Accordion>
+                ))}
+              </Accordions>
+            )}
           </Stream>
         </div>
 
