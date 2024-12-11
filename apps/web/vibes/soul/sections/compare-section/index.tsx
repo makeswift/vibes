@@ -18,6 +18,8 @@ interface Props {
   products: CompareProduct[];
   addToCartLabel?: string;
   emptyStateMessage?: string;
+  previousLabel?: string;
+  nextLabel?: string;
   addToCartAction?: (id: string) => Promise<void>;
 }
 
@@ -28,6 +30,8 @@ export function CompareSection({
   addToCartAction,
   addToCartLabel,
   emptyStateMessage,
+  previousLabel,
+  nextLabel
 }: Props) {
   if (products.length === 0) {
     return <CompareSectionEmptyState message={emptyStateMessage} />;
@@ -41,7 +45,7 @@ export function CompareSection({
             <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
               {title} <span className="text-contrast-300">{products.length}</span>
             </h1>
-            <CarouselButtons className="hidden xl:block" />
+            <CarouselButtons className="hidden xl:block" nextLabel={nextLabel} previousLabel={previousLabel}/>
           </div>
           <CarouselContent>
             {products.map((product) => (
@@ -79,7 +83,7 @@ export function CompareSectionSkeleton({
             <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
               {title}
             </h1>
-            <CarouselButtons className="hidden xl:block" />
+            <div className="flex h-6 w-14 animate-pulse bg-contrast-100"></div>
           </div>
           <CarouselContent>
             {Array.from({ length: 4 }).map((_, index) => (
@@ -114,7 +118,7 @@ export function CompareSectionEmptyState({
             <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
               {title}
             </h1>
-            <CarouselButtons className="hidden xl:block" />
+            <div className="flex h-6 w-14 animate-pulse bg-contrast-100"></div>
           </div>
           <CarouselContent className="[mask-image:radial-gradient(circle,transparent,black)]">
             {Array.from({ length: 4 }).map((_, index) => (
