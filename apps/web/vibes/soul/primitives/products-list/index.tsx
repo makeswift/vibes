@@ -21,6 +21,7 @@ interface Props {
   compareParamName?: string;
   emptyStateTitle?: string;
   emptyStateSubtitle?: string;
+  count?: number;
 }
 
 export function ProductsList({
@@ -33,14 +34,16 @@ export function ProductsList({
   compareParamName,
   emptyStateTitle,
   emptyStateSubtitle,
+  count = 6,
 }: Props) {
   return (
     <>
-      <Stream fallback={<ProductsListSkeleton pending />} value={streamableProducts}>
+      <Stream fallback={<ProductsListSkeleton count={count} pending />} value={streamableProducts}>
         {(products) => {
           if (products.length === 0) {
             return (
               <ProductsListEmptyState
+                count={count}
                 emptyStateSubtitle={emptyStateSubtitle}
                 emptyStateTitle={emptyStateTitle}
               />
