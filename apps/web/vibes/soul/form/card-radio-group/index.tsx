@@ -23,14 +23,8 @@ export const CardRadioGroup = React.forwardRef<
 >(({ id, label, options, errors, className, ...rest }, ref) => {
   return (
     <div className={clsx('space-y-2', className)}>
-      {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
-      <RadioGroupPrimitive.Root
-        {...rest}
-        aria-label={label}
-        className="space-y-2"
-        id={id}
-        ref={ref}
-      >
+      {label !== undefined && label !== '' && <Label>{label}</Label>}
+      <RadioGroupPrimitive.Root {...rest} aria-label={label} className="space-y-2" ref={ref}>
         {options.map((option) => (
           <RadioGroupPrimitive.Item
             aria-label={option.label}
@@ -48,7 +42,7 @@ export const CardRadioGroup = React.forwardRef<
             <div className="relative aspect-square h-full">
               <Image
                 alt={option.image.alt}
-                className=" bg-background object-fill"
+                className="bg-background object-fill"
                 fill
                 src={option.image.src}
               />
