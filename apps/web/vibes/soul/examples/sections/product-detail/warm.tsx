@@ -1,5 +1,9 @@
 import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm';
+import { Streamable } from '@/vibes/soul/lib/streamable';
+import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs';
+import { Price } from '@/vibes/soul/primitives/price-label';
 import { ProductDetail } from '@/vibes/soul/sections/product-detail';
+import { Field } from '@/vibes/soul/sections/product-detail/schema';
 
 import { action, fields } from './action';
 
@@ -73,7 +77,34 @@ export const product = {
 };
 
 export default function Preview() {
+  const breadcrumbsPromise = new Promise<Breadcrumb[]>((resolve) => {
+    setTimeout(() => resolve(breadcrumbs), 1000);
+  });
+
+  const productPromise = new Promise<{
+    id: string;
+    title: string;
+    href: string;
+    images: Streamable<{ src: string; alt: string }[]>;
+    price?: Streamable<Price | null>;
+    subtitle?: string;
+    badge?: string;
+    rating?: Streamable<number | null>;
+    description?: Streamable<string | React.ReactNode | null>;
+  }>((resolve) => {
+    setTimeout(() => resolve(product), 1500);
+  });
+
+  const fieldsPromise = new Promise<Field[]>((resolve) => {
+    setTimeout(() => resolve(fields), 2000);
+  });
+
   return (
-    <ProductDetail action={action} breadcrumbs={breadcrumbs} fields={fields} product={product} />
+    <ProductDetail
+      action={action}
+      breadcrumbs={breadcrumbsPromise}
+      fields={fieldsPromise}
+      product={productPromise}
+    />
   );
 }
