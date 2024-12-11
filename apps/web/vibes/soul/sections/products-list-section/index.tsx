@@ -98,6 +98,9 @@ export function ProductsListSection({
                 compareLabel={compareLabel}
                 compareParamName={compareParamName}
                 compareProducts={compareProducts}
+                count={8}
+                emptyStateSubtitle="Change your filters to see more products"
+                emptyStateTitle="No products found"
                 products={products}
                 showCompare
               />
