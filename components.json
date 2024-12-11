@@ -1,0 +1,953 @@
+{
+  "ok": [
+    {
+      "name": "accordions",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "@radix-ui/react-accordion"
+      ],
+      "files": [
+        "primitives/accordions/index.tsx"
+      ],
+      "doc": "---\ntitle: Accordions\ndescription: Accordions allow users to expand and collapse content sections.\npreview: accordions-example\npreviewSize: sm\nfeatures:\n  - Full keyboard navigation\n  - Can be controlled or uncontrolled\n  - Fully animated transitions\n  - Can be used as a single or multiple accordion\n---\n\n## Usage\n\n<CodeBlock lang=\"bash\">{`import { Accordions } from '@/vibes/soul/primitives/accordions'`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`const accordions = [\n  {\n    title: 'What is your return policy?',\n    content:\n      'Our return policy allows you to return items within 30 days of purchase for a full refund. Items must be in their original condition and packaging.',\n  },\n  {\n    title: 'How long does shipping take?',\n    content:\n      'Shipping typically takes 3-5 business days for domestic orders. International shipping may take longer depending on the destination.',\n  },\n  {\n    title: 'Do you offer international shipping?',\n    content:\n      'Yes, we offer international shipping to select countries. Please check our shipping policy for more details on available locations.',\n  },\n  {\n    title: 'How can I track my order?',\n    content:\n      'Once your order has shipped, you will receive an email with a tracking number. You can use this number to track your order on our website.',\n  },\n]`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`<Accordions accordions={accordions} />`}</CodeBlock>\n\n## API Reference\n\n| Prop         | Type                                                                      | Default      |\n| ------------ | ------------------------------------------------------------------------- | ------------ |\n| `accordions` | `object[]` <Tooltip content={`{title: ReactNode, content: ReactNode}`} /> |              |\n| `type`       | `'single'` \\| `'multiple'`                                                | `'multiple'` |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42908&t=dbm9GtAtS2A3vy2g-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/accordions.mdx",
+      "example": "import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';\n\nexport default function Preview() {\n  const accordions = [\n    {\n      title: 'What is your return policy?',\n      content:\n        'Our return policy allows you to return items within 30 days of purchase for a full refund. Items must be in their original condition and packaging.',\n    },\n    {\n      title: 'How long does shipping take?',\n      content:\n        'Shipping typically takes 3-5 business days for domestic orders. International shipping may take longer depending on the destination.',\n    },\n    {\n      title: 'Do you offer international shipping?',\n      content:\n        'Yes, we offer international shipping to select countries. Please check our shipping policy for more details on available locations.',\n    },\n    {\n      title: 'How can I track my order?',\n      content:\n        'Once your order has shipped, you will receive an email with a tracking number. You can use this number to track your order on our website.',\n    },\n  ];\n\n  return (\n    <div className=\"m-auto flex h-screen w-1/2 max-w-screen-lg items-start justify-center p-10\">\n      <Accordions className=\"w-full\" type=\"multiple\">\n        {accordions.map(({ title, content }, index) => (\n          <Accordion key={index} title={title} value={index.toString()}>\n            {content}\n          </Accordion>\n        ))}\n      </Accordions>\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/accordions/index.tsx",
+      "componentName": "Accordions",
+      "source": {
+        "index.tsx": "'use client';\n\nimport * as AccordionsPrimitive from '@radix-ui/react-accordion';\nimport React from 'react';\n\nfunction Accordion({\n  children,\n  title,\n  ...rest\n}: React.ComponentPropsWithoutRef<typeof AccordionsPrimitive.Item>) {\n  return (\n    <AccordionsPrimitive.Item {...rest}>\n      <AccordionsPrimitive.Header>\n        <AccordionsPrimitive.Trigger asChild>\n          <div className=\"group cursor-pointer items-start gap-8 py-3 last:flex @md:py-4\">\n            <div className=\"flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground\">\n              {title}\n            </div>\n            <AnimatedChevron />\n          </div>\n        </AccordionsPrimitive.Trigger>\n      </AccordionsPrimitive.Header>\n      <AccordionsPrimitive.Content className=\"overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand\">\n        <div className=\"pb-5 font-body font-medium leading-normal text-foreground\">{children}</div>\n      </AccordionsPrimitive.Content>\n    </AccordionsPrimitive.Item>\n  );\n}\n\nfunction AnimatedChevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {\n  return (\n    <svg\n      className=\"mt-1 shrink-0 [&>line]:origin-center [&>line]:stroke-contrast-500 [&>line]:transition [&>line]:duration-300 [&>line]:ease-out [&>line]:group-hover:stroke-foreground\"\n      viewBox=\"0 0 10 10\"\n      width={16}\n      {...props}\n    >\n      {/* Left Line of Chevron */}\n      <line\n        className=\"group-data-[state=open]:-translate-y-[3px] group-data-[state=open]:-rotate-90\"\n        stroke=\"currentColor\"\n        strokeLinecap=\"round\"\n        x1={2}\n        x2={5}\n        y1={2}\n        y2={5}\n      />\n      {/* Right Line of Chevron */}\n      <line\n        className=\"group-data-[state=open]:-translate-y-[3px] group-data-[state=open]:rotate-90\"\n        stroke=\"currentColor\"\n        strokeLinecap=\"round\"\n        x1={8}\n        x2={5}\n        y1={2}\n        y2={5}\n      />\n    </svg>\n  );\n}\n\nconst Accordions = AccordionsPrimitive.Root;\n\nexport { Accordions, Accordion };\n"
+      }
+    },
+    {
+      "name": "alert",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "primitives/alert/index.tsx"
+      ],
+      "doc": "---\ntitle: Alert\ndescription: An Alert is used to display important information to the user. It is typically styled with a distinct color and icon to indicate the type of alert such as success, error, warning, or info.\npreview: alert-example\npreviewSize: sm\nfeatures:\n  - Dismissable\n  - Auto dismiss after 3 seconds\n  - Success, error, warning, info variants\n  - Animated transition\n---\n\n## Usage\n\n<CodeBlock lang=\"bash\">{`import { Alert } from '@/vibes/soul/primitives/alert'\nimport { useState } from 'react'`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`const [showAlert, setShowAlert] = useState(false)`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`<Alert variant=\"success\" message=\"1 item added to your cart\" showAlert={showAlert} onClose={setShowAlert}/>`}</CodeBlock>\n\n## API Reference\n\n| Prop                                                                                   | Type                                                              | Default     |\n| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- |\n| `variant` <Tooltip content='The style variant of the alert, defines color and icon' /> | `enum` <Tooltip content={`\"success\" \"error\" \"warning\" \"info\"`} /> | `\"success\"` |\n| `message` <Tooltip content='Alert message displayed' />                                | `string`                                                          |             |\n| `showAlert`                                                                            | `boolean`                                                         |             |\n| `onClose`                                                                              | `(showAlert: boolean) => void`                                    |             |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2786-48748&t=AsLeJWIgmBOsgk51-1\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/alert.mdx",
+      "example": "'use client';\n\nimport { Alert } from '@/vibes/soul/primitives/alert';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen flex-col items-center justify-center gap-4 p-8\">\n      <Alert message=\"This is a success alert\" variant=\"success\" />\n      <Alert message=\"This is a warning alert\" variant=\"warning\" />\n      <Alert message=\"This is an error alert\" variant=\"error\" />\n      <Alert message=\"This is an info alert\" variant=\"info\" />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/alert/index.tsx",
+      "componentName": "Alert",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\nimport { X } from 'lucide-react';\n\nimport { Button } from '@/vibes/soul/primitives/button';\n\ninterface Props {\n  variant: 'success' | 'warning' | 'error' | 'info';\n  message: string;\n  description?: string;\n  dismissLabel?: string;\n  action?: {\n    label: string;\n    onClick: () => void;\n  };\n  onDismiss?: () => void;\n}\n\nexport function Alert({\n  variant,\n  message,\n  description,\n  action,\n  dismissLabel = 'Dismiss',\n  onDismiss,\n}: Props) {\n  return (\n    <div\n      className={clsx(\n        'flex min-w-[284px] max-w-[356px] items-center justify-between gap-2 rounded-xl border border-foreground/10 py-3 pe-3 ps-4 shadow-sm ring-foreground group-focus-visible:outline-none group-focus-visible:ring-2',\n        {\n          success: 'bg-success-highlight',\n          warning: 'bg-warning-highlight',\n          error: 'bg-error-highlight',\n          info: 'bg-background',\n        }[variant],\n      )}\n      role=\"alert\"\n    >\n      <div className=\"flex flex-col\">\n        <span className=\"text-sm font-normal text-foreground\">{message}</span>\n        {Boolean(description) && (\n          <span className=\"text-xs font-medium text-contrast-400\">{description}</span>\n        )}\n      </div>\n\n      <div className=\"flex items-center gap-1\">\n        {action && (\n          <Button onClick={action.onClick} size=\"x-small\" variant=\"ghost\">\n            {action.label}\n          </Button>\n        )}\n\n        <Button aria-label={dismissLabel} onClick={onDismiss} size=\"icon-small\" variant=\"ghost\">\n          <X size={20} strokeWidth={1} />\n        </Button>\n      </div>\n    </div>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "animated-link",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        "primitives/animated-link/index.tsx"
+      ],
+      "doc": "---\ntitle: Animated Link\ndescription: Link that animates on hover or focus\npreview: animated-link-example\npreviewSize: xs\nfeatures:\n  - Animates link on hover or focus\n  - Multi line support\n---\n\n## Usage\n\n<CodeBlock lang=\"bash\">{`import { AnimatedLink } from '@/vibes/soul/primitives/alert'`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`<AnimatedLink href=\"/\" label=\"Animated Link\" />`}</CodeBlock>\n\n## API Reference\n\n| Prop    | Type     | Default |\n| ------- | -------- | ------- |\n| `href`  | `string` |         |\n| `label` | `string` |         |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42917&t=dbm9GtAtS2A3vy2g-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/animated-link.mdx",
+      "example": "import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen flex-col items-center justify-center\">\n      <div className=\"max-w-80\">\n        <p className=\"mb-6\">\n          This is text with an <AnimatedLink label=\"animated link\" link={{ href: '/' }} /> inside.\n        </p>\n\n        <AnimatedLink\n          label=\"Animated link with a very long label to exhibit multi line support\"\n          link={{ href: '/' }}\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/animated-link/index.tsx",
+      "componentName": "Animated Link",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\nimport Link from 'next/link';\n\nexport interface AnimatedLinkProps {\n  link: {\n    href: string;\n    target?: string;\n  };\n  label: string;\n  className?: string;\n}\n\nexport function AnimatedLink({ link, label, className }: AnimatedLinkProps) {\n  return (\n    <Link\n      className={clsx(\n        'origin-left pb-0.5 font-semibold transition-[background-size] duration-300 [background:linear-gradient(0deg,hsl(var(--primary)),hsl(var(--primary)))_no-repeat_left_bottom_/_0_2px] hover:bg-[size:100%_2px] focus:outline-none focus-visible:bg-[size:100%_2px]',\n        className,\n      )}\n      href={link.href}\n    >\n      {label}\n    </Link>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "badge",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "primitives/badge/index.tsx"
+      ],
+      "doc": "---\ntitle: Badge\ndescription: Badges are used to highlight important keywords or statuses.\npreview: badge-example\npreviewSize: xs\n---\n\n## Usage\n\n<CodeBlock lang=\"bash\">{`import { Badge } from '@/vibes/soul/primitives/badge'`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`<Badge>New</Badge>`}</CodeBlock>\n\n## API Reference\n\n| Prop        | Type     | Default |\n| ----------- | -------- | ------- |\n| `className` | `string` |         |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42917&t=dbm9GtAtS2A3vy2g-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/badge.mdx",
+      "example": "import { Badge } from '@/vibes/soul/primitives/badge';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen items-center justify-center gap-4\">\n      <Badge variant=\"pill\">Pill</Badge>\n      <Badge variant=\"rounded\">Rounded</Badge>\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/badge/index.tsx",
+      "componentName": "Badge",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\nimport { ReactNode } from 'react';\n\ninterface Props {\n  children: ReactNode;\n  variant?: 'pill' | 'rounded';\n  color?: 'primary' | 'accent' | 'warning' | 'danger' | 'success' | 'info';\n  className?: string;\n}\n\nexport function Badge({ children, variant = 'rounded', className, color = 'primary' }: Props) {\n  return (\n    <span\n      className={clsx(\n        'bg-primary-highlight px-2 py-0.5 font-mono text-xs uppercase tracking-tighter text-foreground',\n        {\n          pill: 'rounded-full',\n          rounded: 'rounded',\n        }[variant],\n        {\n          primary: 'bg-primary-highlight',\n          accent: 'bg-accent-highlight',\n          warning: 'bg-warning-highlight',\n          danger: 'bg-danger-highlight',\n          success: 'bg-success-highlight',\n          info: 'bg-info-highlight',\n        }[color],\n        className,\n      )}\n    >\n      {children}\n    </span>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "banner",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "primitives/banner/index.tsx"
+      ],
+      "doc": "---\ntitle: Banner\ndescription: The `banner` component is used to display important messages or announcements to users in the form of a bar across the top of the screen.\npreview: banner-example\npreviewSize: xs\nfeatures:\n  - Full keyboard navigation\n  - Dismissible\n  - Animated transition\n---\n\n## Usage\n\nexport default function Preview() {\n  return (\n    <Banner id=\"example-banner\">\n      Get <strong>15% off</strong> and free shipping with discount code{' '}\n      <strong>&quot;welcome&quot;</strong>\n    </Banner>\n  )\n}\n\n<CodeBlock lang=\"bash\">{`import { Banner } from '@/vibes/soul/primitives/banner'`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`<Banner id=\"example-banner\">\n  Get <strong>15% off</strong> and free shipping with discount code{' '}\n  <strong>&quot;welcome&quot;</strong>\n</Banner>`}</CodeBlock>\n\n## API Reference\n\n| Prop        | Type     | Default |\n| ----------- | -------- | ------- |\n| `className` | `string` |         |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42901&t=dbm9GtAtS2A3vy2g-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/banner.mdx",
+      "example": "import { Banner } from '@/vibes/soul/primitives/banner';\n\nexport default function Preview() {\n  return (\n    <Banner id=\"example-banner\">\n      Get <strong>15% off</strong> and free shipping with discount code{' '}\n      <strong>&quot;welcome&quot;</strong>\n    </Banner>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/banner/index.tsx",
+      "componentName": "Banner",
+      "source": {
+        "index.tsx": "'use client';\n\nimport { clsx } from 'clsx';\nimport { X } from 'lucide-react';\nimport { ForwardedRef, forwardRef, ReactNode, useCallback, useEffect, useState } from 'react';\n\nexport const Banner = forwardRef(\n  (\n    {\n      id,\n      children,\n      hideDismiss = false,\n      className,\n      onDismiss,\n    }: {\n      id: string;\n      children: ReactNode;\n      hideDismiss?: boolean;\n      className?: string;\n      onDismiss?: () => void;\n    },\n    ref: ForwardedRef<HTMLDivElement>,\n  ) => {\n    const [banner, setBanner] = useState({ dismissed: false, initialized: false });\n\n    useEffect(() => {\n      const hidden = localStorage.getItem(`${id}-hidden-banner`) === 'true';\n\n      setBanner({ dismissed: hidden, initialized: true });\n    }, [id]);\n\n    const hideBanner = useCallback(() => {\n      setBanner((prev) => ({ ...prev, dismissed: true }));\n      localStorage.setItem(`${id}-hidden-banner`, 'true');\n      onDismiss?.();\n    }, [id, onDismiss]);\n\n    if (!banner.initialized) return null;\n\n    return (\n      <div\n        className={clsx(\n          'relative w-full overflow-hidden bg-primary transition-all duration-300 ease-in @container',\n          banner.dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',\n          className,\n        )}\n        id=\"announcement-bar\"\n        ref={ref}\n      >\n        <div className=\"p-3 pr-12 text-sm text-foreground @xl:px-12 @xl:text-center @xl:text-base\">\n          {children}\n        </div>\n\n        {!hideDismiss && (\n          <button\n            aria-label=\"Dismiss banner\"\n            className=\"absolute right-3 top-3 grid h-8 w-8 place-content-center rounded-full text-foreground/50 transition-colors duration-300 hover:bg-background/40 hover:text-foreground @xl:top-1/2 @xl:-translate-y-1/2\"\n            onClick={(e) => {\n              e.preventDefault();\n              hideBanner();\n            }}\n          >\n            <X absoluteStrokeWidth size={20} strokeWidth={1.5} />\n          </button>\n        )}\n      </div>\n    );\n  },\n);\n\nBanner.displayName = 'Banner';\n"
+      }
+    },
+    {
+      "name": "blog-post-card",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "primitives/blog-post-card/index.tsx"
+      ],
+      "doc": "---\ntitle: Blog Post Card\ndescription: Blog Post Card is used to display a blog post in a card preview.\npreview: blog-post-card-example\npreviewSize: md\nfeatures:\n  - Full keyboard navigation\n  - Hover animation\n  - When no image is provided, the card will display a typographic background with the title.\n---\n\n## Usage\n\n<CodeBlock lang=\"bash\">{`import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card'`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`<BlogPostCard />`}</CodeBlock>\n\n## API Reference\n\n| Prop                                                                                       | Type                                                                           | Default      |\n| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------ |\n| `type` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `enum` <Tooltip content={`\"single\" ${String.fromCharCode(124)} \"multiple\"`} /> | `\"multiple\"` |\n| `title` <Tooltip content='This is an example tooltip for what this particular prop does'/> | `string`                                                                       |              |\n| `body` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `string`                                                                       |              |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=737-16279&t=dbm9GtAtS2A3vy2g-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/blog-post-card.mdx",
+      "example": "import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex min-h-48 items-center justify-center bg-background p-8 @container\">\n      <BlogPostCard\n        author=\"Ryan Smith\"\n        className=\"w-80\"\n        content=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit hendrerit erat imperdiet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is some more text to test out here.\"\n        date=\"2024-07-01\"\n        href=\"#\"\n        id=\"1\"\n        image={{\n          src: 'https://rstr.in/monogram/vibes/MJbRGY1Y9LK/QlkAvXGZ2ER',\n          alt: 'Vestibulum eleifend placerat ligula',\n        }}\n        title=\"Vestibulum eleifend placerat ligula and even more text for a long title\"\n      />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/blog-post-card/index.tsx",
+      "componentName": "Blog Post Card",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\nimport Image from 'next/image';\nimport Link from 'next/link';\n\nexport interface BlogPost {\n  id: string;\n  author?: string | null;\n  content: string;\n  date: string;\n  image?: {\n    src: string;\n    alt: string;\n  };\n  href: string;\n  title: string;\n  className?: string;\n}\n\nexport const BlogPostCard = function BlogPostCard({\n  title,\n  image,\n  content,\n  href,\n  date,\n  author,\n  className,\n}: BlogPost) {\n  return (\n    <Link\n      className={clsx(\n        'group max-w-full rounded-b-lg rounded-t-2xl text-foreground ring-primary ring-offset-4 @container focus:outline-0 focus-visible:ring-2',\n        className,\n      )}\n      href={href}\n    >\n      <div className=\"relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-contrast-100\">\n        {image?.src != null && image.src !== '' ? (\n          <Image\n            alt={image.alt}\n            className=\"transition-transform duration-500 ease-out group-hover:scale-110\"\n            fill\n            sizes=\"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw\"\n            src={image.src}\n          />\n        ) : (\n          <div className=\"p-4 text-5xl font-bold leading-none tracking-tighter text-foreground/15\">\n            {title}\n          </div>\n        )}\n      </div>\n\n      <div className=\"text-lg font-medium leading-snug\">{title}</div>\n      <p className=\"mb-3 mt-1.5 line-clamp-3 text-sm font-normal text-contrast-400\">{content}</p>\n      <div className=\"text-sm\">\n        <time dateTime={date}>\n          {new Date(date).toLocaleDateString('en-US', {\n            year: 'numeric',\n            month: 'long',\n            day: 'numeric',\n          })}\n        </time>\n        {date !== '' && author != null && author !== '' && (\n          <span className=\"after:mx-2 after:content-['•']\" />\n        )}\n        {author != null && author !== '' && <span>{author}</span>}\n      </div>\n    </Link>\n  );\n};\n\nexport const BlogPostCardSkeleton = function BlogPostCardSkeleton({\n  className,\n}: {\n  className?: string;\n}) {\n  return (\n    <div className={clsx('flex max-w-md animate-pulse flex-col gap-2 rounded-xl', className)}>\n      {/* Image */}\n      <div className=\"aspect-[4/3] overflow-hidden rounded-xl bg-contrast-100\" />\n\n      {/* Title */}\n      <div className=\"h-4 w-24 rounded-lg bg-contrast-100\" />\n\n      {/* Content */}\n      <div className=\"h-3 w-full rounded-lg bg-contrast-100\" />\n      <div className=\"h-3 w-full rounded-lg bg-contrast-100\" />\n      <div className=\"h-3 w-1/2 rounded-lg bg-contrast-100\" />\n\n      <div className=\"flex flex-wrap items-center\">\n        {/* Date */}\n        <div className=\"h-4 w-16 rounded-lg bg-contrast-100\" />\n        <span className=\"after:mx-2 after:text-contrast-100 after:content-['•']\" />\n        {/* Author */}\n        <div className=\"h-4 w-20 rounded-lg bg-contrast-100\" />\n      </div>\n    </div>\n  );\n};\n"
+      }
+    },
+    {
+      "name": "button",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "primitives/button/index.tsx"
+      ],
+      "doc": "---\ntitle: Button\npreview: button-example\npreviewSize: sm\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/button.mdx",
+      "example": "import { ArrowRight } from 'lucide-react';\n\nimport { Button } from '@/vibes/soul/primitives/button';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen flex-col items-center gap-x-4 gap-y-6 px-6 py-8\">\n      <div className=\"flex flex-wrap items-center gap-x-3 gap-y-3\">\n        <Button size=\"large\" variant=\"primary\">\n          Shop now\n        </Button>\n        <Button size=\"medium\" variant=\"primary\">\n          Shop now\n        </Button>\n        <Button size=\"small\" variant=\"primary\">\n          Shop now\n        </Button>\n        <Button size=\"x-small\" variant=\"primary\">\n          Shop now\n        </Button>\n        <Button size=\"icon\" variant=\"primary\">\n          <ArrowRight size={20} />\n        </Button>\n        <Button size=\"icon-small\" variant=\"primary\">\n          <ArrowRight size={20} />\n        </Button>\n      </div>\n\n      <div className=\"flex flex-wrap items-center gap-x-3 gap-y-3\">\n        <Button size=\"large\" variant=\"secondary\">\n          Shop now\n        </Button>\n        <Button size=\"medium\" variant=\"secondary\">\n          Shop now\n        </Button>\n        <Button size=\"small\" variant=\"secondary\">\n          Shop now\n        </Button>\n        <Button size=\"x-small\" variant=\"secondary\">\n          Shop now\n        </Button>\n        <Button size=\"icon\" variant=\"secondary\">\n          <ArrowRight size={20} />\n        </Button>\n        <Button size=\"icon-small\" variant=\"secondary\">\n          <ArrowRight size={20} />\n        </Button>\n      </div>\n\n      <div className=\"flex flex-wrap items-center gap-x-3 gap-y-3\">\n        <Button size=\"large\" variant=\"tertiary\">\n          Shop now\n        </Button>\n        <Button size=\"medium\" variant=\"tertiary\">\n          Shop now\n        </Button>\n        <Button size=\"small\" variant=\"tertiary\">\n          Shop now\n        </Button>\n        <Button size=\"x-small\" variant=\"tertiary\">\n          Shop now\n        </Button>\n        <Button size=\"icon\" variant=\"tertiary\">\n          <ArrowRight size={20} />\n        </Button>\n        <Button size=\"icon-small\" variant=\"tertiary\">\n          <ArrowRight size={20} />\n        </Button>\n      </div>\n\n      <div className=\"flex flex-wrap items-center gap-x-3 gap-y-3\">\n        <Button size=\"large\" variant=\"ghost\">\n          Shop now\n        </Button>\n        <Button size=\"medium\" variant=\"ghost\">\n          Shop now\n        </Button>\n        <Button size=\"small\" variant=\"ghost\">\n          Shop now\n        </Button>\n        <Button size=\"x-small\" variant=\"ghost\">\n          Shop now\n        </Button>\n        <Button size=\"icon\" variant=\"ghost\">\n          <ArrowRight size={20} />\n        </Button>\n        <Button size=\"icon-small\" variant=\"ghost\">\n          <ArrowRight size={20} />\n        </Button>\n      </div>\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/button/index.tsx",
+      "componentName": "Button",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\nimport { Loader2 } from 'lucide-react';\n\nexport type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {\n  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';\n  size?: 'large' | 'medium' | 'small' | 'x-small' | 'icon' | 'icon-small';\n  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;\n  loading?: boolean;\n  type?: 'button' | 'submit' | 'reset';\n};\n\nexport function Button({\n  variant = 'primary',\n  size = 'large',\n  onClick,\n  loading = false,\n  disabled = false,\n  className,\n  children,\n  type = 'button',\n  ...props\n}: Props) {\n  return (\n    <button\n      aria-busy={loading}\n      className={clsx(\n        'relative z-0 h-fit overflow-hidden rounded-full border font-semibold leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] focus-visible:outline-none focus-visible:ring-2',\n        {\n          primary:\n            'border-primary bg-primary text-foreground ring-foreground after:bg-background/40',\n          secondary:\n            'border-foreground bg-foreground text-background ring-primary after:bg-background',\n          tertiary:\n            'border-contrast-200 bg-background text-foreground ring-primary after:bg-contrast-100',\n          ghost:\n            'border-transparent bg-transparent text-foreground ring-primary after:bg-foreground/5',\n        }[variant],\n        !loading && !disabled && 'hover:after:translate-x-0',\n        disabled && 'cursor-not-allowed opacity-30',\n        className,\n      )}\n      onClick={onClick}\n      type={type}\n      {...props}\n    >\n      <span\n        className={clsx(\n          'inline-flex items-center justify-center transition-all duration-300 ease-in-out',\n          loading ? '-translate-y-10 opacity-0' : 'translate-y-0 opacity-100',\n          {\n            'icon-small': 'min-h-8 p-1.5 text-xs',\n            icon: 'min-h-10 p-2.5 text-sm',\n            'x-small': 'min-h-8 gap-x-2 px-3 py-1.5 text-xs',\n            small: 'min-h-10 gap-x-2 px-4 py-2.5 text-sm',\n            medium: 'min-h-12 gap-x-2.5 px-5 py-3 text-base',\n            large: 'min-h-14 gap-x-3 px-6 py-4 text-base',\n          }[size],\n          variant === 'secondary' && 'mix-blend-difference',\n        )}\n      >\n        {children}\n      </span>\n\n      <span\n        className={clsx(\n          'absolute inset-0 grid place-content-center transition-all duration-300 ease-in-out',\n          loading ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',\n        )}\n      >\n        <Loader2 className={clsx('animate-spin', variant === 'tertiary' && 'text-foreground')} />\n      </span>\n    </button>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "button-link",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "primitives/button-link/index.tsx"
+      ],
+      "doc": "---\ntitle: Button Link\npreview: button-link-example\npreviewSize: sm\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/button-link.mdx",
+      "example": "import { ArrowRight } from 'lucide-react';\n\nimport { ButtonLink } from '@/vibes/soul/primitives/button-link';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen flex-col items-center gap-x-4 gap-y-6 px-6 py-8\">\n      <div className=\"flex flex-wrap items-center gap-x-3 gap-y-3\">\n        <ButtonLink href=\"#\" size=\"large\" variant=\"primary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"medium\" variant=\"primary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"small\" variant=\"primary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"x-small\" variant=\"primary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"icon\" variant=\"primary\">\n          <ArrowRight size={20} />\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"icon-small\" variant=\"primary\">\n          <ArrowRight size={20} />\n        </ButtonLink>\n      </div>\n\n      <div className=\"flex flex-wrap items-center gap-x-3 gap-y-3\">\n        <ButtonLink href=\"#\" size=\"large\" variant=\"secondary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"medium\" variant=\"secondary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"small\" variant=\"secondary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"x-small\" variant=\"secondary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"icon\" variant=\"secondary\">\n          <ArrowRight size={20} />\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"icon-small\" variant=\"secondary\">\n          <ArrowRight size={20} />\n        </ButtonLink>\n      </div>\n\n      <div className=\"flex flex-wrap items-center gap-x-3 gap-y-3\">\n        <ButtonLink href=\"#\" size=\"large\" variant=\"tertiary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"medium\" variant=\"tertiary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"small\" variant=\"tertiary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"x-small\" variant=\"tertiary\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"icon\" variant=\"tertiary\">\n          <ArrowRight size={20} />\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"icon-small\" variant=\"tertiary\">\n          <ArrowRight size={20} />\n        </ButtonLink>\n      </div>\n\n      <div className=\"flex flex-wrap items-center gap-x-3 gap-y-3\">\n        <ButtonLink href=\"#\" size=\"large\" variant=\"ghost\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"medium\" variant=\"ghost\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"small\" variant=\"ghost\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"x-small\" variant=\"ghost\">\n          Shop now\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"icon\" variant=\"ghost\">\n          <ArrowRight size={20} />\n        </ButtonLink>\n        <ButtonLink href=\"#\" size=\"icon-small\" variant=\"ghost\">\n          <ArrowRight size={20} />\n        </ButtonLink>\n      </div>\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/button-link/index.tsx",
+      "componentName": "Button Link",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\nimport Link from 'next/link';\n\nexport type Props = React.AnchorHTMLAttributes<HTMLAnchorElement> & {\n  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';\n  size?: 'large' | 'medium' | 'small' | 'x-small' | 'icon' | 'icon-small';\n  href: string;\n};\n\nexport function ButtonLink({\n  variant = 'primary',\n  size = 'large',\n  href,\n  className,\n  children,\n  ...props\n}: Props) {\n  return (\n    <Link\n      {...props}\n      className={clsx(\n        'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden rounded-full border text-center font-semibold leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:outline-none focus-visible:ring-2',\n        {\n          primary:\n            'border-primary bg-primary text-foreground ring-foreground after:bg-background/40',\n          secondary:\n            'border-foreground bg-foreground text-background ring-primary after:bg-background',\n          tertiary:\n            'border-contrast-200 bg-background text-foreground ring-primary after:bg-contrast-100',\n          ghost:\n            'border-transparent bg-transparent text-foreground ring-primary after:bg-foreground/5',\n        }[variant],\n        {\n          'icon-small': 'min-h-8 p-1.5 text-xs',\n          icon: 'min-h-10 p-2.5 text-sm',\n          'x-small': 'min-h-8 gap-x-2 px-3 py-1.5 text-xs',\n          small: 'min-h-10 gap-x-2 px-4 py-2.5 text-sm',\n          medium: 'min-h-12 gap-x-2.5 px-5 py-3 text-base',\n          large: 'min-h-14 gap-x-3 px-6 py-4 text-base',\n        }[size],\n        className,\n      )}\n      href={href}\n    >\n      <span className={clsx(variant === 'secondary' && 'mix-blend-difference')}>{children}</span>\n    </Link>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "card",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "primitives/card/index.tsx"
+      ],
+      "doc": "---\ntitle: Card\npreview: card-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/card.mdx",
+      "example": "import { Card } from '@/vibes/soul/primitives/card';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen items-center justify-center gap-8 bg-background p-8\">\n      <Card\n        className=\"w-80\"\n        href=\"#\"\n        image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}\n        title=\"Low Maintenance\"\n      />\n      <Card\n        className=\"w-80\"\n        href=\"#\"\n        // image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}\n        title=\"Partial shade\"\n      />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/card/index.tsx",
+      "componentName": "Card",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\nimport { ArrowUpRight } from 'lucide-react';\nimport Image from 'next/image';\nimport Link from 'next/link';\n\nexport interface CardProps {\n  className?: string;\n  title: string;\n  image?: { src: string; alt: string };\n  href: string;\n  textContrast?: 'light' | 'dark';\n}\n\nexport function Card({ className, title, image, href, textContrast = 'dark' }: CardProps) {\n  return (\n    <div className={className}>\n      <Link\n        className=\"group relative flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl\"\n        href={href}\n      >\n        <ArrowUpRight\n          className={clsx(\n            'absolute right-2.5 top-2.5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',\n            textContrast === 'light' ? 'text-background' : 'text-foreground',\n          )}\n          strokeWidth={1.5}\n        />\n        <div className=\"relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100\">\n          {image != null ? (\n            <Image\n              alt={image.alt}\n              className=\"w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110\"\n              fill\n              sizes=\"(max-width: 768px) 70vw, 33vw\"\n              src={image.src}\n            />\n          ) : (\n            <div className=\"pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105\">\n              {title}\n            </div>\n          )}\n        </div>\n        <span\n          className={clsx(\n            'line-clamp-1 text-lg font-medium text-foreground',\n            textContrast === 'light' ? '@4xl:text-background' : '@4xl:text-foreground',\n          )}\n        >\n          {title}\n        </span>\n      </Link>\n    </div>\n  );\n}\n\nexport function CardSkeleton() {\n  return (\n    <div className=\"relative flex aspect-[3/4] w-full animate-pulse flex-col gap-2 @4xl:min-w-72\">\n      {/* Image */}\n      <div className=\"h-full w-full overflow-hidden rounded-lg bg-contrast-100 @4xl:rounded-xl\" />\n      {/* Title */}\n      <div className=\"mb-1 line-clamp-1 h-6 w-20 rounded-lg bg-contrast-100 @4xl:absolute @4xl:bottom-5 @4xl:left-5\" />\n    </div>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "checkbox",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react",
+        "@radix-ui/react-checkbox"
+      ],
+      "files": [
+        "primitives/checkbox/index.tsx"
+      ],
+      "doc": "---\ntitle: Checkbox\npreview: checkbox-example\npreviewSize: xs\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/checkbox.mdx",
+      "example": "'use client';\n\nimport { useState } from 'react';\n\nimport { Checkbox } from '@/vibes/soul/primitives/checkbox';\n\nexport default function Preview() {\n  const [checked, setChecked] = useState(false);\n\n  return (\n    <div className=\"flex h-screen flex-col justify-center gap-4 p-10\">\n      <Checkbox checked={checked} id=\"example-1\" label=\"Checkbox\" setChecked={setChecked} />\n      <Checkbox\n        checked={checked}\n        error=\"You must accept the Terms & Conditions\"\n        id=\"example-2\"\n        label=\"Accept Terms & Conditions\"\n        setChecked={setChecked}\n      />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/checkbox/index.tsx",
+      "componentName": "Checkbox",
+      "source": {
+        "index.tsx": "import * as RadixCheckbox from '@radix-ui/react-checkbox';\nimport { clsx } from 'clsx';\nimport { Check } from 'lucide-react';\n\ninterface Props {\n  id?: string;\n  checked: boolean;\n  // TODO: refactor props here\n  setChecked?: (checked: boolean) => void;\n  label?: React.ReactNode;\n  error?: string;\n  className?: string;\n}\n\nexport function Checkbox({ id, checked = false, setChecked, label, error, className }: Props) {\n  return (\n    <div>\n      <div className={clsx('flex items-center gap-2', className)}>\n        <RadixCheckbox.Root\n          checked={checked}\n          className={clsx(\n            'flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition-colors duration-150',\n            'focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary',\n            checked ? 'border-foreground bg-foreground' : 'border-contrast-300 bg-background',\n            error != null && error !== '' ? 'border-error' : 'border-contrast-300',\n          )}\n          defaultChecked\n          id={id}\n          onCheckedChange={setChecked}\n        >\n          <RadixCheckbox.Indicator>\n            <Check className=\"h-4 w-4\" color=\"white\" />\n          </RadixCheckbox.Indicator>\n        </RadixCheckbox.Root>\n\n        {label != null && label !== '' && (\n          <label className=\"cursor-pointer select-none text-foreground\" htmlFor={id}>\n            {label}\n          </label>\n        )}\n      </div>\n      {error != null && error !== '' && <span className=\"text-xs text-error\">{error}</span>}\n    </div>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "counter",
+      "dependencies": [],
+      "registryDependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        "primitives/counter/index.tsx"
+      ],
+      "doc": "---\ntitle: Counter\npreview: counter-example\npreviewSize: xs\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/counter.mdx",
+      "example": "import { Counter } from '@/vibes/soul/primitives/counter';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen items-center justify-center\">\n      <Counter />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/counter/index.tsx",
+      "componentName": "Counter",
+      "source": {
+        "index.tsx": "'use client';\n\nimport { clsx } from 'clsx';\nimport { Minus, Plus } from 'lucide-react';\nimport { useState } from 'react';\n\ninterface Props {\n  current?: number;\n  max?: number;\n  decrementAriaLabel?: string;\n  incrementAriaLabel?: string;\n}\n\nexport const Counter = function Counter({\n  current = 0,\n  decrementAriaLabel,\n  incrementAriaLabel,\n}: Props) {\n  const [count, setCount] = useState(current);\n  const decrement = () => {\n    setCount((prev) => prev - 1);\n  };\n  const increment = () => {\n    setCount((prev) => prev + 1);\n  };\n\n  return (\n    <div className=\"flex items-center justify-between rounded-lg border\">\n      <button\n        aria-label={decrementAriaLabel ?? 'Decrease count'}\n        className={clsx(\n          'group rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',\n          { 'hover:bg-contrast-100/50': count > 0 },\n        )}\n        disabled={count === 0}\n        onClick={decrement}\n      >\n        <Minus\n          className={clsx('text-contrast-300 transition-colors duration-300', {\n            'group-hover:text-foreground': count > 0,\n          })}\n          size={18}\n          strokeWidth={1.5}\n        />\n      </button>\n      <input\n        className=\"w-8 select-none text-center focus-visible:outline-none\"\n        // type=\"number\"\n        // style={{\n        //   appearance: 'none', // Remove default styling\n        //   MozAppearance: 'textfield', // For Firefox\n        //   WebkitAppearance: 'none', // For Chrome and Safari\n        // }}\n        value={count}\n      />\n\n      <button\n        aria-label={incrementAriaLabel ?? 'Increase count'}\n        className=\"group rounded-r-lg p-3 transition-colors duration-300 hover:bg-contrast-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary\"\n        onClick={increment}\n      >\n        <Plus\n          className=\"text-contrast-300 transition-colors duration-300 group-hover:text-foreground\"\n          size={18}\n          strokeWidth={1.5}\n        />\n      </button>\n    </div>\n  );\n};\n"
+      }
+    },
+    {
+      "name": "cursor-pagination",
+      "dependencies": [],
+      "registryDependencies": [
+        "lucide-react",
+        "nuqs",
+        "clsx"
+      ],
+      "files": [
+        "primitives/cursor-pagination/index.tsx"
+      ],
+      "doc": "---\ntitle: Pagination\npreview: cursor-pagination-example\npreviewSize: sm\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/cursor-pagination.mdx",
+      "example": "import { CursorPagination } from '@/vibes/soul/primitives/cursor-pagination';\n\nexport default function Page() {\n  return <CursorPagination info={{ startCursor: '1', endCursor: '2' }} />;\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/cursor-pagination/index.tsx",
+      "componentName": "Pagination",
+      "source": {
+        "index.tsx": "'use client';\n\nimport { clsx } from 'clsx';\nimport { ArrowLeft, ArrowRight } from 'lucide-react';\nimport Link from 'next/link';\nimport { useSearchParams } from 'next/navigation';\nimport { createSerializer, parseAsString } from 'nuqs';\nimport { Suspense, use } from 'react';\n\nexport interface CursorPaginationInfo {\n  startCursorParamName?: string;\n  startCursor?: string | null;\n  endCursorParamName?: string;\n  endCursor?: string | null;\n}\n\ninterface Props {\n  info: CursorPaginationInfo | Promise<CursorPaginationInfo>;\n  scroll?: boolean;\n}\n\nexport function CursorPagination(props: Props) {\n  return (\n    <Suspense fallback={<CursorPaginationSkeleton />}>\n      <CursorPaginationResolved {...props} />\n    </Suspense>\n  );\n}\n\nfunction CursorPaginationResolved({ info, scroll }: Props) {\n  const {\n    startCursorParamName = 'before',\n    endCursorParamName = 'after',\n    startCursor,\n    endCursor,\n  } = info instanceof Promise ? use(info) : info;\n  const searchParams = useSearchParams();\n  const serialize = createSerializer({\n    [startCursorParamName]: parseAsString,\n    [endCursorParamName]: parseAsString,\n  });\n\n  return (\n    <div className=\"flex w-full items-center justify-center gap-3 py-10\">\n      {startCursor != null ? (\n        <PaginationLink\n          href={serialize(searchParams, {\n            [startCursorParamName]: startCursor,\n            [endCursorParamName]: null,\n          })}\n          scroll={scroll}\n        >\n          <ArrowLeft size={24} strokeWidth={1} />\n        </PaginationLink>\n      ) : (\n        <SkeletonLink>\n          <ArrowLeft size={24} strokeWidth={1} />\n        </SkeletonLink>\n      )}\n      {endCursor != null ? (\n        <PaginationLink\n          href={serialize(searchParams, {\n            [endCursorParamName]: endCursor,\n            [startCursorParamName]: null,\n          })}\n          scroll={scroll}\n        >\n          <ArrowRight size={24} strokeWidth={1} />\n        </PaginationLink>\n      ) : (\n        <SkeletonLink>\n          <ArrowRight size={24} strokeWidth={1} />\n        </SkeletonLink>\n      )}\n    </div>\n  );\n}\n\nfunction PaginationLink({\n  href,\n  children,\n  scroll,\n}: {\n  href: string;\n  children: React.ReactNode;\n  scroll?: boolean;\n}) {\n  return (\n    <Link\n      className={clsx(\n        'flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2',\n      )}\n      href={href}\n      scroll={scroll}\n    >\n      {children}\n    </Link>\n  );\n}\n\nfunction SkeletonLink({ children }: { children: React.ReactNode }) {\n  return (\n    <div className=\"flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-contrast-100 text-foreground opacity-50 duration-300\">\n      {children}\n    </div>\n  );\n}\n\nexport function CursorPaginationSkeleton() {\n  return (\n    <div className=\"flex w-full justify-center bg-background py-10 text-xs\">\n      <div className=\"flex gap-2\">\n        <SkeletonLink>\n          <ArrowLeft />\n        </SkeletonLink>\n        <SkeletonLink>\n          <ArrowRight />\n        </SkeletonLink>\n      </div>\n    </div>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "dropdown",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react",
+        "@radix-ui/react-dropdown-menu"
+      ],
+      "files": [
+        "primitives/dropdown/index.tsx"
+      ],
+      "doc": "---\ntitle: Dropdown\npreview: dropdown-example\npreviewSize: sm\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/dropdown.mdx",
+      "example": "import { Dropdown } from '@/vibes/soul/primitives/dropdown';\n\nexport default function Preview() {\n  return (\n    <div className=\"mx-auto mt-10 flex h-screen max-w-52 flex-col gap-4\">\n      <Dropdown\n        items={['Most Recent', 'Most Popular', 'Price: Low to High', 'Price: High to Low']}\n        label=\"Dropdown\"\n      />\n      <Dropdown\n        error=\"You must select an option\"\n        items={['Most Recent', 'Most Popular', 'Price: Low to High', 'Price: High to Low']}\n        label=\"Dropdown\"\n      />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/dropdown/index.tsx",
+      "componentName": "Dropdown",
+      "source": {
+        "index.tsx": "'use client';\n\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n  DropdownMenuTriggerProps,\n} from '@radix-ui/react-dropdown-menu';\nimport { clsx } from 'clsx';\nimport { ChevronDown } from 'lucide-react';\nimport { useState } from 'react';\n\nimport { Label } from '@/vibes/soul/primitives/label';\n\ninterface Props {\n  label: string;\n  labelOnTop?: boolean;\n  variant?: 'round' | 'rectangle';\n  items: string[];\n  required?: boolean;\n  error?: string;\n}\n\nexport const Dropdown = function Dropdown({\n  label,\n  labelOnTop = false,\n  variant = 'rectangle',\n  items,\n  required,\n  error,\n  ...props\n}: Props & DropdownMenuTriggerProps) {\n  const [selectedItem, setSelectedItem] = useState<string | null>(null);\n\n  return (\n    <div>\n      <div className=\"flex items-center justify-between\">\n        {labelOnTop && <Label className=\"mb-2 block text-foreground\">{label}</Label>}\n        {required === true && <span className=\"text-xs text-contrast-300\">Required</span>}\n      </div>\n      <DropdownMenu>\n        <DropdownMenuTrigger\n          className={clsx(\n            variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',\n            'flex h-fit w-full select-none items-center justify-between gap-3 border bg-white p-2 px-5 py-3 font-medium text-foreground',\n            'text-sm ring-primary transition-colors hover:bg-contrast-100 focus-visible:outline-none focus-visible:ring-2',\n            error != null && error !== '' ? 'border-error' : 'border-contrast-100',\n          )}\n          {...props}\n        >\n          {selectedItem ?? label}\n          <ChevronDown className=\"w-5 text-foreground transition-transform\" strokeWidth={1.5} />\n        </DropdownMenuTrigger>\n        <DropdownMenuContent\n          className=\"z-50 mt-2 max-h-80 w-full overflow-y-scroll rounded-xl bg-background p-2 shadow-[2px_4px_24px_#00000010] \n          data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 \n          data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 \n          @4xl:rounded-3xl @4xl:p-4\"\n        >\n          {items.map((item) => (\n            <DropdownMenuItem\n              className={clsx(\n                'w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors',\n                'hover:bg-contrast-100 hover:text-foreground @4xl:text-base',\n                {\n                  'text-foreground': selectedItem === item,\n                },\n              )}\n              key={item}\n              onSelect={() => setSelectedItem(item)}\n            >\n              {item}\n            </DropdownMenuItem>\n          ))}\n        </DropdownMenuContent>\n      </DropdownMenu>\n      {error != null && error !== '' && <span className=\"text-xs text-error\">{error}</span>}\n    </div>\n  );\n};\n"
+      }
+    },
+    {
+      "name": "favorite",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "primitives/favorite/index.tsx",
+        "primitives/favorite/heart.tsx",
+        "primitives/favorite/styles.css"
+      ],
+      "doc": "---\ntitle: Favorite\npreview: favorite-example\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/favorite.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/favorite/index.tsx",
+      "componentName": "Favorite",
+      "source": {
+        "heart.tsx": "import { clsx } from 'clsx';\n\nimport './styles.css';\n\nexport function Heart({ filled = false }: { filled?: boolean }) {\n  return (\n    <svg\n      className=\"group-active:heart-pulse transform-gpu transition-transform duration-300 ease-out group-active:scale-75 sm:group-hover:scale-110\"\n      fill=\"none\"\n      height=\"21\"\n      viewBox=\"0 0 20 21\"\n      width=\"20\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n    >\n      {/* Line Heart */}\n      <path\n        className={clsx({\n          '-translate-x-px -translate-y-px scale-110 opacity-0 transition-[opacity,transform] delay-100':\n            filled,\n        })}\n        d=\"M17.3666 4.34166C16.941 3.91583 16.4356 3.57803 15.8794 3.34757C15.3232 3.1171 14.727 2.99847 14.1249 2.99847C13.5229 2.99847 12.9267 3.1171 12.3705 3.34757C11.8143 3.57803 11.3089 3.91583 10.8833 4.34166L9.99994 5.225L9.1166 4.34166C8.25686 3.48192 7.0908 2.99892 5.87494 2.99892C4.65908 2.99892 3.49301 3.48192 2.63327 4.34166C1.77353 5.20141 1.29053 6.36747 1.29053 7.58333C1.29053 8.79919 1.77353 9.96525 2.63327 10.825L3.5166 11.7083L9.99994 18.1917L16.4833 11.7083L17.3666 10.825C17.7924 10.3994 18.1302 9.89401 18.3607 9.33779C18.5912 8.78158 18.7098 8.1854 18.7098 7.58333C18.7098 6.98126 18.5912 6.38508 18.3607 5.82887C18.1302 5.27265 17.7924 4.76729 17.3666 4.34166Z\"\n        stroke=\"currentColor\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n      />\n\n      {/* Inner Filler Heart */}\n      <path\n        className={clsx(\n          'origin-center transition-transform duration-300 ease-out',\n          filled ? 'scale-100 fill-current' : 'scale-0',\n        )}\n        d=\"M17.3666 4.34166C16.941 3.91583 16.4356 3.57803 15.8794 3.34757C15.3232 3.1171 14.727 2.99847 14.1249 2.99847C13.5229 2.99847 12.9267 3.1171 12.3705 3.34757C11.8143 3.57803 11.3089 3.91583 10.8833 4.34166L9.99994 5.225L9.1166 4.34166C8.25686 3.48192 7.0908 2.99892 5.87494 2.99892C4.65908 2.99892 3.49301 3.48192 2.63327 4.34166C1.77353 5.20141 1.29053 6.36747 1.29053 7.58333C1.29053 8.79919 1.77353 9.96525 2.63327 10.825L3.5166 11.7083L9.99994 18.1917L16.4833 11.7083L17.3666 10.825C17.7924 10.3994 18.1302 9.89401 18.3607 9.33779C18.5912 8.78158 18.7098 8.1854 18.7098 7.58333C18.7098 6.98126 18.5912 6.38508 18.3607 5.82887C18.1302 5.27265 17.7924 4.76729 17.3666 4.34166Z\"\n      />\n    </svg>\n  );\n}\n",
+        "index.tsx": "import { clsx } from 'clsx';\n\nimport { Heart } from '@/vibes/soul/primitives/favorite/heart';\n\ninterface Props {\n  checked?: boolean;\n  setChecked: (liked: boolean) => void;\n}\n\nexport const Favorite = function Favorite({ checked, setChecked }: Props) {\n  return (\n    <label\n      className={clsx(\n        'group relative flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-[colors,transform] duration-300 focus-within:outline-0 focus-within:ring-2',\n        checked === true ? 'bg-contrast-100' : 'hover:border-contrast-200',\n      )}\n    >\n      <input\n        aria-label=\"Favorite\"\n        checked={checked}\n        className=\"absolute h-0 w-0 opacity-0\"\n        id=\"favorite-checkbox\"\n        onChange={() => {\n          setChecked(checked === true ? false : true);\n        }}\n        type=\"checkbox\"\n      />\n      <Heart filled={checked} />\n    </label>\n  );\n};\n",
+        "styles.css": ".heart-pulse {\n  animation: heart-pulse 0.75s forwards;\n}\n\n@keyframes heart-pulse {\n  0% {\n    transform: scale(1);\n  }\n  50% {\n    transform: scale(1.3);\n  }\n  100% {\n    transform: scale(1);\n  }\n}\n"
+      }
+    },
+    {
+      "name": "feature",
+      "dependencies": [
+        "button"
+      ],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "sections/feature/index.tsx",
+        "primitives/icon/index.tsx"
+      ],
+      "doc": "---\ntitle: Feature\npreview:\n  Electric: feature-electric-example\n  Warm: feature-warm-example\n  Luxury: feature-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/feature.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/feature/index.tsx",
+      "componentName": "Feature",
+      "source": {}
+    },
+    {
+      "name": "featured-video",
+      "dependencies": [
+        "button"
+      ],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/featured-video/index.tsx"
+      ],
+      "doc": "---\ntitle: Featured Video\npreview: featured-video-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/featured-video.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/featured-video/index.tsx",
+      "componentName": "Featured Video",
+      "source": {}
+    },
+    {
+      "name": "input",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "primitives/input/index.tsx"
+      ],
+      "doc": "---\ntitle: Input\npreview: input-example\npreviewSize: sm\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/input.mdx",
+      "example": "import { Input } from '@/vibes/soul/primitives/input';\n\nexport default function Preview() {\n  return (\n    <div className=\"mx-auto flex max-w-[390px] flex-col justify-center gap-3 p-5 sm:p-8 lg:p-12\">\n      <Input label=\"Label\" placeholder=\"Amount\" prepend=\"$\" />\n      <Input placeholder=\"First Name\" />\n      <Input error=\"Last name required\" placeholder=\"Last Name\" />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/input/index.tsx",
+      "componentName": "Input",
+      "source": {
+        "index.tsx": "'use client';\n\nimport { clsx } from 'clsx';\nimport { ComponentPropsWithRef, Ref, forwardRef } from 'react';\n\nimport { Label } from '@/vibes/soul/primitives/label';\n\nexport interface Props extends ComponentPropsWithRef<'input'> {\n  prepend?: string;\n  label?: string;\n  error?: string;\n  className?: string;\n}\n\nexport const Input = forwardRef(function Input(\n  { prepend, label, className, required, error, ...rest }: Props,\n  ref: Ref<HTMLInputElement>,\n) {\n  return (\n    <div className={clsx('w-full', className)}>\n      <div className=\"flex items-center justify-between\">\n        {label != null && label !== '' && (\n          <Label className=\"mb-2 block text-foreground\">{label}</Label>\n        )}\n        {required === true && <span className=\"text-xs text-contrast-300\">Required</span>}\n      </div>\n      <div\n        className={clsx(\n          'relative overflow-hidden rounded-lg border bg-background transition-colors duration-200 focus-within:border-foreground focus:outline-none',\n          error != null && error !== '' ? 'border-error' : 'border-contrast-100',\n        )}\n      >\n        {prepend != null && prepend !== '' && (\n          <span className=\"pointer-events-none absolute left-5 top-1/2 -translate-y-1/2\">\n            {prepend}\n          </span>\n        )}\n        <input\n          ref={ref}\n          {...rest}\n          className={clsx(\n            'placeholder-contrast-gray-500 w-full bg-transparent px-6 py-3 text-foreground [appearance:textfield] placeholder:font-normal focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',\n            {\n              'py-3 pl-10 pr-6': prepend,\n            },\n          )}\n        />\n      </div>\n      {error != null && error !== '' && <span className=\"text-xs text-error\">{error}</span>}\n    </div>\n  );\n});\n"
+      }
+    },
+    {
+      "name": "inline-email-form",
+      "dependencies": [],
+      "registryDependencies": [
+        "lucide-react",
+        "@conform-to/react",
+        "@conform-to/zod"
+      ],
+      "files": [
+        "primitives/inline-email-form/index.tsx"
+      ],
+      "doc": "---\ntitle: Inline Email Form\npreview: inline-email-form-example\npreviewSize: sm\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/inline-email-form.mdx",
+      "example": "import { InlineEmailForm } from '@/vibes/soul/primitives/inline-email-form';\n\nimport { action } from './actions';\n\nexport default function Preview() {\n  return (\n    <div className=\"p-10\">\n      <InlineEmailForm action={action} />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/inline-email-form/index.tsx",
+      "componentName": "Inline Email Form",
+      "source": {
+        "index.tsx": "'use client';\n\nimport { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';\nimport { parseWithZod } from '@conform-to/zod';\nimport { clsx } from 'clsx';\nimport { ArrowRight } from 'lucide-react';\nimport { useActionState } from 'react';\n\nimport { FormStatus } from '@/vibes/soul/form/form-status';\nimport { Button } from '@/vibes/soul/primitives/button';\n\nimport { schema } from './schema';\n\ntype Action<State, Payload> = (\n  prevState: Awaited<State>,\n  formData: Payload,\n) => State | Promise<State>;\n\nexport function InlineEmailForm({\n  className,\n  action,\n  submitLabel = 'Submit',\n  placeholder = 'Enter your email',\n}: {\n  className?: string;\n  placeholder?: string;\n  submitLabel?: string;\n  action: Action<{ lastResult: SubmissionResult | null; successMessage?: string }, FormData>;\n}) {\n  const [{ lastResult, successMessage }, formAction, isPending] = useActionState(action, {\n    lastResult: null,\n  });\n\n  const [form, fields] = useForm({\n    lastResult,\n    onValidate({ formData }) {\n      return parseWithZod(formData, { schema });\n    },\n    shouldValidate: 'onSubmit',\n    shouldRevalidate: 'onInput',\n  });\n\n  const { errors = [] } = fields.email;\n\n  return (\n    <form {...getFormProps(form)} action={formAction} className={clsx('space-y-2', className)}>\n      <div\n        className={clsx(\n          'relative rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',\n          errors.length ? 'border-error' : 'border-black',\n        )}\n      >\n        <input\n          {...getInputProps(fields.email, { type: 'email' })}\n          className=\"placeholder-contrast-gray-500 h-14 w-full bg-transparent pl-5 pr-16 text-foreground placeholder:font-normal focus:outline-none\"\n          data-1p-ignore\n          key={fields.email.id}\n          placeholder={placeholder}\n        />\n        <div className=\"absolute right-0 top-1/2 -translate-y-1/2 pr-2\">\n          <Button\n            aria-label={submitLabel}\n            loading={isPending}\n            size=\"icon\"\n            type=\"submit\"\n            variant=\"secondary\"\n          >\n            <ArrowRight size={20} strokeWidth={1.5} />\n          </Button>\n        </div>\n      </div>\n      {errors.map((error, index) => (\n        <FormStatus key={index} type=\"error\">\n          {error}\n        </FormStatus>\n      ))}\n      {form.status === 'success' && successMessage != null && (\n        <FormStatus>{successMessage}</FormStatus>\n      )}\n    </form>\n  );\n}\n",
+        "schema.ts": "import { z } from 'zod';\n\nexport const schema = z.object({\n  email: z.string().email(),\n});\n"
+      }
+    },
+    {
+      "name": "product-card",
+      "dependencies": [
+        "badge",
+        "checkbox",
+        "price-label"
+      ],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "primitives/product-card/index.tsx",
+        "primitives/product-card/compare.tsx"
+      ],
+      "doc": "---\ntitle: Product Card\npreview: product-card-example\npreviewSize: md\n---\n\n## Usage\n\nImport the component.\n\n<CodeBlock lang=\"bash\">{`import { ProductCard } from '@/vibes/soul/primitives/product-card'\n`}</CodeBlock>\n\nDisplay the component.\n\n<CodeBlock lang=\"bash\">{`<ProductCard\n  id=\"1\"\n  href=\"#\"\n  title=\"Product Name\"\n  image={{\n    src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',\n    alt: 'Product Name',\n  }}\n  subtitle=\"Blue/Black/Green\"\n  price=\"123.99\"\n  badge=\"New\"\n  showCompare\n/>\n`}</CodeBlock>\n\n## API Reference\n\n| Prop                | Type                                                     | Default |\n| ------------------- | -------------------------------------------------------- | ------- |\n| `id`                | `string`                                                 |         |\n| `title`             | `string`                                                 |         |\n| `href`              | `string`                                                 |         |\n| `image`             | `Image` <Tooltip content=\"{src: string, alt: string}\" /> |         |\n| `price?`            | `string` \\| [`ProductCardPrice`](#productcardprice)      |         |\n| `subtitle?`         | `string`                                                 |         |\n| `badge?`            | `string`                                                 |         |\n| `rating?`           | `number`                                                 |         |\n| `className?`        | `string`                                                 |         |\n| `showCompare?`      | `boolean`                                                | `false` |\n| `compareLabel?`     | `string`                                                 |         |\n| `compareParamName?` | `string`                                                 |         |\n\n### `ProductCardPrice`\n\n<CodeBlock lang=\"ts\">{`type ProductCardPrice = string | ProductCardPriceRange | ProductCardSalePrice;`}</CodeBlock>\n\n### `ProductCardPriceRange`\n\n<CodeBlock lang=\"ts\">\n  {`interface ProductCardPriceRange {\n  type: 'range'\n  minValue: string\n  maxValue: string\n}`}\n</CodeBlock>\n\n### `ProductCardSalePrice`\n\n<CodeBlock lang=\"ts\">\n  {`interface ProductCardSalePrice {\n  type: 'sale'\n  previousValue: string\n  currentValue: string\n}`}\n</CodeBlock>\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/product-card.mdx",
+      "example": "import { ProductCard } from '@/vibes/soul/primitives/product-card';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen items-center justify-center gap-8 bg-background p-8\">\n      <ProductCard\n        className=\"w-80\"\n        product={{\n          id: '1',\n          href: '#',\n          title: 'Product Name',\n          image: {\n            src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',\n            alt: 'Product Name',\n          },\n          subtitle: 'Blue/Black/Green',\n          price: '123.99',\n          badge: 'New',\n        }}\n        showCompare\n      />\n      <ProductCard\n        className=\"w-80\"\n        product={{\n          id: '1',\n          href: '#',\n          title: 'Product Name',\n          subtitle: 'Blue/Black/Green',\n          price: '123.99',\n          badge: 'New',\n        }}\n        showCompare\n      />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/product-card/index.tsx",
+      "componentName": "Product Card",
+      "source": {
+        "compare.tsx": "'use client';\n\nimport { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs';\n\nimport { Checkbox } from '@/vibes/soul/form/checkbox';\n\ninterface Props {\n  productId: string;\n  paramName?: string;\n  label?: string;\n}\n\nexport const Compare = function Compare({\n  productId,\n  paramName = 'compare',\n  label = 'Compare',\n}: Props) {\n  const [param, setParam] = useQueryState(\n    paramName,\n    parseAsArrayOf(parseAsString).withOptions({ shallow: false }),\n  );\n\n  return (\n    <Checkbox\n      checked={param?.includes(productId) ?? false}\n      className=\"text-contrast-500 transition-colors duration-300 hover:text-foreground\"\n      id={`${paramName}-${productId}`}\n      label={label}\n      onCheckedChange={(value) => {\n        void setParam((prev) => {\n          const next =\n            value === true\n              ? [...(prev ?? []), productId]\n              : (prev ?? []).filter((v) => v !== productId);\n\n          return next.length > 0 ? next : null;\n        });\n      }}\n    />\n  );\n};\n",
+        "index.tsx": "import Image from 'next/image';\nimport Link from 'next/link';\n\nimport { Badge } from '@/vibes/soul/primitives/badge';\nimport { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';\n\nimport { Compare } from './compare';\n\nexport interface CardProduct {\n  id: string;\n  title: string;\n  href: string;\n  image?: { src: string; alt: string };\n  price?: Price;\n  subtitle?: string;\n  badge?: string;\n  rating?: number;\n}\n\ninterface Props {\n  className?: string;\n  showCompare?: boolean;\n  compareLabel?: string;\n  compareParamName?: string;\n  product: CardProduct;\n}\n\nexport function ProductCard({\n  product: { id, title, subtitle, badge, price, image, href },\n  className,\n  showCompare = false,\n  compareLabel,\n  compareParamName,\n}: Props) {\n  return (\n    <div className={className}>\n      <Link\n        aria-label={title}\n        className=\"group flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl\"\n        href={href}\n        id={id}\n      >\n        <div className=\"relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100\">\n          {image != null ? (\n            <Image\n              alt={image.alt}\n              className=\"w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110\"\n              fill\n              sizes=\"(max-width: 768px) 70vw, 33vw\"\n              src={image.src}\n            />\n          ) : (\n            <div className=\"pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105\">\n              {title}\n            </div>\n          )}\n          {badge != null && badge !== '' && (\n            <Badge className=\"absolute left-3 top-3\" variant=\"rounded\">\n              {badge}\n            </Badge>\n          )}\n        </div>\n      </Link>\n\n      <div className=\"mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row\">\n        <div className=\"flex-1\">\n          <Link className=\"group text-base\" href={href} tabIndex={-1}>\n            <span className=\"block font-semibold\">{title}</span>\n\n            {subtitle != null && subtitle !== '' && (\n              <span className=\"mb-2 block text-sm font-normal text-contrast-400\">{subtitle}</span>\n            )}\n            {price != null && <PriceLabel price={price} />}\n          </Link>\n        </div>\n\n        {showCompare && (\n          <div className=\"mt-0.5 shrink-0\">\n            <Compare label={compareLabel} paramName={compareParamName} productId={id} />\n          </div>\n        )}\n      </div>\n    </div>\n  );\n}\n\nexport function ProductCardSkeleton({ className }: { className?: string }) {\n  return (\n    <div className={className}>\n      <div className=\"flex aspect-[5/6] flex-col gap-2 rounded-xl bg-contrast-100 @md:rounded-2xl\" />\n      <div className=\"mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row\">\n        <div className=\"flex-1\">\n          <div className=\"flex flex-col text-base\">\n            <div className=\"flex h-[1lh] items-center\">\n              <span className=\"block h-[1ex] w-[10ch] rounded-sm bg-contrast-100\" />\n            </div>\n            <div className=\"mb-2 flex h-[1lh] items-center text-sm font-normal text-contrast-400\">\n              <span className=\"block h-[1ex] w-[8ch] rounded-sm bg-contrast-100\" />\n            </div>\n            <div className=\"flex h-[1lh] items-center\">\n              <span className=\"block h-[1ex] w-[5ch] rounded-sm bg-contrast-100\" />\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "products-carousel",
+      "dependencies": [
+        "product-card",
+        "carousel"
+      ],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "primitives/products-carousel/index.tsx"
+      ],
+      "doc": "---\ntitle: Products Carousel\npreview: products-carousel-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/products-carousel.mdx",
+      "example": "import { getProducts } from '@/vibes/soul/data';\nimport { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';\n\nexport default function Preview() {\n  const products = getProducts('Warm');\n  return <ProductsCarousel products={products} />;\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/products-carousel/index.tsx",
+      "componentName": "Products Carousel",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\n\nimport {\n  Carousel,\n  CarouselButtons,\n  CarouselContent,\n  CarouselItem,\n  CarouselScrollbar,\n} from '@/vibes/soul/primitives/carousel';\nimport {\n  CardProduct,\n  ProductCard,\n  ProductCardSkeleton,\n} from '@/vibes/soul/primitives/product-card';\n\nimport { Stream, Streamable } from '../../lib/streamable';\n\nexport type CarouselProduct = CardProduct;\n\ninterface Props {\n  products: Streamable<CarouselProduct[]>;\n  className?: string;\n  emptyStateTitle?: string;\n  emptyStateSubtitle?: string;\n}\n\nexport function ProductsCarousel({\n  products: streamableProducts,\n  className,\n  emptyStateTitle,\n  emptyStateSubtitle,\n}: Props) {\n  return (\n    <Stream fallback={<ProductsCarouselSkeleton pending />} value={streamableProducts}>\n      {(products) => {\n        if (products.length === 0) {\n          return (\n            <ProductsCarouselEmptyState\n              emptyStateSubtitle={emptyStateSubtitle}\n              emptyStateTitle={emptyStateTitle}\n            />\n          );\n        }\n\n        return (\n          <Carousel className={className}>\n            <CarouselContent className=\"mb-10\">\n              {products.map((product) => (\n                <CarouselItem\n                  className=\"basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4\"\n                  key={product.id}\n                >\n                  <ProductCard product={product} />\n                </CarouselItem>\n              ))}\n            </CarouselContent>\n            <div className=\"flex w-full items-center justify-between\">\n              <CarouselScrollbar />\n              <CarouselButtons />\n            </div>\n          </Carousel>\n        );\n      }}\n    </Stream>\n  );\n}\n\nexport function ProductsCarouselSkeleton({\n  className,\n  count = 8,\n  pending = false,\n}: {\n  className?: string;\n  count?: number;\n  pending?: boolean;\n}) {\n  return (\n    <Carousel className={className} data-pending={pending ? '' : undefined}>\n      <CarouselContent className=\"mb-10\">\n        {Array.from({ length: count }).map((_, index) => (\n          <CarouselItem\n            className=\"basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4\"\n            key={index}\n          >\n            <ProductCardSkeleton />\n          </CarouselItem>\n        ))}\n      </CarouselContent>\n      <div className=\"flex w-full items-center justify-between\">\n        <CarouselScrollbar />\n        <CarouselButtons />\n      </div>\n    </Carousel>\n  );\n}\n\nexport function ProductsCarouselEmptyState({\n  className,\n  count = 8,\n  emptyStateTitle,\n  emptyStateSubtitle,\n}: {\n  className?: string;\n  count?: number;\n  emptyStateTitle?: string;\n  emptyStateSubtitle?: string;\n}) {\n  return (\n    <Carousel className={clsx('relative', className)}>\n      <CarouselContent\n        className={clsx(\n          'mb-10 [mask-image:linear-gradient(to_top,_transparent_0%,_hsl(var(--background))_75%)]',\n        )}\n      >\n        {Array.from({ length: count }).map((_, index) => (\n          <CarouselItem\n            className=\"basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4\"\n            key={index}\n          >\n            <ProductCardSkeleton />\n          </CarouselItem>\n        ))}\n      </CarouselContent>\n      <div className=\"absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28\">\n        <div className=\"mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3\">\n          <h3 className=\"@4x:leading-none font-heading text-2xl leading-tight text-foreground @4xl:text-4xl\">\n            {emptyStateTitle}\n          </h3>\n          <p className=\"text-sm text-contrast-500 @4xl:text-lg\">{emptyStateSubtitle}</p>\n        </div>\n      </div>\n    </Carousel>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "products-list",
+      "dependencies": [
+        "product-card"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "primitives/products-list/index.tsx"
+      ],
+      "doc": "---\ntitle: Product List\npreview:\n  Electric: products-list-electric-example\n  Warm: products-list-warm-example\n  Luxury: products-list-luxury-example\npreviewSize: lg\nfeatures:\n  - Displays a list of products\n  - Displays skeleton loading state for async data\n---\n\n## Usage\n\nImport the component.\n\n<CodeBlock lang=\"bash\">{`import { ProductsList } from '@/vibes/soul/primitives/products-list'`}</CodeBlock>\n\nQuery the product data.\n\n<CodeBlock lang=\"bash\">{`const products = await getProducts()`}</CodeBlock>\n\nDisplay the component.\n\n<CodeBlock lang=\"bash\">{`<ProductsList products={products} />`}</CodeBlock>\n\n### Streaming\n\nThe `products` property accepts either `Product[]` or `Promise<Product[]>`. By passing a `Promise<Product[]>`, you enable streaming which will show a loading state until the data is finished loading and streamed to the browser.\n\n<Preview\n  vibeSlug=\"soul\"\n  componentName={{\n    Electric: 'products-list-section-loading-electric-example',\n    Warm: 'products-list-section-loading-warm-example',\n    Luxury: 'products-list-section-loading-luxury-example',\n  }}\n/>\n\n## API Reference\n\n### `ProductsList`\n\n| Prop                | Type                                                                                                                         | Default |\n| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |\n| `products`          | [`Product`](/docs/soul/product-card#product)`[]` &nbsp;\\| &nbsp;`Promise<`[`Product>`](/docs/soul/product-card#product)`[]>` |         |\n| `className`         | `string`                                                                                                                     |         |\n| `showCompare?`      | `boolean`                                                                                                                    | `false` |\n| `compareProducts?`  | [`Product`](/docs/soul/product-card#product)`[]` &nbsp;\\|&nbsp; `Promise<`[`Product`](/docs/soul/product-card#product)`[]>`  |         |\n| `compareLabel?`     | `string`                                                                                                                     |         |\n| `compareParamName?` | `string`                                                                                                                     |         |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=3021-67477&t=AsLeJWIgmBOsgk51-1\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/products-list.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/products-list/index.tsx",
+      "componentName": "Product List",
+      "source": {
+        "compare-drawer.tsx": "'use client';\n\nimport { ArrowRight, X } from 'lucide-react';\nimport Image from 'next/image';\nimport Link from 'next/link';\nimport { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs';\nimport { startTransition } from 'react';\n\nimport { Button } from '@/vibes/soul/primitives/button';\nimport { Drawer } from '@/vibes/soul/primitives/drawer';\n\nfunction getInitials(name: string): string {\n  return name\n    .split(' ')\n    .map((word) => word[0])\n    .join('')\n    .toUpperCase()\n    .slice(0, 2);\n}\n\ninterface DrawerItem {\n  id: string;\n  image?: { src: string; alt: string };\n  href: string;\n  title: string;\n}\n\ninterface Props {\n  items: DrawerItem[];\n  paramName?: string;\n  action?: React.ComponentProps<'form'>['action'];\n  submitLabel?: string;\n}\n\nexport function CompareDrawer({\n  items,\n  paramName = 'compare',\n  action,\n  submitLabel = 'Compare',\n}: Props) {\n  const [, setParam] = useQueryState(\n    paramName,\n    parseAsArrayOf(parseAsString).withOptions({ shallow: false, scroll: false }),\n  );\n\n  return (\n    items.length > 0 && (\n      <Drawer>\n        <form\n          action={action}\n          className=\"mx-auto flex w-full max-w-7xl flex-col items-start justify-end gap-x-3 gap-y-4 @md:flex-row\"\n        >\n          <div className=\"flex flex-1 flex-wrap justify-end gap-4\">\n            {items.map((item) => (\n              <div className=\"relative\" key={item.id}>\n                <input key={item.id} name={paramName} type=\"hidden\" value={item.id} />\n                <Link\n                  className=\"group relative flex max-w-56 items-center whitespace-nowrap rounded-xl border border-contrast-100 bg-background font-semibold ring-primary transition-all duration-150 hover:bg-contrast-100 focus:outline-0 focus:ring-2\"\n                  href={item.href}\n                >\n                  <div className=\"bg-primary-highlight/10 relative aspect-square w-12 shrink-0\">\n                    {item.image?.src != null ? (\n                      <Image\n                        alt={item.image.alt}\n                        className=\"rounded-lg object-cover @4xl:rounded-r-none\"\n                        fill\n                        src={item.image.src}\n                      />\n                    ) : (\n                      <span className=\"max-w-full break-all p-1 text-xs text-primary-shadow opacity-20\">\n                        {getInitials(item.title)}\n                      </span>\n                    )}\n                  </div>\n                  <span className=\"hidden truncate pl-3 pr-5 text-foreground @4xl:block\">\n                    {item.title}\n                  </span>\n                </Link>\n\n                <button\n                  aria-label={`Remove ${item.title}`}\n                  className=\"absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center rounded-full border border-contrast-100 bg-background text-contrast-400 transition-colors duration-150 hover:border-contrast-200 hover:bg-contrast-100 hover:text-foreground\"\n                  onClick={() => {\n                    startTransition(async () => {\n                      await setParam((prev) => {\n                        const next = prev?.filter((v) => v !== item.id) ?? [];\n\n                        return next.length > 0 ? next : null;\n                      });\n                    });\n                  }}\n                  type=\"button\"\n                >\n                  <X absoluteStrokeWidth size={16} strokeWidth={1.5} />\n                </button>\n              </div>\n            ))}\n          </div>\n\n          <Button className=\"hidden @md:block\" size=\"medium\" type=\"submit\" variant=\"primary\">\n            {submitLabel} <ArrowRight absoluteStrokeWidth size={20} strokeWidth={1} />\n          </Button>\n\n          <Button className=\"w-full @md:hidden\" size=\"small\" type=\"submit\" variant=\"primary\">\n            {submitLabel} <ArrowRight absoluteStrokeWidth size={16} strokeWidth={1} />\n          </Button>\n        </form>\n      </Drawer>\n    )\n  );\n}\n",
+        "index.tsx": "import { clsx } from 'clsx';\n\nimport { Stream, Streamable } from '@/vibes/soul/lib/streamable';\nimport {\n  CardProduct,\n  ProductCard,\n  ProductCardSkeleton,\n} from '@/vibes/soul/primitives/product-card';\n\nimport { CompareDrawer } from './compare-drawer';\n\nexport type ListProduct = CardProduct;\n\ninterface Props {\n  products: Streamable<ListProduct[]>;\n  compareProducts?: Streamable<ListProduct[] | null>;\n  className?: string;\n  showCompare?: boolean;\n  compareAction?: React.ComponentProps<'form'>['action'];\n  compareLabel?: string;\n  compareParamName?: string;\n}\n\nexport function ProductsList({\n  products: streamableProducts,\n  className,\n  showCompare,\n  compareAction,\n  compareProducts: streamableCompareProducts,\n  compareLabel,\n  compareParamName,\n}: Props) {\n  return (\n    <>\n      <div className={clsx('w-full @container', className)}>\n        <div className=\"mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5\">\n          <Stream\n            fallback={Array.from({ length: 9 }).map((_, index) => (\n              <ProductCardSkeleton key={index} />\n            ))}\n            value={streamableProducts}\n          >\n            {(products) =>\n              products.map((product) => (\n                <ProductCard\n                  compareLabel={compareLabel}\n                  compareParamName={compareParamName}\n                  key={product.id}\n                  product={product}\n                  showCompare={showCompare}\n                />\n              ))\n            }\n          </Stream>\n        </div>\n      </div>\n      <Stream value={streamableCompareProducts}>\n        {(compareProducts) =>\n          compareProducts && (\n            <CompareDrawer\n              action={compareAction}\n              items={compareProducts}\n              paramName={compareParamName}\n              submitLabel={compareLabel}\n            />\n          )\n        }\n      </Stream>\n    </>\n  );\n}\n\nexport function ProductsListSkeleton({\n  className,\n  message,\n}: {\n  className?: string;\n  message?: string;\n}) {\n  return (\n    <div className={clsx('relative w-full @container', className)}>\n      <div\n        className={clsx(\n          'mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5',\n          message != null &&\n            message !== '' &&\n            '[mask-image:radial-gradient(circle,transparent,black)]',\n        )}\n      >\n        {Array.from({ length: 9 }).map((_, index) => (\n          <ProductCardSkeleton key={index} />\n        ))}\n      </div>\n      <div className=\"absolute inset-0 flex items-center justify-center text-xl\">{message}</div>\n    </div>\n  );\n}\n"
+      }
+    },
+    {
+      "name": "product-description",
+      "dependencies": [
+        "accordions"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "sections/product-description/index.tsx"
+      ],
+      "doc": "---\ntitle: Product Description\npreview:\n  Electric: product-description-electric-example\n  Warm: product-description-warm-example\n  Luxury: product-description-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/product-description.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/product-description/index.tsx",
+      "componentName": "Product Description",
+      "source": {}
+    },
+    {
+      "name": "rating",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        "primitives/rating/index.tsx"
+      ],
+      "doc": "---\ntitle: Rating\npreview: rating-example\npreviewSize: xs\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/rating.mdx",
+      "example": "import { Rating } from '@/vibes/soul/primitives/rating';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen items-center justify-center\">\n      <Rating rating={4.5} />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/rating/index.tsx",
+      "componentName": "Rating",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\n\nexport interface Props {\n  showRating?: boolean;\n  rating: number;\n  className?: string;\n}\n\ninterface StarType {\n  type: 'empty' | 'half' | 'full';\n}\n\nconst Star = ({ type }: StarType) => {\n  const paths = {\n    empty: (\n      <path\n        d=\"M9.99984 1.66669L12.5748 6.88335L18.3332 7.72502L14.1665 11.7834L15.1498 17.5167L9.99984 14.8084L4.84984 17.5167L5.83317 11.7834L1.6665 7.72502L7.42484 6.88335L9.99984 1.66669Z\"\n        stroke=\"currentColor\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n        strokeOpacity=\"0.4\"\n      />\n    ),\n    half: (\n      <>\n        <path\n          d=\"M9.99984 1.66669L12.5748 6.88335L18.3332 7.72502L14.1665 11.7834L15.1498 17.5167L9.99984 14.8084L4.84984 17.5167L5.83317 11.7834L1.6665 7.72502L7.42484 6.88335L9.99984 1.66669Z\"\n          stroke=\"currentColor\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n        />\n        <path\n          d=\"M10.0003 1.6665V14.8082L4.85033 17.5165L5.83366 11.7832L1.66699 7.72484L7.42533 6.88317L10.0003 1.6665Z\"\n          fill=\"currentColor\"\n        />\n      </>\n    ),\n    full: (\n      <path\n        d=\"M9.99984 1.66669L12.5748 6.88335L18.3332 7.72502L14.1665 11.7834L15.1498 17.5167L9.99984 14.8084L4.84984 17.5167L5.83317 11.7834L1.6665 7.72502L7.42484 6.88335L9.99984 1.66669Z\"\n        fill=\"currentColor\"\n        stroke=\"currentColor\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n      />\n    ),\n  };\n\n  return (\n    <svg\n      className=\"inline-block text-foreground\"\n      fill=\"none\"\n      height={20}\n      viewBox=\"0 0 20 20\"\n      width={20}\n    >\n      {paths[type]}\n    </svg>\n  );\n};\n\nexport const Rating = function Rating({ showRating = true, rating, className }: Readonly<Props>) {\n  const adjustedRating = Math.min(rating, 5);\n\n  const stars: StarType['type'][] = Array.from({ length: 5 }, (_, index) => {\n    if (index < Math.floor(adjustedRating)) return 'full';\n    if (index < Math.ceil(adjustedRating)) return 'half';\n    return 'empty';\n  });\n\n  return (\n    <div className={clsx('flex items-center', className)}>\n      {stars.map((type, index) => (\n        <Star key={index} type={type} />\n      ))}\n\n      {showRating && (\n        <span className=\"ml-1.5 flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-contrast-100 px-1 text-xs font-medium text-contrast-400\">\n          {adjustedRating % 1 !== 0 ? adjustedRating.toFixed(1) : adjustedRating}\n        </span>\n      )}\n    </div>\n  );\n};\n"
+      }
+    },
+    {
+      "name": "spinner",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "primitives/spinner/index.tsx"
+      ],
+      "doc": "---\ntitle: Spinner\npreview: spinner-example\npreviewSize: xs\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/spinner.mdx",
+      "example": "import { Spinner } from '@/vibes/soul/primitives/spinner';\n\nexport default function Preview() {\n  return (\n    <div className=\"flex h-screen items-center justify-center gap-10\">\n      <Spinner size=\"sm\" />\n      <Spinner size=\"md\" />\n      <Spinner size=\"lg\" />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/spinner/index.tsx",
+      "componentName": "Spinner",
+      "source": {
+        "index.tsx": "import { clsx } from 'clsx';\n\ninterface Props {\n  size?: 'xs' | 'sm' | 'md' | 'lg';\n  loadingAriaLabel?: string;\n}\n\nexport const Spinner = function Spinner({ size = 'sm', loadingAriaLabel }: Props) {\n  return (\n    <span\n      aria-label={loadingAriaLabel ?? 'Loading...'}\n      className={clsx(\n        'box-border inline-block animate-spin rounded-full border-contrast-100 border-b-primary-shadow',\n        {\n          xs: 'h-5 w-5 border-2',\n          sm: 'h-6 w-6 border-2',\n          md: 'h-10 w-10 border-[3px]',\n          lg: 'h-14 w-14 border-4',\n        }[size],\n      )}\n      role=\"status\"\n    ></span>\n  );\n};\n"
+      }
+    },
+    {
+      "name": "textarea",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "primitives/textarea/index.tsx"
+      ],
+      "doc": "---\ntitle: Text Area\npreview: textarea-example\npreviewSize: xs\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/textarea.mdx",
+      "example": "import { TextArea } from '@/vibes/soul/primitives/textarea';\n\nexport default function Preview() {\n  return (\n    <div className=\"mx-auto max-w-2xl p-10\">\n      <TextArea label=\"Order Comments\" placeholder=\"Please add custom requests here.\" />\n    </div>\n  );\n}\n",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/textarea/index.tsx",
+      "componentName": "Text Area",
+      "source": {
+        "index.tsx": "'use client';\n\nimport { clsx } from 'clsx';\nimport { ComponentPropsWithRef, Ref, forwardRef } from 'react';\n\nimport { Label } from '@/vibes/soul/primitives/label';\n\nexport interface Props extends ComponentPropsWithRef<'textarea'> {\n  label?: string;\n  className?: string;\n}\n\nexport const TextArea = forwardRef(function TextArea(\n  { label, className, required, ...rest }: Props,\n  ref: Ref<HTMLTextAreaElement>,\n) {\n  return (\n    <div className={clsx('w-full', className)}>\n      <div className=\"flex items-center justify-between\">\n        {label != null && label !== '' && (\n          <Label className=\"mb-2 block text-foreground\">{label}</Label>\n        )}\n        {required === true && <span className=\"text-xs text-contrast-300\">Required</span>}\n      </div>\n      <div className=\"relative overflow-hidden rounded-lg border border-contrast-100 bg-background transition-colors duration-200 focus-within:border-foreground focus:outline-none\">\n        <textarea\n          ref={ref}\n          {...rest}\n          className={clsx(\n            'placeholder-contrast-gray-500 w-full bg-transparent p-3 text-foreground placeholder:font-normal focus:outline-none',\n          )}\n        />\n      </div>\n    </div>\n  );\n});\n"
+      }
+    },
+    {
+      "name": "account-layout",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/account-layout/index.tsx"
+      ],
+      "doc": "---\ntitle: Account Layout\npreview: account-layout-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/account-layout.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/account-layout/index.tsx",
+      "componentName": "Account Layout",
+      "source": {}
+    },
+    {
+      "name": "account-settings-section",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/account-settings-section/index.tsx"
+      ],
+      "doc": "---\ntitle: Account Settings Section\npreview: account-settings-section-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/account-settings-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/account-settings-section/index.tsx",
+      "componentName": "Account Settings Section",
+      "source": {}
+    },
+    {
+      "name": "address-list-section",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/address-list-section/index.tsx"
+      ],
+      "doc": "---\ntitle: Address List Section\npreview: address-list-section-example\npreviewSize: xl\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/address-list-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/address-list-section/index.tsx",
+      "componentName": "Address List Section",
+      "source": {}
+    },
+    {
+      "name": "blog-post-list",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/blog-post-list/index.tsx"
+      ],
+      "doc": "---\ntitle: Blog Post List\ndescription: Blog Post List is used to display a list of blog post cards.\npreview: blog-post-list-example\npreviewSize: lg\n---\n\n## Usage\n\n<CodeBlock lang=\"bash\">{`import { BlogPostList } from '@/vibes/soul/sections/blog-post-list'`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`<BlogPostList />`}</CodeBlock>\n\n## API Reference\n\n| Prop                                                                                       | Type                                                                           | Default      |\n| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------ |\n| `type` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `enum` <Tooltip content={`\"single\" ${String.fromCharCode(124)} \"multiple\"`} /> | `\"multiple\"` |\n| `title` <Tooltip content='This is an example tooltip for what this particular prop does'/> | `string`                                                                       |              |\n| `body` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `string`                                                                       |              |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=737-16279&t=dbm9GtAtS2A3vy2g-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/blog-post-list.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/blog-post-list/index.tsx",
+      "componentName": "Blog Post List",
+      "source": {}
+    },
+    {
+      "name": "cart",
+      "dependencies": [
+        "button",
+        "counter"
+      ],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/cart/index.tsx"
+      ],
+      "doc": "---\ntitle: Cart\ndescription: The Cart component displays the items in the user's cart, along with a summary of the total cost.\npreview:\n  Electric: cart-electric-example\n  Warm: cart-warm-example\n  Luxury: cart-luxury-example\npreviewSize: xl\nfeatures:\n  - Displays the items in the user's cart\n  - Displays a summary of the total cost\n  - Allows the user to remove items from the cart\n  - Allows the user to update the quantity of items in the cart\n---\n\n## Usage\n\n<CodeBlock lang=\"bash\">{`import { Cart } from '@/vibes/soul/sections/cart'`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`const products = await getLineItems()\nconst subtotal = await getSubtotal()`}</CodeBlock>\n\n<CodeBlock lang=\"bash\">{`<Cart\n  title=\"Cart\"\n  lineItems={products}\n  summary={{\n    title: 'Summary',\n    caption: 'Shipping & taxes calculated at checkout',\n    subtotal: subtotal,\n    subtotalLabel: 'Subtotal',\n    shippingLabel: 'Shipping',\n    taxLabel: 'Tax',\n    tax: '$11.60',\n    grandTotalLabel: 'Total',\n    grandTotal: '$127.60',\n    ctaLabel: 'Checkout',\n  }}\n  emptyState={{\n    title: 'Your cart is empty',\n    subtitle: 'Add some products to get started.',\n    cta: {\n      label: 'Continue shopping',\n      href: '#',\n    },\n  }}\n  removeLineItemAction={removeLineItemAction}\n  updateLineItemQuantityAction={updateLineItemQuantityAction}\n  // redirectToCheckoutAction={}\n/>\n`}</CodeBlock>\n\n### Streaming\n\nNotice in the [API Reference](#api-reference) that some properties accept data (ex. `string` or `number`) or a `Promise`. By passing a `Promise`, you enable the component to stream data from the server as it's loaded.\n\nYou can view this in the following example where the `lineItems` and `summary.subtotal` properties are passed as Promises:\n\n<Preview\n  vibeSlug=\"soul\"\n  componentName={{\n    Electric: 'cart-loading-electric-example',\n    Warm: 'cart-loading-warm-example',\n    Luxury: 'cart-loading-luxury-example',\n  }}\n/>\n\n## API Reference\n\n### `Cart`\n\n| Prop                           | Type                                                                                                    | Default  |\n| ------------------------------ | ------------------------------------------------------------------------------------------------------- | -------- |\n| `title?`                       | `string`                                                                                                | `\"Cart\"` |\n| `lineItems`                    | [`CartLineItem`](#cartlineitem)`[]` &nbsp; \\| &nbsp; `Promise<`[`CartLineItem>`](#cartlineitem)`[]>`    |          |\n| `summary`                      | [`CartSummary`](#cartsummary)                                                                           |          |\n| `emptyState`                   | [`CartEmptyState`](#cartemptystate)                                                                     |          |\n| `removeLineItemAction`         | `function` <Tooltip content='(id: string) => Promise<void>' />                                          |          |\n| `updateLineItemQuantityAction` | `function` <Tooltip content='({ id, quantity } : { id: string; quantity: number }) => Promise<void>' /> |          |\n| `redirectToCheckoutAction`     | `function` <Tooltip content='() => Promise<void>' />                                                    |          |\n\n### `CartLineItem`\n\n<CodeBlock lang=\"ts\">\n  {`\ninterface CartLineItem {\n  id: string\n  image: Image\n  title: string\n  subtitle: string\n  quantity: number\n  price: string\n}\n`}\n</CodeBlock>\n\n### `CartSummary`\n\n<CodeBlock lang=\"ts\">{`interface CartSummary {\n  title?: string\n  caption?: string\n  subtotalLabel?: string\n  subtotal: string | Promise<string>\n  shippingLabel?: string\n  shipping?: string\n  taxLabel?: string\n  tax?: string | Promise<string>\n  grandTotalLabel?: string\n  grandTotal?: string | Promise<string>\n  ctaLabel?: string\n}\n`}\n\n</CodeBlock>\n### `CartEmptyState`\n\n<CodeBlock lang=\"ts\">\n  {`\ninterface CartEmptyState {\n    title: string\n    subtitle: string\n    cta: {\n        label: string\n        href: string\n    }\n  }\n`}\n</CodeBlock>\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=1720-21795&t=RzBeIql49iCnmSMw-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/cart.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/cart/index.tsx",
+      "componentName": "Cart",
+      "source": {}
+    },
+    {
+      "name": "checkout",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        "sections/checkout/index.tsx"
+      ],
+      "doc": "---\ntitle: Checkout\npreview: checkout-example\npreviewSize: xl\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/checkout.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/checkout/index.tsx",
+      "componentName": "Checkout",
+      "source": {}
+    },
+    {
+      "name": "countdown",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "sections/countdown/index.tsx"
+      ],
+      "doc": "---\ntitle: Countdown\ndescription: A countdown component that displays the time left until a specified date.\npreview: countdown-example\npreviewSize: xl\nfeatures:\n  - Displays the time left until a specified date.\n  - Supports varying layouts (default, full, split, and banner).\n  - Customizable with a title and target date.\n---\n\n## Usage\n\nImport the component.\n\n<CodeBlock lang=\"bash\">{`import { Countdown } from '@/vibes/soul/primitives/countdown'`}</CodeBlock>\n\nDisplay the component.\n\n<CodeBlock lang=\"bash\">{`<Countdown title=\"Sale ends in\" targetDate={new Date('2025-06-30')} />`}</CodeBlock>\n\n## API Reference\n\n| Prop       | Type                                                                                 | Default      |\n| ---------- | ------------------------------------------------------------------------------------ | ------------ |\n| title      | `string`                                                                             |              |\n| targetDate | `Date`                                                                               | `new Date()` |\n| variant    | [`Default`](#default) \\| [`Full`](#full) \\| [`Split`](#split) \\| [`Banner`](#banner) | `'default'`  |\n\n### Default\n\n| Prop   | Type       | Default |\n| ------ | ---------- | ------- |\n| type   | `default`  |         |\n| images | `string[]` |         |\n\n### Full\n\n| Prop            | Type     | Default |\n| --------------- | -------- | ------- |\n| type            | `full`   |         |\n| backgroundImage | `string` |         |\n\n### Split\n\n| Prop  | Type     | Default |\n| ----- | -------- | ------- |\n| type  | `split`  |         |\n| image | `string` |         |\n\n### Banner\n\n| Prop | Type     | Default |\n| ---- | -------- | ------- |\n| type | `banner` |         |\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2281-42529&t=bvdVWjdyC3mhKCHG-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/countdown.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/countdown/index.tsx",
+      "componentName": "Countdown",
+      "source": {}
+    },
+    {
+      "name": "compare-section",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        "sections/compare-section/index.tsx"
+      ],
+      "doc": "---\ntitle: Compare Section\npreview:\n  Electric: compare-section-electric-example\n  Warm: compare-section-warm-example\n  Luxury: compare-section-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/compare-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/compare-section/index.tsx",
+      "componentName": "Compare Section",
+      "source": {}
+    },
+    {
+      "name": "discount",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "sections/discount/index.tsx"
+      ],
+      "doc": "---\ntitle: Discount\npreview: discount-example\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/discount.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/discount/index.tsx",
+      "componentName": "Discount",
+      "source": {}
+    },
+    {
+      "name": "featured-blog-post-list",
+      "dependencies": [
+        "button",
+        "blog-post-card"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "sections/featured-blog-post-list/index.tsx"
+      ],
+      "doc": "---\ntitle: Featured Blog Post List\npreview: featured-blog-post-list-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/featured-blog-post-list.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/featured-blog-post-list/index.tsx",
+      "componentName": "Featured Blog Post List",
+      "source": {}
+    },
+    {
+      "name": "featured-image",
+      "dependencies": [
+        "button"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "sections/featured-image/index.tsx"
+      ],
+      "doc": "---\ntitle: Featured Image\npreview:\n  Electric: featured-image-electric-example\n  Warm: featured-image-warm-example\n  Luxury: featured-image-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/featured-image.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/featured-image/index.tsx",
+      "componentName": "Featured Image",
+      "source": {}
+    },
+    {
+      "name": "featured-products-carousel",
+      "dependencies": [
+        "products-carousel"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "sections/featured-products-carousel/index.tsx"
+      ],
+      "doc": "---\ntitle: Featured Products Carousel\npreview: featured-products-carousel-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/featured-products-carousel.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/featured-products-carousel/index.tsx",
+      "componentName": "Featured Products Carousel",
+      "source": {}
+    },
+    {
+      "name": "featured-products-list",
+      "dependencies": [
+        "button",
+        "product-card"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "sections/featured-products-list/index.tsx"
+      ],
+      "doc": "---\ntitle: Featured Product List\npreview:\n  Electric: featured-products-list-electric-example\n  Warm: featured-products-list-warm-example\n  Luxury: featured-products-list-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/featured-products-list.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/featured-products-list/index.tsx",
+      "componentName": "Featured Product List",
+      "source": {}
+    },
+    {
+      "name": "featured-video",
+      "dependencies": [
+        "button"
+      ],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/featured-video/index.tsx"
+      ],
+      "doc": "---\ntitle: Featured Video\npreview: featured-video-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/featured-video.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/featured-video/index.tsx",
+      "componentName": "Featured Video",
+      "source": {}
+    },
+    {
+      "name": "footer",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/footer/index.tsx"
+      ],
+      "doc": "---\ntitle: Footer\npreview:\n  Electric: footer-electric-example\n  Warm: footer-warm-example\n  Luxury: footer-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/footer.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/footer/index.tsx",
+      "componentName": "Footer",
+      "source": {}
+    },
+    {
+      "name": "forgot-password-section",
+      "dependencies": [
+        "button",
+        "input"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "sections/forgot-password-section/index.tsx",
+        "sections/forgot-password-section/forgot-password-form.tsx",
+        "sections/forgot-password-section/schema.ts"
+      ],
+      "doc": "---\ntitle: Forgot Password Section\npreview: forgot-password-section-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/forgot-password-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/forgot-password-section/index.tsx",
+      "componentName": "Forgot Password Section",
+      "source": {}
+    },
+    {
+      "name": "header-section",
+      "dependencies": [
+        "banner",
+        "navigation"
+      ],
+      "registryDependencies": [
+        "clsx",
+        "react-headroom"
+      ],
+      "files": [
+        "sections/header-section/index.tsx"
+      ],
+      "doc": "---\ntitle: Header Section\npreview:\n  Electric: header-section-electric-example\n  Warm: header-section-warm-example\n  Luxury: header-section-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/header-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/header-section/index.tsx",
+      "componentName": "Header Section",
+      "source": {}
+    },
+    {
+      "name": "icon-block",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "files": [
+        "sections/icon-block/index.tsx",
+        "primitives/icon/index.tsx"
+      ],
+      "doc": "---\ntitle: Icon Block\npreview: icon-block-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/icon-block.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/icon-block/index.tsx",
+      "componentName": "Icon Block",
+      "source": {}
+    },
+    {
+      "name": "product-detail",
+      "dependencies": [
+        "button",
+        "favorite",
+        "product-card",
+        "rating"
+      ],
+      "registryDependencies": [
+        "clsx",
+        "embla-carousel-react"
+      ],
+      "files": [
+        "sections/product-detail/index.tsx",
+        "sections/product-detail/product-gallery.tsx"
+      ],
+      "doc": "---\ntitle: Product Detail\npreview:\n  Electric: product-detail-electric-example\n  Warm: product-detail-warm-example\n  Luxury: product-detail-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/product-detail.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/product-detail/index.tsx",
+      "componentName": "Product Detail",
+      "source": {}
+    },
+    {
+      "name": "products-list-section",
+      "dependencies": [
+        "products-list",
+        "button",
+        "toggle-group",
+        "cursor-pagination"
+      ],
+      "registryDependencies": [
+        "nuqs"
+      ],
+      "files": [
+        "sections/products-list-section/index.tsx",
+        "sections/products-list-section/filters-panel.tsx",
+        "sections/products-list-section/mobile-filters.tsx",
+        "sections/products-list-section/sorting.tsx"
+      ],
+      "doc": "---\ntitle: Product List Section\npreview:\n  Electric: products-list-section-electric-example\n  Warm: products-list-section-warm-example\n  Luxury: products-list-section-luxury-example\npreviewSize: lg\n---\n\n## Usage\n\nImport the component.\n\n<CodeBlock lang=\"bash\">{`import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'`}</CodeBlock>\n\nQuery the appropriate data.\n\n<CodeBlock lang=\"bash\">{`const products = await getProducts()\nconst filters = await getFilters()\nconst sortOptions = await getSortOptions()\nconst breadcrumbs = await getBreadcrumbs()\nconst pagination = await getPagination()\n`}</CodeBlock>\n\nDisplay the component.\n\n<CodeBlock lang=\"bash\">\n  {`<ProductsListSection\n    title=\"Plants\"\n    breadcrumbs={breadcrumbs}\n    products={products}\n    totalCount={products.length}\n    filters={filters}\n    sortOptions={sortOptions}\n    pagination={pagination}\n/>`}\n</CodeBlock>\n\nFor full details, refer to the [API reference](#api-reference).\n\n### Streaming\n\nThe `products` property accepts either `Product[]` or `Promise<Product[]>`. By passing a `Promise<Product[]>`, you enable streaming which will show a loading state until the data is finished loading and streamed to the browser.\n\n<Preview\n  vibeSlug=\"soul\"\n  componentName={{\n    Electric: 'products-list-section-loading-electric-example',\n    Warm: 'products-list-section-loading-warm-example',\n    Luxury: 'products-list-section-loading-luxury-example',\n  }}\n/>\n\n## API Reference\n\n### `ProductsListSection`\n\n| Prop               | Type                                                                                                                        | Default |\n| ------------------ | --------------------------------------------------------------------------------------------------------------------------- | ------- |\n| `breadcrumbs?`     | [`Breadcrumb`](#breadcrumb)`[]`                                                                                             |         |\n| `title?`           | `string` &nbsp;\\|&nbsp; `Promise<string>`                                                                                   |         |\n| `totalCount`       | `number` &nbsp;\\|&nbsp; `Promise<number>`                                                                                   |         |\n| `products`         | [`Product`](/docs/soul/product-card#product)`[]` &nbsp;\\|&nbsp; `Promise<`[`Product`](/docs/soul/product-card#product)`[]>` |         |\n| `filters`          | [`Filter`](#filter)`[]` &nbsp;\\|&nbsp; `Promise<`[`Filter`](#filter)`[]>`                                                   |         |\n| `sortOptions`      | [`Option`](#option)`[]` &nbsp;\\|&nbsp; `Promise<`[`Option`](#option)`[]>`                                                   |         |\n| `compareProducts?` | [`Product`](/docs/soul/product-card#product)`[]` &nbsp;\\|&nbsp; `Promise<`[`Product`](/docs/soul/product-card#product)`[]>` |         |\n| `pagination?`      | [`Pages`](#pages)`[]` &nbsp;\\|&nbsp; `Promise<`[`Pages`](#pages)`[]>`                                                       |         |\n| `compareLabel?`    | `string`                                                                                                                    |         |\n| `filterLabel?`     | `string`                                                                                                                    |         |\n| `sortLabel?`       | `string`                                                                                                                    |         |\n| `sortParam?`       | `string`                                                                                                                    |         |\n\n### `Breadcrumb`\n\n<CodeBlock lang=\"ts\">\n  {`interface Breadcrumb {\n  label: string\n  href: string\n}\n`}\n</CodeBlock>\n\n### `Option`\n\n<CodeBlock lang=\"ts\">\n  {`interface Option {\n  label: string\n  value: string\n}\n`}\n</CodeBlock>\n\n### `Pages`\n\n<CodeBlock lang=\"ts\">\n  {`Pages {\n  name: string\n  previousPage?: string\n  nextPage?: string\n}\n`}\n</CodeBlock>\n\n### `Filter`\n\n<CodeBlock lang=\"ts\">\n  {`\ntype Filter = ToggleGroupFilter | RangeFilter | RatingFilter\n`}\n</CodeBlock>\n\n### `ToggleGroupFilter`\n\n<CodeBlock lang=\"ts\">\n  {`interface ToggleGroupFilter {\n  type: 'toggle-group'\n  paramName: string\n  label: string\n  options: { label: string; value: string }[]\n}`}\n</CodeBlock>\n\n### `RatingFilter`\n\n<CodeBlock lang=\"ts\">\n  {`interface RatingFilter {\n  type: 'rating'\n  paramName: string\n  label: string\n}\n`}\n</CodeBlock>\n\n### `RangeFilter`\n\n<CodeBlock lang=\"ts\">\n  {`interface RangeFilter {\n  type: 'range'\n  label: string\n  minParamName: string\n  maxParamName: string\n  min?: number\n  max?: number\n  minLabel?: string\n  maxLabel?: string\n  minPrepend?: React.ReactNode\n  maxPrepend?: React.ReactNode\n  minPlaceholder?: string\n  maxPlaceholder?: string\n}\n`}\n</CodeBlock>\n\n## Figma\n\n<Figma url=\"https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=1720-21795&t=RzBeIql49iCnmSMw-4\" />\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/products-list-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/products-list-section/index.tsx",
+      "componentName": "Product List Section",
+      "source": {}
+    },
+    {
+      "name": "product-description",
+      "dependencies": [
+        "accordions"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "sections/product-description/index.tsx"
+      ],
+      "doc": "---\ntitle: Product Description\npreview:\n  Electric: product-description-electric-example\n  Warm: product-description-warm-example\n  Luxury: product-description-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/product-description.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/product-description/index.tsx",
+      "componentName": "Product Description",
+      "source": {}
+    },
+    {
+      "name": "reset-password-section",
+      "dependencies": [
+        "button",
+        "input"
+      ],
+      "registryDependencies": [],
+      "files": [
+        "sections/reset-password-section/index.tsx",
+        "sections/reset-password-section/reset-password-form.tsx",
+        "sections/reset-password-section/schema.ts"
+      ],
+      "doc": "---\ntitle: Reset Password Section\npreview: reset-password-section-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/reset-password-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/reset-password-section/index.tsx",
+      "componentName": "Reset Password Section",
+      "source": {}
+    },
+    {
+      "name": "reviews",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        "sections/reviews/index.tsx"
+      ],
+      "doc": "---\ntitle: Reviews\npreview: reviews-example\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/reviews.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/reviews/index.tsx",
+      "componentName": "Reviews",
+      "source": {}
+    },
+    {
+      "name": "sign-in-section",
+      "dependencies": [
+        "button",
+        "input"
+      ],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/sign-in-section/index.tsx",
+        "sections/sign-in-section/sign-in-form.tsx",
+        "sections/sign-in-section/schema.ts"
+      ],
+      "doc": "---\ntitle: Sign In Section\npreview: sign-in-section-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/sign-in-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/sign-in-section/index.tsx",
+      "componentName": "Sign In Section",
+      "source": {}
+    },
+    {
+      "name": "sign-up-section",
+      "dependencies": [
+        "button",
+        "input"
+      ],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/sign-up-section/index.tsx",
+        "sections/sign-up-section/sign-up-form.tsx",
+        "sections/sign-up-section/schema.ts"
+      ],
+      "doc": "---\ntitle: Sign Up Section\npreview: sign-up-section-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/sign-up-section.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/sign-up-section/index.tsx",
+      "componentName": "Sign Up Section",
+      "source": {}
+    },
+    {
+      "name": "slideshow",
+      "dependencies": [],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/slideshow/index.tsx"
+      ],
+      "doc": "---\ntitle: Slideshow\npreview:\n  Electric: slideshow-electric-example\n  Warm: slideshow-warm-example\n  Luxury: slideshow-luxury-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/slideshow.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/slideshow/index.tsx",
+      "componentName": "Slideshow",
+      "source": {}
+    },
+    {
+      "name": "subscribe",
+      "dependencies": [
+        "input"
+      ],
+      "registryDependencies": [
+        "clsx"
+      ],
+      "files": [
+        "sections/subscribe/index.tsx"
+      ],
+      "doc": "---\ntitle: Subscribe\npreview: subscribe-example\npreviewSize: lg\n---\n",
+      "docFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/docs/subscribe.mdx",
+      "example": "<missing>",
+      "exampleFile": "/Users/drusellers/dev/mxl/vibes/apps/web/vibes/soul/examples/primitives/subscribe/index.tsx",
+      "componentName": "Subscribe",
+      "source": {}
+    }
+  ]
+}
