@@ -33,22 +33,26 @@ import { Field, FieldGroup, schema } from './schema';
 type Action<S, P> = (state: Awaited<S>, payload: P) => S | Promise<S>;
 
 interface State<F extends Field> {
-  fields: Array<F | FieldGroup<F>>;
+  fields: (F | FieldGroup<F>)[];
   lastResult: SubmissionResult | null;
 }
 
 export type DynamicFormAction<F extends Field> = Action<State<F>, FormData>;
 
 interface Props<F extends Field> {
-  fields: Array<F | FieldGroup<F>>;
+  fields: (F | FieldGroup<F>)[];
   action: DynamicFormAction<F>;
   submitLabel?: string;
+  submitName?: string;
+  submitValue?: string;
 }
 
 export function DynamicForm<F extends Field>({
   action,
   fields: defaultFields,
   submitLabel = 'Submit',
+  submitName,
+  submitValue,
 }: Props<F>) {
   const [{ lastResult, fields }, formAction] = useActionState(action, {
     fields: defaultFields,
@@ -114,7 +118,9 @@ export function DynamicForm<F extends Field>({
             return <DynamicFormField field={field} formField={formField} key={field.name} />;
           })}
           <div className="flex gap-x-3 pt-3">
-            <SubmitButton>{submitLabel}</SubmitButton>
+            <SubmitButton name={submitName} value={submitValue}>
+              {submitLabel}
+            </SubmitButton>
           </div>
           {form.errors?.map((error, index) => (
             <FormStatus key={index} type="error">
@@ -127,11 +133,26 @@ export function DynamicForm<F extends Field>({
   );
 }
 
-function SubmitButton({ children }: { children: React.ReactNode }) {
+function SubmitButton({
+  children,
+  name,
+  value,
+}: {
+  children: React.ReactNode;
+  name?: string;
+  value?: string;
+}) {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="w-auto @xl:w-56" loading={pending} size="medium" type="submit">
+    <Button
+      className="w-auto @xl:w-56"
+      loading={pending}
+      name={name}
+      size="medium"
+      type="submit"
+      value={value}
+    >
       {children}
     </Button>
   );
