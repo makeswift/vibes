@@ -33,14 +33,14 @@ import { Field, FieldGroup, schema } from './schema';
 type Action<S, P> = (state: Awaited<S>, payload: P) => S | Promise<S>;
 
 interface State<F extends Field> {
-  fields: (F | FieldGroup<F>)[];
+  fields: Array<F | FieldGroup<F>>;
   lastResult: SubmissionResult | null;
 }
 
 export type DynamicFormAction<F extends Field> = Action<State<F>, FormData>;
 
 interface Props<F extends Field> {
-  fields: (F | FieldGroup<F>)[];
+  fields: Array<F | FieldGroup<F>>;
   action: DynamicFormAction<F>;
   submitLabel?: string;
 }
@@ -319,7 +319,9 @@ function DynamicFormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
-          onSelect={(date) => controls.change(Intl.DateTimeFormat().format(date))}
+          onSelect={(date) =>
+            controls.change(date ? Intl.DateTimeFormat().format(date) : undefined)
+          }
           required={formField.required}
           selected={typeof controls.value === 'string' ? new Date(controls.value) : undefined}
         />
