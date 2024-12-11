@@ -133,7 +133,12 @@ function CarouselItem({ className, ...rest }: React.HTMLAttributes<HTMLDivElemen
   );
 }
 
-function CarouselButtons({ className, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
+function CarouselButtons({
+  className,
+  previousLabel = 'Previous',
+  nextLabel = 'Next',
+  ...rest
+}: React.HTMLAttributes<HTMLDivElement> & { previousLabel?: string; nextLabel?: string }) {
   const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel();
 
   return (
@@ -142,6 +147,7 @@ function CarouselButtons({ className, ...rest }: React.HTMLAttributes<HTMLDivEle
         className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
         disabled={!canScrollPrev}
         onClick={scrollPrev}
+        title={previousLabel}
       >
         <ArrowLeft strokeWidth={1.5} />
       </button>
@@ -149,6 +155,7 @@ function CarouselButtons({ className, ...rest }: React.HTMLAttributes<HTMLDivEle
         className="rounded-lg ring-primary transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:text-contrast-300"
         disabled={!canScrollNext}
         onClick={scrollNext}
+        title={nextLabel}
       >
         <ArrowRight strokeWidth={1.5} />
       </button>
