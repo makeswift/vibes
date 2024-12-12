@@ -1,21 +1,37 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 
-import { schema } from '@/vibes/soul/sections/sign-up-section/schema';
+import { FieldGroup, Field, schema } from '@/vibes/soul/primitives/dynamic-form/schema';
 
-export async function signUpAction(lastResult: SubmissionResult | null, formData: FormData) {
+export const fields = [
+  [
+    { type: 'text', label: 'First Name', name: 'first-name', required: true },
+    { type: 'text', label: 'Last Name', name: 'last-name', required: true },
+  ],
+  { type: 'email', label: 'Email', name: 'email', required: true },
+  { type: 'password', label: 'Password', name: 'password', required: true },
+  { type: 'confirm-password', label: 'Confirm password', name: 'confirm-password', required: true },
+] satisfies (Field | FieldGroup<Field>)[];
+
+export async function action(
+  prevState: { fields: (Field | FieldGroup<Field>)[]; lastResult: SubmissionResult | null },
+  payload: FormData,
+) {
   'use server';
 
-  const submission = parseWithZod(formData, { schema });
+  const submission = parseWithZod(payload, { schema: schema(prevState.fields) });
 
   if (submission.status !== 'success') {
-    return submission.reply({ formErrors: ['Boom!'] });
+    return {
+      fields: prevState.fields,
+      lastResult: submission.reply({ formErrors: ['Boom!'] }),
+    };
   }
 
-  // Simulate a network request
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  // const user = await logIn(submission.value)
-
-  return submission.reply({ resetForm: true });
+  return {
+    fields: prevState.fields,
+    lastResult: submission.reply({ resetForm: true }),
+  };
 }
