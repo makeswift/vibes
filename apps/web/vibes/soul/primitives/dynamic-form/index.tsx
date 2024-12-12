@@ -228,7 +228,6 @@ function DynamicFormField({
       return (
         <CheckboxGroup
           errors={formField.errors}
-          id={formField.id}
           key={field.name}
           label={field.label}
           name={formField.name}
@@ -242,7 +241,6 @@ function DynamicFormField({
       return (
         <Select
           errors={formField.errors}
-          id={formField.id}
           key={field.name}
           label={field.label}
           name={formField.name}
@@ -259,7 +257,6 @@ function DynamicFormField({
       return (
         <RadioGroup
           errors={formField.errors}
-          id={formField.id}
           key={field.name}
           label={field.label}
           name={formField.name}
