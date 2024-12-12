@@ -20,15 +20,18 @@ export const ToggleGroup = React.forwardRef<
     options: Option[];
     errors?: string[];
   }
->(({ id, label, options, errors, className, ...rest }, ref) => {
+>(({ label, options, errors, className, ...rest }, ref) => {
+  const id = React.useId();
+
   return (
     <div className={clsx('space-y-2', className)}>
       {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
       <ToggleGroupPrimitive.Root
         {...rest}
-        aria-label={label}
+        aria-labelledby={id}
         className="flex flex-wrap gap-2"
         ref={ref}
+        role="group"
       >
         {options.map((option) => (
           <ToggleGroupPrimitive.Item
