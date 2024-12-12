@@ -38,7 +38,6 @@ export function CheckboxGroup({
       <div className="space-y-2">
         {options.map((option) => (
           <Checkbox
-            aria-label={option.label}
             checked={value.includes(option.value)}
             key={option.value}
             label={option.label}
