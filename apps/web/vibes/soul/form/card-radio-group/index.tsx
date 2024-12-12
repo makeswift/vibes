@@ -20,11 +20,19 @@ export const CardRadioGroup = React.forwardRef<
     options: Option[];
     errors?: string[];
   }
->(({ id, label, options, errors, className, ...rest }, ref) => {
+>(({ label, options, errors, className, ...rest }, ref) => {
+  const id = React.useId();
+
   return (
     <div className={clsx('space-y-2', className)}>
-      {label !== undefined && label !== '' && <Label>{label}</Label>}
-      <RadioGroupPrimitive.Root {...rest} aria-label={label} className="space-y-2" ref={ref}>
+      {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
+      <RadioGroupPrimitive.Root
+        {...rest}
+        aria-labelledby={id}
+        className="space-y-2"
+        ref={ref}
+        role="group"
+      >
         {options.map((option) => (
           <RadioGroupPrimitive.Item
             aria-label={option.label}

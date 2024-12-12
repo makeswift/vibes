@@ -11,7 +11,9 @@ export const Textarea = React.forwardRef<
     label?: string;
     errors?: string[];
   }
->(({ id, label, className, required, errors, ...rest }, ref) => {
+>(({ label, className, required, errors, ...rest }, ref) => {
+  const id = React.useId();
+
   return (
     <div className={clsx('space-y-2', className)}>
       {label != null && label !== '' && <Label htmlFor={id}>{label}</Label>}
