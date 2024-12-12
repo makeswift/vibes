@@ -9,29 +9,25 @@ export const featuredProducts = {
     href: '#',
   },
   products: getProducts('Electric'),
+  emptyStateSubtitle: 'Try browsing our complete catalog of products.',
+  emptyStateTitle: 'No products found',
 };
 
 export default function Preview() {
   return (
     <>
       <FeaturedProductsList
-        cta={{
-          label: featuredProducts.cta.label,
-          href: featuredProducts.cta.href,
-        }}
+        cta={featuredProducts.cta}
         description={featuredProducts.description}
         products={featuredProducts.products}
         title={featuredProducts.title}
       />
 
       <FeaturedProductsList
-        cta={{
-          label: featuredProducts.cta.label,
-          href: featuredProducts.cta.href,
-        }}
+        cta={featuredProducts.cta}
         description={featuredProducts.description}
-        emptyStateSubtitle="Try browsing our complete catalog of products."
-        emptyStateTitle="No products found"
+        emptyStateSubtitle={featuredProducts.emptyStateSubtitle}
+        emptyStateTitle={featuredProducts.emptyStateTitle}
         products={[]}
         title={featuredProducts.title}
       />

@@ -19,8 +19,9 @@ interface Props {
   compareAction?: React.ComponentProps<'form'>['action'];
   compareLabel?: string;
   compareParamName?: string;
-  emptyStateTitle?: string;
-  emptyStateSubtitle?: string;
+  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string | null>;
+  placeholderCount?: number;
 }
 
 export function ProductsList({
@@ -33,16 +34,21 @@ export function ProductsList({
   compareParamName,
   emptyStateTitle,
   emptyStateSubtitle,
+  placeholderCount = 6,
 }: Props) {
   return (
     <>
-      <Stream fallback={<ProductsListSkeleton pending />} value={streamableProducts}>
+      <Stream
+        fallback={<ProductsListSkeleton pending placeholderCount={placeholderCount} />}
+        value={streamableProducts}
+      >
         {(products) => {
           if (products.length === 0) {
             return (
               <ProductsListEmptyState
                 emptyStateSubtitle={emptyStateSubtitle}
                 emptyStateTitle={emptyStateTitle}
+                placeholderCount={placeholderCount}
               />
             );
           }
@@ -82,17 +88,17 @@ export function ProductsList({
 
 export function ProductsListSkeleton({
   className,
-  count = 6,
+  placeholderCount = 6,
   pending = false,
 }: {
   className?: string;
-  count?: number;
+  placeholderCount?: number;
   pending?: boolean;
 }) {
   return (
     <div className={clsx('w-full @container', className)} data-pending={pending ? '' : undefined}>
       <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5">
-        {Array.from({ length: count }).map((_, index) => (
+        {Array.from({ length: placeholderCount }).map((_, index) => (
           <ProductCardSkeleton key={index} />
         ))}
       </div>
@@ -102,14 +108,14 @@ export function ProductsListSkeleton({
 
 export function ProductsListEmptyState({
   className,
-  count = 6,
+  placeholderCount = 6,
   emptyStateTitle,
   emptyStateSubtitle,
 }: {
   className?: string;
-  count?: number;
-  emptyStateTitle?: string;
-  emptyStateSubtitle?: string;
+  placeholderCount?: number;
+  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string | null>;
 }) {
   return (
     <div className={clsx('relative w-full @container', className)}>
@@ -118,7 +124,7 @@ export function ProductsListEmptyState({
           'mx-auto grid grid-cols-1 gap-x-4 gap-y-6 [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5',
         )}
       >
-        {Array.from({ length: count }).map((_, index) => (
+        {Array.from({ length: placeholderCount }).map((_, index) => (
           <ProductCardSkeleton key={index} />
         ))}
       </div>
