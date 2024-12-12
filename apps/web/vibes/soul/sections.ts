@@ -172,11 +172,7 @@ export const sections = [
     name: 'sign-up-section',
     dependencies: ['clsx'],
     registryDependencies: ['button', 'input'],
-    files: [
-      'sections/sign-up-section/index.tsx',
-      'sections/sign-up-section/sign-up-form.tsx',
-      'sections/sign-up-section/schema.ts',
-    ],
+    files: ['sections/sign-up-section/index.tsx'],
   },
   {
     name: 'slide-carousel',
