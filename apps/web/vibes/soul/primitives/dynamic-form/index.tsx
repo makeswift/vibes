@@ -116,7 +116,7 @@ export function DynamicForm<F extends Field>({
 
             if (formField == null) return null;
 
-            return <DynamicFormField field={field} formField={formField} key={field.name} />;
+            return <DynamicFormField field={field} formField={formField} key={formField.id} />;
           })}
           <div className="flex gap-x-3 pt-3">
             <SubmitButton name={submitName} value={submitValue}>
