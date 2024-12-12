@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import { Fragment } from 'react';
 
 export interface Breadcrumb {
   label: string;
@@ -15,34 +14,37 @@ export interface BreadcrumbsProps {
 
 export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
   return (
-    <nav
-      aria-label="breadcrumb"
-      className={clsx(
-        'inline-flex flex-wrap items-center gap-x-2 text-sm @xl:text-base',
-        className,
-      )}
-    >
-      {breadcrumbs.map(({ label, href }, idx) => {
-        if (idx < breadcrumbs.length - 1) {
-          return (
-            <Fragment key={idx}>
-              <Link
-                className="rounded font-medium text-contrast-500 ring-offset-4 transition-colors hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
-                href={href}
-              >
-                {label}
-              </Link>
-              <ChevronRight className="text-contrast-500" size={16} strokeWidth={1} />
-            </Fragment>
-          );
-        }
+    <nav aria-label="breadcrumb" className={clsx(className)}>
+      <ol className="flex flex-wrap items-center gap-x-2 text-sm @xl:text-base">
+        {breadcrumbs.map(({ label, href }, idx) => {
+          if (idx < breadcrumbs.length - 1) {
+            return (
+              <li className="inline-flex items-center gap-x-2" key={idx}>
+                <Link
+                  className="rounded font-medium text-contrast-500 ring-offset-4 transition-colors hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
+                  href={href}
+                >
+                  {label}
+                </Link>
+                <ChevronRight
+                  aria-hidden="true"
+                  className="text-contrast-500"
+                  size={16}
+                  strokeWidth={1}
+                />
+              </li>
+            );
+          }
 
-        return (
-          <span className="text-contrast-400" key={idx}>
-            {label}
-          </span>
-        );
-      })}
+          return (
+            <li className="inline-flex items-center text-contrast-400" key={idx}>
+              <span aria-current="page" aria-disabled="true" role="link">
+                {label}
+              </span>
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }
