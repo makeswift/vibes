@@ -12,25 +12,33 @@ export default async function Preview({
   const { [compareParamName]: compare, [sortParamName]: sort, ...filterParams } = parsedParams;
 
   const filters = getFilters('Electric');
-  const productsPromise = getProducts('Electric', filterParams);
   const sortOptions = getSortOptions();
   const breadcrumbs = getBreadcrumbs('Electric');
+
+  const productsList = {
+    title: 'Plants',
+    products: getProducts('Electric', filterParams),
+    emptyStateSubtitle: 'Change your filters to see more products',
+    emptyStateTitle: 'No products found',
+  };
 
   return (
     <div className="p-6">
       <ProductsListSection
         breadcrumbs={breadcrumbs}
         compareParamName={compareParamName}
-        compareProducts={productsPromise.then((products) =>
+        compareProducts={productsList.products.then((products) =>
           products.filter((product) => compare?.includes(product.id)),
         )}
+        emptyStateSubtitle={productsList.emptyStateSubtitle}
+        emptyStateTitle={productsList.emptyStateTitle}
         filters={filters}
         paginationInfo={{ endCursor: '10' }}
-        products={productsPromise}
+        products={productsList.products}
         sortOptions={sortOptions}
         sortParamName={sortParamName}
-        title="Plants"
-        totalCount={productsPromise.then((products) => products.length)}
+        title={productsList.title}
+        totalCount={productsList.products.then((products) => products.length)}
       />
     </div>
   );
