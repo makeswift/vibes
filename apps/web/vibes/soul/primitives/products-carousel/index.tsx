@@ -19,8 +19,12 @@ export type CarouselProduct = CardProduct;
 interface Props {
   products: Streamable<CarouselProduct[]>;
   className?: string;
-  emptyStateTitle?: string;
-  emptyStateSubtitle?: string;
+  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string | null>;
+  scrollbarLabel?: string;
+  previousLabel?: string;
+  nextLabel?: string;
+  placeholderCount?: number;
 }
 
 export function ProductsCarousel({
@@ -28,15 +32,23 @@ export function ProductsCarousel({
   className,
   emptyStateTitle,
   emptyStateSubtitle,
+  scrollbarLabel,
+  previousLabel,
+  nextLabel,
+  placeholderCount = 8,
 }: Props) {
   return (
-    <Stream fallback={<ProductsCarouselSkeleton pending />} value={streamableProducts}>
+    <Stream
+      fallback={<ProductsCarouselSkeleton placeholderCount={placeholderCount} pending />}
+      value={streamableProducts}
+    >
       {(products) => {
         if (products.length === 0) {
           return (
             <ProductsCarouselEmptyState
               emptyStateSubtitle={emptyStateSubtitle}
               emptyStateTitle={emptyStateTitle}
+              placeholderCount={placeholderCount}
             />
           );
         }
@@ -54,8 +66,8 @@ export function ProductsCarousel({
               ))}
             </CarouselContent>
             <div className="flex w-full items-center justify-between">
-              <CarouselScrollbar />
-              <CarouselButtons />
+              <CarouselScrollbar label={scrollbarLabel} />
+              <CarouselButtons nextLabel={nextLabel} previousLabel={previousLabel} />
             </div>
           </Carousel>
         );
@@ -66,17 +78,17 @@ export function ProductsCarousel({
 
 export function ProductsCarouselSkeleton({
   className,
-  count = 8,
+  placeholderCount = 8,
   pending = false,
 }: {
   className?: string;
-  count?: number;
+  placeholderCount?: number;
   pending?: boolean;
 }) {
   return (
     <Carousel className={className} data-pending={pending ? '' : undefined}>
       <CarouselContent className="mb-10">
-        {Array.from({ length: count }).map((_, index) => (
+        {Array.from({ length: placeholderCount }).map((_, index) => (
           <CarouselItem
             className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
             key={index}
@@ -85,33 +97,28 @@ export function ProductsCarouselSkeleton({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar />
-        <CarouselButtons />
-      </div>
+      <div className="h-6 w-56 animate-pulse bg-contrast-100"></div>
     </Carousel>
   );
 }
 
 export function ProductsCarouselEmptyState({
   className,
-  count = 8,
+  placeholderCount = 8,
   emptyStateTitle,
   emptyStateSubtitle,
 }: {
   className?: string;
-  count?: number;
-  emptyStateTitle?: string;
-  emptyStateSubtitle?: string;
+  placeholderCount?: number;
+  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string | null>;
 }) {
   return (
     <Carousel className={clsx('relative', className)}>
       <CarouselContent
-        className={clsx(
-          'mb-10 [mask-image:linear-gradient(to_top,_transparent_0%,_hsl(var(--background))_75%)]',
-        )}
+        className={clsx('mb-10 [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)]')}
       >
-        {Array.from({ length: count }).map((_, index) => (
+        {Array.from({ length: placeholderCount }).map((_, index) => (
           <CarouselItem
             className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
             key={index}

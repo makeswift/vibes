@@ -12,8 +12,12 @@ interface Props {
   description?: string;
   cta?: Link;
   products: Streamable<CarouselProduct[]>;
-  emptyStateTitle?: string;
-  emptyStateSubtitle?: string;
+  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string | null>;
+  placeholderCount?: number;
+  scrollbarLabel?: string;
+  previousLabel?: string;
+  nextLabel?: string;
 }
 
 export function FeaturedProductsCarousel({
@@ -23,6 +27,10 @@ export function FeaturedProductsCarousel({
   products,
   emptyStateTitle,
   emptyStateSubtitle,
+  placeholderCount,
+  scrollbarLabel,
+  previousLabel,
+  nextLabel,
 }: Props) {
   return (
     <section className="group/pending overflow-hidden @container">
@@ -45,7 +53,11 @@ export function FeaturedProductsCarousel({
           <ProductsCarousel
             emptyStateSubtitle={emptyStateSubtitle}
             emptyStateTitle={emptyStateTitle}
+            nextLabel={nextLabel}
+            placeholderCount={placeholderCount}
+            previousLabel={previousLabel}
             products={products}
+            scrollbarLabel={scrollbarLabel}
           />
         </div>
       </div>
