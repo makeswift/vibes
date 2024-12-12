@@ -15,11 +15,11 @@ export interface BreadcrumbsProps {
 export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
   return (
     <nav aria-label="breadcrumb" className={clsx(className)}>
-      <ol className="flex flex-wrap items-center gap-x-2 text-sm @xl:text-base">
+      <ol className="flex flex-wrap items-center gap-x-1.5 text-sm @xl:text-base">
         {breadcrumbs.map(({ label, href }, idx) => {
           if (idx < breadcrumbs.length - 1) {
             return (
-              <li className="inline-flex items-center gap-x-2" key={idx}>
+              <li className="inline-flex items-center gap-x-1.5" key={idx}>
                 <Link
                   className="rounded font-medium text-contrast-500 ring-offset-4 transition-colors hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
                   href={href}
@@ -29,7 +29,7 @@ export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
                 <ChevronRight
                   aria-hidden="true"
                   className="text-contrast-500"
-                  size={16}
+                  size={20}
                   strokeWidth={1}
                 />
               </li>
@@ -49,14 +49,22 @@ export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
   );
 }
 
-export function BreadcrumbsSkeleton() {
+export function BreadcrumbsSkeleton({ className }: { className?: string }) {
   return (
-    <div className="mb-6 flex animate-pulse items-center gap-2">
-      <div className="h-6 w-10 rounded-md bg-contrast-100" />
-      <div className="h-3 w-3 rounded-full bg-contrast-100" />
-      <div className="h-6 w-11 rounded-md bg-contrast-100" />
-      <div className="h-3 w-3 rounded-full bg-contrast-100" />
-      <div className="h-6 w-10 rounded-md bg-contrast-100" />
+    <div
+      className={clsx('flex animate-pulse flex-wrap items-center gap-x-1.5 text-base', className)}
+    >
+      <div className="flex h-[1lh] items-center">
+        <span className="block h-[1ex] w-[4ch] rounded-sm bg-contrast-100" />
+      </div>
+      <ChevronRight aria-hidden="true" className="text-contrast-200" size={20} strokeWidth={1} />
+      <div className="flex h-[1lh] items-center">
+        <span className="block h-[1ex] w-[6ch] rounded-sm bg-contrast-100" />
+      </div>
+      <ChevronRight aria-hidden="true" className="text-contrast-200" size={20} strokeWidth={1} />
+      <div className="flex h-[1lh] items-center">
+        <span className="block h-[1ex] w-[6ch] rounded-sm bg-contrast-100" />
+      </div>
     </div>
   );
 }

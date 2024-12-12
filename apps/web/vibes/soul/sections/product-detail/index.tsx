@@ -35,7 +35,7 @@ export function ProductDetail<F extends Field>({
   return (
     <section className="@container">
       <div className="mx-auto w-full max-w-screen-lg px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        <Stream fallback={<BreadcrumbsSkeleton />} value={streamableBreadcrumbs}>
+        <Stream fallback={<BreadcrumbsSkeleton className="mb-6" />} value={streamableBreadcrumbs}>
           {(breadcrumbs) =>
             breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} className="mb-6" />
           }
