@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import { ChevronRight } from 'lucide-react';
-import Link from 'next/link';
+
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
 
 export interface Breadcrumb {
   label: string;
@@ -20,12 +21,7 @@ export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
           if (idx < breadcrumbs.length - 1) {
             return (
               <li className="inline-flex items-center gap-x-1.5" key={idx}>
-                <Link
-                  className="rounded font-medium text-contrast-500 ring-offset-4 transition-colors hover:text-foreground focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-primary"
-                  href={href}
-                >
-                  {label}
-                </Link>
+                <AnimatedLink label={label} link={{ href }} />
                 <ChevronRight
                   aria-hidden="true"
                   className="text-contrast-500"
@@ -37,7 +33,7 @@ export function Breadcrumbs({ breadcrumbs, className }: BreadcrumbsProps) {
           }
 
           return (
-            <li className="inline-flex items-center text-contrast-400" key={idx}>
+            <li className="inline-flex items-center text-contrast-500" key={idx}>
               <span aria-current="page" aria-disabled="true" role="link">
                 {label}
               </span>
@@ -55,15 +51,15 @@ export function BreadcrumbsSkeleton({ className }: { className?: string }) {
       className={clsx('flex animate-pulse flex-wrap items-center gap-x-1.5 text-base', className)}
     >
       <div className="flex h-[1lh] items-center">
-        <span className="block h-[1ex] w-[4ch] rounded-sm bg-contrast-100" />
+        <span className="block h-[1.25ex] w-[4ch] rounded bg-contrast-100" />
       </div>
       <ChevronRight aria-hidden="true" className="text-contrast-200" size={20} strokeWidth={1} />
       <div className="flex h-[1lh] items-center">
-        <span className="block h-[1ex] w-[6ch] rounded-sm bg-contrast-100" />
+        <span className="block h-[1.25ex] w-[6ch] rounded bg-contrast-100" />
       </div>
       <ChevronRight aria-hidden="true" className="text-contrast-200" size={20} strokeWidth={1} />
       <div className="flex h-[1lh] items-center">
-        <span className="block h-[1ex] w-[6ch] rounded-sm bg-contrast-100" />
+        <span className="block h-[1.25ex] w-[6ch] rounded bg-contrast-100" />
       </div>
     </div>
   );
