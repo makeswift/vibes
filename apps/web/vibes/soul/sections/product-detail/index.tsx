@@ -24,10 +24,10 @@ interface Props<F extends Field> {
   product: Streamable<ProductDetailProduct | null>;
   action: ProductDetailFormAction<F>;
   fields: Streamable<F[]>;
-  ctaLabel?: string;
   quantityLabel?: string;
   incrementLabel?: string;
   decrementLabel?: string;
+  submitButton?: Streamable<{ label: string; disabled?: boolean }>;
 }
 
 export function ProductDetail<F extends Field>({
@@ -35,10 +35,10 @@ export function ProductDetail<F extends Field>({
   action,
   fields: streamableFields,
   breadcrumbs: streamableBreadcrumbs,
-  ctaLabel,
   quantityLabel,
   incrementLabel,
   decrementLabel,
+  submitButton: streamableSubmitButton,
 }: Props<F>) {
   return (
     <section className="@container">
@@ -99,15 +99,23 @@ export function ProductDetail<F extends Field>({
 
                   <Stream fallback={<ProductDetailFormSkeleton />} value={streamableFields}>
                     {(fields) => (
-                      <ProductDetailForm
-                        action={action}
-                        ctaLabel={ctaLabel}
-                        decrementLabel={decrementLabel}
-                        fields={fields}
-                        incrementLabel={incrementLabel}
-                        productId={product.id}
-                        quantityLabel={quantityLabel}
-                      />
+                      <Stream
+                        fallback={<ProductDetailFormSkeleton />}
+                        value={streamableSubmitButton}
+                      >
+                        {(submitButton) => (
+                          <ProductDetailForm
+                            action={action}
+                            ctaLabel={submitButton?.label}
+                            decrementLabel={decrementLabel}
+                            disabled={submitButton?.disabled}
+                            fields={fields}
+                            incrementLabel={incrementLabel}
+                            productId={product.id}
+                            quantityLabel={quantityLabel}
+                          />
+                        )}
+                      </Stream>
                     )}
                   </Stream>
                 </div>
