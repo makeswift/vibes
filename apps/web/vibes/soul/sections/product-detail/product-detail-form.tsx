@@ -41,6 +41,8 @@ interface Props<F extends Field> {
   productId: string;
   ctaLabel?: string;
   quantityLabel?: string;
+  incrementLabel?: string;
+  decrementLabel?: string;
 }
 
 export function ProductDetailForm<F extends Field>({
@@ -49,6 +51,8 @@ export function ProductDetailForm<F extends Field>({
   productId,
   ctaLabel = 'Add to cart',
   quantityLabel = 'Quantity',
+  incrementLabel = 'Increase quantity',
+  decrementLabel = 'Decrease quantity',
 }: Props<F>) {
   const [params] = useQueryStates(
     fields.reduce<Record<string, typeof parseAsString>>(
@@ -104,7 +108,9 @@ export function ProductDetailForm<F extends Field>({
           <div className="flex gap-x-3 pt-3">
             <NumberInput
               aria-label={quantityLabel}
+              decrementLabel={decrementLabel}
               id={formFields.quantity.id}
+              incrementLabel={incrementLabel}
               min={1}
               name={formFields.quantity.name}
               onBlur={quantityControl.blur}

@@ -26,6 +26,8 @@ interface Props<F extends Field> {
   fields: Streamable<F[]>;
   ctaLabel?: string;
   quantityLabel?: string;
+  incrementLabel?: string;
+  decrementLabel?: string;
 }
 
 export function ProductDetail<F extends Field>({
@@ -35,6 +37,8 @@ export function ProductDetail<F extends Field>({
   breadcrumbs: streamableBreadcrumbs,
   ctaLabel,
   quantityLabel,
+  incrementLabel,
+  decrementLabel,
 }: Props<F>) {
   return (
     <section className="@container">
@@ -98,7 +102,9 @@ export function ProductDetail<F extends Field>({
                       <ProductDetailForm
                         action={action}
                         ctaLabel={ctaLabel}
+                        decrementLabel={decrementLabel}
                         fields={fields}
+                        incrementLabel={incrementLabel}
                         productId={product.id}
                         quantityLabel={quantityLabel}
                       />
