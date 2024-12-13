@@ -5,23 +5,28 @@ import {
   changePasswordSchema,
   updateAccountSchema,
 } from '@/vibes/soul/sections/account-settings-section/schema';
+import { UpdateAccountAction } from '@/vibes/soul/sections/account-settings-section/update-account-form';
 
-export async function updateAccountAction(lastResult: SubmissionResult | null, formData: FormData) {
+export const updateAccountAction: UpdateAccountAction = async (prevState, formData) => {
   'use server';
 
   const submission = parseWithZod(formData, { schema: updateAccountSchema });
 
   if (submission.status !== 'success') {
-    return submission.reply({ formErrors: ['Boom!'] });
+    return {
+      account: prevState.account,
+      lastResult: submission.reply({ formErrors: ['Boom!'] }),
+    };
   }
 
-  // Simulate a network request
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  // const user = await logIn(submission.value)
-
-  return submission.reply({ resetForm: true });
-}
+  return {
+    account: submission.value,
+    successMessage: 'Account updated!',
+    lastResult: submission.reply(),
+  };
+};
 
 export async function changePasswordAction(
   lastResult: SubmissionResult | null,
@@ -40,5 +45,5 @@ export async function changePasswordAction(
 
   // const user = await logIn(submission.value)
 
-  return submission.reply({ resetForm: true });
+  return submission.reply();
 }

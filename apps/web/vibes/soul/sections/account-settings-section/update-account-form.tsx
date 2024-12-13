@@ -2,35 +2,74 @@
 
 import { getFormProps, getInputProps, SubmissionResult, useForm } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
-import { useActionState, useEffect } from 'react';
-import { useFormStatus } from 'react-dom';
+import { useActionState, useEffect, useOptimistic, useTransition } from 'react';
+import { z } from 'zod';
 
 import { Input } from '@/vibes/soul/form/input';
 import { Button } from '@/vibes/soul/primitives/button';
+import { toast } from '@/vibes/soul/primitives/toaster';
 
 import { updateAccountSchema } from './schema';
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
+type Action<S, P> = (state: Awaited<S>, payload: P) => S | Promise<S>;
 
-export type UpdateAccountAction = Action<SubmissionResult | null, FormData>;
+export type UpdateAccountAction = Action<State, FormData>;
+
+export type Account = z.infer<typeof updateAccountSchema>;
+
+interface State {
+  account: Account;
+  successMessage?: string;
+  lastResult: SubmissionResult | null;
+}
 
 interface Props {
   action: UpdateAccountAction;
+  account: Account;
   firstNameLabel?: string;
   lastNameLabel?: string;
   emailLabel?: string;
+  companyLabel?: string;
   submitLabel?: string;
 }
 
 export function UpdateAccountForm({
   action,
+  account,
   firstNameLabel = 'First name',
   lastNameLabel = 'Last name',
   emailLabel = 'Email',
+  companyLabel = 'Company',
   submitLabel = 'Update',
 }: Props) {
-  const [lastResult, formAction] = useActionState(action, null);
+  const [state, formAction] = useActionState(action, { account, lastResult: null });
+  const [pending, startTransition] = useTransition();
+
+  const [optimisticState, setOptimisticState] = useOptimistic<State, FormData>(
+    state,
+    (prevState, formData) => {
+      const intent = formData.get('intent');
+      const submission = parseWithZod(formData, { schema: updateAccountSchema });
+
+      if (submission.status !== 'success') return prevState;
+
+      switch (intent) {
+        case 'update': {
+          return {
+            ...prevState,
+            account: submission.value,
+          };
+        }
+
+        default:
+          return prevState;
+      }
+    },
+  );
+
   const [form, fields] = useForm({
+    lastResult: state.lastResult,
+    defaultValue: optimisticState.account,
     constraint: getZodConstraint(updateAccountSchema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
@@ -40,13 +79,22 @@ export function UpdateAccountForm({
   });
 
   useEffect(() => {
-    if (lastResult?.error) {
-      console.log(lastResult.error);
+    if (state.lastResult?.status === 'success' && typeof state.successMessage === 'string') {
+      toast.success(state.successMessage);
     }
-  }, [lastResult]);
+  }, [state]);
 
   return (
-    <form {...getFormProps(form)} action={formAction} className="space-y-5">
+    <form
+      {...getFormProps(form)}
+      action={(formData) => {
+        startTransition(() => {
+          formAction(formData);
+          setOptimisticState(formData);
+        });
+      }}
+      className="space-y-5"
+    >
       <div className="flex gap-5">
         <Input
           {...getInputProps(fields.firstName, { type: 'text' })}
@@ -67,17 +115,22 @@ export function UpdateAccountForm({
         key={fields.email.id}
         label={emailLabel}
       />
-      <SubmitButton>{submitLabel}</SubmitButton>
+      <Input
+        {...getInputProps(fields.company, { type: 'text' })}
+        errors={fields.company.errors}
+        key={fields.company.id}
+        label={companyLabel}
+      />
+      <Button
+        loading={pending}
+        name="intent"
+        size="small"
+        type="submit"
+        value="update"
+        variant="secondary"
+      >
+        {submitLabel}
+      </Button>
     </form>
-  );
-}
-
-function SubmitButton({ children }: { children: React.ReactNode }) {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button loading={pending} size="small" type="submit" variant="secondary">
-      {children}
-    </Button>
   );
 }

@@ -1,8 +1,9 @@
 import { ChangePasswordAction, ChangePasswordForm } from './change-password-form';
-import { UpdateAccountAction, UpdateAccountForm } from './update-account-form';
+import { Account, UpdateAccountAction, UpdateAccountForm } from './update-account-form';
 
 interface Props {
   title?: string;
+  account: Account;
   updateAccountAction: UpdateAccountAction;
   updateAccountSubmitLabel?: string;
   changePasswordTitle?: string;
@@ -12,6 +13,7 @@ interface Props {
 
 export function AccountSettingsSection({
   title = 'Account Settings',
+  account,
   updateAccountAction,
   updateAccountSubmitLabel,
   changePasswordTitle = 'Change Password',
@@ -25,6 +27,7 @@ export function AccountSettingsSection({
           <div className="pb-12">
             <h1 className="mb-10 text-4xl font-medium leading-none @xl:text-4xl">{title}</h1>
             <UpdateAccountForm
+              account={account}
               action={updateAccountAction}
               submitLabel={updateAccountSubmitLabel}
             />
