@@ -19,16 +19,16 @@ export function ButtonLink({
     <Link
       {...props}
       className={clsx(
-        'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden rounded-full border text-center font-semibold leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:outline-none focus-visible:ring-2',
+        'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden rounded-full border text-center font-[family-name:var(--button-font-family)] font-semibold leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:rounded-full after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:outline-none focus-visible:ring-2',
         {
           primary:
-            'border-primary bg-primary text-foreground ring-foreground after:bg-background/40',
+            'border-[var(--button-primary-border)] bg-[var(--button-primary-background)] text-[var(--button-primary-foreground)] ring-[var(--button-primary-focus)] after:bg-[var(--button-primary-background-hover)]',
           secondary:
-            'border-foreground bg-foreground text-background ring-primary after:bg-background',
+            'border-[var(--button-secondary-border)] bg-[var(--button-secondary-background)] text-[var(--button-secondary-foreground)] ring-[var(--button-secondary-focus)] after:bg-[var(--button-secondary-background-hover)]',
           tertiary:
-            'border-contrast-200 bg-background text-foreground ring-primary after:bg-contrast-100',
+            'border-[var(--button-tertiary-border)] bg-[var(--button-tertiary-background)] text-[var(--button-tertiary-foreground)] ring-[var(--button-tertiary-focus)] after:bg-[var(--button-tertiary-background-hover)]',
           ghost:
-            'border-transparent bg-transparent text-foreground ring-primary after:bg-foreground/5',
+            'border-[var(--button-ghost-border)] bg-[var(--button-ghost-background)] text-[var(--button-ghost-foreground)] ring-[var(--button-ghost-focus)] after:bg-[var(--button-ghost-background-hover)]',
         }[variant],
         {
           'icon-small': 'min-h-8 p-1.5 text-xs',
