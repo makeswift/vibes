@@ -61,7 +61,8 @@ export function InlineEmailForm({
           <Button
             aria-label={submitLabel}
             loading={isPending}
-            size="icon"
+            shape="circle"
+            size="small"
             type="submit"
             variant="secondary"
           >
