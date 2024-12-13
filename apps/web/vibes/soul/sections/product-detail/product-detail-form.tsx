@@ -10,7 +10,7 @@ import {
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
 import { parseAsString, useQueryState, useQueryStates } from 'nuqs';
-import { useActionState, useCallback } from 'react';
+import { useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
 
@@ -23,6 +23,7 @@ import { RadioGroup } from '@/vibes/soul/form/radio-group';
 import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
+import { toast } from '@/vibes/soul/primitives/toaster';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
@@ -43,6 +44,7 @@ interface Props<F extends Field> {
   quantityLabel?: string;
   incrementLabel?: string;
   decrementLabel?: string;
+  successMessage?: string;
 }
 
 export function ProductDetailForm<F extends Field>({
@@ -53,6 +55,7 @@ export function ProductDetailForm<F extends Field>({
   quantityLabel = 'Quantity',
   incrementLabel = 'Increase quantity',
   decrementLabel = 'Decrease quantity',
+  successMessage = 'Product(s) succesfully added to cart!',
 }: Props<F>) {
   const [params] = useQueryStates(
     fields.reduce<Record<string, typeof parseAsString>>(
@@ -63,6 +66,7 @@ export function ProductDetailForm<F extends Field>({
     ),
     { shallow: false },
   );
+
   const defaultValue = fields.reduce<{
     [Key in keyof SchemaRawShape]?: z.infer<SchemaRawShape[Key]>;
   }>(
@@ -72,10 +76,18 @@ export function ProductDetailForm<F extends Field>({
     }),
     { quantity: 1 },
   );
+
   const [{ lastResult }, formAction] = useActionState(action, {
     fields,
     lastResult: null,
   });
+
+  useEffect(() => {
+    if (lastResult?.status === 'success') {
+      toast.success(successMessage);
+    }
+  }, [lastResult, successMessage]);
+
   const [form, formFields] = useForm({
     lastResult,
     constraint: getZodConstraint(schema(fields)),
@@ -87,6 +99,7 @@ export function ProductDetailForm<F extends Field>({
     shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',
   });
+
   const quantityControl = useInputControl(formFields.quantity);
 
   return (
