@@ -47,6 +47,7 @@ interface Props<F extends Field> {
   quantityLabel?: string;
   incrementLabel?: string;
   decrementLabel?: string;
+  disabled?: boolean;
 }
 
 export function ProductDetailForm<F extends Field>({
@@ -57,6 +58,7 @@ export function ProductDetailForm<F extends Field>({
   quantityLabel = 'Quantity',
   incrementLabel = 'Increase quantity',
   decrementLabel = 'Decrease quantity',
+  disabled = false,
 }: Props<F>) {
   const [params] = useQueryStates(
     fields.reduce<Record<string, typeof parseAsString>>(
@@ -128,6 +130,7 @@ export function ProductDetailForm<F extends Field>({
             <NumberInput
               aria-label={quantityLabel}
               decrementLabel={decrementLabel}
+              disabled={disabled}
               incrementLabel={incrementLabel}
               min={1}
               name={formFields.quantity.name}
@@ -137,7 +140,7 @@ export function ProductDetailForm<F extends Field>({
               required
               value={quantityControl.value}
             />
-            <SubmitButton>{ctaLabel}</SubmitButton>
+            <SubmitButton disabled={disabled}>{ctaLabel}</SubmitButton>
           </div>
         </div>
       </form>
@@ -145,11 +148,17 @@ export function ProductDetailForm<F extends Field>({
   );
 }
 
-function SubmitButton({ children }: { children: React.ReactNode }) {
+function SubmitButton({ children, disabled }: { children: React.ReactNode; disabled?: boolean }) {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="w-auto @xl:w-56" loading={pending} size="medium" type="submit">
+    <Button
+      className="w-auto @xl:w-56"
+      disabled={disabled}
+      loading={pending}
+      size="medium"
+      type="submit"
+    >
       {children}
     </Button>
   );
