@@ -24,6 +24,7 @@ interface Props<F extends Field> {
   product: Streamable<ProductDetailProduct | null>;
   action: ProductDetailFormAction<F>;
   fields: Streamable<F[]>;
+  ctaLabel?: string;
 }
 
 export function ProductDetail<F extends Field>({
@@ -31,6 +32,7 @@ export function ProductDetail<F extends Field>({
   action,
   fields: streamableFields,
   breadcrumbs: streamableBreadcrumbs,
+  ctaLabel,
 }: Props<F>) {
   return (
     <section className="@container">
@@ -91,7 +93,12 @@ export function ProductDetail<F extends Field>({
 
                   <Stream fallback={<ProductDetailFormSkeleton />} value={streamableFields}>
                     {(fields) => (
-                      <ProductDetailForm action={action} fields={fields} productId={product.id} />
+                      <ProductDetailForm
+                        action={action}
+                        ctaLabel={ctaLabel}
+                        fields={fields}
+                        productId={product.id}
+                      />
                     )}
                   </Stream>
                 </div>
