@@ -188,7 +188,8 @@ export function FiltersPanelInner({
                           await setParams(nextParams);
                         });
                       }}
-                      size="icon"
+                      shape="circle"
+                      size="small"
                       variant="secondary"
                     >
                       <ArrowRight size={20} strokeWidth={1} />
