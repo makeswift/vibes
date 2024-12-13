@@ -9,6 +9,7 @@ import {
   useInputControl,
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { parseAsString, useQueryState, useQueryStates } from 'nuqs';
 import { ReactNode, useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
@@ -48,6 +49,7 @@ interface Props<F extends Field> {
   incrementLabel?: string;
   decrementLabel?: string;
   ctaDisabled?: boolean;
+  prefetch?: boolean;
 }
 
 export function ProductDetailForm<F extends Field>({
@@ -59,6 +61,7 @@ export function ProductDetailForm<F extends Field>({
   incrementLabel = 'Increase quantity',
   decrementLabel = 'Decrease quantity',
   ctaDisabled = false,
+  prefetch = false,
 }: Props<F>) {
   const [params] = useQueryStates(
     fields.reduce<Record<string, typeof parseAsString>>(
@@ -118,6 +121,7 @@ export function ProductDetailForm<F extends Field>({
                 formField={formFields[field.name]!}
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key={formFields[field.name]!.id}
+                prefetch={prefetch}
               />
             );
           })}
@@ -166,10 +170,16 @@ function SubmitButton({ children, disabled }: { children: React.ReactNode; disab
 function FormField({
   field,
   formField,
+  prefetch,
 }: {
   field: Field;
   formField: FieldMetadata<string | number | boolean | Date | undefined>;
+  prefetch: boolean;
 }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const controls = useInputControl(formField);
   const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
 
@@ -180,6 +190,18 @@ function FormField({
     },
     [setParam, controls],
   );
+
+  const handleOnOptionMouseEnter = (value: string) => {
+    if (prefetch) {
+      const optionSearchParams = new URLSearchParams(searchParams.toString());
+
+      optionSearchParams.set(String(field.name), String(value));
+
+      const newUrl = `${pathname}?${optionSearchParams.toString()}`;
+
+      router.prefetch(newUrl);
+    }
+  };
 
   switch (field.type) {
     case 'number':
@@ -236,6 +258,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
@@ -252,6 +275,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
@@ -268,6 +292,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
@@ -284,6 +309,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
@@ -300,6 +326,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
