@@ -1,9 +1,10 @@
 'use client';
 
-import { SubmissionResult, getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { getFormProps, getInputProps, SubmissionResult, useForm } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
-import { useActionState, useEffect } from 'react';
+import { useActionState } from 'react';
 
+import { FormStatus } from '@/vibes/soul/form/form-status';
 import { Input } from '@/vibes/soul/form/input';
 import { Button } from '@/vibes/soul/primitives/button';
 
@@ -28,6 +29,7 @@ export function ResetPasswordForm({
 }: Props) {
   const [lastResult, formAction, isPending] = useActionState(action, null);
   const [form, fields] = useForm({
+    lastResult,
     constraint: getZodConstraint(schema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
@@ -35,13 +37,6 @@ export function ResetPasswordForm({
       return parseWithZod(formData, { schema });
     },
   });
-
-  useEffect(() => {
-    if (lastResult?.error) {
-      console.log(lastResult.error);
-      return;
-    }
-  }, [lastResult]);
 
   return (
     <form {...getFormProps(form)} action={formAction} className="space-y-5">
@@ -61,6 +56,11 @@ export function ResetPasswordForm({
       <Button loading={isPending} size="small" type="submit" variant="secondary">
         {submitLabel}
       </Button>
+      {form.errors?.map((error, index) => (
+        <FormStatus key={index} type="error">
+          {error}
+        </FormStatus>
+      ))}
     </form>
   );
 }
