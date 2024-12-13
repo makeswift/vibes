@@ -40,6 +40,7 @@ interface Props<F extends Field> {
   action: ProductDetailFormAction<F>;
   productId: string;
   ctaLabel?: string;
+  quantityLabel?: string;
 }
 
 export function ProductDetailForm<F extends Field>({
@@ -47,6 +48,7 @@ export function ProductDetailForm<F extends Field>({
   fields,
   productId,
   ctaLabel = 'Add to cart',
+  quantityLabel = 'Quantity',
 }: Props<F>) {
   const [params] = useQueryStates(
     fields.reduce<Record<string, typeof parseAsString>>(
@@ -101,8 +103,8 @@ export function ProductDetailForm<F extends Field>({
           })}
           <div className="flex gap-x-3 pt-3">
             <NumberInput
+              aria-label={quantityLabel}
               id={formFields.quantity.id}
-              label=""
               min={1}
               name={formFields.quantity.name}
               onBlur={quantityControl.blur}
