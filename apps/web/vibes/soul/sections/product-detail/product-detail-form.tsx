@@ -102,6 +102,7 @@ export function ProductDetailForm<F extends Field>({
                 formField={formFields[field.name]!}
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key={formFields[field.name]!.id}
+                defaultValue={defaultValue[field.name]}
               />
             );
           })}
@@ -139,9 +140,11 @@ function SubmitButton({ children }: { children: React.ReactNode }) {
 function FormField({
   field,
   formField,
+  defaultValue,
 }: {
   field: Field;
   formField: FieldMetadata<string | number | boolean | Date | undefined>;
+  defaultValue?: string | number;
 }) {
   const controls = useInputControl(formField);
   const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
@@ -167,6 +170,7 @@ function FormField({
           onFocus={controls.focus}
           required={formField.required}
           value={controls.value}
+          defaultValue={defaultValue}
         />
       );
 
@@ -182,6 +186,7 @@ function FormField({
           onFocus={controls.focus}
           required={formField.required}
           value={controls.value}
+          defaultValue={defaultValue}
         />
       );
 
@@ -197,6 +202,7 @@ function FormField({
           onFocus={controls.focus}
           required={formField.required}
           value={controls.value}
+          defaultValue={defaultValue}
         />
       );
 
@@ -213,6 +219,7 @@ function FormField({
           options={field.options}
           required={formField.required}
           value={controls.value}
+          defaultValue={defaultValue?.toString()}
         />
       );
 
@@ -229,6 +236,7 @@ function FormField({
           options={field.options}
           required={formField.required}
           value={controls.value}
+          defaultValue={defaultValue?.toString()}
         />
       );
 
@@ -245,6 +253,7 @@ function FormField({
           options={field.options}
           required={formField.required}
           value={controls.value}
+          defaultValue={defaultValue?.toString()}
         />
       );
 
@@ -261,6 +270,7 @@ function FormField({
           options={field.options}
           required={formField.required}
           value={controls.value}
+          defaultValue={defaultValue?.toString()}
         />
       );
 
@@ -277,6 +287,7 @@ function FormField({
           options={field.options}
           required={formField.required}
           value={controls.value}
+          defaultValue={defaultValue?.toString()}
         />
       );
   }
