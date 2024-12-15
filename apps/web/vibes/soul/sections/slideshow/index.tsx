@@ -7,19 +7,30 @@ import Fade from 'embla-carousel-fade';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Pause, Play } from 'lucide-react';
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import { ComponentPropsWithoutRef, useCallback, useEffect, useState } from 'react';
 
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
+
+type ButtonLinkProps = ComponentPropsWithoutRef<typeof ButtonLink>;
 
 interface Slide {
   title: string;
   description?: string;
+  showDescription?: boolean;
   image?: { alt: string; blurDataUrl?: string; src: string };
-  cta?: { label: string; href: string };
+  cta?: {
+    label: string;
+    href: string;
+    variant?: ButtonLinkProps['variant'];
+    size?: ButtonLinkProps['size'];
+    shape?: ButtonLinkProps['shape'];
+  };
+  showCta?: boolean;
 }
 
 interface Props {
   slides: Slide[];
+  playOnInit?: boolean;
   interval?: number;
   className?: string;
 }
@@ -70,9 +81,9 @@ const useProgressButton = (
   };
 };
 
-export function Slideshow({ slides, interval = 5000, className }: Props) {
+export function Slideshow({ slides, playOnInit = true, interval = 5000, className }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 20 }, [
-    Autoplay({ delay: interval }),
+    Autoplay({ delay: interval, playOnInit }),
     Fade(),
   ]);
   const { selectedIndex, scrollSnaps, onProgressButtonClick } = useProgressButton(emblaApi);
@@ -81,6 +92,7 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
 
   const toggleAutoplay = useCallback(() => {
     const autoplay = emblaApi?.plugins().autoplay;
+
     if (!autoplay) return;
 
     const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play;
@@ -118,44 +130,55 @@ export function Slideshow({ slides, interval = 5000, className }: Props) {
     >
       <div className="h-full overflow-hidden" ref={emblaRef}>
         <div className="flex h-full">
-          {slides.map(({ title, description, image, cta }, idx) => {
-            return (
-              <div className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full" key={idx}>
-                <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[var(--slideshow-mask)] to-transparent">
-                  <div className="mx-auto w-full max-w-screen-2xl text-balance px-4 pb-16 pt-12 @xl:px-6 @xl:pb-20 @xl:pt-16 @4xl:px-8 @4xl:pt-20">
-                    <h1 className="m-0 max-w-xl font-[family-name:var(--slideshow-title-font-family)] text-4xl font-medium leading-none text-[var(--slideshow-title)] @2xl:text-5xl @2xl:leading-[.9] @4xl:text-6xl ">
-                      {title}
-                    </h1>
-                    {description != null && description !== '' && (
-                      <p className="max-w-x mt-2 font-[family-name:var(--slideshow-description-font-family)] text-base leading-normal text-[var(--slideshow-description)] @xl:mt-3 @xl:text-lg ">
-                        {description}
-                      </p>
-                    )}
-                    {cta != null && cta.href !== '' && cta.label !== '' && (
-                      <ButtonLink className="mt-6 @xl:mt-8" href={cta.href} variant="tertiary">
-                        {cta.label}
-                      </ButtonLink>
-                    )}
+          {slides.map(
+            ({ title, description, showDescription = true, image, cta, showCta = true }, idx) => {
+              return (
+                <div
+                  className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full"
+                  key={idx}
+                >
+                  <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[var(--slideshow-mask)] to-transparent">
+                    <div className="mx-auto w-full max-w-screen-2xl text-balance px-4 pb-16 pt-12 @xl:px-6 @xl:pb-20 @xl:pt-16 @4xl:px-8 @4xl:pt-20">
+                      <h1 className="m-0 max-w-xl font-[family-name:var(--slideshow-title-font-family)] text-4xl font-medium leading-none text-[var(--slideshow-title)] @2xl:text-5xl @2xl:leading-[.9] @4xl:text-6xl ">
+                        {title}
+                      </h1>
+                      {showDescription && (
+                        <p className="max-w-x mt-2 font-[family-name:var(--slideshow-description-font-family)] text-base leading-normal text-[var(--slideshow-description)] @xl:mt-3 @xl:text-lg ">
+                          {description}
+                        </p>
+                      )}
+                      {showCta && (
+                        <ButtonLink
+                          className="mt-6 @xl:mt-8"
+                          href={cta?.href ?? '#'}
+                          variant={cta?.variant ?? 'tertiary'}
+                          size={cta?.size ?? 'large'}
+                          shape={cta?.shape ?? 'pill'}
+                        >
+                          {cta?.label ?? 'Learn more'}
+                        </ButtonLink>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                {image?.src != null && image.src !== '' && (
-                  <Image
-                    alt={image.alt}
-                    blurDataURL={image.blurDataUrl}
-                    className="block h-20 w-full object-cover"
-                    fill
-                    placeholder={
-                      image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
-                    }
-                    priority
-                    sizes="100vw"
-                    src={image.src}
-                  />
-                )}
-              </div>
-            );
-          })}
+                  {image?.src != null && image.src !== '' && (
+                    <Image
+                      alt={image.alt}
+                      blurDataURL={image.blurDataUrl}
+                      className="block h-20 w-full object-cover"
+                      fill
+                      placeholder={
+                        image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
+                      }
+                      priority
+                      sizes="100vw"
+                      src={image.src}
+                    />
+                  )}
+                </div>
+              );
+            },
+          )}
         </div>
       </div>
 
