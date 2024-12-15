@@ -50,6 +50,15 @@
 
     --accordion-title-font-family: var(--font-family-mono);
     --accordion-content-font-family: var(--font-family-body);
+
+    --card-focus: hsl(var(--primary));
+    --card-border-radius: 1rem;
+    --card-light-text: hsl(var(--foreground));
+    --card-light-icon: hsl(var(--foreground));
+    --card-light-background: hsl(var(--contrast-100));
+    --card-dark-text: hsl(var(--background));
+    --card-dark-icon: hsl(var(--background));
+    --card-dark-background: hsl(var(--contrast-500));
   }
   * {
     @apply antialiased;

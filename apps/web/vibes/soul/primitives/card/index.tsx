@@ -8,48 +8,92 @@ export interface CardProps {
   title: string;
   image?: { src: string; alt: string };
   href: string;
-  textContrast?: 'light' | 'dark';
+  textColorScheme?: 'light' | 'dark';
+  iconColorScheme?: 'light' | 'dark';
+  aspectRatio?: '5:6' | '3:4' | '1:1';
 }
 
-export function Card({ className, title, image, href, textContrast = 'dark' }: CardProps) {
+export function Card({
+  className,
+  title,
+  image,
+  href,
+  textColorScheme = 'light',
+  iconColorScheme = 'light',
+  aspectRatio = '5:6',
+}: CardProps) {
   return (
-    <div className={className}>
-      <Link
-        className="group relative flex cursor-pointer flex-col gap-2 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @md:rounded-2xl"
-        href={href}
+    <Link
+      className={clsx(
+        'group relative flex min-w-0 cursor-pointer flex-col gap-2 rounded-[var(--card-border-radius)] focus:outline-0 focus-visible:outline-0',
+        className,
+      )}
+      href={href}
+    >
+      <ArrowUpRight
+        className={clsx(
+          'absolute right-5 top-5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5',
+          {
+            light: 'text-[var(--card-light-icon)]',
+            dark: 'text-[var(--card-dark-icon)]',
+          }[iconColorScheme],
+        )}
+        strokeWidth={1.5}
+      />
+      <div
+        className={clsx(
+          'relative overflow-hidden rounded-[inherit] group-focus:ring-[var(--card-focus)] group-focus-visible:ring-2',
+          {
+            light: 'bg-[var(--card-light-background)]',
+            dark: 'bg-[var(--card-dark-background)]',
+          }[textColorScheme],
+          {
+            '5:6': 'aspect-[5/6]',
+            '3:4': 'aspect-[3/4]',
+            '1:1': 'aspect-square',
+          }[aspectRatio],
+        )}
       >
-        <ArrowUpRight
-          className={clsx(
-            'absolute right-2.5 top-2.5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5 @4xl:right-5 @4xl:top-5',
-            textContrast === 'light' ? 'text-background' : 'text-foreground',
-          )}
-          strokeWidth={1.5}
-        />
-        <div className="relative aspect-[5/6] overflow-hidden rounded-[inherit] bg-contrast-100">
-          {image != null ? (
-            <Image
-              alt={image.alt}
-              className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-              fill
-              sizes="(max-width: 768px) 70vw, 33vw"
-              src={image.src}
-            />
-          ) : (
-            <div className="pl-2 pt-3 text-7xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">
-              {title}
-            </div>
-          )}
-        </div>
-        <span
-          className={clsx(
-            'line-clamp-1 text-lg font-medium text-foreground',
-            textContrast === 'light' ? '@4xl:text-background' : '@4xl:text-foreground',
-          )}
-        >
-          {title}
-        </span>
-      </Link>
-    </div>
+        {image != null ? (
+          <Image
+            alt={image.alt}
+            className={clsx(
+              'w-full scale-100 select-none object-cover transition-transform duration-500 ease-out group-hover:scale-110',
+              {
+                light: 'bg-[var(--card-light-background)]',
+                dark: 'bg-[var(--card-dark-background)]',
+              }[textColorScheme],
+            )}
+            fill
+            sizes="(max-width: 768px) 70vw, 33vw"
+            src={image.src}
+          />
+        ) : (
+          <div
+            className={clsx(
+              'break-words pl-5 pt-5 text-4xl font-bold leading-[0.8] tracking-tighter opacity-25 transition-transform duration-500 ease-out group-hover:scale-105 @2xl:text-7xl',
+              {
+                light: 'text-[var(--card-light-text)]',
+                dark: 'text-[var(--card-dark-text)]',
+              }[textColorScheme],
+            )}
+          >
+            {title}
+          </div>
+        )}
+      </div>
+      <span
+        className={clsx(
+          'line-clamp-1 text-lg font-medium',
+          {
+            light: 'text-[var(--card-light-text)]',
+            dark: 'text-[var(--card-dark-text)]',
+          }[textColorScheme],
+        )}
+      >
+        {title}
+      </span>
+    </Link>
   );
 }
 
