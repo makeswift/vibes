@@ -58,6 +58,7 @@ function SortingInner({
 
   return (
     <Select
+      label={label}
       name={paramName}
       onValueChange={(value) => {
         startTransition(async () => {
@@ -66,7 +67,6 @@ function SortingInner({
         });
       }}
       options={options}
-      placeholder={label}
       value={optimisticParam}
       variant="round"
     />
