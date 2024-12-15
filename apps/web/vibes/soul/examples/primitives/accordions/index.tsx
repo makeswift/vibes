@@ -25,14 +25,31 @@ export default function Preview() {
   ];
 
   return (
-    <div className="m-auto flex h-screen w-1/2 max-w-screen-lg items-start justify-center p-10">
-      <Accordions className="w-full" type="multiple">
-        {accordions.map(({ title, content }, index) => (
-          <Accordion key={index} title={title} value={index.toString()}>
-            {content}
-          </Accordion>
-        ))}
-      </Accordions>
+    <div className="space-y-4">
+      <div className="py-8">
+        <Accordions
+          className="m-auto w-1/2 max-w-screen-lg items-start justify-center p-10"
+          type="multiple"
+        >
+          {accordions.map(({ title, content }, index) => (
+            <Accordion key={index} title={title} value={index.toString()}>
+              {content}
+            </Accordion>
+          ))}
+        </Accordions>
+      </div>
+      <div className="bg-foreground py-8">
+        <Accordions
+          className="m-auto w-1/2 max-w-screen-lg items-start justify-center p-10"
+          type="multiple"
+        >
+          {accordions.map(({ title, content }, index) => (
+            <Accordion colorScheme="dark" key={index} title={title} value={index.toString()}>
+              {content}
+            </Accordion>
+          ))}
+        </Accordions>
+      </div>
     </div>
   );
 }
