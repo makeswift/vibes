@@ -1,44 +1,80 @@
 'use client';
 
 import * as AccordionsPrimitive from '@radix-ui/react-accordion';
+import { clsx } from 'clsx';
 import React from 'react';
 
 function Accordion({
   children,
   title,
+  colorScheme = 'light',
   ...rest
-}: React.ComponentPropsWithoutRef<typeof AccordionsPrimitive.Item>) {
+}: React.ComponentPropsWithoutRef<typeof AccordionsPrimitive.Item> & {
+  colorScheme?: 'light' | 'dark';
+}) {
   return (
     <AccordionsPrimitive.Item {...rest}>
       <AccordionsPrimitive.Header>
         <AccordionsPrimitive.Trigger asChild>
           <div className="group cursor-pointer items-start gap-8 py-3 last:flex @md:py-4">
-            <div className="flex-1 select-none font-mono text-sm uppercase text-contrast-400 transition-colors duration-300 ease-out group-hover:text-foreground">
+            <div
+              className={clsx(
+                'flex-1 select-none font-[family-name:var(--accordion-title-font-family)] text-sm uppercase transition-colors duration-300 ease-out',
+                {
+                  light:
+                    'text-[var(--accordion-light-title-text)] group-hover:text-[var(--accordion-light-title-text-hover)]',
+                  dark: 'text-[var(--accordion-dark-title-text)] group-hover:text-[var(--accordion-dark-title-text-hover)]',
+                }[colorScheme],
+              )}
+            >
               {title}
             </div>
-            <AnimatedChevron />
+            <AnimatedChevron
+              className={clsx(
+                {
+                  light:
+                    'stroke-[var(--accordion-light-title-icon)] group-hover:stroke-[var(--accordion-light-title-icon-hover)]',
+                  dark: 'stroke-[var(--accordion-dark-title-icon)] group-hover:stroke-[var(--accordion-dark-title-icon-hover)]',
+                }[colorScheme],
+              )}
+            />
           </div>
         </AccordionsPrimitive.Trigger>
       </AccordionsPrimitive.Header>
       <AccordionsPrimitive.Content className="overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
-        <div className="pb-5 font-body font-medium leading-normal text-foreground">{children}</div>
+        <div
+          className={clsx(
+            'pb-5 font-[family-name:var(--accordion-content-font-family)] font-medium leading-normal',
+            {
+              light: 'text-[var(--accordion-light-content-text)]',
+              dark: 'text-[var(--accordion-dark-content-text)]',
+            }[colorScheme],
+          )}
+        >
+          {children}
+        </div>
       </AccordionsPrimitive.Content>
     </AccordionsPrimitive.Item>
   );
 }
 
-function AnimatedChevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
+function AnimatedChevron({
+  className,
+  ...rest
+}: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      className="mt-1 shrink-0 [&>line]:origin-center [&>line]:stroke-contrast-500 [&>line]:transition [&>line]:duration-300 [&>line]:ease-out [&>line]:group-hover:stroke-foreground"
+      {...rest}
+      className={clsx(
+        'mt-1 shrink-0 [&>line]:origin-center [&>line]:transition [&>line]:duration-300 [&>line]:ease-out',
+        className,
+      )}
       viewBox="0 0 10 10"
       width={16}
-      {...props}
     >
       {/* Left Line of Chevron */}
       <line
         className="group-data-[state=open]:-translate-y-[3px] group-data-[state=open]:-rotate-90"
-        stroke="currentColor"
         strokeLinecap="round"
         x1={2}
         x2={5}
@@ -48,7 +84,6 @@ function AnimatedChevron(props: React.JSX.IntrinsicAttributes & React.SVGProps<S
       {/* Right Line of Chevron */}
       <line
         className="group-data-[state=open]:-translate-y-[3px] group-data-[state=open]:rotate-90"
-        stroke="currentColor"
         strokeLinecap="round"
         x1={8}
         x2={5}
