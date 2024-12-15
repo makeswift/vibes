@@ -1,7 +1,7 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 
-import { FieldGroup, Field, schema } from '@/vibes/soul/primitives/dynamic-form/schema';
+import { Field, FieldGroup, schema } from '@/vibes/soul/primitives/dynamic-form/schema';
 
 export const fields = [
   [

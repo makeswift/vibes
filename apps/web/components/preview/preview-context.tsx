@@ -1,6 +1,6 @@
 'use client';
 
-import { Dispatch, SetStateAction, createContext, useCallback, useContext, useState } from 'react';
+import { createContext, Dispatch, SetStateAction, useCallback, useContext, useState } from 'react';
 
 const MIN_WIDTH = 320;
 

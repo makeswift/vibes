@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
-import { Suspense, lazy, useMemo } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
 
 export type IconName = keyof typeof dynamicIconImports;
 
