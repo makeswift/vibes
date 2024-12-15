@@ -15,6 +15,7 @@ import React, {
   forwardRef,
   startTransition,
   useActionState,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -524,6 +525,8 @@ function SearchForm<S extends SearchResult>({
     lastResult: null,
   });
   const [isDebouncing, setIsDebouncing] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const isPending = isSearching || isDebouncing || isSubmitting;
   const debouncedOnChange = useMemo(() => {
     const debounced = debounce((q: string) => {
       setIsDebouncing(false);
@@ -543,15 +546,22 @@ function SearchForm<S extends SearchResult>({
       debounced(q);
     };
   }, [formAction, searchParamName]);
-  const isPending = isSearching || isDebouncing;
 
   useEffect(() => {
     if (lastResult?.error) console.log(lastResult.error);
   }, [lastResult]);
 
+  const handleSubmit = useCallback(() => {
+    setIsSubmitting(true);
+  }, []);
+
   return (
     <>
-      <form action={searchHref} className="flex items-center gap-3 px-3 py-3 @4xl:px-5 @4xl:py-4">
+      <form
+        action={searchHref}
+        className="flex items-center gap-3 px-3 py-3 @4xl:px-5 @4xl:py-4"
+        onSubmit={handleSubmit}
+      >
         <SearchIcon
           className="hidden shrink-0 text-contrast-500 @xl:block"
           size={20}
