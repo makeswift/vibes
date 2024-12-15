@@ -53,6 +53,7 @@
     "radix": "error",
     "react/self-closing-comp": "error",
     "react/jsx-sort-props": "warn",
-    "react/style-prop-object": "error"
+    "react/style-prop-object": "error",
+    "sort-imports": ["error", { "ignoreCase": true, "ignoreDeclarationSort": true }]
   }
 }

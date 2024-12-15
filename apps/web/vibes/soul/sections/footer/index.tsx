@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReactNode, type Ref, forwardRef } from 'react';
+import { forwardRef, ReactNode, type Ref } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 

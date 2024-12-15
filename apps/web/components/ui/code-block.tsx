@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { CodeToHastOptions, ShikiTransformer, codeToHtml } from 'shiki';
+import { CodeToHastOptions, codeToHtml, ShikiTransformer } from 'shiki';
 
 import { theme, transformers } from '@/lib/shiki';
 

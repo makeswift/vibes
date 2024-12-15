@@ -3,8 +3,8 @@
 import {
   FieldMetadata,
   FormProvider,
-  SubmissionResult,
   getFormProps,
+  SubmissionResult,
   useForm,
   useInputControl,
 } from '@conform-to/react';
@@ -24,7 +24,7 @@ import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
 
-import { Field, SchemaRawShape, schema } from './schema';
+import { Field, schema, SchemaRawShape } from './schema';
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 

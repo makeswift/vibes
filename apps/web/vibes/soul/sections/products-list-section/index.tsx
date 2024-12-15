@@ -13,7 +13,7 @@ import { ProductListTransitionProvider } from './context';
 import { Filter, FiltersPanel } from './filters-panel';
 import { MobileFilters } from './mobile-filters';
 import { ProductListContainer } from './product-list-container';
-import { Option as SortOption, Sorting } from './sorting';
+import { Sorting, Option as SortOption } from './sorting';
 
 interface Props {
   breadcrumbs?: Breadcrumb[];
