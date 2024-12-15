@@ -186,8 +186,8 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
           {isLoading ? (
             // Skeleton Loader
             <div className="animate-pulse">
-              <div className="mb-20 mt-6 h-10 w-44 rounded bg-contrast-100"></div>
-              <div className="h-96 w-full rounded bg-contrast-100"></div>
+              <div className="mb-20 mt-6 h-10 w-44 rounded bg-contrast-100" />
+              <div className="h-96 w-full rounded bg-contrast-100" />
             </div>
           ) : (
             products.length > 0 && (

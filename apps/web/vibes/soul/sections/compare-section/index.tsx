@@ -87,7 +87,7 @@ export function CompareSectionSkeleton({
             <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
               {title}
             </h1>
-            <div className="flex h-6 w-14 animate-pulse bg-contrast-100"></div>
+            <div className="flex h-6 w-14 animate-pulse bg-contrast-100" />
           </div>
           <CarouselContent>
             {Array.from({ length: 4 }).map((_, index) => (
@@ -122,7 +122,7 @@ export function CompareSectionEmptyState({
             <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
               {title}
             </h1>
-            <div className="flex h-6 w-14 animate-pulse bg-contrast-100"></div>
+            <div className="flex h-6 w-14 animate-pulse bg-contrast-100" />
           </div>
           <CarouselContent className="[mask-image:radial-gradient(circle,transparent,black)]">
             {Array.from({ length: 4 }).map((_, index) => (

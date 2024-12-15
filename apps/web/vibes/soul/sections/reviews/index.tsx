@@ -144,9 +144,9 @@ export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: { reviewsLabel?: s
         {Array.from({ length: 3 }).map((_, index) => (
           <div className="border-b border-contrast-100 py-6" key={index}>
             <div className="h-5 w-32 rounded-md bg-contrast-100" />
-            <div className="mt-5 h-[1lh] rounded-md bg-contrast-100 text-lg font-semibold"></div>
-            <div className="mb-8 mt-2 h-[1lh] w-1/2 rounded-md bg-contrast-100 leading-normal"></div>
-            <div className="h-[1lh] w-24 rounded-md bg-contrast-100 text-sm"></div>
+            <div className="mt-5 h-[1lh] rounded-md bg-contrast-100 text-lg font-semibold" />
+            <div className="mb-8 mt-2 h-[1lh] w-1/2 rounded-md bg-contrast-100 leading-normal" />
+            <div className="h-[1lh] w-24 rounded-md bg-contrast-100 text-sm" />
           </div>
         ))}
       </div>

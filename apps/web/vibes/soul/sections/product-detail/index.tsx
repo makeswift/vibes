@@ -126,10 +126,10 @@ const ImageSkeleton = () => (
 
 const ThumbnailsSkeleton = () => (
   <>
-    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16"></div>
-    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16"></div>
-    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16"></div>
-    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16"></div>
+    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
+    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
+    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
+    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
   </>
 );
 
@@ -148,7 +148,7 @@ const ProductGallerySkeleton = () => (
 );
 
 const PriceLabelSkeleton = () => (
-  <div className="my-4 h-4 w-20 animate-pulse rounded-md bg-contrast-100"></div>
+  <div className="my-4 h-4 w-20 animate-pulse rounded-md bg-contrast-100" />
 );
 
 const RatingSkeleton = () => (
@@ -160,35 +160,35 @@ const RatingSkeleton = () => (
 
 const ProductDescriptionSkeleton = () => (
   <div className="flex w-full animate-pulse flex-col gap-3.5 pb-6">
-    <div className="h-2.5 w-full bg-contrast-100"></div>
-    <div className="h-2.5 w-full bg-contrast-100"></div>
-    <div className="h-2.5 w-3/4 bg-contrast-100"></div>
+    <div className="h-2.5 w-full bg-contrast-100" />
+    <div className="h-2.5 w-full bg-contrast-100" />
+    <div className="h-2.5 w-3/4 bg-contrast-100" />
   </div>
 );
 
 const ProductDetailFormSkeleton = () => (
   <div className="flex animate-pulse flex-col gap-8">
     <div className="flex flex-col gap-5">
-      <div className="h-2 w-10 rounded-md bg-contrast-100"></div>
+      <div className="h-2 w-10 rounded-md bg-contrast-100" />
       <div className="flex gap-2">
-        <div className="h-11 w-[72px] rounded-full bg-contrast-100"></div>
-        <div className="h-11 w-[72px] rounded-full bg-contrast-100"></div>
-        <div className="h-11 w-[72px] rounded-full bg-contrast-100"></div>
+        <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
+        <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
+        <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
       </div>
     </div>
     <div className="flex flex-col gap-5">
-      <div className="h-2 w-16 rounded-md bg-contrast-100"></div>
+      <div className="h-2 w-16 rounded-md bg-contrast-100" />
       <div className="flex gap-4">
-        <div className="h-10 w-10 rounded-full bg-contrast-100"></div>
-        <div className="h-10 w-10 rounded-full bg-contrast-100"></div>
-        <div className="h-10 w-10 rounded-full bg-contrast-100"></div>
-        <div className="h-10 w-10 rounded-full bg-contrast-100"></div>
-        <div className="h-10 w-10 rounded-full bg-contrast-100"></div>
+        <div className="h-10 w-10 rounded-full bg-contrast-100" />
+        <div className="h-10 w-10 rounded-full bg-contrast-100" />
+        <div className="h-10 w-10 rounded-full bg-contrast-100" />
+        <div className="h-10 w-10 rounded-full bg-contrast-100" />
+        <div className="h-10 w-10 rounded-full bg-contrast-100" />
       </div>
     </div>
     <div className="flex gap-2">
-      <div className="h-12 w-[120px] rounded-lg bg-contrast-100"></div>
-      <div className="h-12 w-[216px] rounded-full bg-contrast-100"></div>
+      <div className="h-12 w-[120px] rounded-lg bg-contrast-100" />
+      <div className="h-12 w-[216px] rounded-full bg-contrast-100" />
     </div>
   </div>
 );
@@ -200,9 +200,9 @@ const ProductDetailSkeleton = () => (
     </div>
 
     <div>
-      <div className="mb-6 h-4 w-20 rounded-lg bg-contrast-100"></div>
+      <div className="mb-6 h-4 w-20 rounded-lg bg-contrast-100" />
 
-      <div className="mb-6 h-6 w-72 rounded-lg bg-contrast-100"></div>
+      <div className="mb-6 h-6 w-72 rounded-lg bg-contrast-100" />
 
       <RatingSkeleton />
 

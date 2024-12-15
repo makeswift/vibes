@@ -39,7 +39,7 @@ export function ProductsCarousel({
 }: Props) {
   return (
     <Stream
-      fallback={<ProductsCarouselSkeleton placeholderCount={placeholderCount} pending />}
+      fallback={<ProductsCarouselSkeleton pending placeholderCount={placeholderCount} />}
       value={streamableProducts}
     >
       {(products) => {
@@ -97,7 +97,7 @@ export function ProductsCarouselSkeleton({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="h-6 w-56 animate-pulse bg-contrast-100"></div>
+      <div className="h-6 w-56 animate-pulse bg-contrast-100" />
     </Carousel>
   );
 }
