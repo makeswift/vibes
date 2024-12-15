@@ -4,7 +4,7 @@ import { Field, FieldGroup } from '@/vibes/soul/primitives/dynamic-form/schema';
 interface Props<F extends Field> {
   title?: string;
   action: DynamicFormAction<F>;
-  fields: (F | FieldGroup<F>)[];
+  fields: Array<F | FieldGroup<F>>;
   submitLabel?: string;
 }
 

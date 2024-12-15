@@ -34,14 +34,14 @@ import { ProductCard } from '../product-card';
 interface Link {
   label: string;
   href: string;
-  groups?: {
+  groups?: Array<{
     label?: string;
     href?: string;
-    links: {
+    links: Array<{
       label: string;
       href: string;
-    }[];
-  }[];
+    }>;
+  }>;
 }
 
 interface Locale {
@@ -58,18 +58,18 @@ export type SearchResult =
   | {
       type: 'products';
       title: string;
-      products: {
+      products: Array<{
         id: string;
         title: string;
         href: string;
         price?: Price;
         image?: { src: string; alt: string };
-      }[];
+      }>;
     }
   | {
       type: 'links';
       title: string;
-      links: { label: string; href: string }[];
+      links: Array<{ label: string; href: string }>;
     };
 
 type LocaleAction = Action<SubmissionResult | null, FormData>;

@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { Badge } from '@/vibes/soul/primitives/badge';
 
 interface Summary {
-  lineItems: {
+  lineItems: Array<{
     label: string;
     value: string;
     subtext?: string;
-  }[];
+  }>;
   totalLabel?: string;
   total: string;
 }
@@ -38,7 +38,7 @@ interface ShipmentLineItem {
   href: string;
   image?: { src: string; alt: string };
   quantity: number;
-  metadata?: { label: string; value: string }[];
+  metadata?: Array<{ label: string; value: string }>;
 }
 
 interface Shipment {

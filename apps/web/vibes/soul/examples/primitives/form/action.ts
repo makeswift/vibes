@@ -90,10 +90,10 @@ export const fields = [
       },
     ],
   },
-] satisfies (Field | FieldGroup<Field>)[];
+] satisfies Array<Field | FieldGroup<Field>>;
 
 export async function action(
-  prevState: { fields: (Field | FieldGroup<Field>)[]; lastResult: SubmissionResult | null },
+  prevState: { fields: Array<Field | FieldGroup<Field>>; lastResult: SubmissionResult | null },
   payload: FormData,
 ) {
   'use server';

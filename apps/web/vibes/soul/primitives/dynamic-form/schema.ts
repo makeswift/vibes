@@ -9,13 +9,13 @@ interface FormField {
 
 type RadioField = {
   type: 'radio-group';
-  options: { label: string; value: string }[];
+  options: Array<{ label: string; value: string }>;
   defaultValue?: string;
 } & FormField;
 
 type SelectField = {
   type: 'select';
-  options: { label: string; value: string }[];
+  options: Array<{ label: string; value: string }>;
   defaultValue?: string;
 } & FormField;
 
@@ -26,7 +26,7 @@ type CheckboxField = {
 
 type CheckboxGroupField = {
   type: 'checkbox-group';
-  options: { label: string; value: string }[];
+  options: Array<{ label: string; value: string }>;
   defaultValue?: string[];
 } & FormField;
 
@@ -85,23 +85,23 @@ type SwatchRadioField = {
 type CardRadioField = {
   type: 'card-radio-group';
   defaultValue?: string;
-  options: {
+  options: Array<{
     value: string;
     label: string;
     image: { src: string; alt: string };
     disabled?: boolean;
-  }[];
+  }>;
 } & FormField;
 
 type ButtonRadioField = {
   type: 'button-radio-group';
   defaultValue?: string;
   pattern?: string;
-  options: {
+  options: Array<{
     value: string;
     label: string;
     disabled?: boolean;
-  }[];
+  }>;
 } & FormField;
 
 type PasswordField = {
@@ -197,7 +197,7 @@ function getFieldSchema(field: Field) {
   return fieldSchema;
 }
 
-export function schema(fields: (Field | FieldGroup<Field>)[]) {
+export function schema(fields: Array<Field | FieldGroup<Field>>) {
   const shape: SchemaRawShape = {};
   let passwordFieldName: string | undefined;
   let confirmPasswordFieldName: string | undefined;

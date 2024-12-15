@@ -10,7 +10,7 @@ import { Rating } from '@/vibes/soul/primitives/rating';
 
 export type CompareProduct = CardProduct & {
   description?: string;
-  customFields?: { name: string; value: string }[];
+  customFields?: Array<{ name: string; value: string }>;
 };
 
 export interface Props {

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 interface Props {
-  images: { alt: string; src: string }[];
+  images: Array<{ alt: string; src: string }>;
   className?: string;
 }
 

@@ -29,7 +29,7 @@ export interface ToggleGroupFilter {
   type: 'toggle-group';
   paramName: string;
   label: string;
-  options: { label: string; value: string }[];
+  options: Array<{ label: string; value: string }>;
 }
 
 export interface RatingFilter {

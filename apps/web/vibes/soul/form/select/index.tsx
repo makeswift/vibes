@@ -14,7 +14,7 @@ type Props = {
   placeholder?: string;
   label?: string;
   variant?: 'round' | 'rectangle';
-  options: { label: string; value: string }[];
+  options: Array<{ label: string; value: string }>;
   className?: string;
   errors?: string[];
   onFocus?: (e: React.FocusEvent<HTMLButtonElement>) => void;

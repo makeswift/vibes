@@ -12,11 +12,11 @@ export interface FeatureProps {
   };
   title?: string;
   description?: string;
-  grid?: {
+  grid?: Array<{
     icon: IconName;
     title: string;
     description: string;
-  }[];
+  }>;
   cta: {
     href: string;
     label: string;
