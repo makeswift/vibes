@@ -107,7 +107,7 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
             e.currentTarget.ownerDocument.exitPointerLock();
           }}
         >
-          <div className="absolute top-1/2 ml-2 h-8 w-0.5 -translate-y-1/2 rounded-full bg-foreground transition-all group-hover:scale-x-125 group-hover:scale-y-150"></div>
+          <div className="absolute top-1/2 ml-2 h-8 w-0.5 -translate-y-1/2 rounded-full bg-foreground transition-all group-hover:scale-x-125 group-hover:scale-y-150" />
         </div>
       </div>
       <Portal>

@@ -308,7 +308,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             href={logoHref}
           >
             <Stream
-              fallback={<div className="h-6 w-16 animate-pulse rounded-md bg-contrast-100"></div>}
+              fallback={<div className="h-6 w-16 animate-pulse rounded-md bg-contrast-100" />}
               value={streamableLogo}
             >
               {(logo) =>
@@ -464,7 +464,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             <ShoppingBag size={20} strokeWidth={1} />
             <Stream
               fallback={
-                <span className="absolute -right-1 -top-1 flex h-4 w-4 animate-pulse items-center justify-center rounded-full bg-contrast-100 text-xs text-background"></span>
+                <span className="absolute -right-1 -top-1 flex h-4 w-4 animate-pulse items-center justify-center rounded-full bg-contrast-100 text-xs text-background" />
               }
               value={streamableCartCount}
             >

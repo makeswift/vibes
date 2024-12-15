@@ -50,6 +50,7 @@
     "no-shadow": "off",
     "no-useless-computed-key": "error",
     "radix": "error",
+    "react/self-closing-comp": "error",
     "react/jsx-sort-props": "warn",
     "react/style-prop-object": "error"
   }

@@ -40,7 +40,7 @@ export function ProductDescription({
         <div className="w-full self-start pt-5 @2xl:w-1/2 @2xl:basis-1/2 @2xl:pl-6 @4xl:pl-8">
           <div className="relative aspect-square w-full overflow-hidden rounded-2xl @2xl:aspect-[4/5]">
             <Stream
-              fallback={<div className="h-full w-full animate-pulse bg-contrast-100"></div>}
+              fallback={<div className="h-full w-full animate-pulse bg-contrast-100" />}
               value={streamableImage}
             >
               {(image) =>
@@ -65,25 +65,25 @@ export function ProductDescription({
 const AccordionsSkeleton = () => (
   <div className="flex h-[600px] w-full animate-pulse flex-col gap-8 pt-4">
     <div className="flex items-center justify-between">
-      <div className="h-2 w-20 rounded-sm bg-contrast-100"></div>
-      <div className="h-3 w-3 rounded-full bg-contrast-100"></div>
+      <div className="h-2 w-20 rounded-sm bg-contrast-100" />
+      <div className="h-3 w-3 rounded-full bg-contrast-100" />
     </div>
     <div className="mb-1 flex flex-col gap-4">
-      <div className="h-3 w-full rounded-sm bg-contrast-100"></div>
-      <div className="h-3 w-full rounded-sm bg-contrast-100"></div>
-      <div className="h-3 w-3/5 rounded-sm bg-contrast-100"></div>
+      <div className="h-3 w-full rounded-sm bg-contrast-100" />
+      <div className="h-3 w-full rounded-sm bg-contrast-100" />
+      <div className="h-3 w-3/5 rounded-sm bg-contrast-100" />
     </div>
     <div className="flex items-center justify-between">
-      <div className="h-2 w-24 rounded-sm bg-contrast-100"></div>
-      <div className="h-3 w-3 rounded-full bg-contrast-100"></div>
+      <div className="h-2 w-24 rounded-sm bg-contrast-100" />
+      <div className="h-3 w-3 rounded-full bg-contrast-100" />
     </div>
     <div className="flex items-center justify-between">
-      <div className="h-2 w-20 rounded-sm bg-contrast-100"></div>
-      <div className="h-3 w-3 rounded-full bg-contrast-100"></div>
+      <div className="h-2 w-20 rounded-sm bg-contrast-100" />
+      <div className="h-3 w-3 rounded-full bg-contrast-100" />
     </div>
     <div className="flex items-center justify-between">
-      <div className="h-2 w-32 rounded-sm bg-contrast-100"></div>
-      <div className="h-3 w-3 rounded-full bg-contrast-100"></div>
+      <div className="h-2 w-32 rounded-sm bg-contrast-100" />
+      <div className="h-3 w-3 rounded-full bg-contrast-100" />
     </div>
   </div>
 );

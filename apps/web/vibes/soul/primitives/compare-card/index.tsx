@@ -97,17 +97,17 @@ export function CompareCardSkeleton({ className }: { className?: string }) {
     >
       <div className="mb-2 space-y-4 pb-4">
         <ProductCardSkeleton />
-        <div className="h-14 w-full rounded-full bg-contrast-100"></div>
+        <div className="h-14 w-full rounded-full bg-contrast-100" />
       </div>
 
       <div className="space-y-4 py-4">
-        <div className="h-[1lh] rounded-md bg-contrast-100 font-mono text-xs uppercase"></div>
-        <div className="h-5 w-12 rounded-md bg-contrast-100"></div>
+        <div className="h-[1lh] rounded-md bg-contrast-100 font-mono text-xs uppercase" />
+        <div className="h-5 w-12 rounded-md bg-contrast-100" />
       </div>
 
       <div className="space-y-4 py-4">
-        <div className="h-[1lh] rounded-md bg-contrast-100 font-mono text-xs"></div>
-        <div className="h-[1lh] rounded-md bg-contrast-100 text-sm"></div>
+        <div className="h-[1lh] rounded-md bg-contrast-100 font-mono text-xs" />
+        <div className="h-[1lh] rounded-md bg-contrast-100 text-sm" />
       </div>
     </div>
   );

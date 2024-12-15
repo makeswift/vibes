@@ -149,10 +149,10 @@ export const Footer = forwardRef(function Footer(
             <Stream
               fallback={
                 <div className="flex animate-pulse items-center gap-3 pt-8 @3xl:pt-10">
-                  <div className="h-8 w-8 rounded-full bg-contrast-100"></div>
-                  <div className="h-8 w-8 rounded-full bg-contrast-100"></div>
-                  <div className="h-8 w-8 rounded-full bg-contrast-100"></div>
-                  <div className="h-8 w-8 rounded-full bg-contrast-100"></div>
+                  <div className="h-8 w-8 rounded-full bg-contrast-100" />
+                  <div className="h-8 w-8 rounded-full bg-contrast-100" />
+                  <div className="h-8 w-8 rounded-full bg-contrast-100" />
+                  <div className="h-8 w-8 rounded-full bg-contrast-100" />
                 </div>
               }
               value={streamableSocialMediaLinks}
