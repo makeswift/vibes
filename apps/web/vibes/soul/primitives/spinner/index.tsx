@@ -19,6 +19,6 @@ export const Spinner = function Spinner({ size = 'sm', loadingAriaLabel }: Props
         }[size],
       )}
       role="status"
-     />
+    />
   );
 };
