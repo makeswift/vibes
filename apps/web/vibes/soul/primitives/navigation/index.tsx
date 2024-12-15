@@ -1,6 +1,6 @@
 'use client';
 
-import { SubmissionResult } from '@conform-to/react';
+import { SubmissionResult, useForm } from '@conform-to/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import * as Popover from '@radix-ui/react-popover';
@@ -27,6 +27,7 @@ import { useFormStatus } from 'react-dom';
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Button } from '@/vibes/soul/primitives/button';
 
+import { FormStatus } from '../../form/form-status';
 import { Price } from '../price-label';
 import { ProductCard } from '../product-card';
 
@@ -547,9 +548,7 @@ function SearchForm<S extends SearchResult>({
     };
   }, [formAction, searchParamName]);
 
-  useEffect(() => {
-    if (lastResult?.error) console.log(lastResult.error);
-  }, [lastResult]);
+  const [form] = useForm({ lastResult });
 
   const handleSubmit = useCallback(() => {
     setIsSubmitting(true);
@@ -586,6 +585,7 @@ function SearchForm<S extends SearchResult>({
         <SearchResults
           emptySearchSubtitle={emptySearchSubtitle}
           emptySearchTitle={emptySearchTitle}
+          errors={form.errors}
           query={query}
           searchCtaLabel={searchCtaLabel}
           searchParamName={searchParamName}
@@ -613,6 +613,7 @@ function SearchResults({
   stale,
   emptySearchTitle = 'No results were found for',
   emptySearchSubtitle = 'Please try another search.',
+  errors,
 }: {
   query: string;
   searchParamName: string;
@@ -621,8 +622,21 @@ function SearchResults({
   emptySearchSubtitle?: string;
   searchResults: SearchResult[];
   stale: boolean;
+  errors?: string[];
 }) {
   if (query === '') return null;
+
+  if (errors != null && errors.length > 0) {
+    return (
+      <div className="flex flex-col border-t border-contrast-100 p-6">
+        {errors.map((error) => (
+          <FormStatus key={error} type="error">
+            {error}
+          </FormStatus>
+        ))}
+      </div>
+    );
+  }
 
   if (searchResults.length === 0) {
     return (
