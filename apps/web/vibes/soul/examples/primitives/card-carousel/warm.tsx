@@ -33,8 +33,6 @@ export const cards = [
   },
 ];
 
-export const textContrast = 'light';
-
 export default function Preview() {
-  return <CardCarousel cards={cards} textContrast={textContrast} />;
+  return <CardCarousel cards={cards} iconColorScheme="dark" />;
 }

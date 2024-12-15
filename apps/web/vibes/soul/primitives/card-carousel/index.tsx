@@ -17,7 +17,8 @@ export type Card = CardProps & {
 
 interface Props {
   cards: Streamable<Card[]>;
-  textContrast?: 'light' | 'dark';
+  textColorScheme?: 'light' | 'dark';
+  iconColorScheme?: 'light' | 'dark';
   className?: string;
   emptyStateMessage?: string;
   scrollbarLabel?: string;
@@ -27,7 +28,8 @@ interface Props {
 
 export function CardCarousel({
   cards: streamableCards,
-  textContrast,
+  textColorScheme,
+  iconColorScheme,
   className,
   emptyStateMessage = 'No items found',
   scrollbarLabel,
@@ -51,7 +53,11 @@ export function CardCarousel({
                 className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
                 key={card.id}
               >
-                <Card {...card} textContrast={textContrast} />
+                <Card
+                  {...card}
+                  textColorScheme={textColorScheme}
+                  iconColorScheme={iconColorScheme}
+                />
               </CarouselItem>
             ));
           }}
