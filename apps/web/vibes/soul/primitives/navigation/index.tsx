@@ -580,19 +580,16 @@ function SearchForm<S extends SearchResult>({
         <SubmitButton loading={isPending} submitLabel={submitLabel} />
       </form>
 
-      {/* Search Results */}
-      {searchResults && (
-        <SearchResults
-          emptySearchSubtitle={emptySearchSubtitle}
-          emptySearchTitle={emptySearchTitle}
-          errors={form.errors}
-          query={query}
-          searchCtaLabel={searchCtaLabel}
-          searchParamName={searchParamName}
-          searchResults={searchResults}
-          stale={isPending}
-        />
-      )}
+      <SearchResults
+        emptySearchSubtitle={emptySearchSubtitle}
+        emptySearchTitle={emptySearchTitle}
+        errors={form.errors}
+        query={query}
+        searchCtaLabel={searchCtaLabel}
+        searchParamName={searchParamName}
+        searchResults={searchResults}
+        stale={isPending}
+      />
     </>
   );
 }
@@ -626,7 +623,7 @@ function SearchResults({
   searchCtaLabel?: string;
   emptySearchTitle?: string;
   emptySearchSubtitle?: string;
-  searchResults: SearchResult[];
+  searchResults: SearchResult[] | null;
   stale: boolean;
   errors?: string[];
 }) {
@@ -644,7 +641,7 @@ function SearchResults({
     );
   }
 
-  if (searchResults.length === 0) {
+  if (searchResults == null || searchResults.length === 0) {
     return (
       <div className="flex flex-col border-t border-contrast-100 p-6">
         <h1 className="text-2xl font-medium text-foreground">
