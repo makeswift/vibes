@@ -630,6 +630,8 @@ function SearchResults({
   if (query === '') return null;
 
   if (errors != null && errors.length > 0) {
+    if (stale) return null;
+
     return (
       <div className="flex flex-col border-t border-contrast-100 p-6">
         {errors.map((error) => (
@@ -642,6 +644,8 @@ function SearchResults({
   }
 
   if (searchResults == null || searchResults.length === 0) {
+    if (stale) return null;
+
     return (
       <div className="flex flex-col border-t border-contrast-100 p-6">
         <h1 className="text-2xl font-medium text-foreground">
