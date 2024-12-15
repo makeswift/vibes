@@ -97,10 +97,10 @@ export default function Preview() {
   );
 
   const socialMediaLinksPromise = new Promise<
-    {
+    Array<{
       href: string;
       icon: ReactNode;
-    }[]
+    }>
   >((res) => setTimeout(() => res(socialMediaLinks), 1000));
 
   const contactInformationPromise = new Promise<{ address?: string; phone?: string }>((res) =>

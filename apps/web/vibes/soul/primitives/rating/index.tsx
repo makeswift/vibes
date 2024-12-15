@@ -62,7 +62,7 @@ const Star = ({ type }: StarType) => {
 export const Rating = function Rating({ showRating = true, rating, className }: Readonly<Props>) {
   const adjustedRating = Math.min(rating, 5);
 
-  const stars: StarType['type'][] = Array.from({ length: 5 }, (_, index) => {
+  const stars: Array<StarType['type']> = Array.from({ length: 5 }, (_, index) => {
     if (index < Math.floor(adjustedRating)) return 'full';
     if (index < Math.ceil(adjustedRating)) return 'half';
     return 'empty';

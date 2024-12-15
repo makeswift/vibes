@@ -6,10 +6,10 @@ import { AccountLayoutLink } from './account-layout-link';
 import { AccountLayoutLinkSelect } from './account-layout-link-select';
 
 interface Props {
-  links: {
+  links: Array<{
     href: string;
     label: string;
-  }[];
+  }>;
   children: ReactNode;
 }
 

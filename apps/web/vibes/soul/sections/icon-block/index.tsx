@@ -3,11 +3,11 @@ import { clsx } from 'clsx';
 import { Icon, IconName } from '@/vibes/soul/primitives/icon';
 
 export interface IconBlockProps {
-  list: {
+  list: Array<{
     icon: IconName;
     title: string;
     description: string;
-  }[];
+  }>;
 }
 
 export const IconBlock = function IconBlock({ list }: IconBlockProps) {

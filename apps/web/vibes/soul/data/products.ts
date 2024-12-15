@@ -22,18 +22,18 @@ interface BaseProduct {
 
 // Brand-specific product types
 type ElectricProduct = BaseProduct & {
-  features: ('air-purifying' | 'indoor' | 'pet-friendly')[];
+  features: Array<'air-purifying' | 'indoor' | 'pet-friendly'>;
   light: 'bright-indirect' | 'bright-direct' | 'low-light';
   size: 'sm' | 'md' | 'lg';
 };
 
 type LuxuryProduct = BaseProduct & {
-  color: ('black' | 'brown' | 'red')[];
+  color: Array<'black' | 'brown' | 'red'>;
   size: string[]; // Shoe sizes like '6', '6.5', etc.
 };
 
 type WarmProduct = BaseProduct & {
-  color: ('blue' | 'green' | 'red')[];
+  color: Array<'blue' | 'green' | 'red'>;
   size: 'sm' | 'md' | 'lg';
 };
 
@@ -519,7 +519,7 @@ export async function getProducts(
 ): Promise<CardProduct[]> {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
-  let brandProducts = products[brand] as (ElectricProduct | LuxuryProduct | WarmProduct)[];
+  let brandProducts = products[brand] as Array<ElectricProduct | LuxuryProduct | WarmProduct>;
 
   if (filterParams) {
     brandProducts = brandProducts.filter((product) => {

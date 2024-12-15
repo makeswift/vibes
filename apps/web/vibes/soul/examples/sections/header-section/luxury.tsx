@@ -4,7 +4,7 @@ import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigati
 import { HeaderSection } from '@/vibes/soul/sections/header-section';
 
 export default function Preview() {
-  const linksPromise = new Promise<{ href: string; label: string }[]>((res) =>
+  const linksPromise = new Promise<Array<{ href: string; label: string }>>((res) =>
     setTimeout(() => res(navigationLinks), 3000),
   );
   const cartCountPromise = new Promise<number>((res) => setTimeout(() => res(3), 2000));

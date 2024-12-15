@@ -16,12 +16,12 @@ import { BrandSelect } from './brand-select';
 import { usePreviewContext } from './preview-context';
 
 interface Props {
-  components: {
+  components: Array<{
     brandName: string | null;
     preview: React.ReactNode;
     code: React.ReactNode;
     clipboard: string;
-  }[];
+  }>;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 

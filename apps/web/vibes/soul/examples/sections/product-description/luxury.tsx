@@ -31,7 +31,7 @@ export const productDescriptionImage = {
 };
 
 export default function Preview() {
-  const accordionsPromise = new Promise<{ title: string; content: ReactNode }[]>((res) =>
+  const accordionsPromise = new Promise<Array<{ title: string; content: ReactNode }>>((res) =>
     setTimeout(() => res(accordions), 2000),
   );
 

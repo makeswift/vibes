@@ -11,10 +11,10 @@ export const fields = [
   { type: 'email', label: 'Email', name: 'email', required: true },
   { type: 'password', label: 'Password', name: 'password', required: true },
   { type: 'confirm-password', label: 'Confirm password', name: 'confirm-password', required: true },
-] satisfies (Field | FieldGroup<Field>)[];
+] satisfies Array<Field | FieldGroup<Field>>;
 
 export async function action(
-  prevState: { fields: (Field | FieldGroup<Field>)[]; lastResult: SubmissionResult | null },
+  prevState: { fields: Array<Field | FieldGroup<Field>>; lastResult: SubmissionResult | null },
   payload: FormData,
 ) {
   'use server';
