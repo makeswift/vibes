@@ -4,7 +4,11 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { Select } from '@/vibes/soul/form/select';
 
-export function AccountLayoutLinkSelect({ links }: { links: Array<{ href: string; label: string }> }) {
+export function AccountLayoutLinkSelect({
+  links,
+}: {
+  links: Array<{ href: string; label: string }>;
+}) {
   const pathname = usePathname();
   const router = useRouter();
 
