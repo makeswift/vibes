@@ -14,12 +14,12 @@ export interface Option {
 }
 
 export function Sorting({
-  label = 'Sort',
+  label,
   options,
   paramName = 'sort',
   defaultValue = '',
 }: {
-  label?: string;
+  label?: Streamable<string | null>;
   options: Streamable<Option[]>;
   paramName?: string;
   defaultValue?: string;
@@ -40,12 +40,12 @@ function SortingInner({
   paramName,
   defaultValue,
   options: streamableOptions,
-  label,
+  label: streamableLabel,
 }: {
   paramName: string;
   defaultValue: string;
   options: Streamable<Option[]>;
-  label: string;
+  label?: Streamable<string | null>;
 }) {
   const [param, setParam] = useQueryState(
     paramName,
@@ -54,6 +54,7 @@ function SortingInner({
   const [optimisticParam, setOptimisticParam] = useOptimistic(param);
   const [, startTransition] = use(ProductListTransitionContext);
   const options = useStreamable(streamableOptions);
+  const label = useStreamable(streamableLabel) ?? 'Sort';
 
   return (
     <Select
