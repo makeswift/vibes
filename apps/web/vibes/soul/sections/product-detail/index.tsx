@@ -97,25 +97,21 @@ export function ProductDetail<F extends Field>({
                     }
                   </Stream>
 
-                  <Stream fallback={<ProductDetailFormSkeleton />} value={streamableFields}>
-                    {(fields) => (
-                      <Stream
-                        fallback={<ProductDetailFormSkeleton />}
-                        value={streamableSubmitButton}
-                      >
-                        {(submitButton) => (
-                          <ProductDetailForm
-                            action={action}
-                            ctaLabel={submitButton?.label}
-                            decrementLabel={decrementLabel}
-                            disabled={submitButton?.disabled}
-                            fields={fields}
-                            incrementLabel={incrementLabel}
-                            productId={product.id}
-                            quantityLabel={quantityLabel}
-                          />
-                        )}
-                      </Stream>
+                  <Stream
+                    fallback={<ProductDetailFormSkeleton />}
+                    value={Promise.all([streamableFields, streamableSubmitButton])}
+                  >
+                    {([fields, submitButton]) => (
+                      <ProductDetailForm
+                        action={action}
+                        ctaLabel={submitButton?.label}
+                        decrementLabel={decrementLabel}
+                        disabled={submitButton?.disabled}
+                        fields={fields}
+                        incrementLabel={incrementLabel}
+                        productId={product.id}
+                        quantityLabel={quantityLabel}
+                      />
                     )}
                   </Stream>
                 </div>
