@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
+import { Breadcrumb, Breadcrumbs, BreadcrumbsSkeleton } from '@/vibes/soul/primitives/breadcrumbs';
 import {
   CursorPagination,
   CursorPaginationInfo,
@@ -30,6 +30,7 @@ interface Props {
   resetFiltersLabel?: string;
   sortLabel?: string;
   sortParamName?: string;
+  sortDefaultValue?: string;
   compareParamName?: string;
   emptyStateSubtitle?: Streamable<string | null>;
   emptyStateTitle?: Streamable<string | null>;
@@ -37,12 +38,13 @@ interface Props {
 }
 
 export function ProductsListSection({
-  breadcrumbs,
+  breadcrumbs: streamableBreadcrumbs,
   title = 'Products',
   totalCount,
   products,
   compareProducts,
   sortOptions,
+  sortDefaultValue,
   filters,
   compareAction,
   compareLabel,
@@ -61,33 +63,40 @@ export function ProductsListSection({
       <div className="@container">
         <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-12">
           <div>
-            {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-            <Suspense fallback="Loading...">
-              <div className="flex flex-wrap items-center justify-between gap-4 pb-8 pt-6 text-foreground">
-                <h1 className="flex items-center gap-2 font-heading text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl">
-                  <Suspense
-                    fallback={
-                      <span className="inline-flex h-[1lh] w-[6ch] animate-pulse rounded-lg bg-contrast-100" />
-                    }
-                  >
-                    {title}
-                  </Suspense>
-                  <Suspense
-                    fallback={
-                      <span className="inline-flex h-[1lh] w-[2ch] animate-pulse rounded-lg bg-contrast-100" />
-                    }
-                  >
-                    <span className="text-contrast-300">{totalCount}</span>
-                  </Suspense>
-                </h1>
-                <div className="flex gap-2">
-                  <Sorting label={sortLabel} options={sortOptions} paramName={sortParamName} />
-                  <div className="block @3xl:hidden">
-                    <MobileFilters filters={filters} label={filterLabel} />
-                  </div>
+            <Stream fallback={<BreadcrumbsSkeleton />} value={streamableBreadcrumbs}>
+              {(breadcrumbs) =>
+                breadcrumbs && breadcrumbs.length > 1 && <Breadcrumbs breadcrumbs={breadcrumbs} />
+              }
+            </Stream>
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-8 pt-6 text-foreground">
+              <h1 className="flex items-center gap-2 font-heading text-3xl font-medium leading-none @lg:text-4xl @2xl:text-5xl">
+                <Suspense
+                  fallback={
+                    <span className="inline-flex h-[1lh] w-[6ch] animate-pulse rounded-lg bg-contrast-100" />
+                  }
+                >
+                  {title}
+                </Suspense>
+                <Suspense
+                  fallback={
+                    <span className="inline-flex h-[1lh] w-[2ch] animate-pulse rounded-lg bg-contrast-100" />
+                  }
+                >
+                  <span className="text-contrast-300">{totalCount}</span>
+                </Suspense>
+              </h1>
+              <div className="flex gap-2">
+                <Sorting
+                  defaultValue={sortDefaultValue}
+                  label={sortLabel}
+                  options={sortOptions}
+                  paramName={sortParamName}
+                />
+                <div className="block @3xl:hidden">
+                  <MobileFilters filters={filters} label={filterLabel} />
                 </div>
               </div>
-            </Suspense>
+            </div>
           </div>
           <div className="flex items-stretch gap-8 @4xl:gap-10">
             <div className="hidden w-52 @3xl:block @4xl:w-60">
