@@ -47,7 +47,7 @@ interface Props<F extends Field> {
   quantityLabel?: string;
   incrementLabel?: string;
   decrementLabel?: string;
-  disabled?: boolean;
+  ctaDisabled?: boolean;
 }
 
 export function ProductDetailForm<F extends Field>({
@@ -58,7 +58,7 @@ export function ProductDetailForm<F extends Field>({
   quantityLabel = 'Quantity',
   incrementLabel = 'Increase quantity',
   decrementLabel = 'Decrease quantity',
-  disabled = false,
+  ctaDisabled = false,
 }: Props<F>) {
   const [params] = useQueryStates(
     fields.reduce<Record<string, typeof parseAsString>>(
@@ -130,7 +130,7 @@ export function ProductDetailForm<F extends Field>({
             <NumberInput
               aria-label={quantityLabel}
               decrementLabel={decrementLabel}
-              disabled={disabled}
+              disabled={ctaDisabled}
               incrementLabel={incrementLabel}
               min={1}
               name={formFields.quantity.name}
@@ -140,7 +140,7 @@ export function ProductDetailForm<F extends Field>({
               required
               value={quantityControl.value}
             />
-            <SubmitButton disabled={disabled}>{ctaLabel}</SubmitButton>
+            <SubmitButton disabled={ctaDisabled}>{ctaLabel}</SubmitButton>
           </div>
         </div>
       </form>
