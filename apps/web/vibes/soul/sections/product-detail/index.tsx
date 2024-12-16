@@ -27,7 +27,8 @@ interface Props<F extends Field> {
   quantityLabel?: string;
   incrementLabel?: string;
   decrementLabel?: string;
-  submitButton?: Streamable<{ label: string; disabled?: boolean }>;
+  submitButtonLabel?: Streamable<string>;
+  submitButtonDisabled?: Streamable<boolean>;
 }
 
 export function ProductDetail<F extends Field>({
@@ -38,7 +39,8 @@ export function ProductDetail<F extends Field>({
   quantityLabel,
   incrementLabel,
   decrementLabel,
-  submitButton: streamableSubmitButton,
+  submitButtonLabel: streamableSubmitButtonLabel,
+  submitButtonDisabled: streamableSubmitButtonDisabled,
 }: Props<F>) {
   return (
     <section className="@container">
@@ -99,14 +101,18 @@ export function ProductDetail<F extends Field>({
 
                   <Stream
                     fallback={<ProductDetailFormSkeleton />}
-                    value={Promise.all([streamableFields, streamableSubmitButton])}
+                    value={Promise.all([
+                      streamableFields,
+                      streamableSubmitButtonLabel,
+                      streamableSubmitButtonDisabled,
+                    ])}
                   >
-                    {([fields, submitButton]) => (
+                    {([fields, submitButtonLabel, submitButtonDisabled]) => (
                       <ProductDetailForm
                         action={action}
-                        ctaLabel={submitButton?.label}
+                        ctaLabel={submitButtonLabel}
                         decrementLabel={decrementLabel}
-                        disabled={submitButton?.disabled}
+                        disabled={submitButtonDisabled}
                         fields={fields}
                         incrementLabel={incrementLabel}
                         productId={product.id}
