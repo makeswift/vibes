@@ -56,9 +56,7 @@ export const SwatchRadioGroup = React.forwardRef<
             disabled={option.disabled}
             key={option.value}
             onMouseEnter={() => {
-              if (typeof onOptionMouseEnter === 'function') {
-                onOptionMouseEnter(option.value);
-              }
+              onOptionMouseEnter?.(option.value);
             }}
             value={option.value}
           >
