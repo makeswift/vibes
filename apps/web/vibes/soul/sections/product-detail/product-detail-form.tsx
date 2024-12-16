@@ -10,7 +10,7 @@ import {
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { parseAsString, useQueryState, useQueryStates } from 'nuqs';
+import { createSerializer, parseAsString, useQueryState, useQueryStates } from 'nuqs';
 import { ReactNode, useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
@@ -18,6 +18,7 @@ import { z } from 'zod';
 import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group';
 import { CardRadioGroup } from '@/vibes/soul/form/card-radio-group';
 import { Checkbox } from '@/vibes/soul/form/checkbox';
+import { FormStatus } from '@/vibes/soul/form/form-status';
 import { Input } from '@/vibes/soul/form/input';
 import { NumberInput } from '@/vibes/soul/form/number-input';
 import { RadioGroup } from '@/vibes/soul/form/radio-group';
@@ -25,8 +26,6 @@ import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
-
-import { FormStatus } from '../../form/form-status';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
@@ -193,11 +192,13 @@ function FormField({
 
   const handleOnOptionMouseEnter = (value: string) => {
     if (prefetch) {
-      const optionSearchParams = new URLSearchParams(searchParams.toString());
+      const optionSearchParams = new URLSearchParams(searchParams);
 
-      optionSearchParams.set(String(field.name), String(value));
+      const serialize = createSerializer({ [field.name]: parseAsString });
 
-      const newUrl = `${pathname}?${optionSearchParams.toString()}`;
+      const newUrl = serialize(`${pathname}?${optionSearchParams.toString()}`, {
+        [field.name]: value,
+      });
 
       router.prefetch(newUrl);
     }
