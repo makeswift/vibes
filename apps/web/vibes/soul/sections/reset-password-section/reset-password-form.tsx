@@ -12,7 +12,10 @@ import { schema } from './schema';
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
-export type ResetPasswordAction = Action<SubmissionResult | null, FormData>;
+export type ResetPasswordAction = Action<
+  { lastResult: SubmissionResult | null; successMessage?: string },
+  FormData
+>;
 
 interface Props {
   action: ResetPasswordAction;
@@ -27,7 +30,9 @@ export function ResetPasswordForm({
   confirmPasswordLabel = 'Confirm Password',
   submitLabel = 'Update',
 }: Props) {
-  const [lastResult, formAction, isPending] = useActionState(action, null);
+  const [{ lastResult, successMessage }, formAction, isPending] = useActionState(action, {
+    lastResult: null,
+  });
   const [form, fields] = useForm({
     lastResult,
     constraint: getZodConstraint(schema),
@@ -61,6 +66,9 @@ export function ResetPasswordForm({
           {error}
         </FormStatus>
       ))}
+      {form.status === 'success' && successMessage != null && (
+        <FormStatus>{successMessage}</FormStatus>
+      )}
     </form>
   );
 }
