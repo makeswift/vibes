@@ -36,8 +36,8 @@ export const RadioGroup = React.forwardRef<
           <RadioGroupItem
             error={errors != null && errors.length > 0}
             key={index}
-            option={option}
             onOptionMouseEnter={onOptionMouseEnter}
+            option={option}
           />
         ))}
       </RadioGroupPrimitive.Root>
@@ -71,12 +71,10 @@ function RadioGroupItem({
         )}
         disabled={option.disabled}
         id={id}
-        value={option.value}
         onMouseEnter={() => {
-          if (typeof onOptionMouseEnter === 'function') {
-            onOptionMouseEnter(option.value);
-          }
+          onOptionMouseEnter?.(option.value);
         }}
+        value={option.value}
       >
         <RadioGroupPrimitive.Indicator className="relative flex size-full items-center justify-center after:block after:size-3 after:rounded-full after:bg-foreground" />
       </RadioGroupPrimitive.Item>

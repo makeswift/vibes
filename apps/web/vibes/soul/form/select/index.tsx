@@ -70,9 +70,7 @@ export function Select({
                   className="w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors hover:bg-contrast-100 hover:text-foreground data-[state=checked]:text-foreground @4xl:text-base"
                   key={option.value}
                   onMouseEnter={() => {
-                    if (typeof onOptionMouseEnter === 'function') {
-                      onOptionMouseEnter(option.value);
-                    }
+                    onOptionMouseEnter?.(option.value);
                   }}
                   value={option.value}
                 >

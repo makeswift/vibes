@@ -47,9 +47,7 @@ export const CardRadioGroup = React.forwardRef<
             id={option.value}
             key={option.value}
             onMouseEnter={() => {
-              if (typeof onOptionMouseEnter === 'function') {
-                onOptionMouseEnter(option.value);
-              }
+              onOptionMouseEnter?.(option.value);
             }}
             value={option.value}
           >
