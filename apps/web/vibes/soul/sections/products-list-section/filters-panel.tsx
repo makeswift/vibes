@@ -6,13 +6,7 @@
 
 import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react';
-import {
-  parseAsArrayOf,
-  parseAsInteger,
-  parseAsString,
-  useQueryStates,
-  UseQueryStatesKeysMap,
-} from 'nuqs';
+import { useQueryStates } from 'nuqs';
 import { Suspense, use, useOptimistic } from 'react';
 
 import { Checkbox } from '@/vibes/soul/form/checkbox';
@@ -24,6 +18,7 @@ import { Button } from '@/vibes/soul/primitives/button';
 import { Rating } from '@/vibes/soul/primitives/rating';
 
 import { ProductListTransitionContext } from './context';
+import { getFilterParsers } from './filter-parsers';
 
 export interface ToggleGroupFilter {
   type: 'toggle-group';
@@ -87,22 +82,10 @@ export function FiltersPanelInner({
   resetFiltersLabel = 'Reset filters',
 }: Props) {
   const filters = useStreamable(streamableFilters);
-  const [params, setParams] = useQueryStates(
-    filters.reduce<UseQueryStatesKeysMap>((acc, filter) => {
-      switch (filter.type) {
-        case 'range':
-          return {
-            ...acc,
-            [filter.minParamName]: parseAsInteger,
-            [filter.maxParamName]: parseAsInteger,
-          };
-
-        default:
-          return { ...acc, [filter.paramName]: parseAsArrayOf(parseAsString) };
-      }
-    }, {}),
-    { shallow: false, history: 'push' },
-  );
+  const [params, setParams] = useQueryStates(getFilterParsers(filters), {
+    shallow: false,
+    history: 'push',
+  });
   const [, startTransition] = use(ProductListTransitionContext);
   const [optimisticParams, setOptimisticParams] = useOptimistic(params);
 
