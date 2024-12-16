@@ -10,7 +10,7 @@ import {
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
 import { parseAsString, useQueryState, useQueryStates } from 'nuqs';
-import { useActionState, useCallback, useEffect } from 'react';
+import { ReactNode, startTransition, useActionState, useCallback } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
 
@@ -32,6 +32,7 @@ type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State
 interface State<F extends Field> {
   fields: F[];
   lastResult: SubmissionResult | null;
+  successMessage?: ReactNode;
 }
 
 export type ProductDetailFormAction<F extends Field> = Action<State<F>, FormData>;
@@ -44,7 +45,6 @@ interface Props<F extends Field> {
   quantityLabel?: string;
   incrementLabel?: string;
   decrementLabel?: string;
-  successMessage?: string;
 }
 
 export function ProductDetailForm<F extends Field>({
@@ -55,7 +55,6 @@ export function ProductDetailForm<F extends Field>({
   quantityLabel = 'Quantity',
   incrementLabel = 'Increase quantity',
   decrementLabel = 'Decrease quantity',
-  successMessage = 'Product(s) succesfully added to cart!',
 }: Props<F>) {
   const [params] = useQueryStates(
     fields.reduce<Record<string, typeof parseAsString>>(
@@ -82,12 +81,6 @@ export function ProductDetailForm<F extends Field>({
     lastResult: null,
   });
 
-  useEffect(() => {
-    if (lastResult?.status === 'success') {
-      toast.success(successMessage);
-    }
-  }, [lastResult, successMessage]);
-
   const [form, formFields] = useForm({
     lastResult,
     constraint: getZodConstraint(schema(fields)),
@@ -98,6 +91,22 @@ export function ProductDetailForm<F extends Field>({
     defaultValue,
     shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',
+    onSubmit(event, { formData }) {
+      // prevent `formAction` from being called, we'll call `action` ourselves
+      event.preventDefault();
+
+      startTransition(async () => {
+        const payload = await action({ fields, lastResult }, formData);
+
+        if (payload.lastResult?.status === 'success') {
+          toast.success(payload.successMessage);
+        }
+
+        if (payload.lastResult?.status === 'error') {
+          toast.error(payload.lastResult.error?.['']);
+        }
+      });
+    },
   });
 
   const quantityControl = useInputControl(formFields.quantity);

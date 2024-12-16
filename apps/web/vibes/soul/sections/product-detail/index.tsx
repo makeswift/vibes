@@ -28,7 +28,6 @@ interface Props<F extends Field> {
   quantityLabel?: string;
   incrementLabel?: string;
   decrementLabel?: string;
-  successMessage?: string;
 }
 
 export function ProductDetail<F extends Field>({
@@ -40,7 +39,6 @@ export function ProductDetail<F extends Field>({
   quantityLabel,
   incrementLabel,
   decrementLabel,
-  successMessage,
 }: Props<F>) {
   return (
     <section className="@container">
@@ -109,7 +107,6 @@ export function ProductDetail<F extends Field>({
                         incrementLabel={incrementLabel}
                         productId={product.id}
                         quantityLabel={quantityLabel}
-                        successMessage={successMessage}
                       />
                     )}
                   </Stream>

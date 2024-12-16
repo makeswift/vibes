@@ -107,5 +107,6 @@ export async function action(
   return {
     fields: prevState.fields,
     lastResult: submission.reply({}),
+    successMessage: 'Product(s) added to cart!',
   };
 }
