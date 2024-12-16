@@ -130,7 +130,6 @@ export function ProductDetailForm<F extends Field>({
             <NumberInput
               aria-label={quantityLabel}
               decrementLabel={decrementLabel}
-              disabled={ctaDisabled}
               incrementLabel={incrementLabel}
               min={1}
               name={formFields.quantity.name}
