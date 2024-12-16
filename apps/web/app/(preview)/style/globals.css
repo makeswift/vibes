@@ -59,6 +59,20 @@
     --card-dark-text: hsl(var(--background));
     --card-dark-icon: hsl(var(--background));
     --card-dark-background: hsl(var(--contrast-500));
+
+    --slideshow-focus: hsl(var(--primary));
+    --slideshow-mask: hsl(var(--foreground) / 80%);
+    --slideshow-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
+    --slideshow-title: hsl(var(--background));
+    --slideshow-title-font-family: var(--font-family-heading);
+    --slideshow-description: hsl(var(--background) / 80%);
+    --slideshow-description-font-family: var(--font-family-body);
+    --slideshow-pagination: hsl(var(--background));
+    --slideshow-play-border: hsl(var(--contrast-300) / 50%);
+    --slideshow-play-border-hover: hsl(var(--contrast-300) / 80%);
+    --slideshow-play-text: hsl(var(--background));
+    --slideshow-number: hsl(var(--background));
+    --slideshow-number-font-family: var(--font-family-mono);
   }
   * {
     @apply antialiased;
