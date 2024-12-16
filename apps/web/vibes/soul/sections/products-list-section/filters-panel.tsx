@@ -6,13 +6,7 @@
 
 import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react';
-import {
-  parseAsArrayOf,
-  parseAsInteger,
-  parseAsString,
-  useQueryStates,
-  UseQueryStatesKeysMap,
-} from 'nuqs';
+import { useQueryStates } from 'nuqs';
 import { Suspense, use, useOptimistic } from 'react';
 
 import { Checkbox } from '@/vibes/soul/form/checkbox';
@@ -24,18 +18,20 @@ import { Button } from '@/vibes/soul/primitives/button';
 import { Rating } from '@/vibes/soul/primitives/rating';
 
 import { ProductListTransitionContext } from './context';
+import { getFilterParsers } from './filter-parsers';
 
 export interface ToggleGroupFilter {
   type: 'toggle-group';
   paramName: string;
   label: string;
-  options: Array<{ label: string; value: string }>;
+  options: Array<{ label: string; value: string; disabled?: boolean }>;
 }
 
 export interface RatingFilter {
   type: 'rating';
   paramName: string;
   label: string;
+  disabled?: boolean;
 }
 
 export interface RangeFilter {
@@ -51,6 +47,7 @@ export interface RangeFilter {
   maxPrepend?: React.ReactNode;
   minPlaceholder?: string;
   maxPlaceholder?: string;
+  disabled?: boolean;
 }
 
 export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter;
@@ -85,22 +82,10 @@ export function FiltersPanelInner({
   resetFiltersLabel = 'Reset filters',
 }: Props) {
   const filters = useStreamable(streamableFilters);
-  const [params, setParams] = useQueryStates(
-    filters.reduce<UseQueryStatesKeysMap>((acc, filter) => {
-      switch (filter.type) {
-        case 'range':
-          return {
-            ...acc,
-            [filter.minParamName]: parseAsInteger,
-            [filter.maxParamName]: parseAsInteger,
-          };
-
-        default:
-          return { ...acc, [filter.paramName]: parseAsArrayOf(parseAsString) };
-      }
-    }, {}),
-    { shallow: false, history: 'push' },
-  );
+  const [params, setParams] = useQueryStates(getFilterParsers(filters), {
+    shallow: false,
+    history: 'push',
+  });
   const [, startTransition] = use(ProductListTransitionContext);
   const [optimisticParams, setOptimisticParams] = useOptimistic(params);
 
@@ -121,7 +106,10 @@ export function FiltersPanelInner({
                   <ToggleGroup
                     onValueChange={(value) => {
                       startTransition(async () => {
-                        const nextParams = { ...optimisticParams, [filter.paramName]: value };
+                        const nextParams = {
+                          ...optimisticParams,
+                          [filter.paramName]: value.length === 0 ? null : value,
+                        };
 
                         setOptimisticParams(nextParams);
                         await setParams(nextParams);
@@ -139,6 +127,7 @@ export function FiltersPanelInner({
                 <Accordion key={index} title={filter.label} value={index.toString()}>
                   <div className="flex items-center gap-2">
                     <RangeInput
+                      disabled={filter.disabled}
                       max={filter.max}
                       maxLabel={filter.maxLabel}
                       maxName={filter.minParamName}
@@ -171,6 +160,7 @@ export function FiltersPanelInner({
                     <Button
                       className="shrink-0"
                       disabled={
+                        filter.disabled === true ||
                         !(
                           optimisticParams[filter.minParamName] !==
                           optimisticParams[filter.maxParamName]
@@ -207,6 +197,7 @@ export function FiltersPanelInner({
                         checked={
                           optimisticParams[filter.paramName]?.includes(rating.toString()) ?? false
                         }
+                        disabled={filter.disabled}
                         key={rating}
                         label={<Rating rating={rating} showRating={false} />}
                         onCheckedChange={(value) =>
