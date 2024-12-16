@@ -10,7 +10,7 @@ import {
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
 import { parseAsString, useQueryState, useQueryStates } from 'nuqs';
-import { ReactNode, startTransition, useActionState, useCallback } from 'react';
+import { ReactNode, useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
 
@@ -24,6 +24,8 @@ import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
+
+import { FormStatus } from '../../form/form-status';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
@@ -76,10 +78,16 @@ export function ProductDetailForm<F extends Field>({
     { quantity: 1 },
   );
 
-  const [{ lastResult }, formAction] = useActionState(action, {
+  const [{ lastResult, successMessage }, formAction] = useActionState(action, {
     fields,
     lastResult: null,
   });
+
+  useEffect(() => {
+    if (lastResult?.status === 'success') {
+      toast.success(successMessage);
+    }
+  }, [lastResult, successMessage]);
 
   const [form, formFields] = useForm({
     lastResult,
@@ -91,22 +99,6 @@ export function ProductDetailForm<F extends Field>({
     defaultValue,
     shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',
-    onSubmit(event, { formData }) {
-      // prevent `formAction` from being called, we'll call `action` ourselves
-      event.preventDefault();
-
-      startTransition(async () => {
-        const payload = await action({ fields, lastResult }, formData);
-
-        if (payload.lastResult?.status === 'success') {
-          toast.success(payload.successMessage);
-        }
-
-        if (payload.lastResult?.status === 'error') {
-          toast.error(payload.lastResult.error?.['']);
-        }
-      });
-    },
   });
 
   const quantityControl = useInputControl(formFields.quantity);
@@ -127,6 +119,11 @@ export function ProductDetailForm<F extends Field>({
               />
             );
           })}
+          {form.errors?.map((error, index) => (
+            <FormStatus className="pt-3" key={index} type="error">
+              {error}
+            </FormStatus>
+          ))}
           <div className="flex gap-x-3 pt-3">
             <NumberInput
               aria-label={quantityLabel}
