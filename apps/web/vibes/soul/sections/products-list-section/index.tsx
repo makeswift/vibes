@@ -16,7 +16,7 @@ import { ProductListContainer } from './product-list-container';
 import { Sorting, Option as SortOption } from './sorting';
 
 interface Props {
-  breadcrumbs?: Breadcrumb[];
+  breadcrumbs?: Streamable<Breadcrumb[] | null>;
   title?: Streamable<string | null>;
   totalCount: Streamable<number>;
   products: Streamable<ListProduct[]>;
@@ -28,7 +28,7 @@ interface Props {
   compareLabel?: string;
   filterLabel?: string;
   resetFiltersLabel?: string;
-  sortLabel?: string;
+  sortLabel?: Streamable<string | null>;
   sortParamName?: string;
   sortDefaultValue?: string;
   compareParamName?: string;
