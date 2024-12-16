@@ -19,6 +19,7 @@ interface Props {
   onMaxValueChange?: (value: number) => void;
   minStep?: number;
   maxStep?: number;
+  disabled?: boolean;
 }
 
 const clamp = (value: number, min = -Infinity, max = Infinity) =>
@@ -41,11 +42,13 @@ export function RangeInput({
   onMaxValueChange,
   minStep,
   maxStep,
+  disabled,
 }: Props) {
   return (
     <div className="flex w-full items-center gap-2">
       <Input
         className="flex-1"
+        disabled={disabled}
         label={minLabel}
         max={maxValue ?? max}
         min={min}
@@ -66,6 +69,7 @@ export function RangeInput({
       />
       <Input
         className="flex-1"
+        disabled={disabled}
         label={maxLabel}
         max={max}
         min={minValue ?? min}

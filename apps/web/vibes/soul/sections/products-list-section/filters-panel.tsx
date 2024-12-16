@@ -29,13 +29,14 @@ export interface ToggleGroupFilter {
   type: 'toggle-group';
   paramName: string;
   label: string;
-  options: Array<{ label: string; value: string }>;
+  options: Array<{ label: string; value: string; disabled?: boolean }>;
 }
 
 export interface RatingFilter {
   type: 'rating';
   paramName: string;
   label: string;
+  disabled?: boolean;
 }
 
 export interface RangeFilter {
@@ -51,6 +52,7 @@ export interface RangeFilter {
   maxPrepend?: React.ReactNode;
   minPlaceholder?: string;
   maxPlaceholder?: string;
+  disabled?: boolean;
 }
 
 export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter;
@@ -139,6 +141,7 @@ export function FiltersPanelInner({
                 <Accordion key={index} title={filter.label} value={index.toString()}>
                   <div className="flex items-center gap-2">
                     <RangeInput
+                      disabled={filter.disabled}
                       max={filter.max}
                       maxLabel={filter.maxLabel}
                       maxName={filter.minParamName}
@@ -171,6 +174,7 @@ export function FiltersPanelInner({
                     <Button
                       className="shrink-0"
                       disabled={
+                        filter.disabled === true ||
                         !(
                           optimisticParams[filter.minParamName] !==
                           optimisticParams[filter.maxParamName]
@@ -207,6 +211,7 @@ export function FiltersPanelInner({
                         checked={
                           optimisticParams[filter.paramName]?.includes(rating.toString()) ?? false
                         }
+                        disabled={filter.disabled}
                         key={rating}
                         label={<Rating rating={rating} showRating={false} />}
                         onCheckedChange={(value) =>
