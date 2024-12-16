@@ -123,7 +123,10 @@ export function FiltersPanelInner({
                   <ToggleGroup
                     onValueChange={(value) => {
                       startTransition(async () => {
-                        const nextParams = { ...optimisticParams, [filter.paramName]: value };
+                        const nextParams = {
+                          ...optimisticParams,
+                          [filter.paramName]: value.length === 0 ? null : value,
+                        };
 
                         setOptimisticParams(nextParams);
                         await setParams(nextParams);
