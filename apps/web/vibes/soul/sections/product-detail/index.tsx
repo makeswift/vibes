@@ -24,10 +24,11 @@ interface Props<F extends Field> {
   product: Streamable<ProductDetailProduct | null>;
   action: ProductDetailFormAction<F>;
   fields: Streamable<F[]>;
-  ctaLabel?: string;
   quantityLabel?: string;
   incrementLabel?: string;
   decrementLabel?: string;
+  ctaLabel?: Streamable<string | null>;
+  ctaDisabled?: Streamable<boolean | null>;
 }
 
 export function ProductDetail<F extends Field>({
@@ -35,10 +36,11 @@ export function ProductDetail<F extends Field>({
   action,
   fields: streamableFields,
   breadcrumbs: streamableBreadcrumbs,
-  ctaLabel,
   quantityLabel,
   incrementLabel,
   decrementLabel,
+  ctaLabel: streamableCtaLabel,
+  ctaDisabled: streamableCtaDisabled,
 }: Props<F>) {
   return (
     <section className="@container">
@@ -97,12 +99,20 @@ export function ProductDetail<F extends Field>({
                     }
                   </Stream>
 
-                  <Stream fallback={<ProductDetailFormSkeleton />} value={streamableFields}>
-                    {(fields) => (
+                  <Stream
+                    fallback={<ProductDetailFormSkeleton />}
+                    value={Promise.all([
+                      streamableFields,
+                      streamableCtaLabel,
+                      streamableCtaDisabled,
+                    ])}
+                  >
+                    {([fields, ctaLabel, ctaDisabled]) => (
                       <ProductDetailForm
                         action={action}
-                        ctaLabel={ctaLabel}
+                        ctaLabel={ctaLabel ?? undefined}
                         decrementLabel={decrementLabel}
+                        ctaDisabled={ctaDisabled ?? undefined}
                         fields={fields}
                         incrementLabel={incrementLabel}
                         productId={product.id}

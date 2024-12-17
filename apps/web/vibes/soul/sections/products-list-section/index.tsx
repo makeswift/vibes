@@ -1,17 +1,19 @@
+import { Sliders } from 'lucide-react';
 import { Suspense } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Breadcrumb, Breadcrumbs, BreadcrumbsSkeleton } from '@/vibes/soul/primitives/breadcrumbs';
+import { Button } from '@/vibes/soul/primitives/button';
 import {
   CursorPagination,
   CursorPaginationInfo,
   CursorPaginationSkeleton,
 } from '@/vibes/soul/primitives/cursor-pagination';
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
+import * as SidePanel from '@/vibes/soul/primitives/side-panel';
 
 import { ProductListTransitionProvider } from './context';
 import { Filter, FiltersPanel } from './filters-panel';
-import { MobileFilters } from './mobile-filters';
 import { ProductListContainer } from './product-list-container';
 import { Sorting, Option as SortOption } from './sorting';
 
@@ -49,7 +51,7 @@ export function ProductsListSection({
   compareAction,
   compareLabel,
   paginationInfo,
-  filterLabel,
+  filterLabel = 'Filters',
   resetFiltersLabel,
   sortLabel,
   sortParamName,
@@ -93,7 +95,25 @@ export function ProductsListSection({
                   paramName={sortParamName}
                 />
                 <div className="block @3xl:hidden">
-                  <MobileFilters filters={filters} label={filterLabel} />
+                  <SidePanel.Root>
+                    <SidePanel.Trigger asChild>
+                      <Button size="medium" variant="secondary">
+                        {filterLabel}
+                        <span className="hidden @xl:block">
+                          <Sliders size={20} />
+                        </span>
+                      </Button>
+                    </SidePanel.Trigger>
+                    <SidePanel.Content title={filterLabel}>
+                      <Suspense>
+                        <FiltersPanel
+                          filters={filters}
+                          paginationInfo={paginationInfo}
+                          resetFiltersLabel={resetFiltersLabel}
+                        />
+                      </Suspense>
+                    </SidePanel.Content>
+                  </SidePanel.Root>
                 </div>
               </div>
             </div>
@@ -103,6 +123,7 @@ export function ProductsListSection({
               <FiltersPanel
                 className="sticky top-4"
                 filters={filters}
+                paginationInfo={paginationInfo}
                 resetFiltersLabel={resetFiltersLabel}
               />
             </div>

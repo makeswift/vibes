@@ -132,7 +132,6 @@ export const sections = [
     files: [
       'sections/products-list-section/index.tsx',
       'sections/products-list-section/filters-panel.tsx',
-      'sections/products-list-section/mobile-filters.tsx',
       'sections/products-list-section/sorting.tsx',
     ],
   },
