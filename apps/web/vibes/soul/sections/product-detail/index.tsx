@@ -133,99 +133,113 @@ export function ProductDetail<F extends Field>({
   );
 }
 
-const ImageSkeleton = () => (
-  <div className="aspect-[4/5] h-full w-full shrink-0 grow-0 basis-full animate-pulse bg-contrast-100" />
-);
+function ImageSkeleton() {
+  return (
+    <div className="aspect-[4/5] h-full w-full shrink-0 grow-0 basis-full animate-pulse bg-contrast-100" />
+  );
+}
 
-const ThumbnailsSkeleton = () => (
-  <>
-    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
-    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
-    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
-    <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
-  </>
-);
+function ThumbnailsSkeleton() {
+  return (
+    <>
+      <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
+      <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
+      <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
+      <div className="h-12 w-12 shrink-0 animate-pulse rounded-lg bg-contrast-100 @md:h-16 @md:w-16" />
+    </>
+  );
+}
 
-const ProductGallerySkeleton = () => (
-  <div className={'@container'}>
-    <div className="w-full overflow-hidden rounded-xl @xl:rounded-2xl">
-      <div className="flex">
-        <ImageSkeleton />
+function ProductGallerySkeleton() {
+  return (
+    <div className={'@container'}>
+      <div className="w-full overflow-hidden rounded-xl @xl:rounded-2xl">
+        <div className="flex">
+          <ImageSkeleton />
+        </div>
+      </div>
+
+      <div className="mt-2 flex max-w-full gap-2 overflow-x-auto">
+        <ThumbnailsSkeleton />
       </div>
     </div>
+  );
+}
 
-    <div className="mt-2 flex max-w-full gap-2 overflow-x-auto">
-      <ThumbnailsSkeleton />
+function PriceLabelSkeleton() {
+  return <div className="my-4 h-4 w-20 animate-pulse rounded-md bg-contrast-100" />;
+}
+
+function RatingSkeleton() {
+  return (
+    <div className="flex w-[136px] animate-pulse items-center gap-1">
+      <div className="h-4 w-[100px] rounded-md bg-contrast-100" />
+      <div className="h-6 w-8 rounded-xl bg-contrast-100" />
     </div>
-  </div>
-);
+  );
+}
 
-const PriceLabelSkeleton = () => (
-  <div className="my-4 h-4 w-20 animate-pulse rounded-md bg-contrast-100" />
-);
+function ProductDescriptionSkeleton() {
+  return (
+    <div className="flex w-full animate-pulse flex-col gap-3.5 pb-6">
+      <div className="h-2.5 w-full bg-contrast-100" />
+      <div className="h-2.5 w-full bg-contrast-100" />
+      <div className="h-2.5 w-3/4 bg-contrast-100" />
+    </div>
+  );
+}
 
-const RatingSkeleton = () => (
-  <div className="flex w-[136px] animate-pulse items-center gap-1">
-    <div className="h-4 w-[100px] rounded-md bg-contrast-100" />
-    <div className="h-6 w-8 rounded-xl bg-contrast-100" />
-  </div>
-);
-
-const ProductDescriptionSkeleton = () => (
-  <div className="flex w-full animate-pulse flex-col gap-3.5 pb-6">
-    <div className="h-2.5 w-full bg-contrast-100" />
-    <div className="h-2.5 w-full bg-contrast-100" />
-    <div className="h-2.5 w-3/4 bg-contrast-100" />
-  </div>
-);
-
-const ProductDetailFormSkeleton = () => (
-  <div className="flex animate-pulse flex-col gap-8">
-    <div className="flex flex-col gap-5">
-      <div className="h-2 w-10 rounded-md bg-contrast-100" />
+function ProductDetailFormSkeleton() {
+  return (
+    <div className="flex animate-pulse flex-col gap-8">
+      <div className="flex flex-col gap-5">
+        <div className="h-2 w-10 rounded-md bg-contrast-100" />
+        <div className="flex gap-2">
+          <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
+          <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
+          <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-5">
+        <div className="h-2 w-16 rounded-md bg-contrast-100" />
+        <div className="flex gap-4">
+          <div className="h-10 w-10 rounded-full bg-contrast-100" />
+          <div className="h-10 w-10 rounded-full bg-contrast-100" />
+          <div className="h-10 w-10 rounded-full bg-contrast-100" />
+          <div className="h-10 w-10 rounded-full bg-contrast-100" />
+          <div className="h-10 w-10 rounded-full bg-contrast-100" />
+        </div>
+      </div>
       <div className="flex gap-2">
-        <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
-        <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
-        <div className="h-11 w-[72px] rounded-full bg-contrast-100" />
+        <div className="h-12 w-[120px] rounded-lg bg-contrast-100" />
+        <div className="h-12 w-[216px] rounded-full bg-contrast-100" />
       </div>
     </div>
-    <div className="flex flex-col gap-5">
-      <div className="h-2 w-16 rounded-md bg-contrast-100" />
-      <div className="flex gap-4">
-        <div className="h-10 w-10 rounded-full bg-contrast-100" />
-        <div className="h-10 w-10 rounded-full bg-contrast-100" />
-        <div className="h-10 w-10 rounded-full bg-contrast-100" />
-        <div className="h-10 w-10 rounded-full bg-contrast-100" />
-        <div className="h-10 w-10 rounded-full bg-contrast-100" />
-      </div>
-    </div>
-    <div className="flex gap-2">
-      <div className="h-12 w-[120px] rounded-lg bg-contrast-100" />
-      <div className="h-12 w-[216px] rounded-full bg-contrast-100" />
-    </div>
-  </div>
-);
+  );
+}
 
-const ProductDetailSkeleton = () => (
-  <div className="grid animate-pulse grid-cols-1 items-stretch gap-x-6 gap-y-8 @2xl:grid-cols-2 @5xl:gap-x-12">
-    <div className="hidden @2xl:block">
-      <ProductGallerySkeleton />
-    </div>
-
-    <div>
-      <div className="mb-6 h-4 w-20 rounded-lg bg-contrast-100" />
-
-      <div className="mb-6 h-6 w-72 rounded-lg bg-contrast-100" />
-
-      <RatingSkeleton />
-
-      <PriceLabelSkeleton />
-
-      <div className="mb-8 @2xl:hidden">
+function ProductDetailSkeleton() {
+  return (
+    <div className="grid animate-pulse grid-cols-1 items-stretch gap-x-6 gap-y-8 @2xl:grid-cols-2 @5xl:gap-x-12">
+      <div className="hidden @2xl:block">
         <ProductGallerySkeleton />
       </div>
 
-      <ProductDetailFormSkeleton />
+      <div>
+        <div className="mb-6 h-4 w-20 rounded-lg bg-contrast-100" />
+
+        <div className="mb-6 h-6 w-72 rounded-lg bg-contrast-100" />
+
+        <RatingSkeleton />
+
+        <PriceLabelSkeleton />
+
+        <div className="mb-8 @2xl:hidden">
+          <ProductGallerySkeleton />
+        </div>
+
+        <ProductDetailFormSkeleton />
+      </div>
     </div>
-  </div>
-);
+  );
+}
