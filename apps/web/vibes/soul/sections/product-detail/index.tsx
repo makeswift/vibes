@@ -112,9 +112,9 @@ export function ProductDetail<F extends Field>({
                     {([fields, ctaLabel, ctaDisabled]) => (
                       <ProductDetailForm
                         action={action}
+                        ctaDisabled={ctaDisabled ?? undefined}
                         ctaLabel={ctaLabel ?? undefined}
                         decrementLabel={decrementLabel}
-                        ctaDisabled={ctaDisabled ?? undefined}
                         fields={fields}
                         incrementLabel={incrementLabel}
                         prefetch={prefetch}
