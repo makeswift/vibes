@@ -7,11 +7,14 @@ import { Button } from '@/vibes/soul/primitives/button';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
 import * as SidePanel from '@/vibes/soul/primitives/side-panel';
-
-import { ProductListTransitionProvider } from './context';
-import { Filter, FiltersPanel } from './filters-panel';
-import { ProductListContainer } from './product-list-container';
-import { Sorting, Option as SortOption } from './sorting';
+import { ProductListTransitionProvider } from '@/vibes/soul/sections/products-list-section/context';
+import { Filter, FiltersPanel } from '@/vibes/soul/sections/products-list-section/filters-panel';
+import { ProductListContainer } from '@/vibes/soul/sections/products-list-section/product-list-container';
+import {
+  Sorting,
+  SortingSkeleton,
+  Option as SortOption,
+} from '@/vibes/soul/sections/products-list-section/sorting';
 
 interface Props {
   breadcrumbs?: Streamable<Breadcrumb[]>;
@@ -27,6 +30,7 @@ interface Props {
   filterLabel?: string;
   resetFiltersLabel?: string;
   sortLabel?: Streamable<string | null>;
+  sortPlaceholder?: Streamable<string | null>;
   sortParamName?: string;
   sortDefaultValue?: string;
   compareParamName?: string;
@@ -41,7 +45,7 @@ export function ProductsListSection({
   totalCount,
   products,
   compareProducts,
-  sortOptions,
+  sortOptions: streamableSortOptions,
   sortDefaultValue,
   filters,
   compareAction,
@@ -49,7 +53,8 @@ export function ProductsListSection({
   paginationInfo,
   filterLabel = 'Filters',
   resetFiltersLabel,
-  sortLabel,
+  sortLabel: streamableSortLabel,
+  sortPlaceholder: streamableSortPlaceholder,
   sortParamName,
   compareParamName,
   emptyStateSubtitle,
@@ -84,12 +89,24 @@ export function ProductsListSection({
                 </Suspense>
               </h1>
               <div className="flex gap-2">
-                <Sorting
-                  defaultValue={sortDefaultValue}
-                  label={sortLabel}
-                  options={sortOptions}
-                  paramName={sortParamName}
-                />
+                <Stream
+                  fallback={<SortingSkeleton />}
+                  value={Promise.all([
+                    streamableSortLabel,
+                    streamableSortOptions,
+                    streamableSortPlaceholder,
+                  ])}
+                >
+                  {([label, options, placeholder]) => (
+                    <Sorting
+                      defaultValue={sortDefaultValue}
+                      label={label}
+                      options={options}
+                      paramName={sortParamName}
+                      placeholder={placeholder}
+                    />
+                  )}
+                </Stream>
                 <div className="block @3xl:hidden">
                   <SidePanel.Root>
                     <SidePanel.Trigger asChild>
