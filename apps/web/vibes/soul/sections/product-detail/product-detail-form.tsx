@@ -206,7 +206,9 @@ function FormField({
     case 'number':
       return (
         <NumberInput
+          decrementLabel={field.decrementLabel}
           errors={formField.errors}
+          incrementLabel={field.incrementLabel}
           key={formField.id}
           label={field.label}
           name={formField.name}

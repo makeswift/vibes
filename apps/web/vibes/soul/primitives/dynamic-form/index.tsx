@@ -173,7 +173,9 @@ function DynamicFormField({
       return (
         <NumberInput
           {...getInputProps(formField, { type: 'number' })}
+          decrementLabel={field.decrementLabel}
           errors={formField.errors}
+          incrementLabel={field.incrementLabel}
           key={field.name}
           label={field.label}
         />
