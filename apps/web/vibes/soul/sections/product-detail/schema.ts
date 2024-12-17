@@ -29,6 +29,8 @@ type NumberInputField = {
   defaultValue?: string;
   min?: number;
   max?: number;
+  incrementLabel?: string;
+  decrementLabel?: string;
 } & FormField;
 
 type TextInputField = {
