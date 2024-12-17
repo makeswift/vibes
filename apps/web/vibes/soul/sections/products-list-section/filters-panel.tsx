@@ -6,15 +6,16 @@
 
 import { clsx } from 'clsx';
 import { ArrowRight } from 'lucide-react';
-import { useQueryStates } from 'nuqs';
+import { parseAsString, useQueryStates } from 'nuqs';
 import { Suspense, use, useOptimistic } from 'react';
 
 import { Checkbox } from '@/vibes/soul/form/checkbox';
 import { RangeInput } from '@/vibes/soul/form/range-input';
 import { ToggleGroup } from '@/vibes/soul/form/toggle-group';
-import { useStreamable } from '@/vibes/soul/lib/streamable';
+import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable';
 import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';
 import { Button } from '@/vibes/soul/primitives/button';
+import { CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { Rating } from '@/vibes/soul/primitives/rating';
 
 import { ProductListTransitionContext } from './context';
@@ -56,6 +57,7 @@ interface Props {
   className?: string;
   filters: Filter[] | Promise<Filter[]>;
   resetFiltersLabel?: string;
+  paginationInfo?: Streamable<CursorPaginationInfo | null>;
 }
 
 function getParamCountLabel(params: Record<string, string | null | string[]>, key: string) {
@@ -80,12 +82,23 @@ export function FiltersPanelInner({
   className,
   filters: streamableFilters,
   resetFiltersLabel = 'Reset filters',
+  paginationInfo: streamablePaginationInfo,
 }: Props) {
   const filters = useStreamable(streamableFilters);
-  const [params, setParams] = useQueryStates(getFilterParsers(filters), {
-    shallow: false,
-    history: 'push',
-  });
+  const paginationInfo = useStreamable(streamablePaginationInfo);
+  const startCursorParamName = paginationInfo?.startCursorParamName ?? 'before';
+  const endCursorParamName = paginationInfo?.endCursorParamName ?? 'after';
+  const [params, setParams] = useQueryStates(
+    {
+      ...getFilterParsers(filters),
+      [startCursorParamName]: parseAsString,
+      [endCursorParamName]: parseAsString,
+    },
+    {
+      shallow: false,
+      history: 'push',
+    },
+  );
   const [, startTransition] = use(ProductListTransitionContext);
   const [optimisticParams, setOptimisticParams] = useOptimistic(params);
 
@@ -108,6 +121,8 @@ export function FiltersPanelInner({
                       startTransition(async () => {
                         const nextParams = {
                           ...optimisticParams,
+                          [startCursorParamName]: null,
+                          [endCursorParamName]: null,
                           [filter.paramName]: value.length === 0 ? null : value,
                         };
 
@@ -142,7 +157,12 @@ export function FiltersPanelInner({
                       minValue={optimisticParams[filter.minParamName] ?? null}
                       onMaxValueChange={(value) => {
                         startTransition(async () => {
-                          const nextParams = { ...optimisticParams, [filter.maxParamName]: value };
+                          const nextParams = {
+                            ...optimisticParams,
+                            [filter.maxParamName]: value,
+                            [startCursorParamName]: null,
+                            [endCursorParamName]: null,
+                          };
 
                           setOptimisticParams(nextParams);
                           await setParams(nextParams);
@@ -150,7 +170,12 @@ export function FiltersPanelInner({
                       }}
                       onMinValueChange={(value) => {
                         startTransition(async () => {
-                          const nextParams = { ...optimisticParams, [filter.minParamName]: value };
+                          const nextParams = {
+                            ...optimisticParams,
+                            [filter.minParamName]: value,
+                            [startCursorParamName]: null,
+                            [endCursorParamName]: null,
+                          };
 
                           setOptimisticParams(nextParams);
                           await setParams(nextParams);
@@ -172,6 +197,8 @@ export function FiltersPanelInner({
                             ...optimisticParams,
                             [filter.minParamName]: optimisticParams[filter.minParamName],
                             [filter.maxParamName]: optimisticParams[filter.maxParamName],
+                            [startCursorParamName]: null,
+                            [endCursorParamName]: null,
                           };
 
                           setOptimisticParams(nextParams);
@@ -210,6 +237,8 @@ export function FiltersPanelInner({
                             const nextParams = {
                               ...optimisticParams,
                               [filter.paramName]: Array.from(ratings),
+                              [startCursorParamName]: null,
+                              [endCursorParamName]: null,
                             };
 
                             setOptimisticParams(nextParams);
@@ -231,8 +260,14 @@ export function FiltersPanelInner({
       <Button
         onClick={() => {
           startTransition(async () => {
-            setOptimisticParams({});
-            await setParams(null);
+            const nextParams = {
+              ...Object.fromEntries(Object.entries(optimisticParams).map(([key]) => [key, null])),
+              [startCursorParamName]: optimisticParams[startCursorParamName],
+              [endCursorParamName]: optimisticParams[endCursorParamName],
+            };
+
+            setOptimisticParams(nextParams);
+            await setParams(nextParams);
           });
         }}
         size="small"

@@ -106,7 +106,11 @@ export function ProductsListSection({
                     </SidePanel.Trigger>
                     <SidePanel.Content title={filterLabel}>
                       <Suspense>
-                        <FiltersPanel filters={filters} resetFiltersLabel={resetFiltersLabel} />
+                        <FiltersPanel
+                          filters={filters}
+                          paginationInfo={paginationInfo}
+                          resetFiltersLabel={resetFiltersLabel}
+                        />
                       </Suspense>
                     </SidePanel.Content>
                   </SidePanel.Root>
@@ -119,6 +123,7 @@ export function ProductsListSection({
               <FiltersPanel
                 className="sticky top-4"
                 filters={filters}
+                paginationInfo={paginationInfo}
                 resetFiltersLabel={resetFiltersLabel}
               />
             </div>
