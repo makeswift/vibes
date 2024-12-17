@@ -17,7 +17,16 @@ export const NumberInput = React.forwardRef<
   }
 >(
   (
-    { label, className, required, errors, decrementLabel, incrementLabel, disabled, ...rest },
+    {
+      label,
+      className,
+      required,
+      errors,
+      decrementLabel,
+      incrementLabel,
+      disabled = false,
+      ...rest
+    },
     ref,
   ) => {
     const id = React.useId();
@@ -30,8 +39,8 @@ export const NumberInput = React.forwardRef<
             aria-label={decrementLabel}
             className={clsx(
               'group rounded-l-lg p-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
-              disabled === false && 'hover:bg-contrast-100/50',
-              disabled === true && 'cursor-not-allowed opacity-30',
+              !disabled && 'hover:bg-contrast-100/50',
+              disabled && 'cursor-not-allowed opacity-30',
             )}
             disabled={disabled}
             onClick={(e) => {
@@ -46,7 +55,7 @@ export const NumberInput = React.forwardRef<
             <Minus
               className={clsx(
                 'text-contrast-300 transition-colors duration-300',
-                disabled === false && 'group-hover:text-foreground',
+                !disabled && 'group-hover:text-foreground',
               )}
               size={18}
               strokeWidth={1.5}
@@ -56,7 +65,7 @@ export const NumberInput = React.forwardRef<
             {...rest}
             className={clsx(
               'w-8 flex-1 select-none justify-center text-center [appearance:textfield] focus-visible:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
-              disabled === true && 'cursor-not-allowed opacity-30',
+              disabled && 'cursor-not-allowed opacity-30',
             )}
             disabled={disabled}
             id={id}
@@ -67,8 +76,8 @@ export const NumberInput = React.forwardRef<
             aria-label={incrementLabel}
             className={clsx(
               'group rounded-r-lg p-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
-              disabled === false && 'hover:bg-contrast-100/50',
-              disabled === true && 'cursor-not-allowed opacity-30',
+              !disabled && 'hover:bg-contrast-100/50',
+              disabled && 'cursor-not-allowed opacity-30',
             )}
             disabled={disabled}
             onClick={(e) => {
@@ -83,7 +92,7 @@ export const NumberInput = React.forwardRef<
             <Plus
               className={clsx(
                 'text-contrast-300 transition-colors duration-300',
-                disabled === false && 'group-hover:text-foreground',
+                !disabled && 'group-hover:text-foreground',
               )}
               size={18}
               strokeWidth={1.5}
