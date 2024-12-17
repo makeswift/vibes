@@ -1,4 +1,6 @@
 import './style/globals.css';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+
 import { Toaster } from '@/vibes/soul/primitives/toaster';
 
 import { ZoomListener } from '../zoom-listener';
@@ -18,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         We want to make it so that each vibe has its own preview 
         layout. */}
         <Toaster position="top-right" />
-        {children}
+        <NuqsAdapter>{children}</NuqsAdapter>
       </body>
     </html>
   );
