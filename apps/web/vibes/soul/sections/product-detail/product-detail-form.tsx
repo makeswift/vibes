@@ -9,7 +9,7 @@ import {
   useInputControl,
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { createSerializer, parseAsString, useQueryState, useQueryStates } from 'nuqs';
 import { ReactNode, useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
@@ -62,15 +62,27 @@ export function ProductDetailForm<F extends Field>({
   ctaDisabled = false,
   prefetch = false,
 }: Props<F>) {
-  const [params] = useQueryStates(
-    fields.reduce<Record<string, typeof parseAsString>>(
-      (acc, field) => {
-        return { ...acc, [field.name]: parseAsString };
-      },
-      { quantity: parseAsString },
-    ),
-    { shallow: false },
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const searchParams = fields.reduce<Record<string, typeof parseAsString>>(
+    (acc, field) => {
+      return { ...acc, [field.name]: parseAsString };
+    },
+    { quantity: parseAsString },
   );
+
+  const [params] = useQueryStates(searchParams, { shallow: false });
+
+  const prefetchUrl = (fieldName: string, value: string) => {
+    if (prefetch) {
+      const serialize = createSerializer(searchParams);
+
+      const newUrl = serialize(pathname, { ...params, [fieldName]: value });
+
+      router.prefetch(newUrl);
+    }
+  };
 
   const defaultValue = fields.reduce<{
     [Key in keyof SchemaRawShape]?: z.infer<SchemaRawShape[Key]>;
@@ -120,7 +132,7 @@ export function ProductDetailForm<F extends Field>({
                 formField={formFields[field.name]!}
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key={formFields[field.name]!.id}
-                prefetch={prefetch}
+                onOptionMouseEnter={prefetchUrl}
               />
             );
           })}
@@ -169,16 +181,12 @@ function SubmitButton({ children, disabled }: { children: React.ReactNode; disab
 function FormField({
   field,
   formField,
-  prefetch,
+  onOptionMouseEnter,
 }: {
   field: Field;
   formField: FieldMetadata<string | number | boolean | Date | undefined>;
-  prefetch: boolean;
+  onOptionMouseEnter?: (fieldName: string, value: string) => void;
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   const controls = useInputControl(formField);
   const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
 
@@ -191,16 +199,8 @@ function FormField({
   );
 
   const handleOnOptionMouseEnter = (value: string) => {
-    if (prefetch) {
-      const optionSearchParams = new URLSearchParams(searchParams);
-
-      const serialize = createSerializer({ [field.name]: parseAsString });
-
-      const newUrl = serialize(`${pathname}?${optionSearchParams.toString()}`, {
-        [field.name]: value,
-      });
-
-      router.prefetch(newUrl);
+    if (onOptionMouseEnter) {
+      onOptionMouseEnter(field.name, value);
     }
   };
 
