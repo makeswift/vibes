@@ -25,6 +25,21 @@ import {
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
 import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
+const breadcrumbs = [
+  {
+    label: 'Home',
+    href: '#',
+  },
+  {
+    label: 'Blog',
+    href: '#',
+  },
+  {
+    label: "Top 5 Plants to Purify Your Home's Air",
+    href: '#',
+  },
+];
+
 const socialMediaLinks = [
   {
     href: '#',
@@ -75,6 +90,7 @@ export default function Preview() {
 
       <BlogPostContent
         author="Sam Smith"
+        breadcrumbs={breadcrumbs}
         content={`
         <p>A couple weeks ago, we outfitted Chloe and Erik for the their first “official” bikepacking trip - a weekend of camping and riding north from San Francisco to Wildcat Campground, on the Coast Trail in Bolinas. As with any “firsts” like these, there were bound to be some lessons learned along with many pleasant surprises. Chloe wrote the bits below, and they sent along some lovely photos to go along with it. Have a read and hear how it went for these two!</p>
         <p>When your friends snag a last minute campsite at Wildcat, you jump on the offer, no questions asked.  That’s how Erik and I ended up scrambling to prep our newly acquired gravel bikes for our first ~proper~ bikepacking trip. The plan was simple: ride up to Olema from San Francisco on Saturday morning (about 45 miles), hit the Five Brooks trailhead early in the afternoon, and arrive at the coastal campsite an hour or so later.  Since we would only be camping one night and would also be meeting friends who were hiking in, we were able to pack light.  Even so, it took several re-orgs to fit all the essentials: clothes and sandals in the Outer Shell Handlebar bag, tools and food in the Framebag, and sleeping bag, pad, and tent in the Expedition Seatbag.  Once in place, however, the rigs were surprisingly light, maneuverable, and OF COURSE  stylish (camo vs. marigold--who wore it better?!).</p>

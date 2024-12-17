@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import Image from 'next/image';
 
-import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
+import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
 
 import { ButtonLink } from '../../primitives/button-link';
 
@@ -20,12 +20,13 @@ interface Image {
 
 interface Props {
   title: string;
-  author: string;
+  author?: string;
   date: string;
   tags?: Tag[];
   content: string;
   image?: Image;
   className?: string;
+  breadcrumbs?: Breadcrumb[];
 }
 
 export const BlogPostContent = function BlogPostContent({
@@ -36,33 +37,24 @@ export const BlogPostContent = function BlogPostContent({
   content,
   image,
   className = '',
+  breadcrumbs,
 }: Props) {
   return (
     <section className={clsx('@container', className)}>
       <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
         <header className="mx-auto w-full max-w-4xl pb-8 @2xl:pb-12 @4xl:pb-16">
-          <Breadcrumbs
-            breadcrumbs={[
-              {
-                label: 'Home',
-                href: '#',
-              },
-              {
-                label: 'Blog',
-                href: '#',
-              },
-              {
-                label: title,
-                href: '#',
-              },
-            ]}
-          />
+          {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
 
           <h1 className="mb-4 mt-8 font-heading text-4xl font-medium leading-none @xl:text-5xl @4xl:text-6xl">
             {title}
           </h1>
           <p>
-            {date} <span className="px-1">•</span> {author}
+            {date}{' '}
+            {Boolean(author) && (
+              <>
+                <span className="px-1">•</span> {author}
+              </>
+            )}
           </p>
 
           {(tags?.length ?? 0) > 0 && (

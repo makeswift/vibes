@@ -25,6 +25,21 @@ import {
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
 import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
+const breadcrumbs = [
+  {
+    label: 'Home',
+    href: '#',
+  },
+  {
+    label: 'Blog',
+    href: '#',
+  },
+  {
+    label: "Top 5 Plants to Purify Your Home's Air",
+    href: '#',
+  },
+];
+
 const socialMediaLinks = [
   {
     href: '#',
@@ -75,6 +90,7 @@ export default function Preview() {
 
       <BlogPostContent
         author="Sam Smith"
+        breadcrumbs={breadcrumbs}
         content={`
        <h2>Best Air-Purifying Plants</h2>
         <ol>
