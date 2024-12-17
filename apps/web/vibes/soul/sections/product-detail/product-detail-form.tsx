@@ -40,7 +40,7 @@ interface State<F extends Field> {
 
 export type ProductDetailFormAction<F extends Field> = Action<State<F>, FormData>;
 
-interface Props<F extends Field> {
+interface Props<F extends Field & { deepLink?: boolean }> {
   fields: F[];
   action: ProductDetailFormAction<F>;
   productId: string;
@@ -194,10 +194,13 @@ function FormField({
 
   const handleChange = useCallback(
     (value: string) => {
-      void setParam(value);
+      if (field.deepLink === true) {
+        void setParam(value);
+      }
+
       controls.change(value);
     },
-    [setParam, controls],
+    [setParam, controls, field.deepLink],
   );
 
   const handleOnOptionMouseEnter = (value: string) => {

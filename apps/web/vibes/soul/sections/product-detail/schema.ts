@@ -5,6 +5,7 @@ interface FormField {
   label?: string;
   errors?: string[];
   required?: boolean;
+  deepLink?: boolean;
 }
 
 type RadioField = {
