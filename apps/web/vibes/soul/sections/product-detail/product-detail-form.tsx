@@ -3,6 +3,7 @@
 import {
   FieldMetadata,
   FormProvider,
+  FormStateInput,
   getFormProps,
   SubmissionResult,
   useForm,
@@ -121,6 +122,7 @@ export function ProductDetailForm<F extends Field>({
 
   return (
     <FormProvider context={form.context}>
+      <FormStateInput />
       <form {...getFormProps(form)} action={formAction}>
         <input name="id" type="hidden" value={productId} />
         <div className="space-y-6">
