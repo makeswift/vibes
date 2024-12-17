@@ -40,7 +40,7 @@ interface State<F extends Field> {
 
 export type ProductDetailFormAction<F extends Field> = Action<State<F>, FormData>;
 
-interface Props<F extends Field & { deepLink?: boolean }> {
+interface Props<F extends Field> {
   fields: F[];
   action: ProductDetailFormAction<F>;
   productId: string;
@@ -66,12 +66,9 @@ export function ProductDetailForm<F extends Field>({
   const router = useRouter();
   const pathname = usePathname();
 
-  const searchParams = fields.reduce<Record<string, typeof parseAsString>>(
-    (acc, field) => {
-      return { ...acc, [field.name]: parseAsString };
-    },
-    { quantity: parseAsString },
-  );
+  const searchParams = fields.reduce<Record<string, typeof parseAsString>>((acc, field) => {
+    return field.persist === true ? { ...acc, [field.name]: parseAsString } : acc;
+  }, {});
 
   const [params] = useQueryStates(searchParams, { shallow: false });
 
@@ -92,7 +89,7 @@ export function ProductDetailForm<F extends Field>({
       ...acc,
       [field.name]: params[field.name] ?? field.defaultValue ?? '',
     }),
-    { quantity: 1 },
+    {},
   );
 
   const [{ lastResult, successMessage }, formAction] = useActionState(action, {
@@ -190,17 +187,18 @@ function FormField({
   onPrefetch: (fieldName: string, value: string) => void;
 }) {
   const controls = useInputControl(formField);
+
   const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
 
   const handleChange = useCallback(
     (value: string) => {
-      if (field.deepLink === true) {
+      if (field.persist === true) {
         void setParam(value);
       }
 
       controls.change(value);
     },
-    [setParam, controls, field.deepLink],
+    [setParam, controls, field.persist],
   );
 
   const handleOnOptionMouseEnter = (value: string) => {
