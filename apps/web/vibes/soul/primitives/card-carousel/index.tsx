@@ -17,6 +17,7 @@ export type Card = CardProps & {
 
 interface Props {
   cards: Streamable<Card[]>;
+  aspectRatio?: '5:6' | '3:4' | '1:1';
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';
   className?: string;
@@ -24,10 +25,13 @@ interface Props {
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
+  showButtons?: boolean;
+  showScrollbar?: boolean;
 }
 
 export function CardCarousel({
   cards: streamableCards,
+  aspectRatio = '5:6',
   textColorScheme,
   iconColorScheme,
   className,
@@ -35,10 +39,12 @@ export function CardCarousel({
   scrollbarLabel,
   previousLabel,
   nextLabel,
+  showButtons = true,
+  showScrollbar = true,
 }: Props) {
   return (
     <Carousel className={className}>
-      <CarouselContent className="mb-10">
+      <CarouselContent>
         <Stream
           fallback={<CardCarouselSkeleton className={className} message={emptyStateMessage} />}
           value={streamableCards}
@@ -50,11 +56,12 @@ export function CardCarousel({
 
             return cards.map((card) => (
               <CarouselItem
-                className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+                className="basis-[calc(100%-1rem)] @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)]"
                 key={card.id}
               >
                 <Card
                   {...card}
+                  aspectRatio={aspectRatio}
                   textColorScheme={textColorScheme}
                   iconColorScheme={iconColorScheme}
                 />
@@ -63,10 +70,21 @@ export function CardCarousel({
           }}
         </Stream>
       </CarouselContent>
-      <div className="flex w-full items-center justify-between">
-        <CarouselScrollbar label={scrollbarLabel} />
-        <CarouselButtons nextLabel={nextLabel} previousLabel={previousLabel} />
-      </div>
+      {(showButtons || showScrollbar) && (
+        <div className="mt-10 flex w-full items-center justify-between gap-8">
+          <CarouselScrollbar
+            className={clsx(!showScrollbar && 'pointer-events-none invisible')}
+            colorScheme={textColorScheme}
+            label={scrollbarLabel}
+          />
+          <CarouselButtons
+            className={clsx(!showButtons && 'pointer-events-none invisible')}
+            colorScheme={textColorScheme}
+            nextLabel={nextLabel}
+            previousLabel={previousLabel}
+          />
+        </div>
+      )}
     </Carousel>
   );
 }
