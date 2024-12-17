@@ -11,11 +11,10 @@ import {
 } from '@/vibes/soul/primitives/cursor-pagination';
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
 import * as SidePanel from '@/vibes/soul/primitives/side-panel';
-
-import { ProductListTransitionProvider } from './context';
-import { Filter, FiltersPanel } from './filters-panel';
-import { ProductListContainer } from './product-list-container';
-import { Sorting, Option as SortOption } from './sorting';
+import { ProductListTransitionProvider } from '@/vibes/soul/sections/products-list-section/context';
+import { Filter, FiltersPanel } from '@/vibes/soul/sections/products-list-section/filters-panel';
+import { ProductListContainer } from '@/vibes/soul/sections/products-list-section/product-list-container';
+import { Sorting, Option as SortOption } from '@/vibes/soul/sections/products-list-section/sorting';
 
 interface Props {
   breadcrumbs?: Streamable<Breadcrumb[] | null>;
@@ -31,6 +30,7 @@ interface Props {
   filterLabel?: string;
   resetFiltersLabel?: string;
   sortLabel?: Streamable<string | null>;
+  sortPlaceholder?: Streamable<string | null>;
   sortParamName?: string;
   sortDefaultValue?: string;
   compareParamName?: string;
@@ -54,6 +54,7 @@ export function ProductsListSection({
   filterLabel = 'Filters',
   resetFiltersLabel,
   sortLabel,
+  sortPlaceholder,
   sortParamName,
   compareParamName,
   emptyStateSubtitle,
@@ -93,6 +94,7 @@ export function ProductsListSection({
                   label={sortLabel}
                   options={sortOptions}
                   paramName={sortParamName}
+                  placeholder={sortPlaceholder}
                 />
                 <div className="block @3xl:hidden">
                   <SidePanel.Root>
