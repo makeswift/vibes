@@ -25,7 +25,7 @@ export function Card({
   return (
     <Link
       className={clsx(
-        'group relative flex min-w-0 cursor-pointer flex-col gap-2 rounded-[var(--card-border-radius)] focus:outline-0 focus-visible:outline-0',
+        'group relative flex min-w-0 cursor-pointer flex-col gap-2 rounded-[var(--card-border-radius)] @container focus:outline-0 focus-visible:outline-0',
         className,
       )}
       href={href}
@@ -71,7 +71,7 @@ export function Card({
         ) : (
           <div
             className={clsx(
-              'break-words pl-5 pt-5 text-4xl font-bold leading-[0.8] tracking-tighter opacity-25 transition-transform duration-500 ease-out group-hover:scale-105 @2xl:text-7xl',
+              'break-words pl-5 pt-5 text-4xl font-bold leading-[0.8] tracking-tighter opacity-25 transition-transform duration-500 ease-out group-hover:scale-105 @xs:text-7xl',
               {
                 light: 'text-[var(--card-light-text)]',
                 dark: 'text-[var(--card-dark-text)]',
