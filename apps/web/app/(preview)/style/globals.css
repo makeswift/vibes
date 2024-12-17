@@ -5,13 +5,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --carousel-focus: hsl(var(--primary));
-    --carousel-light-slider: hsl(var(--foreground));
-    --carousel-light-arrow: hsl(var(--foreground));
-    --carousel-dark-slider: hsl(var(--background));
-    --carousel-dark-arrow: hsl(var(--background));
-  }
   * {
     @apply antialiased;
   }
