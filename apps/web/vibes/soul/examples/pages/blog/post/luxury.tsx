@@ -25,6 +25,21 @@ import {
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
 import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
+const breadcrumbs = [
+  {
+    label: 'Home',
+    href: '#',
+  },
+  {
+    label: 'Blog',
+    href: '#',
+  },
+  {
+    label: "Top 5 Plants to Purify Your Home's Air",
+    href: '#',
+  },
+];
+
 const socialMediaLinks = [
   {
     href: '#',
@@ -75,6 +90,7 @@ export default function Preview() {
 
       <BlogPostContent
         author="Freda Salvador"
+        breadcrumbs={breadcrumbs}
         content={`
        <h2>OCTOBER CAMPAIGN</h2>
        <p>Fall fashion is very much happening and we are very much loving everything. Boots, loafers, leopard print, sweaters, plaid, denim, gold…to name just a few of our favorite things.</p>
