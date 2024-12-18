@@ -202,7 +202,9 @@ function FormField({
   );
 
   const handleOnOptionMouseEnter = (value: string) => {
-    onPrefetch(field.name, value);
+    if (field.persist === true) {
+      onPrefetch(field.name, value);
+    }
   };
 
   switch (field.type) {
