@@ -74,7 +74,7 @@ export const navigationLinks = [
 ];
 
 export const logo = {
-  src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID',
+  src: '/soul/freda-logo.png',
   alt: 'Freda Salvador Logo',
 };
 
