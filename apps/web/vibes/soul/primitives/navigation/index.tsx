@@ -88,12 +88,16 @@ interface Props<S extends SearchResult> {
   cartCount?: Streamable<number | null>;
   cartHref: string;
   links: Streamable<Link[]>;
+  linksPosition?: 'center' | 'left' | 'right';
   locales?: Locale[];
   activeLocaleId?: string;
   localeAction?: LocaleAction;
   logo?: Streamable<string | { src: string; alt: string } | null>;
+  logoWidth?: number;
   logoHref?: string;
   logoLabel?: string;
+  mobileLogo?: Streamable<string | { src: string; alt: string } | null>;
+  mobileLogoWidth?: number;
   searchHref: string;
   searchParamName?: string;
   searchAction?: SearchAction<S>;
@@ -165,6 +169,55 @@ const MobileMenuButton = forwardRef<
 
 MobileMenuButton.displayName = 'MobileMenuButton';
 
+function LogoLink({
+  className,
+  logo: streamableLogo,
+  href,
+  width,
+  label,
+}: {
+  className?: string;
+  logo?: Streamable<string | { src: string; alt: string } | null>;
+  label?: string;
+  href: string;
+  width: number;
+}) {
+  return (
+    <Stream
+      fallback={<div className="h-6 w-16 animate-pulse rounded-md bg-contrast-100" />}
+      value={streamableLogo}
+    >
+      {(logo) => (
+        <Link
+          aria-label={label}
+          className={clsx(
+            'relative h-full items-center outline-0 ring-[var(--nav-focus,hsl(var(--primary)))] ring-offset-4 focus-visible:ring-2',
+            className,
+          )}
+          href={href}
+          style={typeof logo === 'string' ? {} : { width }}
+        >
+          {typeof logo === 'object' && logo !== null && logo.src !== '' ? (
+            <Image
+              alt={logo.alt}
+              className="object-contain object-left"
+              fill
+              sizes="25vw"
+              src={logo.src}
+            />
+          ) : (
+            typeof logo === 'string' && (
+              <span className="font-[family-name:var(--nav-logo-font-family,var(--font-family-heading))] text-lg font-semibold leading-none text-[var(--nav-logo-text,hsl(var(--foreground)))] @xl:text-2xl">
+                {logo}
+              </span>
+            )
+          )}
+        </Link>
+      )}
+    </Stream>
+  );
+}
+
 const navGroupClassName =
   'block rounded-lg bg-[var(--nav-group-background,transparent)] px-3 py-2 font-[family-name:var(--nav-group-font-family,var(--font-family-body))] font-medium text-[var(--nav-group-text,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-group-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-group-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2';
 const navButtonClassName =
@@ -179,6 +232,8 @@ const navButtonClassName =
  *   --nav-focus: hsl(var(--primary));
  *   --nav-background: hsl(var(--background));
  *   --nav-floating-border: hsl(var(--foreground) / 10%);
+ *   --nav-logo-font-family: var(--font-family-heading);
+ *   --nav-logo-text: hsl(var(--foreground));
  *   --nav-link-text: hsl(var(--foreground));
  *   --nav-link-text-hover: hsl(var(--foreground));
  *   --nav-link-background: transparent;
@@ -250,6 +305,10 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     logo: streamableLogo,
     logoHref = '/',
     logoLabel = 'Home',
+    logoWidth = 200,
+    mobileLogo: streamableMobileLogo,
+    mobileLogoWidth = 100,
+    linksPosition = 'center',
     activeLocaleId,
     localeAction,
     locales,
@@ -296,19 +355,19 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     >
       <div
         className={clsx(
-          'flex h-14 items-center justify-between bg-[var(--nav-background,hsl(var(--background)))] pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
+          'flex h-14 items-center justify-between gap-1 bg-[var(--nav-background,hsl(var(--background)))] pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
           isFloating
             ? 'shadow-xl ring-1 ring-[var(--nav-floating-border,hsl(var(--foreground)/10%))]'
             : 'shadow-none ring-0',
         )}
       >
-        {/* Logo */}
+        {/* Mobile Menu */}
         <Popover.Root onOpenChange={setIsMobileMenuOpen} open={isMobileMenuOpen}>
           <Popover.Anchor className="absolute left-0 right-0 top-full" />
           <Popover.Trigger asChild>
             <MobileMenuButton
               aria-label={mobileMenuTriggerLabel}
-              className="mr-3 @4xl:hidden"
+              className="mr-1 @4xl:hidden"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               open={isMobileMenuOpen}
             />
@@ -368,39 +427,43 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             </Popover.Content>
           </Popover.Portal>
         </Popover.Root>
-        <div className="flex flex-1 items-center self-stretch py-2">
-          <Link
-            aria-label={logoLabel}
-            className="relative flex size-full max-w-[80%] items-center outline-0 ring-[var(--navigation-focus,hsl(var(--primary)))] ring-offset-4 focus-visible:ring-2 @4xl:max-w-[50%]"
+
+        {/* Logo */}
+        <div
+          className={clsx(
+            'flex items-center justify-start self-stretch',
+            linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
+          )}
+        >
+          <LogoLink
+            className={clsx(streamableMobileLogo != null ? 'hidden @4xl:flex' : 'flex')}
             href={logoHref}
-          >
-            <Stream
-              fallback={<div className="h-6 w-16 animate-pulse rounded-md bg-contrast-100" />}
-              value={streamableLogo}
-            >
-              {(logo) =>
-                typeof logo === 'object' && logo !== null && logo.src !== '' ? (
-                  <Image
-                    alt={logo.alt}
-                    className="object-contain object-left"
-                    fill
-                    sizes="25vw"
-                    src={logo.src}
-                  />
-                ) : (
-                  typeof logo === 'string' && (
-                    <span className="font-heading text-lg font-semibold leading-none text-foreground @xl:text-2xl">
-                      {logo}
-                    </span>
-                  )
-                )
-              }
-            </Stream>
-          </Link>
+            label={logoLabel}
+            logo={streamableLogo}
+            width={logoWidth}
+          />
+          {streamableMobileLogo != null && (
+            <LogoLink
+              className="flex @4xl:hidden"
+              href={logoHref}
+              label={logoLabel}
+              logo={streamableMobileLogo}
+              width={mobileLogoWidth}
+            />
+          )}
         </div>
 
         {/* Top Level Nav Links */}
-        <ul className="hidden @4xl:flex">
+        <ul
+          className={clsx(
+            'hidden @4xl:flex @4xl:flex-1',
+            {
+              left: '@4xl:justify-start',
+              center: '@4xl:justify-center',
+              right: '@4xl:justify-end',
+            }[linksPosition],
+          )}
+        >
           <Stream
             fallback={
               <ul className="flex animate-pulse flex-row p-2 @4xl:gap-2 @4xl:p-5">
@@ -471,7 +534,13 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           </Stream>
         </ul>
 
-        <div className="flex flex-1 items-center justify-end gap-1 transition-colors duration-300">
+        {/* Icon Buttons */}
+        <div
+          className={clsx(
+            'flex items-center justify-end gap-0.5 transition-colors duration-300',
+            linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
+          )}
+        >
           {searchAction ? (
             <Popover.Root onOpenChange={setIsSearchOpen} open={isSearchOpen}>
               <Popover.Anchor className="absolute left-0 right-0 top-full" />
@@ -513,14 +582,14 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             <ShoppingBag size={20} strokeWidth={1} />
             <Stream
               fallback={
-                <span className="absolute -right-1 -top-1 flex h-4 w-4 animate-pulse items-center justify-center rounded-full bg-contrast-100 text-xs text-background" />
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 animate-pulse items-center justify-center rounded-full bg-contrast-100 text-xs text-background" />
               }
               value={streamableCartCount}
             >
               {(cartCount) =>
                 cartCount != null &&
                 cartCount > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[var(--nav-cart-count-background,hsl(var(--foreground)))] font-[family-name:var(--nav-cart-count-font-family,var(--font-family-body))] text-xs text-[var(--nav-cart-count-text,hsl(var(--background)))]">
+                  <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[var(--nav-cart-count-background,hsl(var(--foreground)))] font-[family-name:var(--nav-cart-count-font-family,var(--font-family-body))] text-xs text-[var(--nav-cart-count-text,hsl(var(--background)))]">
                     {cartCount}
                   </span>
                 )

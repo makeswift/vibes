@@ -76,7 +76,7 @@ export const navigationLinks = [
 ];
 
 export const logo = {
-  src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
+  src: '/soul/outer-shell-logo.png',
   alt: 'Outer Shell Logo',
 };
 
