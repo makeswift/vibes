@@ -4,6 +4,7 @@ import { localeAction } from '@/vibes/soul/examples/primitives/navigation/action
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
 import { Banner } from '@/vibes/soul/primitives/banner';
+import { BlogPost } from '@/vibes/soul/primitives/blog-post-card';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 import { Footer } from '@/vibes/soul/sections/footer';
@@ -49,6 +50,10 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 export default function Preview() {
+  const blogPostsPromise = new Promise<BlogPost[]>((resolve) => {
+    setTimeout(() => resolve(posts), 1000);
+  });
+
   return (
     <>
       <Banner id="example-banner">
@@ -70,7 +75,7 @@ export default function Preview() {
       <FeaturedBlogPostList
         cta={{ href: '#', label: 'View All' }}
         description="Expert Tips & Inspiration for Every Plant Lover"
-        posts={posts}
+        posts={blogPostsPromise}
         title="Plant Life"
       />
 

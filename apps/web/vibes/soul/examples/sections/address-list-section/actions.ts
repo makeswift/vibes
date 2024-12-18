@@ -1,23 +1,21 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import { randomUUID } from 'crypto';
-import { z } from 'zod';
 
+import { Address, DefaultAddressConfiguration } from '@/vibes/soul/sections/address-list-section';
 import { schema } from '@/vibes/soul/sections/address-list-section/schema';
-
-type Address = z.infer<typeof schema>;
 
 export async function addressAction(
   prevState: Awaited<{
     addresses: Address[];
     lastResult: SubmissionResult | null;
-    defaultAddressId: string;
+    defaultAddress?: DefaultAddressConfiguration;
   }>,
   formData: FormData,
 ): Promise<{
   addresses: Address[];
   lastResult: SubmissionResult | null;
-  defaultAddressId: string;
+  defaultAddress?: DefaultAddressConfiguration;
 }> {
   'use server';
 
@@ -42,7 +40,7 @@ export async function addressAction(
       return {
         addresses: [...prevState.addresses, newAddress],
         lastResult: submission.reply({ resetForm: true }),
-        defaultAddressId: prevState.defaultAddressId,
+        defaultAddress: prevState.defaultAddress,
       };
     }
     case 'update': {
@@ -54,7 +52,7 @@ export async function addressAction(
           address.id === newAddress.id ? newAddress : address,
         ),
         lastResult: submission.reply({ resetForm: true }),
-        defaultAddressId: prevState.defaultAddressId,
+        defaultAddress: prevState.defaultAddress,
       };
     }
     case 'delete': {
@@ -64,7 +62,7 @@ export async function addressAction(
       return {
         addresses: prevState.addresses.filter((address) => address.id !== deletedAddress.id),
         lastResult: submission.reply({ resetForm: true }),
-        defaultAddressId: prevState.defaultAddressId,
+        defaultAddress: prevState.defaultAddress,
       };
     }
     case 'setDefault': {
@@ -74,7 +72,7 @@ export async function addressAction(
       return {
         addresses: prevState.addresses,
         lastResult: submission.reply({ resetForm: true }),
-        defaultAddressId: defaultAddress.id,
+        defaultAddress: { id: defaultAddress.id },
       };
     }
     default: {

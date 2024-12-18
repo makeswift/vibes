@@ -3,6 +3,7 @@
 import {
   FieldMetadata,
   FormProvider,
+  FormStateInput,
   getFormProps,
   SubmissionResult,
   useForm,
@@ -10,7 +11,7 @@ import {
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
 import { usePathname, useRouter } from 'next/navigation';
-import { createSerializer, parseAsString, useQueryState, useQueryStates } from 'nuqs';
+import { createSerializer, parseAsString, useQueryStates } from 'nuqs';
 import { ReactNode, useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
@@ -29,7 +30,7 @@ import { toast } from '@/vibes/soul/primitives/toaster';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
+type Action<S, P> = (state: Awaited<S>, payload: P) => S | Promise<S>;
 
 interface State<F extends Field> {
   fields: F[];
@@ -65,12 +66,9 @@ export function ProductDetailForm<F extends Field>({
   const router = useRouter();
   const pathname = usePathname();
 
-  const searchParams = fields.reduce<Record<string, typeof parseAsString>>(
-    (acc, field) => {
-      return { ...acc, [field.name]: parseAsString };
-    },
-    { quantity: parseAsString },
-  );
+  const searchParams = fields.reduce<Record<string, typeof parseAsString>>((acc, field) => {
+    return field.persist === true ? { ...acc, [field.name]: parseAsString } : acc;
+  }, {});
 
   const [params] = useQueryStates(searchParams, { shallow: false });
 
@@ -121,6 +119,7 @@ export function ProductDetailForm<F extends Field>({
 
   return (
     <FormProvider context={form.context}>
+      <FormStateInput />
       <form {...getFormProps(form)} action={formAction}>
         <input name="id" type="hidden" value={productId} />
         <div className="space-y-6">
@@ -188,18 +187,23 @@ function FormField({
   onPrefetch: (fieldName: string, value: string) => void;
 }) {
   const controls = useInputControl(formField);
-  const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
+
+  const [, setParams] = useQueryStates(
+    field.persist === true ? { [field.name]: parseAsString.withOptions({ shallow: false }) } : {},
+  );
 
   const handleChange = useCallback(
     (value: string) => {
-      void setParam(value);
+      void setParams({ [field.name]: value });
       controls.change(value);
     },
-    [setParam, controls],
+    [setParams, field, controls],
   );
 
   const handleOnOptionMouseEnter = (value: string) => {
-    onPrefetch(field.name, value);
+    if (field.persist === true) {
+      onPrefetch(field.name, value);
+    }
   };
 
   switch (field.type) {

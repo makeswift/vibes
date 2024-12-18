@@ -15,18 +15,23 @@ import { schema } from './schema';
 
 export type Address = z.infer<typeof schema>;
 
+export interface DefaultAddressConfiguration {
+  id: string | null;
+}
+
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
 interface State<A extends Address> {
   addresses: A[];
-  defaultAddressId: string;
+  defaultAddress?: DefaultAddressConfiguration;
   lastResult: SubmissionResult | null;
 }
 
 interface Props<A extends Address> {
   title?: string;
   addresses: A[];
-  defaultAddressId: string;
+  minimumAddressCount?: number;
+  defaultAddress?: DefaultAddressConfiguration;
   addressAction: Action<State<A>, FormData>;
   editLabel?: string;
   deleteLabel?: string;
@@ -50,7 +55,8 @@ interface Props<A extends Address> {
 export function AddressListSection<A extends Address>({
   title = 'Addresses',
   addresses,
-  defaultAddressId,
+  minimumAddressCount = 1,
+  defaultAddress,
   addressAction,
   editLabel = 'Edit',
   deleteLabel = 'Delete',
@@ -72,7 +78,7 @@ export function AddressListSection<A extends Address>({
 }: Props<A>) {
   const [state, formAction] = useActionState(addressAction, {
     addresses,
-    defaultAddressId,
+    defaultAddress,
     lastResult: null,
   });
 
@@ -111,7 +117,7 @@ export function AddressListSection<A extends Address>({
         }
 
         case 'setDefault': {
-          return { ...prevState, defaultAddressId: submission.value.id };
+          return { ...prevState, defaultAddress: { id: submission.value.id } };
         }
 
         default:
@@ -207,7 +213,11 @@ export function AddressListSection<A extends Address>({
               <div className="space-y-4">
                 <AddressPreview
                   address={address}
-                  isDefault={optimisticState.defaultAddressId === address.id}
+                  isDefault={
+                    optimisticState.defaultAddress
+                      ? optimisticState.defaultAddress.id === address.id
+                      : undefined
+                  }
                 />
                 <div className="flex gap-1">
                   <Button
@@ -218,22 +228,25 @@ export function AddressListSection<A extends Address>({
                   >
                     {editLabel}
                   </Button>
-                  {optimisticState.defaultAddressId !== address.id && (
-                    <>
-                      <AddressActionButton
-                        action={formAction}
-                        address={address}
-                        aria-label={`${deleteLabel}: ${address.firstName} ${address.lastName}`}
-                        intent="delete"
-                        onSubmit={(formData) => {
-                          startTransition(() => {
-                            formAction(formData);
-                            setOptimisticState(formData);
-                          });
-                        }}
-                      >
-                        {deleteLabel}
-                      </AddressActionButton>
+                  {optimisticState.addresses.length > minimumAddressCount && (
+                    <AddressActionButton
+                      action={formAction}
+                      address={address}
+                      aria-label={`${deleteLabel}: ${address.firstName} ${address.lastName}`}
+                      intent="delete"
+                      onSubmit={(formData) => {
+                        startTransition(() => {
+                          formAction(formData);
+                          setOptimisticState(formData);
+                        });
+                      }}
+                    >
+                      {deleteLabel}
+                    </AddressActionButton>
+                  )}
+
+                  {optimisticState.defaultAddress &&
+                    optimisticState.defaultAddress.id !== address.id && (
                       <AddressActionButton
                         action={formAction}
                         address={address}
@@ -248,8 +261,7 @@ export function AddressListSection<A extends Address>({
                       >
                         {setDefaultLabel}
                       </AddressActionButton>
-                    </>
-                  )}
+                    )}
                 </div>
               </div>
             )}
