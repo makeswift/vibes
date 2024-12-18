@@ -39,7 +39,7 @@ export default function Preview() {
       <AddressListSection
         addressAction={addressAction}
         addresses={addresses}
-        defaultAddressId="1"
+        defaultAddress={{ id: '1' }}
       />
     </AccountLayout>
   );
