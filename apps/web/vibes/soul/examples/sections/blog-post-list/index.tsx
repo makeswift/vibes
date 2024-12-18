@@ -122,9 +122,13 @@ export const posts: BlogPost[] = [
 ];
 
 export default function Preview() {
+  const blogPostsPromise = new Promise<BlogPost[]>((resolve) => {
+    setTimeout(() => resolve(posts), 1000);
+  });
+
   return (
     <div className="p-6">
-      <BlogPostList posts={posts} />
+      <BlogPostList posts={blogPostsPromise} />
     </div>
   );
 }
