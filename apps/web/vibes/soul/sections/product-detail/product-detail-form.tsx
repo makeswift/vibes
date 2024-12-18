@@ -11,7 +11,7 @@ import {
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
 import { usePathname, useRouter } from 'next/navigation';
-import { createSerializer, parseAsString, useQueryState, useQueryStates } from 'nuqs';
+import { createSerializer, parseAsString, useQueryStates } from 'nuqs';
 import { ReactNode, useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
@@ -30,7 +30,7 @@ import { toast } from '@/vibes/soul/primitives/toaster';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
-type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
+type Action<S, P> = (state: Awaited<S>, payload: P) => S | Promise<S>;
 
 interface State<F extends Field> {
   fields: F[];
@@ -188,17 +188,16 @@ function FormField({
 }) {
   const controls = useInputControl(formField);
 
-  const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
+  const [, setParams] = useQueryStates(
+    field.persist === true ? { [field.name]: parseAsString.withOptions({ shallow: false }) } : {},
+  );
 
   const handleChange = useCallback(
     (value: string) => {
-      if (field.persist === true) {
-        void setParam(value);
-      }
-
+      void setParams({ [field.name]: value });
       controls.change(value);
     },
-    [setParam, controls, field.persist],
+    [setParams, field, controls],
   );
 
   const handleOnOptionMouseEnter = (value: string) => {
