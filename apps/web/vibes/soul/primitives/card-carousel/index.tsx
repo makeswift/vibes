@@ -15,11 +15,12 @@ export type Card = CardProps & {
   id: string;
 };
 
-interface Props {
+export interface CardCarouselProps {
   cards: Streamable<Card[]>;
   aspectRatio?: '5:6' | '3:4' | '1:1';
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';
+  carouselColorScheme?: 'light' | 'dark';
   className?: string;
   emptyStateMessage?: string;
   scrollbarLabel?: string;
@@ -34,6 +35,7 @@ export function CardCarousel({
   aspectRatio = '5:6',
   textColorScheme,
   iconColorScheme,
+  carouselColorScheme,
   className,
   emptyStateMessage = 'No items found',
   scrollbarLabel,
@@ -41,7 +43,7 @@ export function CardCarousel({
   nextLabel,
   showButtons = true,
   showScrollbar = true,
-}: Props) {
+}: CardCarouselProps) {
   return (
     <Carousel className={className}>
       <CarouselContent>
@@ -74,12 +76,12 @@ export function CardCarousel({
         <div className="mt-10 flex w-full items-center justify-between gap-8">
           <CarouselScrollbar
             className={clsx(!showScrollbar && 'pointer-events-none invisible')}
-            colorScheme={textColorScheme}
+            colorScheme={carouselColorScheme}
             label={scrollbarLabel}
           />
           <CarouselButtons
             className={clsx(!showButtons && 'pointer-events-none invisible')}
-            colorScheme={textColorScheme}
+            colorScheme={carouselColorScheme}
             nextLabel={nextLabel}
             previousLabel={previousLabel}
           />
