@@ -1,3 +1,4 @@
+import { Streamable } from '@/vibes/soul/lib/streamable';
 import { BlogPost } from '@/vibes/soul/primitives/blog-post-card';
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
@@ -11,15 +12,10 @@ interface Props {
   title: string;
   description?: string;
   cta?: Link;
-  posts: BlogPost[];
+  posts: Streamable<BlogPost[]>;
 }
 
-export const FeaturedBlogPostList = function FeaturedBlogPostList({
-  title,
-  description,
-  cta,
-  posts,
-}: Props) {
+export function FeaturedBlogPostList({ title, description, cta, posts }: Props) {
   return (
     <section className="@container">
       <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
@@ -41,4 +37,4 @@ export const FeaturedBlogPostList = function FeaturedBlogPostList({
       </div>
     </section>
   );
-};
+}

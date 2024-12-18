@@ -16,15 +16,7 @@ export interface BlogPost {
   className?: string;
 }
 
-export const BlogPostCard = function BlogPostCard({
-  title,
-  image,
-  content,
-  href,
-  date,
-  author,
-  className,
-}: BlogPost) {
+export function BlogPostCard({ title, image, content, href, date, author, className }: BlogPost) {
   return (
     <Link
       className={clsx(
@@ -37,7 +29,7 @@ export const BlogPostCard = function BlogPostCard({
         {image?.src != null && image.src !== '' ? (
           <Image
             alt={image.alt}
-            className="transition-transform duration-500 ease-out group-hover:scale-110"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             src={image.src}
@@ -66,13 +58,9 @@ export const BlogPostCard = function BlogPostCard({
       </div>
     </Link>
   );
-};
+}
 
-export const BlogPostCardSkeleton = function BlogPostCardSkeleton({
-  className,
-}: {
-  className?: string;
-}) {
+export function BlogPostCardSkeleton({ className }: { className?: string }) {
   return (
     <div className={clsx('flex max-w-md animate-pulse flex-col gap-2 rounded-xl', className)}>
       {/* Image */}
@@ -95,4 +83,4 @@ export const BlogPostCardSkeleton = function BlogPostCardSkeleton({
       </div>
     </div>
   );
-};
+}

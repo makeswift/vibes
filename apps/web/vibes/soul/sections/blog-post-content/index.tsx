@@ -2,8 +2,7 @@ import { clsx } from 'clsx';
 import Image from 'next/image';
 
 import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
-
-import { ButtonLink } from '../../primitives/button-link';
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
 interface Tag {
   label: string;
@@ -29,7 +28,7 @@ interface Props {
   breadcrumbs?: Breadcrumb[];
 }
 
-export const BlogPostContent = function BlogPostContent({
+export function BlogPostContent({
   title,
   author,
   date,
@@ -85,4 +84,4 @@ export const BlogPostContent = function BlogPostContent({
       </div>
     </section>
   );
-};
+}
