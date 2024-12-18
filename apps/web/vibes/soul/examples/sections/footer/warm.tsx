@@ -76,7 +76,7 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ];
 
-export const copyright = `© ${new Date().getFullYear().toString()} OUTER SHELL - Powered by Monogram`;
+export const copyright = `© ${new Date().getFullYear().toString()} OUTER SHELL - Designed by Monogram`;
 
 export const contactInformation = {
   address: 'info@outershell.com',

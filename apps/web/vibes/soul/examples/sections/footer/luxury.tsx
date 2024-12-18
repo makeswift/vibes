@@ -76,7 +76,7 @@ export const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ];
 
-export const copyright = `© ${new Date().getFullYear().toString()} FREDA SALVADOR - Powered by Monogram`;
+export const copyright = `© ${new Date().getFullYear().toString()} FREDA SALVADOR - Designed by Monogram`;
 
 export const contactInformation = {
   address: 'info@freda.com',
