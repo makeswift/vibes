@@ -74,7 +74,7 @@ export function ProductDetailForm<F extends Field>({
 
   const [params] = useQueryStates(searchParams, { shallow: false });
 
-  const prefetchUrl = (fieldName: string, value: string) => {
+  const onPrefetch = (fieldName: string, value: string) => {
     if (prefetch) {
       const serialize = createSerializer(searchParams);
 
@@ -132,7 +132,7 @@ export function ProductDetailForm<F extends Field>({
                 formField={formFields[field.name]!}
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key={formFields[field.name]!.id}
-                prefetchUrl={prefetchUrl}
+                onPrefetch={onPrefetch}
               />
             );
           })}
@@ -181,11 +181,11 @@ function SubmitButton({ children, disabled }: { children: React.ReactNode; disab
 function FormField({
   field,
   formField,
-  prefetchUrl,
+  onPrefetch,
 }: {
   field: Field;
   formField: FieldMetadata<string | number | boolean | Date | undefined>;
-  prefetchUrl: (fieldName: string, value: string) => void;
+  onPrefetch: (fieldName: string, value: string) => void;
 }) {
   const controls = useInputControl(formField);
   const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
@@ -199,7 +199,7 @@ function FormField({
   );
 
   const handleOnOptionMouseEnter = (value: string) => {
-    prefetchUrl(field.name, value);
+    onPrefetch(field.name, value);
   };
 
   switch (field.type) {
