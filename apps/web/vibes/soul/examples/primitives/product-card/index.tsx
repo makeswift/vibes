@@ -62,6 +62,7 @@ export default function Preview() {
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <ProductCard
             className="w-full"
+            colorScheme="dark"
             product={{
               id: '1',
               href: '#',
@@ -74,11 +75,11 @@ export default function Preview() {
               price: '$123.99',
               badge: 'New',
             }}
-            colorScheme="dark"
             showCompare
           />
           <ProductCard
             className="w-full"
+            colorScheme="dark"
             product={{
               id: '1',
               href: '#',
@@ -91,11 +92,11 @@ export default function Preview() {
               },
               badge: 'New',
             }}
-            colorScheme="dark"
             showCompare
           />
           <ProductCard
             className="w-full"
+            colorScheme="dark"
             product={{
               id: '1',
               href: '#',
@@ -111,7 +112,6 @@ export default function Preview() {
                 maxValue: '$123.99',
               },
             }}
-            colorScheme="dark"
             showCompare
           />
         </div>

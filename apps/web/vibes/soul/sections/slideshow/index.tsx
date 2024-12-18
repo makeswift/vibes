@@ -176,9 +176,9 @@ export function Slideshow({ slides, playOnInit = true, interval = 5000, classNam
                         <ButtonLink
                           className="mt-6 @xl:mt-8"
                           href={cta?.href ?? '#'}
-                          variant={cta?.variant ?? 'tertiary'}
-                          size={cta?.size ?? 'large'}
                           shape={cta?.shape ?? 'pill'}
+                          size={cta?.size ?? 'large'}
+                          variant={cta?.variant ?? 'tertiary'}
                         >
                           {cta?.label ?? 'Learn more'}
                         </ButtonLink>
