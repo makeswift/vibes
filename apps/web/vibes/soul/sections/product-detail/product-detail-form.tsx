@@ -89,7 +89,7 @@ export function ProductDetailForm<F extends Field>({
       ...acc,
       [field.name]: params[field.name] ?? field.defaultValue ?? '',
     }),
-    {},
+    { quantity: 1 },
   );
 
   const [{ lastResult, successMessage }, formAction] = useActionState(action, {
