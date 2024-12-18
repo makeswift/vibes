@@ -30,6 +30,7 @@ interface State<A extends Address> {
 interface Props<A extends Address> {
   title?: string;
   addresses: A[];
+  minimumAddressCount?: number;
   defaultAddress?: DefaultAddressConfiguration;
   addressAction: Action<State<A>, FormData>;
   editLabel?: string;
@@ -54,6 +55,7 @@ interface Props<A extends Address> {
 export function AddressListSection<A extends Address>({
   title = 'Addresses',
   addresses,
+  minimumAddressCount = 1,
   defaultAddress,
   addressAction,
   editLabel = 'Edit',
@@ -226,20 +228,23 @@ export function AddressListSection<A extends Address>({
                   >
                     {editLabel}
                   </Button>
-                  <AddressActionButton
-                    action={formAction}
-                    address={address}
-                    aria-label={`${deleteLabel}: ${address.firstName} ${address.lastName}`}
-                    intent="delete"
-                    onSubmit={(formData) => {
-                      startTransition(() => {
-                        formAction(formData);
-                        setOptimisticState(formData);
-                      });
-                    }}
-                  >
-                    {deleteLabel}
-                  </AddressActionButton>
+                  {optimisticState.addresses.length > minimumAddressCount && (
+                    <AddressActionButton
+                      action={formAction}
+                      address={address}
+                      aria-label={`${deleteLabel}: ${address.firstName} ${address.lastName}`}
+                      intent="delete"
+                      onSubmit={(formData) => {
+                        startTransition(() => {
+                          formAction(formData);
+                          setOptimisticState(formData);
+                        });
+                      }}
+                    >
+                      {deleteLabel}
+                    </AddressActionButton>
+                  )}
+
                   {optimisticState.defaultAddress &&
                     optimisticState.defaultAddress.id !== address.id && (
                       <AddressActionButton
