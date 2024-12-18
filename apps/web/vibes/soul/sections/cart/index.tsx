@@ -208,7 +208,7 @@ function CartInner<LineItem extends CartLineItem>({
           </CheckoutButton>
         </>
       }
-      sidebarPosition="right"
+      sidebarPosition="after"
       sidebarSize="1/3"
     >
       <div className="w-full">
@@ -431,7 +431,7 @@ export function CartSkeleton({ title = 'Cart' }: { title?: string }) {
           <div className="mt-10 h-[50px] w-full rounded-full bg-contrast-100" />
         </>
       }
-      sidebarPosition="right"
+      sidebarPosition="after"
       sidebarSize="1/3"
     >
       <div className="w-full">
