@@ -132,7 +132,7 @@ export function ProductDetailForm<F extends Field>({
                 formField={formFields[field.name]!}
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key={formFields[field.name]!.id}
-                onOptionMouseEnter={prefetchUrl}
+                prefetchUrl={prefetchUrl}
               />
             );
           })}
@@ -181,11 +181,11 @@ function SubmitButton({ children, disabled }: { children: React.ReactNode; disab
 function FormField({
   field,
   formField,
-  onOptionMouseEnter,
+  prefetchUrl,
 }: {
   field: Field;
   formField: FieldMetadata<string | number | boolean | Date | undefined>;
-  onOptionMouseEnter?: (fieldName: string, value: string) => void;
+  prefetchUrl: (fieldName: string, value: string) => void;
 }) {
   const controls = useInputControl(formField);
   const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
@@ -199,9 +199,7 @@ function FormField({
   );
 
   const handleOnOptionMouseEnter = (value: string) => {
-    if (onOptionMouseEnter) {
-      onOptionMouseEnter(field.name, value);
-    }
+    prefetchUrl(field.name, value);
   };
 
   switch (field.type) {
