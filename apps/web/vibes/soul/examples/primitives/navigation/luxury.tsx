@@ -84,6 +84,7 @@ export default function Preview() {
       <Navigation
         accountHref="#"
         activeLocaleId="en"
+        cartCount={5}
         cartHref="#"
         links={navigationLinks}
         localeAction={localeAction}
