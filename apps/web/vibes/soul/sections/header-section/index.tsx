@@ -7,7 +7,7 @@ import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 
 interface Props {
-  navigation: Omit<React.ComponentPropsWithoutRef<typeof Navigation>, 'onDismiss'>;
+  navigation: React.ComponentPropsWithoutRef<typeof Navigation>;
   banner?: React.ComponentPropsWithoutRef<typeof Banner>;
 }
 
