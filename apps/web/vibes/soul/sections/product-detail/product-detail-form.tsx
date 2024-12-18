@@ -9,7 +9,8 @@ import {
   useInputControl,
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
-import { parseAsString, useQueryState, useQueryStates } from 'nuqs';
+import { usePathname, useRouter } from 'next/navigation';
+import { createSerializer, parseAsString, useQueryState, useQueryStates } from 'nuqs';
 import { ReactNode, useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
@@ -17,6 +18,7 @@ import { z } from 'zod';
 import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group';
 import { CardRadioGroup } from '@/vibes/soul/form/card-radio-group';
 import { Checkbox } from '@/vibes/soul/form/checkbox';
+import { FormStatus } from '@/vibes/soul/form/form-status';
 import { Input } from '@/vibes/soul/form/input';
 import { NumberInput } from '@/vibes/soul/form/number-input';
 import { RadioGroup } from '@/vibes/soul/form/radio-group';
@@ -24,8 +26,6 @@ import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
-
-import { FormStatus } from '../../form/form-status';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
@@ -48,6 +48,7 @@ interface Props<F extends Field> {
   incrementLabel?: string;
   decrementLabel?: string;
   ctaDisabled?: boolean;
+  prefetch?: boolean;
 }
 
 export function ProductDetailForm<F extends Field>({
@@ -59,16 +60,29 @@ export function ProductDetailForm<F extends Field>({
   incrementLabel = 'Increase quantity',
   decrementLabel = 'Decrease quantity',
   ctaDisabled = false,
+  prefetch = false,
 }: Props<F>) {
-  const [params] = useQueryStates(
-    fields.reduce<Record<string, typeof parseAsString>>(
-      (acc, field) => {
-        return { ...acc, [field.name]: parseAsString };
-      },
-      { quantity: parseAsString },
-    ),
-    { shallow: false },
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const searchParams = fields.reduce<Record<string, typeof parseAsString>>(
+    (acc, field) => {
+      return { ...acc, [field.name]: parseAsString };
+    },
+    { quantity: parseAsString },
   );
+
+  const [params] = useQueryStates(searchParams, { shallow: false });
+
+  const onPrefetch = (fieldName: string, value: string) => {
+    if (prefetch) {
+      const serialize = createSerializer(searchParams);
+
+      const newUrl = serialize(pathname, { ...params, [fieldName]: value });
+
+      router.prefetch(newUrl);
+    }
+  };
 
   const defaultValue = fields.reduce<{
     [Key in keyof SchemaRawShape]?: z.infer<SchemaRawShape[Key]>;
@@ -118,6 +132,7 @@ export function ProductDetailForm<F extends Field>({
                 formField={formFields[field.name]!}
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key={formFields[field.name]!.id}
+                onPrefetch={onPrefetch}
               />
             );
           })}
@@ -166,9 +181,11 @@ function SubmitButton({ children, disabled }: { children: React.ReactNode; disab
 function FormField({
   field,
   formField,
+  onPrefetch,
 }: {
   field: Field;
   formField: FieldMetadata<string | number | boolean | Date | undefined>;
+  onPrefetch: (fieldName: string, value: string) => void;
 }) {
   const controls = useInputControl(formField);
   const [, setParam] = useQueryState(field.name, parseAsString.withOptions({ shallow: false }));
@@ -180,6 +197,10 @@ function FormField({
     },
     [setParam, controls],
   );
+
+  const handleOnOptionMouseEnter = (value: string) => {
+    onPrefetch(field.name, value);
+  };
 
   switch (field.type) {
     case 'number':
@@ -236,6 +257,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
@@ -252,6 +274,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
@@ -268,6 +291,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
@@ -284,6 +308,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}
@@ -300,6 +325,7 @@ function FormField({
           name={formField.name}
           onBlur={controls.blur}
           onFocus={controls.focus}
+          onOptionMouseEnter={handleOnOptionMouseEnter}
           onValueChange={handleChange}
           options={field.options}
           required={formField.required}

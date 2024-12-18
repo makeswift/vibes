@@ -29,6 +29,7 @@ interface Props<F extends Field> {
   decrementLabel?: string;
   ctaLabel?: Streamable<string | null>;
   ctaDisabled?: Streamable<boolean | null>;
+  prefetch?: boolean;
 }
 
 export function ProductDetail<F extends Field>({
@@ -41,6 +42,7 @@ export function ProductDetail<F extends Field>({
   decrementLabel,
   ctaLabel: streamableCtaLabel,
   ctaDisabled: streamableCtaDisabled,
+  prefetch,
 }: Props<F>) {
   return (
     <section className="@container">
@@ -115,6 +117,7 @@ export function ProductDetail<F extends Field>({
                         decrementLabel={decrementLabel}
                         fields={fields}
                         incrementLabel={incrementLabel}
+                        prefetch={prefetch}
                         productId={product.id}
                         quantityLabel={quantityLabel}
                       />
