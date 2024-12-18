@@ -1,3 +1,4 @@
+import { AccountLayout } from '@/vibes/soul/sections/account-layout';
 import { Address, AddressListSection } from '@/vibes/soul/sections/address-list-section';
 
 import { addressAction } from './actions';
@@ -26,14 +27,20 @@ const addresses: Address[] = [
   },
 ];
 
+const links = [
+  { href: '/preview/soul/order-list-section-electric-example', label: 'Orders' },
+  { href: '/preview/soul/address-list-section-example', label: 'Addresses' },
+  { href: '/preview/soul/account-settings-section-example', label: 'Account' },
+];
+
 export default function Preview() {
   return (
-    <div className="m-auto max-w-screen-xl p-5">
+    <AccountLayout links={links}>
       <AddressListSection
         addressAction={addressAction}
         addresses={addresses}
         defaultAddressId="1"
       />
-    </div>
+    </AccountLayout>
   );
 }

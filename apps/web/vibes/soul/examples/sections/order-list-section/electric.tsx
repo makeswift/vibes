@@ -56,9 +56,9 @@ const orders = [
 ];
 
 const links = [
-  { href: '#', label: 'Orders' },
-  { href: '#', label: 'Addresses' },
-  { href: '#', label: 'Account' },
+  { href: '/preview/soul/order-list-section-electric-example', label: 'Orders' },
+  { href: '/preview/soul/address-list-section-example', label: 'Addresses' },
+  { href: '/preview/soul/account-settings-section-example', label: 'Account' },
 ];
 
 export default function Preview() {
