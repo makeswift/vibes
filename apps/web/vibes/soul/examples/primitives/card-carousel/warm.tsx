@@ -38,16 +38,16 @@ export default function Preview() {
     <div>
       <section className="overflow-hidden @container">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-          <CardCarousel className="w-full" cards={cards} iconColorScheme="dark" />
+          <CardCarousel cards={cards} className="w-full" iconColorScheme="dark" />
         </div>
       </section>
       <section className="overflow-hidden bg-foreground @container">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
           <CardCarousel
-            className="w-full"
             cards={cards}
-            textColorScheme="dark"
+            className="w-full"
             iconColorScheme="dark"
+            textColorScheme="dark"
           />
         </div>
       </section>

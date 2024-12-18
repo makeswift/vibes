@@ -1,3 +1,4 @@
+import { clsx } from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -5,7 +6,6 @@ import { Badge } from '@/vibes/soul/primitives/badge';
 import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';
 
 import { Compare } from './compare';
-import clsx from 'clsx';
 
 export interface CardProduct {
   id: string;

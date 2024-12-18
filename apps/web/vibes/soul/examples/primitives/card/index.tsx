@@ -17,21 +17,21 @@ export default function Preview() {
       <div className="bg-foreground p-8 @container">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <Card
+            aspectRatio="1:1"
             className="w-full"
             href="#"
-            aspectRatio="1:1"
-            image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
-            title="Low Maintenance"
-            textColorScheme="dark"
             iconColorScheme="dark"
+            image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
+            textColorScheme="dark"
+            title="Low Maintenance"
           />
           <Card
+            aspectRatio="1:1"
             className="w-full"
             href="#"
-            aspectRatio="1:1"
-            title="Partial shade"
-            textColorScheme="dark"
             iconColorScheme="dark"
+            textColorScheme="dark"
+            title="Partial shade"
           />
         </div>
       </div>

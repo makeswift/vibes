@@ -62,8 +62,8 @@ export function CardCarousel({
                 <Card
                   {...card}
                   aspectRatio={aspectRatio}
-                  textColorScheme={textColorScheme}
                   iconColorScheme={iconColorScheme}
+                  textColorScheme={textColorScheme}
                 />
               </CarouselItem>
             ));

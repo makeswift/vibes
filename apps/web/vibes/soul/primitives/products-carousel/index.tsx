@@ -71,8 +71,8 @@ export function ProductsCarousel({
                 >
                   <ProductCard
                     aspectRatio={aspectRatio}
-                    product={product}
                     colorScheme={colorScheme}
+                    product={product}
                   />
                 </CarouselItem>
               ))}
