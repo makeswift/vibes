@@ -73,8 +73,21 @@ export default function Preview() {
       />
 
       <FeaturedBlogPostList
-        cta={{ href: '#', label: 'View All' }}
+        breadcrumbs={[
+          {
+            label: 'Home',
+            href: '#',
+          },
+          {
+            label: 'Blog',
+            href: '#',
+          },
+        ]}
         description="Expert Tips & Inspiration for Every Plant Lover"
+        paginationInfo={{
+          startCursor: '1',
+          endCursor: '5',
+        }}
         posts={blogPostsPromise}
         title="Plant Life"
       />
