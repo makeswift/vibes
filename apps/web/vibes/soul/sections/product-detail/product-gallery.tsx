@@ -32,7 +32,7 @@ export function ProductGallery({ images, className }: Props) {
   };
 
   return (
-    <div className={clsx('@container', className)}>
+    <div className={clsx('sticky top-0 -mt-4 pt-4 @container', className)}>
       <div className="w-full overflow-hidden rounded-xl @xl:rounded-2xl" ref={emblaRef}>
         <div className="flex">
           {images.map((image, idx) => (
