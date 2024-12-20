@@ -143,7 +143,7 @@ export function ProductDetail<F extends Field>({
 
                       return (
                         <div
-                          className="border-top border-contrast-100 py-8 text-contrast-500"
+                          className="border-t border-contrast-100 py-8 text-contrast-500"
                           dangerouslySetInnerHTML={{ __html: description }}
                         />
                       );
@@ -153,7 +153,7 @@ export function ProductDetail<F extends Field>({
                   <Stream fallback={<ProductAccordionsSkeleton />} value={product.accordions}>
                     {(accordions) =>
                       accordions && (
-                        <Accordions className="border-top border-contrast-100 pt-4" type="multiple">
+                        <Accordions className="border-t border-contrast-100 pt-4" type="multiple">
                           {accordions.map((accordion, index) => (
                             <Accordion key={index} title={accordion.title} value={index.toString()}>
                               {accordion.content}
