@@ -2,6 +2,7 @@ import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import { randomUUID } from 'crypto';
 
+import { Field, FieldGroup } from '@/vibes/soul/primitives/dynamic-form/schema';
 import { Address, DefaultAddressConfiguration } from '@/vibes/soul/sections/address-list-section';
 import { schema } from '@/vibes/soul/sections/address-list-section/schema';
 
@@ -10,12 +11,14 @@ export async function addressAction(
     addresses: Address[];
     lastResult: SubmissionResult | null;
     defaultAddress?: DefaultAddressConfiguration;
+    fields: Array<Field | FieldGroup<Field>>;
   }>,
   formData: FormData,
 ): Promise<{
   addresses: Address[];
   lastResult: SubmissionResult | null;
   defaultAddress?: DefaultAddressConfiguration;
+  fields: Array<Field | FieldGroup<Field>>;
 }> {
   'use server';
 
@@ -40,6 +43,7 @@ export async function addressAction(
       return {
         addresses: [...prevState.addresses, newAddress],
         lastResult: submission.reply({ resetForm: true }),
+        fields: prevState.fields,
         defaultAddress: prevState.defaultAddress,
       };
     }
@@ -53,6 +57,7 @@ export async function addressAction(
         ),
         lastResult: submission.reply({ resetForm: true }),
         defaultAddress: prevState.defaultAddress,
+        fields: prevState.fields,
       };
     }
     case 'delete': {
@@ -63,6 +68,7 @@ export async function addressAction(
         addresses: prevState.addresses.filter((address) => address.id !== deletedAddress.id),
         lastResult: submission.reply({ resetForm: true }),
         defaultAddress: prevState.defaultAddress,
+        fields: prevState.fields,
       };
     }
     case 'setDefault': {
@@ -73,6 +79,7 @@ export async function addressAction(
         addresses: prevState.addresses,
         lastResult: submission.reply({ resetForm: true }),
         defaultAddress: { id: defaultAddress.id },
+        fields: prevState.fields,
       };
     }
     default: {
