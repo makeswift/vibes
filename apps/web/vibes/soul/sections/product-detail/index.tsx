@@ -56,7 +56,7 @@ export function ProductDetail<F extends Field>({
 }: Props<F>) {
   return (
     <section className="@container">
-      <div className="mx-auto w-full px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+      <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
         {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} className="mb-6" />}
 
         <Stream fallback={<ProductDetailSkeleton />} value={streamableProduct}>
@@ -128,32 +128,19 @@ export function ProductDetail<F extends Field>({
                   </Stream>
 
                   <Stream fallback={<ProductDescriptionSkeleton />} value={product.description}>
-                    {(description) => {
-                      if (description === null || description === undefined) {
-                        return null;
-                      }
-
-                      if (typeof description === 'string') {
-                        return (
-                          <p className="border-y border-contrast-100 py-8 text-contrast-500">
-                            {description}
-                          </p>
-                        );
-                      }
-
-                      return (
-                        <div
-                          className="border-top border-contrast-100 py-8 text-contrast-500"
-                          dangerouslySetInnerHTML={{ __html: description }}
-                        />
-                      );
-                    }}
+                    {(description) =>
+                      description != null && (
+                        <div className="border-t border-contrast-100 py-8 text-contrast-500">
+                          {description}
+                        </div>
+                      )
+                    }
                   </Stream>
 
                   <Stream fallback={<ProductAccordionsSkeleton />} value={product.accordions}>
                     {(accordions) =>
                       accordions && (
-                        <Accordions className="border-top border-contrast-100 pt-4" type="multiple">
+                        <Accordions className="border-t border-contrast-100 pt-4" type="multiple">
                           {accordions.map((accordion, index) => (
                             <Accordion key={index} title={accordion.title} value={index.toString()}>
                               {accordion.content}
