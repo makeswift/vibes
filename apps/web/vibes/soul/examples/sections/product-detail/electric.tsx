@@ -35,6 +35,8 @@ export const product = {
   rating: 4.8,
   summary:
     'The Caladium Rosebud plant features vibrant pink and green heart-shaped leaves, adding a beautiful pop of color to any indoor or outdoor setting.',
+  description:
+    'The Caladium Rosebud plant is a striking ornamental foliage plant known for its eye-catching heart-shaped leaves that boast a captivating blend of vibrant pink and lush green hues. The leaves often feature deep pink centers framed by contrasting green edges, creating a visually stunning pattern that draws attention in any setting. This tropical beauty thrives in warm, humid conditions and can be grown both indoors and outdoors, making it a versatile choice for home decor and garden landscapes. Its bold, colorful foliage adds a dynamic pop of color, transforming spaces into vibrant, nature-inspired retreats. The Caladium Rosebud is perfect for brightening shaded garden beds, patios, and living rooms, providing year-round visual appeal with its lush and lively presence.',
 };
 
 export default function Preview() {

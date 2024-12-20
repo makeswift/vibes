@@ -40,6 +40,8 @@ export const product = {
   href: '#',
   rating: 4.8,
   summary:
+    'The ELBA reimagines the classic penny loafer with cumin suede, a signature notched welt, and an angled leather heel—perfect for suits, jeans, or skirts.',
+  description:
     'Our modern take on a classic penny loafer. Handcrafted in a cumin suede, the ELBA updates the timeless style with our signature notched welt and angled leather heel. We’ll live in these loafers with everything from oversized suits, to cuffed jeans and socks to long skirts.',
   options: ['5', '5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'],
   swatches: [

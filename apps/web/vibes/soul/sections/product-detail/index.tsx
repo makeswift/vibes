@@ -93,7 +93,7 @@ export function ProductDetail<F extends Field>({
                   <Stream fallback={<ProductSummarySkeleton />} value={product.summary}>
                     {(summary) =>
                       summary !== undefined &&
-                      summary !== '' && <p className="mb-6 text-contrast-500">{summary}</p>
+                      summary !== '' && <p className="text-contrast-500">{summary}</p>
                     }
                   </Stream>
 
@@ -118,6 +118,29 @@ export function ProductDetail<F extends Field>({
                         quantityLabel={quantityLabel}
                       />
                     )}
+                  </Stream>
+
+                  <Stream fallback={<ProductSummarySkeleton />} value={product.description}>
+                    {(description) => {
+                      if (description === null || description === undefined) {
+                        return null;
+                      }
+
+                      if (typeof description === 'string') {
+                        return (
+                          <p className="border-y border-contrast-100 py-8 text-contrast-500">
+                            {description}
+                          </p>
+                        );
+                      }
+
+                      return (
+                        <div
+                          className="border-y border-contrast-100 py-8 text-contrast-500"
+                          dangerouslySetInnerHTML={{ __html: description }}
+                        />
+                      );
+                    }}
                   </Stream>
                 </div>
               </div>
@@ -187,7 +210,7 @@ function ProductSummarySkeleton() {
 
 function ProductDetailFormSkeleton() {
   return (
-    <div className="flex animate-pulse flex-col gap-8">
+    <div className="flex animate-pulse flex-col gap-8 py-8">
       <div className="flex flex-col gap-5">
         <div className="h-2 w-10 rounded-md bg-contrast-100" />
         <div className="flex gap-2">
