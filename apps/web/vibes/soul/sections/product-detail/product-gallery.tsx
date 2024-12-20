@@ -8,9 +8,10 @@ import { useEffect, useState } from 'react';
 interface Props {
   images: Array<{ alt: string; src: string }>;
   className?: string;
+  thumbnailLabel?: string;
 }
 
-export function ProductGallery({ images, className }: Props) {
+export function ProductGallery({ images, className, thumbnailLabel = 'View image number' }: Props) {
   const [previewImage, setPreviewImage] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
@@ -55,7 +56,7 @@ export function ProductGallery({ images, className }: Props) {
       <div className="flex max-w-full shrink-0 flex-row gap-2 overflow-x-auto @2xl:order-1 @2xl:flex-col">
         {images.map((image, index) => (
           <button
-            aria-label={`View image number ${index + 1}`}
+            aria-label={`${thumbnailLabel} ${index + 1}`}
             className={clsx(
               'relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border transition-all duration-300 hover:opacity-100 @md:h-16 @md:w-16',
               index === previewImage

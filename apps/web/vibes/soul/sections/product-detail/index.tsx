@@ -30,6 +30,7 @@ interface Props<F extends Field> {
   ctaLabel?: Streamable<string | null>;
   ctaDisabled?: Streamable<boolean | null>;
   prefetch?: boolean;
+  thumbnailLabel?: string;
 }
 
 export function ProductDetail<F extends Field>({
@@ -43,6 +44,7 @@ export function ProductDetail<F extends Field>({
   ctaLabel: streamableCtaLabel,
   ctaDisabled: streamableCtaDisabled,
   prefetch,
+  thumbnailLabel,
 }: Props<F>) {
   return (
     <section className="@container">
@@ -81,7 +83,9 @@ export function ProductDetail<F extends Field>({
 
                   <div className="mb-8 @2xl:hidden">
                     <Stream fallback={<ProductGallerySkeleton />} value={product.images}>
-                      {(images) => <ProductGallery images={images} />}
+                      {(images) => (
+                        <ProductGallery images={images} thumbnailLabel={thumbnailLabel} />
+                      )}
                     </Stream>
                   </div>
 
