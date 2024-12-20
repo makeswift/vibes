@@ -120,7 +120,7 @@ export function ProductDetailForm<F extends Field>({
   return (
     <FormProvider context={form.context}>
       <FormStateInput />
-      <form {...getFormProps(form)} action={formAction}>
+      <form {...getFormProps(form)} action={formAction} className="py-8">
         <input name="id" type="hidden" value={productId} />
         <div className="space-y-6">
           {fields.map((field) => {
