@@ -36,8 +36,6 @@ type NumberInputField = {
   min?: number;
   max?: number;
   step?: number;
-  incrementLabel?: string;
-  decrementLabel?: string;
 } & FormField;
 
 type TextInputField = {
@@ -108,10 +106,17 @@ type ButtonRadioField = {
 
 type PasswordField = {
   type: 'password';
+  defaultValue?: string;
 } & FormField;
 
 type ConfirmPasswordField = {
   type: 'confirm-password';
+  defaultValue?: string;
+} & FormField;
+
+type HiddenInputField = {
+  type: 'hidden';
+  defaultValue?: string;
 } & FormField;
 
 export type Field =
@@ -128,7 +133,8 @@ export type Field =
   | SelectField
   | PasswordField
   | ConfirmPasswordField
-  | EmailInputField;
+  | EmailInputField
+  | HiddenInputField;
 
 export type FieldGroup<F> = F[];
 

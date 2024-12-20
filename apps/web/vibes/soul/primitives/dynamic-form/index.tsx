@@ -27,7 +27,7 @@ import { RadioGroup } from '@/vibes/soul/form/radio-group';
 import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Textarea } from '@/vibes/soul/form/textarea';
-import { Button } from '@/vibes/soul/primitives/button';
+import { Button, Props as ButtonProps } from '@/vibes/soul/primitives/button';
 
 import { Field, FieldGroup, schema } from './schema';
 
@@ -43,18 +43,25 @@ export type DynamicFormAction<F extends Field> = Action<State<F>, FormData>;
 interface Props<F extends Field> {
   fields: Array<F | FieldGroup<F>>;
   action: DynamicFormAction<F>;
+  buttonSize?: ButtonProps['size'];
+  cancelLabel?: string;
   submitLabel?: string;
   submitName?: string;
   submitValue?: string;
+  onCancel?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export function DynamicForm<F extends Field>({
   action,
   fields: defaultFields,
+  buttonSize = 'medium',
+  cancelLabel = 'Cancel',
   submitLabel = 'Submit',
   submitName,
   submitValue,
+  onCancel,
 }: Props<F>) {
+  const { pending } = useFormStatus();
   const [{ lastResult, fields }, formAction] = useActionState(action, {
     fields: defaultFields,
     lastResult: null,
@@ -118,10 +125,26 @@ export function DynamicForm<F extends Field>({
 
             return <DynamicFormField field={field} formField={formField} key={formField.id} />;
           })}
-          <div className="flex gap-x-3 pt-3">
-            <SubmitButton name={submitName} value={submitValue}>
+          <div className="flex gap-1 pt-3">
+            {onCancel && (
+              <Button
+                aria-label={`${cancelLabel} ${submitLabel}`}
+                onClick={onCancel}
+                size={buttonSize}
+                variant="tertiary"
+              >
+                {cancelLabel}
+              </Button>
+            )}
+            <Button
+              loading={pending}
+              name={submitName}
+              size={buttonSize}
+              type="submit"
+              value={submitValue}
+            >
               {submitLabel}
-            </SubmitButton>
+            </Button>
           </div>
           {form.errors?.map((error, index) => (
             <FormStatus key={index} type="error">
@@ -131,31 +154,6 @@ export function DynamicForm<F extends Field>({
         </div>
       </form>
     </FormProvider>
-  );
-}
-
-function SubmitButton({
-  children,
-  name,
-  value,
-}: {
-  children: React.ReactNode;
-  name?: string;
-  value?: string;
-}) {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button
-      className="w-auto @xl:w-56"
-      loading={pending}
-      name={name}
-      size="medium"
-      type="submit"
-      value={value}
-    >
-      {children}
-    </Button>
   );
 }
 
@@ -173,9 +171,7 @@ function DynamicFormField({
       return (
         <NumberInput
           {...getInputProps(formField, { type: 'number' })}
-          decrementLabel={field.decrementLabel}
           errors={formField.errors}
-          incrementLabel={field.incrementLabel}
           key={field.name}
           label={field.label}
         />
