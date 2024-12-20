@@ -16,6 +16,7 @@ interface ProductDetailProduct {
   subtitle?: string;
   badge?: string;
   rating?: Streamable<number | null>;
+  summary?: Streamable<string>;
   description?: Streamable<string | React.ReactNode | null>;
 }
 
@@ -89,15 +90,10 @@ export function ProductDetail<F extends Field>({
                     </Stream>
                   </div>
 
-                  <Stream fallback={<ProductDescriptionSkeleton />} value={product.description}>
-                    {(description) =>
-                      description != null &&
-                      description !== '' &&
-                      (typeof product.description === 'string' ? (
-                        <p className="mb-6 text-contrast-500">{description}</p>
-                      ) : (
-                        <div className="mb-6 text-contrast-500">{description}</div>
-                      ))
+                  <Stream fallback={<ProductSummarySkeleton />} value={product.summary}>
+                    {(summary) =>
+                      summary !== undefined &&
+                      summary !== '' && <p className="mb-6 text-contrast-500">{summary}</p>
                     }
                   </Stream>
 
@@ -179,7 +175,7 @@ function RatingSkeleton() {
   );
 }
 
-function ProductDescriptionSkeleton() {
+function ProductSummarySkeleton() {
   return (
     <div className="flex w-full animate-pulse flex-col gap-3.5 pb-6">
       <div className="h-2.5 w-full bg-contrast-100" />
