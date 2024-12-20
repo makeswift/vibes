@@ -128,26 +128,14 @@ export function ProductDetail<F extends Field>({
                   </Stream>
 
                   <Stream fallback={<ProductDescriptionSkeleton />} value={product.description}>
-                    {(description) => {
-                      if (description === null || description === undefined) {
-                        return null;
-                      }
-
-                      if (typeof description === 'string') {
-                        return (
-                          <p className="border-y border-contrast-100 py-8 text-contrast-500">
-                            {description}
-                          </p>
-                        );
-                      }
-
-                      return (
-                        <div
-                          className="border-t border-contrast-100 py-8 text-contrast-500"
-                          dangerouslySetInnerHTML={{ __html: description }}
-                        />
-                      );
-                    }}
+                    {(description) =>
+                      description !== null &&
+                      description !== undefined && (
+                        <div className="border-t border-contrast-100 py-8 text-contrast-500">
+                          {description}
+                        </div>
+                      )
+                    }
                   </Stream>
 
                   <Stream fallback={<ProductAccordionsSkeleton />} value={product.accordions}>
