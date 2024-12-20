@@ -1,4 +1,5 @@
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
+import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';
 import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
 import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';
 import { Rating } from '@/vibes/soul/primitives/rating';
@@ -18,6 +19,12 @@ interface ProductDetailProduct {
   rating?: Streamable<number | null>;
   summary?: Streamable<string>;
   description?: Streamable<string | React.ReactNode | null>;
+  accordions?: Streamable<
+    Array<{
+      title: string;
+      content: React.ReactNode;
+    }>
+  >;
 }
 
 interface Props<F extends Field> {
@@ -136,11 +143,25 @@ export function ProductDetail<F extends Field>({
 
                       return (
                         <div
-                          className="border-y border-contrast-100 py-8 text-contrast-500"
+                          className="border-top border-contrast-100 py-8 text-contrast-500"
                           dangerouslySetInnerHTML={{ __html: description }}
                         />
                       );
                     }}
+                  </Stream>
+
+                  <Stream fallback={<ProductAccordionsSkeleton />} value={product.accordions}>
+                    {(accordions) =>
+                      accordions && (
+                        <Accordions className="border-top border-contrast-100 pt-4" type="multiple">
+                          {accordions.map((accordion, index) => (
+                            <Accordion key={index} title={accordion.title} value={index.toString()}>
+                              {accordion.content}
+                            </Accordion>
+                          ))}
+                        </Accordions>
+                      )
+                    }
                   </Stream>
                 </div>
               </div>
@@ -258,6 +279,34 @@ function ProductDetailSkeleton() {
         </div>
 
         <ProductDetailFormSkeleton />
+      </div>
+    </div>
+  );
+}
+
+function ProductAccordionsSkeleton() {
+  return (
+    <div className="flex h-[600px] w-full animate-pulse flex-col gap-8 pt-4">
+      <div className="flex items-center justify-between">
+        <div className="h-2 w-20 rounded-sm bg-contrast-100" />
+        <div className="h-3 w-3 rounded-full bg-contrast-100" />
+      </div>
+      <div className="mb-1 flex flex-col gap-4">
+        <div className="h-3 w-full rounded-sm bg-contrast-100" />
+        <div className="h-3 w-full rounded-sm bg-contrast-100" />
+        <div className="h-3 w-3/5 rounded-sm bg-contrast-100" />
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="h-2 w-24 rounded-sm bg-contrast-100" />
+        <div className="h-3 w-3 rounded-full bg-contrast-100" />
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="h-2 w-20 rounded-sm bg-contrast-100" />
+        <div className="h-3 w-3 rounded-full bg-contrast-100" />
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="h-2 w-32 rounded-sm bg-contrast-100" />
+        <div className="h-3 w-3 rounded-full bg-contrast-100" />
       </div>
     </div>
   );
