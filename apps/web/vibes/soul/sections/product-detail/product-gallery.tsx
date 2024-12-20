@@ -33,7 +33,7 @@ export function ProductGallery({ images, className, thumbnailLabel = 'View image
   };
 
   return (
-    <div className={clsx('sticky top-0 -mt-4 flex flex-col gap-2 pt-4 @2xl:flex-row', className)}>
+    <div className={clsx('sticky top-4 flex flex-col gap-2 @2xl:flex-row', className)}>
       <div
         className="w-full overflow-hidden rounded-xl @xl:rounded-2xl @2xl:order-2"
         ref={emblaRef}
