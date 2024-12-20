@@ -136,12 +136,6 @@ export const sections = [
     ],
   },
   {
-    name: 'product-description',
-    dependencies: [],
-    registryDependencies: ['accordions'],
-    files: ['sections/product-description/index.tsx'],
-  },
-  {
     name: 'reset-password-section',
     dependencies: [],
     registryDependencies: ['button', 'input'],

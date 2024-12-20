@@ -4,10 +4,6 @@ import { action as subscribeAction } from '@/vibes/soul/examples/primitives/inli
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric';
-import {
-  accordions,
-  productDescriptionImage,
-} from '@/vibes/soul/examples/sections/product-description/electric';
 import { action, fields } from '@/vibes/soul/examples/sections/product-detail/action';
 import { product } from '@/vibes/soul/examples/sections/product-detail/electric';
 import { reviews } from '@/vibes/soul/examples/sections/reviews';
@@ -16,7 +12,6 @@ import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
 import { IconBlock } from '@/vibes/soul/sections/icon-block';
-import { ProductDescription } from '@/vibes/soul/sections/product-description';
 import { ProductDetail } from '@/vibes/soul/sections/product-detail';
 import { Reviews } from '@/vibes/soul/sections/reviews';
 import { Subscribe } from '@/vibes/soul/sections/subscribe';
@@ -42,8 +37,6 @@ export default async function Preview() {
         />
 
         <ProductDetail action={action} fields={fields} product={product} />
-
-        <ProductDescription accordions={accordions} image={productDescriptionImage} />
 
         <IconBlock
           list={[
