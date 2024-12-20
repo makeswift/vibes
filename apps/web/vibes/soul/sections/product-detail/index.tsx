@@ -127,7 +127,7 @@ export function ProductDetail<F extends Field>({
                     )}
                   </Stream>
 
-                  <Stream fallback={<ProductSummarySkeleton />} value={product.description}>
+                  <Stream fallback={<ProductDescriptionSkeleton />} value={product.description}>
                     {(description) => {
                       if (description === null || description === undefined) {
                         return null;
@@ -229,6 +229,16 @@ function ProductSummarySkeleton() {
   );
 }
 
+function ProductDescriptionSkeleton() {
+  return (
+    <div className="flex w-full animate-pulse flex-col gap-3.5 pb-6">
+      <div className="h-2.5 w-full bg-contrast-100" />
+      <div className="h-2.5 w-full bg-contrast-100" />
+      <div className="h-2.5 w-3/4 bg-contrast-100" />
+    </div>
+  );
+}
+
 function ProductDetailFormSkeleton() {
   return (
     <div className="flex animate-pulse flex-col gap-8 py-8">
@@ -258,32 +268,6 @@ function ProductDetailFormSkeleton() {
   );
 }
 
-function ProductDetailSkeleton() {
-  return (
-    <div className="grid animate-pulse grid-cols-1 items-stretch gap-x-6 gap-y-8 @2xl:grid-cols-2 @5xl:gap-x-12">
-      <div className="hidden @2xl:block">
-        <ProductGallerySkeleton />
-      </div>
-
-      <div>
-        <div className="mb-6 h-4 w-20 rounded-lg bg-contrast-100" />
-
-        <div className="mb-6 h-6 w-72 rounded-lg bg-contrast-100" />
-
-        <RatingSkeleton />
-
-        <PriceLabelSkeleton />
-
-        <div className="mb-8 @2xl:hidden">
-          <ProductGallerySkeleton />
-        </div>
-
-        <ProductDetailFormSkeleton />
-      </div>
-    </div>
-  );
-}
-
 function ProductAccordionsSkeleton() {
   return (
     <div className="flex h-[600px] w-full animate-pulse flex-col gap-8 pt-4">
@@ -307,6 +291,34 @@ function ProductAccordionsSkeleton() {
       <div className="flex items-center justify-between">
         <div className="h-2 w-32 rounded-sm bg-contrast-100" />
         <div className="h-3 w-3 rounded-full bg-contrast-100" />
+      </div>
+    </div>
+  );
+}
+
+function ProductDetailSkeleton() {
+  return (
+    <div className="grid animate-pulse grid-cols-1 items-stretch gap-x-6 gap-y-8 @2xl:grid-cols-2 @5xl:gap-x-12">
+      <div className="hidden @2xl:block">
+        <ProductGallerySkeleton />
+      </div>
+
+      <div>
+        <div className="mb-6 h-4 w-20 rounded-lg bg-contrast-100" />
+
+        <div className="mb-6 h-6 w-72 rounded-lg bg-contrast-100" />
+
+        <RatingSkeleton />
+
+        <PriceLabelSkeleton />
+
+        <ProductSummarySkeleton />
+
+        <div className="mb-8 @2xl:hidden">
+          <ProductGallerySkeleton />
+        </div>
+
+        <ProductDetailFormSkeleton />
       </div>
     </div>
   );
