@@ -32,8 +32,11 @@ export function ProductGallery({ images, className }: Props) {
   };
 
   return (
-    <div className={clsx('sticky top-0 -mt-4 pt-4 @container', className)}>
-      <div className="w-full overflow-hidden rounded-xl @xl:rounded-2xl" ref={emblaRef}>
+    <div className={clsx('sticky top-0 -mt-4 flex flex-col gap-2 pt-4 @2xl:flex-row', className)}>
+      <div
+        className="w-full overflow-hidden rounded-xl @xl:rounded-2xl @2xl:order-2"
+        ref={emblaRef}
+      >
         <div className="flex">
           {images.map((image, idx) => (
             <div className="relative aspect-[4/5] w-full shrink-0 grow-0 basis-full " key={idx}>
@@ -49,8 +52,7 @@ export function ProductGallery({ images, className }: Props) {
           ))}
         </div>
       </div>
-
-      <div className="mt-2 flex max-w-full gap-2 overflow-x-auto">
+      <div className="flex max-w-full shrink-0 flex-row gap-2 overflow-x-auto @2xl:order-1 @2xl:flex-col">
         {images.map((image, index) => (
           <button
             aria-label={`View image number ${index + 1}`}
