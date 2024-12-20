@@ -56,7 +56,7 @@ export function ProductDetail<F extends Field>({
 }: Props<F>) {
   return (
     <section className="@container">
-      <div className="mx-auto w-full px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+      <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
         {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} className="mb-6" />}
 
         <Stream fallback={<ProductDetailSkeleton />} value={streamableProduct}>
