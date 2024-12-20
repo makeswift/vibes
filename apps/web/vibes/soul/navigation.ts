@@ -125,12 +125,6 @@ export const navigation = [
         component: 'products-carousel',
       },
       {
-        title: 'Product Description',
-        slug: 'product-description',
-        file: 'docs/product-description.mdx',
-        component: 'product-description',
-      },
-      {
         title: 'Product List',
         slug: 'products-list',
         file: 'docs/products-list.mdx',
