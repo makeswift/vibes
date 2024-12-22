@@ -13,6 +13,7 @@ import {
   ProductCard,
   ProductCardSkeleton,
 } from '@/vibes/soul/primitives/product-card';
+import { Skeleton, SkeletonWrapper } from '@/vibes/soul/primitives/skeleton';
 
 export type CarouselProduct = CardProduct;
 
@@ -47,10 +48,11 @@ export function ProductsCarousel({
 }: Props) {
   return (
     <Stream
-      fallback={<ProductsCarouselSkeleton pending placeholderCount={placeholderCount} />}
+      fallback={<ProductsCarouselSkeleton placeholderCount={placeholderCount} />}
       value={streamableProducts}
     >
       {(products) => {
+        return <ProductsCarouselSkeleton placeholderCount={placeholderCount} />;
         if (products.length === 0) {
           return (
             <ProductsCarouselEmptyState
@@ -102,26 +104,27 @@ export function ProductsCarousel({
 export function ProductsCarouselSkeleton({
   className,
   placeholderCount = 8,
-  pending = false,
 }: {
   className?: string;
   placeholderCount?: number;
-  pending?: boolean;
 }) {
   return (
-    <Carousel className={className} data-pending={pending ? '' : undefined}>
-      <CarouselContent className="mb-10">
-        {Array.from({ length: placeholderCount }).map((_, index) => (
-          <CarouselItem
-            className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-            key={index}
-          >
-            <ProductCardSkeleton />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <div className="h-6 w-56 animate-pulse bg-contrast-100" />
-    </Carousel>
+    <SkeletonWrapper>
+      <Carousel className={className}>
+        <CarouselContent className="mb-10">
+          {Array.from({ length: placeholderCount }).map((_, index) => (
+            <CarouselItem
+              className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+              key={index}
+            >
+              <ProductCardSkeleton />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <Skeleton type="box" />
+        <Skeleton childClassName="h-1 w-56" parentClassName="h-6" type="box" />
+      </Carousel>
+    </SkeletonWrapper>
   );
 }
 
