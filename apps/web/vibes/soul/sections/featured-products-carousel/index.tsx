@@ -49,17 +49,15 @@ export function FeaturedProductsCarousel({
             <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
           )}
         </div>
-        <div className="group-has-[[data-pending]]/pending:animate-pulse">
-          <ProductsCarousel
-            emptyStateSubtitle={emptyStateSubtitle}
-            emptyStateTitle={emptyStateTitle}
-            nextLabel={nextLabel}
-            placeholderCount={placeholderCount}
-            previousLabel={previousLabel}
-            products={products}
-            scrollbarLabel={scrollbarLabel}
-          />
-        </div>
+        <ProductsCarousel
+          emptyStateSubtitle={emptyStateSubtitle}
+          emptyStateTitle={emptyStateTitle}
+          nextLabel={nextLabel}
+          placeholderCount={placeholderCount}
+          previousLabel={previousLabel}
+          products={products}
+          scrollbarLabel={scrollbarLabel}
+        />
       </div>
     </section>
   );
