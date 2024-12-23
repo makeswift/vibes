@@ -20,10 +20,13 @@ export default function Preview() {
         },
       ]}
       description="Expert Tips & Inspiration for Every Plant Lover"
+      emptyStateSubtitle="Check back later for more content"
+      emptyStateTitle="No blog posts found"
       paginationInfo={{
         startCursor: '1',
         endCursor: '5',
       }}
+      placeholderCount={6}
       posts={blogPostsPromise}
       title="Plant Life"
     />
