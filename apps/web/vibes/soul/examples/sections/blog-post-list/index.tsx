@@ -1,7 +1,7 @@
-import { BlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
 
-export const posts: BlogPost[] = [
+export const posts: BlogPostCardBlogPost[] = [
   {
     id: '5',
     title: 'A Guide to Low-Light Houseplants',
@@ -122,7 +122,7 @@ export const posts: BlogPost[] = [
 ];
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPost[]>((resolve) => {
+  const blogPostsPromise = new Promise<BlogPostCardBlogPost[]>((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 

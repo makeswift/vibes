@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export interface BlogPost {
+export interface BlogPostCardBlogPost {
   id: string;
   author?: string | null;
   content: string;
@@ -13,10 +13,16 @@ export interface BlogPost {
   };
   href: string;
   title: string;
+}
+
+interface Props {
+  blogPost: BlogPostCardBlogPost;
   className?: string;
 }
 
-export function BlogPostCard({ title, image, content, href, date, author, className }: BlogPost) {
+export function BlogPostCard({ blogPost, className }: Props) {
+  const { author, content, date, href, image, title } = blogPost;
+
   return (
     <Link
       className={clsx(
