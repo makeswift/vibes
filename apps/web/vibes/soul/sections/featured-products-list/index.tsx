@@ -49,15 +49,13 @@ export function FeaturedProductsList({
       }
       sidebarSize="1/3"
     >
-      <div className="group-has-[[data-pending]]/pending:animate-pulse">
-        <ProductsList
-          className="flex-1"
-          emptyStateSubtitle={emptyStateSubtitle}
-          emptyStateTitle={emptyStateTitle}
-          placeholderCount={placeholderCount}
-          products={products}
-        />
-      </div>
+      <ProductsList
+        className="flex-1"
+        emptyStateSubtitle={emptyStateSubtitle}
+        emptyStateTitle={emptyStateTitle}
+        placeholderCount={placeholderCount}
+        products={products}
+      />
     </StickySidebarLayout>
   );
 }

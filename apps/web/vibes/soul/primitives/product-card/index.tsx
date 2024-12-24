@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { Badge } from '@/vibes/soul/primitives/badge';
 import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';
+import { Skeleton } from '@/vibes/soul/primitives/skeleton';
 
 import { Compare } from './compare';
 
@@ -164,19 +165,17 @@ export function ProductCard({
 export function ProductCardSkeleton({ className }: { className?: string }) {
   return (
     <div className={className}>
-      <div className="flex aspect-[5/6] flex-col gap-2 rounded-xl bg-contrast-100 @md:rounded-2xl" />
+      <Skeleton
+        aspectRatio="5:6"
+        childClassName="rounded-xl w-full h-full @md:rounded-2xl"
+        type="image"
+      />
       <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row">
         <div className="flex-1">
           <div className="flex flex-col text-base">
-            <div className="flex h-[1lh] items-center">
-              <span className="block h-[1ex] w-[10ch] rounded-sm bg-contrast-100" />
-            </div>
-            <div className="mb-2 flex h-[1lh] items-center text-sm font-normal text-contrast-400">
-              <span className="block h-[1ex] w-[8ch] rounded-sm bg-contrast-100" />
-            </div>
-            <div className="flex h-[1lh] items-center">
-              <span className="block h-[1ex] w-[5ch] rounded-sm bg-contrast-100" />
-            </div>
+            <Skeleton characterCount={10} rounded="base" type="text" />
+            <Skeleton characterCount={8} rounded="base" type="text" />
+            <Skeleton characterCount={5} rounded="base" type="text" />
           </div>
         </div>
       </div>
