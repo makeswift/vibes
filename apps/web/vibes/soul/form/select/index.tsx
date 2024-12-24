@@ -13,6 +13,7 @@ type Props = {
   name: string;
   placeholder?: string;
   label?: string;
+  hideLabel?: boolean;
   variant?: 'round' | 'rectangle';
   options: Array<{ label: string; value: string }>;
   className?: string;
@@ -24,6 +25,7 @@ type Props = {
 
 export function Select({
   label,
+  hideLabel = false,
   name,
   placeholder = 'Select an item',
   variant = 'rectangle',
@@ -39,8 +41,12 @@ export function Select({
   const id = React.useId();
 
   return (
-    <div className={clsx('space-y-2', className)}>
-      {label !== undefined && label !== '' && <Label htmlFor={id}>{label}</Label>}
+    <div className={className}>
+      {label !== undefined && label !== '' && (
+        <Label className={clsx(hideLabel && 'sr-only', 'mb-2')} htmlFor={id}>
+          {label}
+        </Label>
+      )}
       <SelectPrimitive.Root {...rest} value={value}>
         <SelectPrimitive.Trigger
           aria-label={label}
@@ -67,7 +73,7 @@ export function Select({
             <SelectPrimitive.Viewport>
               {options.map((option) => (
                 <SelectPrimitive.Item
-                  className="w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors hover:bg-contrast-100 hover:text-foreground data-[state=checked]:text-foreground @4xl:text-base"
+                  className="w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium text-contrast-400 outline-none transition-colors hover:bg-contrast-100 hover:text-foreground focus-visible:bg-contrast-100 focus-visible:text-foreground data-[state=checked]:text-foreground @4xl:text-base"
                   key={option.value}
                   onMouseEnter={() => {
                     onOptionMouseEnter?.(option.value);
