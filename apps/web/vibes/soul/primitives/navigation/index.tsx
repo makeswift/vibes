@@ -461,7 +461,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                               </li>
                             )}
 
-                            {group.links.map((link, idx) => (
+                            {group.links?.map((link, idx) => (
                               // Third Level Links
                               <li key={idx}>
                                 <Link

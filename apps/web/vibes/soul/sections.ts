@@ -20,6 +20,12 @@ export const sections = [
     files: ['sections/address-list-section/index.tsx'],
   },
   {
+    name: 'blog-post-content',
+    dependencies: ['clsx'],
+    registryDependencies: ['breadcrumbs', 'button-link'],
+    files: ['sections/blog-post-content/index.tsx'],
+  },
+  {
     name: 'blog-post-list',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -56,6 +62,18 @@ export const sections = [
     files: ['sections/discount/index.tsx'],
   },
   {
+    name: 'feature',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['button', 'icon'],
+    files: ['sections/feature/index.tsx', 'primitives/icon/index.tsx'],
+  },
+  {
+    name: 'featured-video',
+    dependencies: ['clsx'],
+    registryDependencies: ['button'],
+    files: ['sections/featured-video/index.tsx'],
+  },
+  {
     name: 'featured-blog-post-list',
     dependencies: [],
     registryDependencies: ['button', 'blog-post-card'],
@@ -63,20 +81,20 @@ export const sections = [
   },
   {
     name: 'featured-image',
-    dependencies: [],
-    registryDependencies: ['button'],
+    dependencies: ['clsx'],
+    registryDependencies: ['button-link'],
     files: ['sections/featured-image/index.tsx'],
   },
   {
     name: 'featured-products-carousel',
     dependencies: [],
-    registryDependencies: ['products-carousel'],
+    registryDependencies: ['products-carousel', 'animated-link'],
     files: ['sections/featured-products-carousel/index.tsx'],
   },
   {
     name: 'featured-products-list',
     dependencies: [],
-    registryDependencies: ['button', 'product-card'],
+    registryDependencies: ['button-link', 'product-card', 'products-list', 'sticky-sidebar-layout'],
     files: ['sections/featured-products-list/index.tsx'],
   },
   {
@@ -175,14 +193,20 @@ export const sections = [
   },
   {
     name: 'slideshow',
-    dependencies: ['clsx'],
-    registryDependencies: [],
+    dependencies: ['clsx', 'embla-carousel', 'embla-carousel-autoplay', 'embla-carousel-fade', 'embla-carousel-react', 'lucide-react'],
+    registryDependencies: ['ButtonLink'],
     files: ['sections/slideshow/index.tsx'],
   },
   {
-    name: 'subscribe',
+    name: 'sticky-sidebar-layout',
     dependencies: ['clsx'],
-    registryDependencies: ['input'],
+    registryDependencies: [],
+    files: ['sections/sticky-sidebar-layout/index.tsx'],
+  },
+  {
+    name: 'subscribe',
+    dependencies: ['clsx', '@conform-to/react'],
+    registryDependencies: ['inline-email-form'],
     files: ['sections/subscribe/index.tsx'],
   },
 ] satisfies Components;
