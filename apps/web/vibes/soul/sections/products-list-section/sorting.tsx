@@ -1,12 +1,10 @@
 'use client';
 
 import { parseAsString, useQueryState } from 'nuqs';
-import { use, useOptimistic } from 'react';
+import { useOptimistic, useTransition } from 'react';
 
 import { Select } from '@/vibes/soul/form/select';
 import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable';
-
-import { ProductListTransitionContext } from './context';
 
 export interface Option {
   label: string;
@@ -31,7 +29,7 @@ export function Sorting({
     parseAsString.withDefault(defaultValue).withOptions({ shallow: false, history: 'push' }),
   );
   const [optimisticParam, setOptimisticParam] = useOptimistic(param);
-  const [, startTransition] = use(ProductListTransitionContext);
+  const [isPending, startTransition] = useTransition();
   const options = useStreamable(streamableOptions);
   const label = useStreamable(streamableLabel) ?? 'Sort';
   const placeholder = useStreamable(streamablePlaceholder) ?? 'Sort by';
@@ -48,6 +46,7 @@ export function Sorting({
         });
       }}
       options={options}
+      pending={isPending}
       placeholder={placeholder}
       value={optimisticParam}
       variant="round"
