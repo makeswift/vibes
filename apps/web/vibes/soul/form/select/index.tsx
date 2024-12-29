@@ -11,6 +11,7 @@ import { Label } from '@/vibes/soul/form/label';
 type Props = {
   id?: string;
   name: string;
+  pending?: boolean;
   placeholder?: string;
   label?: string;
   hideLabel?: boolean;
@@ -27,6 +28,7 @@ export function Select({
   label,
   hideLabel = false,
   name,
+  pending = false,
   placeholder = 'Select an item',
   variant = 'rectangle',
   options,
@@ -55,6 +57,7 @@ export function Select({
             variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',
             errors && errors.length > 0 ? 'border-error' : 'border-contrast-100',
           )}
+          data-pending={pending ? true : null}
           id={id}
           name={name}
           onBlur={onBlur}
