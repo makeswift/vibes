@@ -327,6 +327,11 @@ export const navigation = [
         slug: 'page-not-found',
         file: 'docs/page-not-found.mdx',
       },
+      {
+        title: 'Error',
+        slug: 'page-error',
+        file: 'docs/page-error.mdx',
+      },
     ],
   },
   {
