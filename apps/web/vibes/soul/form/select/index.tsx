@@ -49,7 +49,7 @@ export function Select({
           {label}
         </Label>
       )}
-      <SelectPrimitive.Root {...rest} value={value}>
+      <SelectPrimitive.Root {...rest} name={name} value={value}>
         <SelectPrimitive.Trigger
           aria-label={label}
           className={clsx(
@@ -59,7 +59,6 @@ export function Select({
           )}
           data-pending={pending ? true : null}
           id={id}
-          name={name}
           onBlur={onBlur}
           onFocus={onFocus}
         >
