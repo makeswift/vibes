@@ -2,7 +2,7 @@
 
 import * as AccordionsPrimitive from '@radix-ui/react-accordion';
 import { clsx } from 'clsx';
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
@@ -33,6 +33,12 @@ function Accordion({
 }: React.ComponentPropsWithoutRef<typeof AccordionsPrimitive.Item> & {
   colorScheme?: 'light' | 'dark';
 }) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <AccordionsPrimitive.Item {...rest}>
       <AccordionsPrimitive.Header>
@@ -62,7 +68,14 @@ function Accordion({
           </div>
         </AccordionsPrimitive.Trigger>
       </AccordionsPrimitive.Header>
-      <AccordionsPrimitive.Content className="overflow-hidden data-[state=closed]:animate-collapse data-[state=open]:animate-expand">
+      <AccordionsPrimitive.Content
+        className={clsx(
+          'overflow-hidden',
+          // We need to delay the animation until the component is mounted to avoid the animation
+          // from being triggered when the component is first rendered.
+          isMounted && 'data-[state=closed]:animate-collapse data-[state=open]:animate-expand',
+        )}
+      >
         <div
           className={clsx(
             'pb-5 font-[family-name:var(--accordion-content-font-family)] font-medium leading-normal',
