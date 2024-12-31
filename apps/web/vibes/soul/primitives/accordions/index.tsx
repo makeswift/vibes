@@ -42,30 +42,28 @@ function Accordion({
   return (
     <AccordionsPrimitive.Item {...rest}>
       <AccordionsPrimitive.Header>
-        <AccordionsPrimitive.Trigger asChild>
-          <div className="group cursor-pointer items-start gap-8 py-3 last:flex @md:py-4">
-            <div
-              className={clsx(
-                'flex-1 select-none font-[family-name:var(--accordion-title-font-family,var(--font-family-mono))] text-sm uppercase transition-colors duration-300 ease-out',
-                {
-                  light:
-                    'text-[var(--accordion-light-title-text,hsl(var(--contrast-400)))] group-hover:text-[var(--accordion-light-title-text-hover,hsl(var(--foreground)))]',
-                  dark: 'text-[var(--accordion-dark-title-text,hsl(var(--contrast-200)))] group-hover:text-[var(--accordion-dark-title-text-hover,hsl(var(--background)))]',
-                }[colorScheme],
-              )}
-            >
-              {title}
-            </div>
-            <AnimatedChevron
-              className={clsx(
-                {
-                  light:
-                    'stroke-[var(--accordion-light-title-icon,hsl(var(--contrast-500)))] group-hover:stroke-[var(--accordion-light-title-icon-hover,hsl(var(--foreground)))]',
-                  dark: 'stroke-[var(--accordion-dark-title-icon,hsl(var(--contrast-200)))] group-hover:stroke-[var(--accordion-dark-title-icon-hover,hsl(var(--background)))]',
-                }[colorScheme],
-              )}
-            />
+        <AccordionsPrimitive.Trigger className="group flex w-full cursor-pointer items-start gap-8 py-3 text-start @md:py-4">
+          <div
+            className={clsx(
+              'flex-1 select-none font-[family-name:var(--accordion-title-font-family,var(--font-family-mono))] text-sm uppercase transition-colors duration-300 ease-out',
+              {
+                light:
+                  'text-[var(--accordion-light-title-text,hsl(var(--contrast-400)))] group-hover:text-[var(--accordion-light-title-text-hover,hsl(var(--foreground)))]',
+                dark: 'text-[var(--accordion-dark-title-text,hsl(var(--contrast-200)))] group-hover:text-[var(--accordion-dark-title-text-hover,hsl(var(--background)))]',
+              }[colorScheme],
+            )}
+          >
+            {title}
           </div>
+          <AnimatedChevron
+            className={clsx(
+              {
+                light:
+                  'stroke-[var(--accordion-light-title-icon,hsl(var(--contrast-500)))] group-hover:stroke-[var(--accordion-light-title-icon-hover,hsl(var(--foreground)))]',
+                dark: 'stroke-[var(--accordion-dark-title-icon,hsl(var(--contrast-200)))] group-hover:stroke-[var(--accordion-dark-title-icon-hover,hsl(var(--background)))]',
+              }[colorScheme],
+            )}
+          />
         </AccordionsPrimitive.Trigger>
       </AccordionsPrimitive.Header>
       <AccordionsPrimitive.Content
