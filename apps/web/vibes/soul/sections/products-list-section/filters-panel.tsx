@@ -5,7 +5,6 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { ArrowRight } from 'lucide-react';
 import { parseAsString, useQueryStates } from 'nuqs';
 import { Suspense, useOptimistic, useState, useTransition } from 'react';
 
@@ -54,9 +53,10 @@ export type Filter = ToggleGroupFilter | RangeFilter | RatingFilter;
 
 interface Props {
   className?: string;
-  filters: Filter[] | Promise<Filter[]>;
-  resetFiltersLabel?: string;
+  filters: Streamable<Filter[]>;
+  resetFiltersLabel?: Streamable<string>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
+  rangeFilterApplyLabel?: Streamable<string>;
 }
 
 function getParamCountLabel(params: Record<string, string | null | string[]>, key: string) {
@@ -65,12 +65,18 @@ function getParamCountLabel(params: Record<string, string | null | string[]>, ke
   return '';
 }
 
-export function FiltersPanel({ className, filters, resetFiltersLabel }: Props) {
+export function FiltersPanel({
+  className,
+  filters,
+  resetFiltersLabel,
+  rangeFilterApplyLabel,
+}: Props) {
   return (
     <Suspense fallback={<FiltersSkeleton />}>
       <FiltersPanelInner
         className={className}
         filters={filters}
+        rangeFilterApplyLabel={rangeFilterApplyLabel}
         resetFiltersLabel={resetFiltersLabel}
       />
     </Suspense>
@@ -80,10 +86,13 @@ export function FiltersPanel({ className, filters, resetFiltersLabel }: Props) {
 export function FiltersPanelInner({
   className,
   filters: streamableFilters,
-  resetFiltersLabel = 'Reset filters',
+  resetFiltersLabel: streamableResetFiltersLabel,
+  rangeFilterApplyLabel: streamableRangeFilterApplyLabel,
   paginationInfo: streamablePaginationInfo,
 }: Props) {
   const filters = useStreamable(streamableFilters);
+  const resetFiltersLabel = useStreamable(streamableResetFiltersLabel) ?? 'Reset filters';
+  const rangeFilterApplyLabel = useStreamable(streamableRangeFilterApplyLabel);
   const paginationInfo = useStreamable(streamablePaginationInfo);
   const startCursorParamName = paginationInfo?.startCursorParamName ?? 'before';
   const endCursorParamName = paginationInfo?.endCursorParamName ?? 'after';
@@ -161,78 +170,38 @@ export function FiltersPanelInner({
             case 'range':
               return (
                 <Accordion key={key} title={filter.label} value={value}>
-                  <div className="flex items-center gap-2">
-                    <RangeInput
-                      disabled={filter.disabled}
-                      max={filter.max}
-                      maxLabel={filter.maxLabel}
-                      maxName={filter.minParamName}
-                      maxPlaceholder={filter.maxPlaceholder}
-                      maxPrepend={filter.maxPrepend}
-                      maxValue={optimisticParams[filter.maxParamName] ?? null}
-                      min={filter.min}
-                      minLabel={filter.minLabel}
-                      minName={filter.minParamName}
-                      minPlaceholder={filter.minPlaceholder}
-                      minPrepend={filter.minPrepend}
-                      minValue={optimisticParams[filter.minParamName] ?? null}
-                      onMaxValueChange={(maxValue) => {
-                        startTransition(async () => {
-                          const nextParams = {
-                            ...optimisticParams,
-                            [filter.maxParamName]: maxValue,
-                            [startCursorParamName]: null,
-                            [endCursorParamName]: null,
-                          };
+                  <RangeInput
+                    applyLabel={rangeFilterApplyLabel}
+                    disabled={filter.disabled}
+                    max={filter.max}
+                    maxLabel={filter.maxLabel}
+                    maxName={filter.maxParamName}
+                    maxPlaceholder={filter.maxPlaceholder}
+                    maxPrepend={filter.maxPrepend}
+                    min={filter.min}
+                    minLabel={filter.minLabel}
+                    minName={filter.minParamName}
+                    minPlaceholder={filter.minPlaceholder}
+                    minPrepend={filter.minPrepend}
+                    onChange={({ min, max }) => {
+                      startTransition(async () => {
+                        const nextParams = {
+                          ...optimisticParams,
+                          [filter.minParamName]: min,
+                          [filter.maxParamName]: max,
+                          [startCursorParamName]: null,
+                          [endCursorParamName]: null,
+                        };
 
-                          setOptimisticParams(nextParams);
-                          await setParams(nextParams);
-                        });
-                      }}
-                      onMinValueChange={(minValue) => {
-                        startTransition(async () => {
-                          const nextParams = {
-                            ...optimisticParams,
-                            [filter.minParamName]: minValue,
-                            [startCursorParamName]: null,
-                            [endCursorParamName]: null,
-                          };
-
-                          setOptimisticParams(nextParams);
-                          await setParams(nextParams);
-                        });
-                      }}
-                    />
-                    <Button
-                      className="shrink-0"
-                      disabled={
-                        filter.disabled === true ||
-                        !(
-                          optimisticParams[filter.minParamName] !==
-                          optimisticParams[filter.maxParamName]
-                        )
-                      }
-                      onClick={() => {
-                        startTransition(async () => {
-                          const nextParams = {
-                            ...optimisticParams,
-                            [filter.minParamName]: optimisticParams[filter.minParamName],
-                            [filter.maxParamName]: optimisticParams[filter.maxParamName],
-                            [startCursorParamName]: null,
-                            [endCursorParamName]: null,
-                          };
-
-                          setOptimisticParams(nextParams);
-                          await setParams(nextParams);
-                        });
-                      }}
-                      shape="circle"
-                      size="small"
-                      variant="secondary"
-                    >
-                      <ArrowRight size={20} strokeWidth={1} />
-                    </Button>
-                  </div>
+                        setOptimisticParams(nextParams);
+                        await setParams(nextParams);
+                      });
+                    }}
+                    value={{
+                      min: optimisticParams[filter.minParamName] ?? null,
+                      max: optimisticParams[filter.maxParamName] ?? null,
+                    }}
+                  />
                 </Accordion>
               );
 
