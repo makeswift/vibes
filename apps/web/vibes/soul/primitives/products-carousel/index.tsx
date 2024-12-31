@@ -13,6 +13,7 @@ import {
   ProductCard,
   ProductCardSkeleton,
 } from '@/vibes/soul/primitives/product-card';
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export type CarouselProduct = CardProduct;
 
@@ -47,7 +48,7 @@ export function ProductsCarousel({
 }: Props) {
   return (
     <Stream
-      fallback={<ProductsCarouselSkeleton pending placeholderCount={placeholderCount} />}
+      fallback={<ProductsCarouselSkeleton placeholderCount={placeholderCount} />}
       value={streamableProducts}
     >
       {(products) => {
@@ -102,26 +103,28 @@ export function ProductsCarousel({
 export function ProductsCarouselSkeleton({
   className,
   placeholderCount = 8,
-  pending = false,
 }: {
   className?: string;
   placeholderCount?: number;
-  pending?: boolean;
 }) {
   return (
-    <Carousel className={className} data-pending={pending ? '' : undefined}>
-      <CarouselContent className="mb-10">
-        {Array.from({ length: placeholderCount }).map((_, index) => (
-          <CarouselItem
-            className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-            key={index}
-          >
-            <ProductCardSkeleton />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <div className="h-6 w-56 animate-pulse bg-contrast-100" />
-    </Carousel>
+    <Skeleton.Pending>
+      <Carousel className={className}>
+        <CarouselContent className="mb-10">
+          {Array.from({ length: placeholderCount }).map((_, index) => (
+            <CarouselItem
+              className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+              key={index}
+            >
+              <ProductCardSkeleton />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="flex items-center py-2.5">
+          <Skeleton.Box height="0.25rem" width="14rem" />
+        </div>
+      </Carousel>
+    </Skeleton.Pending>
   );
 }
 
