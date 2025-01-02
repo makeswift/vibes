@@ -48,6 +48,14 @@ const paymentIconsArray: React.ReactNode[] = [
   <Bitcoin key="Bitcoin" />,
 ];
 
+async function ctaAction() {
+  'use server';
+
+  await new Promise<void>((resolve) => {
+    setTimeout(() => resolve(), 1000);
+  });
+}
+
 export default function Preview() {
   return (
     <>
@@ -67,7 +75,7 @@ export default function Preview() {
         searchHref="#"
       />
 
-      <Error cta={{ label: 'Try again', href: '#' }} />
+      <Error ctaAction={ctaAction} />
 
       <Subscribe
         action={action}

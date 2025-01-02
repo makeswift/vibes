@@ -34,6 +34,7 @@
     "@typescript-eslint/no-shadow": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
     "@typescript-eslint/no-unnecessary-condition": "error",
+    "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": { "attributes": false } }],
     "@typescript-eslint/strict-boolean-expressions": ["error", { "allowString": false }],
     "complexity": ["error", 20],
     "eqeqeq": ["error", "smart"],

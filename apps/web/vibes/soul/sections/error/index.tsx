@@ -1,20 +1,17 @@
-import { ButtonLink } from '@/vibes/soul/primitives/button-link';
-
-interface Link {
-  label: string;
-  href: string;
-}
+import { Button } from '@/vibes/soul/primitives/button';
 
 interface Props {
   title?: string;
   subtitle?: string;
-  cta?: Link;
+  ctaLabel?: string;
+  ctaAction?: () => void | Promise<void>;
 }
 
 export function Error({
   title = 'Something went wrong!',
   subtitle = 'Please try again or contact our support team for assistance.',
-  cta,
+  ctaLabel = 'Try again',
+  ctaAction,
 }: Props) {
   return (
     <section className="@container">
@@ -24,10 +21,12 @@ export function Error({
         </h1>
         <p className="text-lg text-contrast-500">{subtitle}</p>
 
-        {cta !== undefined && cta.href !== '' && cta.label !== '' && (
-          <ButtonLink className="mt-8" href={cta.href} size="large" type="button" variant="primary">
-            {cta.label}
-          </ButtonLink>
+        {ctaAction && (
+          <form action={ctaAction}>
+            <Button className="mt-8" size="large" type="submit" variant="primary">
+              {ctaLabel}
+            </Button>
+          </form>
         )}
       </div>
     </section>
