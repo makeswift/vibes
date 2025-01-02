@@ -5,11 +5,13 @@ import { parseWithZod } from '@conform-to/zod';
 import { clsx } from 'clsx';
 import { ArrowRight, Minus, Plus, Trash2 } from 'lucide-react';
 import Image from 'next/image';
-import { startTransition, Suspense, use, useActionState, useEffect, useOptimistic } from 'react';
+import { startTransition, useActionState, useEffect, useOptimistic } from 'react';
 import { useFormStatus } from 'react-dom';
 
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Button } from '@/vibes/soul/primitives/button';
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
+import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 import { cartLineItemActionFormDataSchema } from './schema';
@@ -25,18 +27,9 @@ export interface CartLineItem {
   price: string;
 }
 
-interface CartSummary {
-  title?: string;
-  caption?: string;
-  subtotalLabel?: string;
-  subtotal: string | Promise<string>;
-  shippingLabel?: string;
-  shipping?: string;
-  taxLabel?: string;
-  tax?: string | Promise<string>;
-  grandTotalLabel?: string;
-  grandTotal?: string | Promise<string>;
-  ctaLabel?: string;
+interface CartSummaryLineItem {
+  label: string;
+  value: string;
 }
 
 interface CartEmptyState {
@@ -53,71 +46,62 @@ interface CartState<LineItem extends CartLineItem> {
   lastResult: SubmissionResult | null;
 }
 
+export interface Cart<LineItem extends CartLineItem> {
+  lineItems: LineItem[];
+  summaryLineItems: CartSummaryLineItem[];
+  total: string;
+}
+
 interface CartProps<LineItem extends CartLineItem> {
   title?: string;
-  lineItems: LineItem[] | Promise<LineItem[]>;
-  summary: CartSummary;
-  emptyState: CartEmptyState;
+  summaryTitle?: string;
+  emptyState?: CartEmptyState;
   lineItemAction: Action<CartState<LineItem>, FormData>;
   checkoutAction: Action<SubmissionResult | null, FormData>;
+  checkoutLabel?: string;
+  summaryTotalLabel?: string;
   deleteLineItemLabel?: string;
   decrementLineItemLabel?: string;
   incrementLineItemLabel?: string;
 }
 
+const defaultEmptyState = {
+  title: 'Your cart is empty',
+  subtitle: 'Add some products to get started.',
+  cta: { label: 'Continue shopping', href: '#' },
+};
+
 export function Cart<LineItem extends CartLineItem>({
+  cart: streamableCart,
   title = 'Cart',
-  lineItems,
-  lineItemAction,
-  checkoutAction,
-  summary,
-  emptyState,
-  deleteLineItemLabel,
-  decrementLineItemLabel,
-  incrementLineItemLabel,
-}: CartProps<LineItem>) {
+  summaryTitle = 'Summary',
+  ...rest
+}: CartProps<LineItem> & { cart: Streamable<Cart<LineItem>> }) {
   return (
-    <Suspense fallback={<CartSkeleton title={title} />}>
-      <CartInner
-        checkoutAction={checkoutAction}
-        decrementLineItemLabel={decrementLineItemLabel}
-        deleteLineItemLabel={deleteLineItemLabel}
-        emptyState={emptyState}
-        incrementLineItemLabel={incrementLineItemLabel}
-        lineItemAction={lineItemAction}
-        lineItems={lineItems}
-        summary={summary}
-        title={title}
-      />
-    </Suspense>
+    <Stream
+      fallback={<CartSkeleton summaryTitle={summaryTitle} title={title} />}
+      value={streamableCart}
+    >
+      {(cart) => <CartInner {...rest} cart={cart} summaryTitle={summaryTitle} title={title} />}
+    </Stream>
   );
 }
 
 function CartInner<LineItem extends CartLineItem>({
   title,
-  lineItems,
-  summary = {
-    title: 'Summary',
-    subtotalLabel: 'Subtotal',
-    subtotal: '$0.00',
-    shippingLabel: 'Shipping',
-    shipping: '$0.00',
-    taxLabel: 'Tax',
-    tax: '$0.00',
-    grandTotalLabel: 'Grand Total',
-    grandTotal: '$0.00',
-  },
-  emptyState,
+  cart,
   decrementLineItemLabel,
   incrementLineItemLabel,
   deleteLineItemLabel,
   lineItemAction,
   checkoutAction,
-}: CartProps<LineItem>) {
-  const resolvedLineItems = lineItems instanceof Promise ? use(lineItems) : lineItems;
-
+  checkoutLabel = 'Checkout',
+  emptyState = defaultEmptyState,
+  summaryTotalLabel = 'Total',
+  summaryTitle,
+}: CartProps<LineItem> & { cart: Cart<LineItem> }) {
   const [state, formAction] = useActionState(lineItemAction, {
-    lineItems: resolvedLineItems,
+    lineItems: cart.lineItems,
     lastResult: null,
   });
 
@@ -159,54 +143,38 @@ function CartInner<LineItem extends CartLineItem>({
 
   const optimisticQuantity = optimisticLineItems.reduce((total, item) => total + item.quantity, 0);
 
-  if (optimisticLineItems.length === 0) {
+  if (optimisticQuantity === 0) {
     return <CartEmptyState {...emptyState} />;
   }
 
   return (
     <StickySidebarLayout
       sidebar={
-        <>
+        <div>
           <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
-            {summary.title}
+            {summaryTitle}
           </h2>
-          <table aria-label="Receipt Summary" className="w-full">
-            <caption className="sr-only">{summary.caption}</caption>
-            <tbody>
-              <tr className="border-b border-contrast-100">
-                <td>{summary.subtotalLabel}</td>
-                <td className="py-4 text-right">{summary.subtotal}</td>
-              </tr>
-              {summary.shipping != null && summary.shipping !== '' && (
-                <tr className="border-b border-contrast-100">
-                  <td>{summary.shippingLabel}</td>
-                  <td className="py-4 text-right">{summary.shipping}</td>
-                </tr>
-              )}
-              {summary.tax != null && summary.tax !== '' && (
-                <tr>
-                  <td>{summary.taxLabel}</td>
-                  <td className="py-4 text-right">{summary.tax}</td>
-                </tr>
-              )}
-            </tbody>
+          <dl aria-label="Receipt Summary" className="w-full">
+            <div className="divide-y divide-contrast-100">
+              {cart.summaryLineItems.map((summaryLineItem, index) => (
+                <div className="flex justify-between py-4" key={index}>
+                  <dt>{summaryLineItem.label}</dt>
+                  <dd>{summaryLineItem.value}</dd>
+                </div>
+              ))}
+            </div>
 
-            {summary.grandTotal != null && summary.grandTotal !== '' && (
-              <tfoot>
-                <tr className="text-xl">
-                  <th className="text-left" scope="row">
-                    {summary.grandTotalLabel}
-                  </th>
-                  <td className="py-10 text-right">{summary.grandTotal}</td>
-                </tr>
-              </tfoot>
-            )}
-          </table>
-          <CheckoutButton action={checkoutAction} className="mt-10 w-full">
-            {summary.ctaLabel}
+            <div className="flex justify-between border-t border-contrast-100 py-6 text-xl font-bold">
+              <dt>{summaryTotalLabel}</dt>
+              <dl>{cart.total}</dl>
+            </div>
+          </dl>
+
+          <CheckoutButton action={checkoutAction} className="mt-4 w-full">
+            {checkoutLabel}
             <ArrowRight size={20} strokeWidth={1} />
           </CheckoutButton>
-        </>
+        </div>
       }
       sidebarPosition="after"
       sidebarSize="1/3"
@@ -214,17 +182,19 @@ function CartInner<LineItem extends CartLineItem>({
       <div className="w-full">
         <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
           {title}
-          <span className="ml-4 text-contrast-200">{optimisticQuantity}</span>
+          <span className="ml-4 text-contrast-300 contrast-more:text-contrast-500">
+            {optimisticQuantity}
+          </span>
         </h1>
 
         {/* Cart Items */}
-        <ul className="flex flex-col gap-5 @container">
+        <ul className="flex flex-col gap-5">
           {optimisticLineItems.map((lineItem) => (
             <li
-              className="flex flex-col items-start gap-x-5 gap-y-6 @container @sm:flex-row @sm:gap-y-4"
+              className="flex flex-col items-start gap-x-5 gap-y-4 @container @sm:flex-row"
               key={lineItem.id}
             >
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-24 @md:max-w-36">
+              <div className="relative aspect-square w-full max-w-24 overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
                 <Image
                   alt={lineItem.image.alt}
                   className="object-cover"
@@ -236,7 +206,9 @@ function CartInner<LineItem extends CartLineItem>({
               <div className="flex flex-grow flex-col flex-wrap justify-between gap-y-2 @xl:flex-row">
                 <div className="flex w-full flex-1 flex-col @xl:w-1/2 @xl:pr-4">
                   <span className="font-medium">{lineItem.title}</span>
-                  <span className="text-contrast-300">{lineItem.subtitle}</span>
+                  <span className="text-contrast-300 contrast-more:text-contrast-500">
+                    {lineItem.subtitle}
+                  </span>
                 </div>
                 <CounterForm
                   action={formAction}
@@ -292,7 +264,7 @@ function CounterForm({
   return (
     <form {...getFormProps(form)} action={action}>
       <input {...getInputProps(fields.id, { type: 'hidden' })} key={fields.id.id} />
-      <div className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap">
+      <div className="flex w-full flex-wrap items-center gap-x-5 gap-y-2">
         <span className="font-medium @xl:ml-auto">{lineItem.price}</span>
 
         {/* Counter */}
@@ -378,90 +350,94 @@ function SubmitButton(props: React.ComponentPropsWithoutRef<typeof Button>) {
   return <Button {...props} disabled={pending} loading={pending} type="submit" />;
 }
 
-export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
-  return (
-    <div className="@container">
-      <div className="px-4 py-10 text-center @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        <h1 className="mb-3 text-center font-heading text-2xl leading-none text-foreground @lg:text-4xl @3xl:text-5xl">
-          {title}
-        </h1>
-        <p className="mb-10 text-center leading-normal text-contrast-500 @3xl:text-lg">
-          {subtitle}
-        </p>
-        <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
-      </div>
-    </div>
-  );
+interface CartSkeletonProps {
+  className?: string;
+  pending?: boolean;
+  placeholderCount?: number;
+  summaryPlaceholderCount?: number;
+  title?: string;
+  summaryTitle?: string;
 }
 
-export function CartSkeleton({ title = 'Cart' }: { title?: string }) {
+export function CartSkeleton({
+  pending = false,
+  title = 'Cart',
+  summaryTitle = 'Summary',
+  placeholderCount = 2,
+  summaryPlaceholderCount = 3,
+}: CartSkeletonProps) {
   return (
     <StickySidebarLayout
-      className="animate-pulse"
       sidebar={
-        <>
-          {/* Summary Title */}
-          <div className="mt-3.5 h-4 w-40 rounded-lg bg-contrast-100 @xl:h-7 @xl:w-52" />
+        <div data-pending={pending ? '' : undefined}>
+          <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
+            {summaryTitle}
+          </h2>
+          <div className="w-full">
+            <div className="divide-y divide-contrast-100">
+              {Array.from({ length: summaryPlaceholderCount }).map((_, index) => (
+                <div className="py-4" key={index}>
+                  <div className="flex h-[1lh] w-full items-center justify-between">
+                    <div className="h-[1ch] w-16 rounded-md bg-contrast-100" />
+                    <div className="h-[1ch] w-9 rounded-md bg-contrast-100" />
+                  </div>
+                </div>
+              ))}
+            </div>
 
-          {/* Subtotal */}
-          <div className="mt-[66px] flex justify-between border-b border-contrast-100/50 pb-5">
-            <div className="h-4 w-16 rounded-md bg-contrast-100" />
-            <div className="h-4 w-9 rounded-md bg-contrast-100" />
+            <div className="flex justify-between border-t border-contrast-100 py-6 text-xl font-bold">
+              <div className="flex h-[1lh] w-full items-center">
+                <div className="h-[1ex] w-[5ch] rounded-md bg-contrast-100" />
+              </div>
+              <div className="flex h-[1lh] w-full items-center justify-end">
+                <div className="h-[1ex] w-[5ch] rounded-md bg-contrast-100" />
+              </div>
+            </div>
           </div>
 
-          {/* Shipping */}
-          <div className="mt-5 flex justify-between border-b border-contrast-100/50 pb-5">
-            <div className="h-4 w-[70px] rounded-md bg-contrast-100" />
-            <div className="h-4 w-8 rounded-md bg-contrast-100" />
-          </div>
-
-          {/* Tax */}
-          <div className="mt-5 flex justify-between border-b border-contrast-100/50 pb-5">
-            <div className="h-4 w-8 rounded-md bg-contrast-100" />
-            <div className="h-4 w-8 rounded-md bg-contrast-100" />
-          </div>
-
-          {/* Grand Total */}
-          {/* <div className="mt-10 flex justify-between border-b border-contrast-100/50 pb-5">
-                <div className="h-6 w-20 rounded-lg bg-contrast-100" />
-                <div className="h-6 w-16 rounded-lg bg-contrast-100" />
-              </div> */}
-
-          {/* Checkout Button */}
-          <div className="mt-10 h-[50px] w-full rounded-full bg-contrast-100" />
-        </>
+          <div className="mt-4 h-[58px] w-full rounded-full bg-contrast-100" />
+        </div>
       }
       sidebarPosition="after"
       sidebarSize="1/3"
     >
-      <div className="w-full">
+      <div data-pending={pending ? '' : undefined}>
         <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
           {title}
         </h1>
 
         {/* Cart Line Items */}
         <ul className="flex flex-col gap-5">
-          {Array.from({ length: 2 }).map((_, index) => (
+          {Array.from({ length: placeholderCount }).map((_, index) => (
             <li
-              className="flex flex-col items-start gap-x-5 gap-y-6 @container @sm:flex-row @sm:gap-y-4"
+              className="flex flex-col items-start gap-x-5 gap-y-4 @container @sm:flex-row"
               key={index}
             >
               {/* Image */}
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 @sm:max-w-24 @md:max-w-36" />
-              <div className="flex flex-grow flex-col flex-wrap justify-between gap-y-4 @xl:flex-row">
+              <div className="relative aspect-square w-full max-w-24 overflow-hidden rounded-xl bg-contrast-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4" />
+              <div className="flex flex-grow flex-col flex-wrap justify-between gap-y-2 @xl:flex-row">
                 <div className="flex w-full flex-1 flex-col @xl:w-1/2 @xl:pr-4">
                   {/* Line Item Title */}
-                  <div className="mb-3 h-4 w-44 rounded-md bg-contrast-100" />
+                  <div className="flex h-[1lh] w-full items-center">
+                    <div className="h-[1ex] w-44 rounded-md bg-contrast-100" />
+                  </div>
                   {/* Subtitle */}
-                  <div className="h-3 w-36 rounded-md bg-contrast-100" />
+                  <div className="flex h-[1lh] w-full items-center">
+                    <div className="h-[1ex] w-32 rounded-md bg-contrast-100" />
+                  </div>
                 </div>
-                <div className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2 @sm:justify-start @xl:w-1/2 @xl:flex-nowrap @xl:justify-end">
-                  {/* Price */}
-                  <div className="h-4 w-8 rounded-md bg-contrast-100" />
-                  {/* Counter */}
-                  <div className="h-[44px] w-[120px] rounded-lg bg-contrast-100" />
-                  {/* DeleteLineItemButton */}
-                  <div className="mr-1 h-6 w-6 rounded-full bg-contrast-100" />
+                {/* Counter */}
+                <div>
+                  <div className="flex w-full flex-wrap items-center gap-x-5 gap-y-2">
+                    {/* Price */}
+                    <span className="flex h-[1lh] items-center @xl:ml-auto">
+                      <div className="h-[1em] w-[3ch] rounded-md bg-contrast-100" />
+                    </span>
+                    {/* Counter */}
+                    <div className="h-[44px] w-[118px] rounded-lg bg-contrast-100" />
+                    {/* DeleteLineItemButton */}
+                    <div className="-ml-1 h-8 w-8 rounded-full bg-contrast-100" />
+                  </div>
                 </div>
               </div>
             </li>
@@ -469,5 +445,17 @@ export function CartSkeleton({ title = 'Cart' }: { title?: string }) {
         </ul>
       </div>
     </StickySidebarLayout>
+  );
+}
+
+function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
+  return (
+    <SectionLayout className="text-center">
+      <h1 className="mb-3 text-center font-heading text-3xl leading-none text-foreground @xl:text-4xl">
+        {title}
+      </h1>
+      <p className="mb-6 text-center leading-normal text-contrast-500 @3xl:text-lg">{subtitle}</p>
+      <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
+    </SectionLayout>
   );
 }
