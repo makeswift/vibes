@@ -1,4 +1,4 @@
-import { getLineItems, getSubtotal } from '@/vibes/soul/data/line-items';
+import { getLineItems } from '@/vibes/soul/data/line-items';
 import { locales } from '@/vibes/soul/data/locales';
 import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
@@ -7,7 +7,7 @@ import { checkoutAction, lineItemAction } from '@/vibes/soul/examples/sections/c
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { Cart } from '@/vibes/soul/sections/cart';
+import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
   Amex,
@@ -52,7 +52,21 @@ const paymentIconsArray: React.ReactNode[] = [
 
 export default async function Preview() {
   const lineItems = await getLineItems('Electric');
-  const subtotal = await getSubtotal('Electric');
+  const cart = new Promise<Cart<CartLineItem>>((res) =>
+    setTimeout(
+      () =>
+        res({
+          lineItems,
+          summaryLineItems: [
+            { label: 'Subtotal', value: '$100' },
+            { label: 'Shipping', value: 'TBD' },
+            { label: 'Tax', value: 'TBD' },
+          ],
+          total: '127.60',
+        }),
+      1000,
+    ),
+  );
 
   return (
     <>
@@ -72,33 +86,7 @@ export default async function Preview() {
         searchHref="#"
       />
 
-      <Cart
-        checkoutAction={checkoutAction}
-        emptyState={{
-          title: 'Your cart is empty',
-          subtitle: 'Add some products to get started.',
-          cta: {
-            label: 'Continue shopping',
-            href: '#',
-          },
-        }}
-        lineItemAction={lineItemAction}
-        lineItems={lineItems}
-        summary={{
-          title: 'Summary',
-          subtotal: subtotal,
-          caption: 'Shipping & taxes calculated at checkout',
-          subtotalLabel: 'Subtotal',
-          shippingLabel: 'Shipping',
-          shipping: 'TBD',
-          taxLabel: 'Tax',
-          tax: 'TBD',
-          // grandTotalLabel: 'Total',
-          // grandTotal: '$127.60',
-          ctaLabel: 'Checkout',
-        }}
-        title="Cart"
-      />
+      <Cart cart={cart} checkoutAction={checkoutAction} lineItemAction={lineItemAction} />
 
       <Subscribe
         action={action}
