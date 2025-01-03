@@ -16,9 +16,18 @@ export interface Order {
 interface Props {
   className?: string;
   order: Order;
+  orderNumberLabel?: string;
+  totalLabel?: string;
+  viewDetailsLabel?: string;
 }
 
-export function OrderListItem({ className, order }: Props) {
+export function OrderListItem({
+  className,
+  order,
+  orderNumberLabel = 'Order #',
+  totalLabel = 'Total',
+  viewDetailsLabel = 'View details',
+}: Props) {
   return (
     <div
       className={clsx(
@@ -30,13 +39,13 @@ export function OrderListItem({ className, order }: Props) {
         <div className="flex items-start gap-x-12">
           <div>
             <span className="font-mono text-xs uppercase leading-normal text-contrast-500">
-              Order #
+              {orderNumberLabel}
             </span>
             <span className="block text-lg font-semibold leading-normal">{order.id}</span>
           </div>
           <div>
             <span className="font-mono text-xs uppercase leading-normal text-contrast-500">
-              Total
+              {totalLabel}
             </span>
             <span className="block text-lg font-semibold leading-normal">{order.totalPrice}</span>
           </div>
@@ -44,7 +53,7 @@ export function OrderListItem({ className, order }: Props) {
         </div>
 
         <ButtonLink href={order.href} size="small">
-          View details
+          {viewDetailsLabel}
         </ButtonLink>
       </div>
 
