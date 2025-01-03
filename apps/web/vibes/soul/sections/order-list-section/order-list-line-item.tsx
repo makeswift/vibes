@@ -48,9 +48,9 @@ export function OrderListLineItem({ className, lineItem }: Props) {
         <span className="block font-semibold">{lineItem.title}</span>
 
         {lineItem.subtitle != null && lineItem.subtitle !== '' && (
-          <span className="mb-1.5 block font-normal text-contrast-400">{lineItem.subtitle}</span>
+          <span className="block font-normal text-contrast-400">{lineItem.subtitle}</span>
         )}
-        <PriceLabel price={lineItem.price} />
+        <PriceLabel className="mt-1.5" price={lineItem.price} />
       </div>
     </Link>
   );
