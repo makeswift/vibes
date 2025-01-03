@@ -114,6 +114,11 @@ type ConfirmPasswordField = {
   type: 'confirm-password';
 } & FormField;
 
+type HiddenInputField = {
+  type: 'hidden';
+  defaultValue?: string;
+} & FormField;
+
 export type Field =
   | RadioField
   | CheckboxField
@@ -128,7 +133,8 @@ export type Field =
   | SelectField
   | PasswordField
   | ConfirmPasswordField
-  | EmailInputField;
+  | EmailInputField
+  | HiddenInputField;
 
 export type FieldGroup<F> = F[];
 
