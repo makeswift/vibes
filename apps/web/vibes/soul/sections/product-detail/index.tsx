@@ -106,7 +106,7 @@ export function ProductDetail<F extends Field>({
 
                   <Stream
                     fallback={<ProductDetailFormSkeleton />}
-                    value={Promise.all([
+                    value={Streamable.all([
                       streamableFields,
                       streamableCtaLabel,
                       streamableCtaDisabled,

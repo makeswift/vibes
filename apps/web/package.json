@@ -8,6 +8,7 @@
     "build": "next build &&  next-sitemap",
     "start": "next start",
     "lint": "next lint",
+    "test": "vitest",
     "icons": "npx @svgr/cli --no-runtime-config --typescript --replace-attr-values \"#64de21=currentColor\" --out-dir icons/generated -- icons/svg && npx prettier icons/generated --write",
     "vibes": "node scripts/build-preview-index.js ./components/vibes",
     "typecheck": "tsc"
@@ -83,6 +84,7 @@
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.2.1",
     "utils": "link:@/lib/utils",
+    "uuid": "^11.0.4",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -90,6 +92,8 @@
     "@shikijs/transformers": "^1.1.6",
     "@svgr/cli": "^8.1.0",
     "@tailwindcss/typography": "^0.5.10",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.1.0",
     "@types/color": "^3.0.6",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.14.2",
@@ -99,9 +103,11 @@
     "@types/react-headroom": "^3.2.3",
     "@types/vimeo__player": "^2.18.3",
     "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "jsdom": "^25.0.1",
     "postcss": "^8",
     "postcss-nesting": "^12.1.1",
     "prettier": "^3.2.5",
@@ -110,6 +116,8 @@
     "tailwindcss": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
     "twoslash": "^0.2.4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.8"
   }
 }
