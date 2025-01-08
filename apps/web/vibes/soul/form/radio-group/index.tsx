@@ -11,6 +11,23 @@ interface Option {
   disabled?: boolean;
 }
 
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ *  :root {
+ *   --radio-group-background: hsl(var(--background));
+ *   --radio-group-border: hsl(var(--contrast-200));
+ *   --radio-group-border-error: hsl(var(--error));
+ *   --radio-group-disabled-border-error: hsl(var(--error) / 50%);
+ *   --radio-group-border-hover: hsl(var(--contrast-300));
+ *   --radio-group-border-focus: hsl(var(--contrast-300));
+ *   --radio-group-indicator-background: hsl(var(--foreground));
+ *   --radio-group-label: hsl(var(--foreground));
+ *  }
+ * ```
+ */
 export const RadioGroup = React.forwardRef<
   React.ComponentRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & {
@@ -58,10 +75,10 @@ function RadioGroupItem({
       <RadioGroupPrimitive.Item
         aria-label={option.label}
         className={clsx(
-          'size-5 cursor-default rounded-full border bg-background outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50',
+          'size-5 cursor-default rounded-full border bg-[var(--radio-group-background,hsl(var(--background)))] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50',
           error
-            ? 'border-error disabled:border-error/50'
-            : 'border-contrast-200 hover:border-contrast-300 focus:border-contrast-300',
+            ? 'border-[var(--radio-group-border-error,hsl(var(--error)))] disabled:border-[var(--radio-group-disabled-border-error,hsl(var(--error)/50%))]'
+            : 'border-[var(--radio-group-border,hsl(var(--contrast-200)))] hover:border-[var(--radio-group-border-hover,hsl(var(--contrast-300)))] focus:border-[var(--radio-group-border-focus,hsl(var(--contrast-300)))]',
         )}
         disabled={option.disabled}
         id={id}
@@ -70,9 +87,12 @@ function RadioGroupItem({
         }}
         value={option.value}
       >
-        <RadioGroupPrimitive.Indicator className="relative flex size-full items-center justify-center after:block after:size-3 after:rounded-full after:bg-foreground" />
+        <RadioGroupPrimitive.Indicator className="relative flex size-full items-center justify-center after:block after:size-3 after:rounded-full after:bg-[var(--radio-group-indicator-background,hsl(var(--foreground)))]" />
       </RadioGroupPrimitive.Item>
-      <label className="pl-3 text-sm leading-none text-foreground" htmlFor={id}>
+      <label
+        className="pl-3 text-sm leading-none text-[var(--radio-group-label,hsl(var(--foreground)))]"
+        htmlFor={id}
+      >
         {option.label}
       </label>
     </div>
