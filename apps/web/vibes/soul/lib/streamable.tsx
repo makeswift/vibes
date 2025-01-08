@@ -56,7 +56,7 @@ const promiseCache = weakRefCache<string, Promise<unknown>>();
  * A suspense-friendly upgrade to `Promise.all`, guarantees stability of
  * the returned promise instance if passed an identical set of inputs.
  */
-export function all<T extends readonly unknown[] | []>(
+function all<T extends readonly unknown[] | []>(
   streamables: T,
 ): Streamable<{ -readonly [P in keyof T]: Awaited<T[P]> }> {
   const cacheKey = getCompositeKey(streamables);
