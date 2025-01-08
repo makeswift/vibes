@@ -6,13 +6,15 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
+    "test": "turbo run test -- run",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "format-check": "prettier \"**/*.{ts,tsx,md}\" --check"
   },
   "pnpm": {
     "overrides": {
       "@types/react": "npm:types-react@rc",
-      "@types/react-dom": "npm:types-react-dom@rc"
+      "@types/react-dom": "npm:types-react-dom@rc",
+      "vite": "^6.0.7"
     }
   },
   "devDependencies": {

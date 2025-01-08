@@ -10,6 +10,7 @@
         "AIRTABLE_TABLE_ID",
         "VERCEL_PROJECT_PRODUCTION_URL"
       ]
-    }
+    },
+    "test": {}
   }
 }
