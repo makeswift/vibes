@@ -10,7 +10,6 @@ interface Summary {
     value: string;
     subtext?: string;
   }>;
-  totalLabel?: string;
   total: string;
 }
 
@@ -24,10 +23,23 @@ interface Address {
   country?: string;
 }
 
-interface Method {
-  id: string;
+interface TrackingWithUrl {
+  url: string;
+}
+
+interface TrackingWithNumber {
+  number: string;
+}
+
+interface TrackingWithUrlAndNumber {
+  url: string;
+  number: string;
+}
+
+interface Shipment {
   name: string;
   status: string;
+  tracking?: TrackingWithUrl | TrackingWithNumber | TrackingWithUrlAndNumber;
 }
 
 interface ShipmentLineItem {
@@ -41,100 +53,147 @@ interface ShipmentLineItem {
   metadata?: Array<{ label: string; value: string }>;
 }
 
-interface Shipment {
+interface Destination {
   id: string;
   title: string;
   address: Address;
-  addressLabel?: string;
-  method: Method;
-  methodLabel?: string;
+  shipments: Shipment[];
   lineItems: ShipmentLineItem[];
 }
 
-interface Order {
+export interface Order {
   id: string;
-  title: string;
   status: string;
   statusColor?: 'success' | 'warning' | 'danger' | 'info';
   date: string;
-  shipments: Shipment[];
+  destinations: Destination[];
   summary: Summary;
 }
 
 interface Props {
   order: Order;
+  title?: string;
+  shipmentAddressLabel?: string;
+  shipmentMethodLabel?: string;
+  summaryTotalLabel?: string;
   prevHref?: string;
 }
 
-export function OrderDetailsSection({ order, prevHref = '/orders' }: Props) {
+export function OrderDetailsSection({
+  order,
+  title = `Order #${order.id}`,
+  shipmentAddressLabel,
+  shipmentMethodLabel,
+  summaryTotalLabel,
+  prevHref = '/orders',
+}: Props) {
   return (
     <div className="@container">
       <div className="flex gap-4 border-b border-contrast-100 pb-8">
         <Link
-          className={
-            'mt-1 flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2'
-          }
+          className="mt-1 flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
           href={prevHref}
         >
           <ArrowLeft />
         </Link>
         <div className="space-y-1">
           <div className="flex items-center gap-3">
-            <h1 className="text-4xl">{order.title}</h1>
+            <h1 className="text-4xl">{title}</h1>
             <Badge color={order.statusColor}>{order.status}</Badge>
           </div>
-          <p>
-            {new Date(order.date).toLocaleDateString('en-US', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric',
-            })}
-          </p>
+          <p>{order.date}</p>
         </div>
       </div>
       <div className="grid @3xl:flex">
         <div className="order-2 flex-1 pr-12 @3xl:order-1">
-          {order.shipments.map((shipment) => (
-            <Shipment key={shipment.id} shipment={shipment} />
+          {order.destinations.map((destination) => (
+            <Shipment
+              addressLabel={shipmentAddressLabel}
+              destination={destination}
+              key={destination.id}
+              methodLabel={shipmentMethodLabel}
+            />
           ))}
         </div>
         <div className="order-1 basis-72 pt-8 @3xl:order-2">
-          <Summary summary={order.summary} />
+          <Summary summary={order.summary} totalLabel={summaryTotalLabel} />
         </div>
       </div>
     </div>
   );
 }
 
-function Shipment({ shipment }: { shipment: Shipment }) {
+function Shipment({
+  destination,
+  addressLabel = 'Shipping address',
+  methodLabel = 'Shipping method',
+}: {
+  destination: Destination;
+  addressLabel?: string;
+  methodLabel?: string;
+}) {
   return (
     <div className="border-b border-contrast-100 py-8 @container">
       <div className="space-y-6">
-        <div className="text-2xl font-medium">{shipment.title}</div>
+        <div className="text-2xl font-medium">{destination.title}</div>
         <div className="grid gap-8 @xl:flex @xl:gap-20">
           <div className="text-sm">
-            <h3 className="font-semibold">{shipment.addressLabel ?? 'Shipping address'}</h3>
-            <p>{shipment.address.name}</p>
-            <p>{shipment.address.street1}</p>
-            <p>{shipment.address.street2}</p>
+            <h3 className="font-semibold">{addressLabel}</h3>
+            <p>{destination.address.name}</p>
+            <p>{destination.address.street1}</p>
+            <p>{destination.address.street2}</p>
             <p>
-              {`${shipment.address.city}, ${shipment.address.state} ${shipment.address.zipcode}`}
+              {`${destination.address.city}, ${destination.address.state} ${destination.address.zipcode}`}
             </p>
-            <p>{shipment.address.country}</p>
+            <p>{destination.address.country}</p>
           </div>
-          <div className="text-sm">
-            <h3 className="font-semibold">{shipment.methodLabel ?? 'Shipping method'}</h3>
-            <p>{shipment.method.name}</p>
-            <p>{shipment.method.status}</p>
-            <p>{shipment.method.id}</p>
-          </div>
+          {destination.shipments.map((shipment) => (
+            <div className="text-sm" key={shipment.name}>
+              <h3 className="font-semibold">{methodLabel}</h3>
+              <p>{shipment.name}</p>
+              <p>{shipment.status}</p>
+              <ShipmentTracking tracking={shipment.tracking} />
+            </div>
+          ))}
         </div>
-        {shipment.lineItems.map((lineItem) => (
+        {destination.lineItems.map((lineItem) => (
           <ShipmentLineItem key={lineItem.id} lineItem={lineItem} />
         ))}
       </div>
     </div>
   );
+}
+
+function ShipmentTracking({
+  tracking,
+}: {
+  tracking?: TrackingWithUrl | TrackingWithNumber | TrackingWithUrlAndNumber;
+}) {
+  if (!tracking) {
+    return null;
+  }
+
+  if ('url' in tracking && 'number' in tracking) {
+    return (
+      <p>
+        <Link href={tracking.url} target="_blank">
+          {tracking.number}
+        </Link>
+      </p>
+    );
+  }
+
+  if ('url' in tracking) {
+    return (
+      <p>
+        <Link href={tracking.url} target="_blank">
+          {tracking.url}
+        </Link>
+      </p>
+    );
+  }
+
+  return <p>{tracking.number}</p>;
 }
 
 function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
@@ -185,7 +244,7 @@ function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
   );
 }
 
-function Summary({ summary }: { summary: Summary }) {
+function Summary({ summary, totalLabel = 'Total' }: { summary: Summary; totalLabel?: string }) {
   return (
     <div className="divide-y divide-gray-100">
       <div className="space-y-2 pb-3 pt-5">
@@ -203,7 +262,7 @@ function Summary({ summary }: { summary: Summary }) {
         ))}
       </div>
       <div className="flex justify-between border-t border-contrast-200 py-3 font-semibold">
-        <span>{summary.totalLabel ?? 'Total'}</span>
+        <span>{totalLabel}</span>
         <span>{summary.total}</span>
       </div>
     </div>

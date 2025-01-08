@@ -6,15 +6,13 @@ const products = await getProducts('Warm');
 
 const order = {
   id: '1',
-  title: 'Order #1',
   status: 'Delivered',
   statusColor: 'success' as const,
   date: '2021-01-01',
-  shipments: [
+  destinations: [
     {
       id: '1',
-      title: 'Shipment 1/2',
-      date: '2021-01-01',
+      title: 'Destination 1/2',
       address: {
         name: 'John Doe',
         street1: '1000 San Marcos Ave',
@@ -23,11 +21,15 @@ const order = {
         zipcode: '78702',
         country: 'United States',
       },
-      method: {
-        id: '1Z370170375602560',
-        name: 'UPS Ground',
-        status: 'Delivered on May 15, 2024',
-      },
+      shipments: [
+        {
+          tracking: {
+            number: '1Z370170375602560',
+          },
+          name: 'UPS Ground',
+          status: 'Delivered on May 15, 2024',
+        },
+      ],
       lineItems: products
         .filter(() => Math.random() > 0.5)
         .map(({ id, title, subtitle, image, href }) => ({
@@ -46,8 +48,7 @@ const order = {
     },
     {
       id: '2',
-      title: 'Shipment 2/2',
-      date: '2021-05-01',
+      title: 'Destination 2/2',
       address: {
         name: 'John Doe',
         street1: '1000 San Marcos Ave',
@@ -56,11 +57,15 @@ const order = {
         zipcode: '78702',
         country: 'United States',
       },
-      method: {
-        id: '1Z370170375612565',
-        name: 'UPS Ground',
-        status: 'Shipped on May 15, 2024',
-      },
+      shipments: [
+        {
+          tracking: {
+            number: '1Z370170375612565',
+          },
+          name: 'UPS Ground',
+          status: 'Shipped on May 15, 2024',
+        },
+      ],
       lineItems: products
         .filter(() => Math.random() > 0.5)
         .map(({ id, title, subtitle, image, href }) => ({
