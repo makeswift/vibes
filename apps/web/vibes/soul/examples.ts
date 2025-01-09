@@ -605,6 +605,13 @@ export const examples = [
     component: lazy(() => import('./examples/pages/error')),
   },
   {
+    name: 'page-maintenance-example',
+    dependencies: [],
+    registryDependencies: ['page-maintenance'],
+    files: ['examples/pages/maintenance/index.tsx'],
+    component: lazy(() => import('./examples/pages/maintenance')),
+  },
+  {
     name: 'page-product-electric-example',
     dependencies: [],
     registryDependencies: ['page-product-electric'],
