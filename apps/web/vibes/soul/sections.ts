@@ -162,10 +162,10 @@ export const sections = [
     ],
   },
   {
-    name: 'sign-up-section',
+    name: 'dynamic-form-section',
     dependencies: ['clsx'],
     registryDependencies: ['button', 'input'],
-    files: ['sections/sign-up-section/index.tsx'],
+    files: ['sections/dynamic-form-section/index.tsx'],
   },
   {
     name: 'slide-carousel',
