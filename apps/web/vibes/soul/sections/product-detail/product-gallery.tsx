@@ -1,9 +1,10 @@
 'use client';
 
 import { clsx } from 'clsx';
+import { EmblaCarouselType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface Props {
   images: Array<{ alt: string; src: string }>;
@@ -15,17 +16,36 @@ export function ProductGallery({ images, className, thumbnailLabel = 'View image
   const [previewImage, setPreviewImage] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
+  const [slidesInView, setSlidesInView] = useState<number[]>([0]);
+
+  const updateSlidesInView = useCallback((api: EmblaCarouselType) => {
+    setSlidesInView((prevSlidesInView) => {
+      if (prevSlidesInView.length === api.slideNodes().length) {
+        api.off('slidesInView', updateSlidesInView);
+      }
+
+      const inView = [...api.slidesInView(), api.selectedScrollSnap() + 1].filter(
+        (index) => !prevSlidesInView.includes(index),
+      );
+
+      return prevSlidesInView.concat(inView);
+    });
+  }, []);
+
   useEffect(() => {
     if (!emblaApi) return;
 
     const onSelect = () => setPreviewImage(emblaApi.selectedScrollSnap());
 
-    emblaApi.on('select', onSelect);
+    emblaApi
+      .on('select', onSelect)
+      .on('slidesInView', updateSlidesInView)
+      .on('reInit', updateSlidesInView);
 
     return () => {
       emblaApi.off('select', onSelect);
     };
-  }, [emblaApi]);
+  }, [emblaApi, updateSlidesInView]);
 
   const selectImage = (index: number) => {
     setPreviewImage(index);
@@ -40,15 +60,17 @@ export function ProductGallery({ images, className, thumbnailLabel = 'View image
       >
         <div className="flex">
           {images.map((image, idx) => (
-            <div className="relative aspect-[4/5] w-full shrink-0 grow-0 basis-full " key={idx}>
-              <Image
-                alt={image.alt}
-                className="object-cover"
-                fill
-                priority={idx === 0}
-                sizes="(min-width: 42rem) 50vw, 100vw"
-                src={image.src}
-              />
+            <div className="relative aspect-[4/5] w-full shrink-0 grow-0 basis-full" key={idx}>
+              {slidesInView.includes(idx) && (
+                <Image
+                  alt={image.alt}
+                  className="object-cover"
+                  fill
+                  priority={idx === 0}
+                  sizes="(min-width: 42rem) 50vw, 100vw"
+                  src={image.src}
+                />
+              )}
             </div>
           ))}
         </div>
