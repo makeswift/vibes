@@ -64,6 +64,7 @@ export function CompareDrawer({
                         alt={item.image.alt}
                         className="rounded-lg object-cover @4xl:rounded-r-none"
                         fill
+                        sizes="3rem"
                         src={item.image.src}
                       />
                     ) : (

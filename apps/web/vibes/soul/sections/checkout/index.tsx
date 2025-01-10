@@ -214,7 +214,7 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                             alt={image.alt}
                             className="h-full w-full object-cover"
                             fill
-                            sizes="64px"
+                            sizes="4rem"
                             src={image.src}
                           />
                         </div>

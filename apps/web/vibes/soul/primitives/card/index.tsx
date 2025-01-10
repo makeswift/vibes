@@ -82,7 +82,7 @@ export function Card({
               }[textColorScheme],
             )}
             fill
-            sizes="(max-width: 768px) 70vw, 33vw"
+            sizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
             src={image.src}
           />
         ) : (

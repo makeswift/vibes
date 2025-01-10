@@ -60,6 +60,7 @@ export function CompareSection({
                 <CompareCard
                   addToCartAction={addToCartAction}
                   addToCartLabel={addToCartLabel}
+                  imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
                   key={product.id}
                   product={product}
                 />

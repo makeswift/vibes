@@ -24,6 +24,7 @@ interface Props {
   aspectRatio?: '5:6' | '3:4' | '1:1';
   showCompare?: boolean;
   imagePriority?: boolean;
+  imageSizes?: string;
   compareLabel?: string;
   compareParamName?: string;
   product: CardProduct;
@@ -55,6 +56,7 @@ export function ProductCard({
   compareLabel,
   compareParamName,
   imagePriority = false,
+  imageSizes = '(min-width: 80rem) 20vw, (min-width: 64rem) 25vw, (min-width: 42rem) 33vw, (min-width: 24rem) 50vw, 100vw',
 }: Props) {
   return (
     <div className={clsx('@container', className)}>
@@ -90,7 +92,7 @@ export function ProductCard({
               )}
               fill
               priority={imagePriority}
-              sizes="(max-width: 768px) 70vw, 33vw"
+              sizes={imageSizes}
               src={image.src}
             />
           ) : (

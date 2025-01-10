@@ -50,6 +50,7 @@ export const CardRadioGroup = React.forwardRef<
                 alt={option.image.alt}
                 className="bg-background object-fill"
                 fill
+                sizes="3rem"
                 src={option.image.src}
               />
             </div>

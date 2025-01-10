@@ -21,6 +21,7 @@ export interface Props {
   ratingLabel?: string;
   otherDetailsLabel?: string;
   addToCartAction?: (id: string) => Promise<void>;
+  imageSizes?: string;
 }
 
 export function CompareCard({
@@ -31,13 +32,14 @@ export function CompareCard({
   descriptionLabel = 'Description',
   ratingLabel = 'Rating',
   otherDetailsLabel = 'Other details',
+  imageSizes,
 }: Props) {
   return (
     <div
       className={clsx('flex w-full flex-col divide-y divide-contrast-100 @container', className)}
     >
       <div className="mb-2 space-y-4 pb-4">
-        <ProductCard product={product} />
+        <ProductCard imageSizes={imageSizes} product={product} />
         {addToCartAction && (
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           <form action={addToCartAction.bind(null, product.id)}>

@@ -195,7 +195,7 @@ export function Slideshow({ slides, playOnInit = true, interval = 5000, classNam
                       placeholder={
                         image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
                       }
-                      priority
+                      priority={idx === 0}
                       sizes="100vw"
                       src={image.src}
                     />
