@@ -337,6 +337,11 @@ export const navigation = [
         slug: 'page-maintenance',
         file: 'docs/page-maintenance.mdx',
       },
+      {
+        title: 'Web Page',
+        slug: 'page-web-page',
+        file: 'docs/page-web-page.mdx',
+      },
     ],
   },
   {
