@@ -16,6 +16,7 @@ interface CarouselProps extends React.ComponentPropsWithoutRef<'div'> {
   plugins?: CarouselPlugin;
   setApi?: (api: CarouselApi) => void;
   carouselScrollbarLabel?: string;
+  hideOverflow?: boolean;
 }
 
 type CarouselContextProps = {
@@ -39,7 +40,15 @@ function useCarousel() {
   return context;
 }
 
-function Carousel({ opts, setApi, plugins, className, children, ...rest }: CarouselProps) {
+function Carousel({
+  opts,
+  setApi,
+  plugins,
+  className,
+  children,
+  hideOverflow = true,
+  ...rest
+}: CarouselProps) {
   const [carouselRef, api] = useEmblaCarousel(opts, plugins);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -102,7 +111,7 @@ function Carousel({ opts, setApi, plugins, className, children, ...rest }: Carou
       <div
         {...rest}
         aria-roledescription="carousel"
-        className={clsx('relative @container', className)}
+        className={clsx('relative @container', hideOverflow && 'overflow-hidden', className)}
         onKeyDownCapture={handleKeyDown}
         role="region"
       >
