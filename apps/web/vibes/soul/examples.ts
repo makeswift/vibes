@@ -789,11 +789,11 @@ export const examples = [
     component: lazy(() => import('./examples/sections/sign-in-section')),
   },
   {
-    name: 'sign-up-section-example',
+    name: 'dynamic-form-section-example',
     dependencies: [],
-    registryDependencies: ['sign-up-section'],
-    files: ['examples/sections/sign-up-section/index.tsx'],
-    component: lazy(() => import('./examples/sections/sign-up-section')),
+    registryDependencies: ['dynamic-form-section'],
+    files: ['examples/sections/dynamic-form-section/index.tsx'],
+    component: lazy(() => import('./examples/sections/dynamic-form-section')),
   },
   {
     name: 'slideshow-electric-example',
