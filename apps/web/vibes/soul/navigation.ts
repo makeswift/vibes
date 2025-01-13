@@ -182,6 +182,12 @@ export const navigation = [
         component: 'compare-section',
       },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
+      {
+        title: 'Dynamic Form Section',
+        slug: 'dynamic-form-section',
+        file: 'docs/dynamic-form-section.mdx',
+        component: 'dynamic-form-section',
+      },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
       {
         title: 'Featured Blog Post List',
@@ -268,12 +274,6 @@ export const navigation = [
         slug: 'sign-in-section',
         file: 'docs/sign-in-section.mdx',
         component: 'sign-in-section',
-      },
-      {
-        title: 'Sign Up Section',
-        slug: 'sign-up-section',
-        file: 'docs/sign-up-section.mdx',
-        component: 'sign-up-section',
       },
       {
         title: 'Slideshow',
