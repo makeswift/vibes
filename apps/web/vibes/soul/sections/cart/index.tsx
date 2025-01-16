@@ -28,7 +28,6 @@ export function Cart<LineItem extends CartLineItem>({
 
 interface CartSkeletonProps {
   className?: string;
-  pending?: boolean;
   placeholderCount?: number;
   summaryPlaceholderCount?: number;
   title?: string;
@@ -36,7 +35,6 @@ interface CartSkeletonProps {
 }
 
 export function CartSkeleton({
-  pending = false,
   title = 'Cart',
   summaryTitle = 'Summary',
   placeholderCount = 2,
@@ -45,7 +43,7 @@ export function CartSkeleton({
   return (
     <StickySidebarLayout
       sidebar={
-        <div data-pending={pending ? '' : undefined}>
+        <div>
           <h2 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
             {summaryTitle}
           </h2>
@@ -77,7 +75,7 @@ export function CartSkeleton({
       sidebarPosition="after"
       sidebarSize="1/3"
     >
-      <div data-pending={pending ? '' : undefined}>
+      <div>
         <h1 className="mb-10 font-heading text-4xl font-medium leading-none @xl:text-5xl">
           {title}
         </h1>
