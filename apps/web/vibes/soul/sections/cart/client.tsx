@@ -9,6 +9,7 @@ import { startTransition, useActionState, useEffect, useOptimistic } from 'react
 import { useFormStatus } from 'react-dom';
 
 import { Button } from '@/vibes/soul/primitives/button';
+import { toast } from '@/vibes/soul/primitives/toaster';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 import { cartLineItemActionFormDataSchema } from './schema';
@@ -78,6 +79,16 @@ export function CartClient<LineItem extends CartLineItem>({
     lineItems: cart.lineItems,
     lastResult: null,
   });
+
+  const [form] = useForm({ lastResult: state.lastResult });
+
+  useEffect(() => {
+    if (form.errors) {
+      form.errors.forEach((error) => {
+        toast.error(error);
+      });
+    }
+  }, [form.errors]);
 
   const [optimisticLineItems, setOptimisticLineItems] = useOptimistic<CartLineItem[], FormData>(
     state.lineItems,
