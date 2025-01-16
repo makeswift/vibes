@@ -7,7 +7,7 @@ import { checkoutAction, lineItemAction } from '@/vibes/soul/examples/sections/c
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
+import { Cart } from '@/vibes/soul/sections/cart';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
   Amex,
@@ -52,21 +52,6 @@ const paymentIconsArray: React.ReactNode[] = [
 
 export default async function Preview() {
   const lineItems = await getLineItems('Electric');
-  const cart = new Promise<Cart<CartLineItem>>((res) =>
-    setTimeout(
-      () =>
-        res({
-          lineItems,
-          summaryLineItems: [
-            { label: 'Subtotal', value: '$100' },
-            { label: 'Shipping', value: 'TBD' },
-            { label: 'Tax', value: 'TBD' },
-          ],
-          total: '127.60',
-        }),
-      1000,
-    ),
-  );
 
   return (
     <>
@@ -86,7 +71,19 @@ export default async function Preview() {
         searchHref="#"
       />
 
-      <Cart cart={cart} checkoutAction={checkoutAction} lineItemAction={lineItemAction} />
+      <Cart
+        cart={{
+          lineItems,
+          summaryItems: [
+            { label: 'Subtotal', value: '$100' },
+            { label: 'Shipping', value: 'TBD' },
+            { label: 'Tax', value: 'TBD' },
+          ],
+          total: '127.60',
+        }}
+        checkoutAction={checkoutAction}
+        lineItemAction={lineItemAction}
+      />
 
       <Subscribe
         action={action}
