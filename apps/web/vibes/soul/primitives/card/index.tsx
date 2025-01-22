@@ -114,13 +114,30 @@ export function Card({
   );
 }
 
-export function CardSkeleton() {
+export function CardSkeleton({
+  aspectRatio = '5:6',
+  className,
+}: {
+  aspectRatio?: '5:6' | '3:4' | '1:1';
+  className?: string;
+}) {
   return (
-    <div className="relative flex aspect-[3/4] w-full animate-pulse flex-col gap-2 @4xl:min-w-72">
-      {/* Image */}
-      <div className="h-full w-full overflow-hidden rounded-lg bg-contrast-100 @4xl:rounded-xl" />
-      {/* Title */}
-      <div className="mb-1 line-clamp-1 h-6 w-20 rounded-lg bg-contrast-100 @4xl:absolute @4xl:bottom-5 @4xl:left-5" />
+    <div className={clsx('@container', className)}>
+      <div
+        className={clsx(
+          'rounded-[var(--card-border-radius,1rem)] bg-contrast-100',
+          {
+            '5:6': 'aspect-[5/6]',
+            '3:4': 'aspect-[3/4]',
+            '1:1': 'aspect-square',
+          }[aspectRatio],
+        )}
+      />
+      <div className="mt-3 text-lg">
+        <div className="flex h-[1lh] items-center">
+          <span className="block h-[1ex] w-[10ch] rounded-sm bg-contrast-100" />
+        </div>
+      </div>
     </div>
   );
 }

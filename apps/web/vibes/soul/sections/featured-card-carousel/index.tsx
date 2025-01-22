@@ -1,3 +1,4 @@
+import { Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
 import { Card, CardCarousel } from '@/vibes/soul/primitives/card-carousel';
 
@@ -10,7 +11,7 @@ interface Props {
   title: string;
   description?: string;
   cta?: Link;
-  cards: Card[];
+  cards: Streamable<Card[]>;
   scrollbarLabel?: string;
 }
 
