@@ -7,8 +7,6 @@ import * as Popover from '@radix-ui/react-popover';
 import { clsx } from 'clsx';
 import debounce from 'lodash.debounce';
 import { ArrowRight, ChevronDown, Search, SearchIcon, ShoppingBag, User } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import React, {
   forwardRef,
   Ref,
@@ -29,6 +27,9 @@ import { Logo } from '@/vibes/soul/primitives/logo';
 import { Price } from '@/vibes/soul/primitives/price-label';
 import { ProductCard } from '@/vibes/soul/primitives/product-card';
 
+import { Link } from '~/components/link';
+import { usePathname } from '~/i18n/routing';
+
 interface Link {
   label: string;
   href: string;
@@ -43,6 +44,11 @@ interface Link {
 }
 
 interface Locale {
+  id: string;
+  label: string;
+}
+
+interface Currency {
   id: string;
   label: string;
 }
@@ -71,6 +77,7 @@ export type SearchResult =
     };
 
 type LocaleAction = Action<SubmissionResult | null, FormData>;
+type CurrencyAction = Action<SubmissionResult | null, FormData>;
 type SearchAction<S extends SearchResult> = Action<
   {
     searchResults: S[] | null;
@@ -92,6 +99,9 @@ interface Props<S extends SearchResult> {
   locales?: Locale[];
   activeLocaleId?: string;
   localeAction?: LocaleAction;
+  currencies?: Currency[];
+  activeCurrencyId?: string;
+  currencyAction?: CurrencyAction;
   logo?: Streamable<string | { src: string; alt: string } | null>;
   logoWidth?: number;
   logoHeight?: number;
@@ -264,6 +274,9 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     activeLocaleId,
     localeAction,
     locales,
+    currencies,
+    activeCurrencyId,
+    currencyAction,
     searchHref,
     searchParamName = 'query',
     searchAction,
@@ -560,6 +573,15 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
               locales={locales as [Locale, Locale, ...Locale[]]}
             />
           ) : null}
+
+          {/* Currency Dropdown */}
+          {currencies && currencies.length > 1 && currencyAction ? (
+            <CurrencyForm
+              action={currencyAction}
+              activeCurrencyId={activeCurrencyId}
+              currencies={currencies as [Currency, ...Currency[]]}
+            />
+          ) : null}
         </div>
       </div>
 
@@ -854,6 +876,64 @@ function LocaleForm({
               }}
             >
               {label}
+            </DropdownMenu.Item>
+          ))}
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+}
+
+function CurrencyForm({
+  action,
+  currencies,
+  activeCurrencyId,
+}: {
+  activeCurrencyId?: string;
+  action: CurrencyAction;
+  currencies: [Currency, ...Currency[]];
+}) {
+  const [lastResult, formAction] = useActionState(action, null);
+  const activeCurrency = currencies.find((currency) => currency.id === activeCurrencyId);
+
+  useEffect(() => {
+    if (lastResult?.error) console.log(lastResult.error);
+  }, [lastResult?.error]);
+
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger
+        className={clsx('flex items-center gap-1 text-xs uppercase', navButtonClassName)}
+      >
+        {activeCurrency?.label ?? currencies[0].label}
+        <ChevronDown size={16} strokeWidth={1.5} />
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          align="end"
+          className="z-50 max-h-80 overflow-y-scroll rounded-xl bg-[var(--nav-locale-background,hsl(var(--background)))] p-2 shadow-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
+          sideOffset={16}
+        >
+          {currencies.map((currency) => (
+            <DropdownMenu.Item
+              className={clsx(
+                'cursor-default rounded-lg bg-[var(--nav-locale-link-background,transparent)] px-2.5 py-2 font-[family-name:var(--nav-locale-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-locale-link-text,hsl(var(--contrast-400)))] outline-none ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-locale-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-locale-link-text-hover,hsl(var(--foreground)))]',
+                {
+                  'text-[var(--nav-locale-link-text-selected,hsl(var(--foreground)))]':
+                    currency.id === activeCurrencyId,
+                },
+              )}
+              key={currency.id}
+              onSelect={() => {
+                // eslint-disable-next-line @typescript-eslint/require-await
+                startTransition(async () => {
+                  const formData = new FormData();
+                  formData.append('id', currency.id);
+                  formAction(formData);
+                });
+              }}
+            >
+              {currency.label}
             </DropdownMenu.Item>
           ))}
         </DropdownMenu.Content>
