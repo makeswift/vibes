@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import {
@@ -51,6 +52,7 @@ export function ProductsCarousel({
     <Stream
       fallback={
         <ProductsCarouselSkeleton
+          className={className}
           hideOverflow={hideOverflow}
           pending
           placeholderCount={placeholderCount}
@@ -62,6 +64,7 @@ export function ProductsCarousel({
         if (products.length === 0) {
           return (
             <ProductsCarouselEmptyState
+              className={className}
               emptyStateSubtitle={emptyStateSubtitle}
               emptyStateTitle={emptyStateTitle}
               hideOverflow={hideOverflow}
@@ -113,7 +116,7 @@ export function ProductsCarouselSkeleton({
   className,
   placeholderCount = 8,
   pending = false,
-  hideOverflow,
+  hideOverflow = true,
 }: {
   className?: string;
   placeholderCount?: number;
@@ -121,23 +124,30 @@ export function ProductsCarouselSkeleton({
   hideOverflow?: boolean;
 }) {
   return (
-    <Carousel
-      className={className}
+    <div
+      className={clsx('@container', hideOverflow && 'overflow-hidden', className)}
       data-pending={pending ? '' : undefined}
-      hideOverflow={hideOverflow}
     >
-      <CarouselContent className="mb-10">
-        {Array.from({ length: placeholderCount }).map((_, index) => (
-          <CarouselItem
-            className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-            key={index}
-          >
-            <ProductCardSkeleton />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <div className="h-6 w-56 animate-pulse bg-contrast-100" />
-    </Carousel>
+      <div className="w-full">
+        <div className="-ml-4 flex @2xl:-ml-5">
+          {Array.from({ length: placeholderCount }).map((_, index) => (
+            <div
+              className="min-w-0 shrink-0 grow-0 basis-full pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
+              key={index}
+            >
+              <ProductCardSkeleton />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-10 flex w-full items-center justify-between gap-8">
+        <div className="h-1 w-full max-w-56 rounded bg-contrast-100" />
+        <div className="flex gap-2 text-contrast-200">
+          <ArrowLeft className="h-6 w-6" strokeWidth={1.5} />
+          <ArrowRight className="h-6 w-6" strokeWidth={1.5} />
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -146,7 +156,7 @@ export function ProductsCarouselEmptyState({
   placeholderCount = 8,
   emptyStateTitle,
   emptyStateSubtitle,
-  hideOverflow,
+  hideOverflow = true,
 }: {
   className?: string;
   placeholderCount?: number;
@@ -155,19 +165,19 @@ export function ProductsCarouselEmptyState({
   hideOverflow?: boolean;
 }) {
   return (
-    <Carousel className={clsx('relative', className)} hideOverflow={hideOverflow}>
-      <CarouselContent
-        className={clsx('mb-10 [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)]')}
-      >
-        {Array.from({ length: placeholderCount }).map((_, index) => (
-          <CarouselItem
-            className="basis-full @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-            key={index}
-          >
-            <ProductCardSkeleton />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
+    <div className={clsx('relative @container', hideOverflow && 'overflow-hidden', className)}>
+      <div className="w-full">
+        <div className="-ml-4 flex [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:-ml-5">
+          {Array.from({ length: placeholderCount }).map((_, index) => (
+            <div
+              className="min-w-0 shrink-0 grow-0 basis-full pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
+              key={index}
+            >
+              <ProductCardSkeleton />
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
           <h3 className="@4x:leading-none font-heading text-2xl leading-tight text-foreground @4xl:text-4xl">
@@ -176,6 +186,6 @@ export function ProductsCarouselEmptyState({
           <p className="text-sm text-contrast-500 @4xl:text-lg">{emptyStateSubtitle}</p>
         </div>
       </div>
-    </Carousel>
+    </div>
   );
 }

@@ -417,6 +417,7 @@ interface FilterParams {
   rating?: number | null;
   price_min?: number | null;
   price_max?: number | null;
+  limit?: number | null;
 }
 
 // Update getFilters function signature
@@ -580,6 +581,11 @@ export async function getProducts(
       // Only filter if there are active conditions
       return conditions.length === 0 || conditions.every((condition) => condition);
     });
+
+    // Apply limit if provided
+    if (filterParams.limit != null) {
+      brandProducts = brandProducts.slice(0, filterParams.limit);
+    }
   }
 
   return brandProducts as unknown as CardProduct[];

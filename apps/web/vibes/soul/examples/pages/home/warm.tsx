@@ -1,5 +1,5 @@
+import { getProducts } from '@/vibes/soul/data';
 import { locales } from '@/vibes/soul/data/locales';
-import { cards } from '@/vibes/soul/examples/primitives/card-carousel/warm';
 import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm';
@@ -80,6 +80,8 @@ export const featuredImageII: FeaturedImageProps = {
 // TODO: Footer
 
 export default function Preview() {
+  const cards = getProducts('Warm');
+
   return (
     <>
       <Banner id="example-banner">

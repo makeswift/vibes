@@ -1,5 +1,7 @@
 import { clsx } from 'clsx';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
+import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import {
   Carousel,
   CarouselButtons,
@@ -15,9 +17,10 @@ import {
 interface Props {
   className?: string;
   title?: string;
-  products: CompareProduct[];
+  products: Streamable<CompareProduct[]>;
+  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string | null>;
   addToCartLabel?: string;
-  emptyStateMessage?: string;
   previousLabel?: string;
   nextLabel?: string;
   addToCartAction?: (id: string) => Promise<void>;
@@ -26,81 +29,109 @@ interface Props {
 export function CompareSection({
   className,
   title = 'Compare products',
-  products,
+  products: streamableProducts,
   addToCartAction,
   addToCartLabel,
-  emptyStateMessage,
+  emptyStateTitle,
+  emptyStateSubtitle,
   previousLabel,
   nextLabel,
 }: Props) {
-  if (products.length === 0) {
-    return <CompareSectionEmptyState message={emptyStateMessage} />;
-  }
-
   return (
-    <div className={clsx('overflow-hidden @container', className)}>
-      <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        <Carousel>
-          <div className="mb-8 flex w-full items-end justify-between gap-10 @xl:mb-10">
-            <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
-              {title} <span className="text-contrast-300">{products.length}</span>
-            </h1>
-            <CarouselButtons
-              className="hidden xl:block"
-              nextLabel={nextLabel}
-              previousLabel={previousLabel}
+    <Stream
+      fallback={<CompareSectionSkeleton className={className} pending />}
+      value={streamableProducts}
+    >
+      {(products) => {
+        if (products.length === 0) {
+          return (
+            <CompareSectionEmptyState
+              className={className}
+              emptyStateSubtitle={emptyStateSubtitle}
+              emptyStateTitle={emptyStateTitle}
             />
+          );
+        }
+
+        return (
+          <div className={clsx('overflow-hidden @container', className)}>
+            <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+              <Carousel>
+                <div className="mb-8 flex w-full items-end justify-between gap-10 @xl:mb-10">
+                  <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
+                    {title} <span className="text-contrast-300">{products.length}</span>
+                  </h1>
+                  <CarouselButtons
+                    className="hidden @md:flex"
+                    nextLabel={nextLabel}
+                    previousLabel={previousLabel}
+                  />
+                </div>
+                <CarouselContent>
+                  {products.map((product) => (
+                    <CarouselItem
+                      className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+                      key={product.id}
+                    >
+                      <CompareCard
+                        addToCartAction={addToCartAction}
+                        addToCartLabel={addToCartLabel}
+                        imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
+                        key={product.id}
+                        product={product}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+            </div>
           </div>
-          <CarouselContent>
-            {products.map((product) => (
-              <CarouselItem
-                className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-                key={product.id}
-              >
-                <CompareCard
-                  addToCartAction={addToCartAction}
-                  addToCartLabel={addToCartLabel}
-                  imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
-                  key={product.id}
-                  product={product}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
-    </div>
+        );
+      }}
+    </Stream>
   );
 }
 
 export function CompareSectionSkeleton({
   className,
   title = 'Compare products',
+  pending = false,
 }: {
   className?: string;
   title?: string;
+  pending?: boolean;
 }) {
   return (
-    <div className={clsx('overflow-hidden @container', className)}>
-      <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        <Carousel>
+    <div className={clsx('group/pending overflow-hidden @container', className)}>
+      <div
+        className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20"
+        data-pending={pending ? '' : undefined}
+      >
+        <div className="relative @container">
           <div className="mb-8 flex w-full items-end justify-between gap-10 @xl:mb-10">
             <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
               {title}
             </h1>
-            <div className="flex h-6 w-14 animate-pulse bg-contrast-100" />
+            <div className="flex gap-2 text-contrast-200 group-has-[[data-pending]]/pending:animate-pulse">
+              <ArrowLeft className="h-6 w-6" strokeWidth={1.5} />
+              <ArrowRight className="h-6 w-6" strokeWidth={1.5} />
+            </div>
           </div>
-          <CarouselContent>
-            {Array.from({ length: 4 }).map((_, index) => (
-              <CarouselItem
-                className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-                key={index}
-              >
-                <CompareCardSkeleton />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+
+          <div className="w-full group-has-[[data-pending]]/pending:animate-pulse">
+            <div className="-ml-4 flex @2xl:-ml-5">
+              {Array.from({ length: 4 }).map((_, index) => (
+                <div
+                  className="min-w-0 shrink-0 grow-0 basis-[calc(100%-20px)] pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
+                  key={index}
+                  role="group"
+                >
+                  <CompareCardSkeleton />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -109,34 +140,46 @@ export function CompareSectionSkeleton({
 export function CompareSectionEmptyState({
   className,
   title = 'Compare products',
-  message = 'No products found',
+  emptyStateTitle,
+  emptyStateSubtitle,
 }: {
   className?: string;
   title?: string;
-  message?: string;
+  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string | null>;
 }) {
   return (
     <div className={clsx('overflow-hidden @container', className)}>
       <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        <Carousel>
+        <div className="relative @container">
           <div className="mb-8 flex w-full items-end justify-between gap-10 @xl:mb-10">
             <h1 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">
               {title}
             </h1>
-            <div className="flex h-6 w-14 animate-pulse bg-contrast-100" />
           </div>
-          <CarouselContent className="[mask-image:radial-gradient(circle,transparent,black)]">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <CarouselItem
-                className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
-                key={index}
-              >
-                <CompareCardSkeleton />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="absolute inset-0 flex items-center justify-center text-xl">{message}</div>
-        </Carousel>
+
+          <div className="relative w-full">
+            <div className="-ml-4 flex [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:-ml-5">
+              {Array.from({ length: 4 }).map((_, index) => (
+                <div
+                  className="min-w-0 shrink-0 grow-0 basis-[calc(100%-20px)] pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
+                  key={index}
+                  role="group"
+                >
+                  <CompareCardSkeleton />
+                </div>
+              ))}
+            </div>
+            <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+              <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
+                <h3 className="@4x:leading-none font-heading text-2xl leading-tight text-foreground @4xl:text-4xl">
+                  {emptyStateTitle}
+                </h3>
+                <p className="text-sm text-contrast-500 @4xl:text-lg">{emptyStateSubtitle}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

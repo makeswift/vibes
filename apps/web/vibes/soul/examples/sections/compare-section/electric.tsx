@@ -3,8 +3,15 @@ import { CompareSection } from '@/vibes/soul/sections/compare-section';
 
 import { addToCartAction } from './actions';
 
-const products = await getProducts('Electric');
-
 export default function Preview() {
-  return <CompareSection addToCartAction={addToCartAction} products={products} />;
+  const products = getProducts('Electric');
+
+  return (
+    <CompareSection
+      addToCartAction={addToCartAction}
+      emptyStateSubtitle="Browse our catalog to find products."
+      emptyStateTitle="No products to compare"
+      products={products}
+    />
+  );
 }

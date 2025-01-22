@@ -92,10 +92,7 @@ export function CompareCard({
 export function CompareCardSkeleton({ className }: { className?: string }) {
   return (
     <div
-      className={clsx(
-        'flex w-full animate-pulse flex-col divide-y divide-contrast-100 @container',
-        className,
-      )}
+      className={clsx('flex w-full flex-col divide-y divide-contrast-100 @container', className)}
     >
       <div className="mb-2 space-y-4 pb-4">
         <ProductCardSkeleton />

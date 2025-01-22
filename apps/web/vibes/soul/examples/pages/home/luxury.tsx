@@ -1,5 +1,5 @@
+import { getProducts } from '@/vibes/soul/data';
 import { locales } from '@/vibes/soul/data/locales';
-import { cards } from '@/vibes/soul/examples/primitives/card-carousel/luxury';
 import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury';
@@ -72,6 +72,8 @@ export const featuredImageII: FeaturedImageProps = {
 };
 
 export default function Preview() {
+  const cards = getProducts('Luxury');
+
   return (
     <>
       <Banner id="example-banner">

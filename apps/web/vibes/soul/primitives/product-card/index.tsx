@@ -163,10 +163,25 @@ export function ProductCard({
   );
 }
 
-export function ProductCardSkeleton({ className }: { className?: string }) {
+export function ProductCardSkeleton({
+  className,
+  aspectRatio = '5:6',
+}: {
+  aspectRatio?: '5:6' | '3:4' | '1:1';
+  className?: string;
+}) {
   return (
-    <div className={className}>
-      <div className="flex aspect-[5/6] flex-col gap-2 rounded-xl bg-contrast-100 @md:rounded-2xl" />
+    <div className={clsx('@container', className)}>
+      <div
+        className={clsx(
+          'flex flex-col gap-2 rounded-xl bg-contrast-100 @md:rounded-2xl',
+          {
+            '5:6': 'aspect-[5/6]',
+            '3:4': 'aspect-[3/4]',
+            '1:1': 'aspect-square',
+          }[aspectRatio],
+        )}
+      />
       <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row">
         <div className="flex-1">
           <div className="flex flex-col text-base">

@@ -185,7 +185,7 @@ function CarouselButtons({
         onClick={scrollPrev}
         title={previousLabel}
       >
-        <ArrowLeft strokeWidth={1.5} />
+        <ArrowLeft className="h-6 w-6" strokeWidth={1.5} />
       </button>
       <button
         className="rounded-lg ring-[var(--carousel-focus,hsl(var(--primary)))] transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-25"
@@ -193,7 +193,7 @@ function CarouselButtons({
         onClick={scrollNext}
         title={nextLabel}
       >
-        <ArrowRight strokeWidth={1.5} />
+        <ArrowRight className="h-6 w-6" strokeWidth={1.5} />
       </button>
     </div>
   );
