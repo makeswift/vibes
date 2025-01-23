@@ -4,17 +4,13 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { Select } from '@/vibes/soul/form/select';
 
-export function AccountLayoutLinkSelect({
-  links,
-}: {
-  links: Array<{ href: string; label: string }>;
-}) {
+export function SidebarMenuSelect({ links }: { links: Array<{ href: string; label: string }> }) {
   const pathname = usePathname();
   const router = useRouter();
 
   return (
     <Select
-      name="account-layout-link-select"
+      name="sidebar-layout-link-select"
       onValueChange={(value) => {
         router.push(value);
       }}

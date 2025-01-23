@@ -13,11 +13,11 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/accordions')),
   },
   {
-    name: 'account-layout-example',
+    name: 'sticky-sidebar-layout-example',
     dependencies: [],
     registryDependencies: [],
-    files: ['examples/sections/account-layout/index.tsx'],
-    component: lazy(() => import('./examples/sections/account-layout')),
+    files: ['examples/sections/sticky-sidebar-layout/index.tsx'],
+    component: lazy(() => import('./examples/sections/sticky-sidebar-layout')),
   },
   {
     name: 'account-settings-section-example',
