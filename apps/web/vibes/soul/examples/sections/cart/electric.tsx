@@ -1,14 +1,38 @@
-import { getLineItems, getSubtotal } from '@/vibes/soul/data/line-items';
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
 
 import { checkoutAction, lineItemAction } from './actions';
 
-export default async function Preview() {
-  // const products = await getLineItems('Electric')
-  const lineItems = new Promise<CartLineItem[]>((res) =>
-    setTimeout(() => res(getLineItems('Electric')), 5000),
+const lineItems: CartLineItem[] = [
+  {
+    id: '1',
+    title: 'Philodendron Imperial Red',
+    subtitle: 'Indoor Plant',
+    price: '$46',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+      alt: 'Philodendron Imperial Red',
+    },
+    quantity: 1,
+  },
+  {
+    id: '2',
+    title: 'Caladium',
+    subtitle: 'Indoor / Outdoor Plant',
+    price: '$24',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
+      alt: 'Caladium',
+    },
+    quantity: 2,
+  },
+];
+
+const subtotal = `$96`;
+
+export default function Preview() {
+  const lineItemsPromise = new Promise<CartLineItem[]>((res) =>
+    setTimeout(() => res(lineItems), 5000),
   );
-  const subtotal = await getSubtotal('Electric');
 
   return (
     <Cart
@@ -22,10 +46,10 @@ export default async function Preview() {
         },
       }}
       lineItemAction={lineItemAction}
-      lineItems={lineItems}
+      lineItems={lineItemsPromise}
       summary={{
         title: 'Summary',
-        subtotal: subtotal,
+        subtotal,
         caption: 'Shipping & taxes calculated at checkout',
         subtotalLabel: 'Subtotal',
         shippingLabel: 'Shipping',
@@ -40,3 +64,4 @@ export default async function Preview() {
     />
   );
 }
+
