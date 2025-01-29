@@ -1,22 +1,21 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
+import Form from 'next/form';
 import { cookies } from 'next/headers';
 import { z } from 'zod';
-import Form from 'next/form';
 
+import { Button } from '@/vibes/soul/primitives/button';
 import { Cart } from '@/vibes/soul/sections/cart';
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema';
 
 export default async function Preview() {
-  const cartService = new CartService();
 
   return (
-    <div>
+    <div className="p-4">
       <Form action={clearCart}>
-        <button type="submit">Clear cart</button>
+        <Button type="submit" variant={'ghost'}>Reset cart</Button>
       </Form>
       <Cart
-        key={await cartService.getCartId()}
         checkoutAction={checkoutAction}
         emptyState={{
           title: 'Your cart is empty',
@@ -26,19 +25,20 @@ export default async function Preview() {
             href: '#',
           },
         }}
+        key={await getCartId()}
         lineItemAction={lineItemAction}
-        lineItems={cartService.getLineItems()}
+        lineItems={getLineItems()}
         summary={{
           title: 'Summary',
-          subtotal,
+          subtotal: await getSubtotal(),
           caption: 'Shipping & taxes calculated at checkout',
           subtotalLabel: 'Subtotal',
           shippingLabel: 'Shipping',
-          shipping: 'TBD',
-          taxLabel: 'Tax',
-          tax: 'TBD',
+          shipping: await getShipping(),
+          taxLabel: "Tax",
+          tax: await getTax(),
           grandTotalLabel: 'Total',
-          grandTotal: cartService.getGrandTotal(),
+          grandTotal: await getGrandTotal(),
           ctaLabel: 'Checkout',
         }}
         title="Cart"
@@ -72,8 +72,6 @@ const defaultLineItems: CartLineItem[] = [
   },
 ];
 
-const subtotal = `$96`;
-
 export async function checkoutAction(
   prevState: Awaited<SubmissionResult | null>,
 ): Promise<SubmissionResult | null> {
@@ -83,12 +81,6 @@ export async function checkoutAction(
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return prevState;
-}
-
-async function clearCart() {
-  'use server';
-
-  await new CartService().clearCart();
 }
 
 export async function lineItemAction(
@@ -112,21 +104,19 @@ export async function lineItemAction(
     };
   }
 
-  const cartService = new CartService();
-
   switch (submission.value.intent) {
     case 'increment': {
-      await cartService.incrementLineItem(submission.value.id);
+      await incrementLineItem(submission.value.id);
 
       break;
     }
     case 'decrement': {
-      await cartService.decrementLineItem(submission.value.id);
+      await decrementLineItem(submission.value.id);
 
       break;
     }
     case 'delete': {
-      await cartService.deleteLineItem(submission.value.id);
+      await deleteLineItem(submission.value.id);
 
       break;
     }
@@ -137,7 +127,7 @@ export async function lineItemAction(
   }
 
   return {
-    lineItems: await cartService.getLineItems(),
+    lineItems: await getLineItems(),
     lastResult: submission.reply({ resetForm: true }),
   };
 }
@@ -164,8 +154,7 @@ type CartLineItem = Cart['lineItems'][number];
 /**
  * Replace this with a real implementation
  */
-class CartService {
-  private async getCart(): Promise<Cart | null> {
+  async function getCart(): Promise<Cart | null> {
     const cookiesStore = await cookies();
     const cart = cartSchema
       .nullable()
@@ -179,30 +168,31 @@ class CartService {
     return cart;
   }
 
-  private async setCart(cart: Cart) {
+  async function setCart(cart: Cart) {
     const cookiesStore = await cookies();
 
     cookiesStore.set('cart', JSON.stringify(cart));
   }
 
-  async getCartId(): Promise<string | null> {
-    const cart = await this.getCart();
+  async function getCartId(): Promise<string | null> {
+    const cart = await getCart();
 
     return cart?.id ?? null;
   }
 
-  async clearCart() {
-    await this.setCart({ id: crypto.randomUUID(), lineItems: defaultLineItems });
+  async function clearCart() {
+    'use server'
+    await setCart({ id: crypto.randomUUID(), lineItems: defaultLineItems });
   }
 
-  async getLineItems(): Promise<CartLineItem[]> {
-    const cart = await this.getCart();
+  async function getLineItems(): Promise<CartLineItem[]> {
+    const cart = await getCart();
 
     return cart?.lineItems ?? [];
   }
 
-  async incrementLineItem(id: string) {
-    const cart = await this.getCart();
+  async function incrementLineItem(id: string) {
+    const cart = await getCart();
 
     if (!cart) return;
 
@@ -210,11 +200,11 @@ class CartService {
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
     );
 
-    await this.setCart(cart);
+    await setCart(cart);
   }
 
-  async decrementLineItem(id: string) {
-    const cart = await this.getCart();
+  async function decrementLineItem(id: string) {
+    const cart = await getCart();
 
     if (!cart) return;
 
@@ -222,26 +212,44 @@ class CartService {
       item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
     );
 
-    await this.setCart(cart);
+    await setCart(cart);
   }
 
-  async deleteLineItem(id: string) {
-    const cart = await this.getCart();
+  async function deleteLineItem(id: string) {
+    const cart = await getCart();
 
     if (!cart) return;
 
     cart.lineItems = cart.lineItems.filter((item) => item.id !== id);
 
-    await this.setCart(cart);
+    await setCart(cart);
   }
 
-  async getGrandTotal(): Promise<string> {
-    const cart = await this.getCart();
+  async function getSubtotal(): Promise<string> {
+    const cart = await getCart();
 
-    return (
-      cart?.lineItems
-        .reduce((acc, item) => acc + Number(item.price.replace(/^\$/, '')) * item.quantity, 0)
-        .toFixed(2) ?? '$0.00'
-    );
+    const subtotal = cart?.lineItems
+      .reduce((acc, item) => acc + Number(item.price.replace(/^\$/, '')) * item.quantity, 0) ?? 0
+      .toFixed(2);   
+    return `$${subtotal}`;
   }
-}
+
+  async function getShipping(): Promise<string> {
+    const subtotal = Number((await getSubtotal()).replace(/^\$/, ''));
+    const shipping = (subtotal > 100 ? 0 : 10).toFixed(2);
+    return `$${shipping}`;
+  }
+
+  async function getTax(): Promise<string> {
+    const subtotal = Number((await getSubtotal()).replace(/^\$/, ''));
+    const tax = (subtotal * 0.08).toFixed(2);
+    return `$${tax}`;
+  }
+
+  async function getGrandTotal(): Promise<string> {
+    const subtotal = Number((await getSubtotal()).replace(/^\$/, ''));
+    const shipping = Number((await getShipping()).replace(/^\$/, ''));
+    const tax = Number((await getTax()).replace(/^\$/, ''));
+    const grandTotal = (subtotal + shipping + tax).toFixed(2);
+    return `$${grandTotal}`;
+  }
