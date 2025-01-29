@@ -1,46 +1,53 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
+import Form from 'next/form';
+import { cookies } from 'next/headers';
+import { z } from 'zod';
 
+import { Button } from '@/vibes/soul/primitives/button';
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema';
 
-export default function Preview() {
-  const lineItemsPromise = new Promise<CartLineItem[]>((res) =>
-    setTimeout(() => res(lineItems), 3000),
-  );
+export default async function Preview() {
 
   return (
-    <Cart
-      checkoutAction={checkoutAction}
-      emptyState={{
-        title: 'Your cart is empty',
-        subtitle: 'Add some products to get started.',
-        cta: {
-          label: 'Continue shopping',
-          href: '#',
-        },
-      }}
-      lineItemAction={lineItemAction}
-      lineItems={lineItemsPromise}
-      summary={{
-        title: 'Summary',
-        subtotal: subtotal,
-        caption: 'Shipping & taxes calculated at checkout',
-        subtotalLabel: 'Subtotal',
-        shippingLabel: 'Shipping',
-        shipping: 'TBD',
-        taxLabel: 'Tax',
-        tax: 'TBD',
-        // grandTotalLabel: 'Total',
-        // grandTotal: '$127.60',
-        ctaLabel: 'Checkout',
-      }}
-      title="Cart"
-    />
+    <div className="p-4">
+      <Form action={clearCart}>
+        <Button type="submit" variant={'ghost'}>Reset cart</Button>
+      </Form>
+      <Cart
+        checkoutAction={checkoutAction}
+        emptyState={{
+          title: 'Your cart is empty',
+          subtitle: 'Add some products to get started.',
+          cta: {
+            label: 'Continue shopping',
+            href: '#',
+          },
+        }}
+        key={await getCartId()}
+        lineItemAction={lineItemAction}
+        lineItems={getLineItems()}
+        summary={{
+          title: 'Summary',
+          subtotal: await getSubtotal(),
+          caption: 'Shipping & taxes calculated at checkout',
+          subtotalLabel: 'Subtotal',
+          shippingLabel: 'Shipping',
+          shipping: await getShipping(),
+          taxLabel: "Tax",
+          tax: getTax(),
+          grandTotalLabel: 'Total',
+          grandTotal: getGrandTotal(),
+          ctaLabel: 'Checkout',
+        }}
+        title="Cart"
+      />
+    </div>
   );
 }
 
-const lineItems: CartLineItem[] = [
+const defaultLineItems: CartLineItem[] = [
   {
     id: '1',
     title: 'DARYA LUG SOLE FISHERMAN',
@@ -64,8 +71,6 @@ const lineItems: CartLineItem[] = [
     quantity: 2,
   },
 ];
-
-const subtotal = `$1050`;
 
 export async function checkoutAction(
   prevState: Awaited<SubmissionResult | null>,
@@ -99,43 +104,151 @@ export async function lineItemAction(
     };
   }
 
-  // Simulate a network request
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   switch (submission.value.intent) {
     case 'increment': {
-      // const item = await incrementLineItem(submission.value)
-      const item = submission.value;
+      await incrementLineItem(submission.value.id);
 
-      return {
-        lineItems: prevState.lineItems.map((lineItem) =>
-          lineItem.id === item.id ? { ...lineItem, quantity: lineItem.quantity + 1 } : lineItem,
-        ),
-        lastResult: submission.reply({ resetForm: true }),
-      };
+      break;
     }
     case 'decrement': {
-      // const item = await decrementLineItem(submission.value)
-      const item = submission.value;
+      await decrementLineItem(submission.value.id);
 
-      return {
-        lineItems: prevState.lineItems.map((lineItem) =>
-          lineItem.id === item.id ? { ...lineItem, quantity: lineItem.quantity - 1 } : lineItem,
-        ),
-        lastResult: submission.reply({ resetForm: true }),
-      };
+      break;
     }
     case 'delete': {
-      // const deletedItem = await deleteLineItem(submission.value)
-      const deletedItem = submission.value;
+      await deleteLineItem(submission.value.id);
 
-      return {
-        lineItems: prevState.lineItems.filter((item) => item.id !== deletedItem.id),
-        lastResult: submission.reply({ resetForm: true }),
-      };
+      break;
     }
+
     default: {
       return prevState;
     }
   }
+
+  return {
+    lineItems: await getLineItems(),
+    lastResult: submission.reply({ resetForm: true }),
+  };
 }
+
+const cartSchema = z.object({
+  id: z.string(),
+  lineItems: z.array(
+    z.object({
+      id: z.string(),
+      title: z.string(),
+      subtitle: z.string(),
+      price: z.string(),
+      quantity: z.number(),
+      image: z.object({
+        src: z.string(),
+        alt: z.string(),
+      }),
+    }),
+  ),
+});
+type Cart = z.infer<typeof cartSchema>;
+
+/**
+ * Replace these with your own implementation
+ */
+  async function getCart(): Promise<Cart | null> {
+    const cookiesStore = await cookies();
+    const cart = cartSchema
+      .nullable()
+      .parse(
+        JSON.parse(
+          cookiesStore.get('cart-luxury')?.value ??
+            JSON.stringify({ id: crypto.randomUUID(), lineItems: defaultLineItems }),
+        ),
+      );
+
+    return cart;
+  }
+
+  async function setCart(cart: Cart) {
+    const cookiesStore = await cookies();
+
+    cookiesStore.set('cart-luxury', JSON.stringify(cart));
+  }
+
+  async function getCartId(): Promise<string | null> {
+    const cart = await getCart();
+
+    return cart?.id ?? null;
+  }
+
+  async function clearCart() {
+    'use server'
+    await setCart({ id: crypto.randomUUID(), lineItems: defaultLineItems });
+  }
+
+  async function getLineItems(): Promise<CartLineItem[]> {
+    const cart = await getCart();
+
+    return cart?.lineItems ?? [];
+  }
+
+  async function incrementLineItem(id: string) {
+    const cart = await getCart();
+
+    if (!cart) return;
+
+    cart.lineItems = cart.lineItems.map((item) =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+    );
+
+    await setCart(cart);
+  }
+
+  async function decrementLineItem(id: string) {
+    const cart = await getCart();
+
+    if (!cart) return;
+
+    cart.lineItems = cart.lineItems.map((item) =>
+      item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+    );
+
+    await setCart(cart);
+  }
+
+  async function deleteLineItem(id: string) {
+    const cart = await getCart();
+
+    if (!cart) return;
+
+    cart.lineItems = cart.lineItems.filter((item) => item.id !== id);
+
+    await setCart(cart);
+  }
+
+  async function getSubtotal(): Promise<string> {
+    const cart = await getCart();
+
+    const subtotal = cart?.lineItems
+      .reduce((acc, item) => acc + Number(item.price.replace(/^\$/, '')) * item.quantity, 0) ?? 0
+      .toFixed(2);   
+    return `$${subtotal}`;
+  }
+
+  async function getShipping(): Promise<string> {
+    const subtotal = Number((await getSubtotal()).replace(/^\$/, ''));
+    const shipping = (subtotal > 100 ? 0 : 10).toFixed(2);
+    return `$${shipping}`;
+  }
+
+  async function getTax(): Promise<string> {
+    const subtotal = Number((await getSubtotal()).replace(/^\$/, ''));
+    const tax = (subtotal * 0.08).toFixed(2);
+    return `$${tax}`;
+  }
+
+  async function getGrandTotal(): Promise<string> {
+    const subtotal = Number((await getSubtotal()).replace(/^\$/, ''));
+    const shipping = Number((await getShipping()).replace(/^\$/, ''));
+    const tax = Number((await getTax()).replace(/^\$/, ''));
+    const grandTotal = (subtotal + shipping + tax).toFixed(2);
+    return `$${grandTotal}`;
+  }

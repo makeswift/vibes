@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 import { z } from 'zod';
 
 import { Button } from '@/vibes/soul/primitives/button';
-import { Cart } from '@/vibes/soul/sections/cart';
+import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema';
 
 export default async function Preview() {
@@ -36,9 +36,9 @@ export default async function Preview() {
           shippingLabel: 'Shipping',
           shipping: await getShipping(),
           taxLabel: "Tax",
-          tax: await getTax(),
+          tax: getTax(),
           grandTotalLabel: 'Total',
-          grandTotal: await getGrandTotal(),
+          grandTotal: getGrandTotal(),
           ctaLabel: 'Checkout',
         }}
         title="Cart"
@@ -149,10 +149,9 @@ const cartSchema = z.object({
   ),
 });
 type Cart = z.infer<typeof cartSchema>;
-type CartLineItem = Cart['lineItems'][number];
 
 /**
- * Replace this with a real implementation
+ * Replace these with your own implementation
  */
   async function getCart(): Promise<Cart | null> {
     const cookiesStore = await cookies();
@@ -160,7 +159,7 @@ type CartLineItem = Cart['lineItems'][number];
       .nullable()
       .parse(
         JSON.parse(
-          cookiesStore.get('cart')?.value ??
+          cookiesStore.get('cart-electric')?.value ??
             JSON.stringify({ id: crypto.randomUUID(), lineItems: defaultLineItems }),
         ),
       );
@@ -171,7 +170,7 @@ type CartLineItem = Cart['lineItems'][number];
   async function setCart(cart: Cart) {
     const cookiesStore = await cookies();
 
-    cookiesStore.set('cart', JSON.stringify(cart));
+    cookiesStore.set('cart-electric', JSON.stringify(cart));
   }
 
   async function getCartId(): Promise<string | null> {
