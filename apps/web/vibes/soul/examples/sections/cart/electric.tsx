@@ -1,47 +1,53 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
+import { cookies } from 'next/headers';
+import { z } from 'zod';
+import Form from 'next/form';
 
-import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
+import { Cart } from '@/vibes/soul/sections/cart';
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema';
 
-
-export default function Preview() {
-  const lineItemsPromise = new Promise<CartLineItem[]>((res) =>
-    setTimeout(() => res(lineItems), 3000),
-  );
+export default async function Preview() {
+  const cartService = new CartService();
 
   return (
-    <Cart
-      checkoutAction={checkoutAction}
-      emptyState={{
-        title: 'Your cart is empty',
-        subtitle: 'Add some products to get started.',
-        cta: {
-          label: 'Continue shopping',
-          href: '#',
-        },
-      }}
-      lineItemAction={lineItemAction}
-      lineItems={lineItemsPromise}
-      summary={{
-        title: 'Summary',
-        subtotal,
-        caption: 'Shipping & taxes calculated at checkout',
-        subtotalLabel: 'Subtotal',
-        shippingLabel: 'Shipping',
-        shipping: 'TBD',
-        taxLabel: 'Tax',
-        tax: 'TBD',
-        grandTotalLabel: 'Total',
-        grandTotal: '$127.60',
-        ctaLabel: 'Checkout',
-      }}
-      title="Cart"
-    />
+    <div>
+      <Form action={clearCart}>
+        <button type="submit">Clear cart</button>
+      </Form>
+      <Cart
+        key={await cartService.getCartId()}
+        checkoutAction={checkoutAction}
+        emptyState={{
+          title: 'Your cart is empty',
+          subtitle: 'Add some products to get started.',
+          cta: {
+            label: 'Continue shopping',
+            href: '#',
+          },
+        }}
+        lineItemAction={lineItemAction}
+        lineItems={cartService.getLineItems()}
+        summary={{
+          title: 'Summary',
+          subtotal,
+          caption: 'Shipping & taxes calculated at checkout',
+          subtotalLabel: 'Subtotal',
+          shippingLabel: 'Shipping',
+          shipping: 'TBD',
+          taxLabel: 'Tax',
+          tax: 'TBD',
+          grandTotalLabel: 'Total',
+          grandTotal: cartService.getGrandTotal(),
+          ctaLabel: 'Checkout',
+        }}
+        title="Cart"
+      />
+    </div>
   );
 }
 
-const lineItems: CartLineItem[] = [
+const defaultLineItems: CartLineItem[] = [
   {
     id: '1',
     title: 'Philodendron Imperial Red',
@@ -79,6 +85,12 @@ export async function checkoutAction(
   return prevState;
 }
 
+async function clearCart() {
+  'use server';
+
+  await new CartService().clearCart();
+}
+
 export async function lineItemAction(
   prevState: Awaited<{
     lineItems: CartLineItem[];
@@ -100,43 +112,136 @@ export async function lineItemAction(
     };
   }
 
-  // Simulate a network request
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const cartService = new CartService();
 
   switch (submission.value.intent) {
     case 'increment': {
-      // const item = await incrementLineItem(submission.value)
-      const item = submission.value;
+      await cartService.incrementLineItem(submission.value.id);
 
-      return {
-        lineItems: prevState.lineItems.map((lineItem) =>
-          lineItem.id === item.id ? { ...lineItem, quantity: lineItem.quantity + 1 } : lineItem,
-        ),
-        lastResult: submission.reply({ resetForm: true }),
-      };
+      break;
     }
     case 'decrement': {
-      // const item = await decrementLineItem(submission.value)
-      const item = submission.value;
+      await cartService.decrementLineItem(submission.value.id);
 
-      return {
-        lineItems: prevState.lineItems.map((lineItem) =>
-          lineItem.id === item.id ? { ...lineItem, quantity: lineItem.quantity - 1 } : lineItem,
-        ),
-        lastResult: submission.reply({ resetForm: true }),
-      };
+      break;
     }
     case 'delete': {
-      // const deletedItem = await deleteLineItem(submission.value)
-      const deletedItem = submission.value;
+      await cartService.deleteLineItem(submission.value.id);
 
-      return {
-        lineItems: prevState.lineItems.filter((item) => item.id !== deletedItem.id),
-        lastResult: submission.reply({ resetForm: true }),
-      };
+      break;
     }
+
     default: {
       return prevState;
     }
+  }
+
+  return {
+    lineItems: await cartService.getLineItems(),
+    lastResult: submission.reply({ resetForm: true }),
+  };
+}
+
+const cartSchema = z.object({
+  id: z.string(),
+  lineItems: z.array(
+    z.object({
+      id: z.string(),
+      title: z.string(),
+      subtitle: z.string(),
+      price: z.string(),
+      quantity: z.number(),
+      image: z.object({
+        src: z.string(),
+        alt: z.string(),
+      }),
+    }),
+  ),
+});
+type Cart = z.infer<typeof cartSchema>;
+type CartLineItem = Cart['lineItems'][number];
+
+/**
+ * Replace this with a real implementation
+ */
+class CartService {
+  private async getCart(): Promise<Cart | null> {
+    const cookiesStore = await cookies();
+    const cart = cartSchema
+      .nullable()
+      .parse(
+        JSON.parse(
+          cookiesStore.get('cart')?.value ??
+            JSON.stringify({ id: crypto.randomUUID(), lineItems: defaultLineItems }),
+        ),
+      );
+
+    return cart;
+  }
+
+  private async setCart(cart: Cart) {
+    const cookiesStore = await cookies();
+
+    cookiesStore.set('cart', JSON.stringify(cart));
+  }
+
+  async getCartId(): Promise<string | null> {
+    const cart = await this.getCart();
+
+    return cart?.id ?? null;
+  }
+
+  async clearCart() {
+    await this.setCart({ id: crypto.randomUUID(), lineItems: defaultLineItems });
+  }
+
+  async getLineItems(): Promise<CartLineItem[]> {
+    const cart = await this.getCart();
+
+    return cart?.lineItems ?? [];
+  }
+
+  async incrementLineItem(id: string) {
+    const cart = await this.getCart();
+
+    if (!cart) return;
+
+    cart.lineItems = cart.lineItems.map((item) =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+    );
+
+    await this.setCart(cart);
+  }
+
+  async decrementLineItem(id: string) {
+    const cart = await this.getCart();
+
+    if (!cart) return;
+
+    cart.lineItems = cart.lineItems.map((item) =>
+      item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+    );
+
+    await this.setCart(cart);
+  }
+
+  async deleteLineItem(id: string) {
+    const cart = await this.getCart();
+
+    if (!cart) return;
+
+    cart.lineItems = cart.lineItems.filter((item) => item.id !== id);
+
+    await this.setCart(cart);
+  }
+
+  async getGrandTotal(): Promise<string> {
+    const cart = await this.getCart();
+
+    return (
+      cart?.lineItems
+        .reduce((acc, item) => acc + Number(item.price.replace(/^\$/, '')) * item.quantity, 0)
+        .toFixed(2) ?? '$0.00'
+    );
   }
 }
