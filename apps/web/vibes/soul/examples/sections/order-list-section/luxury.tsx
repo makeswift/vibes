@@ -1,6 +1,7 @@
 import { getProducts } from '@/vibes/soul/data';
-import { AccountLayout } from '@/vibes/soul/sections/account-layout';
 import { OrderListSection } from '@/vibes/soul/sections/order-list-section';
+import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 const products = await getProducts('Luxury');
 
@@ -56,15 +57,15 @@ const orders = [
 ];
 
 const links = [
-  { href: '#', label: 'Orders' },
-  { href: '#', label: 'Addresses' },
-  { href: '#', label: 'Account' },
+  { href: '/preview/soul/order-list-section-luxury-example', label: 'Orders' },
+  { href: '/preview/soul/address-list-section-example', label: 'Addresses' },
+  { href: '/preview/soul/account-settings-section-example', label: 'Account' },
 ];
 
 export default function Preview() {
   return (
-    <AccountLayout links={links}>
+    <StickySidebarLayout sidebar={<SidebarMenu links={links} />} sidebarSize="small">
       <OrderListSection orders={orders} paginationInfo={{ startCursor: '1', endCursor: '5' }} />
-    </AccountLayout>
+    </StickySidebarLayout>
   );
 }

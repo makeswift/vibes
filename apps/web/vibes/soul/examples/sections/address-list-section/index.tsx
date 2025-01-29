@@ -1,6 +1,7 @@
 import { Field, FieldGroup } from '@/vibes/soul/primitives/dynamic-form/schema';
-import { AccountLayout } from '@/vibes/soul/sections/account-layout';
 import { Address, AddressListSection } from '@/vibes/soul/sections/address-list-section';
+import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 import { addressAction } from './actions';
 
@@ -109,13 +110,13 @@ const fields: Array<Field | FieldGroup<Field>> = [
 
 export default function Preview() {
   return (
-    <AccountLayout links={links}>
+    <StickySidebarLayout sidebar={<SidebarMenu links={links} />} sidebarSize="small">
       <AddressListSection
         addressAction={addressAction}
         addresses={addresses}
         defaultAddress={{ id: '1' }}
         fields={fields}
       />
-    </AccountLayout>
+    </StickySidebarLayout>
   );
 }

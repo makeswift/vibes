@@ -1,5 +1,6 @@
-import { AccountLayout } from '@/vibes/soul/sections/account-layout';
 import { AccountSettingsSection } from '@/vibes/soul/sections/account-settings-section';
+import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 import { changePasswordAction, updateAccountAction } from './actions';
 
@@ -11,12 +12,12 @@ const links = [
 
 export default function Preview() {
   return (
-    <AccountLayout links={links}>
+    <StickySidebarLayout sidebar={<SidebarMenu links={links} />} sidebarSize="small">
       <AccountSettingsSection
         account={{ firstName: '', lastName: '', email: '' }}
         changePasswordAction={changePasswordAction}
         updateAccountAction={updateAccountAction}
       />
-    </AccountLayout>
+    </StickySidebarLayout>
   );
 }

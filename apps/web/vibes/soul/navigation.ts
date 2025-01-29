@@ -156,12 +156,6 @@ export const navigation = [
     title: 'Sections',
     pages: [
       {
-        title: 'Account Layout',
-        slug: 'account-layout',
-        file: 'docs/account-layout.mdx',
-        component: 'account-layout',
-      },
-      {
         title: 'Account Settings Section',
         slug: 'account-settings-section',
         file: 'docs/account-settings-section.mdx',
@@ -280,6 +274,12 @@ export const navigation = [
         slug: 'slideshow',
         file: 'docs/slideshow.mdx',
         component: 'slideshow',
+      },
+      {
+        title: 'Sticky Sidebar Layout',
+        slug: 'sticky-sidebar-layout',
+        file: 'docs/sticky-sidebar-layout.mdx',
+        component: 'sticky-sidebar-layout',
       },
       {
         title: 'Subscribe',

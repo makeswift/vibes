@@ -2,10 +2,10 @@ import { Components } from '@/vibes/schema';
 
 export const sections = [
   {
-    name: 'account-layout',
+    name: 'sticky-sidebar-layout',
     dependencies: ['clsx'],
     registryDependencies: [],
-    files: ['sections/account-layout/index.tsx'],
+    files: ['sections/sticky-sidebar-layout/index.tsx'],
   },
   {
     name: 'account-settings-section',
