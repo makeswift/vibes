@@ -14,6 +14,7 @@ import {
   ProductCard,
   ProductCardSkeleton,
 } from '@/vibes/soul/primitives/product-card';
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export type CarouselProduct = CardProduct;
 
@@ -124,9 +125,13 @@ export function ProductsCarouselSkeleton({
   hideOverflow?: boolean;
 }) {
   return (
-    <div
-      className={clsx('@container', hideOverflow && 'overflow-hidden', className)}
-      data-pending={pending ? '' : undefined}
+    <Skeleton.Root
+      className={clsx(
+        'group-has-[[data-pending]]/products-carousel:animate-pulse',
+        hideOverflow && 'overflow-hidden',
+        className,
+      )}
+      pending={pending}
     >
       <div className="w-full">
         <div className="-ml-4 flex @2xl:-ml-5">
@@ -141,13 +146,13 @@ export function ProductsCarouselSkeleton({
         </div>
       </div>
       <div className="mt-10 flex w-full items-center justify-between gap-8">
-        <div className="h-1 w-full max-w-56 rounded bg-contrast-100" />
-        <div className="flex gap-2 text-contrast-200">
-          <ArrowLeft className="h-6 w-6" strokeWidth={1.5} />
-          <ArrowRight className="h-6 w-6" strokeWidth={1.5} />
+        <Skeleton.Box className="h-1 w-56 rounded" />
+        <div className="flex gap-2">
+          <Skeleton.Icon icon={<ArrowLeft aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
+          <Skeleton.Icon icon={<ArrowRight aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
         </div>
       </div>
-    </div>
+    </Skeleton.Root>
   );
 }
 

@@ -3,6 +3,8 @@ import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
+
 export interface CardProps {
   className?: string;
   title: string;
@@ -123,9 +125,9 @@ export function CardSkeleton({
 }) {
   return (
     <div className={clsx('@container', className)}>
-      <div
+      <Skeleton.Box
         className={clsx(
-          'rounded-[var(--card-border-radius,1rem)] bg-contrast-100',
+          'rounded-[var(--card-border-radius,1rem)]',
           {
             '5:6': 'aspect-[5/6]',
             '3:4': 'aspect-[3/4]',
@@ -133,10 +135,8 @@ export function CardSkeleton({
           }[aspectRatio],
         )}
       />
-      <div className="mt-3 text-lg">
-        <div className="flex h-[1lh] items-center">
-          <span className="block h-[1ex] w-[10ch] rounded-sm bg-contrast-100" />
-        </div>
+      <div className="mt-3">
+        <Skeleton.Text className="rounded text-lg" characterCount={10} />
       </div>
     </div>
   );

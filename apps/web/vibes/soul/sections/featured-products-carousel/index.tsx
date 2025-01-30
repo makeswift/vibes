@@ -34,7 +34,7 @@ export function FeaturedProductsCarousel({
   nextLabel,
 }: Props) {
   return (
-    <SectionLayout className="group/pending" hideOverflow>
+    <SectionLayout className="group/products-carousel">
       <div className="mb-6 flex w-full flex-row flex-wrap items-end justify-between gap-x-8 gap-y-6 text-foreground @4xl:mb-8">
         <div>
           <h2 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">{title}</h2>
@@ -47,18 +47,16 @@ export function FeaturedProductsCarousel({
           <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
         )}
       </div>
-      <div className="group-has-[[data-pending]]/pending:animate-pulse">
-        <ProductsCarousel
-          emptyStateSubtitle={emptyStateSubtitle}
-          emptyStateTitle={emptyStateTitle}
-          hideOverflow={false}
-          nextLabel={nextLabel}
-          placeholderCount={placeholderCount}
-          previousLabel={previousLabel}
-          products={products}
-          scrollbarLabel={scrollbarLabel}
-        />
-      </div>
+      <ProductsCarousel
+        emptyStateSubtitle={emptyStateSubtitle}
+        emptyStateTitle={emptyStateTitle}
+        hideOverflow={false}
+        nextLabel={nextLabel}
+        placeholderCount={placeholderCount}
+        previousLabel={previousLabel}
+        products={products}
+        scrollbarLabel={scrollbarLabel}
+      />
     </SectionLayout>
   );
 }
