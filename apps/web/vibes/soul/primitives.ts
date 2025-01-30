@@ -69,12 +69,6 @@ export const primitives = [
     files: ['primitives/card/index.tsx'],
   },
   {
-    name: 'card-carousel',
-    dependencies: ['clsx'],
-    registryDependencies: ['carousel'],
-    files: ['primitives/card-carousel/index.tsx'],
-  },
-  {
     name: 'carousel',
     dependencies: ['embla-carousel-react', 'lucide-react'],
     registryDependencies: [],
@@ -155,12 +149,6 @@ export const primitives = [
     dependencies: ['clsx'],
     registryDependencies: ['badge', 'checkbox', 'price-label'],
     files: ['primitives/product-card/index.tsx', 'primitives/product-card/compare.tsx'],
-  },
-  {
-    name: 'products-carousel',
-    dependencies: ['clsx'],
-    registryDependencies: ['product-card', 'carousel'],
-    files: ['primitives/products-carousel/index.tsx'],
   },
   {
     name: 'products-list',
