@@ -647,11 +647,25 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/product-card')),
   },
   {
-    name: 'products-carousel-example',
+    name: 'products-carousel-warm',
     dependencies: [],
     registryDependencies: ['products-carousel'],
-    files: ['examples/primitives/products-carousel/index.tsx'],
-    component: lazy(() => import('./examples/primitives/products-carousel')),
+    files: ['examples/primitives/products-carousel/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/products-carousel/warm')),
+  },
+  {
+    name: 'products-carousel-electric',
+    dependencies: [],
+    registryDependencies: ['products-carousel'],
+    files: ['examples/primitives/products-carousel/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/products-carousel/electric')),
+  },
+  {
+    name: 'products-carousel-luxury',
+    dependencies: [],
+    registryDependencies: ['products-carousel'],
+    files: ['examples/primitives/products-carousel/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/products-carousel/luxury')),
   },
   {
     name: 'product-detail-electric-example',
