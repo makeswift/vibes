@@ -28,6 +28,7 @@ import { Button } from '@/vibes/soul/primitives/button';
 import { Logo } from '@/vibes/soul/primitives/logo';
 import { Price } from '@/vibes/soul/primitives/price-label';
 import { ProductCard } from '@/vibes/soul/primitives/product-card';
+import { toast } from '@/vibes/soul/primitives/toaster';
 
 interface Link {
   label: string;
@@ -850,9 +851,17 @@ function LocaleForm({
   const [lastResult, formAction] = useActionState(action, null);
   const activeLocale = locales.find((locale) => locale.id === activeLocaleId);
 
+  const [form] = useForm({
+    lastResult,
+  });
+
   useEffect(() => {
-    if (lastResult?.error) console.log(lastResult.error);
-  }, [lastResult?.error]);
+    if (form.errors) {
+      form.errors.forEach((error) => {
+        toast.error(error);
+      });
+    }
+  }, [form.errors]);
 
   return (
     <DropdownMenu.Root>
@@ -909,9 +918,17 @@ function CurrencyForm({
   const [lastResult, formAction] = useActionState(action, null);
   const activeCurrency = currencies.find((currency) => currency.id === activeCurrencyId);
 
+  const [form] = useForm({
+    lastResult,
+  });
+
   useEffect(() => {
-    if (lastResult?.error) console.log(lastResult.error);
-  }, [lastResult?.error]);
+    if (form.errors) {
+      form.errors.forEach((error) => {
+        toast.error(error);
+      });
+    }
+  }, [form.errors]);
 
   return (
     <DropdownMenu.Root>
