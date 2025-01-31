@@ -13,7 +13,7 @@ export default function Preview() {
       label: 'Shop Now',
       href: '#',
     },
-  
+
     emptyStateSubtitle: 'Try browsing our complete catalog of products.',
     emptyStateTitle: 'No products found',
   };
@@ -53,7 +53,7 @@ interface Product {
   rating: number;
 }
 
-const defaultProducts:Product[]  = [
+const defaultProducts: Product[] = [
   {
     id: '1',
     title: 'Mini Bar Bag',
@@ -126,4 +126,4 @@ const defaultProducts:Product[]  = [
     href: '#',
     rating: 4.1,
   },
-]
+];
