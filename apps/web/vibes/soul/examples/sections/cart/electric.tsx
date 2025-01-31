@@ -1,4 +1,3 @@
-
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import Form from 'next/form';
@@ -9,24 +8,23 @@ import { Button } from '@/vibes/soul/primitives/button';
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema';
 
-
 export default async function Preview() {
-
   return (
     <div className="p-4">
       <Form action={resetCart}>
-        <Button type="submit" variant={'ghost'}>Reset cart</Button>
+        <Button type="submit" variant={'ghost'}>
+          Reset cart
+        </Button>
       </Form>
-    <Cart
-      key={await getCartId()}
-      cart={getCart()}
-      checkoutAction={checkoutAction}
-      lineItemAction={lineItemAction}
-    />
+      <Cart
+        key={await getCartId()}
+        cart={getCart()}
+        checkoutAction={checkoutAction}
+        lineItemAction={lineItemAction}
+      />
     </div>
   );
 }
-
 
 const defaultLineItems: CartLineItem[] = [
   {
@@ -143,117 +141,117 @@ type Cart<CartLineItem> = {
   lineItems: CartLineItem[];
   summaryItems: SummaryItems;
   total: string;
-}
-
+};
 
 /**
  * Replace these with your own implementation
  */
-  async function getCart(): Promise<Cart<CartLineItem>> {
-    //delay 1 sceond
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    return parseCartFromCookies();
-  }
+async function getCart(): Promise<Cart<CartLineItem>> {
+  //delay 1 sceond
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return parseCartFromCookies();
+}
 
-  async function parseCartFromCookies() {
-    const cookiesStore = await cookies();
+async function parseCartFromCookies() {
+  const cookiesStore = await cookies();
 
-    const cart = cartSchema
-    .parse(
-      JSON.parse(
-        cookiesStore.get('cart-electric')?.value ??
-          JSON.stringify(generateCartFromLineItems(defaultLineItems)),
-      ),
-    );
-    return cart
-  }
+  const cart = cartSchema.parse(
+    JSON.parse(
+      cookiesStore.get('cart-electric')?.value ??
+        JSON.stringify(generateCartFromLineItems(defaultLineItems)),
+    ),
+  );
+  return cart;
+}
 
-  async function setCart(cart: Cart<CartLineItem>) {
-    const cookiesStore = await cookies();
+async function setCart(cart: Cart<CartLineItem>) {
+  const cookiesStore = await cookies();
 
-    cookiesStore.set('cart-electric', JSON.stringify(cart));
-  }
+  cookiesStore.set('cart-electric', JSON.stringify(cart));
+}
 
-  async function getCartId(): Promise<string> {
-    const cart = await parseCartFromCookies()
+async function getCartId(): Promise<string> {
+  const cart = await parseCartFromCookies();
 
-    return cart?.id ?? crypto.randomUUID();
-  }
+  return cart?.id ?? crypto.randomUUID();
+}
 
-  function getSummary(subtotal: number, shipping: number, tax: number): SummaryItems {
-    return [
-      { label: 'Subtotal', value: `$${subtotal.toFixed(2)}` },
-      { label: 'Shipping', value: `$${shipping.toFixed(2)}` },
-      { label: 'Tax', value: `$${tax.toFixed(2)}` },
-    ];
-  }
+function getSummary(subtotal: number, shipping: number, tax: number): SummaryItems {
+  return [
+    { label: 'Subtotal', value: `$${subtotal.toFixed(2)}` },
+    { label: 'Shipping', value: `$${shipping.toFixed(2)}` },
+    { label: 'Tax', value: `$${tax.toFixed(2)}` },
+  ];
+}
 
-  async function resetCart() {
-    'use server';
-    await setCart(generateCartFromLineItems(defaultLineItems));
-  }
+async function resetCart() {
+  'use server';
+  await setCart(generateCartFromLineItems(defaultLineItems));
+}
 
-  function generateCartFromLineItems(lineItems: CartLineItem[], id?: string): Cart<CartLineItem> {
-    const subtotal = getSubtotal(lineItems);
-    const shipping = getShipping(subtotal);
-    const tax = getTax(subtotal);
-    const total = subtotal + shipping + tax;
-    const summary = getSummary(subtotal, shipping, tax);
-    return {
-      id: id ?? crypto.randomUUID(),
-      lineItems,
-      summaryItems: summary,
-      total: `$${total.toFixed(2)}`,
-    }
-  }
+function generateCartFromLineItems(lineItems: CartLineItem[], id?: string): Cart<CartLineItem> {
+  const subtotal = getSubtotal(lineItems);
+  const shipping = getShipping(subtotal);
+  const tax = getTax(subtotal);
+  const total = subtotal + shipping + tax;
+  const summary = getSummary(subtotal, shipping, tax);
+  return {
+    id: id ?? crypto.randomUUID(),
+    lineItems,
+    summaryItems: summary,
+    total: `$${total.toFixed(2)}`,
+  };
+}
 
-  
-  async function incrementLineItem(id: string) {
-    const cart = await getCart();
+async function incrementLineItem(id: string) {
+  const cart = await getCart();
 
-    if (!cart) return;
+  if (!cart) return;
 
-    cart.lineItems = cart.lineItems.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
-    );
-    const updatedCart = generateCartFromLineItems(cart.lineItems, cart.id);
-    await setCart(updatedCart);
-  }
+  cart.lineItems = cart.lineItems.map((item) =>
+    item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+  );
+  const updatedCart = generateCartFromLineItems(cart.lineItems, cart.id);
+  await setCart(updatedCart);
+}
 
-  async function decrementLineItem(id: string) {
-    const cart = await getCart();
+async function decrementLineItem(id: string) {
+  const cart = await getCart();
 
-    if (!cart) return;
+  if (!cart) return;
 
-    cart.lineItems = cart.lineItems.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
-    );
+  cart.lineItems = cart.lineItems.map((item) =>
+    item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+  );
 
-    const updatedCart = generateCartFromLineItems(cart.lineItems, cart.id);
-    await setCart(updatedCart);
-  }
+  const updatedCart = generateCartFromLineItems(cart.lineItems, cart.id);
+  await setCart(updatedCart);
+}
 
-  async function deleteLineItem(id: string) {
-    const cart = await getCart();
+async function deleteLineItem(id: string) {
+  const cart = await getCart();
 
-    if (!cart) return;
+  if (!cart) return;
 
-    cart.lineItems = cart.lineItems.filter((item) => item.id !== id);
-    
-    const updatedCart = generateCartFromLineItems(cart.lineItems, cart.id);
-    await setCart(updatedCart);
-  }
+  cart.lineItems = cart.lineItems.filter((item) => item.id !== id);
 
-  function getSubtotal(lineItems: CartLineItem[]):number {
-    return lineItems
-      .reduce((acc, item) => acc + Number(item.price.replace(/^\$/, '')) * item.quantity, 0) ?? 0
-  }
+  const updatedCart = generateCartFromLineItems(cart.lineItems, cart.id);
+  await setCart(updatedCart);
+}
 
-  function getShipping(subtotal: number): number {
-    return subtotal > 100 ? 0 : 10;
-    
-  }
+function getSubtotal(lineItems: CartLineItem[]): number {
+  return (
+    lineItems.reduce(
+      (acc, item) => acc + Number(item.price.replace(/^\$/, '')) * item.quantity,
+      0,
+    ) ?? 0
+  );
+}
 
-  function getTax(subtotal: number): number {
-    return  subtotal * 0.08;
-  }
+function getShipping(subtotal: number): number {
+  return subtotal > 100 ? 0 : 10;
+}
+
+function getTax(subtotal: number): number {
+  return subtotal * 0.08;
+}
