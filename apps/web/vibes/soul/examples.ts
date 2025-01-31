@@ -328,11 +328,25 @@ export const examples = [
     component: lazy(() => import('./examples/sections/featured-image/luxury')),
   },
   {
-    name: 'featured-products-carousel-example',
+    name: 'featured-products-carousel-electric',
     dependencies: [],
     registryDependencies: ['featured-products-carousel'],
-    files: ['examples/sections/featured-products-carousel/index.tsx'],
-    component: lazy(() => import('./examples/sections/featured-products-carousel')),
+    files: ['examples/sections/featured-products-carousel/electric.tsx'],
+    component: lazy(() => import('./examples/sections/featured-products-carousel/electric')),
+  },
+  {
+    name: 'featured-products-carousel-warm',
+    dependencies: [],
+    registryDependencies: ['featured-products-carousel'],
+    files: ['examples/sections/featured-products-carousel/warm.tsx'],
+    component: lazy(() => import('./examples/sections/featured-products-carousel/warm')),
+  },
+  {
+    name: 'featured-products-carousel-luxury',
+    dependencies: [],
+    registryDependencies: ['featured-products-carousel'],
+    files: ['examples/sections/featured-products-carousel/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/featured-products-carousel/luxury')),
   },
   {
     name: 'featured-products-list-electric',
