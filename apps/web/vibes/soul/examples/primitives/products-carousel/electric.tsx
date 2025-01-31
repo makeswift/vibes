@@ -1,10 +1,9 @@
 import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
 
 export default function Preview() {
-  const products = new Promise<Product[]>((resolve)  => {
+  const products = new Promise<Product[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
-    }
-  );
+  });
 
   return (
     <div>
@@ -183,4 +182,4 @@ const defaultProducts: Product[] = [
     href: '#',
     rating: 4.3,
   },
-]
+];
