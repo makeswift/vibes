@@ -18,7 +18,7 @@ export default async function Preview() {
       </Form>
       <Cart
         key={await getCartId()}
-        cart={await getCart()}
+        cart={getCart()}
         checkoutAction={checkoutAction}
         lineItemAction={lineItemAction}
       />
