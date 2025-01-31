@@ -130,4 +130,3 @@ const defaultProducts: Product[] = [
     rating: 4.4,
   },
 ];
-

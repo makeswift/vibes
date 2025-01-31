@@ -428,5 +428,5 @@ const featuredProducts = {
   },
   emptyStateSubtitle: 'Try browsing our complete catalog of products.',
   emptyStateTitle: 'No products found',
-  products
+  products,
 };
