@@ -1,10 +1,9 @@
 import { ProductsList } from '@/vibes/soul/primitives/products-list';
 
 export default function Preview() {
-  const products = new Promise<Product[]>((resolve)  => {
+  const products = new Promise<Product[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
-    }
-  );
+  });
 
   return (
     <div className="p-6">
@@ -26,7 +25,6 @@ interface Product {
   href: string;
   rating: number;
 }
-
 
 const defaultProducts: Product[] = [
   {
@@ -107,4 +105,4 @@ const defaultProducts: Product[] = [
     href: '#',
     rating: 4.4,
   },
-]
+];
