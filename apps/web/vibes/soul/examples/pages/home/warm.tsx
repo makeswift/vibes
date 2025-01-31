@@ -27,7 +27,6 @@ import {
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
 import { Slideshow } from '@/vibes/soul/sections/slideshow';
 import { Subscribe } from '@/vibes/soul/sections/subscribe';
-import { products } from '../not-found/electric';
 
 // TODO: New Arrivals
 // TODO: Recently Viewed

@@ -238,7 +238,6 @@ const products = [
   },
 ];
 
-
 const featuredProducts = {
   title: 'Our apparel',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto.',
@@ -248,5 +247,5 @@ const featuredProducts = {
   },
   emptyStateSubtitle: 'Try browsing our complete catalog of products.',
   emptyStateTitle: 'No products found',
-  products
+  products,
 };
