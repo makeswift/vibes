@@ -17,9 +17,9 @@ export default async function Preview() {
         </Button>
       </Form>
       <Cart
-        key={await getCartId()}
         cart={await getCart()}
         checkoutAction={checkoutAction}
+        key={await getCartId()}
         lineItemAction={lineItemAction}
       />
     </div>
@@ -135,13 +135,13 @@ const cartSchema = z.object({
   total: z.string(),
 });
 
-type SummaryItems = { label: string; value: string }[];
-type Cart<CartLineItem> = {
+type SummaryItems = Array<{ label: string; value: string }>;
+interface Cart<CartLineItem> {
   id: string;
   lineItems: CartLineItem[];
   summaryItems: SummaryItems;
   total: string;
-};
+}
 
 /**
  * Replace these with your own implementation
@@ -171,7 +171,7 @@ async function setCart(cart: Cart<CartLineItem>) {
 async function getCartId(): Promise<string> {
   const cart = await parseCartFromCookies();
 
-  return cart?.id ?? crypto.randomUUID();
+  return cart.id;
 }
 
 function getSummary(subtotal: number, shipping: number, tax: number): SummaryItems {
@@ -204,8 +204,6 @@ function generateCartFromLineItems(lineItems: CartLineItem[], id?: string): Cart
 async function incrementLineItem(id: string) {
   const cart = await getCart();
 
-  if (!cart) return;
-
   cart.lineItems = cart.lineItems.map((item) =>
     item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
   );
@@ -215,8 +213,6 @@ async function incrementLineItem(id: string) {
 
 async function decrementLineItem(id: string) {
   const cart = await getCart();
-
-  if (!cart) return;
 
   cart.lineItems = cart.lineItems.map((item) =>
     item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
@@ -229,8 +225,6 @@ async function decrementLineItem(id: string) {
 async function deleteLineItem(id: string) {
   const cart = await getCart();
 
-  if (!cart) return;
-
   cart.lineItems = cart.lineItems.filter((item) => item.id !== id);
 
   const updatedCart = generateCartFromLineItems(cart.lineItems, cart.id);
@@ -238,11 +232,9 @@ async function deleteLineItem(id: string) {
 }
 
 function getSubtotal(lineItems: CartLineItem[]): number {
-  return (
-    lineItems.reduce(
-      (acc, item) => acc + Number(item.price.replace(/^\$/, '')) * item.quantity,
-      0,
-    ) ?? 0
+  return lineItems.reduce(
+    (acc, item) => acc + Number(item.price.replace(/^\$/, '')) * item.quantity,
+    0,
   );
 }
 
