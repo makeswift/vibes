@@ -5,7 +5,6 @@ import { localeAction } from '@/vibes/soul/examples/primitives/navigation/action
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm';
 import { feature } from '@/vibes/soul/examples/sections/feature/warm';
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/warm';
-import { featuredProducts } from '@/vibes/soul/examples/sections/featured-products-list/warm';
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/warm';
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/warm';
 import { Banner } from '@/vibes/soul/primitives/banner';
@@ -28,6 +27,7 @@ import {
 import { Facebook, Instagram, X, Youtube } from '@/vibes/soul/sections/footer/social-icons';
 import { Slideshow } from '@/vibes/soul/sections/slideshow';
 import { Subscribe } from '@/vibes/soul/sections/subscribe';
+import { products } from '../not-found/electric';
 
 // TODO: New Arrivals
 // TODO: Recently Viewed
@@ -165,3 +165,90 @@ export default function Preview() {
     </>
   );
 }
+
+const defaultProducts = [
+  {
+    id: '1',
+    title: 'Mini Bar Bag',
+    subtitle: 'Blue/Black/Green',
+    price: '$65',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+      alt: 'Mini Bar Bag',
+    },
+    href: '#',
+    rating: 4.3,
+  },
+  {
+    id: '2',
+    title: 'Mini Bar Bag',
+    subtitle: 'Blue/Black/Green',
+    price: '$65',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
+      alt: 'Mini Bar Bag',
+    },
+    href: '#',
+    rating: 4.5,
+  },
+  {
+    id: '3',
+    title: 'Stem Caddy',
+    subtitle: 'Blue/Black/Green',
+    price: '$60',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
+      alt: 'Stem Caddy',
+    },
+    href: '#',
+    rating: 4.2,
+  },
+  {
+    id: '4',
+    title: 'Hip Slinger',
+    subtitle: 'Blue/Black/Green',
+    price: '$105',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
+      alt: 'Hip Slinger',
+    },
+    href: '#',
+    rating: 4.6,
+  },
+  {
+    id: '5',
+    title: 'Everyday Tote',
+    subtitle: 'Blue/Black/Green',
+    price: '$185',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+      alt: 'Everyday Tote',
+    },
+    href: '#',
+    rating: 4.8,
+  },
+  {
+    id: '6',
+    title: 'Mini Saddlebag',
+    subtitle: 'Blue/Black/Green',
+    price: '$45',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
+      alt: 'Mini Saddlebag',
+    },
+    href: '#',
+    rating: 4.1,
+  },
+];
+
+const featuredProducts = {
+  title: 'Our gear',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto.',
+  cta: {
+    label: 'Shop Now',
+    href: '#',
+  },
+  emptyStateSubtitle: 'Try browsing our complete catalog of products.',
+  emptyStateTitle: 'No products found',
+  products: defaultProducts,
+};
