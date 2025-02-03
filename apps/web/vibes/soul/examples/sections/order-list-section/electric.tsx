@@ -1,71 +1,109 @@
-import { getProducts } from '@/vibes/soul/data';
 import { OrderListSection } from '@/vibes/soul/sections/order-list-section';
-import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
+import { Order } from '@/vibes/soul/sections/order-list-section/order-list-item';
 
-const products = await getProducts('Electric');
+export default function Preview() {
+  const orders = new Promise<Order[]>((resolve) => {
+    setTimeout(() => {
+      resolve(defaultOrders);
+    }, 1000);
+  });
+  return (
+    <div className="p-6">
+      <OrderListSection orders={orders} />
+    </div>
+  );
+}
 
-const orders = [
+const products = [
   {
     id: '1',
-    totalPrice: '$100',
-    status: 'Delivered',
-    href: '/order/1',
-    lineItems: products
-      .filter(() => Math.random() > 0.5)
-      .map(({ id, title, subtitle, image, href }) => ({
-        id,
-        title,
-        subtitle,
-        image,
-        href,
-        price: `$${Math.floor(Math.random() * 500)}`,
-      })),
+    title: 'Philodendron Imperial Red',
+    subtitle: 'Indoor Plant',
+    price: '$44.95',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+      alt: 'Philodendron Imperial Red',
+    },
+    href: '#',
   },
   {
     id: '2',
-    totalPrice: '$150',
-    status: 'Delivered',
-    href: '/order/2',
-    lineItems: products
-      .filter(() => Math.random() > 0.5)
-      .map(({ id, title, subtitle, image, href }) => ({
-        id,
-        title,
-        subtitle,
-        image,
-        href,
-        price: `$${Math.floor(Math.random() * 500)}`,
-      })),
+    title: 'Monstera',
+    subtitle: 'Indoor Plant',
+    price: '$24.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
+      alt: 'Monstera',
+    },
+    href: '#',
   },
   {
     id: '3',
-    totalPrice: '$500',
-    status: 'Delivered',
-    href: '/order/3',
-    lineItems: products
-      .filter(() => Math.random() > 0.5)
-      .map(({ id, title, subtitle, image, href }) => ({
-        id,
-        title,
-        subtitle,
-        image,
-        href,
-        price: `$${Math.floor(Math.random() * 500)}`,
-      })),
+    title: 'Pink Caladium',
+    subtitle: 'Indoor Plant',
+    price: '$19.95',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
+      alt: 'Pink Caladium',
+    },
+    href: '#',
   },
+  {
+    id: '4',
+    title: 'Hoya Kerrii',
+    subtitle: 'Indoor Plant',
+    price: '$16.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
+      alt: 'Hoya Kerrii',
+    },
+    href: '#',
+  },
+  {
+    id: '5',
+    title: 'Bird Nest Fern',
+    subtitle: 'Indoor Plant',
+    price: '$24.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
+      alt: 'Bird Nest Fern',
+    },
+    href: '#',
+  },
+  {
+    id: '6',
+    title: 'Jade Plant',
+    subtitle: 'Indoor Plant',
+    price: '$24.99',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
+      alt: 'Jade Plant',
+    },
+    href: '#',
+  },
+]
+
+const defaultOrders: Order[] = [
+  {
+    id: '1',
+    totalPrice: '$95',
+    status: 'Delivered',
+    href: '#',
+    lineItems: products.slice(0, 3),
+  },
+  {
+    id: '2',
+    totalPrice: '$53',
+    status: 'Delivered',
+    href: '#',
+    lineItems: products.slice(3, 5),
+  },
+  {
+    id: '3',
+    totalPrice: '$72',
+    status: 'Delivered',
+    href: '#',
+    lineItems: products.slice(4, 6),
+  }
 ];
 
-const links = [
-  { href: '/preview/soul/order-list-section-electric-example', label: 'Orders' },
-  { href: '/preview/soul/address-list-section-example', label: 'Addresses' },
-  { href: '/preview/soul/account-settings-section-example', label: 'Account' },
-];
-
-export default function Preview() {
-  return (
-    <StickySidebarLayout sidebar={<SidebarMenu links={links} />} sidebarSize="small">
-      <OrderListSection orders={orders} paginationInfo={{ startCursor: '1', endCursor: '5' }} />
-    </StickySidebarLayout>
-  );
-}
