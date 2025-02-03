@@ -93,21 +93,21 @@ const products = [
 const defaultOrders: Order[] = [
   {
     id: '1',
-    totalPrice: '$245',
+    totalPrice: products.slice(0,3).reduce((acc, product) => acc + parseInt(product.price.slice(1), 10), 25).toFixed(2),
     status: 'Delivered',
     href: '#',
     lineItems: products.slice(0, 3),
   },
   {
     id: '2',
-    totalPrice: '$350',
+    totalPrice: products.slice(3,5).reduce((acc, product) => acc + parseInt(product.price.slice(1), 10), 25).toFixed(2),
     status: 'Delivered',
     href: '#',
     lineItems: products.slice(3, 5),
   },
   {
     id: '3',
-    totalPrice: '$375',
+    totalPrice: products.slice(4,6).reduce((acc, product) => acc + parseInt(product.price.slice(1), 10), 25).toFixed(2),
     status: 'Delivered',
     href: '#',
     lineItems: products.slice(4, 6),
