@@ -1,71 +1,115 @@
-import { getProducts } from '@/vibes/soul/data';
 import { OrderListSection } from '@/vibes/soul/sections/order-list-section';
-import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
+import { Order } from '@/vibes/soul/sections/order-list-section/order-list-item';
 
-const products = await getProducts('Warm');
+export default function Preview() {
+  const orders = new Promise<Order[]>((resolve) => {
+    setTimeout(() => {
+      resolve(defaultOrders);
+    }, 1000);
+  });
+  
+  return (
+    <div className="p-6">
+      <OrderListSection orders={orders} />
+    </div>
+  );
+}
 
-const orders = [
+const products = [
   {
     id: '1',
-    totalPrice: '$100',
-    status: 'Delivered',
-    href: '/order/1',
-    lineItems: products
-      .filter(() => Math.random() > 0.5)
-      .map(({ id, title, subtitle, image, href }) => ({
-        id,
-        title,
-        subtitle,
-        image,
-        href,
-        price: `$${Math.floor(Math.random() * 500)}`,
-      })),
+    title: 'Mini Bar Bag',
+    subtitle: 'Blue/Black/Green',
+    price: '$65',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+      alt: 'Mini Bar Bag',
+    },
+    href: '#',
+    rating: 4.3,
   },
   {
     id: '2',
-    totalPrice: '$150',
-    status: 'Delivered',
-    href: '/order/2',
-    lineItems: products
-      .filter(() => Math.random() > 0.5)
-      .map(({ id, title, subtitle, image, href }) => ({
-        id,
-        title,
-        subtitle,
-        image,
-        href,
-        price: `$${Math.floor(Math.random() * 500)}`,
-      })),
+    title: 'Mini Bar Bag',
+    subtitle: 'Blue/Black/Green',
+    price: '$65',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
+      alt: 'Mini Bar Bag',
+    },
+    href: '#',
+    rating: 4.5,
   },
   {
     id: '3',
-    totalPrice: '$500',
-    status: 'Delivered',
-    href: '/order/3',
-    lineItems: products
-      .filter(() => Math.random() > 0.5)
-      .map(({ id, title, subtitle, image, href }) => ({
-        id,
-        title,
-        subtitle,
-        image,
-        href,
-        price: `$${Math.floor(Math.random() * 500)}`,
-      })),
+    title: 'Stem Caddy',
+    subtitle: 'Blue/Black/Green',
+    price: '$60',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
+      alt: 'Stem Caddy',
+    },
+    href: '#',
+    rating: 4.2,
+  },
+  {
+    id: '4',
+    title: 'Hip Slinger',
+    subtitle: 'Blue/Black/Green',
+    price: '$105',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
+      alt: 'Hip Slinger',
+    },
+    href: '#',
+    rating: 4.6,
+  },
+  {
+    id: '5',
+    title: 'Everyday Tote',
+    subtitle: 'Blue/Black/Green',
+    price: '$185',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+      alt: 'Everyday Tote',
+    },
+    href: '#',
+    rating: 4.8,
+  },
+  {
+    id: '6',
+    title: 'Mini Saddlebag',
+    subtitle: 'Blue/Black/Green',
+    price: '$45',
+    image: {
+      src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
+      alt: 'Mini Saddlebag',
+    },
+    href: '#',
+    rating: 4.1,
   },
 ];
 
-const links = [
-  { href: '/preview/soul/order-list-section-warm-example', label: 'Orders' },
-  { href: '/preview/soul/address-list-section-example', label: 'Addresses' },
-  { href: '/preview/soul/account-settings-section-example', label: 'Account' },
+const defaultOrders:Order[] = [
+  {
+    id: '1',
+    totalPrice: '$245',
+    status: 'Delivered',
+    href: '#',
+    lineItems: products.slice(0, 3),
+  },
+  {
+    id: '2',
+    totalPrice: '$350',
+    status: 'Delivered',
+    href: '#',
+    lineItems: products.slice(3, 5),
+  },
+  {
+    id: '3',
+    totalPrice: '$375',
+    status: 'Delivered',
+    href: '#',
+    lineItems: products.slice(4, 6),
+  },
 ];
-
-export default function Preview() {
-  return (
-    <StickySidebarLayout sidebar={<SidebarMenu links={links} />} sidebarSize="small">
-      <OrderListSection orders={orders} paginationInfo={{ startCursor: '1', endCursor: '5' }} />
-    </StickySidebarLayout>
-  );
-}
