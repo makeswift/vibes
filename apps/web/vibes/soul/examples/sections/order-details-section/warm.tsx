@@ -20,7 +20,7 @@ const lineItems = [
     },
     href: '#',
     rating: 4.3,
-    quantity: 1
+    quantity: 1,
   },
   {
     id: '2',
@@ -33,7 +33,7 @@ const lineItems = [
     },
     href: '#',
     rating: 4.5,
-    quantity: 2
+    quantity: 2,
   },
   {
     id: '3',
@@ -46,7 +46,7 @@ const lineItems = [
     },
     href: '#',
     rating: 4.2,
-    quantity: 1
+    quantity: 1,
   },
   {
     id: '4',
@@ -59,7 +59,7 @@ const lineItems = [
     },
     href: '#',
     rating: 4.6,
-    quantity: 2
+    quantity: 2,
   },
   {
     id: '5',
@@ -72,7 +72,7 @@ const lineItems = [
     },
     href: '#',
     rating: 4.8,
-    quantity: 1
+    quantity: 1,
   },
   {
     id: '6',
@@ -85,7 +85,7 @@ const lineItems = [
     },
     href: '#',
     rating: 4.1,
-    quantity: 2
+    quantity: 2,
   },
 ];
 
@@ -109,7 +109,7 @@ const destination1 = {
       status: 'Delivered on May 15, 2024',
     },
   ],
-  lineItems: lineItems.slice(0,3)
+  lineItems: lineItems.slice(0, 3),
 };
 
 const destination2 = {
@@ -132,11 +132,17 @@ const destination2 = {
       status: 'Shipped on May 15, 2024',
     },
   ],
-  lineItems: lineItems.slice(3,6)
+  lineItems: lineItems.slice(3, 6),
 };
 
 const subtotal = [destination1, destination2].reduce((acc, destination) => {
-  return acc + destination.lineItems.reduce((accInner, lineItem) => accInner + parseInt(lineItem.price.slice(1), 10) * lineItem.quantity, 0);
+  return (
+    acc +
+    destination.lineItems.reduce(
+      (accInner, lineItem) => accInner + parseInt(lineItem.price.slice(1), 10) * lineItem.quantity,
+      0,
+    )
+  );
 }, 0);
 const discount = 10;
 const shipping = 20;

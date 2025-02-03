@@ -94,7 +94,7 @@ const products = [
     href: '#',
     rating: 4.4,
   },
-]
+];
 
 const defaultOrders: Order[] = [
   {
@@ -109,7 +109,7 @@ const defaultOrders: Order[] = [
     totalPrice: '$750',
     status: 'Delivered',
     href: '#',
-    lineItems: products.slice(3,5)
+    lineItems: products.slice(3, 5),
   },
   {
     id: '3',

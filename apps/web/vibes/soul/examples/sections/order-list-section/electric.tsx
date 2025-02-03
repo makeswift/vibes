@@ -81,7 +81,7 @@ const products = [
     },
     href: '#',
   },
-]
+];
 
 const defaultOrders: Order[] = [
   {
@@ -104,6 +104,5 @@ const defaultOrders: Order[] = [
     status: 'Delivered',
     href: '#',
     lineItems: products.slice(4, 6),
-  }
+  },
 ];
-
