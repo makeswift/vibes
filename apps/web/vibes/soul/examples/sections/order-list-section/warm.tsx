@@ -7,7 +7,7 @@ export default function Preview() {
       resolve(defaultOrders);
     }, 1000);
   });
-  
+
   return (
     <div className="p-6">
       <OrderListSection orders={orders} />
@@ -90,7 +90,7 @@ const products = [
   },
 ];
 
-const defaultOrders:Order[] = [
+const defaultOrders: Order[] = [
   {
     id: '1',
     totalPrice: '$245',
