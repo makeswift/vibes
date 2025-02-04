@@ -21,8 +21,6 @@ export default function Preview() {
   );
 }
 
-
-
 const defaultProducts: CarouselProduct[] = [
   {
     id: '1',
