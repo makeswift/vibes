@@ -77,7 +77,6 @@ export const parser = {
 
 export const cache = createSearchParamsCache(parser);
 
-
 const breadcrumbs = [
   {
     label: 'Home',
@@ -357,33 +356,26 @@ const defaultProducts: Product[] = [
   },
 ];
 
-export async function getProducts(
-  filterParams?: FilterParams,
-  sort?: string
-): Promise<Product[]> {
+export async function getProducts(filterParams?: FilterParams, sort?: string): Promise<Product[]> {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
-  let products = defaultProducts
+  let products = defaultProducts;
 
   if (filterParams) {
     products = products.filter((product) => {
-
       // Filter conditions
       const conditions: boolean[] = [];
 
       // Only apply filters if they have valid values (not null or empty)
       if (filterParams.features && filterParams.features.length > 0) {
-          conditions.push(
-            filterParams.features.every((feature) =>
-              product.features.includes(feature),
-            ),
-          );
+        conditions.push(
+          filterParams.features.every((feature) => product.features.includes(feature)),
+        );
       }
 
       if (filterParams.light && filterParams.light.length > 0) {
-          conditions.push(filterParams.light.some((light) => product.light === light));
+        conditions.push(filterParams.light.some((light) => product.light === light));
       }
-
 
       if (filterParams.size && filterParams.size.length > 0) {
         if (Array.isArray(product.size)) {
@@ -418,10 +410,16 @@ export async function getProducts(
     }
   }
 
-  if(sort === 'price-asc') {
-    products = products.sort((a, b) => parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, '')));
-  } else if(sort === 'price-desc') {
-    products = products.sort((a, b) => parseFloat(b.price.replace(/[^0-9.]/g, '')) - parseFloat(a.price.replace(/[^0-9.]/g, '')));
+  if (sort === 'price-asc') {
+    products = products.sort(
+      (a, b) =>
+        parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, '')),
+    );
+  } else if (sort === 'price-desc') {
+    products = products.sort(
+      (a, b) =>
+        parseFloat(b.price.replace(/[^0-9.]/g, '')) - parseFloat(a.price.replace(/[^0-9.]/g, '')),
+    );
   }
 
   return products;
@@ -455,23 +453,21 @@ export async function getFilters(): Promise<Filter[]> {
 
   // Extract unique values from products
   const uniqueValues = products.reduce<Record<string, Set<string>>>((acc, product) => {
-
     acc.features = new Set([...(acc.features ?? []), ...product.features]);
-      acc.light = new Set([...(acc.light ?? []), product.light]);
+    acc.light = new Set([...(acc.light ?? []), product.light]);
 
-      const sizes = [product.size];
-      acc.sizes = new Set([...(acc.sizes ?? []), ...sizes]);
+    const sizes = [product.size];
+    acc.sizes = new Set([...(acc.sizes ?? []), ...sizes]);
 
     return acc;
   }, {});
 
-    if (uniqueValues.features?.size != null) {
-      filters.push(buildToggleGroupFilter('features', 'Features', uniqueValues.features));
-    }
-    if (uniqueValues.light?.size != null) {
-      filters.push(buildToggleGroupFilter('light', 'Light Requirements', uniqueValues.light));
-    }
-
+  if (uniqueValues.features?.size != null) {
+    filters.push(buildToggleGroupFilter('features', 'Features', uniqueValues.features));
+  }
+  if (uniqueValues.light?.size != null) {
+    filters.push(buildToggleGroupFilter('light', 'Light Requirements', uniqueValues.light));
+  }
 
   // Add size filter for all brands
   if (uniqueValues.sizes?.size != null) {
@@ -489,4 +485,3 @@ export async function getFilters(): Promise<Filter[]> {
 
   return filters;
 }
-

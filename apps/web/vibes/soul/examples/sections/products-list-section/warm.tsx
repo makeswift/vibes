@@ -78,7 +78,6 @@ export const parser = {
 
 export const cache = createSearchParamsCache(parser);
 
-
 const breadcrumbs = [
   {
     label: 'Home',
@@ -299,10 +298,16 @@ async function getProducts(filterParams?: FilterParams, sort?: string): Promise<
       products = products.slice(0, filterParams.limit);
     }
   }
-  if(sort === 'price-asc') {
-    products = products.sort((a, b) => parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, '')));
-  } else if(sort === 'price-desc') {
-    products = products.sort((a, b) => parseFloat(b.price.replace(/[^0-9.]/g, '')) - parseFloat(a.price.replace(/[^0-9.]/g, '')));
+  if (sort === 'price-asc') {
+    products = products.sort(
+      (a, b) =>
+        parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, '')),
+    );
+  } else if (sort === 'price-desc') {
+    products = products.sort(
+      (a, b) =>
+        parseFloat(b.price.replace(/[^0-9.]/g, '')) - parseFloat(a.price.replace(/[^0-9.]/g, '')),
+    );
   }
   return products;
 }
