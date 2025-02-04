@@ -324,7 +324,7 @@ const products: ProductCatalog = {
     {
       id: '1',
       title: 'Mini Bar Bag',
-      subtitle: 'Blue/Black/Green',
+      subtitle: 'Blue/Green',
       price: '$65',
       image: {
         src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
@@ -338,7 +338,7 @@ const products: ProductCatalog = {
     {
       id: '2',
       title: 'Mini Bar Bag',
-      subtitle: 'Blue/Black/Green',
+      subtitle: 'Blue/Red',
       price: '$65',
       image: {
         src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
@@ -352,7 +352,7 @@ const products: ProductCatalog = {
     {
       id: '3',
       title: 'Stem Caddy',
-      subtitle: 'Blue/Black/Green',
+      subtitle: 'Green',
       price: '$60',
       image: {
         src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
@@ -366,7 +366,7 @@ const products: ProductCatalog = {
     {
       id: '4',
       title: 'Hip Slinger',
-      subtitle: 'Blue/Black/Green',
+      subtitle: 'Blue/Red',
       price: '$105',
       image: {
         src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
@@ -380,7 +380,7 @@ const products: ProductCatalog = {
     {
       id: '5',
       title: 'Everyday Tote',
-      subtitle: 'Blue/Black/Green',
+      subtitle: 'Blue/Green/Red',
       price: '$185',
       image: {
         src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
@@ -394,7 +394,7 @@ const products: ProductCatalog = {
     {
       id: '6',
       title: 'Mini Saddlebag',
-      subtitle: 'Blue/Black/Green',
+      subtitle: 'Green/Red',
       price: '$45',
       image: {
         src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
