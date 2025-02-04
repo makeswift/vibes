@@ -77,7 +77,6 @@ export const parser = {
 
 export const cache = createSearchParamsCache(parser);
 
-
 const breadcrumbs = [
   {
     label: 'Home',
@@ -263,10 +262,7 @@ const defaultProducts: Product[] = [
   },
 ];
 
-export async function getProducts(
-  filterParams?: FilterParams,
-  sort?: string
-): Promise<Product[]> {
+export async function getProducts(filterParams?: FilterParams, sort?: string): Promise<Product[]> {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   let products = defaultProducts;
@@ -315,10 +311,16 @@ export async function getProducts(
     }
   }
 
-  if(sort === 'price-asc') {
-    products = products.sort((a, b) => parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, '')));
-  } else if(sort === 'price-desc') {
-    products = products.sort((a, b) => parseFloat(b.price.replace(/[^0-9.]/g, '')) - parseFloat(a.price.replace(/[^0-9.]/g, '')));
+  if (sort === 'price-asc') {
+    products = products.sort(
+      (a, b) =>
+        parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, '')),
+    );
+  } else if (sort === 'price-desc') {
+    products = products.sort(
+      (a, b) =>
+        parseFloat(b.price.replace(/[^0-9.]/g, '')) - parseFloat(a.price.replace(/[^0-9.]/g, '')),
+    );
   }
 
   return products;
@@ -358,17 +360,16 @@ export async function getFilters(): Promise<Filter[]> {
     return acc;
   }, {});
 
-
-    if (uniqueValues.colors?.size != null) {
-      filters.push(
-        buildToggleGroupFilter(
-          'color',
-          'Color',
-          uniqueValues.colors,
-          (s) => s.charAt(0).toUpperCase() + s.slice(1),
-        ),
-      );
-    }
+  if (uniqueValues.colors?.size != null) {
+    filters.push(
+      buildToggleGroupFilter(
+        'color',
+        'Color',
+        uniqueValues.colors,
+        (s) => s.charAt(0).toUpperCase() + s.slice(1),
+      ),
+    );
+  }
 
   if (uniqueValues.sizes?.size != null) {
     filters.push(
