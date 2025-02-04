@@ -731,49 +731,26 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/products-list/luxury')),
   },
   {
-    name: 'products-list-section-electric-example',
+    name: 'products-list-section-electric',
     dependencies: [],
     registryDependencies: ['products-list-section'],
     files: ['examples/sections/products-list-section/electric.tsx'],
     component: lazy(() => import('./examples/sections/products-list-section/electric')),
   },
   {
-    name: 'products-list-section-warm-example',
+    name: 'products-list-section-warm',
     dependencies: [],
     registryDependencies: ['products-list-section'],
     files: ['examples/sections/products-list-section/warm.tsx'],
     component: lazy(() => import('./examples/sections/products-list-section/warm')),
   },
   {
-    name: 'products-list-section-luxury-example',
+    name: 'products-list-section-luxury',
     dependencies: [],
     registryDependencies: ['products-list-section'],
     files: ['examples/sections/products-list-section/luxury.tsx'],
     component: lazy(() => import('./examples/sections/products-list-section/luxury')),
   },
-
-  {
-    name: 'products-list-section-loading-electric-example',
-    dependencies: [],
-    registryDependencies: ['products-list-section'],
-    files: ['examples/sections/products-list-section/electric-loading.tsx'],
-    component: lazy(() => import('./examples/sections/products-list-section/electric-loading')),
-  },
-  {
-    name: 'products-list-section-loading-warm-example',
-    dependencies: [],
-    registryDependencies: ['products-list-section'],
-    files: ['examples/sections/products-list-section/warm-loading.tsx'],
-    component: lazy(() => import('./examples/sections/products-list-section/warm-loading')),
-  },
-  {
-    name: 'products-list-section-loading-luxury-example',
-    dependencies: [],
-    registryDependencies: ['products-list-section'],
-    files: ['examples/sections/products-list-section/luxury-loading.tsx'],
-    component: lazy(() => import('./examples/sections/products-list-section/luxury-loading')),
-  },
-
   {
     name: 'rating-example',
     dependencies: [],
