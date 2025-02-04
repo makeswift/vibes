@@ -316,11 +316,15 @@ function CheckoutButton({
 >) {
   const [lastResult, formAction] = useActionState(action, null);
 
+  const [form] = useForm({ lastResult });
+
   useEffect(() => {
-    if (lastResult?.error) {
-      console.log(lastResult.error);
+    if (form.errors) {
+      form.errors.forEach((error) => {
+        toast.error(error);
+      });
     }
-  }, [lastResult?.error]);
+  }, [form.errors]);
 
   return (
     <form action={formAction}>
