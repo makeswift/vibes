@@ -1,7 +1,7 @@
-import { ProductsList } from '@/vibes/soul/primitives/products-list';
+import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
 
 export default function Preview() {
-  const products = new Promise<Product[]>((resolve) => {
+  const products = new Promise<ListProduct[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
   });
 
@@ -12,25 +12,11 @@ export default function Preview() {
   );
 }
 
-interface Product {
-  id: string;
-  title: string;
-  subtitle: string;
-  badge?: string;
-  price: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  href: string;
-  rating: number;
-}
-
-const defaultProducts: Product[] = [
+const defaultProducts: ListProduct[] = [
   {
     id: '1',
     title: 'Mini Bar Bag',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Blue/Green',
     price: '$65',
     image: {
       src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
@@ -42,7 +28,7 @@ const defaultProducts: Product[] = [
   {
     id: '2',
     title: 'Mini Bar Bag',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Blue/Red',
     price: '$65',
     image: {
       src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
@@ -54,7 +40,7 @@ const defaultProducts: Product[] = [
   {
     id: '3',
     title: 'Stem Caddy',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Green',
     price: '$60',
     image: {
       src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
@@ -66,7 +52,7 @@ const defaultProducts: Product[] = [
   {
     id: '4',
     title: 'Hip Slinger',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Blue/Red',
     price: '$105',
     image: {
       src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
@@ -78,7 +64,7 @@ const defaultProducts: Product[] = [
   {
     id: '5',
     title: 'Everyday Tote',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Blue/Green/Red',
     price: '$185',
     image: {
       src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
@@ -90,7 +76,7 @@ const defaultProducts: Product[] = [
   {
     id: '6',
     title: 'Mini Saddlebag',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Green/Red',
     price: '$45',
     image: {
       src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',

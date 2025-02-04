@@ -1,7 +1,7 @@
-import { ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
+import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
 
 export default function Preview() {
-  const products = new Promise<Product[]>((resolve) => {
+  const products = new Promise<CarouselProduct[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
   });
 
@@ -21,21 +21,8 @@ export default function Preview() {
   );
 }
 
-interface Product {
-  id: string;
-  title: string;
-  subtitle: string;
-  badge?: string;
-  price: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  href: string;
-  rating: number;
-}
 
-const defaultProducts: Product[] = [
+const defaultProducts: CarouselProduct[] = [
   {
     id: '1',
     title: 'Jada Square Toe Ballet Flat',
