@@ -221,7 +221,7 @@ export const navigation = [
         component: 'forgot-password-section',
       },
       {
-        title: 'Header Section',
+        title: 'Header',
         slug: 'header-section',
         file: 'docs/header-section.mdx',
         component: 'header-section',

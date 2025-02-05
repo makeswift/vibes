@@ -1,4 +1,3 @@
-import { locales } from '@/vibes/soul/data/locales';
 import { localeAction, searchAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { HeaderSection } from '@/vibes/soul/sections/header-section';
@@ -41,3 +40,10 @@ export default function Preview() {
     </>
   );
 }
+
+const locales = [
+  { id: 'en', label: 'United States' },
+  { id: 'fr', label: 'France' },
+  { id: 'de', label: 'Denmark' },
+  { id: 'it', label: 'Italy' },
+];

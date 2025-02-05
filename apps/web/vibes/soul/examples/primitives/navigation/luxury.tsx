@@ -1,7 +1,26 @@
-import { locales } from '@/vibes/soul/data/locales';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 
 import { localeAction, searchAction } from './actions';
+
+export default function Preview() {
+  return (
+    <div className="relative min-h-48">
+      <Navigation
+        accountHref="#"
+        activeLocaleId="en"
+        cartCount={5}
+        cartHref="#"
+        links={navigationLinks}
+        localeAction={localeAction}
+        locales={locales}
+        logo={logo}
+        searchAction={searchAction('Warm')}
+        searchCtaLabel="View all items"
+        searchHref="#"
+      />
+    </div>
+  );
+}
 
 export const navigationLinks = [
   {
@@ -78,22 +97,9 @@ export const logo = {
   alt: 'Freda Salvador Logo',
 };
 
-export default function Preview() {
-  return (
-    <div className="relative min-h-48">
-      <Navigation
-        accountHref="#"
-        activeLocaleId="en"
-        cartCount={5}
-        cartHref="#"
-        links={navigationLinks}
-        localeAction={localeAction}
-        locales={locales}
-        logo={logo}
-        searchAction={searchAction('Warm')}
-        searchCtaLabel="View all items"
-        searchHref="#"
-      />
-    </div>
-  );
-}
+const locales = [
+  { id: 'en', label: 'United States' },
+  { id: 'fr', label: 'France' },
+  { id: 'de', label: 'Denmark' },
+  { id: 'it', label: 'Italy' },
+];

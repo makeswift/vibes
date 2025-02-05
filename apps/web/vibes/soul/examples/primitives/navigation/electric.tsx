@@ -1,7 +1,34 @@
-import { locales } from '@/vibes/soul/data/locales';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 
 import { localeAction, searchAction } from './actions';
+
+export default function Preview() {
+  return (
+    <div className="relative min-h-screen bg-contrast-100 p-4">
+      <Navigation
+        accountHref="#"
+        activeLocaleId="en"
+        cartCount={5}
+        cartHref="#"
+        links={navigationLinks}
+        localeAction={localeAction}
+        locales={locales}
+        logo={logo}
+        searchAction={searchAction('Electric')}
+        searchHref="#"
+      />
+    </div>
+  );
+}
+
+export const logo = 'SOUL';
+
+const locales = [
+  { id: 'en', label: 'United States' },
+  { id: 'fr', label: 'France' },
+  { id: 'de', label: 'Denmark' },
+  { id: 'it', label: 'Italy' },
+];
 
 export const navigationLinks = [
   {
@@ -104,24 +131,3 @@ export const navigationLinks = [
     ],
   },
 ];
-
-export const logo = 'SOUL';
-
-export default function Preview() {
-  return (
-    <div className="relative min-h-screen bg-contrast-100 p-4">
-      <Navigation
-        accountHref="#"
-        activeLocaleId="en"
-        cartCount={5}
-        cartHref="#"
-        links={navigationLinks}
-        localeAction={localeAction}
-        locales={locales}
-        logo={logo}
-        searchAction={searchAction('Electric')}
-        searchHref="#"
-      />
-    </div>
-  );
-}
