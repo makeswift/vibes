@@ -133,11 +133,7 @@ export function CardSkeleton({
           }[aspectRatio],
         )}
       />
-      <div className="mt-3 text-lg">
-        <div className="flex h-[1lh] items-center">
-          <span className="block h-[1ex] w-[10ch] rounded-sm bg-contrast-100" />
-        </div>
-      </div>
+      <div className="mt-3 text-lg">{/* TODO: Add card skeleton */}</div>
     </div>
   );
 }

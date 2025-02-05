@@ -1,6 +1,6 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
-import { Card, CardCarousel } from '@/vibes/soul/primitives/card-carousel';
+import { Card, CardCarousel } from '@/vibes/soul/sections/card-carousel';
 
 interface Link {
   label: string;

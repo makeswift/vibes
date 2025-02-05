@@ -26,6 +26,12 @@ export const sections = [
     files: ['sections/blog-post-list/index.tsx'],
   },
   {
+    name: 'card-carousel',
+    dependencies: ['clsx'],
+    registryDependencies: ['carousel'],
+    files: ['sections/card-carousel/index.tsx'],
+  },
+  {
     name: 'cart',
     dependencies: ['clsx'],
     registryDependencies: ['button', 'counter'],
@@ -118,6 +124,12 @@ export const sections = [
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['sections/order-history-section/index.tsx'],
+  },
+  {
+    name: 'products-carousel',
+    dependencies: ['clsx'],
+    registryDependencies: ['product-card', 'carousel'],
+    files: ['sections/products-carousel/index.tsx'],
   },
   {
     name: 'product-detail',

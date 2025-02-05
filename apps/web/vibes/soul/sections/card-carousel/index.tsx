@@ -2,6 +2,7 @@ import { clsx } from 'clsx';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
+import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card';
 import {
   Carousel,
   CarouselButtons,
@@ -9,83 +10,76 @@ import {
   CarouselItem,
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel';
-import {
-  CardProduct,
-  ProductCard,
-  ProductCardSkeleton,
-} from '@/vibes/soul/primitives/product-card';
 
-export type CarouselProduct = CardProduct;
+export type Card = CardProps & {
+  id: string;
+};
 
-interface Props {
-  products: Streamable<CarouselProduct[]>;
-  className?: string;
-  colorScheme?: 'light' | 'dark';
+export interface CardCarouselProps {
+  cards: Streamable<Card[]>;
   aspectRatio?: '5:6' | '3:4' | '1:1';
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  textColorScheme?: 'light' | 'dark';
+  iconColorScheme?: 'light' | 'dark';
+  carouselColorScheme?: 'light' | 'dark';
+  className?: string;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
-  placeholderCount?: number;
   showButtons?: boolean;
   showScrollbar?: boolean;
   hideOverflow?: boolean;
 }
 
-export function ProductsCarousel({
-  products: streamableProducts,
-  className,
-  colorScheme = 'light',
+export function CardCarousel({
+  cards: streamableCards,
   aspectRatio = '5:6',
+  textColorScheme,
+  iconColorScheme,
+  carouselColorScheme,
+  className,
   emptyStateTitle,
   emptyStateSubtitle,
   scrollbarLabel,
   previousLabel,
   nextLabel,
-  placeholderCount = 8,
   showButtons = true,
   showScrollbar = true,
   hideOverflow,
-}: Props) {
+}: CardCarouselProps) {
   return (
     <Stream
-      fallback={
-        <ProductsCarouselSkeleton
-          className={className}
-          hideOverflow={hideOverflow}
-          pending
-          placeholderCount={placeholderCount}
-        />
-      }
-      value={streamableProducts}
+      fallback={<CardCarouselSkeleton className={className} hideOverflow={hideOverflow} pending />}
+      value={streamableCards}
     >
-      {(products) => {
-        if (products.length === 0) {
+      {(cards) => {
+        if (cards.length === 0) {
           return (
-            <ProductsCarouselEmptyState
+            <CardCarouselEmptyState
               className={className}
               emptyStateSubtitle={emptyStateSubtitle}
               emptyStateTitle={emptyStateTitle}
               hideOverflow={hideOverflow}
-              placeholderCount={placeholderCount}
             />
           );
         }
 
+        return <CardCarouselSkeleton className={className} hideOverflow={hideOverflow} pending />;
+
         return (
           <Carousel className={className} hideOverflow={hideOverflow}>
-            <CarouselContent className="mb-10">
-              {products.map((product) => (
+            <CarouselContent>
+              {cards.map((card) => (
                 <CarouselItem
                   className="basis-[calc(100%-1rem)] @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)]"
-                  key={product.id}
+                  key={card.id}
                 >
-                  <ProductCard
+                  <Card
+                    {...card}
                     aspectRatio={aspectRatio}
-                    colorScheme={colorScheme}
-                    imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
-                    product={product}
+                    iconColorScheme={iconColorScheme}
+                    textColorScheme={textColorScheme}
                   />
                 </CarouselItem>
               ))}
@@ -94,12 +88,12 @@ export function ProductsCarousel({
               <div className="mt-10 flex w-full items-center justify-between gap-8">
                 <CarouselScrollbar
                   className={clsx(!showScrollbar && 'pointer-events-none invisible')}
-                  colorScheme={colorScheme}
+                  colorScheme={carouselColorScheme}
                   label={scrollbarLabel}
                 />
                 <CarouselButtons
                   className={clsx(!showButtons && 'pointer-events-none invisible')}
-                  colorScheme={colorScheme}
+                  colorScheme={carouselColorScheme}
                   nextLabel={nextLabel}
                   previousLabel={previousLabel}
                 />
@@ -112,9 +106,9 @@ export function ProductsCarousel({
   );
 }
 
-export function ProductsCarouselSkeleton({
+export function CardCarouselSkeleton({
   className,
-  placeholderCount = 8,
+  placeholderCount = 4,
   pending = false,
   hideOverflow = true,
 }: {
@@ -132,10 +126,10 @@ export function ProductsCarouselSkeleton({
         <div className="-ml-4 flex @2xl:-ml-5">
           {Array.from({ length: placeholderCount }).map((_, index) => (
             <div
-              className="min-w-0 shrink-0 grow-0 basis-full pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
+              className="min-w-0 shrink-0 grow-0 basis-[calc(100%-1rem)] pl-4 @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)] @2xl:pl-5"
               key={index}
             >
-              <ProductCardSkeleton />
+              <CardSkeleton />
             </div>
           ))}
         </div>
@@ -151,17 +145,17 @@ export function ProductsCarouselSkeleton({
   );
 }
 
-export function ProductsCarouselEmptyState({
+export function CardCarouselEmptyState({
   className,
-  placeholderCount = 8,
+  placeholderCount = 4,
   emptyStateTitle,
   emptyStateSubtitle,
   hideOverflow = true,
 }: {
   className?: string;
   placeholderCount?: number;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
   hideOverflow?: boolean;
 }) {
   return (
@@ -170,10 +164,10 @@ export function ProductsCarouselEmptyState({
         <div className="-ml-4 flex [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:-ml-5">
           {Array.from({ length: placeholderCount }).map((_, index) => (
             <div
-              className="min-w-0 shrink-0 grow-0 basis-full pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
+              className="min-w-0 shrink-0 grow-0 basis-[calc(100%-1rem)] pl-4 @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)] @2xl:pl-5"
               key={index}
             >
-              <ProductCardSkeleton />
+              <CardSkeleton key={index} />
             </div>
           ))}
         </div>
