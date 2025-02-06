@@ -1,6 +1,9 @@
+import { ComponentPropsWithoutRef } from 'react';
+
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
+import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
 import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';
 import { Rating } from '@/vibes/soul/primitives/rating';
 import { ProductGallery } from '@/vibes/soul/sections/product-detail/product-gallery';
@@ -28,7 +31,7 @@ interface ProductDetailProduct {
 }
 
 interface Props<F extends Field> {
-  breadcrumbs?: Streamable<Breadcrumb[]>;
+  breadcrumbs?: Streamable<Array<ComponentPropsWithoutRef<typeof AnimatedLink> & { id: string }>>;
   product: Streamable<ProductDetailProduct | null>;
   action: ProductDetailFormAction<F>;
   fields: Streamable<F[]>;

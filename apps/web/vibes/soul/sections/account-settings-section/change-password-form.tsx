@@ -66,17 +66,13 @@ export function ChangePasswordForm({
         key={fields.confirmPassword.id}
         label={confirmPasswordLabel}
       />
-      <SubmitButton>{submitLabel}</SubmitButton>
+      <SubmitButton text={submitLabel} />
     </form>
   );
 }
 
-function SubmitButton({ children }: { children: React.ReactNode }) {
+function SubmitButton({ text }: { text: string }) {
   const { pending } = useFormStatus();
 
-  return (
-    <Button loading={pending} size="small" type="submit" variant="secondary">
-      {children}
-    </Button>
-  );
+  return <Button loading={pending} size="small" type="submit" variant="secondary" text={text} />;
 }

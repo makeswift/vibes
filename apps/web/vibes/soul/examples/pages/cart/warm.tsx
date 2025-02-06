@@ -54,7 +54,7 @@ export default async function Preview() {
   const lineItems = await getLineItems('Warm');
   return (
     <>
-      <Banner id="example-banner">
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </Banner>

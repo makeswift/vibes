@@ -1,8 +1,10 @@
 import { clsx } from 'clsx';
 import Image from 'next/image';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Breadcrumb, Breadcrumbs, BreadcrumbsSkeleton } from '@/vibes/soul/primitives/breadcrumbs';
+import { Breadcrumbs, BreadcrumbsSkeleton } from '@/vibes/soul/primitives/breadcrumbs';
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
 interface Tag {
@@ -29,7 +31,7 @@ export interface BlogPostContentBlogPost {
 
 interface Props {
   blogPost: Streamable<BlogPostContentBlogPost>;
-  breadcrumbs?: Streamable<Breadcrumb[]>;
+  breadcrumbs?: Streamable<Array<ComponentPropsWithoutRef<typeof AnimatedLink> & { id: string }>>;
   className?: string;
 }
 
@@ -70,9 +72,8 @@ export function BlogPostContent({
                           key={index}
                           size="small"
                           variant="tertiary"
-                        >
-                          {tag.label}
-                        </ButtonLink>
+                          text={tag.label}
+                        />
                       ))}
                     </div>
                   )}

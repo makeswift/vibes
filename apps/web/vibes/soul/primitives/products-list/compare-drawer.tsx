@@ -98,13 +98,23 @@ export function CompareDrawer({
             ))}
           </div>
 
-          <Button className="hidden @md:block" size="medium" type="submit" variant="primary">
-            {submitLabel} <ArrowRight absoluteStrokeWidth size={20} strokeWidth={1} />
-          </Button>
+          <Button
+            className="hidden @md:block"
+            icon={<ArrowRight absoluteStrokeWidth size={20} strokeWidth={1} />}
+            size="medium"
+            text={submitLabel}
+            type="submit"
+            variant="primary"
+          />
 
-          <Button className="w-full @md:hidden" size="small" type="submit" variant="primary">
-            {submitLabel} <ArrowRight absoluteStrokeWidth size={16} strokeWidth={1} />
-          </Button>
+          <Button
+            className="w-full @md:hidden"
+            icon={<ArrowRight absoluteStrokeWidth size={16} strokeWidth={1} />}
+            size="small"
+            text={submitLabel}
+            type="submit"
+            variant="primary"
+          />
         </form>
       </Drawer>
     )

@@ -11,7 +11,7 @@ import {
   useInputControl,
 } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
-import { startTransition, useActionState } from 'react';
+import { ComponentPropsWithoutRef, startTransition, useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
 
@@ -27,7 +27,7 @@ import { RadioGroup } from '@/vibes/soul/form/radio-group';
 import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Textarea } from '@/vibes/soul/form/textarea';
-import { Button, Props as ButtonProps } from '@/vibes/soul/primitives/button';
+import { Button } from '@/vibes/soul/primitives/button';
 
 import { Field, FieldGroup, schema } from './schema';
 
@@ -43,7 +43,7 @@ export type DynamicFormAction<F extends Field> = Action<State<F>, FormData>;
 interface Props<F extends Field> {
   fields: Array<F | FieldGroup<F>>;
   action: DynamicFormAction<F>;
-  buttonSize?: ButtonProps['size'];
+  buttonSize?: ComponentPropsWithoutRef<typeof Button>['size'];
   cancelLabel?: string;
   submitLabel?: string;
   submitName?: string;
@@ -130,14 +130,16 @@ export function DynamicForm<F extends Field>({
                 aria-label={`${cancelLabel} ${submitLabel}`}
                 onClick={onCancel}
                 size={buttonSize}
+                text={cancelLabel}
                 variant="tertiary"
-              >
-                {cancelLabel}
-              </Button>
+              />
             )}
-            <SubmitButton name={submitName} size={buttonSize} value={submitValue}>
-              {submitLabel}
-            </SubmitButton>
+            <SubmitButton
+              name={submitName}
+              size={buttonSize}
+              text={submitLabel}
+              value={submitValue}
+            />
           </div>
           {form.errors?.map((error, index) => (
             <FormStatus key={index} type="error">
@@ -151,22 +153,20 @@ export function DynamicForm<F extends Field>({
 }
 
 function SubmitButton({
-  children,
+  text,
   name,
   value,
   size,
 }: {
-  children: React.ReactNode;
+  text: string;
   name?: string;
   value?: string;
-  size: ButtonProps['size'];
+  size: ComponentPropsWithoutRef<typeof Button>['size'];
 }) {
   const { pending } = useFormStatus();
 
   return (
-    <Button loading={pending} name={name} size={size} type="submit" value={value}>
-      {children}
-    </Button>
+    <Button loading={pending} name={name} size={size} text={text} type="submit" value={value} />
   );
 }
 

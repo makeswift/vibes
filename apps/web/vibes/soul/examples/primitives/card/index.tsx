@@ -8,7 +8,10 @@ export default function Preview() {
           <Card
             className="w-full"
             href="#"
-            image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
+            thumbnail={{
+              src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_',
+              alt: 'Low Maintenance',
+            }}
             title="Low Maintenance"
           />
           <Card className="w-full" href="#" title="Partial shade" />
@@ -21,8 +24,11 @@ export default function Preview() {
             className="w-full"
             href="#"
             iconColorScheme="dark"
-            image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
             textColorScheme="dark"
+            thumbnail={{
+              src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_',
+              alt: 'Low Maintenance',
+            }}
             title="Low Maintenance"
           />
           <Card

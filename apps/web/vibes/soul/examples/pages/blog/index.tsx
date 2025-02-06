@@ -1,10 +1,12 @@
+import { ComponentPropsWithoutRef } from 'react';
+
 import { locales } from '@/vibes/soul/data/locales';
 import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
 import { Banner } from '@/vibes/soul/primitives/banner';
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 import { Footer } from '@/vibes/soul/sections/footer';
@@ -50,13 +52,15 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostCardBlogPost[]>((resolve) => {
+  const blogPostsPromise = new Promise<
+    Array<ComponentPropsWithoutRef<typeof BlogPostCard>['blogPost'] & { id: string }>
+  >((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 
   return (
     <>
-      <Banner id="example-banner">
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </Banner>
@@ -75,11 +79,13 @@ export default function Preview() {
       <FeaturedBlogPostList
         breadcrumbs={[
           {
-            label: 'Home',
+            id: '1',
+            text: 'Home',
             href: '#',
           },
           {
-            label: 'Blog',
+            id: '2',
+            text: 'Blog',
             href: '#',
           },
         ]}

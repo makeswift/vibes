@@ -2,7 +2,7 @@
 
 import * as AccordionsPrimitive from '@radix-ui/react-accordion';
 import { clsx } from 'clsx';
-import { useEffect, useState } from 'react';
+import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
@@ -10,11 +10,14 @@ import { useEffect, useState } from 'react';
  *
  * ```css
  * :root {
+ *   --accordion-focus: hsl(var(--primary));
+ *   --acordion-light-offset: hsl(var(--background));
  *   --accordion-light-title-text: hsl(var(--contrast-400));
  *   --accordion-light-title-text-hover: hsl(var(--foreground));
  *   --accordion-light-title-icon: hsl(var(--contrast-500));
  *   --accordion-light-title-icon-hover: hsl(var(--foreground));
  *   --accordion-light-content-text: hsl(var(--foreground));
+ *   --acordion-dark-offset: hsl(var(--foreground));
  *   --accordion-dark-title-text: hsl(var(--contrast-200));
  *   --accordion-dark-title-text-hover: hsl(var(--background));
  *   --accordion-dark-title-icon: hsl(var(--contrast-200));
@@ -26,11 +29,12 @@ import { useEffect, useState } from 'react';
  * ```
  */
 function Accordion({
-  children,
   title,
+  children,
   colorScheme = 'light',
-  ...rest
-}: React.ComponentPropsWithoutRef<typeof AccordionsPrimitive.Item> & {
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof AccordionsPrimitive.Item> & {
   colorScheme?: 'light' | 'dark';
 }) {
   const [isMounted, setIsMounted] = useState(false);
@@ -40,12 +44,22 @@ function Accordion({
   }, []);
 
   return (
-    <AccordionsPrimitive.Item {...rest}>
+    <AccordionsPrimitive.Item
+      {...props}
+      className={clsx(
+        'focus:outline-2 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[var(--accordion-focus,hsl(var(--primary)))] has-[:focus-visible]:ring-offset-4',
+        {
+          light: 'ring-offset-[var(--acordion-light-offset,hsl(var(--background)))]',
+          dark: 'ring-offset-[var(--acordion-dark-offset,hsl(var(--foreground)))]',
+        }[colorScheme],
+        className,
+      )}
+    >
       <AccordionsPrimitive.Header>
-        <AccordionsPrimitive.Trigger className="group flex w-full cursor-pointer items-start gap-8 py-3 text-start @md:py-4">
+        <AccordionsPrimitive.Trigger className="group flex w-full cursor-pointer items-start gap-8 border-none py-3 text-start focus:outline-none @md:py-4">
           <div
             className={clsx(
-              'flex-1 select-none font-[family-name:var(--accordion-title-font-family,var(--font-family-mono))] text-sm uppercase transition-colors duration-300 ease-out',
+              'flex-1 select-none font-[family-name:var(--accordion-title-font-family,var(--font-family-mono))] text-sm font-normal uppercase transition-colors duration-300 ease-out',
               {
                 light:
                   'text-[var(--accordion-light-title-text,hsl(var(--contrast-400)))] group-hover:text-[var(--accordion-light-title-text-hover,hsl(var(--foreground)))]',
@@ -76,7 +90,7 @@ function Accordion({
       >
         <div
           className={clsx(
-            'pb-5 font-[family-name:var(--accordion-content-font-family)] font-medium leading-normal',
+            'py-3 font-[family-name:var(--accordion-content-font-family,var(--font-family-body))] text-base font-light leading-normal',
             {
               light: 'text-[var(--accordion-light-content-text,hsl(var(--foreground)))]',
               dark: 'text-[var(--accordion-dark-content-text,hsl(var(--background)))]',
@@ -92,11 +106,11 @@ function Accordion({
 
 function AnimatedChevron({
   className,
-  ...rest
+  ...props
 }: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      {...rest}
+      {...props}
       className={clsx(
         'mt-1 shrink-0 [&>line]:origin-center [&>line]:transition [&>line]:duration-300 [&>line]:ease-out',
         className,

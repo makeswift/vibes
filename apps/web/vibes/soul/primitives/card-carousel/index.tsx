@@ -1,8 +1,9 @@
 import { clsx } from 'clsx';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card';
+import { Card, CardSkeleton } from '@/vibes/soul/primitives/card';
 import {
   Carousel,
   CarouselButtons,
@@ -10,27 +11,6 @@ import {
   CarouselItem,
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel';
-
-export type Card = CardProps & {
-  id: string;
-};
-
-export interface CardCarouselProps {
-  cards: Streamable<Card[]>;
-  aspectRatio?: '5:6' | '3:4' | '1:1';
-  textColorScheme?: 'light' | 'dark';
-  iconColorScheme?: 'light' | 'dark';
-  carouselColorScheme?: 'light' | 'dark';
-  className?: string;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
-  scrollbarLabel?: string;
-  previousLabel?: string;
-  nextLabel?: string;
-  showButtons?: boolean;
-  showScrollbar?: boolean;
-  hideOverflow?: boolean;
-}
 
 export function CardCarousel({
   cards: streamableCards,
@@ -47,7 +27,22 @@ export function CardCarousel({
   showButtons = true,
   showScrollbar = true,
   hideOverflow,
-}: CardCarouselProps) {
+}: {
+  cards: Streamable<Array<ComponentPropsWithoutRef<typeof Card> & { id: string }>>;
+  aspectRatio?: '5:6' | '3:4' | '1:1';
+  textColorScheme?: 'light' | 'dark';
+  iconColorScheme?: 'light' | 'dark';
+  carouselColorScheme?: 'light' | 'dark';
+  className?: string;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
+  scrollbarLabel?: string;
+  previousLabel?: string;
+  nextLabel?: string;
+  showButtons?: boolean;
+  showScrollbar?: boolean;
+  hideOverflow?: boolean;
+}) {
   return (
     <Stream
       fallback={<CardCarouselSkeleton className={className} hideOverflow={hideOverflow} pending />}

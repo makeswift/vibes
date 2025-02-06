@@ -1,14 +1,13 @@
 import { clsx } from 'clsx';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import {
-  BlogPostCard,
-  BlogPostCardBlogPost,
-  BlogPostCardSkeleton,
-} from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostCard, BlogPostCardSkeleton } from '@/vibes/soul/primitives/blog-post-card';
 
 interface Props {
-  posts: Streamable<BlogPostCardBlogPost[]>;
+  posts: Streamable<
+    Array<ComponentPropsWithoutRef<typeof BlogPostCard>['blogPost'] & { id: string }>
+  >;
   className?: string;
   emptyStateSubtitle?: Streamable<string | null>;
   emptyStateTitle?: Streamable<string | null>;

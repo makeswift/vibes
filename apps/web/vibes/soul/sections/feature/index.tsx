@@ -1,8 +1,7 @@
 import { clsx } from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
 
-import { Button } from '@/vibes/soul/primitives/button';
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import { Icon, IconName } from '@/vibes/soul/primitives/icon';
 
 export interface FeatureProps {
@@ -19,7 +18,7 @@ export interface FeatureProps {
   }>;
   cta: {
     href: string;
-    label: string;
+    text: string;
   };
 }
 
@@ -78,14 +77,14 @@ export const Feature = function Feature({ image, title, description, grid, cta }
                 })}
               </ul>
             )}
-            <Button
+            <ButtonLink
               className={clsx({
                 'self-center @3xl/section:self-start': grid?.length,
               })}
               variant="primary"
-            >
-              <Link href={cta.href}>{cta.label}</Link>
-            </Button>
+              href={cta.href}
+              text={cta.text}
+            />
           </div>
         </div>
       </div>

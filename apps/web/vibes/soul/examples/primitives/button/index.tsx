@@ -14,9 +14,14 @@ export default function Preview() {
           {shapes.map((shape) => (
             <div className="flex flex-wrap items-center gap-x-3 gap-y-3" key={shape}>
               {sizes.map((size) => (
-                <Button key={size} shape={shape} size={size} variant={variant}>
-                  {shape === 'circle' ? <ArrowRight size={20} /> : 'Shop now'}
-                </Button>
+                <Button
+                  icon={shape === 'circle' ? <ArrowRight size={20} /> : null}
+                  key={size}
+                  shape={shape}
+                  size={size}
+                  text={shape !== 'circle' ? 'Shop now' : undefined}
+                  variant={variant}
+                />
               ))}
             </div>
           ))}

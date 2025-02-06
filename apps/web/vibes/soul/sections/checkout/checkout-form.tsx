@@ -62,6 +62,7 @@ export const CheckoutForm = function CheckoutForm({
         <Checkbox
           checked={useSameAddress}
           className="@sm:col-span-2"
+          htmlFor="address"
           label="My billing address is the same as my shipping address."
           setChecked={setUseSameAddress}
         />
@@ -97,9 +98,12 @@ export const CheckoutForm = function CheckoutForm({
       )}
 
       {/* TODO: disbale until form is complete */}
-      <Button className="ml-auto @sm:col-span-2" onClick={(e) => onSubmit?.(e)} variant="secondary">
-        Continue
-      </Button>
+      <Button
+        className="ml-auto @sm:col-span-2"
+        onClick={(e) => onSubmit?.(e)}
+        text="Continue"
+        variant="secondary"
+      />
     </form>
   );
 };

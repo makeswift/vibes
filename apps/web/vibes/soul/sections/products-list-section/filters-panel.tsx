@@ -289,10 +289,9 @@ export function FiltersPanelInner({
           });
         }}
         size="small"
+        text={resetFiltersLabel}
         variant="secondary"
-      >
-        {resetFiltersLabel}
-      </Button>
+      />
     </div>
   );
 }

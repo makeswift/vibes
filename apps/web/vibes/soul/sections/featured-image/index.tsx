@@ -70,9 +70,8 @@ export const FeaturedImage = function FeaturedImage({
             className={clsx(mediaAlign === 'full' ? 'text-background' : 'text-foreground')}
             href={cta.href}
             variant={mediaAlign === 'full' ? 'tertiary' : 'primary'}
-          >
-            {cta.label}
-          </ButtonLink>
+            text={cta.label}
+          />
         </div>
       </div>
     </section>

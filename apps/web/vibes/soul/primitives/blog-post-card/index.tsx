@@ -2,66 +2,86 @@ import { clsx } from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export interface BlogPostCardBlogPost {
-  id: string;
-  author?: string | null;
-  content: string;
-  date: string;
-  image?: {
-    src: string;
-    alt: string;
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --blog-post-card-focus: hsl(var(--primary));
+ *   --blog-post-card-primary-text: hsl(var(--foreground));
+ *   --blog-post-card-secondary-text: hsl(var(--contrast-400));
+ *   --blog-post-card-tertiary-text: hsl(var(--foreground)/15%);
+ *   --blog-post-card-image-background: hsl(var(--contrast-100));
+ *   --blog-post-card-font-family: var(--font-family-body);
+ *   --blog-post-card-summary-text: hsl(var(--contrast-400));
+ *   --blog-post-card-author-date-text: hsl(var(--foreground));
+ * }
+ * ```
+ */
+export function BlogPostCard({
+  blogPost,
+  className,
+}: {
+  blogPost: {
+    author?: string | null;
+    summary: string;
+    date: string;
+    thumbnail?: {
+      src: string;
+      alt: string;
+    } | null;
+    href: string;
+    title: string;
   };
-  href: string;
-  title: string;
-}
-
-interface Props {
-  blogPost: BlogPostCardBlogPost;
   className?: string;
-}
-
-export function BlogPostCard({ blogPost, className }: Props) {
-  const { author, content, date, href, image, title } = blogPost;
+}) {
+  const { author, summary, date, href, thumbnail, title } = blogPost;
 
   return (
     <Link
       className={clsx(
-        'group max-w-full rounded-b-lg rounded-t-2xl text-foreground ring-primary ring-offset-4 @container focus:outline-0 focus-visible:ring-2',
+        'group max-w-full rounded-b-lg rounded-t-2xl font-[family-name:var(--blog-post-card-font-family,var(--font-family-body))] text-[var(--blog-post-card-primary-text,hsl(var(--foreground)))] @container focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blog-post-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
         className,
       )}
       href={href}
     >
-      <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-contrast-100">
-        {image?.src != null && image.src !== '' ? (
-          <Image
-            alt={image.alt}
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-            fill
-            sizes="(min-width: 80rem) 25vw, (min-width: 56rem) 33vw, (min-width: 28rem) 50vw, 100vw"
-            src={image.src}
-          />
-        ) : (
-          <div className="p-4 text-5xl font-bold leading-none tracking-tighter text-foreground/15">
-            {title}
-          </div>
-        )}
-      </div>
-
-      <div className="text-lg font-medium leading-snug">{title}</div>
-      <p className="mb-3 mt-1.5 line-clamp-3 text-sm font-normal text-contrast-400">{content}</p>
-      <div className="text-sm">
-        <time dateTime={date}>
-          {new Date(date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </time>
-        {date !== '' && author != null && author !== '' && (
-          <span className="after:mx-2 after:content-['•']" />
-        )}
-        {author != null && author !== '' && <span>{author}</span>}
-      </div>
+      <article>
+        <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[var(--blog-post-card-image-background,hsl(var(--contrast-100)))]">
+          {thumbnail != null ? (
+            <Image
+              alt={thumbnail.alt}
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              fill
+              sizes="(min-width: 80rem) 25vw, (min-width: 56rem) 33vw, (min-width: 28rem) 50vw, 100vw"
+              src={thumbnail.src}
+            />
+          ) : (
+            <div className="p-4 text-5xl font-bold leading-none tracking-tighter text-[var(--blog-post-card-tertiary-text,hsl(var(--foreground)/15%))]">
+              {title}
+            </div>
+          )}
+        </div>
+        <h5 className="text-lg font-medium leading-snug">{title}</h5>
+        <p className="mb-3 mt-1.5 line-clamp-3 text-sm font-normal text-[var(--blog-post-card-secondary-text,hsl(var(--contrast-400)))]">
+          {summary}
+        </p>
+        <div className="text-sm">
+          <time dateTime={date}>
+            {new Date(date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+          {author != null && (
+            <>
+              <span className="after:mx-2 after:content-['•']" />
+              <span>{author}</span>
+            </>
+          )}
+        </div>
+      </article>
     </Link>
   );
 }

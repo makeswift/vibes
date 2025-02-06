@@ -1,6 +1,9 @@
+import { ComponentPropsWithoutRef } from 'react';
+
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
-import { Card, CardCarousel } from '@/vibes/soul/primitives/card-carousel';
+import { Card } from '@/vibes/soul/primitives/card';
+import { CardCarousel } from '@/vibes/soul/primitives/card-carousel';
 
 interface Link {
   label: string;
@@ -11,7 +14,7 @@ interface Props {
   title: string;
   description?: string;
   cta?: Link;
-  cards: Streamable<Card[]>;
+  cards: Streamable<Array<ComponentPropsWithoutRef<typeof Card> & { id: string }>>;
   scrollbarLabel?: string;
 }
 
@@ -29,7 +32,7 @@ export function FeaturedCardCarousel({ title, description, cta, cards, scrollbar
             )}
           </div>
           {cta != null && cta.href !== '' && cta.label !== '' && (
-            <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
+            <AnimatedLink className="mr-3" text={cta.label} href={cta.href} />
           )}
         </div>
         <CardCarousel cards={cards} scrollbarLabel={scrollbarLabel} />

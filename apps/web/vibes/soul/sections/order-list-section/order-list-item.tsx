@@ -49,12 +49,10 @@ export function OrderListItem({
             </span>
             <span className="block text-lg font-semibold leading-normal">{order.totalPrice}</span>
           </div>
-          <Badge className="mt-0.5">{order.status}</Badge>
+          <Badge className="mt-0.5" text={order.status} />
         </div>
 
-        <ButtonLink href={order.href} size="small">
-          {viewDetailsLabel}
-        </ButtonLink>
+        <ButtonLink href={order.href} size="small" text={viewDetailsLabel} />
       </div>
 
       <div className="mt-6 flex gap-4 overflow-hidden [mask-image:linear-gradient(to_right,_black_0%,_black_80%,_transparent_98%)]">

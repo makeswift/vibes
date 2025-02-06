@@ -6,33 +6,20 @@ import { toast } from '@/vibes/soul/primitives/toaster';
 export default function Preview() {
   return (
     <div className="grid h-screen place-content-center gap-x-4 gap-y-6">
-      <Button onClick={() => toast.success('Success')} variant="primary">
-        Success
-      </Button>
-
-      <Button onClick={() => toast.error('Error')} variant="primary">
-        Error
-      </Button>
-
-      <Button onClick={() => toast.warning('Warning')} variant="primary">
-        Warning
-      </Button>
-
-      <Button onClick={() => toast.info('Info')} variant="primary">
-        Info
-      </Button>
-
+      <Button onClick={() => toast.success('Success')} text="Success" variant="primary" />
+      <Button onClick={() => toast.error('Error')} text="Error" variant="primary" />
+      <Button onClick={() => toast.warning('Warning')} text="Warning" variant="primary" />
+      <Button onClick={() => toast.info('Info')} text="Info" variant="primary" />
       <Button
         onClick={() =>
           toast.success('Success', {
             description: 'Description of toast',
-            action: { label: 'Undo', onClick: () => console.log('undo') },
+            action: { text: 'Undo', onClick: () => console.log('undo') },
           })
         }
+        text="Options"
         variant="primary"
-      >
-        Options
-      </Button>
+      />
     </div>
   );
 }

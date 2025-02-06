@@ -1,13 +1,17 @@
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { ComponentPropsWithoutRef } from 'react';
+
+import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
 
-export const posts: BlogPostCardBlogPost[] = [
+export const posts: Array<
+  ComponentPropsWithoutRef<typeof BlogPostCard>['blogPost'] & { id: string }
+> = [
   {
     id: '5',
     title: 'A Guide to Low-Light Houseplants',
-    content:
+    summary:
       'Not all plants need bright sunlight to thrive. This guide highlights the best low-light houseplants, perfect for those darker corners of your home or office that need a touch of green.',
-    image: {
+    thumbnail: {
       src: 'https://rstr.in/monogram/vibes/T7CeSkvi11I/OrJN5KVj7I1',
       alt: 'Low-Light Houseplants',
     },
@@ -18,9 +22,9 @@ export const posts: BlogPostCardBlogPost[] = [
   {
     id: '1',
     title: "Top 5 Indoor Plants to Purify Your Home's Air",
-    content:
+    summary:
       'Discover the best indoor plants that not only add a touch of green to your space but also purify the air. From the resilient Snake Plant to the easy-going Spider Plant, these top picks will keep your home fresh and vibrant.',
-    image: {
+    thumbnail: {
       src: 'https://rstr.in/monogram/vibes/25AJnay0WtU/mAld6qscHh-',
       alt: 'Indoor Plants for Air Purification',
     },
@@ -31,9 +35,9 @@ export const posts: BlogPostCardBlogPost[] = [
   {
     id: '10',
     title: 'Seasonal Plant Care Tips: Preparing for Fall',
-    content:
+    summary:
       "As the seasons change, so do your plants' needs. Get ready for fall with these seasonal plant care tips, including how to transition your outdoor plants indoors and what to expect during the colder months.",
-    image: {
+    thumbnail: {
       src: 'https://rstr.in/monogram/vibes/1tqb3RTssHn/Dn2gTeQkDRD',
       alt: 'Seasonal Plant Care Tips',
     },
@@ -44,9 +48,9 @@ export const posts: BlogPostCardBlogPost[] = [
   {
     id: '4',
     title: 'The Benefits of Having Plants in Your Home',
-    content:
+    summary:
       'Plants do more than just beautify your home. They improve air quality, reduce stress, and even boost your mood. Explore the many benefits of indoor plants and why you should add more green to your living space.',
-    image: {
+    thumbnail: {
       src: 'https://rstr.in/monogram/vibes/5RpTEji2npU/cJxPrn32Osw',
       alt: 'Benefits of Indoor Plants',
     },
@@ -57,9 +61,9 @@ export const posts: BlogPostCardBlogPost[] = [
   {
     id: '6',
     title: 'How to Repot Your Plants for Healthy Growth',
-    content:
+    summary:
       'Repotting your plants is essential for maintaining their health and promoting growth. Over time, plants outgrow their pots, leading to root-bound conditions where roots are cramped and unable to absorb nutrients efficiently. This guide will walk you through the process of repotting, ensuring your plants thrive in their new home.',
-    image: {
+    thumbnail: {
       src: 'https://rstr.in/monogram/vibes/4m4x1nKM1bd/3mWxn3NPadv',
       alt: 'Repotting Plants',
     },
@@ -70,9 +74,9 @@ export const posts: BlogPostCardBlogPost[] = [
   {
     id: '7',
     title: '5 Easy-Care Plants for Busy People',
-    content:
+    summary:
       'Too busy to care for high-maintenance plants? These 5 easy-care plants are perfect for those with a hectic schedule. They require minimal attention while still bringing life to your home.',
-    image: {
+    thumbnail: {
       src: 'https://rstr.in/monogram/vibes/MJbRGY1Y9LK/jIq-Qhrz9nl',
       alt: 'Easy-Care Plants for Busy People',
     },
@@ -83,9 +87,9 @@ export const posts: BlogPostCardBlogPost[] = [
   {
     id: '8',
     title: 'Propagate & Share',
-    content:
+    summary:
       'Propagating plants is an easy and rewarding way to multiply your favorite plants and share them with friends. Whether you’re working with succulents, herbs, or houseplants, you can start new plants from cuttings, leaves, or even water-rooting. This guide will show you how simple it is to propagate plants, making it a fun activity to spread the green love.',
-    image: {
+    thumbnail: {
       src: 'https://rstr.in/monogram/vibes/SIjJWx_ZJA0/4hUVTzk4YxG',
       alt: 'Plant Propagation',
     },
@@ -96,9 +100,9 @@ export const posts: BlogPostCardBlogPost[] = [
   {
     id: '3',
     title: '5 Best Plants for Your Office Desk',
-    content:
+    summary:
       "Brighten up your workspace with these 5 easy-to-care-for office plants. Whether you have a sunny window or a dimly lit corner, there's a perfect plant on this list to suit your office environment.",
-    image: {
+    thumbnail: {
       src: 'https://rstr.in/monogram/vibes/zoSdSotM133/8anGjGfjP1q',
       alt: 'Office Desk Plants',
     },
@@ -109,9 +113,9 @@ export const posts: BlogPostCardBlogPost[] = [
   {
     id: '9',
     title: 'How to Choose the Right Pot for Your Plant',
-    content:
+    summary:
       "The right pot can make alls the difference in your plant's health. Learn how to select the perfect pot based on your plant's size, growth habits, and aesthetic preferences.",
-    // image: {
+    // summary: {
     //   src: 'https://rstr.in/monogram/vibes/L9i8WKVVLzt/8Jxv3zXPxa3',
     //   alt: 'Choosing the Right Pot for Your Plant',
     // },
@@ -122,7 +126,9 @@ export const posts: BlogPostCardBlogPost[] = [
 ];
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostCardBlogPost[]>((resolve) => {
+  const blogPostsPromise = new Promise<
+    Array<ComponentPropsWithoutRef<typeof BlogPostCard>['blogPost'] & { id: string }>
+  >((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 

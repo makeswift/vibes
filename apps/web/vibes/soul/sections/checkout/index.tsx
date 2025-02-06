@@ -46,14 +46,13 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                 handleAccordionChange('');
               }}
               size="small"
+              text="Continue"
               variant="secondary"
-            >
-              Continue
-            </Button>
+            />
           </div>
           <Checkbox
             checked={checked}
-            id="newsletter-subscribe"
+            htmlFor="newsletter-subscribe"
             label="Subscribe to our newsletter"
             setChecked={setChecked}
           />
@@ -157,10 +156,9 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
                           <Button
                             className="col-start-3 h-min group-data-[state=open]:pointer-events-none group-data-[state=closed]:opacity-100 group-data-[state=open]:opacity-0 "
                             size="small"
+                            text="Edit"
                             variant="secondary"
-                          >
-                            Edit
-                          </Button>
+                          />
                         </Accordion.Trigger>
                       </div>
                     </Accordion.Header>
@@ -230,9 +228,7 @@ export const Checkout = function Checkout({ products }: { products: CartLineItem
 
                 <div className="flex items-end gap-2 pb-7 pt-10">
                   <Input label="Coupon / Gift Certificate" />
-                  <Button className="h-[48px]" size="small" variant="secondary">
-                    Apply
-                  </Button>
+                  <Button className="h-[48px]" size="small" text="Apply" variant="secondary" />
                 </div>
 
                 <table aria-label="Receipt Summary" className="w-full">

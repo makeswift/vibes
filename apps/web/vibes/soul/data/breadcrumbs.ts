@@ -1,52 +1,65 @@
-import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs';
+import { ComponentPropsWithoutRef } from 'react';
+
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
 
 import { SoulBrandName } from '../brands';
 
-export function getBreadcrumbs(brand: SoulBrandName): Breadcrumb[] {
+export function getBreadcrumbs(
+  brand: SoulBrandName,
+): Array<ComponentPropsWithoutRef<typeof AnimatedLink> & { id: string }> {
   return breadcrumbs[brand];
 }
 
 const breadcrumbs = {
   Electric: [
     {
-      label: 'Home',
+      id: '1',
+      text: 'Home',
       href: '#',
     },
     {
-      label: 'Plants',
+      id: '2',
+      text: 'Plants',
       href: '#',
     },
     {
-      label: 'Indoor',
+      id: '3',
+      text: 'Indoor',
       href: '#',
     },
   ],
   Luxury: [
     {
-      label: 'Home',
+      id: '1',
+      text: 'Home',
       href: '#',
     },
     {
-      label: 'Shoes',
+      id: '2',
+      text: 'Shoes',
       href: '#',
     },
     {
-      label: 'Flats',
+      id: '3',
+      text: 'Flats',
       href: '#',
     },
   ],
   Warm: [
     {
-      label: 'Home',
+      id: '1',
+      text: 'Home',
       href: '#',
     },
     {
-      label: 'Bags',
+      id: '2',
+      text: 'Bags',
       href: '#',
     },
     {
-      label: 'Handle Bags',
+      id: '3',
+      text: 'Handle Bags',
       href: '#',
     },
   ],
-} as const satisfies Record<SoulBrandName, [Breadcrumb, ...Breadcrumb[]]>;
+};

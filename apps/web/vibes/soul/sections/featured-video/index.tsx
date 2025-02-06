@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
-import Link from 'next/link';
 
-import { Button } from '@/vibes/soul/primitives/button';
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
 interface Props {
   title: string;
@@ -54,12 +53,12 @@ export const FeaturedVideo = function FeaturedVideo({
         >
           <h1 className="max-w-xl text-4xl font-medium leading-none @xl:text-5xl">{title}</h1>
           <p className="max-w-md pb-2">{description}</p>
-          <Button
+          <ButtonLink
             className={clsx(mediaAlign === 'full' ? 'text-background' : 'text-foreground')}
             variant={mediaAlign === 'full' ? 'tertiary' : 'primary'}
-          >
-            <Link href={cta.href}>{cta.label}</Link>
-          </Button>
+            text={cta.label}
+            href={cta.href}
+          />
         </div>
       </div>
     </section>

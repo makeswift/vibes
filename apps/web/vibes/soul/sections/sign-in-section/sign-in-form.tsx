@@ -55,7 +55,7 @@ export function SignInForm({
         key={fields.password.id}
         label={passwordLabel}
       />
-      <SubmitButton>{submitLabel}</SubmitButton>
+      <SubmitButton text={submitLabel} />
       {form.errors?.map((error, index) => (
         <FormStatus key={index} type="error">
           {error}
@@ -65,12 +65,16 @@ export function SignInForm({
   );
 }
 
-function SubmitButton({ children }: { children: React.ReactNode }) {
+function SubmitButton({ text }: { text: string }) {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="mt-auto w-full" loading={pending} type="submit" variant="secondary">
-      {children}
-    </Button>
+    <Button
+      className="mt-auto w-full"
+      loading={pending}
+      text={text}
+      type="submit"
+      variant="secondary"
+    />
   );
 }

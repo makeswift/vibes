@@ -33,9 +33,9 @@ export default {
           shadow: 'color-mix(in oklab, hsl(var(--warning)), black 75%)',
         },
         info: {
-          DEFAULT: 'hsl(var(--info))',
-          highlight: 'color-mix(in oklab, hsl(var(--info)), white 75%)',
-          shadow: 'color-mix(in oklab, hsl(var(--info)), black 75%)',
+          DEFAULT: 'hsl(var((--background))',
+          highlight: 'color-mix(in oklab, hsl(var(--background)), white 75%)',
+          shadow: 'color-mix(in oklab, hsl(var(--background)), black 75%)',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

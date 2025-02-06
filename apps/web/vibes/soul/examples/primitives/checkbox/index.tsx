@@ -9,11 +9,11 @@ export default function Preview() {
 
   return (
     <div className="flex h-screen flex-col justify-center gap-4 p-10">
-      <Checkbox checked={checked} id="example-1" label="Checkbox" setChecked={setChecked} />
+      <Checkbox checked={checked} htmlFor="example-1" label="Checkbox" setChecked={setChecked} />
       <Checkbox
         checked={checked}
         error="You must accept the Terms & Conditions"
-        id="example-2"
+        htmlFor="example-2"
         label="Accept Terms & Conditions"
         setChecked={setChecked}
       />

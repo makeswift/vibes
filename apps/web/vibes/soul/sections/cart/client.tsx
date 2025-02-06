@@ -155,10 +155,12 @@ export function CartClient<LineItem extends CartLineItem>({
             </div>
           </dl>
 
-          <CheckoutButton action={checkoutAction} className="mt-4 w-full">
-            {checkoutLabel}
-            <ArrowRight size={20} strokeWidth={1} />
-          </CheckoutButton>
+          <CheckoutButton
+            action={checkoutAction}
+            className="mt-4 w-full"
+            text={checkoutLabel}
+            icon={<ArrowRight size={20} strokeWidth={1} />}
+          />
         </div>
       }
       sidebarPosition="after"

@@ -1,11 +1,12 @@
 import { Sliders } from 'lucide-react';
-import { Suspense } from 'react';
+import { ComponentPropsWithRef, Suspense } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Breadcrumb, Breadcrumbs, BreadcrumbsSkeleton } from '@/vibes/soul/primitives/breadcrumbs';
+import { Breadcrumbs, BreadcrumbsSkeleton } from '@/vibes/soul/primitives/breadcrumbs';
 import { Button } from '@/vibes/soul/primitives/button';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
 import * as SidePanel from '@/vibes/soul/primitives/side-panel';
 import { Filter, FiltersPanel } from '@/vibes/soul/sections/products-list-section/filters-panel';
 import {
@@ -15,7 +16,7 @@ import {
 } from '@/vibes/soul/sections/products-list-section/sorting';
 
 interface Props {
-  breadcrumbs?: Streamable<Breadcrumb[]>;
+  breadcrumbs?: Streamable<Array<ComponentPropsWithRef<typeof AnimatedLink> & { id: string }>>;
   title?: Streamable<string | null>;
   totalCount: Streamable<number>;
   products: Streamable<ListProduct[]>;
@@ -111,12 +112,12 @@ export function ProductsListSection({
               <div className="block @3xl:hidden">
                 <SidePanel.Root>
                   <SidePanel.Trigger asChild>
-                    <Button size="medium" variant="secondary">
-                      {filterLabel}
-                      <span className="hidden @xl:block">
-                        <Sliders size={20} />
-                      </span>
-                    </Button>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      text={filterLabel}
+                      icon={<Sliders className="hidden @xl:block" size={20} />}
+                    />
                   </SidePanel.Trigger>
                   <Stream value={streamableFiltersPanelTitle}>
                     {(filtersPanelTitle) => (

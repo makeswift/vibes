@@ -121,6 +121,7 @@ export function RangeInput({
       <Button
         className="shrink-0"
         disabled={disabled || (state.min === state.max && state.min !== '' && state.max !== '')}
+        icon={<ArrowRight size={20} strokeWidth={1} />}
         onClick={() =>
           onChange?.({
             min: state.min === '' ? null : Number(state.min),
@@ -129,11 +130,9 @@ export function RangeInput({
         }
         shape="circle"
         size="small"
+        srOnlyText={applyLabel}
         variant="secondary"
-      >
-        <span className="sr-only">{applyLabel}</span>
-        <ArrowRight size={20} strokeWidth={1} />
-      </Button>
+      />
     </div>
   );
 }

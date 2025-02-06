@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx';
 import { X } from 'lucide-react';
-import { ForwardedRef, forwardRef, ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, Ref } from 'react';
 
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
@@ -17,71 +17,51 @@ import { ForwardedRef, forwardRef, ReactNode, useCallback, useEffect, useState }
  *   --banner-close-icon-hover: hdl(var(--foreground));
  *   --banner-close-background: transparent;
  *   --banner-close-background-hover: hsl(var(--background)/40%);
+ *   --banner-font-family: var(--font-family-body);
  * }
  * ```
  */
-export const Banner = forwardRef(
-  (
-    {
-      id,
-      children,
-      hideDismiss = false,
-      className,
-      onDismiss,
-    }: {
-      id: string;
-      children: ReactNode;
-      hideDismiss?: boolean;
-      className?: string;
-      onDismiss?: () => void;
-    },
-    ref: ForwardedRef<HTMLDivElement>,
-  ) => {
-    const [banner, setBanner] = useState({ dismissed: false, initialized: false });
+export function Banner({
+  children,
+  hideDismiss = false,
+  className,
+  onDismiss,
+  dismissed = false,
+  initialized = true,
+  ref,
+}: {
+  children: ReactNode;
+  hideDismiss?: boolean;
+  onDismiss?: () => void;
+  dismissed?: boolean;
+  initialized?: boolean;
+  className?: string;
+  ref?: Ref<HTMLDivElement>;
+}) {
+  if (!initialized) return null;
 
-    useEffect(() => {
-      const hidden = localStorage.getItem(`${id}-hidden-banner`) === 'true';
-
-      setBanner({ dismissed: hidden, initialized: true });
-    }, [id]);
-
-    const hideBanner = useCallback(() => {
-      setBanner((prev) => ({ ...prev, dismissed: true }));
-      localStorage.setItem(`${id}-hidden-banner`, 'true');
-      onDismiss?.();
-    }, [id, onDismiss]);
-
-    if (!banner.initialized) return null;
-
-    return (
-      <div
-        className={clsx(
-          'relative w-full overflow-hidden bg-[var(--banner-background,hsl(var(--primary)))] transition-all duration-300 ease-in @container',
-          banner.dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
-          className,
-        )}
-        id="announcement-bar"
-        ref={ref}
-      >
-        <div className="p-3 pr-12 text-sm text-[var(--banner-text,hsl(var(--foreground)))] @xl:px-12 @xl:text-center @xl:text-base">
-          {children}
-        </div>
-
-        {!hideDismiss && (
-          <button
-            aria-label="Dismiss banner"
-            className="absolute right-3 top-3 grid h-8 w-8 place-content-center rounded-full bg-[var(--banner-close-background,transparent)] text-[var(--banner-close-icon,hsl(var(--foreground)/50%))] transition-colors duration-300 hover:bg-[var(--banner-close-background-hover,hsl(var(--background)/40%))] hover:text-[var(--banner-close-icon-hover,hsl(var(--foreground)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--banner-focus,hsl(var(--foreground)))] @xl:top-1/2 @xl:-translate-y-1/2"
-            onClick={(e) => {
-              e.preventDefault();
-              hideBanner();
-            }}
-          >
-            <X absoluteStrokeWidth size={20} strokeWidth={1.5} />
-          </button>
-        )}
+  return (
+    <div
+      className={clsx(
+        'relative flex items-center justify-between gap-4 overflow-hidden bg-[var(--banner-background,hsl(var(--primary)))] px-8 py-3 transition-all duration-300 ease-in @container',
+        dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
+        className,
+      )}
+      id="announcement-bar"
+      ref={ref}
+    >
+      <div className="flex-1 font-[family-name:var(--banner-font-family,var(--font-family-body))] text-sm text-[var(--banner-text,hsl(var(--foreground)))] @xl:text-center @xl:text-base">
+        {children}
       </div>
-    );
-  },
-);
-
-Banner.displayName = 'Banner';
+      {!hideDismiss && (
+        <button
+          aria-label="Dismiss banner"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--banner-close-background,transparent)] text-[var(--banner-close-icon,hsl(var(--foreground)/50%))] transition-colors duration-300 hover:bg-[var(--banner-close-background-hover,hsl(var(--background)/40%))] hover:text-[var(--banner-close-icon-hover,hsl(var(--foreground)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--banner-focus,hsl(var(--foreground)))]"
+          onClick={onDismiss}
+        >
+          <X absoluteStrokeWidth size={20} strokeWidth={1.5} />
+        </button>
+      )}
+    </div>
+  );
+}

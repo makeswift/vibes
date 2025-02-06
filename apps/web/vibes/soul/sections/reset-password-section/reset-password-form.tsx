@@ -58,9 +58,14 @@ export function ResetPasswordForm({
         key={fields.confirmPassword.id}
         label={confirmPasswordLabel}
       />
-      <Button loading={isPending} size="small" type="submit" variant="secondary">
-        {submitLabel}
-      </Button>
+      <Button
+        loading={isPending}
+        size="small"
+        text={submitLabel}
+        type="submit"
+        variant="secondary"
+      />
+
       {form.errors?.map((error, index) => (
         <FormStatus key={index} type="error">
           {error}

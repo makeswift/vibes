@@ -1,4 +1,6 @@
-import { BlogPostCard, BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { ComponentPropsWithoutRef } from 'react';
+
+import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
 import {
   Carousel,
   CarouselButtons,
@@ -7,21 +9,23 @@ import {
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel';
 
-interface Props {
-  className?: string;
-  blogPosts: BlogPostCardBlogPost[];
-  scrollbarLabel?: string;
-  previousLabel?: string;
-  nextLabel?: string;
-}
-
 export function BlogPostCarousel({
   className,
   blogPosts,
   scrollbarLabel,
   previousLabel,
   nextLabel,
-}: Props) {
+}: {
+  className?: string;
+  blogPosts: Array<
+    ComponentPropsWithoutRef<typeof BlogPostCard>['blogPost'] & {
+      id: string;
+    }
+  >;
+  scrollbarLabel?: string;
+  previousLabel?: string;
+  nextLabel?: string;
+}) {
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-10">
