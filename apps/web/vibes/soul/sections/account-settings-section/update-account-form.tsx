@@ -128,9 +128,8 @@ export function UpdateAccountForm({
         type="submit"
         value="update"
         variant="secondary"
-      >
-        {submitLabel}
-      </Button>
+        text={submitLabel}
+      />
     </form>
   );
 }

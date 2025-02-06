@@ -60,14 +60,13 @@ export function InlineEmailForm({
         <div className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
           <Button
             aria-label={submitLabel}
+            icon={<ArrowRight size={20} strokeWidth={1.5} />}
             loading={isPending}
             shape="circle"
             size="small"
             type="submit"
             variant="secondary"
-          >
-            <ArrowRight size={20} strokeWidth={1.5} />
-          </Button>
+          />
         </div>
       </div>
       {errors.map((error, index) => (

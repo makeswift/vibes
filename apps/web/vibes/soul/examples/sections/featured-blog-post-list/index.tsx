@@ -1,9 +1,13 @@
+import { ComponentPropsWithoutRef } from 'react';
+
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostCardBlogPost[]>((resolve) => {
+  const blogPostsPromise = new Promise<
+    Array<ComponentPropsWithoutRef<typeof BlogPostCard>['blogPost'] & { id: string }>
+  >((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 
@@ -11,11 +15,13 @@ export default function Preview() {
     <FeaturedBlogPostList
       breadcrumbs={[
         {
-          label: 'Home',
+          id: '1',
+          text: 'Home',
           href: '#',
         },
         {
-          label: 'Blog',
+          id: '2',
+          text: 'Blog',
           href: '#',
         },
       ]}

@@ -188,9 +188,8 @@ const DiscountUI = ({
               }
             }}
             variant="secondary"
-          >
-            {isSpun ? 'Copy' : 'Spin'}
-          </Button>
+            text={isSpun ? 'Copy' : 'Spin'}
+          />
         )}
       </div>
     </>

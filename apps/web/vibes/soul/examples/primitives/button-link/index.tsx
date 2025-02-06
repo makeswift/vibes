@@ -1,5 +1,3 @@
-import { ArrowRight } from 'lucide-react';
-
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
 const variants = ['primary', 'secondary', 'tertiary', 'ghost'] as const;
@@ -14,9 +12,14 @@ export default function Preview() {
           {shapes.map((shape) => (
             <div className="flex flex-wrap items-center gap-x-3 gap-y-3" key={shape}>
               {sizes.map((size) => (
-                <ButtonLink href="#" key={size} shape={shape} size={size} variant={variant}>
-                  {shape === 'circle' ? <ArrowRight size={20} /> : 'Shop now'}
-                </ButtonLink>
+                <ButtonLink
+                  href="#"
+                  key={size}
+                  shape={shape}
+                  size={size}
+                  text="Shop now"
+                  variant={variant}
+                />
               ))}
             </div>
           ))}

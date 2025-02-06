@@ -1,13 +1,13 @@
 import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
 
 const blogPost = {
+  id: 'vniSjA',
   author: 'Ryan Smith',
-  content:
+  summary:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit hendrerit erat imperdiet tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is some more text to test out here.',
   date: '2024-07-01',
   href: '#',
-  id: '1',
-  image: {
+  thumbnail: {
     src: 'https://rstr.in/monogram/vibes/MJbRGY1Y9LK/QlkAvXGZ2ER',
     alt: 'Vestibulum eleifend placerat ligula',
   },

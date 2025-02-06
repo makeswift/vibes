@@ -130,9 +130,11 @@ export function AddressListSection<A extends Address, F extends Field>({
       <div className="flex items-center justify-between">
         <Title>{title}</Title>
         {!showNewAddressForm && (
-          <Button onClick={() => setShowNewAddressForm(true)} size="small">
-            {showAddFormLabel}
-          </Button>
+          <Button
+            onClick={() => setShowNewAddressForm(true)}
+            size="small"
+            text={showAddFormLabel}
+          />
         )}
       </div>
       <div>
@@ -236,9 +238,8 @@ export function AddressListSection<A extends Address, F extends Field>({
                       onClick={() => setActiveAddressIds((prev) => [...prev, address.id])}
                       size="small"
                       variant="tertiary"
-                    >
-                      {editLabel}
-                    </Button>
+                      text={editLabel}
+                    />
                     {optimisticState.addresses.length > minimumAddressCount && (
                       <AddressActionButton
                         action={formAction}
@@ -315,7 +316,7 @@ function AddressPreview({ address, isDefault = false }: { address: Address; isDe
         <p className="mb-3">{address.countryCode}</p>
         <p>{address.phone}</p>
       </div>
-      <div>{isDefault && <Badge>Default</Badge>}</div>
+      <div>{isDefault && <Badge text="Default" />}</div>
     </div>
   );
 }

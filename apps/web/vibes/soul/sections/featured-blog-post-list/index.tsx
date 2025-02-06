@@ -1,6 +1,9 @@
+import { ComponentPropsWithoutRef } from 'react';
+
 import { Streamable } from '@/vibes/soul/lib/streamable';
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
+import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
+import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
@@ -8,9 +11,11 @@ import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 interface Props {
   title: string;
   description?: string;
-  posts: Streamable<BlogPostCardBlogPost[]>;
+  posts: Streamable<
+    Array<ComponentPropsWithoutRef<typeof BlogPostCard>['blogPost'] & { id: string }>
+  >;
   paginationInfo?: Streamable<CursorPaginationInfo>;
-  breadcrumbs?: Streamable<Breadcrumb[]>;
+  breadcrumbs?: Streamable<Array<ComponentPropsWithoutRef<typeof AnimatedLink> & { id: string }>>;
   emptyStateSubtitle?: Streamable<string | null>;
   emptyStateTitle?: Streamable<string | null>;
   placeholderCount?: number;

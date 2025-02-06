@@ -16,7 +16,6 @@ export default function Preview() {
     <>
       <HeaderSection
         banner={{
-          id: 'example-banner',
           children: (
             <>
               Get <strong>15% off</strong> and free shipping with discount code{' '}

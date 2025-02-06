@@ -179,9 +179,8 @@ export function Slideshow({ slides, playOnInit = true, interval = 5000, classNam
                           shape={cta?.shape ?? 'pill'}
                           size={cta?.size ?? 'large'}
                           variant={cta?.variant ?? 'tertiary'}
-                        >
-                          {cta?.label ?? 'Learn more'}
-                        </ButtonLink>
+                          text={cta?.label ?? 'Learn more'}
+                        />
                       )}
                     </div>
                   </div>

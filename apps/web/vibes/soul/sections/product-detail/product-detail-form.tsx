@@ -12,7 +12,7 @@ import {
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
 import { usePathname, useRouter } from 'next/navigation';
 import { createSerializer, parseAsString, useQueryStates } from 'nuqs';
-import { ReactNode, useActionState, useCallback, useEffect } from 'react';
+import { useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
 
@@ -35,7 +35,7 @@ type Action<S, P> = (state: Awaited<S>, payload: P) => S | Promise<S>;
 interface State<F extends Field> {
   fields: F[];
   lastResult: SubmissionResult | null;
-  successMessage?: ReactNode;
+  successMessage?: string;
 }
 
 export type ProductDetailFormAction<F extends Field> = Action<State<F>, FormData>;
@@ -95,11 +95,12 @@ export function ProductDetailForm<F extends Field>({
   const [{ lastResult, successMessage }, formAction] = useActionState(action, {
     fields,
     lastResult: null,
+    successMessage: '',
   });
 
   useEffect(() => {
     if (lastResult?.status === 'success') {
-      toast.success(successMessage);
+      toast.success(successMessage ?? 'Success!');
     }
   }, [lastResult, successMessage]);
 
@@ -153,7 +154,7 @@ export function ProductDetailForm<F extends Field>({
               required
               value={quantityControl.value}
             />
-            <SubmitButton disabled={ctaDisabled}>{ctaLabel}</SubmitButton>
+            <SubmitButton disabled={ctaDisabled} text={ctaLabel} />
           </div>
         </div>
       </form>
@@ -161,7 +162,7 @@ export function ProductDetailForm<F extends Field>({
   );
 }
 
-function SubmitButton({ children, disabled }: { children: React.ReactNode; disabled?: boolean }) {
+function SubmitButton({ text, disabled }: { text: string; disabled?: boolean }) {
   const { pending } = useFormStatus();
 
   return (
@@ -170,10 +171,9 @@ function SubmitButton({ children, disabled }: { children: React.ReactNode; disab
       disabled={disabled}
       loading={pending}
       size="medium"
+      text={text}
       type="submit"
-    >
-      {children}
-    </Button>
+    />
   );
 }
 

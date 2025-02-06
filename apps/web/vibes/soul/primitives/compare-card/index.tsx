@@ -43,9 +43,7 @@ export function CompareCard({
         {addToCartAction && (
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           <form action={addToCartAction.bind(null, product.id)}>
-            <Button className="w-full" size="medium" type="submit">
-              {addToCartLabel}
-            </Button>
+            <Button className="w-full" size="medium" text={addToCartLabel} type="submit" />
           </form>
         )}
       </div>

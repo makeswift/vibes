@@ -1,16 +1,19 @@
-import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
+import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
 
-export const breadcrumbs: Breadcrumb[] = [
+export const breadcrumbs = [
   {
-    label: 'Home',
+    id: '1',
+    text: 'Home',
     href: '#',
   },
   {
-    label: 'Bags',
+    id: '2',
+    text: 'Bags',
     href: '#',
   },
   {
-    label: 'Handle Bags',
+    id: '3',
+    text: 'Handle Bags',
     href: '#',
   },
 ];

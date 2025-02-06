@@ -23,9 +23,7 @@ export function Error({
 
         {ctaAction && (
           <form action={ctaAction}>
-            <Button className="mt-8" size="large" type="submit" variant="primary">
-              {ctaLabel}
-            </Button>
+            <Button className="mt-8" size="large" type="submit" variant="primary" text={ctaLabel} />
           </form>
         )}
       </div>

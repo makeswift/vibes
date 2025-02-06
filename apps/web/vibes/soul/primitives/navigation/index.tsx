@@ -704,14 +704,13 @@ function SubmitButton({ loading, submitLabel }: { loading: boolean; submitLabel:
 
   return (
     <Button
+      icon={<ArrowRight aria-label={submitLabel} size={20} strokeWidth={1.5} />}
       loading={pending || loading}
       shape="circle"
       size="small"
       type="submit"
       variant="secondary"
-    >
-      <ArrowRight aria-label={submitLabel} size={20} strokeWidth={1.5} />
-    </Button>
+    />
   );
 }
 

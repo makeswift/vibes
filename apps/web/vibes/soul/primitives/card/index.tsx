@@ -3,16 +3,6 @@ import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export interface CardProps {
-  className?: string;
-  title: string;
-  image?: { src: string; alt: string };
-  href: string;
-  textColorScheme?: 'light' | 'dark';
-  iconColorScheme?: 'light' | 'dark';
-  aspectRatio?: '5:6' | '3:4' | '1:1';
-}
-
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
  * with their default values:
@@ -33,12 +23,20 @@ export interface CardProps {
 export function Card({
   className,
   title,
-  image,
+  thumbnail,
   href,
   textColorScheme = 'light',
   iconColorScheme = 'light',
   aspectRatio = '5:6',
-}: CardProps) {
+}: {
+  className?: string;
+  title: string;
+  thumbnail?: { src: string; alt: string } | null;
+  href: string;
+  textColorScheme?: 'light' | 'dark';
+  iconColorScheme?: 'light' | 'dark';
+  aspectRatio?: '5:6' | '3:4' | '1:1';
+}) {
   return (
     <Link
       className={clsx(
@@ -71,9 +69,9 @@ export function Card({
           }[aspectRatio],
         )}
       >
-        {image != null ? (
+        {thumbnail != null ? (
           <Image
-            alt={image.alt}
+            alt={thumbnail.alt}
             className={clsx(
               'w-full scale-100 select-none object-cover transition-transform duration-500 ease-out group-hover:scale-110',
               {
@@ -83,7 +81,7 @@ export function Card({
             )}
             fill
             sizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
-            src={image.src}
+            src={thumbnail.src}
           />
         ) : (
           <div

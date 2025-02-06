@@ -1,20 +1,31 @@
 import { clsx } from 'clsx';
 import { ChevronRight } from 'lucide-react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
 
-export interface Breadcrumb {
-  label: string;
-  href: string;
-}
-
-export interface BreadcrumbsProps {
-  breadcrumbs: Streamable<Breadcrumb[]>;
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --breadcrumbs-font-family: var(--font-family-body);
+ *   --breadcrumbs-primary-text: hsl(var(--foreground));
+ *   --breadcrumbs-secondary-text: hsl(var(--contrast-500));
+ *   --breadcrumbs-icon: hsl(var(--contrast-500));
+ *   --breadcrumbs-hover: hsl(var(--primary));
+ * }
+ * ```
+ */
+export function Breadcrumbs({
+  breadcrumbs: streamableBreadcrumbs,
+  className,
+}: {
+  breadcrumbs: Streamable<Array<ComponentPropsWithoutRef<typeof AnimatedLink> & { id: string }>>;
   className?: string;
-}
-
-export function Breadcrumbs({ breadcrumbs: streamableBreadcrumbs, className }: BreadcrumbsProps) {
+}) {
   return (
     <Stream fallback={<BreadcrumbsSkeleton />} value={streamableBreadcrumbs}>
       {(breadcrumbs) =>
@@ -23,14 +34,18 @@ export function Breadcrumbs({ breadcrumbs: streamableBreadcrumbs, className }: B
         ) : (
           <nav aria-label="breadcrumb" className={clsx(className)}>
             <ol className="flex flex-wrap items-center gap-x-1.5 text-sm @xl:text-base">
-              {breadcrumbs.map(({ label, href }, idx) => {
-                if (idx < breadcrumbs.length - 1) {
+              {breadcrumbs.map(({ text, href, id }, index) => {
+                if (index < breadcrumbs.length - 1) {
                   return (
-                    <li className="inline-flex items-center gap-x-1.5" key={idx}>
-                      <AnimatedLink label={label} link={{ href }} />
+                    <li className="inline-flex items-center gap-x-1.5" key={id}>
+                      <AnimatedLink
+                        className="font-[family-name:var(--breadcrumbs-font-family,var(--font-family-body))] text-[var(--breadcrumbs-primary-text,hsl(var(--foreground)))] [background:linear-gradient(0deg,var(--breadcrumbs-hover,hsl(var(--primary))),var(--breadcrumbs-hover,hsl(var(--primary))))_no-repeat_left_bottom_/_0_2px]"
+                        href={href}
+                        text={text}
+                      />
                       <ChevronRight
                         aria-hidden="true"
-                        className="text-contrast-500"
+                        className="text-[var(--breadcrumbs-icon,hsl(var(--contrast-500)))]"
                         size={20}
                         strokeWidth={1}
                       />
@@ -39,9 +54,12 @@ export function Breadcrumbs({ breadcrumbs: streamableBreadcrumbs, className }: B
                 }
 
                 return (
-                  <li className="inline-flex items-center text-contrast-500" key={idx}>
+                  <li
+                    className="inline-flex items-center font-[family-name:var(--breadcrumbs-font-family,var(--font-family-body))] text-[var(--breadcrumbs-secondary-text,hsl(var(--contrast-500)))]"
+                    key={id}
+                  >
                     <span aria-current="page" aria-disabled="true" role="link">
-                      {label}
+                      {text}
                     </span>
                   </li>
                 );

@@ -12,7 +12,7 @@ interface BaseProduct {
   subtitle: string;
   badge?: string;
   price: string;
-  image: {
+  thumbnail: {
     src: string;
     alt: string;
   };
@@ -51,7 +51,7 @@ const products: ProductCatalog = {
       subtitle: 'Indoor Plant',
       badge: 'Popular',
       price: '$44.95',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
         alt: 'Philodendron Imperial Red',
       },
@@ -67,7 +67,7 @@ const products: ProductCatalog = {
       subtitle: 'Indoor Plant',
       badge: 'New',
       price: '$24.99',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
         alt: 'Monstera',
       },
@@ -82,7 +82,7 @@ const products: ProductCatalog = {
       title: 'Pink Caladium',
       subtitle: 'Indoor Plant',
       price: '$19.95',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
         alt: 'Pink Caladium',
       },
@@ -97,7 +97,7 @@ const products: ProductCatalog = {
       title: 'Hoya Kerrii',
       subtitle: 'Indoor Plant',
       price: '$16.99',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
         alt: 'Hoya Kerrii',
       },
@@ -112,7 +112,7 @@ const products: ProductCatalog = {
       title: 'Bird Nest Fern',
       subtitle: 'Indoor Plant',
       price: '$24.99',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
         alt: 'Bird Nest Fern',
       },
@@ -127,7 +127,7 @@ const products: ProductCatalog = {
       title: 'Jade Plant',
       subtitle: 'Indoor Plant',
       price: '$24.99',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
         alt: 'Jade Plant',
       },
@@ -142,7 +142,7 @@ const products: ProductCatalog = {
       title: 'Snake Plant',
       subtitle: 'Indoor Plant',
       price: '$34.95',
-      image: {
+      thumbnail: {
         src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplNGNiMjdiNi04NTY2LTQxOTctODhhMC0xYThhYmY3NDdkZTU=/snake-plant.jpg',
         alt: 'Snake Plant',
       },
@@ -157,7 +157,7 @@ const products: ProductCatalog = {
       title: 'Spider Plant',
       subtitle: 'Indoor Plant',
       price: '$12.99',
-      image: {
+      thumbnail: {
         src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiYmYyNDEzMC0wNzU3LTRiYjMtYjkwMi0zNzI0NjBjNzk5MjY=/spider-plant.jpg',
         alt: 'Spider Plant',
       },
@@ -172,7 +172,7 @@ const products: ProductCatalog = {
       title: 'African Fig Tree',
       subtitle: 'Indoor Plant',
       price: '$49.99',
-      image: {
+      thumbnail: {
         src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1MGFmMDIxOC05NWM4LTRlN2UtOTAyMS01OWExOGQxMjUwNGM=/african-fig.jpg',
         alt: 'African Fig Tree',
       },
@@ -187,7 +187,7 @@ const products: ProductCatalog = {
       title: 'Birds of Paradise',
       subtitle: 'Indoor Plant',
       price: '$29.95',
-      image: {
+      thumbnail: {
         src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNWUwYmEwMS0yMDhiLTQ5ZWQtOTI3NC0yZTM0ZTZjYmZhNzg=/birds-of-paradise.jpg',
         alt: 'Birds of Paradise',
       },
@@ -202,7 +202,7 @@ const products: ProductCatalog = {
       title: 'ZZ Plant',
       subtitle: 'Indoor Plant',
       price: '$22.99',
-      image: {
+      thumbnail: {
         src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1N2Q2YThlZS04MjZiLTRjZmEtODRmZi1hZjgzZDM3MWE2ZGY=/zz-plant.jpg',
         alt: 'ZZ Plant',
       },
@@ -217,7 +217,7 @@ const products: ProductCatalog = {
       title: 'Dracaena',
       subtitle: 'Indoor Plant',
       price: '$18.95',
-      image: {
+      thumbnail: {
         src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3YTJhYTJmZi00ODBhLTQ3NTctODdkYi02ZWEyZGYzZWJmNjI=/dracaena.jpg',
         alt: 'Dracanea',
       },
@@ -235,7 +235,7 @@ const products: ProductCatalog = {
       subtitle: '',
       badge: 'Bestseller',
       price: '$350',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
         alt: 'Jada Square Toe Ballet Flat',
       },
@@ -250,7 +250,7 @@ const products: ProductCatalog = {
       subtitle: '',
       badge: 'Bestseller',
       price: '$395',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT',
         alt: 'Jayla Woven Ballet Heel',
       },
@@ -265,7 +265,7 @@ const products: ProductCatalog = {
       subtitle: '',
       badge: 'Bestseller',
       price: '$450',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/1ipihAyvRQj',
         alt: 'Jessie Ballet Flat',
       },
@@ -280,7 +280,7 @@ const products: ProductCatalog = {
       subtitle: '',
       badge: 'Almost Gone',
       price: '$350',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/YfQW8M1Gv2H/zTWKcqJrdIu',
         alt: 'Leighton Soft Leather Loafer',
       },
@@ -295,7 +295,7 @@ const products: ProductCatalog = {
       subtitle: '',
       badge: 'Bestseller',
       price: '$350',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/5QBR05kyrYo',
         alt: 'JADA SQUARE TOE BALLET FLAT',
       },
@@ -310,7 +310,7 @@ const products: ProductCatalog = {
       subtitle: '',
       badge: 'Almost Gone',
       price: '$290',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz/vfCehRZDBGk',
         alt: 'DARYA LUG SOLE FISHERMAN',
       },
@@ -326,7 +326,7 @@ const products: ProductCatalog = {
       title: 'Mini Bar Bag',
       subtitle: 'Blue/Black/Green',
       price: '$65',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
         alt: 'Mini Bar Bag',
       },
@@ -340,7 +340,7 @@ const products: ProductCatalog = {
       title: 'Mini Bar Bag',
       subtitle: 'Blue/Black/Green',
       price: '$65',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
         alt: 'Mini Bar Bag',
       },
@@ -354,7 +354,7 @@ const products: ProductCatalog = {
       title: 'Stem Caddy',
       subtitle: 'Blue/Black/Green',
       price: '$60',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
         alt: 'Stem Caddy',
       },
@@ -368,7 +368,7 @@ const products: ProductCatalog = {
       title: 'Hip Slinger',
       subtitle: 'Blue/Black/Green',
       price: '$105',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
         alt: 'Hip Slinger',
       },
@@ -382,7 +382,7 @@ const products: ProductCatalog = {
       title: 'Everyday Tote',
       subtitle: 'Blue/Black/Green',
       price: '$185',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
         alt: 'Everyday Tote',
       },
@@ -396,7 +396,7 @@ const products: ProductCatalog = {
       title: 'Mini Saddlebag',
       subtitle: 'Blue/Black/Green',
       price: '$45',
-      image: {
+      thumbnail: {
         src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
         alt: 'Mini Saddlebag',
       },

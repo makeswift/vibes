@@ -192,7 +192,7 @@ export default function Preview() {
 
   return (
     <>
-      <Banner id="example-banner">
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </Banner>
@@ -244,7 +244,7 @@ export default function Preview() {
       />
       <Feature
         cta={{
-          label: feature.cta.label,
+          text: feature.cta.text,
           href: feature.cta.href,
         }}
         description={feature.description}

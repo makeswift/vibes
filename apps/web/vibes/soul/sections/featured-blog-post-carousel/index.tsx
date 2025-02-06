@@ -1,20 +1,8 @@
+import { ComponentPropsWithoutRef } from 'react';
+
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostCard } from '@/vibes/soul/primitives/blog-post-card';
 import { BlogPostCarousel } from '@/vibes/soul/primitives/blog-post-carousel';
-
-interface Link {
-  label: string;
-  href: string;
-}
-
-interface Props {
-  title?: string;
-  cta?: Link;
-  blogPosts: BlogPostCardBlogPost[];
-  scrollbarLabel?: string;
-  previousLabel?: string;
-  nextLabel?: string;
-}
 
 export function FeaturedBlogPostCarousel({
   cta,
@@ -23,7 +11,17 @@ export function FeaturedBlogPostCarousel({
   scrollbarLabel,
   previousLabel,
   nextLabel,
-}: Props) {
+}: {
+  title?: string;
+  cta?: {
+    href: string;
+    text: string;
+  } | null;
+  blogPosts: Array<ComponentPropsWithoutRef<typeof BlogPostCard>['blogPost'] & { id: string }>;
+  scrollbarLabel?: string;
+  previousLabel?: string;
+  nextLabel?: string;
+}) {
   return (
     <section className="overflow-hidden @container">
       <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
@@ -33,9 +31,7 @@ export function FeaturedBlogPostCarousel({
               {title}
             </h2>
           </div>
-          {cta != null && cta.href !== '' && cta.label !== '' && (
-            <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
-          )}
+          {cta != null && <AnimatedLink className="mr-3" href={cta.href} text={cta.text} />}
         </div>
         <BlogPostCarousel
           blogPosts={blogPosts}

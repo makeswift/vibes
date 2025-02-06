@@ -20,7 +20,7 @@ export default async function Preview() {
   const featuredProducts = await getProducts('Electric');
   return (
     <>
-      <Banner id="example-banner">
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </Banner>

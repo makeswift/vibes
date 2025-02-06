@@ -27,15 +27,18 @@ import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
 const breadcrumbs = [
   {
-    label: 'Home',
+    id: '1',
+    text: 'Home',
     href: '#',
   },
   {
-    label: 'Blog',
+    id: '2',
+    text: 'Blog',
     href: '#',
   },
   {
-    label: "Top 5 Plants to Purify Your Home's Air",
+    id: '3',
+    text: "Top 5 Plants to Purify Your Home's Air",
     href: '#',
   },
 ];
@@ -155,7 +158,7 @@ function getBlogPost(): Promise<BlogPostContentBlogPost> {
 export default function Preview() {
   return (
     <>
-      <Banner id="example-banner">
+      <Banner>
         Get <strong>15% off</strong> and free shipping with discount code{' '}
         <strong>&quot;welcome&quot;</strong>
       </Banner>
@@ -177,7 +180,7 @@ export default function Preview() {
         blogPosts={posts}
         cta={{
           href: '#',
-          label: 'View All',
+          text: 'View All',
         }}
         title="Related posts"
       />

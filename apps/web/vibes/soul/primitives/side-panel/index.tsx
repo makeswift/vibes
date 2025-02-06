@@ -27,9 +27,13 @@ function Content({ title, children }: Props) {
               <div className="text-2xl font-medium @lg:text-3xl">{title}</div>
             </Dialog.Title>
             <Dialog.Close asChild>
-              <Button className="translate-x-3" shape="circle" size="small" variant="tertiary">
-                <X size={20} strokeWidth={1} />
-              </Button>
+              <Button
+                className="translate-x-3"
+                icon={<X size={20} strokeWidth={1} />}
+                shape="circle"
+                size="small"
+                variant="tertiary"
+              />
             </Dialog.Close>
           </div>
 

@@ -3,21 +3,28 @@
 import { clsx } from 'clsx';
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
-import * as React from 'react';
+import {
+  ComponentPropsWithoutRef,
+  createContext,
+  KeyboardEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
 
-interface CarouselProps extends React.ComponentPropsWithoutRef<'div'> {
+type CarouselProps = ComponentPropsWithoutRef<'div'> & {
   opts?: CarouselOptions;
   plugins?: CarouselPlugin;
   setApi?: (api: CarouselApi) => void;
   carouselScrollbarLabel?: string;
   hideOverflow?: boolean;
-}
+};
 
 type CarouselContextProps = {
   carouselRef: ReturnType<typeof useEmblaCarousel>[0];
@@ -28,10 +35,10 @@ type CarouselContextProps = {
   canScrollNext: boolean;
 } & CarouselProps;
 
-const CarouselContext = React.createContext<CarouselContextProps | null>(null);
+const CarouselContext = createContext<CarouselContextProps | null>(null);
 
 function useCarousel() {
-  const context = React.useContext(CarouselContext);
+  const context = useContext(CarouselContext);
 
   if (!context) {
     throw new Error('useCarousel must be used within a <Carousel />');
@@ -48,13 +55,19 @@ function Carousel({
   children,
   hideOverflow = true,
   ...rest
-}: CarouselProps) {
+}: ComponentPropsWithoutRef<'div'> & {
+  opts?: CarouselOptions;
+  plugins?: CarouselPlugin;
+  setApi?: (api: CarouselApi) => void;
+  carouselScrollbarLabel?: string;
+  hideOverflow?: boolean;
+}) {
   const [carouselRef, api] = useEmblaCarousel(opts, plugins);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const onSelect = React.useCallback((api: CarouselApi) => {
+  const onSelect = useCallback((api: CarouselApi) => {
     if (!api) return;
 
     setCanScrollPrev(api.canScrollPrev());
@@ -66,7 +79,7 @@ function Carousel({
   const scrollNext = useCallback(() => api?.scrollNext(), [api]);
 
   const handleKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
+    (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         scrollPrev();
@@ -121,7 +134,7 @@ function Carousel({
   );
 }
 
-function CarouselContent({ className, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
+function CarouselContent({ className, ...rest }: ComponentPropsWithoutRef<'div'>) {
   const { carouselRef } = useCarousel();
 
   return (
@@ -131,7 +144,7 @@ function CarouselContent({ className, ...rest }: React.HTMLAttributes<HTMLDivEle
   );
 }
 
-function CarouselItem({ className, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
+function CarouselItem({ className, ...rest }: ComponentPropsWithoutRef<'div'>) {
   return (
     <div
       {...rest}
@@ -160,7 +173,7 @@ function CarouselButtons({
   previousLabel = 'Previous',
   nextLabel = 'Next',
   ...rest
-}: React.HTMLAttributes<HTMLDivElement> & {
+}: ComponentPropsWithoutRef<'div'> & {
   colorScheme?: 'light' | 'dark';
   previousLabel?: string;
   nextLabel?: string;
@@ -214,7 +227,7 @@ function CarouselScrollbar({
   className,
   colorScheme = 'light',
   label = 'Carousel scrollbar',
-}: React.HTMLAttributes<HTMLDivElement> & { label?: string; colorScheme?: 'light' | 'dark' }) {
+}: ComponentPropsWithoutRef<'div'> & { label?: string; colorScheme?: 'light' | 'dark' }) {
   const { api, canScrollPrev, canScrollNext } = useCarousel();
   const [progress, setProgress] = useState(0);
   const [scrollbarPosition, setScrollbarPosition] = useState({ width: 0, left: 0 });

@@ -41,9 +41,7 @@ export function FeaturedProductsList({
           )}
 
           {cta?.href != null && cta.href !== '' && cta.label !== '' && (
-            <ButtonLink href={cta.href} variant="secondary">
-              {cta.label}
-            </ButtonLink>
+            <ButtonLink href={cta.href} variant="secondary" text={cta.label} />
           )}
         </>
       }

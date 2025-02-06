@@ -44,7 +44,7 @@ export function FeaturedProductsCarousel({
         </div>
 
         {cta != null && cta.href !== '' && cta.label !== '' && (
-          <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
+          <AnimatedLink className="mr-3" text={cta.label} href={cta.href} />
         )}
       </div>
       <div className="group-has-[[data-pending]]/pending:animate-pulse">

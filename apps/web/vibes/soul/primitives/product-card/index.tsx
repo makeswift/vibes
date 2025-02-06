@@ -109,9 +109,7 @@ export function ProductCard({
             </div>
           )}
           {badge != null && badge !== '' && (
-            <Badge className="absolute left-3 top-3" variant="rounded">
-              {badge}
-            </Badge>
+            <Badge className="absolute left-3 top-3" shape="rounded" text={badge} />
           )}
         </div>
       </Link>
@@ -130,7 +128,6 @@ export function ProductCard({
             >
               {title}
             </span>
-
             {subtitle != null && subtitle !== '' && (
               <span
                 className={clsx(
@@ -147,7 +144,6 @@ export function ProductCard({
             {price != null && <PriceLabel colorScheme={colorScheme} price={price} />}
           </Link>
         </div>
-
         {showCompare && (
           <div className="mt-0.5 shrink-0">
             <Compare
