@@ -29,7 +29,9 @@ export function FeaturedCardCarousel({ title, description, cta, cards, scrollbar
             )}
           </div>
           {cta != null && cta.href !== '' && cta.label !== '' && (
-            <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
+            <AnimatedLink className="mr-3" href={cta.href}>
+              {cta.label}
+            </AnimatedLink>
           )}
         </div>
         <CardCarousel cards={cards} scrollbarLabel={scrollbarLabel} />

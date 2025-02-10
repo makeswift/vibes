@@ -27,7 +27,7 @@ export function Breadcrumbs({ breadcrumbs: streamableBreadcrumbs, className }: B
                 if (idx < breadcrumbs.length - 1) {
                   return (
                     <li className="inline-flex items-center gap-x-1.5" key={idx}>
-                      <AnimatedLink label={label} link={{ href }} />
+                      <AnimatedLink href={href}>{label}</AnimatedLink>
                       <ChevronRight
                         aria-hidden="true"
                         className="text-contrast-500"
