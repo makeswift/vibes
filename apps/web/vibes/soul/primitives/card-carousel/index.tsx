@@ -10,7 +10,7 @@ import {
   CarouselItem,
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel';
-
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 export type Card = CardProps & {
   id: string;
 };
@@ -22,8 +22,8 @@ export interface CardCarouselProps {
   iconColorScheme?: 'light' | 'dark';
   carouselColorScheme?: 'light' | 'dark';
   className?: string;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
@@ -133,10 +133,10 @@ export function CardCarouselSkeleton({
         </div>
       </div>
       <div className="mt-10 flex w-full items-center justify-between gap-8">
-        <div className="h-1 w-full max-w-56 rounded bg-contrast-100" />
+        <Skeleton.Box className="h-1 w-full max-w-56 rounded" />
         <div className="flex gap-2 text-contrast-200">
-          <ArrowLeft className="h-6 w-6" strokeWidth={1.5} />
-          <ArrowRight className="h-6 w-6" strokeWidth={1.5} />
+          <Skeleton.Icon icon={<ArrowLeft aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
+          <Skeleton.Icon icon={<ArrowRight aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
         </div>
       </div>
     </div>
@@ -152,8 +152,8 @@ export function CardCarouselEmptyState({
 }: {
   className?: string;
   placeholderCount?: number;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
   hideOverflow?: boolean;
 }) {
   return (

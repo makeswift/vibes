@@ -1,4 +1,5 @@
 import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
+import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 export default function Preview() {
   const products = new Promise<CarouselProduct[]>((resolve) => {
@@ -7,16 +8,16 @@ export default function Preview() {
 
   return (
     <div>
-      <section className="overflow-hidden @container">
+      <SectionLayout className="group/products-carousel">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
           <ProductsCarousel products={products} />
         </div>
-      </section>
-      <section className="overflow-hidden bg-foreground @container">
+      </SectionLayout>
+      <SectionLayout className="group/products-carousel bg-foreground">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
           <ProductsCarousel colorScheme="dark" products={products} showScrollbar={false} />
         </div>
-      </section>
+      </SectionLayout>
     </div>
   );
 }
