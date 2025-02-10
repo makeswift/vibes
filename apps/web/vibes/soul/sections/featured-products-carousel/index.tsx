@@ -44,7 +44,9 @@ export function FeaturedProductsCarousel({
         </div>
 
         {cta != null && cta.href !== '' && cta.label !== '' && (
-          <AnimatedLink className="mr-3" label={cta.label} link={{ href: cta.href }} />
+          <AnimatedLink className="mr-3" href={cta.href}>
+            {cta.label}
+          </AnimatedLink>
         )}
       </div>
       <ProductsCarousel
