@@ -29,6 +29,7 @@ export function FeaturedProductsList({
 }: Props) {
   return (
     <StickySidebarLayout
+      className="group/products-list"
       sidebar={
         <>
           <h2 className="mb-3 font-heading text-4xl font-medium leading-none text-foreground @4xl:text-5xl">
@@ -49,15 +50,13 @@ export function FeaturedProductsList({
       }
       sidebarSize="1/3"
     >
-      <div className="group-has-[[data-pending]]/pending:animate-pulse">
-        <ProductsList
-          className="flex-1"
-          emptyStateSubtitle={emptyStateSubtitle}
-          emptyStateTitle={emptyStateTitle}
-          placeholderCount={placeholderCount}
-          products={products}
-        />
-      </div>
+      <ProductsList
+        className="flex-1"
+        emptyStateSubtitle={emptyStateSubtitle}
+        emptyStateTitle={emptyStateTitle}
+        placeholderCount={placeholderCount}
+        products={products}
+      />
     </StickySidebarLayout>
   );
 }
