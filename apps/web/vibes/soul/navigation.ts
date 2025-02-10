@@ -88,6 +88,7 @@ export const navigation = [
         component: 'card-carousel',
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
+      { title: 'Chip', slug: 'chip', file: 'docs/chip.mdx', component: 'chip' },
       { title: 'Countdown', slug: 'countdown', file: 'docs/countdown.mdx', component: 'countdown' },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
       {
