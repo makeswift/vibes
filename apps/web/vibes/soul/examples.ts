@@ -209,6 +209,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/checkbox')),
   },
   {
+    name: 'chip-example',
+    dependencies: [],
+    registryDependencies: ['chip'],
+    files: ['examples/primitives/chip/index.tsx'],
+    component: lazy(() => import('./examples/primitives/chip')),
+  },
+  {
     name: 'checkout-example',
     dependencies: [],
     registryDependencies: ['checkout'],
