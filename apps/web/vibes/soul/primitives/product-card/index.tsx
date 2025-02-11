@@ -110,7 +110,7 @@ export function ProductCard({
             </div>
           )}
           {badge != null && badge !== '' && (
-            <Badge className="absolute left-3 top-3" variant="rounded">
+            <Badge className="absolute left-3 top-3" shape="rounded">
               {badge}
             </Badge>
           )}
