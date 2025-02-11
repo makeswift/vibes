@@ -12,25 +12,39 @@ features:
 
 ## Usage
 
-<CodeBlock lang="bash">{`import { Alert } from '@/vibes/soul/primitives/alert'
-import { useState } from 'react'`}</CodeBlock>
+<CodeBlock lang="ts">{`import { Alert } from '@/vibes/soul/primitives/alert'`}</CodeBlock>
 
-<CodeBlock lang="bash">{`const [showAlert, setShowAlert] = useState(false)`}</CodeBlock>
-
-<CodeBlock lang="bash">{`<Alert variant="success" message="1 item added to your cart" showAlert={showAlert} onClose={setShowAlert}/>`}</CodeBlock>
+<CodeBlock lang="ts">{`<Alert message="This is a success alert" variant="success" />`}</CodeBlock>
 
 ## API Reference
 
-# Props
+### `AlertProps`
 
-| name                                                                                    | type                                                   | optional | default |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------------ | -------- | ------- |
-| `variant*` <Tooltip content='The style variant of the alert, defines color and icon' /> | `"success" \| "warning" \| "error" \| "info"`          | `false`  |         |
-| `message*` <Tooltip content='Alert message displayed' />                                | `ReactNode`                                            | `false`  |         |
-| `description`                                                                           | `string \| undefined`                                  | `true`   |         |
-| `dismissLabel`                                                                          | `string \| undefined`                                  | `true`   |         |
-| `action`                                                                                | `{ label: string; onClick: () => void; } \| undefined` | `true`   |         |
-| `onDismiss`                                                                             | `(() => void) \| undefined`                            | `true`   |         |
+| name                                                                                    | type                                          | default     |
+| --------------------------------------------------------------------------------------- | --------------------------------------------- | ----------- |
+| `variant*` <Tooltip content='The style variant of the alert, defines color and icon' /> | `"success" \| "warning" \| "error" \| "info"` |             |
+| `message*` <Tooltip content='Alert message displayed' />                                | `ReactNode`                                   |             |
+| `description`                                                                           | `string`                                      |             |
+| `dismissLabel`                                                                          | `string`                                      | `"Dismiss"` |
+| `action`                                                                                | `{ label: string; onClick: () => void; }`     |             |
+| `onDismiss`                                                                             | `() => void`                                  |             |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along with their default values:
+
+```css
+:root {
+  --alert-success-background: color-mix(in oklab, hsl(var(--success)), white 75%);
+  --alert-warning-background: color-mix(in oklab, hsl(var(--warning)), white 75%);
+  --alert-error-background: color-mix(in oklab, hsl(var(--error)), white 75%);
+  --alert-info-background: hsl(var(--background));
+  --alert-font-family: var(--font-family-body);
+  --alert-border: hsl(var(--foreground) / 10%);
+  --alert-message-text: hsl(var(--foreground));
+  --alert-description-text: hsl(var(--foreground) / 50%);
+}
+```
 
 ## Figma
 
