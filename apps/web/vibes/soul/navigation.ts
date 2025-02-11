@@ -20,10 +20,10 @@ export const navigation = [
     title: 'Components',
     pages: [
       {
-        title: 'Accordions',
-        slug: 'accordions',
-        file: 'docs/accordions.mdx',
-        component: 'accordions',
+        title: 'Accordion',
+        slug: 'accordion',
+        file: 'docs/accordion.mdx',
+        component: 'accordion',
       },
       {
         title: 'Alert',

@@ -1,5 +1,5 @@
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';
+import { Accordion, AccordionItem } from '@/vibes/soul/primitives/accordion';
 import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
 import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';
 import { Rating } from '@/vibes/soul/primitives/rating';
@@ -143,13 +143,17 @@ export function ProductDetail<F extends Field>({
                   <Stream fallback={<ProductAccordionsSkeleton />} value={product.accordions}>
                     {(accordions) =>
                       accordions && (
-                        <Accordions className="border-t border-contrast-100 pt-4" type="multiple">
+                        <Accordion className="border-t border-contrast-100 pt-4" type="multiple">
                           {accordions.map((accordion, index) => (
-                            <Accordion key={index} title={accordion.title} value={index.toString()}>
+                            <AccordionItem
+                              key={index}
+                              title={accordion.title}
+                              value={index.toString()}
+                            >
                               {accordion.content}
-                            </Accordion>
+                            </AccordionItem>
                           ))}
-                        </Accordions>
+                        </Accordion>
                       )
                     }
                   </Stream>

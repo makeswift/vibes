@@ -1,10 +1,10 @@
 'use client';
 
-import * as AccordionsPrimitive from '@radix-ui/react-accordion';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 
-export interface AccordionProps extends ComponentPropsWithoutRef<typeof AccordionsPrimitive.Item> {
+export interface AccordionProps extends ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {
   colorScheme?: 'light' | 'dark';
 }
 
@@ -32,7 +32,7 @@ export interface AccordionProps extends ComponentPropsWithoutRef<typeof Accordio
  * }
  * ```
  */
-function Accordion({
+function AccordionItem({
   title,
   children,
   colorScheme = 'light',
@@ -46,7 +46,7 @@ function Accordion({
   }, []);
 
   return (
-    <AccordionsPrimitive.Item
+    <AccordionPrimitive.Item
       {...props}
       className={clsx(
         'focus:outline-2 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[var(--accordion-focus,hsl(var(--primary)))] has-[:focus-visible]:ring-offset-4',
@@ -57,8 +57,8 @@ function Accordion({
         className,
       )}
     >
-      <AccordionsPrimitive.Header>
-        <AccordionsPrimitive.Trigger className="group flex w-full cursor-pointer items-start gap-8 border-none py-3 text-start focus:outline-none @md:py-4">
+      <AccordionPrimitive.Header>
+        <AccordionPrimitive.Trigger className="group flex w-full cursor-pointer items-start gap-8 border-none py-3 text-start focus:outline-none @md:py-4">
           <div
             className={clsx(
               'flex-1 select-none font-[family-name:var(--accordion-title-font-family,var(--font-family-mono))] text-sm font-normal uppercase transition-colors duration-300 ease-out',
@@ -80,9 +80,9 @@ function Accordion({
               }[colorScheme],
             )}
           />
-        </AccordionsPrimitive.Trigger>
-      </AccordionsPrimitive.Header>
-      <AccordionsPrimitive.Content
+        </AccordionPrimitive.Trigger>
+      </AccordionPrimitive.Header>
+      <AccordionPrimitive.Content
         className={clsx(
           'overflow-hidden',
           // We need to delay the animation until the component is mounted to avoid the animation
@@ -101,8 +101,8 @@ function Accordion({
         >
           {children}
         </div>
-      </AccordionsPrimitive.Content>
-    </AccordionsPrimitive.Item>
+      </AccordionPrimitive.Content>
+    </AccordionPrimitive.Item>
   );
 }
 
@@ -142,6 +142,6 @@ function AnimatedChevron({
   );
 }
 
-const Accordions = AccordionsPrimitive.Root;
+const Accordion = AccordionPrimitive.Root;
 
-export { Accordions, Accordion };
+export { Accordion, AccordionItem };

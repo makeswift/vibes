@@ -2,10 +2,10 @@ import { Components } from '@/vibes/schema';
 
 export const primitives = [
   {
-    name: 'accordions',
+    name: 'accordion',
     dependencies: ['clsx', '@radix-ui/react-accordion'],
     registryDependencies: [],
-    files: ['primitives/accordions/index.tsx'],
+    files: ['primitives/accordion/index.tsx'],
   },
   {
     name: 'alert',
@@ -19,7 +19,6 @@ export const primitives = [
     registryDependencies: [],
     files: ['primitives/animated-link/index.tsx'],
   },
-
   {
     name: 'badge',
     dependencies: ['clsx'],
