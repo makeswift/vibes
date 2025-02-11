@@ -21,12 +21,16 @@ import { useState } from 'react'`}</CodeBlock>
 
 ## API Reference
 
-| Prop                                                                                   | Type                                                              | Default     |
-| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- |
-| `variant` <Tooltip content='The style variant of the alert, defines color and icon' /> | `enum` <Tooltip content={`"success" "error" "warning" "info"`} /> | `"success"` |
-| `message` <Tooltip content='Alert message displayed' />                                | `string`                                                          |             |
-| `showAlert`                                                                            | `boolean`                                                         |             |
-| `onClose`                                                                              | `(showAlert: boolean) => void`                                    |             |
+# Props
+
+| name                                                                                    | type                                                   | optional | default |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------ | -------- | ------- |
+| `variant*` <Tooltip content='The style variant of the alert, defines color and icon' /> | `"success" \| "warning" \| "error" \| "info"`          | `false`  |         |
+| `message*` <Tooltip content='Alert message displayed' />                                | `ReactNode`                                            | `false`  |         |
+| `description`                                                                           | `string \| undefined`                                  | `true`   |         |
+| `dismissLabel`                                                                          | `string \| undefined`                                  | `true`   |         |
+| `action`                                                                                | `{ label: string; onClick: () => void; } \| undefined` | `true`   |         |
+| `onDismiss`                                                                             | `(() => void) \| undefined`                            | `true`   |         |
 
 ## Figma
 
