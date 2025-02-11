@@ -1,7 +1,7 @@
-import { Accordion, Accordions } from '@/vibes/soul/primitives/accordions';
+import { Accordion, AccordionItem } from '@/vibes/soul/primitives/accordion';
 
 export default function Preview() {
-  const accordions = [
+  const accordionItems = [
     {
       title: 'What is your return policy?',
       content:
@@ -27,28 +27,28 @@ export default function Preview() {
   return (
     <div className="space-y-4">
       <div className="py-8">
-        <Accordions
+        <Accordion
           className="m-auto w-1/2 max-w-screen-lg items-start justify-center p-10"
           type="multiple"
         >
-          {accordions.map(({ title, content }, index) => (
-            <Accordion key={index} title={title} value={index.toString()}>
+          {accordionItems.map(({ title, content }, index) => (
+            <AccordionItem key={index} title={title} value={index.toString()}>
               {content}
-            </Accordion>
+            </AccordionItem>
           ))}
-        </Accordions>
+        </Accordion>
       </div>
       <div className="bg-foreground py-8">
-        <Accordions
+        <Accordion
           className="m-auto w-1/2 max-w-screen-lg items-start justify-center p-10"
           type="multiple"
         >
-          {accordions.map(({ title, content }, index) => (
-            <Accordion colorScheme="dark" key={index} title={title} value={index.toString()}>
+          {accordionItems.map(({ title, content }, index) => (
+            <AccordionItem colorScheme="dark" key={index} title={title} value={index.toString()}>
               {content}
-            </Accordion>
+            </AccordionItem>
           ))}
-        </Accordions>
+        </Accordion>
       </div>
     </div>
   );

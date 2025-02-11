@@ -6,11 +6,11 @@ import { Components } from '@/vibes/schema';
 
 export const examples = [
   {
-    name: 'accordions-example',
+    name: 'accordion-example',
     dependencies: [],
-    registryDependencies: ['accordions'],
-    files: ['examples/primitives/accordions/index.tsx'],
-    component: lazy(() => import('./examples/primitives/accordions')),
+    registryDependencies: ['accordion'],
+    files: ['examples/primitives/accordion/index.tsx'],
+    component: lazy(() => import('./examples/primitives/accordion')),
   },
   {
     name: 'sticky-sidebar-layout-example',
