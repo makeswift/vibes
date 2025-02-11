@@ -17,7 +17,7 @@ export default async function Preview() {
         </Button>
       </Form>
       <Cart
-        cart={await getCart()}
+        cart={getCartWithDelay()}
         checkoutAction={checkoutAction}
         key={await getCartId()}
         lineItemAction={lineItemAction}
@@ -104,9 +104,10 @@ export async function lineItemAction(
       return prevState;
     }
   }
+  const lineItems = (await getCart()).lineItems;
 
   return {
-    lineItems: (await getCart()).lineItems,
+    lineItems,
     lastResult: submission.reply({ resetForm: true }),
   };
 }
@@ -143,14 +144,12 @@ interface Cart<CartLineItem> {
   total: string;
 }
 
-/**
- * Replace these with your own implementation
- */
-async function getCart(): Promise<Cart<CartLineItem>> {
-  return parseCartFromCookies();
+async function getCartWithDelay(): Promise<Cart<CartLineItem>> {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return getCart();
 }
 
-async function parseCartFromCookies() {
+async function getCart() {
   const cookiesStore = await cookies();
 
   const cart = cartSchema.parse(
@@ -169,7 +168,7 @@ async function setCart(cart: Cart<CartLineItem>) {
 }
 
 async function getCartId(): Promise<string> {
-  const cart = await parseCartFromCookies();
+  const cart = await getCart();
 
   return cart.id;
 }
