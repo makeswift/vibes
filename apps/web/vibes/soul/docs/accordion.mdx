@@ -12,36 +12,59 @@ features:
 
 ## Usage
 
-<CodeBlock lang="bash">{`import { Accordions } from '@/vibes/soul/primitives/accordions'`}</CodeBlock>
+<CodeBlock lang="bash">{`import { Accordion, AccordionItem } from '@/vibes/soul/primitives/accordion';`}</CodeBlock>
 
-<CodeBlock lang="bash">{`const accordions = [
-  {
-    title: 'What is your return policy?',
-    content:
-      'Our return policy allows you to return items within 30 days of purchase for a full refund. Items must be in their original condition and packaging.',
-  },
-  {
-    title: 'How long does shipping take?',
-    content:
-      'Shipping typically takes 3-5 business days for domestic orders. International shipping may take longer depending on the destination.',
-  }
-]`}</CodeBlock>
+<CodeBlock lang="bash">{`const accordionItems = [
+    {
+      title: 'What is your return policy?',
+      content:
+        'Our return policy allows you to return items within 30 days of purchase for a full refund. Items must be in their original condition and packaging.',
+    },
+    {
+      title: 'How long does shipping take?',
+      content:
+        'Shipping typically takes 3-5 business days for domestic orders. International shipping may take longer depending on the destination.',
+    }
+  ];`}</CodeBlock>
 
-<CodeBlock lang="bash">{`<Accordions accordions={accordions} />`}</CodeBlock>
+<CodeBlock lang="bash">{`<Accordion type="multiple">
+    {accordionItems.map(({ title, content }, index) => (
+      <AccordionItem key={index} title={title} value={index.toString()}>
+        {content}
+      </AccordionItem>
+    ))}
+</Accordion>`}</CodeBlock>
 
 ## API Reference
 
-### Accordions
-
-Refer to the Radix UI docs for [AccordionsPrimitive.Root](https://www.radix-ui.com/primitives/docs/components/accordion#root) for `Accordions` props.
-
 ### Accordion
 
-This component extends the [AccordionsPrimitive.Item](https://www.radix-ui.com/primitives/docs/components/accordion#item) props.
+| Prop                                                                                                                                                                                 | Type                                                        | Default      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | ------------ |
+| `asChild` <Tooltip content='Change the default rendered element for the one passed as a child, merging their props and behavior.' />                                                 | `boolean`                                                   | `false`      |
+| `type*`                                                                                                                                                                              | `'single' \| 'multiple'`                                    |              |
+| `value` <Tooltip content='The controlled value of the item to expand when `type` is `"single"`. Must be used in conjunction with `onValueChange`.' />                                | `string`                                                    |              |
+| `defaultValue` <Tooltip content='The value of the item to expand when initially rendered and `type` is `"single"`. Use when you do not need to control the state of the items.'/>    | `string`                                                    |              |
+| `onValueChange` <Tooltip content='Event handler called when the expanded state of an item changes and `type` is `"single"`.'/>                                                       | `function` <Tooltip content="`(value: string) => void`"/>   |              |
+| `value` <Tooltip content='The controlled value of the item to expand when `type` is `"multiple"`. Must be used in conjunction with `onValueChange`.' />                              | `string[]`                                                  | `[]`         |
+| `defaultValue` <Tooltip content='The value of the item to expand when initially rendered when `type` is `"multiple"`. Use when you do not need to control the state of the items.'/> | `string[]`                                                  | `[]`         |
+| `onValueChange` <Tooltip content='Event handler called when the expanded state of an item changes and `type` is `"multiple"`.'/>                                                     | `function` <Tooltip content="`(value: string[]) => void`"/> |              |
+| `collapsible` <Tooltip content='When type is `"single"`, allows closing content when clicking trigger for an open item.'/>                                                           | `boolean`                                                   | `false`      |
+| `disabled` <Tooltip content='When `true`, prevents the user from interacting with the accordion and all its items.'/>                                                                | `boolean`                                                   | `false`      |
+| `dir` <Tooltip content='The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.'/>                                             | `"ltr" \| "rtl"`                                            | `"ltr"`      |
+| `orientation` <Tooltip content='The orientation of the accordion.'/>                                                                                                                 | `"horizontal" \| "vertical"`                                | `"vertical"` |
 
-| Prop          | Type                                  | Default   |
-| ------------- | ------------------------------------- | --------- |
-| `colorScheme` | `'dark'                   \| 'light'` | `'light'` |
+### AccordionItem
+
+| Prop                                                                                                                                 | Type                                  | Default   |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | --------- |
+| `asChild` <Tooltip content='Change the default rendered element for the one passed as a child, merging their props and behavior.' /> | `boolean`                             | `false`   |
+| `children*`                                                                                                                          | `ReactNode`                           |           |
+| `className`                                                                                                                          | `string`                              |           |
+| `colorScheme`                                                                                                                        | `'dark'                   \| 'light'` | `'light'` |
+| `disabled` <Tooltip content="When `true`, prevents the user from interacting with the item."/>                                       | `boolean`                             | `false`   |
+| `title`                                                                                                                              | `string`                              |           |
+| `value*` <Tooltip content='A unique value for the item.' />                                                                          | `string`                              |           |
 
 ## Figma
 
