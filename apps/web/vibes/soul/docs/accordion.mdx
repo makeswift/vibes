@@ -12,9 +12,9 @@ features:
 
 ## Usage
 
-<CodeBlock lang="bash">{`import { Accordion, AccordionItem } from '@/vibes/soul/primitives/accordion';`}</CodeBlock>
+<CodeBlock lang="ts">{`import { Accordion, AccordionItem } from '@/vibes/soul/primitives/accordion';`}</CodeBlock>
 
-<CodeBlock lang="bash">{`const accordionItems = [
+<CodeBlock lang="ts">{`const accordionItems = [
     {
       title: 'What is your return policy?',
       content:
@@ -27,7 +27,7 @@ features:
     }
   ];`}</CodeBlock>
 
-<CodeBlock lang="bash">{`<Accordion type="multiple">
+<CodeBlock lang="ts">{`<Accordion type="multiple">
     {accordionItems.map(({ title, content }, index) => (
       <AccordionItem key={index} title={title} value={index.toString()}>
         {content}
@@ -37,7 +37,7 @@ features:
 
 ## API Reference
 
-### Accordion
+### `Accordion`
 
 | Prop                                                                                                                                                                                 | Type                                                        | Default      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | ------------ |
@@ -54,7 +54,7 @@ features:
 | `dir` <Tooltip content='The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.'/>                                             | `"ltr" \| "rtl"`                                            | `"ltr"`      |
 | `orientation` <Tooltip content='The orientation of the accordion.'/>                                                                                                                 | `"horizontal" \| "vertical"`                                | `"vertical"` |
 
-### AccordionItem
+### `AccordionItem`
 
 | Prop                                                                                                                                 | Type                                  | Default   |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | --------- |
@@ -65,6 +65,31 @@ features:
 | `disabled` <Tooltip content="When `true`, prevents the user from interacting with the item."/>                                       | `boolean`                             | `false`   |
 | `title`                                                                                                                              | `string`                              |           |
 | `value*` <Tooltip content='A unique value for the item.' />                                                                          | `string`                              |           |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+```css
+:root {
+  --accordion-focus: hsl(var(--primary));
+  --acordion-light-offset: hsl(var(--background));
+  --accordion-light-title-text: hsl(var(--contrast-400));
+  --accordion-light-title-text-hover: hsl(var(--foreground));
+  --accordion-light-title-icon: hsl(var(--contrast-500));
+  --accordion-light-title-icon-hover: hsl(var(--foreground));
+  --accordion-light-content-text: hsl(var(--foreground));
+  --acordion-dark-offset: hsl(var(--foreground));
+  --accordion-dark-title-text: hsl(var(--contrast-200));
+  --accordion-dark-title-text-hover: hsl(var(--background));
+  --accordion-dark-title-icon: hsl(var(--contrast-200));
+  --accordion-dark-title-icon-hover: hsl(var(--background));
+  --accordion-dark-content-text: hsl(var(--background));
+  --accordion-title-font-family: var(--font-family-mono);
+  --accordion-content-font-family: var(--font-family-body);
+}
+```
 
 ## Figma
 
