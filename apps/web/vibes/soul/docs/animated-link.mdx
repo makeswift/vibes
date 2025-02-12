@@ -10,17 +10,31 @@ features:
 
 ## Usage
 
-<CodeBlock lang="bash">{`import { AnimatedLink } from '@/vibes/soul/primitives/alert'`}</CodeBlock>
+<CodeBlock lang="ts">{`import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';`}</CodeBlock>
 
-<CodeBlock lang="bash">{`<AnimatedLink href="/" label="Animated Link" />`}</CodeBlock>
+<CodeBlock lang="ts">{`<AnimatedLink href="/">animated link</AnimatedLink>`}</CodeBlock>
 
 ## API Reference
 
-| Prop    | Type     | Default |
-| ------- | -------- | ------- |
-| `href`  | `string` |         |
-| `label` | `string` |         |
+### AnimatedLink
 
-## Figma
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
 
-<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42917&t=dbm9GtAtS2A3vy2g-4" />
+Refer to the [Next.js Link component](https://nextjs.org/docs/pages/api-reference/components/link#reference) documentation for more details.
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+<CodeBlock lang="css">
+  {`
+:root {
+  --animated-link-text: hsl(var(--foreground));
+  --animated-link-font-family: var(--font-family-body);
+  --animated-link-underline-hover: hsl(var(--primary));
+}
+`}
+</CodeBlock>
