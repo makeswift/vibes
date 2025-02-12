@@ -161,7 +161,7 @@ async function getCart() {
     ),
   );
 
-  return { ...cart, couponCodeAction: couponCodeAction };
+  return { ...cart, couponCodeAction };
 }
 
 async function setCart(cart: Cart<CartLineItem>) {
