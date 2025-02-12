@@ -43,13 +43,16 @@ export interface Cart<LineItem extends CartLineItem> {
   summaryItems: CartSummaryItem[];
   total: string;
   totalLabel?: string;
+}
+
+interface CouponCode {
+  action?: Action<CouponCodeFormState, FormData>;
   couponCodes?: string[];
-  couponCodeAction?: Action<CouponCodeFormState, FormData>;
-  couponCodeCtaLabel?: string;
-  couponCodeDisabled?: boolean;
-  couponCodeLabel?: string;
-  couponCodePlaceholder?: string;
-  couponCodeRemoveLabel?: string;
+  ctaLabel?: string;
+  disabled?: boolean;
+  label?: string;
+  placeholder?: string;
+  removeLabel?: string;
 }
 
 export interface Props<LineItem extends CartLineItem> {
@@ -63,6 +66,7 @@ export interface Props<LineItem extends CartLineItem> {
   decrementLineItemLabel?: string;
   incrementLineItemLabel?: string;
   cart: Cart<LineItem>;
+  couponCode?: CouponCode;
 }
 
 const defaultEmptyState = {
@@ -74,6 +78,7 @@ const defaultEmptyState = {
 export function CartClient<LineItem extends CartLineItem>({
   title,
   cart,
+  couponCode,
   decrementLineItemLabel,
   incrementLineItemLabel,
   deleteLineItemLabel,
@@ -157,15 +162,15 @@ export function CartClient<LineItem extends CartLineItem>({
               ))}
             </div>
 
-            {cart.couponCodeAction && (
+            {couponCode && (
               <CouponCodeForm
-                action={cart.couponCodeAction}
-                couponCodes={cart.couponCodes}
-                ctaLabel={cart.couponCodeCtaLabel}
-                disabled={cart.couponCodeDisabled}
-                label={cart.couponCodeLabel}
-                placeholder={cart.couponCodePlaceholder}
-                removeLabel={cart.couponCodeRemoveLabel}
+                action={couponCode.action}
+                couponCodes={couponCode.couponCodes}
+                ctaLabel={couponCode.ctaLabel}
+                disabled={couponCode.disabled}
+                label={couponCode.label}
+                placeholder={couponCode.placeholder}
+                removeLabel={couponCode.removeLabel}
               />
             )}
 

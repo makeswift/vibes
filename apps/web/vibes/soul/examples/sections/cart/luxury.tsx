@@ -21,6 +21,7 @@ export default async function Preview() {
       <Cart
         cart={getCartWithDelay()}
         checkoutAction={checkoutAction}
+        couponCode={{ action: couponCodeAction }}
         key={await getCartId()}
         lineItemAction={lineItemAction}
       />
@@ -160,7 +161,7 @@ async function getCart() {
         JSON.stringify(generateCartFromLineItems(defaultLineItems)),
     ),
   );
-  return { ...cart, couponCodeAction };
+  return cart;
 }
 
 async function setCart(cart: Cart<CartLineItem>) {

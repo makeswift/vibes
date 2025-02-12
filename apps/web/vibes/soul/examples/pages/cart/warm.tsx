@@ -83,9 +83,9 @@ export default async function Preview() {
             { label: 'Tax', value: 'TBD' },
           ],
           total: '127.60',
-          couponCodeAction,
         }}
         checkoutAction={checkoutAction}
+        couponCode={{ action: couponCodeAction }}
         lineItemAction={lineItemAction}
       />
 
