@@ -3,7 +3,11 @@ import { locales } from '@/vibes/soul/data/locales';
 import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
-import { checkoutAction, lineItemAction } from '@/vibes/soul/examples/sections/cart/actions';
+import {
+  checkoutAction,
+  couponCodeAction,
+  lineItemAction,
+} from '@/vibes/soul/examples/sections/cart/actions';
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
@@ -79,6 +83,7 @@ export default async function Preview() {
             { label: 'Tax', value: 'TBD' },
           ],
           total: '127.60',
+          couponCodeAction: couponCodeAction,
         }}
         checkoutAction={checkoutAction}
         lineItemAction={lineItemAction}

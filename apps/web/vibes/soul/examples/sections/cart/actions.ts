@@ -1,7 +1,11 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 
-import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema';
+import { CouponCodeFormState } from '@/vibes/soul/sections/cart/coupon-code-form';
+import {
+  cartLineItemActionFormDataSchema,
+  couponCodeActionFormDataSchema,
+} from '@/vibes/soul/sections/cart/schema';
 
 interface CartLineItem {
   id: string;
@@ -86,4 +90,42 @@ export async function checkoutAction(
   // return redirect('/checkout')
 
   return prevState;
+}
+
+export async function couponCodeAction(
+  prevState: Awaited<CouponCodeFormState>,
+  formData: FormData,
+): Promise<CouponCodeFormState> {
+  'use server';
+
+  const submission = parseWithZod(formData, { schema: couponCodeActionFormDataSchema });
+
+  if (submission.status !== 'success') {
+    return {
+      ...prevState,
+      lastResult: submission.reply({ formErrors: ['This code has expired or is invalid!'] }),
+    };
+  }
+
+  // Simulate a network request
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  switch (submission.value.intent) {
+    case 'apply': {
+      const couponCode = submission.value.couponCode;
+
+      return {
+        couponCodes: [...prevState.couponCodes, couponCode],
+        lastResult: submission.reply({ resetForm: true }),
+      };
+    }
+    case 'delete': {
+      const couponCode = submission.value.couponCode;
+
+      return {
+        couponCodes: prevState.couponCodes.filter((code) => code !== couponCode),
+        lastResult: submission.reply({ resetForm: true }),
+      };
+    }
+  }
 }

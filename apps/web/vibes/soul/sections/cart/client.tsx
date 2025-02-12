@@ -12,6 +12,7 @@ import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
+import { CouponCodeForm, CouponCodeFormState } from './coupon-code-form';
 import { cartLineItemActionFormDataSchema } from './schema';
 
 import { CartEmptyState } from '.';
@@ -42,6 +43,13 @@ export interface Cart<LineItem extends CartLineItem> {
   summaryItems: CartSummaryItem[];
   total: string;
   totalLabel?: string;
+  couponCodes?: string[];
+  couponCodeAction?: Action<CouponCodeFormState, FormData>;
+  couponCodeCtaLabel?: string;
+  couponCodeDisabled?: boolean;
+  couponCodeLabel?: string;
+  couponCodePlaceholder?: string;
+  couponCodeRemoveLabel?: string;
 }
 
 export interface Props<LineItem extends CartLineItem> {
@@ -148,6 +156,18 @@ export function CartClient<LineItem extends CartLineItem>({
                 </div>
               ))}
             </div>
+
+            {cart.couponCodeAction && (
+              <CouponCodeForm
+                action={cart.couponCodeAction}
+                couponCodes={cart.couponCodes}
+                ctaLabel={cart.couponCodeCtaLabel}
+                disabled={cart.couponCodeDisabled}
+                label={cart.couponCodeLabel}
+                placeholder={cart.couponCodePlaceholder}
+                removeLabel={cart.couponCodeRemoveLabel}
+              />
+            )}
 
             <div className="flex justify-between border-t border-contrast-100 py-6 text-xl font-bold">
               <dt>{cart.totalLabel ?? 'Total'}</dt>

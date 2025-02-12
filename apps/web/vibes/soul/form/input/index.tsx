@@ -27,19 +27,19 @@ import { Label } from '@/vibes/soul/form/label';
  */
 export const Input = React.forwardRef<
   React.ComponentRef<'input'>,
-  Omit<React.ComponentPropsWithoutRef<'input'>, 'id'> & {
+  React.ComponentPropsWithoutRef<'input'> & {
     prepend?: React.ReactNode;
     label?: string;
     errors?: string[];
     colorScheme?: 'light' | 'dark';
   }
->(({ prepend, label, className, required, errors, colorScheme = 'light', ...rest }, ref) => {
-  const id = React.useId();
+>(({ prepend, label, className, required, errors, colorScheme = 'light', id, ...rest }, ref) => {
+  const generatedId = React.useId();
 
   return (
     <div className={clsx('w-full space-y-2', className)}>
       {label != null && label !== '' && (
-        <Label colorScheme={colorScheme} htmlFor={id}>
+        <Label colorScheme={colorScheme} htmlFor={id ?? generatedId}>
           {label}
         </Label>
       )}
@@ -69,7 +69,7 @@ export const Input = React.forwardRef<
             }[colorScheme],
             { 'py-2.5 pe-4 ps-12': prepend },
           )}
-          id={id}
+          id={id ?? generatedId}
           ref={ref}
         />
       </div>
