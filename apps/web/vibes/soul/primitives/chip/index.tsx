@@ -1,16 +1,16 @@
 import { X } from 'lucide-react';
 
 interface Props {
-  buttonName?: string;
-  buttonValue?: string;
+  name?: string;
+  value?: string;
   children?: React.ReactNode;
   removeLabel?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Chip = function Chip({
-  buttonName,
-  buttonValue,
+  name,
+  value,
   children,
   removeLabel = 'Remove',
   onClick,
@@ -20,10 +20,10 @@ export const Chip = function Chip({
       {children}
       <button
         className="flex h-5 w-5 items-center justify-center rounded-full hover:bg-contrast-200 focus:outline-none focus:ring-1 focus:ring-foreground"
-        name={buttonName}
+        name={name}
         onClick={onClick}
         title={removeLabel}
-        value={buttonValue}
+        value={value}
       >
         <X size={12} />
       </button>
