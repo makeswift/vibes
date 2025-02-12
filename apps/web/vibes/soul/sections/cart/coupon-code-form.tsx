@@ -53,7 +53,7 @@ export function CouponCodeForm({
   });
 
   return (
-    <div className="border-t border-contrast-100 py-6">
+    <div className="border-t border-contrast-100 pb-5 pt-4">
       <form {...getFormProps(form)} action={formAction} className="space-y-2">
         <label htmlFor={fields.couponCode.id}>{label}</label>
         <div className="flex gap-1.5">
