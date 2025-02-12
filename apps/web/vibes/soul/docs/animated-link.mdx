@@ -10,9 +10,20 @@ features:
 
 ## Usage
 
-<CodeBlock lang="ts">{`import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';`}</CodeBlock>
+{/* prettier-ignore-start */}
 
-<CodeBlock lang="ts">{`<AnimatedLink href="/">animated link</AnimatedLink>`}</CodeBlock>
+<CodeBlock lang="ts">{`
+import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
+
+export function Usage() {
+    return (
+      <AnimatedLink href="/about">About</AnimatedLink>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
 
 ## API Reference
 
