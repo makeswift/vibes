@@ -8,6 +8,8 @@ import { Button } from '@/vibes/soul/primitives/button';
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema';
 
+import { couponCodeAction } from './actions';
+
 export default async function Preview() {
   return (
     <div className="p-4">
@@ -158,7 +160,7 @@ async function getCart() {
         JSON.stringify(generateCartFromLineItems(defaultLineItems)),
     ),
   );
-  return cart;
+  return { ...cart, couponCodeAction: couponCodeAction };
 }
 
 async function setCart(cart: Cart<CartLineItem>) {

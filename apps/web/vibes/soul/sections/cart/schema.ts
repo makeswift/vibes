@@ -14,3 +14,14 @@ export const cartLineItemActionFormDataSchema = z.discriminatedUnion('intent', [
     id: z.string(),
   }),
 ]);
+
+export const couponCodeActionFormDataSchema = z.discriminatedUnion('intent', [
+  z.object({
+    couponCode: z.string(),
+    intent: z.literal('apply'),
+  }),
+  z.object({
+    couponCode: z.string(),
+    intent: z.literal('delete'),
+  }),
+]);
