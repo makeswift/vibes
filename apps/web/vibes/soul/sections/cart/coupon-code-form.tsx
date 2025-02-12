@@ -76,12 +76,7 @@ export function CouponCodeForm({
         {actionStateCouponCodes.map((couponCode) => (
           <form action={formAction} key={couponCode}>
             <input name="couponCode" type="hidden" value={couponCode} />
-            <Chip
-              buttonName="intent"
-              buttonValue="delete"
-              key={couponCode}
-              removeLabel={removeLabel}
-            >
+            <Chip key={couponCode} name="intent" removeLabel={removeLabel} value="delete">
               {couponCode.toUpperCase()}
             </Chip>
           </form>
