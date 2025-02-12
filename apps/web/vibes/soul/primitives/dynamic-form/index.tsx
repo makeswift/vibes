@@ -27,7 +27,7 @@ import { RadioGroup } from '@/vibes/soul/form/radio-group';
 import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Textarea } from '@/vibes/soul/form/textarea';
-import { Button, Props as ButtonProps } from '@/vibes/soul/primitives/button';
+import { Button, ButtonProps } from '@/vibes/soul/primitives/button';
 
 import { Field, FieldGroup, schema } from './schema';
 

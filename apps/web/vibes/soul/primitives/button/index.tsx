@@ -1,14 +1,14 @@
 import { clsx } from 'clsx';
 import { Loader2 } from 'lucide-react';
+import { ComponentPropsWithoutRef } from 'react';
 
-export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
   size?: 'large' | 'medium' | 'small' | 'x-small';
   shape?: 'pill' | 'rounded' | 'square' | 'circle';
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   loading?: boolean;
-  type?: 'button' | 'submit' | 'reset';
-};
+  srOnlyText?: string;
+}
 
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
@@ -20,20 +20,21 @@ export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
  *   --button-font-family: var(--font-family-body);
  *   --button-primary-background: hsl(var(--primary));
  *   --button-primary-background-hover: color-mix(in oklab, hsl(var(--primary)), white 75%);
- *   --button-primary-foreground: hsl(var(--foreground));
+ *   --button-primary-text: hsl(var(--foreground));
  *   --button-primary-border: hsl(var(--primary));
  *   --button-secondary-background: hsl(var(--foreground));
  *   --button-secondary-background-hover: hsl(var(--background));
- *   --button-secondary-foreground: hsl(var(--background));
+ *   --button-secondary-text: hsl(var(--background));
  *   --button-secondary-border: hsl(var(--foreground));
  *   --button-tertiary-background: hsl(var(--background));
  *   --button-tertiary-background-hover: hsl(var(--contrast-100));
- *   --button-tertiary-foreground: hsl(var(--foreground));
+ *   --button-tertiary-text: hsl(var(--foreground));
  *   --button-tertiary-border: hsl(var(--contrast-200));
  *   --button-ghost-background: transparent;
  *   --button-ghost-background-hover: hsl(var(--foreground) / 5%);
- *   --button-ghost-foreground: hsl(var(--foreground));
+ *   --button-ghost-text: hsl(var(--foreground));
  *   --button-ghost-border: transparent;
+ *   --button-loader-icon: hsl(var(--foreground));
  * }
  * ```
  */
@@ -41,28 +42,29 @@ export function Button({
   variant = 'primary',
   size = 'large',
   shape = 'pill',
-  onClick,
   loading = false,
+  type = 'button',
   disabled = false,
   className,
+  srOnlyText = '',
   children,
-  type = 'button',
   ...props
-}: Props) {
+}: ButtonProps) {
   return (
     <button
+      {...props}
       aria-busy={loading}
       className={clsx(
         'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden border text-center font-[family-name:var(--button-font-family,var(--font-family-body))] font-semibold leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--button-focus,hsl(var(--primary)))] focus-visible:ring-offset-2',
         {
           primary:
-            'border-[var(--button-primary-border,hsl(var(--primary)))] bg-[var(--button-primary-background,hsl(var(--primary)))] text-[var(--button-primary-foreground)] after:bg-[var(--button-primary-background-hover,color-mix(in_oklab,hsl(var(--primary)),white_75%))]',
+            'border-[var(--button-primary-border,hsl(var(--primary)))] bg-[var(--button-primary-background,hsl(var(--primary)))] text-[var(--button-primary-text)] after:bg-[var(--button-primary-background-hover,color-mix(in_oklab,hsl(var(--primary)),white_75%))]',
           secondary:
-            'border-[var(--button-secondary-border,hsl(var(--foreground)))] bg-[var(--button-secondary-background,hsl(var(--foreground)))] text-[var(--button-secondary-foreground,hsl(var(--background)))] after:bg-[var(--button-secondary-background-hover,hsl(var(--background)))]',
+            'border-[var(--button-secondary-border,hsl(var(--foreground)))] bg-[var(--button-secondary-background,hsl(var(--foreground)))] text-[var(--button-secondary-text,hsl(var(--background)))] after:bg-[var(--button-secondary-background-hover,hsl(var(--background)))]',
           tertiary:
-            'border-[var(--button-tertiary-border,hsl(var(--contrast-200)))] bg-[var(--button-tertiary-background,hsl(var(--background)))] text-[var(--button-tertiary-foreground,hsl(var(--foreground)))] after:bg-[var(--button-tertiary-background-hover,hsl(var(--contrast-100)))]',
+            'border-[var(--button-tertiary-border,hsl(var(--contrast-200)))] bg-[var(--button-tertiary-background,hsl(var(--background)))] text-[var(--button-tertiary-text,hsl(var(--foreground)))] after:bg-[var(--button-tertiary-background-hover,hsl(var(--contrast-100)))]',
           ghost:
-            'border-[var(--button-ghost-border,transparent)] bg-[var(--button-ghost-background,transparent)] text-[var(--button-ghost-foreground,hsl(var(--foreground)))] after:bg-[var(--button-ghost-background-hover,hsl(var(--foreground)/5%))]',
+            'border-[var(--button-ghost-border,transparent)] bg-[var(--button-ghost-background,transparent)] text-[var(--button-ghost-text,hsl(var(--foreground)))] after:bg-[var(--button-ghost-background-hover,hsl(var(--foreground)/5%))]',
         }[variant],
         {
           pill: 'rounded-full after:rounded-full',
@@ -75,9 +77,7 @@ export function Button({
         className,
       )}
       disabled={disabled || loading}
-      onClick={onClick}
       type={type}
-      {...props}
     >
       <span
         className={clsx(
@@ -100,16 +100,21 @@ export function Button({
           variant === 'secondary' && 'mix-blend-difference',
         )}
       >
+        {srOnlyText !== '' && <span className="sr-only">{srOnlyText}</span>}
         {children}
       </span>
-
       <span
         className={clsx(
           'absolute inset-0 grid place-content-center transition-all duration-300 ease-in-out',
           loading ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
         )}
       >
-        <Loader2 className={clsx('animate-spin', variant === 'tertiary' && 'text-foreground')} />
+        <Loader2
+          className={clsx(
+            'animate-spin',
+            variant === 'tertiary' && 'text-[var(--button-loader-icon,hsl(var(--foreground)))]',
+          )}
+        />
       </span>
     </button>
   );
