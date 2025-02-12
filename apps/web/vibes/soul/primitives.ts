@@ -15,7 +15,7 @@ export const primitives = [
   },
   {
     name: 'animated-link',
-    dependencies: [],
+    dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/animated-link/index.tsx'],
   },
