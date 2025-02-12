@@ -1,5 +1,5 @@
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostWithKey } from '@/vibes/soul/primitives/blog-post-card';
 import { BlogPostCarousel } from '@/vibes/soul/primitives/blog-post-carousel';
 
 interface Link {
@@ -10,7 +10,7 @@ interface Link {
 interface Props {
   title?: string;
   cta?: Link;
-  blogPosts: BlogPostCardBlogPost[];
+  blogPosts: BlogPostWithKey[];
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;

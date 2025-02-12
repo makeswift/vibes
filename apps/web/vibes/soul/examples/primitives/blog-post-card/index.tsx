@@ -16,8 +16,15 @@ const blogPost = {
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-background p-8 @container">
-      <BlogPostCard blogPost={blogPost} className="w-80" />
+    <div className="flex min-h-48 items-center justify-center bg-background p-8">
+      <BlogPostCard
+        author={blogPost.author}
+        content={blogPost.content}
+        date={blogPost.date}
+        href={blogPost.href}
+        image={blogPost.image}
+        title={blogPost.title}
+      />
     </div>
   );
 }

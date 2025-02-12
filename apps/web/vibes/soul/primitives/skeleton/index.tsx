@@ -48,8 +48,8 @@ function SkeletonText({
       <div
         className={clsx(
           `h-[1ex] max-w-full rounded-[inherit] bg-[var(--skeleton,hsl(var(--contrast-300)/15%))]`,
-          characterCount === 'full' ? 'w-full' : `w-[${characterCount}ch]`,
         )}
+        style={{ width: characterCount === 'full' ? '100%' : `${characterCount}ch` }}
       />
     </div>
   );

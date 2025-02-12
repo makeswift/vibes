@@ -1,5 +1,5 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostWithKey } from '@/vibes/soul/primitives/blog-post-card';
 import { Breadcrumb, Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
@@ -8,7 +8,7 @@ import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 interface Props {
   title: string;
   description?: string;
-  posts: Streamable<BlogPostCardBlogPost[]>;
+  blogPosts: Streamable<BlogPostWithKey[]>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
   breadcrumbs?: Streamable<Breadcrumb[]>;
   emptyStateSubtitle?: Streamable<string | null>;
@@ -19,7 +19,7 @@ interface Props {
 export function FeaturedBlogPostList({
   title,
   description,
-  posts,
+  blogPosts,
   paginationInfo,
   breadcrumbs,
   emptyStateSubtitle,
@@ -40,11 +40,11 @@ export function FeaturedBlogPostList({
         )}
 
         <BlogPostList
+          blogPosts={blogPosts}
           className="mb-8 mt-8 @4xl:mb-10 @4xl:mt-10"
           emptyStateSubtitle={emptyStateSubtitle}
           emptyStateTitle={emptyStateTitle}
           placeholderCount={placeholderCount}
-          posts={posts}
         />
 
         {paginationInfo && <CursorPagination info={paginationInfo} />}
