@@ -4,7 +4,7 @@ import { localeAction } from '@/vibes/soul/examples/primitives/navigation/action
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
 import { Banner } from '@/vibes/soul/primitives/banner';
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostWithKey } from '@/vibes/soul/primitives/blog-post-card';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 import { Footer } from '@/vibes/soul/sections/footer';
@@ -50,7 +50,7 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostCardBlogPost[]>((resolve) => {
+  const blogPostsPromise = new Promise<BlogPostWithKey[]>((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 
@@ -73,6 +73,7 @@ export default function Preview() {
       />
 
       <FeaturedBlogPostList
+        blogPosts={blogPostsPromise}
         breadcrumbs={[
           {
             label: 'Home',
@@ -91,7 +92,6 @@ export default function Preview() {
           endCursor: '5',
         }}
         placeholderCount={6}
-        posts={blogPostsPromise}
         title="Plant Life"
       />
 

@@ -1,14 +1,15 @@
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
-import { BlogPostCardBlogPost } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostWithKey } from '@/vibes/soul/primitives/blog-post-card';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostCardBlogPost[]>((resolve) => {
+  const blogPostsPromise = new Promise<BlogPostWithKey[]>((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 
   return (
     <FeaturedBlogPostList
+      blogPosts={blogPostsPromise}
       breadcrumbs={[
         {
           label: 'Home',
@@ -27,7 +28,6 @@ export default function Preview() {
         endCursor: '5',
       }}
       placeholderCount={6}
-      posts={blogPostsPromise}
       title="Plant Life"
     />
   );
