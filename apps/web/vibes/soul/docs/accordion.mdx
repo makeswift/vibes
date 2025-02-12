@@ -12,9 +12,12 @@ features:
 
 ## Usage
 
-<CodeBlock lang="ts">{`import { Accordion, AccordionItem } from '@/vibes/soul/primitives/accordion';`}</CodeBlock>
+{/* prettier-ignore-start */}
 
-<CodeBlock lang="ts">{`const accordionItems = [
+<CodeBlock lang="ts">{`
+import { Accordion, AccordionItem } from '@/vibes/soul/primitives/accordion';
+
+const accordionItems = [
     {
       title: 'What is your return policy?',
       content:
@@ -24,16 +27,24 @@ features:
       title: 'How long does shipping take?',
       content:
         'Shipping typically takes 3-5 business days for domestic orders. International shipping may take longer depending on the destination.',
-    }
-  ];`}</CodeBlock>
+    },
+];
 
-<CodeBlock lang="ts">{`<Accordion type="multiple">
-    {accordionItems.map(({ title, content }, index) => (
-      <AccordionItem key={index} title={title} value={index.toString()}>
-        {content}
-      </AccordionItem>
-    ))}
-</Accordion>`}</CodeBlock>
+function Usage() {
+    return (
+      <Accordion type="multiple">
+        {accordionItems.map(({ title, content }, index) => (
+          <AccordionItem key={index} title={title} value={index.toString()}>
+            {content}
+          </AccordionItem>
+        ))}
+      </Accordion>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
 
 ## API Reference
 
