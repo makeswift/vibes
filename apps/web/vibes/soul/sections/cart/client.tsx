@@ -46,7 +46,7 @@ export interface Cart<LineItem extends CartLineItem> {
 }
 
 interface CouponCode {
-  action?: Action<CouponCodeFormState, FormData>;
+  action: Action<CouponCodeFormState, FormData>;
   couponCodes?: string[];
   ctaLabel?: string;
   disabled?: boolean;
