@@ -103,7 +103,7 @@ export async function couponCodeAction(
   if (submission.status !== 'success') {
     return {
       ...prevState,
-      lastResult: submission.reply({ formErrors: ['This code has expired or is invalid!'] }),
+      lastResult: submission.reply(),
     };
   }
 
