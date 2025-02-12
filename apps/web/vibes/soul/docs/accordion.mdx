@@ -37,34 +37,20 @@ features:
 
 ## API Reference
 
-### `Accordion`
+### Accordion
 
-| Prop                                                                                                                                                                                 | Type                                                        | Default      |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | ------------ |
-| `asChild` <Tooltip content='Change the default rendered element for the one passed as a child, merging their props and behavior.' />                                                 | `boolean`                                                   | `false`      |
-| `type*`                                                                                                                                                                              | `'single' \| 'multiple'`                                    |              |
-| `value` <Tooltip content='The controlled value of the item to expand when `type` is `"single"`. Must be used in conjunction with `onValueChange`.' />                                | `string`                                                    |              |
-| `defaultValue` <Tooltip content='The value of the item to expand when initially rendered and `type` is `"single"`. Use when you do not need to control the state of the items.'/>    | `string`                                                    |              |
-| `onValueChange` <Tooltip content='Event handler called when the expanded state of an item changes and `type` is `"single"`.'/>                                                       | `function` <Tooltip content="`(value: string) => void`"/>   |              |
-| `value` <Tooltip content='The controlled value of the item to expand when `type` is `"multiple"`. Must be used in conjunction with `onValueChange`.' />                              | `string[]`                                                  | `[]`         |
-| `defaultValue` <Tooltip content='The value of the item to expand when initially rendered when `type` is `"multiple"`. Use when you do not need to control the state of the items.'/> | `string[]`                                                  | `[]`         |
-| `onValueChange` <Tooltip content='Event handler called when the expanded state of an item changes and `type` is `"multiple"`.'/>                                                     | `function` <Tooltip content="`(value: string[]) => void`"/> |              |
-| `collapsible` <Tooltip content='When type is `"single"`, allows closing content when clicking trigger for an open item.'/>                                                           | `boolean`                                                   | `false`      |
-| `disabled` <Tooltip content='When `true`, prevents the user from interacting with the accordion and all its items.'/>                                                                | `boolean`                                                   | `false`      |
-| `dir` <Tooltip content='The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.'/>                                             | `"ltr" \| "rtl"`                                            | `"ltr"`      |
-| `orientation` <Tooltip content='The orientation of the accordion.'/>                                                                                                                 | `"horizontal" \| "vertical"`                                | `"vertical"` |
+Refer to the Radix UI documentation for the [Accordion.Root](https://www.radix-ui.com/primitives/docs/components/accordion#root) component.
 
-### `AccordionItem`
+### AccordionItem
 
-| Prop                                                                                                                                 | Type                                  | Default   |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | --------- |
-| `asChild` <Tooltip content='Change the default rendered element for the one passed as a child, merging their props and behavior.' /> | `boolean`                             | `false`   |
-| `children*`                                                                                                                          | `ReactNode`                           |           |
-| `className`                                                                                                                          | `string`                              |           |
-| `colorScheme`                                                                                                                        | `'dark'                   \| 'light'` | `'light'` |
-| `disabled` <Tooltip content="When `true`, prevents the user from interacting with the item."/>                                       | `boolean`                             | `false`   |
-| `title`                                                                                                                              | `string`                              |           |
-| `value*` <Tooltip content='A unique value for the item.' />                                                                          | `string`                              |           |
+Refer to the Radix UI documentation for the [Accordion.Item](https://www.radix-ui.com/primitives/docs/components/accordion#item) component. In addition, this copmonent depends on these additional properties:
+
+| Prop          | Type                                  | Default   |
+| ------------- | ------------------------------------- | --------- |
+| `children*`   | `ReactNode`                           |           |
+| `className`   | `string`                              |           |
+| `colorScheme` | `'dark'                   \| 'light'` | `'light'` |
+| `title*`      | `string`                              |           |
 
 ### CSS Variables
 
