@@ -59,7 +59,7 @@ export const primitives = [
     name: 'calendar',
     dependencies: ['clsx', 'lucide-react', 'react-day-picker'],
     registryDependencies: [],
-    files: ['primitives/calendar.tsx'],
+    files: ['primitives/calendar/index.tsx'],
   },
   {
     name: 'card',
