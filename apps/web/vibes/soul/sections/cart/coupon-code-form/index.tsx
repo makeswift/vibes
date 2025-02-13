@@ -59,13 +59,11 @@ export function CouponCodeForm({
         case 'apply': {
           const { couponCode } = submission.value;
 
-          return [...prevState, couponCode];
+          return [couponCode];
         }
 
         case 'delete': {
-          const { couponCode } = submission.value;
-
-          return prevState.filter((code) => code !== couponCode);
+          return [];
         }
 
         default:
