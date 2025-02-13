@@ -2,15 +2,16 @@
 
 import { getFormProps, getInputProps, SubmissionResult, useForm } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
-import { useActionState } from 'react';
+import { startTransition, useActionState, useOptimistic } from 'react';
 import { useFormStatus } from 'react-dom';
 
 import { FieldError } from '@/vibes/soul/form/field-error';
 import { Input } from '@/vibes/soul/form/input';
 import { Button } from '@/vibes/soul/primitives/button';
-import { Chip } from '@/vibes/soul/primitives/chip';
 
-import { couponCodeActionFormDataSchema } from './schema';
+import { couponCodeActionFormDataSchema } from '../schema';
+
+import { CouponChip } from './coupon-chip';
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
@@ -36,24 +37,58 @@ export function CouponCodeForm({
   disabled = false,
   label = 'Promo code',
   placeholder,
-  removeLabel = 'Remove promo code',
+  removeLabel,
 }: Props) {
-  const [{ couponCodes: actionStateCouponCodes, lastResult }, formAction] = useActionState(action, {
+  const [state, formAction] = useActionState(action, {
     couponCodes: couponCodes ?? [],
     lastResult: null,
   });
 
+  const [optimisticCouponCodes, setOptimisticCouponCodes] = useOptimistic<string[], FormData>(
+    state.couponCodes,
+    (prevState, formData) => {
+      const submission = parseWithZod(formData, { schema: couponCodeActionFormDataSchema });
+
+      if (submission.status !== 'success') return prevState;
+
+      switch (submission.value.intent) {
+        case 'apply': {
+          const { couponCode } = submission.value;
+
+          return [...prevState, couponCode];
+        }
+
+        case 'delete': {
+          const { couponCode } = submission.value;
+
+          return prevState.filter((code) => code !== couponCode);
+        }
+
+        default:
+          return prevState;
+      }
+    },
+  );
+
   const [form, fields] = useForm({
-    lastResult,
+    lastResult: state.lastResult,
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: couponCodeActionFormDataSchema });
     },
+    onSubmit(event, { formData }) {
+      event.preventDefault();
+
+      startTransition(() => {
+        formAction(formData);
+        setOptimisticCouponCodes(formData);
+      });
+    },
   });
 
   return (
-    <div className="border-t border-contrast-100 pb-5 pt-4">
+    <div className="space-y-3 border-t border-contrast-100 pb-5 pt-4">
       <form {...getFormProps(form)} action={formAction} className="space-y-2">
         <label htmlFor={fields.couponCode.id}>{label}</label>
         <div className="flex gap-1.5">
@@ -70,18 +105,24 @@ export function CouponCodeForm({
           />
           <SubmitButton disabled={disabled}>{ctaLabel}</SubmitButton>
         </div>
-        {form.errors?.map((error, index) => <FieldError key={index}>{error}</FieldError>)}
       </form>
-      <div className="flex flex-wrap gap-1.5 pt-3">
-        {actionStateCouponCodes.map((couponCode) => (
-          <form action={formAction} key={couponCode}>
-            <input name="couponCode" type="hidden" value={couponCode} />
-            <Chip key={couponCode} name="intent" removeLabel={removeLabel} value="delete">
-              {couponCode.toUpperCase()}
-            </Chip>
-          </form>
+      <div className="flex flex-wrap gap-1.5">
+        {optimisticCouponCodes.map((couponCode) => (
+          <CouponChip
+            action={formAction}
+            couponCode={couponCode}
+            key={couponCode}
+            onSubmit={(formData) => {
+              startTransition(() => {
+                formAction(formData);
+                setOptimisticCouponCodes(formData);
+              });
+            }}
+            removeLabel={removeLabel}
+          />
         ))}
       </div>
+      {form.errors?.map((error, index) => <FieldError key={index}>{error}</FieldError>)}
     </div>
   );
 }

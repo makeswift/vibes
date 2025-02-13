@@ -17,11 +17,11 @@ export const cartLineItemActionFormDataSchema = z.discriminatedUnion('intent', [
 
 export const couponCodeActionFormDataSchema = z.discriminatedUnion('intent', [
   z.object({
-    couponCode: z.string(),
     intent: z.literal('apply'),
+    couponCode: z.string(),
   }),
   z.object({
-    couponCode: z.string(),
     intent: z.literal('delete'),
+    couponCode: z.string(),
   }),
 ]);
