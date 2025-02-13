@@ -4,7 +4,13 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { Select } from '@/vibes/soul/form/select';
 
-export function SidebarMenuSelect({ links }: { links: Array<{ href: string; label: string }> }) {
+import { SidebarMenuAction, SidebarMenuLink } from '.';
+
+export function SidebarMenuSelect({
+  links,
+}: {
+  links: Array<SidebarMenuLink | SidebarMenuAction>;
+}) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -14,7 +20,15 @@ export function SidebarMenuSelect({ links }: { links: Array<{ href: string; labe
       onValueChange={(value) => {
         router.push(value);
       }}
-      options={links.map((link) => ({ value: link.href, label: link.label }))}
+      options={links.map((link) => {
+        if ('action' in link) {
+          return { label: link.label, action: link.action };
+        }
+
+        const linkPathname = typeof link.href === 'string' ? link.href : (link.href.pathname ?? '');
+
+        return { value: linkPathname, label: link.label };
+      })}
       value={pathname}
     />
   );
