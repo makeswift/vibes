@@ -64,7 +64,7 @@ export const primitives = [
   {
     name: 'card',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
+    registryDependencies: ['skeleton'],
     files: ['primitives/card/index.tsx'],
   },
   {
