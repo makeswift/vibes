@@ -98,7 +98,7 @@ export async function couponCodeAction(
 ): Promise<CouponCodeFormState> {
   'use server';
 
-  const submission = parseWithZod(formData, { schema: couponCodeActionFormDataSchema });
+  const submission = parseWithZod(formData, { schema: couponCodeActionFormDataSchema({}) });
 
   if (submission.status !== 'success') {
     return {

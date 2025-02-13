@@ -28,6 +28,7 @@ interface Props {
   label?: string;
   placeholder?: string;
   removeLabel?: string;
+  requiredErrorMessage?: string;
 }
 
 export function CouponCodeForm({
@@ -38,6 +39,7 @@ export function CouponCodeForm({
   label = 'Promo code',
   placeholder,
   removeLabel,
+  requiredErrorMessage,
 }: Props) {
   const [state, formAction] = useActionState(action, {
     couponCodes: couponCodes ?? [],
@@ -47,7 +49,9 @@ export function CouponCodeForm({
   const [optimisticCouponCodes, setOptimisticCouponCodes] = useOptimistic<string[], FormData>(
     state.couponCodes,
     (prevState, formData) => {
-      const submission = parseWithZod(formData, { schema: couponCodeActionFormDataSchema });
+      const submission = parseWithZod(formData, {
+        schema: couponCodeActionFormDataSchema({ required_error: requiredErrorMessage }),
+      });
 
       if (submission.status !== 'success') return prevState;
 
@@ -75,7 +79,9 @@ export function CouponCodeForm({
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: couponCodeActionFormDataSchema });
+      return parseWithZod(formData, {
+        schema: couponCodeActionFormDataSchema({ required_error: requiredErrorMessage }),
+      });
     },
     onSubmit(event, { formData }) {
       event.preventDefault();
