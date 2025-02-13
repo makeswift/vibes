@@ -5,11 +5,18 @@ import Link from 'next/link';
 
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
-export interface CardProps {
-  className?: string;
+export interface Card {
   title: string;
   image?: { src: string; alt: string };
   href: string;
+}
+
+export interface CardWithId extends Card {
+  id: string;
+}
+
+export interface CardProps extends Card {
+  className?: string;
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';
   aspectRatio?: '5:6' | '3:4' | '1:1';

@@ -1,4 +1,4 @@
-import { BlogPostCard, BlogPostWithKey } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostCard, BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
 import {
   Carousel,
   CarouselButtons,
@@ -9,7 +9,7 @@ import {
 
 interface Props {
   className?: string;
-  blogPosts: BlogPostWithKey[];
+  blogPosts: BlogPostWithId[];
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
@@ -25,11 +25,11 @@ export function BlogPostCarousel({
   return (
     <Carousel className={className}>
       <CarouselContent className="mb-10">
-        {blogPosts.map(({ key, ...post }) => {
+        {blogPosts.map(({ id, ...post }) => {
           return (
             <CarouselItem
               className="basis-full @md:basis-1/2 @4xl:basis-1/3 @7xl:basis-1/4"
-              key={key}
+              key={id}
             >
               <BlogPostCard {...post} />
             </CarouselItem>

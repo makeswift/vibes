@@ -77,16 +77,16 @@ export function ProductsCarousel({
         return (
           <Carousel className={className} hideOverflow={hideOverflow}>
             <CarouselContent className="mb-10">
-              {products.map((product) => (
+              {products.map(({ id, ...product }) => (
                 <CarouselItem
                   className="basis-[calc(100%-1rem)] @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)]"
-                  key={product.id}
+                  key={id}
                 >
                   <ProductCard
                     aspectRatio={aspectRatio}
                     colorScheme={colorScheme}
                     imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
-                    product={product}
+                    product={{ id, ...product }}
                   />
                 </CarouselItem>
               ))}

@@ -26,6 +26,12 @@ export const sections = [
     files: ['sections/blog-post-list/index.tsx'],
   },
   {
+    name: 'card-carousel',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['carousel', 'skeleton', 'card', 'streamable'],
+    files: ['sections/card-carousel/index.tsx'],
+  },
+  {
     name: 'cart',
     dependencies: ['clsx'],
     registryDependencies: ['button', 'counter'],

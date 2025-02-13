@@ -17,7 +17,7 @@ export const navigation = [
     ],
   },
   {
-    title: 'Components',
+    title: 'Primitives',
     pages: [
       {
         title: 'Accordion',
@@ -82,10 +82,10 @@ export const navigation = [
         component: 'card',
       },
       {
-        title: 'Card Carousel',
-        slug: 'card-carousel',
-        file: 'docs/card-carousel.mdx',
-        component: 'card-carousel',
+        title: 'Carousel',
+        slug: 'carousel',
+        file: 'docs/carousel.mdx',
+        component: 'carousel',
       },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       { title: 'Chip', slug: 'chip', file: 'docs/chip.mdx', component: 'chip' },
@@ -132,12 +132,23 @@ export const navigation = [
         component: 'products-list',
       },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
-
+      {
+        title: 'Skeleton',
+        slug: 'skeleton',
+        file: 'docs/skeleton.mdx',
+        component: 'skeleton',
+      },
       {
         title: 'Spinner',
         slug: 'spinner',
         file: 'docs/spinner.mdx',
         component: 'spinner',
+      },
+      {
+        title: 'Streamable',
+        slug: 'streamable',
+        file: 'docs/streamable.mdx',
+        component: 'streamable',
       },
       {
         title: 'Text Area',
@@ -169,6 +180,12 @@ export const navigation = [
         component: 'address-list',
       },
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
+      {
+        title: 'Card Carousel',
+        slug: 'card-carousel',
+        file: 'docs/card-carousel.mdx',
+        component: 'card-carousel',
+      },
       { title: 'Checkout', slug: 'checkout', file: 'docs/checkout.mdx', component: 'checkout' },
       {
         title: 'Compare Section',
