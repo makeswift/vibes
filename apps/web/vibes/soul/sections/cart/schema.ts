@@ -18,7 +18,7 @@ export const cartLineItemActionFormDataSchema = z.discriminatedUnion('intent', [
 export const couponCodeActionFormDataSchema = z.discriminatedUnion('intent', [
   z.object({
     intent: z.literal('apply'),
-    couponCode: z.string(),
+    couponCode: z.string({ required_error: 'Please enter a valid promo code' }),
   }),
   z.object({
     intent: z.literal('delete'),
