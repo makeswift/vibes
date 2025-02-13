@@ -185,9 +185,9 @@ export function ProductCardSkeleton({
       />
       <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row">
         <div className="w-full text-base">
-          <Skeleton.Text className="rounded" characterCount={10} />
-          <Skeleton.Text className="rounded" characterCount={8} />
-          <Skeleton.Text className="rounded" characterCount={6} />
+          <Skeleton.Text characterCount={10} className="rounded" />
+          <Skeleton.Text characterCount={8} className="rounded" />
+          <Skeleton.Text characterCount={6} className="rounded" />
         </div>
       </div>
     </div>

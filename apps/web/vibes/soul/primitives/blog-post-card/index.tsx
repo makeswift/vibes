@@ -52,7 +52,12 @@ export function BlogPostCard({
   className,
 }: BlogPostCardProps) {
   return (
-    <article className={clsx('group relative w-full max-w-md @container', className)}>
+    <article
+      className={clsx(
+        'group relative w-full max-w-md font-[family-name:var(--blog-post-card-font-family,var(--font-family-body))] @container',
+        className,
+      )}
+    >
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[var(--blog-post-card-image-background,hsl(var(--contrast-100)))]">
         {image != null ? (
           <Image
@@ -91,8 +96,7 @@ export function BlogPostCard({
       </div>
       <Link
         className={clsx(
-          'absolute inset-0 rounded-b-lg rounded-t-2xl font-[family-name:var(--blog-post-card-font-family,var(--font-family-body))] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blog-post-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
-          className,
+          'absolute inset-0 rounded-b-lg rounded-t-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blog-post-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
         )}
         href={href}
       >

@@ -22,13 +22,13 @@ export interface CardProps {
  * ```css
  * :root {
  *   --card-focus: hsl(var(--primary));
- *   --card-border-radius: 1rem;
  *   --card-light-text: hsl(var(--foreground));
  *   --card-light-icon: hsl(var(--foreground));
  *   --card-light-background: hsl(var(--contrast-100));
  *   --card-dark-text: hsl(var(--background));
  *   --card-dark-icon: hsl(var(--background));
  *   --card-dark-background: hsl(var(--contrast-500));
+ *   --card-font-family: var(--font-family-body);
  * }
  * ```
  */
@@ -42,12 +42,11 @@ export function Card({
   aspectRatio = '5:6',
 }: CardProps) {
   return (
-    <Link
+    <article
       className={clsx(
-        'group relative flex min-w-0 cursor-pointer flex-col gap-2 rounded-[var(--card-border-radius,1rem)] @container focus:outline-0 focus-visible:outline-0',
+        'group relative flex w-full min-w-0 max-w-md cursor-pointer flex-col gap-2 rounded-2xl font-[family-name:var(--card-font-family,var(--font-family-body))] @container',
         className,
       )}
-      href={href}
     >
       <ArrowUpRight
         className={clsx(
@@ -112,7 +111,19 @@ export function Card({
       >
         {title}
       </span>
-    </Link>
+      <Link
+        className={clsx(
+          'absolute inset-0 rounded-b-lg rounded-t-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blog-post-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+          {
+            light: 'ring-offset-[var(--card-light-offset,hsl(var(--background)))]',
+            dark: 'ring-offset-[var(--card-dark-offset,hsl(var(--foreground)))]',
+          }[textColorScheme],
+        )}
+        href={href}
+      >
+        <span className="sr-only">View product</span>
+      </Link>
+    </article>
   );
 }
 
@@ -127,7 +138,7 @@ export function CardSkeleton({
     <div className={clsx('@container', className)}>
       <Skeleton.Box
         className={clsx(
-          'rounded-[var(--card-border-radius,1rem)]',
+          'rounded-2xl',
           {
             '5:6': 'aspect-[5/6]',
             '3:4': 'aspect-[3/4]',
@@ -136,7 +147,7 @@ export function CardSkeleton({
         )}
       />
       <div className="mt-3">
-        <Skeleton.Text className="rounded text-lg" characterCount={10} />
+        <Skeleton.Text characterCount={10} className="rounded text-lg" />
       </div>
     </div>
   );

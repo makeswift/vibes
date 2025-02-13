@@ -6,19 +6,17 @@ export default function Preview() {
       <div className="bg-background p-8 @container">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <Card
-            className="w-full"
             href="#"
             image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
             title="Low Maintenance"
           />
-          <Card className="w-full" href="#" title="Partial shade" />
+          <Card href="#" title="Partial shade" />
         </div>
       </div>
       <div className="bg-foreground p-8 @container">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <Card
             aspectRatio="1:1"
-            className="w-full"
             href="#"
             iconColorScheme="dark"
             image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }}
@@ -27,7 +25,6 @@ export default function Preview() {
           />
           <Card
             aspectRatio="1:1"
-            className="w-full"
             href="#"
             iconColorScheme="dark"
             textColorScheme="dark"
