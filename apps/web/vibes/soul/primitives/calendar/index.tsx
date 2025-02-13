@@ -7,12 +7,17 @@ const components = {
   Chevron: () => <ChevronLeftIcon className="h-5 w-5" strokeWidth={1} />,
 };
 
+export type CalendarProps = ComponentPropsWithoutRef<typeof DayPicker> & {
+  colorScheme?: 'light' | 'dark';
+};
+
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
  * with their default values:
  *
  * ```css
  *  :root {
+ *   --calendar-font-family: var(--font-family-body);
  *   --calendar-light-focus: hsl(var(--foreground));
  *   --calendar-light-border: hsl(var(--contrast-100));
  *   --calendar-light-text: hsl(var(--foreground));
@@ -41,11 +46,12 @@ export function Calendar({
   className,
   classNames,
   ...props
-}: ComponentPropsWithoutRef<typeof DayPicker> & { colorScheme?: 'light' | 'dark' }) {
+}: CalendarProps) {
   return (
     <DayPicker
+      {...props}
       className={clsx(
-        'box-content w-[280px] rounded-lg border p-3',
+        'box-content w-[280px] rounded-lg border p-3 font-[family-name:var(--calendar-font-family,var(--font-family-body))]',
         {
           light:
             'border-[var(--calendar-light-border,hsl(var(--contrast-100)))] bg-[var(--calendar-light-background,hsl(var(--background)))] text-[var(--calendar-light-text,hsl(var(--foreground)))]',
@@ -124,7 +130,6 @@ export function Calendar({
         ...classNames,
       }}
       components={components}
-      {...props}
     />
   );
 }
