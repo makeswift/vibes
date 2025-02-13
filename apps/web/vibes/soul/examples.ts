@@ -62,11 +62,25 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/badge')),
   },
   {
-    name: 'blog-post-card-example',
+    name: 'blog-post-card-warm',
     dependencies: [],
     registryDependencies: ['blog-post-card'],
-    files: ['examples/primitives/blog-post-card/index.tsx'],
-    component: lazy(() => import('./examples/primitives/blog-post-card')),
+    files: ['examples/primitives/blog-post-card/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/blog-post-card/warm')),
+  },
+  {
+    name: 'blog-post-card-electric',
+    dependencies: [],
+    registryDependencies: ['blog-post-card'],
+    files: ['examples/primitives/blog-post-card/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/blog-post-card/electric')),
+  },
+  {
+    name: 'blog-post-card-luxury',
+    dependencies: [],
+    registryDependencies: ['blog-post-card'],
+    files: ['examples/primitives/blog-post-card/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/blog-post-card/luxury')),
   },
   {
     name: 'blog-post-list-example',
