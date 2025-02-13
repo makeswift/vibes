@@ -1,5 +1,5 @@
 import { getProducts } from '@/vibes/soul/data';
-import { CardCarousel } from '@/vibes/soul/primitives/card-carousel';
+import { CardCarousel } from '@/vibes/soul/sections/card-carousel';
 
 export default function Preview() {
   const cards = getProducts('Warm');

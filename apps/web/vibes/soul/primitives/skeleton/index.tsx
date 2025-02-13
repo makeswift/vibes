@@ -18,7 +18,7 @@ function SkeletonRoot({
 }: {
   className?: string;
   children?: React.ReactNode;
-  pending: boolean;
+  pending?: boolean;
 }) {
   return (
     <div

@@ -1,9 +1,9 @@
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
-import { BlogPostWithKey } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostWithKey[]>((resolve) => {
+  const blogPostsPromise = new Promise<BlogPostWithId[]>((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 

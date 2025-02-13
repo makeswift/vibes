@@ -4,7 +4,7 @@ import { localeAction } from '@/vibes/soul/examples/primitives/navigation/action
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
 import { Banner } from '@/vibes/soul/primitives/banner';
-import { BlogPostWithKey } from '@/vibes/soul/primitives/blog-post-card';
+import { BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 import { Footer } from '@/vibes/soul/sections/footer';
@@ -50,7 +50,7 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostWithKey[]>((resolve) => {
+  const blogPostsPromise = new Promise<BlogPostWithId[]>((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 

@@ -68,14 +68,8 @@ export const primitives = [
     files: ['primitives/card/index.tsx'],
   },
   {
-    name: 'card-carousel',
-    dependencies: ['clsx'],
-    registryDependencies: ['carousel'],
-    files: ['primitives/card-carousel/index.tsx'],
-  },
-  {
     name: 'carousel',
-    dependencies: ['embla-carousel-react', 'lucide-react'],
+    dependencies: ['embla-carousel-react', 'lucide-react', 'clsx'],
     registryDependencies: [],
     files: ['primitives/carousel/index.tsx'],
   },
@@ -174,10 +168,22 @@ export const primitives = [
     files: ['primitives/rating/index.tsx'],
   },
   {
+    name: 'skeleton',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['primitives/skeleton/index.tsx'],
+  },
+  {
     name: 'spinner',
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/spinner/index.tsx'],
+  },
+  {
+    name: 'streamable',
+    dependencies: ['uuid'],
+    registryDependencies: [],
+    files: ['lib/streamable.tsx'],
   },
   {
     name: 'textarea',

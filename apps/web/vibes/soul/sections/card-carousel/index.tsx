@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Card, CardProps, CardSkeleton } from '@/vibes/soul/primitives/card';
+import { Card, CardSkeleton, CardWithId } from '@/vibes/soul/primitives/card';
 import {
   Carousel,
   CarouselButtons,
@@ -11,12 +11,9 @@ import {
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
-export type Card = CardProps & {
-  id: string;
-};
 
 export interface CardCarouselProps {
-  cards: Streamable<Card[]>;
+  cards: Streamable<CardWithId[]>;
   aspectRatio?: '5:6' | '3:4' | '1:1';
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';
@@ -30,14 +27,28 @@ export interface CardCarouselProps {
   showButtons?: boolean;
   showScrollbar?: boolean;
   hideOverflow?: boolean;
+  placeholderCount?: number;
 }
 
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --card-light-empty-title: hsl(var(--foreground));
+ *   --card-light-empty-subtitle: hsl(var(--contrast-500));
+ *   --card-dark-empty-title: hsl(var(--background));
+ *   --card-dark-empty-subtitle: hsl(var(--contrast-100));
+ * }
+ * ```
+ */
 export function CardCarousel({
   cards: streamableCards,
   aspectRatio = '5:6',
   textColorScheme,
   iconColorScheme,
-  carouselColorScheme,
+  carouselColorScheme = 'light',
   className,
   emptyStateTitle,
   emptyStateSubtitle,
@@ -50,13 +61,14 @@ export function CardCarousel({
 }: CardCarouselProps) {
   return (
     <Stream
-      fallback={<CardCarouselSkeleton className={className} hideOverflow={hideOverflow} pending />}
+      fallback={<CardCarouselSkeleton className={className} hideOverflow={hideOverflow} />}
       value={streamableCards}
     >
       {(cards) => {
         if (cards.length === 0) {
           return (
             <CardCarouselEmptyState
+              carouselColorScheme={carouselColorScheme}
               className={className}
               emptyStateSubtitle={emptyStateSubtitle}
               emptyStateTitle={emptyStateTitle}
@@ -68,10 +80,10 @@ export function CardCarousel({
         return (
           <Carousel className={className} hideOverflow={hideOverflow}>
             <CarouselContent>
-              {cards.map((card) => (
+              {cards.map(({ id, ...card }) => (
                 <CarouselItem
                   className="basis-[calc(100%-1rem)] @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)]"
-                  key={card.id}
+                  key={id}
                 >
                   <Card
                     {...card}
@@ -107,18 +119,15 @@ export function CardCarousel({
 export function CardCarouselSkeleton({
   className,
   placeholderCount = 4,
-  pending = false,
   hideOverflow = true,
-}: {
-  className?: string;
-  placeholderCount?: number;
-  pending?: boolean;
-  hideOverflow?: boolean;
-}) {
+}: Pick<
+  CardCarouselProps,
+  'className' | 'emptyStateTitle' | 'emptyStateSubtitle' | 'hideOverflow' | 'placeholderCount'
+>) {
   return (
-    <div
+    <Skeleton.Root
       className={clsx('@container', hideOverflow && 'overflow-hidden', className)}
-      data-pending={pending ? '' : undefined}
+      pending
     >
       <div className="w-full">
         <div className="-ml-4 flex @2xl:-ml-5">
@@ -139,7 +148,7 @@ export function CardCarouselSkeleton({
           <Skeleton.Icon icon={<ArrowRight aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
         </div>
       </div>
-    </div>
+    </Skeleton.Root>
   );
 }
 
@@ -149,15 +158,20 @@ export function CardCarouselEmptyState({
   emptyStateTitle,
   emptyStateSubtitle,
   hideOverflow = true,
-}: {
-  className?: string;
-  placeholderCount?: number;
-  emptyStateTitle?: Streamable<string>;
-  emptyStateSubtitle?: Streamable<string>;
-  hideOverflow?: boolean;
-}) {
+  carouselColorScheme = 'light',
+}: Pick<
+  CardCarouselProps,
+  | 'className'
+  | 'emptyStateTitle'
+  | 'emptyStateSubtitle'
+  | 'hideOverflow'
+  | 'placeholderCount'
+  | 'carouselColorScheme'
+>) {
   return (
-    <div className={clsx('relative @container', hideOverflow && 'overflow-hidden', className)}>
+    <Skeleton.Root
+      className={clsx('relative @container', hideOverflow && 'overflow-hidden', className)}
+    >
       <div className="w-full">
         <div className="-ml-4 flex [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:-ml-5">
           {Array.from({ length: placeholderCount }).map((_, index) => (
@@ -165,19 +179,37 @@ export function CardCarouselEmptyState({
               className="min-w-0 shrink-0 grow-0 basis-[calc(100%-1rem)] pl-4 @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)] @2xl:pl-5"
               key={index}
             >
-              <CardSkeleton key={index} />
+              <CardSkeleton />
             </div>
           ))}
         </div>
       </div>
       <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
-          <h3 className="@4x:leading-none font-heading text-2xl leading-tight text-foreground @4xl:text-4xl">
+          <h3
+            className={clsx(
+              '@4x:leading-none font-heading text-2xl leading-tight @4xl:text-4xl',
+              {
+                light: 'text-[var(--card-light-empty-title,hsl(var(--foreground)))]',
+                dark: 'text-[var(--card-dark-empty-title,hsl(var(--background)))]',
+              }[carouselColorScheme],
+            )}
+          >
             {emptyStateTitle}
           </h3>
-          <p className="text-sm text-contrast-500 @4xl:text-lg">{emptyStateSubtitle}</p>
+          <p
+            className={clsx(
+              'text-sm @4xl:text-lg',
+              {
+                light: 'text-[var(--card-light-empty-subtitle,hsl(var(--contrast-500)))]',
+                dark: 'text-[var(--card-dark-empty-subtitle,hsl(var(--contrast-200)))]',
+              }[carouselColorScheme],
+            )}
+          >
+            {emptyStateSubtitle}
+          </p>
         </div>
       </div>
-    </div>
+    </Skeleton.Root>
   );
 }

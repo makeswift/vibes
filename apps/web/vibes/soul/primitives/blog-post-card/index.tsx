@@ -16,8 +16,8 @@ export interface BlogPost {
   href: string;
 }
 
-export interface BlogPostWithKey extends BlogPost {
-  key: string;
+export interface BlogPostWithId extends BlogPost {
+  id: string;
 }
 
 export interface BlogPostCardProps extends BlogPost {
