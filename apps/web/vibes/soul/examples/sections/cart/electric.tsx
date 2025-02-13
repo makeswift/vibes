@@ -161,7 +161,6 @@ async function getCart() {
         JSON.stringify(generateCartFromLineItems(defaultLineItems)),
     ),
   );
-
   return cart;
 }
 
