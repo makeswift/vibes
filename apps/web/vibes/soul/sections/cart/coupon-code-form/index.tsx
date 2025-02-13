@@ -56,12 +56,6 @@ export function CouponCodeForm({
       if (submission.status !== 'success') return prevState;
 
       switch (submission.value.intent) {
-        case 'apply': {
-          const { couponCode } = submission.value;
-
-          return [couponCode];
-        }
-
         case 'delete': {
           return [];
         }
