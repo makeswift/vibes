@@ -34,7 +34,7 @@ export const primitives = [
   {
     name: 'blog-post-card',
     dependencies: ['clsx'],
-    registryDependencies: [],
+    registryDependencies: ['skeleton'],
     files: ['primitives/blog-post-card/index.tsx'],
   },
   {
