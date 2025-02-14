@@ -6,6 +6,13 @@ import { Components } from '@/vibes/schema';
 
 export const examples = [
   {
+    name: 'checkbox-example',
+    dependencies: [],
+    registryDependencies: ['checkbox'],
+    files: ['examples/form/checkbox/index.tsx'],
+    component: lazy(() => import('./examples/form/checkbox')),
+  },
+  {
     name: 'accordion-example',
     dependencies: [],
     registryDependencies: ['accordion'],
@@ -195,25 +202,11 @@ export const examples = [
     component: lazy(() => import('./examples/sections/cart/luxury')),
   },
   {
-    name: 'checkbox-example',
-    dependencies: [],
-    registryDependencies: ['checkbox'],
-    files: ['examples/primitives/checkbox/index.tsx'],
-    component: lazy(() => import('./examples/primitives/checkbox')),
-  },
-  {
     name: 'chip-example',
     dependencies: [],
     registryDependencies: ['chip'],
     files: ['examples/primitives/chip/index.tsx'],
     component: lazy(() => import('./examples/primitives/chip')),
-  },
-  {
-    name: 'checkout-example',
-    dependencies: [],
-    registryDependencies: ['checkout'],
-    files: ['examples/sections/checkout/index.tsx'],
-    component: lazy(() => import('./examples/sections/checkout')),
   },
   {
     name: 'compare-section-electric-example',

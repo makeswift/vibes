@@ -87,7 +87,6 @@ export const navigation = [
         file: 'docs/carousel.mdx',
         component: 'carousel',
       },
-      { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       { title: 'Chip', slug: 'chip', file: 'docs/chip.mdx', component: 'chip' },
       { title: 'Countdown', slug: 'countdown', file: 'docs/countdown.mdx', component: 'countdown' },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
@@ -165,6 +164,13 @@ export const navigation = [
     ],
   },
   {
+    title: 'Form',
+    pages: [
+      { title: 'Example', slug: 'form', file: 'docs/form.mdx' },
+      { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx' },
+    ],
+  },
+  {
     title: 'Sections',
     pages: [
       {
@@ -186,7 +192,6 @@ export const navigation = [
         file: 'docs/card-carousel.mdx',
         component: 'card-carousel',
       },
-      { title: 'Checkout', slug: 'checkout', file: 'docs/checkout.mdx', component: 'checkout' },
       {
         title: 'Compare Section',
         slug: 'compare-section',
@@ -356,9 +361,5 @@ export const navigation = [
         file: 'docs/page-maintenance.mdx',
       },
     ],
-  },
-  {
-    title: 'Form',
-    pages: [{ title: 'Example', slug: 'form', file: 'docs/form.mdx' }],
   },
 ] satisfies Navigation;
