@@ -115,13 +115,15 @@ export async function couponCodeAction(
       const couponCode = submission.value.couponCode;
 
       return {
-        couponCodes: [couponCode],
+        couponCodes: [...prevState.couponCodes, couponCode],
         lastResult: submission.reply({ resetForm: true }),
       };
     }
     case 'delete': {
       return {
-        couponCodes: [],
+        couponCodes: [...prevState.couponCodes].filter(
+          (code) => code !== submission.value.couponCode,
+        ),
         lastResult: submission.reply({ resetForm: true }),
       };
     }
