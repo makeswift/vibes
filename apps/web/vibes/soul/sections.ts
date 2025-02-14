@@ -38,12 +38,6 @@ export const sections = [
     files: ['sections/cart/index.tsx'],
   },
   {
-    name: 'checkout',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['sections/checkout/index.tsx'],
-  },
-  {
     name: 'countdown',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
