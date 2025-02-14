@@ -1,5 +1,71 @@
 ---
 title: Button
 preview: button-example
-previewSize: sm
+previewSize: md
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Button } from '@/vibes/soul/primitives/button';
+
+function Usage() {
+    return (
+        <Button shape={'pill'} size={'large'} variant={'primary'}>
+            Show now
+        </Button>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+###
+
+| Prop         | Type                                                 | Default     |
+| ------------ | ---------------------------------------------------- | ----------- |
+| `children*`  | `ReactNode`                                          |             |
+| `className`  | `string`                                             |             |
+| `variant`    | ` 'primary' \| 'secondary' \| 'tertiary' \| 'ghost'` | `'primary'` |
+| `size`       | ` 'large' \| 'medium' \| 'small' \| 'x-small'`       | `'large'`   |
+| `shape`      | ` 'pill' \| 'rounded' \| 'square' \| 'circle'`       | `'pill'`    |
+| `loading`    | ` boolean`                                           | `false`     |
+| `srOnlyText` | ` string`                                            | `''`        |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+```css
+:root {
+  --button-focus: hsl(var(--primary));
+  --button-font-family: var(--font-family-body);
+  --button-primary-background: hsl(var(--primary));
+  --button-primary-background-hover: color-mix(in oklab, hsl(var(--primary)), white 75%);
+  --button-primary-text: hsl(var(--foreground));
+  --button-primary-border: hsl(var(--primary));
+  --button-secondary-background: hsl(var(--foreground));
+  --button-secondary-background-hover: hsl(var(--background));
+  --button-secondary-text: hsl(var(--background));
+  --button-secondary-border: hsl(var(--foreground));
+  --button-tertiary-background: hsl(var(--background));
+  --button-tertiary-background-hover: hsl(var(--contrast-100));
+  --button-tertiary-text: hsl(var(--foreground));
+  --button-tertiary-border: hsl(var(--contrast-200));
+  --button-ghost-background: transparent;
+  --button-ghost-background-hover: hsl(var(--foreground) / 5%);
+  --button-ghost-text: hsl(var(--foreground));
+  --button-ghost-border: transparent;
+  --button-loader-icon: hsl(var(--foreground));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2295-42814" />
