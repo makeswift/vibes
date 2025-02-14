@@ -1,5 +1,66 @@
 ---
 title: Button Link
 preview: button-link-example
-previewSize: sm
+previewSize: md
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
+
+function Usage() {
+    return (
+        <ButtonLink shape={'pill'} size={'large'} variant={'primary'} href="#">
+            Show now
+        </ButtonLink>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+###
+
+| Prop        | Type                                                 | Default     |
+| ----------- | ---------------------------------------------------- | ----------- |
+| `children*` | `ReactNode`                                          |             |
+| `className` | `string`                                             |             |
+| `variant`   | ` 'primary' \| 'secondary' \| 'tertiary' \| 'ghost'` | `'primary'` |
+| `size`      | ` 'large' \| 'medium' \| 'small' \| 'x-small'`       | `'large'`   |
+| `shape`     | ` 'pill' \| 'rounded' \| 'square' \| 'circle'`       | `'pill'`    |
+
+Refer to the [Next.js Link component](https://nextjs.org/docs/pages/api-reference/components/link#reference) documentation for more details.
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+```css
+:root {
+  --button-link-focus: hsl(var(--primary));
+  --button-link-font-family: var(--font-family-body);
+  --button-link-primary-background: hsl(var(--primary));
+  --button-link-primary-background-hover: color-mix(in oklab, hsl(var(--primary)), white 75%);
+  --button-link-primary-text: hsl(var(--foreground));
+  --button-link-primary-border: hsl(var(--primary));
+  --button-link-secondary-background: hsl(var(--foreground));
+  --button-link-secondary-background-hover: hsl(var(--background));
+  --button-link-secondary-text: hsl(var(--background));
+  --button-link-secondary-border: hsl(var(--foreground));
+  --button-link-tertiary-background: hsl(var(--background));
+  --button-link-tertiary-background-hover: hsl(var(--contrast-100));
+  --button-link-tertiary-text: hsl(var(--foreground));
+  --button-link-tertiary-border: hsl(var(--contrast-200));
+  --button-link-ghost-background: transparent;
+  --button-link-ghost-background-hover: hsl(var(--foreground) / 5%);
+  --button-link-ghost-text: hsl(var(--foreground));
+  --button-link-ghost-border: transparent;
+}
+```
