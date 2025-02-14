@@ -1,7 +1,71 @@
 ---
 title: Calendar
 preview:
-  Electric: calendar-electric-example
-  Warm: calendar-warm-example
-  Luxury: calendar-luxury-example
+  Electric: calendar-electric
+  Warm: calendar-warm
+  Luxury: calendar-luxury
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Calendar } from '@/vibes/soul/primitives/calendar';
+
+function Usage() {
+    return (
+      <Calendar mode="single" />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### Calendar
+
+| Prop          | Type                | Default   |
+| ------------- | ------------------- | --------- |
+| `children*`   | `ReactNode`         |           |
+| `className`   | `string`            |           |
+| `colorScheme` | `'light' \| 'dark'` | `'light'` |
+
+Refer to the [React Day Picker](https://daypicker.dev/) documentation for additional properties.
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+```css
+:root {
+  --calendar-font-family: var(--font-family-body);
+  --calendar-light-focus: hsl(var(--foreground));
+  --calendar-light-border: hsl(var(--contrast-100));
+  --calendar-light-text: hsl(var(--foreground));
+  --calendar-light-background: hsl(var(--background));
+  --calendar-light-button-border-hover: hsl(var(--contrast-200));
+  --calendar-light-selected-button-background: hsl(var(--primary));
+  --calendar-light-selected-button-text: hsl(var(--foreground));
+  --calendar-light-selected-middle-button-background: transparent;
+  --calendar-light-text-disabled: hsl(var(--contrast-300));
+  --calendar-light-range-background: color-mix(in oklab, hsl(var(--primary)), white 75%);
+  --calendar-dark-focus: hsl(var(--background));
+  --calendar-dark-border: hsl(var(--contrast-500));
+  --calendar-dark-text: hsl(var(--background));
+  --calendar-dark-background: hsl(var(--foreground));
+  --calendar-dark-button-border-hover: hsl(var(--contrast-400));
+  --calendar-dark-selected-button-background: hsl(var(--primary));
+  --calendar-dark-selected-button-text: hsl(var(--foreground));
+  --calendar-dark-selected-middle-button-background: transparent;
+  --calendar-dark-text-disabled: hsl(var(--contrast-300));
+  --calendar-dark-range-background: color-mix(in oklab, hsl(var(--primary)), white 60%);
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2950-64225" />
