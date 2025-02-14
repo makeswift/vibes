@@ -75,9 +75,9 @@ export const primitives = [
   },
   {
     name: 'checkbox',
-    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-checkbox'],
+    dependencies: ['@radix-ui/react-checkbox', '@radix-ui/react-label', 'lucide-react', 'clsx'],
     registryDependencies: [],
-    files: ['primitives/checkbox/index.tsx'],
+    files: ['form/checkbox/index.tsx'],
   },
   {
     name: 'counter',
