@@ -36,10 +36,10 @@ export interface CardCarouselProps {
  *
  * ```css
  * :root {
- *   --card-light-empty-title: hsl(var(--foreground));
- *   --card-light-empty-subtitle: hsl(var(--contrast-500));
- *   --card-dark-empty-title: hsl(var(--background));
- *   --card-dark-empty-subtitle: hsl(var(--contrast-100));
+ *   --card-carousel-light-empty-title: hsl(var(--foreground));
+ *   --card-carousel-light-empty-subtitle: hsl(var(--contrast-500));
+ *   --card-carousel-dark-empty-title: hsl(var(--background));
+ *   --card-carousel-dark-empty-subtitle: hsl(var(--contrast-100));
  * }
  * ```
  */
@@ -190,8 +190,8 @@ export function CardCarouselEmptyState({
             className={clsx(
               '@4x:leading-none font-heading text-2xl leading-tight @4xl:text-4xl',
               {
-                light: 'text-[var(--card-light-empty-title,hsl(var(--foreground)))]',
-                dark: 'text-[var(--card-dark-empty-title,hsl(var(--background)))]',
+                light: 'text-[var(--card-carousel-light-empty-title,hsl(var(--foreground)))]',
+                dark: 'text-[var(--card-carousel-dark-empty-title,hsl(var(--background)))]',
               }[carouselColorScheme],
             )}
           >
@@ -201,8 +201,8 @@ export function CardCarouselEmptyState({
             className={clsx(
               'text-sm @4xl:text-lg',
               {
-                light: 'text-[var(--card-light-empty-subtitle,hsl(var(--contrast-500)))]',
-                dark: 'text-[var(--card-dark-empty-subtitle,hsl(var(--contrast-200)))]',
+                light: 'text-[var(--card-carousel-light-empty-subtitle,hsl(var(--contrast-500)))]',
+                dark: 'text-[var(--card-carousel-dark-empty-subtitle,hsl(var(--contrast-200)))]',
               }[carouselColorScheme],
             )}
           >

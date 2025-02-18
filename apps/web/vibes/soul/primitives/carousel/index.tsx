@@ -118,7 +118,7 @@ function Carousel({
       <div
         {...props}
         aria-roledescription="carousel"
-        className={clsx('relative @container', hideOverflow && 'overflow-hidden', className)}
+        className={clsx('relative p-1.5 @container', hideOverflow && 'overflow-hidden', className)}
         onKeyDownCapture={handleKeyDown}
         role="region"
       >
