@@ -185,6 +185,19 @@ export const navigation = [
         file: 'docs/address-list-section.mdx',
         component: 'address-list',
       },
+      {
+        title: 'Blog Post Carousel',
+        slug: 'blog-post-carousel',
+        file: 'docs/blog-post-carousel.mdx',
+        component: 'blog-post-carousel',
+      },
+      {
+        title: 'Breadcrumbs',
+        slug: 'breadcrumbs',
+        file: 'docs/breadcrumbs.mdx',
+        component: 'breadcrumbs',
+      },
+
       { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
       {
         title: 'Card Carousel',
@@ -206,6 +219,12 @@ export const navigation = [
         component: 'dynamic-form-section',
       },
       { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
+      {
+        title: 'Featured Blog Post Carousel',
+        slug: 'featured-blog-post-carousel',
+        file: 'docs/featured-blog-post-carousel.mdx',
+        component: 'featured-blog-post-carousel',
+      },
       {
         title: 'Featured Blog Post List',
         slug: 'featured-blog-post-list',

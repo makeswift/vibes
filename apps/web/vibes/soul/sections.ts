@@ -20,6 +20,12 @@ export const sections = [
     files: ['sections/address-list-section/index.tsx'],
   },
   {
+    name: 'blog-post-carousel',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['carousel', 'skeleton', 'blog-post-card', 'streamable'],
+    files: ['sections/blog-post-carousel/index.tsx'],
+  },
+  {
     name: 'blog-post-list',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -54,6 +60,12 @@ export const sections = [
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
     files: ['sections/discount/index.tsx'],
+  },
+  {
+    name: 'featured-blog-post-carousel',
+    dependencies: [],
+    registryDependencies: ['blog-post-carousel', 'animated-link'],
+    files: ['sections/featured-blog-post-carousel/index.tsx'],
   },
   {
     name: 'featured-blog-post-list',
