@@ -27,14 +27,17 @@ import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
 const breadcrumbs = [
   {
+    id: '1',
     label: 'Home',
     href: '#',
   },
   {
+    id: '2',
     label: 'Blog',
     href: '#',
   },
   {
+    id: '3',
     label: "Top 5 Plants to Purify Your Home's Air",
     href: '#',
   },

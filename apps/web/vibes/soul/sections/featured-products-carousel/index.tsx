@@ -19,6 +19,7 @@ interface Props {
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
+  hideOverflow?: boolean;
 }
 
 export function FeaturedProductsCarousel({
@@ -32,6 +33,7 @@ export function FeaturedProductsCarousel({
   scrollbarLabel,
   previousLabel,
   nextLabel,
+  hideOverflow = false,
 }: Props) {
   return (
     <SectionLayout className="group/products-carousel">
@@ -52,7 +54,7 @@ export function FeaturedProductsCarousel({
       <ProductsCarousel
         emptyStateSubtitle={emptyStateSubtitle}
         emptyStateTitle={emptyStateTitle}
-        hideOverflow={false}
+        hideOverflow={hideOverflow}
         nextLabel={nextLabel}
         placeholderCount={placeholderCount}
         previousLabel={previousLabel}

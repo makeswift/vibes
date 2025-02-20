@@ -76,10 +76,12 @@ export default function Preview() {
         blogPosts={blogPostsPromise}
         breadcrumbs={[
           {
+            id: '1',
             label: 'Home',
             href: '#',
           },
           {
+            id: '2',
             label: 'Blog',
             href: '#',
           },
