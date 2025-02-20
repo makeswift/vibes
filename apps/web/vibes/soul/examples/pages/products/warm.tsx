@@ -1,6 +1,6 @@
 import { getFilters, getProducts, getSortOptions } from '@/vibes/soul/data';
 import { locales } from '@/vibes/soul/data/locales';
-import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/warm';
+import { breadcrumbs } from '@/vibes/soul/examples/sections/breadcrumbs/warm';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm';
 import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/warm';

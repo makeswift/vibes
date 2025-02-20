@@ -64,10 +64,7 @@ export function BlogPostListSkeleton({
 }: Pick<BlogPostListProps, 'className' | 'placeholderCount' | 'pending'>) {
   return (
     <Skeleton.Root
-      className={clsx(
-        '@container group-has-[[data-pending]]/blog-post-list:animate-pulse',
-        className,
-      )}
+      className={clsx('group-has-[[data-pending]]/blog-post-list:animate-pulse', className)}
       pending={pending}
     >
       <div className="mx-auto grid grid-cols-1 gap-x-5 gap-y-8 @md:grid-cols-2 @xl:gap-y-10 @3xl:grid-cols-3">

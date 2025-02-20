@@ -1,7 +1,7 @@
-import { breadcrumbs } from '@/vibes/soul/examples/primitives/breadcrumbs/electric';
+import { breadcrumbs } from '@/vibes/soul/examples/sections/breadcrumbs/electric';
 import { Streamable } from '@/vibes/soul/lib/streamable';
-import { Breadcrumb } from '@/vibes/soul/primitives/breadcrumbs';
 import { Price } from '@/vibes/soul/primitives/price-label';
+import { BreadcrumbWithId } from '@/vibes/soul/sections/breadcrumbs';
 import { ProductDetail } from '@/vibes/soul/sections/product-detail';
 import { Field } from '@/vibes/soul/sections/product-detail/schema';
 
@@ -70,7 +70,7 @@ export const product = {
 };
 
 export default function Preview() {
-  const breadcrumbsPromise = new Promise<Breadcrumb[]>((resolve) => {
+  const breadcrumbsPromise = new Promise<BreadcrumbWithId[]>((resolve) => {
     setTimeout(() => resolve(breadcrumbs), 1000);
   });
 

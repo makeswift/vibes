@@ -27,7 +27,7 @@ export function FeaturedBlogPostCarousel({
   nextLabel,
 }: Props) {
   return (
-    <SectionLayout containerSize="2xl" hideOverflow>
+    <SectionLayout containerSize="2xl">
       <div className="mb-6 flex w-full flex-row flex-wrap justify-between gap-x-8 px-1.5 text-foreground @4xl:mb-8 @4xl:items-end">
         <div className="flex-1">
           <h2 className="font-heading text-2xl font-medium leading-none @xl:text-3xl @4xl:text-4xl">
