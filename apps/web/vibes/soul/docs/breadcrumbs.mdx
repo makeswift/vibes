@@ -10,18 +10,72 @@ previewSize: xs
 
 ## Usage
 
-<CodeBlock lang="bash">{`import { Breadcrumbs } from '@/vibes/soul/primitives/breadcrumbs'`}</CodeBlock>
+{/* prettier-ignore-start */}
 
-<CodeBlock lang="bash">{`<Breadcrumbs />`}</CodeBlock>
+<CodeBlock lang="ts">{`
+import { Breadcrumbs, BreadcrumbWithId } from '@/vibes/soul/sections/breadcrumbs';
+
+function Usage() {
+
+    const breadcrumbs: BreadcrumbWithId[] = [
+      {
+        id: '1',
+        label: 'Home',
+        href: '#',
+      },
+      {
+        id: '2',
+        label: 'Bags',
+        href: '#',
+      },
+      {
+        id: '3',
+        label: 'Handle Bags',
+        href: '#',
+      },
+    ];
+
+    return (
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
 
 ## API Reference
 
-| Prop                                                                                       | Type                                                                           | Default      |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------ |
-| `type` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `enum` <Tooltip content={`"single" ${String.fromCharCode(124)} "multiple"`} /> | `"multiple"` |
-| `title` <Tooltip content='This is an example tooltip for what this particular prop does'/> | `string`                                                                       |              |
-| `body` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `string`                                                                       |              |
+### BreadcrumbsProps
+
+| Prop           | Type                                                                                                      | Default |
+| -------------- | --------------------------------------------------------------------------------------------------------- | ------- |
+| `breadcrumbs*` | [Streamable](/docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/> |         |
+| `className`    | `string`                                                                                                  |         |
+
+### BreadcrumbWithId
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `id`    | `string` |         |
+| `label` | `string` |         |
+| `href`  | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+```css
+:root {
+  --breadcrumbs-font-family: var(--font-family-body);
+  --breadcrumbs-primary-text: hsl(var(--foreground));
+  --breadcrumbs-secondary-text: hsl(var(--contrast-500));
+  --breadcrumbs-icon: hsl(var(--contrast-500));
+  --breadcrumbs-hover: hsl(var(--primary));
+}
+```
 
 ## Figma
 
-<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=737-16279&t=dbm9GtAtS2A3vy2g-4" />
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2901-59059" />

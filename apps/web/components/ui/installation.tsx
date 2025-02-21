@@ -69,7 +69,7 @@ export function Installation({ vibe, componentName }: { vibe: Vibe; componentNam
                   The {componentName} component uses the{' '}
                   <RegistryDependencies items={component.registryDependencies} vibe={vibe} />. Make
                   sure you have added {component.registryDependencies.length > 1 ? 'them' : 'it'} to
-                  your project
+                  your project.
                 </p>
               </Step>
             )}
