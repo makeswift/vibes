@@ -2,11 +2,15 @@ import { Sliders } from 'lucide-react';
 import { Suspense } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Breadcrumb, Breadcrumbs, BreadcrumbsSkeleton } from '@/vibes/soul/primitives/breadcrumbs';
 import { Button } from '@/vibes/soul/primitives/button';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
 import * as SidePanel from '@/vibes/soul/primitives/side-panel';
+import {
+  Breadcrumbs,
+  BreadcrumbsSkeleton,
+  BreadcrumbWithId,
+} from '@/vibes/soul/sections/breadcrumbs';
 import { Filter, FiltersPanel } from '@/vibes/soul/sections/products-list-section/filters-panel';
 import {
   Sorting,
@@ -15,7 +19,7 @@ import {
 } from '@/vibes/soul/sections/products-list-section/sorting';
 
 interface Props {
-  breadcrumbs?: Streamable<Breadcrumb[]>;
+  breadcrumbs?: Streamable<BreadcrumbWithId[]>;
   title?: Streamable<string | null>;
   totalCount: Streamable<number>;
   products: Streamable<ListProduct[]>;

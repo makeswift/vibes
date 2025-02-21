@@ -17,15 +17,13 @@ export function SectionLayout({
   className,
   children,
   containerSize = '2xl',
-  hideOverflow = false,
 }: {
   className?: string;
   children: React.ReactNode;
   containerSize?: 'md' | 'lg' | 'xl' | '2xl' | 'full';
-  hideOverflow?: boolean;
 }) {
   return (
-    <section className={clsx('@container', hideOverflow && 'overflow-hidden', className)}>
+    <section className={clsx('overflow-hidden @container', className)}>
       <div
         className={clsx(
           'mx-auto px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20',

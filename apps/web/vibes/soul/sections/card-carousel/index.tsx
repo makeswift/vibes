@@ -126,7 +126,8 @@ export function CardCarouselSkeleton({
 >) {
   return (
     <Skeleton.Root
-      className={clsx('@container', hideOverflow && 'overflow-hidden', className)}
+      className={clsx('group-has-[[data-pending]]/card-carousel:animate-pulse', className)}
+      hideOverflow={hideOverflow}
       pending
     >
       <div className="w-full">
@@ -169,9 +170,7 @@ export function CardCarouselEmptyState({
   | 'carouselColorScheme'
 >) {
   return (
-    <Skeleton.Root
-      className={clsx('relative @container', hideOverflow && 'overflow-hidden', className)}
-    >
+    <Skeleton.Root className={clsx('relative', className)} hideOverflow={hideOverflow}>
       <div className="w-full">
         <div className="-ml-4 flex [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:-ml-5">
           {Array.from({ length: placeholderCount }).map((_, index) => (

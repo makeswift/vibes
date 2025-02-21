@@ -79,14 +79,17 @@ export const cache = createSearchParamsCache(parser);
 
 const breadcrumbs = [
   {
+    id: '1',
     label: 'Home',
     href: '#',
   },
   {
+    id: '2',
     label: 'Bags',
     href: '#',
   },
   {
+    id: '3',
     label: 'Handle Bags',
     href: '#',
   },

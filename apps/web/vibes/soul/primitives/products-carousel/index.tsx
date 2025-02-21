@@ -76,10 +76,10 @@ export function ProductsCarousel({
 
         return (
           <Carousel className={className} hideOverflow={hideOverflow}>
-            <CarouselContent className="mb-10">
+            <CarouselContent className="-ml-4 mb-10 @2xl:-ml-5">
               {products.map(({ id, ...product }) => (
                 <CarouselItem
-                  className="basis-[calc(100%-1rem)] @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)]"
+                  className="basis-full pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
                   key={id}
                 >
                   <ProductCard
@@ -126,11 +126,8 @@ export function ProductsCarouselSkeleton({
 }) {
   return (
     <Skeleton.Root
-      className={clsx(
-        'group-has-[[data-pending]]/products-carousel:animate-pulse',
-        hideOverflow && 'overflow-hidden',
-        className,
-      )}
+      className={clsx('group-has-[[data-pending]]/products-carousel:animate-pulse', className)}
+      hideOverflow={hideOverflow}
       pending={pending}
     >
       <div className="w-full">

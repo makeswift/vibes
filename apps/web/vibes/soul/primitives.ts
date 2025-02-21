@@ -38,12 +38,6 @@ export const primitives = [
     files: ['primitives/blog-post-card/index.tsx'],
   },
   {
-    name: 'breadcrumbs',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['primitives/breadcrumbs/index.tsx'],
-  },
-  {
     name: 'button',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],

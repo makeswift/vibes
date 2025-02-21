@@ -56,12 +56,6 @@ export const navigation = [
         file: 'docs/blog-post-list.mdx',
         component: 'blog-post-list',
       },
-      {
-        title: 'Breadcrumbs',
-        slug: 'breadcrumbs',
-        file: 'docs/breadcrumbs.mdx',
-        component: 'breadcrumbs',
-      },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
         title: 'Button Link',
