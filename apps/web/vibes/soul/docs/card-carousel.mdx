@@ -6,3 +6,133 @@ preview:
   Luxury: card-carousel-luxury
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { CardWithId } from '@/vibes/soul/primitives/card';
+import { CardCarousel } from '@/vibes/soul/sections/card-carousel';
+
+function Usage() {
+    return (
+        <CardCarousel
+            cards={cards}
+            className="w-full"
+            emptyStateSubtitle="Try browsing our complete catalog of products."
+            emptyStateTitle="No products found"
+            iconColorScheme="dark"
+        />
+    );
+}
+
+const cards: CardWithId[] = [
+    {
+      id: '1',
+      title: 'Mini Bar Bag',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+        alt: 'Mini Bar Bag',
+      },
+      href: '#',
+    },
+    {
+      id: '2',
+      title: 'Mini Bar Bag',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
+        alt: 'Mini Bar Bag',
+      },
+      href: '#',
+    },
+    {
+      id: '3',
+      title: 'Stem Caddy',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
+        alt: 'Stem Caddy',
+      },
+      href: '#',
+    },
+    {
+      id: '4',
+      title: 'Hip Slinger',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
+        alt: 'Hip Slinger',
+      },
+      href: '#',
+    },
+    {
+      id: '5',
+      title: 'Everyday Tote',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+        alt: 'Everyday Tote',
+      },
+      href: '#',
+    },
+    {
+      id: '6',
+      title: 'Mini Saddlebag',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
+        alt: 'Mini Saddlebag',
+      },
+      href: '#',
+    },
+];
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### CardCarouselProps
+
+| Prop                  | Type                                                                                           | Default   |
+| --------------------- | ---------------------------------------------------------------------------------------------- | --------- |
+| `cards*`              | [Streamable](/docs/soul/streamable)`<CardWithId[]>` <Tooltip content=" See CardWithId below"/> |           |
+| `aspectRatio`         | `'5:6' \| '3:4' \| '1:1'`                                                                      |           |
+| `textColorScheme`     | `'light'\| 'dark'`                                                                             |           |
+| `iconColorScheme`     | `'light'\| 'dark'`                                                                             |           |
+| `carouselColorScheme` | `'light'\| 'dark'`                                                                             | `'light'` |
+| `className`           | `string`                                                                                       |           |
+| `emptyStateTitle`     | [Streamable](/docs/soul/streamable)`<string>`                                                  |           |
+| `emptyStateSubtitle`  | [Streamable](/docs/soul/streamable)`<string>`                                                  |           |
+| `scrollbarLabel`      | `string`                                                                                       |           |
+| `previousLabel`       | `string`                                                                                       |           |
+| `nextLabel`           | `string`                                                                                       |           |
+| `showButtons`         | `boolean`                                                                                      |           |
+| `showScrollbar`       | `boolean`                                                                                      |           |
+| `hideOverflow`        | `boolean`                                                                                      |           |
+| `placeholderCount`    | `number`                                                                                       |           |
+
+### CardWithId
+
+| Prop     | Type                           | Default |
+| -------- | ------------------------------ | ------- |
+| `title*` | `string`                       |         |
+| `image`  | `{ src: string; alt: string }` |         |
+| `href*`  | `string`                       |         |
+| `id*`    | `string`                       |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+```css
+:root {
+  --card-carousel-light-empty-title: hsl(var(--foreground));
+  --card-carousel-light-empty-subtitle: hsl(var(--contrast-500));
+  --card-carousel-dark-empty-title: hsl(var(--background));
+  --card-carousel-dark-empty-subtitle: hsl(var(--contrast-100));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2275-42385" />
