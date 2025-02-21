@@ -6,3 +6,81 @@ preview:
   Luxury: blog-post-carousel-luxury
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+
+function Usage() {
+
+    const posts = [
+      {
+        id: '5',
+        title: 'A Guide to Low-Light Houseplants',
+        content:
+          'Not all plants need bright sunlight to thrive. This guide highlights the best low-light houseplants, perfect for those darker corners of your home or office that need a touch of green.',
+        image: {
+          src: 'https://rstr.in/monogram/vibes/T7CeSkvi11I/OrJN5KVj7I1',
+          alt: 'Low-Light Houseplants',
+        },
+        date: '2024-07-20',
+        href: '#',
+        author: 'Author Name',
+      },
+    ];
+
+    return (
+      <BlogPostCarousel
+        blogPosts={posts}
+        emptyStateSubtitle="Check back later for new content."
+        emptyStateTitle="No posts found"
+      />
+    );
+}
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### BlogPostCarousel
+
+| Prop                 | Type                                                                                                       | Default |
+| -------------------- | ---------------------------------------------------------------------------------------------------------- | ------- |
+| `className`          | `string`                                                                                                   |         |
+| `blogPosts*`         | [Streamable](/docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="see BlogPostWithId type below"/> |         |
+| `scrollbarLabel`     | `string`                                                                                                   |         |
+| `previousLabel`      | `string`                                                                                                   |         |
+| `nextLabel`          | `string`                                                                                                   |         |
+| `placeholderCount`   | `number`                                                                                                   |         |
+| `emptyStateTitle`    | [Streamable](/docs/soul/streamable)`<string>`                                                              |         |
+| `emptyStateSubtitle` | [Streamable](/docs/soul/streamable)`<string>`                                                              |         |
+| `hideOverflow`       | `boolean`                                                                                                  | `true`  |
+
+### BlogPostWithId
+
+| Prop       | Type                                   | Default |
+| ---------- | -------------------------------------- | ------- |
+| `id*`      | `string`                               |         |
+| `title*`   | `string`                               |         |
+| `author`   | `string  \| null`                      |
+| `content*` | `string`                               |         |
+| `date*`    | `string`                               |         |
+| `image`    | `{src: string; alt: string; } \| null` |         |
+| `href*`    | `string`                               |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+```css
+:root {
+  --blog-post-carousel-empty-title: hsl(var(--foreground));
+  --blog-post-carousel-empty-subtitle: hsl(var(--contrast-500));
+}
+```
