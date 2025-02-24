@@ -3,7 +3,7 @@
 import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel';
 
 import { SoulBrandName } from '../brands';
-import { CardProduct } from '../primitives/product-card';
+import { ProductCardWithId } from '../primitives/product-card';
 
 // Common product type
 interface BaseProduct {
@@ -517,7 +517,7 @@ export async function getFilters(brand: SoulBrandName): Promise<Filter[]> {
 export async function getProducts(
   brand: SoulBrandName,
   filterParams?: FilterParams,
-): Promise<CardProduct[]> {
+): Promise<ProductCardWithId[]> {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   let brandProducts = products[brand] as Array<ElectricProduct | LuxuryProduct | WarmProduct>;
@@ -588,5 +588,5 @@ export async function getProducts(
     }
   }
 
-  return brandProducts as unknown as CardProduct[];
+  return brandProducts as unknown as ProductCardWithId[];
 }
