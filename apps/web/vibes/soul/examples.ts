@@ -202,6 +202,27 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/card')),
   },
   {
+    name: 'carousel-warm',
+    dependencies: ['embla-carousel-react', 'lucide-react', 'clsx'],
+    registryDependencies: [],
+    files: ['examples/primitives/carousel/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/carousel/warm')),
+  },
+  {
+    name: 'carousel-electric',
+    dependencies: ['embla-carousel-react', 'lucide-react', 'clsx'],
+    registryDependencies: [],
+    files: ['examples/primitives/carousel/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/carousel/electric')),
+  },
+  {
+    name: 'carousel-luxury',
+    dependencies: ['embla-carousel-react', 'lucide-react', 'clsx'],
+    registryDependencies: [],
+    files: ['examples/primitives/carousel/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/carousel/luxury')),
+  },
+  {
     name: 'cart-electric',
     dependencies: [],
     registryDependencies: ['cart-electric'],
