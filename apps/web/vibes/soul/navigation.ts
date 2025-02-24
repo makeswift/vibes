@@ -91,7 +91,6 @@ export const navigation = [
         component: 'cursor-pagination',
       },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
-      { title: 'Dropdown', slug: 'dropdown', file: 'docs/dropdown.mdx', component: 'dropdown' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
       {
         title: 'Inline Email Form',
@@ -99,7 +98,6 @@ export const navigation = [
         file: 'docs/inline-email-form.mdx',
         component: 'inline-email-form',
       },
-      { title: 'Input', slug: 'input', file: 'docs/input.mdx', component: 'input' },
       {
         title: 'Navigation',
         slug: 'navigation',
@@ -142,12 +140,6 @@ export const navigation = [
         slug: 'streamable',
         file: 'docs/streamable.mdx',
         component: 'streamable',
-      },
-      {
-        title: 'Text Area',
-        slug: 'textarea',
-        file: 'docs/textarea.mdx',
-        component: 'textarea',
       },
       {
         title: 'Toaster',

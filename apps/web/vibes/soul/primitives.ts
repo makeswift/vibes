@@ -86,12 +86,6 @@ export const primitives = [
     files: ['primitives/cursor-pagination/index.tsx'],
   },
   {
-    name: 'dropdown',
-    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-dropdown-menu'],
-    registryDependencies: [],
-    files: ['primitives/dropdown/index.tsx'],
-  },
-  {
     name: 'favorite',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -112,12 +106,6 @@ export const primitives = [
     dependencies: ['clsx'],
     registryDependencies: ['button'],
     files: ['sections/featured-video/index.tsx'],
-  },
-  {
-    name: 'input',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['primitives/input/index.tsx'],
   },
   {
     name: 'inline-email-form',
@@ -178,11 +166,5 @@ export const primitives = [
     dependencies: ['uuid'],
     registryDependencies: [],
     files: ['lib/streamable.tsx'],
-  },
-  {
-    name: 'textarea',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['primitives/textarea/index.tsx'],
   },
 ] satisfies Components;
