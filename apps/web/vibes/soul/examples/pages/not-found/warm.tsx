@@ -5,7 +5,7 @@ import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigati
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/warm';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { CardProduct } from '@/vibes/soul/primitives/product-card';
+import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
@@ -51,7 +51,7 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 // Products
-export const products: CardProduct[] = [
+export const products: ProductCardWithId[] = [
   {
     id: '1',
     title: 'Product Name',

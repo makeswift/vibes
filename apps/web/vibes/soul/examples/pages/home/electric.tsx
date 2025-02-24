@@ -9,7 +9,7 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/el
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { CardProduct } from '@/vibes/soul/primitives/product-card';
+import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
 import { Feature } from '@/vibes/soul/sections/feature';
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel';
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image';
@@ -61,7 +61,7 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 // Featured Products
-export const newArrivals: CardProduct[] = [
+export const newArrivals: ProductCardWithId[] = [
   {
     id: '1',
     title: 'Heart to Heart',

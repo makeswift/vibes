@@ -82,6 +82,12 @@ export const navigation = [
         component: 'carousel',
       },
       { title: 'Chip', slug: 'chip', file: 'docs/chip.mdx', component: 'chip' },
+      {
+        title: 'Compare Card',
+        slug: 'compare-card',
+        file: 'docs/compare-card.mdx',
+        component: 'compare-card',
+      },
       { title: 'Countdown', slug: 'countdown', file: 'docs/countdown.mdx', component: 'countdown' },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
       {

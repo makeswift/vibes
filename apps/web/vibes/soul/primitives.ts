@@ -56,6 +56,12 @@ export const primitives = [
     files: ['primitives/calendar/index.tsx'],
   },
   {
+    name: 'compare-card',
+    dependencies: ['clsx'],
+    registryDependencies: ['skeleton', 'product-card', 'rating', 'button'],
+    files: ['primitives/compare-card/index.tsx'],
+  },
+  {
     name: 'card',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['skeleton'],

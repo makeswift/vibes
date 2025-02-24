@@ -2,14 +2,14 @@ import { clsx } from 'clsx';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import {
-  CardProduct,
   ProductCard,
   ProductCardSkeleton,
+  ProductCardWithId,
 } from '@/vibes/soul/primitives/product-card';
 
 import { CompareDrawer } from './compare-drawer';
 
-export type ListProduct = CardProduct;
+export type ListProduct = ProductCardWithId;
 
 interface Props {
   products: Streamable<ListProduct[]>;
