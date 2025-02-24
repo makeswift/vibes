@@ -300,13 +300,6 @@ export const examples = [
     component: lazy(() => import('./examples/sections/discount')),
   },
   {
-    name: 'dropdown-example',
-    dependencies: [],
-    registryDependencies: ['dropdown'],
-    files: ['examples/primitives/dropdown/index.tsx'],
-    component: lazy(() => import('./examples/primitives/dropdown')),
-  },
-  {
     name: 'favorite-example',
     dependencies: [],
     registryDependencies: ['favorite'],
@@ -505,13 +498,6 @@ export const examples = [
     registryDependencies: [],
     files: ['examples/primitives/inline-email-form/index.tsx'],
     component: lazy(() => import('./examples/primitives/inline-email-form')),
-  },
-  {
-    name: 'input-example',
-    dependencies: [],
-    registryDependencies: ['input'],
-    files: ['examples/primitives/input/index.tsx'],
-    component: lazy(() => import('./examples/primitives/input')),
   },
   {
     name: 'navigation-electric',
@@ -890,13 +876,6 @@ export const examples = [
     registryDependencies: ['subscribe'],
     files: ['examples/sections/subscribe/index.tsx'],
     component: lazy(() => import('./examples/sections/subscribe')),
-  },
-  {
-    name: 'textarea-example',
-    dependencies: [],
-    registryDependencies: ['textarea'],
-    files: ['examples/primitives/textarea/index.tsx'],
-    component: lazy(() => import('./examples/primitives/textarea')),
   },
   {
     name: 'toaster-example',
