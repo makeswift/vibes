@@ -12,15 +12,19 @@ export default function Preview() {
   return (
     <div className="p-10">
       <Carousel>
-        <CarouselContent className="h-60 space-x-10 px-10">
+        <CarouselContent className="mb-10">
           {images.map(({ src, alt }, index) => (
-            <CarouselItem className="relative w-60 overflow-hidden rounded-md" key={index}>
-              <Image alt={alt} className="object-cover" fill src={src} />
+            <CarouselItem className="basis-full @sm:basis-1/2 @4xl:basis-1/4" key={index}>
+              <div className="relative aspect-square overflow-hidden rounded-md bg-contrast-100">
+                <Image alt={alt} className="object-cover" fill src={src} />
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselScrollbar />
-        <CarouselButtons nextLabel="Next" previousLabel="Previous" />
+        <div className="flex w-full items-center justify-between">
+          <CarouselScrollbar />
+          <CarouselButtons nextLabel="Next" previousLabel="Previous" />
+        </div>
       </Carousel>
     </div>
   );
