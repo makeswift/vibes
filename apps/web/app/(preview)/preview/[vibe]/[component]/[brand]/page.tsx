@@ -55,7 +55,7 @@ export default async function Page({
         `}
       </style>
       <Suspense fallback={null}>
-        <Component searchParams={searchParams} />
+        <Component searchParams={await searchParams} />
       </Suspense>
     </>
   );
