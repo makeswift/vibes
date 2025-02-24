@@ -16,7 +16,13 @@ export default function Preview() {
           {images.map(({ src, alt }, index) => (
             <CarouselItem className="basis-full @sm:basis-1/2 @4xl:basis-1/4" key={index}>
               <div className="relative aspect-square overflow-hidden rounded-md bg-contrast-100">
-                <Image alt={alt} className="object-cover" fill src={src} />
+                <Image
+                  alt={alt}
+                  className="object-cover"
+                  fill
+                  sizes="(min-width: 80rem) 25vw, (min-width: 56rem) 33vw, (min-width: 28rem) 50vw, 100vw"
+                  src={src}
+                />
               </div>
             </CarouselItem>
           ))}
