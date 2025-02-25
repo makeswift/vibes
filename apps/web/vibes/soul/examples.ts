@@ -864,6 +864,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/sign-in-section')),
   },
   {
+    name: 'skeleton-example',
+    dependencies: [],
+    registryDependencies: ['sign-in-section'],
+    files: ['examples/primitives/skeleton/index.tsx'],
+    component: lazy(() => import('./examples/primitives/skeleton')),
+  },
+  {
     name: 'dynamic-form-section-example',
     dependencies: [],
     registryDependencies: ['dynamic-form-section'],
