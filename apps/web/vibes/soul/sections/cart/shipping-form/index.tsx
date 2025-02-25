@@ -76,6 +76,7 @@ interface Props {
   shippingOptionsLabel?: string;
   updateShippingLabel?: string;
   addShippingLabel?: string;
+  showShippingForm?: boolean;
 }
 
 export function ShippingForm({
@@ -99,8 +100,9 @@ export function ShippingForm({
   shippingOptionsLabel = 'Shipping options',
   updateShippingLabel = 'Update shipping',
   addShippingLabel = 'Add shipping',
+  showShippingForm = false,
 }: Props) {
-  const [showForms, setShowForms] = useState(false);
+  const [showForms, setShowForms] = useState(showShippingForm);
   const [showAddressForm, setShowAddressForm] = useState(!address);
 
   const [state, formAction] = useActionState(action, {
