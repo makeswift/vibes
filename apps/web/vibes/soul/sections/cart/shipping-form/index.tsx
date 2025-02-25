@@ -101,7 +101,7 @@ export function ShippingForm({
   addShippingLabel = 'Add shipping',
 }: Props) {
   const [showForms, setShowForms] = useState(false);
-  const [showAddressForm, setShowAddressForm] = useState(!Boolean(address));
+  const [showAddressForm, setShowAddressForm] = useState(!address);
 
   const [state, formAction] = useActionState(action, {
     lastResult: null,
