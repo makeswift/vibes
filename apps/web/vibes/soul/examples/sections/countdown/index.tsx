@@ -1,11 +1,14 @@
 import { Countdown } from '@/vibes/soul/sections/countdown';
 
 export default function Preview() {
+  const twoWeeksFromNow = new Date();
+  twoWeeksFromNow.setDate(twoWeeksFromNow.getDate() + 14);
+
   return (
     <div className="flex flex-col gap-3">
       <Countdown
-        targetDate={new Date('2024-10-24T00:00:00')}
-        title="Next.js Conf is coming!"
+        targetDate={twoWeeksFromNow}
+        title="Our event is coming!"
         variant={{
           type: 'default',
           images: [
@@ -15,18 +18,18 @@ export default function Preview() {
         }}
       />
       <Countdown
-        targetDate={new Date('2024-10-24T00:00:00')}
-        title="Next.js Conf is coming!"
+        targetDate={twoWeeksFromNow}
+        title="Our event is coming!"
         variant={{ type: 'full', backgroundImage: 'https://rstr.in/monogram/vibes/VSkA1mBG78U' }}
       />
       <Countdown
-        targetDate={new Date('2024-10-24T00:00:00')}
-        title="Next.js Conf is coming!"
+        targetDate={twoWeeksFromNow}
+        title="Our event is coming!"
         variant={{ type: 'split', image: 'https://rstr.in/monogram/vibes/VSkA1mBG78U' }}
       />
       <Countdown
-        targetDate={new Date('2024-10-24T00:00:00')}
-        title="Next.js Conf is coming!"
+        targetDate={twoWeeksFromNow}
+        title="Our event is coming!"
         variant={{ type: 'banner' }}
       />
     </div>

@@ -3,7 +3,7 @@
 import { clsx } from 'clsx';
 import { X } from 'lucide-react';
 import Image from 'next/image';
-import React, { useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 
 interface Default {
   type: 'default';
@@ -24,17 +24,35 @@ interface Banner {
   type: 'banner';
 }
 
-interface Props {
+export interface CountdownProps {
   title: string;
   targetDate: Date;
   variant: Default | Full | Split | Banner;
 }
 
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --countdown-default-split-background: hsl(var(--primary-shadow));
+ *   --countdown-number-default-background: hsl(var(--primary));
+ *   --countdown-number-default-text: hsl(var(--primary-shadow));
+ *   --countdown-number-full-background: hsl(var(--primary-shadow));
+ *   --countdown-number-full-text: hsl(var(--primary));
+ *   --countdown-image-background: hsl(var(--primary-shadow));
+ *   --countdown-text: hsl(var(--background));
+ *   --countdown-icon: hsl(var(--background));
+ *   --countdown-font-family: var(--font-family-body);
+ * }
+ * ```
+ */
 export const Countdown = function Countdown({
   title,
   targetDate,
   variant = { type: 'default' },
-}: Props) {
+}: CountdownProps) {
   const calculateTimeLeft = useCallback(() => {
     const difference = +targetDate - +new Date();
     let timeRemaining = { days: 0, hours: 0, mins: 0, secs: 0 };
@@ -103,8 +121,8 @@ export const Countdown = function Countdown({
       className={clsx(
         'flex items-center justify-center rounded-lg',
         variant.type === 'full'
-          ? 'bg-primary-shadow text-primary'
-          : 'bg-primary text-primary-shadow',
+          ? 'bg-[var(--countdown-number-full-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] text-[var(--countdown-number-full-text,hsl(var(--primary)))]'
+          : 'bg-[var(--countdown-number-default-background,hsl(var(--primary)))] text-[var(--countdown-number-default-text,color-mix(in_oklab,hsl(var(--primary)),black_75%))]',
         {
           default: 'h-14 w-14 @2xl:h-28 @2xl:w-28',
           full: 'h-14 w-14 @2xl:h-28 @2xl:w-28',
@@ -120,17 +138,21 @@ export const Countdown = function Countdown({
 
   return (
     <section
-      className={clsx('relative grid origin-top transition-all duration-300 ease-out @container', {
-        'pointer-events-none grid-rows-[0fr]': variant.type === 'banner' && banner.dismissed,
-        'grid-rows-[1fr]': variant.type === 'banner' && !banner.dismissed,
-        'fixed top-0': variant.type === 'banner',
-        'bg-primary-shadow': variant.type === 'default' || variant.type === 'split',
-      })}
+      className={clsx(
+        'relative grid origin-top font-[family-name:var(--button-font-family,var(--font-family-body))] transition-all duration-300 ease-out @container',
+        {
+          'pointer-events-none grid-rows-[0fr]': variant.type === 'banner' && banner.dismissed,
+          'grid-rows-[1fr]': variant.type === 'banner' && !banner.dismissed,
+          'fixed top-0': variant.type === 'banner',
+          'bg-[var(--countdown-default-split-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))]':
+            variant.type === 'default' || variant.type === 'split',
+        },
+      )}
     >
       <div className="overflow-hidden">
         <div
           className={clsx(
-            'relative flex flex-col items-center justify-center overflow-hidden bg-primary-shadow bg-cover bg-center bg-no-repeat font-medium',
+            'relative flex flex-col items-center justify-center overflow-hidden bg-[var(--countdown-image-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] bg-cover bg-center bg-no-repeat font-medium',
             {
               default: 'py-32 @5xl:container @5xl:mx-auto',
               full: 'py-40',
@@ -171,7 +193,7 @@ export const Countdown = function Countdown({
 
           <div
             className={clsx(
-              'relative z-10 text-center text-white',
+              'relative z-10 px-4 text-center text-[var(--countdown-text,hsl(var(--background)))] @xl:px-6 @4xl:px-8',
               {
                 default:
                   'text-3xl @2xl:text-6xl [&>div>div>span]:text-lg [&>h2]:text-3xl @2xl:[&>h2]:text-[40px]',
@@ -191,13 +213,13 @@ export const Countdown = function Countdown({
             </h2>
             <div className="flex justify-center space-x-2">
               {Object.entries(timeLeft).map(([unit, value], index, array) => (
-                <React.Fragment key={unit}>
+                <Fragment key={unit}>
                   <div className="flex flex-col items-center" key={unit}>
                     <TwoDigitAnimatedNumber value={value} />
                     <span className="mt-1 capitalize">{unit}</span>
                   </div>
                   {index < array.length - 1 && <span>:</span>}
-                </React.Fragment>
+                </Fragment>
               ))}
             </div>
           </div>
@@ -207,7 +229,7 @@ export const Countdown = function Countdown({
         {variant.type === 'banner' ? (
           <button
             aria-label="Dismiss banner"
-            className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-white transition-transform hover:scale-110"
+            className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-[var(--countdown-icon,hsl(var(--background)))] transition-transform hover:scale-110"
             onClick={(e) => {
               e.preventDefault();
               hideBanner();
