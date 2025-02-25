@@ -17,10 +17,17 @@ export default function Preview() {
     setHidden(false);
   }
 
+  function handleDismiss() {
+    localStorage.setItem('example-banner-hidden-banner', 'true');
+    setTimeout(() => {
+      setHidden(true);
+    }, 500);
+  }
+
   return (
     <>
       {!hidden && (
-        <Banner id="example-banner" onDismiss={() => setHidden(true)}>
+        <Banner id="example-banner" onDismiss={handleDismiss}>
           Get <strong>15% off</strong> and free shipping with discount code{' '}
           <strong>&quot;welcome&quot;</strong>
         </Banner>
