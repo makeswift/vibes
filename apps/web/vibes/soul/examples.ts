@@ -13,6 +13,27 @@ export const examples = [
     component: lazy(() => import('./examples/form/checkbox')),
   },
   {
+    name: 'compare-card-electric',
+    dependencies: [],
+    registryDependencies: ['compare-card-electric'],
+    files: ['examples/primitives/compare-card/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/compare-card/electric')),
+  },
+  {
+    name: 'compare-card-warm',
+    dependencies: [],
+    registryDependencies: ['compare-card-warm'],
+    files: ['examples/primitives/compare-card/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/compare-card/warm')),
+  },
+  {
+    name: 'compare-card-luxury',
+    dependencies: [],
+    registryDependencies: ['compare-card-luxury'],
+    files: ['examples/primitives/compare-card/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/compare-card/luxury')),
+  },
+  {
     name: 'accordion-example',
     dependencies: [],
     registryDependencies: ['accordion'],

@@ -11,13 +11,13 @@ import {
 import {
   CompareCard,
   CompareCardSkeleton,
-  CompareProduct,
+  CompareCardWithId,
 } from '@/vibes/soul/primitives/compare-card';
 
 interface Props {
   className?: string;
   title?: string;
-  products: Streamable<CompareProduct[]>;
+  products: Streamable<CompareCardWithId[]>;
   emptyStateTitle?: Streamable<string | null>;
   emptyStateSubtitle?: Streamable<string | null>;
   addToCartLabel?: string;
