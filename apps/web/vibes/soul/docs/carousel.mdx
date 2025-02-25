@@ -1,5 +1,110 @@
 ---
 title: Carousel
-preview: carousel
-previewSize: lg
+preview:
+  Electric: carousel-electric
+  Warm: carousel-warm
+  Luxury: carousel-luxury
+previewSize: sm
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import {
+    Carousel,
+    CarouselButtons,
+    CarouselContent,
+    CarouselItem,
+    CarouselScrollbar,
+} from '@/vibes/soul/primitives/carousel';
+
+function Usage() {
+
+    return (
+        <Carousel>
+            <CarouselContent>
+                {slides.map((slide, index) => (
+                    <CarouselItem key={index}>
+                        <p>{slide}</p>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselScrollbar />
+            <CarouselButtons nextLabel="Next" previousLabel="Previous" />
+        </Carousel>
+    );
+}
+
+const slides = [
+    'Slide 1',
+    'Slide 2',
+    'Slide 3',
+    'Slide 4',
+    'Slide 5',
+    'Slide 6',
+    'Slide 7',
+    'Slide 8',
+];
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component uses the Embla Carousel library. Refer to the [Embla Carousel docs](https://www.embla-carousel.com/) for additional reference.
+
+### CarouselProps
+
+| Prop                     | Type                                                                                     | Default |
+| ------------------------ | ---------------------------------------------------------------------------------------- | ------- |
+| `children*`              | `ReactNode`                                                                              |         |
+| `className`              | `string`                                                                                 |         |
+| `opts`                   | [CarouselOptions](https://www.embla-carousel.com/api/options/)                           |         |
+| `plugins`                | [CarouselPlugin](https://www.embla-carousel.com/api/plugins/)                            |         |
+| `setApi`                 | `(api: `[CarouselApi](https://www.embla-carousel.com/api/methods/#typescript)`) => void` |         |
+| `carouselScrollbarLabel` | `string`                                                                                 |         |
+| `hideOverflow`           | `boolean`                                                                                | `true`  |
+
+### CarouselScrollbarProps
+
+| Prop          | Type                | Default                |
+| ------------- | ------------------- | ---------------------- |
+| `className`   | `string`            |                        |
+| `colorScheme` | `'light' \| 'dark'` | `'light'`              |
+| `label`       | `string`            | `'Carousel scrollbar'` |
+
+### CarouselButtonProps
+
+| Prop            | Type                | Default      |
+| --------------- | ------------------- | ------------ |
+| `className`     | `string`            |              |
+| `nextLabel`     | `string`            | `'Next'`     |
+| `previousLabel` | `string`            | `'Previous'` |
+| `colorScheme`   | `'light' \| 'dark'` | `'light'`    |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list, along
+with their default values:
+
+#### Carousel Buttons
+
+```css
+:root {
+  --carousel-focus: hsl(var(--primary));
+  --carousel-light-button: hsl(var(--foreground));
+  --carousel-dark-button: hsl(var(--background));
+}
+```
+
+#### Carousel Scrollbar
+
+```css
+:root {
+  --carousel-light-scrollbar: hsl(var(--foreground));
+  --carousel-dark-scrollbar: hsl(var(--background));
+}
+```
