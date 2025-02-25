@@ -88,7 +88,6 @@ export const navigation = [
         file: 'docs/compare-card.mdx',
         component: 'compare-card',
       },
-      { title: 'Countdown', slug: 'countdown', file: 'docs/countdown.mdx', component: 'countdown' },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
       {
         title: 'Cursor Pagination',
@@ -203,6 +202,7 @@ export const navigation = [
         file: 'docs/compare-section.mdx',
         component: 'compare-section',
       },
+      { title: 'Countdown', slug: 'countdown', file: 'docs/countdown.mdx', component: 'countdown' },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       {
         title: 'Dynamic Form Section',
