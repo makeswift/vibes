@@ -1,13 +1,12 @@
 import { clsx } from 'clsx';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
+import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer';
 import {
   ProductCard,
   ProductCardSkeleton,
   ProductCardWithId,
 } from '@/vibes/soul/primitives/product-card';
-
-import { CompareDrawer } from './compare-drawer';
 
 export type ListProduct = ProductCardWithId;
 
