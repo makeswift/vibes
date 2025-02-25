@@ -153,7 +153,13 @@ export const navigation = [
     title: 'Form',
     pages: [
       { title: 'Example', slug: 'form', file: 'docs/form.mdx' },
-      { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx' },
+      { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
+      {
+        title: 'Field Error',
+        slug: 'field-error',
+        file: 'docs/field-error.mdx',
+        component: 'field-error',
+      },
     ],
   },
   {
