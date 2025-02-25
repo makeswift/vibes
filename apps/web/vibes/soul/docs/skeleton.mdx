@@ -1,5 +1,71 @@
 ---
 title: Skeleton
-preview: skeleton
-previewSize: lg
+preview: skeleton-example
+previewSize: sm
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
+
+function Usage() {
+    return (
+        <Skeleton.Root className="w-96">
+            <Skeleton.Box className="h-32 w-full rounded-xl" />
+            <Skeleton.Text characterCount={24} />
+        </Skeleton.Root>
+    );
+}
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### Skeleton.Root
+
+| Prop           | Type        | Default |
+| -------------- | ----------- | ------- |
+| `children`     | `ReactNode` |         |
+| `className`    | `string`    |         |
+| `pending`      | `boolean`   | `false` |
+| `hideOverflow` | `bolean`    | `false` |
+
+### Skeleton.Text
+
+| Prop             | Type               | Default |
+| ---------------- | ------------------ | ------- |
+| `className`      | `string`           |         |
+| `characterCount` | `number \| 'full'` | `10`    |
+
+### Skeleton.Box
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### Skeleton.Icon
+
+| Prop        | Type        | Default |
+| ----------- | ----------- | ------- |
+| `className` | `string`    |         |
+| `icon`      | `ReactNode` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --skeleton: color-mix(in oklab, hsl(var(--contast-300)), white 75%);
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=5256-93319" />
