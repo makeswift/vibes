@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx';
 import { X } from 'lucide-react';
-import { ForwardedRef, ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, Ref, useCallback, useEffect, useState } from 'react';
 
 export interface BannerProps {
   id: string;
@@ -10,7 +10,7 @@ export interface BannerProps {
   hideDismiss?: boolean;
   className?: string;
   onDismiss?: () => void;
-  ref?: ForwardedRef<HTMLDivElement>;
+  ref?: Ref<HTMLDivElement>;
 }
 
 /**
