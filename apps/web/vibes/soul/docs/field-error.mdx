@@ -1,12 +1,8 @@
 ---
-title:
-description:
-preview:
-previewSize:
-# preview:
-#   Electric: blog-post-card-electric
-#   Warm: blog-post-card-warm
-#   Luxury: blog-post-card-luxury
+title: FieldError
+description: The FieldError component is used to display error messages for form fields.
+preview: field-error-example
+previewSize: xs
 ---
 
 ## Usage
@@ -14,10 +10,11 @@ previewSize:
 {/* prettier-ignore-start */}
 
 <CodeBlock lang="ts">{`
+import { FieldError } from '@/vibes/soul/form/field-error';
 
 function Usage() {
     return (
-
+        <FieldError>You must accept the Terms & Conditions</FieldError>
     );
 }
 `}
@@ -27,12 +24,11 @@ function Usage() {
 
 ## API Reference
 
-###
+### FieldErrorProps
 
 | Prop        | Type        | Default |
 | ----------- | ----------- | ------- |
 | `children*` | `ReactNode` |         |
-| `className` | `string`    |         |
 
 ### CSS Variables
 
@@ -40,9 +36,6 @@ This component supports various CSS variables for theming. Here's a comprehensiv
 
 ```css
 :root {
+  --field-error: hsl(var(--error));
 }
 ```
-
-## Figma
-
-<Figma url="" />

@@ -12,8 +12,6 @@ export default async function Preview({
   const parsedParams = cache.parse(await searchParams);
   const { [compareParamName]: compare, [sortParamName]: sort, ...filterParams } = parsedParams;
 
-  console.log(sort);
-
   const productsList = {
     title: 'Handle Bags',
     products: getProducts(filterParams, sort ?? undefined),

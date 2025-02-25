@@ -3,3 +3,66 @@ title: Checkbox
 preview: checkbox-example
 previewSize: xs
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Checkbox } from '@/vibes/soul/form/checkbox';
+
+function Usage() {
+    return (
+        <div className="flex h-screen flex-col justify-center gap-4 p-10">
+            <Checkbox label="Checkbox" />
+        <div/>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component uses primitives from Radix UI. Refer to [Radix Checkbox](https://www.radix-ui.com/primitives/docs/components/checkbox) and [Radix Label](https://www.radix-ui.com/primitives/docs/components/checkbox) for more information.
+
+### CheckboxProps
+
+| Prop          | Type                | Default   |
+| ------------- | ------------------- | --------- |
+| `className`   | `string`            |           |
+| `label`       | `ReactNode`         |           |
+| `errors`      | `string[]`          | `'light'` |
+| `colorScheme` | `'light' \| 'dark'` | `'light'` |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --checkbox-focus: hsl(var(--primary));
+  --checkbox-light-label: hsl(var(--foreground));
+  --checkbox-light-error: hsl(var(--error));
+  --checkbox-light-unchecked-border: hsl(var(--contrast-200));
+  --checkbox-light-unchecked-border-hover: hsl(var(--contrast-300));
+  --checkbox-light-unchecked-background: hsl(var(--background));
+  --checkbox-light-unchecked-icon: hsl(var(--foreground));
+  --checkbox-light-checked-border: hsl(var(--foreground));
+  --checkbox-light-checked-border-hover: hsl(var(--foreground));
+  --checkbox-light-checked-background: hsl(var(--foreground));
+  --checkbox-light-checked-icon: hsl(var(--background));
+  --checkbox-dark-label: hsl(var(--background));
+  --checkbox-dark-error: hsl(var(--error));
+  --checkbox-dark-unchecked-border: hsl(var(--contrast-400));
+  --checkbox-dark-unchecked-border-hover: hsl(var(--contrast-300));
+  --checkbox-dark-unchecked-background: hsl(var(--foreground));
+  --checkbox-dark-unchecked-icon: hsl(var(--background));
+  --checkbox-dark-checked-border: hsl(var(--background));
+  --checkbox-dark-checked-border-hover: hsl(var(--background));
+  --checkbox-dark-checked-background: hsl(var(--foreground));
+  --checkbox-dark-checked-icon: hsl(var(--foreground));
+  --checkbox-font-family: var(--font-family-body);
+}
+```
