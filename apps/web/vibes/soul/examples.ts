@@ -447,6 +447,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/featured-video')),
   },
   {
+    name: 'field-error-example',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['/examples/form/field-error/index.tsx'],
+    component: lazy(() => import('./examples/form/field-error')),
+  },
+  {
     name: 'form-example',
     dependencies: [],
     registryDependencies: [],

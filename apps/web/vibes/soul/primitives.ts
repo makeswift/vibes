@@ -76,7 +76,7 @@ export const primitives = [
   {
     name: 'checkbox',
     dependencies: ['@radix-ui/react-checkbox', '@radix-ui/react-label', 'lucide-react', 'clsx'],
-    registryDependencies: [],
+    registryDependencies: ['field-error'],
     files: ['form/checkbox/index.tsx'],
   },
   {
@@ -112,6 +112,12 @@ export const primitives = [
     dependencies: ['clsx'],
     registryDependencies: ['button'],
     files: ['sections/featured-video/index.tsx'],
+  },
+  {
+    name: 'field-error',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['form/field-error/index.tsx'],
   },
   {
     name: 'inline-email-form',
