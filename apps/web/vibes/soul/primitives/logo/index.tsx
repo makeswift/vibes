@@ -3,11 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
-interface Props {
+export interface LogoProps {
   className?: string;
-  logo?: Streamable<string | { src: string; alt: string } | null>;
-  label?: string;
+  logo: Streamable<string | { src: string; alt: string }>;
+  label: string;
   href: string;
   width: number;
   height: number;
@@ -25,12 +26,9 @@ interface Props {
  * }
  * ```
  */
-export function Logo({ className, logo: streamableLogo, href, width, height, label }: Props) {
+export function Logo({ className, logo: streamableLogo, href, width, height, label }: LogoProps) {
   return (
-    <Stream
-      fallback={<div className="h-6 w-16 animate-pulse rounded-md bg-contrast-100" />}
-      value={streamableLogo}
-    >
+    <Stream fallback={<LogoSkeleton className={className} />} value={streamableLogo}>
       {(logo) => (
         <Link
           aria-label={label}
@@ -41,7 +39,7 @@ export function Logo({ className, logo: streamableLogo, href, width, height, lab
           href={href}
           style={typeof logo === 'string' ? {} : { width, height }}
         >
-          {typeof logo === 'object' && logo !== null && logo.src !== '' ? (
+          {typeof logo === 'object' ? (
             <Image
               alt={logo.alt}
               className="object-contain object-left"
@@ -60,4 +58,8 @@ export function Logo({ className, logo: streamableLogo, href, width, height, lab
       )}
     </Stream>
   );
+}
+
+export function LogoSkeleton({ className }: Pick<LogoProps, 'className'>) {
+  return <Skeleton.Box className={clsx('h-6 w-16 rounded-md', className)} />;
 }
