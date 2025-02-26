@@ -88,6 +88,12 @@ export const navigation = [
         file: 'docs/compare-card.mdx',
         component: 'compare-card',
       },
+      {
+        title: 'Compare Drawer',
+        slug: 'compare-drawer',
+        file: 'docs/compare-drawer.mdx',
+        component: 'compare-drawer',
+      },
       { title: 'Counter', slug: 'counter', file: 'docs/counter.mdx', component: 'counter' },
       {
         title: 'Cursor Pagination',
