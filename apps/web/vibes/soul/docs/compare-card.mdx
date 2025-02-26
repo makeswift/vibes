@@ -4,5 +4,80 @@ preview:
   Electric: compare-card-electric
   Warm: compare-card-warm
   Luxury: compare-card-luxury
-previewSize: md
+previewSize: xl
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { CompareCard } from '@/vibes/soul/primitives/compare-card';
+
+function Usage() {
+    return (
+      <CompareCard
+        imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
+        product={{
+          id: '1',
+          href: '#',
+          title: 'Mini Bar Bag',
+          image: {
+            src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+            alt: 'Mini Bar Bag',
+          },
+          subtitle: 'Blue/Green',
+          price: '$65',
+          badge: 'New',
+        }}
+      />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### CompareCardProps
+
+| Prop                | Type                                                                 | Default           |
+| ------------------- | -------------------------------------------------------------------- | ----------------- |
+| `children*`         | `ReactNode`                                                          |                   |
+| `className`         | `string`                                                             |                   |
+| `product*`          | `CompareCardWithId` <Tooltip content="See CompareCardWithId below"/> |                   |
+| `addToCartLabel`    | `string`                                                             | `'Add to cart'`   |
+| `descriptionLabel`  | `string`                                                             | `'Description'`   |
+| `ratingLabel`       | `string`                                                             | `'Rating'`        |
+| `otherDetailsLabel` | `string`                                                             | `'Other details'` |
+| `addToCartAction`   | `(id: string) => Promise<void>`                                      |                   |
+| `imageSizes`        | `string`                                                             |                   |
+
+This component uses the Next.js Image component. The `imageSizes` prop is passed directly to the `sizes` prop of the Next.js Image component. For more details, refer to the [Next.js Image documentation](https://nextjs.org/docs/pages/api-reference/components/image#sizes).
+
+### CompareCardWithId
+
+| Prop           | Type                                     | Default |
+| -------------- | ---------------------------------------- | ------- |
+| `description`  | `string`                                 |         |
+| `customFields` | `Array<{ name: string; value: string }>` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --compare-card-divider: hsl(var(--contrast-100));
+  --compare-card-label: hsl(var(--foreground));
+  --compare-card-description: hsl(var(--contrast-400));
+  --compare-card-field: hsl(var(--foreground));
+  --compare-card-font-family-primary: var(--font-family-body);
+  --compare-card-font-family-secondary: var(--font-family-mono);
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2297-42881" />
