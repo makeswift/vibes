@@ -26,7 +26,7 @@ export default async function Preview({
         breadcrumbs={breadcrumbs}
         compareParamName={compareParamName}
         compareProducts={productsList.products.then((products) =>
-          products.filter((product) => compare?.includes(product.id)),
+          products.filter((product) => compare?.includes(product.id) === true),
         )}
         emptyStateSubtitle={productsList.emptyStateSubtitle}
         emptyStateTitle={productsList.emptyStateTitle}
