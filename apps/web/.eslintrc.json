@@ -2,7 +2,6 @@
   "extends": [
     "plugin:@typescript-eslint/strict-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:jsx-a11y/recommended",
     "next/core-web-vitals"
@@ -34,7 +33,10 @@
     "@typescript-eslint/no-shadow": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
     "@typescript-eslint/no-unnecessary-condition": "error",
-    "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": { "attributes": false } }],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      { "checksVoidReturn": { "attributes": false } }
+    ],
     "@typescript-eslint/strict-boolean-expressions": ["error", { "allowString": false }],
     "complexity": ["error", 20],
     "eqeqeq": ["error", "smart"],

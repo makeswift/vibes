@@ -25,7 +25,7 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll('h2, h3, h4, h5, h6'))
-      .filter((element) => element.id)
+      .filter((element) => Boolean(element.id))
       .map((element) => ({
         id: element.id,
         text: element.textContent ?? '',
