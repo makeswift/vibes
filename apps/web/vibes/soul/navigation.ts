@@ -111,6 +111,12 @@ export const navigation = [
         component: 'inline-email-form',
       },
       {
+        title: 'Logo',
+        slug: 'logo',
+        file: 'docs/logo.mdx',
+        component: 'logo',
+      },
+      {
         title: 'Modal',
         slug: 'modal',
         file: 'docs/modal.mdx',
