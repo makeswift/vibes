@@ -5,41 +5,47 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { createSerializer, parseAsString } from 'nuqs';
-import { Suspense } from 'react';
+import { ReactNode } from 'react';
 
-import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable';
+import { Stream, Streamable, useStreamable } from '@/vibes/soul/lib/streamable';
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export interface CursorPaginationInfo {
   startCursorParamName?: string;
-  startCursor?: string | null;
+  startCursor: string | null;
   endCursorParamName?: string;
-  endCursor?: string | null;
+  endCursor: string | null;
 }
 
-interface Props {
-  label?: Streamable<string | null>;
+export interface CursorPaginationProps {
+  label?: Streamable<string>;
   info: Streamable<CursorPaginationInfo>;
-  previousLabel?: Streamable<string | null>;
-  nextLabel?: Streamable<string | null>;
+  previousLabel?: Streamable<string>;
+  nextLabel?: Streamable<string>;
   scroll?: boolean;
 }
 
-export function CursorPagination(props: Props) {
-  return (
-    <Suspense fallback={<CursorPaginationSkeleton />}>
-      <CursorPaginationResolved {...props} />
-    </Suspense>
-  );
-}
-
-function CursorPaginationResolved({
-  label: streamableLabel,
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --cursor-pagination-focus: hsl(var(--primary));
+ *   --cursor-pagination-border: hsl(var(--contrast-100));
+ *   --cursor-pagination-border-hover: hsl(var(--contrast-200));
+ *   --cursor-pagination-icon: hsl(var(--foreground));
+ *   --cursor-pagination-background: hsl(var(--background));
+ *   --cursor-pagination-background-hover: hsl(var(--contrast-100));
+ * ```
+ */
+export function CursorPagination({
+  label: streamableLabel = 'pagination',
   info,
-  previousLabel: streamablePreviousLabel,
-  nextLabel: streamableNextLabel,
-  scroll,
-}: Props) {
-  const label = useStreamable(streamableLabel) ?? 'pagination';
+  previousLabel: streamablePreviousLabel = 'Go to previous page',
+  nextLabel: streamableNextLabel = 'Go to next page',
+  scroll = true,
+}: CursorPaginationProps) {
   const {
     startCursorParamName = 'before',
     endCursorParamName = 'after',
@@ -51,50 +57,63 @@ function CursorPaginationResolved({
     [startCursorParamName]: parseAsString,
     [endCursorParamName]: parseAsString,
   });
-  const previousLabel = useStreamable(streamablePreviousLabel) ?? 'Go to previous page';
-  const nextLabel = useStreamable(streamableNextLabel) ?? 'Go to next page';
 
   return (
-    <nav aria-label={label} className="py-10" role="navigation">
-      <ul className="flex items-center justify-center gap-3">
-        <li>
-          {startCursor != null ? (
-            <PaginationLink
-              aria-label={previousLabel}
-              href={serialize(searchParams, {
-                [startCursorParamName]: startCursor,
-                [endCursorParamName]: null,
-              })}
-              scroll={scroll}
-            >
-              <ArrowLeft size={24} strokeWidth={1} />
-            </PaginationLink>
-          ) : (
-            <SkeletonLink>
-              <ArrowLeft size={24} strokeWidth={1} />
-            </SkeletonLink>
-          )}
-        </li>
-        <li>
-          {endCursor != null ? (
-            <PaginationLink
-              aria-label={nextLabel}
-              href={serialize(searchParams, {
-                [endCursorParamName]: endCursor,
-                [startCursorParamName]: null,
-              })}
-              scroll={scroll}
-            >
-              <ArrowRight size={24} strokeWidth={1} />
-            </PaginationLink>
-          ) : (
-            <SkeletonLink>
-              <ArrowRight size={24} strokeWidth={1} />
-            </SkeletonLink>
-          )}
-        </li>
-      </ul>
-    </nav>
+    <Stream
+      fallback={<CursorPaginationSkeleton />}
+      value={Streamable.all([streamableLabel, streamablePreviousLabel, streamableNextLabel])}
+    >
+      {([label, previousLabel, nextLabel]) => {
+        return (
+          <nav
+            aria-label={label}
+            className="py-10 text-[var(--cursor-pagination-icon,hsl(var(--foreground)))]"
+            role="navigation"
+          >
+            <ul className="flex items-center justify-center gap-3">
+              <li>
+                {startCursor != null ? (
+                  <PaginationLink
+                    aria-label={previousLabel}
+                    href={serialize(searchParams, {
+                      [startCursorParamName]: startCursor,
+                      [endCursorParamName]: null,
+                    })}
+                    scroll={scroll}
+                  >
+                    <ArrowLeft size={24} strokeWidth={1} />
+                  </PaginationLink>
+                ) : (
+                  <Skeleton.Icon
+                    className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))]"
+                    icon={<ArrowLeft size={24} strokeWidth={1} />}
+                  />
+                )}
+              </li>
+              <li>
+                {endCursor != null ? (
+                  <PaginationLink
+                    aria-label={nextLabel}
+                    href={serialize(searchParams, {
+                      [endCursorParamName]: endCursor,
+                      [startCursorParamName]: null,
+                    })}
+                    scroll={scroll}
+                  >
+                    <ArrowRight size={24} strokeWidth={1} />
+                  </PaginationLink>
+                ) : (
+                  <Skeleton.Icon
+                    className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))]"
+                    icon={<ArrowRight size={24} strokeWidth={1} />}
+                  />
+                )}
+              </li>
+            </ul>
+          </nav>
+        );
+      }}
+    </Stream>
   );
 }
 
@@ -105,7 +124,7 @@ function PaginationLink({
   'aria-label': ariaLabel,
 }: {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   scroll?: boolean;
   ['aria-label']?: string;
 }) {
@@ -113,7 +132,7 @@ function PaginationLink({
     <Link
       aria-label={ariaLabel}
       className={clsx(
-        'flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2',
+        'flex h-12 w-12 items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))] bg-[var(--cursor-pagination-background,hsl(var(--background)))] ring-[var(--cursor-pagination-focus,hsl(var(--primary)))] transition-colors duration-300 hover:border-[var(--cursor-pagination-border-hover,hsl(var(--contrast-200)))] hover:bg-[var(--cursor-pagination-background-hover,hsl(var(--contrast-100)))] focus:outline-none focus-visible:ring-2',
       )}
       href={href}
       scroll={scroll}
@@ -123,24 +142,18 @@ function PaginationLink({
   );
 }
 
-function SkeletonLink({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-contrast-100 text-foreground opacity-50 duration-300">
-      {children}
-    </div>
-  );
-}
-
 export function CursorPaginationSkeleton() {
   return (
-    <div className="flex w-full justify-center bg-background py-10 text-xs">
-      <div className="flex gap-2">
-        <SkeletonLink>
-          <ArrowLeft />
-        </SkeletonLink>
-        <SkeletonLink>
-          <ArrowRight />
-        </SkeletonLink>
+    <div className="py-10 text-[var(--cursor-pagination-icon,hsl(var(--foreground)))]">
+      <div className="flex items-center justify-center gap-3">
+        <Skeleton.Icon
+          className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))]"
+          icon={<ArrowLeft size={24} strokeWidth={1} />}
+        />
+        <Skeleton.Icon
+          className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))]"
+          icon={<ArrowRight size={24} strokeWidth={1} />}
+        />
       </div>
     </div>
   );
