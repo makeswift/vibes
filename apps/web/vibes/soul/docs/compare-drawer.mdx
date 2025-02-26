@@ -6,3 +6,107 @@ preview:
   Luxury: compare-drawer-luxury
 previewSize: md
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer';
+
+function Usage() {
+    return (
+      <CompareDrawer items={compareProducts} />
+    );
+}
+const compareProducts = [
+    {
+      id: '1',
+      title: 'Mini Bar Bag',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+        alt: 'Mini Bar Bag',
+      },
+      href: '#',
+    },
+    {
+      id: '2',
+      title: 'Mini Bar Bag',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
+        alt: 'Mini Bar Bag',
+      },
+      href: '#',
+    },
+    {
+      id: '3',
+      title: 'Stem Caddy',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
+        alt: 'Stem Caddy',
+      },
+      href: '#',
+    },
+    {
+      id: '4',
+      title: 'Hip Slinger',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
+        alt: 'Hip Slinger',
+      },
+      href: '#',
+    },
+];
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### CompareDrawerProps
+
+| Prop          | Type                                                                   | Default     |
+| ------------- | ---------------------------------------------------------------------- | ----------- |
+| `items*`      | `CompareDrawerItem[]` <Tooltip content="See CompareDrawerItem below"/> |             |
+| `paramName`   | `string`                                                               | `'compare'` |
+| `action`      | `ComponentProps<'form'>['action']`                                     |             |
+| `submitLabel` | `string`                                                               | `'Compare'` |
+
+### CompareDrawerItem
+
+| Prop     | Type                           | Default |
+| -------- | ------------------------------ | ------- |
+| `id*`    | `string`                       |         |
+| `image?` | `{ src: string; alt: string }` |         |
+| `href*`  | `string`                       |         |
+| `title*` | `string`                       |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --compare-drawer-background: hsl(var(--background));
+  --compare-drawer-font-family: var(--font-family-body);
+  --compare-drawer-card-focus: hsl(var(--primary));
+  --compare-drawer-card-border: hsl(var(--contrast-100));
+  --compare-drawer-card-background: hsl(var(--background));
+  --compare-drawer-card-background-hover: hsl(var(--contrast-100));
+  --compare-drawer-card-image-background: hsl(var(--contrast-100));
+  --compare-drawer-empty-image-text: hsl(var(--primary-shadow));
+  --compare-drawer-card-text: hsl(var(--foreground));
+  --compare-drawer-dismiss-border: hsl(var(--contast-100));
+  --compare-drawer-dismiss-border-hover: hsl(var(--contast-200));
+  --compare-drawer-dismiss-background: hsl(var(--background));
+  --compare-drawer-dismiss-background-hover: hsl(var(--contrast-100));
+  --compare-drawer-dismiss-icon: hsl(var(--contrast-400));
+  --compare-drawer-dismiss-icon-hover: hsl(var(--foreground));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2297-42881" />
