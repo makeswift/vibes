@@ -99,7 +99,7 @@ export const primitives = [
   },
   {
     name: 'favorite',
-    dependencies: ['clsx'],
+    dependencies: ['@radix-ui/react-toggle'],
     registryDependencies: [],
     files: [
       'primitives/favorite/index.tsx',

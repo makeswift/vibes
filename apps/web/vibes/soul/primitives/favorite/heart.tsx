@@ -23,7 +23,6 @@ export function Heart({ filled = false }: { filled?: boolean }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-
       {/* Inner Filler Heart */}
       <path
         className={clsx(
