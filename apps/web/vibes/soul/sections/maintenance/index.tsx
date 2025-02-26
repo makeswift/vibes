@@ -1,6 +1,7 @@
 import { MailIcon, PhoneIcon } from 'lucide-react';
 import Link from 'next/link';
 
+import { Streamable } from '@/vibes/soul/lib/streamable';
 import { Logo } from '@/vibes/soul/primitives/logo';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
@@ -11,7 +12,7 @@ interface Image {
 
 interface Props {
   className?: string;
-  logo?: string | Image | null;
+  logo: Streamable<string | Image>;
   title?: string;
   statusMessage?: string;
   contactText?: string;
@@ -33,7 +34,7 @@ export function Maintenance({
       <div className="mx-auto my-auto max-w-3xl px-4 @xl:px-6 @4xl:px-8">
         {Boolean(logo) && (
           <div className="mb-20">
-            <Logo height={40} href="/" logo={logo} width={200} />
+            <Logo height={40} href="/" label="Home" logo={logo} width={200} />
           </div>
         )}
 
