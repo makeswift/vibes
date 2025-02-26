@@ -1,31 +1,34 @@
-import { clsx } from 'clsx';
+import * as Toggle from '@radix-ui/react-toggle';
 
 import { Heart } from '@/vibes/soul/primitives/favorite/heart';
 
-interface Props {
+export interface FavoriteProps {
   checked?: boolean;
   setChecked: (liked: boolean) => void;
 }
 
-export const Favorite = function Favorite({ checked, setChecked }: Props) {
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --favorite-focus: hsl(var(--primary));
+ *   --favorite-border: hsl(var(--contrast-100));
+ *   --favorite-icon: hsl(var(--foreground));
+ *   --favorite-on-background: hsl(var(--contrast-100));
+ *   --favorite-off-border: hsl(var(--contrast-200));
+ * }
+ * ```
+ */
+export const Favorite = function Favorite({ checked = false, setChecked }: FavoriteProps) {
   return (
-    <label
-      className={clsx(
-        'group relative flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-[colors,transform] duration-300 focus-within:outline-0 focus-within:ring-2',
-        checked === true ? 'bg-contrast-100' : 'hover:border-contrast-200',
-      )}
+    <Toggle.Root
+      className="group relative flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-[var(--favorite-border,hsl(var(--contrast-100)))] text-[var(--favorite-icon,hsl(var(--foreground)))] ring-[var(--favorite-focus,hsl(var(--primary)))] transition-[colors,transform] duration-300 focus-within:outline-none focus-within:ring-2 data-[state=on]:bg-[var(--favorite-on-background,hsl(var(--contrast-100)))] data-[state=off]:hover:border-[var(--favorite-off-border,hsl(var(--contrast-200)))]"
+      onPressedChange={setChecked}
+      pressed={checked}
     >
-      <input
-        aria-label="Favorite"
-        checked={checked}
-        className="absolute h-0 w-0 opacity-0"
-        id="favorite-checkbox"
-        onChange={() => {
-          setChecked(checked === true ? false : true);
-        }}
-        type="checkbox"
-      />
       <Heart filled={checked} />
-    </label>
+    </Toggle.Root>
   );
 };
