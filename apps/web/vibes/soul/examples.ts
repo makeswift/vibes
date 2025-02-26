@@ -34,6 +34,27 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/compare-card/luxury')),
   },
   {
+    name: 'compare-drawer-electric',
+    dependencies: [],
+    registryDependencies: ['compare-drawer-electric'],
+    files: ['examples/primitives/compare-drawer/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/compare-drawer/electric')),
+  },
+  {
+    name: 'compare-drawer-warm',
+    dependencies: [],
+    registryDependencies: ['compare-drawer-warm'],
+    files: ['examples/primitives/compare-drawer/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/compare-drawer/warm')),
+  },
+  {
+    name: 'compare-drawer-luxury',
+    dependencies: [],
+    registryDependencies: ['compare-drawer-luxury'],
+    files: ['examples/primitives/compare-drawer/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/compare-drawer/luxury')),
+  },
+  {
     name: 'accordion-example',
     dependencies: [],
     registryDependencies: ['accordion'],

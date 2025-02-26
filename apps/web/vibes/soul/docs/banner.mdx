@@ -1,38 +1,68 @@
 ---
 title: Banner
-description: The `banner` component is used to display important messages or announcements to users in the form of a bar across the top of the screen.
+description: The Banner component is used to display important messages or announcements to users in the form of a bar across the top of the screen.
 preview: banner-example
 previewSize: xs
 features:
   - Full keyboard navigation
-  - Dismissible
+  - Dismissible with state tracked in local storage
   - Animated transition
 ---
 
 ## Usage
 
-export default function Preview() {
-  return (
-    <Banner id="example-banner">
-      Get <strong>15% off</strong> and free shipping with discount code{' '}
-      <strong>&quot;welcome&quot;</strong>
-    </Banner>
-  )
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Banner } from '@/vibes/soul/primitives/banner';
+
+function Usage() {
+    return (
+        <Banner id="example-banner">
+            Get <strong>15% off</strong> and free shipping with discount code{' '}
+            <strong>&quot;welcome&quot;</strong>
+        </Banner>
+    );
 }
+`}
+</CodeBlock>
 
-<CodeBlock lang="bash">{`import { Banner } from '@/vibes/soul/primitives/banner'`}</CodeBlock>
+{/* prettier-ignore-end */}
 
-<CodeBlock lang="bash">{`<Banner id="example-banner">
-  Get <strong>15% off</strong> and free shipping with discount code{' '}
-  <strong>&quot;welcome&quot;</strong>
-</Banner>`}</CodeBlock>
+**Note:** This component uses `localStorage` to store dismissed state. This means that if a user dismisses the banner, it will not be shown again on subsequent visits unless the state is cleared `localStorage`.
+
+The key associated with this state uses the `id` prop with the following format: `${id}-hidden-banner`.
 
 ## API Reference
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+### BannerProps
+
+| Prop          | Type                           | Default |
+| ------------- | ------------------------------ | ------- |
+| `children*`   | `ReactNode`                    |         |
+| `className`   | `string`                       |         |
+| `id*`         | `string`                       |         |
+| `hideDismiss` | `boolean`                      | `false` |
+| `onDismiss`   | `() => void`                   |         |
+| `ref`         | `ForwardedRef<HTMLDivElement>` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --banner-focus: hsl(var(--foreground));
+  --banner-background: hsl(var(--primary));
+  --banner-text: hdl(var(--foreground));
+  --banner-close-icon: hsl(var(--foreground) / 50%);
+  --banner-close-icon-hover: hdl(var(--foreground));
+  --banner-close-background: transparent;
+  --banner-close-background-hover: hsl(var(--background) / 40%);
+  --banner-font-family: var(--font-family-body);
+}
+```
 
 ## Figma
 
-<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2297-42901&t=dbm9GtAtS2A3vy2g-4" />
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2782-42479" />

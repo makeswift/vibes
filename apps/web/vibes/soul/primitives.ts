@@ -62,6 +62,12 @@ export const primitives = [
     files: ['primitives/compare-card/index.tsx'],
   },
   {
+    name: 'compare-drawer',
+    dependencies: ['@radix-ui/react-portal', 'lucide-react', 'nuqs'],
+    registryDependencies: ['button'],
+    files: ['primitives/compare-drawer/index.tsx'],
+  },
+  {
     name: 'card',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['skeleton'],
