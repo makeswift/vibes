@@ -102,12 +102,12 @@ interface Props<S extends SearchResult> {
   currencies?: Currency[];
   activeCurrencyId?: Streamable<string | undefined>;
   currencyAction?: CurrencyAction;
-  logo?: Streamable<string | { src: string; alt: string } | null>;
+  logo: Streamable<string | { src: string; alt: string }>;
   logoWidth?: number;
   logoHeight?: number;
   logoHref?: string;
   logoLabel?: string;
-  mobileLogo?: Streamable<string | { src: string; alt: string } | null>;
+  mobileLogo?: Streamable<string | { src: string; alt: string }>;
   mobileLogoWidth?: number;
   mobileLogoHeight?: number;
   searchHref: string;

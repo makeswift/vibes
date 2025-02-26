@@ -31,7 +31,7 @@ interface ContactInformation {
 }
 
 interface Props {
-  logo?: Streamable<string | Image | null>;
+  logo: Streamable<string | Image>;
   sections: Streamable<Section[]>;
   copyright?: Streamable<string | null>;
   contactInformation?: Streamable<ContactInformation | null>;
