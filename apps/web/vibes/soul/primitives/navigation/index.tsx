@@ -802,14 +802,14 @@ function SearchResults({
             return (
               <section
                 aria-label={result.title}
-                className="flex w-full flex-col gap-5 p-5"
+                className="flex w-full flex-col gap-5 p-5 @container"
                 key={`result-${index}`}
               >
                 <h3 className="font-[family-name:var(--nav-search-result-title-font-family,var(--font-family-mono))] text-sm uppercase text-[var(--nav-search-result-title,hsl(var(--foreground)))]">
                   {result.title}
                 </h3>
                 <ul
-                  className="grid w-full grid-cols-2 gap-5 @xl:grid-cols-4 @2xl:grid-cols-2 @4xl:grid-cols-4"
+                  className="grid w-full grid-cols-1 gap-5 @xs:grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4"
                   role="listbox"
                 >
                   {result.products.map((product) => (
