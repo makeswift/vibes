@@ -4,13 +4,13 @@ import { Suspense } from 'react';
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Button } from '@/vibes/soul/primitives/button';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
-import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
 import * as SidePanel from '@/vibes/soul/primitives/side-panel';
 import {
   Breadcrumbs,
   BreadcrumbsSkeleton,
   BreadcrumbWithId,
 } from '@/vibes/soul/sections/breadcrumbs';
+import { ListProduct, ProductsList } from '@/vibes/soul/sections/products-list';
 import { Filter, FiltersPanel } from '@/vibes/soul/sections/products-list-section/filters-panel';
 import {
   Sorting,
@@ -25,7 +25,7 @@ interface Props {
   products: Streamable<ListProduct[]>;
   filters: Streamable<Filter[]>;
   sortOptions: Streamable<SortOption[]>;
-  compareProducts?: Streamable<ListProduct[] | null>;
+  compareProducts?: Streamable<ListProduct[]>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
   compareAction?: React.ComponentProps<'form'>['action'];
   compareLabel?: Streamable<string>;
@@ -38,8 +38,8 @@ interface Props {
   sortParamName?: string;
   sortDefaultValue?: string;
   compareParamName?: string;
-  emptyStateSubtitle?: Streamable<string | null>;
-  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string>;
+  emptyStateTitle?: Streamable<string>;
   placeholderCount?: number;
 }
 

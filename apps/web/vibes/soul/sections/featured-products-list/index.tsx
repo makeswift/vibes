@@ -1,6 +1,6 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
-import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
+import { ListProduct, ProductsList } from '@/vibes/soul/sections/products-list';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 interface Link {
@@ -13,8 +13,8 @@ interface Props {
   description?: string;
   cta?: Link;
   products: Streamable<ListProduct[]>;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
   placeholderCount?: number;
 }
 
