@@ -7,6 +7,7 @@ import {
   checkoutAction,
   couponCodeAction,
   lineItemAction,
+  shippingAction,
 } from '@/vibes/soul/examples/sections/cart/actions';
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric';
 import { Banner } from '@/vibes/soul/primitives/banner';
@@ -87,6 +88,13 @@ export default async function Preview() {
         checkoutAction={checkoutAction}
         couponCode={{ action: couponCodeAction }}
         lineItemAction={lineItemAction}
+        shipping={{
+          action: shippingAction,
+          countries: [
+            { label: 'United States of America', value: 'us' },
+            { label: 'Canada', value: 'ca' },
+          ],
+        }}
       />
 
       <Subscribe
