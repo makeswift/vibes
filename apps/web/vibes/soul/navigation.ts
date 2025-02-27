@@ -103,6 +103,7 @@ export const navigation = [
       },
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
+      { title: 'Icon', slug: 'icon', file: 'docs/icon.mdx', component: 'icon' },
       {
         title: 'Inline Email Form',
         slug: 'inline-email-form',
