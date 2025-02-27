@@ -345,8 +345,8 @@ export const examples = [
     name: 'favorite-example',
     dependencies: [],
     registryDependencies: ['favorite'],
-    files: ['examples/primitives/favorites/index.tsx'],
-    component: lazy(() => import('./examples/primitives/favorites')),
+    files: ['examples/primitives/favorite/index.tsx'],
+    component: lazy(() => import('./examples/primitives/favorite')),
   },
   {
     name: 'feature-electric-example',
