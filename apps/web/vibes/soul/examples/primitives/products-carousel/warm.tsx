@@ -1,4 +1,4 @@
-import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
+import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/sections/products-carousel';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 export default function Preview() {
