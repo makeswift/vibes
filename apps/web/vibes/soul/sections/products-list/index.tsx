@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { ComponentProps } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer';
@@ -7,38 +8,52 @@ import {
   ProductCardSkeleton,
   ProductCardWithId,
 } from '@/vibes/soul/primitives/product-card';
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export type ListProduct = ProductCardWithId;
 
-interface Props {
+interface ProductsListProps {
   products: Streamable<ListProduct[]>;
-  compareProducts?: Streamable<ListProduct[] | null>;
+  compareProducts?: Streamable<ListProduct[]>;
   className?: string;
   colorScheme?: 'light' | 'dark';
   aspectRatio?: '5:6' | '3:4' | '1:1';
   showCompare?: boolean;
-  compareAction?: React.ComponentProps<'form'>['action'];
+  compareAction?: ComponentProps<'form'>['action'];
   compareLabel?: Streamable<string>;
   compareParamName?: string;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
   placeholderCount?: number;
 }
 
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --products-list-empty-state-title-font-family: var(--font-family-heading);
+ *   --products-list-empty-state-title: hsl(var(--foreground));
+ *   --products-list-empty-state-subtitle-font-family: var(--font-family-body);
+ *   --products-list-empty-state-subtitle: hsl(var(--contrast-500));
+ * }
+ * ```
+ */
 export function ProductsList({
   products: streamableProducts,
   className,
-  colorScheme,
-  aspectRatio,
-  showCompare,
+  colorScheme = 'light',
+  aspectRatio = '5:6',
+  showCompare = false,
   compareAction,
-  compareProducts: streamableCompareProducts,
-  compareLabel: streamableCompareLabel,
-  compareParamName,
-  emptyStateTitle,
-  emptyStateSubtitle,
-  placeholderCount = 6,
-}: Props) {
+  compareProducts: streamableCompareProducts = [],
+  compareLabel: streamableCompareLabel = 'Compare',
+  compareParamName = 'compare',
+  emptyStateTitle = 'No products found',
+  emptyStateSubtitle = 'Try browsing our complete catalog of products.',
+  placeholderCount = 8,
+}: ProductsListProps) {
   return (
     <>
       <Stream
@@ -78,7 +93,7 @@ export function ProductsList({
       </Stream>
       <Stream value={Streamable.all([streamableCompareProducts, streamableCompareLabel])}>
         {([compareProducts, compareLabel]) =>
-          compareProducts && (
+          compareProducts.length > 0 && (
             <CompareDrawer
               action={compareAction}
               items={compareProducts}
@@ -94,7 +109,7 @@ export function ProductsList({
 
 export function ProductsListSkeleton({
   className,
-  placeholderCount = 6,
+  placeholderCount = 8,
   pending = false,
 }: {
   className?: string;
@@ -102,29 +117,32 @@ export function ProductsListSkeleton({
   pending?: boolean;
 }) {
   return (
-    <div className={clsx('w-full @container', className)} data-pending={pending ? '' : undefined}>
+    <Skeleton.Root
+      className={clsx('group-has-[[data-pending]]/products-list:animate-pulse', className)}
+      pending={pending}
+    >
       <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5">
         {Array.from({ length: placeholderCount }).map((_, index) => (
           <ProductCardSkeleton key={index} />
         ))}
       </div>
-    </div>
+    </Skeleton.Root>
   );
 }
 
 export function ProductsListEmptyState({
   className,
-  placeholderCount = 6,
+  placeholderCount = 8,
   emptyStateTitle,
   emptyStateSubtitle,
 }: {
   className?: string;
   placeholderCount?: number;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
 }) {
   return (
-    <div className={clsx('relative w-full @container', className)}>
+    <Skeleton.Root className={clsx('relative', className)}>
       <div
         className={clsx(
           'mx-auto grid grid-cols-1 gap-x-4 gap-y-6 [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5',
@@ -136,12 +154,14 @@ export function ProductsListEmptyState({
       </div>
       <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
-          <h3 className="font-heading text-2xl leading-tight text-foreground @4xl:text-4xl @4xl:leading-none">
+          <h3 className="font-[family-name:var(--products-list-empty-state-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--products-list-empty-state-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
             {emptyStateTitle}
           </h3>
-          <p className="text-sm text-contrast-500 @4xl:text-lg">{emptyStateSubtitle}</p>
+          <p className="font-[family-name:var(--products-list-empty-state-subtitle-font-family,var(--font-family-body))] text-sm text-[var(--products-list-empty-state-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
+            {emptyStateSubtitle}
+          </p>
         </div>
       </div>
-    </div>
+    </Skeleton.Root>
   );
 }

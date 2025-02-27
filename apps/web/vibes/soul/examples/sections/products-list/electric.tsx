@@ -1,4 +1,4 @@
-import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
+import { ListProduct, ProductsList } from '@/vibes/soul/sections/products-list';
 
 export default function Preview() {
   const products = new Promise<ListProduct[]>((resolve) => {

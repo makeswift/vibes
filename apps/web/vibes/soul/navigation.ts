@@ -134,6 +134,12 @@ export const navigation = [
         component: 'product-card',
       },
       {
+        title: 'Product Carousel',
+        slug: 'product-carousel',
+        file: 'docs/products-carousel.mdx',
+        component: 'products-carousel',
+      },
+      {
         title: 'Product List',
         slug: 'products-list',
         file: 'docs/products-list.mdx',
@@ -304,6 +310,12 @@ export const navigation = [
       },
       {
         title: 'Product List',
+        slug: 'products-list',
+        file: 'docs/products-list.mdx',
+        component: 'products-list',
+      },
+      {
+        title: 'Product List Section',
         slug: 'product-list-section',
         file: 'docs/products-list-section.mdx',
         component: 'products-list-section',
