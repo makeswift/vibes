@@ -159,7 +159,13 @@ export const primitives = [
     name: 'products-list',
     dependencies: [],
     registryDependencies: ['product-card'],
-    files: ['primitives/products-list/index.tsx'],
+    files: ['sections/products-list/index.tsx'],
+  },
+  {
+    name: 'products-carousel',
+    dependencies: ['clsx'],
+    registryDependencies: ['product-card', 'carousel'],
+    files: ['primitives/products-carousel/index.tsx'],
   },
   {
     name: 'rating',
