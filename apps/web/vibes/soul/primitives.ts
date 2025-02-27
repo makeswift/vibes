@@ -132,6 +132,12 @@ export const primitives = [
     files: ['primitives/inline-email-form/index.tsx'],
   },
   {
+    name: 'modal',
+    dependencies: ['@radix-ui/react-dialog', 'clsx'],
+    registryDependencies: [],
+    files: ['primitives/modal/index.tsx'],
+  },
+  {
     name: 'pagination',
     dependencies: ['clsx'],
     registryDependencies: [],
