@@ -29,9 +29,11 @@ export interface CardProps extends Card {
  * ```css
  * :root {
  *   --card-focus: hsl(var(--primary));
+ *   --card-light-offset: hsl(var(--background));
  *   --card-light-text: hsl(var(--foreground));
  *   --card-light-icon: hsl(var(--foreground));
  *   --card-light-background: hsl(var(--contrast-100));
+ *   --card-dark-offset: hsl(var(--foreground));
  *   --card-dark-text: hsl(var(--background));
  *   --card-dark-icon: hsl(var(--background));
  *   --card-dark-background: hsl(var(--contrast-500));
@@ -120,7 +122,7 @@ export function Card({
       </span>
       <Link
         className={clsx(
-          'absolute inset-0 rounded-b-lg rounded-t-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blog-post-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+          'absolute inset-0 rounded-b-lg rounded-t-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
           {
             light: 'ring-offset-[var(--card-light-offset,hsl(var(--background)))]',
             dark: 'ring-offset-[var(--card-dark-offset,hsl(var(--foreground)))]',
