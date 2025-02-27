@@ -132,6 +132,12 @@ export const primitives = [
     files: ['primitives/inline-email-form/index.tsx'],
   },
   {
+    name: 'logo',
+    dependencies: ['clsx'],
+    registryDependencies: ['streamable', 'skeleton'],
+    files: ['primitives/logo/index.tsx'],
+  },
+  {
     name: 'pagination',
     dependencies: ['clsx'],
     registryDependencies: [],

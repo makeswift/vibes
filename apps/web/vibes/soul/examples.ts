@@ -549,6 +549,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/inline-email-form')),
   },
   {
+    name: 'logo-example',
+    dependencies: [],
+    registryDependencies: ['logo'],
+    files: ['examples/primitives/logo/index.tsx'],
+    component: lazy(() => import('./examples/primitives/logo')),
+  },
+  {
     name: 'navigation-electric',
     dependencies: [],
     registryDependencies: ['navigation-electric'],
