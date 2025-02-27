@@ -88,7 +88,7 @@ export const sections = [
   {
     name: 'featured-products-carousel',
     dependencies: [],
-    registryDependencies: ['products-carousel'],
+    registryDependencies: ['product-carousel'],
     files: ['sections/featured-products-carousel/index.tsx'],
   },
   {
