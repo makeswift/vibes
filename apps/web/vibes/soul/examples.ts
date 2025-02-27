@@ -766,6 +766,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/offset-pagination')),
   },
   {
+    name: 'price-label-example',
+    dependencies: [],
+    registryDependencies: ['price-label'],
+    files: ['examples/primitives/price-label/index.tsx'],
+    component: lazy(() => import('./examples/primitives/price-label')),
+  },
+  {
     name: 'product-card-example',
     dependencies: [],
     registryDependencies: ['product-card'],
