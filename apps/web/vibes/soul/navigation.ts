@@ -127,12 +127,6 @@ export const navigation = [
         file: 'docs/products-carousel.mdx',
         component: 'products-carousel',
       },
-      {
-        title: 'Product List',
-        slug: 'products-list',
-        file: 'docs/products-list.mdx',
-        component: 'products-list',
-      },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
       {
         title: 'Skeleton',
@@ -292,6 +286,12 @@ export const navigation = [
       },
       {
         title: 'Product List',
+        slug: 'products-list',
+        file: 'docs/products-list.mdx',
+        component: 'products-list',
+      },
+      {
+        title: 'Product List Section',
         slug: 'product-list-section',
         file: 'docs/products-list-section.mdx',
         component: 'products-list-section',
