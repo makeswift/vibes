@@ -535,11 +535,11 @@ export const examples = [
     component: lazy(() => import('./examples/sections/header-section/luxury')),
   },
   {
-    name: 'modal-example',
+    name: 'icon-example',
     dependencies: [],
-    registryDependencies: ['modal'],
-    files: ['examples/primitives/modal/index.tsx'],
-    component: lazy(() => import('./examples/primitives/modal')),
+    registryDependencies: ['icon'],
+    files: ['examples/primitives/icon/index.tsx'],
+    component: lazy(() => import('./examples/primitives/icon')),
   },
   {
     name: 'icon-block-example',
@@ -554,6 +554,13 @@ export const examples = [
     registryDependencies: [],
     files: ['examples/primitives/inline-email-form/index.tsx'],
     component: lazy(() => import('./examples/primitives/inline-email-form')),
+  },
+  {
+    name: 'modal-example',
+    dependencies: [],
+    registryDependencies: ['modal'],
+    files: ['examples/primitives/modal/index.tsx'],
+    component: lazy(() => import('./examples/primitives/modal')),
   },
   {
     name: 'navigation-electric',

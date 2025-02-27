@@ -126,10 +126,10 @@ export const primitives = [
     files: ['form/field-error/index.tsx'],
   },
   {
-    name: 'offset-pagination',
-    dependencies: ['clsx'],
+    name: 'icon',
+    dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
-    files: ['primitives/offset-pagination/index.tsx'],
+    files: ['primitives/icon/index.tsx'],
   },
   {
     name: 'inline-email-form',
@@ -142,6 +142,12 @@ export const primitives = [
     dependencies: ['@radix-ui/react-dialog', 'clsx'],
     registryDependencies: [],
     files: ['primitives/modal/index.tsx'],
+  },
+  {
+    name: 'offset-pagination',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['primitives/offset-pagination/index.tsx'],
   },
   {
     name: 'pagination',
