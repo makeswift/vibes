@@ -1,6 +1,6 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
-import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
+import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/sections/products-carousel';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 interface Link {
