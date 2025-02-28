@@ -176,6 +176,12 @@ export const primitives = [
     files: ['form/form-status/index.tsx'],
   },
   {
+    name: 'inline-email-form',
+    dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod'],
+    registryDependencies: [],
+    files: ['form/form-status/index.tsx'],
+  },
+  {
     name: 'icon',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['skeleton'],
@@ -210,6 +216,35 @@ export const primitives = [
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/offset-pagination/index.tsx'],
+  },
+  {
+    name: 'logo',
+    dependencies: ['clsx'],
+    registryDependencies: ['streamable'],
+    files: ['primitives/logo/index.tsx'],
+  },
+  {
+    name: 'navigation',
+    dependencies: [
+      '@conform-to/react',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-navigation-menu',
+      '@radix-ui/react-popover',
+      'clsx',
+      'lodash.debounce',
+      'lucide-react',
+      '@conform-to/zod',
+    ],
+    registryDependencies: [
+      'streamable',
+      'button',
+      'logo',
+      'price-label',
+      'product-card',
+      'toaster',
+      'form-status',
+    ],
+    files: ['primitives/navigation/index.tsx'],
   },
   {
     name: 'pagination',
