@@ -773,11 +773,25 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/price-label')),
   },
   {
-    name: 'product-card-example',
+    name: 'product-card-warm',
     dependencies: [],
     registryDependencies: ['product-card'],
-    files: ['examples/primitives/product-card/index.tsx'],
-    component: lazy(() => import('./examples/primitives/product-card')),
+    files: ['examples/primitives/product-card/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/product-card/warm')),
+  },
+  {
+    name: 'product-card-electric',
+    dependencies: [],
+    registryDependencies: ['product-card'],
+    files: ['examples/primitives/product-card/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/product-card/electric')),
+  },
+  {
+    name: 'product-card-luxury',
+    dependencies: [],
+    registryDependencies: ['product-card'],
+    files: ['examples/primitives/product-card/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/product-card/luxury')),
   },
   {
     name: 'product-carousel-warm',
