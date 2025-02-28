@@ -1,5 +1,54 @@
 ---
 title: Modal
 preview: modal-example
-previewSize: lg
+previewSize: sm
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Modal } from '@/vibes/soul/primitives/modal';
+
+function Usage() {
+    return (
+        <Modal
+            isOpen={isOpen}
+            setOpen={setIsOpen}
+            title="Example modal"
+            trigger={<Button size="medium">Open Modal</Button>}
+        >
+            <p>Put your content here!</p>
+        </Modal>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component uses the Dialog component from Radix UI. Refer to the [Radix UI Dialog documentation](https://www.radix-ui.com/primitives/docs/components/dialog) for more information.
+
+### ModalProps
+
+| Prop       | Type                      | Default |
+| ---------- | ------------------------- | ------- |
+| `isOpen`   | `boolean`                 |         |
+| `setOpen`  | `(open: boolean) => void` |         |
+| `title`    | `string`                  |         |
+| `trigger`  | `ReactNode`               |         |
+| `children` | `ReactNode`               |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --modal-background: hsl(var(--background));
+  --modal-overlay-background: hsl(var(--foreground) / 50%);
+}
+```
