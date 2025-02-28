@@ -1,70 +1,83 @@
 ---
 title: Product Card
-preview: product-card-example
-previewSize: md
+previewSize: lg
+preview:
+  Electric: product-card-electric
+  Warm: product-card-warm
+  Luxury: product-card-luxury
 ---
 
 ## Usage
 
-Import the component.
+{/* prettier-ignore-start */}
 
-<CodeBlock lang="bash">{`import { ProductCard } from '@/vibes/soul/primitives/product-card'
-`}</CodeBlock>
+<CodeBlock lang="ts">{`
+import { ProductCard } from '@/vibes/soul/primitives/product-card';
 
-Display the component.
+function Usage() {
+    return (
+      <ProductCard
+        product={{
+          id: '1',
+          href: '#',
+          title: 'Product Name',
+        }}
+      />
+    );
+}
+`}
+</CodeBlock>
 
-<CodeBlock lang="bash">{`<ProductCard
-  id="1"
-  href="#"
-  title="Product Name"
-  image={{
-    src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
-    alt: 'Product Name',
-  }}
-  subtitle="Blue/Black/Green"
-  price="123.99"
-  badge="New"
-  showCompare
-/>
-`}</CodeBlock>
+{/* prettier-ignore-end */}
 
 ## API Reference
 
-| Prop                | Type                                                     | Default |
-| ------------------- | -------------------------------------------------------- | ------- |
-| `id`                | `string`                                                 |         |
-| `title`             | `string`                                                 |         |
-| `href`              | `string`                                                 |         |
-| `image`             | `Image` <Tooltip content="{src: string, alt: string}" /> |         |
-| `price?`            | `string` \| [`ProductCardPrice`](#productcardprice)      |         |
-| `subtitle?`         | `string`                                                 |         |
-| `badge?`            | `string`                                                 |         |
-| `rating?`           | `number`                                                 |         |
-| `className?`        | `string`                                                 |         |
-| `showCompare?`      | `boolean`                                                | `false` |
-| `compareLabel?`     | `string`                                                 |         |
-| `compareParamName?` | `string`                                                 |         |
+### ProductCardProps
 
-### `ProductCardPrice`
+| Prop               | Type                                                                 | Default                                                                                                       |
+| ------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `className`        | `string`                                                             |                                                                                                               |
+| `colorScheme`      | `'light' \| 'dark'`                                                  | `'light'`                                                                                                     |
+| `aspectRatio`      | `'5:6' \| '3:4' \| '1:1'`                                            | `'5:6'`                                                                                                       |
+| `showCompare`      | `boolean`                                                            | `false'`                                                                                                      |
+| `imagePriority`    | `boolean`                                                            | `false`                                                                                                       |
+| `imageSizes`       | `string`                                                             | `'(min-width: 80rem) 20vw, (min-width: 64rem) 25vw, (min-width: 42rem) 33vw, (min-width: 24rem) 50vw, 100vw'` |
+| `compareLabel`     | `string`                                                             |                                                                                                               |
+| `compareParamName` | `string`                                                             |                                                                                                               |
+| `product*`         | `ProductCardWithId` <Tooltip content="See ProductCardWithId below"/> |                                                                                                               |
 
-<CodeBlock lang="ts">{`type ProductCardPrice = string | ProductCardPriceRange | ProductCardSalePrice;`}</CodeBlock>
+### ProductCardWithId
 
-### `ProductCardPriceRange`
+| Prop       | Type                           | Default |
+| ---------- | ------------------------------ | ------- |
+| `id*`      | `string`                       |         |
+| `title*`   | `string`                       |         |
+| `href*`    | `string`                       |         |
+| `image`    | `{ src: string; alt: string }` |         |
+| `price`    | `Price`                        |         |
+| `subtitle` | `string`                       |         |
+| `badge`    | `string`                       |         |
+| `rating`   | `number`                       |         |
 
-<CodeBlock lang="ts">
-  {`interface ProductCardPriceRange {
-  type: 'range'
-  minValue: string
-  maxValue: string
-}`}
-</CodeBlock>
+### CSS Variables
 
-### `ProductCardSalePrice`
+This component supports various CSS variables for theming. Here's a comprehensive list.
 
-<CodeBlock lang="ts">
-  {`interface ProductCardSalePrice {
-  type: 'sale'
-  previousValue: string
-  currentValue: string
-}`}
-</CodeBlock>
+```css
+:root {
+  --product-card-focus: hsl(var(--primary));
+  --product-card-light-offset: hsl(var(--background));
+  --product-card-light-background: hsl(var(--contrast-100));
+  --product-card-light-title: hsl(var(--foreground));
+  --product-card-light-subtitle: hsl(var(--foreground) / 75%);
+  --product-card-dark-offset: hsl(var(--foreground));
+  --product-card-dark-background: hsl(var(--contrast-500));
+  --product-card-dark-title: hsl(var(--background));
+  --product-card-dark-subtitle: hsl(var(--background) / 75%);
+  --product-card-font-family: var(--font-family-body);
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2820-48791" />
