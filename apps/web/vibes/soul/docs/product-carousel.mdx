@@ -6,3 +6,79 @@ preview:
   Luxury: product-carousel-luxury
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { ProductCarousel } from '@/vibes/soul/sections/product-carousel';
+
+function Usage() {
+    return (
+        <ProductCarousel products={products} />
+    );
+}
+const products = [
+    {
+      id: '1',
+      title: 'Product 1',
+    },
+]
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### ProductCarouselProps
+
+| Prop                 | Type                                                                                                    | Default                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `className`          | `string`                                                                                                |                                                    |
+| `products*`          | [Streamable](/docs/soul/streamable)`<CarouselProduct[]>` <Tooltip content="See CarouselProduct below"/> |                                                    |
+| `colorScheme`        | `'light' \| 'dark'`                                                                                     | `'light'`                                          |
+| `aspectRatio`        | `'5:6' \| '3:4' \| '1:1'`                                                                               | `'5:6'`                                            |
+| `emptyStateTitle`    | [Streamable](/docs/soul/streamable)`<string>`                                                           | `'No products found'`                              |
+| `emptyStateSubtitle` | [Streamable](/docs/soul/streamable)`<string>`                                                           | `'Try browsing our complete catalog of products.'` |
+| `scrollbarLabel`     | `string`                                                                                                | `'Scroll'`                                         |
+| `previousLabel`      | `string`                                                                                                | `'Previous'`                                       |
+| `nextLabel`          | `string`                                                                                                | `'Next'`                                           |
+| `placeholderCount`   | `number`                                                                                                | `8`                                                |
+| `showButtons`        | `boolean`                                                                                               | `true`                                             |
+| `showScrollbar`      | `boolean`                                                                                               | `true`                                             |
+| `hideOverflow`       | `boolean`                                                                                               | `true`                                             |
+
+### CarouselProduct
+
+| Prop       | Type                           | Default |
+| ---------- | ------------------------------ | ------- |
+| `id*`      | `string`                       |         |
+| `title*`   | `string`                       |         |
+| `href*`    | `string`                       |         |
+| `image`    | `{ src: string; alt: string }` |         |
+| `price`    | `Price`                        |         |
+| `subtitle` | `string`                       |         |
+| `badge`    | `string`                       |         |
+| `rating`   | `number`                       |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --product-carousel-light-empty-title: hsl(var(--foreground));
+  --product-carousel-light-empty-subtitle: hsl(var(--contrast-500));
+  --product-carousel-dark-empty-title: hsl(var(--background));
+  --product-carousel-dark-empty-subtitle: hsl(var(--contrast-100));
+  --product-carousel-empty-title-font-family: var(--font-family-heading);
+  --product-carousel-empty-subtitle-font-family: var(--font-family-body);
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=3944-81964" />
