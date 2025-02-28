@@ -5,7 +5,30 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export function OffsetPagination({ pages: totalPages }: { pages: number }) {
+export interface OffsetPaginationProps {
+  pages: number;
+}
+
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --offset-pagination-focus: hsl(var(--primary));
+ *   -offset-pagination-font-family: var(--font-family-body);
+ *   --offset-pagination-ellipsis: hsl(var(--foreground))
+ *   --offset-pagination-border: hsl(var(--contrast-100));
+ *   --offset-pagination-text: hsl(var(--foreground));
+ *   --offset-pagination-background-hover: hsl(var(--contrast-100));
+ *   --offset-pagination-current-page-border: hsl(var(--foreground));
+ *   --offset-pagination-current-page-background: hsl(var(--foreground));
+ *   --offset-pagination-current-page-text: hsl(var(--background));
+ *   --offset-pagination-current-pagebackground-hover: hsl(var(--contrast-500));
+ * }
+ * ```
+ */
+export function OffsetPagination({ pages: totalPages }: OffsetPaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const initialPage = parseInt(searchParams.get('page') ?? '1', 10);
@@ -56,12 +79,12 @@ export function OffsetPagination({ pages: totalPages }: { pages: number }) {
   };
 
   return (
-    <div className="flex w-full justify-center bg-background py-10 text-xs">
+    <div className="flex w-full justify-center py-10 font-[family-name:var(--offset-pagination-font-family,var(--font-family-body))] text-xs">
       <div className="flex gap-2">
         {renderPagination().map((page, index) =>
           typeof page === 'string' ? (
             <span
-              className="hidden h-12 w-12 items-center justify-center text-foreground @lg:flex"
+              className="hidden h-12 w-12 items-center justify-center text-[var(--offset-pagination-ellipsis,hsl(var(--foreground)))] @lg:flex"
               key={index}
             >
               ...
@@ -69,11 +92,10 @@ export function OffsetPagination({ pages: totalPages }: { pages: number }) {
           ) : (
             <Link
               className={clsx(
-                'flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-300',
-                'ring-primary focus-visible:outline-0 focus-visible:ring-2',
+                'flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--offset-pagination-focus,hsl(var(--primary)))]',
                 page === currentPage
-                  ? 'border-foreground bg-foreground text-background'
-                  : 'border-contrast-100 text-foreground hover:bg-contrast-100',
+                  ? 'border-[var(--offset-pagination-current-page-border,hsl(var(--foreground)))] bg-[var(--offset-pagination-current-page-background,hsl(var(--foreground)))] text-[var(--offset-pagination-current-page-text,hsl(var(--background)))] hover:bg-[var(--offset-pagination-current-pagebackground-hover,hsl(var(--contrast-500)))]'
+                  : 'border-[var(--offset-pagination-border,hsl(var(--contrast-100)))] text-[var(--offset-pagination-text,hsl(var(--foreground)))] hover:bg-[var(--offset-pagination-background-hover,hsl(var(--contrast-100)))]',
               )}
               href={`${pathname}?page=${page.toString()}`}
               key={index}
