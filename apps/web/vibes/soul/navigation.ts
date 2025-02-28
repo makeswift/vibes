@@ -116,6 +116,12 @@ export const navigation = [
         component: 'navigation',
       },
       {
+        title: 'Price Label',
+        slug: 'price-label',
+        file: 'docs/price-label.mdx',
+        component: 'price-label',
+      },
+      {
         title: 'Product Card',
         slug: 'product-card',
         file: 'docs/product-card.mdx',
