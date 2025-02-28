@@ -1,6 +1,6 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
-import { ListProduct, ProductsList } from '@/vibes/soul/sections/products-list';
+import { ListProduct, ProductList } from '@/vibes/soul/sections/product-list';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 interface Link {
@@ -50,7 +50,7 @@ export function FeaturedProductsList({
       }
       sidebarSize="1/3"
     >
-      <ProductsList
+      <ProductList
         className="flex-1"
         emptyStateSubtitle={emptyStateSubtitle}
         emptyStateTitle={emptyStateTitle}

@@ -10,7 +10,7 @@ import {
   BreadcrumbsSkeleton,
   BreadcrumbWithId,
 } from '@/vibes/soul/sections/breadcrumbs';
-import { ListProduct, ProductsList } from '@/vibes/soul/sections/products-list';
+import { ListProduct, ProductList } from '@/vibes/soul/sections/product-list';
 import { Filter, FiltersPanel } from '@/vibes/soul/sections/products-list-section/filters-panel';
 import {
   Sorting,
@@ -154,7 +154,7 @@ export function ProductsListSection({
           </aside>
 
           <div className="flex-1 group-has-[[data-pending]]/products-list-section:animate-pulse">
-            <ProductsList
+            <ProductList
               compareAction={compareAction}
               compareLabel={compareLabel}
               compareParamName={compareParamName}
