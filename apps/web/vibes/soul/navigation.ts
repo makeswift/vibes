@@ -116,6 +116,12 @@ export const navigation = [
         component: 'navigation',
       },
       {
+        title: 'Offset Pagination',
+        slug: 'offset-pagination',
+        file: 'docs/offset-pagination.mdx',
+        component: 'offset-pagination',
+      },
+      {
         title: 'Product Card',
         slug: 'product-card',
         file: 'docs/product-card.mdx',
