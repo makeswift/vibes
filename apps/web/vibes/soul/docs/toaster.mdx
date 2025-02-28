@@ -10,6 +10,7 @@ previewSize: sm
 
 <CodeBlock lang="ts">{`
 'use client';
+
 import { toast } from '@/vibes/soul/primitives/toaster';
 
 function Usage() {
@@ -21,6 +22,7 @@ function Usage() {
                     action: { label: 'Undo', onClick: () => console.log('undo') },
                 })
             }
+            variant="primary"
         >
             Toast with Options
       </button>
@@ -39,8 +41,6 @@ This comoponent uses the Sonner toast component. For more information, please re
 
 | Prop           | Type                                                                                         | Default |
 | -------------- | -------------------------------------------------------------------------------------------- | ------- |
-| `children*`    | `ReactNode`                                                                                  |         |
-| `className`    | `string`                                                                                     |         |
 | `description`  | `string;`                                                                                    |         |
 | `position`     | `'top-left \| 'top-center \| 'top-right \| 'bottom-left \| 'bottom-center \| 'bottom-right'` |         |
 | `dismissLabel` | `string;`                                                                                    |         |
