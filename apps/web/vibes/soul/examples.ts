@@ -535,6 +535,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/header-section/luxury')),
   },
   {
+    name: 'icon-example',
+    dependencies: [],
+    registryDependencies: ['icon'],
+    files: ['examples/primitives/icon/index.tsx'],
+    component: lazy(() => import('./examples/primitives/icon')),
+  },
+  {
     name: 'icon-block-example',
     dependencies: [],
     registryDependencies: ['icon-block'],
