@@ -7,19 +7,19 @@ export default function Preview() {
   return (
     <div className="grid h-screen place-content-center gap-x-4 gap-y-6">
       <Button onClick={() => toast.success('Success')} variant="primary">
-        Success
+        Success Toast
       </Button>
 
       <Button onClick={() => toast.error('Error')} variant="primary">
-        Error
+        Error Toast
       </Button>
 
       <Button onClick={() => toast.warning('Warning')} variant="primary">
-        Warning
+        Warning Toast
       </Button>
 
       <Button onClick={() => toast.info('Info')} variant="primary">
-        Info
+        Info Toast
       </Button>
 
       <Button
@@ -31,7 +31,7 @@ export default function Preview() {
         }
         variant="primary"
       >
-        Options
+        Toast with Options
       </Button>
     </div>
   );

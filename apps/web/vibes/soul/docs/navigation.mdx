@@ -4,4 +4,188 @@ preview:
   Electric: navigation-electric
   Warm: navigation-warm
   Luxury: navigation-luxury
+previewSize: sm
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Navigation } from '@/vibes/soul/primitives/navigation';
+
+const navigationLinks = [
+    {
+      label: 'Shop All',
+      href: '#',
+    }
+]
+
+function Usage() {
+    return (
+      <Navigation
+          accountHref="#"
+          activeLocaleId="en"
+          cartHref="#"
+          links={navigationLinks}
+          localeAction={localeAction}
+          locales={locales}
+          logo="SOUL"
+          searchHref="#"
+      />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### NavigationProps
+
+| Prop                     | Type                                                                                                 | Default               |
+| ------------------------ | ---------------------------------------------------------------------------------------------------- | --------------------- |
+| `className`              | `string`                                                                                             |                       |
+| `isFloating`             | `boolean`                                                                                            | `false`               |
+| `accountHref`            | `string`                                                                                             |                       |
+| `cartCount`              | [`Streamable`](/docs/soul/streamable)`<number \| null>`                                              |                       |
+| `cartHref`               | `string`                                                                                             |                       |
+| `links`                  | [`Streamable`](/docs/soul/streamable)`<Link[]>` <Tooltip contnet="See Next.js Link documentation."/> |                       |
+| `linksPosition`          | `'center' \| 'left' \| 'right'`                                                                      | `'center'`            |
+| `locales`                | `Locale[]`                                                                                           |                       |
+| `activeLocaleId`         | `string`                                                                                             |                       |
+| `localeAction`           | `LocaleAction`                                                                                       |                       |
+| `currencies`             | `Currency[]`                                                                                         |                       |
+| `activeCurrencyId`       | `Streamable<string \| undefined>`                                                                    |                       |
+| `currencyAction`         | `CurrencyAction`                                                                                     |                       |
+| `logo`                   | [`Streamable`](/docs/soul/streamable)`<string \| { src: string; alt: string } \| null>`              |                       |
+| `logoWidth`              | `number`                                                                                             | `200`                 |
+| `logoHeight`             | `number`                                                                                             | `40`                  |
+| `logoHref`               | `string`                                                                                             | `'/'`                 |
+| `logoLabel`              | `string`                                                                                             | `'Home'`              |
+| `mobileLogo`             | [`Streamable`](/docs/soul/streamable)`<string \| { src: string; alt: string } \| null>`              |                       |
+| `mobileLogoWidth`        | `number`                                                                                             | `100`                 |
+| `mobileLogoHeight`       | `number`                                                                                             | `40                   |
+| `searchHref`             | `string`                                                                                             |                       |
+| `searchParamName`        | `string`                                                                                             | `'query'`             |
+| `searchAction`           | `SearchAction<S>`                                                                                    |                       |
+| `searchCtaLabel`         | `string`                                                                                             |                       |
+| `searchInputPlaceholder` | `string`                                                                                             |                       |
+| `cartLabel`              | `string`                                                                                             | `'Cart'`              |
+| `accountLabel`           | `string`                                                                                             | `'Profile'`           |
+| `openSearchPopupLabel`   | `string`                                                                                             | `'Open search popup'` |
+| `searchLabel`            | `string`                                                                                             | `'Search'`            |
+| `mobileMenuTriggerLabel` | `string`                                                                                             | `'Toggle navigation'` |
+
+#### Actions
+
+You can find the type defintions for the actions below.
+
+```ts
+type Action<State, Payload> = (
+  state: Awaited<State>,
+  payload: Awaited<Payload>,
+) => State | Promise<State>;
+
+type LocaleAction = Action<SubmissionResult | null, FormData>;
+type CurrencyAction = Action<SubmissionResult | null, FormData>;
+
+type SearchAction<S extends SearchResult> = Action<
+  {
+    searchResults: S[] | null;
+    lastResult: SubmissionResult | null;
+    emptyStateTitle?: string;
+    emptyStateSubtitle?: string;
+  },
+  FormData
+>;
+```
+
+This component uses Confom to handle form submissions. Refer to the [Conform docs](https://conform.guide/) for more details.
+
+### Locale
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `id*`    | `string` |         |
+| `label*` | `string` |         |
+
+### Currency
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `id*`    | `string` |         |
+| `label*` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --nav-focus: hsl(var(--primary));
+  --nav-background: hsl(var(--background));
+  --nav-floating-border: hsl(var(--foreground) / 10%);
+  --nav-link-text: hsl(var(--foreground));
+  --nav-link-text-hover: hsl(var(--foreground));
+  --nav-link-background: transparent;
+  --nav-link-background-hover: hsl(var(--contrast-100));
+  --nav-link-font-family: var(--font-family-body);
+  --nav-group-text: hsl(var(--foreground));
+  --nav-group-text-hover: hsl(var(--foreground));
+  --nav-group-background: transparent;
+  --nav-group-background-hover: hsl(var(--contrast-100));
+  --nav-group-font-family: var(--font-family-body);
+  --nav-sub-link-text: hsl(var(--contrast-500));
+  --nav-sub-link-text-hover: hsl(var(--foreground));
+  --nav-sub-link-background: transparent;
+  --nav-sub-link-background-hover: hsl(var(--contrast-100));
+  --nav-sub-link-font-family: var(--font-family-body);
+  --nav-button-icon: hsl(var(--foreground));
+  --nav-button-icon-hover: hsl(var(--foreground));
+  --nav-button-background: hsl(var(--background));
+  --nav-button-background-hover: hsl(var(--contrast-100));
+  --nav-menu-background: hsl(var(--background));
+  --nav-menu-border: hsl(var(--foreground) / 5%);
+  --nav-mobile-background: hsl(var(--background));
+  --nav-mobile-divider: hsl(var(--contrast-100));
+  --nav-mobile-button-icon: hsl(var(--foreground));
+  --nav-mobile-link-text: hsl(var(--foreground));
+  --nav-mobile-link-text-hover: hsl(var(--foreground));
+  --nav-mobile-link-background: transparent;
+  --nav-mobile-link-background-hover: hsl(var(--contrast-100));
+  --nav-mobile-link-font-family: var(--font-family-body);
+  --nav-mobile-sub-link-text: hsl(var(--contrast-500));
+  --nav-mobile-sub-link-text-hover: hsl(var(--foreground));
+  --nav-mobile-sub-link-background: transparent;
+  --nav-mobile-sub-link-background-hover: hsl(var(--contrast-100));
+  --nav-mobile-sub-link-font-family: var(--font-family-body);
+  --nav-search-background: hsl(var(--background));
+  --nav-search-border: hsl(var(--foreground) / 5%);
+  --nav-search-divider: hsl(var(--foreground) / 5%);
+  --nav-search-icon: hsl(var(--contrast-500));
+  --nav-search-empty-title: hsl(var(--foreground));
+  --nav-search-empty-subtitle: hsl(var(--contrast-500));
+  --nav-search-result-title: hsl(var(--foreground));
+  --nav-search-result-title-font-family: var(--font-family-mono);
+  --nav-search-result-link-text: hsl(var(--foreground));
+  --nav-search-result-link-text-hover: hsl(var(--foreground));
+  --nav-search-result-link-background: hsl(var(--background));
+  --nav-search-result-link-background-hover: hsl(var(--contrast-100));
+  --nav-search-result-link-font-family: var(--font-family-body);
+  --nav-cart-count-text: hsl(var(--background));
+  --nav-cart-count-background: hsl(var(--foreground));
+  --nav-locale-background: hsl(var(--background));
+  --nav-locale-link-text: hsl(var(--contrast-400));
+  --nav-locale-link-text-hover: hsl(var(--foreground));
+  --nav-locale-link-text-selected: hsl(var(--foreground));
+  --nav-locale-link-background: transparent;
+  --nav-locale-link-background-hover: hsl(var(--contrast-100));
+  --nav-locale-link-font-family: var(--font-family-body);
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2295-42535" />
