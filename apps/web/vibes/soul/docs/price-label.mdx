@@ -3,3 +3,59 @@ title: Price Label
 preview: price-label-example
 previewSize: xs
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { PriceLabel } from '@/vibes/soul/primitives/price-label';
+
+function Usage() {
+    return (
+        <PriceLabel price="100" />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### PriceLabelProps
+
+| Prop          | Type                                | Default   |
+| ------------- | ----------------------------------- | --------- |
+| `className`   | `string`                            |           |
+| `colorScheme` | `'light' \| 'dark'`                 | `'light'` |
+| `price*`      | `string \| PriceRange \| PriceSale` |           |
+
+### PriceRange
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `type`     | `'range'` |         |
+| `minValue` | `string`  |         |
+| `maxValue` | `string`  |         |
+
+### PriceSale
+
+| Prop            | Type     | Default |
+| --------------- | -------- | ------- |
+| `type`          | `'sale'` |         |
+| `previousValue` | `string` |         |
+| `currentValue`  | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --price-light-text: hsl(var(--foreground));
+  --price-light-sale-text: hsl(var(--foreground));
+  --price-dark-text: hsl(var(--background));
+  --price-dark-sale-text: hsl(var(--background));
+}
+```
