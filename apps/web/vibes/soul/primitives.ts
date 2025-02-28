@@ -150,12 +150,6 @@ export const primitives = [
     files: ['primitives/product-card/index.tsx', 'primitives/product-card/compare.tsx'],
   },
   {
-    name: 'products-carousel',
-    dependencies: ['clsx'],
-    registryDependencies: ['product-card', 'carousel'],
-    files: ['primitives/products-carousel/index.tsx'],
-  },
-  {
     name: 'products-list',
     dependencies: [],
     registryDependencies: ['product-card'],

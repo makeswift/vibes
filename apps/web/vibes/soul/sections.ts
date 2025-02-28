@@ -88,7 +88,7 @@ export const sections = [
   {
     name: 'featured-products-carousel',
     dependencies: [],
-    registryDependencies: ['products-carousel'],
+    registryDependencies: ['product-carousel'],
     files: ['sections/featured-products-carousel/index.tsx'],
   },
   {
@@ -136,6 +136,12 @@ export const sections = [
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['sections/order-history-section/index.tsx'],
+  },
+  {
+    name: 'product-carousel',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['product-card', 'carousel', 'skeleton', 'streamable'],
+    files: ['sections/product-carousel/index.tsx'],
   },
   {
     name: 'product-detail',
