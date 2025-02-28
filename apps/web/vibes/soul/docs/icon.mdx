@@ -3,3 +3,33 @@ title: Icon
 preview: icon-example
 previewSize: xs
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Icon } from '@/vibes/soul/primitives/icon';
+
+function Usage() {
+    return (
+        <Icon className="text-contrast-500" name="user" size={32} />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### IconProps
+
+| Prop          | Type                                                                              | Default |
+| ------------- | --------------------------------------------------------------------------------- | ------- |
+| `className`   | `string`                                                                          |         |
+| `size`        | `number`                                                                          | `24`    |
+| `name*`       | `IconName` <Tooltip content="See the Lucide docs for a full list of icon names"/> |         |
+| `strokeWidth` | `number`                                                                          | `1.5`   |
+
+Refer to the [Lucide docs](https://lucide.dev/icons/) for a full list of available icons.
