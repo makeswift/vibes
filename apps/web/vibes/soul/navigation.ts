@@ -310,9 +310,9 @@ export const navigation = [
       },
       {
         title: 'Product List',
-        slug: 'products-list',
-        file: 'docs/products-list.mdx',
-        component: 'products-list',
+        slug: 'product-list',
+        file: 'docs/product-list.mdx',
+        component: 'product-list',
       },
       {
         title: 'Product List Section',
