@@ -160,6 +160,12 @@ export const navigation = [
       },
       { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
       {
+        title: 'Side Panel',
+        slug: 'side-panel',
+        file: 'docs/side-panel.mdx',
+        component: 'side-panel',
+      },
+      {
         title: 'Skeleton',
         slug: 'skeleton',
         file: 'docs/skeleton.mdx',

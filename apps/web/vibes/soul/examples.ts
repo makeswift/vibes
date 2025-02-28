@@ -920,6 +920,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/reviews')),
   },
   {
+    name: 'side-panel-example',
+    dependencies: [],
+    registryDependencies: ['side-panel'],
+    files: ['examples/primitives/side-panel/index.tsx'],
+    component: lazy(() => import('./examples/primitives/side-panel')),
+  },
+  {
     name: 'sign-in-section-example',
     dependencies: [],
     registryDependencies: ['sign-in-section'],
