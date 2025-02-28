@@ -56,7 +56,7 @@ export function ProductsListSection({
   compareLabel,
   paginationInfo,
   filterLabel = 'Filters',
-  filtersPanelTitle: streamableFiltersPanelTitle,
+  filtersPanelTitle: streamableFiltersPanelTitle = 'Filters',
   resetFiltersLabel,
   rangeFilterApplyLabel,
   sortLabel: streamableSortLabel,
@@ -124,7 +124,7 @@ export function ProductsListSection({
                   </SidePanel.Trigger>
                   <Stream value={streamableFiltersPanelTitle}>
                     {(filtersPanelTitle) => (
-                      <SidePanel.Content title={<h2>{filtersPanelTitle}</h2>}>
+                      <SidePanel.Content title={filtersPanelTitle}>
                         <FiltersPanel
                           filters={filters}
                           paginationInfo={paginationInfo}

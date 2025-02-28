@@ -192,6 +192,12 @@ export const primitives = [
     files: ['primitives/rating/index.tsx'],
   },
   {
+    name: 'side-panel',
+    dependencies: ['@radix-ui/react-dialog', 'clsx', 'lucide-react'],
+    registryDependencies: ['button'],
+    files: ['primitives/side-panel/index.tsx'],
+  },
+  {
     name: 'skeleton',
     dependencies: ['clsx'],
     registryDependencies: [],
