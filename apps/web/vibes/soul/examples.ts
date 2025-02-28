@@ -486,6 +486,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/form')),
   },
   {
+    name: 'form-status-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/form/form-status/index.tsx'],
+    component: lazy(() => import('./examples/form/form-status/index')),
+  },
+  {
     name: 'footer-electric-example',
     dependencies: [],
     registryDependencies: ['footer-electric'],
@@ -547,6 +554,13 @@ export const examples = [
     registryDependencies: [],
     files: ['examples/primitives/inline-email-form/index.tsx'],
     component: lazy(() => import('./examples/primitives/inline-email-form')),
+  },
+  {
+    name: 'logo-example',
+    dependencies: ['clsx'],
+    registryDependencies: ['streamable'],
+    files: ['examples/primitives/logo/index.tsx'],
+    component: lazy(() => import('./examples/primitives/logo')),
   },
   {
     name: 'navigation-electric',

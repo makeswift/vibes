@@ -126,10 +126,45 @@ export const primitives = [
     files: ['form/field-error/index.tsx'],
   },
   {
+    name: 'form-status',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['form/form-status/index.tsx'],
+  },
+  {
     name: 'inline-email-form',
     dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod'],
     registryDependencies: [],
     files: ['primitives/inline-email-form/index.tsx'],
+  },
+  {
+    name: 'logo',
+    dependencies: ['clsx'],
+    registryDependencies: ['streamable'],
+    files: ['primitives/logo/index.tsx'],
+  },
+  {
+    name: 'navigation',
+    dependencies: [
+      '@conform-to/react',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-navigation-menu',
+      '@radix-ui/react-popover',
+      'clsx',
+      'lodash.debounce',
+      'lucide-react',
+      '@conform-to/zod',
+    ],
+    registryDependencies: [
+      'streamable',
+      'button',
+      'logo',
+      'price-label',
+      'product-card',
+      'toaster',
+      'form-status',
+    ],
+    files: ['primitives/navigation/index.tsx'],
   },
   {
     name: 'pagination',
@@ -184,5 +219,11 @@ export const primitives = [
     dependencies: ['uuid'],
     registryDependencies: [],
     files: ['lib/streamable.tsx'],
+  },
+  {
+    name: 'toaster',
+    dependencies: ['sonner'],
+    registryDependencies: ['alert'],
+    files: ['primitives/toaster/index.tsx'],
   },
 ] satisfies Components;

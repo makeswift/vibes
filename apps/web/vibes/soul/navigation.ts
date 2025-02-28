@@ -109,6 +109,7 @@ export const navigation = [
         file: 'docs/inline-email-form.mdx',
         component: 'inline-email-form',
       },
+      { title: 'Logo', slug: 'logo', file: 'docs/logo.mdx', component: 'logo' },
       {
         title: 'Navigation',
         slug: 'navigation',
@@ -170,6 +171,12 @@ export const navigation = [
         slug: 'field-error',
         file: 'docs/field-error.mdx',
         component: 'field-error',
+      },
+      {
+        title: 'Form Status',
+        slug: 'form-status',
+        file: 'docs/form-status.mdx',
+        component: 'form-status',
       },
     ],
   },
