@@ -128,7 +128,7 @@ export const primitives = [
   {
     name: 'icon',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
+    registryDependencies: ['skeleton'],
     files: ['primitives/icon/index.tsx'],
   },
   {
