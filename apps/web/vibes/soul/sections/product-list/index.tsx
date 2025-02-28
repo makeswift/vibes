@@ -12,7 +12,7 @@ import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export type ListProduct = ProductCardWithId;
 
-interface ProductsListProps {
+interface ProductListProps {
   products: Streamable<ListProduct[]>;
   compareProducts?: Streamable<ListProduct[]>;
   className?: string;
@@ -33,14 +33,16 @@ interface ProductsListProps {
  *
  * ```css
  * :root {
- *   --products-list-empty-state-title-font-family: var(--font-family-heading);
- *   --products-list-empty-state-title: hsl(var(--foreground));
- *   --products-list-empty-state-subtitle-font-family: var(--font-family-body);
- *   --products-list-empty-state-subtitle: hsl(var(--contrast-500));
+ *   --product-list-light-empty-title: hsl(var(--foreground));
+ *   --product-list-light-empty-subtitle: hsl(var(--contrast-500));
+ *   --product-list-dark-empty-title: hsl(var(--background));
+ *   --product-list-dark-empty-subtitle: hsl(var(--contrast-100));
+ *   --product-list-empty-state-title-font-family: var(--font-family-heading);
+ *   --product-list-empty-state-subtitle-font-family: var(--font-family-body);
  * }
  * ```
  */
-export function ProductsList({
+export function ProductList({
   products: streamableProducts,
   className,
   colorScheme = 'light',
@@ -53,17 +55,17 @@ export function ProductsList({
   emptyStateTitle = 'No products found',
   emptyStateSubtitle = 'Try browsing our complete catalog of products.',
   placeholderCount = 8,
-}: ProductsListProps) {
+}: ProductListProps) {
   return (
     <>
       <Stream
-        fallback={<ProductsListSkeleton pending placeholderCount={placeholderCount} />}
+        fallback={<ProductListSkeleton placeholderCount={placeholderCount} />}
         value={Streamable.all([streamableProducts, streamableCompareLabel])}
       >
         {([products, compareLabel]) => {
           if (products.length === 0) {
             return (
-              <ProductsListEmptyState
+              <ProductListEmptyState
                 emptyStateSubtitle={emptyStateSubtitle}
                 emptyStateTitle={emptyStateTitle}
                 placeholderCount={placeholderCount}
@@ -107,19 +109,14 @@ export function ProductsList({
   );
 }
 
-export function ProductsListSkeleton({
+export function ProductListSkeleton({
   className,
   placeholderCount = 8,
-  pending = false,
-}: {
-  className?: string;
-  placeholderCount?: number;
-  pending?: boolean;
-}) {
+}: Pick<ProductListProps, 'className' | 'placeholderCount'>) {
   return (
     <Skeleton.Root
-      className={clsx('group-has-[[data-pending]]/products-list:animate-pulse', className)}
-      pending={pending}
+      className={clsx('group-has-[[data-pending]]/product-list:animate-pulse', className)}
+      pending
     >
       <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5">
         {Array.from({ length: placeholderCount }).map((_, index) => (
@@ -130,17 +127,15 @@ export function ProductsListSkeleton({
   );
 }
 
-export function ProductsListEmptyState({
+export function ProductListEmptyState({
   className,
   placeholderCount = 8,
   emptyStateTitle,
   emptyStateSubtitle,
-}: {
-  className?: string;
-  placeholderCount?: number;
-  emptyStateTitle?: Streamable<string>;
-  emptyStateSubtitle?: Streamable<string>;
-}) {
+}: Pick<
+  ProductListProps,
+  'className' | 'placeholderCount' | 'emptyStateTitle' | 'emptyStateSubtitle'
+>) {
   return (
     <Skeleton.Root className={clsx('relative', className)}>
       <div
@@ -154,10 +149,10 @@ export function ProductsListEmptyState({
       </div>
       <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
-          <h3 className="font-[family-name:var(--products-list-empty-state-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--products-list-empty-state-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
+          <h3 className="font-[family-name:var(--product-list-empty-state-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--product-list-empty-state-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
             {emptyStateTitle}
           </h3>
-          <p className="font-[family-name:var(--products-list-empty-state-subtitle-font-family,var(--font-family-body))] text-sm text-[var(--products-list-empty-state-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
+          <p className="font-[family-name:var(--product-list-empty-state-subtitle-font-family,var(--font-family-body))] text-sm text-[var(--product-list-empty-state-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
             {emptyStateSubtitle}
           </p>
         </div>
