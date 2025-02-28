@@ -12,34 +12,75 @@ features:
 
 ## Usage
 
-Import the component.
+{/* prettier-ignore-start */}
 
-<CodeBlock lang="bash">{`import { ProductList } from '@/vibes/soul/primitives/product-list'`}</CodeBlock>
+<CodeBlock lang="ts">{`
+import { ProductList } from '@/vibes/soul/sections/product-list';
 
-Query the product data.
+function Usage() {
+    return (
+        <ProductList products={products} />
+    );
+}
 
-<CodeBlock lang="bash">{`const products = await getProducts()`}</CodeBlock>
+const products = [
+    {
+      id: '1',
+      title: 'Product 1',
+      href: '#',
+    },
+]
+`}
+</CodeBlock>
 
-Display the component.
-
-<CodeBlock lang="bash">{`<ProductList products={products} />`}</CodeBlock>
-
-### Streaming
-
-The `products` property accepts either `Product[]` or `Promise<Product[]>`. By passing a `Promise<Product[]>`, you enable streaming which will show a loading state until the data is finished loading and streamed to the browser.
+{/* prettier-ignore-end */}
 
 ## API Reference
 
-### `ProductList`
+### ProductList
 
-| Prop                | Type                                                                                                                         | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `products`          | [`Product`](/docs/soul/product-card#product)`[]` &nbsp;\| &nbsp;`Promise<`[`Product>`](/docs/soul/product-card#product)`[]>` |         |
-| `className`         | `string`                                                                                                                     |         |
-| `showCompare?`      | `boolean`                                                                                                                    | `false` |
-| `compareProducts?`  | [`Product`](/docs/soul/product-card#product)`[]` &nbsp;\|&nbsp; `Promise<`[`Product`](/docs/soul/product-card#product)`[]>`  |         |
-| `compareLabel?`     | `string`                                                                                                                     |         |
-| `compareParamName?` | `string`                                                                                                                     |         |
+| Prop                 | Type                                                                                              | Default                                           |
+| -------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `products*`          | [`Streamable`](/docs/soul/streamable)`<ListProduct[]>` <Tooltip content="See ListProduct below"/> |                                                   |
+| `compareProducts`    | [`Streamable`](/docs/soul/streamable)`<ListProduct[]>` <Tooltip content="See ListProduct below"/> | `[]`                                              |
+| `className`          | `string`                                                                                          |                                                   |
+| `colorScheme`        | `'light' \| 'dark'`                                                                               | `'light'`                                         |
+| `aspectRatio`        | `'5:6' \| '3:4'  \| '1:1'`                                                                        | `'5:6'`                                           |
+| `showCompare`        | `boolean`                                                                                         | `false`                                           |
+| `compareAction`      | `(formData: FormData) => void`                                                                    |                                                   |
+| `compareLabel`       | [`Streamable`](/docs/soul/streamable)`<string>`                                                   | `'Compare'`                                       |
+| `compareParamName`   | `string`                                                                                          | `'compare'`                                       |
+| `emptyStateTitle`    | [`Streamable`](/docs/soul/streamable)`<string>`                                                   | `'No products found'`                             |
+| `emptyStateSubtitle` | [`Streamable`](/docs/soul/streamable)`<string>`                                                   | `'Try browsing our complete catalog of products'` |
+| `placeholderCount`   | `number`                                                                                          | `0`                                               |
+
+### ListProduct
+
+| Prop       | Type                           | Default |
+| ---------- | ------------------------------ | ------- |
+| `id*`      | `string`                       |         |
+| `title*`   | `string`                       |         |
+| `href*`    | `string`                       |         |
+| `image`    | `{ src: string; alt: string }` |         |
+| `price`    | `Price`                        |         |
+| `subtitle` | `string`                       |         |
+| `badge`    | `string`                       |         |
+| `rating`   | `number`                       |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --product-list-light-empty-title: hsl(var(--foreground));
+  --product-list-light-empty-subtitle: hsl(var(--contrast-500));
+  --product-list-dark-empty-title: hsl(var(--background));
+  --product-list-dark-empty-subtitle: hsl(var(--contrast-100));
+  --product-list-empty-state-title-font-family: var(--font-family-heading);
+  --product-list-empty-state-subtitle-font-family: var(--font-family-body);
+}
+```
 
 ## Figma
 

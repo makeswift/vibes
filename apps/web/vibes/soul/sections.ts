@@ -145,8 +145,8 @@ export const sections = [
   },
   {
     name: 'product-list',
-    dependencies: [],
-    registryDependencies: ['product-card'],
+    dependencies: ['clsx'],
+    registryDependencies: ['product-card', 'streamable', 'compare-drawer', 'skeleton'],
     files: ['sections/product-list/index.tsx'],
   },
   {
