@@ -150,15 +150,15 @@ export const sections = [
     files: ['sections/product-detail/index.tsx', 'sections/product-detail/product-gallery.tsx'],
   },
   {
-    name: 'products-list',
+    name: 'product-list',
     dependencies: [],
     registryDependencies: ['product-card'],
-    files: ['sections/products-list/index.tsx'],
+    files: ['sections/product-list/index.tsx'],
   },
   {
     name: 'products-list-section',
     dependencies: ['nuqs'],
-    registryDependencies: ['products-list', 'button', 'toggle-group', 'cursor-pagination'],
+    registryDependencies: ['product-list', 'button', 'toggle-group', 'cursor-pagination'],
     files: [
       'sections/products-list-section/index.tsx',
       'sections/products-list-section/filters-panel.tsx',

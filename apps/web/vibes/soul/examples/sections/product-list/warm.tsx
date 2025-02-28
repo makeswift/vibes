@@ -1,4 +1,4 @@
-import { ListProduct, ProductsList } from '@/vibes/soul/sections/products-list';
+import { ListProduct, ProductList } from '@/vibes/soul/sections/product-list';
 
 export default function Preview() {
   const products = new Promise<ListProduct[]>((resolve) => {
@@ -7,7 +7,7 @@ export default function Preview() {
 
   return (
     <div className="p-6">
-      <ProductsList products={products} />
+      <ProductList products={products} />
     </div>
   );
 }
