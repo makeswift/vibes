@@ -2,7 +2,7 @@ import { SubmissionResult } from '@conform-to/react';
 import { clsx } from 'clsx';
 import Image from 'next/image';
 
-import { InlineEmailForm } from '@/vibes/soul/primitives/inline-email-form';
+import { InlineEmailForm } from '@/vibes/soul/sections/inline-email-form';
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 

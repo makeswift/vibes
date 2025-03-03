@@ -583,8 +583,8 @@ export const examples = [
     name: 'inline-email-form-example',
     dependencies: [],
     registryDependencies: [],
-    files: ['examples/primitives/inline-email-form/index.tsx'],
-    component: lazy(() => import('./examples/primitives/inline-email-form')),
+    files: ['examples/sections/inline-email-form/index.tsx'],
+    component: lazy(() => import('./examples/sections/inline-email-form')),
   },
   {
     name: 'input-example',

@@ -16,17 +16,34 @@ type Action<State, Payload> = (
   formData: Payload,
 ) => State | Promise<State>;
 
+export interface InlineEmailFormProps {
+  className?: string;
+  placeholder?: string;
+  submitLabel?: string;
+  action: Action<{ lastResult: SubmissionResult | null; successMessage?: string }, FormData>;
+}
+
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --inline-email-form-focus: hsl(var(--primary));
+ *   --inline-email-form-background: hsl(var(--background));
+ *   --inline-email-form-placeholder: hsl(var(--contrast-gray-500));
+ *   --inline-email-form-text: hsl(var(--foreground));
+ *   --inline-email-form-border: hsl(var(--black));
+ *   --inline-email-form-error: hsl(var(--error));
+ * }
+ * ```
+ */
 export function InlineEmailForm({
   className,
   action,
   submitLabel = 'Submit',
   placeholder = 'Enter your email',
-}: {
-  className?: string;
-  placeholder?: string;
-  submitLabel?: string;
-  action: Action<{ lastResult: SubmissionResult | null; successMessage?: string }, FormData>;
-}) {
+}: InlineEmailFormProps) {
   const [{ lastResult, successMessage }, formAction, isPending] = useActionState(action, {
     lastResult: null,
   });
@@ -46,13 +63,15 @@ export function InlineEmailForm({
     <form {...getFormProps(form)} action={formAction} className={clsx('space-y-2', className)}>
       <div
         className={clsx(
-          'relative rounded-xl border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none',
-          errors.length ? 'border-error' : 'border-black',
+          'relative rounded-xl border bg-[var(--inline-email-form-background,hsl(var(--background)))] text-base transition-colors duration-200 focus-within:border-[var(--inline-email-form-focus,hsl(var(--primary)))] focus:outline-none',
+          errors.length
+            ? 'border-[var(--inline-email-form-error,hsl(var(--error)))]'
+            : 'border-[var(--inline-email-form-border,hsl(var(--black)))]',
         )}
       >
         <input
           {...getInputProps(fields.email, { type: 'email' })}
-          className="placeholder-contrast-gray-500 h-14 w-full bg-transparent pl-5 pr-16 text-foreground placeholder:font-normal focus:outline-none"
+          className="h-14 w-full bg-transparent pl-5 pr-16 text-[var(--inline-email-form-text,hsl(var(--foreground)))] placeholder-[var(--inline-email-form-placeholder,hsl(var(--contrast-gray-500)))] placeholder:font-normal focus:outline-none"
           data-1p-ignore
           key={fields.email.id}
           placeholder={placeholder}
@@ -70,14 +89,16 @@ export function InlineEmailForm({
           </Button>
         </div>
       </div>
-      {errors.map((error, index) => (
-        <FormStatus key={index} type="error">
-          {error}
-        </FormStatus>
-      ))}
-      {form.status === 'success' && successMessage != null && (
-        <FormStatus>{successMessage}</FormStatus>
-      )}
+      <div className="mt-2">
+        {errors.map((error, index) => (
+          <FormStatus key={index} type="error">
+            {error}
+          </FormStatus>
+        ))}
+        {form.status === 'success' && successMessage != null && (
+          <FormStatus>{successMessage}</FormStatus>
+        )}
+      </div>
     </form>
   );
 }

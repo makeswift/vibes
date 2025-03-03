@@ -132,6 +132,12 @@ export const sections = [
     files: ['sections/icon-block/index.tsx', 'primitives/icon/index.tsx'],
   },
   {
+    name: 'inline-email-form',
+    dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod', 'clsx'],
+    registryDependencies: [],
+    files: ['sections/inline-email-form/index.tsx'],
+  },
+  {
     name: 'order-history-section',
     dependencies: ['clsx'],
     registryDependencies: [],
