@@ -1,5 +1,58 @@
 ---
 title: Side Panel
 preview: side-panel-example
-size: lg
+previewSize: sm
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import * as SidePanel from '@/vibes/soul/primitives/side-panel';
+
+function Usage() {
+    return (
+        <SidePanel.Root>
+            <SidePanel.Trigger asChild>
+                <button>Show Side Panel</button>
+            </SidePanel.Trigger>
+            <SidePanel.Content title="Content">
+                <p className="text-lg text-contrast-500">Put your content here!</p>
+            </SidePanel.Content>
+        </SidePanel.Root>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component uses the Dialog component from Radix UI. Refer to the [Radix UI Dialog documentation](https://www.radix-ui.com/primitives/docs/components/dialog) for more information.
+
+### SidePanelProps
+
+| Prop        | Type        | Default |
+| ----------- | ----------- | ------- |
+| `children*` | `ReactNode` |         |
+| `title*`    | `string`    |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --side-panel-overlay-background: hsl(var(--primary));
+  --side-panel-background: hsl(var(--background));
+  --side-panel-title-text: hsl(var(--foreground));
+  --side-panel-title-font-family: var(--font-family-heading);
+  --side-panel-content-font-family: var(--font-family-body);
+}
+```
+
+## Figma
+
+<Figma url="" />
