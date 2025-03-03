@@ -154,9 +154,9 @@ export async function shippingAction(
     case 'add-address': {
       return {
         shippingOptions: [
-          { label: 'Standard - $5.99', value: 'standard' },
-          { label: '2-3 business days - $8.99', value: 'express' },
-          { label: 'Overnight - $22.50', value: 'overnight' },
+          { label: 'Standard', value: 'standard', price: '$5.99' },
+          { label: '2-3 business days', value: 'express', price: '$8.99' },
+          { label: 'Overnight', value: 'overnight', price: '$22.50' },
         ],
         shippingOption: null,
         address: {
