@@ -1,4 +1,55 @@
 ---
 title: Favorite
 preview: favorite-example
+previewSize: xs
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+
+import { useState } from 'react';
+
+import { Favorite } from '@/vibes/soul/primitives/favorite';
+
+function Usage() {
+    const [favorited, setFavorited] = useState(false);
+
+    return (
+          <Favorite checked={favorited} setChecked={setFavorited} />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+###
+
+| Prop          | Type                       | Default |
+| ------------- | -------------------------- | ------- |
+| `checked`     | `boolean`                  | `false` |
+| `setChecked*` | `(liked: boolean) => void` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --favorite-focus: hsl(var(--primary));
+  --favorite-border: hsl(var(--contrast-100));
+  --favorite-icon: hsl(var(--foreground));
+  --favorite-on-background: hsl(var(--contrast-100));
+  --favorite-off-border: hsl(var(--contrast-200));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2786-48743" />
