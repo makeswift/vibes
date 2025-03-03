@@ -3,3 +3,45 @@ title: Logo
 preview: logo-example
 previewSize: xs
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Logo } from '@/vibes/soul/primitives/logo';
+
+function Usage() {
+    return (
+      <Logo height={40} href="#" label="SOUL" logo="SOUL" width={200} />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### LogoProps
+
+| Prop        | Type                                                                                    | Default |
+| ----------- | --------------------------------------------------------------------------------------- | ------- |
+| `className` | `string`                                                                                |         |
+| `logo*`     | [`Streamable`](/docs/soul/streamable)`<string \| { src: string; alt: string } \| null>` |         |
+| `label*`    | `string`                                                                                |         |
+| `href*`     | `string`                                                                                |         |
+| `width*`    | `number`                                                                                |         |
+| `height*`   | `number`                                                                                |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --logo-focus: hsl(var(--primary));
+  --logo-font-family: var(--font-family-heading);
+  --logo-text: hsl(var(--foreground));
+}
+```
