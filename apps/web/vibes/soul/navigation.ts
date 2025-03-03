@@ -386,6 +386,12 @@ export const navigation = [
         component: 'icon-block',
       },
       {
+        title: 'Inline Email Form',
+        slug: 'inline-email-form',
+        file: 'docs/inline-email-form.mdx',
+        component: 'inline-email-form',
+      },
+      {
         title: 'Order Details Section',
         slug: 'order-details-section',
         file: 'docs/order-details-section.mdx',

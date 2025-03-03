@@ -1,4 +1,4 @@
-import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
 export default function Preview() {
