@@ -157,7 +157,7 @@ export const primitives = [
   },
   {
     name: 'rating',
-    dependencies: [],
+    dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/rating/index.tsx'],
   },
