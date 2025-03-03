@@ -3,3 +3,55 @@ title: Offset Pagination
 preview: offset-pagination-example
 previewSize: sm
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { OffsetPagination } from '@/vibes/soul/primitives/offset-pagination';
+
+function Usage() {
+    return (
+        <OffsetPagination pages={8} />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component maintains state for the current page by using a [search parameter](https://nextjs.org/docs/app/api-reference/functions/use-search-params) called `page`. While this component will update the search param with the current page, it is your responsibility to handle changes to the selected page.
+
+Refer to the Learn Next.js tutorial section on [adding search and pagination](https://nextjs.org/learn/dashboard-app/adding-search-and-pagination) for more background on how to handle that.
+
+### OffsetPaginationProps
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `pages*` | `number` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --offset-pagination-focus: hsl(var(--primary));
+  -offset-pagination-font-family: var(--font-family-body);
+  --offset-pagination-ellipsis: hsl(var(--foreground));
+  --offset-pagination-border: hsl(var(--contrast-100));
+  --offset-pagination-text: hsl(var(--foreground));
+  --offset-pagination-background-hover: hsl(var(--contrast-100));
+  --offset-pagination-current-page-border: hsl(var(--foreground));
+  --offset-pagination-current-page-background: hsl(var(--foreground));
+  --offset-pagination-current-page-text: hsl(var(--background));
+  --offset-pagination-current-pagebackground-hover: hsl(var(--contrast-500));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2786-42480" />
