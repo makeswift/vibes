@@ -1,4 +1,4 @@
-import { InlineEmailForm } from '@/vibes/soul/primitives/inline-email-form';
+import { InlineEmailForm } from '@/vibes/soul/sections/inline-email-form';
 
 import { action } from './actions';
 

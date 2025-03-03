@@ -104,12 +104,6 @@ export const navigation = [
       { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
       {
-        title: 'Inline Email Form',
-        slug: 'inline-email-form',
-        file: 'docs/inline-email-form.mdx',
-        component: 'inline-email-form',
-      },
-      {
         title: 'Navigation',
         slug: 'navigation',
         file: 'docs/navigation.mdx',
@@ -277,6 +271,12 @@ export const navigation = [
         slug: 'icon-block',
         file: 'docs/icon-block.mdx',
         component: 'icon-block',
+      },
+      {
+        title: 'Inline Email Form',
+        slug: 'inline-email-form',
+        file: 'docs/inline-email-form.mdx',
+        component: 'inline-email-form',
       },
       {
         title: 'Order Details Section',
