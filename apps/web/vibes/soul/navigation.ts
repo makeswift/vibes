@@ -194,7 +194,7 @@ export const navigation = [
   {
     title: 'Form',
     pages: [
-      { title: 'Example', slug: 'form', file: 'docs/form.mdx' },
+      { title: 'Dynamic Form', slug: 'dynamic-form', file: 'docs/dynamic-form.mdx' },
       { title: 'Checkbox', slug: 'checkbox', file: 'docs/checkbox.mdx', component: 'checkbox' },
       {
         title: 'Field Error',

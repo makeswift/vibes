@@ -1,4 +1,4 @@
-import { Field, FieldGroup } from '@/vibes/soul/primitives/dynamic-form/schema';
+import { Field, FieldGroup } from '@/vibes/soul/form/dynamic-form/schema';
 import { Address, AddressListSection } from '@/vibes/soul/sections/address-list-section';
 import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
