@@ -342,6 +342,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/discount')),
   },
   {
+    name: 'dynamic-form-example',
+    dependencies: [],
+    registryDependencies: ['dynamic-form'],
+    files: ['examples/form/dynamic-form/index.tsx'],
+    component: lazy(() => import('./examples/form/dynamic-form')),
+  },
+  {
     name: 'favorite-example',
     dependencies: [],
     registryDependencies: ['favorite'],
@@ -473,17 +480,6 @@ export const examples = [
     registryDependencies: [],
     files: ['/examples/form/field-error/index.tsx'],
     component: lazy(() => import('./examples/form/field-error')),
-  },
-  {
-    name: 'form-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: [
-      'examples/primitives/form/index.tsx',
-      'examples/primitives/form/static-form.tsx',
-      'examples/primitives/form/action.ts',
-    ],
-    component: lazy(() => import('./examples/primitives/form')),
   },
   {
     name: 'footer-electric-example',
