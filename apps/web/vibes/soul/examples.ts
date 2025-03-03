@@ -535,6 +535,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/header-section/luxury')),
   },
   {
+    name: 'modal-example',
+    dependencies: [],
+    registryDependencies: ['modal'],
+    files: ['examples/primitives/modal/index.tsx'],
+    component: lazy(() => import('./examples/primitives/modal')),
+  },
+  {
     name: 'icon-block-example',
     dependencies: [],
     registryDependencies: ['icon-block'],
