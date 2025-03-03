@@ -1,10 +1,10 @@
 import { clsx } from 'clsx';
 
-import { DynamicForm, DynamicFormAction } from '@/vibes/soul/primitives/dynamic-form';
-import { Field, FieldGroup } from '@/vibes/soul/primitives/dynamic-form/schema';
+import { DynamicForm, DynamicFormAction } from '@/vibes/soul/form/dynamic-form';
+import { Field, FieldGroup } from '@/vibes/soul/form/dynamic-form/schema';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
-interface Props<F extends Field> {
+export interface DynamicFormProps<F extends Field> {
   title?: string;
   subtitle?: string;
   action: DynamicFormAction<F>;
@@ -20,7 +20,7 @@ export function DynamicFormSection<F extends Field>({
   fields,
   submitLabel,
   action,
-}: Props<F>) {
+}: DynamicFormProps<F>) {
   return (
     <SectionLayout className={clsx('mx-auto w-full max-w-4xl', className)} containerSize="lg">
       {title != null && title !== '' && (

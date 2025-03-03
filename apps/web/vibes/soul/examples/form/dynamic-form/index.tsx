@@ -1,7 +1,16 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 
+import { DynamicForm } from '@/vibes/soul/form/dynamic-form';
 import { Field, FieldGroup, schema } from '@/vibes/soul/form/dynamic-form/schema';
+
+export default function Preview() {
+  return (
+    <div className="p-10">
+      <DynamicForm action={action} fields={fields} submitLabel="Submit" />
+    </div>
+  );
+}
 
 export const fields = [
   [
