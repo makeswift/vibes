@@ -9,15 +9,21 @@ previewSize: sm
 {/* prettier-ignore-start */}
 
 <CodeBlock lang="ts">{`
+'use client';
+
+import { useState } from 'react';
+
 import { Modal } from '@/vibes/soul/primitives/modal';
 
 function Usage() {
+      const [isOpen, setIsOpen] = useState(true);
+
     return (
         <Modal
             isOpen={isOpen}
             setOpen={setIsOpen}
             title="Example modal"
-            trigger={<Button size="medium">Open Modal</Button>}
+            trigger={<button>Open Modal</button>}
         >
             <p>Put your content here!</p>
         </Modal>
