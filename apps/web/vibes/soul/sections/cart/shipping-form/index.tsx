@@ -326,7 +326,7 @@ export function ShippingForm({
                 </FormStatus>
               ))}
 
-              <div className="flex gap-1.5 ">
+              <div className="flex gap-1.5">
                 <SubmitButton className="grow" name="intent" value="add-address">
                   {state.address ? updateShippingOptionsLabel : viewShippingOptionsLabel}
                 </SubmitButton>
@@ -375,8 +375,9 @@ export function ShippingForm({
                   onFocus={shippingOptionsControl.focus}
                   onValueChange={shippingOptionsControl.change}
                   options={state.shippingOptions.map((option) => ({
-                    label: `${option.label} - ${option.price}`,
+                    label: option.label,
                     value: option.value,
+                    description: option.price,
                   }))}
                   value={shippingOptionsControl.value}
                 />
