@@ -122,6 +122,18 @@ export const navigation = [
         component: 'navigation',
       },
       {
+        title: 'Price Label',
+        slug: 'price-label',
+        file: 'docs/price-label.mdx',
+        component: 'price-label',
+      },
+      {
+        title: 'Offset Pagination',
+        slug: 'offset-pagination',
+        file: 'docs/offset-pagination.mdx',
+        component: 'offset-pagination',
+      },
+      {
         title: 'Product Card',
         slug: 'product-card',
         file: 'docs/product-card.mdx',
@@ -297,7 +309,19 @@ export const navigation = [
         component: 'order-list-section',
       },
       {
+        title: 'Product Carousel',
+        slug: 'product-carousel',
+        file: 'docs/product-carousel.mdx',
+        component: 'product-carousel',
+      },
+      {
         title: 'Product List',
+        slug: 'product-list',
+        file: 'docs/product-list.mdx',
+        component: 'product-list',
+      },
+      {
+        title: 'Product List Section',
         slug: 'product-list-section',
         file: 'docs/products-list-section.mdx',
         component: 'products-list-section',

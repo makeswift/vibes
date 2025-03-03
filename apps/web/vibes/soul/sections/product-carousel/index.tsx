@@ -18,13 +18,13 @@ import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export type CarouselProduct = ProductCardWithId;
 
-interface Props {
+export interface ProductCarouselProps {
   products: Streamable<CarouselProduct[]>;
   className?: string;
   colorScheme?: 'light' | 'dark';
   aspectRatio?: '5:6' | '3:4' | '1:1';
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
@@ -34,28 +34,42 @@ interface Props {
   hideOverflow?: boolean;
 }
 
-export function ProductsCarousel({
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --product-carousel-light-empty-title: hsl(var(--foreground));
+ *   --product-carousel-light-empty-subtitle: hsl(var(--contrast-500));
+ *   --product-carousel-dark-empty-title: hsl(var(--background));
+ *   --product-carousel-dark-empty-subtitle: hsl(var(--contrast-100));
+ *   --product-carousel-empty-title-font-family: var(--font-family-heading);
+ *   --product-carousel-empty-subtitle-font-family: var(--font-family-body);
+ * }
+ * ```
+ */
+export function ProductCarousel({
   products: streamableProducts,
   className,
   colorScheme = 'light',
   aspectRatio = '5:6',
-  emptyStateTitle,
-  emptyStateSubtitle,
-  scrollbarLabel,
-  previousLabel,
-  nextLabel,
+  emptyStateTitle = 'No products found',
+  emptyStateSubtitle = 'Try browsing our complete catalog of products.',
+  scrollbarLabel = 'Scroll',
+  previousLabel = 'Previous',
+  nextLabel = 'Next',
   placeholderCount = 8,
   showButtons = true,
   showScrollbar = true,
-  hideOverflow,
-}: Props) {
+  hideOverflow = true,
+}: ProductCarouselProps) {
   return (
     <Stream
       fallback={
         <ProductsCarouselSkeleton
           className={className}
           hideOverflow={hideOverflow}
-          pending
           placeholderCount={placeholderCount}
         />
       }
@@ -66,6 +80,7 @@ export function ProductsCarousel({
           return (
             <ProductsCarouselEmptyState
               className={className}
+              colorScheme={colorScheme}
               emptyStateSubtitle={emptyStateSubtitle}
               emptyStateTitle={emptyStateTitle}
               hideOverflow={hideOverflow}
@@ -116,19 +131,13 @@ export function ProductsCarousel({
 export function ProductsCarouselSkeleton({
   className,
   placeholderCount = 8,
-  pending = false,
-  hideOverflow = true,
-}: {
-  className?: string;
-  placeholderCount?: number;
-  pending?: boolean;
-  hideOverflow?: boolean;
-}) {
+  hideOverflow,
+}: Pick<ProductCarouselProps, 'className' | 'placeholderCount' | 'hideOverflow'>) {
   return (
     <Skeleton.Root
-      className={clsx('group-has-[[data-pending]]/products-carousel:animate-pulse', className)}
+      className={clsx('group-has-[[data-pending]]/product-carousel:animate-pulse', className)}
       hideOverflow={hideOverflow}
-      pending={pending}
+      pending
     >
       <div className="w-full">
         <div className="-ml-4 flex @2xl:-ml-5">
@@ -158,16 +167,19 @@ export function ProductsCarouselEmptyState({
   placeholderCount = 8,
   emptyStateTitle,
   emptyStateSubtitle,
-  hideOverflow = true,
-}: {
-  className?: string;
-  placeholderCount?: number;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
-  hideOverflow?: boolean;
-}) {
+  hideOverflow,
+  colorScheme = 'light',
+}: Pick<
+  ProductCarouselProps,
+  | 'className'
+  | 'placeholderCount'
+  | 'emptyStateTitle'
+  | 'emptyStateSubtitle'
+  | 'hideOverflow'
+  | 'colorScheme'
+>) {
   return (
-    <div className={clsx('relative @container', hideOverflow && 'overflow-hidden', className)}>
+    <Skeleton.Root className={clsx('relative', className)} hideOverflow={hideOverflow}>
       <div className="w-full">
         <div className="-ml-4 flex [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:-ml-5">
           {Array.from({ length: placeholderCount }).map((_, index) => (
@@ -182,12 +194,31 @@ export function ProductsCarouselEmptyState({
       </div>
       <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
-          <h3 className="@4x:leading-none font-heading text-2xl leading-tight text-foreground @4xl:text-4xl">
+          <h3
+            className={clsx(
+              '@4x:leading-none font-[family-name:var(--product-carousel-empty-title-font-family,var(--font-family-heading))] text-2xl leading-tight @4xl:text-4xl',
+              {
+                light: 'text-[var(--product-carousel-light-empty-title,hsl(var(--foreground)))]',
+                dark: 'text-[var(--product-carousel-dark-empty-title,hsl(var(--background)))]',
+              }[colorScheme],
+            )}
+          >
             {emptyStateTitle}
           </h3>
-          <p className="text-sm text-contrast-500 @4xl:text-lg">{emptyStateSubtitle}</p>
+          <p
+            className={clsx(
+              'font-[family-name:var(--product-carousel-empty-subtitle-font-family,var(--font-family-body))] text-sm @4xl:text-lg',
+              {
+                light:
+                  'text-[var(--product-carousel-light-empty-subtitle,hsl(var(--contrast-500)))]',
+                dark: 'text-[var(--product-carousel-dark-empty-subtitle,hsl(var(--contrast-200)))]',
+              }[colorScheme],
+            )}
+          >
+            {emptyStateSubtitle}
+          </p>
         </div>
       </div>
-    </div>
+    </Skeleton.Root>
   );
 }

@@ -126,6 +126,12 @@ export const primitives = [
     files: ['form/field-error/index.tsx'],
   },
   {
+    name: 'offset-pagination',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['primitives/offset-pagination/index.tsx'],
+  },
+  {
     name: 'inline-email-form',
     dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod'],
     registryDependencies: [],
@@ -152,8 +158,14 @@ export const primitives = [
   {
     name: 'product-card',
     dependencies: ['clsx'],
-    registryDependencies: ['badge', 'checkbox', 'price-label'],
+    registryDependencies: ['badge', 'price-label', 'skeleton'],
     files: ['primitives/product-card/index.tsx', 'primitives/product-card/compare.tsx'],
+  },
+  {
+    name: 'products-list',
+    dependencies: [],
+    registryDependencies: ['product-card'],
+    files: ['sections/products-list/index.tsx'],
   },
   {
     name: 'products-carousel',
@@ -162,14 +174,8 @@ export const primitives = [
     files: ['primitives/products-carousel/index.tsx'],
   },
   {
-    name: 'products-list',
-    dependencies: [],
-    registryDependencies: ['product-card'],
-    files: ['primitives/products-list/index.tsx'],
-  },
-  {
     name: 'rating',
-    dependencies: [],
+    dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/rating/index.tsx'],
   },

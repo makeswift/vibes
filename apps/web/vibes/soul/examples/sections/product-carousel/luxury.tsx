@@ -1,4 +1,4 @@
-import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
+import { CarouselProduct, ProductCarousel } from '@/vibes/soul/sections/product-carousel';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 export default function Preview() {
@@ -8,14 +8,14 @@ export default function Preview() {
 
   return (
     <div>
-      <SectionLayout className="group/products-carousel">
+      <SectionLayout className="group/product-carousel">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-          <ProductsCarousel products={products} />
+          <ProductCarousel products={products} />
         </div>
       </SectionLayout>
-      <SectionLayout className="group/products-carousel bg-foreground">
+      <SectionLayout className="group/product-carousel bg-foreground">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-          <ProductsCarousel colorScheme="dark" products={products} showScrollbar={false} />
+          <ProductCarousel colorScheme="dark" products={products} showScrollbar={false} />
         </div>
       </SectionLayout>
     </div>

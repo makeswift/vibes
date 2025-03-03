@@ -88,7 +88,7 @@ export const sections = [
   {
     name: 'featured-products-carousel',
     dependencies: [],
-    registryDependencies: ['products-carousel'],
+    registryDependencies: ['product-carousel'],
     files: ['sections/featured-products-carousel/index.tsx'],
   },
   {
@@ -138,15 +138,27 @@ export const sections = [
     files: ['sections/order-history-section/index.tsx'],
   },
   {
+    name: 'product-carousel',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['product-card', 'carousel', 'skeleton', 'streamable'],
+    files: ['sections/product-carousel/index.tsx'],
+  },
+  {
     name: 'product-detail',
     dependencies: ['clsx', 'embla-carousel-react'],
     registryDependencies: ['button', 'favorite', 'product-card', 'rating'],
     files: ['sections/product-detail/index.tsx', 'sections/product-detail/product-gallery.tsx'],
   },
   {
+    name: 'product-list',
+    dependencies: ['clsx'],
+    registryDependencies: ['product-card', 'streamable', 'compare-drawer', 'skeleton'],
+    files: ['sections/product-list/index.tsx'],
+  },
+  {
     name: 'products-list-section',
     dependencies: ['nuqs'],
-    registryDependencies: ['products-list', 'button', 'toggle-group', 'cursor-pagination'],
+    registryDependencies: ['product-list', 'button', 'toggle-group', 'cursor-pagination'],
     files: [
       'sections/products-list-section/index.tsx',
       'sections/products-list-section/filters-panel.tsx',

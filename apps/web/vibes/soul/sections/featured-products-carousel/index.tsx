@@ -1,6 +1,6 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
-import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
+import { CarouselProduct, ProductCarousel } from '@/vibes/soul/sections/product-carousel';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 interface Link {
@@ -13,8 +13,8 @@ interface Props {
   description?: string;
   cta?: Link;
   products: Streamable<CarouselProduct[]>;
-  emptyStateTitle?: Streamable<string | null>;
-  emptyStateSubtitle?: Streamable<string | null>;
+  emptyStateTitle?: Streamable<string>;
+  emptyStateSubtitle?: Streamable<string>;
   placeholderCount?: number;
   scrollbarLabel?: string;
   previousLabel?: string;
@@ -36,7 +36,7 @@ export function FeaturedProductsCarousel({
   hideOverflow = false,
 }: Props) {
   return (
-    <SectionLayout className="group/products-carousel">
+    <SectionLayout className="group/product-carousel">
       <div className="mb-6 flex w-full flex-row flex-wrap items-end justify-between gap-x-8 gap-y-6 text-foreground @4xl:mb-8">
         <div>
           <h2 className="font-heading text-2xl leading-none @xl:text-3xl @4xl:text-4xl">{title}</h2>
@@ -51,7 +51,7 @@ export function FeaturedProductsCarousel({
           </AnimatedLink>
         )}
       </div>
-      <ProductsCarousel
+      <ProductCarousel
         emptyStateSubtitle={emptyStateSubtitle}
         emptyStateTitle={emptyStateTitle}
         hideOverflow={hideOverflow}

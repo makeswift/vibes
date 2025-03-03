@@ -1,32 +1,22 @@
-import { CarouselProduct, ProductsCarousel } from '@/vibes/soul/primitives/products-carousel';
-import { SectionLayout } from '@/vibes/soul/sections/section-layout';
+import { ListProduct, ProductList } from '@/vibes/soul/sections/product-list';
 
 export default function Preview() {
-  const products = new Promise<CarouselProduct[]>((resolve) => {
+  const products = new Promise<ListProduct[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
   });
 
   return (
-    <div>
-      <SectionLayout className="group/products-carousel">
-        <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-          <ProductsCarousel products={products} />
-        </div>
-      </SectionLayout>
-      <SectionLayout className="group/products-carousel bg-foreground">
-        <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-          <ProductsCarousel colorScheme="dark" products={products} showScrollbar={false} />
-        </div>
-      </SectionLayout>
+    <div className="p-6">
+      <ProductList products={products} />
     </div>
   );
 }
 
-const defaultProducts: CarouselProduct[] = [
+const defaultProducts: ListProduct[] = [
   {
     id: '1',
     title: 'Mini Bar Bag',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Blue/Green',
     price: '$65',
     image: {
       src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
@@ -38,7 +28,7 @@ const defaultProducts: CarouselProduct[] = [
   {
     id: '2',
     title: 'Mini Bar Bag',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Blue/Red',
     price: '$65',
     image: {
       src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
@@ -50,7 +40,7 @@ const defaultProducts: CarouselProduct[] = [
   {
     id: '3',
     title: 'Stem Caddy',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Green',
     price: '$60',
     image: {
       src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
@@ -62,7 +52,7 @@ const defaultProducts: CarouselProduct[] = [
   {
     id: '4',
     title: 'Hip Slinger',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Blue/Red',
     price: '$105',
     image: {
       src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
@@ -74,7 +64,7 @@ const defaultProducts: CarouselProduct[] = [
   {
     id: '5',
     title: 'Everyday Tote',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Blue/Green/Red',
     price: '$185',
     image: {
       src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
@@ -86,7 +76,7 @@ const defaultProducts: CarouselProduct[] = [
   {
     id: '6',
     title: 'Mini Saddlebag',
-    subtitle: 'Blue/Black/Green',
+    subtitle: 'Green/Red',
     price: '$45',
     image: {
       src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',

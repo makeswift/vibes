@@ -1,22 +1,32 @@
-import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
+import { CarouselProduct, ProductCarousel } from '@/vibes/soul/sections/product-carousel';
+import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 export default function Preview() {
-  const products = new Promise<ListProduct[]>((resolve) => {
+  const products = new Promise<CarouselProduct[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
   });
 
   return (
-    <div className="p-6">
-      <ProductsList products={products} />
+    <div>
+      <SectionLayout className="group/product-carousel">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+          <ProductCarousel products={products} />
+        </div>
+      </SectionLayout>
+      <SectionLayout className="group/product-carousel bg-foreground">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+          <ProductCarousel colorScheme="dark" products={products} showScrollbar={false} />
+        </div>
+      </SectionLayout>
     </div>
   );
 }
 
-const defaultProducts: ListProduct[] = [
+const defaultProducts: CarouselProduct[] = [
   {
     id: '1',
     title: 'Mini Bar Bag',
-    subtitle: 'Blue/Green',
+    subtitle: 'Blue/Black/Green',
     price: '$65',
     image: {
       src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
@@ -28,7 +38,7 @@ const defaultProducts: ListProduct[] = [
   {
     id: '2',
     title: 'Mini Bar Bag',
-    subtitle: 'Blue/Red',
+    subtitle: 'Blue/Black/Green',
     price: '$65',
     image: {
       src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
@@ -40,7 +50,7 @@ const defaultProducts: ListProduct[] = [
   {
     id: '3',
     title: 'Stem Caddy',
-    subtitle: 'Green',
+    subtitle: 'Blue/Black/Green',
     price: '$60',
     image: {
       src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
@@ -52,7 +62,7 @@ const defaultProducts: ListProduct[] = [
   {
     id: '4',
     title: 'Hip Slinger',
-    subtitle: 'Blue/Red',
+    subtitle: 'Blue/Black/Green',
     price: '$105',
     image: {
       src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
@@ -64,7 +74,7 @@ const defaultProducts: ListProduct[] = [
   {
     id: '5',
     title: 'Everyday Tote',
-    subtitle: 'Blue/Green/Red',
+    subtitle: 'Blue/Black/Green',
     price: '$185',
     image: {
       src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
@@ -76,7 +86,7 @@ const defaultProducts: ListProduct[] = [
   {
     id: '6',
     title: 'Mini Saddlebag',
-    subtitle: 'Green/Red',
+    subtitle: 'Blue/Black/Green',
     price: '$45',
     image: {
       src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',

@@ -1,18 +1,28 @@
-import { ListProduct, ProductsList } from '@/vibes/soul/primitives/products-list';
+import { CarouselProduct, ProductCarousel } from '@/vibes/soul/sections/product-carousel';
+import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 export default function Preview() {
-  const products = new Promise<ListProduct[]>((resolve) => {
+  const products = new Promise<CarouselProduct[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
   });
 
   return (
-    <div className="p-6">
-      <ProductsList products={products} />
+    <div>
+      <SectionLayout className="group/product-carousel">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+          <ProductCarousel products={products} />
+        </div>
+      </SectionLayout>
+      <SectionLayout className="group/product-carousel bg-foreground">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
+          <ProductCarousel colorScheme="dark" products={products} showScrollbar={false} />
+        </div>
+      </SectionLayout>
     </div>
   );
 }
 
-const defaultProducts: ListProduct[] = [
+const defaultProducts: CarouselProduct[] = [
   {
     id: '1',
     title: 'Philodendron Imperial Red',
