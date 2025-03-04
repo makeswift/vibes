@@ -1,4 +1,4 @@
-import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list/warm';
 import { BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 
