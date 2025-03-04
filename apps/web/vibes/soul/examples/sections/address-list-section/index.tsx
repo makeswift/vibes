@@ -32,7 +32,7 @@ const addresses: Address[] = [
 const links = [
   { href: '/preview/soul/order-list-section-electric-example', label: 'Orders' },
   { href: '/preview/soul/address-list-section-example', label: 'Addresses' },
-  { href: '/preview/soul/account-settings-section-example', label: 'Account' },
+  { href: '/preview/soul/account-settings-example', label: 'Account' },
 ];
 
 const fields: Array<Field | FieldGroup<Field>> = [

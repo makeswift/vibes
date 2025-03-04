@@ -76,11 +76,11 @@ export const examples = [
     component: lazy(() => import('./examples/sections/sticky-sidebar-layout')),
   },
   {
-    name: 'account-settings-section-example',
+    name: 'account-settings-example',
     dependencies: [],
     registryDependencies: [],
-    files: ['examples/sections/account-settings-section/index.tsx'],
-    component: lazy(() => import('./examples/sections/account-settings-section')),
+    files: ['examples/sections/account-settings/index.tsx'],
+    component: lazy(() => import('./examples/sections/account-settings')),
   },
   {
     name: 'address-list-section-example',
