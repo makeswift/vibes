@@ -1,0 +1,79 @@
+---
+title: Button Radio Group
+preview: button-radio-group-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+
+import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group';
+
+function Usage() {
+    return (
+        <ButtonRadioGroup
+            options={[
+              { label: 'Option 1', value: 'option-1' },
+              { label: 'Option 2', value: 'option-2' },
+              { label: 'Option 3', value: 'option-3' },
+            ]}
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component uses the RadioGroup component from Radix UI. Refer to the [RadioGroup documentation](https://www.radix-ui.com/primitives/docs/components/radio-group) for more information.
+
+### ButtonRadioGroupProps
+
+| Prop                 | Type                                             | Default   |
+| -------------------- | ------------------------------------------------ | --------- |
+| `className`          | `string`                                         |           |
+| `label`              | `string`                                         |           |
+| `options*`           | `Option[]` <Tooltip content="See Option below"/> |           |
+| `errors`             | `string[]`                                       |           |
+| `onOptionMouseEnter` | `(value: string) => void`                        |           |
+| `colorScheme`        | `'light' \| 'dark'`                              | `'light'` |
+
+### Option
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `value*`   | `string`  |         |
+| `label*`   | `string`  |         |
+| `disabled` | `boolean` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --button-radio-group-focus: hsl(var(--primary));
+  --button-radio-group-light-unchecked-border: hsl(var(--contrast-100));
+  --button-radio-group-light-unchecked-background: hsl(var(--background));
+  --button-radio-group-light-unchecked-text: hsl(var(--foreground));
+  --button-radio-group-light-unchecked-border-hover: hsl(var(--contrast-200));
+  --button-radio-group-light-unchecked-background-hover: hsl(var(--contrast-100));
+  --button-radio-group-light-checked-background: hsl(var(--foreground));
+  --button-radio-group-light-checked-text: hsl(var(--background));
+  --button-radio-group-light-border-error: hsl(var(--error));
+  --button-radio-group-dark-unchecked-border: hsl(var(--contrast-500));
+  --button-radio-group-dark-unchecked-background: hsl(var(--background));
+  --button-radio-group-dark-unchecked-text: hsl(var(--background));
+  --button-radio-group-dark-unchecked-border-hover: hsl(var(--contrast-400));
+  --button-radio-group-dark-unchecked-background-hover: hsl(var(--contrast-500));
+  --button-radio-group-dark-checked-background: hsl(var(--background));
+  --button-radio-group-dark-checked-text: hsl(var(--foreground));
+  --button-radio-group-dark-border-error: hsl(var(--error));
+}
+```
