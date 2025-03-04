@@ -8,16 +8,16 @@ export default function Preview() {
     <div className="bg-background p-8 @container">
       <div className="mx-auto flex max-w-screen-md flex-col items-center gap-8">
         <Button onClick={() => toast.success('Success')} variant="primary">
-          Success
+          Success Toast
         </Button>
         <Button onClick={() => toast.error('Error')} variant="primary">
-          Error
+          Error Toast
         </Button>
         <Button onClick={() => toast.warning('Warning')} variant="primary">
-          Warning
+          Warning Toast
         </Button>
         <Button onClick={() => toast.info('Info')} variant="primary">
-          Info
+          Info Toast
         </Button>
         <Button
           onClick={() =>
@@ -28,7 +28,7 @@ export default function Preview() {
           }
           variant="primary"
         >
-          Options
+          Toast with Options
         </Button>
       </div>
     </div>
