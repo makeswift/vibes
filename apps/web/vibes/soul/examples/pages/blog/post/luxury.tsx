@@ -2,7 +2,7 @@ import { locales } from '@/vibes/soul/data/locales';
 import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury';
-import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list/luxury';
 import {
   contactInformation,
   copyright,

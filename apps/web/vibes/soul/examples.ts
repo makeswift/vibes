@@ -142,11 +142,25 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/blog-post-card/luxury')),
   },
   {
-    name: 'blog-post-list-example',
+    name: 'blog-post-list-example-warm',
     dependencies: [],
     registryDependencies: ['blog-post-list'],
-    files: ['examples/sections/blog-post-list/index.tsx'],
-    component: lazy(() => import('./examples/sections/blog-post-list')),
+    files: ['examples/sections/blog-post-list/warm.tsx'],
+    component: lazy(() => import('./examples/sections/blog-post-list/warm')),
+  },
+  {
+    name: 'blog-post-list-example-electric',
+    dependencies: [],
+    registryDependencies: ['blog-post-list'],
+    files: ['examples/sections/blog-post-list/electric.tsx'],
+    component: lazy(() => import('./examples/sections/blog-post-list/electric')),
+  },
+  {
+    name: 'blog-post-list-example-luxury',
+    dependencies: [],
+    registryDependencies: ['blog-post-list'],
+    files: ['examples/sections/blog-post-list/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/blog-post-list/luxury')),
   },
   {
     name: 'blog-post-carousel-electric',

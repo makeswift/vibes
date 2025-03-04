@@ -2,7 +2,7 @@ import { locales } from '@/vibes/soul/data/locales';
 import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
-import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list/warm';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
