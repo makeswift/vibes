@@ -50,12 +50,6 @@ export const navigation = [
         file: 'docs/blog-post-card.mdx',
         component: 'blog-post-card',
       },
-      {
-        title: 'Blog Post List',
-        slug: 'blog-post-list',
-        file: 'docs/blog-post-list.mdx',
-        component: 'blog-post-list',
-      },
       { title: 'Button', slug: 'button', file: 'docs/button.mdx', component: 'button' },
       {
         title: 'Button Link',
@@ -294,6 +288,12 @@ export const navigation = [
         slug: 'blog-post-carousel',
         file: 'docs/blog-post-carousel.mdx',
         component: 'blog-post-carousel',
+      },
+      {
+        title: 'Blog Post List',
+        slug: 'blog-post-list',
+        file: 'docs/blog-post-list.mdx',
+        component: 'blog-post-list',
       },
       {
         title: 'Breadcrumbs',
