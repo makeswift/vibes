@@ -20,9 +20,9 @@ export const sections = [
   },
   {
     name: 'address-list-section',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/address-list-section/index.tsx'],
+    dependencies: ['zod', '@conform-to/react', '@conform-to/zod'],
+    registryDependencies: ['badge', 'button', 'dynamic-form', 'spinner', 'toaster'],
+    files: ['sections/address-list-section/index.tsx', 'sections/address-list-section/schema.ts'],
   },
   {
     name: 'blog-post-carousel',
