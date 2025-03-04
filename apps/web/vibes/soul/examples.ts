@@ -86,7 +86,10 @@ export const examples = [
     name: 'address-list-section-example',
     dependencies: [],
     registryDependencies: [],
-    files: ['examples/sections/address-list-section/index.tsx'],
+    files: [
+      'examples/sections/address-list-section/index.tsx',
+      'examples/sections/address-list-section/action.ts',
+    ],
     component: lazy(() => import('./examples/sections/address-list-section')),
   },
   {
