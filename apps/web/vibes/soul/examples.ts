@@ -142,6 +142,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/blog-post-card/luxury')),
   },
   {
+    name: 'blog-post-content-example',
+    dependencies: [],
+    registryDependencies: ['blog-post-content'],
+    files: ['examples/sections/blog-post-content/index.tsx'],
+    component: lazy(() => import('./examples/sections/blog-post-content')),
+  },
+  {
     name: 'blog-post-list-example-warm',
     dependencies: [],
     registryDependencies: ['blog-post-list'],

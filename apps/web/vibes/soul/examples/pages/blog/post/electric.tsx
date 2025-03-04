@@ -10,7 +10,7 @@ import {
 } from '@/vibes/soul/examples/sections/footer/electric';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { BlogPostContent, BlogPostContentBlogPost } from '@/vibes/soul/sections/blog-post-content';
+import { BlogPost, BlogPostContent } from '@/vibes/soul/sections/blog-post-content';
 import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
@@ -147,7 +147,7 @@ const blogPost = {
   ],
 };
 
-function getBlogPost(): Promise<BlogPostContentBlogPost> {
+function getBlogPost(): Promise<BlogPost> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(blogPost);
