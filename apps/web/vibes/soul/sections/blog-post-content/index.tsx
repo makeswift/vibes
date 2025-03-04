@@ -10,6 +10,7 @@ import {
   BreadcrumbWithId,
 } from '@/vibes/soul/sections/breadcrumbs';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
+
 interface Tag {
   label: string;
   link: {
@@ -23,17 +24,17 @@ interface Image {
   alt: string;
 }
 
-export interface BlogPostContentBlogPost {
+export interface BlogPost {
   title: string;
-  author?: string;
+  author?: string | null;
   date: string;
-  tags?: Tag[];
+  tags?: Tag[] | null;
   content: string;
-  image?: Image;
+  image?: Image | null;
 }
 
 export interface BlogPostContentProps {
-  blogPost: Streamable<BlogPostContentBlogPost>;
+  blogPost: Streamable<BlogPost>;
   breadcrumbs?: Streamable<BreadcrumbWithId[]>;
   className?: string;
 }
@@ -72,15 +73,15 @@ export function BlogPostContent({
                   </h1>
                   <p>
                     {date}{' '}
-                    {Boolean(author) && (
+                    {author !== null && (
                       <>
                         <span className="px-1">•</span> {author}
                       </>
                     )}
                   </p>
-                  {(tags?.length ?? 0) > 0 && (
+                  {tags && tags.length > 0 && (
                     <div className="-ml-1 mt-4 flex flex-wrap gap-1.5 @xl:mt-6">
-                      {tags?.map((tag, index) => (
+                      {tags.map((tag, index) => (
                         <ButtonLink
                           href={tag.link.href}
                           key={index}
@@ -93,7 +94,7 @@ export function BlogPostContent({
                     </div>
                   )}
                 </header>
-                {image?.src != null && image.src !== '' && (
+                {image && (
                   <Image
                     alt={image.alt}
                     className="mb-8 aspect-video w-full rounded-2xl bg-[var(--blog-post-content-image-background,hsl(var(--contrast-100)))] object-cover @2xl:mb-12 @4xl:mb-16"
@@ -138,7 +139,7 @@ export function BlogPostContentSkeleton({ className }: Pick<BlogPostContentProps
           <Skeleton.Box className="h-10 w-20 rounded-full" />
         </div>
       </div>
-      <Skeleton.Box className="mb-8 aspect-video w-full rounded-2xl bg-contrast-100 @2xl:mb-12 @4xl:mb-16" />
+      <Skeleton.Box className="mb-8 aspect-video w-full rounded-2xl @2xl:mb-12 @4xl:mb-16" />
       <div className="mx-auto w-full max-w-4xl space-y-8 pb-8 text-xl @2xl:pb-12 @4xl:pb-16">
         <Skeleton.Text characterCount={60} className="rounded-lg" />
         <div className="space-y-4 text-lg">
