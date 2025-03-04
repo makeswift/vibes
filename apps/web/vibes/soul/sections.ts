@@ -8,10 +8,15 @@ export const sections = [
     files: ['sections/sticky-sidebar-layout/index.tsx'],
   },
   {
-    name: 'account-settings-section',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/account-settings-section/index.tsx'],
+    name: 'account-settings',
+    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    registryDependencies: ['input', 'button'],
+    files: [
+      'sections/account-settings/index.tsx',
+      'sections/account-settings/change-password-form.tsx',
+      'sections/account-settings/update-account-form.tsx',
+      'sections/account-settings/schema.ts',
+    ],
   },
   {
     name: 'address-list-section',

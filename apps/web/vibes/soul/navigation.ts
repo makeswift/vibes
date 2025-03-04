@@ -278,10 +278,10 @@ export const navigation = [
     title: 'Sections',
     pages: [
       {
-        title: 'Account Settings Section',
-        slug: 'account-settings-section',
-        file: 'docs/account-settings-section.mdx',
-        component: 'account-settings-section',
+        title: 'Account Settings',
+        slug: 'account-settings',
+        file: 'docs/account-settings.mdx',
+        component: 'account-settings',
       },
       {
         title: 'Address List Section',
