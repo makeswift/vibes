@@ -287,7 +287,7 @@ export const navigation = [
         title: 'Address List Section',
         slug: 'address-list-section',
         file: 'docs/address-list-section.mdx',
-        component: 'address-list',
+        component: 'address-list-section',
       },
       {
         title: 'Blog Post Carousel',

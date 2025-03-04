@@ -1,7 +1,5 @@
 import { Field, FieldGroup } from '@/vibes/soul/form/dynamic-form/schema';
 import { Address, AddressListSection } from '@/vibes/soul/sections/address-list-section';
-import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 import { addressAction } from './actions';
 
@@ -27,12 +25,6 @@ const addresses: Address[] = [
     postalCode: '94105',
     countryCode: 'United States',
   },
-];
-
-const links = [
-  { href: '/preview/soul/order-list-section-electric-example', label: 'Orders' },
-  { href: '/preview/soul/address-list-section-example', label: 'Addresses' },
-  { href: '/preview/soul/account-settings-example', label: 'Account' },
 ];
 
 const fields: Array<Field | FieldGroup<Field>> = [
@@ -110,13 +102,13 @@ const fields: Array<Field | FieldGroup<Field>> = [
 
 export default function Preview() {
   return (
-    <StickySidebarLayout sidebar={<SidebarMenu links={links} />} sidebarSize="small">
+    <div className="p-10">
       <AddressListSection
         addressAction={addressAction}
         addresses={addresses}
         defaultAddress={{ id: '1' }}
         fields={fields}
       />
-    </StickySidebarLayout>
+    </div>
   );
 }
