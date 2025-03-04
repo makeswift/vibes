@@ -296,6 +296,12 @@ export const navigation = [
         component: 'blog-post-list',
       },
       {
+        title: 'Blog Post Content',
+        slug: 'blog-post-content',
+        file: 'docs/blog-post-content.mdx',
+        component: 'blog-post-content',
+      },
+      {
         title: 'Breadcrumbs',
         slug: 'breadcrumbs',
         file: 'docs/breadcrumbs.mdx',
