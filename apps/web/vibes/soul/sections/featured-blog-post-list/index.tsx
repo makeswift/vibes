@@ -5,9 +5,9 @@ import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
 import { Breadcrumbs, BreadcrumbWithId } from '@/vibes/soul/sections/breadcrumbs';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
-interface Props {
+export interface FeaturedBlogPostListProps {
   title: string;
-  description?: string;
+  description?: string | null;
   blogPosts: Streamable<BlogPostWithId[]>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
   breadcrumbs?: Streamable<BreadcrumbWithId[]>;
@@ -16,6 +16,19 @@ interface Props {
   placeholderCount?: number;
 }
 
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --featured-blog-post-list-font-family: var(--font-family-body);
+ *   --featured-blog-post-list-title-font-family: var(--font-family-body);
+ *   --featured-blog-post-list-title: hsl(var(--foreground));
+ *   --featured-blog-post-list-description: hsl(var(--contrast-500));
+ * }
+ * ```
+ */
 export function FeaturedBlogPostList({
   title,
   description,
@@ -25,28 +38,30 @@ export function FeaturedBlogPostList({
   emptyStateSubtitle,
   emptyStateTitle,
   placeholderCount,
-}: Props) {
+}: FeaturedBlogPostListProps) {
   return (
     <SectionLayout>
       {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-
       <div className="pt-6">
-        <h1 className="mb-3 font-heading text-4xl font-medium leading-none text-foreground @xl:text-5xl @4xl:text-6xl">
-          {title}
-        </h1>
-
-        {description != null && description !== '' && (
-          <p className="max-w-lg text-lg text-contrast-500">{description}</p>
-        )}
-
-        <BlogPostList
-          blogPosts={blogPosts}
-          className="mb-8 mt-8 @4xl:mb-10 @4xl:mt-10"
-          emptyStateSubtitle={emptyStateSubtitle}
-          emptyStateTitle={emptyStateTitle}
-          placeholderCount={placeholderCount}
-        />
-
+        <header className="font-[family-name:var(--featured-blog-post-list-font-family,var(--font-family-body))]">
+          <h1 className="mb-3 font-[family-name:var(--featured-blog-post-list-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--featured-blog-post-list-title,hsl(var(--foreground)))] @xl:text-5xl @4xl:text-6xl">
+            {title}
+          </h1>
+          {description != null && description !== '' && (
+            <p className="max-w-lg text-lg text-[var(--featured-blog-post-list-description,hsl(var(--contrast-500)))]">
+              {description}
+            </p>
+          )}
+        </header>
+        <div className="group/blog-post-list">
+          <BlogPostList
+            blogPosts={blogPosts}
+            className="mb-8 mt-8 @4xl:mb-10 @4xl:mt-10"
+            emptyStateSubtitle={emptyStateSubtitle}
+            emptyStateTitle={emptyStateTitle}
+            placeholderCount={placeholderCount}
+          />
+        </div>
         {paginationInfo && <CursorPagination info={paginationInfo} />}
       </div>
     </SectionLayout>
