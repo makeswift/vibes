@@ -9,8 +9,8 @@ interface Link {
   href: string;
 }
 
-interface Props {
-  title?: string;
+export interface FeaturedBlogPostCarouselProps {
+  title: string;
   cta?: Link;
   blogPosts: Streamable<BlogPostWithId[]>;
   scrollbarLabel?: string;
@@ -18,6 +18,17 @@ interface Props {
   nextLabel?: string;
 }
 
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --featured-blog-post-carousel-font-family: var(--font-family-body);
+ *   --featured-blog-post-carousel-text: hsl(var(--foreground));
+ * }
+ * ```
+ */
 export function FeaturedBlogPostCarousel({
   cta,
   title,
@@ -25,12 +36,12 @@ export function FeaturedBlogPostCarousel({
   scrollbarLabel,
   previousLabel,
   nextLabel,
-}: Props) {
+}: FeaturedBlogPostCarouselProps) {
   return (
     <SectionLayout containerSize="2xl">
-      <div className="mb-6 flex w-full flex-row flex-wrap justify-between gap-x-8 px-1.5 text-foreground @4xl:mb-8 @4xl:items-end">
+      <div className="mb-6 flex w-full flex-row flex-wrap justify-between gap-x-8 px-1.5 text-[var(--featured-blog-post-carousel-text,hsl(var(--foreground)))] @4xl:mb-8 @4xl:items-end">
         <div className="flex-1">
-          <h2 className="font-heading text-2xl font-medium leading-none @xl:text-3xl @4xl:text-4xl">
+          <h2 className="font-[family-name:var(--featured-blog-post-carousel-font-family,var(--font-family-heading))] text-2xl font-medium leading-none @xl:text-3xl @4xl:text-4xl">
             {title}
           </h2>
         </div>
@@ -40,12 +51,14 @@ export function FeaturedBlogPostCarousel({
           </AnimatedLink>
         )}
       </div>
-      <BlogPostCarousel
-        blogPosts={blogPosts}
-        nextLabel={nextLabel}
-        previousLabel={previousLabel}
-        scrollbarLabel={scrollbarLabel}
-      />
+      <div className="group/blog-post-carousel">
+        <BlogPostCarousel
+          blogPosts={blogPosts}
+          nextLabel={nextLabel}
+          previousLabel={previousLabel}
+          scrollbarLabel={scrollbarLabel}
+        />
+      </div>
     </SectionLayout>
   );
 }
