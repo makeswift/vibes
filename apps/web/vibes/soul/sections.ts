@@ -33,7 +33,13 @@ export const sections = [
   {
     name: 'blog-post-content',
     dependencies: ['clsx'],
-    registryDependencies: ['button-link', 'skeleton', 'breadcrumbs', 'streamable'],
+    registryDependencies: [
+      'button-link',
+      'skeleton',
+      'breadcrumbs',
+      'streamable',
+      'section-layout',
+    ],
     files: ['sections/blog-post-content/index.tsx'],
   },
   {
