@@ -105,7 +105,7 @@ export const primitives = [
   },
   {
     name: 'counter',
-    dependencies: ['lucide-react'],
+    dependencies: ['lucide-react', 'clsx'],
     registryDependencies: [],
     files: ['primitives/counter/index.tsx'],
   },
