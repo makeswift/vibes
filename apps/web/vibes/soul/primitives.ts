@@ -44,6 +44,12 @@ export const primitives = [
     files: ['primitives/button/index.tsx'],
   },
   {
+    name: 'button-radio-group',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/button-radio-group/index.tsx'],
+  },
+  {
     name: 'button-link',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -54,6 +60,12 @@ export const primitives = [
     dependencies: ['clsx', 'lucide-react', 'react-day-picker'],
     registryDependencies: [],
     files: ['primitives/calendar/index.tsx'],
+  },
+  {
+    name: 'card-radio-group',
+    dependencies: ['clsx', '@radix-ui/react-radio-group'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/card-radio-group/index.tsx'],
   },
   {
     name: 'compare-card',
@@ -86,6 +98,12 @@ export const primitives = [
     files: ['form/checkbox/index.tsx'],
   },
   {
+    name: 'checkbox-group',
+    dependencies: ['clsx'],
+    registryDependencies: ['field-error', 'label', 'checkbox'],
+    files: ['form/checkbox-group/index.tsx'],
+  },
+  {
     name: 'counter',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -96,6 +114,12 @@ export const primitives = [
     dependencies: ['lucide-react', 'nuqs', 'clsx'],
     registryDependencies: [],
     files: ['primitives/cursor-pagination/index.tsx'],
+  },
+  {
+    name: 'date-picker',
+    dependencies: ['lucide-react', '@radix-ui/react-popover'],
+    registryDependencies: ['input', 'calendar'],
+    files: ['form/date-picker/index.tsx'],
   },
   {
     name: 'dynamic-form',
@@ -115,7 +139,7 @@ export const primitives = [
       'swatch-radio-group',
       'textarea',
     ],
-    files: ['form/dynamic-form/index.tsx'],
+    files: ['form/dynamic-form/index.tsx', 'form/dynamic-form/schema.ts'],
   },
   {
     name: 'favorite',
@@ -146,6 +170,12 @@ export const primitives = [
     files: ['form/field-error/index.tsx'],
   },
   {
+    name: 'form-status',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['form/form-status/index.tsx'],
+  },
+  {
     name: 'icon',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['skeleton'],
@@ -158,6 +188,12 @@ export const primitives = [
     files: ['primitives/inline-email-form/index.tsx'],
   },
   {
+    name: 'input',
+    dependencies: ['clsx'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/input/index.tsx'],
+  },
+  {
     name: 'logo',
     dependencies: ['clsx'],
     registryDependencies: ['streamable', 'skeleton'],
@@ -168,6 +204,12 @@ export const primitives = [
     dependencies: ['@radix-ui/react-dialog', 'clsx'],
     registryDependencies: [],
     files: ['primitives/modal/index.tsx'],
+  },
+  {
+    name: 'number-input',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/number-input/index.tsx'],
   },
   {
     name: 'offset-pagination',
@@ -206,10 +248,22 @@ export const primitives = [
     files: ['primitives/products-carousel/index.tsx'],
   },
   {
+    name: 'radio-group',
+    dependencies: ['clsx', '@radix-ui/react-radio-group'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/radio-group/index.tsx'],
+  },
+  {
     name: 'rating',
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/rating/index.tsx'],
+  },
+  {
+    name: 'select',
+    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-select'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/select/index.tsx'],
   },
   {
     name: 'side-panel',
@@ -234,5 +288,17 @@ export const primitives = [
     dependencies: ['uuid'],
     registryDependencies: [],
     files: ['lib/streamable.tsx'],
+  },
+  {
+    name: 'swatch-radio-group',
+    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-radio-group'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/swatch-radio-group/index.tsx'],
+  },
+  {
+    name: 'textarea',
+    dependencies: ['clsx'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/textarea/index.tsx'],
   },
 ] satisfies Components;

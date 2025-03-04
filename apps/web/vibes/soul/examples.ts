@@ -13,6 +13,13 @@ export const examples = [
     component: lazy(() => import('./examples/form/checkbox')),
   },
   {
+    name: 'checkbox-group-example',
+    dependencies: [],
+    registryDependencies: ['checkbox-group'],
+    files: ['examples/form/checkbox-group/index.tsx'],
+    component: lazy(() => import('./examples/form/checkbox-group')),
+  },
+  {
     name: 'compare-card-electric',
     dependencies: [],
     registryDependencies: ['compare-card-electric'],
@@ -195,6 +202,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/button-link')),
   },
   {
+    name: 'button-radio-group-example',
+    dependencies: [],
+    registryDependencies: ['button-radio-group'],
+    files: ['examples/form/button-radio-group/index.tsx'],
+    component: lazy(() => import('./examples/form/button-radio-group')),
+  },
+  {
     name: 'calendar-electric',
     dependencies: [],
     registryDependencies: ['calendar'],
@@ -242,6 +256,13 @@ export const examples = [
     registryDependencies: ['card'],
     files: ['examples/primitives/card/index.tsx'],
     component: lazy(() => import('./examples/primitives/card')),
+  },
+  {
+    name: 'card-radio-group-example',
+    dependencies: [],
+    registryDependencies: ['card-radio-group'],
+    files: ['examples/form/card-radio-group/index.tsx'],
+    component: lazy(() => import('./examples/form/card-radio-group')),
   },
   {
     name: 'carousel-warm',
@@ -333,6 +354,13 @@ export const examples = [
     registryDependencies: ['cursor-pagination'],
     files: ['examples/primitives/cursor-pagination/index.tsx'],
     component: lazy(() => import('./examples/primitives/cursor-pagination')),
+  },
+  {
+    name: 'date-picker-example',
+    dependencies: [],
+    registryDependencies: ['date-picker'],
+    files: ['examples/form/date-picker/index.tsx'],
+    component: lazy(() => import('./examples/form/date-picker')),
   },
   {
     name: 'discount-example',
@@ -510,6 +538,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/forgot-password-section')),
   },
   {
+    name: 'form-status-example',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/form/form-status/index.tsx'],
+    component: lazy(() => import('./examples/form/form-status/index')),
+  },
+  {
     name: 'header-section-electric',
     dependencies: [],
     registryDependencies: ['header-section'],
@@ -552,6 +587,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/inline-email-form')),
   },
   {
+    name: 'input-example',
+    dependencies: [],
+    registryDependencies: ['input'],
+    files: ['examples/form/input/index.tsx'],
+    component: lazy(() => import('./examples/form/input')),
+  },
+  {
     name: 'logo-example',
     dependencies: [],
     registryDependencies: ['logo'],
@@ -585,6 +627,13 @@ export const examples = [
     registryDependencies: ['navigation-luxury'],
     files: ['examples/primitives/navigation/luxury.tsx'],
     component: lazy(() => import('./examples/primitives/navigation/luxury')),
+  },
+  {
+    name: 'number-input-example',
+    dependencies: [],
+    registryDependencies: ['number-input'],
+    files: ['examples/form/number-input/index.tsx'],
+    component: lazy(() => import('./examples/form/number-input')),
   },
   {
     name: 'order-details-section-electric',
@@ -895,6 +944,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/products-list-section/luxury')),
   },
   {
+    name: 'radio-group-example',
+    dependencies: [],
+    registryDependencies: ['radio-group'],
+    files: ['examples/form/radio-group/index.tsx'],
+    component: lazy(() => import('./examples/form/radio-group')),
+  },
+  {
     name: 'rating-example',
     dependencies: [],
     registryDependencies: ['rating'],
@@ -914,6 +970,13 @@ export const examples = [
     registryDependencies: ['reviews'],
     files: ['examples/sections/reviews/index.tsx'],
     component: lazy(() => import('./examples/sections/reviews')),
+  },
+  {
+    name: 'select-example',
+    dependencies: [],
+    registryDependencies: ['select'],
+    files: ['examples/form/select/index.tsx'],
+    component: lazy(() => import('./examples/form/select')),
   },
   {
     name: 'side-panel-example',
@@ -977,6 +1040,20 @@ export const examples = [
     registryDependencies: ['subscribe'],
     files: ['examples/sections/subscribe/index.tsx'],
     component: lazy(() => import('./examples/sections/subscribe')),
+  },
+  {
+    name: 'swatch-radio-group-example',
+    dependencies: [],
+    registryDependencies: ['swatch-radio-group'],
+    files: ['examples/form/swatch-radio-group/index.tsx'],
+    component: lazy(() => import('./examples/form/swatch-radio-group')),
+  },
+  {
+    name: 'textarea-example',
+    dependencies: [],
+    registryDependencies: ['textarea'],
+    files: ['examples/form/textarea/index.tsx'],
+    component: lazy(() => import('./examples/form/textarea')),
   },
   {
     name: 'toaster-example',

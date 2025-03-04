@@ -1,0 +1,54 @@
+---
+title: Form Status
+preview: form-status-example
+previewSize: sm
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FormStatus } from '@/vibes/soul/form/form-status';
+function Usage() {
+    return (
+        <FormStatus>Login was successful</FormStatus>
+        <FormStatus type="error">Could not login</FormStatus>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+###
+
+| Prop          | Type                   | Default     |
+| ------------- | ---------------------- | ----------- |
+| `children*`   | `ReactNode`            |             |
+| `className`   | `string`               |             |
+| `type`        | `'error' \| 'success'` | `'success'` |
+| `colorScheme` | `'light' \| 'dark'`    | `'light'`   |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --form-status-light-background-error: color-mix(in oklab, hsl(var(--error)), white 75%);
+  --form-status-light-text-error: color-mix(in oklab, hsl(var(--error)), black 75%);
+  --form-status-light-background-success: color-mix(in oklab, hsl(var(--success)), white 75%);
+  --form-status-light-text-success: color-mix(in oklab, hsl(var(--success)), black 75%);
+  --form-status-dark-background-error: color-mix(in oklab, hsl(var(--error)), white 75%);
+  --form-status-dark-text-error: color-mix(in oklab, hsl(var(--error)), black 75%);
+  --form-status-dark-background-success: color-mix(in oklab, hsl(var(--success)), white 75%);
+  --form-status-dark-text-success: color-mix(in oklab, hsl(var(--success)), black 75%);
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=4232-75756" />
