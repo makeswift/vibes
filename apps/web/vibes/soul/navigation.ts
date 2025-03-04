@@ -105,12 +105,6 @@ export const navigation = [
       { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
       { title: 'Icon', slug: 'icon', file: 'docs/icon.mdx', component: 'icon' },
       {
-        title: 'Inline Email Form',
-        slug: 'inline-email-form',
-        file: 'docs/inline-email-form.mdx',
-        component: 'inline-email-form',
-      },
-      {
         title: 'Logo',
         slug: 'logo',
         file: 'docs/logo.mdx',

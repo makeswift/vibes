@@ -182,12 +182,6 @@ export const primitives = [
     files: ['primitives/icon/index.tsx'],
   },
   {
-    name: 'inline-email-form',
-    dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod'],
-    registryDependencies: [],
-    files: ['primitives/inline-email-form/index.tsx'],
-  },
-  {
     name: 'input',
     dependencies: ['clsx'],
     registryDependencies: ['field-error', 'label'],

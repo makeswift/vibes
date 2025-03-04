@@ -134,7 +134,7 @@ export const sections = [
   {
     name: 'inline-email-form',
     dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod', 'clsx'],
-    registryDependencies: [],
+    registryDependencies: ['form-status', 'button'],
     files: ['sections/inline-email-form/index.tsx'],
   },
   {
