@@ -1,5 +1,47 @@
 ---
-title: Toaster 
+title: Toaster
 preview: toaster-example
 previewSize: sm
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+import { toast } from '@/vibes/soul/primitives/toaster';
+
+function Usage() {
+    return (
+        <button
+            onClick={() =>
+            toast.success('Success', {
+                    description: 'Description of toast',
+                    action: { label: 'Undo', onClick: () => console.log('undo') },
+                })
+            }
+        >
+            Toast with Options
+      </button>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This comoponent uses the Sonner toast component. For more information, please refer to the [Sonner documentation](https://sonner.emilkowal.ski/).
+
+### ToastOptions
+
+| Prop           | Type                                                                                         | Default |
+| -------------- | -------------------------------------------------------------------------------------------- | ------- |
+| `children*`    | `ReactNode`                                                                                  |         |
+| `className`    | `string`                                                                                     |         |
+| `description`  | `string;`                                                                                    |         |
+| `position`     | `'top-left \| 'top-center \| 'top-right \| 'bottom-left \| 'bottom-center \| 'bottom-right'` |         |
+| `dismissLabel` | `string;`                                                                                    |         |
+| `action`       | `{ label: string, onClick: () => void }`                                                     |         |
