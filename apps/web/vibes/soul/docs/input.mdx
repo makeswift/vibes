@@ -1,0 +1,55 @@
+---
+title: Input
+preview: input-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Input } from '@/vibes/soul/form/input';
+
+function Usage() {
+    return (
+      <Input label="username" />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### InputProps
+
+| Prop          | Type                | Default   |
+| ------------- | ------------------- | --------- |
+| `className`   | `string`            |           |
+| `prepend`     | `React.ReactNode`   |           |
+| `label`       | `string`            |           |
+| `errors`      | `string[]`          |           |
+| `colorScheme` | `'light' \| 'dark'` | `'light'` |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --input-light-background: hsl(var(--background));
+  --input-light-text: hsl(var(--foreground));
+  --input-light-border: hsl(var(--contrast-100));
+  --input-light-focus: hsl(var(--foreground));
+  --input-light-placeholder: hsl(var(--contrast-500));
+  --input-light-error: hsl(var(--error));
+  --input-dark-background: hsl(var(--foreground));
+  --input-dark-text: hsl(var(--background));
+  --input-dark-border: hsl(var(--contrast-500));
+  --input-dark-focus: hsl(var(--background));
+  --input-dark-placeholder: hsl(var(--contrast-100));
+  --input-dark-error: hsl(var(--error));
+}
+```
