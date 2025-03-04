@@ -2,6 +2,18 @@ import { BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
+export default function Preview() {
+  const blogPostsPromise = new Promise<BlogPostWithId[]>((resolve) => {
+    setTimeout(() => resolve(posts), 1000);
+  });
+
+  return (
+    <SectionLayout className="group/blog-post-list">
+      <BlogPostList blogPosts={blogPostsPromise} />
+    </SectionLayout>
+  );
+}
+
 export const posts: BlogPostWithId[] = [
   {
     id: '5',
@@ -121,15 +133,3 @@ export const posts: BlogPostWithId[] = [
     author: 'Author Name',
   },
 ];
-
-export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostWithId[]>((resolve) => {
-    setTimeout(() => resolve(posts), 1000);
-  });
-
-  return (
-    <SectionLayout className="group/blog-post-list">
-      <BlogPostList blogPosts={blogPostsPromise} />
-    </SectionLayout>
-  );
-}

@@ -1,23 +1,83 @@
 ---
 title: Blog Post List
 description: Blog Post List is used to display a list of blog post cards.
-preview: blog-post-list-example
+preview:
+  Electric: blog-post-list-example-electric
+  Warm: blog-post-list-example-warm
+  Luxury: blog-post-list-example-luxury
 previewSize: lg
 ---
 
 ## Usage
 
-<CodeBlock lang="bash">{`import { BlogPostList } from '@/vibes/soul/sections/blog-post-list'`}</CodeBlock>
+{/* prettier-ignore-start */}
 
-<CodeBlock lang="bash">{`<BlogPostList />`}</CodeBlock>
+<CodeBlock lang="ts">{`
+import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
+
+function Usage() {
+    return (
+      <BlogPostList blogPosts={blogPosts} />
+    );
+}
+
+const blogPosts = [
+    {
+        id: '5',
+        title: 'A Guide to Low-Light Houseplants',
+        content:
+        'Not all plants need bright sunlight to thrive. This guide highlights the best low-light houseplants, perfect for those darker corners of your home or office that need a touch of green.',
+        image: {
+            src: 'https://rstr.in/monogram/vibes/T7CeSkvi11I/OrJN5KVj7I1',
+            alt: 'Low-Light Houseplants',
+        },
+        date: '2024-07-20',
+        href: '#',
+        author: 'Author Name',
+    }
+];
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
 
 ## API Reference
 
-| Prop                                                                                       | Type                                                                           | Default      |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------ |
-| `type` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `enum` <Tooltip content={`"single" ${String.fromCharCode(124)} "multiple"`} /> | `"multiple"` |
-| `title` <Tooltip content='This is an example tooltip for what this particular prop does'/> | `string`                                                                       |              |
-| `body` <Tooltip content='This is an example tooltip for what this particular prop does'/>  | `string`                                                                       |              |
+### BlogPostListProps
+
+| Prop                 | Type                                                                                                   | Default |
+| -------------------- | ------------------------------------------------------------------------------------------------------ | ------- |
+| `className`          | `string`                                                                                               |         |
+| `blogPosts*`         | [`Streamable`](docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="See BlogPostWithId below"/> |         |
+| `className`          | `string`                                                                                               |         |
+| `emptyStateSubtitle` | [`Streamable`](docs/soul/streamable)`<string>`                                                         |         |
+| `emptyStateTitle`    | [`Streamable`](docs/soul/streamable)`<string>`                                                         |         |
+| `placeholderCount`   | `number`                                                                                               |         |
+
+### BlogPostWithId
+
+| Prop       | Type                                   | Default |
+| ---------- | -------------------------------------- | ------- |
+| `id*`      | `string`                               |         |
+| `title*`   | `string`                               |         |
+| `author`   | `string  \| null`                      |
+| `content*` | `string`                               |         |
+| `date*`    | `string`                               |         |
+| `image`    | `{src: string; alt: string; } \| null` |         |
+| `href*`    | `string`                               |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --blog-post-list-empty-state-title-font-family: var(--font-family-heading);
+  --blog-post-list-empty-state-subtitle-font-family: var(--font-family-body);
+  --blog-post-list-empty-state-title: hsl(var(--foreground));
+  --blog-post-list-empty-state-subtitle: hsl(var(--contrast-500));
+}
+```
 
 ## Figma
 
