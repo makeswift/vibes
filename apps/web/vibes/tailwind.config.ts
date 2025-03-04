@@ -1,4 +1,5 @@
 import containerQueries from '@tailwindcss/container-queries';
+import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 
@@ -6,6 +7,78 @@ export default {
   content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './vibes/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            h1: {
+              color: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-family-heading)',
+            },
+            h2: {
+              color: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-family-heading)',
+            },
+            h3: {
+              color: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-family-heading)',
+            },
+            h4: {
+              color: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-family-heading)',
+            },
+            h5: {
+              color: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-family-heading)',
+            },
+            h6: {
+              color: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-family-heading)',
+            },
+            p: {
+              color: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-family-body)',
+            },
+            a: {
+              color: 'color-mix(in oklab, hsl(var(--primary)), black 15%)',
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            },
+            img: {
+              borderRadius: '1rem',
+            },
+            ul: {
+              color: 'hsl(var(--contrast-500))',
+              fontFamily: 'var(--font-family-body)',
+            },
+            ol: {
+              color: 'hsl(var(--contrast-500))',
+              fontFamily: 'var(--font-family-body)',
+            },
+            strong: {
+              fontWeight: '600',
+            },
+            blockquote: {
+              borderLeftColor: 'hsl(var(--contrast-300))',
+              p: {
+                color: 'hsl(var(--contrast-500))',
+                fontStyle: 'normal',
+                fontWeight: '400',
+              },
+            },
+            code: {
+              color: 'hsl(var(--contrast-500))',
+              fontFamily: 'var(--font-family-mono)',
+            },
+            pre: {
+              color: 'hsl(var(--background))',
+              backgroundColor: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-family-mono)',
+            },
+          },
+        },
+      },
       colors: {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
@@ -157,5 +230,5 @@ export default {
       },
     },
   },
-  plugins: [animate, containerQueries],
+  plugins: [animate, containerQueries, typography],
 } satisfies Config;
