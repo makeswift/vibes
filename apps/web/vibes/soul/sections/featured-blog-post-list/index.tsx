@@ -11,8 +11,8 @@ interface Props {
   blogPosts: Streamable<BlogPostWithId[]>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
   breadcrumbs?: Streamable<BreadcrumbWithId[]>;
-  emptyStateSubtitle?: Streamable<string | null>;
-  emptyStateTitle?: Streamable<string | null>;
+  emptyStateSubtitle?: Streamable<string>;
+  emptyStateTitle?: Streamable<string>;
   placeholderCount?: number;
 }
 
