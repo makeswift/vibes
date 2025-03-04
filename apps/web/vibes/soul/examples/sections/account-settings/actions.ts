@@ -4,8 +4,8 @@ import { parseWithZod } from '@conform-to/zod';
 import {
   changePasswordSchema,
   updateAccountSchema,
-} from '@/vibes/soul/sections/account-settings-section/schema';
-import { UpdateAccountAction } from '@/vibes/soul/sections/account-settings-section/update-account-form';
+} from '@/vibes/soul/sections/account-settings/schema';
+import { UpdateAccountAction } from '@/vibes/soul/sections/account-settings/update-account-form';
 
 export const updateAccountAction: UpdateAccountAction = async (prevState, formData) => {
   'use server';
