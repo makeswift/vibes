@@ -3,3 +3,79 @@ title: Blog Post Content
 preview: blog-post-content-example
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { BlogPost, BlogPostContent } from '@/vibes/soul/sections/blog-post-content';
+
+function Usage() {
+    return <BlogPostContent blogPost={blogPost} />;
+}
+
+const blogPost = {
+    author: 'Sam Smith',
+    content: 'My Blog Post',
+    date: 'June 30, 2024',
+    image: {
+        src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
+        alt: 'A plant with large leaves and a short stem.',
+    },
+    title: "Top 5 Plants to Purify Your Home's Air",
+};
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### BlogPostContentProps
+
+| Prop          | Type                                                                                                        | Default |
+| ------------- | ----------------------------------------------------------------------------------------------------------- | ------- |
+| `className`   | `string`                                                                                                    |         |
+| `blogPost*`   | [`Streamable`](/docs/soul/streamable)`<BlogPost>` <Tooltip content="See BlogPost below"/>                   |         |
+| `breadcrumbs` | [`Streamable`](/docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/> |         |
+| `className`   | `string`                                                                                                    |         |
+
+### BlogPost
+
+| Prop       | Type                                   | Default |
+| ---------- | -------------------------------------- | ------- |
+| `title*`   | `string`                               |         |
+| `author`   | `string`                               |         |
+| `date*`    | `string`                               |         |
+| `tags`     | `Tag[] \| null`                        |         |
+| `content*` | `string`                               |         |
+| `image`    | `{ src: string, alt: string } \| null` |         |
+
+### BreadcrumbWithId
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `label*` | `string` |         |
+| `href*`  | `string` |         |
+| `id*`    | `string` |         |
+
+### Tag
+
+| Prop     | Type                               | Default |
+| -------- | ---------------------------------- | ------- |
+| `label*` | `string`                           |         |
+| `link*`  | ` { href: string, target string }` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --blog-post-content-font-family: var(--font-family-body);
+  --blog-post-content-title-font-family: var(--font-family-body);
+  --blog-post-content-title: hsl(var(--foreground));
+  --blog-post-content-image-background: hsl(var(--contrast-100));
+}
+```
