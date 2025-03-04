@@ -92,7 +92,7 @@
     "@shikijs/rehype": "^1.1.6",
     "@shikijs/transformers": "^1.1.6",
     "@svgr/cli": "^8.1.0",
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.1.0",
     "@types/color": "^3.0.6",
