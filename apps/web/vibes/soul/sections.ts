@@ -136,10 +136,10 @@ export const sections = [
     files: ['sections/featured-product-carousel/index.tsx'],
   },
   {
-    name: 'featured-products-list',
+    name: 'featured-product-list',
     dependencies: [],
     registryDependencies: ['button', 'product-card'],
-    files: ['sections/featured-products-list/index.tsx'],
+    files: ['sections/featured-product-list/index.tsx'],
   },
   {
     name: 'featured-video',
