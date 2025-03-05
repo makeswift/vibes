@@ -74,7 +74,7 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
 
             setIsDragging(true);
 
-            void e.currentTarget.requestPointerLock();
+            e.currentTarget.requestPointerLock();
           }}
           onPointerMove={(e) => {
             const { ownerDocument } = e.currentTarget;
