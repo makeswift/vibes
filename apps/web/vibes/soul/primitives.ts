@@ -271,12 +271,6 @@ export const primitives = [
     files: ['sections/products-list/index.tsx'],
   },
   {
-    name: 'products-carousel',
-    dependencies: ['clsx'],
-    registryDependencies: ['product-card', 'carousel'],
-    files: ['primitives/products-carousel/index.tsx'],
-  },
-  {
     name: 'radio-group',
     dependencies: ['clsx', '@radix-ui/react-radio-group'],
     registryDependencies: ['field-error', 'label'],
