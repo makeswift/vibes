@@ -14,7 +14,7 @@ export interface PriceSale {
 
 export type Price = string | PriceRange | PriceSale;
 
-interface Props {
+export interface PriceLabelProps {
   className?: string;
   colorScheme?: 'light' | 'dark';
   price: Price;
@@ -33,7 +33,7 @@ interface Props {
  * }
  * ```
  */
-export function PriceLabel({ className, colorScheme = 'light', price }: Props) {
+export function PriceLabel({ className, colorScheme = 'light', price }: PriceLabelProps) {
   if (typeof price === 'string') {
     return (
       <span
@@ -64,9 +64,7 @@ export function PriceLabel({ className, colorScheme = 'light', price }: Props) {
             className,
           )}
         >
-          {price.minValue}
-          &nbsp;&ndash;&nbsp;
-          {price.maxValue}
+          {`${price.minValue} – ${price.maxValue}`}
         </span>
       );
     case 'sale':

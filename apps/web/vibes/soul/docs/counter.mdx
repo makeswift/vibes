@@ -3,3 +3,53 @@ title: Counter
 preview: counter-example
 previewSize: xs
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Counter } from '@/vibes/soul/primitives/counter';
+
+function Usage() {
+    return ( 
+        <Counter />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### CounterProps
+
+| Prop                 | Type     | Default            |
+| -------------------- | -------- | ------------------ |
+| `className`          | `string` |                    |
+| `current`            | `number` | `0`                |
+| `max`                | `number` | `10`               |
+| `decrementAriaLabel` | `string` | `'Decrease count'` |
+| `incrementAriaLabel` | `string` | `'Increase count'` |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --counter-focus: hsl(var(--primary));
+  --counter-font-family: var(--font-family-body);
+  --counter-background: hsl(var(--background));
+  --counter-background-hover: hsl(var(--contrast-100) / 50%);
+  --counter-border: hsl(var(--contrast-100));
+  --counter-text: hsl(var(--foreground));
+  --counter-icon-hover: hsl(var(--foreground));
+  --counter-icon: hsl(var(--contrast-300));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/kgCf8OkDCe90wBSKNNqueL/Soul-Vibe?node-id=2840-49792" />

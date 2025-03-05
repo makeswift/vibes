@@ -1,5 +1,128 @@
 ---
 title: Featured Blog Post List
-preview: featured-blog-post-list-example
+preview:
+  Electric: featured-blog-post-list-example-electric
+  Warm: featured-blog-post-list-example-warm
+  Luxury: featured-blog-post-list-example-luxury
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
+
+function Usage() {
+
+    return (
+        <FeaturedBlogPostList
+            blogPosts={posts}
+            breadcrumbs={[
+                {
+                    id: '1',
+                    label: 'Home',
+                    href: '#',
+                },
+                {
+                    id: '2',
+                    label: 'Blog',
+                    href: '#',
+                },
+            ]}
+            description="Expert Tips & Inspiration for Every Outdoor Lover"
+            emptyStateSubtitle="Check back later for more content"
+            emptyStateTitle="No blog posts found"
+            paginationInfo={{
+                startCursor: '1',
+                endCursor: '5',
+            }}
+            placeholderCount={6}
+            title="Plant Life"
+        />
+    );
+}
+
+const posts = [
+    {
+      id: '5',
+      title: 'A Guide to Low-Light Houseplants',
+      content:
+        'Not all plants need bright sunlight to thrive. This guide highlights the best low-light houseplants, perfect for those darker corners of your home or office that need a touch of green.',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/T7CeSkvi11I/OrJN5KVj7I1',
+        alt: 'Low-Light Houseplants',
+      },
+      date: '2024-07-20',
+      href: '#',
+      author: 'Author Name',
+    },
+];
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FeaturedBlogPostListProps
+
+| Prop                 | Type                                                                                                             | Default |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------- | ------- |
+| `className`          | `string`                                                                                                         |         |
+| `title`              | `string`                                                                                                         |         |
+| `description`        | `string \| null`                                                                                                 |         |
+| `blogPosts*`         | [`Streamable`](docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="See BlogPostWithId below"/>           |         |
+| `paginationInfo`     | [`Streamable`](docs/soul/streamable)`<CursorPaginationInfo>` <Tooltip content="See CursorPaginationInfo below"/> |         |
+| `breadcrumbs`        | [`Streamable`](docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/>       |         |
+| `emptyStateSubtitle` | [`Streamable`](docs/soul/streamable)`<string>`                                                                   |         |
+| `emptyStateTitle`    | [`Streamable`](docs/soul/streamable)`<string>`                                                                   |         |
+| `placeholderCount`   | `number`                                                                                                         |         |
+
+### BlogPostWithId
+
+| Prop       | Type                                   | Default |
+| ---------- | -------------------------------------- | ------- |
+| `id*`      | `string`                               |         |
+| `title*`   | `string`                               |         |
+| `author`   | `string  \| null`                      |
+| `content*` | `string`                               |         |
+| `date*`    | `string`                               |         |
+| `image`    | `{src: string; alt: string; } \| null` |         |
+| `href*`    | `string`                               |         |
+
+### CursorPaginationInfo
+
+| Prop                   | Type             | Default |
+| ---------------------- | ---------------- | ------- |
+| `startCursorParamName` | `string`         |         |
+| `startCursor*`         | `string \| null` |         |
+| `endCursorParamName`   | `string`         |         |
+| `endCursor*`           | `string \| null` |         |
+
+### BreadcrumbWithId
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `id`    | `string` |         |
+| `label` | `string` |         |
+| `href`  | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --featured-blog-post-list-font-family: var(--font-family-body);
+  --featured-blog-post-list-title-font-family: var(--font-family-body);
+  --featured-blog-post-list-title: hsl(var(--foreground));
+  --featured-blog-post-list-description: hsl(var(--contrast-500));
+  --featured-blog-post-list-font-family: var(--font-family-body);
+  --featured-blog-post-list-title-font-family: var(--font-family-body);
+  --featured-blog-post-list-title: hsl(var(--foreground));
+  --featured-blog-post-list-description: hsl(var(--contrast-500));
+}
+```

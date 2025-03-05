@@ -3,3 +3,40 @@ title: Spinner
 preview: spinner-example
 previewSize: xs
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Spinner } from '@/vibes/soul/primitives/spinner';
+
+function Usage() {
+    return (
+        <Spinner size="lg" />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### SpinnerProps
+
+| Prop               | Type                           | Default        |
+| ------------------ | ------------------------------ | -------------- |
+| `size`             | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'sm'`         |
+| `loadingAriaLabel` | `string`                       | `'Loading...'` |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --spinner-base: hsl(var(--contrast-100));
+  --spinner-ring: color-mix(in oklab, hsl(var(--primary)), black 75%);
+}
+```

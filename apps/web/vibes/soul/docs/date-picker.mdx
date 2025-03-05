@@ -1,0 +1,37 @@
+---
+title: Date Picker
+preview: date-picker-example
+previewSize: md
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+
+import { DatePicker } from '@/vibes/soul/form/date-picker';
+
+function Usage() {
+    return (
+      <DatePicker />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### DatePickerProps
+
+| Prop           | Type                                | Default   |
+| -------------- | ----------------------------------- | --------- |
+| `defaultValue` | `string \| Date`                    |           |
+| `disabledDays` | `CalendarProps['disabled']`         |           |
+| `errors`       | `string[]`                          |           |
+| `onSelect`     | `(date: Date \| undefined) => void` |           |
+| `selected`     | `Date \| undefined`                 |           |
+| `colorScheme`  | `'light' \| 'dark'`                 | `'light'` |

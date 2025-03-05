@@ -1,6 +1,6 @@
 import { getProducts } from '@/vibes/soul/data';
 import { locales } from '@/vibes/soul/data/locales';
-import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { feature } from '@/vibes/soul/examples/sections/feature/electric';

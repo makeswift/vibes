@@ -1,8 +1,8 @@
 import { locales } from '@/vibes/soul/data/locales';
-import { action } from '@/vibes/soul/examples/primitives/inline-email-form/actions';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm';
-import { posts } from '@/vibes/soul/examples/sections/blog-post-list';
+import { posts } from '@/vibes/soul/examples/sections/blog-post-list/warm';
 import {
   contactInformation,
   copyright,
@@ -10,7 +10,7 @@ import {
 } from '@/vibes/soul/examples/sections/footer/warm';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { BlogPostContent, BlogPostContentBlogPost } from '@/vibes/soul/sections/blog-post-content';
+import { BlogPost, BlogPostContent } from '@/vibes/soul/sections/blog-post-content';
 import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
@@ -91,7 +91,7 @@ const blogPost = {
   title: 'The Good, the Great, and the (My) Bad: Adventures of a First Time Bikepacker',
 };
 
-function getBlogPost(): Promise<BlogPostContentBlogPost> {
+function getBlogPost(): Promise<BlogPost> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(blogPost);

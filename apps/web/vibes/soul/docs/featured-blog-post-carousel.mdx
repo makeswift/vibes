@@ -6,3 +6,86 @@ preview:
   Luxury: featured-blog-post-carousel-luxury
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FeaturedBlogPostCarousel } from '@/vibes/soul/sections/featured-blog-post-carousel';
+
+function Usage() {
+
+    return (
+        <FeaturedBlogPostCarousel
+          blogPosts={posts}
+          cta={{ label: 'View all', href: '#' }}
+          title="Plant Life"
+        />
+    );
+}
+
+const posts = [
+    {
+      id: '5',
+      title: 'A Guide to Low-Light Houseplants',
+      content:
+        'Not all plants need bright sunlight to thrive. This guide highlights the best low-light houseplants, perfect for those darker corners of your home or office that need a touch of green.',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/T7CeSkvi11I/OrJN5KVj7I1',
+        alt: 'Low-Light Houseplants',
+      },
+      date: '2024-07-20',
+      href: '#',
+      author: 'Author Name',
+    },
+];
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FeaturedBlogPostCarouselProps
+
+| Prop             | Type                                                                                                         | Default |
+| ---------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
+| `className`      | `string`                                                                                                     |         |
+| `title*`         | `string`                                                                                                     |         |
+| `cta`            | `Link` <Tooltip contnet="See Link below"/>                                                                   |         |
+| `blogPosts*`     | [`Streamable`](/docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="see BlogPostWithId type below"/> |         |
+| `scrollbarLabel` | `string`                                                                                                     |         |
+| `previousLabel`  | `string`                                                                                                     |         |
+| `nextLabel`      | `string`                                                                                                     |         |
+
+### Link
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `href*`  | `string` |         |
+| `label*` | `string` |         |
+
+### BlogPostWithId
+
+| Prop       | Type                                   | Default |
+| ---------- | -------------------------------------- | ------- |
+| `id*`      | `string`                               |         |
+| `title*`   | `string`                               |         |
+| `author`   | `string  \| null`                      |
+| `content*` | `string`                               |         |
+| `date*`    | `string`                               |         |
+| `image`    | `{src: string; alt: string; } \| null` |         |
+| `href*`    | `string`                               |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --featured-blog-post-carousel-font-family: var(--font-family-body);
+  --featured-blog-post-carousel-text: hsl(var(--foreground));
+}
+```

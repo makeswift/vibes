@@ -1,11 +1,12 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { ComponentProps } from 'react';
 import { Toaster as Sonner, toast as SonnerToast } from 'sonner';
 
 import { Alert } from '@/vibes/soul/primitives/alert';
 
-type ToasterProps = React.ComponentProps<typeof Sonner>;
+export type ToasterProps = ComponentProps<typeof Sonner>;
 
 interface ToastOptions {
   action?: {

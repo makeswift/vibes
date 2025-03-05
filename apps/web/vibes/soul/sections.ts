@@ -8,16 +8,21 @@ export const sections = [
     files: ['sections/sticky-sidebar-layout/index.tsx'],
   },
   {
-    name: 'account-settings-section',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/account-settings-section/index.tsx'],
+    name: 'account-settings',
+    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    registryDependencies: ['input', 'button'],
+    files: [
+      'sections/account-settings/index.tsx',
+      'sections/account-settings/change-password-form.tsx',
+      'sections/account-settings/update-account-form.tsx',
+      'sections/account-settings/schema.ts',
+    ],
   },
   {
     name: 'address-list-section',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/address-list-section/index.tsx'],
+    dependencies: ['zod', '@conform-to/react', '@conform-to/zod'],
+    registryDependencies: ['badge', 'button', 'dynamic-form', 'spinner', 'toaster'],
+    files: ['sections/address-list-section/index.tsx', 'sections/address-list-section/schema.ts'],
   },
   {
     name: 'blog-post-carousel',
@@ -26,9 +31,21 @@ export const sections = [
     files: ['sections/blog-post-carousel/index.tsx'],
   },
   {
+    name: 'blog-post-content',
+    dependencies: ['clsx'],
+    registryDependencies: [
+      'button-link',
+      'skeleton',
+      'breadcrumbs',
+      'streamable',
+      'section-layout',
+    ],
+    files: ['sections/blog-post-content/index.tsx'],
+  },
+  {
     name: 'blog-post-list',
     dependencies: ['clsx'],
-    registryDependencies: [],
+    registryDependencies: ['blog-post-card', 'skeleton', 'streamable'],
     files: ['sections/blog-post-list/index.tsx'],
   },
   {
@@ -70,13 +87,28 @@ export const sections = [
   {
     name: 'featured-blog-post-carousel',
     dependencies: [],
-    registryDependencies: ['blog-post-carousel', 'animated-link'],
+    registryDependencies: [
+      'section-layout',
+      'blog-post-card',
+      'streamable',
+      'blog-post-carousel',
+      'animated-link',
+    ],
     files: ['sections/featured-blog-post-carousel/index.tsx'],
   },
   {
     name: 'featured-blog-post-list',
     dependencies: [],
-    registryDependencies: ['button', 'blog-post-card'],
+    registryDependencies: [
+      'button',
+      'blog-post-card',
+      'streamable',
+      'blog-post-card',
+      'cursor-pagination',
+      'blog-post-list',
+      'breadcrumbs',
+      'section-layout',
+    ],
     files: ['sections/featured-blog-post-list/index.tsx'],
   },
   {
@@ -88,7 +120,7 @@ export const sections = [
   {
     name: 'featured-products-carousel',
     dependencies: [],
-    registryDependencies: ['products-carousel'],
+    registryDependencies: ['product-carousel'],
     files: ['sections/featured-products-carousel/index.tsx'],
   },
   {
@@ -132,10 +164,22 @@ export const sections = [
     files: ['sections/icon-block/index.tsx', 'primitives/icon/index.tsx'],
   },
   {
+    name: 'inline-email-form',
+    dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod', 'clsx'],
+    registryDependencies: ['form-status', 'button'],
+    files: ['sections/inline-email-form/index.tsx'],
+  },
+  {
     name: 'order-history-section',
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['sections/order-history-section/index.tsx'],
+  },
+  {
+    name: 'product-carousel',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['product-card', 'carousel', 'skeleton', 'streamable'],
+    files: ['sections/product-carousel/index.tsx'],
   },
   {
     name: 'product-detail',
@@ -144,9 +188,15 @@ export const sections = [
     files: ['sections/product-detail/index.tsx', 'sections/product-detail/product-gallery.tsx'],
   },
   {
+    name: 'product-list',
+    dependencies: ['clsx'],
+    registryDependencies: ['product-card', 'streamable', 'compare-drawer', 'skeleton'],
+    files: ['sections/product-list/index.tsx'],
+  },
+  {
     name: 'products-list-section',
     dependencies: ['nuqs'],
-    registryDependencies: ['products-list', 'button', 'toggle-group', 'cursor-pagination'],
+    registryDependencies: ['product-list', 'button', 'toggle-group', 'cursor-pagination'],
     files: [
       'sections/products-list-section/index.tsx',
       'sections/products-list-section/filters-panel.tsx',

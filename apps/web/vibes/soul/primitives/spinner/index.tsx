@@ -1,16 +1,30 @@
 import { clsx } from 'clsx';
 
-interface Props {
+export interface SpinnerProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   loadingAriaLabel?: string;
 }
 
-export const Spinner = function Spinner({ size = 'sm', loadingAriaLabel }: Props) {
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --spinner-base: hsl(var(--contrast-100));
+ *   --spinner-ring: color-mix(in oklab, hsl(var(--primary)), black 75%);
+ * }
+ * ```
+ */
+export const Spinner = function Spinner({
+  size = 'sm',
+  loadingAriaLabel = 'Loading...',
+}: SpinnerProps) {
   return (
     <span
-      aria-label={loadingAriaLabel ?? 'Loading...'}
+      aria-label={loadingAriaLabel}
       className={clsx(
-        'box-border inline-block animate-spin rounded-full border-contrast-100 border-b-primary-shadow',
+        'box-border inline-block animate-spin rounded-full border-[var(--spinner-base,hsl(var(--contrast-100)))] border-b-[var(--spinner-ring,color-mix(in_oklab,_hsl(var(--primary)),_black_75%))]',
         {
           xs: 'h-5 w-5 border-2',
           sm: 'h-6 w-6 border-2',

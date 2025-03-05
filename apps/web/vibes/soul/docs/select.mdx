@@ -1,0 +1,91 @@
+---
+title: Select
+preview: select-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Select } from '@/vibes/soul/form/select';
+
+function Usage() {
+    return (
+        <Select
+          name="options"
+          options={[
+            { value: 'option-1', label: 'Option 1' },
+            { value: 'option-2', label: 'Option 2' },
+            { value: 'option-3', label: 'Option 3' },
+          ]}
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component uses the Select component from Radix UI. Refer to the [Radix Select documentation](https://www.radix-ui.com/primitives/docs/components/select) for more information.
+
+### SelectProps
+
+| Prop                 | Type                                               | Default            |
+| -------------------- | -------------------------------------------------- | ------------------ |
+| `className`          | `string`                                           |                    |
+| `colorScheme`        | `'light' \| 'dark'`                                | `'light'`          |
+| `id`                 | `string`                                           |                    |
+| `name*`              | `string`                                           |                    |
+| `pending`            | `boolean`                                          |                    |
+| `placeholder`        | `string`                                           |                    |
+| `label`              | `string`                                           |                    |
+| `hideLabel`          | `boolean`                                          |                    |
+| `placeholder`        | `string`                                           | `'Select an item'` |
+| `variant`            | `'round' \| 'rectangle'`                           | `'rectangle'`      |
+| `options*`           | `Array<{ label: string; value: string }>`          |                    |
+| `className`          | `string`                                           |                    |
+| `errors`             | `string[]`                                         |                    |
+| `onFocus`            | `(e: React.FocusEvent<HTMLButtonElement>) => void` |                    |
+| `onBlur`             | `(e: React.FocusEvent<HTMLButtonElement>) => void` |                    |
+| `onOptionMouseEnter` | `(value: string) => void`                          |                    |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --select-light-trigger-background: hsl(var(--white));
+  --select-light-trigger-border: hsl(var(--contrast-100));
+  --select-light-trigger-border-hover: hsl(var(--contrast-300));
+  --select-light-trigger-border-error: hsl(var(--error));
+  --select-light-trigger-text: hsl(var(--foreground));
+  --select-light-trigger-focus: hsl(var(--primary));
+  --select-light-icon: hsl(var(--foreground));
+  --select-light-content-background: hsl(var(--background));
+  --select-light-item-background-hover: hsl(var(--contrast-100));
+  --select-light-item-background-focus: hsl(var(--contrast-100));
+  --select-light-item-text: hsl(var(--contrast-400));
+  --select-light-item-text-hover: hsl(var(--foreground));
+  --select-light-item-text-focus: hsl(var(--foreground));
+  --select-light-item-checked-text-focus: hsl(var(--foreground));
+  --select-dark-trigger-background: hsl(var(--black));
+  --select-dark-trigger-border: hsl(var(--contrast-500));
+  --select-dark-trigger-border-hover: hsl(var(--contrast-300));
+  --select-dark-trigger-border-error: hsl(var(--error));
+  --select-dark-trigger-text: hsl(var(--background));
+  --select-dark-trigger-focus: hsl(var(--primary));
+  --select-dark-icon: hsl(var(--background));
+  --select-dark-content-background: hsl(var(--foreground));
+  --select-dark-item-background-hover: hsl(var(--contrast-500));
+  --select-dark-item-background-focus: hsl(var(--contrast-500));
+  --select-dark-item-text: hsl(var(--contrast-200));
+  --select-dark-item-text-hover: hsl(var(--background));
+  --select-dark-item-text-focus: hsl(var(--background));
+  --select-dark-item-checked-text-focus: hsl(var(--background));
+}
+```

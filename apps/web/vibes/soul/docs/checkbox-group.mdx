@@ -1,0 +1,59 @@
+---
+title: Checkbox Group
+preview: checkbox-group-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+
+import { CheckboxGroup } from '@/vibes/soul/form/checkbox-group';
+import { useState } from 'react';
+
+function Usage() {
+    const [value, setValue] = useState<string[]>([]);
+
+    return (
+        <CheckboxGroup
+          options={[
+            { label: 'Option 1', value: 'option-1' },
+            { label: 'Option 2', value: 'option-2' },
+            { label: 'Option 3', value: 'option-3' },
+          ]}
+          value={value}
+          onValueChange={setValue}
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### CheckboxGroupProps
+
+| Prop             | Type                                             | Default   |
+| ---------------- | ------------------------------------------------ | --------- |
+| `className`      | `string`                                         |           |
+| `id`             | `string`                                         |           |
+| `label`          | `string`                                         |           |
+| `options*`       | `Option[]` <Tooltip content="See Option below"/> |           |
+| `errors`         | `string[]`                                       |           |
+| `name`           | `string`                                         |           |
+| `value*`         | `string[]`                                       |           |
+| `onValueChange*` | `(value: string[]) => void`                      |           |
+| `colorScheme`    | `'light' \| 'dark'`                              | `'light'` |
+
+### Option
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `value*`   | `string`  |         |
+| `label*`   | `string`  |         |
+| `disabled` | `boolean` |         |

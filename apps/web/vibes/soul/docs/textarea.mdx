@@ -1,0 +1,55 @@
+---
+title: Textarea
+preview: textarea-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Textarea } from '@/vibes/soul/form/textarea';
+
+function Usage() {
+    return (
+        <Textarea />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### TextareaProps
+
+| Prop          | Type                | Default   |
+| ------------- | ------------------- | --------- |
+| `className`   | `string`            |           |
+| `prepend`     | `React.ReactNode`   |           |
+| `label`       | `string`            |           |
+| `errors`      | `string[]`          |           |
+| `colorScheme` | `'light' \| 'dark'` | `'light'` |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --textarea-light-background: hsl(var(--background));
+  --textarea-light-text: hsl(var(--foreground));
+  --textarea-light-placeholder: hsl(var(--contrast-gray-500));
+  --textarea-light-border: hsl(var(--border-contrast-100));
+  --textarea-light-border-focus: hsl(var(--foreground));
+  --textarea-light-border-error: hsl(var(--error));
+  --textarea-dark-background: hsl(var(--foreground));
+  --textarea-dark-text: hsl(var(--background));
+  --textarea-dark-placeholder: hsl(var(--contrast-gray-100));
+  --textarea-dark-border: hsl(var(--border-contrast-500));
+  --textarea-dark-border-focus: hsl(var(--background));
+  --textarea-dark-border-error: hsl(var(--error));
+}
+```

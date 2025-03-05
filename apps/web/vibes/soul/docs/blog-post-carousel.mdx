@@ -16,22 +16,6 @@ import { BlogPostCarousel } from '@/vibes/soul/sections/blog-post-carousel';
 
 function Usage() {
 
-    const posts = [
-      {
-        id: '5',
-        title: 'A Guide to Low-Light Houseplants',
-        content:
-          'Not all plants need bright sunlight to thrive. This guide highlights the best low-light houseplants, perfect for those darker corners of your home or office that need a touch of green.',
-        image: {
-          src: 'https://rstr.in/monogram/vibes/T7CeSkvi11I/OrJN5KVj7I1',
-          alt: 'Low-Light Houseplants',
-        },
-        date: '2024-07-20',
-        href: '#',
-        author: 'Author Name',
-      },
-    ];
-
     return (
       <BlogPostCarousel
         blogPosts={posts}
@@ -40,6 +24,22 @@ function Usage() {
       />
     );
 }
+
+const posts = [
+    {
+      id: '5',
+      title: 'A Guide to Low-Light Houseplants',
+      content:
+        'Not all plants need bright sunlight to thrive. This guide highlights the best low-light houseplants, perfect for those darker corners of your home or office that need a touch of green.',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/T7CeSkvi11I/OrJN5KVj7I1',
+        alt: 'Low-Light Houseplants',
+      },
+      date: '2024-07-20',
+      href: '#',
+      author: 'Author Name',
+    },
+];
 
 `}
 </CodeBlock>
@@ -50,17 +50,17 @@ function Usage() {
 
 ### BlogPostCarouselProps
 
-| Prop                 | Type                                                                                                       | Default |
-| -------------------- | ---------------------------------------------------------------------------------------------------------- | ------- |
-| `className`          | `string`                                                                                                   |         |
-| `blogPosts*`         | [Streamable](/docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="see BlogPostWithId type below"/> |         |
-| `scrollbarLabel`     | `string`                                                                                                   |         |
-| `previousLabel`      | `string`                                                                                                   |         |
-| `nextLabel`          | `string`                                                                                                   |         |
-| `placeholderCount`   | `number`                                                                                                   |         |
-| `emptyStateTitle`    | [Streamable](/docs/soul/streamable)`<string>`                                                              |         |
-| `emptyStateSubtitle` | [Streamable](/docs/soul/streamable)`<string>`                                                              |         |
-| `hideOverflow`       | `boolean`                                                                                                  | `true`  |
+| Prop                 | Type                                                                                                         | Default |
+| -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
+| `className`          | `string`                                                                                                     |         |
+| `blogPosts*`         | [`Streamable`](/docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="see BlogPostWithId type below"/> |         |
+| `scrollbarLabel`     | `string`                                                                                                     |         |
+| `previousLabel`      | `string`                                                                                                     |         |
+| `nextLabel`          | `string`                                                                                                     |         |
+| `placeholderCount`   | `number`                                                                                                     |         |
+| `emptyStateTitle`    | [`Streamable`](/docs/soul/streamable)`<string>`                                                              |         |
+| `emptyStateSubtitle` | [`Streamable`](/docs/soul/streamable)`<string>`                                                              |         |
+| `hideOverflow`       | `boolean`                                                                                                    | `true`  |
 
 ### BlogPostWithId
 
