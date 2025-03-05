@@ -99,7 +99,16 @@ export const sections = [
   {
     name: 'featured-blog-post-list',
     dependencies: [],
-    registryDependencies: ['button', 'blog-post-card'],
+    registryDependencies: [
+      'button',
+      'blog-post-card',
+      'streamable',
+      'blog-post-card',
+      'cursor-pagination',
+      'blog-post-list',
+      'breadcrumbs',
+      'section-layout',
+    ],
     files: ['sections/featured-blog-post-list/index.tsx'],
   },
   {

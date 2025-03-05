@@ -450,11 +450,25 @@ export const examples = [
     component: lazy(() => import('./examples/sections/featured-blog-post-carousel/luxury')),
   },
   {
-    name: 'featured-blog-post-list-example',
+    name: 'featured-blog-post-list-example-warm',
     dependencies: [],
     registryDependencies: ['featured-blog-post-list'],
-    files: ['examples/sections/featured-blog-post-list/index.tsx'],
-    component: lazy(() => import('./examples/sections/featured-blog-post-list')),
+    files: ['examples/sections/featured-blog-post-list/warm.tsx'],
+    component: lazy(() => import('./examples/sections/featured-blog-post-list/warm')),
+  },
+  {
+    name: 'featured-blog-post-list-example-electric',
+    dependencies: [],
+    registryDependencies: ['featured-blog-post-list'],
+    files: ['examples/sections/featured-blog-post-list/electric.tsx'],
+    component: lazy(() => import('./examples/sections/featured-blog-post-list/electric')),
+  },
+  {
+    name: 'featured-blog-post-list-example-luxury',
+    dependencies: [],
+    registryDependencies: ['featured-blog-post-list'],
+    files: ['examples/sections/featured-blog-post-list/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/featured-blog-post-list/luxury')),
   },
   {
     name: 'featured-image-electric-example',
