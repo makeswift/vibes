@@ -1,4 +1,11 @@
 import { clsx } from 'clsx';
+import { ReactNode } from 'react';
+
+export interface SectionLayoutProps {
+  className?: string;
+  children: ReactNode;
+  containerSize?: 'md' | 'lg' | 'xl' | '2xl' | 'full';
+}
 
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
@@ -13,15 +20,7 @@ import { clsx } from 'clsx';
  * }
  * ```
  */
-export function SectionLayout({
-  className,
-  children,
-  containerSize = '2xl',
-}: {
-  className?: string;
-  children: React.ReactNode;
-  containerSize?: 'md' | 'lg' | 'xl' | '2xl' | 'full';
-}) {
+export function SectionLayout({ className, children, containerSize = '2xl' }: SectionLayoutProps) {
   return (
     <section className={clsx('overflow-hidden @container', className)}>
       <div
