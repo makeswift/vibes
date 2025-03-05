@@ -702,6 +702,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/navigation/luxury')),
   },
   {
+    name: 'not-found-example',
+    dependencies: [],
+    registryDependencies: ['section-layout'],
+    files: ['examples/sections/not-found/index.tsx'],
+    component: lazy(() => import('./examples/sections/not-found')),
+  },
+  {
     name: 'number-input-example',
     dependencies: [],
     registryDependencies: ['number-input'],
