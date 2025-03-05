@@ -112,6 +112,18 @@ export const sections = [
     files: ['sections/featured-blog-post-list/index.tsx'],
   },
   {
+    name: 'featured-card-carousel',
+    dependencies: [],
+    registryDependencies: [
+      'streamable',
+      'animated-link',
+      'card',
+      'card-carousel',
+      'section-layout',
+    ],
+    files: ['sections/featured-card-carousel/index.tsx'],
+  },
+  {
     name: 'featured-image',
     dependencies: [],
     registryDependencies: ['button'],
