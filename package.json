@@ -8,7 +8,8 @@
     "typecheck": "turbo run typecheck",
     "test": "turbo run test -- run",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "format-check": "prettier \"**/*.{ts,tsx,md}\" --check"
+    "format-check": "prettier \"**/*.{ts,tsx,md}\" --check",
+    "plop": "plop"
   },
   "pnpm": {
     "overrides": {
@@ -18,6 +19,7 @@
     }
   },
   "devDependencies": {
+    "plop": "^4.0.1",
     "prettier": "^3.3.3",
     "turbo": "^2.0.3",
     "typescript": "^5.4.5"
