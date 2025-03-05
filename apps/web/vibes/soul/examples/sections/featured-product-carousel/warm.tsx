@@ -1,41 +1,20 @@
-import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
+import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 
 export default function Preview() {
-  const products = new Promise<Product[]>((resolve) => {
-    setTimeout(() => resolve(defaultProducts), 1000);
+  const productsPromise = new Promise<Product[]>((resolve) => {
+    setTimeout(() => resolve(products), 1000);
   });
 
-  const data = {
-    title: 'Our gear',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-    cta: {
-      label: 'Shop Now',
-      href: '#',
-    },
-
-    emptyStateSubtitle: 'Try browsing our complete catalog of products.',
-    emptyStateTitle: 'No products found',
-  };
-
   return (
-    <>
-      <FeaturedProductsCarousel
-        cta={data.cta}
-        description={data.description}
-        products={products}
-        title={data.title}
-      />
-
-      <FeaturedProductsCarousel
-        cta={data.cta}
-        description={data.description}
-        emptyStateSubtitle={data.emptyStateSubtitle}
-        emptyStateTitle={data.emptyStateTitle}
-        products={[]}
-        title={data.title}
-      />
-    </>
+    <FeaturedProductCarousel
+      cta={{
+        label: 'Shop Now',
+        href: '#',
+      }}
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+      products={productsPromise}
+      title="Our gear"
+    />
   );
 }
 
@@ -53,7 +32,7 @@ interface Product {
   rating: number;
 }
 
-const defaultProducts: Product[] = [
+const products: Product[] = [
   {
     id: '1',
     title: 'Mini Bar Bag',
