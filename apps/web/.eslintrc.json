@@ -16,7 +16,6 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "@typescript-eslint/consistent-indexed-object-style": ["error", "record"],
     "@typescript-eslint/array-type": ["error", { "default": "array-simple" }],
     "@typescript-eslint/no-confusing-void-expression": [
       "error",
