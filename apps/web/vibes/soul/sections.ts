@@ -70,7 +70,13 @@ export const sections = [
   {
     name: 'featured-blog-post-carousel',
     dependencies: [],
-    registryDependencies: ['blog-post-carousel', 'animated-link'],
+    registryDependencies: [
+      'section-layout',
+      'blog-post-card',
+      'streamable',
+      'blog-post-carousel',
+      'animated-link',
+    ],
     files: ['sections/featured-blog-post-carousel/index.tsx'],
   },
   {
