@@ -78,7 +78,7 @@ export function Reviews({
                 </Stream>
               </>
             }
-            sidebarSize="medium"
+            sidebarSize="md"
           >
             <div className="flex-1 border-t border-contrast-100">
               {reviews.map(({ id, rating, review, name, date }) => {
@@ -132,7 +132,7 @@ export function ReviewsEmptyState({
           <Rating rating={0} />
         </>
       }
-      sidebarSize="medium"
+      sidebarSize="md"
     >
       <div className="flex-1 border-t border-contrast-100 py-12">
         <p className="text-center">{message}</p>
@@ -151,7 +151,7 @@ export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: { reviewsLabel?: s
           <div className="h-5 w-32 rounded-md bg-contrast-100" />
         </div>
       }
-      sidebarSize="medium"
+      sidebarSize="md"
     >
       <div className="flex-1 animate-pulse border-t border-contrast-100">
         {Array.from({ length: 3 }).map((_, index) => (
