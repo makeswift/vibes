@@ -188,6 +188,12 @@ export const sections = [
     files: ['sections/inline-email-form/index.tsx'],
   },
   {
+    name: 'not-found',
+    dependencies: [],
+    registryDependencies: ['section-layout'],
+    files: ['sections/not-found/index.tsx'],
+  },
+  {
     name: 'order-history-section',
     dependencies: ['clsx'],
     registryDependencies: [],
