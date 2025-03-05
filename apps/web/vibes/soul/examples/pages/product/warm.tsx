@@ -9,7 +9,7 @@ import { product } from '@/vibes/soul/examples/sections/product-detail/warm';
 import { reviews } from '@/vibes/soul/examples/sections/reviews';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
+import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
 import { IconBlock } from '@/vibes/soul/sections/icon-block';
 import { ProductDetail } from '@/vibes/soul/sections/product-detail';
@@ -58,7 +58,7 @@ export default async function Preview() {
             },
           ]}
         />
-        <FeaturedProductsCarousel
+        <FeaturedProductCarousel
           cta={{ label: 'See All', href: '#' }}
           products={featuredProducts}
           title="New Arrivals"

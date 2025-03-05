@@ -242,10 +242,10 @@ export const navigation = [
         component: 'featured-image',
       },
       {
-        title: 'Featured Products Carousel',
-        slug: 'featured-products-carousel',
-        file: 'docs/featured-products-carousel.mdx',
-        component: 'featured-products-carousel',
+        title: 'Featured Product Carousel',
+        slug: 'featured-product-carousel',
+        file: 'docs/featured-product-carousel.mdx',
+        component: 'featured-product-carousel',
       },
       {
         title: 'Featured Product List',
