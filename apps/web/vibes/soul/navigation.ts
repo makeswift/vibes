@@ -475,11 +475,11 @@ export const navigation = [
     pages: primitivePages.sort((a, b) => a.title.localeCompare(b.title)),
   },
   {
-    title: 'Form',
-    pages: formPages.sort((a, b) => a.title.localeCompare(b.title)),
-  },
-  {
     title: 'Sections',
     pages: sectionPages.sort((a, b) => a.title.localeCompare(b.title)),
+  },
+  {
+    title: 'Form',
+    pages: formPages.sort((a, b) => a.title.localeCompare(b.title)),
   },
 ] satisfies Navigation;

@@ -6,7 +6,7 @@ import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/el
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
-import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
+import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
   Amex,
@@ -183,7 +183,7 @@ export default function Preview() {
 
       <NotFound />
 
-      <FeaturedProductsCarousel products={products} />
+      <FeaturedProductCarousel products={products} />
 
       <Subscribe
         action={action}

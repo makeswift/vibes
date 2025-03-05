@@ -13,7 +13,7 @@ import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
 import { Feature } from '@/vibes/soul/sections/feature';
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel';
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image';
-import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
+import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
@@ -235,7 +235,7 @@ export default function Preview() {
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         title="Sign up for our newsletter"
       />
-      <FeaturedProductsCarousel
+      <FeaturedProductCarousel
         cta={{ label: 'See All', href: '#' }}
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         products={newArrivals}
@@ -253,7 +253,7 @@ export default function Preview() {
         }}
         title={feature.title}
       />
-      <FeaturedProductsCarousel products={featuredProducts.products} title="Recently Viewed" />
+      <FeaturedProductCarousel products={featuredProducts.products} title="Recently Viewed" />
       <Subscribe
         action={action}
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."

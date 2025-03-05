@@ -6,7 +6,7 @@ import { breadcrumbs } from '@/vibes/soul/examples/sections/breadcrumbs/warm';
 import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/warm';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
+import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section';
 
@@ -39,7 +39,7 @@ export default async function Preview() {
         title="All Bags"
         totalCount={products.length}
       />
-      <FeaturedProductsCarousel products={products} title="Recently Viewed" />
+      <FeaturedProductCarousel products={products} title="Recently Viewed" />
       <Footer copyright={copyright} logo={logo} sections={footerLinks} />
     </>
   );
