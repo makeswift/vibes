@@ -343,6 +343,12 @@ export const navigation = [
         component: 'featured-blog-post-list',
       },
       {
+        title: 'Featured Card Carousel',
+        slug: 'featured-card-carousel',
+        file: 'docs/featured-card-carousel.mdx',
+        component: 'featured-card-carousel',
+      },
+      {
         title: 'Featured Image',
         slug: 'featured-image',
         file: 'docs/featured-image.mdx',
