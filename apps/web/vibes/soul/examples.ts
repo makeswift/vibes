@@ -1100,4 +1100,5 @@ export const examples = [
     files: ['examples/primitives/toaster/index.tsx'],
     component: lazy(() => import('./examples/primitives/toaster')),
   },
+  // PLOP: Append new component here
 ] satisfies Components;
