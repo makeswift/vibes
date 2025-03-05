@@ -249,9 +249,9 @@ export const navigation = [
       },
       {
         title: 'Featured Product List',
-        slug: 'featured-products-list',
-        file: 'docs/featured-products-list.mdx',
-        component: 'featured-products-list',
+        slug: 'featured-product-list',
+        file: 'docs/featured-product-list.mdx',
+        component: 'featured-product-list',
       },
       {
         title: 'Featured Video',

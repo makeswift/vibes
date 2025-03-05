@@ -13,8 +13,8 @@ import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
 import { Feature } from '@/vibes/soul/sections/feature';
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel';
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image';
+import { FeaturedProductList } from '@/vibes/soul/sections/featured-product-list';
 import { FeaturedProductsCarousel } from '@/vibes/soul/sections/featured-products-carousel';
-import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
   Amex,
@@ -221,7 +221,7 @@ export default function Preview() {
         }}
         title={featuredImage.title}
       />
-      <FeaturedProductsList
+      <FeaturedProductList
         cta={{
           label: featuredProducts.cta.label,
           href: featuredProducts.cta.href,

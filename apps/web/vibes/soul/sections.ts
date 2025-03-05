@@ -92,10 +92,10 @@ export const sections = [
     files: ['sections/featured-products-carousel/index.tsx'],
   },
   {
-    name: 'featured-products-list',
+    name: 'featured-product-list',
     dependencies: [],
-    registryDependencies: ['button', 'product-card'],
-    files: ['sections/featured-products-list/index.tsx'],
+    registryDependencies: ['streamable', 'button-link', 'product-list', 'sticky-sidebar-layout'],
+    files: ['sections/featured-product-list/index.tsx'],
   },
   {
     name: 'featured-video',

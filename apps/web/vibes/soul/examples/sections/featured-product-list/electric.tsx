@@ -1,39 +1,20 @@
-import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list';
+import { FeaturedProductList } from '@/vibes/soul/sections/featured-product-list';
 
 export default function Preview() {
-  const products = new Promise<Product[]>((resolve) => {
-    setTimeout(() => resolve(defaultProducts), 1000);
+  const productsPromise = new Promise<Product[]>((resolve) => {
+    setTimeout(() => resolve(products), 1000);
   });
 
-  const data = {
-    title: 'Our plants',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto.',
-    cta: {
-      label: 'Shop Now',
-      href: '#',
-    },
-    emptyStateSubtitle: 'Try browsing our complete catalog of products.',
-    emptyStateTitle: 'No products found',
-  };
-
   return (
-    <>
-      <FeaturedProductsList
-        cta={data.cta}
-        description={data.description}
-        products={products}
-        title={data.title}
-      />
-
-      <FeaturedProductsList
-        cta={data.cta}
-        description={data.description}
-        emptyStateSubtitle={data.emptyStateSubtitle}
-        emptyStateTitle={data.emptyStateTitle}
-        products={[]}
-        title={data.title}
-      />
-    </>
+    <FeaturedProductList
+      cta={{
+        label: 'Shop Now',
+        href: '#',
+      }}
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto."
+      products={productsPromise}
+      title="Our plants"
+    />
   );
 }
 
@@ -51,7 +32,7 @@ interface Product {
   rating: number;
 }
 
-const defaultProducts: Product[] = [
+const products: Product[] = [
   {
     id: '1',
     title: 'Philodendron Imperial Red',
