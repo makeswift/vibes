@@ -1,11 +1,11 @@
 import { getProducts } from '@/vibes/soul/data';
 import { locales } from '@/vibes/soul/data/locales';
-import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm';
 import { feature } from '@/vibes/soul/examples/sections/feature/warm';
 import { featuredImage } from '@/vibes/soul/examples/sections/featured-image/warm';
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/warm';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/warm';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
@@ -13,7 +13,7 @@ import { Feature } from '@/vibes/soul/sections/feature';
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel';
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image';
 import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
-import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list';
+import { FeaturedProductList } from '@/vibes/soul/sections/featured-product-list';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
   Amex,
@@ -108,7 +108,7 @@ export default function Preview() {
         }}
         title={featuredImage.title}
       />
-      <FeaturedProductsList
+      <FeaturedProductList
         cta={{
           label: featuredProducts.cta.label,
           href: featuredProducts.cta.href,

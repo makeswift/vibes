@@ -1,57 +1,25 @@
-import { FeaturedProductsList } from '@/vibes/soul/sections/featured-products-list';
+import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
+import { FeaturedProductList } from '@/vibes/soul/sections/featured-product-list';
 
 export default function Preview() {
-  const products = new Promise<Product[]>((resolve) => {
-    setTimeout(() => resolve(defaultProducts), 1000);
+  const productsPromise = new Promise<ProductCardWithId[]>((resolve) => {
+    setTimeout(() => resolve(products), 1000);
   });
 
-  const data = {
-    title: 'Our gear',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto.',
-    cta: {
-      label: 'Shop Now',
-      href: '#',
-    },
-    emptyStateSubtitle: 'Try browsing our complete catalog of products.',
-    emptyStateTitle: 'No products found',
-  };
-
   return (
-    <>
-      <FeaturedProductsList
-        cta={data.cta}
-        description={data.description}
-        products={products}
-        title={data.title}
-      />
-
-      <FeaturedProductsList
-        cta={data.cta}
-        description={data.description}
-        emptyStateSubtitle={data.emptyStateSubtitle}
-        emptyStateTitle={data.emptyStateTitle}
-        products={[]}
-        title={data.title}
-      />
-    </>
+    <FeaturedProductList
+      cta={{
+        label: 'Shop Now',
+        href: '#',
+      }}
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto."
+      products={productsPromise}
+      title="Our gear"
+    />
   );
 }
 
-interface Product {
-  id: string;
-  title: string;
-  subtitle: string;
-  badge?: string;
-  price: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  href: string;
-  rating: number;
-}
-
-const defaultProducts: Product[] = [
+const products: ProductCardWithId[] = [
   {
     id: '1',
     title: 'Mini Bar Bag',

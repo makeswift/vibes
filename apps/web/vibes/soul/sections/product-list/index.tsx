@@ -10,11 +10,9 @@ import {
 } from '@/vibes/soul/primitives/product-card';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
-export type ListProduct = ProductCardWithId;
-
 interface ProductListProps {
-  products: Streamable<ListProduct[]>;
-  compareProducts?: Streamable<ListProduct[]>;
+  products: Streamable<ProductCardWithId[]>;
+  compareProducts?: Streamable<ProductCardWithId[]>;
   className?: string;
   colorScheme?: 'light' | 'dark';
   aspectRatio?: '5:6' | '3:4' | '1:1';
