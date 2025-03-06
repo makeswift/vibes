@@ -132,7 +132,7 @@ export const sections = [
   {
     name: 'featured-product-carousel',
     dependencies: [],
-    registryDependencies: ['product-carousel'],
+    registryDependencies: ['product-carousel', 'section-layout', 'animated-link', 'streamable'],
     files: ['sections/featured-product-carousel/index.tsx'],
   },
   {

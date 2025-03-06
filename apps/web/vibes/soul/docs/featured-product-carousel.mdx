@@ -6,3 +6,103 @@ preview:
   Luxury: featured-product-carousel-luxury
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
+
+function Usage() {
+
+    return (
+        <FeaturedProductCarousel
+          cta={{ label: 'Shop Now', href: '#' }}
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+          products={products}
+          title="Our plants"
+      />
+    );
+}
+
+const products = [
+    {
+      id: '1',
+      title: 'Philodendron Imperial Red',
+      subtitle: 'Indoor Plant',
+      badge: 'Popular',
+      price: '$44.95',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+        alt: 'Philodendron Imperial Red',
+      },
+      href: '#',
+      rating: 4,
+    }
+]
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FeaturedProductCarouselProps
+
+| Prop                 | Type                                                                                                      | Default |
+| -------------------- | --------------------------------------------------------------------------------------------------------- | ------- |
+| `className`          | `string`                                                                                                  |         |
+| `title`              | `string`                                                                                                  |         |
+| `description`        | `string`                                                                                                  |         |
+| `cta`                | `Link`                                                                                                    |         |
+| `products*`          | [`Streamable`](/docs/soul/streamable)`<CarouselProduct[]>` <Tooltip content="See CarouselProduct below"/> |         |
+| `emptyStateTitle`    | [`Streamable`](docs/soul/streamable)`<string>`                                                            |         |
+| `emptyStateSubtitle` | [`Streamable`](docs/soul/streamable)`<string>`                                                            |         |
+| `placeholderCount`   | `number`                                                                                                  |         |
+| `scrollbarLabel`     | `string`                                                                                                  |         |
+| `previousLabel`      | `string`                                                                                                  |         |
+| `nextLabel`          | `string`                                                                                                  |         |
+| `hideOverflow`       | `boolean`                                                                                                 |         |
+
+### CarouselProduct
+
+| Prop       | Type                                                                                        | Default |
+| ---------- | ------------------------------------------------------------------------------------------- | ------- |
+| `id*`      | `string`                                                                                    |         |
+| `title*`   | `string`                                                                                    |         |
+| `href*`    | `string`                                                                                    |         |
+| `image`    | `{ src: string; alt: string }`                                                              |         |
+| `price`    | `string \| PriceRange \| PriceSale` <Tooltip content="See PriceRange and PriceSale below"/> |         |
+| `subtitle` | `string`                                                                                    |         |
+| `badge`    | `string`                                                                                    |         |
+| `rating`   | `number`                                                                                    |         |
+
+### PriceRange
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `type`     | `'range'` |         |
+| `minValue` | `string`  |         |
+| `maxValue` | `string`  |         |
+
+### PriceSale
+
+| Prop            | Type     | Default |
+| --------------- | -------- | ------- |
+| `type`          | `'sale'` |         |
+| `previousValue` | `string` |         |
+| `currentValue`  | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --featured-product-carousel-font-family: var(--font-family-body);
+  --featured-product-carousel-title-font-family: var(--font-family-heading);
+  --featured-product-carousel-title: hsl(var(--foreground));
+  --featured-product-carousel-description: hsl(var(--contrast-500));
+}
+```

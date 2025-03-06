@@ -35,34 +35,50 @@ const products = [
 
 ### ProductCarouselProps
 
-| Prop                 | Type                                                                                                    | Default                                            |
-| -------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `className`          | `string`                                                                                                |                                                    |
-| `products*`          | [Streamable](/docs/soul/streamable)`<CarouselProduct[]>` <Tooltip content="See CarouselProduct below"/> |                                                    |
-| `colorScheme`        | `'light' \| 'dark'`                                                                                     | `'light'`                                          |
-| `aspectRatio`        | `'5:6' \| '3:4' \| '1:1'`                                                                               | `'5:6'`                                            |
-| `emptyStateTitle`    | [Streamable](/docs/soul/streamable)`<string>`                                                           | `'No products found'`                              |
-| `emptyStateSubtitle` | [Streamable](/docs/soul/streamable)`<string>`                                                           | `'Try browsing our complete catalog of products.'` |
-| `scrollbarLabel`     | `string`                                                                                                | `'Scroll'`                                         |
-| `previousLabel`      | `string`                                                                                                | `'Previous'`                                       |
-| `nextLabel`          | `string`                                                                                                | `'Next'`                                           |
-| `placeholderCount`   | `number`                                                                                                | `8`                                                |
-| `showButtons`        | `boolean`                                                                                               | `true`                                             |
-| `showScrollbar`      | `boolean`                                                                                               | `true`                                             |
-| `hideOverflow`       | `boolean`                                                                                               | `true`                                             |
+| Prop                 | Type                                                                                                      | Default                                            |
+| -------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `className`          | `string`                                                                                                  |                                                    |
+| `products*`          | [`Streamable`](/docs/soul/streamable)`<CarouselProduct[]>` <Tooltip content="See CarouselProduct below"/> |                                                    |
+| `colorScheme`        | `'light' \| 'dark'`                                                                                       | `'light'`                                          |
+| `aspectRatio`        | `'5:6' \| '3:4' \| '1:1'`                                                                                 | `'5:6'`                                            |
+| `emptyStateTitle`    | [`Streamable`](/docs/soul/streamable)`<string>`                                                           | `'No products found'`                              |
+| `emptyStateSubtitle` | [`Streamable`](/docs/soul/streamable)`<string>`                                                           | `'Try browsing our complete catalog of products.'` |
+| `scrollbarLabel`     | `string`                                                                                                  | `'Scroll'`                                         |
+| `previousLabel`      | `string`                                                                                                  | `'Previous'`                                       |
+| `nextLabel`          | `string`                                                                                                  | `'Next'`                                           |
+| `placeholderCount`   | `number`                                                                                                  | `8`                                                |
+| `showButtons`        | `boolean`                                                                                                 | `true`                                             |
+| `showScrollbar`      | `boolean`                                                                                                 | `true`                                             |
+| `hideOverflow`       | `boolean`                                                                                                 | `true`                                             |
 
 ### CarouselProduct
 
-| Prop       | Type                           | Default |
-| ---------- | ------------------------------ | ------- |
-| `id*`      | `string`                       |         |
-| `title*`   | `string`                       |         |
-| `href*`    | `string`                       |         |
-| `image`    | `{ src: string; alt: string }` |         |
-| `price`    | `Price`                        |         |
-| `subtitle` | `string`                       |         |
-| `badge`    | `string`                       |         |
-| `rating`   | `number`                       |         |
+| Prop       | Type                                                                                        | Default |
+| ---------- | ------------------------------------------------------------------------------------------- | ------- |
+| `id*`      | `string`                                                                                    |         |
+| `title*`   | `string`                                                                                    |         |
+| `href*`    | `string`                                                                                    |         |
+| `image`    | `{ src: string; alt: string }`                                                              |         |
+| `price`    | `string \| PriceRange \| PriceSale` <Tooltip content="See PriceRange and PriceSale below"/> |         |
+| `subtitle` | `string`                                                                                    |         |
+| `badge`    | `string`                                                                                    |         |
+| `rating`   | `number`                                                                                    |         |
+
+### PriceRange
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `type`     | `'range'` |         |
+| `minValue` | `string`  |         |
+| `maxValue` | `string`  |         |
+
+### PriceSale
+
+| Prop            | Type     | Default |
+| --------------- | -------- | ------- |
+| `type`          | `'sale'` |         |
+| `previousValue` | `string` |         |
+| `currentValue`  | `string` |         |
 
 ### CSS Variables
 
