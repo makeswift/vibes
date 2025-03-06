@@ -435,6 +435,12 @@ export const navigation = [
       },
       { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
       {
+        title: 'Section Layout',
+        slug: 'section-layout',
+        file: 'docs/section-layout.mdx',
+        component: 'section-layout',
+      },
+      {
         title: 'Sign In Section',
         slug: 'sign-in-section',
         file: 'docs/sign-in-section.mdx',

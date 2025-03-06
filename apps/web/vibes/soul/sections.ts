@@ -220,6 +220,12 @@ export const sections = [
     files: ['sections/reviews/index.tsx'],
   },
   {
+    name: 'section-layout',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['sections/section-layout/index.tsx'],
+  },
+  {
     name: 'sign-in-section',
     dependencies: ['clsx'],
     registryDependencies: ['button', 'input'],
