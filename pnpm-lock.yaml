@@ -13,6 +13,12 @@ importers:
 
   .:
     devDependencies:
+      prettier:
+        specifier: ^3.5.2
+        version: 3.5.2
+      prettier-plugin-tailwindcss:
+        specifier: ^0.6.11
+        version: 0.6.11(prettier@3.5.2)
       turbo:
         specifier: ^2.0.3
         version: 2.4.4
