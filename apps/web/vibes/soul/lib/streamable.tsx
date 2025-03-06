@@ -52,13 +52,15 @@ function weakRefCache<K, T extends object>() {
 
 const promiseCache = weakRefCache<string, Promise<unknown>>();
 
+type AwaitedArray<T extends readonly unknown[] | []> = {
+  -readonly [P in keyof T]: Awaited<T[P]>;
+};
+
 /**
  * A suspense-friendly upgrade to `Promise.all`, guarantees stability of
  * the returned promise instance if passed an identical set of inputs.
  */
-function all<T extends readonly unknown[] | []>(
-  streamables: T,
-): Streamable<{ -readonly [P in keyof T]: Awaited<T[P]> }> {
+function all<T extends readonly unknown[] | []>(streamables: T): Streamable<AwaitedArray<T>> {
   const cacheKey = getCompositeKey(streamables);
 
   const cached = promiseCache.get(cacheKey);
