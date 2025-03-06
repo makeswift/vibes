@@ -110,7 +110,6 @@ export const navigation = [
         file: 'docs/modal.mdx',
         component: 'modal',
       },
-      { title: 'Logo', slug: 'logo', file: 'docs/logo.mdx', component: 'logo' },
       {
         title: 'Navigation',
         slug: 'navigation',
