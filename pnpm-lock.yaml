@@ -318,7 +318,7 @@ importers:
         specifier: ^3.2.5
         version: 3.5.2
       prettier-plugin-tailwindcss:
-        specifier: ^0.5.11
+        specifier: ^0.5.14
         version: 0.5.14(prettier@3.5.2)
       shiki:
         specifier: ^1.1.7
