@@ -89,6 +89,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@eslint/js": "^9.21.0",
     "@shikijs/rehype": "^1.1.6",
     "@shikijs/transformers": "^1.1.6",
     "@svgr/cli": "^8.1.0",
@@ -103,10 +104,10 @@
     "@types/react-dom": "npm:types-react-dom@rc",
     "@types/react-headroom": "^3.2.3",
     "@types/vimeo__player": "^2.18.3",
-    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.0.1",
-    "eslint": "^8",
+    "eslint": "^8.57.1",
     "eslint-config-next": "14.1.0",
     "jsdom": "^25.0.1",
     "postcss": "^8",
@@ -117,7 +118,8 @@
     "tailwindcss": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
     "twoslash": "^0.2.4",
-    "typescript": "^5",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.26.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.1.8"
   }

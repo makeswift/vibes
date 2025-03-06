@@ -100,18 +100,3 @@ const breadcrumbs = [
     href: '#',
   },
 ];
-
-function Usage() {
-  return <BlogPostContent blogPost={blogPost2} />;
-}
-
-const blogPost2 = {
-  author: 'Sam Smith',
-  content: `<p>My Blog Post</h2>`,
-  date: 'June 30, 2024',
-  image: {
-    src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
-    alt: 'A plant with large leaves and a short stem.',
-  },
-  title: "Top 5 Plants to Purify Your Home's Air",
-};
