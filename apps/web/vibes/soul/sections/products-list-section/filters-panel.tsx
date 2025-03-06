@@ -67,7 +67,9 @@ interface Props {
 }
 
 function getParamCountLabel(params: Record<string, string | null | string[]>, key: string) {
-  if (Array.isArray(params[key]) && params[key].length > 0) return `(${params[key].length})`;
+  const value = params[key];
+
+  if (Array.isArray(value) && value.length > 0) return `(${value.length})`;
 
   return '';
 }
