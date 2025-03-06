@@ -153,12 +153,7 @@ const DiscountUI = ({
         {discountText}
       </h2>
       <div className="flex w-full max-w-xs flex-col gap-4 rounded-b-3xl bg-background px-6 pb-6 pt-4 @4xl:rounded-t-3xl @4xl:p-0">
-        <div
-          className="relative h-[100px] w-full overflow-hidden bg-background text-foreground before:absolute
-            before:left-0 before:top-0 before:z-10 before:h-8 before:w-full before:bg-gradient-to-b before:from-background before:to-transparent after:absolute
-            after:bottom-0 after:left-0 after:z-10 after:h-8 after:w-full after:bg-gradient-to-t after:from-background after:to-transparent @4xl:max-w-72
-          "
-        >
+        <div className="relative h-[100px] w-full overflow-hidden bg-background text-foreground before:absolute before:left-0 before:top-0 before:z-10 before:h-8 before:w-full before:bg-gradient-to-b before:from-background before:to-transparent after:absolute after:bottom-0 after:left-0 after:z-10 after:h-8 after:w-full after:bg-gradient-to-t after:from-background after:to-transparent @4xl:max-w-72">
           <div
             className="absolute -top-8 left-0 w-full transition-all [transition-duration:5000ms] [transition-timing-function:cubic-bezier(0.285,-0.125,0.050,1.130)]"
             style={{

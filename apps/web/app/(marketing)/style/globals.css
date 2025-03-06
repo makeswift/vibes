@@ -116,7 +116,8 @@
   .marching-ants {
     --length: 5px;
     --interval: 8px;
-    background: linear-gradient(transparent, transparent),
+    background:
+      linear-gradient(transparent, transparent),
       repeating-linear-gradient(
         to right,
         hsl(var(--foreground)),

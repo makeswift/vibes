@@ -53,7 +53,7 @@ export function CompareCard({
   return (
     <div
       className={clsx(
-        'w-full max-w-md divide-y divide-[var(--compare-card-divider,hsl(var(--contrast-100)))] font-[family-name:var(--compare-card-font-family-primary,var(--font-family-body))] font-normal @container ',
+        'w-full max-w-md divide-y divide-[var(--compare-card-divider,hsl(var(--contrast-100)))] font-[family-name:var(--compare-card-font-family-primary,var(--font-family-body))] font-normal @container',
         className,
       )}
     >
