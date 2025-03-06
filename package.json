@@ -9,7 +9,7 @@
     "test": "turbo run test -- run",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "format-check": "prettier \"**/*.{ts,tsx,md}\" --check",
-    "plop": "plop"
+    "generate-docs": "plop docs"
   },
   "pnpm": {
     "overrides": {
