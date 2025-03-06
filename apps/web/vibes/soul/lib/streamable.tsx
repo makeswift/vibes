@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/consistent-indexed-object-style, another-rule-name */
+/* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 import { Suspense, use } from 'react';
 import { v4 as uuid } from 'uuid';
 
