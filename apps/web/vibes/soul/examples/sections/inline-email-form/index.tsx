@@ -1,13 +1,13 @@
-import { InlineEmailForm } from '@/vibes/soul/sections/inline-email-form';
-
 import { parseWithZod } from '@conform-to/zod';
 import { z } from 'zod';
+
+import { InlineEmailForm } from '@/vibes/soul/sections/inline-email-form';
 
 export default function Preview() {
   return (
     <div className="p-10">
       <InlineEmailForm
-        action={async (lastResult, formData) => {
+        action={(lastResult, formData) => {
           'use server';
 
           const schema = z.object({
