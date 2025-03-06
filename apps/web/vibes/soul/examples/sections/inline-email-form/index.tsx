@@ -16,6 +16,9 @@ export default function Preview() {
 
           const submission = parseWithZod(formData, { schema });
 
+          // Example of adding some async operation:
+          await new Promise((resolve) => setTimeout(resolve, 500));
+
           if (submission.status !== 'success') {
             return { lastResult: submission.reply({ formErrors: ['Boom!'] }) };
           }

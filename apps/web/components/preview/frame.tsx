@@ -74,6 +74,7 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
 
             setIsDragging(true);
 
+            // eslint-disable-next-line @typescript-eslint/no-meaningless-void-operator,@typescript-eslint/no-confusing-void-expression
             void e.currentTarget.requestPointerLock();
           }}
           onPointerMove={(e) => {
