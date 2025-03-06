@@ -7,7 +7,7 @@ export default function Preview() {
   return (
     <div className="p-10">
       <InlineEmailForm
-        action={(lastResult, formData) => {
+        action={async (_, formData) => {
           'use server';
 
           const schema = z.object({
@@ -15,6 +15,9 @@ export default function Preview() {
           });
 
           const submission = parseWithZod(formData, { schema });
+
+          // Example of adding some async operation:
+          await new Promise((resolve) => setTimeout(resolve, 500));
 
           if (submission.status !== 'success') {
             return { lastResult: submission.reply({ formErrors: ['Boom!'] }) };
