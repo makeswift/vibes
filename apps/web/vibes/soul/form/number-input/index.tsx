@@ -77,7 +77,7 @@ export const NumberInput = React.forwardRef<
               'group rounded-l-lg p-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--number-input-focus,hsl(var(--primary)))] disabled:cursor-not-allowed disabled:opacity-30',
               {
                 light:
-                  'bg-[var(--number-input-light-button-background,hsl(var(--background)))] hover:bg-[var(--number-input-light-button-background-hover,hsl(var(--contrast-100)/50%))] ',
+                  'bg-[var(--number-input-light-button-background,hsl(var(--background)))] hover:bg-[var(--number-input-light-button-background-hover,hsl(var(--contrast-100)/50%))]',
                 dark: 'bg-[var(--number-input-dark-button-background,hsl(var(--foreground)))] hover:bg-[var(--number-input-dark-button-background-hover,hsl(var(--contrast-500)/50%))]',
               }[colorScheme],
             )}
@@ -109,7 +109,7 @@ export const NumberInput = React.forwardRef<
             className={clsx(
               'w-8 flex-1 select-none justify-center bg-transparent text-center [appearance:textfield] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-30 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
               {
-                light: 'text-[var(--number-input-light-text,hsl(var(--foreground)))] ',
+                light: 'text-[var(--number-input-light-text,hsl(var(--foreground)))]',
                 dark: 'text-[var(--number-input-dark-text,hsl(var(--background)))]',
               }[colorScheme],
             )}
@@ -124,8 +124,8 @@ export const NumberInput = React.forwardRef<
               'group rounded-r-lg p-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--number-input-focus,hsl(var(--primary)))] disabled:cursor-not-allowed disabled:opacity-30',
               {
                 light:
-                  'bg-[var(--number-input-light-button-background,hsl(var(--background)))] hover:bg-[var(--number-input-light-button-background-hover,hsl(var(--contrast-100)/50%))] ',
-                dark: 'bg-[var(--number-input-dark-button-background,hsl(var(--foreground)))] hover:bg-[var(--number-input-dark-button-background-hover,hsl(var(--contrast-500)/50%))] ',
+                  'bg-[var(--number-input-light-button-background,hsl(var(--background)))] hover:bg-[var(--number-input-light-button-background-hover,hsl(var(--contrast-100)/50%))]',
+                dark: 'bg-[var(--number-input-dark-button-background,hsl(var(--foreground)))] hover:bg-[var(--number-input-dark-button-background-hover,hsl(var(--contrast-500)/50%))]',
               }[colorScheme],
             )}
             disabled={disabled}

@@ -314,7 +314,7 @@ function Title({ children }: { children: ReactNode }) {
   const { pending } = useFormStatus();
 
   return (
-    <h1 className="font-[family-name:var(--address-list-section-title-font-family,var(--font-family-heading))]  text-4xl text-[var(--address-list-section-title,hsl(var(--foreground)))]">
+    <h1 className="font-[family-name:var(--address-list-section-title-font-family,var(--font-family-heading))] text-4xl text-[var(--address-list-section-title,hsl(var(--foreground)))]">
       {children}
       {pending && (
         <span className="ml-2">

@@ -127,7 +127,7 @@ export function BlogPostContentSkeleton({ className }: Pick<BlogPostContentProps
         <div className="mb-4 mt-8">
           <Skeleton.Text
             characterCount={60}
-            className="rounded-lg text-4xl  @xl:text-5xl @4xl:text-6xl"
+            className="rounded-lg text-4xl @xl:text-5xl @4xl:text-6xl"
           />
         </div>
         <div>
