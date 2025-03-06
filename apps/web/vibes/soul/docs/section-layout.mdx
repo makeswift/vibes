@@ -1,0 +1,51 @@
+---
+title: Section Layout
+description: The Section Layout component wraps a section of content with a max-width, is centered horizontally, and includes padding.
+preview:
+  Electric: section-layout-example-electric
+  Warm: section-layout-example-warm
+  Luxury: section-layout-example-luxury
+previewSize: sm
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { SectionLayout } from '@/vibes/soul/sections/section-layout';
+
+function Usage() {
+    return (
+        <SectionLayout containerSize="md">
+          <div>My section content</div>
+        </SectionLayout>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### SectionLayoutProps
+
+| Prop            | Type                                      | Default |
+| --------------- | ----------------------------------------- | ------- |
+| `children*`     | `ReactNode`                               |         |
+| `className`     | `string`                                  |         |
+| `containerSize` | `'md' \| 'lg' \| 'xl' \| '2xl' \| 'full'` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --section-max-width-medium: 768px;
+  --section-max-width-lg: 1024px;
+  --section-max-width-xl: 1280px;
+  --section-max-width-2xl: 1536px;
+}
+```

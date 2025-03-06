@@ -1100,5 +1100,26 @@ export const examples = [
     files: ['examples/primitives/toaster/index.tsx'],
     component: lazy(() => import('./examples/primitives/toaster')),
   },
+  {
+    name: 'section-layout-example-warm',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/section-layout/warm.tsx'],
+    component: lazy(() => import('./examples/sections/section-layout/warm')),
+  },
+  {
+    name: 'section-layout-example-electric',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/section-layout/electric.tsx'],
+    component: lazy(() => import('./examples/sections/section-layout/electric')),
+  },
+  {
+    name: 'section-layout-example-luxury',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/section-layout/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/section-layout/luxury')),
+  },
   // PLOP: Append new component here
 ] satisfies Components;
