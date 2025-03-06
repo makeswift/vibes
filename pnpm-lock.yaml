@@ -13,9 +13,6 @@ importers:
 
   .:
     devDependencies:
-      prettier:
-        specifier: ^3.3.3
-        version: 3.5.2
       turbo:
         specifier: ^2.0.3
         version: 2.4.4
