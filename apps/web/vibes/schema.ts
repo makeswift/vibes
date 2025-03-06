@@ -79,7 +79,7 @@ export interface Page {
   component?: string;
 }
 
-interface NavigationItem {
+export interface NavigationItem {
   title: string;
   pages: [Page, ...Page[]];
 }
