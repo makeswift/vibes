@@ -28,11 +28,7 @@ export const Feature = function Feature({ image, title, description, grid, cta }
     <section className="relative bg-primary-shadow @container/section">
       <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center @3xl/section:max-h-[880px] @3xl/section:flex-row @5xl/section:h-dvh">
         {/* Image Side */}
-        <div
-          className="relative aspect-square w-full overflow-hidden bg-primary/10
-          @3xl/section:aspect-[9/12] @4xl/section:my-[110px] @4xl/section:w-2/3 @4xl/section:rounded-xl 
-          @4xl:ml-10 @5xl/section:w-3/5 @6xl/section:ml-20"
-        >
+        <div className="relative aspect-square w-full overflow-hidden bg-primary/10 @3xl/section:aspect-[9/12] @4xl/section:my-[110px] @4xl/section:w-2/3 @4xl/section:rounded-xl @4xl:ml-10 @5xl/section:w-3/5 @6xl/section:ml-20">
           <Image
             alt={image.alt}
             className="object-cover"
@@ -43,10 +39,7 @@ export const Feature = function Feature({ image, title, description, grid, cta }
         </div>
 
         {/* Content Side */}
-        <div
-          className="mx-auto w-full items-start px-3 py-10 text-background
-          @container/content @lg/section:px-10 @5xl:p-20"
-        >
+        <div className="mx-auto w-full items-start px-3 py-10 text-background @container/content @lg/section:px-10 @5xl:p-20">
           <div className="mx-auto flex max-w-xl flex-col gap-4">
             {title != null && title !== '' && (
               <h2 className="font-heading text-4xl font-medium leading-none @xl:text-5xl">

@@ -35,7 +35,7 @@ function IconsPreview({
 }) {
   return (
     <div className="bg-contrast-100 p-6 text-foreground lg:p-8">
-      <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-4 lg:gap-6 ">
+      <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-4 lg:gap-6">
         <AlertTriangle absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
         <Bell absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
         <Calendar absoluteStrokeWidth size={size} strokeWidth={strokeWidth} />
