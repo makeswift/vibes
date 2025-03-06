@@ -131,7 +131,9 @@ export function FiltersPanelInner({
 
   if (filters.length === 0) return null;
 
-  const linkGroupFilters = filters.filter((filter) => filter.type === 'link-group');
+  const linkGroupFilters = filters.filter(
+    (filter): filter is LinkGroupFilter => filter.type === 'link-group',
+  );
 
   return (
     <div className={clsx('space-y-5', className)} data-pending={isPending ? true : null}>
