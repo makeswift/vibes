@@ -69,13 +69,6 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/accordion')),
   },
   {
-    name: 'sticky-sidebar-layout-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/sections/sticky-sidebar-layout/index.tsx'],
-    component: lazy(() => import('./examples/sections/sticky-sidebar-layout')),
-  },
-  {
     name: 'account-settings-example',
     dependencies: [],
     registryDependencies: [],
