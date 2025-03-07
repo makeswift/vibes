@@ -6,3 +6,96 @@ preview:
   Luxury: featured-product-list-luxury
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FeaturedProductList } from '@/vibes/soul/sections/featured-product-list';
+
+function Usage() {
+
+    return (
+       <FeaturedProductList
+        cta={{
+          label: 'Shop Now',
+          href: '#',
+        }}
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit duat pronto."
+        products={products}
+        title="Our gear"
+       />
+    );
+}
+
+const products = [
+    {
+      id: '1',
+      title: 'Mini Bar Bag',
+      subtitle: 'Blue/Black/Green',
+      price: '$65',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+        alt: 'Mini Bar Bag',
+      },
+      href: '#',
+      rating: 4.3,
+    },
+]
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FeaturedProductList
+
+| Prop                 | Type                                                                                                         | Default |
+| -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
+| `className`          | `string`                                                                                                     |         |
+| `title`              | `string`                                                                                                     |         |
+| `description`        | `string`                                                                                                     |         |
+| `cta`                | `Link` <Tooltip content="See Link below"/>                                                                   |         |
+| `products`           | [`Streamable`](docs/soul/streamable)`<ProductCardWithId[]>` <Tooltip content="See ProductCardWithId below"/> |         |
+| `emptyStateTitle`    | [`Streamable`](docs/soul/streamable)`<string>`                                                               |         |
+| `emptyStateSubtitle` | [`Streamable`](docs/soul/streamable)`<string>`                                                               |         |
+| `placeholderCount`   | `number`                                                                                                     |         |
+
+### ProductCardWithId
+
+| Prop       | Type                           | Default |
+| ---------- | ------------------------------ | ------- |
+| `id*`      | `string`                       |         |
+| `title*`   | `string`                       |         |
+| `href*`    | `string`                       |         |
+| `image`    | `{ src: string; alt: string }` |         |
+| `price`    | `Price`                        |         |
+| `subtitle` | `string`                       |         |
+| `badge`    | `string`                       |         |
+| `rating`   | `number`                       |         |
+
+### Link
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `label*` | `string` |         |
+| `href*`  | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --featured-product-list-font-family: var(--font-family-body);
+  --featured-product-list-title-font-family: var(--font-family-heading);
+  --featured-product-list-title: hsl(var(--foreground));
+  --featured-product-list-description: hsl(var(--contrast-500));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2275-42382" />
