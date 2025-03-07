@@ -2,5 +2,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "postman.settings.dotenv-detection-notification-visibility": false
 }
