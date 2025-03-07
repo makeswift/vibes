@@ -69,13 +69,6 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/accordion')),
   },
   {
-    name: 'sticky-sidebar-layout-example',
-    dependencies: [],
-    registryDependencies: [],
-    files: ['examples/sections/sticky-sidebar-layout/index.tsx'],
-    component: lazy(() => import('./examples/sections/sticky-sidebar-layout')),
-  },
-  {
     name: 'account-settings-example',
     dependencies: [],
     registryDependencies: [],
@@ -1162,6 +1155,27 @@ export const examples = [
     registryDependencies: [],
     files: ['examples/sections/section-layout/luxury.tsx'],
     component: lazy(() => import('./examples/sections/section-layout/luxury')),
+  },
+  {
+    name: 'sticky-sidebar-layout-example-warm',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/sticky-sidebar-layout/warm.tsx'],
+    component: lazy(() => import('./examples/sections/sticky-sidebar-layout/warm')),
+  },
+  {
+    name: 'sticky-sidebar-layout-example-electric',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/sticky-sidebar-layout/electric.tsx'],
+    component: lazy(() => import('./examples/sections/sticky-sidebar-layout/electric')),
+  },
+  {
+    name: 'sticky-sidebar-layout-example-luxury',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/sticky-sidebar-layout/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/sticky-sidebar-layout/luxury')),
   },
   // PLOP: Append new component here
 ] satisfies Components;
