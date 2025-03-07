@@ -85,6 +85,18 @@ export const sections = [
     files: ['sections/discount/index.tsx'],
   },
   {
+    name: 'feature',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['button'],
+    files: ['sections/feature/index.tsx'],
+  },
+  {
+    name: 'feature-grid',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['button', 'icon'],
+    files: ['sections/feature-grid/index.tsx'],
+  },
+  {
     name: 'featured-blog-post-carousel',
     dependencies: [],
     registryDependencies: [
