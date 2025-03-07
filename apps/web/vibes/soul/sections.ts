@@ -138,7 +138,13 @@ export const sections = [
   {
     name: 'featured-product-list',
     dependencies: [],
-    registryDependencies: ['button', 'product-card'],
+    registryDependencies: [
+      'streamable',
+      'button-link',
+      'product-card',
+      'product-list',
+      'sticky-sidebar-layout',
+    ],
     files: ['sections/featured-product-list/index.tsx'],
   },
   {
