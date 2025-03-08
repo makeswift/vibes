@@ -429,6 +429,27 @@ export const examples = [
     component: lazy(() => import('./examples/sections/feature/luxury')),
   },
   {
+    name: 'feature-grid-electric-example',
+    dependencies: [],
+    registryDependencies: ['feature-grid-electric'],
+    files: ['examples/sections/feature-grid/electric.tsx'],
+    component: lazy(() => import('./examples/sections/feature-grid/electric')),
+  },
+  {
+    name: 'feature-grid-warm-example',
+    dependencies: [],
+    registryDependencies: ['feature-grid-warm'],
+    files: ['examples/sections/feature-grid/warm.tsx'],
+    component: lazy(() => import('./examples/sections/feature-grid/warm')),
+  },
+  {
+    name: 'feature-grid-luxury-example',
+    dependencies: [],
+    registryDependencies: ['feature-grid-luxury'],
+    files: ['examples/sections/feature-grid/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/feature-grid/luxury')),
+  },
+  {
     name: 'featured-blog-post-carousel-warm',
     dependencies: [],
     registryDependencies: ['blog-post-carousel', 'animated-link'],

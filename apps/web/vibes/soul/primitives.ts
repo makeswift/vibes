@@ -152,12 +152,6 @@ export const primitives = [
     ],
   },
   {
-    name: 'feature',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: ['button'],
-    files: ['sections/feature/index.tsx', 'primitives/icon/index.tsx'],
-  },
-  {
     name: 'featured-video',
     dependencies: ['clsx'],
     registryDependencies: ['button'],
