@@ -182,10 +182,10 @@ export const sections = [
     ],
   },
   {
-    name: 'header-section',
-    dependencies: ['clsx', 'react-headroom'],
+    name: 'header',
+    dependencies: ['react-headroom'],
     registryDependencies: ['banner', 'navigation'],
-    files: ['sections/header-section/index.tsx'],
+    files: ['sections/header/index.tsx'],
   },
   {
     name: 'icon-block',
