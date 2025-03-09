@@ -220,6 +220,12 @@ const sectionPages: [Page, ...Page[]] = [
     file: 'docs/dynamic-form-section.mdx',
     component: 'dynamic-form-section',
   },
+  {
+    title: 'Error',
+    slug: 'error',
+    file: 'docs/error.mdx',
+    component: 'error',
+  },
   { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature' },
   {
     title: 'Feature Grid',
@@ -227,6 +233,7 @@ const sectionPages: [Page, ...Page[]] = [
     file: 'docs/feature-grid.mdx',
     component: 'feature-grid',
   },
+  { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
   {
     title: 'Featured Blog Post Carousel',
     slug: 'featured-blog-post-carousel',
