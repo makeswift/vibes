@@ -3,7 +3,7 @@
 import { clsx } from 'clsx';
 import { X } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { Button } from '@/vibes/soul/primitives/button';
 
@@ -12,18 +12,35 @@ interface DiscountType {
   code: string;
 }
 
-interface Props {
+export interface DiscountProps {
+  id: string;
   backgroundImage: string;
   discounts: DiscountType[];
 }
 
-export const Discount = function Discount({ backgroundImage, discounts }: Props) {
-  // TODO: store dismissed state in local storage
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --discount-focus: hsl(var(--primary));
+ * }
+ * ```
+ */
+export const Discount = function Discount({ id, backgroundImage, discounts }: DiscountProps) {
   const [dismissed, setDismissed] = useState(false);
+  const [initialized, setInitialized] = useState(false);
   const [spin, setSpin] = useState(false);
   const [isSpun, setIsSpun] = useState(false);
   const [shuffledCodes, setShuffledCodes] = useState<DiscountType[]>([]);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const hidden = localStorage.getItem(`${id}-hidden-discount`) === 'true';
+    setInitialized(true);
+    setDismissed(hidden);
+  }, [id]);
 
   useEffect(() => {
     if (spin) {
@@ -43,6 +60,11 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
     setShuffledCodes(shuffled);
   }, [discounts]);
 
+  const hideDiscount = useCallback(() => {
+    setDismissed(true);
+    localStorage.setItem(`${id}-hidden-discount`, 'true');
+  }, [id]);
+
   const shuffleCodes = (array: DiscountType[]) => {
     return array.sort(() => Math.random() - 0.5);
   };
@@ -60,6 +82,8 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
     }
   };
 
+  if (!initialized) return null;
+
   return (
     <section
       className={clsx(
@@ -76,9 +100,7 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
       />
       <button
         className="absolute right-5 top-5 text-foreground transition-transform hover:scale-110"
-        onClick={() => {
-          setDismissed(true);
-        }}
+        onClick={hideDiscount}
         type="button"
       >
         <X className="h-6 w-6" />
@@ -123,6 +145,16 @@ export const Discount = function Discount({ backgroundImage, discounts }: Props)
   );
 };
 
+interface DiscountUIProps {
+  isSpun: boolean;
+  copied: boolean;
+  spin: boolean;
+  setSpin: (value: boolean) => void;
+  discounts: DiscountType[];
+  shuffledCodes: DiscountType[];
+  copy: () => Promise<void>;
+  renderButton?: boolean;
+}
 const DiscountUI = ({
   isSpun,
   copied,
@@ -132,17 +164,9 @@ const DiscountUI = ({
   shuffledCodes,
   copy,
   renderButton,
-}: {
-  isSpun: boolean;
-  copied: boolean;
-  spin: boolean;
-  setSpin: (value: boolean) => void;
-  discounts: DiscountType[];
-  shuffledCodes: DiscountType[];
-  copy: () => Promise<void>;
-  renderButton?: boolean;
-}) => {
+}: DiscountUIProps) => {
   let discountText = 'Spin for discount';
+
   if (isSpun) {
     discountText = copied ? 'Copied!' : `Copy discount code`;
   }
