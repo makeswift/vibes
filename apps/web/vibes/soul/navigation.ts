@@ -278,9 +278,9 @@ const sectionPages: [Page, ...Page[]] = [
   },
   {
     title: 'Header',
-    slug: 'header-section',
-    file: 'docs/header-section.mdx',
-    component: 'header-section',
+    slug: 'header',
+    file: 'docs/header.mdx',
+    component: 'header',
   },
   {
     title: 'Icon Block',
