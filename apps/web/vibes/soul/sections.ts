@@ -85,6 +85,12 @@ export const sections = [
     files: ['sections/discount/index.tsx'],
   },
   {
+    name: 'error',
+    dependencies: [],
+    registryDependencies: ['button', 'section-layout'],
+    files: ['sections/error/index.tsx'],
+  },
+  {
     name: 'featured-blog-post-carousel',
     dependencies: [],
     registryDependencies: [
