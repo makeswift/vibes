@@ -8,7 +8,7 @@ const sizes = ['large', 'medium', 'small', 'x-small'] as const;
 
 export default function Preview() {
   return (
-    <div className="flex h-screen flex-col items-center gap-x-4 gap-y-6 px-6 py-8">
+    <div className="flex flex-col items-center gap-x-4 gap-y-6 bg-background px-6 py-8">
       {variants.map((variant) => (
         <div className="flex flex-col items-center gap-x-4 gap-y-6 px-6 py-8" key={variant}>
           {shapes.map((shape) => (
