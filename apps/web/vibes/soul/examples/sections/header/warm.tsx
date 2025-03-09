@@ -1,6 +1,6 @@
 import { localeAction, searchAction } from '@/vibes/soul/examples/primitives/navigation/actions';
-import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury';
-import { HeaderSection } from '@/vibes/soul/sections/header-section';
+import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/warm';
+import { Header } from '@/vibes/soul/sections/header';
 
 export default function Preview() {
   const linksPromise = new Promise<Array<{ href: string; label: string }>>((res) =>
@@ -13,7 +13,7 @@ export default function Preview() {
 
   return (
     <>
-      <HeaderSection
+      <Header
         banner={{
           id: 'example-banner',
           children: (
@@ -32,7 +32,7 @@ export default function Preview() {
           activeLocaleId: 'US',
           searchHref: '#',
           locales,
-          searchAction: searchAction('Luxury'),
+          searchAction: searchAction('Warm'),
           localeAction: localeAction,
         }}
       />
