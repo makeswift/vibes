@@ -301,6 +301,12 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'inline-email-form',
   },
   {
+    title: 'Maintenance',
+    slug: 'maintenance',
+    file: 'docs/maintenance.mdx',
+    component: 'maintenance',
+  },
+  {
     title: 'Not Found',
     slug: 'not-found',
     file: 'docs/not-found.mdx',
