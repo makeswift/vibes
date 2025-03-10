@@ -17,7 +17,7 @@ export type ResetPasswordAction = Action<
   FormData
 >;
 
-interface Props {
+export interface ResetPasswordFormProps {
   action: ResetPasswordAction;
   submitLabel?: string;
   newPasswordLabel?: string;
@@ -29,7 +29,7 @@ export function ResetPasswordForm({
   newPasswordLabel = 'New password',
   confirmPasswordLabel = 'Confirm Password',
   submitLabel = 'Update',
-}: Props) {
+}: ResetPasswordFormProps) {
   const [{ lastResult, successMessage }, formAction, isPending] = useActionState(action, {
     lastResult: null,
   });

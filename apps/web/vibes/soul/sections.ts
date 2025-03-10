@@ -178,13 +178,13 @@ export const sections = [
     files: ['sections/footer/index.tsx'],
   },
   {
-    name: 'forgot-password-section',
+    name: 'forgot-password',
     dependencies: [],
-    registryDependencies: ['button', 'input'],
+    registryDependencies: ['button', 'input', 'form-status'],
     files: [
-      'sections/forgot-password-section/index.tsx',
-      'sections/forgot-password-section/forgot-password-form.tsx',
-      'sections/forgot-password-section/schema.ts',
+      'sections/forgot-password/index.tsx',
+      'sections/forgot-password/forgot-password-form.tsx',
+      'sections/forgot-password/schema.ts',
     ],
   },
   {
@@ -246,13 +246,13 @@ export const sections = [
     ],
   },
   {
-    name: 'reset-password-section',
+    name: 'reset-password',
     dependencies: [],
-    registryDependencies: ['button', 'input'],
+    registryDependencies: ['button', 'input', 'form-status'],
     files: [
-      'sections/reset-password-section/index.tsx',
-      'sections/reset-password-section/reset-password-form.tsx',
-      'sections/reset-password-section/schema.ts',
+      'sections/reset-password/index.tsx',
+      'sections/reset-password/reset-password-form.tsx',
+      'sections/reset-password/schema.ts',
     ],
   },
   {
@@ -268,19 +268,19 @@ export const sections = [
     files: ['sections/section-layout/index.tsx'],
   },
   {
-    name: 'sign-in-section',
+    name: 'sign-in',
     dependencies: ['clsx'],
     registryDependencies: ['button', 'input'],
     files: [
-      'sections/sign-in-section/index.tsx',
-      'sections/sign-in-section/sign-in-form.tsx',
-      'sections/sign-in-section/schema.ts',
+      'sections/sign-in/index.tsx',
+      'sections/sign-in/sign-in-form.tsx',
+      'sections/sign-in/schema.ts',
     ],
   },
   {
     name: 'dynamic-form-section',
     dependencies: ['clsx'],
-    registryDependencies: ['button', 'input'],
+    registryDependencies: ['animated-link', 'button-link', 'button', 'input', 'form-status'],
     files: ['sections/dynamic-form-section/index.tsx'],
   },
   {
