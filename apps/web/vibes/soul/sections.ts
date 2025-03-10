@@ -2,6 +2,12 @@ import { Components } from '@/vibes/schema';
 
 export const sections = [
   {
+    name: 'maintenance',
+    dependencies: ['lucide-react'],
+    registryDependencies: ['streamable', 'logo', 'section-layout'],
+    files: ['sections/maintenance/index.tsx'],
+  },
+  {
     name: 'sticky-sidebar-layout',
     dependencies: ['clsx'],
     registryDependencies: [],

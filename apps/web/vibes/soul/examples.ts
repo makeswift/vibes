@@ -1205,5 +1205,26 @@ export const examples = [
     files: ['examples/sections/error/luxury.tsx'],
     component: lazy(() => import('./examples/sections/error/luxury')),
   },
+  {
+    name: 'maintenance-electric',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/maintenance/electric.tsx'],
+    component: lazy(() => import('./examples/sections/maintenance/electric')),
+  },
+  {
+    name: 'maintenance-warm',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/maintenance/warm.tsx'],
+    component: lazy(() => import('./examples/sections/maintenance/warm')),
+  },
+  {
+    name: 'maintenance-luxury',
+    dependencies: [],
+    registryDependencies: [],
+    files: ['examples/sections/maintenance/luxury.tsx'],
+    component: lazy(() => import('./examples/sections/maintenance/luxury')),
+  },
   // PLOP: Append new component here
 ] satisfies Components;
