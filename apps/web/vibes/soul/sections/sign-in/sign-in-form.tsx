@@ -15,7 +15,7 @@ type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State
 
 export type SignInAction = Action<SubmissionResult | null, FormData>;
 
-interface Props {
+export interface SignInFormProps {
   action: SignInAction;
   emailLabel?: string;
   passwordLabel?: string;
@@ -27,7 +27,7 @@ export function SignInForm({
   emailLabel = 'Email',
   passwordLabel = 'Password',
   submitLabel = 'Sign in',
-}: Props) {
+}: SignInFormProps) {
   const [lastResult, formAction] = useActionState(action, null);
   const [form, fields] = useForm({
     lastResult,
