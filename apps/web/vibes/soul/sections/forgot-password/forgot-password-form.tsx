@@ -3,6 +3,7 @@
 import { getFormProps, getInputProps, SubmissionResult, useForm } from '@conform-to/react';
 import { getZodConstraint, parseWithZod } from '@conform-to/zod';
 import { useActionState } from 'react';
+import { ReactNode } from 'react';
 import { useFormStatus } from 'react-dom';
 
 import { FormStatus } from '@/vibes/soul/form/form-status';
@@ -18,7 +19,7 @@ export type ForgotPasswordAction = Action<
   FormData
 >;
 
-interface Props {
+export interface ForgotPasswordFormProps {
   action: ForgotPasswordAction;
   emailLabel?: string;
   submitLabel?: string;
@@ -28,7 +29,7 @@ export function ForgotPasswordForm({
   action,
   emailLabel = 'Email',
   submitLabel = 'Reset password',
-}: Props) {
+}: ForgotPasswordFormProps) {
   const [{ lastResult, successMessage }, formAction] = useActionState(action, { lastResult: null });
   const [form, fields] = useForm({
     lastResult,
@@ -61,7 +62,7 @@ export function ForgotPasswordForm({
   );
 }
 
-function SubmitButton({ children }: { children: React.ReactNode }) {
+function SubmitButton({ children }: { children: ReactNode }) {
   const { pending } = useFormStatus();
 
   return (
