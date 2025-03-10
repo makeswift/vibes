@@ -313,7 +313,7 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'not-found',
   },
   {
-    title: 'Order Details Section',
+    title: 'Order Details',
     slug: 'order-details-section',
     file: 'docs/order-details-section.mdx',
     component: 'order-details-section',
