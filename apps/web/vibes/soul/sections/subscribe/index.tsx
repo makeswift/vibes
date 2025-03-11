@@ -6,21 +6,31 @@ import { InlineEmailForm } from '@/vibes/soul/sections/inline-email-form';
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
-export function Subscribe({
-  action,
-  image,
-  title,
-  description,
-  placeholder,
-}: {
+export interface SubscribeProps {
   action: Action<{ lastResult: SubmissionResult | null; successMessage?: string }, FormData>;
   image?: { src: string; alt: string };
   title: string;
   description?: string;
   placeholder?: string;
-}) {
+}
+
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --subscribe-font-family: var(--font-family-body);
+ *   --subscribe-title-font-family: var(--font-family-heading);
+ *   --subscribe-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
+ *   --subscribe-title: color-mix(in oklab, hsl(var(--primary)), white 75%);
+ *   --subscribe-description: color-mix(in oklab, hsl(var(--primary)), white 75%);
+ * }
+ * ```
+ */
+export function Subscribe({ action, image, title, description, placeholder }: SubscribeProps) {
   return (
-    <section className="bg-primary-shadow @container">
+    <section className="bg-[var(--subscribe-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] font-[family-name:var(--subscribe-font-family,var(--font-family-body))] @container">
       <div className="flex flex-col items-start @4xl:flex-row @4xl:items-stretch">
         {image && (
           <div className="relative min-h-96 w-full bg-primary/10 @4xl:flex-1">
@@ -33,20 +43,21 @@ export function Subscribe({
             />
           </div>
         )}
-
         <div className="w-full flex-1">
           <div
             className={clsx(
               'flex w-full flex-col gap-10 px-4 py-10 @xl:px-6 @xl:py-14 @4xl:gap-16 @4xl:px-8 @4xl:py-20',
-              image != null ? '@4xl:max-w-4xl' : 'mx-auto max-w-screen-2xl @4xl:flex-row',
+              Boolean(image) ? '@4xl:max-w-4xl' : 'mx-auto max-w-screen-2xl @4xl:flex-row',
             )}
           >
-            <div className="flex-1">
-              <h2 className="mb-4 font-heading text-2xl font-medium leading-none text-primary-highlight @xl:text-3xl @4xl:text-4xl">
+            <header className="flex-1">
+              <h2 className="mb-4 font-[family-name:var(--subscribe-title-font-family,var(--font-family-heading))] text-2xl font-medium leading-none text-[var(--subscribe-title,color-mix(in_oklab,hsl(var(--primary)),white_75%))] @xl:text-3xl @4xl:text-4xl">
                 {title}
               </h2>
-              <p className="text-primary-highlight opacity-75">{description}</p>
-            </div>
+              <p className="text-[var(--subscribe-description,color-mix(in_oklab,hsl(var(--primary)),white_75%))] opacity-75">
+                {description}
+              </p>
+            </header>
             <InlineEmailForm action={action} className="flex-1" placeholder={placeholder} />
           </div>
         </div>
