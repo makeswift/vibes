@@ -6,7 +6,7 @@ updates:
       interval: 'weekly'
       day: 'monday'
     # Lets reduce the noise from Dependabot PRs (we can decrease/increase it over time)
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 0
     # Ignoring transitive dependency
     allow:
       - dependency-type: "direct"
