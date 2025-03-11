@@ -1,8 +1,118 @@
 ---
 title: Slideshow
 preview:
-  Electric: slideshow-electric-example
-  Warm: slideshow-warm-example
-  Luxury: slideshow-luxury-example
+  Electric: slideshow-example-electric
+  Warm: slideshow-example-warm
+  Luxury: slideshow-example-luxury
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Slideshow } from '@/vibes/soul/sections/slideshow';
+
+function Usage() {
+  return <Slideshow slides={slides} />;
+}
+
+export const slides = [
+    {
+      title: 'Aero Dynamic',
+      description: 'Designed for speed and comfort',
+      image: {
+        alt: 'alt',
+        src: 'https://rstr.in/monogram/vibes/2UhnmMan5ct',
+      },
+      cta: {
+        href: '#',
+        label: 'Shop Now',
+      },
+    },
+    {
+      title: 'Accessible',
+      description: 'Easy access to your gear',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/Nsj4qcMks2D',
+        alt: 'alt',
+      },
+      cta: {
+        href: '#',
+        label: 'Shop Now',
+      },
+    }
+];
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### SlideshowProps
+
+| Prop         | Type                                           | Default |
+| ------------ | ---------------------------------------------- | ------- |
+| `className`  | `string`                                       |         |
+| `slides*`    | `Slide[]` <Tooltip content="See Slide below"/> |         |
+| `playOnInit` | `boolean`                                      | `true`  |
+| `interval`   | `number`                                       | `5000`  |
+
+### Slide
+
+| Prop              | Type                                         | Default |
+| ----------------- | -------------------------------------------- | ------- |
+| `title*`          | `string`                                     |         |
+| `description`     | `string`                                     |         |
+| `showDescription` | `boolean`                                    |         |
+| `image`           | `Image` <Tooltip content="See Image below"/> |         |
+| `cta`             | `CTA` <Tooltip content="See CTA below"/>     |         |
+| `showCta`         | `boolean`                                    |         |
+
+### Image
+
+| Prop          | Type     | Default |
+| ------------- | -------- | ------- |
+| `alt*`        | `string` |         |
+| `blurDataUrl` | `string` |         |
+| `src*`        | `string` |         |
+
+### CTA
+
+| Prop      | Type                         | Default |
+| --------- | ---------------------------- | ------- |
+| `label*`  | `string`                     |         |
+| `href*`   | `string`                     |         |
+| `variant` | `ButtonLinkProps['variant']` |         |
+| `size`    | `ButtonLinkProps['size']`    |         |
+| `shape`   | `ButtonLinkProps['shape']`   |         |
+
+See [ButtonLink](/docs//soul/button-link) for more details on the `variant`, `size`, and `shape` properties.
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --slideshow-focus: hsl(var(--primary));
+  --slideshow-mask: hsl(var(--foreground) / 80%);
+  --slideshow-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
+  --slideshow-title: hsl(var(--background));
+  --slideshow-title-font-family: var(--font-family-heading);
+  --slideshow-description: hsl(var(--background) / 80%);
+  --slideshow-description-font-family: var(--font-family-body);
+  --slideshow-pagination: hsl(var(--background));
+  --slideshow-play-border: hsl(var(--contrast-300) / 50%);
+  --slideshow-play-border-hover: hsl(var(--contrast-300) / 80%);
+  --slideshow-play-text: hsl(var(--background));
+  --slideshow-number: hsl(var(--background));
+  --slideshow-number-font-family: var(--font-family-mono);
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2753-34206" />

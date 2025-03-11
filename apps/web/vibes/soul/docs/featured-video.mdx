@@ -3,3 +3,63 @@ title: Featured Video
 preview: featured-video-example
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FeaturedVideo } from '@/vibes/soul/sections/featured-video';
+
+function Usage() {
+    return (
+        <FeaturedVideo
+            cta={{ href: '#', label: 'Shop Now' }}
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            labore et dolore magna aliqua."
+            mediaAlign="full"
+            title="Pro-Team"
+            video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
+        />
+    );
+}
+
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FeaturedVideoProps
+
+| Prop           | Type                                       | Default  |
+| -------------- | ------------------------------------------ | -------- |
+| `title*`       | `string`                                   |          |
+| `description*` | `string`                                   |          |
+| `video*`       | `string`                                   |          |
+| `cta*`         | `Link` <Tooltip content="See Link below"/> |          |
+| `mediaAlign`   | `'left' \| 'right' \| 'full'`              | `'left'` |
+
+### Link
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `href*`  | `string` |         |
+| `label*` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --featured-video-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
+  --featured-video-video-background: hsl(var(--primary) / 10%);
+  --featured-video-title-font-family: var(--font-family-heading);
+  --featured-video-font-family: var(--font-family-body);
+  --featured-video-title: hsl(var(--background));
+  --featured-video-description: hsl(var(--background));
+}
+```

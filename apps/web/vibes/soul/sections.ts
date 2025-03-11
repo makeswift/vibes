@@ -85,6 +85,24 @@ export const sections = [
     files: ['sections/discount/index.tsx'],
   },
   {
+    name: 'error',
+    dependencies: [],
+    registryDependencies: ['button', 'section-layout'],
+    files: ['sections/error/index.tsx'],
+  },
+  {
+    name: 'feature',
+    dependencies: [],
+    registryDependencies: ['button'],
+    files: ['sections/feature/index.tsx'],
+  },
+  {
+    name: 'feature-grid',
+    dependencies: [],
+    registryDependencies: ['button', 'icon'],
+    files: ['sections/feature-grid/index.tsx'],
+  },
+  {
     name: 'featured-blog-post-carousel',
     dependencies: [],
     registryDependencies: [
@@ -125,8 +143,8 @@ export const sections = [
   },
   {
     name: 'featured-image',
-    dependencies: [],
-    registryDependencies: ['button'],
+    dependencies: ['clsx'],
+    registryDependencies: ['button-link'],
     files: ['sections/featured-image/index.tsx'],
   },
   {
@@ -150,7 +168,7 @@ export const sections = [
   {
     name: 'featured-video',
     dependencies: ['clsx'],
-    registryDependencies: ['button'],
+    registryDependencies: ['button-link'],
     files: ['sections/featured-video/index.tsx'],
   },
   {
@@ -170,10 +188,10 @@ export const sections = [
     ],
   },
   {
-    name: 'header-section',
-    dependencies: ['clsx', 'react-headroom'],
+    name: 'header',
+    dependencies: ['react-headroom'],
     registryDependencies: ['banner', 'navigation'],
-    files: ['sections/header-section/index.tsx'],
+    files: ['sections/header/index.tsx'],
   },
   {
     name: 'icon-block',
@@ -273,8 +291,15 @@ export const sections = [
   },
   {
     name: 'slideshow',
-    dependencies: ['clsx'],
-    registryDependencies: [],
+    dependencies: [
+      'clsx',
+      'embla-carousel',
+      'embla-carousel-autoplay',
+      'embla-carousel-react',
+      'embla-carousel-fade',
+      'lucide-react',
+    ],
+    registryDependencies: ['button-link'],
     files: ['sections/slideshow/index.tsx'],
   },
   {

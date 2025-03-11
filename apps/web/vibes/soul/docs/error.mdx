@@ -1,0 +1,49 @@
+---
+title: Error
+preview:
+  Electric: error-example-electric
+  Warm: error-example-warm
+  Luxury: error-example-luxury
+previewSize: sm
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Error } from '@/vibes/soul/sections/error';
+
+function Usage() {
+    return (
+        <Error />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### ErrorProps
+
+| Prop        | Type                          | Default                                                          |
+| ----------- | ----------------------------- | ---------------------------------------------------------------- |
+| `title`     | `string`                      | `'Something went wrong!'`                                        |
+| `subtitle`  | `string`                      | `'Please try again of contact our support team for assistance.'` |
+| `ctaLabel`  | `string`                      | `'Try again'`                                                    |
+| `ctaAction` | `() => void \| Promise<void>` |                                                                  |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --error-font-family: var(--font-family-body);
+  --error-title-font-family: var(--font-family-heading);
+  --error-title: var(--foreground);
+  --error-subtitle: var(--contrast-500);
+}
+```

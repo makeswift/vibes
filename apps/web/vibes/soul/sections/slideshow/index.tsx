@@ -28,7 +28,7 @@ interface Slide {
   showCta?: boolean;
 }
 
-interface Props {
+export interface SlideshowProps {
   slides: Slide[];
   playOnInit?: boolean;
   interval?: number;
@@ -103,7 +103,12 @@ const useProgressButton = (
  * }
  * ```
  */
-export function Slideshow({ slides, playOnInit = true, interval = 5000, className }: Props) {
+export function Slideshow({
+  slides,
+  playOnInit = true,
+  interval = 5000,
+  className,
+}: SlideshowProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 20 }, [
     Autoplay({ delay: interval, playOnInit }),
     Fade(),

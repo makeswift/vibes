@@ -45,10 +45,10 @@ function Usage() {
 | ------------------------ | ---------------------------------------------------------------------------------------------------- | --------------------- |
 | `className`              | `string`                                                                                             |                       |
 | `isFloating`             | `boolean`                                                                                            | `false`               |
-| `accountHref`            | `string`                                                                                             |                       |
+| `accountHref*`           | `string`                                                                                             |                       |
 | `cartCount`              | [`Streamable`](/docs/soul/streamable)`<number \| null>`                                              |                       |
-| `cartHref`               | `string`                                                                                             |                       |
-| `links`                  | [`Streamable`](/docs/soul/streamable)`<Link[]>` <Tooltip contnet="See Next.js Link documentation."/> |                       |
+| `cartHref*`              | `string`                                                                                             |                       |
+| `links*`                 | [`Streamable`](/docs/soul/streamable)`<Link[]>` <Tooltip contnet="See Next.js Link documentation."/> |                       |
 | `linksPosition`          | `'center' \| 'left' \| 'right'`                                                                      | `'center'`            |
 | `locales`                | `Locale[]`                                                                                           |                       |
 | `activeLocaleId`         | `string`                                                                                             |                       |
@@ -56,7 +56,7 @@ function Usage() {
 | `currencies`             | `Currency[]`                                                                                         |                       |
 | `activeCurrencyId`       | `Streamable<string \| undefined>`                                                                    |                       |
 | `currencyAction`         | `CurrencyAction`                                                                                     |                       |
-| `logo`                   | [`Streamable`](/docs/soul/streamable)`<string \| { src: string; alt: string } \| null>`              |                       |
+| `logo*`                  | [`Streamable`](/docs/soul/streamable)`<string \| { src: string; alt: string } \| null>`              |                       |
 | `logoWidth`              | `number`                                                                                             | `200`                 |
 | `logoHeight`             | `number`                                                                                             | `40`                  |
 | `logoHref`               | `string`                                                                                             | `'/'`                 |
@@ -64,7 +64,7 @@ function Usage() {
 | `mobileLogo`             | [`Streamable`](/docs/soul/streamable)`<string \| { src: string; alt: string } \| null>`              |                       |
 | `mobileLogoWidth`        | `number`                                                                                             | `100`                 |
 | `mobileLogoHeight`       | `number`                                                                                             | `40                   |
-| `searchHref`             | `string`                                                                                             |                       |
+| `searchHref*`            | `string`                                                                                             |                       |
 | `searchParamName`        | `string`                                                                                             | `'query'`             |
 | `searchAction`           | `SearchAction<S>`                                                                                    |                       |
 | `searchCtaLabel`         | `string`                                                                                             |                       |

@@ -10,11 +10,10 @@ export const heroSlides = [
       src: 'https://rstr.in/monogram/vibes/2EMiPsA7hB6',
       alt: 'alt',
     },
-
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
+    cta: {
+      href: '#',
+      label: 'Shop Now',
+    },
   },
   {
     title: 'NEW IN',
@@ -24,10 +23,10 @@ export const heroSlides = [
       src: 'https://rstr.in/monogram/vibes/QmfQfksVmJO',
       alt: 'alt',
     },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
+    cta: {
+      href: '#',
+      label: 'Shop Now',
+    },
   },
   {
     title: 'NEW IN',
@@ -37,10 +36,10 @@ export const heroSlides = [
       src: 'https://rstr.in/monogram/vibes/TiwfRzYo4oG/ZSR8DkwOi8t',
       alt: 'alt',
     },
-    // cta: {
-    //   href: '#',
-    //   label: 'Shop Now',
-    // },
+    cta: {
+      href: '#',
+      label: 'Shop Now',
+    },
   },
 ];
 
