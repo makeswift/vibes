@@ -1,5 +1,59 @@
 ---
 title: Streamable
-preview: streamable
+description: The Streamable component simplifies and enhances data-fetching patterns in React 19 with support for streaming, loading states, and stable async state management.
+preview:
+  Electric: product-list-electric
+  Warm: product-list-warm
+  Luxury: product-list-luxury
 previewSize: lg
 ---
+
+## Background
+
+When building VIBES, we want to expose intuitive APIs while leveraging the latest featues in React.One challenge of building a component library like VIBES is determining the interface that components should expose to the consuming application.
+This gets especially challenging when considering the impact that React Server Components has had on how we build applications. We wanted to build components that
+were easy to use but also take advantage of the latest features of React.
+
+Although we wanted many of our componets to be able to work with asynchronous data (passed using Promises), we also wanted to make it easy to work with synchronous data. Because of that, we wanted to build something
+that could accept and handle both synchronous and asynchronous data. We were able to use React's recent `use()` API to build a component that could handle both synchronous and asynchronous data.
+
+Another problem we wanted to solve was the ability to handle stream in multiple pieces of asynchronous data. To help with this, `Streamable` includes an `all` function that allows us to
+
+## How it works
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+
+function Usage() {
+    return (
+        <Stream fallback={<p>Loading</p>} value={streamableProducts}>
+          {(products) => {
+              return <p>Render the products</p>;
+          }}
+      </Stream>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### LogoProps
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+}
+```
