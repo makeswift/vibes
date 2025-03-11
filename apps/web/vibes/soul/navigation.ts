@@ -233,7 +233,6 @@ const sectionPages: [Page, ...Page[]] = [
     file: 'docs/feature-grid.mdx',
     component: 'feature-grid',
   },
-  { title: 'Feature', slug: 'feature', file: 'docs/feature.mdx', component: 'feature-grid' },
   {
     title: 'Featured Blog Post Carousel',
     slug: 'featured-blog-post-carousel',
