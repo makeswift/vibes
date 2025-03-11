@@ -291,8 +291,15 @@ export const sections = [
   },
   {
     name: 'slideshow',
-    dependencies: ['clsx'],
-    registryDependencies: [],
+    dependencies: [
+      'clsx',
+      'embla-carousel',
+      'embla-carousel-autoplay',
+      'embla-carousel-react',
+      'embla-carousel-fade',
+      'lucide-react',
+    ],
+    registryDependencies: ['button-link'],
     files: ['sections/slideshow/index.tsx'],
   },
   {
