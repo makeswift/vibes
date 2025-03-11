@@ -1,7 +1,7 @@
 ---
 title: Icon Block
 preview: icon-block-example
-previewSize: lg
+previewSize: sm
 ---
 
 ## Usage
@@ -9,12 +9,35 @@ previewSize: lg
 {/* prettier-ignore-start */}
 
 <CodeBlock lang="ts">{`
+import { IconBlock } from '@/vibes/soul/sections/icon-block';
 
 function Usage() {
     return (
-
+        <IconBlock list={list} />
     );
 }
+const list= [
+    {
+      icon: 'truck',
+      title: 'Free Shipping',
+      description: 'On orders over $250',
+    },
+    {
+      icon: 'rotate-ccw',
+      title: 'Free Returns',
+      description: 'On full priced items only',
+    },
+    {
+      icon: 'star',
+      title: '2 Year Warranty',
+      description: 'As standard',
+    },
+    {
+      icon: 'truck',
+      title: 'Free Shipping',
+      description: 'On orders over $250',
+    },
+];
 `}
 </CodeBlock>
 
@@ -22,11 +45,21 @@ function Usage() {
 
 ## API Reference
 
-###
+### IconBlockProps
 
-| Prop    | Type        | Default |
-| ------- | ----------- | ------- |
-| `list*` | `ReactNode` |         |
+| Prop    | Type                                                 | Default |
+| ------- | ---------------------------------------------------- | ------- |
+| `list*` | `ListItem[]` <Tooltip content="See ListItem below"/> |         |
+
+### ListItem
+
+| Prop           | Type                                                                              | Default |
+| -------------- | --------------------------------------------------------------------------------- | ------- |
+| `icon*`        | `IconName` <Tooltip content="See the Lucide docs for a full list of icon names"/> |         |
+| `title*`       | `string`                                                                          |         |
+| `description*` | `string`                                                                          |         |
+
+Refer to the [Lucide docs](https://lucide.dev/icons/) for a full list of available icons.
 
 ### CSS Variables
 
@@ -42,7 +75,3 @@ This component supports various CSS variables for theming. Here's a comprehensiv
   --icon-block-icon: hsl(var(--foreground));
 }
 ```
-
-## Figma
-
-<Figma url="" />
