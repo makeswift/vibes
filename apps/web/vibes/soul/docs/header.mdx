@@ -4,5 +4,50 @@ preview:
   Electric: header-electric
   Warm: header-warm
   Luxury: header-luxury
-previewSize: lg
+previewSize: sm
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Header } from '@/vibes/soul/sections/header';
+
+function Usage() {
+    return (
+        <Header
+            banner={{
+              id: 'example-banner',
+              children: <p>Get 15% off and free shipping with discount code.</p>,
+            }}
+            navigation={{
+              links: [
+                {
+                  label: 'Shop',
+                  href: '#',
+                },
+              ],
+              logo: 'Logo',
+              cartHref: '#',
+              accountHref: '#',
+              searchHref: '#',
+            }}
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### HeaderProps
+
+| Prop         | Type                                  | Default |
+| ------------ | ------------------------------------- | ------- |
+| `navigation` | [`Navigation`](/docs/soul/navigation) |         |
+| `banner`     | [`Banner`](/docs/soul/banner)         |         |
+
+See the [Navigation](/docs/soul/navigation) and [Banner](/docs/soul/banner) components for their respective props.
