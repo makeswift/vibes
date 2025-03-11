@@ -207,7 +207,7 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'card-carousel',
   },
   {
-    title: 'Compare Section',
+    title: 'Compare',
     slug: 'compare-section',
     file: 'docs/compare-section.mdx',
     component: 'compare-section',
