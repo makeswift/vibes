@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 import { SidebarMenuLink } from './sidebar-menu-link';
 import { SidebarMenuSelect } from './sidebar-menu-select';
@@ -11,12 +12,12 @@ interface MenuLink {
   prefetch?: ComponentPropsWithoutRef<typeof SidebarMenuLink>['prefetch'];
 }
 
-interface Props {
+export interface SidebarMenuProps {
   links: Streamable<MenuLink[]>;
   placeholderCount?: number;
 }
 
-export function SidebarMenu({ links: streamableLinks, placeholderCount = 5 }: Props) {
+export function SidebarMenu({ links: streamableLinks, placeholderCount = 5 }: SidebarMenuProps) {
   return (
     <Stream
       fallback={<SidebarMenuSkeleton placeholderCount={placeholderCount} />}
@@ -48,21 +49,31 @@ export function SidebarMenu({ links: streamableLinks, placeholderCount = 5 }: Pr
   );
 }
 
-function SidebarMenuSkeleton({ placeholderCount }: { placeholderCount: number }) {
+export function SidebarMenuSkeleton({
+  placeholderCount = 5,
+}: Pick<SidebarMenuProps, 'placeholderCount'>) {
   return (
     <>
-      <div className="hidden [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:block">
-        <div className="w-full animate-pulse">
+      <Skeleton.Root
+        className="hidden group-has-[[data-pending]]/sidebar-menu:animate-pulse @4xl:block"
+        pending
+      >
+        <div className="w-full" data-pending>
           {Array.from({ length: placeholderCount }).map((_, index) => (
-            <div className="flex h-10 items-center px-3" key={index}>
-              <div className="h-[1lh] flex-1 rounded-lg bg-contrast-100" />
+            <div className="flex h-10 items-center px-3 text-sm" key={index}>
+              <Skeleton.Text characterCount={10} className="rounded-md" />
             </div>
           ))}
         </div>
-      </div>
-      <div className="@2xl:hidden">
-        <div className="h-[50px] w-full rounded-lg bg-contrast-100" />
-      </div>
+      </Skeleton.Root>
+      <Skeleton.Root
+        className="group-has-[[data-pending]]/sidebar-menu:animate-pulse @4xl:hidden"
+        pending
+      >
+        <div data-pending>
+          <Skeleton.Box className="h-[50px] w-full rounded-lg" />
+        </div>
+      </Skeleton.Root>
     </>
   );
 }
