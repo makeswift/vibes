@@ -86,13 +86,13 @@ export const sections = [
   },
   {
     name: 'feature',
-    dependencies: ['clsx', 'lucide-react'],
+    dependencies: [],
     registryDependencies: ['button'],
     files: ['sections/feature/index.tsx'],
   },
   {
     name: 'feature-grid',
-    dependencies: ['clsx', 'lucide-react'],
+    dependencies: [],
     registryDependencies: ['button', 'icon'],
     files: ['sections/feature-grid/index.tsx'],
   },

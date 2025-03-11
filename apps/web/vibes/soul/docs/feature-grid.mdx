@@ -4,5 +4,113 @@ preview:
   Electric: feature-grid-electric-example
   Warm: feature-grid-warm-example
   Luxury: feature-grid-luxury-example
-previewSize: lg
+previewSize: md
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FeatureGrid, FeatureGridProps } from '@/vibes/soul/sections/feature-grid';
+
+function Usage() {
+    return <FeatureGrid cta={feature.cta} grid={feature.grid} image={feature.image} />;
+}
+
+const feature: FeatureGridProps = {
+    image: {
+      src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+      alt: 'string',
+    },
+    cta: {
+      href: '#',
+      label: 'Shop Now',
+    },
+    grid: [
+      {
+        icon: 'truck',
+        title: 'Free Shipping',
+        description: 'On orders over $250',
+      },
+      {
+        icon: 'rotate-ccw',
+        title: 'Free Returns',
+        description: 'On full priced items only',
+      },
+      {
+        icon: 'star',
+        title: '2 Year Warranty',
+        description: 'As standard',
+      },
+      {
+        icon: 'truck',
+        title: 'Free Shipping',
+        description: 'On orders over $250',
+      },
+      {
+        icon: 'rotate-ccw',
+        title: 'Free Returns',
+        description: 'On full priced items only',
+      },
+      {
+        icon: 'star',
+        title: '2 Year Warranty',
+        description: 'As standard',
+      },
+    ],
+};
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FeatureGridProps
+
+| Prop     | Type                                                 | Default |
+| -------- | ---------------------------------------------------- | ------- |
+| `image*` | `Image` <Tooltip content="See Image below"/>         |         |
+| `grid*`  | `GridItem[]` <Tooltip content="See GridItem below"/> |         |
+| `cta*`   | `Link` <Tooltip content="See Link below"/>           |         |
+
+### GridItem
+
+| Prop           | Type                                                                              | Default |
+| -------------- | --------------------------------------------------------------------------------- | ------- |
+| `icon*`        | `IconName` <Tooltip content="See the Lucide docs for a full list of icon names"/> |         |
+| `title*`       | `string`                                                                          |         |
+| `description*` | `string`                                                                          |         |
+
+Refer to the [Lucide docs](https://lucide.dev/icons/) for a full list of available icons.
+
+### Image
+
+| Prop   | Type     | Default |
+| ------ | -------- | ------- |
+| `src*` | `string` |         |
+| `alt*` | `string` |         |
+
+### Link
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `href*`  | `string` |         |
+| `label*` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --feature-grid-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
+  --feature-grid-image-background: hsl(var(--primary) / 10%);
+  --feature-grid-font-family: var(--font-family-body);
+  --feature-grid-icon: var(--background);
+  --feature-grid-title: hsl(var(--background));
+  --feature-grid-description: hsl(var(--contrast-200));
+}
+```

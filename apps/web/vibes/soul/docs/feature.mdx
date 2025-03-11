@@ -4,5 +4,85 @@ preview:
   Electric: feature-electric-example
   Warm: feature-warm-example
   Luxury: feature-luxury-example
-previewSize: lg
+previewSize: md
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Feature, FeatureProps } from '@/vibes/soul/sections/feature';
+
+function Usage() {
+    return (
+      <Feature
+          cta={feature.cta}
+          description={feature.description}
+          image={feature.image}
+          title={feature.title}
+      />
+    );
+}
+
+export const feature: FeatureProps = {
+    image: {
+      src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+      alt: 'string',
+    },
+    title: 'Where Every Ride Meets Perfect Fit.',
+    description:
+      'Our custom bike bags are designed to seamlessly integrate with your bike, like this perfectly fitted square bag for your front basket. Adventure, style, and functionality—tailored just for you.',
+    cta: {
+      href: '#',
+      label: 'Shop Now',
+    },
+};
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FeatureProps
+
+| Prop           | Type                                         | Default |
+| -------------- | -------------------------------------------- | ------- |
+| `image*`       | `Image` <Tooltip content="See Image below"/> |         |
+| `title*`       | `string`                                     |         |
+| `description*` | `string`                                     |         |
+| `cta*`         | `Link` <Tooltip content="See Link below"/>   |         |
+
+### Image
+
+| Prop   | Type     | Default |
+| ------ | -------- | ------- |
+| `src*` | `string` |         |
+| `alt*` | `string` |         |
+
+### Link
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `href*`  | `string` |         |
+| `label*` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --feature-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
+  --feature-image-background: hsl(var(--primary) / 10%);
+  --feature-title-font-family: var(--font-family-heading);
+  --feature-font-family: var(--font-family-body);
+  --feature-title: hsl(var(--primary));
+  --feature-description: hsl(var(--background));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=2275-42374" />
