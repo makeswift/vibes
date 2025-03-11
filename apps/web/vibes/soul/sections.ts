@@ -138,7 +138,7 @@ export const sections = [
   {
     name: 'featured-image',
     dependencies: ['clsx'],
-    registryDependencies: ['button'],
+    registryDependencies: ['button-link'],
     files: ['sections/featured-image/index.tsx'],
   },
   {
@@ -162,7 +162,7 @@ export const sections = [
   {
     name: 'featured-video',
     dependencies: ['clsx'],
-    registryDependencies: ['button'],
+    registryDependencies: ['button-link'],
     files: ['sections/featured-video/index.tsx'],
   },
   {
