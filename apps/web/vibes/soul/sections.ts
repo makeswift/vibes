@@ -137,7 +137,7 @@ export const sections = [
   },
   {
     name: 'featured-image',
-    dependencies: [],
+    dependencies: ['clsx'],
     registryDependencies: ['button'],
     files: ['sections/featured-image/index.tsx'],
   },
