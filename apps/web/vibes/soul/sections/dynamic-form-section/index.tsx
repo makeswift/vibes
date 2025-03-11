@@ -13,6 +13,19 @@ export interface DynamicFormProps<F extends Field> {
   className?: string;
 }
 
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --dynamic-form-font-family: var(--font-family-body);
+ *   --dynamic-form-title-font-family: var(--font-family-heading);
+ *   --dynamic-form-title: hsl(var(--foreground));
+ *   --dynamic-form-subtitle: hsl(var(--contrast-500));
+ * }
+ * ```
+ */
 export function DynamicFormSection<F extends Field>({
   className,
   title,
@@ -22,14 +35,22 @@ export function DynamicFormSection<F extends Field>({
   action,
 }: DynamicFormProps<F>) {
   return (
-    <SectionLayout className={clsx('mx-auto w-full max-w-4xl', className)} containerSize="lg">
-      {title != null && title !== '' && (
+    <SectionLayout
+      className={clsx(
+        'mx-auto w-full max-w-4xl font-[family-name:var(--dynamic-form-font-family,var(--font-family-body))]',
+        className,
+      )}
+      containerSize="lg"
+    >
+      {Boolean(title) && (
         <header className="pb-8 @2xl:pb-12 @4xl:pb-16">
-          <h1 className="mb-5 font-heading text-4xl font-medium leading-none @xl:text-5xl">
+          <h1 className="mb-5 font-[family-name:var(--dynamic-form-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--dynamic-form-title,hsl(var(--foreground)))] @xl:text-5xl">
             {title}
           </h1>
-          {subtitle != null && subtitle !== '' && (
-            <p className="mb-10 text-base font-light leading-none @xl:text-lg">{subtitle}</p>
+          {Boolean(subtitle) && (
+            <p className="mb-10 text-base font-light leading-none text-[var(--dynamic-form-subtitle,hsl(var(--contrast-500)))] @xl:text-lg">
+              {subtitle}
+            </p>
           )}
         </header>
       )}
