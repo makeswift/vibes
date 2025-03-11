@@ -207,8 +207,8 @@ export const sections = [
   {
     name: 'icon-block',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['sections/icon-block/index.tsx', 'primitives/icon/index.tsx'],
+    registryDependencies: ['icon'],
+    files: ['sections/icon-block/index.tsx'],
   },
   {
     name: 'inline-email-form',
