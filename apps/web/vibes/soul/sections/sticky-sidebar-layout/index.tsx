@@ -59,7 +59,7 @@ export function StickySidebarLayout({
             }[sidebarSize],
           )}
         >
-          <div className="sticky top-10">{sidebar}</div>
+          <div className="group/sidebar-menu sticky top-10">{sidebar}</div>
         </div>
         <div
           className={clsx(
