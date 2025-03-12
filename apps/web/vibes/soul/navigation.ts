@@ -314,7 +314,7 @@ const sectionPages: [Page, ...Page[]] = [
   },
   {
     title: 'Order Details',
-    slug: 'order-details-section',
+    slug: 'order-details',
     file: 'docs/order-details-section.mdx',
     component: 'order-details-section',
   },

@@ -6,3 +6,227 @@ preview:
   Luxury: order-details-section-luxury
 previewSize: xl
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { OrderDetailsSection } from '@/vibes/soul/sections/order-details-section';
+
+function Usage() {
+    return (
+        <OrderDetailsSection order={order} prevHref="#" />
+
+    );
+}
+
+const lineItems = [
+    {
+      id: '1',
+      title: 'Mini Bar Bag',
+      subtitle: 'Blue/Black/Green',
+      price: '$65',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+        alt: 'Mini Bar Bag',
+      },
+      href: '#',
+      rating: 4.3,
+      quantity: 1,
+    },
+    {
+      id: '2',
+      title: 'Mini Bar Bag',
+      subtitle: 'Blue/Black/Green',
+      price: '$65',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
+        alt: 'Mini Bar Bag',
+      },
+      href: '#',
+      rating: 4.5,
+      quantity: 2,
+    }
+];
+
+const destination1 = {
+    id: '1',
+    title: 'Destination 1/2',
+    address: {
+      name: 'John Doe',
+      street1: '1000 San Marcos Ave',
+      city: 'Austin',
+      state: 'TX',
+      zipcode: '78702',
+      country: 'United States',
+    },
+    shipments: [
+      {
+        tracking: {
+          number: '1Z370170375602560',
+        },
+        name: 'UPS Ground',
+        status: 'Delivered on May 15, 2024',
+      },
+    ],
+    lineItems: lineItems.slice(0, 3),
+};
+
+const subtotal = [destination1, destination2].reduce((acc, destination) => {
+    return (
+      acc +
+      destination.lineItems.reduce(
+        (accInner, lineItem) => accInner + parseInt(lineItem.price.slice(1), 10) * lineItem.quantity,
+        0,
+      )
+    );
+}, 0);
+
+const discount = 10;
+const shipping = 20;
+const tax = subtotal * 0.08;
+const total = subtotal - discount + shipping + tax;
+
+const order = {
+    id: '1',
+    status: 'Delivered',
+    statusColor: 'success' as const,
+    date: '2021-01-01',
+    destinations: [destination1],
+    summary: {
+      lineItems: [
+        { label: 'Subtotal', value: "$" +  subtotal.toFixed(2) },
+        { label: 'Discount', value: "-$" + discount.toFixed(2) },
+        { label: 'Shipping', value: "$" +  shipping.toFixed(2), subtext: 'Ground' },
+        { label: 'Tax', value: "$" + tax.toFixed(2) },
+      ],
+      total: "$" + total.toFixed(2),
+    },
+};
+
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### OrderDetailsSectionProps
+
+| Prop                   | Type                                         | Default     |
+| ---------------------- | -------------------------------------------- | ----------- |
+| `order*`               | `Order` <Tooltip content="See Order below"/> |             |
+| `title`                | `string`                                     | `Order #`   |
+| `shipmentAddressLabel` | `string`                                     |             |
+| `shipmentMethodLabel`  | `string`                                     |             |
+| `summaryTotalLabel`    | `string`                                     |             |
+| `prevHref`             | `string`                                     | `'/orders'` |
+
+### Order
+
+| Prop            | Type                                                       | Default |
+| --------------- | ---------------------------------------------------------- | ------- |
+| `id*`           | `string`                                                   |         |
+| `status*`       | `string`                                                   |         |
+| `statusColor?`  | `'success' \| 'warning' \| 'error' \| 'info'`              |         |
+| `date*`         | `string`                                                   |         |
+| `destinations*` | `Destination[]` <Tooltip content="See Destination below"/> |         |
+| `summary*`      | `Summary` <Tooltip content="See Summary below"/>           |         |
+
+### Destination
+
+| Prop         | Type                                                                 | Default |
+| ------------ | -------------------------------------------------------------------- | ------- |
+| `id*`        | `string`                                                             |         |
+| `title*`     | `string`                                                             |         |
+| `address*`   | `Address` <Tooltip content="See Address below"/>                     |         |
+| `shipments*` | `Shipment[]` <Tooltip content="See Shipment below"/>                 |         |
+| `lineItems*` | `ShipmentLineItem[]` <Tooltip content="See ShipmentLineItem below"/> |         |
+
+### Summary
+
+| Prop         | Type                                                        | Default |
+| ------------ | ----------------------------------------------------------- | ------- |
+| `lineItems*` | `Array<{label: string; value: string; subtext?: string; }>` |         |
+| `total*`     | `string`                                                    |
+
+### Address
+
+| Prop       | Type     | Default |
+| ---------- | -------- | ------- |
+| `name`     | `string` |         |
+| `street1*` | `string` |         |
+| `street2`  | `string` |         |
+| `city*`    | `string` |         |
+| `state*`   | `string` |         |
+| `zipcode`  | `string` |         |
+| `country`  | `string` |         |
+
+### Shipment
+
+| Prop       | Type                                                                                                                    | Default |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- | ------- |
+| `name*`    | `string`                                                                                                                |         |
+| `status*`  | `string`                                                                                                                |         |
+| `tracking` | `TrackingWithUrl \| TrackingWithNumber \| TrackingWithUrlAndNumber` <Tooltip content="See tracking types below below"/> |         |
+
+### ShipmentLineItem
+
+| Prop        | Type                                      | Default |
+| ----------- | ----------------------------------------- | ------- |
+| `id*`       | `string`                                  |         |
+| `title*`    | `string`                                  |         |
+| `subtitle`  | `string`                                  |         |
+| `price*`    | `string`                                  |         |
+| `href*`     | `string`                                  |         |
+| `image`     | `{ src: string; alt: string }`            |         |
+| `quantity*` | `number`                                  |         |
+| `metadata`  | `Array<{ label: string; value: string }>` |         |
+
+### TrackingWithUrl
+
+| Prop   | Type     | Default |
+| ------ | -------- | ------- |
+| `url*` | `string` |         |
+
+### TrackingWithNumber
+
+| Prop      | Type     | Default |
+| --------- | -------- | ------- |
+| `number*` | `string` |         |
+
+### TrackingWithUrlAndNumber
+
+| Prop      | Type     | Default |
+| --------- | -------- | ------- |
+| `url*`    | `string` |         |
+| `number*` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --order-details-section-focus: hsl(var(--primary));
+  --order-details-section-font-family: hsl(var(--font-family-body));
+  --order-details-section-title-font-family: hsl(var(--font-family-heading));
+  --order-details-text-primary: hsl(var(--foreground));
+  --order-details-text-secondary: hsl(var(--contrast-500));
+  --order-details-section-border: hsl(var(--contrast-100));
+  --order-details-section-button-border: hsl(var(--contrast-100));
+  --order-details-section-button-border-hover: hsl(var(--contrast-200));
+  --order-details-section-button-icon: hsl(var(--foreground));
+  --order-details-section-button-background: hsl(var(--background));
+  --order-details-section-button-background-hover: hsl(var(--contrast-100));
+  --order-details-section-image-background: hsl(var(--contrast-100));
+  --order-details-section-line-item: hsl(var(--contrast-300));
+  --order-details-section-line-item-subtitle: hsl(var(--contrast-500));
+  --order-details-section-line-item-subtext: hsl(var(--contrast-400));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=3376-58696" />
