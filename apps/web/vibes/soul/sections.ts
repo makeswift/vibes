@@ -224,6 +224,12 @@ export const sections = [
     files: ['sections/order-history-section/index.tsx'],
   },
   {
+    name: 'order-details-section',
+    dependencies: ['lucide-react'],
+    registryDependencies: ['badge'],
+    files: ['sections/order-details-section/index.tsx'],
+  },
+  {
     name: 'product-carousel',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['product-card', 'carousel', 'skeleton', 'streamable'],
