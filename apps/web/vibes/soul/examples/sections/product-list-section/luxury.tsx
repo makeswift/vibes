@@ -1,6 +1,6 @@
 import { createSearchParamsCache, parseAsArrayOf, parseAsFloat, parseAsString } from 'nuqs/server';
 
-import { ProductsListSection } from '@/vibes/soul/sections/products-list-section';
+import { ProductListSection } from '@/vibes/soul/sections/product-list-section';
 
 export default async function Preview({
   searchParams,
@@ -22,7 +22,7 @@ export default async function Preview({
 
   return (
     <div className="p-6">
-      <ProductsListSection
+      <ProductListSection
         breadcrumbs={breadcrumbs}
         compareParamName={compareParamName}
         compareProducts={productsList.products.then((products) =>

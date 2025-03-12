@@ -1,9 +1,9 @@
 ---
 title: Product List Section
 preview:
-  Electric: products-list-section-electric
-  Warm: products-list-section-warm
-  Luxury: products-list-section-luxury
+  Electric: product-list-section-electric
+  Warm: product-list-section-warm
+  Luxury: product-list-section-luxury
 previewSize: lg
 ---
 
@@ -11,7 +11,7 @@ previewSize: lg
 
 Import the component.
 
-<CodeBlock lang="bash">{`import { ProductsListSection } from '@/vibes/soul/sections/products-list-section'`}</CodeBlock>
+<CodeBlock lang="bash">{`import { ProductListSection } from '@/vibes/soul/sections/product-list-section'`}</CodeBlock>
 
 Query the appropriate data.
 
@@ -25,7 +25,7 @@ const pagination = await getPagination()
 Display the component.
 
 <CodeBlock lang="bash">
-  {`<ProductsListSection
+  {`<ProductListSection
     title="Plants"
     breadcrumbs={breadcrumbs}
     products={products}
@@ -44,7 +44,7 @@ The `products` property accepts either `Product[]` or `Promise<Product[]>`. By p
 
 ## API Reference
 
-### `ProductsListSection`
+### `ProductListSection`
 
 | Prop               | Type                                                                                                                        | Default |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------- | ------- |

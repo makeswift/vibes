@@ -275,13 +275,13 @@ export const sections = [
     files: ['sections/product-list/index.tsx'],
   },
   {
-    name: 'products-list-section',
+    name: 'product-list-section',
     dependencies: ['nuqs'],
     registryDependencies: ['product-list', 'button', 'toggle-group', 'cursor-pagination'],
     files: [
-      'sections/products-list-section/index.tsx',
-      'sections/products-list-section/filters-panel.tsx',
-      'sections/products-list-section/sorting.tsx',
+      'sections/product-list-section/index.tsx',
+      'sections/product-list-section/filter-panel.tsx',
+      'sections/product-list-section/sorting.tsx',
     ],
   },
   {
