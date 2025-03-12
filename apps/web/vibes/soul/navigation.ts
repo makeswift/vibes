@@ -339,8 +339,8 @@ const sectionPages: [Page, ...Page[]] = [
   {
     title: 'Product List Section',
     slug: 'product-list-section',
-    file: 'docs/products-list-section.mdx',
-    component: 'products-list-section',
+    file: 'docs/product-list-section.mdx',
+    component: 'product-list-section',
   },
   {
     title: 'Product Detail',

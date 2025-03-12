@@ -1,4 +1,4 @@
-import { Option } from '@/vibes/soul/sections/products-list-section/sorting';
+import { Option } from '@/vibes/soul/sections/product-list-section/sorting';
 
 export async function getSortOptions(): Promise<Option[]> {
   await new Promise((resolve) => setTimeout(resolve, 1000));
