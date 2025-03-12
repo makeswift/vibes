@@ -4,14 +4,13 @@ import { Suspense } from 'react';
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Button } from '@/vibes/soul/primitives/button';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
-import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
 import * as SidePanel from '@/vibes/soul/primitives/side-panel';
 import {
   Breadcrumbs,
   BreadcrumbsSkeleton,
   BreadcrumbWithId,
 } from '@/vibes/soul/sections/breadcrumbs';
-import { ProductList } from '@/vibes/soul/sections/product-list';
+import { ListProduct, ProductList } from '@/vibes/soul/sections/product-list';
 import { Filter, FiltersPanel } from '@/vibes/soul/sections/products-list-section/filters-panel';
 import {
   Sorting,
@@ -23,13 +22,14 @@ interface Props {
   breadcrumbs?: Streamable<BreadcrumbWithId[]>;
   title?: Streamable<string | null>;
   totalCount: Streamable<number>;
-  products: Streamable<ProductCardWithId[]>;
+  products: Streamable<ListProduct[]>;
   filters: Streamable<Filter[]>;
   sortOptions: Streamable<SortOption[]>;
-  compareProducts?: Streamable<ProductCardWithId[]>;
+  compareProducts?: Streamable<ListProduct[]>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
-  compareAction?: React.ComponentProps<'form'>['action'];
+  compareHref?: string;
   compareLabel?: Streamable<string>;
+  showCompare?: Streamable<boolean>;
   filterLabel?: string;
   filtersPanelTitle?: Streamable<string>;
   resetFiltersLabel?: Streamable<string>;
@@ -53,8 +53,9 @@ export function ProductsListSection({
   sortOptions: streamableSortOptions,
   sortDefaultValue,
   filters,
-  compareAction,
+  compareHref,
   compareLabel,
+  showCompare,
   paginationInfo,
   filterLabel = 'Filters',
   filtersPanelTitle: streamableFiltersPanelTitle = 'Filters',
@@ -156,7 +157,7 @@ export function ProductsListSection({
 
           <div className="flex-1 group-has-[[data-pending]]/products-list-section:animate-pulse">
             <ProductList
-              compareAction={compareAction}
+              compareHref={compareHref}
               compareLabel={compareLabel}
               compareParamName={compareParamName}
               compareProducts={compareProducts}
@@ -164,7 +165,7 @@ export function ProductsListSection({
               emptyStateTitle={emptyStateTitle}
               placeholderCount={placeholderCount}
               products={products}
-              showCompare
+              showCompare={showCompare}
             />
 
             {paginationInfo && <CursorPagination info={paginationInfo} />}
