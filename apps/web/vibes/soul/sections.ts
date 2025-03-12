@@ -81,7 +81,7 @@ export const sections = [
   {
     name: 'discount',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
+    registryDependencies: ['button'],
     files: ['sections/discount/index.tsx'],
   },
   {
