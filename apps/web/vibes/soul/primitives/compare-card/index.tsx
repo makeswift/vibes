@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 
-import { Button } from '@/vibes/soul/primitives/button';
 import {
   type Product,
   ProductCard,
@@ -9,9 +8,16 @@ import {
 import { Rating } from '@/vibes/soul/primitives/rating';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
+
+import { AddToCartForm, CompareAddToCartAction } from './add-to-cart-form';
+
 export interface CompareProduct extends Product {
-  description?: string;
+  description?: string | React.ReactNode;
   customFields?: Array<{ name: string; value: string }>;
+  hasVariants?: boolean;
+  disabled?: boolean;
+  isPreorder?: boolean;
 }
 
 export interface CompareCardProps {
@@ -19,9 +25,14 @@ export interface CompareCardProps {
   product: CompareProduct;
   addToCartLabel?: string;
   descriptionLabel?: string;
+  noDescriptionLabel?: string;
   ratingLabel?: string;
+  noRatingsLabel?: string;
   otherDetailsLabel?: string;
-  addToCartAction?: (id: string) => Promise<void>;
+  noOtherDetailsLabel?: string;
+  viewOptionsLabel?: string;
+  preorderLabel?: string;
+  addToCartAction?: CompareAddToCartAction;
   imageSizes?: string;
 }
 
@@ -46,8 +57,13 @@ export function CompareCard({
   addToCartAction,
   addToCartLabel = 'Add to cart',
   descriptionLabel = 'Description',
+  noDescriptionLabel = 'There is no description available.',
   ratingLabel = 'Rating',
+  noRatingsLabel = 'There are no reviews.',
   otherDetailsLabel = 'Other details',
+  noOtherDetailsLabel = 'There are no other details.',
+  viewOptionsLabel = 'View options',
+  preorderLabel = 'Preorder',
   imageSizes,
 }: CompareCardProps) {
   return (
@@ -59,13 +75,21 @@ export function CompareCard({
     >
       <div className="mb-2 space-y-4 pb-4">
         <ProductCard imageSizes={imageSizes} product={product} />
-        {addToCartAction && (
-          <form action={addToCartAction.bind(null, product.id)}>
-            <Button className="w-full" size="medium" type="submit">
-              {addToCartLabel}
-            </Button>
-          </form>
-        )}
+        {addToCartAction &&
+          (!product.hasVariants ? (
+            <AddToCartForm
+              addToCartAction={addToCartAction}
+              addToCartLabel={addToCartLabel}
+              disabled={product.disabled}
+              isPreorder={product.isPreorder}
+              preorderLabel={preorderLabel}
+              productId={product.id}
+            />
+          ) : (
+            <ButtonLink className="w-full" href={product.href} size="medium">
+              {viewOptionsLabel}
+            </ButtonLink>
+          ))}
       </div>
       <div className="space-y-4 py-4">
         <div className="font-[family-name:var(--compare-card-font-family-secondary,var(--font-family-mono))] text-xs font-normal uppercase text-[var(--compare-card-label,hsl(var(--foreground)))]">
@@ -75,8 +99,7 @@ export function CompareCard({
           <Rating rating={product.rating} />
         ) : (
           <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
-            {' '}
-            There are no reviews.
+            {noRatingsLabel}
           </p>
         )}
       </div>
@@ -85,13 +108,12 @@ export function CompareCard({
           {descriptionLabel}
         </div>
         {product.description != null && product.description !== '' ? (
-          <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
+          <div className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
             {product.description}
-          </p>
+          </div>
         ) : (
           <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
-            {' '}
-            There is no description available.
+            {noDescriptionLabel}
           </p>
         )}
       </div>
@@ -114,8 +136,7 @@ export function CompareCard({
             {otherDetailsLabel}
           </div>
           <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
-            {' '}
-            There are no other details available.
+            {noOtherDetailsLabel}
           </p>
         </div>
       )}

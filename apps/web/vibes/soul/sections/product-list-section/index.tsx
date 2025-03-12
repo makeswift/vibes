@@ -29,8 +29,9 @@ export interface ProductListSectionProps {
   sortOptions: Streamable<SortOption[]>;
   compareProducts?: Streamable<Product[]>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
-  compareAction?: ComponentProps<'form'>['action'];
+  compareHref?: string;
   compareLabel?: Streamable<string>;
+  showCompare?: Streamable<boolean>;
   filterLabel?: string;
   filtersPanelTitle?: Streamable<string>;
   resetFiltersLabel?: Streamable<string>;
@@ -71,8 +72,9 @@ export function ProductListSection({
   sortOptions: streamableSortOptions,
   sortDefaultValue,
   filters,
-  compareAction,
+  compareHref,
   compareLabel,
+  showCompare,
   paginationInfo,
   filterLabel = 'Filters',
   filtersPanelTitle: streamableFiltersPanelTitle = 'Filters',
@@ -173,7 +175,7 @@ export function ProductListSection({
 
           <div className="flex-1 group-has-[[data-pending]]/product-list-section:animate-pulse">
             <ProductList
-              compareAction={compareAction}
+              compareHref={compareHref}
               compareLabel={compareLabel}
               compareParamName={compareParamName}
               compareProducts={compareProducts}
@@ -181,7 +183,7 @@ export function ProductListSection({
               emptyStateTitle={emptyStateTitle}
               placeholderCount={placeholderCount}
               products={products}
-              showCompare
+              showCompare={showCompare}
             />
 
             {paginationInfo && <CursorPagination info={paginationInfo} />}
