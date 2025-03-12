@@ -1,7 +1,7 @@
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 
-import { schema } from '@/vibes/soul/sections/sign-in-section/schema';
+import { schema } from '@/vibes/soul/sections/sign-in/schema';
 
 export async function signInAction(lastResult: SubmissionResult | null, formData: FormData) {
   'use server';

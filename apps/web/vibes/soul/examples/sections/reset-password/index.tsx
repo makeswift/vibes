@@ -1,10 +1,15 @@
+import { ResetPassword } from '@/vibes/soul/sections/reset-password';
+
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
+import { schema } from '@/vibes/soul/sections/reset-password/schema';
 
-import { schema } from '@/vibes/soul/sections/forgot-password-section/schema';
+export default function Preview() {
+  return <ResetPassword action={resetPasswordAction} />;
+}
 
-export async function forgotPasswordAction(
-  state: { lastResult: SubmissionResult | null; successMessage?: string },
+async function resetPasswordAction(
+  lastResult: { lastResult: SubmissionResult | null; successMessage?: string },
   formData: FormData,
 ): Promise<{ lastResult: SubmissionResult | null; successMessage?: string }> {
   'use server';
@@ -18,10 +23,5 @@ export async function forgotPasswordAction(
   // Simulate a network request
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  // const user = await logIn(submission.value)
-
-  return {
-    lastResult: submission.reply(),
-    successMessage: 'Check your email for a reset link',
-  };
+  return { lastResult: submission.reply({ resetForm: true }), successMessage: 'Password updated' };
 }

@@ -2,6 +2,12 @@ import { Components } from '@/vibes/schema';
 
 export const sections = [
   {
+    name: 'maintenance',
+    dependencies: ['lucide-react'],
+    registryDependencies: ['streamable', 'logo', 'section-layout'],
+    files: ['sections/maintenance/index.tsx'],
+  },
+  {
     name: 'sticky-sidebar-layout',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -81,7 +87,7 @@ export const sections = [
   {
     name: 'discount',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
+    registryDependencies: ['button'],
     files: ['sections/discount/index.tsx'],
   },
   {
@@ -178,13 +184,13 @@ export const sections = [
     files: ['sections/footer/index.tsx'],
   },
   {
-    name: 'forgot-password-section',
-    dependencies: [],
-    registryDependencies: ['button', 'input'],
+    name: 'forgot-password',
+    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    registryDependencies: ['button', 'input', 'form-status'],
     files: [
-      'sections/forgot-password-section/index.tsx',
-      'sections/forgot-password-section/forgot-password-form.tsx',
-      'sections/forgot-password-section/schema.ts',
+      'sections/forgot-password/index.tsx',
+      'sections/forgot-password/forgot-password-form.tsx',
+      'sections/forgot-password/schema.ts',
     ],
   },
   {
@@ -218,6 +224,12 @@ export const sections = [
     files: ['sections/order-history-section/index.tsx'],
   },
   {
+    name: 'order-details-section',
+    dependencies: ['lucide-react'],
+    registryDependencies: ['badge'],
+    files: ['sections/order-details-section/index.tsx'],
+  },
+  {
     name: 'product-carousel',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['product-card', 'carousel', 'skeleton', 'streamable'],
@@ -246,13 +258,13 @@ export const sections = [
     ],
   },
   {
-    name: 'reset-password-section',
-    dependencies: [],
-    registryDependencies: ['button', 'input'],
+    name: 'reset-password',
+    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    registryDependencies: ['button', 'input', 'form-status'],
     files: [
-      'sections/reset-password-section/index.tsx',
-      'sections/reset-password-section/reset-password-form.tsx',
-      'sections/reset-password-section/schema.ts',
+      'sections/reset-password/index.tsx',
+      'sections/reset-password/reset-password-form.tsx',
+      'sections/reset-password/schema.ts',
     ],
   },
   {
@@ -268,19 +280,19 @@ export const sections = [
     files: ['sections/section-layout/index.tsx'],
   },
   {
-    name: 'sign-in-section',
-    dependencies: ['clsx'],
-    registryDependencies: ['button', 'input'],
+    name: 'sign-in',
+    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    registryDependencies: ['button', 'button-link', 'animated-link', 'form-status', 'input'],
     files: [
-      'sections/sign-in-section/index.tsx',
-      'sections/sign-in-section/sign-in-form.tsx',
-      'sections/sign-in-section/schema.ts',
+      'sections/sign-in/index.tsx',
+      'sections/sign-in/sign-in-form.tsx',
+      'sections/sign-in/schema.ts',
     ],
   },
   {
     name: 'dynamic-form-section',
     dependencies: ['clsx'],
-    registryDependencies: ['button', 'input'],
+    registryDependencies: ['animated-link', 'button-link', 'button', 'input', 'form-status'],
     files: ['sections/dynamic-form-section/index.tsx'],
   },
   {

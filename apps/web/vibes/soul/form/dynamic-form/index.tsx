@@ -15,7 +15,6 @@ import { MouseEvent, ReactNode, startTransition, useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
 
-import { Button, ButtonProps } from '@/vibes/soul/primitives/button';
 import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group';
 import { CardRadioGroup } from '@/vibes/soul/form/card-radio-group';
 import { Checkbox } from '@/vibes/soul/form/checkbox';
@@ -28,6 +27,7 @@ import { RadioGroup } from '@/vibes/soul/form/radio-group';
 import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Textarea } from '@/vibes/soul/form/textarea';
+import { Button, ButtonProps } from '@/vibes/soul/primitives/button';
 
 import { Field, FieldGroup, schema } from './schema';
 

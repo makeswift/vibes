@@ -2,3 +2,73 @@
 title: Discount
 preview: discount-example
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+
+import { Discount } from '@/vibes/soul/sections/discount';
+
+function Usage() {
+
+    return (
+        <Discount
+          backgroundImage="https://rstr.in/monogram/vibes/-ZKYHmBgOcN"
+          discounts={[
+            {
+              label: '20% off',
+              code: 'TAKE20',
+            },
+            {
+              label: '5% off',
+              code: 'TAKE5',
+            },
+          ]}
+          id="example-discount"
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### DiscountProps
+
+| Prop               | Type                                                         | Default |
+| ------------------ | ------------------------------------------------------------ | ------- |
+| `id*`              | `string`                                                     |         |
+| `backgroundImage*` | `string`                                                     |         |
+| `discounts*`       | `DiscountType[]` <Tooltip content="See DiscountType below"/> |         |
+| `onDismiss`        | `() => void`                                                 |         |
+
+### DiscountType
+
+| Prop    | Type     | Default |
+| ------- | -------- | ------- |
+| `label` | `string` |         |
+| `code`  | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --discount-focus: hsl(var(--primary));
+  --discount-font-family: var(--font-family-body);
+  --discount-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
+  --discount-image-background: hsl(var(--contrast-100));
+  --discount-text: hsl(var(--background));
+  --discount-spinner-background: hsl(var(--background));
+  --discount-spinner-text: hsl(var(--foreground));
+  --discount-close-background: transparent;
+  --discount-close-icon: hsl(var(--foreground) / 50%);
+  --discount-close-background-hover: hsl(var(--background) / 40%);
+}
+```

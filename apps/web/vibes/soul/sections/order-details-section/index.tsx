@@ -70,7 +70,7 @@ export interface Order {
   summary: Summary;
 }
 
-interface Props {
+export interface OrderDetailsSectionProps {
   order: Order;
   title?: string;
   shipmentAddressLabel?: string;
@@ -79,6 +79,30 @@ interface Props {
   prevHref?: string;
 }
 
+/**
+ * This component supports various CSS variables for theming. Here's a comprehensive list, along
+ * with their default values:
+ *
+ * ```css
+ * :root {
+ *   --order-details-section-focus: hsl(var(--primary));
+ *   --order-details-section-font-family: hsl(var(--font-family-body));
+ *   --order-details-section-title-font-family: hsl(var(--font-family-heading));
+ *   --order-details-text-primary: hsl(var(--foreground));
+ *   --order-details-text-secondary: hsl(var(--contrast-500));
+ *   --order-details-section-border: hsl(var(--contrast-100));
+ *   --order-details-section-button-border: hsl(var(--contrast-100));
+ *   --order-details-section-button-border-hover: hsl(var(--contrast-200));
+ *   --order-details-section-button-icon: hsl(var(--foreground));
+ *   --order-details-section-button-background: hsl(var(--background));
+ *   --order-details-section-button-background-hover: hsl(var(--contrast-100));
+ *   --order-details-section-image-background: hsl(var(--contrast-100));
+ *   --order-details-section-line-item: hsl(var(--contrast-300))
+ *   --order-details-section-line-item-subtitle: hsl(var(--contrast-500))
+ *   --order-details-section-line-item-subtext: hsl(var(--contrast-400))
+ * }
+ * ```
+ */
 export function OrderDetailsSection({
   order,
   title = `Order #${order.id}`,
@@ -86,22 +110,24 @@ export function OrderDetailsSection({
   shipmentMethodLabel,
   summaryTotalLabel,
   prevHref = '/orders',
-}: Props) {
+}: OrderDetailsSectionProps) {
   return (
-    <div className="@container">
-      <div className="flex gap-4 border-b border-contrast-100 pb-8">
+    <div className="font-[family-name:var(--order-details-section-font-family,var(--font-family-body))] text-[var(--order-details-text-primary,hsl(var(--foreground)))] @container">
+      <div className="flex gap-4 border-b border-[var(--order-details-section-border,hsl(var(--contrast-100)))] pb-8">
         <Link
-          className="mt-1 flex h-12 w-12 items-center justify-center rounded-full border border-contrast-100 text-foreground ring-primary transition-colors duration-300 hover:border-contrast-200 hover:bg-contrast-100 focus-visible:outline-0 focus-visible:ring-2"
+          className="mt-1 flex h-12 w-12 items-center justify-center rounded-full border border-[var(--order-details-section-button-border,hsl(var(--contrast-100)))] bg-[var(--order-details-section-button-background,hsl(var(--background)))] text-[var(--order-details-section-button-icon,hsl(var(--foreground)))] ring-[var(--order-details-section-focus,hsl(var(--primary)))] transition-colors duration-300 hover:border-[var(--order-details-section-button-border-hover,hsl(var(--contrast-200)))] hover:bg-[var(--order-details-section-button-background-hover,hsl(var(--contrast-100)))] focus-visible:outline-none focus-visible:ring-2"
           href={prevHref}
         >
           <ArrowLeft />
         </Link>
         <div className="space-y-1">
           <div className="flex items-center gap-3">
-            <h1 className="text-4xl">{title}</h1>
+            <h1 className="font-[family-name:var(--order-details-section-title-font-family,var(--font-family-heading))] text-4xl">
+              {title}
+            </h1>
             <Badge variant={order.statusColor}>{order.status}</Badge>
           </div>
-          <p>{order.date}</p>
+          <p className="text-base font-light">{order.date}</p>
         </div>
       </div>
       <div className="grid @3xl:flex">
@@ -116,6 +142,9 @@ export function OrderDetailsSection({
           ))}
         </div>
         <div className="order-1 basis-72 pt-8 @3xl:order-2">
+          <div className="font-[family-name:var(--order-details-section-title-font-family,var(--font-family-heading))] text-2xl font-medium">
+            Order summary
+          </div>
           <Summary summary={order.summary} totalLabel={summaryTotalLabel} />
         </div>
       </div>
@@ -133,26 +162,32 @@ function Shipment({
   methodLabel?: string;
 }) {
   return (
-    <div className="border-b border-contrast-100 py-8 @container">
+    <div className="border-b border-[var(--order-details-section-border,hsl(var(--contrast-100)))] py-8 @container">
       <div className="space-y-6">
-        <div className="text-2xl font-medium">{destination.title}</div>
+        <div className="font-[family-name:var(--order-details-section-title-font-family,var(--font-family-heading))] text-2xl font-medium">
+          {destination.title}
+        </div>
         <div className="grid gap-8 @xl:flex @xl:gap-20">
           <div className="text-sm">
             <h3 className="font-semibold">{addressLabel}</h3>
-            <p>{destination.address.name}</p>
-            <p>{destination.address.street1}</p>
-            <p>{destination.address.street2}</p>
-            <p>
-              {`${destination.address.city}, ${destination.address.state} ${destination.address.zipcode}`}
-            </p>
-            <p>{destination.address.country}</p>
+            <div className="text-[var(--order-details-text-secondary,hsl(var(--contrast-500)))]">
+              <p>{destination.address.name}</p>
+              <p>{destination.address.street1}</p>
+              <p>{destination.address.street2}</p>
+              <p>
+                {`${destination.address.city}, ${destination.address.state} ${destination.address.zipcode}`}
+              </p>
+              <p>{destination.address.country}</p>
+            </div>
           </div>
           {destination.shipments.map((shipment) => (
             <div className="text-sm" key={shipment.name}>
               <h3 className="font-semibold">{methodLabel}</h3>
-              <p>{shipment.name}</p>
-              <p>{shipment.status}</p>
-              <ShipmentTracking tracking={shipment.tracking} />
+              <div className="text-[var(--order-details-text-secondary,hsl(var(--contrast-500)))]">
+                <p>{shipment.name}</p>
+                <p>{shipment.status}</p>
+                <ShipmentTracking tracking={shipment.tracking} />
+              </div>
             </div>
           ))}
         </div>
@@ -199,21 +234,21 @@ function ShipmentTracking({
 function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
   return (
     <Link
-      className="group grid shrink-0 cursor-pointer gap-8 rounded-xl ring-primary ring-offset-4 focus-visible:outline-0 focus-visible:ring-2 @sm:flex @sm:rounded-2xl"
+      className="group grid shrink-0 cursor-pointer gap-8 rounded-xl ring-[var(--order-details-section-focus,hsl(var(--primary)))] ring-offset-4 focus-visible:outline-none focus-visible:ring-2 @sm:flex @sm:rounded-2xl"
       href={lineItem.href}
       id={lineItem.id}
     >
-      <div className="relative aspect-square basis-40 overflow-hidden rounded-[inherit] border border-contrast-100 bg-contrast-100">
+      <div className="relative aspect-square basis-40 overflow-hidden rounded-[inherit] border border-[var(--order-details-section-border,hsl(var(--contrast-100)))] bg-[var(--order-details-section-image-background,hsl(var(--contrast-100)))]">
         {lineItem.image?.src != null ? (
           <Image
             alt={lineItem.image.alt}
-            className="w-full scale-100 select-none bg-contrast-100 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+            className="w-full scale-100 select-none object-cover transition-transform duration-500 ease-out group-hover:scale-110"
             fill
             sizes="10rem"
             src={lineItem.image.src}
           />
         ) : (
-          <div className="pl-2 pt-3 text-4xl font-bold leading-[0.8] tracking-tighter text-contrast-300 transition-transform duration-500 ease-out group-hover:scale-105">
+          <div className="pl-2 pt-3 text-4xl font-bold leading-[0.8] tracking-tighter text-[var(--order-details-section-line-item,hsl(var(--contrast-300)))] transition-transform duration-500 ease-out group-hover:scale-105">
             {lineItem.title}
           </div>
         )}
@@ -223,7 +258,9 @@ function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
         <div>
           <div className="font-semibold">{lineItem.title}</div>
           {lineItem.subtitle != null && lineItem.subtitle !== '' && (
-            <div className="font-normal text-contrast-500">{lineItem.subtitle}</div>
+            <div className="font-normal text-[var(--order-details-section-line-item-subtitle,hsl(var(--contrast-500)))]">
+              {lineItem.subtitle}
+            </div>
           )}
         </div>
         <div className="flex gap-1 text-sm">
@@ -246,14 +283,16 @@ function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
 
 function Summary({ summary, totalLabel = 'Total' }: { summary: Summary; totalLabel?: string }) {
   return (
-    <div className="divide-y divide-gray-100">
+    <div>
       <div className="space-y-2 pb-3 pt-5">
         {summary.lineItems.map((lineItem, index) => (
           <div className="flex justify-between" key={index}>
             <div>
               <div className="text-sm">{lineItem.label}</div>
               {lineItem.subtext != null && lineItem.subtext !== '' && (
-                <div className="text-xs text-contrast-400">{lineItem.subtext}</div>
+                <div className="text-xs text-[var(--order-details-section-line-item-subtext,hsl(var(--contrast-400)))]">
+                  {lineItem.subtext}
+                </div>
               )}
             </div>
 
@@ -261,7 +300,7 @@ function Summary({ summary, totalLabel = 'Total' }: { summary: Summary; totalLab
           </div>
         ))}
       </div>
-      <div className="flex justify-between border-t border-contrast-200 py-3 font-semibold">
+      <div className="flex justify-between border-t border-[var(--order-details-section-border,hsl(var(--contrast-100)))] py-3 font-semibold">
         <span>{totalLabel}</span>
         <span>{summary.total}</span>
       </div>

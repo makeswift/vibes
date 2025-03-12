@@ -277,10 +277,10 @@ const sectionPages: [Page, ...Page[]] = [
   },
   { title: 'Footer', slug: 'footer', file: 'docs/footer.mdx', component: 'footer' },
   {
-    title: 'Forgot Password Section',
-    slug: 'forgot-password-section',
-    file: 'docs/forgot-password-section.mdx',
-    component: 'forgot-password-section',
+    title: 'Forgot Password',
+    slug: 'forgot-password',
+    file: 'docs/forgot-password.mdx',
+    component: 'forgot-password',
   },
   {
     title: 'Header',
@@ -301,14 +301,20 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'inline-email-form',
   },
   {
+    title: 'Maintenance',
+    slug: 'maintenance',
+    file: 'docs/maintenance.mdx',
+    component: 'maintenance',
+  },
+  {
     title: 'Not Found',
     slug: 'not-found',
     file: 'docs/not-found.mdx',
     component: 'not-found',
   },
   {
-    title: 'Order Details Section',
-    slug: 'order-details-section',
+    title: 'Order Details',
+    slug: 'order-details',
     file: 'docs/order-details-section.mdx',
     component: 'order-details-section',
   },
@@ -343,10 +349,10 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'product-detail',
   },
   {
-    title: 'Reset Password Section',
-    slug: 'reset-password-section',
-    file: 'docs/reset-password-section.mdx',
-    component: 'reset-password-section',
+    title: 'Reset Password',
+    slug: 'reset-password',
+    file: 'docs/reset-password.mdx',
+    component: 'reset-password',
   },
   { title: 'Reviews', slug: 'reviews', file: 'docs/reviews.mdx', component: 'reviews' },
   {
@@ -356,10 +362,10 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'section-layout',
   },
   {
-    title: 'Sign In Section',
-    slug: 'sign-in-section',
-    file: 'docs/sign-in-section.mdx',
-    component: 'sign-in-section',
+    title: 'Sign In',
+    slug: 'sign-in',
+    file: 'docs/sign-in.mdx',
+    component: 'sign-in',
   },
   {
     title: 'Slideshow',
