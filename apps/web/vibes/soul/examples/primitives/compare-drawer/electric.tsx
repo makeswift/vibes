@@ -1,12 +1,15 @@
 'use client';
 
-import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer';
+import { CompareDrawer, CompareDrawerContext, useCompareDrawer } from '@/vibes/soul/primitives/compare-drawer';
 
 export default function Preview() {
+
   return (
-    <div className="relative h-screen">
-      <CompareDrawer items={compareProducts} />
-    </div>
+    <CompareDrawerContext value={{ optimisticItems: compareProducts, setOptimisticItems: () => {} }}>
+      <div className="relative h-screen">
+        <CompareDrawer  />
+      </div>
+    </CompareDrawerContext>
   );
 }
 
