@@ -15,7 +15,9 @@ import {
 } from '@/vibes/soul/primitives/compare-card';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
-export interface CompareSectionProps {
+import { CompareAddToCartAction } from '@/vibes/soul/primitives/compare-card/add-to-cart-form';
+
+interface CompareSectionProps {
   className?: string;
   title?: string;
   products: Streamable<CompareProduct[]>;
@@ -24,8 +26,16 @@ export interface CompareSectionProps {
   addToCartLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
-  addToCartAction?: (id: string) => Promise<void>;
+  descriptionLabel?: string;
+  noDescriptionLabel?: string;
+  ratingLabel?: string;
+  noRatingsLabel?: string;
+  otherDetailsLabel?: string;
+  noOtherDetailsLabel?: string;
+  viewOptionsLabel?: string;
+  preorderLabel?: string;
   placeholderCount?: number;
+  addToCartAction?: CompareAddToCartAction;
 }
 
 /**
@@ -54,9 +64,23 @@ export function CompareSection({
   emptyStateSubtitle = 'Browse our catalog to find products.',
   previousLabel,
   nextLabel,
+  descriptionLabel,
+  noDescriptionLabel,
+  ratingLabel,
+  noRatingsLabel,
+  otherDetailsLabel,
+  noOtherDetailsLabel,
+  viewOptionsLabel,
+  preorderLabel,
+  placeholderCount,
 }: CompareSectionProps) {
   return (
-    <Stream fallback={<CompareSectionSkeleton className={className} />} value={streamableProducts}>
+    <Stream
+      fallback={
+        <CompareSectionSkeleton className={className} placeholderCount={placeholderCount} />
+      }
+      value={streamableProducts}
+    >
       {(products) => {
         if (products.length === 0) {
           return (
@@ -64,6 +88,7 @@ export function CompareSection({
               className={className}
               emptyStateSubtitle={emptyStateSubtitle}
               emptyStateTitle={emptyStateTitle}
+              placeholderCount={placeholderCount}
             />
           );
         }
@@ -94,9 +119,17 @@ export function CompareSection({
                       <CompareCard
                         addToCartAction={addToCartAction}
                         addToCartLabel={addToCartLabel}
+                        descriptionLabel={descriptionLabel}
                         imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
                         key={product.id}
+                        noDescriptionLabel={noDescriptionLabel}
+                        noOtherDetailsLabel={noOtherDetailsLabel}
+                        noRatingsLabel={noRatingsLabel}
+                        otherDetailsLabel={otherDetailsLabel}
+                        preorderLabel={preorderLabel}
                         product={product}
+                        ratingLabel={ratingLabel}
+                        viewOptionsLabel={viewOptionsLabel}
                       />
                     </CarouselItem>
                   ))}

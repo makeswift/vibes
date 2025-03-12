@@ -2,12 +2,76 @@
 
 import * as Portal from '@radix-ui/react-portal';
 import { ArrowRight, X } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs';
-import { ComponentProps, startTransition } from 'react';
+import { createContext, ReactNode, startTransition, useContext, useOptimistic } from 'react';
 
-import { Button } from '@/vibes/soul/primitives/button';
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
+import Link from 'next/link';
+import Image from 'next/image';
+
+interface OptimisticAction {
+  type: 'add' | 'remove';
+  item: CompareDrawerItem;
+}
+
+interface CompareDrawerContext {
+  optimisticItems: CompareDrawerItem[];
+  setOptimisticItems: (action: OptimisticAction) => void;
+}
+
+export const CompareDrawerContext = createContext<CompareDrawerContext | undefined>(undefined);
+
+export function CompareDrawerProvider({
+  children,
+  items,
+}: {
+  children: ReactNode;
+  items: CompareDrawerItem[];
+}) {
+  const [optimisticItems, setOptimisticItems] = useOptimistic(
+    items,
+    (state: CompareDrawerItem[], { type, item }: OptimisticAction) => {
+      switch (type) {
+        case 'add':
+          return [...state, item].sort((a, b) => {
+            const numA = Number(a.id);
+            const numB = Number(b.id);
+
+            if (!Number.isNaN(numA) && !Number.isNaN(numB)) {
+              return numA - numB;
+            }
+
+            if (!Number.isNaN(numA)) return -1;
+            if (!Number.isNaN(numB)) return 1;
+
+            return a.id < b.id ? -1 : 1;
+          });
+
+        case 'remove':
+          return state.filter((i) => i.id !== item.id);
+
+        default:
+          return state;
+      }
+    },
+  );
+
+  return (
+    <CompareDrawerContext value={{ optimisticItems, setOptimisticItems }}>
+      {children}
+    </CompareDrawerContext>
+  );
+}
+
+export function useCompareDrawer() {
+  const context = useContext(CompareDrawerContext);
+
+  if (context === undefined) {
+    throw new Error('useCompareDrawer must be used within a CompareDrawerProvider');
+  }
+
+  return context;
+}
 
 function getInitials(name: string): string {
   return name
@@ -26,9 +90,8 @@ interface CompareDrawerItem {
 }
 
 export interface CompareDrawerProps {
-  items: CompareDrawerItem[];
+  href?: string;
   paramName?: string;
-  action?: ComponentProps<'form'>['action'];
   submitLabel?: string;
 }
 
@@ -57,28 +120,25 @@ export interface CompareDrawerProps {
  * ```
  */
 export function CompareDrawer({
-  items,
+  href = '/compare',
   paramName = 'compare',
-  action,
   submitLabel = 'Compare',
 }: CompareDrawerProps) {
-  const [, setParam] = useQueryState(
+  const [params, setParam] = useQueryState(
     paramName,
     parseAsArrayOf(parseAsString).withOptions({ shallow: false, scroll: false }),
   );
 
+  const { optimisticItems, setOptimisticItems } = useCompareDrawer();
+
   return (
-    items.length > 0 && (
+    optimisticItems.length > 0 && (
       <Portal.Root asChild>
         <div className="sticky bottom-0 z-10 w-full border-t bg-[var(--compare-drawer-background,hsl(var(--background)))] px-3 py-4 @container @md:py-5 @xl:px-6 @5xl:px-10">
-          <form
-            action={action}
-            className="mx-auto flex w-full max-w-7xl flex-col items-start justify-end gap-x-3 gap-y-4 @md:flex-row"
-          >
+          <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-end gap-x-3 gap-y-4 @md:flex-row">
             <div className="flex flex-1 flex-wrap justify-end gap-4">
-              {items.map((item) => (
+              {optimisticItems.map((item) => (
                 <div className="relative" key={item.id}>
-                  <input key={item.id} name={paramName} type="hidden" value={item.id} />
                   <Link
                     className="group relative flex max-w-56 items-center overflow-hidden whitespace-nowrap rounded-xl border border-[var(--compare-drawer-link-border,hsl(var(--contrast-100)))] bg-[var(--compare-drawer-card-background,hsl(var(--background)))] font-semibold ring-[var(--compare-drawer-card-focus,hsl(var(--primary)))] transition-all duration-150 hover:bg-[var(--compare-drawer-card-background-hover,hsl(var(--contrast-100)))] focus:outline-none focus:ring-2"
                     href={item.href}
@@ -110,6 +170,8 @@ export function CompareDrawer({
                         await setParam((prev) => {
                           const next = prev?.filter((v) => v !== item.id) ?? [];
 
+                          setOptimisticItems({ type: 'remove', item });
+
                           return next.length > 0 ? next : null;
                         });
                       });
@@ -121,13 +183,22 @@ export function CompareDrawer({
                 </div>
               ))}
             </div>
-            <Button className="hidden @md:block" size="medium" type="submit" variant="primary">
-              {submitLabel} <ArrowRight absoluteStrokeWidth size={20} strokeWidth={1} />
-            </Button>
-            <Button className="w-full @md:hidden" size="small" type="submit" variant="primary">
-              {submitLabel} <ArrowRight absoluteStrokeWidth size={16} strokeWidth={1} />
-            </Button>
-          </form>
+            <ButtonLink
+              className="hidden @md:block"
+              href={`${href}?${paramName}=${params?.toString()}`}
+              size="medium"
+              variant="primary"
+            >
+              <span className="inline-flex items-center gap-1">
+                {submitLabel} <ArrowRight absoluteStrokeWidth size={20} strokeWidth={1} />
+              </span>
+            </ButtonLink>
+            <ButtonLink className="w-full @md:hidden" href={href} size="small" variant="primary">
+              <span className="inline-flex items-center gap-1">
+                {submitLabel} <ArrowRight absoluteStrokeWidth size={16} strokeWidth={1} />
+              </span>
+            </ButtonLink>
+          </div>
         </div>
       </Portal.Root>
     )
