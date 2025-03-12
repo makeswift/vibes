@@ -161,6 +161,7 @@ export default async function Page({
   const prevPage = pageIndex > 0 ? allPages[pageIndex - 1] : null;
   const nextPage = pageIndex < allPages.length - 1 ? allPages[pageIndex + 1] : null;
   const component = vibe.components.find((c) => c.name === page.component);
+  console.log(meta);
   const numDependencies = component
     ? component.registryDependencies.length + component.dependencies.length
     : 0;

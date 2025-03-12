@@ -3,3 +3,100 @@ title: Sign In
 preview: sign-in-example
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { SignIn } from '@/vibes/soul/sections/sign-in';
+import { schema } from '@/vibes/soul/sections/sign-in/schema';
+import { SubmissionResult } from '@conform-to/react';
+import { parseWithZod } from '@conform-to/zod';
+
+function Usage() {
+    return <SignIn action={signInAction} forgotPasswordHref="#" />;
+}
+
+async function signInAction(lastResult: SubmissionResult | null, formData: FormData) {
+    'use server';
+
+    const submission = parseWithZod(formData, { schema });
+
+    if (submission.status !== 'success') {
+        return submission.reply({ formErrors: ['Boom!'] });
+    }
+
+    // Simulate a network request
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // const user = await logIn(submission.value)
+
+    return submission.reply({ resetForm: true });
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+###
+
+| Prop                  | Type                                                       | Default                                                                                                                                      |
+| --------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`               | `string`                                                   | `'Sign In'`                                                                                                                                  |
+| `signUpTitle`         | `string`                                                   | `'New Customer?'`                                                                                                                            |
+| `signUpDescription`   | `string`                                                   | `'Create an account with us and be able to:'`                                                                                                |
+| `signUpBenefits`      | `string[]`                                                 | `[ 'Check out faster', 'Save multiple shipping addresses', 'Access your order history', 'Track new orders', 'Save items to your Wish List']` |
+| `action*`             | `SignInAction` <Tooltip content="See SignInAction below"/> |                                                                                                                                              |
+| `submitLabel`         | `string`                                                   |                                                                                                                                              |
+| `emailLabel`          | `string`                                                   |                                                                                                                                              |
+| `passwordLabel`       | `string`                                                   |                                                                                                                                              |
+| `forgotPasswordHref*` | `string`                                                   | `'/forgot-password'`                                                                                                                         |
+| `forgotPasswordLabel` | `string`                                                   | `'Forgot your password?'`                                                                                                                    |
+| `signUpHref`          | `string`                                                   | `'/sign-up'`                                                                                                                                 |
+
+### SignInAction
+
+```ts
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
+
+export type SignInAction = Action<SubmissionResult | null, FormData>;
+```
+
+This component uses Confom to handle form submissions. Refer to the [Conform docs](https://conform.guide/) for more details.
+
+Here's an example of an action function that does validation and simulates making a network request:
+
+```ts
+async function signInAction(lastResult: SubmissionResult | null, formData: FormData) {
+  'use server';
+
+  const submission = parseWithZod(formData, { schema });
+
+  if (submission.status !== 'success') {
+    return submission.reply({ formErrors: ['Boom!'] });
+  }
+
+  // Simulate a network request
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  // const user = await logIn(submission.value)
+
+  return submission.reply({ resetForm: true });
+}
+```
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --sign-in-font-family: var(--font-family-body);
+  --sign-in-title-font-family: var(--font-family-heading);
+  --sign-in-title: hsl(var(--foreground));
+  --sign-in-description: hsl(var(--contrast-500));
+}
+```

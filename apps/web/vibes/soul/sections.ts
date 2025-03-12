@@ -179,7 +179,7 @@ export const sections = [
   },
   {
     name: 'forgot-password',
-    dependencies: [],
+    dependencies: ['@conform-to/zod', '@conform-to/react'],
     registryDependencies: ['button', 'input', 'form-status'],
     files: [
       'sections/forgot-password/index.tsx',
@@ -247,7 +247,7 @@ export const sections = [
   },
   {
     name: 'reset-password',
-    dependencies: [],
+    dependencies: ['@conform-to/zod', '@conform-to/react'],
     registryDependencies: ['button', 'input', 'form-status'],
     files: [
       'sections/reset-password/index.tsx',
@@ -269,8 +269,8 @@ export const sections = [
   },
   {
     name: 'sign-in',
-    dependencies: ['clsx'],
-    registryDependencies: ['button', 'input'],
+    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    registryDependencies: ['button', 'button-link', 'animated-link', 'form-status', 'input'],
     files: [
       'sections/sign-in/index.tsx',
       'sections/sign-in/sign-in-form.tsx',
