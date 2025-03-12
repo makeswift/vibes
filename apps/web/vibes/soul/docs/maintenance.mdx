@@ -6,3 +6,59 @@ preview:
   Luxury: maintenance-luxury
 previewSize: md
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Maintenance } from '@/vibes/soul/sections/maintenance';
+
+function Usage() {
+    return (
+        <Maintenance
+          contactEmail="info@outershell.com"
+          contactPhone="+(1) 408 123 4567"
+          logo={"Soul"}
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### MaintenanceProps
+
+| Prop            | Type                                                                            | Default                                                                          |
+| --------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `className`     | `string`                                                                        | `''`                                                                             |
+| `logo*`         | [`Streamable`](/docs/soul/streamable)`<string \| { src: string; alt: string }>` |                                                                                  |
+| `logoWidth`     | `number`                                                                        | `200`                                                                            |
+| `logoHeight`    | `number`                                                                        | `40`                                                                             |
+| `logoHref`      | `string`                                                                        | `'/'`                                                                            |
+| `logoLabel`     | `string`                                                                        | `'Home'`                                                                         |
+| `title`         | `string`                                                                        | `'We are down for maintenance'`                                                  |
+| `statusMessage` | `string`                                                                        | `'Sorry for the inconvenience, we're currently working on improving our store.'` |
+| `contactText`   | `string`                                                                        | `'Contact us'`                                                                   |
+| `contactPhone`  | `string`                                                                        |                                                                                  |
+| `contactEmail`  | `string`                                                                        |                                                                                  |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --maintenance-focus: hsl(var(--primary));
+  --maintenance-font-family: var(--font-family-body);
+  --maintenance-title-font-family: var(--font-family-heading);
+  --maintenance-title: hsl(var(--foreground));
+  --maintenance-status-message: hsl(var(--contrast-500));
+  --maintenance-contact: hsl(var(--foreground));
+  --maintenance-contact-link: hsl(var(--contrast-400));
+  --maintenance-contact-link-hover: hsl(var(--foreground));
+}
+```
