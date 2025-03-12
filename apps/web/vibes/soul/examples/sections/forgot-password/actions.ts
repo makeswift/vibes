@@ -15,10 +15,8 @@ export async function forgotPasswordAction(
     return { lastResult: submission.reply({ formErrors: ['Boom!'] }) };
   }
 
-  // Simulate a network request
+  // Simulate sending email
   await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  // const user = await logIn(submission.value)
 
   return {
     lastResult: submission.reply(),
