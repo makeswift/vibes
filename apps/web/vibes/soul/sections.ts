@@ -235,6 +235,19 @@ export const sections = [
     files: ['sections/order-details-section/index.tsx'],
   },
   {
+    name: 'order-list',
+    dependencies: ['clsx'],
+    registryDependencies: [
+      'streamable',
+      'badge',
+      'button-link',
+      'product-card',
+      'cursor-pagination',
+      'skeleton',
+    ],
+    files: ['sections/order-list/index.tsx'],
+  },
+  {
     name: 'product-carousel',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['product-card', 'carousel', 'skeleton', 'streamable'],

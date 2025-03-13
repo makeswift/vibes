@@ -319,10 +319,10 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'order-details-section',
   },
   {
-    title: 'Order List Section',
-    slug: 'order-list-section',
-    file: 'docs/order-list-section.mdx',
-    component: 'order-list-section',
+    title: 'Order List',
+    slug: 'order-list',
+    file: 'docs/order-list.mdx',
+    component: 'order-list',
   },
   {
     title: 'Product Carousel',

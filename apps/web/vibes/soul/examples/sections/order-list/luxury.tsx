@@ -1,5 +1,4 @@
-import { OrderListSection } from '@/vibes/soul/sections/order-list-section';
-import { Order } from '@/vibes/soul/sections/order-list-section/order-list-item';
+import { type Order, OrderList } from '@/vibes/soul/sections/order-list';
 
 export default function Preview() {
   const orders = new Promise<Order[]>((resolve) => {
@@ -10,7 +9,7 @@ export default function Preview() {
 
   return (
     <div className="p-6">
-      <OrderListSection orders={orders} />
+      <OrderList orders={orders} />
     </div>
   );
 }
