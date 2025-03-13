@@ -2,7 +2,8 @@
 
 import { getFormProps, getInputProps, SubmissionResult, useForm } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
-import { ArrowRight, Trash2 } from 'lucide-react';
+import { clsx } from 'clsx';
+import { ArrowRight, Minus, Plus, Trash2 } from 'lucide-react';
 import Image from 'next/image';
 import {
   ComponentPropsWithoutRef,
@@ -14,7 +15,6 @@ import {
 import { useFormStatus } from 'react-dom';
 
 import { Button } from '@/vibes/soul/primitives/button';
-import { Counter } from '@/vibes/soul/primitives/counter';
 import { toast } from '@/vibes/soul/primitives/toaster';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
@@ -87,16 +87,21 @@ const defaultEmptyState = {
  *
  * ```css
  * :root {
+ *   --cart-focus: hsl(var(--primary));
  *   --cart-font-family: var(--font-family-body);
  *   --cart-title-font-family: var(--font-family-heading);
- *   --cart-text: var(--foreground);
- *   --cart-subtitle-text: var(--contrast-500);
- *   --cart-subtext-text: var(--contrast-300);
- *   --cart-icon: var(--contrast-300);
- *   --cart-icon-hover: var(--foreground);
- *   --cart-border: var(--contrast-100);
- *   --cart-image-background: var(--contrast-100);
- *   --cart-button-background: var(--contrast-100);
+ *   --cart-text: hsl(var(--foreground));
+ *   --cart-subtitle-text: hsl(var(--contrast-500));
+ *   --cart-subtext-text: hsl(var(--contrast-300));
+ *   --cart-icon: hsl(var(--contrast-300));
+ *   --cart-icon-hover: hsl(var(--foreground));
+ *   --cart-border: hsl(var(--contrast-100));
+ *   --cart-image-background: hsl(var(--contrast-100));
+ *   --cart-button-background: hsl(var(--contrast-100));
+ *   --cart-counter-icon: hsl(var(--contrast-300));
+ *   --cart-counter-icon-hover: hsl(var(--foreground));
+ *   --cart-counter-background: hsl(var(--background));
+ *   --cart-counter-background-hover: hsl(var(--contast-100) / 50%);
  * }
  * ```
  */
@@ -226,7 +231,7 @@ export function CartClient<LineItem extends CartLineItem>({
               className="flex flex-col items-start gap-x-5 gap-y-4 @container @sm:flex-row"
               key={lineItem.id}
             >
-              <div className="relative aspect-square w-full max-w-24 overflow-hidden rounded-xl bg-[var(--cart-image-background,hsl(var(--contrast-100)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4">
+              <div className="relative aspect-square w-full max-w-24 overflow-hidden rounded-xl bg-[var(--cart-image-background,hsl(var(--contrast-100)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))] focus-visible:ring-offset-4">
                 <Image
                   alt={lineItem.image.alt}
                   className="object-cover"
@@ -298,11 +303,55 @@ function CounterForm({
       <input {...getInputProps(fields.id, { type: 'hidden' })} key={fields.id.id} />
       <div className="flex w-full flex-wrap items-center gap-x-5 gap-y-2">
         <span className="font-medium @xl:ml-auto">{lineItem.price}</span>
+
         {/* Counter */}
-        <Counter decrementAriaLabel={decrementLabel} incrementAriaLabel={incrementLabel} />
+        <div className="flex items-center rounded-lg border border-[var(--cart-counter-border,hsl(var(--contrast-100)))]">
+          <button
+            aria-label={decrementLabel}
+            className={clsx(
+              'group rounded-l-lg bg-[var(--cart-counter-background,hsl(var(--background)))] p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))] disabled:cursor-not-allowed',
+              lineItem.quantity === 1
+                ? 'opacity-50'
+                : 'hover:bg-[var(--cart-counter-background-hover,hsl(var(--contrast-100)/50%))]',
+            )}
+            disabled={lineItem.quantity === 1}
+            name="intent"
+            type="submit"
+            value="decrement"
+          >
+            <Minus
+              className={clsx(
+                'text-[var(--cart-counter-icon,hsl(var(--contrast-300)))] transition-colors duration-300',
+                lineItem.quantity !== 1 &&
+                  'group-hover:text-[var(--cart-counter-icon-hover,hsl(var(--foreground)))]',
+              )}
+              size={18}
+              strokeWidth={1.5}
+            />
+          </button>
+          <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))]">
+            {lineItem.quantity}
+          </span>
+          <button
+            aria-label={incrementLabel}
+            className={clsx(
+              'group rounded-r-lg bg-[var(--cart-counter-background,hsl(var(--background)))] p-3 transition-colors duration-300 hover:bg-[var(--cart-counter-background-hover,hsl(var(--contrast-100)/50%))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))] disabled:cursor-not-allowed',
+            )}
+            name="intent"
+            type="submit"
+            value="increment"
+          >
+            <Plus
+              className="text-[var(--cart-counter-icon,hsl(var(--contrast-300)))] transition-colors duration-300 group-hover:text-[var(--cart-counter-icon-hover,hsl(var(--foreground)))]"
+              size={18}
+              strokeWidth={1.5}
+            />
+          </button>
+        </div>
+
         <button
           aria-label={deleteLabel}
-          className="group -ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-[var(--cart-button-background,hsl(var(--contrast-100)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+          className="group -ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-[var(--cart-button-background,hsl(var(--contrast-100)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))] focus-visible:ring-offset-4"
           name="intent"
           type="submit"
           value="delete"
