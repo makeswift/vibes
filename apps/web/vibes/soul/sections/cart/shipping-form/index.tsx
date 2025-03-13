@@ -19,6 +19,7 @@ import { Select } from '@/vibes/soul/form/select';
 import { Button } from '@/vibes/soul/primitives/button';
 
 import { shippingActionFormDataSchema } from '../schema';
+import { Label } from '@/vibes/soul/form/label';
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
@@ -78,6 +79,7 @@ interface Props {
   updateShippingLabel?: string;
   addShippingLabel?: string;
   showShippingForm?: boolean;
+  noShippingOptionsLabel?: string;
 }
 
 export function ShippingForm({
@@ -102,6 +104,7 @@ export function ShippingForm({
   updateShippingLabel = 'Update shipping',
   addShippingLabel = 'Add shipping',
   showShippingForm = false,
+  noShippingOptionsLabel = 'There are no shipping options available for your address',
 }: Props) {
   const [showForms, setShowForms] = useState(showShippingForm);
   const [showAddressForm, setShowAddressForm] = useState(!address);
@@ -362,7 +365,9 @@ export function ShippingForm({
         </div>
 
         <form
-          className={clsx('space-y-4', { hidden: state.shippingOptions === null })}
+          className={clsx('space-y-4', {
+            hidden: state.shippingOptions === null || state.shippingOptions.length === 0,
+          })}
           {...getFormProps(shippingOptionsForm)}
           action={formAction}
         >
@@ -414,6 +419,15 @@ export function ShippingForm({
             </Button>
           </div>
         </form>
+
+        <div
+          className={clsx('space-y-3', {
+            hidden: state.shippingOptions === null || state.shippingOptions.length > 0,
+          })}
+        >
+          <Label>{shippingOptionsLabel}</Label>
+          <p>{noShippingOptionsLabel}</p>
+        </div>
       </div>
     </div>
   );
