@@ -1,5 +1,5 @@
-import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
+import { SidebarMenu } from '@/vibes/soul/sections/sticky-sidebar-layout/sidebar-menu';
 
 export default function Preview() {
   return (
