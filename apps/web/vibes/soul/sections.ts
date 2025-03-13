@@ -185,7 +185,7 @@ export const sections = [
   {
     name: 'footer',
     dependencies: ['clsx'],
-    registryDependencies: [],
+    registryDependencies: ['streamable', 'logo', 'skeleton'],
     files: ['sections/footer/index.tsx'],
   },
   {

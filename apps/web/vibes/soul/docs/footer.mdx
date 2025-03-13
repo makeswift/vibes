@@ -6,3 +6,117 @@ preview:
   Luxury: footer-luxury-example
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Footer } from '@/vibes/soul/sections/footer';
+
+function Usage() {
+    return (
+        <Footer
+            contactInformation={contactInformation}
+            logo={logo}
+            sections={sections}
+        />
+    );
+}
+export const sections = [
+    {
+      title: 'Help & Support',
+      links: [
+        { label: 'FAQs', href: '#' },
+        { label: 'Contact Us', href: '#' },
+        { label: 'Returns', href: '#' },
+        { label: 'Shipping', href: '#' },
+      ],
+    },
+];
+
+export const logo = 'SOUL';
+
+export const contactInformation = {
+    address: 'info@soul.com',
+    phone: '+(1) 408 123 4567',
+};
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FooterProps
+
+| Prop                 | Type                                                                                                          | Default |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- | ------- |
+| `logo*`              | [`Streamable`](/docs/soul/streamable)`<string \| Image>` <Tooltip content="See Image below"/>                 |         |
+| `sections*`          | [`Streamable`](/docs/soul/streamable)`<Section[]>` <Tooltip content="See Section below"/>                     |         |
+| `copyright`          | [`Streamable`](/docs/soul/streamable)`<string>`                                                               |         |
+| `contactInformation` | [`Streamable`](/docs/soul/streamable)`<ContactInformation>` <Tooltip content="See ContactInformation below"/> |         |
+| `paymentIcons`       | [`Streamable`](/docs/soul/streamable)`<ReactNode[]>`                                                          |         |
+| `socialMediaLinks`   | [`Streamable`](/docs/soul/streamable)`<SocialMediaLink[]>` <Tooltip content="See SocialMediaLink below"/>     |         |
+| `contactTitle`       | `string`                                                                                                      |         |
+| `className`          | `string`                                                                                                      |         |
+| `logoHref`           | `string`                                                                                                      |         |
+| `logoLabel`          | `string`                                                                                                      |         |
+| `logoWidth`          | `number`                                                                                                      |         |
+| `logoHeight`         | `number`                                                                                                      |         |
+
+### Section
+
+| Prop     | Type                                         | Default |
+| -------- | -------------------------------------------- | ------- |
+| `title`  | `string`                                     |         |
+| `links*` | `Link[]` <Tooltip content="See Link below"/> |         |
+
+### Link
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `label*` | `string` |         |
+| `href*`  | `string` |         |
+
+### ContactInformation
+
+| Prop      | Type     | Default |
+| --------- | -------- | ------- |
+| `address` | `string` |         |
+| `phone`   | `string` |         |
+
+### SocialMediaLink
+
+| Prop    | Type        | Default |
+| ------- | ----------- | ------- |
+| `icon*` | `ReactNode` |         |
+| `href*` | `string`    |         |
+
+### Image
+
+| Prop   | Type     | Default |
+| ------ | -------- | ------- |
+| `src*` | `string` |         |
+| `alt*` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --footer-focus: hsl(var(--primary));
+  --footer-background: hsl(var(--background));
+  --footer-border-top: hsl(var(--contrast-100));
+  --footer-border-bottom: hsl(var(--primary));
+  --footer-contact-title: hsl(var(--contrast-300));
+  --footer-contact-text: hsl(var(--foreground));
+  --footer-social-icon: hsl(var(--contrast-400));
+  --footer-social-icon-hover: hsl(var(--foreground));
+  --footer-section-title: hsl(var(--foreground));
+  --footer-link: hsl(var(--contrast-400));
+  --footer-link-hover: hsl(var(--foreground));
+  --footer-copyright: hsl(var(--contrast-400));
+}
+```
