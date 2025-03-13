@@ -10,8 +10,13 @@ export const sections = [
   {
     name: 'sticky-sidebar-layout',
     dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/sticky-sidebar-layout/index.tsx'],
+    registryDependencies: ['streamable', 'skeleton', 'select'],
+    files: [
+      'sections/sticky-sidebar-layout/index.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/index.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/sidebar-menu-link.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/sidebar-menu-select.tsx',
+    ],
   },
   {
     name: 'account-settings',
