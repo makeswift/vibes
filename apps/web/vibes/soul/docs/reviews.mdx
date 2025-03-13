@@ -2,3 +2,87 @@
 title: Reviews
 preview: reviews-example
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Reviews } from '@/vibes/soul/sections/reviews';
+
+function Usage() {
+    return (
+        <Reviews averageRating={4.5} reviews={reviews} totalCount={reviews.length} />
+    );
+}
+
+export const reviews = [
+    {
+        id: '1',
+        review:
+        "Warm and comfortable! I usually train in temperatures between 5-15ºC and this jersey it's perfect combined with a thermal base layer tee and a vest",
+        rating: 5,
+        name: 'Victor',
+        date: 'August 13, 2024',
+    },
+];
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### ReviewsProps
+
+| Prop                | Type                                                                                                              | Default     |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------- |
+| `reviews*`          | [`Streamable`](/docs/soul/streamable)`<Review[]>` <Tooltip content="See Review below"/>                           |             |
+| `averageRating*`    | [`Streamable`](/docs/soul/streamable)`<number>`                                                                   |             |
+| `totalCount`        | [`Streamable`](/docs/soul/streamable)`<number>`                                                                   |             |
+| `paginationInfo`    | [`Streamable`](/docs/soul/streamable)`<CursorPaginationInfo>` <Tooltip content="See CursorPaginationInfo below"/> |             |
+| `nextLabel`         | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |             |
+| `previousLabel`     | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |             |
+| `emptyStateMessage` | `string`                                                                                                          |             |
+| `reviewsLabel`      | `string`                                                                                                          | `'Reviews'` |
+
+### Review
+
+| Prop      | Type     | Default |
+| --------- | -------- | ------- |
+| `id*`     | `string` |         |
+| `rating*` | `number` |         |
+| `review*` | `string` |         |
+| `name*`   | `string` |         |
+| `date*`   | `string` |         |
+
+### CursorPaginationInfo
+
+| Prop                   | Type               | Default |
+| ---------------------- | ------------------ | ------- |
+| `startCursorParamName` | `string`           |         |
+| `startCursor*`         | `string   \| null` |         |
+| `endCursorParamName`   | `string`           |         |
+| `endCursor*`           | `string   \| null` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --reviews-font-family: var(--font-family-body);
+  --reviews-title-font-family: var(--font-family-heading);
+  --reviews-border: hsl(var(--contrast-100));
+  --reviews-count: hsl(var(--contrast-300));
+  -reviews-average: hsl(var(--foreground));
+  --reviews-name: hsl(var(--foreground));
+  --reviews-review: hsl(var(--contrast-500));
+  --reviews-date: hsl(var(--contrast-500));
+  --reviews-empty-message: hsl(var(--foreground));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=3740-78582" />
