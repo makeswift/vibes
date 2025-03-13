@@ -276,11 +276,21 @@ export const sections = [
   },
   {
     name: 'product-list-section',
-    dependencies: ['nuqs'],
-    registryDependencies: ['product-list', 'button', 'toggle-group', 'cursor-pagination'],
+    dependencies: ['lucide-react'],
+    registryDependencies: [
+      'streamable',
+      'button',
+      'cursor-pagination',
+      'product-card',
+      'side-panel',
+      'skeleton',
+      'breadcrumbs',
+      'product-list',
+    ],
     files: [
       'sections/product-list-section/index.tsx',
       'sections/product-list-section/filter-panel.tsx',
+      'sections/product-list-section/filter-parsers.ts',
       'sections/product-list-section/sorting.tsx',
     ],
   },
