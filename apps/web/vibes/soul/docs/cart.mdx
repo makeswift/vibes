@@ -15,107 +15,23 @@ features:
 
 ## Usage
 
-<CodeBlock lang="bash">{`import { Cart } from '@/vibes/soul/sections/cart'`}</CodeBlock>
-
-<CodeBlock lang="bash">{`const products = await getLineItems()
-const subtotal = await getSubtotal()`}</CodeBlock>
-
-<CodeBlock lang="bash">{`<Cart
-  title="Cart"
-  lineItems={products}
-  summary={{
-    title: 'Summary',
-    caption: 'Shipping & taxes calculated at checkout',
-    subtotal: subtotal,
-    subtotalLabel: 'Subtotal',
-    shippingLabel: 'Shipping',
-    taxLabel: 'Tax',
-    tax: '$11.60',
-    grandTotalLabel: 'Total',
-    grandTotal: '$127.60',
-    ctaLabel: 'Checkout',
-  }}
-  emptyState={{
-    title: 'Your cart is empty',
-    subtitle: 'Add some products to get started.',
-    cta: {
-      label: 'Continue shopping',
-      href: '#',
-    },
-  }}
-  removeLineItemAction={removeLineItemAction}
-  updateLineItemQuantityAction={updateLineItemQuantityAction}
-  // redirectToCheckoutAction={}
-/>
-`}</CodeBlock>
-
-### Streaming
-
-Notice in the [API Reference](#api-reference) that some properties accept data (ex. `string` or `number`) or a `Promise`. By passing a `Promise`, you enable the component to stream data from the server as it's loaded.
-
-You can view this in the following example where the `lineItems` and `summary.subtotal` properties are passed as Promises:
-
 ## API Reference
 
-### `Cart`
+### CartProps
 
-| Prop                           | Type                                                                                                    | Default  |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------- | -------- |
-| `title?`                       | `string`                                                                                                | `"Cart"` |
-| `lineItems`                    | [`CartLineItem`](#cartlineitem)`[]` &nbsp; \| &nbsp; `Promise<`[`CartLineItem>`](#cartlineitem)`[]>`    |          |
-| `summary`                      | [`CartSummary`](#cartsummary)                                                                           |          |
-| `emptyState`                   | [`CartEmptyState`](#cartemptystate)                                                                     |          |
-| `removeLineItemAction`         | `function` <Tooltip content='(id: string) => Promise<void>' />                                          |          |
-| `updateLineItemQuantityAction` | `function` <Tooltip content='({ id, quantity } : { id: string; quantity: number }) => Promise<void>' /> |          |
-| `redirectToCheckoutAction`     | `function` <Tooltip content='() => Promise<void>' />                                                    |          |
-
-### `CartLineItem`
-
-<CodeBlock lang="ts">
-  {`
-interface CartLineItem {
-  id: string
-  image: Image
-  title: string
-  subtitle: string
-  quantity: number
-  price: string
-}
-`}
-</CodeBlock>
-
-### `CartSummary`
-
-<CodeBlock lang="ts">{`interface CartSummary {
-  title?: string
-  caption?: string
-  subtotalLabel?: string
-  subtotal: string | Promise<string>
-  shippingLabel?: string
-  shipping?: string
-  taxLabel?: string
-  tax?: string | Promise<string>
-  grandTotalLabel?: string
-  grandTotal?: string | Promise<string>
-  ctaLabel?: string
-}
-`}
-
-</CodeBlock>
-### `CartEmptyState`
-
-<CodeBlock lang="ts">
-  {`
-interface CartEmptyState {
-    title: string
-    subtitle: string
-    cta: {
-        label: string
-        href: string
-    }
-  }
-`}
-</CodeBlock>
+| Name                     | Type                                                           | Default |
+| ------------------------ | -------------------------------------------------------------- | ------- |
+| `title`                  | `string`                                                       |         |
+| `summaryTitle`           | `string`                                                       |         |
+| `emptyState`             | `CartEmptyState` <Tooltip content="See CartEmptyState below"/> |         |
+| `lineItemAction*`        | `Action<CartState<LineItem>, FormData>`                        |         |
+| `checkoutAction*`        | `Action<SubmissionResult \| null, FormData>`                   |         |
+| `checkoutLabel`          | `string`                                                       |         |
+| `deleteLineItemLabel`    | `string`                                                       |         |
+| `decrementLineItemLabel` | `string`                                                       |         |
+| `incrementLineItemLabel` | `string`                                                       |         |
+| `cart*`                  | `Cart<LineItem>` <Tooltip content="See Cart below"/>           |         |
+| `couponCode`             | `CouponCode` <Tooltip content="See CouponCode below"/>         |         |
 
 ## Figma
 
