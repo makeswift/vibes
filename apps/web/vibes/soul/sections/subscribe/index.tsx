@@ -6,8 +6,13 @@ import { InlineEmailForm } from '@/vibes/soul/sections/inline-email-form';
 
 type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
 
+type SubscribeAction = Action<
+  { lastResult: SubmissionResult | null; successMessage?: string },
+  FormData
+>;
+
 export interface SubscribeProps {
-  action: Action<{ lastResult: SubmissionResult | null; successMessage?: string }, FormData>;
+  action: SubscribeAction;
   image?: { src: string; alt: string };
   title: string;
   description?: string;

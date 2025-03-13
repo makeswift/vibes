@@ -15,11 +15,6 @@ export default function Preview() {
         image={image}
         title="Sign up for our newsletter"
       />
-      <Subscribe
-        action={action}
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        title="Sign up for our newsletter"
-      />
     </div>
   );
 }
