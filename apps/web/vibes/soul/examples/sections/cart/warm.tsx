@@ -76,6 +76,7 @@ export async function lineItemAction(
   lastResult: SubmissionResult | null;
 }> {
   'use server';
+
   const submission = parseWithZod(formData, { schema: cartLineItemActionFormDataSchema });
 
   if (submission.status !== 'success') {

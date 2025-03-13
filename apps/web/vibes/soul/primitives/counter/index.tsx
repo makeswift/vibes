@@ -35,6 +35,7 @@ export const Counter = function Counter({
   incrementAriaLabel = 'Increase count',
 }: CounterProps) {
   const [count, setCount] = useState(current);
+
   const decrement = () => {
     setCount((prev) => prev - 1);
   };

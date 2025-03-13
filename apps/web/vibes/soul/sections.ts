@@ -73,7 +73,7 @@ export const sections = [
   },
   {
     name: 'cart',
-    dependencies: ['@conform-to/react', '@conform-to/zod', 'lucide-react', 'zod'],
+    dependencies: ['@conform-to/react', '@conform-to/zod', 'clsx', 'lucide-react', 'zod'],
     registryDependencies: [
       'streamable',
       'button-link',
@@ -81,7 +81,6 @@ export const sections = [
       'section-layout',
       'sticky-sidebar-layout',
       'button',
-      'counter',
       'toaster',
       'input',
       'field-error',
