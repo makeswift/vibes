@@ -6,3 +6,116 @@ preview:
   Luxury: compare-section-luxury-example
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { CompareSection } from '@/vibes/soul/sections/compare-section';
+
+function Usage() {
+    return (
+        <CompareSection
+            addToCartAction={addToCartAction}
+            emptyStateSubtitle="Browse our catalog to find products."
+            emptyStateTitle="No products to compare"
+            products={products}
+        />
+    );
+}
+
+export async function addToCartAction(id: string) {
+    'use server'
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log('Add to cart:', id);
+}
+
+const products = [
+    {
+      id: '1',
+      title: 'Jada Square Toe Ballet Flat',
+      subtitle: '',
+      badge: 'Bestseller',
+      price: '$350',
+      image: {
+        src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
+        alt: 'Jada Square Toe Ballet Flat',
+      },
+      href: '#',
+      rating: 4.5,
+    },
+];
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### CompareSectionProps
+
+| Prop                 | Type                                                                                                          | Default |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- | ------- |
+| `className`          | `string`                                                                                                      |         |
+| `title`              | `string`                                                                                                      |         |
+| `products*`          | [`Streamable`](/docs/soul/streamable)`<CompareCardWithId[]>` <Tooltip content="See CompareCardWithId below"/> |         |
+| `emptyStateTitle`    | [`Streamable`](/docs/soul/streamable)`<string>`                                                               |         |
+| `emptyStateSubtitle` | [`Streamable`](/docs/soul/streamable)`<string>`                                                               |         |
+| `addToCartLabel`     | `string`                                                                                                      |         |
+| `previousLabel`      | `string`                                                                                                      |         |
+| `nextLabel`          | `string`                                                                                                      |         |
+| `addToCartAction`    | `(id: string) => Promise<void>`                                                                               |         |
+| `placeholderCount`   | `number`                                                                                                      |         |
+
+### CompareCardWithId
+
+| Prop           | Type                                                                                        | Default |
+| -------------- | ------------------------------------------------------------------------------------------- | ------- |
+| `id*`          | `string`                                                                                    |         |
+| `title*`       | `string`                                                                                    |         |
+| `href*`        | `string`                                                                                    |         |
+| `image`        | `{ src: string; alt: string }`                                                              |         |
+| `price`        | `string \| PriceRange \| PriceSale` <Tooltip content="See PriceRange and PriceSale below"/> |         |
+| `subtitle`     | `string`                                                                                    |         |
+| `badge`        | `string`                                                                                    |         |
+| `rating`       | `number`                                                                                    |         |
+| `description`  | `string`                                                                                    |         |
+| `customFields` | `Array<{ name: string; value: string }>`                                                    |         |
+
+### PriceRange
+
+| Prop        | Type      | Default |
+| ----------- | --------- | ------- |
+| `type*`     | `'range'` |         |
+| `minValue*` | `string`  |         |
+| `maxValue*` | `string`  |         |
+
+### PriceSale
+
+| Prop             | Type     | Default |
+| ---------------- | -------- | ------- |
+| `type*`          | `'sale'` |         |
+| `previousValue*` | `string` |         |
+| `currentValue*`  | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --compare-section-title-font-family: var(--font-family-heading);
+  --compare-section-title: hsl(var(--foreground));
+  --compare-section-count: hsl(var(--contrast-300));
+  --compare-section-empty-font-family: var(--font-family-body);
+  --compare-section-empty-title-font-family: var(--font-family-heading);
+  --compare-section-empty-title: hsl(var(--foreground));
+  --compare-section-empty-subtitle: hsl(var(--contrast-500));
+}
+```
+
+## Figma
+
+<Figma url="https://www.figma.com/design/GAKpWYdZ0ZVOSFtNPHliJM/Soul-Vibe?node-id=3546-83852" />

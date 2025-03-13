@@ -80,8 +80,8 @@ export const sections = [
   },
   {
     name: 'compare-section',
-    dependencies: [],
-    registryDependencies: [],
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['streamable', 'carousel', 'compare-card', 'skeleton'],
     files: ['sections/compare-section/index.tsx'],
   },
   {
