@@ -1,4 +1,4 @@
-import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
+import { SidebarMenu } from '@/vibes/soul/sections/sticky-sidebar-layout/sidebar-menu';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 const links = [
