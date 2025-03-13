@@ -3,3 +3,120 @@ title: Dynamic Form Section
 preview: dynamic-form-section-example
 previewSize: lg
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { DynamicFormSection } from '@/vibes/soul/sections/dynamic-form-section';
+
+function Usage() {
+    return (
+        <DynamicFormSection
+            action={action}
+            fields={fields}
+            subtitle="Register an account with us to get updates and track your orders."
+            title="Sign up"
+        />
+    );
+}
+
+export const fields = [
+    { type: 'email', label: 'Email', name: 'email', required: true },
+    { type: 'password', label: 'Password', name: 'password', required: true },
+    { type: 'confirm-password', label: 'Confirm password', name: 'confirm-password', required: true },
+]
+
+export async function action(
+    prevState: { fields: Array<Field | FieldGroup<Field>>; lastResult: SubmissionResult | null },
+    payload: FormData,
+) {
+    'use server';
+
+    const submission = parseWithZod(payload, { schema: schema(prevState.fields) });
+
+    if (submission.status !== 'success') {
+      return {
+        fields: prevState.fields,
+        lastResult: submission.reply({ formErrors: ['Boom!'] }),
+      };
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    return {
+      fields: prevState.fields,
+      lastResult: submission.reply({ resetForm: true }),
+    };
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### DynamicFormSectionProps
+
+| Prop          | Type                                                                                           | Default |
+| ------------- | ---------------------------------------------------------------------------------------------- | ------- |
+| `title`       | `string`                                                                                       |         |
+| `subtitle`    | `string`                                                                                       |         |
+| `action*`     | `DynamicFormAction<F>` <Tooltip content="See DynamicFormAction below"/>                        |         |
+| `fields*`     | `Array<F \| FieldGroup<F>>` <Tooltip content="See @/form/dynamic-form/schema.ts for details"/> |         |
+| `submitLabel` | `string`                                                                                       |         |
+| `className`   | `string`                                                                                       |         |
+
+### DynamicFormAction
+
+```ts
+interface State<F extends Field> {
+  fields: Array<F | FieldGroup<F>>;
+  lastResult: SubmissionResult | null;
+}
+
+export type DynamicFormAction<F extends Field> = Action<State<F>, FormData>;
+```
+
+This component uses Confom to handle form submissions. Refer to the [Conform docs](https://conform.guide/) for more details.
+
+Here's an example of an action function that does validation and simulates signing up a new user:
+
+```ts
+export async function action(
+  prevState: { fields: Array<Field | FieldGroup<Field>>; lastResult: SubmissionResult | null },
+  payload: FormData,
+) {
+  'use server';
+
+  const submission = parseWithZod(payload, { schema: schema(prevState.fields) });
+
+  if (submission.status !== 'success') {
+    return {
+      fields: prevState.fields,
+      lastResult: submission.reply({ formErrors: ['Boom!'] }),
+    };
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  return {
+    fields: prevState.fields,
+    lastResult: submission.reply({ resetForm: true }),
+  };
+}
+```
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --dynamic-form-font-family: var(--font-family-body);
+  --dynamic-form-title-font-family: var(--font-family-heading);
+  --dynamic-form-title: hsl(var(--foreground));
+  --dynamic-form-subtitle: hsl(var(--contrast-500));
+}
+```

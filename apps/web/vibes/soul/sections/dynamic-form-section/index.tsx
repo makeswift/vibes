@@ -4,7 +4,7 @@ import { DynamicForm, DynamicFormAction } from '@/vibes/soul/form/dynamic-form';
 import { Field, FieldGroup } from '@/vibes/soul/form/dynamic-form/schema';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
-export interface DynamicFormProps<F extends Field> {
+export interface DynamicFormSectionProps<F extends Field> {
   title?: string;
   subtitle?: string;
   action: DynamicFormAction<F>;
@@ -33,7 +33,7 @@ export function DynamicFormSection<F extends Field>({
   fields,
   submitLabel,
   action,
-}: DynamicFormProps<F>) {
+}: DynamicFormSectionProps<F>) {
   return (
     <SectionLayout
       className={clsx(
