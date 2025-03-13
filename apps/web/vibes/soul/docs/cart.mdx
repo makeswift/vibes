@@ -15,23 +15,131 @@ features:
 
 ## Usage
 
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+
+function Usage() {
+    return (
+
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
 ## API Reference
 
 ### CartProps
 
-| Name                     | Type                                                           | Default |
-| ------------------------ | -------------------------------------------------------------- | ------- |
-| `title`                  | `string`                                                       |         |
-| `summaryTitle`           | `string`                                                       |         |
-| `emptyState`             | `CartEmptyState` <Tooltip content="See CartEmptyState below"/> |         |
-| `lineItemAction*`        | `Action<CartState<LineItem>, FormData>`                        |         |
-| `checkoutAction*`        | `Action<SubmissionResult \| null, FormData>`                   |         |
-| `checkoutLabel`          | `string`                                                       |         |
-| `deleteLineItemLabel`    | `string`                                                       |         |
-| `decrementLineItemLabel` | `string`                                                       |         |
-| `incrementLineItemLabel` | `string`                                                       |         |
-| `cart*`                  | `Cart<LineItem>` <Tooltip content="See Cart below"/>           |         |
-| `couponCode`             | `CouponCode` <Tooltip content="See CouponCode below"/>         |         |
+| Name                     | Type                                                                                          | Default |
+| ------------------------ | --------------------------------------------------------------------------------------------- | ------- |
+| `title`                  | `string`                                                                                      |         |
+| `summaryTitle`           | `string`                                                                                      |         |
+| `emptyState`             | `CartEmptyState` <Tooltip content="See CartEmptyState below"/>                                |         |
+| `lineItemAction*`        | `Action<CartState<LineItem>, FormData>` <Tooltip content="See CartState and LineItem below"/> |         |
+| `checkoutAction*`        | `Action<SubmissionResult \| null, FormData>`                                                  |         |
+| `checkoutLabel`          | `string`                                                                                      |         |
+| `deleteLineItemLabel`    | `string`                                                                                      |         |
+| `decrementLineItemLabel` | `string`                                                                                      |         |
+| `incrementLineItemLabel` | `string`                                                                                      |         |
+| `cart*`                  | `Cart<LineItem>` <Tooltip content="See Cart and LineItem below"/>                             |         |
+| `couponCode`             | `CouponCode` <Tooltip content="See CouponCode below"/>                                        |         |
+
+### Cart
+
+| Name            | Type                                                               | Default |
+| --------------- | ------------------------------------------------------------------ | ------- |
+| `lineItems*`    | `LineItem[]` <Tooltip content="See LineItem below"/>               |         |
+| `summaryItems*` | `CartSummaryItem[]` <Tooltip content="See CartSummaryItem below"/> |         |
+| `total*`        | `string`                                                           |         |
+| `totalLabel`    | `string`                                                           |         |
+
+### CartState
+
+| Name          | Type                                                 | Default |
+| ------------- | ---------------------------------------------------- | ------- |
+| `lineItems*`  | `LineItem[]` <Tooltip content="See LineItem below"/> |         |
+| `lastResult*` | `SubmissionResult \| null`                           |         |
+
+### CouponCode
+
+| Name          | Type                                                                                        | Default |
+| ------------- | ------------------------------------------------------------------------------------------- | ------- |
+| `action*`     | `Action<CouponCodeFormState, FormData>` <Tooltip content="See CouponCodeFormState below" /> |         |
+| `couponCodes` | `string[]`                                                                                  |         |
+| `ctaLabel`    | `string`                                                                                    |         |
+| `disabled`    | `boolean`                                                                                   |         |
+| `label`       | `string`                                                                                    |         |
+| `placeholder` | `string`                                                                                    |         |
+| `removeLabel` | `string`                                                                                    |         |
+
+### CouponCodeFormState
+
+| Name           | Type                       | Default |
+| -------------- | -------------------------- | ------- |
+| `couponCodes*` | `string[]`                 |         |
+| `lastResult`   | `SubmissionResult \| null` |         |
+
+### CartEmptyState
+
+| Name        | Type                                     | Default |
+| ----------- | ---------------------------------------- | ------- |
+| `title*`    | `string`                                 |         |
+| `subtitle*` | `string`                                 |         |
+| `cta*`      | `CTA` <Tooltip content="See CTA below"/> |         |
+
+### LineItem
+
+| Name        | Type                                         | Default |
+| ----------- | -------------------------------------------- | ------- |
+| `id*`       | `string`                                     |         |
+| `image*`    | `Image` <Tooltip content="See Image below"/> |         |
+| `title*`    | `string`                                     |         |
+| `subtitle*` | `string`                                     |         |
+| `quantity*` | `number`                                     |         |
+| `price*`    | `string`                                     |         |
+
+### CartSummaryItem
+
+| Name     | Type     | Default |
+| -------- | -------- | ------- |
+| `label*` | `string` |         |
+| `value*` | `string` |         |
+
+### Image
+
+| Name   | Type     | Default |
+| ------ | -------- | ------- |
+| `src*` | `string` |         |
+| `alt*` | `string` |         |
+
+### CTA
+
+| Name     | Type     | Default |
+| -------- | -------- | ------- |
+| `label*` | `string` |         |
+| `href*`  | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --cart-font-family: var(--font-family-body);
+  --cart-title-font-family: var(--font-family-heading);
+  --cart-text: var(--foreground);
+  --cart-subtitle-text: var(--contrast-500);
+  --cart-subtext-text: var(--contrast-300);
+  --cart-icon: var(--contrast-300);
+  --cart-icon-hover: var(--foreground);
+  --cart-border: var(--contrast-100);
+  --cart-image-background: var(--contrast-100);
+  --cart-button-background: var(--contrast-100);
+}
+```
 
 ## Figma
 
