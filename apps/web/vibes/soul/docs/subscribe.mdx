@@ -1,5 +1,118 @@
 ---
 title: Subscribe
 preview: subscribe-example
-previewSize: lg
+previewSize: md
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+
+function Usage() {
+    return (
+        <Subscribe
+            action={action}
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+            image={image}
+            title="Sign up for our newsletter"
+        />
+    );
+} 
+
+const image = {
+    src: 'https://rstr.in/monogram/vibes/m12FEyfnuDl',
+    alt: 'Lady with plant',
+};
+
+async function action(
+     _lastResult: { lastResult: SubmissionResult | null },
+    formData: FormData,
+) {
+    'use server';
+
+    const submission = parseWithZod(formData, { schema });
+
+    if (submission.status !== 'success') {
+        return { lastResult: submission.reply({ formErrors: ['Boom!'] }) };
+    }
+
+    // Simulate subscribing a user
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    return { lastResult: submission.reply(), successMessage: 'Subscribed!' };
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### SubscribeProps
+
+| Prop          | Type                                                             | Default |
+| ------------- | ---------------------------------------------------------------- | ------- |
+| `action*`     | `SubscribeAction` <Tooltip content="See SubscribeAction below"/> |         |
+| `image`       | `Image` <Tooltip content="See Image below"/>                     |         |
+| `title*`      | `string`                                                         |         |
+| `description` | `string`                                                         |         |
+| `placeholder` | `string`                                                         |         |
+
+### ForgotPasswordAction
+
+```ts
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
+
+type SubscribeAction = Action<
+  { lastResult: SubmissionResult | null; successMessage?: string },
+  FormData
+>;
+```
+
+This component uses Confom to handle form submissions. Refer to the [Conform docs](https://conform.guide/) for more details.
+
+Here's an example of an action function that does validation and simulates subscribe a user:
+
+```ts
+async function action(_lastResult: { lastResult: SubmissionResult | null }, formData: FormData) {
+  'use server';
+
+  const submission = parseWithZod(formData, { schema });
+
+  if (submission.status !== 'success') {
+    return { lastResult: submission.reply({ formErrors: ['Boom!'] }) };
+  }
+
+  // Simulate subscribing a user
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  return { lastResult: submission.reply(), successMessage: 'Subscribed!' };
+}
+```
+
+### Image
+
+| Prop   | Type     | Default |
+| ------ | -------- | ------- |
+| `src*` | `string` |         |
+| `alt*` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --subscribe-font-family: var(--font-family-body);
+  --subscribe-title-font-family: var(--font-family-heading);
+  --subscribe-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
+  --subscribe-title: color-mix(in oklab, hsl(var(--primary)), white 75%);
+  --subscribe-description: color-mix(in oklab, hsl(var(--primary)), white 75%);
+}
+```
+
+## Figma
+
+<Figma url="" />

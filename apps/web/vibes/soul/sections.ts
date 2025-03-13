@@ -339,7 +339,7 @@ export const sections = [
   {
     name: 'subscribe',
     dependencies: ['clsx'],
-    registryDependencies: ['input'],
+    registryDependencies: ['inline-email-form'],
     files: ['sections/subscribe/index.tsx'],
   },
 ] satisfies Components;
