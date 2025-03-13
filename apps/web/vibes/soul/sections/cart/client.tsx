@@ -110,6 +110,7 @@ interface Shipping {
   updateShippingLabel?: string;
   addShippingLabel?: string;
   showShippingForm?: boolean;
+  noShippingOptionsLabel?: string;
 }
 
 export interface CartProps<LineItem extends CartLineItem> {
