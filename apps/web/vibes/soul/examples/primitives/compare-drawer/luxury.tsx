@@ -1,12 +1,14 @@
 'use client';
 
-import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer';
+import { CompareDrawer, CompareDrawerProvider } from '@/vibes/soul/primitives/compare-drawer';
 
 export default function Preview() {
   return (
-    <div className="relative h-screen">
-      <CompareDrawer items={compareProducts} />
-    </div>
+    <CompareDrawerProvider items={compareProducts}>
+      <div className="relative h-screen">
+        <CompareDrawer />
+      </div>
+    </CompareDrawerProvider>
   );
 }
 
