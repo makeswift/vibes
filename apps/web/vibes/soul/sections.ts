@@ -297,7 +297,13 @@ export const sections = [
   {
     name: 'reviews',
     dependencies: [],
-    registryDependencies: [],
+    registryDependencies: [
+      'streamable',
+      'cursor-pagination',
+      'rating',
+      'sticky-sidebar-layout',
+      'skeleton',
+    ],
     files: ['sections/reviews/index.tsx'],
   },
   {
