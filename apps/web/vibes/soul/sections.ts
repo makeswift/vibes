@@ -314,7 +314,7 @@ export const sections = [
   {
     name: 'dynamic-form-section',
     dependencies: ['clsx'],
-    registryDependencies: ['animated-link', 'button-link', 'button', 'input', 'form-status'],
+    registryDependencies: ['dynamic-form', 'section-layout'],
     files: ['sections/dynamic-form-section/index.tsx'],
   },
   {
