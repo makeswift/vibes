@@ -8,7 +8,7 @@ import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
-import { ProductsListSection } from '@/vibes/soul/sections/products-list-section';
+import { ProductListSection } from '@/vibes/soul/sections/product-list-section';
 
 export default function Preview() {
   const productsPromise = getProducts('Electric');
@@ -31,7 +31,7 @@ export default function Preview() {
         logo={logo}
         searchHref="#"
       />
-      <ProductsListSection
+      <ProductListSection
         breadcrumbs={breadcrumbs}
         filters={filters}
         products={productsPromise}

@@ -5,6 +5,7 @@ import { useOptimistic, useTransition } from 'react';
 
 import { Select } from '@/vibes/soul/form/select';
 import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable';
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export interface Option {
   label: string;
@@ -55,5 +56,12 @@ export function Sorting({
 }
 
 export function SortingSkeleton() {
-  return <div className="h-[50px] w-[12ch] animate-pulse rounded-full bg-contrast-100" />;
+  return (
+    <Skeleton.Root
+      className="@container-normal group-has-[[data-pending]]/product-list-section:animate-pulse"
+      pending
+    >
+      <Skeleton.Box className="h-[50px] w-[12ch] rounded-full" data-pending />
+    </Skeleton.Root>
+  );
 }

@@ -207,7 +207,7 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'card-carousel',
   },
   {
-    title: 'Compare Section',
+    title: 'Compare',
     slug: 'compare-section',
     file: 'docs/compare-section.mdx',
     component: 'compare-section',
@@ -319,10 +319,10 @@ const sectionPages: [Page, ...Page[]] = [
     component: 'order-details-section',
   },
   {
-    title: 'Order List Section',
-    slug: 'order-list-section',
-    file: 'docs/order-list-section.mdx',
-    component: 'order-list-section',
+    title: 'Order List',
+    slug: 'order-list',
+    file: 'docs/order-list.mdx',
+    component: 'order-list',
   },
   {
     title: 'Product Carousel',
@@ -339,8 +339,8 @@ const sectionPages: [Page, ...Page[]] = [
   {
     title: 'Product List Section',
     slug: 'product-list-section',
-    file: 'docs/products-list-section.mdx',
-    component: 'products-list-section',
+    file: 'docs/product-list-section.mdx',
+    component: 'product-list-section',
   },
   {
     title: 'Product Detail',

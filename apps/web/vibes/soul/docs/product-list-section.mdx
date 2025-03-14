@@ -1,0 +1,111 @@
+---
+title: Product List Section
+preview:
+  Electric: product-list-section-electric
+  Warm: product-list-section-warm
+  Luxury: product-list-section-luxury
+previewSize: lg
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+
+function Usage() {
+    return (
+
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+###
+
+| Prop                    | Type                                                                                                              | Default      |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------ |
+| `breadcrumbs`           | [`Streamable`](/docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/>       | `'Products'` |
+| `title`                 | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
+| `totalCount*`           | [`Streamable`](/docs/soul/streamable)`<number>`                                                                   |              |
+| `products*`             | [`Streamable`](/docs/soul/streamable)`<ProductCardWithId[]>` <Tooltip content="See ProductCardWithId below"/>     |              |
+| `filters*`              | [`Streamable`](/docs/soul/streamable)`<Filter[]>` <Tooltip content="See Filter below"/>                           |              |
+| `sortOptions*`          | [`Streamable`](/docs/soul/streamable)`<SortOption[]>` <Tooltip content="See SortOption below"/>                   |              |
+| `compareProducts`       | [`Streamable`](/docs/soul/streamable)`<ProductCardWithId[]>` <Tooltip content="See ProductCardWithId below"/>     |              |
+| `paginationInfo`        | [`Streamable`](/docs/soul/streamable)`<CursorPaginationInfo>` <Tooltip content="See CursorPaginationInfo below"/> |              |
+| `compareAction`         | `ComponentProps<'form'>['action']`                                                                                |              |
+| `compareLabel`          | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
+| `filterLabel`           | `string`                                                                                                          |              |
+| `filtersPanelTitle`     | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   | `'Filters'`  |
+| `resetFiltersLabel`     | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
+| `rangeFilterApplyLabel` | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
+| `sortLabel`             | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
+| `sortPlaceholder`       | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
+| `sortParamName`         | `string`                                                                                                          |              |
+| `sortDefaultValue`      | `string`                                                                                                          |              |
+| `compareParamName`      | `string`                                                                                                          |              |
+| `emptyStateSubtitle`    | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
+| `emptyStateTitle`       | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
+| `placeholderCount`      | `number`                                                                                                          |              |
+
+### ProductCardWithId
+
+| Prop       | Type                           | Default |
+| ---------- | ------------------------------ | ------- |
+| `id*`      | `string`                       |         |
+| `title*`   | `string`                       |         |
+| `href*`    | `string`                       |         |
+| `image`    | `{ src: string; alt: string }` |         |
+| `price`    | `Price`                        |         |
+| `subtitle` | `string`                       |         |
+| `badge`    | `string`                       |         |
+| `rating`   | `number`                       |         |
+
+### BreadcrumbWithId
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `label*` | `string` |         |
+| `href*`  | `string` |         |
+| `id*`    | `string` |         |
+
+### SortOption
+
+| Prop     | Type     | Default |
+| -------- | -------- | ------- |
+| `label*` | `string` |         |
+| `value*` | `string` |         |
+
+### CursorPaginationInfo
+
+| Prop                   | Type             | Default |
+| ---------------------- | ---------------- | ------- |
+| `startCursorParamName` | `string`         |         |
+| `startCursor*`         | `string \| null` |         |
+| `endCursorParamName`   | `string`         |         |
+| `endCursor*`           | `string \| null` |         |
+
+### Filter
+
+See `@/vibes/soul/sections/product-list-section/filter-panel.tsx` for more information on available filter types.
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --product-list-section-title: hsl(var(--foreground));
+  --product-list-section-title-font-family: var(--font-heading);
+  --product-list-section-total-count: hsl(var(--contrast-300));
+  --product-list-section-filter-label-font-family: var(--font-mono);
+  --product-list-section-filter-label: hsl(var(--contrast-400));
+  --product-list-section-filter-link: hsl(var(--contrast-500));
+  --product-list-section-filter-link-hover: hsl(var(--foreground));
+  --product-list-section-filter-link-font-family: var(--font-body);
+}
+```

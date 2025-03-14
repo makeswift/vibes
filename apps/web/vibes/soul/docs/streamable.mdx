@@ -1,5 +1,20 @@
 ---
 title: Streamable
-preview: streamable
+description: The Streamable component simplifies and enhances data-fetching patterns in React 19 with support for streaming, loading states, and stable async state management.
+preview:
+  Electric: product-list-electric
+  Warm: product-list-warm
+  Luxury: product-list-luxury
 previewSize: lg
 ---
+
+## Background
+
+As you read through the API Reference documentation for individual components, you'll notice that we often define props to have a type of `Streamable<T>`.
+For example, if you looked at the API Reference for the [ProductList](/docs/soul/product-list) component, you'll see that the required `products` prop
+is defined as a `Streamable<ListProduct[]>`.
+
+Many of our components, including `ProductList`, encapsulate UI like loading and error states taking advantage of React Suspense and error boundaries.
+`Streamable` allows the consumers of the component to define how their data is fetched (e.g., what API to request data from) while delegating the UI
+concerns to the component. When using React Server Components and React's streaming server renderer, it also handles streaming the data from the server
+to the client leveraging Suspense, hence the name.

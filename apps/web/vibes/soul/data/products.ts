@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
-import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel';
+import { Filter } from '@/vibes/soul/sections/product-list-section/filter-panel';
 
 import { SoulBrandName } from '../brands';
 import { ProductCardWithId } from '../primitives/product-card';

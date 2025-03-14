@@ -10,8 +10,13 @@ export const sections = [
   {
     name: 'sticky-sidebar-layout',
     dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/sticky-sidebar-layout/index.tsx'],
+    registryDependencies: ['streamable', 'skeleton', 'select'],
+    files: [
+      'sections/sticky-sidebar-layout/index.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/index.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/sidebar-menu-link.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/sidebar-menu-select.tsx',
+    ],
   },
   {
     name: 'account-settings',
@@ -97,8 +102,8 @@ export const sections = [
   },
   {
     name: 'compare-section',
-    dependencies: [],
-    registryDependencies: [],
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['streamable', 'carousel', 'compare-card', 'skeleton'],
     files: ['sections/compare-section/index.tsx'],
   },
   {
@@ -197,7 +202,7 @@ export const sections = [
   {
     name: 'footer',
     dependencies: ['clsx'],
-    registryDependencies: [],
+    registryDependencies: ['streamable', 'logo', 'skeleton'],
     files: ['sections/footer/index.tsx'],
   },
   {
@@ -219,8 +224,8 @@ export const sections = [
   {
     name: 'icon-block',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['sections/icon-block/index.tsx', 'primitives/icon/index.tsx'],
+    registryDependencies: ['icon'],
+    files: ['sections/icon-block/index.tsx'],
   },
   {
     name: 'inline-email-form',
@@ -245,6 +250,19 @@ export const sections = [
     dependencies: ['lucide-react'],
     registryDependencies: ['badge'],
     files: ['sections/order-details-section/index.tsx'],
+  },
+  {
+    name: 'order-list',
+    dependencies: ['clsx'],
+    registryDependencies: [
+      'streamable',
+      'badge',
+      'button-link',
+      'product-card',
+      'cursor-pagination',
+      'skeleton',
+    ],
+    files: ['sections/order-list/index.tsx'],
   },
   {
     name: 'product-carousel',
@@ -287,13 +305,23 @@ export const sections = [
     files: ['sections/product-list/index.tsx'],
   },
   {
-    name: 'products-list-section',
-    dependencies: ['nuqs'],
-    registryDependencies: ['product-list', 'button', 'toggle-group', 'cursor-pagination'],
+    name: 'product-list-section',
+    dependencies: ['lucide-react'],
+    registryDependencies: [
+      'streamable',
+      'button',
+      'cursor-pagination',
+      'product-card',
+      'side-panel',
+      'skeleton',
+      'breadcrumbs',
+      'product-list',
+    ],
     files: [
-      'sections/products-list-section/index.tsx',
-      'sections/products-list-section/filters-panel.tsx',
-      'sections/products-list-section/sorting.tsx',
+      'sections/product-list-section/index.tsx',
+      'sections/product-list-section/filter-panel.tsx',
+      'sections/product-list-section/filter-parsers.ts',
+      'sections/product-list-section/sorting.tsx',
     ],
   },
   {
@@ -309,7 +337,13 @@ export const sections = [
   {
     name: 'reviews',
     dependencies: [],
-    registryDependencies: [],
+    registryDependencies: [
+      'streamable',
+      'cursor-pagination',
+      'rating',
+      'sticky-sidebar-layout',
+      'skeleton',
+    ],
     files: ['sections/reviews/index.tsx'],
   },
   {
@@ -331,7 +365,7 @@ export const sections = [
   {
     name: 'dynamic-form-section',
     dependencies: ['clsx'],
-    registryDependencies: ['animated-link', 'button-link', 'button', 'input', 'form-status'],
+    registryDependencies: ['dynamic-form', 'section-layout'],
     files: ['sections/dynamic-form-section/index.tsx'],
   },
   {
