@@ -88,7 +88,7 @@ export function CompareSection({
                 <CarouselContent>
                   {products.map((product) => (
                     <CarouselItem
-                      className="basis-[calc(100%-20px)] @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4"
+                      className="basis-full @sm:basis-1/2 @md:basis-1/3 @4xl:basis-1/4"
                       key={product.id}
                     >
                       <CompareCard

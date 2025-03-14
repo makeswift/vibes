@@ -82,7 +82,7 @@ export function CardCarousel({
             <CarouselContent>
               {cards.map(({ id, ...card }) => (
                 <CarouselItem
-                  className="basis-[calc(100%-1rem)] @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)]"
+                  className="basis-full @sm:basis-1/2 @md:basis-1/3 @4xl:basis-1/4"
                   key={id}
                 >
                   <Card
@@ -134,7 +134,7 @@ export function CardCarouselSkeleton({
         <div className="-ml-4 flex @2xl:-ml-5">
           {Array.from({ length: placeholderCount }).map((_, index) => (
             <div
-              className="min-w-0 shrink-0 grow-0 basis-[calc(100%-1rem)] pl-4 @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)] @2xl:pl-5"
+              className="min-w-0 shrink-0 grow-0 basis-full @sm:basis-1/2 @md:basis-1/3 @2xl:pl-5 @4xl:basis-1/4"
               key={index}
             >
               <CardSkeleton />
@@ -175,7 +175,7 @@ export function CardCarouselEmptyState({
         <div className="-ml-4 flex [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:-ml-5">
           {Array.from({ length: placeholderCount }).map((_, index) => (
             <div
-              className="min-w-0 shrink-0 grow-0 basis-[calc(100%-1rem)] pl-4 @md:basis-[calc(50%-0.75rem)] @lg:basis-[calc(33%-0.5rem)] @2xl:basis-[calc(25%-0.25rem)] @2xl:pl-5"
+              className="min-w-0 shrink-0 grow-0 basis-full @sm:basis-1/2 @md:basis-1/3 @2xl:pl-5 @4xl:basis-1/4"
               key={index}
             >
               <CardSkeleton />
