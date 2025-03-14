@@ -10,50 +10,11 @@ previewSize: lg
 
 ## Background
 
-When building VIBES, we want to expose intuitive APIs while leveraging the latest featues in React.One challenge of building a component library like VIBES is determining the interface that components should expose to the consuming application.
-This gets especially challenging when considering the impact that React Server Components has had on how we build applications. We wanted to build components that
-were easy to use but also take advantage of the latest features of React.
+As you read through the API Reference documentation for individual components, you'll notice that we often define props to have a type of `Streamable<T>`.
+For example, if you looked at the API Reference for the [ProductList](/docs/soul/product-list) component, you'll see that the required `products` prop
+is defined as a `Streamable<ListProduct[]>`.
 
-Although we wanted many of our componets to be able to work with asynchronous data (passed using Promises), we also wanted to make it easy to work with synchronous data. Because of that, we wanted to build something
-that could accept and handle both synchronous and asynchronous data. We were able to use React's recent `use()` API to build a component that could handle both synchronous and asynchronous data.
-
-Another problem we wanted to solve was the ability to handle stream in multiple pieces of asynchronous data. To help with this, `Streamable` includes an `all` function that allows us to
-
-## How it works
-
-## Usage
-
-{/* prettier-ignore-start */}
-
-<CodeBlock lang="ts">{`
-
-function Usage() {
-    return (
-        <Stream fallback={<p>Loading</p>} value={streamableProducts}>
-          {(products) => {
-              return <p>Render the products</p>;
-          }}
-      </Stream>
-    );
-}
-`}
-</CodeBlock>
-
-{/* prettier-ignore-end */}
-
-## API Reference
-
-### LogoProps
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
-
-### CSS Variables
-
-This component supports various CSS variables for theming. Here's a comprehensive list.
-
-```css
-:root {
-}
-```
+Many of our components, including `ProductList`, encapsulate UI like loading and error states taking advantage of React Suspense and error boundaries.
+`Streamable` allows the consumers of the component to define how their data is fetched (e.g., what API to request data from) while delegating the UI
+concerns to the component. When using React Server Components and React's streaming server renderer, it also handles streaming the data from the server
+to the client leveraging Suspense, hence the name.
