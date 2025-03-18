@@ -92,7 +92,7 @@ function Submit({ success }: { success: boolean }) {
     >
       <span className="sr-only">Subscribe</span>
       <div className="relative flex h-full w-full items-center justify-center transition-transform">
-        {!pending && !success && <Arrow />}
+        {!pending && !success && <Arrow className="text-white" />}
         {success && (
           <Transition className="transition-transform" from="-translate-y-12" to="translate-y-0">
             <Check className="scale-150" />

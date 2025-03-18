@@ -131,9 +131,9 @@ export default function Home() {
           isScrolled ? 'translate-y-3 px-7' : 'translate-y-8 px-10 md:translate-y-10',
         )}
       >
-        <ScrollButton to="footer">
-          <Button size="large">Get updates</Button>
-        </ScrollButton>
+        <ButtonLink href="/contribute" size="large">
+          Contribute
+        </ButtonLink>
         <div
           className={clsx(
             'relative h-8 w-32 origin-center transition-transform duration-300 md:h-10 md:w-40',
@@ -142,8 +142,8 @@ export default function Home() {
         >
           <Image alt="Vibes logo" fill priority src="/logo.svg" />
         </div>
-        <ButtonLink href="/contribute" size="large">
-          Contribute
+        <ButtonLink href="/docs/soul" size="large">
+          Docs
         </ButtonLink>
       </header>
 
@@ -152,7 +152,7 @@ export default function Home() {
           className="group absolute left-1/2 top-full z-20 -mt-6 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black md:flex"
           to="intro"
         >
-          <Arrow className="rotate-90 scale-125 transition-transform duration-300 ease-out group-hover:translate-y-2" />
+          <Arrow className="rotate-90 scale-125 text-white transition-transform duration-300 ease-out group-hover:translate-y-2" />
         </ScrollButton>
 
         <Image
@@ -275,35 +275,58 @@ export default function Home() {
 
       <section className="h-[70vh] w-full bg-white p-3 md:h-[70vh] md:p-4 lg:p-5">
         <div className="group flex h-full w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-black md:flex-row lg:rounded-[32px] xl:rounded-[40px]">
-          <div className="relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
+          <div className="group/soul relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
+              <div className="absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out @container group-hover/soul:opacity-100">
+                <Link
+                  className="group/doc-link flex items-center gap-x-4 rounded-full px-6 py-4 focus-visible:outline-none focus-visible:ring-4"
+                  href="/docs/soul"
+                >
+                  <p className="-translate-y-1 text-3xl font-semibold text-white @xl:text-5xl">
+                    View docs
+                  </p>
+                  <div className="flex size-10 items-center justify-center overflow-hidden rounded-full bg-white/90 transition-all duration-300 ease-out group-hover/doc-link:translate-x-1.5 group-hover/doc-link:bg-white/100 md:size-12 lg:size-14">
+                    <Arrow className="text-black" />
+                  </div>
+                </Link>
+              </div>
+              <Image
+                alt="Soul components"
+                className="rotate-12 overflow-visible object-none transition-all duration-300 ease-out group-hover/soul:blur"
+                fill
+                src="/soul/soul-components.webp"
+              />
+            </div>
+          </div>
+
+          <div className="group/eclipse relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
+            <div className="relative h-full w-full">
+              <div className="absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out @container group-hover/eclipse:opacity-100">
+                <p className="-translate-y-1 text-center text-3xl font-semibold text-white @xl:text-5xl">
+                  Coming soon!
+                </p>
+              </div>
               <Image
                 alt="Eclipse components"
-                className="rotate-12 overflow-visible object-none object-top"
+                className="rotate-12 overflow-visible object-none object-top transition-all duration-300 ease-out group-hover/eclipse:blur"
                 fill
                 src="/eclipse-components.webp"
               />
             </div>
           </div>
 
-          <div className="relative h-1/3 w-full origin-center overflow-hidden border-y-[1.5px] border-black bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:border-x-[1.5px] md:border-y-0 md:hover:!w-1/2 md:group-hover:w-1/4">
+          <div className="group/2px relative h-1/3 w-full origin-center overflow-hidden border-y-[1.5px] border-black bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:border-x-[1.5px] md:border-y-0 md:hover:!w-1/2 md:group-hover:w-1/4">
             <div className="relative h-full w-full">
+              <div className="absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out @container group-hover/2px:opacity-100">
+                <p className="-translate-y-1 text-center text-3xl font-semibold text-white @xl:text-5xl">
+                  Coming soon!
+                </p>
+              </div>
               <Image
                 alt="2px components"
-                className="rotate-12 overflow-visible object-none object-top"
+                className="rotate-12 overflow-visible object-none object-right transition-all duration-300 ease-out group-hover/2px:blur"
                 fill
                 src="/2px-components.webp"
-              />
-            </div>
-          </div>
-
-          <div className="relative h-1/3 w-full origin-right overflow-hidden bg-[#eeeeee] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
-            <div className="relative h-full w-full">
-              <Image
-                alt="Soul components"
-                className="rotate-12 overflow-visible object-none"
-                fill
-                src="/soul-components.webp"
               />
             </div>
           </div>
@@ -396,9 +419,7 @@ export default function Home() {
         <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
           <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-6 pt-10 text-left sm:px-8 sm:text-center md:pb-10 md:pt-20">
             <p className="mb-8 text-balance px-2 text-2xl leading-snug text-black sm:text-3xl md:mb-12 lg:text-4xl">
-              Stunning React components for commerce and marketing, optimized for fashion and
-              function.
-              <span className="mt-4 block font-bold md:mt-6">Coming soon.</span>
+              Stay in the loop and get the latest updates from VIBES.
             </p>
 
             <div className="relative z-10 w-full sm:w-auto">
