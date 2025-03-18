@@ -24,7 +24,7 @@ function SkeletonRoot({
 }) {
   return (
     <div
-      className={clsx('max-w-full @container', hideOverflow && 'overflow-hidden', className)}
+      className={clsx('@container', hideOverflow && 'overflow-hidden', className)}
       data-pending={pending ? '' : undefined}
       role={pending ? 'status' : undefined}
     >
