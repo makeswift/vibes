@@ -483,12 +483,13 @@ const stylesPages: [Page, ...Page[]] = [
 const gettingStartedPages: [Page, ...Page[]] = [
   { title: 'Introduction', slug: 'introduction', file: 'docs/introduction.mdx' },
   { title: 'Installation', slug: 'installation', file: 'docs/installation.mdx' },
+  { title: 'Figma', slug: 'figma', file: 'docs/figma.mdx' },
 ];
 
 export const navigation = [
   {
     title: 'Getting started',
-    pages: gettingStartedPages.sort((a, b) => a.title.localeCompare(b.title)),
+    pages: gettingStartedPages,
   },
   {
     title: 'Styles',
