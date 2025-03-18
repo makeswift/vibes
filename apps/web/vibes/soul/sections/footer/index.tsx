@@ -89,7 +89,7 @@ export const Footer = function Footer({
       )}
     >
       <div className="mx-auto max-w-screen-2xl px-4 py-6 @xl:px-6 @xl:py-10 @4xl:px-8 @4xl:py-12">
-        <div className="flex flex-col justify-between gap-x-8 gap-y-12 @3xl:flex-row">
+        <div className="flex flex-col justify-between gap-x-16 gap-y-12 @3xl:flex-row">
           <div className="flex flex-col gap-4 @3xl:w-1/3 @3xl:gap-6">
             {/* Logo Information */}
             <Logo
@@ -151,7 +151,11 @@ export const Footer = function Footer({
             {(sections) => {
               if (sections.length > 0) {
                 return (
-                  <div className="grid w-full flex-1 gap-y-8 [grid-template-columns:_repeat(auto-fill,_minmax(200px,_1fr))] @xl:gap-y-10">
+                  <div
+                    className={clsx(
+                      'grid max-w-5xl grid-cols-1 gap-y-8 @sm:grid-cols-2 @xl:gap-y-10 @2xl:grid-cols-3 @6xl:[grid-template-columns:_repeat(auto-fill,_minmax(220px,_1fr))]',
+                    )}
+                  >
                     {sections.map(({ title, links }, i) => (
                       <div className="pr-8" key={i}>
                         {title != null && (
@@ -239,7 +243,7 @@ function SocialMediaLinksSkeleton() {
 function FooterColumnsSkeleton() {
   return (
     <Skeleton.Root
-      className="grid w-full flex-1 gap-y-8 [grid-template-columns:_repeat(auto-fill,_minmax(200px,_1fr))] group-has-[[data-pending]]/footer:animate-pulse @xl:gap-y-10"
+      className="grid max-w-5xl grid-cols-1 gap-y-8 @container-normal group-has-[[data-pending]]/footer:animate-pulse @sm:grid-cols-2 @xl:gap-y-10 @2xl:grid-cols-3 @6xl:[grid-template-columns:_repeat(auto-fill,_minmax(220px,_1fr))]"
       pending
     >
       {Array.from({ length: 4 }).map((_, idx) => (
