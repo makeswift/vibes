@@ -1,0 +1,81 @@
+---
+title: Dropdown Menu
+preview: dropdown-menu-example
+previewSize: sm
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+
+import { DropdownMenu } from '@/vibes/soul/primitives/dropdown-menu';
+
+function Usage() {
+    return (
+      <DropdownMenu
+        className="min-w-36"
+        items={[
+          {
+            label: 'Menu item',
+            action: () => console.log('Menu item clicked'),
+          },
+        ]}
+      >
+        <Button shape="circle" size="small" variant="primary">
+            <EllipsisIcon size={20} />
+        </Button>
+      </DropdownMenu>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### DropdownMenuProps
+
+| Prop           | Type                                        | Default |
+| -------------- | ------------------------------------------- | ------- |
+| `className`    | `string`                                    |         |
+| `items*`       | `MenuItem[]`                                |         |
+| `align`        | `'center' \| 'end' \| 'start' \| undefined` |         |
+| `slideOffset`  | `number`                                    |         |
+| `open`         | `boolean`                                   |         |
+| `onOpenChange` | `(open: boolean) => void`                   |         |
+
+### MenuItem
+
+| Prop        | Type                                                          | Default |
+| ----------- | ------------------------------------------------------------- | ------- |
+| `className` | `string`                                                      |         |
+| `disabled`  | `boolean`                                                     |         |
+| `label*`    | `React.ReactNode`                                             |         |
+| `component` | `React.ReactNode`                                             |         |
+| `variant`   | `'default' \| 'danger'`                                       |         |
+| `action`    | `string \| (event: React.MouseEvent<HTMLDivElement>) => void` |         |
+| `asChild`   | `boolean`                                                     |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --dropdown-menu-background: hsl(var(--background));
+  --dropdown-menu-item-focus: hsl(var(--primary));
+  --dropdown-menu-item-text: hsl(var(--contrast-400));
+  --dropdown-menu-item-text-hover: hsl(var(--foreground));
+  --dropdown-menu-item-danger-text: hsl(var(--error));
+  --dropdown-menu-item-danger-text-hover: color-mix(in oklab, hsl(var(--error)), black 75%);
+  --dropdown-menu-item-background: transparent;
+  --dropdown-menu-item-background-hover: hsl(var(--contrast-100));
+  --dropdown-menu-item-danger-background: hsl(var(--error));
+  --dropdown-menu-item-danger-background-hover: color-mix(in oklab, hsl(var(--error)), white 75%);
+  --dropdown-menu-item-font-family: var(--font-family-body);
+}
+```

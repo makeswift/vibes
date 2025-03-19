@@ -78,6 +78,12 @@ const primitivePages: [Page, ...Page[]] = [
     component: 'cursor-pagination',
   },
   { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
+  {
+    title: 'Dropdown Menu',
+    slug: 'dropdown-menu',
+    file: 'docs/dropdown-menu.mdx',
+    component: 'dropdown-menu',
+  },
   { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
   { title: 'Icon', slug: 'icon', file: 'docs/icon.mdx', component: 'icon' },
   {

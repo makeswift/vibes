@@ -961,6 +961,13 @@ export const examples = [
     component: lazy(() => import('./examples/sections/dynamic-form-section')),
   },
   {
+    name: 'dropdown-menu-example',
+    dependencies: [],
+    registryDependencies: ['dropdown-menu'],
+    files: ['examples/primitives/dropdown-menu/index.tsx'],
+    component: lazy(() => import('./examples/primitives/dropdown-menu')),
+  },
+  {
     name: 'slideshow-example-electric',
     dependencies: [],
     registryDependencies: ['slideshow-electric'],
