@@ -16,10 +16,6 @@ export interface BlogPost {
   href: string;
 }
 
-export interface BlogPostWithId extends BlogPost {
-  id: string;
-}
-
 export interface BlogPostCardProps extends BlogPost {
   className?: string;
 }

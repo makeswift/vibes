@@ -8,7 +8,7 @@ import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 import { Compare } from './compare';
 
-export interface ProductCardWithId {
+export interface Product {
   id: string;
   title: string;
   href: string;
@@ -28,7 +28,7 @@ export interface ProductCardProps {
   imageSizes?: string;
   compareLabel?: string;
   compareParamName?: string;
-  product: ProductCardWithId;
+  product: Product;
 }
 
 /**

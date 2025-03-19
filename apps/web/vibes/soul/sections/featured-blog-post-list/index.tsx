@@ -1,16 +1,16 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
-import { BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
+import { type BlogPost } from '@/vibes/soul/primitives/blog-post-card';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { BlogPostList } from '@/vibes/soul/sections/blog-post-list';
-import { Breadcrumbs, BreadcrumbWithId } from '@/vibes/soul/sections/breadcrumbs';
+import { type Breadcrumb, Breadcrumbs } from '@/vibes/soul/sections/breadcrumbs';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 export interface FeaturedBlogPostListProps {
   title: string;
   description?: string | null;
-  blogPosts: Streamable<BlogPostWithId[]>;
+  blogPosts: Streamable<BlogPost[]>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
-  breadcrumbs?: Streamable<BreadcrumbWithId[]>;
+  breadcrumbs?: Streamable<Breadcrumb[]>;
   emptyStateSubtitle?: Streamable<string>;
   emptyStateTitle?: Streamable<string>;
   placeholderCount?: number;

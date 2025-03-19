@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { getProducts } from '@/vibes/soul/data';
 import { locales } from '@/vibes/soul/data/locales';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
@@ -9,7 +11,7 @@ import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions
 import { heroSlides } from '@/vibes/soul/examples/sections/slideshow/electric';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
+import { type Product } from '@/vibes/soul/primitives/product-card';
 import { Feature } from '@/vibes/soul/sections/feature';
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel';
 import { FeaturedImage, FeaturedImageProps } from '@/vibes/soul/sections/featured-image';
@@ -50,7 +52,7 @@ const socialMediaLinks = [
   },
 ];
 
-const paymentIconsArray: React.ReactNode[] = [
+const paymentIconsArray: ReactNode[] = [
   <Visa key="Visa" />,
   <Amex key="Amex" />,
   <Mastercard key="Mastercard" />,
@@ -61,7 +63,7 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 // Featured Products
-export const newArrivals: ProductCardWithId[] = [
+export const newArrivals: Product[] = [
   {
     id: '1',
     title: 'Heart to Heart',

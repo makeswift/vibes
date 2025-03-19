@@ -13,25 +13,22 @@ previewSize: xs
 {/* prettier-ignore-start */}
 
 <CodeBlock lang="ts">{`
-import { Breadcrumbs, BreadcrumbWithId } from '@/vibes/soul/sections/breadcrumbs';
+import { Breadcrumbs, type Breadcrumb } from '@/vibes/soul/sections/breadcrumbs';
 
 function Usage() {
 
-    const breadcrumbs: BreadcrumbWithId[] = [
+    const breadcrumbs: Breadcrumb[] = [
       {
-        id: '1',
         label: 'Home',
-        href: '#',
+        href: '#1',
       },
       {
-        id: '2',
         label: 'Bags',
-        href: '#',
+        href: '#2',
       },
       {
-        id: '3',
         label: 'Handle Bags',
-        href: '#',
+        href: '#3',
       },
     ];
 
@@ -48,16 +45,15 @@ function Usage() {
 
 ### BreadcrumbsProps
 
-| Prop           | Type                                                                                                      | Default |
-| -------------- | --------------------------------------------------------------------------------------------------------- | ------- |
-| `breadcrumbs*` | [Streamable](/docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/> |         |
-| `className`    | `string`                                                                                                  |         |
+| Prop           | Type                                                                                          | Default |
+| -------------- | --------------------------------------------------------------------------------------------- | ------- |
+| `breadcrumbs*` | [Streamable](/docs/soul/streamable)`<Breadcrumb[]>` <Tooltip content="See Breadcrumb below"/> |         |
+| `className`    | `string`                                                                                      |         |
 
-### BreadcrumbWithId
+### Breadcrumb
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `id`    | `string` |         |
 | `label` | `string` |         |
 | `href`  | `string` |         |
 

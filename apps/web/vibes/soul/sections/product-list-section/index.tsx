@@ -4,13 +4,13 @@ import { ComponentProps } from 'react';
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Button } from '@/vibes/soul/primitives/button';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
-import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
+import { type Product } from '@/vibes/soul/primitives/product-card';
 import * as SidePanel from '@/vibes/soul/primitives/side-panel';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 import {
+  type Breadcrumb,
   Breadcrumbs,
   BreadcrumbsSkeleton,
-  BreadcrumbWithId,
 } from '@/vibes/soul/sections/breadcrumbs';
 import { ProductList } from '@/vibes/soul/sections/product-list';
 import { Filter, FilterPanel } from '@/vibes/soul/sections/product-list-section/filter-panel';
@@ -21,13 +21,13 @@ import {
 } from '@/vibes/soul/sections/product-list-section/sorting';
 
 export interface ProductListSectionProps {
-  breadcrumbs?: Streamable<BreadcrumbWithId[]>;
+  breadcrumbs?: Streamable<Breadcrumb[]>;
   title?: Streamable<string>;
   totalCount: Streamable<number>;
-  products: Streamable<ProductCardWithId[]>;
+  products: Streamable<Product[]>;
   filters: Streamable<Filter[]>;
   sortOptions: Streamable<SortOption[]>;
-  compareProducts?: Streamable<ProductCardWithId[]>;
+  compareProducts?: Streamable<Product[]>;
   paginationInfo?: Streamable<CursorPaginationInfo>;
   compareAction?: ComponentProps<'form'>['action'];
   compareLabel?: Streamable<string>;

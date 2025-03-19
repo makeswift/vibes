@@ -1,8 +1,8 @@
-import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
+import { type Product } from '@/vibes/soul/primitives/product-card';
 import { ProductList } from '@/vibes/soul/sections/product-list';
 
 export default function Preview() {
-  const products = new Promise<ProductCardWithId[]>((resolve) => {
+  const products = new Promise<Product[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
   });
 
@@ -13,7 +13,7 @@ export default function Preview() {
   );
 }
 
-const defaultProducts: ProductCardWithId[] = [
+const defaultProducts: Product[] = [
   {
     id: '1',
     title: 'Mini Bar Bag',

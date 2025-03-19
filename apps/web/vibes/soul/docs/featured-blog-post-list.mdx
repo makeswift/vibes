@@ -74,18 +74,17 @@ const posts = [
 | `className`          | `string`                                                                                                         |         |
 | `title`              | `string`                                                                                                         |         |
 | `description`        | `string \| null`                                                                                                 |         |
-| `blogPosts*`         | [`Streamable`](docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="See BlogPostWithId below"/>           |         |
+| `blogPosts*`         | [`Streamable`](docs/soul/streamable)`<BlogPost[]>` <Tooltip content="See BlogPost below"/>                       |         |
 | `paginationInfo`     | [`Streamable`](docs/soul/streamable)`<CursorPaginationInfo>` <Tooltip content="See CursorPaginationInfo below"/> |         |
-| `breadcrumbs`        | [`Streamable`](docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/>       |         |
+| `breadcrumbs`        | [`Streamable`](docs/soul/streamable)`<Breadcrumb>` <Tooltip content="See Breadcrumb below"/>                     |         |
 | `emptyStateSubtitle` | [`Streamable`](docs/soul/streamable)`<string>`                                                                   |         |
 | `emptyStateTitle`    | [`Streamable`](docs/soul/streamable)`<string>`                                                                   |         |
 | `placeholderCount`   | `number`                                                                                                         |         |
 
-### BlogPostWithId
+### BlogPost
 
 | Prop       | Type                                   | Default |
 | ---------- | -------------------------------------- | ------- |
-| `id*`      | `string`                               |         |
 | `title*`   | `string`                               |         |
 | `author`   | `string  \| null`                      |
 | `content*` | `string`                               |         |
@@ -102,11 +101,10 @@ const posts = [
 | `endCursorParamName`   | `string`         |         |
 | `endCursor*`           | `string \| null` |         |
 
-### BreadcrumbWithId
+### Breadcrumb
 
 | Prop    | Type     | Default |
 | ------- | -------- | ------- |
-| `id`    | `string` |         |
 | `label` | `string` |         |
 | `href`  | `string` |         |
 

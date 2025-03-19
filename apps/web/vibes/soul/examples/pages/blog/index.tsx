@@ -1,10 +1,12 @@
+import { ReactNode } from 'react';
+
 import { locales } from '@/vibes/soul/data/locales';
-import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list/warm';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { Banner } from '@/vibes/soul/primitives/banner';
-import { BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
+import { type BlogPost } from '@/vibes/soul/primitives/blog-post-card';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { FeaturedBlogPostList } from '@/vibes/soul/sections/featured-blog-post-list';
 import { Footer } from '@/vibes/soul/sections/footer';
@@ -39,7 +41,7 @@ const socialMediaLinks = [
   },
 ];
 
-const paymentIconsArray: React.ReactNode[] = [
+const paymentIconsArray: ReactNode[] = [
   <Visa key="Visa" />,
   <Amex key="Amex" />,
   <Mastercard key="Mastercard" />,
@@ -50,7 +52,7 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 export default function Preview() {
-  const blogPostsPromise = new Promise<BlogPostWithId[]>((resolve) => {
+  const blogPostsPromise = new Promise<BlogPost[]>((resolve) => {
     setTimeout(() => resolve(posts), 1000);
   });
 
@@ -76,14 +78,12 @@ export default function Preview() {
         blogPosts={blogPostsPromise}
         breadcrumbs={[
           {
-            id: '1',
             label: 'Home',
-            href: '#',
+            href: '#1',
           },
           {
-            id: '2',
             label: 'Blog',
-            href: '#',
+            href: '#2',
           },
         ]}
         description="Expert Tips & Inspiration for Every Plant Lover"

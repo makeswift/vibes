@@ -34,12 +34,12 @@ const blogPost = {
 
 ### BlogPostContentProps
 
-| Prop          | Type                                                                                                        | Default |
-| ------------- | ----------------------------------------------------------------------------------------------------------- | ------- |
-| `className`   | `string`                                                                                                    |         |
-| `blogPost*`   | [`Streamable`](/docs/soul/streamable)`<BlogPost>` <Tooltip content="See BlogPost below"/>                   |         |
-| `breadcrumbs` | [`Streamable`](/docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/> |         |
-| `className`   | `string`                                                                                                    |         |
+| Prop          | Type                                                                                            | Default |
+| ------------- | ----------------------------------------------------------------------------------------------- | ------- |
+| `className`   | `string`                                                                                        |         |
+| `blogPost*`   | [`Streamable`](/docs/soul/streamable)`<BlogPost>` <Tooltip content="See BlogPost below"/>       |         |
+| `breadcrumbs` | [`Streamable`](/docs/soul/streamable)`<Breadcrumb[]>` <Tooltip content="See Breadcrumb below"/> |         |
+| `className`   | `string`                                                                                        |         |
 
 ### BlogPost
 
@@ -52,13 +52,12 @@ const blogPost = {
 | `content*` | `string`                               |         |
 | `image`    | `{ src: string, alt: string } \| null` |         |
 
-### BreadcrumbWithId
+### Breadcrumb
 
 | Prop     | Type     | Default |
 | -------- | -------- | ------- |
 | `label*` | `string` |         |
 | `href*`  | `string` |         |
-| `id*`    | `string` |         |
 
 ### Tag
 

@@ -3,9 +3,9 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import {
+  type BlogPost,
   BlogPostCard,
   BlogPostCardSkeleton,
-  BlogPostWithId,
 } from '@/vibes/soul/primitives/blog-post-card';
 import {
   Carousel,
@@ -18,7 +18,7 @@ import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export interface BlogPostCarouselProps {
   className?: string;
-  blogPosts: Streamable<BlogPostWithId[]>;
+  blogPosts: Streamable<BlogPost[]>;
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
@@ -68,11 +68,11 @@ export function BlogPostCarousel({
         return (
           <Carousel className={clsx(className)} hideOverflow={hideOverflow}>
             <CarouselContent className="mb-10">
-              {blogPosts.map(({ id, ...post }) => {
+              {blogPosts.map(({ ...post }) => {
                 return (
                   <CarouselItem
                     className="basis-full @md:basis-1/2 @4xl:basis-1/3 @7xl:basis-1/4"
-                    key={id}
+                    key={post.href}
                   >
                     <BlogPostCard {...post} />
                   </CarouselItem>

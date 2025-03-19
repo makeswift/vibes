@@ -5,9 +5,9 @@ import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 import {
+  type Breadcrumb,
   Breadcrumbs,
   BreadcrumbsSkeleton,
-  BreadcrumbWithId,
 } from '@/vibes/soul/sections/breadcrumbs';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
@@ -35,7 +35,7 @@ export interface BlogPost {
 
 export interface BlogPostContentProps {
   blogPost: Streamable<BlogPost>;
-  breadcrumbs?: Streamable<BreadcrumbWithId[]>;
+  breadcrumbs?: Streamable<Breadcrumb[]>;
   className?: string;
 }
 

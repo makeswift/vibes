@@ -50,15 +50,15 @@ const posts = [
 
 ### FeaturedBlogPostCarouselProps
 
-| Prop             | Type                                                                                                         | Default |
-| ---------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
-| `className`      | `string`                                                                                                     |         |
-| `title*`         | `string`                                                                                                     |         |
-| `cta`            | `Link` <Tooltip content="See Link below"/>                                                                   |         |
-| `blogPosts*`     | [`Streamable`](/docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="see BlogPostWithId type below"/> |         |
-| `scrollbarLabel` | `string`                                                                                                     |         |
-| `previousLabel`  | `string`                                                                                                     |         |
-| `nextLabel`      | `string`                                                                                                     |         |
+| Prop             | Type                                                                                             | Default |
+| ---------------- | ------------------------------------------------------------------------------------------------ | ------- |
+| `className`      | `string`                                                                                         |         |
+| `title*`         | `string`                                                                                         |         |
+| `cta`            | `Link` <Tooltip content="See Link below"/>                                                       |         |
+| `blogPosts*`     | [`Streamable`](/docs/soul/streamable)`<BlogPost[]>` <Tooltip content="see BlogPost type below"/> |         |
+| `scrollbarLabel` | `string`                                                                                         |         |
+| `previousLabel`  | `string`                                                                                         |         |
+| `nextLabel`      | `string`                                                                                         |         |
 
 ### Link
 
@@ -67,11 +67,10 @@ const posts = [
 | `href*`  | `string` |         |
 | `label*` | `string` |         |
 
-### BlogPostWithId
+### BlogPost
 
 | Prop       | Type                                   | Default |
 | ---------- | -------------------------------------- | ------- |
-| `id*`      | `string`                               |         |
 | `title*`   | `string`                               |         |
 | `author`   | `string  \| null`                      |
 | `content*` | `string`                               |         |
