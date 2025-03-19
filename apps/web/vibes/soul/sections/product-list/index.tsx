@@ -22,6 +22,9 @@ interface ProductListProps {
   emptyStateTitle?: Streamable<string>;
   emptyStateSubtitle?: Streamable<string>;
   placeholderCount?: number;
+  removeLabel?: Streamable<string>;
+  maxItems?: number;
+  maxCompareLimitMessage?: Streamable<string>;
 }
 
 /**
@@ -52,6 +55,9 @@ export function ProductList({
   emptyStateTitle = 'No products found',
   emptyStateSubtitle = 'Try browsing our complete catalog of products.',
   placeholderCount = 8,
+  removeLabel: streamableRemoveLabel,
+  maxItems,
+  maxCompareLimitMessage: streamableMaxCompareLimitMessage,
 }: ProductListProps) {
   return (
     <Stream
@@ -61,9 +67,18 @@ export function ProductList({
         streamableCompareLabel,
         streamableShowCompare,
         streamableCompareProducts,
+        streamableRemoveLabel,
+        streamableMaxCompareLimitMessage,
       ])}
     >
-      {([products, compareLabel, showCompare, compareProducts]) => {
+      {([
+        products,
+        compareLabel,
+        showCompare,
+        compareProducts,
+        removeLabel,
+        maxCompareLimitMessage,
+      ]) => {
         if (products.length === 0) {
           return (
             <ProductListEmptyState
@@ -75,7 +90,11 @@ export function ProductList({
         }
 
         return (
-          <CompareDrawerProvider items={compareProducts}>
+          <CompareDrawerProvider
+            items={compareProducts}
+            maxCompareLimitMessage={maxCompareLimitMessage}
+            maxItems={maxItems}
+          >
             <div className={clsx('w-full @container', className)}>
               <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5">
                 {products.map((product) => (
@@ -96,6 +115,7 @@ export function ProductList({
               <CompareDrawer
                 href={compareHref}
                 paramName={compareParamName}
+                removeLabel={removeLabel}
                 submitLabel={compareLabel}
               />
             )}

@@ -2,10 +2,20 @@
 
 import * as Portal from '@radix-ui/react-portal';
 import { ArrowRight, X } from 'lucide-react';
-import { parseAsArrayOf, parseAsString, useQueryState } from 'nuqs';
-import { createContext, ReactNode, startTransition, useContext, useOptimistic } from 'react';
+import { useQueryState } from 'nuqs';
+import {
+  createContext,
+  ReactNode,
+  startTransition,
+  useContext,
+  useEffect,
+  useOptimistic,
+} from 'react';
 
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
+import { toast } from '@/vibes/soul/primitives/toaster';
+
+import { compareParser } from './loader';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -17,6 +27,7 @@ interface OptimisticAction {
 interface CompareDrawerContext {
   optimisticItems: CompareDrawerItem[];
   setOptimisticItems: (action: OptimisticAction) => void;
+  maxItems?: number;
 }
 
 export const CompareDrawerContext = createContext<CompareDrawerContext | undefined>(undefined);
@@ -24,10 +35,20 @@ export const CompareDrawerContext = createContext<CompareDrawerContext | undefin
 export function CompareDrawerProvider({
   children,
   items,
+  maxItems,
+  maxCompareLimitMessage = "You've reached the maximum number of products for comparison. Remove a product to add a new one.",
 }: {
   children: ReactNode;
   items: CompareDrawerItem[];
+  maxItems?: number;
+  maxCompareLimitMessage?: string;
 }) {
+  useEffect(() => {
+    if (maxItems !== undefined && items.length >= maxItems) {
+      toast.warning(maxCompareLimitMessage);
+    }
+  }, [items.length, maxItems, maxCompareLimitMessage]);
+
   const [optimisticItems, setOptimisticItems] = useOptimistic(
     items,
     (state: CompareDrawerItem[], { type, item }: OptimisticAction) => {
@@ -57,7 +78,7 @@ export function CompareDrawerProvider({
   );
 
   return (
-    <CompareDrawerContext value={{ optimisticItems, setOptimisticItems }}>
+    <CompareDrawerContext value={{ optimisticItems, setOptimisticItems, maxItems }}>
       {children}
     </CompareDrawerContext>
   );
@@ -93,6 +114,7 @@ export interface CompareDrawerProps {
   href?: string;
   paramName?: string;
   submitLabel?: string;
+  removeLabel?: string;
 }
 
 /**
@@ -123,11 +145,9 @@ export function CompareDrawer({
   href = '/compare',
   paramName = 'compare',
   submitLabel = 'Compare',
+  removeLabel = 'Remove',
 }: CompareDrawerProps) {
-  const [params, setParam] = useQueryState(
-    paramName,
-    parseAsArrayOf(parseAsString).withOptions({ shallow: false, scroll: false }),
-  );
+  const [params, setParam] = useQueryState(paramName, compareParser);
 
   const { optimisticItems, setOptimisticItems } = useCompareDrawer();
 
@@ -163,14 +183,14 @@ export function CompareDrawer({
                     </span>
                   </Link>
                   <button
-                    aria-label={`Remove ${item.title}`}
+                    aria-label={`${removeLabel} ${item.title}`}
                     className="hover:text-[var(--compare-drawer-dismiss-icon-hover,hsl(var(--foreground))] absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center rounded-full border border-[var(--compare-drawer-dismiss-border,hsl(var(--contrast-100)))] bg-[var(--compare-drawer-dismiss-background,hsl(var(--background)))] text-[var(--compare-drawer-dismiss-icon,hsl(var(--contrast-400)))] transition-colors duration-150 hover:border-[var(--compare-drawer-dismiss-border-hover,hsl(var(--contrast-200)))] hover:bg-[var(--compare-drawer-dismiss-background-hover,hsl(var(--contrast-100)))]"
                     onClick={() => {
                       startTransition(async () => {
+                        setOptimisticItems({ type: 'remove', item });
+
                         await setParam((prev) => {
                           const next = prev?.filter((v) => v !== item.id) ?? [];
-
-                          setOptimisticItems({ type: 'remove', item });
 
                           return next.length > 0 ? next : null;
                         });

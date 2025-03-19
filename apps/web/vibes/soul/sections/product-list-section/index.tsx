@@ -1,5 +1,4 @@
 import { Sliders } from 'lucide-react';
-import { ComponentProps } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { Button } from '@/vibes/soul/primitives/button';
@@ -44,6 +43,7 @@ export interface ProductListSectionProps {
   emptyStateSubtitle?: Streamable<string>;
   emptyStateTitle?: Streamable<string>;
   placeholderCount?: number;
+  removeLabel?: Streamable<string>;
 }
 
 /**
@@ -87,6 +87,7 @@ export function ProductListSection({
   emptyStateSubtitle,
   emptyStateTitle,
   placeholderCount = 8,
+  removeLabel,
 }: ProductListSectionProps) {
   return (
     <div className="group/product-list-section @container">
@@ -183,6 +184,7 @@ export function ProductListSection({
               emptyStateTitle={emptyStateTitle}
               placeholderCount={placeholderCount}
               products={products}
+              removeLabel={removeLabel}
               showCompare={showCompare}
             />
 
