@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 
 import { Button } from '@/vibes/soul/primitives/button';
 
-const variants = ['primary', 'secondary', 'tertiary', 'ghost'] as const;
+const variants = ['primary', 'secondary', 'tertiary', 'ghost', 'danger'] as const;
 const shapes = ['pill', 'rounded', 'square', 'circle'] as const;
 const sizes = ['large', 'medium', 'small', 'x-small'] as const;
 
