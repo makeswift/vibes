@@ -10,13 +10,13 @@ import {
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel';
 import {
+  type Product,
   ProductCard,
   ProductCardSkeleton,
-  ProductCardWithId,
 } from '@/vibes/soul/primitives/product-card';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
-export type CarouselProduct = ProductCardWithId;
+export type CarouselProduct = Product;
 
 export interface ProductCarouselProps {
   products: Streamable<CarouselProduct[]>;

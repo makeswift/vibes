@@ -2,14 +2,14 @@ import { clsx } from 'clsx';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import {
+  type BlogPost,
   BlogPostCard,
   BlogPostCardSkeleton,
-  BlogPostWithId,
 } from '@/vibes/soul/primitives/blog-post-card';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export interface BlogPostListProps {
-  blogPosts: Streamable<BlogPostWithId[]>;
+  blogPosts: Streamable<BlogPost[]>;
   className?: string;
   emptyStateSubtitle?: Streamable<string>;
   emptyStateTitle?: Streamable<string>;
@@ -56,8 +56,8 @@ export function BlogPostList({
         return (
           <div className={clsx('@container', className)}>
             <div className="mx-auto grid grid-cols-1 gap-x-5 gap-y-8 @md:grid-cols-2 @xl:gap-y-10 @3xl:grid-cols-3">
-              {blogPosts.map(({ id, ...props }) => (
-                <BlogPostCard key={id} {...props} />
+              {blogPosts.map(({ ...post }) => (
+                <BlogPostCard key={post.href} {...post} />
               ))}
             </div>
           </div>

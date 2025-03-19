@@ -1,6 +1,6 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
-import { BlogPostWithId } from '@/vibes/soul/primitives/blog-post-card';
+import { type BlogPost } from '@/vibes/soul/primitives/blog-post-card';
 import { BlogPostCarousel } from '@/vibes/soul/sections/blog-post-carousel';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
@@ -12,7 +12,7 @@ interface Link {
 export interface FeaturedBlogPostCarouselProps {
   title: string;
   cta?: Link;
-  blogPosts: Streamable<BlogPostWithId[]>;
+  blogPosts: Streamable<BlogPost[]>;
   scrollbarLabel?: string;
   previousLabel?: string;
   nextLabel?: string;

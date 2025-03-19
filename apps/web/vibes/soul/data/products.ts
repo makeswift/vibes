@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
+import { type Product } from '@/vibes/soul/primitives/product-card';
 import { Filter } from '@/vibes/soul/sections/product-list-section/filter-panel';
 
 import { SoulBrandName } from '../brands';
-import { ProductCardWithId } from '../primitives/product-card';
 
 // Common product type
 interface BaseProduct {
@@ -517,7 +517,7 @@ export async function getFilters(brand: SoulBrandName): Promise<Filter[]> {
 export async function getProducts(
   brand: SoulBrandName,
   filterParams?: FilterParams,
-): Promise<ProductCardWithId[]> {
+): Promise<Product[]> {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   let brandProducts = products[brand] as Array<ElectricProduct | LuxuryProduct | WarmProduct>;
@@ -588,5 +588,5 @@ export async function getProducts(
     }
   }
 
-  return brandProducts as unknown as ProductCardWithId[];
+  return brandProducts as unknown as Product[];
 }

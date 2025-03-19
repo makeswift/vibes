@@ -5,9 +5,9 @@ import { Badge } from '@/vibes/soul/primitives/badge';
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import {
+  type Product,
   ProductCard,
   ProductCardSkeleton,
-  ProductCardWithId,
 } from '@/vibes/soul/primitives/product-card';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
@@ -16,7 +16,7 @@ export interface Order {
   totalPrice: string;
   status: string;
   href: string;
-  lineItems: ProductCardWithId[];
+  lineItems: Product[];
 }
 
 export interface OrderListProps {

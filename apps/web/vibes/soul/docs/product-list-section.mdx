@@ -29,13 +29,13 @@ function Usage() {
 
 | Prop                    | Type                                                                                                              | Default      |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------ |
-| `breadcrumbs`           | [`Streamable`](/docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/>       | `'Products'` |
+| `breadcrumbs`           | [`Streamable`](/docs/soul/streamable)`<Breadcrumb[]>` <Tooltip content="See Breadcrumb below"/>                   | `'Products'` |
 | `title`                 | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
 | `totalCount*`           | [`Streamable`](/docs/soul/streamable)`<number>`                                                                   |              |
-| `products*`             | [`Streamable`](/docs/soul/streamable)`<ProductCardWithId[]>` <Tooltip content="See ProductCardWithId below"/>     |              |
+| `products*`             | [`Streamable`](/docs/soul/streamable)`<Product[]>` <Tooltip content="See Product below"/>                         |              |
 | `filters*`              | [`Streamable`](/docs/soul/streamable)`<Filter[]>` <Tooltip content="See Filter below"/>                           |              |
 | `sortOptions*`          | [`Streamable`](/docs/soul/streamable)`<SortOption[]>` <Tooltip content="See SortOption below"/>                   |              |
-| `compareProducts`       | [`Streamable`](/docs/soul/streamable)`<ProductCardWithId[]>` <Tooltip content="See ProductCardWithId below"/>     |              |
+| `compareProducts`       | [`Streamable`](/docs/soul/streamable)`<Product[]>` <Tooltip content="See Product below"/>                         |              |
 | `paginationInfo`        | [`Streamable`](/docs/soul/streamable)`<CursorPaginationInfo>` <Tooltip content="See CursorPaginationInfo below"/> |              |
 | `compareAction`         | `ComponentProps<'form'>['action']`                                                                                |              |
 | `compareLabel`          | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
@@ -52,7 +52,7 @@ function Usage() {
 | `emptyStateTitle`       | [`Streamable`](/docs/soul/streamable)`<string>`                                                                   |              |
 | `placeholderCount`      | `number`                                                                                                          |              |
 
-### ProductCardWithId
+### Product
 
 | Prop       | Type                           | Default |
 | ---------- | ------------------------------ | ------- |
@@ -65,13 +65,12 @@ function Usage() {
 | `badge`    | `string`                       |         |
 | `rating`   | `number`                       |         |
 
-### BreadcrumbWithId
+### Breadcrumb
 
 | Prop     | Type     | Default |
 | -------- | -------- | ------- |
 | `label*` | `string` |         |
 | `href*`  | `string` |         |
-| `id*`    | `string` |         |
 
 ### SortOption
 
