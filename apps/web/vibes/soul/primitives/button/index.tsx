@@ -7,7 +7,6 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   size?: 'large' | 'medium' | 'small' | 'x-small';
   shape?: 'pill' | 'rounded' | 'square' | 'circle';
   loading?: boolean;
-  srOnlyText?: string;
 }
 
 /**
@@ -50,7 +49,6 @@ export function Button({
   type = 'button',
   disabled = false,
   className,
-  srOnlyText = '',
   children,
   ...props
 }: ButtonProps) {
@@ -106,7 +104,6 @@ export function Button({
           variant === 'secondary' && 'mix-blend-difference',
         )}
       >
-        {srOnlyText !== '' && <span className="sr-only">{srOnlyText}</span>}
         {children}
       </span>
       <span
