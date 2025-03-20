@@ -5,17 +5,13 @@ import Link from 'next/link';
 
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
-export interface Card {
+export interface CardContent {
   title: string;
   image?: { src: string; alt: string };
   href: string;
 }
 
-export interface CardWithId extends Card {
-  id: string;
-}
-
-export interface CardProps extends Card {
+export interface CardProps extends CardContent {
   className?: string;
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';

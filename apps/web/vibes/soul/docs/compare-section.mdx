@@ -56,20 +56,20 @@ const products = [
 
 ### CompareSectionProps
 
-| Prop                 | Type                                                                                                          | Default |
-| -------------------- | ------------------------------------------------------------------------------------------------------------- | ------- |
-| `className`          | `string`                                                                                                      |         |
-| `title`              | `string`                                                                                                      |         |
-| `products*`          | [`Streamable`](/docs/soul/streamable)`<CompareCardWithId[]>` <Tooltip content="See CompareCardWithId below"/> |         |
-| `emptyStateTitle`    | [`Streamable`](/docs/soul/streamable)`<string>`                                                               |         |
-| `emptyStateSubtitle` | [`Streamable`](/docs/soul/streamable)`<string>`                                                               |         |
-| `addToCartLabel`     | `string`                                                                                                      |         |
-| `previousLabel`      | `string`                                                                                                      |         |
-| `nextLabel`          | `string`                                                                                                      |         |
-| `addToCartAction`    | `(id: string) => Promise<void>`                                                                               |         |
-| `placeholderCount`   | `number`                                                                                                      |         |
+| Prop                 | Type                                                                                                    | Default |
+| -------------------- | ------------------------------------------------------------------------------------------------------- | ------- |
+| `className`          | `string`                                                                                                |         |
+| `title`              | `string`                                                                                                |         |
+| `products*`          | [`Streamable`](/docs/soul/streamable)`<CompareProduct[]>` <Tooltip content="See CompareProduct below"/> |         |
+| `emptyStateTitle`    | [`Streamable`](/docs/soul/streamable)`<string>`                                                         |         |
+| `emptyStateSubtitle` | [`Streamable`](/docs/soul/streamable)`<string>`                                                         |         |
+| `addToCartLabel`     | `string`                                                                                                |         |
+| `previousLabel`      | `string`                                                                                                |         |
+| `nextLabel`          | `string`                                                                                                |         |
+| `addToCartAction`    | `(id: string) => Promise<void>`                                                                         |         |
+| `placeholderCount`   | `number`                                                                                                |         |
 
-### CompareCardWithId
+### CompareProduct
 
 | Prop           | Type                                                                                        | Default |
 | -------------- | ------------------------------------------------------------------------------------------- | ------- |
