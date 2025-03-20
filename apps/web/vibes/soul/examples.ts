@@ -1240,5 +1240,12 @@ export const examples = [
     files: ['examples/sections/sticky-sidebar-layout/luxury.tsx'],
     component: lazy(() => import('./examples/sections/sticky-sidebar-layout/luxury')),
   },
+  {
+    name: 'wishlist-item-card-example',
+    dependencies: [],
+    registryDependencies: ['wishlist-item-card'],
+    files: ['examples/primitives/wishlist-item-card/index.tsx'],
+    component: lazy(() => import('./examples/primitives/wishlist-item-card')),
+  },
   // PLOP: Append new component here
 ] satisfies Components;
