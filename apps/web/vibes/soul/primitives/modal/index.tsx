@@ -1,13 +1,21 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { clsx } from 'clsx';
-import { ReactNode } from 'react';
+import { XIcon } from 'lucide-react';
 
-export interface ModalProps {
-  isOpen: boolean;
-  setOpen: (open: boolean) => void;
+import { Button } from '@/vibes/soul/primitives/button';
+
+export interface ModalProps extends React.PropsWithChildren {
+  className?: string;
+  isOpen?: boolean;
+  setOpen?: (open: boolean) => void;
+  /** Title should always be given for screen reader support. */
   title: string;
-  trigger: ReactNode;
-  children: ReactNode;
+  /** Element to trigger the modal. Not required if the modal is being controlled manually. */
+  trigger?: React.ReactNode;
+  /** If `true`, a user will be required to make a choice by clicking on one of the provided actions. Defaults to `false`. */
+  required?: boolean;
+  /** Hides the header / top of the modal. */
+  hideHeader?: boolean;
 }
 
 /**
@@ -21,23 +29,55 @@ export interface ModalProps {
  * }
  * ```
  */
-export const Modal = function Modal({ isOpen, setOpen, title, trigger, children }: ModalProps) {
+export const Modal = ({
+  className = '',
+  isOpen,
+  setOpen,
+  title,
+  trigger,
+  children,
+  required = false,
+  hideHeader = false,
+}: ModalProps) => {
   return (
     <Dialog.Root onOpenChange={setOpen} open={isOpen}>
-      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
+      {trigger != null && <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-30 flex items-center justify-center bg-[var(--modal-overlay-background,hsl(var(--foreground)/50%))] @container">
           <Dialog.Content
             className={clsx(
-              'mx-3 my-10 max-h-[90%] max-w-3xl overflow-y-auto rounded-xl bg-[var(--modal-background,hsl(var(--background)))] px-3 py-5 @sm:px-6 @sm:py-8 @5xl:px-20 @5xl:py-10',
+              'mx-3 my-10 max-h-[90%] max-w-3xl overflow-y-auto rounded-2xl bg-[var(--modal-background,hsl(var(--background)))]',
               'transition ease-out',
               'data-[state=closed]:duration-200 data-[state=open]:duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out',
               'focus:outline-none data-[state=closed]:slide-out-to-bottom-16 data-[state=open]:slide-in-from-bottom-16',
+              className,
             )}
-            onOpenAutoFocus={(e) => e.preventDefault()}
+            onEscapeKeyDown={required ? (event) => event.preventDefault() : undefined}
+            onInteractOutside={required ? (event) => event.preventDefault() : undefined}
+            onPointerDownOutside={required ? (event) => event.preventDefault() : undefined}
           >
-            <Dialog.Title className="sr-only">{title}</Dialog.Title>
-            {children}
+            <div className="flex flex-col">
+              <div
+                className={clsx(
+                  'mb-5 flex min-h-10 flex-row items-center pl-5 py-3 border-b border-b-contrast-200',
+                  hideHeader ? 'sr-only' : '',
+                )}
+              >
+                <Dialog.Title asChild>
+                  <h1 className="flex-1 pr-4 text-base font-semibold leading-none">{title}</h1>
+                </Dialog.Title>
+                {!(required || hideHeader) && (
+                  <div className="flex items-center justify-center pr-3">
+                    <Dialog.Close asChild>
+                      <Button shape="circle" size="x-small" variant="ghost">
+                        <XIcon size={20} />
+                      </Button>
+                    </Dialog.Close>
+                  </div>
+                )}
+              </div>
+              <div className={clsx('mb-5 flex-1 px-5', hideHeader ? 'mt-5' : '')}>{children}</div>
+            </div>
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Portal>
