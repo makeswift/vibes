@@ -12,7 +12,7 @@ previewSize: lg
 {/* prettier-ignore-start */}
 
 <CodeBlock lang="ts">{`
-import { CardWithId } from '@/vibes/soul/primitives/card';
+import { type CardContent } from '@/vibes/soul/primitives/card';
 import { CardCarousel } from '@/vibes/soul/sections/card-carousel';
 
 function Usage() {
@@ -27,60 +27,54 @@ function Usage() {
     );
 }
 
-const cards: CardWithId[] = [
+const cards: CardContent[] = [
     {
-      id: '1',
       title: 'Mini Bar Bag',
       image: {
         src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
         alt: 'Mini Bar Bag',
       },
-      href: '#',
+      href: '#1',
     },
     {
-      id: '2',
       title: 'Mini Bar Bag',
       image: {
         src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
         alt: 'Mini Bar Bag',
       },
-      href: '#',
+      href: '#2',
     },
     {
-      id: '3',
       title: 'Stem Caddy',
       image: {
         src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
         alt: 'Stem Caddy',
       },
-      href: '#',
+      href: '#3',
     },
     {
-      id: '4',
       title: 'Hip Slinger',
       image: {
         src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
         alt: 'Hip Slinger',
       },
-      href: '#',
+      href: '#4',
     },
     {
-      id: '5',
       title: 'Everyday Tote',
       image: {
         src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
         alt: 'Everyday Tote',
       },
-      href: '#',
+      href: '#5',
     },
     {
-      id: '6',
       title: 'Mini Saddlebag',
       image: {
         src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
         alt: 'Mini Saddlebag',
       },
-      href: '#',
+      href: '#6',
     },
 ];
 `}
@@ -92,32 +86,31 @@ const cards: CardWithId[] = [
 
 ### CardCarouselProps
 
-| Prop                  | Type                                                                                           | Default   |
-| --------------------- | ---------------------------------------------------------------------------------------------- | --------- |
-| `cards*`              | [Streamable](/docs/soul/streamable)`<CardWithId[]>` <Tooltip content=" See CardWithId below"/> |           |
-| `aspectRatio`         | `'5:6' \| '3:4' \| '1:1'`                                                                      |           |
-| `textColorScheme`     | `'light'\| 'dark'`                                                                             |           |
-| `iconColorScheme`     | `'light'\| 'dark'`                                                                             |           |
-| `carouselColorScheme` | `'light'\| 'dark'`                                                                             | `'light'` |
-| `className`           | `string`                                                                                       |           |
-| `emptyStateTitle`     | [Streamable](/docs/soul/streamable)`<string>`                                                  |           |
-| `emptyStateSubtitle`  | [Streamable](/docs/soul/streamable)`<string>`                                                  |           |
-| `scrollbarLabel`      | `string`                                                                                       |           |
-| `previousLabel`       | `string`                                                                                       |           |
-| `nextLabel`           | `string`                                                                                       |           |
-| `showButtons`         | `boolean`                                                                                      |           |
-| `showScrollbar`       | `boolean`                                                                                      |           |
-| `hideOverflow`        | `boolean`                                                                                      |           |
-| `placeholderCount`    | `number`                                                                                       |           |
+| Prop                  | Type                                                                                             | Default   |
+| --------------------- | ------------------------------------------------------------------------------------------------ | --------- |
+| `cards*`              | [Streamable](/docs/soul/streamable)`<CardContent[]>` <Tooltip content=" See CardContent below"/> |           |
+| `aspectRatio`         | `'5:6' \| '3:4' \| '1:1'`                                                                        |           |
+| `textColorScheme`     | `'light'\| 'dark'`                                                                               |           |
+| `iconColorScheme`     | `'light'\| 'dark'`                                                                               |           |
+| `carouselColorScheme` | `'light'\| 'dark'`                                                                               | `'light'` |
+| `className`           | `string`                                                                                         |           |
+| `emptyStateTitle`     | [Streamable](/docs/soul/streamable)`<string>`                                                    |           |
+| `emptyStateSubtitle`  | [Streamable](/docs/soul/streamable)`<string>`                                                    |           |
+| `scrollbarLabel`      | `string`                                                                                         |           |
+| `previousLabel`       | `string`                                                                                         |           |
+| `nextLabel`           | `string`                                                                                         |           |
+| `showButtons`         | `boolean`                                                                                        |           |
+| `showScrollbar`       | `boolean`                                                                                        |           |
+| `hideOverflow`        | `boolean`                                                                                        |           |
+| `placeholderCount`    | `number`                                                                                         |           |
 
-### CardWithId
+### CardContent
 
 | Prop     | Type                           | Default |
 | -------- | ------------------------------ | ------- |
 | `title*` | `string`                       |         |
 | `image`  | `{ src: string; alt: string }` |         |
 | `href*`  | `string`                       |         |
-| `id*`    | `string`                       |         |
 
 ### CSS Variables
 

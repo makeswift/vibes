@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Card, CardSkeleton, CardWithId } from '@/vibes/soul/primitives/card';
+import { Card, type CardContent, CardSkeleton } from '@/vibes/soul/primitives/card';
 import {
   Carousel,
   CarouselButtons,
@@ -13,7 +13,7 @@ import {
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export interface CardCarouselProps {
-  cards: Streamable<CardWithId[]>;
+  cards: Streamable<CardContent[]>;
   aspectRatio?: '5:6' | '3:4' | '1:1';
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';
@@ -80,10 +80,10 @@ export function CardCarousel({
         return (
           <Carousel className={className} hideOverflow={hideOverflow}>
             <CarouselContent>
-              {cards.map(({ id, ...card }) => (
+              {cards.map(({ ...card }) => (
                 <CarouselItem
                   className="basis-full @sm:basis-1/2 @md:basis-1/3 @4xl:basis-1/4"
-                  key={id}
+                  key={card.href}
                 >
                   <Card
                     {...card}

@@ -1,11 +1,13 @@
+import { ReactNode } from 'react';
+
 import { locales } from '@/vibes/soul/data/locales';
-import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury';
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/luxury';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
-import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
+import { type Product } from '@/vibes/soul/primitives/product-card';
 import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { Footer } from '@/vibes/soul/sections/footer';
 import {
@@ -40,7 +42,7 @@ const socialMediaLinks = [
   },
 ];
 
-const paymentIconsArray: React.ReactNode[] = [
+const paymentIconsArray: ReactNode[] = [
   <Visa key="Visa" />,
   <Amex key="Amex" />,
   <Mastercard key="Mastercard" />,
@@ -51,7 +53,7 @@ const paymentIconsArray: React.ReactNode[] = [
 ];
 
 // Products
-export const products: ProductCardWithId[] = [
+export const products: Product[] = [
   {
     id: '1',
     title: 'DARYA LUG SOLE FISHERMAN',

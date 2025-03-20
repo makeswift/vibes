@@ -3,11 +3,10 @@ import { Loader2 } from 'lucide-react';
 import { ComponentPropsWithoutRef } from 'react';
 
 export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger';
   size?: 'large' | 'medium' | 'small' | 'x-small';
   shape?: 'pill' | 'rounded' | 'square' | 'circle';
   loading?: boolean;
-  srOnlyText?: string;
 }
 
 /**
@@ -35,6 +34,10 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
  *   --button-ghost-text: hsl(var(--foreground));
  *   --button-ghost-border: transparent;
  *   --button-loader-icon: hsl(var(--foreground));
+ *   --button-danger-background: color-mix(in oklab, hsl(var(--error)), white 30%);
+ *   --button-danger-background-hover: color-mix(in oklab, hsl(var(--error)), white 75%);
+ *   --button-danger-foreground: hsl(var(--foreground));
+ *   --button-danger-border: color-mix(in oklab, hsl(var(--error)), white 30%);
  * }
  * ```
  */
@@ -46,7 +49,6 @@ export function Button({
   type = 'button',
   disabled = false,
   className,
-  srOnlyText = '',
   children,
   ...props
 }: ButtonProps) {
@@ -55,7 +57,7 @@ export function Button({
       {...props}
       aria-busy={loading}
       className={clsx(
-        'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden border text-center font-[family-name:var(--button-font-family,var(--font-family-body))] font-semibold leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--button-focus,hsl(var(--primary)))] focus-visible:ring-offset-2',
+        'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden border text-center font-[family-name:var(--button-font-family,var(--font-family-body))] font-semibold leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--button-focus,hsl(var(--primary)))] focus-visible:ring-offset-2',
         {
           primary:
             'border-[var(--button-primary-border,hsl(var(--primary)))] bg-[var(--button-primary-background,hsl(var(--primary)))] text-[var(--button-primary-text,hsl(var(--foreground)))] after:bg-[var(--button-primary-background-hover,color-mix(in_oklab,hsl(var(--primary)),white_75%))]',
@@ -65,6 +67,8 @@ export function Button({
             'border-[var(--button-tertiary-border,hsl(var(--contrast-200)))] bg-[var(--button-tertiary-background,hsl(var(--background)))] text-[var(--button-tertiary-text,hsl(var(--foreground)))] after:bg-[var(--button-tertiary-background-hover,hsl(var(--contrast-100)))]',
           ghost:
             'border-[var(--button-ghost-border,transparent)] bg-[var(--button-ghost-background,transparent)] text-[var(--button-ghost-text,hsl(var(--foreground)))] after:bg-[var(--button-ghost-background-hover,hsl(var(--foreground)/5%))]',
+          danger:
+            'border-[var(--button-danger-border,color-mix(in_oklab,hsl(var(--error)),white_30%))] bg-[var(--button-danger-background,color-mix(in_oklab,hsl(var(--error)),white_30%))] text-[var(--button-danger-foreground)] after:bg-[var(--button-danger-background-hover,color-mix(in_oklab,hsl(var(--error)),white_75%))]',
         }[variant],
         {
           pill: 'rounded-full after:rounded-full',
@@ -100,7 +104,6 @@ export function Button({
           variant === 'secondary' && 'mix-blend-difference',
         )}
       >
-        {srOnlyText !== '' && <span className="sr-only">{srOnlyText}</span>}
         {children}
       </span>
       <span

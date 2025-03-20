@@ -45,20 +45,19 @@ const blogPosts = [
 
 ### BlogPostListProps
 
-| Prop                 | Type                                                                                                   | Default |
-| -------------------- | ------------------------------------------------------------------------------------------------------ | ------- |
-| `className`          | `string`                                                                                               |         |
-| `blogPosts*`         | [`Streamable`](docs/soul/streamable)`<BlogPostWithId[]>` <Tooltip content="See BlogPostWithId below"/> |         |
-| `className`          | `string`                                                                                               |         |
-| `emptyStateSubtitle` | [`Streamable`](docs/soul/streamable)`<string>`                                                         |         |
-| `emptyStateTitle`    | [`Streamable`](docs/soul/streamable)`<string>`                                                         |         |
-| `placeholderCount`   | `number`                                                                                               |         |
+| Prop                 | Type                                                                                       | Default |
+| -------------------- | ------------------------------------------------------------------------------------------ | ------- |
+| `className`          | `string`                                                                                   |         |
+| `blogPosts*`         | [`Streamable`](docs/soul/streamable)`<BlogPost[]>` <Tooltip content="See BlogPost below"/> |         |
+| `className`          | `string`                                                                                   |         |
+| `emptyStateSubtitle` | [`Streamable`](docs/soul/streamable)`<string>`                                             |         |
+| `emptyStateTitle`    | [`Streamable`](docs/soul/streamable)`<string>`                                             |         |
+| `placeholderCount`   | `number`                                                                                   |         |
 
-### BlogPostWithId
+### BlogPost
 
 | Prop       | Type                                   | Default |
 | ---------- | -------------------------------------- | ------- |
-| `id*`      | `string`                               |         |
 | `title*`   | `string`                               |         |
 | `author`   | `string  \| null`                      |
 | `content*` | `string`                               |         |

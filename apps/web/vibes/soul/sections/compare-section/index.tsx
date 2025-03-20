@@ -11,14 +11,14 @@ import {
 import {
   CompareCard,
   CompareCardSkeleton,
-  CompareCardWithId,
+  type CompareProduct,
 } from '@/vibes/soul/primitives/compare-card';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export interface CompareSectionProps {
   className?: string;
   title?: string;
-  products: Streamable<CompareCardWithId[]>;
+  products: Streamable<CompareProduct[]>;
   emptyStateTitle?: Streamable<string>;
   emptyStateSubtitle?: Streamable<string>;
   addToCartLabel?: string;

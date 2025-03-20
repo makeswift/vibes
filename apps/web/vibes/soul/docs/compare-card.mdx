@@ -42,21 +42,21 @@ function Usage() {
 
 ### CompareCardProps
 
-| Prop                | Type                                                                 | Default           |
-| ------------------- | -------------------------------------------------------------------- | ----------------- |
-| `children*`         | `ReactNode`                                                          |                   |
-| `className`         | `string`                                                             |                   |
-| `product*`          | `CompareCardWithId` <Tooltip content="See CompareCardWithId below"/> |                   |
-| `addToCartLabel`    | `string`                                                             | `'Add to cart'`   |
-| `descriptionLabel`  | `string`                                                             | `'Description'`   |
-| `ratingLabel`       | `string`                                                             | `'Rating'`        |
-| `otherDetailsLabel` | `string`                                                             | `'Other details'` |
-| `addToCartAction`   | `(id: string) => Promise<void>`                                      |                   |
-| `imageSizes`        | `string`                                                             |                   |
+| Prop                | Type                                                           | Default           |
+| ------------------- | -------------------------------------------------------------- | ----------------- |
+| `children*`         | `ReactNode`                                                    |                   |
+| `className`         | `string`                                                       |                   |
+| `product*`          | `CompareProduct` <Tooltip content="See CompareProduct below"/> |                   |
+| `addToCartLabel`    | `string`                                                       | `'Add to cart'`   |
+| `descriptionLabel`  | `string`                                                       | `'Description'`   |
+| `ratingLabel`       | `string`                                                       | `'Rating'`        |
+| `otherDetailsLabel` | `string`                                                       | `'Other details'` |
+| `addToCartAction`   | `(id: string) => Promise<void>`                                |                   |
+| `imageSizes`        | `string`                                                       |                   |
 
 This component uses the Next.js Image component. The `imageSizes` prop is passed directly to the `sizes` prop of the Next.js Image component. For more details, refer to the [Next.js Image documentation](https://nextjs.org/docs/pages/api-reference/components/image#sizes).
 
-### CompareCardWithId
+### CompareProduct
 
 | Prop           | Type                                     | Default |
 | -------------- | ---------------------------------------- | ------- |

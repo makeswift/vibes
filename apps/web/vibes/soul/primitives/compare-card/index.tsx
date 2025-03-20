@@ -2,21 +2,21 @@ import { clsx } from 'clsx';
 
 import { Button } from '@/vibes/soul/primitives/button';
 import {
+  type Product,
   ProductCard,
   ProductCardSkeleton,
-  ProductCardWithId,
 } from '@/vibes/soul/primitives/product-card';
 import { Rating } from '@/vibes/soul/primitives/rating';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
-export interface CompareCardWithId extends ProductCardWithId {
+export interface CompareProduct extends Product {
   description?: string;
   customFields?: Array<{ name: string; value: string }>;
 }
 
 export interface CompareCardProps {
   className?: string;
-  product: CompareCardWithId;
+  product: CompareProduct;
   addToCartLabel?: string;
   descriptionLabel?: string;
   ratingLabel?: string;

@@ -1,9 +1,8 @@
+import { type Product } from '@/vibes/soul/primitives/product-card';
 import { CompareSection } from '@/vibes/soul/sections/compare-section';
 
-import { ProductCardWithId } from '@/vibes/soul/primitives/product-card';
-
 export default function Preview() {
-  const products = new Promise<ProductCardWithId[]>((resolve) => {
+  const products = new Promise<Product[]>((resolve) => {
     setTimeout(() => resolve(defaultProducts), 1000);
   });
 
@@ -25,7 +24,7 @@ export async function addToCartAction(id: string) {
   console.log('Add to cart:', id);
 }
 
-const defaultProducts: ProductCardWithId[] = [
+const defaultProducts: Product[] = [
   {
     id: '1',
     title: 'Philodendron Imperial Red',

@@ -106,7 +106,7 @@ export const product = {
 
 | Prop                        | Type                                                                                                                      | Default |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `breadcrumbs`               | [`Streamable`](/docs/soul/streamable)`<BreadcrumbWithId[]>` <Tooltip content="See BreadcrumbWithId below"/>               |         |
+| `breadcrumbs`               | [`Streamable`](/docs/soul/streamable)`<Breadcrumb[]>` <Tooltip content="See Breadcrumb below"/>                           |         |
 | `product`                   | [`Streamable`](/docs/soul/streamable)`<ProductDetailProduct \| null>` <Tooltip content="See ProductDetailProduct below"/> |         |
 | `action`                    | `ProductDetailFormAction<F>`                                                                                              |         |
 | `fields`                    | [`Streamable`](/docs/soul/streamable)`<F[]>`                                                                              |         |
@@ -207,13 +207,12 @@ export async function action(
 }
 ```
 
-### BreadcrumbWithId
+### Breadcrumb
 
 | Prop     | Type     | Default |
 | -------- | -------- | ------- |
 | `label*` | `string` |         |
 | `href*`  | `string` |         |
-| `id*`    | `string` |         |
 
 ### CSS Variables
 

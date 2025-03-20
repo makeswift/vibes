@@ -1,61 +1,52 @@
-import { BreadcrumbWithId } from '@/vibes/soul/sections/breadcrumbs';
+import { Breadcrumb } from '@/vibes/soul/sections/breadcrumbs';
 
 import { SoulBrandName } from '../brands';
 
-export function getBreadcrumbs(brand: SoulBrandName): BreadcrumbWithId[] {
+export function getBreadcrumbs(brand: SoulBrandName): Breadcrumb[] {
   return breadcrumbs[brand];
 }
 
 const breadcrumbs = {
   Electric: [
     {
-      id: '1',
       label: 'Home',
-      href: '#',
+      href: '#1',
     },
     {
-      id: '2',
       label: 'Plants',
-      href: '#',
+      href: '#2',
     },
     {
-      id: '3',
       label: 'Indoor',
-      href: '#',
+      href: '#3',
     },
   ],
   Luxury: [
     {
-      id: '1',
       label: 'Home',
-      href: '#',
+      href: '#1',
     },
     {
-      id: '2',
       label: 'Shoes',
-      href: '#',
+      href: '#2',
     },
     {
-      id: '3',
       label: 'Flats',
-      href: '#',
+      href: '#3',
     },
   ],
   Warm: [
     {
-      id: '1',
       label: 'Home',
-      href: '#',
+      href: '#1`',
     },
     {
-      id: '2',
       label: 'Bags',
-      href: '#',
+      href: '#2',
     },
     {
-      id: '3',
       label: 'Handle Bags',
-      href: '#',
+      href: '#3',
     },
   ],
-} as const satisfies Record<SoulBrandName, [BreadcrumbWithId, ...BreadcrumbWithId[]]>;
+} as const satisfies Record<SoulBrandName, [Breadcrumb, ...Breadcrumb[]]>;

@@ -4,15 +4,15 @@ import { ComponentProps } from 'react';
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { CompareDrawer } from '@/vibes/soul/primitives/compare-drawer';
 import {
+  type Product,
   ProductCard,
   ProductCardSkeleton,
-  ProductCardWithId,
 } from '@/vibes/soul/primitives/product-card';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 interface ProductListProps {
-  products: Streamable<ProductCardWithId[]>;
-  compareProducts?: Streamable<ProductCardWithId[]>;
+  products: Streamable<Product[]>;
+  compareProducts?: Streamable<Product[]>;
   className?: string;
   colorScheme?: 'light' | 'dark';
   aspectRatio?: '5:6' | '3:4' | '1:1';

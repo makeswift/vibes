@@ -27,15 +27,15 @@ function Usage() {
 
 ### ButtonProps
 
-| Prop         | Type                                                 | Default     |
-| ------------ | ---------------------------------------------------- | ----------- |
-| `children*`  | `ReactNode`                                          |             |
-| `className`  | `string`                                             |             |
-| `variant`    | ` 'primary' \| 'secondary' \| 'tertiary' \| 'ghost'` | `'primary'` |
-| `size`       | ` 'large' \| 'medium' \| 'small' \| 'x-small'`       | `'large'`   |
-| `shape`      | ` 'pill' \| 'rounded' \| 'square' \| 'circle'`       | `'pill'`    |
-| `loading`    | ` boolean`                                           | `false`     |
-| `srOnlyText` | ` string`                                            | `''`        |
+| Prop         | Type                                                             | Default     |
+| ------------ | ---------------------------------------------------------------- | ----------- |
+| `children*`  | `ReactNode`                                                      |             |
+| `className`  | `string`                                                         |             |
+| `variant`    | ` 'primary' \| 'secondary' \| 'tertiary' \| 'ghost' \| 'danger'` | `'primary'` |
+| `size`       | ` 'large' \| 'medium' \| 'small' \| 'x-small'`                   | `'large'`   |
+| `shape`      | ` 'pill' \| 'rounded' \| 'square' \| 'circle'`                   | `'pill'`    |
+| `loading`    | ` boolean`                                                       | `false`     |
+| `srOnlyText` | ` string`                                                        | `''`        |
 
 ### CSS Variables
 
@@ -62,5 +62,9 @@ This component supports various CSS variables for theming. Here's a comprehensiv
   --button-ghost-text: hsl(var(--foreground));
   --button-ghost-border: transparent;
   --button-loader-icon: hsl(var(--foreground));
+  --button-danger-background: color-mix(in oklab, hsl(var(--error)), white 30%);
+  --button-danger-background-hover: color-mix(in oklab, hsl(var(--error)), white 75%);
+  --button-danger-foreground: hsl(var(--foreground));
+  --button-danger-border: color-mix(in oklab, hsl(var(--error)), white 30%);
 }
 ```

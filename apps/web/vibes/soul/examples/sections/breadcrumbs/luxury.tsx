@@ -1,8 +1,8 @@
-import { Breadcrumbs, BreadcrumbWithId } from '@/vibes/soul/sections/breadcrumbs';
+import { type Breadcrumb, Breadcrumbs } from '@/vibes/soul/sections/breadcrumbs';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 export default function Preview() {
-  const breadcrumbsPromise = new Promise<BreadcrumbWithId[]>((resolve) => {
+  const breadcrumbsPromise = new Promise<Breadcrumb[]>((resolve) => {
     setTimeout(() => resolve(breadcrumbs), 1000);
   });
 
@@ -13,20 +13,17 @@ export default function Preview() {
   );
 }
 
-export const breadcrumbs: BreadcrumbWithId[] = [
+export const breadcrumbs: Breadcrumb[] = [
   {
-    id: '1',
     label: 'Home',
-    href: '#',
+    href: '#1',
   },
   {
-    id: '2',
     label: 'Shoes',
-    href: '#',
+    href: '#2',
   },
   {
-    id: '3',
     label: 'Flats',
-    href: '#',
+    href: '#3',
   },
 ];
