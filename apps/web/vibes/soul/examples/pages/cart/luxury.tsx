@@ -1,6 +1,5 @@
 import { getLineItems } from '@/vibes/soul/data/line-items';
 import { locales } from '@/vibes/soul/data/locales';
-import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import {
@@ -9,6 +8,7 @@ import {
   lineItemAction,
 } from '@/vibes/soul/examples/sections/cart/actions';
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { Cart } from '@/vibes/soul/sections/cart';

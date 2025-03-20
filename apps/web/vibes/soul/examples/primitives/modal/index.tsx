@@ -1,8 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
 import { Button } from '@/vibes/soul/primitives/button';
 import { Modal } from '@/vibes/soul/primitives/modal';
-import { useState } from 'react';
 
 export default function Preview() {
   const [isOpen, setIsOpen] = useState(true);
