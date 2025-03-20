@@ -11,7 +11,7 @@ export default {
   slug: 'soul',
   tags: ['Ecommerce'],
   description: `A minimalistic modern ecommerce theme inspired by Nike, Lululemon and other leading apparel brands.`,
-  thumbnail: 'https://rstr.in/monogram/vibes/O7uLelHbgdn',
+  thumbnail: '/soul/soul-introduction.webp',
   author: {
     name: 'Monogram',
     url: 'https://monogram.io',

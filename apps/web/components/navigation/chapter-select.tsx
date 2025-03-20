@@ -27,7 +27,8 @@ const comingSoonChapters = [
       name: 'Tinloof',
       url: 'https://tinloof.com',
     },
-    description: 'A 2px vibe.',
+    description:
+      'A bold design that combines brutalist and minimal styles, featuring distinctive 2-pixel borders and details.',
     thumbnail: '/2px/thumbnail.png',
     tags: ['Ecommerce'],
   },

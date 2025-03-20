@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode, useEffect, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
 import { ButtonLink } from '@/components/ui/button-link';
 import Transition from '@/components/ui/transition';
 import { Arrow } from '@/icons/generated';
@@ -233,12 +232,11 @@ export default function Home() {
             to="translate-y-0 opacity-100"
           >
             <div className="mb-4 mt-6 flex items-center gap-1.5 sm:hidden">
-              <ScrollButton to="footer">
-                <Button size="large">Get updates</Button>
-              </ScrollButton>
-
               <ButtonLink href="/contribute" size="large">
                 Contribute
+              </ButtonLink>
+              <ButtonLink href="/docs/soul" size="large">
+                Docs
               </ButtonLink>
             </div>
           </Transition>
