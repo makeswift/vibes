@@ -1,8 +1,8 @@
-import { CardWithId } from '@/vibes/soul/primitives/card';
+import { type CardContent } from '@/vibes/soul/primitives/card';
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel';
 
 export default function Preview() {
-  const productsPromise = new Promise<CardWithId[]>((resolve) => {
+  const productsPromise = new Promise<CardContent[]>((resolve) => {
     setTimeout(() => resolve(products), 1000);
   });
 
@@ -16,59 +16,53 @@ export default function Preview() {
   );
 }
 
-const products: CardWithId[] = [
+const products: CardContent[] = [
   {
-    id: '1',
     title: 'Mini Bar Bag',
     image: {
       src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
       alt: 'Mini Bar Bag',
     },
-    href: '#',
+    href: '#1',
   },
   {
-    id: '2',
     title: 'Mini Bar Bag',
     image: {
       src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
       alt: 'Mini Bar Bag',
     },
-    href: '#',
+    href: '#2',
   },
   {
-    id: '3',
     title: 'Stem Caddy',
     image: {
       src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
       alt: 'Stem Caddy',
     },
-    href: '#',
+    href: '#3',
   },
   {
-    id: '4',
     title: 'Hip Slinger',
     image: {
       src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
       alt: 'Hip Slinger',
     },
-    href: '#',
+    href: '#4',
   },
   {
-    id: '5',
     title: 'Everyday Tote',
     image: {
       src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
       alt: 'Everyday Tote',
     },
-    href: '#',
+    href: '#5',
   },
   {
-    id: '6',
     title: 'Mini Saddlebag',
     image: {
       src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
       alt: 'Mini Saddlebag',
     },
-    href: '#',
+    href: '#6',
   },
 ];

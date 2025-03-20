@@ -1,6 +1,6 @@
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
-import { CardWithId } from '@/vibes/soul/primitives/card';
+import { type CardContent } from '@/vibes/soul/primitives/card';
 import { CardCarousel } from '@/vibes/soul/sections/card-carousel';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
@@ -13,7 +13,7 @@ export interface FeaturedCardCarouselProps {
   title: string;
   description?: string;
   cta?: Link;
-  cards: Streamable<CardWithId[]>;
+  cards: Streamable<CardContent[]>;
   scrollbarLabel?: string;
 }
 

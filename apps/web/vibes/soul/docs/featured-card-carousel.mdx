@@ -26,9 +26,8 @@ function Usage() {
     );
 }
 
-const cards: CardWithId[] = [
+const cards: CardContent[] = [
     {
-      id: '1',
       title: 'Mini Bar Bag',
       image: {
         src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
@@ -47,19 +46,18 @@ const cards: CardWithId[] = [
 
 ### FeaturedCardCarouselProps
 
-| Prop             | Type                                                                                           | Default |
-| ---------------- | ---------------------------------------------------------------------------------------------- | ------- |
-| `title*`         | `string`                                                                                       |         |
-| `description`    | `string`                                                                                       |         |
-| `cta`            | `Link` <Tooltip content="See Link below"/>                                                     |         |
-| `cards*`         | [`Streamable`](docs/soul/streamable)`<CardWithId[]>` <Tooltip content="See CardWithId below"/> |         |
-| `scrollbarLabel` | `string`                                                                                       |         |
+| Prop             | Type                                                                                             | Default |
+| ---------------- | ------------------------------------------------------------------------------------------------ | ------- |
+| `title*`         | `string`                                                                                         |         |
+| `description`    | `string`                                                                                         |         |
+| `cta`            | `Link` <Tooltip content="See Link below"/>                                                       |         |
+| `cards*`         | [`Streamable`](docs/soul/streamable)`<CardContent[]>` <Tooltip content="See CardContent below"/> |         |
+| `scrollbarLabel` | `string`                                                                                         |         |
 
-### CardWithId
+### CardContent
 
 | Prop     | Type                                         | Default |
 | -------- | -------------------------------------------- | ------- |
-| `id*`    | `string`                                     |         |
 | `title*` | `string`                                     |         |
 | `image`  | `Image` <Tooltip content="See Image below"/> |         |
 | `href`   | `string`                                     |         |
