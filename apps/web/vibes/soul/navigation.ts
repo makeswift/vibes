@@ -122,12 +122,6 @@ const primitivePages: [Page, ...Page[]] = [
     file: 'docs/product-carousel.mdx',
     component: 'product-carousel',
   },
-  {
-    title: 'Product List',
-    slug: 'product-list',
-    file: 'docs/product-list.mdx',
-    component: 'product-list',
-  },
   { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
   {
     title: 'Side Panel',

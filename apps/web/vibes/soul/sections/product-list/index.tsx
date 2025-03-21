@@ -44,11 +44,11 @@ interface ProductListProps {
  */
 export function ProductList({
   products: streamableProducts,
-  className,
+  className = '',
   colorScheme = 'light',
   aspectRatio = '5:6',
   showCompare: streamableShowCompare = true,
-  compareHref,
+  compareHref = '/',
   compareProducts: streamableCompareProducts = [],
   compareLabel: streamableCompareLabel = 'Compare',
   compareParamName = 'compare',
@@ -129,7 +129,7 @@ export function ProductList({
 export function ProductListSkeleton({
   className,
   placeholderCount = 8,
-}: Pick<ProductListProps, 'className' | 'placeholderCount'>) {
+}: Pick<ProductListProps, 'className' | 'placeholderCount' | 'showCompare'>) {
   return (
     <Skeleton.Root
       className={clsx('group-has-[[data-pending]]/product-list:animate-pulse', className)}
