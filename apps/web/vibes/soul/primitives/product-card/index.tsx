@@ -28,6 +28,7 @@ export interface ProductCardProps {
   imageSizes?: string;
   compareLabel?: string;
   compareParamName?: string;
+  borderRadius?: 'none' | 'small' | 'medium' | 'large';
   product: Product;
 }
 
@@ -59,6 +60,7 @@ export function ProductCard({
   compareLabel,
   compareParamName,
   imagePriority = false,
+  borderRadius = 'large',
   imageSizes = '(min-width: 80rem) 20vw, (min-width: 64rem) 25vw, (min-width: 42rem) 33vw, (min-width: 24rem) 50vw, 100vw',
 }: ProductCardProps) {
   return (
@@ -77,6 +79,12 @@ export function ProductCard({
               '3:4': 'aspect-[3/4]',
               '1:1': 'aspect-square',
             }[aspectRatio],
+            {
+              large: 'rounded-xl @md:rounded-2xl',
+              medium: 'rounded-lg @md:rounded-xl',
+              small: 'rounded-md @md:rounded-lg',
+              none: 'rounded-none',
+            }[borderRadius],
             {
               light: 'bg-[var(--product-card-light-background,hsl(var(--contrast-100)))]',
               dark: 'bg-[var(--product-card-dark-background,hsl(var(--contrast-500)))]',
@@ -151,11 +159,17 @@ export function ProductCard({
         <Link
           aria-label={title}
           className={clsx(
-            'absolute inset-0 rounded-b-lg rounded-t-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--product-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+            'absolute inset-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--product-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
             {
               light: 'ring-offset-[var(--product-card-light-offset,hsl(var(--background)))]',
               dark: 'ring-offset-[var(--product-card-dark-offset,hsl(var(--foreground)))]',
             }[colorScheme],
+            {
+              large: 'rounded-2xl',
+              medium: 'rounded-xl',
+              small: 'rounded-lg',
+              none: 'rounded-none',
+            }[borderRadius],
           )}
           href={href}
           id={id}
@@ -180,10 +194,8 @@ export function ProductCard({
 export function ProductCardSkeleton({
   className,
   aspectRatio = '5:6',
-}: {
-  aspectRatio?: '5:6' | '3:4' | '1:1';
-  className?: string;
-}) {
+  borderRadius = 'large',
+}: Pick<ProductCardProps, 'aspectRatio' | 'className' | 'borderRadius'>) {
   return (
     <div className={clsx('@container', className)}>
       <Skeleton.Box
@@ -194,6 +206,12 @@ export function ProductCardSkeleton({
             '3:4': 'aspect-[3/4]',
             '1:1': 'aspect-square',
           }[aspectRatio],
+          {
+            large: 'rounded-xl @md:rounded-2xl',
+            medium: 'rounded-lg @md:rounded-xl',
+            small: 'rounded-md @md:rounded-lg',
+            none: 'rounded-none',
+          }[borderRadius],
         )}
       />
       <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row">

@@ -16,6 +16,11 @@ export interface CardProps extends CardContent {
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';
   aspectRatio?: '5:6' | '3:4' | '1:1';
+  borderRadius?: 'none' | 'small' | 'medium' | 'large';
+  imageSizes?: string;
+  textPosition?: 'inside' | 'outside';
+  textSize?: 'small' | 'medium' | 'large' | 'x-large';
+  showOverlay?: boolean;
 }
 
 /**
@@ -45,11 +50,28 @@ export function Card({
   textColorScheme = 'light',
   iconColorScheme = 'light',
   aspectRatio = '5:6',
+  borderRadius = 'large',
+  imageSizes = '(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw',
+  textPosition = 'outside',
+  textSize = 'small',
+  showOverlay = true,
 }: CardProps) {
   return (
     <article
       className={clsx(
-        'group relative flex w-full min-w-0 max-w-md cursor-pointer flex-col gap-2 rounded-2xl font-[family-name:var(--card-font-family,var(--font-family-body))] @container',
+        'group relative flex w-full min-w-0 max-w-md cursor-pointer flex-col gap-2 font-[family-name:var(--card-font-family,var(--font-family-body))] @container',
+        {
+          large: 'rounded-xl @md:rounded-2xl',
+          medium: 'rounded-lg @md:rounded-xl',
+          small: 'rounded-md @md:rounded-lg',
+          none: 'rounded-none',
+        }[borderRadius],
+        {
+          small: 'gap-2',
+          medium: 'gap-3',
+          large: 'gap-4',
+          'x-large': 'gap-5',
+        }[textSize],
         className,
       )}
     >
@@ -88,7 +110,7 @@ export function Card({
               }[textColorScheme],
             )}
             fill
-            sizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
+            sizes={imageSizes}
             src={image.src}
           />
         ) : (
@@ -104,25 +126,66 @@ export function Card({
             {title}
           </div>
         )}
-      </div>
-      <span
-        className={clsx(
-          'line-clamp-1 text-lg font-medium',
-          {
-            light: 'text-[var(--card-light-text,hsl(var(--foreground)))]',
-            dark: 'text-[var(--card-dark-text,hsl(var(--background)))]',
-          }[textColorScheme],
+        {textPosition === 'inside' && (
+          <div
+            className={clsx(
+              'absolute inset-0 flex items-end p-6 @xs:p-8',
+              showOverlay &&
+                'bg-gradient-to-b from-foreground/0 from-50% via-foreground/0 via-50% to-foreground/50 to-100%',
+            )}
+          >
+            <h3
+              className={clsx(
+                'font-medium leading-tight',
+                {
+                  small: 'text-lg tracking-normal @xs:text-xl',
+                  medium: 'text-xl tracking-normal @xs:text-2xl',
+                  large: 'text-2xl tracking-tight @xs:text-3xl',
+                  'x-large': 'text-3xl tracking-tight @xs:text-4xl',
+                }[textSize],
+                {
+                  light: 'text-[var(--card-light-text,hsl(var(--foreground)))]',
+                  dark: 'text-[var(--card-dark-text,hsl(var(--background)))]',
+                }[textColorScheme],
+              )}
+            >
+              {title}
+            </h3>
+          </div>
         )}
-      >
-        {title}
-      </span>
+      </div>
+      {textPosition === 'outside' && (
+        <h3
+          className={clsx(
+            'line-clamp-1 font-medium leading-tight',
+            {
+              small: 'text-lg tracking-normal @xs:text-xl',
+              medium: 'text-xl tracking-normal @xs:text-2xl',
+              large: 'text-2xl tracking-tight @xs:text-3xl',
+              'x-large': 'text-3xl tracking-tight @xs:text-4xl',
+            }[textSize],
+            {
+              light: 'text-[var(--card-light-text,hsl(var(--foreground)))]',
+              dark: 'text-[var(--card-dark-text,hsl(var(--background)))]',
+            }[textColorScheme],
+          )}
+        >
+          {title}
+        </h3>
+      )}
       <Link
         className={clsx(
-          'absolute inset-0 rounded-b-lg rounded-t-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+          'absolute inset-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
           {
             light: 'ring-offset-[var(--card-light-offset,hsl(var(--background)))]',
             dark: 'ring-offset-[var(--card-dark-offset,hsl(var(--foreground)))]',
           }[textColorScheme],
+          {
+            large: 'rounded-2xl',
+            medium: 'rounded-xl',
+            small: 'rounded-lg',
+            none: 'rounded-none',
+          }[borderRadius],
         )}
         href={href}
       >
@@ -135,20 +198,23 @@ export function Card({
 export function CardSkeleton({
   aspectRatio = '5:6',
   className,
-}: {
-  aspectRatio?: '5:6' | '3:4' | '1:1';
-  className?: string;
-}) {
+  borderRadius = 'large',
+}: Pick<CardProps, 'aspectRatio' | 'className' | 'borderRadius'>) {
   return (
     <div className={clsx('@container', className)}>
       <Skeleton.Box
         className={clsx(
-          'rounded-2xl',
           {
             '5:6': 'aspect-[5/6]',
             '3:4': 'aspect-[3/4]',
             '1:1': 'aspect-square',
           }[aspectRatio],
+          {
+            large: 'rounded-xl @md:rounded-2xl',
+            medium: 'rounded-lg @md:rounded-xl',
+            small: 'rounded-md @md:rounded-lg',
+            none: 'rounded-none',
+          }[borderRadius],
         )}
       />
       <div className="mt-3">
