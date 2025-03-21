@@ -78,4 +78,10 @@ describe('Streamable.all', () => {
     ]);
     expect(streamable5).not.toBe(streamable4);
   });
+
+  test('preserves the inputs identity if none of the inputs is a promise', () => {
+    const inputs = [17, 'Hi', array, json, null, undefined, NaN];
+    const streamable = Streamable.all(inputs);
+    expect(streamable).toBe(inputs);
+  });
 });
