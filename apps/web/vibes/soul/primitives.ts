@@ -249,7 +249,7 @@ export const primitives = [
   {
     name: 'product-card',
     dependencies: ['clsx'],
-    registryDependencies: ['badge', 'price-label', 'skeleton'],
+    registryDependencies: ['badge', 'price-label', 'skeleton', 'checkbox', 'compare-drawer'],
     files: ['primitives/product-card/index.tsx', 'primitives/product-card/compare.tsx'],
   },
   {

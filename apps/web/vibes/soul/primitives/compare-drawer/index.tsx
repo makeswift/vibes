@@ -2,6 +2,8 @@
 
 import * as Portal from '@radix-ui/react-portal';
 import { ArrowRight, X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useQueryState } from 'nuqs';
 import {
   createContext,
@@ -16,8 +18,6 @@ import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import { toast } from '@/vibes/soul/primitives/toaster';
 
 import { compareParser } from './loader';
-import Link from 'next/link';
-import Image from 'next/image';
 
 interface OptimisticAction {
   type: 'add' | 'remove';
@@ -32,19 +32,21 @@ interface CompareDrawerContext {
 
 export const CompareDrawerContext = createContext<CompareDrawerContext | undefined>(undefined);
 
-export function CompareDrawerProvider({
-  children,
-  items,
-  maxItems,
-  maxCompareLimitMessage = "You've reached the maximum number of products for comparison. Remove a product to add a new one.",
-}: {
+export interface CompareDrawerProviderProps {
   children: ReactNode;
   items: CompareDrawerItem[];
   maxItems?: number;
   maxCompareLimitMessage?: string;
-}) {
+}
+
+export function CompareDrawerProvider({
+  children,
+  items,
+  maxItems = 12,
+  maxCompareLimitMessage = "You've reached the maximum number of products for comparison. Remove a product to add a new one.",
+}: CompareDrawerProviderProps) {
   useEffect(() => {
-    if (maxItems !== undefined && items.length >= maxItems) {
+    if (items.length >= maxItems) {
       toast.warning(maxCompareLimitMessage);
     }
   }, [items.length, maxItems, maxCompareLimitMessage]);

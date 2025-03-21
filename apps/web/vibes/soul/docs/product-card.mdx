@@ -30,6 +30,33 @@ function Usage() {
 
 {/* prettier-ignore-end */}
 
+You will need to nest the `ProductCard` component(s) within a `CompareDrawerProvider` if you set the `showCompare` prop to `true`.
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { CompareDrawerProvider } from '@/vibes/soul/primitives/compare-drawer';
+import { ProductCard } from '@/vibes/soul/primitives/product-card';
+
+function Usage() {
+    return (
+      <CompareDrawerProvider items={[]}>
+      <ProductCard
+        product={{
+          id: '1',
+          href: '#',
+          title: 'Product Name',
+        }}
+        showCompare
+      />
+      </CompareDrawerProvider>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
 ## API Reference
 
 ### ProductCardProps
