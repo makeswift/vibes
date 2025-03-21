@@ -205,7 +205,7 @@ export function CompareDrawer({
             </div>
             <ButtonLink
               className="hidden @md:block"
-              href={`${href}?${paramName}=${params?.toString()}`}
+              href={`${href}?$ids=${params?.toString()}`}
               size="medium"
               variant="primary"
             >
