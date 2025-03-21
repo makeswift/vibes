@@ -1157,6 +1157,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/toaster')),
   },
   {
+    name: 'tooltip-example',
+    dependencies: [],
+    registryDependencies: ['tooltip'],
+    files: ['examples/primitives/tooltip/index.tsx'],
+    component: lazy(() => import('./examples/primitives/tooltip')),
+  },
+  {
     name: 'section-layout-example-warm',
     dependencies: [],
     registryDependencies: [],
