@@ -1,9 +1,9 @@
 import { getProducts } from '@/vibes/soul/data';
 import { locales } from '@/vibes/soul/data/locales';
-import { action as subscribeAction } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { footerLinks, logo } from '@/vibes/soul/examples/sections/footer/electric';
+import { action as subscribeAction } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { action, fields } from '@/vibes/soul/examples/sections/product-detail/action';
 import { product } from '@/vibes/soul/examples/sections/product-detail/electric';
 import { reviews } from '@/vibes/soul/examples/sections/reviews';
