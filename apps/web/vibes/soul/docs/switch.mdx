@@ -1,0 +1,56 @@
+---
+title: Switch
+preview: switch-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Switch } from '@/vibes/soul/form/switch';
+
+function Usage() {
+    return (
+        <Switch
+          size="small"
+          label={{ on: 'On', off: 'Off' }}
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### SwitchProps
+
+| Prop              | Type                                          | Default   |
+| ----------------- | --------------------------------------------- | --------- |
+| `name`            | `string`                                      |           |
+| `required`        | `boolean`                                     |           |
+| `variant`         | `'primary' \| 'secondary' \| 'tertiary'`      |           |
+| `size`            | `'large' \| 'medium' \| 'small'`              |           |
+| `labelPosition`   | `'left' \| 'right' \| 'both'`                 |           |
+| `label`           | `string \| { on: string; off: string }`       |           |
+| `checked`         | `boolean`                                     |           |
+| `defaultChecked`  | `boolean`                                     |           |
+| `onCheckedChange` | `(checked: boolean) => void \| Promise<void>` |           |
+| `disabled`        | `boolean`                                     |           |
+| `loading`         | `boolean`                                     |           |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --switch-primary-background: hsl(var(--primary));
+  --switch-secondary-background: hsl(var(--foreground));
+  --switch-tertiary-background: hsl(var(--background));
+  --switch-tertiary-border: hsl(var(--contrast-200));
+}
+```

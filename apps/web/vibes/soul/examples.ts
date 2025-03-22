@@ -1143,6 +1143,13 @@ export const examples = [
     component: lazy(() => import('./examples/form/swatch-radio-group')),
   },
   {
+    name: 'switch-example',
+    dependencies: [],
+    registryDependencies: ['switch'],
+    files: ['examples/form/switch/index.tsx'],
+    component: lazy(() => import('./examples/form/switch')),
+  },
+  {
     name: 'textarea-example',
     dependencies: [],
     registryDependencies: ['textarea'],

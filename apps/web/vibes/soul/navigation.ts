@@ -467,6 +467,12 @@ const formPages: [Page, ...Page[]] = [
     component: 'swatch-radio-group',
   },
   {
+    title: 'Switch',
+    slug: 'switch',
+    file: 'docs/switch.mdx',
+    component: 'switch',
+  },
+  {
     title: 'Textarea',
     slug: 'textarea',
     file: 'docs/textarea.mdx',
