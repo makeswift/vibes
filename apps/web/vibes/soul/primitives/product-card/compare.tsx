@@ -7,26 +7,26 @@ import { Checkbox } from '@/vibes/soul/form/checkbox';
 import { useCompareDrawer } from '@/vibes/soul/primitives/compare-drawer';
 import { compareParser } from '@/vibes/soul/primitives/compare-drawer/loader';
 
-interface CompareDrawerItem {
+export interface CompareDrawerItem {
   id: string;
   image?: { src: string; alt: string };
   href: string;
   title: string;
 }
 
-interface Props {
+export interface CompareProps {
   colorScheme?: 'light' | 'dark';
   paramName?: string;
   label?: string;
   product: CompareDrawerItem;
 }
 
-export const Compare = function Compare({
+export function Compare({
   colorScheme = 'light',
   paramName = 'compare',
   label = 'Compare',
   product,
-}: Props) {
+}: CompareProps) {
   const [, setParam] = useQueryState(paramName, compareParser);
 
   const { optimisticItems, setOptimisticItems, maxItems } = useCompareDrawer();
@@ -60,4 +60,4 @@ export const Compare = function Compare({
       }}
     />
   );
-};
+}
