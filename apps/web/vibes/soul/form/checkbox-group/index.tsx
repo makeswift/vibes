@@ -1,10 +1,9 @@
 import { clsx } from 'clsx';
 import * as React from 'react';
 
+import { Checkbox } from '@/vibes/soul/form/checkbox';
 import { FieldError } from '@/vibes/soul/form/field-error';
 import { Label } from '@/vibes/soul/form/label';
-
-import { Checkbox } from '../checkbox';
 
 interface Option {
   value: string;
