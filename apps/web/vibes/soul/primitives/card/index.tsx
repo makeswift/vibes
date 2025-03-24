@@ -16,7 +16,6 @@ export interface CardProps extends CardContent {
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';
   aspectRatio?: '5:6' | '3:4' | '1:1';
-  borderRadius?: 'none' | 'small' | 'medium' | 'large';
   imageSizes?: string;
   textPosition?: 'inside' | 'outside';
   textSize?: 'small' | 'medium' | 'large' | 'x-large';
@@ -39,6 +38,7 @@ export interface CardProps extends CardContent {
  *   --card-dark-icon: hsl(var(--background));
  *   --card-dark-background: hsl(var(--contrast-500));
  *   --card-font-family: var(--font-family-body);
+ *   --card-border-radius: 1rem;
  * }
  * ```
  */
@@ -50,7 +50,6 @@ export function Card({
   textColorScheme = 'light',
   iconColorScheme = 'light',
   aspectRatio = '5:6',
-  borderRadius = 'large',
   imageSizes = '(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw',
   textPosition = 'outside',
   textSize = 'small',
@@ -59,13 +58,7 @@ export function Card({
   return (
     <article
       className={clsx(
-        'group relative flex w-full min-w-0 max-w-md cursor-pointer flex-col gap-2 font-[family-name:var(--card-font-family,var(--font-family-body))] @container',
-        {
-          large: 'rounded-xl @md:rounded-2xl',
-          medium: 'rounded-lg @md:rounded-xl',
-          small: 'rounded-md @md:rounded-lg',
-          none: 'rounded-none',
-        }[borderRadius],
+        'group relative flex w-full min-w-0 max-w-md cursor-pointer flex-col gap-2 rounded-[var(--card-border-radius,1rem)] font-[family-name:var(--card-font-family,var(--font-family-body))] @container',
         {
           small: 'gap-2',
           medium: 'gap-3',
@@ -175,17 +168,11 @@ export function Card({
       )}
       <Link
         className={clsx(
-          'absolute inset-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+          'absolute inset-0 rounded-[var(--card-border-radius,1rem)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
           {
             light: 'ring-offset-[var(--card-light-offset,hsl(var(--background)))]',
             dark: 'ring-offset-[var(--card-dark-offset,hsl(var(--foreground)))]',
           }[textColorScheme],
-          {
-            large: 'rounded-2xl',
-            medium: 'rounded-xl',
-            small: 'rounded-lg',
-            none: 'rounded-none',
-          }[borderRadius],
         )}
         href={href}
       >
@@ -198,23 +185,17 @@ export function Card({
 export function CardSkeleton({
   aspectRatio = '5:6',
   className,
-  borderRadius = 'large',
-}: Pick<CardProps, 'aspectRatio' | 'className' | 'borderRadius'>) {
+}: Pick<CardProps, 'aspectRatio' | 'className'>) {
   return (
     <div className={clsx('@container', className)}>
       <Skeleton.Box
         className={clsx(
+          'rounded-[var(--card-border-radius,1rem)]',
           {
             '5:6': 'aspect-[5/6]',
             '3:4': 'aspect-[3/4]',
             '1:1': 'aspect-square',
           }[aspectRatio],
-          {
-            large: 'rounded-xl @md:rounded-2xl',
-            medium: 'rounded-lg @md:rounded-xl',
-            small: 'rounded-md @md:rounded-lg',
-            none: 'rounded-none',
-          }[borderRadius],
         )}
       />
       <div className="mt-3">
