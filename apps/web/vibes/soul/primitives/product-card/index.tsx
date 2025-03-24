@@ -47,6 +47,7 @@ export interface ProductCardProps {
  *   --product-card-dark-title: hsl(var(--background));
  *   --product-card-dark-subtitle: hsl(var(--background) / 75%);
  *   --product-card-font-family: var(--font-family-body);
+ *   --product-card-border-radius: 1rem;
  * }
  * ```
  */
@@ -72,7 +73,7 @@ export function ProductCard({
         <div className="relative">
           <div
             className={clsx(
-              'relative overflow-hidden rounded-xl @md:rounded-2xl',
+              'relative overflow-hidden rounded-[var(--product-card-border-radius,1rem)]',
               {
                 '5:6': 'aspect-[5/6]',
                 '3:4': 'aspect-[3/4]',
@@ -121,7 +122,7 @@ export function ProductCard({
           <Link
             aria-label={title}
             className={clsx(
-              'absolute inset-0 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--product-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4 @md:rounded-2xl',
+              'absolute inset-0 rounded-[var(--product-card-border-radius,1rem)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--product-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
               {
                 light: 'ring-offset-[var(--product-card-light-offset,hsl(var(--background)))]',
                 dark: 'ring-offset-[var(--product-card-dark-offset,hsl(var(--foreground)))]',
@@ -203,7 +204,7 @@ export function ProductCardSkeleton({
     <Skeleton.Root className={clsx(className)}>
       <Skeleton.Box
         className={clsx(
-          'rounded-xl @md:rounded-2xl',
+          'rounded-[var(--product-card-border-radius,1rem)]',
           {
             '5:6': 'aspect-[5/6]',
             '3:4': 'aspect-[3/4]',
