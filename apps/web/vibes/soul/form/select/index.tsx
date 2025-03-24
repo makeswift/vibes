@@ -82,7 +82,7 @@ export function Select({
   const id = React.useId();
 
   return (
-    <div className={clsx('w-full space-y-2', className)}>
+    <div className={clsx('w-full', className)}>
       {label !== undefined && label !== '' && (
         <Label
           className={clsx(hideLabel && 'sr-only', 'mb-2')}
@@ -191,7 +191,11 @@ export function Select({
           </SelectPrimitive.Content>
         </SelectPrimitive.Portal>
       </SelectPrimitive.Root>
-      {errors?.map((error) => <FieldError key={error}>{error}</FieldError>)}
+      {errors?.map((error) => (
+        <FieldError className="mt-2" key={error}>
+          {error}
+        </FieldError>
+      ))}
     </div>
   );
 }
