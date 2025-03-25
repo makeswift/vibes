@@ -65,11 +65,11 @@ export function ProductCard({
   return (
     <article
       className={clsx(
-        'group w-full max-w-md font-[family-name:var(--card-font-family,var(--font-family-body))] @container',
+        'group w-full max-w-md font-[family-name:var(--product-card-font-family,var(--font-family-body))] @container',
         className,
       )}
     >
-      <div className="relative">
+      <div>
         <div className="relative">
           <div
             className={clsx(
