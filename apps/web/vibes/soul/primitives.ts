@@ -76,8 +76,8 @@ export const primitives = [
   {
     name: 'compare-drawer',
     dependencies: ['@radix-ui/react-portal', 'lucide-react', 'nuqs'],
-    registryDependencies: ['button'],
-    files: ['primitives/compare-drawer/index.tsx'],
+    registryDependencies: ['button-link', 'toaster'],
+    files: ['primitives/compare-drawer/index.tsx', 'primitives/compare-drawer/loader.ts'],
   },
   {
     name: 'card',
@@ -102,6 +102,12 @@ export const primitives = [
     dependencies: ['clsx'],
     registryDependencies: ['field-error', 'label', 'checkbox'],
     files: ['form/checkbox-group/index.tsx'],
+  },
+  {
+    name: 'chip',
+    dependencies: ['lucide-react'],
+    registryDependencies: [],
+    files: ['primitives/chip/index.tsx'],
   },
   {
     name: 'counter',
@@ -311,5 +317,11 @@ export const primitives = [
     dependencies: ['clsx'],
     registryDependencies: ['field-error', 'label'],
     files: ['form/textarea/index.tsx'],
+  },
+  {
+    name: 'toaster',
+    dependencies: ['sonner'],
+    registryDependencies: ['alert'],
+    files: ['primitives/toaster/index.tsx'],
   },
 ] satisfies Components;
