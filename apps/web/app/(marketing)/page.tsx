@@ -126,24 +126,28 @@ export default function Home() {
     >
       <header
         className={clsx(
-          'fixed left-0 top-0 z-50 hidden w-full items-center justify-center transition-all duration-300 sm:flex sm:justify-between',
+          'fixed left-0 top-0 z-50 hidden w-full items-center transition-all duration-300 sm:grid sm:grid-cols-3',
           isScrolled ? 'translate-y-3 px-7' : 'translate-y-8 px-10 md:translate-y-10',
         )}
       >
-        <ButtonLink href="/contribute" size="large">
-          Contribute
-        </ButtonLink>
+        <div>
+          <ButtonLink href="/contribute" size="large">
+            Contribute
+          </ButtonLink>
+        </div>
         <div
           className={clsx(
-            'relative h-8 w-32 origin-center transition-transform duration-300 md:h-10 md:w-40',
+            'relative mx-auto h-8 w-32 origin-center transition-transform duration-300 md:h-10 md:w-40',
             isScrolled && 'scale-90 md:scale-[0.8]',
           )}
         >
           <Image alt="Vibes logo" fill priority src="/logo.svg" />
         </div>
-        <ButtonLink href="/docs/soul" size="large">
-          Docs
-        </ButtonLink>
+        <div className="ml-auto">
+          <ButtonLink href="/docs/soul" size="large">
+            Docs
+          </ButtonLink>
+        </div>
       </header>
 
       <section className="relative h-[550px] w-full bg-white p-3 sm:h-[650px] sm:p-4 md:h-[calc(100vh-28px)] lg:p-5">
