@@ -10,7 +10,7 @@ export const primitives = [
   {
     name: 'alert',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
+    registryDependencies: ['button'],
     files: ['primitives/alert/index.tsx'],
   },
   {
