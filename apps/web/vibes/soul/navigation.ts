@@ -153,6 +153,12 @@ const primitivePages: [Page, ...Page[]] = [
     file: 'docs/toaster.mdx',
     component: 'toaster',
   },
+  {
+    title: 'Wishlist Item Card',
+    slug: 'wishlist-item-card',
+    file: 'docs/wishlist-item-card.mdx',
+    component: 'wishlist-item-card',
+  },
 ];
 
 const sectionPages: [Page, ...Page[]] = [
