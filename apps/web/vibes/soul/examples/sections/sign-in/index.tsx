@@ -1,7 +1,8 @@
-import { SignIn } from '@/vibes/soul/sections/sign-in';
-import { schema } from '@/vibes/soul/sections/sign-in/schema';
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
+
+import { SignIn } from '@/vibes/soul/sections/sign-in';
+import { schema } from '@/vibes/soul/sections/sign-in/schema';
 
 export default function Preview() {
   return <SignIn action={signInAction} forgotPasswordHref="#" />;

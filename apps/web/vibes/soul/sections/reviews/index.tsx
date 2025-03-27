@@ -1,8 +1,8 @@
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { Rating } from '@/vibes/soul/primitives/rating';
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 interface Review {
   id: string;
@@ -209,9 +209,9 @@ function TotalCountSkeleton() {
   return (
     <Skeleton.Root className="w-full group-has-[[data-pending]]/reviews:animate-pulse" pending>
       <Skeleton.Text
-        data-pending
         characterCount={3}
         className="rounded-md text-xl @xl:my-5 @xl:text-2xl"
+        data-pending
       />
     </Skeleton.Root>
   );
@@ -235,7 +235,7 @@ function AverageRatingSkeleton() {
 function RatingSkeleton() {
   return (
     <Skeleton.Root className="w-full group-has-[[data-pending]]/reviews:animate-pulse" pending>
-      <Skeleton.Box data-pending className="h-6 w-32 rounded-md" />
+      <Skeleton.Box className="h-6 w-32 rounded-md" data-pending />
     </Skeleton.Root>
   );
 }
