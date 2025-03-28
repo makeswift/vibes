@@ -158,7 +158,7 @@ export function ProductDetail<F extends Field>({
                     <Stream fallback={<ProductDescriptionSkeleton />} value={product.description}>
                       {(description) =>
                         Boolean(description) && (
-                          <div className="border-t border-[var(--product-detail-border,hsl(var(--contrast-100)))] py-8 text-[var(--product-detail-secondary-text,hsl(var(--contrast-500)))]">
+                          <div className="prose prose-sm max-w-none border-t border-[var(--product-detail-border,hsl(var(--contrast-100)))] py-8">
                             {description}
                           </div>
                         )
