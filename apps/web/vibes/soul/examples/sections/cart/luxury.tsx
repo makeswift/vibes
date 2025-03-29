@@ -8,7 +8,7 @@ import { Button } from '@/vibes/soul/primitives/button';
 import { Cart, CartLineItem } from '@/vibes/soul/sections/cart';
 import { cartLineItemActionFormDataSchema } from '@/vibes/soul/sections/cart/schema';
 
-import { couponCodeAction } from './actions';
+import { couponCodeAction, shippingAction } from './actions';
 
 export default async function Preview() {
   return (
@@ -24,6 +24,13 @@ export default async function Preview() {
         couponCode={{ action: couponCodeAction }}
         key={await getCartId()}
         lineItemAction={lineItemAction}
+        shipping={{
+          action: shippingAction,
+          countries: [
+            { label: 'United States of America', value: 'us' },
+            { label: 'Canada', value: 'ca' },
+          ],
+        }}
       />
     </div>
   );
