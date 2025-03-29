@@ -1,7 +1,8 @@
-import { ForgotPassword } from '@/vibes/soul/sections/forgot-password';
-import { schema } from '@/vibes/soul/sections/forgot-password/schema';
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
+
+import { ForgotPassword } from '@/vibes/soul/sections/forgot-password';
+import { schema } from '@/vibes/soul/sections/forgot-password/schema';
 
 export default function Preview() {
   return <ForgotPassword action={forgotPasswordAction} />;

@@ -16,17 +16,17 @@ import { useState } from 'react';
 import { Modal } from '@/vibes/soul/primitives/modal';
 
 function Usage() {
-      const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(true);
 
     return (
-        <Modal
-            isOpen={isOpen}
-            setOpen={setIsOpen}
-            title="Example modal"
-            trigger={<button>Open Modal</button>}
-        >
-            <p>Put your content here!</p>
-        </Modal>
+      <Modal
+        isOpen={isOpen}
+        setOpen={setIsOpen}
+        title="Example modal"
+        trigger={<button>Open Modal</button>}
+      >
+        <p>Put your content here!</p>
+      </Modal>
     );
 }
 `}
@@ -40,13 +40,16 @@ This component uses the Dialog component from Radix UI. Refer to the [Radix UI D
 
 ### ModalProps
 
-| Prop        | Type                      | Default |
-| ----------- | ------------------------- | ------- |
-| `isOpen*`   | `boolean`                 |         |
-| `setOpen*`  | `(open: boolean) => void` |         |
-| `title*`    | `string`                  |         |
-| `trigger*`  | `ReactNode`               |         |
-| `children*` | `ReactNode`               |         |
+| Prop         | Type                      | Default |
+| ------------ | ------------------------- | ------- |
+| `className`  | `string`                  |         |
+| `isOpen`     | `boolean`                 |         |
+| `setOpen`    | `(open: boolean) => void` |         |
+| `required`   | `boolean`                 | `false` |
+| `hideHeader` | `boolean`                 | `false` |
+| `title*`     | `string`                  |         |
+| `trigger*`   | `ReactNode`               |         |
+| `children*`  | `ReactNode`               |         |
 
 ### CSS Variables
 
