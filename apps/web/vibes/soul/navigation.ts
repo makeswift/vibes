@@ -153,6 +153,12 @@ const primitivePages: [Page, ...Page[]] = [
     file: 'docs/toaster.mdx',
     component: 'toaster',
   },
+  {
+    title: 'Tooltip',
+    slug: 'tooltip',
+    file: 'docs/tooltip.mdx',
+    component: 'tooltip',
+  },
 ];
 
 const sectionPages: [Page, ...Page[]] = [
