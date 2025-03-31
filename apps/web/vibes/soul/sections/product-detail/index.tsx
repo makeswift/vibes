@@ -200,7 +200,7 @@ export function ProductDetail<F extends Field>({
 
 function ProductGallerySkeleton() {
   return (
-    <Skeleton.Root className={'group-has-[[data-pending]]/product-gallery:animate-pulse'} pending>
+    <Skeleton.Root className="group-has-[[data-pending]]/product-gallery:animate-pulse" pending>
       <div className="w-full overflow-hidden rounded-xl @xl:rounded-2xl">
         <div className="flex">
           <Skeleton.Box className="aspect-[4/5] h-full w-full shrink-0 grow-0 basis-full" />
