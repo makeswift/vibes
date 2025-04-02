@@ -1,21 +1,27 @@
+import { localeAction, searchAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 
-import { localeAction, searchAction } from './actions';
-
 export default function Preview() {
+  const linksPromise = new Promise<Array<{ href: string; label: string }>>((res) =>
+    setTimeout(() => res(navigationLinks), 1000),
+  );
+  const cartCountPromise = new Promise<number>((res) => setTimeout(() => res(3), 2000));
+  const logoPromise = new Promise<string | { src: string; alt: string }>((res) =>
+    setTimeout(() => res(logo), 1000),
+  );
+
   return (
-    <div className="relative min-h-48">
+    <div className="relative min-h-screen bg-contrast-100 p-4">
       <Navigation
         accountHref="#"
         activeLocaleId="en"
-        cartCount={5}
+        cartCount={cartCountPromise}
         cartHref="#"
-        links={navigationLinks}
+        links={linksPromise}
         localeAction={localeAction}
         locales={locales}
-        logo={logo}
+        logo={logoPromise}
         searchAction={searchAction('Warm')}
-        searchCtaLabel="View all items"
         searchHref="#"
       />
     </div>
