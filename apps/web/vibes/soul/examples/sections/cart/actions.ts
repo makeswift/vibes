@@ -5,7 +5,9 @@ import { CouponCodeFormState } from '@/vibes/soul/sections/cart/coupon-code-form
 import {
   cartLineItemActionFormDataSchema,
   couponCodeActionFormDataSchema,
+  shippingActionFormDataSchema,
 } from '@/vibes/soul/sections/cart/schema';
+import { ShippingFormState } from '@/vibes/soul/sections/cart/shipping-form';
 
 interface CartLineItem {
   id: string;
@@ -125,6 +127,58 @@ export async function couponCodeAction(
           (code) => code !== submission.value.couponCode,
         ),
         lastResult: submission.reply({ resetForm: true }),
+      };
+    }
+  }
+}
+
+export async function shippingAction(
+  prevState: Awaited<ShippingFormState>,
+  formData: FormData,
+): Promise<ShippingFormState> {
+  'use server';
+
+  const submission = parseWithZod(formData, { schema: shippingActionFormDataSchema });
+
+  if (submission.status !== 'success') {
+    return {
+      ...prevState,
+      lastResult: submission.reply(),
+    };
+  }
+
+  // Simulate a network request
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  switch (submission.value.intent) {
+    case 'add-address': {
+      return {
+        shippingOptions: [
+          { label: 'Standard', value: 'standard', price: '$5.99' },
+          { label: '2-3 business days', value: 'express', price: '$8.99' },
+          { label: 'Overnight', value: 'overnight', price: '$22.50' },
+        ],
+        shippingOption: null,
+        address: {
+          country: submission.value.country,
+          city: submission.value.city,
+          state: submission.value.state,
+          postalCode: submission.value.postalCode,
+        },
+        lastResult: submission.reply({ resetForm: true }),
+        form: 'address',
+      };
+    }
+    case 'add-shipping': {
+      const shippingOption = submission.value.shippingOption;
+
+      return {
+        address: prevState.address,
+        shippingOptions: prevState.shippingOptions,
+        shippingOption:
+          prevState.shippingOptions?.find((option) => option.value === shippingOption) ?? null,
+        lastResult: submission.reply({ resetForm: true }),
+        form: 'shipping',
       };
     }
   }
