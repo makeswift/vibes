@@ -1,0 +1,95 @@
+---
+title: Wishlist Item Card
+preview: wishlist-item-card-example
+previewSize: md
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { WishlistItemCard } from '@/vibes/soul/primitives/wishlist-item-card';
+
+function Usage() {
+    return (
+        <WishlistItemCard
+            wishlistId="1"
+            action={action}
+            item={{
+                itemId: '1',
+                productId: '1',
+                product: {
+                    id: '1',
+                    title: 'Jada Square Toe Ballet Flat',
+                    subtitle: '',
+                    badge: 'Bestseller',
+                    price: '$350',
+                    image: {
+                        src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
+                        alt: 'Jada Square Toe Ballet Flat',
+                    },
+                    href: '#',
+                    rating: 4.5,
+                },
+                callToAction: {
+                    label: 'Add to cart',
+                },
+            }}
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This comoponent uses the Sonner toast component. For more information, please refer to the [Sonner documentation](https://sonner.emilkowal.ski/).
+
+### WishlistItemCardProps
+
+| Prop           | Type                          | Default |
+| -------------- | ----------------------------- | ------- |
+| `wishlistId*`  | `string`                      |         |
+| `item*`        | `WishlistItem`                |         |
+| `action*`      | `AddWishlistItemToCartAction` |         |
+| `removeAction` | `RemoveWishlistItemAction`    |         |
+
+### WishlistItem
+
+| Prop           | Type                                    | Default |
+| -------------- | --------------------------------------- | ------- |
+| `itemId*`      | `string`                                |         |
+| `productId*`   | `string`                                |         |
+| `variantId`    | `string`                                |         |
+| `callToAction` | `{ label: string; disabled?: boolean }` |         |
+| `product*`     | `ProductCardWithId`                     |         |
+
+### AddWishlistItemToCartAction
+
+```ts
+type Action<S, P> = (state: Awaited<S>, payload: P) => S | Promise<S>;
+
+interface State {
+  lastResult: SubmissionResult | null;
+  successMessage?: React.ReactNode;
+  errorMessage?: string;
+}
+
+export type AddWishlistItemToCartAction = Action<State, FormData>;
+```
+
+### RemoveWishlistItemAction
+
+```ts
+type Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;
+
+interface RemoveWishlistItemState {
+  lastResult: SubmissionResult | null;
+  errorMessage?: string;
+}
+
+export type RemoveWishlistItemAction = Action<RemoveWishlistItemState, FormData>;
+```
