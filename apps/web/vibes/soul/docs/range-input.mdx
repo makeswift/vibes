@@ -1,0 +1,46 @@
+---
+title: Range Input
+preview: range-input-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { RangeInput } from '@/vibes/soul/form/range-input';
+
+function Usage() {
+    return (
+      <RangeInput min={0} max={100} />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### RangeInputProps
+
+| Prop             | Type                                                            | Default   |
+| ---------------- | --------------------------------------------------------------- | --------- |
+| `applyLabel`     | `string`                                                        | `'Apply`' |
+| `colorScheme`    | `'light' \| 'dark'`                                             | `'light'` |
+| `disabled`       | `boolean`                                                       | `false`   |
+| `max`            | `number`                                                        | `100`     |
+| `maxLabel`       | `string`                                                        | `'Max'`   |
+| `maxName`        | `string`                                                        | `'max'`   |
+| `maxPlaceholder` | `string`                                                        | `'Max'`   |
+| `maxPrepend`     | `ReactNode`                                                     | `null`    |
+| `maxStep`        | `number`                                                        | `1`       |
+| `min`            | `number`                                                        | `0`       |
+| `minLabel`       | `string`                                                        | `'Min'`   |
+| `minName`        | `string`                                                        | `'min'`   |
+| `minPlaceholder` | `string`                                                        | `'Min'`   |
+| `minPrepend`     | `ReactNode`                                                     | `null`    |
+| `minStep`        | `number`                                                        | `1`       |
+| `onChange`       | `(value: { min: number \| null; max: number \| null }) => void` |           |
+| `value`          | `{ min: number \| null; max: number \| null }`                  |

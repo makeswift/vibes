@@ -271,6 +271,12 @@ export const primitives = [
     files: ['form/radio-group/index.tsx'],
   },
   {
+    name: 'range-input',
+    dependencies: ['lucide-react'],
+    registryDependencies: ['input', 'button'],
+    files: ['form/range-input/index.tsx'],
+  },
+  {
     name: 'rating',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -323,5 +329,11 @@ export const primitives = [
     dependencies: ['sonner'],
     registryDependencies: ['alert'],
     files: ['primitives/toaster/index.tsx'],
+  },
+  {
+    name: 'toggle-group',
+    dependencies: ['clsx', '@radix-ui/react-toggle-group'],
+    registryDependencies: ['field-error', 'label'],
+    files: ['form/toggle-group/index.tsx'],
   },
 ] satisfies Components;

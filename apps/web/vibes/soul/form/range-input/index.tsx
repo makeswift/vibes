@@ -1,12 +1,12 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { Input } from '@/vibes/soul/form/input';
 import { Button } from '@/vibes/soul/primitives/button';
 
-interface Props {
+export interface RangeInputProps {
   applyLabel?: string;
   colorScheme?: 'light' | 'dark';
   disabled?: boolean;
@@ -14,13 +14,13 @@ interface Props {
   maxLabel?: string;
   maxName?: string;
   maxPlaceholder?: string;
-  maxPrepend?: React.ReactNode;
+  maxPrepend?: ReactNode;
   maxStep?: number;
   min?: number;
   minLabel?: string;
   minName?: string;
   minPlaceholder?: string;
-  minPrepend?: React.ReactNode;
+  minPrepend?: ReactNode;
   minStep?: number;
   onChange?: (value: { min: number | null; max: number | null }) => void;
   value?: { min: number | null; max: number | null };
@@ -33,21 +33,21 @@ export function RangeInput({
   applyLabel = 'Apply',
   colorScheme = 'light',
   disabled = false,
-  max,
-  maxLabel,
+  max = 100,
+  maxLabel = 'Max',
   maxName = 'max',
   maxPlaceholder = 'Max',
-  maxPrepend,
-  maxStep,
-  min,
-  minLabel,
+  maxPrepend = null,
+  maxStep = 1,
+  min = 0,
+  minLabel = 'Min',
   minName = 'min',
   minPlaceholder = 'Min',
-  minPrepend,
-  minStep,
+  minPrepend = null,
+  minStep = 1,
   onChange,
   value,
-}: Props) {
+}: RangeInputProps) {
   const [state, setState] = useState({
     min: value?.min?.toString() ?? '',
     max: value?.max?.toString() ?? '',
@@ -75,7 +75,7 @@ export function RangeInput({
         onBlur={(e) => {
           const clamped = clamp(
             e.currentTarget.valueAsNumber,
-            min ?? null,
+            min,
             e.currentTarget.max === '' ? null : parseInt(e.currentTarget.max, 10),
           );
           const nextValue = Number.isNaN(clamped) ? null : clamped;

@@ -1,8 +1,16 @@
 import { clsx } from 'clsx';
-import * as React from 'react';
+import { type ComponentPropsWithRef, type ReactNode, useId } from 'react';
 
 import { FieldError } from '@/vibes/soul/form/field-error';
 import { Label } from '@/vibes/soul/form/label';
+
+export interface InputProps extends ComponentPropsWithRef<'input'> {
+  prepend?: ReactNode;
+  label?: string;
+  errors?: string[];
+  colorScheme?: 'light' | 'dark';
+  hideLabel?: boolean;
+}
 
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
@@ -25,24 +33,33 @@ import { Label } from '@/vibes/soul/form/label';
  *  }
  * ```
  */
-export const Input = React.forwardRef<
-  React.ComponentRef<'input'>,
-  React.ComponentPropsWithoutRef<'input'> & {
-    prepend?: React.ReactNode;
-    label?: string;
-    errors?: string[];
-    colorScheme?: 'light' | 'dark';
-  }
->(({ prepend, label, className, required, errors, colorScheme = 'light', id, ...rest }, ref) => {
-  const generatedId = React.useId();
+export const Input = ({
+  prepend = null,
+  label,
+  className,
+  required,
+  errors,
+  colorScheme = 'light',
+  id,
+  hideLabel = true,
+  placeholder,
+  ref,
+  ...rest
+}: InputProps) => {
+  const generatedId = useId();
 
   return (
-    <div className={clsx('w-full space-y-2', className)}>
-      {label != null && label !== '' && (
-        <Label colorScheme={colorScheme} htmlFor={id ?? generatedId}>
+    <div className={clsx('w-full', className)}>
+      {label !== undefined && label !== '' && (
+        <Label
+          className={clsx(hideLabel ? 'sr-only' : 'mb-2')}
+          colorScheme={colorScheme}
+          htmlFor={id ?? generatedId}
+        >
           {label}
         </Label>
       )}
+
       <div
         className={clsx(
           'relative overflow-hidden rounded-lg border transition-colors duration-200 focus:outline-none',
@@ -70,12 +87,15 @@ export const Input = React.forwardRef<
             { 'py-2.5 pe-4 ps-12': prepend },
           )}
           id={id ?? generatedId}
+          placeholder={placeholder}
           ref={ref}
         />
       </div>
-      {errors?.map((error) => <FieldError key={error}>{error}</FieldError>)}
+      {errors?.map((error) => (
+        <FieldError className="mt-2" key={error}>
+          {error}
+        </FieldError>
+      ))}
     </div>
   );
-});
-
-Input.displayName = 'Input';
+};
