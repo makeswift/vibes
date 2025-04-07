@@ -449,6 +449,12 @@ const formPages: [Page, ...Page[]] = [
     component: 'radio-group',
   },
   {
+    title: 'Range Input',
+    slug: 'range-input',
+    file: 'docs/range-input.mdx',
+    component: 'range-input',
+  },
+  {
     title: 'Select',
     slug: 'select',
     file: 'docs/select.mdx',
@@ -465,6 +471,12 @@ const formPages: [Page, ...Page[]] = [
     slug: 'textarea',
     file: 'docs/textarea.mdx',
     component: 'textarea',
+  },
+  {
+    title: 'Toggle Group',
+    slug: 'toggle-group',
+    file: 'docs/toggle-group.mdx',
+    component: 'toggle-group',
   },
 ];
 

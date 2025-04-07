@@ -1,0 +1,79 @@
+---
+title: Toggle Group
+preview: toggle-group-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { ToggleGroup } from '@/vibes/soul/form/toggle-group';
+
+function Usage() {
+    return (
+      <ToggleGroup
+        label="Options"
+        options={[
+          { value: 'option-1', label: ' Option 1' },
+          { value: 'option-2', label: ' Option 2' },
+          { value: 'option-3', label: ' Option 3' },
+        ]}
+        type="multiple"
+      />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component uses the Toggle Group component from Radix UI. Refer to the [Radix Toggle Group documentation](https://www.radix-ui.com/primitives/docs/components/toggle-group) for more information.
+
+### ToggleGroupProps
+
+| Prop          | Type                                             | Default   |
+| ------------- | ------------------------------------------------ | --------- |
+| `label`       | `string`                                         |           |
+| `options*`    | `Option[]` <Tooltip content="See Option below"/> |           |
+| `errors`      | `string[] \| null`                               | `null`    |
+| `colorScheme` | `'light' \| 'dark'`                              | `'light'` |
+| `hideLabel`   | `boolean`                                        | `false`   |
+
+### Option
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `value*`   | `string`  |         |
+| `label*`   | `string`  |         |
+| `disabled` | `boolean` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --toggle-group-light-focus: hsl(var(--primary));
+  --toggle-group-light-border: hsl(var(--border-contrast-100));
+  --toggle-group-light-on-border: hsl(var(--foreground));
+  --toggle-group-light-on-background: hsl(var(--foreground));
+  --toggle-group-light-off-background: hsl(var(--background));
+  --toggle-group-light-off-text: hsl(var(--foreground));
+  --toggle-group-light-on-text: hsl(var(--background));
+  --toggle-group-light-off-border-hover: hsl(var(--contrast-200));
+  --toggle-group-light-off-background-hover: hsl(var(--contrast-100));
+  --toggle-group-dark-focus: hsl(var(--primary));
+  --toggle-group-dark-border: hsl(var(--border-contrast-500));
+  --toggle-group-dark-on-border: hsl(var(--background));
+  --toggle-group-dark-on-background: hsl(var(--background));
+  --toggle-group-dark-off-background: hsl(var(--foreground));
+  --toggle-group-dark-off-text: hsl(var(--background));
+  --toggle-group-dark-on-text: hsl(var(--foreground));
+  --toggle-group-dark-off-border-hover: hsl(var(--contrast-400));
+  --toggle-group-dark-off-background-hover: hsl(var(--contrast-500));
+}
+```

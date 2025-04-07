@@ -2,10 +2,18 @@
 
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import { clsx } from 'clsx';
-import * as React from 'react';
+import { ComponentPropsWithoutRef, useId } from 'react';
 
 import { FieldError } from '@/vibes/soul/form/field-error';
 import { Label } from '@/vibes/soul/form/label';
+
+export type ToggleGroupProps = ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> & {
+  label?: string;
+  options: Option[];
+  errors?: string[] | null;
+  colorScheme?: 'light' | 'dark';
+  hideLabel?: boolean;
+};
 
 interface Option {
   value: string;
@@ -37,32 +45,29 @@ interface Option {
  *   --toggle-group-dark-on-text: hsl(var(--foreground));
  *   --toggle-group-dark-off-border-hover: hsl(var(--contrast-400));
  *   --toggle-group-dark-off-background-hover: hsl(var(--contrast-500));
+ * }
  * ```
  */
-export const ToggleGroup = React.forwardRef<
-  React.ComponentRef<typeof ToggleGroupPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> & {
-    label?: string;
-    options: Option[];
-    errors?: string[];
-    colorScheme?: 'light' | 'dark';
-  }
->(({ label, options, errors, className, colorScheme = 'light', ...rest }, ref) => {
-  const id = React.useId();
+export const ToggleGroup = ({
+  label,
+  options,
+  errors = null,
+  className = '',
+  colorScheme = 'light',
+  hideLabel = true,
+  ...rest
+}: ToggleGroupProps) => {
+  const id = useId();
 
   return (
-    <div className={clsx('space-y-2', className)}>
+    <div className={clsx('w-full', className)}>
       {label !== undefined && label !== '' && (
-        <Label colorScheme={colorScheme} id={id}>
+        <Label className={clsx(hideLabel ? 'sr-only' : 'mb-2')} colorScheme={colorScheme} id={id}>
           {label}
         </Label>
       )}
-      <ToggleGroupPrimitive.Root
-        {...rest}
-        aria-labelledby={id}
-        className="flex flex-wrap gap-2"
-        ref={ref}
-      >
+
+      <ToggleGroupPrimitive.Root {...rest} aria-labelledby={id} className="flex flex-wrap gap-2">
         {options.map((option) => (
           <ToggleGroupPrimitive.Item
             aria-label={option.label}
@@ -82,9 +87,11 @@ export const ToggleGroup = React.forwardRef<
           </ToggleGroupPrimitive.Item>
         ))}
       </ToggleGroupPrimitive.Root>
-      {errors?.map((error) => <FieldError key={error}>{error}</FieldError>)}
+      {errors?.map((error) => (
+        <FieldError className="mt-2" key={error}>
+          {error}
+        </FieldError>
+      ))}
     </div>
   );
-});
-
-ToggleGroup.displayName = 'ToggleGroup';
+};

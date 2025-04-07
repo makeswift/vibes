@@ -172,6 +172,7 @@ export function FilterPanel({
                         value={value}
                       >
                         <ToggleGroup
+                          label={filter.label}
                           onValueChange={(toggleGroupValues) => {
                             startTransition(async () => {
                               const nextParams = {
