@@ -672,7 +672,7 @@ function SearchForm<S extends SearchResult>({
           strokeWidth={1}
         />
         <input
-          className="flex-grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
+          className="grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
           name={searchParamName}
           onChange={(e) => {
             setQuery(e.currentTarget.value);
