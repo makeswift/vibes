@@ -91,7 +91,7 @@ export function CartSkeleton({
               >
                 {/* Image */}
                 <Skeleton.Box className="aspect-square w-full max-w-24 rounded-xl" />
-                <div className="flex flex-grow flex-col flex-wrap justify-between gap-y-2 @xl:flex-row">
+                <div className="flex grow flex-col flex-wrap justify-between gap-y-2 @xl:flex-row">
                   <div className="flex w-full flex-1 flex-col @xl:w-1/2 @xl:pr-4">
                     {/* Line Item Title */}
                     <Skeleton.Text characterCount={15} className="rounded-md" />

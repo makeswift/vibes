@@ -105,7 +105,7 @@ export const Countdown = function Countdown({
       <div className="relative h-14 overflow-hidden [&>*]:h-14">
         {Array.from({ length: 10 }, (_, i) => (
           <div
-            className="flex flex-shrink-0 flex-col items-center justify-center"
+            className="flex shrink-0 flex-col items-center justify-center"
             key={i}
             style={{ transform: `translateY(-${displayValue * 100}%)` }}
           >
