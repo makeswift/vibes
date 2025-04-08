@@ -31,7 +31,7 @@ export interface InlineEmailFormProps {
  * :root {
  *   --inline-email-form-focus: hsl(var(--primary));
  *   --inline-email-form-background: hsl(var(--background));
- *   --inline-email-form-placeholder: hsl(var(--contrast-gray-500));
+ *   --inline-email-form-placeholder: hsl(var(--contrast-500));
  *   --inline-email-form-text: hsl(var(--foreground));
  *   --inline-email-form-border: hsl(var(--black));
  *   --inline-email-form-error: hsl(var(--error));
@@ -71,7 +71,7 @@ export function InlineEmailForm({
       >
         <input
           {...getInputProps(fields.email, { type: 'email' })}
-          className="h-14 w-full bg-transparent pl-5 pr-16 text-[var(--inline-email-form-text,hsl(var(--foreground)))] placeholder-[var(--inline-email-form-placeholder,hsl(var(--contrast-gray-500)))] placeholder:font-normal focus:outline-none"
+          className="h-14 w-full bg-transparent pl-5 pr-16 text-[var(--inline-email-form-text,hsl(var(--foreground)))] placeholder-[var(--inline-email-form-placeholder,hsl(var(--contrast-500)))] placeholder:font-normal focus:outline-none"
           data-1p-ignore
           key={fields.email.id}
           placeholder={placeholder}
