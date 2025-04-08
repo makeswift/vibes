@@ -28,13 +28,6 @@ interface Props {
   };
 }
 
-function highlightLines(str: string) {
-  return str
-    .split('\n')
-    .map((line) => line.concat('// [!code highlight]'))
-    .join('\n');
-}
-
 function getVariableCode(cssVars: CSSVars) {
   return `:root {\n${Object.entries(cssVars)
     .filter(([name]) => !name.startsWith('--font-family'))
@@ -42,43 +35,82 @@ function getVariableCode(cssVars: CSSVars) {
     .join('\n')}\n}`;
 }
 
+function removeDuplicatesByName<T extends { name: string }>(items: T[]): T[] {
+  const uniqueItems = new Map<string, T>();
+
+  for (const item of items) {
+    if (!uniqueItems.has(item.name)) {
+      uniqueItems.set(item.name, item);
+    }
+  }
+
+  return Array.from(uniqueItems.values());
+}
+
 function getLayoutCode(fonts: Props['fonts']) {
+  let layoutCode = '';
+
+  // Filter fonts by type
   const localFonts = Object.values(fonts).filter((f) => f.type === 'local');
   const googleFonts = Object.values(fonts).filter((f) => f.type === 'google');
 
-  return `${googleFonts.length > 0 ? `import { ${googleFonts.map((f) => f.name).join(', ')} } from 'next/font/google' // [!code highlight]\n` : ''}${localFonts.length > 0 ? `import localFont from 'next/font/local' // [!code highlight]\n` : ''}
-import './globals.css'
+  // Remove duplicates from googleFonts to avoid duplicate imports
+  const uniqueGoogleFonts = removeDuplicatesByName(googleFonts);
 
-${Object.entries(fonts)
-  .map(([type, font]) => {
-    function getFontOptions() {
-      return JSON.stringify(
-        { ...font.options, variable: `--font-family-${type}` },
-        null,
-        2,
-      ).replace(/"([^"]+)":/g, '$1:');
-    }
+  // Remove duplicates from localFonts to avoid duplicate imports
+  const uniqueLocalFonts = removeDuplicatesByName(localFonts);
 
-    switch (font.type) {
-      case 'google':
-        return highlightLines(
-          `const ${font.name.toLowerCase()} = ${font.name}(${getFontOptions()})`,
-        );
-      case 'local':
-        return highlightLines(`const ${font.name.toLowerCase()} = localFont(${getFontOptions()})`);
-    }
-  })
-  .join('\n\n')}
+  // Add google fonts to layout code
+  if (uniqueGoogleFonts.length > 0)
+    layoutCode += `import { ${uniqueGoogleFonts.map((f) => f.name.replace(/\s+/g, '_')).join(', ')} } from 'next/font/google'\n`;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body className={[${Object.values(fonts)
-        .map((f) => `${f.name.toLowerCase()}.variable`)
-        .join(', ')}].join(' ')}>{children}</body> // [!code highlight]
-    </html>
-  );
-}'`;
+  // Add local fonts to layout code
+  if (uniqueLocalFonts.length > 0) layoutCode += `import localFont from 'next/font/local'\n`;
+
+  // Import globals.css
+  layoutCode += `\nimport './globals.css'\n`;
+
+  // Generate font declarations
+  const fontDeclarations = Object.entries(fonts)
+    .map(([type, font]) => {
+      function getFontOptions() {
+        return JSON.stringify(
+          { ...font.options, variable: `--font-family-${type}` },
+          null,
+          2,
+        ).replace(/"([^"]+)":/g, '$1:');
+      }
+
+      switch (font.type) {
+        case 'google':
+          return `const ${type} = ${font.name.replace(/\s+/g, '_')}(${getFontOptions()})`;
+        case 'local':
+          return `const ${font.name.toLowerCase().replace(/\s+/g, '_')} = localFont(${getFontOptions()})`;
+      }
+    })
+    .join('\n\n');
+
+  // Add font declarations to layout code
+  layoutCode += `\n${fontDeclarations}`;
+
+  // Add next lines of code to layout code
+  layoutCode += `\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang="en">`;
+
+  // Generate font variables
+  const fontVariables = Object.entries(fonts)
+    .map(([type]) => {
+      const varName = type.toLowerCase().replace(/\s+/g, '_');
+      return '${' + varName + '.variable}';
+    })
+    .join(' ');
+
+  // Add font variables to layout code
+  layoutCode += `\n      <body className={\`${fontVariables}\`}>{children}</body>`;
+
+  // Add closing tags to layout code
+  layoutCode += `\n    </html> \n  );\n};`;
+
+  return layoutCode;
 }
 
 export function BrandInstallation({ brands, brandName, fonts }: Props) {
@@ -92,7 +124,8 @@ export function BrandInstallation({ brands, brandName, fonts }: Props) {
         <Step>
           <h3 id="add-css-variables">Add CSS variables</h3>
           <p>
-            Copy and paste the following variables into your <code>globals.css</code> file.
+            Copy and paste the following variables into your <code>globals.css</code> file below
+            your <code>@tailwind</code> directives .
           </p>
           <Reveal>
             <CodeBlock>{getVariableCode(brand.cssVars)}</CodeBlock>
@@ -101,7 +134,7 @@ export function BrandInstallation({ brands, brandName, fonts }: Props) {
         <Step>
           <h3 id="install-fonts">Install fonts</h3>
           <p>
-            Add the following code to your root <code>layout.tsx</code> file.
+            Copy and paste the following code into your root <code>layout.tsx</code> file.
           </p>
           <CodeBlock>{getLayoutCode(fonts)}</CodeBlock>
         </Step>

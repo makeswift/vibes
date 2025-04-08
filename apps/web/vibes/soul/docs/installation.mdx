@@ -4,15 +4,23 @@ title: Installation
 
 <Steps>
   <Step>
-    ### Add dependencies
+    ### Follow the [Tailwind documentation](https://v3.tailwindcss.com/docs/guides/nextjs) to create a new Next.js project using Tailwind 3.
 
-    ```bash
-    npm install -D tailwindcss-animate @tailwindcss/container-queries
-    ```
+    Currently, Soul supports Tailwind v3, so be sure to follow the documentation above to ensure you're using Tailwind v3.
 
   </Step>
+
+  <Step>
+    ### Install dependencies
+
+    <CodeBlock lang='bash' children='npm install -D @tailwindcss/container-queries @tailwindcss/typography tailwindcss-animate' />
+
+  </Step>
+
   <Step>
     ### Update `tailwind.config.ts`
+
+    You may need to update your `tailwind.config.js` file from a `js` file to a `ts` file.
 
     <TailwindConfig />
 
