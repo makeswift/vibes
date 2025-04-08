@@ -11,6 +11,7 @@ title: 'Luxury'
       name: 'DM Serif Text',
       options: { display: 'swap', subsets: ['latin'], weight: '400' },
     },
+    mono: { type: 'google', name: 'Roboto Mono', options: { display: 'swap', subsets: ['latin'] } },
   }}
 />
 
@@ -18,8 +19,13 @@ title: 'Luxury'
 
 ## Typography
 
-<BrandTypography brandName="Luxury" />
-
 ### Font families
 
-<BrandFonts brandName="Luxury" fonts={{ body: 'Epilogue', heading: 'Epilogue' }} />
+<BrandFonts
+  brandName="Luxury"
+  fonts={{ body: 'Inter', heading: 'DM Serif Text', mono: 'Roboto Mono' }}
+/>
+
+### Font sizes
+
+<BrandTypography brandName="Luxury" />
