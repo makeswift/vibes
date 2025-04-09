@@ -45,7 +45,7 @@ export const primitives = [
   },
   {
     name: 'button-radio-group',
-    dependencies: ['clsx', 'lucide-react'],
+    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-radio-group'],
     registryDependencies: ['field-error', 'label'],
     files: ['form/button-radio-group/index.tsx'],
   },
@@ -70,8 +70,8 @@ export const primitives = [
   {
     name: 'compare-card',
     dependencies: ['clsx'],
-    registryDependencies: ['skeleton', 'product-card', 'rating', 'button'],
-    files: ['primitives/compare-card/index.tsx'],
+    registryDependencies: ['skeleton', 'product-card', 'rating', 'button-link'],
+    files: ['primitives/compare-card/index.tsx', 'primitives/compare-card/add-to-cart-form.tsx'],
   },
   {
     name: 'compare-drawer',
@@ -118,7 +118,7 @@ export const primitives = [
   {
     name: 'cursor-pagination',
     dependencies: ['lucide-react', 'nuqs', 'clsx'],
-    registryDependencies: [],
+    registryDependencies: ['streamable', 'skeleton'],
     files: ['primitives/cursor-pagination/index.tsx'],
   },
   {
@@ -170,12 +170,6 @@ export const primitives = [
     files: ['form/form-status/index.tsx'],
   },
   {
-    name: 'inline-email-form',
-    dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod'],
-    registryDependencies: [],
-    files: ['form/form-status/index.tsx'],
-  },
-  {
     name: 'icon',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['skeleton'],
@@ -212,6 +206,12 @@ export const primitives = [
     files: ['primitives/offset-pagination/index.tsx'],
   },
   {
+    name: 'label',
+    dependencies: ['clsx', '@radix-ui/react-label'],
+    registryDependencies: [''],
+    files: ['form/label/index.tsx'],
+  },
+  {
     name: 'logo',
     dependencies: ['clsx'],
     registryDependencies: ['streamable'],
@@ -227,16 +227,15 @@ export const primitives = [
       'clsx',
       'lodash.debounce',
       'lucide-react',
-      '@conform-to/zod',
     ],
     registryDependencies: [
+      'form-status',
       'streamable',
       'button',
       'logo',
       'price-label',
       'product-card',
       'toaster',
-      'form-status',
     ],
     files: ['primitives/navigation/index.tsx'],
   },
@@ -254,7 +253,7 @@ export const primitives = [
   },
   {
     name: 'product-card',
-    dependencies: ['clsx'],
+    dependencies: ['clsx', 'nuqs'],
     registryDependencies: ['badge', 'price-label', 'skeleton', 'checkbox', 'compare-drawer'],
     files: ['primitives/product-card/index.tsx', 'primitives/product-card/compare.tsx'],
   },

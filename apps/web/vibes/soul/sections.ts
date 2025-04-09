@@ -20,8 +20,8 @@ export const sections = [
   },
   {
     name: 'account-settings',
-    dependencies: ['@conform-to/zod', '@conform-to/react'],
-    registryDependencies: ['input', 'button'],
+    dependencies: ['@conform-to/zod', '@conform-to/react', 'zod'],
+    registryDependencies: ['input', 'button', 'toaster'],
     files: [
       'sections/account-settings/index.tsx',
       'sections/account-settings/change-password-form.tsx',
@@ -31,7 +31,7 @@ export const sections = [
   },
   {
     name: 'address-list-section',
-    dependencies: ['zod', '@conform-to/react', '@conform-to/zod'],
+    dependencies: ['@conform-to/react', '@conform-to/zod', 'zod'],
     registryDependencies: ['badge', 'button', 'dynamic-form', 'spinner', 'toaster'],
     files: ['sections/address-list-section/index.tsx', 'sections/address-list-section/schema.ts'],
   },
@@ -146,14 +146,12 @@ export const sections = [
     name: 'featured-blog-post-list',
     dependencies: [],
     registryDependencies: [
-      'button',
       'blog-post-card',
-      'streamable',
-      'blog-post-card',
-      'cursor-pagination',
       'blog-post-list',
       'breadcrumbs',
+      'cursor-pagination',
       'section-layout',
+      'streamable',
     ],
     files: ['sections/featured-blog-post-list/index.tsx'],
   },
@@ -207,7 +205,7 @@ export const sections = [
   },
   {
     name: 'forgot-password',
-    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    dependencies: ['@conform-to/zod', '@conform-to/react', 'zod'],
     registryDependencies: ['button', 'input', 'form-status'],
     files: [
       'sections/forgot-password/index.tsx',
@@ -231,7 +229,7 @@ export const sections = [
     name: 'inline-email-form',
     dependencies: ['lucide-react', '@conform-to/react', '@conform-to/zod', 'clsx'],
     registryDependencies: ['form-status', 'button'],
-    files: ['sections/inline-email-form/index.tsx'],
+    files: ['sections/inline-email-form/index.tsx', 'sections/inline-email-form/schema.ts'],
   },
   {
     name: 'not-found',
@@ -291,6 +289,7 @@ export const sections = [
       'select',
       'swatch-radio-group',
       'button',
+      'toaster',
     ],
     files: [
       'sections/product-detail/index.tsx',
@@ -306,7 +305,7 @@ export const sections = [
   },
   {
     name: 'product-list-section',
-    dependencies: ['lucide-react'],
+    dependencies: ['clsx', 'lucide-react', 'nuqs'],
     registryDependencies: [
       'streamable',
       'button',
@@ -316,6 +315,12 @@ export const sections = [
       'skeleton',
       'breadcrumbs',
       'product-list',
+      'checkbox',
+      'range-input',
+      'toggle-group',
+      'accordion',
+      'rating',
+      'select',
     ],
     files: [
       'sections/product-list-section/index.tsx',
@@ -326,7 +331,7 @@ export const sections = [
   },
   {
     name: 'reset-password',
-    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    dependencies: ['@conform-to/zod', '@conform-to/react', 'zod'],
     registryDependencies: ['button', 'input', 'form-status'],
     files: [
       'sections/reset-password/index.tsx',
@@ -354,7 +359,7 @@ export const sections = [
   },
   {
     name: 'sign-in',
-    dependencies: ['@conform-to/zod', '@conform-to/react'],
+    dependencies: ['@conform-to/zod', '@conform-to/react', 'zod'],
     registryDependencies: ['button', 'button-link', 'animated-link', 'form-status', 'input'],
     files: [
       'sections/sign-in/index.tsx',
@@ -389,7 +394,7 @@ export const sections = [
   },
   {
     name: 'subscribe',
-    dependencies: ['clsx'],
+    dependencies: ['clsx', '@conform-to/react'],
     registryDependencies: ['inline-email-form'],
     files: ['sections/subscribe/index.tsx'],
   },

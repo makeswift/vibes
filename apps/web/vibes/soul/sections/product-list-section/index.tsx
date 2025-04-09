@@ -12,12 +12,9 @@ import {
   BreadcrumbsSkeleton,
 } from '@/vibes/soul/sections/breadcrumbs';
 import { ProductList } from '@/vibes/soul/sections/product-list';
-import { Filter, FilterPanel } from '@/vibes/soul/sections/product-list-section/filter-panel';
-import {
-  Sorting,
-  SortingSkeleton,
-  Option as SortOption,
-} from '@/vibes/soul/sections/product-list-section/sorting';
+
+import { Filter, FilterPanel } from './filter-panel';
+import { Sorting, SortingSkeleton, Option as SortOption } from './sorting';
 
 export interface ProductListSectionProps {
   breadcrumbs?: Streamable<Breadcrumb[]>;

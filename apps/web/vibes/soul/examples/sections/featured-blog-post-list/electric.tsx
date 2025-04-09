@@ -12,11 +12,11 @@ export default function Preview() {
       breadcrumbs={[
         {
           label: 'Home',
-          href: '#',
+          href: '#1',
         },
         {
           label: 'Blog',
-          href: '#',
+          href: '#2',
         },
       ]}
       description="Expert Tips & Inspiration for Every Plant Lover"

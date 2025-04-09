@@ -65,19 +65,19 @@ const blogPost = {
     {
       label: 'Plants',
       link: {
-        href: '#',
+        href: '#1',
       },
     },
     {
       label: 'Home',
       link: {
-        href: '#',
+        href: '#2',
       },
     },
     {
       label: 'Gardening',
       link: {
-        href: '#',
+        href: '#3',
       },
     },
   ],
@@ -87,16 +87,16 @@ const breadcrumbs = [
   {
     id: '1',
     label: 'Home',
-    href: '#',
+    href: '#1',
   },
   {
     id: '2',
     label: 'Blog',
-    href: '#',
+    href: '#2',
   },
   {
     id: '3',
     label: "Top 5 Plants to Purify Your Home's Air",
-    href: '#',
+    href: '#3',
   },
 ];
