@@ -81,10 +81,10 @@ export function BlogPostContent({
                   </p>
                   {tags && tags.length > 0 && (
                     <div className="-ml-1 mt-4 flex flex-wrap gap-1.5 @xl:mt-6">
-                      {tags.map((tag, index) => (
+                      {tags.map((tag) => (
                         <ButtonLink
                           href={tag.link.href}
-                          key={index}
+                          key={tag.link.href}
                           size="small"
                           variant="tertiary"
                         >

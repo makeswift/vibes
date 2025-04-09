@@ -437,6 +437,12 @@ const formPages: [Page, ...Page[]] = [
     component: 'input',
   },
   {
+    title: 'Label',
+    slug: 'label',
+    file: 'docs/label.mdx',
+    component: 'label',
+  },
+  {
     title: 'Number Input',
     slug: 'number-input',
     file: 'docs/number-input.mdx',

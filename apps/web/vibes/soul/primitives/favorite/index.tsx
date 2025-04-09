@@ -1,6 +1,6 @@
 import * as Toggle from '@radix-ui/react-toggle';
 
-import { Heart } from '@/vibes/soul/primitives/favorite/heart';
+import { Heart } from './heart';
 
 export interface FavoriteProps {
   checked?: boolean;

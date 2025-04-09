@@ -1,0 +1,52 @@
+---
+title: Label
+preview: label-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+
+import * as React from 'react';
+
+import { Label } from '@/vibes/soul/form/label';
+
+function Usage() {
+    const id = React.useId();
+
+    return (
+        <fieldset>
+          <Label htmlFor={id}>First name</Label>
+          <input id={id} />
+        </fieldset>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This component uses the Label component from Radix UI. Refer to the [Label documentation](https://www.radix-ui.com/primitives/docs/components/label) for more information.
+
+### Additional Props
+
+| Prop          | Type                | Default   |
+| ------------- | ------------------- | --------- |
+| `colorScheme` | `'light' \| 'dark'` | `'light'` |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --label-light-text: hsl(var(--contrast-500));
+  --label-dark-text: hsl(var(--contrast-100));
+}
+```

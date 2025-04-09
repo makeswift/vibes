@@ -61,7 +61,7 @@ const blogPosts: BlogPost[] = [
       alt: 'Benefits of Indoor Plants',
     },
     date: '2024-07-15',
-    href: '#3',
+    href: '#4',
     author: 'Author Name',
   },
   {
@@ -73,7 +73,7 @@ const blogPosts: BlogPost[] = [
       alt: 'Repotting Plants',
     },
     date: '2024-08-20',
-    href: '#4',
+    href: '#5',
     author: 'Author Name',
   },
   {
@@ -85,7 +85,7 @@ const blogPosts: BlogPost[] = [
       alt: 'Easy-Care Plants for Busy People',
     },
     date: '2024-07-30',
-    href: '#5',
+    href: '#6',
     author: 'Author Name',
   },
   {
@@ -97,7 +97,7 @@ const blogPosts: BlogPost[] = [
       alt: 'Plant Propagation',
     },
     date: '2024-08-20',
-    href: '#6',
+    href: '#7',
     author: 'Author Name',
   },
   {
@@ -109,7 +109,7 @@ const blogPosts: BlogPost[] = [
       alt: 'Office Desk Plants',
     },
     date: '2024-07-10',
-    href: '#7',
+    href: '#8',
     author: 'Author Name',
   },
   {
@@ -121,7 +121,7 @@ const blogPosts: BlogPost[] = [
     //   alt: 'Choosing the Right Pot for Your Plant',
     // },
     date: '2024-08-05',
-    href: '#8',
+    href: '#9',
     author: 'Author Name',
   },
 ];
