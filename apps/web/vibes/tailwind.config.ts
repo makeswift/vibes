@@ -4,7 +4,14 @@ import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 
 export default {
-  content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './vibes/**/*.{ts,tsx}'],
+  content: [
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './vibes/**/*.{ts,tsx}',
+
+    // Or if using `src` directory:
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   theme: {
     extend: {
       typography: {
