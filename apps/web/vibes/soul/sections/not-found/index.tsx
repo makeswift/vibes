@@ -3,6 +3,7 @@ import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 export interface NotFoundProps {
   title?: string;
   subtitle?: string;
+  className?: string;
 }
 
 /**
@@ -21,9 +22,10 @@ export interface NotFoundProps {
 export function NotFound({
   title = 'Not found',
   subtitle = "Take a look around if you're lost.",
+  className = '',
 }: NotFoundProps) {
   return (
-    <SectionLayout containerSize="2xl">
+    <SectionLayout className={className} containerSize="2xl">
       <header className="font-[family-name:var(--not-found-font-family,var(--font-family-body))]">
         <h1 className="mb-3 font-[family-name:var(--not-found-title-font-family,var(--font-family-heading))] text-3xl font-medium leading-none text-[var(--not-found-title,hsl(var(--foreground)))] @xl:text-4xl @4xl:text-5xl">
           {title}
