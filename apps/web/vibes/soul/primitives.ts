@@ -318,6 +318,12 @@ export const primitives = [
     files: ['form/swatch-radio-group/index.tsx'],
   },
   {
+    name: 'tabs',
+    dependencies: ['@radix-ui/react-tabs'],
+    registryDependencies: [],
+    files: ['primitives/tabs/index.tsx'],
+  },
+  {
     name: 'textarea',
     dependencies: ['clsx'],
     registryDependencies: ['field-error', 'label'],
