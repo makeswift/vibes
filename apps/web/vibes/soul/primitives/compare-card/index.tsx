@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 
-import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import {
   type Product,
   ProductCard,
@@ -8,6 +7,8 @@ import {
 } from '@/vibes/soul/primitives/product-card';
 import { Rating } from '@/vibes/soul/primitives/rating';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
+
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
 import { AddToCartForm, CompareAddToCartAction } from './add-to-cart-form';
 

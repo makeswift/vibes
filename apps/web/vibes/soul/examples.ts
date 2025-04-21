@@ -93,11 +93,11 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/alert')),
   },
   {
-    name: 'animated-link-example',
+    name: 'animated-underline-example',
     dependencies: [],
-    registryDependencies: ['animated-link'],
-    files: ['examples/primitives/animated-link/index.tsx'],
-    component: lazy(() => import('./examples/primitives/animated-link')),
+    registryDependencies: ['animated-underline'],
+    files: ['examples/primitives/animated-underline/index.tsx'],
+    component: lazy(() => import('./examples/primitives/animated-underline')),
   },
   {
     name: 'banner-example',
@@ -445,21 +445,21 @@ export const examples = [
   {
     name: 'featured-blog-post-carousel-warm',
     dependencies: [],
-    registryDependencies: ['blog-post-carousel', 'animated-link'],
+    registryDependencies: ['blog-post-carousel', 'animated-underline'],
     files: ['examples/sections/featured-blog-post-carousel/warm.tsx'],
     component: lazy(() => import('./examples/sections/featured-blog-post-carousel/warm')),
   },
   {
     name: 'featured-blog-post-carousel-electric',
     dependencies: [],
-    registryDependencies: ['blog-post-carousel', 'animated-link'],
+    registryDependencies: ['blog-post-carousel', 'animated-underline'],
     files: ['examples/sections/featured-blog-post-carousel/electric.tsx'],
     component: lazy(() => import('./examples/sections/featured-blog-post-carousel/electric')),
   },
   {
     name: 'featured-blog-post-carousel-luxury',
     dependencies: [],
-    registryDependencies: ['blog-post-carousel', 'animated-link'],
+    registryDependencies: ['blog-post-carousel', 'animated-underline'],
     files: ['examples/sections/featured-blog-post-carousel/luxury.tsx'],
     component: lazy(() => import('./examples/sections/featured-blog-post-carousel/luxury')),
   },
@@ -1106,6 +1106,13 @@ export const examples = [
     registryDependencies: ['tabs'],
     files: ['examples/primitives/tabs/index.tsx'],
     component: lazy(() => import('./examples/primitives/tabs')),
+  },
+  {
+    name: 'reveal-example',
+    dependencies: [],
+    registryDependencies: ['reveal'],
+    files: ['examples/primitives/reveal/index.tsx'],
+    component: lazy(() => import('./examples/primitives/reveal')),
   },
   // PLOP: Append new component here
 ] satisfies Components;

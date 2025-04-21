@@ -14,10 +14,10 @@ export const primitives = [
     files: ['primitives/alert/index.tsx'],
   },
   {
-    name: 'animated-link',
+    name: 'animated-underline',
     dependencies: ['clsx'],
     registryDependencies: [],
-    files: ['primitives/animated-link/index.tsx'],
+    files: ['primitives/animated-underline/index.tsx'],
   },
   {
     name: 'badge',
@@ -280,6 +280,12 @@ export const primitives = [
     dependencies: ['clsx'],
     registryDependencies: [],
     files: ['primitives/rating/index.tsx'],
+  },
+  {
+    name: 'reveal',
+    dependencies: ['clsx'],
+    registryDependencies: ['animated-underline', 'button'],
+    files: ['primitives/reveal/index.tsx'],
   },
   {
     name: 'select',

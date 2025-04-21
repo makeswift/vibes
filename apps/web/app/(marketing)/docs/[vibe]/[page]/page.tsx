@@ -202,7 +202,7 @@ export default async function Page({
             )}
           >
             {meta.features && (
-              <ul className="not-prose w-full columns-1 gap-x-8 space-y-2 sm:columns-2 md:gap-x-10">
+              <ul className="not-prose w-full columns-1 gap-x-8 space-y-2 text-pretty sm:columns-2 md:gap-x-10">
                 {meta.features.map((feature, index) => (
                   <li className="flex items-start gap-x-3 text-foreground" key={index}>
                     <Check className="mt-1.5 shrink-0" />

@@ -1,8 +1,9 @@
 import { clsx } from 'clsx';
 import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
+import { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 export interface Breadcrumb {
@@ -44,12 +45,11 @@ export function Breadcrumbs({ breadcrumbs: streamableBreadcrumbs, className }: B
                 if (index < breadcrumbs.length - 1) {
                   return (
                     <li className="inline-flex items-center gap-x-1.5" key={href}>
-                      <AnimatedLink
-                        className="font-[family-name:var(--breadcrumbs-font-family,var(--font-family-body))] text-[var(--breadcrumbs-primary-text,hsl(var(--foreground)))] [background:linear-gradient(0deg,var(--breadcrumbs-hover,hsl(var(--primary))),var(--breadcrumbs-hover,hsl(var(--primary))))_no-repeat_left_bottom_/_0_2px]"
-                        href={href}
-                      >
-                        {label}
-                      </AnimatedLink>
+                      <Link className="group/underline focus:outline-none" href={href}>
+                        <AnimatedUnderline className="font-[family-name:var(--breadcrumbs-font-family,var(--font-family-body))] text-[var(--breadcrumbs-primary-text,hsl(var(--foreground)))] [background:linear-gradient(0deg,var(--breadcrumbs-hover,hsl(var(--primary))),var(--breadcrumbs-hover,hsl(var(--primary))))_no-repeat_left_bottom_/_0_2px]">
+                          {label}
+                        </AnimatedUnderline>
+                      </Link>
                       <ChevronRight
                         aria-hidden="true"
                         className="text-[var(--breadcrumbs-icon,hsl(var(--contrast-500)))]"

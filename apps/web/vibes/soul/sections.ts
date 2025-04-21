@@ -62,7 +62,7 @@ export const sections = [
   {
     name: 'breadcrumbs',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: ['streamable', 'skeleton', 'animated-link'],
+    registryDependencies: ['streamable', 'skeleton', 'animated-underline'],
     files: ['sections/breadcrumbs/index.tsx'],
   },
   {
@@ -138,7 +138,7 @@ export const sections = [
       'blog-post-card',
       'streamable',
       'blog-post-carousel',
-      'animated-link',
+      'animated-underline',
     ],
     files: ['sections/featured-blog-post-carousel/index.tsx'],
   },
@@ -160,7 +160,7 @@ export const sections = [
     dependencies: [],
     registryDependencies: [
       'streamable',
-      'animated-link',
+      'animated-underline',
       'card',
       'card-carousel',
       'section-layout',
@@ -176,7 +176,12 @@ export const sections = [
   {
     name: 'featured-product-carousel',
     dependencies: [],
-    registryDependencies: ['product-carousel', 'section-layout', 'animated-link', 'streamable'],
+    registryDependencies: [
+      'product-carousel',
+      'section-layout',
+      'animated-underline',
+      'streamable',
+    ],
     files: ['sections/featured-product-carousel/index.tsx'],
   },
   {
@@ -360,7 +365,7 @@ export const sections = [
   {
     name: 'sign-in',
     dependencies: ['@conform-to/zod', '@conform-to/react', 'zod'],
-    registryDependencies: ['button', 'button-link', 'animated-link', 'form-status', 'input'],
+    registryDependencies: ['button', 'button-link', 'animated-underline', 'form-status', 'input'],
     files: [
       'sections/sign-in/index.tsx',
       'sections/sign-in/sign-in-form.tsx',

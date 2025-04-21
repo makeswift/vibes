@@ -1,0 +1,72 @@
+---
+title: Animated Underline
+description: Text that animates on hover or focus
+preview: animated-underline-example
+previewSize: xs
+features:
+  - Animates text on hover or focus
+  - Multi-line support
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';
+
+export function Usage() {
+    return (
+      <p>Check out this <AnimatedUnderline>animated text!</AnimatedUnderline></p>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+### Usage with buttons and links
+
+The `AnimatedUnderline` component can be used with other components, like the Next.js `Link` component or a `button` element, to create a focus-based underline animation. To do this, you need to pass the `className` prop to the wrapping component and apply the `group/underline` and `focus:outline-none` classes to it.
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import Link from 'next/link';
+
+import { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';
+
+export function Usage() {
+    return (
+      <Link className="group/underline focus:outline-none" href="/about"><AnimatedUnderline>About</AnimatedUnderline></Link>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### AnimatedUnderlineProps
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `children`  | `string` |         |
+| `className` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="css">{`
+:root {
+    --animated-underline-text: hsl(var(--foreground));
+    --animated-underline-font-family: var(--font-family-body);
+    --animated-underline-hover: hsl(var(--primary));
+}
+`}</CodeBlock>
+
+{/* prettier-ignore-end */}
