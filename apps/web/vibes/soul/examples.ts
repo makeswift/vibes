@@ -1100,5 +1100,12 @@ export const examples = [
     files: ['examples/form/toggle-group/index.tsx'],
     component: lazy(() => import('./examples/form/toggle-group')),
   },
+  {
+    name: 'tabs-example',
+    dependencies: [],
+    registryDependencies: ['tabs'],
+    files: ['examples/primitives/tabs/index.tsx'],
+    component: lazy(() => import('./examples/primitives/tabs')),
+  },
   // PLOP: Append new component here
 ] satisfies Components;

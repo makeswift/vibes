@@ -148,6 +148,18 @@ const primitivePages: [Page, ...Page[]] = [
     component: 'streamable',
   },
   {
+    title: 'Tabs',
+    slug: 'tabs',
+    file: 'docs/tabs.mdx',
+    component: 'tabs',
+  },
+  {
+    title: 'Streamable',
+    slug: 'streamable',
+    file: 'docs/streamable.mdx',
+    component: 'streamable',
+  },
+  {
     title: 'Toaster',
     slug: 'toaster',
     file: 'docs/toaster.mdx',

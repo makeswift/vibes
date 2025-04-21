@@ -1,0 +1,62 @@
+---
+title: Tabs
+preview: tabs-example
+previewSize: xs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Tabs } from '@/vibes/soul/primitives/tabs';
+
+export default function Preview() {
+  return (
+      <Tabs
+        defaultValue="tracking"
+        tabs={[
+          { value: 'tracking', label: 'Tracking', content: <p>Tracking</p> },
+          { value: 'details', label: 'Details', content: <p>Details</p> },
+        ]}
+      />
+  );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### ButtonProps
+
+| Prop            | Type                                       | Default |
+| --------------- | ------------------------------------------ | ------- |
+| `className`     | `string`                                   |         |
+| `defaultValue*` | `string`                                   |         |
+| `tabs*`         | `Tab[]` <Tooltip content="See Tab below"/> |         |
+
+### Tab
+
+| Prop       | Type        | Default |
+| ---------- | ----------- | ------- |
+| `value*`   | `string`    |         |
+| `label*`   | `string`    |         |
+| `content*` | `ReactNode` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --tabs-focus: hsl(var(--primary));
+  --tabs-font-family: var(--font-family-body);
+  --tabs-text: hsl(var(--contrast-500));
+  --tabs-text-hover: hsl(var(--foreground));
+  --tabs-text-active: hsl(var(--foreground));
+  --tabs-underline-hover: hsl(var(--primary));
+  --tabs-border: hsl(var(--contrast-100));
+}
+```
