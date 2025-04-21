@@ -1,4 +1,6 @@
-import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
+import Link from 'next/link';
+
+import { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
 import { SignInAction, SignInForm } from './sign-in-form';
@@ -62,12 +64,11 @@ export function SignIn({
             passwordLabel={passwordLabel}
             submitLabel={submitLabel}
           />
-          <AnimatedLink
-            className="mt-4 block w-fit text-sm font-semibold"
-            href={forgotPasswordHref}
-          >
-            {forgotPasswordLabel}
-          </AnimatedLink>
+          <Link className="group/underline focus:outline-none" href={forgotPasswordHref}>
+            <AnimatedUnderline className="mt-4 block w-fit text-sm font-semibold">
+              {forgotPasswordLabel}
+            </AnimatedUnderline>
+          </Link>
         </div>
         <div className="flex w-full flex-col @xl:max-w-md @xl:pl-10 @4xl:pl-20">
           <div className="font-[family-name:var(--sign-in-font-family,var(--font-family-body))]">

@@ -14,10 +14,10 @@ const primitivePages: [Page, ...Page[]] = [
     component: 'alert',
   },
   {
-    title: 'Animated Link',
-    slug: 'animated-link',
-    file: 'docs/animated-link.mdx',
-    component: 'animated-link',
+    title: 'Animated Underline',
+    slug: 'animated-underline',
+    file: 'docs/animated-underline.mdx',
+    component: 'animated-underline',
   },
   { title: 'Badge', slug: 'badge', file: 'docs/badge.mdx', component: 'badge' },
   {
@@ -124,6 +124,12 @@ const primitivePages: [Page, ...Page[]] = [
   },
   { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
   {
+    title: 'Reveal',
+    slug: 'reveal',
+    file: 'docs/reveal.mdx',
+    component: 'reveal',
+  },
+  {
     title: 'Side Panel',
     slug: 'side-panel',
     file: 'docs/side-panel.mdx',
@@ -152,12 +158,6 @@ const primitivePages: [Page, ...Page[]] = [
     slug: 'tabs',
     file: 'docs/tabs.mdx',
     component: 'tabs',
-  },
-  {
-    title: 'Streamable',
-    slug: 'streamable',
-    file: 'docs/streamable.mdx',
-    component: 'streamable',
   },
   {
     title: 'Toaster',

@@ -1,5 +1,7 @@
+import Link from 'next/link';
+
 import { Streamable } from '@/vibes/soul/lib/streamable';
-import { AnimatedLink } from '@/vibes/soul/primitives/animated-link';
+import { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';
 import { CarouselProduct, ProductCarousel } from '@/vibes/soul/sections/product-carousel';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
@@ -62,9 +64,9 @@ export function FeaturedProductCarousel({
           )}
         </header>
         {cta != null && cta.href !== '' && cta.label !== '' && (
-          <AnimatedLink className="mr-3" href={cta.href}>
-            {cta.label}
-          </AnimatedLink>
+          <Link className="group/underline focus:outline-none" href={cta.href}>
+            <AnimatedUnderline className="mr-3">{cta.label}</AnimatedUnderline>
+          </Link>
         )}
       </div>
       <div className="group/product-carousel">

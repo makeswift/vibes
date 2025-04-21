@@ -1,0 +1,47 @@
+---
+title: Reveal
+preview: reveal-example
+previewSize: md
+features:
+  - Easy integration with any ReactNode content
+  - Conditionally renders the button based on content height
+  - Customizable maximum height for flexible content display
+  - Smoothly handles dynamic content changes with ResizeObserver
+  - Offers multiple button styles for different UI needs
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Reveal } from '@/vibes/soul/primitives/reveal';
+
+export default function Preview() {
+  return (
+    <Reveal>
+      <p>
+        To begin your return, simply log into your account on our website or contact our dedicated
+        customer service team. Once your return is authorized, we&apos;ll provide you with a prepaid
+        shipping label for domestic returns.
+      </p>
+    </Reveal>
+  );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### RevealProps
+
+| Prop          | Type                      | Default       |
+| ------------- | ------------------------- | ------------- |
+| `children*`   | `ReactNode`               |               |
+| `defaultOpen` | `boolean`                 | `false`       |
+| `hideLabel`   | `string`                  | `'Show less'` |
+| `maxHeight`   | `string`                  | `'10rem'`     |
+| `showLabel`   | `string`                  | `'Show more'` |
+| `variant`     | `'underline' \| 'button'` | `'underline'` |
