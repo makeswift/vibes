@@ -325,7 +325,7 @@ export const primitives = [
   },
   {
     name: 'tabs',
-    dependencies: ['@radix-ui/react-tabs'],
+    dependencies: ['@radix-ui/react-tabs', 'clsx'],
     registryDependencies: [],
     files: ['primitives/tabs/index.tsx'],
   },

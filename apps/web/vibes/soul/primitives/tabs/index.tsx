@@ -1,6 +1,7 @@
 'use client';
 
 import * as TabsPrimitive from '@radix-ui/react-tabs';
+import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, ComponentPropsWithRef, ReactNode } from 'react';
 
 interface Tab {
@@ -32,9 +33,9 @@ export type TabsProps = ComponentPropsWithoutRef<typeof TabsPrimitive.Root> & {
  * }
  * ```
  */
-export function Tabs({ className = '', defaultValue, tabs, ...props }: TabsProps) {
+export function Tabs({ className, defaultValue, tabs, ...props }: TabsProps) {
   return (
-    <TabsPrimitive.Root className={className} defaultValue={defaultValue} {...props}>
+    <TabsPrimitive.Root className={clsx(className)} defaultValue={defaultValue} {...props}>
       <TabsList>
         {tabs.map(({ value, label }) => (
           <TabsTrigger key={value} value={value}>
