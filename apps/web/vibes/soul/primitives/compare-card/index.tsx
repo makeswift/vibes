@@ -1,14 +1,14 @@
 import { clsx } from 'clsx';
 
+import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import {
   type Product,
   ProductCard,
   ProductCardSkeleton,
 } from '@/vibes/soul/primitives/product-card';
 import { Rating } from '@/vibes/soul/primitives/rating';
+import { Reveal } from '@/vibes/soul/primitives/reveal';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
-
-import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 
 import { AddToCartForm, CompareAddToCartAction } from './add-to-cart-form';
 
@@ -69,7 +69,7 @@ export function CompareCard({
   return (
     <div
       className={clsx(
-        'w-full max-w-md divide-y divide-[var(--compare-card-divider,hsl(var(--contrast-100)))] font-[family-name:var(--compare-card-font-family-primary,var(--font-family-body))] font-normal @container',
+        'w-full max-w-72 divide-y divide-[var(--compare-card-divider,hsl(var(--contrast-100)))] font-[family-name:var(--compare-card-font-family-primary,var(--font-family-body))] font-normal @container',
         className,
       )}
     >
@@ -108,9 +108,9 @@ export function CompareCard({
           {descriptionLabel}
         </div>
         {product.description != null && product.description !== '' ? (
-          <div className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
-            {product.description}
-          </div>
+          <Reveal>
+            <div className="prose prose-sm">{product.description}</div>
+          </Reveal>
         ) : (
           <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
             {noDescriptionLabel}
@@ -122,13 +122,18 @@ export function CompareCard({
           <div className="font-[family-name:var(--compare-card-font-family-secondary,var(--font-family-mono))] text-xs font-normal uppercase text-[var(--compare-card-label,hsl(var(--foreground)))]">
             {otherDetailsLabel}
           </div>
-          {product.customFields.map((field, index) => (
-            <div key={index}>
-              <p className="text-xs font-normal text-[var(--compare-card-field,hsl(var(--foreground)))]">
-                <strong>{field.name}</strong>: {field.value}
-              </p>
-            </div>
-          ))}
+          <Reveal>
+            <dl className="grid grid-cols-2 gap-1 text-xs font-normal text-[var(--compare-card-field,hsl(var(--foreground)))]">
+              {product.customFields.map((field, index) => (
+                <>
+                  <dt className="font-semibold" key={`name-${index}`}>
+                    {field.name}:{' '}
+                  </dt>
+                  <dd key={`value-${index}`}>{field.value}</dd>
+                </>
+              ))}
+            </dl>
+          </Reveal>
         </div>
       ) : (
         <div className="space-y-4 py-4">

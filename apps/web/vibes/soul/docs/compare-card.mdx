@@ -67,13 +67,21 @@ This component uses the Next.js Image component. The `imageSizes` prop is passed
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --compare-card-divider: hsl(var(--contrast-100));
-  --compare-card-label: hsl(var(--foreground));
-  --compare-card-description: hsl(var(--contrast-400));
-  --compare-card-field: hsl(var(--foreground));
-  --compare-card-font-family-primary: var(--font-family-body);
-  --compare-card-font-family-secondary: var(--font-family-mono);
+    --compare-card-divider: hsl(var(--contrast-100));
+    --compare-card-label: hsl(var(--foreground));
+    --compare-card-description: hsl(var(--contrast-400));
+    --compare-card-field: hsl(var(--foreground));
+    --compare-card-font-family-primary: var(--font-family-body);
+    --compare-card-font-family-secondary: var(--font-family-mono);
 }
-```
+`}</CodeBlock>
+
+## Changelog
+
+### 2025-04-29
+
+- Added `Reveal` component to handle overflow content
+- Added `prose` & `prose-sm` classes to `product.description` to handle markdown content
+- Changed `product.customFields` to render a [Description List element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dl) with a grid layout
