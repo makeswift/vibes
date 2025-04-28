@@ -77,7 +77,7 @@ export function Reveal({
         <div className={clsx('flex w-full items-end pt-4')}>
           {variant === 'underline' && (
             <button
-              className="group/underline focus:outline-none"
+              className="group/underline text-sm focus:outline-none"
               onClick={() => setIsOpen(!isOpen)}
               type="button"
             >
@@ -85,7 +85,12 @@ export function Reveal({
             </button>
           )}
           {variant === 'button' && (
-            <Button size="small" onClick={() => setIsOpen(!isOpen)} type="button">
+            <Button
+              variant="tertiary"
+              size="x-small"
+              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+            >
               {isOpen ? hideLabel : showLabel}
             </Button>
           )}
