@@ -70,7 +70,7 @@ export const primitives = [
   {
     name: 'compare-card',
     dependencies: ['clsx'],
-    registryDependencies: ['skeleton', 'product-card', 'rating', 'button-link'],
+    registryDependencies: ['skeleton', 'product-card', 'rating', 'button-link', 'reveal'],
     files: ['primitives/compare-card/index.tsx', 'primitives/compare-card/add-to-cart-form.tsx'],
   },
   {

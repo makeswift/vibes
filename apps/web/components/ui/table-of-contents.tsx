@@ -82,7 +82,7 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
               href={`#${heading.id}`}
               onClick={(e) => {
                 e.preventDefault();
-                const element = document.querySelector(`#${heading.id}`);
+                const element = document.getElementById(heading.id);
 
                 window.scrollTo({
                   top: (element?.getBoundingClientRect().top ?? 0) + window.scrollY - offsetTop,
