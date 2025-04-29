@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { Fragment } from 'react';
 
 import { ButtonLink } from '@/vibes/soul/primitives/button-link';
 import {
@@ -125,12 +126,10 @@ export function CompareCard({
           <Reveal>
             <dl className="grid grid-cols-2 gap-1 text-xs font-normal text-[var(--compare-card-field,hsl(var(--foreground)))]">
               {product.customFields.map((field, index) => (
-                <>
-                  <dt className="font-semibold" key={`name-${index}`}>
-                    {field.name}:{' '}
-                  </dt>
-                  <dd key={`value-${index}`}>{field.value}</dd>
-                </>
+                <Fragment key={index}>
+                  <dt className="font-semibold">{field.name}: </dt>
+                  <dd>{field.value}</dd>
+                </Fragment>
               ))}
             </dl>
           </Reveal>
