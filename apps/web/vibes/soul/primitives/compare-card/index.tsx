@@ -109,7 +109,7 @@ export function CompareCard({
         </div>
         {product.description != null && product.description !== '' ? (
           <Reveal>
-            <div className="prose prose-sm">{product.description}</div>
+            <div className="prose prose-sm [&>div>*:first-child]:mt-0">{product.description}</div>
           </Reveal>
         ) : (
           <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
