@@ -56,14 +56,14 @@ export interface FooterProps {
  *   --footer-background: hsl(var(--background));
  *   --footer-border-top: hsl(var(--contrast-100));
  *   --footer-border-bottom: hsl(var(--primary));
- *   --footer-contact-title: hsl(var(--contrast-300));
+ *   --footer-contact-title: hsl(var(--contrast-500));
  *   --footer-contact-text: hsl(var(--foreground));
  *   --footer-social-icon: hsl(var(--contrast-400));
  *   --footer-social-icon-hover: hsl(var(--foreground));
  *   --footer-section-title: hsl(var(--foreground));
- *   --footer-link: hsl(var(--contrast-400));
+ *   --footer-link: hsl(var(--contrast-500));
  *   --footer-link-hover: hsl(var(--foreground));
- *   --footer-copyright: hsl(var(--contrast-400));
+ *   --footer-copyright: hsl(var(--contrast-500));
  * }
  * ```
  */
@@ -106,7 +106,7 @@ export const Footer = function Footer({
                 if (contactInformation?.address != null || contactInformation?.phone != null) {
                   return (
                     <div className="mb-4 text-lg font-medium @lg:text-xl">
-                      <h3 className="text-[var(--footer-contact-title,hsl(var(--contrast-300)))]">
+                      <h3 className="text-[var(--footer-contact-title,hsl(var(--contrast-500)))]">
                         {contactTitle}
                       </h3>
                       <div className="text-[var(--footer-contact-text,hsl(var(--foreground)))]">
@@ -169,7 +169,7 @@ export const Footer = function Footer({
                             return (
                               <li key={idx}>
                                 <Link
-                                  className="block rounded-lg py-2 text-sm font-medium text-[var(--footer-link,hsl(var(--contrast-400)))] ring-[var(--footer-focus,hsl(var(--primary)))] transition-colors duration-300 hover:text-[var(--footer-link-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
+                                  className="block rounded-lg py-2 text-sm font-medium text-[var(--footer-link,hsl(var(--contrast-500)))] ring-[var(--footer-focus,hsl(var(--primary)))] transition-colors duration-300 hover:text-[var(--footer-link-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
                                   href={link.href}
                                 >
                                   {link.label}
@@ -193,7 +193,7 @@ export const Footer = function Footer({
             {(copyright) => {
               if (copyright != null) {
                 return (
-                  <p className="flex-1 text-sm text-[var(--footer-copyright,hsl(var(--contrast-400)))]">
+                  <p className="flex-1 text-sm text-[var(--footer-copyright,hsl(var(--contrast-500)))]">
                     {copyright}
                   </p>
                 );

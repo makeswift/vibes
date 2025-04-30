@@ -1,6 +1,14 @@
 export const Amex = function Amex() {
   return (
-    <svg fill="none" height="24" viewBox="0 0 35 24" width="35" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      aria-label="Amex"
+      fill="none"
+      height="24"
+      role="img"
+      viewBox="0 0 35 24"
+      width="35"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect fill="#1F72CD" height="23" rx="3.5" stroke="#D9D9D9" width="34" x="0.5" y="0.5" />
       <path
         clipRule="evenodd"
@@ -14,7 +22,15 @@ export const Amex = function Amex() {
 
 export const ApplePay = function ApplePay() {
   return (
-    <svg fill="none" height="24" viewBox="0 0 35 24" width="35" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      aria-label="Apple Pay"
+      fill="none"
+      height="24"
+      role="img"
+      viewBox="0 0 35 24"
+      width="35"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect fill="white" height="23" rx="3.5" stroke="#D9D9D9" width="34" x="0.5" y="0.5" />
       <path
         clipRule="evenodd"
@@ -28,7 +44,15 @@ export const ApplePay = function ApplePay() {
 
 export const Bitcoin = function Bitcoin() {
   return (
-    <svg fill="none" height="24" viewBox="0 0 35 24" width="35" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      aria-label="Bitcoin"
+      fill="none"
+      height="24"
+      role="img"
+      viewBox="0 0 35 24"
+      width="35"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect fill="white" height="23" rx="3.5" stroke="#D9D9D9" width="34" x="0.5" y="0.5" />
       <path
         clipRule="evenodd"
@@ -42,7 +66,15 @@ export const Bitcoin = function Bitcoin() {
 
 export const GooglePay = function GooglePay() {
   return (
-    <svg fill="none" height="24" viewBox="0 0 35 24" width="35" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      aria-label="GooglePay"
+      fill="none"
+      height="24"
+      role="img"
+      viewBox="0 0 35 24"
+      width="35"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect fill="white" height="23" rx="3.5" stroke="#D9D9D9" width="34" x="0.5" y="0.5" />
       <path
         clipRule="evenodd"
@@ -72,7 +104,15 @@ export const GooglePay = function GooglePay() {
 
 export const Mastercard = function Mastercard() {
   return (
-    <svg fill="none" height="24" viewBox="0 0 35 24" width="35" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      aria-label="Mastercard"
+      fill="none"
+      height="24"
+      role="img"
+      viewBox="0 0 35 24"
+      width="35"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect fill="white" height="23" rx="3.5" stroke="#D9D9D9" width="34" x="0.5" y="0.5" />
       <path
         clipRule="evenodd"
@@ -98,7 +138,15 @@ export const Mastercard = function Mastercard() {
 
 export const Paypal = function Paypal() {
   return (
-    <svg fill="none" height="24" viewBox="0 0 35 24" width="35" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      aria-label="Paypal"
+      fill="none"
+      height="24"
+      role="img"
+      viewBox="0 0 35 24"
+      width="35"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect fill="white" height="23" rx="3.5" stroke="#D9D9D9" width="34" x="0.5" y="0.5" />
       <path
         clipRule="evenodd"
@@ -134,7 +182,15 @@ export const Paypal = function Paypal() {
 
 export const Visa = function Visa() {
   return (
-    <svg fill="none" height="24" viewBox="0 0 35 24" width="35" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      aria-label="Visa"
+      fill="none"
+      height="24"
+      role="img"
+      viewBox="0 0 35 24"
+      width="35"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect fill="white" height="23" rx="3.5" stroke="#D9D9D9" width="34" x="0.5" y="0.5" />
       <path
         clipRule="evenodd"
