@@ -218,12 +218,19 @@ export async function action(
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --product-detail-border: hsl(var(--contrast-100));
-  --product-detail-subtitle-font-family: var(--font-family-mono);
-  --product-detail-title-font-family: var(--font-family-heading);
-  --product-detail-primary-text: hsl(var(--foreground));
-  --product-detail-secondary-text: hsl(var(--contrast-500));
+    --product-detail-border: hsl(var(--contrast-100));
+    --product-detail-subtitle-font-family: var(--font-family-mono);
+    --product-detail-title-font-family: var(--font-family-heading);
+    --product-detail-primary-text: hsl(var(--foreground));
+    --product-detail-secondary-text: hsl(var(--contrast-500));
 }
-```
+`}</CodeBlock>
+
+## Changelog
+
+### 2025-05-01
+
+- Added `[&>div>*:last-child]:mb-0` to `product.description` to remove default `margin-bottom` added by `prose` for the last child
+- Added `[&>div>*:first-child]:mt-0` to `product.description` to remove default `margin-top` added by `prose` for the first child
