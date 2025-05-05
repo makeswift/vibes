@@ -22,6 +22,8 @@ export interface ResetPasswordFormProps {
   submitLabel?: string;
   newPasswordLabel?: string;
   confirmPasswordLabel?: string;
+  newPasswordPlaceholder?: string;
+  confirmPasswordPlaceholder?: string;
 }
 
 export function ResetPasswordForm({
@@ -29,6 +31,8 @@ export function ResetPasswordForm({
   newPasswordLabel = 'New password',
   confirmPasswordLabel = 'Confirm Password',
   submitLabel = 'Update',
+  newPasswordPlaceholder = 'New password',
+  confirmPasswordPlaceholder = 'Confirm password',
 }: ResetPasswordFormProps) {
   const [{ lastResult, successMessage }, formAction, isPending] = useActionState(action, {
     lastResult: null,
@@ -50,6 +54,7 @@ export function ResetPasswordForm({
         errors={fields.password.errors}
         key={fields.password.id}
         label={newPasswordLabel}
+        placeholder={newPasswordPlaceholder}
       />
       <Input
         {...getInputProps(fields.confirmPassword, { type: 'password' })}
@@ -57,6 +62,7 @@ export function ResetPasswordForm({
         errors={fields.confirmPassword.errors}
         key={fields.confirmPassword.id}
         label={confirmPasswordLabel}
+        placeholder={confirmPasswordPlaceholder}
       />
       <Button loading={isPending} size="small" type="submit" variant="secondary">
         {submitLabel}

@@ -11,7 +11,7 @@ export function ShoppingBag() {
       <Draggable>
         {({ active, hover }) => (
           <Transition
-            className="transition-transform duration-1000 [transition-delay:850ms]"
+            className="transition-transform [transition-delay:850ms] duration-1000"
             from="translate-x-[300px] translate-y-[1000px] rotate-[-100deg]"
             to="translate-x-0 translate-y-0 rotate-12"
           >

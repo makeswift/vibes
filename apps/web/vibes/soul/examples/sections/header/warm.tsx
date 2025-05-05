@@ -36,7 +36,7 @@ export default function Preview() {
           localeAction: localeAction,
         }}
       />
-      <div className="h-[2000px] w-full bg-contrast-100" />
+      <div className="bg-contrast-100 h-[2000px] w-full" />
     </>
   );
 }

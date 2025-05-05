@@ -12,8 +12,8 @@ export function Link({ active = false, className, ...rest }: Props) {
       {...rest}
       className={clsx(
         className,
-        'text-sm leading-normal outline-none transition-colors focus-visible:underline focus-visible:underline-offset-[6px]',
-        active ? 'font-medium text-foreground' : 'text-contrast-400 hover:!text-foreground',
+        'text-sm leading-normal outline-hidden transition-colors focus-visible:underline focus-visible:underline-offset-[6px]',
+        active ? 'text-foreground font-medium' : 'text-contrast-400 hover:!text-foreground',
       )}
     />
   );

@@ -9,22 +9,20 @@ export default function Preview() {
   });
   return (
     <div>
-      <section className="group/pending overflow-hidden @container">
+      <section className="group/pending @container overflow-hidden">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 group-has-[[data-pending]]/pending:animate-pulse @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
           <CardCarousel
             cards={cardsPromise}
-            className="w-full"
             emptyStateSubtitle="Try browsing our complete catalog of products."
             emptyStateTitle="No products found"
           />
         </div>
       </section>
-      <section className="group/pending overflow-hidden bg-foreground @container">
+      <section className="group/pending bg-foreground @container overflow-hidden">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 group-has-[[data-pending]]/pending:animate-pulse @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
           <CardCarousel
             cards={cardsPromise}
             carouselColorScheme="dark"
-            className="w-full"
             emptyStateSubtitle="Try browsing our complete catalog of products."
             emptyStateTitle="No products found"
             textColorScheme="dark"
@@ -39,7 +37,7 @@ const cards: CardContent[] = [
   {
     title: 'Philodendron Imperial Red',
     image: {
-      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNzAzMzk0Ni01NGNhLTQ3ZDYtODgyYi0wYWI3NTUzNTU4YjQ=/kv08IvX08j.jpeg',
       alt: 'Philodendron Imperial Red',
     },
     href: '#1',
@@ -47,7 +45,7 @@ const cards: CardContent[] = [
   {
     title: 'Monstera',
     image: {
-      src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyMTIwYzE1ZC01YzlkLTQ3MDgtOTZhOS1hZDkwYjVmNDAwZWY=/n0P83RMnClS%202930x3663.jpeg',
       alt: 'Monstera',
     },
     href: '#2',
@@ -55,7 +53,7 @@ const cards: CardContent[] = [
   {
     title: 'Pink Caladium',
     image: {
-      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/AaZW4j2VTd4%202489x3111.jpeg',
       alt: 'Pink Caladium',
     },
     href: '#3',
@@ -63,7 +61,7 @@ const cards: CardContent[] = [
   {
     title: 'Hoya Kerrii',
     image: {
-      src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmZmRlZDM2MS0yMWMwLTRiYjktOTU2Ny1mNWM0YjcwMGIwZWQ=/QSaMw6aC_AN%208600x10750.jpeg',
       alt: 'Hoya Kerrii',
     },
     href: '#4',
@@ -71,7 +69,7 @@ const cards: CardContent[] = [
   {
     title: 'Bird Nest Fern',
     image: {
-      src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplYTBhYzExNC1lYWIwLTQyZjAtYmQzZS04NDJlNmRlM2RkNTc=/gfGRQi5pHeJ%203094x3868.jpeg',
       alt: 'Bird Nest Fern',
     },
     href: '#5',
@@ -79,7 +77,7 @@ const cards: CardContent[] = [
   {
     title: 'Jade Plant',
     image: {
-      src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozZWFjZDhlZi1lY2EzLTRiMzYtYTJkNS02ZGJkOWE4MzUwYjQ=/lJg081kQqvc.jpeg',
       alt: 'Jade Plant',
     },
     href: '#6',
@@ -87,7 +85,7 @@ const cards: CardContent[] = [
   {
     title: 'Snake Plant',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplNGNiMjdiNi04NTY2LTQxOTctODhhMC0xYThhYmY3NDdkZTU=/snake-plant.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozOTRmNDIyNC0wZDRkLTRmOWMtYjVjNi03ZjljNGE2ZjdiOTU=/snake-plant.jpg',
       alt: 'Snake Plant',
     },
     href: '#7',
@@ -95,7 +93,7 @@ const cards: CardContent[] = [
   {
     title: 'Spider Plant',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiYmYyNDEzMC0wNzU3LTRiYjMtYjkwMi0zNzI0NjBjNzk5MjY=/spider-plant.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTphNzdlNDQwNS1mNDIxLTRiZTQtOGJkMy0wZTc2OWMyYmEzYjY=/spider-plant.jpg',
       alt: 'Spider Plant',
     },
     href: '#8',
@@ -103,7 +101,7 @@ const cards: CardContent[] = [
   {
     title: 'African Fig Tree',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1MGFmMDIxOC05NWM4LTRlN2UtOTAyMS01OWExOGQxMjUwNGM=/african-fig.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo2YTk0Y2E0Yy0wMjcyLTRkZTItOWQ2Mi0xMTY4OTczYzI1ZWM=/african-fig.jpg',
       alt: 'African Fig Tree',
     },
     href: '#9',
@@ -111,7 +109,7 @@ const cards: CardContent[] = [
   {
     title: 'Birds of Paradise',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNWUwYmEwMS0yMDhiLTQ5ZWQtOTI3NC0yZTM0ZTZjYmZhNzg=/birds-of-paradise.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo2MTE4YmY5MC0wOWJlLTRlZDUtYjYyOS0wNzgwOTdiOWNjYTk=/birds-of-paradise.jpg',
       alt: 'Birds of Paradise',
     },
     href: '#10',
@@ -119,7 +117,7 @@ const cards: CardContent[] = [
   {
     title: 'ZZ Plant',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1N2Q2YThlZS04MjZiLTRjZmEtODRmZi1hZjgzZDM3MWE2ZGY=/zz-plant.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToxNTFhZTMwNC0zYWZhLTRiZDgtOWRlYy01ODU1OTZlNjQyZDM=/zz-plant.jpg',
       alt: 'ZZ Plant',
     },
     href: '#11',
@@ -127,7 +125,7 @@ const cards: CardContent[] = [
   {
     title: 'Dracaena',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3YTJhYTJmZi00ODBhLTQ3NTctODdkYi02ZWEyZGYzZWJmNjI=/dracaena.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozOWNmZThkOC00Y2M0LTQ2ZTAtODUwMy1lZmVhMzhhMWRmN2Y=/dracaena.jpg',
       alt: 'Dracanea',
     },
     href: '#12',

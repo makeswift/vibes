@@ -43,12 +43,12 @@ This component uses the Dialog component from Radix UI. Refer to the [Radix UI D
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --side-panel-overlay-background: hsl(var(--primary));
-  --side-panel-background: hsl(var(--background));
-  --side-panel-title-text: hsl(var(--foreground));
-  --side-panel-title-font-family: var(--font-family-heading);
-  --side-panel-content-font-family: var(--font-family-body);
+    --side-panel-overlay-background: color-mix(in oklab, var(--foreground) 50%, transparent);
+    --side-panel-background: var(--background);
+    --side-panel-title-text: var(--foreground);
+    --side-panel-title-font-family: var(--font-family-heading);
+    --side-panel-content-font-family: var(--font-family-body);
 }
-```
+`}</CodeBlock>

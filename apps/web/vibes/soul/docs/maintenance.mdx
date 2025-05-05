@@ -50,15 +50,15 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --maintenance-focus: hsl(var(--primary));
-  --maintenance-font-family: var(--font-family-body);
-  --maintenance-title-font-family: var(--font-family-heading);
-  --maintenance-title: hsl(var(--foreground));
-  --maintenance-status-message: hsl(var(--contrast-500));
-  --maintenance-contact: hsl(var(--foreground));
-  --maintenance-contact-link: hsl(var(--contrast-400));
-  --maintenance-contact-link-hover: hsl(var(--foreground));
+    --maintenance-focus: var(--primary);
+    --maintenance-font-family: var(--font-family-body);
+    --maintenance-title-font-family: var(--font-family-heading);
+    --maintenance-title: var(--foreground);
+    --maintenance-status-message: var(--contrast-500);
+    --maintenance-contact: var(--foreground);
+    --maintenance-contact-link: var(--contrast-400);
+    --maintenance-contact-link-hover: var(--foreground);
 }
-```
+`}</CodeBlock>

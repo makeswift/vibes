@@ -26,10 +26,10 @@ export interface PriceLabelProps {
  *
  * ```css
  * :root {
- *   --price-light-text: hsl(var(--foreground));
- *   --price-light-sale-text: hsl(var(--foreground));
- *   --price-dark-text: hsl(var(--background));
- *   --price-dark-sale-text: hsl(var(--background));
+ *   --price-light-text: var(--foreground);
+ *   --price-light-sale-text: var(--foreground);
+ *   --price-dark-text: var(--background);
+ *   --price-dark-sale-text: var(--background);
  * }
  * ```
  */
@@ -40,8 +40,8 @@ export function PriceLabel({ className, colorScheme = 'light', price }: PriceLab
         className={clsx(
           'block font-semibold',
           {
-            light: 'text-[var(--price-light-text,hsl(var(--foreground)))]',
-            dark: 'text-[var(--price-dark-text,hsl(var(--background)))]',
+            light: 'text-(--price-light-text,var(--foreground))',
+            dark: 'text-(--price-dark-text,var(--background))',
           }[colorScheme],
           className,
         )}
@@ -58,8 +58,8 @@ export function PriceLabel({ className, colorScheme = 'light', price }: PriceLab
           className={clsx(
             'block font-semibold',
             {
-              light: 'text-[var(--price-light-text,hsl(var(--foreground)))]',
-              dark: 'text-[var(--price-dark-text,hsl(var(--background)))]',
+              light: 'text-(--price-light-text,var(--foreground))',
+              dark: 'text-(--price-dark-text,var(--background))',
             }[colorScheme],
             className,
           )}
@@ -74,8 +74,8 @@ export function PriceLabel({ className, colorScheme = 'light', price }: PriceLab
             className={clsx(
               'font-normal line-through opacity-50',
               {
-                light: 'text-[var(--price-light-text,hsl(var(--foreground)))]',
-                dark: 'text-[var(--price-dark-text,hsl(var(--background)))]',
+                light: 'text-(--price-light-text,var(--foreground))',
+                dark: 'text-(--price-dark-text,var(--background))',
               }[colorScheme],
             )}
           >
@@ -84,8 +84,8 @@ export function PriceLabel({ className, colorScheme = 'light', price }: PriceLab
           <span
             className={clsx(
               {
-                light: 'text-[var(--price-light-sale-text,hsl(var(--foreground)))]',
-                dark: 'text-[var(--price-dark-sale-text,hsl(var(--background)))]',
+                light: 'text-(--price-light-sale-text,var(--foreground))',
+                dark: 'text-(--price-dark-sale-text,var(--background))',
               }[colorScheme],
             )}
           >

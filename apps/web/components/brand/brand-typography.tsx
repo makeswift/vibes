@@ -38,7 +38,7 @@ export function BrandTypography({ brands, brandName }: Props) {
         return (
           <div key={index}>
             <div
-              className="mb-1 truncate text-foreground"
+              className="text-foreground mb-1 truncate"
               style={{
                 fontSize:
                   brand.cssVars[size.variable] != null ? `var(${size.variable})` : size.fontSize,
@@ -47,11 +47,11 @@ export function BrandTypography({ brands, brandName }: Props) {
             >
               The quick brown fox jumps over the lazy dog.
             </div>
-            <div className="font-mono text-xs text-contrast-500">
-              <span className="rounded bg-contrast-100 px-1 py-0.5">
+            <div className="text-contrast-500 font-mono text-xs">
+              <span className="bg-contrast-100 rounded-sm px-1 py-0.5">
                 {size.variable.replace('--font-size', 'text')}
               </span>
-              <span className="ml-2 text-contrast-400">
+              <span className="text-contrast-400 ml-2">
                 {brand.cssVars[size.variable] ?? size.fontSize}
               </span>
             </div>

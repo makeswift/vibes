@@ -19,13 +19,13 @@ export interface BannerProps {
  *
  * ```css
  * :root {
- *   --banner-focus: hsl(var(--foreground));
- *   --banner-background: hsl(var(--primary));
- *   --banner-text: hdl(var(--foreground));
- *   --banner-close-icon: hsl(var(--foreground)/50%);
- *   --banner-close-icon-hover: hdl(var(--foreground));
+ *   --banner-focus: var(--foreground);
+ *   --banner-background: var(--primary);
+ *   --banner-text: var(--foreground);
+ *   --banner-close-icon: color-mix(in oklab, var(--foreground) 50%, transparent);
+ *   --banner-close-icon-hover: var(--foreground);
  *   --banner-close-background: transparent;
- *   --banner-close-background-hover: hsl(var(--background)/40%);
+ *   --banner-close-background-hover: color-mix(in oklab, var(--background) 40%, transparent);
  *   --banner-font-family: var(--font-family-body);
  * }
  * ```
@@ -57,7 +57,7 @@ export const Banner = ({
   return (
     <div
       className={clsx(
-        'overflow-hidden bg-[var(--banner-background,hsl(var(--primary)))] transition-all duration-300 ease-in @container',
+        '@container overflow-hidden bg-(--banner-background,var(--primary)) transition-all duration-300 ease-in',
         banner.dismissed ? 'pointer-events-none max-h-0' : 'max-h-32',
         className,
       )}
@@ -65,14 +65,14 @@ export const Banner = ({
       ref={ref}
     >
       <div className="flex items-center justify-between gap-4 px-8 py-3">
-        <div className="flex-1 font-[family-name:var(--banner-font-family,var(--font-family-body))] text-sm text-[var(--banner-text,hsl(var(--foreground)))] @xl:text-center @xl:text-base">
+        <div className="flex-1 font-(family-name:--banner-font-family,var(--font-family-body)) text-sm text-(--banner-text,var(--foreground)) @xl:text-center @xl:text-base">
           {children}
         </div>
 
         {!hideDismiss && (
           <button
             aria-label="Dismiss banner"
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--banner-close-background,transparent)] text-[var(--banner-close-icon,hsl(var(--foreground)/50%))] transition-colors duration-300 hover:bg-[var(--banner-close-background-hover,hsl(var(--background)/40%))] hover:text-[var(--banner-close-icon-hover,hsl(var(--foreground)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--banner-focus,hsl(var(--foreground)))]"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-(--banner-close-background,transparent) text-(--banner-close-icon,color-mix(in_oklab,var(--foreground)_50%,transparent)) transition-colors duration-300 hover:bg-(--banner-close-background-hover,color-mix(in_oklab,var(--background)_40%,transparent)) hover:text-(--banner-close-icon-hover,var(--foreground)) focus-visible:ring-2 focus-visible:ring-(--banner-focus,var(--foreground)) focus-visible:outline-hidden"
             onClick={(e) => {
               e.preventDefault();
               hideBanner();

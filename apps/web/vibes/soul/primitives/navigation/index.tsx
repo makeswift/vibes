@@ -130,7 +130,7 @@ const MobileMenuButton = forwardRef<
     <button
       {...rest}
       className={clsx(
-        'group relative rounded-lg p-2 outline-0 ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors focus-visible:ring-2',
+        'group relative rounded-lg p-2 ring-(--nav-focus,var(--primary)) outline-0 transition-colors focus-visible:ring-2',
         className,
       )}
       ref={ref}
@@ -138,38 +138,38 @@ const MobileMenuButton = forwardRef<
       <div className="flex h-4 w-4 origin-center transform flex-col justify-between overflow-hidden transition-all duration-300">
         <div
           className={clsx(
-            'h-px origin-left transform bg-[var(--nav-mobile-button-icon,hsl(var(--foreground)))] transition-all duration-300',
+            'h-px origin-left transform bg-(--nav-mobile-button-icon,var(--foreground)) transition-all duration-300',
             open ? 'translate-x-10' : 'w-7',
           )}
         />
         <div
           className={clsx(
-            'h-px transform rounded bg-[var(--nav-mobile-button-icon,hsl(var(--foreground)))] transition-all delay-75 duration-300',
+            'h-px transform rounded-sm bg-(--nav-mobile-button-icon,var(--foreground)) transition-all delay-75 duration-300',
             open ? 'translate-x-10' : 'w-7',
           )}
         />
         <div
           className={clsx(
-            'h-px origin-left transform bg-[var(--nav-mobile-button-icon,hsl(var(--foreground)))] transition-all delay-150 duration-300',
+            'h-px origin-left transform bg-(--nav-mobile-button-icon,var(--foreground)) transition-all delay-150 duration-300',
             open ? 'translate-x-10' : 'w-7',
           )}
         />
 
         <div
           className={clsx(
-            'absolute top-2 flex transform items-center justify-between bg-[var(--nav-mobile-button-icon,hsl(var(--foreground)))] transition-all duration-500',
+            'absolute top-2 flex transform items-center justify-between bg-(--nav-mobile-button-icon,var(--foreground)) transition-all duration-500',
             open ? 'w-12 translate-x-0' : 'w-0 -translate-x-10',
           )}
         >
           <div
             className={clsx(
-              'absolute h-px w-4 transform bg-[var(--nav-mobile-button-icon,hsl(var(--foreground)))] transition-all delay-300 duration-500',
+              'absolute h-px w-4 transform bg-(--nav-mobile-button-icon,var(--foreground)) transition-all delay-300 duration-500',
               open ? 'rotate-45' : 'rotate-0',
             )}
           />
           <div
             className={clsx(
-              'absolute h-px w-4 transform bg-[var(--nav-mobile-button-icon,hsl(var(--foreground)))] transition-all delay-300 duration-500',
+              'absolute h-px w-4 transform bg-(--nav-mobile-button-icon,var(--foreground)) transition-all delay-300 duration-500',
               open ? '-rotate-45' : 'rotate-0',
             )}
           />
@@ -182,9 +182,9 @@ const MobileMenuButton = forwardRef<
 MobileMenuButton.displayName = 'MobileMenuButton';
 
 const navGroupClassName =
-  'block rounded-lg bg-[var(--nav-group-background,transparent)] px-3 py-2 font-[family-name:var(--nav-group-font-family,var(--font-family-body))] font-medium text-[var(--nav-group-text,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-group-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-group-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2';
+  'block rounded-lg bg-(--nav-group-background,transparent) px-3 py-2 font-(family-name:--nav-group-font-family,var(--font-family-body)) font-medium text-(--nav-group-text,var(--foreground)) ring-(--nav-focus,var(--primary)) transition-colors hover:bg-(--nav-group-background-hover,var(--contrast-100)) hover:text-(--nav-group-text-hover,var(--foreground)) focus-visible:outline-0 focus-visible:ring-2';
 const navButtonClassName =
-  'relative rounded-lg bg-[var(--nav-button-background,transparent)] p-1.5 text-[var(--nav-button-icon,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-[var(--nav-button-background-hover,hsl(var(--contrast-100)))] @4xl:hover:text-[var(--nav-button-icon-hover,hsl(var(--foreground)))]';
+  'relative rounded-lg bg-(--nav-button-background,transparent) p-1.5 text-(--nav-button-icon,var(--foreground)) ring-(--nav-focus,var(--primary)) transition-colors focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-(--nav-button-background-hover,var(--contrast-100)) @4xl:hover:text-(--nav-button-icon-hover,var(--foreground))';
 
 /**
  * This component supports various CSS variables for theming. Here's a comprehensive list, along
@@ -192,64 +192,64 @@ const navButtonClassName =
  *
  * ```css
  * :root {
- *   --nav-focus: hsl(var(--primary));
- *   --nav-background: hsl(var(--background));
- *   --nav-floating-border: hsl(var(--foreground) / 10%);
- *   --nav-link-text: hsl(var(--foreground));
- *   --nav-link-text-hover: hsl(var(--foreground));
+ *   --nav-focus: var(--primary);
+ *   --nav-background: var(--background);
+ *   --nav-floating-border: color-mix(in oklab, var(--foreground) 10%, transparent);
+ *   --nav-link-text: var(--foreground);
+ *   --nav-link-text-hover: var(--foreground);
  *   --nav-link-background: transparent;
- *   --nav-link-background-hover: hsl(var(--contrast-100));
+ *   --nav-link-background-hover: var(--contrast-100);
  *   --nav-link-font-family: var(--font-family-body);
- *   --nav-group-text: hsl(var(--foreground));
- *   --nav-group-text-hover: hsl(var(--foreground));
+ *   --nav-group-text: var(--foreground);
+ *   --nav-group-text-hover: var(--foreground);
  *   --nav-group-background: transparent;
- *   --nav-group-background-hover: hsl(var(--contrast-100));
+ *   --nav-group-background-hover: var(--contrast-100);
  *   --nav-group-font-family: var(--font-family-body);
- *   --nav-sub-link-text: hsl(var(--contrast-500));
- *   --nav-sub-link-text-hover: hsl(var(--foreground));
+ *   --nav-sub-link-text: var(--contrast-500);
+ *   --nav-sub-link-text-hover: var(--foreground);
  *   --nav-sub-link-background: transparent;
- *   --nav-sub-link-background-hover: hsl(var(--contrast-100));
+ *   --nav-sub-link-background-hover: var(--contrast-100);
  *   --nav-sub-link-font-family: var(--font-family-body);
- *   --nav-button-icon: hsl(var(--foreground));
- *   --nav-button-icon-hover: hsl(var(--foreground));
- *   --nav-button-background: hsl(var(--background));
- *   --nav-button-background-hover: hsl(var(--contrast-100));
- *   --nav-menu-background: hsl(var(--background));
- *   --nav-menu-border: hsl(var(--foreground) / 5%);
- *   --nav-mobile-background: hsl(var(--background));
- *   --nav-mobile-divider: hsl(var(--contrast-100));
- *   --nav-mobile-button-icon: hsl(var(--foreground));
- *   --nav-mobile-link-text: hsl(var(--foreground));
- *   --nav-mobile-link-text-hover: hsl(var(--foreground));
+ *   --nav-button-icon: var(--foreground);
+ *   --nav-button-icon-hover: var(--foreground);
+ *   --nav-button-background: var(--background);
+ *   --nav-button-background-hover: var(--contrast-100);
+ *   --nav-menu-background: var(--background);
+ *   --nav-menu-border: color-mix(in oklab, var(--foreground) 5%, transparent);
+ *   --nav-mobile-background: var(--background);
+ *   --nav-mobile-divider: var(--contrast-100);
+ *   --nav-mobile-button-icon: var(--foreground);
+ *   --nav-mobile-link-text: var(--foreground);
+ *   --nav-mobile-link-text-hover: var(--foreground);
  *   --nav-mobile-link-background: transparent;
- *   --nav-mobile-link-background-hover: hsl(var(--contrast-100));
+ *   --nav-mobile-link-background-hover: var(--contrast-100);
  *   --nav-mobile-link-font-family: var(--font-family-body);
- *   --nav-mobile-sub-link-text: hsl(var(--contrast-500));
- *   --nav-mobile-sub-link-text-hover: hsl(var(--foreground));
+ *   --nav-mobile-sub-link-text: var(--contrast-500);
+ *   --nav-mobile-sub-link-text-hover: var(--foreground);
  *   --nav-mobile-sub-link-background: transparent;
- *   --nav-mobile-sub-link-background-hover: hsl(var(--contrast-100));
+ *   --nav-mobile-sub-link-background-hover: var(--contrast-100);
  *   --nav-mobile-sub-link-font-family: var(--font-family-body);
- *   --nav-search-background: hsl(var(--background));
- *   --nav-search-border: hsl(var(--foreground) / 5%);
- *   --nav-search-divider: hsl(var(--foreground) / 5%);
- *   --nav-search-icon: hsl(var(--contrast-500));
- *   --nav-search-empty-title: hsl(var(--foreground));
- *   --nav-search-empty-subtitle: hsl(var(--contrast-500));
- *   --nav-search-result-title: hsl(var(--foreground));
+ *   --nav-search-background: var(--background);
+ *   --nav-search-border: color-mix(in oklab, var(--foreground) 5%, transparent);
+ *   --nav-search-divider: color-mix(in oklab, var(--foreground) 5%, transparent);
+ *   --nav-search-icon: var(--contrast-500);
+ *   --nav-search-empty-title: var(--foreground);
+ *   --nav-search-empty-subtitle: var(--contrast-500);
+ *   --nav-search-result-title: var(--foreground);
  *   --nav-search-result-title-font-family: var(--font-family-mono);
- *   --nav-search-result-link-text: hsl(var(--foreground));
- *   --nav-search-result-link-text-hover: hsl(var(--foreground));
- *   --nav-search-result-link-background: hsl(var(--background));
- *   --nav-search-result-link-background-hover: hsl(var(--contrast-100));
+ *   --nav-search-result-link-text: var(--foreground);
+ *   --nav-search-result-link-text-hover: var(--foreground);
+ *   --nav-search-result-link-background: var(--background);
+ *   --nav-search-result-link-background-hover: var(--contrast-100);
  *   --nav-search-result-link-font-family: var(--font-family-body);
- *   --nav-cart-count-text: hsl(var(--background));
- *   --nav-cart-count-background: hsl(var(--foreground));
- *   --nav-locale-background: hsl(var(--background));
- *   --nav-locale-link-text: hsl(var(--contrast-400));
- *   --nav-locale-link-text-hover: hsl(var(--foreground));
- *   --nav-locale-link-text-selected: hsl(var(--foreground));
+ *   --nav-cart-count-text: var(--background);
+ *   --nav-cart-count-background: var(--foreground);
+ *   --nav-locale-background: var(--background);
+ *   --nav-locale-link-text: var(--contrast-400);
+ *   --nav-locale-link-text-hover: var(--foreground);
+ *   --nav-locale-link-text-selected: var(--foreground);
  *   --nav-locale-link-background: transparent;
- *   --nav-locale-link-background-hover: hsl(var(--contrast-100));
+ *   --nav-locale-link-background-hover: var(--contrast-100);
  *   --nav-locale-link-font-family: var(--font-family-body);
  * }
  * ```
@@ -313,22 +313,22 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
 
   return (
     <NavigationMenu.Root
-      className={clsx('relative mx-auto w-full max-w-screen-2xl @container', className)}
+      className={clsx('@container relative mx-auto w-full max-w-screen-2xl', className)}
       delayDuration={0}
       onValueChange={() => setIsSearchOpen(false)}
       ref={ref}
     >
       <div
         className={clsx(
-          'flex min-h-16 items-center justify-between gap-1 bg-[var(--nav-background,hsl(var(--background)))] py-2 pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
+          'flex min-h-16 items-center justify-between gap-1 bg-(--nav-background,var(--background)) py-2 pr-2 pl-3 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pr-2.5 @4xl:pl-6',
           isFloating
-            ? 'shadow-xl ring-1 ring-[var(--nav-floating-border,hsl(var(--foreground)/10%))]'
+            ? 'shadow-xl ring-1 ring-(--nav-floating-border,color-mix(in_oklab,var(--foreground)_90%,transparent))'
             : 'shadow-none ring-0',
         )}
       >
         {/* Mobile Menu */}
         <Popover.Root onOpenChange={setIsMobileMenuOpen} open={isMobileMenuOpen}>
-          <Popover.Anchor className="absolute left-0 right-0 top-full" />
+          <Popover.Anchor className="absolute top-full right-0 left-0" />
           <Popover.Trigger asChild>
             <MobileMenuButton
               aria-label={mobileMenuTriggerLabel}
@@ -338,22 +338,22 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             />
           </Popover.Trigger>
           <Popover.Portal>
-            <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-8px)] w-[var(--radix-popper-anchor-width)] @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
-              <div className="max-h-[inherit] divide-y divide-[var(--nav-mobile-divider,hsl(var(--contrast-100)))] overflow-y-auto bg-[var(--nav-mobile-background,hsl(var(--background)))]">
+            <Popover.Content className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @container max-h-[calc(var(--radix-popover-content-available-height)-8px)] w-[var(--radix-popper-anchor-width)]">
+              <div className="max-h-[inherit] divide-y divide-(--nav-mobile-divider,var(--contrast-100)) overflow-y-auto bg-(--nav-mobile-background,var(--background))">
                 <Stream
                   fallback={
                     <ul className="flex animate-pulse flex-col gap-4 p-5 @4xl:gap-2 @4xl:p-5">
                       <li>
-                        <span className="block h-4 w-10 rounded-md bg-contrast-100" />
+                        <span className="bg-contrast-100 block h-4 w-10 rounded-md" />
                       </li>
                       <li>
-                        <span className="block h-4 w-14 rounded-md bg-contrast-100" />
+                        <span className="bg-contrast-100 block h-4 w-14 rounded-md" />
                       </li>
                       <li>
-                        <span className="block h-4 w-24 rounded-md bg-contrast-100" />
+                        <span className="bg-contrast-100 block h-4 w-24 rounded-md" />
                       </li>
                       <li>
-                        <span className="block h-4 w-16 rounded-md bg-contrast-100" />
+                        <span className="bg-contrast-100 block h-4 w-16 rounded-md" />
                       </li>
                     </ul>
                   }
@@ -365,7 +365,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                         {item.label !== '' && (
                           <li>
                             <Link
-                              className="block rounded-lg bg-[var(--nav-mobile-link-background,transparent)] px-3 py-2 font-[family-name:var(--nav-mobile-link-font-family,var(--font-family-body))] font-semibold text-[var(--nav-mobile-link-text,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-mobile-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-mobile-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
+                              className="block rounded-lg bg-(--nav-mobile-link-background,transparent) px-3 py-2 font-(family-name:--nav-mobile-link-font-family,var(--font-family-body)) font-semibold text-(--nav-mobile-link-text,var(--foreground)) ring-(--nav-focus,var(--primary)) transition-colors hover:bg-(--nav-mobile-link-background-hover,var(--contrast-100)) hover:text-(--nav-mobile-link-text-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0 @4xl:py-4"
                               href={item.href}
                             >
                               {item.label}
@@ -377,7 +377,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                           .map((link, j) => (
                             <li key={j}>
                               <Link
-                                className="block rounded-lg bg-[var(--nav-mobile-sub-link-background,transparent)] px-3 py-2 font-[family-name:var(--nav-mobile-sub-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-mobile-sub-link-text,hsl(var(--contrast-500)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-mobile-sub-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-mobile-sub-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2 @4xl:py-4"
+                                className="block rounded-lg bg-(--nav-mobile-sub-link-background,transparent) px-3 py-2 font-(family-name:--nav-mobile-sub-link-font-family,var(--font-family-body)) text-sm font-medium text-(--nav-mobile-sub-link-text,var(--contrast-500)) ring-(--nav-focus,var(--primary)) transition-colors hover:bg-(--nav-mobile-sub-link-background-hover,var(--contrast-100)) hover:text-(--nav-mobile-sub-link-text-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0 @4xl:py-4"
                                 href={link.href}
                               >
                                 {link.label}
@@ -435,16 +435,16 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             fallback={
               <ul className="flex animate-pulse flex-row gap-6">
                 <li>
-                  <span className="block h-4 w-16 rounded-md bg-contrast-100" />
+                  <span className="bg-contrast-100 block h-4 w-16 rounded-md" />
                 </li>
                 <li>
-                  <span className="block h-4 w-12 rounded-md bg-contrast-100" />
+                  <span className="bg-contrast-100 block h-4 w-12 rounded-md" />
                 </li>
                 <li>
-                  <span className="block h-4 w-24 rounded-md bg-contrast-100" />
+                  <span className="bg-contrast-100 block h-4 w-24 rounded-md" />
                 </li>
                 <li>
-                  <span className="block h-4 w-16 rounded-md bg-contrast-100" />
+                  <span className="bg-contrast-100 block h-4 w-16 rounded-md" />
                 </li>
               </ul>
             }
@@ -455,15 +455,15 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                 <NavigationMenu.Item key={i} value={i.toString()}>
                   <NavigationMenu.Trigger asChild>
                     <Link
-                      className="hidden items-center whitespace-nowrap rounded-xl bg-[var(--nav-link-background,transparent)] p-2.5 font-[family-name:var(--nav-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-link-text,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors duration-200 hover:bg-[var(--nav-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
+                      className="hidden items-center rounded-xl bg-(--nav-link-background,transparent) p-2.5 font-(family-name:--nav-link-font-family,var(--font-family-body)) text-sm font-medium whitespace-nowrap text-(--nav-link-text,var(--foreground)) ring-(--nav-focus,var(--primary)) transition-colors duration-200 hover:bg-(--nav-link-background-hover,var(--contrast-100)) hover:text-(--nav-link-text-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0 @4xl:inline-flex"
                       href={item.href}
                     >
                       {item.label}
                     </Link>
                   </NavigationMenu.Trigger>
                   {item.groups != null && item.groups.length > 0 && (
-                    <NavigationMenu.Content className="rounded-2xl bg-[var(--nav-menu-background,hsl(var(--background)))] shadow-xl ring-1 ring-[var(--nav-menu-border,hsl(var(--foreground)/5%))]">
-                      <div className="m-auto grid w-full max-w-screen-lg grid-cols-5 justify-center gap-5 px-5 pb-8 pt-5">
+                    <NavigationMenu.Content className="rounded-2xl bg-(--nav-menu-background,var(--background)) shadow-xl ring-1 ring-(--nav-menu-border,color-mix(in_oklab,var(--foreground)_95%,transparent))">
+                      <div className="m-auto grid w-full max-w-screen-lg grid-cols-5 justify-center gap-5 px-5 pt-5 pb-8">
                         {item.groups.map((group, columnIndex) => (
                           <ul className="flex flex-col" key={columnIndex}>
                             {/* Second Level Links */}
@@ -483,7 +483,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                               // Third Level Links
                               <li key={idx}>
                                 <Link
-                                  className="block rounded-lg bg-[var(--nav-sub-link-background,transparent)] px-3 py-1.5 font-[family-name:var(--nav-sub-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-sub-link-text,hsl(var(--contrast-500)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-sub-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-sub-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
+                                  className="block rounded-lg bg-(--nav-sub-link-background,transparent) px-3 py-1.5 font-(family-name:--nav-sub-link-font-family,var(--font-family-body)) text-sm font-medium text-(--nav-sub-link-text,var(--contrast-500)) ring-(--nav-focus,var(--primary)) transition-colors hover:bg-(--nav-sub-link-background-hover,var(--contrast-100)) hover:text-(--nav-sub-link-text-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0"
                                   href={link.href}
                                 >
                                   {link.label}
@@ -510,7 +510,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         >
           {searchAction ? (
             <Popover.Root onOpenChange={setIsSearchOpen} open={isSearchOpen}>
-              <Popover.Anchor className="absolute left-0 right-0 top-full" />
+              <Popover.Anchor className="absolute top-full right-0 left-0" />
               <Popover.Trigger asChild>
                 <button
                   aria-label={openSearchPopupLabel}
@@ -523,8 +523,8 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                 </button>
               </Popover.Trigger>
               <Popover.Portal>
-                <Popover.Content className="max-h-[calc(var(--radix-popover-content-available-height)-16px)] w-[var(--radix-popper-anchor-width)] py-2 @container data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
-                  <div className="flex max-h-[inherit] flex-col rounded-2xl bg-[var(--nav-search-background,hsl(var(--background)))] shadow-xl ring-1 ring-[var(--nav-search-border,hsl(var(--foreground)/5%))] transition-all duration-200 ease-in-out @4xl:inset-x-0">
+                <Popover.Content className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @container max-h-[calc(var(--radix-popover-content-available-height)-16px)] w-[var(--radix-popper-anchor-width)] py-2">
+                  <div className="flex max-h-[inherit] flex-col rounded-2xl bg-(--nav-search-background,var(--background)) shadow-xl ring-1 ring-(--nav-search-border,color-mix(in_oklab,var(--foreground)_95%,transparent)) transition-all duration-200 ease-in-out @4xl:inset-x-0">
                     <SearchForm
                       searchAction={searchAction}
                       searchCtaLabel={searchCtaLabel}
@@ -549,14 +549,14 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             <ShoppingBag size={20} strokeWidth={1} />
             <Stream
               fallback={
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 animate-pulse items-center justify-center rounded-full bg-contrast-100 text-xs text-background" />
+                <span className="bg-contrast-100 text-background absolute -top-0.5 -right-0.5 flex h-4 w-4 animate-pulse items-center justify-center rounded-full text-xs" />
               }
               value={streamableCartCount}
             >
               {(cartCount) =>
                 cartCount != null &&
                 cartCount > 0 && (
-                  <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[var(--nav-cart-count-background,hsl(var(--foreground)))] font-[family-name:var(--nav-cart-count-font-family,var(--font-family-body))] text-xs text-[var(--nav-cart-count-text,hsl(var(--background)))]">
+                  <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-(--nav-cart-count-background,var(--foreground)) font-(family-name:--nav-cart-count-font-family,var(--font-family-body)) text-xs text-(--nav-cart-count-text,var(--background))">
                     {cartCount}
                   </span>
                 )
@@ -599,8 +599,8 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </div>
       </div>
 
-      <div className="perspective-[2000px] absolute left-0 right-0 top-full z-50 flex w-full justify-center">
-        <NavigationMenu.Viewport className="relative mt-2 w-full data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95" />
+      <div className="absolute top-full right-0 left-0 z-50 flex w-full justify-center perspective-[2000px]">
+        <NavigationMenu.Viewport className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 relative mt-2 w-full" />
       </div>
     </NavigationMenu.Root>
   );
@@ -667,12 +667,12 @@ function SearchForm<S extends SearchResult>({
         onSubmit={handleSubmit}
       >
         <SearchIcon
-          className="hidden shrink-0 text-[var(--nav-search-icon,hsl(var(--contrast-500)))] @xl:block"
+          className="hidden shrink-0 text-(--nav-search-icon,var(--contrast-500)) @xl:block"
           size={20}
           strokeWidth={1}
         />
         <input
-          className="grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-none @xl:pl-0"
+          className="grow bg-transparent pl-2 text-lg font-medium outline-0 focus-visible:outline-hidden @xl:pl-0"
           name={searchParamName}
           onChange={(e) => {
             setQuery(e.currentTarget.value);
@@ -738,7 +738,7 @@ function SearchResults({
     if (stale) return null;
 
     return (
-      <div className="flex flex-col border-t border-[var(--nav-search-divider,hsl(var(--contrast-100)))] p-6">
+      <div className="flex flex-col border-t border-(--nav-search-divider,var(--contrast-100)) p-6">
         {errors.map((error) => (
           <FormStatus key={error} type="error">
             {error}
@@ -752,11 +752,11 @@ function SearchResults({
     if (stale) return null;
 
     return (
-      <div className="flex flex-col border-t border-[var(--nav-search-divider,hsl(var(--contrast-100)))] p-6">
-        <p className="text-2xl font-medium text-[var(--nav-search-empty-title,hsl(var(--foreground)))]">
+      <div className="flex flex-col border-t border-(--nav-search-divider,var(--contrast-100)) p-6">
+        <p className="text-2xl font-medium text-(--nav-search-empty-title,var(--foreground))">
           {emptySearchTitle}
         </p>
-        <p className="text-[var(--nav-search-empty-subtitle,hsl(var(--contrast-500)))]">
+        <p className="text-(--nav-search-empty-subtitle,var(--contrast-500))">
           {emptySearchSubtitle}
         </p>
       </div>
@@ -766,7 +766,7 @@ function SearchResults({
   return (
     <div
       className={clsx(
-        'flex flex-1 flex-col overflow-y-auto border-t border-[var(--nav-search-divider,hsl(var(--contrast-100)))] @2xl:flex-row',
+        'flex flex-1 flex-col overflow-y-auto border-t border-(--nav-search-divider,var(--contrast-100)) @2xl:flex-row',
         stale && 'opacity-50',
       )}
     >
@@ -776,17 +776,17 @@ function SearchResults({
             return (
               <section
                 aria-label={result.title}
-                className="flex w-full flex-col gap-1 border-b border-[var(--nav-search-divider,hsl(var(--contrast-100)))] p-5 @2xl:max-w-80 @2xl:border-b-0 @2xl:border-r"
+                className="flex w-full flex-col gap-1 border-b border-(--nav-search-divider,var(--contrast-100)) p-5 @2xl:max-w-80 @2xl:border-r @2xl:border-b-0"
                 key={`result-${index}`}
               >
-                <h3 className="mb-4 font-[family-name:var(--nav-search-result-title-font-family,var(--font-family-mono))] text-sm uppercase text-[var(--nav-search-result-title,hsl(var(--foreground)))]">
+                <h3 className="mb-4 font-(family-name:--nav-search-result-title-font-family,var(--font-family-mono)) text-sm text-(--nav-search-result-title,var(--foreground)) uppercase">
                   {result.title}
                 </h3>
                 <ul role="listbox">
                   {result.links.map((link, i) => (
                     <li key={i}>
                       <Link
-                        className="block rounded-lg bg-[var(--nav-search-result-link-background,transparent)] px-3 py-4 font-[family-name:var(--nav-search-result-link-font-family,var(--font-family-body))] font-semibold text-[var(--nav-search-result-link-text,hsl(var(--contrast-500)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-search-result-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-search-result-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
+                        className="block rounded-lg bg-(--nav-search-result-link-background,transparent) px-3 py-4 font-(family-name:--nav-search-result-link-font-family,var(--font-family-body)) font-semibold text-(--nav-search-result-link-text,var(--contrast-500)) ring-(--nav-focus,var(--primary)) transition-colors hover:bg-(--nav-search-result-link-background-hover,var(--contrast-100)) hover:text-(--nav-search-result-link-text-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0"
                         href={link.href}
                       >
                         {link.label}
@@ -802,10 +802,10 @@ function SearchResults({
             return (
               <section
                 aria-label={result.title}
-                className="flex w-full flex-col gap-5 p-5 @container"
+                className="@container flex w-full flex-col gap-5 p-5"
                 key={`result-${index}`}
               >
-                <h3 className="font-[family-name:var(--nav-search-result-title-font-family,var(--font-family-mono))] text-sm uppercase text-[var(--nav-search-result-title,hsl(var(--foreground)))]">
+                <h3 className="font-(family-name:--nav-search-result-title-font-family,var(--font-family-mono)) text-sm text-(--nav-search-result-title,var(--foreground)) uppercase">
                   {result.title}
                 </h3>
                 <ul
@@ -874,16 +874,15 @@ function LocaleForm({
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           align="end"
-          className="z-50 max-h-80 overflow-y-scroll rounded-xl bg-[var(--nav-locale-background,hsl(var(--background)))] p-2 shadow-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
+          className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-50 max-h-80 overflow-y-auto rounded-xl bg-(--nav-locale-background,var(--background)) p-2 shadow-xl @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
           sideOffset={16}
         >
           {locales.map(({ id, label }) => (
             <DropdownMenu.Item
               className={clsx(
-                'cursor-default rounded-lg bg-[var(--nav-locale-link-background,transparent)] px-2.5 py-2 font-[family-name:var(--nav-locale-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-locale-link-text,hsl(var(--contrast-400)))] outline-none ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-locale-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-locale-link-text-hover,hsl(var(--foreground)))]',
+                'cursor-default rounded-lg bg-(--nav-locale-link-background,transparent) px-2.5 py-2 font-(family-name:--nav-locale-link-font-family,var(--font-family-body)) text-sm font-medium text-(--nav-locale-link-text,var(--contrast-400)) ring-(--nav-focus,var(--primary)) outline-hidden transition-colors hover:bg-(--nav-locale-link-background-hover,var(--contrast-100)) hover:text-(--nav-locale-link-text-hover,var(--foreground))',
                 {
-                  'text-[var(--nav-locale-link-text-selected,hsl(var(--foreground)))]':
-                    id === activeLocaleId,
+                  'text-(--nav-locale-link-text-selected,var(--foreground))': id === activeLocaleId,
                 },
               )}
               key={id}
@@ -941,15 +940,15 @@ function CurrencyForm({
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           align="end"
-          className="z-50 max-h-80 overflow-y-scroll rounded-xl bg-[var(--nav-locale-background,hsl(var(--background)))] p-2 shadow-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
+          className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-50 max-h-80 overflow-y-auto rounded-xl bg-(--nav-locale-background,var(--background)) p-2 shadow-xl @4xl:w-32 @4xl:rounded-2xl @4xl:p-2"
           sideOffset={16}
         >
           {currencies.map((currency) => (
             <DropdownMenu.Item
               className={clsx(
-                'cursor-default rounded-lg bg-[var(--nav-locale-link-background,transparent)] px-2.5 py-2 font-[family-name:var(--nav-locale-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-locale-link-text,hsl(var(--contrast-400)))] outline-none ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-locale-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-locale-link-text-hover,hsl(var(--foreground)))]',
+                'cursor-default rounded-lg bg-(--nav-locale-link-background,transparent) px-2.5 py-2 font-(family-name:--nav-locale-link-font-family,var(--font-family-body)) text-sm font-medium text-(--nav-locale-link-text,var(--contrast-400)) ring-(--nav-focus,var(--primary)) outline-hidden transition-colors hover:bg-(--nav-locale-link-background-hover,var(--contrast-100)) hover:text-(--nav-locale-link-text-hover,var(--foreground))',
                 {
-                  'text-[var(--nav-locale-link-text-selected,hsl(var(--foreground)))]':
+                  'text-(--nav-locale-link-text-selected,var(--foreground))':
                     currency.id === activeCurrencyId,
                 },
               )}

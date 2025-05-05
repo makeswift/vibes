@@ -36,10 +36,10 @@ export interface CardCarouselProps {
  *
  * ```css
  * :root {
- *   --card-carousel-light-empty-title: hsl(var(--foreground));
- *   --card-carousel-light-empty-subtitle: hsl(var(--contrast-500));
- *   --card-carousel-dark-empty-title: hsl(var(--background));
- *   --card-carousel-dark-empty-subtitle: hsl(var(--contrast-100));
+ *   --card-carousel-light-empty-title: var(--foreground);
+ *   --card-carousel-light-empty-subtitle: var(--contrast-500);
+ *   --card-carousel-dark-empty-title: var(--background);
+ *   --card-carousel-dark-empty-subtitle: var(--contrast-100);
  * }
  * ```
  */
@@ -144,7 +144,7 @@ export function CardCarouselSkeleton({
       </div>
       <div className="mt-10 flex w-full items-center justify-between gap-8">
         <Skeleton.Box className="h-1 w-full max-w-56 rounded" />
-        <div className="flex gap-2 text-contrast-200">
+        <div className="flex gap-2">
           <Skeleton.Icon icon={<ArrowLeft aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
           <Skeleton.Icon icon={<ArrowRight aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
         </div>
@@ -183,14 +183,14 @@ export function CardCarouselEmptyState({
           ))}
         </div>
       </div>
-      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pt-28 @4xl:pb-10">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
           <h3
             className={clsx(
-              '@4x:leading-none font-heading text-2xl leading-tight @4xl:text-4xl',
+              'font-heading text-2xl leading-tight @4xl:text-4xl',
               {
-                light: 'text-[var(--card-carousel-light-empty-title,hsl(var(--foreground)))]',
-                dark: 'text-[var(--card-carousel-dark-empty-title,hsl(var(--background)))]',
+                light: 'text-(--card-carousel-light-empty-title,var(--foreground))',
+                dark: 'text-(--card-carousel-dark-empty-title,var(--background))',
               }[carouselColorScheme],
             )}
           >
@@ -200,8 +200,8 @@ export function CardCarouselEmptyState({
             className={clsx(
               'text-sm @4xl:text-lg',
               {
-                light: 'text-[var(--card-carousel-light-empty-subtitle,hsl(var(--contrast-500)))]',
-                dark: 'text-[var(--card-carousel-dark-empty-subtitle,hsl(var(--contrast-200)))]',
+                light: 'text-(--card-carousel-light-empty-subtitle,var(--contrast-500))',
+                dark: 'text-(--card-carousel-dark-empty-subtitle,var(--contrast-200))',
               }[carouselColorScheme],
             )}
           >

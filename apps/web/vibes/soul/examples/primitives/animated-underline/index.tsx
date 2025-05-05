@@ -8,7 +8,7 @@ export default function Preview() {
       <div className="max-w-80">
         <p className="mb-6">
           This is text with an{' '}
-          <Link className="group/underline focus:outline-none" href="/">
+          <Link className="group/underline focus:outline-hidden" href="/">
             <AnimatedUnderline>animated link</AnimatedUnderline>
           </Link>{' '}
           inside.

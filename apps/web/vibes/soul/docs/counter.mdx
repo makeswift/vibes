@@ -37,15 +37,15 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --counter-focus: hsl(var(--primary));
-  --counter-font-family: var(--font-family-body);
-  --counter-background: hsl(var(--background));
-  --counter-background-hover: hsl(var(--contrast-100) / 50%);
-  --counter-border: hsl(var(--contrast-100));
-  --counter-text: hsl(var(--foreground));
-  --counter-icon-hover: hsl(var(--foreground));
-  --counter-icon: hsl(var(--contrast-300));
+    --counter-focus: var(--primary);
+    --counter-font-family: var(--font-family-body);
+    --counter-background: var(--background);
+    --counter-background-hover: color-mix(in oklab, var(--contrast-100) 50%, transparent);
+    --counter-border: var(--contrast-100);
+    --counter-text: var(--foreground);
+    --counter-icon-hover: var(--foreground);
+    --counter-icon: var(--contrast-300);
 }
-```
+`}</CodeBlock>

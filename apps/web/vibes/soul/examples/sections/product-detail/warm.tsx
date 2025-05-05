@@ -35,60 +35,60 @@ export const product = {
   title: 'Mini Bar Bag',
   price: '$60',
   image: {
-    src: 'https://rstr.in/monogram/vibes/5IdIE27Cj9r',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
     alt: 'A close-up of a bicycle handlebar with a brown handlebar bag.',
   },
   images: [
     {
-      src: 'https://rstr.in/monogram/vibes/5IdIE27Cj9r',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
       alt: 'A close-up of a bicycle handlebar with a brown handlebar bag.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/3dmqcoTLHrK',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo2ODNhNDE4YS02ZjZhLTQ5ZDQtYTUzMS04MzVkNjZjMDczMTE=/mini-bar-bag-4.jpeg',
       alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/D9gxhIajApp',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyZDc5ZTFhOS1lNDcxLTRhYTYtODQ2Mi0yNmRjOWVjZDhiYTg=/mini-bar-bag-5.jpeg',
       alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/T9YaFuqsEWp',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTphNmEyY2RmMi0wNzhhLTQwNzktOTEwMS0zYzE2M2JhMDk4ZWU=/mini-bar-bag-6.jpeg',
       alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/Nsj4qcMks2D',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpjMzU2N2ExNy1kOGM2LTQzNzAtOWRkMC02YjEyNzZmNjA2MTg=/mini-bar-bag-7.jpeg',
       alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/uuhJbt607Ve',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozYmFjMWQ1NC03Nzk0LTQ4NzMtOTIzOC0yNGRjY2RlN2YxNDA=/mini-bar-bag-8.jpeg',
       alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/MIh7shsUtXg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo5YmU4Y2QwNC1mMDFiLTQxYWEtODJlNy02OTk5N2IwNjEyYWY=/mini-bar-bag-9.jpeg',
       alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/44Z0ObxFdrL',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyNGFjNmExZi0xYjEzLTQ4NDQtODFjYS1lNzNmZjNkOTVmY2U=/mini-bar-bag-10.jpeg',
       alt: 'A close-up of a black road bike with white bar tape and a brown handlebar bag.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/yl3MSuQta1C',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToxNmU0YTFhZC0wODM4LTQ3YzQtYjNkNy0zMThhYzZlOTFkODc=/mini-bar-bag-11.jpeg',
       alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/RJr9FNVonZG',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpjZmNhOWRlMy05NjI4LTRkNDMtYTc1OC00MjUzMTNkZjc3ODk=/mini-bar-bag-12.jpeg',
       alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/EVfQoHIUYf2',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyZGM1NThjZS01MjI3LTRlMzktOGQ4Ni1lNzU1OWJhMTkwN2Y=/mini-bar-bag-13.jpeg',
       alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/h1YtCgM_Jqx',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpjMzY1YzM0YS01YmE5LTQ2ODMtOTNjNy05NmEwMTNjOTgyNmM=/mini-bar-bag-14.jpeg',
       alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/INqNEFs7p_o',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkODMyOWM4OC01MjRmLTRhZWItYWIwYS0yZDg0MGQ3ZTQzYzg=/mini-bar-bag-15.jpeg',
       alt: 'A close-up of a bicycle handlebar with a red handlebar bag attached.',
     },
   ],

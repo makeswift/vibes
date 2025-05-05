@@ -7,14 +7,14 @@ import { CheckCircle, CircleAlert } from 'lucide-react';
  *
  * ```css
  *  :root {
- *    --form-status-light-background-error: color-mix(in oklab, hsl(var(--error)), white 75%);
- *    --form-status-light-text-error: color-mix(in oklab, hsl(var(--error)), black 75%);
- *    --form-status-light-background-success: color-mix(in oklab, hsl(var(--success)), white 75%);
- *    --form-status-light-text-success: color-mix(in oklab, hsl(var(--success)), black 75%);
- *    --form-status-dark-background-error: color-mix(in oklab, hsl(var(--error)), white 75%);
- *    --form-status-dark-text-error: color-mix(in oklab, hsl(var(--error)), black 75%);
- *    --form-status-dark-background-success: color-mix(in oklab, hsl(var(--success)), white 75%);
- *    --form-status-dark-text-success: color-mix(in oklab, hsl(var(--success)), black 75%);
+ *    --form-status-light-background-error: var(--error-highlight);
+ *    --form-status-light-text-error: var(--error-shadow);
+ *    --form-status-light-background-success: var(--success-highlight);
+ *    --form-status-light-text-success: var(--success-shadow);
+ *    --form-status-dark-background-error: var(--error-highlight);
+ *    --form-status-dark-text-error: var(--error-shadow);
+ *    --form-status-dark-background-success: var(--success-highlight);
+ *    --form-status-dark-text-success: var(--success-shadow);
  *  }
  * ```
  */
@@ -36,15 +36,15 @@ export function FormStatus({
         {
           light: {
             error:
-              'bg-[var(--form-status-light-background-error,color-mix(in_oklab,hsl(var(--error)),white_75%))] text-[var(--form-status-light-text-error,color-mix(in_oklab,hsl(var(--error)),black_75%))]',
+              'bg-(--form-status-light-background-error,var(--error-highlight)) text-(--form-status-light-text-error,var(--error-shadow))',
             success:
-              'bg-[var(--form-status-light-background-success,color-mix(in_oklab,hsl(var(--success)),white_75%))] text-[var(--form-status-light-text-success,color-mix(in_oklab,hsl(var(--success)),black_75%))]',
+              'bg-(--form-status-light-background-success,var(--success-highlight)) text-(--form-status-light-text-success,var(--success-shadow))',
           }[type],
           dark: {
             error:
-              'bg-[var(--form-status-dark-background-error,color-mix(in_oklab,hsl(var(--error)),white_60%))] text-[var(--form-status-dark-text-error,color-mix(in_oklab,hsl(var(--error)),black_60%))]',
+              'bg-(--form-status-dark-background-error,var(--error-highlight)) text-(--form-status-dark-text-error,var(--error-shadow))',
             success:
-              'bg-[var(--form-status-dark-background-success,color-mix(in_oklab,hsl(var(--success)),white_60%))] text-[var(--form-status-dark-text-success,color-mix(in_oklab,hsl(var(--success)),black_60%))]',
+              'bg-(--form-status-dark-background-success,var(--success-highlight)) text-(--form-status-dark-text-success,var(--success-shadow))',
           }[type],
         }[colorScheme],
         className,

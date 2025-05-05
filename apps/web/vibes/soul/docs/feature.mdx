@@ -27,7 +27,7 @@ function Usage() {
 
 export const feature: FeatureProps = {
     image: {
-      src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowODYwYTY2NC02NjdjLTRhODYtYTUxYy1jOWExNzI5YTdjMDk=/everyday-tote.jpeg',
       alt: 'string',
     },
     title: 'Where Every Ride Meets Perfect Fit.',
@@ -72,13 +72,13 @@ export const feature: FeatureProps = {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --feature-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
-  --feature-image-background: hsl(var(--primary) / 10%);
-  --feature-title-font-family: var(--font-family-heading);
-  --feature-font-family: var(--font-family-body);
-  --feature-title: hsl(var(--primary));
-  --feature-description: hsl(var(--background));
+    --feature-background: var(--primary-shadow);
+    --feature-image-background: color-mix(in oklab, var(--primary) 10%, transparent);
+    --feature-title-font-family: var(--font-family-heading);
+    --feature-font-family: var(--font-family-body);
+    --feature-title: var(--primary);
+    --feature-description: var(--background);
 }
-```
+`}</CodeBlock>

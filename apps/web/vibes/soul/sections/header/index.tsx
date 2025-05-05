@@ -17,7 +17,7 @@ export interface HeaderProps {
  *
  * ```css
  * :root {
- *   --header-background: hsl(var(--background));
+ *   --header-background: var(--background);
  * }
  * ```
  */
@@ -45,7 +45,7 @@ export function Header({ navigation, banner }: HeaderProps) {
   return (
     <div>
       {banner && <Banner ref={setBannerElement} {...banner} />}
-      <div className="bg-[var(--header-background,hsl(var(--background)))]">
+      <div className="bg-(--header-background,var(--background))">
         <Headroom
           onUnfix={() => setIsFloating(false)}
           onUnpin={() => setIsFloating(true)}

@@ -101,12 +101,14 @@ export function UpdateAccountForm({
           errors={fields.firstName.errors}
           key={fields.firstName.id}
           label={firstNameLabel}
+          placeholder={firstNameLabel}
         />
         <Input
           {...getInputProps(fields.lastName, { type: 'text' })}
           errors={fields.lastName.errors}
           key={fields.lastName.id}
           label={lastNameLabel}
+          placeholder={lastNameLabel}
         />
       </div>
       <Input
@@ -114,12 +116,14 @@ export function UpdateAccountForm({
         errors={fields.email.errors}
         key={fields.email.id}
         label={emailLabel}
+        placeholder={emailLabel}
       />
       <Input
         {...getInputProps(fields.company, { type: 'text' })}
         errors={fields.company.errors}
         key={fields.company.id}
         label={companyLabel}
+        placeholder={companyLabel}
       />
       <Button
         loading={pending}

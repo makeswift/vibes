@@ -3,7 +3,7 @@ import { Tabs } from '@/vibes/soul/primitives/tabs';
 
 export default function Preview() {
   return (
-    <div className="mx-auto max-w-3xl bg-background px-6 py-8">
+    <div className="bg-background mx-auto max-w-3xl px-6 py-8">
       <Tabs
         defaultValue="description"
         tabs={[
@@ -50,7 +50,7 @@ function TabTrackingContent() {
 function TabSpecsContent() {
   return (
     <div className="prose prose-sm max-w-none py-4">
-      <dl className="not-prose grid grid-cols-[1fr_2fr] gap-x-4 gap-y-2 text-sm text-foreground [&>dd]:font-normal [&>dt]:font-semibold">
+      <dl className="not-prose text-foreground grid grid-cols-[1fr_2fr] gap-x-4 gap-y-2 text-sm [&>dd]:font-normal [&>dt]:font-semibold">
         <dt>Dimensions</dt>
         <dd>12&quot; × 8&quot; × 4&quot; (30cm × 20cm × 10cm)</dd>
 

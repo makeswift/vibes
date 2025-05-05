@@ -14,8 +14,8 @@ export interface NotFoundProps {
  * :root {
  *   --not-found-font-family: var(--font-family-body);
  *   --not-found-title-font-family: var(--font-family-heading);
- *   --not-found-title: hsl(var(--foreground));
- *   --not-found-subtitle: hsl(var(--contrast-500));
+ *   --not-found-title: var(--foreground);
+ *   --not-found-subtitle: var(--contrast-500);
  * }
  * ```
  */
@@ -26,13 +26,11 @@ export function NotFound({
 }: NotFoundProps) {
   return (
     <SectionLayout className={className} containerSize="2xl">
-      <header className="font-[family-name:var(--not-found-font-family,var(--font-family-body))]">
-        <h1 className="mb-3 font-[family-name:var(--not-found-title-font-family,var(--font-family-heading))] text-3xl font-medium leading-none text-[var(--not-found-title,hsl(var(--foreground)))] @xl:text-4xl @4xl:text-5xl">
+      <header className="font-(family-name:--not-found-font-family,var(--font-family-body))">
+        <h1 className="mb-3 font-(family-name:--not-found-title-font-family,var(--font-family-heading)) text-3xl leading-none font-medium text-(--not-found-title,var(--foreground)) @xl:text-4xl @4xl:text-5xl">
           {title}
         </h1>
-        <p className="text-lg text-[var(--not-found-subtitle,hsl(var(--contrast-500)))]">
-          {subtitle}
-        </p>
+        <p className="text-lg text-(--not-found-subtitle,var(--contrast-500))">{subtitle}</p>
       </header>
     </SectionLayout>
   );

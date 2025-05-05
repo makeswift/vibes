@@ -38,20 +38,20 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --number-input-focus: hsl(var(--primary));
-  --number-input-light-background: hsl(var(--background));
-  --number-input-light-text: hsl(var(--foreground));
-  --number-input-light-icon: hsl(var(--contrast-300));
-  --number-input-light-icon-hover: hsl(var(--foreground));
-  --number-input-light-button-background: hsl(var(--background));
-  --number-input-light-button-background-hover: hsl(var(--contrast-100) / 50%);
-  --number-input-dark-background: hsl(var(--background));
-  --number-input-dark-text: hsl(var(--background));
-  --number-input-dark-icon: hsl(var(--contrast-300));
-  --number-input-dark-icon-hover: hsl(var(--background));
-  --number-input-dark-button-background: hsl(var(--foreground));
-  --number-input-dark-button-background-hover: hsl(var(--contrast-500) / 50%);
+    --number-input-focus: var(--primary);
+    --number-input-light-background: var(--background);
+    --number-input-light-text: var(--foreground);
+    --number-input-light-icon: var(--contrast-300);
+    --number-input-light-icon-hover: var(--foreground);
+    --number-input-light-button-background: var(--background);
+    --number-input-light-button-background-hover: var(--contrast-100) / 50%;
+    --number-input-dark-background: var(--background);
+    --number-input-dark-text: var(--background);
+    --number-input-dark-icon: var(--contrast-300);
+    --number-input-dark-icon-hover: var(--background);
+    --number-input-dark-button-background: var(--foreground);
+    --number-input-dark-button-background-hover: var(--contrast-500) / 50%;
 }
-```
+`}</CodeBlock>

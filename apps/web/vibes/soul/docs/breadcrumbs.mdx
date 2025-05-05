@@ -61,12 +61,12 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --breadcrumbs-font-family: var(--font-family-body);
-  --breadcrumbs-primary-text: hsl(var(--foreground));
-  --breadcrumbs-secondary-text: hsl(var(--contrast-500));
-  --breadcrumbs-icon: hsl(var(--contrast-500));
-  --breadcrumbs-hover: hsl(var(--primary));
+    --breadcrumbs-font-family: var(--font-family-body);
+    --breadcrumbs-primary-text: var(--foreground);
+    --breadcrumbs-secondary-text: var(--contrast-500);
+    --breadcrumbs-icon: var(--contrast-500);
+    --breadcrumbs-hover: var(--primary);
 }
-```
+`}</CodeBlock>

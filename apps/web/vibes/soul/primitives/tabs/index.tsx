@@ -22,14 +22,15 @@ export type TabsProps = ComponentPropsWithoutRef<typeof TabsPrimitive.Root> & {
  *
  * ```css
  * :root {
- *   --tabs-focus: hsl(var(--primary));
+ *   --tabs-focus: var(--primary);
  *   --tabs-font-family: var(--font-family-body);
- *   --tabs-text: hsl(var(--contrast-500));
- *   --tabs-text-hover: hsl(var(--foreground));
- *   --tabs-text-active: hsl(var(--foreground));
- *   --tabs-underline-active: hsl(var(--primary));
- *   --tabs-underline-hover: hsl(var(--contrast-200));
- *   --tabs-border: hsl(var(--contrast-100));
+ *   --tabs-text: var(--contrast-500);
+ *   --tabs-text-hover: var(--foreground);
+ *   --tabs-text-active: var(--foreground);
+ *   --tabs-underline-default: var(--contrast-200);
+ *   --tabs-underline-active: var(--primary);
+ *   --tabs-underline-hover: var(--contrast-200);
+ *   --tabs-border: var(--contrast-100);
  * }
  * ```
  */
@@ -57,7 +58,7 @@ export type TabsListProps = ComponentPropsWithRef<typeof TabsPrimitive.List>;
 function TabsList({ ref, ...props }: TabsListProps) {
   return (
     <TabsPrimitive.List
-      className="flex flex-wrap border-b border-[var(--tabs-border,hsl(var(--contrast-100)))]"
+      className="flex flex-wrap border-b border-(--tabs-border,var(--contrast-100))"
       ref={ref}
       {...props}
     />
@@ -67,7 +68,7 @@ function TabsList({ ref, ...props }: TabsListProps) {
 function TabsTrigger({ ref, ...props }: ComponentPropsWithRef<typeof TabsPrimitive.Trigger>) {
   return (
     <TabsPrimitive.Trigger
-      className='relative p-4 font-[family-name:var(--tabs-font-family,var(--font-family-body))] text-sm font-semibold text-[var(--tabs-text,hsl(var(--contrast-500)))] transition-[height,color] duration-300 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-0 after:w-full after:transition-all after:duration-300 after:ease-in-out after:content-[""] hover:text-[var(--tabs-text-hover,hsl(var(--foreground)))] after:hover:h-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--button-focus,hsl(var(--primary)))] disabled:pointer-events-none disabled:text-[var(--tabs-text,hsl(var(--contrast-500)))] data-[state=active]:text-[var(--tabs-text-active,hsl(var(--foreground)))] data-[state=active]:after:h-0.5 data-[state=active]:after:bg-[var(--tabs-underline-active,hsl(var(--primary)))] data-[state=inactive]:after:hover:bg-[var(--tabs-underline-hover,hsl(var(--contrast-100)))]'
+      className='relative p-4 font-(family-name:--tabs-font-family,var(--font-family-body)) text-sm font-semibold text-(--tabs-text,var(--contrast-500)) transition-colors duration-200 ease-linear after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-bottom after:scale-y-0 after:bg-(--tabs-underline-default,var(--contrast-200)) after:transition-all after:duration-200 after:ease-linear after:content-[""] hover:text-(--tabs-text-hover,var(--foreground)) hover:after:scale-y-100 focus-visible:ring-2 focus-visible:ring-(--tabs-focus,var(--primary)) focus-visible:outline-hidden disabled:pointer-events-none disabled:text-(--tabs-text,var(--contrast-500)) data-[state=active]:text-(--tabs-text-active,var(--foreground)) data-[state=active]:after:scale-y-100 data-[state=active]:after:bg-(--tabs-underline-active,var(--primary)) data-[state=inactive]:hover:after:bg-(--tabs-underline-hover,var(--contrast-200))'
       ref={ref}
       {...props}
     />
@@ -77,7 +78,7 @@ function TabsTrigger({ ref, ...props }: ComponentPropsWithRef<typeof TabsPrimiti
 function TabsContent({ ref, ...props }: ComponentPropsWithRef<typeof TabsPrimitive.Content>) {
   return (
     <TabsPrimitive.Content
-      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--button-focus,hsl(var(--primary)))] focus-visible:ring-offset-2"
+      className="focus-visible:ring-2 focus-visible:ring-(--tabs-focus,var(--primary)) focus-visible:ring-offset-2 focus-visible:outline-hidden"
       ref={ref}
       {...props}
     />

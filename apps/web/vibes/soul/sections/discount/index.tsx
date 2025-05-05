@@ -25,25 +25,20 @@ export interface DiscountProps {
  *
  * ```css
  * :root {
- *   --discount-focus: hsl(var(--primary));
+ *   --discount-focus: var(--primary);
  *   --discount-font-family: var(--font-family-body);
- *   --discount-background: color-mix(in oklab, hsl(var(--primary)), black 75%)
- *   --discount-image-background: hsl(var(--contrast-100));
- *   --discount-text: hsl(var(--background));
- *   --discount-spinner-background: hsl(var(--background));
- *   --discount-spinner-text: hsl(var(--foreground));
+ *   --discount-background: var(--primary-shadow);
+ *   --discount-image-background: var(--contrast-100);
+ *   --discount-text: var(--background);
+ *   --discount-spinner-background: var(--background);
+ *   --discount-spinner-text: var(--foreground);
  *   --discount-close-background: transparent;
- *   --discount-close-icon: hsl(var(--foreground)/50%);
- *   --discount-close-background-hover: hsl(var(--background)/40%);
+ *   --discount-close-icon: var(--foreground);
+ *   --discount-close-background-hover: color-mix(in oklab, var(--background) 40%, transparent);
  * }
  * ```
  */
-export const Discount = function Discount({
-  id,
-  backgroundImage,
-  discounts,
-  onDismiss,
-}: DiscountProps) {
+export function Discount({ id, backgroundImage, discounts, onDismiss }: DiscountProps) {
   const [dismissed, setDismissed] = useState(false);
   const [initialized, setInitialized] = useState(false);
   const [spin, setSpin] = useState(false);
@@ -103,7 +98,7 @@ export const Discount = function Discount({
   return (
     <section
       className={clsx(
-        'relative left-0 top-0 flex h-dvh w-full items-center justify-center bg-[var(--discount-image-background,hsl(var(--contrast-100)))] font-[family-name:var(--discount-font-family,var(--font-family-body))] text-[var(--discount-text,hsl(var(--background)))] transition-[opacity,transform] duration-300 @container',
+        '@container relative top-0 left-0 flex h-dvh w-full items-center justify-center bg-(--discount-image-background,var(--contrast-100)) font-(family-name:--discount-font-family,var(--font-family-body)) text-(--discount-text,var(--background)) transition-[opacity,translate] duration-300',
         dismissed ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100',
       )}
     >
@@ -117,7 +112,7 @@ export const Discount = function Discount({
 
       <button
         aria-label="Dismiss discount"
-        className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--discount-close-background,transparent)] text-[var(--discount-close-icon,hsl(var(--foreground)))] transition-colors duration-300 hover:bg-[var(--discount-close-background-hover,hsl(var(--background)/40%))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--discount-focus,hsl(var(--foreground)))]"
+        className="absolute top-5 right-5 flex h-8 w-8 items-center justify-center rounded-full bg-(--discount-close-background,transparent) text-(--discount-close-icon,var(--foreground)) transition-colors duration-300 hover:bg-(--discount-close-background-hover,color-mix(in_oklab,var(--background)_40%,transparent)) focus-visible:ring-2 focus-visible:ring-(--discount-focus,var(--foreground)) focus-visible:outline-hidden"
         onClick={(e) => {
           e.preventDefault();
           hideDiscount();
@@ -128,7 +123,7 @@ export const Discount = function Discount({
 
       {/* Desktop Version */}
       <button
-        className="z-10 m-5 hidden h-24 w-full max-w-4xl cursor-pointer items-center justify-between gap-10 overflow-hidden rounded-3xl bg-[var(--discount-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--button-focus,hsl(var(--primary)))] focus-visible:ring-offset-2 active:scale-[0.99] @4xl:flex"
+        className="z-10 m-5 hidden h-24 w-full max-w-4xl cursor-pointer items-center justify-between gap-10 overflow-hidden rounded-3xl bg-(--discount-background,var(--primary-shadow)) transition-transform focus-visible:ring-2 focus-visible:ring-(--button-focus,var(--primary)) focus-visible:ring-offset-2 focus-visible:outline-hidden active:scale-[0.99] @4xl:flex"
         onClick={() => {
           if (isSpun) {
             void copy();
@@ -163,7 +158,7 @@ export const Discount = function Discount({
       </div>
     </section>
   );
-};
+}
 
 interface DiscountUIProps {
   isSpun: boolean;
@@ -194,11 +189,11 @@ const DiscountUI = ({
 
   return (
     <>
-      <h2 className="flex min-h-20 w-full select-none items-center justify-center bg-[var(--discount-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] py-3 text-center text-2xl font-medium leading-none @4xl:mb-0 @4xl:justify-start @4xl:bg-transparent @4xl:px-6 @4xl:text-4xl">
+      <h2 className="flex min-h-20 w-full items-center justify-center bg-(--discount-background,var(--primary-shadow)) py-3 text-center text-2xl leading-none font-medium select-none @4xl:mb-0 @4xl:justify-start @4xl:bg-transparent @4xl:px-6 @4xl:text-4xl">
         {discountText}
       </h2>
-      <div className="flex w-full max-w-xs flex-col gap-4 rounded-b-3xl bg-[var(--discount-spinner-background,hsl(var(--background)))] px-6 pb-6 pt-4 @4xl:rounded-t-3xl @4xl:p-0">
-        <div className="relative h-[100px] w-full overflow-hidden bg-[var(--discount-spinner-background,hsl(var(--background)))] text-[var(--discount-spinner-text,hsl(var(--foreground)))] before:absolute before:left-0 before:top-0 before:z-10 before:h-8 before:w-full before:bg-gradient-to-b before:from-[var(--discount-spinner-background,hsl(var(--background)))] before:to-transparent after:absolute after:bottom-0 after:left-0 after:z-10 after:h-8 after:w-full after:bg-gradient-to-t after:from-[var(--discount-spinner-background,hsl(var(--background)))] after:to-transparent @4xl:max-w-72">
+      <div className="flex w-full max-w-xs flex-col gap-4 rounded-b-3xl bg-(--discount-spinner-background,var(--background)) px-6 pt-4 pb-6 @4xl:rounded-t-3xl @4xl:p-0">
+        <div className="relative h-[100px] w-full overflow-hidden bg-(--discount-spinner-background,var(--background)) text-(--discount-spinner-text,var(--foreground)) before:absolute before:top-0 before:left-0 before:z-10 before:h-8 before:w-full before:bg-gradient-to-b before:from-(--discount-spinner-background,var(--background)) before:to-transparent after:absolute after:bottom-0 after:left-0 after:z-10 after:h-8 after:w-full after:bg-gradient-to-t after:from-(--discount-spinner-background,var(--background)) after:to-transparent @4xl:max-w-72">
           <div
             className="absolute -top-8 left-0 w-full transition-all [transition-duration:5000ms] [transition-timing-function:cubic-bezier(0.285,-0.125,0.050,1.130)]"
             style={{
@@ -209,7 +204,7 @@ const DiscountUI = ({
           >
             {shuffledCodes.map((discount, index) => (
               <div
-                className="flex select-none items-center justify-center py-1 text-5xl font-medium uppercase leading-[1] tracking-[-1px] text-[var(--discount-spinner-text,hsl(var(--foreground)))] transition-transform duration-500 @4xl:justify-end @4xl:px-6"
+                className="flex items-center justify-center py-1 text-5xl leading-[1] font-medium tracking-[-1px] text-(--discount-spinner-text,var(--foreground)) uppercase transition-transform duration-500 select-none @4xl:justify-end @4xl:px-6"
                 key={index}
               >
                 {discount.label}
@@ -219,7 +214,7 @@ const DiscountUI = ({
         </div>
         {renderButton === true && (
           <Button
-            className="w-full select-none justify-center"
+            className="w-full justify-center select-none"
             onClick={() => {
               if (isSpun) {
                 void copy();

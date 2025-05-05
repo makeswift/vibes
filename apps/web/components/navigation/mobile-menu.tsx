@@ -35,13 +35,13 @@ export function MobileMenu({ chapter }: Props) {
         >
           <div
             className={clsx(
-              'h-0.5 w-full bg-foreground transition-transform duration-200',
+              'bg-foreground h-0.5 w-full transition-transform duration-200',
               isOpen ? 'translate-y-[5px] rotate-45' : 'translate-y-[1px] rotate-0',
             )}
           />
           <div
             className={clsx(
-              'h-0.5 bg-foreground transition-all duration-200',
+              'bg-foreground h-0.5 transition-all duration-200',
               isOpen ? 'w-full -translate-y-[5px] -rotate-45' : 'w-4/5 translate-y-[-1px] rotate-0',
             )}
           />
@@ -51,10 +51,10 @@ export function MobileMenu({ chapter }: Props) {
         <VisuallyHidden.Root>
           <SheetTitle>Groups</SheetTitle>
         </VisuallyHidden.Root>
-        <div className="space-y-4 text-foreground">
+        <div className="text-foreground space-y-4">
           {chapter.groups.map((group) => (
             <div key={group.title}>
-              <div className="pb-1.5 text-sm font-bold leading-normal">{group.title}</div>
+              <div className="pb-1.5 text-sm leading-normal font-bold">{group.title}</div>
 
               <ul>
                 {group.pages.map((page) => (

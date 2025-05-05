@@ -31,12 +31,13 @@ export interface CursorPaginationProps {
  *
  * ```css
  * :root {
- *   --cursor-pagination-focus: hsl(var(--primary));
- *   --cursor-pagination-border: hsl(var(--contrast-100));
- *   --cursor-pagination-border-hover: hsl(var(--contrast-200));
- *   --cursor-pagination-icon: hsl(var(--foreground));
- *   --cursor-pagination-background: hsl(var(--background));
- *   --cursor-pagination-background-hover: hsl(var(--contrast-100));
+ *   --cursor-pagination-focus: var(--primary);
+ *   --cursor-pagination-border: var(--contrast-100);
+ *   --cursor-pagination-border-hover: var(--contrast-200);
+ *   --cursor-pagination-icon: var(--foreground);
+ *   --cursor-pagination-background: var(--background);
+ *   --cursor-pagination-background-hover: var(--contrast-100);
+ * }
  * ```
  */
 export function CursorPagination({
@@ -67,7 +68,7 @@ export function CursorPagination({
         return (
           <nav
             aria-label={label}
-            className="py-10 text-[var(--cursor-pagination-icon,hsl(var(--foreground)))]"
+            className="py-10 text-(--cursor-pagination-icon,var(--foreground))"
             role="navigation"
           >
             <ul className="flex items-center justify-center gap-3">
@@ -85,7 +86,7 @@ export function CursorPagination({
                   </PaginationLink>
                 ) : (
                   <Skeleton.Icon
-                    className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))]"
+                    className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-(--cursor-pagination-border,var(--contrast-100))"
                     icon={<ArrowLeft size={24} strokeWidth={1} />}
                   />
                 )}
@@ -104,7 +105,7 @@ export function CursorPagination({
                   </PaginationLink>
                 ) : (
                   <Skeleton.Icon
-                    className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))]"
+                    className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-(--cursor-pagination-border,var(--contrast-100))"
                     icon={<ArrowRight size={24} strokeWidth={1} />}
                   />
                 )}
@@ -132,7 +133,7 @@ function PaginationLink({
     <Link
       aria-label={ariaLabel}
       className={clsx(
-        'flex h-12 w-12 items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))] bg-[var(--cursor-pagination-background,hsl(var(--background)))] ring-[var(--cursor-pagination-focus,hsl(var(--primary)))] transition-colors duration-300 hover:border-[var(--cursor-pagination-border-hover,hsl(var(--contrast-200)))] hover:bg-[var(--cursor-pagination-background-hover,hsl(var(--contrast-100)))] focus:outline-none focus-visible:ring-2',
+        'flex h-12 w-12 items-center justify-center rounded-full border border-(--cursor-pagination-border,var(--contrast-100)) bg-(--cursor-pagination-background,var(--background)) ring-(--cursor-pagination-focus,var(--primary)) transition-colors duration-300 hover:border-(--cursor-pagination-border-hover,var(--contrast-200)) hover:bg-(--cursor-pagination-background-hover,var(--contrast-100)) focus:outline-hidden focus-visible:ring-2',
       )}
       href={href}
       scroll={scroll}
@@ -144,14 +145,14 @@ function PaginationLink({
 
 export function CursorPaginationSkeleton() {
   return (
-    <div className="py-10 text-[var(--cursor-pagination-icon,hsl(var(--foreground)))]">
+    <div className="py-10 text-(--cursor-pagination-icon,var(--foreground))">
       <div className="flex items-center justify-center gap-3">
         <Skeleton.Icon
-          className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))]"
+          className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-(--cursor-pagination-border,var(--contrast-100))"
           icon={<ArrowLeft size={24} strokeWidth={1} />}
         />
         <Skeleton.Icon
-          className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-[var(--cursor-pagination-border,hsl(var(--contrast-100)))]"
+          className="flex h-12 w-12 cursor-not-allowed items-center justify-center rounded-full border border-(--cursor-pagination-border,var(--contrast-100))"
           icon={<ArrowRight size={24} strokeWidth={1} />}
         />
       </div>

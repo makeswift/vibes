@@ -42,21 +42,24 @@ export const product = {
   title: 'Caladium Rosebud',
   price: '$19.95',
   image: {
-    src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiZjZjY2QwMC02NWE4LTQ1YjYtODg0MS02YzRmNDlmYzIwZjE=/philodendron-brandtianum.jpeg',
     alt: 'Caladium Rosebud',
   },
   images: [
-    { src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt', alt: 'Caladium Rosebud' },
     {
-      src: 'https://rstr.in/monogram/vibes/FDRjvGlh8JT',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiZjZjY2QwMC02NWE4LTQ1YjYtODg0MS02YzRmNDlmYzIwZjE=/philodendron-brandtianum.jpeg',
+      alt: 'Caladium Rosebud',
+    },
+    {
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3ODdjZmMwNC1hMzNkLTQ0N2EtYjM0My1kMGRlNzU3MjAyMDM=/caladium-rosebud.jpeg',
       alt: 'Caladium Rosebud Detail',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/D1uDyHea7f0',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTphMDlkYzI5Yi02NjdhLTQ3MTMtYmNhYy1hMzllZGRmMzhiNjQ=/caladium-rosebud-2.jpeg',
       alt: 'Caladium Rosebud Detail',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/4xDOP4qM9cC',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1MzM5MzdlMi03YzMwLTQ2NjItOWY5YS01MWFjNGNkOWE2MjA=/caladium-rosebud-3.jpeg',
       alt: 'Caladium Rosebud Detail',
     },
   ],

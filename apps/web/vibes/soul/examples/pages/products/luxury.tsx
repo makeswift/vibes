@@ -1,8 +1,8 @@
 import { getFilters, getProducts, getSortOptions } from '@/vibes/soul/data';
 import { locales } from '@/vibes/soul/data/locales';
-import { breadcrumbs } from '@/vibes/soul/examples/sections/breadcrumbs/luxury';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury';
+import { breadcrumbs } from '@/vibes/soul/examples/sections/breadcrumbs/luxury';
 import { copyright, footerLinks, logo } from '@/vibes/soul/examples/sections/footer/luxury';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';

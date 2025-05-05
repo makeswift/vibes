@@ -1,4 +1,4 @@
-export const Amex = function Amex() {
+export function Amex() {
   return (
     <svg
       aria-label="Amex"
@@ -18,9 +18,9 @@ export const Amex = function Amex() {
       />
     </svg>
   );
-};
+}
 
-export const ApplePay = function ApplePay() {
+export function ApplePay() {
   return (
     <svg
       aria-label="Apple Pay"
@@ -40,9 +40,9 @@ export const ApplePay = function ApplePay() {
       />
     </svg>
   );
-};
+}
 
-export const Bitcoin = function Bitcoin() {
+export function Bitcoin() {
   return (
     <svg
       aria-label="Bitcoin"
@@ -62,9 +62,9 @@ export const Bitcoin = function Bitcoin() {
       />
     </svg>
   );
-};
+}
 
-export const GooglePay = function GooglePay() {
+export function GooglePay() {
   return (
     <svg
       aria-label="GooglePay"
@@ -100,9 +100,9 @@ export const GooglePay = function GooglePay() {
       />
     </svg>
   );
-};
+}
 
-export const Mastercard = function Mastercard() {
+export function Mastercard() {
   return (
     <svg
       aria-label="Mastercard"
@@ -134,9 +134,9 @@ export const Mastercard = function Mastercard() {
       />
     </svg>
   );
-};
+}
 
-export const Paypal = function Paypal() {
+export function Paypal() {
   return (
     <svg
       aria-label="Paypal"
@@ -178,9 +178,9 @@ export const Paypal = function Paypal() {
       />
     </svg>
   );
-};
+}
 
-export const Visa = function Visa() {
+export function Visa() {
   return (
     <svg
       aria-label="Visa"
@@ -200,4 +200,4 @@ export const Visa = function Visa() {
       />
     </svg>
   );
-};
+}

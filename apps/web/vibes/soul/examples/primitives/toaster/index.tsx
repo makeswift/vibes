@@ -5,7 +5,7 @@ import { toast } from '@/vibes/soul/primitives/toaster';
 
 export default function Preview() {
   return (
-    <div className="bg-background p-8 @container">
+    <div className="bg-background @container p-8">
       <div className="mx-auto flex max-w-screen-md flex-col items-center gap-8">
         <Button onClick={() => toast.success('Success')} variant="primary">
           Success Toast

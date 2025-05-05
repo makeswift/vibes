@@ -88,7 +88,7 @@ export function CouponCodeForm({
   });
 
   return (
-    <div className="border-[var(--cart-border: var(--contrast-100),hsl(var(--contrast-100)))] space-y-2 border-t pb-5 pt-4">
+    <div className="space-y-2 border-t border-(--cart-border,var(--contrast-100)) pt-4 pb-5">
       <form {...getFormProps(form)} action={formAction} className="space-y-2">
         <label htmlFor={fields.couponCode.id}>{label}</label>
         <div className="flex gap-1.5">

@@ -17,6 +17,8 @@ export interface SignInProps {
   forgotPasswordHref: string;
   forgotPasswordLabel?: string;
   signUpHref?: string;
+  emailPlaceholder?: string;
+  passwordPlaceholder?: string;
 }
 
 /**
@@ -27,8 +29,8 @@ export interface SignInProps {
  * :root {
  *   --sign-in-font-family: var(--font-family-body);
  *   --sign-in-title-font-family: var(--font-family-heading);
- *   --sign-in-title: hsl(var(--foreground));
- *   --sign-in-description: hsl(var(--contrast-500));
+ *   --sign-in-title: var(--foreground);
+ *   --sign-in-description: var(--contrast-500);
  * }
  * ```
  */
@@ -50,34 +52,38 @@ export function SignIn({
   forgotPasswordHref = '/forgot-password',
   forgotPasswordLabel = 'Forgot your password?',
   signUpHref = '/sign-up',
+  emailPlaceholder = 'Enter your email',
+  passwordPlaceholder = 'Enter your password',
 }: SignInProps) {
   return (
     <div className="@container">
       <div className="flex flex-col justify-center gap-y-24 px-3 py-10 @xl:flex-row @xl:px-6 @4xl:py-20 @5xl:px-20">
         <div className="w-full @xl:max-w-md @xl:border-r @xl:pr-10 @4xl:pr-20">
-          <h1 className="mb-10 font-[family-name:var(--sign-in-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--reset-password-title,hsl(var(--foreground)))] @xl:text-5xl">
+          <h1 className="mb-10 font-(family-name:--sign-in-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--sign-in-title,var(--foreground)) @xl:text-5xl">
             {title}
           </h1>
           <SignInForm
             action={action}
             emailLabel={emailLabel}
+            emailPlaceholder={emailPlaceholder}
             passwordLabel={passwordLabel}
+            passwordPlaceholder={passwordPlaceholder}
             submitLabel={submitLabel}
           />
-          <Link className="group/underline focus:outline-none" href={forgotPasswordHref}>
+          <Link className="group/underline focus:outline-hidden" href={forgotPasswordHref}>
             <AnimatedUnderline className="mt-4 block w-fit text-sm font-semibold">
               {forgotPasswordLabel}
             </AnimatedUnderline>
           </Link>
         </div>
         <div className="flex w-full flex-col @xl:max-w-md @xl:pl-10 @4xl:pl-20">
-          <div className="font-[family-name:var(--sign-in-font-family,var(--font-family-body))]">
-            <h2 className="mb-10 font-[family-name:var(--sign-in-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--reset-password-title,hsl(var(--foreground)))] @xl:text-5xl">
+          <div className="font-(family-name:--sign-in-font-family,var(--font-family-body))">
+            <h2 className="mb-10 font-(family-name:--sign-in-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--sign-in-title,var(--foreground)) @xl:text-5xl">
               {signUpTitle}
             </h2>
-            <div className="text-[var(--sign-in-description,hsl(var(--contrast-500)))]">
+            <div className="text-(--sign-in-description,var(--contrast-500))">
               <p>{signUpDescription}</p>
-              <ul className="mb-10 ml-4 mt-4 list-disc">
+              <ul className="mt-4 mb-10 ml-4 list-disc">
                 {signUpBenefits.map((benefit, idx) => (
                   <li key={idx}>{benefit}</li>
                 ))}

@@ -101,7 +101,7 @@ export default function Preview() {
         action={action}
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         image={{
-          src: 'https://rstr.in/monogram/vibes/m12FEyfnuDl',
+          src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiZTZmZGU0OC1jYWEzLTRmNzUtYTFhNy03NzNlNThiMTJlZWE=/lady-with-plant.jpeg',
           alt: 'Lady with plant',
         }}
         title="Sign up for our newsletter"

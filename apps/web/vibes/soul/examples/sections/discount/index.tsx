@@ -28,7 +28,7 @@ export default function Preview() {
     <>
       {!hidden && (
         <Discount
-          backgroundImage="https://rstr.in/monogram/vibes/-ZKYHmBgOcN"
+          backgroundImage="https://storage.googleapis.com/s.mkswft.com/RmlsZTpiMjMxMjAyZS05MDFjLTRjY2YtYWNiYS02ZmY1ZWQxZTVlZGQ=/electric-discount.jpeg"
           discounts={[
             {
               label: '20% off',

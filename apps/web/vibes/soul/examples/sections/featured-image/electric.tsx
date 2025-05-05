@@ -5,7 +5,7 @@ export const featuredImage: FeaturedImageProps = {
   description:
     'Whether you’re a seasoned plant parent or just starting, we have the perfect plants to suit your home and lifestyle.',
   image: {
-    src: 'https://rstr.in/monogram/vibes/J7ckF24ZWrQ',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozNmE5ZjQ1Ny0zOTg1LTRiZjgtYTBhZS1iNzU5NTZlM2NhMzg=/plant-curled-leaf.jpeg',
     alt: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },

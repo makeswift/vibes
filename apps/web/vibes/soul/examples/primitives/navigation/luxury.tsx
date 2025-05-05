@@ -11,7 +11,7 @@ export default function Preview() {
   );
 
   return (
-    <div className="relative min-h-screen bg-contrast-100 p-4">
+    <div className="bg-contrast-100 relative min-h-screen p-4">
       <Navigation
         accountHref="#"
         activeLocaleId="en"

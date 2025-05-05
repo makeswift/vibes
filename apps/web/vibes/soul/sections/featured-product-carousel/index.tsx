@@ -32,8 +32,8 @@ export interface FeaturedProductCarouselProps {
  * :root {
  *   --featured-product-carousel-font-family: var(--font-family-body);
  *   --featured-product-carousel-title-font-family: var(--font-family-heading);
- *   --featured-product-carousel-title: hsl(var(--foreground));
- *   --featured-product-carousel-description: hsl(var(--contrast-500));
+ *   --featured-product-carousel-title: var(--foreground);
+ *   --featured-product-carousel-description: var(--contrast-500);
  * }
  * ```
  */
@@ -53,18 +53,18 @@ export function FeaturedProductCarousel({
   return (
     <SectionLayout containerSize="2xl">
       <div className="mb-6 flex w-full flex-row flex-wrap items-end justify-between gap-x-8 gap-y-6 @4xl:mb-8">
-        <header className="font-[family-name:var(--featured-product-carousel-font-family,var(--font-family-body))]">
-          <h2 className="font-[family-name:var(--featured-product-carousel-title-font-family,var(--font-family-heading))] text-2xl leading-none text-[var(--featured-product-carousel-title,hsl(var(--foreground)))] @xl:text-3xl @4xl:text-4xl">
+        <header className="font-(family-name:--featured-product-carousel-font-family,var(--font-family-body))">
+          <h2 className="font-(family-name:--featured-product-carousel-title-font-family,var(--font-family-heading)) text-2xl leading-none text-(--featured-product-carousel-title,var(--foreground)) @xl:text-3xl @4xl:text-4xl">
             {title}
           </h2>
           {description != null && description !== '' && (
-            <p className="mt-3 max-w-xl leading-relaxed text-[var(--featured-product-carousel-description,hsl(var(--contrast-500)))]">
+            <p className="mt-3 max-w-xl leading-relaxed text-(--featured-product-carousel-description,var(--contrast-500))">
               {description}
             </p>
           )}
         </header>
         {cta != null && cta.href !== '' && cta.label !== '' && (
-          <Link className="group/underline focus:outline-none" href={cta.href}>
+          <Link className="group/underline focus:outline-hidden" href={cta.href}>
             <AnimatedUnderline className="mr-3">{cta.label}</AnimatedUnderline>
           </Link>
         )}

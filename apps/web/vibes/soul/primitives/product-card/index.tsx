@@ -37,15 +37,15 @@ export interface ProductCardProps {
  *
  * ```css
  * :root {
- *   --product-card-focus: hsl(var(--primary));
- *   --product-card-light-offset: hsl(var(--background));
- *   --product-card-light-background: hsl(var(--contrast-100));
- *   --product-card-light-title: hsl(var(--foreground));
- *   --product-card-light-subtitle: hsl(var(--foreground) / 75%);
- *   --product-card-dark-offset: hsl(var(--foreground));
- *   --product-card-dark-background: hsl(var(--contrast-500));
- *   --product-card-dark-title: hsl(var(--background));
- *   --product-card-dark-subtitle: hsl(var(--background) / 75%);
+ *   --product-card-focus: var(--primary);
+ *   --product-card-light-offset: var(--background);
+ *   --product-card-light-background: var(--contrast-100);
+ *   --product-card-light-title: var(--foreground);
+ *   --product-card-light-subtitle: color-mix(in oklab, var(--foreground) 75%, transparent);
+ *   --product-card-dark-offset: var(--foreground);
+ *   --product-card-dark-background: var(--contrast-500);
+ *   --product-card-dark-title: var(--background);
+ *   --product-card-dark-subtitle: color-mix(in oklab, var(--background) 75%, transparent);
  *   --product-card-font-family: var(--font-family-body);
  *   --product-card-border-radius: 1rem;
  * }
@@ -65,7 +65,7 @@ export function ProductCard({
   return (
     <article
       className={clsx(
-        'group w-full max-w-md font-[family-name:var(--product-card-font-family,var(--font-family-body))] @container',
+        'group @container w-full max-w-md font-(family-name:--product-card-font-family,var(--font-family-body))',
         className,
       )}
     >
@@ -73,15 +73,15 @@ export function ProductCard({
         <div className="relative">
           <div
             className={clsx(
-              'relative overflow-hidden rounded-[var(--product-card-border-radius,1rem)]',
+              'relative overflow-hidden rounded-(--product-card-border-radius,1rem)',
               {
                 '5:6': 'aspect-[5/6]',
                 '3:4': 'aspect-[3/4]',
                 '1:1': 'aspect-square',
               }[aspectRatio],
               {
-                light: 'bg-[var(--product-card-light-background,hsl(var(--contrast-100)))]',
-                dark: 'bg-[var(--product-card-dark-background,hsl(var(--contrast-500)))]',
+                light: 'bg-(--product-card-light-background,var(--contrast-100))',
+                dark: 'bg-(--product-card-dark-background,var(--contrast-500))',
               }[colorScheme],
             )}
           >
@@ -89,10 +89,10 @@ export function ProductCard({
               <Image
                 alt={image.alt}
                 className={clsx(
-                  'w-full scale-100 select-none object-cover transition-transform duration-500 ease-out group-hover:scale-110',
+                  'w-full scale-100 object-cover transition-transform duration-500 ease-out select-none group-hover:scale-110',
                   {
-                    light: 'bg-[var(--product-card-light-background,hsl(var(--contrast-100))]',
-                    dark: 'bg-[var(--product-card-dark-background,hsl(var(--contrast-500))]',
+                    light: 'bg-(--product-card-light-background,var(--contrast-100))',
+                    dark: 'bg-(--product-card-dark-background,var(--contrast-500))',
                   }[colorScheme],
                 )}
                 fill
@@ -103,10 +103,10 @@ export function ProductCard({
             ) : (
               <div
                 className={clsx(
-                  'break-words pl-5 pt-5 text-4xl font-bold leading-[0.8] tracking-tighter opacity-25 transition-transform duration-500 ease-out group-hover:scale-105 @xs:text-7xl',
+                  'pt-5 pl-5 text-4xl leading-[0.8] font-bold tracking-tighter break-words opacity-25 transition-transform duration-500 ease-out group-hover:scale-105 @xs:text-7xl',
                   {
-                    light: 'text-[var(--product-card-light-title,hsl(var(--foreground)))]',
-                    dark: 'text-[var(--product-card-dark-title,hsl(var(--background)))]',
+                    light: 'text-(--product-card-light-title,var(--foreground))',
+                    dark: 'text-(--product-card-dark-title,var(--background))',
                   }[colorScheme],
                 )}
               >
@@ -114,7 +114,7 @@ export function ProductCard({
               </div>
             )}
             {badge != null && badge !== '' && (
-              <Badge className="absolute left-3 top-3" shape="rounded">
+              <Badge className="absolute top-3 left-3" shape="rounded">
                 {badge}
               </Badge>
             )}
@@ -122,10 +122,10 @@ export function ProductCard({
           <Link
             aria-label={title}
             className={clsx(
-              'absolute inset-0 rounded-[var(--product-card-border-radius,1rem)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--product-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+              'absolute inset-0 rounded-(--product-card-border-radius,1rem) focus:outline-hidden focus-visible:ring-2 focus-visible:ring-(--product-card-focus,var(--primary)) focus-visible:ring-offset-4',
               {
-                light: 'ring-offset-[var(--product-card-light-offset,hsl(var(--background)))]',
-                dark: 'ring-offset-[var(--product-card-dark-offset,hsl(var(--foreground)))]',
+                light: 'ring-offset-(--product-card-light-offset,var(--background))',
+                dark: 'ring-offset-(--product-card-dark-offset,var(--foreground))',
               }[colorScheme],
             )}
             href={href}
@@ -140,8 +140,8 @@ export function ProductCard({
               className={clsx(
                 'block font-semibold',
                 {
-                  light: 'text-[var(--product-card-light-title,hsl(var(--foreground)))]',
-                  dark: 'text-[var(--product-card-dark-title,hsl(var(--background)))]',
+                  light: 'text-(--product-card-light-title,var(--foreground))',
+                  dark: 'text-(--product-card-dark-title,var(--background))',
                 }[colorScheme],
               )}
             >
@@ -153,8 +153,9 @@ export function ProductCard({
                 className={clsx(
                   'block text-sm font-normal',
                   {
-                    light: 'text-[var(--product-card-light-subtitle,hsl(var(--foreground)/75%))]',
-                    dark: 'text-[var(--product-card-dark-subtitle,hsl(var(--background)/75%))]',
+                    light:
+                      'text-(--product-card-light-subtitle,color-mix(in_oklab,var(--foreground)_75%,transparent))',
+                    dark: 'text-(--product-card-dark-subtitle,color-mix(in_oklab,var(--background)_75%,transparent))',
                   }[colorScheme],
                 )}
               >
@@ -167,10 +168,10 @@ export function ProductCard({
             <Link
               aria-label={title}
               className={clsx(
-                'absolute inset-0 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--product-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+                'absolute inset-0 rounded-sm focus:outline-hidden focus-visible:ring-2 focus-visible:ring-(--product-card-focus,var(--primary)) focus-visible:ring-offset-4',
                 {
-                  light: 'ring-offset-[var(--product-card-light-offset,hsl(var(--background)))]',
-                  dark: 'ring-offset-[var(--product-card-dark-offset,hsl(var(--foreground)))]',
+                  light: 'ring-offset-(--product-card-light-offset,var(--background))',
+                  dark: 'ring-offset-(--product-card-dark-offset,var(--foreground))',
                 }[colorScheme],
               )}
               href={href}
@@ -204,7 +205,7 @@ export function ProductCardSkeleton({
     <Skeleton.Root className={clsx(className)}>
       <Skeleton.Box
         className={clsx(
-          'rounded-[var(--product-card-border-radius,1rem)]',
+          'rounded-(--product-card-border-radius,1rem)',
           {
             '5:6': 'aspect-[5/6]',
             '3:4': 'aspect-[3/4]',

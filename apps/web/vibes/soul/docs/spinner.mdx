@@ -34,9 +34,9 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --spinner-base: hsl(var(--contrast-100));
-  --spinner-ring: color-mix(in oklab, hsl(var(--primary)), black 75%);
+    --spinner-base: var(--contrast-100);
+    --spinner-ring: var(--primary-shadow);
 }
-```
+`}</CodeBlock>

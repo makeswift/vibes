@@ -43,7 +43,7 @@ export const footerLinks = [
 ];
 
 export const logo = {
-  src: 'https://rstr.in/monogram/vibes/JzEctN2uDqL',
+  src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiYmVmODMwYi1mMDgyLTRiNTItOGZjNy0zMzNjZjVhYmU2Y2U=/outer-shell.png',
   alt: 'Outer Shell Logo',
 };
 

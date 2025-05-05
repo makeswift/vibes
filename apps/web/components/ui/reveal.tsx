@@ -16,12 +16,12 @@ function Reveal({ children }: { children: React.ReactNode }) {
       </div>
 
       {!isOpen && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-[1px] top-0 z-10 bg-gradient-to-b from-transparent to-contrast-100" />
+        <div className="to-contrast-100 pointer-events-none absolute inset-x-0 top-0 bottom-[1px] z-10 bg-gradient-to-b from-transparent" />
       )}
 
       <div
         className={clsx(
-          'border-b border-dashed border-contrast-400 bg-contrast-100',
+          'border-contrast-400 bg-contrast-100 border-b border-dashed',
           isOpen ? 'max-h-[70vh] overflow-auto pb-10' : 'max-h-40 overflow-hidden',
         )}
       >

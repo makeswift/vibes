@@ -12,17 +12,17 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
   ({ className, variant = 'default', size = 'medium', active = true, children, ...props }, ref) => {
     return (
       <button
-        className={clsx('group relative z-0 rounded-full focus:outline-none', className)}
+        className={clsx('group relative z-0 rounded-full focus:outline-hidden', className)}
         ref={ref}
         {...props}
       >
         <span
           className={clsx(
-            'inline-flex items-center justify-center whitespace-nowrap rounded-full border font-bold ring-1 ring-inset ring-transparent ring-offset-0 transition-colors group-focus-visible:border-primary group-focus-visible:ring-primary',
+            'group-focus-visible:border-primary group-focus-visible:ring-primary inline-flex items-center justify-center rounded-full border font-bold whitespace-nowrap ring-1 ring-transparent ring-offset-0 transition-colors ring-inset',
             {
               default:
                 'pattern-shadow pattern-shadow-sm pattern-shadow-hover border-foreground bg-background',
-              ghost: 'border-transparent hover:bg-contrast-100',
+              ghost: 'hover:bg-contrast-100 border-transparent',
               link: 'underline-offset-4 hover:underline',
             }[variant],
             {

@@ -13,22 +13,22 @@ export interface FavoriteProps {
  *
  * ```css
  * :root {
- *   --favorite-focus: hsl(var(--primary));
- *   --favorite-border: hsl(var(--contrast-100));
- *   --favorite-icon: hsl(var(--foreground));
- *   --favorite-on-background: hsl(var(--contrast-100));
- *   --favorite-off-border: hsl(var(--contrast-200));
+ *   --favorite-focus: var(--primary);
+ *   --favorite-border: var(--contrast-100);
+ *   --favorite-icon: var(--foreground);
+ *   --favorite-on-background: var(--contrast-100);
+ *   --favorite-off-border: var(--contrast-200);
  * }
  * ```
  */
-export const Favorite = function Favorite({ checked = false, setChecked }: FavoriteProps) {
+export function Favorite({ checked = false, setChecked }: FavoriteProps) {
   return (
     <Toggle.Root
-      className="group relative flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-[var(--favorite-border,hsl(var(--contrast-100)))] text-[var(--favorite-icon,hsl(var(--foreground)))] ring-[var(--favorite-focus,hsl(var(--primary)))] transition-[colors,transform] duration-300 focus-within:outline-none focus-within:ring-2 data-[state=on]:bg-[var(--favorite-on-background,hsl(var(--contrast-100)))] data-[state=off]:hover:border-[var(--favorite-off-border,hsl(var(--contrast-200)))]"
+      className="group relative flex h-[50px] w-[50px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-(--favorite-border,var(--contrast-100)) text-(--favorite-icon,var(--foreground)) ring-(--favorite-focus,var(--primary)) transition duration-300 focus-within:ring-2 focus-within:outline-hidden data-[state=off]:hover:border-(--favorite-off-border,var(--contrast-200)) data-[state=on]:bg-(--favorite-on-background,var(--contrast-100))"
       onPressedChange={setChecked}
       pressed={checked}
     >
       <Heart filled={checked} />
     </Toggle.Root>
   );
-};
+}

@@ -15,26 +15,20 @@ export interface ChipProps {
  *
  * ```css
  * :root {
- *   --chip-focus: hsl(var(--foreground));
+ *   --chip-focus: var(--foreground);
  *   --chip-font-family: var(--font-family-body);
- *   --chip-background: hsl(var(--contrast-100));
- *   --chip-background-hover: hsl(var(--contrast-200));
- *   --chip-text: hsl(var(--foreground));
+ *   --chip-background: var(--contrast-100);
+ *   --chip-background-hover: var(--contrast-200);
+ *   --chip-text: var(--foreground);
  * }
  * ```
  */
-export const Chip = function Chip({
-  name,
-  value,
-  children,
-  removeLabel = 'Remove',
-  onClick,
-}: ChipProps) {
+export function Chip({ name, value, children, removeLabel = 'Remove', onClick }: ChipProps) {
   return (
-    <span className="flex h-9 items-center gap-1.5 rounded-lg bg-[var(--chip-background,hsl(var(--contrast-100)))] py-2 pe-2 ps-3 font-[family-name:var(--chip-font-family,var(--font-family-body))] text-sm font-semibold leading-5 text-[var(--chip-text,hsl(var(--foreground)))]">
+    <span className="flex h-9 items-center gap-1.5 rounded-lg bg-(--chip-background,var(--contrast-100)) py-2 ps-3 pe-2 font-(family-name:--chip-font-family,var(--font-family-body)) text-sm leading-5 font-semibold text-(--chip-text,var(--foreground))">
       {children}
       <button
-        className="flex h-5 w-5 items-center justify-center rounded-full hover:bg-[var(--chip-background-hover,hsl(var(--contrast-200)))] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--button-focus,hsl(var(--foreground)))]"
+        className="flex h-5 w-5 items-center justify-center rounded-full hover:bg-(--chip-background-hover,var(--contrast-200)) focus-visible:ring-1 focus-visible:ring-(--button-focus,var(--foreground)) focus-visible:outline-hidden"
         name={name}
         onClick={onClick}
         title={removeLabel}
@@ -44,4 +38,4 @@ export const Chip = function Chip({
       </button>
     </span>
   );
-};
+}

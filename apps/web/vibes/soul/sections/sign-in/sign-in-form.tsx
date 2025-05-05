@@ -20,6 +20,8 @@ export interface SignInFormProps {
   emailLabel?: string;
   passwordLabel?: string;
   submitLabel?: string;
+  emailPlaceholder?: string;
+  passwordPlaceholder?: string;
 }
 
 export function SignInForm({
@@ -27,6 +29,8 @@ export function SignInForm({
   emailLabel = 'Email',
   passwordLabel = 'Password',
   submitLabel = 'Sign in',
+  emailPlaceholder = 'Enter your email',
+  passwordPlaceholder = 'Enter your password',
 }: SignInFormProps) {
   const [lastResult, formAction] = useActionState(action, null);
   const [form, fields] = useForm({
@@ -47,6 +51,7 @@ export function SignInForm({
         errors={fields.email.errors}
         key={fields.email.id}
         label={emailLabel}
+        placeholder={emailPlaceholder}
       />
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
@@ -54,6 +59,7 @@ export function SignInForm({
         errors={fields.password.errors}
         key={fields.password.id}
         label={passwordLabel}
+        placeholder={passwordPlaceholder}
       />
       <SubmitButton>{submitLabel}</SubmitButton>
       {form.errors?.map((error, index) => (

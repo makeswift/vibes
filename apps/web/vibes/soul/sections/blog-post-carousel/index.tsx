@@ -34,8 +34,8 @@ export interface BlogPostCarouselProps {
  *
  * ```css
  * :root {
- *   --blog-post-carousel-empty-title: hsl(var(--foreground));
- *   --blog-post-carousel-empty-subtitle: hsl(var(--contrast-500));
+ *   --blog-post-carousel-empty-title: var(--foreground);
+ *   --blog-post-carousel-empty-subtitle: var(--contrast-500);
  * }
  * ```
  */
@@ -115,7 +115,7 @@ export function BlogPostCarouselSkeleton({
       </div>
       <div className="mt-10 flex w-full items-center justify-between gap-8">
         <Skeleton.Box className="h-1 w-full max-w-56 rounded" />
-        <div className="flex gap-2 text-contrast-200">
+        <div className="flex gap-2">
           <Skeleton.Icon icon={<ArrowLeft aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
           <Skeleton.Icon icon={<ArrowRight aria-hidden className="h-6 w-6" strokeWidth={1.5} />} />
         </div>
@@ -148,12 +148,12 @@ export function BlogPostCarouselEmptyState({
           ))}
         </div>
       </div>
-      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pt-28 @4xl:pb-10">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
-          <h3 className="@4x:leading-none font-heading text-2xl leading-tight text-[var(--blog-post-carousel-empty-title,hsl(var(--foreground)))] @4xl:text-4xl">
+          <h3 className="font-heading text-2xl leading-tight text-(--blog-post-carousel-empty-title,var(--foreground)) @4xl:text-4xl">
             {emptyStateTitle}
           </h3>
-          <p className="text-sm text-[var(--blog-post-carousel-empty-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
+          <p className="text-sm text-(--blog-post-carousel-empty-subtitle,var(--contrast-500)) @4xl:text-lg">
             {emptyStateSubtitle}
           </p>
         </div>

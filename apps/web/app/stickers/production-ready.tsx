@@ -11,7 +11,7 @@ import {
 
 export function ProductionReady() {
   return (
-    <Draggable className="relative z-10 -ml-6 -mt-6">
+    <Draggable className="relative z-10 -mt-6 -ml-6">
       {({ active, hover }) => (
         <Transition
           className="transition-transform duration-1000"

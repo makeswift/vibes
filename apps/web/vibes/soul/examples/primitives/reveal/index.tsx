@@ -5,8 +5,8 @@ export default function Preview() {
     <div className="bg-background px-6 py-8">
       <div className="mx-auto grid max-w-lg grid-cols-1 gap-12 sm:max-w-3xl sm:grid-cols-2 sm:gap-20">
         <Reveal maxHeight="8rem">
-          <div className="space-y-4 text-sm font-normal text-contrast-500">
-            <h3 className="font-heading text-lg font-medium text-foreground">Return Policy</h3>
+          <div className="text-contrast-500 space-y-4 text-sm font-normal">
+            <h3 className="font-heading text-foreground text-lg font-medium">Return Policy</h3>
             <p>
               To begin your return, simply log into your account on our website or contact our
               dedicated customer service team. Once your return is authorized, we&apos;ll provide
@@ -24,9 +24,9 @@ export default function Preview() {
             </p>
           </div>
         </Reveal>
-        <Reveal variant="button" maxHeight="8rem">
-          <div className="space-y-4 text-sm font-normal text-contrast-500">
-            <h3 className="font-heading text-lg font-medium text-foreground">Return Policy</h3>
+        <Reveal maxHeight="8rem" variant="button">
+          <div className="text-contrast-500 space-y-4 text-sm font-normal">
+            <h3 className="font-heading text-foreground text-lg font-medium">Return Policy</h3>
             <p>
               To begin your return, simply log into your account on our website or contact our
               dedicated customer service team. Once your return is authorized, we&apos;ll provide

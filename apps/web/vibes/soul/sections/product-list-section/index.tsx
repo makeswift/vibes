@@ -49,13 +49,13 @@ export interface ProductListSectionProps {
  *
  * ```css
  * :root {
- *   --product-list-section-title: hsl(var(--foreground));
+ *   --product-list-section-title: var(--foreground);
  *   --product-list-section-title-font-family: var(--font-heading);
- *   --product-list-section-total-count: hsl(var(--contrast-300));
+ *   --product-list-section-total-count: var(--contrast-300);
  *   --product-list-section-filter-label-font-family: var(--font-mono);
- *   --product-list-section-filter-label: hsl(var(--contrast-400));
- *   --product-list-section-filter-link: hsl(var(--contrast-500));
- *   --product-list-section-filter-link-hover: hsl(var(--foreground));
+ *   --product-list-section-filter-label: var(--contrast-400);
+ *   --product-list-section-filter-link: var(--contrast-500);
+ *   --product-list-section-filter-link-hover: var(--foreground);
  *   --product-list-section-filter-link-font-family: var(--font-body);
  * }
  * ```
@@ -95,8 +95,8 @@ export function ProductListSection({
               breadcrumbs && breadcrumbs.length > 1 && <Breadcrumbs breadcrumbs={breadcrumbs} />
             }
           </Stream>
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-8 pt-6">
-            <h1 className="flex items-center gap-2 font-[family-name:var(--product-list-section-title-font-family,var(--font-family-heading))] text-3xl font-medium leading-none text-[var(--product-list-section-title,hsl(var(--foreground)))] @lg:text-4xl @2xl:text-5xl">
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-6 pb-8">
+            <h1 className="flex items-center gap-2 font-(family-name:--product-list-section-title-font-family,var(--font-family-heading)) text-3xl leading-none font-medium text-(--product-list-section-title,var(--foreground)) @lg:text-4xl @2xl:text-5xl">
               <Stream fallback={<ProductListSectionTitleSkeleton />} value={streamableTitle}>
                 {(title) => <span>{title}</span>}
               </Stream>
@@ -105,7 +105,7 @@ export function ProductListSection({
                 value={streamableTotalCount}
               >
                 {(totalCount) => (
-                  <span className="text-[var(--product-list-section-total-count,hsl(var(--contrast-300)))]">
+                  <span className="text-(--product-list-section-total-count,var(--contrast-300))">
                     {totalCount}
                   </span>
                 )}

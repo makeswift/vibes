@@ -15,10 +15,10 @@ export default function Preview() {
 const compareProducts = [
   {
     id: '1',
-    title: 'Jada Square Toe Ballet Flat',
+    title: 'JADA SQUARE TOE BALLET FLAT',
     image: {
-      src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-      alt: 'Jada Square Toe Ballet Flat',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTUwMzNmMy0zYzRlLTQzOTUtYTc3MC1jYWM0OWE1YWMyY2E=/jada-square-toe.webp',
+      alt: 'JADA SQUARE TOE BALLET FLAT',
     },
     href: '#',
   },
@@ -26,7 +26,7 @@ const compareProducts = [
     id: '2',
     title: 'Jayla Woven Ballet Heel',
     image: {
-      src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTE5YTQ1Mi1lZDU3LTQ2NDYtODgxMC0yYzU2NjI0NGM3ODk=/jayla-woven.webp',
       alt: 'Jayla Woven Ballet Heel',
     },
     href: '#',
@@ -35,7 +35,7 @@ const compareProducts = [
     id: '3',
     title: 'Jessie Ballet Flat',
     image: {
-      src: 'https://rstr.in/monogram/vibes/1ipihAyvRQj',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowZWIzNWY2My0yM2Y3LTRmNDAtYTUzOS0zY2JjNmFhYzJkYWQ=/jessie-ballet.webp',
       alt: 'Jessie Ballet Flat',
     },
     href: '#',
@@ -44,7 +44,7 @@ const compareProducts = [
     id: '4',
     title: 'Leighton Soft Leather Loafer',
     image: {
-      src: 'https://rstr.in/monogram/vibes/YfQW8M1Gv2H/zTWKcqJrdIu',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmM2Y1MzJiZi1hYTg0LTQzNzctYTA4NS1hODZkMWI3NGFmOWU=/leighton-soft.jpeg',
       alt: 'Leighton Soft Leather Loafer',
     },
     href: '#',

@@ -87,21 +87,21 @@ const defaultEmptyState = {
  *
  * ```css
  * :root {
- *   --cart-focus: hsl(var(--primary));
+ *   --cart-focus: var(--primary);
  *   --cart-font-family: var(--font-family-body);
  *   --cart-title-font-family: var(--font-family-heading);
- *   --cart-text: hsl(var(--foreground));
- *   --cart-subtitle-text: hsl(var(--contrast-500));
- *   --cart-subtext-text: hsl(var(--contrast-300));
- *   --cart-icon: hsl(var(--contrast-300));
- *   --cart-icon-hover: hsl(var(--foreground));
- *   --cart-border: hsl(var(--contrast-100));
- *   --cart-image-background: hsl(var(--contrast-100));
- *   --cart-button-background: hsl(var(--contrast-100));
- *   --cart-counter-icon: hsl(var(--contrast-300));
- *   --cart-counter-icon-hover: hsl(var(--foreground));
- *   --cart-counter-background: hsl(var(--background));
- *   --cart-counter-background-hover: hsl(var(--contast-100) / 50%);
+ *   --cart-text: var(--foreground);
+ *   --cart-subtitle-text: var(--contrast-500);
+ *   --cart-subtext-text: var(--contrast-300);
+ *   --cart-icon: var(--contrast-300);
+ *   --cart-icon-hover: var(--foreground);
+ *   --cart-border: var(--contrast-100);
+ *   --cart-image-background: var(--contrast-100);
+ *   --cart-button-background: var(--contrast-100);
+ *   --cart-counter-icon: var(--contrast-300);
+ *   --cart-counter-icon-hover: var(--foreground);
+ *   --cart-counter-background: var(--background);
+ *   --cart-counter-background-hover: color-mix(in oklab, var(--contrast-100) 50%, transparent);
  * }
  * ```
  */
@@ -177,14 +177,14 @@ export function CartClient<LineItem extends CartLineItem>({
 
   return (
     <StickySidebarLayout
-      className="font-[family-name:var(--cart-font-family,var(--font-family-body))] text-[var(--cart-text,hsl(var(--foreground)))]"
+      className="font-[family-name:var(--cart-font-family,var(--font-family-body))] text-(--cart-text,var(--foreground))"
       sidebar={
         <div>
-          <h2 className="mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none @xl:text-5xl">
+          <h2 className="mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl leading-none font-medium @xl:text-5xl">
             {summaryTitle}
           </h2>
           <dl aria-label="Receipt Summary" className="w-full">
-            <div className="divide-y divide-[var(--cart-border,hsl(var(--contrast-100)))]">
+            <div className="divide-y divide-(--cart-border,var(--contrast-100))">
               {cart.summaryItems.map((summaryItem, index) => (
                 <div className="flex justify-between py-4" key={index}>
                   <dt>{summaryItem.label}</dt>
@@ -203,7 +203,7 @@ export function CartClient<LineItem extends CartLineItem>({
                 removeLabel={couponCode.removeLabel}
               />
             )}
-            <div className="flex justify-between border-t border-[var(--cart-border,hsl(var(--contrast-100)))] py-6 text-xl font-bold">
+            <div className="flex justify-between border-t border-(--cart-border,var(--contrast-100)) py-6 text-xl font-bold">
               <dt>{cart.totalLabel ?? 'Total'}</dt>
               <dl>{cart.total}</dl>
             </div>
@@ -218,9 +218,9 @@ export function CartClient<LineItem extends CartLineItem>({
       sidebarSize="1/3"
     >
       <div className="w-full">
-        <h1 className="mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none @xl:text-5xl">
+        <h1 className="mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl leading-none font-medium @xl:text-5xl">
           {title}
-          <span className="ml-4 text-[var(--cart-subtext-text,hsl(var(--contrast-300)))] contrast-more:text-[var(--cart-subtitle-text,hsl(var(--contrast-500)))]">
+          <span className="ml-4 text-(--cart-subtext-text,var(--contrast-300)) contrast-more:text-(--cart-subtitle-text,var(--contrast-500))">
             {optimisticQuantity}
           </span>
         </h1>
@@ -228,10 +228,10 @@ export function CartClient<LineItem extends CartLineItem>({
         <ul className="flex flex-col gap-5">
           {optimisticLineItems.map((lineItem) => (
             <li
-              className="flex flex-col items-start gap-x-5 gap-y-4 @container @sm:flex-row"
+              className="@container flex flex-col items-start gap-x-5 gap-y-4 @sm:flex-row"
               key={lineItem.id}
             >
-              <div className="relative aspect-square w-full max-w-24 overflow-hidden rounded-xl bg-[var(--cart-image-background,hsl(var(--contrast-100)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))] focus-visible:ring-offset-4">
+              <div className="relative aspect-square w-full max-w-24 overflow-hidden rounded-xl bg-(--cart-image-background,var(--contrast-100)) focus-visible:ring-2 focus-visible:ring-(--cart-focus,var(--primary)) focus-visible:ring-offset-4 focus-visible:outline-hidden">
                 <Image
                   alt={lineItem.image.alt}
                   className="object-cover"
@@ -243,7 +243,7 @@ export function CartClient<LineItem extends CartLineItem>({
               <div className="flex grow flex-col flex-wrap justify-between gap-y-2 @xl:flex-row">
                 <div className="flex w-full flex-1 flex-col @xl:w-1/2 @xl:pr-4">
                   <span className="font-medium">{lineItem.title}</span>
-                  <span className="text-[var(--cart-subtext-text,hsl(var(--contrast-300)))] contrast-more:text-[var(--cart-subtitle-text,hsl(var(--contrast-500)))]">
+                  <span className="text-(--cart-subtext-text,var(--contrast-300)) contrast-more:text-(--cart-subtitle-text,var(--contrast-500))">
                     {lineItem.subtitle}
                   </span>
                 </div>
@@ -305,14 +305,14 @@ function CounterForm({
         <span className="font-medium @xl:ml-auto">{lineItem.price}</span>
 
         {/* Counter */}
-        <div className="flex items-center rounded-lg border border-[var(--cart-counter-border,hsl(var(--contrast-100)))]">
+        <div className="flex items-center rounded-lg border border-(--cart-counter-border,var(--contrast-100))">
           <button
             aria-label={decrementLabel}
             className={clsx(
-              'group rounded-l-lg bg-[var(--cart-counter-background,hsl(var(--background)))] p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))] disabled:cursor-not-allowed',
+              'group rounded-l-lg bg-(--cart-counter-background,var(--background)) p-3 focus-visible:ring-2 focus-visible:ring-(--cart-focus,var(--primary)) focus-visible:outline-hidden disabled:cursor-not-allowed',
               lineItem.quantity === 1
                 ? 'opacity-50'
-                : 'hover:bg-[var(--cart-counter-background-hover,hsl(var(--contrast-100)/50%))]',
+                : 'hover:bg-(--cart-counter-background-hover,color-mix(in_oklab,var(--contrast-100)_50%,transparent))',
             )}
             disabled={lineItem.quantity === 1}
             name="intent"
@@ -321,28 +321,28 @@ function CounterForm({
           >
             <Minus
               className={clsx(
-                'text-[var(--cart-counter-icon,hsl(var(--contrast-300)))] transition-colors duration-300',
+                'text-(--cart-counter-icon,var(--contrast-300)) transition-colors duration-300',
                 lineItem.quantity !== 1 &&
-                  'group-hover:text-[var(--cart-counter-icon-hover,hsl(var(--foreground)))]',
+                  'group-hover:text-(--cart-counter-icon-hover,var(--foreground))',
               )}
               size={18}
               strokeWidth={1.5}
             />
           </button>
-          <span className="flex w-8 select-none justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))]">
+          <span className="flex w-8 justify-center select-none focus-visible:ring-2 focus-visible:ring-(--cart-focus,var(--primary)) focus-visible:outline-hidden">
             {lineItem.quantity}
           </span>
           <button
             aria-label={incrementLabel}
             className={clsx(
-              'group rounded-r-lg bg-[var(--cart-counter-background,hsl(var(--background)))] p-3 transition-colors duration-300 hover:bg-[var(--cart-counter-background-hover,hsl(var(--contrast-100)/50%))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))] disabled:cursor-not-allowed',
+              'group rounded-r-lg bg-(--cart-counter-background,var(--background)) p-3 transition-colors duration-300 hover:bg-(--cart-counter-background-hover,color-mix(in_oklab,var(--contrast-100)_50%,transparent)) focus-visible:ring-2 focus-visible:ring-(--cart-focus,var(--primary)) focus-visible:outline-hidden disabled:cursor-not-allowed',
             )}
             name="intent"
             type="submit"
             value="increment"
           >
             <Plus
-              className="text-[var(--cart-counter-icon,hsl(var(--contrast-300)))] transition-colors duration-300 group-hover:text-[var(--cart-counter-icon-hover,hsl(var(--foreground)))]"
+              className="text-(--cart-counter-icon,var(--contrast-300)) transition-colors duration-300 group-hover:text-(--cart-counter-icon-hover,var(--foreground))"
               size={18}
               strokeWidth={1.5}
             />
@@ -351,13 +351,13 @@ function CounterForm({
 
         <button
           aria-label={deleteLabel}
-          className="group -ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-[var(--cart-button-background,hsl(var(--contrast-100)))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cart-focus,hsl(var(--primary)))] focus-visible:ring-offset-4"
+          className="group -ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 hover:bg-(--cart-button-background,var(--contrast-100)) focus-visible:ring-2 focus-visible:ring-(--cart-focus,var(--primary)) focus-visible:ring-offset-4 focus-visible:outline-hidden"
           name="intent"
           type="submit"
           value="delete"
         >
           <Trash2
-            className="text-[var(--cart-icon,hsl(var(--contrast-300)))] group-hover:text-[var(--cart-icon-hover,hsl(var(--foreground)))]"
+            className="text-(--cart-icon,var(--contrast-300)) group-hover:text-(--cart-icon-hover,var(--foreground))"
             size={20}
             strokeWidth={1}
           />

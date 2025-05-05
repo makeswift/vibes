@@ -1,5 +1,4 @@
 import { locales } from '@/vibes/soul/data/locales';
-import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/luxury';
 import { posts } from '@/vibes/soul/examples/sections/blog-post-list/luxury';
@@ -8,6 +7,7 @@ import {
   copyright,
   footerLinks,
 } from '@/vibes/soul/examples/sections/footer/luxury';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { BlogPost, BlogPostContent } from '@/vibes/soul/sections/blog-post-content';
@@ -79,7 +79,7 @@ const blogPost = {
     <p>Fall fashion is very much happening and we are very much loving everything. Boots, loafers, leopard print, sweaters, plaid, denim, gold…to name just a few of our favorite things.</p>
     <p>For our October campaign, we wanted to have fun with the styling. It’s all about taking classic looks and reimagining them with certain pieces. All your staples with a refreshed energy. Mixing textures, playing with sequins, making a statement print a neutral–we’re feeling it all.</p>
 
-    <img src="https://rstr.in/monogram/vibes/VhqWQX3Sb-f/6g-xaTC90eo" alt="A woman wearing a brown pantsuit with a snakeskin print blazer and black flats."/>
+    <img src="https://storage.googleapis.com/s.mkswft.com/RmlsZTplMzdkMzJkZC1iY2UyLTQ3NDUtYTQwNS1jMTZmOGQwNTBlNGU=/brown-pant-suit.webp" alt="A woman wearing a brown pantsuit with a snakeskin print blazer and black flats."/>
 
     <h2>EVERYDAY COOL</h2>
     <h3>WITH THE LANNA BOOT + ELIS BAG</h3>
@@ -89,7 +89,7 @@ const blogPost = {
   `,
   date: 'October 03, 2024',
   image: {
-    src: 'https://rstr.in/monogram/vibes/lJaCK7qAO8W/k9soESSDDU1',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3ZjBiNTA0Mi05ODBkLTRjYjctYWQ5NC0wZTAwOTg4NTZkYjI=/green-velvet-dress.webp',
     alt: 'A woman wearing a green velvet dress, black boots, and a small black handbag.',
   },
   title: 'STYLING STORIES:',

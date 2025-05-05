@@ -10,7 +10,7 @@ export default function Preview() {
 
   return (
     <div>
-      <section className="group/pending overflow-hidden @container">
+      <section className="group/pending @container overflow-hidden">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 group-has-[[data-pending]]/pending:animate-pulse @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
           <CardCarousel
             cards={cardsPromise}
@@ -20,7 +20,7 @@ export default function Preview() {
           />
         </div>
       </section>
-      <section className="group/pending overflow-hidden bg-foreground @container">
+      <section className="group/pending bg-foreground @container overflow-hidden">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 group-has-[[data-pending]]/pending:animate-pulse @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
           <CardCarousel
             cards={cardsPromise}
@@ -37,17 +37,17 @@ export default function Preview() {
 
 const cards: CardContent[] = [
   {
-    title: 'Jada Square Toe Ballet Flat',
+    title: 'JADA SQUARE TOE BALLET FLAT',
     image: {
-      src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-      alt: 'Jada Square Toe Ballet Flat',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTUwMzNmMy0zYzRlLTQzOTUtYTc3MC1jYWM0OWE1YWMyY2E=/jada-square-toe.webp',
+      alt: 'JADA SQUARE TOE BALLET FLAT',
     },
     href: '#1',
   },
   {
     title: 'Jayla Woven Ballet Heel',
     image: {
-      src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTE5YTQ1Mi1lZDU3LTQ2NDYtODgxMC0yYzU2NjI0NGM3ODk=/jayla-woven.webp',
       alt: 'Jayla Woven Ballet Heel',
     },
     href: '#2',
@@ -55,7 +55,7 @@ const cards: CardContent[] = [
   {
     title: 'Jessie Ballet Flat',
     image: {
-      src: 'https://rstr.in/monogram/vibes/1ipihAyvRQj',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowZWIzNWY2My0yM2Y3LTRmNDAtYTUzOS0zY2JjNmFhYzJkYWQ=/jessie-ballet.webp',
       alt: 'Jessie Ballet Flat',
     },
     href: '#3',
@@ -63,7 +63,7 @@ const cards: CardContent[] = [
   {
     title: 'Leighton Soft Leather Loafer',
     image: {
-      src: 'https://rstr.in/monogram/vibes/YfQW8M1Gv2H/zTWKcqJrdIu',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmM2Y1MzJiZi1hYTg0LTQzNzctYTA4NS1hODZkMWI3NGFmOWU=/leighton-soft.jpeg',
       alt: 'Leighton Soft Leather Loafer',
     },
     href: '#4',
@@ -71,7 +71,7 @@ const cards: CardContent[] = [
   {
     title: 'JADA SQUARE TOE BALLET FLAT',
     image: {
-      src: 'https://rstr.in/monogram/vibes/5QBR05kyrYo',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmN2Q1MDUxMC03ZGEwLTQ3MGItYTI0Ny1mOTA0ZTNjYTkyZWU=/jada-square-toe.webp',
       alt: 'JADA SQUARE TOE BALLET FLAT',
     },
     href: '#5',
@@ -79,7 +79,7 @@ const cards: CardContent[] = [
   {
     title: 'DARYA LUG SOLE FISHERMAN',
     image: {
-      src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz/vfCehRZDBGk',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3ZjAyMzkyYS1iN2ViLTQ0YzAtYmUxNi1kOThjMjk0MTU0ZGQ=/darya-lug.webp',
       alt: 'DARYA LUG SOLE FISHERMAN',
     },
     href: '#6',

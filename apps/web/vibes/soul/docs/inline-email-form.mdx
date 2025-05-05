@@ -53,13 +53,13 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --inline-email-form-focus: hsl(var(--primary));
-  --inline-email-form-background: hsl(var(--background));
-  --inline-email-form-placeholder: hsl(var(--contrast-500));
-  --inline-email-form-text: hsl(var(--foreground));
-  --inline-email-form-border: hsl(var(--black));
-  --inline-email-form-error: hsl(var(--error));
+    --inline-email-form-focus: var(--primary);
+    --inline-email-form-background: var(--background);
+    --inline-email-form-placeholder: var(--contrast-500);
+    --inline-email-form-text: var(--foreground);
+    --inline-email-form-border: var(--black);
+    --inline-email-form-error: var(--error);
 }
-```
+`}</CodeBlock>

@@ -3,7 +3,7 @@ import { Subscribe } from '@/vibes/soul/sections/subscribe';
 
 export default function Preview() {
   const image = {
-    src: 'https://rstr.in/monogram/vibes/m12FEyfnuDl',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiZTZmZGU0OC1jYWEzLTRmNzUtYTFhNy03NzNlNThiMTJlZWE=/lady-with-plant.jpeg',
     alt: 'Lady with plant',
   };
 

@@ -29,12 +29,12 @@ export interface InlineEmailFormProps {
  *
  * ```css
  * :root {
- *   --inline-email-form-focus: hsl(var(--primary));
- *   --inline-email-form-background: hsl(var(--background));
- *   --inline-email-form-placeholder: hsl(var(--contrast-500));
- *   --inline-email-form-text: hsl(var(--foreground));
- *   --inline-email-form-border: hsl(var(--black));
- *   --inline-email-form-error: hsl(var(--error));
+ *   --inline-email-form-focus: var(--primary);
+ *   --inline-email-form-background: var(--background);
+ *   --inline-email-form-placeholder: var(--contrast-500);
+ *   --inline-email-form-text: var(--foreground);
+ *   --inline-email-form-border: var(--black);
+ *   --inline-email-form-error: var(--error);
  * }
  * ```
  */
@@ -63,20 +63,20 @@ export function InlineEmailForm({
     <form {...getFormProps(form)} action={formAction} className={clsx('space-y-2', className)}>
       <div
         className={clsx(
-          'relative rounded-xl border bg-[var(--inline-email-form-background,hsl(var(--background)))] text-base transition-colors duration-200 focus-within:border-[var(--inline-email-form-focus,hsl(var(--primary)))] focus:outline-none',
+          'relative rounded-xl border bg-(--inline-email-form-background,var(--background)) text-base transition-colors duration-200 focus-within:border-(--inline-email-form-focus,var(--primary)) focus:outline-hidden',
           errors.length
-            ? 'border-[var(--inline-email-form-error,hsl(var(--error)))]'
-            : 'border-[var(--inline-email-form-border,hsl(var(--black)))]',
+            ? 'border-(--inline-email-form-error,var(--error))'
+            : 'border-(--inline-email-form-border,var(--black))',
         )}
       >
         <input
           {...getInputProps(fields.email, { type: 'email' })}
-          className="h-14 w-full bg-transparent pl-5 pr-16 text-[var(--inline-email-form-text,hsl(var(--foreground)))] placeholder-[var(--inline-email-form-placeholder,hsl(var(--contrast-500)))] placeholder:font-normal focus:outline-none"
+          className="h-14 w-full bg-transparent pr-16 pl-5 text-(--inline-email-form-text,var(--foreground)) placeholder-(--inline-email-form-placeholder,var(--contrast-500)) placeholder:font-normal focus:outline-hidden"
           data-1p-ignore
           key={fields.email.id}
           placeholder={placeholder}
         />
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 pr-2">
           <Button
             aria-label={submitLabel}
             loading={isPending}

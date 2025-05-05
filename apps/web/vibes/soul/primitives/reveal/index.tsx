@@ -62,13 +62,13 @@ export function Reveal({
   return (
     <div className="relative">
       <div
-        ref={contentRef}
         className={clsx(
           hasOverflow &&
             !isOpen &&
             '[mask-image:linear-gradient(to_top,transparent,black_50px,black_calc(100%-50px))]',
           'overflow-hidden',
         )}
+        ref={contentRef}
         style={{ maxHeight: isOpen ? 'none' : maxHeight }}
       >
         {children}
@@ -77,7 +77,7 @@ export function Reveal({
         <div className={clsx('flex w-full items-end pt-4')}>
           {variant === 'underline' && (
             <button
-              className="group/underline text-sm focus:outline-none"
+              className="group/underline text-sm focus:outline-hidden"
               onClick={() => setIsOpen(!isOpen)}
               type="button"
             >
@@ -86,10 +86,10 @@ export function Reveal({
           )}
           {variant === 'button' && (
             <Button
-              variant="tertiary"
-              size="x-small"
               onClick={() => setIsOpen(!isOpen)}
+              size="x-small"
               type="button"
+              variant="tertiary"
             >
               {isOpen ? hideLabel : showLabel}
             </Button>

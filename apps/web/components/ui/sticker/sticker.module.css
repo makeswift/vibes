@@ -4,11 +4,11 @@
   width: var(--width);
   height: var(--height);
   cursor: grab;
+}
 
-  * {
-    pointer-events: none;
-    backface-visibility: hidden;
-  }
+.sticker > * {
+  pointer-events: none;
+  backface-visibility: hidden;
 }
 
 .container {

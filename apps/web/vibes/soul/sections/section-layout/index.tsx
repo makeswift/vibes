@@ -22,15 +22,15 @@ export interface SectionLayoutProps {
  */
 export function SectionLayout({ className, children, containerSize = '2xl' }: SectionLayoutProps) {
   return (
-    <section className={clsx('overflow-hidden @container', className)}>
+    <section className={clsx('@container overflow-hidden', className)}>
       <div
         className={clsx(
           'mx-auto px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20',
           {
-            md: 'max-w-[var(--section-max-width-md,768px)]',
-            lg: 'max-w-[var(--section-max-width-lg,1024px)]',
-            xl: 'max-w-[var(--section-max-width-xl,1280px)]',
-            '2xl': 'max-w-[var(--section-max-width-2xl,1536px)]',
+            md: 'max-w-(--section-max-width-md,768px)',
+            lg: 'max-w-(--section-max-width-lg,1024px)',
+            xl: 'max-w-(--section-max-width-xl,1280px)',
+            '2xl': 'max-w-(--section-max-width-2xl,1536px)',
             full: 'max-w-none',
           }[containerSize],
         )}

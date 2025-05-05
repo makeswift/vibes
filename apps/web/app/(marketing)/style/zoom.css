@@ -1,6 +1,4 @@
-@import url('react-medium-image-zoom/dist/styles.css');
-
-@tailwind base;
+@import 'react-medium-image-zoom/dist/styles.css';
 
 [data-rmiz-modal-overlay='hidden'] {
   @apply bg-background/0;
@@ -9,9 +7,11 @@
     @apply opacity-0 transition-opacity;
   }
 }
+
 [data-rmiz-modal-overlay='visible'] {
   @apply bg-background;
 }
+
 [data-rmiz-btn-unzoom] {
-  @apply flex cursor-pointer items-center justify-center transition-colors hover:bg-contrast-100 focus:outline-none;
+  @apply hover:bg-contrast-100 flex cursor-pointer items-center justify-center transition-colors focus:outline-hidden;
 }

@@ -35,28 +35,28 @@ export const product = {
   title: 'ELBA PENNY LOAFER',
   price: '$19.95',
   image: {
-    src: 'https://rstr.in/monogram/vibes/JCwYbAk9Nhi',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozMjRmZjY3Mi03Mjc2LTRlY2QtYjA0NS0zODBhNzNmYjYzNjk=/elba-loafer.webp',
     alt: 'A woman wearing a white crocheted cardigan with green trim and orange flowers, green pants, and brown suede loafers.',
   },
   images: [
     {
-      src: 'https://rstr.in/monogram/vibes/JCwYbAk9Nhi',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozMjRmZjY3Mi03Mjc2LTRlY2QtYjA0NS0zODBhNzNmYjYzNjk=/elba-loafer.webp',
       alt: 'A woman wearing a white crocheted cardigan with green trim and orange flowers, green pants, and brown suede loafers.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/Qrk6pJMoWwZ',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3Y2ExZjA3YS04Njc1LTQ2YzYtOGRhOC04MWNkNzY0NWIwOGI=/elba-loafer-1.webp',
       alt: 'A brown suede loafer with a leather sole.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/ozMaktUeiPy',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyNTNjODFmMS0yYTI1LTRjZWQtYTUzNy04OGQ2NzU0N2Y2M2Q=/elba-loafer-2.webp',
       alt: 'A pair of brown suede loafers with a leather sole.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/Pk6sizxQWc5',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyOTljNGMyOS1lZDE2LTRiNzYtOTVhMy02ODFkODVhZTc0ZTA=/elba-loafer-3.webp',
       alt: 'A pair of brown suede loafers with a leather sole.',
     },
     {
-      src: 'https://rstr.in/monogram/vibes/cLe51lBiEUD',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiY2E1MzAwZC1kNjlhLTRhMWMtOTNjYy03MDE0NTM2NGJkMjQ=/elba-loafer-4.webp',
       alt: 'A brown suede loafer with a leather sole.',
     },
   ],
@@ -72,7 +72,7 @@ export const product = {
       id: '1',
       name: 'Espresso Spazzolato',
       image: {
-        src: 'https://rstr.in/monogram/vibes/RFj64LJfm2W',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo4NjQwZTMyZS1hNGNiLTQ1YjgtODVkOC02ODIxNWEyZDlhYTY=/espresso-spazzolato.png',
         alt: 'Espresso Spazzolato',
       },
     },
@@ -80,7 +80,7 @@ export const product = {
       id: '2',
       name: 'Black Spazzolato',
       image: {
-        src: 'https://rstr.in/monogram/vibes/hUfyHZBL60V',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3ODFiZjE4ZS0yNDM0LTRhNjYtODJiZS03N2IyZmRjY2NiMTM=/black-spazzolato.png',
         alt: 'Black Spazzolato',
       },
     },
@@ -88,7 +88,7 @@ export const product = {
       id: '3',
       name: 'Hickory Embossed Croc with Hardware',
       image: {
-        src: 'https://rstr.in/monogram/vibes/gdktSq34nrI',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowMTdhMTA1YS05ZDFkLTQxZTctODQ1ZS0xODhkNjE2Nzk1MjU=/hickory-embossed.png',
         alt: 'Hickory Embossed Croc with Hardware',
       },
     },
@@ -96,7 +96,7 @@ export const product = {
       id: '4',
       name: 'Black Embossed Croc',
       image: {
-        src: 'https://rstr.in/monogram/vibes/HYmNAiU6Z5Y',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTphYzcwZWYzYS05MDJmLTRkY2QtOGM0Yi01ZTQ0MmNkNWJlZmQ=/black-embossed.png',
         alt: 'Black Embossed Croc',
       },
     },
@@ -104,7 +104,7 @@ export const product = {
       id: '5',
       name: 'Bark Suede Stain Resistant with Hardware',
       image: {
-        src: 'https://rstr.in/monogram/vibes/oyhxIY4PpNI',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmOWM1YjJlYi1jZmZlLTRmOWMtOGUxNC05OGY4YzczMzEzZTQ=/bark-suede.png',
         alt: 'Bark Suede Stain Resistant with Hardware',
       },
     },
@@ -112,7 +112,7 @@ export const product = {
       id: '6',
       name: 'Cumin Suede Stain Resistant with Hardware',
       image: {
-        src: 'https://rstr.in/monogram/vibes/ZmZQ9_i62ph',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1ZDVkMTUyNi1kMDVlLTQ0Y2YtYjc1Zi0wNGY1YTIxZGNhMTg=/cumin-suede.png',
         alt: 'Cumin Suede Stain Resistant with Hardware',
       },
     },
@@ -120,7 +120,7 @@ export const product = {
       id: '7',
       name: 'Cherry Embossed Croc with Hardware',
       image: {
-        src: 'https://rstr.in/monogram/vibes/Y_cqEwBGS2f',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkNWM4MGE3ZS1mYzgzLTQ4ZDMtYTE3ZC0wNDUzYjNiMzU3YWI=/cherry-embossed.png',
         alt: 'Cherry Embossed Croc with Hardware',
       },
     },

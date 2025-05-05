@@ -23,12 +23,14 @@ export interface ForgotPasswordFormProps {
   action: ForgotPasswordAction;
   emailLabel?: string;
   submitLabel?: string;
+  placeholder?: string;
 }
 
 export function ForgotPasswordForm({
   action,
   emailLabel = 'Email',
   submitLabel = 'Reset password',
+  placeholder,
 }: ForgotPasswordFormProps) {
   const [{ lastResult, successMessage }, formAction] = useActionState(action, { lastResult: null });
   const [form, fields] = useForm({
@@ -48,6 +50,7 @@ export function ForgotPasswordForm({
         errors={fields.email.errors}
         key={fields.email.id}
         label={emailLabel}
+        placeholder={placeholder}
       />
       <SubmitButton>{submitLabel}</SubmitButton>
       {form.errors?.map((error, index) => (

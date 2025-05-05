@@ -55,22 +55,22 @@ RadioGroup.displayName = 'RadioGroup';
  *
  * ```css
  *  :root {
- *   --radio-group-light-background: hsl(var(--background));
- *   --radio-group-light-border: hsl(var(--contrast-200));
- *   --radio-group-light-border-error: hsl(var(--error));
- *   --radio-group-light-disabled-border-error: hsl(var(--error) / 50%);
- *   --radio-group-light-border-hover: hsl(var(--contrast-300));
- *   --radio-group-light-border-focus: hsl(var(--contrast-300));
- *   --radio-group-light-indicator-background: hsl(var(--foreground));
- *   --radio-group-light-label: hsl(var(--foreground));
- *   --radio-group-dark-background: hsl(var(--foreground));
- *   --radio-group-dark-border: hsl(var(--contrast-400));
- *   --radio-group-dark-border-error: hsl(var(--error));
- *   --radio-group-dark-disabled-border-error: hsl(var(--error) / 50%);
- *   --radio-group-dark-border-hover: hsl(var(--contrast-300));
- *   --radio-group-dark-border-focus: hsl(var(--contrast-300));
- *   --radio-group-dark-indicator-background: hsl(var(--background));
- *   --radio-group-dark-label: hsl(var(--background));
+ *   --radio-group-light-background: var(--background);
+ *   --radio-group-light-border: var(--contrast-200);
+ *   --radio-group-light-border-error: var(--error);
+ *   --radio-group-light-disabled-border-error: color-mix(in oklab, var(--error) 50%, transparent);
+ *   --radio-group-light-border-hover: var(--contrast-300);
+ *   --radio-group-light-border-focus: var(--contrast-300);
+ *   --radio-group-light-indicator-background: var(--foreground);
+ *   --radio-group-light-label: var(--foreground);
+ *   --radio-group-dark-background: var(--foreground);
+ *   --radio-group-dark-border: var(--contrast-400);
+ *   --radio-group-dark-border-error: var(--error);
+ *   --radio-group-dark-disabled-border-error: color-mix(in oklab, var(--error) 50%, transparent);
+ *   --radio-group-dark-border-hover: var(--contrast-300);
+ *   --radio-group-dark-border-focus: var(--contrast-300);
+ *   --radio-group-dark-indicator-background: var(--background);
+ *   --radio-group-dark-label: var(--background);
  *  }
  * ```
  */
@@ -92,18 +92,18 @@ function RadioGroupItem({
       <RadioGroupPrimitive.Item
         aria-label={option.label}
         className={clsx(
-          'size-5 cursor-default rounded-full border outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50',
+          'size-5 cursor-default rounded-full border outline-hidden data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50',
           {
-            light: 'bg-[var(--radio-group-light-background,hsl(var(--background)))]',
-            dark: 'bg-[var(--radio-group-dark-background,hsl(var(--foreground)))]',
+            light: 'bg-(--radio-group-light-background,var(--background))',
+            dark: 'bg-(--radio-group-dark-background,var(--foreground))',
           }[colorScheme],
           {
             light: error
-              ? 'border-[var(--radio-group-light-border-error,hsl(var(--error)))] disabled:border-[var(--radio-group-light-disabled-border-error,hsl(var(--error)/50%))]'
-              : 'border-[var(--radio-group-light-border,hsl(var(--contrast-200)))] hover:border-[var(--radio-group-light-border-hover,hsl(var(--contrast-300)))] focus:border-[var(--radio-group-light-border-focus,hsl(var(--contrast-300)))]',
+              ? 'border-(--radio-group-light-border-error,var(--error)) disabled:border-(--radio-group-light-disabled-border-error,color-mix(in_oklab,var(--error)_50%,transparent))'
+              : 'border-(--radio-group-light-border,var(--contrast-200)) hover:border-(--radio-group-light-border-hover,var(--contrast-300)) focus:border-(--radio-group-light-border-focus,var(--contrast-300))',
             dark: error
-              ? 'border-[var(--radio-group-dark-border-error,hsl(var(--error)))] disabled:border-[var(--radio-group-dark-disabled-border-error,hsl(var(--error)/50%))]'
-              : 'border-[var(--radio-group-dark-border,hsl(var(--contrast-400)))] hover:border-[var(--radio-group-dark-border-hover,hsl(var(--contrast-300)))] focus:border-[var(--radio-group-light-border-focus,hsl(var(--contrast-300)))]',
+              ? 'border-(--radio-group-dark-border-error,var(--error)) disabled:border-(--radio-group-dark-disabled-border-error,color-mix(in_oklab,var(--error)_50%,transparent))'
+              : 'border-(--radio-group-dark-border,var(--contrast-400)) hover:border-(--radio-group-dark-border-hover,var(--contrast-300)) focus:border-(--radio-group-light-border-focus,var(--contrast-300))',
           }[colorScheme],
         )}
         disabled={option.disabled}
@@ -117,9 +117,8 @@ function RadioGroupItem({
           className={clsx(
             'relative flex size-full items-center justify-center after:block after:size-3 after:rounded-full',
             {
-              light:
-                'after:bg-[var(--radio-group-light-indicator-background,hsl(var(--foreground)))]',
-              dark: 'after:bg-[var(--radio-group-dark-indicator-background,hsl(var(--background)))]',
+              light: 'after:bg-(--radio-group-light-indicator-background,var(--foreground))',
+              dark: 'after:bg-(--radio-group-dark-indicator-background,var(--background))',
             }[colorScheme],
           )}
         />
@@ -128,8 +127,8 @@ function RadioGroupItem({
         className={clsx(
           'pl-3 text-sm leading-none',
           {
-            light: 'text-[var(--radio-group-light-label,hsl(var(--foreground)))]',
-            dark: 'text-[var(--radio-group-dark-label,hsl(var(--background)))]',
+            light: 'text-(--radio-group-light-label,var(--foreground))',
+            dark: 'text-(--radio-group-dark-label,var(--background))',
           }[colorScheme],
         )}
         htmlFor={id}

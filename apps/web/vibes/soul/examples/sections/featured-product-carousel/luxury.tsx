@@ -35,13 +35,13 @@ interface Product {
 const products: Product[] = [
   {
     id: '1',
-    title: 'Jada Square Toe Ballet Flat',
+    title: 'JADA SQUARE TOE BALLET FLAT',
     subtitle: '',
     badge: 'Bestseller',
     price: '$350',
     image: {
-      src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-      alt: 'Jada Square Toe Ballet Flat',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTUwMzNmMy0zYzRlLTQzOTUtYTc3MC1jYWM0OWE1YWMyY2E=/jada-square-toe.webp',
+      alt: 'JADA SQUARE TOE BALLET FLAT',
     },
     href: '#',
     rating: 4.5,
@@ -53,7 +53,7 @@ const products: Product[] = [
     badge: 'Bestseller',
     price: '$395',
     image: {
-      src: 'https://rstr.in/monogram/vibes/jD25Jjm0zbT',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTE5YTQ1Mi1lZDU3LTQ2NDYtODgxMC0yYzU2NjI0NGM3ODk=/jayla-woven.webp',
       alt: 'Jayla Woven Ballet Heel',
     },
     href: '#',
@@ -66,7 +66,7 @@ const products: Product[] = [
     badge: 'Bestseller',
     price: '$450',
     image: {
-      src: 'https://rstr.in/monogram/vibes/1ipihAyvRQj',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowZWIzNWY2My0yM2Y3LTRmNDAtYTUzOS0zY2JjNmFhYzJkYWQ=/jessie-ballet.webp',
       alt: 'Jessie Ballet Flat',
     },
     href: '#',
@@ -79,7 +79,7 @@ const products: Product[] = [
     badge: 'Almost Gone',
     price: '$350',
     image: {
-      src: 'https://rstr.in/monogram/vibes/YfQW8M1Gv2H/zTWKcqJrdIu',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmM2Y1MzJiZi1hYTg0LTQzNzctYTA4NS1hODZkMWI3NGFmOWU=/leighton-soft.jpeg',
       alt: 'Leighton Soft Leather Loafer',
     },
     href: '#',
@@ -92,7 +92,7 @@ const products: Product[] = [
     badge: 'Bestseller',
     price: '$350',
     image: {
-      src: 'https://rstr.in/monogram/vibes/5QBR05kyrYo',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmN2Q1MDUxMC03ZGEwLTQ3MGItYTI0Ny1mOTA0ZTNjYTkyZWU=/jada-square-toe.webp',
       alt: 'JADA SQUARE TOE BALLET FLAT',
     },
     href: '#',
@@ -105,7 +105,7 @@ const products: Product[] = [
     badge: 'Almost Gone',
     price: '$290',
     image: {
-      src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz/vfCehRZDBGk',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3ZjAyMzkyYS1iN2ViLTQ0YzAtYmUxNi1kOThjMjk0MTU0ZGQ=/darya-lug.webp',
       alt: 'DARYA LUG SOLE FISHERMAN',
     },
     href: '#',

@@ -24,7 +24,7 @@ export const posts: BlogPost[] = [
     content:
       'Discover the convenience and durability of the Mini Bar Bag, perfect for carrying your essentials on long cycling trips. With multiple colors available, this bag is a must-have for every rider.',
     image: {
-      src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
       alt: 'Mini Bar Bag',
     },
     date: '2025-02-21',
@@ -36,7 +36,7 @@ export const posts: BlogPost[] = [
     content:
       'A Stem Caddy is the ultimate accessory for quick access to snacks, tools, or even your phone. Find out why cyclists love this compact and stylish storage solution.',
     image: {
-      src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo5NTIxMmU4MC0xY2EwLTQxZjktOTBiYS0yOWFhYmU3ZTNkMzA=/stem-caddy.jpeg',
       alt: 'Stem Caddy',
     },
     date: '2025-02-18',
@@ -48,7 +48,7 @@ export const posts: BlogPost[] = [
     content:
       'Say goodbye to bulky backpacks! The Hip Slinger offers a sleek, comfortable way to carry your gear while riding. Learn why this bag is becoming a favorite among urban cyclists.',
     image: {
-      src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo0MDcxNDBlYy1jYmIzLTRiNjQtOTUxMS1mMTIyMGUyYWY5MjQ=/hip-slinger.jpeg',
       alt: 'Hip Slinger',
     },
     date: '2025-02-15',
@@ -60,7 +60,7 @@ export const posts: BlogPost[] = [
     content:
       'Stylish, functional, and durable—the Everyday Tote is perfect for riders who need a versatile bag for both cycling and daily life. Check out its top features.',
     image: {
-      src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowODYwYTY2NC02NjdjLTRhODYtYTUxYy1jOWExNzI5YTdjMDk=/everyday-tote.jpeg',
       alt: 'Everyday Tote',
     },
     date: '2025-02-10',
@@ -72,7 +72,7 @@ export const posts: BlogPost[] = [
     content:
       'Whether you’re a commuter or a long-distance rider, the Mini Saddlebag keeps your tools and small essentials safe and accessible. See why riders love it.',
     image: {
-      src: 'https://rstr.in/monogram/vibes/MZX8-yya26e',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo4YzEyMjUyOC0zMWU5LTQyYWYtOTFlYi04YjQzNmRiZGVmNDU=/mini-saddlebag.jpeg',
       alt: 'Mini Saddlebag',
     },
     date: '2025-02-05',

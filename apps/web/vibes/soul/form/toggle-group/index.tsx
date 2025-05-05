@@ -27,24 +27,24 @@ interface Option {
  *
  * ```css
  *  :root {
- *   --toggle-group-light-focus: hsl(var(--primary));
- *   --toggle-group-light-border: hsl(var(--contrast-100));
- *   --toggle-group-light-on-border: hsl(var(--foreground));
- *   --toggle-group-light-on-background: hsl(var(--foreground));
- *   --toggle-group-light-off-background: hsl(var(--background));
- *   --toggle-group-light-off-text: hsl(var(--foreground));
- *   --toggle-group-light-on-text: hsl(var(--background));
- *   --toggle-group-light-off-border-hover: hsl(var(--contrast-200));
- *   --toggle-group-light-off-background-hover: hsl(var(--contrast-100));
- *   --toggle-group-dark-focus: hsl(var(--primary));
- *   --toggle-group-dark-border: hsl(var(--contrast-500));
- *   --toggle-group-dark-on-border: hsl(var(--background));
- *   --toggle-group-dark-on-background: hsl(var(--background));
- *   --toggle-group-dark-off-background: hsl(var(--foreground));
- *   --toggle-group-dark-off-text: hsl(var(--background));
- *   --toggle-group-dark-on-text: hsl(var(--foreground));
- *   --toggle-group-dark-off-border-hover: hsl(var(--contrast-400));
- *   --toggle-group-dark-off-background-hover: hsl(var(--contrast-500));
+ *   --toggle-group-light-focus: var(--primary);
+ *   --toggle-group-light-border: var(--contrast-100);
+ *   --toggle-group-light-on-border: var(--foreground);
+ *   --toggle-group-light-on-background: var(--foreground);
+ *   --toggle-group-light-off-background: var(--background);
+ *   --toggle-group-light-off-text: var(--foreground);
+ *   --toggle-group-light-on-text: var(--background);
+ *   --toggle-group-light-off-border-hover: var(--contrast-200);
+ *   --toggle-group-light-off-background-hover: var(--contrast-100);
+ *   --toggle-group-dark-focus: var(--primary);
+ *   --toggle-group-dark-border: var(--contrast-500);
+ *   --toggle-group-dark-on-border: var(--background);
+ *   --toggle-group-dark-on-background: var(--background);
+ *   --toggle-group-dark-off-background: var(--foreground);
+ *   --toggle-group-dark-off-text: var(--background);
+ *   --toggle-group-dark-on-text: var(--foreground);
+ *   --toggle-group-dark-off-border-hover: var(--contrast-400);
+ *   --toggle-group-dark-off-background-hover: var(--contrast-500);
  * }
  * ```
  */
@@ -72,11 +72,11 @@ export const ToggleGroup = ({
           <ToggleGroupPrimitive.Item
             aria-label={option.label}
             className={clsx(
-              'h-12 whitespace-nowrap rounded-full border px-4 font-body text-sm font-normal leading-normal transition-colors focus-visible:outline-0 focus-visible:ring-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+              'font-body h-12 rounded-full border px-4 text-sm leading-normal font-normal whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:outline-0 data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
               {
                 light:
-                  'border-[var(--toggle-group-light-border,hsl(var(--contrast-100)))] ring-[var(--toggle-group-light-focus,hsl(var(--primary)))] data-[state=on]:border-[var(--toggle-group-light-on-border,hsl(var(--foreground)))] data-[state=off]:bg-[var(--toggle-group-light-off-background,hsl(var(--background)))] data-[state=on]:bg-[var(--toggle-group-light-on-background,hsl(var(--foreground)))] data-[state=off]:text-[var(--toggle-group-light-off-text,hsl(var(--foreground)))] data-[state=on]:text-[var(--toggle-group-light-on-text,hsl(var(--background)))] data-[state=off]:hover:border-[var(--toggle-group-light-off-border-hover,hsl(var(--contrast-200)))] data-[state=off]:hover:bg-[var(--toggle-group-light-off-background-hover,hsl(var(--contrast-100)))]',
-                dark: 'border-[var(--toggle-group-dark-border,hsl(var(--contrast-500)))] ring-[var(--toggle-group-dark-focus,hsl(var(--primary)))] data-[state=on]:border-[var(--toggle-group-dark-on-border,hsl(var(--background)))] data-[state=off]:bg-[var(--toggle-group-dark-off-background,hsl(var(--foreground)))] data-[state=on]:bg-[var(--toggle-group-dark-on-background,hsl(var(--background)))] data-[state=off]:text-[var(--toggle-group-dark-off-text,hsl(var(--background)))] data-[state=on]:text-[var(--toggle-group-dark-on-text,hsl(var(--foreground)))] data-[state=off]:hover:border-[var(--toggle-group-dark-off-border-hover,hsl(var(--contrast-400)))] data-[state=off]:hover:bg-[var(--toggle-group-dark-off-background-hover,hsl(var(--contrast-500)))]',
+                  'border-(--toggle-group-light-border,var(--contrast-100)) ring-(--toggle-group-light-focus,var(--primary)) data-[state=off]:bg-(--toggle-group-light-off-background,var(--background)) data-[state=off]:text-(--toggle-group-light-off-text,var(--foreground)) data-[state=off]:hover:border-(--toggle-group-light-off-border-hover,var(--contrast-200)) data-[state=off]:hover:bg-(--toggle-group-light-off-background-hover,var(--contrast-100)) data-[state=on]:border-(--toggle-group-light-on-border,var(--foreground)) data-[state=on]:bg-(--toggle-group-light-on-background,var(--foreground)) data-[state=on]:text-(--toggle-group-light-on-text,var(--background))',
+                dark: 'border-(--toggle-group-dark-border,var(--contrast-500)) ring-(--toggle-group-dark-focus,var(--primary)) data-[state=off]:bg-(--toggle-group-dark-off-background,var(--foreground)) data-[state=off]:text-(--toggle-group-dark-off-text,var(--background)) data-[state=off]:hover:border-(--toggle-group-dark-off-border-hover,var(--contrast-400)) data-[state=off]:hover:bg-(--toggle-group-dark-off-background-hover,var(--contrast-500)) data-[state=on]:border-(--toggle-group-dark-on-border,var(--background)) data-[state=on]:bg-(--toggle-group-dark-on-background,var(--background)) data-[state=on]:text-(--toggle-group-dark-on-text,var(--foreground))',
               }[colorScheme],
             )}
             disabled={option.disabled}

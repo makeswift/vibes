@@ -2,7 +2,7 @@ import { CompareCard } from '@/vibes/soul/primitives/compare-card';
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-background p-8">
+    <div className="bg-background flex min-h-48 items-center justify-center p-8">
       <CompareCard
         addToCartLabel="Add to cart"
         imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
@@ -11,7 +11,7 @@ export default function Preview() {
           href: '#',
           title: 'Philodendron Imperial Red',
           image: {
-            src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+            src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNzAzMzk0Ni01NGNhLTQ3ZDYtODgyYi0wYWI3NTUzNTU4YjQ=/kv08IvX08j.jpeg',
             alt: 'Philodendron Imperial Red',
           },
           subtitle: 'Blue/Black/Green',

@@ -40,10 +40,10 @@ export interface ProductCarouselProps {
  *
  * ```css
  * :root {
- *   --product-carousel-light-empty-title: hsl(var(--foreground));
- *   --product-carousel-light-empty-subtitle: hsl(var(--contrast-500));
- *   --product-carousel-dark-empty-title: hsl(var(--background));
- *   --product-carousel-dark-empty-subtitle: hsl(var(--contrast-100));
+ *   --product-carousel-light-empty-title: var(--foreground);
+ *   --product-carousel-light-empty-subtitle: var(--contrast-500);
+ *   --product-carousel-dark-empty-title: var(--background);
+ *   --product-carousel-dark-empty-subtitle: var(--contrast-100);
  *   --product-carousel-empty-title-font-family: var(--font-family-heading);
  *   --product-carousel-empty-subtitle-font-family: var(--font-family-body);
  * }
@@ -91,7 +91,7 @@ export function ProductCarousel({
 
         return (
           <Carousel className={className} hideOverflow={hideOverflow}>
-            <CarouselContent className="-ml-4 mb-10 @2xl:-ml-5">
+            <CarouselContent className="mb-10 -ml-4 @2xl:-ml-5">
               {products.map(({ id, ...product }) => (
                 <CarouselItem
                   className="basis-full pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
@@ -192,14 +192,14 @@ export function ProductsCarouselEmptyState({
           ))}
         </div>
       </div>
-      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pt-28 @4xl:pb-10">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
           <h3
             className={clsx(
-              'font-[family-name:var(--product-carousel-empty-title-font-family,var(--font-family-heading))] text-2xl leading-tight @4xl:text-4xl @4xl:leading-none',
+              'font-(family-name:--product-carousel-empty-title-font-family,var(--font-family-heading)) text-2xl leading-tight @4xl:text-4xl @4xl:leading-none',
               {
-                light: 'text-[var(--product-carousel-light-empty-title,hsl(var(--foreground)))]',
-                dark: 'text-[var(--product-carousel-dark-empty-title,hsl(var(--background)))]',
+                light: 'text-(--product-carousel-light-empty-title,var(--foreground))',
+                dark: 'text-(--product-carousel-dark-empty-title,var(--background))',
               }[colorScheme],
             )}
           >
@@ -207,11 +207,10 @@ export function ProductsCarouselEmptyState({
           </h3>
           <p
             className={clsx(
-              'font-[family-name:var(--product-carousel-empty-subtitle-font-family,var(--font-family-body))] text-sm @4xl:text-lg',
+              'font-(family-name:--product-carousel-empty-subtitle-font-family,var(--font-family-body)) text-sm @4xl:text-lg',
               {
-                light:
-                  'text-[var(--product-carousel-light-empty-subtitle,hsl(var(--contrast-500)))]',
-                dark: 'text-[var(--product-carousel-dark-empty-subtitle,hsl(var(--contrast-200)))]',
+                light: 'text-(--product-carousel-light-empty-subtitle,var(--contrast-500))',
+                dark: 'text-(--product-carousel-dark-empty-subtitle,var(--contrast-200))',
               }[colorScheme],
             )}
           >

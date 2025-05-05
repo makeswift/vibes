@@ -14,23 +14,23 @@ export interface ButtonLinkProps extends ComponentPropsWithoutRef<typeof Link> {
  *
  * ```css
  * :root {
- *   --button-focus: hsl(var(--primary));
+ *   --button-focus: var(--primary);
  *   --button-font-family: var(--font-family-body);
- *   --button-primary-background: hsl(var(--primary));
- *   --button-primary-background-hover: color-mix(in oklab, hsl(var(--primary)), white 75%);
- *   --button-primary-text: hsl(var(--foreground));
- *   --button-primary-border: hsl(var(--primary));
- *   --button-secondary-background: hsl(var(--foreground));
- *   --button-secondary-background-hover: hsl(var(--background));
- *   --button-secondary-text: hsl(var(--background));
- *   --button-secondary-border: hsl(var(--foreground));
- *   --button-tertiary-background: hsl(var(--background));
- *   --button-tertiary-background-hover: hsl(var(--contrast-100));
- *   --button-tertiary-text: hsl(var(--foreground));
- *   --button-tertiary-border: hsl(var(--contrast-200));
+ *   --button-primary-background: var(--primary);
+ *   --button-primary-background-hover: var(--primary-highlight);
+ *   --button-primary-text: var(--foreground);
+ *   --button-primary-border: var(--primary);
+ *   --button-secondary-background: var(--foreground);
+ *   --button-secondary-background-hover: var(--background);
+ *   --button-secondary-text: var(--background);
+ *   --button-secondary-border: var(--foreground);
+ *   --button-tertiary-background: var(--background);
+ *   --button-tertiary-background-hover: var(--contrast-100);
+ *   --button-tertiary-text: var(--foreground);
+ *   --button-tertiary-border: var(--contrast-200);
  *   --button-ghost-background: transparent;
- *   --button-ghost-background-hover: hsl(var(--foreground) / 5%);
- *   --button-ghost-text: hsl(var(--foreground));
+ *   --button-ghost-background-hover: color-mix(in oklab, var(--foreground) 5%, transparent);
+ *   --button-ghost-text: var(--foreground);
  *   --button-ghost-border: transparent;
  * }
  * ```
@@ -47,16 +47,16 @@ export function ButtonLink({
     <Link
       {...props}
       className={clsx(
-        'relative z-0 inline-flex h-fit select-none items-center justify-center overflow-hidden border text-center font-[family-name:var(--button-font-family)] font-semibold leading-normal after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition-[opacity,transform] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--button-focus,hsl(var(--primary)))] focus-visible:ring-offset-2',
+        'relative z-0 inline-flex h-fit items-center justify-center overflow-hidden border text-center font-(family-name:--button-font-family) leading-normal font-semibold select-none after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] hover:after:translate-x-0 focus-visible:ring-2 focus-visible:ring-(--button-focus,var(--primary)) focus-visible:ring-offset-2 focus-visible:outline-hidden',
         {
           primary:
-            'border-[var(--button-primary-border,hsl(var(--primary)))] bg-[var(--button-primary-background,hsl(var(--primary)))] text-[var(--button-primary-text)] after:bg-[var(--button-primary-background-hover,color-mix(in_oklab,hsl(var(--primary)),white_75%))]',
+            'border-(--button-primary-border,var(--primary)) bg-(--button-primary-background,var(--primary)) text-(--button-primary-text,var(--foreground)) after:bg-(--button-primary-background-hover,var(--primary-highlight))',
           secondary:
-            'border-[var(--button-secondary-border,hsl(var(--foreground)))] bg-[var(--button-secondary-background,hsl(var(--foreground)))] text-[var(--button-secondary-text,hsl(var(--background)))] after:bg-[var(--button-secondary-background-hover,hsl(var(--background)))]',
+            'border-(--button-secondary-border,var(--foreground)) bg-(--button-secondary-background,var(--foreground)) text-(--button-secondary-text,var(--background)) after:bg-(--button-secondary-background-hover,var(--background))',
           tertiary:
-            'border-[var(--button-tertiary-border,hsl(var(--contrast-200)))] bg-[var(--button-tertiary-background,hsl(var(--background)))] text-[var(--button-tertiary-text,hsl(var(--foreground)))] after:bg-[var(--button-tertiary-background-hover,hsl(var(--contrast-100)))]',
+            'border-(--button-tertiary-border,var(--contrast-200)) bg-(--button-tertiary-background,var(--background)) text-(--button-tertiary-text,var(--foreground)) after:bg-(--button-tertiary-background-hover,var(--contrast-100))',
           ghost:
-            'border-[var(--button-ghost-border,transparent)] bg-[var(--button-ghost-background,transparent)] text-[var(--button-ghost-text,hsl(var(--foreground)))] after:bg-[var(--button-ghost-background-hover,hsl(var(--foreground)/5%))]',
+            'border-(--button-ghost-border,transparent) bg-(--button-ghost-background,transparent) text-(--button-ghost-text,var(--foreground)) after:bg-(--button-ghost-background-hover,color-mix(in_oklab,var(--foreground)_5%,transparent))',
         }[variant],
         {
           'x-small': 'min-h-8 text-xs',

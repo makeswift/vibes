@@ -91,17 +91,18 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --product-card-focus: hsl(var(--primary));
-  --product-card-light-offset: hsl(var(--background));
-  --product-card-light-background: hsl(var(--contrast-100));
-  --product-card-light-title: hsl(var(--foreground));
-  --product-card-light-subtitle: hsl(var(--foreground) / 75%);
-  --product-card-dark-offset: hsl(var(--foreground));
-  --product-card-dark-background: hsl(var(--contrast-500));
-  --product-card-dark-title: hsl(var(--background));
-  --product-card-dark-subtitle: hsl(var(--background) / 75%);
-  --product-card-font-family: var(--font-family-body);
+    --product-card-focus: var(--primary);
+    --product-card-light-offset: var(--background);
+    --product-card-light-background: var(--contrast-100);
+    --product-card-light-title: var(--foreground);
+    --product-card-light-subtitle: color-mix(in oklab, var(--foreground) 75%, transparent);
+    --product-card-dark-offset: var(--foreground);
+    --product-card-dark-background: var(--contrast-500);
+    --product-card-dark-title: var(--background);
+    --product-card-dark-subtitle: color-mix(in oklab, var(--background) 75%, transparent);
+    --product-card-font-family: var(--font-family-body);
+    --product-card-border-radius: 1rem;
 }
-```
+`}</CodeBlock>

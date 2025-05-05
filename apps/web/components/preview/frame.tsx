@@ -47,9 +47,9 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
   }, [zoom]);
 
   return (
-    <div className={clsx('relative w-full bg-contrast-100', className)} ref={container}>
+    <div className={clsx('bg-contrast-100 relative w-full', className)} ref={container}>
       <div
-        className={clsx('relative mx-auto h-full border border-dashed border-contrast-200')}
+        className={clsx('border-contrast-200 relative mx-auto h-full border border-dashed')}
         style={{ width: width ?? '100%' }}
       >
         {activeBrand && (
@@ -61,7 +61,7 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
           />
         )}
         <div
-          className="group absolute bottom-0 left-full top-0 hidden w-4 cursor-resizeX md:block"
+          className="group absolute top-0 bottom-0 left-full hidden w-4 cursor-(--cursor-resize) md:block"
           onPointerDown={(e) => {
             if (!container.current) return;
 
@@ -108,14 +108,14 @@ export function Frame({ className, vibeSlug, componentName }: Props) {
             e.currentTarget.ownerDocument.exitPointerLock();
           }}
         >
-          <div className="absolute top-1/2 ml-2 h-8 w-0.5 -translate-y-1/2 rounded-full bg-foreground transition-all group-hover:scale-x-125 group-hover:scale-y-150" />
+          <div className="bg-foreground absolute top-1/2 ml-2 h-8 w-0.5 -translate-y-1/2 rounded-full transition-all group-hover:scale-x-125 group-hover:scale-y-150" />
         </div>
       </div>
       <Portal>
         {isDragging && (
           <div className="fixed inset-0 z-50">
             {cursor && (
-              <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2">
+              <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2">
                 <ResizeX style={{ transform: `translate3d(${cursor[0]}px, ${cursor[1]}px, 0)` }} />
               </div>
             )}

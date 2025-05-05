@@ -38,11 +38,11 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --not-found-font-family: var(--font-family-body);
-  --not-found-title-font-family: var(--font-family-heading);
-  --not-found-title: hsl(var(--foreground));
-  --not-found-subtitle: hsl(var(--contrast-500));
+    --not-found-font-family: var(--font-family-body);
+    --not-found-title-font-family: var(--font-family-heading);
+    --not-found-title: var(--foreground);
+    --not-found-subtitle: var(--contrast-500);
 }
-```
+`}</CodeBlock>

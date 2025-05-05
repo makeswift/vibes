@@ -21,7 +21,7 @@ export function BrandFonts({ brands, brandName, fonts }: Props) {
         return (
           <div key={type}>
             <div
-              className="truncate text-xl leading-normal text-foreground md:text-xl"
+              className="text-foreground truncate text-xl leading-normal md:text-xl"
               style={
                 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                 {
@@ -34,7 +34,7 @@ export function BrandFonts({ brands, brandName, fonts }: Props) {
             >
               {name}
             </div>
-            <span className="rounded bg-contrast-100 px-1 py-0.5 font-mono text-xs text-contrast-500">
+            <span className="bg-contrast-100 text-contrast-500 rounded-sm px-1 py-0.5 font-mono text-xs">
               font-{type}
             </span>
           </div>

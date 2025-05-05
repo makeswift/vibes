@@ -11,20 +11,17 @@ export interface SpinnerProps {
  *
  * ```css
  * :root {
- *   --spinner-base: hsl(var(--contrast-100));
- *   --spinner-ring: color-mix(in oklab, hsl(var(--primary)), black 75%);
+ *   --spinner-base: var(--contrast-100);
+ *   --spinner-ring: var(--primary-shadow);
  * }
  * ```
  */
-export const Spinner = function Spinner({
-  size = 'sm',
-  loadingAriaLabel = 'Loading...',
-}: SpinnerProps) {
+export function Spinner({ size = 'sm', loadingAriaLabel = 'Loading...' }: SpinnerProps) {
   return (
     <span
       aria-label={loadingAriaLabel}
       className={clsx(
-        'box-border inline-block animate-spin rounded-full border-[var(--spinner-base,hsl(var(--contrast-100)))] border-b-[var(--spinner-ring,color-mix(in_oklab,_hsl(var(--primary)),_black_75%))]',
+        'box-border inline-block animate-spin rounded-full border-(--spinner-base,var(--contrast-100)) border-b-(--spinner-ring,var(--primary-shadow))',
         {
           xs: 'h-5 w-5 border-2',
           sm: 'h-6 w-6 border-2',
@@ -35,4 +32,4 @@ export const Spinner = function Spinner({
       role="status"
     />
   );
-};
+}

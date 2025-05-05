@@ -52,12 +52,14 @@ export function ChangePasswordForm({
         errors={fields.currentPassword.errors}
         key={fields.currentPassword.id}
         label={currentPasswordLabel}
+        placeholder={currentPasswordLabel}
       />
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
         errors={fields.password.errors}
         key={fields.password.id}
         label={newPasswordLabel}
+        placeholder={newPasswordLabel}
       />
       <Input
         {...getInputProps(fields.confirmPassword, { type: 'password' })}
@@ -65,6 +67,7 @@ export function ChangePasswordForm({
         errors={fields.confirmPassword.errors}
         key={fields.confirmPassword.id}
         label={confirmPasswordLabel}
+        placeholder={confirmPasswordLabel}
       />
       <SubmitButton>{submitLabel}</SubmitButton>
     </form>

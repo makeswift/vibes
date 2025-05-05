@@ -57,7 +57,7 @@ const blogPost = {
     `,
   date: 'June 30, 2024',
   image: {
-    src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NGFjNmRiYi0xZDE2LTRiOTEtOWUyZS0zMjY1ZjBmZTk0ZjU=/plant-blog-1.jpeg',
     alt: 'A plant with large leaves and a short stem.',
   },
   title: "Top 5 Plants to Purify Your Home's Air",

@@ -56,23 +56,23 @@ This component uses the Radix UI RadioGroup component. Refer to the [RadioGroup 
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --radio-group-light-background: hsl(var(--background));
-  --radio-group-light-border: hsl(var(--contrast-200));
-  --radio-group-light-border-error: hsl(var(--error));
-  --radio-group-light-disabled-border-error: hsl(var(--error) / 50%);
-  --radio-group-light-border-hover: hsl(var(--contrast-300));
-  --radio-group-light-border-focus: hsl(var(--contrast-300));
-  --radio-group-light-indicator-background: hsl(var(--foreground));
-  --radio-group-light-label: hsl(var(--foreground));
-  --radio-group-dark-background: hsl(var(--foreground));
-  --radio-group-dark-border: hsl(var(--contrast-400));
-  --radio-group-dark-border-error: hsl(var(--error));
-  --radio-group-dark-disabled-border-error: hsl(var(--error) / 50%);
-  --radio-group-dark-border-hover: hsl(var(--contrast-300));
-  --radio-group-dark-border-focus: hsl(var(--contrast-300));
-  --radio-group-dark-indicator-background: hsl(var(--background));
-  --radio-group-dark-label: hsl(var(--background));
+    --radio-group-light-background: var(--background);
+    --radio-group-light-border: var(--contrast-200);
+    --radio-group-light-border-error: var(--error);
+    --radio-group-light-disabled-border-error: color-mix(in oklab, var(--error) 50%, transparent);
+    --radio-group-light-border-hover: var(--contrast-300);
+    --radio-group-light-border-focus: var(--contrast-300);
+    --radio-group-light-indicator-background: var(--foreground);
+    --radio-group-light-label: var(--foreground);
+    --radio-group-dark-background: var(--foreground);
+    --radio-group-dark-border: var(--contrast-400);
+    --radio-group-dark-border-error: var(--error);
+    --radio-group-dark-disabled-border-error: color-mix(in oklab, var(--error) 50%, transparent);
+    --radio-group-dark-border-hover: var(--contrast-300);
+    --radio-group-dark-border-focus: var(--contrast-300);
+    --radio-group-dark-indicator-background: var(--background);
+    --radio-group-dark-label: var(--background);
 }
-```
+`}</CodeBlock>

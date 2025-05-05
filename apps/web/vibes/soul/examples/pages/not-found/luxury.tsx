@@ -61,7 +61,7 @@ export const products: Product[] = [
     badge: '',
     price: '$325',
     image: {
-      src: 'https://rstr.in/monogram/vibes/18bzcr01WWx',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo5MGE5YjM1ZS0wY2Q5LTQ2ZWQtOTg4My1iYTk0ZWQwNDA5ZDM=/darya-lug-2.webp',
       alt: 'DARYA LUG SOLE FISHERMAN',
     },
     href: '#',
@@ -77,7 +77,7 @@ export const products: Product[] = [
       currentValue: '$129.99',
     },
     image: {
-      src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3ZjAyMzkyYS1iN2ViLTQ0YzAtYmUxNi1kOThjMjk0MTU0ZGQ=/darya-lug.webp',
       alt: 'ROMA ROUND TOE BALLET FLAT',
     },
     href: '#',
@@ -89,7 +89,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/DYeoTIrhxZk',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiMmI4ZmIwMC02NzY2LTQyNzMtYmRkYi00OGM4NGQ0YzAxZTg=/small-plant-clay-pot.jpeg',
       alt: 'Product Name',
     },
     href: '#',
@@ -105,7 +105,7 @@ export const products: Product[] = [
       maxValue: '$150',
     },
     image: {
-      src: 'https://rstr.in/monogram/vibes/9HSPQU1tr1p',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo4NDliYmI1Ni1lOTIwLTQ1ODMtOWU2MC1lN2I0Y2EyMGNhNmM=/medium-plant-black-pot.jpeg',
       alt: 'Product Name',
     },
     href: '#',
@@ -121,7 +121,7 @@ export const products: Product[] = [
       currentValue: '$150',
     },
     image: {
-      src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozZWFjZDhlZi1lY2EzLTRiMzYtYTJkNS02ZGJkOWE4MzUwYjQ=/lJg081kQqvc.jpeg',
       alt: 'Product Name',
     },
     href: '#',
@@ -133,7 +133,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$123.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyMTIwYzE1ZC01YzlkLTQ3MDgtOTZhOS1hZDkwYjVmNDAwZWY=/n0P83RMnClS%202930x3663.jpeg',
       alt: 'Product Name',
     },
     href: '#',

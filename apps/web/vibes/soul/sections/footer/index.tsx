@@ -52,22 +52,22 @@ export interface FooterProps {
  *
  * ```css
  * :root {
- *   --footer-focus: hsl(var(--primary));
- *   --footer-background: hsl(var(--background));
- *   --footer-border-top: hsl(var(--contrast-100));
- *   --footer-border-bottom: hsl(var(--primary));
- *   --footer-contact-title: hsl(var(--contrast-500));
- *   --footer-contact-text: hsl(var(--foreground));
- *   --footer-social-icon: hsl(var(--contrast-400));
- *   --footer-social-icon-hover: hsl(var(--foreground));
- *   --footer-section-title: hsl(var(--foreground));
- *   --footer-link: hsl(var(--contrast-500));
- *   --footer-link-hover: hsl(var(--foreground));
- *   --footer-copyright: hsl(var(--contrast-500));
+ *   --footer-focus: var(--primary);
+ *   --footer-background: var(--background);
+ *   --footer-border-top: var(--contrast-100);
+ *   --footer-border-bottom: var(--primary);
+ *   --footer-contact-title: var(--contrast-500);
+ *   --footer-contact-text: var(--foreground);
+ *   --footer-social-icon: var(--contrast-400);
+ *   --footer-social-icon-hover: var(--foreground);
+ *   --footer-section-title: var(--foreground);
+ *   --footer-link: var(--contrast-500);
+ *   --footer-link-hover: var(--foreground);
+ *   --footer-copyright: var(--contrast-500);
  * }
  * ```
  */
-export const Footer = function Footer({
+export function Footer({
   logo,
   sections: streamableSections,
   contactTitle = 'Contact Us',
@@ -84,7 +84,7 @@ export const Footer = function Footer({
   return (
     <footer
       className={clsx(
-        'group/footer border-b-4 border-t border-b-[var(--footer-border-bottom,hsl(var(--primary)))] border-t-[var(--footer-border-top,hsl(var(--contrast-100)))] bg-[var(--footer-background,hsl(var(--background)))] @container',
+        'group/footer @container border-t border-b-4 border-t-(--footer-border-top,var(--contrast-100)) border-b-(--footer-border-bottom,var(--primary)) bg-(--footer-background,var(--background))',
         className,
       )}
     >
@@ -106,10 +106,10 @@ export const Footer = function Footer({
                 if (contactInformation?.address != null || contactInformation?.phone != null) {
                   return (
                     <div className="mb-4 text-lg font-medium @lg:text-xl">
-                      <h3 className="text-[var(--footer-contact-title,hsl(var(--contrast-500)))]">
+                      <h3 className="text-(--footer-contact-title,var(--contrast-500))">
                         {contactTitle}
                       </h3>
-                      <div className="text-[var(--footer-contact-text,hsl(var(--foreground)))]">
+                      <div className="text-(--footer-contact-text,var(--foreground))">
                         {contactInformation.address != null &&
                           contactInformation.address !== '' && <p>{contactInformation.address}</p>}
                         {contactInformation.phone != null && contactInformation.phone !== '' && (
@@ -131,7 +131,7 @@ export const Footer = function Footer({
                       {socialMediaLinks.map(({ href, icon }, i) => {
                         return (
                           <Link
-                            className="flex items-center justify-center rounded-lg fill-[var(--footer-social-icon,hsl(var(--contrast-400)))] p-1 ring-[var(--footer-focus,hsl(var(--primary)))] transition-colors duration-300 ease-out hover:fill-[var(--footer-social-icon-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
+                            className="flex items-center justify-center rounded-lg fill-(--footer-social-icon,var(--contrast-400)) p-1 ring-(--footer-focus,var(--primary)) transition-colors duration-300 ease-out hover:fill-(--footer-social-icon-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0"
                             href={href}
                             key={i}
                           >
@@ -159,7 +159,7 @@ export const Footer = function Footer({
                     {sections.map(({ title, links }, i) => (
                       <div className="pr-8" key={i}>
                         {title != null && (
-                          <span className="mb-3 block font-semibold text-[var(--footer-section-title,hsl(var(--foreground)))]">
+                          <span className="mb-3 block font-semibold text-(--footer-section-title,var(--foreground))">
                             {title}
                           </span>
                         )}
@@ -169,7 +169,7 @@ export const Footer = function Footer({
                             return (
                               <li key={idx}>
                                 <Link
-                                  className="block rounded-lg py-2 text-sm font-medium text-[var(--footer-link,hsl(var(--contrast-500)))] ring-[var(--footer-focus,hsl(var(--primary)))] transition-colors duration-300 hover:text-[var(--footer-link-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
+                                  className="block rounded-lg py-2 text-sm font-medium text-(--footer-link,var(--contrast-500)) ring-(--footer-focus,var(--primary)) transition-colors duration-300 hover:text-(--footer-link-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0"
                                   href={link.href}
                                 >
                                   {link.label}
@@ -193,7 +193,7 @@ export const Footer = function Footer({
             {(copyright) => {
               if (copyright != null) {
                 return (
-                  <p className="flex-1 text-sm text-[var(--footer-copyright,hsl(var(--contrast-500)))]">
+                  <p className="flex-1 text-sm text-(--footer-copyright,var(--contrast-500))">
                     {copyright}
                   </p>
                 );
@@ -213,7 +213,7 @@ export const Footer = function Footer({
       </div>
     </footer>
   );
-};
+}
 
 function FooterContactSkeleton() {
   return (
@@ -243,7 +243,7 @@ function SocialMediaLinksSkeleton() {
 function FooterColumnsSkeleton() {
   return (
     <Skeleton.Root
-      className="grid max-w-5xl grid-cols-1 gap-y-8 @container-normal group-has-[[data-pending]]/footer:animate-pulse @sm:grid-cols-2 @xl:gap-y-10 @2xl:grid-cols-3 @6xl:[grid-template-columns:_repeat(auto-fill,_minmax(220px,_1fr))]"
+      className="@container-normal grid max-w-5xl grid-cols-1 gap-y-8 group-has-[[data-pending]]/footer:animate-pulse @sm:grid-cols-2 @xl:gap-y-10 @2xl:grid-cols-3 @6xl:[grid-template-columns:_repeat(auto-fill,_minmax(220px,_1fr))]"
       pending
     >
       {Array.from({ length: 4 }).map((_, idx) => (
@@ -263,7 +263,7 @@ function FooterColumnSkeleton() {
     <ul>
       {Array.from({ length: 4 }).map((_, idx) => (
         <li className="py-2 text-sm" key={idx}>
-          <Skeleton.Text characterCount={10} className="rounded-sm" />
+          <Skeleton.Text characterCount={10} className="rounded-xs" />
         </li>
       ))}
     </ul>
@@ -273,10 +273,10 @@ function FooterColumnSkeleton() {
 function CopyrightSkeleton() {
   return (
     <Skeleton.Root
-      className="flex-1 text-sm @container-normal group-has-[[data-pending]]/footer:animate-pulse"
+      className="@container-normal flex-1 text-sm group-has-[[data-pending]]/footer:animate-pulse"
       pending
     >
-      <Skeleton.Text characterCount={40} className="rounded-sm" data-pending />
+      <Skeleton.Text characterCount={40} className="rounded-xs" data-pending />
     </Skeleton.Root>
   );
 }
@@ -284,7 +284,7 @@ function CopyrightSkeleton() {
 function PaymentIconsSkeleton() {
   return (
     <Skeleton.Root
-      className="flex flex-wrap gap-2 @container-normal group-has-[[data-pending]]/footer:animate-pulse"
+      className="@container-normal flex flex-wrap gap-2 group-has-[[data-pending]]/footer:animate-pulse"
       pending
     >
       {Array.from({ length: 6 }).map((_, idx) => (

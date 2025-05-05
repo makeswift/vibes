@@ -77,7 +77,6 @@ const primitivePages: [Page, ...Page[]] = [
     file: 'docs/cursor-pagination.mdx',
     component: 'cursor-pagination',
   },
-  { title: 'Discount', slug: 'discount', file: 'docs/discount.mdx', component: 'discount' },
   { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
   { title: 'Icon', slug: 'icon', file: 'docs/icon.mdx', component: 'icon' },
   {
@@ -115,12 +114,6 @@ const primitivePages: [Page, ...Page[]] = [
     slug: 'product-card',
     file: 'docs/product-card.mdx',
     component: 'product-card',
-  },
-  {
-    title: 'Product Carousel',
-    slug: 'product-carousel',
-    file: 'docs/product-carousel.mdx',
-    component: 'product-carousel',
   },
   { title: 'Rating', slug: 'rating', file: 'docs/rating.mdx', component: 'rating' },
   {

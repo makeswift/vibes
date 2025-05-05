@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
  *
  * ```css
  * :root {
- *   --skeleton: color-mix(in oklab, hsl(var(--contast-300)), white 75%);
+ *   --skeleton: color-mix(in oklab, var(--contrast-300) 15%, transparent);
  * }
  * ```
  */
@@ -35,7 +35,14 @@ function SkeletonRoot({
 }
 
 function SkeletonBox({ className }: { className?: string }) {
-  return <div className={clsx('bg-[var(--skeleton,hsl(var(--contrast-300)/15%))]', className)} />;
+  return (
+    <div
+      className={clsx(
+        'bg-(--skeleton,color-mix(in_oklab,var(--contrast-300)_15%,transparent))',
+        className,
+      )}
+    />
+  );
 }
 
 function SkeletonText({
@@ -49,7 +56,7 @@ function SkeletonText({
     <div className={clsx('flex h-[1lh] items-center', className)}>
       <div
         className={clsx(
-          `h-[1ex] max-w-full rounded-[inherit] bg-[var(--skeleton,hsl(var(--contrast-300)/15%))]`,
+          `h-[1ex] max-w-full rounded-[inherit] bg-(--skeleton,color-mix(in_oklab,var(--contrast-300)_15%,transparent))`,
         )}
         style={{ width: characterCount === 'full' ? '100%' : `${characterCount}ch` }}
       />
@@ -59,7 +66,7 @@ function SkeletonText({
 
 function SkeletonIcon({ className, icon }: { className?: string; icon: ReactNode }) {
   return (
-    <div className={clsx('text-[var(--skeleton,hsl(var(--contrast-300)))] opacity-25', className)}>
+    <div className={clsx('text-(--skeleton,var(--contrast-300)) opacity-25', className)}>
       {icon}
     </div>
   );

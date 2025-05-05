@@ -6,7 +6,7 @@ export const heroSlides = [
     description: 'Designed for speed and comfort',
     image: {
       alt: 'alt',
-      src: 'https://rstr.in/monogram/vibes/2UhnmMan5ct',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1MjA2ODIyNC1kZmNjLTRlNDgtODUwMi1lNGQyOTUwOWQzMzk=/aero-dynamic.jpeg',
     },
     cta: {
       href: '#',
@@ -17,7 +17,7 @@ export const heroSlides = [
     title: 'Accessible',
     description: 'Easy access to your gear',
     image: {
-      src: 'https://rstr.in/monogram/vibes/Nsj4qcMks2D',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpjMzU2N2ExNy1kOGM2LTQzNzAtOWRkMC02YjEyNzZmNjA2MTg=/mini-bar-bag-7.jpeg',
       alt: 'alt',
     },
     cta: {
@@ -29,7 +29,7 @@ export const heroSlides = [
     title: 'Customizable',
     description: 'Create your own style',
     image: {
-      src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo5NTIxMmU4MC0xY2EwLTQxZjktOTBiYS0yOWFhYmU3ZTNkMzA=/stem-caddy.jpeg',
       alt: 'alt',
     },
     cta: {

@@ -84,13 +84,13 @@ const products = [
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --product-carousel-light-empty-title: hsl(var(--foreground));
-  --product-carousel-light-empty-subtitle: hsl(var(--contrast-500));
-  --product-carousel-dark-empty-title: hsl(var(--background));
-  --product-carousel-dark-empty-subtitle: hsl(var(--contrast-100));
-  --product-carousel-empty-title-font-family: var(--font-family-heading);
-  --product-carousel-empty-subtitle-font-family: var(--font-family-body);
+    --product-carousel-light-empty-title: var(--foreground);
+    --product-carousel-light-empty-subtitle: var(--contrast-500);
+    --product-carousel-dark-empty-title: var(--background);
+    --product-carousel-dark-empty-subtitle: var(--contrast-100);
+    --product-carousel-empty-title-font-family: var(--font-family-heading);
+    --product-carousel-empty-subtitle-font-family: var(--font-family-body);
 }
-```
+`}</CodeBlock>

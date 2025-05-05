@@ -2,17 +2,17 @@ import { CompareCard } from '@/vibes/soul/primitives/compare-card';
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-background p-8">
+    <div className="bg-background flex min-h-48 items-center justify-center p-8">
       <CompareCard
         addToCartLabel="Add to cart"
         imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
         product={{
           id: '1',
           href: '#',
-          title: 'Jada Square Toe Ballet Flat',
+          title: 'JADA SQUARE TOE BALLET FLAT',
           image: {
-            src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-            alt: 'Jada Square Toe Ballet Flat',
+            src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTUwMzNmMy0zYzRlLTQzOTUtYTc3MC1jYWM0OWE1YWMyY2E=/jada-square-toe.webp',
+            alt: 'JADA SQUARE TOE BALLET FLAT',
           },
           subtitle: 'Black/Brown',
           price: '$350',
@@ -49,7 +49,7 @@ function Description() {
   return (
     <>
       <p>
-        Step into effortless elegance with the <strong>Jada Square Toe Ballet Flat</strong>.
+        Step into effortless elegance with the <strong>JADA SQUARE TOE BALLET FLAT</strong>.
         Designed with a modern square toe silhouette, this versatile flat combines timeless style
         with contemporary flair. Crafted from premium materials, the Jada offers a comfortable,
         flexible fit that moves with you throughout your day, making it perfect for both work and

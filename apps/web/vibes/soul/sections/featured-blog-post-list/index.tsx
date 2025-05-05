@@ -24,8 +24,8 @@ export interface FeaturedBlogPostListProps {
  * :root {
  *   --featured-blog-post-list-font-family: var(--font-family-body);
  *   --featured-blog-post-list-title-font-family: var(--font-family-body);
- *   --featured-blog-post-list-title: hsl(var(--foreground));
- *   --featured-blog-post-list-description: hsl(var(--contrast-500));
+ *   --featured-blog-post-list-title: var(--foreground);
+ *   --featured-blog-post-list-description: var(--contrast-500);
  * }
  * ```
  */
@@ -43,12 +43,12 @@ export function FeaturedBlogPostList({
     <SectionLayout>
       {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
       <div className="pt-6">
-        <header className="font-[family-name:var(--featured-blog-post-list-font-family,var(--font-family-body))]">
-          <h1 className="mb-3 font-[family-name:var(--featured-blog-post-list-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--featured-blog-post-list-title,hsl(var(--foreground)))] @xl:text-5xl @4xl:text-6xl">
+        <header className="font-(family-name:--featured-blog-post-list-font-family,var(--font-family-body))">
+          <h1 className="mb-3 font-(family-name:--featured-blog-post-list-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--featured-blog-post-list-title,var(--foreground)) @xl:text-5xl @4xl:text-6xl">
             {title}
           </h1>
           {description != null && description !== '' && (
-            <p className="max-w-lg text-lg text-[var(--featured-blog-post-list-description,hsl(var(--contrast-500)))]">
+            <p className="max-w-lg text-lg text-(--featured-blog-post-list-description,var(--contrast-500))">
               {description}
             </p>
           )}
@@ -56,7 +56,7 @@ export function FeaturedBlogPostList({
         <div className="group/blog-post-list">
           <BlogPostList
             blogPosts={blogPosts}
-            className="mb-8 mt-8 @4xl:mb-10 @4xl:mt-10"
+            className="mt-8 mb-8 @4xl:mt-10 @4xl:mb-10"
             emptyStateSubtitle={emptyStateSubtitle}
             emptyStateTitle={emptyStateTitle}
             placeholderCount={placeholderCount}

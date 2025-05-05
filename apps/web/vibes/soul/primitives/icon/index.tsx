@@ -32,7 +32,7 @@ export function IconSkeleton({ className, size = 24 }: Pick<IconProps, 'classNam
       className={clsx('overflow-hidden rounded-full', className)}
       icon={
         <div
-          className="bg-[var(--skeleton,hsl(var(--contrast-300)))] opacity-25"
+          className="bg-(--skeleton,var(--contrast-300)) opacity-25"
           style={{ width: size, height: size }}
         />
       }

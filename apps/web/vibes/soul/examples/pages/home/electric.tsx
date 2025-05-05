@@ -71,10 +71,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/zyFDaG5bRQE',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplZDg3NmU0OC1jODI1LTQ0YTgtODAzZi02OTg0YTE4ODE2MzU=/heart-to-heart.jpeg',
       alt: 'Heart to Heart',
     },
-    href: '#',
+    href: '#1',
   },
   {
     id: '2',
@@ -83,10 +83,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/AxXaqTzRozM',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpjZmYzMzkzNS03NzlhLTQ5ZTUtOGM3Ny1lZjA2MmUyMjZlNTk=/sun-or-shade.jpeg',
       alt: 'Caladium Pink',
     },
-    href: '#',
+    href: '#2',
   },
   {
     id: '3',
@@ -95,10 +95,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/vznZvupsj2y',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkNGU0ODM3NC1jZjQzLTRjMDItOThlMi1iYjcwMDJmZmFjMDc=/angel-wing.jpeg',
       alt: 'Caladium Angel Wing',
     },
-    href: '#',
+    href: '#3',
   },
   {
     id: '4',
@@ -107,10 +107,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiZjZjY2QwMC02NWE4LTQ1YjYtODg0MS02YzRmNDlmYzIwZjE=/philodendron-brandtianum.jpeg',
       alt: 'Philodendron Brandtianum',
     },
-    href: '#',
+    href: '#4',
   },
   {
     id: '5',
@@ -119,10 +119,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/UQMA3XLfWvF',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplYzg3NTEzMi04OTU4LTQ4Y2QtYjZmYS1jMzU4MGRkZjRlMTI=/silver-leaf.jpeg',
       alt: 'Silver Leaf Philodendron',
     },
-    href: '#',
+    href: '#5',
   },
   {
     id: '6',
@@ -131,10 +131,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/cMF-gCyIas9',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1ZmM1ODkzYi1hZDFhLTQ2YmYtYTYzZS0zMzNlZGYyNWM5MmE=/pink-beauty.jpeg',
       alt: 'Pink Beauty Caladium',
     },
-    href: '#',
+    href: '#6',
   },
   {
     id: '7',
@@ -143,10 +143,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/W_zhzrsEqp7',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YTEzYjY0My01OGJmLTRjYWItOWQ3ZS1mMjFjOGI3MTYyYTg=/caladium-angel-wing.jpeg',
       alt: 'Caladium Angel Wing',
     },
-    href: '#',
+    href: '#7',
   },
   {
     id: '8',
@@ -155,10 +155,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/HL613sp6BIP',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowYTA1YzBjNS0zMzU3LTQ5MWMtOWNjZS01OGM3YjcxNTgzNWI=/caladium-watermelon.jpeg',
       alt: 'Caladium Watermelon',
     },
-    href: '#',
+    href: '#8',
   },
   {
     id: '9',
@@ -167,10 +167,10 @@ export const newArrivals: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/afA-7qP8zih',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo4YTE5ZWVkZC1lMjc4LTQwM2YtYjJlOC03MDQ5MGEzMjU1YzU=/speckled-heart.jpeg',
       alt: 'Speckled Heart Caladium',
     },
-    href: '#',
+    href: '#9',
   },
 ];
 
@@ -182,7 +182,7 @@ export const featuredImageII: FeaturedImageProps = {
   description:
     'Our team of plant experts inspects every leaf, stem, and root to guarantee quality, resilience, and beauty. We prioritize plants from sustainable growers who share our passion for eco-friendly practices, ensuring that every green addition to your home has been responsibly sourced and lovingly nurtured from the start.',
   image: {
-    src: 'https://rstr.in/monogram/vibes/Ip8DYxJT8_b',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo4Njc3MzZjZi1iYTE0LTQyOTEtOGQ2NS00NTZiNTJhNGIyOTY=/close-up-plant.jpeg',
     alt: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },
@@ -280,10 +280,10 @@ const products = [
     badge: 'Popular',
     price: '$44.95',
     image: {
-      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNzAzMzk0Ni01NGNhLTQ3ZDYtODgyYi0wYWI3NTUzNTU4YjQ=/kv08IvX08j.jpeg',
       alt: 'Philodendron Imperial Red',
     },
-    href: '#',
+    href: '#1',
     rating: 4,
   },
   {
@@ -293,10 +293,10 @@ const products = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/n0P83RMnClS',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyMTIwYzE1ZC01YzlkLTQ3MDgtOTZhOS1hZDkwYjVmNDAwZWY=/n0P83RMnClS%202930x3663.jpeg',
       alt: 'Monstera',
     },
-    href: '#',
+    href: '#2',
     rating: 4.4,
   },
   {
@@ -305,10 +305,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$19.95',
     image: {
-      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/AaZW4j2VTd4%202489x3111.jpeg',
       alt: 'Pink Caladium',
     },
-    href: '#',
+    href: '#3',
     rating: 4.8,
   },
   {
@@ -317,10 +317,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$16.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/QSaMw6aC_AN',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmZmRlZDM2MS0yMWMwLTRiYjktOTU2Ny1mNWM0YjcwMGIwZWQ=/QSaMw6aC_AN%208600x10750.jpeg',
       alt: 'Hoya Kerrii',
     },
-    href: '#',
+    href: '#4',
     rating: 2.2,
   },
   {
@@ -329,10 +329,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/gfGRQi5pHeJ',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplYTBhYzExNC1lYWIwLTQyZjAtYmQzZS04NDJlNmRlM2RkNTc=/gfGRQi5pHeJ%203094x3868.jpeg',
       alt: 'Bird Nest Fern',
     },
-    href: '#',
+    href: '#5',
     rating: 3.5,
   },
   {
@@ -341,10 +341,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/lJg081kQqvc',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozZWFjZDhlZi1lY2EzLTRiMzYtYTJkNS02ZGJkOWE4MzUwYjQ=/lJg081kQqvc.jpeg',
       alt: 'Jade Plant',
     },
-    href: '#',
+    href: '#6',
     rating: 5,
   },
   {
@@ -353,10 +353,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$34.95',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplNGNiMjdiNi04NTY2LTQxOTctODhhMC0xYThhYmY3NDdkZTU=/snake-plant.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozOTRmNDIyNC0wZDRkLTRmOWMtYjVjNi03ZjljNGE2ZjdiOTU=/snake-plant.jpg',
       alt: 'Snake Plant',
     },
-    href: '#',
+    href: '#7',
     rating: 4.9,
   },
   {
@@ -365,10 +365,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$12.99',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiYmYyNDEzMC0wNzU3LTRiYjMtYjkwMi0zNzI0NjBjNzk5MjY=/spider-plant.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTphNzdlNDQwNS1mNDIxLTRiZTQtOGJkMy0wZTc2OWMyYmEzYjY=/spider-plant.jpg',
       alt: 'Spider Plant',
     },
-    href: '#',
+    href: '#8',
     rating: 4.2,
   },
   {
@@ -377,10 +377,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$49.99',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1MGFmMDIxOC05NWM4LTRlN2UtOTAyMS01OWExOGQxMjUwNGM=/african-fig.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo2YTk0Y2E0Yy0wMjcyLTRkZTItOWQ2Mi0xMTY4OTczYzI1ZWM=/african-fig.jpg',
       alt: 'African Fig Tree',
     },
-    href: '#',
+    href: '#9',
     rating: 4.7,
   },
   {
@@ -389,10 +389,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$29.95',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNWUwYmEwMS0yMDhiLTQ5ZWQtOTI3NC0yZTM0ZTZjYmZhNzg=/birds-of-paradise.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo2MTE4YmY5MC0wOWJlLTRlZDUtYjYyOS0wNzgwOTdiOWNjYTk=/birds-of-paradise.jpg',
       alt: 'Birds of Paradise',
     },
-    href: '#',
+    href: '#10',
     rating: 4.5,
   },
   {
@@ -401,10 +401,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$22.99',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1N2Q2YThlZS04MjZiLTRjZmEtODRmZi1hZjgzZDM3MWE2ZGY=/zz-plant.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToxNTFhZTMwNC0zYWZhLTRiZDgtOWRlYy01ODU1OTZlNjQyZDM=/zz-plant.jpg',
       alt: 'ZZ Plant',
     },
-    href: '#',
+    href: '#11',
     rating: 4.6,
   },
   {
@@ -413,10 +413,10 @@ const products = [
     subtitle: 'Indoor Plant',
     price: '$18.95',
     image: {
-      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3YTJhYTJmZi00ODBhLTQ3NTctODdkYi02ZWEyZGYzZWJmNjI=/dracaena.jpg',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozOWNmZThkOC00Y2M0LTQ2ZTAtODUwMy1lZmVhMzhhMWRmN2Y=/dracaena.jpg',
       alt: 'Dracanea',
     },
-    href: '#',
+    href: '#12',
     rating: 4.3,
   },
 ];

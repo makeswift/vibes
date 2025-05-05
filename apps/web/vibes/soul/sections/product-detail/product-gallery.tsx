@@ -17,10 +17,10 @@ export interface ProductGalleryProps {
  *
  * ```css
  * :root {
- *   --product-gallery-focus: hsl(var(--primary));
- *   --product-gallery-image-background: hsl(var(--contrast-100));
- *   --product-gallery-image-border: hsl(var(--contrast-100));
- *   --product-gallery-image-border-active: hsl(var(--foreground));
+ *   --product-gallery-focus: var(--primary);
+ *   --product-gallery-image-background: var(--contrast-100);
+ *   --product-gallery-image-border: var(--contrast-100);
+ *   --product-gallery-image-border-active: var(--foreground);
  * }
  * ```
  */
@@ -60,7 +60,7 @@ export function ProductGallery({
             <div className="relative aspect-[4/5] w-full shrink-0 grow-0 basis-full" key={idx}>
               <Image
                 alt={image.alt}
-                className="bg-[var(--product-gallery-image-background,hsl(var(--contrast-100)))] object-cover"
+                className="bg-(--product-gallery-image-background,var(--contrast-100)) object-cover"
                 fill
                 priority={idx === 0}
                 sizes="(min-width: 42rem) 50vw, 100vw"
@@ -75,9 +75,9 @@ export function ProductGallery({
           <button
             aria-label={`${thumbnailLabel} ${index + 1}`}
             className={clsx(
-              'relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--product-gallery-focus,hsl(var(--primary)))] focus-visible:ring-offset-2 @md:h-16 @md:w-16',
+              'relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border transition-all duration-300 focus-visible:ring-2 focus-visible:ring-(--product-gallery-focus,var(--primary)) focus-visible:ring-offset-2 focus-visible:outline-hidden @md:h-16 @md:w-16',
               index === previewImage
-                ? 'border-[var(--product-gallery-image-border-active,hsl(var(--foreground)))]'
+                ? 'border-(--product-gallery-image-border-active,var(--foreground))'
                 : 'border-transparent',
             )}
             key={index}
@@ -91,7 +91,7 @@ export function ProductGallery({
             >
               <Image
                 alt={image.alt}
-                className="bg-[var(--product-gallery-image-background,hsl(var(--contrast-100)))] object-cover"
+                className="bg-(--product-gallery-image-background,var(--contrast-100)) object-cover"
                 fill
                 sizes="(min-width: 28rem) 4rem, 3rem"
                 src={image.src}

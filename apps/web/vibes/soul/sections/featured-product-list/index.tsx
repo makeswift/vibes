@@ -27,8 +27,8 @@ export interface FeaturedProductsListProps {
  * :root {
  *   --featured-product-list-font-family: var(--font-family-body);
  *   --featured-product-list-title-font-family: var(--font-family-heading);
- *   --featured-product-list-title: hsl(var(--foreground));
- *   --featured-product-list-description: hsl(var(--contrast-500));
+ *   --featured-product-list-title: var(--foreground);
+ *   --featured-product-list-description: var(--contrast-500);
  * }
  * ```
  */
@@ -44,12 +44,12 @@ export function FeaturedProductList({
   return (
     <StickySidebarLayout
       sidebar={
-        <header className="font-[family-name:var(--featured-product-list-font-family,var(--font-family-body))]">
-          <h2 className="mb-3 font-[family-name:var(--featured-product-list-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--featured-product-list-title,hsl(var(--foreground)))] @4xl:text-5xl">
+        <header className="font-(family-name:--featured-product-list-font-family,var(--font-family-body))">
+          <h2 className="mb-3 font-(family-name:--featured-product-list-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--featured-product-list-title,var(--foreground)) @4xl:text-5xl">
             {title}
           </h2>
           {description != null && description !== '' && (
-            <p className="mb-8 max-w-xl text-lg leading-normal text-[var(--featured-product-list-description,hsl(var(--contrast-500)))]">
+            <p className="mb-8 max-w-xl text-lg leading-normal text-(--featured-product-list-description,var(--contrast-500))">
               {description}
             </p>
           )}

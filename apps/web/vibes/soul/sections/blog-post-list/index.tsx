@@ -24,8 +24,8 @@ export interface BlogPostListProps {
  * :root {
  *   --blog-post-list-empty-state-title-font-family: var(--font-family-heading);
  *   --blog-post-list-empty-state-subtitle-font-family: var(--font-family-body);
- *   --blog-post-list-empty-state-title: hsl(var(--foreground));
- *   --blog-post-list-empty-state-subtitle: hsl(var(--contrast-500));
+ *   --blog-post-list-empty-state-title: var(--foreground);
+ *   --blog-post-list-empty-state-subtitle: var(--contrast-500);
  * }
  * ```
  */
@@ -92,7 +92,7 @@ export function BlogPostListEmptyState({
   emptyStateSubtitle,
 }: Omit<BlogPostListProps, 'blogPosts'>) {
   return (
-    <div className={clsx('relative w-full @container', className)}>
+    <div className={clsx('@container relative w-full', className)}>
       <div
         className={clsx(
           'mx-auto grid grid-cols-1 gap-x-5 gap-y-8 [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @md:grid-cols-2 @xl:gap-y-10 @3xl:grid-cols-3',
@@ -102,12 +102,12 @@ export function BlogPostListEmptyState({
           <BlogPostCardSkeleton key={index} />
         ))}
       </div>
-      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pt-28 @4xl:pb-10">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
-          <h3 className="font-[family-name:var(--blog-post-list-empty-state-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--blog-post-list-empty-state-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
+          <h3 className="font-[family-name:var(--blog-post-list-empty-state-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-(--blog-post-list-empty-state-title,var(--foreground)) @4xl:text-4xl @4xl:leading-none">
             {emptyStateTitle}
           </h3>
-          <p className="font-[family-name:var(--blog-post-list-empty-state-subtitle-font-family,var(--font-family-body))] text-sm text-[var(--blog-post-list-empty-state-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
+          <p className="font-[family-name:var(--blog-post-list-empty-state-subtitle-font-family,var(--font-family-body))] text-sm text-(--blog-post-list-empty-state-subtitle,var(--contrast-500)) @4xl:text-lg">
             {emptyStateSubtitle}
           </p>
         </div>

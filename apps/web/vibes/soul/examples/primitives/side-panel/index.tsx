@@ -5,7 +5,7 @@ import * as SidePanel from '@/vibes/soul/primitives/side-panel';
 
 export default function Preview() {
   return (
-    <div className="bg-background p-8 @container">
+    <div className="bg-background @container p-8">
       <div className="mx-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
         <SidePanel.Root>
           <SidePanel.Trigger asChild>
@@ -17,7 +17,7 @@ export default function Preview() {
             </Button>
           </SidePanel.Trigger>
           <SidePanel.Content title="Filters">
-            <p className="text-lg text-contrast-500">Put your content here!</p>
+            <p className="text-contrast-500 text-lg">Put your content here!</p>
           </SidePanel.Content>
         </SidePanel.Root>
       </div>
