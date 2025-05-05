@@ -36,23 +36,19 @@ export interface CountdownProps {
  *
  * ```css
  * :root {
- *   --countdown-default-split-background: hsl(var(--primary-shadow));
- *   --countdown-number-default-background: hsl(var(--primary));
- *   --countdown-number-default-text: hsl(var(--primary-shadow));
- *   --countdown-number-full-background: hsl(var(--primary-shadow));
- *   --countdown-number-full-text: hsl(var(--primary));
- *   --countdown-image-background: hsl(var(--primary-shadow));
- *   --countdown-text: hsl(var(--background));
- *   --countdown-icon: hsl(var(--background));
+ *   --countdown-default-split-background: var(--primary-shadow);
+ *   --countdown-number-default-background: var(--primary);
+ *   --countdown-number-default-text: var(--primary-shadow);
+ *   --countdown-number-full-background: var(--primary-shadow);
+ *   --countdown-number-full-text: var(--primary);
+ *   --countdown-image-background: var(--primary-shadow);
+ *   --countdown-text: var(--background);
+ *   --countdown-icon: var(--background);
  *   --countdown-font-family: var(--font-family-body);
  * }
  * ```
  */
-export const Countdown = function Countdown({
-  title,
-  targetDate,
-  variant = { type: 'default' },
-}: CountdownProps) {
+export function Countdown({ title, targetDate, variant = { type: 'default' } }: CountdownProps) {
   const calculateTimeLeft = useCallback(() => {
     const difference = +targetDate - +new Date();
     let timeRemaining = { days: 0, hours: 0, mins: 0, secs: 0 };
@@ -121,8 +117,8 @@ export const Countdown = function Countdown({
       className={clsx(
         'flex items-center justify-center rounded-lg',
         variant.type === 'full'
-          ? 'bg-[var(--countdown-number-full-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] text-[var(--countdown-number-full-text,hsl(var(--primary)))]'
-          : 'bg-[var(--countdown-number-default-background,hsl(var(--primary)))] text-[var(--countdown-number-default-text,color-mix(in_oklab,hsl(var(--primary)),black_75%))]',
+          ? 'bg-(--countdown-number-full-background,var(--primary-shadow)) text-(--countdown-number-full-text,var(--primary))'
+          : 'bg-(--countdown-number-default-background,var(--primary)) text-(--countdown-number-default-text,var(--primary-shadow))',
         {
           default: 'h-14 w-14 @2xl:h-28 @2xl:w-28',
           full: 'h-14 w-14 @2xl:h-28 @2xl:w-28',
@@ -139,12 +135,12 @@ export const Countdown = function Countdown({
   return (
     <section
       className={clsx(
-        'relative grid origin-top font-[family-name:var(--button-font-family,var(--font-family-body))] transition-all duration-300 ease-out @container',
+        '@container relative grid origin-top font-(family-name:--button-font-family,var(--font-family-body)) transition-all duration-300 ease-out',
         {
           'pointer-events-none grid-rows-[0fr]': variant.type === 'banner' && banner.dismissed,
           'grid-rows-[1fr]': variant.type === 'banner' && !banner.dismissed,
           'fixed top-0': variant.type === 'banner',
-          'bg-[var(--countdown-default-split-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))]':
+          'bg-(--countdown-default-split-background,var(--primary-shadow))':
             variant.type === 'default' || variant.type === 'split',
         },
       )}
@@ -152,11 +148,11 @@ export const Countdown = function Countdown({
       <div className="overflow-hidden">
         <div
           className={clsx(
-            'relative flex flex-col items-center justify-center overflow-hidden bg-[var(--countdown-image-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] bg-cover bg-center bg-no-repeat font-medium',
+            'relative flex flex-col items-center justify-center overflow-hidden bg-(--countdown-image-background,var(--primary-shadow)) bg-cover bg-center bg-no-repeat font-medium',
             {
               default: 'py-32 @5xl:container @5xl:mx-auto',
               full: 'py-40',
-              split: '@5xl:container @3xl:mx-auto @3xl:grid @3xl:grid-cols-2',
+              split: '@3xl:mx-auto @3xl:grid @3xl:grid-cols-2 @5xl:container',
               banner: '',
             }[variant.type],
           )}
@@ -180,7 +176,7 @@ export const Countdown = function Countdown({
                   className={clsx(
                     'absolute object-contain',
                     index === 0
-                      ? '-left-20 top-0 -translate-y-2/3 @5xl:-translate-y-1/3'
+                      ? 'top-0 -left-20 -translate-y-2/3 @5xl:-translate-y-1/3'
                       : '-right-20 bottom-0 translate-y-2/3 @5xl:translate-y-1/3',
                   )}
                   height={500}
@@ -193,7 +189,7 @@ export const Countdown = function Countdown({
 
           <div
             className={clsx(
-              'relative z-10 px-4 text-center text-[var(--countdown-text,hsl(var(--background)))] @xl:px-6 @4xl:px-8',
+              'relative z-10 px-4 text-center text-(--countdown-text,var(--background)) @xl:px-6 @4xl:px-8',
               {
                 default:
                   'text-3xl @2xl:text-6xl [&>div>div>span]:text-lg [&>h2]:text-3xl @2xl:[&>h2]:text-[40px]',
@@ -229,7 +225,7 @@ export const Countdown = function Countdown({
         {variant.type === 'banner' ? (
           <button
             aria-label="Dismiss banner"
-            className="absolute right-5 top-1/2 z-10 -translate-y-1/2 text-[var(--countdown-icon,hsl(var(--background)))] transition-transform hover:scale-110"
+            className="absolute top-1/2 right-5 z-10 -translate-y-1/2 text-(--countdown-icon,var(--background)) transition-transform hover:scale-110"
             onClick={(e) => {
               e.preventDefault();
               hideBanner();
@@ -242,4 +238,4 @@ export const Countdown = function Countdown({
       </div>
     </section>
   );
-};
+}

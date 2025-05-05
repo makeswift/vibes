@@ -9,7 +9,7 @@ export default function Preview() {
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div>
-      <div className="bg-background p-8 @container">
+      <div className="bg-background @container p-8">
         <div className="mx-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <Modal
             isOpen={isOpen}
@@ -17,7 +17,7 @@ export default function Preview() {
             title="Example modal"
             trigger={<Button size="medium">Open Modal</Button>}
           >
-            <p className="font-body text-lg text-contrast-500">Put your content here!</p>
+            <p className="font-body text-contrast-500 text-lg">Put your content here!</p>
           </Modal>
         </div>
       </div>

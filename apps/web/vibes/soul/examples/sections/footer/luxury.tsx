@@ -43,7 +43,7 @@ export const footerLinks = [
 ];
 
 export const logo = {
-  src: 'https://rstr.in/monogram/vibes/DVHsMCuLQID',
+  src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowMmI1OGMyMC01M2M5LTQ5NWItYWNjZi01MmE1MzJiZWUxM2U=/freda-salvador.png',
   alt: 'Freda Salvador Logo',
 };
 

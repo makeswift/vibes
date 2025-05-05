@@ -24,7 +24,7 @@ export const slides = [
       description: 'Designed for speed and comfort',
       image: {
         alt: 'alt',
-        src: 'https://rstr.in/monogram/vibes/2UhnmMan5ct',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1MjA2ODIyNC1kZmNjLTRlNDgtODUwMi1lNGQyOTUwOWQzMzk=/aero-dynamic.jpeg',
       },
       cta: {
         href: '#',
@@ -35,7 +35,7 @@ export const slides = [
       title: 'Accessible',
       description: 'Easy access to your gear',
       image: {
-        src: 'https://rstr.in/monogram/vibes/Nsj4qcMks2D',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpjMzU2N2ExNy1kOGM2LTQzNzAtOWRkMC02YjEyNzZmNjA2MTg=/mini-bar-bag-7.jpeg',
         alt: 'alt',
       },
       cta: {
@@ -95,20 +95,20 @@ See [ButtonLink](/docs//soul/button-link) for more details on the `variant`, `si
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --slideshow-focus: hsl(var(--primary));
-  --slideshow-mask: hsl(var(--foreground) / 80%);
-  --slideshow-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
-  --slideshow-title: hsl(var(--background));
-  --slideshow-title-font-family: var(--font-family-heading);
-  --slideshow-description: hsl(var(--background) / 80%);
-  --slideshow-description-font-family: var(--font-family-body);
-  --slideshow-pagination: hsl(var(--background));
-  --slideshow-play-border: hsl(var(--contrast-300) / 50%);
-  --slideshow-play-border-hover: hsl(var(--contrast-300) / 80%);
-  --slideshow-play-text: hsl(var(--background));
-  --slideshow-number: hsl(var(--background));
-  --slideshow-number-font-family: var(--font-family-mono);
+    --slideshow-focus: var(--primary);
+    --slideshow-mask: color-mix(in oklab, var(--foreground) 80%, transparent);
+    --slideshow-background: var(--primary-shadow);
+    --slideshow-title: var(--background);
+    --slideshow-title-font-family: var(--font-family-heading);
+    --slideshow-description: color-mix(in oklab, var(--background) 80%, transparent);
+    --slideshow-description-font-family: var(--font-family-body);
+    --slideshow-pagination: var(--background);
+    --slideshow-play-border: color-mix(in oklab, var(--contrast-300) 50%, transparent);
+    --slideshow-play-border-hover: color-mix(in oklab, var(--contrast-300) 80%, transparent);
+    --slideshow-play-text: var(--background);
+    --slideshow-number: var(--background);
+    --slideshow-number-font-family: var(--font-family-mono);
 }
-```
+`}</CodeBlock>

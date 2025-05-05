@@ -7,6 +7,8 @@ export interface ResetPasswordProps {
   submitLabel?: string;
   newPasswordLabel?: string;
   confirmPasswordLabel?: string;
+  newPasswordPlaceholder?: string;
+  confirmPasswordPlaceholder?: string;
 }
 
 /**
@@ -17,8 +19,8 @@ export interface ResetPasswordProps {
  * :root {
  *   --reset-password-font-family: var(--font-family-body);
  *   --reset-password-title-font-family: var(--font-family-heading);
- *   --reset-password-title: hsl(var(--foreground));
- *   --reset-password-subtitle: hsl(var(--contrast-500))
+ *   --reset-password-title: var(--foreground);
+ *   --reset-password-subtitle: var(--contrast-500)
  * }
  * ```
  */
@@ -28,24 +30,28 @@ export function ResetPassword({
   submitLabel,
   newPasswordLabel,
   confirmPasswordLabel,
+  newPasswordPlaceholder = 'New password',
+  confirmPasswordPlaceholder = 'Confirm password',
   action,
 }: ResetPasswordProps) {
   return (
     <div className="@container">
       <div className="flex flex-col justify-center gap-y-24 px-3 py-10 @xl:flex-row @xl:px-6 @4xl:py-20 @5xl:px-20">
         <div className="flex w-full flex-col @xl:max-w-md @xl:pr-10 @4xl:pr-20">
-          <header className="font-[family-name:var(--reset-password-font-family,var(--font-family-body))]">
-            <h1 className="mb-5 font-[family-name:var(--reset-password-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--reset-password-title,hsl(var(--foreground)))] @xl:text-5xl">
+          <header className="font-(family-name:--reset-password-font-family,var(--font-family-body))">
+            <h1 className="mb-5 font-(family-name:--reset-password-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--reset-password-title,var(--foreground)) @xl:text-5xl">
               {title}
             </h1>
-            <p className="mb-10 text-base font-light leading-none text-[var(--reset-password-subtitle,hsl(var(--contrast-500)))] @xl:text-lg">
+            <p className="mb-10 text-base leading-none font-light text-(--reset-password-subtitle,var(--contrast-500)) @xl:text-lg">
               {subtitle}
             </p>
           </header>
           <ResetPasswordForm
             action={action}
             confirmPasswordLabel={confirmPasswordLabel}
+            confirmPasswordPlaceholder={confirmPasswordPlaceholder}
             newPasswordLabel={newPasswordLabel}
+            newPasswordPlaceholder={newPasswordPlaceholder}
             submitLabel={submitLabel}
           />
         </div>

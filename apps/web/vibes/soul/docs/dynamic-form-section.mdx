@@ -112,11 +112,11 @@ export async function action(
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --dynamic-form-font-family: var(--font-family-body);
-  --dynamic-form-title-font-family: var(--font-family-heading);
-  --dynamic-form-title: hsl(var(--foreground));
-  --dynamic-form-subtitle: hsl(var(--contrast-500));
+    --dynamic-form-font-family: var(--font-family-body);
+    --dynamic-form-title-font-family: var(--font-family-heading);
+    --dynamic-form-title: var(--foreground);
+    --dynamic-form-subtitle: var(--contrast-500);
 }
-```
+`}</CodeBlock>

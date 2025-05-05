@@ -29,11 +29,11 @@ export function Error({
 }: ErrorProps) {
   return (
     <SectionLayout containerSize="2xl">
-      <header className="font-[family-name:var(--button-font-family,var(--font-family-body))]">
-        <h1 className="mb-3 font-[family-name:var(--button-font-family,var(--font-family-heading))] text-3xl font-medium leading-none text-[var(--error-title,hsl(var(--errorr)))] @xl:text-4xl @4xl:text-5xl">
+      <header className="font-(family-name:--button-font-family,var(--font-family-body))">
+        <h1 className="mb-3 font-(family-name:--button-font-family,var(--font-family-heading)) text-3xl leading-none font-medium text-(--error-title,var(--foreground)) @xl:text-4xl @4xl:text-5xl">
           {title}
         </h1>
-        <p className="text-lg text-[var(--error-subtitle,hsl(var(--contrast-500)))]">{subtitle}</p>
+        <p className="text-lg text-(--error-subtitle,var(--contrast-500))">{subtitle}</p>
       </header>
       {ctaAction && (
         <form action={ctaAction}>

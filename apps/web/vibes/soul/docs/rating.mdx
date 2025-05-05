@@ -35,10 +35,10 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --rating-icon: hsl(var(--foreground));
-  --rating-border: hsl(var(--contast-100));
-  --rating-text: hsl(var(--contrast-400));
+    --rating-icon: var(--foreground);
+    --rating-border: var(--contrast-100);
+    --rating-text: var(--contrast-400);
 }
-```
+`}</CodeBlock>

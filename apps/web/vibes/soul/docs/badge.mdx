@@ -38,18 +38,16 @@ This component supports various CSS variables for theming. Here's a comprehensiv
 {/* prettier-ignore-start */}
 
 <CodeBlock lang="css">{`
-
 :root {
-    --badge-primary-background: color-mix(in oklab, hsl(var(--primary)), white 75%);
-    --badge-accent-background: hsl(var(--accent));
-    --badge-success-background: color-mix(in oklab, hsl(var(--success)), white 75%);
-    --badge-warning-background: color-mix(in oklab, hsl(var(--warning)), white 75%);
-    --badge-error-background: color-mix(in oklab, hsl(var(--error)), white 75%);
-    --badge-info-background: color-mix(in oklab, hsl(var(--background)), black 5%);
-    --badge-text: hsl(var(--foreground));
+    --badge-primary-background: var(--primary-highlight);
+    --badge-accent-background: var(--accent);
+    --badge-success-background: var(--success-highlight);
+    --badge-warning-background: var(--warning-highlight);
+    --badge-error-background: var(--error-highlight);
+    --badge-info-background: var(--info-highlight);
+    --badge-text: var(--foreground);
     --badge-font-family: var(--font-family-mono);
 }
-
 `}</CodeBlock>
 
 {/* prettier-ignore-end */}

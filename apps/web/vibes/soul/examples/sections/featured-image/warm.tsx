@@ -5,7 +5,7 @@ export const featuredImage: FeaturedImageProps = {
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
   image: {
-    src: 'https://rstr.in/monogram/vibes/shMqUI79u99',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyZGJiZDNlZS05MjM0LTRjOTItYjgxZC1jZTdlMTlkOWFhZGM=/bike-bag.jpeg',
     alt: 'Close up of a plant',
   },
   cta: { href: '#', label: 'Shop Now' },

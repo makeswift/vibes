@@ -44,7 +44,7 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
       onValueChange={setTab}
       value={tab}
     >
-      <div className="flex items-center @container">
+      <div className="@container flex items-center">
         <TabsList className="flex-1">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
@@ -52,7 +52,7 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
         <div className="flex flex-1 justify-center">
           {actualWidth != null && isDragging && (
             <div className="text-xs font-bold">
-              <span className="mr-2 text-foreground">{`${Math.round(actualWidth)}px`}</span>
+              <span className="text-foreground mr-2">{`${Math.round(actualWidth)}px`}</span>
               <span className="text-contrast-400">{`${Math.round(zoom * 100)}%`}</span>
             </div>
           )}
@@ -157,8 +157,8 @@ export function PreviewTabs({ components, size = 'md' }: Props) {
     <Dialog.Root onOpenChange={setFullScreen} open={fullScreen}>
       {fullScreen ? (
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-[100] bg-background" />
-          <Dialog.Content className="fixed inset-0 z-[100] flex flex-col bg-background px-4">
+          <Dialog.Overlay className="bg-background fixed inset-0 z-[100]" />
+          <Dialog.Content className="bg-background fixed inset-0 z-[100] flex flex-col px-4">
             <VisuallyHidden.Root>
               <Dialog.Title>Fullscreen preview</Dialog.Title>
             </VisuallyHidden.Root>

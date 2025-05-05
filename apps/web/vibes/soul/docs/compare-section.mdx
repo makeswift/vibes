@@ -35,13 +35,13 @@ export async function addToCartAction(id: string) {
 const products = [
     {
       id: '1',
-      title: 'Jada Square Toe Ballet Flat',
+      title: 'JADA SQUARE TOE BALLET FLAT',
       subtitle: '',
       badge: 'Bestseller',
       price: '$350',
       image: {
-        src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-        alt: 'Jada Square Toe Ballet Flat',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTUwMzNmMy0zYzRlLTQzOTUtYTc3MC1jYWM0OWE1YWMyY2E=/jada-square-toe.webp',
+        alt: 'JADA SQUARE TOE BALLET FLAT',
       },
       href: '#',
       rating: 4.5,
@@ -104,14 +104,14 @@ const products = [
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --compare-section-title-font-family: var(--font-family-heading);
-  --compare-section-title: hsl(var(--foreground));
-  --compare-section-count: hsl(var(--contrast-300));
-  --compare-section-empty-font-family: var(--font-family-body);
-  --compare-section-empty-title-font-family: var(--font-family-heading);
-  --compare-section-empty-title: hsl(var(--foreground));
-  --compare-section-empty-subtitle: hsl(var(--contrast-500));
+    --compare-section-title-font-family: var(--font-family-heading);
+    --compare-section-title: var(--foreground);
+    --compare-section-count: var(--contrast-300);
+    --compare-section-empty-font-family: var(--font-family-body);
+    --compare-section-empty-title-font-family: var(--font-family-heading);
+    --compare-section-empty-title: var(--foreground);
+    --compare-section-empty-subtitle: var(--contrast-500);
 }
-```
+`}</CodeBlock>

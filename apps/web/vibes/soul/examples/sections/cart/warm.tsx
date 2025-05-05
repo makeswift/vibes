@@ -36,7 +36,7 @@ const defaultLineItems: CartLineItem[] = [
     subtitle: 'Orange',
     price: '$50',
     image: {
-      src: 'https://rstr.in/monogram/vibes/4Mo9ulLGcbL/DfL7Hp4ix9B',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo0N2M2YzAzNy03ZGE4LTQ4ZjktYTI1ZS04MjZlN2ZjODRiN2I=/rolltop-saddle.jpeg',
       alt: 'Rolltop Saddlebag',
     },
     quantity: 1,
@@ -47,7 +47,7 @@ const defaultLineItems: CartLineItem[] = [
     subtitle: 'Camo',
     price: '$60',
     image: {
-      src: 'https://rstr.in/monogram/vibes/JFeKAqWOECR',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowYjYxZGFiYi0yNTcyLTQ3OTUtOTZjOS1iZWEzOTZlNGFhZTY=/mini-bar-bag-3.jpeg',
       alt: 'Mini Bar Bag',
     },
     quantity: 2,

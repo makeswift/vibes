@@ -1,8 +1,8 @@
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 import { Rating } from '@/vibes/soul/primitives/rating';
-import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
+import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
 
 interface Review {
   id: string;
@@ -31,13 +31,13 @@ export interface ReviewsProps {
  * :root {
  *   --reviews-font-family: var(--font-family-body);
  *   --reviews-title-font-family: var(--font-family-heading);
- *   --reviews-border: hsl(var(--contrast-100));
- *   --reviews-count: hsl(var(--contrast-300));
- *   -reviews-average: hsl(var(--foreground));
- *   --reviews-name: hsl(var(--foreground));
- *   --reviews-review: hsl(var(--contrast-500));
- *   --reviews-date: hsl(var(--contrast-500));
- *   --reviews-empty-message: hsl(var(--foreground));
+ *   --reviews-border: var(--contrast-100);
+ *   --reviews-count: var(--contrast-300);
+ *   -reviews-average: var(--foreground);
+ *   --reviews-name: var(--foreground);
+ *   --reviews-review: var(--contrast-500);
+ *   --reviews-date: var(--contrast-500);
+ *   --reviews-empty-message: var(--foreground);
  * }
  * ```
  */
@@ -59,16 +59,14 @@ export function Reviews({
 
         return (
           <StickySidebarLayout
-            className="group/reviews font-[family-name:var(--button-font-family,var(--font-family-body))]"
+            className="group/reviews font-(family-name:--button-font-family,var(--font-family-body))"
             sidebar={
               <div>
-                <div className="mb-4 mt-0 flex items-center gap-x-1.5 font-[family-name:var(--reviews-title-font-family,var(--font-family-heading))] text-xl font-medium @xl:my-5 @xl:text-2xl">
+                <div className="mt-0 mb-4 flex items-center gap-x-1.5 font-(family-name:--reviews-title-font-family,var(--font-family-heading)) text-xl font-medium @xl:my-5 @xl:text-2xl">
                   <h2>{reviewsLabel}</h2>
                   <Stream fallback={<TotalCountSkeleton />} value={streamableTotalCount}>
                     {(totalCount) => (
-                      <p className="text-[var(--reviews-count,hsl(var(--contrast-300)))]">
-                        {totalCount}
-                      </p>
+                      <p className="text-(--reviews-count,var(--contrast-300))">{totalCount}</p>
                     )}
                   </Stream>
                 </div>
@@ -76,7 +74,7 @@ export function Reviews({
                   <Stream fallback={<AverageRatingSkeleton />} value={streamableAverageRating}>
                     {(averageRating) => (
                       <>
-                        <p className="font-[family-name:var(--reviews-title-font-family,var(--font-family-heading))] text-5xl leading-none tracking-tighter text-[var(--reviews-average,hsl(var(--foreground)))] @2xl:text-6xl">
+                        <p className="font-(family-name:--reviews-title-font-family,var(--font-family-heading)) text-5xl leading-none tracking-tighter text-(--reviews-average,var(--foreground)) @2xl:text-6xl">
                           {averageRating}
                         </p>
                         <Rating rating={averageRating} showRating={false} />
@@ -88,23 +86,21 @@ export function Reviews({
             }
             sidebarSize="md"
           >
-            <div className="flex-1 border-t border-[var(--reviews-border,hsl(var(--contrast-100)))]">
+            <div className="flex-1 border-t border-(--reviews-border,var(--contrast-100))">
               {reviews.map(({ id, rating, review, name, date }) => {
                 return (
                   <div
-                    className="border-b border-[var(--reviews-border,hsl(var(--contrast-100)))] py-6"
+                    className="border-b border-(--reviews-border,var(--contrast-100)) py-6"
                     key={id}
                   >
                     <Rating rating={rating} />
-                    <p className="mt-5 text-lg font-semibold text-[var(--reviews-name,hsl(var(--foreground)))]">
+                    <p className="mt-5 text-lg font-semibold text-(--reviews-name,var(--foreground))">
                       {name}
                     </p>
-                    <p className="mb-8 mt-2 leading-normal text-[var(--reviews-review,hsl(var(--contrast-500)))]">
+                    <p className="mt-2 mb-8 leading-normal text-(--reviews-review,var(--contrast-500))">
                       {review}
                     </p>
-                    <p className="text-sm text-[var(--reviews-date,hsl(var(--contrast-500)))]">
-                      {date}
-                    </p>
+                    <p className="text-sm text-(--reviews-date,var(--contrast-500))">{date}</p>
                   </div>
                 );
               })}
@@ -139,12 +135,12 @@ export function ReviewsEmptyState({
     <StickySidebarLayout
       sidebar={
         <div>
-          <div className="mb-4 mt-0 flex items-center gap-x-1.5 font-[family-name:var(--reviews-title-font-family,var(--font-family-heading))] text-xl font-medium @xl:my-5 @xl:text-2xl">
+          <div className="mt-0 mb-4 flex items-center gap-x-1.5 font-(family-name:--reviews-title-font-family,var(--font-family-heading)) text-xl font-medium @xl:my-5 @xl:text-2xl">
             <h2 className="">{reviewsLabel}</h2>
-            <p className="text-[var(--reviews-count,hsl(var(--contrast-300)))]">0</p>
+            <p className="text-(--reviews-count,var(--contrast-300))">0</p>
           </div>
           <div className="space-y-2">
-            <p className="font-[family-name:var(--reviews-title-font-family,var(--font-family-heading))] text-5xl leading-none tracking-tighter text-[var(--reviews-average,hsl(var(--foreground)))] @2xl:text-6xl">
+            <p className="font-(family-name:--reviews-title-font-family,var(--font-family-heading)) text-5xl leading-none tracking-tighter text-(--reviews-average,var(--foreground)) @2xl:text-6xl">
               0
             </p>
             <Rating rating={0} showRating={false} />
@@ -153,10 +149,8 @@ export function ReviewsEmptyState({
       }
       sidebarSize="md"
     >
-      <div className="flex-1 border-t border-[var(--reviews-border,hsl(var(--contrast-100)))] py-12">
-        <p className="text-center text-[var(--reviews-empty-message,hsl(var(--foreground)))]">
-          {message}
-        </p>
+      <div className="flex-1 border-t border-(--reviews-border,var(--contrast-100)) py-12">
+        <p className="text-center text-(--reviews-empty-message,var(--foreground))">{message}</p>
       </div>
     </StickySidebarLayout>
   );
@@ -168,7 +162,7 @@ export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: Pick<ReviewsProps,
       className="group/reviews"
       sidebar={
         <div>
-          <div className="mb-4 mt-0 flex items-center gap-x-1.5 font-[family-name:var(--reviews-title-font-family,var(--font-family-heading))] text-xl font-medium @xl:my-5 @xl:text-2xl">
+          <div className="mt-0 mb-4 flex items-center gap-x-1.5 font-(family-name:--reviews-title-font-family,var(--font-family-heading)) text-xl font-medium @xl:my-5 @xl:text-2xl">
             <h2 className="">{reviewsLabel}</h2>
             <TotalCountSkeleton />
           </div>
@@ -180,13 +174,13 @@ export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: Pick<ReviewsProps,
       sidebarSize="md"
     >
       <Skeleton.Root
-        className="flex-1 border-t border-[var(--reviews-border,hsl(var(--contrast-100)))] group-has-[[data-pending]]/reviews:animate-pulse"
+        className="flex-1 border-t border-(--reviews-border,var(--contrast-100)) group-has-[[data-pending]]/reviews:animate-pulse"
         pending
       >
         <div data-pending>
           {Array.from({ length: 3 }).map((_, index) => (
             <div
-              className="border-b border-[var(--reviews-border,hsl(var(--contrast-100)))] py-6"
+              className="border-b border-(--reviews-border,var(--contrast-100)) py-6"
               key={index}
             >
               <Skeleton.Box className="h-6 w-32 rounded-md" />
@@ -196,7 +190,7 @@ export function ReviewsSkeleton({ reviewsLabel = 'Reviews' }: Pick<ReviewsProps,
                 <Skeleton.Text characterCount={70} className="rounded" />
                 <Skeleton.Text characterCount={40} className="rounded" />
               </div>
-              <Skeleton.Text characterCount={8} className="mt-8 rounded text-sm" />
+              <Skeleton.Text characterCount={8} className="mt-8 rounded-sm text-sm" />
             </div>
           ))}
         </div>
@@ -209,9 +203,9 @@ function TotalCountSkeleton() {
   return (
     <Skeleton.Root className="w-full group-has-[[data-pending]]/reviews:animate-pulse" pending>
       <Skeleton.Text
-        data-pending
         characterCount={3}
         className="rounded-md text-xl @xl:my-5 @xl:text-2xl"
+        data-pending
       />
     </Skeleton.Root>
   );
@@ -235,7 +229,7 @@ function AverageRatingSkeleton() {
 function RatingSkeleton() {
   return (
     <Skeleton.Root className="w-full group-has-[[data-pending]]/reviews:animate-pulse" pending>
-      <Skeleton.Box data-pending className="h-6 w-32 rounded-md" />
+      <Skeleton.Box className="h-6 w-32 rounded-md" data-pending />
     </Skeleton.Root>
   );
 }

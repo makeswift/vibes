@@ -60,8 +60,8 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --skeleton: color-mix(in oklab, hsl(var(--contast-300)), white 75%);
+    --skeleton: color-mix(in oklab, var(--contrast-300) 15%, transparent);
 }
-```
+`}</CodeBlock>

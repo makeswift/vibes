@@ -4,7 +4,7 @@ export const heroSlides = [
   {
     title: 'Plants delivered to your door',
     image: {
-      src: 'https://rstr.in/monogram/vibes/fzVuE9iZ4mI',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTphMTY1ZmQ1Yi01M2UyLTRhYWMtODZiZC1jZmJiY2E3YzRhOWY=/plants-delivered.jpeg',
       alt: 'alt',
     },
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -16,7 +16,7 @@ export const heroSlides = [
   {
     title: 'Grow',
     image: {
-      src: 'https://rstr.in/monogram/vibes/-cqnV6UhvCk',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmYjk3NzU2NS00YmZmLTRkYjEtODhkMy1kZGUzY2I5YmRhODQ=/small-plant-growth.jpeg',
       alt: 'alt',
     },
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -28,7 +28,7 @@ export const heroSlides = [
   {
     title: 'Thrive',
     image: {
-      src: 'https://rstr.in/monogram/vibes/RNZYqBoUs7C/3QYdXXiml_C',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1NGFjNmRiYi0xZDE2LTRiOTEtOWUyZS0zMjY1ZjBmZTk0ZjU=/plant-blog-1.jpeg/3QYdXXiml_C',
       alt: 'alt',
     },
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',

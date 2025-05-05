@@ -85,21 +85,21 @@ export interface OrderDetailsSectionProps {
  *
  * ```css
  * :root {
- *   --order-details-section-focus: hsl(var(--primary));
- *   --order-details-section-font-family: hsl(var(--font-family-body));
- *   --order-details-section-title-font-family: hsl(var(--font-family-heading));
- *   --order-details-text-primary: hsl(var(--foreground));
- *   --order-details-text-secondary: hsl(var(--contrast-500));
- *   --order-details-section-border: hsl(var(--contrast-100));
- *   --order-details-section-button-border: hsl(var(--contrast-100));
- *   --order-details-section-button-border-hover: hsl(var(--contrast-200));
- *   --order-details-section-button-icon: hsl(var(--foreground));
- *   --order-details-section-button-background: hsl(var(--background));
- *   --order-details-section-button-background-hover: hsl(var(--contrast-100));
- *   --order-details-section-image-background: hsl(var(--contrast-100));
- *   --order-details-section-line-item: hsl(var(--contrast-300))
- *   --order-details-section-line-item-subtitle: hsl(var(--contrast-500))
- *   --order-details-section-line-item-subtext: hsl(var(--contrast-400))
+ *   --order-details-section-focus: var(--primary);
+ *   --order-details-section-font-family: var(--font-family-body);
+ *   --order-details-section-title-font-family: var(--font-family-heading);
+ *   --order-details-text-primary: var(--foreground);
+ *   --order-details-text-secondary: var(--contrast-500);
+ *   --order-details-section-border: var(--contrast-100);
+ *   --order-details-section-button-border: var(--contrast-100);
+ *   --order-details-section-button-border-hover: var(--contrast-200);
+ *   --order-details-section-button-icon: var(--foreground);
+ *   --order-details-section-button-background: var(--background);
+ *   --order-details-section-button-background-hover: var(--contrast-100);
+ *   --order-details-section-image-background: var(--contrast-100);
+ *   --order-details-section-line-item: var(--contrast-300);
+ *   --order-details-section-line-item-subtitle: var(--contrast-500);
+ *   --order-details-section-line-item-subtext: var(--contrast-400);
  * }
  * ```
  */
@@ -112,17 +112,17 @@ export function OrderDetailsSection({
   prevHref = '/orders',
 }: OrderDetailsSectionProps) {
   return (
-    <div className="font-[family-name:var(--order-details-section-font-family,var(--font-family-body))] text-[var(--order-details-text-primary,hsl(var(--foreground)))] @container">
-      <div className="flex gap-4 border-b border-[var(--order-details-section-border,hsl(var(--contrast-100)))] pb-8">
+    <div className="@container font-(family-name:--order-details-section-font-family,var(--font-family-body)) text-(--order-details-text-primary,var(--foreground))">
+      <div className="flex gap-4 border-b border-(--order-details-section-border,var(--contrast-100)) pb-8">
         <Link
-          className="mt-1 flex h-12 w-12 items-center justify-center rounded-full border border-[var(--order-details-section-button-border,hsl(var(--contrast-100)))] bg-[var(--order-details-section-button-background,hsl(var(--background)))] text-[var(--order-details-section-button-icon,hsl(var(--foreground)))] ring-[var(--order-details-section-focus,hsl(var(--primary)))] transition-colors duration-300 hover:border-[var(--order-details-section-button-border-hover,hsl(var(--contrast-200)))] hover:bg-[var(--order-details-section-button-background-hover,hsl(var(--contrast-100)))] focus-visible:outline-none focus-visible:ring-2"
+          className="mt-1 flex h-12 w-12 items-center justify-center rounded-full border border-(--order-details-section-button-border,var(--contrast-100)) bg-(--order-details-section-button-background,var(--background)) text-(--order-details-section-button-icon,var(--foreground)) ring-(--order-details-section-focus,var(--primary)) transition-colors duration-300 hover:border-(--order-details-section-button-border-hover,var(--contrast-200)) hover:bg-(--order-details-section-button-background-hover,var(--contrast-100)) focus-visible:ring-2 focus-visible:outline-hidden"
           href={prevHref}
         >
           <ArrowLeft />
         </Link>
         <div className="space-y-1">
           <div className="flex items-center gap-3">
-            <h1 className="font-[family-name:var(--order-details-section-title-font-family,var(--font-family-heading))] text-4xl">
+            <h1 className="font-(family-name:--order-details-section-title-font-family,var(--font-family-heading)) text-4xl">
               {title}
             </h1>
             <Badge variant={order.statusColor}>{order.status}</Badge>
@@ -142,7 +142,7 @@ export function OrderDetailsSection({
           ))}
         </div>
         <div className="order-1 basis-72 pt-8 @3xl:order-2">
-          <div className="font-[family-name:var(--order-details-section-title-font-family,var(--font-family-heading))] text-2xl font-medium">
+          <div className="font-(family-name:--order-details-section-title-font-family,var(--font-family-heading)) text-2xl font-medium">
             Order summary
           </div>
           <Summary summary={order.summary} totalLabel={summaryTotalLabel} />
@@ -162,15 +162,15 @@ function Shipment({
   methodLabel?: string;
 }) {
   return (
-    <div className="border-b border-[var(--order-details-section-border,hsl(var(--contrast-100)))] py-8 @container">
+    <div className="@container border-b border-(--order-details-section-border,var(--contrast-100)) py-8">
       <div className="space-y-6">
-        <div className="font-[family-name:var(--order-details-section-title-font-family,var(--font-family-heading))] text-2xl font-medium">
+        <div className="font-(family-name:--order-details-section-title-font-family,var(--font-family-heading)) text-2xl font-medium">
           {destination.title}
         </div>
         <div className="grid gap-8 @xl:flex @xl:gap-20">
           <div className="text-sm">
             <h3 className="font-semibold">{addressLabel}</h3>
-            <div className="text-[var(--order-details-text-secondary,hsl(var(--contrast-500)))]">
+            <div className="text-(--order-details-text-secondary,var(--contrast-500))">
               <p>{destination.address.name}</p>
               <p>{destination.address.street1}</p>
               <p>{destination.address.street2}</p>
@@ -183,7 +183,7 @@ function Shipment({
           {destination.shipments.map((shipment) => (
             <div className="text-sm" key={shipment.name}>
               <h3 className="font-semibold">{methodLabel}</h3>
-              <div className="text-[var(--order-details-text-secondary,hsl(var(--contrast-500)))]">
+              <div className="text-(--order-details-text-secondary,var(--contrast-500))">
                 <p>{shipment.name}</p>
                 <p>{shipment.status}</p>
                 <ShipmentTracking tracking={shipment.tracking} />
@@ -234,21 +234,21 @@ function ShipmentTracking({
 function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
   return (
     <Link
-      className="group grid shrink-0 cursor-pointer gap-8 rounded-xl ring-[var(--order-details-section-focus,hsl(var(--primary)))] ring-offset-4 focus-visible:outline-none focus-visible:ring-2 @sm:flex @sm:rounded-2xl"
+      className="group grid shrink-0 cursor-pointer gap-8 rounded-xl ring-(--order-details-section-focus,var(--primary)) ring-offset-4 focus-visible:ring-2 focus-visible:outline-hidden @sm:flex @sm:rounded-2xl"
       href={lineItem.href}
       id={lineItem.id}
     >
-      <div className="relative aspect-square basis-40 overflow-hidden rounded-[inherit] border border-[var(--order-details-section-border,hsl(var(--contrast-100)))] bg-[var(--order-details-section-image-background,hsl(var(--contrast-100)))]">
+      <div className="relative aspect-square basis-40 overflow-hidden rounded-[inherit] border border-(--order-details-section-border,var(--contrast-100)) bg-(--order-details-section-image-background,var(--contrast-100))">
         {lineItem.image?.src != null ? (
           <Image
             alt={lineItem.image.alt}
-            className="w-full scale-100 select-none object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+            className="w-full scale-100 object-cover transition-transform duration-500 ease-out select-none group-hover:scale-110"
             fill
             sizes="10rem"
             src={lineItem.image.src}
           />
         ) : (
-          <div className="pl-2 pt-3 text-4xl font-bold leading-[0.8] tracking-tighter text-[var(--order-details-section-line-item,hsl(var(--contrast-300)))] transition-transform duration-500 ease-out group-hover:scale-105">
+          <div className="pt-3 pl-2 text-4xl leading-[0.8] font-bold tracking-tighter text-(--order-details-section-line-item,var(--contrast-300)) transition-transform duration-500 ease-out group-hover:scale-105">
             {lineItem.title}
           </div>
         )}
@@ -258,7 +258,7 @@ function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
         <div>
           <div className="font-semibold">{lineItem.title}</div>
           {lineItem.subtitle != null && lineItem.subtitle !== '' && (
-            <div className="font-normal text-[var(--order-details-section-line-item-subtitle,hsl(var(--contrast-500)))]">
+            <div className="font-normal text-(--order-details-section-line-item-subtitle,var(--contrast-500))">
               {lineItem.subtitle}
             </div>
           )}
@@ -284,13 +284,13 @@ function ShipmentLineItem({ lineItem }: { lineItem: ShipmentLineItem }) {
 function Summary({ summary, totalLabel = 'Total' }: { summary: Summary; totalLabel?: string }) {
   return (
     <div>
-      <div className="space-y-2 pb-3 pt-5">
+      <div className="space-y-2 pt-5 pb-3">
         {summary.lineItems.map((lineItem, index) => (
           <div className="flex justify-between" key={index}>
             <div>
               <div className="text-sm">{lineItem.label}</div>
               {lineItem.subtext != null && lineItem.subtext !== '' && (
-                <div className="text-xs text-[var(--order-details-section-line-item-subtext,hsl(var(--contrast-400)))]">
+                <div className="text-xs text-(--order-details-section-line-item-subtext,var(--contrast-400))">
                   {lineItem.subtext}
                 </div>
               )}
@@ -300,7 +300,7 @@ function Summary({ summary, totalLabel = 'Total' }: { summary: Summary; totalLab
           </div>
         ))}
       </div>
-      <div className="flex justify-between border-t border-[var(--order-details-section-border,hsl(var(--contrast-100)))] py-3 font-semibold">
+      <div className="flex justify-between border-t border-(--order-details-section-border,var(--contrast-100)) py-3 font-semibold">
         <span>{totalLabel}</span>
         <span>{summary.total}</span>
       </div>

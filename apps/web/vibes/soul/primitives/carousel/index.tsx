@@ -118,7 +118,7 @@ function Carousel({
       <div
         {...props}
         aria-roledescription="carousel"
-        className={clsx('relative p-1.5 @container', hideOverflow && 'overflow-hidden', className)}
+        className={clsx('@container relative p-1.5', hideOverflow && 'overflow-hidden', className)}
         onKeyDownCapture={handleKeyDown}
         role="region"
       >
@@ -155,9 +155,9 @@ function CarouselItem({ className, ...props }: ComponentPropsWithoutRef<'div'>) 
  *
  * ```css
  * :root {
-    --carousel-focus: hsl(var(--primary));
-    --carousel-light-button: hsl(var(--foreground));
-    --carousel-dark-button: hsl(var(--background));
+    --carousel-focus: var(--primary);
+    --carousel-light-button: var(--foreground);
+    --carousel-dark-button: var(--background);
  * }
  * ```
  */
@@ -180,14 +180,14 @@ function CarouselButtons({
       className={clsx(
         'flex gap-2',
         {
-          light: 'text-[var(--carousel-light-button,hsl(var(--foreground)))]',
-          dark: 'text-[var(--carousel-dark-button,hsl(var(--background)))]',
+          light: 'text-(--carousel-light-button,var(--foreground))',
+          dark: 'text-(--carousel-dark-button,var(--background))',
         }[colorScheme],
         className,
       )}
     >
       <button
-        className="rounded-lg ring-[var(--carousel-focus,hsl(var(--primary)))] transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-25"
+        className="rounded-lg ring-(--carousel-focus,var(--primary)) transition-colors duration-300 focus-visible:ring-2 focus-visible:outline-0 disabled:pointer-events-none disabled:opacity-25"
         disabled={!canScrollPrev}
         onClick={scrollPrev}
         title={previousLabel}
@@ -195,7 +195,7 @@ function CarouselButtons({
         <ArrowLeft className="h-6 w-6" strokeWidth={1.5} />
       </button>
       <button
-        className="rounded-lg ring-[var(--carousel-focus,hsl(var(--primary)))] transition-colors duration-300 focus-visible:outline-0 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-25"
+        className="rounded-lg ring-(--carousel-focus,var(--primary)) transition-colors duration-300 focus-visible:ring-2 focus-visible:outline-0 disabled:pointer-events-none disabled:opacity-25"
         disabled={!canScrollNext}
         onClick={scrollNext}
         title={nextLabel}
@@ -212,8 +212,8 @@ function CarouselButtons({
  *
  * ```css
  * :root {
-    --carousel-light-scrollbar: hsl(var(--foreground));
-    --carousel-dark-scrollbar: hsl(var(--background));
+    --carousel-light-scrollbar: var(--foreground);
+    --carousel-dark-scrollbar: var(--background);
  * }
  * ```
  */
@@ -303,8 +303,8 @@ function CarouselScrollbar({
         className={clsx(
           'pointer-events-none absolute h-1 w-full rounded-full opacity-10',
           {
-            light: 'bg-[var(--carousel-light-scrollbar,hsl(var(--foreground)))]',
-            dark: 'bg-[var(--carousel-dark-scrollbar,hsl(var(--background)))]',
+            light: 'bg-(--carousel-light-scrollbar,var(--foreground))',
+            dark: 'bg-(--carousel-dark-scrollbar,var(--background))',
           }[colorScheme],
         )}
       />
@@ -314,8 +314,8 @@ function CarouselScrollbar({
         className={clsx(
           'pointer-events-none absolute h-1 rounded-full transition-all ease-out',
           {
-            light: 'bg-[var(--carousel-light-scrollbar,hsl(var(--foreground)))]',
-            dark: 'bg-[var(--carousel-dark-scrollbar,hsl(var(--background)))]',
+            light: 'bg-(--carousel-light-scrollbar,var(--foreground))',
+            dark: 'bg-(--carousel-dark-scrollbar,var(--background))',
           }[colorScheme],
         )}
         style={{

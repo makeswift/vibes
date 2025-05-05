@@ -22,7 +22,7 @@ function Usage() {
 } 
 
 const image = {
-    src: 'https://rstr.in/monogram/vibes/m12FEyfnuDl',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiZTZmZGU0OC1jYWEzLTRmNzUtYTFhNy03NzNlNThiMTJlZWE=/lady-with-plant.jpeg',
     alt: 'Lady with plant',
 };
 
@@ -103,12 +103,12 @@ async function action(_lastResult: { lastResult: SubmissionResult | null }, form
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --subscribe-font-family: var(--font-family-body);
-  --subscribe-title-font-family: var(--font-family-heading);
-  --subscribe-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
-  --subscribe-title: color-mix(in oklab, hsl(var(--primary)), white 75%);
-  --subscribe-description: color-mix(in oklab, hsl(var(--primary)), white 75%);
+    --subscribe-font-family: var(--font-family-body);
+    --subscribe-title-font-family: var(--font-family-heading);
+    --subscribe-background: var(--primary-shadow);
+    --subscribe-title: var(--primary-highlight);
+    --subscribe-description: var(--primary-highlight);
 }
-```
+`}</CodeBlock>

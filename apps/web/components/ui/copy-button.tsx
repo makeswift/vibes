@@ -33,7 +33,7 @@ export function CopyButton({ className, clipboard, children }: Props) {
     >
       {children}
 
-      <svg className="h-4 w-4 overflow-visible stroke-foreground" viewBox="0 0 16 16">
+      <svg className="stroke-foreground h-4 w-4 overflow-visible" viewBox="0 0 16 16">
         <rect
           fill="transparent"
           height="10.5"
@@ -45,7 +45,7 @@ export function CopyButton({ className, clipboard, children }: Props) {
           y="4.75"
         />
         <rect
-          className="transition-transform duration-150 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"
+          className="transition-transform duration-150 group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
           fill="white"
           height="10.5"
           rx="3.5"

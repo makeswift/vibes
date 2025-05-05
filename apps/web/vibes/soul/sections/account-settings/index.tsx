@@ -18,8 +18,8 @@ export interface AccountSettingsSectionProps {
  * ```css
  * :root {
  *   --account-settings-section-font-family: var(--font-family-heading);
- *   --account-settings-section-text: hsl(var(--foreground));
- *   --account-settings-section-border: hsl(var(--contrast-100));
+ *   --account-settings-section-text: var(--foreground);
+ *   --account-settings-section-border: var(--contrast-100);
  * }
  * ```
  */
@@ -37,7 +37,7 @@ export function AccountSettingsSection({
       <div className="flex flex-col gap-y-24 @xl:flex-row">
         <div className="flex w-full flex-col @xl:max-w-lg">
           <div className="pb-12">
-            <h1 className="mb-10 font-[family-name:var(--account-settings-section-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--account-settings-section-text,var(--foreground))] @xl:text-4xl">
+            <h1 className="mb-10 font-(family-name:--account-settings-section-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--account-settings-section-text,var(--foreground)) @xl:text-4xl">
               {title}
             </h1>
             <UpdateAccountForm
@@ -46,8 +46,8 @@ export function AccountSettingsSection({
               submitLabel={updateAccountSubmitLabel}
             />
           </div>
-          <div className="border-t border-[var(--account-settings-section-border,hsl(var(--contrast-100)))] pt-12">
-            <h1 className="mb-10 font-[family-name:var(--account-settings-section-font-family,var(--font-family-heading))] text-2xl font-medium leading-none text-[var(--account-settings-section-text,var(--foreground))] @xl:text-2xl">
+          <div className="border-t border-(--account-settings-section-border,var(--contrast-100)) pt-12">
+            <h1 className="mb-10 font-(family-name:--account-settings-section-font-family,var(--font-family-heading)) text-2xl leading-none font-medium text-(--account-settings-section-text,var(--foreground)) @xl:text-2xl">
               {changePasswordTitle}
             </h1>
             <ChangePasswordForm

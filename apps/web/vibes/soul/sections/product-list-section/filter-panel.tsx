@@ -131,14 +131,14 @@ export function FilterPanel({
           <div className="space-y-5">
             {linkGroupFilters.map((linkGroup, index) => (
               <div key={index.toString()}>
-                <h3 className="py-4 font-[family-name:var(--product-list-section-filter-label-font-family,var(--font-family-mono))] text-sm uppercase text-[var(--product-list-section-filter-label,hsl(var(--contrast-400)))]">
+                <h3 className="py-4 font-(family-name:--product-list-section-filter-label-font-family,var(--font-family-mono)) text-sm text-(--product-list-section-filter-label,var(--contrast-400)) uppercase">
                   {linkGroup.label}
                 </h3>
                 <ul>
                   {linkGroup.links.map((link, linkIndex) => (
                     <li className="py-2" key={linkIndex.toString()}>
                       <Link
-                        className="font-[family-name:var(--product-list-section-filter-link-font-family,var(--font-family-body))] text-base font-medium text-[var(--product-list-section-filter-link,hsl(var(--contrast-500)))] transition-colors duration-300 ease-out hover:text-[var(--product-list-section-filter-link-hover,var(--foreground))]"
+                        className="font-(family-name:--product-list-section-filter-link-font-family,var(--font-family-body)) text-base font-medium text-(--product-list-section-filter-link,var(--contrast-500)) transition-colors duration-300 ease-out hover:text-(--product-list-section-filter-link-hover,var(--foreground))"
                         href={link.href}
                       >
                         {link.label}
@@ -309,7 +309,7 @@ export function FilterPanelSkeleton() {
         {Array.from({ length: 3 }).map((_, idx) => (
           <div key={idx}>
             <div className="flex items-start gap-8 py-3 @md:py-4">
-              <Skeleton.Text characterCount={12} className="flex-1 rounded text-sm" />
+              <Skeleton.Text characterCount={12} className="flex-1 rounded-sm text-sm" />
               <Skeleton.Box className="mt-1 h-4 w-4 rounded" />
             </div>
             <div className="py-3 text-base">

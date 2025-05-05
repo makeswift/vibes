@@ -69,16 +69,16 @@ export const reviews = [
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --reviews-font-family: var(--font-family-body);
-  --reviews-title-font-family: var(--font-family-heading);
-  --reviews-border: hsl(var(--contrast-100));
-  --reviews-count: hsl(var(--contrast-300));
-  -reviews-average: hsl(var(--foreground));
-  --reviews-name: hsl(var(--foreground));
-  --reviews-review: hsl(var(--contrast-500));
-  --reviews-date: hsl(var(--contrast-500));
-  --reviews-empty-message: hsl(var(--foreground));
+    --reviews-font-family: var(--font-family-body);
+    --reviews-title-font-family: var(--font-family-heading);
+    --reviews-border: var(--contrast-100);
+    --reviews-count: var(--contrast-300);
+    --reviews-average: var(--foreground);
+    --reviews-name: var(--foreground);
+    --reviews-review: var(--contrast-500);
+    --reviews-date: var(--contrast-500);
+    --reviews-empty-message: var(--foreground);
 }
-```
+`}</CodeBlock>

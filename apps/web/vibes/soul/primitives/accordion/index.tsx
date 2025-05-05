@@ -14,19 +14,19 @@ export interface AccordionProps extends ComponentPropsWithoutRef<typeof Accordio
  *
  * ```css
  * :root {
- *   --accordion-focus: hsl(var(--primary));
- *   --acordion-light-offset: hsl(var(--background));
- *   --accordion-light-title-text: hsl(var(--contrast-400));
- *   --accordion-light-title-text-hover: hsl(var(--foreground));
- *   --accordion-light-title-icon: hsl(var(--contrast-500));
- *   --accordion-light-title-icon-hover: hsl(var(--foreground));
- *   --accordion-light-content-text: hsl(var(--foreground));
- *   --acordion-dark-offset: hsl(var(--foreground));
- *   --accordion-dark-title-text: hsl(var(--contrast-200));
- *   --accordion-dark-title-text-hover: hsl(var(--background));
- *   --accordion-dark-title-icon: hsl(var(--contrast-200));
- *   --accordion-dark-title-icon-hover: hsl(var(--background));
- *   --accordion-dark-content-text: hsl(var(--background));
+ *   --accordion-focus: var(--primary);
+ *   --acordion-light-offset: var(--background);
+ *   --accordion-light-title-text: var(--contrast-400);
+ *   --accordion-light-title-text-hover: var(--foreground);
+ *   --accordion-light-title-icon: var(--contrast-500);
+ *   --accordion-light-title-icon-hover: var(--foreground);
+ *   --accordion-light-content-text: var(--foreground);
+ *   --acordion-dark-offset: var(--foreground);
+ *   --accordion-dark-title-text: var(--contrast-200);
+ *   --accordion-dark-title-text-hover: var(--background);
+ *   --accordion-dark-title-icon: var(--contrast-200);
+ *   --accordion-dark-title-icon-hover: var(--background);
+ *   --accordion-dark-content-text: var(--background);
  *   --accordion-title-font-family: var(--font-family-mono);
  *   --accordion-content-font-family: var(--font-family-body);
  * }
@@ -49,23 +49,23 @@ function AccordionItem({
     <AccordionPrimitive.Item
       {...props}
       className={clsx(
-        'focus:outline-2 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[var(--accordion-focus,hsl(var(--primary)))] has-[:focus-visible]:ring-offset-4',
+        'focus:outline-2 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-(--accordion-focus,var(--primary)) has-[:focus-visible]:ring-offset-4',
         {
-          light: 'ring-offset-[var(--acordion-light-offset,hsl(var(--background)))]',
-          dark: 'ring-offset-[var(--acordion-dark-offset,hsl(var(--foreground)))]',
+          light: 'ring-offset-(--acordion-light-offset,var(--background))',
+          dark: 'ring-offset-(--acordion-dark-offset,var(--foreground))',
         }[colorScheme],
         className,
       )}
     >
       <AccordionPrimitive.Header>
-        <AccordionPrimitive.Trigger className="group flex w-full cursor-pointer items-start gap-8 border-none py-3 text-start focus:outline-none @md:py-4">
+        <AccordionPrimitive.Trigger className="group flex w-full cursor-pointer items-start gap-8 border-none py-3 text-start focus:outline-hidden @md:py-4">
           <div
             className={clsx(
-              'flex-1 select-none font-[family-name:var(--accordion-title-font-family,var(--font-family-mono))] text-sm font-normal uppercase transition-colors duration-300 ease-out',
+              'flex-1 font-(family-name:--accordion-title-font-family,var(--font-family-mono)) text-sm font-normal uppercase transition-colors duration-300 ease-out select-none',
               {
                 light:
-                  'text-[var(--accordion-light-title-text,hsl(var(--contrast-400)))] group-hover:text-[var(--accordion-light-title-text-hover,hsl(var(--foreground)))]',
-                dark: 'text-[var(--accordion-dark-title-text,hsl(var(--contrast-200)))] group-hover:text-[var(--accordion-dark-title-text-hover,hsl(var(--background)))]',
+                  'text-(--accordion-light-title-text,var(--contrast-400)) group-hover:text-(--accordion-light-title-text-hover,var(--foreground))',
+                dark: 'text-(--accordion-dark-title-text,var(--contrast-200)) group-hover:text-(--accordion-dark-title-text-hover,var(--background))',
               }[colorScheme],
             )}
           >
@@ -75,8 +75,8 @@ function AccordionItem({
             className={clsx(
               {
                 light:
-                  'stroke-[var(--accordion-light-title-icon,hsl(var(--contrast-500)))] group-hover:stroke-[var(--accordion-light-title-icon-hover,hsl(var(--foreground)))]',
-                dark: 'stroke-[var(--accordion-dark-title-icon,hsl(var(--contrast-200)))] group-hover:stroke-[var(--accordion-dark-title-icon-hover,hsl(var(--background)))]',
+                  'stroke-(--accordion-light-title-icon,var(--contrast-500)) group-hover:stroke-(--accordion-light-title-icon-hover,var(--foreground))',
+                dark: 'stroke-(--accordion-dark-title-icon,var(--contrast-200)) group-hover:stroke-(--accordion-dark-title-icon-hover,var(--background))',
               }[colorScheme],
             )}
           />
@@ -92,10 +92,10 @@ function AccordionItem({
       >
         <div
           className={clsx(
-            'py-3 font-[family-name:var(--accordion-content-font-family,var(--font-family-body))] text-base font-light leading-normal',
+            'py-3 font-(family-name:--accordion-content-font-family,var(--font-family-body)) text-base leading-normal font-light',
             {
-              light: 'text-[var(--accordion-light-content-text,hsl(var(--foreground)))]',
-              dark: 'text-[var(--accordion-dark-content-text,hsl(var(--background)))]',
+              light: 'text-(--accordion-light-content-text,var(--foreground))',
+              dark: 'text-(--accordion-dark-content-text,var(--background))',
             }[colorScheme],
           )}
         >

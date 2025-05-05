@@ -31,34 +31,36 @@ type Props = {
  *
  * ```css
  *  :root {
- *    --select-light-trigger-background: hsl(var(--white));
- *    --select-light-trigger-border: hsl(var(--contrast-100));
- *    --select-light-trigger-border-hover: hsl(var(--contrast-300));
- *    --select-light-trigger-border-error: hsl(var(--error));
- *    --select-light-trigger-text: hsl(var(--foreground));
- *    --select-light-trigger-focus: hsl(var(--primary));
- *    --select-light-icon: hsl(var(--foreground));
- *    --select-light-content-background: hsl(var(--background));
- *    --select-light-item-background-hover: hsl(var(--contrast-100));
- *    --select-light-item-background-focus: hsl(var(--contrast-100));
- *    --select-light-item-text: hsl(var(--contrast-400));
- *    --select-light-item-text-hover: hsl(var(--foreground));
- *    --select-light-item-text-focus: hsl(var(--foreground));
- *    --select-light-item-checked-text-focus: hsl(var(--foreground));
- *    --select-dark-trigger-background: hsl(var(--black));
- *    --select-dark-trigger-border: hsl(var(--contrast-500));
- *    --select-dark-trigger-border-hover: hsl(var(--contrast-300));
- *    --select-dark-trigger-border-error: hsl(var(--error));
- *    --select-dark-trigger-text: hsl(var(--background));
- *    --select-dark-trigger-focus: hsl(var(--primary));
- *    --select-dark-icon: hsl(var(--background));
- *    --select-dark-content-background: hsl(var(--foreground));
- *    --select-dark-item-background-hover: hsl(var(--contrast-500));
- *    --select-dark-item-background-focus: hsl(var(--contrast-500));
- *    --select-dark-item-text: hsl(var(--contrast-200));
- *    --select-dark-item-text-hover: hsl(var(--background));
- *    --select-dark-item-text-focus: hsl(var(--background));
- *    --select-dark-item-checked-text-focus: hsl(var(--background));
+ *    --select-light-trigger-background: var(--background);
+ *    --select-light-trigger-border: var(--contrast-100);
+ *    --select-light-trigger-border-hover: var(--contrast-300);
+ *    --select-light-trigger-border-error: var(--error);
+ *    --select-light-trigger-text: var(--foreground);
+ *    --select-light-trigger-focus: var(--primary);
+ *    --select-light-icon: var(--foreground);
+ *    --select-light-content-background: var(--background);
+ *    --select-light-content-border: color-mix(in oklab, var(--foreground) 10%, transparent);
+ *    --select-light-item-background-hover: var(--contrast-100);
+ *    --select-light-item-background-focus: var(--contrast-100);
+ *    --select-light-item-text: var(--contrast-400);
+ *    --select-light-item-text-hover: var(--foreground);
+ *    --select-light-item-text-focus: var(--foreground);
+ *    --select-light-item-checked-text-focus: var(--foreground);
+ *    --select-dark-trigger-background: var(--foreground);
+ *    --select-dark-trigger-border: var(--contrast-500);
+ *    --select-dark-trigger-border-hover: var(--contrast-300);
+ *    --select-dark-trigger-border-error: var(--error);
+ *    --select-dark-trigger-text: var(--background);
+ *    --select-dark-trigger-focus: var(--primary);
+ *    --select-dark-icon: var(--background);
+ *    --select-dark-content-background: var(--foreground);
+ *    --select-dark-content-border: color-mix(in oklab, var(--background) 10%, transparent);
+ *    --select-dark-item-background-hover: var(--contrast-500);
+ *    --select-dark-item-background-focus: var(--contrast-500);
+ *    --select-dark-item-text: var(--contrast-200);
+ *    --select-dark-item-text-hover: var(--background);
+ *    --select-dark-item-text-focus: var(--background);
+ *    --select-dark-item-checked-text-focus: var(--background);
  *  }
  * ```
  */
@@ -96,22 +98,22 @@ export function Select({
         <SelectPrimitive.Trigger
           aria-label={label}
           className={clsx(
-            'flex h-fit w-full select-none items-center justify-between gap-3 border p-2 px-5 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2',
+            'flex h-fit w-full items-center justify-between gap-3 border p-2 px-5 py-3 text-sm font-medium transition-colors select-none focus-visible:ring-2 focus-visible:outline-hidden',
             variant === 'rectangle' ? 'rounded-lg' : 'rounded-full',
             {
               light:
-                'bg-[var(--select-light-trigger-background,hsl(var(--white)))] text-[var(--select-light-trigger-text,hsl(var(--foreground)))] hover:border-[var(--select-light-trigger-border-hover,hsl(var(--contrast-300)))] hover:bg-[var(--select-light-trigger-background-hover,hsl(var(--contrast-100)))] focus-visible:ring-[var(--select-light-trigger-focus,hsl(var(--primary)))]',
-              dark: 'bg-[var(--select-dark-trigger-background,hsl(var(--black)))] text-[var(--select-dark-trigger-text,hsl(var(--background)))] hover:border-[var(--select-dark-trigger-border-hover,hsl(var(--contrast-300)))] hover:bg-[var(--select-dark-trigger-background-hover,hsl(var(--contrast-500)))] focus-visible:ring-[var(--select-dark-trigger-focus,hsl(var(--primary)))]',
+                'bg-(--select-light-trigger-background,var(--background)) text-(--select-light-trigger-text,var(--foreground)) hover:border-(--select-light-trigger-border-hover,var(--contrast-300)) hover:bg-(--select-light-trigger-background-hover,var(--contrast-100)) focus-visible:ring-(--select-light-trigger-focus,var(--primary))',
+              dark: 'bg-(--select-dark-trigger-background,var(--foreground)) text-(--select-dark-trigger-text,var(--background)) hover:border-(--select-dark-trigger-border-hover,var(--contrast-300)) hover:bg-(--select-dark-trigger-background-hover,var(--contrast-500)) focus-visible:ring-(--select-dark-trigger-focus,var(--primary))',
             }[colorScheme],
             {
               light:
                 errors && errors.length > 0
-                  ? 'border-[var(--select-light-trigger-border-error,hsl(var(--error)))]'
-                  : 'border-[var(--select-light-trigger-border,hsl(var(--contrast-100)))]',
+                  ? 'border-(--select-light-trigger-border-error,var(--error))'
+                  : 'border-(--select-light-trigger-border,var(--contrast-100))',
               dark:
                 errors && errors.length > 0
-                  ? 'border-[var(--select-dark-trigger-border-error,hsl(var(--error)))]'
-                  : 'border-[var(--select-dark-trigger-border,hsl(var(--contrast-500)))]',
+                  ? 'border-(--select-dark-trigger-border-error,var(--error))'
+                  : 'border-(--select-dark-trigger-border,var(--contrast-500))',
             }[colorScheme],
           )}
           data-pending={pending ? true : null}
@@ -125,8 +127,8 @@ export function Select({
               className={clsx(
                 'w-5 transition-transform',
                 {
-                  light: 'text-[var(--select-light-icon,hsl(var(--foreground)))]',
-                  dark: 'text-[var(--select-dark-icon,hsl(var(--background)))]',
+                  light: 'text-(--select-light-icon,var(--foreground))',
+                  dark: 'text-(--select-dark-icon,var(--background))',
                 }[colorScheme],
               )}
               strokeWidth={1.5}
@@ -136,10 +138,11 @@ export function Select({
         <SelectPrimitive.Portal>
           <SelectPrimitive.Content
             className={clsx(
-              'z-50 max-h-80 w-full overflow-y-scroll rounded-xl p-2 shadow-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:rounded-3xl @4xl:p-4',
+              'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-50 max-h-80 w-full overflow-y-auto rounded-xl p-2 shadow-xl ring-1 @4xl:rounded-3xl @4xl:p-4',
               {
-                light: 'bg-[var(--select-light-content-background,hsl(var(--background)))]',
-                dark: 'bg-[var(--select-dark-content-background,hsl(var(--foreground)))]',
+                light:
+                  'bg-(--select-light-content-background,var(--background)) ring-(--select-light-content-border,color-mix(in_oklab,var(--foreground)_10%,transparent))',
+                dark: 'bg-(--select-dark-content-background,var(--foreground)) ring-(--select-dark-content-border,color-mix(in_oklab,var(--background)_10%,transparent))',
               }[colorScheme],
             )}
           >
@@ -148,8 +151,8 @@ export function Select({
                 className={clsx(
                   'w-5',
                   {
-                    light: 'text-[var(--select-light-icon,hsl(var(--foreground)))]',
-                    dark: 'text-[var(--select-dark-icon,hsl(var(--background)))]',
+                    light: 'text-(--select-light-icon,var(--foreground))',
+                    dark: 'text-(--select-dark-icon,var(--background))',
                   }[colorScheme],
                 )}
                 strokeWidth={1.5}
@@ -159,11 +162,11 @@ export function Select({
               {options.map((option) => (
                 <SelectPrimitive.Item
                   className={clsx(
-                    'w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium outline-none transition-colors @4xl:text-base',
+                    'w-full cursor-default rounded-lg px-3 py-2 text-sm font-medium outline-hidden transition-colors select-none @4xl:text-base',
                     {
                       light:
-                        'text-[var(--select-light-item-text,hsl(var(--contrast-400)))] hover:bg-[var(--select-light-item-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--select-light-item-text-hover,hsl(var(--foreground)))] focus-visible:bg-[var(--select-light-item-background-focus,hsl(var(--contrast-100)))] focus-visible:text-[var(--select-light-item-text-focus,hsl(var(--foreground)))] data-[state=checked]:text-[var(--select-light-item-checked-text-focus,hsl(var(--foreground)))]',
-                      dark: 'text-[var(--select-dark-item-text,hsl(var(--contrast-200)))] hover:bg-[var(--select-dark-item-background-hover,hsl(var(--contrast-500)))] hover:text-[var(--select-dark-item-text-hover,hsl(var(--background)))] focus-visible:bg-[var(--select-dark-item-background-focus,hsl(var(--contrast-500)))] focus-visible:text-[var(--select-dark-item-text-focus,hsl(var(--background)))] data-[state=checked]:text-[var(--select-dark-item-checked-text-focus,hsl(var(--background)))]',
+                        'text-(--select-light-item-text,var(--contrast-400)) hover:bg-(--select-light-item-background-hover,var(--contrast-100)) hover:text-(--select-light-item-text-hover,var(--foreground)) focus-visible:bg-(--select-light-item-background-focus,var(--contrast-100)) focus-visible:text-(--select-light-item-text-focus,var(--foreground)) data-[state=checked]:text-(--select-light-item-checked-text-focus,var(--foreground))',
+                      dark: 'text-(--select-dark-item-text,var(--contrast-200)) hover:bg-(--select-dark-item-background-hover,var(--contrast-500)) hover:text-(--select-dark-item-text-hover,var(--background)) focus-visible:bg-(--select-dark-item-background-focus,var(--contrast-500)) focus-visible:text-(--select-dark-item-text-focus,var(--background)) data-[state=checked]:text-(--select-dark-item-checked-text-focus,var(--background))',
                     }[colorScheme],
                   )}
                   key={option.value}
@@ -181,8 +184,8 @@ export function Select({
                 className={clsx(
                   'w-5',
                   {
-                    light: 'text-[var(--select-icon,hsl(var(--foreground)))]',
-                    dark: 'text-[var(--select-icon,hsl(var(--background)))]',
+                    light: 'text-(--select-icon,var(--foreground))',
+                    dark: 'text-(--select-icon,var(--background))',
                   }[colorScheme],
                 )}
                 strokeWidth={1.5}

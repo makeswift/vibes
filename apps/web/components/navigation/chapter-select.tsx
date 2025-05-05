@@ -87,24 +87,24 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
             />
           </Button>
         </SheetTrigger>
-        <SheetContent className="z-20 focus:outline-none" side="top">
+        <SheetContent className="z-20 focus:outline-hidden" side="top">
           <VisuallyHidden.Root>
             <SheetTitle>VIBES</SheetTitle>
           </VisuallyHidden.Root>
-          <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-8 xl:container md:grid-cols-2 md:gap-y-10 lg:gap-x-8 lg:py-2 xl:px-8 2xl:grid-cols-3">
+          <div className="mx-auto grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 md:gap-y-10 lg:gap-x-8 lg:py-2 xl:container xl:px-8 2xl:grid-cols-3">
             {Object.values(allChapters).map((chapter) => (
               <div key={chapter.slug}>
                 <Link
                   aria-disabled={chapter.comingSoon}
                   className={clsx(
-                    'group ring-primary ring-offset-8 focus:outline-none focus-visible:ring-2',
+                    'group ring-primary ring-offset-8 focus:outline-hidden focus-visible:ring-2',
                     chapter.comingSoon && 'pointer-events-none',
                   )}
                   href={`/docs/${chapter.slug}`}
                 >
                   <div className="relative mb-4 aspect-video">
                     {chapter.comingSoon && (
-                      <span className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold text-white">
+                      <span className="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold text-white">
                         Coming Soon!
                       </span>
                     )}
@@ -112,7 +112,7 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
                     <Image
                       alt={`Thumbnail of ${chapter.name} chapter`}
                       className={clsx(
-                        'border border-contrast-200 bg-contrast-100 object-cover',
+                        'border-contrast-200 bg-contrast-100 border object-cover',
                         chapter.comingSoon && 'opacity-50',
                       )}
                       fill
@@ -140,7 +140,7 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
                   <div>
                     {chapter.tags.map((tag, index) => (
                       <span
-                        className="rounded-full border border-foreground px-2 py-0.5 text-xs font-bold text-foreground"
+                        className="border-foreground text-foreground rounded-full border px-2 py-0.5 text-xs font-bold"
                         key={index}
                       >
                         {tag}
@@ -148,7 +148,7 @@ export function ChapterSelect({ chapters, chapterSlug }: Props) {
                     ))}
                   </div>
                 </div>
-                <p className="pr-4 font-light text-foreground">{chapter.description}</p>
+                <p className="text-foreground pr-4 font-light">{chapter.description}</p>
               </div>
             ))}
           </div>

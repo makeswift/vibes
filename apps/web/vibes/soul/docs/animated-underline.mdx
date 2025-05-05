@@ -27,7 +27,7 @@ export function Usage() {
 
 ### Usage with buttons and links
 
-The `AnimatedUnderline` component can be used with other components, like the Next.js `Link` component or a `button` element, to create a focus-based underline animation. To do this, you need to pass the `className` prop to the wrapping component and apply the `group/underline` and `focus:outline-none` classes to it.
+The `AnimatedUnderline` component can be used with other components, like the Next.js `Link` component or a `button` element, to create a focus-based underline animation. To do this, you need to pass the `className` prop to the wrapping component and apply the `group/underline` and `focus:outline-hidden` classes to it.
 
 {/* prettier-ignore-start */}
 
@@ -38,7 +38,7 @@ import { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';
 
 export function Usage() {
     return (
-      <Link className="group/underline focus:outline-none" href="/about"><AnimatedUnderline>About</AnimatedUnderline></Link>
+      <Link className="group/underline focus:outline-hidden" href="/about"><AnimatedUnderline>About</AnimatedUnderline></Link>
     );
 }
 `}
@@ -63,9 +63,9 @@ This component supports various CSS variables for theming. Here's a comprehensiv
 
 <CodeBlock lang="css">{`
 :root {
-    --animated-underline-text: hsl(var(--foreground));
+    --animated-underline-hover: var(--primary);
+    --animated-underline-text: var(--foreground);
     --animated-underline-font-family: var(--font-family-body);
-    --animated-underline-hover: hsl(var(--primary));
 }
 `}</CodeBlock>
 

@@ -15,16 +15,16 @@ export interface OffsetPaginationProps {
  *
  * ```css
  * :root {
- *   --offset-pagination-focus: hsl(var(--primary));
+ *   --offset-pagination-focus: var(--primary);
  *   -offset-pagination-font-family: var(--font-family-body);
- *   --offset-pagination-ellipsis: hsl(var(--foreground))
- *   --offset-pagination-border: hsl(var(--contrast-100));
- *   --offset-pagination-text: hsl(var(--foreground));
- *   --offset-pagination-background-hover: hsl(var(--contrast-100));
- *   --offset-pagination-current-page-border: hsl(var(--foreground));
- *   --offset-pagination-current-page-background: hsl(var(--foreground));
- *   --offset-pagination-current-page-text: hsl(var(--background));
- *   --offset-pagination-current-pagebackground-hover: hsl(var(--contrast-500));
+ *   --offset-pagination-ellipsis: var(--foreground)
+ *   --offset-pagination-border: var(--contrast-100);
+ *   --offset-pagination-text: var(--foreground);
+ *   --offset-pagination-background-hover: var(--contrast-100);
+ *   --offset-pagination-current-page-border: var(--foreground);
+ *   --offset-pagination-current-page-background: var(--foreground);
+ *   --offset-pagination-current-page-text: var(--background);
+ *   --offset-pagination-current-pagebackground-hover: var(--contrast-500);
  * }
  * ```
  */
@@ -79,12 +79,12 @@ export function OffsetPagination({ pages: totalPages }: OffsetPaginationProps) {
   };
 
   return (
-    <div className="flex w-full justify-center py-10 font-[family-name:var(--offset-pagination-font-family,var(--font-family-body))] text-xs">
+    <div className="flex w-full justify-center py-10 font-(family-name:--offset-pagination-font-family,var(--font-family-body)) text-xs">
       <div className="flex gap-2">
         {renderPagination().map((page, index) =>
           typeof page === 'string' ? (
             <span
-              className="hidden h-12 w-12 items-center justify-center text-[var(--offset-pagination-ellipsis,hsl(var(--foreground)))] @lg:flex"
+              className="hidden h-12 w-12 items-center justify-center text-(--offset-pagination-ellipsis,var(--foreground)) @lg:flex"
               key={index}
             >
               ...
@@ -92,10 +92,10 @@ export function OffsetPagination({ pages: totalPages }: OffsetPaginationProps) {
           ) : (
             <Link
               className={clsx(
-                'flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--offset-pagination-focus,hsl(var(--primary)))]',
+                'flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-300 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-(--offset-pagination-focus,var(--primary))',
                 page === currentPage
-                  ? 'border-[var(--offset-pagination-current-page-border,hsl(var(--foreground)))] bg-[var(--offset-pagination-current-page-background,hsl(var(--foreground)))] text-[var(--offset-pagination-current-page-text,hsl(var(--background)))] hover:bg-[var(--offset-pagination-current-pagebackground-hover,hsl(var(--contrast-500)))]'
-                  : 'border-[var(--offset-pagination-border,hsl(var(--contrast-100)))] text-[var(--offset-pagination-text,hsl(var(--foreground)))] hover:bg-[var(--offset-pagination-background-hover,hsl(var(--contrast-100)))]',
+                  ? 'border-(--offset-pagination-current-page-border,var(--foreground)) bg-(--offset-pagination-current-page-background,var(--foreground)) text-(--offset-pagination-current-page-text,var(--background)) hover:bg-(--offset-pagination-current-pagebackground-hover,var(--contrast-500))'
+                  : 'border-(--offset-pagination-border,var(--contrast-100)) text-(--offset-pagination-text,var(--foreground)) hover:bg-(--offset-pagination-background-hover,var(--contrast-100))',
               )}
               href={`${pathname}?page=${page.toString()}`}
               key={index}

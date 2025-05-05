@@ -37,17 +37,17 @@ Refer to the Learn Next.js tutorial section on [adding search and pagination](ht
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --offset-pagination-focus: hsl(var(--primary));
-  -offset-pagination-font-family: var(--font-family-body);
-  --offset-pagination-ellipsis: hsl(var(--foreground));
-  --offset-pagination-border: hsl(var(--contrast-100));
-  --offset-pagination-text: hsl(var(--foreground));
-  --offset-pagination-background-hover: hsl(var(--contrast-100));
-  --offset-pagination-current-page-border: hsl(var(--foreground));
-  --offset-pagination-current-page-background: hsl(var(--foreground));
-  --offset-pagination-current-page-text: hsl(var(--background));
-  --offset-pagination-current-pagebackground-hover: hsl(var(--contrast-500));
+    --offset-pagination-focus: var(--primary);
+    --offset-pagination-font-family: var(--font-family-body);
+    --offset-pagination-ellipsis: var(--foreground);
+    --offset-pagination-border: var(--contrast-100);
+    --offset-pagination-text: var(--foreground);
+    --offset-pagination-background-hover: var(--contrast-100);
+    --offset-pagination-current-page-border: var(--foreground);
+    --offset-pagination-current-page-background: var(--foreground);
+    --offset-pagination-current-page-text: var(--background);
+    --offset-pagination-current-pagebackground-hover: var(--contrast-500);
 }
-```
+`}</CodeBlock>

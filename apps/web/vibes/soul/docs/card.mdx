@@ -13,7 +13,7 @@ import { Card } from '@/vibes/soul/primitives/card';
 
 function Usage() {
     return (
-      <Card href="#" title="Partial shade" image={{ src: 'https://rstr.in/monogram/vibes/RopDQNbjTc_', alt: 'Low Maintenance' }} />
+      <Card href="#" title="Partial shade" image={{ src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/pink-caladium.jpeg', alt: 'Low Maintenance' }} />
     );
 }
 `}
@@ -33,7 +33,7 @@ function Usage() {
 | `href*`           | `string`                                      |                                                                                      |
 | `textColorScheme` | `'light' \| 'dark'`                           | `'light'`                                                                            |
 | `iconColorScheme` | `'light' \| 'dark'`                           | `'light'`                                                                            |
-| `aspectRatio`     | `'5:6' \| '3:4' \| '1:1`                      | `'5:6'`                                                                              |
+| `aspectRatio`     | `'5:6' \| '3:4' \| '1:1'`                     | `'5:6'`                                                                              |
 | `borderRadius`    | `'none' \| 'small' \| 'medium' \| 'large'`    | `'large'`                                                                            |
 | `imageSizes`      | `string`                                      | `'(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw'` |
 | `textPosition`    | `'inside' \| 'outside'`                       | `'outside'`                                                                          |
@@ -44,15 +44,18 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --card-focus: hsl(var(--primary));
-  --card-light-text: hsl(var(--foreground));
-  --card-light-icon: hsl(var(--foreground));
-  --card-light-background: hsl(var(--contrast-100));
-  --card-dark-text: hsl(var(--background));
-  --card-dark-icon: hsl(var(--background));
-  --card-dark-background: hsl(var(--contrast-500));
-  --card-font-family: var(--font-family-body);
+    --card-focus: var(--primary);
+    --card-light-offset: var(--background);
+    --card-light-text: var(--foreground);
+    --card-light-icon: var(--foreground);
+    --card-light-background: var(--contrast-100);
+    --card-dark-offset: var(--foreground);
+    --card-dark-text: var(--background);
+    --card-dark-icon: var(--background);
+    --card-dark-background: var(--contrast-500);
+    --card-font-family: var(--font-family-body);
+    --card-border-radius: 1rem;
 }
-```
+`}</CodeBlock>

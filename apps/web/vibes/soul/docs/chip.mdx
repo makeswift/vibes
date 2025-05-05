@@ -3,3 +3,48 @@ title: Chip
 preview: chip-example
 previewSize: xs
 ---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { Chip } from '@/vibes/soul/primitives/chip';
+
+function Usage() {
+    return (
+        <div className="flex h-screen flex-col justify-center gap-4 p-10">
+            <Chip>Example Chip</Chip>
+        </div>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### ChipProps
+
+| Prop          | Type                                         | Default    |
+| ------------- | -------------------------------------------- | ---------- |
+| `name`        | `string`                                     |            |
+| `value`       | `string`                                     |            |
+| `children`    | `ReactNode`                                  |            |
+| `removeLabel` | `string`                                     | `'Remove'` |
+| `onClick`     | `(e: MouseEvent<HTMLButtonElement>) => void` |            |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+    --chip-focus: var(--foreground);
+    --chip-font-family: var(--font-family-body);
+    --chip-background: var(--contrast-100);
+    --chip-background-hover: var(--contrast-200);
+    --chip-text: var(--foreground);
+}
+`}</CodeBlock>

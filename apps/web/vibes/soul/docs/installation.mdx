@@ -4,27 +4,41 @@ title: Installation
 
 <Steps>
   <Step>
-    ### Follow the [Tailwind documentation](https://v3.tailwindcss.com/docs/guides/nextjs) to create a new Next.js project using Tailwind 3.
+    ### Follow the [Tailwind documentation](https://tailwindcss.com/docs/installation/framework-guides/nextjs) to create a new Next.js project using Tailwind.
 
-    Currently, Soul supports Tailwind v3, so be sure to follow the documentation above to ensure you're using Tailwind v3.
+    Currently, Soul supports Tailwind v4. If you're using Tailwind v3, refer to our previous [Tailwind v3 documentation](https://vibes-pwjo0ja15-makeswift.vercel.app/docs/soul/installation).
 
   </Step>
 
   <Step>
     ### Install dependencies
 
-    <CodeBlock lang='bash' children='npm install -D @tailwindcss/container-queries @tailwindcss/typography tailwindcss-animate' />
+    <CodeBlock lang='bash' children='npm install -D @tailwindcss/typography tailwindcss-animate' />
 
   </Step>
 
   <Step>
-    ### Update `tailwind.config.ts`
+    ### Update globals.css
 
-    You may need to update your `tailwind.config.js` file from a `js` file to a `ts` file.
+    Copy and paste the following styles into your globals.css file below the `@import 'tailwindcss'` statement.
 
-    <TailwindConfig />
+    <Reveal>
+      <CodeFromFile pathname='/snippets/globals-css-snippet.css' />
+    </Reveal>
 
   </Step>
+
+  <Step>
+    ### Optional: Configure image domains
+
+    Add the following configuration in your `next.config.ts` file to display images in the code examples. Remember to update this configuration with your production image domain when deploying.
+
+    <Reveal>
+      <CodeFromFile pathname='/snippets/image-domain.ts' />
+    </Reveal>
+
+  </Step>
+
   <Step>
     ### Add style variables
 

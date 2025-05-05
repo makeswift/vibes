@@ -36,7 +36,7 @@ const defaultLineItems: CartLineItem[] = [
     subtitle: 'Indoor Plant',
     price: '$46',
     image: {
-      src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNzAzMzk0Ni01NGNhLTQ3ZDYtODgyYi0wYWI3NTUzNTU4YjQ=/kv08IvX08j.jpeg',
       alt: 'Philodendron Imperial Red',
     },
     quantity: 1,
@@ -47,7 +47,7 @@ const defaultLineItems: CartLineItem[] = [
     subtitle: 'Indoor / Outdoor Plant',
     price: '$24',
     image: {
-      src: 'https://rstr.in/monogram/vibes/AaZW4j2VTd4',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/AaZW4j2VTd4%202489x3111.jpeg',
       alt: 'Caladium',
     },
     quantity: 2,

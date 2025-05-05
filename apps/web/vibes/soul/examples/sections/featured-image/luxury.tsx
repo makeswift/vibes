@@ -5,7 +5,7 @@ export const featuredImage: FeaturedImageProps = {
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
   image: {
-    src: 'https://rstr.in/monogram/vibes/aSXn7ntI2oM',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozMDRkMWI2Mi1mMWUwLTQ1MzMtOWVhMi00YzJmMzA2NTIwMmU=/black-sandals.webp',
     alt: 'Freda woman loving her shoes',
   },
   cta: { href: '#', label: 'Shop Now' },

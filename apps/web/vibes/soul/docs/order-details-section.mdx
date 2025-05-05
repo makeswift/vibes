@@ -28,7 +28,7 @@ const lineItems = [
       subtitle: 'Blue/Black/Green',
       price: '$65',
       image: {
-        src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
         alt: 'Mini Bar Bag',
       },
       href: '#',
@@ -41,7 +41,7 @@ const lineItems = [
       subtitle: 'Blue/Black/Green',
       price: '$65',
       image: {
-        src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTphOTFmNjU3Ny0zMDMxLTQzNjYtOWUzNC02MjRkYWQ4OTkzOWI=/mini-bar-bag-2.jpeg',
         alt: 'Mini Bar Bag',
       },
       href: '#',
@@ -207,22 +207,22 @@ const order = {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --order-details-section-focus: hsl(var(--primary));
-  --order-details-section-font-family: hsl(var(--font-family-body));
-  --order-details-section-title-font-family: hsl(var(--font-family-heading));
-  --order-details-text-primary: hsl(var(--foreground));
-  --order-details-text-secondary: hsl(var(--contrast-500));
-  --order-details-section-border: hsl(var(--contrast-100));
-  --order-details-section-button-border: hsl(var(--contrast-100));
-  --order-details-section-button-border-hover: hsl(var(--contrast-200));
-  --order-details-section-button-icon: hsl(var(--foreground));
-  --order-details-section-button-background: hsl(var(--background));
-  --order-details-section-button-background-hover: hsl(var(--contrast-100));
-  --order-details-section-image-background: hsl(var(--contrast-100));
-  --order-details-section-line-item: hsl(var(--contrast-300));
-  --order-details-section-line-item-subtitle: hsl(var(--contrast-500));
-  --order-details-section-line-item-subtext: hsl(var(--contrast-400));
+    --order-details-section-focus: var(--primary);
+    --order-details-section-font-family: var(--font-family-body);
+    --order-details-section-title-font-family: var(--font-family-heading);
+    --order-details-text-primary: var(--foreground);
+    --order-details-text-secondary: var(--contrast-500);
+    --order-details-section-border: var(--contrast-100);
+    --order-details-section-button-border: var(--contrast-100);
+    --order-details-section-button-border-hover: var(--contrast-200);
+    --order-details-section-button-icon: var(--foreground);
+    --order-details-section-button-background: var(--background);
+    --order-details-section-button-background-hover: var(--contrast-100);
+    --order-details-section-image-background: var(--contrast-100);
+    --order-details-section-line-item: var(--contrast-300);
+    --order-details-section-line-item-subtitle: var(--contrast-500);
+    --order-details-section-line-item-subtext: var(--contrast-400);
 }
-```
+`}</CodeBlock>

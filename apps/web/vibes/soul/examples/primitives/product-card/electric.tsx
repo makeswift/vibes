@@ -4,7 +4,7 @@ import { ProductCard } from '@/vibes/soul/primitives/product-card';
 export default function Preview() {
   return (
     <CompareDrawerProvider items={[]}>
-      <div className="bg-background p-8 @container">
+      <div className="bg-background @container p-8">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <ProductCard
             product={{
@@ -12,7 +12,7 @@ export default function Preview() {
               href: '#',
               title: 'Product Name',
               image: {
-                src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
+                src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo4Yzg0MTM3ZS0wMGUzLTRmNGUtOTAxYS1jMjE4NGQ0NDc3MGY=/large-plant-clay-pot.jpeg',
                 alt: 'Product Name',
               },
               subtitle: 'Blue/Black/Green',
@@ -38,7 +38,7 @@ export default function Preview() {
           />
         </div>
       </div>
-      <div className="bg-foreground p-8 @container">
+      <div className="bg-foreground @container p-8">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <ProductCard
             colorScheme="dark"
@@ -47,7 +47,7 @@ export default function Preview() {
               href: '#',
               title: 'Product Name',
               image: {
-                src: 'https://rstr.in/monogram/vibes/oUL4h2FvqIl',
+                src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo4Yzg0MTM3ZS0wMGUzLTRmNGUtOTAxYS1jMjE4NGQ0NDc3MGY=/large-plant-clay-pot.jpeg',
                 alt: 'Product Name',
               },
               subtitle: 'Blue/Black/Green',

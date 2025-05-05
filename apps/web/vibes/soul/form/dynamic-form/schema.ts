@@ -6,6 +6,7 @@ interface FormField {
   errors?: string[];
   required?: boolean;
   id?: string;
+  placeholder?: string;
 }
 
 type RadioField = {

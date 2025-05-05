@@ -1,25 +1,218 @@
-@import url('./shiki.css');
-@import url('./zoom.css');
+@import 'tailwindcss';
 
-@config '../../../tailwind.config.ts';
+@plugin 'tailwindcss-animate';
+@plugin '@tailwindcss/typography';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './shiki.css' layer(utilities);
+@impoet './zoom,css' layer(utilities);
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-highlight: color-mix(in oklab, var(--primary), white 75%);
+  --color-primary-shadow: color-mix(in oklab, var(--primary), black 75%);
+
+  --color-accent: var(--accent);
+  --color-accent-highlight: color-mix(in oklab, var(--accent), white 75%);
+  --color-accent-shadow: color-mix(in oklab, var(--accent), black 75%);
+
+  --color-contrast-100: var(--contrast-100);
+  --color-contrast-200: var(--contrast-200);
+  --color-contrast-300: var(--contrast-300);
+  --color-contrast-400: var(--contrast-400);
+  --color-contrast-500: var(--contrast-500);
+
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+  --text-6xl: var(--font-size-6xl);
+  --text-7xl: var(--font-size-7xl);
+  --text-8xl: var(--font-size-8xl);
+  --text-9xl: var(--font-size-9xl);
+
+  --font-heading: var(--font-family-heading);
+  --font-body: var(--font-family-body);
+  --font-mono: var(--font-family-mono);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  --animate-collapse: collapse 400ms cubic-bezier(1, 0, 0.25, 1);
+  --animate-expand: expand 400ms cubic-bezier(1, 0, 0.25, 1);
+  --animate-marching: marching-ants 10s linear infinite;
+  --animate-rotate: rotate 2000ms linear infinite;
+  --animate-scroll: scroll 200ms infinite linear both;
+  --animate-scrollLeft: scrollLeft var(--marquee-duration) linear infinite;
+  --animate-shake: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  --animate-slideIn: slideIn 800ms cubic-bezier(0.25, 1, 0, 1);
+
+  @keyframes collapse {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes expand {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes marching-ants {
+    to {
+      background-position:
+        0 0,
+        0 -1px,
+        calc(100% + 1px) 0,
+        100% calc(100% + 1px),
+        -1px 100%;
+    }
+  }
+
+  @keyframes rotateFade {
+    from {
+      opacity: 1;
+      transform: rotateZ(0deg) translate3d(-50%, -50%, 0);
+    }
+
+    35% {
+      opacity: 0;
+    }
+
+    70% {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+      transform: rotateZ(360deg) translate3d(-50%, -50%, 0);
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotateZ(0deg) translate3d(-50%, -50%, 0);
+    }
+
+    to {
+      transform: rotateZ(360deg) translate3d(-50%, -50%, 0);
+    }
+  }
+
+  @keyframes scroll {
+    to {
+      background-position: 5px 0;
+    }
+  }
+
+  @keyframes dotScrollSmall: {
+    to: {
+      background-position:
+        -6px -6px,
+        -12px -12px;
+    }
+  }
+
+  @keyframes dotScrollLarge: {
+    to {
+      background-position:
+        -8px -8px,
+        -16px -16px;
+    }
+  }
+
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(1px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-2px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(2px, 0, 0);
+    }
+  }
+
+  @keyframes slideIn: {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --background: oklch(100% 0 0);
+    --foreground: oklch(0% 0 0);
 
-    --primary: 210 100% 50%;
-    --accent: 210 100% 70%;
+    --primary: oklch(61.31% 0.212 256.33);
+    --primary-highlight: color-mix(in oklab, var(--primary), white 75%);
+    --primary-shadow: color-mix(in oklab, var(--primary), black 75%);
 
-    --contrast-100: 210 32% 97%;
-    --contrast-200: 216 21% 91%;
-    --contrast-300: 210 15% 73%;
-    --contrast-400: 210 10% 53%;
-    --contrast-500: 208 11% 25%;
+    --accent: oklch(74.69% 0.135 250.37);
+    --accent-highlight: color-mix(in oklab, var(--accent), white 75%);
+    --accent-shadow: color-mix(in oklab, var(--accent), black 75%);
+
+    --contrast-100: oklch(97.55% 0.005 258.32);
+    --contrast-200: oklch(92.66% 0.009 258.34);
+    --contrast-300: oklch(78.42% 0.018 248.06);
+    --contrast-400: oklch(61.76% 0.023 248.2);
+    --contrast-500: oklch(36.77% 0.015 248.24);
+
+    --font-variation-settings-body: 'slnt' 0;
+    --font-feature-settings-body: normal;
+
+    --font-variation-settings-heading: 'slnt' 0;
+    --font-feature-settings-heading: normal;
+
+    --font-variation-settings-mono: 'slnt' 0;
+    --font-feature-settings-mono: normal;
 
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
@@ -28,7 +221,7 @@
     --font-size-xl: 1.25rem;
     --font-size-2xl: 1.5rem;
     --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
+    --font-size-4xl: 2.5rem;
     --font-size-5xl: 3rem;
     --font-size-6xl: 4rem;
     --font-size-7xl: 6rem;
@@ -54,65 +247,78 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    --cursor-resize:
+      url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAQCAYAAAAFzx/vAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHmSURBVHgBrZU9T8JQFIZLpbVqsTIAmjBoYoLWjwEW46juwEBiJMjk16+A38bCwgITm7JoogthgITw4fvKvaRAKTXhJC/n3ss55+k96e0NKMstIEQbCyk+40fKPy3QbDYTo9HoYzgctuLx+JajmGs8YgzGQ+/1ej2BNVXxY+VyWa3VaicEYTymYfkgl8tteKSppmlGGcucwWDQqlQqth9ooNFoTGGYS+Cxbdu6R55mGMYRdveXI6HVavVU8ejMAswBPINCLCzAWiqV0uB14XdCoVBCAp3QZTt1hUmgX3MCPaF8Kdxg65CEYrzNjZGqtttts9/va5PurddYE0C+cJbcJX+ihULhvtPp/JRKpbW1lLVQ8zufzz9gvg9N3vRYLLYDZ6fT6Zd5KE1V1TeMi9DjnArCFzVNe3UCJSybzT6xtmBMjGcvHA5buq5fzkNpwWDwDuML6FQKsbbwnF8g5lYCJYy1ML8U7Vw4x7LPM1Aaip5jfRfahAzhp4pEIiZiTgh0wriBZbAZKAMzmcwzod1u9wtrx5Drwcc5VJLJpGZZ1mGv1/skjLl8cHbNCza/Ux72G+haWf1p439R6Aq6E7l7it/vKQPZJviYKLS1IpmfL0PEH4jcjWWBXkWkeN34uZ5UR7zrFfULsjugIA30A0sAAAAASUVORK5CYII=')
+        14 8,
+      ew-resize;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 210 32% 95%;
+    --background: oklch(0% 0 0);
+    --foreground: oklch(95.93% 0.007 247.9);
 
-    --contrast-100: 208 18% 10%;
-    --contrast-200: 208 11% 25%;
-    --contrast-300: 210 10% 53%;
-    --contrast-400: 210 15% 73%;
-    --contrast-500: 216 23% 91%;
+    --contrast-100: oklch(21.44% 0.011 242.27);
+    --contrast-200: oklch(36.77% 0.015 248.24);
+    --contrast-300: oklch(61.76% 0.023 248.2);
+    --contrast-400: oklch(78.42% 0.018 248.06);
+    --contrast-500: oklch(92.66% 0.009 258.34);
   }
-}
 
-@layer base {
   * {
     @apply antialiased;
   }
+
   html,
   body {
-    @apply overscroll-none bg-background font-body text-foreground;
+    @apply bg-background font-body text-foreground overscroll-none;
   }
+
   .pattern-shadow {
     @apply relative;
   }
+
   .pattern-shadow-sm:after {
-    @apply -left-[3px] top-[3px];
+    @apply top-[3px] -left-[3px];
   }
+
   .pattern-shadow-md:after {
-    @apply -left-1 top-1;
+    @apply top-1 -left-1;
   }
+
   .pattern-shadow-lg:after {
-    @apply -left-1.5 top-1.5;
+    @apply top-1.5 -left-1.5;
   }
+
   .pattern-shadow:after {
     @apply absolute -z-10 h-full w-full rounded-[inherit] content-[''];
     background: linear-gradient(
         135deg,
-        hsl(var(--foreground)) 0%,
+        var(--foreground) 0%,
         transparent 0%,
         transparent 30%,
-        hsl(var(--foreground)) 30%,
-        hsl(var(--foreground)) 50%,
+        var(--foreground) 30%,
+        var(--foreground) 50%,
         transparent 50%,
         transparent 80%,
-        hsl(var(--foreground)) 80%,
-        hsl(var(--foreground)) 100%
+        var(--foreground) 80%,
+        var(--foreground) 100%
       )
       0 0/ 5px 5px;
   }
+
   .dark .pattern-shadow:after {
     @apply opacity-70;
   }
+
   .pattern-shadow-hover:after {
     @apply animate-scroll [animation-play-state:paused];
   }
+
   .pattern-shadow-hover:hover:after {
     @apply [animation-play-state:running];
   }
+
   .marching-ants {
     --length: 5px;
     --interval: 8px;
@@ -120,31 +326,31 @@
       linear-gradient(transparent, transparent),
       repeating-linear-gradient(
         to right,
-        hsl(var(--foreground)),
-        hsl(var(--foreground)) var(--length),
-        hsl(var(--background)) var(--length),
-        hsl(var(--background)) var(--interval)
+        var(--foreground),
+        var(--foreground) var(--length),
+        var(--background) var(--length),
+        var(--background) var(--interval)
       ),
       repeating-linear-gradient(
         to bottom,
-        hsl(var(--foreground)),
-        hsl(var(--foreground)) var(--length),
-        hsl(var(--background)) var(--length),
-        hsl(var(--background)) var(--interval)
+        var(--foreground),
+        var(--foreground) var(--length),
+        var(--background) var(--length),
+        var(--background) var(--interval)
       ),
       repeating-linear-gradient(
         to left,
-        hsl(var(--foreground)),
-        hsl(var(--foreground)) var(--length),
-        hsl(var(--background)) var(--length),
-        hsl(var(--background)) var(--interval)
+        var(--foreground),
+        var(--foreground) var(--length),
+        var(--background) var(--length),
+        var(--background) var(--interval)
       ),
       repeating-linear-gradient(
         to top,
-        hsl(var(--foreground)),
-        hsl(var(--foreground)) var(--length),
-        hsl(var(--background)) var(--length),
-        hsl(var(--background)) var(--interval)
+        var(--foreground),
+        var(--foreground) var(--length),
+        var(--background) var(--length),
+        var(--background) var(--interval)
       );
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
     background-size:
@@ -161,12 +367,19 @@
       -1px 0;
     @apply animate-marching;
   }
+
   .marching-ants-link {
-    @apply relative inline-block no-underline outline-primary before:absolute before:inset-x-0 before:bottom-0 before:h-[1px] before:animate-scroll before:bg-gradient-to-r before:from-foreground before:from-50% before:to-transparent before:to-0% before:bg-[size:5px_2px] before:[animation-play-state:paused] hover:before:[animation-play-state:running];
+    @apply outline-primary before:animate-scroll before:from-foreground relative inline-block no-underline before:absolute before:inset-x-0 before:bottom-0 before:h-[1px] before:bg-gradient-to-r before:from-50% before:to-transparent before:to-0% before:bg-[size:5px_2px] before:[animation-play-state:paused] hover:before:[animation-play-state:running];
   }
+
   @media (hover: none) {
     .\@touch\:hide {
       display: none;
     }
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
   }
 }

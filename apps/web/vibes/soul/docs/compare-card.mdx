@@ -23,7 +23,7 @@ function Usage() {
           href: '#',
           title: 'Mini Bar Bag',
           image: {
-            src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+            src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
             alt: 'Mini Bar Bag',
           },
           subtitle: 'Blue/Green',
@@ -69,10 +69,10 @@ This component supports various CSS variables for theming. Here's a comprehensiv
 
 <CodeBlock lang="css">{`
 :root {
-    --compare-card-divider: hsl(var(--contrast-100));
-    --compare-card-label: hsl(var(--foreground));
-    --compare-card-description: hsl(var(--contrast-400));
-    --compare-card-field: hsl(var(--foreground));
+    --compare-card-divider: var(--contrast-100);
+    --compare-card-label: var(--foreground);
+    --compare-card-description: var(--contrast-400);
+    --compare-card-field: var(--foreground);
     --compare-card-font-family-primary: var(--font-family-body);
     --compare-card-font-family-secondary: var(--font-family-mono);
 }

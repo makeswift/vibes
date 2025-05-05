@@ -82,7 +82,7 @@ const FeatureCard = ({
 }) => (
   <div
     className={clsx(
-      'min-h-auto flex w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-black bg-[#FFFAE0] md:min-h-72 md:flex-row',
+      'flex min-h-auto w-full flex-col place-content-center items-center gap-y-5 rounded-3xl border-[1.5px] border-black bg-[#FFFAE0] md:min-h-72 md:flex-row',
     )}
   >
     <div
@@ -121,12 +121,14 @@ export default function Home() {
   return (
     <div
       className="w-full overflow-clip bg-white text-black"
-      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-      style={{ '--foreground': '0 0% 0%', '--background': '0 0% 100%' } as React.CSSProperties}
+      style={{
+        '--foreground': 'oklch(0% 0 0)',
+        '--background': 'oklch(100% 0 0)',
+      }}
     >
       <header
         className={clsx(
-          'fixed left-0 top-0 z-50 hidden w-full items-center transition-all duration-300 sm:grid sm:grid-cols-3',
+          'fixed top-0 left-0 z-50 hidden w-full items-center transition-all duration-300 sm:grid sm:grid-cols-3',
           isScrolled ? 'translate-y-3 px-7' : 'translate-y-8 px-10 md:translate-y-10',
         )}
       >
@@ -152,36 +154,36 @@ export default function Home() {
 
       <section className="relative h-[550px] w-full bg-white p-3 sm:h-[650px] sm:p-4 md:h-[calc(100vh-28px)] lg:p-5">
         <ScrollButton
-          className="group absolute left-1/2 top-full z-20 -mt-6 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black md:flex"
+          className="group absolute top-full left-1/2 z-20 -mt-6 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black md:flex"
           to="intro"
         >
-          <Arrow className="rotate-90 scale-125 text-white transition-transform duration-300 ease-out group-hover:translate-y-2" />
+          <Arrow className="scale-125 rotate-90 text-white transition-transform duration-300 ease-out group-hover:translate-y-2" />
         </ScrollButton>
 
         <Image
           alt="Arrow button container"
-          className="absolute left-1/2 top-full z-10 hidden -translate-x-1/2 -translate-y-[74px] md:flex lg:-translate-y-[78px]"
+          className="absolute top-full left-1/2 z-10 hidden -translate-x-1/2 -translate-y-[74px] md:flex lg:-translate-y-[78px]"
           height={114}
           priority
           src="/hero-arrow-bg.svg"
           width={200}
         />
 
-        <div className="relative z-0 h-full w-full select-none place-content-start overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-24 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center sm:pt-10 md:p-8 lg:place-content-center lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
+        <div className="relative z-0 h-full w-full place-content-start overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] p-5 pt-24 select-none after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-size:12px_12px] after:[background-position:-0px_-0px,-6px_-6px] sm:place-content-center sm:pt-10 md:p-8 lg:place-content-center lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-size:16px_16px] lg:after:[background-position:-0px_-0px,-8px_-8px] xl:rounded-[40px]">
           <Image
             alt="Vibes logo"
-            className="absolute left-5 top-6 z-50 sm:hidden"
+            className="absolute top-6 left-5 z-50 sm:hidden"
             height={32}
             priority
             src="/logo.svg"
             width={120}
           />
 
-          <h1 className="mx-auto max-w-full font-heading text-[clamp(2.75rem,_9vw,_3.5rem)] leading-none tracking-tight text-black sm:text-6xl md:mb-5 md:mt-0 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
+          <h1 className="font-heading mx-auto max-w-full text-[clamp(2.75rem,_9vw,_3.5rem)] leading-none tracking-tight text-black sm:text-6xl md:mt-0 md:mb-5 md:max-w-2xl md:text-7xl lg:max-w-3xl lg:text-8xl xl:max-w-5xl xl:text-9xl">
             <div className="text-left md:ml-10">
               <span className="md:relative">
                 <Transition
-                  className="w-auto transition-all duration-700 [transition-delay:100ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+                  className="w-auto transition-all [transition-delay:100ms] duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -194,7 +196,7 @@ export default function Home() {
             <div className="text-left md:text-right">
               <span className="md:relative">
                 <Transition
-                  className="transition-all duration-700 [transition-delay:150ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+                  className="transition-all [transition-delay:150ms] duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -206,7 +208,7 @@ export default function Home() {
             <div className="text-left md:text-center">
               <span className="md:relative">
                 <Transition
-                  className="transition-all duration-700 [transition-delay:200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+                  className="transition-all [transition-delay:200ms] duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -219,7 +221,7 @@ export default function Home() {
             <div className="text-left">
               <span className="md:relative">
                 <Transition
-                  className="transition-all duration-700 [transition-delay:250ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+                  className="transition-all [transition-delay:250ms] duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
                   from="translate-y-28 opacity-0"
                   to="translate-y-0 opacity-100"
                 >
@@ -231,11 +233,11 @@ export default function Home() {
           </h1>
 
           <Transition
-            className="transition-all duration-700 [transition-delay:300ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+            className="transition-all [transition-delay:300ms] duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
             from="translate-y-28 opacity-0"
             to="translate-y-0 opacity-100"
           >
-            <div className="mb-4 mt-6 flex items-center gap-1.5 sm:hidden">
+            <div className="mt-6 mb-4 flex items-center gap-1.5 sm:hidden">
               <ButtonLink href="/contribute" size="large">
                 Contribute
               </ButtonLink>
@@ -247,13 +249,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="h-auto px-5 pb-8 md:mb-8 md:h-[60vh] md:place-content-end md:p-10 lg:mb-20">
+      <section className="h-auto px-5 pb-8 md:mb-8 md:place-content-end md:p-10 lg:mb-20">
         <div
           className="mx-auto max-w-[1200px] pt-12 text-3xl leading-snug tracking-tight md:pt-40 md:text-4xl md:leading-tight lg:text-5xl xl:text-6xl"
           id="intro"
         >
           <Transition
-            className="transition-all duration-700 [transition-delay:200ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+            className="transition-all [transition-delay:200ms] duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
             from="translate-y-28 opacity-0"
             to="translate-y-0 opacity-100"
           >
@@ -263,7 +265,7 @@ export default function Home() {
             </p>
           </Transition>
           <Transition
-            className="transition-all duration-700 [transition-delay:250ms] [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
+            className="transition-all [transition-delay:250ms] duration-700 [transition-timing-function:cubic-bezier(.5,0,.25,1)]"
             from="translate-y-28 opacity-0"
             to="translate-y-0 opacity-100"
           >
@@ -277,11 +279,11 @@ export default function Home() {
 
       <section className="h-[70vh] w-full bg-white p-3 md:h-[70vh] md:p-4 lg:p-5">
         <div className="group flex h-full w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-black md:flex-row lg:rounded-[32px] xl:rounded-[40px]">
-          <div className="group/soul relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
+          <div className="group/soul relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:group-hover:w-1/4 md:hover:!w-1/2">
             <div className="relative h-full w-full">
-              <div className="absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out @container group-hover/soul:opacity-100">
+              <div className="@container absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out group-hover/soul:opacity-100">
                 <Link
-                  className="group/doc-link flex items-center gap-x-4 rounded-full px-6 py-4 focus-visible:outline-none focus-visible:ring-4"
+                  className="group/doc-link flex items-center gap-x-4 rounded-full px-6 py-4 focus-visible:ring-4 focus-visible:outline-hidden"
                   href="/docs/soul"
                 >
                   <p className="-translate-y-1 text-3xl font-semibold text-white @xl:text-5xl">
@@ -301,9 +303,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="group/eclipse relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:hover:!w-1/2 md:group-hover:w-1/4">
+          <div className="group/eclipse relative h-1/3 w-full origin-left overflow-hidden bg-[#07090D] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:group-hover:w-1/4 md:hover:!w-1/2">
             <div className="relative h-full w-full">
-              <div className="absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out @container group-hover/eclipse:opacity-100">
+              <div className="@container absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out group-hover/eclipse:opacity-100">
                 <p className="-translate-y-1 text-center text-3xl font-semibold text-white @xl:text-5xl">
                   Coming soon!
                 </p>
@@ -317,9 +319,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="group/2px relative h-1/3 w-full origin-center overflow-hidden border-y-[1.5px] border-black bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:border-x-[1.5px] md:border-y-0 md:hover:!w-1/2 md:group-hover:w-1/4">
+          <div className="group/2px relative h-1/3 w-full origin-center overflow-hidden border-y-[1.5px] border-black bg-[#FFD977] transition-all duration-300 ease-out will-change-[width] md:h-full md:w-1/3 md:border-x-[1.5px] md:border-y-0 md:group-hover:w-1/4 md:hover:!w-1/2">
             <div className="relative h-full w-full">
-              <div className="absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out @container group-hover/2px:opacity-100">
+              <div className="@container absolute inset-0 z-[1] flex items-center justify-center bg-gradient-to-b from-black/40 to-black/60 opacity-0 transition-all duration-300 ease-out group-hover/2px:opacity-100">
                 <p className="-translate-y-1 text-center text-3xl font-semibold text-white @xl:text-5xl">
                   Coming soon!
                 </p>
@@ -335,9 +337,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto flex max-w-[1600px] flex-col items-start gap-x-16 gap-y-16 px-3 pb-4 pt-20 md:px-6 md:pb-32 md:pt-48 lg:flex-row xl:gap-x-24 xl:px-14">
+      <section className="mx-auto flex max-w-[1600px] flex-col items-start gap-x-16 gap-y-16 px-3 pt-20 pb-4 md:px-6 md:pt-48 md:pb-32 lg:flex-row xl:gap-x-24 xl:px-14">
         <div className="top-32 flex-1 lg:sticky">
-          <h2 className="mb-3 font-heading text-3xl leading-none sm:text-4xl md:text-5xl lg:mb-5">
+          <h2 className="font-heading mb-3 text-3xl leading-none sm:text-4xl md:text-5xl lg:mb-5">
             The future of theming is here
           </h2>
           <p className="text-2xl md:text-3xl">
@@ -418,9 +420,9 @@ export default function Home() {
       </section>
 
       <footer className="w-full bg-white p-3 md:p-4 lg:p-5" id="footer">
-        <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pb-6 pt-10 text-left sm:px-8 sm:text-center md:pb-10 md:pt-20">
-            <p className="mb-8 text-balance px-2 text-2xl leading-snug text-black sm:text-3xl md:mb-12 lg:text-4xl">
+        <div className="relative z-0 h-full w-full overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFB5CE] to-[#E8C3FF] after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-size:12px_12px] after:[background-position:-0px_-0px,-6px_-6px] sm:place-content-center lg:rounded-[32px] lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-size:16px_16px] lg:after:[background-position:-0px_-0px,-8px_-8px] xl:rounded-[40px]">
+          <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pt-10 pb-6 text-left sm:px-8 sm:text-center md:pt-20 md:pb-10">
+            <p className="mb-8 px-2 text-2xl leading-snug text-balance text-black sm:text-3xl md:mb-12 lg:text-4xl">
               Stay in the loop and get the latest updates from VIBES.
             </p>
 

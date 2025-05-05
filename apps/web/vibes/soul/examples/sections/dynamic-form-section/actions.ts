@@ -5,12 +5,36 @@ import { Field, FieldGroup, schema } from '@/vibes/soul/form/dynamic-form/schema
 
 export const fields = [
   [
-    { type: 'text', label: 'First Name', name: 'first-name', required: true },
-    { type: 'text', label: 'Last Name', name: 'last-name', required: true },
+    {
+      type: 'text',
+      label: 'First name',
+      name: 'first-name',
+      required: true,
+      placeholder: 'First name',
+    },
+    {
+      type: 'text',
+      label: 'Last Name',
+      name: 'last-name',
+      required: true,
+      placeholder: 'Last name',
+    },
   ],
-  { type: 'email', label: 'Email', name: 'email', required: true },
-  { type: 'password', label: 'Password', name: 'password', required: true },
-  { type: 'confirm-password', label: 'Confirm password', name: 'confirm-password', required: true },
+  { type: 'email', label: 'Email', name: 'email', required: true, placeholder: 'Email' },
+  {
+    type: 'password',
+    label: 'Password',
+    name: 'password',
+    required: true,
+    placeholder: 'Password',
+  },
+  {
+    type: 'confirm-password',
+    label: 'Confirm password',
+    name: 'confirm-password',
+    required: true,
+    placeholder: 'Confirm password',
+  },
 ] satisfies Array<Field | FieldGroup<Field>>;
 
 export async function action(

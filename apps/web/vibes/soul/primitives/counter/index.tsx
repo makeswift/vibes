@@ -17,18 +17,18 @@ export interface CounterProps {
  *
  * ```css
  * :root {
- *   --counter-focus: hsl(var(--primary));
+ *   --counter-focus: var(--primary);
  *   --counter-font-family: var(--font-family-body);
- *   --counter-background: hsl(var(--background));
- *   --counter-background-hover: hsl(var(--contrast-100)/50%);
- *   --counter-border: hsl(var(--contrast-100));
- *   --counter-text: hsl(var(--foreground));
- *   --counter-icon-hover: hsl(var(--foreground));
- *   --counter-icon: hsl(var(--contrast-300));
+ *   --counter-background: var(--background);
+ *   --counter-background-hover: color-mix(in oklab, var(--contrast-100) 50%, transparent);
+ *   --counter-border: var(--contrast-100);
+ *   --counter-text: var(--foreground);
+ *   --counter-icon-hover: var(--foreground);
+ *   --counter-icon: var(--contrast-300);
  * }
  * ```
  */
-export const Counter = function Counter({
+export function Counter({
   current = 0,
   max = 10,
   decrementAriaLabel = 'Decrease count',
@@ -44,27 +44,28 @@ export const Counter = function Counter({
   };
 
   return (
-    <div className="flex items-center justify-between rounded-lg border border-[var(--counter-border,hsl(var(--contrast-100)))] bg-[var(--counter-background,hsl(var(--background)))] font-[family-name:var(--counter-font-family,var(--font-family-body))] text-[var(--counter-text,hsl(var(--foreground)))]">
+    <div className="flex items-center justify-between rounded-lg border border-(--counter-border,var(--contrast-100)) bg-(--counter-background,var(--background)) font-(family-name:--counter-font-family,var(--font-family-body)) text-(--counter-text,var(--foreground))">
       <button
         aria-label={decrementAriaLabel}
         className={clsx(
-          'group z-[1] rounded-l-lg p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--counter-focus,hsl(var(--primary)))] disabled:cursor-not-allowed disabled:opacity-50',
-          count > 0 && 'hover:bg-[var(--counter-background-hover,hsl(var(--contrast-100)/50%))]',
+          'group z-[1] rounded-l-lg p-3 focus-visible:ring-2 focus-visible:ring-(--counter-focus,var(--primary)) focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
+          count > 0 &&
+            'hover:bg-(--counter-background-hover,color-mix(in_oklab,var(--contrast-100)_50%,transparent))',
         )}
         disabled={count === 0}
         onClick={decrement}
       >
         <Minus
           className={clsx(
-            'text-[var(--counter-icon,hsl(var(--contrast-300)))] transition-colors duration-300',
-            count > 0 && 'group-hover:text-[var(--counter-icon-hover,hsl(var(--foreground)))]',
+            'text-(--counter-icon,var(--contrast-300)) transition-colors duration-300',
+            count > 0 && 'group-hover:text-(--counter-icon-hover,var(--foreground))',
           )}
           size={18}
           strokeWidth={1.5}
         />
       </button>
       <input
-        className="w-8 select-none bg-transparent text-center [appearance:textfield] focus-visible:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        className="w-8 [appearance:textfield] bg-transparent text-center select-none focus-visible:outline-hidden [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
         max={max}
         readOnly
         type="number"
@@ -72,16 +73,16 @@ export const Counter = function Counter({
       />
       <button
         aria-label={incrementAriaLabel}
-        className="group z-[1] rounded-r-lg p-3 transition-colors duration-300 hover:bg-[var(--counter-background-hover,hsl(var(--contrast-100)/50%))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--counter-focus,hsl(var(--primary)))] disabled:cursor-not-allowed disabled:opacity-50"
+        className="group z-[1] rounded-r-lg p-3 transition-colors duration-300 hover:bg-(--counter-background-hover,color-mix(in_oklab,var(--contrast-100)_50%,transparent)) focus-visible:ring-2 focus-visible:ring-(--counter-focus,var(--primary)) focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50"
         disabled={count === max}
         onClick={increment}
       >
         <Plus
-          className="text-[var(--counter-icon,hsl(var(--contrast-300)))] transition-colors duration-300 group-hover:text-[var(--counter-icon-hover,hsl(var(--foreground)))]"
+          className="text-(--counter-icon,var(--contrast-300)) transition-colors duration-300 group-hover:text-(--counter-icon-hover,var(--foreground))"
           size={18}
           strokeWidth={1.5}
         />
       </button>
     </div>
   );
-};
+}

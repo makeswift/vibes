@@ -12,20 +12,28 @@ export default function Preview() {
         variant={{
           type: 'default',
           images: [
-            'https://rstr.in/monogram/vibes/o_0gBpyrOVe',
-            'https://rstr.in/monogram/vibes/VSkA1mBG78U',
+            'https://storage.googleapis.com/s.mkswft.com/RmlsZTo5MjIxNzc5Mi03ZThkLTQ2YWUtYTRmNC04MjE3NzE5ODQzNWU=/pro-biker.png',
+            'https://storage.googleapis.com/s.mkswft.com/RmlsZTo0M2M2ZWE2MS0xNDhkLTRlYjItOTlhNi1kZTc5YjJiNmI3NDU=/women-bikers.png',
           ],
         }}
       />
       <Countdown
         targetDate={twoWeeksFromNow}
         title="Our event is coming!"
-        variant={{ type: 'full', backgroundImage: 'https://rstr.in/monogram/vibes/VSkA1mBG78U' }}
+        variant={{
+          type: 'full',
+          backgroundImage:
+            'https://storage.googleapis.com/s.mkswft.com/RmlsZTo0M2M2ZWE2MS0xNDhkLTRlYjItOTlhNi1kZTc5YjJiNmI3NDU=/women-bikers.png',
+        }}
       />
       <Countdown
         targetDate={twoWeeksFromNow}
         title="Our event is coming!"
-        variant={{ type: 'split', image: 'https://rstr.in/monogram/vibes/VSkA1mBG78U' }}
+        variant={{
+          type: 'split',
+          image:
+            'https://storage.googleapis.com/s.mkswft.com/RmlsZTo0M2M2ZWE2MS0xNDhkLTRlYjItOTlhNi1kZTc5YjJiNmI3NDU=/women-bikers.png',
+        }}
       />
       <Countdown
         targetDate={twoWeeksFromNow}

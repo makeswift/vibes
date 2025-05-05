@@ -34,7 +34,7 @@ const products = [
       badge: 'Popular',
       price: '$44.95',
       image: {
-        src: 'https://rstr.in/monogram/vibes/-kv08IvX08j',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowNzAzMzk0Ni01NGNhLTQ3ZDYtODgyYi0wYWI3NTUzNTU4YjQ=/kv08IvX08j.jpeg',
         alt: 'Philodendron Imperial Red',
       },
       href: '#',
@@ -98,11 +98,11 @@ const products = [
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --featured-product-carousel-font-family: var(--font-family-body);
-  --featured-product-carousel-title-font-family: var(--font-family-heading);
-  --featured-product-carousel-title: hsl(var(--foreground));
-  --featured-product-carousel-description: hsl(var(--contrast-500));
+    --featured-product-carousel-font-family: var(--font-family-body);
+    --featured-product-carousel-title-font-family: var(--font-family-heading);
+    --featured-product-carousel-title: var(--foreground);
+    --featured-product-carousel-description: var(--contrast-500);
 }
-```
+`}</CodeBlock>

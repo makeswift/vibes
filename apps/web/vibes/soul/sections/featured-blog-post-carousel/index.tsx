@@ -27,7 +27,7 @@ export interface FeaturedBlogPostCarouselProps {
  * ```css
  * :root {
  *   --featured-blog-post-carousel-font-family: var(--font-family-body);
- *   --featured-blog-post-carousel-text: hsl(var(--foreground));
+ *   --featured-blog-post-carousel-text: var(--foreground);
  * }
  * ```
  */
@@ -41,14 +41,14 @@ export function FeaturedBlogPostCarousel({
 }: FeaturedBlogPostCarouselProps) {
   return (
     <SectionLayout containerSize="2xl">
-      <div className="mb-6 flex w-full flex-row flex-wrap justify-between gap-x-8 px-1.5 text-[var(--featured-blog-post-carousel-text,hsl(var(--foreground)))] @4xl:mb-8 @4xl:items-end">
+      <div className="mb-6 flex w-full flex-row flex-wrap justify-between gap-x-8 px-1.5 text-(--featured-blog-post-carousel-text,var(--foreground)) @4xl:mb-8 @4xl:items-end">
         <div className="flex-1">
-          <h2 className="font-[family-name:var(--featured-blog-post-carousel-font-family,var(--font-family-heading))] text-2xl font-medium leading-none @xl:text-3xl @4xl:text-4xl">
+          <h2 className="font-(family-name:--featured-blog-post-carousel-font-family,var(--font-family-heading)) text-2xl leading-none font-medium @xl:text-3xl @4xl:text-4xl">
             {title}
           </h2>
         </div>
         {cta != null && cta.href !== '' && cta.label !== '' && (
-          <Link className="group/underline focus:outline-none" href={cta.href}>
+          <Link className="group/underline focus:outline-hidden" href={cta.href}>
             <AnimatedUnderline className="mr-3">{cta.label}</AnimatedUnderline>
           </Link>
         )}

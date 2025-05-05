@@ -28,15 +28,15 @@ export interface CardProps extends CardContent {
  *
  * ```css
  * :root {
- *   --card-focus: hsl(var(--primary));
- *   --card-light-offset: hsl(var(--background));
- *   --card-light-text: hsl(var(--foreground));
- *   --card-light-icon: hsl(var(--foreground));
- *   --card-light-background: hsl(var(--contrast-100));
- *   --card-dark-offset: hsl(var(--foreground));
- *   --card-dark-text: hsl(var(--background));
- *   --card-dark-icon: hsl(var(--background));
- *   --card-dark-background: hsl(var(--contrast-500));
+ *   --card-focus: var(--primary);
+ *   --card-light-offset: var(--background);
+ *   --card-light-text: var(--foreground);
+ *   --card-light-icon: var(--foreground);
+ *   --card-light-background: var(--contrast-100);
+ *   --card-dark-offset: var(--foreground);
+ *   --card-dark-text: var(--background);
+ *   --card-dark-icon: var(--background);
+ *   --card-dark-background: var(--contrast-500);
  *   --card-font-family: var(--font-family-body);
  *   --card-border-radius: 1rem;
  * }
@@ -58,7 +58,7 @@ export function Card({
   return (
     <article
       className={clsx(
-        'group relative flex w-full min-w-0 max-w-md cursor-pointer flex-col gap-2 rounded-[var(--card-border-radius,1rem)] font-[family-name:var(--card-font-family,var(--font-family-body))] @container',
+        'group @container relative flex w-full max-w-md min-w-0 cursor-pointer flex-col gap-2 rounded-(--card-border-radius,1rem) font-(family-name:--card-font-family,var(--font-family-body))',
         {
           small: 'gap-2',
           medium: 'gap-3',
@@ -70,20 +70,20 @@ export function Card({
     >
       <ArrowUpRight
         className={clsx(
-          'absolute right-5 top-5 z-10 transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:translate-x-1.5',
+          'absolute top-5 right-5 z-10 transition-transform duration-700 ease-out group-hover:translate-x-1.5 group-hover:-translate-y-1.5',
           {
-            light: 'text-[var(--card-light-icon,hsl(var(--foreground)))]',
-            dark: 'text-[var(--card-dark-icon,hsl(var(--background)))]',
+            light: 'text-(--card-light-icon,var(--foreground))',
+            dark: 'text-(--card-dark-icon,var(--background))',
           }[iconColorScheme],
         )}
         strokeWidth={1.5}
       />
       <div
         className={clsx(
-          'relative overflow-hidden rounded-[inherit] group-focus:ring-[var(--card-focus,hsl(var(--primary)))] group-focus-visible:ring-2',
+          'relative overflow-hidden rounded-[inherit] group-focus:ring-(--card-focus,var(--primary)) group-focus-visible:ring-2',
           {
-            light: 'bg-[var(--card-light-background,hsl(var(--contrast-100)))]',
-            dark: 'bg-[var(--card-dark-background,hsl(var(--contrast-500)))]',
+            light: 'bg-(--card-light-background,var(--contrast-100))',
+            dark: 'bg-(--card-dark-background,var(--contrast-500))',
           }[textColorScheme],
           {
             '5:6': 'aspect-[5/6]',
@@ -96,10 +96,10 @@ export function Card({
           <Image
             alt={image.alt}
             className={clsx(
-              'w-full scale-100 select-none object-cover transition-transform duration-500 ease-out group-hover:scale-110',
+              'w-full scale-100 object-cover transition-transform duration-500 ease-out select-none group-hover:scale-110',
               {
-                light: 'bg-[var(--card-light-background,hsl(var(--contrast-100)))]',
-                dark: 'bg-[var(--card-dark-background,hsl(var(--contrast-500)))]',
+                light: 'bg-(--card-light-background,var(--contrast-100))',
+                dark: 'bg-(--card-dark-background,var(--contrast-500))',
               }[textColorScheme],
             )}
             fill
@@ -109,10 +109,10 @@ export function Card({
         ) : (
           <div
             className={clsx(
-              'break-words pl-5 pt-5 text-4xl font-bold leading-[0.8] tracking-tighter opacity-25 transition-transform duration-500 ease-out group-hover:scale-105 @xs:text-7xl',
+              'pt-5 pl-5 text-4xl leading-[0.8] font-bold tracking-tighter break-words opacity-25 transition-transform duration-500 ease-out group-hover:scale-105 @xs:text-7xl',
               {
-                light: 'text-[var(--card-light-text,hsl(var(--foreground)))]',
-                dark: 'text-[var(--card-dark-text,hsl(var(--background)))]',
+                light: 'text-(--card-light-text,var(--foreground))',
+                dark: 'text-(--card-dark-text,var(--background))',
               }[textColorScheme],
             )}
           >
@@ -124,12 +124,12 @@ export function Card({
             className={clsx(
               'absolute inset-0 flex items-end p-6 @xs:p-8',
               showOverlay &&
-                'bg-gradient-to-b from-foreground/0 from-50% via-foreground/0 via-50% to-foreground/50 to-100%',
+                'from-foreground/0 via-foreground/0 to-foreground/50 bg-gradient-to-b from-50% via-50% to-100%',
             )}
           >
             <h3
               className={clsx(
-                'font-medium leading-tight',
+                'leading-tight font-medium',
                 {
                   small: 'text-lg tracking-normal @xs:text-xl',
                   medium: 'text-xl tracking-normal @xs:text-2xl',
@@ -137,8 +137,8 @@ export function Card({
                   'x-large': 'text-3xl tracking-tight @xs:text-4xl',
                 }[textSize],
                 {
-                  light: 'text-[var(--card-light-text,hsl(var(--foreground)))]',
-                  dark: 'text-[var(--card-dark-text,hsl(var(--background)))]',
+                  light: 'text-(--card-light-text,var(--foreground))',
+                  dark: 'text-(--card-dark-text,var(--background))',
                 }[textColorScheme],
               )}
             >
@@ -150,7 +150,7 @@ export function Card({
       {textPosition === 'outside' && (
         <h3
           className={clsx(
-            'line-clamp-1 font-medium leading-tight',
+            'line-clamp-1 leading-tight font-medium',
             {
               small: 'text-lg tracking-normal @xs:text-xl',
               medium: 'text-xl tracking-normal @xs:text-2xl',
@@ -158,8 +158,8 @@ export function Card({
               'x-large': 'text-3xl tracking-tight @xs:text-4xl',
             }[textSize],
             {
-              light: 'text-[var(--card-light-text,hsl(var(--foreground)))]',
-              dark: 'text-[var(--card-dark-text,hsl(var(--background)))]',
+              light: 'text-(--card-light-text,var(--foreground))',
+              dark: 'text-(--card-dark-text,var(--background))',
             }[textColorScheme],
           )}
         >
@@ -168,10 +168,10 @@ export function Card({
       )}
       <Link
         className={clsx(
-          'absolute inset-0 rounded-[var(--card-border-radius,1rem)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+          'absolute inset-0 rounded-(--card-border-radius,1rem) focus:outline-hidden focus-visible:ring-2 focus-visible:ring-(--card-focus,var(--primary)) focus-visible:ring-offset-4',
           {
-            light: 'ring-offset-[var(--card-light-offset,hsl(var(--background)))]',
-            dark: 'ring-offset-[var(--card-dark-offset,hsl(var(--foreground)))]',
+            light: 'ring-offset-(--card-light-offset,var(--background))',
+            dark: 'ring-offset-(--card-dark-offset,var(--foreground))',
           }[textColorScheme],
         )}
         href={href}
@@ -190,7 +190,7 @@ export function CardSkeleton({
     <div className={clsx('@container', className)}>
       <Skeleton.Box
         className={clsx(
-          'rounded-[var(--card-border-radius,1rem)]',
+          'rounded-(--card-border-radius,1rem)',
           {
             '5:6': 'aspect-[5/6]',
             '3:4': 'aspect-[3/4]',
@@ -199,7 +199,7 @@ export function CardSkeleton({
         )}
       />
       <div className="mt-3">
-        <Skeleton.Text characterCount={10} className="rounded text-lg" />
+        <Skeleton.Text characterCount={10} className="rounded-sm text-lg" />
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ export default function Preview() {
 
 const feature: FeatureGridProps = {
   image: {
-    src: 'https://rstr.in/monogram/vibes/B7iQGslbxE4',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozZTliNjI0Zi01MDQ4LTQ2Y2QtYTdmNC0wYTI0ZGZhNTJiNjA=/green-plaid.webp',
     alt: 'string',
   },
   cta: {

@@ -8,8 +8,8 @@ import { ComponentPropsWithoutRef } from 'react';
  *
  * ```css
  *  :root {
- *    --label-light-text: hsl(var(--contrast-500));
- *    --label-dark-text: hsl(var(--contrast-100));
+ *    --label-light-text: var(--contrast-500);
+ *    --label-dark-text: var(--contrast-100);
  *  }
  * ```
  */
@@ -24,8 +24,8 @@ export function Label({
       className={clsx(
         'block font-mono text-xs uppercase',
         {
-          light: 'text-[var(--label-light-text,hsl(var(--contrast-500)))]',
-          dark: 'text-[var(--label-dark-text,hsl(var(--contrast-100)))]',
+          light: 'text-(--label-light-text,var(--contrast-500))',
+          dark: 'text-(--label-dark-text,var(--contrast-100))',
         }[colorScheme],
         className,
       )}

@@ -52,9 +52,9 @@ This component uses the Dialog component from Radix UI. Refer to the [Radix UI D
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --modal-background: hsl(var(--background));
-  --modal-overlay-background: hsl(var(--foreground) / 50%);
+    --modal-background: var(--background);
+    --modal-overlay-background: color-mix(in oklab, var(--foreground) 50%, transparent);
 }
-```
+`}</CodeBlock>

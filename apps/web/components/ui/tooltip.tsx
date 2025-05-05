@@ -39,14 +39,14 @@ function Tooltip({
         <TooltipRadix.Portal>
           <TooltipRadix.Content
             className={clsx(
-              'z-50 outline-none data-[state=delayed-open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=delayed-open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=delayed-open]:zoom-in-95',
+              'data-[state=delayed-open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=delayed-open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=delayed-open]:zoom-in-95 z-50 outline-hidden',
               className,
             )}
             forceMount
             sideOffset={8}
             {...props}
           >
-            <div className="pattern-shadow pattern-shadow-sm max-w-48 border border-foreground bg-background px-2.5 py-2 text-sm leading-snug">
+            <div className="pattern-shadow pattern-shadow-sm border-foreground bg-background max-w-48 border px-2.5 py-2 text-sm leading-snug">
               {content}
             </div>
           </TooltipRadix.Content>

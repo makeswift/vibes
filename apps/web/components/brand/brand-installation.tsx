@@ -29,10 +29,12 @@ interface Props {
 }
 
 function getVariableCode(cssVars: CSSVars) {
-  return `:root {\n${Object.entries(cssVars)
+  return `@layer base {\n  :root {\n${Object.entries(cssVars)
     .filter(([name]) => !name.startsWith('--font-family'))
-    .map(([name, value]) => `  ${name}: ${value};`)
-    .join('\n')}\n}`;
+    .map(([name, value]) => `    ${name}: ${value};`)
+    .join(
+      '\n',
+    )}\n  }\n\n  button:not(:disabled),\n  [role="button"]:not(:disabled) {\n    cursor: pointer;\n  }\n}`;
 }
 
 function removeDuplicatesByName<T extends { name: string }>(items: T[]): T[] {
@@ -124,8 +126,7 @@ export function BrandInstallation({ brands, brandName, fonts }: Props) {
         <Step>
           <h3 id="add-css-variables">Add CSS variables</h3>
           <p>
-            Copy and paste the following variables into your <code>globals.css</code> file below
-            your <code>@tailwind</code> directives .
+            Copy and paste the following variables into your <code>globals.css</code> file.
           </p>
           <Reveal>
             <CodeBlock>{getVariableCode(brand.cssVars)}</CodeBlock>
@@ -136,7 +137,9 @@ export function BrandInstallation({ brands, brandName, fonts }: Props) {
           <p>
             Copy and paste the following code into your root <code>layout.tsx</code> file.
           </p>
-          <CodeBlock>{getLayoutCode(fonts)}</CodeBlock>
+          <Reveal>
+            <CodeBlock>{getLayoutCode(fonts)}</CodeBlock>
+          </Reveal>
         </Step>
       </Steps>
     </>

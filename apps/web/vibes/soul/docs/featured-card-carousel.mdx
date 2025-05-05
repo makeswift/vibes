@@ -30,7 +30,7 @@ const cards: CardContent[] = [
     {
       title: 'Mini Bar Bag',
       image: {
-        src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
         alt: 'Mini Bar Bag',
       },
       href: '#',
@@ -80,11 +80,11 @@ const cards: CardContent[] = [
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --featured-card-carousel-font-family: var(--font-family-body);
-  --featured-card-carousel-title-font-family: var(--font-family-body);
-  --featured-card-carousel-title: hsl(var(--foreground));
-  --featured-card-carousel-description: hsl(var(--contrast-500));
+    --featured-card-carousel-font-family: var(--font-family-body);
+    --featured-card-carousel-title-font-family: var(--font-family-body);
+    --featured-card-carousel-title: var(--foreground);
+    --featured-card-carousel-description: var(--contrast-500);
 }
-```
+`}</CodeBlock>

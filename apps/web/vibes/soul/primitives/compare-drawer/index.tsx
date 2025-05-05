@@ -125,21 +125,21 @@ export interface CompareDrawerProps {
  *
  * ```css
  * :root {
- *   --compare-drawer-background: hsl(var(--background));
+ *   --compare-drawer-background: var(--background);
  *   --compare-drawer-font-family: var(--font-family-body);
- *   --compare-drawer-card-focus: hsl(var(--primary));
- *   --compare-drawer-card-border: hsl(var(--contrast-100));
- *   --compare-drawer-card-background: hsl(var(--background));
- *   --compare-drawer-card-background-hover: hsl(var(--contrast-100));
- *   --compare-drawer-card-image-background: hsl(var(--contrast-100));
- *   --compare-drawer-empty-image-text: hsl(var(--primary-shadow));
- *   --compare-drawer-card-text: hsl(var(--foreground));
- *   --compare-drawer-dismiss-border: hsl(var(--contast-100));
- *   --compare-drawer-dismiss-border-hover: hsl(var(--contast-200));
- *   --compare-drawer-dismiss-background: hsl(var(--background));
- *   --compare-drawer-dismiss-background-hover: hsl(var(--contrast-100));
- *   --compare-drawer-dismiss-icon: hsl(var(--contrast-400));
- *   --compare-drawer-dismiss-icon-hover: hsl(var(--foreground));
+ *   --compare-drawer-card-focus: var(--primary);
+ *   --compare-drawer-card-border: var(--contrast-100);
+ *   --compare-drawer-card-background: var(--background);
+ *   --compare-drawer-card-background-hover: var(--contrast-100);
+ *   --compare-drawer-card-image-background: var(--contrast-100);
+ *   --compare-drawer-empty-image-text: var(--primary-shadow);
+ *   --compare-drawer-card-text: var(--foreground);
+ *   --compare-drawer-dismiss-border: var(--contast-100);
+ *   --compare-drawer-dismiss-border-hover: var(--contast-200);
+ *   --compare-drawer-dismiss-background: var(--background);
+ *   --compare-drawer-dismiss-background-hover: var(--contrast-100);
+ *   --compare-drawer-dismiss-icon: var(--contrast-400);
+ *   --compare-drawer-dismiss-icon-hover: var(--foreground);
  * }
  * ```
  */
@@ -156,16 +156,16 @@ export function CompareDrawer({
   return (
     optimisticItems.length > 0 && (
       <Portal.Root asChild>
-        <div className="sticky bottom-0 z-10 w-full border-t border-[var(--compare-drawer-card-border,hsl(var(--contrast-100)))] bg-[var(--compare-drawer-background,hsl(var(--background)))] px-3 py-4 @container @md:py-5 @xl:px-6 @5xl:px-10">
+        <div className="@container sticky bottom-0 z-10 w-full border-t border-(--compare-drawer-card-border,var(--contrast-100)) bg-(--compare-drawer-background,var(--background)) px-3 py-4 @md:py-5 @xl:px-6 @5xl:px-10">
           <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-end gap-x-3 gap-y-4 @md:flex-row">
             <div className="flex flex-1 flex-wrap justify-end gap-4">
               {optimisticItems.map((item) => (
                 <div className="relative" key={item.id}>
                   <Link
-                    className="group relative flex max-w-56 items-center overflow-hidden whitespace-nowrap rounded-xl border border-[var(--compare-drawer-link-border,hsl(var(--contrast-100)))] bg-[var(--compare-drawer-card-background,hsl(var(--background)))] font-semibold ring-[var(--compare-drawer-card-focus,hsl(var(--primary)))] transition-all duration-150 hover:bg-[var(--compare-drawer-card-background-hover,hsl(var(--contrast-100)))] focus:outline-none focus:ring-2"
+                    className="group relative flex max-w-56 items-center overflow-hidden rounded-xl border border-(--compare-drawer-link-border,var(--contrast-100)) bg-(--compare-drawer-card-background,var(--background)) font-semibold whitespace-nowrap ring-(--compare-drawer-card-focus,var(--primary)) transition-all duration-150 hover:bg-(--compare-drawer-card-background-hover,var(--contrast-100)) focus:ring-2 focus:outline-hidden"
                     href={item.href}
                   >
-                    <div className="relative aspect-square w-12 shrink-0 bg-[var(--compare-drawer-card-image-background,hsl(var(--contrast-100)))]">
+                    <div className="relative aspect-square w-12 shrink-0 bg-(--compare-drawer-card-image-background,var(--contrast-100))">
                       {item.image?.src != null ? (
                         <Image
                           alt={item.image.alt}
@@ -175,18 +175,18 @@ export function CompareDrawer({
                           src={item.image.src}
                         />
                       ) : (
-                        <span className="max-w-full break-all p-1 text-xs text-[var(--compare-drawer-empty-image-text,color-mix(in_oklab,hsl(var(--primary)),black_75%))] opacity-20">
+                        <span className="max-w-full p-1 text-xs break-all text-(--compare-drawer-empty-image-text,var(--primary-shadow)) opacity-20">
                           {getInitials(item.title)}
                         </span>
                       )}
                     </div>
-                    <span className="hidden truncate pl-3 pr-5 text-[var(--compare-drawer-card-text,hsl(var(--foreground)))] @4xl:block">
+                    <span className="hidden truncate pr-5 pl-3 text-(--compare-drawer-card-text,var(--foreground)) @4xl:block">
                       {item.title}
                     </span>
                   </Link>
                   <button
                     aria-label={`${removeLabel} ${item.title}`}
-                    className="hover:text-[var(--compare-drawer-dismiss-icon-hover,hsl(var(--foreground))] absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center rounded-full border border-[var(--compare-drawer-dismiss-border,hsl(var(--contrast-100)))] bg-[var(--compare-drawer-dismiss-background,hsl(var(--background)))] text-[var(--compare-drawer-dismiss-icon,hsl(var(--contrast-400)))] transition-colors duration-150 hover:border-[var(--compare-drawer-dismiss-border-hover,hsl(var(--contrast-200)))] hover:bg-[var(--compare-drawer-dismiss-background-hover,hsl(var(--contrast-100)))]"
+                    className="absolute -top-2.5 -right-2.5 flex h-7 w-7 items-center justify-center rounded-full border border-(--compare-drawer-dismiss-border,var(--contrast-100)) bg-(--compare-drawer-dismiss-background,var(--background)) text-(--compare-drawer-dismiss-icon,var(--contrast-400)) transition-colors duration-150 hover:border-(--compare-drawer-dismiss-border-hover,var(--contrast-200)) hover:bg-(--compare-drawer-dismiss-background-hover,var(--contrast-100)) hover:text-(--compare-drawer-dismiss-icon-hover,var(--foreground))"
                     onClick={() => {
                       startTransition(async () => {
                         setOptimisticItems({ type: 'remove', item });

@@ -4,7 +4,7 @@ import { ProductCard } from '@/vibes/soul/primitives/product-card';
 export default function Preview() {
   return (
     <CompareDrawerProvider items={[]}>
-      <div className="bg-background p-8 @container">
+      <div className="bg-background @container p-8">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <ProductCard
             product={{
@@ -13,7 +13,7 @@ export default function Preview() {
               subtitle: 'Blue/Green',
               price: '$65',
               image: {
-                src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+                src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
                 alt: 'Mini Bar Bag',
               },
               href: '#',
@@ -32,7 +32,7 @@ export default function Preview() {
           />
         </div>
       </div>
-      <div className="bg-foreground p-8 @container">
+      <div className="bg-foreground @container p-8">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <ProductCard
             colorScheme="dark"
@@ -42,7 +42,7 @@ export default function Preview() {
               subtitle: 'Blue/Green',
               price: '$65',
               image: {
-                src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+                src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
                 alt: 'Mini Bar Bag',
               },
               href: '#',

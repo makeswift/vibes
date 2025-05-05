@@ -38,19 +38,19 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --input-light-background: hsl(var(--background));
-  --input-light-text: hsl(var(--foreground));
-  --input-light-border: hsl(var(--contrast-100));
-  --input-light-focus: hsl(var(--foreground));
-  --input-light-placeholder: hsl(var(--contrast-500));
-  --input-light-error: hsl(var(--error));
-  --input-dark-background: hsl(var(--foreground));
-  --input-dark-text: hsl(var(--background));
-  --input-dark-border: hsl(var(--contrast-500));
-  --input-dark-focus: hsl(var(--background));
-  --input-dark-placeholder: hsl(var(--contrast-100));
-  --input-dark-error: hsl(var(--error));
+    --input-light-background: var(--background);
+    --input-light-text: var(--foreground);
+    --input-light-border: var(--contrast-100);
+    --input-light-focus: var(--foreground);
+    --input-light-placeholder: var(--contrast-500);
+    --input-light-error: var(--error);
+    --input-dark-background: var(--foreground);
+    --input-dark-text: var(--background);
+    --input-dark-border: var(--contrast-500);
+    --input-dark-focus: var(--background);
+    --input-dark-placeholder: var(--contrast-100);
+    --input-dark-error: var(--error);
 }
-```
+`}</CodeBlock>

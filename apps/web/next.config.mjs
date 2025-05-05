@@ -19,11 +19,6 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'rstr.in',
-        port: '',
-      },
-      {
-        protocol: 'https',
         hostname: 'images.pexels.com',
         port: '',
       },

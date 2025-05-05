@@ -36,7 +36,7 @@ const products = [
       subtitle: 'Blue/Black/Green',
       price: '$65',
       image: {
-        src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
         alt: 'Mini Bar Bag',
       },
       href: '#',
@@ -87,11 +87,11 @@ const products = [
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --featured-product-list-font-family: var(--font-family-body);
-  --featured-product-list-title-font-family: var(--font-family-heading);
-  --featured-product-list-title: hsl(var(--foreground));
-  --featured-product-list-description: hsl(var(--contrast-500));
+    --featured-product-list-font-family: var(--font-family-body);
+    --featured-product-list-title-font-family: var(--font-family-heading);
+    --featured-product-list-title: var(--foreground);
+    --featured-product-list-description: var(--contrast-500);
 }
-```
+`}</CodeBlock>

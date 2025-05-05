@@ -69,7 +69,7 @@ export const accordions = [
     {
       title: 'What is your return policy?',
       content:
-        'We want you to be completely satisfied with your purchase. If you’re not happy with your bike pack, you can return it within 30 days of delivery. Please ensure the pack is in its original condition and packaging. For detailed return instructions, visit our Return Policy page or contact our customer support team.',
+        'We want you to be completely satisfied with your purchase. If you're not happy with your bike pack, you can return it within 30 days of delivery. Please ensure the pack is in its original condition and packaging. For detailed return instructions, visit our Return Policy page or contact our customer support team.',
     },
 ];
 
@@ -78,12 +78,12 @@ export const product = {
     title: 'Mini Bar Bag',
     price: '$60',
     image: {
-      src: 'https://rstr.in/monogram/vibes/5IdIE27Cj9r',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
       alt: 'A close-up of a bicycle handlebar with a brown handlebar bag.',
     },
     images: [
       {
-        src: 'https://rstr.in/monogram/vibes/5IdIE27Cj9r',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
         alt: 'A close-up of a bicycle handlebar with a brown handlebar bag.',
       },
     ],
@@ -220,11 +220,11 @@ This component supports various CSS variables for theming. Here's a comprehensiv
 
 <CodeBlock lang="css">{`
 :root {
-    --product-detail-border: hsl(var(--contrast-100));
+    --product-detail-border: var(--contrast-100);
     --product-detail-subtitle-font-family: var(--font-family-mono);
     --product-detail-title-font-family: var(--font-family-heading);
-    --product-detail-primary-text: hsl(var(--foreground));
-    --product-detail-secondary-text: hsl(var(--contrast-500));
+    --product-detail-primary-text: var(--foreground);
+    --product-detail-secondary-text: var(--contrast-500);
 }
 `}</CodeBlock>
 

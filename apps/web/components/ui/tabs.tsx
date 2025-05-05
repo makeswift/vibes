@@ -30,7 +30,7 @@ const TabsTrigger = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     className={clsx(
-      'inline-flex items-center justify-center whitespace-nowrap border border-b-0 border-dashed border-transparent px-3 py-1.5 text-sm font-bold text-contrast-400 ring-offset-background transition-colors hover:border-contrast-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-solid data-[state=active]:border-foreground data-[state=active]:text-foreground data-[state=active]:focus-visible:border-transparent',
+      'text-contrast-400 ring-offset-background hover:border-contrast-400 focus-visible:ring-primary data-[state=active]:border-foreground data-[state=active]:text-foreground inline-flex items-center justify-center border border-b-0 border-dashed border-transparent px-3 py-1.5 text-sm font-bold whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-solid data-[state=active]:focus-visible:border-transparent',
       className,
     )}
     ref={ref}
@@ -44,7 +44,7 @@ const TabsContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
-    className={clsx('mt-2 focus-visible:outline-none', className)}
+    className={clsx('mt-2 focus-visible:outline-hidden', className)}
     ref={ref}
     {...props}
   />

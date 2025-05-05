@@ -9,12 +9,12 @@ import { ButtonLink } from '@/vibes/soul/primitives/button-link';
  *
  * ```css
  * :root {
- *   --featured-image-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
- *   --featured-image-image-background: hsl(var(--primary) / 10%);
+ *   --featured-image-background: var(--primary-shadow);
+ *   --featured-image-image-background: color-mix(in oklab, var(--primary) 10%, transparent);
  *   --featured-image-title-font-family: var(--font-family-heading);
  *   --featured-image-font-family: var(--font-family-body);
- *   --featured-image-title: hsl(var(--background));
- *   --featured-image-description: hsl(var(--background));
+ *   --featured-image-title: var(--background);
+ *   --featured-image-description: var(--background);
  * }
  * ```
  */
@@ -43,17 +43,17 @@ export function FeaturedImage({
   return (
     <section
       className={clsx(
-        'relative bg-[var(--featured-image-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] @container',
+        '@container relative bg-(--featured-image-background,var(--primary-shadow))',
         mediaAlign === 'full' && 'h-dvh max-h-[700px]',
       )}
     >
       <div className="mx-auto flex h-full max-w-screen-2xl flex-col @3xl:flex-row">
         <div
           className={clsx(
-            'w-full bg-[var(--featured-image-image-background,hsl(var(--primary)/10%))] object-cover',
+            'w-full bg-(--featured-image-image-background,color-mix(in_oklab,var(--primary)_10%,transparent)) object-cover',
             mediaAlign === 'full'
               ? 'absolute inset-0 h-full'
-              : 'relative aspect-square bg-primary/10 @xl:aspect-[9/6] @3xl:h-dvh @3xl:max-h-[880px] @3xl:w-1/2 @5xl:w-3/5',
+              : 'bg-primary/10 relative aspect-square @xl:aspect-[9/6] @3xl:h-dvh @3xl:max-h-[880px] @3xl:w-1/2 @5xl:w-3/5',
             mediaAlign === 'right' && '@3xl:order-2 @7xl:mr-20',
             mediaAlign === 'left' && '@7xl:ml-20',
           )}
@@ -70,17 +70,17 @@ export function FeaturedImage({
         </div>
         <header
           className={clsx(
-            'z-10 mx-auto flex flex-col items-start gap-4 px-3 pb-20 pt-10 font-[family-name:var(--featured-image-font-family,var(--font-family-body))] text-background @5xl:p-20',
+            'text-background z-10 mx-auto flex flex-col items-start gap-4 px-3 pt-10 pb-20 font-(family-name:--featured-image-font-family,var(--font-family-body)) @5xl:p-20',
             mediaAlign === 'full'
               ? 'mx-auto mt-auto w-full max-w-screen-2xl px-3 @5xl:px-20'
               : 'w-full justify-end @xl:px-6 @3xl:w-1/2 @5xl:w-2/5',
             mediaAlign === 'right' && '@3xl:order-1',
           )}
         >
-          <h2 className="max-w-xl font-[family-name:var(--featured-image-title-font-family,var(--font-family-heading))] text-4xl leading-none text-[var(--featured-image-title,hsl(var(--background)))] @xl:text-5xl">
+          <h2 className="max-w-xl font-(family-name:--featured-image-title-font-family,var(--font-family-heading)) text-4xl leading-none text-(--featured-image-title,var(--background)) @xl:text-5xl">
             {title}
           </h2>
-          <p className="max-w-md pb-2 text-[var(--featured-image-description,hsl(var(--background)))]">
+          <p className="max-w-md pb-2 text-(--featured-image-description,var(--background))">
             {description}
           </p>
           <ButtonLink

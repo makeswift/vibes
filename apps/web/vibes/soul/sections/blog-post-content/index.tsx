@@ -47,8 +47,8 @@ export interface BlogPostContentProps {
  * :root {
  *   --blog-post-content-font-family: var(--font-family-body);
  *   --blog-post-content-title-font-family: var(--font-family-body);
- *   --blog-post-content-title: hsl(var(--foreground));
- *   --blog-post-content-image-background: hsl(var(--contrast-100));
+ *   --blog-post-content-title: var(--foreground);
+ *   --blog-post-content-image-background: var(--contrast-100);
  * }
  * ```
  */
@@ -68,7 +68,7 @@ export function BlogPostContent({
               <>
                 <header className="mx-auto w-full max-w-4xl pb-8 font-[family-name:var(--blog-post-content-info-font-family,var(--font-family-body))] @2xl:pb-12 @4xl:pb-16">
                   {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-                  <h1 className="mb-4 mt-8 font-[family-name:var(--blog-post-content-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--blog-post-content-title,hsl(var(--foreground)))] @xl:text-5xl @4xl:text-6xl">
+                  <h1 className="mt-8 mb-4 font-[family-name:var(--blog-post-content-title-font-family,var(--font-family-heading))] text-4xl leading-none font-medium text-(--blog-post-content-title,var(--foreground)) @xl:text-5xl @4xl:text-6xl">
                     {title}
                   </h1>
                   <p>
@@ -80,7 +80,7 @@ export function BlogPostContent({
                     )}
                   </p>
                   {tags && tags.length > 0 && (
-                    <div className="-ml-1 mt-4 flex flex-wrap gap-1.5 @xl:mt-6">
+                    <div className="mt-4 -ml-1 flex flex-wrap gap-1.5 @xl:mt-6">
                       {tags.map((tag) => (
                         <ButtonLink
                           href={tag.link.href}
@@ -97,7 +97,7 @@ export function BlogPostContent({
                 {image && (
                   <Image
                     alt={image.alt}
-                    className="mb-8 aspect-video w-full rounded-2xl bg-[var(--blog-post-content-image-background,hsl(var(--contrast-100)))] object-cover @2xl:mb-12 @4xl:mb-16"
+                    className="mb-8 aspect-video w-full rounded-2xl bg-(--blog-post-content-image-background,var(--contrast-100)) object-cover @2xl:mb-12 @4xl:mb-16"
                     height={780}
                     src={image.src}
                     width={1280}
@@ -124,7 +124,7 @@ export function BlogPostContentSkeleton({ className }: Pick<BlogPostContentProps
     >
       <div className="mx-auto w-full max-w-4xl pb-8 @2xl:pb-12 @4xl:pb-16">
         <BreadcrumbsSkeleton />
-        <div className="mb-4 mt-8">
+        <div className="mt-8 mb-4">
           <Skeleton.Text
             characterCount={60}
             className="rounded-lg text-4xl @xl:text-5xl @4xl:text-6xl"

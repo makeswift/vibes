@@ -14,7 +14,7 @@ export default function Contribute() {
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       style={{ '--foreground': '0 0% 0%', '--background': '0 0% 100%' } as React.CSSProperties}
     >
-      <header className="fixed left-0 top-0 z-50 hidden w-full translate-y-8 items-center justify-center px-10 transition-all duration-300 sm:flex sm:justify-between md:translate-y-10">
+      <header className="fixed top-0 left-0 z-50 hidden w-full translate-y-8 items-center justify-center px-10 transition-all duration-300 sm:flex sm:justify-between md:translate-y-10">
         <ButtonLink href="/#footer" size="large">
           Get updates
         </ButtonLink>
@@ -30,13 +30,13 @@ export default function Contribute() {
       </header>
 
       <section className="relative h-dvh w-full bg-white p-3 sm:p-4 lg:p-5">
-        <div className="relative z-0 h-full w-full select-none place-content-center overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] px-4 pt-6 after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-position:-0px_-0px,-6px_-6px] after:[background-size:12px_12px] md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-position:-0px_-0px,-8px_-8px] lg:after:[background-size:16px_16px] xl:rounded-[40px]">
-          <Link className="absolute left-5 top-6 z-50 sm:hidden" href="/">
+        <div className="relative z-0 h-full w-full place-content-center overflow-hidden rounded-3xl border-[1.5px] border-black bg-gradient-to-b from-[#FFDEB6] to-[#FFB5CE] px-4 pt-6 select-none after:absolute after:inset-0 after:-z-10 after:animate-[dotScrollSmall_500ms_linear_infinite] after:[background-image:radial-gradient(#FFB3CD_25%,transparent_25%),radial-gradient(#FFB3CD_25%,transparent_25%)] after:[background-size:12px_12px] after:[background-position:-0px_-0px,-6px_-6px] md:p-8 lg:rounded-[32px] lg:p-10 lg:after:animate-[dotScrollLarge_400ms_linear_infinite] lg:after:[background-size:16px_16px] lg:after:[background-position:-0px_-0px,-8px_-8px] xl:rounded-[40px]">
+          <Link className="absolute top-6 left-5 z-50 sm:hidden" href="/">
             <Image alt="Vibes logo" className="" height={32} priority src="/logo.svg" width={120} />
           </Link>
 
           <div className="mx-auto flex max-w-4xl flex-col items-center pb-16 text-left md:pt-20 md:text-center">
-            <h1 className="mb-3 px-1 font-heading text-4xl leading-none md:text-5xl lg:mb-5 lg:text-6xl">
+            <h1 className="font-heading mb-3 px-1 text-4xl leading-none md:text-5xl lg:mb-5 lg:text-6xl">
               Contribute to VIBES
             </h1>
 

@@ -16,9 +16,9 @@ interface StarType {
  *
  * ```css
  * :root {
- *   --rating-icon: hsl(var(--foreground));
- *   --rating-border: hsl(var(--contast-100));
- *   --rating-text: hsl(var(--contrast-400));
+ *   --rating-icon: var(--foreground);
+ *   --rating-border: var(--contrast-100);
+ *   --rating-text: var(--contrast-400);
  * }
  * ```
  */
@@ -60,7 +60,7 @@ const Star = ({ type }: StarType) => {
 
   return (
     <svg
-      className="inline-block text-[var(--rating-icon,hsl(var(--foreground)))]"
+      className="inline-block text-(--rating-icon,var(--foreground))"
       fill="none"
       height={20}
       viewBox="0 0 20 20"
@@ -71,11 +71,7 @@ const Star = ({ type }: StarType) => {
   );
 };
 
-export const Rating = function Rating({
-  showRating = true,
-  rating,
-  className,
-}: Readonly<RatingProps>) {
+export function Rating({ showRating = true, rating, className }: Readonly<RatingProps>) {
   const adjustedRating = Math.min(rating, 5);
 
   const stars: Array<StarType['type']> = Array.from({ length: 5 }, (_, index) => {
@@ -91,10 +87,10 @@ export const Rating = function Rating({
       ))}
 
       {showRating && (
-        <span className="ml-1.5 flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-[var(--rating-border,hsl(var(--contrast-100)))] px-1 text-xs font-medium text-[var(--rating-text,hsl(var(--contrast-400)))]">
+        <span className="ml-1.5 flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-(--rating-border,var(--contrast-100)) px-1 text-xs font-medium text-(--rating-text,var(--contrast-400))">
           {adjustedRating % 1 !== 0 ? adjustedRating.toFixed(1) : adjustedRating}
         </span>
       )}
     </div>
   );
-};
+}

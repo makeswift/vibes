@@ -43,10 +43,10 @@ export interface CompareCardProps {
  *
  * ```css
  * :root {
- *   --compare-card-divider: hsl(var(--contrast-100));
- *   --compare-card-label: hsl(var(--foreground));
- *   --compare-card-description: hsl(var(--contrast-400));
- *   --compare-card-field: hsl(var(--foreground));
+ *   --compare-card-divider: var(--contrast-100);
+ *   --compare-card-label: var(--foreground);
+ *   --compare-card-description: var(--contrast-400);
+ *   --compare-card-field: var(--foreground);
  *   --compare-card-font-family-primary: var(--font-family-body);
  *   --compare-card-font-family-secondary: var(--font-family-mono);
  * }
@@ -70,7 +70,7 @@ export function CompareCard({
   return (
     <div
       className={clsx(
-        'w-full max-w-72 divide-y divide-[var(--compare-card-divider,hsl(var(--contrast-100)))] font-[family-name:var(--compare-card-font-family-primary,var(--font-family-body))] font-normal @container',
+        '@container w-full max-w-72 divide-y divide-(--compare-card-divider,var(--contrast-100)) font-(family-name:--compare-card-font-family-primary,var(--font-family-body)) font-normal',
         className,
       )}
     >
@@ -93,19 +93,19 @@ export function CompareCard({
           ))}
       </div>
       <div className="space-y-4 py-4">
-        <div className="font-[family-name:var(--compare-card-font-family-secondary,var(--font-family-mono))] text-xs font-normal uppercase text-[var(--compare-card-label,hsl(var(--foreground)))]">
+        <div className="font-(family-name:--compare-card-font-family-secondary,var(--font-family-mono)) text-xs font-normal text-(--compare-card-label,var(--foreground)) uppercase">
           {ratingLabel}
         </div>
         {product.rating != null ? (
           <Rating rating={product.rating} />
         ) : (
-          <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
+          <p className="text-sm text-(--compare-card-description,var(--contrast-400))">
             {noRatingsLabel}
           </p>
         )}
       </div>
       <div className="space-y-4 py-4">
-        <div className="font-[family-name:var(--compare-card-font-family-secondary,var(--font-family-mono))] text-xs font-normal uppercase text-[var(--compare-card-label,hsl(var(--foreground)))]">
+        <div className="font-(family-name:--compare-card-font-family-secondary,var(--font-family-mono)) text-xs font-normal text-(--compare-card-label,var(--foreground)) uppercase">
           {descriptionLabel}
         </div>
         {product.description != null && product.description !== '' ? (
@@ -115,18 +115,18 @@ export function CompareCard({
             </div>
           </Reveal>
         ) : (
-          <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
+          <p className="text-sm text-(--compare-card-description,var(--contrast-400))">
             {noDescriptionLabel}
           </p>
         )}
       </div>
       {product.customFields != null ? (
         <div className="space-y-4 py-4">
-          <div className="font-[family-name:var(--compare-card-font-family-secondary,var(--font-family-mono))] text-xs font-normal uppercase text-[var(--compare-card-label,hsl(var(--foreground)))]">
+          <div className="font-(family-name:--compare-card-font-family-secondary,var(--font-family-mono)) text-xs font-normal text-(--compare-card-label,var(--foreground)) uppercase">
             {otherDetailsLabel}
           </div>
           <Reveal>
-            <dl className="grid grid-cols-2 gap-1 text-xs font-normal text-[var(--compare-card-field,hsl(var(--foreground)))]">
+            <dl className="grid grid-cols-2 gap-1 text-xs font-normal text-(--compare-card-field,var(--foreground))">
               {product.customFields.map((field, index) => (
                 <Fragment key={index}>
                   <dt className="font-semibold">{field.name}: </dt>
@@ -138,10 +138,10 @@ export function CompareCard({
         </div>
       ) : (
         <div className="space-y-4 py-4">
-          <div className="font-[family-name:var(--compare-card-font-family-secondary,var(--font-family-mono))] text-xs font-normal uppercase text-[var(--compare-card-label,hsl(var(--foreground)))]">
+          <div className="font-(family-name:--compare-card-font-family-secondary,var(--font-family-mono)) text-xs font-normal text-(--compare-card-label,var(--foreground)) uppercase">
             {otherDetailsLabel}
           </div>
-          <p className="text-sm text-[var(--compare-card-description,hsl(var(--contrast-400)))]">
+          <p className="text-sm text-(--compare-card-description,var(--contrast-400))">
             {noOtherDetailsLabel}
           </p>
         </div>
@@ -154,7 +154,7 @@ export function CompareCardSkeleton({ className }: { className?: string }) {
   return (
     <div
       className={clsx(
-        'w-full max-w-md divide-y divide-[var(--skeleton,hsl(var(--contrast-300)/15%))] @container',
+        '@container w-full max-w-md divide-y divide-(--compare-card-divider,var(--contrast-100))',
         className,
       )}
     >

@@ -53,3 +53,21 @@ Display the component.
 | Prop | Type     | Default |
 | ---- | -------- | ------- |
 | type | `banner` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+    --countdown-default-split-background: var(--primary-shadow);
+    --countdown-number-default-background: var(--primary);
+    --countdown-number-default-text: var(--primary-shadow);
+    --countdown-number-full-background: var(--primary-shadow);
+    --countdown-number-full-text: var(--primary);
+    --countdown-image-background: var(--primary-shadow);
+    --countdown-text: var(--background);
+    --countdown-icon: var(--background);
+    --countdown-font-family: var(--font-family-body);
+}
+`}</CodeBlock>

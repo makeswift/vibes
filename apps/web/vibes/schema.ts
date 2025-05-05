@@ -16,13 +16,31 @@ export type Components = NonEmptyArray<Component>;
 
 export interface CSSVars {
   '--primary': string;
+  '--primary-highlight': string;
+  '--primary-shadow': string;
+
   '--accent': string;
+  '--accent-highlight': string;
+  '--accent-shadow': string;
+
+  '--success': string;
+  '--success-highlight': string;
+  '--success-shadow': string;
+
+  '--error': string;
+  '--error-highlight': string;
+  '--error-shadow': string;
+
+  '--warning': string;
+  '--warning-highlight': string;
+  '--warning-shadow': string;
+
+  '--info': string;
+  '--info-highlight': string;
+  '--info-shadow': string;
+
   '--background': string;
   '--foreground': string;
-  '--success': string;
-  '--error': string;
-  '--warning': string;
-  '--info': string;
 
   '--contrast-100': string;
   '--contrast-200': string;
@@ -31,33 +49,71 @@ export interface CSSVars {
   '--contrast-500': string;
 
   '--font-family-heading': string;
-  '--font-family-body': string;
-  '--font-family-mono'?: string;
-
   '--font-feature-settings-heading'?: string;
-  '--font-feature-settings-body'?: string;
-  '--font-feature-settings-mono'?: string;
-
   '--font-variation-settings-heading'?: string;
+
+  '--font-family-body': string;
+  '--font-feature-settings-body'?: string;
   '--font-variation-settings-body'?: string;
+
+  '--font-family-mono'?: string;
+  '--font-feature-settings-mono'?: string;
   '--font-variation-settings-mono'?: string;
 
   '--font-size-xs'?: string;
-  '--font-size-sm'?: string;
-  '--font-size-base'?: string;
-  '--font-size-lg'?: string;
-  '--font-size-xl'?: string;
-  '--font-size-2xl'?: string;
-  '--font-size-3xl'?: string;
-  '--font-size-4xl'?: string;
-  '--font-size-5xl'?: string;
-  '--font-size-6xl'?: string;
-  '--font-size-7xl'?: string;
-  '--font-size-8xl'?: string;
-  '--font-size-9xl'?: string;
+  '--font-size-xs-line-height'?: string;
+  '--font-size-xs-letter-spacing'?: string;
 
+  '--font-size-sm'?: string;
+  '--font-size-sm-line-height'?: string;
+  '--font-size-sm-letter-spacing'?: string;
+
+  '--font-size-base'?: string;
+  '--font-size-base-line-height'?: string;
+  '--font-size-base-letter-spacing'?: string;
+
+  '--font-size-lg'?: string;
+  '--font-size-lg-line-height'?: string;
+  '--font-size-lg-letter-spacing'?: string;
+
+  '--font-size-xl'?: string;
+  '--font-size-xl-line-height'?: string;
+  '--font-size-xl-letter-spacing'?: string;
+
+  '--font-size-2xl'?: string;
+  '--font-size-2xl-line-height'?: string;
+  '--font-size-2xl-letter-spacing'?: string;
+
+  '--font-size-3xl'?: string;
+  '--font-size-3xl-line-height'?: string;
+  '--font-size-3xl-letter-spacing'?: string;
+
+  '--font-size-4xl'?: string;
+  '--font-size-4xl-line-height'?: string;
+  '--font-size-4xl-letter-spacing'?: string;
+
+  '--font-size-5xl'?: string;
+  '--font-size-5xl-line-height'?: string;
+  '--font-size-5xl-letter-spacing'?: string;
+
+  '--font-size-6xl'?: string;
+  '--font-size-6xl-line-height'?: string;
+  '--font-size-6xl-letter-spacing'?: string;
+
+  '--font-size-7xl'?: string;
+  '--font-size-7xl-line-height'?: string;
+  '--font-size-7xl-letter-spacing'?: string;
+
+  '--font-size-8xl'?: string;
+  '--font-size-8xl-line-height'?: string;
+  '--font-size-8xl-letter-spacing'?: string;
+
+  '--font-size-9xl'?: string;
+  '--font-size-9xl-line-height'?: string;
+  '--font-size-9xl-letter-spacing'?: string;
+
+  '--shadow-xs'?: string;
   '--shadow-sm'?: string;
-  '--shadow-base'?: string;
   '--shadow-md'?: string;
   '--shadow-lg'?: string;
   '--shadow-xl'?: string;

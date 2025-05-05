@@ -50,15 +50,15 @@ The key associated with this state uses the `id` prop with the following format:
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --banner-focus: hsl(var(--foreground));
-  --banner-background: hsl(var(--primary));
-  --banner-text: hdl(var(--foreground));
-  --banner-close-icon: hsl(var(--foreground) / 50%);
-  --banner-close-icon-hover: hdl(var(--foreground));
-  --banner-close-background: transparent;
-  --banner-close-background-hover: hsl(var(--background) / 40%);
-  --banner-font-family: var(--font-family-body);
+    --banner-focus: var(--foreground);
+    --banner-background: var(--primary);
+    --banner-text: var(--foreground);
+    --banner-close-icon: color-mix(in oklab, var(--foreground) 50%, transparent);
+    --banner-close-icon-hover: var(--foreground);
+    --banner-close-background: transparent;
+    --banner-close-background-hover: color-mix(in oklab, var(--background) 40%, transparent);
+    --banner-font-family: var(--font-family-body);
 }
-```
+`}</CodeBlock>

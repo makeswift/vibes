@@ -34,13 +34,13 @@ See `sections/address-list-section/index.tsx` for details.
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --address-list-section-border: hsl(var(--contrast-200));
-  --address-list-section-title-font-family: var(--font-family-heading);
-  --address-list-section-content-font-family: var(--font-family-body);
-  --address-list-section-title: hsl(var(--foreground));
-  --address-list-section-name: hsl(var(--foreground));
-  --address-list-section-info: hsl(var(--contrast-500));
+    --address-list-section-border: var(--contrast-200);
+    --address-list-section-title-font-family: var(--font-family-heading);
+    --address-list-section-content-font-family: var(--font-family-body);
+    --address-list-section-title: var(--foreground);
+    --address-list-section-name: var(--foreground);
+    --address-list-section-info: var(--contrast-500);
 }
-```
+`}</CodeBlock>

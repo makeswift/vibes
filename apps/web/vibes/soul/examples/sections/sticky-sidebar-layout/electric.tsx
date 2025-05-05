@@ -4,7 +4,7 @@ import { SidebarMenu } from '@/vibes/soul/sections/sticky-sidebar-layout/sidebar
 export default function Preview() {
   return (
     <StickySidebarLayout sidebar={<SidebarMenu links={links} />} sidebarSize="sm">
-      <div className="relative h-96 overflow-hidden rounded-2xl border border-dashed border-contrast-200">
+      <div className="border-contrast-200 relative h-96 overflow-hidden rounded-2xl border border-dashed">
         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_42.86%,#d1d1d150_42.86%,#d1d1d150_50%,transparent_50%,transparent_92.86%,#d1d1d150_92.86%,#d1d1d150_100%)] bg-[size:9.90px_9.90px]" />
       </div>
     </StickySidebarLayout>

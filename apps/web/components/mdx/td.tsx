@@ -1,6 +1,6 @@
 export default function TableCell({ children }: React.HTMLAttributes<HTMLTableCellElement>) {
   return (
-    <td className="py-3 align-middle font-light text-foreground">
+    <td className="text-foreground py-3 align-middle font-light">
       <div className="flex items-center">{children}</div>
     </td>
   );

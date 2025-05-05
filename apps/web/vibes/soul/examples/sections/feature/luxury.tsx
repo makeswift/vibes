@@ -2,8 +2,8 @@ import { Feature, FeatureProps } from '@/vibes/soul/sections/feature';
 
 export const feature: FeatureProps = {
   image: {
-    src: 'https://rstr.in/monogram/vibes/B7iQGslbxE4',
-    alt: 'string',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTozZTliNjI0Zi01MDQ4LTQ2Y2QtYTdmNC0wYTI0ZGZhNTJiNjA=/green-plaid.webp',
+    alt: 'Woman in green plaid suit',
   },
   title: 'DESIGN-LED + FUNCTION-FORMED',
   description:

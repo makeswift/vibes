@@ -23,7 +23,7 @@ export function Header({ chapters, chapterSlug }: Props) {
   const chapter = chapters.find((c) => c.slug === chapterSlug);
 
   return (
-    <header className="sticky top-0 z-[60] h-14 border-b border-dashed border-contrast-300 bg-background @container md:h-16">
+    <header className="border-contrast-300 bg-background @container sticky top-0 z-[60] h-14 border-b border-dashed md:h-16">
       <div className="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-3 md:px-5 xl:px-8">
         <div className="flex flex-1 items-center gap-x-2 md:gap-x-3">
           <MobileMenu chapter={chapter} />
@@ -41,7 +41,7 @@ export function Header({ chapters, chapterSlug }: Props) {
 
           <div className="flex items-center">
             <div className="w-2">
-              <div className="mx-auto h-5 w-[1px] -skew-x-[20deg] bg-contrast-500" />
+              <div className="bg-contrast-500 mx-auto h-5 w-[1px] -skew-x-[20deg]" />
             </div>
 
             <ChapterSelect chapterSlug={chapterSlug} chapters={chapters} />

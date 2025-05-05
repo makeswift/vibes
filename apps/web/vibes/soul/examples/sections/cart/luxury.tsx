@@ -36,7 +36,7 @@ const defaultLineItems: CartLineItem[] = [
     subtitle: 'Cuoro Embossed Snake',
     price: '$350',
     image: {
-      src: 'https://rstr.in/monogram/vibes/18bzcr01WWx',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo5MGE5YjM1ZS0wY2Q5LTQ2ZWQtOTg4My1iYTk0ZWQwNDA5ZDM=/darya-lug-2.webp',
       alt: 'DARYA LUG SOLE FISHERMAN',
     },
     quantity: 1,
@@ -47,7 +47,7 @@ const defaultLineItems: CartLineItem[] = [
     subtitle: 'Rust Closed Woven Calf',
     price: '$350',
     image: {
-      src: 'https://rstr.in/monogram/vibes/yzjuCwK-5tz',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo3ZjAyMzkyYS1iN2ViLTQ0YzAtYmUxNi1kOThjMjk0MTU0ZGQ=/darya-lug.webp',
       alt: 'ROMA ROUND TOE BALLET FLAT',
     },
     quantity: 2,

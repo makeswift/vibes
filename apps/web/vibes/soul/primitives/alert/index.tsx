@@ -22,14 +22,14 @@ export interface AlertProps {
  *
  * ```css
  * :root {
- *   --alert-success-background: color-mix(in oklab, hsl(var(--success)), white 75%);
- *   --alert-warning-background: color-mix(in oklab, hsl(var(--warning)), white 75%);
- *   --alert-error-background: color-mix(in oklab, hsl(var(--error)), white 75%);
- *   --alert-info-background: hsl(var(--background));
+ *   --alert-success-background: var(--success-highlight);
+ *   --alert-warning-background: var(--warning-highlight);
+ *   --alert-error-background: var(--error-highlight);
+ *   --alert-info-background: var(--background);
  *   --alert-font-family: var(--font-family-body);
- *   --alert-border: hsl(var(--foreground) / 10%);
- *   --alert-message-text: hsl(var(--foreground));
- *   --alert-description-text: hsl(var(--foreground) / 50%);
+ *   --alert-border: color-mix(in oklab, var(--foreground) 10%, transparent);
+ *   --alert-message-text: var(--foreground);
+ *   --alert-description-text: color-mix(in oklab, var(--foreground) 50%, transparent);
  * }
  * ```
  */
@@ -44,25 +44,22 @@ export function Alert({
   return (
     <div
       className={clsx(
-        'flex min-w-[284px] max-w-[356px] items-center justify-between gap-2 rounded-xl border border-[var(--alert-border,hsl(var(--foreground)/10%))] py-3 pe-3 ps-4 shadow-sm',
+        'flex max-w-[356px] min-w-[284px] items-center justify-between gap-2 rounded-xl border border-(--alert-border,color-mix(in_oklab,var(--foreground)_10%,transparent)) py-3 ps-4 pe-3 shadow-xs',
         {
-          success:
-            'bg-[var(--alert-success-background,color-mix(in_oklab,_hsl(var(--success)),_white_75%))]',
-          warning:
-            'bg-[var(--alert-warning-background,color-mix(in_oklab,_hsl(var(--warning)),_white_75%))]',
-          error:
-            'bg-[var(--alert-error-background,color-mix(in_oklab,_hsl(var(--error)),_white_75%))]',
-          info: 'bg-[var(--alert-info-background,hsl(var(--background)))]',
+          success: 'bg-(--alert-success-background,var(--success-highlight))',
+          warning: 'bg-(--alert-warning-background,var(--warning-highlight))',
+          error: 'bg-(--alert-error-background,var(--error-highlight))',
+          info: 'bg-(--alert-info-background,var(--background))',
         }[variant],
       )}
       role="alert"
     >
-      <div className="font-[family-name:var(--alert-font-family,var(--font-family-body))]">
-        <h5 className="text-sm font-normal text-[var(--alert-message-text,hsl(var(--foreground)))]">
+      <div className="font-(family-name:--alert-font-family,var(--font-family-body))">
+        <h5 className="text-sm font-normal text-(--alert-message-text,var(--foreground))">
           {message}
         </h5>
         {Boolean(description) && (
-          <p className="text-xs font-medium text-[var(--alert-description-text,hsl(var(--foreground)/50%))]">
+          <p className="text-xs font-medium text-(--alert-description-text,color-mix(in_oklab,var(--foreground)_50%,transparent))">
             {description}
           </p>
         )}

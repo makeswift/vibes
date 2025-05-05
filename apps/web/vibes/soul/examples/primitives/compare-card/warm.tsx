@@ -2,7 +2,7 @@ import { CompareCard } from '@/vibes/soul/primitives/compare-card';
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-background p-8">
+    <div className="bg-background flex min-h-48 items-center justify-center p-8">
       <CompareCard
         imageSizes="(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw"
         product={{
@@ -10,7 +10,7 @@ export default function Preview() {
           href: '#',
           title: 'Mini Bar Bag',
           image: {
-            src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+            src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
             alt: 'Mini Bar Bag',
           },
           subtitle: 'Blue/Green',

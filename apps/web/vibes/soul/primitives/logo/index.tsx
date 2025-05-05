@@ -20,9 +20,9 @@ export interface LogoProps {
  *
  * ```css
  * :root {
- *   --logo-focus: hsl(var(--primary));
+ *   --logo-focus: var(--primary);
  *   --logo-font-family: var(--font-family-heading);
- *   --logo-text: hsl(var(--foreground));
+ *   --logo-text: var(--foreground);
  * }
  * ```
  */
@@ -33,7 +33,7 @@ export function Logo({ className, logo: streamableLogo, href, width, height, lab
         <Link
           aria-label={label}
           className={clsx(
-            'relative outline-0 ring-[var(--logo-focus,hsl(var(--primary)))] ring-offset-4 focus-visible:ring-2',
+            'relative ring-(--logo-focus,var(--primary)) ring-offset-4 outline-0 focus-visible:ring-2',
             className,
           )}
           href={href}
@@ -49,7 +49,7 @@ export function Logo({ className, logo: streamableLogo, href, width, height, lab
             />
           ) : (
             typeof logo === 'string' && (
-              <span className="font-[family-name:var(--logo-font-family,var(--font-family-heading))] text-lg font-semibold leading-none text-[var(--logo-text,hsl(var(--foreground)))] @xl:text-2xl">
+              <span className="font-(family-name:--logo-font-family,var(--font-family-heading)) text-lg leading-none font-semibold text-(--logo-text,var(--foreground)) @xl:text-2xl">
                 {logo}
               </span>
             )

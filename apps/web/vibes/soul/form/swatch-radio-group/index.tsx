@@ -29,21 +29,21 @@ type SwatchOption =
  *
  * ```css
  *  :root {
- *    --swatch-radio-group-focus: hsl(var(--primary));
- *    --swatch-radio-group-light-icon: hsl(var(--foreground));
+ *    --swatch-radio-group-focus: var(--primary);
+ *    --swatch-radio-group-light-icon: var(--foreground);
  *    --swatch-radio-group-light-unchecked-border: transparent;
- *    --swatch-radio-group-light-unchecked-border-hover: hsl(var(--contrast-200));
+ *    --swatch-radio-group-light-unchecked-border-hover: var(--contrast-200);
  *    --swatch-radio-group-light-disabled-border: transparent;
- *    --swatch-radio-group-light-border-error: hsl(var(--error));
- *    --swatch-radio-group-light-checked-border: hsl(var(--foreground));
- *    --swatch-radio-group-light-option-border: hsl(var(--foreground) / 10%);
- *    --swatch-radio-group-dark-icon: hsl(var(--background));
+ *    --swatch-radio-group-light-border-error: var(--error);
+ *    --swatch-radio-group-light-checked-border: var(--foreground);
+ *    --swatch-radio-group-light-option-border: color-mix(in oklab, var(--foreground) 10%, transparent);
+ *    --swatch-radio-group-dark-icon: var(--background);
  *    --swatch-radio-group-dark-unchecked-border: transparent;
- *    --swatch-radio-group-dark-unchecked-border-hover: hsl(var(--contrast-400));
+ *    --swatch-radio-group-dark-unchecked-border-hover: var(--contrast-400);
  *    --swatch-radio-group-dark-disabled-border: transparent;
- *    --swatch-radio-group-dark-border-error: hsl(var(--error));
- *    --swatch-radio-group-dark-checked-border: hsl(var(--background));
- *    --swatch-radio-group-dark-option-border: hsl(var(--background) / 10%);
+ *    --swatch-radio-group-dark-border-error: var(--error);
+ *    --swatch-radio-group-dark-checked-border: var(--background);
+ *    --swatch-radio-group-dark-option-border: color-mix(in oklab, var(--background) 10%, transparent);
  *  }
  * ```
  */
@@ -80,21 +80,21 @@ export const SwatchRadioGroup = React.forwardRef<
             <RadioGroupPrimitive.Item
               aria-label={option.label}
               className={clsx(
-                'group relative box-content h-8 w-8 rounded-full border p-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--swatch-radio-group-focus,hsl(var(--primary)))] data-[disabled]:pointer-events-none [&:disabled>.disabled-icon]:grid',
+                'group relative box-content h-8 w-8 rounded-full border p-0.5 transition-colors focus-visible:ring-2 focus-visible:ring-(--swatch-radio-group-focus,var(--primary)) focus-visible:outline-hidden data-[disabled]:pointer-events-none [&:disabled>.disabled-icon]:grid',
                 {
                   light:
-                    'hover:border-[var(--swatch-radio-group-light-unchecked-border-hover,hsl(var(--contrast-200)))] data-[state=checked]:border-[var(--swatch-radio-group-light-checked-border,hsl(var(--foreground)))]',
-                  dark: 'hover:border-[var(--swatch-radio-group-dark-unchecked-border-hover,hsl(var(--contrast-400)))] data-[state=checked]:border-[var(--swatch-radio-group-dark-checked-border,hsl(var(--background)))]',
+                    'hover:border-(--swatch-radio-group-light-unchecked-border-hover,var(--contrast-200)) data-[state=checked]:border-(--swatch-radio-group-light-checked-border,var(--foreground))',
+                  dark: 'hover:border-(--swatch-radio-group-dark-unchecked-border-hover,var(--contrast-400)) data-[state=checked]:border-(--swatch-radio-group-dark-checked-border,var(--background))',
                 }[colorScheme],
                 {
                   light:
                     errors && errors.length > 0
-                      ? 'border-[var(--swatch-radio-group-light-border-error,hsl(var(--error)))] disabled:border-[var(--swatch-radio-group-light-disabled-border,transparent)]'
-                      : 'border-[var(--swatch-radio-group-light-unchecked-border,transparent)]',
+                      ? 'border-(--swatch-radio-group-light-border-error,var(--error)) disabled:border-(--swatch-radio-group-light-disabled-border,transparent)'
+                      : 'border-(--swatch-radio-group-light-unchecked-border,transparent)',
                   dark:
                     errors && errors.length > 0
-                      ? 'border-[var(--swatch-radio-group-dark-border-error,hsl(var(--error)))] disabled:border-[var(--swatch-radio-group-dark-disabled-border,transparent)]'
-                      : 'border-[var(--swatch-radio-group-dark-unchecked-border,transparent)]',
+                      ? 'border-(--swatch-radio-group-dark-border-error,var(--error)) disabled:border-(--swatch-radio-group-dark-disabled-border,transparent)'
+                      : 'border-(--swatch-radio-group-dark-unchecked-border,transparent)',
                 }[colorScheme],
               )}
               disabled={option.disabled}
@@ -110,8 +110,8 @@ export const SwatchRadioGroup = React.forwardRef<
                     'block size-full rounded-full border group-disabled:opacity-20',
                     {
                       light:
-                        'border-[var(--swatch-radio-group-light-option-border,hsl(var(--foreground)/10%))]',
-                      dark: 'border-[var(--swatch-radio-group-dark-option-border,hsl(var(--background)/10%))]',
+                        'border-(--swatch-radio-group-light-option-border,color-mix(in_oklab,var(--foreground)_10%,transparent))',
+                      dark: 'border-(--swatch-radio-group-dark-option-border,color-mix(in_oklab,var(--background)_10%,transparent))',
                     }[colorScheme],
                   )}
                   style={{ backgroundColor: option.color }}
@@ -122,8 +122,8 @@ export const SwatchRadioGroup = React.forwardRef<
                     'relative block size-full overflow-hidden rounded-full border',
                     {
                       light:
-                        'border-[var(--swatch-radio-group-light-option-border,hsl(var(--foreground)/10%))]',
-                      dark: 'border-[var(--swatch-radio-group-dark-option-border,hsl(var(--background)/10%))]',
+                        'border-(--swatch-radio-group-light-option-border,color-mix(in_oklab,var(--foreground)_10%,transparent))',
+                      dark: 'border-(--swatch-radio-group-dark-option-border,color-mix(in_oklab,var(--background)_10%,transparent))',
                     }[colorScheme],
                   )}
                 >
@@ -134,8 +134,8 @@ export const SwatchRadioGroup = React.forwardRef<
                 className={clsx(
                   'disabled-icon absolute inset-0 hidden place-content-center',
                   {
-                    light: 'text-[var(--swatch-radio-group-light-icon,hsl(var(--foreground)))]',
-                    dark: 'text-[var(--swatch-radio-group-dark-icon,hsl(var(--background)))]',
+                    light: 'text-(--swatch-radio-group-light-icon,var(--foreground))',
+                    dark: 'text-(--swatch-radio-group-dark-icon,var(--background))',
                   }[colorScheme],
                 )}
               >

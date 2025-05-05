@@ -87,7 +87,7 @@ export function Installation({ vibe, componentName }: { vibe: Vibe; componentNam
                 <div className="mt-5 space-y-6">
                   {component.files.map((file, index) => (
                     <div key={index}>
-                      <p className="-mb-4 font-mono text-sm font-bold text-foreground">{file}</p>
+                      <p className="text-foreground -mb-4 font-mono text-sm font-bold">{file}</p>
                       <Reveal>
                         <CodeFromFile
                           basePath={path.join(process.cwd(), 'vibes', vibe.slug)}

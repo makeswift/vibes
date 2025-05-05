@@ -4,18 +4,18 @@ import { ProductCard } from '@/vibes/soul/primitives/product-card';
 export default function Preview() {
   return (
     <CompareDrawerProvider items={[]}>
-      <div className="bg-background p-8 @container">
+      <div className="bg-background @container p-8">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <ProductCard
             product={{
               id: '1',
-              title: 'Jada Square Toe Ballet Flat',
+              title: 'JADA SQUARE TOE BALLET FLAT',
               subtitle: '',
               badge: 'Bestseller',
               price: '$350',
               image: {
-                src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-                alt: 'Jada Square Toe Ballet Flat',
+                src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTUwMzNmMy0zYzRlLTQzOTUtYTc3MC1jYWM0OWE1YWMyY2E=/jada-square-toe.webp',
+                alt: 'JADA SQUARE TOE BALLET FLAT',
               },
               href: '#',
               rating: 4.5,
@@ -24,7 +24,7 @@ export default function Preview() {
           <ProductCard
             product={{
               id: '1',
-              title: 'Jada Square Toe Ballet Flat',
+              title: 'JADA SQUARE TOE BALLET FLAT',
               subtitle: '',
               badge: 'Bestseller',
               price: '$350',
@@ -34,19 +34,19 @@ export default function Preview() {
           />
         </div>
       </div>
-      <div className="bg-foreground p-8 @container">
+      <div className="bg-foreground @container p-8">
         <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
           <ProductCard
             colorScheme="dark"
             product={{
               id: '1',
-              title: 'Jada Square Toe Ballet Flat',
+              title: 'JADA SQUARE TOE BALLET FLAT',
               subtitle: '',
               badge: 'Bestseller',
               price: '$350',
               image: {
-                src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
-                alt: 'Jada Square Toe Ballet Flat',
+                src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTUwMzNmMy0zYzRlLTQzOTUtYTc3MC1jYWM0OWE1YWMyY2E=/jada-square-toe.webp',
+                alt: 'JADA SQUARE TOE BALLET FLAT',
               },
               href: '#',
               rating: 4.5,
@@ -56,7 +56,7 @@ export default function Preview() {
             colorScheme="dark"
             product={{
               id: '1',
-              title: 'Jada Square Toe Ballet Flat',
+              title: 'JADA SQUARE TOE BALLET FLAT',
               subtitle: '',
               badge: 'Bestseller',
               price: '$350',

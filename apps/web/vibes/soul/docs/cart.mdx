@@ -114,22 +114,22 @@ Refer to the example above for a complete reference on how to use the Cart compo
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --cart-focus: hsl(var(--primary));
-  --cart-font-family: var(--font-family-body);
-  --cart-title-font-family: var(--font-family-heading);
-  --cart-text: hsl(var(--foreground));
-  --cart-subtitle-text: hsl(var(--contrast-500));
-  --cart-subtext-text: hsl(var(--contrast-300));
-  --cart-icon: hsl(var(--contrast-300));
-  --cart-icon-hover: hsl(var(--foreground));
-  --cart-border: hsl(var(--contrast-100));
-  --cart-image-background: hsl(var(--contrast-100));
-  --cart-button-background: hsl(var(--contrast-100));
-  --cart-counter-icon: hsl(var(--contrast-300));
-  --cart-counter-icon-hover: hsl(var(--foreground));
-  --cart-counter-background: hsl(var(--background));
-  --cart-counter-background-hover: hsl(var(--contrast-100) / 50%);
+    --cart-focus: var(--primary);
+    --cart-font-family: var(--font-family-body);
+    --cart-title-font-family: var(--font-family-heading);
+    --cart-text: var(--foreground);
+    --cart-subtitle-text: var(--contrast-500);
+    --cart-subtext-text: var(--contrast-300);
+    --cart-icon: var(--contrast-300);
+    --cart-icon-hover: var(--foreground);
+    --cart-border: var(--contrast-100);
+    --cart-image-background: var(--contrast-100);
+    --cart-button-background: var(--contrast-100);
+    --cart-counter-icon: var(--contrast-300);
+    --cart-counter-icon-hover: var(--foreground);
+    --cart-counter-background: var(--background);
+    --cart-counter-background-hover: color-mix(in oklab, var(--contrast-100) 50%, transparent);
 }
-```
+`}</CodeBlock>

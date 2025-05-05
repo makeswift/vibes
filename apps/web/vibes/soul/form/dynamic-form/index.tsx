@@ -185,10 +185,12 @@ function DynamicFormField({
         <NumberInput
           {...getInputProps(formField, { type: 'number' })}
           decrementLabel={field.decrementLabel}
+          defaultValue={field.defaultValue}
           errors={formField.errors}
           incrementLabel={field.incrementLabel}
           key={field.name}
           label={field.label}
+          placeholder={field.placeholder}
         />
       );
 
@@ -199,6 +201,7 @@ function DynamicFormField({
           errors={formField.errors}
           key={field.name}
           label={field.label}
+          placeholder={field.placeholder}
         />
       );
 
@@ -209,6 +212,7 @@ function DynamicFormField({
           errors={formField.errors}
           key={field.name}
           label={field.label}
+          placeholder={field.placeholder}
         />
       );
 
@@ -220,6 +224,7 @@ function DynamicFormField({
           errors={formField.errors}
           key={field.name}
           label={field.label}
+          placeholder={field.placeholder}
         />
       );
 
@@ -230,12 +235,14 @@ function DynamicFormField({
           errors={formField.errors}
           key={field.name}
           label={field.label}
+          placeholder={field.placeholder}
         />
       );
 
     case 'checkbox':
       return (
         <Checkbox
+          defaultValue={field.defaultValue}
           errors={formField.errors}
           key={field.name}
           label={field.label}
@@ -347,6 +354,7 @@ function DynamicFormField({
     case 'date':
       return (
         <DatePicker
+          defaultValue={field.defaultValue}
           disabledDays={
             field.minDate != null && field.maxDate != null
               ? {

@@ -23,10 +23,10 @@ export interface BreadcrumbsProps {
  * ```css
  * :root {
  *   --breadcrumbs-font-family: var(--font-family-body);
- *   --breadcrumbs-primary-text: hsl(var(--foreground));
- *   --breadcrumbs-secondary-text: hsl(var(--contrast-500));
- *   --breadcrumbs-icon: hsl(var(--contrast-500));
- *   --breadcrumbs-hover: hsl(var(--primary));
+ *   --breadcrumbs-primary-text: var(--foreground);
+ *   --breadcrumbs-secondary-text: var(--contrast-500);
+ *   --breadcrumbs-icon: var(--contrast-500);
+ *   --breadcrumbs-hover: var(--primary);
  * }
  * ```
  */
@@ -45,14 +45,14 @@ export function Breadcrumbs({ breadcrumbs: streamableBreadcrumbs, className }: B
                 if (index < breadcrumbs.length - 1) {
                   return (
                     <li className="inline-flex items-center gap-x-1.5" key={href}>
-                      <Link className="group/underline focus:outline-none" href={href}>
-                        <AnimatedUnderline className="font-[family-name:var(--breadcrumbs-font-family,var(--font-family-body))] text-[var(--breadcrumbs-primary-text,hsl(var(--foreground)))] [background:linear-gradient(0deg,var(--breadcrumbs-hover,hsl(var(--primary))),var(--breadcrumbs-hover,hsl(var(--primary))))_no-repeat_left_bottom_/_0_2px]">
+                      <Link className="group/underline focus:outline-hidden" href={href}>
+                        <AnimatedUnderline className="font-[family-name:var(--breadcrumbs-font-family,var(--font-family-body))] text-(--breadcrumbs-primary-text,var(--foreground)) [background:linear-gradient(0deg,var(--breadcrumbs-hover,var(--primary)),var(--breadcrumbs-hover,var(--primary)))_no-repeat_left_bottom_/_0_2px]">
                           {label}
                         </AnimatedUnderline>
                       </Link>
                       <ChevronRight
                         aria-hidden="true"
-                        className="text-[var(--breadcrumbs-icon,hsl(var(--contrast-500)))]"
+                        className="text-(--breadcrumbs-icon,var(--contrast-500))"
                         size={20}
                         strokeWidth={1}
                       />
@@ -62,7 +62,7 @@ export function Breadcrumbs({ breadcrumbs: streamableBreadcrumbs, className }: B
 
                 return (
                   <li
-                    className="inline-flex items-center font-[family-name:var(--breadcrumbs-font-family,var(--font-family-body))] text-[var(--breadcrumbs-secondary-text,hsl(var(--contrast-500)))]"
+                    className="inline-flex items-center font-[family-name:var(--breadcrumbs-font-family,var(--font-family-body))] text-(--breadcrumbs-secondary-text,var(--contrast-500))"
                     key={href}
                   >
                     <span aria-current="page" aria-disabled="true" role="link">
@@ -86,11 +86,11 @@ export function BreadcrumbsSkeleton({ className }: Pick<BreadcrumbsProps, 'class
       pending
     >
       <div className="flex flex-wrap items-center gap-x-1.5 text-sm @xl:text-base">
-        <Skeleton.Text characterCount={4} className="rounded text-lg" />
+        <Skeleton.Text characterCount={4} className="rounded-sm text-lg" />
         <Skeleton.Icon icon={<ChevronRight aria-hidden className="h-5 w-5" strokeWidth={1} />} />
-        <Skeleton.Text characterCount={6} className="rounded text-lg" />
+        <Skeleton.Text characterCount={6} className="rounded-sm text-lg" />
         <Skeleton.Icon icon={<ChevronRight aria-hidden className="h-5 w-5" strokeWidth={1} />} />
-        <Skeleton.Text characterCount={6} className="rounded text-lg" />
+        <Skeleton.Text characterCount={6} className="rounded-sm text-lg" />
       </div>
     </Skeleton.Root>
   );

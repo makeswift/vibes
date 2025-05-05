@@ -51,11 +51,11 @@ export interface ProductDetailProps<F extends Field> {
  *
  * ```css
  * :root {
- *   --product-detail-border: hsl(var(--contrast-100));
+ *   --product-detail-border: var(--contrast-100);
  *   --product-detail-subtitle-font-family: var(--font-family-mono);
  *   --product-detail-title-font-family: var(--font-family-heading);
- *   --product-detail-primary-text: hsl(var(--foreground));
- *   --product-detail-secondary-text:  hsl(var(--contrast-500));
+ *   --product-detail-primary-text: var(--foreground);
+ *   --product-detail-secondary-text: var(--contrast-500);
  * }
  * ```
  */
@@ -91,13 +91,13 @@ export function ProductDetail<F extends Field>({
                   </Stream>
                 </div>
                 {/* Product Details */}
-                <div className="text-[var(--product-detail-primary-text,hsl(var(--foreground)))]">
+                <div className="text-(--product-detail-primary-text,var(--foreground))">
                   {Boolean(product.subtitle) && (
-                    <p className="font-[family-name:var(--product-detail-subtitle-font-family,var(--font-family-mono))] text-sm uppercase">
+                    <p className="font-(family-name:--product-detail-subtitle-font-family,var(--font-family-mono)) text-sm uppercase">
                       {product.subtitle}
                     </p>
                   )}
-                  <h1 className="mb-3 mt-2 font-[family-name:var(--product-detail-title-font-family,var(--font-family-heading))] text-2xl font-medium leading-none @xl:mb-4 @xl:text-3xl @4xl:text-4xl">
+                  <h1 className="mt-2 mb-3 font-(family-name:--product-detail-title-font-family,var(--font-family-heading)) text-2xl leading-none font-medium @xl:mb-4 @xl:text-3xl @4xl:text-4xl">
                     {product.title}
                   </h1>
                   <div className="group/product-rating">
@@ -123,7 +123,7 @@ export function ProductDetail<F extends Field>({
                     <Stream fallback={<ProductSummarySkeleton />} value={product.summary}>
                       {(summary) =>
                         Boolean(summary) && (
-                          <p className="text-[var(--product-detail-secondary-text,hsl(var(--contrast-500)))]">
+                          <p className="text-(--product-detail-secondary-text,var(--contrast-500))">
                             {summary}
                           </p>
                         )
@@ -158,7 +158,7 @@ export function ProductDetail<F extends Field>({
                     <Stream fallback={<ProductDescriptionSkeleton />} value={product.description}>
                       {(description) =>
                         Boolean(description) && (
-                          <div className="prose prose-sm max-w-none border-t border-[var(--product-detail-border,hsl(var(--contrast-100)))] py-8 [&>div>*:first-child]:mt-0 [&>div>*:last-child]:mb-0">
+                          <div className="prose prose-sm max-w-none border-t border-(--product-detail-border,var(--contrast-100)) py-8 [&>div>*:first-child]:mt-0 [&>div>*:last-child]:mb-0">
                             {description}
                           </div>
                         )
@@ -171,7 +171,7 @@ export function ProductDetail<F extends Field>({
                       {(accordions) =>
                         accordions && (
                           <Accordion
-                            className="border-t border-[var(--product-detail-border,hsl(var(--contrast-100)))] pt-4"
+                            className="border-t border-(--product-detail-border,var(--contrast-100)) pt-4"
                             type="multiple"
                           >
                             {accordions.map((accordion, index) => (
@@ -295,24 +295,24 @@ function ProductAccordionsSkeleton() {
       pending
     >
       <div className="flex items-center justify-between">
-        <Skeleton.Box className="h-2 w-20 rounded-sm" />
-        <Skeleton.Box className="h-3 w-3 rounded-sm" />
+        <Skeleton.Box className="h-2 w-20 rounded-xs" />
+        <Skeleton.Box className="h-3 w-3 rounded-xs" />
       </div>
       <div className="mb-1 flex flex-col gap-4">
-        <Skeleton.Box className="h-3 w-full rounded-sm" />
-        <Skeleton.Box className="h-3 w-full rounded-sm" />
-        <Skeleton.Box className="h-3 w-3/5 rounded-sm" />
+        <Skeleton.Box className="h-3 w-full rounded-xs" />
+        <Skeleton.Box className="h-3 w-full rounded-xs" />
+        <Skeleton.Box className="h-3 w-3/5 rounded-xs" />
       </div>
       <div className="flex items-center justify-between">
-        <Skeleton.Box className="h-2 w-24 rounded-sm" />
+        <Skeleton.Box className="h-2 w-24 rounded-xs" />
         <Skeleton.Box className="h-3 w-3 rounded-full" />
       </div>
       <div className="flex items-center justify-between">
-        <Skeleton.Box className="h-2 w-20 rounded-sm" />
+        <Skeleton.Box className="h-2 w-20 rounded-xs" />
         <Skeleton.Box className="h-3 w-3 rounded-full" />
       </div>
       <div className="flex items-center justify-between">
-        <Skeleton.Box className="h-2 w-32 rounded-sm" />
+        <Skeleton.Box className="h-2 w-32 rounded-xs" />
         <Skeleton.Box className="h-3 w-3 rounded-full" />
       </div>
     </Skeleton.Root>

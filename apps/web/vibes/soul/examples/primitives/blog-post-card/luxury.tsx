@@ -8,7 +8,7 @@ const blogPost = {
   href: '#',
   id: '1',
   image: {
-    src: 'https://rstr.in/monogram/vibes/9vu9tSw1WdA',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkZTUwMzNmMy0zYzRlLTQzOTUtYTc3MC1jYWM0OWE1YWMyY2E=/jada-square-toe.webp',
     alt: 'Vestibulum eleifend placerat ligula',
   },
   title: 'Vestibulum eleifend placerat ligula and even more text for a long title',
@@ -16,7 +16,7 @@ const blogPost = {
 
 export default function Preview() {
   return (
-    <div className="flex min-h-48 items-center justify-center bg-background p-8">
+    <div className="bg-background flex min-h-48 items-center justify-center p-8">
       <BlogPostCard
         author={blogPost.author}
         content={blogPost.content}

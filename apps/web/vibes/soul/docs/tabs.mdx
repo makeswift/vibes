@@ -11,16 +11,16 @@ previewSize: sm
 <CodeBlock lang="ts">{`
 import { Tabs } from '@/vibes/soul/primitives/tabs';
 
-export default function Preview() {
-  return (
-      <Tabs
-        defaultValue="tracking"
-        tabs={[
-          { value: 'tracking', label: 'Tracking', content: <p>Tracking</p> },
-          { value: 'details', label: 'Details', content: <p>Details</p> },
-        ]}
-      />
-  );
+function Usage() {
+    return (
+        <Tabs
+          defaultValue="tracking"
+          tabs={[
+            { value: 'tracking', label: 'Tracking', content: <p>Tracking</p> },
+            { value: 'details', label: 'Details', content: <p>Details</p> },
+          ]}
+        />
+    );
 }
 `}
 </CodeBlock>
@@ -49,14 +49,15 @@ export default function Preview() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --tabs-focus: hsl(var(--primary));
-  --tabs-font-family: var(--font-family-body);
-  --tabs-text: hsl(var(--contrast-500));
-  --tabs-text-hover: hsl(var(--foreground));
-  --tabs-text-active: hsl(var(--foreground));
-  --tabs-underline-hover: hsl(var(--primary));
-  --tabs-border: hsl(var(--contrast-100));
+    --tabs-focus: var(--primary);
+    --tabs-font-family: var(--font-family-body);
+    --tabs-text: var(--contrast-500);
+    --tabs-text-hover: var(--foreground);
+    --tabs-text-active: var(--foreground);
+    --tabs-underline-active: var(--primary);
+    --tabs-underline-hover: var(--contrast-200);
+    --tabs-border: var(--contrast-100);
 }
-```
+`}</CodeBlock>

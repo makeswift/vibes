@@ -14,10 +14,10 @@ import {
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
 
-import { Badge } from '@/vibes/soul/primitives/badge';
-import { Button } from '@/vibes/soul/primitives/button';
 import { DynamicForm } from '@/vibes/soul/form/dynamic-form';
 import { Field, FieldGroup } from '@/vibes/soul/form/dynamic-form/schema';
+import { Badge } from '@/vibes/soul/primitives/badge';
+import { Button } from '@/vibes/soul/primitives/button';
 import { Spinner } from '@/vibes/soul/primitives/spinner';
 import { toast } from '@/vibes/soul/primitives/toaster';
 
@@ -60,12 +60,12 @@ export interface AddressListSectionProps<A extends Address, F extends Field> {
  *
  * ```css
  * :root {
- *   --address-list-section-border: hsl(var(--contrast-200));
+ *   --address-list-section-border: var(--contrast-200);
  *   --address-list-section-title-font-family: var(--font-family-heading);
  *   --address-list-section-content-font-family: var(--font-family-body);
- *   --address-list-section-title: hsl(var(--foreground));
- *   --address-list-section-name: hsl(var(--foreground));
- *   --address-list-section-info: hsl(var(--contrast-500));
+ *   --address-list-section-title: var(--foreground);
+ *   --address-list-section-name: var(--foreground);
+ *   --address-list-section-info: var(--contrast-500);
  * }
  * ```
  */
@@ -160,7 +160,7 @@ export function AddressListSection<A extends Address, F extends Field>({
       </div>
       <div>
         {showNewAddressForm && (
-          <div className="border-b border-[var(--address-list-section-border,hsl(var(--contrast-200)))] pb-6 pt-5">
+          <div className="border-b border-(--address-list-section-border,var(--contrast-200)) pt-5 pb-6">
             <div className="w-[480px] space-y-4">
               <DynamicForm
                 action={(_prevState, formData) => {
@@ -216,7 +216,7 @@ export function AddressListSection<A extends Address, F extends Field>({
 
           return (
             <div
-              className="border-b border-[var(--address-list-section-border,hsl(var(--contrast-200)))] pb-6 pt-5"
+              className="border-b border-(--address-list-section-border,var(--contrast-200)) pt-5 pb-6"
               key={address.id}
             >
               {activeAddressIds.includes(address.id) ? (
@@ -314,7 +314,7 @@ function Title({ children }: { children: ReactNode }) {
   const { pending } = useFormStatus();
 
   return (
-    <h1 className="font-[family-name:var(--address-list-section-title-font-family,var(--font-family-heading))] text-4xl text-[var(--address-list-section-title,hsl(var(--foreground)))]">
+    <h1 className="font-[family-name:var(--address-list-section-title-font-family,var(--font-family-heading))] text-4xl text-(--address-list-section-title,var(--foreground))">
       {children}
       {pending && (
         <span className="ml-2">
@@ -328,8 +328,8 @@ function Title({ children }: { children: ReactNode }) {
 function AddressPreview({ address, isDefault = false }: { address: Address; isDefault?: boolean }) {
   return (
     <div className="flex gap-10 font-[family-name:var(--address-list-section-content-font-family,var(--font-family-body))]">
-      <div className="text-sm text-[var(--address-list-section-info,hsl(var(--contrast-500)))]">
-        <p className="font-bold text-[var(--address-list-section-name,hsl(var(--foreground)))]">
+      <div className="text-sm text-(--address-list-section-info,var(--contrast-500))">
+        <p className="font-bold text-(--address-list-section-name,var(--foreground))">
           {address.firstName} {address.lastName}
         </p>
         <p>{address.company}</p>

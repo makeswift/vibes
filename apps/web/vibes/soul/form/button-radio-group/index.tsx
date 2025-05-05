@@ -17,23 +17,23 @@ interface Option {
  *
  * ```css
  *  :root {
- *   --button-radio-group-focus: hsl(var(--primary));
- *   --button-radio-group-light-unchecked-border: hsl(var(--contrast-100));
- *   --button-radio-group-light-unchecked-background: hsl(var(--background));
- *   --button-radio-group-light-unchecked-text: hsl(var(--foreground));
- *   --button-radio-group-light-unchecked-border-hover: hsl(var(--contrast-200));
- *   --button-radio-group-light-unchecked-background-hover: hsl(var(--contrast-100));
- *   --button-radio-group-light-checked-background: hsl(var(--foreground));
- *   --button-radio-group-light-checked-text: hsl(var(--background));
- *   --button-radio-group-light-border-error: hsl(var(--error));
- *   --button-radio-group-dark-unchecked-border: hsl(var(--contrast-500));
- *   --button-radio-group-dark-unchecked-background: hsl(var(--background));
- *   --button-radio-group-dark-unchecked-text: hsl(var(--background));
- *   --button-radio-group-dark-unchecked-border-hover: hsl(var(--contrast-400));
- *   --button-radio-group-dark-unchecked-background-hover: hsl(var(--contrast-500));
- *   --button-radio-group-dark-checked-background: hsl(var(--background));
- *   --button-radio-group-dark-checked-text: hsl(var(--foreground));
- *   --button-radio-group-dark-border-error: hsl(var(--error));
+ *   --button-radio-group-focus: var(--primary);
+ *   --button-radio-group-light-unchecked-border: var(--contrast-100);
+ *   --button-radio-group-light-unchecked-background: var(--background);
+ *   --button-radio-group-light-unchecked-text: var(--foreground);
+ *   --button-radio-group-light-unchecked-border-hover: var(--contrast-200);
+ *   --button-radio-group-light-unchecked-background-hover: var(--contrast-100);
+ *   --button-radio-group-light-checked-background: var(--foreground);
+ *   --button-radio-group-light-checked-text: var(--background);
+ *   --button-radio-group-light-border-error: var(--error);
+ *   --button-radio-group-dark-unchecked-border: var(--contrast-500);
+ *   --button-radio-group-dark-unchecked-background: var(--background);
+ *   --button-radio-group-dark-unchecked-text: var(--background);
+ *   --button-radio-group-dark-unchecked-border-hover: var(--contrast-400);
+ *   --button-radio-group-dark-unchecked-background-hover: var(--contrast-500);
+ *   --button-radio-group-dark-checked-background: var(--background);
+ *   --button-radio-group-dark-checked-text: var(--foreground);
+ *   --button-radio-group-dark-border-error: var(--error);
  *  }
  * ```
  */
@@ -70,21 +70,21 @@ export const ButtonRadioGroup = React.forwardRef<
             <RadioGroupPrimitive.Item
               aria-label={option.label}
               className={clsx(
-                'h-12 whitespace-nowrap rounded-full border px-4 font-body text-sm font-normal leading-normal transition-colors focus-visible:outline-0 focus-visible:ring-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+                'font-body h-12 rounded-full border px-4 text-sm leading-normal font-normal whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:outline-0 data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
                 {
                   light:
-                    'border-[var(--button-radio-group-light-unchecked-border,hsl(var(--contrast-100)))] focus-visible:ring-[var(--button-radio-group-light-focus,hsl(var(--primary)))] data-[state=checked]:bg-[var(--button-radio-group-light-checked-background,hsl(var(--foreground)))] data-[state=unchecked]:bg-[var(--button-radio-group-light-unchecked-background,hsl(var(--background)))] data-[state=checked]:text-[var(--button-radio-group-light-checked-text,hsl(var(--background)))] data-[state=unchecked]:text-[var(--button-radio-group-light-unchecked-text,hsl(var(--foreground)))] data-[state=unchecked]:hover:border-[var(--button-radio-group-light-unchecked-border-hover,hsl(var(--contrast-200)))] data-[state=unchecked]:hover:bg-[var(--button-radio-group-light-unchecked-background-hover,hsl(var(--contrast-100)))]',
-                  dark: 'border-[var(--button-radio-group-dark-unchecked-border,hsl(var(--contrast-500)))] focus-visible:ring-[var(--button-radio-group-dark-focus,hsl(var(--primary)))] data-[state=checked]:bg-[var(--button-radio-group-dark-checked-background,hsl(var(--background)))] data-[state=unchecked]:bg-[var(--button-radio-group-dark-unchecked-background,hsl(var(--foreground)))] data-[state=checked]:text-[var(--button-radio-group-dark-checked-text,hsl(var(--foreground)))] data-[state=unchecked]:text-[var(--button-radio-group-dark-checked-text,hsl(var(--background)))] data-[state=unchecked]:hover:border-[var(--button-radio-group-dark-unchecked-border-hover,hsl(var(--contrast-400)))] data-[state=unchecked]:hover:bg-[var(--button-radio-group-dark-unchecked-background-hover,hsl(var(--contrast-500)))]',
+                    'border-(--button-radio-group-light-unchecked-border,var(--contrast-100)) focus-visible:ring-(--button-radio-group-light-focus,var(--primary)) data-[state=checked]:bg-(--button-radio-group-light-checked-background,var(--foreground)) data-[state=checked]:text-(--button-radio-group-light-checked-text,var(--background)) data-[state=unchecked]:bg-(--button-radio-group-light-unchecked-background,var(--background)) data-[state=unchecked]:text-(--button-radio-group-light-unchecked-text,var(--foreground)) data-[state=unchecked]:hover:border-(--button-radio-group-light-unchecked-border-hover,var(--contrast-200)) data-[state=unchecked]:hover:bg-(--button-radio-group-light-unchecked-background-hover,var(--contrast-100))',
+                  dark: 'border-(--button-radio-group-dark-unchecked-border,var(--contrast-500)) focus-visible:ring-(--button-radio-group-dark-focus,var(--primary)) data-[state=checked]:bg-(--button-radio-group-dark-checked-background,var(--background)) data-[state=checked]:text-(--button-radio-group-dark-checked-text,var(--foreground)) data-[state=unchecked]:bg-(--button-radio-group-dark-unchecked-background,var(--foreground)) data-[state=unchecked]:text-(--button-radio-group-dark-checked-text,var(--background)) data-[state=unchecked]:hover:border-(--button-radio-group-dark-unchecked-border-hover,var(--contrast-400)) data-[state=unchecked]:hover:bg-(--button-radio-group-dark-unchecked-background-hover,var(--contrast-500))',
                 }[colorScheme],
                 {
                   light:
                     errors && errors.length > 0
-                      ? 'data-[state=unchecked]:border-[var(--button-radio-group-light-border-error,hsl(var(--error)))]'
-                      : 'data-[state=checked]:border-[var(--button-radio-group-light-checked-background,hsl(var(--foreground)))]',
+                      ? 'data-[state=unchecked]:border-(--button-radio-group-light-border-error,var(--error))'
+                      : 'data-[state=checked]:border-(--button-radio-group-light-checked-background,var(--foreground))',
                   dark:
                     errors && errors.length > 0
-                      ? 'data-[state=unchecked]:border-[var(--button-radio-group-dark-border-error,hsl(var(--error)))]'
-                      : 'data-[state=checked]:border-[var(--button-radio-group-dark-checked-background,hsl(var(--foreground)))]',
+                      ? 'data-[state=unchecked]:border-(--button-radio-group-dark-border-error,var(--error))'
+                      : 'data-[state=checked]:border-(--button-radio-group-dark-checked-background,var(--foreground))',
                 }[colorScheme],
               )}
               disabled={option.disabled}

@@ -19,7 +19,7 @@ function Usage() {
             labore et dolore magna aliqua."
             mediaAlign="full"
             title="Pro-Team"
-            video="https://rstr.in/monogram/vibes/6Wm_wIw5IMf"
+            video="https://storage.googleapis.com/s.mkswft.com/RmlsZTo3YWVmYWNlYy1iMjllLTRlMmItOTQ1Ny00MjUyYjlkYWVlOGU=/riding-bike-on-road.mp4"
         />
     );
 }
@@ -53,13 +53,13 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --featured-video-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
-  --featured-video-video-background: hsl(var(--primary) / 10%);
-  --featured-video-title-font-family: var(--font-family-heading);
-  --featured-video-font-family: var(--font-family-body);
-  --featured-video-title: hsl(var(--background));
-  --featured-video-description: hsl(var(--background));
+    --featured-video-background: var(--primary-shadow);
+    --featured-video-video-background: color-mix(in oklab, var(--primary) 10%, transparent);
+    --featured-video-title-font-family: var(--font-family-heading);
+    --featured-video-font-family: var(--font-family-body);
+    --featured-video-title: var(--background);
+    --featured-video-description: var(--background);
 }
-```
+`}</CodeBlock>

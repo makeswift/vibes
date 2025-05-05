@@ -17,7 +17,7 @@ const compareProducts = [
     id: '1',
     title: 'Mini Bar Bag',
     image: {
-      src: 'https://rstr.in/monogram/vibes/mrlTNE1TJfB',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1YzIwNTljMi04NzcwLTRiM2ItYmIzMy02ZTk0ODNkY2M5MDk=/mini-bar-bag.jpeg',
       alt: 'Mini Bar Bag',
     },
     href: '#',
@@ -26,7 +26,7 @@ const compareProducts = [
     id: '2',
     title: 'Mini Bar Bag',
     image: {
-      src: 'https://rstr.in/monogram/vibes/LznMEk1GSB1',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTphOTFmNjU3Ny0zMDMxLTQzNjYtOWUzNC02MjRkYWQ4OTkzOWI=/mini-bar-bag-2.jpeg',
       alt: 'Mini Bar Bag',
     },
     href: '#',
@@ -35,7 +35,7 @@ const compareProducts = [
     id: '3',
     title: 'Stem Caddy',
     image: {
-      src: 'https://rstr.in/monogram/vibes/EpL5yspw4Pc',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo5NTIxMmU4MC0xY2EwLTQxZjktOTBiYS0yOWFhYmU3ZTNkMzA=/stem-caddy.jpeg',
       alt: 'Stem Caddy',
     },
     href: '#',
@@ -44,7 +44,7 @@ const compareProducts = [
     id: '4',
     title: 'Hip Slinger',
     image: {
-      src: 'https://rstr.in/monogram/vibes/z6b0vDjJv6x',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo0MDcxNDBlYy1jYmIzLTRiNjQtOTUxMS1mMTIyMGUyYWY5MjQ=/hip-slinger.jpeg',
       alt: 'Hip Slinger',
     },
     href: '#',

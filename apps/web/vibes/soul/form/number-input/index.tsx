@@ -13,19 +13,19 @@ import { Label } from '@/vibes/soul/form/label';
  *
  * ```css
  *  :root {
- *   --number-input-focus: hsl(var(--primary));
- *   --number-input-light-background: hsl(var(--background));
- *   --number-input-light-text: hsl(var(--foreground));
- *   --number-input-light-icon: hsl(var(--contrast-300));
- *   --number-input-light-icon-hover: hsl(var(--foreground));
- *   --number-input-light-button-background: hsl(var(--background));
- *   --number-input-light-button-background-hover: hsl(var(--contrast-100) / 50%);
- *   --number-input-dark-background: hsl(var(--background));
- *   --number-input-dark-text: hsl(var(--background));
- *   --number-input-dark-icon: hsl(var(--contrast-300));
- *   --number-input-dark-icon-hover: hsl(var(--background));
- *   --number-input-dark-button-background: hsl(var(--foreground));
- *   --number-input-dark-button-background-hover: hsl(var(--contrast-500) / 50%);
+ *   --number-input-focus: var(--primary);
+ *   --number-input-light-background: var(--background);
+ *   --number-input-light-text: var(--foreground);
+ *   --number-input-light-icon: var(--contrast-300);
+ *   --number-input-light-icon-hover: var(--foreground);
+ *   --number-input-light-button-background: var(--background);
+ *   --number-input-light-button-background-hover: var(--contrast-100) / 50%;
+ *   --number-input-dark-background: var(--background);
+ *   --number-input-dark-text: var(--background);
+ *   --number-input-dark-icon: var(--contrast-300);
+ *   --number-input-dark-icon-hover: var(--background);
+ *   --number-input-dark-button-background: var(--foreground);
+ *   --number-input-dark-button-background-hover: var(--contrast-500) / 50%;
  *  }
  * ```
  */
@@ -66,19 +66,19 @@ export const NumberInput = React.forwardRef<
           className={clsx(
             'inline-flex items-center rounded-lg border',
             {
-              light: 'bg-[var(--number-input-light-background,hsl(var(--background)))]',
-              dark: 'bg-[var(--number-input-dark-background,hsl(var(--foreground)))]',
+              light: 'bg-(--number-input-light-background,var(--background))',
+              dark: 'bg-(--number-input-dark-background,var(--foreground))',
             }[colorScheme],
           )}
         >
           <button
             aria-label={decrementLabel}
             className={clsx(
-              'group rounded-l-lg p-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--number-input-focus,hsl(var(--primary)))] disabled:cursor-not-allowed disabled:opacity-30',
+              'group rounded-l-lg p-3.5 focus-visible:ring-2 focus-visible:ring-(--number-input-focus,var(--primary)) focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-30',
               {
                 light:
-                  'bg-[var(--number-input-light-button-background,hsl(var(--background)))] hover:bg-[var(--number-input-light-button-background-hover,hsl(var(--contrast-100)/50%))]',
-                dark: 'bg-[var(--number-input-dark-button-background,hsl(var(--foreground)))] hover:bg-[var(--number-input-dark-button-background-hover,hsl(var(--contrast-500)/50%))]',
+                  'bg-(--number-input-light-button-background,var(--background)) hover:bg-(--number-input-light-button-background-hover,var(--contrast-100)/50%)',
+                dark: 'bg-(--number-input-dark-button-background,var(--foreground)) hover:bg-(--number-input-dark-button-background-hover,var(--contrast-500)/50%)',
               }[colorScheme],
             )}
             disabled={disabled}
@@ -96,8 +96,8 @@ export const NumberInput = React.forwardRef<
                 'transition-colors duration-300',
                 {
                   light:
-                    'text-[var(--number-input-light-icon,hsl(var(--contrast-300)))] group-hover:text-[var(--number-input-light-icon-hover,hsl(var(--foreground)))]',
-                  dark: 'text-[var(--number-input-dark-icon,hsl(var(--contrast-300)))] group-hover:text-[var(--number-input-dark-icon-hover,hsl(var(--background)))]',
+                    'text-(--number-input-light-icon,var(--contrast-300)) group-hover:text-(--number-input-light-icon-hover,var(--foreground))',
+                  dark: 'text-(--number-input-dark-icon,var(--contrast-300)) group-hover:text-(--number-input-dark-icon-hover,var(--background))',
                 }[colorScheme],
               )}
               size={18}
@@ -107,10 +107,10 @@ export const NumberInput = React.forwardRef<
           <input
             {...rest}
             className={clsx(
-              'w-8 flex-1 select-none justify-center bg-transparent text-center [appearance:textfield] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-30 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+              'w-8 flex-1 [appearance:textfield] justify-center bg-transparent text-center select-none focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-30 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
               {
-                light: 'text-[var(--number-input-light-text,hsl(var(--foreground)))]',
-                dark: 'text-[var(--number-input-dark-text,hsl(var(--background)))]',
+                light: 'text-(--number-input-light-text,var(--foreground))',
+                dark: 'text-(--number-input-dark-text,var(--background))',
               }[colorScheme],
             )}
             disabled={disabled}
@@ -121,11 +121,11 @@ export const NumberInput = React.forwardRef<
           <button
             aria-label={incrementLabel}
             className={clsx(
-              'group rounded-r-lg p-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--number-input-focus,hsl(var(--primary)))] disabled:cursor-not-allowed disabled:opacity-30',
+              'group rounded-r-lg p-3.5 focus-visible:ring-2 focus-visible:ring-(--number-input-focus,var(--primary)) focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-30',
               {
                 light:
-                  'bg-[var(--number-input-light-button-background,hsl(var(--background)))] hover:bg-[var(--number-input-light-button-background-hover,hsl(var(--contrast-100)/50%))]',
-                dark: 'bg-[var(--number-input-dark-button-background,hsl(var(--foreground)))] hover:bg-[var(--number-input-dark-button-background-hover,hsl(var(--contrast-500)/50%))]',
+                  'bg-(--number-input-light-button-background,var(--background)) hover:bg-(--number-input-light-button-background-hover,var(--contrast-100)/50%)',
+                dark: 'bg-(--number-input-dark-button-background,var(--foreground)) hover:bg-(--number-input-dark-button-background-hover,var(--contrast-500)/50%)',
               }[colorScheme],
             )}
             disabled={disabled}
@@ -143,8 +143,8 @@ export const NumberInput = React.forwardRef<
                 'transition-colors duration-300',
                 {
                   light:
-                    'text-[var(--number-input-light-icon,hsl(var(--contrast-300)))] group-hover:text-[var(--number-input-light-icon-hover,hsl(var(--foreground)))]',
-                  dark: 'text-[var(--number-input-dark-icon,hsl(var(--contrast-300)))] group-hover:text-[var(--number-input-dark-icon-hover,hsl(var(--background)))]',
+                    'text-(--number-input-light-icon,var(--contrast-300)) group-hover:text-(--number-input-light-icon-hover,var(--foreground))',
+                  dark: 'text-(--number-input-dark-icon,var(--contrast-300)) group-hover:text-(--number-input-dark-icon-hover,var(--background))',
                 }[colorScheme],
               )}
               size={18}

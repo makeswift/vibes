@@ -26,15 +26,15 @@ export interface BlogPostCardProps extends BlogPost {
  *
  * ```css
  * :root {
- *   --blog-post-card-focus: hsl(var(--primary));
- *   --blog-post-card-image-background: hsl(var(--contrast-100));
- *   --blog-post-card-empty-text: hsl(var(--foreground)/15%);
- *   --blog-post-card-title-text: hsl(var(--foreground));
- *   --blog-post-card-content-text: hsl(var(--contrast-400));
- *   --blog-post-card-author-date-text: hsl(var(--foreground));
+ *   --blog-post-card-focus: var(--primary);
+ *   --blog-post-card-image-background: var(--contrast-100);
+ *   --blog-post-card-empty-text: color-mix(in oklab, var(--foreground) 15%, transparent);
+ *   --blog-post-card-title-text: var(--foreground);
+ *   --blog-post-card-content-text: var(--contrast-400);
+ *   --blog-post-card-author-date-text: var(--foreground);
  *   --blog-post-card-font-family: var(--font-family-body);
- *   --blog-post-card-summary-text: hsl(var(--contrast-400));
- *   --blog-post-card-author-date-text: hsl(var(--foreground));
+ *   --blog-post-card-summary-text: var(--contrast-400);
+ *   --blog-post-card-author-date-text: var(--foreground);
  * }
  * ```
  */
@@ -50,11 +50,11 @@ export function BlogPostCard({
   return (
     <article
       className={clsx(
-        'group relative w-full max-w-md font-[family-name:var(--blog-post-card-font-family,var(--font-family-body))] @container',
+        'group @container relative w-full max-w-md font-(family-name:--blog-post-card-font-family,var(--font-family-body))',
         className,
       )}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[var(--blog-post-card-image-background,hsl(var(--contrast-100)))]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-(--blog-post-card-image-background,var(--contrast-100))">
         {image != null ? (
           <Image
             alt={image.alt}
@@ -64,18 +64,18 @@ export function BlogPostCard({
             src={image.src}
           />
         ) : (
-          <div className="p-4 text-5xl font-bold leading-none tracking-tighter text-[var(--blog-post-card-empty-text,hsl(var(--foreground)/15%))]">
+          <div className="p-4 text-5xl leading-none font-bold tracking-tighter text-(--blog-post-card-empty-text,color-mix(in_oklab,var(--foreground)_15%,transparent))">
             {title}
           </div>
         )}
       </div>
-      <h5 className="mt-4 text-lg font-medium leading-snug text-[var(--blog-post-card-title-text,hsl(var(--foreground)))]">
+      <h5 className="mt-4 text-lg leading-snug font-medium text-(--blog-post-card-title-text,var(--foreground))">
         {title}
       </h5>
-      <p className="mt-1.5 line-clamp-3 text-sm font-normal text-[var(--blog-post-card-content-text,hsl(var(--contrast-400)))]">
+      <p className="mt-1.5 line-clamp-3 text-sm font-normal text-(--blog-post-card-content-text,var(--contrast-400))">
         {content}
       </p>
-      <div className="mt-3 text-sm text-[var(--blog-post-card-author-date-text,hsl(var(--foreground)))]">
+      <div className="mt-3 text-sm text-(--blog-post-card-author-date-text,var(--foreground))">
         <time dateTime={date}>
           {new Date(date).toLocaleDateString('en-US', {
             year: 'numeric',
@@ -92,7 +92,7 @@ export function BlogPostCard({
       </div>
       <Link
         className={clsx(
-          'absolute inset-0 rounded-b-lg rounded-t-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blog-post-card-focus,hsl(var(--primary)))] focus-visible:ring-offset-4',
+          'absolute inset-0 rounded-t-2xl rounded-b-lg focus:outline-hidden focus-visible:ring-2 focus-visible:ring-(--blog-post-card-focus,var(--primary)) focus-visible:ring-offset-4',
         )}
         href={href}
       >
@@ -122,13 +122,13 @@ export function BlogPostCardSkeleton({
           }[aspectRatio],
         )}
       />
-      <Skeleton.Text characterCount={25} className="mt-4 rounded text-lg" />
+      <Skeleton.Text characterCount={25} className="mt-4 rounded-sm text-lg" />
       <div className="mt-1.5">
-        <Skeleton.Text characterCount="full" className="rounded text-sm" />
-        <Skeleton.Text characterCount="full" className="rounded text-sm" />
-        <Skeleton.Text characterCount={15} className="rounded text-sm" />
+        <Skeleton.Text characterCount="full" className="rounded-sm text-sm" />
+        <Skeleton.Text characterCount="full" className="rounded-sm text-sm" />
+        <Skeleton.Text characterCount={15} className="rounded-sm text-sm" />
       </div>
-      <Skeleton.Text characterCount={10} className="mt-3 rounded text-sm" />
+      <Skeleton.Text characterCount={10} className="mt-3 rounded-sm text-sm" />
     </div>
   );
 }

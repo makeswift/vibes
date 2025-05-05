@@ -43,15 +43,15 @@ export function CartSkeleton({
 }: CartSkeletonProps) {
   return (
     <StickySidebarLayout
-      className="group/cart text-[var(--cart-text,hsl(var(--foreground)))]"
+      className="group/cart text-(--cart-text,var(--foreground))"
       sidebar={
         <div>
-          <h2 className="mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none @xl:text-5xl">
+          <h2 className="mb-10 font-(family-name:--cart-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium @xl:text-5xl">
             {summaryTitle}
           </h2>
           <div className="group-has-[[data-pending]]/cart:animate-pulse">
             <div className="w-full" data-pending>
-              <div className="divide-y divide-[var(--skeleton,hsl(var(--contrast-300)/15%))]">
+              <div className="divide-y divide-(--cart-border,var(--contrast-100))">
                 {Array.from({ length: summaryPlaceholderCount }).map((_, index) => (
                   <div className="py-4" key={index}>
                     <div className="flex items-center justify-between">
@@ -61,7 +61,7 @@ export function CartSkeleton({
                   </div>
                 ))}
               </div>
-              <div className="flex justify-between border-t border-[var(--skeleton,hsl(var(--contrast-300)/15%))] py-6 text-xl font-bold">
+              <div className="flex justify-between border-t border-(--cart-border,var(--contrast-100)) py-6 text-xl font-bold">
                 <div className="flex items-center justify-between">
                   <Skeleton.Text characterCount={8} className="rounded-md" />
                 </div>
@@ -78,7 +78,7 @@ export function CartSkeleton({
       sidebarSize="1/3"
     >
       <div>
-        <h1 className="mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none @xl:text-5xl">
+        <h1 className="mb-10 font-(family-name:--cart-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium @xl:text-5xl">
           {title}
         </h1>
         {/* Cart Line Items */}
@@ -86,7 +86,7 @@ export function CartSkeleton({
           <ul className="flex flex-col gap-5" data-pending>
             {Array.from({ length: placeholderCount }).map((_, index) => (
               <li
-                className="flex flex-col items-start gap-x-5 gap-y-4 @container @sm:flex-row"
+                className="@container flex flex-col items-start gap-x-5 gap-y-4 @sm:flex-row"
                 key={index}
               >
                 {/* Image */}
@@ -130,11 +130,11 @@ export interface CartEmptyState {
 
 export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
   return (
-    <SectionLayout className="text-center font-[family-name:var(--cart-font-family,var(--font-family-body))]">
-      <h1 className="mb-3 text-center font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-3xl leading-none text-[var(--cart-title,hsl(var(--foreground)))] @xl:text-4xl">
+    <SectionLayout className="text-center font-(family-name:--cart-font-family,var(--font-family-body))">
+      <h1 className="mb-3 text-center font-(family-name:--cart-title-font-family,var(--font-family-heading)) text-3xl leading-none text-(--cart-title,var(--foreground)) @xl:text-4xl">
         {title}
       </h1>
-      <p className="leading-normaltext-[var(--cart-subtitle,hsl(var(--contrast-500)))] mb-6 text-center @3xl:text-lg">
+      <p className="mb-6 text-center leading-normal text-(--cart-subtitle,var(--contrast-500)) @3xl:text-lg">
         {subtitle}
       </p>
       <ButtonLink href={cta.href}>{cta.label}</ButtonLink>

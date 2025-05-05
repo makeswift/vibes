@@ -20,7 +20,7 @@ function Usage() {
 
 const feature: FeatureGridProps = {
     image: {
-      src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowODYwYTY2NC02NjdjLTRhODYtYTUxYy1jOWExNzI5YTdjMDk=/everyday-tote.jpeg',
       alt: 'string',
     },
     cta: {
@@ -104,13 +104,13 @@ Refer to the [Lucide docs](https://lucide.dev/icons/) for a full list of availab
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --feature-grid-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
-  --feature-grid-image-background: hsl(var(--primary) / 10%);
-  --feature-grid-font-family: var(--font-family-body);
-  --feature-grid-icon: var(--background);
-  --feature-grid-title: hsl(var(--background));
-  --feature-grid-description: hsl(var(--contrast-200));
+    --feature-grid-background: var(--primary-shadow);
+    --feature-grid-image-background: color-mix(in oklab, var(--primary) 10%, transparent);
+    --feature-grid-font-family: var(--font-family-body);
+    --feature-grid-icon: var(--background);
+    --feature-grid-title: var(--background);
+    --feature-grid-description: var(--contrast-200);
 }
-```
+`}</CodeBlock>

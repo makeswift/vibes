@@ -73,7 +73,7 @@ export function TableOfContents({ className, offsetTop = 0 }: Props) {
 
   return (
     <div className={clsx(className, 'space-y-2')}>
-      <div className="text-sm font-bold text-foreground">On this page</div>
+      <div className="text-foreground text-sm font-bold">On this page</div>
       <ul className="pb-5">
         {headings.map((heading, index) => (
           <li key={index}>
@@ -114,8 +114,8 @@ export function TableOfContentsLink({
     <Link
       {...rest}
       className={clsx(
-        'flex items-center gap-x-1 stroke-contrast-400 py-1 text-sm outline-none transition-colors hover:stroke-current hover:text-foreground focus-visible:underline focus-visible:underline-offset-[6px]',
-        active ? 'font-medium text-foreground' : 'text-contrast-400 hover:!text-foreground',
+        'stroke-contrast-400 hover:text-foreground flex items-center gap-x-1 py-1 text-sm outline-hidden transition-colors hover:stroke-current focus-visible:underline focus-visible:underline-offset-[6px]',
+        active ? 'text-foreground font-medium' : 'text-contrast-400 hover:!text-foreground',
       )}
       target={target}
     >

@@ -41,30 +41,30 @@ function Usage() {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --button-focus: hsl(var(--primary));
-  --button-font-family: var(--font-family-body);
-  --button-primary-background: hsl(var(--primary));
-  --button-primary-background-hover: color-mix(in oklab, hsl(var(--primary)), white 75%);
-  --button-primary-text: hsl(var(--foreground));
-  --button-primary-border: hsl(var(--primary));
-  --button-secondary-background: hsl(var(--foreground));
-  --button-secondary-background-hover: hsl(var(--background));
-  --button-secondary-text: hsl(var(--background));
-  --button-secondary-border: hsl(var(--foreground));
-  --button-tertiary-background: hsl(var(--background));
-  --button-tertiary-background-hover: hsl(var(--contrast-100));
-  --button-tertiary-text: hsl(var(--foreground));
-  --button-tertiary-border: hsl(var(--contrast-200));
-  --button-ghost-background: transparent;
-  --button-ghost-background-hover: hsl(var(--foreground) / 5%);
-  --button-ghost-text: hsl(var(--foreground));
-  --button-ghost-border: transparent;
-  --button-loader-icon: hsl(var(--foreground));
-  --button-danger-background: color-mix(in oklab, hsl(var(--error)), white 30%);
-  --button-danger-background-hover: color-mix(in oklab, hsl(var(--error)), white 75%);
-  --button-danger-foreground: hsl(var(--foreground));
-  --button-danger-border: color-mix(in oklab, hsl(var(--error)), white 30%);
+    --button-focus: var(--primary);
+    --button-font-family: var(--font-family-body);
+    --button-primary-background: var(--primary);
+    --button-primary-background-hover: var(--primary-highlight);
+    --button-primary-text: var(--foreground);
+    --button-primary-border: var(--primary);
+    --button-secondary-background: var(--foreground);
+    --button-secondary-background-hover: var(--background);
+    --button-secondary-text: var(--background);
+    --button-secondary-border: var(--foreground);
+    --button-tertiary-background: var(--background);
+    --button-tertiary-background-hover: var(--contrast-100);
+    --button-tertiary-text: var(--foreground);
+    --button-tertiary-border: var(--contrast-200);
+    --button-ghost-background: transparent;
+    --button-ghost-background-hover: color-mix(in oklab, var(--foreground) 5%, transparent);
+    --button-ghost-text: var(--foreground);
+    --button-ghost-border: transparent;
+    --button-loader-icon: var(--foreground);
+    --button-danger-background: color-mix(in oklab, var(--error), white 30%);
+    --button-danger-background-hover: var(--error-highlight);
+    --button-danger-text: var(--foreground);
+    --button-danger-border: color-mix(in oklab, var(--error), white 30%);
 }
-```
+`}</CodeBlock>

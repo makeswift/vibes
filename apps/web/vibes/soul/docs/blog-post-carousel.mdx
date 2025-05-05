@@ -32,7 +32,7 @@ const posts = [
       content:
         'Not all plants need bright sunlight to thrive. This guide highlights the best low-light houseplants, perfect for those darker corners of your home or office that need a touch of green.',
       image: {
-        src: 'https://rstr.in/monogram/vibes/T7CeSkvi11I/OrJN5KVj7I1',
+        src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo0NGVmOWFkZC00MDc5LTRmMTAtODIyMC0zM2UwNjNkMGRjZDM=/low-light.jpeg',
         alt: 'Low-Light Houseplants',
       },
       date: '2024-07-20',
@@ -77,9 +77,9 @@ const posts = [
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --blog-post-carousel-empty-title: hsl(var(--foreground));
-  --blog-post-carousel-empty-subtitle: hsl(var(--contrast-500));
+    --blog-post-carousel-empty-title: var(--foreground);
+    --blog-post-carousel-empty-subtitle: var(--contrast-500);
 }
-```
+`}</CodeBlock>

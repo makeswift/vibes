@@ -1,8 +1,8 @@
 import { locales } from '@/vibes/soul/data/locales';
-import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { localeAction } from '@/vibes/soul/examples/primitives/navigation/actions';
 import { logo, navigationLinks } from '@/vibes/soul/examples/primitives/navigation/electric';
 import { copyright, footerLinks } from '@/vibes/soul/examples/sections/footer/electric';
+import { action } from '@/vibes/soul/examples/sections/inline-email-form/actions';
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
 import { type Product } from '@/vibes/soul/primitives/product-card';
@@ -59,7 +59,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/zyFDaG5bRQE',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplZDg3NmU0OC1jODI1LTQ0YTgtODAzZi02OTg0YTE4ODE2MzU=/heart-to-heart.jpeg',
       alt: 'Heart to Heart',
     },
     href: '#',
@@ -71,7 +71,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/AxXaqTzRozM',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpjZmYzMzkzNS03NzlhLTQ5ZTUtOGM3Ny1lZjA2MmUyMjZlNTk=/sun-or-shade.jpeg',
       alt: 'Caladium Pink',
     },
     href: '#',
@@ -83,7 +83,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/vznZvupsj2y',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkNGU0ODM3NC1jZjQzLTRjMDItOThlMi1iYjcwMDJmZmFjMDc=/angel-wing.jpeg',
       alt: 'Caladium Angel Wing',
     },
     href: '#',
@@ -95,7 +95,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/rDuYCY2nPNt',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpiZjZjY2QwMC02NWE4LTQ1YjYtODg0MS02YzRmNDlmYzIwZjE=/philodendron-brandtianum.jpeg',
       alt: 'Philodendron Brandtianum',
     },
     href: '#',
@@ -107,7 +107,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/UQMA3XLfWvF',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTplYzg3NTEzMi04OTU4LTQ4Y2QtYjZmYS1jMzU4MGRkZjRlMTI=/silver-leaf.jpeg',
       alt: 'Silver Leaf Philodendron',
     },
     href: '#',
@@ -119,7 +119,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/cMF-gCyIas9',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo1ZmM1ODkzYi1hZDFhLTQ2YmYtYTYzZS0zMzNlZGYyNWM5MmE=/pink-beauty.jpeg',
       alt: 'Pink Beauty Caladium',
     },
     href: '#',
@@ -131,7 +131,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/W_zhzrsEqp7',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpkNGU0ODM3NC1jZjQzLTRjMDItOThlMi1iYjcwMDJmZmFjMDc=/angel-wing.jpeg',
       alt: 'Caladium Angel Wing',
     },
     href: '#',
@@ -143,7 +143,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/HL613sp6BIP',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowYTA1YzBjNS0zMzU3LTQ5MWMtOWNjZS01OGM3YjcxNTgzNWI=/caladium-watermelon.jpeg',
       alt: 'Caladium Watermelon',
     },
     href: '#',
@@ -155,7 +155,7 @@ export const products: Product[] = [
     badge: 'New',
     price: '$24.99',
     image: {
-      src: 'https://rstr.in/monogram/vibes/afA-7qP8zih',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTo4YTE5ZWVkZC1lMjc4LTQwM2YtYjJlOC03MDQ5MGEzMjU1YzU=/speckled-heart.jpeg',
       alt: 'Speckled Heart Caladium',
     },
     href: '#',

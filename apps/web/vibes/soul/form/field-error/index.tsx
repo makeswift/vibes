@@ -7,7 +7,7 @@ import { CircleAlert } from 'lucide-react';
  *
  * ```css
  *  :root {
- *    --field-error: hsl(var(--error));
+ *    --field-error: var(--error);
  *  }
  * ```
  */
@@ -20,7 +20,7 @@ export function FieldError({
     <div
       {...rest}
       className={clsx(
-        'flex items-center gap-1 text-xs text-[var(--field-error,hsl(var(--error)))]',
+        'flex items-center gap-1 text-xs text-(--field-error,var(--error))',
         className,
       )}
     >

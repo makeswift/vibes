@@ -125,16 +125,6 @@ export default async function Page({
       TabsList,
       TabsTrigger,
       Tooltip,
-      TailwindConfig: function TailwindConfig() {
-        return (
-          <Reveal>
-            <CodeFromFile
-              basePath={path.join(process.cwd(), 'vibes')}
-              pathname="tailwind.config.ts"
-            />
-          </Reveal>
-        );
-      },
       BrandColors: function BrandColorsWithoutVibeSlug(props) {
         return <BrandColors {...props} brands={vibe.brands} />;
       },
@@ -169,10 +159,10 @@ export default async function Page({
   return (
     <>
       <div className="py-8 lg:py-10">
-        <h1 className="-mt-1 mb-2 text-3xl font-bold text-foreground">{meta.title}</h1>
+        <h1 className="text-foreground -mt-1 mb-2 text-3xl font-bold">{meta.title}</h1>
 
         {meta.description != null && (
-          <p className="mb-8 max-w-4xl text-base font-light leading-relaxed text-contrast-500 md:text-lg">
+          <p className="text-contrast-500 mb-8 max-w-4xl text-base leading-relaxed font-light md:text-lg">
             {meta.description}
           </p>
         )}
@@ -181,30 +171,31 @@ export default async function Page({
           <Preview componentName={meta.preview} size={meta.previewSize} vibe={vibe} />
         )}
 
-        <div className="mt-8 gap-x-20 font-sans text-foreground md:mt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
+        <div className="text-foreground mt-8 gap-x-20 font-sans md:mt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_220px] 2xl:grid-cols-[minmax(0,1fr)_240px]">
           <div
             className={clsx(
-              'prose w-full max-w-full dark:prose-invert',
-              'prose-headings:text-foreground first:prose-headings:mt-0',
+              'prose dark:prose-invert w-full max-w-full',
+              'prose-headings:text-foreground',
               'prose-h1:mb-4 prose-h1:text-2xl',
-              'prose-h2:mb-3 prose-h2:mt-10 prose-h2:text-xl prose-h2:font-bold',
+              'prose-h2:mb-3 prose-h2:text-xl prose-h2:font-bold [&_h2:not(:first-child)]:mt-10',
               'prose-h3:mb-2 prose-h3:mt-8 prose-h3:text-base prose-h3:font-bold',
               'prose-p:font-light prose-p:text-foreground first:prose-p:mt-0',
               'prose-li:font-light prose-li:text-foreground',
               'prose-ul:pl-5 prose-ul:font-light',
               'prose-li:[&_::marker]:!text-foreground',
-              'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:outline-primary prose-a:before:absolute prose-a:before:inset-x-0 prose-a:before:bottom-0 prose-a:before:h-[1px] prose-a:before:animate-scroll prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] prose-a:before:[animation-play-state:paused] hover:prose-a:before:[animation-play-state:running]',
-              '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded [&:not(pre_code)]:prose-code:bg-contrast-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:text-sm [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
+              'prose-a:relative prose-a:inline-block prose-a:font-bold prose-a:no-underline prose-a:outline-primary prose-a:before:absolute prose-a:before:inset-x-0 prose-a:before:bottom-0 prose-a:before:h-[1px] prose-a:before:animate-scroll prose-a:before:bg-gradient-to-r prose-a:before:from-foreground prose-a:before:from-50% prose-a:before:to-transparent prose-a:before:to-0% prose-a:before:bg-[size:5px_2px] prose-a:before:[animation-play-state:paused] prose-a:hover:before:[animation-play-state:running]',
+              '[&:not(pre_code)]:prose-code:m-0 [&:not(pre_code)]:prose-code:inline-block [&:not(pre_code)]:prose-code:rounded-sm [&:not(pre_code)]:prose-code:bg-contrast-100 [&:not(pre_code)]:prose-code:px-1 [&:not(pre_code)]:prose-code:py-0.5 [&:not(pre_code)]:prose-code:text-sm [&:not(pre_code)]:prose-code:font-normal [&:not(pre_code)]:prose-code:leading-5',
               '[&:not(pre_code)]:prose-code:before:content-none [&:not(pre_code)]:prose-code:after:content-none',
               '[&>.tabs]:my-8 [&>.tabs]:md:my-10',
               'prose-pre:my-0 prose-pre:outline-primary',
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5',
+              'prose-table:my-0',
             )}
           >
             {meta.features && (
-              <ul className="not-prose w-full columns-1 gap-x-8 space-y-2 text-pretty sm:columns-2 md:gap-x-10">
+              <ul className="not-prose w-full columns-1 space-y-2 gap-x-8 text-pretty sm:columns-2 md:gap-x-10">
                 {meta.features.map((feature, index) => (
-                  <li className="flex items-start gap-x-3 text-foreground" key={index}>
+                  <li className="text-foreground flex items-start gap-x-3" key={index}>
                     <Check className="mt-1.5 shrink-0" />
                     {feature}
                   </li>
@@ -236,14 +227,14 @@ export default async function Page({
             </div>
           </div>
           <div className="not-prose hidden lg:block">
-            <nav className="sticky top-[104px] w-full divide-y divide-dashed divide-contrast-300">
+            <nav className="divide-contrast-300 sticky top-[104px] w-full divide-y divide-dashed">
               <TableOfContents offsetTop={90} />
               <div className="space-y-5 py-5">
                 {/* {totalSize && (
                   <div className="flex w-full items-center gap-x-2">
                     <span className="text-sm font-bold text-foreground">Total size</span>
 
-                    <span className="rounded bg-contrast-100 px-1.5 py-0.5 font-mono text-xs text-contrast-500">
+                    <span className="rounded-sm bg-contrast-100 px-1.5 py-0.5 font-mono text-xs text-contrast-500">
                       {prettyBytes(totalSize, { maximumFractionDigits: 1 })}
                     </span>
                   </div>
@@ -251,7 +242,7 @@ export default async function Page({
 
                 {component && numDependencies > 0 && (
                   <div className="space-y-1">
-                    <div className="text-sm font-bold text-foreground">Dependencies</div>
+                    <div className="text-foreground text-sm font-bold">Dependencies</div>
                     <ul>
                       {component.registryDependencies.map((dependency) => {
                         const dependencyPage = allPages.find((p) => p.component === dependency);
@@ -281,7 +272,7 @@ export default async function Page({
                 )}
 
                 <div className="space-y-1">
-                  <div className="text-sm font-bold text-foreground">Other links</div>
+                  <div className="text-foreground text-sm font-bold">Other links</div>
                   <ul>
                     {component?.files[0] != null && (
                       <li>

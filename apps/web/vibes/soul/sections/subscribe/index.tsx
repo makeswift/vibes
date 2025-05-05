@@ -27,18 +27,18 @@ export interface SubscribeProps {
  * :root {
  *   --subscribe-font-family: var(--font-family-body);
  *   --subscribe-title-font-family: var(--font-family-heading);
- *   --subscribe-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
- *   --subscribe-title: color-mix(in oklab, hsl(var(--primary)), white 75%);
- *   --subscribe-description: color-mix(in oklab, hsl(var(--primary)), white 75%);
+ *   --subscribe-background: var(--primary-shadow);
+ *   --subscribe-title: var(--primary-highlight);
+ *   --subscribe-description: var(--primary-highlight);
  * }
  * ```
  */
 export function Subscribe({ action, image, title, description, placeholder }: SubscribeProps) {
   return (
-    <section className="bg-[var(--subscribe-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] font-[family-name:var(--subscribe-font-family,var(--font-family-body))] @container">
+    <section className="@container bg-(--subscribe-background,var(--primary-shadow)) font-(family-name:--subscribe-font-family,var(--font-family-body))">
       <div className="flex flex-col items-start @4xl:flex-row @4xl:items-stretch">
         {image && (
-          <div className="relative min-h-96 w-full bg-primary/10 @4xl:flex-1">
+          <div className="bg-primary/10 relative min-h-96 w-full @4xl:flex-1">
             <Image
               alt={image.alt}
               className="object-cover"
@@ -56,10 +56,10 @@ export function Subscribe({ action, image, title, description, placeholder }: Su
             )}
           >
             <header className="flex-1">
-              <h2 className="mb-4 font-[family-name:var(--subscribe-title-font-family,var(--font-family-heading))] text-2xl font-medium leading-none text-[var(--subscribe-title,color-mix(in_oklab,hsl(var(--primary)),white_75%))] @xl:text-3xl @4xl:text-4xl">
+              <h2 className="mb-4 font-(family-name:--subscribe-title-font-family,var(--font-family-heading)) text-2xl leading-none font-medium text-(--subscribe-title,var(--primary-highlight)) @xl:text-3xl @4xl:text-4xl">
                 {title}
               </h2>
-              <p className="text-[var(--subscribe-description,color-mix(in_oklab,hsl(var(--primary)),white_75%))] opacity-75">
+              <p className="text-(--subscribe-description,var(--primary-highlight)) opacity-75">
                 {description}
               </p>
             </header>

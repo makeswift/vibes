@@ -65,13 +65,13 @@ Refer to the [Lucide docs](https://lucide.dev/icons/) for a full list of availab
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --icon-block-background: hsl(var(--background));
-  --icon-block-border: hsl(var(--contrast-100));
-  --icon-block-font-family: var(--font-family-body);
-  --icon-block-title: hsl(var(--foreground));
-  --icon-block-description: hsl(var(--contrast-400));
-  --icon-block-icon: hsl(var(--foreground));
+    --icon-block-background: var(--background);
+    --icon-block-border: var(--contrast-100);
+    --icon-block-font-family: var(--font-family-body);
+    --icon-block-title: var(--foreground);
+    --icon-block-description: var(--contrast-400);
+    --icon-block-icon: var(--foreground);
 }
-```
+`}</CodeBlock>

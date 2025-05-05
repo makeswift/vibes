@@ -82,7 +82,14 @@ export default function RootLayout({
       <Head>
         <link crossOrigin="anonymous" href="https://Q9L04M9AMF-dsn.algolia.net" rel="preconnect" />
       </Head>
-      <body className={clsx(Polysans.variable, PolysansWide.variable, GeistMono.variable)}>
+      <body
+        className={clsx(
+          Polysans.variable,
+          PolysansWide.variable,
+          GeistMono.variable,
+          'selection:bg-foreground selection:text-background',
+        )}
+      >
         <Providers>
           <Suspense>
             <PostHogPageView />

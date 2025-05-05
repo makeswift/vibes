@@ -2,7 +2,7 @@ import { Feature, FeatureProps } from '@/vibes/soul/sections/feature';
 
 export const feature: FeatureProps = {
   image: {
-    src: 'https://rstr.in/monogram/vibes/1tVm6tBbJq9',
+    src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTowODYwYTY2NC02NjdjLTRhODYtYTUxYy1jOWExNzI5YTdjMDk=/everyday-tote.jpeg',
     alt: 'string',
   },
   title: 'Where Every Ride Meets Perfect Fit.',

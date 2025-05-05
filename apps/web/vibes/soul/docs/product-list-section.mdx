@@ -96,15 +96,15 @@ See `@/vibes/soul/sections/product-list-section/filter-panel.tsx` for more infor
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --product-list-section-title: hsl(var(--foreground));
-  --product-list-section-title-font-family: var(--font-heading);
-  --product-list-section-total-count: hsl(var(--contrast-300));
-  --product-list-section-filter-label-font-family: var(--font-mono);
-  --product-list-section-filter-label: hsl(var(--contrast-400));
-  --product-list-section-filter-link: hsl(var(--contrast-500));
-  --product-list-section-filter-link-hover: hsl(var(--foreground));
-  --product-list-section-filter-link-font-family: var(--font-body);
+    --product-list-section-title: var(--foreground);
+    --product-list-section-title-font-family: var(--font-family-heading);
+    --product-list-section-total-count: var(--contrast-300);
+    --product-list-section-filter-label-font-family: var(--font-family-mono);
+    --product-list-section-filter-label: var(--contrast-400);
+    --product-list-section-filter-link: var(--contrast-500);
+    --product-list-section-filter-link-hover: var(--foreground);
+    --product-list-section-filter-link-font-family: var(--font-family-body);
 }
-```
+`}</CodeBlock>

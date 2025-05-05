@@ -31,8 +31,8 @@ export const featuredImage: FeaturedImageProps = {
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.',
     image: {
-      src: 'https://rstr.in/monogram/vibes/shMqUI79u99',
-      alt: 'Close up of a plant',
+      src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZToyZGJiZDNlZS05MjM0LTRjOTItYjgxZC1jZTdlMTlkOWFhZGM=/bike-bag.jpeg',
+      alt: 'Close up of a bike bag',
     },
     cta: { href: '#', label: 'Shop Now' },
 };
@@ -71,13 +71,13 @@ export const featuredImage: FeaturedImageProps = {
 
 This component supports various CSS variables for theming. Here's a comprehensive list.
 
-```css
+<CodeBlock lang="css">{`
 :root {
-  --featured-image-background: color-mix(in oklab, hsl(var(--primary)), black 75%);
-  --featured-image-image-background: hsl(var(--primary) / 10%);
-  --featured-image-title-font-family: var(--font-family-heading);
-  --featured-image-font-family: var(--font-family-body);
-  --featured-image-title: hsl(var(--background));
-  --featured-image-description: hsl(var(--background));
+    --featured-image-background: var(--primary-shadow);
+    --featured-image-image-background: color-mix(in oklab, var(--primary) 10%, transparent);
+    --featured-image-title-font-family: var(--font-family-heading);
+    --featured-image-font-family: var(--font-family-body);
+    --featured-image-title: var(--background);
+    --featured-image-description: var(--background);
 }
-```
+`}</CodeBlock>

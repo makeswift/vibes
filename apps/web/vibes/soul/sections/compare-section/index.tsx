@@ -13,9 +13,8 @@ import {
   CompareCardSkeleton,
   type CompareProduct,
 } from '@/vibes/soul/primitives/compare-card';
-import * as Skeleton from '@/vibes/soul/primitives/skeleton';
-
 import { CompareAddToCartAction } from '@/vibes/soul/primitives/compare-card/add-to-cart-form';
+import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
 interface CompareSectionProps {
   className?: string;
@@ -45,12 +44,12 @@ interface CompareSectionProps {
  * ```css
  * :root {
  *   --compare-section-title-font-family: var(--font-family-heading);
- *   --compare-section-title: hsl(var(--foreground));
- *   --compare-section-count: hsl(var(--contrast-300));
+ *   --compare-section-title: var(--foreground);
+ *   --compare-section-count: var(--contrast-300);
  *   --compare-section-empty-font-family: var(--font-family-body);
  *   --compare-section-empty-title-font-family: var(--font-family-heading);
- *   --compare-section-empty-title: hsl(var(--foreground));
- *   --compare-section-empty-subtitle: hsl(var(--contrast-500));
+ *   --compare-section-empty-title: var(--foreground);
+ *   --compare-section-empty-subtitle: var(--contrast-500);
  * }
  * ```
  */
@@ -94,13 +93,13 @@ export function CompareSection({
         }
 
         return (
-          <div className={clsx('overflow-hidden @container', className)}>
+          <div className={clsx('@container overflow-hidden', className)}>
             <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
               <Carousel>
                 <div className="mb-8 flex w-full items-end justify-between gap-10 @xl:mb-10">
-                  <h1 className="font-[family-name:var(--compare-section-title-font-family,var(--font-family-heading))] text-2xl leading-none text-[var(--compare-section-title,hsl(var(--foreground)))] @xl:text-3xl @4xl:text-4xl">
+                  <h1 className="font-(family-name:--compare-section-title-font-family,var(--font-family-heading)) text-2xl leading-none text-(--compare-section-title,var(--foreground)) @xl:text-3xl @4xl:text-4xl">
                     {title}{' '}
-                    <span className="text-[var(--compare-section-count,hsl(var(--contrast-300)))]">
+                    <span className="text-(--compare-section-count,var(--contrast-300))">
                       {products.length}
                     </span>
                   </h1>
@@ -151,9 +150,9 @@ export function CompareSectionSkeleton({
   return (
     <Skeleton.Root className={clsx('group/compare-section', className)} hideOverflow>
       <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-        <div className="relative @container">
+        <div className="@container relative">
           <div className="mb-8 flex w-full items-end justify-between gap-10 @xl:mb-10">
-            <h1 className="font-[family-name:var(--compare-section-title-font-family,var(--font-family-heading))] text-2xl leading-none text-[var(--compare-section-title,hsl(var(--foreground)))] @xl:text-3xl @4xl:text-4xl">
+            <h1 className="font-(family-name:--compare-section-title-font-family,var(--font-family-heading)) text-2xl leading-none text-(--compare-section-title,var(--foreground)) @xl:text-3xl @4xl:text-4xl">
               {title}
             </h1>
             <div className="group-has-[[data-pending]]/compare-section:animate-pulse" data-pending>
@@ -199,7 +198,7 @@ export function CompareSectionEmptyState({
   'className' | 'title' | 'emptyStateTitle' | 'emptyStateSubtitle' | 'placeholderCount'
 >) {
   return (
-    <div className={clsx('overflow-hidden @container', className)}>
+    <div className={clsx('@container overflow-hidden', className)}>
       <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
         <div className="@container">
           <div className="relative w-full">
@@ -214,12 +213,12 @@ export function CompareSectionEmptyState({
                 </div>
               ))}
             </div>
-            <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
-              <header className="mx-auto max-w-xl space-y-2 text-center font-[family-name:var(--compare-section-empty-font-family,var(--font-family-body))] @4xl:space-y-3">
-                <h3 className="font-[family-name:var(--compare-section-empty-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--compare-section-empty-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
+            <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pt-28 @4xl:pb-10">
+              <header className="mx-auto max-w-xl space-y-2 text-center font-(family-name:--compare-section-empty-font-family,var(--font-family-body)) @4xl:space-y-3">
+                <h3 className="font-(family-name:--compare-section-empty-title-font-family,var(--font-family-heading)) text-2xl leading-tight text-(--compare-section-empty-title,var(--foreground)) @4xl:text-4xl @4xl:leading-none">
                   {emptyStateTitle}
                 </h3>
-                <p className="text-sm text-[var(--compare-section-empty-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
+                <p className="text-sm text-(--compare-section-empty-subtitle,var(--contrast-500)) @4xl:text-lg">
                   {emptyStateSubtitle}
                 </p>
               </header>

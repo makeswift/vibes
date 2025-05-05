@@ -33,10 +33,10 @@ interface ProductListProps {
  *
  * ```css
  * :root {
- *   --product-list-light-empty-title: hsl(var(--foreground));
- *   --product-list-light-empty-subtitle: hsl(var(--contrast-500));
- *   --product-list-dark-empty-title: hsl(var(--background));
- *   --product-list-dark-empty-subtitle: hsl(var(--contrast-100));
+ *   --product-list-light-empty-title: var(--foreground);
+ *   --product-list-light-empty-subtitle: var(--contrast-500);
+ *   --product-list-dark-empty-title: var(--background);
+ *   --product-list-dark-empty-subtitle: var(--contrast-100);
  *   --product-list-empty-state-title-font-family: var(--font-family-heading);
  *   --product-list-empty-state-subtitle-font-family: var(--font-family-body);
  * }
@@ -95,7 +95,7 @@ export function ProductList({
             maxCompareLimitMessage={maxCompareLimitMessage}
             maxItems={maxItems}
           >
-            <div className={clsx('w-full @container', className)}>
+            <div className={clsx('@container w-full', className)}>
               <div className="mx-auto grid grid-cols-1 gap-x-4 gap-y-6 @sm:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-x-5 @2xl:gap-y-8 @5xl:grid-cols-4 @7xl:grid-cols-5">
                 {products.map((product) => (
                   <ProductCard
@@ -164,12 +164,12 @@ export function ProductListEmptyState({
           <ProductCardSkeleton key={index} />
         ))}
       </div>
-      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pt-28 @4xl:pb-10">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
-          <h3 className="font-[family-name:var(--product-list-empty-state-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--product-list-empty-state-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
+          <h3 className="font-(family-name:--product-list-empty-state-title-font-family,var(--font-family-heading)) text-2xl leading-tight text-(--product-list-empty-state-title,var(--foreground)) @4xl:text-4xl @4xl:leading-none">
             {emptyStateTitle}
           </h3>
-          <p className="font-[family-name:var(--product-list-empty-state-subtitle-font-family,var(--font-family-body))] text-sm text-[var(--product-list-empty-state-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
+          <p className="font-(family-name:--product-list-empty-state-subtitle-font-family,var(--font-family-body)) text-sm text-(--product-list-empty-state-subtitle,var(--contrast-500)) @4xl:text-lg">
             {emptyStateSubtitle}
           </p>
         </div>
