@@ -4,8 +4,8 @@ export default function Preview() {
   return (
     <div className="p-10">
       <Select
-        name="options"
         label="Option"
+        name="options"
         options={[
           { value: 'option-1', label: 'Option 1' },
           { value: 'option-2', label: 'Option 2' },

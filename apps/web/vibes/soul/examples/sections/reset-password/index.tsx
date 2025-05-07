@@ -1,7 +1,7 @@
-import { ResetPassword } from '@/vibes/soul/sections/reset-password';
-
 import { SubmissionResult } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
+
+import { ResetPassword } from '@/vibes/soul/sections/reset-password';
 import { schema } from '@/vibes/soul/sections/reset-password/schema';
 
 export default function Preview() {
