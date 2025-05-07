@@ -27,6 +27,7 @@ import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
+import { DatePicker } from '@/vibes/soul/form/date-picker';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
@@ -236,6 +237,21 @@ function FormField({
           onFocus={controls.focus}
           required={formField.required}
           value={controls.value ?? ''}
+        />
+      );
+
+    case 'date':
+      return (
+        <DatePicker
+          defaultValue={controls.value}
+          errors={formField.errors}
+          key={formField.id}
+          label={field.label}
+          name={formField.name}
+          onBlur={controls.blur}
+          onChange={(e) => handleChange(e.currentTarget.value)}
+          onFocus={controls.focus}
+          required={formField.required}
         />
       );
 
