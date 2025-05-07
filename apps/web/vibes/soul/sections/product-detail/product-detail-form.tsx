@@ -27,6 +27,7 @@ import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
+import { Textarea } from '@/vibes/soul/form/textarea';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
@@ -230,6 +231,23 @@ function FormField({
           errors={formField.errors}
           key={formField.id}
           label={field.label}
+          name={formField.name}
+          onBlur={controls.blur}
+          onChange={(e) => handleChange(e.currentTarget.value)}
+          onFocus={controls.focus}
+          required={formField.required}
+          value={controls.value ?? ''}
+        />
+      );
+
+    case 'textarea':
+      return (
+        <Textarea
+          errors={formField.errors}
+          key={formField.id}
+          label={field.label}
+          maxLength={field.maxLength}
+          minLength={field.minLength}
           name={formField.name}
           onBlur={controls.blur}
           onChange={(e) => handleChange(e.currentTarget.value)}
