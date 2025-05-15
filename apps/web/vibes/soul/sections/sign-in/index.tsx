@@ -31,6 +31,7 @@ export interface SignInProps {
  *   --sign-in-title-font-family: var(--font-family-heading);
  *   --sign-in-title: var(--foreground);
  *   --sign-in-description: var(--contrast-500);
+ *   --sign-in-border: var(--contrast-100);
  * }
  * ```
  */
@@ -58,7 +59,7 @@ export function SignIn({
   return (
     <div className="@container">
       <div className="flex flex-col justify-center gap-y-24 px-3 py-10 @xl:flex-row @xl:px-6 @4xl:py-20 @5xl:px-20">
-        <div className="w-full @xl:max-w-md @xl:border-r @xl:pr-10 @4xl:pr-20">
+        <div className="w-full border-(--sign-in-border,var(--contrast-100)) @xl:max-w-md @xl:border-r @xl:pr-10 @4xl:pr-20">
           <h1 className="mb-10 font-(family-name:--sign-in-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--sign-in-title,var(--foreground)) @xl:text-5xl">
             {title}
           </h1>

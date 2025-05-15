@@ -20,12 +20,14 @@ import { Label } from '@/vibes/soul/form/label';
  *   --number-input-light-icon-hover: var(--foreground);
  *   --number-input-light-button-background: var(--background);
  *   --number-input-light-button-background-hover: var(--contrast-100) / 50%;
+ *   --number-input-light-button-border: var(--contrast-100);
  *   --number-input-dark-background: var(--background);
  *   --number-input-dark-text: var(--background);
  *   --number-input-dark-icon: var(--contrast-300);
  *   --number-input-dark-icon-hover: var(--background);
  *   --number-input-dark-button-background: var(--foreground);
  *   --number-input-dark-button-background-hover: var(--contrast-500) / 50%;
+ *   --number-input-dark-button-border: var(--contrast-500);
  *  }
  * ```
  */
@@ -66,8 +68,9 @@ export const NumberInput = React.forwardRef<
           className={clsx(
             'inline-flex items-center rounded-lg border',
             {
-              light: 'bg-(--number-input-light-background,var(--background))',
-              dark: 'bg-(--number-input-dark-background,var(--foreground))',
+              light:
+                'border-(--number-input-light-button-border,var(--contrast-100)) bg-(--number-input-light-background,var(--background))',
+              dark: 'border-(--number-input-dark-button-border,var(--contrast-500)) bg-(--number-input-dark-background,var(--foreground))',
             }[colorScheme],
           )}
         >
