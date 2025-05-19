@@ -35,7 +35,7 @@ export default async function Preview({
         sortOptions={sortOptions}
         sortParamName={sortParamName}
         title={productsList.title}
-        totalCount={productsList.products.then((products) => products.length)}
+        totalCount={productsList.products.then((products) => String(products.length))}
       />
     </div>
   );
