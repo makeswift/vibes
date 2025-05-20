@@ -57,7 +57,7 @@ export function Button({
       {...props}
       aria-busy={loading}
       className={clsx(
-        'relative z-0 inline-flex h-fit items-center justify-center overflow-hidden border text-center font-(family-name:--button-font-family,var(--font-family-body)) leading-normal font-semibold select-none after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition-[opacity,translate] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] focus-visible:ring-2 focus-visible:ring-(--button-focus,var(--primary)) focus-visible:ring-offset-2 focus-visible:outline-hidden',
+        'relative z-0 inline-flex h-fit items-center justify-center overflow-hidden border text-center font-(family-name:--button-font-family,var(--font-family-body)) leading-normal font-semibold select-none after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition-[opacity,translate] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] focus-visible:ring-2 focus-visible:ring-(--button-focus,var(--primary)) focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-30',
         {
           primary:
             'border-(--button-primary-border,var(--primary)) bg-(--button-primary-background,var(--primary)) text-(--button-primary-text,var(--foreground)) after:bg-(--button-primary-background-hover,var(--primary-highlight))',
@@ -77,10 +77,10 @@ export function Button({
           circle: 'rounded-full after:rounded-full',
         }[shape],
         !loading && !disabled && 'hover:after:translate-x-0',
-        disabled && 'cursor-not-allowed opacity-30',
+        loading && 'pointer-events-none',
         className,
       )}
-      disabled={disabled || loading}
+      disabled={disabled}
       type={type}
     >
       <span
