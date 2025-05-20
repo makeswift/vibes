@@ -19,7 +19,7 @@ import { Sorting, SortingSkeleton, Option as SortOption } from './sorting';
 export interface ProductListSectionProps {
   breadcrumbs?: Streamable<Breadcrumb[]>;
   title?: Streamable<string>;
-  totalCount: Streamable<number>;
+  totalCount: Streamable<string>;
   products: Streamable<Product[]>;
   filters: Streamable<Filter[]>;
   sortOptions: Streamable<SortOption[]>;

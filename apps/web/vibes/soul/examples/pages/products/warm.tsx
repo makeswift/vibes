@@ -37,7 +37,7 @@ export default async function Preview() {
         products={products}
         sortOptions={sortOptions}
         title="All Bags"
-        totalCount={products.length}
+        totalCount={String(products.length)}
       />
       <FeaturedProductCarousel products={products} title="Recently Viewed" />
       <Footer copyright={copyright} logo={logo} sections={footerLinks} />

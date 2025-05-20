@@ -37,7 +37,7 @@ export default function Preview() {
         products={productsPromise}
         sortOptions={sortOptions}
         title="All Plants"
-        totalCount={productsPromise.then((products) => products.length)}
+        totalCount={productsPromise.then((products) => String(products.length))}
       />
       <FeaturedProductCarousel products={productsPromise} title="Recently Viewed" />
       <Footer copyright={copyright} logo={logo} sections={footerLinks} />
