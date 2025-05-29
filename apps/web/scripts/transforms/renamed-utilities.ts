@@ -13,7 +13,7 @@ export interface RenamedUtilitiesResult {
 }
 
 // Mapping of Tailwind 4 classes to Tailwind 3 classes
-const UTILITY_MAPPINGS: Record<string, string> = {
+export const UTILITY_MAPPINGS: Record<string, string> = {
   'shadow-xs': 'shadow-sm',
   'shadow-sm': 'shadow',
   'drop-shadow-xs': 'drop-shadow-sm',
