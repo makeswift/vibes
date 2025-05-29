@@ -122,13 +122,13 @@ export function BlogPostCardSkeleton({
           }[aspectRatio],
         )}
       />
-      <Skeleton.Text characterCount={25} className="mt-4 rounded-sm text-lg" />
+      <Skeleton.Text characterCount={25} className="mt-4 rounded text-lg" />
       <div className="mt-1.5">
-        <Skeleton.Text characterCount="full" className="rounded-sm text-sm" />
-        <Skeleton.Text characterCount="full" className="rounded-sm text-sm" />
-        <Skeleton.Text characterCount={15} className="rounded-sm text-sm" />
+        <Skeleton.Text characterCount="full" className="rounded text-sm" />
+        <Skeleton.Text characterCount="full" className="rounded text-sm" />
+        <Skeleton.Text characterCount={15} className="rounded text-sm" />
       </div>
-      <Skeleton.Text characterCount={10} className="mt-3 rounded-sm text-sm" />
+      <Skeleton.Text characterCount={10} className="mt-3 rounded text-sm" />
     </div>
   );
 }

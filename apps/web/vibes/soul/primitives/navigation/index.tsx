@@ -481,14 +481,14 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
 
                             {group.links.map((link, idx) => (
                               // Third Level Links
-                              <li key={idx}>
+                              (<li key={idx}>
                                 <Link
                                   className="block rounded-lg bg-(--nav-sub-link-background,transparent) px-3 py-1.5 font-(family-name:--nav-sub-link-font-family,var(--font-family-body)) text-sm font-medium text-(--nav-sub-link-text,var(--contrast-500)) ring-(--nav-focus,var(--primary)) transition-colors hover:bg-(--nav-sub-link-background-hover,var(--contrast-100)) hover:text-(--nav-sub-link-text-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0"
                                   href={link.href}
                                 >
                                   {link.label}
                                 </Link>
-                              </li>
+                              </li>)
                             ))}
                           </ul>
                         ))}
@@ -598,7 +598,6 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           ) : null}
         </div>
       </div>
-
       <div className="absolute top-full right-0 left-0 z-50 flex w-full justify-center perspective-[2000px]">
         <NavigationMenu.Viewport className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 relative mt-2 w-full" />
       </div>
