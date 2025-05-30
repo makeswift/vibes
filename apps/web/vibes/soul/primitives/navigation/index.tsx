@@ -481,14 +481,14 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
 
                             {group.links.map((link, idx) => (
                               // Third Level Links
-                              (<li key={idx}>
+                              <li key={idx}>
                                 <Link
                                   className="block rounded-lg bg-(--nav-sub-link-background,transparent) px-3 py-1.5 font-(family-name:--nav-sub-link-font-family,var(--font-family-body)) text-sm font-medium text-(--nav-sub-link-text,var(--contrast-500)) ring-(--nav-focus,var(--primary)) transition-colors hover:bg-(--nav-sub-link-background-hover,var(--contrast-100)) hover:text-(--nav-sub-link-text-hover,var(--foreground)) focus-visible:ring-2 focus-visible:outline-0"
                                   href={link.href}
                                 >
                                   {link.label}
                                 </Link>
-                              </li>)
+                              </li>
                             ))}
                           </ul>
                         ))}
