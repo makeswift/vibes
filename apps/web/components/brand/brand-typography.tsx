@@ -48,7 +48,7 @@ export function BrandTypography({ brands, brandName }: Props) {
               The quick brown fox jumps over the lazy dog.
             </div>
             <div className="text-contrast-500 font-mono text-xs">
-              <span className="bg-contrast-100 rounded px-1 py-0.5">
+              <span className="bg-contrast-100 rounded-sm px-1 py-0.5">
                 {size.variable.replace('--font-size', 'text')}
               </span>
               <span className="text-contrast-400 ml-2">

@@ -34,7 +34,7 @@ export function BrandFonts({ brands, brandName, fonts }: Props) {
             >
               {name}
             </div>
-            <span className="bg-contrast-100 text-contrast-500 rounded px-1 py-0.5 font-mono text-xs">
+            <span className="bg-contrast-100 text-contrast-500 rounded-sm px-1 py-0.5 font-mono text-xs">
               font-{type}
             </span>
           </div>

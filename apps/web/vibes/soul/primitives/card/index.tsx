@@ -199,7 +199,7 @@ export function CardSkeleton({
         )}
       />
       <div className="mt-3">
-        <Skeleton.Text characterCount={10} className="rounded text-lg" />
+        <Skeleton.Text characterCount={10} className="rounded-sm text-lg" />
       </div>
     </div>
   );
