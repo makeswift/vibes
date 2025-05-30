@@ -1,4 +1,3 @@
-// transforms/arbitrary-css-variables.ts
 import { type API, type ASTNode, type FileInfo, type JSCodeshift } from 'jscodeshift';
 
 export interface ArbitraryCssResult {

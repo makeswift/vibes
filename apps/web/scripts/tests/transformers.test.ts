@@ -1,4 +1,3 @@
-// __tests__/transformers.test.ts
 import { type API, type FileInfo } from 'jscodeshift';
 import jscodeshift from 'jscodeshift';
 
