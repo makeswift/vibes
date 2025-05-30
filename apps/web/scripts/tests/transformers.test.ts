@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import jscodeshift, { type API, type FileInfo } from 'jscodeshift';
 
 // Import your transformers

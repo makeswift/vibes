@@ -12,14 +12,6 @@
       "typescript": true
     }
   },
-  "overrides": [
-    {
-      "files": ["tests/**/*"],
-      "env": {
-        "jest": true
-      }
-    }
-  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
