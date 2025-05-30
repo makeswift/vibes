@@ -1,5 +1,5 @@
-import { describe, expect, it } from '@jest/globals';
 import jscodeshift, { type API, type FileInfo } from 'jscodeshift';
+import { describe, expect, it } from 'vitest';
 
 // Import your transformers
 import arbitraryCssTransform from '../transforms/arbitrary-css-variables';
