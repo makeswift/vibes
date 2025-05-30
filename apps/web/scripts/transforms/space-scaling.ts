@@ -1,6 +1,6 @@
 import { type API, type ASTNode, type FileInfo, type JSCodeshift } from 'jscodeshift';
 
-export interface RenamedUtilitiesResult {
+export interface SpacingScaleResult {
   filesFound: number;
   filesNeedingTransformation: number;
   transformations: Array<{
@@ -12,24 +12,125 @@ export interface RenamedUtilitiesResult {
   }>;
 }
 
-// Mapping of Tailwind 4 classes to Tailwind 3 classes
-export const RENAMED_UTILITIES: Record<string, string> = {
-  'shadow-xs': 'shadow-sm',
-  'shadow-sm': 'shadow',
-  'drop-shadow-xs': 'drop-shadow-sm',
-  'drop-shadow-sm': 'drop-shadow',
-  'blur-xs': 'blur-sm',
-  'blur-sm': 'blur',
-  'backdrop-blur-xs': 'backdrop-blur-sm',
-  'backdrop-blur-sm': 'backdrop-blur',
-  'rounded-xs': 'rounded-sm',
-  'rounded-sm': 'rounded',
-  'outline-hidden': 'outline-none',
-  'ring-3': 'ring',
-};
+export const SPACING_SCALE: Record<string, string> = {};
 
-// Helper function to transform className string
-function transformClassNames(classNameString: string): {
+// Tailwind 3 default spacing scale values that are supported out of the box
+const SUPPORTED_SPACING_VALUES = new Set([
+  '0',
+  'px',
+  '0.5',
+  '1',
+  '1.5',
+  '2',
+  '2.5',
+  '3',
+  '3.5',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+  '14',
+  '16',
+  '20',
+  '24',
+  '28',
+  '32',
+  '36',
+  '40',
+  '44',
+  '48',
+  '52',
+  '56',
+  '60',
+  '64',
+  '72',
+  '80',
+  '96',
+]);
+
+// Spacing and sizing utility prefixes that use the spacing scale
+const SPACING_UTILITIES = [
+  // Padding
+  'p',
+  'px',
+  'py',
+  'ps',
+  'pe',
+  'pt',
+  'pr',
+  'pb',
+  'pl',
+  '-p',
+  '-px',
+  '-py',
+  '-ps',
+  '-pe',
+  '-pt',
+  '-pr',
+  '-pb',
+  '-pl',
+  // Margin
+  'm',
+  'mx',
+  'my',
+  'ms',
+  'me',
+  'mt',
+  'mr',
+  'mb',
+  'ml',
+  '-m',
+  '-mx',
+  '-my',
+  '-ms',
+  '-me',
+  '-mt',
+  '-mr',
+  '-mb',
+  '-ml',
+  // Space
+  'space-x',
+  'space-y',
+  // Width
+  'min-w',
+  'max-w',
+  'w',
+  // Height
+  'min-h',
+  'max-h',
+  'h',
+  // Size
+  'size',
+  // Gap
+  'gap-x',
+  'gap-y',
+  'gap',
+];
+
+// Helper function to calculate rem value from spacing unit
+function calculateRemValue(value: string): string {
+  // Handle 'px' special case
+  if (value === 'px') {
+    return '1px';
+  }
+
+  // Parse numeric value and calculate rem
+  const numericValue = parseFloat(value);
+  if (isNaN(numericValue)) {
+    return value; // Return original if not numeric
+  }
+
+  const remValue = numericValue * 0.25;
+  return `${remValue}rem`;
+}
+
+// Helper function to transform spacing scale classes in a string
+function transformSpacingScale(classNameString: string): {
   transformed: string;
   hasChanges: boolean;
   changes: Array<{ oldClass: string; newClass: string }>;
@@ -42,18 +143,36 @@ function transformClassNames(classNameString: string): {
     // Split the class into modifier and utility parts
     const parts = className.split(':');
     const modifiers = parts.slice(0, -1);
-    const utility = parts[parts.length - 1] ?? '';
+    const utilityPart = parts[parts.length - 1] ?? '';
 
-    if (utility !== '' && utility in RENAMED_UTILITIES) {
-      const newClass = RENAMED_UTILITIES[utility];
-      if (typeof newClass === 'string') {
+    // Check if this is a spacing utility
+    let matchedUtility = '';
+    let value = '';
+
+    for (const utility of SPACING_UTILITIES) {
+      if (utilityPart.startsWith(`${utility}-`)) {
+        matchedUtility = utility;
+        value = utilityPart.substring(utility.length + 1);
+        break;
+      }
+    }
+
+    // If we found a matching utility and the value is not supported in Tailwind 3
+    if (matchedUtility !== '' && value !== '' && !SUPPORTED_SPACING_VALUES.has(value)) {
+      // Check if it's a numeric value that we can convert
+      const numericValue = parseFloat(value);
+      if (!isNaN(numericValue) && numericValue >= 0) {
+        const remValue = calculateRemValue(value);
+        const newUtility = `${matchedUtility}-[${remValue}]`;
         const transformedClass =
-          modifiers.length > 0 ? [...modifiers, newClass].join(':') : newClass;
+          modifiers.length > 0 ? [...modifiers, newUtility].join(':') : newUtility;
+
         changes.push({ oldClass: className, newClass: transformedClass });
         hasChanges = true;
         return transformedClass;
       }
     }
+
     return className;
   });
 
@@ -68,14 +187,14 @@ function transformClassNames(classNameString: string): {
 function processStringLiterals(
   j: JSCodeshift,
   node: ASTNode,
-  transformations: RenamedUtilitiesResult['transformations'],
+  transformations: SpacingScaleResult['transformations'],
   filePath: string,
 ) {
   // Find all StringLiteral nodes within this node
   j(node)
     .find(j.StringLiteral)
     .forEach((stringPath) => {
-      const result = transformClassNames(stringPath.node.value);
+      const result = transformSpacingScale(stringPath.node.value);
 
       if (result.hasChanges) {
         // Update the string literal value
@@ -115,7 +234,7 @@ export default function transform(file: FileInfo, api: API): string {
 
     // Handle direct string literals: className="..."
     if (value.type === 'StringLiteral') {
-      const result = transformClassNames(value.value);
+      const result = transformSpacingScale(value.value);
       if (result.hasChanges) {
         value.value = result.transformed;
 
@@ -139,7 +258,7 @@ export default function transform(file: FileInfo, api: API): string {
       if (expression.type === 'TemplateLiteral') {
         expression.quasis.forEach((quasi) => {
           if (quasi.value.raw !== '') {
-            const result = transformClassNames(quasi.value.raw);
+            const result = transformSpacingScale(quasi.value.raw);
             if (result.hasChanges) {
               quasi.value.raw = result.transformed;
               quasi.value.cooked = result.transformed;
@@ -156,11 +275,6 @@ export default function transform(file: FileInfo, api: API): string {
             }
           }
         });
-
-        // Also process expressions within template literals
-        expression.expressions.forEach((expr) => {
-          processStringLiterals(j, expr, transformations, file.path);
-        });
       }
 
       // Handle function calls like clsx(), cn(), etc.
@@ -171,7 +285,7 @@ export default function transform(file: FileInfo, api: API): string {
 
       // Handle direct string literals within expressions: className={'...'}
       else if (expression.type === 'StringLiteral') {
-        const result = transformClassNames(expression.value);
+        const result = transformSpacingScale(expression.value);
         if (result.hasChanges) {
           expression.value = result.transformed;
 
@@ -194,7 +308,7 @@ export default function transform(file: FileInfo, api: API): string {
     const value = path.node.value;
 
     if (value && value.type === 'StringLiteral') {
-      const result = transformClassNames(value.value);
+      const result = transformSpacingScale(value.value);
       if (result.hasChanges) {
         value.value = result.transformed;
 
@@ -213,11 +327,65 @@ export default function transform(file: FileInfo, api: API): string {
 
   // Log transformations for debugging/reporting
   if (transformations.length > 0) {
-    console.log(`Transformed ${transformations.length} utility classes in ${file.path}`);
+    console.log(`Transformed ${transformations.length} spacing scale classes in ${file.path}`);
     transformations.forEach((t) => {
       console.log(`  ${t.oldClass} -> ${t.newClass} at line ${t.line}`);
     });
   }
 
   return root.toSource({ quote: 'double' });
+}
+
+// Export a function to find spacing scale patterns for scanning
+export function findSpacingScalePatterns(content: string): Array<{
+  oldClass: string;
+  newClass: string;
+  line: number;
+  context: string;
+}> {
+  const results: Array<{
+    oldClass: string;
+    newClass: string;
+    line: number;
+    context: string;
+  }> = [];
+
+  const lines = content.split('\n');
+
+  lines.forEach((line, lineIndex) => {
+    // Create a regex pattern to match all spacing utilities
+    const utilityPattern = new RegExp(
+      `\\b(?:(?:[a-zA-Z0-9_:-]+:)*(?:${SPACING_UTILITIES.join('|')}))-([^\\s\\]\\)\\}'"\`]+)`,
+      'g',
+    );
+
+    let match;
+    while ((match = utilityPattern.exec(line)) !== null) {
+      const fullMatch = match[0];
+      const value = match[1] ?? '';
+
+      if (value !== '' && !SUPPORTED_SPACING_VALUES.has(value)) {
+        // Check if it's a numeric value that we can convert
+        const numericValue = parseFloat(value);
+        if (!isNaN(numericValue) && numericValue >= 0) {
+          const remValue = calculateRemValue(value);
+
+          // Extract the utility prefix from the full match
+          const utilityPrefix = fullMatch.substring(0, fullMatch.lastIndexOf('-'));
+          const newClass = `${utilityPrefix}-[${remValue}]`;
+
+          results.push({
+            oldClass: fullMatch,
+            newClass,
+            line: lineIndex + 1,
+            context: line.trim(),
+          });
+        }
+      }
+    }
+
+    utilityPattern.lastIndex = 0;
+  });
+
+  return results;
 }

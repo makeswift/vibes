@@ -7,38 +7,40 @@ import { run as jscodeshift } from 'jscodeshift/src/Runner';
 import path from 'path';
 
 // Import utility mappings for each transformer
-import { UTILITY_MAPPINGS as RENAMED_UTILITIES } from './transforms/renamed-utilities';
-// import { UTILITY_MAPPINGS as SPACING_CHANGES } from './transforms/spacing-changes';
-// import { UTILITY_MAPPINGS as COLOR_PALETTE } from './transforms/color-palette';
+import { ARBITRARY_CSS, findArbitraryCssPatterns } from './transforms/arbitrary-css-variables';
+import { RENAMED_UTILITIES } from './transforms/renamed-utilities';
+import { findSpacingScalePatterns, SPACING_SCALE } from './transforms/space-scaling';
 
 interface TransformConfig {
   name: string;
   description: string;
   transformFile: string;
-  utilityMappings: Record<string, string>;
+  utilityMappings?: Record<string, string>;
+  customScanner?: (content: string) => ScanResult['classes'];
 }
 
 // Configuration for all available transformers
 const TRANSFORMERS: Record<string, TransformConfig> = {
-  'renamed-utilities': {
+  utils: {
     name: 'Renamed Utilities',
     description: 'Transform renamed utility classes (shadow-xs → shadow-sm, etc.)',
     transformFile: 'transforms/renamed-utilities.ts',
     utilityMappings: RENAMED_UTILITIES,
   },
-  // Add more transformers here as you build them
-  // 'spacing-changes': {
-  //   name: 'Spacing Changes',
-  //   description: 'Transform spacing scale changes',
-  //   transformFile: 'transforms/spacing-changes.ts',
-  //   utilityMappings: SPACING_CHANGES,
-  // },
-  // 'color-palette': {
-  //   name: 'Color Palette',
-  //   description: 'Transform color palette changes',
-  //   transformFile: 'transforms/color-palette.ts',
-  //   utilityMappings: COLOR_PALETTE,
-  // },
+  vars: {
+    name: 'Arbitrary CSS Variables',
+    description: 'Transform arbitrary CSS variables (bg-(var(--primary)) → bg-[var(--primary)])',
+    transformFile: 'transforms/arbitrary-css-variables.ts',
+    utilityMappings: ARBITRARY_CSS,
+    customScanner: findArbitraryCssPatterns,
+  },
+  space: {
+    name: 'Spacing Scale',
+    description: 'Transform unsupported spacing values to arbitrary values (mt-13 → mt-[3.25rem])',
+    transformFile: 'transforms/spacing-scale.ts',
+    utilityMappings: SPACING_SCALE,
+    customScanner: findSpacingScalePatterns,
+  },
 };
 
 const DEFAULT_IGNORE_PATTERNS = [
@@ -57,7 +59,6 @@ interface ScanResult {
     oldClass: string;
     newClass: string;
     line: number;
-    context: string;
   }>;
 }
 
@@ -73,12 +74,20 @@ interface ScanOptions {
 }
 
 // Generic function to find classes for any transformer
-function findTailwindClasses(
-  content: string,
-  utilityMappings: Record<string, string>,
-): ScanResult['classes'] {
+function findTailwindClasses(content: string, transformer: TransformConfig): ScanResult['classes'] {
+  // Use custom scanner if available
+  if (transformer.customScanner) {
+    return transformer.customScanner(content);
+  }
+
+  // Fall back to utility mappings approach
+  if (!transformer.utilityMappings) {
+    return [];
+  }
+
   const results: ScanResult['classes'] = [];
   const lines = content.split('\n');
+  const utilityMappings = transformer.utilityMappings;
 
   if (Object.keys(utilityMappings).length === 0) {
     return results;
@@ -110,7 +119,6 @@ function findTailwindClasses(
           oldClass: fullClass,
           newClass,
           line: lineIndex + 1,
-          context: line.trim(),
         });
       }
     }
@@ -128,6 +136,7 @@ async function runTransform(
   options: CommandOptions = {},
 ) {
   const transformer = TRANSFORMERS[transformerKey];
+
   if (!transformer) {
     console.error(`Unknown transformer: ${transformerKey}`);
     process.exit(1);
@@ -201,6 +210,7 @@ async function runScan(
   options: { pattern?: string; json?: boolean } = {},
 ) {
   const transformer = TRANSFORMERS[transformerKey];
+
   if (!transformer) {
     console.error(`Unknown transformer: ${transformerKey}`);
     process.exit(1);
@@ -229,7 +239,7 @@ async function runScan(
   for (const filePath of filePaths) {
     try {
       const content = await fs.readFile(filePath, 'utf-8');
-      const classes = findTailwindClasses(content, transformer.utilityMappings);
+      const classes = findTailwindClasses(content, transformer);
 
       if (classes.length > 0) {
         scanResults.push({
@@ -255,7 +265,6 @@ async function runScan(
       console.log(`📁 ${result.file}`);
       result.classes.forEach((cls) => {
         console.log(`  Line ${cls.line}: ${cls.oldClass} → ${cls.newClass}`);
-        console.log(`    Context: ${cls.context}`);
       });
       console.log('');
     });
@@ -293,7 +302,6 @@ Object.entries(TRANSFORMERS).forEach(([key, config]) => {
       }
     });
 });
-
 // "All" command to run all transformers
 program
   .command('all')

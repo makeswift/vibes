@@ -1,6 +1,7 @@
+// transforms/arbitrary-css-variables.ts
 import { type API, type ASTNode, type FileInfo, type JSCodeshift } from 'jscodeshift';
 
-export interface RenamedUtilitiesResult {
+export interface ArbitraryCssResult {
   filesFound: number;
   filesNeedingTransformation: number;
   transformations: Array<{
@@ -12,54 +13,82 @@ export interface RenamedUtilitiesResult {
   }>;
 }
 
-// Mapping of Tailwind 4 classes to Tailwind 3 classes
-export const RENAMED_UTILITIES: Record<string, string> = {
-  'shadow-xs': 'shadow-sm',
-  'shadow-sm': 'shadow',
-  'drop-shadow-xs': 'drop-shadow-sm',
-  'drop-shadow-sm': 'drop-shadow',
-  'blur-xs': 'blur-sm',
-  'blur-sm': 'blur',
-  'backdrop-blur-xs': 'backdrop-blur-sm',
-  'backdrop-blur-sm': 'backdrop-blur',
-  'rounded-xs': 'rounded-sm',
-  'rounded-sm': 'rounded',
-  'outline-hidden': 'outline-none',
-  'ring-3': 'ring',
-};
+// Export utility mappings for scanning (empty since this uses custom logic)
+export const ARBITRARY_CSS: Record<string, string> = {};
 
-// Helper function to transform className string
-function transformClassNames(classNameString: string): {
+// Helper function to find balanced parentheses content
+function findBalancedParens(
+  str: string,
+  startIndex: number,
+): { content: string; endIndex: number } | null {
+  let depth = 0;
+  let content = '';
+
+  for (let i = startIndex; i < str.length; i += 1) {
+    const char = str[i];
+
+    if (char === '(') {
+      depth += 1;
+      if (depth > 1) content += char; // Don't include the opening paren of the outermost level
+    } else if (char === ')') {
+      depth -= 1;
+      if (depth === 0) {
+        // Found the matching closing paren
+        return { content, endIndex: i };
+      } else {
+        content += char;
+      }
+    } else {
+      if (depth > 0) content += char ?? '';
+    }
+  }
+
+  return null; // Unbalanced parentheses
+}
+
+// Helper function to transform arbitrary CSS variables in a string
+function transformArbitraryCss(classNameString: string): {
   transformed: string;
   hasChanges: boolean;
   changes: Array<{ oldClass: string; newClass: string }>;
 } {
-  const classes = classNameString.split(/\s+/).filter(Boolean);
+  let transformed = classNameString;
   const changes: Array<{ oldClass: string; newClass: string }> = [];
-  let hasChanges = false;
 
-  const transformedClasses = classes.map((className) => {
-    // Split the class into modifier and utility parts
-    const parts = className.split(':');
-    const modifiers = parts.slice(0, -1);
-    const utility = parts[parts.length - 1] ?? '';
+  // Match class prefix followed by -(
+  const prefixPattern = /([a-zA-Z0-9_:-]+)-\(/g;
+  let match;
+  let offset = 0; // Track offset due to replacements
 
-    if (utility !== '' && utility in RENAMED_UTILITIES) {
-      const newClass = RENAMED_UTILITIES[utility];
-      if (typeof newClass === 'string') {
-        const transformedClass =
-          modifiers.length > 0 ? [...modifiers, newClass].join(':') : newClass;
-        changes.push({ oldClass: className, newClass: transformedClass });
-        hasChanges = true;
-        return transformedClass;
-      }
+  while ((match = prefixPattern.exec(classNameString)) !== null) {
+    const classPrefix = match[1];
+    const parenStartIndex = match.index + match[0].length - 1; // Index of the opening (
+
+    const balanced = findBalancedParens(classNameString, parenStartIndex);
+    if (balanced) {
+      const fullMatch = classNameString.substring(match.index, balanced.endIndex + 1);
+      const newClass = `${classPrefix}-[${balanced.content}]`;
+
+      // Replace in the transformed string, accounting for previous replacements
+      const adjustedStart = match.index + offset;
+      const adjustedEnd = adjustedStart + fullMatch.length;
+
+      transformed =
+        transformed.substring(0, adjustedStart) + newClass + transformed.substring(adjustedEnd);
+
+      // Update offset for next replacement
+      offset += newClass.length - fullMatch.length;
+
+      changes.push({
+        oldClass: fullMatch,
+        newClass,
+      });
     }
-    return className;
-  });
+  }
 
   return {
-    transformed: transformedClasses.join(' '),
-    hasChanges,
+    transformed,
+    hasChanges: changes.length > 0,
     changes,
   };
 }
@@ -68,14 +97,14 @@ function transformClassNames(classNameString: string): {
 function processStringLiterals(
   j: JSCodeshift,
   node: ASTNode,
-  transformations: RenamedUtilitiesResult['transformations'],
+  transformations: ArbitraryCssResult['transformations'],
   filePath: string,
 ) {
   // Find all StringLiteral nodes within this node
   j(node)
     .find(j.StringLiteral)
     .forEach((stringPath) => {
-      const result = transformClassNames(stringPath.node.value);
+      const result = transformArbitraryCss(stringPath.node.value);
 
       if (result.hasChanges) {
         // Update the string literal value
@@ -115,7 +144,7 @@ export default function transform(file: FileInfo, api: API): string {
 
     // Handle direct string literals: className="..."
     if (value.type === 'StringLiteral') {
-      const result = transformClassNames(value.value);
+      const result = transformArbitraryCss(value.value);
       if (result.hasChanges) {
         value.value = result.transformed;
 
@@ -139,7 +168,7 @@ export default function transform(file: FileInfo, api: API): string {
       if (expression.type === 'TemplateLiteral') {
         expression.quasis.forEach((quasi) => {
           if (quasi.value.raw !== '') {
-            const result = transformClassNames(quasi.value.raw);
+            const result = transformArbitraryCss(quasi.value.raw);
             if (result.hasChanges) {
               quasi.value.raw = result.transformed;
               quasi.value.cooked = result.transformed;
@@ -156,11 +185,6 @@ export default function transform(file: FileInfo, api: API): string {
             }
           }
         });
-
-        // Also process expressions within template literals
-        expression.expressions.forEach((expr) => {
-          processStringLiterals(j, expr, transformations, file.path);
-        });
       }
 
       // Handle function calls like clsx(), cn(), etc.
@@ -171,7 +195,7 @@ export default function transform(file: FileInfo, api: API): string {
 
       // Handle direct string literals within expressions: className={'...'}
       else if (expression.type === 'StringLiteral') {
-        const result = transformClassNames(expression.value);
+        const result = transformArbitraryCss(expression.value);
         if (result.hasChanges) {
           expression.value = result.transformed;
 
@@ -194,7 +218,7 @@ export default function transform(file: FileInfo, api: API): string {
     const value = path.node.value;
 
     if (value && value.type === 'StringLiteral') {
-      const result = transformClassNames(value.value);
+      const result = transformArbitraryCss(value.value);
       if (result.hasChanges) {
         value.value = result.transformed;
 
@@ -213,11 +237,84 @@ export default function transform(file: FileInfo, api: API): string {
 
   // Log transformations for debugging/reporting
   if (transformations.length > 0) {
-    console.log(`Transformed ${transformations.length} utility classes in ${file.path}`);
+    console.log(`Transformed ${transformations.length} arbitrary CSS classes in ${file.path}`);
     transformations.forEach((t) => {
       console.log(`  ${t.oldClass} -> ${t.newClass} at line ${t.line}`);
     });
   }
 
   return root.toSource({ quote: 'double' });
+}
+
+// Helper function for scanning (reuse the balanced parens logic)
+function findBalancedParensForScanning(
+  str: string,
+  startIndex: number,
+): { content: string; endIndex: number } | null {
+  let depth = 0;
+  let content = '';
+
+  for (let i = startIndex; i < str.length; i += 1) {
+    const char = str[i];
+
+    if (char === '(') {
+      depth += 1;
+      if (depth > 1) content += char;
+    } else if (char === ')') {
+      depth -= 1;
+      if (depth === 0) {
+        return { content, endIndex: i };
+      } else {
+        content += char;
+      }
+    } else {
+      if (depth > 0) content += char ?? '';
+    }
+  }
+
+  return null;
+}
+
+// Export a function to find arbitrary CSS patterns for scanning
+export function findArbitraryCssPatterns(content: string): Array<{
+  oldClass: string;
+  newClass: string;
+  line: number;
+  context: string;
+}> {
+  const results: Array<{
+    oldClass: string;
+    newClass: string;
+    line: number;
+    context: string;
+  }> = [];
+
+  const lines = content.split('\n');
+
+  lines.forEach((line, lineIndex) => {
+    const prefixPattern = /([a-zA-Z0-9_:-]+)-\(/g;
+    let match;
+
+    while ((match = prefixPattern.exec(line)) !== null) {
+      const classPrefix = match[1];
+      const parenStartIndex = match.index + match[0].length - 1;
+
+      const balanced = findBalancedParensForScanning(line, parenStartIndex);
+      if (balanced) {
+        const fullMatch = line.substring(match.index, balanced.endIndex + 1);
+        const newClass = `${classPrefix}-[${balanced.content}]`;
+
+        results.push({
+          oldClass: fullMatch,
+          newClass,
+          line: lineIndex + 1,
+          context: line.trim(),
+        });
+      }
+    }
+
+    prefixPattern.lastIndex = 0;
+  });
+
+  return results;
 }
