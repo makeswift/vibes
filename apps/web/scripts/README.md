@@ -21,11 +21,17 @@ pnpm run tw-downgrade
 ### Basic Commands
 
 ```bash
-# Transform a specific file or directory
-pnpm run tw-downgrade <path> [options]
+# List all available transformers
+pnpm run tw-downgrade list
 
-# Scan for potential changes without modifying files
-pnpm run tw-downgrade scan <path> [options]
+# Run a specific transformer
+pnpm run tw-downgrade <transformer> <path>
+
+# Run all transformers
+pnpm run tw-downgrade all <path>
+
+# Scan for potential changes
+pnpm run tw-downgrade scan <transformer> <path>
 ```
 
 ### Available Transformers
@@ -34,46 +40,67 @@ pnpm run tw-downgrade scan <path> [options]
 
    - Transforms renamed utility classes
    - Example: `shadow-xs` → `shadow-sm`, `outline-hidden` → `outline-none`
+   - Common transformations:
+     - `shadow-xs` → `shadow-sm`
+     - `shadow-sm` → `shadow`
+     - `outline-hidden` → `outline-none`
+     - `ring-3` → `ring`
 
 2. **Arbitrary CSS Variables** (`vars`)
 
    - Updates arbitrary CSS variable syntax
    - Example: `bg-(var(--primary))` → `bg-[var(--primary)]`
+   - Handles complex CSS functions:
+     - `text-(--alert-description-text,color-mix(...))` → `text-[--alert-description-text,color-mix(...)]`
 
 3. **Spacing Scale** (`space`)
    - Converts unsupported spacing values
    - Example: `mt-13` → `mt-[3.25rem]`
+   - Handles various spacing utilities:
+     - Margin: `mt-`, `mb-`, `ml-`, `mr-`, `mx-`, `my-`
+     - Padding: `p-`, `pt-`, `pb-`, `pl-`, `pr-`, `px-`, `py-`
+     - Gap: `gap-`, `gap-x-`, `gap-y-`
+     - Space: `space-x-`, `space-y-`
 
 ### Command Options
 
 ```bash
-# Transform specific files
-pnpm run tw-downgrade <path> --pattern "**/*.tsx"
+# Transform specific files using a glob pattern
+pnpm run tw-downgrade <transformer> <path> --pattern "**/*.tsx"
 
 # Dry run (show changes without applying them)
-pnpm run tw-downgrade <path> --dry-run
+pnpm run tw-downgrade <transformer> <path> --dry-run
 
 # Ignore specific patterns
-pnpm run tw-downgrade <path> --ignore-pattern "**/test/**"
-
-# Scan for changes
-pnpm run tw-downgrade scan <path>
+pnpm run tw-downgrade <transformer> <path> --ignore-pattern "**/test/**"
 
 # Output scan results as JSON
-pnpm run tw-downgrade scan <path> --json
+pnpm run tw-downgrade scan <transformer> <path> --json
 ```
 
 ## Examples
 
 ```bash
-# Transform all TypeScript/TSX files in the components directory
-pnpm run tw-downgrade ./components --pattern "**/*.{ts,tsx}"
+# List all available transformers
+pnpm run tw-downgrade list
 
-# Scan for potential changes in a specific file
-pnpm run tw-downgrade scan ./components/Button.tsx
+# Run the spacing scale transformer on components
+pnpm run tw-downgrade space ./components
+
+# Run all transformers on a specific file
+pnpm run tw-downgrade all ./components/Button.tsx
+
+# Scan for potential changes in components
+pnpm run tw-downgrade scan utils ./components
+
+# Scan all transformers
+pnpm run tw-downgrade scan all ./components
 
 # Transform with dry run to preview changes
-pnpm run tw-downgrade ./components --dry-run
+pnpm run tw-downgrade utils ./components --dry-run
+
+# Transform specific files with custom pattern
+pnpm run tw-downgrade vars ./components --pattern "**/*.tsx"
 ```
 
 ## Default Ignore Patterns
