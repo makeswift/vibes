@@ -37,7 +37,7 @@ const TRANSFORMERS: Record<string, TransformConfig> = {
   space: {
     name: 'Spacing Scale',
     description: 'Transform unsupported spacing values to arbitrary values (mt-13 → mt-[3.25rem])',
-    transformFile: 'transforms/spacing-scale.ts',
+    transformFile: 'transforms/space-scaling.ts',
     utilityMappings: SPACING_SCALE,
     customScanner: findSpacingScalePatterns,
   },
