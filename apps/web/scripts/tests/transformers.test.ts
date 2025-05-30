@@ -1,5 +1,4 @@
-import { type API, type FileInfo } from 'jscodeshift';
-import jscodeshift from 'jscodeshift';
+import jscodeshift, { type API, type FileInfo } from 'jscodeshift';
 
 // Import your transformers
 import arbitraryCssTransform from '../transforms/arbitrary-css-variables';
