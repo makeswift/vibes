@@ -21,15 +21,15 @@ export interface InputProps extends ComponentPropsWithRef<'input'> {
  *   --input-light-background: var(--background);
  *   --input-light-text: var(--foreground);
  *   --input-light-border: var(--contrast-100);
+ *   --input-light-border-error: var(--error);
  *   --input-light-focus: var(--foreground);
  *   --input-light-placeholder: var(--contrast-500);
- *   --input-light-error: var(--error);
  *   --input-dark-background: var(--foreground);
  *   --input-dark-text: var(--background);
  *   --input-dark-border: var(--contrast-500);
+ *   --input-dark-border-error: var(--error);
  *   --input-dark-focus: var(--background);
  *   --input-dark-placeholder: var(--contrast-100);
- *   --input-dark-error: var(--error);
  *  }
  * ```
  */
@@ -65,8 +65,18 @@ export const Input = ({
           'relative overflow-hidden rounded-lg border transition-colors duration-200 focus:outline-hidden',
           {
             light:
-              'border-(--input-light-border,var(--contrast-100)) bg-(--input-light-background,var(--background)) focus-within:border-(--input-light-focus,var(--foreground))',
-            dark: 'border-(--input-dark-border,var(--contrast-500)) bg-(--input-dark-background,var(--foreground)) focus-within:border-(--input-dark-focus,var(--background))',
+              'bg-(--input-light-background,var(--background)) focus-within:border-(--input-light-focus,var(--foreground))',
+            dark: 'bg-(--input-dark-background,var(--foreground)) focus-within:border-(--input-dark-focus,var(--background))',
+          }[colorScheme],
+          {
+            light:
+              errors && errors.length > 0
+                ? 'border-(--input-light-border-error,var(--error))'
+                : 'border-(--input-light-border,var(--contrast-100))',
+            dark:
+              errors && errors.length > 0
+                ? 'border-(--input-dark-border-error,var(--error))'
+                : 'border-(--input-dark-border,var(--contrast-500))',
           }[colorScheme],
         )}
       >
