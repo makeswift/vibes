@@ -9,7 +9,7 @@ import { Label } from '@/vibes/soul/form/label';
 interface Option {
   value: string;
   label: string;
-  image: { src: string; alt: string };
+  image?: { src: string; alt: string };
   disabled?: boolean;
 }
 
@@ -92,14 +92,16 @@ export const CardRadioGroup = React.forwardRef<
               }}
               value={option.value}
             >
-              <div className="relative aspect-square h-full">
-                <Image
-                  alt={option.image.alt}
-                  className="bg-background object-fill"
-                  fill
-                  src={option.image.src}
-                />
-              </div>
+              {option.image && (
+                <div className="relative aspect-square h-full">
+                  <Image
+                    alt={option.image.alt}
+                    className="bg-background object-fill"
+                    fill
+                    src={option.image.src}
+                  />
+                </div>
+              )}
 
               <span className="flex-1 truncate px-4 text-left text-ellipsis">{option.label}</span>
             </RadioGroupPrimitive.Item>

@@ -87,7 +87,7 @@ export function ProductDetailForm<F extends Field>({
   }>(
     (acc, field) => ({
       ...acc,
-      [field.name]: params[field.name] ?? field.defaultValue ?? '',
+      [field.name]: params[field.name] ?? field.defaultValue,
     }),
     { quantity: 1 },
   );
@@ -194,7 +194,7 @@ function FormField({
 
   const handleChange = useCallback(
     (value: string) => {
-      void setParams({ [field.name]: value });
+      void setParams({ [field.name]: value === '' ? value : null });
       controls.change(value);
     },
     [setParams, field, controls],
