@@ -21,6 +21,7 @@ import { Label } from '@/vibes/soul/form/label';
  *   --number-input-light-button-background: var(--background);
  *   --number-input-light-button-background-hover: var(--contrast-100) / 50%;
  *   --number-input-light-button-border: var(--contrast-100);
+ *   --number-input-light-button-border-error: var(--error);
  *   --number-input-dark-background: var(--background);
  *   --number-input-dark-text: var(--background);
  *   --number-input-dark-icon: var(--contrast-300);
@@ -28,6 +29,7 @@ import { Label } from '@/vibes/soul/form/label';
  *   --number-input-dark-button-background: var(--foreground);
  *   --number-input-dark-button-background-hover: var(--contrast-500) / 50%;
  *   --number-input-dark-button-border: var(--contrast-500);
+ *   --number-input-dark-button-border-error: var(--error);
  *  }
  * ```
  */
@@ -68,9 +70,18 @@ export const NumberInput = React.forwardRef<
           className={clsx(
             'inline-flex items-center rounded-lg border',
             {
+              light: 'bg-(--number-input-light-background,var(--background))',
+              dark: 'bg-(--number-input-dark-background,var(--foreground))',
+            }[colorScheme],
+            {
               light:
-                'border-(--number-input-light-button-border,var(--contrast-100)) bg-(--number-input-light-background,var(--background))',
-              dark: 'border-(--number-input-dark-button-border,var(--contrast-500)) bg-(--number-input-dark-background,var(--foreground))',
+                errors && errors.length > 0
+                  ? 'border-[var(--number-input-light-button-border-error,hsl(var(--error)))]'
+                  : 'border-[var(--number-input-light-button-border,hsl(var(--contrast-100)))]',
+              dark:
+                errors && errors.length > 0
+                  ? 'border-[var(--number-input-dark-button-border-error,hsl(var(--error)))]'
+                  : 'border-[var(--number-input-dark-button-border,hsl(var(--contrast-500)))]',
             }[colorScheme],
           )}
         >
