@@ -71,12 +71,12 @@ export const Input = ({
           {
             light:
               errors && errors.length > 0
-                ? 'border-[var(--input-light-border-error,hsl(var(--error)))]'
-                : 'border-[var(--input-light-border,hsl(var(--contrast-100)))]',
+                ? 'border-(--input-light-border-error,var(--error))'
+                : 'border-(--input-light-border,var(--contrast-100))',
             dark:
               errors && errors.length > 0
-                ? 'border-[var(--input-dark-border-error,hsl(var(--error)))]'
-                : 'border-[var(--input-dark-border,hsl(var(--contrast-500)))]',
+                ? 'border-(--input-dark-border-error,var(--error))'
+                : 'border-(--input-dark-border,var(--contrast-500))',
           }[colorScheme],
         )}
       >

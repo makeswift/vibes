@@ -76,12 +76,12 @@ export const NumberInput = React.forwardRef<
             {
               light:
                 errors && errors.length > 0
-                  ? 'border-[var(--number-input-light-button-border-error,hsl(var(--error)))]'
-                  : 'border-[var(--number-input-light-button-border,hsl(var(--contrast-100)))]',
+                  ? 'border-(--number-input-light-button-border-error,var(--error))'
+                  : 'border-(--number-input-light-button-border,var(--contrast-100))',
               dark:
                 errors && errors.length > 0
-                  ? 'border-[var(--number-input-dark-button-border-error,hsl(var(--error)))]'
-                  : 'border-[var(--number-input-dark-button-border,hsl(var(--contrast-500)))]',
+                  ? 'border-(--number-input-dark-button-border-error,var(--error))'
+                  : 'border-(--number-input-dark-button-border,var(--contrast-500))',
             }[colorScheme],
           )}
         >
