@@ -91,8 +91,8 @@ export const NumberInput = React.forwardRef<
               'group rounded-l-lg p-3.5 focus-visible:ring-2 focus-visible:ring-(--number-input-focus,var(--primary)) focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-30',
               {
                 light:
-                  'bg-(--number-input-light-button-background,var(--background)) hover:bg-(--number-input-light-button-background-hover,var(--contrast-100)/50%)',
-                dark: 'bg-(--number-input-dark-button-background,var(--foreground)) hover:bg-(--number-input-dark-button-background-hover,var(--contrast-500)/50%)',
+                  'bg-(--number-input-light-button-background,var(--background)) hover:bg-(--number-input-light-button-background-hover,color-mix(in_oklab,var(--contrast-100)_50%,transparent))',
+                dark: 'bg-(--number-input-dark-button-background,var(--foreground)) hover:bg-(--number-input-dark-button-background-hover,color-mix(in_oklab,var(--contrast-500)_50%,transparent))',
               }[colorScheme],
             )}
             disabled={disabled}
@@ -138,8 +138,8 @@ export const NumberInput = React.forwardRef<
               'group rounded-r-lg p-3.5 focus-visible:ring-2 focus-visible:ring-(--number-input-focus,var(--primary)) focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-30',
               {
                 light:
-                  'bg-(--number-input-light-button-background,var(--background)) hover:bg-(--number-input-light-button-background-hover,var(--contrast-100)/50%)',
-                dark: 'bg-(--number-input-dark-button-background,var(--foreground)) hover:bg-(--number-input-dark-button-background-hover,var(--contrast-500)/50%)',
+                  'bg-(--number-input-light-button-background,var(--background)) hover:bg-(--number-input-light-button-background-hover,color-mix(in_oklab,var(--contrast-100)_50%,transparent))',
+                dark: 'bg-(--number-input-dark-button-background,var(--foreground)) hover:bg-(--number-input-dark-button-background-hover,color-mix(in_oklab,var(--contrast-500)_50%,transparent))',
               }[colorScheme],
             )}
             disabled={disabled}
