@@ -598,7 +598,6 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           ) : null}
         </div>
       </div>
-
       <div className="absolute top-full right-0 left-0 z-50 flex w-full justify-center perspective-[2000px]">
         <NavigationMenu.Viewport className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 relative mt-2 w-full" />
       </div>
