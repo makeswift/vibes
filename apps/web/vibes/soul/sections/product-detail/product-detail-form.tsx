@@ -284,7 +284,7 @@ function FormField({
           onCheckedChange={(value) => handleChange(String(value))}
           onFocus={controls.focus}
           required={formField.required}
-          value={controls.value ?? 'false'}
+          value={controls.value ?? ''}
         />
       );
 
