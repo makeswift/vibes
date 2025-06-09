@@ -19,16 +19,16 @@ import { z } from 'zod';
 import { ButtonRadioGroup } from '@/vibes/soul/form/button-radio-group';
 import { CardRadioGroup } from '@/vibes/soul/form/card-radio-group';
 import { Checkbox } from '@/vibes/soul/form/checkbox';
+import { DatePicker } from '@/vibes/soul/form/date-picker';
 import { FormStatus } from '@/vibes/soul/form/form-status';
 import { Input } from '@/vibes/soul/form/input';
 import { NumberInput } from '@/vibes/soul/form/number-input';
 import { RadioGroup } from '@/vibes/soul/form/radio-group';
 import { Select } from '@/vibes/soul/form/select';
 import { SwatchRadioGroup } from '@/vibes/soul/form/swatch-radio-group';
+import { Textarea } from '@/vibes/soul/form/textarea';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
-import { DatePicker } from '@/vibes/soul/form/date-picker';
-import { Textarea } from '@/vibes/soul/form/textarea';
 
 import { Field, schema, SchemaRawShape } from './schema';
 
@@ -179,6 +179,7 @@ function SubmitButton({ children, disabled }: { children: ReactNode; disabled?: 
   );
 }
 
+// eslint-disable-next-line complexity
 function FormField({
   field,
   formField,
