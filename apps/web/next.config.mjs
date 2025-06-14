@@ -1,5 +1,8 @@
 import createJiti from 'jiti';
 import { fileURLToPath } from 'node:url';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import * as lightningcss from 'lightningcss';
+import browserslist from 'browserslist';
 
 const jiti = createJiti(fileURLToPath(import.meta.url));
 
@@ -47,6 +50,22 @@ const nextConfig = {
   },
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
+  webpack: (config) => {
+    config.optimization = {
+      ...config.optimization,
+      minimize: true,
+      minimizer: [
+        ...(config.optimization?.minimizer || []),
+        new CssMinimizerPlugin({
+          minify: CssMinimizerPlugin.lightningCssMinify,
+          minimizerOptions: {
+            targets: lightningcss.browserslistToTargets(browserslist('>= 0.25%')),
+          },
+        }),
+      ],
+    };
+    return config;
+  },
 };
 
 export default nextConfig;
