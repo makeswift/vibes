@@ -63,6 +63,7 @@
   font-family: var(--font-mono);
   font-weight: 500;
   display: grid;
+  overflow: auto;
 }
 
 .shiki .line {
