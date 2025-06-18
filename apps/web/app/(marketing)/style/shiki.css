@@ -56,7 +56,7 @@
 }
 
 .shiki {
-  @apply !bg-contrast-100 !rounded-none p-4;
+  @apply !bg-contrast-100 flex !rounded-none p-4;
 }
 
 .shiki code {
@@ -68,9 +68,6 @@
 
 .shiki .line {
   @apply relative block text-sm;
-  padding: 0 var(--shiki-line-padding);
-  width: calc(100% + (var(--shiki-line-padding) * 2));
-  margin: 0 calc(-1 * var(--shiki-line-padding));
   min-height: 20px;
 }
 
