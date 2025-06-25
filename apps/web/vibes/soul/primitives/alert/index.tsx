@@ -44,7 +44,7 @@ export function Alert({
   return (
     <div
       className={clsx(
-        'flex max-w-[356px] min-w-[284px] items-center justify-between gap-2 rounded-xl border border-(--alert-border,color-mix(in_oklab,var(--foreground)_10%,transparent)) py-3 ps-4 pe-3 shadow-xs',
+        'flex max-w-[356px] items-center justify-between gap-2 rounded-xl border border-(--alert-border,color-mix(in_oklab,var(--foreground)_10%,transparent)) py-3 ps-4 pe-3 shadow-xs',
         {
           success: 'bg-(--alert-success-background,var(--success-highlight))',
           warning: 'bg-(--alert-warning-background,var(--warning-highlight))',

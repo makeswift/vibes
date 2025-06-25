@@ -1,0 +1,118 @@
+---
+title: File Input
+preview: file-input-example
+previewSize: sm
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FileInput } from '@/vibes/soul/form/file-input';
+
+function Usage() {
+    return (
+      <FileInput />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FileInputProps
+
+| Prop             | Type                                                                                                            | Default                         |
+| ---------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `id`             | `string`                                                                                                        |                                 |
+| `className`      | `string`                                                                                                        |                                 |
+| `initialFiles`   | `Map<File, FileState>`                                                                                          |                                 |
+| `onFilesChange`  | `(files: Map<File, FileState>) => void`                                                                         |                                 |
+| `onUpload`       | `(files: File[], options: UploadOptions) => Promise<void> \| void` <Tooltip content="See UploadOptions below"/> |                                 |
+| `onFileAccept`   | `(file: File) => void`                                                                                          |                                 |
+| `onFileReject`   | `(file: File, message: string) => void`                                                                         |                                 |
+| `onFileValidate` | `(file: File) => string \| null \| undefined`                                                                   |                                 |
+| `hideLabel`      | `boolean`                                                                                                       | `false`                         |
+| `message`        | `string`                                                                                                        |                                 |
+| `cta`            | `string`                                                                                                        | `'Upload file'`                 |
+| `hint`           | `string`                                                                                                        | `'or drag and drop files here'` |
+| `invalid`        | `boolean`                                                                                                       |                                 |
+| `label`          | `string`                                                                                                        | `'File upload'`                 |
+| `maxFiles`       | `number`                                                                                                        |                                 |
+| `maxSize`        | `number`                                                                                                        |                                 |
+| `uploadingLabel` | `string`                                                                                                        | `'Uploading'`                   |
+| `successLabel`   | `string`                                                                                                        | `'Upload complete'`             |
+| `errorLabel`     | `string`                                                                                                        | `'Error'`                       |
+
+### UploadOptions
+
+| Prop         | Type                                     | Default |
+| ------------ | ---------------------------------------- | ------- |
+| `onProgress` | `(file: File, progress: number) => void` |         |
+| `onSuccess`  | `(file: File) => void`                   |         |
+| `onError`    | `(file: File, error: Error) => void`     |         |
+
+### FileState
+
+| Prop       | Type                                            | Default |
+| ---------- | ----------------------------------------------- | ------- |
+| `progress` | `number`                                        |         |
+| `status`   | `'idle' \| 'uploading' \| 'success' \| 'error'` |         |
+| `error`    | `string`                                        |         |
+
+### FileDropzoneProps
+
+| Prop       | Type                                  | Default |
+| ---------- | ------------------------------------- | ------- |
+| `children` | `ReactNode`                           |         |
+| `inputRef` | `RefObject<HTMLInputElement \| null>` |         |
+| `disabled` | `boolean`                             |         |
+| `invalid`  | `boolean`                             |         |
+
+### FileItemProps
+
+| Prop             | Type                   | Default             |
+| ---------------- | ---------------------- | ------------------- |
+| `file`           | `File`                 |                     |
+| `fileState`      | `FileState`            |                     |
+| `onRemoveFile`   | `(file: File) => void` |                     |
+| `uploadingLabel` | `string`               | `'Uploading'`       |
+| `successLabel`   | `string`               | `'Upload complete'` |
+| `errorLabel`     | `string`               | `'Error'`           |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+    --file-input-focus: var(--primary);
+    --file-input-message: var(--contrast-500);
+    --file-input-message-font-family: var(--font-family-body);
+    --file-input-dropzone-background: var(--background);
+    --file-input-dropzone-border: var(--contrast-200);
+    --file-input-dropzone-background-hover: var(--contrast-100);
+    --file-input-dropzone-border-hover: var(--foreground);
+    --file-input-dropzone-border-disabled: color-mix(in oklab, var(--contrast-200) 70%, transparent);
+    --file-input-dropzone-background-disabled: var(--background);
+    --file-input-dropzone-border-error: var(--error);
+    --file-input-dropzone-border-dragging: var(--foreground);
+    --file-input-dropzone-background-dragging: var(--success-highlight);
+    --file-input-trigger-icon: var(--foreground);
+    --file-input-dropzone-message-font-family: var(--font-family-body);
+    --file-input-dropzone-message: var(--contrast-500);
+    --file-input-dropzone-message-disabled: color-mix(in oklab, var(--contrast-500) 70%, transparent);
+    --file-input-item-border: var(--contrast-200);
+    --file-input-item-border-error: var(--error);
+    --file-input-item-name-font-family: var(--font-family-body);
+    --file-input-item-name: var(--foreground);
+    --file-input-item-status: var(--contrast-500);
+    --file-input-item-status-error: var(--error);
+    --file-input-item-delete-icon: var(--foreground);
+    --file-input-item-progress: var(--primary);
+    --file-input-mime-icon: var(--contrast-400);
+}
+`}</CodeBlock>

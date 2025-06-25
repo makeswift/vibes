@@ -38,6 +38,10 @@ export function ResetPasswordForm({
     lastResult: null,
   });
   const [form, fields] = useForm({
+    defaultValue: {
+      password: '',
+      confirmPassword: '',
+    },
     lastResult,
     constraint: getZodConstraint(schema),
     shouldValidate: 'onBlur',

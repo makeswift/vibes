@@ -69,6 +69,9 @@ export function CouponCodeForm({
   );
 
   const [form, fields] = useForm({
+    defaultValue: {
+      couponCode: '',
+    },
     lastResult: state.lastResult,
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',

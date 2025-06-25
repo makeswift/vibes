@@ -19,6 +19,9 @@ export function CouponChip({
   action,
 }: CouponChipProps) {
   const [form, fields] = useForm({
+    defaultValue: {
+      couponCode,
+    },
     onValidate({ formData }) {
       return parseWithZod(formData, {
         schema: couponCodeActionFormDataSchema({}),

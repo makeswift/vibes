@@ -21,10 +21,11 @@ interface ToastOptions {
 export const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
+      className="flex w-full flex-col items-end"
       toastOptions={{
         unstyled: true,
         classNames: {
-          toast: 'group focus-visible:ring-0',
+          toast: 'group focus-visible:ring-0 w-full',
         },
       }}
       {...props}

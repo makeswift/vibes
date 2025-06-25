@@ -34,6 +34,9 @@ export function ForgotPasswordForm({
 }: ForgotPasswordFormProps) {
   const [{ lastResult, successMessage }, formAction] = useActionState(action, { lastResult: null });
   const [form, fields] = useForm({
+    defaultValue: {
+      email: '',
+    },
     lastResult,
     constraint: getZodConstraint(schema),
     shouldValidate: 'onBlur',

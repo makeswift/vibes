@@ -49,6 +49,9 @@ export function InlineEmailForm({
   });
 
   const [form, fields] = useForm({
+    defaultValue: {
+      email: '',
+    },
     lastResult,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema });
