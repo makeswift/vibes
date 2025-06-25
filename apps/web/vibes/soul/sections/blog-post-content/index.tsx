@@ -59,57 +59,57 @@ export function BlogPostContent({
 }: BlogPostContentProps) {
   return (
     <SectionLayout className={clsx('group/blog-post-content', className)}>
-      <Stream fallback={<BlogPostContentSkeleton />} value={streamableBlogPost}>
-        {(blogPost) => {
-          const { title, author, date, tags, content, image } = blogPost;
+        <Stream fallback={<BlogPostContentSkeleton />} value={streamableBlogPost}>
+          {(blogPost) => {
+            const { title, author, date, tags, content, image } = blogPost;
 
-          return (
-            <>
-              <header className="@2xl:pb-12 @4xl:pb-16 mx-auto w-full max-w-4xl pb-8 font-[family-name:var(--blog-post-content-info-font-family,var(--font-family-body))]">
-                {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-                <h1 className="text-(--blog-post-content-title,var(--foreground)) @xl:text-5xl @4xl:text-6xl mb-4 mt-8 font-[family-name:var(--blog-post-content-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none">
-                  {title}
-                </h1>
-                <p>
-                  {date}{' '}
-                  {author !== null && (
-                    <>
-                      <span className="px-1">•</span> {author}
-                    </>
+            return (
+              <>
+                <header className="mx-auto w-full max-w-4xl pb-8 font-[family-name:var(--blog-post-content-info-font-family,var(--font-family-body))] @2xl:pb-12 @4xl:pb-16">
+                  {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
+                  <h1 className="mt-8 mb-4 font-[family-name:var(--blog-post-content-title-font-family,var(--font-family-heading))] text-4xl leading-none font-medium text-(--blog-post-content-title,var(--foreground)) @xl:text-5xl @4xl:text-6xl">
+                    {title}
+                  </h1>
+                  <p>
+                    {date}{' '}
+                    {author !== null && (
+                      <>
+                        <span className="px-1">•</span> {author}
+                      </>
+                    )}
+                  </p>
+                  {tags && tags.length > 0 && (
+                    <div className="mt-4 -ml-1 flex flex-wrap gap-1.5 @xl:mt-6">
+                      {tags.map((tag) => (
+                        <ButtonLink
+                          href={tag.link.href}
+                          key={tag.link.href}
+                          size="small"
+                          variant="tertiary"
+                        >
+                          {tag.label}
+                        </ButtonLink>
+                      ))}
+                    </div>
                   )}
-                </p>
-                {tags && tags.length > 0 && (
-                  <div className="@xl:mt-6 -ml-1 mt-4 flex flex-wrap gap-1.5">
-                    {tags.map((tag) => (
-                      <ButtonLink
-                        href={tag.link.href}
-                        key={tag.link.href}
-                        size="small"
-                        variant="tertiary"
-                      >
-                        {tag.label}
-                      </ButtonLink>
-                    ))}
-                  </div>
+                </header>
+                {image && (
+                  <Image
+                    alt={image.alt}
+                    className="mb-8 aspect-video w-full rounded-2xl bg-(--blog-post-content-image-background,var(--contrast-100)) object-cover @2xl:mb-12 @4xl:mb-16"
+                    height={780}
+                    src={image.src}
+                    width={1280}
+                  />
                 )}
-              </header>
-              {image && (
-                <Image
-                  alt={image.alt}
-                  className="bg-(--blog-post-content-image-background,var(--contrast-100)) @2xl:mb-12 @4xl:mb-16 mb-8 aspect-video w-full rounded-2xl object-cover"
-                  height={780}
-                  src={image.src}
-                  width={1280}
+                <article
+                  className="prose mx-auto w-full max-w-4xl space-y-4"
+                  dangerouslySetInnerHTML={{ __html: content }}
                 />
-              )}
-              <article
-                className="prose mx-auto w-full max-w-4xl space-y-4"
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
-            </>
-          );
-        }}
-      </Stream>
+              </>
+            );
+          }}
+        </Stream>
     </SectionLayout>
   );
 }
@@ -120,25 +120,25 @@ export function BlogPostContentSkeleton({ className }: Pick<BlogPostContentProps
       className={clsx('group-has-[[data-pending]]/blog-post-content:animate-pulse', className)}
       pending
     >
-      <div className="@2xl:pb-12 @4xl:pb-16 mx-auto w-full max-w-4xl pb-8">
+      <div className="mx-auto w-full max-w-4xl pb-8 @2xl:pb-12 @4xl:pb-16">
         <BreadcrumbsSkeleton />
-        <div className="mb-4 mt-8">
+        <div className="mt-8 mb-4">
           <Skeleton.Text
             characterCount={60}
-            className="@xl:text-5xl @4xl:text-6xl rounded-lg text-4xl"
+            className="rounded-lg text-4xl @xl:text-5xl @4xl:text-6xl"
           />
         </div>
         <div>
           <Skeleton.Box className="h-6 w-1/4 rounded-lg" />
         </div>
-        <div className="@xl:mt-6 mt-4 flex w-2/6 min-w-[250px] flex-wrap gap-3">
+        <div className="mt-4 flex w-2/6 min-w-[250px] flex-wrap gap-3 @xl:mt-6">
           <Skeleton.Box className="h-10 w-16 rounded-full" />
           <Skeleton.Box className="h-10 w-14 rounded-full" />
           <Skeleton.Box className="h-10 w-20 rounded-full" />
         </div>
       </div>
-      <Skeleton.Box className="@2xl:mb-12 @4xl:mb-16 mb-8 aspect-video w-full rounded-2xl" />
-      <div className="@2xl:pb-12 @4xl:pb-16 mx-auto w-full max-w-4xl space-y-8 pb-8 text-xl">
+      <Skeleton.Box className="mb-8 aspect-video w-full rounded-2xl @2xl:mb-12 @4xl:mb-16" />
+      <div className="mx-auto w-full max-w-4xl space-y-8 pb-8 text-xl @2xl:pb-12 @4xl:pb-16">
         <Skeleton.Text characterCount={60} className="rounded-lg" />
         <div className="space-y-4 text-lg">
           <Skeleton.Text characterCount="full" className="rounded-lg" />
