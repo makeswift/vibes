@@ -75,7 +75,7 @@ export function BlogPostCard({
         {title}
       </h5>
       <p className="mt-1.5 line-clamp-3 text-sm font-normal text-(--blog-post-card-content-text,var(--contrast-400))">
-        {description || content}
+        {description ?? content}
       </p>
       <div className="mt-3 text-sm text-(--blog-post-card-author-date-text,var(--foreground))">
         <time dateTime={date}>
