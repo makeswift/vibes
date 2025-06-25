@@ -59,16 +59,16 @@ export function BlogPostContent({
 }: BlogPostContentProps) {
   return (
     <SectionLayout className={clsx('group/blog-post-content', className)}>
-      <div className="@xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20 mx-auto max-w-screen-2xl px-4 py-10">
+      <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
         <Stream fallback={<BlogPostContentSkeleton />} value={streamableBlogPost}>
           {(blogPost) => {
             const { title, author, date, tags, content, image } = blogPost;
 
             return (
               <>
-                <header className="@2xl:pb-12 @4xl:pb-16 mx-auto w-full max-w-4xl pb-8 font-[family-name:var(--blog-post-content-info-font-family,var(--font-family-body))]">
+                <header className="mx-auto w-full max-w-4xl pb-8 font-[family-name:var(--blog-post-content-info-font-family,var(--font-family-body))] @2xl:pb-12 @4xl:pb-16">
                   {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-                  <h1 className="text-(--blog-post-content-title,var(--foreground)) @xl:text-5xl @4xl:text-6xl mb-4 mt-8 font-[family-name:var(--blog-post-content-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none">
+                  <h1 className="mt-8 mb-4 font-[family-name:var(--blog-post-content-title-font-family,var(--font-family-heading))] text-4xl leading-none font-medium text-(--blog-post-content-title,var(--foreground)) @xl:text-5xl @4xl:text-6xl">
                     {title}
                   </h1>
                   <p>
@@ -80,7 +80,7 @@ export function BlogPostContent({
                     )}
                   </p>
                   {tags && tags.length > 0 && (
-                    <div className="@xl:mt-6 -ml-1 mt-4 flex flex-wrap gap-1.5">
+                    <div className="mt-4 -ml-1 flex flex-wrap gap-1.5 @xl:mt-6">
                       {tags.map((tag) => (
                         <ButtonLink
                           href={tag.link.href}
@@ -97,7 +97,7 @@ export function BlogPostContent({
                 {image && (
                   <Image
                     alt={image.alt}
-                    className="bg-(--blog-post-content-image-background,var(--contrast-100)) @2xl:mb-12 @4xl:mb-16 mb-8 aspect-video w-full rounded-2xl object-cover"
+                    className="mb-8 aspect-video w-full rounded-2xl bg-(--blog-post-content-image-background,var(--contrast-100)) object-cover @2xl:mb-12 @4xl:mb-16"
                     height={780}
                     src={image.src}
                     width={1280}
@@ -122,25 +122,25 @@ export function BlogPostContentSkeleton({ className }: Pick<BlogPostContentProps
       className={clsx('group-has-[[data-pending]]/blog-post-content:animate-pulse', className)}
       pending
     >
-      <div className="@2xl:pb-12 @4xl:pb-16 mx-auto w-full max-w-4xl pb-8">
+      <div className="mx-auto w-full max-w-4xl pb-8 @2xl:pb-12 @4xl:pb-16">
         <BreadcrumbsSkeleton />
-        <div className="mb-4 mt-8">
+        <div className="mt-8 mb-4">
           <Skeleton.Text
             characterCount={60}
-            className="@xl:text-5xl @4xl:text-6xl rounded-lg text-4xl"
+            className="rounded-lg text-4xl @xl:text-5xl @4xl:text-6xl"
           />
         </div>
         <div>
           <Skeleton.Box className="h-6 w-1/4 rounded-lg" />
         </div>
-        <div className="@xl:mt-6 mt-4 flex w-2/6 min-w-[250px] flex-wrap gap-3">
+        <div className="mt-4 flex w-2/6 min-w-[250px] flex-wrap gap-3 @xl:mt-6">
           <Skeleton.Box className="h-10 w-16 rounded-full" />
           <Skeleton.Box className="h-10 w-14 rounded-full" />
           <Skeleton.Box className="h-10 w-20 rounded-full" />
         </div>
       </div>
-      <Skeleton.Box className="@2xl:mb-12 @4xl:mb-16 mb-8 aspect-video w-full rounded-2xl" />
-      <div className="@2xl:pb-12 @4xl:pb-16 mx-auto w-full max-w-4xl space-y-8 pb-8 text-xl">
+      <Skeleton.Box className="mb-8 aspect-video w-full rounded-2xl @2xl:mb-12 @4xl:mb-16" />
+      <div className="mx-auto w-full max-w-4xl space-y-8 pb-8 text-xl @2xl:pb-12 @4xl:pb-16">
         <Skeleton.Text characterCount={60} className="rounded-lg" />
         <div className="space-y-4 text-lg">
           <Skeleton.Text characterCount="full" className="rounded-lg" />
