@@ -583,6 +583,13 @@ export const examples = [
     component: lazy(() => import('./examples/form/field-error')),
   },
   {
+    name: 'file-input-example',
+    dependencies: [],
+    registryDependencies: ['file-input'],
+    files: ['/examples/form/file-input/index.tsx'],
+    component: lazy(() => import('./examples/form/file-input')),
+  },
+  {
     name: 'form-status-example',
     dependencies: [],
     registryDependencies: [],

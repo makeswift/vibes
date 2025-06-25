@@ -111,7 +111,6 @@ export function ProductDetailForm<F extends Field>({
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: schema(fields) });
     },
-    // @ts-expect-error: `defaultValue` types are conflicting with `onValidate`.
     defaultValue,
     shouldValidate: 'onSubmit',
     shouldRevalidate: 'onInput',

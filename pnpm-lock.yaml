@@ -66,8 +66,8 @@ importers:
   apps/web:
     dependencies:
       '@conform-to/react':
-        specifier: ^1.2.2
-        version: 1.2.2(react@19.0.0)
+        specifier: ^1.8.1
+        version: 1.8.1(react@19.0.0)
       '@conform-to/zod':
         specifier: ^1.1.4
         version: 1.2.2(zod@3.24.2)
@@ -622,8 +622,11 @@ packages:
   '@conform-to/dom@1.2.2':
     resolution: {integrity: sha512-f05EClpNP31o6lX4LYmmLqgsiTOHdGfY7z2XXK6U6rRp+EtxrkUBdrFlIGsfkf7e9AFO19h3/Cb/cXHVd1k1FA==}
 
-  '@conform-to/react@1.2.2':
-    resolution: {integrity: sha512-1JBECb3NKi5/IlexaYLgnAxGJ55MRuO2sEQ10cJfUK2bfltNbTIQnYUDG6pU886A4lda/q6UH/adPsjiB/4Gkg==}
+  '@conform-to/dom@1.8.1':
+    resolution: {integrity: sha512-Sg4Jz31ZyiqbFHAKOmG+sVHtukku2Xmxv9ObYzj/TrKMXF1R9qN3ShucAIZWtRaw9l9vZGiqpDnSyfevmiBxuQ==}
+
+  '@conform-to/react@1.8.1':
+    resolution: {integrity: sha512-+bm+j0MOeOxrhrjWeoLmpmt+m1djZmPM/qE+AH5+8RewuC6GyXEXPyWAyES9bw9mZJ/WqInVS6Ljrf4gQ0I0zA==}
     peerDependencies:
       react: '>=18'
 
@@ -6662,9 +6665,11 @@ snapshots:
 
   '@conform-to/dom@1.2.2': {}
 
-  '@conform-to/react@1.2.2(react@19.0.0)':
+  '@conform-to/dom@1.8.1': {}
+
+  '@conform-to/react@1.8.1(react@19.0.0)':
     dependencies:
-      '@conform-to/dom': 1.2.2
+      '@conform-to/dom': 1.8.1
       react: 19.0.0
 
   '@conform-to/zod@1.2.2(zod@3.24.2)':

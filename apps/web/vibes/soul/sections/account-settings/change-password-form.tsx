@@ -31,6 +31,11 @@ export function ChangePasswordForm({
 }: ChangePasswordFormProps) {
   const [lastResult, formAction] = useActionState(action, null);
   const [form, fields] = useForm({
+    defaultValue: {
+      currentPassword: '',
+      password: '',
+      confirmPassword: '',
+    },
     constraint: getZodConstraint(changePasswordSchema),
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput',

@@ -164,10 +164,14 @@ export const primitives = [
     files: ['form/field-error/index.tsx'],
   },
   {
-    name: 'file-upload',
+    name: 'file-input',
     dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: ['label', 'button'],
-    files: ['form/file-upload/index.tsx'],
+    registryDependencies: ['label', 'button', 'toaster'],
+    files: [
+      'form/file-input/index.tsx',
+      'form/file-input/file-dropzone.tsx',
+      'form/file-input/file-item.tsx',
+    ],
   },
   {
     name: 'form-status',

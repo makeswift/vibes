@@ -430,6 +430,12 @@ const formPages: [Page, ...Page[]] = [
     component: 'field-error',
   },
   {
+    title: 'File Input',
+    slug: 'file-input',
+    file: 'docs/file-input.mdx',
+    component: 'file-input',
+  },
+  {
     title: 'Form Status',
     slug: 'form-status',
     file: 'docs/form-status.mdx',
