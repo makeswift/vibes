@@ -8,6 +8,7 @@ export interface BlogPost {
   title: string;
   author?: string | null;
   content: string;
+  description?: string;
   date: string;
   image?: {
     src: string;
@@ -41,6 +42,7 @@ export interface BlogPostCardProps extends BlogPost {
 export function BlogPostCard({
   author,
   content,
+  description,
   date,
   href,
   image,
@@ -73,7 +75,7 @@ export function BlogPostCard({
         {title}
       </h5>
       <p className="mt-1.5 line-clamp-3 text-sm font-normal text-(--blog-post-card-content-text,var(--contrast-400))">
-        {content}
+        {description || content}
       </p>
       <div className="mt-3 text-sm text-(--blog-post-card-author-date-text,var(--foreground))">
         <time dateTime={date}>
