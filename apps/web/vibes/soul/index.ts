@@ -3,8 +3,8 @@ import { Vibe } from '@/vibes/schema';
 import { brands } from './brands';
 import { examples } from './examples';
 import { navigation } from './navigation';
-import { primitives } from './primitives';
-import { sections } from './sections';
+import { primitives } from './registry/primitives';
+import { sections } from './registry/sections';
 
 export default {
   name: 'Soul',

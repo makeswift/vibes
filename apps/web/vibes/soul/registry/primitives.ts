@@ -44,12 +44,6 @@ export const primitives = [
     files: ['primitives/button/index.tsx'],
   },
   {
-    name: 'button-radio-group',
-    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-radio-group'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/button-radio-group/index.tsx'],
-  },
-  {
     name: 'button-link',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -60,24 +54,6 @@ export const primitives = [
     dependencies: ['clsx', 'lucide-react', 'react-day-picker'],
     registryDependencies: [],
     files: ['primitives/calendar/index.tsx'],
-  },
-  {
-    name: 'card-radio-group',
-    dependencies: ['clsx', '@radix-ui/react-radio-group'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/card-radio-group/index.tsx'],
-  },
-  {
-    name: 'compare-card',
-    dependencies: ['clsx'],
-    registryDependencies: ['skeleton', 'product-card', 'rating', 'button-link', 'reveal'],
-    files: ['primitives/compare-card/index.tsx', 'primitives/compare-card/add-to-cart-form.tsx'],
-  },
-  {
-    name: 'compare-drawer',
-    dependencies: ['@radix-ui/react-portal', 'lucide-react', 'nuqs'],
-    registryDependencies: ['button-link', 'toaster'],
-    files: ['primitives/compare-drawer/index.tsx', 'primitives/compare-drawer/loader.ts'],
   },
   {
     name: 'card',
@@ -92,22 +68,26 @@ export const primitives = [
     files: ['primitives/carousel/index.tsx'],
   },
   {
-    name: 'checkbox',
-    dependencies: ['@radix-ui/react-checkbox', '@radix-ui/react-label', 'lucide-react', 'clsx'],
-    registryDependencies: ['field-error'],
-    files: ['form/checkbox/index.tsx'],
-  },
-  {
-    name: 'checkbox-group',
-    dependencies: ['clsx'],
-    registryDependencies: ['field-error', 'label', 'checkbox'],
-    files: ['form/checkbox-group/index.tsx'],
-  },
-  {
     name: 'chip',
     dependencies: ['lucide-react'],
     registryDependencies: [],
     files: ['primitives/chip/index.tsx'],
+  },
+  {
+    name: 'compare-card',
+    dependencies: ['clsx'],
+    registryDependencies: ['skeleton', 'product-card', 'rating', 'button-link', 'reveal'],
+    files: [
+      'primitives/compare-card/index.tsx',
+      'primitives/compare-card/add-to-cart-form.tsx',
+      'primitives/compare-card/schema.ts',
+    ],
+  },
+  {
+    name: 'compare-drawer',
+    dependencies: ['@radix-ui/react-portal', 'lucide-react', 'nuqs'],
+    registryDependencies: ['button-link', 'toaster'],
+    files: ['primitives/compare-drawer/index.tsx', 'primitives/compare-drawer/loader.ts'],
   },
   {
     name: 'counter',
@@ -122,32 +102,6 @@ export const primitives = [
     files: ['primitives/cursor-pagination/index.tsx'],
   },
   {
-    name: 'date-picker',
-    dependencies: ['lucide-react', '@radix-ui/react-popover'],
-    registryDependencies: ['input', 'calendar'],
-    files: ['form/date-picker/index.tsx'],
-  },
-  {
-    name: 'dynamic-form',
-    dependencies: ['@conform-to/react', '@conform-to/zod', 'zod'],
-    registryDependencies: [
-      'button',
-      'button-radio-group',
-      'card-radio-group',
-      'checkbox',
-      'checkbox-group',
-      'date-picker',
-      'form-status',
-      'input',
-      'number-input',
-      'radio-group',
-      'select',
-      'swatch-radio-group',
-      'textarea',
-    ],
-    files: ['form/dynamic-form/index.tsx', 'form/dynamic-form/schema.ts'],
-  },
-  {
     name: 'favorite',
     dependencies: ['@radix-ui/react-toggle'],
     registryDependencies: [],
@@ -158,28 +112,10 @@ export const primitives = [
     ],
   },
   {
-    name: 'field-error',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['form/field-error/index.tsx'],
-  },
-  {
-    name: 'form-status',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['form/form-status/index.tsx'],
-  },
-  {
     name: 'icon',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['skeleton'],
     files: ['primitives/icon/index.tsx'],
-  },
-  {
-    name: 'input',
-    dependencies: ['clsx'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/input/index.tsx'],
   },
   {
     name: 'logo',
@@ -192,30 +128,6 @@ export const primitives = [
     dependencies: ['@radix-ui/react-dialog', 'clsx'],
     registryDependencies: [],
     files: ['primitives/modal/index.tsx'],
-  },
-  {
-    name: 'number-input',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/number-input/index.tsx'],
-  },
-  {
-    name: 'offset-pagination',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['primitives/offset-pagination/index.tsx'],
-  },
-  {
-    name: 'label',
-    dependencies: ['clsx', '@radix-ui/react-label'],
-    registryDependencies: [''],
-    files: ['form/label/index.tsx'],
-  },
-  {
-    name: 'logo',
-    dependencies: ['clsx'],
-    registryDependencies: ['streamable'],
-    files: ['primitives/logo/index.tsx'],
   },
   {
     name: 'navigation',
@@ -237,13 +149,13 @@ export const primitives = [
       'product-card',
       'toaster',
     ],
-    files: ['primitives/navigation/index.tsx'],
+    files: ['primitives/navigation/index.tsx', 'primitives/navigation/schema.ts'],
   },
   {
-    name: 'pagination',
+    name: 'offset-pagination',
     dependencies: ['clsx'],
     registryDependencies: [],
-    files: ['primitives/pagination/index.tsx'],
+    files: ['primitives/offset-pagination/index.tsx'],
   },
   {
     name: 'price-label',
@@ -258,24 +170,6 @@ export const primitives = [
     files: ['primitives/product-card/index.tsx', 'primitives/product-card/compare.tsx'],
   },
   {
-    name: 'products-list',
-    dependencies: [],
-    registryDependencies: ['product-card'],
-    files: ['sections/products-list/index.tsx'],
-  },
-  {
-    name: 'radio-group',
-    dependencies: ['clsx', '@radix-ui/react-radio-group'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/radio-group/index.tsx'],
-  },
-  {
-    name: 'range-input',
-    dependencies: ['lucide-react'],
-    registryDependencies: ['input', 'button'],
-    files: ['form/range-input/index.tsx'],
-  },
-  {
     name: 'rating',
     dependencies: ['clsx'],
     registryDependencies: [],
@@ -286,12 +180,6 @@ export const primitives = [
     dependencies: ['clsx'],
     registryDependencies: ['animated-underline', 'button'],
     files: ['primitives/reveal/index.tsx'],
-  },
-  {
-    name: 'select',
-    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-select'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/select/index.tsx'],
   },
   {
     name: 'side-panel',
@@ -318,33 +206,15 @@ export const primitives = [
     files: ['lib/streamable.tsx'],
   },
   {
-    name: 'swatch-radio-group',
-    dependencies: ['clsx', 'lucide-react', '@radix-ui/react-radio-group'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/swatch-radio-group/index.tsx'],
-  },
-  {
     name: 'tabs',
     dependencies: ['@radix-ui/react-tabs', 'clsx'],
     registryDependencies: [],
     files: ['primitives/tabs/index.tsx'],
   },
   {
-    name: 'textarea',
-    dependencies: ['clsx'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/textarea/index.tsx'],
-  },
-  {
     name: 'toaster',
     dependencies: ['sonner'],
     registryDependencies: ['alert'],
     files: ['primitives/toaster/index.tsx'],
-  },
-  {
-    name: 'toggle-group',
-    dependencies: ['clsx', '@radix-ui/react-toggle-group'],
-    registryDependencies: ['field-error', 'label'],
-    files: ['form/toggle-group/index.tsx'],
   },
 ] satisfies Components;
