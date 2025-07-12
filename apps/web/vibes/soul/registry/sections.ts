@@ -2,23 +2,6 @@ import { Components } from '@/vibes/schema';
 
 export const sections = [
   {
-    name: 'maintenance',
-    dependencies: ['lucide-react'],
-    registryDependencies: ['streamable', 'logo', 'section-layout'],
-    files: ['sections/maintenance/index.tsx'],
-  },
-  {
-    name: 'sticky-sidebar-layout',
-    dependencies: ['clsx'],
-    registryDependencies: ['streamable', 'skeleton', 'select'],
-    files: [
-      'sections/sticky-sidebar-layout/index.tsx',
-      'sections/sticky-sidebar-layout/sidebar-menu/index.tsx',
-      'sections/sticky-sidebar-layout/sidebar-menu/sidebar-menu-link.tsx',
-      'sections/sticky-sidebar-layout/sidebar-menu/sidebar-menu-select.tsx',
-    ],
-  },
-  {
     name: 'account-settings',
     dependencies: ['@conform-to/zod', '@conform-to/react', 'zod'],
     registryDependencies: ['input', 'button', 'toaster'],
@@ -95,22 +78,28 @@ export const sections = [
     ],
   },
   {
-    name: 'countdown',
-    dependencies: ['clsx', 'lucide-react'],
-    registryDependencies: [],
-    files: ['sections/countdown/index.tsx'],
-  },
-  {
     name: 'compare-section',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['streamable', 'carousel', 'compare-card', 'skeleton'],
     files: ['sections/compare-section/index.tsx'],
   },
   {
+    name: 'countdown',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: [],
+    files: ['sections/countdown/index.tsx'],
+  },
+  {
     name: 'discount',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['button'],
     files: ['sections/discount/index.tsx'],
+  },
+  {
+    name: 'dynamic-form-section',
+    dependencies: ['clsx'],
+    registryDependencies: ['dynamic-form', 'section-layout'],
+    files: ['sections/dynamic-form-section/index.tsx'],
   },
   {
     name: 'error',
@@ -206,7 +195,11 @@ export const sections = [
     name: 'footer',
     dependencies: ['clsx'],
     registryDependencies: ['streamable', 'logo', 'skeleton'],
-    files: ['sections/footer/index.tsx'],
+    files: [
+      'sections/footer/index.tsx',
+      'sections/footer/social-icons.tsx',
+      'sections/footer/payment-icons.tsx',
+    ],
   },
   {
     name: 'forgot-password',
@@ -237,16 +230,16 @@ export const sections = [
     files: ['sections/inline-email-form/index.tsx', 'sections/inline-email-form/schema.ts'],
   },
   {
+    name: 'maintenance',
+    dependencies: ['lucide-react'],
+    registryDependencies: ['streamable', 'logo', 'section-layout'],
+    files: ['sections/maintenance/index.tsx'],
+  },
+  {
     name: 'not-found',
     dependencies: [],
     registryDependencies: ['section-layout'],
     files: ['sections/not-found/index.tsx'],
-  },
-  {
-    name: 'order-history-section',
-    dependencies: ['clsx'],
-    registryDependencies: [],
-    files: ['sections/order-history-section/index.tsx'],
   },
   {
     name: 'order-details-section',
@@ -299,6 +292,7 @@ export const sections = [
     files: [
       'sections/product-detail/index.tsx',
       'sections/product-detail/product-detail-form.tsx',
+      'sections/product-detail/product-gallery.tsx',
       'sections/product-detail/schema.ts',
     ],
   },
@@ -373,18 +367,6 @@ export const sections = [
     ],
   },
   {
-    name: 'dynamic-form-section',
-    dependencies: ['clsx'],
-    registryDependencies: ['dynamic-form', 'section-layout'],
-    files: ['sections/dynamic-form-section/index.tsx'],
-  },
-  {
-    name: 'slide-carousel',
-    dependencies: ['clsx', 'embla-carousel-react', 'lucide-react'],
-    registryDependencies: [],
-    files: ['sections/slide-carousel/index.tsx'],
-  },
-  {
     name: 'slideshow',
     dependencies: [
       'clsx',
@@ -396,6 +378,17 @@ export const sections = [
     ],
     registryDependencies: ['button-link'],
     files: ['sections/slideshow/index.tsx'],
+  },
+  {
+    name: 'sticky-sidebar-layout',
+    dependencies: ['clsx'],
+    registryDependencies: ['streamable', 'skeleton', 'select'],
+    files: [
+      'sections/sticky-sidebar-layout/index.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/index.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/sidebar-menu-link.tsx',
+      'sections/sticky-sidebar-layout/sidebar-menu/sidebar-menu-select.tsx',
+    ],
   },
   {
     name: 'subscribe',
