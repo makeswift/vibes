@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "next build &&  next-sitemap",
+    "build:registry": "tsx scripts/build-registry.ts",
+    "build:next": "next build && next-sitemap",
+    "build": "npm run build:registry && npm run build:next",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
@@ -118,6 +120,7 @@
     "shiki": "^1.1.7",
     "tailwindcss": "^4.1.5",
     "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.20.3",
     "twoslash": "^0.2.4",
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.26.0",
