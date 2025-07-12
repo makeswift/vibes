@@ -1,0 +1,144 @@
+---
+title: File Upload
+preview: file-upload-example
+previewSize: sm
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { FileUpload } from '@/vibes/soul/form/file-upload';
+
+function Usage() {
+    return (
+        <FileUpload />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### FileUploadProps
+
+| Prop             | Type                                                                                                            | Default                       |
+| ---------------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `value`          | `File[]`                                                                                                        |                               |
+| `defaultValue`   | `File[]`                                                                                                        |                               |
+| `onValueChange`  | `(files: File[]) => void`                                                                                       |                               |
+| `onAccept`       | `(files: File[]) => void`                                                                                       |                               |
+| `onFileAccept`   | `(file: File) => void`                                                                                          |                               |
+| `onFileReject`   | `(file: File, message: string) => void`                                                                         |                               |
+| `onFileValidate` | `(file: File) => string \| null \| undefined`                                                                   |                               |
+| `onUpload`       | `(files: File[], options: UploadOptions) => Promise<void> \| void` <Tooltip content="See UploadOptions below"/> |                               |
+| `accept`         | `string`                                                                                                        |                               |
+| `maxFiles`       | `number`                                                                                                        |                               |
+| `maxSize`        | `number`                                                                                                        |                               |
+| `label`          | `string`                                                                                                        |                               |
+| `cta`            | `string`                                                                                                        | `Upload file`                 |
+| `name`           | `string`                                                                                                        |                               |
+| `disabled`       | `boolean`                                                                                                       | `false`                       |
+| `invalid`        | `boolean`                                                                                                       | `false`                       |
+| `multiple`       | `boolean`                                                                                                       | `false`                       |
+| `required`       | `boolean`                                                                                                       | `false`                       |
+| `message`        | `string`                                                                                                        | `or drag and drop files here` |
+| `hideLabel`      | `boolean`                                                                                                       | `false`                       |
+| `register`       | `(element: HTMLInputElement \| null) => void` <Tooltip content="See Conform Integration below"/>                |                               |
+| `registerProps`  | `ComponentPropsWithoutRef<'input'>` <Tooltip content="See Conform Integration below"/>                          |                               |
+| `uploadingLabel` | `string`                                                                                                        | `'Uploading'`                 |
+| `successLabel`   | `string`                                                                                                        | `'Upload complete'`           |
+| `idleLabel`      | `string`                                                                                                        | `'Ready to upload'`           |
+| `errorLabel`     | `string`                                                                                                        | `'Error'`                     |
+| `className`      | `string`                                                                                                        |                               |
+
+### UploadOptions
+
+| Prop         | Type                                     | Description                 |
+| ------------ | ---------------------------------------- | --------------------------- |
+| `onProgress` | `(file: File, progress: number) => void` | Called during file upload   |
+| `onSuccess`  | `(file: File) => void`                   | Called when upload succeeds |
+| `onError`    | `(file: File, error: Error) => void`     | Called when upload fails    |
+
+### Working with State
+
+`FileUpload` manages its own list of files by default. When a user drops, pastes, or picks a file the component stores it in an internal store—no props are required.
+
+```tsx
+<FileUpload label="Upload files" accept="image/*" maxFiles={5} />
+```
+
+### Integrating with Conform
+
+When you pass the `register` and `registerProps` coming from [Conform](https://conform.guide/), the component instantiates a hidden `<input type="file">` that Conform controls behind the scenes. `FileUpload` keeps the FileList of that hidden input synchronised with its internal store, so Conform can validate file selection without you copying data back and forth.
+
+```tsx
+import { getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { useControl } from '@conform-to/react/future';
+
+function ConformExample() {
+  const [form, fields] = useForm();
+  const control = useControl();
+
+  return (
+    <form {...getFormProps(form)}>
+      <FileUpload
+        label="Upload files"
+        accept="image/*"
+        maxFiles={5}
+        register={control.register}
+        registerProps={getInputProps(fields.files, { type: 'file' })}
+      />
+    </form>
+  );
+}
+```
+
+### Optional Controlled Mode
+
+If you need to drive the value from outside—e.g. store it in React state, a global store, or another form library—pass both `value` (the current array of `File`s) and `onValueChange` (called whenever the user adds or removes files).
+
+```tsx
+const [files, setFiles] = useState<File[]>([]);
+
+<FileUpload label="Upload files" value={files} onValueChange={setFiles} multiple />;
+```
+
+Omit either prop and the component will fall back to its internal state.
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+    --file-upload-focus: var(--primary);
+    --file-upload-message: var(--contrast-500);
+    --file-upload-message-font-family: var(--font-family-body);
+    --file-upload-dropzone-background: var(--background);
+    --file-upload-dropzone-border: var(--contrast-200);
+    --file-upload-dropzone-background-hover: var(--contrast-100);
+    --file-upload-dropzone-border-hover: var(--foreground);
+    --file-upload-dropzone-border-disabled: color-mix(in oklab, var(--contrast-200) 70%, transparent);
+    --file-upload-dropzone-background-disabled: var(--background);
+    --file-upload-dropzone-border-error: var(--error);
+    --file-upload-dropzone-border-dragging: var(--foreground);
+    --file-upload-dropzone-background-dragging: var(--success-highlight);
+    --file-upload-trigger-icon: var(--foreground);
+    --file-upload-dropzone-message-font-family: var(--font-family-body);
+    --file-upload-dropzone-message: var(--contrast-500);
+    --file-upload-dropzone-message-disabled: color-mix(in oklab, var(--contrast-500) 70%, transparent);
+    --file-upload-item-border: var(--contrast-200);
+    --file-upload-item-border-error: var(--error);
+    --file-upload-item-name-font-family: var(--font-family-body);
+    --file-upload-item-name: var(--foreground);
+    --file-upload-item-status: var(--contrast-500);
+    --file-upload-item-status-error: var(--error);
+    --file-upload-item-delete-icon: var(--foreground);
+    --file-upload-item-progress: var(--primary);
+    --file-upload-mime-icon: var(--contrast-400);
+}
+`}</CodeBlock>
