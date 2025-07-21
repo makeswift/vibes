@@ -21,8 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      issues: write
       pull-requests: write
+      issues: write
+      actions: write
 
     steps:
       - name: Checkout repository
@@ -31,7 +32,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 9
 
@@ -50,6 +51,7 @@ jobs:
 
       - name: Create Release Pull Request or Publish
         id: changesets
+        if: github.ref == 'refs/heads/main'
         uses: changesets/action@v1
         with:
           version: pnpm changeset version
@@ -59,3 +61,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Notify on successful publish
+        if: github.ref == 'refs/heads/main' && steps.changesets.outputs.published == 'true'
+        run: |
+          echo "🎉 CLI published successfully!"
+          echo "Published packages:"
+          echo "${{ steps.changesets.outputs.publishedPackages }}"
