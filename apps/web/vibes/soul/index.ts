@@ -3,8 +3,9 @@ import { Vibe } from '@/vibes/schema';
 import { brands } from './brands';
 import { examples } from './examples';
 import { navigation } from './navigation';
-import { primitives } from './primitives';
-import { sections } from './sections';
+import { form } from './registry/form';
+import { primitives } from './registry/primitives';
+import { sections } from './registry/sections';
 
 export default {
   name: 'Soul',
@@ -17,6 +18,6 @@ export default {
     url: 'https://monogram.io',
   },
   navigation,
-  components: [...primitives, ...sections, ...examples],
+  components: [...primitives, ...form, ...sections, ...examples],
   brands,
 } satisfies Vibe;
