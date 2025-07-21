@@ -462,7 +462,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                     </Link>
                   </NavigationMenu.Trigger>
                   {item.groups != null && item.groups.length > 0 && (
-                    <NavigationMenu.Content className="rounded-2xl bg-(--nav-menu-background,var(--background)) shadow-xl ring-1 ring-(--nav-menu-border,color-mix(in_oklab,var(--foreground)_95%,transparent))">
+                    <NavigationMenu.Content className="rounded-2xl bg-(--nav-menu-background,var(--background)) shadow-xl ring-1 ring-(--nav-menu-border,color-mix(in_oklab,var(--foreground)_5%,transparent))">
                       <div className="m-auto grid w-full max-w-screen-lg grid-cols-5 justify-center gap-5 px-5 pt-5 pb-8">
                         {item.groups.map((group, columnIndex) => (
                           <ul className="flex flex-col" key={columnIndex}>
