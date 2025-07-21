@@ -6,6 +6,10 @@ on:
     paths:
       - 'apps/cli/**'
       - '.changeset/**'
+  pull_request:
+    paths:
+      - 'apps/cli/**'
+      - '.changeset/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -45,6 +49,7 @@ jobs:
 
       - name: Create Release Pull Request or Publish
         id: changesets
+        if: github.ref == 'refs/heads/main'
         uses: changesets/action@v1
         with:
           version: pnpm changeset version
