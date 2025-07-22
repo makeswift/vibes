@@ -5,8 +5,26 @@ description: Latest changes and updates to Soul.
 
 ## July 2025
 
-### FileUpload Component
+### Launch of VIBES CLI
 
-We've added a new [`FileUpload`](/docs/soul/file-upload) component that supports drag & drop, progress tracking, and file validation.
+We're excited to announce the launch of the [VIBES CLI](https://www.npmjs.com/package/vibes) – a command-line tool for installing VIBES components directly into your project.
 
-<Preview componentName="file-upload-example" size="sm" />
+#### Key features:
+
+- Smart package manager detection (pnpm, yarn, bun, npm)
+- Interactive dependency installation with user prompts
+- Intelligent component resolution with automatic dependency handling
+- Flexible installation options with `--dry-run` and `--no-install` flags
+
+#### Get started:
+
+```bash
+# Install a component
+npx vibes@latest add button
+
+# Install with dependencies
+npx vibes@latest add navigation
+
+# Preview changes without installing
+npx vibes@latest add accordion --dry-run
+```
