@@ -1,6 +1,6 @@
 {
   "name": "vibes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for installing VIBES components",
   "private": false,
   "publishConfig": {
@@ -8,7 +8,8 @@
   },
   "files": [
     "dist",
-    "bin"
+    "bin",
+    "README.md"
   ],
   "type": "module",
   "bin": {
