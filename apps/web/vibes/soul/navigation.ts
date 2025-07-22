@@ -501,6 +501,7 @@ const gettingStartedPages: [Page, ...Page[]] = [
   { title: 'Introduction', slug: 'introduction', file: 'docs/introduction.mdx' },
   { title: 'Installation', slug: 'installation', file: 'docs/installation.mdx' },
   { title: 'Figma', slug: 'figma', file: 'docs/figma.mdx' },
+  { title: 'Changelog', slug: 'changelog', file: 'docs/changelog.mdx' },
 ];
 
 export const navigation = [

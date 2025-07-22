@@ -48,7 +48,7 @@ export function Installation({ vibe, componentName }: { vibe: Vibe; componentNam
           <Steps>
             <Step>
               <h3>Run the following command</h3>
-              <CodeBlock lang="bash">{`npx vibes@latest add ${vibe.slug}/${componentName}`}</CodeBlock>
+              <CodeBlock lang="bash">{`npx vibes@latest add ${componentName}`}</CodeBlock>
             </Step>
           </Steps>
         </TabsContent>
