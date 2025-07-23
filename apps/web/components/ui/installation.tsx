@@ -44,13 +44,9 @@ export function Installation({ vibe, componentName }: { vibe: Vibe; componentNam
           <TabsTrigger value="cli">CLI</TabsTrigger>
           <TabsTrigger value="manual">Manual</TabsTrigger>
         </TabsList>
-        <TabsContent className="pt-4" value="cli">
-          <Steps>
-            <Step>
-              <h3>Run the following command</h3>
-              <CodeBlock lang="bash">{`npx vibes@latest add ${componentName}`}</CodeBlock>
-            </Step>
-          </Steps>
+        <TabsContent value="cli">
+          <h3>Run the following command</h3>
+          <CodeBlock lang="bash">{`npx vibes@latest add ${componentName}`}</CodeBlock>
         </TabsContent>
         <TabsContent className="pt-4" value="manual">
           <Steps>
