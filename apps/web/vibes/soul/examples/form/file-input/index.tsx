@@ -48,16 +48,20 @@ export default function Preview() {
   );
 
   return (
-    <div className="p-10">
-      <FileInput
-        accept="image/*"
-        label="Feature Images"
-        maxFiles={2}
-        maxSize={200 * 1024}
-        message="Max 2 files, up to 200KB"
-        multiple
-        onUpload={onUpload}
-      />
+    <div className="@container">
+      <div className="p-4 @lg:p-10">
+        <div className="mx-auto max-w-xl">
+          <FileInput
+            accept="image/*"
+            label="Feature Images"
+            maxFiles={2}
+            maxSize={200 * 1024}
+            message="Max 2 files, up to 200KB"
+            multiple
+            onUpload={onUpload}
+          />
+        </div>
+      </div>
     </div>
   );
 }

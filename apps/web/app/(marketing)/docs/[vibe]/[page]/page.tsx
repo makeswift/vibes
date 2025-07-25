@@ -190,6 +190,7 @@ export default async function Page({
               'prose-pre:my-0 prose-pre:outline-primary',
               'prose-pre:[&_code]:block prose-pre:[&_code]:px-5 prose-pre:[&_code]:py-5 prose-pre:[&_code]:text-sm prose-pre:[&_code]:leading-5',
               'prose-table:my-0',
+              'prose-hr:border-contrast-200',
             )}
           >
             {meta.features && (
