@@ -58,6 +58,16 @@ export const form = [
     files: ['form/field-error/index.tsx'],
   },
   {
+    name: 'file-input',
+    dependencies: ['clsx', 'lucide-react'],
+    registryDependencies: ['label', 'button', 'toaster'],
+    files: [
+      'form/file-input/index.tsx',
+      'form/file-input/file-dropzone.tsx',
+      'form/file-input/file-item.tsx',
+    ],
+  },
+  {
     name: 'form-status',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: [],
