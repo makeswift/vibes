@@ -2,6 +2,22 @@
   "name": "vibes",
   "version": "1.0.1",
   "description": "CLI for installing VIBES components",
+  "homepage": "https://vibes.site",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makeswift/vibes.git",
+    "directory": "apps/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/makeswift/vibes/issues"
+  },
+  "keywords": [
+    "ui",
+    "components",
+    "design-system",
+    "cli",
+    "vibes"
+  ],
   "private": false,
   "publishConfig": {
     "access": "public"
