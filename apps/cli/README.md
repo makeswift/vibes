@@ -1,6 +1,16 @@
 # VIBES CLI
 
+[![npm version](https://badge.fury.io/js/vibes.svg)](https://badge.fury.io/js/vibes)
+[![GitHub](https://img.shields.io/github/license/makeswift/vibes)](https://github.com/makeswift/vibes)
+[![GitHub issues](https://img.shields.io/github/issues/makeswift/vibes)](https://github.com/makeswift/vibes/issues)
+
 A CLI tool for installing UI components from the VIBES design system.
+
+## 🔗 Links
+
+- Homepage: [https://vibes.site](https://vibes.site)
+- GitHub: [https://github.com/makeswift/vibes](https://github.com/makeswift/vibes)
+- Issues: [Report a bug](https://github.com/makeswift/vibes/issues)
 
 ## Installation
 
@@ -39,3 +49,7 @@ vibes add button --registry https://custom-registry.com/registry
 # Skip automatic dependency installation
 vibes add button --no-install
 ```
+
+## Contributing
+
+Found a bug or want to contribute? Check out our [GitHub repository](https://github.com/makeswift/vibes) and feel free to open an issue or submit a pull request!
