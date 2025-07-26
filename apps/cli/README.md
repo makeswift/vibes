@@ -6,7 +6,7 @@
 
 A CLI tool for installing UI components from the VIBES design system.
 
-## 🔗 Links
+## Links
 
 - Homepage: [https://vibes.site](https://vibes.site)
 - GitHub: [https://github.com/makeswift/vibes](https://github.com/makeswift/vibes)
