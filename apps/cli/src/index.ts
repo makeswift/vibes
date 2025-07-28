@@ -8,7 +8,7 @@ const program = new Command();
 program
   .name("vibes")
   .description("CLI for installing VIBES components")
-  .version("0.1.0");
+  .version("1.4.0");
 
 program.addCommand(addCommand);
 
