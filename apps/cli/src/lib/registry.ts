@@ -26,7 +26,10 @@ export async function fetchComponent(
     ? componentName.split("/")
     : ["soul", componentName];
 
-  const url = `${registryUrl}/${vibe}/${name}.json`;
+  // Use different URL structure for custom vs default registry
+  const url = options.registryUrl
+    ? `${registryUrl}/${name}.json`
+    : `${registryUrl}/${vibe}/${name}.json`;
 
   try {
     const response = await fetch(url);

@@ -11,6 +11,13 @@
       "cache": false,
       "persistent": true
     },
-    "typecheck": {}
+    "typecheck": {},
+    "test": {
+      "inputs": ["src/**", "tests/**", "*.config.{js,ts}", "package.json"]
+    },
+    "test:e2e": {
+      "inputs": ["src/**", "tests/**", "*.config.{js,ts}", "package.json"],
+      "dependsOn": ["build"]
+    }
   }
 }
