@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build:registry": "tsx scripts/build-registry.ts",
-    "prebuild": "tsx scripts/build-registry.ts",
-    "build": "next build && next-sitemap",
+    "build": "next build && next-sitemap && tsx scripts/build-registry.ts",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
