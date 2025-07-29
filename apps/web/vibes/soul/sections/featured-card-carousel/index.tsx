@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 import { Streamable } from '@/vibes/soul/lib/streamable';
 import { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';
-import { type CardContent } from '@/vibes/soul/primitives/card';
-import { CardCarousel } from '@/vibes/soul/sections/card-carousel';
+import { type CategoryCardContent } from '@/vibes/soul/primitives/category-card';
+import { CategoryCardCarousel } from '@/vibes/soul/sections/category-card-carousel';
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 
 interface Link {
@@ -15,7 +15,7 @@ export interface FeaturedCardCarouselProps {
   title: string;
   description?: string;
   cta?: Link;
-  cards: Streamable<CardContent[]>;
+  cards: Streamable<CategoryCardContent[]>;
   scrollbarLabel?: string;
 }
 
@@ -43,7 +43,7 @@ export function FeaturedCardCarousel({
     <SectionLayout containerSize="2xl">
       <div className="mb-6 flex w-full flex-row flex-wrap items-end justify-between gap-x-8 gap-y-6 @4xl:mb-8">
         <header className="font-(family-name:--featured-card-carousel-font-family,var(--font-family-body))">
-          <h2 className="font-heading font-(family-name:--featured-card-carousel-title-font-family,var(--font-family-heading)) text-2xl leading-none font-medium text-(--featured-card-carousel-title,var(--foreground)) @xl:text-3xl @4xl:text-4xl">
+          <h2 className="font-(family-name:--featured-card-carousel-title-font-family,var(--font-family-heading)) text-2xl leading-none font-medium text-(--featured-card-carousel-title,var(--foreground)) @xl:text-3xl @4xl:text-4xl">
             {title}
           </h2>
           {description != null && description !== '' && (
@@ -59,7 +59,7 @@ export function FeaturedCardCarousel({
         )}
       </div>
       <div className="group/card-carousel">
-        <CardCarousel cards={cards} scrollbarLabel={scrollbarLabel} />
+        <CategoryCardCarousel cards={cards} scrollbarLabel={scrollbarLabel} />
       </div>
     </SectionLayout>
   );

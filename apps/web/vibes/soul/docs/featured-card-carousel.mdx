@@ -26,7 +26,7 @@ function Usage() {
     );
 }
 
-const cards: CardContent[] = [
+const cards: CategoryCardContent[] = [
     {
       title: 'Mini Bar Bag',
       image: {
@@ -46,15 +46,15 @@ const cards: CardContent[] = [
 
 ### FeaturedCardCarouselProps
 
-| Prop             | Type                                                                                             | Default |
-| ---------------- | ------------------------------------------------------------------------------------------------ | ------- |
-| `title*`         | `string`                                                                                         |         |
-| `description`    | `string`                                                                                         |         |
-| `cta`            | `Link` <Tooltip content="See Link below"/>                                                       |         |
-| `cards*`         | [`Streamable`](docs/soul/streamable)`<CardContent[]>` <Tooltip content="See CardContent below"/> |         |
-| `scrollbarLabel` | `string`                                                                                         |         |
+| Prop             | Type                                                                                                             | Default |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------- | ------- |
+| `title*`         | `string`                                                                                                         |         |
+| `description`    | `string`                                                                                                         |         |
+| `cta`            | `Link` <Tooltip content="See Link below"/>                                                                       |         |
+| `cards*`         | [`Streamable`](docs/soul/streamable)`<CategoryCardContent[]>` <Tooltip content="See CategoryCardContent below"/> |         |
+| `scrollbarLabel` | `string`                                                                                                         |         |
 
-### CardContent
+### CategoryCardContent
 
 | Prop     | Type                                         | Default |
 | -------- | -------------------------------------------- | ------- |

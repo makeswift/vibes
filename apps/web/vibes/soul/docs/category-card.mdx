@@ -1,0 +1,67 @@
+---
+title: Category Card
+preview: category-card-example
+previewSize: lg
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { CategoryCard } from '@/vibes/soul/primitives/category-card';
+
+function Usage() {
+    return (
+      <CategoryCard href="#" title="Partial shade" image={{ src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/pink-caladium.jpeg', alt: 'Low Maintenance' }} />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### CategoryCardProps
+
+| Prop              | Type                                          | Default                                                                              |
+| ----------------- | --------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `className`       | `string`                                      |                                                                                      |
+| `title*`          | `string`                                      |                                                                                      |
+| `image`           | `{ src: string; alt: string }`                |                                                                                      |
+| `href*`           | `string`                                      |                                                                                      |
+| `textColorScheme` | `'light' \| 'dark'`                           | `'light'`                                                                            |
+| `iconColorScheme` | `'light' \| 'dark'`                           | `'light'`                                                                            |
+| `aspectRatio`     | `'5:6' \| '3:4' \| '1:1'`                     | `'5:6'`                                                                              |
+| `borderRadius`    | `'none' \| 'small' \| 'medium' \| 'large'`    | `'large'`                                                                            |
+| `imageSizes`      | `string`                                      | `'(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw'` |
+| `textPosition`    | `'inside' \| 'outside'`                       | `'outside'`                                                                          |
+| `textSize`        | `'small' \| 'medium' \| 'large' \| 'x-large'` | `'small'`                                                                            |
+| `showOverlay`     | `boolean`                                     | `true`                                                                               |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+    --category-card-focus: var(--primary);
+    --category-card-light-offset: var(--background);
+    --category-card-light-text: var(--foreground);
+    --category-card-light-icon: var(--foreground);
+    --category-card-light-background: var(--contrast-100);
+    --category-card-dark-offset: var(--foreground);
+    --category-card-dark-text: var(--background);
+    --category-card-dark-icon: var(--background);
+    --category-card-dark-background: var(--contrast-500);
+    --category-card-font-family: var(--font-family-body);
+    --category-card-border-radius: 1rem;
+}
+`}</CodeBlock>
+
+## Changelog
+
+### 2025-07-28
+
+- Renamed to `CategoryCard` from `Card`

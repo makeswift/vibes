@@ -1,8 +1,8 @@
-import { type CardContent } from '@/vibes/soul/primitives/card';
-import { CardCarousel } from '@/vibes/soul/sections/card-carousel';
+import { type CategoryCardContent } from '@/vibes/soul/primitives/category-card';
+import { CategoryCardCarousel } from '@/vibes/soul/sections/category-card-carousel';
 
 export default function Preview() {
-  const cardsPromise = new Promise<CardContent[]>((resolve) => {
+  const cardsPromise = new Promise<CategoryCardContent[]>((resolve) => {
     setTimeout(() => {
       resolve(cards);
     }, 1000);
@@ -12,7 +12,7 @@ export default function Preview() {
     <div>
       <section className="group/pending @container overflow-hidden">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 group-has-[[data-pending]]/pending:animate-pulse @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-          <CardCarousel
+          <CategoryCardCarousel
             cards={cardsPromise}
             className="w-full"
             emptyStateSubtitle="Try browsing our complete catalog of products."
@@ -23,7 +23,7 @@ export default function Preview() {
       </section>
       <section className="group/pending bg-foreground @container overflow-hidden">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 group-has-[[data-pending]]/pending:animate-pulse @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
-          <CardCarousel
+          <CategoryCardCarousel
             cards={cardsPromise}
             className="w-full"
             emptyStateSubtitle="Try browsing our complete catalog of products."
@@ -37,7 +37,7 @@ export default function Preview() {
   );
 }
 
-const cards: CardContent[] = [
+const cards: CategoryCardContent[] = [
   {
     title: 'Mini Bar Bag',
     image: {

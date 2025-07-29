@@ -1,7 +1,7 @@
 ---
 title: Card
 preview: card-example
-previewSize: lg
+previewSize: sm
 ---
 
 ## Usage
@@ -13,7 +13,10 @@ import { Card } from '@/vibes/soul/primitives/card';
 
 function Usage() {
     return (
-      <Card href="#" title="Partial shade" image={{ src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/pink-caladium.jpeg', alt: 'Low Maintenance' }} />
+        <Card>
+            <h3>Card Title</h3>
+            <p>Card content goes here</p>
+        </Card>
     );
 }
 `}
@@ -25,20 +28,19 @@ function Usage() {
 
 ### CardProps
 
-| Prop              | Type                                          | Default                                                                              |
-| ----------------- | --------------------------------------------- | ------------------------------------------------------------------------------------ |
-| `className`       | `string`                                      |                                                                                      |
-| `title*`          | `string`                                      |                                                                                      |
-| `image`           | `{ src: string; alt: string }`                |                                                                                      |
-| `href*`           | `string`                                      |                                                                                      |
-| `textColorScheme` | `'light' \| 'dark'`                           | `'light'`                                                                            |
-| `iconColorScheme` | `'light' \| 'dark'`                           | `'light'`                                                                            |
-| `aspectRatio`     | `'5:6' \| '3:4' \| '1:1'`                     | `'5:6'`                                                                              |
-| `borderRadius`    | `'none' \| 'small' \| 'medium' \| 'large'`    | `'large'`                                                                            |
-| `imageSizes`      | `string`                                      | `'(min-width: 42rem) 25vw, (min-width: 32rem) 33vw, (min-width: 28rem) 50vw, 100vw'` |
-| `textPosition`    | `'inside' \| 'outside'`                       | `'outside'`                                                                          |
-| `textSize`        | `'small' \| 'medium' \| 'large' \| 'x-large'` | `'small'`                                                                            |
-| `showOverlay`     | `boolean`                                     | `true`                                                                               |
+| Prop        | Type                                                                                    | Default |
+| ----------- | --------------------------------------------------------------------------------------- | ------- |
+| `as`        | `ElementType`                                                                           | `'div'` |
+| `className` | `string`                                                                                |         |
+| `children*` | `ReactNode`                                                                             |         |
+| `href`      | `string`                                                                                |         |
+| `ariaLabel` | `string` <Tooltip content="Required when href is provided for accessibility purposes"/> |         |
+
+### CardSkeletonProps
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
 
 ### CSS Variables
 
@@ -47,15 +49,8 @@ This component supports various CSS variables for theming. Here's a comprehensiv
 <CodeBlock lang="css">{`
 :root {
     --card-focus: var(--primary);
-    --card-light-offset: var(--background);
-    --card-light-text: var(--foreground);
-    --card-light-icon: var(--foreground);
-    --card-light-background: var(--contrast-100);
-    --card-dark-offset: var(--foreground);
-    --card-dark-text: var(--background);
-    --card-dark-icon: var(--background);
-    --card-dark-background: var(--contrast-500);
-    --card-font-family: var(--font-family-body);
-    --card-border-radius: 1rem;
+    --card-border-color: var(--contrast-200);
+    --card-background: var(--background);
+    --card-hover-background: color-mix(in oklab, var(--contrast-100) 50%, transparent);
 }
 `}</CodeBlock>

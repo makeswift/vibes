@@ -2,7 +2,6 @@ import { clsx } from 'clsx';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
-import { Card, type CardContent, CardSkeleton } from '@/vibes/soul/primitives/card';
 import {
   Carousel,
   CarouselButtons,
@@ -10,10 +9,15 @@ import {
   CarouselItem,
   CarouselScrollbar,
 } from '@/vibes/soul/primitives/carousel';
+import {
+  CategoryCard,
+  type CategoryCardContent,
+  CategoryCardSkeleton,
+} from '@/vibes/soul/primitives/category-card';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 
-export interface CardCarouselProps {
-  cards: Streamable<CardContent[]>;
+export interface CategoryCardCarouselProps {
+  cards: Streamable<CategoryCardContent[]>;
   aspectRatio?: '5:6' | '3:4' | '1:1';
   textColorScheme?: 'light' | 'dark';
   iconColorScheme?: 'light' | 'dark';
@@ -36,14 +40,14 @@ export interface CardCarouselProps {
  *
  * ```css
  * :root {
- *   --card-carousel-light-empty-title: var(--foreground);
- *   --card-carousel-light-empty-subtitle: var(--contrast-500);
- *   --card-carousel-dark-empty-title: var(--background);
- *   --card-carousel-dark-empty-subtitle: var(--contrast-100);
+ *   --category-card-carousel-light-empty-title: var(--foreground);
+ *   --category-card-carousel-light-empty-subtitle: var(--contrast-500);
+ *   --category-card-carousel-dark-empty-title: var(--background);
+ *   --category-card-carousel-dark-empty-subtitle: var(--contrast-100);
  * }
  * ```
  */
-export function CardCarousel({
+export function CategoryCardCarousel({
   cards: streamableCards,
   aspectRatio = '5:6',
   textColorScheme,
@@ -58,16 +62,16 @@ export function CardCarousel({
   showButtons = true,
   showScrollbar = true,
   hideOverflow,
-}: CardCarouselProps) {
+}: CategoryCardCarouselProps) {
   return (
     <Stream
-      fallback={<CardCarouselSkeleton className={className} hideOverflow={hideOverflow} />}
+      fallback={<CategoryCardCarouselSkeleton className={className} hideOverflow={hideOverflow} />}
       value={streamableCards}
     >
       {(cards) => {
         if (cards.length === 0) {
           return (
-            <CardCarouselEmptyState
+            <CategoryCardCarouselEmptyState
               carouselColorScheme={carouselColorScheme}
               className={className}
               emptyStateSubtitle={emptyStateSubtitle}
@@ -85,7 +89,7 @@ export function CardCarousel({
                   className="basis-full @sm:basis-1/2 @md:basis-1/3 @4xl:basis-1/4"
                   key={card.href}
                 >
-                  <Card
+                  <CategoryCard
                     {...card}
                     aspectRatio={aspectRatio}
                     iconColorScheme={iconColorScheme}
@@ -116,12 +120,12 @@ export function CardCarousel({
   );
 }
 
-export function CardCarouselSkeleton({
+export function CategoryCardCarouselSkeleton({
   className,
   placeholderCount = 4,
   hideOverflow = true,
 }: Pick<
-  CardCarouselProps,
+  CategoryCardCarouselProps,
   'className' | 'emptyStateTitle' | 'emptyStateSubtitle' | 'hideOverflow' | 'placeholderCount'
 >) {
   return (
@@ -137,7 +141,7 @@ export function CardCarouselSkeleton({
               className="min-w-0 shrink-0 grow-0 basis-full @sm:basis-1/2 @md:basis-1/3 @2xl:pl-5 @4xl:basis-1/4"
               key={index}
             >
-              <CardSkeleton />
+              <CategoryCardSkeleton />
             </div>
           ))}
         </div>
@@ -153,7 +157,7 @@ export function CardCarouselSkeleton({
   );
 }
 
-export function CardCarouselEmptyState({
+export function CategoryCardCarouselEmptyState({
   className,
   placeholderCount = 4,
   emptyStateTitle,
@@ -161,7 +165,7 @@ export function CardCarouselEmptyState({
   hideOverflow = true,
   carouselColorScheme = 'light',
 }: Pick<
-  CardCarouselProps,
+  CategoryCardCarouselProps,
   | 'className'
   | 'emptyStateTitle'
   | 'emptyStateSubtitle'
@@ -178,7 +182,7 @@ export function CardCarouselEmptyState({
               className="min-w-0 shrink-0 grow-0 basis-full @sm:basis-1/2 @md:basis-1/3 @2xl:pl-5 @4xl:basis-1/4"
               key={index}
             >
-              <CardSkeleton />
+              <CategoryCardSkeleton />
             </div>
           ))}
         </div>
@@ -189,8 +193,8 @@ export function CardCarouselEmptyState({
             className={clsx(
               'font-heading text-2xl leading-tight @4xl:text-4xl',
               {
-                light: 'text-(--card-carousel-light-empty-title,var(--foreground))',
-                dark: 'text-(--card-carousel-dark-empty-title,var(--background))',
+                light: 'text-(--category-card-carousel-light-empty-title,var(--foreground))',
+                dark: 'text-(--category-card-carousel-dark-empty-title,var(--background))',
               }[carouselColorScheme],
             )}
           >
@@ -200,8 +204,8 @@ export function CardCarouselEmptyState({
             className={clsx(
               'text-sm @4xl:text-lg',
               {
-                light: 'text-(--card-carousel-light-empty-subtitle,var(--contrast-500))',
-                dark: 'text-(--card-carousel-dark-empty-subtitle,var(--contrast-200))',
+                light: 'text-(--category-card-carousel-light-empty-subtitle,var(--contrast-500))',
+                dark: 'text-(--category-card-carousel-dark-empty-subtitle,var(--contrast-200))',
               }[carouselColorScheme],
             )}
           >

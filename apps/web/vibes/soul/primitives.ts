@@ -62,6 +62,12 @@ export const primitives = [
     files: ['primitives/calendar/index.tsx'],
   },
   {
+    name: 'card',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['primitives/card/index.tsx'],
+  },
+  {
     name: 'card-radio-group',
     dependencies: ['clsx', '@radix-ui/react-radio-group'],
     registryDependencies: ['field-error', 'label'],
@@ -80,10 +86,10 @@ export const primitives = [
     files: ['primitives/compare-drawer/index.tsx', 'primitives/compare-drawer/loader.ts'],
   },
   {
-    name: 'card',
+    name: 'category-card',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['skeleton'],
-    files: ['primitives/card/index.tsx'],
+    files: ['primitives/category-card/index.tsx'],
   },
   {
     name: 'carousel',
