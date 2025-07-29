@@ -1,67 +1,25 @@
 import { Card } from '@/vibes/soul/primitives/card';
+import { Icon } from '@/vibes/soul/primitives/icon';
 
 export default function Preview() {
   return (
-    <div>
-      <div className="bg-background @container space-y-8 p-8">
-        <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
-          <Card
-            href="#"
-            image={{
-              src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/pink-caladium.jpeg',
-              alt: 'Low Maintenance',
-            }}
-            title="Low Maintenance"
-          />
-          <Card href="#" title="Low Maintenance" />
+    <div className="bg-background flex flex-col items-center px-6 py-8">
+      <Card ariaLabel="Sign up for a personal account" className="max-w-md" href="#">
+        <div className="text-foreground font-body">
+          <h3 className="text-lg font-semibold">Sign up for a personal account</h3>
+          <p className="mt-4 text-base font-normal">
+            Create a personal account to enjoy faster checkout, save shipping addresses, track your
+            orders, and build your shopping lists.
+          </p>
+          <div className="text-foreground mt-8 flex items-center gap-x-3 text-base">
+            <p className="font-semibold">Create personal account</p>
+            <Icon
+              className="size-5 transition-transform duration-100 ease-linear group-hover/card:translate-x-1"
+              name="arrow-right"
+            />
+          </div>
         </div>
-        <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
-          <Card
-            href="#"
-            image={{
-              src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/pink-caladium.jpeg',
-              alt: 'Low Maintenance',
-            }}
-            textColorScheme="dark"
-            textPosition="inside"
-            textSize="small"
-            title="Low Maintenance"
-          />
-          <Card
-            href="#"
-            image={{
-              src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/pink-caladium.jpeg',
-              alt: 'Low Maintenance',
-            }}
-            textColorScheme="dark"
-            textPosition="inside"
-            textSize="large"
-            title="Low Maintenance"
-          />
-        </div>
-      </div>
-      <div className="bg-foreground @container p-8">
-        <div className="m-auto flex max-w-screen-md flex-col items-center gap-8 @md:flex-row">
-          <Card
-            aspectRatio="1:1"
-            href="#"
-            iconColorScheme="dark"
-            image={{
-              src: 'https://storage.googleapis.com/s.mkswft.com/RmlsZTpmNjJhNTMyOC1hNzMwLTQxYjQtODE5Ny05ZDdlYWViMjJhMDQ=/pink-caladium.jpeg',
-              alt: 'Low Maintenance',
-            }}
-            textColorScheme="dark"
-            title="Low Maintenance"
-          />
-          <Card
-            aspectRatio="1:1"
-            href="#"
-            iconColorScheme="dark"
-            textColorScheme="dark"
-            title="Partial shade"
-          />
-        </div>
-      </div>
+      </Card>
     </div>
   );
 }

@@ -46,6 +46,12 @@ const primitivePages: [Page, ...Page[]] = [
     component: 'calendar',
   },
   {
+    title: 'Category Card',
+    slug: 'category-card',
+    file: 'docs/category-card.mdx',
+    component: 'category-card',
+  },
+  {
     title: 'Card',
     slug: 'card',
     file: 'docs/card.mdx',
@@ -200,10 +206,10 @@ const sectionPages: [Page, ...Page[]] = [
 
   { title: 'Cart', slug: 'cart', file: 'docs/cart.mdx', component: 'cart' },
   {
-    title: 'Card Carousel',
-    slug: 'card-carousel',
-    file: 'docs/card-carousel.mdx',
-    component: 'card-carousel',
+    title: 'Category Card Carousel',
+    slug: 'category-card-carousel',
+    file: 'docs/category-card-carousel.mdx',
+    component: 'category-card-carousel',
   },
   {
     title: 'Compare',

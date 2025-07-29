@@ -1,8 +1,8 @@
-import { type CardContent } from '@/vibes/soul/primitives/card';
+import { type CategoryCardContent } from '@/vibes/soul/primitives/category-card';
 import { FeaturedCardCarousel } from '@/vibes/soul/sections/featured-card-carousel';
 
 export default function Preview() {
-  const productsPromise = new Promise<CardContent[]>((resolve) => {
+  const productsPromise = new Promise<CategoryCardContent[]>((resolve) => {
     setTimeout(() => resolve(products), 1000);
   });
 
@@ -16,7 +16,7 @@ export default function Preview() {
   );
 }
 
-const products: CardContent[] = [
+const products: CategoryCardContent[] = [
   {
     title: 'JADA SQUARE TOE BALLET FLAT',
     image: {
