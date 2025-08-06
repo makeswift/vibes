@@ -49,10 +49,10 @@ export const sections = [
     files: ['sections/breadcrumbs/index.tsx'],
   },
   {
-    name: 'card-carousel',
+    name: 'category-card-carousel',
     dependencies: ['clsx', 'lucide-react'],
     registryDependencies: ['carousel', 'skeleton', 'card', 'streamable'],
-    files: ['sections/card-carousel/index.tsx'],
+    files: ['sections/category-card-carousel/index.tsx'],
   },
   {
     name: 'cart',
