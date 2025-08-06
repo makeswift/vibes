@@ -1,0 +1,20 @@
+{
+  "name": "featured-blog-post-carousel",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "section-layout",
+    "blog-post-card",
+    "streamable",
+    "blog-post-carousel",
+    "animated-underline"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/featured-blog-post-carousel/index.tsx",
+      "content": "import Link from 'next/link';\n\nimport { Streamable } from '@/vibes/soul/lib/streamable';\nimport { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';\nimport { type BlogPost } from '@/vibes/soul/primitives/blog-post-card';\nimport { BlogPostCarousel } from '@/vibes/soul/sections/blog-post-carousel';\nimport { SectionLayout } from '@/vibes/soul/sections/section-layout';\n\ninterface Link {\n  label: string;\n  href: string;\n}\n\nexport interface FeaturedBlogPostCarouselProps {\n  title: string;\n  cta?: Link;\n  blogPosts: Streamable<BlogPost[]>;\n  scrollbarLabel?: string;\n  previousLabel?: string;\n  nextLabel?: string;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --featured-blog-post-carousel-font-family: var(--font-family-body);\n *   --featured-blog-post-carousel-text: var(--foreground);\n * }\n * ```\n */\nexport function FeaturedBlogPostCarousel({\n  cta,\n  title,\n  blogPosts,\n  scrollbarLabel,\n  previousLabel,\n  nextLabel,\n}: FeaturedBlogPostCarouselProps) {\n  return (\n    <SectionLayout containerSize=\"2xl\">\n      <div className=\"mb-6 flex w-full flex-row flex-wrap justify-between gap-x-8 px-1.5 text-(--featured-blog-post-carousel-text,var(--foreground)) @4xl:mb-8 @4xl:items-end\">\n        <div className=\"flex-1\">\n          <h2 className=\"font-(family-name:--featured-blog-post-carousel-font-family,var(--font-family-heading)) text-2xl leading-none font-medium @xl:text-3xl @4xl:text-4xl\">\n            {title}\n          </h2>\n        </div>\n        {cta != null && cta.href !== '' && cta.label !== '' && (\n          <Link className=\"group/underline focus:outline-hidden\" href={cta.href}>\n            <AnimatedUnderline className=\"mr-3\">{cta.label}</AnimatedUnderline>\n          </Link>\n        )}\n      </div>\n      <div className=\"group/blog-post-carousel\">\n        <BlogPostCarousel\n          blogPosts={blogPosts}\n          nextLabel={nextLabel}\n          previousLabel={previousLabel}\n          scrollbarLabel={scrollbarLabel}\n        />\n      </div>\n    </SectionLayout>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/featured-blog-post-carousel/index.tsx"
+    }
+  ]
+}

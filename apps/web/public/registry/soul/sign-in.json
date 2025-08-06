@@ -1,0 +1,36 @@
+{
+  "name": "sign-in",
+  "type": "registry:ui",
+  "dependencies": [
+    "@conform-to/zod",
+    "@conform-to/react",
+    "zod"
+  ],
+  "registryDependencies": [
+    "button",
+    "button-link",
+    "animated-underline",
+    "form-status",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/sign-in/index.tsx",
+      "content": "import Link from 'next/link';\n\nimport { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';\nimport { ButtonLink } from '@/vibes/soul/primitives/button-link';\n\nimport { SignInAction, SignInForm } from './sign-in-form';\n\nexport interface SignInProps {\n  title?: string;\n  signUpTitle?: string;\n  signUpDescription?: string;\n  signUpBenefits?: string[];\n  action: SignInAction;\n  submitLabel?: string;\n  emailLabel?: string;\n  passwordLabel?: string;\n  forgotPasswordHref: string;\n  forgotPasswordLabel?: string;\n  signUpHref?: string;\n  emailPlaceholder?: string;\n  passwordPlaceholder?: string;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --sign-in-font-family: var(--font-family-body);\n *   --sign-in-title-font-family: var(--font-family-heading);\n *   --sign-in-title: var(--foreground);\n *   --sign-in-description: var(--contrast-500);\n *   --sign-in-border: var(--contrast-100);\n * }\n * ```\n */\nexport function SignIn({\n  title = 'Sign In',\n  signUpTitle = 'New Customer?',\n  signUpDescription = 'Create an account with us and be able to:',\n  signUpBenefits = [\n    'Check out faster',\n    'Save multiple shipping addresses',\n    'Access your order history',\n    'Track new orders',\n    'Save items to your Wish List',\n  ],\n  action,\n  submitLabel,\n  emailLabel,\n  passwordLabel,\n  forgotPasswordHref = '/forgot-password',\n  forgotPasswordLabel = 'Forgot your password?',\n  signUpHref = '/sign-up',\n  emailPlaceholder = 'Enter your email',\n  passwordPlaceholder = 'Enter your password',\n}: SignInProps) {\n  return (\n    <div className=\"@container\">\n      <div className=\"flex flex-col justify-center gap-y-24 px-3 py-10 @xl:flex-row @xl:px-6 @4xl:py-20 @5xl:px-20\">\n        <div className=\"w-full border-(--sign-in-border,var(--contrast-100)) @xl:max-w-md @xl:border-r @xl:pr-10 @4xl:pr-20\">\n          <h1 className=\"mb-10 font-(family-name:--sign-in-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--sign-in-title,var(--foreground)) @xl:text-5xl\">\n            {title}\n          </h1>\n          <SignInForm\n            action={action}\n            emailLabel={emailLabel}\n            emailPlaceholder={emailPlaceholder}\n            passwordLabel={passwordLabel}\n            passwordPlaceholder={passwordPlaceholder}\n            submitLabel={submitLabel}\n          />\n          <Link className=\"group/underline focus:outline-hidden\" href={forgotPasswordHref}>\n            <AnimatedUnderline className=\"mt-4 block w-fit text-sm font-semibold\">\n              {forgotPasswordLabel}\n            </AnimatedUnderline>\n          </Link>\n        </div>\n        <div className=\"flex w-full flex-col @xl:max-w-md @xl:pl-10 @4xl:pl-20\">\n          <div className=\"font-(family-name:--sign-in-font-family,var(--font-family-body))\">\n            <h2 className=\"mb-10 font-(family-name:--sign-in-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--sign-in-title,var(--foreground)) @xl:text-5xl\">\n              {signUpTitle}\n            </h2>\n            <div className=\"text-(--sign-in-description,var(--contrast-500))\">\n              <p>{signUpDescription}</p>\n              <ul className=\"mt-4 mb-10 ml-4 list-disc\">\n                {signUpBenefits.map((benefit, idx) => (\n                  <li key={idx}>{benefit}</li>\n                ))}\n              </ul>\n              <ButtonLink className=\"mt-auto w-full\" href={signUpHref} variant=\"secondary\">\n                Create Account\n              </ButtonLink>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/sign-in/index.tsx"
+    },
+    {
+      "path": "vibes/soul/sections/sign-in/sign-in-form.tsx",
+      "content": "'use client';\n\nimport { getFormProps, getInputProps, SubmissionResult, useForm } from '@conform-to/react';\nimport { getZodConstraint, parseWithZod } from '@conform-to/zod';\nimport { useActionState } from 'react';\nimport { useFormStatus } from 'react-dom';\n\nimport { FormStatus } from '@/vibes/soul/form/form-status';\nimport { Input } from '@/vibes/soul/form/input';\nimport { Button } from '@/vibes/soul/primitives/button';\n\nimport { schema } from './schema';\n\ntype Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;\n\nexport type SignInAction = Action<SubmissionResult | null, FormData>;\n\nexport interface SignInFormProps {\n  action: SignInAction;\n  emailLabel?: string;\n  passwordLabel?: string;\n  submitLabel?: string;\n  emailPlaceholder?: string;\n  passwordPlaceholder?: string;\n}\n\nexport function SignInForm({\n  action,\n  emailLabel = 'Email',\n  passwordLabel = 'Password',\n  submitLabel = 'Sign in',\n  emailPlaceholder = 'Enter your email',\n  passwordPlaceholder = 'Enter your password',\n}: SignInFormProps) {\n  const [lastResult, formAction] = useActionState(action, null);\n  const [form, fields] = useForm({\n    lastResult,\n    defaultValue: { email: '', password: '' },\n    constraint: getZodConstraint(schema),\n    shouldValidate: 'onBlur',\n    shouldRevalidate: 'onInput',\n    onValidate({ formData }) {\n      return parseWithZod(formData, { schema });\n    },\n  });\n\n  return (\n    <form {...getFormProps(form)} action={formAction} className=\"flex grow flex-col gap-5\">\n      <Input\n        {...getInputProps(fields.email, { type: 'text' })}\n        errors={fields.email.errors}\n        key={fields.email.id}\n        label={emailLabel}\n        placeholder={emailPlaceholder}\n      />\n      <Input\n        {...getInputProps(fields.password, { type: 'password' })}\n        className=\"mb-6\"\n        errors={fields.password.errors}\n        key={fields.password.id}\n        label={passwordLabel}\n        placeholder={passwordPlaceholder}\n      />\n      <SubmitButton>{submitLabel}</SubmitButton>\n      {form.errors?.map((error, index) => (\n        <FormStatus key={index} type=\"error\">\n          {error}\n        </FormStatus>\n      ))}\n    </form>\n  );\n}\n\nfunction SubmitButton({ children }: { children: React.ReactNode }) {\n  const { pending } = useFormStatus();\n\n  return (\n    <Button className=\"mt-auto w-full\" loading={pending} type=\"submit\" variant=\"secondary\">\n      {children}\n    </Button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/sign-in/sign-in-form.tsx"
+    },
+    {
+      "path": "vibes/soul/sections/sign-in/schema.ts",
+      "content": "import { z } from 'zod';\n\nexport const schema = z.object({\n  email: z.string().email(),\n  password: z.string(),\n});\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/sign-in/schema.ts"
+    }
+  ]
+}

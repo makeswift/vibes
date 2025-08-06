@@ -1,0 +1,19 @@
+{
+  "name": "reveal",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [
+    "animated-underline",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/reveal/index.tsx",
+      "content": "'use client';\n\nimport { clsx } from 'clsx';\nimport { ReactNode, useEffect, useRef, useState } from 'react';\n\nimport { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';\nimport { Button } from '@/vibes/soul/primitives/button';\n\nexport interface RevealProps {\n  variant?: 'underline' | 'button';\n  showLabel?: string;\n  hideLabel?: string;\n  defaultOpen?: boolean;\n  children: ReactNode;\n  maxHeight?: string;\n}\n\nexport function Reveal({\n  variant = 'underline',\n  showLabel = 'Show more',\n  hideLabel = 'Show less',\n  defaultOpen = false,\n  maxHeight = '10rem',\n  children,\n}: RevealProps) {\n  const [isOpen, setIsOpen] = useState(defaultOpen);\n  const [hasOverflow, setHasOverflow] = useState(true);\n  const contentRef = useRef<HTMLDivElement>(null);\n\n  function convertToPixels(value: string): number {\n    const num = parseFloat(value);\n    if (value.endsWith('rem')) {\n      return num * 16; // Convert rem to pixels (1rem = 16px)\n    }\n    if (value.endsWith('px')) {\n      return num;\n    }\n    return num;\n  }\n\n  useEffect(() => {\n    function checkHeight() {\n      if (contentRef.current) {\n        const contentHeight = contentRef.current.scrollHeight;\n        const maxHeightPx = convertToPixels(maxHeight);\n        setHasOverflow(contentHeight > maxHeightPx);\n      }\n    }\n\n    checkHeight();\n\n    const resizeObserver = new ResizeObserver(checkHeight);\n    if (contentRef.current) {\n      resizeObserver.observe(contentRef.current);\n    }\n\n    return () => {\n      resizeObserver.disconnect();\n    };\n  }, [maxHeight]);\n\n  return (\n    <div className=\"relative\">\n      <div\n        className={clsx(\n          hasOverflow &&\n            !isOpen &&\n            '[mask-image:linear-gradient(to_top,transparent,black_50px,black_calc(100%-50px))]',\n          'overflow-hidden',\n        )}\n        ref={contentRef}\n        style={{ maxHeight: isOpen ? 'none' : maxHeight }}\n      >\n        {children}\n      </div>\n      {hasOverflow && (\n        <div className={clsx('flex w-full items-end pt-4')}>\n          {variant === 'underline' && (\n            <button\n              className=\"group/underline text-sm focus:outline-hidden\"\n              onClick={() => setIsOpen(!isOpen)}\n              type=\"button\"\n            >\n              <AnimatedUnderline>{isOpen ? hideLabel : showLabel}</AnimatedUnderline>\n            </button>\n          )}\n          {variant === 'button' && (\n            <Button\n              onClick={() => setIsOpen(!isOpen)}\n              size=\"x-small\"\n              type=\"button\"\n              variant=\"tertiary\"\n            >\n              {isOpen ? hideLabel : showLabel}\n            </Button>\n          )}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/reveal/index.tsx"
+    }
+  ]
+}

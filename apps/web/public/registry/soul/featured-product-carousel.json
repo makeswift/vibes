@@ -1,0 +1,19 @@
+{
+  "name": "featured-product-carousel",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "product-carousel",
+    "section-layout",
+    "animated-underline",
+    "streamable"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/featured-product-carousel/index.tsx",
+      "content": "import Link from 'next/link';\n\nimport { Streamable } from '@/vibes/soul/lib/streamable';\nimport { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';\nimport { CarouselProduct, ProductCarousel } from '@/vibes/soul/sections/product-carousel';\nimport { SectionLayout } from '@/vibes/soul/sections/section-layout';\n\ninterface Link {\n  label: string;\n  href: string;\n}\n\nexport interface FeaturedProductCarouselProps {\n  title: string;\n  description?: string;\n  cta?: Link;\n  products: Streamable<CarouselProduct[]>;\n  emptyStateTitle?: Streamable<string>;\n  emptyStateSubtitle?: Streamable<string>;\n  placeholderCount?: number;\n  scrollbarLabel?: string;\n  previousLabel?: string;\n  nextLabel?: string;\n  hideOverflow?: boolean;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --featured-product-carousel-font-family: var(--font-family-body);\n *   --featured-product-carousel-title-font-family: var(--font-family-heading);\n *   --featured-product-carousel-title: var(--foreground);\n *   --featured-product-carousel-description: var(--contrast-500);\n * }\n * ```\n */\nexport function FeaturedProductCarousel({\n  title,\n  description,\n  cta,\n  products,\n  emptyStateTitle,\n  emptyStateSubtitle,\n  placeholderCount,\n  scrollbarLabel,\n  previousLabel,\n  nextLabel,\n  hideOverflow = false,\n}: FeaturedProductCarouselProps) {\n  return (\n    <SectionLayout containerSize=\"2xl\">\n      <div className=\"mb-6 flex w-full flex-row flex-wrap items-end justify-between gap-x-8 gap-y-6 @4xl:mb-8\">\n        <header className=\"font-(family-name:--featured-product-carousel-font-family,var(--font-family-body))\">\n          <h2 className=\"font-(family-name:--featured-product-carousel-title-font-family,var(--font-family-heading)) text-2xl leading-none text-(--featured-product-carousel-title,var(--foreground)) @xl:text-3xl @4xl:text-4xl\">\n            {title}\n          </h2>\n          {description != null && description !== '' && (\n            <p className=\"mt-3 max-w-xl leading-relaxed text-(--featured-product-carousel-description,var(--contrast-500))\">\n              {description}\n            </p>\n          )}\n        </header>\n        {cta != null && cta.href !== '' && cta.label !== '' && (\n          <Link className=\"group/underline focus:outline-hidden\" href={cta.href}>\n            <AnimatedUnderline className=\"mr-3\">{cta.label}</AnimatedUnderline>\n          </Link>\n        )}\n      </div>\n      <div className=\"group/product-carousel\">\n        <ProductCarousel\n          emptyStateSubtitle={emptyStateSubtitle}\n          emptyStateTitle={emptyStateTitle}\n          hideOverflow={hideOverflow}\n          nextLabel={nextLabel}\n          placeholderCount={placeholderCount}\n          previousLabel={previousLabel}\n          products={products}\n          scrollbarLabel={scrollbarLabel}\n        />\n      </div>\n    </SectionLayout>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/featured-product-carousel/index.tsx"
+    }
+  ]
+}

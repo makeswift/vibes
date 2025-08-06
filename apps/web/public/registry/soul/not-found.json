@@ -1,0 +1,16 @@
+{
+  "name": "not-found",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "section-layout"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/not-found/index.tsx",
+      "content": "import { SectionLayout } from '@/vibes/soul/sections/section-layout';\n\nexport interface NotFoundProps {\n  title?: string;\n  subtitle?: string;\n  className?: string;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --not-found-font-family: var(--font-family-body);\n *   --not-found-title-font-family: var(--font-family-heading);\n *   --not-found-title: var(--foreground);\n *   --not-found-subtitle: var(--contrast-500);\n * }\n * ```\n */\nexport function NotFound({\n  title = 'Not found',\n  subtitle = \"Take a look around if you're lost.\",\n  className = '',\n}: NotFoundProps) {\n  return (\n    <SectionLayout className={className} containerSize=\"2xl\">\n      <header className=\"font-(family-name:--not-found-font-family,var(--font-family-body))\">\n        <h1 className=\"mb-3 font-(family-name:--not-found-title-font-family,var(--font-family-heading)) text-3xl leading-none font-medium text-(--not-found-title,var(--foreground)) @xl:text-4xl @4xl:text-5xl\">\n          {title}\n        </h1>\n        <p className=\"text-lg text-(--not-found-subtitle,var(--contrast-500))\">{subtitle}</p>\n      </header>\n    </SectionLayout>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/not-found/index.tsx"
+    }
+  ]
+}

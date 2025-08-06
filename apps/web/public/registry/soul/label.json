@@ -1,0 +1,17 @@
+{
+  "name": "label",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx",
+    "@radix-ui/react-label"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/form/label/index.tsx",
+      "content": "import * as LabelPrimitive from '@radix-ui/react-label';\nimport { clsx } from 'clsx';\nimport { ComponentPropsWithoutRef } from 'react';\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n *  :root {\n *    --label-light-text: var(--contrast-500);\n *    --label-dark-text: var(--contrast-100);\n *  }\n * ```\n */\nexport function Label({\n  className,\n  colorScheme = 'light',\n  ...rest\n}: ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & { colorScheme?: 'light' | 'dark' }) {\n  return (\n    <LabelPrimitive.Root\n      {...rest}\n      className={clsx(\n        'block font-mono text-xs uppercase',\n        {\n          light: 'text-(--label-light-text,var(--contrast-500))',\n          dark: 'text-(--label-dark-text,var(--contrast-100))',\n        }[colorScheme],\n        className,\n      )}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/form/label/index.tsx"
+    }
+  ]
+}

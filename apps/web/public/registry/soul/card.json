@@ -1,0 +1,19 @@
+{
+  "name": "card",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "skeleton"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/card/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport Link from 'next/link';\nimport type { ElementType, ReactNode } from 'react';\n\nimport * as Skeleton from '@/vibes/soul/primitives/skeleton';\n\nexport type CardProps<E extends ElementType> = {\n  as?: E;\n  className?: string;\n  children: ReactNode;\n} & ({ href: string; ariaLabel: string } | { href?: never; ariaLabel?: never });\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --card-focus: var(--primary);\n *   --card-border-color: var(--contrast-200);\n *   --card-background: var(--background);\n *   --card-hover-background: color-mix(in oklab, var(--contrast-100) 50%,transparent);\n * }\n * ```\n */\nexport function Card<T extends ElementType = 'div'>({\n  as,\n  className,\n  children,\n  href,\n  ariaLabel,\n}: CardProps<T>) {\n  const CardPrimitive = as ?? 'div';\n\n  return (\n    <CardPrimitive\n      className={clsx(\n        'group/card @container relative w-full rounded-2xl border p-6',\n        'border-(--card-border-color,var(--contrast-200)) bg-(--card-background,var(--background)) has-[a]:hover:bg-(--card-hover-background,color-mix(in_oklab,var(--contrast-100)_50%,transparent))',\n        'transition-colors duration-300 ease-linear',\n        className,\n      )}\n    >\n      {children}\n      {href !== undefined && (\n        <Link\n          className={clsx(\n            'absolute inset-0 rounded-2xl',\n            'focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--card-focus,var(--primary)) focus-visible:outline-solid',\n          )}\n          href={href}\n        >\n          <span className=\"sr-only\">{ariaLabel}</span>\n        </Link>\n      )}\n    </CardPrimitive>\n  );\n}\n\nexport function CardSkeleton({ className }: Pick<CardProps<ElementType>, 'className'>) {\n  return (\n    <div className={clsx('@container', className)}>\n      <Skeleton.Box />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/card/index.tsx"
+    }
+  ]
+}

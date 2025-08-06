@@ -1,0 +1,19 @@
+{
+  "name": "logo",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [
+    "streamable",
+    "skeleton"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/logo/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport Image from 'next/image';\nimport Link from 'next/link';\n\nimport { Stream, Streamable } from '@/vibes/soul/lib/streamable';\nimport * as Skeleton from '@/vibes/soul/primitives/skeleton';\n\nexport interface LogoProps {\n  className?: string;\n  logo: Streamable<string | { src: string; alt: string }>;\n  label: string;\n  href: string;\n  width: number;\n  height: number;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --logo-focus: var(--primary);\n *   --logo-font-family: var(--font-family-heading);\n *   --logo-text: var(--foreground);\n * }\n * ```\n */\nexport function Logo({ className, logo: streamableLogo, href, width, height, label }: LogoProps) {\n  return (\n    <Stream fallback={<LogoSkeleton className={className} />} value={streamableLogo}>\n      {(logo) => (\n        <Link\n          aria-label={label}\n          className={clsx(\n            'relative ring-(--logo-focus,var(--primary)) ring-offset-4 outline-0 focus-visible:ring-2',\n            className,\n          )}\n          href={href}\n          style={typeof logo === 'string' ? {} : { width, height }}\n        >\n          {typeof logo === 'object' ? (\n            <Image\n              alt={logo.alt}\n              className=\"object-contain object-left\"\n              fill\n              sizes={`${width}px`}\n              src={logo.src}\n            />\n          ) : (\n            typeof logo === 'string' && (\n              <span className=\"font-(family-name:--logo-font-family,var(--font-family-heading)) text-lg leading-none font-semibold text-(--logo-text,var(--foreground)) @xl:text-2xl\">\n                {logo}\n              </span>\n            )\n          )}\n        </Link>\n      )}\n    </Stream>\n  );\n}\n\nexport function LogoSkeleton({ className }: Pick<LogoProps, 'className'>) {\n  return <Skeleton.Box className={clsx('h-6 w-16 rounded-md', className)} />;\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/logo/index.tsx"
+    }
+  ]
+}

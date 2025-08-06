@@ -1,0 +1,16 @@
+{
+  "name": "section-layout",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/sections/section-layout/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport { ReactNode } from 'react';\n\nexport interface SectionLayoutProps {\n  className?: string;\n  children: ReactNode;\n  containerSize?: 'md' | 'lg' | 'xl' | '2xl' | 'full';\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --section-max-width-medium: 768px;\n *   --section-max-width-lg: 1024px;\n *   --section-max-width-xl: 1280px;\n *   --section-max-width-2xl: 1536px;\n * }\n * ```\n */\nexport function SectionLayout({ className, children, containerSize = '2xl' }: SectionLayoutProps) {\n  return (\n    <section className={clsx('@container overflow-hidden', className)}>\n      <div\n        className={clsx(\n          'mx-auto px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20',\n          {\n            md: 'max-w-(--section-max-width-md,768px)',\n            lg: 'max-w-(--section-max-width-lg,1024px)',\n            xl: 'max-w-(--section-max-width-xl,1280px)',\n            '2xl': 'max-w-(--section-max-width-2xl,1536px)',\n            full: 'max-w-none',\n          }[containerSize],\n        )}\n      >\n        {children}\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/section-layout/index.tsx"
+    }
+  ]
+}

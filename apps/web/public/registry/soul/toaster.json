@@ -1,0 +1,18 @@
+{
+  "name": "toaster",
+  "type": "registry:ui",
+  "dependencies": [
+    "sonner"
+  ],
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/toaster/index.tsx",
+      "content": "'use client';\n\nimport { ReactNode } from 'react';\nimport { ComponentProps } from 'react';\nimport { Toaster as Sonner, toast as SonnerToast } from 'sonner';\n\nimport { Alert } from '@/vibes/soul/primitives/alert';\n\nexport type ToasterProps = ComponentProps<typeof Sonner>;\n\ninterface ToastOptions {\n  action?: {\n    label: string;\n    onClick: () => void;\n  };\n  description?: string;\n  position?: ToasterProps['position'];\n  dismissLabel?: string;\n}\n\nexport const Toaster = ({ ...props }: ToasterProps) => {\n  return (\n    <Sonner\n      className=\"flex w-full flex-col items-end\"\n      toastOptions={{\n        unstyled: true,\n        classNames: {\n          toast: 'group focus-visible:ring-0 w-full',\n        },\n      }}\n      {...props}\n    />\n  );\n};\n\nexport const toast = {\n  success: (message: ReactNode, options?: ToastOptions) => {\n    const position = options?.position;\n\n    const toastId = SonnerToast(\n      <Alert\n        message={message}\n        onDismiss={() => SonnerToast.dismiss(toastId)}\n        variant=\"success\"\n        {...options}\n      />,\n      { position },\n    );\n  },\n  error: (message: ReactNode, options?: ToastOptions) => {\n    const position = options?.position;\n\n    const toastId = SonnerToast(\n      <Alert\n        message={message}\n        onDismiss={() => SonnerToast.dismiss(toastId)}\n        variant=\"error\"\n        {...options}\n      />,\n      { position },\n    );\n  },\n  warning: (message: ReactNode, options?: ToastOptions) => {\n    const position = options?.position;\n\n    const toastId = SonnerToast(\n      <Alert\n        message={message}\n        onDismiss={() => SonnerToast.dismiss(toastId)}\n        variant=\"warning\"\n        {...options}\n      />,\n      { position },\n    );\n  },\n  info: (message: ReactNode, options?: ToastOptions) => {\n    const position = options?.position;\n\n    const toastId = SonnerToast(\n      <Alert\n        message={message}\n        onDismiss={() => SonnerToast.dismiss(toastId)}\n        variant=\"info\"\n        {...options}\n      />,\n      { position },\n    );\n  },\n};\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/toaster/index.tsx"
+    }
+  ]
+}

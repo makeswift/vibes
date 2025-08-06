@@ -1,0 +1,19 @@
+{
+  "name": "textarea",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [
+    "field-error",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/form/textarea/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport * as React from 'react';\n\nimport { FieldError } from '@/vibes/soul/form/field-error';\nimport { Label } from '@/vibes/soul/form/label';\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n *  :root {\n *    --textarea-light-background: var(--background);\n *    --textarea-light-text: var(--foreground);\n *    --textarea-light-placeholder: var(--contrast-500);\n *    --textarea-light-border: var(--contrast-100);\n *    --textarea-light-border-focus: var(--foreground);\n *    --textarea-light-border-error: var(--error);\n *    --textarea-dark-background: var(--foreground);\n *    --textarea-dark-text: var(--background);\n *    --textarea-dark-placeholder: var(--contrast-100);\n *    --textarea-dark-border: var(--contrast-500);\n *    --textarea-dark-border-focus: var(--background);\n *    --textarea-dark-border-error: var(--error);\n *  }\n * ```\n */\nexport const Textarea = React.forwardRef<\n  React.ComponentRef<'textarea'>,\n  React.ComponentPropsWithoutRef<'textarea'> & {\n    prepend?: React.ReactNode;\n    label?: string;\n    errors?: string[];\n    colorScheme?: 'light' | 'dark';\n    placeholder?: string;\n  }\n>(\n  (\n    {\n      label,\n      className,\n      required,\n      errors,\n      colorScheme = 'light',\n      placeholder = 'Enter some text',\n      ...rest\n    },\n    ref,\n  ) => {\n    const id = React.useId();\n\n    return (\n      <div className={clsx('space-y-2', className)}>\n        {label != null && label !== '' && (\n          <Label colorScheme={colorScheme} htmlFor={id}>\n            {label}\n          </Label>\n        )}\n        <textarea\n          {...rest}\n          className={clsx(\n            'w-full rounded-lg border p-3 transition-colors duration-200 placeholder:font-normal focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50',\n            {\n              light:\n                'bg-(--textarea-light-background,var(--background)) text-(--textarea-light-text,var(--foreground)) placeholder-(--textarea-light-placeholder,var(--contrast-500)) focus:border-(--textarea-light-border-focus,var(--foreground))',\n              dark: 'bg-(--textarea-dark-background,var(--foreground)) text-(--textarea-dark-text,var(--background)) placeholder-(--textarea-dark-placeholder,var(--contrast-100)) focus:border-(--textarea-dark-border-focus,var(--background))',\n            }[colorScheme],\n            {\n              light:\n                errors && errors.length > 0\n                  ? 'border-(--textarea-light-border-error,var(--error))'\n                  : 'border-(--textarea-light-border,var(--contrast-100))',\n              dark:\n                errors && errors.length > 0\n                  ? 'border-(--textarea-dark-border-error,var(--error))'\n                  : 'border-(--textarea-dark-border,var(--contrast-500))',\n            }[colorScheme],\n          )}\n          id={id}\n          placeholder={placeholder}\n          ref={ref}\n        />\n        {errors?.map((error) => <FieldError key={error}>{error}</FieldError>)}\n      </div>\n    );\n  },\n);\n\nTextarea.displayName = 'Textarea';\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/form/textarea/index.tsx"
+    }
+  ]
+}

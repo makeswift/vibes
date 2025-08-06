@@ -1,0 +1,19 @@
+{
+  "name": "header",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-headroom"
+  ],
+  "registryDependencies": [
+    "banner",
+    "navigation"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/header/index.tsx",
+      "content": "'use client';\n\nimport { ComponentPropsWithoutRef, useEffect, useState } from 'react';\nimport Headroom from 'react-headroom';\n\nimport { Banner } from '@/vibes/soul/primitives/banner';\nimport { Navigation } from '@/vibes/soul/primitives/navigation';\n\nexport interface HeaderProps {\n  navigation: ComponentPropsWithoutRef<typeof Navigation>;\n  banner?: ComponentPropsWithoutRef<typeof Banner>;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --header-background: var(--background);\n * }\n * ```\n */\nexport function Header({ navigation, banner }: HeaderProps) {\n  const [bannerElement, setBannerElement] = useState<HTMLElement | null>(null);\n  const [bannerHeight, setBannerHeight] = useState(0);\n  const [isFloating, setIsFloating] = useState(false);\n\n  useEffect(() => {\n    if (!bannerElement) return;\n\n    const resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {\n      entries.forEach((entry) => {\n        setBannerHeight(entry.contentRect.height);\n      });\n    });\n\n    resizeObserver.observe(bannerElement);\n\n    return () => {\n      resizeObserver.disconnect();\n    };\n  }, [bannerElement]);\n\n  return (\n    <div>\n      {banner && <Banner ref={setBannerElement} {...banner} />}\n      <div className=\"bg-(--header-background,var(--background))\">\n        <Headroom\n          onUnfix={() => setIsFloating(false)}\n          onUnpin={() => setIsFloating(true)}\n          pinStart={bannerHeight}\n        >\n          <div className=\"p-2\">\n            <Navigation {...navigation} isFloating={isFloating} />\n          </div>\n        </Headroom>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/header/index.tsx"
+    }
+  ]
+}

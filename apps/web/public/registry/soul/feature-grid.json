@@ -1,0 +1,17 @@
+{
+  "name": "feature-grid",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "icon"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/feature-grid/index.tsx",
+      "content": "import Image from 'next/image';\nimport Link from 'next/link';\n\nimport { Button } from '@/vibes/soul/primitives/button';\nimport { Icon, IconName } from '@/vibes/soul/primitives/icon';\n\nexport interface FeatureGridProps {\n  image: {\n    src: string;\n    alt: string;\n  };\n  grid: Array<{\n    icon: IconName;\n    title: string;\n    description: string;\n  }>;\n  cta: {\n    href: string;\n    label: string;\n  };\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --feature-grid-background: var(--primary-shadow);\n *   --feature-grid-image-background: color-mix(in oklab, var(--primary) 10%, transparent);\n *   --feature-grid-font-family: var(--font-family-body);\n *   --feature-grid-icon: var(--background);\n *   --feature-grid-title: var(--background);\n *   --feature-grid-description: var(--contrast-200)\n * }\n * ```\n */\nexport function FeatureGrid({ image, grid, cta }: FeatureGridProps) {\n  return (\n    <section className=\"@container/section bg-(--feature-grid-background,var(--primary-shadow))\">\n      <div className=\"flex flex-col @3xl/section:flex-row\">\n        <div className=\"relative aspect-square max-h-96 w-full bg-(--feature-grid-image-background,color-mix(in_oklab,var(--primary)_10%,transparent)) @3xl/section:max-h-none @3xl/section:w-1/2\">\n          <Image\n            alt={image.alt}\n            className=\"object-cover\"\n            fill\n            sizes=\"(max-width: 768px) 100vw, 50vw\"\n            src={image.src}\n          />\n        </div>\n        <div className=\"@container/content w-full px-3 py-10 @lg/section:px-10 @3xl/section:w-1/2 @5xl:p-20\">\n          <ul className=\"mb-10 grid gap-10 @xs/content:grid-cols-2\">\n            {grid.map(({ title, description, icon }, idx) => {\n              return (\n                <li className=\"flex items-center gap-4\" key={idx}>\n                  <Icon\n                    className=\"h-5 w-5 text-(--feature-grid-icon,var(--background))\"\n                    name={icon}\n                  />\n                  <div className=\"font-(family-name:--feature-grid-font-family,var(--font-family-body))\">\n                    <p className=\"text-lg font-medium text-(--feature-grid-title,var(--background)) @md/content:text-xl\">\n                      {title}\n                    </p>\n                    <p className=\"text-xs font-normal text-(--feature-grid-description,var(--contrast-200)) @md/content:text-sm\">\n                      {description}\n                    </p>\n                  </div>\n                </li>\n              );\n            })}\n          </ul>\n          <Button className=\"mt-6\" variant=\"primary\">\n            <Link href={cta.href}>{cta.label}</Link>\n          </Button>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/feature-grid/index.tsx"
+    }
+  ]
+}

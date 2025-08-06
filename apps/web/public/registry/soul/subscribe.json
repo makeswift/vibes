@@ -1,0 +1,19 @@
+{
+  "name": "subscribe",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx",
+    "@conform-to/react"
+  ],
+  "registryDependencies": [
+    "inline-email-form"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/subscribe/index.tsx",
+      "content": "import { SubmissionResult } from '@conform-to/react';\nimport { clsx } from 'clsx';\nimport Image from 'next/image';\n\nimport { InlineEmailForm } from '@/vibes/soul/sections/inline-email-form';\n\ntype Action<State, Payload> = (state: Awaited<State>, payload: Payload) => State | Promise<State>;\n\ntype SubscribeAction = Action<\n  { lastResult: SubmissionResult | null; successMessage?: string },\n  FormData\n>;\n\nexport interface SubscribeProps {\n  action: SubscribeAction;\n  image?: { src: string; alt: string };\n  title: string;\n  description?: string;\n  placeholder?: string;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --subscribe-font-family: var(--font-family-body);\n *   --subscribe-title-font-family: var(--font-family-heading);\n *   --subscribe-background: var(--primary-shadow);\n *   --subscribe-title: var(--primary-highlight);\n *   --subscribe-description: var(--primary-highlight);\n * }\n * ```\n */\nexport function Subscribe({ action, image, title, description, placeholder }: SubscribeProps) {\n  return (\n    <section className=\"@container bg-(--subscribe-background,var(--primary-shadow)) font-(family-name:--subscribe-font-family,var(--font-family-body))\">\n      <div className=\"flex flex-col items-start @4xl:flex-row @4xl:items-stretch\">\n        {image && (\n          <div className=\"bg-primary/10 relative min-h-96 w-full @4xl:flex-1\">\n            <Image\n              alt={image.alt}\n              className=\"object-cover\"\n              fill\n              sizes=\"(min-width: 56rem) 50vw, 100vw\"\n              src={image.src}\n            />\n          </div>\n        )}\n        <div className=\"w-full flex-1\">\n          <div\n            className={clsx(\n              'flex w-full flex-col gap-10 px-4 py-10 @xl:px-6 @xl:py-14 @4xl:gap-16 @4xl:px-8 @4xl:py-20',\n              Boolean(image) ? '@4xl:max-w-4xl' : 'mx-auto max-w-screen-2xl @4xl:flex-row',\n            )}\n          >\n            <header className=\"flex-1\">\n              <h2 className=\"mb-4 font-(family-name:--subscribe-title-font-family,var(--font-family-heading)) text-2xl leading-none font-medium text-(--subscribe-title,var(--primary-highlight)) @xl:text-3xl @4xl:text-4xl\">\n                {title}\n              </h2>\n              <p className=\"text-(--subscribe-description,var(--primary-highlight)) opacity-75\">\n                {description}\n              </p>\n            </header>\n            <InlineEmailForm action={action} className=\"flex-1\" placeholder={placeholder} />\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/subscribe/index.tsx"
+    }
+  ]
+}

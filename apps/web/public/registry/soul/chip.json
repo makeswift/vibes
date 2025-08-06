@@ -1,0 +1,16 @@
+{
+  "name": "chip",
+  "type": "registry:ui",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/chip/index.tsx",
+      "content": "import { X } from 'lucide-react';\nimport { MouseEvent, ReactNode } from 'react';\n\nexport interface ChipProps {\n  name?: string;\n  value?: string;\n  children?: ReactNode;\n  removeLabel?: string;\n  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --chip-focus: var(--foreground);\n *   --chip-font-family: var(--font-family-body);\n *   --chip-background: var(--contrast-100);\n *   --chip-background-hover: var(--contrast-200);\n *   --chip-text: var(--foreground);\n * }\n * ```\n */\nexport function Chip({ name, value, children, removeLabel = 'Remove', onClick }: ChipProps) {\n  return (\n    <span className=\"flex h-9 items-center gap-1.5 rounded-lg bg-(--chip-background,var(--contrast-100)) py-2 ps-3 pe-2 font-(family-name:--chip-font-family,var(--font-family-body)) text-sm leading-5 font-semibold text-(--chip-text,var(--foreground))\">\n      {children}\n      <button\n        className=\"flex h-5 w-5 items-center justify-center rounded-full hover:bg-(--chip-background-hover,var(--contrast-200)) focus-visible:ring-1 focus-visible:ring-(--button-focus,var(--foreground)) focus-visible:outline-hidden\"\n        name={name}\n        onClick={onClick}\n        title={removeLabel}\n        value={value}\n      >\n        <X size={12} />\n      </button>\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/chip/index.tsx"
+    }
+  ]
+}

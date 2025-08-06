@@ -1,0 +1,20 @@
+{
+  "name": "checkbox-group",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [
+    "field-error",
+    "label",
+    "checkbox"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/form/checkbox-group/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport * as React from 'react';\n\nimport { Checkbox } from '@/vibes/soul/form/checkbox';\nimport { FieldError } from '@/vibes/soul/form/field-error';\nimport { Label } from '@/vibes/soul/form/label';\n\ninterface Option {\n  value: string;\n  label: string;\n  disabled?: boolean;\n}\n\ninterface Props {\n  id?: string;\n  className?: string;\n  label?: string;\n  options: Option[];\n  errors?: string[];\n  name?: string;\n  value: string[];\n  onValueChange: (value: string[]) => void;\n  colorScheme?: 'light' | 'dark';\n}\n\nexport function CheckboxGroup({\n  className,\n  label,\n  options,\n  errors,\n  name,\n  value,\n  onValueChange,\n  colorScheme,\n}: Props) {\n  const id = React.useId();\n\n  return (\n    <div className={clsx('space-y-2', className)}>\n      {label !== undefined && label !== '' && (\n        <Label colorScheme={colorScheme} id={id}>\n          {label}\n        </Label>\n      )}\n      <div aria-labelledby={id} className=\"space-y-2\">\n        {options.map((option) => (\n          <Checkbox\n            checked={value.includes(option.value)}\n            colorScheme={colorScheme}\n            key={option.value}\n            label={option.label}\n            name={name}\n            onCheckedChange={(checked) =>\n              onValueChange(\n                checked === true\n                  ? [...value, option.value]\n                  : value.filter((v) => v !== option.value),\n              )\n            }\n            value={option.value}\n          />\n        ))}\n      </div>\n      {errors?.map((error) => <FieldError key={error}>{error}</FieldError>)}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/form/checkbox-group/index.tsx"
+    }
+  ]
+}
