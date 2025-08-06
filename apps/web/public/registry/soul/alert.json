@@ -1,0 +1,19 @@
+{
+  "name": "alert",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/alert/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport { X } from 'lucide-react';\nimport { ReactNode } from 'react';\n\nimport { Button } from '@/vibes/soul/primitives/button';\n\nexport interface AlertProps {\n  variant: 'success' | 'warning' | 'error' | 'info';\n  message: ReactNode;\n  description?: string;\n  dismissLabel?: string;\n  action?: {\n    label: string;\n    onClick: () => void;\n  };\n  onDismiss?: () => void;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --alert-success-background: var(--success-highlight);\n *   --alert-warning-background: var(--warning-highlight);\n *   --alert-error-background: var(--error-highlight);\n *   --alert-info-background: var(--background);\n *   --alert-font-family: var(--font-family-body);\n *   --alert-border: color-mix(in oklab, var(--foreground) 10%, transparent);\n *   --alert-message-text: var(--foreground);\n *   --alert-description-text: color-mix(in oklab, var(--foreground) 50%, transparent);\n * }\n * ```\n */\nexport function Alert({\n  variant,\n  message,\n  description,\n  action,\n  dismissLabel = 'Dismiss',\n  onDismiss,\n}: AlertProps) {\n  return (\n    <div\n      className={clsx(\n        'flex max-w-[356px] items-center justify-between gap-2 rounded-xl border border-(--alert-border,color-mix(in_oklab,var(--foreground)_10%,transparent)) py-3 ps-4 pe-3 shadow-xs',\n        {\n          success: 'bg-(--alert-success-background,var(--success-highlight))',\n          warning: 'bg-(--alert-warning-background,var(--warning-highlight))',\n          error: 'bg-(--alert-error-background,var(--error-highlight))',\n          info: 'bg-(--alert-info-background,var(--background))',\n        }[variant],\n      )}\n      role=\"alert\"\n    >\n      <div className=\"font-(family-name:--alert-font-family,var(--font-family-body))\">\n        <h5 className=\"text-sm font-normal text-(--alert-message-text,var(--foreground))\">\n          {message}\n        </h5>\n        {Boolean(description) && (\n          <p className=\"text-xs font-medium text-(--alert-description-text,color-mix(in_oklab,var(--foreground)_50%,transparent))\">\n            {description}\n          </p>\n        )}\n      </div>\n      <div className=\"flex items-center gap-1\">\n        {action && (\n          <Button onClick={action.onClick} size=\"x-small\" variant=\"ghost\">\n            {action.label}\n          </Button>\n        )}\n        <Button\n          aria-label={dismissLabel}\n          onClick={onDismiss}\n          shape=\"circle\"\n          size=\"x-small\"\n          variant=\"ghost\"\n        >\n          <X size={20} strokeWidth={1} />\n        </Button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/alert/index.tsx"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "side-panel",
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-dialog",
+    "clsx",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/side-panel/index.tsx",
+      "content": "'use client';\n\nimport * as Dialog from '@radix-ui/react-dialog';\nimport { clsx } from 'clsx';\nimport { X } from 'lucide-react';\nimport { ReactNode } from 'react';\n\nimport { Button } from '@/vibes/soul/primitives/button';\n\nexport interface SidePanelProps {\n  title: string;\n  children: ReactNode;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --side-panel-overlay-background: color-mix(in oklab, var(--foreground) 50%, transparent);\n *   --side-panel-background: var(--background);\n *   --side-panel-title-text: var(--foreground);\n *   --side-panel-title-font-family: var(--font-family-heading);\n *   --side-panel-content-font-family: var(--font-family-body);\n * }\n * ```\n */\nfunction Content({ title, children }: SidePanelProps) {\n  return (\n    <Dialog.Portal>\n      <Dialog.Overlay className=\"@container fixed inset-0 z-30 bg-(--side-panel-overlay-background,color-mix(in_oklab,var(--foreground)_50%,transparent))\">\n        <Dialog.Content\n          className={clsx(\n            'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right fixed inset-y-0 right-0 flex w-96 max-w-full flex-col bg-(--side-panel-background,var(--background)) font-(family-name:--side-panel-content-font-family,var(--font-family-body)) transition duration-500 [animation-timing-function:cubic-bezier(0.25,1,0,1)]',\n          )}\n          forceMount\n        >\n          <div className=\"flex items-center justify-between gap-2 px-6 pt-4 pb-4 @md:px-8 @md:pt-7\">\n            <Dialog.Title asChild>\n              <h2 className=\"font-(family-name:--side-panel-title-font-family,var(--font-family-heading)) text-2xl font-medium text-(--side-panel-title-text,var(--foreground)) @lg:text-3xl\">\n                {title}\n              </h2>\n            </Dialog.Title>\n            <Dialog.Close asChild>\n              <Button className=\"translate-x-3\" shape=\"circle\" size=\"small\" variant=\"tertiary\">\n                <X size={20} strokeWidth={1} />\n              </Button>\n            </Dialog.Close>\n          </div>\n\n          <div className=\"flex-1 overflow-y-auto px-6 pb-6 @md:px-8 @md:pb-8\">{children}</div>\n        </Dialog.Content>\n      </Dialog.Overlay>\n    </Dialog.Portal>\n  );\n}\n\nconst Root = Dialog.Root;\nconst Trigger = Dialog.Trigger;\n\nexport { Root, Trigger, Content };\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/side-panel/index.tsx"
+    }
+  ]
+}

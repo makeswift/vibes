@@ -1,0 +1,19 @@
+{
+  "name": "icon",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "skeleton"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/icon/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport dynamicIconImports from 'lucide-react/dynamicIconImports';\nimport { lazy, Suspense, useMemo } from 'react';\n\nimport * as Skeleton from '@/vibes/soul/primitives/skeleton';\n\nexport type IconName = keyof typeof dynamicIconImports;\n\n// eslint-disable-next-line @typescript-eslint/consistent-type-assertions\nexport const IconNames = Object.keys(dynamicIconImports) as IconName[];\n\nexport interface IconProps {\n  className?: string;\n  size?: number;\n  name: IconName;\n  strokeWidth?: number;\n}\n\nexport function Icon({ className, name, size = 24, strokeWidth = 1.5 }: IconProps) {\n  const LucideIcon = useMemo(() => lazy(dynamicIconImports[name]), [name]);\n\n  return (\n    <Suspense fallback={<IconSkeleton className={className} size={size} />}>\n      <LucideIcon className={className} name={name} size={size} strokeWidth={strokeWidth} />\n    </Suspense>\n  );\n}\n\nexport function IconSkeleton({ className, size = 24 }: Pick<IconProps, 'className' | 'size'>) {\n  return (\n    <Skeleton.Icon\n      className={clsx('overflow-hidden rounded-full', className)}\n      icon={\n        <div\n          className=\"bg-(--skeleton,var(--contrast-300)) opacity-25\"\n          style={{ width: size, height: size }}\n        />\n      }\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/icon/index.tsx"
+    }
+  ]
+}

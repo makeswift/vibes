@@ -1,0 +1,16 @@
+{
+  "name": "spinner",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/spinner/index.tsx",
+      "content": "import { clsx } from 'clsx';\n\nexport interface SpinnerProps {\n  size?: 'xs' | 'sm' | 'md' | 'lg';\n  loadingAriaLabel?: string;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --spinner-base: var(--contrast-100);\n *   --spinner-ring: var(--primary-shadow);\n * }\n * ```\n */\nexport function Spinner({ size = 'sm', loadingAriaLabel = 'Loading...' }: SpinnerProps) {\n  return (\n    <span\n      aria-label={loadingAriaLabel}\n      className={clsx(\n        'box-border inline-block animate-spin rounded-full border-(--spinner-base,var(--contrast-100)) border-b-(--spinner-ring,var(--primary-shadow))',\n        {\n          xs: 'h-5 w-5 border-2',\n          sm: 'h-6 w-6 border-2',\n          md: 'h-10 w-10 border-[3px]',\n          lg: 'h-14 w-14 border-4',\n        }[size],\n      )}\n      role=\"status\"\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/spinner/index.tsx"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "modal",
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-dialog",
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/modal/index.tsx",
+      "content": "import * as Dialog from '@radix-ui/react-dialog';\nimport { clsx } from 'clsx';\nimport { ReactNode } from 'react';\n\nexport interface ModalProps {\n  isOpen: boolean;\n  setOpen: (open: boolean) => void;\n  title: string;\n  trigger: ReactNode;\n  children: ReactNode;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --modal-background: var(--background);\n *   --modal-overlay-background: color-mix(in oklab, var(--foreground) 50%, transparent);\n * }\n * ```\n */\nexport function Modal({ isOpen, setOpen, title, trigger, children }: ModalProps) {\n  return (\n    <Dialog.Root onOpenChange={setOpen} open={isOpen}>\n      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>\n      <Dialog.Portal>\n        <Dialog.Overlay className=\"@container fixed inset-0 z-30 flex items-center justify-center bg-(--modal-overlay-background,color-mix(in_oklab,var(--foreground)_50%,transparent))\">\n          <Dialog.Content\n            className={clsx(\n              'mx-3 my-10 max-h-[90%] max-w-3xl overflow-y-auto rounded-xl bg-(--modal-background,var(--background)) px-3 py-5 @sm:px-6 @sm:py-8 @5xl:px-20 @5xl:py-10',\n              'transition ease-out',\n              'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-200 data-[state=open]:duration-200',\n              'data-[state=closed]:slide-out-to-bottom-16 data-[state=open]:slide-in-from-bottom-16 focus:outline-hidden',\n            )}\n            onOpenAutoFocus={(e) => e.preventDefault()}\n          >\n            <Dialog.Title className=\"sr-only\">{title}</Dialog.Title>\n            {children}\n          </Dialog.Content>\n        </Dialog.Overlay>\n      </Dialog.Portal>\n    </Dialog.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/modal/index.tsx"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "badge",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/badge/index.tsx",
+      "content": "import { clsx } from 'clsx';\n\nexport interface BadgeProps {\n  children: string;\n  shape?: 'pill' | 'rounded';\n  variant?: 'primary' | 'warning' | 'error' | 'success' | 'info';\n  className?: string;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --badge-primary-background: var(--primary-highlight);\n *   --badge-accent-background: var(--accent);\n *   --badge-success-background: var(--success-highlight);\n *   --badge-warning-background: var(--warning-highlight);\n *   --badge-error-background: var(--error-highlight);\n *   --badge-info-background: var(--info-highlight);\n *   --badge-text: var(--foreground);\n *   --badge-font-family: var(--font-family-mono);\n * }\n * ```\n */\nexport function Badge({ children, shape = 'rounded', className, variant = 'primary' }: BadgeProps) {\n  return (\n    <span\n      className={clsx(\n        'px-2 py-0.5 font-(family-name:--badge-font-family,var(--font-family-mono)) text-xs tracking-tighter text-(--badge-text,var(--foreground)) uppercase',\n        {\n          pill: 'rounded-full',\n          rounded: 'rounded',\n        }[shape],\n        {\n          primary: 'bg-(--badge-primary-background,var(--primary-highlight))',\n          warning: 'bg-(--badge-warning-background,var(--warning-highlight))',\n          error: 'bg-(--badge-error-background,var(--error-highlight))',\n          success: 'bg-(--badge-success-background,var(--success-highlight))',\n          info: 'bg-(--badge-info-background,var(--info-highlight))',\n        }[variant],\n        className,\n      )}\n    >\n      {children}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/badge/index.tsx"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "skeleton",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/skeleton/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport { ReactNode } from 'react';\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --skeleton: color-mix(in oklab, var(--contrast-300) 15%, transparent);\n * }\n * ```\n */\nfunction SkeletonRoot({\n  className,\n  children,\n  pending = false,\n  hideOverflow = false,\n}: {\n  className?: string;\n  children?: React.ReactNode;\n  pending?: boolean;\n  hideOverflow?: boolean;\n}) {\n  return (\n    <div\n      className={clsx('@container', hideOverflow && 'overflow-hidden', className)}\n      data-pending={pending ? '' : undefined}\n      role={pending ? 'status' : undefined}\n    >\n      {children}\n      {pending && <span className=\"sr-only\">Loading...</span>}\n    </div>\n  );\n}\n\nfunction SkeletonBox({ className }: { className?: string }) {\n  return (\n    <div\n      className={clsx(\n        'bg-(--skeleton,color-mix(in_oklab,var(--contrast-300)_15%,transparent))',\n        className,\n      )}\n    />\n  );\n}\n\nfunction SkeletonText({\n  characterCount = 10,\n  className,\n}: {\n  characterCount?: number | 'full';\n  className?: string;\n}) {\n  return (\n    <div className={clsx('flex h-[1lh] items-center', className)}>\n      <div\n        className={clsx(\n          `h-[1ex] max-w-full rounded-[inherit] bg-(--skeleton,color-mix(in_oklab,var(--contrast-300)_15%,transparent))`,\n        )}\n        style={{ width: characterCount === 'full' ? '100%' : `${characterCount}ch` }}\n      />\n    </div>\n  );\n}\n\nfunction SkeletonIcon({ className, icon }: { className?: string; icon: ReactNode }) {\n  return (\n    <div className={clsx('text-(--skeleton,var(--contrast-300)) opacity-25', className)}>\n      {icon}\n    </div>\n  );\n}\n\nexport { SkeletonIcon as Icon, SkeletonRoot as Root, SkeletonBox as Box, SkeletonText as Text };\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/skeleton/index.tsx"
+    }
+  ]
+}

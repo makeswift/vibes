@@ -1,0 +1,20 @@
+{
+  "name": "featured-card-carousel",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "streamable",
+    "animated-underline",
+    "card",
+    "card-carousel",
+    "section-layout"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/featured-card-carousel/index.tsx",
+      "content": "import Link from 'next/link';\n\nimport { Streamable } from '@/vibes/soul/lib/streamable';\nimport { AnimatedUnderline } from '@/vibes/soul/primitives/animated-underline';\nimport { type CategoryCardContent } from '@/vibes/soul/primitives/category-card';\nimport { CategoryCardCarousel } from '@/vibes/soul/sections/category-card-carousel';\nimport { SectionLayout } from '@/vibes/soul/sections/section-layout';\n\ninterface Link {\n  label: string;\n  href: string;\n}\n\nexport interface FeaturedCardCarouselProps {\n  title: string;\n  description?: string;\n  cta?: Link;\n  cards: Streamable<CategoryCardContent[]>;\n  scrollbarLabel?: string;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --featured-card-carousel-font-family: var(--font-family-body);\n *   --featured-card-carousel-title-font-family: var(--font-family-body);\n *   --featured-card-carousel-title: var(--foreground);\n *   --featured-card-carousel-description: var(--contrast-500);\n * }\n * ```\n */\nexport function FeaturedCardCarousel({\n  title,\n  description,\n  cta,\n  cards,\n  scrollbarLabel,\n}: FeaturedCardCarouselProps) {\n  return (\n    <SectionLayout containerSize=\"2xl\">\n      <div className=\"mb-6 flex w-full flex-row flex-wrap items-end justify-between gap-x-8 gap-y-6 @4xl:mb-8\">\n        <header className=\"font-(family-name:--featured-card-carousel-font-family,var(--font-family-body))\">\n          <h2 className=\"font-(family-name:--featured-card-carousel-title-font-family,var(--font-family-heading)) text-2xl leading-none font-medium text-(--featured-card-carousel-title,var(--foreground)) @xl:text-3xl @4xl:text-4xl\">\n            {title}\n          </h2>\n          {description != null && description !== '' && (\n            <p className=\"mt-3 max-w-xl text-(--featured-card-carousel-description,var(--contrast-500))\">\n              {description}\n            </p>\n          )}\n        </header>\n        {cta != null && cta.href !== '' && cta.label !== '' && (\n          <Link className=\"group/underline focus:outline-hidden\" href={cta.href}>\n            <AnimatedUnderline className=\"mr-3\">{cta.label}</AnimatedUnderline>\n          </Link>\n        )}\n      </div>\n      <div className=\"group/card-carousel\">\n        <CategoryCardCarousel cards={cards} scrollbarLabel={scrollbarLabel} />\n      </div>\n    </SectionLayout>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/featured-card-carousel/index.tsx"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "featured-product-list",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "streamable",
+    "button-link",
+    "product-card",
+    "product-list",
+    "sticky-sidebar-layout"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/featured-product-list/index.tsx",
+      "content": "import { Streamable } from '@/vibes/soul/lib/streamable';\nimport { ButtonLink } from '@/vibes/soul/primitives/button-link';\nimport { type Product } from '@/vibes/soul/primitives/product-card';\nimport { ProductList } from '@/vibes/soul/sections/product-list';\nimport { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';\n\ninterface Link {\n  label: string;\n  href: string;\n}\n\nexport interface FeaturedProductsListProps {\n  title: string;\n  description?: string;\n  cta?: Link;\n  products: Streamable<Product[]>;\n  emptyStateTitle?: Streamable<string>;\n  emptyStateSubtitle?: Streamable<string>;\n  placeholderCount?: number;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --featured-product-list-font-family: var(--font-family-body);\n *   --featured-product-list-title-font-family: var(--font-family-heading);\n *   --featured-product-list-title: var(--foreground);\n *   --featured-product-list-description: var(--contrast-500);\n * }\n * ```\n */\nexport function FeaturedProductList({\n  title,\n  description,\n  cta,\n  products,\n  emptyStateTitle,\n  emptyStateSubtitle,\n  placeholderCount,\n}: FeaturedProductsListProps) {\n  return (\n    <StickySidebarLayout\n      sidebar={\n        <header className=\"font-(family-name:--featured-product-list-font-family,var(--font-family-body))\">\n          <h2 className=\"mb-3 font-(family-name:--featured-product-list-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--featured-product-list-title,var(--foreground)) @4xl:text-5xl\">\n            {title}\n          </h2>\n          {description != null && description !== '' && (\n            <p className=\"mb-8 max-w-xl text-lg leading-normal text-(--featured-product-list-description,var(--contrast-500))\">\n              {description}\n            </p>\n          )}\n\n          {cta?.href != null && cta.href !== '' && cta.label !== '' && (\n            <ButtonLink href={cta.href} variant=\"secondary\">\n              {cta.label}\n            </ButtonLink>\n          )}\n        </header>\n      }\n      sidebarSize=\"1/3\"\n    >\n      <div className=\"group/product-list flex-1\">\n        <ProductList\n          emptyStateSubtitle={emptyStateSubtitle}\n          emptyStateTitle={emptyStateTitle}\n          placeholderCount={placeholderCount}\n          products={products}\n          showCompare={false}\n        />\n      </div>\n    </StickySidebarLayout>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/featured-product-list/index.tsx"
+    }
+  ]
+}

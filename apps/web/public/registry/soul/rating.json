@@ -1,0 +1,16 @@
+{
+  "name": "rating",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/rating/index.tsx",
+      "content": "import { clsx } from 'clsx';\n\nexport interface RatingProps {\n  showRating?: boolean;\n  rating: number;\n  className?: string;\n}\n\ninterface StarType {\n  type: 'empty' | 'half' | 'full';\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --rating-icon: var(--foreground);\n *   --rating-border: var(--contrast-100);\n *   --rating-text: var(--contrast-400);\n * }\n * ```\n */\nconst Star = ({ type }: StarType) => {\n  const paths = {\n    empty: (\n      <path\n        d=\"M9.99984 1.66669L12.5748 6.88335L18.3332 7.72502L14.1665 11.7834L15.1498 17.5167L9.99984 14.8084L4.84984 17.5167L5.83317 11.7834L1.6665 7.72502L7.42484 6.88335L9.99984 1.66669Z\"\n        stroke=\"currentColor\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n        strokeOpacity=\"0.4\"\n      />\n    ),\n    half: (\n      <>\n        <path\n          d=\"M9.99984 1.66669L12.5748 6.88335L18.3332 7.72502L14.1665 11.7834L15.1498 17.5167L9.99984 14.8084L4.84984 17.5167L5.83317 11.7834L1.6665 7.72502L7.42484 6.88335L9.99984 1.66669Z\"\n          stroke=\"currentColor\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n        />\n        <path\n          d=\"M10.0003 1.6665V14.8082L4.85033 17.5165L5.83366 11.7832L1.66699 7.72484L7.42533 6.88317L10.0003 1.6665Z\"\n          fill=\"currentColor\"\n        />\n      </>\n    ),\n    full: (\n      <path\n        d=\"M9.99984 1.66669L12.5748 6.88335L18.3332 7.72502L14.1665 11.7834L15.1498 17.5167L9.99984 14.8084L4.84984 17.5167L5.83317 11.7834L1.6665 7.72502L7.42484 6.88335L9.99984 1.66669Z\"\n        fill=\"currentColor\"\n        stroke=\"currentColor\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n      />\n    ),\n  };\n\n  return (\n    <svg\n      className=\"inline-block text-(--rating-icon,var(--foreground))\"\n      fill=\"none\"\n      height={20}\n      viewBox=\"0 0 20 20\"\n      width={20}\n    >\n      {paths[type]}\n    </svg>\n  );\n};\n\nexport function Rating({ showRating = true, rating, className }: Readonly<RatingProps>) {\n  const adjustedRating = Math.min(rating, 5);\n\n  const stars: Array<StarType['type']> = Array.from({ length: 5 }, (_, index) => {\n    if (index < Math.floor(adjustedRating)) return 'full';\n    if (index < Math.ceil(adjustedRating)) return 'half';\n    return 'empty';\n  });\n\n  return (\n    <div className={clsx('flex items-center', className)}>\n      {stars.map((type, index) => (\n        <Star key={index} type={type} />\n      ))}\n\n      {showRating && (\n        <span className=\"ml-1.5 flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-(--rating-border,var(--contrast-100)) px-1 text-xs font-medium text-(--rating-text,var(--contrast-400))\">\n          {adjustedRating % 1 !== 0 ? adjustedRating.toFixed(1) : adjustedRating}\n        </span>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/rating/index.tsx"
+    }
+  ]
+}

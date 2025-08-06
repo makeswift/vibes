@@ -1,0 +1,17 @@
+{
+  "name": "error",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "section-layout"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/error/index.tsx",
+      "content": "import { Button } from '@/vibes/soul/primitives/button';\nimport { SectionLayout } from '@/vibes/soul/sections/section-layout';\n\nexport interface ErrorProps {\n  title?: string;\n  subtitle?: string;\n  ctaLabel?: string;\n  ctaAction?: () => void | Promise<void>;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *    --error-font-family: var(--font-family-body);\n *    --error-title-font-family: var(--font-family-heading);\n *    --error-title: var(--foreground);\n *    --error-subtitle: var(--contrast-500);\n * }\n * ```\n */\nexport function Error({\n  title = 'Something went wrong!',\n  subtitle = 'Please try again or contact our support team for assistance.',\n  ctaLabel = 'Try again',\n  ctaAction,\n}: ErrorProps) {\n  return (\n    <SectionLayout containerSize=\"2xl\">\n      <header className=\"font-(family-name:--button-font-family,var(--font-family-body))\">\n        <h1 className=\"mb-3 font-(family-name:--button-font-family,var(--font-family-heading)) text-3xl leading-none font-medium text-(--error-title,var(--foreground)) @xl:text-4xl @4xl:text-5xl\">\n          {title}\n        </h1>\n        <p className=\"text-lg text-(--error-subtitle,var(--contrast-500))\">{subtitle}</p>\n      </header>\n      {ctaAction && (\n        <form action={ctaAction}>\n          <Button className=\"mt-8\" size=\"large\" type=\"submit\" variant=\"primary\">\n            {ctaLabel}\n          </Button>\n        </form>\n      )}\n    </SectionLayout>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/error/index.tsx"
+    }
+  ]
+}

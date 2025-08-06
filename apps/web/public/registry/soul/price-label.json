@@ -1,0 +1,16 @@
+{
+  "name": "price-label",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/price-label/index.tsx",
+      "content": "import { clsx } from 'clsx';\n\nexport interface PriceRange {\n  type: 'range';\n  minValue: string;\n  maxValue: string;\n}\n\nexport interface PriceSale {\n  type: 'sale';\n  previousValue: string;\n  currentValue: string;\n}\n\nexport type Price = string | PriceRange | PriceSale;\n\nexport interface PriceLabelProps {\n  className?: string;\n  colorScheme?: 'light' | 'dark';\n  price: Price;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --price-light-text: var(--foreground);\n *   --price-light-sale-text: var(--foreground);\n *   --price-dark-text: var(--background);\n *   --price-dark-sale-text: var(--background);\n * }\n * ```\n */\nexport function PriceLabel({ className, colorScheme = 'light', price }: PriceLabelProps) {\n  if (typeof price === 'string') {\n    return (\n      <span\n        className={clsx(\n          'block font-semibold',\n          {\n            light: 'text-(--price-light-text,var(--foreground))',\n            dark: 'text-(--price-dark-text,var(--background))',\n          }[colorScheme],\n          className,\n        )}\n      >\n        {price}\n      </span>\n    );\n  }\n\n  switch (price.type) {\n    case 'range':\n      return (\n        <span\n          className={clsx(\n            'block font-semibold',\n            {\n              light: 'text-(--price-light-text,var(--foreground))',\n              dark: 'text-(--price-dark-text,var(--background))',\n            }[colorScheme],\n            className,\n          )}\n        >\n          {`${price.minValue} – ${price.maxValue}`}\n        </span>\n      );\n    case 'sale':\n      return (\n        <span className={clsx('block font-semibold', className)}>\n          <span\n            className={clsx(\n              'font-normal line-through opacity-50',\n              {\n                light: 'text-(--price-light-text,var(--foreground))',\n                dark: 'text-(--price-dark-text,var(--background))',\n              }[colorScheme],\n            )}\n          >\n            {price.previousValue}\n          </span>{' '}\n          <span\n            className={clsx(\n              {\n                light: 'text-(--price-light-sale-text,var(--foreground))',\n                dark: 'text-(--price-dark-sale-text,var(--background))',\n              }[colorScheme],\n            )}\n          >\n            {price.currentValue}\n          </span>\n        </span>\n      );\n    default:\n      return null;\n  }\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/price-label/index.tsx"
+    }
+  ]
+}

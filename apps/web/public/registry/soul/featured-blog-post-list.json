@@ -1,0 +1,21 @@
+{
+  "name": "featured-blog-post-list",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "blog-post-card",
+    "blog-post-list",
+    "breadcrumbs",
+    "cursor-pagination",
+    "section-layout",
+    "streamable"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/featured-blog-post-list/index.tsx",
+      "content": "import { Streamable } from '@/vibes/soul/lib/streamable';\nimport { type BlogPost } from '@/vibes/soul/primitives/blog-post-card';\nimport { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';\nimport { BlogPostList } from '@/vibes/soul/sections/blog-post-list';\nimport { type Breadcrumb, Breadcrumbs } from '@/vibes/soul/sections/breadcrumbs';\nimport { SectionLayout } from '@/vibes/soul/sections/section-layout';\n\nexport interface FeaturedBlogPostListProps {\n  title: string;\n  description?: string | null;\n  blogPosts: Streamable<BlogPost[]>;\n  paginationInfo?: Streamable<CursorPaginationInfo>;\n  breadcrumbs?: Streamable<Breadcrumb[]>;\n  emptyStateSubtitle?: Streamable<string>;\n  emptyStateTitle?: Streamable<string>;\n  placeholderCount?: number;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --featured-blog-post-list-font-family: var(--font-family-body);\n *   --featured-blog-post-list-title-font-family: var(--font-family-body);\n *   --featured-blog-post-list-title: var(--foreground);\n *   --featured-blog-post-list-description: var(--contrast-500);\n * }\n * ```\n */\nexport function FeaturedBlogPostList({\n  title,\n  description,\n  blogPosts,\n  paginationInfo,\n  breadcrumbs,\n  emptyStateSubtitle,\n  emptyStateTitle,\n  placeholderCount,\n}: FeaturedBlogPostListProps) {\n  return (\n    <SectionLayout>\n      {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}\n      <div className=\"pt-6\">\n        <header className=\"font-(family-name:--featured-blog-post-list-font-family,var(--font-family-body))\">\n          <h1 className=\"mb-3 font-(family-name:--featured-blog-post-list-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--featured-blog-post-list-title,var(--foreground)) @xl:text-5xl @4xl:text-6xl\">\n            {title}\n          </h1>\n          {description != null && description !== '' && (\n            <p className=\"max-w-lg text-lg text-(--featured-blog-post-list-description,var(--contrast-500))\">\n              {description}\n            </p>\n          )}\n        </header>\n        <div className=\"group/blog-post-list\">\n          <BlogPostList\n            blogPosts={blogPosts}\n            className=\"mt-8 mb-8 @4xl:mt-10 @4xl:mb-10\"\n            emptyStateSubtitle={emptyStateSubtitle}\n            emptyStateTitle={emptyStateTitle}\n            placeholderCount={placeholderCount}\n          />\n        </div>\n        {paginationInfo && <CursorPagination info={paginationInfo} />}\n      </div>\n    </SectionLayout>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/featured-blog-post-list/index.tsx"
+    }
+  ]
+}

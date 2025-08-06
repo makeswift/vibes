@@ -1,0 +1,28 @@
+{
+  "name": "inline-email-form",
+  "type": "registry:ui",
+  "dependencies": [
+    "lucide-react",
+    "@conform-to/react",
+    "@conform-to/zod",
+    "clsx"
+  ],
+  "registryDependencies": [
+    "form-status",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/inline-email-form/index.tsx",
+      "content": "'use client';\n\nimport { getFormProps, getInputProps, SubmissionResult, useForm } from '@conform-to/react';\nimport { parseWithZod } from '@conform-to/zod';\nimport { clsx } from 'clsx';\nimport { ArrowRight } from 'lucide-react';\nimport { useActionState } from 'react';\n\nimport { FormStatus } from '@/vibes/soul/form/form-status';\nimport { Button } from '@/vibes/soul/primitives/button';\n\nimport { schema } from './schema';\n\ntype Action<State, Payload> = (\n  prevState: Awaited<State>,\n  formData: Payload,\n) => State | Promise<State>;\n\nexport interface InlineEmailFormProps {\n  className?: string;\n  placeholder?: string;\n  submitLabel?: string;\n  action: Action<{ lastResult: SubmissionResult | null; successMessage?: string }, FormData>;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --inline-email-form-focus: var(--primary);\n *   --inline-email-form-background: var(--background);\n *   --inline-email-form-placeholder: var(--contrast-500);\n *   --inline-email-form-text: var(--foreground);\n *   --inline-email-form-border: var(--black);\n *   --inline-email-form-error: var(--error);\n * }\n * ```\n */\nexport function InlineEmailForm({\n  className,\n  action,\n  submitLabel = 'Submit',\n  placeholder = 'Enter your email',\n}: InlineEmailFormProps) {\n  const [{ lastResult, successMessage }, formAction, isPending] = useActionState(action, {\n    lastResult: null,\n  });\n\n  const [form, fields] = useForm({\n    defaultValue: {\n      email: '',\n    },\n    lastResult,\n    onValidate({ formData }) {\n      return parseWithZod(formData, { schema });\n    },\n    shouldValidate: 'onSubmit',\n    shouldRevalidate: 'onInput',\n  });\n\n  const { errors = [] } = fields.email;\n\n  return (\n    <form {...getFormProps(form)} action={formAction} className={clsx('space-y-2', className)}>\n      <div\n        className={clsx(\n          'relative rounded-xl border bg-(--inline-email-form-background,var(--background)) text-base transition-colors duration-200 focus-within:border-(--inline-email-form-focus,var(--primary)) focus:outline-hidden',\n          errors.length\n            ? 'border-(--inline-email-form-error,var(--error))'\n            : 'border-(--inline-email-form-border,var(--black))',\n        )}\n      >\n        <input\n          {...getInputProps(fields.email, { type: 'email' })}\n          className=\"h-14 w-full bg-transparent pr-16 pl-5 text-(--inline-email-form-text,var(--foreground)) placeholder-(--inline-email-form-placeholder,var(--contrast-500)) placeholder:font-normal focus:outline-hidden\"\n          data-1p-ignore\n          key={fields.email.id}\n          placeholder={placeholder}\n        />\n        <div className=\"absolute top-1/2 right-0 -translate-y-1/2 pr-2\">\n          <Button\n            aria-label={submitLabel}\n            loading={isPending}\n            shape=\"circle\"\n            size=\"small\"\n            type=\"submit\"\n            variant=\"secondary\"\n          >\n            <ArrowRight size={20} strokeWidth={1.5} />\n          </Button>\n        </div>\n      </div>\n      <div className=\"mt-2\">\n        {errors.map((error, index) => (\n          <FormStatus key={index} type=\"error\">\n            {error}\n          </FormStatus>\n        ))}\n        {form.status === 'success' && successMessage != null && (\n          <FormStatus>{successMessage}</FormStatus>\n        )}\n      </div>\n    </form>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/inline-email-form/index.tsx"
+    },
+    {
+      "path": "vibes/soul/sections/inline-email-form/schema.ts",
+      "content": "import { z } from 'zod';\n\nexport const schema = z.object({\n  email: z.string().email(),\n});\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/inline-email-form/schema.ts"
+    }
+  ]
+}

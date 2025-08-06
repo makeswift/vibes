@@ -1,0 +1,16 @@
+{
+  "name": "streamable",
+  "type": "registry:ui",
+  "dependencies": [
+    "uuid"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/lib/streamable.tsx",
+      "content": "import { Suspense, use } from 'react';\nimport { v4 as uuid } from 'uuid';\n\nexport type Streamable<T> = T | Promise<T>;\n\nconst stableKeys = (function () {\n  const cache = new WeakMap<object, string>();\n\n  function getObjectKey(obj: object): string {\n    const key = cache.get(obj);\n\n    if (key !== undefined) {\n      return key;\n    }\n\n    const keyValue = uuid();\n\n    cache.set(obj, keyValue);\n\n    return keyValue;\n  }\n\n  return {\n    get: (streamable: unknown): string =>\n      streamable != null && typeof streamable === 'object'\n        ? getObjectKey(streamable)\n        : JSON.stringify(streamable),\n  };\n})();\n\nfunction getCompositeKey(streamables: readonly unknown[]): string {\n  return streamables.map(stableKeys.get).join('.');\n}\n\nfunction weakRefCache<K, T extends object>() {\n  const cache = new Map<K, WeakRef<T>>();\n\n  const registry = new FinalizationRegistry((key: K) => {\n    const valueRef = cache.get(key);\n\n    if (valueRef && !valueRef.deref()) cache.delete(key);\n  });\n\n  return {\n    get: (key: K) => cache.get(key)?.deref(),\n    set: (key: K, value: T) => {\n      cache.set(key, new WeakRef(value));\n      registry.register(value, key);\n    },\n  };\n}\n\nconst promiseCache = weakRefCache<string, Promise<unknown>>();\n\nfunction isPromise<T>(value: Streamable<T>): value is Promise<T> {\n  return value instanceof Promise;\n}\n\n/**\n * A suspense-friendly upgrade to `Promise.all`, guarantees stability of\n * the returned promise instance if passed an identical set of inputs.\n */\nfunction all<T extends readonly unknown[] | []>(\n  streamables: T,\n): Streamable<{ -readonly [P in keyof T]: Awaited<T[P]> }> {\n  // Avoid creating an unnecessary promise with the `Promise.all` call below\n  // if none of the streamables is a promise\n  if (!streamables.some(isPromise)) {\n    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions\n    return streamables as { -readonly [P in keyof T]: Awaited<T[P]> };\n  }\n\n  const cacheKey = getCompositeKey(streamables);\n\n  const cached = promiseCache.get(cacheKey);\n\n  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions\n  if (cached != null) return cached as { -readonly [P in keyof T]: Awaited<T[P]> };\n\n  const result = Promise.all(streamables);\n\n  promiseCache.set(cacheKey, result);\n\n  return result;\n}\n\nexport const Streamable = {\n  all,\n};\n\nexport function useStreamable<T>(streamable: Streamable<T>): T {\n  return isPromise(streamable) ? use(streamable) : streamable;\n}\n\nfunction UseStreamable<T>({\n  value,\n  children,\n}: {\n  value: Streamable<T>;\n  children: (value: T) => React.ReactNode;\n}) {\n  return children(useStreamable(value));\n}\n\nexport function Stream<T>({\n  value,\n  fallback,\n  children,\n}: {\n  value: Streamable<T>;\n  fallback?: React.ReactNode;\n  children: (value: T) => React.ReactNode;\n}) {\n  return (\n    <Suspense fallback={fallback}>\n      <UseStreamable value={value}>{children}</UseStreamable>\n    </Suspense>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/lib/streamable.tsx"
+    }
+  ]
+}

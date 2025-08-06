@@ -1,0 +1,19 @@
+{
+  "name": "dynamic-form-section",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx"
+  ],
+  "registryDependencies": [
+    "dynamic-form",
+    "section-layout"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/sections/dynamic-form-section/index.tsx",
+      "content": "import { clsx } from 'clsx';\n\nimport { DynamicForm, DynamicFormAction } from '@/vibes/soul/form/dynamic-form';\nimport { Field, FieldGroup } from '@/vibes/soul/form/dynamic-form/schema';\nimport { SectionLayout } from '@/vibes/soul/sections/section-layout';\n\nexport interface DynamicFormSectionProps<F extends Field> {\n  title?: string;\n  subtitle?: string;\n  action: DynamicFormAction<F>;\n  fields: Array<F | FieldGroup<F>>;\n  submitLabel?: string;\n  className?: string;\n}\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --dynamic-form-font-family: var(--font-family-body);\n *   --dynamic-form-title-font-family: var(--font-family-heading);\n *   --dynamic-form-title: var(--foreground);\n *   --dynamic-form-subtitle: var(--contrast-500);\n * }\n * ```\n */\nexport function DynamicFormSection<F extends Field>({\n  className,\n  title,\n  subtitle,\n  fields,\n  submitLabel,\n  action,\n}: DynamicFormSectionProps<F>) {\n  return (\n    <SectionLayout\n      className={clsx(\n        'mx-auto w-full max-w-4xl font-(family-name:--dynamic-form-font-family,var(--font-family-body))',\n        className,\n      )}\n      containerSize=\"lg\"\n    >\n      {Boolean(title) && (\n        <header className=\"pb-8 @2xl:pb-12 @4xl:pb-16\">\n          <h1 className=\"mb-5 font-(family-name:--dynamic-form-title-font-family,var(--font-family-heading)) text-4xl leading-none font-medium text-(--dynamic-form-title,var(--foreground)) @xl:text-5xl\">\n            {title}\n          </h1>\n          {Boolean(subtitle) && (\n            <p className=\"mb-10 text-base leading-none font-light text-(--dynamic-form-subtitle,var(--contrast-500)) @xl:text-lg\">\n              {subtitle}\n            </p>\n          )}\n        </header>\n      )}\n      <DynamicForm action={action} fields={fields} submitLabel={submitLabel} />\n    </SectionLayout>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/sections/dynamic-form-section/index.tsx"
+    }
+  ]
+}

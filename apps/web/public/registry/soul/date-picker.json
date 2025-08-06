@@ -1,0 +1,20 @@
+{
+  "name": "date-picker",
+  "type": "registry:ui",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-popover"
+  ],
+  "registryDependencies": [
+    "input",
+    "calendar"
+  ],
+  "files": [
+    {
+      "path": "vibes/soul/form/date-picker/index.tsx",
+      "content": "import * as PopoverPrimitive from '@radix-ui/react-popover';\nimport { CalendarIcon } from 'lucide-react';\nimport { ComponentPropsWithoutRef, ComponentRef, forwardRef, useState } from 'react';\n\nimport { Input } from '@/vibes/soul/form/input';\nimport { Calendar } from '@/vibes/soul/primitives/calendar';\n\ntype CalendarProps = ComponentPropsWithoutRef<typeof Calendar>;\n\ntype Props = {\n  defaultValue?: string | Date;\n  disabledDays?: CalendarProps['disabled'];\n  errors?: string[];\n  onSelect?: (date: Date | undefined) => void;\n  selected?: Date | undefined;\n  colorScheme?: 'light' | 'dark';\n} & Omit<ComponentPropsWithoutRef<typeof Input>, 'defaultValue' | 'onSelect' | 'value' | 'type'>;\n\nconst DatePicker = forwardRef<ComponentRef<typeof Input>, Props>(\n  (\n    {\n      defaultValue,\n      disabledDays,\n      errors,\n      onSelect,\n      placeholder = 'MM/DD/YYYY',\n      required = false,\n      selected,\n      colorScheme = 'light',\n      ...props\n    },\n    ref,\n  ) => {\n    // State to manage the selected date\n    const [date, setDate] = useState<Date | undefined>(\n      defaultValue != null ? new Date(defaultValue) : undefined,\n    );\n\n    // Format the selected date for display\n    const formattedSelected = selected ? Intl.DateTimeFormat().format(selected) : undefined;\n\n    // Format the default date for display\n    const formattedDate = date ? Intl.DateTimeFormat().format(date) : undefined;\n\n    return (\n      <PopoverPrimitive.Root>\n        <PopoverPrimitive.Trigger asChild>\n          <Input\n            {...props}\n            colorScheme={colorScheme}\n            errors={errors}\n            placeholder={placeholder}\n            prepend={<CalendarIcon className=\"h-5 w-5\" strokeWidth={1} />}\n            readOnly={true}\n            ref={ref}\n            required={required}\n            type=\"text\"\n            // We control the value of the input based on the selected date or the default date\n            value={formattedSelected ?? formattedDate ?? ''}\n          />\n        </PopoverPrimitive.Trigger>\n        <PopoverPrimitive.Portal>\n          <PopoverPrimitive.Content\n            align=\"start\"\n            className=\"data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-50\"\n            sideOffset={8}\n          >\n            <Calendar\n              colorScheme={colorScheme}\n              disabled={disabledDays}\n              mode=\"single\"\n              onSelect={onSelect ?? setDate}\n              selected={selected ?? date}\n            />\n          </PopoverPrimitive.Content>\n        </PopoverPrimitive.Portal>\n      </PopoverPrimitive.Root>\n    );\n  },\n);\n\nDatePicker.displayName = 'DatePicker';\n\nexport { DatePicker };\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/form/date-picker/index.tsx"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "field-error",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/form/field-error/index.tsx",
+      "content": "import { clsx } from 'clsx';\nimport { CircleAlert } from 'lucide-react';\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n *  :root {\n *    --field-error: var(--error);\n *  }\n * ```\n */\nexport function FieldError({\n  className,\n  children,\n  ...rest\n}: React.ComponentPropsWithoutRef<'div'>) {\n  return (\n    <div\n      {...rest}\n      className={clsx(\n        'flex items-center gap-1 text-xs text-(--field-error,var(--error))',\n        className,\n      )}\n    >\n      <CircleAlert size={20} strokeWidth={1.5} />\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/form/field-error/index.tsx"
+    }
+  ]
+}
