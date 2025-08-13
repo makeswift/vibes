@@ -153,6 +153,12 @@ const primitivePages: [Page, ...Page[]] = [
     component: 'streamable',
   },
   {
+    title: 'Table',
+    slug: 'table',
+    file: 'docs/table.mdx',
+    component: 'table',
+  },
+  {
     title: 'Tabs',
     slug: 'tabs',
     file: 'docs/tabs.mdx',
