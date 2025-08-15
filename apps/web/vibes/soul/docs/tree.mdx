@@ -1,0 +1,73 @@
+---
+title: Tree
+preview: tree-example
+previewSize: md
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+'use client';
+
+import { Tree, TreeNode } from '@/vibes/soul/primitives/tree';
+
+const exampleData: TreeNode = {
+  label: 'Root',
+  children: [
+    { label: 'Child 1' },
+    {
+      label: <b>Child 2 (bold)</b>,
+      children: [
+        { label: 'Grandchild 1' },
+        { label: <i>Grandchild 2 (italic)</i> },
+      ],
+    },
+    {
+      label: 'Child 3',
+      children: [
+        { label: 'Grandchild 3' },
+        { label: 'Grandchild 4' },
+      ],
+    },
+  ],
+};
+
+function Usage() {
+  return <Tree data={exampleData} defaultOpen />;
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### Tree Props
+
+| Prop          | Type       | Default |
+| ------------- | ---------- | ------- |
+| `data*`       | `TreeNode` |         |
+| `defaultOpen` | `boolean`  |         |
+| `className`   | `string`   |         |
+
+### TreeNode
+
+| Prop       | Type         | Default |
+| ---------- | ------------ | ------- |
+| `label*`   | `ReactNode`  |         |
+| `children` | `TreeNode[]` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+    --tree-focus: var(--primary);
+    --tree-node-hover: var(--contrast-100);
+    --tree-border: var(--contrast-200);
+    --tree-text: var(--foreground);
+}
+`}</CodeBlock>
