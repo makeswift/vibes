@@ -88,7 +88,8 @@
     "tailwind-merge": "^2.2.1",
     "utils": "link:@/lib/utils",
     "uuid": "^11.0.4",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

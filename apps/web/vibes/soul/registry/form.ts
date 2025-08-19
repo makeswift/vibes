@@ -59,12 +59,14 @@ export const form = [
   },
   {
     name: 'file-input',
-    dependencies: ['clsx', 'lucide-react'],
+    dependencies: ['clsx', 'lucide-react', 'zustand'],
     registryDependencies: ['label', 'button', 'toaster'],
     files: [
       'form/file-input/index.tsx',
+      'form/file-input/store.tsx',
       'form/file-input/file-dropzone.tsx',
       'form/file-input/file-item.tsx',
+      'form/file-input/file-list.tsx',
     ],
   },
   {

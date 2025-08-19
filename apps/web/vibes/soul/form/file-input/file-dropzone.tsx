@@ -8,12 +8,12 @@ import type {
   DragEvent,
   KeyboardEvent,
   ReactNode,
-  RefObject,
 } from 'react';
 
 export interface FileDropzoneProps extends ComponentPropsWithoutRef<'div'> {
   children?: ReactNode;
-  inputRef: RefObject<HTMLInputElement | null>;
+  onFilesAdded?: (files: File[]) => void;
+  onTriggerClick?: () => void;
   disabled?: boolean;
   invalid?: boolean;
 }
@@ -21,7 +21,8 @@ export interface FileDropzoneProps extends ComponentPropsWithoutRef<'div'> {
 export function FileDropzone({
   id,
   children,
-  inputRef,
+  onFilesAdded,
+  onTriggerClick,
   disabled,
   invalid,
   onDrop,
@@ -30,10 +31,14 @@ export function FileDropzone({
 
   const handleOnDrop = useCallback(
     (event: DragEvent<HTMLDivElement>) => {
+      event.preventDefault();
       setIsDragging(false);
+
+      const files = Array.from(event.dataTransfer.files);
+      onFilesAdded?.(files);
       onDrop?.(event);
     },
-    [onDrop],
+    [onFilesAdded, onDrop],
   );
 
   const handleOnDragOver = useCallback((event: DragEvent<HTMLDivElement>) => {
@@ -65,10 +70,10 @@ export function FileDropzone({
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        inputRef.current?.click();
+        onTriggerClick?.();
       }
     },
-    [inputRef],
+    [onTriggerClick],
   );
 
   const handleOnPaste = useCallback(
@@ -92,25 +97,14 @@ export function FileDropzone({
 
       if (pastedFiles.length === 0) return;
 
-      const inputElement = inputRef.current;
-
-      if (!inputElement) return;
-
-      const dataTransfer = new DataTransfer();
-
-      for (const file of pastedFiles) {
-        dataTransfer.items.add(file);
-      }
-
-      inputElement.files = dataTransfer.files;
-      inputElement.dispatchEvent(new Event('change', { bubbles: true }));
+      onFilesAdded?.(pastedFiles);
     },
-    [inputRef],
+    [onFilesAdded],
   );
 
   const handleOnClick = useCallback(() => {
-    inputRef.current?.click();
-  }, [inputRef]);
+    onTriggerClick?.();
+  }, [onTriggerClick]);
 
   return (
     <div

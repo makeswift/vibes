@@ -12,29 +12,44 @@ import {
   FileVideo,
   XIcon,
 } from 'lucide-react';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, useEffect } from 'react';
 
-import { FileInputProps, FileState } from '@/vibes/soul/form/file-input';
+import { FileInputProps } from '@/vibes/soul/form/file-input';
+import { useFileInputActions, useFileState } from '@/vibes/soul/form/file-input/store';
 import { Button } from '@/vibes/soul/primitives/button';
 
 export interface FileItemProps
   extends ComponentPropsWithoutRef<'div'>,
     Pick<FileInputProps, 'uploadingLabel' | 'successLabel' | 'errorLabel'> {
   file: File;
-  fileState: FileState;
   onRemoveFile: (file: File) => void;
 }
 
 export function FileItem({
   id,
   file,
-  fileState,
   onRemoveFile,
   uploadingLabel,
   successLabel,
   errorLabel,
 }: FileItemProps) {
-  const { progress, status, error } = fileState;
+  const fileState = useFileState(file);
+  const { setHasAnimated } = useFileInputActions();
+
+  useEffect(() => {
+    if (fileState && !fileState.hasAnimated) {
+      setTimeout(() => {
+        setHasAnimated(file);
+      }, 300);
+    }
+  }, [fileState, setHasAnimated, file]);
+
+  if (!fileState) {
+    return null;
+  }
+
+  const { progress, status, error, hasAnimated } = fileState;
+
   const { name, size } = file;
 
   return (
@@ -43,6 +58,8 @@ export function FileItem({
       aria-labelledby={`${id}-name`}
       className={clsx(
         'relative flex items-center justify-between gap-2 overflow-hidden rounded-lg border-[1.5px] border-(--file-input-item-border,var(--contrast-200)) p-4',
+        // Animation styles
+        !hasAnimated && 'fade-in-0 slide-in-from-top-2 animate-in',
         // Invalid styles
         'data-[invalid]:border-(--file-input-item-border-error,var(--error))',
       )}
@@ -116,7 +133,7 @@ export function FileItem({
           aria-valuemin={0}
           aria-valuenow={progress}
           aria-valuetext={`${progress}%`}
-          className="absolute bottom-0 left-0 h-1 w-full bg-(--file-input-item-progress,var(--primary)) transition-all"
+          className="absolute bottom-0 left-0 h-1 w-full bg-(--file-input-item-progress,var(--primary)) transition-transform duration-300 ease-linear"
           role="progressbar"
           style={{ transform: `translateX(-${100 - progress}%)` }}
         />

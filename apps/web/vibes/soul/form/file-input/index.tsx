@@ -3,10 +3,11 @@
 import clsx from 'clsx';
 import { UploadIcon } from 'lucide-react';
 import type { ChangeEvent, ComponentPropsWithRef, DragEvent } from 'react';
-import { useCallback, useId, useRef, useState } from 'react';
+import { useCallback, useId, useRef } from 'react';
 
 import { FileDropzone } from '@/vibes/soul/form/file-input/file-dropzone';
-import { FileItem } from '@/vibes/soul/form/file-input/file-item';
+import { FileList } from '@/vibes/soul/form/file-input/file-list';
+import { useFileInputActions, useFileInputStore } from '@/vibes/soul/form/file-input/store';
 import { Label } from '@/vibes/soul/form/label';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
@@ -26,8 +27,6 @@ export interface FileState {
 export interface FileInputProps extends ComponentPropsWithRef<'input'> {
   id?: string;
   className?: string;
-  initialFiles?: Map<File, FileState>;
-  onFilesChange?: (files: Map<File, FileState>) => void;
   onUpload?: (files: File[], options: UploadOptions) => Promise<void> | void;
   onFileAccept?: (file: File) => void;
   onFileReject?: (file: File, message: string) => void;
@@ -47,16 +46,14 @@ export interface FileInputProps extends ComponentPropsWithRef<'input'> {
 
 export function FileInput({
   id,
-  initialFiles,
   hideLabel = false,
   message,
-  invalid,
+  invalid = false,
   cta = 'Upload file',
   label = 'File upload',
   hint = 'or drag and drop files here',
   maxFiles,
   maxSize,
-  onFilesChange,
   onFileAccept,
   onFileReject,
   onFileValidate,
@@ -74,38 +71,45 @@ export function FileInput({
 
   const generatedId = useId();
 
-  const [files, setFiles] = useState(initialFiles ?? new Map<File, FileState>());
+  const {
+    setFiles: setStoreFiles,
+    setProgress,
+    setSuccess,
+    setError,
+    removeFile: removeStoreFile,
+  } = useFileInputActions();
 
-  const updateInputFiles = useCallback(
+  const setFiles = useCallback(
     (newFiles: File[]) => {
+      setStoreFiles(newFiles);
+
       const inputElement = inputRef.current;
-
-      if (!inputElement) return;
-
-      const dataTransfer = new DataTransfer();
-
-      const existingFiles = Array.from(files.keys());
-
-      const allFiles = [...existingFiles, ...newFiles];
-      const limitedFiles = maxFiles !== undefined ? allFiles.slice(0, maxFiles) : allFiles;
-
-      limitedFiles.forEach((file) => dataTransfer.items.add(file));
-
-      inputElement.files = dataTransfer.files;
-
-      setFiles((prev) => {
-        const newMap = new Map<File, FileState>();
-
-        limitedFiles.forEach((file) => {
-          const existingState = prev.get(file);
-          newMap.set(file, existingState ?? { progress: 0, status: 'idle' });
-        });
-
-        onFilesChange?.(newMap);
-        return newMap;
-      });
+      if (inputElement) {
+        const dataTransfer = new DataTransfer();
+        newFiles.forEach((file) => dataTransfer.items.add(file));
+        inputElement.files = dataTransfer.files;
+      }
     },
-    [maxFiles, onFilesChange, files],
+    [setStoreFiles],
+  );
+
+  const removeFile = useCallback(
+    (fileToRemove: File) => {
+      removeStoreFile(fileToRemove);
+
+      const inputElement = inputRef.current;
+      if (inputElement?.files) {
+        const dataTransfer = new DataTransfer();
+        const currentFiles = Array.from(inputElement.files);
+
+        currentFiles
+          .filter((file) => file !== fileToRemove)
+          .forEach((file) => dataTransfer.items.add(file));
+
+        inputElement.files = dataTransfer.files;
+      }
+    },
+    [removeStoreFile],
   );
 
   const handleFiles = useCallback(
@@ -114,7 +118,6 @@ export function FileInput({
 
       const acceptedFiles = new Map<File, FileState>();
 
-      // Default file validation
       newFiles.forEach((file) => {
         let rejected = false;
         let rejectionReason = '';
@@ -166,28 +169,18 @@ export function FileInput({
         }
       });
 
-      // Update inputRef with accepted files
-      updateInputFiles(Array.from(acceptedFiles.keys()));
+      const existingFiles = useFileInputStore.getState().files;
+      const existingFilesList = Array.from(existingFiles.keys());
+      const allFiles = [...existingFilesList, ...Array.from(acceptedFiles.keys())];
+      const limitedFiles = maxFiles !== undefined ? allFiles.slice(0, maxFiles) : allFiles;
 
-      // Handle onUpload
+      setFiles(limitedFiles);
+
       if (filesToUpload.length > 0 && onUpload) {
-        const updateFileState = (file: File, newState: Partial<FileState>) => {
-          setFiles((currentMap) => {
-            const newUploadMap = new Map(currentMap);
-            const currentState = newUploadMap.get(file);
-            if (currentState) {
-              newUploadMap.set(file, { ...currentState, ...newState });
-            }
-            onFilesChange?.(newUploadMap);
-            return newUploadMap;
-          });
-        };
-
         void onUpload(filesToUpload, {
-          onProgress: (file, progress) => updateFileState(file, { progress, status: 'uploading' }),
-          onSuccess: (file) => updateFileState(file, { progress: 100, status: 'success' }),
-          onError: (file, error) =>
-            updateFileState(file, { status: 'error', error: error.message }),
+          onProgress: (file, progress) => setProgress(file, progress),
+          onSuccess: (file) => setSuccess(file),
+          onError: (file, error) => setError(file, error.message),
         });
       }
     },
@@ -197,8 +190,11 @@ export function FileInput({
       onFileAccept,
       onFileReject,
       onFileValidate,
-      updateInputFiles,
-      onFilesChange,
+      maxFiles,
+      setFiles,
+      setProgress,
+      setSuccess,
+      setError,
       onUpload,
     ],
   );
@@ -222,31 +218,6 @@ export function FileInput({
     [handleFiles],
   );
 
-  const handleRemoveFile = useCallback(
-    (fileToRemove: File) => {
-      const input = inputRef.current;
-
-      if (!input?.files) return;
-
-      const dataTransfer = new DataTransfer();
-      const currentFiles = Array.from(input.files);
-
-      currentFiles
-        .filter((file) => file !== fileToRemove)
-        .forEach((file) => dataTransfer.items.add(file));
-
-      input.files = dataTransfer.files;
-
-      setFiles((prev) => {
-        const newMap = new Map(prev);
-        newMap.delete(fileToRemove);
-        onFilesChange?.(newMap);
-        return newMap;
-      });
-    },
-    [setFiles, onFilesChange],
-  );
-
   return (
     <div className={clsx(className, '@container')}>
       <Label
@@ -255,24 +226,13 @@ export function FileInput({
       >
         {label}
       </Label>
-      <input
-        accept={accept}
-        aria-describedby={`${id ?? generatedId}-hint${message !== undefined ? ` ${id ?? generatedId}-message` : ''}`}
-        className="sr-only"
-        id={`${id ?? generatedId}-input`}
-        multiple={multiple}
-        onChange={handleOnChange}
-        ref={inputRef}
-        tabIndex={-1}
-        type="file"
-        {...props}
-      />
       <FileDropzone
         disabled={disabled}
         id={id ?? generatedId}
-        inputRef={inputRef}
         invalid={invalid}
         onDrop={handleOnDrop}
+        onFilesAdded={handleFiles}
+        onTriggerClick={() => inputRef.current?.click()}
       >
         <Button
           aria-controls={`${id ?? generatedId}-input`}
@@ -297,6 +257,18 @@ export function FileInput({
         >
           {hint}
         </p>
+        <input
+          accept={accept}
+          aria-describedby={`${id ?? generatedId}-hint${message !== undefined ? ` ${id ?? generatedId}-message` : ''}`}
+          className="sr-only"
+          id={`${id ?? generatedId}-input`}
+          multiple={multiple}
+          onChange={handleOnChange}
+          ref={inputRef}
+          tabIndex={-1}
+          type="file"
+          {...props}
+        />
       </FileDropzone>
       {message != null && (
         <p
@@ -306,26 +278,13 @@ export function FileInput({
           {message}
         </p>
       )}
-      {files.size > 0 && (
-        <div
-          className="fade-in-0 slide-in-from-top-2 animate-in mt-3 grid gap-3"
-          id={`${id ?? generatedId}-list`}
-          role="list"
-        >
-          {Array.from(files.entries()).map(([file, fileState]) => (
-            <FileItem
-              errorLabel={errorLabel}
-              file={file}
-              fileState={fileState}
-              id={id ?? generatedId}
-              key={URL.createObjectURL(file)}
-              onRemoveFile={handleRemoveFile}
-              successLabel={successLabel}
-              uploadingLabel={uploadingLabel}
-            />
-          ))}
-        </div>
-      )}
+      <FileList
+        errorLabel={errorLabel}
+        id={id ?? generatedId}
+        onRemoveFile={removeFile}
+        successLabel={successLabel}
+        uploadingLabel={uploadingLabel}
+      />
     </div>
   );
 }

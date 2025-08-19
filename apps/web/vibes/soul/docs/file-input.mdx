@@ -21,6 +21,35 @@ function Usage() {
 
 {/* prettier-ignore-end */}
 
+## State Management
+
+The `FileInput` component uses an internal Zustand store to manage file state.
+
+### Store Hooks
+
+| Hook                    | Return Type                  | Description                               |
+| ----------------------- | ---------------------------- | ----------------------------------------- |
+| `useFiles()`            | `File[]`                     | Returns array of currently selected files |
+| `useFileState(file)`    | `FileItemState \| undefined` | Returns state for a specific file         |
+| `useDragOver()`         | `boolean`                    | Returns current drag over state           |
+| `useInvalid()`          | `boolean`                    | Returns current invalid state             |
+| `useFileInputActions()` | `FileInputActions`           | Returns all store actions                 |
+
+### Store Actions
+
+| Action                        | Type                                     | Description                             |
+| ----------------------------- | ---------------------------------------- | --------------------------------------- |
+| `addFiles(files)`             | `(files: File[]) => void`                | Add new files to the store              |
+| `setFiles(files)`             | `(files: File[]) => void`                | Replace all files in the store          |
+| `setProgress(file, progress)` | `(file: File, progress: number) => void` | Update upload progress for a file       |
+| `setSuccess(file)`            | `(file: File) => void`                   | Mark file upload as successful          |
+| `setError(file, error)`       | `(file: File, error: string) => void`    | Mark file upload as failed              |
+| `removeFile(file)`            | `(file: File) => void`                   | Remove file from the store              |
+| `setDragOver(dragOver)`       | `(dragOver: boolean) => void`            | Update drag over state                  |
+| `setInvalid(invalid)`         | `(invalid: boolean) => void`             | Update invalid state                    |
+| `setHasAnimated(file)`        | `(file: File) => void`                   | Mark file as having completed animation |
+| `clear()`                     | `() => void`                             | Clear all files and reset state         |
+
 ## API Reference
 
 ### FileInputProps
@@ -29,8 +58,6 @@ function Usage() {
 | ---------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | `id`             | `string`                                                                                                        |                                 |
 | `className`      | `string`                                                                                                        |                                 |
-| `initialFiles`   | `Map<File, FileState>`                                                                                          |                                 |
-| `onFilesChange`  | `(files: Map<File, FileState>) => void`                                                                         |                                 |
 | `onUpload`       | `(files: File[], options: UploadOptions) => Promise<void> \| void` <Tooltip content="See UploadOptions below"/> |                                 |
 | `onFileAccept`   | `(file: File) => void`                                                                                          |                                 |
 | `onFileReject`   | `(file: File, message: string) => void`                                                                         |                                 |
@@ -57,27 +84,29 @@ function Usage() {
 
 ### FileState
 
-| Prop       | Type                                            | Default |
-| ---------- | ----------------------------------------------- | ------- |
-| `progress` | `number`                                        |         |
-| `status`   | `'idle' \| 'uploading' \| 'success' \| 'error'` |         |
-| `error`    | `string`                                        |         |
+| Prop          | Type                                            | Default |
+| ------------- | ----------------------------------------------- | ------- |
+| `file`        | `File`                                          |         |
+| `progress`    | `number`                                        |         |
+| `status`      | `'idle' \| 'uploading' \| 'success' \| 'error'` |         |
+| `error`       | `string`                                        |         |
+| `hasAnimated` | `boolean`                                       |         |
 
 ### FileDropzoneProps
 
-| Prop       | Type                                  | Default |
-| ---------- | ------------------------------------- | ------- |
-| `children` | `ReactNode`                           |         |
-| `inputRef` | `RefObject<HTMLInputElement \| null>` |         |
-| `disabled` | `boolean`                             |         |
-| `invalid`  | `boolean`                             |         |
+| Prop             | Type                      | Default |
+| ---------------- | ------------------------- | ------- |
+| `children`       | `ReactNode`               |         |
+| `onFilesAdded`   | `(files: File[]) => void` |         |
+| `onTriggerClick` | `() => void`              |         |
+| `disabled`       | `boolean`                 |         |
+| `invalid`        | `boolean`                 |         |
 
 ### FileItemProps
 
 | Prop             | Type                   | Default             |
 | ---------------- | ---------------------- | ------------------- |
 | `file`           | `File`                 |                     |
-| `fileState`      | `FileState`            |                     |
 | `onRemoveFile`   | `(file: File) => void` |                     |
 | `uploadingLabel` | `string`               | `'Uploading'`       |
 | `successLabel`   | `string`               | `'Upload complete'` |
@@ -116,3 +145,12 @@ This component supports various CSS variables for theming. Here's a comprehensiv
     --file-input-mime-icon: var(--contrast-400);
 }
 `}</CodeBlock>
+
+## Changelog
+
+### 2025-08-20
+
+- Migrated to internal Zustand store for state management
+- Added `hasAnimated` property to `FileItemState` for improved animations
+- Updated `FileDropzoneProps`: removed `inputRef`, added `onFilesAdded` and `onTriggerClick` callbacks
+- Updated `FileItemProps`: removed `fileState` prop (now retrieved from store internally)
