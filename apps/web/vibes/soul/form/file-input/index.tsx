@@ -3,13 +3,15 @@
 import clsx from 'clsx';
 import { UploadIcon } from 'lucide-react';
 import type { ChangeEvent, ComponentPropsWithRef, DragEvent } from 'react';
-import { useCallback, useId, useRef, useState } from 'react';
+import { useCallback, useId, useRef } from 'react';
 
 import { FileDropzone } from '@/vibes/soul/form/file-input/file-dropzone';
 import { FileItem } from '@/vibes/soul/form/file-input/file-item';
 import { Label } from '@/vibes/soul/form/label';
 import { Button } from '@/vibes/soul/primitives/button';
 import { toast } from '@/vibes/soul/primitives/toaster';
+
+import { FileUploadProvider, useFileUpload } from './store';
 
 export interface UploadOptions {
   onProgress: (file: File, progress: number) => void;
@@ -26,8 +28,6 @@ export interface FileState {
 export interface FileInputProps extends ComponentPropsWithRef<'input'> {
   id?: string;
   className?: string;
-  initialFiles?: Map<File, FileState>;
-  onFilesChange?: (files: Map<File, FileState>) => void;
   onUpload?: (files: File[], options: UploadOptions) => Promise<void> | void;
   onFileAccept?: (file: File) => void;
   onFileReject?: (file: File, message: string) => void;
@@ -45,9 +45,16 @@ export interface FileInputProps extends ComponentPropsWithRef<'input'> {
   errorLabel?: string;
 }
 
-export function FileInput({
+export function FileInput({ ...props }: FileInputProps) {
+  return (
+    <FileUploadProvider>
+      <FileInputInner {...props} />
+    </FileUploadProvider>
+  );
+}
+
+function FileInputInner({
   id,
-  initialFiles,
   hideLabel = false,
   message,
   invalid,
@@ -56,7 +63,6 @@ export function FileInput({
   hint = 'or drag and drop files here',
   maxFiles,
   maxSize,
-  onFilesChange,
   onFileAccept,
   onFileReject,
   onFileValidate,
@@ -74,7 +80,7 @@ export function FileInput({
 
   const generatedId = useId();
 
-  const [files, setFiles] = useState(initialFiles ?? new Map<File, FileState>());
+  const { state, addFiles, removeFile, setProgress, setSuccess, setError } = useFileUpload();
 
   const updateInputFiles = useCallback(
     (newFiles: File[]) => {
@@ -84,7 +90,7 @@ export function FileInput({
 
       const dataTransfer = new DataTransfer();
 
-      const existingFiles = Array.from(files.keys());
+      const existingFiles = Array.from(state.files.keys());
 
       const allFiles = [...existingFiles, ...newFiles];
       const limitedFiles = maxFiles !== undefined ? allFiles.slice(0, maxFiles) : allFiles;
@@ -93,19 +99,9 @@ export function FileInput({
 
       inputElement.files = dataTransfer.files;
 
-      setFiles((prev) => {
-        const newMap = new Map<File, FileState>();
-
-        limitedFiles.forEach((file) => {
-          const existingState = prev.get(file);
-          newMap.set(file, existingState ?? { progress: 0, status: 'idle' });
-        });
-
-        onFilesChange?.(newMap);
-        return newMap;
-      });
+      addFiles(limitedFiles);
     },
-    [maxFiles, onFilesChange, files],
+    [maxFiles, addFiles, state.files],
   );
 
   const handleFiles = useCallback(
@@ -114,7 +110,6 @@ export function FileInput({
 
       const acceptedFiles = new Map<File, FileState>();
 
-      // Default file validation
       newFiles.forEach((file) => {
         let rejected = false;
         let rejectionReason = '';
@@ -166,29 +161,37 @@ export function FileInput({
         }
       });
 
-      // Update inputRef with accepted files
       updateInputFiles(Array.from(acceptedFiles.keys()));
 
-      // Handle onUpload
-      if (filesToUpload.length > 0 && onUpload) {
-        const updateFileState = (file: File, newState: Partial<FileState>) => {
-          setFiles((currentMap) => {
-            const newUploadMap = new Map(currentMap);
-            const currentState = newUploadMap.get(file);
-            if (currentState) {
-              newUploadMap.set(file, { ...currentState, ...newState });
-            }
-            onFilesChange?.(newUploadMap);
-            return newUploadMap;
+      if (filesToUpload.length > 0) {
+        if (onUpload) {
+          filesToUpload.forEach((file) => {
+            setProgress(file, 0);
           });
-        };
 
-        void onUpload(filesToUpload, {
-          onProgress: (file, progress) => updateFileState(file, { progress, status: 'uploading' }),
-          onSuccess: (file) => updateFileState(file, { progress: 100, status: 'success' }),
-          onError: (file, error) =>
-            updateFileState(file, { status: 'error', error: error.message }),
-        });
+          void Promise.resolve(
+            onUpload(filesToUpload, {
+              onProgress: (file, progress) => {
+                setProgress(file, progress);
+              },
+              onSuccess: (file) => {
+                setSuccess(file);
+              },
+              onError: (file, error) => {
+                setError(file, error.message);
+              },
+            }),
+          ).catch((error: unknown) => {
+            const errorMessage = error instanceof Error ? error.message : 'Upload failed';
+            filesToUpload.forEach((file) => {
+              setError(file, errorMessage);
+            });
+          });
+        } else {
+          filesToUpload.forEach((file) => {
+            setSuccess(file);
+          });
+        }
       }
     },
     [
@@ -198,8 +201,10 @@ export function FileInput({
       onFileReject,
       onFileValidate,
       updateInputFiles,
-      onFilesChange,
       onUpload,
+      setProgress,
+      setSuccess,
+      setError,
     ],
   );
 
@@ -237,14 +242,9 @@ export function FileInput({
 
       input.files = dataTransfer.files;
 
-      setFiles((prev) => {
-        const newMap = new Map(prev);
-        newMap.delete(fileToRemove);
-        onFilesChange?.(newMap);
-        return newMap;
-      });
+      removeFile(fileToRemove);
     },
-    [setFiles, onFilesChange],
+    [removeFile],
   );
 
   return (
@@ -306,24 +306,21 @@ export function FileInput({
           {message}
         </p>
       )}
-      {files.size > 0 && (
-        <div
-          className="fade-in-0 slide-in-from-top-2 animate-in mt-3 grid gap-3"
-          id={`${id ?? generatedId}-list`}
-          role="list"
-        >
-          {Array.from(files.entries()).map(([file, fileState]) => (
-            <FileItem
-              errorLabel={errorLabel}
-              file={file}
-              fileState={fileState}
-              id={id ?? generatedId}
-              key={URL.createObjectURL(file)}
-              onRemoveFile={handleRemoveFile}
-              successLabel={successLabel}
-              uploadingLabel={uploadingLabel}
-            />
-          ))}
+      {state.files.size > 0 && (
+        <div className="mt-3 grid gap-3" id={`${id ?? generatedId}-list`} role="list">
+          {Array.from(state.files.entries()).map(([file]) => {
+            return (
+              <FileItem
+                errorLabel={errorLabel}
+                file={file}
+                id={id ?? generatedId}
+                key={`${file.name}-${file.size}-${file.lastModified}`}
+                onRemoveFile={handleRemoveFile}
+                successLabel={successLabel}
+                uploadingLabel={uploadingLabel}
+              />
+            );
+          })}
         </div>
       )}
     </div>

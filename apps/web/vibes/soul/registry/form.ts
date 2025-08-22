@@ -65,6 +65,7 @@ export const form = [
       'form/file-input/index.tsx',
       'form/file-input/file-dropzone.tsx',
       'form/file-input/file-item.tsx',
+      'form/file-input/store.tsx',
     ],
   },
   {

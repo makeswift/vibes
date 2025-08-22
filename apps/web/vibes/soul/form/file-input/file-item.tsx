@@ -12,29 +12,49 @@ import {
   FileVideo,
   XIcon,
 } from 'lucide-react';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, useEffect, useRef } from 'react';
 
-import { FileInputProps, FileState } from '@/vibes/soul/form/file-input';
+import { FileInputProps } from '@/vibes/soul/form/file-input';
 import { Button } from '@/vibes/soul/primitives/button';
+
+import { useFileUpload } from './store';
 
 export interface FileItemProps
   extends ComponentPropsWithoutRef<'div'>,
     Pick<FileInputProps, 'uploadingLabel' | 'successLabel' | 'errorLabel'> {
   file: File;
-  fileState: FileState;
   onRemoveFile: (file: File) => void;
 }
 
 export function FileItem({
   id,
   file,
-  fileState,
   onRemoveFile,
   uploadingLabel,
   successLabel,
   errorLabel,
 }: FileItemProps) {
+  const { state } = useFileUpload();
+  const hasAnimatedRef = useRef(false);
+
+  const fileState = state.files.get(file);
+
+  useEffect(() => {
+    // Only animate the file item once since
+    // re-rendering will reset the animation
+    if (fileState && !hasAnimatedRef.current) {
+      setTimeout(() => {
+        hasAnimatedRef.current = true;
+      }, 300);
+    }
+  }, [fileState]);
+
+  if (!fileState) {
+    return null;
+  }
+
   const { progress, status, error } = fileState;
+
   const { name, size } = file;
 
   return (
@@ -43,6 +63,8 @@ export function FileItem({
       aria-labelledby={`${id}-name`}
       className={clsx(
         'relative flex items-center justify-between gap-2 overflow-hidden rounded-lg border-[1.5px] border-(--file-input-item-border,var(--contrast-200)) p-4',
+        // Animation styles
+        !hasAnimatedRef.current && 'fade-in-0 slide-in-from-top-2 animate-in',
         // Invalid styles
         'data-[invalid]:border-(--file-input-item-border-error,var(--error))',
       )}
@@ -116,7 +138,7 @@ export function FileItem({
           aria-valuemin={0}
           aria-valuenow={progress}
           aria-valuetext={`${progress}%`}
-          className="absolute bottom-0 left-0 h-1 w-full bg-(--file-input-item-progress,var(--primary)) transition-all"
+          className="absolute bottom-0 left-0 h-1 w-full bg-(--file-input-item-progress,var(--primary)) transition-transform duration-300 ease-linear"
           role="progressbar"
           style={{ transform: `translateX(-${100 - progress}%)` }}
         />

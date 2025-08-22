@@ -29,8 +29,6 @@ function Usage() {
 | ---------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | `id`             | `string`                                                                                                        |                                 |
 | `className`      | `string`                                                                                                        |                                 |
-| `initialFiles`   | `Map<File, FileState>`                                                                                          |                                 |
-| `onFilesChange`  | `(files: Map<File, FileState>) => void`                                                                         |                                 |
 | `onUpload`       | `(files: File[], options: UploadOptions) => Promise<void> \| void` <Tooltip content="See UploadOptions below"/> |                                 |
 | `onFileAccept`   | `(file: File) => void`                                                                                          |                                 |
 | `onFileReject`   | `(file: File, message: string) => void`                                                                         |                                 |
@@ -77,7 +75,6 @@ function Usage() {
 | Prop             | Type                   | Default             |
 | ---------------- | ---------------------- | ------------------- |
 | `file`           | `File`                 |                     |
-| `fileState`      | `FileState`            |                     |
 | `onRemoveFile`   | `(file: File) => void` |                     |
 | `uploadingLabel` | `string`               | `'Uploading'`       |
 | `successLabel`   | `string`               | `'Upload complete'` |
@@ -116,3 +113,12 @@ This component supports various CSS variables for theming. Here's a comprehensiv
     --file-input-mime-icon: var(--contrast-400);
 }
 `}</CodeBlock>
+
+## Changelog
+
+### 2025-08-25
+
+- Added provider-based architecture with `FileUploadProvider` and internal state management
+- Removed `initialFiles` and `onFilesChange` props in favor of internal state management
+- Fixed animation re-triggering issue when adding/removing files
+- Added stable file keys to prevent unnecessary component remounts
