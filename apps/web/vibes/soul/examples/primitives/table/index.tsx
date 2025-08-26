@@ -41,6 +41,19 @@ const orders = [
   },
 ];
 
+function getBadgeVariant(status: string) {
+  switch (status) {
+    case 'Delivered':
+      return 'success';
+    case 'Shipped':
+      return 'info';
+    case 'Processing':
+      return 'warning';
+    default:
+      return 'primary';
+  }
+}
+
 export default function Preview() {
   return (
     <div className="bg-background mx-auto max-w-4xl px-6 py-8">
@@ -70,19 +83,7 @@ export default function Preview() {
                 <TableCell className="font-medium">{order.id}</TableCell>
                 <TableCell>{order.date}</TableCell>
                 <TableCell>
-                  <Badge
-                    variant={
-                      order.status === 'Delivered'
-                        ? 'success'
-                        : order.status === 'Shipped'
-                          ? 'info'
-                          : order.status === 'Processing'
-                            ? 'warning'
-                            : 'primary'
-                    }
-                  >
-                    {order.status}
-                  </Badge>
+                  <Badge variant={getBadgeVariant(order.status)}>{order.status}</Badge>
                 </TableCell>
                 <TableCell className="text-right">{order.items}</TableCell>
                 <TableCell className="text-right font-medium">{order.total}</TableCell>
