@@ -1,7 +1,7 @@
 'use client';
 
-import { Tree, TreeNode } from '@/vibes/soul/primitives/tree';
 import { Badge } from '@/vibes/soul/primitives/badge';
+import { Tree, TreeNode } from '@/vibes/soul/primitives/tree';
 
 const exampleData: TreeNode = {
   label: 'Root',

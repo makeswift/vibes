@@ -1,18 +1,18 @@
 'use client';
 
-import { forwardRef, useRef, useState } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { forwardRef, useRef, useState } from 'react';
 
-export type TreeNode = {
+export interface TreeNode {
   label: React.ReactNode;
   children?: TreeNode[];
-};
+}
 
-export type TreeProps = {
+export interface TreeProps {
+  className?: string;
   data: TreeNode;
   defaultOpen?: boolean;
-  className?: string;
-};
+}
 
 /**
  * Tree component for displaying hierarchical data.
@@ -32,47 +32,41 @@ export const Tree = forwardRef<HTMLUListElement, TreeProps>(function Tree(
   ref,
 ) {
   return (
-    <ul ref={ref} role="tree" aria-label="Tree" className={`list-none pl-0 ${className ?? ''}`}>
-      <TreeItem node={data} defaultOpen={defaultOpen} autoFocus />
+    <ul aria-label="Tree" className={`list-none pl-0 ${className ?? ''}`} ref={ref} role="tree">
+      <TreeItem defaultOpen={defaultOpen} level={1} node={data} />
     </ul>
   );
 });
 
-export type TreeItemProps = {
-  node: TreeNode;
+export interface TreeItemProps {
   defaultOpen?: boolean;
   level?: number;
-  autoFocus?: boolean;
-};
+  node: TreeNode;
+}
 
-export const TreeItem = ({
-  node,
-  defaultOpen = false,
-  level = 1,
-  autoFocus = false,
-}: TreeItemProps) => {
+export const TreeItem = ({ node, defaultOpen = false, level = 1 }: TreeItemProps) => {
   const [open, setOpen] = useState(defaultOpen);
-  const hasChildren = !!node.children?.length;
+  const hasChildren = Array.isArray(node.children) && node.children.length > 0;
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <li
-      role="treeitem"
       aria-expanded={hasChildren ? open : undefined}
       aria-level={level}
-      tabIndex={autoFocus ? 0 : -1}
+      aria-selected={false}
       className="outline-none"
+      role="treeitem"
+      tabIndex={-1}
     >
       <div className="group flex items-center py-1">
         {hasChildren ? (
           <button
-            type="button"
             aria-expanded={open}
             aria-label={typeof node.label === 'string' ? node.label : undefined}
-            onClick={() => setOpen((v) => !v)}
             className="flex items-center rounded px-0.5 focus-visible:ring-2 focus-visible:ring-(--tree-focus,var(--primary))"
+            onClick={() => setOpen((v) => !v)}
             ref={buttonRef}
-            tabIndex={-1}
+            type="button"
           >
             <Chevron open={open} />
             <span className="text-(--tree-text,var(--foreground)) group-hover:underline">
@@ -83,10 +77,10 @@ export const TreeItem = ({
           <span className="ml-5 text-(--tree-text,var(--foreground))">{node.label}</span>
         )}
       </div>
-      {hasChildren && open && (
-        <ul role="group" className="ml-3 border-l border-(--tree-border,var(--contrast-200)) pl-2">
-          {node.children!.map((child, i) => (
-            <TreeItem key={i} node={child} level={level + 1} />
+      {hasChildren && open && node.children && (
+        <ul className="ml-3 border-l border-(--tree-border,var(--contrast-200)) pl-2" role="group">
+          {node.children.map((child, i) => (
+            <TreeItem key={i} level={level + 1} node={child} />
           ))}
         </ul>
       )}
@@ -94,12 +88,10 @@ export const TreeItem = ({
   );
 };
 
-const Chevron = ({ open }: { open: boolean }) => (
+export const Chevron = ({ open }: { open: boolean }) => (
   <span
-    className={`mr-1 inline-block transition-transform duration-200 select-none ${
-      open ? 'rotate-90' : ''
-    }`}
     aria-hidden
+    className={`mr-1 inline-block transition-transform duration-200 select-none ${open ? 'rotate-90' : ''}`}
   >
     <ChevronRight size={20} strokeWidth={1.5} />
   </span>
