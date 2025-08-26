@@ -217,4 +217,10 @@ export const primitives = [
     registryDependencies: ['alert'],
     files: ['primitives/toaster/index.tsx'],
   },
+  {
+    name: 'tree',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['primitives/tree/index.tsx'],
+  },
 ] satisfies Components;
