@@ -245,6 +245,12 @@ export const primitives = [
     files: ['primitives/tabs/index.tsx'],
   },
   {
+    name: 'tree',
+    dependencies: ['clsx'],
+    registryDependencies: ['tree-node'],
+    files: ['primitives/tree/index.tsx'],
+  },
+  {
     name: 'toaster',
     dependencies: ['sonner'],
     registryDependencies: ['alert'],
