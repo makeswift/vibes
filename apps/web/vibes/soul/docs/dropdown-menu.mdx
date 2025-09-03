@@ -1,0 +1,195 @@
+---
+title: Dropdown Menu
+preview: dropdown-menu-example
+previewSize: md
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { DropdownMenu } from '@/vibes/soul/primitives/dropdown-menu';
+import type { DropdownMenuProps } from '@/vibes/soul/primitives/dropdown-menu';
+import { Button } from '@/vibes/soul/primitives/button';
+import { EllipsisIcon } from 'lucide-react';
+
+function Usage() {
+    const items: DropdownMenuProps['items'] = [
+        {
+            type: 'item',
+            props: { children: 'Profile', onSelect: () => console.log('Profile clicked') },
+        },
+        { type: 'separator' },
+        {
+            type: 'checkbox',
+            props: {
+                children: 'Notifications',
+                checked: true,
+                onCheckedChange: (checked) => console.log('Notifications:', checked),
+            },
+        },
+        { type: 'separator' },
+        {
+            type: 'group',
+            items: [
+                { type: 'item', props: { children: 'Settings' } },
+                { type: 'item', props: { children: 'Help' } },
+                {
+                    type: 'sub',
+                    trigger: { props: { children: 'More options' } },
+                    content: {
+                        items: [
+                            { type: 'item', props: { children: 'Export' } },
+                            { type: 'item', props: { children: 'Import' } },
+                        ],
+                    },
+                },
+            ],
+        },
+        { type: 'separator' },
+        {
+            type: 'item',
+            props: {
+                children: 'Sign out',
+                variant: 'danger',
+                onSelect: () => console.log('Sign out clicked'),
+            },
+        },
+    ];
+
+    return (
+        <DropdownMenu
+            items={items}
+            label="User Actions"
+            trigger={
+                <Button shape="circle" size="small" variant="tertiary">
+                    <EllipsisIcon size={20} />
+                </Button>
+            }
+        />
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### DropdownMenuProps
+
+| Prop             | Type                           | Default                           |
+| ---------------- | ------------------------------ | --------------------------------- |
+| `items*`         | `MenuNode[]`                   |                                   |
+| `label*`         | `string`                       |                                   |
+| `className`      | `string`                       |                                   |
+| `trigger`        | `ReactNode`                    | Default button with ellipsis icon |
+| `align`          | `'start' \| 'center' \| 'end'` |                                   |
+| `sideOffset`     | `number`                       |                                   |
+| `showScrollArea` | `boolean`                      | `true`                            |
+
+### MenuNode Types
+
+The `items` prop accepts an array of `MenuNode` objects. Each node can be one of the following types:
+
+#### Item Node
+
+```ts
+{
+    type: 'item';
+    props?: {
+        children: ReactNode;
+        onSelect?: () => void;
+        disabled?: boolean;
+        variant?: 'default' | 'danger';
+        icon?: ReactNode;
+        className?: string;
+    };
+}
+```
+
+#### Checkbox Node
+
+```ts
+{
+    type: 'checkbox';
+    props?: {
+        children: ReactNode;
+        checked?: boolean;
+        onCheckedChange?: (checked: boolean) => void;
+        disabled?: boolean;
+        className?: string;
+    };
+}
+```
+
+#### Separator Node
+
+```ts
+{
+    type: 'separator';
+    props?: {
+        className?: string;
+    };
+}
+```
+
+#### Group Node
+
+```ts
+{
+    type: 'group';
+    props?: {
+        className?: string;
+    };
+    items: MenuNode[];
+}
+```
+
+#### Sub Menu Node
+
+```ts
+{
+    type: 'sub';
+    props?: {
+        className?: string;
+    };
+    trigger: {
+        props?: {
+            children: ReactNode;
+            disabled?: boolean;
+            className?: string;
+        };
+    };
+    content?: {
+        props?: {
+            className?: string;
+        };
+        items: MenuNode[];
+    };
+}
+```
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+    --dropdown-menu-background: var(--background);
+    --dropdown-menu-border: var(--contrast-100);
+    --dropdown-menu-focus: var(--primary);
+    --dropdown-menu-item-focus: var(--primary);
+    --dropdown-menu-item-text: var(--contrast-400);
+    --dropdown-menu-item-text-hover: var(--foreground);
+    --dropdown-menu-item-danger-text: var(--error);
+    --dropdown-menu-item-danger-text-hover: color-mix(in oklab, var(--error), black 75%);
+    --dropdown-menu-item-background: transparent;
+    --dropdown-menu-item-background-hover: var(--contrast-100);
+    --dropdown-menu-item-danger-background: var(--error);
+    --dropdown-menu-item-danger-background-hover: color-mix(in oklab, var(--error), white 75%);
+    --dropdown-menu-item-font-family: var(--font-family-body);
+    --dropdown-menu-seperator: var(--contrast-200);
+}
+`}</CodeBlock>
