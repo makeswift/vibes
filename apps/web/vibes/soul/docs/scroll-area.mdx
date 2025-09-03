@@ -1,0 +1,61 @@
+---
+title: Scroll Area
+preview:
+  Electric: scroll-area-example-electric
+  Warm: scroll-area-example-warm
+  Luxury: scroll-area-example-luxury
+previewSize: md
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import { ScrollArea } from '@/vibes/soul/primitives/scroll-area';
+
+function Usage() {
+    const items = Array.from({ length: 20 }, (_, i) => \`Item \${i + 1}\`);
+
+    return (
+        <div className="w-72">
+            <ScrollArea className="h-64 rounded-lg border bg-background p-4">
+                <div className="space-y-2">
+                    {items.map((item, index) => (
+                        <div 
+                            key={index}
+                            className="rounded-md p-3 hover:bg-contrast-100 transition-colors"
+                        >
+                            {item}
+                        </div>
+                    ))}
+                </div>
+            </ScrollArea>
+        </div>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### ScrollAreaProps
+
+| Prop          | Type                         | Default      |
+| ------------- | ---------------------------- | ------------ |
+| `children*`   | `ReactNode`                  |              |
+| `className`   | `string`                     |              |
+| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+    --scroll-area-background: var(--contrast-100);
+    --scroll-area-thumb: var(--contrast-200);
+}
+`}</CodeBlock>

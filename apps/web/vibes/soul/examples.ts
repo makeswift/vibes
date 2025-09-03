@@ -1128,5 +1128,33 @@ export const examples = [
     files: ['examples/primitives/reveal/index.tsx'],
     component: lazy(() => import('./examples/primitives/reveal')),
   },
+  {
+    name: 'dropdown-menu-example',
+    dependencies: [],
+    registryDependencies: ['dropdown-menu'],
+    files: ['examples/primitives/dropdown-menu/index.tsx'],
+    component: lazy(() => import('./examples/primitives/dropdown-menu')),
+  },
+  {
+    name: 'scroll-area-example-electric',
+    dependencies: [],
+    registryDependencies: ['scroll-area'],
+    files: ['examples/primitives/scroll-area/electric.tsx'],
+    component: lazy(() => import('./examples/primitives/scroll-area/electric')),
+  },
+  {
+    name: 'scroll-area-example-warm',
+    dependencies: [],
+    registryDependencies: ['scroll-area'],
+    files: ['examples/primitives/scroll-area/warm.tsx'],
+    component: lazy(() => import('./examples/primitives/scroll-area/warm')),
+  },
+  {
+    name: 'scroll-area-example-luxury',
+    dependencies: [],
+    registryDependencies: ['scroll-area'],
+    files: ['examples/primitives/scroll-area/luxury.tsx'],
+    component: lazy(() => import('./examples/primitives/scroll-area/luxury')),
+  },
   // PLOP: Append new component here
 ] satisfies Components;

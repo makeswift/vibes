@@ -83,6 +83,12 @@ const primitivePages: [Page, ...Page[]] = [
     file: 'docs/cursor-pagination.mdx',
     component: 'cursor-pagination',
   },
+  {
+    title: 'Dropdown Menu',
+    slug: 'dropdown-menu',
+    file: 'docs/dropdown-menu.mdx',
+    component: 'dropdown-menu',
+  },
   { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
   { title: 'Icon', slug: 'icon', file: 'docs/icon.mdx', component: 'icon' },
   {
@@ -127,6 +133,12 @@ const primitivePages: [Page, ...Page[]] = [
     slug: 'reveal',
     file: 'docs/reveal.mdx',
     component: 'reveal',
+  },
+  {
+    title: 'Scroll Area',
+    slug: 'scroll-area',
+    file: 'docs/scroll-area.mdx',
+    component: 'scroll-area',
   },
   {
     title: 'Side Panel',
