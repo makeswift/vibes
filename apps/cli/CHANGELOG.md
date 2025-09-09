@@ -1,5 +1,13 @@
 # vibes
 
+## 1.0.4
+
+### Patch Changes
+
+- Pin chalk dependency to 5.4.1 to prevent security vulnerability
+
+  Pins chalk from ^5.3.0 to exact version 5.4.1 to prevent installation of vulnerable version 5.6.1. Also removes conflicting package-lock.json to ensure consistent pnpm usage across the workspace.
+
 ## 1.0.0
 
 ### Major Changes
