@@ -1,6 +1,6 @@
 {
   "name": "vibes",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI for installing VIBES components",
   "homepage": "https://vibes.site",
   "repository": {
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@clack/prompts": "^0.7.0",
-    "chalk": "^5.3.0",
+    "chalk": "5.4.1",
     "commander": "^11.1.0",
     "node-fetch": "^3.3.2"
   },
