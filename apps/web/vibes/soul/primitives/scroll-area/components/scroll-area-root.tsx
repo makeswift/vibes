@@ -7,28 +7,33 @@ import type { ComponentProps } from 'react';
 import { ScrollAreaBar } from '@/vibes/soul/primitives/scroll-area/components/scroll-area-bar';
 
 export interface ScrollAreaRootProps extends ComponentProps<typeof ScrollAreaPrimitive.Root> {
-  orientation?: 'vertical' | 'horizontal';
+  orientation?: 'vertical' | 'horizontal' | 'both';
 }
 
 export function ScrollAreaRoot({
   className,
   children,
-  orientation,
+  orientation = 'vertical',
   ...props
 }: ScrollAreaRootProps) {
   return (
     <ScrollAreaPrimitive.Root
-      className={clsx('overflow-hidden', className)}
+      className={clsx('relative', className)}
       data-slot="scroll-area-root"
       {...props}
     >
       <ScrollAreaPrimitive.Viewport
-        className="size-full rounded-[inherit]"
+        className="focus-visible:outline-primary size-full rounded-[inherit] transition-[color,box-shadow] focus-visible:outline-1 focus-visible:outline-offset-2"
         data-slot="scroll-area-viewport"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
-      <ScrollAreaBar orientation={orientation} />
+      {(orientation === 'vertical' || orientation === 'both') && (
+        <ScrollAreaBar orientation="vertical" />
+      )}
+      {(orientation === 'horizontal' || orientation === 'both') && (
+        <ScrollAreaBar orientation="horizontal" />
+      )}
       <ScrollAreaPrimitive.Corner />
     </ScrollAreaPrimitive.Root>
   );

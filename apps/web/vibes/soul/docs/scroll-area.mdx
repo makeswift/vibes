@@ -43,11 +43,11 @@ function Usage() {
 
 ### ScrollAreaProps
 
-| Prop          | Type                         | Default      |
-| ------------- | ---------------------------- | ------------ |
-| `children*`   | `ReactNode`                  |              |
-| `className`   | `string`                     |              |
-| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` |
+| Prop          | Type                                   | Default      |
+| ------------- | -------------------------------------- | ------------ |
+| `children*`   | `ReactNode`                            |              |
+| `className`   | `string`                               |              |
+| `orientation` | `'vertical' \| 'horizontal' \| 'both'` | `'vertical'` |
 
 ### CSS Variables
 
@@ -59,3 +59,10 @@ This component supports various CSS variables for theming. Here's a comprehensiv
     --scroll-area-thumb: var(--contrast-200);
 }
 `}</CodeBlock>
+
+## Changelog
+
+### 2025-09-29
+
+- Added `both` orientation
+- Fixed horizontal scrollbar not appearing

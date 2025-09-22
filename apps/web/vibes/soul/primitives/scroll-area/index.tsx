@@ -20,7 +20,7 @@ export function ScrollArea({ className, children, orientation }: ScrollAreaRootP
       className={className}
       orientation={orientation}
       scrollHideDelay={500}
-      type="scroll"
+      type="hover"
     >
       {children}
       <ScrollAreaBar />
