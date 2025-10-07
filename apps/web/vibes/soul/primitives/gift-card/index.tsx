@@ -59,18 +59,18 @@ export function GiftCard({
   }
 
   return (
-    <div
-      className="group/spotlight border-contrast-400 @container relative aspect-[73/46] w-full max-w-182 overflow-hidden rounded-3xl border bg-gradient-to-b from-[#212B1B] from-[32%] to-[#3C4E31] transition-transform duration-300 ease-out select-none perspective-distant transform-3d"
-      onMouseMove={handleMouseMove}
-      onPointerEnter={handlePointerEnter}
-      onPointerLeave={handlePointerLeave}
-      onPointerMove={handlePointerMove}
-      ref={cardRef}
-      style={{
-        transform: `translateZ(${tilt.z}px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
-      }}
-    >
-      <div className="grid h-full w-full grid-cols-2 px-[clamp(1.5rem,7.7cqw,3.5rem)] py-[clamp(1rem,5.5cqw,2.5rem)]">
+    <div className="group/spotlight @container w-full max-w-182 perspective-distant">
+      <div
+        className="border-contrast-400 grid grid-cols-2 overflow-hidden rounded-3xl border bg-gradient-to-b from-[#212B1B] from-[32%] to-[#3C4E31] px-[clamp(1.5rem,7.7cqw,3.5rem)] py-[clamp(1rem,5.5cqw,2.5rem)] transition-transform duration-300 ease-out select-none transform-3d"
+        onMouseMove={handleMouseMove}
+        onPointerEnter={handlePointerEnter}
+        onPointerLeave={handlePointerLeave}
+        onPointerMove={handlePointerMove}
+        ref={cardRef}
+        style={{
+          transform: `translateZ(${tilt.z}px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
+        }}
+      >
         {/* Left column */}
         <div>
           <p className="font-heading text-primary-highlight text-[clamp(1.5rem,8.25cqw,3.75rem)] leading-[clamp(1.75rem,8.8cqw,4rem)] font-light tracking-tight">
