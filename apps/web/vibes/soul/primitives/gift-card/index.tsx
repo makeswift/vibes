@@ -61,7 +61,7 @@ export function GiftCard({
   return (
     <div className="group/spotlight @container w-full max-w-182 perspective-distant">
       <div
-        className="border-contrast-400 grid grid-cols-2 overflow-hidden rounded-3xl border bg-gradient-to-b from-[#212B1B] from-[32%] to-[#3C4E31] px-[clamp(1.5rem,7.7cqw,3.5rem)] py-[clamp(1rem,5.5cqw,2.5rem)] transition-transform duration-300 ease-out select-none transform-3d"
+        className="border-contrast-400 grid aspect-[73/46] grid-cols-2 overflow-hidden rounded-3xl border bg-gradient-to-b from-[#212B1B] from-[32%] to-[#3C4E31] px-[clamp(1.5rem,7.7cqw,3.5rem)] py-[clamp(1rem,5.5cqw,2.5rem)] transition-transform duration-300 ease-out select-none transform-3d"
         onMouseMove={handleMouseMove}
         onPointerEnter={handlePointerEnter}
         onPointerLeave={handlePointerLeave}
