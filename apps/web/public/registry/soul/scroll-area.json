@@ -1,0 +1,35 @@
+{
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-scroll-area",
+    "clsx"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "vibes/soul/primitives/scroll-area/index.tsx",
+      "content": "import { ScrollAreaBar, ScrollAreaRoot, ScrollAreaRootProps } from './components';\n\n/**\n * This component supports various CSS variables for theming. Here's a comprehensive list, along\n * with their default values:\n *\n * ```css\n * :root {\n *   --scroll-area-background: var(--contrast-100);\n *   --scroll-area-thumb: var(--contrast-200);\n * }\n * ```\n */\n\nexport type ScrollAreaProps = Pick<ScrollAreaRootProps, 'className' | 'children' | 'orientation'>;\n\nexport function ScrollArea({ className, children, orientation }: ScrollAreaRootProps) {\n  return (\n    <ScrollAreaRoot\n      className={className}\n      orientation={orientation}\n      scrollHideDelay={500}\n      type=\"hover\"\n    >\n      {children}\n      <ScrollAreaBar />\n    </ScrollAreaRoot>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/scroll-area/index.tsx"
+    },
+    {
+      "path": "vibes/soul/primitives/scroll-area/components/index.ts",
+      "content": "import { ScrollAreaBar, type ScrollAreaBarProps } from './scroll-area-bar';\nimport { ScrollAreaRoot, type ScrollAreaRootProps } from './scroll-area-root';\n\nexport { ScrollAreaRoot, ScrollAreaBar };\n\nexport type { ScrollAreaRootProps, ScrollAreaBarProps };\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/scroll-area/components/index.ts"
+    },
+    {
+      "path": "vibes/soul/primitives/scroll-area/components/scroll-area-bar.tsx",
+      "content": "'use client';\n\nimport * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';\nimport { clsx } from 'clsx';\nimport type { ComponentProps } from 'react';\n\nexport type ScrollAreaBarProps = ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>;\n\nexport function ScrollAreaBar({\n  className,\n  orientation = 'vertical',\n  ...props\n}: ScrollAreaBarProps) {\n  return (\n    <ScrollAreaPrimitive.ScrollAreaScrollbar\n      className={clsx(\n        'data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out-0 data-[state=visible]:fade-in-0 flex touch-none bg-transparent p-1 transition-colors select-none',\n        orientation === 'vertical' && 'h-full w-3.5 border-l border-l-transparent',\n        orientation === 'horizontal' && 'h-3.5 flex-col border-t border-t-transparent',\n        className,\n      )}\n      data-slot=\"scroll-area-scrollbar\"\n      orientation={orientation}\n      {...props}\n    >\n      <ScrollAreaPrimitive.ScrollAreaThumb\n        className=\"bg-contrast-200 relative flex-1 rounded-full\"\n        data-slot=\"scroll-area-thumb\"\n      />\n    </ScrollAreaPrimitive.ScrollAreaScrollbar>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/scroll-area/components/scroll-area-bar.tsx"
+    },
+    {
+      "path": "vibes/soul/primitives/scroll-area/components/scroll-area-root.tsx",
+      "content": "'use client';\n\nimport * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';\nimport { clsx } from 'clsx';\nimport type { ComponentProps } from 'react';\n\nimport { ScrollAreaBar } from '@/vibes/soul/primitives/scroll-area/components/scroll-area-bar';\n\nexport interface ScrollAreaRootProps extends ComponentProps<typeof ScrollAreaPrimitive.Root> {\n  orientation?: 'vertical' | 'horizontal' | 'both';\n}\n\nexport function ScrollAreaRoot({\n  className,\n  children,\n  orientation = 'vertical',\n  ...props\n}: ScrollAreaRootProps) {\n  return (\n    <ScrollAreaPrimitive.Root\n      className={clsx('relative', className)}\n      data-slot=\"scroll-area-root\"\n      {...props}\n    >\n      <ScrollAreaPrimitive.Viewport\n        className=\"focus-visible:outline-primary size-full rounded-[inherit] transition-[color,box-shadow] focus-visible:outline-1 focus-visible:outline-offset-2\"\n        data-slot=\"scroll-area-viewport\"\n      >\n        {children}\n      </ScrollAreaPrimitive.Viewport>\n      {(orientation === 'vertical' || orientation === 'both') && (\n        <ScrollAreaBar orientation=\"vertical\" />\n      )}\n      {(orientation === 'horizontal' || orientation === 'both') && (\n        <ScrollAreaBar orientation=\"horizontal\" />\n      )}\n      <ScrollAreaPrimitive.Corner />\n    </ScrollAreaPrimitive.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "vibes/soul/primitives/scroll-area/components/scroll-area-root.tsx"
+    }
+  ]
+}

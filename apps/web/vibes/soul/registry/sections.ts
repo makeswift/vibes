@@ -276,7 +276,6 @@ export const sections = [
       'rating',
       'skeleton',
       'breadcrumbs',
-      'product-gallery',
       'button-radio-group',
       'card-radio-group',
       'checkbox',
