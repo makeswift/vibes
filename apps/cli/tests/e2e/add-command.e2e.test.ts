@@ -103,7 +103,7 @@ describe("vibes add command - E2E", () => {
   });
 
   it("should accept custom registry URL option", async () => {
-    const customRegistry = "https://www.diceui.com/r/styles/default";
+    const customRegistry = "https://www.diceui.com/r";
     const result = await cliTester.runCLI(
       ["add", "kanban", "--registry", customRegistry],
       {
