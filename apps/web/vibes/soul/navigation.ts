@@ -90,6 +90,7 @@ const primitivePages: [Page, ...Page[]] = [
     component: 'dropdown-menu',
   },
   { title: 'Favorite', slug: 'favorite', file: 'docs/favorite.mdx', component: 'favorite' },
+  { title: 'Gift Card', slug: 'gift-card', file: 'docs/gift-card.mdx', component: 'gift-card' },
   { title: 'Icon', slug: 'icon', file: 'docs/icon.mdx', component: 'icon' },
   {
     title: 'Logo',
