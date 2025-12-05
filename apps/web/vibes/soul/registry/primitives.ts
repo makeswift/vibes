@@ -239,6 +239,12 @@ export const primitives = [
     files: ['lib/streamable.tsx'],
   },
   {
+    name: 'table',
+    dependencies: ['clsx'],
+    registryDependencies: [],
+    files: ['primitives/table/index.tsx'],
+  },
+  {
     name: 'tabs',
     dependencies: ['@radix-ui/react-tabs', 'clsx'],
     registryDependencies: [],
