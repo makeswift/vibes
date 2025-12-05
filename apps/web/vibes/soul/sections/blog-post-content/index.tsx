@@ -59,7 +59,6 @@ export function BlogPostContent({
 }: BlogPostContentProps) {
   return (
     <SectionLayout className={clsx('group/blog-post-content', className)}>
-      <div className="mx-auto max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
         <Stream fallback={<BlogPostContentSkeleton />} value={streamableBlogPost}>
           {(blogPost) => {
             const { title, author, date, tags, content, image } = blogPost;
@@ -111,7 +110,6 @@ export function BlogPostContent({
             );
           }}
         </Stream>
-      </div>
     </SectionLayout>
   );
 }
