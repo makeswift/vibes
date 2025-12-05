@@ -171,6 +171,12 @@ const primitivePages: [Page, ...Page[]] = [
     component: 'tabs',
   },
   {
+    title: 'Tree',
+    slug: 'tree',
+    file: 'docs/tree.mdx',
+    component: 'tree',
+  },
+  {
     title: 'Toaster',
     slug: 'toaster',
     file: 'docs/toaster.mdx',

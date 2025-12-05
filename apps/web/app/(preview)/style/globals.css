@@ -31,6 +31,7 @@
   --color-foreground: var(--foreground);
   --color-background: var(--background);
 
+  --color-contrast-50: var(--contrast-50);
   --color-contrast-100: var(--contrast-100);
   --color-contrast-200: var(--contrast-200);
   --color-contrast-300: var(--contrast-300);
@@ -272,6 +273,7 @@
     --background: oklch(100% 0 0);
     --foreground: oklch(18.22% 0 0);
 
+    --contrast-50: oklch(97.55% 0 0);
     --contrast-100: oklch(94.61% 0 0);
     --contrast-200: oklch(86.07% 0 0);
     --contrast-300: oklch(76.68% 0 0);
