@@ -57,18 +57,18 @@ export function Button({
       {...props}
       aria-busy={loading}
       className={clsx(
-        'relative z-0 inline-flex h-fit items-center justify-center overflow-hidden border text-center font-(family-name:--button-font-family,var(--font-family-body)) leading-normal font-semibold select-none after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition-[opacity,translate] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] focus-visible:ring-2 focus-visible:ring-(--button-focus,var(--primary)) focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-30',
+        'relative z-0 inline-flex h-fit items-center justify-center overflow-hidden border text-center font-(family-name:--button-font-family,var(--font-family-body)) leading-normal font-semibold select-none after:absolute after:inset-0 after:-z-10 after:-translate-x-[105%] after:transition-[opacity,translate] after:duration-300 after:[animation-timing-function:cubic-bezier(0,0.25,0,1)] focus-visible:outline-2 focus-visible:outline-(--button-focus,var(--primary)) disabled:pointer-events-none disabled:opacity-30',
         {
           primary:
-            'border-(--button-primary-border,var(--primary)) bg-(--button-primary-background,var(--primary)) text-(--button-primary-text,var(--foreground)) after:bg-(--button-primary-background-hover,var(--primary-highlight))',
+            'border-(--button-primary-border,var(--primary)) bg-(--button-primary-background,var(--primary)) text-(--button-primary-text,var(--foreground)) after:bg-(--button-primary-background-hover,var(--primary-highlight)) focus-visible:outline-offset-2',
           secondary:
-            'border-(--button-secondary-border,var(--foreground)) bg-(--button-secondary-background,var(--foreground)) text-(--button-secondary-text,var(--background)) after:bg-(--button-secondary-background-hover,var(--background))',
+            'border-(--button-secondary-border,var(--foreground)) bg-(--button-secondary-background,var(--foreground)) text-(--button-secondary-text,var(--background)) after:bg-(--button-secondary-background-hover,var(--background)) focus-visible:outline-offset-2',
           tertiary:
-            'border-(--button-tertiary-border,var(--contrast-200)) bg-(--button-tertiary-background,var(--background)) text-(--button-tertiary-text,var(--foreground)) after:bg-(--button-tertiary-background-hover,var(--contrast-100))',
+            'border-(--button-tertiary-border,var(--contrast-200)) bg-(--button-tertiary-background,var(--background)) text-(--button-tertiary-text,var(--foreground)) after:bg-(--button-tertiary-background-hover,var(--contrast-100)) focus-visible:outline-offset-2',
           ghost:
-            'border-(--button-ghost-border,transparent) bg-(--button-ghost-background,transparent) text-(--button-ghost-text,var(--foreground)) after:bg-(--button-ghost-background-hover,color-mix(in_oklab,var(--foreground)_5%,transparent))',
+            'border-(--button-ghost-border,transparent) bg-(--button-ghost-background,transparent) text-(--button-ghost-text,var(--foreground)) after:bg-(--button-ghost-background-hover,color-mix(in_oklab,var(--foreground)_5%,transparent)) focus-visible:outline-offset-0',
           danger:
-            'border-(--button-danger-border,color-mix(in_oklab,var(--error),white_30%)) bg-(--button-danger-background,color-mix(in_oklab,var(--error),white_30%)) text-(--button-danger-text,var(--foreground)) after:bg-(--button-danger-background-hover,var(--error-highlight))',
+            'border-(--button-danger-border,color-mix(in_oklab,var(--error),white_30%)) bg-(--button-danger-background,color-mix(in_oklab,var(--error),white_30%)) text-(--button-danger-text,var(--foreground)) after:bg-(--button-danger-background-hover,var(--error-highlight)) focus-visible:outline-offset-2',
         }[variant],
         {
           pill: 'rounded-full after:rounded-full',
