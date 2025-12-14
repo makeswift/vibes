@@ -8,6 +8,7 @@ import { Label } from '@/vibes/soul/form/label';
 interface Option {
   value: string;
   label: string;
+  description?: string;
   disabled?: boolean;
 }
 
@@ -90,7 +91,9 @@ function RadioGroupItem({
   return (
     <div className="flex items-center" key={option.value}>
       <RadioGroupPrimitive.Item
-        aria-label={option.label}
+        aria-labelledby={
+          option.description !== undefined ? `${id}-label ${id}-description` : `${id}-label`
+        }
         className={clsx(
           'size-5 cursor-default rounded-full border outline-hidden data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&:disabled+label]:pointer-events-none [&:disabled+label]:opacity-50',
           {
@@ -125,7 +128,7 @@ function RadioGroupItem({
       </RadioGroupPrimitive.Item>
       <label
         className={clsx(
-          'pl-3 text-sm leading-none',
+          'flex flex-grow justify-between pl-3 text-sm leading-none',
           {
             light: 'text-(--radio-group-light-label,var(--foreground))',
             dark: 'text-(--radio-group-dark-label,var(--background))',
@@ -133,7 +136,10 @@ function RadioGroupItem({
         )}
         htmlFor={id}
       >
-        {option.label}
+        <span id={`${id}-label`}>{option.label}</span>
+        {option.description !== undefined && (
+          <span id={`${id}-description`}>{option.description}</span>
+        )}
       </label>
     </div>
   );
