@@ -1156,5 +1156,12 @@ export const examples = [
     files: ['examples/primitives/scroll-area/luxury.tsx'],
     component: lazy(() => import('./examples/primitives/scroll-area/luxury')),
   },
+  {
+    name: 'gift-card-example',
+    dependencies: [],
+    registryDependencies: ['gift-card'],
+    files: ['examples/primitives/gift-card/index.tsx'],
+    component: lazy(() => import('./examples/primitives/gift-card')),
+  },
   // PLOP: Append new component here
 ] satisfies Components;
