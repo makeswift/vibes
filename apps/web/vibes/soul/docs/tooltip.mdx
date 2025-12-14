@@ -1,0 +1,53 @@
+---
+title: Tooltip
+preview: tooltip-example
+previewSize: sm
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+
+import { Tooltip } from '@/vibes/soul/primitives/tooltip';
+
+function Usage() {
+    return (
+      <Tooltip trigger={<div>Tooltip trigger</div>}>
+        Tooltip content
+      </Tooltip>
+    );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+This comoponent uses the Sonner toast component. For more information, please refer to the [Sonner documentation](https://sonner.emilkowal.ski/).
+
+### TooltipProps
+
+| Prop                | Type                                     | Default    |
+| ------------------- | ---------------------------------------- | ---------- |
+| `align`             | `'center' \| 'end' \| 'start'`           | `'center'` |
+| `className`         | `string`                                 |            |
+| `delayDuration`     | `number`                                 |            |
+| `skipDelayDuration` | `number`                                 |            |
+| `trigger`           | `React.ReactNode`                        |            |
+| `open`              | `boolean`                                |            |
+| `setOpen`           | `(open: boolean) => void`                |            |
+| `side`              | `'top' \| 'right' \| 'bottom' \| 'left'` | `'top'`    |
+| `sideOffset`        | `number`                                 | `6`        |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+```css
+:root {
+  --tooltip-background: hsl(var(--background));
+}
+```
