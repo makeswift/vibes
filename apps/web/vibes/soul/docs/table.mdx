@@ -1,0 +1,138 @@
+---
+title: Table
+preview: table-example
+previewSize: lg
+---
+
+## Usage
+
+{/* prettier-ignore-start */}
+
+<CodeBlock lang="ts">{`
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/vibes/soul/primitives/table';
+
+function Usage() {
+  return (
+    <Table>
+      <TableCaption>A list of recent orders.</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Order ID</TableHead>
+          <TableHead>Date</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead className="text-right">Total</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell className="font-medium">#12345</TableCell>
+          <TableCell>Jan 15, 2024</TableCell>
+          <TableCell>Delivered</TableCell>
+          <TableCell className="text-right">$149.99</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell className="font-medium">#12346</TableCell>
+          <TableCell>Jan 20, 2024</TableCell>
+          <TableCell>Shipped</TableCell>
+          <TableCell className="text-right">$89.99</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+}
+`}
+</CodeBlock>
+
+{/* prettier-ignore-end */}
+
+## API Reference
+
+### Table
+
+A responsive table container with overflow handling.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### TableHeader
+
+Table header section (`<thead>`).
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### TableBody
+
+Table body section (`<tbody>`).
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### TableFooter
+
+Table footer section (`<tfoot>`).
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### TableRow
+
+Table row (`<tr>`) with hover effects and selection states.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### TableHead
+
+Table header cell (`<th>`) for column headers.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### TableCell
+
+Table data cell (`<td>`) for content.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### TableCaption
+
+Table caption for accessibility and description.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### CSS Variables
+
+This component supports various CSS variables for theming. Here's a comprehensive list.
+
+<CodeBlock lang="css">{`
+:root {
+  --table-focus: var(--primary);
+  --table-font-family: var(--font-family-body);
+  --table-border: var(--contrast-200);
+  --table-header-background: var(--contrast-50);
+  --table-header-text: var(--foreground);
+  --table-row-background: var(--background);
+  --table-row-background-hover: var(--contrast-50);
+  --table-row-text: var(--foreground);
+  --table-cell-padding: 0.75rem;
+}
+`}</CodeBlock>

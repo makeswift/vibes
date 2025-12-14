@@ -1122,6 +1122,13 @@ export const examples = [
     component: lazy(() => import('./examples/primitives/tabs')),
   },
   {
+    name: 'table-example',
+    dependencies: [],
+    registryDependencies: ['table'],
+    files: ['examples/primitives/table/index.tsx'],
+    component: lazy(() => import('./examples/primitives/table')),
+  },
+  {
     name: 'reveal-example',
     dependencies: [],
     registryDependencies: ['reveal'],
